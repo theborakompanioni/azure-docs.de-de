@@ -1,51 +1,56 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication-Berichte"
-	description="Beschreibt, wie Sie das Berichte-Feature für Multi-Factor Authentication verwenden."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+    pageTitle="Azure Multi-Factor Authentication Reports"
+    description="This describes how to use the Azure Multi-Factor Authentication feature - reports."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="curtand"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
 
-# Berichte in Azure Multi-Factor Authentication
 
-Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre Organisation verwenden können. Auf diese Berichte können Sie über das Multi-Factor Authentication-Verwaltungsportal zugreifen. Dazu benötigen Sie einen Azure MFA-Anbieter bzw. eine Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenz. Folgendes ist eine Liste der verfügbaren Berichte.
+# <a name="reports-in-azure-multi-factor-authentication"></a>Reports in Azure Multi-Factor Authentication
 
-Sie können auf die Berichte über das Azure-Verwaltungsportal zugreifen.
+Azure Multi-Factor Authentication provides several reports that can be used by you and your organization. These reports can be accessed through the Multi-Factor Authentication Management Portal, which requires that you have an Azure MFA Provider, or an Azure MFA, Azure AD Premium or Enterprise Mobility Suite license. The following is a list of the available reports.
 
-Name| Beschreibung
+You can access reports through the Azure Management portal.
+
+Name| Description
 :------------- | :------------- |
-Verwendung | Die Nutzungsberichte geben Informationen zur Gesamtnutzung, Benutzerzusammenfassungen und Benutzerdetails an.
-Serverstatus|Dieser Bericht zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind.
-Verlauf – gesperrte Benutzer|Dieser Bericht zeigt den Verlauf von Anforderungen zum Sperren oder Entsperren von Benutzern an.
-Verlauf – Umgangene Benutzer|Dieser Bericht zeigt den Verlauf von Anforderungen an, die mehrstufige Authentifizierung für die Telefonnummer des Benutzers zu umgehen.
-Betrugswarnung|Dieser Bericht zeigt den Verlauf von Betrugswarnungen an, die im angegebenen Zeitraum übermittelt wurden.
-In Warteschlange|Hier werden Berichte aufgelistet, die zur Verarbeitung und aufgrund ihres Status in der Warteschlange sind. Nach Abschluss des Berichts wird ein Link zum Herunterladen oder Anzeigen des Berichts bereitgestellt.
+Usage | The usage reports display information on overall usage, user summary and user details.
+Server Status|This report displays the status of Multi-Factor Authentication Servers associated with your account.
+Blocked User History|These reports show the history of requests to block or unblock users.
+Bypassed User History|Shows the history of requests to bypass Multi-Factor Authentication for a user's phone number.
+Fraud Alert|Shows a history of fraud alerts submitted during the date range you specified.
+Queued|Lists reports queued for processing and their status. A link to download or view the report is provided when the report is complete.
 
-## Anzeigen von Berichten
+## <a name="to-view-reports"></a>To view reports
 
-1.	Melden Sie sich unter http://azure.microsoft.com an.
-2.	Wählen Sie im linken Bereich "Active Directory" aus.
-3.	Wählen Sie eine der folgenden Optionen:
-	- **Option 1**: Klicken Sie auf die Registerkarte mit den Multi-Factor Authentication-Anbietern. Wählen Sie Ihren MFA-Anbieter, und klicken Sie auf die Schaltfläche „Verwalten“ am unteren Rand.
-	- **Option 2**: Wählen Sie Ihr Verzeichnis aus und klicken Sie auf die Registerkarte „Konfigurieren“. Klicken Sie im Abschnitt „Multi-Factor Authentication“ auf „Diensteinstellungen verwalten“. Klicken Sie am unteren Rand der Seite mit den Einstellungen für den MFA-Dienst auf den Link „Portal aufrufen“.
-4.	Im Azure Multi-Factor Authentication-Verwaltungsportal sehen Sie auf der linken Seite den Bereich „Einen Bericht anzeigen“. Von hier aus können Sie die oben beschriebenen Berichte auswählen.
+1.  Log on to http://azure.microsoft.com
+2.  On the left, select Active Directory.
+3.  Select one of the following options:
+    - **Option 1**: Click the Multi-Factor Auth Providers tab. Select your MFA provider and click the Manage button at the bottom.
+    - **Option 2**: Select your directory and click the Configure tab. Under the multi-factor authentication section, select Manage service settings. At the bottom of the MFA Service Settings page, click the Go to the portal link.
+4.  In the Azure Multi-Factor Authentication Management Portal, you will see the View a Report section in the left navigation. From here you can select the reports described above.
 
 <center>![Cloud](./media/multi-factor-authentication-manage-reports/report.png)</center>
 
 
-**Weitere Ressourcen**
+**Additional Resources**
 
-* [Für Benutzer](multi-factor-authentication-end-user.md)
-* [Azure Multi-Factor Authentication bei MSDN](https://msdn.microsoft.com/library/azure/dn249471.aspx)
+* [For Users](multi-factor-authentication-end-user.md)
+* [Azure Multi-Factor Authentication on MSDN](https://msdn.microsoft.com/library/azure/dn249471.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

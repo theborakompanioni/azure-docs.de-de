@@ -1,8 +1,8 @@
 <properties
-pageTitle="Anleitung zum Verwenden des Azure Service Bus-Connectors in Ihren Logik-Apps | Microsoft Azure"
-description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange und Empfangen aus Abonnements usw."
+pageTitle="Learn to use the Azure Service Bus connector in your logic apps | Microsoft Azure"
+description="Create logic apps with Azure App service. Connect to Azure Service Bus to send and receive messages. You can perform actions such as send to queue, send to topic, receive from queue, and receive from subscription."
 services="logic-apps"
-documentationCenter=".net,nodejs,java" 	
+documentationCenter=".net,nodejs,java"  
 authors="msftman"
 manager="erikre"
 editor=""
@@ -17,168 +17,173 @@ ms.workload="integration"
 ms.date="08/02/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit dem Azure Service Bus-Connector
 
-Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange und Empfangen aus Abonnements usw.
+# <a name="get-started-with-the-azure-service-bus-connector"></a>Get started with the Azure Service Bus connector
 
-Wenn Sie einen [Connector](./apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
+Connect to Azure Service Bus to send and receive messages. You can perform actions such as send to queue, send to topic, receive from queue, and receive from subscription.
 
-## Herstellen einer Verbindung mit Service Bus
+To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine Verbindung mit dem Dienst herstellen. Eine [Verbindung](./connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.
+## <a name="connect-to-service-bus"></a>Connect to Service Bus
 
->[AZURE.INCLUDE [Schritte zum Erstellen einer Verbindung mit Azure Service Bus](../../includes/connectors-create-api-servicebus.md)]
+Before your logic app can access any service, you first need to create a connection to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service.  
 
-## Verwenden eines Service Bus-Triggers
+>[AZURE.INCLUDE [Steps to create a connection to Azure Service Bus](../../includes/connectors-create-api-servicebus.md)]
 
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+## <a name="use-a-service-bus-trigger"></a>Use a Service Bus trigger
 
->[AZURE.INCLUDE [Schritte zum Erstellen eines Service Bus-Triggers](../../includes/connectors-create-api-servicebus-trigger.md)]
+A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
 
-## Verwenden einer Service Bus-Aktion
+>[AZURE.INCLUDE [Steps to create a Service Bus trigger](../../includes/connectors-create-api-servicebus-trigger.md)]  
 
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+## <a name="use-a-service-bus-action"></a>Use a Service Bus action
 
-[AZURE.INCLUDE [Schritte zum Erstellen einer Service Bus-Aktion](../../includes/connectors-create-api-servicebus-action.md)]
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-## Technische Details
+[AZURE.INCLUDE [Steps to create a Service Bus action](../../includes/connectors-create-api-servicebus-action.md)]  
 
-Hier finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden.
+## <a name="technical-details"></a>Technical details
 
-### Service Bus-Trigger
+Here are the details about the triggers, actions, and responses that this connection supports.
 
-Für Service Bus stehen folgende Trigger zur Verfügung:
+### <a name="service-bus-triggers"></a>Service Bus triggers
 
-|Trigger | Beschreibung|
+Service Bus has the following triggers:  
+
+|Trigger | Description|
 |--- | ---|
-|[When a message is received in a queue (Wenn bei einer Warteschlange eine Nachricht eingeht)](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-queue)|Dieser Vorgang löst einen Ablauf aus, wenn bei einer Warteschlange eine Nachricht eingeht.|
-|[When a message is received in a topic subscription (Wenn bei einem Themenabonnement eine Nachricht eingeht)](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-topic-subscription)|Dieser Vorgang löst einen Ablauf aus, wenn bei einem Themenabonnement eine Nachricht eingeht.|
+|[When a message is received in a queue](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-queue)|This operation triggers a flow when a message is received in a queue.|
+|[When a message is received in a topic subscription](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-topic-subscription)|This operation triggers a flow when a message is received in a topic subscription.|
 
 
-### Service Bus-Aktionen
+### <a name="service-bus-actions"></a>Service Bus actions
 
-Für Service Bus stehen folgende Aktionen zur Verfügung:
+Service Bus has the following actions:
 
 
-|Aktion|Beschreibung|
+|Action|Description|
 |--- | ---|
-|[Nachricht senden](connectors-create-api-servicebus.md#send-message)|Dieser Vorgang sendet eine Nachricht an eine Warteschlange oder an ein Thema.|
-### Ausführliche Informationen zu Aktionen und Triggern
+|[Send message](connectors-create-api-servicebus.md#send-message)|This operation sends a message to a queue or topic.|
+### <a name="action-and-trigger-details"></a>Action and trigger details
 
-Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten.
+Here are the details for the actions and triggers for this connector, along with their responses.
 
 
 
-#### Nachricht senden
+#### <a name="send-message"></a>Send message
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|ContentData*|Inhalt|Inhalt der Nachricht.|
-|ContentType|Inhaltstyp|Inhaltstyp des Nachrichteninhalts.|
-|Eigenschaften|Eigenschaften|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften.|
-|entityName*|Warteschlangen-/Themenname|Name der Warteschlange oder des Themas.|
+|ContentData*|Content|Content of the message.|
+|ContentType|Content Type|Content type of the message content.|
+|Properties|Properties|Key-value pairs for each brokered property.|
+|entityName*|Queue/Topic name|Name of the queue or topic.|
 
-Die folgenden erweiterten Parameter sind ebenfalls verfügbar:
+These advanced parameters are also available:
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|MessageId|Nachrichten-ID|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
-|To|To|Zieladresse.|
-|ReplyTo|Antworten an|Warteschlangenadresse für die Antwort.|
-|ReplyToSessionId|Antwort an Sitzungs-ID|Sitzungs-ID für die Antwort.|
-|Bezeichnung|Bezeichnung|Anwendungsspezifische Bezeichnung.|
-|ScheduledEnqueueTimeUtc|ScheduledEnqueueTimeUtc|Zeitpunkt, zu dem die Nachricht der Warteschlange hinzugefügt wird (Datum und Uhrzeit im UTC-Format).|
-|SessionId|Sitzungs-ID|ID der Sitzung|
-|CorrelationId|Korrelations-ID|ID der Korrelation|
-|TimeToLive|Gültigkeitsdauer (Time To Live, TTL)|Die Gültigkeitsdauer einer Nachricht (in Ticks). Der Zeitraum beginnt, wenn die Nachricht an den Service Bus gesendet wird.|
+|MessageId|Message Id|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
+|To|To|Address to send to.|
+|ReplyTo|Reply To|Address of the queue to reply to.|
+|ReplyToSessionId|Reply To Session Id|Identifier of the session to reply to.|
+|Label|Label|Application-specific label.|
+|ScheduledEnqueueTimeUtc|ScheduledEnqueueTimeUtc|Date and time, in UTC, when the message will be added to the queue.|
+|SessionId|Session Id|Identifier of the session.|
+|CorrelationId|Correlation Id|Identifier of the correlation.|
+|TimeToLive|Time To Live|The duration, in ticks, that a message is valid. The duration starts from when the message is sent to Service Bus.|
 
 
 
-Ein Sternchen (*) gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+An * indicates that a property is required.
 
 
-#### When a message is received in a queue (Wenn bei einer Warteschlange eine Nachricht eingeht)
+#### <a name="when-a-message-is-received-in-a-queue"></a>When a message is received in a queue
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|queueName*|Warteschlangenname|Name der Warteschlange.|
+|queueName*|Queue name|Name of the queue.|
 
 
-Ein Sternchen (*) gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+An * indicates that a property is required.
 
 
-##### Ausgabedetails
+##### <a name="output-details"></a>Output details
 
-ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer Service Bus-Nachricht.
+ServiceBusMessage: This object has the content and properties of a Service Bus message.
 
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Property name | Data type | Description |
 |---|---|---|
-|ContentData|string|Inhalt der Nachricht.|
-|ContentType|string|Inhaltstyp des Nachrichteninhalts.|
-|Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften.|
-|MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
-|To|string|Zieladresse.|
-|ReplyTo|string|Warteschlangenadresse für die Antwort.|
-|ReplyToSessionId|string|Sitzungs-ID für die Antwort.|
-|Bezeichnung|string|Anwendungsspezifische Bezeichnung.|
-|ScheduledEnqueueTimeUtc|string|Zeitpunkt, zu dem die Nachricht der Warteschlange hinzugefügt wird (Datum und Uhrzeit im UTC-Format).|
-|SessionId|string|ID der Sitzung|
-|CorrelationId|string|ID der Korrelation|
-|TimeToLive|string|Die Gültigkeitsdauer einer Nachricht (in Ticks). Der Zeitraum beginnt, wenn die Nachricht an den Service Bus gesendet wird.|
+|ContentData|string|Content of the message.|
+|ContentType|string|Content type of the message content.|
+|Properties|object|Key-value pairs for each brokered property.|
+|MessageId|string|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
+|To|string|Send to address.|
+|ReplyTo|string|Address of the queue to reply to.|
+|ReplyToSessionId|string|Identifier of the session to reply to.|
+|Label|string|Application-specific label.|
+|ScheduledEnqueueTimeUtc|string|Date and time, in UTC, when the message will be added to the queue.|
+|SessionId|string|Identifier of the session.|
+|CorrelationId|string|Identifier of the correlation.|
+|TimeToLive|string|The duration, in ticks, that a message is valid. The duration starts from when the message is sent to Service Bus.|
 
 
 
 
-#### When a message is received in a topic subscription (Wenn bei einem Themenabonnement eine Nachricht eingeht)
+#### <a name="when-a-message-is-received-in-a-topic-subscription"></a>When a message is received in a topic subscription
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|topicName*|Themenname|Name des Themas.|
-|subscriptionName*|Topic subscription name (Themenabonnementname)|Name des Themenabonnements.|
+|topicName*|Topic name|Name of the topic.|
+|subscriptionName*|Topic subscription name|Name of the topic subscription.|
 
 
-Ein Sternchen (*) gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+An * indicates that a property is required.
 
 
-##### Ausgabedetails
+##### <a name="output-details"></a>Output details
 
-ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer Service Bus-Nachricht.
+ServiceBusMessage: This object has the content and properties of a Service Bus message.
 
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Property name | Data type | Description |
 |---|---|---|
-|ContentData|string|Inhalt der Nachricht.|
-|ContentType|string|Inhaltstyp des Nachrichteninhalts.|
-|Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften.|
-|MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert).|
-|To|string|Zieladresse.|
-|ReplyTo|string|Warteschlangenadresse für die Antwort.|
-|ReplyToSessionId|string|Sitzungs-ID für die Antwort.|
-|Bezeichnung|string|Anwendungsspezifische Bezeichnung.|
-|ScheduledEnqueueTimeUtc|string|Zeitpunkt, zu dem die Nachricht der Warteschlange hinzugefügt wird (Datum und Uhrzeit im UTC-Format).|
-|SessionId|string|ID der Sitzung|
-|CorrelationId|string|ID der Korrelation|
-|TimeToLive|string|Die Gültigkeitsdauer einer Nachricht (in Ticks). Der Zeitraum beginnt, wenn die Nachricht an den Service Bus gesendet wird.|
+|ContentData|string|Content of the message.|
+|ContentType|string|Content type of the message content.|
+|Properties|object|Key-value pairs for each brokered property.|
+|MessageId|string|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
+|To|string|Send to address.|
+|ReplyTo|string|Address of the queue to reply to.|
+|ReplyToSessionId|string|Identifier of the session to reply to.|
+|Label|string|Application-specific label.|
+|ScheduledEnqueueTimeUtc|string|Date and time, in UTC, when the message will be added to the queue.|
+|SessionId|string|Identifier of the session.|
+|CorrelationId|string|Identifier of the correlation.|
+|TimeToLive|string|The duration, in ticks, that a message is valid. The duration starts from when the message is sent to Service Bus.|
 
 
 
-### HTTP-Antworten
+### <a name="http-responses"></a>HTTP responses
 
-Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
+The preceding actions and triggers can return one or more of the following HTTP status codes:
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|Zulässig|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|202|Accepted|
+|400|Bad request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not found|
+|500|Internal server error. Unknown error occurred.|
+|default|Operation failed.|
 
-## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!-----HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

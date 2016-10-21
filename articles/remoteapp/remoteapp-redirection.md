@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Verwenden von Umleitungen in Azure RemoteApp | Microsoft Azure"
-    description="Informieren Sie sich über die Konfiguration und Verwendung der Umleitung in RemoteApp."
+    pageTitle="Using redirection in Azure RemoteApp | Microsoft Azure"
+    description="Learn how to configure and use redirection in RemoteApp"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -15,96 +15,101 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
-# Verwenden von Umleitungen in Azure RemoteApp
+
+# <a name="using-redirection-in-azure-remoteapp"></a>Using redirection in Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Mit der Geräteumleitung können Benutzer über Geräte, die an ihren lokalen Computer, an ihr Smartphone oder an ihr Tablet angeschlossen sind, mit Remoteanwendungen interagieren. Ein Beispiel: Wenn Sie Skype über Azure RemoteApp bereitstellen, muss die Kamera, die auf dem PC des Benutzers installiert ist, mit Skype verwendbar sein. Gleiches gilt für Drucker, Lautsprecher, Monitore und eine Reihe von USB-Peripheriegeräten.
+Device redirection lets your users interact with remote apps using the devices attached to their local computer, phone, or tablet. For example, if you have provided Skype through Azure RemoteApp, your user needs the camera installed on their PC to work with Skype. This is also true for printers, speakers, monitors, and a range of USB-connected peripherals.
 
-RemoteApp verwendet für die Umleitung das Remotedesktopprotokoll (RDP) und RemoteFX.
+RemoteApp leverages the Remote Desktop Protocol (RDP) and RemoteFX to provide redirection.
 
-## Welche Umleitungen sind standardmäßig aktiviert?
-Bei Verwendung von RemoteApp sind die folgenden Umleitungen standardmäßig aktiviert. Bei den Angaben in Klammern handelt es sich jeweils um die RDP-Einstellung.
+## <a name="what-redirection-is-enabled-by-default?"></a>What redirection is enabled by default?
+When you use RemoteApp, the following redirections are enabled by default. The information in parentheses show the RDP setting.
 
-- Sound auf dem lokalen Computer wiedergeben (**Auf diesem Computer wiedergeben**) (audiomode:i:0)
-- Audio des lokalen Computers aufzeichnen und an den Remotecomputer senden (**Von diesem Computer aufzeichnen**) (audiocapturemode:i:1)
-- Auf lokalen Druckern drucken (redirectprinters:i:1)
-- COM-Anschlüsse (redirectcomports:i:1)
-- Smartcardgerät (redirectsmartcards:i:1)
-- Zwischenablage (zum Kopieren und Einfügen) (redirectclipboard:i:1)
-- Schriftartglättung (allow font smoothing:i:1)
-- Alle unterstützten Plug & Play-Geräte umleiten (devicestoredirect:s:*)
+- Play sounds on the local computer (**Play on this computer**). (audiomode:i:0)
+- Capture audio from the local computer and send to the remote computer (**Record from this computer**). (audiocapturemode:i:1)
+- Print to local printers (redirectprinters:i:1)
+- COM ports (redirectcomports:i:1)
+- Smart card device (redirectsmartcards:i:1)
+- Clipboard (ability to copy and paste) (redirectclipboard:i:1)
+- Clear type font smoothing (allow font smoothing:i:1)
+- Redirect all supported Plug and Play devices. (devicestoredirect:s:*)
 
-## Welche anderen Umleitungen sind verfügbar?
-Zwei Umleitungsoptionen sind standardmäßig deaktiviert:
+## <a name="what-other-redirection-is-available?"></a>What other redirection is available?
+Two redirection options are disabled by default:
 
-- Laufwerkumleitung (Laufwerkzuordnung): Die Laufwerke Ihres lokalen Computers werden in der Remotesitzung zu zugeordneten Laufwerken. Dadurch können Sie Dateien im Rahmen der Remotesitzung auf Ihren lokalen Laufwerken speichern oder öffnen.
-- USB-Umleitung: Die an den lokalen Computer angeschlossenen USB-Geräte können im Rahmen der Remotesitzung verwendet werden.
+- Drive redirection (drive mapping): Your local computer's drives become mapped drives in the remote session. This lets you save or open files from your local drives while you work in the remote session.
+- USB redirection: You can use the USB devices attached to your local computer within the remote session.
 
-## Ändern der Umleitungseinstellungen in RemoteApp
-Die Geräteumleitungseinstellungen für eine Sammlung können mithilfe von Microsoft Azure PowerShell mit SDK geändert werden. Installieren Sie zunächst die neue Version von PowerShell und SDK, und konfigurieren Sie sie für die Verwaltung Ihres Abonnements (siehe [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)).
+## <a name="change-your-redirection-settings-in-remoteapp"></a>Change your redirection settings in RemoteApp
+You can change the device redirection settings for a collection by using the Microsoft Azure PowerShell with SDK. After you install the new PowerShell and SDK, first configure it to manage your subscription as described in [How to install and configure Azure PowerShell](../powershell-install-configure.md).
 
-Legen Sie dann mithilfe eines Befehls wie dem folgenden die benutzerdefinierten RDP-Eigenschaften fest:
+Then use a command similar to the following to set the custom RDP properties:
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
 
-(Hinweis. *`n* fungiert als Trennzeichen zwischen den einzelnen Eigenschaften.)
+(Note that *`n* is used as a delimiter between individual properties.)
 
-Führen Sie das folgende Cmdlet aus, um eine Liste mit den konfigurierten benutzerdefinierten RDP-Eigenschaften abzurufen. Beachten Sie, dass die Ausgabe keine Standardeigenschaften, sondern nur benutzerdefinierte Eigenschaften enthält:
+To get a list of what custom RDP properties are configured, run the following cmdlet. Note that only custom properties are shown as output results and not the default properties:  
 
     Get-AzureRemoteAppCollection -CollectionName <collection name>
 
-Wenn Sie benutzerdefinierte Eigenschaften festlegen, müssen Sie jedes Mal alle benutzerdefinierten Eigenschaften angeben. Andernfalls wird die Einstellung wieder deaktiviert.
+When you set custom properties you must specify all custom properties each time; otherwise the setting reverts to disabled.   
 
-### Typische Beispiele
-Verwenden Sie das folgende Cmdlet, um die Laufwerkumleitung zu aktivieren:
+### <a name="common-examples"></a>Common examples
+Use the following cmdlet to enable drive redirection:  
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*”
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*”
 
-Verwenden Sie das folgende Cmdlet, um sowohl die USB- als auch die Laufwerkumleitung zu aktivieren:
+Use this cmdlet to enable both USB and Drive redirection:
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
 
-Verwenden Sie das folgende Cmdlet, um die gemeinsame Verwendung der Zwischenablage zu deaktivieren:
+Use this cmdlet to disable clipboard sharing:  
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "redirectclipboard:i:0”
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "redirectclipboard:i:0”
 
-> [AZURE.IMPORTANT] Stellen Sie vor dem Testen der Änderung sicher, dass alle Benutzer in der Sammlung nicht nur getrennt, sondern vollständig abgemeldet sind. Navigieren Sie hierzu in der Sammlung im Azure-Portal zur Registerkarte **Sitzungen**, und melden Sie alle getrennten oder angemeldeten Benutzer ab. Manchmal dauert es etwas, bis die lokalen Laufwerke im Rahmen der Sitzung im Explorer angezeigt werden.
+> [AZURE.IMPORTANT] Be sure to completely log off all users in the collection (and not just disconnect them) before you test the change. To ensure users are completely logged off, go to the **Sessions** tab in the collection in the Azure portal and log off any users who are disconnected or signed in. Sometimes it can take several seconds for the local drives to show in Explorer within the session.
 
-## Ändern der USB-Umleitungseinstellungen in Ihrem Windows-Client
+## <a name="change-usb-redirection-settings-on-your-windows-client"></a>Change USB redirection settings on your Windows client
 
-Wenn Sie die USB-Umleitung auf einem mit RemoteApp verbundenen Computer verwenden möchten, müssen zwei Voraussetzungen erfüllt werden: 1. Der Administrator muss mithilfe von Azure PowerShell die USB-Umleitung auf Sammlungsebene aktivieren. 2. Sie müssen auf jedem Gerät, auf dem Sie die USB-Umleitung verwenden möchten, eine Gruppenrichtlinie aktivieren, die die Umleitung zulässt. Dieser Schritt muss für jeden Benutzer ausgeführt werden, der die USB-Umleitung verwenden möchte.
+If you want to use USB redirection on a computer that connects to RemoteApp, there are 2 actions that need to happen. 1 - Your administrator needs to enable USB redirection at the collection level by using Azure PowerShell. 2 - On each device where you want to use USB redirection, you need to enable a group policy that permits it. This step will need to be done for each user that wants to use USB redirection.
 
-> [AZURE.NOTE] Die USB-Umleitung mit Azure RemoteApp wird nur für Windows-Computer unterstützt.
+> [AZURE.NOTE] USB redirection with Azure RemoteApp is only supported for Windows computers.
 
-### Aktivieren der USB-Umleitung für die RemoteApp-Sammlung
-Verwenden Sie das folgende Cmdlet, um die USB-Umleitung auf Sammlungsebene zu aktivieren:
+### <a name="enable-usb-redirection-for-the-remoteapp-collection"></a>Enable USB redirection for the RemoteApp collection
+Use the following cmdlet to enable USB redirection at the collection level:
 
     Set-AzureRemoteAppCollection -CollectionName <collection_name> -CustomRdpProperty "nusbdevicestoredirect:s:*"
 
-### Aktivieren der USB-Umleitung für den Clientcomputer
+### <a name="enable-usb-redirection-for-the-client-computer"></a>Enable USB redirection for the client computer
 
-Gehen Sie zum Konfigurieren der USB-Umleitungseinstellungen auf Ihrem Computer wie folgt vor:
+To configure USB redirection settings on your computer:
 
-1. Öffnen Sie den Editor für lokale Gruppenrichtlinien (GPEDIT. MSC). (Führen Sie „gpedit.msc“ an einer Eingabeaufforderung aus.)
-2. Öffnen Sie **Computerkonfiguration\\Richtlinien\\Administrative Vorlagen\\Windows-Komponenten\\Remotedesktopdienste\\Remotedesktopverbindungs-Client\\RemoteFX USB-Geräteumleitung**.
-3. Doppelklicken Sie auf **RDP-Umleitung für andere unterstützte RemoteFX USB-Geräte auf diesem Computer zulassen**.
-4. Wählen Sie **Aktiviert** und anschließend unter **Zugriffsrechte für RemoteFX USB-Umleitung** die Option für Administratoren und Benutzer aus.
-5. Öffnen Sie eine Eingabeaufforderung mit Administratorrechten, und führen Sie den folgenden Befehl ein:
+1. Open the Local Group Policy Editor (GPEDIT.MSC). (Run gpedit.msc from a command prompt.)
+2. Open **Computer Configuration\Policies\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Connection Client\RemoteFX USB Device Redirection**.
+3. Double-click **Allow RDP redirection of other supported RemoteFX USB devices from this computer**.
+4. Select **Enabled**, and then select **Administrators and Users in the RemoteFX USB Redirection Access Rights**.
+5. Open a command prompt with administrative permissions, and run the following command:
 
-		gpupdate /force
-6. Starten Sie den Computer neu.
+        gpupdate /force
+6. Restart the computer.
 
-Sie können auch das Gruppenrichtlinienverwaltungstool verwenden, um die USB-Umleitungsrichtlinie zu erstellen und auf alle Computer in Ihrer Domäne anzuwenden:
+You can also use the Group Policy Management tool to create and apply the USB redirection policy for all computers in your domain:
 
-1. Melden Sie sich als Domänenadministrator beim Domänencontroller an.
-2. Öffnen Sie die Gruppenrichtlinien-Verwaltungskonsole. (Klicken Sie auf **Start > Verwaltung > Gruppenrichtlinienverwaltung**.)
-3. Navigieren Sie zu der Domäne oder Organisationseinheit, für die Sie die Richtlinie erstellen möchten.
-4. Klicken Sie mit der rechten Maustaste auf **Standarddomänenrichtlinie**, und klicken Sie anschließend auf **Bearbeiten**.
-5. Öffnen Sie **Computerkonfiguration\\Richtlinien\\Administrative Vorlagen\\Windows-Komponenten\\Remotedesktopdienste\\Remotedesktopverbindungs-Client\\RemoteFX USB-Geräteumleitung**.
-6. Doppelklicken Sie auf **RDP-Umleitung für andere unterstützte RemoteFX USB-Geräte auf diesem Computer zulassen**.
-7. Wählen Sie **Aktiviert** und anschließend unter **Zugriffsrechte für RemoteFX USB-Umleitung** die Option für Administratoren und Benutzer aus.
-8. Klicken Sie auf **OK**.
+1. Log into the domain controller as the domain administrator.
+2. Open the Group Policy Management Console. (Click **Start > Administrative Tools > Group Policy Management**.)
+3. Navigate to the domain or organizational unit for which you want to create the policy.
+4. Right-click **Default Domain Policy**, and then click **Edit**.
+5. Open **Computer Configuration\Policies\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Connection Client\RemoteFX USB Device Redirection**.
+6. Double-click **Allow RDP redirection of other supported RemoteFX USB devices from this computer**.
+7. Select **Enabled**, and then select **Administrators and Users in the RemoteFX USB Redirection Access Rights**.
+8. Click **OK**.  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

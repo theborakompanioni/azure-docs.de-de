@@ -1,49 +1,54 @@
 <properties
-	pageTitle="Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten"
-	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS beschrieben."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+    pageTitle="Getting started with Azure Multi-Factor Authentication and Active Directory Federation Services"
+    description="This is the Azure Multi-Factor authentication page that describes how to get started with Azure MFA and AD FS."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="curtland"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na" ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na" ms.topic="get-started-article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
 
-# Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten
+
+# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Getting started with Azure Multi-Factor Authentication and Active Directory Federation Services
 
 
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
-Wenn Ihre Organisation über einen Verbund Ihres lokalen Active Directory mit Azure Active Directory über AD FS verfügt, sind die beiden folgenden Optionen für die Verwendung von Multi-Factor Authentication verfügbar.
+If your organization has federated your on-premises Active Directory with Azure Active Directory using AD FS, the following 2 options for using Azure Multi-Factor Authentication are available.
 
-- Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten
-- Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server
+- Secure cloud resources using Azure Multi-Factor Authentication or Active Directory Federation Services
+- Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server
 
-In der folgenden Tabelle sind die Authentifizierungsverfahren beim Sichern von Ressourcen mit Azure Multi-Factor Authentication und AD FS zusammengefasst.
+The following table summarizes the authentication experience between securing resources with Azure Multi-Factor Authentication and AD FS
 
-|Authentifizierungsvorgang bei Browser-Apps|Authentifizierungsvorgang bei Nicht-Browser-Apps
+|Authentication Experience - Browser based Apps|Authentication Experience - Non-Browser based Apps
 :------------- | :------------- | :------------- |
-Sichern von Azure AD-Ressourcen mit Azure Multi-Factor Authentication |<li>Die erste Authentifizierungsstufe wird lokal über AD FS ausgeführt.</li> <li>Die zweite Stufe ist eine telefonbasierte Methode mithilfe der Cloud-Authentifizierung.</li>|Endbenutzer können sich mit App-Kennwörtern anmelden.
-Sichern von Azure AD-Ressourcen mit Active Directory-Verbunddiensten |<li>Die erste Stufe der Authentifizierung wird lokal mithilfe von AD FS durchgeführt.</li><li>Die zweite Stufe wird lokal unter Berücksichtigung des Anspruchs ausgeführt.</li>|Endbenutzer können sich mit App-Kennwörtern anmelden.
+Securing Azure AD resources using Azure Multi-Factor Authentication |<li>The 1st factor of authentication is performed on-premises using AD FS.</li> <li>The 2nd factor is a phone based method carried out using cloud authentication.</li>|End users can use app passwords to sign-in.
+Securing Azure AD resources using Active Directory Federation Services |<li>The 1st factor of authentication is performed on-premises using AD FS.</li><li>The 2nd factor is performed on-premises by honoring the claim.</li>|End users can use app passwords to sign-in.
 
-Sicherheitshinweise zu App-Kennwörtern für Verbundbenutzer:
+Caveats with app passwords for federated users:
 
-- Das App-Kennwort wird über die Cloud-Authentifizierung überprüft, daher werden Verbunde umgangen. Der Verbund wird nur beim Einrichten des App-Kennworts aktiv verwendet.
-- Lokale Einstellungen für die Clientzugriffssteuerung werden vom App-Kennwort nicht berücksichtigt.
-- Wenn Sie App-Kennwörter verwenden, geht die Möglichkeit zum lokalen Protokollieren der Authentifizierung verloren.
-- Das Deaktivieren oder Löschen von Konten in DirSync kann bis zu drei Stunden dauern, sodass das Deaktivieren bzw. Löschen des App-Kennworts in der Cloud-Identität verzögert wird.
+- App Password is verified using cloud authentication and hence bypasses federations. Federation is only actively used when setting up App Password.
+- On-premises Client Access Control settings are not honored by App Password.
+- You lose on-premises auth logging capability for App Password.
+- Account disable/deletion may take up to 3 hours for dirsync, delaying disable/deletion of app password in the cloud identity.
 
-Informationen zum Einrichten von Azure Multi-Factor Authentication oder Azure Multi-Factor Authentication-Server mit AD FS finden Sie hier:
+For information on setting up either Azure Multi-Factor Authentication or the Azure Multi-Factor Authentication Server with AD FS see the following:
 
-- [Sichern von Cloudressourcen mit Azure Multi-Factor Authentication und AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
-- [Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
-- [Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
+- [Secure cloud resources using Azure Multi-Factor Authentication and AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
+- [Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server with Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
+- [Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server with AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

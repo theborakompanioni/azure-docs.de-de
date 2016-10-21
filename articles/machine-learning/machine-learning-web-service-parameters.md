@@ -1,83 +1,84 @@
 <properties 
-	pageTitle="Verwenden von Azure Machine Learning-Webdienstparametern | Microsoft Azure" 
-	description="Anleitung: Verwenden von Azure Machine Learning Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern." 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="raymondlaghaeian" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+    pageTitle="Use Azure Machine Learning Web Service Parameters | Microsoft Azure" 
+    description="How to use Azure Machine Learning Web Service Parameters to modify the behavior of your model when the web service is accessed." 
+    services="machine-learning" 
+    documentationCenter="" 
+    authors="raymondlaghaeian" 
+    manager="jhubbard" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/06/2016" 
-	ms.author="raymondl;garye"/>
+    ms.service="machine-learning" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/10/2016" 
+    ms.author="raymondl;garye"/>
 
-#Verwenden von Azure Machine Learning-Webdienstparametern
 
-Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, dies zu tun.
+#<a name="use-azure-machine-learning-web-service-parameters"></a>Use Azure Machine Learning Web Service Parameters
 
-Ein typisches Beispiel ist das Einrichten des [Import Data][reader]-Moduls, damit die Benutzer des veröffentlichten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration des [Export Data][writer]-Moduls, damit ein anderes Ziel angegeben werden kann. Zu weiteren Beispielen zählen die Änderung der Anzahl von Bits für das Modul [Feature Hashing][feature-hashing] oder der Anzahl der gewünschten Funktionen für das Modul [Filter-Based Feature Selection][filter-based-feature-selection].
+An Azure Machine Learning web service is created by publishing an experiment that contains modules with configurable parameters. In some cases, you may want to change the module behavior while the web service is running. *Web Service Parameters* allow you to do this task. 
 
-Sie können Webdienstparameter definieren und einem oder mehreren Modulparametern im Experiment zuordnen, und Sie können angeben, ob diese Parameter erforderlich oder optional sind. Benutzer des Webdiensts können dann Werte für diese Parameter bereitstellen, wenn sie den Webdienst aufrufen.
+A common example is setting up the [Import Data][reader] module so that the user of the published web service can specify a different data source when the web service is accessed. Or configuring the [Export Data][writer] module so that a different destination can be specified. Some other examples include changing the number of bits for the [Feature Hashing][feature-hashing] module or the number of desired features for the [Filter-Based Feature Selection][filter-based-feature-selection] module. 
+
+You can set Web Service Parameters and associate them with one or more module parameters in your experiment, and you can specify whether they are required or optional. The user of the web service can then provide values for these parameters when they call the web service. 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
-##Festlegen und Verwenden von Webdienstparametern
+##<a name="how-to-set-and-use-web-service-parameters"></a>How to set and use Web Service Parameters
 
-Sie definieren einen Webdienstparameter, indem Sie auf das Symbol neben dem Parameter für ein Modul klicken und "Set as web service parameter" (Als Webdienstparameter festlegen) auswählen. Daraufhin wird ein neuer Webdienstparameter erstellt und mit diesem Modulparameter verbunden. Wenn auf den Webdienst zugegriffen wird, kann der Benutzer kann einen Wert für den Webdienstparameter angeben, der dann auf den Modulparameter angewendet wird.
+You define a Web Service Parameter by clicking the icon next to the parameter for a module and selecting "Set as web service parameter". This creates a new Web Service Parameter and connects it to that module parameter. Then, when the web service is accessed, the user can specify a value for the Web Service Parameter and it is applied to the module parameter.
 
-Nachdem Sie einen Web Service-Parameter definiert haben, steht dieser für andere Modulparameter im Experiment zur Verfügung. Sie können einen Webdienstparameter, den Sie definiert und einem Modulparameter zugeordnet haben, auch für einen Parameter eines anderen Moduls verwenden, sofern der betreffende Parameter denselben Typ von Wert erwartet. Wenn der Webdienstparameter z. B. ein numerischer Wert ist, kann er nur für Modulparameter verwendet werden, die einen numerischen Wert erwarten. Wenn der Benutzer einen Wert für den Webdienstparameter festlegt, wird dieser auf alle zugehörigen Modulparameter angewendet.
+Once you define a Web Service Parameter, it's available to any other module parameter in the experiment. If you define a Web Service Parameter associated with a parameter for one module, you can use that same Web Service Parameter for any other module, as long as the parameter expects the same type of value. For example, if the Web Service Parameter is a numeric value, then it can only be used for module parameters that expect a numeric value. When the user sets a value for the Web Service Parameter, it will be applied to all associated module parameters.
 
-Sie können entscheiden, ob Sie einen Standardwert für den Webdienstparameter angeben. Wenn Sie dies tun, ist der Parameter für die Benutzer des Webdiensts optional. Geben Sie keinen Standardwert an, dann muss der Benutzer einen Wert eingeben, wenn auf den Webdienst zugegriffen wird.
+You can decide whether to provide a default value for the Web Service Parameter. If you do, then the parameter is optional for the user of the web service. If you don't provide a default value, then the user is required to enter a value when the web service is accessed.
 
-Die API-Dokumentation für den Webdienst enthält Informationen, denen die Webdienstbenutzer entnehmen können, wie der Webdienstparameter beim Zugriff auf den Webdienst programmgesteuert angegeben werden kann.
+The API documentation for the web service includes information for the web service user on how to specify the Web Service Parameter programmatically when accessing the web service.
 
->[AZURE.NOTE] Die API-Dokumentation für einen klassischen Webdienst wird über den Link **API-Hilfeseite** im **DASHBOARD** des Webdiensts in Machine Learning Studio bereitgestellt. Die API-Dokumentation für einen neuen Webdienst wird über das [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart)-Portal auf den Seiten **Consume** und **Swagger API** für den Webdienst bereitgestellt.
+>[AZURE.NOTE] The API documentation for a classic web service is provided through the **API help page** link in the web service **DASHBOARD** in Machine Learning Studio. The API documentation for a new web service is provided through the [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) portal on the **Consume** and **Swagger API** pages for your web service.
 
 
-##Beispiel
+##<a name="example"></a>Example
 
-Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem [Export Data][writer]-Modul, das Informationen zum Azure-Blobspeicher sendet. Wir definieren einen Webdienstparameter namens "Blob path", mit dem die Benutzer des Webdienst beim Zugriff auf den Dienst den Blob-Speicherpfad ändern können.
+As an example, let's assume we have an experiment with an [Export Data][writer] module that sends information to Azure blob storage. We'll define a Web Service Parameter named "Blob path" that allows the web service user to change the path to the blob storage when the service is accessed.
 
-1.	Klicken Sie in Machine Learning Studio auf das [Export Data][writer]-Modul, um es auszuwählen. Die Moduleigenschaften werden rechts neben dem Canvas mit dem Experiment im Eigenschaftenbereich angezeigt.
+1.  In Machine Learning Studio, click the [Export Data][writer] module to select it. Its properties are shown in the Properties pane to the right of the experiment canvas.
 
-2.	Geben Sie den Speichertyp an:
+2.  Specify the storage type:
 
-    - Wählen Sie unter **Please specify data destination** (Datenziel angeben) das Ziel "Azure Blob Storage" (Azure-Blob-Speicher" aus.
-    - Wählen Sie unter **Please specify authentication type** (Authentifizierungstyp angeben) die Option "Account" (Konto) aus.
-    - Geben Sie die Kontoinformationen für den Azure-Blobspeicher ein.
+    - Under **Please specify data destination**, select "Azure Blob Storage".
+    - Under **Please specify authentication type**, select "Account".
+    - Enter the account information for the Azure blob storage. 
     <p />
 
-3.	Klicken Sie auf das Symbol rechts neben **Path to blob beginning with container parameter** (Blob-Pfad beginnt mit Containerparameter). Es sieht folgendermaßen aus:
+3.  Click the icon to the right of the **Path to blob beginning with container parameter**. It looks like this:
 
-	![Symbol für Webdienstparameter][icon]
+    ![Web Service Parameter icon][icon]
 
-    Wählen Sie "Set as web service parameter" (Als Webdienstparameter festlegen) aus.
+    Select "Set as web service parameter".
 
-    Ein Eintrag wird unter **Web Service Parameters** (Webdienstparameter) am unteren Rand des Eigenschaftenbereichs mit dem Namen "Path to blob beginning with container" (Blob-Pfad beginnt mit Container) hinzugefügt. Dies ist der Webdienstparameter, der nun diesem [Export Data][writer]-Modulparameter zugeordnet ist.
+    An entry is added under **Web Service Parameters** at the bottom of the Properties pane with the name "Path to blob beginning with container". This is the Web Service Parameter that is now associated with this [Export Data][writer] module parameter.
 
-4.	Wenn Sie den Webdienstparameter umbenennen möchten, klicken Sie auf den Namen, geben Sie "Blob-Pfad" ein, und drücken Sie die **EINGABETASTE**.
+4.  To rename the Web Service Parameter, click the name, enter "Blob path", and press the **Enter** key. 
  
-5.	Um einen Standardwert für den Webdienstparameter bereitzustellen, klicken Sie auf das Symbol neben dem Namen, wählen Sie "Provide default value" (Standardwert bereitstellen) aus, geben Sie einen Wert (z. B. "container1/output1.csv") ein, und drücken Sie die **EINGABETASTE**.
+5.  To provide a default value for the Web Service Parameter, click the icon to the right of the name, select "Provide default value", enter a value (for example, "container1/output1.csv"), and press the **Enter** key.
 
-	![Webdienstparameter][parameter]
+    ![Web Service Parameter][parameter]
 
-6.	Klicken Sie auf **Run** (Ausführen).
+6.  Click **Run**. 
 
-7.	Klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** aus, um den Webdienst bereitzustellen.
+7.  Click **Deploy Web Service** and select **Deploy Web Service [Classic]** or **Deploy Web Service [New]** to deploy the web service.
 
-Benutzer des Webdiensts können jetzt beim Zugriff auf den Webdienst ein neues Ziel für das [Export Data][writer]-Modul angeben.
+The user of the web service can now specify a new destination for the [Export Data][writer] module when accessing the web service.
 
-##Weitere Informationen
+##<a name="more-information"></a>More information
 
-Ein ausführlicheres Beispiel finden Sie unter dem Eintrag [Web Service Parameter](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) im [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+For a more detailed example, see the [Web Service Parameters](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) entry in the [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
-Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines veröffentlichten Webdiensts für maschinelles Lernen](machine-learning-consume-web-services.md).
+For more information on accessing a Machine Learning web service, see [How to consume a published machine learning web service](machine-learning-consume-web-services.md).
 
 
 
@@ -93,4 +94,8 @@ Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden 
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

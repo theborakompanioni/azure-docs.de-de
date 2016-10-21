@@ -1,245 +1,250 @@
 <properties 
-	pageTitle="Azure On-Demand Media Encoder – Überblick und Vergleich | Microsoft Azure" 
-	description="Dieses Thema bietet eine Übersicht und einen Vergleich über Azure On-Demand-Media Encoder." 
-	services="media-services" 
-	documentationCenter="" 
-	authors="juliako" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="Overview and comparison of Azure on demand media encoders | Microsoft Azure" 
+    description="This topic gives an overview and comparison of Azure on demand media encoders." 
+    services="media-services" 
+    documentationCenter="" 
+    authors="juliako" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/19/2016" 
-	ms.author="juliako"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/19/2016" 
+    ms.author="juliako"/>
 
-#Azure On-Demand Media Encoder – Überblick und Vergleich
 
-##Übersicht über die Codierung
+#<a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Overview and comparison of Azure on demand media encoders
 
-Azure Media Services bietet verschiedene Optionen für die Codierung von Medien in der Cloud.
+##<a name="encoding-overview"></a>Encoding overview
 
-Bei Verwendung von Media Services ist es wichtig, den Unterschied zwischen Codecs und Dateiformaten zu kennen. Bei Codecs handelt es sich um die Software, die die Algorithmen für die Komprimierung/Dekomprimierung implementiert. Dateiformate dagegen sind die Container, die das komprimierte Video enthalten.
+Azure Media Services provides multiple options for the encoding of media in the cloud.
 
-Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Dateien mit adaptiver Bitrate oder Smooth Streaming-codierten Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG DASH, HLS, Smooth Streaming, HDS), ohne dass Sie diese Streamingformate erneut verpacken müssen.
+When starting out with Media Services, it is important to understand the difference between codecs and file formats.
+Codecs are the software that implements the compression/decompression algorithms whereas file formats are containers that hold the compressed video.
 
-Um die [dynamische Paketerstellung](media-services-dynamic-packaging-overview.md) nutzen zu können, müssen Sie folgende Schritte ausführen:
+Media Services provides dynamic packaging which allows you to deliver your adaptive bitrate MP4 or Smooth Streaming encoded content in streaming formats supported by Media Services (MPEG DASH, HLS, Smooth Streaming, HDS) without you having to re-package into these streaming formats.
 
-- Codieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Lernprogramm beschrieben)
-- Abrufen von mindestens einer On-Demand-Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-portal-manage-streaming-endpoints.md).
+To take advantage of [dynamic packaging](media-services-dynamic-packaging-overview.md), you need to do the following:
 
-Media Services unterstützt die folgenden On-Demand-Encoder, die in diesem Artikel beschrieben werden:
+- Encode your mezzanine (source) file into a set of adaptive bitrate MP4 files or adaptive bitrate Smooth Streaming files (the encoding steps are demonstrated later in this tutorial).
+- Get at least one On-Demand streaming unit for the streaming endpoint from which you plan to delivery your content. For more information, see [How to Scale On-Demand Streaming Reserved Units](media-services-portal-manage-streaming-endpoints.md).
+
+Media Services supports the following on demand encoders that are described in this article:
 
 - [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 - [Media Encoder Premium Workflow](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Dieser Artikel enthält eine kurze Übersicht über On-Demand-Media Encoder und stellt Links zu Artikeln bereit, die detailliertere Informationen bieten. Das Thema enthält auch einen Encodervergleich.
+This article gives a brief overview of on demand media encoders and provides links to articles that give more detailed information. The topic also provides comparison of the encoders.
 
-Beachten Sie, dass jedes Media Services-Konto standardmäßig je eine aktive Codierungsaufgabe gleichzeitig aufweisen kann. Sie können Einheiten für die Codierung reservieren, mit denen Sie mehrere Codierungsaufgaben gleichzeitig ausführen kennen – jeweils eine für jede reservierte Einheit für die Codierung, die Sie erwerben. Weitere Informationen finden Sie unter [Skalieren der Codierung](media-services-scale-media-processing-overview.md).
+Note that by default each Media Services account can have one active encoding task at a time. You can reserve encoding units that allow you to have multiple encoding tasks running concurrently, one for each encoding reserved unit you purchase. For information, see [Scaling encoding units](media-services-scale-media-processing-overview.md).
 
-##Media Encoder Standard
+##<a name="media-encoder-standard"></a>Media Encoder Standard
 
-###Gewusst wie
+###<a name="how-to-use"></a>How to use
 
-[Gewusst wie: Codieren mit Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
+[How to encode with Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-###Formate
+###<a name="formats"></a>Formats
 
-[Formate und Codecs](media-services-media-encoder-standard-formats.md)
+[Formats and codecs](media-services-media-encoder-standard-formats.md)
 
-###Voreinstellungen
+###<a name="presets"></a>Presets
 
-Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409) beschrieben sind.
+Media Encoder Standard is configured using one of the encoder presets described [here](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
-###Eingabe- und Ausgabemetadaten
+###<a name="input-and-output-metadata"></a>Input and output metadata
 
-Die Eingabemetadaten für den Encoder werden [hier](http://msdn.microsoft.com/library/azure/dn783120.aspx) beschrieben.
+The encoders input metadata is described [here](http://msdn.microsoft.com/library/azure/dn783120.aspx).
 
-Die Ausgabemetadaten für den Encoder werden [hier](http://msdn.microsoft.com/library/azure/dn783217.aspx) beschrieben.
+The encoders output metadata is described [here](http://msdn.microsoft.com/library/azure/dn783217.aspx).
 
-###Generieren von Miniaturansichten
+###<a name="generate-thumbnails"></a>Generate thumbnails
 
-Informationen finden Sie unter [Generieren von Miniaturansichten mithilfe von Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#thumbnails).
+For information, see [How to generate thumbnails using Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#thumbnails).
 
-###Kürzen von Videos (Clipping)
+###<a name="trim-videos-(clipping)"></a>Trim videos (clipping)
 
-Informationen finden Sie unter [Kürzen von Videos mithilfe von Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#trim_video).
+For information, see [How to trim videos using Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#trim_video).
 
-###Erstellen von Überlagerungen
+###<a name="create-overlays"></a>Create overlays
 
-Informationen finden Sie unter [Erstellen von Überlagerungen mithilfe von Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#overlay).
+For information, see [How to create overlays using Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#overlay).
 
-###Siehe auch
+###<a name="see-also"></a>See also
 
-[Media Services-Blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
+[The Media Services blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
  
-##Media Encoder Premium Workflow
+##<a name="media-encoder-premium-workflow"></a>Media Encoder Premium Workflow
 
-###Übersicht
+###<a name="overview"></a>Overview
 
-[Introducing Premium Encoding in Azure Media Services (in englischer Sprache)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
+[Introducing Premium Encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
-###Gewusst wie
+###<a name="how-to-use"></a>How to use
 
-Media Encoder Premium Workflow ist mit komplexen Workflows konfiguriert. Workflowdateien können mit dem Tool [Workflow-Designer](media-services-workflow-designer.md) erstellt und aktualisiert werden.
+Media Encoder Premium Workflow is configured using complex workflows. Workflow files could be created and updated using the [Workflow Designer](media-services-workflow-designer.md) tool.
 
-[How to Use Premium Encoding in Azure Media Services (in englischer Sprache)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
+[How to Use Premium Encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
-###Bekannte Probleme
+###<a name="known-issues"></a>Known issues
 
-Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjekt trotzdem eine leere TTML-Datei.
+If your input video does not contain closed captioning, the output Asset will still contain an empty TTML file. 
 
 
-##<a id="compare_encoders"></a>Vergleich der Encoder
+##<a name="<a-id="compare_encoders"></a>compare-encoders"></a><a id="compare_encoders"></a>Compare Encoders
 
-###<a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
+###<a name="<a-id="billing"></a>billing-meter-used-by-each-encoder"></a><a id="billing"></a>Billing meter used by each encoder
 
-Medienprozessorname|Geltende Preise|Hinweise
+Media Processor Name|Applicable Pricing|Notes
 ---|---|---
-**Media Encoder Standard** |ENCODER|Codieraufgaben werden gemäß der Summe der Größen von Ausgabemedienobjekten in GB berechnet, und zwar zur [hier][1] angegebenen Rate in der Spalte ENCODER.
-**Media Encoder Premium Workflow** |PREMIUM ENCODER|Codieraufgaben werden gemäß der Summe der Größen von Ausgabemedienobjekten in GB berechnet, und zwar zur [hier][1] angegebenen Rate in der Spalte PREMIUM ENCODER.
+**Media Encoder Standard** |ENCODER|Encoding Tasks will be charged according to the size of the output Asset, in GBytes, at the rate specified [here][1], under the ENCODER column.
+**Media Encoder Premium Workflow** |PREMIUM ENCODER|Encoding Tasks will be charged according to the size of the output Asset, in GBytes, at the rate specified [here][1], under the PREMIUM ENCODER column.
 
 
-In diesem Abschnitt werden die Codierungsfunktionen von **Media Encoder Standard** und **Media Encoder Premium Workflow** verglichen.
+This section compares the encoding capabilities of **Media Encoder Standard** and **Media Encoder Premium Workflow**.
 
 
-###Eingabecontainer/Dateiformate
+###<a name="input-container/file-formats"></a>Input Container/File Formats
 
-Eingabecontainer/Dateiformate|Media Encoder Standard|Media Encoder Premium Workflow
+Input Container/File Formats|Media Encoder Standard|Media Encoder Premium Workflow
 ---|---|---
-Adobe® Flash® F4V |Ja|Ja
-MXF/SMPTE 377M |Ja|Ja
-GXF |Ja|Ja
-MPEG-2-Transportdatenstrom |Ja|Ja
-MPEG-2-Programmdatenstrom |Ja|Ja
-MPEG-4/MP4 |Ja|Ja
-Windows Media/ASF |Ja|Ja
-AVI (unkomprimiert, 8-Bit/10-Bit)|Ja|Ja
-3GPP/3GPP2 |Ja|Nein
-Smooth Streaming-Dateiformat (PIFF 1.3)|Ja|Nein
-[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|Ja|Nein
-Matroska/WebM |Ja|Nein
-QuickTime (.mov) |Ja|Nein
+Adobe® Flash® F4V           |Yes|Yes
+MXF/SMPTE 377M              |Yes|Yes
+GXF                         |Yes|Yes
+MPEG-2 Transport Streams    |Yes|Yes
+MPEG-2 Program Streams      |Yes|Yes
+MPEG-4/MP4                  |Yes|Yes
+Windows Media/ASF           |Yes|Yes
+AVI (Uncompressed 8bit/10bit)|Yes|Yes
+3GPP/3GPP2                  |Yes|No
+Smooth Streaming File Format (PIFF 1.3)|Yes|No
+[Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|Yes|No
+Matroska/WebM               |Yes|No
+QuickTime (.mov) |Yes|No
 
-###Codecs für Videoeingang
+###<a name="input-video-codecs"></a>Input Video Codecs
 
-Codecs für Videoeingang|Media Encoder Standard|Media Encoder Premium Workflow
+Input Video Codecs|Media Encoder Standard|Media Encoder Premium Workflow
 ---|---|---
-AVC 8-Bit/10-Bit, bis zu 4:2:2, einschließlich AVCIntra |8-Bit 4:2:0 und 4:2:2|Ja
-Avid DNxHD (in MXF) |Ja|Ja
-DVCPro/DVCProHD (in MXF) |Ja|Ja
-JPEG2000 |Ja|Ja
-MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs® und D10 eingeschlossen)|Bis zu 422 Profile|Ja
-MPEG-1 |Ja|Ja
-Windows Media Video/VC-1 |Ja|Ja
-Canopus HQ/HQX |Nein|Nein
-MPEG-4 Teil 2 |Ja|Nein
-[Theora](https://en.wikipedia.org/wiki/Theora) |Ja|Nein
-Apple ProRes 422 |Ja|Nein
-Apple ProRes 422 LT |Ja|Nein
-Apple ProRes 422 HQ |Ja|Nein
-Apple ProRes Proxy|Ja|Nein
-Apple ProRes 4444 |Ja|Nein
-Apple ProRes 4444 XQ |Ja|Nein
+AVC 8-bit/10-bit, up to 4:2:2, including AVCIntra   |8 bit 4:2:0 and 4:2:2|Yes
+Avid DNxHD (in MXF)                                 |Yes|Yes
+DVCPro/DVCProHD (in MXF)                            |Yes|Yes
+JPEG2000                                            |Yes|Yes
+MPEG-2 (up to 422 Profile and High Level; including variants such as XDCAM, XDCAM HD, XDCAM IMX, CableLabs® and D10)|Up to 422 Profile|Yes
+MPEG-1                                              |Yes|Yes
+Windows Media Video/VC-1                            |Yes|Yes
+Canopus HQ/HQX                                      |No|No
+MPEG-4 Part 2                                       |Yes|No
+[Theora](https://en.wikipedia.org/wiki/Theora)      |Yes|No
+Apple ProRes 422    |Yes|No
+Apple ProRes 422 LT |Yes|No
+Apple ProRes 422 HQ |Yes|No
+Apple ProRes Proxy|Yes|No
+Apple ProRes 4444 |Yes|No
+Apple ProRes 4444 XQ |Yes|No
 
-###Codecs für Audioeingang
+###<a name="input-audio-codecs"></a>Input Audio Codecs
 
-Codecs für Audioeingang|Media Encoder Standard|Media Encoder Premium Workflow
+Input Audio Codecs|Media Encoder Standard|Media Encoder Premium Workflow
 ---|---|---
-AES (SMPTE 331M und 302M, AES3-2003) |Nein|Ja
-Dolby® E |Nein|Ja
-Dolby® Digital (AC3) |Nein|Ja
-Dolby® Digital Plus (E-AC3) |Nein|Ja
-AAC (AAC-LC, AAC-HE und AAC-HEv2; bis 5.1)|Ja|Ja
-MPEG Layer 2|Ja|Ja
-MP3 (MPEG-1 Audio Layer 3)|Ja|Ja
-Windows Media Audio|Ja|Ja
-WAV/PCM|Ja|Ja
-[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|Ja|Nein
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) |Ja|Nein
-[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|Ja|Nein
+AES (SMPTE 331M and 302M, AES3-2003)        |No|Yes
+Dolby® E                                    |No|Yes
+Dolby® Digital (AC3)                        |No|Yes
+Dolby® Digital Plus (E-AC3)                 |No|Yes
+AAC (AAC-LC, AAC-HE, and AAC-HEv2; up to 5.1)|Yes|Yes
+MPEG Layer 2|Yes|Yes
+MP3 (MPEG-1 Audio Layer 3)|Yes|Yes
+Windows Media Audio|Yes|Yes
+WAV/PCM|Yes|Yes
+[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|Yes|No
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) |Yes|No
+[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|Yes|No
 
 
-###Ausgabecontainer/Dateiformate
+###<a name="output-container/file-formats"></a>Output Container/File Formats
 
-Ausgabecontainer/Dateiformate|Media Encoder Standard|Media Encoder Premium Workflow
+Output Container/File Formats|Media Encoder Standard|Media Encoder Premium Workflow
 ---|---|---
-Adobe® Flash® F4V|Nein|Ja
-MXF (OP1a, XDCAM und AS02)|Nein|Ja
-DPP (einschließlich AS11)|Nein|Ja
-GXF|Nein|Ja
-MPEG-4/MP4|Ja|Ja
-MPEG-TS|Ja|Ja
-Windows Media/ASF|Nein|Ja
-AVI (unkomprimiert, 8-Bit/10-Bit)|Nein|Ja
-Smooth Streaming-Dateiformat (PIFF 1.3)|Nein|Ja
+Adobe® Flash® F4V|No|Yes
+MXF (OP1a, XDCAM and AS02)|No|Yes
+DPP (including AS11)|No|Yes
+GXF|No|Yes
+MPEG-4/MP4|Yes|Yes
+MPEG-TS|Yes|Yes
+Windows Media/ASF|No|Yes
+AVI (Uncompressed 8bit/10bit)|No|Yes
+Smooth Streaming File Format (PIFF 1.3)|No|Yes
 
-###Codecs für Videoausgang
+###<a name="output-video-codecs"></a>Output Video Codecs
 
-Codecs für Videoausgang|Media Encoder Standard|Media Encoder Premium Workflow
+Output Video Codecs|Media Encoder Standard|Media Encoder Premium Workflow
 ---|---|---
-AVC (H.264; 8-Bit; bis High Profile, Level 5.2; 4K Ultra HD; AVC Intra)|Nur 8-Bit 4:2:0|Ja
-Avid DNxHD (in MXF)|Nein|Ja
-DVCPro/DVCProHD (in MXF)|Nein|Ja
-MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs® und D10 eingeschlossen)|Nein|Ja
-MPEG-1|Nein|Ja
-Windows Media Video/VC-1|Nein|Ja
-Erstellung von JPEG-Miniaturansichten|Nein|Ja
+AVC (H.264; 8-bit; up to High Profile, Level 5.2; 4K Ultra HD; AVC Intra)|Only 8 bit 4:2:0|Yes
+Avid DNxHD (in MXF)|No|Yes
+MPEG-2 (up to 422 Profile and High Level; including variants such as XDCAM, XDCAM HD, XDCAM IMX, CableLabs® and D10)|No|Yes
+MPEG-1|No|Yes
+Windows Media Video/VC-1|No|Yes
+JPEG thumbnail creation|No|Yes
 
-###Codecs für Audioausgabe
+###<a name="output-audio-codecs"></a>Output Audio Codecs
 
-Codecs für Audioausgabe|Media Encoder Standard|Media Encoder Premium Workflow
+Output Audio Codecs|Media Encoder Standard|Media Encoder Premium Workflow
 ---|---|---
-AES (SMPTE 331M und 302M, AES3-2003)|Nein|Ja
-Dolby® Digital (AC3)|Nein|Ja
-Dolby® Digital Plus (E-AC3) bis 7.1|Nein|Ja
-AAC (AAC-LC, AAC-HE und AAC-HEv2; bis 5.1)|Ja|Ja
-MPEG Layer 2|Nein|Ja
-MP3 (MPEG-1 Audio Layer 3)|Nein|Ja
-Windows Media Audio|Nein|Ja
+AES (SMPTE 331M and 302M, AES3-2003)|No|Yes
+Dolby® Digital (AC3)|No|Yes
+Dolby® Digital Plus (E-AC3) up to 7.1|No|Yes
+AAC (AAC-LC, AAC-HE, and AAC-HEv2; up to 5.1)|Yes|Yes
+MPEG Layer 2|No|Yes
+MP3 (MPEG-1 Audio Layer 3)|No|Yes
+Windows Media Audio|No|Yes
 
 
-##Fehlercodes  
+##<a name="error-codes"></a>Error codes  
 
-Die folgende Tabelle enthält die Fehlercodes, die zurückgegeben werden können, wenn bei der Ausführung einer Codieraufgabe ein Fehler auftritt. Verwenden Sie zum Abrufen von Fehlerdetails im .NET-Code die [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx)-Klasse. Verwenden Sie zum Abrufen von Fehlerdetails im REST-Code die [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx)-REST-API.
+The following table lists error codes that could be returned in case an error was encountered during the encoding task execution.  To get error details in your .NET code, use the [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) class. To get error details in your REST code, use the [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API.
 
-ErrorDetail.Code|Mögliche Ursachen des Fehlers
+ErrorDetail.Code|Possible causes for error
 -----|-----------------------
-Unknown| Unbekannter Fehler beim Ausführen der Aufgabe
-ErrorDownloadingInputAssetMalformedContent|Kategorie von Fehlern, die Fehler beim Herunterladen von Eingabe-Assets abdeckt, z. B. fehlerhafte Dateinamen, Dateien mit Nulllänge, falsche Formate usw.
-ErrorDownloadingInputAssetServiceFailure|Kategorie von Fehlern, die Probleme auf der Dienstseite abdeckt, z. B. Netzwerk- oder Speicherfehler beim Herunterladen.
-ErrorParsingConfiguration|Kategorie von Fehlern, bei denen die Aufgabe <siehe cref="MediaTask.PrivateData"/> (Konfiguration) nicht gültig ist, z.B. wenn die Konfiguration keine gültige Systemvoreinstellung ist oder ungültige XML-Daten enthält.
-ErrorExecutingTaskMalformedContent|Kategorie von Fehlern während der Ausführung der Aufgabe, wenn Probleme in den Eingabemediendateien zu Fehlern führen.
-ErrorExecutingTaskUnsupportedFormat|Kategorie von Fehlern, bei denen die bereitgestellten Dateien mit dem Medienprozessor nicht verarbeitet werden können: keine Unterstützung des Medienformats oder fehlende Übereinstimmung mit der Konfiguration. Beispiel: Der Versuch, eine Audioausgabe für ein Asset zu erstellen, die nur Video ermöglicht.
-ErrorProcessingTask|Kategorie anderer Fehler, die für den Medienprozessor beim Verarbeiten der Aufgabe auftreten und sich nicht auf den Inhalt beziehen.
-ErrorUploadingOutputAsset|Kategorie von Fehlern beim Hochladen des Ausgabe-Assets.
-ErrorCancelingTask|Kategorie von Fehlern, die auftreten, wenn versucht wird, die Aufgabe abzubrechen.
-TransientError|Kategorie von Fehlern, mit der vorübergehende Probleme abgedeckt werden (z. B. temporäre Netzwerkprobleme mit Azure Storage).
+Unknown| Unknown error while executing the task
+ErrorDownloadingInputAssetMalformedContent|Category of errors that covers errors in downloading input asset such as bad file names, zero length files, incorrect formats and so on.
+ErrorDownloadingInputAssetServiceFailure|Category of errors that covers problems on the service side - for example network or storage errors while downloading.
+ErrorParsingConfiguration|Category of errors where task <see cref="MediaTask.PrivateData"/> (configuration) is not valid, for example the configuration is not a valid system preset or it contains invalid XML.
+ErrorExecutingTaskMalformedContent|Category of errors during the execution of the task where issues inside the input media files cause failure.
+ErrorExecutingTaskUnsupportedFormat|Category of errors where the media processor cannot process the files provided - media format not supported, or does not match the Configuration. For example, trying to produce an audio-only output from an asset that has only video
+ErrorProcessingTask|Category of other errors that the media processor encounters during the processing of the task that are unrelated to content.
+ErrorUploadingOutputAsset|Category of errors when uploading the output asset
+ErrorCancelingTask|Category of errors to cover failures when attempting to cancel the Task
+TransientError|Category of errors to cover transient issues (eg. temporary networking issues with Azure Storage)
 
 
-Öffnen Sie ein [Supportticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um Hilfe vom **Media Services**-Team anzufordern.
+To get help from the **Media Services** team, open a [support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 
 
-##Media Services-Lernpfade
+##<a name="media-services-learning-paths"></a>Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Feedback geben
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-##Verwandte Artikel
+##<a name="related-articles"></a>Related articles
 
-- [Ausführen von Aufgaben für die erweiterte Codierung durch Anpassen der Media Encoder Standard-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md)
-- [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md)
+- [Perform advanced encoding tasks by customizing Media Encoder Standard presets](media-services-custom-mes-presets-with-dotnet.md)
+- [Quotas and Limitations](media-services-quotas-and-limitations.md)
 
  
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

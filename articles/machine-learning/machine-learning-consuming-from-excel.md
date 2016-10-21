@@ -1,83 +1,88 @@
 <properties
-	pageTitle="Verwenden eines Machine Learning-Webdiensts aus Excel | Microsoft Azure"
-	description="Verwenden eines Azure Machine Learning-Webdiensts aus Excel"
-	services="machine-learning"
-	documentationCenter=""
-	authors="tedway"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Consume a Machine Learning Web Service from Excel | Microsoft Azure"
+    description="Consume an Azure Machine Learning Web Service from Excel"
+    services="machine-learning"
+    documentationCenter=""
+    authors="tedway"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="tedway"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/30/2016"
+    ms.author="tedway"/>
 
-# Verwenden eines Azure Machine Learning-Webdiensts aus Excel
 
- Mit Azure Machine Learning Studio können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
+# <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>Consuming an Azure Machine Learning Web Service from Excel
 
-Wenn Sie Excel 2013 (oder höher) oder Excel Online verwenden, empfehlen wir die Verwendung des [Excel-Add-Ins](machine-learning-excel-add-in-for-web-services.md).
+ Azure Machine Learning Studio makes it easy to call web services directly from Excel without the need to write any code.
+
+If you are using Excel 2013 (or later) or Excel Online, then we recommend that you use the Excel [Excel add-in](machine-learning-excel-add-in-for-web-services.md).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Schritte
+## <a name="steps"></a>Steps
 
-Veröffentlichen eines Webdiensts. Auf [dieser Seite](machine-learning-walkthrough-5-publish-web-service.md) wird dies erläutert. Die Excel-Arbeitsmappenfunktion wird derzeit nur für Antwort-/Anfrage-Dienste unterstützt, die eine einzelne Ausgabe aufweisen (d. h. eine einzelne Bewertungsbezeichnung).
+Publish a web service. [This page](machine-learning-walkthrough-5-publish-web-service.md) explains how to do it. Currently the Excel workbook feature is only supported for Request/Response services that have a single output (that is, a single scoring label). 
 
-Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der linken Seite in Studio und wählen Sie den aus Excel zu verwendenden Webdienst aus.
+Once you have a web service, click on the **WEB SERVICES** section on the left of the studio, and then select the web service to consume from Excel.
 
-**Klassischer Webdienst**
+**Classic Web Service**
 
-1. Auf der Registerkarte **DASHBOARD** für den Webdienst befindet sich die Zeile **REQUEST/RESPONSE** für den Antwort-/Anfrage-Dienst. Wenn dieser Dienst eine einzelne Ausgabe hat, sollte sich in dieser Zeile der Link **Download Excel Workbook** befinden.
+1. On the **DASHBOARD** tab for the web service is a row for the **REQUEST/RESPONSE** service. If this service had a single output, you should see the **Download Excel Workbook** link in that row.
 
-	![][1]
+    ![][1]
 
-2. Klicken Sie auf **Download Excel Workbook**.
+2. Click on **Download Excel Workbook**.
 
-**Neuer Webdienst**
+**New Web Service**
 
-1. Wählen Sie im Azure Machine Learning Web Service-Portal **Consume** aus.
-2. Klicken Sie auf der Seite „Consume“ im Abschnitt **Web service consumption options** auf das Excel-Symbol.
+1. In the Azure Machine Learning Web Service portal, select **Consume**.
+2. On the Consume page, in the **Web service consumption options** section, click the Excel icon.
 
-**Verwenden der Arbeitsmappe**
+**Using the workbook**
 
-1. Öffnen Sie die Arbeitsmappe.
+1. Open the workbook.
 
-2. Es wird eine Sicherheitswarnung angezeigt. Klicken Sie auf die Schaltfläche **Bearbeitung aktivieren**.
+2. A Security Warning appears; click on the **Enable Editing** button.
 
-	![][2]
+    ![][2]
 
-3. Es wird eine Sicherheitswarnung angezeigt. Klicken Sie auf die Schaltfläche **Inhalt aktivieren** zum Ausführen von Makros im Arbeitsblatt.
+3. A Security Warning appears. Click on the **Enable Content** button to run macros on your spreadsheet.
 
-	![][3]
-4. Sobald Makros aktiviert sind, wird eine Tabelle generiert. Spalten in Blau sind als Eingabe für den RRS-Webdienst oder als **PARAMETER** erforderlich. Beachten Sie die Ausgaben des RRS-Diensts **PREDICTED VALUES** in Grün. Wenn alle Spalten für eine bestimmte Zeile gefüllt wurden, ruft die Arbeitsmappe automatisch die Bewertungs-API auf und zeigt die bewerteten Ergebnisse an.
+    ![][3]
+4. Once macros are enabled, a table is generated. Columns in blue are required as input into the RRS web service, or **PARAMETERS**. Note the output of the RRS service, **PREDICTED VALUES** in green. When all columns for a given row are filled, the workbook automatically calls the scoring API, and displays the scored results.
 
-	![][4]
+    ![][4]
 
-5. Um mehr als eine Zeile zu bewerten, geben Sie in der zweiten Zeile Daten ein. Daraufhin werden die Vorhersagewerte erzeugt. Sie können auch gleichzeitig mehrere Zeilen einfügen.
+5. To score more than one row, fill the second row with data and the predicted values are produced. You can even paste several rows at once.
 
-Sie können beliebige Excel-Funktionen (Diagramme, Power Map, bedingte Formatierungen usw.) mit den Vorhersagewerten verwenden, um die Daten zu visualisieren.
+You can use any of the Excel features (graphs, power map, conditional formatting, etc.) with the predicted values to help visualize the data.    
 
 
-## Freigeben Ihrer Arbeitsmappe
+## <a name="sharing-your-workbook"></a>Sharing your workbook
 
-Damit die Makros funktionieren, muss der API-Schlüssel Teil des Arbeitsblatts sein. Das bedeutet, dass Sie die Arbeitsmappe nur für Entitäten und Personen freigeben sollten, denen Sie vertrauen.
+For the macros to work, your API Key must be part of the spreadsheet. That means that you should share the workbook only with entities/individuals you trust.
 
-## Automatische Aktualisierungen
+## <a name="automatic-updates"></a>Automatic updates
 
-RRS-Aufrufe werden in diesen beiden Situationen ausgeführt:
+An RRS call is made in these two situations:
 
-1. Beim ersten Mal, wenn in einer Zeile in jedem **PARAMETER** Inhalte vorhanden sind.
+1. The first time a row has content in all of its **PARAMETERS**
 
-2. Jedes Mal, wenn einer der **PARAMETER** in einer Zeile, in der alle **PARAMETER** vorhanden sind, geändert wird.
+2. Any time any of the **PARAMETERS** changes in a row that had all of its **PARAMETERS** entered.
 
 [1]: ./media/machine-learning-consuming-from-excel/excellink.png
 [2]: ./media/machine-learning-consuming-from-excel/enableeditting.png
 [3]: ./media/machine-learning-consuming-from-excel/enablecontent.png
 [4]: ./media/machine-learning-consuming-from-excel/sampletable.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

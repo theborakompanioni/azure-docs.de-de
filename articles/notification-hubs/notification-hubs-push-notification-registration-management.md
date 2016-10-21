@@ -1,127 +1,132 @@
 <properties
-	pageTitle="Registrierungsverwaltung"
-	description="In diesem Thema wird erläutert, wie Geräte bei Notification Hubs registriert werden, um Pushbenachrichtigungen zu empfangen."
-	services="notification-hubs"
-	documentationCenter=".net"
-	authors="wesmc7777"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Registration Management"
+    description="This topic explains how to register devices with notification hubs in order to receive push notifications."
+    services="notification-hubs"
+    documentationCenter=".net"
+    authors="wesmc7777"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-multiple"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="06/29/2016"
-	ms.author="wesmc"/>
-
-# Registrierungsverwaltung
-
-##Übersicht
-
-In diesem Thema wird erläutert, wie Geräte bei Notification Hubs registriert werden, um Pushbenachrichtigungen zu empfangen. Nach einem allgemeinen Überblick über Registrierungen werden in diesem Thema die beiden Hauptmuster zum Registrieren von Geräten vorgestellt: die direkte Registrierung beim Notification Hub über das Gerät und die Registrierung über ein Anwendungs-Back-End.
+    ms.service="notification-hubs"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-multiple"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="06/29/2016"
+    ms.author="wesmc"/>
 
 
-##Was ist die Geräteregistrierung?
+# <a name="registration-management"></a>Registration management
 
-Die Geräteregistrierung bei einem Notification Hub erfolgt mithilfe einer **Registrierung** oder **Installation**.
+##<a name="overview"></a>Overview
 
-#### Registrierungen
-Bei einer Registrierung wird das PNS-Handle (Platform Notification Service) für ein Gerät Tags und ggf. einer Vorlage zugeordnet. Das PNS-Handle könnte einem ChannelURI, einem Gerätetoken oder einer GCM-Registrierungs-ID entsprechen. Tags werden verwendet, um Benachrichtigungen an die richtige Gruppe von Gerätehandles weiterzuleiten. Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-tags-segment-push-message.md). Vorlagen werden verwendet, um Transformationen pro Registrierung zu implementieren. Weitere Informationen finden Sie unter [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md).
+This topic explains how to register devices with notification hubs in order to receive push notifications. The topic describes registrations at a high level, then introduces the two main patterns for registering devices: registering from the device directly to the notification hub, and registering through an application backend. 
 
-#### Installationen
-Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte. Bisher wird er jedoch noch nicht vom clientseitigen .NET SDK ([Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) unterstützt. Wenn Sie die Registrierung über das Client-Gerät selbst durchführen, müssen Sie daher die [Notification Hubs-REST-API](https://msdn.microsoft.com/library/mt621153.aspx) zur Unterstützung von Installationen verwenden. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) verwenden können.
 
-Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen beschrieben:
+##<a name="what-is-device-registration"></a>What is device registration
 
-* Das Erstellen oder Aktualisieren einer Installation ist vollständig idempotent. Sie können eine Installation wiederholen, ohne sich um doppelte Registrierungen sorgen zu müssen.
-* Das Installationsmodell erleichtert die Ausführung individueller Pushvorgänge für bestimmte Geräte. Bei jeder installationsbasierten Registrierung wird automatisch das Systemtag **"$InstallationId:[installationId]"** hinzugefügt. So können Sie ein Sendetag für ein bestimmtes Gerät aufrufen, ohne dass zusätzlicher Code geschrieben werden muss.
-* Mithilfe von Installationen können Sie zudem Registrierungsteilupdates durchführen. Das Teilupdate einer Installation wird mit einer PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902) angefordert. Dies ist besonders nützlich, wenn Sie Tags für die Registrierung aktualisieren möchten. Sie müssen nicht die gesamte Registrierung auflösen und dann alle vorherigen Tags erneut senden.
+Device registration with a Notification Hub is accomplished using a **Registration** or **Installation**.
 
-Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Create or Overwrite an Installation with REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) (Erstellen oder Überschreiben einer Installation mit der REST-API) oder [Installation Properties](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) (Installationseigenschaften).
+#### <a name="registrations"></a>Registrations
+A registration associates the Platform Notification Service (PNS) handle for a device with tags and possibly a template. The PNS handle could be a ChannelURI, device token, or GCM registration id. Tags are used to route notifications to the correct set of device handles. For more information, see [Routing and Tag Expressions](notification-hubs-tags-segment-push-message.md). Templates are used to implement per-registration transformation. For more information, see [Templates](notification-hubs-templates-cross-platform-push-messages.md).
 
-	// Example installation format to show some supported properties
-	{
-	    installationId: "",
-	    expirationTime: "",
-	    tags: [],
-	    platform: "",
-	    pushChannel: "",
-	    ………
-	    templates: {
-	        "templateName1" : {
-				body: "",
-				tags: [] },
-			"templateName2" : {
-				body: "",
-				// Headers are for Windows Store only
-				headers: {
-					"X-WNS-Type": "wns/tile" }
-				tags: [] }
-	    },
-	    secondaryTiles: {
-	        "tileId1": {
-	            pushChannel: "",
-	            tags: [],
-	            templates: {
-	                "otherTemplate": {
-	                    bodyTemplate: "",
-	                    headers: {
-	                        ... }
-	                    tags: [] }
-	            }
-	        }
-	    }
-	}
+#### <a name="installations"></a>Installations
+An Installation is an enhanced registration that includes a bag of push related properties. It is the latest and best approach to registering your devices. However, it is not supported by client side .NET SDK ([Notification Hub SDK for backend operations](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) as of yet.  This means if you are registering from the client device itself, you would have to use the [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx) approach to support installations. If you are using a backend service, you should be able to use [Notification Hub SDK for backend operations](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+
+The following are some key advantages to using installations:
+
+* Creating or updating an installation is fully idempotent. So you can retry it without any concerns about duplicate registrations.
+* The installation model makes it easy to do individual pushes - targeting specific device. A system tag **"$InstallationId:[installationId]"** is automatically added with each installation based registration. So you can call a send to this tag to target a specific device without having to do any additional coding.
+* Using installations also enables you to do partial registration updates. The partial update of an installation is requested with a PATCH method using the [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). This is particularly useful when you want to update tags on the registration. You don't have to pull down the entire registration and then resend all the previous tags again.
+
+An installation can contain the the following properties. For a complete listing of the installation properties see, [Create or Overwrite an Installation with REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) or [Installation Properties](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) for the .
+
+    // Example installation format to show some supported properties
+    {
+        installationId: "",
+        expirationTime: "",
+        tags: [],
+        platform: "",
+        pushChannel: "",
+        ………
+        templates: {
+            "templateName1" : {
+                body: "",
+                tags: [] },
+            "templateName2" : {
+                body: "",
+                // Headers are for Windows Store only
+                headers: {
+                    "X-WNS-Type": "wns/tile" }
+                tags: [] }
+        },
+        secondaryTiles: {
+            "tileId1": {
+                pushChannel: "",
+                tags: [],
+                templates: {
+                    "otherTemplate": {
+                        bodyTemplate: "",
+                        headers: {
+                            ... }
+                        tags: [] }
+                }
+            }
+        }
+    }
 
  
 
-Ein wichtiger Aspekt ist, dass Registrierungen und Installationen standardmäßig nicht mehr ablaufen.
+It is important to note that registrations and installations by default no longer expire.
 
-Registrierungen und Installationen müssen ein gültiges PNS-Handle für jedes Gerät bzw. jeden Kanal enthalten. Da PNS-Handles nur in einer Client-App auf dem Gerät abgerufen werden können, besteht ein Muster darin, sich direkt auf dem Gerät mit der Client-App zu registrieren. Andererseits können tagbezogene Sicherheitsaspekte und Geschäftslogik die Verwaltung der Geräteregistrierung im App-Back-End erforderlich machen.
+Registrations and installations must contain a valid PNS handle for each device/channel. Because PNS handles can only be obtained in a client app on the device, one pattern is to register directly on that device with the client app. On the other hand, security considerations and business logic related to tags might require you to manage device registration in the app back-end. 
 
-#### Vorlagen
+#### <a name="templates"></a>Templates
 
-Wenn Sie [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md) verwenden möchten, sollte die Geräteinstallation auch alle Vorlagen, die dem jeweiligen Gerät zugeordnet sind, in einem JSON-Format enthalten (siehe Beispiel oben). Mithilfe der Vorlagennamen können unterschiedliche Vorlagen problemlos auf dasselbe Gerät abzielen.
+If you want to use [Templates](notification-hubs-templates-cross-platform-push-messages.md), the device installation also hold all templates associated with that device in a JSON format (see sample above). The template names help target different templates for the same device.
 
-Beachten Sie, dass jeder Vorlagenname einem Vorlagentext und einer optionalen Gruppe von Tags zugeordnet ist. Darüber hinaus kann jede Plattform zusätzliche Vorlageneigenschaften aufweisen. Für den Windows Store (mit WNS) und Windows Phone 8 (mit MPNS) kann die Vorlage einen zusätzlichen Satz von Headern enthalten. Bei APNs können Sie eine Ablaufeigenschaft auf eine Konstante oder auf einen Vorlagenausdruck festlegen. Eine vollständige Liste der Installationseigenschaften finden Sie im Thema [Erstellen oder Überschreiben einer Installation mit REST](https://msdn.microsoft.com/library/azure/mt621153.aspx).
+Note that each template name maps to a template body and an optional set of tags. Moreover, each platform can have additional template properties. For Windows Store (using WNS) and Windows Phone 8 (using MPNS), an additional set of headers can be part of the template. In the case of APNs, you can set an expiry property to either a constant or to a template expression. For a complete listing of the installation properties see, [Create or Overwrite an Installation with REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) topic.
 
-#### Sekundäre Kacheln für Windows Store-Apps
+#### <a name="secondary-tiles-for-windows-store-apps"></a>Secondary Tiles for Windows Store Apps
 
-Für Windows Store-Clientanwendungen ist das Senden von Benachrichtigungen an sekundäre Kacheln und an die primäre Kachel identisch. Dies wird auch in Installationen unterstützt. Beachten Sie, dass sekundäre Kacheln über einen unterschiedlichen ChannelUri verfügen, der vom SDK in der Client-App transparent behandelt wird.
+For Windows Store client applications, sending notifications to secondary tiles is the same as sending them to the primary one. This is also supported in installations. Note that secondary tiles have a different ChannelUri, which the SDK on your client app handles transparently.
 
-Das SecondaryTiles-Wörterbuch verwendet dieselbe TileId, die zum Erstellen des SecondaryTiles-Objekts in der Windows Store-App verwendet wird. Wie beim primären ChannelUri können sich ChannelUris sekundärer Kacheln jederzeit ändern. Damit die Installationen im Notification Hub aktuell bleiben, müssen sie vom Gerät mit den aktuellen ChannelUris der sekundären Kacheln aktualisiert werden.
+The SecondaryTiles dictionary uses the same TileId that is used to create the SecondaryTiles object in your Windows Store app.
+As with the primary ChannelUri, ChannelUris of secondary tiles can change at any moment. In order to keep the installations in the notification hub updated, the device must refresh them with the current ChannelUris of the secondary tiles.
 
 
-##Registrierungsverwaltung über das Gerät
+##<a name="registration-management-from-the-device"></a>Registration management from the device
 
-Wenn die Geräteregistrierung über Client-Apps verwaltet wird, ist das Back-End nur für das Senden von Benachrichtigungen verantwortlich. Client-Apps sorgen dafür, dass PNS-Handles auf dem neuesten Stand bleiben, und registrieren Tags. Dieses Muster wird in der folgenden Abbildung veranschaulicht.
+When managing device registration from client apps, the backend is only responsible for sending notifications. Client apps keep PNS handles up to date, and register tags. The following picture illustrates this pattern.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-Zuerst ruft das Gerät das PNS-Handle aus dem PNS ab und registriert sich dann direkt beim Notification Hub. Wenn die Registrierung erfolgreich verläuft, kann das App-Back-End eine zielgerichtete Benachrichtigung an diese Registrierung senden. Weitere Informationen zum Senden von Benachrichtigungen finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-tags-segment-push-message.md). Beachten Sie, dass Sie in diesem Fall nur Lauschrechte verwenden, um über das Gerät auf die Notification Hubs zuzugreifen. Weitere Informationen finden Sie unter [Sicherheit](notification-hubs-push-notification-security.md).
+The device first retrieves the PNS handle from the PNS, then registers with the notification hub directly. After the registration is successful, the app backend can send a notification targeting that registration. For more information about how to send notifications, see [Routing and Tag Expressions](notification-hubs-tags-segment-push-message.md).
+Note that in this case, you will use only Listen rights to access your notification hubs from the device. For more information, see [Security](notification-hubs-push-notification-security.md).
 
-Die Registrierung über das Gerät ist die einfachste Methode, birgt aber auch Nachteile. Der erste Nachteil besteht darin, dass eine Client-App ihre Tags nur aktualisieren kann, wenn die App aktiv ist. Angenommen, ein Benutzer verfügt über zwei Geräte, die Tags im Zusammenhang mit Sportmannschaften registrieren. Wenn sich das erste Gerät für ein zusätzliches Tag (z. B. Borussia Dortmund) registriert, empfängt das zweite Gerät erst Benachrichtigungen zu Borussia Dortmund, wenn die App auf dem zweiten Gerät ein zweites Mal ausgeführt wird. Allgemeiner ausgedrückt bedeutet dies, dass die Verwaltung von Tags möglichst über das Back-End erfolgen sollte, wenn Tags für mehrere Geräte gelten. Der zweite Nachteil der Registrierungsverwaltung über die Client-App besteht darin, dass die Registrierung mit besonderer Sorgfalt auf bestimmte Tags beschränkt werden muss (wie im Abschnitt "Sicherheit auf Tagebene" erläutert), da Apps gehackt werden können.
+Registering from the device is the simplest method, but it has some drawbacks.
+The first drawback is that a client app can only update its tags when the app is active. For example, if a user has two devices that register tags related to sport teams, when the first device registers for an additional tag (for example, Seahawks), the second device will not receive the notifications about the Seahawks until the app on the second device is executed a second time. More generally, when tags are affected by multiple devices, managing tags from the backend is a desirable option.
+The second drawback of registration management from the client app is that, since apps can be hacked, securing the registration to specific tags requires extra care, as explained in the section “Tag-level security.”
 
 
 
-#### Beispielcode zur Registrierung bei einem Notification Hub über ein Gerät mithilfe einer Installation 
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Example code to register with a notification hub from a device using an installation 
 
-Momentan wird dieser Vorgang nur bei Verwendung der [Notification Hubs-REST-API](https://msdn.microsoft.com/library/mt621153.aspx) unterstützt.
+At this time, this is only supported using the [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx).
 
-Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902) aktualisiert werden.
+You can also use the PATCH method using the [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) for updating the installation.
 
-	class DeviceInstallation
-	{
-	    public string installationId { get; set; }
-	    public string platform { get; set; }
-	    public string pushChannel { get; set; }
-	    public string[] tags { get; set; }
-	}
+    class DeviceInstallation
+    {
+        public string installationId { get; set; }
+        public string platform { get; set; }
+        public string pushChannel { get; set; }
+        public string[] tags { get; set; }
+    }
 
     private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
-		 string hubName, string listenConnectionString)
+         string hubName, string listenConnectionString)
     {
         if (deviceInstallation.installationId == null)
             return HttpStatusCode.BadRequest;
@@ -135,7 +140,7 @@ Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patc
         string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
 
         //=== Generate SaS Security Token for Authorization header ===
-		// See, https://msdn.microsoft.com/library/azure/dn495627.aspx
+        // See, https://msdn.microsoft.com/library/azure/dn495627.aspx
         string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
 
         using (var httpClient = new HttpClient())
@@ -172,7 +177,7 @@ Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patc
     };
 
     var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
-						"<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
+                        "<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
 
     if (statusCode != HttpStatusCode.Accepted)
     {
@@ -189,45 +194,45 @@ Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patc
 
    
 
-#### Beispielcode zur Registrierung bei einem Notification Hub über ein Gerät mithilfe einer Registrierung
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Example code to register with a notification hub from a device using a registration
 
 
-Durch diese Methoden wird eine Registrierung für das Gerät erstellt oder aktualisiert, auf dem sie aufgerufen werden. Dies bedeutet, dass zum Aktualisieren des Handles oder der Tags die gesamte Registrierung überschrieben werden muss. Wie bereits erwähnt, sind Registrierungen temporär. Daher sollten die aktuellen Tags, die ein bestimmtes Gerät benötigt, immer an einem zuverlässigen Ort gespeichert sein.
+These methods create or update a registration for the device on which they are called. This means that in order to update the handle or the tags, you must overwrite the entire registration. Remember that registrations are transient, so you should always have a reliable store with the current tags that a specific device needs.
 
 
-	// Initialize the Notification Hub
-	NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
+    // Initialize the Notification Hub
+    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
-	// The Device id from the PNS
+    // The Device id from the PNS
     var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
     // If you are registering from the client itself, then store this registration id in device
-	// storage. Then when the app starts, you can check if a registration id already exists or not before
-	// creating.
-	var settings = ApplicationData.Current.LocalSettings.Values;
+    // storage. Then when the app starts, you can check if a registration id already exists or not before
+    // creating.
+    var settings = ApplicationData.Current.LocalSettings.Values;
 
-	// If we have not stored a registration id in application data, store in application data.
-	if (!settings.ContainsKey("__NHRegistrationId"))
-	{
-		// make sure there are no existing registrations for this push handle (used for iOS and Android)	
-		string newRegistrationId = null;
-		var registrations = await hub.GetRegistrationsByChannelAsync(pushChannel.Uri, 100);
-		foreach (RegistrationDescription registration in registrations)
-		{
-			if (newRegistrationId == null)
-			{
-				newRegistrationId = registration.RegistrationId;
-			}
-			else
-			{
-				await hub.DeleteRegistrationAsync(registration);
-			}
-		}
+    // If we have not stored a registration id in application data, store in application data.
+    if (!settings.ContainsKey("__NHRegistrationId"))
+    {
+        // make sure there are no existing registrations for this push handle (used for iOS and Android)    
+        string newRegistrationId = null;
+        var registrations = await hub.GetRegistrationsByChannelAsync(pushChannel.Uri, 100);
+        foreach (RegistrationDescription registration in registrations)
+        {
+            if (newRegistrationId == null)
+            {
+                newRegistrationId = registration.RegistrationId;
+            }
+            else
+            {
+                await hub.DeleteRegistrationAsync(registration);
+            }
+        }
 
-		newRegistrationId = await hub.CreateRegistrationIdAsync();
+        newRegistrationId = await hub.CreateRegistrationIdAsync();
 
         settings.Add("__NHRegistrationId", newRegistrationId);
-	}
+    }
      
     string regId = (string)settings["__NHRegistrationId"];
 
@@ -235,34 +240,34 @@ Durch diese Methoden wird eine Registrierung für das Gerät erstellt oder aktua
     registration.RegistrationId = regId;
     registration.Tags = new HashSet<string>(YourTags);
 
-	try
-	{
-		await hub.CreateOrUpdateRegistrationAsync(registration);
-	}
-	catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
-	{
-		settings.Remove("__NHRegistrationId");
-	}
+    try
+    {
+        await hub.CreateOrUpdateRegistrationAsync(registration);
+    }
+    catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
+    {
+        settings.Remove("__NHRegistrationId");
+    }
 
 
-## Registrierungsverwaltung über ein Back-End
+## <a name="registration-management-from-a-backend"></a>Registration management from a backend
 
-Zum Verwalten von Registrierungen über das Back-End muss zusätzlicher Code geschrieben werden. Bei jedem Start muss die App auf dem Gerät das aktualisierte PNS-Handle (zusammen mit den Tags und Vorlagen) für das Back-End bereitstellen, und das Back-End muss dieses Handle im Notification Hub aktualisieren. Dieses Verfahren wird in der folgenden Abbildung veranschaulicht.
+Managing registrations from the backend requires writing additional code. The app from the device must provide the updated PNS handle to the backend every time the app starts (along with tags and templates), and the backend must update this handle on the notification hub. The following picture illustrates this design.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-Die Vorteile der Verwaltung von Registrierungen über das Back-End liegen darin, dass Tags für Registrierungen selbst dann geändert werden können, wenn die entsprechende App auf dem Gerät inaktiv ist, und dass die Client-App authentifiziert werden kann, bevor ihrer Registrierung ein Tag hinzugefügt wird.
+The advantages of managing registrations from the backend include the ability to modify tags to registrations even when the corresponding app on the device is inactive, and to authenticate the client app before adding a tag to its registration.
 
 
-#### Beispielcode zur Registrierung bei einem Notification Hub über ein Back-End mithilfe einer Installation
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Example code to register with a notification hub from a backend using an installation
 
-Das Clientgerät ruft sein PNS-Handle und die relevanten Installationseigenschaften wie zuvor ab und ruft eine benutzerdefinierte API im Back-End auf, die die Registrierung ausführen und Tags autorisieren kann usw. Das Back-End kann die Vorteile des [Notification Hub SDKs für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) nutzen.
+The client device still gets its PNS handle and relevant installation properties as before and calls a custom API on the backend that can perform the registration and authorize tags etc. The backend can leverage the [Notification Hub SDK for backend operations](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902) aktualisiert werden.
+You can also use the PATCH method using the [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) for updating the installation.
  
 
-	// Initialize the Notification Hub
-	NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
+    // Initialize the Notification Hub
+    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
     // Custom API on the backend
     public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
@@ -302,31 +307,34 @@ Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patc
     }
 
 
-#### Beispielcode zur Registrierung bei einem Notification Hub über ein Gerät mithilfe einer Registrierungs-ID
+#### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Example code to register with a notification hub from a device using a registration id
 
-Über das App-Back-End können Sie grundlegende CRUDS-Vorgänge für Registrierungen ausführen. Beispiel:
+From your app backend, you can perform basic CRUDS operations on registrations. For example:
 
-	var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
+    var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
             
-	// create a registration description object of the correct type, e.g.
-	var reg = new WindowsRegistrationDescription(channelUri, tags);
+    // create a registration description object of the correct type, e.g.
+    var reg = new WindowsRegistrationDescription(channelUri, tags);
 
-	// Create
-	await hub.CreateRegistrationAsync(reg);
+    // Create
+    await hub.CreateRegistrationAsync(reg);
 
-	// Get by id
-	var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
+    // Get by id
+    var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
 
-	// update
-	r.Tags.Add("myTag");
+    // update
+    r.Tags.Add("myTag");
 
-	// update on hub
-	await hub.UpdateRegistrationAsync(r);
+    // update on hub
+    await hub.UpdateRegistrationAsync(r);
 
-	// delete
-	await hub.DeleteRegistrationAsync(r);
+    // delete
+    await hub.DeleteRegistrationAsync(r);
 
 
-Die Nebenläufigkeit zwischen Registrierungsupdates muss vom Back-End behandelt werden. Service Bus unterstützt die Steuerung für optimistische Nebenläufigkeit für die Registrierungsverwaltung. Auf der HTTP-Ebene wird dies durch die Verwendung von ETag für Registrierungsverwaltungsvorgänge implementiert. Dieses Feature wird von Microsoft-SDKs, die eine Ausnahme auslösen, wenn ein Update aus Gründen der Nebenläufigkeit abgelehnt wird, transparent verwendet. Das Back-End ist dafür verantwortlich, diese Ausnahmen zu behandeln und das Update ggf. zu wiederholen.
+The backend must handle concurrency between registration updates. Service Bus offers optimistic concurrency control for registration management. At the HTTP level, this is implemented with the use of ETag on registration management operations. This feature is transparently used by Microsoft SDKs, which throw an exception if an update is rejected for concurrency reasons. The app backend is responsible for handling these exceptions and retrying the update if required.
 
-<!---HONumber=AcomDC_0706_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

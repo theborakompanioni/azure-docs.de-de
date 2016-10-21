@@ -1,148 +1,149 @@
 <properties
-	pageTitle="Verwalten horizontal hochskalierter Clouddatenbanken | Microsoft Azure" 
-	description="Veranschaulicht den Dienst für elastische Datenbankaufträge" 
-	metaKeywords="azure sql database elastic databases" 
-	services="sql-database" 
+    pageTitle="Managing scaled-out cloud databases | Microsoft Azure" 
+    description="Illustrates the elastic database job service" 
+    metaKeywords="azure sql database elastic databases" 
+    services="sql-database" 
     documentationCenter=""  
-	manager="jhubbard" 
-	authors="ddove"/>
+    manager="jhubbard" 
+    authors="ddove"/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/27/2016" 
-	ms.author="ddove" />
+    ms.service="sql-database" 
+    ms.workload="sql-database" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="05/27/2016" 
+    ms.author="ddove" />
 
-# Verwalten horizontal hochskalierter Clouddatenbanken
 
-Für die Verwaltung horizontal hochskalierter Sharddatenbanken ermöglicht Ihnen das Feature **Aufträge für die elastische Datenbank** (Vorschau) das zuverlässige Ausführen eines Transact-SQL-Skripts (T-SQL) oder das Anwenden eines DACPAC ([Datenschichtanwendung](https://msdn.microsoft.com/library/ee210546.aspx)) auf eine Gruppe von Datenbanken. Dies schließt Folgendes mit ein:
+# <a name="managing-scaled-out-cloud-databases"></a>Managing scaled-out cloud databases
 
-* Eine benutzerdefinierte Sammlung von Datenbanken (siehe Erläuterung weiter unten)
-* Alle Datenbanken in einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md)
-* Eine (mit der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) erstellte) Shard-Gruppe
+To manage scaled-out sharded databases, the **Elastic Database jobs** feature (preview) enables you to  reliably execute a Transact-SQL (T-SQL) script or apply a DACPAC ([data-tier application](https://msdn.microsoft.com/library/ee210546.aspx)) across a group of databases, including:
+
+* a custom-defined collection of databases (explained below)
+* all databases in an [Elastic Database pool](sql-database-elastic-pool.md)
+* a shard set (created using [Elastic Database client library](sql-database-elastic-database-client-library.md)). 
  
-## Dokumentation
+## <a name="documentation"></a>Documentation
 
-* [Installieren von Komponenten der Aufträge für die elastische Datenbank](sql-database-elastic-jobs-service-installation.md)
-* [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md)
-* [Erstellen und Verwalten von Aufträgen über PowerShell](sql-database-elastic-jobs-powershell.md)
-* [Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken](sql-database-elastic-jobs-getting-started.md)
+* [Install the Elastic Database job components](sql-database-elastic-jobs-service-installation.md). 
+* [Get started with Elastic Database jobs](sql-database-elastic-jobs-getting-started.md).
+* [Create and manage jobs using PowerShell](sql-database-elastic-jobs-powershell.md).
+* [Create and manage scaled out Azure SQL Databases](sql-database-elastic-jobs-getting-started.md)
 
-**Aufträge für die elastische Datenbank** stellen derzeit einen vom Kunden gehosteten Azure-Clouddienst dar, der die Ad-hoc-Ausführung und die geplante Ausführung von Verwaltungsaufgaben (**Aufträgen**) ermöglicht. Mithilfe von Aufträgen lassen sich große Gruppen von Azure SQL-Datenbanken durch Ausführen von Transact-SQL-Skripts für administrative Vorgänge problemlos und zuverlässig verwalten.
+**Elastic Database jobs** is currently a customer-hosted Azure Cloud Service that enables the execution of ad-hoc and scheduled administrative tasks, which are called **jobs**. With jobs, you can easily and reliably manage large groups of Azure SQL Databases by running Transact-SQL scripts to perform administrative operations. 
 
-![Dienst für elastische Datenbankaufträge][1]
+![Elastic database job service][1]
 
-## Argumente für die Verwendung von Aufträgen
+## <a name="why-use-jobs?"></a>Why use jobs?
 
-**Verwalten**
+**Manage**
 
-Führen Sie Schemaänderungen, die Verwaltung von Anmeldeinformationen, Verweisdatenaktualisierungen, Leistungsdatensammlung oder Telemetrieerfassung für Mandanten (Kunden) problemlos durch.
+Easily do schema changes, credentials management, reference data updates, performance data collection or tenant (customer) telemetry collection.
 
-**Berichte**
+**Reports**
 
-Aggregieren Sie Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzigen Zieltabelle.
+Aggregate data from a collection of Azure SQL Databases into a single destination table.
 
-**Reduzierter Aufwand**
+**Reduce overhead**
 
-Normalerweise müssen Sie unabhängige Verbindungen mit jeder einzelnen Datenbank herstellen, um Transact-SQL-Anweisungen oder andere Verwaltungsaufgaben auszuführen. Ein Auftrag nimmt Ihnen die Anmeldung bei den einzelnen Datenbanken in der Zielgruppe ab. Zudem können Sie Transact-SQL-Skripts zur Ausführung für eine Gruppe von Azure SQL-Datenbanken definieren, verwalten und speichern.
+Normally, you must connect to each database independently in order to run Transact-SQL statements or perform other administrative tasks. A job handles the task of logging in to each database in the target group. You also define, maintain and persist Transact-SQL scripts to be executed across a group of Azure SQL Databases.
 
-**Nachverfolgbarkeit**
+**Accounting**
 
-Aufträge führen das Skript aus und protokollieren den Ausführungsstatus für die einzelnen Datenbanken. Außerdem werden Vorgänge automatisch wiederholt, wenn Fehler auftreten.
+Jobs run the script and log the status of execution for each database. You also get automatic retry when failures occur.
 
-**Flexibilität**
+**Flexibility**
 
-Definieren Sie benutzerdefinierte Gruppen von Azure SQL-Datenbanken, und definieren Sie einen Zeitplan für die Ausführung eines Auftrags.
+Define custom groups of Azure SQL Databases, and define schedules for running a job.
 
-**Bereitstellung**
+**Deployment**
 
-Stellen Sie Anwendungen auf Datenebene bereit (DACPACs).
+Deploy data-tier applications (DACPACs).
 
-> [AZURE.NOTE] Im Azure-Portal steht nur eine eingeschränkte Anzahl von Funktionen für elastische SQL Azure-Pools zur Verfügung. Verwenden Sie die PowerShell-APIs, um auf den gesamten aktuell verfügbaren Funktionsumfang zuzugreifen.
+> [AZURE.NOTE] In the Azure portal, only a reduced set of functions limited to SQL Azure elastic pools is available. Use the PowerShell APIs to access the full set of current functionality.
 
-## Anwendungen 
+## <a name="applications"></a>Applications 
 
-* Führen Sie Verwaltungsaufgaben durch, wie z.B. die Bereitstellung eines neuen Schemas.
-* Aktualisieren Sie Referenzdaten, z.B. allgemeine Produktinformationen, die für alle Datenbanken gelten. Sie können auch automatische Updates für jeden Arbeitstag nach Geschäftsschluss planen.
-* Neuerstellung von Indizes zum Verbessern der Abfrageleistung. Für die Neuerstellung kann die Ausführung für eine gesamte Sammlung von Datenbanken auf wiederkehrender Basis konfiguriert werden, etwa in Zeiten mit geringer Auslastung.
-* Sammlung von Abfrageergebnissen aus einer Menge von Datenbanken in einer zentralen Tabelle auf fortlaufender Grundlage. Leistungsabfragen können fortlaufend ausgeführt werden und für die Auslösung der Ausführung weiterer Aufgaben konfiguriert werden.
-* Ausführung von Abfragen zur Datenverarbeitung mit längerer Laufzeit für eine große Anzahl von Datenbanken, z. B. bei der Sammlung von Kundentelemetrie. Die Ergebnisse werden zur weiteren Analyse in einer einzelnen Zieltabelle gesammelt.
+* Perform administrative tasks, such as deploying a new schema.
+* Update reference data-product information common across all databases. Or schedules automatic updates every weekday, after hours.
+* Rebuild indexes to improve query performance. The rebuilding can be configured to execute across a collection of databases on a recurring basis, such as during off-peak hours.
+* Collect query results from a set of databases into a central table on an on-going basis. Performance queries can be continually executed and configured to trigger additional tasks to be executed.
+* Execute longer running data processing queries across a large set of databases, for example the collection of customer telemetry. Results are collected into a single destination table for further analysis.
 
-## Umfassender Überblick über Aufträge für die elastische Datenbank 
-1.	Installieren Sie die Komponenten der **Aufträge für die elastische Datenbank**. Weitere Informationen finden Sie unter [Installieren von elastischen Datenbankaufträgen](sql-database-elastic-jobs-service-installation.md). Wenn die Installation fehlschlägt, lesen Sie die Informationen zum [Deinstallieren](sql-database-elastic-jobs-uninstall.md).
-2.	Verwenden Sie die PowerShell-APIs, um auf weitere Funktionen zuzugreifen, beispielsweise zum Erstellen von benutzerdefinierten Datenbanksammlungen, zum Hinzufügen von Zeitplänen und/oder dem Erfassen von Ergebnismengen. Verwenden Sie das Portal für die einfache Installation sowie die Erstellung und Überwachung von Aufträgen, die auf die Ausführung für einen **Pool für elastische Datenbanken** beschränkt sind.
-3.	Erstellen Sie verschlüsselte Anmeldeinformationen für die Auftragsausführung und [fügen Sie den Benutzer (oder die Rolle) jeder Datenbank in der Gruppe hinzu](sql-database-security.md).
-4.	Erstellen Sie ein idempotentes T-SQL-Skript, das für jede Datenbank in der Gruppe ausgeführt werden kann.
-5.	Führen Sie die im folgenden Artikel erläuterten Schritte aus, um Aufträge mithilfe des Azure-Portals zu erstellen: [Erstellen und Verwalten von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-create-and-manage.md).
-6.	Alternativ können Sie auch PowerShell-Skripts verwenden: [Erstellen und Verwalten von Aufträgen für die elastische SQL-Datenbank mithilfe von PowerShell (Vorschau)](sql-database-elastic-jobs-powershell.md).
+## <a name="elastic-database-jobs:-end-to-end"></a>Elastic Database jobs: end-to-end 
+1.  Install the **Elastic Database jobs** components. For more information, see [Installing Elastic Database jobs](sql-database-elastic-jobs-service-installation.md). If the installation fails, see [how to uninstall](sql-database-elastic-jobs-uninstall.md).
+2.  Use the PowerShell APIs to access more functionality, for example creating custom-defined database collections, adding schedules and/or gathering results sets. Use the portal for simple installation and creation/monitoring of jobs limited to execution against a **Elastic Database pool**. 
+3.  Create encrypted credentials for job execution and [add the user (or role) to each database in the group](sql-database-security.md).
+4.  Create an idempotent T-SQL script that can be run against every database in the group. 
+5.  Follow these steps to create jobs using the Azure portal: [Creating and managing Elastic Database jobs](sql-database-elastic-jobs-create-and-manage.md). 
+6.  Or use PowerShell scripts: [Create and manage a SQL Database elastic database jobs using PowerShell (preview)](sql-database-elastic-jobs-powershell.md).
 
-## Idempotente Skripts
+## <a name="idempotent-scripts"></a>Idempotent scripts
 
-Die Skripts müssen [idempotent](https://en.wikipedia.org/wiki/Idempotence) sein. Einfach ausgedrückt bedeutet „idempotent“, dass die erneute Ausführung eines bereits erfolgreich ausgeführten Skripts zum gleichen Ergebnis führt. Es kann vorkommen, dass ein Skript aufgrund von vorübergehenden Netzwerkproblemen nicht erfolgreich ausgeführt wird. In diesem Fall führt der Auftrag automatisch eine bestimmte Anzahl von Wiederholungsversuchen für das Skript aus. Ein idempotentes Skript führt auch bei zweimaliger erfolgreicher Ausführung zum gleichen Ergebnis.
+The scripts must be [idempotent](https://en.wikipedia.org/wiki/Idempotence). In simple terms, "idempotent" means that if the script succeeds, and it is run again, the same result occurs. A script may fail due to transient network issues. In that case, the job will automatically retry running the script a preset number of times before desisting. An idempotent script has the same result even if has been successfully run twice. 
 
-Vor dem Erstellen eines Objekts empfiehlt es sich, zu überprüfen, ob es bereits vorhanden ist.
+A simple tactic is to test for the existence of an object before creating it.  
 
-	IF NOT EXIST (some_object)
-	-- Create the object 
-	-- If it exists, drop the object before recreating it.
+    IF NOT EXIST (some_object)
+    -- Create the object 
+    -- If it exists, drop the object before recreating it.
 
-Analog dazu muss auch ein Skript erfolgreich ausgeführt werden können, indem logische Tests durchgeführt werden und angemessen auf die vorgefundenen Bedingungen reagiert wird.
+Similarly, a script must be able to execute successfully by logically testing for and countering any conditions it finds.
 
-## Fehler und Protokolle
+## <a name="failures-and-logs"></a>Failures and logs
 
-Wenn ein Skript auch nach mehreren Versuchen nicht erfolgreich ausgeführt werden kann, wird der Fehler protokolliert und der Auftrag fortgesetzt. Nach Beendigung eines Auftrags (also nachdem er für alle Datenbanken in der Gruppe ausgeführt wurde) können Sie sich die Liste mit den Fehlversuchen ansehen. Die Protokolle enthalten Details zum Debuggen der fehlerhaften Skripts.
+If a script fails after multiple attempts, the job logs the error and continues. After a job ends (meaning a run against all databases in the group), you can check its list of failed attempts. The logs provide details to debug faulty scripts. 
 
-## Gruppentypen und Erstellung
+## <a name="group-types-and-creation"></a>Group types and creation
 
-Es gibt zwei Arten von Gruppen:
+There are two kinds of groups: 
 
-1. Shard-Gruppen
-2. Benutzerdefinierte Gruppen
+1. Shard sets
+2. Custom groups
 
-Shard-Gruppen werden mithilfe der [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md) erstellt. Wenn Sie eine Shard-Gruppe erstellen, werden der Gruppe automatisch Datenbanken hinzugefügt bzw. daraus entfernt. Beispielsweise ist ein neuer Shard automatisch in der Gruppe enthalten, wenn Sie ihn der Shardzuordnung hinzufügen. Ein Auftrag kann dann für die Gruppe ausgeführt werden.
+Shard set groups are created using the [Elastic Database tools](sql-database-elastic-scale-introduction.md). When you create a shard set group, databases are added or removed from the group automatically. For example, a new shard will be automatically in the group when you add it to the shard map. A job can then be run against the group.
 
-Benutzerdefinierte Gruppen werden dagegen starr definiert. Sie müssen explizit Datenbanken zu benutzerdefinierten Gruppen hinzufügen oder daraus entfernen. Wenn eine Datenbank aus der Gruppe gelöscht wird, versucht der Auftrag, das Skript für die Datenbank auszuführen, was letztendlich zu einem Fehler führt. Mit dem Azure-Portal erstellte Gruppen sind derzeit benutzerdefinierte Gruppen.
+Custom groups, on the other hand, are rigidly defined. You must explicitly add or remove databases from custom groups. If a database in the group is dropped, the job will attempt to run the script against the database resulting in an eventual failure. Groups created using the Azure portal currently are custom groups. 
 
 
-## Komponenten und Preise
+## <a name="components-and-pricing"></a>Components and pricing
  
-Die folgenden Komponenten arbeiten zusammen, um einen Azure-Clouddienst zu erstellen, der eine Ad-hoc-Ausführung von Verwaltungsaufgaben ermöglicht. Die Komponenten werden installiert und automatisch während der Installation in Ihrem Abonnement konfiguriert. Sie können die Dienste am automatisch generierten identischen Namen erkennen. Der Name ist eindeutig und besteht aus dem Präfix "edj", gefolgt von 21 zufällig generierten Zeichen.
+The following components work together to create an Azure Cloud service that enables ad-hoc execution of administrative jobs. The components are installed and configured automatically during setup, in your subscription. You can identify the services as they all have the same auto-generated name. The name is unique, and consists of the prefix "edj" followed by 21 randomly generated characters.
 
-* **Azure Cloud Service**: Elastische Datenbankaufträge (Vorschau) werden als vom Kunden gehosteter Azure-Clouddienst bereitgestellt, um die angeforderten Aufgaben auszuführen. Der Dienst wird im Portal bereitgestellt und im Microsoft Azure-Abonnement gehostet. Der standardmäßig bereitgestellte Dienst wird mit mindestens zwei Workerrollen für hohe Verfügbarkeit ausgeführt. Die Standardgröße der einzelnen Workerrollen ("ElasticDatabaseJobWorker") wird in einer A0-Instanz ausgeführt. Die Preise finden Sie unter [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/).
-* **Azure SQL-Datenbank**: Der Dienst verwendet eine Azure SQL-Datenbank, die als **Verwaltungsdatenbank** bezeichnet wird, zum Speichern aller Auftragsmetadaten. Die Standarddienstebene ist S0. Informationen zu den Preisen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/).
-* **Azure Service Bus**: Ein Azure Service Bus dient der Koordination der Arbeit innerhalb von Azure Cloud Service. Siehe [Service Bus Preise](https://azure.microsoft.com/pricing/details/service-bus/).
-* **Azure Storage:** Ein Azure Storage-Konto wird zum Speichern von Diagnoseausgabeprotokollen verwendet, falls ein aufgetretenes Problem weiteres Debuggen erfordert (siehe [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md)). Information zu den Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+* **Azure Cloud Service**: elastic database jobs (preview) is delivered as a customer-hosted Azure Cloud service to perform execution of the requested tasks. From the portal, the service is deployed and hosted in your Microsoft Azure subscription. The default deployed service runs with the minimum of two worker roles for high availability. The default size of each worker role (ElasticDatabaseJobWorker) runs on an A0 instance. For pricing, see [Cloud services pricing](https://azure.microsoft.com/pricing/details/cloud-services/). 
+* **Azure SQL Database**: The service uses an Azure SQL Database known as the **control database** to store all of the job metadata. The default service tier is a S0. For pricing, see [SQL Database Pricing](https://azure.microsoft.com/pricing/details/sql-database/).
+* **Azure Service Bus**: An Azure Service Bus is for coordination of the work within the Azure Cloud Service. See [Service Bus Pricing](https://azure.microsoft.com/pricing/details/service-bus/).
+* **Azure Storage**: An Azure Storage account is used to store diagnostic output logging in the event that an issue requires further debugging (see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md)). For pricing, see [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/).
 
-## Funktionsweise von Aufträgen für die elastische Datenbank
+## <a name="how-elastic-database-jobs-work"></a>How Elastic Database jobs work
 
-1.	Einer Azure SQL-Datenbank wird eine **Steuerdatenbank** zugeordnet, die alle Meta- und Statusdaten enthält.
-2.	Auf die Steuerdatenbank wird durch den **Auftragsdienst** sowohl zum Starten als auch zum Nachverfolgen der auszuführenden Aufträge zugegriffen.
-3.	Zwei verschiedene Rollen kommunizieren mit der Steuerdatenbank:
-	* Controller: Bestimmt, welche Aufträge Aufgaben zum Durchführen des angeforderten Auftrags benötigen und führt Wiederholungsversuche bei Aufträgen mit Fehlern durch Erstellen neuer Auftragsaufgaben aus.
-	* Ausführung von Auftragsaufgaben: Führt die Auftragsaufgaben aus.
+1.  An Azure SQL Database is designated a **control database** which stores all meta-data and state data.
+2.  The control database is accessed by the **job service** to launch and track jobs to execute.
+3.  Two different roles communicate with the control database: 
+    * Controller: Determines which jobs require tasks to perform the requested job, and retries failed jobs by creating new job tasks.
+    * Job Task Execution: Carries out the job tasks.
 
-### Typen von Auftragsaufgaben
+### <a name="job-task-types"></a>Job task types
 
-Es gibt mehrere Typen von Auftragsaufgaben, die die Ausführung von Aufträgen abwickeln:
+There are multiple types of job tasks that carry out execution of jobs:
 
-* ShardMapRefresh: Fragt die Shardzuordnung ab, um alle als Shards verwendeten Datenbanken zu bestimmen
-* ScriptSplit: Teilt das Skript entlang der GO-Anweisungen in Batches auf
-* ExpandJob: Erstellt untergeordnete Aufträge für jede Datenbank aus einem Auftrag, der eine Gruppe von Datenbanken zum Ziel hat
-* ScriptExecution: Führt ein Skript für eine bestimmte Datenbank mithilfe definierter Anmeldeinformationen aus
-* Dacpac: Wendet ein DACPAC auf eine bestimmte Datenbank mithilfe bestimmter Anmeldeinformationen an
+* ShardMapRefresh: Queries the shard map to determine all the databases used as shards
+* ScriptSplit: Splits the script across ‘GO’ statements into batches
+* ExpandJob: Creates child jobs for each database from a job that targets a group of databases
+* ScriptExecution: Executes a script against a particular database using defined credentials
+* Dacpac: Applies a DACPAC to a particular database using particular credentials
 
-## End-to-End-Arbeitsablauf bei der Auftragsausführung
+## <a name="end-to-end-job-execution-work-flow"></a>End-to-end job execution work-flow
 
-1.	Ein Auftrag wird entweder mithilfe des Portals oder der PowerShell-API in die **Steuerdatenbank** eingefügt. Der Auftrag fordert die Ausführung eines Transact-SQL-Skripts für eine Gruppe von Datenbanken mithilfe bestimmter Anmeldeinformationen an.
-2.	Der Controller identifiziert den neuen Auftrag. Auftragsaufgaben werden erstellt und ausgeführt, um das Skript aufzuteilen und die Datenbanken der Gruppe zu aktualisieren. Abschließend wird ein neuer Auftrag erstellt und ausgeführt, um den Auftrag zu erweitern und neue untergeordnete Aufträge zu erstellen, von denen für jeden die Ausführung des Transact-SQL-Skripts für eine bestimmte Datenbank der Gruppe festgelegt ist.
-3.	Der Controller identifiziert die erstellten untergeordneten Aufträge. Für jeden Auftrag erstellt der Controller eine Auftragsaufgabe und löst sie aus, um das Skript für eine Datenbank auszuführen.
-4.	Nach dem Abschluss aller Auftragsaufgaben aktualisiert der Controller die Aufträge mit dem Status „abgeschlossen“. Während der Auftragsausführung kann die PowerShell-API verwendet werden, um den aktuellen Status der Auftragsausführung anzuzeigen. Alle von den PowerShell-APIs zurückgegebenen Uhrzeiten werden in UTC angegeben. Gegebenenfalls kann eine Abbruchanforderung eingeleitet werden, um einen Auftrag zu beenden.
+1.  Using either the Portal or the PowerShell API, a job is inserted into the  **control database**. The job requests execution of a Transact-SQL script against a group of databases using specific credentials.
+2.  The controller identifies the new job. Job tasks are created and executed to split the script and to refresh the group’s databases. Lastly, a new job is created and executed to expand the job and create new child jobs where each child job is specified to execute the Transact-SQL script against an individual database in the group.
+3.  The controller identifies the created child jobs. For each job, the controller creates and triggers a job task to execute the script against a database. 
+4.  After all job tasks have completed, the controller updates the jobs to a completed state. At any point during job execution, the PowerShell API can be used to view the current state of job execution. All times returned by the PowerShell APIs are represented in UTC. If desired, a cancellation request can be initiated to stop a job. 
 
-## Nächste Schritte
-[Installieren Sie die Komponenten](sql-database-elastic-jobs-service-installation.md), [erstellen Sie ein Protokoll für jede Datenbank in der Gruppe der Datenbanken, und fügen Sie es hinzu](sql-database-security.md). Weitere Informationen zum Erstellen und Verwalten von Aufträgen finden Sie unter [Erstellen und Verwalten von elastischen Datenbankaufträgen](sql-database-elastic-jobs-create-and-manage.md). Informationen hierzu finden Sie auch unter [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md).
+## <a name="next-steps"></a>Next steps
+[Install the components](sql-database-elastic-jobs-service-installation.md), then [create and add a log in to each database in the group of databases](sql-database-security.md). To further understand job creation and management, see [creating and managing elastic database jobs](sql-database-elastic-jobs-create-and-manage.md). See also [Getting started with Elastic Database jobs](sql-database-elastic-jobs-getting-started.md).
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -152,4 +153,8 @@ Es gibt mehrere Typen von Auftragsaufgaben, die die Ausführung von Aufträgen a
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

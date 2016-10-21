@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erste Schritte zum Erstellen eines internen Lastenausgleichs in Resource Manager mit dem Azure-Portal | Microsoft Azure"
-   description="Erfahren Sie, wie Sie in Resource Manager mit dem Azure-Portal einen internen Lastenausgleich erstellen."
+   pageTitle="Get started creating an Internal load balancer in Resource Manager using the Azure portal | Microsoft Azure"
+   description="Learn how to create an Internal load balancer in Resource Manager using the Azure portal"
    services="load-balancer"
    documentationCenter="na"
    authors="sdwheeler"
@@ -17,7 +17,8 @@
    ms.date="08/31/2016"
    ms.author="sewhee" />
 
-# Erste Schritte zum Erstellen eines internen Lastenausgleich im Azure-Portal
+
+# <a name="get-started-creating-an-internal-load-balancer-in-the-azure-portal"></a>Get started creating an Internal load balancer in the Azure portal
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
 
@@ -28,69 +29,74 @@
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 
-## Erste Schritte zum Erstellen eines internen Lastenausgleich mit dem Azure-Portal
+## <a name="get-started-creating-an-internal-load-balancer-using-azure-portal"></a>Get started creating an Internal load balancer using Azure portal
 
-Führen Sie zum Erstellen eines internen Lastenausgleichs über das Azure-Portal die folgenden Schritte aus:
+To create an internal load balancer from the Azure portal, follow the steps below.
 
-1. Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2. Klicken Sie oben links auf dem Bildschirm auf **Neu** > **Netzwerk** > **Lastenausgleich**.
-3. Geben Sie auf dem Blatt **Lastenausgleich erstellen** einen **Namen** für den Lastenausgleich ein.
-4. Klicken Sie unter **Schema** auf **Intern**.
-5. Klicken Sie auf **Virtuelles Netzwerk**, und wählen Sie dann das virtuelle Netzwerk aus, in dem Sie den Lastenausgleich erstellen möchten.
+1. From a browser, navigate to the [Azure portal](http://portal.azure.com) and, if necessary, sign in with your Azure account.
+2. In the upper left hand side of the screen, click **New** > **Networking** > **Load balancer**.
+3. In the **Create load balancer** blade, type a **Name** for your load balancer.
+4. Under **Scheme**, click **Internal**.
+5. Click **Virtual network**, and then select the virtual network where you want to create the load balancer.
 
-    >[AZURE.NOTE] Wenn das virtuelle Netzwerk, das Sie verwenden möchten, nicht angezeigt wird, überprüfen Sie den **Speicherort**, den Sie für den Lastenausgleich verwenden, und ändern Sie ihn entsprechend.
+    >[AZURE.NOTE] If you do not see the virtual network you want to use, check the **Location** you are using for the load balancer, and change it accordingly.
 
-6. Klicken Sie auf **Subnetz**, und wählen Sie dann das Subnetz aus, in dem Sie den Lastenausgleich erstellen möchten.
-7. Klicken Sie unter **IP-Adresszuweisung** auf **Dynamisch** oder **Statisch**, je nachdem, ob die IP-Adresse für den Lastenausgleich fest (statisch) sein soll.
+6. Click **Subnet**, and then select the subnet where you want to create the load balancer.
+7. Under **IP address assignment**, click either **Dynamic** or **Static**, depending on whether you want the IP address for the load balancer to be fixed (static) or not.
 
-    >[AZURE.NOTE] Wenn Sie eine statische IP-Adresse verwenden möchten, müssen Sie eine Adresse für den Lastenausgleich angeben.
+    >[AZURE.NOTE] If you select to use a static IP address, you will have to provide an address for the load balancer.
 
-8. Geben Sie unter **Ressourcengruppe** den Namen einer neuen Ressourcengruppe für den Lastenausgleich ein, oder klicken Sie auf **Vorhandene auswählen**, und wählen Sie eine vorhandene Ressourcengruppe aus.
-9. Klicken Sie auf **Erstellen**.
+8. Under **Resource group** either specify the name of a new resource group for the load balancer, or click **select existing** and select an existing resource group.
+9. Click **Create**.
 
-## Konfigurieren von Lastenausgleichsregeln
+## <a name="configure-load-balancing-rules"></a>Configure load balancing rules
 
-Navigieren Sie nach der Erstellung des Lastenausgleichs zur Lastenausgleichsressource, um sie zu konfigurieren. Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor Sie eine Lastenausgleichsregel konfigurieren.
+After the load balancer creation, navigate to the load balancer resource to configure it.
+You need to configure first a back-end address pool and a probe before configuring a load balancing rule.
 
-### Schritt 1: Konfigurieren eines Back-End-Pools
+### <a name="step-1:-configure-a-back-end-pool"></a>Step 1: Configure a back-end pool
 
-1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Back-End-Pools**.
-3. Klicken Sie auf dem Blatt **Back-End-Adresspools** auf **Hinzufügen**.
-4. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** einen **Namen** für den Back-End-Pool ein, und klicken Sie dann auf **OK**.
+1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
+2. In the **Settings** blade, click **Backend pools**.
+3. In the **Backend address pools** blade, click **Add**.
+4. In the **Add backend pool** blade, type a **Name** for the backend pool, and then click **OK**.
 
-### Schritt 2: Konfigurieren eines Tests
+### <a name="step-2:-configure-a-probe"></a>Step 2: Configure a probe
 
-1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Tests**.
-3. Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
-4. Geben Sie auf dem Blatt **Test hinzufügen** einen **Namen** für den Test ein.
-5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
-6. Geben Sie unter **Port** den Port an, der beim Zugreifen auf den Test verwendet werden soll.
-7. Geben Sie unter **Pfad** (nur für HTTP-Tests) den Pfad an, der als Test verwendet werden soll.
-8. Geben Sie unter **Intervall** an, wie häufig die Anwendung getestet werden soll.
-9. Geben Sie unter **Fehlerschwellenwert** an, wie viele Versuche fehlschlagen sollen, bevor die Back-End-VM als „fehlerhaft“ markiert wird.
-10. Klicken Sie zum Erstellen des Tests auf **OK**.
+1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
+2. In the **Settings** blade, click **Probes**.
+3. In the **Probes**  blade, click **Add**.
+4. In the **Add probe** blade, type a **Name** for the probe.
+5. Under **Protocol**, select **HTTP** (for web sites) or **TCP** (for other TCP based applications).
+6. Under **Port**, specify the port to use when accessing the probe.
+7. Under **Path** (for HTTP probes only), specify the path to use as a probe.
+8. Under **Interval** specify how frequently to probe the application.
+9. Under **Unhealthy threshold**, specify how many attempts should fail before the backend VM is marked as unhealthy.
+10. click **OK** to create probe.
 
-### Schritt 3: Konfigurieren von Lastenausgleichsregeln
+### <a name="step-3:-configure-load-balancing-rules"></a>Step 3: Configure load balancing rules
 
-1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Lastenausgleichsregeln**.
-3. Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
-4. Geben Sie auf dem Blatt **Lastenausgleichsregel hinzufügen** einen **Namen** für die Regel ein.
-5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
-6. Geben Sie unter **Port** den Port an, mit dem Clients im Lastenausgleich eine Verbindung herstellen.
-7. Geben Sie unter **Back-End-Port** den Port an, der im Back-End-Pool verwendet werden soll (in der Regel sind der Lastenausgleichsport und der Back-End-Port identisch).
-8. Wählen Sie unter **Back-End-Pool** den Back-End-Pool aus, den Sie soeben erstellt haben.
-9. Wählen Sie unter **Sitzungspersistenz** aus, wie Sitzungen beibehalten werden sollen.
-10. Geben Sie unter **Leerlauftimeout (Minuten)** das Leerlauftimeout an.
-11. Klicken Sie unter **Floating IP (Direct Server Return)** auf **Deaktiviert** oder **Aktiviert**.
-12. Klicken Sie auf **OK**.
+1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
+2. In the **Settings** blade, click **Load balancing rules**.
+3. In the **Load balancing rules** blade, click **Add**.
+4. In the **Add load balancing rule** blade, type a **Name** for the rule.
+5. Under **Protocol**, select **HTTP** (for web sites) or **TCP** (for other TCP based applications).
+6. Under **Port**, specify the port clients connect to int he load balancer.
+7. Under **Backend port**, specify the port to be used in the backend pool (usually, the load balancer port and the backend port are the same).
+8. Under **Backend pool**, select the backend pool you created above.
+9. Under **Session persistence**, select how you want sessions to persist.
+10. Under **Idle timeout (minutes)**, specify the idle timeout.
+11. Under **Floating IP (direct server return)**, click **Disabled** or **Enabled**.
+12. Click **OK**.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
+[Configure a load balancer distribution mode](load-balancer-distribution-mode.md)
 
-[Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
+[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,116 +1,117 @@
 <properties 
-	pageTitle="Verwenden von Bewertungsprofilen in Azure Search| Microsoft Azure | Gehosteter Cloudsuchdienst" 
-	description="Optimieren Sie die Suchrangfolge mithilfe von Bewertungsprofilen in Azure Search, einem in Microsoft Azure gehosteten Cloudsuchdienst." 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
-	editor=""/>
+    pageTitle="How to use scoring profiles in Azure Search | Microsoft Azure | Hosted cloud search service" 
+    description="Tune search ranking through scoring profiles in Azure Search, a hosted cloud search service on Microsoft Azure." 
+    services="search" 
+    documentationCenter="" 
+    authors="HeidiSteen" 
+    manager="mblythe" 
+    editor=""/>
 
 <tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="08/04/2016" 
-	ms.author="heidist"/>
+    ms.service="search" 
+    ms.devlang="rest-api" 
+    ms.workload="search" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.date="10/17/2016" 
+    ms.author="heidist"/>
 
-# Verwenden von Bewertungsprofilen in Azure Search
 
-Wertungsprofile sind ein Feature von Microsoft Azure Search, das die Berechnung der Ergebnisse der Suche anpasset und so beeinflusst wie Elemente in einer Liste der Suchergebnisse eingestuft werden. Sie können sich Wertungsprofile als Möglichkeit vorstellen, zum Relevanz zu modellieren, indem Elemente, die vordefinierten Kriterien entsprechen, stärker berücksichtigt werden. Nehmen wir beispielsweise an, dass die Anwendung eine Hotelreservierungswebsite ist. Wenn das Feld `location` stärker berücksichtigt wird, dann werden in Suchläufen nach einem Suchbegriff wie Seattle Elemente, die Seattle im Feld `location` enthalten, mit einer höheren Relevanz bewertet. Beachten Sie, dass Sie mehrere Wertungsprofile verwenden können, oder auch überhaupt keine, wenn die Standardwertung für Ihre Anwendung ausreichend ist.
+# <a name="how-to-use-scoring-profiles-in-azure-search"></a>How to use scoring profiles in Azure Search
 
-Um mit Wertungsprofilen zu experimentieren, können Sie eine Beispielanwendung herunterladen, die Wertungsprofile verwendet, um die Rangfolge der Suchergebnisse zu ändern. Das Beispiel ist eine Konsolenanwendung – vielleicht nicht sehr realistisch bezüglich der realen Anwendungsentwicklung, aber trotzdem als Lerntool geeignet.
+Scoring profiles are a feature of Microsoft Azure Search that customize the calculation of search scores, influencing how items are ranked in a search results list. You can think of scoring profiles as a way to model relevance, by boosting items that meet predefined criteria. For example, suppose your application is an online hotel reservation site. By boosting the `location` field, searches that include a term like Seattle will result in higher scores for items that have Seattle in the `location` field. Note that you can have more than one scoring profile, or none at all, if the default scoring is sufficient for your application.
 
-Die Beispielanwendung veranschaulicht Bewertungsverhalten anhand fiktiver Daten, die als `musicstoreindex` bezeichnet werden. Die Einfachheit der Beispielanwendung erleichtert die Anpassung von Wertungsprofilen und Abfragen, und Sie sehen dann die unmittelbaren Auswirkungen auf die Rangfolge, wenn das Programm ausgeführt wird.
+To help you experiment with scoring profiles, you can download a sample application that uses scoring profiles to change the rank order of search results. The sample is a console application – perhaps not very realistic for real-world application development – but useful nonetheless as  a learning tool. 
+
+The sample application demonstrates scoring behaviors using fictional data, called the `musicstoreindex`. The simplicity of the sample app makes it easy to modify scoring profiles and queries, and then see the immediate effects on rank order when the program is executed.
 
 <a id="sub-1"></a>
-## Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Die Beispielanwendung wird mit Visual Studio 2013 in C# geschrieben. Wenn Sie nicht über Visual Studio verfügen, können Sie die [kostenlose Visual Studio 2013 Express-Edition](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) ausprobieren.
+The sample application is written in C# using Visual Studio 2013. Try the free [Visual Studio 2013 Express edition](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) if you don't already have a copy of Visual Studio.
 
-Sie benötigen ein Azure-Abonnement und einen Azure Search-Dienst zum Abschließen dieses Lernprogramms. Hilfe beim Einrichten des Diensts finden Sie unter [Erstellen eines Search-Diensts im Portal](search-create-service-portal.md).
+You will need an Azure subscription and an Azure Search service to complete the tutorial. See [Create a Search service in the portal](search-create-service-portal.md) for help with setting up the service.
 
-[AZURE.INCLUDE [Sie benötigen ein Azure-Konto, um dieses Lernprogramm durchführen zu können:](../../includes/free-trial-note.md)]
+[AZURE.INCLUDE [You need an Azure account to complete this tutorial:](../../includes/free-trial-note.md)]
 
 <a id="sub-2"></a>
-## Herunterladen der Beispielanwendung
+## <a name="download-the-sample-application"></a>Download the sample application
 
-Wechseln Sie zu [Azure Search Scoring Profiles Demo](https://azuresearchscoringprofiles.codeplex.com/) auf Codeplex, um die in diesem Lernprogramm beschriebene Beispielanwendung herunterzuladen.
+Go to [Azure Search Scoring Profiles Demo](https://azuresearchscoringprofiles.codeplex.com/) on codeplex to download the sample application described in this tutorial.
 
-Klicken Sie auf der Registerkarte "Source Code" (Quellcode) auf **Download**, um eine ZIP-Datei der Lösung herunterzuladen.
+On the Source Code tab, click **Download** to get a zip file of the solution. 
 
  ![][12]
 
 <a id="sub-3"></a>
-## Bearbeiten von "app.config"
+## <a name="edit-app.config"></a>Edit app.config
 
-1. Nachdem Sie die Dateien extrahiert haben, öffnen Sie die Projektmappe in Visual Studio, um die Konfigurationsdatei zu bearbeiten.
-1. Doppelklicken Sie im Projektmappen-Explorer auf **app.config**. Diese Datei gibt den Dienstendpunkt und einen `api-key` an, die zur Authentifizierung der Anforderung verwendet werden. Diese Werte erhalten Sie im klassischen Portal.
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Rufen Sie das Dienst-Dashboard für Azure Search auf.
-1. Klicken Sie auf die Kachel **Eigenschaften**, um die Dienst-URL zu kopieren.
-1. Klicken Sie auf die Kachel **Schlüssel**, um den `api-key` zu kopieren.
+1. After you extract the files, open the solution in Visual Studio to edit the configuration file.
+1. In Solution Explorer, double-click **app.config**. This file specifies the service endpoint and an `api-key` used to authenticate the request. You can obtain these values from the Classic Portal.
+1. Sign in to the [Azure Portal](https://portal.azure.com).
+1. Go to the service dashboard for Azure Search.
+1. Click the **Properties** tile to copy the service URL
+1. Click the **Keys** tile to copy the `api-key`.
 
-Wenn Sie URL und `api-key` zu "app.config" hinzugefügt haben, sollten die Anwendungseinstellungen wie folgt aussehen:
+When you are finished adding the URL and `api-key` to app.config, application settings should look like this:
 
    ![][11]
 
 
 <a id="sub-4"></a>
-## Erkunden der Anwendung
+## <a name="explore-the-application"></a>Explore the application
 
-Sie sind beinahe bereit, die Anwendung zu erstellen und auszuführen, aber bevor Sie dies tun, sehen Sie sich die JSON-Dateien an, die zum Erstellen und Auffüllen des Indexes verwendet werden.
+You're almost ready to build and run the app, but before you do, take a look at the JSON files used to create and populate the index.
 
-**Schema.json** definiert den Index, einschließlich der Bewertungsprofile, die in dieser Demo hervorgehoben werden. Beachten Sie, dass das Schema alle im Index verwendeten Felder definiert, einschließlich nicht durchsuchbarer Felder, wie z. B. `margin`, die Sie in einem Bewertungsprofil verwenden können. Die Bewertungsprofilsyntax ist in [Hinzufügen eines Bewertungsprofils zu einem Azure Search-Index](http://msdn.microsoft.com/library/azure/dn798928.aspx) dokumentiert.
+**Schema.json** defines the index, including the scoring profiles that are emphasized in this demo. Notice that the schema defines all of the fields used in the index, including non-searchable fields, such as `margin`, that you can use in a scoring profile. Scoring profile syntax is documented in [Add a scoring profile to an Azure Search index](http://msdn.microsoft.com/library/azure/dn798928.aspx).
 
-**Data1-3.json** enthält die Daten: 246 Alben aus einigen Genres. Die Daten sind eine Kombination aus tatsächliche Alben und Interpreteninformationen mit fiktiven Feldern wie `price` und `margin`, die zur Veranschaulichung von Suchvorgängen dienen. Die Datendateien entsprechen dem Index und werden in Ihren Azure Search-Dienst hochgeladen. Nachdem die Daten hochgeladen und indiziert sind, können Sie Abfragen für diese ausgeben.
+**Data1-3.json** provides the data, 246 albums across a handful of genres. The data is a combination of actual album and artist information, with fictional fields like `price` and `margin` used to illustrate search operations. The data files conform to the index and are uploaded to your Azure Search service. After the data is uploaded and indexed, you can issue queries against it.
 
-**Program.cs** führt die folgenden Vorgänge aus:
+**Program.cs** performs the following operations:
 
-- Ein Konsolenfenster wird geöffnet.
+- Opens a console window.
 
-- Es wird mithilfe der Dienst-URL und des `api-key` eine Verbindung mit Azure Search hergestellt.
+- Connects to Azure Search using the service URL and `api-key`.
 
-- `musicstoreindex` wird gelöscht, sofern vorhanden.
+- Deletes the `musicstoreindex` if it exists.
 
-- Mithilfe der Datei "schema.json" wird ein neuer `musicstoreindex` erstellt.
+- Creates a new `musicstoreindex` using the schema.json file.
 
-- Der Index wird mit den Datendateien gefüllt.
+- Populates the index using the data files.
 
-- Der Index wird mit vier Abfragen abgefragt. Beachten Sie, dass die Wertungsprofile als Abfrageparameter angegeben sind. Alle Abfragen suchen nach dem gleichen Begriff: "best". Die erste Abfrage zeigt die Standardwertung an. Die verbleibenden drei Abfragen verwenden ein Wertungsprofil.
+- Queries the index using four queries. Notice that the scoring profiles are specified as a query parameter. All of the queries search for the same term, 'best'. The first query demonstrates default scoring. The remaining three queries use a scoring profile.
 
 <a id="sub-5"></a>
-## Erstellen und Ausführen der Anwendung
+## <a name="build-and-run-the-application"></a>Build and run the application
 
-Um Probleme mit Konnektivität oder Assemblyverweisen auszuschließen, erstellen und führen Sie die Anwendung aus, um sicherzustellen, dass keine Probleme bestehen, die zuerst behandelt werden müssen. Eine Konsolenanwendung sollte im Hintergrund geöffnet sein. Alle vier Abfragen werden ohne Unterbrechung nacheinander ausgeführt. Auf vielen Systemen wird das gesamte Programm in weniger als 15 Sekunden ausgeführt. Enthält die Konsolenanwendung eine Meldung wie die folgende: "Abgeschlossen. EINGABETASTE zum Fortfahren drücken", wurde das Programm erfolgreich abgeschlossen.
+To rule out connectivity or assembly reference problems, build and run the application to ensure there are no issues to work out first. You should see a console application open in the background. All four queries execute in sequence without pausing. On many systems, the entire program executes in under 15 seconds. If the console application includes a message stating “Complete. Press enter to continue”, the program completed successfully. 
 
-Zum Vergleichen der Abfragen können Sie die Ergebnisse der Abfrage in der Konsole markieren, kopieren und in eine Excel-Datei einfügen.
+To compare query runs, you can mark-copy-paste the query results from the console and paste them into an Excel file. 
 
-Die folgende Abbildung zeigt die Ergebnisse der ersten drei Abfragen nebeneinander. Alle Abfragen verwenden den gleichen Suchbegriff "best", der in zahlreichen Albumtiteln enthalten ist.
+The following illustration shows results from the first three queries side-by-side. All of the queries use the same search term, 'best', which appears in numerous album titles.
 
    ![][10]
 
-Die erste Abfrage verwendet die Standardwertung. Da der Suchbegriff nur in Albumtiteln enthalten ist und keine anderen Kriterien angegeben sind, werden Artikel mit "best" im Albumtitel in der Reihenfolge zurückgegeben, in der sie vom Search-Dienst gefunden werden.
+The first query uses default scoring. Since the search term appears only in album titles, and no other criteria is specified, items having 'best' in the album title are returned in the order in which the search service finds them. 
 
-Die zweite Abfrage verwendet ein Wertungsprofil, aber beachten Sie, dass das Profil keine Auswirkungen hat. Die Ergebnisse sind identisch mit denen der ersten Abfrage. Dies liegt daran, dass ein Wertungsprofil ein Feld ("genre" ") stärker berücksichtigt, das nicht von Belang für die Abfrage ist. Der Suchbegriff "best" existiert nicht in einem beliebigen Feld "genre" "für jedes Dokument. Wenn ein Wertungsprofil keine Auswirkungen hat, sind die Ergebnisse identisch mit der Standardwertung.
+The second query uses a scoring profile, but notice that the profile had no effect. The results are identical to those of the first query. This is because the scoring profile boosts a field ('genre') that is not germane to the query. The search term 'best' does not exist in any 'genre' field of any document. When a scoring profile has no effect, the results are the same as default scoring.  
 
-Die dritte Abfrage ist der erste Beweis für die Auswirkungen des Wertungsprofils. Der Suchbegriff ist weiterhin "best", daher arbeiten wir mit dem gleichen Satz von Alben, aber da das Wertungsprofil zusätzliche Kriterien bietet, welche die Felder "rating" und "last-updated" stärker berücksichtigt, steigen einige Elemente höher in der Liste.
+The third query is the first evidence of scoring profile impact. The search term is still 'best' so we are working with the same set of albums, but because the scoring profile provides additional criteria that boosts 'rating' and 'last-updated', some items are propelled higher in the list.
 
-Die nächste Abbildung zeigt die vierte und letzte Abfrage, mit Verstärkung von "margin". Das Feld "margin" kann nicht durchsucht werden und nicht in den Suchergebnissen zurückgegeben werden. Der Werte "margin" wurde in der Kalkulationstabelle manuell hinzugefügt, um zu verdeutlichen, dass Elemente mit höheren Margen weiter oben in der Liste der Suchergebnisse angezeigt werden.
+The next illustration shows the fourth and final query, boosted by 'margin'. The 'margin' field is non-searchable and cannot be returned in search results. The 'margin' value was manually added to the spreadsheet to help illustrate the point that items with higher margins show up higher in the search results list. 
 
    ![][9]
 
-Nun, da Sie sich mit den Wertungsprofilen vertraut gemacht haben, ändern Sie das Programm so, dass es andere Abfragesyntaxarten, Wertungsprofile oder umfangreichere Daten verwendet. Über die Links im nächsten Abschnitt erhalten Sie weitere Informationen.
+Now that you have experimented with scoring profiles, try changing the program to use different query syntax, scoring profiles, or richer data. Links in the next section provide more information.
 
 <a id="next-steps"></a>
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Erhalten Sie weitere Informationen zu Wertungsprofilen. Details finden Sie unter [Hinzufügen eines Bewertungsprofils zu einem Azure Search-Index](http://msdn.microsoft.com/library/azure/dn798928.aspx).
+Learn more about scoring profiles. See [Add a scoring profile to an Azure Search index](http://msdn.microsoft.com/library/azure/dn798928.aspx) for details.
 
-Erhalten Sie weitere Informationen zu Syntax und Abfrageparametern. Details finden Sie unter [Suchen von Dokumenten (REST-API für den Azure Search-Dienst)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
+Learn more about search syntax and query parameters. See [Search Documents (Azure Search REST API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) for details.
 
-Sie möchten einen Schritt zurückgehen und mehr über die Erstellung eines Indexes erfahren? [Sehen Sie sich dieses Video an](http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh), um die Grundlagen zu erlernen.
+Need to step back and learn more about index creation? [Watch this video](http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh) to understand the basics.
 
 <!--Anchors-->
 [Prerequisites]: #sub-1
@@ -124,6 +125,9 @@ Sie möchten einen Schritt zurückgehen und mehr über die Erstellung eines Inde
 [12]: ./media/search-get-started-scoring-profiles/AzureSearch_CodeplexDownload.PNG
 [11]: ./media/search-get-started-scoring-profiles/AzureSearch_Scoring_AppConfig.PNG
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
-[9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG
+[9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG 
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

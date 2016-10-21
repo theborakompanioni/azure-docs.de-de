@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Ressourcen-Manager-Vorlage für Ressourcenverknüpfungen | Microsoft Azure"
-   description="Zeigt das Ressourcen-Manager-Schema zum Bereitstellen von Links zwischen verwandten Ressourcen über eine Vorlage."
+   pageTitle="Resource Manager template for linking resources | Microsoft Azure"
+   description="Shows the Resource Manager schema for deploying links between related resources through a template."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,13 +16,14 @@
    ms.date="04/05/2016"
    ms.author="tomfitz"/>
 
-# Vorlagenschema für Ressourcenlinks
 
-Erstellt eine Verknüpfung zwischen zwei Ressourcen. Die Verknüpfung gehört zu einer Quellressource genannten Ressource. Die zweite Ressource in der Verknüpfung wird als Zielressource bezeichnet.
+# <a name="resource-links-template-schema"></a>Resource links template schema
 
-## Schemaformat
+Creates a link between two resources. The link is applied to a resource known as the source resource. The second resource in the link is known as the target resource.
 
-Fügen Sie zum Erstellen einer Verknüpfung das folgende Schema im Ressourcenabschnitt der Vorlage hinzu.
+## <a name="schema-format"></a>Schema format
+
+To create a link, add the following schema to the resources section of your template.
     
     {
         "type": enum,
@@ -38,41 +39,42 @@ Fügen Sie zum Erstellen einer Verknüpfung das folgende Schema im Ressourcenabs
 
 
 
-## Werte
+## <a name="values"></a>Values
 
-In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
+The following tables describe the values you need to set in the schema.
 
-| Name | Wert |
+| Name | Value |
 | ---- | ---- |
-| type | Enum<br />Erforderlich<br />**{Namespace}/{Typ}/providers/links**<br /><br />Der zu erstellende Ressourcentyp. Die Werte {Namespace} und {Typ} Werte beziehen sich auf den Anbieternamespace und Ressourcentyp der Quellressource. |
-| apiVersion | Enum<br />Erforderlich<br />**2015-01-01**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. |  
-| name | String<br />Erforderlich<br />**{Ressource}/Microsoft.Resources/{Linkname}**<br /> bis zu 64 Zeichen; darf weder <, > %, &, ? noch irgendwelche Steuerzeichen enthalten.<br /><br />Ein Wert, der sowohl den Namen der Quellressource als auch den Namen für den Link angibt. | 
-| dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Ressourcensammlung, von der dieser Link abhängt. Wenn die Ressourcen, die Sie verknüpfen in derselben Vorlage bereitgestellt werden, fügen Sie die Ressourcennamen in diesem Element hinzu, um sicherzustellen, dass sie zuerst bereitgestellt werden. | 
-| properties | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das die Ressource, zu der verknüpft werden soll sowie Informationen zum Link identifiziert. | 
+| type | Enum<br />Required<br />**{namespace}/{type}/providers/links**<br /><br />The resource type to create. The {namespace} and {type} values refer to the provider namespace and resource type of the source resource. |
+| apiVersion | Enum<br />Required<br />**2015-01-01**<br /><br />The API version to use for creating the resource. |  
+| name | String<br />Required<br />**{resouce}/Microsoft.Resources/{linkname}**<br /> up to 64 characters, and cannot contain <, > %, &, ?, or any control characters.<br /><br />A value that specifes both the name of source resource and a name for the link. |
+| dependsOn | Array<br />Optional<br />A comma-separated list of a resource names or resource unique identifiers.<br /><br />The collection of resources this link depends on. If the resources you are linking are deployed in the same template, include those resource names in this element to ensure they are deployed first. | 
+| properties | Object<br />Required<br />[properties object](#properties)<br /><br />An object that identifies the resource to link to, and notes about the link. |  
 
 <a id="properties" />
-### properties-Objekt
+### <a name="properties-object"></a>properties object
 
-| Name | Wert |
+| Name | Value |
 | ------- | ---- |
-| targetId | String<br />Erforderlich<br />**{Ressourcen-ID}**<br /><br />Der Bezeichner der Zielressource, zu der verknüpft werden soll. | | notes | String<br />Optional<br />bis zu 512 Zeichen<br /><br />Beschreibung der Sperre. |
+| targetId | String<br />Required<br />**{resource id}**<br /><br />The identifier of the target resource to link to. |
+| notes | String<br />Optional<br />up to 512 characters<br /><br />Description of the lock. |
 
 
-## Verwenden der Verknüpfungsressource
+## <a name="how-to-use-the-link-resource"></a>How to use the link resource
 
-Sie stelle eine Verknüpfung zwischen zwei Ressourcen her, wenn die Ressourcen eine Abhängigkeit aufweisen, die nach der Bereitstellung bestehen bleibt. Beispielsweise kann eine App eine Verbindung mit einer Datenbank in einer anderen Ressourcengruppe herstellen. Sie können diese Abhängigkeit definieren, indem Sie eine Verknüpfung der App mit der Datenbank erstellen. Verknüpfungen ermöglichen Ihnen das Dokumentieren der Beziehung zwischen zwei Ressourcen. Später können Sie oder andere Personen in Ihrer Organisation eine Ressource auf Verknüpfungen abfragen, um zu ermitteln, wie die Ressource mit anderen Ressourcen zusammenarbeitet.
+You apply a link between two resources when the resources have a dependency that continues after deployment. For example, an app may connect to a database in a different resource group. You can define that dependency by creating a link from the app to the database. Links enable you to document the relationship between two resources. Later, you or someone else in your organization can query a resource for links to discover how the resource works with other resources.
 
-Alle verknüpften Ressourcen müssen zum selben Abonnement gehören. Jede Ressource kann mit 50 anderen Ressourcen verknüpft werden. Wenn verknüpfte Ressourcen gelöscht oder verschoben werden, muss der Besitzer des Links den verbleibenden Link bereinigen.
+All linked resources must belong to the same subscription. Each resource can be linked to 50 other resources. If any of the linked resources are deleted or moved, the link owner must clean up the remaining link.
 
-Informationen zum Arbeiten mit Verknüpfungen über REST finden Sie unter [Verknüpfte Ressourcen](https://msdn.microsoft.com/library/azure/mt238499.aspx).
+To work with links through REST, see [Linked Resources](https://msdn.microsoft.com/library/azure/mt238499.aspx).
 
-Verwenden Sie den folgenden Azure PowerShell-Befehl, um alle Verknüpfungen in Ihrem Abonnement anzuzeigen. Sie können andere Parameter angeben, um die Ergebnisse einzuschränken.
+Use the following Azure PowerShell command to see all of the links in your subscription. You can provide other parameters to limit the results.
 
     Get-AzureRmResource -ResourceType Microsoft.Resources/links -isCollection -ResourceGroupName <YourResourceGroupName>
 
-## Beispiele
+## <a name="examples"></a>Examples
 
-Im folgenden Beispiel wird eine Schreibschutzsperre für eine Web-App angewendet.
+The following example applies a read-only lock to a web app.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -119,25 +121,29 @@ Im folgenden Beispiel wird eine Schreibschutzsperre für eine Web-App angewendet
                     "targetId": "[resourceId('Microsoft.Storage/storageAccounts','storagecontoso')]",
                     "notes": "This web site uses the storage account to store user information."
                 }
-    	    }
+            }
         ],
         "outputs": {}
     }
 
-## Schnellstartvorlagen
+## <a name="quickstart-templates"></a>Quickstart templates
 
-Die folgenden Schnellstartvorlagen stellen Ressourcen mit einem Link bereit.
+The following quickstart templates deploy resources with a link.
 
-- [Warnung für Warteschlange mit Logik-App](https://azure.microsoft.com/documentation/templates/201-alert-to-queue-with-logic-app)
-- [Warnung für Pufferzeit mit Logik-App](https://azure.microsoft.com/documentation/templates/201-alert-to-slack-with-logic-app)
-- [Bereitstellen einer API-App mit einem vorhandenen Gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-existing)
-- [Bereitstellen einer API-App mit einem neuen Gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-new)
-- [Erstellen einer Logik-App und einer API-App mithilfe einer Vorlage](https://azure.microsoft.com/documentation/templates/201-logic-app-api-app-create)
-- [Logik-App, die eine Textnachricht sendet, wenn eine Warnung ausgelöst wird](https://azure.microsoft.com/documentation/templates/201-alert-to-text-message-with-logic-app)
+- [Alert to queue with Logic app](https://azure.microsoft.com/documentation/templates/201-alert-to-queue-with-logic-app)
+- [Alert to Slack with Logic app](https://azure.microsoft.com/documentation/templates/201-alert-to-slack-with-logic-app)
+- [Provision an API app with an existing gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-existing)
+- [Provision an API app with a new gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-new)
+- [Create a Logic App plus API app using a template](https://azure.microsoft.com/documentation/templates/201-logic-app-api-app-create)
+- [Logic app that sends a text message when an alert fires](https://azure.microsoft.com/documentation/templates/201-alert-to-text-message-with-logic-app)
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Informationen zur Vorlagenstruktur finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
+- For information about the template structure, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
 
-<!----HONumber=AcomDC_0406_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

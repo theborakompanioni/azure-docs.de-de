@@ -1,118 +1,124 @@
 <properties
-	pageTitle="Echtzeitwarnungen in Azure CDN | Microsoft Azure"
-	description="Echtzeitwarnungen in Microsoft Azure CDN. Echtzeitwarnungen informieren über die Leistung der Endpunkte in Ihrem CDN-Profil."
-	services="cdn"
-	documentationCenter=""
-	authors="camsoper"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Azure CDN Real-Time Alerts | Microsoft Azure"
+    description="Real-time alerts in Microsoft Azure CDN. Real-time alerts provide notifications about the performance of the endpoints in your CDN profile."
+    services="cdn"
+    documentationCenter=""
+    authors="camsoper"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="casoper"/>
+    ms.service="cdn"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/12/2016"
+    ms.author="casoper"/>
 
-# Echtzeitwarnungen in Microsoft Azure CDN
+
+# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Real-time alerts in Microsoft Azure CDN
 
 [AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 
-## Übersicht
+## <a name="overview"></a>Overview
 
-In diesem Dokument werden Echtzeitwarnungen in Microsoft Azure CDN erläutert. Diese Funktion informiert in Echtzeit über die Leistung der Endpunkte in Ihrem CDN-Profil. Sie können E-Mail- oder HTTP-Warnungen auf der Grundlage folgender Faktoren einrichten:
+This document explains real-time alerts in Microsoft Azure CDN. This functionality provides real-time notifications about the performance of the endpoints in your CDN profile.  You can set up email or HTTP alerts based on:
 
-* Bandbreite
-* Statuscodes
-* Cachestatus
-* Verbindungen
+* Bandwidth
+* Status Codes
+* Cache Statuses
+* Connections
 
-## Erstellen einer Echtzeitwarnung
+## <a name="creating-a-real-time-alert"></a>Creating a real-time alert
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil.
+1. In the [Azure Portal](https://portal.azure.com), browse to your CDN profile.
 
-	![CDN-Profilblatt](./media/cdn-real-time-alerts/cdn-profile-blade.png)
+    ![CDN profile blade](./media/cdn-real-time-alerts/cdn-profile-blade.png)
 
-2. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten**.
+2. From the CDN profile blade, click the **Manage** button.
 
-	![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+    ![CDN profile blade manage button](./media/cdn-real-time-alerts/cdn-manage-btn.png)
 
-	Das CDN-Verwaltungsportal wird geöffnet.
+    The CDN management portal opens.
 
-3. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Echtzeitstatistiken**. Klicken Sie auf **Real-Time Alerts** (Echtzeitwarnungen).
+3. Hover over the **Analytics** tab, then hover over the **Real-Time Stats** flyout.  Click on **Real-Time Alerts**.
 
-	![CDN-Verwaltungsportal](./media/cdn-real-time-alerts/cdn-premium-portal.png)
+    ![CDN management portal](./media/cdn-real-time-alerts/cdn-premium-portal.png)
 
-	Eine Liste mit ggf. bereits vorhandenen Warnungskonfigurationen wird angezeigt.
+    The list of existing alert configurations (if any) is displayed.
 
-4. Klicken Sie auf die Schaltfläche **Warnung hinzufügen**.
+4. Click the **Add Alert** button.
 
-	![Blatt „Warnung hinzufügen“](./media/cdn-real-time-alerts/cdn-add-alert.png)
+    ![Add Alert button](./media/cdn-real-time-alerts/cdn-add-alert.png)
 
-	Ein Formular zum Erstellen einer neuen Warnung wird angezeigt.
+    A form for creating a new alert is displayed.
 
-	![Formular „Neue Warnung“](./media/cdn-real-time-alerts/cdn-new-alert.png)
+    ![New Alert form](./media/cdn-real-time-alerts/cdn-new-alert.png)
 
-5. Wenn diese Warnung nach dem Klicken auf **Speichern** aktiviert werden soll, aktivieren Sie das Kontrollkästchen **Warnung aktiviert**.
+5. If you want this alert to be active when you click **Save**, check the **Alert Enabled** checkbox.
 
-6. Geben Sie im Feld **Name** einen aussagekräftigen Namen für die Warnung ein.
+6. Enter a descriptive name for your alert in the **Name** field.
 
-7. Wählen Sie in der Dropdownliste **Medientyp** die Option **HTTP Large Object** aus.
+7. In the **Media Type** dropdown, select **HTTP Large Object**.
 
-	![Medientyp mit ausgewählter Option „HTTP Large Object“](./media/cdn-real-time-alerts/cdn-http-large.png)
+    ![Media Type with HTTP Large Object selected](./media/cdn-real-time-alerts/cdn-http-large.png)
 
-	> [AZURE.IMPORTANT] Für **Medientyp** muss unbedingt **HTTP Large Object** ausgewählt werden. Die anderen Optionen werden von **Azure CDN von Verizon** nicht verwendet. Bei Verwendung einer anderen Option als **HTTP Large Object** wird die Warnung niemals ausgelöst.
+    > [AZURE.IMPORTANT] You must select **HTTP Large Object** as the **Media Type**.  The other choices are not used by **Azure CDN from Verizon**.  Failure to select **HTTP Large Object** will cause your alert to never be triggered.
 
-8. Erstellen Sie einen zu überwachenden **Ausdruck**. Wählen Sie hierzu Werte für **Metrik**, **Operator** und **Triggerwert** aus.
+8. Create an **Expression** to monitor by selecting a **Metric**, **Operator**, and **Trigger value**.
 
-	- Wählen Sie unter **Metrik** die Art der Bedingung aus, die Sie überwachen möchten. **Bandwidth Mbps** (Bandbreite MBit/s) ist die Bandbreitenauslastung in Megabits pro Sekunde. **Verbindungen insgesamt** ist die Anzahl gleichzeitiger HTTP-Verbindungen mit unseren Edgeservern. Definitionen der verschiedenen Cachestatusoptionen und Statuscodes finden Sie unter [Azure CDN Cache Status Codes](https://msdn.microsoft.com/library/mt759237.aspx) (Azure CDN-Cachestatuscodes) sowie unter [Azure CDN HTTP Status Codes](https://msdn.microsoft.com/library/mt759238.aspx) (Azure CDN-HTTP-Statuscodes).
-	- **Operator** ist der mathematische Operator, der die Beziehung zwischen Metrik und Triggerwert herstellt.
-	- **Triggerwert** ist der Schwellenwert, ab dem eine Benachrichtigung gesendet wird.
+    - For **Metric**, select the type of condition you want monitored.  **Bandwidth Mbps** is the amount of bandwidth usage in megabits per second.  **Total Connections** is the number of concurrent HTTP connections to our edge servers.  For definitions of the various cache statuses and status codes, see [Azure CDN Cache Status Codes](https://msdn.microsoft.com/library/mt759237.aspx) and [Azure CDN HTTP Status Codes](https://msdn.microsoft.com/library/mt759238.aspx)
+    - **Operator** is the mathematical operator that establishes the relationship between the metric and the trigger value.
+    - **Trigger Value** is the threshold value that must be met before a notification will be sent out.
 
-	Der im folgenden Beispiel erstellte Ausdruck gibt an, dass eine Benachrichtigung erfolgen soll, wenn mehr als 25 Statuscodes vom Typ 404 vorliegen:
+    In the below example, the expression I have created indicates that I would like to be notified when the number of 404 status codes is greater than 25.
 
-	![Echtzeitwarnung mit Beispielausdruck](./media/cdn-real-time-alerts/cdn-expression.png)
+    ![Real-time alert sample expression](./media/cdn-real-time-alerts/cdn-expression.png)
 
-9. Geben Sie unter **Intervall** an, wie häufig der Ausdruck ausgewertet werden soll.
+9. For **Interval**, enter how frequently you would like the expression evaluated.
 
-10. Wählen Sie in der Dropdownliste **Notify on** (Benachrichtigungszeitpunkt) aus, wann Sie benachrichtigt werden möchten, wenn der Ausdruck erfüllt ist.
-	
-	- Bei **Condition Start** (Bedingungsbeginn) wird eine Benachrichtigung gesendet, wenn die angegebene Bedingung erstmals erkannt wird.
-	- Bei **Condition End** (Bedingungsende) wird eine Benachrichtigung gesendet, wenn die angegebene Bedingung nicht mehr erkannt wird. Diese Benachrichtigung kann nur ausgelöst werden, wenn unser Netzwerküberwachungssystem zuvor erkannt hat, dass die angegebene Bedingung aufgetreten ist.
-	- Bei **Continuous** (Fortlaufend) wird immer dann eine Benachrichtigung gesendet, wenn das Netzwerküberwachungssystem die angegebene Bedingung erkennt. Bedenken Sie, dass pro Intervall immer nur einmal geprüft wird, ob die angegebene Bedingung vorliegt.
-	- Bei **Condition Start and End** (Bedingungsbeginn und -ende) wird eine Benachrichtigung gesendet, wenn die angegebene Bedingung erstmals erkannt wird, und eine weitere Benachrichtigung, wenn die Bedingung nicht mehr erkannt wird.
+10. In the **Notify on** dropdown, select when you would like to be notified when the expression is true.
+    
+    - **Condition Start** indicates that a notification will be sent when the specified condition is first detected.
+    - **Condition End** indicates that a notification will be sent when the specified condition is no longer detected. This notification can only be triggered after our network monitoring system detected that the specified condition occurred.
+    - **Continuous** indicates that a notification will be sent each time that the network monitoring system detects the specified condition. Keep in mind that the network monitoring system will only check once per interval for the specified condition.
+    - **Condition Start and End** indicates that a notification will be sent the first time that the specified condition is detected and once again when the condition is no longer detected.
 
-11. Wenn Sie Benachrichtigungen per E-Mail erhalten möchten, aktivieren Sie das Kontrollkästchen **Notify by Email** (Per E-Mail benachrichtigen).
+11. If you want to receive notifications by email, check the **Notify by Email** checkbox.  
 
-	![Formular für E-Mail-Benachrichtigungen](./media/cdn-real-time-alerts/cdn-notify-email.png)
-	
-	Geben Sie im Feld **An** die E-Mail-Adresse ein, an die die Benachrichtigungen gesendet werden sollen. Für **Betreff** und **Text** können Sie entweder die Standardeinstellung beibehalten oder die Nachricht mithilfe der Liste verfügbarer Schlüsselwörter anpassen, sodass beim Senden der Nachricht automatisch Warnungsdaten eingefügt werden.
+    ![Notify by Email form](./media/cdn-real-time-alerts/cdn-notify-email.png)
+    
+    In the **To** field, enter the email address you where you want notifications sent. For **Subject** and **Body**, you may leave the default, or you may customize the message using the **Available keywords** list to dynamically insert alert data when the message is sent.
 
-	> [AZURE.NOTE] Klicken Sie zum Testen der E-Mail-Benachrichtigung nach dem Speichern der Warnungskonfiguration auf die Schaltfläche **Testbenachrichtigung**.
+    > [AZURE.NOTE] You can test the email notification by clicking the **Test Notification** button, but only after the alert configuration has been saved.
 
-12. Wenn Benachrichtigungen auf einem Webserver veröffentlicht werden sollen, aktivieren Sie das Kontrollkästchen **Notify by HTTP Post** (Per HTTP Post benachrichtigen).
+12. If you want notifications to be posted to a web server, check the **Notify by HTTP Post** checkbox.
 
-	![Formular für HTTP Post-Benachrichtigungen](./media/cdn-real-time-alerts/cdn-notify-http.png)
+    ![Notify by HTTP Post form](./media/cdn-real-time-alerts/cdn-notify-http.png)
 
-	Geben Sie im Feld **URL** die URL ein, unter der die HTTP-Nachricht veröffentlicht werden soll. Geben Sie im Textfeld **Header** die HTTP-Header ein, die in der Anforderung gesendet werden sollen. Unter **Text** können Sie die Nachricht mithilfe der Liste verfügbarer Schlüsselwörter anpassen, sodass beim Senden der Nachricht automatisch Warnungsdaten eingefügt werden. **Header** und **Text** werden standardmäßig auf eine XML-Nutzlast festgelegt, die der Angabe im folgenden Beispiel ähnelt:
+    In the **Url** field, enter the URL you where you want the HTTP message posted. In the **Headers** textbox, enter the HTTP headers to be sent in the request.  For **Body** you may customize the message using the **Available keywords** list to dynamically insert alert data when the message is sent.  **Headers** and **Body** default to an XML payload similar to the below example.
 
-	```
-	<string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-		<![CDATA[Expression=Status Code : 404 per second > 25&Metric=Status Code : 404 per second&CurrentValue=[CurrentValue]&NotificationCondition=Condition Start]]>
-	</string>
-	```
+    ```
+    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+        <![CDATA[Expression=Status Code : 404 per second > 25&Metric=Status Code : 404 per second&CurrentValue=[CurrentValue]&NotificationCondition=Condition Start]]>
+    </string>
+    ```
 
-	> [AZURE.NOTE] Klicken Sie zum Testen der HTTP Post-Benachrichtigung nach dem Speichern der Warnungskonfiguration auf die Schaltfläche **Testbenachrichtigung**.
+    > [AZURE.NOTE] You can test the HTTP Post notification by clicking the **Test Notification** button, but only after the alert configuration has been saved.
 
-13. Klicken Sie auf die Schaltfläche **Speichern**, um die Warnungskonfiguration zu speichern. Falls Sie in Schritt 5 das Kontrollkästchen **Warnung aktiviert** aktiviert haben, ist die Warnung nun aktiv.
+13. Click the **Save** button to save your alert configuration.  If you checked **Alert Enabled** in step 5, your alert is now active.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-- Analysieren Sie [Echtzeitstatistiken in Azure CDN](cdn-real-time-stats.md).
-- Informieren Sie sich ausführlicher über [erweiterte HTTP-Berichte](cdn-advanced-http-reports.md).
-- Analysieren Sie [Verwendungsmuster](cdn-analyze-usage-patterns.md).
+- Analyze [Real-time stats in Azure CDN](cdn-real-time-stats.md)
+- Dig deeper with [advanced HTTP reports](cdn-advanced-http-reports.md)
+- Analyze [usage patterns](cdn-analyze-usage-patterns.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

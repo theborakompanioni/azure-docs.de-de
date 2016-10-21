@@ -1,240 +1,246 @@
 <properties
-	pageTitle="Azure Mobile Engagement Web SDK-APIs| Microsoft Azure"
-	description="Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="erikre"
-	editor="" />
+    pageTitle="Azure Mobile Engagement Web SDK APIs | Microsoft Azure"
+    description="The latest updates and procedures for the Web SDK for Azure Mobile Engagement"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="web"
-	ms.devlang="js"
-	ms.topic="article"
-	ms.date="06/07/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="web"
+    ms.devlang="js"
+    ms.topic="article"
+    ms.date="06/07/2016"
+    ms.author="piyushjo" />
 
-# Verwenden der Azure Mobile Engagement-API in einer Webanwendung
 
-Dieses Dokument ist ein Zusatz für das Dokument über die Vorgehensweise zum [Integrieren von Azure Mobile Engagement in eine Webanwendung](mobile-engagement-web-integrate-engagement.md). Es enthält ausführlichere Informationen dazu, wie Sie mithilfe der Azure Mobile Engagement-API Ihre Anwendungsstatistik melden können.
+# <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Use the Azure Mobile Engagement API in a web application
 
-Die Azure Mobile Engagement-API wird vom `engagement.agent`-Objekt bereitgestellt. Das standardmäßige Alias des Azure Mobile Engagement Web SDK lautet `engagement`. Die Definition dieses Alias kann über die SDK-Konfiguration geändert werden.
+This document is an addition to the document that tells you how to [integrate Mobile Engagement in a web application](mobile-engagement-web-integrate-engagement.md). It provides in-depth details about how to use the Azure Mobile Engagement API to report your application statistics.
 
-## Mobile Engagement-Konzepte
+The Mobile Engagement API is provided by the `engagement.agent` object. The default Azure Mobile Engagement Web SDK alias is `engagement`. You can redefine this alias from the SDK configuration.
 
-In den folgenden Abschnitten werden allgemeine [Mobile Engagement-Konzepte](mobile-engagement-concepts.md) für die Webplattform ausführlicher behandelt.
+## <a name="mobile-engagement-concepts"></a>Mobile Engagement concepts
 
-### `Session` und `Activity`
+The following parts refine common [Mobile Engagement concepts](mobile-engagement-concepts.md) for the web platform.
 
-Wenn der Benutzer zwischen zwei Aktivitäten mehr als zwei Sekunden untätig bleibt, wird diese Folge von Aktivitäten in zwei einzelne Sitzungen unterteilt. Diese Sekunden werden als Sitzungstimeout bezeichnet.
+### <a name="`session`-and-`activity`"></a>`Session` and `Activity`
 
-Wenn Ihre Webanwendung das Ende der Benutzeraktivitäten nicht selbst deklariert (durch Aufrufen der `engagement.agent.endActivity`-Funktion), lässt der Mobile Engagement-Server die Benutzersitzung automatisch drei Minuten nach dem Schließen der Anwendungsseite ablaufen. Dies wird als Sitzungstimeout des Servers bezeichnet.
+If the user stays idle for more than a few seconds between two activities, the user's sequence of activities is split into two distinct sessions. These few seconds are called the session timeout.
+
+If your web application doesn't declare the end of user activities by itself (by calling the `engagement.agent.endActivity` function), the Mobile Engagement server automatically expires the user session within three minutes after the application page is closed. This is called the server session timeout.
 
 ### `Crash`
 
-Standardmäßig werden keine automatisierten Berichte für nicht abgefangene JavaScript-Ausnahmen erstellt. Abstürze können jedoch mithilfe der `sendCrash`-Funktion manuell gemeldet werden. (Weitere Informationen finden Sie im Abschnitt zum Melden von Abstürzen).
+Automated reports of uncaught JavaScript exceptions are not created by default. However, you can report crashes manually by using the `sendCrash` function (see the section on reporting crashes).
 
-## Melden von Aktivitäten
+## <a name="reporting-activities"></a>Reporting activities
 
-Zu den gemeldeten Benutzeraktivitäten zählt etwa das Starten einer neuen Aktivität oder das Beenden der aktuellen Aktivität durch einen Benutzer.
+Reporting on user activity includes when a user starts a new activity, and when the user ends the current activity.
 
-### Benutzer startet eine neue Aktivität
+### <a name="user-starts-a-new-activity"></a>User starts a new activity
 
-	engagement.agent.startActivity("MyUserActivity");
+    engagement.agent.startActivity("MyUserActivity");
 
-Bei jeder Änderung der Benutzeraktivität muss `startActivity()` aufgerufen werden. Der erste Aufruf dieser Funktion startet eine neue Benutzersitzung.
+You need to call `startActivity()` each time user activity changes. The first call to this function starts a new user session.
 
-### Benutzer beendet die aktuelle Aktivität
+### <a name="user-ends-the-current-activity"></a>User ends the current activity
 
-	engagement.agent.endActivity();
+    engagement.agent.endActivity();
 
-`endActivity()` muss mindestens einmal aufgerufen werden, wenn der Benutzer seine letzte Aktivität beendet. Dadurch wird dem Mobile Engagement Web SDK mitgeteilt, dass der Benutzer derzeit untätig ist und die Benutzersitzung nach Ablauf des Sitzungstimeouts geschlossen werden muss. Wenn Sie vor Ablauf des Sitzungstimeouts `startActivity()` aufrufen, wird die Sitzung fortgesetzt.
+You need to call `endActivity()` at least once when the user finishes their last activity. This informs the Mobile Engagement Web SDK that the user is currently idle, and that the user session needs to be closed after the session timeout expires. If you call `startActivity()` before the session timeout expires, the session is simply resumed.
 
-Da es für das Schließen des Navigatorfensters keinen verlässlichen Aufruf gibt, ist es innerhalb einer Webumgebung oft schwierig bis unmöglich, das Ende von Benutzeraktivitäten abzufangen. Deshalb wird die Benutzersitzung vom Mobile Engagement-Server automatisch binnen drei Minuten nach Schließen der Anwendungsseite beendet.
+Because there's no reliable call for when the navigator window is closed, it's often difficult or impossible to catch the end of user activities inside a web environment. That's why the Mobile Engagement server automatically expires the user session within three minutes after the application page is closed.
 
-## Melden von Ereignissen
+## <a name="reporting-events"></a>Reporting events
 
-Zu den gemeldeten Ereignissen zählen Sitzungsereignisse und eigenständige Ereignisse.
+Reporting on events covers session events and standalone events.
 
-### Sitzungsereignisse
+### <a name="session-events"></a>Session events
 
-Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutzers während dessen Sitzung zu melden.
+Session events usually are used to report the actions performed by a user during the user's session.
 
-**Beispiel ohne zusätzliche Daten:**
+**Example without extra data:**
 
-	loginButton.onclick = function() {
-	  engagement.agent.sendSessionEvent('login');
-	  // [...]
-	}
+    loginButton.onclick = function() {
+      engagement.agent.sendSessionEvent('login');
+      // [...]
+    }
 
-**Beispiel mit zusätzlichen Daten:**
+**Example with extra data:**
 
-	loginButton.onclick = function() {
-	  engagement.agent.sendSessionEvent('login', {user: 'alice'});
-	  // [...]
-	}
+    loginButton.onclick = function() {
+      engagement.agent.sendSessionEvent('login', {user: 'alice'});
+      // [...]
+    }
 
-### Eigenständige Ereignisse
+### <a name="standalone-events"></a>Standalone events
 
-Im Gegensatz zu Sitzungsereignissen können eigenständige Ereignisse außerhalb eines Sitzungskontextes auftreten.
+Unlike session events, standalone events can occur outside the context of a session.
 
-Verwenden Sie in diesem Fall ``engagement.agent.sendEvent`` anstelle von ``engagement.agent.sendSessionEvent``.
+For that, use ``engagement.agent.sendEvent`` instead of ``engagement.agent.sendSessionEvent``.
 
-## Melden von Fehlern
+## <a name="reporting-errors"></a>Reporting errors
 
-Zu den gemeldeten Fehlern zählen Sitzungsfehler und eigenständige Fehler.
+Reporting on errors covers session errors and standalone errors.
 
-### Sitzungsfehler
+### <a name="session-errors"></a>Session errors
 
-Sitzungsfehler werden normalerweise verwendet, um Fehler zu melden, die Auswirkungen auf den Benutzer während dessen Sitzung haben.
+Session errors usually are used to report the errors that have an impact on the user during the user's session.
 
-**Beispiel ohne zusätzliche Daten:**
+**Example without extra data:**
 
-	var validateForm = function() {
-	  // [...]
-	  if (password.length < 6) {
-	    engagement.agent.sendSessionError('password_too_short');
-	  }
-	  // [...]
-	}
+    var validateForm = function() {
+      // [...]
+      if (password.length < 6) {
+        engagement.agent.sendSessionError('password_too_short');
+      }
+      // [...]
+    }
 
-**Beispiel mit zusätzlichen Daten:**
+**Example with extra data:**
 
-	var validateForm = function() {
-	  // [...]
-	  if (password.length < 6) {
-	    engagement.agent.sendSessionError('password_too_short', {length: 4});
-	  }
-	  // [...]
-	}
+    var validateForm = function() {
+      // [...]
+      if (password.length < 6) {
+        engagement.agent.sendSessionError('password_too_short', {length: 4});
+      }
+      // [...]
+    }
 
-### Eigenständige Fehler
+### <a name="standalone-errors"></a>Standalone errors
 
-Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kontexts einer Sitzung auftreten.
+Unlike session errors, standalone errors can occur outside the context of a session.
 
-Verwenden Sie in diesem Fall `engagement.agent.sendError` anstelle von `engagement.agent.sendSessionError`.
+For that, use `engagement.agent.sendError` instead of `engagement.agent.sendSessionError`.
 
-## Melden von Aufträgen
+## <a name="reporting-jobs"></a>Reporting jobs
 
-Meldungen für Aufträge umfassen das Melden von Fehlern und Ereignissen, die während eines Auftrags auftreten, sowie das Melden von Abstürzen.
+Reporting on jobs covers reporting errors and events that occur during a job, and reporting crashes.
 
-**Beispiel:**
+**Example:**
 
-Wenn Sie eine AJAX-Anforderung überwachen möchten, verwenden Sie Folgendes:
+If you want to monitor an AJAX request, you'd use the following:
 
-	// [...]
-	xhr.onreadystatechange = function() {
-	  if (xhr.readyState == 4) {
-	  // [...]
-	    engagement.agent.endJob('publish');
-	  }
-	}
-	engagement.agent.startJob('publish');
-	xhr.send();
-	// [...]
+    // [...]
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+      // [...]
+        engagement.agent.endJob('publish');
+      }
+    }
+    engagement.agent.startJob('publish');
+    xhr.send();
+    // [...]
 
-### Melden von Fehlern während eines Auftrags
+### <a name="reporting-errors-during-a-job"></a>Reporting errors during a job
 
-Fehler können mit einem ausgeführten Auftrag (anstatt mit der aktuellen Benutzersitzung) in Zusammenhang stehen.
+Errors can be related to a running job instead of to the current user session.
 
-**Beispiel:**
+**Example:**
 
-Sie möchten einen Fehler melden, wenn eine AJAX-Anforderung nicht erfolgreich ist:
+If you want to report an error if an AJAX request fails:
 
-	// [...]
-	xhr.onreadystatechange = function() {
-	  if (xhr.readyState == 4) {
-	    // [...]
-	    if (xhr.status == 0 || xhr.status >= 400) {
-	      engagement.agent.sendJobError('publish_xhr', 'publish', {status: xhr.status, statusText: xhr.statusText});
-	    }
-	    engagement.agent.endJob('publish');
-	  }
-	}
-	engagement.agent.startJob('publish');
-	xhr.send();
-	// [...]
+    // [...]
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        // [...]
+        if (xhr.status == 0 || xhr.status >= 400) {
+          engagement.agent.sendJobError('publish_xhr', 'publish', {status: xhr.status, statusText: xhr.statusText});
+        }
+        engagement.agent.endJob('publish');
+      }
+    }
+    engagement.agent.startJob('publish');
+    xhr.send();
+    // [...]
 
-### Melden von Ereignissen während eines Auftrags
+### <a name="reporting-events-during-a-job"></a>Reporting events during a job
 
-Ereignisse können dank der `engagement.agent.sendJobEvent`-Funktion mit einem ausgeführten Auftrag (anstatt mit der aktuellen Benutzersitzung) in Zusammenhang stehen.
+Events can be related to a running job instead of to the current user session, thanks to the `engagement.agent.sendJobEvent` function.
 
-Diese Funktion funktioniert genau wie `engagement.agent.sendJobError`.
+This function works exactly like `engagement.agent.sendJobError`.
 
-### Melden von Abstürzen
+### <a name="reporting-crashes"></a>Reporting crashes
 
-Mit der `sendCrash`-Funktion können Sie Abstürze manuell melden.
+Use the `sendCrash` function to report crashes manually.
 
-Das `crashid`-Argument ist eine Zeichenfolge zum Angeben der Absturzart. Das `crash`-Argument ist üblicherweise die Stapelüberwachung für den Absturz als Zeichenfolge.
+The `crashid` argument is a string that identifies the type of crash.
+The `crash` argument usually is the stack trace of the crash as a string.
 
-	engagement.agent.sendCrash(crashid, crash);
+    engagement.agent.sendCrash(crashid, crash);
 
-## Zusätzliche Parameter
+## <a name="extra-parameters"></a>Extra parameters
 
-An Ereignisse, Fehler, Aktivitäten oder Aufträge können beliebige Daten angefügt werden.
+You can attach arbitrary data to an event, error, activity, or job.
 
-Bei diesen Daten kann es sich um ein beliebiges JSON-Objekt (aber nicht um ein Array oder einen primitiven Typ) handeln.
+The data can be any JSON object (but not an array or primitive type).
 
-**Beispiel:**
+**Example:**
 
-	var extras = {"video_id": 123, "ref_click": "http://foobar.com/blog"};
-	engagement.agent.sendEvent("video_clicked", extras);
+    var extras = {"video_id": 123, "ref_click": "http://foobar.com/blog"};
+    engagement.agent.sendEvent("video_clicked", extras);
 
-### Grenzen
+### <a name="limits"></a>Limits
 
-Für zusätzliche Parameter geltende Grenzwerte betreffen reguläre Ausdrücke für Schlüssel, Werttypen und Größe.
+Limits that apply to extra parameters are in the areas of regular expressions for keys, value types, and size.
 
-#### Schlüssel
+#### <a name="keys"></a>Keys
 
-Jeder Schlüssel in dem Objekt muss mit dem folgenden regulären Ausdruck übereinstimmen:
+Each key in the object must match the following regular expression:
 
-	^[a-zA-Z][a-zA-Z_0-9]*
+    ^[a-zA-Z][a-zA-Z_0-9]*
 
-Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben beginnen und mit Buchstaben, Ziffern oder Unterstrichen (\_) fortgesetzt werden müssen.
+This means that keys must start with at least one letter, followed by letters, digits, or underscores (\_).
 
-#### Werte
+#### <a name="values"></a>Values
 
-Werte sind auf Zeichenfolgen, Zahlen und boolesche Werte beschränkt.
+Values are limited to string, number, and Boolean types.
 
-#### Größe
+#### <a name="size"></a>Size
 
-Zusätzliche Daten sind auf 1024 Zeichen pro Aufruf beschränkt (nachdem das Mobile Engagement Web SDK sie in JSON codiert hat).
+Extras are limited to 1,024 characters per call (after the Mobile Engagement Web SDK encodes it in JSON).
 
-## Melden von Anwendungsinformationen
+## <a name="reporting-application-information"></a>Reporting application information
 
-Mithilfe der `sendAppInfo()`-Funktion können Sie manuell Nachverfolgungsinformationen (oder andere anwendungsspezifische Informationen) melden.
+You can manually report tracking information (or any other application-specific information) by using the `sendAppInfo()` function.
 
-Diese Informationen können inkrementell gesendet werden. Für ein spezifisches Gerät wird immer nur der letzte Wert für einen spezifischen Schlüssel beibehalten.
+Note that this information can be sent incrementally. Only the latest value for a specific key will be kept for a specific device.
 
-Genau wie bei den zusätzlichen Daten zu Ereignissen können Sie zum Abstrahieren der Anwendungsinformationen ein beliebiges JSON-Objekt verwenden. Dabei werden Arrays und untergeordnete Objekte als flache Zeichenfolgen (mit JSON-Serialisierung) behandelt.
+Like event extras, you can use any JSON object to abstract application information. Note that arrays or sub-objects are treated as flat strings (using JSON serialization).
 
-**Beispiel:**
+**Example:**
 
-Hier sehen Sie ein Codebeispiel für die Übermittlung von Geschlecht und Geburtsdatum des Benutzers:
+Here is a code sample for sending the user's gender and birth date:
 
-	var appInfos = {"birthdate":"1983-12-07","gender":"female"};
-	engagement.agent.sendAppInfo(appInfos);
+    var appInfos = {"birthdate":"1983-12-07","gender":"female"};
+    engagement.agent.sendAppInfo(appInfos);
 
-### Grenzen
+### <a name="limits"></a>Limits
 
-Für Anwendungsinformationen geltende Grenzwerte betreffen reguläre Ausdrücke für Schlüssel und die Größe.
+Limits that apply to application information are in the areas of regular expressions for keys, and size.
 
-#### Schlüssel
+#### <a name="keys"></a>Keys
 
-Jeder Schlüssel in dem Objekt muss mit dem folgenden regulären Ausdruck übereinstimmen:
+Each key in the object must match the following regular expression:
 
-	^[a-zA-Z][a-zA-Z_0-9]*
+    ^[a-zA-Z][a-zA-Z_0-9]*
 
-Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben beginnen und mit Buchstaben, Ziffern oder Unterstrichen (\_) fortgesetzt werden müssen.
+This means that keys must start with at least one letter, followed by letters, digits, or underscores (\_).
 
-#### Größe
+#### <a name="size"></a>Size
 
-Anwendungsinformationen sind auf 1024 Zeichen pro Aufruf beschränkt (nachdem das Mobile Engagement Web SDK sie in JSON codiert hat).
+Application information is limited to 1,024 characters per call (after the Mobile Engagement Web SDK encodes it in JSON).
 
-Im vorherigen Beispiel umfasst der an den Server gesendete JSON-Code 44 Zeichen:
+In the preceding example, the JSON sent to the server is 44 characters long:
 
-	{"birthdate":"1983-12-07","gender":"female"}
+    {"birthdate":"1983-12-07","gender":"female"}
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

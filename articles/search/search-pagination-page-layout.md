@@ -1,110 +1,111 @@
 <properties 
-	pageTitle="Anordnen von Suchergebnissen auf Seiten in Azure Search | Microsoft Azure | Gehosteter Cloudsuchdienst" 
-	description="Paginierung in Azure Search, einem gehosteten Cloudsuchdienst bei Microsoft Azure." 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="jhubbard" 
-	editor=""/>
+    pageTitle="How to page search results in Azure Search | Microsoft Azure | Hosted cloud search service" 
+    description="Pagination in Azure Search, a hosted cloud search service on Microsoft Azure." 
+    services="search" 
+    documentationCenter="" 
+    authors="HeidiSteen" 
+    manager="jhubbard" 
+    editor=""/>
 
 <tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="08/29/2016" 
-	ms.author="heidist"/>
+    ms.service="search" 
+    ms.devlang="rest-api" 
+    ms.workload="search" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.date="08/29/2016" 
+    ms.author="heidist"/>
 
-#Anordnen von Suchergebnissen auf Seiten in Azure Search#
 
-Dieser Artikel enthält Anleitungen dazu, wie die REST-API für den Azure-Suchdienst zum Implementieren von Standardelementen einer Seite mit Suchergebnissen, z. B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation, verwendet wird.
+#<a name="how-to-page-search-results-in-azure-search#"></a>How to page search results in Azure Search#
+
+This article provides guidance on how to use the Azure Search Service REST API to implement standard elements of a search results page, such as total counts, document retrieval, sort orders, and navigation.
  
-In jedem der unten genannten Fälle werden die seitenbezogenen Optionen, die Daten oder Informationen zu der Seite mit den Suchergebnissen beitragen, über die [Dokument durchsuchen](http://msdn.microsoft.com/library/azure/dn798927.aspx)-Anforderungen angegeben, die an den Azure-Suchdienst gesendet werden. Anforderungen enthalten einen GET-Befehl, Pfad- und Abfrageparameter, denen der Dienst entnimmt, was angefordert wird und wie die Antwort zu formulieren ist.
+In every case mentioned below, page-related options that contribute data or information to your search results page are specified through the [Search Document](http://msdn.microsoft.com/library/azure/dn798927.aspx) requests sent to your Azure Search Service. Requests include a GET command, path, and query parameters that inform the service what is being requested, and how to formulate the response.
 
-> [AZURE.NOTE] Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Einzelheiten zur Anforderungssyntax finden Sie in der Dokumentation zur [REST-API für Azure-Suchdienst](http://msdn.microsoft.com/library/azure/dn798935.aspx) .
+> [AZURE.NOTE] A valid request includes a number of elements, such as a service URL and path, HTTP verb, `api-version`, and so on. For brevity, we trimmed the examples to highlight just the syntax that is relevant to pagination. Please see the [Azure Search Service REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx) documentation for details about request syntax.
 
-## Gesamtanzahl der Treffer und die Seitenanzahl ##
+## <a name="total-hits-and-page-counts"></a>Total hits and Page Counts ##
 
-Grundsätzlich werden praktisch auf allen Suchseiten die Gesamtanzahl der von einer Abfrage zurückgegebenen Ergebnisse angezeigt und anschließend die Ergebnisse in kleineren Segmenten zurückgegeben.
+Showing the total number of results returned from a query, and then returning those results in smaller chunks, is fundamental to virtually all search pages.
 
 ![][1]
  
-In Azure Search verwenden Sie die Parameter `$count`, `$top` und `$skip` zur Rückgabe dieser Werte. Das folgende Beispiel enthält eine Beispielanforderung für die Gesamtanzahl der Treffer, die als `@OData.count` zurückgegeben wird:
+In Azure Search, you use the `$count`, `$top`, and `$skip` parameters to return these values. The following example shows a sample request for total hits, returned as `@OData.count`:
 
-    	GET /indexes/onlineCatalog/docs?$count=true
+        GET /indexes/onlineCatalog/docs?$count=true
 
-Dokumenten in Gruppen von jeweils 15 abrufen und ab der ersten Seite auch die Gesamtanzahl der Treffer anzeigen:
+Retrieve documents in groups of 15, and also show the total hits, starting at the first page:
 
-		GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
+        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
 
-Zur Paginierung der Ergebnisse sind sowohl `$top` als auch `$skip` erforderlich, wobei `$top` angibt, wie viele Elemente in einer Gruppe zurückgegeben werden, und `$skip` angibt, wie viele Elemente übersprungen werden sollen. Im folgenden Beispiel werden auf jeder Seite jeweils die nächsten 15 Elemente angezeigt, wobei die Inkrementschritte durch den Parameter `$skip` angegeben werden.
+Paginating results requires both `$top` and `$skip`, where `$top` specifies how many items to return in a batch, and `$skip` specifies how many items to skip. In the following example, each page shows the next 15 items, indicated by the incremental jumps in the `$skip` parameter.
 
-    	GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
+        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
 
-    	GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=15&$count=true
+        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=15&$count=true
 
-    	GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
+        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
 
-## Layout  ##
+## <a name="layout"></a>Layout  ##
 
-Auf einer Seite mit Suchergebnissen empfiehlt es sich, eine Miniaturansicht, eine Teilmenge von Feldern und einen Link zu einer vollständigen Produktseite anzuzeigen.
+On a search results page, you might want to show a thumbnail image, a subset of fields, and a link to a full product page.
 
  ![][2]
  
-In Azure Search verwenden Sie `$select` und einen Lookup-Befehl, um diese Umgebung zu implementieren.
+In Azure Search, you would use `$select` and a lookup command to implement this experience.
 
-So wird eine Teilmenge von Feldern für ein gekacheltes Layout zurückzugeben:
+To return a subset of fields for a tiled layout:
 
-    	GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
+        GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
 
-Bild- und Mediendateien können nicht direkt durchsucht werden und sollten auf einer anderen Speicherplattform gespeichert werden, z. B. Azure Blob-Speicher, um die Kosten zu senken. Definieren Sie im Index und in den Dokumenten ein Feld, das die URL-Adresse des externen Inhalts enthält. Sie können das Feld dann als Bildverweis verwenden. Die URL zum Bild sollte im Dokument enthalten sein.
+Images and media files are not directly searchable and should be stored in another storage platform, such as Azure Blob storage, to reduce costs. In the index and documents, define a field that stores the URL address of the external content. You can then use the field as an image reference. The URL to the image should be in the document.
 
-Zum Abrufen der Seite mit einer Produktbeschreibung für ein **onClick** -Ereignis verwenden Sie [Dokument suchen](http://msdn.microsoft.com/library/azure/dn798929.aspx), um den Schlüssel des abzurufenden Dokuments zu übergeben. Der Schlüssel hat den Datentyp `Edm.String`. In diesem Beispiel lautet er *246810*.
+To retrieve a product description page for an **onClick** event, use [Lookup Document](http://msdn.microsoft.com/library/azure/dn798929.aspx) to pass in the key of the document to retrieve. The data type of the key is `Edm.String`. In this example, it is *246810*. 
    
-    	GET /indexes/onlineCatalog/docs/246810
+        GET /indexes/onlineCatalog/docs/246810
 
-## Sortieren nach Relevanz, Bewertung oder Preis ##
+## <a name="sort-by-relevance,-rating,-or-price"></a>Sort by relevance, rating, or price ##
 
-Oft wird für die Sortierreihenfolge standardmäßig Relevanz festgelegt, aber es ist üblich, alternative Sortierreihenfolgen einfach zur Verfügung zu stellen, damit die Benutzer die vorhandenen Ergebnisse schnell in einer anderen Reihenfolge sortieren können.
+Sort orders often default to relevance, but it's common to make alternative sort orders readily available so that customers can quickly reshuffle existing results into a different rank order.
 
  ![][3]
 
-In Azure Search basiert die Sortierung auf dem `$orderby`-Ausdruck für alle Felder, die als `"Sortable": true.` indiziert werden.
+In Azure Search, sorting is based on the `$orderby` expression, for all fields that are indexed as `"Sortable": true.`
 
-Die Relevanz ist eng mit Bewertungsprofilen verknüpft. Sie können die Standardbewertung verwenden, bei der die Reihenfolge der Ergebnisse anhand von Textanalyse und Statistiken festgelegt wird, wobei Dokumente mit mehr oder höheren Übereinstimmungen mit einem Suchbegriff eine höhere Punktzahl erhalten.
+Relevance is strongly associated with scoring profiles. You can use the default scoring, which relies on text analysis and statistics to rank order all results, with higher scores going to documents with more or stronger matches on a search term.
 
-Alternative Sortierreihenfolgen werden in der Regel **onClick**-Ereignissen zugeordnet, die eine Methode aufrufen, welche die Sortierreihenfolge erstellt. Angenommen, das folgende Seitenelement sei gegeben:
+Alternative sort orders are typically associated with **onClick** events that call back to a method that builds the sort order. For example, given this page element:
 
  ![][4]
 
-Sie erstellen dann eine Methode, die die ausgewählten Sortieroption als Eingabe akzeptiert und eine sortierte Liste für die Kriterien zurückgibt, die mit dieser Option verknüpft sind.
+You would create a method that accepts the selected sort option as input, and returns an ordered list for the criteria associated with that option.
 
  ![][5]
  
-> [AZURE.NOTE] Die Standardbewertung ist zwar für viele Szenarien ausreichend ist, aber es wird empfohlen, stattdessen die Relevanz anhand eines benutzerdefinierten Bewertungsprofil zu ermitteln. Ein benutzerdefiniertes Bewertungsprofil bietet Ihnen eine Möglichkeit, Elementen, die für Ihr Unternehmen sinnvoller sind, eine höhere Priorität zuzuordnen. Weitere Informationen finden Sie unter [Hinzufügen eines Bewertungsprofil](http://msdn.microsoft.com/library/azure/dn798928.aspx).
+> [AZURE.NOTE] While the default scoring is sufficient for many scenarios, we recommend basing relevance on a custom scoring profile instead. A custom scoring profile gives you a way to boost items that are more beneficial to your business. See [Add a scoring profile](http://msdn.microsoft.com/library/azure/dn798928.aspx) for more information. 
 
-## Facettennavigation ##
+## <a name="faceted-navigation"></a>Faceted navigation ##
 
-Ergebnisseiten bieten üblicherweise eine Suchnavigation, die sich häufig am seitlichen oder oberen Rand der Seite befindet. In Azure Search ermöglicht die Facettennavigation eine selbstgesteuerte Suche, die auf vordefinierten Filtern basiert. Nähere Informationen finden Sie unter [Facettennavigation in Azure Search](search-faceted-navigation.md).
+Search navigation is common on a results page, often located at the side or top of a page. In Azure Search, faceted navigation provides self-directed search based on predefined filters. See [Faceted navigation in Azure Search](search-faceted-navigation.md) for details.
 
-## Filter auf Seitenebene ##
+## <a name="filters-at-the-page-level"></a>Filters at the page level ##
 
-Wenn Ihr Lösungsentwurf dedizierte Suchseiten für bestimmte Inhaltstypen enthält (z. B. eine Anwendung für den Online-Einzelhandel mit einer Liste von Abteilungen am oberen Rand der Seite), dann können Sie einen Filterausdruck zusammen mit einem **onClick**-Ereignis einfügen, um eine Seite in einem ungefilterten Zustand zu öffnen.
+If your solution design included dedicated search pages for specific types of content (for example, an online retail application that has departments listed at the top of the page), you can insert a filter expression alongside an **onClick** event to open a page in a prefiltered state. 
 
-Sie können einen Filter mit oder ohne Suchbegriff senden. Beispielsweise wird mit der folgenden Anforderung nach Markenname gefiltert, wobei nur die dem Filter entsprechenden Dokumente zurückgegeben werden.
+You can send a filter with or without a search expression. For example, the following request will filter on brand name, returning only those documents that match it.
 
-    	GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
+        GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
-Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durchsuchen (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) .
+See [Search Documents (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) for more information about `$filter` expressions.
 
-## Weitere Informationen ##
+## <a name="see-also"></a>See Also ##
 
-- [REST-API für Azure Suchdienst](http://msdn.microsoft.com/library/azure/dn798935.aspx)
-- [Indexvorgänge](http://msdn.microsoft.com/library/azure/dn798918.aspx)
-- [Dokumentvorgänge](http://msdn.microsoft.com/library/azure/dn800962.aspx)
-- [Videos und Lernprogramme zu Azure Search](search-video-demo-tutorial-list.md)
-- [Facettennavigation in Azure Search](search-faceted-navigation.md)
+- [Azure Search Service REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)
+- [Index Operations](http://msdn.microsoft.com/library/azure/dn798918.aspx)
+- [Document Operations](http://msdn.microsoft.com/library/azure/dn800962.aspx)
+- [Video and tutorials about Azure Search](search-video-demo-tutorial-list.md)
+- [Faceted Navigation in Azure Search](search-faceted-navigation.md)
 
 
 <!--Image references-->
@@ -112,6 +113,10 @@ Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durch
 [2]: ./media/search-pagination-page-layout/Pages-2-Tiled.PNG
 [3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
-[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
+[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,42 +1,47 @@
 <properties
-	pageTitle="Erstellen von App-Kennwörtern für Azure Multi-Factor Authentication im Portal ";Meine Apps";"
-	description="Auf dieser Seite wird das Erstellen zusätzlicher App-Kennwörter im Portal ";Meine Apps"; beschrieben."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+    pageTitle="Create app passwords in the Myapps portal for Azure Multi-Factor Authentication"
+    description="This page shows users how they can create additional app passwords in the Myapps portal."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="curtland"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
-
-# Erstellen von App-Kennwörtern für Azure Multi-Factor Authentication im Portal "Meine Apps 365"
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
 
 
+# <a name="create-app-passwords-in-the-myapps-365-portal-for-azure-multi-factor-authentication"></a>Create app passwords in the myapps 365 portal for Azure Multi-Factor Authentication
 
-Wenn Sie Multi-Factor Authentication nicht mit Office 365 verwenden und nicht über ein Azure-Abonnement verfügen, können Sie App-Kennwörter über das Portal "Meine Apps" erstellen.
 
-## So erstellen Sie App-Kennwörter ohne Office 365- oder Azure-Abonnement
+
+If you do not use multi-factor authentication with Office 365 have an Azure subscription then you will want to create app passwords through myapps portal.
+
+## <a name="to-create-app-passwords-if-you-do-not-have-an-office-365-or-azure-subscription"></a>To create app passwords if you do not have an Office 365 or Azure subscription
 --------------------------------------------------------------------------------
 <ol>
-<li>Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.</li>
-<li>Wählen Sie oben das Profil aus.</li>
+<li>Sign-in to [https://myapps.microsoft.com](https://myapps.microsoft.com)</li>
+<li>At the top, select profile.</li>
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-myapps/myapp.png)</center>
 
-<li>Klicken Sie auf Ihren Benutzernamen, und wählen Sie "Zusätzliche Sicherheitsüberprüfung" aus.</li>
-<li>Wählen Sie oben auf der Seite "Proofup" die Option "App-Kennwörter" aus.</li>
-<li>Klicken Sie auf **Erstellen**.</li>
+<li>Click on your user name and select Additional Security Verification.</li>
+<li>On the proofup page, at the top, select app passwords</li>
+<li>Click **Create**</li>
 
 ![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-myapps/apppassword.png)
 
-<li>Geben Sie einen Namen für das App-Kennwort an, und klicken Sie auf **Weiter**.</li>
-<li>Kopieren Sie das App-Kennwort in die Zwischenablage, und fügen Sie es in Ihrer App ein.</li>
+<li>Enter a name for the app password and click **Next**</li>
+<li>Copy the app password to the clipboard and paste it into your app.</li>
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

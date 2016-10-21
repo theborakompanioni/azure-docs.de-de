@@ -1,101 +1,102 @@
 <properties
-	pageTitle="Vorlagen"
-	description="In diesem Thema werden Vorlagen für Azure Notification Hubs erläutert."
-	services="notification-hubs"
-	documentationCenter=".net"
-	authors="wesmc7777"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Templates"
+    description="This topic explains Templates for Azure notification hubs."
+    services="notification-hubs"
+    documentationCenter=".net"
+    authors="wesmc7777"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-multiple"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="06/29/2016"
-	ms.author="wesmc"/>
+    ms.service="notification-hubs"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-multiple"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="06/29/2016"
+    ms.author="wesmc"/>
 
-# Vorlagen
 
-##Übersicht
+# <a name="templates"></a>Templates
 
-Mithilfe von Vorlagen kann eine Clientanwendung das genaue Format der Benachrichtigungen angeben, die sie empfangen möchte. Die Verwendung von Vorlagen bietet einer App viele verschiedene Vorteile, einschließlich der folgenden:
+##<a name="overview"></a>Overview
 
-* Ein plattformunabhängiges Back-End
+Templates enable a client application to specify the exact format of the notifications it wants to receive. Using templates, an app can realize several different benefits, including the following :
 
-* Personalisierte Benachrichtigungen
+* A platform-agnostic backend
 
-* Unabhängigkeit von der Clientversion
+* Personalized notifications
 
-* Einfache Lokalisierung
+* Client-version independence
 
-Dieser Abschnitt enthält zwei ausführliche Beispiele. Sie zeigen, wie Vorlagen verwendet werden, um plattformunabhängige Benachrichtigungen plattformübergreifend an alle Geräte zu senden und um Übertragungsbenachrichtigungen für jedes Gerät zu personalisieren.
+* Easy localization
 
-##Plattformübergreifende Verwendung von Vorlagen
+This section provides two in-depth examples of how to use templates to send platform-agnostic notifications targeting all your devices across platforms, and to personalize broadcast notification to each device.
 
-Das Standardverfahren zum Senden von Pushbenachrichtigungen besteht darin, für jede Benachrichtigung, die gesendet werden soll, eine bestimmte Nutzlast an Plattformbenachrichtigungsdienste (WNS, APNS) zu senden. Beim Senden einer Benachrichtigung an APNS entspricht die Nutzlast z. B. einem Json-Objekt im folgenden Format:
+##<a name="using-templates-cross-platform"></a>Using templates cross-platform
 
-	{"aps": {"alert" : "Hello!" }}
+The standard way to send push notifications is to send, for each notification that is to be sent, a specific payload to platform notification services (WNS, APNS). For example, to send an alert to APNS, the payload is a Json object of the following form:
 
-Zum Senden einer ähnlichen Popupnachricht für eine Windows Store-Anwendung sieht die XML-Nutzlast wie folgt aus:
+    {"aps": {"alert" : "Hello!" }}
 
-	<toast>
-	  <visual>
-	    <binding template="ToastText01">
-	      <text id="1">Hello!</text>
-	    </binding>
-	  </visual>
-	</toast>
+To send a similar toast message on a Windows Store application, the XML payload is as follows:
 
-Sie können ähnliche Nutzlasten für MPNS (Windows Phone)- und GCM (Android)-Plattformen erstellen.
+    <toast>
+      <visual>
+        <binding template=\"ToastText01\">
+          <text id=\"1\">Hello!</text>
+        </binding>
+      </visual>
+    </toast>
 
-Durch diese Anforderung ist das App-Back-End gezwungen, für jede Plattform unterschiedliche Nutzlasten zu erzeugen, und ist dadurch effektiv für einen Teil der Darstellungsschicht der App verantwortlich. Die Lokalisierung und grafischen Layouts (insbesondere für Windows Store-Apps, die Benachrichtigungen für verschiedene Kacheltypen umfassen) sind dabei nicht unproblematisch.
+You can create similar payloads for MPNS (Windows Phone) and GCM (Android) platforms.
 
-Das Notification Hubs-Vorlagenfeature ermöglicht einer Client-App das Erstellen spezieller Registrierungen – so genannter Vorlagenregistrierungen – die neben den Tags eine Vorlage enthalten. Mit dem Notification Hubs-Vorlagenfeature kann eine Client-App Geräten Vorlagen zuordnen, und zwar unabhängig davon ob Sie mit Installationen (bevorzugt) oder Registrierungen arbeiten. Aus den zuvor aufgeführten Nutzlastbeispielen ergibt sich, dass der eigentliche Benachrichtigungstext (Hello!) die einzige plattformunabhängige Information ist. Eine Vorlage umfasst eine Reihe von Anweisungen für den Notification Hub, die angeben, wie eine plattformunabhängige Nachricht für die Registrierung der spezifischen Client-App formatiert werden soll. Im vorherigen Beispiel ist die plattformunabhängige Nachricht eine einzelne Eigenschaft: **message = Hello!**.
+This requirement forces the app backend to produce different payloads for each platform, and effectively makes the backend responsible for part of the presentation layer of the app. Some concerns include localization and graphical layouts (especially for Windows Store apps that include notifications for various types of tiles).
 
-Das oben beschriebene Verfahren wird in der folgenden Abbildung veranschaulicht.
+The Notification Hubs template feature enables a client app to create special registrations, called template registrations, which include, in addition to the set of tags, a template. The Notification Hubs template feature enables a client app to associate devices with templates whether you are working with Installations (preferred) or Registrations. Given the preceding payload examples, the only platform-independent information is the actual alert message (Hello!). A template is a set of instructions for the Notification Hub on how to format a platform-independent message for the registration of that specific client app. In the preceding example, the platform independent message is a single property: **message = Hello!**.
+
+The following picture illustrates the above process:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 
-Die Vorlage für die Registrierung der iOS-Client-App sieht wie folgt aus:
+The template for the iOS client app registration is as follows:
 
-	{"aps": {"alert": "$(message)"}}
+    {"aps": {"alert": "$(message)"}}
 
-Die entsprechende Vorlage für die Windows Store-Client-App entspricht:
+The corresponding template for the Windows Store client app is:
 
-	<toast>
-		<visual>
-			<binding template="ToastText01">
-				<text id="1">$(message)</text>
-			</binding>
-		</visual>
-	</toast>
+    <toast>
+        <visual>
+            <binding template=\"ToastText01\">
+                <text id=\"1\">$(message)</text>
+            </binding>
+        </visual>
+    </toast>
 
-Beachten Sie, dass die tatsächliche Nachricht durch den Ausdruck $(message) ersetzt wird. Dieser Ausdruck weist den Notification Hub an, bei jedem Senden einer Nachricht an diese bestimmte Registrierung eine der Vorlage entsprechende Nachricht zu erstellen, und fügt den allgemeinen Wert ein.
+Notice that the actual message is substituted for the expression $(message). This expression instructs the Notification Hub, whenever it sends a message to this particular registration, to build a message that follows it and switches in the common value.
 
-Bei Verwendung des Installationsmodells arbeiten, enthält der "templates"-Schlüssel der Installation ein JSON-Objekt mit mehreren Vorlagen. Bei Verwendung des Registrierungsmodells kann die Clientanwendung mehrere Registrierungen erstellen, um mehrere Vorlagen zu verwenden, also beispielsweise eine Vorlage für Benachrichtigungen und eine für Kachelaktualisierungen. Clientanwendungen können auch systemeigene Registrierungen (Registrierungen ohne Vorlage) und Vorlagenregistrierungen kombinieren.
+If you are working with Installation model, the installation “templates” key holds a JSON of multiple templates. If you are working with Registration model, the client application can create multiple registrations in order to use multiple templates; for example, a template for alert messages and a template for tile updates. Client applications can also mix native registrations (registrations with no template) and template registrations.
 
-Der Notification Hub sendet eine Benachrichtigung für jede Vorlage, ohne zu berücksichtigen, ob sie zur selben Client-App gehören. Dieses Verhalten kann verwendet werden, um plattformunabhängige Benachrichtigungen in weitere Benachrichtigungen zu übersetzen. Beispielsweise kann dieselbe plattformunabhängige Nachricht an den Notification Hub nahtlos in eine Popupbenachrichtigung und eine Kachelaktualisierung übersetzt werden, ohne dass das Back-End daran beteiligt ist. Beachten Sie, dass einige Plattformen (beispielsweise iOS) ggf. mehrere Benachrichtigungen an dasselbe Gerät reduzieren, wenn diese innerhalb eines kurzen Zeitraums gesendet werden.
+The Notification Hub sends one notification for each template without considering whether they belong to the same client app. This behavior can be used to translate platform-independent notifications into more notifications. For example, the same platform independent message to the Notification Hub can be seamlessly translated in a toast alert and a tile update, without requiring the backend to be aware of it. Note that some platforms (for example, iOS) might collapse multiple notifications to the same device if they are sent in a short period of time.
 
-##Verwenden von Vorlagen zur Personalisierung
+##<a name="using-templates-for-personalization"></a>Using templates for personalization
 
-Ein weiterer Vorteil von Vorlagen besteht darin, dass Benachrichtigungen mithilfe von Notification Hubs pro Registrierung personalisiert werden können. Beispiel: Eine Wetter-App zeigt eine Kachel mit den Wetterbedingungen an einem bestimmten Ort an. Ein Benutzer kann zwischen Grad Celsius und Fahrenheit und einer eintägigen oder fünftägigen Vorhersage wählen. Mithilfe von Vorlagen kann sich jede Client-App-Installation für das erforderliche Format (1 Tag Celsius, 1 Tag Fahrenheit, 5 Tage Celsius, 5 Tage Fahrenheit) registrieren und das Back-End eine einzelne Nachricht senden lassen, die alle erforderlichen Informationen zum Füllen dieser Vorlagen enthält (z. B. eine fünftägige Vorhersage mit Gradangaben in Celsius und Fahrenheit).
+Another advantage to using templates is the ability to use Notification Hubs to perform per-registration personalization of notifications. For example, consider a weather app that displays a tile with the weather conditions at a specific location. A user can choose between Celsius or Fahrenheit degrees, and a single or five-day forecast. Using templates, each client app installation can register for the format required (1-day Celsius, 1-day Fahrenheit, 5-days Celsius, 5-days Fahrenheit), and have the backend send a single message that contains all the information required to fill those templates (for example, a five-day forecast with Celsius and Fahrenheit degrees).
 
-Die Vorlage für die eintägige Vorhersage mit Temperaturangaben in Celsius sieht wie folgt aus:
+The template for the one-day forecast with Celsius temperatures is as follows:
 
-	<tile>
-	  <visual>
-	    <binding template="TileWideSmallImageAndText04">
-	      <image id="1" src="$(day1_image)" alt="alt text"/>
-	      <text id="1">Seattle, WA</text>
-	      <text id="2">$(day1_tempC)</text>
-	    </binding>  
-	  </visual>
-	</tile>
+    <tile>
+      <visual>
+        <binding template="TileWideSmallImageAndText04">
+          <image id="1" src="$(day1_image)" alt="alt text"/>
+          <text id="1">Seattle, WA</text>
+          <text id="2">$(day1_tempC)</text>
+        </binding>  
+      </visual>
+    </tile>
 
-Die an den Notification Hub gesendete Nachricht enthält die folgenden Eigenschaften:
+The message sent to the Notification Hub contains all the following properties:
 
 
 <table border="1">
@@ -105,56 +106,61 @@ Die an den Notification Hub gesendete Nachricht enthält die folgenden Eigenscha
 </table><br/>
 
 
-Durch die Verwendung dieses Musters sendet das Back-End nur eine einzelne Nachricht und muss keine bestimmten Personalisierungsoptionen für die App-Benutzer speichern. Dieses Szenario wird in der folgenden Abbildung veranschaulicht.
+By using this pattern, the backend only sends a single message without having to store specific personalization options for the app users. The following picture illustrates this scenario:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
-##Registrieren von Vorlagen
+##<a name="how-to-register-templates"></a>How to register templates
 
-Informationen zur Vorlagenregistrierung mit dem Installationsmodell (bevorzugt) oder dem Registrierungsmodell finden Sie unter [Registrierungsverwaltung](notification-hubs-push-notification-registration-management.md).
+To register with templates using the Installation model (preferred), or the Registration model, see [Registration Management](notification-hubs-push-notification-registration-management.md).
 
-##Sprache für Vorlagenausdrücke
+##<a name="template-expression-language"></a>Template expression language
 
-Vorlagen sind auf das XML- oder JSON-Dokumentformat beschränkt. Außerdem können Sie Ausdrücke nur an bestimmten Stellen einfügen, z. B. in Node-Attributen oder -Werten für XML und Zeichenfolgen-Eigenschaftswerten für JSON.
+Templates are limited to XML or JSON document formats. Also, you can only place expressions in particular places; for example, node attributes or values for XML, string property values for JSON.
 
 
 
-In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
+The following table shows the language allowed in templates:
 
-| Ausdruck | Beschreibung |
+| Expression | Description |
 |------------|-------------|
-| $(prop) | Verweist auf eine Ereigniseigenschaft mit dem angegebenen Namen. Bei Eigenschaftennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden. Dieser Ausdruck wird in den Textwert der Eigenschaft oder in eine leere Zeichenfolge aufgelöst, wenn die Eigenschaft nicht vorhanden ist. |
-| $(prop, n) | Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
-| .(prop, n) | Wie oben, allerdings werden dem Text beim Abschneiden drei Punkte als Suffix hinzugefügt. Die Gesamtgröße der abgeschnittenen Zeichenfolge und des Suffixes überschreitet n Zeichen nicht. Bei .(title, 20) mit der Eingabeeigenschaft "This is the title line" erhalten Sie **This is the title...**. |
-| %(prop) | Ähnlich wie $(name) mit der Ausnahme, dass die Ausgabe URI-codiert ist. |
-| #(prop) | Wird in JSON-Vorlagen verwendet (z. B. für iOS- und Android-Vorlagen).<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z. B. Apple-Vorlagen). In diesem Fall ist die JSON-Ausgabe eine Zahl, wenn diese Funktion nicht von „{','}“ umschlossen ist (z.B. 'myJsonProperty' : '#(name)') und im JavaScript-Format in eine Zahl ausgewertet wird, z.B.: regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?.<br><br>'badge : '#(name)' wird beispielsweise zu 'badge' : 40 (und nicht zu '40'). |
-| 'text' oder "text" | Ein Literal. Literale enthalten beliebigen Text, der in einfache oder doppelte Anführungszeichen eingeschlossen ist. |
-| expr1 + expr2 | Der Verkettungsoperator, der zwei Ausdrücke zu einer Zeichenfolge verbindet.
+| $(prop) | Reference to an event property with the given name. Property names are not case-sensitive. This expression resolves into the property’s text value or into an empty string if the property is not present. |
+| $(prop, n) | As above, but the text is explicitly clipped at n characters, for example $(title, 20) clips the contents of the title property at 20 characters. |
+| .(prop, n) | As above, but the text is suffixed with three dots as it is clipped. The total size of the clipped string and the suffix does not exceed n characters. .(title, 20) with an input property of “This is the title line” results in **This is the title...** |
+| %(prop) | Similar to $(name) except that the output is URI-encoded. |
+| #(prop) | Used in JSON templates (for example, for iOS and Android templates).<br><br>This function works exactly the same as $(prop) previously specified, except when used in JSON templates (for example, Apple templates). In this case, if this function is not surrounded by “{‘,’}” (for example, ‘myJsonProperty’ : ‘#(name)’), and it evaluates to a number in Javascript format, for example, regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?, then the output JSON is a number.<br><br>For example, ‘badge : ‘#(name)’ becomes ‘badge’ : 40 (and not ‘40‘). |
+| ‘text’ or “text” | A literal. Literals contain arbitrary text enclosed in single or double quotes. |
+| expr1 + expr2 | The concatenation operator joining two expressions into a single string.
 
-Die Ausdrücke können eine der oben beschriebenen Formen aufweisen.
+The expressions can be any of the preceding forms.
 
-Bei Verwendung der Verkettung muss der gesamte Ausdruck in {} eingeschlossen werden. Beispiel: {$(prop) + ' - ' + $(prop2)}. |
-
-
-Folgendes ist beispielsweise keine gültige XML-Vorlage:
-
-	<tile>
-	  <visual>
-	    <binding $(property)>
-	      <text id="1">Seattle, WA</text>
-	    </binding>  
-	  </visual>
-	</tile>
+When using concatenation, the entire expression must be surrounded with {}. For example, {$(prop) + ‘ - ’ + $(prop2)}. |
 
 
-Wie oben erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschweifte Klammern eingeschlossen werden. Beispiel:
+For example, the following is not a valid XML template:
 
-	<tile>
-	  <visual>
-	    <binding template="ToastText01">
-	      <text id="1">{'Hi, ' + $(name)}</text>
-	    </binding>  
-	  </visual>
-	</tile>
+    <tile>
+      <visual>
+        <binding $(property)>
+          <text id="1">Seattle, WA</text>
+        </binding>  
+      </visual>
+    </tile>
 
-<!---HONumber=AcomDC_0706_2016-->
+
+As explained above, when using concatenation, expressions must be wrapped in curly brackets. For example:
+
+    <tile>
+      <visual>
+        <binding template="ToastText01">
+          <text id="1">{'Hi, ' + $(name)}</text>
+        </binding>  
+      </visual>
+    </tile>
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+
