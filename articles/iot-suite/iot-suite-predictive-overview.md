@@ -1,6 +1,6 @@
 <properties
- pageTitle="Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf | Microsoft Azure"
- description="Beschreibung der vorkonfigurierten Azure IoT-Lösung für vorhersagbaren Wartungsbedarf | Microsoft Azure"
+ pageTitle="Predictive maintenance preconfigured solution | Microsoft Azure"
+ description="A description of the Azure IoT predictive maintenance preconfigured solution."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -17,38 +17,39 @@
  ms.date="08/17/2016"
  ms.author="araguila"/>
 
-# Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf
 
-Die vorkonfigurierte Lösung für *vorhersagbaren Wartungsbedarf* ist eine der [vorkonfigurierten Lösungen][lnk_preconfigured_solutions], die Bestandteil der [Microsoft Azure IoT-Suite][lnk_iot_suite] sind. Diese Lösung integriert die Erfassung von Gerätetelemetrie in Echtzeit mit einem Vorhersagemodell, das [Azure Machine Learning][lnk_machine_learning] verwendet.
+# <a name="predictive-maintenance-preconfigured-solution-overview"></a>Predictive maintenance preconfigured solution overview
+
+The *predictive maintenance* preconfigured solution is one of the [preconfigured solutions][lnk_preconfigured_solutions] released as part of [Microsoft Azure IoT Suite][lnk_iot_suite]. This solution integrates real-time device telemetry collection with a predictive model created using [Azure Machine Learning][lnk_machine_learning].
 
 
-Mit Azure IoT Suite können Unternehmen schnell und einfach in Echtzeit Verbindungen mit Assets herstellen, um diese zu überwachen, und Daten analysieren. Die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf nutzt diese Daten anhand reichhaltiger Dashboards und Visualisierungen, um Unternehmen mit neuen Einsichten zu versorgen, die zur Effizienzsteigerung und zum Ausbau von Einnahmequellen dienen können.
+With Azure IoT Suite, enterprises can quickly and easily connect to and monitor assets, and analyze data in real time. The predictive maintenance preconfigured solution takes that data and uses rich dashboards and visualizations to provide businesses with new intelligence that can drive efficiencies and enhance revenue streams.
 
-## Das Szenario
+## <a name="the-scenario"></a>The Scenario
 
-Fabrikam ist eine regionale Fluggesellschaft, deren Schwerpunkt auf hervorragender Kundenzufriedenheit zu wettbewerbsfähigen Preisen liegt. Eine Ursache von Flugverspätungen sind Wartungsprobleme, und insbesondere die Wartung von Flugzeugtriebwerken ist anspruchsvoll. Ein Triebwerksausfall während des Flugs muss unter allen Umständen vermieden werden. Daher setzt Fabrikam auf eine regelmäßige Inspektion und ein Programm zur planmäßigen Wartung. Allerdings nutzen sich nicht alle Flugzeugtriebwerke in gleicher Weise ab. Ein gewisser Anteil der Wartung wird ausgeführt, obwohl er nicht erforderlich ist. Wichtiger noch, es können Umstände auftreten, die ein Flugzeug am Boden festhalten, bis eine Wartung durchgeführt wird. Dies führt zu teuren Verzögerungen, insbesondere dann, wenn sich das Flugzeug an einem Standort befindet, an dem die benötigten Techniker oder Ersatzteile nicht verfügbar sind.
+Fabrikam is a regional airline that focuses on great customer experience at competitive prices. One cause of flight delays is maintenance issues and aircraft engine maintenance is particularly challenging. Engine failure during flight must be avoided at all costs, so Fabrikam inspects its engines regularly and adheres to a scheduled maintenance program. However, aircraft engines don’t always wear the same. Some unnecessary maintenance is performed on engines. More importantly, issues arise which can ground an aircraft until maintenance is performed. This causes costly delays, especially if an aircraft is at a location where the right technicians or spare parts are not available.
 
-Die Triebwerke der Fabrikam-Flotte sind mit Sensoren ausgestattet, die den Triebwerkzustand während des Flugs erfassen. Fabrikam nutzt zur Erfassung der Sensordaten während des Flugs die Azure IoT-Suite. Nach jahrelanger Erfassung der Betriebs- und Fehlerdaten haben die Datenanalysten von Fabrikam ein Modell zur Vorhersage der Restnutzungsdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks erstellt. Dieses Modell beruht auf einer gefundenen Korrelation zwischen Daten von vier der Triebwerksensoren und dem Triebwerkverschleiß, der letztlich zum Ausfall führen kann. Obwohl Fabrikam die reguläre Inspektion aus Sicherheitsgründen fortsetzt, kann das Unternehmen jetzt anhand der Modelle nach jedem Flug mithilfe der von den Triebwerken erfassten Telemetriedaten die RUL für jedes Triebwerk berechnen. Fabrikam kann jetzt Vorhersagen zu künftigen Fehlerpunkten treffen, und Wartung und Reparatur im Voraus planen.
+The engines of Fabrikam’s aircraft are instrumented with sensors which monitor engine conditions during flight. Fabrikam use Azure IoT Suite to collect the sensor data collected during the flight. After accumulating years of engine operational and failure data, Fabrikam’s data scientists have modeled a way to predict the Remaining Useful Life (RUL) of an aircraft engine. What they have identified is a correlation between the data from four of the engine sensors with the engine wear that leads to eventual failure. While Fabrikam continues to perform regular inspections to ensure safety, it can now use the models to compute the RUL for each engine after every flight using the telemetry collected from the engines during the flight. Fabrikam can now predict future points of failure and plan for maintenance and repair in advance.
 
-> [AZURE.NOTE] Das Lösungsmodell verwendet die Daten zur tatsächlichen Maschinennutzung.
+> [AZURE.NOTE] The solution model uses actual engine wear data.
 
-Durch die Vorhersage des geeigneten Wartungszeitpunkts kann Fabrikam eine Optimierung durchführen und die Betriebskosten senken. Die Wartungskoordinatoren arbeiten mit Planern, um zu gewährleisten, dass die Wartungsarbeiten mit dem Eintreffen des Flugzeugs an einem bestimmten Standort zusammenfallen und dass genügend Zeit für die Außerbetriebnahme des Flugzeugs zur Verfügung steht, ohne den Flugplan zu beeinträchtigen. Fabrikam kann Techniker entsprechend entsenden, um sicherzustellen, dass die Flugzeuge effizient und ohne Leerlauf gewartet werden. Bestandskontrollmanager erhalten Wartungspläne, damit Sie den Bestellvorgang und den Ersatzteilbestand optimieren können. All dies ermöglicht es Fabrikam, die Standzeiten der Maschinen zu minimieren und die Betriebskosten bei unveränderter Sicherheit für Passagiere und Crew zu senken.
+By predicting the point when maintenance is required, Fabrikam can optimize its operations to reduce costs. Maintenance coordinators work with schedulers to plan maintenance coinciding with an aircraft stopping at a particular location and ensuring sufficient time for the aircraft to be out of service without causing schedule disruption. Fabrikam can schedule technicians accordingly; ensuring aircraft are serviced efficiently without wait time. Inventory control managers receive maintenance plans, so they can optimize their ordering process and spare parts inventory. All of this enables Fabrikam to minimize aircraft ground time and to reduce operating costs while ensuring the safety of passengers and crew.
 
-Informationen dazu, wie [Azure IoT-Suite][lnk_iot_suite] die vom Kunden benötigten Fähigkeiten bereitstellt, um das Potenzial des vorhersagbaren Wartungsbedarfs zu erschließen, finden Sie auf [dieser Infografik][lnk_infographic].
+To understand how [Azure IoT Suite][lnk_iot_suite] provides the capabilities customers need to realize the potential of predictive maintenance, please review this [infographic][lnk_infographic].
 
-## Aufbau der Lösung für vorhersagbaren Wartungsbedarf
+## <a name="how-the-predictive-maintenance-solution-is-built"></a>How the predictive maintenance solution is built
 
-Die Lösung nutzt ein vorhandenes Azure Machine Learning-Modell, das als Vorlage zur Verfügung steht, um die Anwendung dieser Funktionen auf Gerätetelemetriedaten zu veranschaulichen, die über IoT Suite-Dienste erfasst wurden Microsoft hat ein [Regressionsmodell][lnk_regression_model] eines Flugzeugtriebwerks erstellt und die vollständige Vorlage sowie die Daten<sup>[1]</sup> und eine schrittweise Anleitung zur Verwendung des Modells veröffentlicht.
+The solution leverages an existing Azure Machine Learning model available as a template to show these capabilities working from device telemetry collected through IoT Suite services. Microsoft has built a [regression model][lnk_regression_model] of an aircraft engine and published the complete template, data<sup>\[1\]</sup>, and step-by-step guidance on how to use the model.
 
-Die vorkonfigurierte Azure IoT-Lösung für den vorhersagbaren Wartungsbedarf verwendet ein anhand der genannten Vorlage erstelltes Regressionsmodell. Es wurde in Ihrem Azure-Abonnement bereitgestellt und über eine automatisch generierte API verfügbar gemacht. Die Lösung umfasst eine Teilmenge der Testdaten mit vier (von insgesamt 100) Triebwerken und vier (von insgesamt 21) Sensordatenströmen, die ein genaues Ergebnis aus dem trainierten Modell bereitstellen.
+The Azure IoT predictive maintenance preconfigured solution uses the regression model created from this template; it is deployed into your Azure subscription and exposed through an automatically generated API. The solution includes a subset of the testing data representing 4 (of 100 total) engines and the 4 (of 21 total) sensor data streams which provide an accurate result from the trained model.
 
-*[1] A. Saxena und K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA* (in englischer Sprache)
+*\[1\] A. Saxena and K. Goebel (2008). "Turbofan Engine Degradation Simulation Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Informationen darüber, wie Azure IoT Szenarios mit vorhersagbarem Wartungsbedarf ermöglicht, finden Sie unter [Capture value from the Internet of Things][lnk_capture_value] \(in englischer Sprache).
+To learn more about how Azure IoT enables predictive maintenance scenarios, read [Capture value from the Internet of Things][lnk_capture_value].
 
-Sehen Sie sich die [exemplarische Vorgehensweise][lnk-predictive-walkthrough] zur vorkonfigurierten Lösung für die vorbeugende Wartung an.
+Take a [walkthrough][lnk-predictive-walkthrough] of the predictive maintenance preconfigured solution.
 
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
 [lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
@@ -58,12 +59,16 @@ Sehen Sie sich die [exemplarische Vorgehensweise][lnk-predictive-walkthrough] zu
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 [lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF
 
-Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
+You can also explore some of the other features and capabilities of the IoT Suite preconfigured solutions:
 
-- [Häufig gestellte Fragen zu IoT Suite][lnk-faq]
-- [Sicherheit im Internet der Dinge von Anfang an][lnk-security-groundup]
+- [Frequently asked questions for IoT Suite][lnk-faq]
+- [IoT security from the ground up][lnk-security-groundup]
 
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

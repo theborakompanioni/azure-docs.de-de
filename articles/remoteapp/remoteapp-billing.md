@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="Ändern der Abrechnung für Azure RemoteApp | Microsoft Azure"
-    description="Erfahren Sie, wie Sie die Abrechnung für Azure RemoteApp beenden."
+    pageTitle="Change the billing for Azure RemoteApp | Microsoft Azure"
+    description="Learn how to stop being billed for Azure RemoteApp."
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -18,19 +18,23 @@
 
 
 
-# Beenden der Abrechnung für Azure RemoteApp
+
+# <a name="how-to-stop-being-billed-for-azure-remoteapp"></a>How to stop being billed for Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Solange Sie über Azure RemoteApp-Sammlungen verfügen, selbst wenn diesen keine Benutzer zugewiesen sind, wird Ihnen RemoteApp in Rechnung gestellt. Um dies zu beenden, löschen Sie all Ihre Sammlungen.
+As long as you have Azure RemoteApp collections, even with no users assigned, you will be billed for RemoteApp. To stop this billing, delete all of your collections. 
 
-So löschen Sie Ihre Sammlung:
+To delete your collection:
 
-1. Öffnen Sie die RemoteApp-Seite im klassischen Azure-Portal.
-2. Klicken Sie auf die zu löschende Sammlung, und klicken Sie unten auf der Seite auf **Löschen**.
-3. Wiederholen Sie diese Schritte für jede Sammlung in Ihrem Abonnement.
+1. In the Azure classic portal, open the RemoteApp page.
+2. Click the collection you want to delete, and then click **Delete** at the bottom of the page.
+3. Repeat this for each collection in your subscription. 
 
-Es kann ein paar Minuten dauern, bis alle Sammlungen gelöscht sind.
+It might take a few minutes to delete each collection.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

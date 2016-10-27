@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure | Microsoft Azure"
-   description=" In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierbaren Azure-Dienste und -Features die Sicherheit von Lösungen für das Gesundheitswesen verbessern. "
+   pageTitle="A practical guide to designing secure health care solutions in Azure | Microsoft Azure"
+   description=" This article helps you understand how to improve security for your health care solutions by using the Azure services and features that you configure. "
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,16 +16,22 @@
    ms.date="09/06/2016"
    ms.author="terrylan"/>
 
-# Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure
 
-Startups im Gesundheitswesen, Systemintegratoren (SIs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und im Gesundheitswesen tätige Organisationen, die die Einführung von Azure in Erwägung ziehen, benötigen Unterstützung beim Integrieren geeigneter Sicherheitsmaßnahmen für ihre Complianceanforderungen.
+# <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>A practical guide to designing secure health care solutions in Azure
 
-In der [praktischen Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Microsoft Azure](https://aka.ms/azureindustrysecurity) erfahren Sie, wie Sie mithilfe der bedarfsgerecht konfigurierbaren Azure-Dienste und Features die Sicherheit Ihrer Lösungen erhöhen. Der Inhalt ist in drei Hauptabschnitte unterteilt:
+Health industry startups, system integrators (SIs), independent software vendors (ISVs), and healthcare organizations considering a move to Azure are looking for guidance that helps them incorporate security controls to meet their compliance obligations.
 
-1. Zu berücksichtigende Aspekte bei der Nutzung der Cloudtechnologie – einschließlich Risikomanagement, gemeinsame Verantwortung, Einrichtung eines Managementsystems für Informationssicherheit, grundlegenden Informationen zu branchenüblichen und lokalen Bestimmungen sowie Etablierung von Standardverfahren für den Betrieb.
-2. Wichtige Sicherheitsprinzipien, die mit einem Standard zur Informationssicherheitsverwaltung (etwa ISO 27001) sowie mit Standardentwicklungsprozessen wie dem Security Development Lifecycle (SDL) von Microsoft in Einklang stehen.
-3. Anwendung der zentralen Prinzipien auf Anwendungsfälle durch entsprechende Ausrichtung von Lösungsarchitekten, sodass die Anforderungen für die Lösungen mit dem Standard für das Informationssicherheitsmanagement in Einklang stehen.
+[A Practical Guide to Designing Secure Health Care Solutions in Microsoft Azure](https://aka.ms/azureindustrysecurity) helps you understand how you can improve security for your solutions by using the Azure services and features that you can configure based on your requirements.
+The content is divided into three major sections:
 
-Wir hoffen, Ihnen mit der [praktischen Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure](https://aka.ms/azureindustrysecurity) weiterhelfen zu können. Bei Fragen oder Vorschlägen können Sie gerne weiter unten einen entsprechenden Kommentar erstellen.
+1. Considerations guidance for using cloud technology, including risk management, shared responsibility, establishing an information security management system, understanding industry and local regulations, and establishing standard operating procedures.
+2. Key security principles that are both aligned to a standard information security management standard, such as ISO 27001, and standard development processes, such as Microsoft’s Security Development Lifecycle (SDL).
+3. Applying the key principles to use cases by demonstrating alignment from a solution architect perspective, where requirements for the solutions are aligned to the information security management standard.
 
-<!---HONumber=AcomDC_0907_2016-->
+We hope you find [A Practical Guide to Designing Secure Health Care Solutions](https://aka.ms/azureindustrysecurity) helpful and if you have any questions or suggestions, let us know by leaving a comment below.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

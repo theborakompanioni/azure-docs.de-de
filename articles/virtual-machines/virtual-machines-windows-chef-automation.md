@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Bereitstellung virtueller Azure-Computer mit Chef | Microsoft Azure"
-   description="Hier erfahren Sie, wie Sie Chef zur automatisierten Bereitstellung und Konfiguration virtueller Computer in Microsoft Azure verwenden."
+   pageTitle="Azure virtual machine deployment with Chef | Microsoft Azure"
+   description="Learn how to use Chef to do automated virtual machine deployment and configuration on Microsoft Azure"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="diegoviso"
@@ -15,212 +15,213 @@ ms.topic="article"
 ms.date="05/19/2015"
 ms.author="diviso"/>
 
-# Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef
+
+# <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automating Azure virtual machine deployment with Chef
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Chef ist ein hervorragendes Tool zur Automatisierung und für Konfigurationen mit gewünschten Zuständen.
+Chef is a great tool for delivering automation and desired state configurations.
 
-Mit unserer aktuellen Veröffentlichung der Cloud-API bietet Chef eine problemlose Integration in Azure und ermöglicht es Ihnen, bietet Ihnen die Möglichkeit, Konfigurationszustände über einen einzelnen Befehl bereitzustellen und zu implementieren.
+With our latest cloud-api release, Chef provides seamless integration with Azure, giving you the ability to provision and deploy configuration states through a single command.
 
-In diesem Artikel erfahren Sie, wie die Chef-Umgebung für die Bereitstellung virtueller Azure-Computer eingerichtet wird. Zudem werden Sie schrittweise durch die Erstellung einer Richtlinie und die anschließende Bereitstellung dieser Richtlinie auf einem virtuellen Azure-Computer geführt.
+In this article, I’ll show you how to set up your Chef environment to provision Azure virtual machines and walk you through creating a policy or “CookBook” and then deploying this cookbook to an Azure virtual machine.
 
-Lassen Sie uns beginnen!
+Let’s begin!
 
-## Grundlagen zu Chef
+## <a name="chef-basics"></a>Chef basics
 
-Ich würde vorschlagen, Sie machen sich zuerst mit den grundlegenden Konzepten von Chef vertraut. Sehen Sie sich dazu einfach kurz <a href="http://www.chef.io/chef" target="_blank">dieses hilfreiche Material</a> an, bevor Sie mit der exemplarischen Vorgehensweise beginnen. Die Grundlagen werden vor dem Start dennoch kurz zusammengefasst.
+Before you begin, I suggest you review the basic concepts of Chef. There is great material <a href="http://www.chef.io/chef" target="_blank">here</a> and I recommend you have a quick read before you attempt this walkthrough. I will however recap the basics before we get started.
 
-Das folgende Diagramm zeigt die allgemeine Chef-Architektur:
+The following diagram depicts the high-level Chef architecture.
 
 ![][2]
 
-Die Architektur von Chef setzt sich aus drei Hauptkomponenten zusammen: Chef-Server, Chef-Client (Knoten) und Chef-Arbeitsstation.
+Chef has three main architectural components: Chef Server, Chef Client (node), and Chef Workstation.
 
-Der Chef-Server ist unser Verwaltungspunkt, für den es zwei Optionen gibt: eine gehostete oder eine lokale Lösung. Wir werden eine gehostete Lösung verwenden.
+The Chef Server is our management point and there are two options for the Chef Server: a hosted solution or an on-premises solution. We will be using a hosted solution.
 
-Der Chef-Client (Knoten) ist der Agent, der sich auf den Servern befindet, die Sie verwalten.
+The Chef Client (node) is the agent that sits on the servers you are managing.
 
-Die Chef-Arbeitsstation ist unsere Verwaltungsarbeitsstation, auf der die Richtlinien erstellt und Verwaltungsbefehle ausgeführt werden. Wir führen den Befehl **knife** auf der Chef-Arbeitsstation aus, um unsere Infrastruktur zu verwalten.
+The Chef Workstation is our admin workstation where we create our policies and execute our management commands. We run the **knife** command from the Chef Workstation to manage our infrastructure.
 
-Es gibt zudem das Konzept von so genannten "Rezeptbüchern" (Cookbooks) und "Rezepten". Hierbei handelt es sich um Richtlinien, die wir definieren und auf unsere Server anwenden.
+There is also the concept of “Cookbooks” and “Recipes”. These are effectively the policies we define and apply to our servers.
 
-## Vorbereiten der Arbeitsstation
+## <a name="preparing-the-workstation"></a>Preparing the workstation
 
-Zunächst bereiten wird die Arbeitsstation vor. Ich verwende eine Windows-Standardarbeitsstation. Wir müssen ein Verzeichnis zum Speichern unserer Konfigurationsdateien und Rezeptbücher erstellen.
+First, lets prep the workstation. I’m using a standard Windows workstation. We need to create a directory to store our config files and cookbooks.
 
-Erstellen Sie zunächst ein Verzeichnis namens C:\\chef.
+First create a directory called C:\chef.
 
-Erstellen Sie dann ein zweites Verzeichnis namens „C:\\chef\\cookbooks“.
+Then create a second directory called c:\chef\cookbooks.
 
-Wir müssen jetzt unsere Azure-Einstellungsdatei herunterladen, damit Chef mit unserem Azure-Abonnement kommunizieren kann.
+We now need to download our Azure settings file so Chef can communicate with our Azure subscription.
 
-Laden Sie [hier](https://manage.windowsazure.com/publishsettings/) Ihre Veröffentlichungseinstellungen herunter.
+Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).
 
-Speichern Sie die Datei mit den Veröffentlichungseinstellungen unter „C:\\chef“.
+Save the publish settings file in C:\chef.
 
-##Erstellen eines verwalteten Chef-Kontos
+##<a name="creating-a-managed-chef-account"></a>Creating a managed Chef account
 
-Registrieren Sie sich [hier](https://manage.chef.io/signup) für ein gehostetes Chef-Konto.
+Sign up for a hosted Chef account [here](https://manage.chef.io/signup).
 
-Bei der Anmeldung werden Sie aufgefordert, eine neue Organisation zu erstellen.
+During the signup process, you will be asked to create a new organization.
 
 ![][3]
 
-Sobald Ihre Organisation erstellt wurde, laden Sie das Starterkit herunter.
+Once your organization is created, download the starter kit.
 
 ![][4]
 
-> [AZURE.NOTE] Wenn Sie eine Meldung mit dem Hinweis erhalten, dass Ihre Schlüssel zurückgesetzt werden, ist es in Ordnung, wenn Sie fortfahren, da wir noch keine Infrastruktur konfiguriert haben.
+> [AZURE.NOTE] If you receive a prompt warning you that your keys will be reset, it’s ok to proceed as we have no existing infrastructure configured as yet.
 
-Die ZIP-Datei dieses Starterkits enthält die Konfigurationsdateien und Schlüssel für Ihre Organisation.
+This starter kit zip file contains your organization config files and keys.
 
-##Konfigurieren der Chef-Arbeitsstation
+##<a name="configuring-the-chef-workstation"></a>Configuring the Chef workstation
 
-Extrahieren Sie den Inhalt der Datei „chef-starter.zip“ im Ordner „C:\\chef“.
+Extract the content of the chef-starter.zip to C:\chef.
 
-Kopieren Sie alle Dateien unter „chef-starter\\chef-repo.chef“ in das Verzeichnis „C:\\chef“.
+Copy all files under chef-starter\chef-repo\.chef to your c:\chef directory.
 
-Ihr Verzeichnis sollte in etwa wie folgt aussehen:
+Your directory should now look something like the following example.
 
 ![][5]
 
-Im Stammverzeichnis von „C:\\chef“ müssen sich jetzt vier Dateien (einschließlich der Azure-Veröffentlichungsdatei) befinden.
+You should now have four files including the Azure publishing file in the root of c:\chef.
 
-Die PEM-Dateien enthalten die privaten Schlüssel für die Organisation und Administration für die Kommunikation, während die Datei knife.rb die "knife"-Konfiguration enthält. Wir müssen die Datei knife.rb bearbeiten.
+The PEM files contain your organization and admin private keys for communication while the knife.rb file contains your knife configuration. We will need to edit the knife.rb file.
 
-Öffnen Sie die Datei in einem Editor Ihrer Wahl, und ändern Sie „cookbook\_path“, indem Sie „/../“ aus dem Pfad entfernen, damit dieser wie weiter unten dargestellt aussieht.
+Open the file in your editor of choice and modify the “cookbook_path” by removing the /../ from the path so it appears as shown next.
 
-	cookbook_path  ["#{current_dir}/cookbooks"]
+    cookbook_path  ["#{current_dir}/cookbooks"]
 
-Fügen Sie zudem die folgende Zeile hinzu, die den Namen Ihrer Azure-Datei für die Veröffentlichungseinstellungen widerspiegelt.
+Also add the following line reflecting the name of your Azure publish settings file.
 
-	knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+    knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 
-Die Datei „knife.rb“ sollte jetzt etwa wie folgt aussehen:
+Your knife.rb file should now look similar to the following example.
 
 ![][6]
 
-Diese Zeilen stellen sicher, dass Knife auf „C:\\chef\\cookbooks“ verweist und bei Azure-Vorgängen unsere Azure-Datei mit den Veröffentlichungseinstellungen verwendet.
+These lines will ensure that Knife references the cookbooks directory under c:\chef\cookbooks, and also uses our Azure Publish Settings file during Azure operations.
 
-## Installieren des Chef Development Kit
+## <a name="installing-the-chef-development-kit"></a>Installing the Chef Development Kit
 
-Zum Einrichten der Chef-Arbeitsstation müssen Sie im nächsten Schritt das ChefDK (Chef Development Kit) [herunterladen und installieren](http://downloads.getchef.com/chef-dk/windows).
+Next [download and install](http://downloads.getchef.com/chef-dk/windows) the ChefDK (Chef Development Kit) to set up your Chef Workstation.
 
 ![][7]
 
-Verwenden Sie bei der Installation das Standardverzeichnis „C:\\opscode“. Die Installation dauert ca. 10 Minuten.
+Install in the default location of c:\opscode. This install will take around 10 minutes.
 
-Vergewissern Sie sich, dass die PATH-Variable Einträge für "C:\\opscode\\chefdk\\bin;C:\\opscode\\chefdk\\embedded\\bin;c:\\users\\yourusername.chefdk\\gem\\ruby\\2.0.0\\bin" enthält.
+Confirm your PATH variable contains entries for C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername\.chefdk\gem\ruby\2.0.0\bin
 
-Wenn sie nicht vorhanden sind, stellen Sie sicher, dass Sie diese Pfade hinzufügen!
+If they are not there, make sure you add these paths!
 
-*BEACHTEN SIE, DASS DIE REIHENFOLGE DER PFADE WICHTIG IST!* Wenn die "opscode"-Pfade nicht in der richtigen Reihenfolge angegeben sind, können Probleme auftreten.
+*NOTE THE ORDER OF THE PATH IS IMPORTANT!* If your opscode paths are not in the correct order you will have issues.
 
-Starten Sie die Arbeitsstation neu, bevor Sie fortfahren.
+Reboot your workstation before you continue.
 
-Als Nächstes wird die Azure-Erweiterung von Knife installiert. Dadurch erhält Knife das Azure-Plug-In.
+Next, we will install the Knife Azure extension. This provides Knife with the “Azure Plugin”.
 
-Führen Sie den folgenden Befehl aus:
+Run the following command.
 
-	chef gem install knife-azure ––pre
+    chef gem install knife-azure ––pre
 
-> [AZURE.NOTE] Das Argument „-pre“ stellt sicher, dass Sie die neueste RC-Version des Azure-Plug-Ins für Knife erhalten, das Zugriff auf die neuesten APIs bietet.
+> [AZURE.NOTE] The –pre argument ensures you are receiving the latest RC version of the Knife Azure Plugin which provides access to the latest set of APIs.
 
-Voraussichtlich werden gleichzeitig auch eine Reihe von Abhängigkeiten installiert.
+It’s likely that a number of dependencies will also be installed at the same time.
 
 ![][8]
 
 
-Führen Sie den folgenden Befehl aus, um sich zu vergewissern, dass alles korrekt konfiguriert ist:
+To ensure everything is configured correctly, run the following command.
 
-	knife azure image list
+    knife azure image list
 
-Wenn alles richtig konfiguriert ist, wird eine Liste der verfügbaren Azure-Images angezeigt.
+If everything is configured correctly, you will see a list of available Azure images scroll through.
 
-Herzlichen Glückwunsch. Die Arbeitsstation ist eingerichtet!
+Congratulations. The workstation is set up!
 
-##Erstellen eines Cookbooks
+##<a name="creating-a-cookbook"></a>Creating a Cookbook
 
-Ein Cookbook wird von Chef dazu verwendet, um eine Reihe von Befehlen zu definieren, die auf dem verwalteten Client ausgeführt werden sollen. Die Cookbook-Erstellung ist unkompliziert, und wir verwenden den Befehl **chef generate cookbook**, um unsere Cookbook-Vorlage zu erstellen. Ich nenne mein Cookbook „Webserver“, da ich eine Richtlinie verwenden möchte, die automatisch IIS bereitstellt.
+A Cookbook is used by Chef to define a set of commands that you wish to execute on your managed client. Creating a Cookbook is straightforward and we use the **chef generate cookbook** command to generate our Cookbook template. I will be calling my Cookbook web server as I would like a policy that automatically deploys IIS.
 
-Führen Sie im Verzeichnis „C:\\Chef“ den folgenden Befehl aus:
+Under your C:\Chef directory run the following command.
 
-	chef generate cookbook webserver
+    chef generate cookbook webserver
 
-Dadurch werden eine Reihe von Dateien im Verzeichnis C:\\Chef\\cookbooks\\webserver generiert. Wir müssen jetzt den Satz von Befehlen definieren, die unser Chef-Client auf dem verwalteten virtuellen Computer ausführen soll.
+This will generate a set of files under the directory C:\Chef\cookbooks\webserver. We now need to define the set of commands we would like our Chef client to execute on our managed virtual machine.
 
-Die Befehle werden in der Datei default.rb gespeichert. In dieser Datei werden eine Reihe von Befehlen definiert, die IIS installieren, starten und eine Vorlagendatei in den Ordner "wwwroot" kopieren.
+The commands are stored in the file default.rb. In this file, I’ll be defining a set of commands that installs IIS, starts IIS and copies a template file to the wwwroot folder.
 
-Ändern Sie die Datei „C:\\chef\\cookbooks\\webserver\\recipes\\default.rb“, und fügen Sie die folgenden Zeilen hinzu:
+Modify the C:\chef\cookbooks\webserver\recipes\default.rb file and add the following lines.
 
-	powershell_script 'Install IIS' do
- 		action :run
- 		code 'add-windowsfeature Web-Server'
-	end
+    powershell_script 'Install IIS' do
+        action :run
+        code 'add-windowsfeature Web-Server'
+    end
 
-	service 'w3svc' do
- 		action [ :enable, :start ]
-	end
+    service 'w3svc' do
+        action [ :enable, :start ]
+    end
 
-	template 'c:\inetpub\wwwroot\Default.htm' do
- 		source 'Default.htm.erb'
- 		rights :read, 'Everyone'
-	end
+    template 'c:\inetpub\wwwroot\Default.htm' do
+        source 'Default.htm.erb'
+        rights :read, 'Everyone'
+    end
 
-Speichern Sie die Datei, sobald Sie fertig sind.
+Save the file once you are done.
 
-## Erstellen einer Vorlage
+## <a name="creating-a-template"></a>Creating a template
 
-Wie bereits zuvor erwähnt, müssen wir eine Vorlagendatei generieren, die als unsere "default.html"-Standardseite verwendet wird.
+As we mentioned previously, we need to generate a template file which will be used as our default.html page.
 
-Führen Sie den folgenden Befehl aus, um die Vorlage zu generieren:
+Run the following command to generate the template.
 
-	chef generate template webserver Default.htm
+    chef generate template webserver Default.htm
 
-Wechseln Sie nun zur Datei „C:\\chef\\cookbooks\\webserver\\templates\\default\\Default.htm.erb“. Fügen Sie der Datei etwas einfachen HTML-Code (Hello World) hinzu, und speichern Sie sie.
+Now navigate to the C:\chef\cookbooks\webserver\templates\default\Default.htm.erb file. Edit the file by adding some simple “Hello World” HTML code, and then save the file.
 
 
 
-## Hochladen des Cookbooks auf den Chef-Server
+## <a name="upload-the-cookbook-to-the-chef-server"></a>Upload the Cookbook to the Chef Server
 
-In diesem Schritt nehmen wir eine Kopie des Cookbooks, das wir auf unserem lokalen Computer erstellt haben, und laden es auf den von Chef gehosteten Server hoch. Sobald es hochgeladen ist, wird das Cookbook auf der Registerkarte **Richtlinie** angezeigt.
+In this step, we are taking a copy of the Cookbook that we have created on our local machine and uploading it to the Chef Hosted Server. Once uploaded, the Cookbook will appear under the **Policy** tab.
 
-	knife cookbook upload webserver
+    knife cookbook upload webserver
 
 ![][9]
 
-## Bereitstellen eines virtuellen Computers mit Knife Azure
+## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Deploy a virtual machine with Knife Azure
 
-Wir stellen jetzt einen virtuellen Azure-Computer bereit und wenden das Cookbook „Webserver“ an, das unseren IIS-Webdienst und die Standardwebseite installiert.
+We will now deploy an Azure virtual machine and apply the “Webserver” Cookbook which will install our IIS web service and default web page.
 
-Verwenden Sie hierzu den Befehl**knife azure server create**.
+In order to do this, use the **knife azure server create** command.
 
-Im Anschluss sehen Sie ein Beispiel für den Befehl.
+Am example of the command appears next.
 
-	knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
+    knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
 
-Die Parameter sind selbsterklärend. Ersetzen Sie Ihre bestimmten Variablen, und führen Sie den Befehl dann aus.
+The parameters are self-explanatory. Substitute your particular variables and run.
 
-> [AZURE.NOTE] Über die Befehlszeile automatisiere ich mithilfe des Parameters „–tcp-endpoints“ auch die Filterregeln für mein Endpunktnetzwerk. Ich habe die Ports 80 und 3389 geöffnet, um den Zugriff auf meine Webseite und die RDP-Sitzung zu gestatten.
+> [AZURE.NOTE] Through the the command line, I’m also automating my endpoint network filter rules by using the –tcp-endpoints parameter. I’ve opened up ports 80 and 3389 to provide access to my web page and RDP session.
 
-Nachdem Sie den Befehl ausgeführt haben, wechseln Sie zum Azure-Portal, wo Sie die Bereitstellung des virtuellen Computers verfolgen können.
+Once you run the command, go to the Azure portal and you will see your machine begin to provision.
 
 ![][13]
 
-Anschließend erscheint die Eingabeaufforderung.
+The command prompt appears next.
 
 ![][10]
 
-Nach Abschluss der Bereitstellung können wir über den Port 80 eine Verbindung mit dem Webdienst herstellen, da wir den Port wir beim Bereitstellen des virtuellen Computers mit dem Knive Azure-Befehl geöffnet haben. Da dieser virtuelle Computer der einzige in meinem Clouddienst ist, verknüpfe ich ihn mit der URL des Clouddiensts.
+Once the deployment is complete, we should be able to connect to the web service over port 80 as we had opened the port when we provisioned the virtual machine with the Knife Azure command. As this virtual machine is the only virtual machine in my cloud service, I’ll connect it with the cloud service url.
 
 ![][11]
 
-Wie Sie sehen, war ich bei meinem HTML-Code richtig kreativ.
+As you can see, I got creative with my HTML code.
 
-Vergessen Sie nicht, dass wir die Verbindung auch im klassischen Azure-Portal per RDP-Sitzung über den Port 3389 herstellen können.
+Don’t forget we can also connect through an RDP session from the Azure classic portal via port 3389.
 
-Ich hoffe, diese Informationen waren hilfreich. Starten Sie noch heute mit Azure, um Ihre Infrastruktur als Code umzusetzen!
+I hope this has been helpful! Go  and start your infrastructure as code journey with Azure today!
 
 
 <!--Image references-->
@@ -239,4 +240,8 @@ Ich hoffe, diese Informationen waren hilfreich. Starten Sie noch heute mit Azure
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

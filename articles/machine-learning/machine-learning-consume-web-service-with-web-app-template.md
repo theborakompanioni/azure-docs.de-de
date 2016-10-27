@@ -1,122 +1,127 @@
 <properties
-	pageTitle="Verwenden eines Machine Learning-Webdiensts mit einer Web-App-Vorlage | Microsoft Azure"
-	description="Verwenden Sie eine Web-App-Vorlage in Azure Marketplace, um einen Vorhersagewebdienst in Azure Machine Learning zu nutzen."
-	keywords="Webdienst, Operationalisierung, REST-API, Machine Learning"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Consume a Machine Learning web service with a web app template | Microsoft Azure"
+    description="Use a web app template in Azure Marketplace to consume a predictive web service in Azure Machine Learning."
+    keywords="web service,operationalization,REST API,machine learning"
+    services="machine-learning"
+    documentationCenter=""
+    authors="garyericson"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="garye;raymondl"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/10/2016"
+    ms.author="garye;raymondl"/>
 
-# Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage
 
->[AZURE.NOTE] In diesem Thema werden für einen klassischen Webdienst geltende Verfahren beschrieben.
+# <a name="consume-an-azure-machine-learning-web-service-with-a-web-app-template"></a>Consume an Azure Machine Learning web service with a web app template
 
-Nachdem Sie Ihr Vorhersagemodell entwickelt und mit Machine Learning Studio (oder Tools wie R oder Python) als Azure-Webdienst bereitgestellt haben, können Sie auf das operationalisierte Modell mit einer REST-API zugreifen.
+>[AZURE.NOTE] This topic describes techniques applicable to a classic web service. 
 
-Es gibt eine Reihe von Möglichkeiten, die REST-API zu nutzen und auf den Webdienst zuzugreifen. Beispielsweise können Sie eine Anwendung in C#, R oder Python schreiben und dabei den Beispielcode verwenden, der für Sie beim Bereitstellen des Webdiensts generiert wurde (verfügbar auf der API-Hilfeseite im Webdienstdashboard in Machine Learning Studio). Sie können aber auch die Microsoft Excel-Beispielarbeitsmappe verwenden, die für Sie erstellt wurde (auch im Webdienstdashboard in Studio verfügbar).
+Once you've developed your predictive model and deployed it as an Azure web service using Machine Learning Studio, or using tools such as R or Python, you can access the operationalized model using a REST API.
 
-Aber die schnellste und einfachste Möglichkeit, auf Ihren Webdienst zuzugreifen, bieten die Web-App-Vorlagen, die im [Azure Marketplace für Web-Apps](https://azure.microsoft.com/marketplace/web-applications/all/) verfügbar sind.
+There are a number of ways to consume the REST API and access the web service. For example, you can write an application in C#, R, or Python using the sample code generated for you when you deployed the web service (available on the API Help Page in the web service dashboard in Machine Learning Studio). Or you can use the sample Microsoft Excel workbook created for you (also available in the web service dashboard in Studio).
+
+But the quickest and easiest way to access your web service is through the Web App Templates available in the [Azure Web App Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Azure Machine Learning-Web-App-Vorlagen
+## <a name="the-azure-machine-learning-web-app-templates"></a>The Azure Machine Learning Web App Templates
 
-Die Web-App-Vorlagen, die auf dem Azure Marketplace verfügbar sind, können eine benutzerdefinierte Web-App erstellen, der die Eingabedaten und die erwarteten Ergebnisse des Webdiensts bekannt sind. Dafür müssen Sie nur der Web-App Zugriff auf den Webdienst und die Daten gewähren, und die Vorlage übernimmt den Rest.
+The web app templates available in the Azure Marketplace can build a custom web app that knows your web service's input data and expected results. All you need to do is give the web app access to your web service and data, and the template does the rest.
 
-Zwei Vorlagen sind verfügbar:
+Two templates are available:
 
-- [Azure ML-Web-App-Vorlage für den Anfrage-/Antwort-Dienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
-- [Azure ML-Web-App-Vorlage für den Batchausführungsdienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
+- [Azure ML Request-Response Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
+- [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Jede Vorlage erstellt mit dem API-URI und dem Schlüssel für den Webdienst eine ASP.NET-Beispielanwendung und stellt sie als Website in Azure bereit. Die Vorlage für den Anfrage-/Antwort-Dienst (Request-Response Service, RRS) erstellt eine Web-App, die es Ihnen ermöglicht, eine einzelne Zeile mit Daten an den Webdienst zu senden, um ein einzelnes Ergebnis zu erhalten. Die Vorlage für den Batchausführungsdienst (Batch Execution Service, BES) erstellt eine Web-App, die es Ihnen ermöglicht, viele Zeilen mit Daten zu senden, um mehrere Ergebnisse zu erhalten.
+Each template creates a sample ASP.NET application, using the API URI and Key for your web service, and deploys it as a web site to Azure. The Request-Response Service (RRS) template creates a web app that allows you to send a single row of data to the web service to get a single result. The Batch Execution Service (BES) template creates a web app that allows you to send many rows of data to get multiple results.
 
-Es ist keine Codierung erforderlich, um diese Vorlagen zu verwenden. Sie geben nur den URI-API und den Schlüssel an, und die Vorlage erstellt die Anwendung für Sie.
+No coding is required to use these templates. You just supply the API URI and Key and the template builds the application for you.
 
-## Verwenden der Vorlage für den Anfrage-/Antwort-Dienst (RRS)
+## <a name="how-to-use-the-request-response-service-(rrs)-template"></a>How to use the Request-Response Service (RRS) template
 
-Nachdem Sie den Webdienst bereitgestellt haben, können Sie den unten aufgeführten Schritten folgen, um die RRS-Web-App-Vorlage zu verwenden, wie im folgenden Diagramm gezeigt.
+Once you've deployed your web service, you can follow the steps below to use the RRS web app template, as shown in the following diagram.
 
-![Prozess zur Verwendung einer RRS-Webvorlage][image1]
+![Process to use RRS web template][image1]
 
-1. Öffnen Sie in Machine Learning Studio die Registerkarte **Webdienste** und dann den Webdienst, auf den Sie zugreifen möchten. Kopieren Sie den Schlüssel unter **API-Schlüssel**, und speichern Sie ihn.
+1. In Machine Learning Studio, open the **Web Services** tab and then open the web service you want to access. Copy the key listed under **API key** and save it.
 
-	![API-Schlüssel][image3]
+    ![API Key][image3]
 
-2. Öffnen Sie die API-Hilfeseite **ANFORDERUNG/ANTWORT**. Kopieren Sie oben auf der Seite unter **Anforderung** den Wert für **Anforderungs-URI**, und speichern Sie ihn. Dieser Wert sieht wie folgt aus:
+2. Open the **REQUEST/RESPONSE** API Help Page. At the top of the help page, under **Request**, copy the **Request URI** value and save it. This value will look like this:
 
-		https://ussouthcentral.services.azureml.net/workspaces/<workspace-id>/services/<service-id>/execute?api-version=2.0&details=true
+        https://ussouthcentral.services.azureml.net/workspaces/<workspace-id>/services/<service-id>/execute?api-version=2.0&details=true
 
-	![Anforderungs-URI][image4]
+    ![Request URI][image4]
 
-3. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), **melden Sie sich an**, und klicken Sie auf **Neu**. Navigieren Sie zu **Azure ML Request-Response Service Web App**, wählen Sie die App aus, und klicken Sie auf **Create**.
+3. Go to the [Azure portal](https://portal.azure.com), **Login**, click **New**, Search for and select **Azure ML Request-Response Service Web App**, then click **Create**. 
 
-	- Geben Sie Ihrer Web-App einen eindeutigen Namen. Die URL der Web-App besteht aus diesem Namen gefolgt von `.azurewebsites.net.`. Beispiel: `http://carprediction.azurewebsites.net.`
+    - Give your web app a unique name. The URL of the web app will be this name followed by `.azurewebsites.net.` For example, `http://carprediction.azurewebsites.net.`
 
-	- Wählen Sie das Azure-Abonnement und die Dienste aus, mit denen der Webdienst ausgeführt wird.
+    - Select the Azure subscription and services under which your web service is running.
 
-	- Klicken Sie auf **Erstellen**.
+    - Click **Create**.
 
-	![Web-App erstellen][image5]
+    ![Create web app][image5]
 
-4. Wenn Azure das Bereitstellen der Web-App beendet hat, klicken Sie auf die **URL** auf der Seite mit den Web-App-Einstellungen in Azure, oder geben Sie die URL in einem Webbrowser ein. Zum Beispiel, `http://carprediction.azurewebsites.net.`
+4. When Azure has finished deploying the web app, click the **URL** on the web app settings page in Azure, or enter the URL in a web browser. For example, `http://carprediction.azurewebsites.net.`
 
-5. Bei der ersten Ausführung der Web-App werden Sie aufgefordert, die **Post-URL der API** und den **API-Schlüssel** anzugeben. Geben Sie die Werte ein, die Sie zuvor gespeichert haben:
-	- **Anforderungs-URI** von der API-Hilfeseite für die **Post-URL der API**
-	- **API-Schlüssel** aus dem Webdienstdashboard für den **API-Schlüssel**.
+5. When the web app first runs it will ask you for the **API Post URL** and **API Key**.
+Enter the values you saved earlier:
+    - **Request URI** from the API Help Page for **API Post URL**
+    - **API Key** from the web service dashboard for the **API Key**.
 
-	Klicken Sie auf **Senden**.
+    Click **Submit**.
 
-	![Post-URI und API-Schlüssel eingeben][image6]
+    ![Enter Post URI and API Key][image6]
 
-6. Die Web-App zeigt die Seite **Web-App-Konfiguration** mit den aktuellen Einstellungen für den Webdienst an. Hier können Sie die von der Web-App verwendeten Einstellungen ändern.
+6. The web app displays its **Web App Configuration** page with the current web service settings. Here you can make changes to the settings used by the web app.
 
-	> [AZURE.NOTE] Wenn Sie hier Einstellungen ändern, werden sie nur für diese Web-App geändert. Die Standardeinstellungen des Webdiensts werden nicht geändert. Angenommen, Sie ändern hier die **Beschreibung**. In diesem Fall wird die im Webdienstdashboard in Machine Learning Studio angezeigte Beschreibung nicht geändert.
+    > [AZURE.NOTE] Changing the settings here only changes them for this web app. It doesn't change the default settings of your web service. For example, if you change the **Description** here it doesn't change the description shown on the web service dashboard in Machine Learning Studio.
 
-	Wenn Sie fertig sind, klicken Sie auf **Änderungen speichern** und dann auf **Zur Startseite wechseln**.
+    When you're done, click **Save changes**, and then click **Go to Home Page**.
 
-7. Auf der Startseite können Sie Werte eingeben, die an den Webdienst gesendet werden. Wenn Sie auf **Senden** klicken, wird das Ergebnis zurückgegeben.
+7. From the home page you can enter values to send to your web service, click **Submit**, and the result will be returned.
 
-Wenn Sie zur Seite **Konfiguration** zurückkehren möchten, wechseln Sie zur Seite `setting.aspx` der Web-App. Beispiel: `http://carprediction.azurewebsites.net/setting.aspx.` Sie werden aufgefordert, den API-Schlüssel erneut einzugeben. Sie benötigen ihn, um auf die Seite zuzugreifen und die Einstellungen zu aktualisieren.
+If you want to return to the **Configuration** page, go to the `setting.aspx` page of the web app. For example: `http://carprediction.azurewebsites.net/setting.aspx.` You will be prompted to enter the API key again - you need that to access the page and update the settings.
 
-Sie können die Web-App im Azure-Portal wie andere Web-Apps beenden, neu starten oder löschen. Solange sie ausgeführt wird, können Sie zur Webadresse der Startseite wechseln und neue Werte eingeben.
+You can stop, restart, or delete the web app in the Azure portal like any other web app. As long as it is running you can browse to the home web address and enter new values.
 
-## Verwenden der Vorlage für den Batchausführungsdienst (BES)
+## <a name="how-to-use-the-batch-execution-service-(bes)-template"></a>How to use the Batch Execution Service (BES) template
 
-Sie können die BES-Web-App-Vorlage auf die gleiche Weise wie die RRS-Vorlage verwenden. Der Unterschied ist, dass die erstellte Web-App es ermöglicht, mehrere Datenzeilen zu senden und mehrere Ergebnisse zu empfangen.
+You can use the BES web app template in the same way as the RRS template, except that the web app that's created will allow you to submit multiple rows of data and receive multiple results.
 
-Die Ergebnisse von einem Webdienst mit Batchausführung werden in einem Azure-Speichercontainer gespeichert. Die Eingabewerte können aus einem Azure-Speicher oder einer lokalen Datei stammen. Daher benötigen Sie einen Azure-Speichercontainer für die Ergebnisse, die von der Web-App zurückgegeben werden, und Sie müssen Ihre Eingabedaten vorbereiten.
+The results from a batch execution web service are stored in an Azure storage container; the input values can come from Azure storage or a local file.
+So, you'll need an Azure storage container to hold the results returned by the web app, and you'll need to get your input data ready.
 
-![Prozess zur Verwendung einer BES-Webvorlage][image2]
+![Process to use BES web template][image2]
 
-1. Führen Sie das gleiche Verfahren zum Erstellen der BES-Web-App wie für die RRS-Vorlage aus. Es gelten jedoch die folgenden Ausnahmen:
-	- Rufen Sie den **Anforderungs-URI** von der API-Hilfeseite **BATCH EXECUTION** für den Webdienst ab.
-	- Wechseln Sie zur [Azure ML-Web-App-Vorlage für den Batchausführungsdienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/), um die BES-Vorlage auf dem Azure Marketplace zu öffnen, und klicken Sie auf **Web-App erstellen**.
+1. Follow the same procedure to create the BES web app as for the RRS template, except:
+    - Get the **Request URI** from the **BATCH EXECUTION** API Help Page for the web service.
+    - Go to [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) to open the BES template on Azure Marketplace and click **Create Web App**.
 
-2. Um anzugeben, wo die Ergebnisse gespeichert werden sollen, geben Sie die Informationen zum Zielcontainer auf der Startseite der Web-App an. Geben Sie zudem an, woher die Web-App die Eingabewerte erhält: aus einer lokalen Datei oder einem Azure-Speichercontainer. Klicken Sie auf **Senden**.
+2. To specify where you want the results stored, enter the destination container information on the web app home page. Also specify where the web app can get the input values, either in a local file or an Azure storage container.
+Click **Submit**.
 
-	![Speicherinformationen][image7]
+    ![Storage information][image7]
 
-Die Web-App zeigt eine Seite mit dem Auftragsstatus an. Nach Abschluss des Auftrags werden Sie über den Speicherort der Ergebnisse im Azure-Blobspeicher informiert. Sie haben auch die Möglichkeit, die Ergebnisse in eine lokale Datei herunterzuladen.
+The web app will display a page with job status.
+When the job has completed you'll be given the location of the results in Azure blob storage. You also have the option of downloading the results to a local file.
 
-## Weitere Informationen
+## <a name="for-more-information"></a>For more information
 
-Erfahren Sie mehr:
+To learn more about...
 
-- Weitere Informationen zum Erstellen eines Machine Learning-Experiments mit Machine Learning Studio finden Sie unter [Erstellen Ihres ersten Experiments im Azure Machine Learning Studio](machine-learning-create-experiment.md).
+- creating a machine learning experiment with Machine Learning Studio, see [Create your first experiment in Azure Machine Learning Studio](machine-learning-create-experiment.md)
 
-- Informationen zum Bereitstellen Ihres Machine Learning-Experiments als Webdienst finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md).
+- how to deploy your machine learning experiment as a web service, see [Deploy an Azure Machine Learning web service](machine-learning-publish-a-machine-learning-web-service.md)
 
-- Andere Möglichkeiten für den Zugriff auf den Webdienst finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](machine-learning-consume-web-services.md).
+- other ways to access your web service, see [How to consume an Azure Machine Learning web service](machine-learning-consume-web-services.md)
 
 
 [image1]: media\machine-learning-consume-web-service-with-web-app-template\rrs-web-template-flow.png
@@ -127,4 +132,8 @@ Erfahren Sie mehr:
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

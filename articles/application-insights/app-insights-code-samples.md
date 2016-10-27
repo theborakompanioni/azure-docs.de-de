@@ -1,50 +1,51 @@
 <properties 
-	pageTitle="Application Insights: Codebeispiele und exemplarische Vorgehensweisen" 
-	description="Beispiele, die Sie für Ihre eigenen Apps anpassen können." 
-	services="application-insights" 
+    pageTitle="Application Insights: Code samples and walkthroughs" 
+    description="Samples you can adapt for your own apps." 
+    services="application-insights" 
     documentationCenter="windows"
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/05/2016" 
-	ms.author="awills"/>
-
-#  Application Insights: Codebeispiele und exemplarische Vorgehensweisen
-
-*Application Insights befindet sich in der Vorschau.*
-
-Dies ist eine Zusammenstellung von Codebeispielen, die die Verwendung von [Visual Studio Application Insights](app-insights-overview.md) veranschaulichen.
-
-## SDK Labs
-
-[SDK Labs](https://www.myget.org/gallery/applicationinsights-sdk-labs) ist eine Sammlung experimenteller NuGet-Pakete, die Sie als Ergänzungen zu Ihrem Application Insights SDK installieren und deinstallieren können. Probieren Sie sie aus, und geben Sie uns Feedback!
-
-## Webdienste
-
-* [Hinzufügen von Telemetrie zu Azure-Web- und -Workerrollen hinzufügen](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService).
-* [Universelle Windows 8.1-App](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal/)
-
-## Fortlaufender Export
-
-Zum Analysieren von Telemetriedaten mit Ihren eigenen Tools [exportieren](app-insights-export-telemetry.md) Sie die Daten in den Speicher und analysieren und verarbeiten sie dort.
-
-* [Exportieren nach Power BI](app-insights-export-power-bi.md) 
-* [Analysieren exportierter Daten mithilfe einer Workerrolle](app-insights-code-sample-export-telemetry-sql-database.md)
-* [Exportieren in SQL mit Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md)
-* [Aktivieren der Telemetrie für Microsoft Dynamics CRM](app-insights-sample-mscrm.md)
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="01/05/2016" 
+    ms.author="awills"/>
 
 
-## Automatisieren von Aufgaben
+#  <a name="application-insights:-code-samples-and-walkthroughs"></a>Application Insights: Code Samples and Walkthroughs
 
-* [Senden von Azure-Diagnosedaten an Application Insights mit PowerShell](app-insights-powershell.md)
-* [Skript zum Erstellen einer neuen Application Insights-Ressource](app-insights-powershell-script-create-resource.md)
-* [Senden von Azure-Diagnosedaten an Application Insights mit PowerShell](app-insights-powershell-azure-diagnostics.md)
+*Application Insights is in preview.*
+
+This is a compilation of code samples that show you how to use [Visual Studio Application Insights](app-insights-overview.md).
+
+## <a name="sdk-labs"></a>SDK Labs
+
+[SDK Labs](https://www.myget.org/gallery/applicationinsights-sdk-labs) is a collection of experimental NuGet packages that you can install and uninstall as additions to your Application Insights SDK. Try them out and give us feedback!
+
+## <a name="web-services"></a>Web services
+
+* [Add telemetry to Azure web and worker roles](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService).
+* [Windows 8.1 Universal app](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal/)
+
+## <a name="continuous-export"></a>Continuous Export
+
+To analyze telemetry data with your own tools, [export it](app-insights-export-telemetry.md) to storage, where you can parse and process it.
+
+* [Export to Power BI](app-insights-export-power-bi.md) 
+* [Parse exported data using a worker role](app-insights-code-sample-export-telemetry-sql-database.md)
+* [Export to SQL using Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md)
+* [Enabling telemetry for Microsoft Dynamics CRM](app-insights-sample-mscrm.md)
+
+
+## <a name="automate-tasks"></a>Automate tasks
+
+* [Using PowerShell to send Azure Diagnostics to Application Insights](app-insights-powershell.md)
+* [Script to create a new Application Insights resource](app-insights-powershell-script-create-resource.md)
+* [Using PowerShell to send Azure Diagnostics to Application Insights](app-insights-powershell-azure-diagnostics.md)
 
 
 
@@ -55,4 +56,8 @@ Zum Analysieren von Telemetriedaten mit Ihren eigenen Tools [exportieren](app-in
 
  
 
-<!---HONumber=AcomDC_0107_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

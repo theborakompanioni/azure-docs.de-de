@@ -1,318 +1,321 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory-Integration mit SAP Business ByDesign | Microsoft Azure"
-	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SAP Business ByDesign konfigurieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with SAP Business ByDesign | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and SAP Business ByDesign."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/09/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/09/2016"
+    ms.author="jeedes"/>
 
 
-# Tutorial: Azure Active Directory-Integration mit SAP Business ByDesign
 
-In diesem Tutorial erfahren Sie, wie Sie SAP Business ByDesign in Azure Active Directory (Azure AD) integrieren.
+# <a name="tutorial:-azure-active-directory-integration-with-sap-business-bydesign"></a>Tutorial: Azure Active Directory integration with SAP Business ByDesign
 
-Die Integration von SAP Business ByDesign bietet die folgenden Vorteile:
+In this tutorial, you learn how to integrate SAP Business ByDesign with Azure Active Directory (Azure AD).
 
-- Sie können in Azure AD den Zugriff auf SAP Business ByDesign steuern.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SAP Business ByDesign anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+Integrating SAP Business ByDesign with Azure AD provides you with the following benefits:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- You can control in Azure AD who has access to SAP Business ByDesign
+- You can enable your users to automatically get signed-on to SAP Business ByDesign (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## Voraussetzungen
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Um die Azure AD-Integration mit SAP Business ByDesign konfigurieren zu können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- Ein Azure AD-Abonnement
-- Ein SAP Business ByDesign-Abonnement, für das einmaliges Anmelden aktiviert ist
+To configure Azure AD integration with SAP Business ByDesign, you need the following items:
 
-
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+- An Azure AD subscription
+- A SAP Business ByDesign single-sign on enabled subscription
 
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-## Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
+To test the steps in this tutorial, you should follow these recommendations:
 
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
-
-1. Hinzufügen von SAP Business ByDesign aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## Hinzufügen von SAP Business ByDesign aus dem Katalog
-Zum Konfigurieren der Integration von SAP Business ByDesign in Azure AD müssen Sie SAP Business ByDesign aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+## <a name="scenario-description"></a>Scenario description
+In this tutorial, you test Azure AD single sign-on in a test environment.
 
-**Um SAP Business ByDesign aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-
-	![Active Directory][1]
-
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+1. Adding SAP Business ByDesign from the gallery
+2. Configuring and testing Azure AD single sign-on
 
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+## <a name="adding-sap-business-bydesign-from-the-gallery"></a>Adding SAP Business ByDesign from the gallery
+To configure the integration of SAP Business ByDesign into Azure AD, you need to add SAP Business ByDesign from the gallery to your list of managed SaaS apps.
 
-	![Anwendungen][2]
+**To add SAP Business ByDesign from the gallery, perform the following steps:**
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Anwendungen][3]
+    ![Active Directory][1]
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-
-	![Anwendungen][4]
-
-6. Geben Sie im Suchfeld **SAP Business ByDesign** ein.
-
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_01.png)
-
-7. Wählen Sie im Ergebnisbereich **SAP Business ByDesign** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-
-	![Active Directory](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_02.png)
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei SAP Business ByDesign basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in SAP Business ByDesign als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SAP Business ByDesign muss eine Linkbeziehung eingerichtet werden.
+    ![Applications][2]
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen in Azure AD dem Benutzernamen in SAP Business ByDesign zuweisen.
+4. Click **Add** at the bottom of the page.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei SAP Business ByDesign müssen Sie die folgenden Bausteine ausführen:
+    ![Applications][3]
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines SAP Business ByDesign-Testbenutzers](#creating-an-sap-business-bydesign-test-user)**, um eine Entsprechung von Britta Simon in SAP Business ByDesign zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+    ![Applications][4]
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer SAP Business ByDesign-Anwendung.
+6. In the search box, type **SAP Business ByDesign**.
 
-Die SAP Business ByDesign-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute auf der Registerkarte **Attribut** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_01.png)
 
+7. In the results pane, select **SAP Business ByDesign**, and then click **Complete** to add the application.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in SAP Business ByDesign die folgenden Schritte aus:**
+    ![Active Directory](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_02.png)
 
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **SAP Business ByDesign** im Menü oben auf **Attribute**.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+In this section, you configure and test Azure AD single sign-on with SAP Business ByDesign based on a test user called "Britta Simon".
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_80.png)
+For single sign-on to work, Azure AD needs to know what the counterpart user in SAP Business ByDesign is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in SAP Business ByDesign needs to be established.
+
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in SAP Business ByDesign.
+
+To configure and test Azure AD single sign-on with SAP Business ByDesign, you need to complete the following building blocks:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a SAP Business ByDesign test user](#creating-an-sap-business-bydesign-test-user)** - to have a counterpart of Britta Simon in SAP Business ByDesign that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+
+In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your SAP Business ByDesign application.
+
+SAP Business ByDesign application expects the SAML assertions in a specific format. Please configure the following claims for this application. You can manage the values of these attributes from the **"Atrribute"** tab of the application. The following screenshot shows an example for this. 
 
 
-2. Wählen Sie aus der Attributliste „SAML-Tokenattribute“ das Attribut „nameidentifier“ aus, und klicken Sie auf **Bearbeiten**.
+**To configure Azure AD single sign-on with SAP Business ByDesign, perform the following steps:**
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_84.png)
 
-3. Führen Sie im Dialogfeld „Benutzerattribut hinzufügen“ die folgenden Schritte aus:
+1. In the Azure classic portal, on the **SAP Business ByDesign** application integration page, in the menu on the top, click **Attributes**.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_85.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_80.png) 
 
-	a. Wählen Sie aus der Liste „Attributwert“ die Funktion **ExtractMailPrefix()** aus.
 
-	b. Wählen Sie aus der Liste „Mail“ das Benutzerattribut aus, das Sie für Ihre Implementierung verwenden möchten. Wenn Sie z.B. den Wert „EmployeeID“ als eindeutige Benutzer-ID verwenden möchten und den Attributwert in „ExtensionAttribute2“ gespeichert haben, wählen Sie **user.extensionattribute2** aus.
+2. In the attributes SAML token attributes list, select the nameidentifier attribute, and then click **Edit**.
 
-	c. Klicken Sie auf **Fertig stellen**.
-	
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_84.png) 
 
-4. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **SAP Business ByDesign** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-	 
-	![Einmaliges Anmelden konfigurieren][6]
+3. On the Edit User Attribute dialog, perform the following steps:
 
-5. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SAP Business ByDesign anmelden?** die Option **Azure AD – einmaliges Anmelden** aus und klicken Sie dann auf **Weiter**.
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_85.png) 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_03.png)
+    a. From the Attribute Value list, select the **ExtractMailPrefix()** fuction
 
-6. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+    b. From the Mail list, select the user attribute you want to use for your implementation. 
+    For example, if you want to use the EmployeeID as unique user identifier and you have stored the attribute value in the ExtensionAttribute2, then select **user.extensionattribute2**. 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_04.png)
+    c. Click **Complete**. 
+    
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der SAP Business ByDesign-Anwendung verwendet wird, nach folgendem Muster ein: `https://<servername>.sapbydesign.com`
-	
-	b. Klicken Sie auf **Weiter**.
+4. In the classic portal, on the **SAP Business ByDesign** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
+
+5. On the **How would you like users to sign on to SAP Business ByDesign** page, select **Azure AD Single Sign-On**, and then click **Next**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_03.png) 
+
+6. On the **Configure App Settings** dialog page, perform the following steps:
+
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_04.png) 
+
+    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your SAP Business ByDesign application using the following pattern: `https://<servername>.sapbydesign.com`
+    
+    b. click **Next**
  
-7. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für SAP Business ByDesign** die folgenden Schritte aus:
+7. On the **Configure single sign-on at SAP Business ByDesign** page, perform the following steps:
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_05.png)
 
-    a. Klicken Sie auf **Metadaten herunterladen** und speichern Sie die Datei auf Ihrem Computer.
+    a. Click **Download metadata**, and then save the file on your computer.
 
-    b. Klicken Sie auf **Weiter**.
+    b. Click **Next**.
 
 
-8. Führen Sie zum Konfigurieren von SSO für Ihre Anwendung die folgenden Schritte aus:
+8. To get SSO configured for your application, perform the following steps:
 
-	a. Melden Sie sich beim SAP Business ByDesign-Portal mit Administratorrechten an.
+    a. Sign on to your SAP Business ByDesign portal with administrator rights.
 
-	b. Navigieren Sie zum allgemeinen Task für die Anwendungs- und Benutzerverwaltung, und klicken Sie auf die Registerkarte **Identitätsanbieter**.
+    b. Navigate to **Application and User Management Common Task** and click the **Identity Provider** tab.
 
-	c. Klicken Sie auf **New Identity Provider** (Neuer Identitätsanbieter), und wählen Sie die XML-Metadatendatei aus, die Sie aus dem klassischen Azure-Portal heruntergeladen haben. Beim Importieren der Metadaten lädt das System automatisch das erforderliche Signatur- und Verschlüsselungszertifikat hoch.
+    c. Click **New Identity Provider** and select the metadata XML file that you have downloaded from the Azure classic portal. By importing the metadata, the system automatically uploads the required signature certificate and encryption certificate.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
-	d. Um die **Assertion Consumer Service-URL** in der SAML-Anforderung hinzuzufügen, aktivieren Sie **Include Assertion Consumer Service URL** (Assertion Consumer Service-URL aufnehmen).
+    d. To include the **Assertion Consumer Service URL** into the SAML request, select **Include Assertion Consumer Service URL**.
 
-	e. Klicken Sie auf **Activate Single Sign-On** (Einmaliges Anmelden aktivieren).
+    e. Click **Activate Single Sign-On**.
 
-	f. Speichern Sie die Änderungen.
+    f. Save your changes.
 
-	g. Klicken Sie auf die Registerkarte **My System** (Mein System).
+    g. Click the **My System** tab.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
-	h. Kopieren Sie die **SSO-URL**, und fügen Sie sie in das Textfeld **Azure AD Sign On URL** (Azure AD-Anmelde-URL) ein.
+    h. Copy the **SSO URL** and paste it into the **Azure AD Sign On URL** textbox.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
 
-	i. Geben Sie an, ob der Mitarbeiter manuell zwischen der Anmeldung mit Benutzer-ID und Kennwort oder SSO wählen kann. Aktivieren Sie dazu die Option **Manual Identity Provider Selection** (Manuelle Auswahl des Identitätsanbieters).
+    i. Specify whether the employee can manually choose between logging on with user ID and password or SSO by selecting **Manual Identity Provider Selection**.
 
-	j. Geben Sie im Abschnitt **SSO-URL** die URL ein, die von Mitarbeitern für die Anmeldung beim System verwendet werden soll. In der Dropdownliste „URL Sent to Employee“ (An Mitarbeiter gesendete URL) können Sie zwischen den folgenden Optionen wählen:
-	
-	**Non-SSO URL** (URL ohne SSO)
+    j. In the **SSO URL** section, specify the URL that should be used by the employee to logon to the system. 
+    In the URL Sent to Employee dropdown list, you can choose between the following options:
+    
+    **Non-SSO URL**
  
-	Das System sendet nur die normale System-URL an den Mitarbeiter. Der Mitarbeiter kann sich nicht per SSO anmelden, sondern muss stattdessen ein Kennwort oder Zertifikat verwenden.
+    The system sends only the normal system URL to the employee. The employee cannot log on using SSO, and must use password or certificate instead.
 
-	**SSO-URL**
+    **SSO URL** 
 
-	Das System sendet nur die SSO-URL an den Mitarbeiter. Der Mitarbeiter kann sich per SSO anmelden. Die Authentifizierungsanforderung wird über den IdP umgeleitet.
+    The system sends only the SSO URL to the employee. The employee can log on using SSO. Authentication request is redirected through the IdP.
 
-	**Automatische Auswahl**
+    **Automatic Selection**
  
-	Ist SSO nicht aktiv, sendet das System die normale System-URL an den Mitarbeiter. Wenn SSO aktiv ist, überprüft das System, ob der Mitarbeiter über ein Kennwort verfügt. Ist ein Kennwort verfügbar, werden sowohl die SSO-URL als auch die URL ohne SSO an den Mitarbeiter gesendet. Besitzt der Mitarbeiter kein Kennwort, wird jedoch nur die SSO-URL an den Mitarbeiter gesendet.
+    If SSO is not active, the system sends the normal system URL to the employee. If SSO is active, the system checks whether the employee has a password. If a password is available, both SSO URL and Non-SSO URL are sent to the employee. However, if the employee has no password, only the SSO URL is sent to the employee.
 
-	k. Speichern Sie die Änderungen.
+    k. Save your changes.
 
-9. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
-	
-	![Azure AD – einmaliges Anmelden][10]
+9. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    
+    ![Azure AD Single Sign-On][10]
 
-10. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+10. On the **Single sign-on confirmation** page, click **Complete**.  
  
-	![Azure AD – einmaliges Anmelden][11]
+    ![Azure AD Single Sign-On][11]
 
 
-### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+In this section, you create a test user in the classic portal called Britta Simon.
 
 
-![Azure AD-Benutzer erstellen][20]
+![Create Azure AD User][20]
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_09.png) 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. To display the list of users, in the menu on the top, click **Users**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_05.png)
+5. On the **Tell us about this user** dialog page, perform the following steps:
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_05.png) 
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    a. As Type Of User, select New user in your organization.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c. Klicken Sie auf **Weiter**.
+    c. Click **Next**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_06.png)
+6.  On the **User Profile** dialog page, perform the following steps:
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_06.png) 
 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. In the **Role** list, select **User**.
 
-    e. Klicken Sie auf **Weiter**.
+    e. Click **Next**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_07.png) 
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_08.png) 
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
+    a. Write down the value of the **New Password**.
 
-    b. Klicken Sie auf **Fertig stellen**.
-
-
-
-### Erstellen eines SAP Business ByDesign-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in SAP Business ByDesign einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das Supportteam von SAP Business ByDesign, um die Benutzer in der SAP Business ByDesign-Plattform hinzuzufügen.
-
-> [AZURE.NOTE] Stellen Sie sicher, dass der Wert für „NameID“ mit dem Feld „username“ der SAP Business ByDesign-Plattform übereinstimmt.
-
-### Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf SAP Business ByDesign gewähren.
-
-![Benutzer zuweisen][200]
-
-**Um Britta Simon SAP Business ByDesign zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen**.
-
-	![Benutzer zuweisen][201]
-
-2. Wählen Sie in der Anwendungsliste **SAP Business ByDesign** aus.
-
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_50.png)
-
-3. Klicken Sie im oberen Menü auf **Benutzer**.
-
-	![Benutzer zuweisen][203]
-
-4. Wählen Sie in der Benutzerliste **Britta Simon** aus.
-
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-
-	![Benutzer zuweisen][205]
+    b. Click **Complete**.   
 
 
-### Testen der einmaligen Anmeldung
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="creating-an-sap-business-bydesign-test-user"></a>Creating an SAP Business ByDesign test user
 
-Wenn Sie im Zugriffsbereich auf die Kachel „SAP Business ByDesign“ klicken, sollten Sie automatisch bei Ihrer SAP Business ByDesign-Anwendung angemeldet werden.
+In this section, you create a user called Britta Simon in SAP Business ByDesign. Please work with SAP Business ByDesign support team to add the users in the SAP Business ByDesign platform. 
+
+> [AZURE.NOTE] Please make sure that NameID value should match with the username field in the SAP Business ByDesign platform.
+
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+
+In this section, you enable Britta Simon to use Azure single sign-on by granting her access to SAP Business ByDesign.
+
+![Assign User][200] 
+
+**To assign Britta Simon to SAP Business ByDesign, perform the following steps:**
+
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Assign User][201] 
+
+2. In the applications list, select **SAP Business ByDesign**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_50.png) 
+
+3. In the menu on the top, click **Users**.
+
+    ![Assign User][203]
+
+4. In the Users list, select **Britta Simon**.
+
+5. In the toolbar on the bottom, click **Assign**.
+
+    ![Assign User][205]
 
 
-## Zusätzliche Ressourcen
+### <a name="testing-single-sign-on"></a>Testing single sign-on
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+
+When you click the SAP Business ByDesign tile in the Access Panel, you should get automatically signed-on to your SAP Business ByDesign application.
+
+
+## <a name="additional-resources"></a>Additional resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -333,4 +336,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SAP Business ByDesign“ klicken, 
 [204]: ./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

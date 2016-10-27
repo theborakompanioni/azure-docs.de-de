@@ -1,117 +1,122 @@
 
 <properties
-	pageTitle="Verwenden von Azure AD Connect Health mit AD FS | Microsoft Azure"
-	description="Dies ist die Azure AD Connect Health-Seite, auf der Sie erfahren, wie Sie Ihre lokale AD FS-Infrastruktur überwachen."
-	services="active-directory"
-	documentationCenter=""
-	authors="karavar"
-	manager="femila"
-	editor="karavar"/>
+    pageTitle="Using Azure AD Connect Health with AD FS | Microsoft Azure"
+    description="This is the Azure AD Connect Health page how to monitor your on-premises AD FS infrastructure."
+    services="active-directory"
+    documentationCenter=""
+    authors="karavar"
+    manager="femila"
+    editor="karavar"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/30/2016"
-	ms.author="vakarand"/>
-
-# Verwenden von Azure AD Connect Health mit AD FS
-Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
-
-## Warnungen für AD FS
-Im Abschnitt "Azure AD Connect Health-Warnungen" wird eine Liste der aktiven Warnungen angezeigt. Jede Warnung umfasst relevante Informationen, Lösungsschritte und Links zur verwandten Dokumentation.
-
-Sie können auf eine aktive oder gelöste Warnung doppelklicken, um ein neues Blatt mit weiteren Informationen, Schritten zum Lösen der Warnung und Links zu relevanter Dokumentation zu öffnen. Sie können außerdem Verlaufsdaten zu bereits behobenen Warnungen anzeigen.
-
-![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/alert2.png)
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/30/2016"
+    ms.author="vakarand"/>
 
 
+# <a name="using-azure-ad-connect-health-with-ad-fs"></a>Using Azure AD Connect Health with AD FS
+The following documentation is specific to monitoring your AD FS infrastructure with Azure AD Connect Health. For information on monitoring Azure AD Connect (Sync) with Azure AD Connect Health, see [Using Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md). Additionally, for information on monitoring Active Directory Domain Services with Azure AD Connect Health, see [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md). 
 
-## Nutzungsanalyse für AD FS
-In der Azure AD Connect Health-Nutzungsanalyse wird der Authentifizierungsdatenverkehr für Ihre Verbundserver analysiert. Sie können auf das Feld „Nutzungsanalyse“ doppelklicken, um das Blatt „Nutzungsanalyse“ zu öffnen, auf dem mehrere Metriken und Gruppierungen angezeigt werden.
+## <a name="alerts-for-ad-fs"></a>Alerts for AD FS
+The Azure AD Connect Health Alerts section provides you the list of active alerts. Each alert includes relevant information, resolution steps, and links to related documentation. 
 
->[AZURE.NOTE] Um die Nutzungsanalyse mit AD FS verwenden zu können, müssen Sie sicherstellen, dass die AD FS-Überwachung aktiviert ist. Weitere Informationen finden Sie unter [Aktivieren der Überwachung für AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
+You can double-click an active or resolved alert, to open a new blade with additional information, steps you can take to resolve the alert, and links to relevant documentation. You can also view historical data on alerts that were resolved in the past.
 
-![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/report1.png)
+![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/alert2.png)
 
-Um zusätzliche Metriken auszuwählen, einen Zeitraum anzugeben oder die Gruppierung zu ändern, klicken Sie mit der rechten Maustaste auf das Diagramm zur Nutzungsanalyse und wählen „Diagramm bearbeiten“. Anschließend können Sie den Zeitraum angeben, eine andere Metrik auswählen und die Gruppierung ändern. Sie können die Verteilung des Authentifizierungsdatenverkehrs basierend auf verschiedenen Metriken anzeigen und jede Metrik über die relevanten Parameter gruppieren. Diese Parameter werden in der folgenden Tabelle beschrieben:
 
-| Metrik | Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
+
+## <a name="usage-analytics-for-ad-fs"></a>Usage Analytics for AD FS
+Azure AD Connect Health Usage Analytics analyzes the authentication traffic of your federation servers. You can double-click the usage analytics box, to open the usage analytics blade, which shows you several metrics and groupings.
+
+>[AZURE.NOTE] To use Usage Analytics with AD FS, you must ensure that AD FS auditing is enabled. For more information, see [Enable Auditing for AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
+
+![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/report1.png)
+
+To select additional metrics, specify a time range, or to change the grouping, right-click on the usage analytics chart and select Edit Chart. Then you can specify the time range, select a different metric, and change the grouping. You can view the distribution of the authentication traffic based on different "metrics" and group each metric using relevant "group by" parameters described in the following table:
+
+| Metric | Group By | What the grouping means and why it's useful? |
 | ------ | -------- | -------------------------------------------- |
-| Anforderungen insgesamt: Die Gesamtzahl von Anforderungen, die durch den Verbunddienst verarbeitet wurden. | Alle | Zeigt die Gesamtzahl von Anforderungen ohne Gruppierung an. |
-| | Anwendung | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Zielanwendung (vertrauende Seite). Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des gesamten Datenverkehrs auf die verschiedenen Anwendungen anzeigen möchten. |
-| | Server | Gruppiert die Gesamtzahl von Anforderungen basierend auf dem Server, der die Anforderung verarbeitet hat. Diese Gruppierung ist nützlich, um die Lastverteilung für den gesamten Datenverkehr anzuzeigen. |
-| | In den Arbeitsplatz eingebunden | Gruppiert die Gesamtzahl von Anforderungen danach, ob sie von Geräten stammen, die mit einem Arbeitsbereich verknüpft (bekannt) sind. Diese Gruppierung ist nützlich, wenn auf Ihre Ressourcen über Geräte zugegriffen wird, die der Identitätsinfrastruktur unbekannt sind. |
-| | Authentication Method (Authentifizierungsmethode) | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Authentifizierungsmethode. Diese Gruppierung ist nützlich, wenn Sie wissen möchten, welche Authentifizierungsmethode in der Regel für die Authentifizierung verwendet wird. Folgende Authentifizierungsmethoden sind möglich: <ol> <li>Integrierte Windows-Authentifizierung (Windows)</li> <li>Formularbasierte Authentifizierung (Formulare)</li> <li>Einmaliges Anmelden (Single Sign-On, SSO)</li> <li>X509-Zertifikatauthentifizierung (Zertifikat)</li> <br>Wenn Verbundserver die Anforderung mit einem SSO-Cookie empfangen, wird die Anforderung als SSO-Anforderung eingestuft. In diesen Fällen wird, sofern es sich um ein gültiges Cookie handelt, der Benutzer nicht zur Eingabe von Anmeldeinformationen aufgefordert, sondern erhält nahtlos Zugriff auf die Anwendung. Dieses Verhalten ist üblich, wenn mehrere vertrauende Seiten von den Verbundservern geschützt werden. |
-| | Netzwerkadresse | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Netzwerkadresse des Benutzers. Dies kann entweder ein Intranet oder Extranet sein. Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des eingehenden Datenverkehrs für Intranet und Extranet anzeigen möchten. |
-| Fehlerhafte Anforderungen insgesamt: Die Gesamtzahl der Anforderungen den Verbunddienst, bei denen Fehler aufgetreten sind. <br> (Diese Metrik steht nur in AD FS für Windows Server 2012 R2 zur Verfügung.)| Fehlertyp | Zeigt die Anzahl von Fehlern basierend auf den vordefinierten Fehlertypen an. Diese Gruppierung ist nützlich, um die allgemeinen Arten von Fehlern zu verstehen. <ul><li>Falscher Benutzername oder falsches Kennwort: Fehler, die durch einen falschen Benutzernamen oder ein falsches Kennwort ausgelöst werden.</li> <li>„Extranetsperrung“: Fehler durch Anforderungen von einem Benutzer, der für das Extranet gesperrt wurde.</li><li> „Kennwort abgelaufen“: Fehler durch Benutzer, die sich mit einem abgelaufenen Kennwort anmelden.</li><li>„Konto deaktiviert“: Fehler durch Benutzer, die sich mit einem deaktivierten Konto anmelden.</li><li>„Authentifizierung mit Gerät“: Fehler durch Benutzer, bei denen Probleme bei der Geräteauthentifizierung auftreten.</li><li>„Authentifizierung mit Benutzerzertifikat“: Fehler durch Benutzer, bei denen die Authentifizierung aufgrund eines ungültigen Zertifikats nicht möglich ist.</li><li>„MFA“: Fehler durch Benutzer, die sich nicht per Multi-Factor Authentication authentifizieren können.</li><li>„Andere Anmeldeinformationen“: „Ausstellungsautorisierung“: Fehler aufgrund von Autorisierungsproblemen.</li><li>„Ausstellungsdelegierung“: Fehler aufgrund von Problemen bei der Ausstellungsdelegierung.</li><li>„Tokenannahme“: Fehler durch das Ablehnen von externen Identitätsanbietern durch AD FS.</li><li>„Protokoll“: Fehler aufgrund von Protokollproblemen.</li><li>„Unbekannt“: Fängt alle weiteren Fehler ab. Alle anderen Fehler, die nicht in die definierten Kategorien fallen.</li> |
-| | Server | Gruppiert die Fehler basierend auf dem Server. Diese Gruppierung ist nützlich, um die Fehlerverteilung auf die Server anzuzeigen. Eine ungleichmäßige Verteilung könnte darauf hinweisen, dass sich ein Server in fehlerhaftem Zustand befindet. |
-| | Netzwerkadresse | Gruppiert die Fehler basierend auf der Netzwerkadresse der Anforderungen (Intranet oder Extranet). Diese Gruppierung ist nützlich, um die Art der Anforderungen herauszufinden, für die Fehler auftreten. |
-| | Anwendung | Gruppiert die Fehler basierend auf der Zielanwendung (vertrauende Seite). Mithilfe dieser Gruppierung können Sie anzeigen, für welche Zielanwendung die meisten Fehler auftreten. |
-| Benutzeranzahl: Durchschnittliche Anzahl von aktiven Benutzern im System. | Alle | Mit dieser Metrik wird die durchschnittliche Anzahl von Benutzern bereitgestellt, die den Verbunddienst im ausgewählten Zeitraum verwendet haben. Die Benutzer werden nicht gruppiert. <br>Die durchschnittliche Anzahl richtet sich nach dem ausgewählten Zeitraum. |
-| | Anwendung | Gruppiert die durchschnittliche Anzahl von Benutzern basierend auf der Zielanwendung (vertrauende Seite). Über diese Gruppierung können Sie anzeigen, wie viele Benutzer welche Anwendung nutzen. |
+| Total Requests: The total number of requests processed by the federation service | All | Shows the count of total number of requests without grouping. |
+|  | Application | Groups the total requests based on the targeted relying party. This grouping is useful to understand which application is receiving how much percentage of the total traffic. |
+|  | Server | Groups the total requests based on the server that processed the request. This grouping is useful to understand the load distribution of the total traffic. |
+|  | Workplace Join | Groups the total requests based on whether they are coming from devices that are workplace joined (known). This grouping is useful to understand if your resources are accessed using devices that are unknown to the identity infrastructure. |
+|  | Authentication Method | Groups the total requests based on the authentication method used for authentication. This grouping is useful to understand the common authentication method that gets used for authentication. Following are the possible authentication methods <ol> <li>Windows Integrated Authentication (Windows)</li> <li>Forms Based Authentication (Forms)</li> <li>SSO (Single Sign On)</li> <li>X509 Certificate Authentication (Certificate)</li> <br>If the federation servers receive the request with an SSO Cookie, that request is counted as SSO (Single Sign On). In such cases, if the cookie is valid, the user is not asked to provide credentials and gets seamless access to the application. This behavior is common if you have multiple relying parties protected by the federation servers. |
+|  | Network Location | Groups the total requests based on the network location of the user. It can be either intranet or extranet. This grouping is useful to know what percentage of the traffic is coming from the intranet versus extranet. |
+| Total Failed Requests: The total number failed requests processed by the federation service. <br> (This metric is only available on AD FS for Windows Server 2012 R2)| Error Type | Shows the number of errors based on predefined error types. This grouping is useful to understand the common types of errors. <ul><li>Incorrect Username or Password: Errors due to incorrect username or password.</li> <li>"Extranet Lockout": Failures due to the requests received from a user that was locked out from extranet </li><li> "Expired Password": Failures due to users logging in with an expired password.</li><li>"Disabled Account": Failures due to users logging with a disabled account.</li><li>"Device Authentication": Failures due to users failing to authenticate using Device Authentication.</li><li>"User Certificate Authentication": Failures due to users failing to authenticate because of an invalid certificate.</li><li>"MFA": Failures due to user failing to authenticate using Multi-Factor Authentication.</li><li>"Other Credential": "Issuance Authorization": Failures due to authorization failures.</li><li>"Issuance Delegation": Failures due to issuance delegation errors.</li><li>"Token Acceptance": Failures due to ADFS rejecting the token from a third-party Identity Provider.</li><li>"Protocol": Failure due to protocol errors.</li><li>"Unknown": Catch all. Any other failures that do not fit into the defined categories.</li> |
+|  | Server | Groups the errors based on the server. This grouping is useful to understand the error distribution across servers. Uneven distribution could be an indicator of a server in a faulty state. |
+|  | Network Location | Groups the errors based on the network location of the requests (intranet vs extranet). This grouping is useful to understand the type of requests that are failing. |
+|  | Application | Groups the failures based on the targeted application (relying party). This grouping is useful to understand which targeted application is seeing most number of errors. |
+| User Count: Average number of unique users active in the system | All | This metric provides a count of average number of users using the federation service in the selected time slice. The users are not grouped. <br>The average depends on the time slice selected. |
+|  | Application | Groups the average number of users based on the targeted application (relying party). This grouping is useful to understand how many users are using which application. |
 
 
-## Leistungsüberwachung für AD FS
-Die Azure AD Connect Health-Leistungsüberwachung liefert Überwachungsinformationen zu verschiedenen Metriken. Wenn Sie das Kontrollkästchen aktivieren, wird ein neues Blatt mit ausführlichen Informationen zu den Metriken geöffnet.
+## <a name="performance-monitoring-for-ad-fs"></a>Performance Monitoring for AD FS
+Azure AD Connect Health Performance Monitoring provides monitoring information on metrics. Selecting the Monitoring box, opens a new blade with detailed information on the metrics.
 
 
-![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/perf1.png)
+![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/perf1.png)
 
 
-Wenn Sie die Filteroption oben im Blatt auswählen, können Sie eine Filterung nach Server vornehmen, um Metriken zu einzelnen Servern anzuzeigen. Um Metriken zu ändern, klicken Sie mit der rechten Maustaste auf das Überwachungsdiagramm unterhalb des Überwachungsblatts und klicken dann auf „Diagramm bearbeiten“. Im dann geöffneten neuen Blatt können Sie zusätzliche Metriken aus der Dropdownliste auswählen und einen Zeitraum für die Anzeige von Leistungsdaten angeben.
+By selecting the Filter option at the top of the blade, you can filter by server to see an individual server’s metrics. To change metrics, right-click on the monitoring chart under the monitoring blade and select Edit Chart. Then, from the new blade that opens up, you can select additional metrics from the drop-down and specify a time range for viewing the performance data.
 
-## Berichte für AD FS
-Azure AD Connect Health bietet Berichte über die Aktivität und Leistung von AD FS. Mithilfe dieser Berichte können Administratoren Einblicke in Aktivitäten auf ihren AD FS-Servern gewinnen.
+## <a name="reports-for-ad-fs"></a>Reports for AD FS
+Azure AD Connect Health provides reports about activity and performance of AD FS. These reports help administrators gain insight into activities on their AD FS servers.
 
-### 50 Benutzer mit den meisten fehlgeschlagenen Anmeldungen aufgrund eines falschen Benutzernamens/Kennworts
+### <a name="top-50-users-with-failed-username/password-logins"></a>Top 50 Users with failed Username/Password logins
 
-Einer der häufigsten Gründe für das Fehlschlagen von Authentifizierungsanforderungen bei einem AD FS-Server ist die Verwendung ungültiger Anmeldeinformationen, d. h. eines falschen Benutzernamens oder Kennworts. Dies passiert Benutzern normalerweise aufgrund von komplexen Kennwörtern, vergessenen Kennwörtern oder Schreibfehlern.
+One of the common reasons for a failed authentication request on an AD FS server is a request with invalid credentials, that is, a wrong username or password. Usually happens to users due to complex passwords, forgotten passwords, or typos.
 
-Aber es gibt noch weitere Gründe, die zu einer unerwartet hohen Anzahl von derartigen Anforderungen bei Ihren AD FS-Servern führen können, z.B. von einer Anwendung zwischengespeicherte abgelaufene Benutzeranmeldeinformationen oder ein böswilliger Benutzer, der versucht, sich mit einer Reihe von bekannten Kennwörtern bei einem Konto anzumelden. Diese beiden Beispiele sind plausible Gründe für einen Anstieg der Anforderungsanzahl.
+But there are other reasons that can result in an unexpected number of requests being handled by your AD FS servers, such as: An application that caches user credentials and the credentials expire or a malicious user attempting to sign into an account with a series of well-known passwords. These two examples are valid reasons that could lead to a surge in requests.
 
-Azure AD Connect Health für AD FS bietet einen Bericht über die 50 Benutzer, bei denen Anmeldeversuche am häufigsten aufgrund ungültiger Benutzernamen oder Kennwörter fehlschlagen. Zur Erstellung dieses Berichts werden die von allen AD FS-Servern in den Farmen generierten Überwachungsereignisse verarbeitet.
+Azure AD Connect Health for ADFS provides a report about top 50 Users with failed login attempts due to invalid username or password. This report is achieved by processing the audit events generated by all the AD FS servers in the farms
 
-![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health-adfs/report1a.png)
+![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health-adfs/report1a.png)
 
-In diesem Bericht können Sie ganz einfach auf die folgenden Informationen zugreifen:
+Within this report you have easy access to the following pieces of information:
 
-- Gesamtanzahl fehlgeschlagener Anforderungen mit falschem Benutzernamen/Kennwort in den letzten 30 Tagen
-- Durchschnittliche Anzahl von Benutzern pro Tag, bei denen die Anmeldung wegen eines ungültigen Benutzernamens/Kennworts fehlschlägt.
+- Total # of failed requests with wrong username/password in the last 30 days
+- Average # of users that failed with a bad username/password login per day.
 
-Wenn Sie auf diesen Bereich klicken, gelangen Sie zum Hauptberichtblatt, das zusätzliche Details enthält. Dieses Blatt enthält einen Graphen mit Trendinformationen zum Ermitteln einer Baseline für Anforderungen mit falschem Benutzernamen oder Kennwort. Außerdem wird die Liste mit den Top 50 der Benutzer mit Fehlversuchen angegeben.
+Clicking this part takes you to the main report blade that provides additional details. This blade includes a graph with trending information to help establish a baseline about requests with wrong username or password. Additionally, it provides the list of top 50 users with the number of failed attempts.
 
-Der Graph zeigt die folgenden Informationen:
+The graph provides the following information:
 
-- Gesamtanzahl fehlgeschlagener Anmeldeversuche aufgrund eines ungültigen Benutzernamens/Kennworts pro Tag
-- Gesamtanzahl eindeutiger Benutzer, bei denen die Anmeldung fehlgeschlagen ist, pro Tag.
+- The total # of failed logins due to a bad username/password on a per-day basis.
+- The total # of unique users that failed logins on a per-day basis.
 
-![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health-adfs/report2a.png)
+![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health-adfs/report2a.png)
 
-Der Bericht enthält die folgenden Informationen:
+The report provides the following information:
 
-| Berichtselement | Beschreibung
+| Report Item | Description
 | ------ | -------- |
-|Benutzer-ID| Die verwendete Benutzer-ID. Dies ist der Wert mit der Eingabe des Benutzers, also in einigen Fällen die Verwendung der falschen Benutzer-ID.|
-|Fehlgeschlagene Anmeldeversuche| Die Gesamtanzahl fehlgeschlagener Anmeldeversuche für die jeweilige Benutzer-ID. Die Tabelle ist nach der höchsten Anzahl fehlgeschlagener Versuche in absteigender Reihenfolge sortiert.|
-|Letzter Fehler| Zeigt den Zeitstempel des letzten Fehlers an.
+|User ID| Shows the user ID that was used. This value is what the user typed, which in some cases is the wrong user ID being used.|
+|Failed Attempts| Shows the total # of failed attempts for that specific user ID. The table is sorted with the most number of failed attempts in descending order.|
+|Last Failure| Shows the time stamp when the last failure occurred.
 
 
 
->[AZURE.NOTE] Der Bericht wird automatisch alle zwei Stunden mit den neuen gesammelten Informationen aktualisiert. Anmeldeversuche innerhalb der letzten zwei Stunden sind daher unter Umständen nicht im Bericht enthalten.
+>[AZURE.NOTE] This report is automatically updated after every two hours with the new information collected within that time. As a result, login attempts within the last two hours may not be included in the report.
 
 
 
-## Verwandte Links
+## <a name="related-links"></a>Related links
 
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
-* [Installieren des Azure AD Connect Health-Agents](active-directory-aadconnect-health-agent-install.md)
-* [Azure AD Connect Health-Vorgänge](active-directory-aadconnect-health-operations.md)
-* [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
-* [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md)
-* [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
-* [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
+* [Azure AD Connect Health Agent Installation](active-directory-aadconnect-health-agent-install.md)
+* [Azure AD Connect Health Operations](active-directory-aadconnect-health-operations.md)
+* [Using Azure AD Connect Health for sync](active-directory-aadconnect-health-sync.md)
+* [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md)
+* [Azure AD Connect Health FAQ](active-directory-aadconnect-health-faq.md)
+* [Azure AD Connect Health Version History](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

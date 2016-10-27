@@ -1,47 +1,50 @@
 <properties
-	pageTitle="Python-Web- und -Workerrollen mit Visual Studio | Microsoft Azure"
-	description="Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen."
-	services="cloud-services"
-	documentationCenter="python"
-	authors="thraka"
-	manager="timlt"
-	editor=""/>
+    pageTitle="Python-Web- und -Workerrollen mit Visual Studio | Microsoft Azure"
+    description="Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen."
+    services="cloud-services"
+    documentationCenter="python"
+    authors="thraka"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="hero-article"
-	ms.date="08/03/2016"
-	ms.author="adegeo"/>
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="python"
+    ms.topic="hero-article"
+    ms.date="08/03/2016"
+    ms.author="adegeo"/>
 
 
-# Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
 
-Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und Workerrollen mit [Python-Tools für Visual Studio][]. Sie erfahren, wie Sie mit Visual Studio einen einfachen Clouddienst, für den Python verwendet wird, erstellen und bereitstellen.
+# <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
 
-## Voraussetzungen
+Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und -Workerrollen mit [Python-Tools für Visual Studio][]. Sie erfahren, wie Sie mit Visual Studio einen einfachen Clouddienst, für den Python verwendet wird, erstellen und bereitstellen.
 
- - Visual Studio 2013 oder 2015
- - [Python-Tools für Visual Studio][] \(PTVS)
+## <a name="prerequisites"></a>Voraussetzungen
+
+ - Visual Studio 2013 oder 2015
+ - [Python-Tools für Visual Studio][] (PTVS)
  - [Azure SDK-Tools für VS 2013][] oder [Azure SDK-Tools für VS 2015][]
- - [Python 2.7 32-Bit][] oder [Python 3.5 32-Bit][]
+ - [Python 2.7 32 Bit][] oder [Python 3.5 32 Bit][]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-## Was sind Python-Web- und Workerrollen?
+## <a name="what-are-python-web-and-worker-roles?"></a>Was sind Python-Web- und Workerrollen?
 
-Azure bietet drei Computemodelle für das Ausführen von Anwendungen: [Web-Apps-Feature in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] und [Azure Cloud Services][execution model-cloud services]. Alle drei Modelle unterstützen Python. Cloud Services, welche Web- und Workerrollen enthalten, bieten *Platform as a Service (PaaS)*. In einem Cloud-Dienst bietet eine Webrolle einen speziellen IIS-Webserver (Internet Information Services), um Front-End-Webanwendungen zu hosten, während eine Workerrolle asynchrone, langfristige oder fortwährende Aufgaben ausführen kann, die unabhängig von einer Benutzerinteraktion oder -eingabe sind.
+Azure stellt drei Modelle bereit, die Sie zum Ausführen von Anwendungen verwenden können: [Web-Apps-Feature in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms][Azure Cloud Services][execution model-cloud services]. Alle drei Modelle unterstützen Python. Cloud Services, die auch Web- und Workerrollen umfassen, ermöglichen *Platform as a Service (PaaS)*. In einem Cloud-Dienst bietet eine Webrolle einen speziellen IIS-Webserver (Internet Information Services), um Front-End-Webanwendungen zu hosten, während eine Workerrolle asynchrone, langfristige oder fortwährende Aufgaben ausführen kann, die unabhängig von einer Benutzerinteraktion oder -eingabe sind.
 
-Weitere Informationen finden Sie unter [Was ist ein Cloud-Dienst?].
+Weitere Informationen finden Sie unter [Was ist ein Clouddienst?].
 
-> [AZURE.NOTE] *Möchten Sie eine einfache Website erstellen?* Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die Verwendung des einfachen Web-Apps-Features von Azure App Service in Betracht ziehen. Sie können einen Cloud-Dienst leicht upgraden, wenn die Website größer wird und sich Ihre Anforderungen ändern. Im <a href="/develop/python/">Python Developer Center</a> finden Sie Artikel zur Entwicklung des Web-Apps-Features von Azure App Service. <br />
+> [AZURE.NOTE] *Möchten Sie eine einfache Website erstellen?*
+Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die Verwendung des einfachen Web-Apps-Features von Azure App Service in Betracht ziehen. Sie können einen Cloud-Dienst leicht upgraden, wenn die Website größer wird und sich Ihre Anforderungen ändern. Im <a href="/develop/python/">Python Developer Center</a> finden Sie Artikel zur Entwicklung des Web-Apps-Features von Azure App Service.
+<br />
 
 
-## Projekterstellung
+## <a name="project-creation"></a>Projekterstellung
 
-In Visual Studio können Sie im Dialogfeld **Neues Projekt** unter **Python** die Option **Azure-Clouddienst** auswählen.
+In Visual Studio können Sie im Dialogfeld **Neues Projekt** unter **Python** die Option **Azure Cloud Service** auswählen.
 
 ![Dialogfeld "Neues Projekt"](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
@@ -53,13 +56,13 @@ Die Workerrollenvorlage enthält Codebausteine für eine Verbindung mit einem Az
 
 ![Cloud-Dienstlösung](./media/cloud-services-python-ptvs/worker.png)
 
-Sie können Web- oder Workerrollen jederzeit zu einem vorhandenen Cloud-Dienst hinzufügen. Sie können vorhandene Projekte zu Ihrer Lösung hinzufügen oder neue erstellen.
+Sie können Web- oder Workerrollen jederzeit zu einem vorhandenen Cloud-Dienst hinzufügen.  Sie können vorhandene Projekte zu Ihrer Lösung hinzufügen oder neue erstellen.
 
 ![Befehl "Rolle hinzufügen"](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
-Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden. Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren. Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
+Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden.  Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren.  Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
 
-## Installieren von Python im Clouddienst
+## <a name="install-python-on-the-cloud-service"></a>Installieren von Python im Clouddienst
 
 >[AZURE.WARNING] Die mit Visual Studio installierten Setupskripts funktionieren nicht (zum Zeitpunkt der letzten Aktualisierung dieses Artikels). In diesem Abschnitt wird eine Problemumgehung beschrieben.
 
@@ -87,7 +90,7 @@ Die unten angegebenen Skripts wurden für Python 3.5 geschrieben. Falls Sie Vers
       </Variable>
       <Variable name="PYTHON2" value="off" />
     </Environment>
-	
+    
   </Task>
 
 </Startup>
@@ -110,7 +113,7 @@ Die Variablen **PYTHON2** und **PYPATH** müssen der Workerstartaufgabe hinzugef
 </Runtime>
 ```
 
-#### Beispieldatei „ServiceDefinition.csdef“
+#### <a name="sample-servicedefinition.csdef"></a>Beispieldatei „ServiceDefinition.csdef“
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -162,7 +165,7 @@ Die Variablen **PYTHON2** und **PYPATH** müssen der Workerstartaufgabe hinzugef
 
 Erstellen Sie als Nächstes die Dateien **PrepPython.ps1** und **PipInstaller.ps1** im Ordner **./bin** Ihrer Rolle.
 
-#### PrepPython.ps1
+#### <a name="preppython.ps1"></a>PrepPython.ps1
 
 Mit diesem Skript wird Python installiert. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 installiert. Andernfalls wird Python 3.5 installiert.
 
@@ -172,44 +175,44 @@ $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
 
 if (-not $is_emulated){
-	Write-Output "Checking if python is installed...$nl"
-	if ($is_python2) {
-		& "${env:SystemDrive}\Python27\python.exe"  -V | Out-Null
-	}
-	else {
-		py -V | Out-Null
-	}
+    Write-Output "Checking if python is installed...$nl"
+    if ($is_python2) {
+        & "${env:SystemDrive}\Python27\python.exe"  -V | Out-Null
+    }
+    else {
+        py -V | Out-Null
+    }
 
-	if (-not $?) {
+    if (-not $?) {
 
-		$url = "https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe"
-		$outFile = "${env:TEMP}\python-3.5.2-amd64.exe"
+        $url = "https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe"
+        $outFile = "${env:TEMP}\python-3.5.2-amd64.exe"
 
-		if ($is_python2) {
-			$url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
-			$outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
-		}
-		
-		Write-Output "Not found, downloading $url to $outFile$nl"
-		Invoke-WebRequest $url -OutFile $outFile
-		Write-Output "Installing$nl"
+        if ($is_python2) {
+            $url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
+            $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
+        }
+        
+        Write-Output "Not found, downloading $url to $outFile$nl"
+        Invoke-WebRequest $url -OutFile $outFile
+        Write-Output "Installing$nl"
 
-		if ($is_python2) {
-			Start-Process msiexec.exe -ArgumentList "/q", "/i", "$outFile", "ALLUSERS=1" -Wait
-		}
-		else {
-			Start-Process "$outFile" -ArgumentList "/quiet", "InstallAllUsers=1" -Wait
-		}
+        if ($is_python2) {
+            Start-Process msiexec.exe -ArgumentList "/q", "/i", "$outFile", "ALLUSERS=1" -Wait
+        }
+        else {
+            Start-Process "$outFile" -ArgumentList "/quiet", "InstallAllUsers=1" -Wait
+        }
 
-		Write-Output "Done$nl"
-	}
-	else {
-		Write-Output "Already installed"
-	}
+        Write-Output "Done$nl"
+    }
+    else {
+        Write-Output "Already installed"
+    }
 }
 ```
 
-#### PipInstaller.ps1
+#### <a name="pipinstaller.ps1"></a>PipInstaller.ps1
 
 Mit diesem Skript wird PIP aufgerufen, und alle Abhängigkeiten in der Datei **requirements.txt** werden installiert. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet, andernfalls Python 3.5.
 
@@ -219,30 +222,30 @@ $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
 
 if (-not $is_emulated){
-	Write-Output "Checking if requirements.txt exists$nl"
-	if (Test-Path ..\requirements.txt) {
-		Write-Output "Found. Processing pip$nl"
+    Write-Output "Checking if requirements.txt exists$nl"
+    if (Test-Path ..\requirements.txt) {
+        Write-Output "Found. Processing pip$nl"
 
-		if ($is_python2) {
-			& "${env:SystemDrive}\Python27\python.exe" -m pip install -r ..\requirements.txt
-		}
-		else {
-			py -m pip install -r ..\requirements.txt
-		}
+        if ($is_python2) {
+            & "${env:SystemDrive}\Python27\python.exe" -m pip install -r ..\requirements.txt
+        }
+        else {
+            py -m pip install -r ..\requirements.txt
+        }
 
-		Write-Output "Done$nl"
-	}
-	else {
-		Write-Output "Not found$nl"
-	}
+        Write-Output "Done$nl"
+    }
+    else {
+        Write-Output "Not found$nl"
+    }
 }
 ```
 
-#### Ändern von „LaunchWorker.ps1“
+#### <a name="modify-launchworker.ps1"></a>Ändern von „LaunchWorker.ps1“
 
 >[AZURE.NOTE] Im Fall eines **Workerrollenprojekts** ist zum Ausführen der Startdatei die Datei **LauncherWorker.ps1** erforderlich. In einem **Webrollenprojekt** wird stattdessen die Startdatei in den Projekteigenschaften festgelegt.
 
-**bin\\LaunchWorker.ps1** wurde ursprünglich erstellt, um eine Reihe von Vorbereitungsschritten auszuführen, aber dies funktioniert nicht wie gewünscht. Ersetzen Sie den Inhalt dieser Datei durch das folgende Skript.
+**bin\LaunchWorker.ps1** wurde ursprünglich erstellt, um eine Reihe von Vorbereitungsschritten auszuführen, aber dies funktioniert nicht wie gewünscht. Ersetzen Sie den Inhalt dieser Datei durch das folgende Skript.
 
 Mit dem Skript wird die Datei **worker.py** aus Ihrem Python-Projekt aufgerufen. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet, andernfalls Python 3.5.
 
@@ -253,37 +256,37 @@ $nl = [Environment]::NewLine
 
 if (-not $is_emulated)
 {
-	Write-Output "Running worker.py$nl"
+    Write-Output "Running worker.py$nl"
 
-	if ($is_python2) {
-		cd..
-		iex "$env:PYPATH\python.exe worker.py"
-	}
-	else {
-		cd..
-		iex "py worker.py"
-	}
+    if ($is_python2) {
+        cd..
+        iex "$env:PYPATH\python.exe worker.py"
+    }
+    else {
+        cd..
+        iex "py worker.py"
+    }
 }
 else
 {
-	Write-Output "Running (EMULATED) worker.py$nl"
+    Write-Output "Running (EMULATED) worker.py$nl"
 
-	# Customize to your local dev environment
+    # Customize to your local dev environment
 
-	if ($is_python2) {
-		cd..
-		iex "$env:PYPATH\python.exe worker.py"
-	}
-	else {
-		cd..
-		iex "py worker.py"
-	}
+    if ($is_python2) {
+        cd..
+        iex "$env:PYPATH\python.exe worker.py"
+    }
+    else {
+        cd..
+        iex "py worker.py"
+    }
 }
 ```
 
-#### ps.cmd
+#### <a name="ps.cmd"></a>ps.cmd
 
-Von den Visual Studio-Vorlagen sollte im Ordner **./bin** die Datei **ps.cmd** erstellt worden sein. Mit diesem Shellskript werden die obigen PowerShell-Wrapperskripts verwendet, und die Anmeldung ist basierend auf dem Namen des aufgerufenen PowerShell-Wrappers möglich. Hier ist der Inhalt der Datei angegeben, falls sie nicht erstellt wurde.
+Von den Visual Studio-Vorlagen sollte im Ordner **./bin** die Datei **ps.cmd** erstellt worden sein. Mit diesem Shellskript werden die obigen PowerShell-Wrapperskripts verwendet, und die Anmeldung ist basierend auf dem Namen des aufgerufenen PowerShell-Wrappers möglich. Hier ist der Inhalt der Datei angegeben, falls sie nicht erstellt wurde. 
 
 ```bat
 @echo off
@@ -296,17 +299,17 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 
-## Lokales Ausführen
+## <a name="run-locally"></a>Lokales Ausführen
 
 Wenn Sie Ihr Cloud-Dienstprojekt als Startprojekt festlegen und F5 drücken, wird der Cloud-Dienst im lokalen Azure-Emulator ausgeführt.
 
 Auch wenn PTVS den Start im Emulator unterstützt, funktioniert das Debuggen (etwa Haltepunkte) nicht.
 
-Um Web- und Workerrollen zu debuggen, können Sie das Rollenprojekt als Startprojekt festlegen und dieses stattdessen debuggen. Sie können auch mehrere Startprojekte festlegen. Klicken Sie mit der rechten Maustaste auf die Lösung, und wählen Sie **Startprojekte festlegen** aus.
+Um Web- und Workerrollen zu debuggen, können Sie das Rollenprojekt als Startprojekt festlegen und dieses stattdessen debuggen.  Sie können auch mehrere Startprojekte festlegen.  Klicken Sie mit der rechten Maustaste auf die Lösung, und wählen Sie **Startprojekte festlegen** aus.
 
 ![Startprojekteigenschaften der Lösung](./media/cloud-services-python-ptvs/startup.png)
 
-## Veröffentlichen in Azure
+## <a name="publish-to-azure"></a>Veröffentlichen in Azure
 
 Klicken Sie für die Veröffentlichung mit der rechten Maustaste auf das Clouddienstprojekt in der Lösung, und wählen Sie **Veröffentlichen** aus.
 
@@ -322,11 +325,11 @@ Der Fortschritt wird im Ausgabefenster angezeigt, anschließend wird das Fenster
 
 Der Abschluss der Bereitstellung dauert einige Minuten, anschließend werden Ihre Web- und/oder Workerrollen in Azure ausgeführt!
 
-### Untersuchen von Protokollen
+### <a name="investigate-logs"></a>Untersuchen von Protokollen
 
-Nachdem der virtuelle Computer des Clouddiensts gestartet und Python installiert wurde, können Sie in den Protokollen nach Fehlermeldungen suchen. Diese Protokolle befinden sich im Ordner **C:\\Resources\\Directory{role}\\LogFiles**. **PrepPython.err.txt** enthält mindestens einen Fehler, da vom Skript überprüft wird, ob Python installiert ist, und **PipInstaller.err.txt** meldet unter Umständen eine veraltete Version von PIP.
+Nachdem der virtuelle Computer des Clouddiensts gestartet und Python installiert wurde, können Sie in den Protokollen nach Fehlermeldungen suchen. Diese Protokolle befinden sich im Ordner **C:\Resources\Directory\{role}\LogFiles**. **PrepPython.err.txt** enthält mindestens einen Fehler, da vom Skript überprüft wird, ob Python installiert ist, und **PipInstaller.err.txt** meldet unter Umständen eine veraltete Version von PIP.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Genauere Informationen zur Arbeit mit Web- und Workerrollen in Python-Tools für Visual Studio finden Sie in der PTVS-Dokumentation:
 
@@ -334,8 +337,8 @@ Genauere Informationen zur Arbeit mit Web- und Workerrollen in Python-Tools für
 
 Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrollen, etwa zur Verwendung von Azure-Speicher oder Azure Service Bus, finden Sie in folgenden Artikeln:
 
-- [Blobdienst][]
-- [Tabellendienst][]
+- [Blob-Dienst][]
+- [Tabellenspeicherdienst][]
 - [Warteschlangendienst][]
 - [Service Bus-Warteschlangen][]
 - [Service Bus-Themen][]
@@ -343,27 +346,31 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 
 <!--Link references-->
 
-[Was ist ein Cloud-Dienst?]: cloud-services-choose-me.md
+[Was ist ein Clouddienst?]: cloud-services-choose-me.md
 [execution model-web sites]: ../app-service-web/app-service-web-overview.md
 [execution model-vms]: ../virtual-machines/virtual-machines-windows-about.md
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blobdienst]: ../storage/storage-python-how-to-use-blob-storage.md
+[Blob-Dienst]: ../storage/storage-python-how-to-use-blob-storage.md
 [Warteschlangendienst]: ../storage/storage-python-how-to-use-queue-storage.md
-[Tabellendienst]: ../storage/storage-python-how-to-use-table-storage.md
-[Service Bus-Warteschlangen]: ../service-bus/service-bus-python-how-to-use-queues.md
-[Service Bus-Themen]: ../service-bus/service-bus-python-how-to-use-topics-subscriptions.md
+[Tabellenspeicherdienst]: ../storage/storage-python-how-to-use-table-storage.md
+[Service Bus-Warteschlangen]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
+[Service Bus-Themen]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
 
 [Python-Tools für Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[Python Tools für Visual Studio – Dokumentation]: http://aka.ms/ptvsdocs
 [Cloud Service-Projekte]: http://go.microsoft.com/fwlink/?LinkId=624028
-[Azure SDK-Tools für VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK-Tools für VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7 32-bit]: https://www.python.org/downloads/
-[Python 3.5 32-bit]: https://www.python.org/downloads/
+[Azure SDK-Tools für Visual Studio 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
+[Azure SDK-Tools für Visual Studio 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
+[Python 2.7 (32 Bit)]: https://www.python.org/downloads/
+[Python 3.5 (32 Bit)]: https://www.python.org/downloads/
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

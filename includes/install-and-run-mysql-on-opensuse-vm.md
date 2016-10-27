@@ -1,87 +1,90 @@
 
-1. Geben Sie zum Eskalieren von Berechtigungen Folgendes ein:
+1. To escalate privileges, type:
 
-		sudo -s
+        sudo -s
 
-	Geben Sie das Kennwort ein.
+    Enter your password.
 
-2. Geben Sie Folgendes ein, um die MySQL Community Server-Edition zu installieren:
+2. To install MySQL Community Server edition, type:
 
-		zypper install mysql-community-server
+        zypper install mysql-community-server
 
-	Warten Sie, bis MySQL heruntergeladen und installiert wurde.
+    Wait while MySQL downloads and installs.
 
-3. Geben Sie Folgendes ein, damit MySQL beim Start des Systems gestartet wird:
+3. To set MySQL to start when the system boots, type:
 
-		insserv mysql
+        insserv mysql
 
-4. Starten Sie den MySQL-Daemon (mysqld) manuell mit dem folgenden Befehl:
+4. Start the MySQL daemon (mysqld) manually with this command:
 
-		rcmysql start
+        rcmysql start
 
-	Geben Sie Folgendes ein, um den Status des MySQL-Daemons zu prüfen:
+    To check the status of the MySQL daemon, type:
 
-		rcmysql status
+        rcmysql status
 
-	Geben Sie Folgendes ein, um den MySQL-Daemon zu beenden:
+    To stop the MySQL daemon, type:
 
-		rcmysql stop
+        rcmysql stop
 
-	> [AZURE.IMPORTANT] Nach der Installation ist das MySQL-Stammkennwort standardmäßig leer. Es wird empfohlen, das Skript **mysql\_secure\_installation** auszuführen, das bei der Sicherung von MySQL hilft. Sie werden vom Skript aufgefordert, das MySQL-Stammkennwort zu ändern, anonyme Benutzerkonten zu entfernen, Remote-Stammanmeldeinformationen zu deaktivieren, Testdatenbanken zu entfernen und die Berechtigungstabelle erneut zu laden. Es wird empfohlen, all diese Optionen mit "Ja" zu beantworten und das Stammkennwort zu ändern.
+    > [AZURE.IMPORTANT] After installation, the MySQL root password is empty by default. We recommended that you run **mysql\_secure\_installation**, a script that helps secure MySQL. The script prompts you to change the MySQL root password, remove anonymous user accounts, disable remote root logins, remove test databases, and reload the privileges table. We recommended that you answer yes to all of these options and change the root password.
 
-5. Geben Sie Folgendes ein, um das Skript für die Installation von MySQL auszuführen:
+5. Type this to run the script MySQL installation script:
 
-		mysql_secure_installation
+        mysql_secure_installation
 
-6. Anmelden bei MySQL:
+6. Log in to MySQL:
 
-		mysql -u root -p
+        mysql -u root -p
 
-	Geben Sie das MySQL-Stammkennwort ein, das Sie im vorherigen Schritt geändert haben. Daraufhin wird eine Eingabeaufforderung angezeigt, über die Sie SQL-Anweisungen starten können, um mit der Datenbank zu interagieren.
+    Enter the MySQL root password (which you changed in the previous step) and you'll be presented with a prompt where you can issue SQL statements to interact with the database.
 
-7. Führen Sie zum Erstellen eines neuen MySQL-Benutzers bei der **mysql>**-Eingabeaufforderung den folgenden Befehl aus:
+7. To create a new MySQL user, run the following at the **mysql>** prompt:
 
-		CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
+        CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-	Beachten Sie, dass das Semikolon (;) am Ende der Zeilen entscheidend für den Abschluss der Befehle ist.
+    Note, the semi-colons (;) at the end of the lines are crucial for ending the commands.
 
-8. Geben Sie die folgenden Befehle aus, um eine Datenbank zu erstellen und um dafür die `mysqluser`-Benutzerberechtigungen zu gewähren:
+8. To create a database and grant the `mysqluser` user permissions on it, issue the following commands:
 
-		CREATE DATABASE testdatabase;
-		GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
+        CREATE DATABASE testdatabase;
+        GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-	Beachten Sie, dass die Benutzernamen und Kennwörter der Datenbank nur von Skripten verwendet werden, die eine Verbindung zur Datenbank herstellen. Benutzernamen für Datenbankkonten sind nicht notwendigerweise tatsächliche Benutzerkonten im System.
+    Note that database user names and passwords are only used by scripts connecting to the database.  Database user account names do not necessarily represent actual user accounts on the system.
 
-9. Um sich von einem anderen Computer aus anzumelden, geben Sie Folgendes ein:
+9. To log in from another computer, type:
 
-		GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
+        GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
 
-	Hierbei steht `ip-address` für die IP-Adresse des Computers, von dem aus Sie eine Verbindung mit MySQL herstellen möchten.
+    where `ip-address` is the IP address of the computer from which you will connect to MySQL.
 
-10. Geben Sie Folgendes ein, um das Verwaltungsdienstprogramm für die MySQL-Datenbank zu beenden:
+10. To exit the MySQL database administration utility, type:
 
-		quit
-		
-## Hinzufügen eines Endpunkts
+        quit
+        
+## <a name="add-an-endpoint"></a>Add an endpoint
 
-1. Nachdem MySQL installiert wurde, müssen Sie für den Remotezugriff auf MySQL einen Endpunkt konfigurieren. Melden Sie sich beim [klassischen Azure-Portal][AzurePortal] an. Klicken Sie auf **Virtual Machines**, klicken Sie auf den Namen des neuen virtuellen Computers und danach auf **Endpunkte**.
+1. After MySQL is installed, you'll need to configure an endpoint to access MySQL remotely. Log in to the [Azure  classic portal][AzurePortal]. Click **Virtual Machines**, click the name of your new virtual machine, and then click **Endpoints**.
 
-2. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+2. Click **Add** at the bottom of the page.
 
 
-3. Fügen Sie einen Endpunkt mit dem Namen "MySQL" hinzu, und wählen Sie als Protokoll **TCP** aus. Setzen Sie die beiden Ports **Öffentlich** und **Privat** auf "3306".
+3. Add an endpoint named "MySQL" with protocol **TCP**, and **Public** and **Private** ports set to "3306".
 
-4. Um von Ihrem Computer aus eine Remoteverbindung mit dem virtuellen Computer herzustellen, geben Sie Folgendes ein:
+4. To remotely connect to the virtual machine from your computer, type:
 
-		mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
+        mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
 
-	Wenn Sie den in diesem Tutorial erstellten virtuellen Computer verwenden, geben Sie folgenden Befehl ein:
+    For example, using the virual machine we created in this tutorial, type this command:
 
-		mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
+        mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
 [MySQLDocs]: http://dev.mysql.com/doc/
 [AzurePortal]: http://manage.windowsazure.com
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
 
-<!---HONumber=AcomDC_0128_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

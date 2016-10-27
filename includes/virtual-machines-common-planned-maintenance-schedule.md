@@ -1,59 +1,59 @@
 
 
-## Mehrfach- und Einzelinstanz-VMs
-Für viele Kunden, die Azure nutzen, ist es entscheidend, dass sie planen können, wann ihre VMs einer geplanten Wartung unterzogen werden, da dies mit ca. 15 Minuten Ausfallzeit verbunden ist. Sie können Verfügbarkeitsgruppen nutzen, um zu steuern, wann bereitgestellte VMs geplanter Wartung unterzogen werden.
+## <a name="multi-and-single-instance-vms"></a>Multi and Single Instance VMs
+For many customers running on Azure, it is critical that they are able to schedule when their VMs undergo planned maintenance, since this results in ~15 minutes of downtime. You can leverage availability sets to help control when provisioned VMs receive planned maintenance.
 
-Es gibt zwei mögliche Konfigurationen für VMs, die in Azure ausgeführt werden. VMs werden entweder als Mehr- oder Einzelinstanz ausgeführt. Wenn VMs sich in Verfügbarkeitsgruppen befinden, werden sie als Mehrfachinstanz konfiguriert. Beachten Sie, dass sogar einzelne VMs in einer Verfügbarkeitsgruppe bereitgestellt werden können und als Mehrfachinstanz behandelt werden. Wenn VMs sich NICHT in einer Verfügbarkeitsgruppe befinden, werden sie als Einzelinstanz konfiguriert. Ausführliche Informationen über Verfügbarkeitsgruppen finden Sie unter [Manage the Availability of your Windows Virtual Machines](../articles/virtual-machines/virtual-machines-windows-manage-availability.md) (Verwalten der Verfügbarkeit Ihrer virtuellen Windows-Computer) oder [Manage the Availability of your Linux Virtual Machines](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) (Verwalten der Verfügbarkeit Ihrer virtuellen Linux-Computer).
+There are two possible configurations for VMs running on Azure. VMs are either configured as multi-instance or single-instance. If VMs are in an availability set, then they are configured as multi-instance. Note, even single VMs can be deployed in an availability set and they will be treated as multi-instance. If VMs are NOT in an availability set, then they are configured as single-instance.  For details on availability sets, please see either [Manage the Availability of your Windows Virtual Machines](../articles/virtual-machines/virtual-machines-windows-manage-availability.md) or [Manage the Availability of your Linux Virtual Machines](../articles/virtual-machines/virtual-machines-linux-manage-availability.md).
 
-Geplante Wartungsupdates für Einzelinstanz- und Mehrfachinstanz-VMs treten separat auf. Durch Neukonfiguration Ihrer VMs als Einzelinstanz (wenn sie Mehrfachinstanzen sind) oder Mehrfachinstanz (wenn sie Einzelinstanzen sind) können Sie steuern, wann Ihre VMs der geplanten Wartung unterzogen werden. Ausführliche Informationen zur geplanten Wartung für Azure-VMs finden Sie unter [Planned maintenance for Azure Linux virtual machines](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md) (Geplante Wartung für virtuelle Azure-Linux-Computer) oder [Planned maintenance for Azure virtual machines](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md) (Geplante Wartung für virtuelle Azure-Computer).
+Planned maintenance updates to single-instance and multi-instance VMs happen separately. By reconfiguring your VMs to be single-instance (if they are multi-instance) or to be multi-instance (if they are single-instance), you can control when their VMs receive the planned maintenance. Please see either [Planned maintenance for Azure Linux virtual machines](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md) or [Planned maintenance for Azure Windows virtual machines](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md) for details on planned maintenance for Azure VMs.
 
-## Für die Mehrfachinstanzkonfiguration
-Sie können den Zeitraum auswählen, zu dem die geplante Wartung Ihre VMs beeinflusst, die in einer Verfügbarkeitsgruppenkonfiguration bereitgestellt werden, indem Sie diese VMs aus Verfügbarkeitsgruppen entfernen.
+## <a name="for-multi-instance-configuration"></a>For Multi-instance Configuration
+You can select the time planned maintenance impacts your VMs that are deployed in an Availability Set configuration by removing these VMs from availability sets.
 
-1.	Sieben Kalendertage vor der geplanten Wartung Ihrer VMs in einer Mehrfachinstanzkonfiguration erhalten Sie eine E-Mail. Die Abonnement-IDs und Namen der betroffenen Mehrfachinstanz-VMs werden im Text der E-Mail erwähnt.
+1.  An email will be sent to you 7 calendar days before the planned maintenance to your VMs in a Multi-instance configuration. The subscription IDs and names of the affected Multi-instance VMs will be included in the body of the email.
 
-2.	Während dieser 7 Tage können Sie den Zeitraum auswählen, zu dem Ihre Instanzen aktualisiert werden, indem Sie Ihre Mehrfachinstanz-VMs in dieser Region aus ihrer Verfügbarkeitsgruppe entfernen. Diese Änderung in der Konfiguration führt zu einem Neustart, da der virtuelle Computer von einem physischen Host, dem Ziel der Wartung, auf einen anderen physischen Host verschoben wird, der kein Wartungsziel ist.
+2.  During those 7 days, you can choose the time your instances are updated by removing your multi-instance VMs in that region from their availability set. This change in configuration will result in a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn’t targeted for maintenance. 
 
-3.	Sie können die VM im klassischen Portal aus ihrer Verfügbarkeitsgruppe entfernen.
+3.  You can remove the VM from its availability set in the classic portal. 
    
-    1.	Klicken Sie im klassischen Portal auf den virtuellen Computer, und wählen Sie dann „Konfigurieren“ aus.
+    1.  In the Classic portal, click on the VM and then select “configure.” 
 
-    2.	Unter „Einstellungen“ können Sie sehen, in welcher Verfügbarkeitsgruppe sich der virtuelle Computer befindet.
+    2.  Under “settings”, you can see which Availability Set the VM is in.
 
-        ![Verfügbarkeitsgruppenauswahl](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+        ![Availability Set Selection](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
 
-    3.	Wählen Sie im Dropdownmenü der Verfügbarkeitsgruppe die Option „Aus Verfügbarkeitsgruppe entfernen“ aus.
+    3.  In the availability set dropdown menu, select “remove from availability set.”
 
-        ![Entfernen aus Gruppe](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
+        ![Remove from Set](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
 
-    4.	Wählen Sie unten „Speichern“ aus. Wählen Sie „Ja“ aus, um zu bestätigen, dass der virtuelle Computer mit dieser Aktion neu gestartet wird.
+    4.  At the bottom, select “save.” Select “yes” to acknowledge that this action will restart the VM.
 
-4.	Diese VMs werden zu Einzelinstanz-Hosts verschoben und während der geplanten Wartung für Verfügbarkeitsgruppenkonfigurationen nicht aktualisiert.
+4.  These VMs will be moved to Single-Instance hosts and will not be updated during the planned maintenance to Availability Set Configurations.
 
-5.	Nach Abschluss der Aktualisierung der Verfügbarkeitsgruppen-VMs (gemäß dem in der ursprünglichen E-Mail beschriebenen Zeitplan) sollten Sie die VMs wieder ihren Verfügbarkeitsgruppen hinzufügen, und sie werden als Mehrfachinstanz-VMs neu konfiguriert. Verschieben der VMs von der Einzelinstanz zurück zur Mehrfachinstanz führt zu einem Neustart. Nachdem alle Mehrfachinstanzupdates für die gesamte Azure-Umgebung abgeschlossen sind, folgt in der Regel die Einzelinstanzwartung.
+5.  Once the update to Availability Set VMs is complete (according to schedule outlined in the original email), you should add the VMs back into their availability sets, and they will be re-configured as multi-instance VMs. Moving the VMs from Single-instance back to Multi-instance will result in a reboot. Typically, once all multi-instance updates are completed across the entire Azure environment, single-instance maintenance follows.
 
-Dies kann auch mit Azure PowerShell erreicht werden:
+This can also be achieved using Azure PowerShell:
 
 ```
 Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
 ```
 
-## Für die Einzelinstanzkonfiguration
-Sie können den Zeitraum auswählen, zu dem die geplante Wartung Ihre VMs in einer Einzelinstanzkonfiguration beeinflusst, indem Sie diese VMs Verfügbarkeitsgruppen hinzufügen.
+## <a name="for-single-instance-configuration"></a>For Single-instance Configuration
+You can select the time planned maintenance impacts you VMs in a Single-instance configuration by adding these VMs into availability sets.
 
-Schrittweise Anleitung
+Step-by-step
 
-1.	Sieben Kalendertage vor der geplanten Wartung Ihrer VMs in einer Einzelinstanzkonfiguration erhalten Sie eine E-Mail. Die Abonnement-IDs und Namen der betroffenen Einzelinstanz-VMs werden im Text der E-Mail erwähnt.
+1.  An email will be sent to you 7 calendar days before the planned maintenance to VMs in a Single-instance configuration. The subscription IDs and names of the affected Single-Instance VMs will be included in the body of the email. 
 
-2.	Während dieser 7 Tage können Sie den Zeitraum auswählen, in dem Ihre Instanz neu startet, indem Sie Ihre Einzelinstanz-VMs in eine Verfügbarkeitsgruppe verschieben, die sich in der gleichen Region befindet. Diese Änderung in der Konfiguration führt zu einem Neustart, da der virtuelle Computer von einem physischen Host, dem Ziel der Wartung, auf einen anderen physischen Host verschoben wird, der kein Wartungsziel ist.
+2.  During those 7 days, you can choose the time your instance reboots by moving your Single-instance VMs by moving them into an availability set in that same region. This change in configuration will result in a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn’t targeted for maintenance.
 
-3.	Führen Sie hier die Anweisungen zum Hinzufügen vorhandener VMs zu Verfügbarkeitsgruppen mit dem klassischen Portal und Azure PowerShell aus (siehe Azure PowerShell-Beispiel im Hinweis unten).
+3.  Follow instructions here to add existing VMs into availability sets using the Classic Portal and Azure PowerShell (see Azure PowerShell sample in the note below).
 
-4.	Sobald diese VMs als Mehrfachinstanzen neu konfiguriert sind, werden sie von der geplanten Wartung für Einzelinstanz-VMs ausgeschlossen.
+4.  Once these VMs are re-configured as Multi-instance, they will be excluded from the planned maintenance to Single-instance VMs.
 
-5.	Nach Abschluss der Aktualisierung der Einzelinstanz-VMs (gemäß dem in der ursprünglichen E-Mail beschriebenen Zeitplan) können Sie die VMs aus ihren Verfügbarkeitsgruppen entfernen, und sie werden als Einzelinstanz-VMs neu konfiguriert.
+5.  Once the update to single-instance VMs is complete (according to schedule outlined in the original email), you can remove the VMs from their availability sets, and they will be re-configured as single-instance VMs.
 
-Dies kann auch mit Azure PowerShell erreicht werden:
+This can also be achieved using Azure PowerShell:
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
@@ -65,4 +65,7 @@ Dies kann auch mit Azure PowerShell erreicht werden:
 [Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
 [Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,62 +1,63 @@
 <properties
-	pageTitle="Einschränkungen für Stretch-Datenbank | Microsoft Azure"
-	description="Erfahren Sie mehr über die Einschränkungen für Stretch-Datenbank."
-	services="sql-server-stretch-database"
-	documentationCenter=""
-	authors="douglaslMS"
-	manager=""
-	editor=""/>
+    pageTitle="Limitations for Stretch Database | Microsoft Azure"
+    description="Learn about limitations for Stretch Database."
+    services="sql-server-stretch-database"
+    documentationCenter=""
+    authors="douglaslMS"
+    manager=""
+    editor=""/>
 
 <tags
-	ms.service="sql-server-stretch-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="douglasl"/>
+    ms.service="sql-server-stretch-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="06/14/2016"
+    ms.author="douglasl"/>
 
-# Einschränkungen für Stretch-Datenbank
 
-Erfahren Sie mehr zu Einschränkungen für Tabellen, für die Stretch aktiviert ist und zu Einschränkungen, die Sie derzeit daran hindern, Stretch für eine Tabelle zu aktivieren.
+# <a name="limitations-for-stretch-database"></a>Limitations for Stretch Database
 
-##  <a name="Caveats"></a>Einschränkungen für Tabellen, für die Stretch aktiviert ist
+Learn about limitations for Stretch\-enabled tables, and about limitations that currently prevent you from enabling Stretch for a table.
 
-Tabellen, für die Stretch aktiviert ist, weisen die folgenden Einschränkungen auf.
+##  <a name="<a-name="caveats"></a>-limitations-for-stretch\-enabled-tables"></a><a name="Caveats"></a> Limitations for Stretch\-enabled tables
 
-### Einschränkungen
+Stretch\-enabled tables have the following limitations.
 
--   Eindeutigkeit wird nicht für UNIQUE-Einschränkungen und PRIMARY KEY-Einschränkungen in der Azure-Tabelle erzwungen, die die migrierten Daten enthält.
+### <a name="constraints"></a>Constraints
 
-### DML-Vorgänge
+-   Uniqueness is not enforced for UNIQUE constraints and PRIMARY KEY constraints in the Azure table that contains the migrated data.
 
--   Die Befehle UPDATE oder DELETE können nicht für migrierte Zeilen oder für zur Migration berechtigte Zeilen in einer Tabelle, für die Stretch aktiviert ist, oder in einer Ansicht mit Tabellen ausgeführt werden, für die Stretch aktiviert ist.
+### <a name="dml-operations"></a>DML operations
 
--   Sie können in einem verknüpften Server keine Zeilen mit dem Befehl INSERT in eine Tabelle einfügen, für die Stretch aktiviert ist.
+-   You can't UPDATE or DELETE rows that have been migrated, or rows that are eligible for migration, in a Stretch\-enabled table or in a view that includes Stretch\-enabled tables.
 
-### Indexe
+-   You can't INSERT rows into a Stretch\-enabled table on a linked server.
 
--   Sie können keinen Index für eine Sicht erstellen, die Stretch-fähige Tabellen enthält.
+### <a name="indexes"></a>Indexes
 
--   Filter für SQL Server-Indizes werden nicht an die Remotetabelle weitergegeben.
+-   You can't create an index for a view that includes Stretch\-enabled tables.
 
-##  <a name="Limitations"></a> Einschränkungen, die Sie derzeit vom Aktivieren von Stretch für eine Tabelle abhalten
+-   Filters on SQL Server indexes are not propagated to the remote table.
 
-Die folgenden Elemente verhindern derzeit das Aktivieren von Stretch für eine Tabelle.
+##  <a name="<a-name="limitations"></a>-limitations-that-currently-prevent-you-from-enabling-stretch-for-a-table"></a><a name="Limitations"></a> Limitations that currently prevent you from enabling Stretch for a table
 
-### Tabelleneigenschaften
+The following items currently prevent you from enabling Stretch for a table.
 
--   Tabellen, die mehr als 1.023 Spalten oder mehr als 998 Indizes enthalten
+### <a name="table-properties"></a>Table properties
 
--   FileTables oder Tabellen, die FILESTREAM-Daten enthalten
+-   Tables that have more than 1,023 columns or more than 998 indexes
 
--   Tabellen, die repliziert werden oder aktiv Change Tracking oder Change Data Capture verwenden
+-   FileTables or tables that contain FILESTREAM data
 
--   Speicheroptimierte Tabellen
+-   Tables that are replicated, or that are actively using Change Tracking or Change Data Capture
 
-### Datentypen
+-   Memory\-optimized tables
 
--   text, ntext und image
+### <a name="data-types"></a>Data types
+
+-   text, ntext and image
 
 -   timestamp
 
@@ -64,36 +65,40 @@ Die folgenden Elemente verhindern derzeit das Aktivieren von Stretch für eine T
 
 -   XML
 
--   CLR-Datentypen, einschließlich geometry, geography, hierarchyid und benutzerdefinierte CLR-Typen
+-   CLR data types including geometry, geography, hierarchyid, and CLR user\-defined types
 
-### Spaltentypen
+### <a name="column-types"></a>Column types
 
 -   COLUMN\_SET
 
--   Berechnete Spalten
+-   Computed columns
 
-### Einschränkungen
+### <a name="constraints"></a>Constraints
 
--   Standardeinschränkungen und CHECK-Einschränkungen
+-   Default constraints and check constraints
 
--   Fremdschlüsseleinschränkungen, die auf die Tabelle verweisen In einer unter- und übergeordneten Beziehung (z.B. Bestellung und Bestellung\_Detail) können Sie Stretch für die untergeordnete Tabelle (Order\_Detail), aber nicht für die übergeordnete Tabelle (Order) aktivieren.
+-   Foreign key constraints that reference the table. In a parent\-child relationship \(for example, Order and Order\_Detail\), you can enable Stretch for the child table \(Order\_Detail\) but not for the parent table \(Order\).
 
-### Indexe
+### <a name="indexes"></a>Indexes
 
--   Volltextindizes
+-   Full text indexes
 
--   XML-Indizes
+-   XML indexes
 
--   Räumliche Indizes
+-   Spatial indexes
 
--   Indizierte Sichten, die auf die Tabelle verweisen
+-   Indexed views that reference the table
 
-## Weitere Informationen
+## <a name="see-also"></a>See also
 
-[Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank durch Ausführen von Stretch Database Advisor](sql-server-stretch-database-identify-databases.md)
+[Identify databases and tables for Stretch Database by running Stretch Database Advisor](sql-server-stretch-database-identify-databases.md)
 
-[Aktivieren von Stretch-Datenbank für eine Datenbank](sql-server-stretch-database-enable-database.md)
+[Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md)
 
-[Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md)
+[Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

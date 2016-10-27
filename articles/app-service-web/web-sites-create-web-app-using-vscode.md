@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen einer ASP.NET 5-Web-App in Visual Studio"
-   description="In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Visual Studio Code eine ASP.NET 5-Web-App erstellen."
+   pageTitle="Create an ASP.NET 5 web app in Visual Studio Code"
+   description="This tutorial illustrates how to create an ASP.NET 5 web app using Visual Studio Code."
    services="app-service\web"
    documentationCenter=".net"
    authors="erikre"
@@ -8,258 +8,264 @@
    editor="jimbe"/>
 
 <tags
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="dotnet" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/26/2016" 
-	ms.author="cephalin"/>
+    ms.service="app-service-web" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="dotnet" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="02/26/2016" 
+    ms.author="cephalin"/>
 
-# Erstellen einer ASP.NET 5-Web-App in Visual Studio
 
-## Übersicht
+# <a name="create-an-asp.net-5-web-app-in-visual-studio-code"></a>Create an ASP.NET 5 web app in Visual Studio Code
 
-In diesem Lernprogramm erfahren Sie, wie Sie eine ASP.NET 5-Web-App mit [Visual Studio Code (VS Code)](http://code.visualstudio.com//Docs/whyvscode) erstellen und in [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen.
+## <a name="overview"></a>Overview
 
-> [AZURE.NOTE] Obwohl sich dieser Artikel auf Web-Apps bezieht, gilt er auch für API-Apps und mobile Apps.
+This tutorial shows you how to create an ASP.NET 5 web app using [Visual Studio Code (VS Code)](http://code.visualstudio.com//Docs/whyvscode) and deploy it to [Azure App Service](../app-service/app-service-value-prop-what-is.md). 
 
-Das Design von ASP.NET wurde für ASP.NET 5 deutlich verändert. ASP.NET 5 ist ein neues plattformübergreifendes Open Source-Framework zum Erstellen moderner cloudbasierter Web-Apps mit .NET. Weitere Informationen finden Sie unter [Introduction to ASP.NET 5](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html) (Einführung in ASP.NET 5; in englischer Sprache). Informationen zu Azure App Service-Web-Apps finden Sie unter [Web-Apps – Übersicht](app-service-web-overview.md).
+> [AZURE.NOTE] Although this article refers to web apps, it also applies to API apps and mobile apps. 
+
+ASP.NET 5 is a significant redesign of ASP.NET. ASP.NET 5 is a new open-source and cross-platform framework for building modern cloud-based web apps using .NET. For more information, see [Introduction to ASP.NET 5](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html). For information about Azure App Service web apps, see [Web Apps Overview](app-service-web-overview.md).
 
 [AZURE.INCLUDE [app-service-web-try-app-service.md](../../includes/app-service-web-try-app-service.md)]
 
-## Voraussetzungen  
+## <a name="prerequisites"></a>Prerequisites  
 
-* Installieren Sie [VS Code](http://code.visualstudio.com/Docs/setup).
-* Installieren Sie [Node.js](http://nodejs.org). Node.js ist eine Plattform für die Erstellung schneller und skalierbarer Serveranwendungen mit JavaScript. Node ist die Laufzeit, [npm](http://www.npmjs.com/) der Paket-Manager für Node-Module. In diesem Lernprogramm erstellen Sie mithilfe von npm das Gerüst für eine ASP.NET 5-Web-App.
-* Installieren Sie Git (entweder über [Chocolatey](https://chocolatey.org/packages/git) oder über [git-scm.com](http://git-scm.com/downloads)). Falls Sie noch keine Erfahrung mit Git haben, entscheiden Sie sich für [git-scm.com](http://git-scm.com/downloads) und wählen Sie die Option **Git über die Windows-Eingabeaufforderung verwenden** aus. Legen Sie nach der Installation von Git den Git-Benutzernamen und die dazugehörige E-Mail-Adresse fest, da diese Angaben später in diesem Lernprogramm (beim Ausführen eines Commits in VS Code) benötigt werden.
+* Install [VS Code](http://code.visualstudio.com/Docs/setup).
+* Install [Node.js](http://nodejs.org) - Node.js is a platform for building fast and scalable server applications using JavaScript. Node is the runtime (Node), and [npm](http://www.npmjs.com/) is the Package Manager for Node modules. You will use npm to scaffold an ASP.NET 5 web app in this tutorial.
+* Install Git - You can install it from either of these locations: [Chocolatey](https://chocolatey.org/packages/git) or [git-scm.com](http://git-scm.com/downloads). If you are new to Git, choose [git-scm.com](http://git-scm.com/downloads) and select the option to **Use Git from the Windows Command Prompt**. Once you install Git, you'll also need to set the Git user name and email as it's required later in the tutorial (when performing a commit from VS Code).  
 
-## Installieren von ASP.NET 5 und DNX
-ASP.NET 5/DNX (die .NET-Ausführungsumgebung) ist ein schlanker .NET-Stapel für die Erstellung moderner Cloud- und Web-Apps für OS X, Linux und Windows. Er wurde von Grund auf neu als optimiertes Entwicklungsframework für Apps konzipiert, die entweder in der Cloud bereitgestellt oder lokal ausgeführt werden. Er besteht aus modularen Komponenten mit minimalem Mehraufwand und ermöglicht Ihnen eine flexible Lösungsentwicklung.
+## <a name="install-asp.net-5-and-dnx"></a>Install ASP.NET 5 and DNX
+ASP.NET 5/DNX (the .NET Execution Environment) is a lean .NET stack for building modern cloud and web apps that run on OS X, Linux, and Windows. It has been built from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions.
 
-Dieses Lernprogramm unterstützt Sie beim Einstieg in die Anwendungserstellung mit den neuesten Entwicklungsversionen von ASP.NET 5 und DNX. Die folgenden Anweisungen beziehen sich explizit auf Windows. Ausführlichere Installationsanweisungen für OS X, Linux und Windows finden Sie unter [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx) (Installieren von ASP.NET 5 und DNX; in englischer Sprache).
+This tutorial is designed to get you started building applications with the latest development versions of ASP.NET 5 and DNX. The following instructions are specific to Windows. For more detailed installation instructions for OS X, Linux, and Windows, see [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx). 
 
-1. Wenn Sie .NET Version Manager (DNVM) unter Windows installieren möchten, öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
+1. To install .NET Version Manager (DNVM) in Windows, open a command prompt, and run the following command.
 
-		@powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
+        @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
 
-	Dadurch wird das DNVM-Skript herunterladen und Ihrem Benutzerprofilverzeichnis hinzugefügt.
+    This will download the DNVM script and put it in your user profile directory. 
 
-2. **Starten Sie Windows neu**, um die DNVM-Installation abzuschließen.
+2. **Restart Windows** to complete the DNVM installation. 
 
-	Nach dem Neustart von Windows können Sie die Eingabeaufforderung öffnen, um den Speicherort von DNVM zu überprüfen. Geben Sie dazu Folgendes ein:
+    After you have restarted Windows, you can open the command prompt to verify the location of DNVM by entering the following:
 
-		where dnvm
+        where dnvm
 
-	In der Eingabeaufforderung erscheint ein Pfad wie der folgende:
+    The command prompt will show a path similar to the following.
 
-	![DNVM-Speicherort](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
+    ![dnvm location](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
 
-3. Nachdem Sie nun über DNVM verfügen, müssen Sie damit DNX herunterladen, um Ihre Anwendungen ausführen zu können. Führen Sie über die Eingabeaufforderung den folgenden Befehl aus:
+3. Now that you have DNVM, you must use it to download DNX to run your applications. Run the following at the command prompt:
 
-		dnvm upgrade
+        dnvm upgrade
 
-	Überprüfen Sie DNVM, und zeigen Sie die aktive Laufzeit an, indem Sie an der Eingabeaufforderung Folgendes eingeben:
+    Verify your DNVM, and view the active runtime by entering the following at the command prompt:
 
-		dnvm list
+        dnvm list
 
-	In der Eingabeaufforderung werden die Details zur aktiven Laufzeit angezeigt.
+    The command prompt will show the details of the active runtime.
 
-	![DNVM-Speicherort](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
+    ![DNVM location](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
 
-	Wenn mehrere DNX-Laufzeiten aufgeführt sind, können Sie an der Eingabeaufforderung die folgende Version (oder eine neuere Version) eingeben, um die aktive DNX-Laufzeit festzulegen. Legen Sie sie auf die gleiche Version fest, die auch vom ASP.NET 5-Generator verwendet wird, wenn Sie weiter unten in diesem Tutorial Ihre Web-App erstellen. *Sie müssen die aktive Laufzeit ggf. nicht ändern, wenn sie auf die neueste verfügbare festgelegt ist.*
+    If more than one DNX runtime is listed, you can choose to enter the following (or a more recent version) at the command prompt to set the active DNX runtime. Set it to the same version that is used by the ASP.NET 5 generator when you create your web app later in this tutorial. *You may not need to change the active runtime if it is set to the latest available.*
 
-		dnvm use 1.0.0-update1 –p
+        dnvm use 1.0.0-update1 –p
 
-> [AZURE.NOTE] Ausführlichere Installationsanweisungen für OS X, Linux und Windows finden Sie unter [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx) (Installieren von ASP.NET 5 und DNX; in englischer Sprache).
+> [AZURE.NOTE] For more detailed installation instructions for OS X, Linux, and Windows, see [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx). 
 
-## Erstellen der Web-App 
+## <a name="create-the-web-app"></a>Create the web app 
 
-In diesem Abschnitt erfahren Sie, wie Sie das Gerüst für eine neue ASP.NET-Web-App erstellen. Hierzu installieren Sie mithilfe des Node Package Managers (NPM) Folgendes: [Yeoman](http://yeoman.io/) (Tool zur Erstellung von Anwendungsgerüsten; VS Code-Pendant zu **Datei > Neues Projekt** in Visual Studio), [Grunt](http://gruntjs.com/) (JavaScript-Aufgabenausführung) und [Bower](http://bower.io/) (clientseitiger Paket-Manager).
+This section shows you how to scaffold a new app ASP.NET web app. You will use the node package manager (npm) to install [Yeoman](http://yeoman.io/) (application scaffolding tool - the VS Code equivalent of the Visual Studio **File > New Project** operation), [Grunt](http://gruntjs.com/) (JavaScript task runner), and [Bower](http://bower.io/) (client side package manager). 
 
-1. Öffnen Sie eine Eingabeaufforderung mit Administratorrechten, und navigieren Sie zu dem Ort, an dem Sie Ihr ASP.NET-Projekt erstellen möchten. Erstellen Sie z. B. das Verzeichnis *vscodeprojects* im Stammverzeichnis von Laufwerk C:.
+1. Open a command prompt with Administrator rights and navigate to the location where you want to create your ASP.NET project. For instance, create a *vscodeprojects* directory at the root of C:\.
 
-2. Geben Sie an der Eingabeaufforderung Folgendes ein, um Yeoman und die unterstützenden Tools zu installieren:
+2. Enter the following at the command prompt to install Yeoman and the supporting tools.
 
-		npm install -g yo grunt-cli generator-aspnet bower
+        npm install -g yo grunt-cli generator-aspnet bower
 
-	> [AZURE.NOTE] Möglicherweise werden Sie in einer Warnmeldung darauf hingewiesen, dass die npm-Version veraltet ist. Diese Warnung sollte keine Auswirkung auf dieses Tutorial haben.
+    > [AZURE.NOTE] You may get a warning suggesting that your npm version is out of date. This warning should not affect this tutorial.
 
-3. Geben Sie an der Eingabeaufforderung Folgendes ein, um den Projektordner und das Gerüst für die App zu erstellen:
+3. Enter the following at the command prompt to create the project folder and scaffold the app.
 
-		yo aspnet
+        yo aspnet
 
-4. Wählen Sie im ASP.NET 5-Generatormenü mithilfe der Pfeiltasten den Typ **Webanwendung Basic** aus und drücken Sie anschließend die **EINGABETASTE**.
+4. Use the arrow keys to select the **Web Application Basic** type from the ASP.NET 5 generator menu, and press **&lt;Enter>**.
 
-	![Yeoman – ASP.NET 5-Generator](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
+    ![Yeoman - ASP.NET 5 generator](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
 
-5. Legen Sie den Namen Ihrer neuen ASP.NET-Web-App auf **SampleWebApp** fest. Dieser Name wird im gesamten Lernprogramm verwendet. Wenn Sie einen anderen Namen verwenden, müssen jedes Vorkommen von **SampleWebApp** durch diesen Namen ersetzen. Wenn Sie die **EINGABETASTE** drücken, erstellt Yeoman einen neuen Ordner namens **SampleWebApp** sowie die erforderlichen Dateien für Ihre neue App.
+5. Set the name of your new ASP.NET web app to **SampleWebApp**. As this name is used throughout the tutorial, if you select a different name, you'll need to substitute it for each occurrence of **SampleWebApp**. When you press **&lt;Enter>**, Yeoman will create a new folder named **SampleWebApp** and the necessary files for your new app.
 
-6. Verschieben Sie an der Eingabeaufforderung die Verzeichnisse in Ihren neuen Projektordner:
+6. At the command prompt, change directories to your new project folder:
 
-		cd SampleWebApp
+        cd SampleWebApp
 
-7. Geben Sie an der Eingabeaufforderung auch den folgenden Befehl ein, um die erforderlichen NuGet-Pakete zum Ausführen der Anwendung zu installieren:
+7. Also at the command prompt, to install the necessary NuGet packages to run the application, enter the following command:
 
-		dnu restore
+        dnu restore
 
-8. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein, um VS Code zu öffnen:
+8. Open VS Code by entering the following at the command prompt:
 
-		code .
+        code .
 
-## Ausführen der Web-App (lokal)
+## <a name="run-the-web-app-locally"></a>Run the web app locally
 
-Nachdem Sie die Web-App erstellt und alle erforderlichen NuGet-Pakete abgerufen haben, können Sie die Web-App lokal ausführen.
+Now that you have created the web app and retrieved all the NuGet packages for the app, you can run the web app locally.
 
-1. Geben Sie in VS Code unter **Befehlspalette** den folgenden Befehl ein, um die verfügbaren Optionen für die Befehlsausführung anzuzeigen:
+1. From the **Command Palette** in VS Code, enter the following to show the available run command options:
 
-		dnx: Run Command
+        dnx: Run Command
 
-	> [AZURE.NOTE] Wenn der Omnisharp-Server aktuell nicht ausgeführt wird, wird er gestartet. Geben Sie den oben aufgeführten Befehl erneut ein.
+    > [AZURE.NOTE] If the Omnisharp server is not currently running, it will start up. Re-enter the above command.
 
-	Wählen Sie dann den folgenden Befehl zum Ausführen der Web-App aus:
-		
-		dnx web - (SampleWebApp)
+    Next, select the following command to run your web app:
+        
+        dnx web - (SampleWebApp)
 
-	Im Befehlsfenster wird angezeigt, dass die Anwendung gestartet wurde. Wenn diese Meldung im Befehlsfenster nicht angezeigt wird, überprüfen Sie, ob links unten in VS Code Fehler für Ihr Projekt angezeigt werden.
-	
-	> [AZURE.NOTE] Zum Aufrufen eines Befehls über die **Befehlspalette** ist das Zeichen **>** am Anfang der Befehlszeile erforderlich. Sie können die Details des Befehls **web** in der Datei *project.json* anzeigen. Wenn der Befehl nicht angezeigt wird oder nicht verfügbar ist, müssen Sie vielleicht die C#-Erweiterung installieren. Führen Sie `>Extensions: Install Extension` und `ext install c#` aus, um die C#-Erweiterungen zu installieren.
+    The command window will display that the application has started. If the command window doesn't display this message, check the lower left corning of VS Code for errors in your project.
+    
+    > [AZURE.NOTE] Issuing a command from the **Command Palette** requires a **>** character at the beginning of the command line. You can view the details related to the **web** command in the *project.json* file.   
+    > If the command does not appear or is not available, you may need to install the C# extension. Run  `>Extensions: Install Extension` and `ext install c#` to install the C# extensions.
 
-2. Öffnen Sie einen Browser, und navigieren Sie zur folgenden URL:
+2. Open a browser and navigate to the following URL.
 
-	**http://localhost:5000**
+    **http://localhost:5000**
 
-	Die Standardseite der Web-App wird wie folgt angezeigt:
+    The default page of the web app will appear as follows.
 
-	![Lokale Web-App in einem Browser](./media/web-sites-create-web-app-using-vscode/08-web-app.png)
+    ![Local web app in a browser](./media/web-sites-create-web-app-using-vscode/08-web-app.png)
 
-3. Schließen Sie Ihren Browser. Drücken Sie im **Befehlsfenster** die Tastenkombination **STRG+C**, um die Anwendung zu beenden und das **Befehlsfenster** zu schließen.
+3. Close your browser. In the **Command Window**, press **Ctrl+C** to shut down the application and close the **Command Window**. 
 
-## Erstellen einer Web-App im Azure-Portal
+## <a name="create-a-web-app-in-the-azure-portal"></a>Create a web app in the Azure Portal
 
-Die folgenden Schritte dienen zum Erstellen einer Web-App im Azure-Portal:
+The following steps will guide you through creating a web app in the Azure Portal.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Log in to the [Azure Portal](https://portal.azure.com).
 
-2. Klicken Sie links oben im Portal auf **NEU**.
+2. Click **NEW** at the top left of the Portal.
 
-3. Klicken Sie auf **Web-Apps > Web-App**.
+3. Click **Web Apps > Web App**.
 
-	![Azure – neue Web-App](./media/web-sites-create-web-app-using-vscode/09-azure-newwebapp.png)
+    ![Azure new web app](./media/web-sites-create-web-app-using-vscode/09-azure-newwebapp.png)
 
-4. Geben Sie einen Wert für **Name** ein (beispielsweise **SampleWebAppDemo**). Dieser Name muss eindeutig sein. Die Eindeutigkeit wird vom Portal bei der Eingabe überprüft. Falls Sie sich für einen anderen Wert entscheiden, müssen Sie im weiteren Verlauf dieses Lernprogramms jedes Vorkommen von **SampleWebAppDemo** durch diesen anderen Wert ersetzen.
+4. Enter a value for **Name**, such as **SampleWebAppDemo**. Note that this name needs to be unique, and the portal will enforce that when you attempt to enter the name. Therefore, if you select a enter a different value, you'll need to substitute that value for each occurrence of **SampleWebAppDemo** that you see in this tutorial. 
 
-5. Wählen Sie einen vorhandenen **App Service-Plan** aus, oder erstellen Sie einen neuen Plan. Wenn Sie einen neuen Plan erstellen, wählen Sie Tarif, Standort und weitere Optionen. Weitere Informationen zu App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+5. Select an existing **App Service Plan** or create a new one. If you create a new plan, select the pricing tier, location, and other options. For more information on App Service plans, see the article, [Azure App Service plans in-depth overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
-	![Azure – Blatt für neue Web-App](./media/web-sites-create-web-app-using-vscode/10-azure-newappblade.png)
+    ![Azure new web app blade](./media/web-sites-create-web-app-using-vscode/10-azure-newappblade.png)
 
-6. Klicken Sie auf **Erstellen**.
+6. Click **Create**.
 
-	![Blatt für Web-App](./media/web-sites-create-web-app-using-vscode/11-azure-webappblade.png)
+    ![web app blade](./media/web-sites-create-web-app-using-vscode/11-azure-webappblade.png)
 
-## Aktivieren der Git-Veröffentlichung für die neue Web-App
+## <a name="enable-git-publishing-for-the-new-web-app"></a>Enable Git publishing for the new web app
 
-Git ist ein verteiltes Versionskontrollsystem, mit dem Sie Ihre Azure App Service-Web-App bereitstellen können. Dazu speichern Sie den Code, den Sie für Ihre Web-App geschrieben haben, in einem lokalen Git-Repository und stellen ihn anschließend mithilfe eines Pushvorgangs zu einem Remoterepository in Azure bereit.
+Git is a distributed version control system that you can use to deploy your Azure App Service web app. You'll store the code you write for your web app in a local Git repository, and you'll deploy your code to Azure by pushing to a remote repository.   
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Log into the [Azure Portal](https://portal.azure.com).
 
-2. Klicken Sie auf **Durchsuchen**.
+2. Click **Browse**.
 
-3. Klicken Sie auf **Web-Apps**, um eine Liste mit den Web-Apps anzuzeigen, die Ihrem Azure-Abonnement zugeordnet sind.
+3. Click **Web Apps** to view a list of the web apps associated with your Azure subscription.
 
-4. Wählen Sie die Web-App aus, die Sie in diesem Lernprogramm erstellt haben.
+4. Select the web app you created in this tutorial.
 
-5. Klicken Sie auf dem Blatt der Web-App auf **Einstellungen** > **Dauerhafte Bereitstellung**.
+5. In the web app blade, click **Settings** > **Continuous deployment**. 
 
-	![Azure – Web-App-Host](./media/web-sites-create-web-app-using-vscode/14-azure-deployment.png)
+    ![Azure web app host](./media/web-sites-create-web-app-using-vscode/14-azure-deployment.png)
 
-6. Klicken Sie auf **Quelle auswählen > Lokales Git-Repository**.
+6. Click **Choose Source > Local Git Repository**.
 
-7. Klicken Sie auf **OK**.
+7. Click **OK**.
 
-	![Lokales Git-Repository in Azure](./media/web-sites-create-web-app-using-vscode/15-azure-localrepository.png)
+    ![Azure Local Git Respository](./media/web-sites-create-web-app-using-vscode/15-azure-localrepository.png)
 
-8. Falls Sie noch keine Anmeldeinformationen für die Bereitstellung einer Web-App oder einer anderen App Service-App eingerichtet haben, holen Sie dies jetzt nach:
+8. If you have not previously set up deployment credentials for publishing a web app or other App Service app, set them up now:
 
-	* Klicken Sie auf **Einstellungen** > **Anmeldeinformationen für die Bereitstellung**. Das Blatt **Anmeldeinformationen für die Bereitstellung festlegen** wird angezeigt.
+    * Click **Settings** > **Deployment credentials**. The **Set deployment credentials** blade will be displayed.
 
-	* Geben Sie einen Benutzernamen und ein Kennwort ein. Dieses Kennwort benötigen Sie später bei der Git-Einrichtung.
+    * Create a user name and password.  You'll need this password later when setting up Git.
 
-	* Klicken Sie auf **Speichern**.
+    * Click **Save**.
 
-9. Klicken Sie auf dem Blatt der Web-App auf **Einstellungen > Eigenschaften**. Die URL des Git-Remoterepositorys, in dem Sie die Bereitstellung durchführen möchten, wird unter **GIT-URL** angezeigt.
+9. In your web app's blade, click **Settings > Properties**. The URL of the remote Git repository that you'll deploy to is shown under **GIT URL**.
 
-10. Kopieren Sie den unter **GIT-URL** angegebenen Wert zur späteren Verwendung im Lernprogramm.
+10. Copy the **GIT URL** value for later use in the tutorial.
 
-	![Git-URL in Azure](./media/web-sites-create-web-app-using-vscode/17-azure-giturl.png)
+    ![Azure Git URL](./media/web-sites-create-web-app-using-vscode/17-azure-giturl.png)
 
-## Veröffentlichen Ihrer Web-App in Azure App Service
+## <a name="publish-your-web-app-to-azure-app-service"></a>Publish your web app to Azure App Service
 
-In diesem Abschnitt erfahren Sie, wie Sie ein lokales Repository erstellen und einen Pushvorgang von diesem Repository an Azure durchführen, um Ihre Web-App in Azure bereitzustellen.
+In this section, you will create a local Git repository and push from that repository to Azure to deploy your web app to Azure.
 
-1. Wählen Sie in VS Code auf der linken Navigationsleiste die Option **Git** aus.
+1. In VS Code, select the **Git** option in the left navigation bar.
 
-	![Git-Symbol in VS Code](./media/web-sites-create-web-app-using-vscode/git-icon.png)
+    ![Git icon in VS Code](./media/web-sites-create-web-app-using-vscode/git-icon.png)
 
-2. Wählen Sie **Git-Repository initialisieren** aus, um sicherzustellen, dass in Ihrem Arbeitsbereich die Git-Quellcodeverwaltung aktiviert ist.
+2. Select **Initialize git repository** to make sure your workspace is under git source control. 
 
-	![Git-Initialisierung](./media/web-sites-create-web-app-using-vscode/19-initgit.png)
+    ![Initialize Git](./media/web-sites-create-web-app-using-vscode/19-initgit.png)
 
-3. Öffnen Sie das Befehlsfenster, und wechseln Sie zum Verzeichnis Ihrer Web-App. Geben Sie dann den folgenden Befehl ein:
+3. Open the Command Window and change directories to the directory of your web app. Then, enter the following command:
 
-		git config core.autocrlf false
+        git config core.autocrlf false
 
-	Mit diesem Befehl wird ein Problem mit Text bei CRLF- und LF-Endungen verhindert.
+    This command prevents an issue about text where CRLF endings and LF endings are involved.
 
-4. Fügen Sie in VS Code eine Commitnachricht hinzu, und klicken Sie anschließend auf das Häkchen**Commit für alle**.
+4. In VS Code, add a commit message and click the **Commit All** check icon.
 
-	![Git – umfassendes Commit](./media/web-sites-create-web-app-using-vscode/20-git-commit.png)
+    ![Git Commit All](./media/web-sites-create-web-app-using-vscode/20-git-commit.png)
 
-5. Nach Abschluss der Verarbeitung durch Git sehen Sie, dass im Git-Fenster unter **Änderungen** keine Dateien aufgeführt sind.
+5. After Git has completed processing, you'll see that there are no files listed in the Git window under **Changes**. 
 
-	![Git – keine Änderungen](./media/web-sites-create-web-app-using-vscode/no-changes.png)
+    ![Git no changes](./media/web-sites-create-web-app-using-vscode/no-changes.png)
 
-6. Kehren Sie zum Befehlsfenster zurück, in dem die Eingabeaufforderung auf das Verzeichnis mit Ihrer Web-App zeigt.
+6. Change back to the Command Window where the command prompt points to the directory where your web app is located.
 
-7. Erstellen Sie einen Remotebezug, um Updates mittels Push an Ihre Web-App zu übertragen. Verwenden Sie hierbei die zuvor kopierte (auf ".git" endende) Git-URL:
+7. Create a remote reference for pushing updates to your web app by using the Git URL (ending in ".git") that you copied earlier.
 
-		git remote add azure [URL for remote repository]
+        git remote add azure [URL for remote repository]
 
-8. Konfigurieren Sie Git, um Ihre Anmeldeinformationen lokal zu speichern, sodass sie automatisch an Ihre Push-Befehle angehängt werden, die vom Visual Studio-Code generiert werden.
+8. Configure Git to save your credentials locally so that they will be automatically appended to your push commands generated from VS Code.
 
-		git config credential.helper store
+        git config credential.helper store
 
-9. Übertragen Sie Ihre Änderungen mithilfe des folgenden Befehls per Push an Azure: Nach diesem ersten Push in Azure können Sie alle Push-Befehle über Visual Studio-Code ausführen.
+9. Push your changes to Azure by entering the following command. After this initial push to Azure, you will be able to do all the push commands from VS Code. 
 
-		git push -u azure master
+        git push -u azure master
 
-	Sie werden aufgefordert, das zuvor in Azure erstellte Kennwort einzugeben. **Hinweis: Das Kennwort ist nicht sichtbar.**
+    You are prompted for the password you created earlier in Azure. **Note: Your password will not be visible.**
 
-	Die Ausgabe des obigen Befehls endet mit dem Hinweis, dass die Bereitstellung erfolgreich durchgeführt wurde:
+    The output from the above command ends with a message that deployment is successful.
 
-		remote: Deployment successful.
-		To https://user@testsite.scm.azurewebsites.net/testsite.git
-		[new branch]      master -> master
+        remote: Deployment successful.
+        To https://user@testsite.scm.azurewebsites.net/testsite.git
+        [new branch]      master -> master
 
-> [AZURE.NOTE] Wenn Sie Änderungen an Ihrer App vornehmen, können Sie mithilfe der integrierten Git-Funktionen direkt in Visual Studio-Code die erneute Veröffentlichung ausführen, indem Sie die Option **Commit für alle** gefolgt von der Option **Push** verwenden. Sie finden Sie die Option **Push** im Dropdownmenü neben den Schaltflächen **Commit für alle** und **Aktualisieren**.
+> [AZURE.NOTE] If you make changes to your app, you can republish directly in VS Code using the built-in Git functionality by selecting the **Commit All** option followed by the **Push** option. You will find the **Push** option available in the drop-down menu next to the **Commit All** and **Refresh** buttons.
 
-Wenn Sie an einem Projekt zusammenarbeiten müssen, sollten Sie zwischen Push-Vorgängen auf Azure Push-Vorgänge auf GitHub vornehmen.
+If you need to collaborate on a project, you should consider pushing to GitHub in between pushing to Azure.
 
-## Ausführen der App in Azure
-Nachdem Sie Ihre Web-App nun bereitgestellt haben, können wir sie ausführen, während sie in Azure gehostet ist.
+## <a name="run-the-app-in-azure"></a>Run the app in Azure
+Now that you have deployed your web app, let's run the app while hosted in Azure. 
 
-Dies kann auf zwei Arten erfolgen:
+This can be done in two ways:
 
-* Öffnen Sie einen Browser, und geben Sie den Namen Ihrer Web-App wie folgt ein:
+* Open a browser and enter the name of your web app as follows.   
 
-		http://SampleWebAppDemo.azurewebsites.net
+        http://SampleWebAppDemo.azurewebsites.net
  
-* Navigieren Sie im Azure-Portal zum Blatt für Ihre Web-App und klicken Sie auf **Durchsuchen**, um Ihre App anzuzeigen.
-* in Ihrem Standardbrowser anzuzeigen.
+* In the Azure Portal, locate the web app blade for your web app, and click **Browse** to view your app 
+* in your default browser.
 
-![Azure-Web-App](./media/web-sites-create-web-app-using-vscode/21-azurewebapp.png)
+![Azure web app](./media/web-sites-create-web-app-using-vscode/21-azurewebapp.png)
 
-## Zusammenfassung
-In diesem Lernprogramm wurde gezeigt, wie Sie eine Web-App in VS Code erstellen und in Azure bereitstellen. Weitere Informationen zu VS Code finden Sie im Artikel [Why Visual Studio Code?](https://code.visualstudio.com/Docs/) (Argumente für Visual Studio Code; in englischer Sprache). Informationen zu App Service-Web-Apps finden Sie unter [Web-Apps – Übersicht](app-service-web-overview.md).
+## <a name="summary"></a>Summary
+In this tutorial, you learned how to create a web app in VS Code and deploy it to Azure. For more information about VS Code, see the article, [Why Visual Studio Code?](https://code.visualstudio.com/Docs/) For information about App Service web apps, see [Web Apps Overview](app-service-web-overview.md). 
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

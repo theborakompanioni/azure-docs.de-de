@@ -1,5 +1,5 @@
 
-Der Code für alle Funktionen in einer bestimmten Funktionen-App befindet sich in einem Stammordner, der eine Hostkonfigurationsdatei und mindestens einen Unterordner enthält. Jeder dieser Unterordner enthält den Code für eine separate Funktion, wie im folgenden Beispiel gezeigt.
+The code for all of the functions in a given function app lives in a root folder that contains a host configuration file and one or more subfolders, each of which contain the code for a separate function, as in the following example
 
 ```
 wwwroot
@@ -15,8 +15,10 @@ wwwroot
  | | - run.csx
 ```
 
-Die Datei *host.json* enthält die laufzeitspezifische Konfiguration und befindet sich im Stammordner der Funktionen-App. Informationen zu den verfügbaren Einstellungen finden Sie unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) im Wiki zum WebJobs.Script-Repository.
+The *host.json* file contains some runtime-specific configuration and sits in the root folder of the function app. For information on settings that are available, see [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) in the WebJobs.Script repository wiki.
 
-Jede Funktion verfügt über einen Ordner, der mindestens eine Codedatei, die function.json-Konfiguration sowie weitere Abhängigkeiten enthält.
+Each function has a folder that contains one or more code files, the function.json configuration and other dependencies.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

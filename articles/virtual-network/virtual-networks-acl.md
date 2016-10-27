@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?"
-   description="Informationen zu ACLs"
+   pageTitle="What is a Network Access Control List (ACL)?"
+   description="Learn about ACLs"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,88 +15,93 @@
    ms.date="03/15/2016"
    ms.author="jdial" />
 
-# Was ist eine Endpunkt-Zugriffssteuerungsliste (Access Control List, ACL)?
 
-Eine Endpunkt-Zugriffssteuerungsliste (ACL) trägt zur Verbesserung der Sicherheit Ihrer Azure-Bereitstellung bei. Mit einer ACL können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Diese Paketfilterungsfunktion bietet eine zusätzliche Schutzebene. Netzwerk-ACLs können nur für Endpunkte angegeben werden. Sie können keine ACL für ein virtuelles Netzwerk oder für ein bestimmtes Subnetz innerhalb eines virtuellen Netzwerks angeben.
+# <a name="what-is-an-endpoint-access-control-list-(acls)?"></a>What is an endpoint Access Control List (ACLs)?
 
-> [AZURE.IMPORTANT] Es wird empfohlen, anstelle von ACLs möglichst Netzwerksicherheitsgruppen (NSGs) zu verwenden. Weitere Informationen zu NSGs finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](virtual-networks-nsg.md).
+An endpoint Access Control List (ACL) is a security enhancement available for your Azure deployment. An ACL provides the ability to selectively permit or deny traffic for a virtual machine endpoint. This packet filtering capability provides an additional layer of security. You can specify network ACLs for endpoints only. You can't specify an ACL for a virtual network or a specific subnet contained in a virtual network.
 
-ACLs können mithilfe von PowerShell sowie über das Verwaltungsportal konfiguriert werden. Informationen zum Konfigurieren von Netzwerk-ACLs mittels PowerShell finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md). Informationen zum Konfigurieren von Netzwerk-ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
+> [AZURE.IMPORTANT] It is recommended to use Network Security Groups (NSGs) instead of ACLs whenever possible. To learn more about NSGs, see [What is a Network Security Group?](virtual-networks-nsg.md).
 
-Netzwerk-ACLs bieten folgende Möglichkeiten:
+ACLs can be configured by using either PowerShell or the Management Portal. To configure a network ACL by using PowerShell, see [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md). To configure a network ACL by using the Management Portal, see [How to Set Up Endpoints to a Virtual Machine](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 
-- Sie können eingehenden Datenverkehr für einen Eingabeendpunkt eines virtuellen Computers selektiv auf der Grundlage des IPv4-Adressbereichs für das Remote-Subnetz zulassen oder verweigern.
+Using Network ACLs, you can do the following:
 
-- Sie können IP-Adressen in eine Sperrliste aufnehmen.
+- Selectively permit or deny incoming traffic based on remote subnet IPv4 address range to a virtual machine input endpoint.
 
-- Sie können pro Endpunkt eines virtuellen Computers mehrere Regeln erstellen.
+- Blacklist IP addresses
 
-- Sie können pro Endpunkt eines virtuellen Computers bis zu 50 ACL-Regeln angeben.
+- Create multiple rules per virtual machine endpoint
 
-- Sie können Regel aufsteigend sortieren, um sicherzustellen, dass für einen bestimmten Endpunkt eines virtuellen Computers die richtigen Regeln angewendet werden.
+- Specify up to 50 ACL rules per virtual machine endpoint
 
-- Sie können eine ACL für eine bestimmte IPv4-Adresse des Remote-Subnetzes angeben.
+- Use rule ordering to ensure the correct set of rules are applied on a given virtual machine endpoint (lowest to highest)
 
-## Funktionsweise von ACLs
+- Specify an ACL for a specific remote subnet IPv4 address.
 
-Eine ACL ist ein Objekt mit einer Regelliste. Wenn Sie eine ACL erstellen und auf einen Endpunkt eines virtuellen Computers anwenden, erfolgt die Paketfilterung auf dem Hostknoten des virtuellen Computers. Das bedeutet, dass der Hostknoten (nicht Ihr virtueller Computer) den Datenverkehr von Remote-IP-Adressen filtert und nach passenden ACL-Regeln sucht. Dadurch wird verhindert, dass Ihr virtueller Computer wertvolle CPU-Zyklen für die Paketfilterung verwendet.
+## <a name="how-acls-work"></a>How ACLs work
 
-Bei der Erstellung eines virtuellen Computers wird eine Standard-ACL eingerichtet, die sämtlichen eingehenden Datenverkehr blockiert. Wird jedoch ein Endpunkt für Port 3389 erstellt, wird die Standard-ACL so modifiziert, dass sämtlicher eingehender Datenverkehr für diesen Endpunkt zugelassen wird. Daraufhin ist der Endpunkt für eingehenden Datenverkehr aus einem beliebigen Remote-Subnetz erreichbar, und es muss keine Firewall bereitgestellt werden. Eingehender Datenverkehr für andere Ports wird blockiert, es sei denn, es wurden Endpunkte für diese Ports erstellt. Ausgehender Datenverkehr wird standardmäßig zugelassen.
+An ACL is an object that contains a list of rules. When you create an ACL and apply it to a virtual machine endpoint, packet filtering takes place on the host node of your VM. This means the traffic from remote IP addresses is filtered by the host node for matching ACL rules instead of on your VM. This prevents your VM from spending the precious CPU cycles on packet filtering.
 
-**Beispieltabelle für eine Standard-ACL**
+When a virtual machine is created, a default ACL is put in place to block all incoming traffic. However, if an endpoint is created for (port 3389), then the default ACL is modified to allow all inbound traffic for that endpoint. Inbound traffic from any remote subnet is then allowed to that endpoint and no firewall provisioning is required. All other ports are blocked for inbound traffic unless endpoints are created for those ports. Outbound traffic is allowed by default.
 
-| **Regelnr.** | **Remote-Subnetz** | **Endpunkt** | **Zulassen/Verweigern** |
+**Example Default ACL table**
+
+| **Rule #** | **Remote Subnet** | **Endpoint** | **Permit/Deny** |
 |--------|---------------|----------|-------------|
-| 100 | 0\.0.0.0/0 | 3389 | Zulassen |
+| 100    | 0.0.0.0/0     | 3389     | Permit      |
 
-## Zulassen und verweigern
+## <a name="permit-and-deny"></a>Permit and deny
 
-Sie können Netzwerkdatenverkehr für einen Eingabeendpunkt eines virtuellen Computers durch Erstellung entsprechender Regeln selektiv zulassen oder verweigern. Beachten Sie, dass beim Erstellen eines Endpunkts standardmäßig sämtlicher an den Endpunkt gerichteter Datenverkehr erlaubt wird. Daher müssen Sie mit der Erstellung von Zulassungs-/Verweigerungsregeln vertraut sein und sie in die richtige Reihenfolge bringen, um präzise steuern zu können, welcher Netzwerkdatenverkehr den Endpunkt eines virtuellen Computers erreichen darf.
+You can selectively permit or deny network traffic for a virtual machine input endpoint by creating rules that specify "permit" or "deny". It's important to note that by default, when an endpoint is created, all traffic is permitted to the endpoint. For that reason, it's important to understand how to create permit/deny rules and place them in the proper order of precedence if you want granular control over the network traffic that you choose to allow to reach the virtual machine endpoint.
 
-Zu berücksichtigende Punkte:
+Points to consider:
 
-1. **Keine ACL**: Bei der Endpunkterstellung wird standardmäßig sämtlicher Datenverkehr für den Endpunkt zugelassen.
+1. **No ACL –** By default when an endpoint is created, we permit all for the endpoint.
 
-1. **Zulassen**: Durch Hinzufügen zuzulassende Bereiche werden standardmäßig alle anderen Bereiche verweigert. Nur Pakete aus dem zugelassenen IP-Adressbereich können mit dem Endpunkt des virtuellen Computers kommunizieren.
+1. **Permit -** When you add one or more "permit" ranges, you are denying all other ranges by default. Only packets from the permitted IP range will be able to communicate with the virtual machine endpoint.
 
-1. **Ablehnen**: Durch Hinzufügen abzulehnender Bereiche werden standardmäßig alle anderen Datenverkehrsbereiche zugelassen.
+1. **Deny -** When you add one or more "deny" ranges, you are permitting all other ranges of traffic by default.
 
-1. **Kombination aus Zulassen und Verweigern**: Sie können eine Kombination aus „Zulassen“ und „Verweigern“ verwenden, wenn Sie einen bestimmten IP-Adressbereich angeben möchten, der zugelassen oder verweigert werden soll.
+1. **Combination of Permit and Deny -** You can use a combination of "permit" and "deny" when you want to carve out a specific IP range to be permitted or denied.
 
-## Regeln und Reihenfolge
+## <a name="rules-and-rule-precedence"></a>Rules and rule precedence
 
-Netzwerk-ACLs können für bestimmte Endpunkte virtueller Computer eingerichtet werden. So können Sie beispielsweise eine Netzwerk-ACL für einen RDP-Endpunkt angeben, der auf einem virtuellen Computer erstellt wurde, und so den Zugriff für bestimmte IP-Adressen sperren. Die folgende Tabelle zeigt, wie Sie öffentlichen virtuellen IP-Adressen (VIPs) eines bestimmten Bereichs Zugriff gewähren, um den RDP-Zugriff zu ermöglichen. Alle anderen Remote-IPs werden verweigert. Bei der Regelreihenfolge *hat jeweils der niedrigste Wert Vorrang*.
+Network ACLs can be set up on specific virtual machine endpoints. For example, you can specify a network ACL for an RDP endpoint created on a virtual machine which locks down access for certain IP addresses. The table below shows a way to grant access to public virtual IPs (VIPs) of a certain range to permit access for RDP. All other remote IPs are denied. We follow a *lowest takes precedence* rule order.
 
-### Mehrere Regeln
+### <a name="multiple-rules"></a>Multiple rules
 
-Im folgenden Beispiel gilt: Wenn Sie den Zugriff auf den RDP-Endpunkt nur für zwei öffentliche IPv4-Adressbereiche (65.0.0.0/8 und 159.0.0.0/8) zulassen möchten, können Sie dazu zwei Regeln vom Typ *Zulassen* angeben. Da RDP für einen virtuellen Computer standardmäßig erstellt wird, empfiehlt es sich in diesem Fall unter Umständen, den Zugriff auf den RDP-Port auf der Grundlage eines Remote-Subnetzes zu sperren. Das folgende Beispiel zeigt, wie Sie öffentlichen virtuellen IP-Adressen (VIPs) eines bestimmten Bereichs Zugriff gewähren, um den RDP-Zugriff zu ermöglichen. Alle anderen Remote-IPs werden verweigert. Das funktioniert, weil Netzwerk-ACLs für einen bestimmten Endpunkt eines virtuellen Computers eingerichtet werden können und der Zugriff standardmäßig verweigert wird.
+In the example below, if you want to allow access to the RDP endpoint only from two public IPv4 address ranges (65.0.0.0/8, and 159.0.0.0/8), you can achieve this by specifying two *Permit* rules. In this case, since RDP is created by default for a virtual machine, you may want to lock down access to the RDP port based on a remote subnet. The example below shows a way to grant access to public virtual IPs (VIPs) of a certain range to permit access for RDP. All other remote IPs are denied. This works because network ACLs can be set up for a specific virtual machine endpoint and access is denied by default.
 
-**Beispiel: mehrere Regeln**
+**Example – Multiple rules**
 
-| **Regelnr.** | **Remote-Subnetz** | **Endpunkt** | **Zulassen/Verweigern** |
+| **Rule #** | **Remote Subnet** | **Endpoint** | **Permit/Deny** |
 |--------|---------------|----------|-------------|
-| 100 | 65\.0.0.0/8 | 3389 | Zulassen |
-| 200 | 159\.0.0.0/8 | 3389 | Zulassen |
+| 100    | 65.0.0.0/8    | 3389     | Permit      |
+| 200    | 159.0.0.0/8   | 3389     | Permit      |
 
-### Reihenfolge der Regeln
+### <a name="rule-order"></a>Rule order
 
-Da für einen Endpunkt mehrere Regeln angegeben werden können, müssen die Regeln in einer bestimmten Reihenfolge angeordnet werden, um anzugeben, welche Regel Vorrang hat. Die Reihenfolge der Regeln gibt die Rangfolge an. Bei Netzwerk-ACLs *hat jeweils der niedrigste Wert Vorrang*. Im folgenden Beispiel wird dem Endpunkt an Port 80 selektiv Zugriff auf bestimmte IP-Adressbereiche gewährt. Zu diesem Zweck wird eine Verweigerungsregel (Nr. 100) für den Adressraum 175.1.0.1/24 konfiguriert. Außerdem wird noch eine zweite Regel (Nr. 200) angegeben, die den Zugriff auf alle anderen Adressen unter 175.0.0.0/8 zulässt.
+Because multiple rules can be specified for an endpoint, there must be a way to organize rules in order to determine which rule takes precedence. The rule order specifies precedence. Network ACLs follow a *lowest takes precedence* rule order. In the example below, the endpoint on port 80 is selectively granted access to only certain IP address ranges. To configure this, we have a deny rule (Rule \# 100) for addresses in the 175.1.0.1/24 space. A second rule is then specified with precedence 200 that permits access to all other addresses under 175.0.0.0/8.
 
-**Beispiel: Regelreihenfolge**
+**Example – Rule precedence**
 
-| **Regelnr.** | **Remote-Subnetz** | **Endpunkt** | **Zulassen/Verweigern** |
+| **Rule #** | **Remote Subnet** | **Endpoint** | **Permit/Deny** |
 |--------|---------------|----------|-------------|
-| 100 | 175\.1.0.1/24 | 80 | Verweigern |
-| 200 | 175\.0.0.0/8 | 80 | Zulassen |
+| 100    | 175.1.0.1/24  | 80       | Deny        |
+| 200    | 175.0.0.0/8   | 80       | Permit      |
 
-## Netzwerk-ACLs und Sätze mit Lastenausgleich
+## <a name="network-acls-and-load-balanced-sets"></a>Network ACLs and load balanced sets
 
-Netzwerk-ACLs können für einen Endpunkt eines Satzes mit Lastenausgleich (LB-Satz) angegeben werden. Bei Angabe einer ACL für einen LB-Satz wird die Netzwerk-ACL auf alle virtuellen Computer in diesem LB-Satz angewendet. Ein Beispiel: Bei Erstellung eines LB-Satzes mit „Port 80“ und drei virtuellen Computern wird die Netzwerk-ACL, die auf dem Endpunkt „Port 80“ eines einzelnen virtuellen Computers erstellt wurde, automatisch auch auf die anderen virtuellen Computer angewendet.
+Network ACLs can be specified on a Load balanced set (LB Set) endpoint. If an ACL is specified for a LB Set, the Network ACL is applied to all Virtual Machines in that LB Set. For example, if a LB Set is created with "Port 80" and the LB Set contains 3 VMs, the Network ACL created on endpoint "Port 80" of one VM will automatically apply to the other VMs.
 
-![Netzwerk-ACLs und Sätze mit Lastenausgleich](./media/virtual-networks-acl/IC674733.png)
+![Network ACLs and load balanced sets](./media/virtual-networks-acl/IC674733.png)
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-[Verwalten von Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md)
+[How to manage Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

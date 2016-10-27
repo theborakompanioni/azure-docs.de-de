@@ -1,8 +1,8 @@
 <properties 
-    pageTitle="Welche Art von Sammlung benötigen Sie für Azure RemoteApp? | Microsoft Azure" 
-    description="Lernen Sie die Typen von Sammlungen kennen, die in Azure RemoteApp verfügbar sind." 
+    pageTitle="What kind of collection do you need for Azure RemoteApp? | Microsoft Azure" 
+    description="Learn about the types of collections available with Azure RemoteApp." 
     services="remoteapp" 
-	documentationCenter="" 
+    documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -17,81 +17,86 @@
 
 
 
-# Welche Art von Sammlung benötigen Sie für Azure RemoteApp?
+
+# <a name="what-kind-of-collection-do-you-need-for-azure-remoteapp?"></a>What kind of collection do you need for Azure RemoteApp?
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Mit Azure RemoteApp können Sie Apps und Ressourcen auf jedem Gerät für Benutzer freigeben. Zu diesem Zweck werden Sammlungen für die Apps und Ressourcen erstellt, und Sie geben dann diese Sammlungen für Benutzer frei. Es gibt zwei unterschiedliche Sammlungsoptionen mit unterschiedlichen Netzwerk- und Authentifizierungsoptionen – welche ist die richtige für Sie?
+Azure RemoteApp lets you share apps and resources with users on any device. We do this by creating collections to hold the apps and resources, and then you share those collections with users. There are 2 different collection options, with different network and authentication options - which is right for you?
 
-Betrachten wir die Überlegungen und Optionen, die Sie berücksichtigen bzw. wählen müssen, um Ihre Azure RemoteApp-Sammlung optimal zu nutzen.
+Let's walk through the different considerations and choices you need to make to get the most out of your Azure RemoteApp collection. 
 
 
-## Kurzübersicht über die Unterschiede zwischen den Sammlungstypen
+## <a name="quick-differences-between-the-collection-types"></a>Quick differences between the collection types
 
-| | Cloud | Hybrid |
+|           | Cloud | Hybrid |
 |-----------|-------|--------|
-|Vorhandenes VNET verwenden| Ja| Ja|
-|Erfordert mit AD verbundene Konten (DirSync)| Nein| Ja|
-|Erfordert Domänenbeitritt| Nein| Ja|
-|Erfordert Zugriff von VNET auf Domänencontroller| Nein| Ja|
+|Use an existing VNET| Yes| Yes|
+|Requires AD-connected accounts (DirSync)| No| Yes|
+|Requires domain join| No| Yes|
+|Requires domain controller accessible to VNET| No| Yes|
 
-## Cloudsammlungen
-- Schnelle Erstellung – Die Sammlung wird schnell bereitgestellt, d. h., die Benutzer erhalten die App in kürzerer Zeit.
-- Sie können eigene Apps bereitstellen oder unsere Apps gemeinsam nutzen. Sie können ein benutzerdefiniertes Image (anhand einer Azure-VM erstellt) oder eines der in Ihrem Abonnement enthaltenen Images verwenden.
-- Sie müssen keine Verbindung zwischen der Sammlung und der lokalen Domäne konfigurieren.
-- Optional können Sie jedoch ein eigenes Azure VNET verwenden, um Zugriff auf Ihre lokale Umgebung für die Datenfreigabe bereitzustellen oder um Nicht-Windows-Authentifizierung bei Ressourcen, z. B. SQL Server (mit Datenbankauthentifizierung), zu verwenden.
+## <a name="cloud-collections"></a>Cloud collections
+- Quick to create - the collection is quickly provisioned, meaning your apps get to users quicker.
+- Bring your own apps or share ours. You can use a custom image (built from an Azure VM) or one of the images included with your subscription.
+- You don't need to configure a connection between your collection and your on-premises domain.
+- But you can optionally use your own Azure VNET to provide access into your on-premises environment for data sharing or to use non-Windows authentication into resources like SQL Server (using database authentication).
 
 
-Wie erstelle ich eine Cloudsammlung?
+Ok, how do I create one?
 
-- Nur Cloud? Sie erstellen sie mit der Option **Schnellerfassung** im Portal.
-- Cloud und VNET? Sie erstellen sie mit der Option **Mit VNET erstellen**. Treten Sie jedoch NICHT einer Domäne bei.
+- Cloud only? Create with the **Quick Create** option in the portal.
+- Cloud + VNET? Create using the **Create with VNET** option but do NOT choose to join a domain.
 
-## Hybridsammlungen
-- Bieten Vollzugriff auf das lokale Netzwerk und Azure VNET.
-- Umfasst den Domänenbeitrittszugriff für Apps und Daten. Remoteanwendungen können beim lokalen Active Directory authentifiziert werden und haben dann Zugriff auf Ressourcen in Ihrer Domäne.
-- Ermöglichen mit vorhandenen System Center-Lösungen und Windows-Gruppenrichtlinien erweiterte Überwachung und Verwaltung (über ein benutzerdefiniertes Image auf Grundlage von Windows Server 2012 R2).
-- Unterstützen von [ExpressRoute](https://azure.microsoft.com/services/expressroute/) für die Verbindung von Azure VNET mit dem lokalen VNET.
+## <a name="hybrid-collections"></a>Hybrid collections
+- Provide full access to on-premises network + Azure VNET.
+- Includes domain join access for apps and data. Remote applications can authentication against your on-premises Active Directory - they can then access resources in your domain.
+- Enable advanced monitoring and management with existing System Center solutions and Windows Group Policies (through a custom image built on Windows Server 2012 R2)
+- Support [ExpressRoute](https://azure.microsoft.com/services/expressroute/) to connect your Azure VNET to your local VNET.
 
-Sie erstellen sie mit der Option **Mit VNET erstellen** und TRETEN einer Domäne BEI.
+Create using the **Create with VNET** option and DO choose to join a domain.
 
-## Authentifizierungsoptionen
-Azure RemoteApp unterstützt Microsoft-Konten und Azure Active Directory-Konten, jedoch werden nicht alle Methoden von allen Sammlungen unterstützt.
+## <a name="authentication-options"></a>Authentication options
+Azure RemoteApp supports both Microsoft accounts and Azure Active Directory accounts, but not all collections support all methods. 
 
-| Kontotyp | | Cloud | Cloud und VNET | Hybrid |
+| Account type                      |                                                             | Cloud | Cloud + VNET | Hybrid |
 |-----------------------------------|-------------------------------------------------------------|-------|--------------|--------|
-| Microsoft Account | | Ja | Ja | Nein |
-| Azure Active Directory (Azure AD) | | | | |
-| | Nur Azure AD | Ja | Ja | Nein |
-| | AD Connect mit Kennwortsynchronisierung | Ja | Ja | Ja |
-| | AD Connect ohne Kennwortsynchronisierung | Ja | Ja | Nein |
-| | AD Connect mit AD FS | Ja | Ja | Ja |
-| | Von Azure unterstützte Drittidentitätsanbieter (z. B. Ping) | Ja | Ja | Ja |
-| Multi-Factor Authentication | | Ja | Ja | Ja |
+| Microsoft Account                 |                                                             | Yes   | Yes          | No     |
+| Azure Active Directory (Azure AD) |                                                             |       |              |        |
+|                                   | Azure AD only                                               | Yes   | Yes          | No     |
+|                                   | AD Connect with password sync                               | Yes   | Yes          | Yes    |
+|                                   | AD Connect without password sync                            | Yes   | Yes          | No     |
+|                                   | AD Connect with AD FS                                       | Yes   | Yes          | Yes    |
+|                                   | 3rd-party Azure-supported identity providers (such as Ping) | Yes   | Yes          | Yes    |
+| Multi-Factor Authentication       |                                                             | Yes   | Yes          | Yes    |
 
 
 
-### Cloud sowie Cloud und VNET 
-Mit Cloudsammlungen können Sie Microsoft-Konten, Azure AD-Konten oder eine Kombination von beiden verwenden. Verwenden Sie die Konten, die sich für die Benutzer am besten eignen.
+### <a name="cloud-and-cloud-+-vnet"></a>Cloud and Cloud + VNET 
+With cloud collections, you can use Microsoft accounts, Azure AD accounts, or a mix of the two. Use the accounts that work best for your users.
 
-Es gibt keine speziellen Anforderungen für die Verwendung von Microsoft-Konten.
+There are no specific requirements for using Microsoft accounts. 
 
-Wenn Sie Azure AD-Konten verwenden möchten, müssen Sie sicherstellen, dass der Azure AD-Mandant mit dem Mandanten übereinstimmt, der Ihrem Abonnement zugeordnet ist. Bei der Erstellung Ihres Azure RemoteApp-Abonnements wurde der von Ihnen verwendete Azure AD-Mandant automatisch Ihrem Abonnement zugeordnet. Bei jedem Azure AD-Benutzer, dem Sie eine Berechtigung erteilen, muss es sich um diesen Mandanten handeln. Sie können ggf. [den Azure AD-Mandanten ändern](remoteapp-changetenant.md), der Ihrem Abonnement zugeordnet ist.
+If you want to use Azure AD accounts, you need to make sure that your Azure AD tenant matches the one associated with your subscription. When you created your Azure RemoteApp subscription, the Azure AD tenant you were using was automatically associated with your subscription. Any Azure AD user you give permission to needs to be that same tenant. If needed, you can [change the Azure AD tenant](remoteapp-changetenant.md) associated with your subscription.
  
-### Hybrid (oder Cloud und Azure AD und AD)
+### <a name="hybrid-(or-cloud-+-azure-ad-+-ad)"></a>Hybrid (or cloud + Azure AD + AD)
 
-Hybrid-Sammlungen erfordern die Verwendung von Azure AD und lokalem Active Directory. Sie müssen die beiden Verzeichnisse mithilfe von AD Connect integrieren. Sie können jedoch AD Connect auf verschiedene Weise konfigurieren.
+Using Azure AD + on-premises Active Directory is a prerequisite for a hybrid collection. You need to use AD Connect to integrate the two directories. But you do have some choice when it comes to how you configure AD Connect. 
 
-Es gibt zwei AD Connect-Szenarien – Verwendung von Kennwortsynchronisierung oder Verwendung von AD-Verbunddiensten. Ziehen Sie die [Informationen zu AD Connect](../active-directory/active-directory-aadconnect.md) zurate, um das Szenario zu ermitteln, das sich am besten für Ihre Anforderungen eignet.
+There are 2 AD Connect scenarios - using password synchronization or using AD federation. Check out the [AD Connect information](../active-directory/active-directory-aadconnect.md) to figure out which of these works best for you.
 
-Sie können auch Azure AD und AD mit einer Cloudsammlung verwenden. Stellen Sie sicher, dass Sie die gleichen Konfigurationsschritte ausführen.
+You can also use Azure AD + AD with a cloud collection. Make sure you follow the same set up steps.
 
-In [Anforderungen von Azure AD und Active Directory für Azure RemoteApp](remoteapp-ad.md) finden Sie Informationen über die erforderlichen Schritte zum Konfigurieren von Azure AD und Active Directory.
+Check out [Azure AD + Active Directory requirements for Azure RemoteApp](remoteapp-ad.md) for the steps required to configure Azure AD and Active Directory.
 
-## Jetzt können Sie eine Sammlung erstellen!
-Ich denke, ich habe jetzt alles erklärt, was Sie wissen müssen. Jetzt bleibt nur noch die praktische Anwendung – das Erstellen Ihrer ersten Azure RemoteApp-Sammlung.
+## <a name="go-create-your-collection!"></a>Go create your collection!
+Ok, I think we've figured it out now, so there's just one thing left to do - create your first Azure RemoteApp collection.
 
-[Erstellen Sie eine Cloudsammlung](remoteapp-create-cloud-deployment.md), oder [erstellen Sie eine Hybrid-Sammlung](remoteapp-create-hybrid-deployment.md) – fangen Sie einfach an.
+[Create a cloud collection](remoteapp-create-cloud-deployment.md) or [create a hybrid collection](remoteapp-create-hybrid-deployment.md) - just get creating.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

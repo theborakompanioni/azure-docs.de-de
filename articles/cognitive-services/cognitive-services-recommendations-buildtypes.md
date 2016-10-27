@@ -1,44 +1,45 @@
 <properties
-	pageTitle="Schnellstartanleitung: Machine Learning-Empfehlungs-API | Microsoft Azure"
-	description="Azure Machine Learning-Empfehlungen – Kurzanleitung"
-	services="cognitive-services"
-	documentationCenter=""
-	authors="luiscabrer"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Quick start guide: Machine Learning Recommendations API | Microsoft Azure"
+    description="Azure Machine Learning Recommendations--quick start guide"
+    services="cognitive-services"
+    documentationCenter=""
+    authors="luiscabrer"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="cognitive-services"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="luisca"/>
+    ms.service="cognitive-services"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/20/2016"
+    ms.author="luisca"/>
 
-#  Buildtypen und Modellqualität #
+
+#  <a name="build-types-and-model-quality"></a>Build types and model quality #
 
 <a name="TypeofBuilds"></a>
-## Unterstützte Buildtypen ##
+## <a name="supported-build-types"></a>Supported build types ##
 
-Die Empfehlungs-API unterstützt derzeit zwei Buildtypen: *Empfehlung* und *FBT*. Beide werden mit unterschiedlichen Algorithmen erstellt und bieten unterschiedliche Vorteile. In diesem Dokument werden alle Builds sowie Techniken zum Vergleichen der Qualität der generierten Modelle beschrieben.
+The Recommendations API currently supports two build types: *recommendation* and *FBT*. Each is built using different algorithms, and each has different strengths. This document describes each of these builds and techniques for comparing the quality of the models generated.
 
-Sofern Sie dies noch nicht getan haben, empfehlen wir Ihnen, die [Kurzanleitung](cognitive-services-recommendations-quick-start.md) durchzugehen.
+If you have not done so already, we recommend that you complete the [quick start guide](cognitive-services-recommendations-quick-start.md).
 
 <a name="RecommendationBuild"></a>
-### Buildtyp „Empfehlung“ ###
+### <a name="recommendation-build-type"></a>Recommendation build type ###
 
-Der Buildtyp „Empfehlung“ verwendet die Matrixfaktorisierung, um Empfehlungen bereitzustellen. Er generiert basierend auf Ihren Transaktionen [Eigenvektoren von Features](https://en.wikipedia.org/wiki/Latent_variable), um jeden Artikel zu beschreiben, und verwendet diese Eigenvektoren anschließend zum Vergleichen ähnlicher Artikel.
+The recommendation build type uses matrix factorization to provide recommendations. It generates [latent feature](https://en.wikipedia.org/wiki/Latent_variable) vectors based on your transactions to describe each item, and then uses those latent vectors to compare items that are similar.
 
-Wenn Sie das Modell basierend auf Käufen in einem Elektromarkt trainieren und ein Smartphone des Typs Lumia 650 als Eingabe für das Modell verwenden, gibt das Modell einen Satz von Artikeln zurück, die zumeist von Kunden gekauft werden, die wahrscheinlich ein Lumia 650 kaufen. Die Artikel ergänzen sich möglicherweise nicht. In diesem Beispiel ist es möglich, dass das Modell andere Telefone zurückgibt, da Kunden, denen das Lumia 650 gefällt, vielleicht andere Telefone mögen.
+If you train the model based on purchases made in your electronics store and provide a Lumia 650 phone as the input to the model, the model will return a set of items that tend to be purchased by people who are likely to purchase a Lumia 650 phone. The items may not be complementary. In this example, it is possible that the model will return other phones because people who like the Lumia 650 may like other phones.
 
-Der Empfehlungsbuild hat zwei Merkmale, die ihn reizvoll machen:
+The recommendation build has two capabilities that make it attractive:
 
-**Der Empfehlungsbuild unterstützt die Platzierung *kalter Artikel*.**
+**The recommendation build supports *cold item* placement**
 
-Artikel, die nur selten genutzt werden, werden als kalte Artikel bezeichnet. Wenn Sie beispielsweise eine Lieferung eines Telefons erhalten, das Sie noch nie verkauft haben, kann das System keine Empfehlungen für dieses Produkt ableiten, die ausschließlich auf Transaktionen basieren. Dies bedeutet, dass sich das System anhand von Informationen zum Produkt selbst informieren muss.
+Items that do not have significant usage are called cold items. For instance, if you receive a shipment of a phone you have never sold before, the system cannot infer recommendations for this product on transactions alone. This means that the system should learn from information about the product itself.
 
-Wenn Sie die Platzierung kalter Artikel verwenden möchten, müssen Sie für jeden Artikel im Katalog Informationen zu Produktfeatures bereitstellen. Das folgende Beispiel zeigt, wie die ersten Zeilen Ihres Katalogs aussehen könnten (beachten Sie das „Schlüssel=Wert“-Format für die Features).
+If you want to use cold item placement, you need to provide features information for each of your items in the catalog. Following is what the first few lines of your catalog may look like (note the key=value format for the features).
 
 >6CX-00001,Surface Pro2, Surface,, Type=Hardware, Storage=128 GB, Memory=4G, Manufacturer=Microsoft
 
@@ -46,143 +47,147 @@ Wenn Sie die Platzierung kalter Artikel verwenden möchten, müssen Sie für jed
 
 >WAH-0F05,Minecraft Xbox 360,Gaming,, * Type=Software, Language=Spanish, Rating=Youth
 
-Sie müssen auch die folgenden Buildparameter festlegen:
+You also need to set the following build parameters:
 
-| Buildparameter | Hinweise
+| Build parameter         | Notes
 |------------------     |-----------
-|*useFeaturesInModel* | Legen Sie diesen Parameter auf **True** fest. Gibt an, ob Features verwendet werden können, um das Empfehlungsmodell zu erweitern.
-|*allowColdItemPlacement* | Legen Sie diesen Parameter auf **True** fest. Hier wird angegeben, ob durch die Empfehlung ein „Push“ kalter Artikel anhand der Ähnlichkeit der Features erfolgen soll.
-| *modelingFeatureList* | Kommagetrennte Liste von Featurenamen, die im Empfehlungsbuild verwendet werden sollen, um die Empfehlung zu verbessern (z.B. „Language,Storage“ im obigen Beispiel).
+|*useFeaturesInModel*     | Set to **true**.  Indicates if features can be used to enhance the recommendation model.
+|*allowColdItemPlacement*   | Set to **true**. Indicates if the recommendation should also push cold items via feature similarity.
+| *modelingFeatureList*   | Comma-separated list of feature names to be used in the recommendation build to enhance the recommendation. For instance, “Language,Storage” for the preceding example.
 
-**Der Empfehlungsbuild unterstützt Benutzerempfehlungen.**
+**The recommendation build supports user recommendations**
 
-Ein Empfehlungsbuild bietet Unterstützung für [Benutzerempfehlungen](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd). Dies bedeutet, dass er basierend auf den Transaktionsverläufen personalisierte Empfehlungen für Benutzer bereitstellen kann. Für Benutzerempfehlungen können Sie die Benutzer-ID oder den aktuellen Transaktionsverlauf des Benutzers angeben.
+A recommendation build supports [user recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd). This means that it can provide personalized recommendations for users based on their transaction histories. For user recommendations, you might provide the user ID or the recent history of transactions for that user.
 
-Ein klassisches Beispiel für die Verwendung von Benutzerempfehlungen ist die Anmeldung auf der Willkommensseite. Dort können Sie Inhalt bewerben, der zu dem jeweiligen Benutzer passt.
+One classic example of where you might want to apply user recommendations is at sign-in on the welcome page. There you can promote content that applies to the specific user.
 
-Sie können auch einen Empfehlungsbuildtyp anwenden, wenn der Benutzer zur Kasse geht. An dieser Stelle wird die Liste der Artikel gezeigt, die der Benutzer kaufen möchte. Dies ist eine gute Möglichkeit, um auf dem aktuellen Warenkorb basierende Empfehlungen anzuzeigen.
+You might also want to apply a recommendations build type when the user is about to check out. At that point, you have the list of items the user is about to purchase, and you can provide recommendations based on the current market basket.
 
-#### Parameter für Empfehlungsbuilds
+#### <a name="recommendations-build-parameters"></a>Recommendations build parameters
 
-| Name | 	Beschreibung |	 Typ, <br> gültige Werte, <br> (Standardwert)
+| Name  |   Description |    Type, <br>  valid values, <br> (default value)
 |-------|-------------------|------------------
-| *NumberOfModelIterations* |	Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl ist, desto genauer ist das Modell (die Berechnung dauert bei einer höheren Anzahl allerdings länger). |	 Integer, <br> 10 bis 50 <br>(40)
-| *NumberOfModelDimensions* |	Die Anzahl von Dimensionen bezieht sich auf die Anzahl von Features, die das Modell in Ihren Daten zu finden versucht. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. |	Integer, <br> 10 bis 40 <br>(20) |
-| *ItemCutOffLowerBound* |	Definiert die Mindestanzahl von Nutzungspunkten, in denen sich ein Artikel befinden sollte, damit er im Modell berücksichtigt wird. |		Integer, <br> 2 oder mehr <br> (2) |
-| *ItemCutOffUpperBound* | 	Definiert die Höchstanzahl von Nutzungspunkten, in denen sich ein Artikel befinden sollte, damit er im Modell berücksichtigt wird. | Integer, <br>2 oder mehr<br> (2147483647) |
-|*UserCutOffLowerBound* |	Definiert die Mindestanzahl von Transaktionen, die ein Benutzer ausgeführt haben muss, um im Modell berücksichtigt zu werden. |	Integer, <br> 2 oder mehr <br> (2)
-| *UserCutOffUpperBound* |	Definiert die Höchstanzahl von Transaktionen, die ein Benutzer ausgeführt haben muss, um im Modell berücksichtigt zu werden. |	Integer, <br>2 oder mehr <br> (2147483647)|
-| *UseFeaturesInModel* |	Gibt an, ob Features verwendet werden können, um das Empfehlungsmodell zu erweitern. | 	 Boolean<br> Standard: True
-|*ModelingFeatureList* |	Kommagetrennte Liste von Featurenamen, die im Empfehlungsbuild verwendet werden sollen, um die Empfehlung zu verbessern. Diese Liste hängt von den wichtigen Features ab. |	String, bis zu 512 Zeichen
-| *AllowColdItemPlacement* |	Hier wird angegeben, ob durch die Empfehlung ein „Push“ kalter Artikel anhand der Ähnlichkeit der Features erfolgen soll. | Boolean<br> Standard: False
-| *EnableFeatureCorrelation* | Hier wird angegeben, ob Features bei der Argumentation verwendet werden können. |	Boolean<br> Standard: False
-| *ReasoningFeatureList* |	Kommagetrennte Liste von Featurenamen, die für Argumentationssätze (z.B. Erklärungen von Empfehlungen) verwendet werden sollen. Diese Liste hängt von den für Kunden wichtigen Features ab. | String, bis zu 512 Zeichen
-| *EnableU2I* |	Aktiviert personalisierte Empfehlungen, so genannte „User to Item“-Empfehlungen (U2I). | Boolean<br> Standard: True
-|*EnableModelingInsights* |	Definiert, ob eine Offlineauswertung erfolgen soll, um Modellierungserkenntnisse (d.h. Metriken für Genauigkeit und Vielfalt) zu sammeln. Ist dieser Parameter auf „True“ festgelegt, wird eine Teilmenge der Daten nicht für das Training verwendet, da sie zum Testen des Modells reserviert werden müssen. Weitere Informationen zu [Offlineauswertungen](#OfflineEvaluation). | Boolean<br> Standard: False
-| *SplitterStrategy* | Wenn „EnableModelingInsights“ auf *True* festgelegt ist, bestimmt dieser Parameter, wie Daten für Auswertungszwecke aufgeteilt werden sollen. | String, *RandomSplitter* oder *LastEventSplitter* <br>Standard: RandomSplitter
+| *NumberOfModelIterations* |   The number of iterations the model performs is reflected by the overall compute time and the model accuracy. The higher the number, the more accurate the model, but the compute time takes longer.  |   Integer, <br>  10 to 50 <br>(40)
+| *NumberOfModelDimensions* |   The number of dimensions relates to the number of features the model will try to find within your data. Increasing the number of dimensions will allow better fine-tuning of the results into smaller clusters. However, too many dimensions will prevent the model from finding correlations between items. |  Integer, <br> 10 to 40 <br>(20) |
+| *ItemCutOffLowerBound* |  Defines the minimum number of usage points an item should be in for it to be considered part of the model. |        Integer, <br> 2 or more <br> (2) |
+| *ItemCutOffUpperBound* |  Defines the maximum number of usage points an item should be in for it to be considered part of the model. |  Integer, <br>2 or more<br> (2147483647) |
+|*UserCutOffLowerBound* |   Defines the minimum number of transactions a user must have performed to be considered part of the model. | Integer, <br> 2 or more <br> (2)
+| *UserCutOffUpperBound* |  Defines the maximum number of transactions a user must have performed to be considered part of the model. | Integer, <br>2 or more <br> (2147483647)|
+| *UseFeaturesInModel* |    Indicates if features can be used to enhance the recommendation model. |     Boolean<br> Default: True
+|*ModelingFeatureList* |    Comma-separated list of feature names to be used in the recommendation build to enhance the recommendation. It depends on the features that are important. |    String, up to 512 chars
+| *AllowColdItemPlacement* |    Indicates if the recommendation should also push cold items via feature similarity. | Boolean <br> Default: False
+| *EnableFeatureCorrelation*    | Indicates if features can be used in reasoning. | Boolean <br> Default: False
+| *ReasoningFeatureList* |  Comma-separated list of feature names to be used for reasoning sentences, such as recommendation explanations. It depends on the features that are important to customers. | String, up to 512 chars
+| *EnableU2I* | Enable personalized recommendations, also called user to item (U2I) recommendations. | Boolean <br>Default: True
+|*EnableModelingInsights* | Defines whether offline evaluation should be performed to gather modeling insights (that is, precision and diversity metrics). If set to true, a subset of the data will not be used for training because it will need to be reserved for testing of the model. Read more about [offline evaluations](#OfflineEvaluation). | Boolean <br> Default: False
+| *SplitterStrategy* | If enable modeling insights is set to *true*, this is how data should be split for evaluation purposes.  | String, *RandomSplitter* or *LastEventSplitter* <br>Default:  RandomSplitter
 
 
 <a name="FBTBuild"></a>
-### FBT-Buildtyp ###
+### <a name="fbt-build-type"></a>FBT build type ###
 
-Der FBT-Build (Frequently Bought Together = häufig zusammen gekauft) führt eine Analyse durch, die die Anzahl von Kookkurrenzen von zwei oder drei verschiedenen Produkte zählt, d.h. wie oft sie gemeinsam vorkommen. Anschließend werden die Sätze auf Grundlage einer Ähnlichkeitsfunktion sortiert (**Kookkurrenzen**, **Jaccard**, **Lift**).
+The frequently bought together (FBT) build does an analysis that counts the number of times two or three different products co-occur together. It then sorts the sets based on a similarity function (**co-occurrences**, **Jaccard**, **lift**).
 
-**Jaccard** und **Lift** können Sie sich als Möglichkeiten zum Normalisieren von Kookkurrenzen vorstellen. Dies bedeutet, dass die Artikel nur zurückgegeben werden, wenn sie zusammen mit dem Ausgangsartikel gekauft wurden.
+Think of **Jaccard** and **lift** as ways to normalize the co-occurrences.  This means that the items will be returned only if they where purchased together with the seed item.
 
-Bei unserem Beispiel mit dem Lumia 650 wird Telefon X nur dann zurückgegeben, wenn Telefon X in derselben Sitzung wie das Lumia 650 gekauft wurde. Da dies eher unwahrscheinlich ist, erwarten wir, dass ergänzende Artikel für das Lumia 650 zurückgegeben werden, z.B. eine Displayschutzfolie oder ein Netzteil für das Lumia 650.
+In our Lumia 650 phone example, phone X will be returned only if phone X was purchased in the same session as the Lumia 650 phone. Because this may be unlikely, we would expect items complementary to the Lumia 650 to be returned; for instance, a screen protector, or a power adapter for the Lumia 650.
 
-Derzeit gelten zwei Artikel als in derselben Sitzung gekauft, wenn sie in einer Transaktion mit derselben Benutzer-ID und demselben Zeitstempel vorkommen.
+Currently, two items are assumed to be purchased in the same session if they occur in a transaction with the same user ID and timestamp.
 
-FBT-Builds unterstützen keine kalten Artikel, da sie per definitionem erwarten, dass zwei Artikel bei derselben Transaktion gekauft werden. FBT-Builds können zwar Sätze von Artikeln (Dreiergruppen) zurückgeben, unterstützen aber keine persönlichen Empfehlungen, da sie einen einzelnen Ausgangsartikel als Eingabe akzeptieren.
+FBT builds do not support cold items, because by definition they expect two items to be purchased in the same transaction. While FBT builds can return sets of items (triplets), they do not support personalized recommendations because they accept a single seed item as the input.
 
 
-#### Parameter für FBT-Builds
+#### <a name="fbt-build-parameters"></a>FBT build parameters
 
-| Name | 	Beschreibung |		Typ, <br> gültige Werte, <br> (Standardwert)
+| Name  |   Description |       Type,  <br> valid values, <br> (default value)
 |-------|---------------|-----------------------
-| *FbtSupportThreshold* | Dies ist ein Maß dafür, wie konservativ das Modell ist. Dies ein Maß für die Grauwerte von Elementen, die bei der Modellierung berücksichtigt werden. | Integer, <br> 3 bis 50 <br> (6)
-| *FbtMaxItemSetSize* | Begrenzt die Anzahl der Elemente in einem häufigen Satz.| Integer <br> 2 bis 3 <br> (2)
-| *FbtMinimalScore* | Die Mindestbewertung, die ein häufiger Satz haben muss, um in die zurückgegebenen Ergebnisse eingeschlossen zu werden. Höhere Bewertungen sind besser als niedrigere. | Double <br> 0 und höher <br> (0)
-| *FbtSimilarityFunction* | Definiert die Ähnlichkeitsfunktion, die vom Build verwendet werden soll. **Lift** fördert die Zufälligkeit, **Kookkurrenz** fördert die Vorhersagbarkeit und **Jaccard** stellt einen Kompromiss zwischen diesen beiden Optionen dar. | String, <br> <i>cooccurrence, lift, jaccard</i><br> Standard: <i>jaccard</i>
+| *FbtSupportThreshold* | How conservative the model is. Number of co-occurrences of items to be considered for modeling. |  Integer, <br> 3-50 <br> (6)
+| *FbtMaxItemSetSize* | Bounds the number of items in a frequent set.| Integer  <br> 2-3 <br> (2)
+| *FbtMinimalScore* | Minimal score that a frequent set should have to be included in the returned results. The higher the better. | Double <br> 0 and above <br> (0)
+| *FbtSimilarityFunction* | Defines the similarity function to be used by the build. **Lift** favors serendipity, **co-occurrence** favors predictability, and **Jaccard** is a compromise between the two. | String,  <br>  <i>cooccurrence, lift, jaccard</i><br> Default: <i>jaccard</i>
 
 <a name="SelectBuild"></a>
-## Buildauswertung und -auswahl ##
+## <a name="build-evaluation-and-selection"></a>Build evaluation and selection ##
 
-Diese Richtlinien können Ihnen bei der Entscheidung zwischen Empfehlungs- oder FBT-Build helfen. In Fällen, in denen Sie beide Buildtypen verwenden könnten, liefern sie jedoch keine definitive Antwort. Doch auch wenn Sie wissen, dass Sie einen FBT-Buildtyp verwenden möchten, können Sie noch immer entscheiden, ob Sie **Jaccard** oder **Lift** als Ähnlichkeitsfunktion einsetzen möchten.
+This guidance might help you determine whether you should use a recommendations build or an FBT build, but it does not provide a definitive answer in cases where you could use either of them. Also, even if you know that you want to use an FBT build type, you might still want to choose **Jaccard** or **lift** as the similarity function.
 
-Die beste Methode zur Auswahl des geeigneten Buildtyps besteht darin, diese in der Praxis zu testen (Onlineauswertung) und die Konversionsrate für die verschiedenen Builds nachzuverfolgen. Die Konversionsrate kann basierend auf Empfehlungsklicks, der Anzahl tatsächlicher Käufe aufgrund angezeigter Empfehlungen oder sogar dem tatsächlichen Verkaufserlös bei der Anzeige verschiedener Empfehlungen gemessen werden. Sie können Ihre Metrik für die Konversionsrate basierend auf Ihrem Geschäftsziel auswählen.
+The best way to select between two different builds is to test them in the real world (online evaluation) and track a conversion rate for the different builds. The conversion rate could be measured based on recommendation clicks, the number actual purchases from recommendations shown, or even on the actual purchase amounts when the different recommendations were shown. You may select your conversion rate metric based on your business objective.
 
-In einigen Fällen möchten Sie das Modell möglicherweise offline auswerten, bevor Sie es in der Produktion einsetzen. Obwohl die Offlineauswertung kein Ersatz für die Onlineauswertung ist, kann sie uns als Metrik dienen.
+In some cases, you may want to evaluate the model offline before you put it in production. While offline evaluation is not a replacement for online evaluation, it can serve as a metric.
 
 <a name="OfflineEvaluation"></a>
-## Offlineauswertung  ##
+## <a name="offline-evaluation"></a>Offline evaluation  ##
 
-Ziel der Offlineauswertung ist das Vorhersagen der Genauigkeit (Anzahl von Benutzern, die einen der empfohlenen Artikel kaufen) und der Vielfältigkeit von Empfehlungen (Anzahl von Artikeln, die empfohlen werden). Im Rahmen der Auswertung der Genauigkeits- und Vielfältigkeitsmetriken bestimmt das System eine Stichprobe von Benutzern und teilt die Transaktionen dieser Benutzer in zwei Gruppen auf: das Trainingsdataset und das Testdataset.
+The goal of an offline evaluation is to predict precision (the number of users that will purchase one of the recommended items) and the diversity of recommendations (the number of items that are recommended).
+As part of the precision and diversity metrics evaluation, the system finds a sample of users and splits  the transactions for those users into two groups: the training dataset and the test dataset.
 
-> [AZURE.NOTE] Zur Verwendung von Offlinemetriken müssen Ihre Nutzungsdaten Zeitstempel aufweisen. Die Zeitdaten sind erforderlich, um die Nutzung korrekt auf das Trainingsdataset und das Testdataset aufzuteilen.
+> [AZURE.NOTE] To use offline metrics, you must have timestamps in your usage data.
+> Time data is required to split usage correctly between training and test datasets.
 
-> Zudem führt die Offlineauswertung bei kleinen Nutzungsdateien möglicherweise nicht zu Ergebnissen. Für eine umfassende Auswertung sollte das Testdataset mindestens 1.000 Nutzungspunkte enthalten.
+> Also, offline evaluation may not yield results for small usage files. For the evaluation to be thorough, there should be a minimum of 1,000 usage points in the test dataset.
 
 <a name="Precision"></a>
-### Genauigkeit bei K ###
-Die folgende Tabelle zeigt die Ausgabe der Offlineauswertung „Genauigkeit bei K“.
+### <a name="precision-at-k"></a>Precision-at-k ###
+The following table represents the output of the precision-at-k offline evaluation.
 
-| K | 1 | 2 | 3 | 	4 | 	5
+| K | 1 | 2 | 3 |   4 |     5
 |---|---|---|---|---|---|
-|Prozentsatz |	13,75 |	18,04 | 21 |	24,31 |	26,61
-|Benutzer im Test |	10\.000 |	10\.000 |	10\.000 |	10\.000 |	10\.000
-|Berücksichtigte Benutzer |	10\.000 |	10\.000 |	10\.000 |	10\.000 |	10\.000
-|Nicht berücksichtigte Benutzer |	0 |	0 |	0 |	0 |	0
+|Percentage |   13.75 | 18.04   | 21 |  24.31 | 26.61
+|Users in test |    10,000 |    10,000 |    10,000 |    10,000 |    10,000
+|Users considered | 10,000 |    10,000 |    10,000 |    10,000 |    10,000
+|Users not considered | 0 | 0 | 0 | 0 | 0
 
-#### K
-In der obigen Tabelle stellt *K* die Anzahl von Empfehlungen dar, die für den Kunden angezeigt werden. Die Tabelle liest sich wie folgt: „Wenn während des Testzeitraums für Kunden nur eine Empfehlung angezeigt worden wäre, wären nur 13,75 % der Benutzer dieser Kaufempfehlung gefolgt.“ Diese Aussage basiert auf der Annahme, dass das Modell mit Kaufdaten trainiert wurde. Anders ausgedrückt: 13,75 ist die „Genauigkeit bei 1“.
+#### <a name="k"></a>K
+In the preceding table, *k* represents the number of recommendations shown to the customer. The table reads as follows: “If during the test period, only one recommendation was shown to the customers, only 13.75 of the users would have purchased that recommendation.” This statement is based on the assumption that the model was trained with purchase data. Another way to say this is that the precision at 1 is 13.75.
 
-Beachten Sie, dass je mehr Artikel dem Kunden gezeigt werden, die Wahrscheinlichkeit steigt, dass der Kunde einen empfohlenen Artikel kauft. Beim obigen Experiment verdoppelt sich die Wahrscheinlichkeit auf nahezu 26,61 %, wenn fünf Artikel empfohlen werden.
+You will notice that as more items are shown to the customer, the likelihood of the customer purchasing a recommended item goes up. For the preceding experiment, the probability almost doubles to 26.61 percent when 5 items are recommended.
 
-#### Prozentsatz
-Der Prozentsatz der Benutzer, die mit mindestens einer der gezeigten *K* Empfehlungen interagiert haben. Zum Berechnen des Prozentsatzes wird die Anzahl von Benutzern, die mit mindestens einer Empfehlung interagiert haben, durch die Gesamtanzahl berücksichtigter Benutzer dividiert. Weitere Informationen finden Sie unter „Berücksichtigte Benutzer“.
+#### <a name="percentage"></a>Percentage
+The percentage of users that interacted with at least one of the *k* recommendations is shown. The percentage is calculated by dividing the number of users that interacted with at least one recommendation by the total number of users considered. See Users considered for more information.
 
-#### Benutzer im Test
-Die Daten in dieser Zeile stellen die Gesamtanzahl von Benutzern im Testdataset dar.
+#### <a name="users-in-test"></a>Users in test
+Data in this row represents the total number of users in the test dataset.
 
-#### Berücksichtigte Benutzer
-Ein Benutzer wird nur berücksichtigt, wenn das System mindestens *K* Artikel basierend auf dem mit dem Trainingsdataset generierten Modell empfohlen hat.
+#### <a name="users-considered"></a>Users considered
+A user is only considered if the system recommended at least *k* items based on the model generated using the training dataset.
 
-#### Nicht berücksichtigte Benutzer
-Die Daten in dieser Zeile stellen alle Benutzer dar, die nicht berücksichtigt wurden, d.h. die Benutzer, denen nicht mindestens *K* Artikel empfohlen wurden.
+#### <a name="users-not-considered"></a>Users not considered
+Data in this row represents any users not considered. The users that did not receive at least *k* recommended items.
 
-Nicht berücksichtigte Benutzer = Benutzer im Test – Berücksichtigte Benutzer
+User not considered = users in test – users considered
 
 <a name="Diversity"></a>
-### Vielfältigkeit ###
-Metriken für die Vielfältigkeit dienen zum Messen des Typs der empfohlenen Artikel. Die folgende Tabelle zeigt die Ausgabe der Offlineauswertung der Vielfältigkeit.
+### <a name="diversity"></a>Diversity ###
+Diversity metrics measure the type of items recommended. The following table represents the output of the diversity offline evaluation.
 
-|Quantilbucket |	0-90| 90-99| 99-100
+|Percentile bucket |    0-90|  90-99| 99-100
 |------------------|--------|-------|---------
-|Prozentsatz | 34,258 | 55,127| 10,615
+|Percentage        | 34.258 | 55.127| 10.615
 
 
-Gesamtanzahl der empfohlenen Artikel: 100.000
+Total items recommended: 100,000
 
-Empfohlene eindeutige Artikel: 954
+Unique items recommended: 954
 
-#### Quantilbuckets
-Jeder Quantilbucket wird durch eine Spanne dargestellt (Mindest- und Höchstwerte im Bereich von 0 bis 100). Die Artikel nahe bei 100 sind die beliebtesten Artikel, die Artikel nahe bei 0 die unbeliebtesten. Wenn beispielsweise der Prozentwert für den Quantilbucket 99-100 gleich 10,6 ist, bedeutet dies, dass 10,6 % der Empfehlungen nur das eine oberste Prozent der beliebtesten Artikel zurückgegeben haben. Der Mindestwert des Quantilbuckets ist inklusiv, wohingegen der Höchstwert außer für 100 exklusiv ist.
-#### Empfohlene eindeutige Artikel
-Die Metrik für die empfohlenen eindeutigen Artikel zeigt die Anzahl unterschiedlicher Artikel, die zur Auswertung zurückgegeben wurden.
-#### Gesamtanzahl empfohlener Artikel
-Die Metrik für die Gesamtzahl empfohlener Artikel zeigt die Anzahl von Artikeln, die empfohlen wurden. Bei einigen dieser Artikel kann es sich um doppelte Empfehlungen handeln.
+#### <a name="percentile-buckets"></a>Percentile buckets
+Each percentile bucket is represented by a span (minimum and maximum values that range between 0 and 100). The items close to 100 are the most popular items, and the items close to 0 are the least popular. For instance, if the percentage value for the 99-100 percentile bucket is 10.6, it means that 10.6 percent of the recommendations returned only the top one percent most popular items. The percentile bucket minimum value is inclusive, and the maximum value is exclusive, except for 100.
+#### <a name="unique-items-recommended"></a>Unique items recommended
+The unique items recommended metric shows the number of distinct items that were returned for evaluation.
+#### <a name="total-items-recommended"></a>Total items recommended
+The total items recommended metric shows the number of items recommended. Some may be duplicates.
 
 <a name="ImplementingEvaluation"></a>
-### Offlineauswertungsmetriken ###
-Die Offlinemetriken für Genauigkeit und Vielfältigkeit können bei der Wahl des zu verwendenden Buildtyps hilfreich sein. Nehmen Sie zur Buildzeit als Teil der entsprechenden Parameter für FBT- oder Empfehlungsbuilds folgende Einstellungen vor:
+### <a name="offline-evaluation-metrics"></a>Offline evaluation metrics ###
+The precision and diversity offline metrics may be useful when you select which build to use. At build time, as part of the respective FBT or recommendation build parameters:
 
--	Legen Sie den Buildparameter *enableModelingInsights* auf **True** fest.
--	Wählen Sie optional die *splitterStrategy* aus (entweder *RandomSplitter* oder *LastEventSplitter*). *RandomSplitter* teilt die Nutzungsdaten basierend auf dem angegebenen Testprozentsatz *randomSplitterParameters* und zufälligen Ausgangswerten in Trainings- und Testdatasets auf. *LastEventSplitter* teilt die Nutzungsdaten basierend auf der letzten Transaktion jedes Benutzers in Trainings- und Testdatasets auf.
+-   Set the *enableModelingInsights* build parameter to **true**.
+-   Optionally, select the *splitterStrategy* (Either *RandomSplitter* or *LastEventSplitter*).
+*RandomSplitter* splits the usage data in train and test sets based on the given *randomSplitterParameters* test percent and random seed values.
+*LastEventSplitter* splits the usage data in train and test sets based on the last transaction for each user.
 
-Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training verwendet und die restlichen Daten zur Berechnung von Auswertungsmetriken verwendet. Nachdem der Build abgeschlossen wurde, müssen Sie zum Abrufen der Ausgabe der Auswertung die [API zum Abrufen von Buildmetriken](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/577eaa75eda565095421666f) aufrufen und die entsprechende *modelId* und *buildId* übergeben.
+This will trigger a build that uses only a subset of the data for training and uses the rest of the data to compute evaluation metrics.  After the build is completed, to get the output of the evaluation, you need to call the [Get build metrics API](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/577eaa75eda565095421666f), passing the respective *modelId* and *buildId*.
 
- Im Folgenden sehen Sie die JSON-Ausgabe der Beispielauswertung.
+ Following is the JSON output for the sample evaluation.
 
 
     {
@@ -263,4 +268,8 @@ Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training v
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

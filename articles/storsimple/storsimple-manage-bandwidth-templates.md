@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Verwalten von StorSimple-Bandbreitenvorlagen | Microsoft Azure"
-   description="Beschreibt die Verwaltung von StorSimple-Bandbreitenvorlagen, mit denen Sie die Auslastung der Netzwerkbandbreite steuern."
+   pageTitle="Manage your StorSimple bandwidth templates | Microsoft Azure"
+   description="Describes how to manage StorSimple bandwidth templates, which allow you to control bandwidth consumption."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,161 +15,166 @@
    ms.date="08/16/2016"
    ms.author="alkohli" />
 
-# Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple Manager-Diensts
 
-## Übersicht
+# <a name="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates"></a>Use the StorSimple Manager service to manage StorSimple bandwidth templates
 
-Bandbreitenvorlagen ermöglichen es Ihnen, die Netzwerkbandbreitennutzung für mehrere Zeitpläne für bestimmte Tageszeiten einzurichten, um den Datenverkehr vom StorSimple-Gerät zur Cloud zu konfigurieren.
+## <a name="overview"></a>Overview
 
-Mit Zeitplänen zur Bandbreiteneinschränkung können Sie folgende Aktionen ausführen:
+Bandwidth templates allow you to configure network bandwidth usage across multiple time-of-day schedules to tier the data from the StorSimple device to the cloud.
 
-- Geben Sie benutzerdefinierte Bandbreitenzeitpläne je nach Workloadnetzwerknutzung an.
+With bandwidth throttling schedules you can:
 
-- Zentralisieren Sie die Verwaltung und verwenden Sie die Zeitpläne wiederholt einfach und nahtlos auf mehreren Geräten.
+- Specify customized bandwidth schedules depending on the workload network usages.
 
-> [AZURE.NOTE] Dieses Feature steht nur für physische StorSimple-Geräte und nicht für virtuelle Geräte zur Verfügung.
+- Centralize management and reuse the schedules across multiple devices in an easy and seamless manner.
 
-Alle Bandbreitenvorlagen für den Dienst werden in einem Tabellenformat angezeigt und enthalten die folgenden Informationen:
+> [AZURE.NOTE] This feature is available only for StorSimple physical devices and not for virtual devices.
 
-- **Name:** der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
+All the bandwidth templates for your service are displayed in a tabular format, and contain the following information:
 
-- **Zeitplan:** die Anzahl der Zeitpläne in einer angegebenen Bandbreitenvorlage.
+- **Name** – A unique name assigned to the bandwidth template when it was created.
 
-- **Used by:** die Anzahl der Datenträger, die das Speicherkonto verwenden.
+- **Schedule** – The number of schedules contained in a given bandwidth template.
 
-Verwenden Sie die Seite **Konfigurieren** des StorSimple Manager-Diensts im klassischen Azure-Portal, um die Bandbreitenvorlagen zu verwalten.
+- **Used by** – The number of volumes using the bandwidth templates.
 
-Zusätzliche Informationen zur Konfiguration von Bandbreitenvorlagen finden Sie in den folgenden Ressourcen:
+You use the StorSimple Manager service **Configure** page in the Azure classic portal to manage bandwidth templates.
 
-- Fragen und Antworten zu Bandbreitenvorlagen
-- Bewährte Methoden für Bandbreitenvorlagen
+You can also find additional information to help configure bandwidth templates in:
 
-## Hinzufügen einer Bandbreitenvorlage
+- Questions and answers about bandwidth templates
+- Best practices for bandwidth templates
 
-Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu erstellen.
+## <a name="add-a-bandwidth-template"></a>Add a bandwidth template
 
-#### So fügen Sie eine Bandbreitenvorlage hinzu
+Perform the following steps to create a new bandwidth template.
 
-1. Klicken Sie auf der Seite **Konfigurieren** des StorSimple Manager-Diensts auf **Bandbreitenvorlage hinzufügen/bearbeiten**.
+#### <a name="to-add-a-bandwidth-template"></a>To add a bandwidth template
 
-2. Im Dialogfeld **Bandbreitenvorlage hinzufügen/bearbeiten** führen Sie die folgenden Schritte aus:
+1. On the StorSimple Manager service **Configure** page, click **add/edit bandwidth template**.
 
-   1. Wählen Sie aus der Dropdownliste **Vorlage** die Option **Neu erstellen** aus, um eine neue Bandbreitenvorlage hinzuzufügen.
-   2. Geben Sie einen eindeutigen Namen für Ihre Bandbreitenvorlage an.
+2. In the **Add/Edit Bandwidth Template** dialog box:
 
-3. Definieren Sie einen **Bandbreitenzeitplan**. So erstellen Sie einen Zeitplan
+   1. From the **Template** drop-down list, select **Create new** to add a new bandwidth template.
+   2. Specify a unique name for your bandwidth template.
 
-   1. Wählen Sie in der Dropdownliste die Wochentage aus, für die der Zeitplan konfiguriert werden soll. Sie können mehrere Tage auswählen, indem Sie die Kontrollkästchen vor den jeweiligen Tagen in der Liste aktivieren.
-   2. Wählen Sie die Option **Gesamter Tag** aus, wenn der Zeitplan für den ganzen Tag erzwungen werden soll. Wenn diese Option aktiviert ist, können Sie keine **Startzeit** oder **Endzeit** mehr angeben. Der Zeitplan wird von 0:00 Uhr bis 23:59 Uhr ausgeführt.
-   3. Wählen Sie in der Dropdownliste eine **Startzeit** aus. Dies liegt den Beginn des Zeitplans fest.
-   4. Wählen Sie in der Dropdownliste eine **Endzeit** aus. Dies liegt das Ende des Zeitplans fest.
+3. Define a **Bandwidth Schedule**. To create a schedule:
 
-         > [AZURE.NOTE] Überlappende Zeitpläne sind nicht erlaubt. Falls durch die Start- und Endzeiten ein überlappender Zeitplan entsteht, erhalten Sie eine entsprechende Fehlermeldung.
+   1. From the drop-down list, choose the days of the week the schedule is configured for. You can select multiple days by selecting the check boxes located before the respective days in the list.
+   2. Select the **All Day** option if the schedule is enforced for the entire day. When this option is checked, you can no longer specify a **Start Time** or an **End Time**. The schedule runs from 12:00 AM to 11:59 PM.
+   3. From the drop-down list, select a **Start Time**. This is when the schedule will begin.
+   4. From the drop-down list, select an **End Time**. This is when the schedule will stop.
 
-   5. Geben Sie die **Bandbreitenrate** an. Dies ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr StorSimple-Gerät bei Cloudvorgängen (Uploads und Downloads) verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein.
+         > [AZURE.NOTE] Overlapping schedules are not allowed. If the start and end times will result in an overlapping schedule, you will see an error message to that effect.
 
-   6. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). Die Vorlage, die Sie erstellt haben, wird der Liste der Bandbreitenvorlagen auf der Seite **Konfigurieren** des Diensts hinzugefügt.
+   5. Specify the **Bandwidth Rate**. This is the bandwidth in Megabits per second (Mbps) used by your StorSimple device in operations involving the cloud (both uploads and downloads). Supply a number between 1 and 1,000 for this field.
 
-    ![Erstellen einer neuen Bandbreitenvorlage](./media/storsimple-manage-bandwidth-templates/HCS_CreateNewBT1.png)
+   6. Click the check icon ![Check icon](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). The template that you have created will be added to the list of bandwidth templates on the service **Configure** page.
 
-4. Klicken Sie am unteren Rand der Seite auf **Speichern**, und klicken Sie dann auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden. Dadurch werden die vorgenommenen Konfigurationsänderungen gespeichert.
+    ![Create new bandwidth template](./media/storsimple-manage-bandwidth-templates/HCS_CreateNewBT1.png)
 
-## Bearbeiten einer Bandbreitenvorlage
+4. Click **Save** at the bottom of the page and then click **Yes** when prompted for confirmation. This will save the configuration changes that you have made.
 
-Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu bearbeiten.
+## <a name="edit-a-bandwidth-template"></a>Edit a bandwidth template
 
-### So bearbeiten Sie eine Bandbreitenvorlage
+Perform the following steps to edit a bandwidth template.
 
-1. Klicken Sie auf **Bandbreitenvorlage hinzufügen/bearbeiten**.
+### <a name="to-edit-a-bandwidth-template"></a>To edit a bandwidth template
 
-2. Im Dialogfeld **Bandbreitenvorlage hinzufügen/bearbeiten** führen Sie die folgenden Schritte aus:
+1. Click **add/edit bandwidth template**.
 
-   1. Wählen Sie in der Dropdownliste **Vorlage** eine vorhandene Bandbreitenvorlage aus, die Sie ändern möchten.
-   2. Nehmen Sie die Änderungen vor. (Sie können alle vorhandenen Einstellungen ändern.)
-   3. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). Sie sehen die geänderte Vorlage in der Liste der Bandbreitenvorlagen auf der Konfigurationsseite des Diensts.
+2. In the **Add/Edit Bandwidth Template** dialog box:
 
-3. Klicken Sie unten auf der Seite auf **Speichern**, um die Änderungen zu speichern. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
+   1. From the **Template** drop-down list, choose an existing bandwidth template that you want to modify.
+   2. Complete your changes. (You can modify any of the existing settings.)
+   3. Click the check icon ![Check icon](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). You will see the modified template in the list of bandwidth templates on the service Configure page.
 
-> [AZURE.NOTE] Sie können die Änderungen nicht speichern, wenn sich der bearbeitete Zeitplan mit einem vorhandenen Zeitplan in der Bandbreitenvorlage überschneidet, die Sie ändern.
+3. To save your changes, click **Save** at the bottom of the page. Click **Yes** when prompted for confirmation.
 
-## Löschen einer Bandbreitenvorlage
+> [AZURE.NOTE] You will not be allowed to save your changes if the edited schedule overlaps with an existing schedule in the bandwidth template that you are modifying.
 
-Führen Sie die folgenden Schritte aus, um eine Bandbreitenvorlage zu löschen.
+## <a name="delete-a-bandwidth-template"></a>Delete a bandwidth template
 
-#### So löschen Sie eine Bandbreitenvorlage
+Perform the following steps to delete a bandwidth template.
 
-1. Wählen Sie die Vorlage, die Sie löschen möchten, in der Tabellenliste der Bandbreitenvorlagen für Ihren Dienst aus. Rechts neben der ausgewählten Vorlage wird ein Löschsymbol (**x**) angezeigt. Klicken Sie auf das Symbol **x**, um die Vorlage zu löschen.
+#### <a name="to-delete-a-bandwidth-template"></a>To delete a bandwidth template
 
-2. Sie werden aufgefordert, diesen Schritt zu bestätigen. Klicken Sie zum Fortfahren auf **OK**.
+1. In the tabular list of the bandwidth templates for your service, select the template that you wish to delete. A delete icon (**x**) will appear to the extreme right of the selected template. Click the **x** icon to delete the template.
 
-Wenn die Vorlage von einem Volume verwendet wird, kann sie nicht gelöscht werden. Sie erhalten eine Fehlermeldung, dass die Vorlage verwendet wird. Ein Dialogfeld mit einer Fehlermeldung wird angezeigt, in der Sie darauf hingewiesen werden, alle Verweise auf die Vorlage zu entfernen.
+2. You will be prompted for confirmation. Click **OK** to proceed.
 
-Sie können alle Verweise auf die Vorlage löschen, indem Sie auf die Seite **Volumecontainer** zugreifen und die Volumecontainer bearbeiten, die diese Vorlage verwenden, sodass diese eine andere Vorlage oder eine benutzerdefinierte Einstellung bzw. unbegrenzte Bandbreite verwenden. Wenn alle Verweise entfernt wurden, können Sie die Vorlage löschen.
+If the template is in use by any volume(s), you will not be allowed to delete it. You will see an error message indicating that the template is in use. An error message dialog box will appear advising you that all the references to the template should be removed.
 
-## Verwenden einer Standardbandbreitenvorlage
+You can delete all the references to the template by accessing the **Volume Containers** page and modifying the volume containers that use this template so that they use another template or use a custom or unlimited bandwidth setting. When all the references have been removed, you can delete the template.
 
-Eine Standardbandbreitenvorlage wird bereitgestellt, die standardmäßig von Volumecontainern verwendet wird, um Bandbreitensteuerung für den Cloudzugriff zu erzwingen. Die Standardvorlage dient auch als Referenz für Benutzer, die ihre eigenen Vorlagen erstellen. Im Folgenden sind Details dieser Standardvorlage aufgeführt:
+## <a name="use-a-default-bandwidth-template"></a>Use a default bandwidth template
 
-- **Name:** unbegrenzte Nächte und Wochenenden
+A default bandwidth template is provided and is used by volume containers by default to enforce bandwidth controls when accessing the cloud. The default template also serves as a ready reference for users who create their own templates. The details of this default template are:
 
-- **Zeitplan:** ein einzelner Zeitplan von Montag bis Freitag, der eine Bandbreite von 1 MBit/s zwischen 8:00 Uhr und 17:00 Uhr Gerätezeit festlegt. Die Bandbreite wird für den Rest der Woche auf "Unbegrenzt" festgelegt.
+- **Name** – Unlimited nights and weekends
 
-Die Standardvorlage kann bearbeitet werden. Die Verwendung dieser Vorlage (einschließlich bearbeiteter Versionen) wird nachverfolgt.
+- **Schedule** – A single schedule from Monday to Friday that applies a bandwidth rate of 1 Mbps between 8 AM and 5 PM device time. The bandwidth is set to Unlimited for the remainder of the week.
 
-## Erstellen einer Bandbreitenvorlage für einen gesamten Tag, die zu einem bestimmten Zeitpunkt startet
+The default template can be edited. The usage of this template (including edited versions) is tracked.
 
-Gehen Sie folgendermaßen vor, um einen Zeitplan zu erstellen, der zu einem angegebenen Zeitpunkt gestartet und über den gesamten Tag ausgeführt wird. Im Beispiel wird der Zeitplan um 9:00 Uhr gestartet und bis um 9:00 Uhr am nächsten Morgen ausgeführt. Beachten Sie, dass die Start- und Endzeiten für einen bestimmten Zeitplan beide im gleichen 24-Stunden-Zeitplan enthalten sein müssen und nicht über mehrere Tage ausgedehnt werden können. Wenn Sie Bandbreitenvorlagen benötigen, die mehrere Tage umfassen, müssen Sie mehrere Zeitpläne verwenden (wie im Beispiel gezeigt).
+## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Create an all-day bandwidth template that starts at a specified time
 
-#### So erstellen Sie eine ganztägige Bandbreitenvorlage
+Follow this procedure to create a schedule that starts at a specified time and runs all day. In the example, the schedule starts at 9 AM in the morning and runs until 9 AM the next morning. It's important to note that the start and end times for a given schedule must both be contained on the same 24 hour schedule and cannot span multiple days. If you need to set up bandwidth templates that span multiple days, you will need to use multiple schedules (as shown in the example).
 
-1. Erstellen Sie einen Zeitplan, der um 9:00 Uhr beginnt und bis Mitternacht ausgeführt wird.
+#### <a name="to-create-an-all-day-bandwidth-template"></a>To create an all-day bandwidth template
 
-2. Fügen Sie einen weiteren Zeitplan hinzu. Konfigurieren Sie den zweiten Zeitplan von Mitternacht bis 9:00 Uhr.
+1. Create a schedule that starts at 9 AM in the morning and runs until midnight.
 
-3. Speichern Sie die Bandbreitenvorlage
+2. Add another schedule. Configure the second schedule to run from midnight until 9 AM in the morning.
 
-Der zusammengesetzte Zeitplan wird zu einem Zeitpunkt Ihrer Wahl gestartet und ganztägig ausgeführt.
+3. Save the bandwidth template.
 
-## Fragen und Antworten zu Bandbreitenvorlagen
+The composite schedule will then start at a time of your choosing and run all-day.
 
-**F**. Was geschieht mit der Bandbreitensteuerung zwischen den Zeitplänen? (Ein Zeitplan wurde beendet, und es hat noch kein anderer begonnen.)
+## <a name="questions-and-answers-about-bandwidth-templates"></a>Questions and answers about bandwidth templates
 
-**A**. In solchen Fällen wird keine Bandbreitensteuerung eingesetzt. Dies bedeutet, dass das Gerät uneingeschränkte Bandbreite für den Datenverkehr zur Cloud nutzen kann.
+**Q**. What happens to bandwidth controls when you are in between the schedules? (A schedule has ended and another one has not started yet.)
 
-**F**. Können Bandbreitenvorlagen auf einem Gerät geändert werden, das offline ist?
+**A**. In such cases, no bandwidth controls will be employed. This means that the device can use unlimited bandwidth when tiering data to the cloud.
 
-**A**. Sie können keine Bandbreitenvorlagen für Volumecontainer ändern, wenn das entsprechende Gerät offline ist.
+**Q**. Can you modify bandwidth templates on an offline device?
 
-**F**. Lässt sich eine Bandbreitenvorlage bearbeiten, die einem Volumecontainer zugeordnet ist, wenn sich die damit verknüpften Volumes offline befinden?
+**A**. You will not be able to modify bandwidth templates on volumes containers if the corresponding device is offline.
 
-**A**. Sie können eine Bandbreitenvorlage bearbeiten, die einem Volumecontainer zugeordnet ist, dessen verknüpfte Volumes offline sind. Beachten Sie, dass bei Volumes, die offline sind, keine Daten vom Gerät in die Cloud gesendet werden können.
+**Q**. Can you edit a bandwidth template associated with a volume container when the associated volumes are offline?
 
-**F**. Kann eine Standardvorlage gelöscht werden?
+**A**. You can modify a bandwidth template associated with a volume container whose volumes are offline. Note that when volumes are offline, no data will be tiered from the device to the cloud.
 
-**A**. Obwohl Sie eine Standardvorlage löschen können, ist dies nicht empfehlenswert. Die Verwendung einer Standardvorlage (einschließlich bearbeiteter Versionen) wird nachverfolgt. Die Nachverfolgungsdaten werden analysiert und im Laufe der Zeit verwendet, um die Standardvorlage zu verbessern.
+**Q**. Can you delete a default template?
 
-**F**. Wie stelle ich fest, dass eine Bandbreitenvorlagen geändert werden muss?
+**A**. Although you can delete a default template, it is not a good idea to do so. The usage of a default template, including edited versions, is tracked. The tracking data is analyzed and over the course of time, is used to improve the default template.
 
-**A**. Eines der Anzeichen, dass eine Bandbreitenvorlage geändert werden muss, ist eine merkliche Verlangsamung des Netzwerks mehrmals am Tag. In diesem Fall sollten Sie die Speicher- und Netzwerknutzung anhand der E/A-Leistung und die Netzwerkdurchsatz-Diagramme überwachen.
+**Q**. How do you determine that your bandwidth templates need to be modified?
 
-Anhand des Netzwerkdaten-Durchsatzes können Sie die Tageszeit und die Volumecontainer ermitteln, in denen der Netzwerkengpass auftritt. Wenn dies bei der Übertragung von Daten in die Cloud auftritt (diese Informationen erhalten Sie über die E/A-Leistung für alle Volumecontainer vom Gerät zur Cloud), müssen Sie die den Volumecontainern zugeordneten Bandbreitenvorlagen ändern.
+**A**. One of the signs that you need to modify the bandwidth templates is when you start seeing the network slow down or choke multiple times in a day. If this happens, monitor the storage and usage network by looking at the I/O Performance and Network Throughput charts.
 
-Nachdem die geänderten Vorlagen verwendet werden, müssen Sie das Netzwerk erneut auf bemerkbare Latenzen überwachen. Wenn Sie immer noch vorhanden sind, müssen Sie Bandbreitenvorlagen erneut ändern.
+From the network throughput data, identify the time of day and the volume containers in which the network bottleneck occurs. If this happens when data is being tiered to the cloud (get this information from I/O performance for all volume containers for device to cloud), then you will need to modify the bandwidth templates associated with your volume containers.
 
-**F**. Was geschieht, wenn sich die Zeitpläne mehrerer Volumecontainer auf meinem Gerät überschneiden, jedoch verschiedene Einschränkungen für diese gelten?
+After the modified templates are in use, you will need to monitor the network again for significant latencies. If these still exist, then you will need to revisit your bandwidth templates.
 
-**A**. Angenommen, Sie verfügen über ein Gerät mit 3 Volumecontainern. Die zugeordneten Zeitpläne dieser Container überlappen sich vollständig. Für diese Container gelten jeweils Bandbreiteneinschränkungen von 5, 10 und 15 MBit/s. Wenn gleichzeitig auf allen Containern E/A-Vorgänge stattfinden, gilt die niedrigste der drei Bandbreiteneinschränkungen: in diesem Fall 5 MBit/s, da die ausgehenden E/A-Anforderungen dieselbe Warteschlange nutzen.
+**Q**. What happens if multiple volume containers on my device have schedules that overlap but different limits apply to each?
 
-## Bewährte Methoden für Bandbreitenvorlagen
+**A**. Let's assume that you have a device with 3 volume containers. The schedules associated with these containers completely overlap. For each of these containers, the bandwidth limits used are 5, 10, and 15 Mbps respectively. When I/Os are occurring on all of these containers at the same time, the minimum of the 3 bandwidth limits may be applied: in this case, 5 Mbps as these outgoing I/O requests share the same queue.
 
-Folgen Sie diesen Empfehlungen für Ihr StorSimple-Gerät:
+## <a name="best-practices-for-bandwidth-templates"></a>Best practices for bandwidth templates
 
-- Konfigurieren Sie die Bandbreitenvorlagen auf dem Gerät für variable Drosselung des Netzwerkdurchsatzes zu unterschiedlichen Tageszeiten. Diese Bandbreitenvorlagen können in Verbindung mit Sicherungszeitplänen effizient zusätzliche Netzwerkbandbreite außerhalb der Spitzenzeiten für Cloudvorgänge nutzen.
+Follow these best practices for your StorSimple device:
 
-- Berechnen Sie die tatsächliche Bandbreite für eine bestimmte Bereitstellung anhand der Größe der Bereitstellung und der erforderlichen Recovery Time Objective (RTO).
+- Configure bandwidth templates on your device to enable variable throttling of the network throughput by the device at different times of the day. These bandwidth templates when used with backup schedules can effectively leverage additional network bandwidth for cloud operations during off-peak hours.
 
-## Nächste Schritte
+- Calculate the actual bandwidth required for a particular deployment based on the size of the deployment and the required recovery time objective (RTO).
 
-Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0824_2016-->
+Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

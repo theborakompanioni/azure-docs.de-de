@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen eines lokalen Images eines virtuellen Computers für den Azure Marketplace | Microsoft Azure"
-   description="Informationen über die Schritte zum Erstellen eines lokalen Images eines virtuellen Computers und zur Bereitstellung für den Kauf im Azure Marketplace."
+   pageTitle="Creating an on-premises virtual machine image for the Azure Marketplace | Microsoft Azure"
+   description="Understand and execute the steps to create an on-premises VM image and deploy to the Azure Marketplace for others to purchase."
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
@@ -16,126 +16,132 @@
   ms.date="04/29/2016"
   ms.author="hascipio; v-divte"/>
 
-# Entwickeln eines lokalen Images eines virtuellen Computers für Azure Marketplace
-Es wird dringend empfohlen, virtuelle Azure-Festplatten (Azure-VHDs) direkt in der Cloud mithilfe des Remotedesktopprotokolls zu entwickeln. Bei Bedarf ist es jedoch auch möglich, eine VHD herunterzuladen und mithilfe lokaler Infrastruktur zu entwickeln.
 
-Für die lokale Entwicklung müssen Sie die Betriebssystem-VHD des erstellten virtuellen Computers herunterladen. Diese Schritte werden als Teil von Schritt 3.3 oben ausgeführt.
+# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Develop an on-premises virtual machine image for the Azure Marketplace
+We strongly recommend that you develop Azure virtual hard disks (VHDs) directly in the cloud by using Remote Desktop Protocol. However, if you must, it is possible to download a VHD and develop it by using on-premises infrastructure.  
 
-## Herunterladen eines VHD-Images
-### Suchen einer Blob-URL
-Um die VHD-Datei herunterzuladen, müssen Sie zuerst nach der Blob-URL für den Betriebssystem-Datenträger suchen.
+For on-premises development, you must download the operating system VHD of the created VM. These steps would take place as part of step 3.3, above.  
 
-Suchen Sie die Blob-URL im neuen [Microsoft Azure-Portal](https://portal.azure.com):
+## <a name="download-a-vhd-image"></a>Download a VHD image
+### <a name="locate-a-blob-url"></a>Locate a blob URL
+In order to download the VHD, first locate the blob URL for the operating system disk.
 
-1.	Wechseln Sie zu **Durchsuchen** > **VMs**, und wählen Sie dann den bereitgestellten virtuellen Computer aus.
-2.	Wählen Sie unter **Konfigurieren** die Kachel **Datenträger** aus. Dadurch wird das Blatt „Datenträger“ geöffnet.
+Locate the blob URL from the new [Microsoft Azure portal](https://portal.azure.com):
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img01.png)
+1.  Go to **Browse** > **VMs**, and then select the deployed VM.
+2.  Under **Configure**, select the **Disks** tile, which opens the Disks blade.
 
-3.	Wählen Sie den **Betriebssystemdatenträger** aus. Dadurch wird ein anderes Blatt mit Datenträgereigenschaften angezeigt, einschließlich des Speicherorts der VHD-Datei.
-4.	Kopieren Sie die BLOB-URL.
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img01.png)
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img02.png)
+3.  Select the **OS Disk**, which opens another blade that displays disk properties, including the VHD location.
+4.  Copy this blob URL.
 
-5.	Löschen Sie jetzt den bereitgestellten virtuellen Computer, ohne die zugrunde liegenden Datenträger zu löschen. Sie können den virtuellen Computer auch beenden, anstatt ihn zu löschen. Laden Sie die Betriebssystem-VHD-Datei nicht herunter, wenn der virtuelle Computer ausgeführt wird.
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img02.png)
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img03.png)
+5.  Now, delete the deployed VM without deleting the backing disks. You can also stop the VM instead of deleting it. Do not download the operating system VHD when the VM is running.
 
-### Herunterladen einer VHD-Datei
-Nachdem Sie die Blob-URL kennen, können Sie die virtuelle Festplatte über das [Azure-Portal](http://manage.windowsazure.com/) oder per PowerShell herunterladen.
-> [AZURE.NOTE] Zum Zeitpunkt der Erstellung dieser Anleitung ist die Funktionalität zum Herunterladen einer VHD-Datei noch nicht im neuen Microsoft Azure-Portal vorhanden.
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img03.png)
 
-**Herunterladen der Betriebssystem-VHD-Datei über das aktuelle [Azure-Portal](http://manage.windowsazure.com/)**
+### <a name="download-a-vhd"></a>Download a VHD
+After you know the blob URL, you can download the VHD by using the [Azure portal](http://manage.windowsazure.com/) or PowerShell.  
+> [AZURE.NOTE] At the time of this guide’s creation, the functionality to download a VHD is not yet present in the new Microsoft Azure portal.  
 
-1.	Melden Sie sich beim Azure-Portal an, sofern Sie noch nicht angemeldet sind.
-2.	Klicken Sie auf die Registerkarte **Speicher**.
-3.	Wählen Sie das Speicherkonto aus, in dem die VHD-Datei gespeichert ist.
+**Download the operating system VHD via the current [Azure portal](http://manage.windowsazure.com/)**
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img04.png)
+1.  Sign in to the Azure portal if you have not done so already.
+2.  Click the **Storage** tab.
+3.  Select the storage account within which the VHD is stored.
 
-4.	Dadurch werden die Eigenschaften des Speicherkontos angezeigt. Wählen Sie die Registerkarte **Container** aus.
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img04.png)
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img05.png)
+4.  This displays storage account properties. Select the **Containers** tab.
 
-5.	Wählen Sie den Container, in dem die VHD-Datei gespeichert ist. Standardmäßig wird die VHD-Datei beim Erstellen über das Portal in einem virtuellen Festplattencontainer gespeichert.
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img05.png)
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img06.png)
+5.  Select the container in which the VHD is stored. By default, when created from the portal, the VHD is stored in a vhds container.
 
-6.	Wählen Sie die VHD-Datei mit dem richtigen Betriebssystem aus, indem Sie die URL mit der gespeicherten URL vergleichen.
-7.	Klicken Sie auf **Download**.
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img06.png)
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
+6.  Select the correct operating system VHD by comparing the URL to the one you saved.
+7.  Click **Download**.
 
-### Herunterladen einer VHD-Datei mithilfe von PowerShell
-Zusätzlich zur Verwendung des Azure-Portals können Sie das Cmdlet [Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) zum Herunterladen der Betriebssystem-VHD-Datei verwenden.
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
+
+### <a name="download-a-vhd-by-using-powershell"></a>Download a VHD by using PowerShell
+In addition to using the Azure portal, you can use the [Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) cmdlet to download the operating system VHD.
 
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
         -StorageKey <keyForStorageAccount>
-Beispiel: Save-AzureVhd -Source „https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd“ -LocalFilePath „C:\\Users\\Administrator\\Desktop\\baseimagevm.vhd“ -StorageKey <String>
+For example, Save-AzureVhd -Source “https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\baseimagevm.vhd” -StorageKey <String>
 
-> [AZURE.NOTE] **Save-AzureVhd** verfügt auch über eine **NumberOfThreads**-Option, mit der die Parallelität so erhöht wird, dass die verfügbare Bandbreite optimal für den Download eingesetzt wird.
+> [AZURE.NOTE] **Save-AzureVhd** also has a **NumberOfThreads** option that can be used to increase parallelism to make the best use of available bandwidth for the download.
 
-## Hochladen von VHD-Dateien in ein Azure-Speicherkonto
-Wenn Sie die virtuellen Festplatten lokal vorbereitet haben, müssen Sie sie in ein Speicherkonto in Azure hochladen. Dieser Schritt erfolgt, nachdem die VHD-Datei lokal erstellt wurde, jedoch bevor eine Zertifizierung für das VM-Image abgerufen wird.
+## <a name="upload-vhds-to-an-azure-storage-account"></a>Upload VHDs to an Azure storage account
+If you prepared your VHDs on-premises, you need to upload them into a storage account in Azure. This step takes place after creating your VHD on-premises but before obtaining certification for your VM image.
 
-### Erstellen eines Speicherkontos und Containers
-Es wird empfohlen, virtuelle Festplatten in ein Speicherkonto in einer Region in den USA hochzuladen. Alle virtuellen Festplatten für eine einzelne SKU sollten in einem einzelnen Container innerhalb eines einzelnen Speicherkontos platziert werden.
+### <a name="create-a-storage-account-and-container"></a>Create a storage account and container
+We recommend that VHDs be uploaded into a storage account in a region in the United States. All VHDs for a single SKU should be placed in a single container within a single storage account.
 
-Um ein Speicherkonto zu erstellen, können Sie das [Microsoft Azure-Portal](https://portal.azure.com/), PowerShell oder das Linux-Befehlszeilentool verwenden.
+To create a storage account, you can use the [Microsoft Azure portal](https://portal.azure.com/), PowerShell, or the Linux command-line tool.  
 
-**Erstellen eines Speicherkontos im Microsoft Azure-Portal**
+**Create a storage account from the Microsoft Azure portal**
 
-1.	Klicken Sie auf **Neu**.
-2.	Wählen Sie **Speicher**.
-3.	Geben Sie den Namen des Speicherkontos ein, und wählen Sie dann einen Speicherort aus.
+1.  Click **New**.
+2.  Select **Storage**.
+3.  Fill in the storage account name, and then select a location.
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
 
-4.	Klicken Sie auf **Erstellen**.
-5.	Das Blatt für das erstellte Speicherkonto sollte geöffnet werden. Wählen Sie andernfalls **Durchsuchen** > **Speicherkonten** aus. Wählen Sie auf dem Blatt „Speicherkonto“ das erstellte Speicherkonto aus.
-6.	Wählen Sie **Container** aus.
+4.  Click **Create**.
+5.  The blade for the created storage account should be open. If not, select **Browse** > **Storage Accounts**. On the Storage account blade, select the storage account created.
+6.  Select **Containers**.
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img09.png)
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img09.png) 
 
-7.	Wählen Sie auf dem Blatt „Container“ die Option **Hinzufügen** aus, und geben Sie dann einen Containernamen und die Berechtigungen für den Container ein. Wählen Sie **Privat** als Containerberechtigung aus.
+7.  On the Containers blade, select **Add**, and then enter a container name and the container permissions. Select **Private** for container permissions.
 
-> [AZURE.TIP] Es wird empfohlen, einen Container pro SKU zu erstellen, die Sie veröffentlichen möchten.
+> [AZURE.TIP] We recommend that you create one container per SKU that you are planning to publish.
 
-  ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img10.png)
+  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img10.png)
 
-### Erstellen eines Speicherkontos mithilfe von PowerShell
-Erstellen Sie per PowerShell mit dem Cmdlet [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495115.aspx) ein Speicherkonto.
+### <a name="create-a-storage-account-by-using-powershell"></a>Create a storage account by using PowerShell
+Using PowerShell, create a storage account by using the [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495115.aspx) cmdlet.
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-Erstellen Sie anschließend mit dem Cmdlet [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) einen Container in diesem Speicherkonto.
+Then you can create a container within that storage account by using the [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) cmdlet.
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 
-> [AZURE.NOTE] Bei diesen Befehlen wird davon ausgegangen, dass der aktuelle Kontext des Speicherkontos in PowerShell bereits festgelegt wurde. Weitere Informationen zur Einrichtung von PowerShell finden Sie unter [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md).
-### Erstellen eines Speicherkontos mit dem Befehlszeilentool für Mac und Linux
-Erstellen Sie wie folgt über das [Linux-Befehlszeilentool](../virtual-machines/virtual-machines-linux-cli-manage.md) ein Speicherkonto.
+> [AZURE.NOTE] Those commands assume that the current storage account context has already been set in PowerShell.   Refer to [Setting up Azure PowerShell](marketplace-publishing-powershell-setup.md) for more details on PowerShell setup.
+ 
+### <a name="create-a-storage-account-by-using-the-command-line-tool-for-mac-and-linux"></a>Create a storage account by using the command-line tool for Mac and Linux
+From [Linux command-line tool](../virtual-machines/virtual-machines-linux-cli-manage.md), create a storage account as follows.
 
         azure storage account create mystorageaccount --location "West US"
 
-Erstellen Sie wie folgt einen Container.
+Create a container as follows.
 
         azure storage container create containername --account-name mystorageaccount --accountkey <accountKey>
 
-## Hochladen einer VHD-Datei
-Nachdem das Speicherkonto und der Container erstellt wurden, können Sie Ihre vorbereiteten virtuellen Festplatten hochladen. Dazu können Sie PowerShell, das Befehlszeilentool für Linux oder andere Azure-Speicherverwaltungstools verwenden.
+## <a name="upload-a-vhd"></a>Upload a VHD
+After the storage account and container are created, you can upload your prepared VHDs. You can use PowerShell, the Linux command-line tool, or other Azure Storage management tools.
 
-### Hochladen einer virtuellen Festplatte über PowerShell
-Verwenden Sie das Cmdlet [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx).
+### <a name="upload-a-vhd-via-powershell"></a>Upload a VHD via PowerShell
+Use the [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) cmdlet.
 
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
-### Hochladen einer virtuellen Festplatte über das Befehlszeilentool für Mac und Linux
-Verwenden Sie folgenden Befehl im [Linux-Befehlszeilentool](../virtual-machines/command-line-tools/): azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
+### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>Upload a VHD by using the command-line tool for Mac and Linux
+With the [Linux command-line tool](../virtual-machines/command-line-tools/), use the following: azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
-## Weitere Informationen
-- [Erstellen eines Images eines virtuellen Computers für den Marketplace](marketplace-publishing-vm-image-creation.md)
-- [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md)
+## <a name="see-also"></a>See also
+- [Creating a virtual machine image for the Marketplace](marketplace-publishing-vm-image-creation.md)
+- [Setting up Azure PowerShell](marketplace-publishing-powershell-setup.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

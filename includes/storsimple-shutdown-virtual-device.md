@@ -1,9 +1,12 @@
-#### So fahren Sie ein virtuelles Gerät herunter
+#### <a name="to-shut-down-a-virtual-device"></a>To shut down a virtual device
 
-1. Melden Sie sich beim Verwaltungsportal an.
+1. Sign in to the Management Portal.
 
-2. Klicken Sie auf **Virtuelle Computer**, und wählen Sie das virtuelle Gerät aus.
+2. Click **Virtual Machines**, and then select the virtual device.
 
-3. Klicken Sie auf **Herunterfahren**.
+3. Click **Shutdown**.
 
-<!---HONumber=AcomDC_1217_2015-->
+
+<!--HONumber=Oct16_HO2-->
+
+

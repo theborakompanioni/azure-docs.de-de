@@ -1,3 +1,7 @@
-Nachdem Sie eine oder mehrere Netzwerksicherheitsgruppen (NSGs) erstellt haben, müssen Sie in der Lage sein, Informationen zu Ihren NSGs abzurufen, Regeln hinzuzufügen und zu entfernen, vorhandene Regeln zu bearbeiten, NSGs zuzuordnen bzw. die Zuordnung aufzuheben und NSGs zu löschen. In diesem Artikel erfahren Sie, wie diese Aufgaben ausgeführt werden. Bevor Sie NSGs verwalten können, müssen Sie sich mit der [Funktionsweise von NSGs](..\articles\virtual-network\virtual-networks-nsg.md) vertraut machen.
+After you create one or more Network Security Groups (NSGs), you need to be able to retrieve information about your NSGs, add and remove rules, edit existing rules, associate or dissociate NSGs, and delete NSGs. In this article, you will learn how to execute each of these tasks. Before you can manage NSGs, it's important to know [how NSGs work](..\articles\virtual-network\virtual-networks-nsg.md). 
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Anzeigen von Bereitstellungsvorgängen mit dem Portal | Microsoft Azure"
-   description="Beschreibt, wie Sie mithilfe des Azure-Portals Probleme in der Resource Manager-Bereitstellung erkennen können."
+   pageTitle="View deployment operations with portal | Microsoft Azure"
+   description="Describes how to use the Azure portal to detect errors from Resource Manager deployment."
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
@@ -17,94 +17,99 @@
    ms.date="06/15/2016"
    ms.author="tomfitz"/>
 
-# Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal
+
+# <a name="view-deployment-operations-with-azure-portal"></a>View deployment operations with Azure Portal
 
 > [AZURE.SELECTOR]
 - [Portal](resource-manager-troubleshoot-deployments-portal.md)
 - [PowerShell](resource-manager-troubleshoot-deployments-powershell.md)
-- [Azure-Befehlszeilenschnittstelle](resource-manager-troubleshoot-deployments-cli.md)
-- [REST-API](resource-manager-troubleshoot-deployments-rest.md)
+- [Azure CLI](resource-manager-troubleshoot-deployments-cli.md)
+- [REST API](resource-manager-troubleshoot-deployments-rest.md)
 
-Sie können die Vorgänge für eine Bereitstellung im Azure-Portal anzeigen. Die Anzeige der Vorgänge ist wahrscheinlich dann am interessantesten, wenn während der Bereitstellung ein Fehler auftritt. Daher konzentriert sich dieser Artikel auf das Anzeigen von fehlerhaften Vorgängen. Das Portal bietet eine Schnittstelle, mit der Sie die Fehler leicht finden und potenzielle Korrekturen ermitteln können.
+You can view the operations for a deployment through the Azure portal. You may be most interested in viewing the operations when you have received an error during deployment so this article focuses on viewing operations that have failed. The portal provides an interface that enables you to easily find the errors and determine potential fixes.
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
-## Verwenden von Bereitstellungsvorgängen zur Problembehandlung
+## <a name="use-deployment-operations-to-troubleshoot"></a>Use deployment operations to troubleshoot
 
-Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
+To see the deployment operations, use the following steps:
 
-1. Beachten Sie den Status der letzten Bereitstellung für die an der Bereitstellung beteiligte Ressourcengruppe. Sie können diesen Status auswählen, um weitere Details anzuzeigen.
+1. For the resource group involved in the deployment, notice the status of the last deployment. You can select this status to get more details.
 
-    ![Bereitstellungsstatus](./media/resource-manager-troubleshoot-deployments-portal/deployment-status.png)
+    ![deployment status](./media/resource-manager-troubleshoot-deployments-portal/deployment-status.png)
 
-2. Der Verlauf mit den letzten Bereitstellungen wird angezeigt. Wählen Sie die fehlerhafte Bereitstellung aus.
+2. You will see the recent deployment history. Select the deployment that failed.
 
-    ![Bereitstellungsstatus](./media/resource-manager-troubleshoot-deployments-portal/select-deployment.png)
+    ![deployment status](./media/resource-manager-troubleshoot-deployments-portal/select-deployment.png)
 
-3. Wählen Sie **Fehler. Klicken Sie hier, um Details anzuzeigen.**, um eine Beschreibung der Ursache für die fehlerhafte Bereitstellung anzuzeigen. In der folgenden Abbildung ist der DNS-Eintrag nicht eindeutig.
+3. Select **Failed. Click here for details** to see a description of why the deployment failed. In the image below, the DNS record is not unique.  
 
-    ![Bereitstellungsfehler anzeigen](./media/resource-manager-troubleshoot-deployments-portal/view-error.png)
+    ![view failed deployment](./media/resource-manager-troubleshoot-deployments-portal/view-error.png)
 
-    Diese Fehlermeldung sollte ausreichen, damit Sie mit der Problembehandlung beginnen können. Wenn Sie jedoch weitere Details zu den abgeschlossenen Tasks benötigen, können Sie die Vorgänge wie in den folgenden Schritten erläutert anzeigen.
+    This error message should be enough for you to begin troubleshooting. However, if you need more details about which tasks were completed, you can view the operations as shown in the following steps.
 
-4. Sie können alle Bereitstellungsvorgänge auf dem Blatt **Bereitstellung** anzeigen. Wählen Sie einen Vorgang, um weitere Details anzuzeigen.
+4. You can view all of the deployment operations in the **Deployment** blade. Select any operation to see more details.
 
-    ![Vorgänge anzeigen](./media/resource-manager-troubleshoot-deployments-portal/view-operations.png)
+    ![view operations](./media/resource-manager-troubleshoot-deployments-portal/view-operations.png)
 
-    In diesem Fall sehen Sie, dass das Speicherkonto, das virtuelle Netzwerk und die Verfügbarkeitsgruppe erfolgreich erstellt wurden. Bei der öffentlichen IP-Adresse ist ein Fehler aufgetreten, und für andere Ressourcen wurden keine Versuche unternommen.
+    In this case, you see that the storage account, virtual network, and availability set were successfully created. The public IP address failed, and other resources were not attempted.
 
-5. Sie können Ereignisse für die Bereitstellung anzeigen, indem Sie **Ereignisse** wählen.
+5. You can view events for the deployment by selecting **Events**.
 
-    ![Ereignisse anzeigen](./media/resource-manager-troubleshoot-deployments-portal/view-events.png)
+    ![view events](./media/resource-manager-troubleshoot-deployments-portal/view-events.png)
 
-6. Sie sehen alle Ereignisse für die Bereitstellung und können zum Anzeigen weiterer Einzelheiten ein Ereignis auswählen.
+6. You see all of the events for the deployment and select any one for more details.
 
-    ![Ereignisse anzeigen](./media/resource-manager-troubleshoot-deployments-portal/see-all-events.png)
+    ![see events](./media/resource-manager-troubleshoot-deployments-portal/see-all-events.png)
 
-## Verwenden von Überwachungsprotokollen zur Problembehandlung
+## <a name="use-audit-logs-to-troubleshoot"></a>Use audit logs to troubleshoot
 
 [AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
 
-Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
+To see errors for a deployment, use the following steps:
 
-1. Zeigen Sie die Überwachungsprotokolle für eine Ressourcengruppe an, indem Sie **Überwachungsprotokolle** wählen.
+1. View the audit logs for a resource group by selecting **Audit Logs**.
 
-    ![Überwachungsprotokolle auswählen](./media/resource-manager-troubleshoot-deployments-portal/select-audit-logs.png)
+    ![select audit logs](./media/resource-manager-troubleshoot-deployments-portal/select-audit-logs.png)
 
-2. Auf dem Blatt **Überwachungsprotokolle** wird eine Zusammenfassung der aktuellen Vorgänge für alle Ressourcengruppen in Ihrem Abonnement angezeigt. Dazu gehören eine grafische Darstellung der Zeit und des Status der Vorgänge sowie eine Liste der Vorgänge.
+2. In the **Audit Logs** blade, you will see a summary of recent operations for all of the resource groups in your subscription. It includes a graphical representation of the time and status of the operations, as well as a list of the operations.
 
-    ![Aktionen anzeigen](./media/resource-manager-troubleshoot-deployments-portal/audit-summary.png)
+    ![show actions](./media/resource-manager-troubleshoot-deployments-portal/audit-summary.png)
 
-3. Sie können die Ansicht der Überwachungsprotokolle filtern, um sich auf bestimmte Bedingungen zu konzentrieren. Wählen Sie oben auf dem Blatt **Überwachungsprotokolle** die Option **Filtern**.
+3. You can filter your view of the audit logs to focus on particular conditions. Select **Filter** at the top of the **Audit logs** blade.
 
-    ![Protokolle filtern](./media/resource-manager-troubleshoot-deployments-portal/filter-logs.png)
+    ![filter logs](./media/resource-manager-troubleshoot-deployments-portal/filter-logs.png)
 
-4. Wählen Sie auf dem Blatt **Filter** Bedingungen aus, um die Ansicht der Überwachungsprotokolle auf die Vorgänge zu beschränken, die Sie anzeigen möchten. Beispielsweise können Sie Vorgänge so filtern, dass nur Fehler für die Ressourcengruppe angezeigt werden.
+4. From the **Filter** blade, select conditions to restrict your view of the audit logs to only those operations you want to see. For example, you can filter operations to only display errors for the resource group.
 
-    ![Filteroptionen festlegen](./media/resource-manager-troubleshoot-deployments-portal/set-filter.png)
+    ![set filter options](./media/resource-manager-troubleshoot-deployments-portal/set-filter.png)
 
-5. Durch Festlegen eines Zeitraums können Sie die Vorgänge weiter filtern. In der folgenden Abbildung wird die Ansicht auf einen bestimmten 20-minütigen Zeitraum gefiltert.
+5. You can further filter operations by setting a time span. The following image filters the view to a particular 20-minute timespan.
 
-    ![Zeit festlegen](./media/resource-manager-troubleshoot-deployments-portal/select-time.png)
+    ![set time](./media/resource-manager-troubleshoot-deployments-portal/select-time.png)
 
-6. Sie können beliebige Vorgänge in der Liste auswählen. Wählen Sie den Vorgang mit dem Fehler aus, den Sie untersuchen möchten.
+6. You can select any of the operations in the list. Pick the operation that contains the error you wish to research.
 
-    ![Vorgang auswählen](./media/resource-manager-troubleshoot-deployments-portal/select-operation.png)
+    ![select operation](./media/resource-manager-troubleshoot-deployments-portal/select-operation.png)
   
-7. Alle Ereignisse für diesen Vorgang werden angezeigt. Beachten Sie die **Korrelations-IDs** in der Zusammenfassung. Anhand dieser ID werden verwandte Ereignisse überwacht. Sie kann hilfreich sein, wenn Sie bei der Problembehandlung mit dem technischen Support zusammenarbeiten. Sie können ein beliebiges Ereignis auswählen, um Details zu dem Ereignis anzuzeigen.
+7. You will see all of the events for that operation. Notice the **Correlation IDS** in the summary. This ID is used to track related events. It can be helpful when working with technical support to troubleshoot an issue. You can select any of event to see details about the event.
 
-    ![Ereignis auswählen](./media/resource-manager-troubleshoot-deployments-portal/select-event.png)
+    ![select event](./media/resource-manager-troubleshoot-deployments-portal/select-event.png)
 
-8. Die Details zum Ereignis werden angezeigt. Achten Sie insbesondere auf die **Eigenschaften**, um Informationen über den Fehler zu erhalten.
+8. You will see details about the event. In particular, pay attention to the **Properties** for information about the error.
 
-    ![Details für Überwachungsprotokoll anzeigen](./media/resource-manager-troubleshoot-deployments-portal/audit-details.png)
+    ![show audit log details](./media/resource-manager-troubleshoot-deployments-portal/audit-details.png)
 
-Der auf die Überwachungsprotokolle angewendete Filter wird bis zur nächsten Anzeige der Überwachungsprotokolle beibehalten, daher müssen Sie die Werte möglicherweise ändern, um die Ansicht der Vorgänge wieder zu erweitern.
+The filter you applied to the audit log is retained the next time you view it, so you may need to change those values to broaden your view of the operations.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
-- Informationen zur Überwachung anderer Arten von Aktionen anhand der Überwachungsprotokolle finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-- Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).
+- For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
+- To learn about using the audit logs to monitor other types of actions, see [Audit operations with Resource Manager](resource-group-audit.md).
+- To validate your deployment prior to executing it, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen des Wiederholungstriggers in Logik-Apps | Microsoft Azure"
-	description="Übersicht über den Wiederholungstrigger und dessen Verwendung in einer Azure-Logik-App."
-	services=""
-	documentationCenter=""
-	authors="jeffhollan"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Add the recurrence trigger in logic apps | Microsoft Azure"
+    description="Overview of the recurrence trigger, and how to use it with an Azure logic app."
+    services=""
+    documentationCenter=""
+    authors="jeffhollan"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,47 +17,53 @@
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
-# Erste Schritte mit dem Wiederholungstrigger
 
-Mit dem Wiederholungstrigger können Sie leistungsstarke Workflows in der Cloud erstellen.
+# <a name="get-started-with-the-recurrence-trigger"></a>Get started with the recurrence trigger
 
-Dazu zählen z. B.:
+By using the recurrence trigger, you can create powerful workflows in the cloud.
 
-- Planen eines Workflows zur täglichen Ausführung einer gespeicherten SQL-Prozedur.
-- Senden einer E-Mail mit einer Zusammenfassung aller Tweets der letzten Woche zu einem bestimmten Hashtag.
+For example, you can:
 
-Wenn Sie den Wiederholungstrigger in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+- Schedule a workflow to run a SQL stored procedure every day.
+- Email a summary of all tweets within the last week about a certain hashtag.
 
-## Verwenden eines Wiederholungstriggers
+To get started using the recurrence trigger in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md).
+## <a name="use-a-recurrence-trigger"></a>Use a recurrence trigger
 
-Hier sehen Sie eine Beispielsequenz für die Einrichtung eines Wiederholungstriggers in einer Logik-App:
+A trigger is an event that can be used to start the workflow that is defined in a logic app. [Learn more about triggers](connectors-overview.md).
 
-1. Fügen Sie den Trigger **Serie** als ersten Schritt in einer Logik-App hinzu.
-2. Füllen Sie die Parameter für das Wiederholungsintervall aus.
+Here’s an example sequence of how to set up a recurrence trigger in a logic app:
 
-Die Logik-App startet nun nach jedem Zeitintervall eine Ausführung.
+1. Add the **Recurrence** trigger as the first step in a logic app.
+2. Fill in the parameters for the recurrence interval.
 
-![HTTP-Trigger](./media/connectors-native-recurrence/using-trigger.png)
+The logic app now starts a run after each interval of time.
 
-## Triggerdetails
+![HTTP trigger](./media/connectors-native-recurrence/using-trigger.png)
 
-Der Wiederholungstrigger verfügt über die folgenden Eigenschaften, die Sie konfigurieren können.
+## <a name="trigger-details"></a>Trigger details
 
-Er startet nach Ablauf einer festgelegten Zeitspanne eine Logik-App. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+The recurrence trigger has the following properties that you can configure.
 
-|Anzeigename|Eigenschaftenname|Beschreibung|
+It fires a logic app after a specified time interval.
+A * means that it is a required field.
+
+|Display name|Property name|Description|
 |---|---|---|
-|Häufigkeit*|frequency|Die Zeiteinheit: `Second`, `Minute`, `Hour`, `Day` oder `Year`.|
-|Intervall*|interval|Das Intervall mit der angegebenen Häufigkeit für die Wiederholung.|
-|Zeitzone|timeZone|Bei Angabe einer Startzeit ohne UTC-Abweichung wird die angegebene Zeitzone verwendet.|
-|Startzeit|startTime|Die Startzeit im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).|
+|Frequency*|frequency|The unit of time: `Second`, `Minute`, `Hour`, `Day`, or `Year`.|
+|Interval*|interval|The interval of the given frequency for the recurrence.|
+|Time Zone|timeZone|If a start time is provided without a UTC offset, this time zone will be used.|
+|Start time|startTime|The start time in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).|
 <br>
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

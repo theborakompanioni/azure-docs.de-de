@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Schleifen, Bereiche und Auflösen von Batches in Logik-Apps | Microsoft Azure"
-   description="Die Konzepte Schleifen und Bereiche sowie das Auflösen von Batches in Logik-Apps."
+   pageTitle="Logic Apps Loops, Scopes, and Debatching | Microsoft Azure"
+   description="Logic App loop, scope, and debatching concepts"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -16,15 +16,16 @@
    ms.date="05/14/2016"
    ms.author="jehollan"/>
    
-# Schleifen, Bereiche und Auflösen von Batches in Logik-Apps
-  
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logic Apps-Schemaversion 2016-04-01-preview und höher. Die Konzepte ähneln denen für ältere Schemaversionen, Bereiche stehen aber nur für diese und neuere Schemaversionen zur Verfügung.
-  
-## ForEach-Schleife und Arrays
-  
-Logic Apps erlaubt Schleifen über einen Satz von Daten und das Ausführen von Aktionen für jedes Element. Dies wird über die `foreach`-Aktion ermöglicht. Sie können im Designer eine foreach-Schleife hinzufügen. Nachdem Sie das Array ausgewählt haben, das Sie durchlaufen möchten, können Sie mit dem Hinzufügen von Aktionen beginnen. Zurzeit können Sie pro foreach-Schleife nur eine Aktion angeben, diese Beschränkung wird jedoch in den nächsten Wochen aufgehoben. Innerhalb der Schleife können Sie dann angeben, was bei jedem Wert des Arrays passieren soll.
 
-Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten dargestellt angeben. Dies ist ein Beispiel für eine foreach-Schleife, die eine E-Mail-Nachricht für jede E-Mail-Adresse sendet, die „microsoft.com“ enthält:
+# <a name="logic-apps-loops,-scopes,-and-debatching"></a>Logic Apps Loops, Scopes, and Debatching
+  
+>[AZURE.NOTE] This version of the article applies to Logic Apps 2016-04-01-preview schema and later.  Concepts are similar for older schemas, but scopes are only available for this schema and later.
+  
+## <a name="foreach-loop-and-arrays"></a>ForEach Loop and Arrays
+  
+Logic Apps allows you to loop over a set of data and perform an action for each item.  This is possible via the `foreach` action.  In the designer, you can specify to add a for each loop.  After selecting the array you wish to iterate over, you can begin adding actions.  Currently you are limited to only one action per foreach loop, but this restriction will be lifted in the coming weeks.  Once within the loop you can begin to specify what should occur at each value of the array.
+
+If using code-view, you can specify a for each loop like below.  This is an example of a for each loop that sends an email for each email address that contains 'microsoft.com':
 
 ```
 {
@@ -62,17 +63,17 @@ Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten 
 }
 ```
   
-  Eine `foreach`-Aktion kann Arrays mit bis zu 5.000 Zeilen durchlaufen. Alle Iterationen können parallel ausgeführt werden. Es könnte daher erforderlich sein, die Nachrichten in eine Warteschlange einzufügen, wenn eine Datenflusskontrolle gewünscht ist.
+  A `foreach` action can iterate over arrays up to 5,000 rows.  Each iteration can execute in parallel, so it may be necessary to add messages to a queue if flow control is needed.
   
-## Until-Schleife
+## <a name="until-loop"></a>Until Loop
   
-  Sie können eine Aktion oder eine Reihe von Aktionen ausführen, bis eine Bedingung erfüllt ist. Das häufigste Szenario hierfür ist der Aufruf eines Endpunkts, bis Sie die gewünschte Antwort erhalten. Sie können im Designer eine until-Schleife hinzufügen. Sie können nach dem Hinzufügen von Aktionen innerhalb der Schleife die Beendigungsbedingung sowie die Schleifenlimits festlegen. Es gibt eine einminütige Verzögerung zwischen Schleifendurchläufen.
+  You can perform an action or series of actions until a condition is met.  The most common scenario for this is calling an endpoint until you get the response you are looking for.  In the designer, you can specify to add an until loop.  After adding actions inside the loop, you can set the exit condition, as well as the loop limits.  There is a 1 minute delay between loop cycles.
   
-  Wenn Sie die Codeansicht verwenden, können Sie eine until-Schleife wie unten dargestellt angeben. Dies ist ein Beispiel für den Aufruf eines HTTP-Endpunkts bis der Antworttext den Wert „Completed“ hat. Die Schleife wird beendet, wenn
+  If using code-view, you can specify an until loop like below.  This is an example of calling an HTTP endpoint until the response body has the value 'Completed'.  It will complete when either 
   
-  * die HTTP-Antwort den Status „Completed“ aufweist
-  * sie für 1 Stunde ausgeführt wurde
-  * sie 100-mal durchlaufen wurde.
+  * HTTP Response has status of 'Completed'
+  * It has tried for 1 hour
+  * It has looped 100 times
   
   ```
   {
@@ -98,11 +99,11 @@ Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten 
   }
   ```
   
-## SplitOn und Auflösen von Batches
+## <a name="spliton-and-debatching"></a>SplitOn and Debatching
 
-Manchmal empfängt ein Trigger möglicherweise ein Array von Elementen, die Sie aus dem Batch lösen möchten, um einen Workflow pro Element zu starten. Dies kann über den Befehl `spliton` erreicht werden. Wenn Ihr Trigger-Swagger eine Nutzlast angibt, die ein Array ist, wird standardmäßig ein `spliton` hinzugefügt und eine Ausführung pro Element gestartet. SplitOn kann nur einem Trigger hinzugefügt werden. Dies kann manuell konfiguriert oder in der Codeansicht mit der Definition überschrieben werden. Derzeit kann SplitOn Arrays mit bis zu 5.000 Elementen auflösen. Sie können `spliton` nicht zusammen mit einer Implementierung des synchronisierten Antwortmusters verwenden. Jeder aufgerufene Workflow, der eine `response`-Aktion sowie ein `spliton` umfasst, wird asynchron ausgeführt und sendet sofort eine `202 Accepted`-Antwort.
+Sometimes a trigger may recieve an array of items that you want to debatch and start a workflow per item.  This can be accomplished via the `spliton` command.  By default, if your trigger swagger specifies a payload that is an array, a `spliton` will be added and start a run per item.  SplitOn can only be added to a trigger.  This can be manually configured or overridden in definition code-view.  Currently SplitOn can debatch arrays up to 5,000 items.  You cannot have a `spliton` and also implement the syncronous response pattern.  Any workflow called that has a `response` action in addition to `spliton` will run asyncronously and send an immediate `202 Accepted` response.  
 
-SplitOn kann in der Codeansicht wie im folgenden Beispiel angegeben werden. Damit wird ein Array von Elementen empfangen und zeilenweise aufgelöst.
+SplitOn can be specified in code-view as the following example.  This recieves an array of items and debatches on each row.
 
 ```
 {
@@ -112,7 +113,7 @@ SplitOn kann in der Codeansicht wie im folgenden Beispiel angegeben werden. Dami
             "url": "http://getNewCustomers",
         },
         "recurrence": {
-            "frequencey": "Second",
+            "frequency": "Second",
             "interval": 15
         },
         "spliton": "@triggerBody()['rows']"
@@ -120,9 +121,9 @@ SplitOn kann in der Codeansicht wie im folgenden Beispiel angegeben werden. Dami
 }
 ```
 
-## Bereiche
+## <a name="scopes"></a>Scopes
 
-Es ist möglich, eine Reihe von Aktionen zusammen in einem Bereich zu gruppieren. Dies ist besonders nützlich für die Implementierung der Ausnahmebehandlung. Sie können im Designer einen neuen Bereich hinzufügen und in diesem mit dem Hinzufügen von Aktionen beginnen. Sie können Bereiche in der Codeansicht wie folgt definieren:
+It is possible to group a series of actions together using a scope.  This is particularly useful for implementing exception handling.  In the designer you can add a new scope, and begin adding any actions inside of it.  You can define scopes in code-view like the following:
 
 
 ```
@@ -141,4 +142,8 @@ Es ist möglich, eine Reihe von Aktionen zusammen in einem Bereich zu gruppieren
 }
 ```
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

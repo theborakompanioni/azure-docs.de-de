@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Übersicht über den lokalen Cache von Azure App Service | Microsoft Azure"
-   description="In diesem Artikel wird beschrieben, wie Sie den lokalen Cache von Azure App Service aktivieren, dessen Größe ändern und seinen Status abrufen."
+   pageTitle="Azure App Service Local Cache overview | Microsoft Azure"
+   description="This article describes how to enable, resize, and query the status of the Azure App Service Local Cache feature"
    services="app-service"
    documentationCenter="app-service"
    authors="SyntaxC4"
@@ -18,48 +18,49 @@
    ms.date="03/04/2016"
    ms.author="cfowler"/>
 
-# Übersicht über den lokalen Cache von Azure App Service
 
-Der Inhalt von Azure-Web-Apps wird in Azure Storage gespeichert und dauerhaft als Inhaltsfreigabe bereitgestellt. Dieses Design ist auf den Einsatz mit einer Vielzahl von Apps ausgelegt und weist die folgenden Merkmale auf:
+# <a name="azure-app-service-local-cache-overview"></a>Azure App Service Local Cache overview
 
-* Der Inhalt wird über mehrere VM-Instanzen der Web-App hinweg freigegeben.
-* Der Inhalt wird dauerhaft bereitgestellt und kann durch ausgeführte Web-Apps geändert werden.
-* Protokolldateien und Diagnosedatendateien stehen unterhalb desselben freigegebenen Inhaltsordners zur Verfügung.
-* Beim Veröffentlichen neuer Inhalte wird der Inhaltsordner direkt aktualisiert. Der Inhalt kann umgehend über die SCM-Website und die ausgeführte Web-App angezeigt werden (einige Technologien wie z. B. ASP.NET initiieren bei einigen Dateiänderungen üblicherweise einen Web-App-Neustart, um die aktuellen Inhalte abzurufen).
+Azure web app content is stored on Azure Storage and is surfaced up in a durable manner as a content share. This design is intended to work with a variety of apps and has the following attributes:  
 
-Während viele Web-Apps einzelne oder alle dieser Features nutzen, benötigen einige Web-Apps lediglich einen hoch leistungsfähigen schreibgeschützten Inhaltsspeicher, aus dem sie mit hoher Verfügbarkeit ausgeführt werden können. Diese Apps können von einer VM-Instanz eines bestimmten lokalen Caches profitieren.
+* The content is shared across multiple virtual machine (VM) instances of the web app.
+* The content is durable and can be modified by running web apps.
+* Log files and diagnostic data files are available under the same shared content folder.
+* Publishing new content directly updates the content folder. You can immediately view the same content through the SCM website and the running web app (typically some technologies such as ASP.NET do initiate a web app restart on some file changes to get the latest content).
 
-Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalte. Dabei handelt es sich um einen Cache Ihres Speicherinhalts mit „write but discard“-Prinzip, der beim Sitestart asynchron erstellt wird. Wenn der Cache bereit ist, wird die Site zur Ausführung mit dem zwischengespeicherten Inhalt umgeschaltet. Web-Apps, die mit lokalem Cache ausgeführt werden, bieten die folgenden Vorteile:
+While many web apps use one or all of these features, some web apps just need a high-performance, read-only content store that they can run from with high availability. These apps can benefit from a VM instance of a specific local cache.
 
-* Sie werden nicht durch Latenzen beeinträchtigt, die beim Zugriff auf Inhalt in Azure Storage auftreten.
-* Sie werden nicht durch geplante Upgrades oder ungeplante Downtimes der Server beeinträchtigt, die die Inhaltsfreigabe verwalten, und sie werden nicht durch andere Unterbrechungen im Zusammenhang mit Azure Storage beeinträchtigt.
-* Es sind weniger App-Neustarts aufgrund von Änderungen an der Speicherfreigabe erforderlich.
+The Azure App Service Local Cache feature provides a web role view of your content. This content is a write-but-discard cache of your storage content that is created asynchronously on site startup. When the cache is ready, the site is switched to run against the cached content. Web apps that run on Local Cache have the following benefits:
 
-## Auswirkung des lokalen Caches auf das Verhalten von App Service
+* They are immune to latencies that occur when they access content on Azure Storage.
+* They are immune to the planned upgrades or unplanned downtimes and any other disruptions with Azure Storage that occur on servers that serve the content share.
+* They have fewer app restarts due to storage share changes.
 
-* Der lokale Cache ist eine Kopie der Ordner „/site“ und „/siteextensions“ der Web-App. Er wird beim Start der Web-App auf der lokalen VM-Instanz erstellt. Die Größe des lokalen Caches ist pro Web-App standardmäßig auf 300 MB beschränkt, kann aber auf bis zu 1 GB erhöht werden.
-* Der lokale Cache bietet Lese- und Schreibzugriff. Änderungen werden jedoch verworfen, wenn die Web-App zwischen virtuellen Computern verschoben oder neu gestartet wird. Der lokale Cache sollte nicht für Apps verwendet werden, die unternehmenskritische Daten im Inhaltsspeicher speichern.
-* Web-Apps können wie bisher Protokolldateien und Diagnosedaten schreiben. Protokolldateien und Daten werden jedoch lokal auf der VM gespeichert. Diese Daten werden dann in regelmäßigen Abständen in den freigegebenen Inhaltsspeicher kopiert. Der Kopiervorgang in den freigegebenen Inhaltsspeicher erfolgt nach dem „Best Case“-Prinzip, und zurückgeschriebene Daten können bei einem plötzlichen Absturz einer VM-Instanz verloren gehen.
-* Für Web-Apps, die den lokalen Cache verwenden, ergibt sich eine Änderung in Bezug auf die Ordnerstruktur für die LogFiles- und Data-Ordner. Es sind jetzt Unterordner in den Speicherordnern „LogFiles“ und „Data“ vorhanden, die das folgende Benennungsmuster verwenden: „eindeutiger Bezeichner“ + Zeitstempel Jeder dieser Unterordner entspricht einer VM-Instanz, auf der die Web-App ausgeführt wird oder wurde.  
-* Das Veröffentlichen von Änderungen an der Web-App über einen der Veröffentlichungsmechanismen führt zu einer Veröffentlichung im freigegebenen Inhaltsspeicher. Dieses Verhalten wurde umgesetzt, weil der veröffentlichte Inhalt dauerhaft bereitgestellt werden soll. Zum Aktualisieren des lokalen Caches der Web-App ist ein Neustart erforderlich. Dies erscheint überzogen? Informationen zu einem nahtlosen Lebenszyklus finden Sie weiter unten in diesem Artikel.
-* „D:\\Home“ zeigt auf den lokalen Cache. „D:\\local“ zeigt weiterhin auf den temporären VM-spezifischen Speicher.
-* Die standardmäßige Inhaltsansicht der SCM-Site ist weiterhin die des freigegebenen Inhaltsspeichers.
+## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>How Local Cache changes the behavior of App Service
 
-## Aktivieren des lokalen Caches in App Service
+* The local cache is a copy of the /site and /siteextensions folders of the web app. It is created on the local VM instance on web app startup. The size of the local cache per web app is limited to 300 MB by default, but you can increase it up to 1 GB.
+* The local cache is read-write. However, any modifications will be discarded when the web app moves virtual machines or gets restarted. You should not use Local Cache for apps that store mission-critical data in the content store.
+* Web apps can continue to write log files and diagnostic data as they do currently. Log files and data, however, are stored locally on the VM. Then they are copied over periodically to the shared content store. The copy to the shared content store is a best-case effort--write backs could be lost due to a sudden crash of a VM instance.
+* There is a change in the folder structure of the LogFiles and Data folders for web apps that use Local Cache. There are now subfolders in the storage LogFiles and Data folders that follow the naming pattern of "unique identifier" + time stamp. Each of the subfolders corresponds to a VM instance where the web app is running or has run.  
+* Publishing changes to the web app through any of the publishing mechanisms will publish to the shared content store. This is by design because we want the published content to be durable. To refresh the local cache of the web app, it needs to be restarted. Does this seem like an excessive step? To make the lifecycle seamless, see the information later in this article.
+* D:\Home will point to the local cache. D:\local will continue pointing to the temporary VM specific storage.
+* The default content view of the SCM site will continue to be that of the shared content store.
 
-Der lokale Cache wird mithilfe einer Kombination aus reservierten App-Einstellungen konfiguriert. Diese App-Einstellungen können über die folgenden Methoden konfiguriert werden:
+## <a name="enable-local-cache-in-app-service"></a>Enable Local Cache in App Service
 
-* [Azure-Portal](#Configure-Local-Cache-Portal)
+You configure Local Cache by using a combination of reserved app settings. You can configure these app settings by using the following methods:
+
+* [Azure portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
-### Konfigurieren des lokalen Caches über das Azure-Portal
+### <a name="configure-local-cache-by-using-the-azure-portal"></a>Configure Local Cache by using the Azure portal
 <a name="Configure-Local-Cache-Portal"></a>
 
-Der lokale Cache wird für jede Web-App über die folgende App-Einstellung aktiviert: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`
+You enable Local Cache on a per-web-app basis by using this app setting: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![App-Einstellungen im Azure-Portal: lokaler Cache](media/app-service-local-cache/app-service-local-cache-configure-portal.png)
+![Azure portal app settings: Local Cache](media/app-service-local-cache/app-service-local-cache-configure-portal.png)
 
-### Konfigurieren des lokalen Caches mit Azure Resource Manager
+### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Configure Local Cache by using Azure Resource Manager
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```
@@ -81,40 +82,44 @@ Der lokale Cache wird für jede Web-App über die folgende App-Einstellung aktiv
 ...
 ```
 
-## Ändern der Größeneinstellung im lokalen Cache
+## <a name="change-the-size-setting-in-local-cache"></a>Change the size setting in Local Cache
 
-Standardmäßig ist der lokale Cache **300 MB** groß. Dies schließt die Ordner „/site“ und „/siteextensions“ ein, die aus dem Inhaltspeicher kopiert werden, sowie alle lokal erstellten Protokolle und Datenordner. Um dieses Limit zu erhöhen, verwenden Sie die folgende App-Einstellung: `WEBSITE_LOCAL_CACHE_SIZEINMB` Die Größe kann auf bis zu **1 GB** (1000 MB) pro Web-App erhöht werden.
+By default, the local cache size is **300 MB**. This includes the /site and /siteextensions folders that are copied from the content store, as well as any locally created logs and data folders. To increase this limit, use the app setting `WEBSITE_LOCAL_CACHE_SIZEINMB`. You can increase the size up to **1 GB** (1000 MB) per web app.
 
-## Bewährte Methoden für die Verwendung des lokalen Caches von App Service
+## <a name="best-practices-for-using-app-service-local-cache"></a>Best practices for using App Service Local Cache
 
-Es wird empfohlen, den lokalen Cache gemeinsam mit dem Feature [Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md) zu verwenden.
+We recommend that you use Local Cache in conjunction with the [Staging Environments](../app-service-web/web-sites-staged-publishing.md) feature.
 
-* Fügen Sie die _persistente_ App-Einstellung `WEBSITE_LOCAL_CACHE_OPTION` mit dem Wert `Always` zu Ihrem **Produktionsslot** hinzu. Wenn Sie `WEBSITE_LOCAL_CACHE_SIZEINMB` verwenden, fügen Sie diese Einstellung ebenfalls als persistente Einstellung zu Ihrem Produktionsslot hinzu.
-* Erstellen Sie einen **Stagingslot**, und führen Sie eine Veröffentlichung in Ihrem Stagingslot durch. Für den Stagingslot wird üblicherweise nicht die Verwendung des lokalen Caches festgelegt. So wird ein nahtloser Lebenszyklus für das Erstellen/Bereitstellen/Testen für das Staging ermöglicht, während die Vorteile des lokalen Caches für den Produktionsslot genutzt werden.
-*	Testen Sie Ihre Site mit dem Stagingslot.  
-*	Wenn Sie bereit dazu sind, wechseln Sie über einen [swap-Vorgang](../app-service-web/web-sites-staged-publishing.md#to-swap-deployment-slots) zwischen Ihrem Staging- und Ihrem Produktionsslot.  
-*	Persistente Einstellungen umfassen einen Namen und gelten dauerhaft für einen Slot. Wenn also der Stagingslot auf den Produktionsslot umgeschaltet wird, erbt dieser die App-Einstellungen für den lokalen Cache. Der neue Produktionsslot wird nach ein paar Minuten mit dem lokalen Cache ausgeführt und im Rahmen der Slotaufwärmung nach dem Wechsel aufgewärmt. Wenn der Slotwechsel abgeschlossen ist, wird Ihr Produktionsslot mit dem lokalen Cache ausgeführt.
+* Add the _sticky_ app setting `WEBSITE_LOCAL_CACHE_OPTION` with the value `Always` to your **Production** slot. If you're using `WEBSITE_LOCAL_CACHE_SIZEINMB`, also add it as a sticky setting to your Production slot.
+* Create a **Staging** slot and publish to your Staging slot. You typically don't set the staging slot to use Local Cache to enable a seamless build-deploy-test lifecycle for staging if you get the benefits of Local Cache for the production slot.
+*   Test your site against your Staging slot.  
+*   When you are ready, issue a [swap operation](../app-service-web/web-sites-staged-publishing.md#to-swap-deployment-slots) between your Staging and Production slots.  
+*   Sticky settings include name and sticky to a slot. So when the Staging slot gets swapped into Production, it will inherit the Local Cache app settings. The newly swapped Production slot will run against the local cache after a few minutes and will be warmed up as part of slot warmup after swap. So when the slot swap is complete, your Production slot will be running against the local cache.
 
-## Häufig gestellte Fragen (FAQ)
+## <a name="frequently-asked-questions-(faq)"></a>Frequently asked questions (FAQ)
 
-### Ist der lokale Cache für meine Web-App geeignet?
+### <a name="how-can-i-tell-if-local-cache-applies-to-my-web-app?"></a>How can I tell if Local Cache applies to my web app?
 
-Wenn Ihre Web-App einen hoch leistungsfähigen, zuverlässigen Inhaltsspeicher benötigt, den Inhaltsspeicher nicht zum Schreiben von unternehmenskritischen Daten zur Laufzeit nutzt und eine Gesamtgröße von maximal 1 GB erforderlich ist, dann lautet die Antwort: Ja, Ihre Anwendung ist für den lokalen Cache geeignet! Um die Gesamtgröße der Ordner „/site“ und „/siteextensions“ zu ermitteln, können Sie die Siteerweiterung „Azure Web Apps Disk Usage“ verwenden.
+If your web app needs a high-performance, reliable content store, does not use the content store to write critical data at runtime, and is less than 1 GB in total size, then the answer is "yes"! To get the total size of your /site and /siteextensions folders, you can use the site extension "Azure Web Apps Disk Usage".  
 
-### Woher weiß ich, dass meine Site auf die Verwendung des lokalen Caches umgeschaltet hat?
+### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache?"></a>How can I tell if my site has switched to using Local Cache?
 
-Wenn Sie das Feature für den lokalen Cache mit Stagingumgebungen verwenden, findet der Wechsel erst dann statt, wenn der lokale Cache aufgewärmt wurde. Um zu prüfen, ob Ihre Site mit dem lokalen Cache ausgeführt wird, können Sie die Workerprozess-Umgebungsvariable `WEBSITE_LOCALCACHE_READY` überprüfen. Befolgen Sie die auf der Seite für die [Workerprozess-Umgebungsvariable](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) bereitgestellten Anweisungen, um auf mehreren Instanzen auf die Workerprozess-Umgebungsvariable zuzugreifen.
+If you're using the Local Cache feature with Staging Environments, the swap operation will not complete until Local Cache is warmed up. To check if your site is running against Local Cache, you can check the worker process environment variable `WEBSITE_LOCALCACHE_READY`. Use the instructions on the [worker process environment variable](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) page to access the worker process environment variable on multiple instances.  
 
-### Ich habe soeben neue Änderungen veröffentlicht, aber in meiner Web-App scheinen diese nicht verfügbar zu sein. Warum?
+### <a name="i-just-published-new-changes,-but-my-web-app-does-not-seem-to-have-them.-why?"></a>I just published new changes, but my web app does not seem to have them. Why?
 
-Wenn Ihre Web-App den lokalen Cache verwendet, müssen Sie Ihre Site neu starten, um die neuesten Änderungen abzurufen. Sie möchten Änderungen nicht für eine Produktionssite veröffentlichen? Relevante Informationen finden Sie bei den Slotoptionen im oben stehenden Abschnitt zu den bewährten Methoden.
+If your web app uses Local Cache, then you need to restart your site to get the latest changes. Don’t want to publish changes to a production site? See the slot options in the previous best practices section.
 
-### Wo sind meine Protokolle?
+### <a name="where-are-my-logs?"></a>Where are my logs?
 
-Bei Verwendung des lokalen Caches sehen Ihre Protokolle und Datenordner etwas anders aus. Die Struktur Ihrer Unterordner bleibt jedoch erhalten, mit der Ausnahme, dass sie unterhalb eines Unterordners mit folgendem Format geschachtelt sind: „eindeutiger VM-Bezeichner“ + Zeitstempel
+With Local Cache, your logs and data folders do look a little different. However, the structure of your subfolders remains the same, except that the subfolders are nestled under a subfolder with the format "unique VM identifier" + time stamp.
 
-### Ich habe den lokalen Cache aktiviert, aber meine Web-App wird weiterhin neu gestartet. Warum? Ich dachte, durch den lokalen Cache werden App-Neustarts verringert.
+### <a name="i-have-local-cache-enabled,-but-my-web-app-still-gets-restarted.-why-is-that?-i-thought-local-cache-helped-with-frequent-app-restarts."></a>I have Local Cache enabled, but my web app still gets restarted. Why is that? I thought Local Cache helped with frequent app restarts.
 
-Der lokale Cache trägt dazu bei, speicherbezogene Neustarts von Web-Apps zu vermeiden. Ihre Web-App kann jedoch aufgrund von geplanten Upgrades der VM-Infrastruktur weiterhin neu gestartet werden. Die App sollte bei aktiviertem lokalen Cache insgesamt jedoch seltener neu gestartet werden.
+Local Cache does help prevent storage-related web app restarts. However, your web app could still undergo restarts during planned infrastructure upgrades of the VM. The overall app restarts that you experience with Local Cache enabled should be fewer.
 
-<!---HONumber=AcomDC_0330_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

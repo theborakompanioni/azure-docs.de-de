@@ -1,8 +1,10 @@
-Ressource| Standardlimit
+Resource| Default limit
 ---|---
-Profile pro Abonnement | 100 <sup>1</sup>
-Endpunkte pro Profil| 200
+Profiles per subscription | 100 <sup>1</sup>
+Endpoints per profile| 200
 
-<sup>1</sup>Wenden Sie sich an den Support, falls Sie diese Limits erhöhen müssen.
+<sup>1</sup>Contact support in case you need to increase these limits.
 
-<!---HONumber=Nov15_HO1-->
+<!--HONumber=Oct16_HO2-->
+
+

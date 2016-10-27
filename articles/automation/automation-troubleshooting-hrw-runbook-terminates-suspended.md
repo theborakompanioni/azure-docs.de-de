@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Hybrid Runbook Worker: Ein Runbookauftrag wird mit dem Status „Angehalten“ beendet | Microsoft Azure"
-   description="Symptome, Ursachen und Lösungsmöglichkeiten für Abbruchfehler bei Hybrid Runbook Worker-Aufträgen."
+   pageTitle="Hybrid Runbook Worker: A runbook job terminates with a status of Suspended | Microsoft Azure"
+   description="Symptoms causes and resolutions for Hybrid Runbook Worker job termination error."
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
@@ -15,51 +15,57 @@
    ms.date="08/17/2016"
    ms.author="magoedte" />
 
-# Hybrid Runbook Worker: Ein Runbookauftrag wird mit dem Status „Angehalten“ beendet
 
-## Zusammenfassung
+# <a name="hybrid-runbook-worker:-a-runbook-job-terminates-with-a-status-of-suspended"></a>Hybrid Runbook Worker: A runbook job terminates with a status of Suspended
 
-Kurz nachdem Sie versucht haben, Ihr Runbook dreimal auszuführen, wird es angehalten. Bestimmte Bedingungen können eine erfolgreiche Ausführung des Runbooks verhindern. Die Fehlermeldung enthält jedoch keine zusätzlichen Angaben zu den Gründen für den Abbruch. In diesem Artikel finden Sie Anweisungen, wie Sie Probleme bei der Runbookausführung mit Hybrid Runbook Worker lösen können.
+## <a name="summary"></a>Summary
 
-Falls Sie Ihr Azure-Problem mit den Informationen in diesem Artikel nicht beheben konnten, suchen Sie in den Azure-Foren zu [MSDN und Stack Overflow](https://azure.microsoft.com/support/forums/). Sie können Ihr Problem in diesen Foren veröffentlichen oder es auf Twitter an [@AzureSupport](https://twitter.com/AzureSupport) senden. Darüber hinaus können Sie eine Azure-Supportanfrage stellen, indem Sie auf der [Website des Azure-Supports](https://azure.microsoft.com/support/options/) die Option **Support erhalten** auswählen.
+Your runbook is suspended shortly after attempting to execute it three times. There are conditions which may interrupt the runbook from completing successfully and the related error message does not include any additional information indicating why. This article provides troubleshooting steps for issues related to the Hybrid Runbook Worker runbook execution failures.
 
-## Symptom
+If your Azure issue is not addressed in this article, visit the Azure forums on [MSDN and the Stack Overflow](https://azure.microsoft.com/support/forums/). You can post your issue on these forums or to [@AzureSupport on Twitter](https://twitter.com/AzureSupport). Also, you can file an Azure support request by selecting **Get support** on the [Azure support](https://azure.microsoft.com/support/options/) site.
 
-Bei der Ausführung eines Runbooks tritt ein Fehler auf. Folgende Fehlermeldung wird ausgegeben: „Die Auftragsaktion ‚Aktivieren‘ kann nicht ausgeführt werden, weil der Prozess unerwartet beendet wurde. Es wurde 3 Mal versucht, die Auftragsaktion auszuführen.“
+## <a name="symptom"></a>Symptom
 
-
-## Ursache
-
-Es gibt mehrere mögliche Ursachen für den Fehler:
-
-  1. Der Hybrid Worker befindet sich hinter einem Proxy oder einer Firewall.
-  2. Der Computer, auf dem der Hybrid Worker ausgeführt wird, erfüllt die [Mindestanforderungen](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-requirements) an die Hardware nicht.
-  3. Die Runbooks können nicht mit lokalen Ressourcen authentifiziert werden.
+Runbook execution fails and the error returned is, "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted 3 times."
 
 
-## Ursache 1: Der Hybrid Runbook Worker befindet sich hinter einem Proxy oder einer Firewall
+## <a name="cause"></a>Cause
 
-Der Computer, auf dem der Hybrid Runbook Worker ausgeführt wird, befindet sich hinter einer Firewall oder hinter einem Proxyserver, und ein ausgehender Netzwerkzugriff ist möglicherweise nicht zulässig oder nicht ordnungsgemäß konfiguriert.
+There are several possible causes for the error: 
 
-### Lösung
+  1. The hybrid worker is behind a proxy or firewall
+  2. The computer the hybrid worker is running on has less than the minimum hardware [requirements](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-requirements) 
+  3. The runbooks cannot authenticate with local resources
 
-Stellen Sie sicher, dass der Computer über einen ausgehenden Zugriff auf „*.cloudapp.net“ über die Ports 443, 9354 und 30000-30199 verfügt.
 
-## Ursache 2: Der Computer erfüllt die Mindestanforderungen an die Hardware nicht
+## <a name="cause-1:-hybrid-runbook-worker-is-behind-proxy-or-firewall"></a>Cause 1: Hybrid Runbook Worker is behind proxy or firewall
 
-Computer, auf denen der Hybrid Runbook Worker ausgeführt werden soll, müssen die Mindestanforderungen an die Hardware erfüllen, damit sie als Host für dieses Feature infrage kommen. Andernfalls kommt es – je nach Ressourcennutzung durch andere Hintergrundprozesse und möglichen Konflikten bei der Runbookausführung – zu einer übermäßigen Auslastung des Computers. Dies verursacht Verzögerungen und Timeouts bei Runbookaufträgen.
+The computer the Hybrid Runbook Worker is running on is behind a firewall or proxy server and outbound network access may not be permitted or configured correctly.
 
-### Lösung 
+### <a name="solution"></a>Solution
 
-Vergewissern Sie sich zuerst, dass der für die Ausführung des Hybrid Runbook Worker-Features vorgesehene Computer die Hardwaremindestanforderungen erfüllt. Wenn dies der Fall ist, überwachen Sie die CPU- und Arbeitsspeicherauslastung, um Zusammenhänge zwischen der Leistung der Hybrid Runbook Worker-Prozesse und Windows zu erkennen. Falls die Leistungsgrenzen des Arbeitsspeichers oder der CPU fast erreicht werden, deutet dies u.U. darauf hin, dass Sie ein Prozessorupgrade oder weitere Prozessoren oder mehr Speicher benötigen, um den Ressourcenengpass zu beseitigen und den Fehler zu beheben. Alternativ können Sie auch eine andere Computeressource auswählen, die die Mindestanforderungen erfüllt. Bei entsprechend großem Workload skalieren Sie sie nach Bedarf.
+Verify the computer has outbound access to *.cloudapp.net on ports 443, 9354, and 30000-30199. 
 
-## Ursache 3: Die Runbooks können nicht mit lokalen Ressourcen authentifiziert werden.
+## <a name="cause-2:-computer-has-less-than-minimum-hardware-requirements"></a>Cause 2: Computer has less than minimum hardware requirements
 
-### Lösung
+Computers running the Hybrid Runbook Worker should meet the minimum hardware requirements before designating it to host this feature. Otherwise, depending on the resource utilization of other background processes and contention caused by runbooks during execution, the computer will become over utilized and cause runbook job delays or timeouts. 
 
-Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereignis mit der Beschreibung *Win32-Prozess wurde mit dem Code [4294967295] beendet* vorhanden ist. Die Ursache dieses Fehlers liegt darin, dass Sie in Ihren Runbooks die Authentifizierung nicht konfiguriert haben oder dass Sie die „Ausführen als“-Anmeldeinformationen für die Hybrid Worker-Gruppe nicht angegeben haben. Überprüfen Sie die [Runbookberechtigungen](automation-hybrid-runbook-worker.md#runbook-permissions), und vergewissern Sie sich, dass Sie die Authentifizierung für Ihre Runbooks ordnungsgemäß konfiguriert haben.
+### <a name="solution"></a>Solution 
+
+First confirm the computer designated to run the Hybrid Runbook Worker feature meets the minimum hardware requirements.  If it does, monitor CPU and memory utilization to determine any correlation between the performance of Hybrid Runbook Worker processes and Windows.  If there is memory or CPU pressure, this may indicate the need to upgrade or add additional processors, or increase memory to address the resource bottleneck and resolve the error. Alternatively, select a different compute resource that can support the minimum requirements and scale when workload demands indicate an increase is necessary.         
+
+## <a name="cause-3:-runbooks-cannot-authenticate-with-local-resources"></a>Cause 3: Runbooks cannot authenticate with local resources
+
+### <a name="solution"></a>Solution
+
+Check the **Microsoft-SMA** event log for a corresponding event with description *Win32 Process Exited with code [4294967295]*.  The cause of this error is you haven't configured authentication in your runbooks or specified the Run As credentials for the Hybrid worker group.  Please review [Runbook permissions](automation-hybrid-runbook-worker.md#runbook-permissions) to confirm you have correctly configured authentication for your runbooks.  
 
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

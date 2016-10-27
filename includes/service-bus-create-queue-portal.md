@@ -1,22 +1,22 @@
-Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt einen Service Bus-Namespace erstellt haben.
+Please ensure that you have already created a Service Bus namespace, as shown [here][namespace-how-to].
 
-1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
+1. Log on to the [Azure portal][azure-portal].
 
-2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**.
+2. In the left navigation pane of the portal, click **Service Bus**.
 
-3. Wählen Sie den Namespace, in dem die Warteschlange erstellt werden soll. In diesem Fall: **nstest1**.
+3. Select the namespace that you would like to create the queue in. In this case, it is **nstest1**.
 
-    ![Erstellen einer Warteschlange][createqueue1]
+    ![Create a queue][createqueue1]
 
-4. Wählen Sie auf dem Blatt **Service Bus-Namespace** die Option **Warteschlangen** aus, und klicken Sie anschließend auf **Warteschlange hinzufügen**.
+4. In the **Service Bus namespace** blade, select **Queues**, then click **Add queue**.
 
-    ![„Warteschlangen“ wählen][createqueue2]
+    ![Select Queues][createqueue2]
 
-5. Geben Sie den Warteschlangennamen ein, und lassen Sie die anderen Werte unverändert.
+5. Enter the **Queue Name** and leave the other values with their defaults.
 
-    ![„Neu“ wählen][createqueue3]
+    ![Select New][createqueue3]
 
-7. Klicken Sie im unteren Bereich des Blatts auf **Erstellen**.
+7. At the bottom of the blade, click **Create**.
 
 [createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
@@ -25,4 +25,6 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 [namespace-how-to]: ../articles/service-bus/service-bus-create-namespace-portal.md
 [azure-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

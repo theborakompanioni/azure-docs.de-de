@@ -1,48 +1,58 @@
 <properties
-	pageTitle="Azure AD Connect-Synchronisierung: Verwalten des Azure AD-Dienstkontos | Microsoft Azure"
-	description="In diesem Thema wird beschrieben, wie Sie das Azure AD-Dienstkonto wiederherstellen."
-	services="active-directory"
-    keywords="AADSTS70002, AADSTS50054, Zurücksetzen des Kennworts für das Dienstkonto des Azure AD Connect-Synchronisierungsconnectors"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect sync: How to manage the Azure AD service account | Microsoft Azure"
+    description="This topic documents how to restore the Azure AD service account."
+    services="active-directory"
+    keywords="AADSTS70002, AADSTS50054, How to reset the password for the Azure AD Connect sync Connector service account"
+    documentationCenter=""
+    authors="andkjell"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2016"
-	ms.author="andkjell"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/01/2016"
+    ms.author="billmath"/>
 
-# Azure AD Connect-Synchronisierung: Verwalten des Azure AD-Dienstkontos
-Das vom Azure AD-Connector verwendete Dienstkonto sollte keine Verwaltung erfordern. Wenn Sie die Anmeldeinformationen des Kontos zurückzusetzen müssen, finden Sie die notwendigen Informationen in diesem Thema. Dies ist beispielsweise der Fall, wenn ein globaler Administrator versehentlich über PowerShell das Kennwort des Dienstkontos zurückgesetzt hat.
 
-## Zurücksetzen der Anmeldeinformationen
-Wenn das im Azure AD-Connector definierte Dienstkonto aufgrund von Authentifizierungsproblemen keine Verbindung mit Azure AD herstellen kann, kann das Kennwort zurückgesetzt werden.
+# <a name="azure-ad-connect-sync:-how-to-manage-the-azure-ad-service-account"></a>Azure AD Connect sync: How to manage the Azure AD service account
+The service account used by the Azure AD Connector is supposed to be service free. If you need to reset its credentials, then this topic is for you. For example, if a Global Administrator has by mistake reset the password on the service account using PowerShell.
 
-1. Melden Sie sich beim Azure AD Connect-Synchronisierungsserver an, und starten Sie PowerShell.
-2. Führen Sie `Add-ADSyncAADServiceAccount` aus. ![PowerShell-Cmdlet addadsyncaadserviceaccount](./media/active-directory-aadconnectsync-howto-azureadaccount/addadsyncaadserviceaccount.png)
-3. Stellen Sie Anmeldeinformationen eines globalen Azure AD-Administrators bereit.
+## <a name="reset-the-credentials"></a>Reset the credentials
+If the service account defined on the Azure AD Connector cannot contact Azure AD due to authentication problems, the password can be reset.
 
-Dieses Cmdlet setzt das Kennwort für das Dienstkonto zurück und aktualisiert es sowohl in Azure AD als auch im Synchronisierungsmodul.
+1. Sign in to the Azure AD Connect sync server and start PowerShell.
+2. Run `Add-ADSyncAADServiceAccount`.  
+![PowerShell cmdlet addadsyncaadserviceaccount](./media/active-directory-aadconnectsync-howto-azureadaccount/addadsyncaadserviceaccount.png)
+3. Provide Azure AD Global admin credentials.
 
-## Bekannte Probleme, die sich mit diesen Schritten beheben lassen
-Dieser Abschnitt enthält eine Liste mit Fehlern, die von Kunden gemeldet und durch das Zurücksetzen der Anmeldeinformationen für das Azure AD-Dienstkonto behoben wurden.
+This cmdlet resets the password for the service account and update it both in Azure AD and in the sync engine.
+
+## <a name="known-issues-these-steps-can-solve"></a>Known issues these steps can solve
+This section is a list of errors reported by customers that were fixed by a credentials reset on the Azure AD service account.
 
 -----------
-Event 6900 The server encountered an unexpected error while processing a password change notification: AADSTS70002: Error validating credentials. AADSTS50054: Old password is used for authentication. (Ereignis 6900: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+Event 6900  
+The server encountered an unexpected error while processing a password change notification:  
+AADSTS70002: Error validating credentials. AADSTS50054: Old password is used for authentication.
 
 ----------
-Event 659 Error while retrieving password policy sync configuration. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException: AADSTS70002: Error validating credentials. AADSTS50054: Old password is used for authentication. (Ereignis 659: Fehler beim Abrufen der Konfiguration für die Kennwortrichtliniensynchronisierung. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException: AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+Event 659  
+Error while retrieving password policy sync configuration. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
+AADSTS70002: Error validating credentials. AADSTS50054: Old password is used for authentication.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-**Übersichtsthemen**
+**Overview topics**
 
-- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
-- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+- [Azure AD Connect sync: Understand and customize synchronization](active-directory-aadconnectsync-whatis.md)
+- [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

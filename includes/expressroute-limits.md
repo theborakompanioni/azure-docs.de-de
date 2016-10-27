@@ -1,30 +1,34 @@
-#### Einschränkungen für ExpressRoute
+#### <a name="expressroute-limits"></a>ExpressRoute Limits
 
-Für ExpressRoute-Ressourcen gelten pro Abonnement die folgenden Einschränkungen.
+The following limits apply to ExpressRoute resources per subscription.
 
-| Ressource | Standardlimit |
+| Resource | Default Limit |
 |---|---|
-| ExpressRoute-Verbindungen pro Abonnement | 10 |
-| ExpressRoute-Verbindungen pro Region und Abonnement für ARM | 10 |
-| Maximale Anzahl von Routen für Private Peering in Azure mit ExpressRoute-Standard | 4\.000 |
-| Maximale Anzahl von Routen für Private Peering in Azure mit ExpressRoute-Premium-Add-on | 10\.000 |
-| Maximale Anzahl von Routen für Public Peering in Azure mit ExpressRoute-Standard | 200 |
-| Maximale Anzahl von Routen für Public Peering in Azure mit ExpressRoute-Premium-Add-on | 200 |
-| Maximale Anzahl von Routen für Microsoft-Peering in Azure mit ExpressRoute-Standard | 200 |
-| Maximale Anzahl von Routen für Microsoft-Peering in Azure mit ExpressRoute-Premium-Add-on | 200 |
-| Anzahl der pro ExpressRoute-Leitung zulässigen virtuellen Netzwerkverbindungen | siehe Tabelle unten |
+| ExpressRoute circuits per subscription | 10 |
+| ExpressRoute circuits per region per subscription for ARM | 10 |
+| Maximum number of routes for Azure private peering with ExpressRoute standard | 4,000 |
+| Maximum number of routes for Azure private peering with ExpressRoute premium add-on | 10,000 |
+| Maximum number of routes for Azure public peering with ExpressRoute standard | 200 |
+| Maximum number of routes for Azure public peering with ExpressRoute premium add-on | 200 |
+| Maximum number of routes for Azure Microsoft peering with ExpressRoute standard | 200 |
+| Maximum number of routes for Azure Microsoft peering with ExpressRoute premium add-on | 200 |
+| Number of virtual network links allowed per ExpressRoute circuit | see table below |
 
-#### Anzahl der virtuellen Netzwerke pro ExpressRoute-Verbindung
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Number of Virtual Networks per ExpressRoute circuit
 
-| **Verbindungsgröße** | **Anzahl der VNet-Links – Standard** | **Anzahl der VNet-Links – Premium-Add-on** |
+| **Circuit Size** | **Number of VNet links for standard** | **Number of VNet Links with Premium add-on** |
 |---|---|---|
-| 50 MBit/s | 10 | 20 |
-| 100 MBit/s | 10 | 25 |
-| 200 MBit/s | 10 | 25 |
-| 500 MBit/s | 10 | 40 |
-| 1 GBit/s | 10 | 50 |
-| 2 GBit/s | 10 | 60 |
-| 5 GBit/s | 10 | 75 |
-| 10 GBit/s | 10 | 100 |
+| 50 Mbps | 10 | 20 |
+| 100 Mbps | 10 | 25 |
+| 200 Mbps | 10 | 25 |
+| 500 Mbps | 10 | 40 |
+| 1 Gbps | 10 | 50 |
+| 2 Gbps | 10 | 60 |
+| 5 Gbps | 10 | 75 |
+| 10 Gbps | 10 | 100 |
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

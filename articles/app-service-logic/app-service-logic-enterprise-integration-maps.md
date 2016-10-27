@@ -1,64 +1,80 @@
 <properties 
-	pageTitle="Übersicht zu Zuordnungen unter Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie Zuordnungen mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+    pageTitle="Overview of maps Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
+    description="Learn how to use maps with the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="msftman" 
+    manager="erikre" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/08/2016" 
+    ms.author="deonhe"/>
 
-# Informationen zu Zuordnungen und Enterprise Integration Pack
 
-## Übersicht
-Für die Unternehmensintegration werden Zuordnungen verwendet, um XML-Daten von einem Format in an anderes zu transformieren.
+# <a name="learn-about-maps-and-the-enterprise-integration-pack"></a>Learn about maps and the Enterprise Integration Pack
 
-## Was ist eine Zuordnung?
-Eine Zuordnung ist ein XML-Dokument, das definiert, welche Daten in einem Dokument in ein anderes Format transformiert werden sollen.
+## <a name="overview"></a>Overview
+Enterprise integration uses maps to transform XML data from one format to another format. 
 
-## Gründe für Zuordnungen
-Angenommen, Sie erhalten regelmäßig B2B-Aufträge oder -Rechnungen von einem Kunden, der das Format JJMMTT für Datumsangaben verwendet. In Ihrer Organisation wird das Datum allerdings im Format TTMMJJJJ gespeichert. Mithilfe einer Zuordnung können das Datumsformat JJMMTT in das Format TTMMJJJJ *transformieren*, ehe die Auftrags- oder Rechnungsdetails in Ihrer Kundendatenbank gespeichert werden.
+## <a name="what-is-a-map?"></a>What is a map?
+A map is an XML document that defines which data in a document should be transformed into another format. 
 
-## Wie erstelle ich eine Zuordnung?
-Das [Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") für Visual Studio 2015 ermöglicht die Erstellung von BizTalk Integration-Projekten. Durch Erstellen einer Integration Map-Datei können Sie Elemente visuell zwischen zwei XML-Schemadateien zuordnen. Nach der Erstellung dieses Projekts wird ein XSLT-Dokument ausgegeben.
+## <a name="why-use-maps?"></a>Why use maps?
+Let's assume you regularly receive B2B orders or invoices from a customers who uses the YYYMMDD format for dates. However, in your organization, you store dates in the MMDDYYY format. You can use a map to *transform* the YYYMMDD date format into the MMDDYYY before storing the order or invoice details in your customer activity database.
 
-## Hochladen einer Zuordnung
-Gehen Sie im Azure-Portal so vor:
-1. Wählen Sie **Durchsuchen** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
-2. Geben Sie in das Filtersuchfeld **Integration** ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
-3. Wählen Sie das **Integrationskonto** aus, dem Sie die Zuordnung hinzufügen möchten. ![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
-4.  Wählen Sie die Kachel **Zuordnungen** aus. ![](./media/app-service-logic-enterprise-integration-maps/map-1.png)
-5. Wählen Sie auf dem geöffneten Blatt „Zuordnungen“ die Schaltfläche **Hinzufügen** aus. ![](./media/app-service-logic-enterprise-integration-maps/map-2.png)
-6. Geben Sie einen **Namen** für die Zuordnung ein. Wählen Sie dann zum Hochladen der Zuordnungsdatei das Ordnersymbol rechts neben dem Textfeld **Zuordnung** aus. Wählen Sie nach Abschluss des Hochladevorgangs die Schaltfläche **OK** aus. ![](./media/app-service-logic-enterprise-integration-maps/map-3.png)
-7. Die Zuordnung wurde Ihrem Integrationskonto hinzugefügt. Sie erhalten auf dem Bildschirm die Benachrichtigung, ob das Hinzufügen der Zuordnungsdatei erfolgreich war oder nicht. Nachdem Sie die Benachrichtigung erhalten haben, wählen Sie die Kachel **Zuordnungen** aus, auf der auf dem Blatt „Zuordnungen“ die neu hinzugefügte Zuordnung angezeigt wird: ![](./media/app-service-logic-enterprise-integration-maps/map-4.png)
+## <a name="how-do-i-create-a-map?"></a>How do i create a map?
+The [Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about the enterprise integration pack") for Visual Studio 2015 allows Biztalk Integration projects to be created.  Creating an Integration Map file will allow you to visually map items between two XML schema files.  After building this project, an XSLT document is output.
 
-## Bearbeiten eine Zuordnung
-Zum Bearbeiten einer Zuordnung müssen Sie eine neue Zuordnungsdatei mit den gewünschten Änderungen hochladen. Zunächst müssen Sie die Zuordnung herunterladen und bearbeiten.
+## <a name="how-to-upload-a-map?"></a>How to upload a map?
+From the Azure portal:  
+1. Select **Browse**  
+![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)    
+2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+ ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)  
+3. Select the **integration account** into which you will add the map  
+![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)  
+4.  Select the **Maps** tile  
+![](./media/app-service-logic-enterprise-integration-maps/map-1.png)  
+5. Select the **Add** button in the Maps blade that opens  
+![](./media/app-service-logic-enterprise-integration-maps/map-2.png)  
+6. Enter a **Name** for your map then, to upload the map file, select the folder icon on the right side of the **Map** text box. After the upload process is completed, select the **OK** button.  
+![](./media/app-service-logic-enterprise-integration-maps/map-3.png)  
+7. The map is now being added into your integration account. You will receive an onscreen notification that indicates the success or failure of adding the map file. After you receive the notification, select the **Maps** tile, you will then see your newly added map in the Maps blade:    
+![](./media/app-service-logic-enterprise-integration-maps/map-4.png)  
 
-Gehen Sie wie folgt vor, um eine neue Zuordnung hochzuladen, die eine vorhandene Zuordnung ersetzt:
-1. Wählen Sie die Kachel **Zuordnungen** aus.
-2. Wählen Sie auf dem geöffneten Blatt „Zuordnungen“ die Zuordnung aus, die Sie bearbeiten möchten.
-3. Wählen Sie auf dem Blatt **Zuordnungen** den Link **Aktualisieren** aus. ![](./media/app-service-logic-enterprise-integration-maps/edit-1.png)
-4. Wählen Sie im eingeblendeten Dialogfeld zur Dateiauswahl die Zuordnungsdatei, die Sie hochladen möchten, und dann **Öffnen** aus. ![](./media/app-service-logic-enterprise-integration-maps/edit-2.png)
-5. Nach dem Hochladen der Zuordnung erhalten Sie eine Benachrichtigung auf dem Bildschirm.
+## <a name="how-to-edit-a-map?"></a>How to edit a map?
+To edit a map, you must upload a new map file with the changes you desire. You can first download the map and edit it. 
 
-## Löschen einer Zuordnung
-1. Wählen Sie die Kachel **Zuordnungen** aus.
-2. Wählen Sie auf dem geöffneten Blatt „Zuordnungen“ die Zuordnung aus, die Sie löschen möchten.
-3. Wählen Sie den Link **Löschen** aus. ![](./media/app-service-logic-enterprise-integration-maps/delete.png)
-4. Bestätigen Sie, dass Sie die Zuordnung wirklich löschen möchten. ![](./media/app-service-logic-enterprise-integration-maps/delete-confirmation-1.png)
+Follow these steps to upload a new map that replaces an existing map:  
+1. Select the **Maps** tile  
+2. Select the map you wish to edit when the Maps blade opens up  
+3. On the **Maps** blade, select the **Update** link  
+![](./media/app-service-logic-enterprise-integration-maps/edit-1.png)   
+4. Select the map file you wish to upload by using the file picker dialog that opens up then select **Open** in the file picker   
+![](./media/app-service-logic-enterprise-integration-maps/edit-2.png)   
+5. You will receive a notification popup after the map is uploaded.    
 
-## Nächste Schritte
-- [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
-- [Weitere Informationen zu Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
-- [Weitere Informationen zu Transformationen](./app-service-logic-enterprise-integration-transform.md "Informationen zu Unternehmensintegrationstransformationen")
+## <a name="how-to-delete-a-map?"></a>How to delete a map?
+1. Select the **Maps** tile  
+2. Select the map you wish to delete when the Maps blade opens up  
+3. Select the **Delete** link    
+![](./media/app-service-logic-enterprise-integration-maps/delete.png)   
+4. Confirm you that you really intend to delete the map.  
+![](./media/app-service-logic-enterprise-integration-maps/delete-confirmation-1.png)   
 
-<!---HONumber=AcomDC_0810_2016-->
+## <a name="next-steps"></a>Next Steps
+- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")  
+- [Learn more about agreements](./app-service-logic-enterprise-integration-agreements.md "Learn about enterprise integration agreements")  
+- [Learn more about transforms](./app-service-logic-enterprise-integration-transform.md "Learn about enterprise integration transforms")  
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Verwenden von Emulator Express zum Ausführen und Debuggen eines Clouddiensts auf einem lokalen Computer | Microsoft Azure"
-   description="Verwenden von Emulator Express zum Ausführen und Debuggen eines Clouddiensts auf einem lokalen Computer"
+   pageTitle="Using Emulator Express to run and debug a cloud service on a local machine | Microsoft Azure"
+   description="Using Emulator Express to run and debug a cloud service on a local machine"
    services="visual-studio-online"
    documentationCenter="n/a"
    authors="TomArcher"
@@ -16,42 +16,47 @@
    ms.author="tarcher" />
 
 
-# Verwenden von Emulator Express zum Ausführen und Debuggen eines Clouddiensts auf einem lokalen Computer
 
-Mithilfe von Emulator Express können Sie einen Clouddienst testen und debuggen, ohne Visual Studio als Administrator auszuführen. Abhängig von den Anforderungen Ihres Clouddiensts können Sie die Projekteinstellungen für die Verwendung von Emulator Express oder des vollständigen Emulators festlegen. Weitere Informationen zum vollständigen Emulator finden Sie unter [Ausführen einer Azure-Anwendung im Serveremulator](./storage/storage-use-emulator.md). Emulator Express war erstmals in Azure SDK 2.1 enthalten. Ab Azure SDK 2.3 handelt es sich um den Standardemulator.
+# <a name="using-emulator-express-to-run-and-debug-a-cloud-service-on-a-local-machine"></a>Using Emulator Express to run and debug a cloud service on a local machine
 
-## Verwenden von Emulator Express in der Visual Studio IDE
+By using Emulator Express, you can test and debug a cloud service without running Visual Studio as an administrator. You can set your project settings to use either Emulator Express or the full emulator, depending on the requirements of your cloud service. For more information about the full emulator, see [Run an Azure Application in the Compute Emulator](./storage/storage-use-emulator.md). Emulator Express was first included in Azure SDK 2.1, and as of Azure SDK 2.3, it is the default emulator.
 
-Wenn Sie ein neues Projekt in Azure SDK 2.3 oder höher erstellen, ist Emulator Express bereits ausgewählt. Für vorhandene Projekte, die mit einer früheren Version des SDKs erstellt wurden, führen Sie die folgenden Schritte aus, um Emulator Express auszuwählen.
+## <a name="using-emulator-express-in-the-visual-studio-ide"></a>Using Emulator Express in the Visual Studio IDE
 
-### So konfigurieren Sie ein Projekt für die Verwendung von Emulator Express
+When you create a new project in Azure SDK 2.3 or later, Emulator Express is already selected. For existing projects that were created with an earlier version of the SDK, follow these steps to select Emulator Express.
 
-1. Öffnen Sie das Kontextmenü für das Azure-Projekt, wählen Sie **Eigenschaften** und dann die Registerkarte **Web** aus.
+### <a name="to-configure-a-project-to-use-emulator-express"></a>To configure a project to use Emulator Express
 
-1. Wählen Sie unter **Lokaler Bereitstellungsserver** die Schaltfläche **IIS Express verwenden** aus. Emulator Express ist nicht mit dem IIS-Webserver kompatibel.
+1. On the shortcut menu for the Azure project, choose **Properties**, and then choose the **Web** tab.
 
-1. Wählen Sie unter **Emulator** das Optionsfeld **Emulator Express verwenden** aus.
+1. Under **Local Development Server**, choose the **Use IIS Express option** button. Emulator Express isn't compatible with IIS Web Server.
+
+1. Under **Emulator**, choose the **Use Emulator Express** option button.
 
     ![Emulator Express](./media/vs-azure-tools-emulator-express-debug-run/IC673363.gif)
 
-## Starten von Emulator Express über eine Eingabeaufforderung
+## <a name="launching-emulator-express-at-a-command-prompt"></a>Launching Emulator Express at a command prompt
 
-Mithilfe der /useemulatorexpress-Option können Sie die Express-Version des Azure-Compute-Emulators (csrun.exe) über eine Eingabeaufforderung starten.
+At a command prompt, you can launch the express version of the Azure Compute Emulator, csrun.exe, by using the /useemulatorexpress option.
 
-## Einschränkungen
+## <a name="limitations"></a>Limitations
 
-Bevor Sie Emulator Express verwenden, sollten Sie sich einige Einschränkungen vergegenwärtigen:
+Before you use Emulator Express, you should be aware of some limitations:
 
-- Emulator Express ist nicht mit dem IIS-Webserver kompatibel.
+- Emulator Express isn't compatible with IIS Web Server.
 
-- Der Clouddienst kann mehrere Rollen enthalten, dabei ist jedoch jede Rolle auf eine Instanz beschränkt.
+- Your cloud service can contain multiple roles, but each role is limited to one instance.
 
-- Der Zugriff auf Portnummern unterhalb von 1000 ist nicht möglich. Wenn Sie beispielsweise einen Authentifizierungsanbieter verwenden, der üblicherweise einen Port unter 1000 verwendet, müssen Sie diesen Wert u. U. in eine Portnummer über 1000 ändern.
+- You can't access port numbers below 1000. For example, if you use an authentication provider that normally uses a port below 1000, you might need to change this value to a port number that's above 1000.
 
-- Einschränkungen, die auf den Azure-Compute-Emulator zutreffen, gelten auch für Emulator Express. Sie können z. B. nicht mehr als 50 Rolleninstanzen pro Bereitstellung verwenden. Siehe [Ausführen einer Azure-Anwendung im Serveremulator](http://go.microsoft.com/fwlink/p/?LinkId=623050).
+- Any limitations that apply to the Azure Compute Emulator also apply to Emulator Express. For example, you can't have more than 50 role instances per deployment. See [Run an Azure Application in the Compute Emulator](http://go.microsoft.com/fwlink/p/?LinkId=623050)
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Debuggen von Cloud-Diensten.](https://msdn.microsoft.com/library/azure/ee405479.aspx)
+[Debugging Cloud Services](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

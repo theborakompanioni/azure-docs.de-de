@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric Reliable Actors – Übersicht | Microsoft Azure"
-   description="Einführung in das Programmiermodell Service Fabric Reliable Actors"
+   pageTitle="Service Fabric Reliable Actors Overview | Microsoft Azure"
+   description="Introduction to the Service Fabric Reliable Actors programming model."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,79 +13,80 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/06/2016"
+   ms.date="10/19/2016"
    ms.author="vturecek"/>
 
-# Einführung in Service Fabric Reliable Actors
 
-Reliable Actors ist ein Service Fabric-Anwendungsframework, das auf dem Muster [Virtueller Akteur](http://research.microsoft.com/de-DE/projects/orleans/) basiert. Die Reliable Actors-API bietet ein Singlethread-Programmiermodell, das auf der Skalierbarkeit und Zuverlässigkeit aufbaut, die Service Fabric gewährleistet.
+# <a name="introduction-to-service-fabric-reliable-actors"></a>Introduction to Service Fabric Reliable Actors
 
-## Was sind Akteure?
-Ein Akteur ist eine isolierte, unabhängige Einheit aus Computedienst und Zustand mit Singlethread-Ausführung. Das [Akteurmuster](https://en.wikipedia.org/wiki/Actor_model) ist ein Rechenmodell für parallel ausgeführte oder verteilte Systeme, in denen eine große Anzahl von diesen Akteuren gleichzeitig und unabhängig voneinander ausgeführt werden können. Akteure können miteinander kommunizieren und weitere Akteure erstellen.
+Reliable Actors is a Service Fabric application framework based on the [Virtual Actor](http://research.microsoft.com/en-us/projects/orleans/) pattern. The Reliable Actors API provides a single-threaded programming model built on the scalability and reliability guarantees provided by Service Fabric.
 
-### Anwendungsbereiche für Reliable Actors
+## <a name="what-are-actors?"></a>What are Actors?
+An actor is an isolated, independent unit of compute and state with single-threaded execution. The [actor pattern](https://en.wikipedia.org/wiki/Actor_model) is a computational model for concurrent or distributed systems in which a large number of these actors can execute simultaneously and independently of each other. Actors can communicate with each other and they can create more actors.
 
-Service Fabric Reliable Actors ist eine Implementierung des Akteurentwurfsmusters. Die Entscheidung, ob ein bestimmtes Muster verwendet werden soll, wird basierend darauf getroffen, ob ein Softwareentwurfsproblem dem Muster entspricht.
+### <a name="when-to-use-reliable-actors"></a>When to use Reliable Actors
 
-Obwohl das Akteurentwurfsmuster für eine Reihe von Problemen und Szenarien mit verteilten Systemen gut geeignet sein kann, müssen die Einschränkungen des Musters und des Frameworks für die Implementierung genau bedacht werden. Berücksichtigen Sie in Verbindung mit Ihrem Problem oder Szenario das Muster in den folgenden Fällen:
+Service Fabric Reliable Actors is an implementation of the actor design pattern. As with any software design pattern, the decision whether to use a specific pattern is made based on whether or not a software design problem fits the pattern.
 
- - Der Problembereich enthält zahlreiche (mehrere Tausend) kleine, unabhängige und isolierte Zustands- und Logikeinheiten.
+Although the actor design pattern can be a good fit to a number of distributed systems problems and scenarios, careful consideration of the constraints of the pattern and the framework implementing it must be made. As general guidance, consider the actor pattern to model your problem or scenario if:
 
- - Sie möchten mit Singlethread-Objekten arbeiten, die keine wesentliche Interaktion von externen Komponenten erfordern (etwa, um den Zustand für einen Satz von Akteuren abzufragen).
+ - Your problem space involves a large number (thousands or more) of small, independent, and isolated units of state and logic.
 
- - Ihre Akteurinstanzen blockieren Aufrufer durch die Ausgabe von E/A-Vorgängen nicht mit unvorhersagbaren Verzögerungen.
+ - You want to work with single-threaded objects that do not require significant interaction from external components, including querying state across a set of actors.
 
-## Akteure in Service Fabric
+ - Your actor instances won't block callers with unpredictable delays by issuing I/O operations.
 
-In Service Fabric werden Akteure im Reliable Actors-Framework implementiert. Hierbei handelt es sich um ein auf dem Akteurmuster basierendes Anwendungsframework, das auf [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md) aufbaut. Jeder von Ihnen geschriebene Reliable Actors-Dienst ist tatsächlich eine partitionierte, zustandsbehaftete Reliable Services-Instanz.
+## <a name="actors-in-service-fabric"></a>Actors in Service Fabric
 
-Jeder Akteur wird als Instanz eines Akteurtyps definiert (genau wie ein .NET-Objekt eine Instanz eines .NET-Typs darstellt). Beispielsweise kann es einen Actor-Typ geben, der die Funktionalität eines Rechners implementiert, und es kann viele Actors dieses Typs geben, die auf verschiedenen Knoten in einem Cluster verteilt sind. Jeder solche Actor wird durch eine Actor-ID eindeutig identifiziert.
+In Service Fabric, actors are implemented in the Reliable Actors framework: An actor-pattern-based application framework built on top of [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md). Each Reliable Actor service you write is actually a partitioned, stateful Reliable Service.
 
-### Actor-Lebensdauer
+Every actor is defined as an instance of an actor type, identical to the way a .NET object is an instance of a .NET type. For example, there may be an actor type that implements the functionality of a calculator and there could be many actors of that type that are distributed on various nodes across a cluster. Each such actor is uniquely identified by an actor ID.
 
-Service Fabric-Actors sind virtuell. Daher ist ihre Lebensdauer nicht an die Darstellung im Arbeitsspeicher gebunden. Sie brauchen daher nicht explizit erstellt oder zerstört zu werden. Die Reliable Actors-Laufzeit aktiviert automatisch einen Akteur, wenn sie zum ersten Mal eine Anforderung für diese Akteur-ID empfängt. Wenn ein Akteur für einen bestimmten Zeitraum nicht verwendet wird, erfasst die Reliable Actors-Laufzeit das In-Memory-Objekt in der Garbage Collection. Sie verwaltet außerdem Informationen zur Existenz des Actors, falls dieser später erneut aktiviert werden muss. Weitere Informationen finden Sie unter [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md).
+### <a name="actor-lifetime"></a>Actor Lifetime
 
-Diese Abstraktion der Lebensdauer virtueller Akteure birgt infolge des Modells für virtuelle Akteure einige Nachteile, und die Reliable Actors-Implementierung weicht tatsächlich manchmal von diesem Modell ab.
+Service Fabric actors are virtual, meaning that their lifetime is not tied to their in-memory representation. As a result, they do not need to be explicitly created or destroyed. The Reliable Actors runtime automatically activates an actor the first time it receives a request for that actor ID. If an actor is not used for a period of time, the Reliable Actors runtime garbage-collects the in-memory object. It will also maintain knowledge of the actor's existence should it need to be reactivated later. For more details, see [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md).
 
- - Ein Akteur wird automatisch aktiviert (und löst die Erstellung eines Akteurobjekts aus), sobald eine Nachricht zum ersten Mal an die Akteur-ID gesendet wird. Nach einer gewissen Zeit wird für das Akteurobjekt eine Garbage Collection ausgeführt. Wenn die Akteur-ID in Zukunft erneut verwendet wird, wird ein neues Akteurobjekt erstellt. Die Lebensdauer eines Akteurzustands ist länger als die Lebensdauer des Objekts, wenn der Akteur im Zustands-Manager gespeichert ist.
+This virtual actor lifetime abstraction carries some caveats as a result of the virtual actor model, and in fact the Reliable Actors implementation deviates at times from this model.
+
+ - An actor is automatically activated (causing an actor object to be constructed) the first time a message is sent to its actor ID. After some period of time, the actor object is garbage collected. In the future, using the actor ID again, causes a new actor object to be constructed. An actor's state outlives the object's lifetime when stored in the state manager.
  
- - Durch den Aufruf einer Akteurmethode für eine Akteur-ID wird dieser Akteur aktiviert. Aus diesem Grund wird der Konstruktor von Akteurtypen implizit von der Laufzeit aufgerufen. Daher kann Clientcode keine Parameter an den Konstruktor des Akteurtyps übergeben, obwohl Parameter vom Dienst selbst an den Akteurkonstruktor übergeben werden können. Das führt dazu, dass Akteure unter Umständen mit einem teilweise initialisierten Zustand erstellt werden, wenn andere Methoden dafür aufgerufen werden, falls der Akteur Initialisierungsparameter vom Client anfordert. Es gibt keinen einzelnen Einstiegspunkt für die Aktivierung eines Akteurs auf dem Client.
+ - Calling any actor method for an actor ID activates that actor. For this reason, actor types have their constructor called implicitly by the runtime. Therefore, client code cannot pass parameters to the actor type's constructor, although parameters may be passed to the actor's constructor by the service itself. The result is that actors may be constructed in a partially-initialized state by the time other methods are called on it, if the actor requires initialization parameters from the client. There is no single entry point for the activation of an actor from the client.
 
- - Obwohl Reliable Actors Akteurobjekte implizit erstellt, haben Sie die Möglichkeit, einen Akteur und seinen Zustand explizit zu löschen.
+ - Although Reliable Actors implicitly create actor objects; you do have the ability to explicitly delete an actor and its state. 
 
-### Verteilung und Failover
+### <a name="distribution-and-failover"></a>Distribution and failover
 
-Um Skalierbarkeit und Zuverlässigkeit zu gewährleisten, verteilt Service Fabric Akteure im gesamten Cluster und migriert sie bei Bedarf automatisch von fehlerhaften zu fehlerfreien Knoten. Dies stellt eine Abstraktion einer [partitionierten, zustandsbehafteten Reliable Services-Instanz](./service-fabric-concepts-partitioning.md) dar. Verteilung, Skalierbarkeit, Zuverlässigkeit und automatisches Failover werden aufgrund der Tatsache bereitgestellt, dass die Akteure in einer zustandsbehafteten Reliable Services-Instanz ausgeführt werden, die als *Actordienst* bezeichnet wird.
+To provide scalability and reliability, Service Fabric distributes actors throughout the cluster and automatically migrates them from failed nodes to healthy ones as required. This is an abstraction over a [partitioned, stateful Reliable Service](./service-fabric-concepts-partitioning.md). Distribution, scalability, reliability, and automatic failover are all provided by virtue of the fact that actors are running inside a stateful Reliable Service called the *Actor Service*. 
 
-Akteure werden auf die Partitionen des Actordiensts und diese Partitionen auf die Knoten in einem Service Fabric-Cluster verteilt. Jede Dienstpartition enthält einen Satz von Akteuren. Service Fabric verwaltet die Verteilung und das Failover für die Dienstpartitionen.
+Actors are distributed across the partitions of the Actor Service, and those partitions are distributed across the nodes in a Service Fabric cluster. Each service partition contains a set of actors. Service Fabric manages distribution and failover of the service partitions. 
 
-Ein Actordienst mit neun Partitionen, der mithilfe der standardmäßigen Akteurpartitionsplatzierung auf drei Knoten bereitgestellt wird, wird beispielsweise wie folgt verteilt:
+For example, an actor service with nine partitions deployed to three nodes using the default actor partition placement would be distributed thusly:
 
-![Reliable Actors-Verteilung][2]
+![Reliable Actors distribution][2]
 
-Das Akteurframework verwaltet für Sie die Einstellungen für das Partitionsschema und den Schlüsselbereich. Dadurch wird die Auswahl etwas vereinfacht, es müssen jedoch auch einige Punkte berücksichtigt werden:
+The Actor Framework manages partition scheme and key range settings for you. This simplifies some choices but also carries some consideration:
 
- - In Reliable Services können Sie ein Partitionierungsschema, einen Schlüsselbereich (bei Verwendung eines Bereichspartitionierungsschemas) und eine Partitionsanzahl auswählen. Reliable Actors ist auf das Bereichspartitionierungsschema (das einheitliche Int64-Schema) beschränkt und erfordert die Verwendung des vollständigen Int64-Schlüsselbereichs.
+ - Reliable Services allows you to choose a partitioning scheme, key range (when using a range partitioning scheme), and partition count. Reliable Actors is restricted to the range partitioning scheme (the uniform Int64 scheme) and requires you use the full Int64 key range.
  
- - Akteure werden standardmäßig nach dem Zufallsprinzip auf Partitionen platziert, was zu einer gleichmäßigen Verteilung führt.
+ - By default, actors are randomly placed into partitions resulting in uniform distribution. 
  
- - Da Akteure zufällig platziert werden, ist zu erwarten, dass Akteurvorgänge immer Netzwerkkommunikation erfordern (etwa zur Serialisierung und Deserialisierung von Methodenaufrufdaten), was zu Latenzen und Mehraufwand führt.
+ - Because actors are randomly placed, it should be expected that actor operations will always require network communication, including serialization and deserialization of method call data, incurring latency and overhead.
  
- - In erweiterten Szenarien kann die Akteurpartitionsplatzierung mithilfe von Int64-Akteur-IDs gesteuert werden, die bestimmten Partitionen zugeordnet werden. Dies kann jedoch zu einer unausgeglichenen Verteilung von Akteuren auf Partitionen führen.
+ - In advanced scenarios, it is possible to control actor partition placement by using Int64 actor IDs that map to specific partitions. However, doing so can result in an unbalanced distribution of actors across partitions. 
 
-Weitere Informationen zur Partitionierung von Actordiensten finden Sie in den [Partitionierungskonzepten für Akteure](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
+For more information on how actor services are partitioned, refer to [partitioning concepts for actors](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors). 
 
-### Actor-Kommunikation
-Akteurinteraktionen werden in einer Schnittstelle definiert, die vom Akteur, der die Schnittstelle implementiert, und vom Client, der einen Proxy für einen Akteur über dieselbe Schnittstelle abruft, genutzt wird. Da diese Schnittstelle zum asynchronen Aufrufen von Akteurmethoden verwendet wird, muss jede Methode in der Schnittstelle einen Task zurückgeben.
+### <a name="actor-communication"></a>Actor communication
+Actor interactions are defined in an interface that is shared by the actor that implements the interface, and the client that gets a proxy to an actor via the same interface. Because this interface is used to invoke actor methods asynchronously, every method on the interface must be Task-returning.
 
-Methodenaufrufe und die entsprechenden Antworten führen letztendlich zu Netzwerkanforderungen im Cluster, daher müssen die Argumente und die Ergebnistypen der zurückgegebenen Tasks von der Plattform serialisierbar sein. Sie müssen vor allem [Datenvertrag-serialisierbar](service-fabric-reliable-actors-notes-on-actor-type-serialization.md) sein.
+Method invocations and their responses ultimately result in network requests across the cluster, so the arguments and the result types of the tasks that they return must be serializable by the platform. In particular, they must be [data contract serializable](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-#### Actor-Proxy
-Die Reliable Actors-Client-API ermöglicht die Kommunikation zwischen einer Actor-Instanz und einem Actor-Client. Für die Kommunikation mit einem Actor erstellt ein Client ein Actor-Proxy-Objekt, das die Actor-Schnittstelle implementiert. Der Client interagiert mit dem Actor , indem er Methoden auf dem Proxy-Objekt aufruft. Der Actor-Proxy kann für die Client-zu-Actor- sowie für die Actor-zu-Actor-Kommunikation verwendet werden.
+#### <a name="the-actor-proxy"></a>The actor proxy
+The Reliable Actors client API provides communication between an actor instance and an actor client. To communicate with an actor, a client creates an actor proxy object that implements the actor interface. The client interacts with the actor by invoking methods on the proxy object. The actor proxy can be used for client-to-actor and actor-to-actor communication. 
 
 ```csharp
 // Create a randomly distributed actor ID
-ActorId actorId = ActorId.NewId();
+ActorId actorId = ActorId.CreateRandom();
 
 // This only creates a proxy object, it does not activate an actor or invoke any methods yet.
 IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/MyActorService"));
@@ -94,68 +95,72 @@ IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/M
 await myActor.DoWorkAsync();
 ```
 
-Beachten Sie die beiden Informationen, die zum Erstellen des Actor-Proxyobjekts verwendet werden: die Actor-ID und der Name der Anwendung. Die Akteur-ID dient zur eindeutigen Identifikation des Akteurs, während der Anwendungsname die [Service Fabric-Anwendung](service-fabric-reliable-actors-platform.md#service-fabric-application-model-concepts-for-actors) bezeichnet, in der der Akteur bereitgestellt wird.
+Note that the two pieces of information used to create the actor proxy object are the actor ID and the application name. The actor ID uniquely identifies the actor, while the application name identifies the [Service Fabric application](service-fabric-reliable-actors-platform.md#service-fabric-application-model-concepts-for-actors) where the actor is deployed.
 
-Die Klasse `ActorProxy` auf dem Client nimmt die erforderliche Auflösung vor, um den Akteur nach ID zu suchen und einen Kommunikationskanal mit ihm zu öffnen. Außerdem versucht die Klasse `ActorProxy` bei Kommunikationsfehlern und Failovern, den Akteur zu finden. Die Nachrichtenübermittlung weist daher folgende Merkmale auf:
+The `ActorProxy` class on the client side performs the necessary resolution to locate the actor by ID and open a communication channel with it. The `ActorProxy` also retries to locate the actor in the cases of communication failures and failovers. As a result, message delivery has the following characteristics:
 
- - Die Nachrichtenübermittlung ist vom Typ „Beste Leistung“.
- - Akteure können doppelte Nachrichten vom selben Client empfangen.
+ - Message delivery is best effort.
+ - Actors may receive duplicate messages from the same client.
 
-### Parallelität
+### <a name="concurrency"></a>Concurrency
 
-Die Reliable Actors-Laufzeit stellt ein einfaches Turn-basiertes Zugriffsmodell für den Zugriff auf Akteurmethoden bereit. Dies bedeutet, dass zu jedem beliebigen Zeitpunkt nur ein Thread innerhalb des Akteurobjektcodes aktiv sein kann. Der Turn-basierte Zugriff vereinfacht parallel ausgeführte Systeme, da keine Notwendigkeit für Synchronisierungsmechanismen für den Datenzugriff besteht. Das bedeutet auch, dass beim Entwurf dieser Systeme besonderes Augenmerk auf den Aspekt des Singlethread-Zugriffs der einzelnen Akteurinstanzen gelegt werden muss.
+The Reliable Actors runtime provides a simple turn-based access model for accessing actor methods. This means that no more than one thread can be active inside an actor object's code at any time. Turn-based access greatly simplifies concurrent systems as there is no need for synchronization mechanisms for data access. It also means systems must be designed with special considerations for the single-threaded access nature of each actor instance.
 
- - Eine einzelne Akteurinstanz kann nicht mehrere Anforderungen gleichzeitig verarbeiten. Eine Akteurinstanz kann einen Engpass beim Durchsatz verursachen, wenn von ihr die Verarbeitung paralleler Anforderungen erwartet wird.
- - Akteure können eine gegenseitige Sperre hervorrufen, wenn eine zirkuläre Anforderung zwischen zwei Akteuren besteht, während gleichzeitig eine externe Anforderung an einen der Akteure gesendet wird. Bei der Akteurlaufzeit tritt bei Akteuraufrufen automatisch ein Timeout auf, und es wird eine Ausnahme an den Aufrufer gesendet, um mögliche Sperren zu unterbrechen.
+ - A single actor instance cannot process more than one request at a time. An actor instance can cause a throughput bottleneck if it is expected to handle concurrent requests. 
+ - Actors can deadlock on each other if there is a circular request between two actors while an external request is made to one of the actors simultaneously. The actor runtime will automatically time out on actor calls and throw an exception to the caller to interrupt possible deadlock situations.
 
-![Reliable Actors-Kommunikation][3]
+![Reliable Actors communication][3]
 
-#### Rundenbasierter Zugriff
+#### <a name="turn-based-access"></a>Turn-based access
 
-Ein Turn umfasst die vollständige Ausführung einer Akteurmethode als Antwort auf eine Anforderung von anderen Akteuren oder Clients oder die vollständige Ausführung eines [Timer-/Erinnerungs](service-fabric-reliable-actors-timers-reminders.md)-Rückrufs. Obwohl diese Methoden und Rückrufe asynchron sind, tritt keine Überschneidung mit der Actors-Laufzeit auf. Ein Turn muss vollständig abgeschlossen sein, bevor ein neuer Turn ausgeführt werden kann. Oder anders ausgedrückt: Ein aktuell ausgeführter Actor-Methoden- oder Timer-/Erinnerungs-Rückruf muss vollständig abgeschlossen sein, bevor ein neuer Methodenaufruf oder ein Rückruf ausgeführt werden kann. Eine Methode oder ein Rückruf wird als abgeschlossen betrachtet, wenn die Ausführung von der Methode oder dem Rückruf zurückgegeben wurde und die von der Methode oder dem Rückruf zurückgegebene Aufgabe abgeschlossen wurde. Es sollte hervorgehoben werden, dass Turn-basierte Parallelität selbst über verschiedene Methoden, Timer und Rückrufe hinweg eingehalten wird.
+A turn consists of the complete execution of an actor method in response to a request from other actors or clients, or the complete execution of a [timer/reminder](service-fabric-reliable-actors-timers-reminders.md) callback. Even though these methods and callbacks are asynchronous, the Actors runtime does not interleave them. A turn must be fully finished before a new turn is allowed. In other words, an actor method or timer/reminder callback that is currently executing must be fully finished before a new call to a method or callback is allowed. A method or callback is considered to have finished if the execution has returned from the method or callback and the task returned by the method or callback has finished. It is worth emphasizing that turn-based concurrency is respected even across different methods, timers, and callbacks.
 
-Die Actors-Laufzeit erzwingt Turn-basierte Parallelität durch Einsetzen einer Sperre pro Actor am Anfang des Turns und Aufheben der Sperre am Ende des Turns. Turn-basierte Parallelität wird daher auf einer Pro-Actor-Basis und nicht für alle Actors erzwungen. Actor-Methoden und Timer-/Erinnerungs-Rückrufe können für unterschiedliche Actors gleichzeitig ausgeführt werden.
+The Actors runtime enforces turn-based concurrency by acquiring a per-actor lock at the beginning of a turn and releasing the lock at the end of the turn. Thus, turn-based concurrency is enforced on a per-actor basis and not across actors. Actor methods and timer/reminder callbacks can execute simultaneously on behalf of different actors.
 
-Im folgenden Beispiel werden die obigen Konzepte veranschaulicht. Stellen Sie sich einen Akteurtyp vor, bei dem zwei asynchrone Methoden (z.B. *Method1* und *Method2*), ein Timer und eine Erinnerung implementiert werden. Das folgende Diagramm zeigt ein Zeitachsenbeispiel für die Ausführung dieser Methoden und Rückrufe für zwei Akteure (*ActorId1* und *ActorId2*), die zu diesem Akteurtyp gehören.
+The following example illustrates the above concepts. Consider an actor type that implements two asynchronous methods (say, *Method1* and *Method2*), a timer, and a reminder. The diagram below shows an example of a timeline for the execution of these methods and callbacks on behalf of two actors (*ActorId1* and *ActorId2*) that belong to this actor type.
 
-![Turn-basierte Parallelität und Zugriff in der Reliable Actors-Laufzeit][1]
+![Reliable Actors runtime turn-based concurrency and access][1]
 
-In diesem Diagramm werden folgende Konventionen befolgt:
+This diagram follows these conventions:
 
-- Jede vertikale Linie zeigt den logischen Fluss der Ausführung einer Methode oder eines Rückrufs für einen bestimmten Actor.
-- Die in jeder vertikalen Zeile gekennzeichneten Ereignisse treten in chronologischer Reihenfolge auf, wobei neuere Ereignisse unter den älteren angegeben werden.
-- Für die Zeitachsen werden unterschiedliche Farben verwendet, die unterschiedlichen Actors entsprechen.
-- Durch Hervorhebung wird die Dauer angegeben, während der die Sperre pro Actor für eine Methode oder einen Rückruf bestehen bleibt.
+- Each vertical line shows the logical flow of execution of a method or a callback on behalf of a particular actor.
+- The events marked on each vertical line occur in chronological order, with newer events occurring below older ones.
+- Different colors are used for timelines corresponding to different actors.
+- Highlighting is used to indicate the duration for which the per-actor lock is held on behalf of a method or callback.
 
-Einige wichtige Punkte sind zu beachten:
+Some important points to consider:
 
-- Bei der Ausführung von *Method1* für *ActorId2* als Antwort auf Clientanforderung *xyz789* trifft eine weitere Clientanforderung (*abc123*) ein, für die ebenfalls die Ausführung von *Method1* für *ActorId2* erforderlich ist. Die zweite Ausführung von *Method1* beginnt aber erst, nachdem die vorherige Ausführung abgeschlossen wurde. Analog gilt: Eine von *ActorId2* registrierte Erinnerung wird ausgelöst, während *Method1* als Antwort auf die Clientanforderung *xyz789* ausgeführt wird. Der Erinnerungs-Rückruf wird erst ausgeführt, nachdem beide Ausführungen von *Method1* abgeschlossen sind. All dies basiert auf der für *ActorId2* erzwungenen Turn-basierten Parallelität.
-- Analog dazu wird Turn-basierte Parallelität auch für *ActorId1* erzwungen, wie die serielle Ausführung von *Method1*, *Method2* und des Timer-Rückrufs für *ActorId1* zeigt.
-- Die Ausführung von *Method1* für *ActorId1* überschneidet sich mit deren Ausführung für *ActorId2*. Der Grund dafür ist, dass Turn-basierte Parallelität nur innerhalb eines Actors und nicht Actor-übergreifend erzwungen wird.
-- Bei einigen Ausführungen von Methode/Rückruf wird der von der Methode/dem Rückruf zurückgegebene `Task` nach der Rückkehr der Methode abgeschlossen. Bei einigen anderen ist der `Task` bereits zum Zeitpunkt der Rückkehr der Methode/des Rückrufs abgeschlossen. In beiden Fällen wird die Sperre pro Akteur erst freigegeben, nachdem sowohl die Methode/der Rückruf als auch der `Task` abgeschlossen ist.
+- While *Method1* is executing on behalf of *ActorId2* in response to client request *xyz789*, another client request (*abc123*) arrives that also requires *Method1* to be executed by *ActorId2*. However, the second execution of *Method1* does not begin until the prior execution has finished. Similarly, a reminder registered by *ActorId2* fires while *Method1* is being executed in response to client request *xyz789*. The reminder callback is executed only after both executions of *Method1* are complete. All of this is due to turn-based concurrency being enforced for *ActorId2*.
+- Similarly, turn-based concurrency is also enforced for *ActorId1*, as demonstrated by the execution of *Method1*, *Method2*, and the timer callback on behalf of *ActorId1* happening in a serial fashion.
+- Execution of *Method1* on behalf of *ActorId1* overlaps with its execution on behalf of *ActorId2*. This is because turn-based concurrency is enforced only within an actor and not across actors.
+- In some of the method/callback executions, the `Task` returned by the method/callback finishes after the method returns. In some others, the `Task` has already finished by the time the method/callback returns. In both cases, the per-actor lock is released only after both the method/callback returns and the `Task` finishes.
 
-#### Eintrittsinvarianz
+#### <a name="reentrancy"></a>Reentrancy
 
-Die Actors-Laufzeit lässt standardmäßig Eintrittsinvarianz zu. Dies bedeutet: Wenn eine Akteurmethode von *Actor A* eine Methode auf *Actor B* aufruft, die wiederum eine andere Methode auf *Actor A* aufruft, wird die Ausführung dieser Methode erlaubt. Der Grund dafür ist, dass sie zum selben logischen Kontext der Aufrufkette gehört. Alle Timer- und Erinnerungs-Aufrufe beginnen mit dem neuen logischen Aufrufkontext. Weitere Details finden Sie unter [Reliable Actors-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md).
+The Actors runtime allows reentrancy by default. This means that if an actor method of *Actor A* calls a method on *Actor B*, which in turn calls another method on *Actor A*, that method is allowed to run. This is because it is part of the same logical call-chain context. All timer and reminder calls start with the new logical call context. See the [Reliable Actors reentrancy](service-fabric-reliable-actors-reentrancy.md) for more details.
 
-#### Umfang der Parallelitätsgarantien
+#### <a name="scope-of-concurrency-guarantees"></a>Scope of concurrency guarantees
 
-Die Actors-Laufzeit bietet diese Parallelitätsgarantien in Situationen, in denen sie den Aufruf dieser Methoden steuert. Beispielsweise bietet sie diese Garantien für die Methodenaufrufe, die als Antwort auf eine Clientanforderung erfolgen, sowie für Timer- und Erinnerungsrückrufe. Wenn jedoch der Actor-Code diese Methoden außerhalb der von der Actors-Laufzeit bereitgestellten Mechanismen direkt aufruft, kann die Laufzeit keine Parallelitätsgarantien bieten. Wenn z. B. die Methode im Kontext eines Tasks aufgerufen wird, der nicht mit dem von den Actor-Methoden zurückgegebenen Task verknüpft ist, kann die Laufzeitumgebung keine Parallelitätsgarantien bieten. Auch wenn die Methode von einem Thread aufgerufen wird, den der Actor selbst erstellt, kann die Laufzeit keine Parallelitätsgarantien bieten. Zum Durchführen von Hintergrundoperationen sollten Akteure daher [Actor-Timer oder Actor-Erinnerungen](service-fabric-reliable-actors-timers-reminders.md) verwenden, bei denen die Turn-basierte Parallelität berücksichtigt wird.
+The Actors runtime provides these concurrency guarantees in situations where it controls the invocation of these methods. For example, it provides these guarantees for the method invocations that are done in response to a client request, as well as for timer and reminder callbacks. However, if the actor code directly invokes these methods outside of the mechanisms provided by the Actors runtime, then the runtime cannot provide any concurrency guarantees. For example, if the method is invoked in the context of some task that is not associated with the task returned by the actor methods, then the runtime cannot provide concurrency guarantees. If the method is invoked from a thread that the actor creates on its own, then the runtime also cannot provide concurrency guarantees. Therefore, to perform background operations, actors should use [actor timers and actor reminders](service-fabric-reliable-actors-timers-reminders.md) that respect turn-based concurrency.
 
-## Nächste Schritte
- - [Erste Schritte mit Reliable Actors](service-fabric-reliable-actors-get-started.md)
- - [Verwendung der Service Fabric-Plattform durch Reliable Actors](service-fabric-reliable-actors-platform.md)
- - [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
- - [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
- - [Actor-Timer und -Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)
- - [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
- - [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
- - [Actor-Polymorphie und objektorientierte Entwurfsmuster](service-fabric-reliable-actors-polymorphism.md)
- - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
+## <a name="next-steps"></a>Next steps
+ - [Getting started with Reliable Actors](service-fabric-reliable-actors-get-started.md)
+ - [How Reliable Actors use the Service Fabric platform](service-fabric-reliable-actors-platform.md)
+ - [Actor state management](service-fabric-reliable-actors-state-management.md)
+ - [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md)
+ - [Actor timers and reminders](service-fabric-reliable-actors-timers-reminders.md)
+ - [Actor events](service-fabric-reliable-actors-events.md)
+ - [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor polymorphism and object-oriented design patterns](service-fabric-reliable-actors-polymorphism.md)
+ - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

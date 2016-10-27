@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Verwenden von öffentlichen IP-Adressen in einem virtuellen Netzwerk"
-   description="Hier erfahren Sie, wie Sie ein virtuelles Netzwerk für die Verwendung öffentlicher IP-Adressen konfigurieren."
+   pageTitle="How to use public IP addresses in a virtual network"
+   description="Learn how to configure a virtual network to use public IP addresses"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,36 +15,40 @@
    ms.date="04/27/2016"
    ms.author="jdial" />
 
-# Öffentlicher IP-Adressraum in einem virtuellen Netzwerk (VNet)
 
-Virtuelle Netzwerke (VNets) können öffentliche und private (RFC 1918-Adressblöcke) IP-Adressräume enthalten. Wenn Sie einen öffentlichen IP-Adressbereich hinzufügen, wird dieser als Teil des privaten VNet-IP-Adressraums behandelt, der nur innerhalb des VNets, aus miteinander verbundenen VNets und von Ihrem lokalen Standort aus erreichbar ist.
+# <a name="public-ip-address-space-in-a-virtual-network-(vnet)"></a>Public IP address space in a Virtual Network (VNet)
 
-Die folgende Abbildung zeigt ein VNet, das öffentliche und private IP-Adressräume enthält.
+Virtual networks (VNets) can contain both public and private (RFC 1918 address blocks) IP address spaces. When you add a public IP address range, it will be treated as part of the private VNet IP address space that is only reachable within the VNet, interconnected VNets, and from your on-premises location.
 
-![Öffentliche IP-Adresse – Konzepte](./media/virtual-networks-public-ip-within-vnet/IC775683.jpg)
+The picture below shows a VNet that includes public and private IP adress spaces.
 
-## Wie füge ich einen öffentlichen IP-Adressbereich hinzu?
+![Public IP Conceptual](./media/virtual-networks-public-ip-within-vnet/IC775683.jpg)
 
-Sie fügen einen öffentlichen IP-Adressbereich genau wie einen privaten IP-Adressbereich hinzu: entweder mithilfe einer *netcfg*-Datei oder durch die Konfiguration im [Azure-Portal](http://portal.azure.com). Sie können einen öffentlichen IP-Adressbereich beim Erstellen des VNets oder zu einem späteren Zeitpunkt hinzufügen. Das folgende Beispiel zeigt den öffentlichen und den privaten IP-Adressraum im gleichen VNet.
+## <a name="how-do-i-add-a-public-ip-address-range?"></a>How do I add a public IP address range?
 
-![Öffentliche IP-Adresse im Portal](./media/virtual-networks-public-ip-within-vnet/IC775684.png)
+You add a public IP address range the same way you would add a private IP address range; by either using a *netcfg* file, or by adding the configuration in the [Azure portal](http://portal.azure.com). You can add a public IP address range when you create your VNet, or you can go back and add it afterward. The example below shows both public and private IP address spaces configured in the same VNet.
 
-## Gibt es Einschränkungen?
+![Public IP Address in Portal](./media/virtual-networks-public-ip-within-vnet/IC775684.png)
 
-Es gibt einige IP-Adressbereiche, die nicht zulässig sind:
+## <a name="are-there-any-limitations?"></a>Are there any limitations?
 
-- 224\.0.0.0/4 (Multicast)
+There are a few IP address ranges that are not allowed:
 
-- 255\.255.255.255/32 (Übertragung)
+- 224.0.0.0/4 (Multicast)
 
-- 127\.0.0.0/8 (Loopback)
+- 255.255.255.255/32 (Broadcast)
 
-- 169\.254.0.0/16 (Verbindungslokal)
+- 127.0.0.0/8 (loopback)
 
-- 168\.63.129.16/32 (Internes DNS)
+- 169.254.0.0/16 (link-local)
 
-## Nächste Schritte
+- 168.63.129.16/32 (Internal DNS)
 
-[Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden](virtual-networks-manage-dns-in-vnet.md)
+## <a name="next-steps"></a>Next Steps
 
-<!---HONumber=AcomDC_0810_2016-->
+[How to manage DNS servers used by a VNet](virtual-networks-manage-dns-in-vnet.md)
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,22 +1,23 @@
 <properties
-	pageTitle="Integration des Azure Mobile Engagement Web SDK | Microsoft Azure"
-	description="Neueste Updates und Verfahren für das Azure Mobile Engagement Web SDK"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="erikre"
-	editor="" />
+    pageTitle="Azure Mobile Engagement Web SDK integration | Microsoft Azure"
+    description="The latest updates and procedures for the Azure Mobile Engagement Web SDK"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="web"
-	ms.devlang="js"
-	ms.topic="article"
-	ms.date="02/29/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="web"
+    ms.devlang="js"
+    ms.topic="article"
+    ms.date="02/29/2016"
+    ms.author="piyushjo" />
 
-#Integrieren von Azure Mobile Engagement in eine Webanwendung
+
+#<a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Integrate Azure Mobile Engagement in a web application
 
 > [AZURE.SELECTOR]
 - [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
@@ -24,134 +25,139 @@
 - [iOS](mobile-engagement-ios-integrate-engagement.md)
 - [Android](mobile-engagement-android-integrate-engagement.md)
 
-Die Verfahren in diesem Artikel beschreiben die einfachste Möglichkeit zum Aktivieren der Azure Mobile Engagement-Funktionen zur Analyse und Überwachung in Ihrer Webanwendung.
+The procedures in this article describe the simplest way to activate the analytics and monitoring functions in Azure Mobile Engagement in your web application.
 
-Führen Sie die Schritte aus, um die Protokollberichte zu aktivieren, die zum Berechnen sämtlicher Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen benötigt werden. Für anwendungsabhängige Statistiken wie Ereignisse, Fehler und Aufträge müssen Sie Protokollberichte manuell aktivieren, indem Sie die Azure Mobile Engagement-API verwenden. Weitere Informationen finden Sie unter [Verwenden der erweiterten Mobile Engagement-Tagging-API in einer Webanwendung](mobile-engagement-web-use-engagement-api.md).
+Follow the steps to activate the log reports that are needed to compute all statistics about users, sessions, activities, crashes, and technicals. For application-dependent statistics, such as events, errors, and jobs, you must activate log reports manually by using the Azure Mobile Engagement API. For more information, learn [how to use the advanced Mobile Engagement tagging API in a web application](mobile-engagement-web-use-engagement-api.md).
 
-## Einführung
+## <a name="introduction"></a>Introduction
 
-[Laden Sie das Azure Mobile Engagement Web SDK herunter](http://aka.ms/P7b453). Das Mobile Engagement Web SDK wird als einzelne JavaScript-Datei namens „azure-engagement.js“ bereitgestellt, die Sie allen Seiten Ihrer Website oder Webanwendung hinzufügen müssen.
+[Download the Azure Mobile Engagement Web SDK](http://aka.ms/P7b453).
+The Mobile Engagement Web SDK is shipped as a single JavaScript file, azure-engagement.js, which you have to include in each page of your site or web application.
 
-> [AZURE.IMPORTANT] Bevor Sie dieses Skript ausführen, müssen Sie ein Skript oder einen Codeausschnitt ausführen, das bzw. den Sie zum Konfigurieren von Mobile Engagement für Ihre Anwendung schreiben.
+> [AZURE.IMPORTANT] Before you run this script, you must run a script or code snippet that you write to configure Mobile Engagement for your application.
 
-## Browserkompatibilität
+## <a name="browser-compatibility"></a>Browser compatibility
 
-Das Mobile Engagement Web SDK verwendet eine native JSON-Codierung und -Decodierung zusätzlich zu domänenübergreifende AJAX-Anforderungen (auf Basis der W3C CORS-Spezifikation). Es ist mit den folgenden Browsern kompatibel:
+The Mobile Engagement Web SDK uses native JSON encoding and decoding, in addition to cross-domain AJAX requests (relying on the W3C CORS specification). It's compatible with the following browsers:
 
-* Microsoft Edge 12 und höher
-* Internet Explorer 10 und höher
-* Firefox 3.5 und höher
-* Chrome 4 und höher
-* Safari 6 und höher
-* Opera 12 und höher
+* Microsoft Edge 12+
+* Internet Explorer 10+
+* Firefox 3.5+
+* Chrome 4+
+* Safari 6+
+* Opera 12+
 
-## Konfigurieren von Mobile Engagement
+## <a name="configure-mobile-engagement"></a>Configure Mobile Engagement
 
-Schreiben Sie wie im folgenden Beispiel ein Skript zur Erstellung eines globalen JavaScript-Objekt des Typs `azureEngagement`. Da Ihre Website ggf. mehrere Seiten hat, setzt dieses Beispiel voraus, dass dieses Skript allen Seiten hinzugefügt wird. In diesem Beispiel heißt das JavaScript-Objekt `azure-engagement-conf.js`.
+Write a script that creates a global `azureEngagement` JavaScript object, as in the following example. Because your site might have multiples pages, this example assumes that this script is included in every page. In this example, the JavaScript object is named `azure-engagement-conf.js`.
 
-	window.azureEngagement = {
-	  connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
-	  appVersionName: '1.0.0',
-	  appVersionCode: 1
-	};
+    window.azureEngagement = {
+      connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
+      appVersionName: '1.0.0',
+      appVersionCode: 1
+    };
 
-Der `connectionString`-Wert für Ihre Anwendung wird im Azure-Portal angezeigt.
+The `connectionString` value for your application is displayed in the Azure portal.
 
-> [AZURE.NOTE] `appVersionName` und `appVersionCode` sind optional. Es wird jedoch empfohlen, sie zu konfigurieren, damit für die Analyse Versionsinformationen verarbeitet werden können.
+> [AZURE.NOTE] `appVersionName` and `appVersionCode` are optional. However, we recommend that you configure them so that analytics can process version information.
 
-## Hinzufügen von Mobile Engagement-Skripts zu Ihren Seiten
-Fügen Sie Ihren Seiten Mobile Engagement-Skripts auf eine der folgenden Weisen hinzu:
+## <a name="include-mobile-engagement-scripts-in-your-pages"></a>Include Mobile Engagement scripts in your pages
+Add Mobile Engagement scripts to your pages in one of the following ways:
 
-	<head>
-	  ...
-	  <script type="text/javascript" src="azure-engagement-conf.js"></script>
-	  <script type="text/javascript" src="azure-engagement.js"></script>
-	  ...
-	</head>
+    <head>
+      ...
+      <script type="text/javascript" src="azure-engagement-conf.js"></script>
+      <script type="text/javascript" src="azure-engagement.js"></script>
+      ...
+    </head>
 
-Oder so:
+Or this:
 
-	<body>
-	  ...
-	  <script type="text/javascript" src="azure-engagement-conf.js"></script>
-	  <script type="text/javascript" src="azure-engagement.js"></script>
-	  ...
-	</body>
+    <body>
+      ...
+      <script type="text/javascript" src="azure-engagement-conf.js"></script>
+      <script type="text/javascript" src="azure-engagement.js"></script>
+      ...
+    </body>
 
-## Alias
+## <a name="alias"></a>Alias
 
-Nach dem Laden des Mobile Engagement Web SDK erstellt es den Alias **engagement** für den Zugriff auf die APIs des SDK. Sie können mit diesem Alias nicht die SDK-Konfiguration definieren. Dieser Alias wird in dieser Dokumentation als Verweis verwendet.
+After the Mobile Engagement Web SDK script is loaded, it creates the **engagement** alias to access the SDK APIs. You cannot use this alias to define the SDK configuration. This alias is used as a reference in this documentation.
 
-Beachten Sie, dass wenn der Standardalias im Konflikt mit einer anderen globalen Variablen auf Ihrer Seite steht, Sie ihn in der Konfiguration wie folgt neu definieren können, bevor das Mobile Engagement Web SDK geladen wird:
+Note that if the default alias conflicts with another global variable from your page, you can redefine it in the configuration as follows before you load the Mobile Engagement Web SDK:
 
-	window.azureEngagement = {
-	  connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
-	  appVersionName: '1.0.0',
-	  appVersionCode: 1
-	  alias:'anotherAlias'
-	};
+    window.azureEngagement = {
+      connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
+      appVersionName: '1.0.0',
+      appVersionCode: 1
+      alias:'anotherAlias'
+    };
 
-## Grundlegende Berichterstellung
+## <a name="basic-reporting"></a>Basic reporting
 
-Die grundlegende Berichterstellung in Mobile Engagement deckt Statistiken auf Sitzungsebene ab, wie z.B. Statistiken zu Benutzern, Sitzungen, Aktivitäten und Abstürzen.
+Basic reporting in Mobile Engagement covers session-level statistics, such as statistics about users, sessions, activities, and crashes.
 
-### Sitzungsnachverfolgung
+### <a name="session-tracking"></a>Session tracking
 
-Eine Mobile Engagement-Sitzung ist in eine Abfolge von Aktivitäten aufgeteilt, die von einem Namen bestimmt werden.
+A Mobile Engagement session is divided into a sequence of activities, each identified by a name.
 
-Für eine klassische Website wird empfohlen, eine andere Aktivität auf jeder Seite Ihrer Website zu deklarieren. Für eine Website oder Anwendung, bei der sich die aktuelle Seite nie ändert, sollten Sie die Aktivitäten in kleinerem Umfang nachverfolgen, z.B. innerhalb der Seite.
+In a classic website, we recommend that you declare a different activity on each page of your site. For a website or web application in which the current page never changes, you might want to track the activities on a smaller scale, such as within the page.
 
-In beiden Fällen starten oder ändern Sie die aktuelle Benutzeraktivität durch Aufrufen der `engagement.agent.startActivity`-Funktion. Beispiel:
+Either way, to start or change the current user activity, call the `engagement.agent.startActivity` function. For example:
 
-	<body onload="yourOnload()">
+    <body onload="yourOnload()">
 
-	<!-- -->
+    <!-- -->
 
-	yourOnload = function() {
+    yourOnload = function() {
       [...]
       engagement.agent.startActivity('welcome');
-	};
+    };
 
-Eine geöffnete Sitzung wird vom Mobile Engagement-Server automatisch binnen drei Minuten nach Schließen der Anwendungsseite beendet.
+The Mobile Engagement server automatically ends an open session within three minutes after the application page is closed.
 
-Sie können eine Sitzung auch manuell durch Aufrufen von `engagement.agent.endActivity` beenden. Dadurch wird die aktuelle Benutzeraktivität auf „Idle“ festgelegt. Die Sitzung endet 10 Sekunden später, es sei denn, sie wird durch einen neuen Aufruf von `engagement.agent.startActivity` fortgesetzt.
+Alternatively, you can end a session manually by calling `engagement.agent.endActivity`. This sets the current user activity to 'Idle.'  The session will end 10 seconds later unless a new call to `engagement.agent.startActivity` resumes the session.
 
-Sie können die Verzögerung von 10 Sekunden im globalen Engagement-Objekt wie folgt konfigurieren:
+You can configure the 10-second delay in the global engagement object, as follows:
 
-	engagement.sessionTimeout = 2000; // 2 seconds
-	// or
-	engagement.sessionTimeout = 0; // end the session as soon as endActivity is called
+    engagement.sessionTimeout = 2000; // 2 seconds
+    // or
+    engagement.sessionTimeout = 0; // end the session as soon as endActivity is called
 
-> [AZURE.NOTE] Sie können nicht `engagement.agent.endActivity` im `onunload`-Rückruf verwenden, da derzeit keine AJAX-Aufrufe möglich sind.
+> [AZURE.NOTE] You cannot use `engagement.agent.endActivity` in the `onunload` callback because you cannot make AJAX calls at this stage.
 
-## Erweiterte Berichterstellung
+## <a name="advanced-reporting"></a>Advanced reporting
 
-Wenn Sie anwendungsspezifische Ereignisse, Fehler und Aufträge optional melden möchten, müssen Sie die Mobile Engagement-API verwenden. Auf die Mobile Engagement-API greifen Sie über das `engagement.agent`-Objekt zu.
+Optionally, if you want to report application-specific events, errors, and jobs, you need to use the Mobile Engagement API. You access the Mobile Engagement API through the `engagement.agent` object.
 
-Sie können auf alle erweiterten Funktionen in Mobile Engagement in der Mobile Engagement-API zugreifen. Weitere Informationen zur API finden Sie im Artikel [Verwenden der erweiterten Mobile Engagement-Tagging-API in einer Webanwendung](mobile-engagement-web-use-engagement-api.md).
+You can access all of the advanced capabilities in Mobile Engagement in the Mobile Engagement API. The API is detailed in the article [How to use the advanced Mobile Engagement tagging API in a web application](mobile-engagement-web-use-engagement-api.md).
 
-## Anpassen der für AJAX-Aufrufe verwendeten URLs
+## <a name="customize-the-urls-used-for-ajax-calls"></a>Customize the URLs used for AJAX calls
 
-Sie können URLs anpassen, die das Mobile Engagement SDK verwendet. Um beispielsweise die Protokoll-URL (den SDK-Endpunkt für die Protokollierung) neu zu definieren, können Sie die Konfiguration wie folgt überschreiben:
+You can customize URLs that the Mobile Engagement Web SDK uses. For example, to redefine the log URL (the SDK endpoint for logging), you can override the configuration like this:
 
-	window.azureEngagement = {
-	  ...
-	  urls: {
-	    ...        
-	    getLoggerUrl: function() {
-	    return 'someProxy/log';
-	    }
-	  }
-	};
+    window.azureEngagement = {
+      ...
+      urls: {
+        ...        
+        getLoggerUrl: function() {
+        return 'someProxy/log';
+        }
+      }
+    };
 
-Wenn Ihre URL-Funktionen eine mit `/`, `//`, `http://` oder `https://` beginnende Zeichenfolge zurückgibt, wird das Standardschema nicht verwendet. Standardmäßig wird das `https://`-Schema für diese URLs verwendet. Wenn Sie das Standardschema anpassen möchten, überschreiben Sie die Konfiguration wie folgt:
+If your URL functions return a string that begins with `/`, `//`, `http://`, or `https://`, the default scheme is not used. By default, the `https://` scheme is used for those URLs. If you want to customize the default scheme, override the configuration, like this:
 
-	window.azureEngagement = {
-	  ...
-	  urls: {
-        ...	     
-	    scheme: '//'
-	  }
-	};
+    window.azureEngagement = {
+      ...
+      urls: {
+        ...      
+        scheme: '//'
+      }
+    };
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

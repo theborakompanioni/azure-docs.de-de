@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen eines Azure-Projekts mit Visual Studio | Microsoft Azure"
-   description="Erstellen eines Azure-Projekts mit Visual Studio"
+   pageTitle="Creating an Azure project with Visual Studio | Microsoft Azure"
+   description="Creating an Azure project with Visual Studio"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,51 +15,56 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Erstellen eines Azure-Projekts mit Visual Studio
 
-Die Azure Tools für Visual Studio stellen eine Vorlage zur Verfügung, mit der Sie einen Clouddienst für Azure erstellen können. Die Tools unterstützen Sie außerdem beim Konfigurieren, Debuggen und Bereitstellen des Clouddiensts in Azure.
+# <a name="creating-an-azure-project-with-visual-studio"></a>Creating an Azure Project with Visual Studio
 
-Eine Azure-Clouddienstlösung enthält die folgenden Projekttypen:
+The Azure Tools for Visual Studio provide a template that lets you create a cloud service for Azure. The tools also help you configure, debug, and deploy the cloud service to Azure.
 
-- **Azure-Projekt**
+An Azure cloud service solution contains the following types of projects:
 
-    Das Azure-Projekt weist Zuordnungen zu den Rollenprojekten in der Projektmappe auf. Es schließt auch die Dienstdefinition und die Dienstkonfigurationsdateien ein. Die Dienstdefinitionsdatei definiert die Laufzeiteinstellungen für Ihre Anwendung, u. a. erforderliche Rollen, Endpunkte und Größe des virtuellen Computers. Die Dienstkonfigurationsdatei konfiguriert, wie viele Instanzen einer Rolle ausgeführt werden, und die Werte der für eine Rolle definierten Einstellungen. Weitere Informationen zu diesen Einstellungen finden Sie unter [Vorgehensweise: Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
+- **Azure project**
 
-- **Webrollenprojekt**
+    The Azure project has associations to the role projects in the solution. It also includes the service definition and service configuration files. The service definition file defines the runtime settings for your application including what roles are required, endpoints, and virtual machine size. The service configuration file configures how many instances of a role are run and the values of the settings defined for a role. For more information about these settings, see [How to: Configure the Roles for an Azure Cloud Service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
 
-    Eine Workerrolle führt die Hintergrundverarbeitung aus. Eine Workerrolle kann mit Speicherdiensten und anderen internetbasierten Diensten kommunizieren. Eine Workerrolle kann eine beliebige Anzahl von HTTP-, HTTPS- oder TCP-Endpunkten aufweisen.
+- **Web role project**
 
-    - **ASP.NET-Webrolle** zum Erstellen einer ASP.NET-Anwendung mit einem Web-Front-End
-    - **ASP.NET MVC5-Webrolle**
-    - **ASP.NET MVC4-Webrolle**
-    - **ASP.NET MVC3-Webrolle**
-    - **Webrolle für WCF-Dienst** zum Erstellen eines WCF-Diensts
-    - **Webrolle für Silverlight Business Application** (erfordert Visual Studio 2012)
+    A worker role performs background processing. A worker role can communicate with storage services and with other Internet-based services. A worker role can have any number of HTTP, HTTPS, or TCP endpoints.
 
-- **Cacheworkerrolle**
+    - **ASP.NET Web Role**, for building an ASP.NET application with a web front end
+    - **ASP.NET MVC5 Web Role**
+    - **ASP.NET MVC4 Web Role**
+    - **ASP.NET MVC3 Web Role**
+    - **WCF Service Web Role**, for building a WCF service
+    - **Silverlight Business Application Web Role** (requires Visual Studio 2012)
 
-    Eine Rolle, die einen dedizierten Cache für Ihre Anwendung bereitstellt.
+- **Cache Worker Role**
 
-- **Workerrolle mit Service Bus-Warteschlange**
+    A role that provides a dedicated cache to your application.
 
-    Eine Service Bus-Warteschlange bietet Message Queueing-Funktionen für die Kommunikation mit dem Arbeitsprozess. Weitere Informationen finden Sie unter [Verwenden von Service Bus-Warteschlangen](http://go.microsoft.com/fwlink/?LinkId=260560).
+- **Worker Role with Service Bus Queue**
 
-## So erstellen Sie ein Azure-Clouddienstprojekt in Visual Studio
+    A service bus queue that provides message queuing functionality to communicate with the worker process. For more information, see [How to Use Service Bus Queues](http://go.microsoft.com/fwlink/?LinkId=260560).
 
-1. Starten Sie Microsoft Visual Studio als Administrator.
+## <a name="to-create-an-azure-cloud-service-project-in-visual-studio"></a>To create an Azure cloud service project in Visual Studio
 
-1. Wählen Sie auf der Menüleiste **Datei**, **Neu**, **Projekt** aus.
+1. Start Microsoft Visual Studio as an administrator.
 
-1. Wählen Sie im Bereich **Projekttypen** in den Projektvorlagenknoten "Visual C#" oder "Visual Basic" **Cloud** aus.
+1. On the menu bar, choose **File**, **New**, **Project**.
 
-1. Wählen Sie im Bereich **Vorlagen** die Option **Azure-Clouddienst** aus.
+1. In the **Project Types** pane, choose **Cloud** from the Visual C# or Visual Basic project template nodes.
 
-1. Geben Sie an, mit welcher Version von .NET Framework Sie das Projekt entwickeln möchten.
+1. In the **Templates** pane, choose  **Azure Cloud Service**.
 
-1. Geben Sie einen Namen und Speicherort für das Projekt und einen Namen für die Projektmappe ein. Klicken Sie auf die Schaltfläche **OK**.
+1. Specify which version of the .NET Framework you want to use to develop your project.
 
-1. Wählen Sie im Dialogfeld **Neues Azure-Projekt** die Rollen aus, die Sie hinzufügen möchten, und klicken Sie auf die Schaltfläche mit dem nach rechts zeigenden Pfeil, um sie der Projektmappe hinzuzufügen. Sie können so viele Rollen wie benötigt hinzufügen.
+1. Enter a name and location for your project and a name for the solution. Choose the **OK** button.
 
-1. Um eine Rolle umzubenennen, die dem Projekt hinzugefügt wurde, zeigen Sie im Dialogfeld **Neues Azure-Projekt** mit dem Mauszeiger auf die Rolle und klicken rechts neben der Rolle auf das Symbol **Umbenennen**. Sie können auch eine Rolle innerhalb der Projektmappe umbenennen, nachdem sie hinzugefügt wurde.
+1. In the **New Azure Project** dialog box, choose the roles that you want to add, and choose the right arrow button to add them to your solution. You can add as many roles as you need.
 
-<!---HONumber=AcomDC_0817_2016-->
+1. To rename a role that you've added to your project, hover on the role in the **New Azure Project** dialog box, and choose the **Rename** icon to the right of the role. You can also rename a role within your solution after it has been added.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

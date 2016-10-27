@@ -1,16 +1,19 @@
-## Szenario
+## <a name="scenario"></a>Scenario
 
-Um zu veranschaulichen, wie Sie benutzerdefinierte Routen erstellen, wird in diesem Dokument das folgende Szenario verwendet.
+To better illustrate how to create UDRs, this document will use the scenario below.
 
-![BILDBESCHREIBUNG](./media/virtual-network-create-udr-scenario-include/figure1.png)
+![IMAGE DESCRIPTION](./media/virtual-network-create-udr-scenario-include/figure1.png)
 
-In diesem Szenario erstellen Sie eine benutzerdefinierte Route für das *Front-End-Subnetz* und eine weitere für das *Back-End-Subnetz*, wie im Folgenden beschrieben:
+In this scenario you will create one UDR for the *Front end subnet* and another UDR for the *Back end subnet* , as described below: 
 
-- **UDR-FrontEnd**. Die benutzerdefinierte Route für das Front-End wird auf das Subnetz *FrontEnd* angewendet und enthält eine Route:	
-	- **RouteToBackend**. Diese Route sendet den gesamten an das Back-End-Subnetz gerichteten Datenverkehr an den virtuellen Computer **FW1**.
-- **UDR-BackEnd**. Die Back-End-UDR wird auf das Subnetz *BackEnd* angewendet und enthält eine Route:	
-	- **RouteToFrontend**. Diese Route sendet den gesamten an das Front-End-Subnetz gerichteten Datenverkehr an den virtuellen Computer **FW1**.
+- **UDR-FrontEnd**. The front end UDR will be applied to the *FrontEnd* subnet, and contain one route:  
+    - **RouteToBackend**. This route will send all traffic to the back end subnet to the **FW1** virtual machine.
+- **UDR-BackEnd**. The back end UDR will be applied to the *BackEnd* subnet, and contain one route: 
+    - **RouteToFrontend**. This route will send all traffic to the front end subnet to the **FW1** virtual machine.
 
-Durch die Kombination dieser Routen wird sichergestellt, dass der gesamte Datenverkehr von einem Subnetz zu einem anderen an den virtuellen Computer **FW1** weitergeleitet wird, der als virtuelles Gerät verwendet wird. Sie müssen auch die IP-Weiterleitung für diesen virtuellen Computer aktivieren, damit er den an andere virtuelle Computer gerichteten Datenverkehr empfangen kann.
+The combination of these routes will ensure that all traffic destined from one subnet to another will be routed to the **FW1** virtual machine, which is being used as a virtual appliance. You also need to turn on IP forwarding for that VM, to ensure it can receive traffic destined to other VMs.
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

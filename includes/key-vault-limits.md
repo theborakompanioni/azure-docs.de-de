@@ -1,12 +1,15 @@
 
-| Transaktionstyp | Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region
+| Transactions Type | Max transactions allowed in 10 seconds, per vault per region
 --- | ---
-| HSM – SCHLÜSSEL ERSTELLEN | 5
-| HSM – andere Transaktionen | 1000
-| Softkey – SCHLÜSSEL ERSTELLEN | 10
-| Softkey – andere Transaktionen | 1500
-| Alle geheimen, tresorbezogenen Transaktionen | 2000
+| HSM- CREATE KEY | 5
+| HSM- other transactions | 1000
+| Soft-key CREATE KEY | 10
+| Soft-key other transactions | 1500
+| All secrets, vault related transactions | 2000
  
  
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

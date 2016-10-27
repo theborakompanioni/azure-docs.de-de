@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Integrieren von Azure Security Center-Warnungen mithilfe der Azure-Protokollintegration (Vorschau) | Microsoft Azure"
-   description="Dieser Artikel hilft beim Einstieg in die Integration von Security Center-Warnungen mithilfe der Azure-Protokollintegration."
+   pageTitle="Integrating Azure Security Center alerts with Azure log integration (Preview) | Microsoft Azure"
+   description="This article helps you get started with integrating Security Center alerts with Azure log integration."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,78 +16,83 @@
    ms.date="08/08/2016"
    ms.author="terrylan"/>
 
-# Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration (Vorschau)
 
-Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung (Security Information and Event Management) als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mit der Azure-Protokollintegration können Kunden Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen gesammelte Sicherheitsereignisse für den virtuellen Computer nahezu in Echtzeit mit ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
+# <a name="integrating-security-center-alerts-with-azure-log-integration-(preview)"></a>Integrating Security Center alerts with Azure log integration (Preview)
 
-Die Azure-Protokollintegration funktioniert mit HP ArcSight, Splunk, IBM QRadar sowie weiteren Lösungen.
+Many security operations and incident response teams rely on a Security Information and Event Management (SIEM) solution as the starting point for triaging and investigating security alerts. With Azure log integration, customers can sync Azure Security Center alerts, along with virtual machine security events collected by Azure Diagnostics and Azure Audit Logs, with their log analytics or SIEM solution in near real-time.
 
-## Welche Protokolle kann ich integrieren?
+Azure log integration works with HP ArcSight, Splunk, IBM QRadar, and others.
 
-Azure führt für jeden Dienst eine umfassende Protokollierung durch. Diese Protokolle sind wie folgt kategorisiert:
+## <a name="what-logs-can-i-integrate?"></a>What logs can I integrate?
 
-- **Steuerungs-/Verwaltungsprotokolle**, die Einblicke in die CREATE-, UPDATE- und DELETE-Vorgänge in Azure Resource Manager ermöglichen.
-- **Datenebenenprotokolle**, die Einblicke in die Ereignisse ermöglichen, die bei Verwendung einer Azure-Ressource eintreten. Ein Beispiel hierfür sind Sicherheits- und Anwendungsprotokolle des Windows-Ereignisprotokolls auf einem virtuellen Computer.
+Azure produces extensive logging for every service. These logs are categorized as:
 
-Die Azure-Protokollintegration unterstützt derzeit die Integration von:
+- **Control/Management logs** which give visibility into the Azure Resource Manager CREATE, UPDATE, and DELETE operations.
+- **Data Plane logs** which give visibility into the events raised when using an Azure resource. An example is the Windows Event log - security and application logs in a virtual machine.
 
-- Azure-VM-Protokollen
-- Azure-Überwachungsprotokollen
-- Azure Security Center-Warnungen
+Azure log integration currently supports the integration of:
 
-## Installieren der Azure-Protokollintegration
+- Azure VM logs
+- Azure Audit Logs
+- Azure Security Center alerts
 
-Laden Sie die [Azure-Protokollintegration](https://www.microsoft.com/download/details.aspx?id=53324) herunter.
+## <a name="install-azure-log-integration"></a>Install Azure log integration
 
-Der Dienst „Azure-Protokollintegration“ sammelt Telemetriedaten des Computers, auf dem er installiert ist. Folgende Telemetriedaten werden erfasst:
+Download [Azure log integration](https://www.microsoft.com/download/details.aspx?id=53324).
 
-- Ausnahmen, die während der Ausführung der Azure-Protokollintegration auftreten
-- Metriken zu der Anzahl von verarbeiteten Abfragen und Ereignissen
-- Statistiken zur Verwendung von Azlog.exe-Befehlszeilenoptionen
+The Azure log integration service collects telemetry data from the machine on which it is installed.  Telemetry data collected is:
 
-> [AZURE.NOTE] Sie können die Erfassung von Telemetriedaten ausschalten, indem Sie diese Option deaktivieren.
+- Exceptions that occur during execution of Azure log integration
+- Metrics about the number of queries and events processed
+- Statistics about which Azlog.exe command line options are being used
 
-## Integrieren von Azure-Überwachungsprotokollen und Security Center-Warnungen
+> [AZURE.NOTE] You can turn off collection of telemetry data by unchecking this option.
 
-1. Öffnen Sie die Eingabeaufforderung, und wechseln Sie mit **cd** zu **c:\\Programme\\Microsoft Azure Log Integration**.
+## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>Integrate Azure Audit Logs and Security Center alerts
 
-2. Führen Sie den Befehl **azlog createazureid** aus, um unter den Azure Active Directory-Mandanten (AD), die die Azure-Abonnements hosten, einen [Azure Active Directory-Dienstprinzipal](../active-directory/active-directory-application-objects.md) zu erstellen.
+1. Open the command prompt and **cd** into **c:\Program Files\Microsoft Azure Log Integration**.
 
-    Sie werden aufgefordert, Ihre Azure-Anmeldedaten einzugeben.
+2. Run the **azlog createazureid** command to create an [Azure Active Directory Service Principal](../active-directory/active-directory-application-objects.md) in the Azure Active Directory (AD) tenants that host the Azure subscriptions.
 
-    > [AZURE.NOTE] Sie müssen der Besitzer des Abonnements oder ein Co-Administrator des Abonnements sein.
+    You will be prompted for your Azure login.
 
-    Die Authentifizierung gegenüber Azure wird über Azure AD durchgeführt. Beim Erstellen eines Dienstprinzipals für die Azure-Protokollintegration wird die Azure AD-Identität erstellt, für die der Zugriff zum Lesen aus Azure-Abonnements gewährt wird.
+    > [AZURE.NOTE] You must be the subscription Owner or a Co-Administrator of the subscription.
 
-3. Führen Sie den Befehl **azlog authorize <Abonnement-ID>** aus, um für den in Schritt 2 erstellten Dienstprinzipal den Zugriff „Leser“ für das Abonnement zu gewähren. Wenn Sie keine **Abonnement-ID** angeben, wird dem Dienstprinzipal der Zugriff „Leser“ für alle Abonnements gewährt, auf die Sie Zugriff haben.
+    Authentication to Azure is done through Azure AD.  Creating a service principal for Azure log integration will create the Azure AD identity that will be given access to read from Azure subscriptions.
 
-    > [AZURE.NOTE] Unter Umständen werden Warnmeldungen angezeigt, wenn Sie den Befehl **authorize** direkt nach dem Befehl **createazureid** ausführen, da zwischen der Erstellung und der Verfügbarkeit des Azure AD-Kontos ein Latenzzeitraum anfällt. Wenn Sie nach dem Ausführen des Befehls **createazureid** ca. zehn Sekunden warten, um den Befehl **authorize** auszuführen, sollten diese Warnungen nicht angezeigt werden.
+3. Run the **azlog authorize <SubscriptionID>** command to assign Reader access on the subscription to the service principal created in step 2. If you don’t specify a **SubscriptionID**, then the service principal will be assigned the Reader role to all subscriptions to which you have access.
 
-4. Überprüfen Sie die folgenden Ordner, um sicherzustellen, dass die JSON-Dateien des Überwachungsprotokolls vorhanden sind:
+    > [AZURE.NOTE] You may see warnings if you run the **authorize** command immediately after the **createazureid** command because there is some latency between when the Azure AD account is created and when the account is available for use. If you wait about 10 seconds after running the **createazureid** command to run the **authorize** command, then you should not see these warnings.
 
-  - **c:\\Users\\azlog\\AzureResourceManagerJson**
-  - **c:\\Users\\azlog\\AzureResourceManagerJsonLD**
+4. Check the following folders to confirm that the Audit log JSON files are there:
 
-5. Überprüfen Sie die folgenden Ordner, um sicherzustellen, dass darin bereits Security Center-Warnungen vorhanden sind:
+  - **c:\Users\azlog\AzureResourceManagerJson**
+  - **c:\Users\azlog\AzureResourceManagerJsonLD**
 
-  - **c:\\Users\\azlog\\AzureSecurityCenterJson**
-  - **c:\\Users\\azlog\\AzureSecurityCenterJsonLD**
+5. Check the following folders to confirm that Security Center alerts exist in them:
 
-6. Verweisen Sie für den Standardconnector für die SIEM-Dateiweiterleitung auf den richtigen Ordner, um die Daten an die SIEM-Instanz zu übermitteln. Informationen hierzu finden Sie unter [SIEM-Konfigurationen](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm) in Ihrer SIEM-Konfiguration.
+  - **c:\Users\azlog\ AzureSecurityCenterJson**
+  - **c:\Users\azlog\AzureSecurityCenterJsonLD**
 
-Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+6. Point the standard SIEM file forwarder connector to the appropriate folder to pipe the data to the SIEM instance. Please refer to [SIEM configurations](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm) on your SIEM configuration.
 
-## Nächste Schritte
+If you have questions about Azure Log Integration, please send an email to [AzSIEMteam@microsoft.com] (mailto:AzSIEMteam@microsoft.com)
 
-Weitere Informationen zu Azure-Überwachungsprotokollen und Definitionen von Eigenschaften finden Sie unter:
+## <a name="next-steps"></a>Next steps
 
-- [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md)
-- [Auflisten der Verwaltungsereignisse in einem Abonnement](https://msdn.microsoft.com/library/azure/dn931934.aspx): Enthält Informationen zum Abrufen von Überwachungsprotokollereignissen.
+To learn more about Azure Audit Logs and property definitions, see:
 
-Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+- [Audit operations with Resource Manager](../resource-group-audit.md)
+- [List the management events in a subscription](https://msdn.microsoft.com/library/azure/dn931934.aspx) - To retrieve audit log events.
 
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-- [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
+To learn more about Security Center, see the following:
 
-<!---HONumber=AcomDC_0921_2016-->
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) — Learn how to manage and respond to security alerts.
+- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Get the latest Azure security news and information.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen des Dynamics CRM Online-Connectors zu Ihren Logik-Apps | Microsoft Azure"
-	description="Erstellen Sie Logik-Apps mit Azure App Service. Der Dynamics CRM Online-Verbindungsanbieter stellt eine API für die Verwendung von Entitäten unter Dynamics CRM Online bereit."
-	services="logic-apps"    
-	documentationCenter=""     
-	authors="MandiOhlinger"    
-	manager="erikre"    
-	editor="" 
-	tags="connectors" />
+    pageTitle="Add the Dynamics CRM Online connector to your Logic Apps | Microsoft Azure"
+    description="Create Logic apps with Azure App service. The Dynamics CRM Online Connection Provider provides an API to work with entities on Dynamics CRM Online."
+    services="logic-apps"    
+    documentationCenter=""     
+    authors="MandiOhlinger"    
+    manager="erikre"    
+    editor="" 
+    tags="connectors" />
 
 <tags
 ms.service="logic-apps"
@@ -17,262 +17,268 @@ ms.workload="integration"
 ms.date="08/15/2016"
 ms.author="mandia"/>
 
-# Erste Schritte mit dem Dynamics CRM Online-Connector
-Verbinden Sie sich mit Dynamics CRM Online, um z. B. einen neuen Datensatz zu erstellen oder ein Element zu aktualisieren. CRM Online ermöglicht Folgendes:
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus CRM Online abgerufen werden.
-- Verwenden von Aktionen, die z. B. einen Datensatz löschen oder Entitäten abrufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein Element in CRM aktualisiert wird, können Sie z. B. über Office 365 eine E-Mail senden.
+# <a name="get-started-with-the-dynamics-crm-online-connector"></a>Get started with the Dynamics CRM Online connector
+Connect to Dynamics CRM Online to create a new record, update an item, and more. With CRM Online, you can:
 
-Dieses Thema beschreibt, wie Sie den Dynamics CRM Online-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
+- Build your business flow based on the data you get from CRM Online. 
+- Use actions that delete a record, get entities, and more. These actions get a response, and then make the output available for other actions. For example, when an item is updated in CRM, you can send an email using Office 365.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
+This topic shows you how to use the Dynamics CRM Online connector in a logic app, and also lists the triggers and actions.
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
+>[AZURE.NOTE] This version of the article applies to Logic Apps general availability (GA).
 
-## Herstellen einer Verbindung mit Dynamics CRM Online
+To learn more about Logic Apps, see [What are logic apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine Verbindung mit Dynamics herstellen möchten, müssen Sie zunächst eine Dynamics CRM Online-*Verbindung* erstellen. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für Dynamics also die Anmeldeinformationen Ihres Dynamics CRM Online-Kontos ein, um die Verbindung zu erstellen.
+## <a name="connect-to-dynamics-crm-online"></a>Connect to Dynamics CRM Online
 
-
-### Erstellen der Verbindung
-
->[AZURE.INCLUDE [Schritte zum Erstellen einer Verbindung mit dem Dynamics CRM Online-Verbindungsanbieter](../../includes/connectors-create-api-crmonline.md)]
-
-## Verwenden eines Triggers
-
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Trigger fragen den Dienst im gewünschten Intervall und mit der gewünschten Häufigkeit ab. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
-
-1. Geben Sie in der Logik-App „dynamics“ ein, um eine Liste mit den Triggern abzurufen:
-
-	![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
-
-2. Wählen Sie **Dynamics CRM Online - When a record is created** (Dynamics CRM Online – Wenn ein Datensatz erstellt wird) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie in der Dropdownliste eine Organisation und eine Entität aus.
-
-	![](./media/connectors-create-api-crmonline/select-organization.png)
-
-	Wenn Sie zur Anmeldung aufgefordert werden, geben Sie die Anmeldeinformationen ein, um die Verbindung zu erstellen. Die erforderlichen Schritte sind in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-crmonline.md#create-the-connection) aufgeführt.
-
-	> [AZURE.NOTE] In diesem Beispiel wird die Logik-App ausgeführt, wenn ein Datensatz erstellt wird. Fügen Sie zum Anzeigen der Ergebnisse dieses Triggers eine weitere Aktion hinzu, die Ihnen eine E-Mail sendet. Fügen Sie beispielsweise die Office 365-Aktion *E-Mail senden* hinzu, um eine E-Mail zu erhalten, wenn der neue Datensatz hinzugefügt wird.
-
-3. Wählen Sie die Schaltfläche **Bearbeiten** aus, und legen Sie Werte für **Häufigkeit** und **Intervall** fest. Falls die Abfrage durch den Trigger also beispielsweise alle 15 Minuten erfolgen soll, legen Sie **Häufigkeit** auf **Minute** und **Intervall** auf **15** fest.
-
-	![](./media/connectors-create-api-crmonline/edit-properties.png)
-
-4. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+Before your logic app can access any service, you first create a *connection* to the service. A connection provides connectivity between a logic app and another service. For example, to connect to Dynamics, you first need a Dynamics CRM Online *connection*. To create a connection, enter the credentials you normally use to access the service you wish to connect to. So with Dynamics, enter the credentials to your Dynamics CRM Online account to create the connection.
 
 
-## Verwenden einer Aktion
+### <a name="create-the-connection"></a>Create the connection
 
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+>[AZURE.INCLUDE [Steps to create a connection to Dynamics CRM Online Connection Provider](../../includes/connectors-create-api-crmonline.md)]
 
-1. Wählen Sie das Pluszeichen aus. Es stehen mehrere Auswahlmöglichkeiten zur Verfügung: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
+## <a name="use-a-trigger"></a>Use a trigger
 
-	![](./media/connectors-create-api-crmonline/add-action.png)
+A trigger is an event that can be used to start the workflow defined in a logic app. Triggers "poll" the service at an interval and frequency that you want. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-2. Wählen Sie **Aktion hinzufügen** aus.
+1. In the logic app, type "dynamics" to get a list of the triggers:  
 
-3. Geben Sie im Textfeld die Zeichenfolge „dynamics“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
+    ![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
 
-	![](./media/connectors-create-api-crmonline/dynamics-actions.png)
+2. Select **Dynamics CRM Online - When a record is created**. If a connection already exists, then select an organization and entity from the drop-down list.
 
-4. Wählen Sie in unserem Beispiel die Option **Dynamics CRM Online - Update a record** (Dynamics CRM Online – Datensatz aktualisieren) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie Organisationsname, Entitätsname und andere Eigenschaften aus:
+    ![](./media/connectors-create-api-crmonline/select-organization.png)
 
-	![](./media/connectors-create-api-crmonline/sample-action.png)
+    If you are prompted to sign in, then enter the sign in details to create the connection. [Create the connection](connectors-create-api-crmonline.md#create-the-connection) in this topic lists the steps. 
 
-	Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-crmonline.md#create-the-connection) beschrieben.
+    > [AZURE.NOTE] In this example, the logic app runs when a record is created. To see the results of this trigger, add another action that sends you an email. For example, add the Office 365 *Send an email* action that emails you when the new record is added. 
 
-	> [AZURE.NOTE] In diesem Beispiel aktualisieren wir einen vorhandenen Datensatz in CRM Online. Für die Aktualisierung des Datensatzes kann die Ausgabe eines anderen Triggers verwendet werden. Fügen Sie beispielsweise den SharePoint-Trigger *When an existing item is modified* (Wenn ein vorhandenes Element geändert wird) hinzu. Fügen Sie dann die CRM Online-Aktion *Update a record* (Datensatz aktualisieren) hinzu, die den vorhandenen Datensatz in CRM Online mithilfe der SharePoint-Felder aktualisiert.
+3. Select the **Edit** button and set the **Frequency** and **Interval** values. For example, if you want the trigger to poll every 15 minutes, then set the **Frequency** to **Minute**, and set the **Interval** to **15**. 
 
-5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+    ![](./media/connectors-create-api-crmonline/edit-properties.png)
+
+4. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
 
 
-## Technische Details
+## <a name="use-an-action"></a>Use an action
 
-## Trigger
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-|Trigger | Beschreibung|
+1. Select the plus sign. You see several choices: **Add an action**, **Add a condition**, or one of the **More** options.
+
+    ![](./media/connectors-create-api-crmonline/add-action.png)
+
+2. Choose **Add an action**.
+
+3. In the text box, type “dynamics” to get a list of all the available actions.
+
+    ![](./media/connectors-create-api-crmonline/dynamics-actions.png)
+
+4. In our example, choose **Dynamics CRM Online - Update a record**. If a connection already exists, then choose the **Organization Name**, **Entity Name**, and other properties:  
+
+    ![](./media/connectors-create-api-crmonline/sample-action.png)
+
+    If you are prompted for the connection information, then enter the details to create the connection. [Create the connection](connectors-create-api-crmonline.md#create-the-connection) in this topic describes these properties. 
+
+    > [AZURE.NOTE] In this example, we update an existing record in CRM Online. You can use output from another trigger to update the record. For example, add the SharePoint *When an existing item is modified* trigger. Then add the CRM Online *Update a record* action that uses the SharePoint fields to update the existing record in CRM Online. 
+
+5. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
+
+
+## <a name="technical-details"></a>Technical Details
+
+## <a name="triggers"></a>Triggers
+
+|Trigger | Description|
 |--- | ---|
-|[When a record is created](connectors-create-api-crmonline.md#when-a-record-is-created) (Wenn ein Datensatz erstellt wird)|Löst einen Ablauf aus, wenn ein Objekt in CRM erstellt wird.|
-|[When a record is updated](connectors-create-api-crmonline.md#when-a-record-is-updated) (Wenn ein Datensatz aktualisiert wird)|Löst einen Ablauf aus, wenn ein Objekt in CRM geändert wird.|
-|[When a record is deleted](connectors-create-api-crmonline.md#when-a-record-is-deleted) (Wenn ein Datensatz gelöscht wird)|Löst einen Ablauf aus, wenn ein Objekt in CRM gelöscht wird.|
+|[When a record is created](connectors-create-api-crmonline.md#when-a-record-is-created)|Triggers a flow when an object is created in CRM.|
+|[When a record is updated](connectors-create-api-crmonline.md#when-a-record-is-updated)|Triggers a flow when an object is modified in CRM.|
+|[When a record is deleted](connectors-create-api-crmonline.md#when-a-record-is-deleted)|Triggers a flow when an object is deleted in CRM.|
 
 
-## Aktionen
+## <a name="actions"></a>Actions
 
-|Aktion|Beschreibung|
+|Action|Description|
 |--- | ---|
-|[List records](connectors-create-api-crmonline.md#list-records) (Datensätze auflisten)|Dieser Vorgang ruft die Datensätze für eine Entität ab.|
-|[Create a new record](connectors-create-api-crmonline.md#create-a-new-record) (Neuen Datensatz erstellen)|Dieser Vorgang erstellt einen neuen Datensatz einer Entität.|
-|[Get record](connectors-create-api-crmonline.md#get-record) (Datensatz abrufen)|Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab.|
-|[Delete a record](connectors-create-api-crmonline.md#delete-a-record) (Datensatz löschen)|Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung.|
-|[Update a record](connectors-create-api-crmonline.md#update-a-record) (Datensatz aktualisieren)|Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität.|
+|[List records](connectors-create-api-crmonline.md#list-records)|This operation gets the records for an entity.|
+|[Create a new record](connectors-create-api-crmonline.md#create-a-new-record)|This operation creates a new record of an entity.|
+|[Get record](connectors-create-api-crmonline.md#get-record)|This operation gets the specified record for an entity.|
+|[Delete a record](connectors-create-api-crmonline.md#delete-a-record)|This operation deletes a record from an entity collection.|
+|[Update a record](connectors-create-api-crmonline.md#update-a-record)|This operation updates an existing record for an entity.|
 
-### Trigger- und Aktionsdetails
+### <a name="trigger-and-action-details"></a>Trigger and Action details
 
-Dieser Abschnitt enthält spezifische Details zu den einzelnen Triggern und Aktionen. Hierzu zählen unter anderem erforderliche oder optionale Eingabeeigenschaften sowie entsprechende Ausgaben im Zusammenhang mit dem Connector.
+In this section, see the specific details about each trigger and action, including any required or optional input properties, and any corresponding output associated with the connector.
 
-#### When a record is created (Wenn ein Datensatz erstellt wird)
-Löst einen Ablauf aus, wenn ein Objekt in CRM erstellt wird.
+#### <a name="when-a-record-is-created"></a>When a record is created
+Triggers a flow when an object is created in CRM. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
-|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardwert: 256)|
-|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
-|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
-##### Ausgabedetails
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| Eigenschaftenname | Datentyp |
+| Property Name | Data Type |
 |---|---|
 |value|array|
 
 
-#### When a record is updated (Wenn ein Datensatz aktualisiert wird)
-Löst einen Ablauf aus, wenn ein Objekt in CRM geändert wird.
+#### <a name="when-a-record-is-updated"></a>When a record is updated
+Triggers a flow when an object is modified in CRM. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
-|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardwert: 256)|
-|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
-|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
-##### Ausgabedetails
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| Eigenschaftenname | Datentyp |
+| Property Name | Data Type |
 |---|---|
 |value|array|
 
 
-#### When a record is deleted (Wenn ein Datensatz gelöscht wird)
-Löst einen Ablauf aus, wenn ein Objekt in CRM gelöscht wird.
+#### <a name="when-a-record-is-deleted"></a>When a record is deleted
+Triggers a flow when an object is deleted in CRM. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
-|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardwert: 256)|
-|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
-|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
-##### Ausgabedetails
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| Eigenschaftenname | Datentyp |
+| Property Name | Data Type |
 |---|---|
-|value|Array|
+|value|array|
 
 
-#### List records (Datensätze auflisten)
-Dieser Vorgang ruft die Datensätze für eine Entität ab.
+#### <a name="list-records"></a>List records
+This operation gets the records for an entity. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
-|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardwert: 256)|
-|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
-|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
-##### Ausgabedetails
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| Eigenschaftenname | Datentyp |
+| Property Name | Data Type |
 |---|---|
-|value|Array|
+|value|array|
 
 
-#### Create a new record (Neuen Datensatz erstellen)
-Dieser Vorgang erstellt einen neuen Datensatz einer Entität.
+#### <a name="create-a-new-record"></a>Create a new record
+This operation creates a new record of an entity. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
-##### Ausgabedetails
-Keine
+##### <a name="output-details"></a>Output Details
+None.
 
 
-#### Get record (Datensatz abrufen)
-Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab.
+#### <a name="get-record"></a>Get record
+This operation gets the specified record for an entity. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
-|id*|Item identifier (Elementbezeichner)|Bezeichner für den Datensatz|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|id*|Item identifier|Specify the Identifier for the record|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
-##### Ausgabedetails
-Keine
+##### <a name="output-details"></a>Output Details
+None.
 
 
-#### Delete a record (Datensatz löschen)
-Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung.
+#### <a name="delete-a-record"></a>Delete a record
+This operation deletes a record from an entity collection. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
-|id*|Item identifier (Elementbezeichner)|Bezeichner für den Datensatz|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|id*|Item identifier|Specify the identifier for the record|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
 
-#### Update a record (Datensatz aktualisieren)
-Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität.
+#### <a name="update-a-record"></a>Update a record
+This operation updates an existing record for an entity. 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|Name der Organisation|Name der CRM-Organisation (beispielsweise Contoso)|
-|table*|Entitätsname|Name der Entität|
-|id*|Record identifier (Datensatzbezeichner)|Bezeichner für den Datensatz|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|id*|Record identifier|Specify the identifier for the record|
 
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+An asterisk (*) means the property is required.
 
-##### Ausgabedetails
-Keine
+##### <a name="output-details"></a>Output Details
+None.
 
 
-## HTTP-Antworten
+## <a name="http-responses"></a>HTTP responses
 
-Von den angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
+The actions and triggers can return one or more of the following HTTP status codes: 
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|Zulässig|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler.|
-|default|Fehler beim Vorgang.|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occurred.|
+|default|Operation Failed.|
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md) über die anderen verfügbaren Connectors für Logik-Apps.
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). Explore the other available connectors in Logic Apps at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

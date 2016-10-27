@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Problembehandlung bei Clouddiensten mit Application Insights | Microsoft Azure"
-   description="Erfahren Sie mehr über das Beheben von Clouddienstproblemen mithilfe von Application Insights zum Verarbeiten von Daten aus der Azure-Diagnose."
+   pageTitle="Troubleshoot Cloud Services using Application Insights | Microsoft Azure"
+   description="Learn how to troubleshoot cloud service issues by using Application Insights to process data from Azure Diagnostics."
    services="cloud-services"
    documentationCenter=".net"
    authors="sbtron"
@@ -16,58 +16,59 @@
    ms.author="saurabh" />
 
 
-# Problembehandlung bei Clouddiensten mit Application Insights
 
-Mit [Azure SDK 2.8](https://azure.microsoft.com/downloads/) und Azure-Diagnose-Erweiterung 1.5 können Sie jetzt Ihre Azure-Diagnose-Daten für Ihren Clouddienst direkt an Application Insights senden. Die verschiedenen von der Azure-Diagnose erfassten Protokolltypen, darunter Anwendungsprotokolle, Windows-Ereignisprotokolle, ETW-Protokolle und Leistungsindikatoren können jetzt an Application Insights gesendet und in der Benutzeroberfläche des Application Insights-Portals visualisiert werden. Bei der gemeinsamen Nutzung mit dem Application Insights-SDK können Sie nun Einblicke in die Metriken und Protokolle von der Anwendung sowie in die Daten der System- und Infrastrukturebene von Azure-Diagnose erhalten.
+# <a name="troubleshoot-cloud-services-using-application-insights"></a>Troubleshoot Cloud Services using Application Insights
 
-## Konfigurieren der Azure-Diagnose zum Senden von Daten an Application Insights
+With [Azure SDK 2.8](https://azure.microsoft.com/downloads/) and Azure diagnostics extension 1.5 you can now send your Azure Diagnostics data for your Cloud Service directly to Application Insights. The various types of logs collected by Azure Diagnostics including application logs, windows event logs, ETW logs and performance counters can now be sent to Application Insights and visualized in the Application Insights portal UI. When used along with the Application Insights SDK you can now get insights into metrics and logs coming from your application as well as the system and infrastructure level data coming from Azure Diagnostics.
 
-Führen Sie diese Schritte aus, um Ihr Clouddienstprojekt einzurichten, um Azure-Diagnose-Daten an Application Insights zu senden.
+## <a name="configure-azure-diagnostics-to-send-data-to-application-insights"></a>Configure Azure Diagnostics to send data to Application Insights
 
-1) Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf eine Rolle, und wählen Sie **Eigenschaften** aus, um den Rollendesigner zu öffnen.
+Follow these steps to setup your cloud service project to send Azure Diagnostics data to Application Insights.
 
-![Rolleneigenschaften des Projektmappen-Explorers][1]
+1) In Visual Studio Solution Explorer right-click on a role and select **properties** to open the Role designer
 
-2) Wählen Sie im Rollendesigner im Diagnose -Abschnitt das Kontrollkästchen **Diagnosedaten an Application Insights senden** aus.
+![Solution Explorer Role Properties][1]
 
-![Rollendesigner sendet Diagnosedaten an Application Insights][2]
+2) In Role designer under the diagnostics section select the check box to **Send diagnostics data to Application Insights**
 
-3) Wählen Sie im Dialogfeld, das angezeigt wird, die Application Insights-Ressource aus, an die Sie die Azure-Diagnose-Daten senden möchten. Im Dialogfeld können Sie eine vorhandene Application Insights-Ressource aus Ihrem Abonnement auswählen oder manuell einen Instrumentierungsschlüssel für eine Application Insights-Ressource angeben. Wenn Sie keine vorhandene Application Insights-Ressource haben, können Sie eine erstellen, indem Sie auf den Link **Neue Ressource erstellen** klicken, dadurch wird ein Browserfenster mit dem klassischen Azure-Portal geöffnet, in dem Sie eine Application Insights-Ressource erstellen können. Weitere Informationen zum Erstellen einer Application Insights-Ressource finden Sie unter [Erstellen einer neuen Application Insights-Ressource](../application-insights/app-insights-create-new-resource.md).
+![Role designer send diagnostics data to application insights][2]
 
-![Auswählen einer Application Insights-Ressource][3]
+3) In the dialog that pops up select the Application Insights Resource that you would like to send the Azure diagnostics data to. The dialog allows you to select an existing Application Insights resource from your subscription or manually specify an instrumentation key for an Application Insights resource. If you don't have an existing Application Insights resource then you can create on by clicking on the **Create a new resource** link which will open a browser window to the Azure classic portal where you can create an Application Insights Resource. For more information on creating an Application Insights resource see [Create a new Application Insights resource](../application-insights/app-insights-create-new-resource.md)
 
-4) Wenn Sie die Application Insights-Ressource hinzugefügt haben, wird der Instrumentierungsschlüssel für diese Ressource als Dienstkonfigurationseinstellung mit dem Namen **APPINSIGHTS\_INSTRUMENTATIONKEY** gespeichert. Sie können diese Konfigurationseinstellung für jede Dienstkonfiguration oder Umgebung ändern, indem Sie eine andere Konfiguration aus der Dropdownliste „Dienstkonfiguration“ auswählen und einen neuen Instrumentierungsschlüssel für diese Konfiguration angeben.
+![select application insights resource][3]
 
-![Auswählen einer Dienstkonfiguration][4]
+4) Once you have added the Application Insights resource, the instrumentation key for that resource is stored as a service configuration setting with the name **APPINSIGHTS_INSTRUMENTATIONKEY**. You can change this configuration setting for each service configuration or environment by selecting a different configuration from the Service configuration drop down and specifying a new instrumentation key for that configuration.
 
-Die **APPINSIGHTS\_INSTRUMENTATIONKEY**-Konfigurationseinstellung wird von Visual Studio zum Konfigurieren der Diagnose-Erweiterung mit den entsprechenden Application Insights-Ressourceninformationen während der Veröffentlichung verwendet. Die Konfigurationseinstellung ist eine bequeme Möglichkeit, die verschiedenen Instrumentierungsschlüssel für verschiedene Dienstkonfigurationen zu definieren. Visual Studio übersetzt diese Einstellung und fügt sie beim Veröffentlichen in die öffentliche Konfiguration der Diagnose-Erweiterung ein. Um die Konfiguration der Diagnose-Erweiterung mit PowerShell zu vereinfachen, enthält die Paketausgabe von Visual Studio auch die öffentliche Konfigurations-XML mit dem entsprechenden Application Insights-Instrumentierungsschlüssel. Die öffentlichen Konfigurationsdateien werden im Extensions-Ordner erstellt und haben das folgende Namensgebungsmuster: "PaaSDiagnostics.<RoleName>. PubConfig.xml". Dieses Muster kann von allen PowerShell-basierten Bereitstellungen verwendet werden, um die einzelnen Konfigurationen einer Rolle zuzuordnen.
+![select service configuration][4]
 
-5) Durch Aktivieren von **Diagnosedaten an Application Insights senden** wird Azure-Diagnose automatisch konfiguriert, damit alle Leistungsindikatoren und Protokolle mit dem Error-Protokolliergrad, die vom Azure-Diagnose-Agent gesammelt werden, an Application Insights gesendet werden. Wenn Sie zusätzlich konfigurieren möchten, welche Daten an Application Insights gesendet werden, müssen Sie die *diagnostics.wadcfgx*-Datei für jede Rolle manuell bearbeiten. Weitere Informationen zum manuellen Aktualisieren der Konfiguration finden Sie unter [Konfigurieren von Azure-Diagnose zum Senden von Daten an Application Insights](../azure-diagnostics-configure-applicationinsights.md).
+The **APPINSIGHTS_INSTRUMENTATIONKEY** configuration setting is used by Visual Studio to configure the diagnostics extension with the appropriate Application Insights resource information during publishing. The configuration setting is a convenient way of defining different instrumentation keys for different service configurations. Visual Studio will translate that setting and insert it into the diagnostics extension public configuration when publishing. To simplify the process of configuring the diagnostics extension with PowerShell, the package output from Visual Studio also contains the public configuration XML with the appropriate Application Insights instrumentation key included. The public config files are created in the Extensions folder and follow the pattern PaaSDiagnostics.<RoleName>.PubConfig.xml. Any PowerShell based deployments can use this pattern to map each configuration to a Role.
 
-Sobald der Clouddienst so konfiguriert wurde, dass Azure-Diagnose-Daten an Application Insights gesendet werden, können Sie ihn wie gewohnt in Azure bereitstellen. Stellen Sie dabei sicher, dass die Azure-Diagnose-Erweiterung aktiviert ist. Siehe [Veröffentlichen eines Clouddiensts mit Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).
+5) Enabling the **Send diagnostics data to Application Insights** will automatically configure Azure diagnostics to send all performance counters and error level logs that are being collected by the Azure diagnostics agent to Application Insights. If you want to further configure what data is sent to Application Insights then you need to manually edit the *diagnostics.wadcfgx* file for each role. See [Configure Azure Diagnostics to send data to Application Insights](../azure-diagnostics-configure-applicationinsights.md) to learn more about manually updating the configuration.
 
-## Anzeigen von Azure-Diagnose-Daten in Application Insights
-Die Azure-Diagnose-Telemetrie wird in der Application Insights-Ressource angezeigt, die für den Clouddienst konfiguriert wurde.
+Once the Cloud Service is configured to send Azure diagnostics data to application insights you can deploy it to Azure like you normally would making sure the Azure diagnostics extension is enabled. See [Publishing a Cloud Service using Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).  
 
-Im Folgenden wird gezeigt, wie die verschiedenen Azure-Diagnose-Protokolltypen den Application Insights-Konzepten zugeordnet werden:
+## <a name="viewing-azure-diagnostics-data-in-application-insights"></a>Viewing Azure diagnostics data in Application Insights
+The Azure diagnostic telemetry will show up in the Application Insights resource configured for your cloud service.
 
--  Leistungsindikatoren werden als benutzerdefinierte Metriken in Application Insights angezeigt.
--  Windows-Ereignisprotokolle werden als Ablaufverfolgungen und benutzerdefinierte Ereignisse in Application Insights angezeigt.
--  Anwendungsprotokolle, ETW-Protokolle und alle Diagnose-Infrastrukturprotokolle werden als Ablaufverfolgungen in Application Insights angezeigt.
+The following is how the various Azure diagnostics log types map to Application Insights concepts:  
 
-So zeigen Sie Azure-Diagnose-Daten in Application Insights an:
+-  Performance Counters are displayed as Custom Metrics in Application Insights
+-  Windows Event Logs are shown as Traces and Custom Events in Application Insights
+-  Application Logs, ETW Logs and any Diagnostics Infrastructure logs are shown as Traces in Application Insights.
 
-- Verwenden Sie den [Metrik-Explorer](../application-insights/app-insights-metrics-explorer.md), um alle benutzerdefinierten Leistungsindikatoren oder die Anzahl verschiedener Arten von Windows-Ereignisprotokollereignissen zu visualisieren.
+To view Azure diagnostics data in Application Insights:
 
-![Benutzerdefinierte Metriken im Metrik-Explorer][5]
+- Use [Metrics explorer](../application-insights/app-insights-metrics-explorer.md) to visualize any custom performance counters or counts of different types of windows event log events.
 
-- Verwenden Sie die [Suche](../application-insights/app-insights-diagnostic-search.md), um die verschiedenen Ablaufverfolgungsprotokolle zu durchsuchen, die von Azure-Diagnose gesendet werden. Wenn Sie beispielsweise über eine nicht bearbeitete Ausnahme in einer Rolle verfügen, aufgrund derer die Rolle abstürzt und wiederverwendet wird, werden diese Informationen im *Application*-Kanal des *Windows-Ereignisprotokolls* angezeigt. Mit der Suchfunktion können Sie den Windows-Ereignisprotokollfehler anzeigen und die vollständige Stapelüberwachung für die Ausnahme abrufen, um die Ursache des Problems zu ermitteln.
+![Custom Metrics in Metrics Explorer][5]
 
-![Durchsuchen von Ablaufverfolgungen][6]
+- Use [Search](../application-insights/app-insights-diagnostic-search.md) to search across the various trace logs sent by Azure Diagnostics. For example if you had an unhandled exception in a Role which caused the Role to crash and recycle that information would show up in the *Application* channel of *Windows Event Log*. You can use the Search functionality to look at the Windows Event Log error and get the full stack trace for the exception enabling you to find the root cause of the issue.
 
-## Nächste Schritte
+![Search Traces][6]
 
-- [Fügen Sie dem Clouddienst das Application Insights-SDK hinzu](../application-insights/app-insights-cloudservices.md), um Daten zu Anforderungen, Ausnahmen, Abhängigkeiten und einer benutzerdefinierten Telemetrie aus Ihrer Anwendung zu senden. Zusammen mit den Azure-Diagnose-Daten erhalten Sie eine umfassende Ansicht Ihrer Anwendung und des Systems in der gleichen Application Insights-Ressource.  
+## <a name="next-steps"></a>Next Steps
+
+- [Add the Application Insights SDK to your cloud service](../application-insights/app-insights-cloudservices.md) to send data about requests, exceptions, dependencies, and any custom telemetry from your application. Combined with the Azure Diagnostics data you can get a complete view of your application and system all in the same Application Insight resource.  
 
 
 <!--Image references-->
@@ -78,4 +79,8 @@ So zeigen Sie Azure-Diagnose-Daten in Application Insights an:
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
 
-<!---HONumber=AcomDC_0511_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

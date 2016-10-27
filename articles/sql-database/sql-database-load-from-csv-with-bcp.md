@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Laden von Daten aus einer CSV-Datei in Azure SQL-Datenbank (BCP) | Microsoft Azure"
-   description="Für kleinere Datenmengen wird BCP zum Importieren von Daten in Azure SQL-Datenbank verwendet."
+   pageTitle="Load data from CSV file into Azure SQL Databaase (bcp) | Microsoft Azure"
+   description="For a small data size, uses bcp to import data into Azure SQL Database."
    services="sql-database"
    documentationCenter="NA"
    authors="CarlRabeler"
@@ -17,31 +17,32 @@
    ms.author="carlrab"/>
 
 
-# Laden von Daten aus einer CSV-Datei in Azure SQL Data Warehouse (Flatfiles)
 
-Sie können das Befehlszeilenprogramm BCP verwenden, um Daten aus einer CSV-Datei in Azure SQL-Datenbank zu importieren.
+# <a name="load-data-from-csv-into-azure-sql-data-warehouse-(flat-files)"></a>Load data from CSV into Azure SQL Data Warehouse (flat files)
 
-## Voraussetzungen
+You can use the bcp command-line utility to import data from a CSV file into Azure SQL Database.
 
-### Voraussetzungen
+## <a name="before-you-begin"></a>Before you begin
 
-Für dieses Lernprogramm ist Folgendes erforderlich:
+### <a name="prerequisites"></a>Prerequisites
 
-- Ein logischer Azure SQL-Datenbankserver und eine Datenbank
-- Eine Installation des Befehlszeilenprogramms bcp
-- Eine Installation des Befehlszeilenprogramms sqlcmd
+To step through this tutorial, you need:
 
-Sie können die Dienstprogramme bcp und sqlcmd im [Microsoft Download Center][] herunterladen.
+- An Azure SQL Database logical server and database
+- The bcp command-line utility installed
+- The sqlcmd command-line utility installed
 
-### Daten im ASCII- oder UTF-16-Format
+You can download the bcp and sqlcmd utilities from the [Microsoft Download Center][].
 
-Wenn Sie in diesem Tutorial Ihre eigenen Daten verwenden möchten, müssen die Daten in ASCII- oder UTF-16-Codierung vorlegen, da UTF-8 von bcp nicht unterstützt wird.
+### <a name="data-in-ascii-or-utf-16-format"></a>Data in ASCII or UTF-16 format
 
-## 1\. Erstellen einer Zieltabelle
+If you are trying this tutorial with your own data, your data needs to use the ASCII or UTF-16 encoding since bcp does not support UTF-8. 
 
-Definieren Sie eine Tabelle in SQL-Datenbank als Zieltabelle. Die Spalten der Tabelle müssen auf die Daten in den Zeilen der Datendatei abgestimmt sein.
+## <a name="1.-create-a-destination-table"></a>1. Create a destination table
 
-Führen Sie zum Erstellen einer Tabelle an einer Eingabeaufforderung den Befehl „sqlcmd.exe“ aus:
+Define a table in SQL Database as the destination table. The columns in the table must correspond to the data in each row of your data file.
+
+To create a table, open a command prompt and use sqlcmd.exe to run the following command:
 
 
 ```sql
@@ -57,9 +58,9 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## 2\. Erstellen einer Quelldatendatei
+## <a name="2.-create-a-source-data-file"></a>2. Create a source data file
 
-Öffnen Sie Editor, kopieren Sie die folgenden Datenzeilen in eine neue Textdatei, und speichern Sie diese Datei im lokalen temporären Verzeichnis C:\\Temp\\DimDate2.txt. Diese Daten liegen im ASCII-Format vor.
+Open Notepad and copy the following lines of data into a new text file and then save this file to your local temp directory, C:\Temp\DimDate2.txt. This data is in ASCII format.
 
 ```
 20150301,1,3
@@ -76,26 +77,26 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 20150101,1,3
 ```
 
-(Optional) Wenn Sie Ihre eigenen Daten aus einer SQL Server-Datenbank exportieren möchten, führen Sie an einer Eingabeaufforderung den folgenden Befehl aus. Ersetzen Sie „TableName“, „ServerName“, „DatabaseName“, „Username“ und „Password“ durch Ihre eigenen Informationen.
+(Optional) To export your own data from a SQL Server database, open a command prompt and run the following command. Replace TableName, ServerName, DatabaseName, Username, and Password with your own information.
 
 ```sql
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
 ```
 
-## 3\. Laden der Daten
-Führen Sie zum Laden der Daten an einer Eingabeaufforderung den folgenden Befehl aus, und ersetzen Sie dabei die Werte für Servername, Datenbankname, Benutzername und Kennwort durch Ihre eigenen Informationen:
+## <a name="3.-load-the-data"></a>3. Load the data
+To load the data, open a command prompt and run the following command, replacing the values for Server Name, Database name, Username, and Password with your own information.
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Vergewissern Sie sich mithilfe des folgenden Befehls, dass die Daten ordnungsgemäß geladen wurden:
+Use this command to verify the data was loaded properly
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-Das Ergebnis sollte in etwa wie folgt aussehen:
+The results should look like this:
 
 DateId |CalendarQuarter |FiscalQuarter
 ----------- |--------------- |-------------
@@ -113,9 +114,9 @@ DateId |CalendarQuarter |FiscalQuarter
 20151201 |4 |2
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Informationen zum Migrieren einer SQL Server-Datenbank finden Sie im Artikel zur [SQL Server-Datenbankmigration](sql-database-cloud-migrate.md).
+To migrate a SQL Server database, see [SQL Server database migration](sql-database-cloud-migrate.md).
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
@@ -124,4 +125,8 @@ Informationen zum Migrieren einer SQL Server-Datenbank finden Sie im Artikel zur
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

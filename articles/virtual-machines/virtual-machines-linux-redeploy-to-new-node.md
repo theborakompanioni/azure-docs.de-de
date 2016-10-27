@@ -1,42 +1,43 @@
 <properties 
-	pageTitle="Virtuelle Linux-Computer erneut bereitstellen | Microsoft Azure" 
-	description="Beschreibt, wie Sie virtuelle Linux-Computer zum Beheben von Problemen mit der SSH-Verbindung bereitstellen." 
-	services="virtual-machines-linux" 
-	documentationCenter="virtual-machines" 
-	authors="iainfoulds" 
-	manager="timlt"
-	tags="azure-resource-manager,top-support-issue" 
+    pageTitle="Redeploy Linux Virtual Machines | Microsoft Azure" 
+    description="Describes how to redeploy Linux virtual machines to mitigate SSH connection issues." 
+    services="virtual-machines-linux" 
+    documentationCenter="virtual-machines" 
+    authors="iainfoulds" 
+    manager="timlt"
+    tags="azure-resource-manager,top-support-issue" 
 />
-	
+    
 
 <tags 
-	ms.service="virtual-machines-linux" 
-	ms.devlang="na" 
-	ms.topic="support-article" 
-	ms.tgt_pltfrm="vm-linux"
-	ms.workload="infrastructure" 
-	ms.date="09/19/2016" 
-	ms.author="iainfou" 
+    ms.service="virtual-machines-linux" 
+    ms.devlang="na" 
+    ms.topic="support-article" 
+    ms.tgt_pltfrm="vm-linux"
+    ms.workload="infrastructure" 
+    ms.date="09/19/2016" 
+    ms.author="iainfou" 
 />
 
-# Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen
 
-Wenn Sie Schwierigkeiten mit der Problembehandlung bei SSH oder dem Anwendungszugriff auf einen virtuellen Azure-Computer haben, lassen sich diese u. U. durch das erneute Bereitstellen des virtuellen Computers beseitigen. Wenn Sie einen virtuellen Computer erneut bereitstellen, wird er innerhalb der Azure-Infrastruktur auf einen neuen Knoten verschoben und dann wieder eingeschaltet. Dabei werden alle Ihre Konfigurationsoptionen und zugehörigen Ressourcen beibehalten. In diesem Artikel erfahren Sie, wie ein virtueller Computer mithilfe der Azure-Befehlszeilenschnittstelle oder dem Azure-Portal erneut bereitgestellt wird.
+# <a name="redeploy-virtual-machine-to-new-azure-node"></a>Redeploy virtual machine to new Azure node
 
-> [AZURE.NOTE] Nachdem Sie einen virtuellen Computer erneut bereitgestellt haben, geht der temporäre Datenträger verloren, und die der virtuellen Netzwerkschnittstelle zugeordneten dynamischen IP-Adressen werden aktualisiert.
+If you have been facing difficulties troubleshooting SSH or application access to an Azure virtual machine (VM), redeploying the VM may help. When you redeploy a VM, it moves the VM to a new node within the Azure infrastructure and then powers it back on, retaining all your configuration options and associated resources. This article shows you how to redeploy a VM using Azure CLI or the Azure portal.
+
+> [AZURE.NOTE] After you redeploy a VM, the temporary disk is lost and dynamic IP addresses associated with virtual network interface are updated. 
 
 
-## Verwenden der Azure-Befehlszeilenschnittstelle
+## <a name="using-azure-cli"></a>Using Azure CLI
 
-Stellen Sie sicher, dass die [aktuelle Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auf Ihrem Computer installiert ist und Sie sich im Resource Manager-Modus (`azure config mode arm`) befinden.
+Make sure you have the [latest Azure CLI installed](../xplat-cli-install.md) on your machine and you are in Resource Manager mode (`azure config mode arm`).
 
-Verwenden Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle, um Ihren virtuellen Computer erneut bereitzustellen:
+Use the following Azure CLI command to redeploy your virtual machine:
 
 ```bash
 azure vm redeploy --resourcegroup <resourcegroup> --vm-name <vmname> 
 ```
 
-Der Status der Änderung des virtuellen Computers wird während des Vorgangs der erneuten Bereitstellung angezeigt. Während der virtuelle Computer den Vorgang der erneuten Bereitstellung auf einem neuen Host durchläuft, ändert sich sein `PowerState` von „Wird ausgeführt“ zu „Wird aktualisiert“, dann zu „Wird gestartet“ und schließlich wieder zu „Wird ausgeführt“. Überprüfen Sie den Status der virtuellen Computer innerhalb einer Ressourcengruppe mit:
+You can see the status of the VM change as it goes through the redeploy process. The `PowerState` of the VM goes from 'Running' to 'Updating', then 'Starting', and finally 'Running' as it goes through the process of redeploying to a new host. Check the status of the VMs within a resource group with:
 
 ```bash
 azure vm list -g <resourcegroup>
@@ -46,7 +47,10 @@ azure vm list -g <resourcegroup>
 [AZURE.INCLUDE [virtual-machines-common-redeploy-to-new-node](../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 
-## Nächste Schritte
-Falls beim Herstellen einer Verbindung mit Ihrem virtuellen Computer Probleme auftreten, finden Sie spezifische Hilfe unter [Problembehandlung bei SSH-Verbindungen](virtual-machines-linux-troubleshoot-ssh-connection.md) oder [Ausführliche Schritte zur Problembehandlung bei SSH](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md). Sie können auch die Informationen zur [Problembehandlung bei der Anwendung](virtual-machines-linux-troubleshoot-app-connection.md) lesen, wenn Sie auf eine Anwendung, die auf Ihrem virtuellen Computer ausgeführt wird, nicht zugreifen können.
+## <a name="next-steps"></a>Next steps
+If you are having issues connecting to your VM, you can find specific help on [troubleshooting SSH connections](virtual-machines-linux-troubleshoot-ssh-connection.md) or [detailed SSH troubleshooting steps](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md). If you cannot access an application running on your VM, you can also read [application troubleshooting issues](virtual-machines-linux-troubleshoot-app-connection.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Partitionieren von Tabellen in SQL Data Warehouse | Microsoft Azure"
-   description="Enthält Informationen zu den ersten Schritten bei der Tabellenpartitionierung in Azure SQL Data Warehouse."
+   pageTitle="Partitioning tables in SQL Data Warehouse | Microsoft Azure"
+   description="Getting started with table partitioning in Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -16,44 +16,45 @@
    ms.date="07/18/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
-# Partitionieren von Tabellen in SQL Data Warehouse
+
+# <a name="partitioning-tables-in-sql-data-warehouse"></a>Partitioning tables in SQL Data Warehouse
 
 > [AZURE.SELECTOR]
-- [Übersicht][]
-- [Datentypen][]
-- [Verteilen][]
+- [Overview][]
+- [Data Types][]
+- [Distribute][]
 - [Index][]
 - [Partition][]
-- [Statistiken][]
-- [Temporär][]
+- [Statistics][]
+- [Temporary][]
 
-Das Partitionieren wird für alle SQL Data Warehouse-Tabellentypen unterstützt, z.B. gruppierter Columnstore, gruppierter Index und Heap. Außerdem wird die Partitionierung für alle Verteilungstypen unterstützt, z.B. Hash- oder Roundrobin-Verteilung. Die Partitionierung ermöglicht Ihnen die Aufteilung Ihrer Daten in kleinere Gruppen, und in den meisten Fällen wird die Partitionierung für eine Datumsspalte durchgeführt.
+Partitioning is supported on all SQL Data Warehouse table types; including clustered columnstore, clustered index, and heap.  Partitioning is also supported on all distribution types, including both hash or round robin distributed.  Partitioning enables you to divide your data into smaller groups of data and in most cases, partitioning is done on a date column.
 
-## Vorteile der Partitionierung
+## <a name="benefits-of-partitioning"></a>Benefits of partitioning
 
-Durch die Partitionierung können sich Vorteile für die Wartung und die Abfrageleistung ergeben. Ob sich Vorteile für beide oder nur einen dieser Punkte ergeben, hängt davon ab, wie Daten geladen werden und ob dieselbe Spalte für beide Zwecke genutzt werden kann. Die Partitionierung kann nämlich nur für eine Spalte durchgeführt werden.
+Partitioning can benefit data maintenance and query performance.  Whether it benefits both or just one is dependent on how data is loaded and whether the same column can be used for both purposes, since partitioning can only be done on one column.
 
-### Vorteile für Lasten
+### <a name="benefits-to-loads"></a>Benefits to loads
 
-Der Hauptvorteil der Partitionierung in SQL Data Warehouse ist die Verbesserung der Effizienz und Leistung beim Laden von Daten, indem Partitionen gelöscht, gewechselt und zusammengeführt werden. In den meisten Fällen werden Daten nach einer Datumsspalte partitioniert, die eng an die Sequenz gebunden ist, mit der die Daten in die Datenbank geladen werden. Einer der größten Vorteile bei der Verwendung von Partitionen zum Verwalten von Daten ist die Vermeidung der Transaktionsprotokollierung. Das simple Einfügen, Aktualisieren oder Löschen von Daten kann zwar der einfachste Ansatz sein, aber wenn Sie etwas Planung und Arbeit investieren, kann die Leistung durch die Verwendung der Partitionierung während des Ladevorgangs erheblich verbessert werden.
+The primary benefit of partitioning in SQL Data Warehouse is improve the efficiency and performance of loading data by use of partition deletion, switching and merging.  In most cases data is partitioned on a date column that is closely tied to the sequence which the data is loaded to the database.  One of the greatest benefits of using partitions to maintain data it the avoidance of transaction logging.  While simply inserting, updating or deleting data can be the most straightforward approach, with a little thought and effort, using partitioning during your load process can substantially improve performance.
 
-Sie können den Partitionswechsel einsetzen, um einen Abschnitt einer Tabelle schnell zu entfernen oder auszutauschen. So kann beispielsweise eine Umsatzfaktentabelle erstellt werden, die nur Daten für die letzten 36 Monate enthält. Am Monatsende wird jeweils der älteste Verkaufsdatenmonat aus der Tabelle gelöscht. Sie können eine delete-Anweisung verwenden, um jeweils die Daten für den ältesten Monat zu löschen. Das Löschen einer großen Datenmenge Zeile für Zeile mit einer delete-Anweisung kann aber sehr lange dauern und das Risiko für große Transaktionen erhöhen, deren Rollback sehr viel Zeit in Anspruch nimmt, wenn es zu Fehlern kommt. Ein wesentlich besserer Ansatz besteht darin, einfach die älteste Partition der Daten zu löschen. Während das Löschen der einzelnen Zeilen Stunden dauern kann, werden für das Löschen einer gesamten Partition meist nur wenige Sekunden benötigt.
+Partition switching can be used to quickly remove or replace a section of a table.  For example, a sales fact table might contain just data for the past 36 months.  At the end of every month, the oldest month of sales data is deleted from the table.  This data could be deleted by using a delete statement to delete the data for the oldest month.  However, deleting a large amount of data row-by-row with a delete statement can take a very long time, as well as create the risk of large transactions which could take a long time to rollback if something goes wrong.  A more optimal approach is to simply drop the oldest partition of data.  Where deleting the individual rows could take hours, deleting an entire partition could take seconds.
 
-### Vorteile für Abfragen
+### <a name="benefits-to-queries"></a>Benefits to queries
 
-Die Partitionierung kann auch verwendet werden, um die Abfrageleistung zu verbessern. Wenn eine Abfrage einen Filter auf eine partitionierte Spalte anwendet, kann der Scan nur auf die qualifizierten Partitionen beschränkt werden. Dies kann eine viele kleinere Teilmenge der Daten sein, und ein Scan der gesamten Tabelle wird vermieden. Aufgrund der Einführung von gruppierten Columnstore-Indizes sind die Leistungsvorteile bei der Prädikatbeseitigung nicht so groß, aber in einigen Fällen können sich trotzdem Vorteile für Abfragen ergeben. Beispiel: Wenn eine Umsatzfaktentabelle auf der Grundlage des Verkaufsdatumsfelds in 36 Monate partitioniert wird, kann bei Abfragen, die das Verkaufsdatum als Filter verwenden, das Durchsuchen von Partitionen übersprungen werden, die nicht dem Filter entsprechen.
+Partitioning can also be used to improve query performance.  If a query applies a filter on a partitioned column, this can limit the scan to only the qualifying partitions which may be a much smaller subset of the data, avoiding a full table scan.  With the introduction of clustered columnstore indexes, the predicate elimination performance benefits are less beneficial, but in some cases there can be a benefit to queries.  For example, if the sales fact table is partitioned into 36 months using the sales date field, then queries that filter on the sale date can skip searching in partitions that don’t match the filter.
 
-## Anleitung zur Festlegung der Partitionsgröße
+## <a name="partition-sizing-guidance"></a>Partition sizing guidance
 
-Die Partitionierung kann zwar verwendet werden, um die Leistung in einigen Szenarien zu verbessern, aber das Erstellen einer Tabelle mit **zu vielen** Partitionen kann die Leistung unter Umständen negativ beeinträchtigen. Dies gilt besonders für gruppierte Columnstore-Tabellen. Es muss klar sein, wann sich der Einsatz der Partitionierung anbietet und wie viele Partitionen erstellt werden sollten, damit die Partitionierung hilfreich ist. Es gibt keine genaue Vorgabe, welche Anzahl von Partitionen zu hoch ist. Dies hängt von Ihren Daten und außerdem davon ab, wie viele Partitionen gleichzeitig geladen werden. Als Faustregel gilt aber, dass nicht Tausende von Partitionen hinzugefügt werden sollten, sondern eher Dutzende oder Hunderte.
+While partitioning can be used to improve performance some scenarios, creating a table with **too many** partitions can hurt performance under some circumstances.  These concerns are especially true for clustered columnstore tables.  For partitioning to be helpful, it is important to understand when to use partitioning and the number of partitions to create.  There is no hard fast rule as to how many partitions are too many, it depends on your data and how many partitions you are loading to simultaneously.  But as a general rule of thumb, think of adding 10s to 100s of partitions, not 1000s.
 
-Beim Erstellen der Partitionierung für **gruppierte Columnstore**-Tabellen ist es wichtig zu beachten, wie viele Zeilen in jeder Partition enthalten sind. Für eine optimale Komprimierung und Leistung von gruppierten Columnstore-Tabellen sind mindestens 1 Million Zeilen pro Verteilung und Partition erforderlich. Bereits vor der Erstellung von Partitionen teilt SQL Data Warehouse jede Tabelle auf 60 verteilte Datenbanken auf. Jegliche Partitionierungen, die einer Tabelle hinzugefügt werden, werden zusätzlich zu den im Hintergrund erstellten Verteilungen durchgeführt. Für dieses Beispiel bedeutet dies Folgendes: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und SQL Data Warehouse 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens 60 Millionen Zeilen pro Monat umfassen (oder 2,1 Milliarden Zeilen, wenn alle Monate aufgefüllt sind). Wenn eine Tabelle deutlich weniger Zeilen als das empfohlene Minimum an Zeilen pro Partition enthält, sollten Sie die Verwendung von weniger Partitionen erwägen, um die Anzahl von Zeilen pro Partition zu erhöhen. Lesen Sie sich auch den Artikel zur [Indizierung][Index] durch. Darin sind Abfragen enthalten, die für SQL Data Warehouse ausgeführt werden können, um die Qualität von gruppierten Columnstore-Indizes zu bewerten.
+When creating partitioning on **clustered columnstore** tables, it is important to consider how many rows will land in each partition.  For optimal compression and performance of clustered columnstore tables, a minimum of 1 million rows per distribution and partition is needed.  Before partitions are created, SQL Data Warehouse already divides each table into 60 distributed databases.  Any partitioning added to a table is in addition to the distributions created behind the scenes.  Using this example, if the sales fact table contained 36 monthly partitions, and given that SQL Data Warehouse has 60 distributions, then the sales fact table should contain 60 million rows per month, or 2.1 billion rows when all months are populated.  If a table contains significantly less rows than the recommended minimum number of rows per partition, consider using fewer partitions in order to make increase the number of rows per partition.  Also see the [Indexing][Index] article which includes queries that can be run on SQL Data Warehouse to assess the quality of cluster columnstore indexes.
 
-## Syntaxunterschied gegenüber SQL Server
+## <a name="syntax-difference-from-sql-server"></a>Syntax difference from SQL Server
 
-Mit SQL Data Warehouse wird eine vereinfachte Definition der Partitionen eingeführt, die sich geringfügig von der in SQL Server unterscheidet. Partitionierungsfunktionen und -schemen werden in SQL Data Warehouse nicht so wie in SQL Server verwendet. Stattdessen müssen Sie lediglich die partitionierte Spalte und die Grenzpunkte identifizieren. Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch. SQL Server und SQL Data Warehouse unterstützen eine Partitionsspalte pro Tabelle, und es kann sich um eine Bereichspartition handeln. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes][].
+SQL Data Warehouse introduces a simplified definition of partitions which is slightly different from SQL Server.  Partitioning functions and schemes are not used in SQL Data Warehouse as they are in SQL Server.  Instead, all you need to do is identify partitioned column and the boundary points.  While the syntax of partitioning may be slightly different from SQL Server, the basic concepts are the same.  SQL Server and SQL Data Warehouse support one partition column per table, which can be ranged partition.  To learn more about partitioning, see [Partitioned Tables and Indexes][].
 
-Im folgenden Beispiel für eine SQL Data Warehouse-Partition mit der [CREATE TABLE][]-Anweisung wird die Tabelle „FactInternetSales“ nach der Spalte „OrderDateKey“ partitioniert:
+The below example of a SQL Data Warehouse partitioned [CREATE TABLE][] statement, partitions the FactInternetSales table on the OrderDateKey column:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -79,14 +80,14 @@ WITH
 ;
 ```
 
-## Migrieren der Partitionierung von SQL Server
+## <a name="migrating-partitioning-from-sql-server"></a>Migrating partitioning from SQL Server
 
-Gehen Sie einfach wie folgt vor, um SQL Server-Partitionsdefinitionen zu SQL Data Warehouse zu migrieren:
+To migrate SQL Server partition definitions to SQL Data Warehouse simply:
 
-- Entfernen Sie das SQL Server-[Partitionsschema][].
-- Fügen Sie die Definition der [Partitionsfunktion][] von CREATE TABLE hinzu.
+- Eliminate the SQL Server [partition scheme][].
+- Add the [partition function][] definition to your CREATE TABLE.
 
-Wenn Sie eine partitionierte Tabelle von einer SQL Server-Instanz migrieren, können Sie mit dem unten angegebenen SQL-Code die Anzahl von Zeilen in jeder Partition ermitteln. Beachten Sie Folgendes: Wenn für SQL Data Warehouse die gleiche Partitionierungsgranularität verwendet wird, verringert sich die Anzahl von Zeilen pro Partition um den Faktor 60.
+If you are migrating a partitioned table from a SQL Server instance the below SQL can help you to interrogate the number of rows that are in each partition.  Keep in mind that if the same partitioning granularity is used on SQL Data Warehouse, the number of rows per partition will decrease by a factor of 60.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -122,39 +123,39 @@ GROUP BY    s.[name]
 ;
 ```
 
-## Workloadverwaltung
+## <a name="workload-management"></a>Workload management
 
-Ein letzter Punkt, den Sie der Tabellenpartitionsentscheidung berücksichtigen müssen, ist die [Workloadverwaltung][]. Bei der Workloadverwaltung in SQL Data Warehouse geht es hauptsächlich um die Verwaltung von Arbeitsspeicher und Parallelität. In SQL Data Warehouse wird die maximale Speichermenge für die einzelnen Verteilungspunkte während der Abfrageausführung über Ressourcenklassen geregelt. Idealerweise sollte die Größe unter Berücksichtigung anderer Faktoren festgelegt werden, z.B. den Arbeitsspeicheranforderungen in Bezug auf die Erstellung von gruppierten Columnstore-Indizes. Gruppierte Columnstore-Indizes profitieren stark, wenn ihnen mehr Arbeitsspeicher zugeordnet wird. Aus diesem Grund sollten Sie sicherstellen, dass für die Neuerstellung eines Partitionsindex genügend Arbeitsspeicher zur Verfügung steht. Sie können die Menge an Arbeitsspeicher für die Abfrage erhöhen, indem Sie von der Standardrolle (smallrc) zu einer der anderen verfügbaren Rollen (z.B. largerc) wechseln.
+One final piece consideration to factor in to the table partition decision is [workload management][].  Workload management in SQL Data Warehouse is primarily the management of memory and concurrency.  In SQL Data Warehouse the maximum memory allocated to each distribution during query execution is governed resource classes.  Ideally your partitions will be sized in consideration of other factors like the memory needs of building clustered columnstore indexes.  Clustered columnstore indexes benefit greatly when they are allocated more memory.  Therefore, you will want to ensure that a partition index rebuild is not starved of memory. Increasing the amount of memory available to your query can be achieved by switching from the default role, smallrc, to one of the other roles such as largerc.
 
-Informationen über die Zuordnung von Arbeitsspeicher pro Verteilung erhalten Sie durch Abfragen der dynamischen Resource Governor-Verwaltungsansichten. In der Praxis ist die Arbeitsspeicherzuweisung kleiner als in den folgenden Abbildungen. Die Abbildung bietet jedoch eine Richtlinie, die Sie für die Größe der Partitionen für Verwaltungsvorgänge verwenden können. Versuchen Sie, zu vermeiden, Ihre Partitionen größer als die Arbeitsspeicherzuweisung zu erstellen, die durch die größte Ressourcenklasse bereitgestellt wird. Wenn die Partitionen die Größen in dieser Abbildung übersteigen, besteht das Risiko der Speicherauslastung, was wiederum zu weniger optimaler Komprimierung führt.
+Information on the allocation of memory per distribution is available by querying the resource governor dynamic management views. In reality your memory grant will be less than the figures below. However, this provides a level of guidance that you can use when sizing your partitions for data management operations.  Try to avoid sizing your partitions beyond the memory grant provided by the extra large resource class. If your partitions grow beyond this figure you run the risk of memory pressure which in turn leads to less optimal compression.
 
 ```sql
-SELECT  rp.[name]								AS [pool_name]
-,       rp.[max_memory_kb]						AS [max_memory_kb]
-,       rp.[max_memory_kb]/1024					AS [max_memory_mb]
-,       rp.[max_memory_kb]/1048576				AS [mex_memory_gb]
-,       rp.[max_memory_percent]					AS [max_memory_percent]
-,       wg.[name]								AS [group_name]
-,       wg.[importance]							AS [group_importance]
-,       wg.[request_max_memory_grant_percent]	AS [request_max_memory_grant_percent]
-FROM    sys.dm_pdw_nodes_resource_governor_workload_groups	wg
-JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools	rp ON wg.[pool_id] = rp.[pool_id]
+SELECT  rp.[name]                               AS [pool_name]
+,       rp.[max_memory_kb]                      AS [max_memory_kb]
+,       rp.[max_memory_kb]/1024                 AS [max_memory_mb]
+,       rp.[max_memory_kb]/1048576              AS [mex_memory_gb]
+,       rp.[max_memory_percent]                 AS [max_memory_percent]
+,       wg.[name]                               AS [group_name]
+,       wg.[importance]                         AS [group_importance]
+,       wg.[request_max_memory_grant_percent]   AS [request_max_memory_grant_percent]
+FROM    sys.dm_pdw_nodes_resource_governor_workload_groups  wg
+JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools   rp ON wg.[pool_id] = rp.[pool_id]
 WHERE   wg.[name] like 'SloDWGroup%'
 AND     rp.[name]    = 'SloDWPool'
 ;
 ```
 
-## Partitionswechsel
+## <a name="partition-switching"></a>Partition switching
 
-SQL Data Warehouse unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der Anweisung [ALTER TABLE][] ausgeführt.
+SQL Data Warehouse supports partition splitting, merging, and switching. Each of these functions is excuted using the [ALTER TABLE][] statement.
 
-Für den Wechsel zweier Partitionen zwischen zwei Tabellen müssen Sie sicherstellen, dass die Partitionen an ihren jeweiligen Grenzen ausgerichtet sind und die Tabellendefinitionen übereinstimmen. Da keine Überprüfungseinschränkungen verfügbar sind, um den Bereich der Werte in einer Tabelle zu erzwingen, muss die Quelltabelle die gleichen Partitionsgrenzen enthalten wie die Zieltabelle. Ist dies nicht der Fall, schlägt der Partitionswechsel fehl, da die Partitionsmetadaten nicht synchronisiert werden.
+To switch partitions between two tables you must ensure that the partitions align on their respective boundaries and that the table definitions match. As check constraints are not available to enforce the range of values in a table the source table must contain the same partition boundaries as the target table. If this is not the case, then the partition switch will fail as the partition metadata will not be synchronized.
 
-### Aufteilen einer Partition mit Daten
+### <a name="how-to-split-a-partition-that-contains-data"></a>How to split a partition that contains data
 
-Die effizienteste Methode, um eine Partition zu teilen, die bereits Daten enthält, ist die Verwendung einer `CTAS`-Anweisung. Wenn es sich bei der partitionierten Tabelle um einen gruppierten Columnstore handelt, muss die Tabellenpartition leer sein, bevor sie aufgeteilt werden kann.
+The most efficient method to split a partition that already contains data is to use a `CTAS` statement. If the partitioned table is a clustered columnstore then the table partition must be empty before it can be split.
 
-Im Folgenden finden Sie ein Beispiel für eine partitionierte Columnstore-Tabelle, die eine Zeile in jeder Partition enthält:
+Below is a sample partitioned columnstore table containing one row in each partition:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -187,9 +188,9 @@ VALUES (1,20000101,1,1,1,1,1,1);
 CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSales(OrderDateKey);
 ```
 
-> [AZURE.NOTE] Durch das Erstellen des Statistikobjekts stellen wir sicher, dass die Tabellenmetadaten genauer sind. Wenn wir das Erstellen von Statistiken auslassen, verwendet SQL Data Warehouse Standardwerte. Ausführliche Informationen zu Statistiken finden Sie unter [Statistiken][].
+> [AZURE.NOTE] By Creating the statistic object, we ensure that table metadata is more accurate. If we omit creating statistics, then SQL Data Warehouse will use default values. For details on statistics please review [statistics][].
 
-Anschließend können wir mit der `sys.partitions`-Katalogsicht die Zeilenanzahl abfragen:
+We can then query for the row count using the `sys.partitions` catalog view:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -206,15 +207,15 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-Wenn wir versuchen, diese Tabelle aufzuteilen, erhalten wir einen Fehler:
+If we try to split this table, we will get an error:
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement failed because the partition is not empty. Nur leere Partitionen können aufgeteilt werden, wenn ein Columnstore-Index für die Tabelle vorhanden ist. Deaktivieren Sie ggf. den Columnstore-Index vor Ausgabe der ALTER PARTITION-Anweisung, und erstellen Sie dann nach Abschluss von ALTER PARTITION den Columnstore-Index neu.
+Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement failed because the partition is not empty.  Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.
 
-Wir können aber auch `CTAS` für die Erstellung einer neuen Tabelle zum Speichern von Daten verwenden.
+However, we can use `CTAS` to create a new table to hold our data.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -232,7 +233,7 @@ WHERE   1=2
 ;
 ```
 
-Ein Wechsel ist zulässig, da die Partitionsgrenzen ausgerichtet sind. Dadurch verbleibt die Quelltabelle mit einer leeren Partition, die wir später aufteilen können.
+As the partition boundaries are aligned a switch is permitted. This will leave the source table with an empty partition that we can subsequently split.
 
 ```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
@@ -240,7 +241,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Wir müssen nun lediglich die Daten mit `CTAS` an die neuen Partitionsgrenzen anpassen und wieder in die Haupttabelle zurückführen.
+All that is left to do is to align our data to the new partition boundaries using `CTAS` and switch our data back in to the main table
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -261,17 +262,17 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
 ```
 
-Nach Abschluss der Datenverschiebung empfiehlt es sich, die Statistiken für die Zieltabelle zu aktualisieren, um sicherzustellen, dass sie genau die neue Verteilung der Daten in den entsprechenden Partitionen wiedergeben:
+Once you have completed the movement of the data it is a good idea to refresh the statistics on the target table to ensure they accurately reflect the new distribution of the data in their respective partitions:
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
-### Datenquellen-Steuerelement für die Tabellenpartitionierung
+### <a name="table-partitioning-source-control"></a>Table partitioning source control
 
-Um ein **Rosten** der Tabellendefinition in Ihrem Quellcodeverwaltungssystem zu vermeiden, sollten Sie die folgende Vorgehensweise befolgen:
+To avoid your table definition from **rusting** in your source control system you may want to consider the following approach:
 
-1. Erstellen der Tabelle als partitionierte Tabelle ohne Partitionswerte
+1. Create the table as a partitioned table but with no partition values
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -295,7 +296,7 @@ WITH
 ;
 ```
 
-2. Führen Sie einen `SPLIT` für die Tabelle als Teil des Bereitstellungsprozesses durch:
+2. `SPLIT` the table as part of the deployment process:
 
 ```sql
 -- Create a table containing the partition boundaries
@@ -348,38 +349,37 @@ END
 DROP TABLE #partitions;
 ```
 
-Bei diesem Ansatz bleibt der Code in der Quellcodeverwaltung statisch und die Partitionierungsgrenzwerte können sich mit der Zeit dynamisch mit dem Warehouse entwickeln.
+With this approach the code in source control remains static and the partitioning boundary values are allowed to be dynamic; evolving with the warehouse over time.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+To learn more, see the articles on [Table Overview][Overview], [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][].
 
 <!--Image references-->
 
 <!--Article references-->
 [Overview]: ./sql-data-warehouse-tables-overview.md
-[Übersicht]: ./sql-data-warehouse-tables-overview.md
 [Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Datentypen]: ./sql-data-warehouse-tables-data-types.md
 [Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Verteilen]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Statistiken]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Temporär]: ./sql-data-warehouse-tables-temporary.md
-[Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[workload management]: ./sql-data-warehouse-develop-concurrency.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!-- MSDN Articles -->
-[Partitionierte Tabellen und Indizes]: https://msdn.microsoft.com/library/ms190787.aspx
-[ALTER TABLE]: https://msdn.microsoft.com/de-DE/library/ms190273.aspx
+[Partitioned Tables and Indexes]: https://msdn.microsoft.com/library/ms190787.aspx
+[ALTER TABLE]: https://msdn.microsoft.com/en-us/library/ms190273.aspx
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
-[Partitionsfunktion]: https://msdn.microsoft.com/library/ms187802.aspx
-[Partitionsschema]: https://msdn.microsoft.com/library/ms179854.aspx
+[partition function]: https://msdn.microsoft.com/library/ms187802.aspx
+[partition scheme]: https://msdn.microsoft.com/library/ms179854.aspx
 
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

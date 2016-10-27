@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Verwenden eines geheimen Schlüssels aus einem Schlüsseltresor mit Resource Manager-Vorlage | Microsoft Azure"
-   description="Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung."
+   pageTitle="Key Vault secret with Resource Manager template | Microsoft Azure"
+   description="Shows how to pass a secret from a key vault as a parameter during deployment."
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,19 +16,20 @@
    ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
-# Übergeben sicherer Werte während der Bereitstellung
 
-Wenn Sie während der Bereitstellung einen sicheren Wert (z. B. ein Kennwort) als Parameter übergeben müssen, können Sie diesen Wert als geheimen Schlüssel in einem [Azure-Schlüsseltresor](./key-vault/key-vault-whatis.md) speichern und in anderen Ressourcen-Manager-Vorlagen auf ihn verweisen. In Ihrer Vorlage fügen Sie lediglich einen Verweis auf den geheimen Schlüssel ein, sodass dieser niemals offengelegt wird. Zudem müssen Sie den Wert für den geheimen Schlüssel nicht bei jedem Bereitstellen der Ressourcen manuell eingeben. Sie geben an, welche Benutzer oder Dienstprinzipale auf den geheimen Schlüssel zugreifen können.
+# <a name="pass-secure-values-during-deployment"></a>Pass secure values during deployment
 
-## Bereitstellen eines Schlüsseltresors und eines geheimen Schlüssels
+When you need to pass a secure value (like a password) as a parameter during deployment, you can store that value as a secret in an [Azure Key Vault](./key-vault/key-vault-whatis.md) and reference the value in other Resource Manager templates. You include only a reference to the secret in your template so the secret is never exposed, and you do not need to manually enter the value for the secret each time you deploy the resources. You specify which users or service principals can access the secret.  
 
-Zum Erstellen eines Schlüsseltresors, auf den in anderen Ressourcen-Manager-Vorlagen verwiesen werden kann, müssen Sie die **enabledForTemplateDeployment**-Eigenschaft auf **true** festlegen und Zugriff für den Benutzer oder Dienstprinzipal erteilen, der die Bereitstellung ausführt, in der auf den geheimen Schlüssel verwiesen wird.
+## <a name="deploy-a-key-vault-and-secret"></a>Deploy a key vault and secret
 
-Informationen zum Bereitstellen eines Schlüsseltresors und eines geheimen Schlüssels finden Sie unter [Vorlagenschema für einen Schlüsseltresor](resource-manager-template-keyvault.md) und [Vorlagenschema für einen geheimen Schlüssel in einem Schlüsseltresor](resource-manager-template-keyvault-secret.md).
+To create key vault that can be referenced from other Resource Manager templates, you must set the **enabledForTemplateDeployment** property to **true**, and you must grant access to the user or service principal that will execute the deployment which references the secret.
 
-## Verweisen auf einen geheimen Schlüssel mit statischer ID
+To learn about deploying a key vault and secret, see [Key vault schema](resource-manager-template-keyvault.md) and [Key vault secret schema](resource-manager-template-keyvault-secret.md).
 
-Sie verweisen auf den geheimen Schlüssel über eine Parameterdatei, die Werte an die Vorlage übergibt. Sie verweisen auf den geheimen Schlüssel, indem Sie den Ressourcenbezeichner des Schlüsseltresors und den Namen des geheimen Schlüssels übergeben. In diesem Beispiel muss der geheime Schlüssel für den Schlüsseltresor bereits vorhanden sein und ein statischer Wert für dessen Ressourcen-ID verwendet werden.
+## <a name="reference-a-secret-with-static-id"></a>Reference a secret with static id
+
+You reference the secret from within a parameters file which passes values to your template. You reference the secret by passing the resource identifier of the key vault and the name of the secret. In this example, the key vault secret must already exist, and you are using a static value for it resource id.
 
     "parameters": {
       "adminPassword": {
@@ -41,7 +42,7 @@ Sie verweisen auf den geheimen Schlüssel über eine Parameterdatei, die Werte a
       }
     }
 
-Eine vollständige Parameterdatei kann beispielsweise wie folgt aussehen:
+An entire parameter file might look like:
 
     {
       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -61,7 +62,7 @@ Eine vollständige Parameterdatei kann beispielsweise wie folgt aussehen:
       }
     }
 
-Der Parameter, der den geheimen Schlüssel annimmt, sollte ein Parameter des Typs **securestring** sein. Das folgende Beispiel zeigt die relevanten Abschnitte einer Vorlage auf, die einen SQL-Server bereitstellt, für den ein Administratorkennwort erforderlich ist.
+The parameter that accepts the secret should be a **securestring**. The following example shows the relevant sections of a template that deploys a SQL server that requires an administrator password.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -94,11 +95,11 @@ Der Parameter, der den geheimen Schlüssel annimmt, sollte ein Parameter des Typ
         "outputs": { }
     }
 
-## Verweisen auf einen geheimen Schlüssel mit dynamischer ID
+## <a name="reference-a-secret-with-dynamic-id"></a>Reference a secret with dynamic id
 
-Im vorherigen Abschnitt wurde für den geheimen Schlüssel des Schlüsseltresors eine statische Ressourcen-ID übergeben. Manchmal muss jedoch auf einen geheimen Schlüsseltresorschlüssel verwiesen werden, der je nach aktueller Bereitstellung variiert. In einem solchen Fall kann die Ressourcen-ID nicht in der Parameterdatei hartcodiert werden. Da in der Parameterdatei keine Vorlagenausdrücke zulässig sind, kann die Ressourcen-ID leider nicht dynamisch in der Parameterdatei generiert werden.
+The previous section showed how to pass a static resource id for the key vault secret. However, in some scenarios, you need to reference a key vault secret that varies based on the current deployment. In that case, you cannot hard-code the resource id in the parameters file. Unfortunately, you cannot dynamically generate the resource id in the parameters file because template expressions are not permitted in the parameters file.
 
-Wenn die Ressourcen-ID für einen geheimen Schlüsseltresorschlüssel dynamisch generiert werden muss, müssen Sie die Ressource, die den geheimen Schlüssel benötigt, in eine geschachtelte Vorlage verschieben. Die geschachtelte Vorlage wird der Mastervorlage hinzugefügt, und es wird ein Parameter mit der dynamisch generierten Ressourcen-ID übergeben.
+To dynamically generate the resource id for a key vault secret, you must move the resource that needs the secret into a nested template. In your master template, you add the nested template and pass in a parameter that contains the dynamically generated resource id.
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -139,10 +140,15 @@ Wenn die Ressourcen-ID für einen geheimen Schlüsseltresorschlüssel dynamisch 
     }
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](./key-vault/key-vault-get-started.md).
-- Informationen zur Verwendung eines Schlüsseltresors mit einem virtuellen Computer finden Sie unter [Sicherheitsaspekte für Azure Resource Manager](best-practices-resource-manager-security.md).
-- Vollständige Beispiele für Verweise auf geheime Schlüssel finden Sie unter [Key Vault examples](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) (in englischer Sprache).
+- For general information about key vaults, see [Get started with Azure Key Vault](./key-vault/key-vault-get-started.md).
+- For information about using a key vault with a Virtual Machine, see [Security considerations for Azure Resource Manager](best-practices-resource-manager-security.md).
+- For complete examples of referencing key secrets, see [Key Vault examples](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

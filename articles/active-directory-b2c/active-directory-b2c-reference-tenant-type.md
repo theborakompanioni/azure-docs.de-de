@@ -1,64 +1,69 @@
 <properties
-	pageTitle="Azure Active Directory B2C: Vergleich zwischen B2C-Produktionsmandanten und -Vorschaumandanten | Microsoft Azure"
-	description="Das Thema enthält eine Beschreibung der Typen von Azure Active Directory B2C-Mandanten."
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: Production-scale vs. preview B2C tenants | Microsoft Azure"
+    description="A topic on the types of Azure Active Directory B2C tenants"
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/30/2016"
+    ms.author="swkrish"/>
 
-# Azure Active Directory B2C: Vergleich zwischen B2C-Produktionsmandanten und -Vorschaumandanten
 
-Wenn Sie das Schreiben einer Produktions-App in Azure Active Directory (Azure AD) B2C planen, müssen Sie sicher sein, dass Sie über den richtigen Mandantentyp für die Liveschaltung verfügen. Führen Sie im Azure-Portal die Schritte unter [Navigieren zum Blatt „B2C-Funktionen“](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) aus, und sehen Sie unter **Mandantentyp** nach, um dies zu ermitteln.
+# <a name="azure-active-directory-b2c:-production-scale-vs.-preview-b2c-tenants"></a>Azure Active Directory B2C: Production-scale vs. preview B2C tenants
 
-## Zusammenfassung
+If you are planning to write a production app on Azure Active Directory (Azure AD) B2C, you'll need to be certain that you have the right tenant "type" to go live on. To see what you have, follow these steps to [navigate to the B2C features blade](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) on the Azure portal and look under **Tenant type**.
 
-Azure AD B2C unterstützt Produktions-Apps NUR für B2C-Mandanten für die **Produktion** in Nordamerika.
+## <a name="summary"></a>Summary
 
-| Mandantentyp | Länder/Regionen | Allgemein verfügbar? |
+Azure AD B2C supports production apps ONLY on **Production-scale** B2C tenants in North America.
+
+| Tenant type | Countries/regions | Generally-available? |
 | ----------- | -------------- | --------------------- |
-| **Produktionsmandant** | Länder/Regionen in Nordamerika | Ja |
-| **Produktionsmandant** | Alle Länder/Regionen mit Ausnahme von Nordamerika | Nein |
-| **Vorschaumandant** | Alle Länder/Regionen | Nein |
+| **Production-scale tenant** | North American countries/regions | Yes |
+| **Production-scale tenant** | All countries/regions except North America | No |
+| **Preview tenant** | All countries/regions | No |
 
 > [AZURE.NOTE]
-Azure AD B2C-Mandanten (für Endkunden) sind derzeit in einigen Ländern oder Regionen nicht verfügbar, in denen Azure AD-Mandanten (für Mitarbeiter) verfügbar sind. Die folgenden Abschnitte enthalten hierzu weitere Informationen.
+Azure AD B2C tenants (for consumers) are currently unavailable in a few countries or regions where Azure AD tenants (for employees) are available. Read the following sections for more details.
 
-## B2C-Produktionsmandant in Nordamerika
+## <a name="production-scale-b2c-tenant-in-north-america"></a>Production-scale B2C tenant in North America
 
-Wenn Sie die [Erstellung Ihres B2C-Mandanten](active-directory-b2c-get-started.md) in Nordamerika durchgeführt haben (also in einem der folgenden Länder/Regionen: USA, Kanada, Costa Rica, Dominikanische Republik, El Salvador, Guatemala, Mexiko, Panama, Puerto Rico und Trinidad und Tobago) UND für den **Mandantentyp** in der B2C-Verwaltungsoberfläche **Produktion** festgelegt ist, können Sie den Mandanten für Produktions-Apps verwenden.
+If you [created your B2C tenant](active-directory-b2c-get-started.md) in North America, i.e., in one of the following countries or regions: United States, Canada, Costa Rica, Dominican Republic, El Salvador, Guatemala, Mexico, Panama, Puerto Rico and Trinidad & Tobago, AND the **Tenant type** on your B2C Admin UI says **Production-scale**, your tenant can be used for production apps.
 
 > [AZURE.NOTE]
-Mit Produktionsmandanten können mehrere Hundertmillionen Endkundenidentitäten pro Mandant skaliert werden.
+Production-scale tenants are capable of scaling to 100s of millions of consumer identities per tenant.
 
-![Screenshot eines Produktionsmandanten](./media/active-directory-b2c-reference-tenant-type/production-scale-b2c-tenant.png)
+![Screen shot of a production-scale tenant](./media/active-directory-b2c-reference-tenant-type/production-scale-b2c-tenant.png)
 
-## Vorschauversion des B2C-Mandanten in allen Ländern/Regionen
+## <a name="preview-b2c-tenant-in-any-country/region"></a>Preview B2C tenant in any country/region
 
-Wenn Sie während des Vorschauzeitraums von Azure AD B2C einen B2C-Mandanten erstellt haben, ist die Wahrscheinlichkeit hoch, dass der **Mandantentyp** auf **Preview tenant** (Vorschaumandant) festgelegt ist. In diesem Fall können Sie Ihren Mandanten NUR für Entwicklungs- und Testzwecke verwenden, und NICHT für Produktions-Apps.
+If you had created a B2C tenant during Azure AD B2C's preview period, it is likely that your **Tenant type** says **Preview tenant**. If this is the case, you MUST use your tenant only for development and testing purposes, and NOT for production apps.
 
 > [AZURE.IMPORTANT]
-Es ist kein Migrationspfad von einem B2C-Vorschaumandanten zu einem B2C-Produktionsmandanten vorhanden. Beachten Sie, dass beim Löschen eines B2C-Vorschaumandanten und erneuten Erstellen eines B2C-Produktionsmandanten mit demselben Domänennamen bekannte Probleme auftreten. Sie müssen einen B2C-Produktionsmandanten mit einem anderen Domänennamen erstellen.
+There is no migration path from a preview B2C tenant to a production-scale B2C tenant. Note that there are known issues when you delete a preview B2C tenant and re-create a production-scale B2C tenant with the same domain name. You have to create a production-scale B2C tenant with a different domain name.
 
-![Screenshot eines Vorschaumandanten](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)
+![Screen shot of a preview tenant](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)
 
-## B2C-Produktionsmandant außerhalb von Nordamerika
+## <a name="production-scale-b2c-tenant-outside-of-north-america"></a>Production-scale B2C tenant outside of North America
 
-Azure AD B2C ist derzeit außerhalb von Nordamerika NICHT allgemein verfügbar. Sie haben aber die Möglichkeit, Produktionsmandanten zu Entwicklungs- und Testzwecken in einem der folgenden Länder oder Regionen zu erstellen und zu verwenden: Algerien, Ägypten, Aserbaidschan, Bahrain, Belarus, Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Griechenland, Irland, Island, Israel, Italien, Jordanien, Kasachstan, Katar, Kenia, Kroatien, Kuwait, Lettland, Libanon, Liechtenstein, Litauen, Luxemburg, Malta, Marokko, Mazedonien (ehem. jugoslawische Republik), Montenegro, Niederlande, Nigeria, Norwegen, Oman, Österreich, Pakistan, Polen, Portugal, Rumänien, Russland, Saudi-Arabien, Schweden, Schweiz, Serbien, Slowakei, Slowenien, Spanien, Südafrika, Tschechische Republik, Tunesien, Türkei, Ukraine, Ungarn, Vereinigte Arabische Emirate, Vereinigtes Königreich und Zypern.
+Azure AD B2C is currently NOT generally-available outside of North America. However you can create and use production-scale tenants, for development and testing purposes, in one of the following countries or regions: Algeria, Austria, Azerbaijan, Bahrain, Belarus, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Egypt, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Israel, Italy, Jordan, Kazakhstan, Kenya, Kuwait, Lativa, Lebanon, Liechtenstein, Lituania, Luxembourg, Macedonia FYRO, Malta, Montenegro, Morocco, Netherlands, Nigeria, Norway, Oman, Pakistan, Poland, Portugal, Qatar, Romania, Russia, Saudi Arabia, Serbia, Slovakia, Slovenia, South Africa, Spain, Sweden, Switzerland, Tunisia, Turkey, Ukraine, United Arab Emirates and United Kingdom.
 
-Sobald Azure AD B2C die allgemeine Verfügbarkeit in den oben genannten Ländern oder Regionen ankündigt, können Sie diese Produktionsmandanten weiterhin verwenden und Ihre Produktions-Apps ohne Datenverlust freischalten.
+Once Azure AD B2C announces general availability in above countries or regions, you can continue to use these production-scale tenants and go-live with your production apps without any data loss.
 
-## Verfügbarkeit von B2C-Mandanten
+## <a name="availability-of-b2c-tenants"></a>Availability of B2C tenants
 
-In den folgenden Ländern oder Regionen sind B2C-Mandanten derzeit nicht verfügbar: Afghanistan, Argentinien, Australien, Brasilien, Chile, Ecuador, Hongkong, Indien, Indonesien, Irak, Japan, Kolumbien, Malaysia, Neuseeland, Paraguay, Peru, Philippinen, Singapur, Sri Lanka, Südkorea, Taiwan, Thailand, Uruguay und Venezuela. Diese Länder sollen in Zukunft eingebunden werden.
+B2C tenants are currently unavailable in the following countries or regions: Afghanistan, Argentina, Australia, Brazil, Chile, Colombia, Ecuador, Hong Kong SAR, India, Indonesia, Iraq, Japan, Korea, Malaysia, New Zealand, Paraguay, Peru, Philippines, Singapore, Sri Lanka, Taiwan, Thailand, Uruguay and Venezuela. We plan to include them in the future.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

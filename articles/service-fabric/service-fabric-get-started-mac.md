@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Einrichten Ihrer Entwicklungsumgebung unter Mac OS X | Microsoft Azure"
-   description="Installieren Sie Laufzeit, SDK und Tools, und erstellen Sie einen lokalen Entwicklungscluster. Nach Abschluss des Setups können Sie mit der Erstellung von Clientanwendungen unter Mac OS X beginnen."
+   pageTitle="Set up your development environment on Mac OS X | Microsoft Azure"
+   description="Install the runtime, SDK, and tools and create a local development cluster. After completing this setup, you will be ready to build applications on Mac OS X."
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,89 +16,90 @@
    ms.date="09/25/2016"
    ms.author="seanmck"/>
 
-# Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
+
+# <a name="set-up-your-development-environment-on-mac-os-x"></a>Set up your development environment on Mac OS X
 
 > [AZURE.SELECTOR]
 -[ Windows](service-fabric-get-started.md)
 - [Linux](service-fabric-get-started-linux.md)
 - [OSX](service-fabric-get-started-mac.md)
 
-Sie können Service Fabric-Anwendungen für die Ausführung in Linux-Clustern unter Mac OS X erstellen. In diesem Artikel erfahren Sie, wie Sie Ihren Mac für die Entwicklung einrichten.
+You can build Service Fabric applications to run on Linux clusters using Mac OS X. This article covers how to set up your Mac for development.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Service Fabric wird nicht nativ unter OS X ausgeführt. Für die Verwendung eines lokalen Service Fabric-Clusters stellen wir einen vorkonfigurierten virtuellen Ubuntu-Computer mit Vagrant und VirtualBox bereit. Bevor Sie beginnen, benötigen Sie Folgendes:
+Service Fabric does not run natively on OS X. To run a local Service Fabric cluster, we provide a pre-configured Ubuntu virtual machine using Vagrant and VirtualBox. Before you get started, you need:
 
-- [Vagrant (mindestens Version 1.8.4)](http://wwww.vagrantup.com/downloads)
+- [Vagrant (v1.8.4 or later)](http://wwww.vagrantup.com/downloads)
 - [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
-## Erstellen des lokalen virtuellen Computers
+## <a name="create-the-local-vm"></a>Create the local VM
 
-Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit einem Service Fabric-Cluster mit fünf Knoten zu erstellen:
+To create the local VM containing a 5-node Service Fabric cluster, do the following:
 
-1. Klonen Sie das Vagrantfile-Repository:
+1. Clone the Vagrantfile repo
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
 
-2. Navigieren Sie zum lokalen Klon des Repositorys:
+2. Navigate to the local clone of the repo
 
     ```bash
     cd service-fabric-linux-vagrant-onebox
     ```
 
-3. Optional: Ändern Sie die Standardeinstellungen des virtuellen Computers
+3. (Optional) Modify the default VM settings
 
-    Der lokale virtuelle Computer ist standardmäßig wie folgt konfiguriert:
+    By default, the local VM is configured as follows:
 
-    - 3 GB zugeordneter Arbeitsspeicher
-    - Privates Hostnetzwerk (konfiguriert mit der IP-Adresse 192.168.50.50, um Pass-Through-Datenverkehr des Mac-Hosts zu ermöglichen)
+    - 3 GB of memory allocated
+    - Private host network configured at IP 192.168.50.50 enabling passthrough of traffic from the Mac host
 
-    Sie können diese Einstellungen ändern oder die Konfiguration des virtuellen Computers über Vagrantfile ergänzen. Eine Liste mit allen Konfigurationsoptionen finden Sie in der [Vagrant-Dokumentation](http://www.vagrantup.com/docs).
+    You can change either of these settings or add other configuration to the VM in the Vagrantfile. See the [Vagrant documentation](http://www.vagrantup.com/docs) for the full list of configuration options.
 
-4. Erstellen des virtuellen Computers
+4. Create the VM
 
     ```bash
     vagrant up
     ```
 
-    In diesem Schritt wird das vorkonfigurierte VM-Image heruntergeladen und lokal gestartet. Anschließend wird auf dem virtuellen Computer ein lokaler Service Fabric-Cluster eingerichtet. Dieser Vorgang dauert ein paar Minuten. Wenn die Einrichtung erfolgreich war, erscheint in der Ausgabe eine Meldung mit dem Hinweis, dass der Cluster gestartet wird:
+    This step downloads the preconfigured VM image, boot it locally, and then set up a local Service Fabric cluster in it. You should expect it to take a few minutes. If setup completes successfully, you will see a message in the output indicating that the cluster is starting up.
 
-    ![Start der Clustereinrichtung nach Bereitstellung des virtuellen Computers][cluster-setup-script]
+    ![Cluster setup starting following VM provisioning][cluster-setup-script]
 
-5. Vergewissern Sie sich, dass der Cluster ordnungsgemäß eingerichtet wurde, indem Sie zu Service Fabric Explorer navigieren: http://192.168.50.50:19080/Explorer (vorausgesetzt, Sie haben die standardmäßige IP-Adresse des privaten Netzwerks beibehalten)
+5. Test that the cluster has been set up correctly by navigating to Service Fabric Explorer at http://192.168.50.50:19080/Explorer (assuming you kept the default private network IP).
 
-    ![Service Fabric Explorer auf dem Host-Mac][sfx-mac]
+    ![Service Fabric Explorer viewed from the host Mac][sfx-mac]
 
 
-## Installieren des Service Fabric-Plug-Ins für Eclipse Neon (optional)
+## <a name="install-the-service-fabric-plugin-for-eclipse-neon-(optional)"></a>Install the Service Fabric plugin for Eclipse Neon (optional)
 
-Service Fabric bietet ein Plug-In für die Eclipse Neon-IDE, das die Erstellung und Bereitstellung von Java-Diensten vereinfachen kann.
+Service Fabric provides a plugin for the Eclipse Neon IDE that can simplify the process of building and deploying Java services.
 
-1. Vergewissern Sie sich in Eclipse, dass mindestens die Buildship-Version 1.0.17 installiert ist. Die Version der installierten Komponenten können Sie unter **Hilfe > Installationsdetails** ermitteln. Eine Aktualisierungsanleitung für Buildship finden Sie [hier][buildship-update].
+1. In Eclipse, ensure that you have Buildship version 1.0.17 or later installed. You can check the versions of installed components by choosing **Help > Installation Details**. You can update Buildship using the instructions [here][buildship-update].
 
-2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe > Install New Software...** (Neue Software installieren...) aus.
+2. To install the Service Fabric plugin, choose **Help > Install New Software...**
 
-3. Geben Sie im Textfeld „Work with“ (Verwenden mit) Folgendes ein: http://dl.windowsazure.com/eclipse/servicefabric.
+3. In the "Work with" textbox, enter: http://dl.windowsazure.com/eclipse/servicefabric.
 
-4. Klicken Sie auf "Hinzufügen".
+4. Click Add.
 
-    ![Eclipse Neon-Plug-In für Service Fabric][sf-eclipse-plugin-install]
+    ![Eclipse Neon plugin for Service Fabric][sf-eclipse-plugin-install]
 
-5. Wählen Sie das Service Fabric-Plug-In aus, und klicken Sie auf „Weiter“.
+5. Choose the Service Fabric plugin and click next.
 
-6. Fahren Sie mit der Installation fort, und akzeptieren Sie den Endbenutzer-Lizenzvertrag.
+6. Proceed through the installation and accept the end-user license agreement.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- [Create your first Azure Service Fabric application](service-fabric-create-your-first-linux-application-with-java.md) (Erstellen Ihrer ersten Azure Service Fabric-Anwendung)
+- [Create your first Service Fabric application for Linux](service-fabric-create-your-first-linux-application-with-java.md)
 
 <!-- Links -->
 
-- [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md)
-- [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-- [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md)
+- [Create a Service Fabric cluster in the Azure portal](service-fabric-cluster-creation-via-portal.md)
+- [Create a Service Fabric cluster using the Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+- [Understand the Service Fabric application model](service-fabric-application-model.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png
@@ -106,4 +107,8 @@ Service Fabric bietet ein Plug-In für die Eclipse Neon-IDE, das die Erstellung 
 [sf-eclipse-plugin-install]: ./media/service-fabric-get-started-mac/sf-eclipse-plugin-install.png
 [buildship-update]: https://projects.eclipse.org/projects/tools.buildship
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

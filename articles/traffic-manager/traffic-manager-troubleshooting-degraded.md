@@ -1,83 +1,103 @@
 <properties
-   pageTitle="Problembehandlung beim Status ";Heruntergestuft"; in Azure Traffic Manager"
-   description="Problembehandlung bei Traffic Manager-Profilen, bei denen der Status ";Heruntergestuft"; angezeigt wird."
-   services="traffic-manager"
-   documentationCenter=""
-   authors="sdwheeler"
-   manager="carmonm"
-   editor="joaoma" />
-
-<tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
-   ms.author="sewhee" />
-
-# Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
-
-Auf dieser Seite wird beschrieben, wie Probleme bei einem Azure Traffic Manager-Profil mit dem Status "Heruntergestuft" behoben werden können. Weiterhin werden einige wichtige Punkte zu Traffic Manager-Tests erörtert.
-
-Sie haben ein Traffic Manager-Profil konfiguriert, das auf einige Ihrer in cloudapp.net gehosteten Dienste verweist. Nach einigen Sekunden wird der Status als "Heruntergestuft" angezeigt.
-
-![Status "Heruntergestuft"](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degraded.png)
-
-Auf der Registerkarte "Endpunkte" dieses Profils können Sie sehen, dass für einen oder mehrere Endpunkte der Status "Offline" angezeigt wird:
-
-![Offline](./media/traffic-manager-troubleshooting-degraded/traffic-manager-offline.png)
-
-## Wichtige Hinweise zu Traffic Manager-Tests
-
-- In Traffic Manager wird ein Endpunkt nur als ONLINE eingestuft, wenn beim Test eine Antwort "200" vom Testpfad zurückgegeben wird.
-- Eine 30x-Umleitung-Antwort (oder jede andere von "200" abweichende Antwort) schlägt fehl, selbst wenn die umgeleitete URL eine Antwort "200" zurückgibt.
-
-- Bei HTTPs-Tests werden Zertifikatfehler ignoriert.
- 
-- Der eigentliche Inhalt des Testpfads ist unerheblich, solange eine Antwort "200" zurückgegeben wird. Wenn der eigentliche Websiteinhalt keine Antwort "200" zurückgibt (d. h., wenn über die ASP-Seiten eine Umleitung an eine ACS-Anmeldeseite oder eine andere CNAME-URL erfolgt), besteht eine gängige Methode darin, den Pfad beispielsweise auf "/favicon.ico" festzulegen.
- 
-- Es wird empfohlen, den Testpfad mit ausreichender Logik festzulegen, sodass ermittelt werden kann, ob die Website aktiv oder inaktiv ist. Durch Festlegen des Pfads im Beispiel oben auf "/favicon.ico" wird lediglich getestet, ob "w3wp.exe" antwortet, jedoch nicht, ob die Website fehlerfrei ist. Besser wäre es, den Pfad beispielsweise auf "/Probe.aspx" festzulegen und in "Probe.aspx" ausreichend Logik einzufügen, dass ermittelt wird, ob die Website fehlerfrei ist (d. h. Überprüfen der Leistungsindikatoren, um sicherzustellen, dass keine CPU-Auslastung von 100 % vorliegt oder keine große Anzahl an fehlerhaften Anforderungen empfangen wird; oder Zugreifen auf Ressourcen wie z. B. den Datenbank- oder Sitzungszustand, um sicherzustellen, dass die Anwendungslogik funktioniert usw.).
- 
-- Wenn alle Endpunkte in einem Profil heruntergestuft sind, behandelt Traffic Manager alle Endpunkte als fehlerfrei und leitet den Datenverkehr an alle Endpunkte weiter. Dadurch wird sichergestellt, dass ein potenzielles Problem im Testmechanismus, das zu fälschlicherweise fehlerhaften Testergebnissen führt, nicht auch zu einem vollständigen Ausfall des Diensts führt.
-
-  
-
-## Problembehandlung
-
-Ein Tool zum Beheben von Fehlern bei Traffic Manager-Tests ist Wget. Sie können das Paket für Binärdateien und Abhängigkeiten unter [Wget](http://gnuwin32.sourceforge.net/packages/wget.htm) herunterladen. Beachten Sie, dass Sie statt Wget auch andere Programme wie Fiddler oder curl verwenden können. Im Grunde benötigen Sie nur eine Anwendung, mit der die unverarbeitete HTTP-Antwort angezeigt wird.
-
-Wenn Sie Wget installiert haben, öffnen Sie eine Eingabeaufforderung, und führen Sie Wget für die URL sowie den Testport und Testpfad aus, die in Traffic Manager konfiguriert sind. In diesem Beispiel ist dies http://watestsdp2008r2.cloudapp.net:80/Probe.
-
-![Problembehandlung](./media/traffic-manager-troubleshooting-degraded/traffic-manager-troubleshooting.png)
-
-Verwenden von Wget:
-
-![Wget](./media/traffic-manager-troubleshooting-degraded/traffic-manager-wget.png)
-
- 
-
-Beachten Sie, dass Wget angibt, dass die URL eine 301-Umleitung an http://watestsdp2008r2.cloudapp.net/Default.aspx zurückgegeben hat. Wie wir aus dem Abschnitt "Wichtige Hinweise zu Traffic Manager-Tests" oben wissen, gilt eine 30x-Umleitung-Antwort in den Traffic Manager-Tests als Fehler, sodass im Test der Status "Offline" angezeigt wird. An dieser Stelle kann einfach die Websitekonfiguration überprüft werden, um sicherzustellen, dass aus dem Pfad "/Probe" eine Antwort "200" zurückgegeben wird (oder konfigurieren Sie den Traffic Manager-Test so, dass er auf einen Pfad verweist, der eine Antwort "200" zurückgibt).
-
- 
-
-Wenn bei dem Test das HTTPs-Protokoll verwendet wird, sollten Sie in Wget den Parameter "--no-check-certificate" hinzufügen, damit Zertifikatkonflikte in der cloudapp.net-URL ignoriert werden.
+    pageTitle="Troubleshooting degraded status on Azure Traffic Manager"
+    description="How to troubleshoot Traffic Manager profiles when it shows as degraded status."
+    services="traffic-manager"
+    documentationCenter=""
+    authors="sdwheeler"
+    manager="carmonm"
+    editor=""
+/>
+<tags
+    ms.service="traffic-manager"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="infrastructure-services"
+    ms.date="10/11/2016"
+    ms.author="sewhee"
+/>
 
 
-## Nächste Schritte
+# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Troubleshooting degraded state on Azure Traffic Manager
+
+This article describes how to troubleshoot an Azure Traffic Manager profile that is showing a degraded status. For this scenario, consider that you have configured a Traffic Manager profile pointing to some of your cloudapp.net hosted services. When you check the health of your traffic manager, you see that the Status is Degraded.
+
+![degraded state](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degraded.png)
+
+If you go into the Endpoints tab of that profile, you see one or more of the endpoints with an Offline status:
+
+![offline](./media/traffic-manager-troubleshooting-degraded/traffic-manager-offline.png)
+
+## <a name="understanding-traffic-manager-probes"></a>Understanding Traffic Manager probes
+
+- Traffic Manager considers an endpoint to be ONLINE only when the probe receives an HTTP 200 response back from the probe path. Any other non-200 response is a failure.
+- A 30x redirect fails, even if the redirected URL returns a 200.
+- For HTTPs probes, certificate errors are ignored.
+- The actual content of the probe path doesn't matter, as long as a 200 is returned. Probing a URL to some static content like "/favicon.ico" is a common technique. Dynamic content, like the ASP pages, may not always return 200, even when the application is healthy.
+- A best practice is to set the Probe path to something that has enough logic to determine that the site is up or down. In the previous example, by setting the path to "/favicon.ico", you are only testing that w3wp.exe is responding. This probe may not indicate that your web application is healthy. A better option would be to set a path to a something such as "/Probe.aspx" that has logic to determine the health of the site. For example, you could use performance counters to CPU utilization or measure the number of failed requests. Or you could attempt to access database resources or session state to make sure that the web application is working.
+- If all endpoints in a profile are degraded, then Traffic Manager treats all endpoints as healthy and routes traffic to all endpoints. This behavior ensures that problems with the probing mechanism do not result in a complete outage of your service.
+
+## <a name="troubleshooting"></a>Troubleshooting
+
+To troubleshoot a probe failure, you need a tool that shows the HTTP status code return from the probe URL. There are many tools available that show you the raw HTTP response.
+
+* [Fiddler](http://www.telerik.com/fiddler)
+* [curl](https://curl.haxx.se/)
+* [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
+
+Also, you can use the Network tab of the F12 Debugging Tools in Internet Explorer to view the HTTP responses.
+
+For this example we want to see the response from our probe URL: http://watestsdp2008r2.cloudapp.net:80/Probe. The following PowerShell example illustrates the problem.
+
+```powershell
+    Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
+```
+
+Example output:
+
+```text
+    StatusCode StatusDescription
+    ---------- -----------------
+            301 Moved Permanently
+```
+
+Notice that we received a redirect response. As stated previously, any StatusCode other than 200 is considered a failure. Traffic Manager changes the endpoint status to Offline. To resolve the problem, check the website configuration to ensure that the proper StatusCode can be returned from the probe path. Reconfigure the Traffic Manager probe to point to a path that returns a 200.
+
+If your probe is using the HTTPS protocol, you may need to disable certificate checking to avoid SSL/TLS errors during your test. The following PowerShell statements disable certificate validation for the current PowerShell session:
+
+```powershell
+    add-type @"
+    using System.Net;
+    using System.Security.Cryptography.X509Certificates;
+    public class TrustAllCertsPolicy : ICertificatePolicy {
+        public bool CheckValidationResult(
+        ServicePoint srvPoint, X509Certificate certificate,
+        WebRequest request, int certificateProblem) {
+        return true;
+        }
+    }
+    "@
+    [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
+```
+
+## <a name="next-steps"></a>Next Steps
+
+[About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md)
+
+[What is Traffic Manager](traffic-manager-overview.md)
+
+[Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
+
+[Azure Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/)
+
+[Operations on Traffic Manager (REST API Reference)](http://go.microsoft.com/fwlink/?LinkId=313584)
+
+[Azure Traffic Manager Cmdlets][1]
+
+[1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
 
 
-[Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 
-[Was ist Traffic Manager?](traffic-manager-overview.md)
+<!--HONumber=Oct16_HO2-->
 
-[Cloud-Dienste](http://go.microsoft.com/fwlink/?LinkId=314074)
 
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-[Vorgänge für Traffic Manager (REST-API-Referenz)](http://go.microsoft.com/fwlink/?LinkId=313584)
-
-[Azure Traffic Manager-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769)
- 
-
-<!---HONumber=AcomDC_0824_2016-->

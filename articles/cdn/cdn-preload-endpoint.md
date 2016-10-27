@@ -1,63 +1,68 @@
 <properties
-	pageTitle="Vorabladen von Assets auf einen Azure CDN-Endpunkt | Microsoft Azure"
-	description="Erfahren Sie, wie zwischengespeicherten Inhalt auf einen CDN-Endpunkt vorab laden."
-	services="cdn"
-	documentationCenter=""
-	authors="camsoper"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Pre-load assets on an Azure CDN endpoint | Microsoft Azure"
+    description="Learn how to pre-load cached content on a CDN endpoint."
+    services="cdn"
+    documentationCenter=""
+    authors="camsoper"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/28/2016"
-	ms.author="casoper"/>
+    ms.service="cdn"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/28/2016"
+    ms.author="casoper"/>
 
-# Vorabladen von Assets auf einen Azure CDN-Endpunkt
+
+# <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Pre-load assets on an Azure CDN endpoint
 
 [AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Standardmäßig werden Assets erst zwischengespeichert, nachdem sie angefordert wurden. Das heißt, dass die erste Anforderung aus den einzelnen Regionen länger dauern kann, da der Inhalt nicht auf den Edgeservern zwischengespeichert ist, die deshalb Anforderungen an den Ursprungsserver weiterleiten müssen. Durch Vorabladen von Inhalten kann die Latenz beim ersten Treffer vermieden werden.
+By default, assets are first cached as they are requested. This means that the first request from each region may take longer, since the edge servers will not have the content cached and will need to forward the request to the origin server. Pre-loading content avoids this first hit latency.
 
-Abgesehen vom Ermöglichen einer besseren Kundenerfahrung kann durch das Vorabladen zwischengespeicherter Inhalte auch der Netzwerkdatenverkehr auf dem Ursprungsserver reduziert werden.
+In addition to providing a better customer experience, pre-loading your cached assets can also reduce network traffic on the origin server.
 
-> [AZURE.NOTE] Das Vorabladen von Assets ist nützlich für große Ereignisse oder Inhalte, die für eine große Anzahl von Benutzern gleichzeitig zur Verfügung gestellt werden, wie z. B. bei Veröffentlichung eines neuen Films oder Softwareupdates.
+> [AZURE.NOTE] Pre-loading assets is useful for  large events or content that becomes simultaneously available to a large number of users, such as a new movie release or a software update.
 
-In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeicherten Inhalt auf alle Azure CDN-Edgeknoten vorab laden.
+This tutorial walks you through pre-loading cached content on all Azure CDN edge nodes.
 
-## Exemplarische Vorgehensweise
+## <a name="walkthrough"></a>Walkthrough
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum CDN-Profil mit dem Endpunkt, auf den Sie Inhalt vorab laden möchten. Das Profilblatt wird angezeigt.
+1. In the [Azure Portal](https://portal.azure.com), browse to the CDN profile containing the endpoint you wish to pre-load.  The profile blade opens.
 
-2. Klicken Sie in der Liste auf den Endpunkt. Das Blatt für den Endpunkt wird angezeigt.
+2. Click the endpoint in the list.  The endpoint blade opens.
 
-3. Klicken Sie im Blatt für den CDN-Endpunkt auf die Schaltfläche „Laden“.
+3. From the CDN endpoint blade, click the load button.
 
-	![Blatt für CDN-Endpunkt](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
+    ![CDN endpoint blade](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
 
-	Das Blatt „Laden“ wird angezeigt.
+    The Load blade opens.
 
-	![Blatt „Laden“ für CDN](./media/cdn-preload-endpoint/cdn-load-blade.png)
+    ![CDN load blade](./media/cdn-preload-endpoint/cdn-load-blade.png)
 
-4. Geben Sie in das Textfeld **Pfad** den vollständigen Pfad jedes Assets ein, das Sie laden möchten (z.B. `/pictures/kitten.png`).
+4. Enter the full path of each asset you wish to load (e.g., `/pictures/kitten.png`) in the **Path** textbox.
 
-	> [AZURE.TIP] Nachdem Sie Text eingegeben haben, werden weitere **Pfad**-Textfelder angezeigt, damit Sie eine Liste mit mehreren Assets erstellen können. Sie können Assets aus der Liste löschen, indem Sie auf die Schaltfläche mit den Auslassungspunkten (...) klicken.
-	>
-	> Pfade müssen eine relative URL enthalten, die dem folgenden [regulären Ausdruck](https://msdn.microsoft.com/library/az24scfc.aspx) entspricht: `^(?:\/[a-zA-Z0-9-_.\u0020]+)+$`. Jedes Objekt muss einen eigenen Pfad haben. Platzhalter werden beim Vorabladen von Assets nicht unterstützt.
+    > [AZURE.TIP] More **Path** textboxes will appear after you enter text to allow you to build a list of multiple assets.  You can delete assets from the list by clicking the ellipsis (...) button.
+    >
+    > Paths must be a relative URL that fits the following [regular expression](https://msdn.microsoft.com/library/az24scfc.aspx):  `^(?:\/[a-zA-Z0-9-_.\u0020]+)+$`.  Each asset must have its own path.  There is no wildcard functionality for pre-loading assets.
 
-    ![Schaltfläche „Laden“](./media/cdn-preload-endpoint/cdn-load-paths.png)
+    ![Load button](./media/cdn-preload-endpoint/cdn-load-paths.png)
 
-5. Klicken Sie auf die Schaltfläche **Laden**.
+5. Click the **Load** button.
 
-	![Schaltfläche „Laden“](./media/cdn-preload-endpoint/cdn-load-button.png)
+    ![Load button](./media/cdn-preload-endpoint/cdn-load-button.png)
 
-> [AZURE.NOTE] Es gilt eine Einschränkung von 10 Anforderungen zum Laden pro Minute pro CDN-Profil.
+> [AZURE.NOTE] There is a limitation of 10 load requests per minute per CDN profile.
 
-## Weitere Informationen
-- [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
-- [Azure CDN-REST-API-Referenz – Löschen oder Vorabladen eines Endpunkts](https://msdn.microsoft.com/library/mt634451.aspx)
+## <a name="see-also"></a>See also
+- [Purge an Azure CDN endpoint](cdn-purge-endpoint.md)
+- [Azure CDN REST API reference - Purge or Pre-Load an Endpoint](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

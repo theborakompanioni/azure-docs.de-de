@@ -1,6 +1,6 @@
 <properties
-   pageTitle="PowerShell-Skript zum Bereitstellen eines Linux-HPC-Clusters | Microsoft Azure"
-   description="Ausführen eines PowerShell-Skripts zum Bereitstellen eines Linux HPC Pack-Clusters auf virtuellen Azure-Computern"
+   pageTitle="PowerShell script to deploy Linux HPC cluster | Microsoft Azure"
+   description="Run a PowerShell script to deploy a Linux HPC Pack cluster in Azure virtual machines"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="dlepow"
@@ -16,19 +16,20 @@
    ms.date="07/07/2016"
    ms.author="danlep"/>
 
-# Erstellen eines High Performance Computing (HPC)-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript
 
-Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung aus, um einen vollständigen HPC Pack-Cluster für Linux-Workloads auf virtuellen Azure-Computern bereitzustellen. Der Cluster besteht aus einem mit Active Directory verknüpften Hauptknoten mit Windows Server und Microsoft HPC Pack sowie Computeknoten, auf denen eine der von HPC Pack unterstützten Linux-Distributionen ausgeführt wird. Falls Sie einen HPC Pack-Cluster in Azure für Windows-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Windows-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md). Sie können auch eine Azure-Ressourcen-Manager-Vorlage verwenden, um einen HPC Pack-Cluster bereitzustellen. Ein Beispiel finden Sie unter [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/) (Erstellen eines HPC-Clusters mit Linux-Computeknoten).
+# <a name="create-a-linux-high-performance-computing-(hpc)-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Create a Linux high performance computing (HPC) cluster with the HPC Pack IaaS deployment script
+
+Run the HPC Pack IaaS deployment PowerShell script to deploy a complete HPC cluster for Linux workloads in Azure virtual machines. The cluster consists of an Active Directory-joined head node running Windows Server and Microsoft HPC Pack, and compute nodes that run one of the Linux distributions supported by HPC Pack. If you want to deploy an HPC Pack cluster in Azure for Windows workloads, see [Create a Windows HPC cluster with the HPC Pack IaaS deployment script](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md). You can also use an Azure Resource Manager template to deploy an HPC Pack cluster. For an example, see [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/).
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
-## Beispielkonfigurationsdatei
+## <a name="example-configuration-file"></a>Example configuration file
 
-Die folgende Konfigurationsdatei erstellt einen neuen Domänencontroller und eine neue Domänengesamtstruktur und stellt einen HPC Pack-Cluster bereit, der über einen Hauptknoten mit lokalen Datenbanken und zehn Linux-Computeknoten verfügt. Alle Clouddienste werden direkt am Standort in Ostasien erstellt. Die Linux-Computeknoten werden in zwei Clouddiensten und zwei Speicherkonten erstellt (d.h. _MyLnxCN-0001_ bis _MyLnxCN-0005_ in _MyLnxCNService01_ und _mylnxstorage01_ und _MyLnxCN-0006_ bis _MyLnxCN-0010_ in _MyLnxCNService02_ und _mylnxstorage02_). Die Computeknoten werden aus einem Linux-Image (OpenLogic CentOS Version 7.0) erstellt.
+The following configuration file creates a new domain controller and domain forest and deploys an HPC Pack cluster which has 1 head node with local databases and 10 Linux compute nodes. All the cloud services are created directly in the East Asia location. The Linux compute nodes are created in 2 cloud services and 2 storage accounts (i.e. _MyLnxCN-0001_ to _MyLnxCN-0005_ in _MyLnxCNService01_ and _mylnxstorage01_, and _MyLnxCN-0006_ to _MyLnxCN-0010_ in _MyLnxCNService02_ and _mylnxstorage02_). The compute nodes are created from an OpenLogic CentOS version 7.0 Linux image. 
 
-Ersetzen Sie den Abonnementnamen und den Konto- und Dienstnamen durch Ihre eigenen Werte.
+Substitute your own values for your subscription name and the account and service names.
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -70,20 +71,26 @@ Ersetzen Sie den Abonnementnamen und den Konto- und Dienstnamen durch Ihre eigen
   </LinuxComputeNodes>
 </IaaSClusterConfig>
 ```
-## Problembehandlung
+## <a name="troubleshooting"></a>Troubleshooting
 
-* **Fehler „VNet nicht vorhanden“:** Wenn Sie das HPC Pack-IaaS-Bereitstellungsskript ausführen, um in Azure gleichzeitig mehrere Cluster unter einem Abonnement bereitzustellen, schlagen eine oder mehrere Bereitstellungen unter Umständen mit einem Fehler der Art „VNet *VNet-Name* nicht vorhanden“ fehl. Führen Sie das Skript für die fehlgeschlagene Bereitstellung erneut aus, wenn dieser Fehler auftritt.
+* **“VNet doesn’t exist” error** - If you run the HPC Pack IaaS deployment script to deploy multiple clusters in Azure concurrently under one subscription, one or more deployments may fail with the error “VNet *VNet\_Name* doesn't exist”.
+If this error occurs, re-run the script for the failed deployment.
 
-* **Problem beim Zugreifen auf das Internet über das virtuelle Azure-Netzwerk:** Falls Sie einen HPC Pack-Cluster mit einem neuen Domänencontroller erstellen, indem Sie das Bereitstellungsskript verwenden, oder wenn Sie eine Hauptknoten-VM manuell zu einem Domänencontroller heraufstufen, können Probleme beim Herstellen der Internetverbindung für die virtuellen Computer im virtuellen Azure-Netzwerk auftreten. Dies kann passieren, wenn auf dem Domänencontroller automatisch ein DNS-Weiterleitungsserver konfiguriert wird und dieser Server die Auflösung nicht richtig durchführt.
+* **Problem accessing the Internet from the Azure virtual network** - If you create an HPC Pack cluster with a new domain controller by using the deployment script, or you manually promote a head node VM to domain controller, you may experience problems connecting the VMs in the Azure virtual network to the Internet. This can occur if a forwarder DNS server is automatically configured on the domain controller, and this forwarder DNS server doesn’t resolve properly.
 
-    Sie können dieses Problem umgehen, indem Sie sich am Domänencontroller anmelden und entweder die Konfigurationseinstellung für die Weiterleitung entfernen oder einen gültigen DNS-Weiterleitungsserver konfigurieren. Klicken Sie hierzu im Server-Manager auf **Extras** > **DNS**, um den DNS-Manager zu öffnen, und doppelklicken Sie dann auf **Weiterleitungen**.
+    To work around this problem, log on to the domain controller and either remove the forwarder configuration setting or configure a valid forwarder DNS server. To do this, in Server Manager click **Tools** >
+    **DNS** to open DNS Manager, and then double-click **Forwarders**.
     
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-* Unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md) finden Sie Informationen zu unterstützten Linux-Distributionen sowie zum Verschieben von Daten und Senden von Aufträgen an HPC Pack-Cluster mit Linux-Computeknoten.
-* Tutorials, in denen das Skript zum Erstellen eines Cluster und Ausführen einer Linux HPC-Workload verwendet wird, finden Sie in folgenden Artikeln:
-    * [Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](virtual-machines-linux-classic-hpcpack-cluster-namd.md)
-    * [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md)
-    * [Ausführen von STAR-CCM+ mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster-starccm.md)
+* See [Get started with Linux compute nodes in an HPC Pack cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md) for information about supported Linux distributions, moving data, and submitting jobs to an HPC Pack cluster with Linux compute nodes.
+* For tutorials that use the script to create a cluster and run a Linux HPC workload, see:
+    * [Run NAMD with Microsoft HPC Pack on Linux compute nodes in Azure](virtual-machines-linux-classic-hpcpack-cluster-namd.md)
+    * [Run OpenFOAM with Microsoft HPC Pack on Linux compute nodes in Azure](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md)
+    * [Run STAR-CCM+ with Microsoft HPC Pack on Linux compute nodes in Azure](virtual-machines-linux-classic-hpcpack-cluster-starccm.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,130 +1,131 @@
 <properties
-	pageTitle="Azure-Schlüsseltresor-Protokollierung | Microsoft Azure"
-	description="Dieses Tutorial dient als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung."
-	services="key-vault"
-	documentationCenter=""
-	authors="cabailey"
-	manager="mbaldwin"
-	tags="azure-resource-manager"/>
+    pageTitle="Azure Key Vault Logging | Microsoft Azure"
+    description="Use this tutorial to help you get started with Azure Key Vault logging."
+    services="key-vault"
+    documentationCenter=""
+    authors="cabailey"
+    manager="mbaldwin"
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="key-vault"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="08/31/2016"
-	ms.author="cabailey"/>
-
-# Azure-Schlüsseltresor-Protokollierung #
-Azure-Schlüsseltresor ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
-
-## Einführung  
-Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Hierfür können Sie die Protokollierung für den Schlüsseltresor aktivieren, bei der Informationen im von Ihnen bereitgestellten Azure-Speicherkonto gespeichert werden. Ein neuer Container mit dem Namen **insights-logs-auditevent** wird für Ihr angegebenes Speicherkonto automatisch erstellt, und Sie können dieses Speicherkonto verwenden, um Protokolle für mehrere Schlüsseltresore zu sammeln.
-
-Sie können auf Ihre Protokollinformationen spätestens zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. In den meisten Fällen geht es aber schneller. Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
-
-- Verwenden Sie zum Schützen der Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie einschränken, wer darauf zugreifen kann.
-- Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
-
-Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung, beim Erstellen Ihres Speicherkontos, Aktivieren der Protokollierung und Interpretieren der gesammelten Protokollierungsinformationen.
+    ms.service="key-vault"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="08/31/2016"
+    ms.author="cabailey"/>
 
 
->[AZURE.NOTE]  Dieses Tutorial enthält keine Anleitung zur Erstellung von Schlüsseltresoren, Schlüsseln oder geheimen Schlüsseln. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli.md).
+# <a name="azure-key-vault-logging"></a>Azure Key Vault Logging #
+Azure Key Vault is available in most regions. For more information, see the [Key Vault pricing page](https://azure.microsoft.com/pricing/details/key-vault/).
+
+## <a name="introduction"></a>Introduction  
+After you have created one or more key vaults, you will likely want to monitor how and when your key vaults are accessed, and by whom. You can do this by enabling logging for Key Vault, which saves information in an Azure storage account that you provide. A new container named **insights-logs-auditevent** is automatically created for your specified storage account, and you can use this same storage account for collecting logs for multiple key vaults.
+
+You can access your logging information at most, 10 minutes after the key vault operation. In most cases, it will be quicker than this.  It's up to you to manage your logs in your storage account:
+
+- Use standard Azure access control methods to secure your logs by restricting who can access them.
+- Delete logs that you no longer want to keep in your storage account.
+
+Use this tutorial to help you get started with Azure Key Vault logging, to create your storage account, enable logging, and interpret the logging information collected.  
+
+
+>[AZURE.NOTE]  This tutorial does not include instructions for how to create key vaults, keys, or secrets. For this information, see [Get started with Azure Key Vault](key-vault-get-started.md). Or, for Cross-Platform Command-Line Interface instructions, see [this equivalent tutorial](key-vault-manage-with-cli.md).
 >
->Derzeit können Sie den Azure-Schlüsseltresor nicht im Azure-Portal konfigurieren. Sie müssen stattdessen die Anweisungen für Azure PowerShell verwenden.
+>Currently, you cannot configure Azure Key Vault in the Azure portal. Instead, use these Azure PowerShell instructions.
 
-Die von Ihnen erfassten Protokolle können mithilfe von Log Analytics über die Operations Management Suite visualisiert werden. Weitere Informationen finden Sie unter [Azure Key Vault (Preview) solution in Log Analytics](../log-analytics/log-analytics-azure-key-vault.md) (Azure Key Vault-Lösung (Vorschau) in Log Analytics).
+The logs that you collect can be visualized by using Log analytics from the Operations Management Suite. For more information, see [Azure Key Vault (Preview) solution in Log Analytics](../log-analytics/log-analytics-azure-key-vault.md).
 
-Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md)
+For overview information about Azure Key Vault, see [What is Azure Key Vault?](key-vault-whatis.md)
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Für dieses Tutorial benötigen Sie Folgendes:
+To complete this tutorial, you must have the following:
 
-- Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird
-- Azure PowerShell, **mindestens Version 1.0.1** Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.
-- Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
+- An existing key vault that you have been using.  
+- Azure PowerShell, **minimum version of 1.0.1**. To install Azure PowerShell and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](../powershell-install-configure.md). If you have already installed Azure PowerShell and do not know the version, from the Azure PowerShell console, type `(Get-Module azure -ListAvailable).Version`.  
+- Sufficient storage on Azure for your Key Vault logs.
 
 
-## <a id="connect"></a>Verbindungsherstellung mit Ihren Abonnements ##
+## <a name="<a-id="connect"></a>connect-to-your-subscriptions"></a><a id="connect"></a>Connect to your subscriptions ##
 
-Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
+Start an Azure PowerShell session and sign in to your Azure account with the following command:  
 
     Login-AzureRmAccount
 
-Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Azure PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind, und verwendet standardmäßig das erste Abonnement.
+In the pop-up browser window, enter your Azure account user name and password. Azure PowerShell will get all the subscriptions that are associated with this account and by default, uses the first one.
 
-Wenn Sie über mehrere Abonnements verfügen, müssen Sie unter Umständen ein bestimmtes Abonnement angeben, das zum Erstellen der Azure Key Vault-Instanz verwendet wurde. Geben Sie Folgendes ein, um die Abonnements für Ihr Konto anzuzeigen:
+If you have multiple subscriptions, you might have to specify a specific one that was used to create your Azure Key Vault. Type the following to see the subscriptions for your account:
 
     Get-AzureRmSubscription
 
-Geben Sie dann Folgendes ein, um das Abonnement anzugeben, das dem zu protokollierenden Schlüsseltresor zugeordnet ist:
+Then, to specify the subscription that's associated with your key vault you will be logging, type:
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+For more information about configuring Azure PowerShell, see  [How to install and configure Azure PowerShell](../powershell-install-configure.md).
 
 
-## <a id="storage"></a>Erstellen eines neuen Speicherkontos für Ihre Protokolle ##
+## <a name="<a-id="storage"></a>create-a-new-storage-account-for-your-logs"></a><a id="storage"></a>Create a new storage account for your logs ##
 
-Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, aber wir erstellen ein neues Speicherkonto, das den Schlüsseltresor-Protokollen zugeordnet wird. Wir speichern die Details in einer Variablen mit dem Namen **sa**, damit wir sie später leicht angeben können.
+Although you can use an existing storage account for your logs, we'll create a new storage account that will be dedicated to Key Vault logs. For convenience for when we have to specify this later, we'll store the details into a variable named **sa**.
 
-Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Ressourcengruppe wie die Gruppe, die unseren Schlüsseltresor enthält. Im [Tutorial zu den ersten Schritten](key-vault-get-started.md) hat diese Ressourcengruppe den Namen **ContosoResourceGroup**, und wir nutzen auch wieder den Standort Ostasien. Ersetzen Sie diese Werte nach Bedarf durch Ihre eigenen Werte:
+For additional ease of management, we'll also use the same resource group as the one that contains our key vault. From the [getting started tutorial](key-vault-get-started.md), this resource group is named **ContosoResourceGroup** and we'll continue to use the East Asia location. Substitute these values for your own, as applicable:
 
-	$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
-
-
->[AZURE.NOTE]  Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, muss dafür dasselbe Abonnement wie für den Schlüsseltresor verwendet werden. Außerdem muss das Resource Manager-Bereitstellungsmodell genutzt werden, nicht das klassische Bereitstellungsmodell.
-
-## <a id="identify"></a>Identifizieren des Schlüsseltresors für Ihre Protokolle ##
-
-In unserem Tutorial zu den ersten Schritten lautete der Name des Schlüsseltresors **ContosoKeyVault**. Wir nutzen den Namen also weiter und speichern die Details in einer Variablen mit dem Namen **kv**:
-
-	$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
 
 
-## <a id="enable"></a>Aktivieren der Protokollierung ##
+>[AZURE.NOTE]  If you decide to use an existing storage account, it must use the same subscription as your key vault and it must use the Resource Manager deployment model, rather than the Classic deployment model.
 
-Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Set-AzureRmDiagnosticSetting-Cmdlet zusammen mit den Variablen, die wir für unser neues Speicherkonto und unseren Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf „AuditEvent“ (einzige Kategorie für Key Vault-Protokollierung) fest:
+## <a name="<a-id="identify"></a>identify-the-key-vault-for-your-logs"></a><a id="identify"></a>Identify the key vault for your logs ##
 
+In our getting started tutorial, our key vault name was **ContosoKeyVault**, so we'll continue to use that name and store the details into a variable named **kv**:
 
-	Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
-
-Die Ausgabe enthält z. B. Folgendes:
-
-	StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-	ServiceBusRuleId   :
-	StorageAccountName :
-		Logs
-		Enabled           : True
-		Category          : AuditEvent
-		RetentionPolicy
-		Enabled : False
-		Days    : 0
+    $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 
-So wird bestätigt, dass die Protokollierung für Ihren Schlüsseltresor jetzt aktiviert ist und Informationen in Ihrem Speicherkonto gespeichert werden.
+## <a name="<a-id="enable"></a>enable-logging"></a><a id="enable"></a>Enable logging ##
 
-Optional können Sie eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, mit der ältere Protokolle automatisch gelöscht werden. Richten Sie die Aufbewahrungsrichtlinie beispielsweise wie folgt ein: Legen Sie das Flag **-RetentionEnabled** auf **$true** und den Parameter **-RetentionInDays** auf **90** fest, sodass Protokolle, die älter sind als 90 Tage, automatisch gelöscht werden.
-
-	Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
-
-Protokollierte Daten:
-
-- Alle authentifizierten REST-API-Anforderungen werden protokolliert, z. B. auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind.
-- Vorgänge im Schlüsseltresor selbst, z. B. Erstellung, Löschung und Festlegung von Schlüsseltresor-Zugriffsrichtlinien und Aktualisierung von Schlüsseltresor-Attributen, beispielsweise Tags.
-- Vorgänge mit Schlüsseln und geheimen Schlüsseln im Schlüsseltresor, z. B. Erstellung, Änderung oder Löschung dieser Schlüssel bzw. geheimen Schlüssel. Vorgänge wie das Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Umschließen und Aufheben der Umschließung von Schlüsseln, Abrufen von geheimen Schlüsseln, Auflisten von Schlüsseln und geheimen Schlüsseln sowie ihren Versionen.
-- Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Wenn Anforderungen beispielsweise über kein Bearertoken verfügen oder falsch formatiert oder abgelaufen sind, ist deren Token ungültig.
+To enable logging for Key Vault, we'll use the Set-AzureRmDiagnosticSetting cmdlet, together with the variables we created for our new storage account and our key vault. We'll also set the **-Enabled** flag to **$true** and set the category to AuditEvent (the only category for Key Vault logging), :
 
 
-## <a id="access"></a>Zugreifen auf Ihre Protokolle ##
+    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 
-Schlüsseltresorprotokolle werden im Container **insights-logs-auditevent** im von Ihnen angegebenen Speicherkonto gespeichert. Geben Sie Folgendes ein, um alle Blobs in diesem Container aufzulisten:
+The output for this includes:
+
+    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
+    ServiceBusRuleId   :
+    StorageAccountName :
+        Logs
+        Enabled           : True
+        Category          : AuditEvent
+        RetentionPolicy
+        Enabled : False
+        Days    : 0
+
+
+This confirms that logging is now enabled for your key vault, saving information to your storage account.
+
+Optionally you can also set retention policy for your logs such that older logs will be automatically deleted. For example, set retention policy using **-RetentionEnabled** flag to **$true** and set **-RetentionInDays** parameter to **90** so that logs older than 90 days will be automatically deleted.
+
+    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
+
+What's logged:
+
+- All authenticated REST API requests are logged, which includes failed requests as a result of access permissions, system errors or bad requests.
+- Operations on the key vault itself, which includes creation, deletion, setting key vault access policies, and updating key vault attributes such as tags.
+- Operations on keys and secrets in the key vault, which includes creating, modifying, or deleting these keys or secrets; operations such as sign, verify, encrypt, decrypt, wrap and unwrap keys, get secrets, list keys and secrets and their versions.
+- Unauthenticated requests that result in a 401 response. For example, requests that do not have a bearer token, or are malformed or expired, or have an invalid token.  
+
+
+## <a name="<a-id="access"></a>access-your-logs"></a><a id="access"></a>Access your logs ##
+
+Key vault logs are stored in the **insights-logs-auditevent** container in the storage account you provided. To list all the blobs in this container, type:
 
     Get-AzureStorageBlob -Container 'insights-logs-auditevent' -Context $sa.Context
 
-Die Ausgabe sieht etwa wie folgt aus:
+The output will look something similar to this:
 
 **Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
@@ -137,149 +138,153 @@ Die Ausgabe sieht etwa wie folgt aus:
 
 **resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=02/m=00/PT1H.json**
 
-**resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json**
+**resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json****
 
 
-Wie Sie in dieser Ausgabe sehen, wird für die Blobs eine Benennungskonvention genutzt: **resourceId=<ARM-Ressourcen-ID>/y=<Jahr>/m=<Monat>/d=<Tag des Monats>/h=<Stunde>/m=<Minute>/filename.json**
+As you can see from this output, the blobs follow a naming convention: **resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json**
 
-Für die Werte für Datum und Uhrzeit wird UTC verwendet.
+The date and time values use UTC.
 
-Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen verwendet werden kann, ist die vollständige Ressourcen-ID im Blobnamen sehr hilfreich, um nur auf die benötigten Blobs zuzugreifen bzw. diese herunterzuladen. Zuerst wird aber beschrieben, wie Sie alle Blobs herunterladen.
+Because the same storage account can be used to collect logs for multiple resources, the full resource ID in the blob name is very useful to access or download just the blobs that you need. But before we do that, we'll first cover how to download all the blobs.
 
-Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel:
+First, create a folder to download the blobs. For example:
 
-	New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
+    New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
-Rufen Sie anschließend eine Liste mit allen Blobs ab:
+Then get a list of all blobs:  
 
-	$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+    $blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
 
-Leiten Sie diese Liste an Get-AzureStorageBlobContent um, um die Blobs in Ihren Zielordner herunterzuladen:
+Pipe this list through 'Get-AzureStorageBlobContent' to download the blobs into our destination folder:
 
-	$blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
+    $blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
 
-Beim Ausführen dieses zweiten Befehls wird mit dem Trennzeichen **/** in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Diese Struktur wird zum Herunterladen und Speichern der Blobs als Dateien verwendet.
+When you run this second command, the **/** delimiter in the blob names create a full folder structure under the destination folder, and this structure will be used to download and store the blobs as files.
 
-Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
+To selectively download blobs, use wildcards. For example:
 
-- Bei Verwendung mehrerer Schlüsseltresore und einem Download von Protokollen nur für einen Schlüsseltresor mit dem Namen CONTOSOKEYVAULT3:
+- If you have multiple key vaults and want to download logs for just one key vault, named CONTOSOKEYVAULT3:
 
-		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 
-- Wenn Sie über mehrere Ressourcengruppen verfügen und nur Protokolle für eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
+- If you have multiple resource groups and want to download logs for just one resource group, use `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
-		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 
-- Wenn Sie alle Protokolle für den Monat Januar 2016 herunterladen möchten, verwenden Sie `-Blob '*/year=2016/m=01/*'`:
+- If you want to download all the logs for the month of January 2016, use `-Blob '*/year=2016/m=01/*'`:
 
-		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
-Sie können sich nun ansehen, was in den Protokollen enthalten ist. Bevor Sie fortfahren, ist es ratsam, sich mit zwei weiteren Parametern für Get-AzureRmDiagnosticSetting vertraut zu machen:
+You're now ready to start looking at what's in the logs. But before moving onto that, two more parameters for Get-AzureRmDiagnosticSetting that you might need to know:
 
-- Zum Abfragen des Status von Diagnoseeinstellungen für Ihre Schlüsseltresorressource: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
+- To query the  status of diagnostic settings for your key vault resource: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
 
-- Zum Deaktivieren der Protokollierung für Ihre Schlüsseltresorressource: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
-
-
-## <a id="interpret"></a>Interpretieren der Key Vault-Protokolle ##
-
-Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Dies ist ein Beispiel für einen Protokolleintrag nach der Ausführung von `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
-
-	{
-    	"records":
-    	[
-        	{
-        	    "time": "2016-01-05T01:32:01.2691226Z",
-        	    "resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT",
-            	"operationName": "VaultGet",
-            	"operationVersion": "2015-06-01",
-            	"category": "AuditEvent",
-            	"resultType": "Success",
-            	"resultSignature": "OK",
-            	"resultDescription": "",
-            	"durationMs": "78",
-            	"callerIpAddress": "104.40.82.76",
-            	"correlationId": "",
-            	"identity": {"claim":{"http://schemas.microsoft.com/identity/claims/objectidentifier":"d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn":"live.com#username@outlook.com","appid":"1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},
-            	"properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.azure.net/","httpStatusCode":200}
-        	}
-    	]
-	}
+- To disable logging for your key vault resource: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
 
-In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt.
+## <a name="<a-id="interpret"></a>interpret-your-key-vault-logs"></a><a id="interpret"></a>Interpret your Key Vault logs ##
+
+Individual blobs are stored as text, formatted as a JSON blob. This is an example log entry from running `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
+
+    {
+        "records":
+        [
+            {
+                "time": "2016-01-05T01:32:01.2691226Z",
+                "resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT",
+                "operationName": "VaultGet",
+                "operationVersion": "2015-06-01",
+                "category": "AuditEvent",
+                "resultType": "Success",
+                "resultSignature": "OK",
+                "resultDescription": "",
+                "durationMs": "78",
+                "callerIpAddress": "104.40.82.76",
+                "correlationId": "",
+                "identity": {"claim":{"http://schemas.microsoft.com/identity/claims/objectidentifier":"d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn":"live.com#username@outlook.com","appid":"1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},
+                "properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.azure.net/","httpStatusCode":200}
+            }
+        ]
+    }
 
 
-| Feldname | Beschreibung |
+The following table lists the field names and descriptions.
+
+
+| Field name        | Description |
 | ------------- |-------------|
-| in | Datum und Uhrzeit (UTC)|
-| resourceId | Azure-Ressourcen-Manager-Ressourcen-ID. Für Schlüsseltresor-Protokolle ist dies immer die Schlüsseltresor-Ressourcen-ID.|
-| operationName | Name des Vorgangs, wie in der folgenden Tabelle beschrieben|
-| operationVersion | Vom Client angeforderte REST-API-Version|
-| category | Für Schlüsseltresor-Protokolle ist AuditEvent der einzige verfügbare Wert|
-| resultType | Ergebnis der REST-API-Anforderung|
-| resultSignature | HTTP-Status|
-| resultDescription | Zusätzliche Beschreibung zum Ergebnis, falls verfügbar|
-| durationMs | Verarbeitungsdauer der REST-API-Anforderung in Millisekunden. Die Netzwerklatenz ist hierin nicht enthalten, sodass die auf der Clientseite gemessene Zeit unter Umständen nicht mit diesem Zeitraum übereinstimmt.|
-| callerIpAddress | IP-Adresse des Clients, der die Anforderung gestellt hat|
-| correlationId | Optionale GUID, die vom Client zum Korrelieren von clientseitigen Protokollen mit dienstseitigen Protokollen (Schlüsseltresor) übergeben werden kann|
-| identity | Identität des Tokens, das beim Erstellen der REST-API-Anforderung angegeben wurde. Dies ist normalerweise ein „Benutzer“, ein Dienstprinzipal oder die Kombination „Benutzer + appId“, wie bei einer Anforderung, die auf einem Azure PowerShell-Cmdlet basiert.|
-| Eigenschaften | Dieses Feld enthält je nach Vorgang verschiedene Informationen (operationName). In den meisten Fällen enthält es Clientinformationen (vom Client übergebene Zeichenfolge „useragent“), den genauen REST-API-Anforderungs-URI und den HTTP-Statuscode. Wenn ein Objekt als Ergebnis einer Anforderung (z. B. KeyCreate oder VaultGet) zurückgegeben wird, enthält es außerdem den Schlüssel-URI (als „id“), Tresor-URI oder URI des geheimen Schlüssels.|
+| time      | Date and time (UTC).|
+| resourceId      | Azure Resource Manager Resource ID. For Key Vault logs, this is always the  Key Vault resource ID.|
+| operationName      | Name of the operation, as documented in the next table.|
+| operationVersion      | This is the REST API version requested by the client.|
+| category      | For Key Vault logs, AuditEvent is the single, available value.|
+| resultType      | Result of REST API request.|
+| resultSignature      | HTTP status.|
+| resultDescription     | Additional description about the result, when available.|
+| durationMs      | Time it took to service the REST API request, in milliseconds. This does not include the network latency, so the time you measure on the client side might not match this time.|
+| callerIpAddress      | IP address of the client who made the request.|
+| correlationId      | An optional GUID that the client can pass to correlate client-side logs with service-side (Key Vault) logs.|
+| identity      | Identity from the token that was presented when making the REST API request. This is usually a "user", a "service principal" or a combination "user+appId" as in case of a request resulting from a Azure PowerShell cmdlet.|
+| properties      | This field will contain different information based on the operation (operationName). In most cases, contains client information (the useragent string passed by the client), the exact REST API request URI, and HTTP status code. In addition, when an object is returned as a result of a request (for example, KeyCreate or VaultGet) it will also contain the Key URI (as "id"), Vault URI, or Secret URI.|
 
 
 
 
-Die Feldwerte unter **operationName** liegen im ObjectVerb-Format vor. Beispiel:
+The **operationName** field values are in ObjectVerb format. For example:
 
-- Alle Schlüsseltresorvorgänge verfügen über das Format „Vault`<action>`“, z.B. `VaultGet` und `VaultCreate`.
+- All key vault operations have the 'Vault`<action>`' format, such as `VaultGet` and `VaultCreate`.
 
-- Alle Schlüsselvorgänge verfügen über das Format „Key`<action>`“, z.B. `KeySign` und `KeyList`.
+- All  key operations have the 'Key`<action>`' format, such as `KeySign` and `KeyList`.
 
-- Alle Vorgänge mit geheimen Schlüsseln verfügen über das Format „Secret`<action>`“, z.B. `SecretGet` und `SecretListVersions`.
+- All secret operations have the 'Secret`<action>`' format, such as `SecretGet` and `SecretListVersions`.
 
-Die folgende Tabelle enthält das operationName-Element und den entsprechenden REST-API-Befehl.
+The following table lists the operationName and corresponding REST API command.
 
-| operationName | REST-API-Befehl |
+| operationName        | REST API Command |
 | ------------- |-------------|
-| Authentifizierung | Über Azure Active Directory-Endpunkt|
-| VaultGet | [Abrufen von Informationen über einen Schlüsseltresor](https://msdn.microsoft.com/de-DE/library/azure/mt620026.aspx)|
-| VaultPut | [Erstellen oder Aktualisieren eines Schlüsseltresors](https://msdn.microsoft.com/de-DE/library/azure/mt620025.aspx)|
-| VaultDelete | [Löschen eines Schlüsseltresors](https://msdn.microsoft.com/de-DE/library/azure/mt620022.aspx)|
-| VaultPatch | [Erstellen oder Aktualisieren eines Schlüsseltresors](https://msdn.microsoft.com/library/azure/mt620025.aspx)|
-| VaultList | [Auflisten aller wichtigen Depots in einer Ressourcengruppe](https://msdn.microsoft.com/de-DE/library/azure/mt620027.aspx)|
-| KeyCreate | [Erstellen eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn903634.aspx)|
-| KeyGet | [Abrufen von Informationen zu einem Schlüssel](https://msdn.microsoft.com/de-DE/library/azure/dn878080.aspx)|
-| KeyImport | [Importieren eines Schlüssels in einen Tresor](https://msdn.microsoft.com/de-DE/library/azure/dn903626.aspx)|
-| KeyBackup | [Sichern eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn878058.aspx)|
-| KeyDelete | [Löschen eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn903611.aspx)|
-| KeyRestore | [Wiederherstellen eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn878106.aspx)|
-| KeySign | [Melden Sie sich mit einem Schlüssel an](https://msdn.microsoft.com/de-DE/library/azure/dn878096.aspx)|
-| KeyVerify | [Überprüfen mit einem Schlüssel](https://msdn.microsoft.com/de-DE/library/azure/dn878082.aspx)|
-| KeyWrap | [Umschließen eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn878066.aspx)|
-| KeyUnwrap | [Aufheben der Umschließung eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn878079.aspx)|
-| KeyEncrypt | [Verschlüsseln mit einem Benutzerschlüssel](https://msdn.microsoft.com/de-DE/library/azure/dn878060.aspx)|
-| KeyDecrypt | [Mit einem Schlüssel entschlüsseln](https://msdn.microsoft.com/de-DE/library/azure/dn878097.aspx)|
-| KeyUpdate | [Aktualisieren eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn903616.aspx)|
-| KeyList | [Auflisten der Schlüssel in einem Tresor](https://msdn.microsoft.com/de-DE/library/azure/dn903629.aspx)|
-| KeyListVersions | [Auflisten der Versionen eines Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn986822.aspx)|
-| SecretSet | [Erstellen eines geheimen Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn903618.aspx)|
-| SecretGet | [Abrufen von Informationen über einen geheimen Schlüssel](https://msdn.microsoft.com/de-DE/library/azure/dn903633.aspx)|
-| SecretUpdate | [Aktualisieren eines geheimen Schlüssels](https://msdn.microsoft.com/de-DE/library/azure/dn986818.aspx)|
-| SecretDelete | [Löschen eines Geheimnisses](https://msdn.microsoft.com/de-DE/library/azure/dn903613.aspx)|
-| SecretList | [Auflisten geheimer Schlüssel in einem Tresor](https://msdn.microsoft.com/de-DE/library/azure/dn903614.aspx)|
-| SecretListVersions | [Auflisten von Versionen geheimer Schlüssel](https://msdn.microsoft.com/de-DE/library/azure/dn986824.aspx)|
+| Authentication      | Via Azure Active Directory endpoint|
+| VaultGet      | [Get information about a key vault](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx)|
+| VaultPut      | [Create or update a key vault](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx)|
+| VaultDelete      | [Delete a key vault](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx)|
+| VaultPatch      | [Update a key vault](https://msdn.microsoft.com/library/azure/mt620025.aspx)|
+| VaultList      | [List all key vaults in a resource group](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx)|
+| KeyCreate      | [Create a key](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx)|
+| KeyGet      | [Get information about a key](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx)|
+| KeyImport      | [Import a key into a vault](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx)|
+| KeyBackup      | [Backup a key](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx).|
+| KeyDelete      | [Delete a key](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx)|
+| KeyRestore      | [Restore a key](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx)|
+| KeySign      | [Sign with a key](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx)|
+| KeyVerify      | [Verify with a key](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx)|
+| KeyWrap      | [Wrap a key](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx)|
+| KeyUnwrap      | [Unwrap a key](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx)|
+| KeyEncrypt      | [Encrypt with a key](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx)|
+| KeyDecrypt      | [Decrypt with a key](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx)|
+| KeyUpdate      | [Update a key](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx)|
+| KeyList      | [List the keys in a vault](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx)|
+| KeyListVersions      | [List the versions of a key](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx)|
+| SecretSet      | [Create a secret](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx)|
+| SecretGet      | [Get secret](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx)|
+| SecretUpdate      | [Update a secret](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx)|
+| SecretDelete      | [Delete a secret](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx)|
+| SecretList      | [List secrets in a vault](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx)|
+| SecretListVersions      | [List versions of a secret](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx)|
 
 
 
 
-## <a id="next"></a>Nächste Schritte ##
+## <a name="<a-id="next"></a>next-steps"></a><a id="next"></a>Next steps ##
 
-Ein Tutorial zur Verwendung von Azure Key Vault in einer Webanwendung finden Sie unter [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md).
+For a tutorial that uses Azure Key Vault in a web application, see [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md).
 
-Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](key-vault-developers-guide.md).
+For programming references, see [the Azure Key Vault developer's guide](key-vault-developers-guide.md).
 
-Eine Liste der Azure PowerShell 1.0-Cmdlets für Azure Key Vault finden Sie unter [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (Azure Key Vault-Cmdlets).
+For a list of Azure PowerShell 1.0 cmdlets for Azure Key Vault, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx).
 
-Ein Tutorial zur Schlüsselrotation und Protokollüberwachung mit Azure Key Vault finden Sie unter [Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung](key-vault-key-rotation-log-monitoring.md).
+For a tutorial on key rotation and log auditing with Azure Key Vault, see [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

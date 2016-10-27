@@ -12,10 +12,11 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/20/2016"
+   ms.date="10/10/2016"
    ms.author="ganesr"/>
 
-# Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
+
+# <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
 
 Dieser Artikel enthält eine Übersicht über die Umstellung einer Azure ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell auf das Azure Resource Manager-Bereitstellungsmodell.
 
@@ -25,7 +26,7 @@ Dieser Artikel enthält eine Übersicht über die Umstellung einer Azure Express
 
 ![Eine ExpressRoute-Verbindung, die mit virtuellen Netzwerken beider Bereitstellungsmodelle verknüpft ist.](./media/expressroute-move/expressroute-move-1.png)
 
-## Mit dem klassischen Bereitstellungsmodell erstellte ExpressRoute-Verbindungen
+## <a name="expressroute-circuits-that-are-created-in-the-classic-deployment-model"></a>Mit dem klassischen Bereitstellungsmodell erstellte ExpressRoute-Verbindungen
 
 ExpressRoute-Verbindungen, die im klassischen Bereitstellungsmodell erstellt wurden, müssen zuerst auf das Resource Manager-Bereitstellungsmodell umgestellt werden, um die Konnektivität für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell zu ermöglichen. Die Verbindung wird bei der Umstellung nicht getrennt oder unterbrochen. Alle Verknüpfungen zwischen Verbindung und virtuellem Netzwerk im klassischen Bereitstellungsmodell (innerhalb eines Abonnements und abonnementübergreifend) bleiben erhalten.
 
@@ -35,27 +36,27 @@ Nach der Umstellung einer ExpressRoute-Verbindung auf das Resource Manager-Berei
 
 Der Konnektivitätsanbieter muss nicht in die Umstellung einbezogen werden.
 
-## Mit dem Resource Manager-Bereitstellungsmodell erstellte ExpressRoute-Verbindungen
+## <a name="expressroute-circuits-that-are-created-in-the-resource-manager-deployment-model"></a>Mit dem Resource Manager-Bereitstellungsmodell erstellte ExpressRoute-Verbindungen
 
 Mit dem Resource Manager-Bereitstellungsmodell erstellte ExpressRoute-Verbindungen können über beide Bereitstellungsmodelle zugänglich gemacht werden. Der Zugang über beide Bereitstellungsmodelle kann für alle ExpressRoute-Verbindungen Ihres Abonnements ermöglicht werden.
 
 - ExpressRoute-Verbindungen, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, haben standardmäßig keinen Zugriff auf das klassische Bereitstellungsmodell.
 - ExpressRoute-Verbindungen, die vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell umgestellt wurden, sind standardmäßig über beide Bereitstellungsmodelle zugänglich.
-- Eine ExpressRoute-Verbindung hat immer Zugriff auf das Resource Manager-Bereitstellungsmodell, und zwar unabhängig davon, ob sie mit dem Resource Manager-Bereitstellungsmodell oder mit dem klassischen Bereitstellungsmodell erstellt wurde. Das bedeutet, dass Sie anhand der Anleitung unter [Verknüpfen von virtuellen Netzwerken](expressroute-howto-linkvnet-arm.md) Verbindungen mit virtuellen Netzwerken herstellen können, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden.
+- Eine ExpressRoute-Verbindung hat immer Zugriff auf das Resource Manager-Bereitstellungsmodell, und zwar unabhängig davon, ob sie mit dem Resource Manager-Bereitstellungsmodell oder mit dem klassischen Bereitstellungsmodell erstellt wurde. Das bedeutet, dass Sie anhand der Anleitung unter [Verknüpfen von virtuellen Netzwerken](expressroute-howto-linkvnet-arm.md)Verbindungen mit virtuellen Netzwerken herstellen können, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden.
 - Der Zugriff auf das klassische Bereitstellungsmodell wird in der ExpressRoute-Verbindung durch den Parameter **allowClassicOperations** gesteuert.
 
 >[AZURE.IMPORTANT] Es gelten alle Kontingente, die auf der Seite [Diensteinschränkungen](../azure-subscription-service-limits.md) dokumentiert sind. Beispiel: Eine Standardverbindung kann insgesamt maximal zehn Verknüpfungen/Verbindungen mit virtuellen Netzwerken für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell umfassen.
 
 
-## Steuern des Zugriffs auf das klassische Bereitstellungsmodell
+## <a name="controlling-access-to-the-classic-deployment-model"></a>Steuern des Zugriffs auf das klassische Bereitstellungsmodell
 
 Sie können für eine einzelne ExpressRoute-Verbindung die Verknüpfung mit virtuellen Netzwerken unter beiden Bereitstellungsmodellen ermöglichen, indem Sie den Parameter **allowClassicOperations** der ExpressRoute-Verbindung festlegen.
 
-Wenn Sie **allowClassicOperations** auf „TRUE“ festlegen, können Sie Verknüpfungen mit virtuellen Netzwerken aus beiden Bereitstellungsmodellen mit der ExpressRoute-Verbindung einrichten. Anhand der Anleitung unter [Verknüpfen virtueller Netzwerke im klassischen Bereitstellungsmodell](expressroute-howto-linkvnet-classic.md) können Sie eine Verknüpfung mit virtuellen Netzwerken unter dem klassischen Bereitstellungsmodell einrichten. Anhand der Anleitung unter [Verknüpfen virtueller Netzwerke im Resource Manager-Bereitstellungsmodell](expressroute-howto-linkvnet-arm.md) können Sie eine Verknüpfung mit virtuellen Netzwerken unter dem Resource Manager-Bereitstellungsmodell einrichten.
+Wenn Sie **allowClassicOperations** auf „TRUE“ festlegen, können Sie Verknüpfungen mit virtuellen Netzwerken aus beiden Bereitstellungsmodellen mit der ExpressRoute-Verbindung einrichten. Anhand der Anleitung unter [Verknüpfen virtueller Netzwerke im klassischen Bereitstellungsmodell](expressroute-howto-linkvnet-classic.md)können Sie eine Verknüpfung mit virtuellen Netzwerken unter dem klassischen Bereitstellungsmodell einrichten. Anhand der Anleitung unter [Verknüpfen virtueller Netzwerke im Resource Manager-Bereitstellungsmodell](expressroute-howto-linkvnet-arm.md)können Sie eine Verknüpfung mit virtuellen Netzwerken unter dem Resource Manager-Bereitstellungsmodell einrichten.
 
 Wenn Sie **allowClassicOperations** auf „FALSE“ festlegen, wird der Zugriff auf die Verbindung über das klassische Bereitstellungsmodell blockiert. Die Verknüpfungen mit virtuellen Netzwerken im klassischen Bereitstellungsmodell werden jedoch beibehalten. In diesem Fall wird die ExpressRoute-Verbindung im klassischen Bereitstellungsmodell nicht angezeigt.
 
-## Unterstützte Vorgänge im klassischen Bereitstellungsmodell
+## <a name="supported-operations-in-the-classic-deployment-model"></a>Unterstützte Vorgänge im klassischen Bereitstellungsmodell
 
 Wenn **allowClassicOperations** auf „TRUE“ festgelegt ist, werden folgende klassische Vorgänge für eine ExpressRoute-Verbindung unterstützt:
 
@@ -68,17 +69,17 @@ Wenn **allowClassicOperations** auf „TRUE“ festgelegt ist, sind folgende kla
  - Erstellen/Aktualisieren/Abrufen/Löschen von BGP-Peerings für private Azure-Peerings, öffentliche Azure-Peerings und Microsoft-Peerings
  - Löschen von ExpressRoute-Verbindungen
 
-## Kommunikation zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell
+## <a name="communication-between-the-classic-and-the-resource-manager-deployment-models"></a>Kommunikation zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell
 
 Die ExpressRoute-Verbindung fungiert als Brücke zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell. Der Datenverkehr zwischen virtuellen Computern in virtuellen Netzwerken unter dem klassischen Bereitstellungsmodell und virtuellen Computern in virtuellen Netzwerken unter dem Resource Manager-Bereitstellungsmodell wird über die ExpressRoute abgewickelt, wenn beide virtuellen Netzwerke mit der gleichen ExpressRoute-Verbindung verknüpft sind.
 
 Der aggregierte Durchsatz wird durch die Durchsatzkapazität des Gateways des virtuellen Netzwerks beschränkt. In einem solchen Fall gelangt der Datenverkehr nicht in die Netzwerke des Konnektivitätsanbieters oder in Ihre Netzwerke. Der Datenverkehrsfluss zwischen den virtuellen Netzwerken wird vollständig innerhalb des Microsoft-Netzwerks abgewickelt.
 
-## Zugreifen auf öffentliche Azure- und Microsoft-Peeringressourcen
+## <a name="access-to-azure-public-and-microsoft-peering-resources"></a>Zugreifen auf öffentliche Azure- und Microsoft-Peeringressourcen
 
-Sie können weiterhin unterbrechungsfrei auf Ressourcen zugreifen, die normalerweise per öffentlichem Azure-Peering und Microsoft-Peering verfügbar sind.
+Sie können weiterhin unterbrechungsfrei auf Ressourcen zugreifen, die normalerweise per öffentlichem Azure-Peering und Microsoft-Peering verfügbar sind.  
 
-## Unterstützte Funktionen
+## <a name="what's-supported"></a>Unterstützte Funktionen
 
 In diesem Abschnitt werden die unterstützten Funktionen für ExpressRoute-Verbindungen beschrieben:
 
@@ -89,7 +90,7 @@ In diesem Abschnitt werden die unterstützten Funktionen für ExpressRoute-Verbi
  - Die ExpressRoute-Verbindung fungiert als Brücke zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell. Der Datenverkehr zwischen virtuellen Computern in virtuellen Netzwerken unter dem klassischen Bereitstellungsmodell und virtuellen Computern in virtuellen Netzwerken unter dem Resource Manager-Bereitstellungsmodell wird über die ExpressRoute abgewickelt, wenn beide virtuellen Netzwerke mit der gleichen ExpressRoute-Verbindung verknüpft sind.
  - Abonnementübergreifende Konnektivität wird sowohl im klassischen Bereitstellungsmodell als auch im Resource Manager-Bereitstellungsmodell unterstützt.
 
-## Nicht unterstützte Funktionen
+## <a name="what's-not-supported"></a>Nicht unterstützte Funktionen
 
 In diesem Abschnitt werden die nicht unterstützten Funktionen für ExpressRoute-Verbindungen beschrieben:
 
@@ -97,17 +98,21 @@ In diesem Abschnitt werden die nicht unterstützten Funktionen für ExpressRoute
  - Verwalten des Lebenszyklus einer ExpressRoute-Verbindung über das klassische Bereitstellungsmodell.
  - Unterstützung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für das klassische Bereitstellungsmodell. Für eine Verbindung unter dem klassischen Bereitstellungsmodell können keine RBAC-Vorgänge ausgeführt werden. Jeder Administrator/Co-Administrator des Abonnements kann virtuelle Netzwerke mit der Verbindung verknüpfen oder die Verknüpfung aufheben.
 
-## Konfiguration
+## <a name="configuration"></a>Konfiguration
 
 Folgen Sie den Anweisungen unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-howto-move-arm.md).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 - Workflowinformationen finden Sie unter [Bereitstellungsworkflows für ExpressRoute-Verbindungen und Verbindungszustände](expressroute-workflows.md).
 - Gehen Sie zum Konfigurieren Ihrer ExpressRoute-Verbindung wie folgt vor:
 
-	- [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md)
-	- [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
-	- [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
+    - [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md)
+    - [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
+    - [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

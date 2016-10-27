@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen eines Anwendungsgateways mithilfe der Azure-CLI in Resource Manager | Microsoft Azure"
-   description="Erfahren Sie, wie Sie ein Anwendungsgateway mit der Azure-CLI in Resource Manager erstellen."
+   pageTitle="Create an application gateway using the Azure CLI in Resource Manager | Microsoft Azure"
+   description="Learn how to create an Application Gateway by using the Azure CLI in Resource Manager"
    services="application-gateway"
    documentationCenter="na"
    authors="georgewallace"
@@ -17,97 +17,99 @@
    ms.date="09/09/2016"
    ms.author="gwallace" />
 
-# Erstellen eines Anwendungsgateways mithilfe der Azure-CLI
 
-Für das Azure Application Gateway wird ein Load Balancer auf Schicht 7 (Anwendungsschicht) verwendet. Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet folgende Funktionen für die Anwendungsbereitstellung: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Create an application gateway by using the Azure CLI
+
+Azure Application Gateway is a layer-7 load balancer. It provides failover, performance-routing HTTP requests between different servers, whether they are on the cloud or on-premises. Application gateway has the following application delivery features: HTTP load balancing, cookie-based session affinity, and Secure Sockets Layer (SSL) offload, custom health probes, and support for multi-site.
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](application-gateway-create-gateway-portal.md)
+- [Azure portal](application-gateway-create-gateway-portal.md)
 - [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-- [Klassische Azure PowerShell](application-gateway-create-gateway.md)
-- [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
-- [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
+- [Azure Classic PowerShell](application-gateway-create-gateway.md)
+- [Azure Resource Manager template](application-gateway-create-gateway-arm-template.md)
+- [Azure CLI](application-gateway-create-gateway-cli.md)
 
-## Voraussetzung: Installieren der Azure-Befehlszeilenschnittstelle
+## <a name="prerequisite:-install-the-azure-cli"></a>Prerequisite: Install the Azure CLI
 
-Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](../xplat-cli-install.md) und sich [bei Azure anmelden](../xplat-cli-connect.md).
+To perform the steps in this article, you need to [install the Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](../xplat-cli-install.md) and you need to [log on to Azure](../xplat-cli-connect.md). 
 
-> [AZURE.NOTE] Wenn Sie über kein Azure-Konto verfügen, müssen Sie eines erstellen. Sie können sich [hier](../active-directory/sign-up-organization.md) für eine kostenlose Testversion registrieren.
+> [AZURE.NOTE] If you don't have an Azure account, you need one. Go sign up for a [free trial here](../active-directory/sign-up-organization.md).
 
-## Szenario
+## <a name="scenario"></a>Scenario
 
-In diesem Szenario erfahren Sie, wie Sie ein Anwendungsgateway über das Azure-Portal erstellen.
+In this scenario, you learn how to create an application gateway using the Azure portal.
 
-Dieses Szenario umfasst Folgendes:
+This scenario will:
 
-- Sie erstellen ein Anwendungsgateway für mittlere Nutzungsdauer mit zwei Instanzen.
-- Sie erstellen ein virtuelles Netzwerk mit dem Namen AdatumAppGatewayVNET und dem reservierten CIDR-Block 10.0.0.0/16.
-- Sie erstellen ein Subnetz mit dem Namen Appgatewaysubnet, für das 10.0.0.0/28 als CIDR-Block verwendet wird.
-- Sie konfigurieren ein Zertifikat für die SSL-Auslagerung.
+- Create a medium application gateway with two instances.
+- Create a virtual network named AdatumAppGatewayVNET with a reserved CIDR block of 10.0.0.0/16.
+- Create a subnet called Appgatewaysubnet that uses 10.0.0.0/28 as its CIDR block.
+- Configure a certificate for SSL offload.
 
-![Beispielszenario][scenario]
+![Scenario example][scenario]
 
->[AZURE.NOTE] Zusätzliche Konfigurationsschritte für das Anwendungsgateway (u.a. benutzerdefinierte Integritätstests, Back-End-Pool-Adressen und zusätzlichen Regeln) werden nicht während der Erstbereitstellung, sondern nach der Konfiguration des Anwendungsgateways ausgeführt.
+>[AZURE.NOTE] Additional configuration of the application gateway, including custom health probes, backend pool addresses, and additional rules are configured after the application gateway is configured and not during initial deployment.
 
-## Voraussetzungen
+## <a name="before-you-begin"></a>Before you begin
 
-Für Azure Application Gateway ist ein eigenes Subnetz erforderlich. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass der Adressbereich für mehrere Subnetze ausreicht. Sobald Sie ein Anwendungsgateway in einem Subnetz bereitstellen, können nur zusätzliche Anwendungsgateways zum Subnetz hinzugefügt werden.
+Azure Application Gateway requires its own subnet. When creating a virtual network, ensure that you leave enough address space to have multiple subnets. Once you deploy an application gateway to a subnet, only additional application gateways are able to be added to the subnet.
 
-## Anmelden an Azure
+## <a name="log-in-to-azure"></a>Log in to Azure
 
-Öffnen Sie die **Microsoft Azure-Eingabeaufforderung**, und melden Sie sich an.
+Open the **Microsoft Azure Command Prompt**, and log in. 
 
     azure login
 
-Wenn Sie das vorherige Beispiel eingeben, erhalten Sie einen Code. Navigieren Sie in einem Browser zu https://aka.ms/devicelogin, und setzen Sie den Anmeldeprozess fort.
+Once you type the preceding example, a code is provided. Navigate to https://aka.ms/devicelogin in a browser to continue the login process.
 
-![CMD mit Geräteanmeldung][1]
+![cmd showing device login][1]
 
-Geben Sie im Browser den Code ein, den Sie erhalten haben. Sie werden zu einer Anmeldeseite umgeleitet.
+In the browser, enter the code you received. You are redirected to a sign-in page.
 
-![Browser zur Eingabe des Codes][2]
+![browser to enter code][2]
 
-Wenn Sie den Code eingegeben haben, sind Sie angemeldet. Schließen Sie dann den Browser, um mit dem Szenario fortzufahren.
+Once the code has been entered you are signed in, close the browser to continue on with the scenario.
 
-![Erfolgreich angemeldet][3]
+![successfully signed in][3]
 
-## Wechseln in den Ressource Manager-Modus
+## <a name="switch-to-resource-manager-mode"></a>Switch to Resource Manager Mode
 
     azure config mode arm
 
-## Ressourcengruppe erstellen
+## <a name="create-the-resource-group"></a>Create the resource group
 
-Vor dem Erstellen des Anwendungsgateways wird eine Ressourcengruppe erstellt, die das Anwendungsgateway enthält. Hier sehen Sie den Befehl:
+Before creating the application gateway, a resource group is created to contain the application gateway. The following shows the command.
 
     azure group create -n AdatumAppGatewayRG -l eastus
 
-## Erstellen eines virtuellen Netzwerks
+## <a name="create-a-virtual-network"></a>Create a virtual network
 
-Sobald die Ressourcengruppe erstellt wurde, wird ein virtuelles Netzwerk für das Anwendungsgateway erstellt. Im folgenden Beispiel lautet der Adressraum 10.0.0.0/16, wie in den obigen Szenariohinweisen angegeben.
+Once the resource group is created, a virtual network is created for the application gateway.  In the following example, the address space was as 10.0.0.0/16 as defined in the preceding scenario notes.
 
     azure network vnet create -n AdatumAppGatewayVNET -a 10.0.0.0/16 -g AdatumAppGatewayRG -l eastus
 
-## Erstellen eines Subnetzes
+## <a name="create-a-subnet"></a>Create a subnet
 
-Nach der Erstellung des virtuellen Netzwerks wird ein Subnetz für das Anwendungsgateway hinzugefügt. Wenn Sie ein Anwendungsgateway mit einer Web-App verwenden, die im selben virtuellen Netzwerk wie das Anwendungsgateway gehostet wird, lassen Sie ausreichend Platz für ein weiteres Subnetz.
+After the virtual network is created, a subnet is added for the application gateway.  If you plan to use application gateway with a web app hosted in the same virtual network as the application gateway, be sure to leave enough room for another subnet.
 
     azure network vnet subnet create -g AdatumAppGatewayRG -n Appgatewaysubnet -v AdatumAppGatewayVNET -a 10.0.0.0/28 
 
-## Erstellen des Anwendungsgateways
+## <a name="create-the-application-gateway"></a>Create the application gateway
 
-Sobald das virtuelle Netzwerk und das Subnetz erstellt wurden, sind die Voraussetzungen für das Anwendungsgateway erfüllt. Für den folgenden Schritt sind darüber hinaus ein zuvor exportiertes PFX-Zertifikat und das Kennwort für das Zertifikat erforderlich: Bei den für das Back-End verwendeten IP-Adressen handelt es sich um die IP-Adressen für Ihren Back-End-Server. Diese Werte können entweder private IPs im virtuellen Netzwerk, öffentliche IPs oder vollqualifizierte Domänennamen für Ihre Back-End-Server sein.
+Once the virtual network and subnet are created, the pre-requisites for the application gateway are complete. Additionally a previously exported .pfx certificate and the password for the certificate are required for the following step: The IP addresses used for the backend are the IP addresses for your backend server. These values can be either private IPs in the virtual network, public ips, or fully qualified domain names for your backend servers.
 
     azure network application-gateway create -n AdatumAppGateway -l eastus -g AdatumAppGatewayRG -e AdatumAppGatewayVNET -m Appgatewaysubnet -r 134.170.185.46,134.170.188.221,134.170.185.50 -y c:\AdatumAppGateway\adatumcert.pfx -x P@ssw0rd -z 2 -a Standard_Medium -w Basic -j 443 -f Enabled -o 80 -i http -b https -u Standard
 
 
 
-Mit diesem Beispiel wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Darüber hinaus wird die SSL-Auslagerung konfiguriert. Nach der erfolgreichen Bereitstellung können Sie diese Einstellungen an Ihre Anforderungen anpassen. Wenn Sie Ihre Webanwendung bereits mit dem Back-End-Pool in den vorherigen Schritten definiert haben, beginnt nach dem Erstellen der Lastenausgleich.
+This example creates a basic application gateway with default settings for the listener, backend pool, backend http settings, and rules. It also configures SSL offload. You can modify these settings to suit your deployment once the provisioning is successful.
+If you already have your web application defined with the the backend pool in the preceding steps, once created, load balancing begins.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-probe-portal.md) erfahren Sie, wie benutzerdefinierte Integritätstests erstellt werden.
+Learn how to create custom health probes by visiting [Create a custom health probe](application-gateway-create-probe-portal.md)
 
-Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) wird beschrieben, wie Sie die SSL-Auslagerung konfigurieren, damit Ihre Webserver nicht länger eine kostenintensive SSL-Entschlüsselung durchführen müssen.
+Learn how to configure SSL Offloading and take the costly SSL decryption off your web servers by visiting [Configure SSL Offload](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 
@@ -116,4 +118,7 @@ Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) wird b
 [2]: ./media/application-gateway-create-gateway-cli/figure2.png
 [3]: ./media/application-gateway-create-gateway-cli/figure3.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

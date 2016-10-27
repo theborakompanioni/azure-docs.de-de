@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Dashboards im Azure-Portal | Microsoft Azure"
-   description="In diesem Artikel wird das Erstellen und Bearbeiten von Dashboards im Azure-Portal beschrieben."
+   pageTitle="Azure portal dashboards | Microsoft Azure"
+   description="This article explains how to create and edit dashboards in the Azure portal."
    services="azure-portal"
    documentationCenter=""
    authors="sewatson"
@@ -16,90 +16,94 @@
    ms.date="09/06/2016"
    ms.author="sewatson"/>
 
-# Erstellen und Freigeben von Dashboards im Azure-Portal
 
-Sie können mehrere Dashboards erstellen und für andere Benutzer freigeben, die Zugriff auf Ihre Azure-Abonnements haben. In diesem Beitrag werden die Grundlagen der Erstellung/Bearbeitung, Veröffentlichung und Verwaltung des Zugriffs auf Dashboards beschrieben.
+# <a name="creating-and-sharing-dashboards-in-the-azure-portal"></a>Creating and sharing dashboards in the Azure portal
 
-## Anpassung von Dashboards und Blättern
+You can create multiple dashboards and share them with others who have access to your Azure subscriptions.  This post goes through the basics of creating/editing, publishing, and managing access to dashboards.
 
-Seit dem Start der Dashboards vor einigen Monaten waren ein stetiger Rückgang von Blattanpassungen und eine rasante Zunahme von Dashboardanpassungen zu beobachten. Dieser starke Trend aus der Praxis weist darauf hin, dass Sie die Anpassung von Dashboards der Anpassung von Blättern vorziehen. Zur Unterstützung dieses Trends wird die Option zum Anpassen von Blättern eingestellt, und wir konzentrieren uns stattdessen auf die Verbesserung der Dashboardfunktionen. Wenn Sie ein Blatt angepasst haben, wird Ihre Anpassung in Kürze entfernt werden. Um die Anpassung beizubehalten, können Sie die angepassten Kacheln an ein Dashboard anheften. Klicken Sie einfach mit der rechten Maustaste auf die Kachel, und wählen Sie die Option **An Dashboard anheften**. Dies ist in der folgenden Abbildung dargestellt.
+## <a name="customizing-dashboards-versus-blades"></a>Customizing dashboards versus blades
 
-![Angepasste Kachel speichern](./media/azure-portal-dashboards/save-customization.png)
+Since launching dashboards a few months ago, there has been a steady decline in blade customizations and a rapid increase in dashboard customizations. This strong usage trend shows that you prefer customizing dashboards over blades. To support that trend, we will remove the ability to customize blades and dedicate our efforts to enhancing dashboard functionality. If you customized a blade, your customization will soon be removed. To preserve that customization, pin the customized tiles to a dashboard. Simply right-click the tile and select **Pin to dashboard** as shown in the following image.
 
-## Erstellen eines Dashboards
+![save customized tile](./media/azure-portal-dashboards/save-customization.png)
 
-Wählen Sie zum Erstellen eines Dashboards die Schaltfläche **Neues Dashboard** neben dem Namen des aktuellen Dashboards aus.
+## <a name="create-a-dashboard"></a>Create a dashboard
 
-![Dashboard erstellen](./media/azure-portal-dashboards/new-dashboard.png)
+To create a dashboard, select the **New dashboard** button next to the current dashboard's name.  
 
-Bei dieser Aktion wird ein neues, leeres, privates Dashboard erstellt. Außerdem wird der Anpassungsmodus aktiviert, in dem Sie dem Dashboard einen Namen geben und Kacheln hinzufügen oder neu anordnen können. In diesem Modus ersetzt der ausblendbare Kachelkatalog das Navigationsmenü auf der linken Seite. Im Kachelkatalog können Sie auf verschiedene Arten nach Kacheln für Ihre Azure-Ressourcen suchen: Sie können nach [Ressourcengruppe](../resource-group-overview.md#resource-groups), Ressourcentyp, [Tag](../resource-group-using-tags.md) oder nach dem Namen der Ressource suchen.
+![create dashboard](./media/azure-portal-dashboards/new-dashboard.png)
 
-![Dashboard anpassen](./media/azure-portal-dashboards/customize-dashboard.png)
+This action creates a new, empty, private dashboard and puts you into customization mode where you can name your dashboard and add or rearrange tiles.  When in this mode, the collapsible tile gallery takes over the left navigation menu.  The tile gallery lets you find tiles for your Azure resources in various ways: you can browse by [resource group](../resource-group-overview.md#resource-groups), by resource type, by [tag](../resource-group-using-tags.md), or by searching for your resource by name.  
 
-Fügen Sie Kacheln hinzu, indem Sie sie an eine beliebige Position auf der Dashboardoberfläche ziehen und dort ablegen.
+![customize dashboard](./media/azure-portal-dashboards/customize-dashboard.png)
 
-Es ist eine neue Kategorie mit dem Namen **Allgemein** für Kacheln vorhanden, die nicht einer bestimmten Ressource zugeordnet sind. In diesem Beispiel heften wir die Kachel „Markdown“ an. Sie verwenden diese Kachel, um dem Dashboard benutzerdefinierte Inhalte hinzuzufügen. Die Kachel unterstützt Klartext, [Markdown-Syntax](https://daringfireball.net/projects/markdown/syntax) und eine begrenzte Gruppe von HTML-Elementen. (Aus Sicherheitsgründen ist es nicht möglich, `<script>`-Tags zu injizieren oder bestimmte Formatelemente von CSS zu verwenden, die unter Umständen die Funktionsweise des Portals beeinträchtigen.)
+Add tiles by dragging and dropping them onto the dashboard surface wherever you want.
 
-![Markdown hinzufügen](./media/azure-portal-dashboards/add-markdown.png)
+There's a new category called **General** for tiles that are not associated with a particular resource.  In this example, we pin the Markdown tile.  You use this tile to add custom content to your dashboard.  The tile supports plain text, [Markdown syntax](https://daringfireball.net/projects/markdown/syntax), and a limited set of HTML.  (For safety, you can't do things like inject `<script>` tags or use certain styling element of CSS that might interfere with the portal.) 
 
-## Bearbeiten eines Dashboards
+![add markdown](./media/azure-portal-dashboards/add-markdown.png)
 
-Nach der Erstellung des Dashboards können Sie Kacheln aus dem Kachelkatalog oder der Kacheldarstellung von Blättern anheften. Hier heften wir die Darstellung unserer Ressourcengruppe an. Sie können das Anheften entweder beim Durchsuchen des Elements oder über das Ressourcengruppenblatt durchführen. Beide Ansätze führen zum Anheften der Kacheldarstellung der Ressourcengruppe.
+## <a name="edit-a-dashboard"></a>Edit a dashboard
 
-![An Dashboard anheften](./media/azure-portal-dashboards/pin-to-dashboard.png)
+After creating your dashboard, you can pin tiles from the tile gallery or the tile representation of blades. Let's pin the representation of our resource group. You can either pin when browsing the item, or from the resource group blade. Both approaches result in pinning the tile representation of the resource group.
 
-Nach dem Anheften des Elements wird es in Ihrem Dashboard angezeigt.
+![pin to dashboard](./media/azure-portal-dashboards/pin-to-dashboard.png)
 
-![Dashboard anzeigen](./media/azure-portal-dashboards/view-dashboard.png)
+After pinning the item, it appears on your dashboard.
 
-Nachdem wir nun die Kachel „Markdown“ und eine Ressourcengruppe im Dashboard angeheftet haben, können wir die Größe der Kacheln anpassen und die Kacheln wie gewünscht anordnen.
+![view dashboard](./media/azure-portal-dashboards/view-dashboard.png)
 
-Wenn Sie mit der Maus auf „…“ zeigen oder mit der rechten Maustaste auf eine Kachel klicken, werden alle Kontextbefehle für die jeweilige Kachel angezeigt. Standardmäßig sind zwei Elemente vorhanden:
+Now that we have a Markdown tile and a resource group pinned to the dashboard, we can resize and rearrange the tiles into a suitable layout.
 
-1. **Von Dashboard lösen**: Entfernt die Kachel aus dem Dashboard.
-2.	**Anpassen**: Aktiviert den Anpassungsmodus.
+By hovering and selecting "…" or right-clicking on a tile you can see all the contextual commands for that tile. By default, there are two items:
 
-![Kachel anpassen](./media/azure-portal-dashboards/customize-tile.png)
+1. **Unpin from dashboard** – removes the tile from the dashboard
+2.  **Customize** – enters customize mode
 
-Wenn Sie „Anpassen“ auswählen, können Sie die Größe von Kacheln ändern und diese neu anordnen. Wählen Sie zum Ändern der Größe einer Kachel die neue Größe im Kontextmenü aus. Dies ist in der folgenden Abbildung dargestellt.
+![customize tile](./media/azure-portal-dashboards/customize-tile.png)
 
-![Größe der Kachel ändern](./media/azure-portal-dashboards/resize-tile.png)
+By selecting customize, you can resize and reorder tiles. To resize a tile, select the new size from the contextual menu, as shown in the following image.
 
-Falls für die Kachel alle Größen unterstützt werden, können Sie durch Ziehen an der unteren rechten Ecke die gewünschte Größe festlegen.
+![resize tile](./media/azure-portal-dashboards/resize-tile.png)
 
-![Größe der Kachel ändern](./media/azure-portal-dashboards/resize-corner.png)
+Or, if the tile supports any size, you can drag the bottom right-hand corner to the desired size.
 
-Sehen Sie sich nach dem Ändern der Größe von Kacheln das Dashboard an.
+![resize tile](./media/azure-portal-dashboards/resize-corner.png)
 
-![Kachel anzeigen](./media/azure-portal-dashboards/view-tile.png)
+After resizing tiles, view the dashboard.
 
-Wählen Sie nach dem Anpassen eines Dashboards einfach die Option **Anpassung abgeschlossen**, um den Anpassungsmodus zu beenden. Sie können auch mit der rechten Maustaste klicken und im Kontextmenü die Option **Anpassung abgeschlossen** wählen.
+![view tile](./media/azure-portal-dashboards/view-tile.png)
 
-## Veröffentlichen eines Dashboards und Verwalten der Zugriffssteuerung
+Once you are finished customizing a dashboard, simply select the **Done customizing** to exit customize mode or right-click and select **Done customizing** from the context menu.
 
-Wenn Sie ein Dashboard erstellen, ist es standardmäßig ein privates Dashboard. Dies bedeutet, dass Sie die einzige Person sind, die es anzeigen kann. Verwenden Sie die Schaltfläche **Freigeben**, die neben den anderen Dashboardbefehlen angezeigt wird, um es auch für andere Benutzer sichtbar zu machen.
+## <a name="publish-a-dashboard-and-manage-access-control"></a>Publish a dashboard and manage access control
 
-![Dashboard freigeben](./media/azure-portal-dashboards/share-dashboard.png)
+When you create a dashboard, it is private by default, which means you are the only person who can see it.  To make it visible to others, use the **Share** button that appears alongside the other dashboard commands.
 
-Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Damit Dashboards nahtlos in das Ökosystem integriert werden können, haben wir freigegebene Dashboards als Azure-Ressourcen implementiert (das Freigeben durch die Eingabe einer E-Mail-Adresse ist also nicht möglich). Der Zugriff auf die Informationen, die von den meisten Kacheln im Portal angezeigt werden, wird in Azure über die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) geregelt. Aus Sicht der Zugriffssteuerung unterscheiden sich freigegebene Dashboards nicht von einem virtuellen Computer oder Speicherkonto.
+![share dashboard](./media/azure-portal-dashboards/share-dashboard.png)
 
-Angenommen, Sie verfügen über ein Azure-Abonnement, und Mitgliedern Ihres Teams wurden die Rollen **Besitzer**, **Mitwirkender** oder **Leser** für das Abonnement zugewiesen. Benutzer, die Besitzer oder Mitwirkende sind, können Dashboards im Abonnement auflisten, anzeigen, erstellen, ändern oder löschen. Benutzer, die als Leser festgelegt wurden, können Dashboards auflisten und anzeigen, aber sie können diese nicht ändern oder löschen. Benutzer mit Lesezugriff können lokale Änderungen an einem freigegebenen Dashboard vornehmen, haben aber nicht die Möglichkeit, diese Änderungen zur Veröffentlichung zurück an den Server zu übergeben. Sie können aber eine private Kopie des Dashboards zur eigenen Verwendung erstellen. Einzelne Kacheln im Dashboard erzwingen basierend auf den jeweiligen Ressourcen wie immer eigene Regeln für die Zugriffssteuerung.
+You are asked to choose a subscription and resource group for your dashboard to be published to. To seamlessly integrate dashboards into the ecosystem, we've implemented shared dashboards as Azure resources (so you can't share by typing an email address).  Access to the information displayed by most of the tiles in the portal are governed by [Azure Role Based Access Control](../active-directory/role-based-access-control-configure.md ). From an access control perspective, shared dashboards are no different from a virtual machine or a storage account.  
 
-Während der Veröffentlichung über das Portal werden Sie der Einfachheit halber zu einem Muster geführt, bei dem Sie Dashboards in einer Ressourcengruppe mit dem Namen **Dashboards** anordnen.
+Let's say you have an Azure subscription and members of your team have been assigned the roles of **owner**, **contributor**, or **reader** of the subscription.  Users who are owners or contributors are able to list, view, create, modify, or delete dashboards within that subscription.  Users who are readers are able to list and view dashboards, but cannot modify or delete them.  Users with reader access are able to make local edits to a shared dashboard, but are not able to publish those changes back to the server.  However, they can make a private copy of the dashboard for their own use.  As always, individual tiles on the dashboard enforce their own access control rules based on the resources they correspond to.  
 
-![Dashboard veröffentlichen](./media/azure-portal-dashboards/publish-dashboard.png)
+For convenience, the portal's publishing experience guides you towards a pattern where you place dashboards in a resource group called **dashboards**.  
 
-Sie können sich auch dafür entscheiden, ein Dashboard unter einer bestimmten Ressourcengruppe zu veröffentlichen. Die Zugriffssteuerung für dieses Dashboard stimmt mit der Zugriffssteuerung für die Ressourcengruppe überein. Benutzer, die die Ressourcen in dieser Ressourcengruppe verwalten können, haben auch Zugriff auf die Dashboards.
+![publish dashboard](./media/azure-portal-dashboards/publish-dashboard.png)
 
-![Dashboard in Ressourcengruppe veröffentlichen](./media/azure-portal-dashboards/publish-to-resource-group.png)
+You can also choose to publish a dashboard to a particular resource group.  The access control for that dashboard matches the access control for the resource group.  Users that can manage the resources in that resource group also have access to the dashboards.
 
-Nach der Veröffentlichung des Dashboards wird der Steuerungsbereich für **Freigabe und Zugriff** aktualisiert, und es werden Informationen zum veröffentlichten Dashboard angezeigt, z.B. ein Link zur Verwaltung des Benutzerzugriffs auf das Dashboard. Mit diesem Link wird das Standardblatt für die rollenbasierte Zugriffssteuerung gestartet, über das der Zugriff für alle Azure-Ressourcen verwaltet wird. Sie können auf diese Ansicht immer zugreifen, indem Sie die Option **Freigeben** wählen.
+![publish dashboard to resource group](./media/azure-portal-dashboards/publish-to-resource-group.png)
 
-![Zugriffssteuerung verwalten](./media/azure-portal-dashboards/manage-access.png)
+After your dashboard is published, the **Sharing + access** control pane will refresh and show you information about the published dashboard, including a link to manage user access to the dashboard.  This link launches the standard Role Based Access Control blade used to manage access for any Azure resource.  You can always get back to this view by selecting **Share**.
 
-## Nächste Schritte
+![manage access control](./media/azure-portal-dashboards/manage-access.png)
 
-- Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](resource-group-portal.md).
-- Informationen zum Bereitstellen von Ressourcen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0907_2016-->
+- To manage resources, see [Manage Azure resources through portal](resource-group-portal.md).
+- To deploy resources, see [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md).
+
+
+<!--HONumber=Oct16_HO2-->
+
+

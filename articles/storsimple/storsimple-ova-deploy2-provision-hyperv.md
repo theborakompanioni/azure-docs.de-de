@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Bereitstellen des StorSimple Virtual Array – Bereitstellen in Hyper-V"
-   description="In diesem zweiten Tutorial der Reihe zur StorSimple Virtual Array-Bereitstellung geht es um das Bereitstellen eines virtuellen Geräts in Hyper-V."
+   pageTitle="Deploy StorSimple Virtual Array - Provision in Hyper-V"
+   description="This second tutorial in StorSimple Virtual Array deployment involves provisioning a virtual device in Hyper-V."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,255 +16,260 @@
    ms.date="07/14/2016"
    ms.author="alkohli"/>
 
-# Bereitstellen des StorSimple Virtual Array – Bereitstellen eines Virtual Array in Hyper-V
+
+# <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-hyper-v"></a>Deploy StorSimple Virtual Array - Provision a Virtual Array in Hyper-V
 
 ![](./media/storsimple-ova-deploy2-provision-hyperv/hyperv4.png)
 
-## Übersicht
+## <a name="overview"></a>Overview
 
-Dieses Tutorial zur Bereitstellung bezieht sich auf Microsoft Azure StorSimple Virtual Arrays (auch als „lokale virtuelle StorSimple-Geräte“ oder „virtuelle StorSimple-Geräte“ bezeichnet) mit der Version vom März 2016 (allgemeine Verfügbarkeit). In diesem Tutorial wird erläutert, wie Sie ein StorSimple Virtual Array auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereitstellen. Dieser Artikel bezieht sich auf die Bereitstellung von StorSimple Virtual Arrays im klassischem Azure-Portal sowie in der Microsoft Azure Government-Cloud.
+This provisioning tutorial applies to Microsoft Azure StorSimple Virtual Arrays (also known as StorSimple on-premises virtual devices or StorSimple virtual devices) running March 2016 general availability (GA) release. This tutorial describes how to provision a StorSimple Virtual Array on a host system running Hyper-V on Windows Server 2012 R2, Windows Server 2012 or Windows Server 2008 R2. This article applies to the deployment of StorSimple Virtual Arrays in Azure classic portal as well as Microsoft Azure Government Cloud.
 
-Sie benötigen Administratorrechte, um ein virtuelles Gerät bereitzustellen und zu konfigurieren. Die Bereitstellung und die anfängliche Einrichtung dauern ca. 10 Minuten.
+You will need administrator privileges to provision and configure a virtual device. The provisioning and initial setup can take around 10 minutes to complete.
 
 
-## Voraussetzungen für die Bereitstellung
+## <a name="provisioning-prerequisites"></a>Provisioning prerequisites
 
-Hier finden Sie die Voraussetzungen, die erfüllt sein müssen, damit Sie ein virtuelles Gerät auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereitstellen können.
+Here you will find the prerequisites to provision a virtual device on a host system running Hyper-V on Windows Server 2012 R2, Windows Server 2012, or Windows Server 2008 R2.
 
-### Für den StorSimple Manager-Dienst
+### <a name="for-the-storsimple-manager-service"></a>For the StorSimple Manager service
 
-Stellen Sie Folgendes sicher, bevor Sie beginnen:
+Before you begin, make sure that:
 
--   Sie haben alle Schritte unter [Vorbereiten des Portals für StorSimple Virtual Array](storsimple-ova-deploy1-portal-prep.md) ausgeführt.
+-   You have completed all the steps in [Prepare the portal for StorSimple Virtual Array](storsimple-ova-deploy1-portal-prep.md).
 
--   Sie haben das Image des virtuellen Geräts für Hyper-V aus dem Azure-Portal heruntergeladen. Weitere Informationen finden Sie unter [Schritt 3: Herunterladen des Image mit dem virtuellen Gerät](storsimple-ova-deploy1-portal-prep.md#step-3-download-the-virtual-device-image).
+-   You have downloaded the virtual device image for Hyper-V from the Azure portal. For more information, see [Step 3: Download the virtual device image](storsimple-ova-deploy1-portal-prep.md#step-3-download-the-virtual-device-image).
 
-	> [AZURE.IMPORTANT] Die Software auf dem StorSimple Virtual Array kann nur in Verbindung mit dem StorSimple Manager-Dienst verwendet werden.
+    > [AZURE.IMPORTANT] The software running on the StorSimple Virtual Array may only be used in conjunction with the Storsimple Manager service.
 
-### Für das virtuelle StorSimple-Gerät
+### <a name="for-the-storsimple-virtual-device"></a>For the StorSimple virtual device
 
-Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Gerät bereitstellen:
+Before you deploy a virtual device, make sure that:
 
--   Sie haben Zugriff auf ein Hostsystem mit Hyper-V unter Windows Server 2008 R2 oder höher, das zum Bereitstellen eines Geräts verwendet werden kann.
+-   You have access to a host system running Hyper-V on Windows Server 2008 R2 or later that can be used to a provision a device.
 
--   Das Hostsystem verfügt für die Bereitstellung des virtuellen Geräts über die folgenden Ressourcen:
+-   The host system is able to dedicate the following resources to provision your virtual device:
 
-	-   Mindestens 4 Kerne
+    -   A minimum of 4 cores.
 
-	-   Mindestens 8 GB RAM
+    -   At least 8 GB of RAM.
 
-	-   Eine Netzwerkschnittstelle
+    -   One network interface.
 
-	-   Einen virtuellen Datenträger mit 500 GB für Systemdaten
+    -   A 500 GB virtual disk for system data.
 
-### Für das Netzwerk im Datencenter
+### <a name="for-the-network-in-the-datacenter"></a>For the network in the datacenter
 
-Bevor Sie beginnen, überprüfen Sie die Netzwerkanforderungen zum Bereitstellen eines virtuellen StorSimple-Geräts, und konfigurieren Sie das Netzwerk des Rechenzentrums entsprechen. Weitere Informationen finden Sie unter [StorSimple Virtual Array – Netzwerkanforderungen](storsimple-ova-system-requirements.md#networking-requirements).
+Before you begin, review the networking requirements to deploy a StorSimple virtual device and configure the datacenter network appropriately. For more information, see [StorSimple Virtual Array networking requirements](storsimple-ova-system-requirements.md#networking-requirements).
 
-## Schritt-für-Schritt-Bereitstellung
+## <a name="step-by-step-provisioning"></a>Step-by-step provisioning
 
-Zum Bereitstellen und Herstellen der Verbindung mit einem virtuellen Gerät müssen Sie die folgenden Schritte ausführen:
+To provision and connect to a virtual device, you will need to perform the following steps:
 
-1.  Stellen Sie sicher, dass das Hostsystem über genügend Ressourcen zum Erfüllen der Mindestanforderungen des virtuellen Geräts verfügt.
+1.  Ensure that the host system has sufficient resources to meet the minimum virtual device requirements.
 
-2.  Stellen Sie ein virtuelles Gerät in Ihrem Hypervisor bereit.
+2.  Provision a virtual device in your hypervisor.
 
-3.  Starten Sie das virtuelle Gerät, und rufen Sie die IP-Adresse ab.
+3.  Start the virtual device and get the IP address.
 
-Jeder dieser Schritte wird in den folgenden Abschnitten erläutert.
+Each of these steps is explained in the following sections.
 
-## Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt
+## <a name="step-1:-ensure-that-the-host-system-meets-minimum-virtual-device-requirements"></a>Step 1: Ensure that the host system meets minimum virtual device requirements
 
-Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
+To create a virtual device, you will need:
 
--   Die unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 mit SP1 installierte Hyper-V-Rolle.
+-   The Hyper-V role installed on Windows Server 2012 R2, Windows Server 2012, or Windows Server 2008 R2 SP1.
 
--   Microsoft Hyper-V Manager auf einem Microsoft Windows-Client mit einer Verbindung mit dem Host
+-   Microsoft Hyper-V Manager on a Microsoft Windows client connected to the host.
 
-Sie müssen sicherstellen, dass die zugrunde liegende Hardware (Hostsystem), auf der Sie das virtuelle Gerät erstellen, die folgenden Ressourcen für Ihr virtuelles Gerät zur Verfügung stellen kann:
+You must make sure that the underlying hardware (host system) on which you are creating the virtual device is able to dedicate the following resources to your virtual device:
 
-- Mindestens 4 Kerne
-- Mindestens 8 GB RAM
-- Eine Netzwerkschnittstelle
-- Einen virtuellen Datenträger mit 500 GB für Systemdaten
+- A minimum of 4 cores.
+- At least 8 GB of RAM.
+- One network interface.
+- A 500 GB virtual disk for system data.
 
-## Schritt 2: Bereitstellen eines virtuellen Geräts in Hypervisor
+## <a name="step-2:-provision-a-virtual-device-in-hypervisor"></a>Step 2: Provision a virtual device in hypervisor
 
-Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustellen.
+Perform the following steps to provision a device in your hypervisor.
 
-#### So stellen Sie ein virtuelles Gerät bereit
+#### <a name="to-provision-a-virtual-device"></a>To provision a virtual device
 
-1.  Kopieren Sie das Image des virtuellen Geräts auf den lokalen Datenträger Ihres Windows Server-Hosts. Dies ist das Image (VHD oder VHDX), das Sie über das Azure-Portal heruntergeladen haben. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie ihn später noch benötigen.
+1.  On your Windows Server host, copy the virtual device image to a local drive. This is the image (VHD or VHDX) that you downloaded through the Azure portal. Make a note of the location where you copied the image as you will be using this later in the procedure.
 
-2.  Öffnen Sie den **Server-Manager**. Klicken Sie in der oberen rechten Ecke auf **Extras**, und wählen Sie **Hyper-V-Manager**.
+2.  Open **Server Manager**. In the top right corner, click **Tools** and select **Hyper-V Manager**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image1.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image1.png)
 
-	Wenn Sie Windows Server 2008 R2 ausführen, öffnen Sie den Hyper-V-Manager. Klicken Sie im Server-Manager auf **Rollen > Hyper-V > Hyper-V-Manager**.
+    If you are running Windows Server 2008 R2, open the Hyper-V Manager. In Server Manager, click **Roles > Hyper-V > Hyper-V Manager**.
 
-1.  Klicken Sie im **Hyper-V-Manager** unter „Bereich“ mit der rechten Maustaste auf Ihren Systemknoten, um das Kontextmenü zu öffnen. Klicken Sie dann auf **Neu** > **Virtueller Computer**.
+1.  In **Hyper-V Manager**, in the scope pane, right-click your system node to open the context menu, and then click **New** > **Virtual Machine**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image2.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image2.png)
 
-1.  Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Computer auf **Weiter**.
+1.  On the **Before you begin** page of the New Virtual Machine Wizard, click **Next**.
 
-1.  Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** für Ihr virtuelles Gerät an. Klicken Sie auf **Weiter**.
+1.  On the **Specify name and location** page, provide a **Name** for your virtual device. Click **Next**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image4.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image4.png)
 
-1.  Wählen Sie auf der Seite **Generation angeben** den Imagetyp für das Gerät, und klicken Sie dann auf **Weiter**. Diese Seite wird nicht angezeigt, wenn Sie Windows Server 2008 R2 verwenden.
+1.  On the **Specify generation** page, choose the device image type and then click **Next**. This page doesn't appear if you're using Windows Server 2008 R2.
 
-    * Wählen Sie **Generation 2**, wenn Sie ein VHDX-Image für Windows Server 2012 oder höher heruntergeladen haben.
-    * Wählen Sie **Generation 1**, wenn Sie ein VHD-Image für Windows Server 2008 R2 oder höher heruntergeladen haben.
+    * Choose **Generation 2** if you downloaded a .vhdx image for Windows Server 2012 or later.
+    * Choose **Generation 1** if you downloaded a .vhd image for Windows Server 2008 R2 or later.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image5.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image5.png)
 
-1.  Geben Sie auf der Seite **Speicher zuweisen** einen **Startspeicher** von mindestens **8192 MB** an, aktivieren Sie nicht den dynamischen Arbeitsspeicher, und klicken Sie auf **Weiter**.
+1.  On the **Assign memory** page, specify a **Startup memory** of at least **8192 MB**, don't enable dynamic memory, and then click **Next**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image6.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image6.png)
 
-1.  Geben Sie auf der Seite **Netzwerk konfigurieren** den virtuellen Switch an, der mit dem Internet verbunden ist, und klicken Sie auf **Weiter**.
+1.  On the **Configure networking** page, specify the virtual switch that is connected to the Internet and then click **Next**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image7.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image7.png)
 
-1.  Wählen Sie auf der Seite **Virtuelle Festplatte verbinden** die Option **Vorhandene virtuelle Festplatte verwenden**, geben Sie den Speicherort des Images des virtuellen Geräts an (VHDX oder VHD), und klicken Sie auf **Weiter**.
+1.  On the **Connect virtual hard disk** page, choose **Use an existing virtual hard disk**, specify the location of the virtual device image (.vhdx or .vhd), and then click **Next**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image8m.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image8m.png)
 
-1.  Überprüfen Sie die **Zusammenfassung**, und klicken Sie dann auf **Fertig stellen**, um den virtuellen Computer zu erstellen. Vorher müssen Sie aber noch einige CPU-Kerne und ein zweites Laufwerk hinzufügen.
+1.  Review the **Summary** and then click **Finish** to create the virtual machine. But don't jump ahead yet - you still need to add some CPU cores and a second drive. 
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image9.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image9.png)
 
-1.  Sie benötigen vier Kerne, um die Mindestanforderungen zu erfüllen. Gehen Sie zum Hinzufügen von virtuellen Prozessoren wie folgt vor: Wählen Sie im Fenster **Hyper-V-Manager** Ihr Hostsystem aus, und suchen Sie im rechten Bereich in der Liste **Virtuelle Computer** nach dem virtuellen Computer, den Sie gerade erstellt haben. Klicken Sie mit der rechten Maustaste auf den ausgewählten Namen der Maschine, und wählen Sie **Einstellungen**.
+1.  To meet the minimum requirements, you will need 4 cores. To add virtual processors, with your host system selected in the **Hyper-V Manager** window, in the right-pane under the list of **Virtual Machines**, locate the virtual machine you just created. Select and right-click the machine name and select **Settings**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image10.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image10.png)
 
-1.  Klicken Sie auf der Seite **Einstellungen** im linken Bereich auf **Prozessor**. Legen Sie im rechten Bereich die **Anzahl virtueller Prozessoren** auf 4 (oder mehr) fest. Klicken Sie auf **Übernehmen**.
+1.  On the **Settings** page, in the left-pane, click **Processor**. In the right-pane, set **number of virtual processors** to 4 (or more). Click **Apply**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image11.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image11.png)
 
-1.  Um die Mindestanforderungen zu erfüllen, müssen Sie auch einen virtuellen Datenträger mit 500 GB hinzufügen. Auf der Seite **Einstellungen**:
+1.  To meet the minimum requirements, you also need to add a 500 GB virtual data disk. In the **Settings** page:
 
-    1.  Wählen Sie im linken Bereich die Option **SCSI-Controller**.
-    2.  Wählen Sie im rechten Bereich die Option **Festplatte**, und klicken Sie auf **Hinzufügen**.
+    1.  In the left pane, select **SCSI Controller**.
+    2.  In the right pane, select **Hard Drive,** and click **Add**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image12.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image12.png)
 
-1.  Wählen Sie auf der Seite **Festplatte** die Option **Virtuelle Festplatte**, und klicken Sie auf **Neu**. Der **Assistent für neue virtuelle Festplatten** wird gestartet.
+1.  On the **Hard drive** page, select the **Virtual hard disk** option and click **New**. This will start the **New Virtual Hard Disk Wizard**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image13.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image13.png)
 
-1.  Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Festplatten auf **Weiter**.
+1.  On the **Before you begin** page of the New Virtual Hard Disk Wizard, click **Next**.
 
-1.  Übernehmen Sie auf der Seite **Datenträgerformat auswählen** die Standardoption **VHDX** für das Format. Klicken Sie auf **Weiter**. Dieser Bildschirm wird nicht angezeigt, wenn Sie Windows Server 2012 R2 oder Windows Server 2008 R2 ausführen.
+1.  On the **Choose Disk Format page**, accept the default option of **VHDX** format. Click **Next**. You won't see this screen if you're running Windows Server 2012 R2 or Windows Server 2008 R2.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image15.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image15.png)
 
-1.  Legen Sie auf der Seite **Datenträgertyp auswählen** den Datenträgertyp für die virtuelle Festplatte auf **Dynamisch erweiterbar** fest (empfohlen). Sie können auch die Option **Feste Größe** wählen, aber dies ist unter Umständen mit einer langen Wartezeit verbunden. Die Verwendung der Option **Differenzierend** ist nicht zu empfehlen. Klicken Sie auf **Weiter**. Beachten Sie, dass die Option **Dynamisch erweiterbar** der Standardwert in Windows Server 2012 R2 und Windows Server 2012 ist. In Windows Server 2008 R2 lautet die Standardoption **Feste Größe**.
+1.  On the **Choose Disk Type page**, set virtual hard disk type as **Dynamically expanding** (recommended). If you choose **Fixed size** disk, it will also work but you may need to wait a long time. We recommend that you do not use the **Differencing** option. Click **Next**. Note that **Dynamically expanding** is the default in Windows Server 2012 R2 and Windows Server 2012. In Windows Server 2008 R2, the default is **Fixed size**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image16.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image16.png)
 
-1.  Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** und einen **Speicherort** (z.B. per Durchsuchen) für den Datenträger an. Klicken Sie auf **Weiter**.
+1.  On the **Specify Name and Location** page, provide a **name** as well as **location** (you can browse to one) for the data disk. Click **Next**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image17.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image17.png)
 
-1.  Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen**, und geben Sie als Größe **500 GB** (oder mehr) an. Klicken Sie auf **Weiter**.
+1.  On the **Configure Disk** page, select the option **Create a new blank virtual hard disk** and specify the size as **500 GB** (or more). Click **Next**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image18.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image18.png)
 
-1.  Überprüfen Sie auf der Seite **Zusammenfassung** die Details Ihres virtuellen Datenträgers, und klicken Sie zum Erstellen des Datenträgers auf **Fertig stellen**, wenn alles korrekt ist. Der Assistent wird geschlossen, und Ihrem Computer wird eine virtuelle Festplatte hinzugefügt.
+1.  On the **Summary** page, review the details of your virtual data disk and if satisfied, click **Finish** to create the disk. The wizard will close and a virtual hard disk will be added to your machine.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image19.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image19.png)
 
-2.  Sie gelangen zurück zur Seite **Einstellungen**. Klicken Sie auf **OK**, um die Seite **Einstellungen** zu schließen und zum Hyper-V-Manager-Fenster zurückzukehren.
+2.  You will return to the **Settings** page. Click **OK** to close the **Settings** page and return to Hyper-V Manager window.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image20.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image20.png)
 
-## Schritt 3: Starten des virtuellen Geräts und Abrufen der IP-Adresse
+## <a name="step-3:-start-the-virtual-device-and-get-the-ip"></a>Step 3: Start the virtual device and get the IP
 
-Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und eine Verbindung dafür herzustellen.
+Perform the following steps to start your virtual device and connect to it.
 
-#### So starten Sie das virtuelle Gerät
+#### <a name="to-start-the-virtual-device"></a>To start the virtual device
 
-1.  Starten Sie das virtuelle Gerät.
+1.  Start the virtual device.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image21.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image21.png)
 
-1.  Wenn das Gerät ausgeführt wird, wählen Sie das Gerät aus, klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden**.
+1.  After the device is running, select the device, right click, and select **Connect**.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image22.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image22.png)
 
-1.  Unter Umständen müssen Sie 5 bis 10 Minuten warten, bis das Gerät bereit ist. In der Konsole wird eine Statusmeldung angezeigt, die den Fortschritt angibt. Wenn das Gerät bereit ist, wählen Sie **Aktion**. Drücken Sie `Ctrl + Alt + Delete`, um sich am virtuellen Gerät anzumelden. Der Standardbenutzer lautet *StorSimpleAdmin*, und das Standardkennwort lautet *Password1*.
+1.  You may have to wait 5-10 minutes for the device to be ready. A status message is displayed on the console to indicate the progress. After the device is ready, go to **Action**. Press `Ctrl + Alt + Delete` to log into the virtual device. The default user is *StorSimpleAdmin* and the default password is *Password1*.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image23.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image23.png)
 
-1.  Aus Sicherheitsgründen gilt das Kennwort des Geräteadministrators nur für die erste Anmeldung. Sie werden aufgefordert, das Kennwort zu ändern.
+1.  For security reasons, the device administrator password expires at the first log on. You will be prompted to change the password.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image24.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image24.png)
 
-	Geben Sie ein Kennwort ein, das mindestens acht Zeichen lang ist. Das Kennwort muss mindestens drei der folgenden vier Anforderungen erfüllen: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen. Geben Sie das Kennwort erneut ein, um es zu bestätigen. Sie werden benachrichtigt, dass das Kennwort geändert wurde.
+    Enter a password that contains at least 8 characters. The password must satisfy at least 3 out of the following 4 requirements: uppercase, lowercase, numeric, and special characters. Reenter the password to confirm it. You will be notified that the password has changed.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image25.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image25.png)
 
-1.  Nachdem das Kennwort erfolgreich geändert wurde, wird das virtuelle Gerät unter Umständen neu gestartet. Warten Sie, bis das Gerät gestartet wurde.
+1.  After the password is successfully changed, the virtual device may restart. Wait for the device to start.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image26.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image26.png)
 
- 	Die Windows PowerShell-Konsole des Geräts wird zusammen mit der Statusanzeige eingeblendet.
+    The Windows PowerShell console of the device will be displayed along with a progress bar.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image27.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image27.png)
 
-1.  Die Schritte 6 bis 8 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Falls Sie sich in einer DHCP-Umgebung befinden, sollten Sie diese Schritte überspringen und mit Schritt 9 fortfahren. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird der folgende Bildschirm angezeigt.
+1.  Steps 6-8 only apply when booting up in a non DHCP environment. If you are in a DHCP environment, then skip these steps and go to step 9. If you booted up your device in non DHCP environment, you will see the following screen.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image28m.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image28m.png)
 
- 	Sie müssen das Netzwerk jetzt konfigurieren.
+    You will now need to configure the network.
 
-1.  Verwenden Sie den Befehl `Get-HcsIpAddress`, um die Netzwerkschnittstellen aufzulisten, die auf Ihrem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `Ethernet` zugewiesen.
+1.  Use the `Get-HcsIpAddress` command to list the network interfaces enabled on your virtual device. If your device has a single network interface enabled, the default name assigned to this interface is `Ethernet`.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image29m.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image29m.png)
 
-1.  Verwenden Sie das `Set-HcsIpAddress`-Cmdlet, um das Netzwerk zu konfigurieren. Unten ist ein Beispiel angegeben:
+1.  Use the `Set-HcsIpAddress` cmdlet to configure the network. An example is shown below:
 
- 	`Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
+    `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
- 	![](./media/storsimple-ova-deploy2-provision-hyperv/image30.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image30.png)
 
-1.  Nachdem die anfängliche Einrichtung abgeschlossen und das Gerät gestartet wurde, wird der Bannertext für das Gerät angezeigt. Notieren Sie sich die IP-Adresse und die URL, die im Bannertext für die Verwaltung des Geräts angezeigt wird. Sie verwenden diese IP-Adresse zum Herstellen der Verbindung mit der Web-UI Ihres virtuellen Geräts und zum Durchführen des lokalen Setups und der Registrierung.
+1.  After the initial setup is complete and the device has booted up, you will see the device banner text. Make a note of the IP address and the URL displayed in the banner text to manage the device. You will use this IP address to connect to the web UI of your virtual device and complete the local setup and registration.
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image31m.png)
+    ![](./media/storsimple-ova-deploy2-provision-hyperv/image31m.png)
 
 
 
-1. (Optional) Führen Sie diesen Schritt nur aus, wenn Sie Ihr Gerät in der Government-Cloud bereitstellen. Aktivieren Sie jetzt den FIPS-Modus (Federal Information Processing Standard) auf Ihrem Gerät. Der FIPS 140-Standard definiert kryptographische Algorithmen, die zum Schutz vertraulicher Daten in Computersystemen der US-Regierung zugelassen sind.
-	1. Führen Sie das folgende Cmdlet aus, um den FIPS-Modus zu aktivieren:
+1. (Optional) Perform this step only if you are deploying your device in the Government Cloud. You will now enable the United States Federal Information Processing Standard (FIPS) mode on your device. The FIPS 140 standard defines cryptographic algorithms approved for use by US Federal government computer systems for the protection of sensitive data.
+    1. To enable the FIPS mode, run the following cmdlet:
 
-		`Enter-HcsFIPSMode`
+        `Enter-HcsFIPSMode`
 
-	2. Starten Sie das Gerät neu, nachdem Sie den FIPS-Modus aktiviert haben, damit die kryptografischen Überprüfungen greifen.
+    2. Reboot your device after you have enabled the FIPS mode so that the cryptographic validations take effect.
 
-		> [AZURE.NOTE] Sie können auf Ihrem Gerät den FIPS-Modus entweder aktivieren oder deaktivieren. Ein ständiger Wechsel des Geräts vom FIPS-Modus in den Nicht-FIPS-Modus und umgekehrt wird nicht unterstützt.
+        > [AZURE.NOTE] You can either enable or disable FIPS mode on your device. Alternating the device between FIPS and non-FIPS mode is not supported.
 
-Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit sie über ausreichende Ressourcen zum Erfüllen der Mindestanforderungen verfügt. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+If your device does not meet the minimum configuration requirements, you will see an error in the banner text (shown below). You will need to modify the device configuration so that it has adequate resources to meet the minimum requirements. You can then restart and connect to the device. Refer to the minimum configuration requirements in [Step 1: Ensure that the host system meets minimum virtual device requirements](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-ova-deploy2-provision-hyperv/image32.png)
 
-Falls bei der anfänglichen Konfiguration über die lokale Webbenutzeroberfläche andere Fehler auftreten, helfen Ihnen die folgenden Workflows unter [Verwaltung des StorSimple Virtual Array mithilfe der Web-UI](storsimple-ova-web-ui-admin.md) weiter.
+If you face any other error during the initial configuration using the local web UI, refer to the following workflows in [Manage your StorSimple Virtual Array using the local web UI](storsimple-ova-web-ui-admin.md).
 
--   Ausführen von Diagnosetests zum [Beheben von Setup-Fehlern für die Web-UI](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)
+-   Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 
--   [Generieren des Protokollpakets und Anzeigen von Protokolldateien](storsimple-ova-web-ui-admin.md#generate-a-log-package)
+-   [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-![Video-Symbol](./media/storsimple-ova-deploy2-provision-hyperv/video_icon.png) **Video verfügbar**
+![video icon](./media/storsimple-ova-deploy2-provision-hyperv/video_icon.png)  **Video available**
 
-Sehen Sie sich das Video an, in dem die Bereitstellung eines StorSimple Virtual Array in Hyper-V beschrieben wird.
+Watch the video to see how you can provision a StorSimple Virtual Array in Hyper-V.
 
 > [AZURE.VIDEO create-a-storsimple-virtual-array]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
--   [Einrichten des StorSimple Virtual Array als Dateiserver](storsimple-ova-deploy3-fs-setup.md)
+-   [Set up your StorSimple Virtual Array as a file server](storsimple-ova-deploy3-fs-setup.md)
 
--   [Einrichten des StorSimple Virtual Array als iSCSI-Server](storsimple-ova-deploy3-iscsi-setup.md)
+-   [Set up your StorSimple Virtual Array as an iSCSI server](storsimple-ova-deploy3-iscsi-setup.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

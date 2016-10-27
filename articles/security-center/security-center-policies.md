@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Festlegen von Sicherheitsrichtlinien in Azure Security Center | Microsoft Azure"
-   description="Dieses Dokument enthält Informationen dazu, wie Sie Sicherheitsrichtlinien in Azure Security Center konfigurieren können."
+   pageTitle="Set security policies in Azure Security Center | Microsoft Azure"
+   description="This document helps you to configure security policies in Azure Security Center."
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,95 +16,100 @@
    ms.date="09/22/2016"
    ms.author="yurid"/>
 
-# Festlegen von Sicherheitsrichtlinien in Azure Security Center
-Dieses Dokument hilft Ihnen dabei, Sicherheitsrichtlinien in Security Center zu konfigurieren. Es werden die erforderlichen Schritte zum Ausführen dieser Aufgabe beschrieben.
 
-## Was sind Sicherheitsrichtlinien?
-In einer Sicherheitsrichtlinie wird der Satz von Sicherheitsmechanismen definiert, die für Ressourcen in dem angegebenen Abonnement oder der angegebenen Ressourcengruppe zu empfehlen sind. In Security Center definieren Sie Richtlinien für Ihre Azure-Abonnements oder -Ressourcengruppen gemäß den Sicherheitsanforderungen Ihres Unternehmens sowie gemäß der Art von Anwendungen oder der Vertraulichkeit der Daten in den einzelnen Abonnements.
+# <a name="set-security-policies-in-azure-security-center"></a>Set security policies in Azure Security Center
+This document helps you to configure security policies in Security Center by guiding you through the necessary steps to perform this task.
 
-So gelten beispielsweise für Ressourcen, die zu Entwicklungs- oder Testzwecken verwendet werden, unter Umständen andere Sicherheitsanforderungen als für Ressourcen, die für Produktionsanwendungen verwendet werden. Ebenso kann für Anwendungen mit reglementierten Daten, etwa personenbezogene Informationen (Personally Identifiable Information), eine höhere Sicherheitsstufe erforderlich sein. Die in Azure Security Center aktivierten Sicherheitsrichtlinien werden dazu verwendet, Sicherheitsempfehlungen und die Überwachung zu steuern, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen entschärfen können. Weitere Informationen dazu, wie Sie die für Sie am besten geeignete Option ermitteln können, finden Sie unter [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md).
+## <a name="what-are-security-policies?"></a>What are security policies?
+A security policy defines the set of controls, which are recommended for resources within the specified subscription or resource group. In Security Center, you define policies for your Azure subscriptions or resource group according to your company security needs and the type of applications or sensitivity of the data in each subscription.
 
-## Festlegen von Sicherheitsrichtlinien für Abonnements
+For example, resources that are used for development or test might have different security requirements from resources that are used for production applications. Likewise, applications that use regulated data like personally identifiable information might require a higher level of security. Security policies that are enabled in Azure Security Center drive security recommendations and monitoring to help you identify potential vulnerabilities and mitigate threats. Read [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) for more information about how to determine the option that is appropriate for you.
 
-Sie können Sicherheitsrichtlinien für jedes Abonnement oder jede Ressourcengruppe konfigurieren. Damit Sie eine Sicherheitsrichtlinie ändern können, müssen Sie ein Besitzer oder Mitwirkender dieses Abonnements sein. Melden Sie sich am Azure-Portal an, und führen Sie die folgenden Schritte aus, um Sicherheitsrichtlinien in Security Center zu konfigurieren:
+## <a name="set-security-policies-for-subscriptions"></a>Set security policies for subscriptions
 
-1. Klicken Sie auf dem Security Center-Dashboard auf die Kachel **Richtlinie**.
+You can configure security policies for each subscription or resource group. To modify a security policy, you must be an owner or contributor of that subscription. Sign in to the Azure portal and follow the succeeding steps to configure security polices in Security Center:
 
-2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Richtlinie pro Abonnement oder Ressourcengruppe festlegen**, das geöffnet wird, das Abonnement aus, für das Sie die Sicherheitsrichtlinie aktivieren möchten. Wenn Sie die Sicherheitsrichtlinie nicht für das gesamte Abonnement, sondern nur für eine Ressourcengruppe aktivieren möchten, scrollen Sie zum nächsten Abschnitt, in dem das Einrichten von Sicherheitsrichtlinien für Ressourcengruppen erläutert wird.
+1. Click the **Policy** tile in the Security Center dashboard.
 
-    ![Definieren von Richtlinien](./media/security-center-policies/security-center-policies-fig1-ga.png)
+2. In the **Security Policy - Define policy per subscription or resource group** blade that opens, select the subscription on which you want to enable the security policy. If you prefer to enable the security policy for a resource group instead of the entire subscription, scroll down to the next section that talks about how to set up security policies for resource groups.
 
-3. Das Blatt **Sicherheitsrichtlinie** für das ausgewählte Abonnement wird mit einer Reihe von Optionen geöffnet. Die Optionen sind im folgenden Screenshot dargestellt:
+    ![Defining policy](./media/security-center-policies/security-center-policies-fig1-ga.png)
 
-    ![Aktivieren von Datensammlung](./media/security-center-policies/security-center-policies-fig2-ga.png)
+3. The **Security policy** blade for the selected subscription opens with a set of options like the options in the following screenshot:
 
-	Auf diesem Blatt stehen folgende Optionen zur Verfügung:
-	- **Präventionsrichtlinie**: Verwenden Sie diese Option, um Richtlinien auf Abonnement- oder Ressourcengruppenebene zu konfigurieren.
-	- **E-Mail-Benachrichtigung**: Verwenden Sie diese Option zum Konfigurieren einer E-Mail-Benachrichtigung, die beim ersten täglichen Auftreten einer Warnung und für Warnungen mit hohem Schweregrad gesendet wird. E-Mail-Optionen können nur für Abonnementrichtlinien konfiguriert werden. Weitere Informationen zum Konfigurieren einer E-Mail-Benachrichtigung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](security-center-provide-security-contact-details.md).
-	- **Tarif**: Verwenden Sie diese Option, um für die Tarifauswahl ein Upgrade durchzuführen. Weitere Informationen zu den Preisoptionen finden Sie auf der [Security Center-Seite](https://azure.microsoft.com/pricing/details/security-center/).
+    ![Enabling data collection](./media/security-center-policies/security-center-policies-fig2-ga.png)
+
+    The available options in this blade are:
+    - **Prevention policy**: Use this option to configure policies per subscription or resource group.  
+    - **Email notification**: Use this option to configure an email notification that's sent on the first daily occurrence of an alert and for high severity alerts. Email preferences can be configured only for subscription policies. Read [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) for more information about how to configure an email notification.
+    - **Pricing tier**: Use this option to upgrade the pricing tier selection. See [Security Center page](https://azure.microsoft.com/pricing/details/security-center/) to learn more about pricing options.
 
 
-4.  Stellen Sie sicher, dass die Option **Datensammlung für virtuelle Computer** auf **Ein** festgelegt ist. Diese Option aktiviert automatische Protokollsammlung für vorhandene und neue Ressourcen.
+4.  Make sure that **Collect data from virtual machines** options is **On**. This option enables automatic log collection for existing and new resources.
 
-    >[AZURE.NOTE] Es empfiehlt sich, die Datensammlung für Ihre gesamten Abonnements zu aktivieren, damit die Sicherheitsüberwachung für alle vorhandenen und neuen virtuellen Computer verfügbar ist. Wird Datensammlung aktiviert, wird der Überwachungs-Agent installiert. Wenn Sie die Datensammlung von diesem Standort momentan nicht aktivieren möchten, können Sie dies später über die Ansichten **Integrität** und **Empfehlungen** nachholen. Sie können die Datensammlung auch nur für das Abonnement oder für ausgewählte virtuelle Computer aktivieren. Weitere Informationen zu den unterstützten virtuellen Computern finden Sie unter [Azure Security Center – häufig gestellte Fragen](security-center-faq.md).
+    >[AZURE.NOTE] We recommend that you turn on data collection for each of your subscriptions to ensure that security monitoring is available for all existing and new VMs. Enabling data collection installs the monitoring agent. If you don't want to turn on data collection now from this location, you can do it later from the **Health** and **Recommendations** views. You can also enable data collection for only the subscription or for select VMs. Refer to the [Azure Security Center FAQ](security-center-faq.md) to know more about the supported VMs.
 
-5. Wenn das Speicherkonto noch nicht konfiguriert wurde, wird unter Umständen eine Warnung wie im folgenden Screenshot angezeigt, wenn Sie die Option **Sicherheitsrichtlinie** öffnen:
+5. If your storage account is not configured yet, you might see a warning like the one in the following screenshot when you open **Security Policy**:
 
-    ![Speicherauswahl](./media/security-center-policies/security-center-policies-fig2.png)
+    ![Storage selection](./media/security-center-policies/security-center-policies-fig2.png)
 
-6. Sollte diese Warnung angezeigt werden, klicken Sie auf die angegebene Option und wählen die Region aus, wie im folgenden Screenshot zu sehen:
+6. If you see this warning, click this option and select the region as shown in the following screenshot:
 
-    ![Speicherauswahl](./media/security-center-policies/security-center-policies-fig3-ga.png)
+    ![Storage selection](./media/security-center-policies/security-center-policies-fig3-ga.png)
 
-7. Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto aus, in dem Daten gespeichert werden, die von diesen virtuellen Computern gesammelt wurden. Dies macht es einfach, Daten zu Datenschutz- und Datenhoheitszwecken in demselben geografischen Gebiet zu speichern. Nachdem Sie entschieden haben, welche Region verwendet werden soll, wählen Sie die Region und dann das Speicherkonto aus.
+7. For each region in which you have running virtual machines, choose the storage account where data that's collected from those virtual machines is stored. This makes it easy to keep data in the same geographic area for privacy and data sovereignty purposes. After you decide the region that you will use, select the region, and then select the storage account.
 
-8. Klicken Sie auf dem Blatt **Speicherkonten auswählen** auf **OK**.
+8. In the **Choose storage accounts** blade, click **OK**.
 
-    > [AZURE.NOTE] Bei Bedarf können Sie Daten für virtuelle Computer in verschiedenen Regionen unter einem zentralen Speicherkonto aggregieren. Weitere Informationen hierzu finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
+    > [AZURE.NOTE] If you prefer, you can aggregate data in one central storage account for virtual machines that are in various regions. Refer to the [Azure Security Center FAQ](security-center-faq.md) for more information.
 
-9. Klicken Sie auf dem Blatt **Sicherheitsrichtlinie** auf **Ein**, um die Sicherheitsempfehlungen zu aktivieren, die Sie für dieses Abonnement verwenden möchten. Klicken Sie auf **Präventionsrichtlinie**, um Optionen wie im folgenden Screenshot anzuzeigen:
+9. In the **Security Policy** blade, click **On** to enable the security recommendations that you want to use on this subscription. Click **Prevention policy** to see options like those in the following screenshot:
 
-	![Auswählen der Sicherheitsrichtlinien](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
+    ![Selecting the security policies](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
 
-Die folgende Tabelle gibt Aufschluss über die einzelnen Optionen:
+Use the following table as a reference to understand each option:
 
-| Richtlinie | Zustand „Ein“ |
+| Policy | When state is on |
 |----- |-----|
-| Systemupdates | Ruft eine tägliche Liste mit verfügbaren Sicherheitsupdates und kritischen Updates von Windows Update oder Windows Server Update Services ab. Die abgerufene Liste richtet sich nach dem Dienst, der für den virtuellen Computer konfiguriert wurde. Darin wird empfohlen, die fehlenden Updates anzuwenden. Bei Linux-Systemen wird für die Richtlinie das von der Distribution bereitgestellte Paketverwaltungssystem genutzt, um Pakete mit verfügbaren Updates zu ermitteln. Außerdem werden Sicherheitsupdates und kritische Updates für virtuelle [Azure Cloud Services](./cloud-services/cloud-services-how-to-configure.md)-Computer ermittelt. |
-| Sicherheitsrisiken des Betriebssystems | Führt eine tägliche Analyse von Betriebssystemkonfigurationen durch, um Probleme zu ermitteln, die mit einer Anfälligkeit des virtuellen Computers für Angriffe verbunden sind. Außerdem werden in der Richtlinie Konfigurationsänderungen empfohlen, um diesen Sicherheitsrisiken zu begegnen. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). |
-| Endpoint Protection | Empfiehlt die Bereitstellung von Endpoint Protection für alle virtuellen Windows-Computer, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen.|
-| Datenträgerverschlüsselung | Empfiehlt die Aktivierung der Datenträgerverschlüsselung auf allen virtuellen Computern, um den Datenschutz im Ruhezustand zu optimieren.
-| Netzwerksicherheitsgruppen | Empfiehlt die Konfiguration von [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md), um den eingehenden und ausgehenden Datenverkehr für VMs mit öffentlichen Endpunkten zu steuern. Netzwerksicherheitsgruppen, die für ein Subnetz konfiguriert sind, werden für alle Netzwerkschnittstellen der virtuellen Computer übernommen, sofern nichts anderes angegeben ist. Zusätzlich zur Überprüfung, ob eine Netzwerksicherheitsgruppe konfiguriert wurde, bewertet diese Richtlinie Sicherheitsregeln für eingehende Daten, um Regeln zu identifizieren, die eingehenden Datenverkehr zulassen. |
-| Web Application Firewall | Empfiehlt die Bereitstellung einer Web Application Firewall auf virtuellen Computern, wenn eine der folgenden Bedingungen erfüllt ist:</br></br>[Öffentliche IP auf Instanzebene](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) wird verwendet, und die Sicherheitsregeln für eingehenden Datenverkehr für die zugeordnete Netzwerksicherheitsgruppe sind so konfiguriert, dass der Zugriff auf den Port 80/443 zugelassen wird.</br></br>Es wird eine IP-Adresse mit Lastenausgleich verwendet, und die zugehörigen Regeln für Lastenausgleich und eingehenden NAT-Datenverkehr (Netzwerkadressübersetzung) sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird. Weitere Informationen finden Sie unter [Unterstützung des Azure-Ressourcen-Managers für Load Balancer](../load-balancer/load-balancer-arm.md). |
-| Firewall der nächsten Generation | Erweitert den Schutz von Netzwerken über die in Azure integrierten Netzwerksicherheitsgruppen hinaus. Security Center erkennt Bereitstellungen, für die eine Firewall der nächsten Generation empfohlen wird, und ermöglicht Ihnen die Bereitstellung eines virtuellen Geräts. |
-| SQL-Überwachung und -Bedrohungserkennung | Empfiehlt die Aktivierung der Zugriffsüberwachung für Azure-Datenbanken zur Erfüllung von Complianceanforderungen sowie die Aktivierung der erweiterten Bedrohungserkennung zu Untersuchungszwecken. |
-| Transparent Data Encryption für SQL | Empfiehlt, dass die Verschlüsselung im Ruhezustand für Ihre Azure SQL-Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien aktiviert wird. So können Ihre Daten auch dann nicht gelesen werden, wenn unberechtigt darauf zugegriffen wird. |
-| Sicherheitsrisikobewertung | Empfiehlt die Installation einer Lösung zur Sicherheitsrisikobewertung auf dem virtuellen Computer. |
+| System updates | Retrieves a daily list of available security and critical updates from Windows Update or Windows Server Update Services. The retrieved list depends on the service that's configured for that virtual machine and recommends that the missing updates be applied. For Linux systems, the policy uses the distro-provided package management system to determine packages that have available updates. It also checks for security and critical updates from [Azure Cloud Services](./cloud-services/cloud-services-how-to-configure.md) virtual machines. |
+| OS vulnerabilities | Analyzes operating system configurations daily to determine issues that could make the virtual machine vulnerable to attack. The policy also recommends configuration changes to address these vulnerabilities. See the [list of recommended baselines](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) for more information about the specific configurations that are being monitored. |
+| Endpoint protection | Recommends endpoint protection to be provisioned for all Windows virtual machines to help identify and remove viruses, spyware, and other malicious software.|
+| Disk encryption | Recommends enabling disk encryption in all virtual machines to enhance data protection at rest.
+| Network security groups | Recommends that [network security groups](../virtual-network/virtual-networks-nsg.md) be configured to control inbound and outbound traffic to VMs that have public endpoints. Network security groups that are configured for a subnet will be inherited by all virtual machine network interfaces unless otherwise specified. In addition to checking that a network security group has been configured, this policy assesses inbound security rules to identify rules that allow incoming traffic. |
+| Web application firewall | Recommends that a web application firewall be provisioned on virtual machines when either of the following is true:</br></br>[Instance-level public IP](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) is used and the inbound security rules for the associated network security group are configured to allow access to port 80/443.</br></br>Load-balanced IP is used and the associated load balancing and inbound network address translation (NAT) rules are configured to allow access to port 80/443. (For more information, see [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md). |
+| Next generation firewall | Extends network protections beyond network security groups, which are built into Azure. Security Center will discover deployments for which a next generation firewall is recommended and enable you to provision a virtual appliance. |
+| SQL auditing & Threat detection | Recommends that auditing of access to Azure Database be enabled for compliance and also advanced threat detection, for investigation purposes. |
+| SQL transparent data encryption | Recommends that encryption at rest be enabled for your Azure SQL Database, associated backups, and transaction log files. Even if your data is breached, it will not be readable. |
+| Vulnerability assessment | Recommends that you install a vulnerability assessment solution on your VM. |
 
-Klicken Sie dem Konfigurieren aller Optionen auf dem Blatt **Sicherheitsrichtlinie**, das die Empfehlungen enthält, auf **OK**, und klicken Sie anschließend auf dem Blatt **Sicherheitsrichtlinie**, das die ursprünglichen Einstellungen enthält, auf **Speichern**.
+After you configure all options, click **OK** in the **Security Policy** blade that has the recommendations, and then click **Save** in the **Security Policy** blade that  has the initial settings.
 
-## Festlegen von Sicherheitsrichtlinien für Ressourcengruppen
+## <a name="set-security-policies-for-resource-groups"></a>Set security policies for resource groups
 
-Wenn Sie Ihre Sicherheitsrichtlinien pro Ressourcengruppe konfigurieren möchten, gehen Sie dazu wie beim Einrichten von Sicherheitsrichtlinien für Abonnements vor. Der Hauptunterschied besteht darin, dass Sie den Abonnementnamen erweitern und die Ressourcengruppe auswählen müssen, für die Sie die eindeutige Sicherheitsrichtlinie konfigurieren möchten:
+If you prefer to configure your security policies per resource group, the steps are like those that you use to set up security policies for subscriptions. The main difference is that you will need to expand the subscription name and select the resource group for which you want to configure the unique security policy:
 
-![Auswahl der Ressourcengruppe](./media/security-center-policies/security-center-policies-fig5-ga.png)
+![Resource group selection](./media/security-center-policies/security-center-policies-fig5-ga.png)
 
-Nach dem Auswählen der Ressourcengruppe wird das Blatt **Sicherheitsrichtlinie** geöffnet. In der Standardeinstellung ist die Option **Vererbung** aktiviert. Dies bedeutet, dass alle Sicherheitsrichtlinien für diese Ressourcengruppe von der Abonnementebene geerbt werden. Sie können diese Konfiguration ändern, falls Sie eine benutzerdefinierte Sicherheitsrichtlinie für eine Ressourcengruppe festlegen möchten. In diesem Fall müssen Sie **Eindeutig** auswählen und entsprechende Änderungen für die Option **Präventionsrichtlinie** vornehmen.
+After you select the resource group, the **Security policy** blade opens. By default, the **Inheritance** option is enabled. This means that all security policies for this resource group are inherited from the subscription level. You can change this configuration in case you want a custom security policy for a resource group. If that's the case, you need to select **Unique** and make the changes under the **Prevention policy** option.
 
-![Sicherheitsrichtlinie pro Ressourcengruppe](./media/security-center-policies/security-center-policies-fig6-ga.png)
+![Security policy per resource group](./media/security-center-policies/security-center-policies-fig6-ga.png)
 
-> [AZURE.NOTE] Bei einem Konflikt zwischen der Richtlinie auf Abonnementebene und der Richtlinie auf Ressourcengruppenebene hat die Richtlinie auf Ressourcengruppenebene Vorrang.
+> [AZURE.NOTE] In case of a conflict between subscription-level policy and resource group-level policy, the resource group-level policy takes precedence.
 
 
-## Siehe auch
+## <a name="see-also"></a>See also
 
-In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure Security Center konfigurieren können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
+In this document, you learned how to configure security policies in Azure Security Center. To learn more about Azure Security Center, see the following:
 
-- [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md) Hier erfahren Sie, wie Sie die Entwurfsaspekte in Bezug auf die Einführung von Azure Security Center planen und verstehen.
-- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
-- [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) Enthält häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/) Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+- [Azure Security Center planning and operations guide](security-center-planning-and-operations-guide.md). Learn how to plan and understand the design considerations to adopt Azure Security Center.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md). Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md). Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md). Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md). Find frequently asked questions about using the service.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/). Find blog posts about Azure security and compliance.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,124 +1,129 @@
 <properties
-	pageTitle="Verwalten von Gruppen in Azure Active Directory | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie Gruppen erstellen und verwalten, um Azure-Benutzer mithilfe von Azure Active Directory zu verwalten."
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
+    description="How to create and manage groups to manage Azure users using Azure Active Directory."
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/29/2016"
-	ms.author="curtand"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/29/2016"
+    ms.author="curtand"/>
 
 
-# Verwalten von Gruppen in Azure Active Directory
+
+# <a name="managing-groups-in-azure-active-directory"></a>Managing groups in Azure Active Directory
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](active-directory-groups-create-azure-portal.md)
-- [Klassisches Azure-Portal](active-directory-accessmanagement-manage-groups.md)
+- [Azure portal](active-directory-groups-create-azure-portal.md)
+- [Azure classic portal](active-directory-accessmanagement-manage-groups.md)
 - [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
 
 
-Ein Feature der Benutzerverwaltung von Azure Active Directory (Azure AD) ist die Möglichkeit, Gruppen mit Benutzern zu erstellen. Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. gleichzeitiges Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer. Außerdem können Sie Gruppen verwenden, um folgenden Ressourcen Berechtigungen zuzuweisen:
+One of the features of Azure Active Directory (Azure AD) user management is the ability to create groups of users. You use a group to perform management tasks such as assigning licenses or permissions to a number of users at once. You can also use groups to assign access permission to
 
-- Ressourcen, z.B. Objekte im Verzeichnis
-- Verzeichnisexterne Ressourcen, z.B. SaaS-Anwendungen, Azure-Dienste, SharePoint-Websites oder lokale Ressourcen
+- Resources such as objects in the directory
+- Resources external to the directory such as SaaS applications, Azure services, SharePoint sites, or on-premises resources
 
-Darüber hinaus kann ein Ressourcenbesitzer den Zugriff auf eine Ressource auch für eine Azure AD-Gruppe zuweisen, die sich im Besitz einer anderen Person befindet. Hierbei wird den Mitgliedern dieser Gruppe Zugriff auf die Ressource gewährt. Der Besitzer der Gruppe verwaltet dann die Mitgliedschaft in der Gruppe. Der Besitzer der Ressource delegiert quasi die Berechtigung zum Zuweisen von Benutzern zu dieser Gruppe an den Besitzer der Gruppe.
+In addition, a resource owner can also assign access to a resource to an Azure AD group owned by someone else. This assignment grants the members of that group access to the resource. Then, the owner of the group manages membership in the group. Effectively, the resource owner delegates to the owner of the group the permission to assign users to their resource.
 
-## Wie erstelle ich eine Gruppe?
+## <a name="how-do-i-create-a-group?"></a>How do I create a group?
 
-Je nach den Diensten, die von Ihrer Organisation abonniert wurden, können Sie auf eine der folgenden Arten eine Gruppe erstellen:
-- Klassisches Azure-Portal
-- Office 365-Kontoportal
-- Windows Intune-Kontoportal
+Depending on the services to which your organization has subscribed, you can create a group using one of the following:
+- the Azure classic portal
+- the Office 365 account portal
+- the Windows Intune account portal
 
-Hier werden die Aufgaben beschrieben, die im klassischen Azure-Portal durchgeführt werden. Weitere Informationen zur Verwendung von anderen Portalen als dem Azure-Portal zum Verwalten Ihres Azure AD-Verzeichnisses finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](active-directory-administer.md).
+We'll describe tasks as performed in the Azure classic portal. For more information about using non-Azure portals to manage your Azure AD directory, see [Administering your Azure AD directory](active-directory-administer.md).
 
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **Active Directory**, und wählen Sie dann den Namen des Verzeichnisses Ihrer Organisation.
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-2. Wählen Sie die Registerkarte **Gruppen**.
+2. Select the **Groups** tab.
 
-3. Wählen Sie **Gruppe hinzufügen**.
+3. Select **Add Group**.
 
-4. Geben Sie im Fenster **Gruppe hinzufügen** den Namen und die Beschreibung einer Gruppe ein.
-
-
-## Wie kann ich einzelne Benutzer einer Sicherheitsgruppe hinzufügen oder diese daraus entfernen?
-
-**So fügen Sie einer Gruppe einen einzelnen Benutzer hinzu**
-
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **Active Directory**, und wählen Sie dann den Namen des Verzeichnisses Ihrer Organisation.
-
-2. Wählen Sie die Registerkarte **Gruppen**.
-
-3. Öffnen Sie die Gruppe, der Sie Mitglieder hinzufügen möchten. Öffnen Sie die Registerkarte **Mitglieder** der ausgewählten Gruppe, wenn sie nicht bereits angezeigt wird.
-
-4. Wählen Sie **Mitglieder hinzufügen**.
-
-5. Wählen Sie auf der Seite **Mitglieder hinzufügen** den Namen des Benutzers oder der Gruppe aus, den bzw. die Sie als Mitglied der Gruppe hinzufügen möchten. Stellen Sie sicher, dass dieser Name dem Bereich **Ausgewählt** hinzugefügt wird.
+4. In the **Add Group** window, specify the name and the description of a group.
 
 
-**So entfernen Sie einen einzelnen Benutzer aus einer Gruppe**
+## <a name="how-do-i-add-or-remove-individual-users-in-a-security-group?"></a>How do I add or remove individual users in a security group?
 
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **Active Directory**, und wählen Sie dann den Namen des Verzeichnisses Ihrer Organisation.
+**To add an individual user to a group**
 
-2. Wählen Sie die Registerkarte **Gruppen**.
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-3. Öffnen Sie die Gruppe, aus der Sie Mitglieder entfernen möchten.
+2. Select the **Groups** tab.
 
-4. Wählen Sie die Registerkarte **Mitglieder**, klicken Sie auf der Seite dieser Gruppe auf den Namen des Mitglieds, das Sie aus dieser Gruppe entfernen möchten, und klicken Sie dann auf **Entfernen**.
+3. Open the group to which you want to add members. Open the **Members** tab of the selected group if it not already displaying.
 
-6. Bestätigen Sie in der Aufforderung, dass Sie dieses Mitglied aus der Gruppe entfernen möchten.
+4. Select **Add Members**.
+
+5. On the **Add Members** page, select the name of the user or a group that you want to add as a member of this group. Make sure that this name is added to the **Selected** pane.
 
 
-## Wie kann ich die Mitgliedschaft einer Gruppe dynamisch verwalten?
+**To remove an individual user from a group**
 
-In Azure AD können Sie sehr leicht eine einfache Regel einrichten, um zu bestimmen, welche Benutzer Mitglieder der Gruppe sein sollen. Eine einfache Regel ist eine Regel, bei der nur ein einzelner Vergleich vorgenommen wird. Wenn eine Gruppe beispielsweise einer SaaS-Anwendung zugewiesen ist, können Sie eine Regel zum Hinzufügen von Benutzern mit der Position „Vertriebsmitarbeiter“ einrichten. Diese Regel gewährt dann für alle Benutzer im Verzeichnis, die diese Position aufweisen, Zugriff auf diese SaaS-Anwendung.
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamischen Gruppenregel in einem Verzeichnis, um zu ermitteln, ob die Attributänderung des Benutzers Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer eine Regel für eine Gruppe erfüllt, wird er als Mitglieder zu dieser Gruppe hinzugefügt. Wenn er die Regel einer Gruppe nicht mehr erfüllt, deren Mitglied er ist, wird er aus dieser Gruppe entfernt.
+2. Select the **Groups** tab.
 
-> [AZURE.NOTE] Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuweisung zu Anwendungen derzeit nicht unterstützt.
+3. Open the group from which you want to remove members.
+
+4. Select the **Members** tab, select the name of the member that you want to remove from this group, and then click **Remove**.
+
+6. Confirm at the prompt that you want to remove this member from the group.
+
+
+## <a name="how-can-i-manage-the-membership-of-a-group-dynamically?"></a>How can I manage the membership of a group dynamically?
+
+In Azure AD, you can very easily set up a simple rule to determine which users are to be members of the group. A simple rule is one that makes only a single comparison. For example, if a group is assigned to a SaaS application, you can set up a rule to add users who have a job title of "Sales Rep." This rule then grants access to this SaaS application to all users with that job title in your directory.
+
+When any attributes of a user change, the system evaluates all dynamic group rules in a directory to see if the attribute change of the user would trigger any group adds or removes. If a user satisfies a rule on a group, they are added as a member to that group. If they no longer satisfy the rule of a group they are a member of, they are removed as a members from that group.
+
+> [AZURE.NOTE] You can set up a rule for dynamic membership on security groups or Office 365 groups. Nested group memberships aren't currently supported for group-based assignment to applications.
 >
-> Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
+> Dynamic memberships for groups require an Azure AD Premium license to be assigned to
 >
-> - Dem Administrator, der die Regel für eine Gruppe verwaltet
-> - Alle Mitglieder der Gruppe
+> - The administrator who manages the rule on a group
+> - All members of the group
 
-**So aktivieren Sie die dynamische Mitgliedschaft für eine Gruppe**
+**To enable dynamic membership for a group**
 
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **Active Directory**, und wählen Sie dann den Namen des Verzeichnisses Ihrer Organisation.
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-2. Wählen Sie die Registerkarte **Gruppen**, und öffnen Sie die Gruppe, die Sie bearbeiten möchten.
+2. Select the **Groups** tab, and open the group you want to edit.
 
-3. Wählen Sie die Registerkarte **Konfigurieren**, und legen Sie dann **Dynamische Mitgliedschaften aktivieren** auf **Ja** fest.
+3. Select the **Configure** tab, and then set **Enable Dynamic Memberships** to **Yes**.
 
-4. Richten Sie eine einfache Regel für die Gruppe ein, um die Funktionsweise dynamischer Mitgliedschaften für diese Gruppe zu steuern. Stellen Sie sicher, dass die Option **Benutzer hinzufügen, wobei** ausgewählt ist, und wählen Sie dann aus der Liste eine Benutzereigenschaft (z. B. Abteilung, Position usw.) aus.
+4. Set up a simple single rule for the group to control how dynamic membership for this group functions. Make sure the **Add users where** option is selected, and then select a user property from the list (for example, department, jobTitle, etc.),
 
-5. Wählen Sie als Nächstes eine Bedingung aus (Ungleich, Gleich, Beginnt nicht mit, Beginnt mit, Enthält nicht, Enthält, Keine Übereinstimmung, Übereinstimmung).
+5. Next, select a condition (Not Equals, Equals, Not Starts With, Starts With, Not Contains, Contains, Not Match, Match).
 
-6. Geben Sie einen Vergleichswert für die ausgewählte Benutzereigenschaft an.
+6. Specify a comparison value for the selected user property.
 
-Weitere Informationen zur Erstellung *erweiterter* Regeln (mit mehreren Vergleichen) für dynamische Gruppenmitgliedschaften finden Sie unter [Verwenden von Attributen zum Erstellen erweiterter Regeln](active-directory-accessmanagement-groups-with-advanced-rules.md).
+To learn about how to create *advanced* rules (rules that can contain multiple comparisons) for dynamic group membership, see [Using attributes to create advanced rules](active-directory-accessmanagement-groups-with-advanced-rules.md).
 
-## Zusätzliche Informationen
+## <a name="additional-information"></a>Additional information
 
-Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
+These articles provide additional information on Azure Active Directory.
 
-* [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
+* [Managing access to resources with Azure Active Directory groups](active-directory-manage-groups.md)
 
-* [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
+* [Azure Active Directory cmdlets for configuring group settings](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-* [Was ist Azure Active Directory?](active-directory-whatis.md)
+* [What is Azure Active Directory?](active-directory-whatis.md)
 
-* [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+* [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -7,35 +7,35 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 -->
 
 
-### Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Obtain the connection string from the Azure portal
 
 
-Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbindungszeichenfolge, die für die Interaktion des Clientprogramms mit Azure SQL-Datenbank benötigt wird:
+Use the [Azure portal](https://portal.azure.com/) to obtain the connection string necessary for your client program to interact with Azure SQL Database:
 
 
-1. Klicken auf **DURCHSUCHEN** > **SQL-Datenbanken**.
+1. Click **BROWSE** > **SQL databases**.
 
-    ![SQL auswählen][1-select-sql]
+    ![Select SQL][1-select-sql]
 
-2. Geben Sie in das Textfeld "Filter" nahe der oberen linken Ecke des Blattes **SQL-Datenbanken** den Namen der Datenbank ein.
+2. Enter the name of your database into the filter text box near the upper-left of the **SQL databases** blade.
 
-    ![Datenbank auswählen][2-select-database]]
+    ![Select Database][2-select-database]]
 
-3. Klicken Sie auf die Zeile für die Datenbank.
+3. Click the row for your database.
 
-4. Nachdem das Blatt für die Datenbank angezeigt wird, können Sie der visuellen Einfachheit halber auf die Standardsteuerelemente zum Minimieren klicken, um die Blätter auszublenden, die Sie zum Durchsuchen und Filtern verwendet haben.
+4. After the blade appears for your database, for visual convenience you can click the standard minimize controls to collapse the blades  you used for browsing and database filtering.
 
-5. Klicken Sie auf dem Blatt für die Datenbank auf **Datenbankverbindungszeichenfolgen anzeigen**.
+5. On the blade for your database, click **Show database connection strings**.
 
-6. Wenn Sie die ADO.NET-Verbindungsbibliothek verwenden möchten, kopieren Sie die Zeichenfolge mit der Bezeichnung **ADO.NET**.
+6. If you intend to use the ADO.NET connection library, copy the string labeled **ADO.NET**.
 
-	![ADO.NET-Verbindungszeichenfolge für die Datenbank kopieren][3-get-connection-string]
+    ![Copy the ADO.NET connection string for your database][3-get-connection-string]
 
-7. Fügen Sie die Informationen der Verbindungszeichenfolge in den Code der Clientanwendung ein. Ersetzen Sie {your\_password\_here} durch Ihr tatsächliches Kennwort.
+7. Paste the connection string information into your client program code.  You will need to replace the {your_password_here} with your real password.
 
 
 
-Weitere Informationen finden Sie unter [Verbindungszeichenfolgen und Konfigurationsdateien](http://msdn.microsoft.com/library/ms254494.aspx).
+For more information, see: [Connection Strings and Configuration Files](http://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 
@@ -55,4 +55,7 @@ includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
 
-<!---HONumber=AcomDC_0406_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

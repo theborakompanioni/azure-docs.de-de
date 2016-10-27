@@ -1,337 +1,342 @@
 <properties
-	pageTitle="Verschieben von Daten von einem lokalen SQL Server zu SQL Azure mithilfe von Azure Data Factory | Azure"
-	description="Einrichten eine ADF-Pipeline, die aus zwei Datenmigrationsaktivitäten besteht, die zusammen täglich Daten zwischen lokalen Datenbanken und in die Cloud verschieben."
-	services="machine-learning"
-	documentationCenter=""
-	authors="bradsev"
-	manager="jhubbard"
-	editor="cgronlun" />
+    pageTitle="Move data from an on-premise SQL Server to SQL Azure with Azure Data Factory | Azure"
+    description="Set up an ADF pipeline that composes two data migration activities that together move data on a daily basis between databases on-premise and in the cloud."
+    services="machine-learning"
+    documentationCenter=""
+    authors="bradsev"
+    manager="jhubbard"
+    editor="cgronlun" />
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/14/2016"
-	ms.author="bradsev" />
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/14/2016"
+    ms.author="bradsev" />
 
 
-# Verschieben von Daten von einem lokalen SQL Server zu SQL Azure mithilfe von Azure Data Factory
 
-In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Data Factory (ADF) Daten aus einer lokalen SQL Server-Datenbank über Azure Blob-Speicher in eine SQL Azure-Datenbank verschieben.
+# <a name="move-data-from-an-on-premise-sql-server-to-sql-azure-with-azure-data-factory"></a>Move data from an on-premise SQL server to SQL Azure with Azure Data Factory
 
-Das folgende **Menü** bietet Links zu Themen, in denen beschrieben wird, wie Daten in Zielumgebungen erfasst werden, in denen die Daten während des Team Data Science-Prozesses (TDSP) gespeichert und verarbeitet werden.
+This topic shows how to move data from an on-premise SQL Server Database to a SQL Azure Database via Azure Blob Storage using the Azure Data Factory (ADF).
+
+The following **menu** links to topics that describe how to ingest data into target environments where the data can be stored and processed during the Team Data Science Process.
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 
-## <a name="intro"></a>Einführung: Was ist ADF und wann sollte es für die Migration von Daten eingesetzt werden?
+## <a name="<a-name="intro"></a>introduction:-what-is-adf-and-when-should-it-be-used-to-migrate-data?"></a><a name="intro"></a>Introduction: What is ADF and when should it be used to migrate data?
 
-Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert. Das Hauptkonzept im ADF-Modell ist die Pipeline. Eine Pipeline ist eine logische Gruppierung von Aktivitäten, von denen jede die Aktionen definiert, die mit den in Datasets enthaltenen Daten auszuführen sind. Verknüpfte Dienste werden verwendet, um die Informationen zu definieren, die Data Factory benötigt, um eine Verbindung mit den Datenressourcen herzustellen.
+Azure Data Factory is a fully managed cloud-based data integration service that orchestrates and automates the movement and transformation of data. The key concept in the ADF model is pipeline. A pipeline is a logical grouping of Activities, each of which defines the actions to perform on the data contained in Datasets. Linked services are used to define the information needed for Data Factory to connect to the data resources.
 
-Mit ADF können vorhandene Datenverarbeitungsdienste zu Datenpipelines zusammengestellt werden, die hoch verfügbar sind und in der Cloud verwaltet werden. Diese Datenpipelines können geplant werden, um Daten zu erfassen, vorzubereiten, zu transformieren, zu analysieren und zu veröffentlichen, und die komplexen Daten und Verarbeitungsabhängigkeiten werden von ADF verwaltet und orchestriert. Lösungen lassen sich schnell in der Cloud erstellen und bereitstellen, wodurch eine wachsende Anzahl von lokalen und Clouddatenquellen miteinander verbunden werden.
+With ADF, existing data processing services can be composed into data pipelines that are highly available and managed in the cloud. These data pipelines can be scheduled to ingest, prepare, transform, analyze, and publish data, and ADF manages and orchestrates the complex data and processing dependencies. Solutions can be quickly built and deployed in the cloud, connecting a growing number of on-premises and cloud data sources.
 
-Ziehen Sie ADF in Betracht:
+Consider using ADF:
 
-- wenn Daten fortlaufend in ein Hybridszenario migriert werden müssen, das auf lokale und Cloudressourcen zugreift.
-- wenn Transaktionen mit den Daten erfolgen, Daten geändert werden müssen oder den Daten bei der Migration Geschäftslogik hinzugefügt wird.
+- when data needs to be continually migrated in a hybrid scenario that accesses both on-premise and cloud resources 
+- when the data is transacted or needs to be modified or have business logic added to it when being migrated. 
 
-ADF ermöglicht die Planung und Überwachung von Aufträgen mithilfe einfacher JSON-Skripts, die das Verschieben von Daten in regelmäßigen Abständen verwalten. ADF verfügt außerdem über weitere Funktionen wie Unterstützung für komplexe Vorgänge. Weitere Informationen zu ADF finden Sie in der Dokumentation zu [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
+ADF allows for the scheduling and monitoring of jobs using simple JSON scripts that manage the movement of data on a periodic basis. ADF also has other capabilities such as support for complex operations. For more information on ADF, see the documentation at [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
 
 
-## <a name="scenario"></a>Das Szenario
+## <a name="<a-name="scenario"></a>the-scenario"></a><a name="scenario"></a>The Scenario
 
-Wir richten eine ADF-Pipeline ein, die zwei Aktivitäten für die Migration von Daten aufweist. Gemeinsam sorgen diese für das tägliche Verschieben von Daten zwischen einer lokalen SQL-Datenbank und einer Azure SQL-Datenbank in der Cloud. Die zwei Aktivitäten sind:
+We set up an ADF pipeline that composes two data migration activities. Together they move data on a daily basis between an on-premise SQL database and an Azure SQL Database in the cloud. The two activities are:
 
-* Kopieren von Daten aus einer lokalen SQL Server-Datenbank in ein Azure Blob-Speicherkonto
-* Kopieren von Daten aus dem Azure Blob-Speicherkonto in eine Azure SQL-Datenbank
+* copy data from an on-premise SQL Server database to an Azure Blob Storage account
+* copy data from the Azure Blob Storage account to an Azure SQL Database.
 
->[AZURE.NOTE] Die hier gezeigten Schritte wurden dem detaillierteren Tutorial [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) entnommen und angepasst, das vom ADF-Team bereitgestellt wurde. Verweise auf die entsprechenden Abschnitte dieses Tutorials werden an geeigneten Stellen angegeben.
+>[AZURE.NOTE] The steps shown here have been adapted from the more detailed tutorial provided by the ADF team: [Move data between on-premises sources and cloud with Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) References to the relevant sections of that topic are provided when appropriate.
 
 
-## <a name="prereqs"></a>Voraussetzungen
-In diesem Tutorial wird Folgendes vorausgesetzt:
+## <a name="<a-name="prereqs"></a>prerequisites"></a><a name="prereqs"></a>Prerequisites
+This tutorial assumes you have:
 
-* Ein **Azure-Abonnement**. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Ein **Azure-Speicherkonto**. Sie nutzen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account). Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
-* Zugriff auf eine **Azure SQL-Datenbank**. Wenn Sie eine Azure SQL-Datenbank einrichten müssen, finden Sie im Thema [Erste Schritte mit Microsoft Azure SQL-Datenbank](../sql-database/sql-database-get-started.md) Informationen dazu, wie Sie eine neue Instanz einer Azure SQL-Datenbank bereitstellen.
-* Lokal installierte und konfigurierte **Azure PowerShell**. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* An **Azure subscription**. If you do not have a subscription, you can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
+* An **Azure storage account**. You use an Azure storage account for storing the data in this tutorial. If you don't have an Azure storage account, see the [Create a storage account](storage-create-storage-account.md#create-a-storage-account) article. After you have created the storage account, you need to obtain the account key used to access the storage. See [View, copy and regenerate storage access keys](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+* Access to an **Azure SQL Database**. If you must set up an Azure SQL Database, the tpoic [Getting Started with Microsoft Azure SQL Database ](../sql-database/sql-database-get-started.md) provides information on how to provision a new instance of an Azure SQL Database.
+* Installed and configured **Azure PowerShell** locally. For instructions, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
 
-> [AZURE.NOTE] In diesem Verfahren wird das [Azure-Portal](https://portal.azure.com/) verwendet.
+> [AZURE.NOTE] This procedure uses the [Azure portal](https://portal.azure.com/).
 
 
-##<a name="upload-data"></a> Hochladen der Daten auf Ihren lokalen SQL Server
+##<a name="<a-name="upload-data"></a>-upload-the-data-to-your-on-premise-sql-server"></a><a name="upload-data"></a> Upload the data to your on-premise SQL Server
 
-Wir verwenden das [NYC Taxi-Dataset](http://chriswhong.com/open-data/foil_nyc_taxi/), um den Migrationsprozess zu demonstrieren. Das NYC Taxi-Dataset ist, wie in diesem Beitrag erwähnt, in Azure Blob Storage unter [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/) verfügbar. Die Daten umfassen zwei Dateien, die Datei „trip\_data.csv“, die Details zu den einzelnen Fahrten enthält, und die Datei „trip\_far.csv“, die Details zu den pro Fahrt bezahlten Fahrpreisen enthält. Ein Beispiel und eine Beschreibung dieser Dateien finden Sie unter [Beschreibung des NYC Taxi Trips-Datasets](machine-learning-data-science-process-sql-walkthrough.md#dataset).
+We use the [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/) to demonstrate the migration process. The NYC Taxi dataset is available, as noted in that post, on Azure blob storage [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/). The data has two files, the trip_data.csv file, which contains trip details, and the  trip_far.csv file, which contains details of the fare paid for each trip. A sample and description of these files are provided in [NYC Taxi Trips Dataset Description](machine-learning-data-science-process-sql-walkthrough.md#dataset).
 
 
-Sie können entweder das hier beschriebene Verfahren auf einen Satz Ihrer eigenen Daten anpassen oder die Schritte wie beschrieben unter Verwendung des NYC Taxi-Datasets durchführen. Um das NYC Taxi-Dataset in Ihre lokale SQL Server-Datenbank hochzuladen, befolgen Sie das in [Massenimport von Daten in eine SQL Server-Datenbank](machine-learning-data-science-process-sql-walkthrough.md#dbload) beschriebene Verfahren. Diese Anleitungen gelten für einen SQL Server auf einem virtuellen Azure-Computer, aber das Verfahren zum Hochladen in auf den lokalen SQL Server ist identisch.
+You can either adapt the procedure provided here to a set of your own data or follow the steps as described by using the NYC Taxi dataset. To upload the NYC Taxi dataset into your on-premise SQL Server database, follow the procedure outlined in [Bulk Import Data into SQL Server Database](machine-learning-data-science-process-sql-walkthrough.md#dbload). These instructions are for a SQL Server on an Azure Virtual Machine, but the procedure for uploading to the on-premise SQL Server is the same.
 
 
-##<a name="create-adf"></a> Erstellen einer Azure Data Factory
+##<a name="<a-name="create-adf"></a>-create-an-azure-data-factory"></a><a name="create-adf"></a> Create an Azure Data Factory
 
-Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://portal.azure.com/) finden Sie unter [Create an Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp*, und nennen Sie die erstellte Ressourcengruppe *adfdsprg*.
+The instructions for creating a new Azure Data Factory and a resource group in the [Azure portal](https://portal.azure.com/) are provided [Create an Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory). Name the new ADF instance *adfdsp* and name the resource group created *adfdsprg*.
 
 
-## Installieren und Konfigurieren das Datenverwaltungsgateways
+## <a name="install-and-configure-up-the-data-management-gateway"></a>Install and configure up the Data Management Gateway
 
-Damit Ihre Pipelines in einer Azure Data Factory mit einem lokalen SQL Server zusammenarbeiten können, müssen Sie diesen der Data Factory als verknüpften Dienst hinzufügen. Führen Sie zum Erstellen eines verknüpften Diensts für die lokale SQL Server-Instanz die folgenden Schritte aus:
+To enable your pipelines in an Azure data factory to work with an on-premise SQL Server, you need to add it as a Linked Service to the data factory. To create a Linked Service for an on-premise SQL Server, you must:
 
-- Herunterladen des Microsoft-Datenverwaltungsgateways und Installieren auf dem lokalen Computer
-- Konfigurieren des verknüpften Diensts für die lokale Datenquelle zur Verwendung des Gateways
+- download and install Microsoft Data Management Gateway onto the on-premise computer. 
+- configure the linked service for the on-premises data source to use the gateway. 
 
-Das Datenverwaltungsgateway serialisiert und deserialisiert die Quell- und Senkendaten auf dem Computer, auf dem sie gehostet werden.
+The Data Management Gateway serializes and deserializes the source and sink data on the computer where it is hosted.
 
-Setupanweisungen und Informationen zum Datenverwaltungsgateway finden Sie unter [Move data between on-premises sources and cloud with Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) (Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway)
+For set-up instructions and details on Data Management Gateway, see [Move data between on-premises sources and cloud with Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md)
 
 
-## <a name="adflinkedservices"></a>Erstellen von verknüpften Diensten zum Herstellen einer Verbindung mit den Datenressourcen
+## <a name="<a-name="adflinkedservices"></a>create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>Create linked services to connect to the data resources
 
-Ein verknüpfter Dienst definiert die Informationen, die Azure Data Factory für das Herstellen einer Verbindung mit einer Datenquelle benötigt. Die schrittweise Anleitung zum Erstellen von verknüpften Diensten finden Sie unter [Erstellen von verknüpften Diensten](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-2-create-linked-services).
+A linked service defines the information needed for Azure Data Factory to connect to a data resource. The step-by-step procedure for creating linked services is provided in [Create linked services](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-2-create-linked-services).
 
-Wir haben drei Ressourcen in diesem Szenario, für die verknüpfte Dienste erforderlich sind.
+We have three resources in this scenario for which linked services are needed.
 
-1. [Verknüpfter Dienst für lokalen SQL Server](#adf-linked-service-onprem-sql)
-2. [Verknüpfter Dienst für Azure-Blob-Speicher](#adf-linked-service-blob-store)
-3. [Verknüpfter Dienst für Azure SQL-Datenbank](#adf-linked-service-azure-sql)
+1. [Linked service for on-premise SQL Server](#adf-linked-service-onprem-sql)
+2. [Linked service for Azure Blob Storage](#adf-linked-service-blob-store)
+3. [Linked service for Azure SQL database](#adf-linked-service-azure-sql)
 
 
-###<a name="adf-linked-service-onprem-sql"></a>Verknüpfter Dienst für lokale SQL Server-Datenbank
+###<a name="<a-name="adf-linked-service-onprem-sql"></a>linked-service-for-on-premise-sql-server-database"></a><a name="adf-linked-service-onprem-sql"></a>Linked service for on-premise SQL Server database
 
-So erstellen Sie den verknüpften Dienst für die lokale SQL Server-Instanz
+To create the linked service for the on-premise SQL Server:
 
-- Klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf den **Datenspeicher**.
-- Wählen Sie **SQL** aus, und geben Sie den *Benutzernamen* und das *Kennwort* als Anmeldeinformationen für die lokale SQL Server-Instanz ein. Sie müssen den Servernamen in der Form **vollqualifizierter Servername umgekehrter Schrägstrich Instanzname (Servername\\Instanzname)** eingeben. Nennen Sie den verknüpften Dienst *adfonpremsql*.
+- click the **Data Store** in the ADF landing page on Azure Classic Portal 
+- select **SQL** and enter the *username* and *password* credentials for the on-premise SQL Server. You need to enter the servername as a **fully qualified servername backslash instance name (servername\instancename)**. Name the linked service *adfonpremsql*.
 
-###<a name="adf-linked-service-blob-store"></a>Verknüpfter Dienst für Blob
+###<a name="<a-name="adf-linked-service-blob-store"></a>linked-service-for-blob"></a><a name="adf-linked-service-blob-store"></a>Linked service for Blob
 
-So erstellen Sie einen verknüpften Dienst für das Azure Blob Storage-Konto
+To create the linked service for the Azure Blob Storage account:
 
-- Klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf den **Datenspeicher**.
-- Wählen Sie **Azure-Speicherkonto** aus.
-- Geben Sie den Schlüssel des Azure Blob Storage-Kontos und den Containernamen ein. Nennen Sie den verknüpften Dienst *adfds*.
+- click the **Data Store** in the ADF landing page on Azure Classic Portal
+- select **Azure Storage Account** 
+- enter the Azure Blob Storage account key and container name. Name the Linked Service *adfds*.
 
-###<a name="adf-linked-service-azure-sql"></a>Verknüpfter Dienst für Azure SQL-Datenbank
+###<a name="<a-name="adf-linked-service-azure-sql"></a>linked-service-for-azure-sql-database"></a><a name="adf-linked-service-azure-sql"></a>Linked service for Azure SQL database
 
-So erstellen Sie den verknüpften Dienst für die Azure SQL-Datenbank
+To create the linked service for the Azure SQL Database:
 
-- Klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf den **Datenspeicher**.
-- Wählen Sie **Azure SQL** aus, und geben Sie den *Benutzernamen* und das *Kennwort* als Anmeldeinformationen für die Azure SQL-Datenbank ein. Der *Benutzername* muss im Format *user@servername* angegeben werden.
+- click the **Data Store** in the ADF landing page on Azure Classic Portal
+- select **Azure SQL** and enter the *username* and *password* credentials for the Azure SQL Database. The *username* must be specified as *user@servername*.   
 
 
-##<a name="adf-tables"></a>Definieren und Erstellen von Tabellen, um die Art des Zugriffs auf Datasets anzugeben
+##<a name="<a-name="adf-tables"></a>define-and-create-tables-to-specify-how-to-access-the-datasets"></a><a name="adf-tables"></a>Define and create tables to specify how to access the datasets
 
-Erstellen Sie Tabellen, in denen die Struktur, der Speicherort und die Verfügbarkeit der Datasets angegeben werden, mit den folgenden skriptbasierten Verfahren. Zum Definieren der Tabellen werden JSON-Dateien verwendet. Weitere Informationen zur Struktur dieser Dateien finden Sie unter [Datasets](../data-factory/data-factory-create-datasets.md).
+Create tables that specify the structure, location, and availability of the datasets with the following script-based procedures. JSON files are used to define the tables. For more information on the structure of these files, see [Datasets](../data-factory/data-factory-create-datasets.md).
 
-> [AZURE.NOTE]  Sie müssen das `Add-AzureAccount`-Cmdlet ausführen, bevor Sie das [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx)-Cmdlet ausführen, um sicherzustellen, dass das richtige Azure-Abonnement für die Ausführung der Befehle ausgewählt ist. Die Dokumentation zu diesem Cmdlet finden Sie unter [Add-AzureAccount](https://msdn.microsoft.com/library/azure/dn790372.aspx).
+> [AZURE.NOTE]  You should execute the `Add-AzureAccount` cmdlet before executing the [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet to confirm that the right Azure subscription is selected for the command execution. For documentation of this cmdlet, see [Add-AzureAccount](https://msdn.microsoft.com/library/azure/dn790372.aspx).
 
-Die JSON-basierten Definitionen in den Tabellen verwenden die folgenden Namen:
-
-* Der **Tabellenname** im lokalen SQL Server lautet *nyctaxi\_data*.
-* Der **Containername** im Azure Blob-Speicherkonto lautet *containername*.
-
-Für diese ADF-Pipeline sind drei Tabellendefinitionen erforderlich:
-
-1. [Lokale SQL-Tabelle](#adf-table-onprem-sql)
-2. [Blob-Tabelle](#adf-table-blob-store)
-3. [SQL Azure-Tabelle](#adf-table-azure-sql)
-
-> [AZURE.NOTE]  In den folgenden Verfahren wird Azure PowerShell verwendet, um die ADF-Aktivitäten zu definieren und zu erstellen. Diese Aufgaben können Sie allerdings auch über das Azure-Portal ausführen. Detaillierte Informationen hierzu finden Sie unter [Erstellen von Datasets für Eingabe und Ausgabe](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-3-create-input-and-output-datasets).
-
-###<a name="adf-table-onprem-sql"></a>Lokale SQL-Tabelle
-
-Die Tabellendefinition für den lokalen SQL Server wird in der folgenden JSON-Datei angegeben:
-
-    	{
-	    	"name": "OnPremSQLTable",
-	    	"properties":
-	    	{
-		    	"location":
-		    	{
-		    	"type": "OnPremisesSqlServerTableLocation",
-		    	"tableName": "nyctaxi_data",
-		    	"linkedServiceName": "adfonpremsql"
-		    	},
-		    	"availability":
-		    	{
-		    	"frequency": "Day",
-		    	"interval": 1,   
-		    	"waitOnExternal":
-		    	{
-		    	"retryInterval": "00:01:00",
-		    	"retryTimeout": "00:10:00",
-		    	"maximumRetry": 3
-		    	}
-
-		    	}
-	    	}
-    	}
-
-Die Spaltennamen sind hier nicht enthalten. Sie können eine Unterauswahl in den Spalten treffen, indem Sie sie hier aufnehmen (Details finden Sie in der [ADF-Dokumentation](../data-factory/data-factory-data-movement-activities.md)).
-
-Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *onpremtabledef.json*, und speichern Sie sie an einem bekannten Speicherort (hier wird *C:\\temp\\onpremtabledef.json* vorausgesetzt). Erstellen Sie die Tabelle in ADF mit dem folgenden Azure PowerShell-Cmdlet:
-
-	New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
-
-
-###<a name="adf-table-blob-store"></a>Blob-Tabelle
-Die Tabellendefinition für den Blob-Speicherort der Ausgabe finden Sie im Folgenden (hierbei werden die erfassten lokalen Daten dem Azure-Blob zugeordnet):
-
-	    {
-		    "name": "OutputBlobTable",
-		    "properties":
-		    {
-			    "location":
-			    {
-			    "type": "AzureBlobLocation",
-			    "folderPath": "containername",
-			    "format":
-			    {
-			    "type": "TextFormat",
-			    "columnDelimiter": "\t"
-			    },
-			    "linkedServiceName": "adfds"
-			    },
-			    "availability":
-			    {
-			    "frequency": "Day",
-			    "interval": 1
-			    }
-		    }
-	    }
-
-Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *bloboutputtabledef.json*, und speichern Sie sie an einem bekannten Speicherort (hier wird *C:\\temp\\bloboutputtabledef.json* vorausgesetzt). Erstellen Sie die Tabelle in ADF mit dem folgenden Azure PowerShell-Cmdlet:
-
-	New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
-
-###<a name="adf-table-azure-sq"></a>SQL Azure-Tabelle
-Die Tabellendefinition für die SQL Azure-Ausgabe finden Sie im Folgenden (dieses Schema ordnet die vom Blob stammenden Daten zu):
-
-	{
-	    "name": "OutputSQLAzureTable",
-	    "properties":
-	    {
-	        "structure":
-	        [
-				{ "name": "column1", type": "String"},
-				{ "name": "column2", type": "String"}                
-	        ],
-	        "location":
-	        {
-	            "type": "AzureSqlTableLocation",
-	            "tableName": "your_db_name",
-	            "linkedServiceName": "adfdssqlazure_linked_servicename"
-	        },
-	        "availability":
-	        {
-	            "frequency": "Day",
-	            "interval": 1            
-	        }
-	    }
-	}
-
-Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *AzureSqlTable.json*, und speichern Sie sie an einem bekannten Speicherort (hier wird *C:\\temp\\AzureSqlTable.json* vorausgesetzt). Erstellen Sie die Tabelle in ADF mit dem folgenden Azure PowerShell-Cmdlet:
-
-	New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json  
-
-
-##<a name="adf-pipeline"></a>Definieren und Erstellen der Pipeline
-
-Geben Sie die Aktivitäten an, die zu der Pipeline gehören, und erstellen Sie die Pipeline mit den folgenden skriptbasierten Verfahren. Zum Definieren der Pipeline-Eigenschaften wird eine JSON-Datei verwendet.
-
-* Das Skript setzt voraus, dass der **Pipelinename** *AMLDSProcessPipeline* lautet.
-* Beachten Sie außerdem, dass wir die Häufigkeit auf eine tägliche Ausführung festgelegt haben und die Standardausführungszeit des Auftrags verwenden (12 Uhr UTC).
-
-> [AZURE.NOTE]  Die folgenden Verfahren verwenden Azure PowerShell zum Definieren und Erstellen der ADF-Pipeline. Diese Aufgabe können Sie allerdings auch über das Azure-Portal ausführen. Details finden Sie unter [Erstellen und Ausführen einer Pipeline](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-4-create-and-run-a-pipeline).
-
-Unter Verwendung der oben angegebenen Tabellendefinitionen wird die Pipelinedefinition für die ADF wie folgt angegeben:
-
-		{
-		    "name": "AMLDSProcessPipeline",
-		    "properties":
-		    {
-		        "description" : "This pipeline has one Copy activity that copies data from an on-premise SQL to Azure blob",
-		         "activities":
-		        [
-		            {
-		                "name": "CopyFromSQLtoBlob",
-		                "description": "Copy data from on-premise SQL server to blob",     
-		                "type": "CopyActivity",
-		                "inputs": [ {"name": "OnPremSQLTable"} ],
-		                "outputs": [ {"name": "OutputBlobTable"} ],
-		                "transformation":
-		                {
-		                    "source":
-		                    {                               
-		                        "type": "SqlSource",
-		                        "sqlReaderQuery": "select * from nyctaxi_data"
-		                    },
-		                    "sink":
-		                    {
-		                        "type": "BlobSink"
-		                    }   
-		                },
-		                "Policy":
-		                {
-		                    "concurrency": 3,
-		                    "executionPriorityOrder": "NewestFirst",
-		                    "style": "StartOfInterval",
-		                    "retry": 0,
-		                    "timeout": "01:00:00"
-		                }       
-
-		             },
-
-					{
-						"name": "CopyFromBlobtoSQLAzure",
-						"description": "Push data to Sql Azure",		
-						"type": "CopyActivity",
-						"inputs": [ {"name": "OutputBlobTable"} ],
-						"outputs": [ {"name": "OutputSQLAzureTable"} ],
-						"transformation":
-						{
-							"source":
-							{                               
-								"type": "BlobSource"
-							},
-							"sink":
-							{
-								"type": "SqlSink",
-								"WriteBatchTimeout": "00:5:00",				
-							}			
-						},
-						"Policy":
-						{
-							"concurrency": 3,
-							"executionPriorityOrder": "NewestFirst",
-							"style": "StartOfInterval",
-							"retry": 2,
-							"timeout": "02:00:00"
-						}
-				     }
-		        ]
-		    }
-		}
-
-Kopieren Sie diese JSON-Definition der Pipeline in eine Datei namens *pipelinedef.json*, und speichern Sie sie an einem bekannten Speicherort (hier wird *C:\\temp\\pipelinedef.json* vorausgesetzt). Erstellen Sie die Pipeline in ADF mit dem folgenden Azure PowerShell-Cmdlet:
-
-	New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
-
-Vergewissern Sie sich, dass die Pipeline im klassischen Azure-Portal für die ADF wie folgt angezeigt wird (wenn Sie auf das Diagramm klicken).
+The JSON-based definitions in the tables use the following names:
+
+* the **table name** in the on-premise SQL server is *nyctaxi_data*
+* the **container name** in the Azure Blob Storage account is *containername*  
+
+Three table definitions are needed for this ADF pipeline:
+
+1. [SQL on-premise Table](#adf-table-onprem-sql)
+2. [Blob Table ](#adf-table-blob-store)
+3. [SQL Azure Table](#adf-table-azure-sql)
+
+> [AZURE.NOTE]  These procedures use Azure PowerShell to define and create the ADF activities. But these tasks can also be accomplished using the Azure portal. For details, see [Create input and output datasets](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-3-create-input-and-output-datasets).
+
+###<a name="<a-name="adf-table-onprem-sql"></a>sql-on-premise-table"></a><a name="adf-table-onprem-sql"></a>SQL on-premise Table
+
+The table definition for the on-premise SQL Server is specified in the following JSON file:
+
+        {
+            "name": "OnPremSQLTable",
+            "properties":
+            {
+                "location":
+                {
+                "type": "OnPremisesSqlServerTableLocation",
+                "tableName": "nyctaxi_data",
+                "linkedServiceName": "adfonpremsql"
+                },
+                "availability":
+                {
+                "frequency": "Day",
+                "interval": 1,   
+                "waitOnExternal":
+                {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
+                }
+
+                }
+            }
+        }
+
+The column names were not included here. You can sub-select on the column names by including them here (for details check the [ADF documentation](../data-factory/data-factory-data-movement-activities.md ) topic.
+
+Copy the JSON definition of the table into a file called *onpremtabledef.json* file and save it to a known location (here assumed to be *C:\temp\onpremtabledef.json*). Create the table in ADF with the following Azure PowerShell cmdlet:
+
+    New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
+
+
+###<a name="<a-name="adf-table-blob-store"></a>blob-table"></a><a name="adf-table-blob-store"></a>Blob Table
+Definition for the table for the output blob location is in the following (this maps the ingested data from on-premise to Azure blob):
+
+        {
+            "name": "OutputBlobTable",
+            "properties":
+            {
+                "location":
+                {
+                "type": "AzureBlobLocation",
+                "folderPath": "containername",
+                "format":
+                {
+                "type": "TextFormat",
+                "columnDelimiter": "\t"
+                },
+                "linkedServiceName": "adfds"
+                },
+                "availability":
+                {
+                "frequency": "Day",
+                "interval": 1
+                }
+            }
+        }
+
+Copy the JSON definition of the table into a file called *bloboutputtabledef.json* file and save it to a known location (here assumed to be *C:\temp\bloboutputtabledef.json*). Create the table in ADF with the following Azure PowerShell cmdlet:
+
+    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
+
+###<a name="<a-name="adf-table-azure-sq"></a>sql-azure-table"></a><a name="adf-table-azure-sq"></a>SQL Azure Table
+Definition for the table for the SQL Azure output is in the following (this schema maps the data coming from the blob):
+
+    {
+        "name": "OutputSQLAzureTable",
+        "properties":
+        {
+            "structure":
+            [
+                { "name": "column1", type": "String"},
+                { "name": "column2", type": "String"}                
+            ],
+            "location":
+            {
+                "type": "AzureSqlTableLocation",
+                "tableName": "your_db_name",
+                "linkedServiceName": "adfdssqlazure_linked_servicename"
+            },
+            "availability":
+            {
+                "frequency": "Day",
+                "interval": 1            
+            }
+        }
+    }
+
+Copy the JSON definition of the table into a file called *AzureSqlTable.json* file and save it to a known location (here assumed to be *C:\temp\AzureSqlTable.json*). Create the table in ADF with the following Azure PowerShell cmdlet:
+
+    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json  
+
+
+##<a name="<a-name="adf-pipeline"></a>define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>Define and create the pipeline
+
+Specify the activities that belong to the pipeline and create the pipeline with the following script-based procedures. A JSON file is used to define the pipeline properties.
+
+* The script assumes that the **pipeline name** is *AMLDSProcessPipeline*.
+* Also note that we set the periodicity of the pipeline to be executed on daily basis and use the default execution time for the job (12 am UTC).
+
+> [AZURE.NOTE]  The following procedures use Azure PowerShell to define and create the ADF pipeline. But this task can also be accomplished using the Azure portal. For details, see [Create and run a pipeline](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#step-4-create-and-run-a-pipeline).
+
+Using the table definitions provided previously, the pipeline definition for the ADF is specified as follows:
+
+        {
+            "name": "AMLDSProcessPipeline",
+            "properties":
+            {
+                "description" : "This pipeline has one Copy activity that copies data from an on-premise SQL to Azure blob",
+                 "activities":
+                [
+                    {
+                        "name": "CopyFromSQLtoBlob",
+                        "description": "Copy data from on-premise SQL server to blob",     
+                        "type": "CopyActivity",
+                        "inputs": [ {"name": "OnPremSQLTable"} ],
+                        "outputs": [ {"name": "OutputBlobTable"} ],
+                        "transformation":
+                        {
+                            "source":
+                            {                               
+                                "type": "SqlSource",
+                                "sqlReaderQuery": "select * from nyctaxi_data"
+                            },
+                            "sink":
+                            {
+                                "type": "BlobSink"
+                            }   
+                        },
+                        "Policy":
+                        {
+                            "concurrency": 3,
+                            "executionPriorityOrder": "NewestFirst",
+                            "style": "StartOfInterval",
+                            "retry": 0,
+                            "timeout": "01:00:00"
+                        }       
+
+                     },
+
+                    {
+                        "name": "CopyFromBlobtoSQLAzure",
+                        "description": "Push data to Sql Azure",        
+                        "type": "CopyActivity",
+                        "inputs": [ {"name": "OutputBlobTable"} ],
+                        "outputs": [ {"name": "OutputSQLAzureTable"} ],
+                        "transformation":
+                        {
+                            "source":
+                            {                               
+                                "type": "BlobSource"
+                            },
+                            "sink":
+                            {
+                                "type": "SqlSink",
+                                "WriteBatchTimeout": "00:5:00",             
+                            }           
+                        },
+                        "Policy":
+                        {
+                            "concurrency": 3,
+                            "executionPriorityOrder": "NewestFirst",
+                            "style": "StartOfInterval",
+                            "retry": 2,
+                            "timeout": "02:00:00"
+                        }
+                     }
+                ]
+            }
+        }
+
+Copy this JSON definition of the pipeline into a file called *pipelinedef.json* file and save it to a known location (here assumed to be *C:\temp\pipelinedef.json*). Create the pipeline in ADF with the following Azure PowerShell cmdlet:
+
+    New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
+
+Confirm that you can see the pipeline on the ADF in the Azure Classic Portal show up as following (when you click the diagram)
 
 ![](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
 
 
-##<a name="adf-pipeline-start"></a>Starten der Pipeline
-Die Pipeline kann jetzt mithilfe der folgenden Befehle ausgeführt werden:
+##<a name="<a-name="adf-pipeline-start"></a>start-the-pipeline"></a><a name="adf-pipeline-start"></a>Start the Pipeline
+The pipeline can now be run using the following command:
 
-	Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
+    Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
 
-Die Parameterwerte *startdate* und *enddate* müssen durch die tatsächlichen Daten ersetzt werden, zwischen denen die Pipeline ausgeführt werden soll.
+The *startdate* and *enddate* parameter values need to be replaced with the actual dates between which you want the pipeline to run.
 
-Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die im für den Blob ausgewählten Container angezeigt werden – immer eine Datei pro Tag.
+Once the pipeline executes, you should be able to see the data show up in the container selected for the blob, one file per day.
 
-Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Informationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
+Note that we have not leveraged the functionality provided by ADF to pipe data incrementally. For more information on how to do this and other capabilities provided by ADF, see the [ADF documentation](https://azure.microsoft.com/services/data-factory/).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

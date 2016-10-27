@@ -1,230 +1,232 @@
 <properties
-	pageTitle="Kontinuierliche Bereitstellung mit Git und Visual Studio Team Services in Azure | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie Ihre Teamprojekte in Visual Studio Team Services zur Verwendung von Git konfigurieren, sodass sie automatisch erstellt und für das Web-App-Feature in Azure App Service oder in Clouddiensten bereitgestellt werden."
-	services="cloud-services"
-	documentationCenter=".net"
-	authors="mlearned"
-	manager="douge"
-	editor=""/>
+    pageTitle="Continuous delivery with Git and Visual Studio Team Services in Azure | Microsoft Azure"
+    description="Learn how to configure your Visual Studio Team Services team projects to use Git to automatically build and deploy to the Web App feature in Azure App Service or cloud services."
+    services="cloud-services"
+    documentationCenter=".net"
+    authors="mlearned"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="mlearned"/>
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="07/06/2016"
+    ms.author="mlearned"/>
 
-# Continuous Delivery für Azure mithilfe von Visual Studio Team Services und Git
 
-Sie können Visual Studio Team Services-Teamprojekte verwenden, um ein Git-Repository für Ihren Quellcode zu hosten, automatisch zu erstellen und für Azure-Web-Apps oder -Clouddienste bereitzustellen, wenn Sie mittels Push ein Commit für das Repository ausführen.
+# <a name="continuous-delivery-to-azure-using-visual-studio-team-services-and-git"></a>Continuous delivery to Azure using Visual Studio Team Services and Git
 
-Sie müssen Visual Studio 2013 und das Azure-SDK installiert haben. Wenn Sie Visual Studio 2013 nicht bereits installiert haben, laden Sie es herunter, indem Sie auf der Seite **www.visualstudio.com** auf den Link [Starten Sie kostenlos](http://www.visualstudio.com) klicken. Installieren Sie das Azure-SDK von [hier](http://go.microsoft.com/fwlink/?LinkId=239540) aus.
+You can use Visual Studio Team Services team projects to host a Git repository for your source code, and automatically build and deploy to Azure web apps or cloud services whenever you push a commit to the repository.
 
+You'll need Visual Studio 2013 and the Azure SDK installed. If you don't already have Visual Studio 2013, download it by choosing the **Get started for free** link at [www.visualstudio.com](http://www.visualstudio.com). Install the Azure SDK from [here](http://go.microsoft.com/fwlink/?LinkId=239540).
 
-> [AZURE.NOTE] Für dieses Tutorial benötigen Sie ein Visual Studio Team Services-Konto. Dieses können Sie [kostenlos erstellen](http://go.microsoft.com/fwlink/p/?LinkId=512979).
 
-Gehen Sie wie folgt vor, um mithilfe von Visual Studio Team Services einen Clouddienst für die automatische Erstellung und Bereitstellung für Azure zu konfigurieren.
+> [AZURE.NOTE] You need an Visual Studio Team Services account to complete this tutorial: You can [open a Visual Studio Team Services account for free](http://go.microsoft.com/fwlink/p/?LinkId=512979).
 
-## 1: Erstellen eines Git-Repositorys
+To set up a cloud service to automatically build and deploy to Azure by using Visual Studio Team Services, follow these steps.
 
-1. Wenn Sie noch nicht über ein Visual Studio Team Services-Konto verfügen, können Sie [hier](http://go.microsoft.com/fwlink/?LinkId=397665) eines erstellen. Wenn Sie Ihr Teamprojekt erstellen, wählen Sie Git als Quellcodeverwaltungssystem aus. Befolgen Sie die Anweisungen, um Visual Studio mit dem Teamprojekt zu verbinden.
+## <a name="1:-create-a-git-repository"></a>1: Create a Git repository
 
-2. Klicken Sie in **Team Explorer** auf den Link **Dieses Repository klonen**.
+1. If you don’t already have a Visual Studio Team Services account, you can get one  [here](http://go.microsoft.com/fwlink/?LinkId=397665). When you create your team project, choose Git as your source control system. Follow the instructions to connect Visual Studio to your team project.
 
-	![][3]
+2. In **Team Explorer**, choose the **Clone this repository** link.
 
-3. Geben Sie den Speicherort der lokalen Kopie an, und klicken Sie dann auf **Klonen**.
+    ![][3]
 
-## 2: Erstellen eines Projekts und Übertragen an das Repository
+3. Specify the location of the local copy and then choose the **Clone** button.
 
-1. Wählen Sie in **Team Explorer** im Abschnitt **Projektmappen** den Link **Neu**, um ein neues Projekt im lokalen Repository zu erstellen.
+## <a name="2:-create-a-project-and-commit-it-to-the-repository"></a>2: Create a project and commit it to the repository
 
-	![][4]
+1. In **Team Explorer**, in the **Solutions** section, choose the **New** link to create a new project in the local repository.
 
-2. Sie können eine Web-App oder einen Clouddienst (Azure-Anwendung) bereitstellen, indem Sie die Schritte in dieser Anleitung ausführen. Erstellen Sie ein neues Azure Cloud Service-Projekt oder ein neues ASP.NET MVC-Projekt. Stellen Sie sicher, dass das Projekt auf .NET Framework 4 oder höher abzielt. Wenn Sie ein Clouddienstprojekt erstellen, fügen Sie eine ASP.NET MVC-Webrolle und eine Workerrolle hinzu. Wenn Sie eine Web-App erstellen möchten, wählen Sie die Projektvorlage **ASP.NET Web Application** und anschließend **MVC** aus. Weitere Informationen finden Sie unter [Erstellen einer ASP.NET-Web-App in Azure App Service](../app-service-web/web-sites-dotnet-get-started.md).
+    ![][4]
 
-3. Öffnen Sie das Kontextmenü für die Projektmappe, und klicken Sie auf **Commit**.
+2. You can deploy a web app or a cloud service (Azure Application) by following the steps in this walkthrough. Create a new Azure Cloud Service project, or a new ASP.NET MVC project. Make sure that the project targets the .NET Framework 4 or later. If you are creating a cloud service project, add an ASP.NET MVC web role and a worker role.
+If you want to create a web app, choose the **ASP.NET Web Application** project template, and then choose **MVC**. See [Create an ASP.NET web app in Azure App Service](../app-service-web/web-sites-dotnet-get-started.md) for more information.
 
-	![][7]
+3. Open the shortcut menu for the solution, and choose **Commit**.
 
-4. Wenn Sie zum ersten Mal Git in Visual Studio Team Services verwenden, müssen Sie einige Informationen angeben, um sich in Git zu identifizieren. Geben Sie im Bereich **Ausstehende Änderungen** des **Team Explorer** Ihren Benutzernamen und Ihre E-Mail-Adresse an. Geben Sie einen Kommentar für den Commit ein, und klicken Sie dann auf die Schaltfläche **Commit**.
+    ![][7]
 
-	![][8]
+4. If this is the first time you've used Git in Visual Studio Team Services, you'll need to provide some information to identify yourself in Git. In the **Pending Changes** area of **Team Explorer**, enter your username and email address. Enter a comment for the commit and then choose the **Commit** button.
 
-5. Beachten Sie die Optionen zum Ein- oder Ausschließen bestimmter Änderungen beim Einchecken. Wenn die gewünschten Änderungen ausgeschlossen wurden, wählen Sie **Alles einschließen**.
+    ![][8]
 
-6. Sie haben jetzt die Änderungen in der lokalen Kopie des Repository übermittelt. Als Nächstes synchronisieren Sie diese Änderungen beim Server, indem Sie auf den Link **Sync** klicken.
+5. Note the options to include or exclude specific changes when you check in. If the changes you want are excluded, choose **Include All**.
 
-## 3: Verbinden des Projekts mit Azure
+6. You've now committed the changes in your local copy of the repository. Next, sync those changes with the server by choosing the **Sync** link.
 
-1. Nachdem Sie in Visual Studio Team Services ein Git-Repository mit Quellcode erstellt haben, können Sie Ihr Git-Repository mit Azure verknüpfen. Wählen Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) Ihren Clouddienst oder Ihre Web-App aus, oder erstellen Sie einen neuen Clouddienst oder eine neue Web-App, indem Sie auf das +-Symbol links unten sowie auf **Cloud Services** oder **Web-App** und anschließend auf **Schnellerstellung** klicken.
+## <a name="3:-connect-the-project-to-azure"></a>3: Connect the project to Azure
 
-	![][9]
+1. Now that you have a Git repository in Visual Studio Team Services with some source code in it, you are ready to connect your git repository to Azure.  In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), select your cloud service or web app, or create a new one by choosing the + icon at the bottom left and choosing **Cloud Service** or **Web App** and then **Quick Create**.
 
-3. Wählen Sie für Clouddienste den Link **Veröffentlichung einrichten mit Visual Studio Team Services** aus. Für Web-Apps wählen Sie den Link **Bereitstellung über Quellcodeverwaltung einrichten**.
+    ![][9]
 
-	![][10]
+3. For cloud services, choose the **Set up publishing with Visual Studio Team Services** link. For web apps, choose the **Set up deployment from source control** link.
 
-2. Geben Sie in das Textfeld des Assistenten den Namen Ihres Visual Studio Team Services-Kontos ein, und wählen Sie den Link **Jetzt autorisieren** aus. Eventuell werden Sie aufgefordert, sich anzumelden.
+    ![][10]
 
-	![][11]
+2. In the wizard, type the name of your Visual Studio Team Services account in the textbox and choose the **Authorize Now** link. You might be asked to sign in.
 
-3. Klicken Sie im Popupdialogfeld **Verbindungsanforderung** auf **Übernehmen**, um Azure zum Konfigurieren Ihres Teamprojekts in Visual Studio Team Services zu autorisieren.
+    ![][11]
 
-	![][12]
+3. In the **Connection Request** pop-up dialog, choose **Accept** to authorize Azure to configure your team project in Visual Studio Team Services.
 
-4. Nach erfolgreicher Autorisierung wird eine Dropdownliste mit Ihren Visual Studio Team Services-Teamprojekten angezeigt. Wählen Sie den Namen des Teamprojekts aus, das Sie in den vorherigen Schritten erstellt haben, und klicken Sie auf das Häkchen im Assistenten.
+    ![][12]
 
-	![][13]
+4. After authorization succeeds, you see a dropdown list that contains your Visual Studio Team Services team projects.  Select the name of team project that you created in the previous steps, and choose the wizard's checkmark button.
 
-	Wenn Sie das nächste Mal mittels Push ein Commit für Ihr Repository ausführen, wird Ihr Projekt erstellt und für Azure bereitgestellt.
+    ![][13]
 
-## 4: Auslösen einer erneuten Erstellung und Bereitstellung Ihres Projekts
+    The next time you push a commit to your repository, Visual Studio Team Services will build and deploy your project to Azure.
 
-1. Öffnen Sie in Visual Studio eine Datei, und ändern Sie sie. Ändern Sie z. B. die Datei `_Layout.cshtml` im Ordner "Views\\Shared" in eine MVC-Webrolle.
+## <a name="4:-trigger-a-rebuild-and-redeploy-your-project"></a>4: Trigger a rebuild and redeploy your project
 
-	![][17]
+1. In Visual Studio, open up a file and change it. For example, change the file `_Layout.cshtml` under the Views\\Shared folder in an MVC web role.
 
-2. Bearbeiten Sie den Fußzeilentext der Website, und speichern Sie die Datei.
+    ![][17]
 
-	![][18]
+2. Edit the footer text for the site and save the file.
 
-3. Öffnen Sie im **Projektmappen-Explorer** das Kontextmenü für den Projektmappenknoten, für den Projektknoten oder für die geänderte Datei, und wählen Sie **Commit**.
+    ![][18]
 
-4. Geben Sie einen Kommentar ein, und wählen Sie **Commit**.
+3. In **Solution Explorer**, open the shortcut menu for the solution node, project node, or the file you changed, and then choose **Commit**.
 
-	![][20]
+4. Type in a comment and choose **Commit**.
 
-5. Klicken Sie auf den Link **Sync**.
+    ![][20]
 
-	![][38]
+5. Choose the **Sync** link.
 
-6. Wählen Sie den Link **Push** aus, um Ihr Commit für das Repository in Visual Studio Team Services auszuführen. (Sie können auch die Schaltfläche **Sync** verwenden, um Commits zum Repository zu übertragen. Der Unterschied besteht darin, dass mit **Sync** auch die letzten Änderungen aus dem Repository abgerufen werden.)
+    ![][38]
 
-	![][39]
+6. Choose the **Push** link to push your commit to the repository in Visual Studio Team Services. (You can also use the **Sync** button to copy your commits to the repository. The difference is that **Sync** also pulls the latest changes from the repository.)
 
-7. Klicken Sie auf die Schaltfläche **Startseite**, um zur Startseite von **Team Explorer** zurückzukehren.
+    ![][39]
 
-	![][21]
+7. Choose the **Home** button to return to the **Team Explorer** home page.
 
-8. Klicken Sie auf den Link **Builds**, um die derzeit ausgeführten Builds anzuzeigen.
+    ![][21]
 
-	![][22]
+8. Choose **Builds** to view the builds in progress.
 
-	In **Team Explorer** wird ersichtlich, dass für Ihren Eincheckvorgang ein Build ausgelöst wurde.
+    ![][22]
 
-	![][23]
+    **Team Explorer** shows that a build has been triggered for your check-in.
 
-9. Doppelklicken Sie auf den Namen des aktiven Builds, um ein detailliertes Protokoll des Buildverlaufs anzuzeigen.
+    ![][23]
 
-10. Betrachten Sie während des Buildverlaufs die Builddefinition, die erstellt wurde, als Sie mit dem Assistenten eine Verknüpfung mit Azure eingerichtet haben. Öffnen sie das Kontextmenü für die Builddefinition, und klicken Sie auf **Edit Build Definition (Builddefinition bearbeiten)**.
+9. To view a detailed log as the build progresses, double-click the name of the build in progress.
 
-	![][25]
+10. While the build is in-progress, take a look at the build definition that was created when you used the wizard to link to Azure.  Open the shortcut menu for the build definition and choose **Edit Build Definition**.
 
-11. Auf der Registerkarte **Trigger** sehen Sie, dass die Builddefinition standardmäßig so festgelegt ist, dass bei jedem Einchecken ein Buildvorgang ausgeführt wird. (Für einen Clouddienst erstellt Visual Studio Team Services die Hauptverzweigung und stellt sie automatisch für die Stagingumgebung bereit.) Sie müssen für die Bereitstellung zur Live-Website weiterhin einen Schritt manuell durchführen. Für eine Web-App ohne Stagingumgebung wird die Hauptverzweigung direkt in der Live-Website bereitgestellt.
+    ![][25]
 
-	![][26]
+11. In the **Trigger** tab, you will see that the build definition is set to build on every check-in, by default. (For a cloud service, Visual Studio Team Services builds and deploys the master branch to the staging environment automatically. You still have to do a manual step to deploy to the live site. For a web app that doesn't have staging environment, it deploys the master branch directly to the live site.
 
-1. Auf der Registerkarte **Prozess** ist zu sehen, dass die Bereitstellungsumgebung auf den Namen Ihres Clouddiensts oder Ihrer Web-App eingestellt ist.
+    ![][26]
 
-	![][27]
+1. In the **Process** tab, you can see the deployment environment is set to the name of your cloud service or web app.
 
-1. Geben Sie Werte für die Eigenschaften ein, wenn Sie andere Werte als die Standardwerte verwenden möchten. Die Eigenschaften für die Azure-Veröffentlichung befinden sich im Abschnitt **Bereitstellung**, und Sie müssen möglicherweise MSBuild-Parameter festlegen. Um eine andere Dienstkonfiguration als "Cloud" anzugeben, legen Sie zum Beispiel in einem Cloud-Dienstprojekt die MSbuild-Parameter auf `/p:TargetProfile=[YourProfile]` fest, wobei *[YourProfile]* einer Dienstkonfigurationsdatei mit einem Namen wie "ServiceConfiguration.*YourProfile*.cscfg" entspricht.
+    ![][27]
 
-	Die folgende Tabelle zeigt die im Bereitstellungsabschnitt verfügbaren **Eigenschaften**:
+1. Specify values for the properties if you want different values than the defaults. The properties for Azure publishing are in the **Deployment** section, and you might also need to set MSBuild parameters. For example, in a cloud service project, to specify a service configuration other than "Cloud", set the MSbuild parameters to `/p:TargetProfile=[YourProfile]` where *[YourProfile]* matches a service configuration file with a name like ServiceConfiguration.*YourProfile*.cscfg.
 
-	|Eigenschaft|Standardwert|
-	|---|---|
-	|Nicht vertrauenswürdige Zertifikate zulassen|Wenn dies "false" ist, müssen SSL-Zertifikate von einer Stammzertifizierungsstelle signiert sein.|
-	|Upgrade zulassen|Ermöglicht einer Bereitstellung, eine vorhandene Bereitstellung zu aktualisieren, anstatt eine neue zu erstellen. Behält die IP-Adresse bei.|
-	|Nicht löschen|Wenn dies "true" ist, wird keine vorhandene, nicht verbundene Bereitstellung überschrieben (Upgrade ist zulässig).|
-	|Pfad zu Bereitstellungseinstellungen|Der Pfad zu Ihrer PUBXML-Datei für eine Web-App, entsprechend dem Stammordner des Repositorys. Wird für Clouddienste ignoriert.|
-	|Sharepoint-Bereitstellungsumgebung|Entspricht dem Dienstnamen.|
-	|Azure-Bereitstellungsumgebung|Der Name der Web-App oder des Clouddiensts.|
+    The following table shows the available properties in the **Deployment** section:
 
-1. An diesem Punkt sollte Ihr Build erfolgreich abgeschlossen sein.
+  	|Property|Default Value|
+  	|---|---|
+  	|Allow Untrusted Certificates|If false, SSL certificates must be signed by a root authority.|
+  	|Allow Upgrade|Allows the deployment to update an existing deployment instead of creating a new one. Preserves the IP address.|
+  	|Do Not Delete|If true, do not overwrite an existing unrelated deployment (upgrade is allowed).|
+  	|Path to Deployment Settings|The path to your .pubxml file for a web app, relative to the root folder of the repo. Ignored for cloud services.|
+  	|Sharepoint Deployment Environment|The same as the service name.|
+  	|Azure Deployment Environment|The web app or cloud service name.|
 
-	![][28]
+1. By this time, your build should be completed successfully.
 
-1. Wenn Sie auf den Buildnamen doppelklicken, zeigt Visual Studio eine **Buildzusammenfassung** mit allen Testergebnissen aus den zugeordneten Komponententestprojekten an.
+    ![][28]
 
-	![][29]
+1. If you double-click the build name, Visual Studio shows a **Build Summary**, including any test results from associated unit test projects.
 
-1. Im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) können Sie die entsprechende Bereitstellung auf der Registerkarte **Bereitstellungen** anzeigen, wenn die Stagingumgebung ausgewählt ist.
+    ![][29]
 
-	![][30]
+1. In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), you can view the associated deployment on the **Deployments** tab when the staging environment is selected.
 
-1.	Wechseln Sie zur URL Ihrer Site. Wählen Sie für eine Web-App im Portal die Schaltfläche **Durchsuchen**. Wenn es sich um einen Clouddienst handelt, wählen Sie die URL im Abschnitt **Auf einen Blick** der Seite **Dashboard**, auf der die Stagingumgebung angezeigt wird.
+    ![][30]
 
-	Bereitstellungen aus einer fortlaufenden Integration für Clouddienste werden standardmäßig in der Stagingumgebung veröffentlicht. Sie können dies ändern, indem Sie die Eigenschaft **Alternate Cloud Service Environment** auf **Produktion** stellen. Hier wird gezeigt, wo auf der Dashboard-Seite des Cloud-Diensts sich die Website-URL befindet.
+1.  Browse to your site's URL. For a web app, just choose  the **Browse** button in the portal. For a cloud service, choose the URL in the **Quick Glance** section of the **Dashboard** page that shows the Staging environment.
 
-	![][31]
+    Deployments from continuous integration for cloud services are published to the Staging environment by default. You can change this by setting the **Alternate Cloud Service Environment** property to **Production**. Here's where the site URL is on the cloud service's dashboard page.
 
-	Eine neue Browser-Registerkarte wird geöffnet, die Ihre laufende Site anzeigt.
+    ![][31]
 
-	![][32]
+    A new browser tab will open to reveal your running site.
 
-1.	Wenn Sie weitere Änderungen an Ihrem Projekt vornehmen, lösen Sie weitere Builds aus und sammeln mehrere Bereitstellungen. Die letzte davon wird als „Aktiv“ markiert.
+    ![][32]
 
-	![][33]
+1.  If you make other changes to your project, you trigger more builds, and you will accumulate multiple deployments. The latest one is marked as Active.
 
-## 5: Erneute Bereitstellung eines früheren Builds
+    ![][33]
 
-Dieser Schritt ist optional. Wählen Sie im klassischen Azure-Portal eine frühere Bereitstellung aus, und wählen Sie **Erneut bereitstellen**, um Ihre Website auf einen früheren Eincheckvorgang zurückzusetzen. Beachten Sie, dass dadurch ein neuer Buildvorgang in TFS ausgelöst und in Ihrem Bereitstellungsverlauf ein neuer Eintrag erstellt wird.
+## <a name="5:-redeploy-an-earlier-build"></a>5: Redeploy an earlier build
+
+This step is optional. In the Azure classic portal, choose an earlier deployment and choose **Redeploy** to rewind your site to an earlier check-in. Note that this will trigger a new build in TFS and create a new entry in your deployment history.
 
 ![][34]
 
-## 6: Ändern der Produktionsbereitstellung
+## <a name="6:-change-the-production-deployment"></a>6: Change the Production deployment
 
-Wenn Sie bereit sind, können Sie die Stagingumgebung in die Produktionsumgebung überführen, indem Sie im klassischen Azure-Portal auf die Schaltfläche **Swap** klicken. Die neu bereitgestellte Stagingumgebung wird in eine Produktionsumgebung geändert, und die vorherige Produktionsumgebung (falls vorhanden) wird zu einer Stagingumgebung. Die aktive Bereitstellung für die Produktions- und die Stagingumgebung kann unterschiedlich sein, aber der Bereitstellungsverlauf der bisherigen Builds ist unabhängig von der Umgebung gleich.
+When you are ready, you can promote the Staging environment to the Production environment by choosing **Swap** in the Azure classic portal. The newly deployed Staging environment is promoted to Production, and the previous Production environment, if any, becomes a Staging environment. The Active deployment may be different for the Production and Staging environments, but the deployment history of recent builds is the same regardless of environment.
 
 ![][35]
 
-## 7: Bereitstellen von einer Arbeitsverzweigung aus.
+## <a name="7:-deploy-from-a-working-branch."></a>7: Deploy from a working branch.
 
-Wenn Sie Git verwenden, nehmen Sie die Änderungen normalerweise an einer Arbeitsverzweigung vor und integrieren diese in die Hauptverzweigung, wenn Ihre Entwicklung den abgeschlossenen Status erreicht. Während der Entwicklungsphase eines Projekts möchten Sie die Arbeitsverzweigung in Azure erstellen und bereitstellen.
+When you use Git, you usually make changes in a working branch and integrate into the master branch when your development reaches a finished state. During the development phase of a project, you'll want to build and deploy the working branch to Azure.
 
-1. Klicken Sie in **Team Explorer** auf die Schaltfläche **Startseite**, und wählen Sie dann die Schaltfläche **Verzweigungen** aus.
+1. In **Team Explorer**, choose the **Home** button and then choose the **Branches** button.
 
-	![][40]
+    ![][40]
 
-2. Klicken Sie auf den Link **Neue Verzweigung**.
+2. Choose the **New Branch** link.
 
-	![][41]
+    ![][41]
 
-3. Geben Sie den Namen der Verzweigung ein, zum Beispiel "working", und wählen Sie **Verzweigung erstellen**. Dadurch wird eine neue lokale Verzweigung erstellt.
+3. Enter the name of the branch, such as "working," and choose **Create Branch**. This creates a new local branch.
 
-	![][42]
+    ![][42]
 
-4. Veröffentlichen Sie die Verzweigung. Wählen Sie den Namen der Verzweigung unter **Unveröffentlichte Verzweigungen** aus, und wählen Sie **Veröffentlichen**.
+4. Publish the branch. Choose the branch name in **Unpublished branches**, and choose **Publish**.
 
-	![][44]
+    ![][44]
 
-6. Standardmäßig lösen nur Änderungen an der Hauptverzweigung eine kontinuierliche Erstellung aus. Um die kontinuierliche Erstellung für eine Arbeitsverzweigung einzurichten, wählen Sie die Seite **Builds** in **Team Explorer** aus, und wählen Sie **Builddefinition bearbeiten**.
+6. By default, only changes to the master branch trigger a continuous build. To set up continuous build for a working branch, choose the **Builds** page in **Team Explorer**, and choose **Edit Build Definition**.
 
-7. Öffnen Sie die Registerkarte **Quelleinstellungen**. Wählen Sie unter **Überwachte Verzweigungen für fortlaufende Integration und parallele Builds** die Option **Klicken Sie hier, um eine neue Zeile hinzuzufügen**.
+7. Open the **Source Settings** tab. Under **Monitored branches for continuous integration and build**, choose **Click here to add a new row**.
 
-	![][47]
+    ![][47]
 
-8. Geben Sie die erstellte Verzweigung an, zum Beispiel refs/heads/working.
+8. Specify the branch you created, such as refs/heads/working.
 
-	![][48]
+    ![][48]
 
-9. Nehmen Sie eine Änderung am Code vor, öffnen Sie das Kontextmenü für die geänderte Datei, und wählen Sie **Commit** aus.
+9. Make a change in the code, open the shortcut menu for the changed file, and then choose **Commit**.
 
-	![][43]
+    ![][43]
 
-10. Wählen Sie den Link **Unsynchronisierte Commits** und anschließend die Schaltfläche **Sync** oder den Link **Push** aus, um die Änderungen in die Arbeitsverzweigung in Visual Studio Team Services zu kopieren.
+10. Choose the **Unsynced Commits** link, and choose  the **Sync** button or the **Push** link to copy the changes to the copy of the working branch in Visual Studio Team Services.
 
-	![][45]
+    ![][45]
 
-11. Navigieren Sie zur Ansicht **Builds** und suchen Sie den Build, der für die Arbeitsverzweigung ausgelöst wurde.
+11. Navigate to the **Builds** view and find the build that just got triggered for the working branch.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Zusätzliche Tipps zur Verwendung von Git mit Visual Studio Team Services finden Sie unter [Entwickeln und Freigeben von Code in Git mit Visual Studio](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx). Informationen zur Verwendung eines nicht von Visual Studio Team Services verwalteten Git-Repositorys zur Veröffentlichung in Azure finden Sie unter [Kontinuierliche Bereitstellung in Azure App Service](../app-service-web/app-service-continuous-deployment.md). Weitere Informationen zu Visual Studio Team Services finden Sie unter [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
+To learn more tips on using Git with Visual Studio Team Services, see [Develop and share your code in Git using Visual Studio](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx) and for information about using a Git repository that's not managed by Visual Studio Team Services to publish to Azure, see [Continuous Deployment to Azure App Service](../app-service-web/app-service-continuous-deployment.md). For more information on Visual Studio Team Services, see [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
@@ -272,4 +274,8 @@ Zusätzliche Tipps zur Verwendung von Git mit Visual Studio Team Services finden
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

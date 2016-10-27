@@ -1,212 +1,221 @@
 <properties 
-	pageTitle="Business-to-Business-Connectors und API-Apps in Logic Apps | Microsoft Azure" 
-	description="Erfahren Sie mehr über das Erstellen und Konfigurieren von EDI-, EDIFACT-, AS2- und TPM-Connectors; Microservices-Architektur" 
-	services="logic-apps" 
-	documentationCenter="" 
-	authors="MandiOhlinger" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="Business-to-Business Connectors and API Apps in Logic Apps | Microsoft Azure" 
+    description="Learn how to create and configure EDI, EDIFACT, AS2, and TPM connectors; microservices architecture" 
+    services="logic-apps" 
+    documentationCenter="" 
+    authors="MandiOhlinger" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/28/2016" 
-	ms.author="mandia"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/28/2016" 
+    ms.author="mandia"/> 
 
-# Business-to-Business-Connectors und API-Apps
+
+# <a name="business-to-business-connectors-and-api-apps"></a>Business-to-Business Connectors and API Apps
 
 [AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
-Logic Apps enthält zahlreiche BizTalk-API-Apps, die für Integrationsumgebungen von entscheidender Bedeutung sind. Diese API-Apps basieren auf Konzepten und Tools, die in BizTalk Server verwendet werden, aber nun als Teil von Logic Apps verfügbar sind.
+Logic Apps includes many BizTalk API Apps that are vital to integration environments. These API Apps are based on concepts and tools used within BizTalk Server, but are now available as part of Logic Apps. 
 
-Eine Kategorie dieser API-Apps sind die Business-to-Business-API-Apps (B2B). Mithilfe dieser B2B-API-Apps können Sie problemlos Partner hinzufügen, Vereinbarungen erstellen und mit EDI, AS2 und EDIFACT alle Vorgänge genauso durchführen, als wären sie lokal.
+One category of these API Apps are the Business-to-Business (B2B) API Apps. Using these B2B API Apps, you can easily add partners, create agreements, and do everything as you would on-premises using EDI, AS2, and EDIFACT.  
 
-Diese B2B-API-Apps bieten Funktionen für "Trigger" und "Aktion". Ein Trigger startet eine neue Instanz basierend auf einem bestimmten Ereignis wie dem Eingang einer X12-Nachricht von einem Partner. Eine Aktion ist das Ergebnis. Nach dem Empfang einer X12-Nachricht wird die Nachricht beispielsweise mit AS2 gesendet.
+These B2B API Apps offer "Trigger" and "Action" capabilities. A Trigger starts a new instance based on a specific event, like the arrival of an X12 message from a partner. An Action is the result, like after receiving an X12 message, then send the message using AS2.
 
 
-## Was sind Business-to-Business-Connectors oder API-Apps?
-Die Business-to-Business-Funktion (B2B) umfasst vorhandene, vorgefertigte API-Apps, mit denen verschiedene Unternehmen, Abteilungen, Anwendungen etc. über EDI, AS2 und EDIFACT kommunizieren können.
+## <a name="what-is-a-business-to-business-connector-or-api-apps"></a>What is a Business-to-Business Connector or API Apps
+The Business-to-Business (B2B) feature includes existing, pre-built API Apps that allow different companies, divisions, applications, and so on to communicate using AS2, EDI, and EDIFACT. 
 
-Zu den B2B-API-Apps gehören:
+The B2B API Apps include: 
 
-Connector oder API-Apps | Beschreibung
+Connector or API Apps | Description
 --- | ---
-BizTalk Trading Partner Management | Eine API-App, die B2B-Beziehungen mit Partnern und Vereinbarungen erstellt. Diese Beziehungen nutzen das AS2-, EDIFACT- und X12-Protokoll.<br/><br/>Die TPM-API-App ist die Basisanforderung des AS2-Connectors und der X12- oder EDIFACT-API-Apps. 
-AS2-Connector | Ein Connector, der Nachrichten über den AS2-Transport empfängt und sendet. Der Connector übermittelt Daten sicher und zuverlässig über das Internet.
-BizTalk EDIFACT | Eine API-App, die Nachrichten über EDIFACT empfängt und sendet. EDIFACT wird häufig auch als UN/EDIFACT (United Nations/Electronic Data Interchange For Administration, Commerce and Transport) bezeichnet und ist branchenweit verbreitet.
-BizTalk X12 | Eine API-App, die Nachrichten über das X12-Protokoll empfängt und sendet. X12 wird häufig auch als ASC X12 (Accredited Standards Committee X12) bezeichnet und ist branchenweit verbreitet. 
+BizTalk Trading Partner Management | An API App that creates business-to-business (B2B) relationships using partners and agreements. These relationships utilize the AS2, EDIFACT, and X12 protocol.<br/><br/>The TPM API App is the base requirement of the AS2 connector, and the X12 or EDIFACT API Apps. 
+AS2 Connector | A connector that receives and sends messages using the AS2 transport. The connector transports data securely and reliably over the Internet.
+BizTalk EDIFACT | An API App that receives and sends messages using EDIFACT. EDIFACT is also commonly referred to as UN/EDIFACT (United Nations/Electronic Data Interchange For Administration, Commerce and Transport) and is widely used across industries.
+BizTalk X12 | An API App that receives and sends messages using the X12 protocol. X12 is also commonly referred to as ASC X12 (Accredited Standards Committee X12) and is widely used across industries. 
 
 
-Mithilfe dieser API-Apps können Sie verschiedene EDI-Messagingaufgaben meistern. Beispielsweise können Sie mit dem AS2-Connector verschiedene Arten von Nachrichten (EDI, XML, Flatfile und so weiter) empfangen und an einen Kunden, eine Abteilung in Ihrem Unternehmen (z. B. die Personalabteilung) oder an einen beliebigen Benutzer von AS2 senden.
+Using these API Apps, you can complete different EDI messaging tasks. For example, using the AS2 connector, you can securely receive and send different types of messages (EDI, XML, Flat-File, and so on) to a customer, a division within your company like Human Resources, or anyone that uses AS2. 
 
-Sie können beliebig viele API-Apps ohne großen Aufwand erstellen. Außerdem können Sie eine einzige API-App in mehreren Szenarien oder Workflows wiederverwenden.
+You can create as many API Apps as you want and create them easily. You can also reuse a single API App within multiple scenarios or workflows.
 
-Dazu müssen Sie keinen Code schreiben. Lassen Sie uns anfangen.
+You can do this without writing any code. Let's get started. 
 
 
-## Anforderungen für den Einstieg
-Bei der Erstellung von B2B-API-Apps sind einige Ressourcen erforderlich. Diese Elemente müssen von Ihnen erstellt werden, bevor sie in anderen API-Apps verwendet werden können. Diese Anforderungen umfassen u. a.:
+## <a name="requirements-to-get-started"></a>Requirements to Get Started
+When you create B2B API Apps, there are some required resources. These items must be created by you before they can be used within other API Apps. These requirements include: 
 
-Voraussetzung | Beschreibung
+Requirement | Description
 --- | ---
-Azure SQL-Datenbank | Speichert B2B-Elemente, einschließlich Partner, Schemas, Zertifikate und Vereinbarungen. Jede der B2B-API-Apps erfordert eine eigene Azure-SQL-Datenbank. <br/><br/>**Hinweis** Kopieren Sie die Verbindungszeichenfolge in diese Datenbank.<br/><br/>[Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started.md)
-Azure-Blobspeichercontainer | Speichert Nachrichteneigenschaften, wenn die AS2-Archivierung aktiviert ist. Wenn Sie die AS2-Nachrichtenarchivierung nicht benötigen, ist kein Speichercontainer erforderlich. <br/><br/>**Hinweis** Wenn Sie die Archivierung aktivieren, kopieren Sie die Verbindungszeichenfolge in diesen Blob-Speicher.<br/><br/>[Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md)
-Service Bus-Namespace und seine Schlüsselwerte | Speichert X12- und EDIFACT-Batchverarbeitungsdaten. Wenn Sie die Batchverarbeitung nicht benötigen, ist kein Service Bus-Namespace erforderlich.<br/><br/>**Hinweis** Wenn Sie die Batchverarbeitung aktivieren, kopieren Sie diese Werte.<br/><br/>[Erstellen eines Service Bus-Namespace](http://msdn.microsoft.com/library/azure/hh690931.aspx)
-TPM-Instanz | Eine BizTalk TPM-Instanz (Trading Partner Management) ist erforderlich, um einen AS2-Connector und eine X12- oder EDIFACT-API-App zu erstellen. Beim Erstellen der TPM-API-App erstellen Sie die TPM-Instanz. <br/><br/>**Hinweis** Sie müssen den Namen der TPM-API-App kennen. 
+Azure SQL Database | Stores B2B items including partners, schemas, certificates, and agreeements. Each of the B2B API Apps requires its own Azure SQL Database. <br/><br/>**Note** Copy the connection string to this database.<br/><br/>[Create an Azure SQL Database](../sql-database/sql-database-get-started.md)
+Azure Blob Storage container | Stores message properties when AS2 archiving is enabled. If you don't need AS2 message archiving, a Storage container is not needed. <br/><br/>**Note** If you are enabling archiving, copy the connection string to this Blob Storage.<br/><br/>[About Azure Storage Accounts](../storage/storage-create-storage-account.md)
+Service Bus Namespace and its Key values | Stores X12 and EDIFACT batching data. If you don't need batching, a Service Bus namespace is not needed.<br/><br/>**Note** If you are enabling batching, copy these values.<br/><br/>[Create a Service Bus Namespace](http://msdn.microsoft.com/library/azure/hh690931.aspx)
+TPM Instance | A BizTalk Trading Partner Management (TPM) instance is required to create an AS2 connector and X12 or EDIFACT API App. When you create the TPM API App, you are creating the TPM Instance. <br/><br/>**Note** Know the name of your TPM API App. 
 
 
-## Erstellen der API-Apps
-B2B-API-Apps können im Azure-Portal oder mithilfe von REST-APIs erstellt werden.
+## <a name="create-the-api-apps"></a>Create the API Apps
+B2B API Apps can be created using the Azure portal or using REST APIs. 
 
 
-### Erstellen der API-Apps mithilfe von REST-APIs
-[Informationen zur Verwendung der REST-APIs finden Sie in der Dokumentation.](http://go.microsoft.com/fwlink/p/?LinkId=529766)
+### <a name="create-the-api-apps-using-rest-apis"></a>Create the API Apps using REST APIs
+[See the documentation on how to use the REST APIs.](http://go.microsoft.com/fwlink/p/?LinkId=529766)
 
 
-### Erstellen der B2B-API-Apps im Azure-Portal
-Im Azure-Portal können Sie B2B-API-Apps beim Erstellen der Logik-Apps, Web-Apps oder mobilen Apps erstellen. Sie können sie auch auf ihrem eigenen Blatt erstellen. Beide Möglichkeiten sind einfach, weshalb der Vorgang von Ihren Anforderungen oder Einstellungen abhängt. Es gibt Benutzer, die lieber zuerst alle B2B-API-Apps mit ihren bestimmten Eigenschaften erstellen. Anschließend erstellen Sie die Logik-, Web- oder mobilen Apps und fügen die B2B-API-Apps hinzu, die Sie erstellt haben.
+### <a name="create-the-b2b-api-apps-in-the-azure-portal"></a>Create the B2B API Apps in the Azure Portal
+In the Azure portal, you can create B2B API Apps when creating Logic Apps, Web Apps, or Mobile Apps. Or, you can create one using its own blade. Both ways are easy so it depends on your needs or preferences. Some users prefer to create all the B2B API Apps with their specific properties first. Then, create the Logic Apps/Web Apps/Mobile Apps, and add the B2B API Apps you created.  
 
-Über die folgenden Schritte erstellen Sie B2B-API-Apps auf dem Blatt "API-Apps":
+The following steps create the B2B API Apps using the API Apps blade.
 
 
-#### Erstellen der BizTalk TPM-API-Apps (Trading Partner Management)
+#### <a name="create-the-biztalk-trading-partner-management-(tpm)-api-apps"></a>Create the BizTalk Trading Partner Management (TPM) API Apps
 
-> [AZURE.NOTE] Eine BizTalk TPM-Instanz (Trading Partner Management) ist erforderlich, um einen AS2-Connector und eine X12- oder EDIFACT-API-App zu erstellen. Beim Erstellen der TPM-API-App erstellen Sie die TPM-Instanz.
+> [AZURE.NOTE] A BizTalk Trading Partner Management (TPM) instance is required to create an AS2 connector and X12 or EDIFACT API App. When you create the TPM API App, you are creating the TPM Instance.
 
-Die TPM-Instanz wird mithilfe der folgenden Schritte erstellt:
+The following steps create the TPM instance:
 
-1. Wählen Sie im Azure-Portal im Startmenü (auf der Startseite) **Marketplace** aus. **API-Apps** zeigt alle vorhandenen API-Apps und Connectors. Sie können die betreffenden B2B-API-Apps auch **suchen**.
-2. Wählen Sie **BizTalk Trading Partner Management** aus. Wählen Sie im neuen Blatt **Erstellen** aus.
-3. Geben Sie die Eigenschaften ein:
+1. In the Azure portal Startboard (the Home page), select **Marketplace**. **API Apps** lists all the existing API Apps and connectors. You can also **Search** for the specific B2B API Apps.
+2. Select **BizTalk Trading Partner Management**. In the new blade, select **Create**. 
+3. Enter the properties: 
 
-	Eigenschaft | Beschreibung
+    Property | Description
 --- | ---
-Name | Geben Sie einen Namen für die TPM-Instanz ein. Sie können sie z. B. *AccountsPayableTPM* nennen.
-Paketeinstellungen | Geben Sie die ADO.NET-**Datenbankverbindungszeichenfolge** zur Azure-SQL-Datenbank ein, die Sie erstellt haben. <br/><br/>Wenn Sie die Verbindungszeichenfolge kopieren, wird das Kennwort nicht der Verbindungszeichenfolge hinzugefügt. Achten Sie darauf, dass das Kennwort in der Verbindungszeichenfolge eingegeben wird.
-App Service-Plan | Listet Ihren Zahlungsplan auf. Sie können ihn ändern, wenn Sie mehr oder weniger Ressourcen benötigen.
-Preisstufe | Schreibgeschützte Eigenschaft, die die Preiskategorie innerhalb Ihres Azure-Abonnements auflistet. 
-Ressourcengruppe | Erstellen Sie eine neue oder verwenden Sie eine vorhandene Gruppe. Alle API-Apps und Connectors für Ihre Logik- Apps, Web-Apps und mobilen Apps müssen in derselben Ressourcengruppe enthalten sein. <br/><br/>Unter [Verwenden von Ressourcengruppen](../resource-group-overview.md) wird diese Eigenschaft erläutert. 
-Abonnement | Schreibgeschützte Eigenschaft, die Ihr aktuelles Abonnement auflistet.
-Standort | Der geografische Standort, an dem Ihr Azure-Dienst gehostet wird. 
-Zum Startmenü hinzufügen | Wählen Sie diese Option aus, um die B2B-API-App Ihrem Startmenü (der Startseite) hinzufügen.
+Name | Enter any name for the TPM instance. For example, you can name it *AccountsPayableTPM*.
+Package Settings | Enter the ADO.NET **Database Connection String** to the Azure SQL Database you created. <br/><br/>When you copy the connection string, the password is not added to the connection string. Be sure to enter the password in the connection string.
+App Service Plan | Lists your payment plan. You can change it if you need more or less resources.
+Pricing Tier | Read-only property that lists the pricing category within your Azure subscription. 
+Resource Group | Create a new one or use an existing group. All API Apps and connectors for your Logic Apps, Web Apps, and Mobile Apps must be in the same Resource Group. <br/><br/>[Using resource groups](../resource-group-overview.md) explains this property. 
+Subscription | Read-only property that lists your current subscription.
+Location | The Geographic location that hosts your Azure service. 
+Add to Startboard | Select this to add the B2B API App to your Starboard (the home page).
 
-4. Klicken Sie auf **Erstellen**.
+4. Select **Create**. 
 
-Nachdem die TPM-API-App (TPM-Instanz) erstellt wurde, können Sie den AS2-Connector und/oder die X12- oder EDIFACT-API-Apps erstellen.
+After the TPM API APP (TPM Instance) is created, you can then create the AS2 connector and/or the X12 or EDIFACT API Apps. 
 
 
-#### Erstellen des AS2-Connectors
+#### <a name="create-the-as2-connector"></a>Create the AS2 connector
 
-1. Wählen Sie im Azure-Portal im Startmenü (auf der Startseite) **Marketplace** aus. **API-Apps** zeigt alle vorhandenen API-Apps und Connectors. Sie können die betreffenden B2B-API-Apps auch **suchen**.
-2. Wählen Sie **AS2-Connector** aus. Wählen Sie im neuen Blatt **Erstellen** aus.
-3. Geben Sie die Eigenschaften ein:
+1. In the Azure portal Startboard (the Home page), select **Marketplace**. **API Apps** lists all the existing API Apps and connectors. You can also **Search** for the specific B2B API Apps.
+2. Select **AS2 Connector**. In the new blade, select **Create**. 
+3. Enter the properties: 
 
-	Eigenschaft | Beschreibung
+    Property | Description
 --- | ---
-Name | Geben Sie einen Namen für den AS2-Connector ein. Sie können ihn z. B. *AS2Connector* nennen.
-Paketeinstellungen | Geben Sie die für diese API-App spezifischen Einstellungen wie den Namen der TPM-Instanz ein. <br/><br/>Unter [Hinzufügen von AS2-Paketeinstellungen](#AddAS2Conn) in diesem Thema finden Sie Informationen zu den einzelnen Eigenschaften. 
-App Service-Plan | Listet Ihren Zahlungsplan auf. Sie können ihn ändern, wenn Sie mehr oder weniger Ressourcen benötigen.
-Preisstufe | Schreibgeschützte Eigenschaft, die die Preiskategorie innerhalb Ihres Azure-Abonnements auflistet. 
-Ressourcengruppe | Erstellen Sie eine neue oder verwenden Sie eine vorhandene Gruppe. Unter [Verwenden von Ressourcengruppen](../resource-group-overview.md) wird diese Eigenschaft erläutert. 
-Abonnement | Schreibgeschützte Eigenschaft, die Ihr aktuelles Abonnement auflistet.
-Standort | Der geografische Standort, an dem Ihr Azure-Dienst gehostet wird. 
-Zum Startmenü hinzufügen | Wählen Sie diese Option aus, um die B2B-API-App Ihrem Startmenü (der Startseite) hinzufügen.
+Name | Enter any name for the AS2 connector. For example, you can name it *AS2Connector*.
+Package Settings | Enter the settings specific to that API App, like the TPM Instance name. <br/><br/>See [Add AS2 Package Settings](#AddAS2Conn) in this topic for the specific properties. 
+App Service Plan | Lists your payment plan. You can change it if you need more or less resources.
+Pricing Tier | Read-only property that lists the pricing category within your Azure subscription. 
+Resource Group | Create a new one or use an existing group. [Using resource groups](../resource-group-overview.md) explains this property. 
+Subscription | Read-only property that lists your current subscription.
+Location | The Geographic location that hosts your Azure service. 
+Add to Startboard | Select this to add the B2B API App to your Starboard (the home page).
 
-	**<a name="AddAS2Conn"></a>AS2-Connector-Paketeinstellungen**
+    **<a name="AddAS2Conn"></a>AS2 connector Package Settings**
 
-	Eigenschaft | Beschreibung
+    Property | Description
 --- | --- 
-Datenbankverbindungszeichenfolge | Geben Sie die ADO.NET-Verbindungszeichenfolge zur Azure-SQL-Datenbank ein, die Sie erstellt haben. Wenn Sie die Verbindungszeichenfolge kopieren, wird das Kennwort nicht der Verbindungszeichenfolge hinzugefügt. Achten Sie vor dem Einfügen darauf, dass das Kennwort in der Verbindungszeichenfolge eingegeben wird.
-Aktivieren der Archivierung für eingehende Nachrichten | Optional. Aktivieren Sie diese Eigenschaft, damit Nachrichteneigenschaften einer eingehenden AS2-Nachricht gespeichert werden, die von einem Partner empfangen wird. 
-Verbindungszeichenfolge zum Azure-Blobspeicher | Geben Sie die Verbindungszeichenfolge zum Azure-Blobspeichercontainer ein, den Sie erstellt haben. Wenn die Archivierung aktiviert ist, werden die codierten und decodierten Nachrichten in diesem Speichercontainer gespeichert.
-TPM-Instanzname | Geben Sie den Namen der API-App **BizTalk Trading Partner Management** ein, die Sie zuvor erstellt haben. Wenn Sie den AS2-Connector erstellen, führt dieser Connector nur die AS2-Vereinbarungen innerhalb dieser spezifischen TPM-Instanz aus.
+Database Connection String | Enter the ADO.NET connection string to the Azure SQL Database you created. When you copy the connection string, the password is not added to the connection string. Be sure to enter the password in the connection string before you paste.
+Enable Archiving for incoming messages | Optional. Enable this property to store the message properties of an incoming AS2 message received from a partner. 
+Azure Blob Storage Connection String  | Enter the connection string to the Azure Blob Storage container you created. When Archiving is enabled, the encoded and decoded messages are stored in this Storage container.
+TPM Instance Name | Enter the name of the **BizTalk Trading Partner Management** API App you previously created. When you create the AS2 connector, this connector executes only the AS2 agreements within this specific TPM instance.
 
-4. Klicken Sie auf **Erstellen**.
+4. Select **Create**. 
 
 
-#### Erstellen der X12- oder EDIFACT-API-Apps
+#### <a name="create-the-x12-or-edifact-api-apps"></a>Create the X12 or EDIFACT API Apps
 
-1. Wählen Sie im Azure-Portal im Startmenü (auf der Startseite) **Marketplace** aus. **API-Apps** zeigt alle vorhandenen API-Apps und Connectors. Sie können die betreffenden B2B-API-Apps auch **suchen**.
-2. Wählen Sie **BizTalk X12** oder **BizTalk EDIFACT** aus. Wählen Sie im neuen Blatt **Erstellen** aus.
-3. Geben Sie die Eigenschaften ein:
+1. In the Azure portal Startboard (the Home page), select **Marketplace**. **API Apps** lists all the existing API Apps and connectors. You can also **Search** for the specific B2B API Apps.
+2. Select **BizTalk X12** or **BizTalk EDIFACT**. In the new blade, select **Create**. 
+3. Enter the properties: 
 
-	Eigenschaft | Beschreibung
+    Property | Description
 --- | ---
-Name | Geben Sie einen Namen für die B2B-API-App ein. Sie können sie z. B. *EDI850APIApp* nennen.
-Paketeinstellungen | Geben Sie die für diese API-App spezifischen Einstellungen wie den Namen der TPM-Instanz ein. <br/><br/>Unter [X12- oder EDIFACT-Paketeinstellungen](#AddX12) in diesem Thema finden Sie Informationen zu den einzelnen Eigenschaften. 
-App Service-Plan | Listet Ihren Zahlungsplan auf. Sie können ihn ändern, wenn Sie mehr oder weniger Ressourcen benötigen.
-Preisstufe | Schreibgeschützte Eigenschaft, die die Preiskategorie innerhalb Ihres Azure-Abonnements auflistet. 
-Ressourcengruppe | Erstellen Sie eine neue oder verwenden Sie eine vorhandene Gruppe. Unter [Verwenden von Ressourcengruppen](../resource-group-overview.md) wird diese Eigenschaft erläutert. 
-Abonnement | Schreibgeschützte Eigenschaft, die Ihr aktuelles Abonnement auflistet.
-Standort | Der geografische Standort, an dem Ihr Azure-Dienst gehostet wird. 
-Zum Startmenü hinzufügen | Wählen Sie diese Option aus, um die B2B-API-App Ihrem Startmenü (der Startseite) hinzufügen.
+Name | Enter any name for the B2B API App. For example, you can name it *EDI850APIApp*.
+Package Settings | Enter the settings specific to that API App, like the TPM Instance name. <br/><br/>See [X12 or EDIFACT Package Settings](#AddX12) in this topic for the specific properties. 
+App Service Plan | Lists your payment plan. You can change it if you need more or less resources.
+Pricing Tier | Read-only property that lists the pricing category within your Azure subscription. 
+Resource Group | Create a new one or use an existing group. [Using resource groups](../resource-group-overview.md) explains this property. 
+Subscription | Read-only property that lists your current subscription.
+Location | The Geographic location that hosts your Azure service. 
+Add to Startboard | Select this to add the B2B API App to your Starboard (the home page).
 
-	**<a name="AddX12"></a>Paketeinstellungen von X12- und EDIFACT-API-Apps**
+    **<a name="AddX12"></a>X12 and EDIFACT API Apps Package Settings**  
 
-	Eigenschaft | Beschreibung
+    Property | Description
 --- | --- 
-Datenbankverbindungszeichenfolge | Geben Sie die ADO.NET-Verbindungszeichenfolge zur Azure-SQL-Datenbank ein, die Sie erstellt haben. Wenn Sie die Verbindungszeichenfolge kopieren, wird das Kennwort nicht der Verbindungszeichenfolge hinzugefügt. Achten Sie vor dem Einfügen darauf, dass das Kennwort in der Verbindungszeichenfolge eingegeben wird.
-Service Bus- Namespace | Geben Sie den von Ihnen erstellten Service Bus-Namespace ein. Dies ist nur erforderlich, wenn die Batchverarbeitung aktiviert ist. 
-Shared Access-Schlüsselname des Service Bus-Namespace | Geben Sie den von Ihnen erstellten Zugriffsschlüssel für den Service Bus-Namespace ein. Dies ist nur erforderlich, wenn die Batchverarbeitung aktiviert ist. 
-Shared Access-Schlüsselwert für den Service Bus-Namespace | Geben Sie den von Ihnen erstellten Zugriffsschlüsselwert für den Service Bus-Namespace ein. Dies ist nur erforderlich, wenn die Batchverarbeitung aktiviert ist. 
-TPM-Instanzname | Geben Sie den Namen der API-App **BizTalk Trading Partner Management** ein, die Sie zuvor erstellt haben. Wenn Sie die X12- oder EDIFACT-API-Apps erstellen, führt diese API-App nur die X12/EDIFACT-Vereinbarungen innerhalb dieser spezifischen TPM-Instanz aus.
+Database Connection String | Enter the ADO.NET connection string to the Azure SQL Database you created. When you copy the connection string, the password is not added to the connection string. Be sure to enter the password in the connection string before you paste.
+Service Bus Namespace | Enter the Service Bus namespace you created. Required only when batching is enabled. 
+Service Bus Namespace Shared Access Key name | Enter the Service Bus namespace Access Key you created. Required only when batching is enabled. 
+Service Bus Namespace Shared Access Key value | Enter the Service Bus namespace Access Key value you created. Required only when batching is enabled. 
+TPM Instance Name | Enter the name of the **BizTalk Trading Partner Management** API App you previously created. When you create the X12 or EDIFACT API Apps, this API App executes only the X12/EDFIACT agreements within this specific TPM instance.
 
-4. Klicken Sie auf **Erstellen**.
-
-
-## Hinzufügen Ihrer Partner, Vereinbarungen, Zertifikate und Schemas 
-Öffnen Sie im Azure-Portal Ihre TPM-API-App. Fügen Sie im Abschnitt **Komponenten** Ihre Partner, Vereinbarungen, Zertifikate und Schemas hinzu.
-
-Sie können Ihren AS2-Connectors, X12-API-Apps und EDIFACT-API-Apps auch Vereinbarungen hinzufügen.
+4. Select **Create**. 
 
 
-## Überwachen Ihrer API-Apps
-Öffnen Sie im Azure-Portal Ihre TPM-API-App. Im Abschnitt **Vorgänge** können Sie verschiedene Verwaltungsvorgänge anzeigen. Dazu zählen z. B.:
+## <a name="add-your-partners,-agreements,-certificates,-and-schemas"></a>Add your partners, agreements, certificates, and schemas 
+In the Azure portal, open your TPM API App. In the **Components** section, add your Partners, Agreements, Certificates, and Schemas. 
 
-- Anzeigen von Informations- und Fehlerereignissen
-- Anzeigen der Speicherauslastung und Threadanzahl des Arbeitsprozesses (w3wp)
-- Anzeigen des Anwendungs- und Webserverprotokolls
-
-Unter [Überwachen von Logik-Apps](app-service-logic-monitor-your-logic-apps.md) finden Sie weitere Informationen.
+You can also add agreements to your AS2 connectors, X12 API Apps, and EDIFACT API Apps. 
 
 
-## Hinzufügen der API-Apps zu Ihrer Anwendung 
-Microsoft Azure App Service stellt verschiedene Anwendungstypen zur Verfügung, die diese B2B-API-Apps verwenden können. Sie können neue erstellen oder vorhandene B2B-API-Apps den Logik-Apps, mobilen Apps oder Web-Apps hinzufügen.
+## <a name="monitor-your-api-apps"></a>Monitor your API Apps
+In the Azure portal, open your TPM API App. In the **Operations** section, you can view different management operations. For example, you can:
 
-Wenn Sie in Ihrer App die B2B-API-Apps aus dem Katalog auswählen, werden sie automatisch Ihrer App hinzugefügt.
+- View Informational and Error events
+- View memory usage and thread count of the worker process (w3wp)
+- View the Application and web server logs
 
-> [AZURE.IMPORTANT] Zum Hinzufügen von Connectors und API-Apps, die Sie zuvor erstellt haben, erstellen Sie die Logik-Apps, mobilen Apps oder Web-Apps in derselben Ressourcengruppe.
-
-Über die folgenden Schritte werden B2B-API-Apps Logik-Apps, mobilen Apps oder Web-Apps hinzugefügt:
-
-1. Wechseln Sie im Azure-Portal im Startmenü (auf der Startseite) zu **Marketplace**, und suchen Sie Ihre Logik-, mobile oder Web-App.
-
-	Wenn Sie eine neue Anwendung erstellen, suchen Sie nach "Logik-App", "Mobile App" oder "Web-App". Wählen Sie die App im neuen Blatt aus, und klicken Sie auf **Erstellen**. Unter [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) werden die Schritte erläutert.
-
-2. Öffnen Sie Ihre App, und wählen Sie **Trigger und Aktionen** aus.
-
-3. Fügen Sie über den **Katalog** die von Ihnen erstellte B2B-API-App hinzu, die automatisch Ihrer App hinzugefügt wird. Sie können auch eine neue B2B-API-App erstellen.
-
-	> [AZURE.IMPORTANT] Der AS2-Connector und die X12- und EDIFACT-API-Apps benötigen eine TPM-Instanz. Wenn Sie daher neue B2B-API-Apps erstellen, erstellen Sie zuerst die TPM-API-App und dann den AS2-Connector, die X12-API-App oder die EDIFACT-API-App.
-
-4. Klicken Sie zum Speichern der Änderungen auf **OK**.
-
->[AZURE.NOTE] Wenn Sie sich zunächst mit Azure Logic Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie [Logik-Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-
-## Weitere B2B-Ressourcen
-
-[Erstellen eines B2B-Prozesses](app-service-logic-create-a-b2b-process.md)<br/> [Erstellen einer Handelspartnervereinbarung](app-service-logic-create-a-trading-partner-agreement.md)<br/> [Was sind Connectors und BizTalk-API-Apps?](app-service-logic-what-are-biztalk-api-apps.md)
+More at [Monitor your Logic Apps](app-service-logic-monitor-your-logic-apps.md).
 
 
-## Weitere Informationen zu Logik- und Web-Apps
-[Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md)<br/> [Websites und Web-Apps in Azure App Service](../app-service-web/app-service-web-overview.md)
+## <a name="add-the-api-apps-to-your-application"></a>Add the API Apps to your application 
+Microsoft Azure App Service exposes different application types that can use these B2B API Apps. You can create a new or add your existing B2B API Apps to Logic Apps, Mobile Apps, or a Web Apps. 
+
+Within your App, simply selecting the B2B API Apps from the Gallery automatically adds it to your App.  
+
+> [AZURE.IMPORTANT] To add connectors and API Apps you previously created, create the Logic Apps, Mobile Apps, or Web Apps in the same Resource Group. 
+
+The following steps add the B2B API Apps to Logic Apps, Mobile Apps, or Web Apps: 
+
+1. In the Azure portal Startboard (home page), go to the **Marketplace**, and search for your  Logic, Mobile, or Web Apps. 
+
+    If you are creating a new App, search for Logic Apps, Mobile Apps, or Web Apps. Select the App and in the new blade, select **Create**. [Create a Logic App](app-service-logic-create-a-logic-app.md) lists the steps. 
+
+2. Open your App and select **Triggers and Actions**. 
+
+3. From the **Gallery**, select the B2B API App, which automatically adds it to your App. You can also create a new B2B API App.
+
+    > [AZURE.IMPORTANT] The AS2 connector and X12, EDIFACT API Apps require a TPM Instance. So if you're creating new B2B API Apps, create the TPM API App first, and then create the AS2 connector, X12 API App, or EDIFACT API App. 
+
+4. Select **OK** to save your changes. 
+
+>[AZURE.NOTE] To get started with Azure Logic Apps before signing up for an Azure account, [Try Logic Apps](https://tryappservice.azure.com/?appservice=logic). You can immediately create a short-lived starter logic app. No credit cards required; no commitments.
+
+## <a name="more-b2b-resources"></a>More B2B resources
+
+[Creating a B2B process](app-service-logic-create-a-b2b-process.md)<br/>
+[Creating a Trading Partner Agreement](app-service-logic-create-a-trading-partner-agreement.md)<br/>
+[What are Connectors and BizTalk API Apps](app-service-logic-what-are-biztalk-api-apps.md)
 
 
-## Weitere Connectors
+## <a name="read-about-logic-apps-and-web-apps"></a>Read about Logic Apps and Web Apps
+[What are Logic Apps?](app-service-logic-what-are-logic-apps.md)<br/>
+[Websites and Web Apps in Azure App Service](../app-service-web/app-service-web-overview.md)
 
-[Liste mit Connectors und API-Apps](app-service-logic-connectors-list.md)<br/><br/> [Was sind Connectors und BizTalk-API-Apps?](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+## <a name="more-connectors"></a>More Connectors
+
+[Connectors and API Apps List](app-service-logic-connectors-list.md)<br/><br/>
+[What are Connectors and BizTalk API Apps](app-service-logic-what-are-biztalk-api-apps.md) 
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

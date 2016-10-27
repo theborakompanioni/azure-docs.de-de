@@ -1,67 +1,72 @@
 <properties
-	pageTitle="Verwalten der Mitglieder für eine Gruppe in der Azure Active Directory-Vorschau | Microsoft Azure"
-	description="Verwalten von Benutzern und Geräten, bei denen es sich um Mitglieder einer Gruppe in Azure Active Directory handelt"
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="Manage the members for a group in Azure Active Directory preview | Microsoft Azure"
+    description="How to users and devices that are members of a group in Azure Active Directory"
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/12/2016"
-	ms.author="curtand"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/12/2016"
+    ms.author="curtand"/>
 
 
-# Verwalten der Mitglieder für eine Gruppe in der Azure Active Directory-Vorschau
 
-In diesem Artikel wird erläutert, wie Sie die Mitglieder für eine Gruppe in der Azure Active Directory-Vorschau (Azure AD) verwalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)
+# <a name="manage-the-members-for-a-group-in-azure-active-directory-preview"></a>Manage the members for a group in Azure Active Directory preview
 
-## Wie finde ich Mitglieder und verwalte sie?
+This article explains how to manage the members for a group in Azure Active Directory (Azure AD) preview. [What's in the preview?](active-directory-preview-explainer.md)
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
+## <a name="how-do-i-find-the-members-and-manage-them?"></a>How do I find the members and manage them?
 
-2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
 
-  ![Öffnen der Benutzerverwaltung](./media/active-directory-groups-members-azure-portal/search-user-management.png)
+2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
 
-3.  Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.
+  ![Opening user management](./media/active-directory-groups-members-azure-portal/search-user-management.png)
 
-  ![Öffnen des Blatts „Gruppen“](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
+3.  On the **Users and groups** blade, select **All groups**.
 
-4. Wählen Sie auf dem Blatt **Benutzer und Gruppen** eine Gruppe aus.
+  ![Opening the groups blade](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
 
-5. Wählen Sie auf dem Blatt **Gruppe – *Gruppenname*** die Option **Mitglieder** aus.
+4. On the **Users and groups - All groups** blade, select a group.
 
-  ![Öffnen des Blatts „Mitglieder“](./media/active-directory-groups-members-azure-portal/view-group-members.png)
+5. On the **Group - *groupname*** blade, select **Members**.
 
-6. Um der Gruppe Mitglieder hinzuzufügen, wählen Sie auf dem Blatt **Gruppe – Mitglieder** die Option **Mitglieder hinzufügen** aus.
+  ![Opening the Members blade](./media/active-directory-groups-members-azure-portal/view-group-members.png)
 
-  ![Befehl zum Hinzufügen von Mitgliedern](./media/active-directory-groups-members-azure-portal/add-group-members-command.png)
+6. To add members to the group, on the **Group - Members** blade, select **Add Members**.
 
-7. Wählen Sie auf dem Blatt **Mitglieder** mindestens einen Benutzer oder ein Gerät aus, den/das Sie der Gruppe hinzufügen möchten, und klicken Sie auf die Schaltfläche **Auswählen** im unteren Bereich des Blatts, um das Element zur Gruppe hinzuzufügen. Das Feld **Benutzer** filtert die Anzeige basierend auf einem Abgleich Ihrer Eingabe mit einem beliebigen Teil eines Benutzer- oder Gerätenamens. In diesem Feld können keine Platzhalterzeichen verwendet werden.
+  ![Add Members command](./media/active-directory-groups-members-azure-portal/add-group-members-command.png)
 
-8. Um Mitglieder aus der Gruppe zu entfernen, wählen Sie auf dem Blatt **Gruppe – Mitglieder** ein Mitglied aus.
+7. On the **Members** blade, select one or more users or devices to add to the group and select the **Select** button at the bottom of the blade to add them to the group. The **User** box filters the display based on matching your entry to any part of a user or device name. No wildcard characters are accepted in that box.
 
-9. Klicken Sie auf dem Blatt ***Mitgliedsname*** auf den Befehl **Entfernen**, und bestätigen Sie Ihre Auswahl, wenn Sie dazu aufgefordert werden.
+8. To remove members from the group, on the **Group - Members** blade, select a member.
 
-  ![Befehl zum Entfernen von Mitgliedern](./media/active-directory-groups-members-azure-portal/remove-group-members-command.png)
+9. On the ***membername*** blade, select the **Remove** command, and confirm your choice at the prompt.
 
-9. Klicken Sie auf **Speichern**, wenn Sie die Bearbeitung der Mitglieder für die Gruppe abgeschlossen haben.
+  ![remove Members command](./media/active-directory-groups-members-azure-portal/remove-group-members-command.png)
+
+9. When you finish changing members for the group, select **Save**.
 
 
-## Zusätzliche Informationen
+## <a name="additional-information"></a>Additional information
 
-Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
+These articles provide additional information on Azure Active Directory.
 
-* [Anzeigen vorhandener Gruppen](active-directory-groups-view-azure-portal.md)
-* [Erstellen einer neuen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
-* [Verwalten der Einstellungen einer Gruppe](active-directory-groups-settings-azure-portal.md)
-* [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
-* [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
+* [See existing groups](active-directory-groups-view-azure-portal.md)
+* [Create a new group and adding members](active-directory-groups-create-azure-portal.md)
+* [Manage settings of a group](active-directory-groups-settings-azure-portal.md)
+* [Manage memberships of a group](active-directory-groups-membership-azure-portal.md)
+* [Manage dynamic rules for users in a group](active-directory-groups-dynamic-membership-azure-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

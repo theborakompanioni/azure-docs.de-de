@@ -1,71 +1,76 @@
 <properties
-	pageTitle="Zugreifen auf den Schlüsseltresor hinter der Firewall | Microsoft Azure"
-	description="Es wird beschrieben, wie Sie aus einer Anwendung hinter einer Firewall auf den Schlüsseltresor zugreifen."
-	services="key-vault"
-	documentationCenter=""
-	authors="amitbapat"
-	manager="mbaldwin"
-	tags="azure-resource-manager"/>
+    pageTitle="Access Key Vault behind firewall | Microsoft Azure"
+    description="Learn how to access Key Vault from an application behind a firewall"
+    services="key-vault"
+    documentationCenter=""
+    authors="amitbapat"
+    manager="mbaldwin"
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="key-vault"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="09/13/2016"
-	ms.author="ambapat"/>
+    ms.service="key-vault"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="09/13/2016"
+    ms.author="ambapat"/>
 
-# Zugreifen auf den Schlüsseltresor hinter der Firewall
-### F: Meine Schlüsseltresor-Clientanwendung muss hinter einer Firewall angeordnet sein. Welche Ports/Hosts/IP-Adressen muss ich öffnen, um den Zugriff auf den Schlüsseltresor zu ermöglichen?
 
-Für den Zugriff auf einen Schlüsseltresor muss Ihre Schlüsseltresor-Clientanwendung auf mehrere Endpunkte für unterschiedliche Funktionalitäten zugreifen können.
+# <a name="accessing-key-vault-behind-firewall"></a>Accessing Key Vault behind firewall
+### <a name="q:-my-key-vault-client-application-needs-to-be-behind-a-firewall,-what-ports/hosts/ip-addresses-should-i-open-to-enable-access-to-key-vault?"></a>Q: My key vault client application needs to be behind a firewall, what ports/hosts/IP addresses should I open to enable access to key vault?
 
-- Authentifizierung (über Azure Active Directory)
-- Verwaltung des Schlüsseltresors (z.B. Erstellen/Lesen/Aktualisieren/Löschen und auch Festlegen von Zugriffsrichtlinien) mit Azure Resource Manager
-- Der Zugriff auf und die Verwaltung von Objekten (Schlüssel und geheime Schlüssel), die im Schlüsseltresor selbst gespeichert sind, verläuft über den schlüsseltresorspezifischen Endpunkt (z.B. [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)).
+To access a key vault your key vault client application needs to be able to access multiple end-points for various functionalities.
 
-Je nach Konfiguration und Umgebung gibt es verschiedene Varianten.
+- Authentication (via Azure Active Directory)
+- Management of Key Vault (which includes create/read/update/delete and also setting access policies) through Azure Resource Manager
+- Accessing and managing objects (keys and secrets) stored in key vault itself, goes through the key vault specific end point (e.g. [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)).  
 
-## Ports
+Depending on your configuration and environment, there are some variations.   
 
-Der gesamte Datenverkehr an den Schlüsseltresor verläuft für alle drei Funktionen (Authentifizierung, Verwaltung und Datenebenenzugriff) über „HTTPS: Port 443“. Für die Zertifikatsperrliste fällt gelegentlich auch Datenverkehr über „HTTP (Port 80)“ an. Clients mit Unterstützung von OCSP sollten die Zertifikatsperrliste nicht erreichen, sondern nur gelegentlich [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).
+## <a name="ports"></a>Ports
 
-## Authentifizierung
+All traffic to key vault for all the 3 functions (authentication, management and data plane access) goes over HTTPS: Port 443. However for CRL, there will be occasionally HTTP (port 80) traffic. Clients that support OCSP shouldn't reach CRL, but may occasionally reach [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
 
-Die Schlüsseltresor-Clientanwendung muss zur Authentifizierung auf Azure Active Directory-Endpunkte zugreifen. Der verwendete Endpunkt richtet sich nach der AAD-Mandantenkonfiguration und dem Typ des Prinzipals (Benutzerprinzipal, Dienstprinzipal) sowie dem Kontotyp, z.B. Microsoft-Konto oder Organisations-ID.
+## <a name="authentication"></a>Authentication
 
-| Prinzipaltyp | Endpunkt:Port |
+Key Vault client application will need to access Azure Active Directory endpoints for authentication. The endpoint used depends on the AAD tenant configuration and the type of principal -- user principal, service principal and the type of account, e.g. Microsoft Account or Org ID.  
+
+| Principal Type | Endpoint:port |
 |----------------|---------------|
-| Benutzer mit Microsoft-Konto<br> (z.B. user@hotmail.com) | **Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443<br><br> und <br>login.live.com:443 |
-| Benutzer-/Dienstprinzipal mit Organisations-ID per AAD (z.B. user@contoso.com) | **Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443 |
-| Benutzer-/Dienstprinzipal mit Organisations-ID und AD FS oder einem anderen Verbundendpunkt (z.B. user@contoso.com) | Alle obigen Endpunkte für Organisations-ID plus AD FS oder andere Verbundendpunkte |
+| User using Microsoft Account<br> (e.g. user@hotmail.com) | **Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> and <br>login.live.com:443   |
+| User/Service principal using Org ID with AAD (e.g. user@contoso.com) | **Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
+| User/Service principal using Org ID+ADFS or other federated endpoint (e.g. user@contoso.com) | All the above endpoints for Org ID plus ADFS or other federated endpoints |
 
-Es sind noch andere komplexe Szenarien möglich. Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](/documentation/articles/active-directory-authentication-scenarios/), [Integrieren von Anwendungen in Azure Active Directory](/documentation/articles/active-directory-integrating-applications/) und [Entwicklerhandbuch zu Azure Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx).
+There are other possible complex scenarios. Please refer to [Azure Active Directory Authentication Flow](/documentation/articles/active-directory-authentication-scenarios/), [Integrating Applications with Azure Active Directory](/documentation/articles/active-directory-integrating-applications/) and [Active Directory Authentication Protocols](https://msdn.microsoft.com/library/azure/dn151124.aspx) for additional information.  
 
-## Schlüsseltresorverwaltung
+## <a name="key-vault-management"></a>Key Vault Management
 
-Für die Schlüsseltresorverwaltung (CRUD und Festlegen der Zugriffsrichtlinie) benötigt die Schlüsseltresor-Clientanwendung Zugriff auf den Azure Resource Manager-Endpunkt.
+For Key Vault Management (CRUD and setting access policy), the key vault client application needs to access Azure Resource Manager endpoint.  
 
-| Typ des Vorgangs | Endpunkt:Port |
+| Type of operation | Endpoint:port |
 |----------------|---------------|
-| Vorgänge auf der Steuerungsebene des Schlüsseltresors<br> mit Azure Resource Manager | **Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> management.microsoftazure.de:443 |
-| Azure Active Directory Graph-API | **Global:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Deutschland:**<br> graph.cloudapi.de:443 |
+| Key Vault Control Plane operations<br> via Azure Resource Manager | **Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |
+| Azure Active Directory Graph API | **Global:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Germany:**<br> graph.cloudapi.de:443 |
 
-## Schlüsseltresorvorgänge
+## <a name="key-vault-operations"></a>Key Vault Operations
 
-Für alle Schlüsseltresorvorgänge in Bezug auf die Objektverwaltung (Schlüssel und geheime Schlüssel) und Kryptografie benötigt der Schlüsseltresorclient Zugriff auf den Schlüsseltresor-Endpunkt. Das DNS-Suffix des Endpunkts unterscheidet sich je nach Standort des Schlüsseltresors. Der Schlüsseltresor-Endpunkt hat das folgende Format: <Tresorname>.<regionsspezifisches DNS-Suffix>. Dies ist in der Tabelle unten beschrieben.
+For all key vault object (keys and secrets) management and cryptographic operations, key vault client needs to access the key vault end point. Depending on the location of your Key Vault, the endpoint DNS suffix is different. The Key Vault end point is of the format: <vault-name>.<region-specific-dns-suffix> as described in the table below.  
 
-| Typ des Vorgangs | Endpunkt:Port |
+| Type of operation | Endpoint:port |
 |----------------|---------------|
-| Schlüsseltresorvorgänge wie kryptografische Vorgänge für Schlüssel, Erstellen/Lesen/Aktualisieren/Löschen von Schlüsseln und geheimen Schlüsseln, Festlegen/Abrufen von Tags und anderen Attributen für Schlüsseltresorobjekte (Schlüssel/geheime Schlüssel) | **Global:**<br> &lt;Tresorname&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;Tresorname&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;Tresorname&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> &lt;Tresorname&gt;.vault.microsoftazure.de:443 |
+| Key Vault operations like cryptographic operations on keys, Created/read/update/delete keys and secrets, set/get tags and other attributes on key vault objects (keys/secrets)     | **Global:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |
 
-## IP-Adressbereiche
+## <a name="ip-address-ranges"></a>IP Address Ranges
 
-Für den Schlüsseltresordienst werden dagegen andere Azure-Ressourcen wie die PaaS-Infrastruktur verwendet. Daher ist es nicht möglich, einen spezifischen Bereich mit IP-Adressen anzugeben, der jederzeit für Endpunkte des Schlüsseltresordiensts gilt. Wenn Ihre Firewall nur IP-Adressbereiche unterstützt, helfen Ihnen die Informationen im Dokument zu den [Microsoft Azure Datacenter-IP-Bereichen](https://www.microsoft.com/download/details.aspx?id=41653) weiter. Für die Authentifizierung und Identitätsverwaltung (Azure Active Directory) muss Ihre Anwendung eine Verbindung mit den Endpunkten herstellen können, die unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) beschrieben sind.
+Key Vault service in turn uses other Azure resources like PaaS infrastructure, hence it's not possible to provide a specific range of IP addresses that key vault service endpoints will have at any given time. However if your firewall only supports IP address ranges then please refer to the [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) document.   For authentication and identity (Azure Active Directory), your application must be able to connect to the endpoints described in [Authentication and identity Addresses](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-- Besuchen Sie die [Azure Key Vault-Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault), wenn Sie Fragen zum Schlüsseltresor haben.
+- If you have questions about Key Vault, visit the [Azure Key Vault Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Austauschen eines Festplattenlaufwerks im StorSimple-Gerät | Microsoft Azure"
-   description="Erläutert, wie ein Laufwerk in einem primären StorSimple- oder EBOD-Gehäuse ausgetauscht wird."
+   pageTitle="Replace a disk drive on a StorSimple device | Microsoft Azure"
+   description="Explains how to replace a disk drive on a StorSimple primary enclosure or an EBOD enclosure."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,113 +15,118 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
-# Austauschen eines Festplattenlaufwerks im StorSimple-Gerät
 
-## Übersicht
+# <a name="replace-a-disk-drive-on-your-storsimple-device"></a>Replace a disk drive on your StorSimple device
 
-In diesem Tutorial wird erläutert, wie Sie ein schlecht funktionierendes oder fehlerhaftes Festplattenlaufwerk eines Microsoft Azure StorSimple-Geräts austauschen. Führen Sie zum Austauschen eines Festplattenlaufwerks die folgenden Schritte aus:
+## <a name="overview"></a>Overview
 
-- Entriegeln der Zugangssperre
+This tutorial explains how you can remove and replace a malfunctioning or failed hard disk drive on a Microsoft Azure StorSimple device. To replace a disk drive, you need to:
 
-- Ausbauen des Laufwerks
+- Disengage the antitamper lock
 
-- Einbauen des Austauschlaufwerks
+- Remove the disk drive
 
->[AZURE.IMPORTANT] Überprüfen Sie vor dem Ausbauen und Austauschen eines Laufwerks die Sicherheitsinformationen unter [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+- Install the replacement disk drive
 
-## Entriegeln der Zugangssperre
+>[AZURE.IMPORTANT] Before removing and replacing a disk drive, review the safety information in [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
 
-In dieser Vorgehensweise wird erläutert, wie die Zugangssperren eines StorSimple-Geräts beim Austausch eines Laufwerks entriegelt und wieder verriegelt werden. Die Zugangssperren befinden sich in den Laufwerkstragegriffen und sind durch eine kleine Öffnung im Riegelteil des jeweiligen Griffs zugänglich. Laufwerke werden mit den Sperren in der verriegelten Position ausgeliefert.
+## <a name="disengage-the-antitamper-lock"></a>Disengage the antitamper lock
 
-#### So entriegeln Sie eine Zugangssperre
+This procedure explains how the antitamper locks on your StorSimple device can be engaged or disengaged when you replace the disk drives. The antitamper locks are fitted in the drive carrier handles, and they are accessed through a small aperture in the latch section of the handle. Drives are supplied with the locks set to the locked position.
 
-1. Führen Sie den Sperrschlüssel (ein "manipulationssicherer" T10-Schraubendreher, der von Microsoft mitgeliefert wurde), vorsichtig in die Öffnung im Griff und in die zugehörige Vertiefung ein.
+#### <a name="to-unlock-the-antitamper-lock"></a>To unlock the antitamper lock
 
-    >[AZURE.NOTE] Ist die Zugangssperre aktiviert, ist in der Öffnung das rote Kennzeichen zu sehen.
+1. Carefully insert the lock key (a "tamperproof" T10 screwdriver that Microsoft provided) into the aperture in the handle and into its socket. 
 
-    ![Verriegeltes Laufwerk](./media/storsimple-disk-drive-replacement/IC741056.png)
+    >[AZURE.NOTE] If the antitamper lock is activated, the red indicator is visible in the aperture.
 
-    **Abbildung 1** Verriegelte Zugangssperre
+    ![Locked disk drive](./media/storsimple-disk-drive-replacement/IC741056.png)
 
-    |Bezeichnung|Beschreibung|
-    |:----|:----------|
-    |1|Öffnung mit Kennzeichen|
-    |2|Zugangssperre|
+    **Figure 1** Anti-tamper lock engaged
 
-2. Drehen Sie den Schlüssel gegen den Uhrzeigersinn, bis das rote Kennzeichen nicht mehr in der Öffnung über dem Schlüssel zu sehen ist.
+  	|Label|Description|
+  	|:----|:----------|
+  	|1|Indicator aperture|
+  	|2|Antitamper lock|
 
-3. Entfernen Sie den Schlüssel.
+2. Rotate the key in an anticlockwise direction until the red indicator is not visible in the aperture above the key.
 
-    ![Entriegeltes Laufwerk](./media/storsimple-disk-drive-replacement/IC741057.png)
+3. Remove the key.
 
-    **Abbildung 2** Entriegeltes Laufwerk
+    ![Unlocked disk drive](./media/storsimple-disk-drive-replacement/IC741057.png)
 
-4. Das Laufwerk kann nun ausgebaut werden.
+    **Figure 2** Unlocked disk drive
 
-Führen Sie die Schritte in umgekehrter Reihenfolge aus, um die Zugangssperre zu verriegeln.
+4. The disk drive can now be removed.
 
-## Ausbauen des Laufwerks
+Follow the steps in reverse to engage the lock.
 
-Ihr StorSimple-Gerät unterstützt eine RAID-10-ähnliche Speicherplatzkonfiguration. Dies bedeutet, dass das Gerät mit einem einzelnen fehlerhaften SSD- (Solid State Drive) oder HDD-Laufwerk (Hard Disk Drive) normal funktionieren kann.
+## <a name="remove-the-disk-drive"></a>Remove the disk drive
+
+Your StorSimple device supports a RAID 10-like storage spaces configuration. This implies that it can operate normally with one failed disk, solid-state drive (SSD), or hard disk drive (HDD). 
 
 >[AZURE.IMPORTANT]
 >
->- Falls es im System mehrere fehlerhafte Datenträger gibt, dürfen Sie immer nur jeweils eine SSD oder HDD aus dem System ausbauen. Andernfalls kann es zu Datenverlusten kommen.
+>- If your system has more than one failed disk, do not remove more than one SSD or HDD from the system at any point in time. Doing so could result in loss of data.
 >
->- Stellen Sie sicher, dass Sie eine Austausch-SSD in einem Einschubfach platzieren, das zuvor eine SSD enthalten hat. Auf ähnliche Weise setzen Sie eine Austauschfestplatte in ein Einschubfach ein, das zuvor eine HDD enthalten hat.
+>- Make sure that you place a replacement SSD in a slot that previously contained an SSD. Similarly, place a replacement HDD in a slot that previously contained an HDD.
 >
->- Im klassischen Azure-Portal sind Einschubfächer von 0 bis 11 nummeriert. Wenn das Portal also anzeigt, dass ein Datenträger in Einschubfach 2 ausgefallen ist, finden Sie diesen Datenträger im Gerät im dritten Einschubfach von links oben.
+>- In the Azure classic portal, slots are numbered from 0 – 11. Therefore, if the portal shows that a disk in slot 2 has failed, on the device, look for the failed disk in the third slot from the top left.
 
-Laufwerke können bei laufendem Betrieb des Systems ausgebaut und ausgetauscht werden.
+Drives can be removed and replaced while the system is operating.
 
-#### So bauen Sie ein Laufwerk aus
+#### <a name="to-remove-a-drive"></a>To remove a drive
 
-1. Gehen Sie zum Ermitteln des fehlerhaften Datenträgers im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**. Weil ein Datenträger im primären Gehäuse und/oder in einem EBOD-Gehäuse ausfallen kann (wenn Sie ein Modell vom Typ 8600 verwenden), sehen Sie sich die Status der Datenträger unter **Freigegebene Komponenten** und unter **EBOD-Gehäuse – Freigegebene Komponenten** an. Ein fehlerhafter Datenträger in einem der Gehäuse wird mit rotem Status angezeigt.
+1. To identify the failed disk, in the Azure classic portal, go to **Devices** > **Maintenance** > **Hardware Status**. Because a disk can fail in the primary enclosure and/or in an EBOD enclosure (if you are using a 8600 model), look at the status of the disks under **Shared Components** and under **EBOD enclosure Shared Components**. A failed disk in either enclosure will be shown with a red status.
 
-2. Suchen Sie auf der Vorderseite des primären Gehäuses oder des EBOD-Gehäuses nach den Laufwerken.
+2. Locate the drives in the front of the primary enclosure or the EBOD enclosure. 
 
-3. Wenn der Datenträger nicht verriegelt ist, fahren Sie mit dem nächsten Schritt fort. Wenn der Datenträger verriegelt ist, entriegeln Sie ihn mithilfe des Verfahrens unter [Entriegeln der Zugangssperre](#disengage-the-antitamper-lock).
+3. If the disk is unlocked, proceed to the next step. If the disk is locked, unlock it by following the procedure in [Disengage the antitamper lock](#disengage-the-antitamper-lock).
 
-4. Drücken Sie den schwarzen Riegel am Laufwerksträgermodul, und ziehen Sie den Laufwerksträgergriff heraus und von der Vorderseite des Gehäuses fort.
+4. Press the black latch on the drive carrier module and pull the drive carrier handle out and away from the front of the chassis. 
 
-    ![Freigeben des Laufwerkgriffs](./media/storsimple-disk-drive-replacement/IC741051.png)
+    ![Releasing disk drive handle](./media/storsimple-disk-drive-replacement/IC741051.png)
 
-    **Abbildung 3** Entriegeln des Laufwerkgriffs
+    **Figure 3** Releasing the drive handle
 
-5. Wenn der Laufwerksträgergriff vollständig geöffnet ist, ziehen Sie den Laufwerksträger aus dem Gehäuse heraus.
+5. When the drive carrier handle is fully extended, slide the drive carrier out of the chassis. 
 
-    ![Herausziehen des Datenträgers aus dem Laufwerk](./media/storsimple-disk-drive-replacement/IC741052.png)
+    ![Sliding disk out of disk drive](./media/storsimple-disk-drive-replacement/IC741052.png)
     
-    **Abbildung 4** Herausziehen des Laufwerks
+    **Figure 4** Sliding the disk drive out of the carrier
 
-## Einbauen des Austauschlaufwerks
+## <a name="install-the-replacement-disk-drive"></a>Install the replacement disk drive
 
-Nachdem ein Laufwerk in einem StorSimple-Gerät ausgefallen ist und Sie es entfernt haben, gehen Sie wie folgt vor, um es durch ein neues Laufwerk zu ersetzen.
+After a drive has failed in your StorSimple device and you have removed it, follow this procedure to replace it with a new drive.
 
-#### So bauen Sie ein Laufwerk ein
+#### <a name="to-insert-a-drive"></a>To insert a drive
 
-1. Öffnen Sie den Laufwerksträgergriff vollständig, wie dies in der folgenden Abbildung zu sehen ist.
+1. Ensure the drive carrier handle is fully extended, as shown in the following image.
 
-    ![Laufwerk mit ausgefahrenem Griff](./media/storsimple-disk-drive-replacement/IC741044.png)
+    ![Disk drive with handle extended](./media/storsimple-disk-drive-replacement/IC741044.png)
 
-    **Abbildung 5** Laufwerksträger mit geöffnetem Griff
+    **Figure 5** Drive with handle extended
 
-2. Schieben Sie den Laufwerksträger vollständig in das Gehäuse ein.
+2. Slide the drive carrier all the way into the chassis. 
 
-    ![Einschieben des Datenträgers in den Laufwerksträger](./media/storsimple-disk-drive-replacement/IC741045.png)
+    ![Sliding disk into disk drive carrier](./media/storsimple-disk-drive-replacement/IC741045.png)
 
-    **Abbildung 6** Einschieben des Laufwerkträgers in das Gehäuse
+    **Figure 6**  Sliding the drive carrier into the chassis
 
-3. Nachdem der Laufwerksträger eingeschoben wurde, schließen Sie den Laufwerksträgergriff, indem Sie den Laufwerksträger weiter in das Gehäuse drücken, bis der Laufwerksträgergriff in der verriegelten Position einrastet.
+3. With the drive carrier inserted, close the drive carrier handle while continuing to push the drive carrier into the chassis, until the drive carrier handle snaps into a locked position.
 
-4. Sichern Sie den Trägergriff mit dem Sperrschlüssel, der von Microsoft mitgeliefert wurde (manipulationssicherer Torx-Schraubendreher), in seiner Position, indem Sie die Sperrschraube eine Vierteldrehung im Uhrzeigersinn drehen.
+4. Use the lock key that was provided by Microsoft (tamperproof Torx screwdriver) to secure the carrier handle into place by turning the lock screw a quarter turn clockwise.
 
-5. Vergewissern Sie sich, dass der Austausch erfolgreich war und das Laufwerk betriebsbereit ist. Navigieren Sie dazu im klassischen Azure-Portal zu **Wartung** > **Hardwarestatus**. Unter **Freigegebene Komponenten** oder **EBOD-Gehäuse – Freigegebene Komponenten** muss der Laufwerksstatus "Grün" angezeigt werden, was heißt, dass das Laufwerk betriebsbereit ist.
+5. Verify that the replacement was successful and the drive is operational by accessing the Azure classic portal and navigating to **Maintenance** > **Hardware Status**. Under **Shared Components** or **EBOD enclosure Shared Components**, the drive status should be green, indicating that it is healthy.
 
-    >[AZURE.NOTE] Es kann mehrere Stunden dauern, bis für ein Laufwerk nach einem Austausch der Status "Grün" angezeigt wird.
+    >[AZURE.NOTE] It may take several hours for the disk status to turn green after the replacement.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Erfahren Sie mehr zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+Learn more about [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

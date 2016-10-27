@@ -1,30 +1,34 @@
 <properties 
-	pageTitle="Daten-Factory – Benennungsregeln | Microsoft Azure" 
-	description="Beschreibt die Benennungsregeln für Data Factory-Entitäten." 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="Data Factory - Naming Rules | Microsoft Azure" 
+    description="Describes naming rules for Data Factory entities." 
+    services="data-factory" 
+    documentationCenter="" 
+    authors="sharonlo101" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/12/2016" 
-	ms.author="spelluru"/>
-
-# Azure Data Factory – Benennungsregeln 
-Die folgende Tabelle enthält Benennungsregeln für Data Factory-Artefakte.
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/12/2016" 
+    ms.author="shlo"/>
 
 
+# <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - Naming Rules 
+The following table provides naming rules for Data Factory artifacts.
 
-Name | Eindeutigkeit des Namens | Überprüfungen
+
+
+Name | Name Uniqueness | Validation Checks
 :--- | :-------------- | :----------------
-Data Factory | Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt, sodass „MyDF“ und „mydf“ auf die gleiche Data Factory verweisen. |<ul><li>Jede Data Factory ist mit genau einem Azure-Abonnement verknüpft.</li><li>Objektnamen müssen mit einem Buchstaben oder einer Zahl beginnen und können nur Buchstaben, Zahlen und Bindestriche (-) enthalten.</li><li>Jedem Bindestrich (-) muss direkt ein Buchstabe oder eine Zahl voran- bzw. nachgestellt sein. Aufeinander folgende Bindestriche sind in Containernamen nicht zulässig.</li><li>Namen können 3 bis 63 Zeichen lang sein.</li></ul>
-Verknüpfte Dienste/Tabellen/Pipelines | Innerhalb einer Data Factory eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Maximale Anzahl von Zeichen in einem Tabellennamen: 260.</li><li>Objektnamen müssen mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“</li></ul>
-Ressourcengruppe | Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Maximale Anzahl von Zeichen: 1000.</li><li>Der Name darf Buchstaben, Zahlen und die folgenden Zeichen enthalten: „-“, „\_“, „,“ und „.“.</li></ul>
+Data Factory | Unique across Microsoft Azure. Names are case-insensitive, that is, MyDF and mydf refer to the same data factory. |<ul><li>Each data factory is tied to exactly one Azure subscription.</li><li>Object names must start with a letter or a number, and can contain only letters, numbers, and the dash (-) character.</li><li>Every dash (-) character must be immediately preceded and followed by a letter or a number. Consecutive dashes are not permitted in container names.</li><li>Name can be 3-63 characters long.</li></ul>
+Linked Services/Tables/Pipelines | Unique with in a data factory. Names are case-insensitive. | <ul><li>Maximum number of characters in a table name: 260.</li><li>Object names must start with a letter number, or an underscore (_).</li><li>Following characters are not allowed: “.”, “+”, “?”, “/”, “<”, ”>”,”*”,”%”,”&”,”:”,”\\”</li></ul>
+Resource Group | Unique across Microsoft Azure. Names are case-insensitive. | <ul><li>Maximum number of characters: 1000.</li><li>Name can contain letters, digits, and the following characters: “-”, “_”, “,” and “.”.</li></ul>
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen des VNet-Peerings mit dem Azure-Portal | Microsoft Azure"
-   description="Erfahren Sie, wie Sie ein virtuelles Netzwerk mit dem Azure-Portal im Resource Manager erstellen."
+   pageTitle="Create VNet Peering using the Azure portal | Microsoft Azure"
+   description="Learn how to create a virtual network using the Azure portal in Resource Manager."
    services="virtual-network"
    documentationCenter=""
    authors="NarayanAnnamalai"
@@ -17,7 +17,8 @@
    ms.date="09/14/2016"
    ms.author="narayanannamalai;annahar"/>
 
-# Erstellen eines VNet-Peerings mit dem Azure-Portal
+
+# <a name="create-a-virtual-network-peering-using-the-azure-portal"></a>Create a virtual network peering using the Azure portal
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnetpeering-selectors-arm-include.md)]
 
@@ -25,131 +26,135 @@
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-basic-include](../../includes/virtual-networks-create-vnetpeering-scenario-basic-include.md)]
 
-Gehen Sie wie folgt vor, um mit dem Azure-Portal ein VNet-Peering basierend auf dem oben beschriebenen Szenario zu erstellen.
+To create a VNet peering based on the scenario above by using the Azure portal, follow the steps below.
 
-1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2. Zum Einrichten des VNet-Peerings müssen Sie zwischen zwei VNets zwei Links erstellen, also einen für jede Richtung. Sie können den VNet-Peeringlink zuerst für VNet1 zu VNet2 erstellen. Klicken Sie im Portal auf **Durchsuchen**, und wählen Sie **Virtuelle Netzwerke**.
+1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
+2. To establish VNET peering, you need to create two links, one for each direction, between two VNets. You can create VNET peering link for VNET1 to VNET2 first. On the portal, Click **Browse** > **choose Virtual Networks**
 
-	![VNet-Peering im Azure-Portal erstellen](./media/virtual-networks-create-vnetpeering-arm-portal/figure01.png)
+    ![Create VNet peering in Azure portal](./media/virtual-networks-create-vnetpeering-arm-portal/figure01.png)
 
-3. Wählen Sie auf dem Blatt „Virtuelle Netzwerke“ die Option „VNet1“ aus, und klicken Sie auf „Peerings“ und dann auf „Hinzufügen“.
+3. In Virtual Networks blade, choose VNET1, click Peerings, then click Add
 
-	![Peering auswählen](./media/virtual-networks-create-vnetpeering-arm-portal/figure02.png)
+    ![Choose peering](./media/virtual-networks-create-vnetpeering-arm-portal/figure02.png)
 
-4. Vergeben Sie auf dem Blatt „Peering hinzufügen“ für das Peering den Linknamen „LinkToVnet2“, wählen Sie das Abonnement und das zu verknüpfende virtuelle Netzwerk „VNet2“ aus, und klicken Sie auf „OK“.
+4. In the Add Peering blade, give a peering link name LinkToVnet2, choose the subscription and the peer Virtual Network VNET2, click OK.
 
-	![Link zu VNet](./media/virtual-networks-create-vnetpeering-arm-portal/figure03.png)
+    ![Link to VNet](./media/virtual-networks-create-vnetpeering-arm-portal/figure03.png)
 
-5. Gehen Sie nach der Erstellung dieses VNet-Peeringlinks wie unten angegeben vor. Der Linkstatus wird wie folgt angezeigt:
+5. Once this VNET peering link is created. You can see the link state as following:
 
-	![Linkstatus](./media/virtual-networks-create-vnetpeering-arm-portal/figure04.png)
+    ![Link State](./media/virtual-networks-create-vnetpeering-arm-portal/figure04.png)
 
-6. Erstellen Sie als Nächstes den VNet-Peeringlink für VNet2 zu VNet1. Wählen Sie auf dem Blatt „Virtuelle Netzwerke“ die Option „VNet2“ aus, und klicken Sie auf „Peerings“ und dann auf „Hinzufügen“.
+6. Next create the VNET peering link for VNET2 to VNET1. In Virtual Networks blade, choose VNET2, click Peerings, then click Add
 
-	![Peer aus anderem VNet](./media/virtual-networks-create-vnetpeering-arm-portal/figure05.png)
+    ![Peer from other VNet](./media/virtual-networks-create-vnetpeering-arm-portal/figure05.png)
 
-7. Vergeben Sie auf dem Blatt „Peering hinzufügen“ für das Peering den Linknamen „LinkToVnet1“, wählen Sie das Abonnement und das zu verknüpfende virtuelle Netzwerk aus, und klicken Sie auf „OK“.
+7. In the Add Peering blade, give a peering link name LinkToVnet1, choose the subscription and the peer Virtual Network, Click OK.
 
-	![Kachel "Erstellen eines virtuellen Netzwerks"](./media/virtual-networks-create-vnetpeering-arm-portal/figure06.png)
+    ![Creating virtual network tile](./media/virtual-networks-create-vnetpeering-arm-portal/figure06.png)
 
-8. Gehen Sie nach der Erstellung dieses VNet-Peeringlinks wie unten angegeben vor. Der Linkstatus wird wie folgt angezeigt:
+8. Once this VNET peering link is created. You can see the link state as following:
 
-	![Endgültiger Linkstatus](./media/virtual-networks-create-vnetpeering-arm-portal/figure07.png)
+    ![Final link state](./media/virtual-networks-create-vnetpeering-arm-portal/figure07.png)
 
-9. Überprüfen Sie den Status von „LinkToVnet2“, der sich jetzt auch in „Verbunden“ ändert.
+9. Check the state for LinkToVnet2 and it now changes to Connected as well.  
 
-	![Endgültiger Linkstatus 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure08.png)
+    ![Final link state 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure08.png)
 
-    > [AZURE.NOTE] Das VNet-Peering wird nur eingerichtet, wenn beide Links verbunden sind.
+    > [AZURE.NOTE] VNET peering is only established if both links are connected.
 
-Für die einzelnen Links können jeweils einige Eigenschaften konfiguriert werden:
+There are a few configurable properties for each link:
 
-|Option|Beschreibung|Standard|
+|Option|Description|Default|
 |:-----|:----------|:------|
-|AllowVirtualNetworkAccess|Gibt an, ob der Adressraum des per Peering verknüpften VNet als Teil des Virtual\_network-Tags einbezogen wird.|Ja|
-|AllowForwardedTraffic|Ermöglicht, dass Datenverkehr, der nicht aus dem per Peering verknüpften VNet stammt, akzeptiert oder verworfen wird.|Nein|
-|AllowGatewayTransit|Ermöglicht dem per Peering verknüpften VNet die Verwendung des VNet-Gateways.|Nein|
-|UseRemoteGateways|Gibt an, dass das VNet-Gateway des per Peering verknüpften VNet verwendet wird. Für das verknüpfte VNet muss ein Gateway konfiguriert sein, und „AllowGatewayTransit“ muss ausgewählt sein. Sie können diese Option nicht verwenden, wenn Sie ein Gateway konfiguriert haben.|Nein|
+|AllowVirtualNetworkAccess|Whether address space of Peer VNet to be included as part of the Virtual_network Tag|Yes|
+|AllowForwardedTraffic|Allows traffic not originated from peered VNet is accepted or dropped|No|
+|AllowGatewayTransit|Allows the peer VNet to use your VNet gateway|No|
+|UseRemoteGateways|Use your peer’s VNet gateway. The peer VNet must have a gateway configured and AllowGatewayTransit is selected. You cannot use this option if you have a gateway configured|No|
 
-Jeder Link in einem VNet-Peering verfügt über die obigen Eigenschaften. Sie können im Portal auf den VNet-Peeringlink klicken und die verfügbaren Optionen ändern. Klicken Sie auf „Speichern“, damit die Änderungen wirksam werden.
+Each link in VNet peering has a set of above properties. From portal, you can click the VNet Peering Link and change any available options, click Save to make the change effect.
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
-1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2. In diesem Beispiel verwenden wir zwei Abonnements (A und B) und zwei Benutzer (UserA und UserB), die jeweils über Rechte für die Abonnements verfügen.
-3. Klicken Sie im Portal auf „Durchsuchen“, und wählen Sie „Virtuelle Netzwerke“. Klicken Sie auf das VNet und dann auf „Hinzufügen“.
+1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
+2. In this example we will use two subscriptions A and B and two users UserA and UserB with privileges in the subscriptions respectively
+3. On the portal, Click Browse, choose Virtual Networks. Click the VNET and click Add.
 
-    ![Szenario 2 durchsuchen](./media/virtual-networks-create-vnetpeering-arm-portal/figure09.png)
+    ![Scenario 2 Browse](./media/virtual-networks-create-vnetpeering-arm-portal/figure09.png)
 
-4. Wählen Sie auf dem Blatt „Zugriff hinzufügen“ eine Rolle und dann die Option „Netzwerkmitwirkender“ aus. Klicken Sie auf „Benutzer hinzufügen“, geben Sie den Anmeldenamen „UserB“ ein, und klicken Sie auf „OK“.
+4. On the Add access blade, click select a role and choose Network Contributor, click Add Users, type the UserB sign in name, and click OK.
 
     ![RBAC](./media/virtual-networks-create-vnetpeering-arm-portal/figure10.png)
 
-    Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet werden, wenn Benutzer individuell Peeringanforderungen für ihre jeweiligen VNets auslösen, solange die Anforderungen übereinstimmen. Das Hinzufügen von privilegierten Benutzern des anderen VNet als Benutzer im lokalen VNet vereinfacht das Setup im Portal.
+    This is not a requirement, peering can be established even if users individually raise peering requests for thier respective Vnets as long as the requests match. Adding privileged user of the other VNet as users in the local VNet makes it easier to do setup in portal.
 
-5. Melden Sie sich anschließend am Azure-Portal mit UserB an, also mit dem privilegierten Benutzer für Abonnement B. Führen Sie die obigen Schritte zum Hinzufügen des Benutzers als „Netzwerkmitwirkender“ aus.
+5. Then login to Azure portal with UserB who is the privilege user for SubscriptionB. Follow above steps to add UserA as Network Contributor.
 
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
 
-    > [AZURE.NOTE] Sie können sich abmelden und für beide Benutzersitzungen die Anmeldung im Browser durchführen, um sich zu vergewissern, dass die Autorisierung erfolgreich aktiviert wurde.
+    > [AZURE.NOTE] You can log off and log on both user sessions in browser to ensure the authorization is enabled successfully.
 
-6. Melden Sie sich am Portal als UserA an, navigieren Sie zum Blatt „VNet3“, und klicken Sie auf „Peering“. Aktivieren Sie das Kontrollkästchen „Ich kenne meine Ressourcen-ID“, und geben Sie die Ressourcen-ID für VNet5 im unten angegebenen Format ein.
+6. Login to the portal as UserA, navigate to the VNET3 blade, click Peering, check ‘I Know my resource ID” checkbox and type the resource ID for VNET5 in below format.
 
-    /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppenname>/providers/Microsoft.Network/VirtualNetwork/<VNet-Name>
+    /subscriptions/<Subscription- ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/<VNET name>
 
-    ![Ressourcen-ID](./media/virtual-networks-create-vnetpeering-arm-portal/figure12.png)
+    ![Resource ID](./media/virtual-networks-create-vnetpeering-arm-portal/figure12.png)
 
-7. Melden Sie sich am Portal als UserB an, und führen Sie den obigen Schritt aus, um den Peeringlink von VNet5 zu VNet3 zu erstellen.
+7. Login to the portal as UserB and follow above step to create peering link from VNET5 to VNet3.
 
-    ![Ressourcen-ID 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure13.png)
+    ![Resource ID 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure13.png)
 
-8. Das Peering wird eingerichtet, und jeder virtuelle Computer in VNet3 sollte nun mit jedem virtuellen Computer in VNet5 kommunizieren können.
+8. Peering will be established and any Virtual machine in VNet3 should be able to communicate with any virtual machine in VNet5
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
 
-1. Zunächst wird der VNet-Peeringlink von HubVnet zu VNet1 erstellt. Beachten Sie, dass die Option „Weitergeleiteten Datenverkehr zulassen“ für den Link nicht ausgewählt ist.
+1. As a first step, VNET peering links from HubVnet to VNET1. Note that Allow Forwarded Traffic option is not selected for the link.
 
-    ![Einfaches Peering](./media/virtual-networks-create-vnetpeering-arm-portal/figure14.png)
+    ![Basic Peering](./media/virtual-networks-create-vnetpeering-arm-portal/figure14.png)
 
-2. Im nächsten Schritt können Peeringlinks von VNet1 zu HubVnet erstellt werden. Beachten Sie, dass die Option „Weitergeleiteten Datenverkehr zulassen“ ausgewählt ist.
+2. As a next step, peering links from VNET1 to HubVnet can be created. Note that Allow forwarded traffic option is selected.
 
-    ![Einfaches Peering](./media/virtual-networks-create-vnetpeering-arm-portal/figure15a.png)
+    ![Basic Peering](./media/virtual-networks-create-vnetpeering-arm-portal/figure15a.png)
 
-3. Nachdem das Peering eingerichtet wurde, können Sie [diesen Artikel](virtual-network-create-udr-arm-ps.md) lesen und eine benutzerdefinierte Route (User-Defined Route, UDR) festlegen, um VNet1-Datenverkehr über ein virtuelles Gerät zu leiten und dessen Funktionen zu nutzen. Wenn Sie die Adresse des nächsten Hops der Route angeben, können Sie diese auf die IP-Adresse des virtuellen Geräts im per Peering verknüpften VNet (HubVNet) festlegen.
+3. After peering is established, you can refer to this [article](virtual-network-create-udr-arm-ps.md) and define User Defined Route(UDR) to redirect VNet1 traffic through a virtual appliance to use its capabilities. When you specify the Next Hop address in route, you can set it to the IP address of virtual appliance in peer VNet HubVNet
 
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
 
 
 
-1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
+1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
 
-2. Zum Einrichten des VNET-Peerings in diesem Szenario müssen Sie nur einen Link erstellen, und zwar vom virtuellen Netzwerk im Azure Resource Manager zu einem virtuellen Netzwerk im klassischen Modus. Dies ist also eine Verbindung von **VNET1** mit **VNET2**. Klicken Sie im Portal auf **Durchsuchen**, und wählen Sie **Virtuelle Netzwerke**.
+2. To establish VNET peering in this scenario, you need to create only one link, from the virtual network in Azure resource manager to the one in classic. That is, from **VNET1** to **VNET2**. On the portal, Click **Browse** > choose **Virtual Networks**
 
-3. Wählen Sie auf dem Blatt „Virtuelle Netzwerke“ die Option **VNET1**. Klicken Sie auf **Peerings** und dann auf **Hinzufügen**.
+3. In the Virtual networks blade, choose **VNET1**. Click **Peerings**, then click **Add**.
 
-4. Geben Sie dem Link auf dem Blatt „Peering hinzufügen“ einen Namen. Hier lautet der Name **LinkToVNet2**. Wählen Sie unter „Peerdetails“ die Option **Klassisch**.
+4. In the Add Peering blade, name your link. Here it is called **LinkToVNet2**. Under Peer details, select **Classic**.
 
-5. Wählen Sie anschließend das Abonnement und das virtuelle Peernetzwerk **VNET2** aus. Klicken Sie dann auf „OK“.
+5. Then choose the subscription and the peer Virtual Network **VNET2**. Then click OK.
 
-    ![Verknüpfung von VNet1 mit VNet2](./media/virtual-networks-create-vnetpeering-arm-portal/figure18.png)
+    ![Linking Vnet1 to Vnet 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure18.png)
 
-6. Nachdem dieser VNet-Peeringlink erstellt wurde, werden die beiden virtuellen Netzwerke verknüpft, und Folgendes wird angezeigt:
+6. Once this VNet peering link is created, the two virtual networks are peered and you will be able to see the following:
 
-    ![Peerverbindung überprüfen](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
+    ![Checking peering connection](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
 
 
-## Entfernen des VNet-Peerings
+## <a name="remove-vnet-peering"></a>Remove VNet Peering
 
-1.	Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2.	Wechseln Sie zum Blatt „Virtuelles Netzwerk“, klicken Sie auf „Peerings“ und den Link, den Sie entfernen möchten, und klicken Sie dann auf die Schaltfläche „Löschen“.
+1.  From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
+2.  Go to virtual network blade, click Peerings, click the Link you want to remove, click button Delete.
 
-    ![Löschen1](./media/virtual-networks-create-vnetpeering-arm-portal/figure15.png)
+    ![Delete1](./media/virtual-networks-create-vnetpeering-arm-portal/figure15.png)
 
-3. Wenn Sie einen Link im VNet-Peering entfernen, wird als Status für den Peeringlink „Verbindung getrennt“ angezeigt.
+3. Once you remove one link in VNET peering, the  peer link state will go to disconnected.
 
-    ![Löschen2](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
+    ![Delete2](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
 
-4. Bei diesem Status können Sie den Link erst dann wieder neu erstellen, wenn sich der Status des Peeringlinks in „Initiiert“ ändert. Es wird empfohlen, beide Links zu entfernen, bevor Sie das VNet-Peering neu erstellen.
+4. In this state, you cannot re-create the link until the peer link state changes to Initiated. We recommend you remove the both links before you re-create the VNET peering.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

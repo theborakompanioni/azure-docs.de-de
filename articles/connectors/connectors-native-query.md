@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen der Abfrageaktion in Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Abfrageaktion zum Ausführen von Aktionen wie „Array filtern“."
-	services=""
-	documentationCenter=""
-	authors="jeffhollan"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Add the query action in logic apps | Microsoft Azure"
+    description="Overview of the query action for performing actions like filter array."
+    services=""
+    documentationCenter=""
+    authors="jeffhollan"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,68 +17,74 @@
    ms.date="07/20/2016"
    ms.author="jehollan"/>
 
-# Erste Schritte mit der Abfrageaktion
 
-Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflows nutzen:
+# <a name="get-started-with-the-query-action"></a>Get started with the query action
 
-- Erstellen Sie eine Aufgabe für alle Datensätze mit hoher Priorität aus einer Datenbank.
-- Speichern Sie alle PDF-Anlagen für E-Mails in einem Azure-Blob.
+By using the query action, you can work with batches and arrays to accomplish workflows to:
 
-Wenn Sie die Abfrageaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+- Create a task for all high-priority records from a database.
+- Save all PDF attachments for emails into an Azure blob.
 
-## Verwenden der Abfrageaktion
+To get started using the query action in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
+## <a name="use-the-query-action"></a>Use the query action
 
-Für die Abfrageaktion ist derzeit ein Vorgang („Array filtern“) im Designer verfügbar. Dadurch können Sie ein Array abfragen und einen Satz gefilterter Ergebnisse zurückgeben.
+An action is an operation that is carried out by the workflow that is defined in a logic app. [Learn more about actions](connectors-overview.md).  
 
-Im Folgenden wird erläutert, wie Sie die Aktion in einer Logik-App hinzufügen können:
+The query action currently has one operation, called the filter array, that is exposed in the designer. This allows you to query an array and return a set of filtered results.
 
-1. Wählen Sie die Schaltfläche **Neuer Schritt** aus.
-2. Wählen Sie **Aktion hinzufügen** aus.
-3. Geben Sie in das Aktionssuchfeld **Filter** ein, um die Aktion **Array filtern** anzuzeigen.
+Here's how you can add it in a logic app:
 
-	![Auswählen der Abfrageaktion](./media/connectors-native-query/using-action-1.png)
+1. Select the **New Step** button.
+2. Choose **Add an action**.
+3. In the action search box, type **filter** to list the **Filter array** action.
 
-4. Wählen Sie ein zu filterndes Array aus. (Das folgende Bildschirmfoto zeigt das Array mit Ergebnissen aus einer Twitter-Suche.)
-5. Erstellen Sie eine für jedes Element auszuwertende Bedingung. (Im folgenden Bildschirmfoto werden Tweets von Benutzern mit mehr als 100 Followern gefiltert.)
+    ![Select the query action](./media/connectors-native-query/using-action-1.png)
 
-	![Ausführen der Abfrageaktion](./media/connectors-native-query/using-action-2.png)
+4. Select an array to filter. (The following screenshot shows the array of results from a Twitter search.)
+5. Create a condition to evaluate on each item. (The following screenshot filters tweets from users who have more than 100 followers.)
 
-	Die Aktion gibt ein neues Array aus, das nur Ergebnisse enthält, die die Filteranforderungen erfüllen.
-6. Klicken Sie zum Speichern links oben auf die Symbolleiste. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
+    ![Complete the query action](./media/connectors-native-query/using-action-2.png)
 
-## Abfrageaktion
+    The action will output a new array that contains only results that met the filter requirements.
+6. Click the upper-left corner of the toolbar to save, and your logic app will both save and publish (activate).
 
-Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Der Connector verfügt über eine mögliche Aktion.
+## <a name="query-action"></a>Query action
 
-|Aktion|Beschreibung|
+Here are the details for the action that this connector supports. The connector has one possible action.
+
+|Action|Description|
 |---|---|
-|Array filtern|Auswerten einer Bedingung für jedes Element in einem Array und Zurückgeben der Ergebnisse|
+|Filter array|Evaluates a condition for each item in an array and returns the results|
 
-## Aktionsdetails
+## <a name="action-details"></a>Action details
 
-Für die Abfrageaktion steht eine mögliche Aktion zur Verfügung. Die folgenden Tabellen beschreiben die erforderlichen und optionalen Eingabefelder für die Aktion und die entsprechenden Ausgabedetails, die der Verwendung dieser Aktion zugeordnet sind.
+The query action comes with one possible action. The following tables describe the required and optional input fields for the action and the corresponding output details that are associated with using the action.
 
-### Array filtern
-Im Folgenden werden die Eingabefelder für die Aktion angegeben, die eine ausgehende HTTP-Anforderung ausführt. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+### <a name="filter-array"></a>Filter array
+The following are input fields for the action, which makes an HTTP outbound request.
+A * means that it is a required field.
 
-|Anzeigename|Eigenschaftenname|Beschreibung|
+|Display name|Property name|Description|
 |---|---|---|
-|Von*|from|Das zu filternde Array|
-|Bedingung*|Hierbei gilt:|Die für jedes Element auszuwertende Bedingung|
+|From*|from|The array to filter|
+|Condition*|where|The condition to evaluate for each item|
 <br>
 
-### Ausgabedetails
+### <a name="output-details"></a>Output details
 
-Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
+The following are output details for the HTTP response.
 
-|Eigenschaftenname|Datentyp|Beschreibung|
+|Property name|Data type|Description|
 |---|---|---|
-|Array gefiltert|array|Array, das ein Objekt für jedes gefilterte Ergebnis enthält|
+|Filtered array|array|An array that contains an object for each filtered result|
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

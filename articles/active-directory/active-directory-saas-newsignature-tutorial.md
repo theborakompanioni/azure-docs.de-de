@@ -1,252 +1,257 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory-Integration mit Cloud Management Portal for Microsoft Azure | Microsoft Azure"
-	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Cloud Management Portal for Microsoft Azure konfigurieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with Cloud Management Portal for Microsoft Azure | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and Cloud Management Portal for Microsoft Azure."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/16/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/16/2016"
+    ms.author="jeedes"/>
 
 
-# Tutorial: Azure Active Directory-Integration mit Cloud Management Portal for Microsoft Azure
 
-Dieses Tutorial soll Ihnen zeigen, wie Sie Cloud Management Portal for Microsoft Azure in Azure Active Directory (Azure AD) integrieren können. Die Integration von Cloud Management Portal for Microsoft Azure in Azure AD bietet die folgenden Vorteile:
+# <a name="tutorial:-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Tutorial: Azure Active Directory integration with Cloud Management Portal for Microsoft Azure
 
-- Sie können in Azure AD steuern, wer auf Cloud Management Portal for Microsoft Azure Zugriff hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Cloud Management Portal for Microsoft Azure anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+The objective of this tutorial is to show you how to integrate Cloud Management Portal for Microsoft Azure with Azure Active Directory (Azure AD).  
+Integrating Cloud Management Portal for Microsoft Azure with Azure AD provides you with the following benefits:
 
+- You can control in Azure AD who has access to Cloud Management Portal for Microsoft Azure
+- You can enable your users to automatically get signed-on to Cloud Management Portal for Microsoft Azure (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## Voraussetzungen
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Um die Azure AD-Integration mit Cloud Management Portal for Microsoft Azure konfigurieren zu können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- Ein Azure AD-Abonnement
-- Ein Abonnement von Cloud Management Portal for Microsoft Azure, für das einmaliges Anmelden aktiviert ist
+To configure Azure AD integration with Cloud Management Portal for Microsoft Azure, you need the following items:
 
+- An Azure AD subscription
+- A Cloud Management Portal for Microsoft Azure single-sign on enabled subscription
 
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+To test the steps in this tutorial, you should follow these recommendations:
 
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
-## Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von Cloud Management Portal for Microsoft Azure aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="scenario-description"></a>Scenario Description
+The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
+The scenario outlined in this tutorial consists of two main building blocks:
 
+1. Adding Cloud Management Portal for Microsoft Azure from the gallery
+2. Configuring and testing Azure AD single sign-on
 
-## Hinzufügen von Cloud Management Portal for Microsoft Azure aus dem Katalog
-Zum Konfigurieren der Integration von Cloud Management Portal for Microsoft Azure in Azure AD müssen Sie Cloud Management Portal for Microsoft Azure aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie zum Hinzufügen von Cloud Management Portal for Microsoft Azure aus dem Katalog die folgenden Schritte aus:**
+## <a name="adding-cloud-management-portal-for-microsoft-azure-from-the-gallery"></a>Adding Cloud Management Portal for Microsoft Azure from the gallery
+To configure the integration of Cloud Management Portal for Microsoft Azure into Azure AD, you need to add Cloud Management Portal for Microsoft Azure from the gallery to your list of managed SaaS apps.
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+**To add Cloud Management Portal for Microsoft Azure from the gallery, perform the following steps:**
 
-	![Active Directory][1]
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Active Directory][1]
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-	![Anwendungen][2]
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+    ![Applications][2]
 
-	![Anwendungen][3]
+4. Click **Add** at the bottom of the page.
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+    ![Applications][3]
 
-	![Anwendungen][4]
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-6. Geben Sie im Suchfeld als Suchbegriff **Cloud Management Portal for Microsoft Azure** ein.
+    ![Applications][4]
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_01.png)
+6. In the search box, type **Cloud Management Portal for Microsoft Azure**.
 
-7. Wählen Sie im Ergebnisbereich **Cloud Management Portal for Microsoft Azure** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_01.png)
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_02.png)
+7. In the results pane, select **Cloud Management Portal for Microsoft Azure**, and then click **Complete** to add the application.
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens Britta Simon das einmalige Anmelden von Azure AD in Cloud Management Portal for Microsoft Azure konfiguriert und getestet werden kann.
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_02.png)
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer der entsprechende Gegenbenutzer in Cloud Management Portal for Microsoft Azure zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Cloud Management Portal for Microsoft Azure muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in Cloud Management Portal for Microsoft Azure zuweisen.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+The objective of this section is to show you how to configure and test Azure AD single sign-on with Cloud Management Portal for Microsoft Azure based on a test user called "Britta Simon".
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Cloud Management Portal for Microsoft Azure müssen Sie die folgenden Bausteine ausführen:
+For single sign-on to work, Azure AD needs to know what the counterpart user in Cloud Management Portal for Microsoft Azure to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Cloud Management Portal for Microsoft Azure needs to be established.  
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Cloud Management Portal for Microsoft Azure.
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines Testbenutzers für Cloud Management Portal for Microsoft Azure](#creating-a-newsignature-test-user)**, um eine Entsprechung von Britta Simon in Cloud Management Portal for Microsoft Azure zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+To configure and test Azure AD single sign-on with Cloud Management Portal for Microsoft Azure, you need to complete the following building blocks:
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Creating a Cloud Management Portal for Microsoft Azure test user](#creating-a-newsignature-test-user)** - to have a counterpart of Britta Simon in Cloud Management Portal for Microsoft Azure that is linked to the Azure AD representation of her.
+5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden in Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Cloud Management Portal for Microsoft Azure-Anwendung zu konfigurieren.
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
 
+The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Cloud Management Portal for Microsoft Azure application.
 
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Cloud Management Portal for Microsoft Azure die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Cloud Management Portal for Microsoft Azure** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+**To configure Azure AD single sign-on with Cloud Management Portal for Microsoft Azure, perform the following steps:**
 
-	![Einmaliges Anmelden konfigurieren][6]
+1. In the Azure classic portal, on the **Cloud Management Portal for Microsoft Azure** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Cloud Management Portal for Microsoft Azure anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+    ![Configure Single Sign-On][6] 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_03.png)
+2. On the **How would you like users to sign on to Cloud Management Portal for Microsoft Azure** page, select **Azure AD Single Sign-On**, and then click **Next**.
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_03.png) 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_04.png)
+3. On the **Configure App Settings** dialog page, perform the following steps:.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der Cloud Management Portal for Microsoft Azure-Anwendung verwendet wird, nach folgendem Muster ein: `https://portal.igcm.com/<instance name>`.
+    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_04.png) 
 
-    b. Klicken Sie auf **Next**.
+    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Cloud Management Portal for Microsoft Azure application using the following pattern: `https://portal.igcm.com/<instance name>`
 
+    b. Click **Next**.
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Cloud Management Portal for Microsoft Azure** die folgenden Schritte aus:
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_05.png)
+4. On the **Configure single sign-on at Cloud Management Portal for Microsoft Azure** page, perform the following steps:
 
-    a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
+    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_05.png) 
 
-    b. Klicken Sie auf **Weiter**.
+    a. Click **Download certificate**, and then save the file on your computer.
 
+    b. Click **Next**.
 
-5. Wenden Sie sich wegen der SSO-Konfiguration für Ihre Anwendung unter [jczernuszka@newsignature.com](mailTo:jczernuszka@newsignature.com) an das Supportteam von Cloud Management Portal for Microsoft Azure, und senden Sie die heruntergeladene Zertifikatsdatei als E-Mail-Anhang. Geben Sie außerdem die Aussteller-URL, die SAML-SSO-URL und die URL des Diensts für einmaliges Abmelden an, damit diese für die SSO-Integration konfiguriert werden können.
 
+5. To get SSO configured for your application, contact your Cloud Management Portal for Microsoft Azure support team at [jczernuszka@newsignature.com](mailTo:jczernuszka@newsignature.com) and email the attach downloaded certificate file. Also please do provide the Issuer URL, SAML SSO URL and Single Sign Out Service URL so that they can be configured for SSO integration.
 
-6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
-	![Azure AD – einmaliges Anmelden][10]
+6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+    ![Azure AD Single Sign-On][10]
 
-	![Azure AD – einmaliges Anmelden][11]
+7. On the **Single sign-on confirmation** page, click **Complete**.  
 
+    ![Azure AD Single Sign-On][11]
 
 
-### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
 
-![Azure AD-Benutzer erstellen][20]
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+![Create Azure AD User][20]
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+**To create a test user in Azure AD, perform the following steps:**
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/create_aaduser_09.png)
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_09.png) 
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/create_aaduser_03.png)
+3. To display the list of users, in the menu on the top, click **Users**.
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_03.png) 
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/create_aaduser_04.png)
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_04.png) 
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/create_aaduser_05.png)
+5. On the **Tell us about this user** dialog page, perform the following steps:
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_05.png) 
 
-    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
+    a. As Type Of User, select New user in your organization.
 
-    c. Klicken Sie auf **Weiter**.
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+    c. Click **Next**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/create_aaduser_06.png)
+6.  On the **User Profile** dialog page, perform the following steps:
 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_06.png) 
 
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    a. In the **First Name** textbox, type **Britta**.  
 
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    e. Klicken Sie auf **Weiter**.
+    d. In the **Role** list, select **User**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+    e. Click **Next**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/create_aaduser_07.png)
+7. On the **Get temporary password** dialog page, click **create**.
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_07.png) 
 
-	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-newsignature-tutorial/create_aaduser_08.png)
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
+    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_08.png) 
 
-    b. Klicken Sie auf **Fertig stellen**.
+    a. Write down the value of the **New Password**.
 
+    b. Click **Complete**.   
 
 
-### Erstellen eines Testbenutzers für Cloud Management Portal for Microsoft Azure
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Cloud Management Portal for Microsoft Azure. Wenden Sie sich an das Supportteam für Cloud Management Portal for Microsoft Azure, um die Benutzer dem Konto in Cloud Management Portal for Microsoft Azure hinzufügen zu lassen.
+### <a name="creating-a-cloud-management-portal-for-microsoft-azure-test-user"></a>Creating a Cloud Management Portal for Microsoft Azure test user
 
+The objective of this section is to create a user called Britta Simon in Cloud Management Portal for Microsoft Azure. Please work with Cloud Management Portal for Microsoft Azure support team to add the users in the Cloud Management Portal for Microsoft Azure account. 
 
-> [AZURE.NOTE] Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem Supportteam von Cloud Management Portal for Microsoft Azure in Verbindung.
 
+> [AZURE.NOTE] If you need to create an user manually, you need to contact the Cloud Management Portal for Microsoft Azure support team.
 
-### Zuweisen des Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf Cloud Management Portal for Microsoft Azure erhält.
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-![Benutzer zuweisen][200]
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Cloud Management Portal for Microsoft Azure.
 
-**Um Britta Simon Cloud Management Portal for Microsoft Azure zuzuweisen, führen Sie die folgenden Schritte aus:**
+![Assign User][200] 
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der Verzeichnisansicht im oberen Menü auf **Anwendungen**.
+**To assign Britta Simon to Cloud Management Portal for Microsoft Azure, perform the following steps:**
 
-	![Benutzer zuweisen][201]
+1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
 
-2. Wählen Sie in der Anwendungsliste **Cloud Management Portal for Microsoft Azure** aus.
+    ![Assign User][201] 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_50.png)
+2. In the applications list, select **Cloud Management Portal for Microsoft Azure**.
 
-1. Klicken Sie im oberen Menü auf **Benutzer**.
+    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_50.png) 
 
-	![Benutzer zuweisen][203]
+1. In the menu on the top, click **Users**.
 
-1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
+    ![Assign User][203] 
 
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+1. In the Users list, select **Britta Simon**.
 
-	![Benutzer zuweisen][205]
+2. In the toolbar on the bottom, click **Assign**.
 
+    ![Assign User][205]
 
 
-### Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Wenn Sie im Zugriffsbereich auf die Kachel „Cloud Management Portal for Microsoft Azure“ klicken, sollten Sie automatisch bei Ihrer Cloud Management Portal for Microsoft Azure-Anwendung angemeldet werden.
+### <a name="testing-single-sign-on"></a>Testing Single Sign-On
 
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
+When you click the Cloud Management Portal for Microsoft Azure tile in the Access Panel, you should get automatically signed-on to your Cloud Management Portal for Microsoft Azure application.
 
-## Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a>Additional Resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -267,4 +272,8 @@ Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einm
 [204]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

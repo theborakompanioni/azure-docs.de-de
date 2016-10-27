@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Mobile Engagement – Benutzeroberfläche – Reichweitenkriterium" 
-   description="Erfahren Sie, wie Sie die Zielgruppenadressierung anhand bestimmter Kriterien von Azure Mobile Engagement verwenden können, um Pushkampagnen an eine Teilmenge der Benutzer versenden" 
+   pageTitle="Azure Mobile Engagement User Interface - Reach Criterion" 
+   description="Learn how to use targeting criteria to send push campaigns to a select subset of your users using Azure Mobile Engagement" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -17,70 +17,71 @@
    ms.author="piyushjo"/>
 
 
-# Zielgruppenadressierung anhand bestimmter Kriterien zur Versendung von Pushkampagnen an eine Teilmenge der Benutzer
 
-Die Zielgruppenadressierung anhand spezifischer Kriterien mithilfe der neuen Schaltfläche "Neue Kriterien" ist eines der leistungsstärksten Konzepte in Azure Mobile Engagement. Denn Sie können relevante Pushbenachrichtigungen senden, auf die die Kunden reagieren, anstatt Empfänger mit Spam zu belästigen. Sie können Ihre Zielgruppe basierend auf Standardkriterien einschränken und Pushvorgänge simulieren, um zu bestimmen, wie viele Personen die Benachrichtigung erhalten sollen.
+# <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>How to use targeting criteria to send push campaigns to a select subset of your users
 
-**Weitere Informationen:**
+Targeting your audience by specific criteria with the "New Criteria" button is one of the most powerful concepts in Azure Mobile Engagement that helps you send relevant push notifications that the customers will respond to instead of Spamming everyone. You can limit your audience based on standard criteria and simulate pushes to determine how many people will receive the notification.
 
-- [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkampagne][Link 27]
+**See also:**
 
-## Kriterien für die Zielgruppe können Folgendes umfassen:
-- **Technische Informationen:** Sie können die Zielgruppe auf der Grundlage der gleichen technischen Informationen bestimmen, die in den Bereichen „Analyse“ und „Überwachen“ angezeigt werden. **Weitere Informationen:** [Dokumentation zur Benutzeroberfläche – Analyse][Link 15], [Dokumentation zur Benutzeroberfläche – Monitor][Link 16]
-- **Standort:** Anwendungen, die "Echtzeit-Berichterstellung für Standorte" mit Geofencing verwenden, ist es möglich, Geolocation als Kriterium auszuwählen, um eine Zielgruppe über den GPS-Standort zu bestimmen. "Verzögerte Berichterstellung für Standorte" kann ebenfalls verwendet werden, um eine Zielgruppe über den Standort des Mobiltelefons zu bestimmen ("Echtzeit-Berichterstellung für Standorte" und "Verzögerte Berichterstellung für Standorte" müssen im SDK aktiviert sein). **Weitere Informationen:** [SDK-Dokumentation – iOS – Integration][Link 5], [SDK-Dokumentation – Android – Integration][Link 5]
-- **Reichweiten-Feedback:** Durch Reichweiten-Feedback aus Ankündigungen, Umfragen und Datenpushes können Sie Ihre Zielgruppe basierend auf deren Feedback aus vorherigen Reichweitenbenachrichtigungen bestimmen. So können Sie Ihre Zielgruppe nach zwei oder drei Kampagnen besser bestimmen als bei der ersten. Die Funktion kann auch Benutzer herausfiltern, die bereits eine Benachrichtigung mit ähnlichem Inhalt erhalten haben. Hierfür erstellt sie eine Kampagne, die NICHT an Benutzer verschickt wird, die eine solche vorherige Kampagne schon erhalten haben. Sie können sogar Benutzer, die Teil einer aktiven Kampagne sind, vom Erhalt neuer Pushes ausschließen. **Weitere Informationen:** [Dokumentation zur Benutzeroberfläche – Reichweite – Pushübertragung von Inhalten][Link 29]
-- **Nachverfolgen der Installation:** Sie können nachverfolgen, wo die Benutzer Ihre App installiert haben. **Weitere Informationen:** [Dokumentation zur Benutzeroberfläche – Einstellungen][Link 20]
-- **Benutzerprofil:** Sie können Ihre Zielgruppe basierend auf den Standardbenutzerdaten oder den von Ihnen erstellten Anwendungsinformationen erreichen. Dazu gehören derzeit angemeldete Benutzer und Benutzer, die bestimmte von Ihnen in der App selbst gestellte Fragen beantwortet haben, anstatt nur hinsichtlich ihrer Reaktion auf frühere Kampagnen. Alle App-Infos, die Sie für die App definiert haben, werden in dieser Liste angezeigt.
-- Segmente: Sie können die Zielgruppe auch basierend auf Segmenten besimmen, die Sie auf Grundlage bestimmter Benutzerverhalten, die mehrere Kriterien umfassen, erstellt haben. Alle Segmente, die Sie für die App definiert haben, werden in dieser Liste angezeigt. **Weitere Informationen:** [Dokumentation zur Benutzeroberfläche – Segmente][Link 18]
-- **App-Info:** Zum Nachverfolgen des Benutzerverhaltens können benutzerdefinierte Info-Tags der App aus den "Einstellungen" erstellt werden. **Weitere Informationen:** [Dokumentation zur Benutzeroberfläche – Einstellungen][Link 20]
+- [UI Documentation - Reach - New Push Campaign][Link 27]
 
-## Beispiel: 
-Angenommen, Sie möchten eine Ankündigung per Push nur an die Benutzer verteilen, die einen In-App-Einkauf getätigt haben.
+## <a name="audience-criteria-can-include:"></a>Audience criteria can include:
+- **Technicals: ** You can target based on the same technical information you can see in the Analytics and Monitor sections. **See also:** [UI Documentation - Analytics][Link 15],  [UI Documentation - Monitor][Link 16]
+- **Location:** Applications that use "Real time location reporting" with Geo-Fencing can use Geo-Location as a criteria to target an audience from the GPS location. "Lazy Area Location Reporting" call also be used to target an audience from the cell phone location ("Real time location reporting" and "Lazy Area Location Reporting" must be activated from the SDK). **See also:** [SDK Documentation - iOS -  Integration][Link 5], [SDK Documentation - Android -  Integration][Link 5]
+- **Reach Feedback:** You can target your audience based on their feedback from previous reach notifications through reach feedback from Announcements, Polls, and Data Pushes. This enables you to better target your audience after two or three reach campaigns than you could the first time. It can also be used to filter out users who already received a notification with similar content, by setting a campaign to NOT be sent to users who already received a specific previous campaign. You can even exclude users who are included a specific campaign that is still active from receiving new Pushes. **See also:** [UI Documentation -  Reach - Push Content][Link 29]
+- **Install Tracking:** You can track information based on where your users installed your App. **See also:** [UI Documentation -  Settings][Link 20]
+- **User Profile:** You can target based on standard user information and you can target based on the custom app info that you have created. This includes users who are currently logged in and users that have answered specific questions you have asked them to set in the app itself instead of just how they have responded to previous campaigns. All of your App Info's defined for your app show up on this list.
+- Segments: You can also target based on segments that you have created based on specific user behavior containing multiple criteria. All of your segments defined for your app show up on this list. **See also:** [UI Documentation -  Segments][Link 18]
+- **App Info:** Custom App Info Tags can be created from “Settings” to track user behavior. **See also:** [UI Documentation -  Settings][Link 20]
 
-1. Wechseln Sie zur Seite mit den Anwendungseinstellungen, und wählen Sie im Menü „App-Informationen“ die Option „New app info“ (Neue App-Information) aus.
-2. Registrieren Sie eine neue boolesche App-Info namens "InAppPurchase".
-3. Sorgen Sie dafür, dass diese App-Information in Ihrer Anwendung auf „true“ festgelegt wird, wenn der Benutzer erfolgreich einen In-App-Einkauf getätigt hat. Verwenden Sie hierzu die Funktion „sendAppInfo("inAppPurchase", ...)“.
-4. Wenn Sie das nicht in Ihrer Anwendung vornehmen möchten, können Sie dies in Ihrem Back-End mithilfe der Device-API tun.
-5. Sie müssen dann lediglich Ihre Ankündigung mit einem Kriterium erstellen, das Ihre Zielgruppe auf Benutzer begrenzt, bei denen "inAppPurchase" auf "true" festgelegt ist.
+## <a name="example:"></a>Example: 
+If you want to push an announcement only to the sub-set of your users that have performed an in-app purchase action.
+
+1. Go to your application settings page, select the "App info" menu and select "New app info"
+2. Register a new Boolean app info called "inAppPurchase"
+3. Make your application set this app info to "true" when the user successfully performs an in-app purchase (by using the sendAppInfo("inAppPurchase", ...) function)
+4. If you don't want to do this from your application, you can do it from your backend by using the device API)
+5. Then, you just need to create your announcement, with a criterion limiting your audience to users having "inAppPurchase" set to "true")
  
-> Hinweis: Für eine Zielgruppenadressierung, die auf anderen Kriterien als App-Infotags basiert, muss Azure Mobile Engagement Informationen von den Geräten Ihrer Benutzer erfassen, ehe der Push gesendet wird, was eine Verzögerung verursachen kann. Komplexe Pushkonfigurationsoptionen (wie die Aktualisierung von Badges) können ebenfalls Pushvorgänge verzögern. Eine "einmalige" Kampagne mithilfe der Push-API ist die absolut schnellste Pushmethode in Azure Mobile Engagement. Das ausschließliche Verwenden von App-Infotags als Pushkriterien für eine Reach-Kampagne (entweder über die Reach-API oder die Benutzeroberfläche) ist die zweitschnellste Methode, da App-Infotags auf Serverseite gespeichert werden. Das Verwenden anderer Kriterien für die Zielgruppenadressierung für eine Pushkampagne ist die flexibelste, aber langsamste Pushmethode, da Azure Mobile Engagement die Geräte abfragen muss, um die Kampagne senden zu können.
+> Note: Targeting based on criteria other than app info tags requires Azure Mobile Engagement to gather information from your users' devices before the push is sent and so can cause a delay. Complex push configuration options (like updating badges) can also delay pushes. Using a "one shot" campaign from the Push API is the absolute fastest push method in Azure Mobile Engagement. Using only app info tags as push criteria for a Reach campaign (either from the Reach API or the UI) is the next fastest method since app info tags are stored on the server side. Using other targeting criteria for a push campaign is the most flexible but slowest push method since Azure Mobile Engagement has to query the devices in order to send the campaign.
  
-![Reichweitenkriterium1][29]
+![Reach-Criterion1][29] 
 
-## Kriteriumoptionen gelten für:
-- **Technische Informationen**
-- Name der Firmware: Name der Firmware
-- Firmwareversion: Firmwareversion
-- Gerätemodell: Gerätemodell
-- Gerätehersteller: Gerätehersteller
-- Anwendungsversion: Anwendungsversion
-- Name des Netzbetreibers: Name des Netzbetreibers, nicht definiert
-- Land des Netzbetreibers: Land des Netzbetreibers, nicht definiert
-- Netzwerktyp: Netzwerktyp
-- Gebietsschema: Gebietsschema
-- Bildschirmgröße: Bildschirmgröße
-- **Standort**
-- Letzter bekannter Bereich: Land, Region, Ort
-- Geofencing in Echtzeit: Liste der interessanten Orte (POIs) (Name, Aktionen), kreisförmiger POI (Name, Breite, Länge, Radius in Metern)
-- **Feedback zur Reichweite**
-- Ankündigungsfeedback: Ankündigung, Feedback
-- Umfragenfeedback: Umfrage, Feedback
-- Antwortfeedback der Umfrage: Antwortfeedback der Umfrage, Frage, Auswahl
-- Datenpush-Feedback: Datenpush, Feedback
-- **Nachverfolgung der Installation**
-- Store: Store, nicht definiert
-- Quelle: Quelle, nicht definiert
-- **Benutzerprofil**
-- Geschlecht: männlich oder weiblich, nicht definiert
-- Geburtsdatum: Operator, Datum, nicht definiert
-- Abonnieren: true oder false, nicht definiert
-- **App-Info**
-- Zeichenfolge: Zeichenfolge, nicht definiert
-- Datum: Operator, Datum, nicht definiert
-- Ganze Zahl: Operator, Nummer, nicht definiert
-- Boolescher Wert: true oder false, nicht definiert
-- **Segment**
-- Name von Segmenten (in Dropdownliste), Ausschluss (Zielbenutzer, die nicht Teil dieses Segments sind).
+## <a name="criterion-options-apply-to:"></a>Criterion Options Apply to:
+- **Technicals**     
+- Firmware name:    Firmware name
+- Firmware version:    Firmware version
+- Device model:    Device model
+- Device manufacturer:    Device manufacturer
+- Application version:    Application version
+- Carrier name:    Carrier name, undefined
+- Carrier country:    Carrier country, undefined
+- Network type:    Network type
+- Locale:    Locale
+- Screen size:    Screen size
+- **Location**      
+- Last known area:    Country, Region, Locality
+- Real time geo-fencing:    List of POIs (Name, Actions), Circular POI (Name, Latitude, Longitude, Radius in meters)
+- **Reach feedback**     
+- Announcement feedback:    Announcement, feedback
+- Poll feedback:    Poll, feedback
+- Poll answer feedback:    Poll answer feedback, question, choice
+- Data Push feedback:    Data Push, feedback
+- **Install Tracking**     
+- Store:    Store, Undefined
+- Source:    Source, Undefined
+- **User profile**     
+- Gender:    male or female, undefined
+- Birth date:    operator, date, undefined
+- Opt-in:    true or false, undefined
+- **App Info**      
+- String:    String, undefined
+- Date:    operator, date, undefined
+- Integer:    operator, number, undefined
+- Boolean:    true or false, undefined
+- **Segment**    
+- Name of Segments (from dropdown list), Exclusion (target users that are not a part of this segment).
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -174,4 +175,8 @@ Angenommen, Sie möchten eine Ankündigung per Push nur an die Benutzer verteile
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

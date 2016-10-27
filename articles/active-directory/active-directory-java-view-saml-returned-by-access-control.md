@@ -1,7 +1,7 @@
 <properties
-    pageTitle="Anzeigen der vom Azure Access Control Service zurückgegebenen SAML (Java)"
-    description="Erfahren Sie, wie Sie die vom Access Control Service in auf Azure gehosteten Java-Anwendungen zurückgegebene SAML anzeigen."
-	services="active-directory" 
+    pageTitle="View SAML Returned by the Access Control Service (Java)"
+    description="Learn how to view SAML returned by the Access Control Service in Java applications hosted on Azure."
+    services="active-directory" 
     documentationCenter="java"
     authors="rmcmurray"
     manager="wpickett"
@@ -16,175 +16,176 @@
     ms.date="08/11/2016" 
     ms.author="robmcm" />
 
-# Anzeigen der vom Azure Access Control Service zurückgegebenen SAML
 
-Diese Anleitung erklärt, wie Sie die Security Assertion Markup Language (SAML) anzeigen können, die vom Azure Access Control Service (ACS) an Ihre Anwendung zurückgegeben wurde. Diese Anleitung baut auf das Thema [Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse][] auf und enthält Code zum Anzeigen der SAML-Informationen. Die fertige Anwendung sieht etwa wie folgt aus.
+# <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>How to view SAML returned by the Azure Access Control Service
 
-![Beispiel-SAML-Ausgabe][saml_output]
+This guide will show you how to view the underlying Security Assertion Markup Language (SAML) returned to your application by the Azure Access Control Service (ACS). The guide builds on the [How to Authenticate Web Users with Azure Access Control Service Using Eclipse][] topic, by providing code that displays the SAML information. The completed application will look similar to the following.
 
-Weitere Informationen zum ACS finden Sie im Abschnitt [Nächste Schritte](#next_steps).
+![Example SAML output][saml_output]
+
+For more information on ACS, see the [Next steps](#next_steps) section.
 
 > [AZURE.NOTE]
-Der Azure Access Control Service-Filter ist eine Technologievorschau für die Community. Als Vorabversion wird diese Software von Microsoft nicht offiziell unterstützt.
+> The Azure Access Services Control Filter is a community technology preview. As pre-release software, it is not formally supported by Microsoft.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Um die Aufgaben in dieser Anleitung erledigen zu könne, müssen Sie zunächst das Beispiel unter [Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse][] abschließen und als Ausgangspunkt für dieses Lernprogramm verwenden.
+To complete the tasks in this guide, complete the sample at [How to Authenticate Web Users with Azure Access Control Service Using Eclipse][] and use it as the starting point for this tutorial.
 
-## Hinzufügen der JspWriter-Bibliothek zu Ihrem Buildpfad und zu Ihrer Bereitstellungsassembly
+## <a name="add-the-jspwriter-library-to-your-build-path-and-deployment-assembly"></a>Add the JspWriter library to your build path and deployment assembly
 
-Fügen Sie die Bibliothek mit der Klasse **javax.servlet.jsp.JspWriter** zu Ihrem Buildpfad und zu Ihrer Bereitstellungs-Assembly hinzu. Falls Sie Tomcat verwenden, ist diese Klasse in der Datei **jsp-api.jar** enthalten, die sich im Apache **lib**-Ordner befindet.
+Add the library that contains the **javax.servlet.jsp.JspWriter** class to your build path and deployment assembly. If you are using Tomcat, the library is **jsp-api.jar**, which is located in the Apache **lib** folder.
 
-1. Klicken Sie im Project Explorer in Eclipse mit der rechten Maustaste auf **MyACSHelloWorld**, anschließend auf **Build Path**, auf **Configure Build Path**, auf die Registerkarte **Libraries** und zuletzt auf **Add External JARs**.
-2. Navigieren Sie im Dialogfeld **JAR Selection** zum entsprechenden JAR, wählen Sie das JAR aus und klicken Sie auf **Open**.
-3. Klicken Sie im immer noch geöffneten **Properties for MyACSHelloWorld**-Dialogfeld auf **Deployment Assembly**.
-4. Klicken Sie im Dialogfeld **Web Deployment Assembly** auf **Add**.
-5. Klicken Sie im Dialogfeld **New Assembly Directive** auf **Java Build Path Entries** und anschließend auf **Next**.
-6. Wählen Sie die entsprechende Bibliothek aus und klicken Sie auf **Finish**.
-7. Klicken Sie auf **OK**, um das Dialogfeld **Properties for MyACSHelloWorld** zu schließen.
+1. In Eclipse's Project Explorer, right-click **MyACSHelloWorld**, click **Build Path**, click **Configure Build Path**, click the **Libraries** tab, and then click **Add External JARs**.
+2. In the **JAR Selection** dialog, navigate to the necessary JAR, select it, and then click **Open**.
+3. With the **Properties for MyACSHelloWorld** dialog still open, click **Deployment Assembly**.
+4. In the **Web Deployment Assembly** dialog, click **Add**.
+5. In the **New Assembly Directive** dialog, click **Java Build Path Entries** and then click **Next**.
+6. Select the appropriate library and click **Finish**.
+7. Click **OK** to close the **Properties for MyACSHelloWorld** dialog.
 
-## Ändern der JSP-Datei zur Anzeige von SAML
+## <a name="modify-the-jsp-file-to-display-saml"></a>Modify the JSP file to display SAML
 
-Fügen Sie den folgenden Code in **index.jsp** ein.
+Modify **index.jsp** to use the following code.
 
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-	    pageEncoding="UTF-8"%>
-	    <%@ page import="javax.xml.parsers.*"
-	             import="javax.xml.transform.*"
-	             import="org.w3c.dom.*"
-	             import="java.io.*"
-	             import="javax.xml.transform.stream.*"
-	             import="javax.xml.transform.dom.*"
-	             import="javax.xml.xpath.*"
-	             import="javax.servlet.jsp.JspWriter" %>
-	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	<html>
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Sample ACS Filter</title>
-	</head>
-	<body>
-		<h3>SAML information from sample ACS program</h3>
-		<%!
-	    void displaySAMLInfo(Node node, String parent, JspWriter out)
-	    {
-	    
-		    try
-		    {
-				String nodeName;
-			    int nChild, i;
-			    
-			    nodeName = node.getNodeName();
-			    out.println("<br>");
-			    out.println("<u>Examining <b>" + parent + nodeName + "</b></u><br>");
-			       
-			       // Attributes.
-			       NamedNodeMap attribsMap = node.getAttributes();
-			       if (null != attribsMap)
-			       {
-	                     for (i=0; i < attribsMap.getLength(); i++)
-	                     {
-	                            Node attrib = attribsMap.item(i);
-	                            out.println("Attribute: <b>" + attrib.getNodeName() + "</b>: " + attrib.getNodeValue()  + "<br>");
-	                     }
-			       }
-			       
-			       // Child nodes.
-			       NodeList list = node.getChildNodes();
-			       if (null != list)
-	 		       {
-			              nChild = list.getLength();
-			              if (nChild > 0)
-			              {                    
-	
-				                 // If it is a text node, just print the text.
-				                 if (list.item(0).getNodeName() == "#text")
-				                 {
-	                                 out.println("Text value: <b>" + list.item(0).getTextContent() + "</b><br>");
-				                 }
-				                 else
-				                 {
-				                	 // Print out the child node names.
-				                	 out.print("Contains " + nChild + " child node(s): ");   
-		   		                     for (i=0; i < nChild; i++)
-				                     {
-					                    Node temp = list.item(i);
-					                    
-					                    out.print("<b>" + temp.getNodeName() + "</b>");
-					                    if (i < nChild - 1)
-					                    {
-					                    	// Separate the names.
-					                    	out.print(", ");
-					                    }
-					                    else
-					                    {
-					                    	// Finish the sentence.
-					                    	out.print(".");
-					                    }
-					                    	
-				                     }
-					                 out.println("<br>");
-					                 
-					                 // Process the child nodes.
-					                 for (i=0; i < nChild; i++)
-				                     {
-					                    Node temp = list.item(i);
-					                    displaySAMLInfo(temp, parent + nodeName + "\", out);
-				                     }
-				               }
-			              }
-			          }
-			      }
-			    catch (Exception e)
-			    {
-			    	System.out.println("Exception encountered.");
-			    	e.printStackTrace();	    	
-			    }
-		    }
-	    %>
-	
-	    <%
-	    try 
-	    {
-		    String data  = (String) request.getAttribute("ACSSAML");
-		    
-		    DocumentBuilder docBuilder;
-			Document doc = null;
-			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-			docBuilderFactory.setIgnoringElementContentWhitespace(true);
-			docBuilder = docBuilderFactory.newDocumentBuilder();
-			byte[] xmlDATA = data.getBytes();
-			
-			ByteArrayInputStream in = new ByteArrayInputStream(xmlDATA); 
-			doc = docBuilder.parse(in);
-			doc.getDocumentElement().normalize();
-			
-			// Iterate the child nodes of the doc.
-	        NodeList list = doc.getChildNodes();
-	
-	        for (int i=0; i < list.getLength(); i++)
-	        {
-	        	displaySAMLInfo(list.item(i), "", out);
-	        }
-		}
-	    catch (Exception e) 
-	    {
-	    	out.println("Exception encountered.");
-	    	e.printStackTrace();
-		}
-	    
-	    %>
-	</body>
-	</html>
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+        pageEncoding="UTF-8"%>
+        <%@ page import="javax.xml.parsers.*"
+                 import="javax.xml.transform.*"
+                 import="org.w3c.dom.*"
+                 import="java.io.*"
+                 import="javax.xml.transform.stream.*"
+                 import="javax.xml.transform.dom.*"
+                 import="javax.xml.xpath.*"
+                 import="javax.servlet.jsp.JspWriter" %>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Sample ACS Filter</title>
+    </head>
+    <body>
+        <h3>SAML information from sample ACS program</h3>
+        <%!
+        void displaySAMLInfo(Node node, String parent, JspWriter out)
+        {
+        
+            try
+            {
+                String nodeName;
+                int nChild, i;
+                
+                nodeName = node.getNodeName();
+                out.println("<br>");
+                out.println("<u>Examining <b>" + parent + nodeName + "</b></u><br>");
+                   
+                   // Attributes.
+                   NamedNodeMap attribsMap = node.getAttributes();
+                   if (null != attribsMap)
+                   {
+                         for (i=0; i < attribsMap.getLength(); i++)
+                         {
+                                Node attrib = attribsMap.item(i);
+                                out.println("Attribute: <b>" + attrib.getNodeName() + "</b>: " + attrib.getNodeValue()  + "<br>");
+                         }
+                   }
+                   
+                   // Child nodes.
+                   NodeList list = node.getChildNodes();
+                   if (null != list)
+                   {
+                          nChild = list.getLength();
+                          if (nChild > 0)
+                          {                    
+    
+                                 // If it is a text node, just print the text.
+                                 if (list.item(0).getNodeName() == "#text")
+                                 {
+                                     out.println("Text value: <b>" + list.item(0).getTextContent() + "</b><br>");
+                                 }
+                                 else
+                                 {
+                                     // Print out the child node names.
+                                     out.print("Contains " + nChild + " child node(s): ");   
+                                     for (i=0; i < nChild; i++)
+                                     {
+                                        Node temp = list.item(i);
+                                        
+                                        out.print("<b>" + temp.getNodeName() + "</b>");
+                                        if (i < nChild - 1)
+                                        {
+                                            // Separate the names.
+                                            out.print(", ");
+                                        }
+                                        else
+                                        {
+                                            // Finish the sentence.
+                                            out.print(".");
+                                        }
+                                            
+                                     }
+                                     out.println("<br>");
+                                     
+                                     // Process the child nodes.
+                                     for (i=0; i < nChild; i++)
+                                     {
+                                        Node temp = list.item(i);
+                                        displaySAMLInfo(temp, parent + nodeName + "\\", out);
+                                     }
+                               }
+                          }
+                      }
+                  }
+                catch (Exception e)
+                {
+                    System.out.println("Exception encountered.");
+                    e.printStackTrace();            
+                }
+            }
+        %>
+    
+        <%
+        try 
+        {
+            String data  = (String) request.getAttribute("ACSSAML");
+            
+            DocumentBuilder docBuilder;
+            Document doc = null;
+            DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+            docBuilderFactory.setIgnoringElementContentWhitespace(true);
+            docBuilder = docBuilderFactory.newDocumentBuilder();
+            byte[] xmlDATA = data.getBytes();
+            
+            ByteArrayInputStream in = new ByteArrayInputStream(xmlDATA); 
+            doc = docBuilder.parse(in);
+            doc.getDocumentElement().normalize();
+            
+            // Iterate the child nodes of the doc.
+            NodeList list = doc.getChildNodes();
+    
+            for (int i=0; i < list.getLength(); i++)
+            {
+                displaySAMLInfo(list.item(i), "", out);
+            }
+        }
+        catch (Exception e) 
+        {
+            out.println("Exception encountered.");
+            e.printStackTrace();
+        }
+        
+        %>
+    </body>
+    </html>
 
-## Ausführen der Anwendung
+## <a name="run-the-application"></a>Run the application
 
-1. Führen Sie Ihre Anwendung im Serveremulator oder als Bereitstellung in Azure aus. Führen Sie dazu die Schritte unter [Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse][] aus.
-2. Öffnen Sie Ihre Webanwendung in einem Browser. Nach der Anmeldung sehen Sie in Ihrer Anwendung die SAML-Informationen inklusive der Security Assertion des Identitätsanbieters.
+1. Run your application in the computer emulator or deploy to Azure, using the steps documented at [How to Authenticate Web Users with Azure Access Control Service Using Eclipse][].
+2. Launch a browser and open your web application. After you log on to your application, you'll see SAML information, including the security assertion provided by the identity provider.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Wenn Sie die ACS-Funktionalität genauer erforschen und mit anspruchsvolleren Szenarien experimentieren möchten, finden Sie weitere Informationen unter [Access Control Service 2.0][].
+To further explore ACS's functionality and to experiment with more sophisticated scenarios, see [Access Control Service 2.0][].
 
 [Prerequisites]: #pre
 [Modify the JSP file to display SAML]: #modify_jsp
@@ -192,8 +193,11 @@ Wenn Sie die ACS-Funktionalität genauer erforschen und mit anspruchsvolleren Sz
 [Run the application]: #run_application
 [Next steps]: #next_steps
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse]: ../active-directory-java-authenticate-users-access-control-eclipse
+[How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-pageTitle="Verwenden des Slack-Connectors in Ihren Logik-Apps | Microsoft Azure"
-description="Erste Schritte mit dem Slack-Connector in Ihren Microsoft Azure App Service-Logik-Apps"
+pageTitle=" Use the Slack Connector in your Logic apps| Microsoft Azure"
+description="Get started using the Slack Connector in your Microsoft Azure App Service Logic apps"
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,147 +17,153 @@ ms.workload="na"
 ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit dem Slack-Connector
 
-Slack ist ein Tool für die Kommunikation in Teams, das alle Kommunikationen in Ihrem Team zentral zusammenführt und unmittelbar durchsuchbar und überall verfügbar macht.
+# <a name="get-started-with-the-slack-connector"></a>Get started with the Slack connector
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+Slack is a team communication tool, that brings together all of your team communications in one place, instantly searchable and available wherever you go.
 
-Der Slack-Connector ermöglicht Folgendes:
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
 
-* Erstellen von Logik-Apps
+With the Slack connector, you can:
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+* Use it to build logic apps
 
-## Trigger und Aktionen
+To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Der Slack-Connector kann als Aktion verwendet werden. Es gibt keine Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
+## <a name="let's-talk-about-triggers-and-actions"></a>Let's talk about triggers and actions
 
- Der Slack-Connector verfügt über die folgenden Aktionen und/oder Trigger:
+The Slack connector can be used as an action; there are no triggers. All connectors support data in JSON and XML formats. 
 
-### Slack-Aktionen
-Sie können diese Aktionen ausführen:
+ The Slack connector has the following action(s) and/or trigger(s) available:
 
-|Aktion|Beschreibung|
+### <a name="slack-actions"></a>Slack actions
+You can take these action(s):
+
+|Action|Description|
 |--- | ---|
-|PostMessage|Sendet eine Nachricht an einen bestimmten Kanal.|
-## Herstellen einer Verbindung mit Slack
-Stellen Sie zum Verwenden des Slack-Connectors zunächst eine **Verbindung** her, und geben Sie anschließend die Details für diese Eigenschaften an:
+|PostMessage|Post a Message to a specified channel.|
+## <a name="create-a-connection-to-slack"></a>Create a connection to Slack
+To use the Slack connector, you first create a **connection** then provide the details for these properties: 
 
-|Eigenschaft| Erforderlich|Beschreibung|
+|Property| Required|Description|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Angeben von Slack-Anmeldeinformationen|
+|Token|Yes|Provide Slack Credentials|
 
-Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfiguration der Slack-**Verbindung** in Ihrer Logik-App abzuschließen:
+Follow these steps to sign into Slack and complete the configuration of the Slack **connection** in your logic app:
 
-1. Wählen Sie **Wiederholung** aus.
-2. Wählen Sie eine **Häufigkeit** aus, und geben Sie ein **Intervall** an.
-3. Wählen Sie **Aktion hinzufügen**. ![Slack konfigurieren][1]  
-4. Geben Sie in das Suchfeld „Slack“ ein, und warten Sie, bis die Suche alle Einträge mit Slack im Namen zurückgibt.
-5. Wählen Sie **Slack – Nachricht veröffentlichen** aus.
-6. Wählen Sie **Bei Slack anmelden**: ![Slack konfigurieren][2]
-7. Geben Sie Ihre Slack-Anmeldeinformationen ein, um die Anwendung zu autorisieren. ![Slack konfigurieren][3]  
-8. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. **Autorisieren** Sie Slack für die Interaktion mit Ihrer Logik-App: ![Slack konfigurieren][5] 
-9. Nach Abschluss der Autorisierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie den Abschnitt **Slack – Alle Nachrichten abrufen**. Fügen Sie bei Bedarf weitere Trigger und Aktionen hinzu. ![Slack konfigurieren][6]
-10. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.
-
-
->[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
-
-## REST-API-Referenz für Slack
-#### Diese Dokumentation gilt für Version 1.0.
-
-
-### Sendet eine Nachricht an einen bestimmten Kanal.
-**```POST: /chat.postMessage```**
+1. Select **Recurrence**
+2. Select a **Frequency** and enter an **Interval**
+3. Select **Add an action**  
+![Configure Slack][1]  
+4. Enter Slack in the search box and wait for the search to return all entries with Slack in the name
+5. Select **Slack - Post message**
+6. Select **Sign in to Slack**:  
+![Configure Slack][2]
+7. Provide your Slack credentials to sign in to authorize the  application    
+![Configure Slack][3]  
+8. You'll be redirected to your organization's Log in page. **Authorize** Slack to interact with your logic app:      
+![Configure Slack][5] 
+9. After the authorization completes you'll be redirected to your logic app to complete it by configuring the **Slack - Get all messages** section. Add other triggers and actions that you need.  
+![Configure Slack][6]
+10. Save your work by selecting **Save** on the menu bar above.
 
 
+>[AZURE.TIP] You can use this connection in other logic apps.
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+## <a name="slack-rest-api-reference"></a>Slack REST API reference
+#### <a name="this-documentation-is-for-version:-1.0"></a>This documentation is for version: 1.0
+
+
+### <a name="post-a-message-to-a-specified-channel."></a>Post a Message to a specified channel.
+**```POST: /chat.postMessage```** 
+
+
+
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|channel|string|Ja|query|(Keine)|Kanal, private Gruppe oder Chatkanal, an den/die die Nachricht gesendet werden soll. Kann ein Name (Beispiel: #general) oder eine codierte ID sein.|
-|Text|string|Ja|query|(Keine)|Text der zu sendenden Nachricht. Formatierungsoptionen finden Sie unter https://api.slack.com/docs/formatting.|.
-|username|string|no|query|(Keine)|Name des Bots|
-|as\_user|Boolescher Wert|no|query|(Keine)|Übergeben Sie „True“, um die Nachricht als authentifizierter Benutzer statt als Bot zu senden.|
-|parse|string|no|query|(Keine)|Ändern, wie Nachrichten behandelt werden. Einzelheiten finden Sie hier: https://api.slack.com/docs/formatting.|
-|link\_names|integer|no|query|(Keine)|Suchen und Verknüpfen von Kanal- und Benutzernamen.|
-|unfurl\_links|Boolescher Wert|no|query|(Keine)|Übergeben Sie „True“, um das Öffnen von hauptsächlich textbasiertem Inhalt zu aktivieren.|
-|unfurl\_media|Boolescher Wert|no|query|(Keine)|Übergeben Sie "false", um das Öffnen von Medieninhalten zu deaktivieren.|
-|icon\_url|string|no|query|(Keine)|URL zu einem Bild, das als Symbol für diese Nachricht verwendet wird|
-|icon\_emoji|string|no|query|(Keine)|Emoticon, das als Symbol für diese Nachricht verwendet wird|
+|channel|string|yes|query|none|Channel, private group, or IM channel to send message to. Can be a name(ex: #general) or an encoded ID.|
+|text|string|yes|query|none|Text of the message to send. For formatting options, see https://api.slack.com/docs/formatting.|
+|username|string|no|query|none|Name of the bot|
+|as_user|boolean|no|query|none|Pass true to post the message as the authenticated user, instead of as a bot|
+|parse|string|no|query|none|Change how messages are treated. For details, see https://api.slack.com/docs/formatting.|
+|link_names|integer|no|query|none|Find and link channel names and usernames.|
+|unfurl_links|boolean|no|query|none|Pass true to enable unfurling of primarily text-based content.|
+|unfurl_media|boolean|no|query|none|Pass false to disable unfurling of media content.|
+|icon_url|string|no|query|none|URL to an image to use as an icon for this message|
+|icon_emoji|string|no|query|none|Emoji to use as an icon for this message|
 
 
-### Im Folgenden sind die möglichen Antworten aufgeführt:
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|Ungültige Anforderung|
-|408|Anforderungstimeout|
-|429|Zu viele Anforderungen|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|503|Slack-Dienst nicht verfügbar|
-|504|Gatewaytimeout|
-|die Standardeinstellung|Fehler beim Vorgang.|
+|400|Bad Request|
+|408|Request Timeout|
+|429|Too Many Requests|
+|500|Internal Server Error. Unknown error occured|
+|503|Slack Service Unavailable|
+|504|Gateway Timeout|
+|default|Operation Failed.|
 ------
 
 
 
-## Objektdefinitionen: 
+## <a name="object-definition(s):"></a>Object definition(s): 
 
- **Message:** Yammer-Nachricht
+ **Message**:Yammer Message
 
-Erforderliche Eigenschaften für „Message“:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for Message:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |id|integer|
-|content\_excerpt|string|
-|sender\_id|integer|
-|replied\_to\_id|integer|
-|created\_at|string|
-|network\_id|integer|
-|message\_type|string|
-|sender\_type|string|
+|content_excerpt|string|
+|sender_id|integer|
+|replied_to_id|integer|
+|created_at|string|
+|network_id|integer|
+|message_type|string|
+|sender_type|string|
 |url|string|
-|web\_url|string|
-|group\_id|integer|
-|body|nicht definiert|
-|thread\_id|integer|
-|direct\_message|Boolescher Wert|
-|client\_type|string|
-|client\_url|string|
-|Sprache|string|
-|notified\_user\_ids|array|
+|web_url|string|
+|group_id|integer|
+|body|not defined|
+|thread_id|integer|
+|direct_message|boolean|
+|client_type|string|
+|client_url|string|
+|language|string|
+|notified_user_ids|array|
 |privacy|string|
-|liked\_by|nicht definiert|
-|system\_message|Boolescher Wert|
+|liked_by|not defined|
+|system_message|boolean|
 
 
 
- **PostOperationRequest:** Stellt eine Sendeanforderung für den Yammer-Connector dar, die an Yammer gesendet werden soll.
+ **PostOperationRequest**:Represents a post request for Yammer Connector to post to yammer
 
-Erforderliche Eigenschaften für PostOperationRequest:
+Required properties for PostOperationRequest:
 
 body
 
-**Alle Eigenschaften:**
+**All properties**: 
 
 
-| Name | Datentyp |
+| Name | Data Type |
 |---|---|
 |body|string|
-|group\_id|integer|
-|replied\_to\_id|integer|
-|direct\_to\_id|integer|
-|broadcast|Boolescher Wert|
+|group_id|integer|
+|replied_to_id|integer|
+|direct_to_id|integer|
+|broadcast|boolean|
 |topic1|string|
 |topic2|string|
 |topic3|string|
@@ -181,35 +187,35 @@ body
 
 
 
- **MessageList:** Liste der Nachrichten
+ **MessageList**:List of messages
 
-Erforderliche Eigenschaften für MessageList:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for MessageList:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |messages|array|
 
 
 
- **MessageBody:** Nachrichtentext
+ **MessageBody**:Message Body
 
-Erforderliche Eigenschaften für MessageBody:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for MessageBody:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |parsed|string|
 |plain|string|
@@ -217,203 +223,203 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **LikedBy:** Gefällt
+ **LikedBy**:Liked By
 
-Erforderliche Eigenschaften für LikedBy:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for LikedBy:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |count|integer|
 |names|array|
 
 
 
- **YammmerEntity:** Gefällt
+ **YammmerEntity**:Liked By
 
-Erforderliche Eigenschaften für YammmerEntity:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for YammmerEntity:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |type|string|
 |id|integer|
-|full\_name|string|
+|full_name|string|
 
 
-## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
-## Objektdefinitionen: 
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="object-definition(s):"></a>Object definition(s): 
 
- **WebResultModel:** Bing-Ergebnisse für Websuche
+ **WebResultModel**:Bing web search results
 
-Erforderliche Eigenschaften für WebResultModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for WebResultModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|Titel|string|
-|Beschreibung|string|
+|Title|string|
+|Description|string|
 |DisplayUrl|string|
-|ID|string|
+|Id|string|
 |FullUrl|string|
 
 
 
- **VideoResultModel:** Bing-Suchergebnisse für Videos
+ **VideoResultModel**:Bing video search results
 
-Erforderliche Eigenschaften für VideoResultModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for VideoResultModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|Titel|string|
+|Title|string|
 |DisplayUrl|string|
-|ID|string|
+|Id|string|
 |MediaUrl|string|
-|Laufzeit|integer|
-|Miniaturansicht|nicht definiert|
+|Runtime|integer|
+|Thumbnail|not defined|
 
 
 
- **ThumbnailModel:** Miniaturansichteigenschaften des Multimediaelements
+ **ThumbnailModel**:Thumbnail properties of the multimedia element
 
-Erforderliche Eigenschaften für ThumbnailModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for ThumbnailModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |MediaUrl|string|
 |ContentType|string|
-|Breite|integer|
-|Höhe|integer|
+|Width|integer|
+|Height|integer|
 |FileSize|integer|
 
 
 
- **ImageResultModel:** Bing-Suchergebnisse für Bilder
+ **ImageResultModel**:Bing image search results
 
-Erforderliche Eigenschaften für ImageResultModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for ImageResultModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|Titel|string|
+|Title|string|
 |DisplayUrl|string|
-|ID|string|
+|Id|string|
 |MediaUrl|string|
 |SourceUrl|string|
-|Miniaturansicht|nicht definiert|
+|Thumbnail|not defined|
 
 
 
- **NewsResultModel:** Bing-Suchergebnisse für Nachrichten
+ **NewsResultModel**:Bing news search results
 
-Erforderliche Eigenschaften für NewsResultModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for NewsResultModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|Titel|string|
-|Beschreibung|string|
+|Title|string|
+|Description|string|
 |DisplayUrl|string|
-|ID|string|
-|Quelle|string|
+|Id|string|
+|Source|string|
 |Date|string|
 
 
 
- **SpellResultModel:** Bing-Suchergebnisse für Schreibweisen
+ **SpellResultModel**:Bing spelling suggestions results
 
-Erforderliche Eigenschaften für SpellResultModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for SpellResultModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|ID|string|
-|Wert|string|
+|Id|string|
+|Value|string|
 
 
 
- **RelatedSearchResultModel:** Bing-Suchergebnisse für verwandte Informationen
+ **RelatedSearchResultModel**:Bing related search results
 
-Erforderliche Eigenschaften für RelatedSearchResultModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for RelatedSearchResultModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|Titel|string|
-|ID|string|
+|Title|string|
+|Id|string|
 |BingUrl|string|
 
 
 
- **CompositeSearchResultModel:** Zusammengesetzte Bing-Suchergebnisse
+ **CompositeSearchResultModel**:Bing composite search results
 
-Erforderliche Eigenschaften für CompositeSearchResultModel:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for CompositeSearchResultModel:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |WebResultsTotal|integer|
 |ImageResultsTotal|integer|
@@ -428,57 +434,61 @@ Keine der Eigenschaften ist erforderlich.
 |RelatedSearchResults|array|
 
 
-## Objektdefinitionen: 
+## <a name="object-definition(s):"></a>Object definition(s): 
 
- **PostOperationResponse:** Stellt die Antwort des Sendevorgangs des Slack-Connectors für das Senden an Slack dar
+ **PostOperationResponse**:Represents response of post operation of Slack Connector for posting to Slack
 
-Erforderliche Eigenschaften für PostOperationResponse:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for PostOperationResponse:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|OK|Boolescher Wert|
+|ok|boolean|
 |channel|string|
 |ts|string|
-|message|nicht definiert|
-|Fehler|string|
+|message|not defined|
+|error|string|
 
 
 
- **MessageItem:** eine Kanalnachricht.
+ **MessageItem**:A channel message.
 
-Erforderliche Eigenschaften für MessageItem:
-
-
-Keine der Eigenschaften ist erforderlich.
+Required properties for MessageItem:
 
 
-**Alle Eigenschaften:**
+None of the properties are required. 
 
 
-| Name | Datentyp |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|Text|string|
+|text|string|
 |id|string|
 |user|string|
 |created|integer|
-|is\_user-deleted|Boolescher Wert|
+|is_user-deleted|boolean|
 
 
-## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
 [1]: ./media/connectors-create-api-slack/connectionconfig1.png
-[2]: ./media/connectors-create-api-slack/connectionconfig2.png
+[2]: ./media/connectors-create-api-slack/connectionconfig2.png 
 [3]: ./media/connectors-create-api-slack/connectionconfig3.png
 [4]: ./media/connectors-create-api-slack/connectionconfig4.png
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

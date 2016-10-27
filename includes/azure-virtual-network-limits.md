@@ -11,14 +11,14 @@ Netzwerksicherheitsgruppen | 100 | 200
 NSG-Regeln pro NSG | 200 | 400
 Benutzerdefinierte Routentabellen | 100 | 200
 Benutzerdefinierte Routen pro Routentabelle | 100 | 400
-Öffentliche IP-Adressen (dynamisch) | 5 | Support kontaktieren
+Öffentliche IP-Adressen (dynamisch) | 5 | an den Support wenden
 Reservierte öffentliche IP-Adressen | 20 | Support kontaktieren
 Öffentliche VIP-Adressen pro Bereitstellung | 5 | Support kontaktieren
 Private VIP-Adressen (ILB) pro Bereitstellung | 1 | 1
 Endpunkt-Zugriffssteuerungslisten (ACLs) | 50 | 50
 
 
-#### <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
+#### <a name="<a-name="azure-resource-manager-virtual-networking-limits"></a>networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden.
 
@@ -40,7 +40,11 @@ Regeln für Lastenausgleichsmodule pro Lastenausgleichsmodul | 150 | 150
 Öffentliche Front-End-IP pro Lastenausgleichsmodul | 5 | Support kontaktieren
 Private Front-End-IP pro Lastenausgleichsmodul | 30 | Support kontaktieren
 Anwendungsgateways | 50 | 50
+VNets Peerings pro Virtual Network-Instanz | 10 | 50
 
 Wenden Sie sich an den Support, falls Sie Limits gegenüber den Standardwerten erhöhen müssen.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

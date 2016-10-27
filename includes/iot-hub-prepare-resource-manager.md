@@ -1,52 +1,55 @@
-## Vorbereiten der Authentifizierung von Anforderungen des Ressourcen-Managers
+## <a name="prepare-to-authenticate-resource-manager-requests"></a>Prepare to authenticate Resource Manager requests
 
-Sie müssen alle Vorgänge authentifizieren, die Sie mithilfe des [Azure-Ressourcen-Managers][lnk-authenticate-arm] mit Azure Active Directory (AD) für die Ressourcen ausführen. Die einfachste Möglichkeit hierzu ist die Verwendung von PowerShell oder der Azure-Befehlszeilenschnittstelle.
+You must authenticate all the operations that you perform on resources using the [Azure Resource Manager][lnk-authenticate-arm] with Azure Active Directory (AD). The easiest way to configure this is to use PowerShell or Azure CLI.
 
-Installieren Sie [Azure PowerShell 1.0][lnk-powershell-install] oder höher, bevor Sie fortfahren.
+You should install [Azure PowerShell 1.0][lnk-powershell-install] or later before you continue.
 
-Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine AD-Anwendung mithilfe von PowerShell einrichten. Sie können diese Befehle in einer standardmäßigen PowerShell-Sitzung ausführen.
+The following steps show how to set up password authentication for an AD application using PowerShell. You can run these commands in a standard PowerShell session.
 
-1. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Abonnement an:
+1. Log in to your Azure subscription using the following command:
 
     ```
     Login-AzureRmAccount
     ```
 
-2. Notieren Sie sich Ihre **TenantId** und **SubscriptionId**. Diese werden später benötigt werden.
+2. Make a note of your **TenantId** and **SubscriptionId**. You will need them later.
 
-3. Erstellen Sie mit dem folgenden Befehl eine neue Azure Active Directory-Anwendung, und ersetzen Sie die Platzhalter:
+3. Create a new Azure Active Directory application using the following command, replacing the place holders:
 
-    - **{Display name}:** Ein Anzeigename für Ihre Anwendung, z. B. **MySampleApp**.
-    - **{Home page URL}:** Die URL der Startseite der App, z. B. **http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
-    - **{Application identifier}:** Ein eindeutiger Bezeichner, z. B. **http://mysampleapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
-    - **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer Anwendung verwenden werden.
+    - **{Display name}:** a display name for your application such as **MySampleApp**
+    - **{Home page URL}:** the URL of the home page of your app such as **http://mysampleapp/home**. This URL does not need to point to a real application.
+    - **{Application identifier}:** A unique identifier such as **http://mysampleapp**. This URL does not need to point to a real application.
+    - **{Password}:** A password that you will use to authenticate with your app.
 
     ```
     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
     ```
     
-4. Notieren Sie sich die **ApplicationId** der Anwendung, die Sie erstellt haben. Sie benötigen sie später.
+4. Make a note of the **ApplicationId** of the application you created. You will need this later.
 
-5. Erstellen Sie einen neuen Dienstprinzipal mithilfe des folgenden Befehls, und ersetzen Sie **{MyApplicationId}** durch die **ApplicationId** aus dem vorherigen Schritt:
+5. Create a new service principal using the following command, replacing **{MyApplicationId}** with the **ApplicationId** from the previous step:
 
     ```
     New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
     ```
     
-6. Richten Sie eine Rollenzuweisung mithilfe des folgenden Befehls ein, und ersetzen Sie **{MyApplicationId}** durch Ihre **ApplicationId**.
+6. Setup a role assignment using the following command, replacing **{MyApplicationId}** with your **ApplicationId**.
 
     ```
     New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
     
-Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifizierung aus einer benutzerdefinierten C#-Anwendung möglich ist. Die folgenden Werte werden Sie später in diesem Tutorial benötigen:
+You have now finished creating the Azure AD application that will enable you to authenticate from your custom C# application. You will need the following values later in this tutorial:
 
 - TenantId
 - SubscriptionId
 - ApplicationId
-- Kennwort
+- Password
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 [lnk-powershell-install]: ../articles/powershell-install-configure.md
 
-<!----HONumber=AcomDC_0413_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Assistent zum Veröffentlichen von Azure-Anwendungen | Microsoft Azure"
-   description="Assistent zur Veröffentlichung einer Azure-Anwendung"
+   pageTitle="Publish Azure Application Wizard | Microsoft Azure"
+   description="Publish Azure Application Wizard"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,128 +15,134 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Assistent zur Veröffentlichung einer Azure-Anwendung
 
-## Übersicht
+# <a name="publish-azure-application-wizard"></a>Publish Azure Application Wizard
 
-Nachdem Sie eine Webanwendung in Visual Studio entwickelt haben, können Sie diese Anwendung mit dem **Assistenten zum Veröffentlichen einer Azure-Anwendung** leichter in einem Azure-Clouddienst veröffentlichen. Im ersten Abschnitt werden die Schritte erläutert, die Sie ausführen müssen, bevor Sie den Assistenten verwenden. In den verbleibenden Abschnitten werden die Features des Assistenten vorgestellt.
+## <a name="overview"></a>Overview
 
->[AZURE.NOTE] In diesem Thema wird die Bereitstellung in Clouddiensten und nicht auf Websites behandelt. Weitere Informationen zum Bereitstellen von Websites finden Sie unter [Bereitstellen einer Azure-Website](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false).
+After you develop a web application in Visual Studio, you can publish that application more easily to an Azure cloud service by using the **Publish Azure Application** wizard. The first section explains the steps that you must complete before you use the wizard, and the remaining sections explain the features of the wizard.
 
-## Voraussetzungen
+>[AZURE.NOTE] This topic is about deploying to cloud services, not to web sites. For information about deploying to web sites, see [How to Deploy an Azure Web Site](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false).
 
-Bevor Sie Ihre Webanwendung in Azure veröffentlichen können, benötigen Sie ein Microsoft-Konto und ein Azure-Abonnement. Außerdem müssen Sie Ihre Webanwendung einem Azure-Clouddienst zuordnen. Wenn Sie diese Aufgaben bereits erledigt haben, können Sie mit dem nächsten Absatz fortfahren.
+## <a name="prerequisites"></a>Prerequisites
 
-1. Besorgen Sie sich ein Microsoft-Konto und ein Azure-Abonnement. [Hier](https://azure.microsoft.com/pricing/free-trial/) können Sie ein einen Monat lang kostenloses Azure-Abonnement bestellen.
+Before you can publish your web application to Azure, you need to have a Microsoft account and an Azure subscription, and you have to associate your web application with an Azure cloud service. If you’ve already completed these tasks, you can skip to the next section.
 
-1. Erstellen Sie einen Clouddienst und ein Speicherkonto in Azure. Hierzu können Sie den Server-Explorer in Visual Studio oder das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden.
+1. Get a Microsoft account and an Azure subscription. You can try a free one month free Azure subscription [here](https://azure.microsoft.com/pricing/free-trial/)
 
-1. Aktivieren Sie Ihre Webanwendung für Azure. Damit Ihre Webanwendung aus Visual Studio in Azure veröffentlicht werden kann, müssen Sie sie einem Azure-Clouddienstprojekt in Visual Studio zuordnen. Wenn Sie das zugeordnete Clouddienstprojekt erstellen möchten, öffnen Sie das Kontextmenü für das Projekt für Ihre Webanwendung, und wählen Sie dann **Konvertieren -> In Azure-Clouddienstprojekt konvertieren** aus.
+1. Create a cloud service and a storage account on Azure. You can do this from Server Explorer in Visual Studio, or by using the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-1. Nachdem Sie das Clouddienstprojekt der Projektmappe hinzugefügt haben, öffnen Sie das Kontextmenü erneut, und wählen Sie dann **Veröffentlichen** aus. Weitere Informationen zum Aktivieren von Anwendungen für Azure finden Sie unter [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx).
+1. Enable your web application for Azure. To enable your web application to be published to Azure from Visual Studio, you’ll need to associate it with an Azure cloud service project in Visual Studio. To create the associated cloud service project, open the shortcut menu for the project for your web application, and then choose Convert, **Convert to Azure Cloud Service Project**.
 
->[AZURE.NOTE] Sie müssen Visual Studio mit Administratorrechten aufrufen (Als Administrator ausführen).
+1. After the cloud service project is added to your solution, open the same shortcut menu again and then choose **Publish**. For more information about how to enable applications for Azure, see [How to: Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx).
 
-1. Wenn Sie zum Veröffentlichen der Anwendung bereit sind, öffnen Sie das Kontextmenü für das Azure-Clouddienstprojekt, und wählen Sie dann **Veröffentlichen** aus. In den folgenden Schritten wird der Assistent zum Veröffentlichen der Azure-Anwendung gezeigt.
+>[AZURE.NOTE] Be sure to start Visual Studio with administrator credentials (Run As Administrator).
 
-## Wählen des Abonnements
+1. When you’re ready to publish your application, open the shortcut menu for the Azure cloud service project, and then choose **Publish**. The following steps show the Publish Azure Application wizard.
 
-### So wählen Sie ein Abonnement aus
+## <a name="choosing-your-subscription"></a>Choosing Your Subscription
 
-1. Bevor Sie den Assistenten zum ersten Mal verwenden, müssen Sie sich anmelden. Klicken Sie auf den Link **Anmelden**. Melden Sie sich bei Aufforderung am Azure-Portal an, und geben Sie Ihren Azure-Benutzernamen und Ihr Kennwort an.
+### <a name="to-choose-a-subscription"></a>To choose a subscription
 
-    ![Dies ist einer der Bildschirme des Veröffentlichungs-Assistenten](./media/vs-azure-tools-publish-azure-application-wizard/IC799159.png)
+1. Before you use the wizard for the first time, you must sign in. Choose the **Sign In** link. Sign in to the Azure portal when prompted, and provide your Azure user name and password. 
 
-    Die Liste der Abonnements wird mit den Abonnements aufgefüllt, die dem Konto zugeordnet sind. Möglicherweise werden auch Abonnements für alle zuvor importierten Abonnementdateien angezeigt.
+    ![This is one of the publishing wizard screens](./media/vs-azure-tools-publish-azure-application-wizard/IC799159.png)
 
-1. Wählen Sie in der Liste **Wählen Sie Ihr Abonnement** das Abonnement aus, das für diese Bereitstellung verwendet werden soll.
+    The list of subscriptions populates with the subscriptions associated with your account. You might also see subscriptions from any subscription files that you imported previously.
 
-   Wenn Sie **<Verwalten...>** auswählen, wird das Dialogfeld **Abonnements verwalten** aufgerufen, in dem Sie das gewünschte Abonnement und das Benutzerkonto auswählen können. Auf der Registerkarte **Konten** werden alle Ihre Konten angezeigt. Auf der Registerkarte **Abonnements** werden alle den Konten zugeordneten Abonnements aufgeführt. Sie können auch eine Region auswählen, aus der Sie Azure-Ressourcen verwenden möchten, sowie Zertifikate für Ihr Abonnement im Azure-Portal erstellen oder importieren. Wenn Sie Abonnements über eine Abonnementdatei importiert haben, werden die zugeordneten Zertifikate auf der Registerkarte **Zertifikate** angezeigt. Wenn Sie fertig sind, klicken Sie auf die Schaltfläche **Schließen**.
+1. In the **Choose your subscription** list, choose the subscription to use for this deployment.
+
+   If you choose **<Manage…>**, the **Manage Subscriptions** dialog box appears, and you can choose the subscription and user account you want to use. The **Accounts** tab shows all of your accounts, and the **Subscriptions** tab shows all of the subscriptions associated with the accounts. You can also choose a region from which to use Azure resources, as well as create or import certificates for your subscription from the Azure portal. If you imported any subscriptions from a subscription file, the associated certificates will appear under the **Certificates** tab. When you're done, choose the **Close** button.
 
     ![Manage subscriptions](./media/vs-azure-tools-publish-azure-application-wizard/IC799160.png)
 
     >[AZURE.NOTE] A subscription file can contain more than one subscription.
 
-1. Klicken Sie zum Fortfahren auf die Schaltfläche **Weiter**.
+1. Choose the **Next** button to continue. 
 
-    Wenn keine Clouddienste in Ihrem Abonnement vorhanden sind, müssen Sie einen Clouddienst in Azure zum Hosten des Projekts erstellen. Das Dialogfeld **Clouddienst und Speicherkonto erstellen** wird angezeigt.
+    If there aren't any cloud services in your subscription, you need to create a cloud service in Azure to host your project. The **Create Cloud Service and Storage Account** dialog box appears.
 
-    Geben Sie einen neuen Namen für den Clouddienst an. Der Name muss in Azure eindeutig sein. Geben Sie dann eine Region oder eine Affinitätsgruppe für ein Datencenter ein, das in Ihrer Nähe oder der Nähe der meisten Ihrer Kunden liegt. Dieser Name wird auch für ein neues Speicherkonto verwendet, das Azure für Ihren Clouddienst erstellt.
+    Specify a new name for the cloud service. The name must be unique in Azure. Then specify a region or affinity group for a data center that’s near you or most of your clients. This name is also used for a new storage account that Azure creates for your cloud service.
 
-1. Ändern Sie die Einstellungen, die Sie für diese Bereitstellung verwenden möchten, und veröffentlichen Sie die Bereitstellung dann über die Schaltfläche **Veröffentlichen**. (Im nächsten Abschnitt werden weitere Details zu den verschiedenen Einstellungen erläutert.) Um die Einstellungen vor der Veröffentlichung zu überprüfen, klicken Sie auf **Weiter**.
+1. Modify any settings you want for this deployment and then publish it by choosing the **Publish** button (The next section provides more details about the various settings). To review the settings before publishing, choose the **Next** button.
 
-    >[AZURE.NOTE] Wenn Sie "Veröffentlichen" in diesem Schritt gewählt haben, können Sie den Status dieser Bereitstellung in Visual Studio überwachen.
+    >[AZURE.NOTE] If you chose Publish in this step, you can monitor the status of this deployment in Visual Studio.
 
-Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellung mit dem **Assistenten zum Veröffentlichen einer Azure-Anwendung** ändern. Beispielsweise können Sie eine Einstellung wählen, um Ihre Anwendung in einer Testumgebung bereitstellen, bevor Sie sie freigeben. Die folgende Abbildung zeigt die Registerkarte **Allgemeine Einstellungen** für eine Azure-Bereitstellung.
+You can modify both common and advanced settings for a deployment by using the **Publish Azure Application** wizard. For example, you can choose a setting to deploy your application to a test environment before you release it. The following illustration shows the **Common Settings** tab for an Azure deployment.
 
-![Allgemeine Einstellungen](./media/vs-azure-tools-publish-azure-application-wizard/IC749013.png)
+![Common Settings](./media/vs-azure-tools-publish-azure-application-wizard/IC749013.png)
 
-## Konfigurieren der Einstellungen für die Veröffentlichung
+## <a name="configuring-your-publish-settings"></a>Configuring Your Publish Settings
 
-### So konfigurieren Sie die Einstellungen für die Veröffentlichung
+### <a name="to-configure-the-publish-settings"></a>To configure the publish settings
 
-1. Führen Sie in der Liste **Clouddienst** einen der folgenden Schritte aus:
+1. In the **Cloud service** list, perform one of the following sets of steps:
 
-   1. Wählen Sie im Dropdownlistenfeld einen vorhandenen Clouddienst aus. Der Standort des Datencenters für den Dienst wird angezeigt. Sie müssen sich diesen Standort notieren und sicherstellen, dass sich der Speicherort des Speicherkontos im selben Datencenter befindet.
+   1. In the dropdown list box, choose an existing cloud service. The data center location for the service appears. You should note this location and make sure that your storage account location is in the same data center.
 
-    1. Wählen Sie **Neu erstellen**, um einen von Azure gehosteten Clouddienst zu erstellen. Geben Sie im Dialogfeld **Clouddienst erstellen** einen Namen für den Dienst an, und geben Sie dann eine Region oder eine Affinitätsgruppe an, um den Standort des Datencenters festzulegen, in dem der Clouddienst gehostet werden soll. Der Name muss in Azure eindeutig sein.
+    1. Choose **Create New** to create a cloud service that Azure hosts. In the **Create Cloud Service** dialog box, provide a name for the service, and then specify a region or affinity group to specify the location of the data center that you want to host this cloud service. The name must be unique in Azure.
 
-1. Wählen Sie in der Liste **Umgebung** entweder **Produktion** oder **Staging**. Wählen Sie die Stagingumgebung, wenn Sie die Anwendung in einer Testumgebung bereitstellen möchten. Sie können Ihre Anwendung später in die Produktionsumgebung verlagern.
+1. In the **Environment** list, choose either **Production** or **Staging**. Choose the staging environment if you want to deploy your application to a test environment. You can move your application to the production environment later.
 
-1. Wählen Sie in der Liste **Buildkonfiguration** entweder **Debuggen** oder **Release**.
+1. In the **Build configuration** list, choose either **Debug** or **Release**.
 
-1. Wählen Sie in der Liste **Dienstkonfiguration** entweder **Cloud** oder **Lokal**.
+1. In the **Service configuration** list, choose either **Cloud** or **Local**.
 
-    Aktivieren Sie das Kontrollkästchen **Remotedesktop für alle Rollen aktivieren**, wenn Sie eine Remoteverbindung mit dem Dienst herstellen möchten. Diese Option wird in erster Linie für die Problembehandlung verwendet. Ist dieses Kontrollkästchen aktiviert, wird das Dialogfeld **Remotedesktopkonfiguration** angezeigt. Wählen Sie den Link "Einstellungen", um die Konfiguration zu ändern.
+    Select the **Enable Remote Desktop for all roles** check box if you want to be able to remotely connect to the service. This option is primarily used for troubleshooting. When you select this check box, the **Remote Desktop Configuration** dialog box appears. Choose the Settings link to change the configuration.
 
-    Wählen Sie **Web Deploy für alle Webrollen aktivieren**, um die Webbereitstellung für den Dienst zu aktivieren. Aktivieren Sie Remotedesktop, um dieses Feature zu verwenden. Weitere Informationen finden Sie unter [[Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx). Weitere Informationen zu Web Deploy finden Sie unter [[Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx).
+    Select the **Enable Web Deploy for all web roles** check box to enable web deployment for the service. You must enable Remote Desktop to use this feature. For more information, see [[Publishing a Cloud Service using the Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx). For more information about Web Deploy, see [[Publishing a Cloud Service using the Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx).
 
-1. Wählen Sie die Registerkarte **Erweiterte Einstellungen** aus. Akzeptieren Sie im Feld **Bereitstellungsbezeichnung** den Standardnamen, oder geben Sie einen Namen Ihrer Wahl ein. Um der Bereitstellungsbezeichnung das Datum anzufügen, lassen Sie das Kontrollkästchen aktiviert.
+1. Choose the **Advanced Settings** tab. In the **Deployment label** field, either accept the default name, or enter a name of your choosing. To append the date to the deployment label, leave the check box selected.
 
-    ![Dritter Bildschirm des Veröffentlichungs-Assistenten](./media/vs-azure-tools-publish-azure-application-wizard/IC749014.png)
+    ![Third screen of the Publishing Wizard](./media/vs-azure-tools-publish-azure-application-wizard/IC749014.png)
 
-1. Wählen Sie in der Liste **Speicherkonto** das Speicherkonto aus, das für diese Bereitstellung verwendet werden soll. Vergleichen Sie die Standorte der Datencenter für den Clouddienst und Ihr Speicherkonto. Im Idealfall sollten diese Standorte identisch sein.
+1. In the **Storage account** list, choose the storage account to use for this deployment. Compare the locations of the data centers for your cloud service and your storage account. Ideally, these locations should be the same.
 
-    >[AZURE.NOTE] Das Azure-Speicherkonto speichert das Paket für die Bereitstellung der Anwendung. Nach der Bereitstellung der Anwendung wird das Paket aus dem Speicherkonto entfernt.
+    >[AZURE.NOTE] The Azure storage account stores the package for the application deployment. After the application is deployed, the package is removed from the storage account.
 
-1. Aktivieren Sie das Kontrollkästchen **Bereitstellungsaktualisierung**, wenn Sie nur aktualisierte Komponenten bereitstellen möchten. Diese Art der Bereitstellung kann schneller als eine vollständige Bereitstellung erfolgen. Wählen Sie den Link **Einstellungen**, um das Dialogfeld **Bereitstellungsaktualisierungs-Einstellungen** zu öffnen, das in der folgenden Abbildung gezeigt wird.
+1. Select the **Deployment update** check box if you want to deploy only updated components. This type of deployment can be faster than a full deployment. Choose the **Settings** link to open the **Deployment update settings** dialog box, shown in the following illustration. 
 
-    ![Bereitstellungseinstellungen](./media/vs-azure-tools-publish-azure-application-wizard/IC617060.png)
+    ![Deployment Settings](./media/vs-azure-tools-publish-azure-application-wizard/IC617060.png)
 
-    Sie können eine der beiden Optionen für die Bereitstellungsaktualisierung auswählen: inkrementell oder gleichzeitig. Bei der inkrementellen Bereitstellung wird jeweils eine bereitgestellte Instanz aktualisiert, damit die Anwendung online und für Benutzer verfügbar bleibt. Bei der gleichzeitigen Bereitstellung werden alle bereitgestellten Instanzen gleichzeitig aktualisiert. Eine gleichzeitige Aktualisierung nimmt weniger Zeit in Anspruch als das inkrementelle Update. Allerdings steht bei Auswahl dieser Option die Anwendung während des Aktualisierungsvorgangs möglicherweise nicht zur Verfügung.
+    You can choose either of two options for update deployment, incremental or simultaneous. An incremental deployment updates one deployed instance at a time, so that your application remains online and available to users. A simultaneous deployment updates all deployed instances at once. Simultaneous update is faster than incremental update, but if you choose this option, your application might not be available during the update process.
 
-    Sie sollten das Kontrollkästchen "Falls die Bereitstellung nicht aktualisiert werden kann, vollständige Bereitstellung durchführen" aktivieren, wenn bei einem Fehler der Bereitstellungsaktualisierung die vollständige Bereitstellung automatisch erfolgen soll. Bei einer vollständigen Bereitstellung wird die virtuelle IP-Adresse (VIP) für den Clouddienst zurückgesetzt. Weitere Informationen finden Sie unter [Vorgehensweise: Beibehalten einer konstanten virtuellen IP-Adresse für einen Clouddienst](https://msdn.microsoft.com/library/azure/jj614593.aspx).
-
-
-1. Zum Debuggen des Diensts aktivieren Sie das Kontrollkästchen **IntelliTrace aktivieren**. Wenn Sie eine **Debugkonfiguration** bereitstellen und Ihren Clouddienst in Azure debuggen möchten, aktivieren Sie das Kontrollkästchen **Remotedebugger für alle Rollen aktivieren**, um die Remotedebuggingdienste bereitzustellen.
-
-2. Aktivieren Sie das Kontrollkästchen **Profilerstellung aktivieren**, und wählen Sie dann den Link **Einstellungen**, um die Profilerstellungsoptionen anzuzeigen und für diese Anwendung ein Profil zu erstellen.
+    You should select the check box for If deployment can't be updated, do a full deployment if you want the full deployment to take place automatically if an update deployment fails. A full deployment resets the virtual IP (VIP) address for the cloud service. For more information, see [How to: Retain a Constant Virtual IP Address for a Cloud Service](https://msdn.microsoft.com/library/azure/jj614593.aspx).
 
 
-    >[AZURE.NOTE] Sie müssen Visual Studio Ultimate verwenden, um entweder IntelliTrace oder die Profilerstellung für die Ebeneninteraktion zu aktivieren. Beide können nicht gleichzeitig aktiviert werden.
+1. To debug your service, select the **Enable IntelliTrace** check box, or if you are deploying a **Debug** configuration and want to debug your cloud service in Azure, select the **Enable Remote Debugger for all roles** checkbox to deploy the remote debugging services.
 
-    Weitere Informationen finden Sie unter [Debuggen eines veröffentlichten Clouddiensts mit IntelliTrace](https://msdn.microsoft.com/library/azure/ff683671.aspx) und [Visual Studio und Testen der Leistung eines Clouddiensts](https://msdn.microsoft.com/library/azure/hh369930.aspx).
+2. To profile the application, select the **Enable profiling** check box, and then choose the **Settings** link to display the profiling options. 
 
-1. Wählen Sie **Weiter**, um die Zusammenfassungsseite für die Anwendung anzuzeigen.
 
-## Veröffentlichen der Anwendung
+    >[AZURE.NOTE] You must use Visual Studio Ultimate to enable either IntelliTrace or Tier Interaction Profiling (TIP), and you can't enable both at the same time.
 
-1. Sie können auch anhand der Einstellungen, die Sie gewählt haben, ein Veröffentlichungsprofil erstellen. Sie können beispielsweise ein Profil für eine Testumgebung und ein weiteres für die Produktion verwenden. Um dieses Profil zu speichern, klicken Sie auf das Symbol **Speichern**. Der Assistent erstellt das Profil und speichert es im Visual Studio-Projekt. Um den Namen des Profils zu ändern, öffnen Sie die Liste **Zielprofil**, und wählen Sie anschließend **<Verwalten…>** aus.
+    For more information, see [Debugging a Published Cloud Service with IntelliTrace and Visual Studio](https://msdn.microsoft.com/library/azure/ff683671.aspx) and [Testing the Performance of a Cloud Service](https://msdn.microsoft.com/library/azure/hh369930.aspx).
 
-    ![Zusammenfassungsbildschirm des Veröffentlichungs-Assistenten](./media/vs-azure-tools-publish-azure-application-wizard/IC749015.png)
+1. Choose **Next** to view the summary page for the application.
 
-    >[AZURE.NOTE] Das Veröffentlichungsprofil wird im Projektmappen-Explorer in Visual Studio angezeigt. Die Profileinstellungen werden in eine Datei mit der Erweiterung ".azurePubxml" geschrieben. Einstellungen werden als Attribute der XML-Tags gespeichert.
+## <a name="publishing-your-application"></a>Publishing Your Application
 
-1. Wählen Sie **Veröffentlichen**, um Ihre Anwendung zu veröffentlichen. Sie können den Prozessstatus im Fenster **Ausgabe** in Visual Studio überwachen.
+1. You can choose to create a publishing profile from the settings that you have chosen. For example, you might create one profile for a test environment and another for production. To save this profile, choose the **Save** icon. The wizard creates the profile and saves it in the Visual Studio project. To modify the profile name, open the **Target profile** list, and then choose **<Manage…>**.
 
-## Weitere Informationen
+    ![Summary screen of the Publishing Wizard](./media/vs-azure-tools-publish-azure-application-wizard/IC749015.png)
 
-[Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx)
+    >[AZURE.NOTE] The publishing profile appears in Solution Explorer in Visual Studio, and the profile settings are written to a file with an .azurePubxml extension. Settings are saved as attributes of XML tags.
 
-[Veröffentlichen eines Clouddiensts mit den Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)
+1. Choose **Publish** to publish your application. You can monitor the process status in the **Output** window in Visual Studio.
 
-[Debuggen eines veröffentlichten Clouddiensts mit IntelliTrace und Visual Studio](https://msdn.microsoft.com/library/azure/ff683671.aspx)
+## <a name="see-also"></a>See Also
 
-[Lokales Testen der Leistung eines Cloud-Diensts](https://msdn.microsoft.com/library/azure/hh369930.aspx)
+[How to: Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+[Publishing a Cloud Service using the Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)
+
+[Debugging a Published Cloud Service with IntelliTrace and Visual Studio](https://msdn.microsoft.com/library/azure/ff683671.aspx)
+
+[Testing the Performance of a Cloud Service](https://msdn.microsoft.com/library/azure/hh369930.aspx)
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

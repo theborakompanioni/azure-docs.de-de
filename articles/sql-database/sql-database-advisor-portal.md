@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure SQL-Datenbankratgeber im Azure-Portal | Microsoft Azure" 
-   description="Mit dem Azure SQL-Datenbankratgeber im Azure-Portal können Sie Empfehlungen für Ihre vorhandenen SQL-Datenbanken anzeigen und umsetzen und so die derzeitige Abfrageleistung verbessern." 
+   pageTitle="Azure SQL Database Advisor using the Azure portal | Microsoft Azure" 
+   description="You can use the Azure SQL Database Advisor in the Azure portal to review and implement recommendations for your existing SQL Databases that can improve current query performance." 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -13,164 +13,175 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="06/22/2016"
+   ms.date="09/30/2016"
    ms.author="sstein"/>
 
-# SQL-Datenbankratgeber
+
+# <a name="sql-database-advisor-using-the-azure-portal"></a>SQL Database Advisor using the Azure portal
 
 > [AZURE.SELECTOR]
-- [SQL-Datenbankratgeber – Übersicht](sql-database-advisor.md)
+- [SQL Database Advisor Overview](sql-database-advisor.md)
 - [Portal](sql-database-advisor-portal.md)
 
-Mit dem Azure SQL-Datenbankratgeber im Azure-Portal können Sie Empfehlungen für Ihre vorhandenen SQL-Datenbanken anzeigen und umsetzen und so die derzeitige Abfrageleistung verbessern.
+You can use the Azure SQL Database Advisor in the Azure portal to review and implement recommendations for your existing SQL Databases that can improve current query performance.
 
-## Anzeigen von Empfehlungen
+## <a name="viewing-recommendations"></a>Viewing recommendations
 
-Auf der Seite „Empfehlungen“ können Sie die wichtigsten Empfehlungen basierend auf ihrer potenziellen Auswirkung zur Verbesserung der Leistung anzeigen. Außerdem können Sie hier die Verlaufsdaten der Vorgänge sehen. Wählen Sie eine Empfehlung oder einen Status aus, um Detailinformationen anzuzeigen.
+The recommendations page is where you view the top recommendations based on their potential impact to improve performance. You can also view the status of the historical operations. Select a recommendation or status to see  more details.
 
-Zum Anzeigen und Anwenden von Empfehlungen benötigen Sie die richtigen Berechtigungen für die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) in Azure. Die Berechtigungen **Leser** und **SQL-DB-Mitwirkender** sind erforderlich, um Empfehlungen anzuzeigen, und die Berechtigungen **Besitzer** und **SQL-DB-Mitwirkender** sind erforderlich, um Aktionen ausführen zu können, Indizes zu erstellen oder zu löschen und die Indexerstellung abzubrechen.
+To view and apply recommendations, you need the correct [role-based access control](../active-directory/role-based-access-control-configure.md) permissions in Azure. **Reader**, **SQL DB Contributor** permissions are required to view recommendations, and **Owner**, **SQL DB Contributor** permissions are required to execute any actions; create or drop indexes and cancel index creation.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **DURCHSUCHEN** > **SQL-Datenbanken**, und wählen Sie Ihre Datenbank aus.
-5. Klicken Sie auf **Alle Einstellungen** > **Empfehlungen**, um die verfügbaren **Empfehlungen** für die ausgewählte Datenbank anzuzeigen.
+1. Sign in to the [Azure portal](https://portal.azure.com/).
+2. Click **More services** > **SQL databases**, and select your database.
+5. Click **Performance recommendation** to view available recommendations for the selected database.
 
-> [AZURE.NOTE] Um Empfehlungen zu erhalten, muss eine Datenbank ungefähr eine Woche lang genutzt werden, und innerhalb dieser Woche müssen Aktivitäten stattfinden. Außerdem müssen auch konsistente Aktivitäten vorhanden sein. Der SQL-Datenbankratgeber kann leichter für konsistente Abfragemuster optimiert werden als für zufällige, unregelmäßige Aktivitätsspitzen. Wenn auf der Seite **Empfehlungen** keine Empfehlungen verfügbar sind, sollte der Grund hier in einer Meldung erläutert werden.
+> [AZURE.NOTE] To get recommendations a database needs to have about a day of usage, and there needs to be some activity. There also needs to be some consistent activity. The SQL Database Advisor can more easily optimize for consistent query patterns than it can for random spotty bursts of activity. If recommendations are not available, the **Performance recommendation** page should provide a message explaining why.
 
-![Empfehlungen](./media/sql-database-advisor-portal/recommendations.png)
+![Recommendations](./media/sql-database-advisor-portal/recommendations.png)
 
-Hier sehen Sie eine Empfehlung zum Beheben von Schemaproblemen im Azure-Portal.
+Here is an example of "Fix schema issue" recommendation in the Azure portal.
 
-![Beheben von Schemaproblemen](./media/sql-database-advisor-portal/sql-database-advisor-schema-issue.png)
+![Fix Schema Issue](./media/sql-database-advisor-portal/sql-database-advisor-schema-issue.png)
 
-Empfehlungen werden nach möglichen Auswirkungen auf die Leistung in die folgenden vier Kategorien unterteilt:
+Recommendations are sorted by their potential impact on performance into the following four categories:
 
-| Auswirkung | Beschreibung |
+| Impact | Description |
 | :--- | :--- |
-| Hoch | Empfehlungen für hohe Auswirkungen sollten den größten Einfluss auf die Leistung haben. |
-| Mittel | Empfehlungen für mittlere Auswirkungen sollten die Leistung verbessern, jedoch nicht wesentlich. |
-| Niedrig | Empfehlungen für geringe Auswirkungen sollten eine bessere Leistung bieten, die Verbesserungen sind möglicherweise jedoch nicht signifikant. 
+| High | High impact recommendations should provide the most significant performance impact. |
+| Medium | Medium impact recommendations should improve performance, but not substantially. |
+| Low | Low impact recommendations should provide better performance than without, but improvements might not be significant. 
 
 
-### Entfernen von Empfehlungen aus der Liste
+### <a name="removing-recommendations-from-the-list"></a>Removing recommendations from the list
 
-Wenn die Liste der Empfehlungen Einträge enthält, die Sie aus der Liste entfernen möchten, können Sie die Empfehlung verwerfen:
+If your list of recommendations contains items that you want to remove from the list, you can discard the recommendation:
 
-1. Wählen Sie in der Liste **Empfehlungen** eine Empfehlung aus.
-2. Klicken Sie auf dem Blatt **Details** auf **Verwerfen**.
-
-
-Falls gewünscht, können Sie verworfene Einträge wieder zur Liste **Empfehlungen** hinzufügen:
-
-1. Klicken Sie auf dem Blatt **Empfehlungen** auf **Verworfene anzeigen**.
-1. Wählen Sie einen verworfenen Eintrag aus der Liste, um dessen Details anzuzeigen.
-1. Klicken Sie optional auf **„Verwerfen“ rückgängig machen**, um den Eintrag wieder der Hauptliste der **Empfehlungen** hinzuzufügen.
+1. Select a recommendation in the list of **Recommendations**.
+2. Click **Discard** on the **Details** blade.
 
 
+If desired, you can add discarded items back to the **Recommendations** list:
 
-## Anwenden von Empfehlungen
-
-Der SQL-Datenbankratgeber gibt Ihnen vollständige Kontrolle darüber, wie Empfehlungen umgesetzt werden. Dazu stehen Ihnen die folgenden drei Optionen zur Verfügung:
-
-- Aktivieren Sie einzelne Empfehlungen nacheinander.
-- Ermöglichen Sie dem Ratgeber das automatische Anwenden von Empfehlungen (gilt derzeit für nur Indexempfehlungen).
-- Führen Sie das empfohlene T-SQL-Skript manuell für Ihre Datenbank aus, um eine Empfehlung zu implementieren.
-
-Wählen Sie eine beliebige Empfehlung aus, um die zugehörigen Detailinformationen anzuzeigen. Klicken Sie dann auf **Skript anzeigen**, um genaue Informationen dazu anzuzeigen, wie die Empfehlung erstellt wird.
-
-Die Datenbank bleibt online, während der Ratgeber die Empfehlung anwendet – durch den SQL-Datenbankratgeber wird niemals eine Datenbank offline geschaltet.
-
-### Anwenden einzelner Empfehlungen
-
-Sie können Empfehlungen nacheinander anzeigen und akzeptieren.
-
-1. Klicken Sie auf dem Blatt **Empfehlungen** auf eine Empfehlung.
-2. Klicken Sie auf dem Blatt **Details** auf **Anwenden**.
-
-    ![Anwenden einer Empfehlung](./media/sql-database-advisor-portal/apply.png)
-
-### Aktivieren der automatischen Indexverwaltung
-
-Sie können den SQL-Datenbankratgeber so konfigurieren, dass Empfehlungen automatisch implementiert werden. Sobald Empfehlungen zur Verfügung stehen, werden sie automatisch angewendet. Wie bei allen vom Dienst verwalteten Indexvorgängen wird eine Empfehlung zurückgesetzt, wenn sie sich negativ auf die Leistung auswirkt.
-
-1. Klicken Sie auf dem Blatt **Empfehlungen** auf **Automatisieren**:
-
-    ![Ratgebereinstellungen](./media/sql-database-advisor-portal/settings.png)
-
-2. Konfigurieren Sie den Ratgeber für das automatische **Erstellen** oder **Löschen** von Indizes:
-
-    ![Empfohlene Indizes](./media/sql-database-advisor-portal/automation.png)
-
-
-### Manuelles Ausführen des empfohlenen T-SQL-Skripts
-
-Wählen Sie eine beliebige Empfehlung aus, und klicken Sie auf **Skript anzeigen**. Führen Sie dieses Skript für Ihre Datenbank aus, um die Empfehlung manuell anzuwenden.
-
-*Indizes, die manuell erstellt wurden, werden nicht durch den Dienst überwacht und auf ihre tatsächlichen Auswirkungen auf die Leistung überprüft*. Es empfiehlt sich daher, diese Indizes nach der Erstellung zu überwachen. So können Sie sicherstellen, dass sie Leistungssteigerungen bieten, und sie gegebenenfalls anpassen oder löschen. Ausführliche Informationen zum Erstellen von Indizes finden Sie unter [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
-
-
-### Abbrechen von Empfehlungen
-
-Empfehlungen, die den Status **Ausstehend**, **Wird geprüft** oder **Erfolgreich** aufweisen, können abgebrochen werden. Empfehlungen mit dem Status **Wird ausgeführt** können nicht abgebrochen werden.
-
-1. Wählen Sie im Bereich **Optimierungsverlauf** eine Empfehlung aus, um das Blatt **Empfehlungsdetails** zu öffnen.
-2. Klicken Sie auf **Abbrechen**, um den Vorgang zum Anwenden der Empfehlung abzubrechen.
+1. On the **Recommendations** blade click **View discarded**.
+1. Select a discarded item from the list to view its details.
+1. Optionally, click **Undo Discard** to add the index back to the main list of **Recommendations**.
 
 
 
-## Überwachen von Vorgängen
+## <a name="applying-recommendations"></a>Applying recommendations
 
-Eine Empfehlung wird möglicherweise nicht umgehend angewendet. Im Portal finden Sie ausführliche Informationen zum Status der Empfehlungsvorgänge. Indizes können die folgenden Zustände aufweisen:
+SQL Database Advisor gives you full control over how recommendations are enabled using any of the following three options: 
 
-| Status | Beschreibung |
+- Apply individual recommendations one at a time.
+- Enable the advisor to automatically apply recommendations (currently applies to index recommendations only).
+- To implement a recommendation manually, run the recommended T-SQL script against your database .
+
+Select any recommendation to view its details and then click **View script** to review the exact details of how the recommendation is created.
+
+The database remains online while the advisor applies the recommendation -- using SQL Database Advisor never takes a database offline.
+
+### <a name="apply-an-individual-recommendation"></a>Apply an individual recommendation
+
+You can review and accept recommendations one at a time.
+
+1. On the **Recommendations** blade, click a recommendation.
+2. On the **Details** blade click **Apply**.
+
+    ![Apply recommendation](./media/sql-database-advisor-portal/apply.png)
+
+### <a name="enable-automatic-index-management"></a>Enable automatic index management
+
+You can set the SQL Database Advisor to implement recommendations automatically. As recommendations become available they will automatically be applied. As with all index operations managed by the service if the performance impact is negative the recommendation will be reverted.
+
+1. On the **Recommendations** blade, click **Automate**:
+
+    ![Advisor settings](./media/sql-database-advisor-portal/settings.png)
+
+2. Set the advisor to automatically **Create** or **Drop** indexes:
+
+    ![Recommended Indexes](./media/sql-database-advisor-portal/automation.png)
+
+
+### <a name="manually-run-the-recommended-t-sql-script"></a>Manually run the recommended T-SQL script
+
+Select any recommendation and then click **View script**. Run this script against your database to manually apply the recommendation.
+
+*Indexes that are manually executed are not monitored and validated for performance impact by the service* so it is suggested that you monitor these indexes after creation to verify they provide performance gains and adjust or delete them if necessary. For details about creating indexes, see [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+
+
+### <a name="canceling-recommendations"></a>Canceling recommendations
+
+Recommendations that are in a **Pending**, **Verifying**, or **Success** status can be canceled. Recommendations with a status of **Executing** cannot be canceled.
+
+1. Select a recommendation in the **Tuning History** area to open the **recommendations details** blade.
+2. Click **Cancel** to abort the process of applying the recommendation.
+
+
+
+## <a name="monitoring-operations"></a>Monitoring operations
+
+Applying a recommendation might not happen instantaneously. The portal provides details regarding the status of recommendation operations. The following are possible states that an index can be in:
+
+| Status | Description |
 | :--- | :--- |
-| Ausstehend | Der Befehl zum Anwenden der Empfehlung wurde empfangen und ist für die Ausführung geplant. |
-| Wird ausgeführt | Die Empfehlung wird angewendet. |
-| Erfolgreich | Die Empfehlung wurde erfolgreich angewendet. |
-| Fehler | Beim Vorgang zum Anwenden der Empfehlung ist ein Fehler aufgetreten. Dies kann ein vorübergehendes Problem sein, oder es handelt sich möglicherweise um eine Schemaänderung an der Tabelle, und das Skript ist nicht mehr gültig. |
-| Wird zurückgesetzt | Die Empfehlung wurde angewendet, wird jedoch als nicht leistungsfähig erachtet und automatisch zurückgesetzt. |
-| Zurückgesetzt | Die Empfehlung wurde zurückgesetzt. |
+| Pending | Apply recommendation command has been received and is scheduled for execution. |
+| Executing | The recommendation is being applied. |
+| Success | Recommendation was successfully applied. |
+| Error | An error occurred during the process of applying the recommendation. This can be a transient issue, or possibly a schema change to the table and the script is no longer valid. |
+| Reverting | The recommendation was applied, but has been deemed non-performant and is being automatically reverted. |
+| Reverted | The recommendation was reverted. |
 
-Klicken Sie auf eine in Bearbeitung befindliche Empfehlung in der Liste, um die zugehörigen Detailinformationen anzuzeigen:
+Click an in-process recommendation from the list to see more details:
 
-![Empfohlene Indizes](./media/sql-database-advisor-portal/operations.png)
-
-
-### Zurücksetzen einer Empfehlung
-
-Wenn Sie die Empfehlung mithilfe des Ratgebers angewendet haben (also nicht das T-SQL-Skript manuell ausgeführt haben), wird die Empfehlung automatisch zurückgesetzt, wenn sie sich negativ auf die Leistung auswirkt. Wenn Sie aus irgendeinem Grund eine Empfehlung zurücksetzen möchten, können Sie Folgendes tun.
+![Recommended Indexes](./media/sql-database-advisor-portal/operations.png)
 
 
-1. Wählen Sie eine erfolgreich angewendete Empfehlung im Bereich **Optimierungsverlauf** aus.
-2. Klicken Sie auf dem Blatt **Details zur Empfehlung** auf **Zurücksetzen**.
+### <a name="reverting-a-recommendation"></a>Reverting a recommendation
 
-![Empfohlene Indizes](./media/sql-database-advisor-portal/details.png)
-
-
-## Überwachen der Auswirkung von Indexempfehlungen auf die Leistung
-
-Nachdem Empfehlungen erfolgreich implementiert wurden (zurzeit nur Indexvorgänge und Empfehlungen zum Parametrisieren von Abfragen), können Sie auf dem Blatt „Details zur Empfehlung“ auf **Details abfragen** klicken, um über [Query Performance Insight](sql-database-query-performance.md) die Statistik zur Abfrageleistung zu öffnen und die Auswirkung Ihrer häufigsten Abfragen auf die Leistung anzuzeigen.
-
-![Überwachen der Auswirkung auf die Leistung](./media/sql-database-advisor-portal/query-insights.png)
+If you used the advisor to apply the recommendation (meaning you did not manually run the T-SQL script) it will automatically revert it if it finds the performance impact to be negative. If for any reason you simply want to revert a recommendation you can do the following:
 
 
+1. Select a successfully applied recommendation in the **Tuning history** area.
+2. Click **Revert** on the **recommendation details** blade.
 
-## Zusammenfassung
+![Recommended Indexes](./media/sql-database-advisor-portal/details.png)
 
-Der SQL-Datenbankratgeber bietet Empfehlungen zur Leistungsverbesserung für die SQL-Datenbank. Durch das Bereitstellen von T-SQL-Skripts sowie individueller und vollständig automatisierter Optionen bietet der Ratgeber wertvolle Unterstützung bei der Optimierung Ihrer Datenbank und damit Ihrer Abfrageleistung.
+
+## <a name="monitoring-performance-impact-of-index-recommendations"></a>Monitoring performance impact of index recommendations
+
+After recommendations are successfully implemented (currently, index operations and parameterize queries recommendations only) you can click **Query Insights** on the recommendation details blade to open [Query Performance Insights](sql-database-query-performance.md) and see the performance impact of your top queries.
+
+![Monitor performance impact](./media/sql-database-advisor-portal/query-insights.png)
 
 
 
-## Nächste Schritte
+## <a name="summary"></a>Summary
 
-Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Der SQL-Datenbankratgeber setzt die Überwachung fort und bietet Empfehlungen, durch die die Leistung Ihrer Datenbank erhöht werden kann.
+SQL Database Advisor provides recommendations for improving SQL database performance. By providing T-SQL scripts, as well as individual and fully-automatic (currently index only), the advisor provides helpful assistance in optimizing your database and ultimately improving query performance.
 
- - Unter [SQL-Datenbankratgeber](sql-database-advisor.md) finden Sie eine Übersicht zum SQL-Datenbankratgeber.
- - Unter [Query Performance Insight](sql-database-query-performance.md) erfahren Sie, wie Sie die Auswirkungen Ihrer wichtigsten Abfragen auf die Leistung untersuchen können.
 
-## Zusätzliche Ressourcen
 
-- [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
+## <a name="next-steps"></a>Next steps
+
+Monitor your recommendations and continue to apply them to refine performance. Database workloads are dynamic and change continuously. SQL Database advisor will continue to monitor and provide recommendations that can potentially improve your database's performance. 
+
+ - See [SQL Database Advisor](sql-database-advisor.md) for an overview of SQL Database Advisor.
+ - See [Query Performance Insights](sql-database-query-performance.md) to learn about viewing the performance impact of your top queries.
+
+## <a name="additional-resources"></a>Additional resources
+
+- [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 - [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-- [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md)
+- [Role-based access control](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

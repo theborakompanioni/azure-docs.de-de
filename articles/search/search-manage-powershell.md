@@ -1,142 +1,148 @@
 <properties 
-	pageTitle="Verwalten von Azure Search mit PowerShell-Skripts | Microsoft Azure | Gehosteter Cloudsuchdienst" 
-	description="Verwalten Sie den Azure Search-Dienst mit PowerShell-Skripts. Erstellen oder Aktualisieren eines Azure Search-Diensts und Verwalten von Azure Search-Administratorschlüsseln" 
-	services="search" 
-	documentationCenter="" 
-	authors="seansaleh" 
-	manager="mblythe" 
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Manage Azure Search with Powershell scripts | Microsoft Azure | Hosted cloud search service" 
+    description="Manage your Azure Search service with PowerShell scripts. Create or update an Azure Search service and manage Azure Search admin keys" 
+    services="search" 
+    documentationCenter="" 
+    authors="seansaleh" 
+    manager="mblythe" 
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="search" 
-	ms.devlang="na" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="powershell" 
-	ms.date="08/15/2016" 
-	ms.author="seasa"/>
+    ms.service="search" 
+    ms.devlang="na" 
+    ms.workload="search" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="powershell" 
+    ms.date="08/15/2016" 
+    ms.author="seasa"/>
 
-# Verwalten des Azure Search-Diensts mit PowerShell
+
+# <a name="manage-your-azure-search-service-with-powershell"></a>Manage your Azure Search service with PowerShell
 > [AZURE.SELECTOR]
 - [Portal](search-manage.md)
 - [PowerShell](search-manage-powershell.md)
-- [REST-API](search-get-started-management-api.md)
+- [REST API](search-get-started-management-api.md)
 
-In diesem Thema werden die PowerShell-Befehle zur Durchführung vieler Verwaltungsaufgaben für Azure Search-Dienste beschrieben. Wir führen Sie schrittweise durch das Erstellen und Skalieren eines Search-Diensts und die Verwaltung der zugehörigen API-Schlüssel. Diese Befehle stehen parallel zu den Verwaltungsoptionen der [Azure Search Management REST API](http://msdn.microsoft.com/library/dn832684.aspx) zur Verfügung.
+This topic describes the PowerShell commands to perform many of the management tasks for Azure Search services. We will walk through creating a search service, scaling it, and managing its API keys.
+These commands parallel the management options available in the [Azure Search Management REST API](http://msdn.microsoft.com/library/dn832684.aspx).
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
  
-- Azure PowerShell 1.0 oder höher muss installiert sein. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
-- Sie müssen in PowerShell wie im Folgenden beschrieben bei Ihrem Azure-Abonnement angemeldet sein.
+- You must have Azure PowerShell 1.0 or greater. For instructions, see [Install and configure Azure PowerShell](../powershell-install-configure.md).
+- You must be logged in to your Azure subscription in PowerShell as described below.
 
-Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden:
+First, you must login to Azure with this command:
 
-	Login-AzureRmAccount
+    Login-AzureRmAccount
 
-Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
+Specify the email address of your Azure account and its password in the Microsoft Azure login dialog.
 
-Als Alternative steht die [Nicht interaktive Anmeldung mit einem Dienstprinzipal](../resource-group-authenticate-service-principal.md) zur Verfügung.
+Alternatively you can [login non-interactively with a service principal](../resource-group-authenticate-service-principal.md).
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie Ihr Azure-Abonnement festlegen. Führen Sie den folgenden Befehl aus, um eine Liste Ihrer aktuellen Abonnements anzuzeigen.
+If you have multiple Azure subscriptions, you need to set your Azure subscription. To see a list of your current subscriptions, run this command.
 
-	Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
+    Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
 
-Führen Sie den folgenden Befehl aus, um das Abonnement anzugeben. Im folgenden Beispiel ist der Name des Abonnements `ContosoSubscription`.
+To specify the subscription, run the following command. In the following example, the subscription name is `ContosoSubscription`.
 
-	Select-AzureRmSubscription -SubscriptionName ContosoSubscription
+    Select-AzureRmSubscription -SubscriptionName ContosoSubscription
 
-## Befehle als Starthilfe
+## <a name="commands-to-help-you-get-started"></a>Commands to help you get started
 
-	$serviceName = "your-service-name-lowercase-with-dashes"
-	$sku = "free" # or "basic" or "standard" for paid services
-	$location = "West US"
-	# You can get a list of potential locations with
-	# (Get-AzureRmResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Search'}).Locations
-	$resourceGroupName = "YourResourceGroup" 
-	# If you don't already have this resource group, you can create it with 
-	# New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    $serviceName = "your-service-name-lowercase-with-dashes"
+    $sku = "free" # or "basic" or "standard" for paid services
+    $location = "West US"
+    # You can get a list of potential locations with
+    # (Get-AzureRmResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Search'}).Locations
+    $resourceGroupName = "YourResourceGroup" 
+    # If you don't already have this resource group, you can create it with 
+    # New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-	# Register the ARM provider idempotently. This must be done once per subscription
-	Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Search" -Force
+    # Register the ARM provider idempotently. This must be done once per subscription
+    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Search" -Force
 
-	# Create a new search service
-	# This command will return once the service is fully created
-	New-AzureRmResourceGroupDeployment `
-		-ResourceGroupName $resourceGroupName `
-		-TemplateUri "https://gallery.azure.com/artifact/20151001/Microsoft.Search.1.0.9/DeploymentTemplates/searchServiceDefaultTemplate.json" `
-		-NameFromTemplate $serviceName `
-		-Sku $sku `
-		-Location $location `
-		-PartitionCount 1 `
-		-ReplicaCount 1
-	
-	# Get information about your new service and store it in $resource
-	$resource = Get-AzureRmResource `
-		-ResourceType "Microsoft.Search/searchServices" `
-		-ResourceGroupName $resourceGroupName `
-		-ResourceName $serviceName `
-		-ApiVersion 2015-08-19
-	
-	# View your resource
-	$resource
-	
-	# Get the primary admin API key
-	$primaryKey = (Invoke-AzureRmResourceAction `
-		-Action listAdminKeys `
-		-ResourceId $resource.ResourceId `
-		-ApiVersion 2015-08-19).PrimaryKey
+    # Create a new search service
+    # This command will return once the service is fully created
+    New-AzureRmResourceGroupDeployment `
+        -ResourceGroupName $resourceGroupName `
+        -TemplateUri "https://gallery.azure.com/artifact/20151001/Microsoft.Search.1.0.9/DeploymentTemplates/searchServiceDefaultTemplate.json" `
+        -NameFromTemplate $serviceName `
+        -Sku $sku `
+        -Location $location `
+        -PartitionCount 1 `
+        -ReplicaCount 1
+    
+    # Get information about your new service and store it in $resource
+    $resource = Get-AzureRmResource `
+        -ResourceType "Microsoft.Search/searchServices" `
+        -ResourceGroupName $resourceGroupName `
+        -ResourceName $serviceName `
+        -ApiVersion 2015-08-19
+    
+    # View your resource
+    $resource
+    
+    # Get the primary admin API key
+    $primaryKey = (Invoke-AzureRmResourceAction `
+        -Action listAdminKeys `
+        -ResourceId $resource.ResourceId `
+        -ApiVersion 2015-08-19).PrimaryKey
 
-	# Regenerate the secondary admin API Key
-	$secondaryKey = (Invoke-AzureRmResourceAction `
-		-ResourceType "Microsoft.Search/searchServices/regenerateAdminKey" `
-		-ResourceGroupName $resourceGroupName `
-		-ResourceName $serviceName `
-		-ApiVersion 2015-08-19 `
-		-Action secondary).SecondaryKey
+    # Regenerate the secondary admin API Key
+    $secondaryKey = (Invoke-AzureRmResourceAction `
+        -ResourceType "Microsoft.Search/searchServices/regenerateAdminKey" `
+        -ResourceGroupName $resourceGroupName `
+        -ResourceName $serviceName `
+        -ApiVersion 2015-08-19 `
+        -Action secondary).SecondaryKey
 
-	# Create a query key for read only access to your indexes
-	$queryKeyDescription = "query-key-created-from-powershell"
-	$queryKey = (Invoke-AzureRmResourceAction `
-		-ResourceType "Microsoft.Search/searchServices/createQueryKey" `
-		-ResourceGroupName $resourceGroupName `
-		-ResourceName $serviceName `
-		-ApiVersion 2015-08-19 `
-		-Action $queryKeyDescription).Key
-	
-	# View your query key
-	$queryKey
+    # Create a query key for read only access to your indexes
+    $queryKeyDescription = "query-key-created-from-powershell"
+    $queryKey = (Invoke-AzureRmResourceAction `
+        -ResourceType "Microsoft.Search/searchServices/createQueryKey" `
+        -ResourceGroupName $resourceGroupName `
+        -ResourceName $serviceName `
+        -ApiVersion 2015-08-19 `
+        -Action $queryKeyDescription).Key
+    
+    # View your query key
+    $queryKey
 
-	# Delete query key
-	Remove-AzureRmResource `
-		-ResourceType "Microsoft.Search/searchServices/deleteQueryKey/$($queryKey)" `
-		-ResourceGroupName $resourceGroupName `
-		-ResourceName $serviceName `
-		-ApiVersion 2015-08-19
-		
-	# Scale your service up
-	# Note that this will only work if you made a non "free" service
-	# This command will not return until the operation is finished
-	# It can take 15 minutes or more to provision the additional resources
-	$resource.Properties.ReplicaCount = 2
-	$resource | Set-AzureRmResource
-	
-	# Delete your service
-	# Deleting your service will delete all indexes and data in the service
-	$resource | Remove-AzureRmResource
-	
-## Nächste Schritte
-	
-Nachdem der Dienst erstellt wurde, können Sie die nächsten Schritte ausführen: Erstellen eines [Index](search-what-is-an-index.md), [Abfragen eines Index](search-query-overview.md) und schließlich Erstellen und Verwalten von eigenen Suchanwendungen, die Azure Search verwendet.
+    # Delete query key
+    Remove-AzureRmResource `
+        -ResourceType "Microsoft.Search/searchServices/deleteQueryKey/$($queryKey)" `
+        -ResourceGroupName $resourceGroupName `
+        -ResourceName $serviceName `
+        -ApiVersion 2015-08-19
+        
+    # Scale your service up
+    # Note that this will only work if you made a non "free" service
+    # This command will not return until the operation is finished
+    # It can take 15 minutes or more to provision the additional resources
+    $resource.Properties.ReplicaCount = 2
+    $resource | Set-AzureRmResource
+    
+    # Delete your service
+    # Deleting your service will delete all indexes and data in the service
+    $resource | Remove-AzureRmResource
+    
+## <a name="next-steps"></a>Next Steps
+    
+Now that your service is created, you can take the next steps: build an [index](search-what-is-an-index.md), [query an index](search-query-overview.md), and finally create and manage your own search application that uses Azure Search.
 
-- [Erstellen eines Azure Search-Index im Azure-Portal](search-create-index-portal.md)
+- [Create an Azure Search index in the Azure portal](search-create-index-portal.md)
 
-- [Abfragen eines Azure Search-Index per Suchexplorer im Azure-Portal](search-explorer.md)
+- [Query an Azure Search index using Search Explorer in the Azure portal](search-explorer.md)
 
-- [Einrichten eines Indexers zum Laden von Daten anderer Dienste](search-indexer-overview.md)
+- [Setup an indexer to load data from other services](search-indexer-overview.md)
 
-- [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md)
+- [How to use Azure Search in .NET](search-howto-dotnet-sdk.md)
 
-- [Analysieren Ihres Azure Search-Datenverkehrs](search-traffic-analytics.md)
+- [Analyze your Azure Search traffic](search-traffic-analytics.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Internet der Dinge – bewährte Methoden für die Sicherheit | Microsoft Azure"
-   description="Der Artikel enthält eine Aufstellung von bewährten Methoden zur Sicherheit des Internets der Dinge von Microsoft und allgemeine Empfehlungen."
+   pageTitle="Internet of Things Security Best Practices | Microsoft Azure"
+   description="The article provides a curated list of Microsoft Internet of Things Security Best Practices and general recommendations."
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -13,56 +13,61 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/09/2016"
+   ms.date="10/25/2016"
    ms.author="yurid"/>
 
-# Internet der Dinge – bewährte Methoden für die Sicherheit
 
-Sicherung der Infrastruktur des Internets der Dinge (Internet of Things, IoT) ist ein kritisches Unterfangen für Benutzer, die sich mit IoT-Lösungen befassen. Aufgrund der Anzahl der betroffenen Geräte, und weil die Geräte verteilt sind, ist ein Sicherheitsereignis, das Millionen von IoT-Geräten gefährdet, keine Bagatelle und kann umfangreiche Auswirkungen haben.
+# <a name="internet-of-things-security-best-practices"></a>Internet of Things Security Best Practices
 
-Aus diesem Grund ist für die IoT-Sicherheit ein fundierter Ansatz erforderlich. In der Cloud und beim Verschieben über private und öffentliche Netzwerke müssen Daten sicher sein. Methoden zur sicheren Bereitstellung von IoT-Geräten müssen eingerichtet werden. Jede Ebene vom Gerät bis zum Netzwerk und Cloud-Back-End erfordert hohe Sicherheitsgarantien.
+Securing the Internet of Things (IoT) infrastructure is a critical undertaking for anyone involved with IoT solutions. Because of the number of devices involved and the distributed nature of these devices, the impact a security event related to compromise of millions of IoT devices is non-trivial and can have widespread impact.
 
-Die bewährten IoT-Methoden können auf folgende Weise kategorisiert werden:
+For this reason, IoT security needs a security-in-depth approach. Data needs to be secure in the cloud and as it moves over private and public networks. Methods need to be in place to securely provision the IoT devices themselves. Each layer, from device, to network, to cloud back-end needs strong security assurances.
 
-- IoT-Hardwarehersteller bzw. -integrator
-- IoT-Lösungsentwickler
-- IoT-Lösungsbereitsteller
-- IoT-Lösungsoperator
+IoT best practices can be categorized in the following way:
 
-Dieser Artikel ist eine Zusammenfassung von [Internet der Dinge (IoT) – Bewährte Methoden für die Sicherheit](../iot-suite/iot-security-best-practices.md). In diesem Artikel finden Sie weitere Informationen.
+- IoT hardware manufacturer or integrator
+- IoT solution developer
+- IoT solution deployer
+- IoT solution operator
 
-## IoT-Hardwarehersteller bzw. -integrator
+This article summarizes [Internet of Things Security Best Practices](../iot-suite/iot-security-best-practices.md). Please refer to that article for more detailed information.
 
-Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Hardwarehersteller oder Hardwareintegrator sind:
+## <a name="iot-hardware-manufacturer-or-integrator"></a>IoT hardware manufacturer or integrator
 
-- **Einhalten der Mindestanforderungen für Hardware:** Die Hardware sollte lediglich die für den Betrieb der Hardware erforderlichen Features enthalten.
-- **Manipulationssicheres Gestalten von Hardware:** Integrieren Sie einen Mechanismus zum Erkennen von physischer Manipulation an der Hardware, z.B. Öffnen der Geräteabdeckung, Entfernen eines Teils des Geräts usw.
-- **Entwickeln sicherer Hardware:** Integrieren Sie, falls gemäß [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) zulässig, Sicherheitsfeatures wie sichere und verschlüsselte Speicher und eine auf Trusted Platform Module (TPM) basierende Startfunktion.
-- **Upgrades schützen**: Das Aktualisieren der Firmware während der Lebensdauer des Geräts ist unvermeidlich.
+Follow the best practices below if you are an IoT hardware manufacture or a hardware integrator:
 
-## IoT-Lösungsentwickler
+- **Scope hardware to minimum requirements**: the hardware design should include minimum features required for operation of the hardware, and nothing more. 
+- **Make hardware tamper proof**: build in mechanisms to detect physical tampering of hardware, such as opening the device cover, removing a part of the device, etc. 
+- **Build around secure hardware**: if [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) permit, build security features such as secure and encrypted storage and Trusted Platform Module (TPM)-based boot functionality.
+- **Make upgrades secure**: upgrading firmware during lifetime of the device is inevitable.
 
-Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Lösungsentwickler sind:
+## <a name="iot-solution-developer"></a>IoT solution developer
 
-- **Befolgen einer sicheren Softwareentwicklungsmethodik:** Zur Entwicklung sicherer Software muss von Grund auf die Sicherheit bedacht werden – vom Beginn des Projekts über Implementierung und Tests bis hin zur Bereitstellung.
-- **Open Source-Software mit Bedacht wählen**: Open Source-Software ermöglicht eine schnelle Lösungsentwicklung.
-- **Mit Bedacht integrieren**: Viele Software-Sicherheitsschwachstellen liegen zwischen Bibliotheken und APIs.
+Follow the best practices below if you are an IoT solution developer:
 
-## IoT-Lösungsbereitsteller
+- **Follow secure software development methodology**: developing secure software requires ground-up thinking about security from the inception of the project all the way to its implementation, testing, and deployment.
+- **Choose open source software with care**: open source software provides an opportunity to quickly develop solutions.
+- **Integrate with care**: many of the software security flaws exist at the boundary of libraries and APIs. 
 
-Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Lösungsbereitsteller sind:
+## <a name="iot-solution-deployer"></a>IoT solution deployer
 
-- **Hardware sicher bereitstellen**: Für IoT-Bereitstellungen muss Hardware möglicherweise an unsicheren Orten wie öffentlichen Bereichen oder unbeaufsichtigten Gebieten bereitgestellt werden.
-- **Authentifizierungsschlüssel schützen**: Jedes Gerät benötigt während der Bereitstellung Geräte-IDs und die zugehörigen, vom Clouddienst generierten, Authentifizierungsschlüssel. Bewahren Sie diese Schlüssel auch nach der Bereitstellung sicher auf. Jeder kompromittierte Schlüssel kann von einem böswilligen Gerät verwendet werden, um sich als ein vorhandenes Gerät auszugeben.
+Follow the best practices below if you are an IoT solution deployer:
 
-## IoT-Lösungsoperator
+- **Deploy hardware securely**: IoT deployments may require hardware to be deployed in unsecure locations, such as in public spaces or unsupervised locales.
+- **Keep authentication keys safe**: during deployment, each device requires device IDs and associated authentication keys generated by the cloud service. Keep these keys physically safe even after the deployment. Any compromised key can be used by a malicious device to masquerade as an existing device.
 
-Befolgen Sie diese bewährten Methoden, wenn Sie IoT-Lösungsoperator sind:
+## <a name="iot-solution-operator"></a>IoT solution operator
 
-- **Stetige Aktualisierung des Systems**: Stellen Sie sicher, dass Gerätebetriebssysteme und alle Gerätetreiber auf die neueste Version aktualisiert werden.
-- **Vor schädlichen Aktivitäten schützen**: Wenn es das Betriebssystem zulässt, installieren Sie die neueste Antivirus- und Antimalwaresoftware auf jedem Gerätebetriebssystem.
-- **Häufig überwachen**: Die Überwachung der IoT-Infrastruktur auf sicherheitsbezogene Probleme ist entscheidend für die Reaktion auf Sicherheitsvorfälle.
-- **IoT-Infrastruktur physisch schützen**: Die schlimmsten Angriffe gegen die IoT-Infrastruktur beginnen mit dem physischen Zugriff auf Geräte.
-- **Schützen der Cloud-Anmeldeinformationen**: Cloud-Authentifizierungsanmeldeinformationen für die Konfiguration und den Betrieb einer IoT-Bereitstellung sind wahrscheinlich die einfachste Möglichkeit zum Zugreifen und Manipulieren eines IoT-Systems.
+Follow the best practices below if you are an IoT solution operator:
 
-<!---HONumber=AcomDC_0810_2016-->
+- **Keep systems up to date**: ensure device operating systems and all device drivers are updated to the latest versions. 
+- **Protect against malicious activity**: if the operating system permits, place the latest anti-virus and anti-malware capabilities on each device operating system. 
+- **Audit frequently**: auditing IoT infrastructure for security related issues is key when responding to security incidents.
+- **Physically protect the IoT infrastructure**: the worst security attacks against IoT infrastructure are launched using physical access to devices.
+- **Protect cloud credentials**: cloud authentication credentials used for configuring and operating an IoT deployment are possibly the easiest way to gain access and compromise an IoT system. 
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

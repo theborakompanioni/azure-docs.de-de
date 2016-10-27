@@ -1,4 +1,9 @@
-Wenn Sie versuchen, einen neuen virtuellen Azure-Computer zu erstellen, treten am häufigsten Bereitstellungsfehler oder Zuordnungsfehler auf.
+When you try to create a new Azure Virtual Machine (VM), the common errors you encounter are provisioning failures or allocation failures.
 
-- Ein Bereitstellungsfehler tritt auf, wenn das Betriebssystem-Image nicht geladen werden kann, weil falsche Vorbereitungsschritte ausgeführt wurden oder weil während der Erfassung des Images über das Portal die falschen Einstellungen ausgewählt wurden.
-- Ein Zuordnungsfehler tritt auf, wenn in dem Cluster oder der Region keine Ressourcen verfügbar sind oder wenn die angeforderte Größe des virtuellen Computers nicht unterstützt werden kann.
+- A provisioning failure happens when the OS image fails to load either due to incorrect preparatory steps or because of selecting the wrong settings during the image capture from the portal.
+- An allocation failure results when the cluster or region either does not have resources available or cannot support the requested VM size.
+
+
+<!--HONumber=Oct16_HO2-->
+
+

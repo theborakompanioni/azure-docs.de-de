@@ -1,17 +1,22 @@
-## Dynamischer Serviceplan
+## <a name="dynamic-service-plan"></a>Dynamic Service Plan
 
-Im dynamischen Serviceplan werden Ihre mit Azure Functions erstellte Apps einer Functions App-Instanz zugewiesen. Wenn weitere Instanzen benötigt werden, werden diese dynamisch hinzugefügt. Diese Instanzen können mehrere Compute-Ressourcen umfassen und so die verfügbare Azure-Infrastruktur optimal nutzen. Darüber hinaus werden Ihre Funktionen parallel ausgeführt. Dadurch wird die Gesamtzeit, die für die Verarbeitung von Anfragen benötigt wird, minimiert. Die Ausführungszeit für jede Funktion wird in Sekunden aufaddiert und von der enthaltenden Funktions-App aggregiert. Die Kosten sind abhängig von der Anzahl von Instanzen, deren Speichergröße sowie der gesamten Ausführungszeit, gemessen in Gigabyte mal Sekunde. Dies ist eine hervorragende Möglichkeit, wenn Sie nur von Zeit zu Zeit Rechenleistung benötigen oder die Laufzeiten Ihrer Aufträge in der Regel sehr kurz sind, da Sie nur dann für Serverressourcen bezahlen, wenn diese auch tatsächlich genutzt werden.
+In the Dynamic Service Plan, your function apps will be assigned to a function app instance. If needed more instances will be added dynamically.
+Those instances can span across multiple computing resources, making the most out of the available Azure infrastructure. Moreover, your functions will run in parallel minimizing the total time needed to process requests. Execution time for each function is added up, in seconds, and aggregated by the containing function app. With cost driven by the number of instances, their memory size, and total execution time as measured in Gigabyte seconds. This is an excellent option if your compute needs are intermittent or your job times tend to be very short as it allows you to only pay for compute resources when they are actually in use.   
 
-### Speichertarif
+### <a name="memory-tier"></a>Memory tier
 
-Je nach den Bedürfnissen Ihrer Funktion müssen Sie die Speichermenge auswählen, die Sie für deren Ausführung in der Funktions-App (Funktionscontainer) benötigen. Die Optionen für die Speichergröße reichen von **128 MB bis hin zu 1536 MB**. Die ausgewählte Speichergröße entspricht dem Arbeitssatz, der von allen Funktionen benötigt wird, die Teil Ihrer Funktions-App sind. Wenn Sie für Ihren Code mehr Speicher benötigen, als Sie ausgewählt hatten, wird die Funktions-App-Instanz aufgrund von fehlendem Speicherplatz heruntergefahren.
+Depending on your function needs you can select the amount of memory required to run them in the Function App (container of functions).
+The memory size options vary from **128MB to 1536MB**. The selected memory size corresponds to the Working Set needed by all the functions that are part of your function app. If your code requires more memory than the selected size, the function app instance will be shut down due to lack of available memory.
 
-### Skalieren
+### <a name="scaling"></a>Scaling
 
-Die Azure Functions-Plattform evaluiert den Datenverkehr basierend auf den konfigurierten Triggern, um festzulegen, wann zentral hoch- oder herunterskaliert wird. Die Granularität der Skalierung ist die Funktions-App. Zentrales Hochskalieren bedeutet in diesem Fall, weitere Instanzen einer Funktions-App hinzuzufügen. Wenn sich der Datenverkehr verringert, bedeutet dies wiederum, dass die Instanzen für die Funktions-App reduziert werden. Wenn die App gar nicht mehr angefragt wird, werden die Instanzen auf Null herunterskaliert.
+The Azure Functions platform will evaluate the traffic needs, based on the configured triggers, to decide when to scale up or down. The granularity of scaling is the function app. Scaling up in this case means adding more instances of a function app. Inversely as traffic goes down, function app instances are disabled- eventually scaling down to zero when none are running.  
 
-### Ressourcenverbrauch und Abrechnung
+### <a name="resource-consumption-and-billing"></a>Resource consumption and billing
 
-Im dynamischen Modus wird die Ressourcenzuweisung anders als im Standard-App Service-Plan durchgeführt.Daher unterscheidet sich auch das Verbrauchsmodell, das ein „Pay-per-Use“-Modell ermöglicht. Der Verbrauch wird pro Funktions-App gemeldet und nur für den Zeitraum, für den der Code ausgeführt wird. Er wird durch Multiplikation der Speichergröße (in GB) mit der Gesamtausführungszeit (in Sekunden) für alle Funktionen berechnet, die in dieser Funktions-App laufen. Die Einheit des Verbrauchs wird in **GB-s (Gigabyte mal Sekunde)** angegeben.
+In the Dynamic mode resource allocation is done differently than the standard App Service plan, therefore the consumption model is also different, allowing for a "pay-per-use" model. Consumption will be reported per function app, only for time when code is being executed.  
+It is computed by multiplying the memory size (in GB) by the total amount of execution time (in seconds) for all functions running inside that function app. The unit of consumption will be **GB-s (Gigabyte Seconds)**.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

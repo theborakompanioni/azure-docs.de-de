@@ -1,10 +1,10 @@
 <properties
 pageTitle="MailChimp | Microsoft Azure"
-description="Erstellen Sie Logik-Apps mit Azure App Service. MailChimp ist ein SaaS-Dienst, mit dem Unternehmen E-Mail-Marketingaktivitäten verwalten und automatisieren können. Dazu gehört auch das Senden von Marketing-E-Mails und automatisierten Nachrichten sowie das Durchführen zielgruppenspezifischer Kampagnen."
-services="logic-apps"	
-documentationCenter=".net,nodejs,java" 	
-authors="msftman"	
-manager="erikre"	
+description="Create Logic apps with Azure App service. MailChimp is a SaaS service that allows businesses to manage and automate email marketing activities, including sending marketing emails, automated messages and targeted campaigns."
+services="logic-apps"   
+documentationCenter=".net,nodejs,java"  
+authors="msftman"   
+manager="erikre"    
 editor=""
 tags="connectors" />
 
@@ -17,726 +17,730 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit dem MailChimp-Connector
 
-MailChimp ist ein SaaS-Dienst, mit dem Unternehmen E-Mail-Marketingaktivitäten verwalten und automatisieren können. Dazu gehört auch das Senden von Marketing-E-Mails und automatisierten Nachrichten sowie das Durchführen zielgruppenspezifischer Kampagnen.
+# <a name="get-started-with-the-mailchimp-connector"></a>Get started with the MailChimp connector
+
+MailChimp is a SaaS service that allows businesses to manage and automate email marketing activities, including sending marketing emails, automated messages and targeted campaigns.
 
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
+You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-## Trigger und Aktionen
+## <a name="triggers-and-actions"></a>Triggers and actions
 
-Der MailChimp-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
+The MailChimp connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
 
- Der MailChimp-Connector verfügt über die folgenden Aktionen und/oder Trigger:
+ The MailChimp connector has the following action(s) and/or trigger(s) available:
 
-### MailChimp-Aktionen
-Sie können diese Aktionen ausführen:
+### <a name="mailchimp-actions"></a>MailChimp actions
+You can take these action(s):
 
-|Aktion|Beschreibung|
+|Action|Description|
 |--- | ---|
-|[newcampaign](connectors-create-api-mailchimp.md#newcampaign)|Erstellen einer neuen Kampagne auf Grundlage eines Kampagnentyps, einer Empfängerliste und der Kampagneneinstellungen (Betreffzeile, Titel, „from\_name“ und „reply\_to“)|
-|[newlist](connectors-create-api-mailchimp.md#newlist)|Erstellen einer neuen Liste in Ihrem MailChimp-Konto|
-|[addmember](connectors-create-api-mailchimp.md#addmember)|Hinzufügen eines Mitglieds zu einer Liste oder Aktualisieren eines Mitglieds|
-|[removemember](connectors-create-api-mailchimp.md#removemember)|Löschen eines Mitglieds aus einer Liste|
-|[updatemember](connectors-create-api-mailchimp.md#updatemember)|Aktualisieren von Informationen für ein bestimmtes Listenmitglied|
-### MailChimp-Trigger
-Sie können auf diese Ereignisse lauschen:
+|[newcampaign](connectors-create-api-mailchimp.md#newcampaign)|Create a new campaign based on a Campaign Type, Recipients list and Campaign Settings (subject line, title, from_name and reply_to)|
+|[newlist](connectors-create-api-mailchimp.md#newlist)|Create a new list in your MailChimp account|
+|[addmember](connectors-create-api-mailchimp.md#addmember)|Add or update a list member|
+|[removemember](connectors-create-api-mailchimp.md#removemember)|Delete a member from a list.|
+|[updatemember](connectors-create-api-mailchimp.md#updatemember)|Update information for a specific list member|
+### <a name="mailchimp-triggers"></a>MailChimp triggers
+You can listen for these event(s):
 
-|Trigger | Beschreibung|
+|Trigger | Description|
 |--- | ---|
-|Wenn einer Liste ein Mitglied hinzugefügt wurde|Löst einen Workflow aus, wenn einer Liste ein neues Mitglied hinzugefügt wurde.|
-|Wenn eine neue Liste erstellt wird|Löst einen Workflow aus, wenn eine neue Liste erstellt wird.|
+|When a Member has been added to a list|Triggers a workflow when a new member has been added to a list|
+|When a new list is created|Triggers a workflow when a new list is created|
 
 
-## Herstellen einer Verbindung mit MailChimp
-Um Logik-Apps mit MailChimp zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+## <a name="create-a-connection-to-mailchimp"></a>Create a connection to MailChimp
+To create Logic apps with MailChimp, you must first create a **connection** then provide the details for the following properties: 
 
-|Eigenschaft| Erforderlich|Beschreibung|
+|Property| Required|Description|
 | ---|---|---|
-|Token|Ja|Angeben der Anmeldeinformationen für MailChimp|
+|Token|Yes|Provide MailChimp Credentials|
 
->[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit MailChimp](../../includes/connectors-create-api-mailchimp.md)]
+>[AZURE.INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 
->[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
+>[AZURE.TIP] You can use this connection in other logic apps.
 
-## Referenz für MailChimp
-Gilt für Version 1.0.
+## <a name="reference-for-mailchimp"></a>Reference for MailChimp
+Applies to version: 1.0
 
-## newcampaign
-Neue Kampagne: Erstellen einer neuen Kampagne auf Grundlage eines Kampagnentyps, einer Empfängerliste und der Kampagneneinstellungen (Betreffzeile, Titel, „from\_name“ und „reply\_to“)
+## <a name="newcampaign"></a>newcampaign
+New Campaign: Create a new campaign based on a Campaign Type, Recipients list and Campaign Settings (subject line, title, from_name and reply_to) 
 
-```POST: /campaigns```
+```POST: /campaigns``` 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|newCampaignRequest| |Ja|body|(Keine)|JSON-Objekt mit den Anforderungsparametern für die neue Kampagne, das im Text gesendet wird|
+|newCampaignRequest| |yes|body|none|Json object to send in the body with the new campaign request parameters|
 
-#### Antwort
+#### <a name="response"></a>Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|default|Fehler beim Vorgang.|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## newlist
-Neue Liste: Erstellen einer neuen Liste in Ihrem MailChimp-Konto
+## <a name="newlist"></a>newlist
+New List: Create a new list in your MailChimp account 
 
-```POST: /lists```
+```POST: /lists``` 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|newListRequest| |Ja|body|(Keine)|JSON-Objekt mit den Anforderungsparametern für die neue Kampagne, das im Text gesendet wird|
+|newListRequest| |yes|body|none|Json object to send in the body with the new campaign request parameters|
 
-#### Antwort
+#### <a name="response"></a>Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|default|Fehler beim Vorgang.|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## addmember
-Mitglied einer Liste hinzufügen: Hinzufügen eines Mitglieds zu einer Liste oder Aktualisieren eines Mitglieds
+## <a name="addmember"></a>addmember
+Add member to list: Add or update a list member 
 
-```POST: /lists/{list_id}/members```
+```POST: /lists/{list_id}/members``` 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|list\_id|string|Ja|path|(Keine)|Die eindeutige ID für die Liste|
-|newMemberInList| |Ja|body|(Keine)|JSON-Objekt mit den Informationen zum neuen Mitglied, das im Text gesendet wird|
+|list_id|string|yes|path|none|The unique id for the list|
+|newMemberInList| |yes|body|none|Json object to send in the body with the new member information|
 
-#### Antwort
+#### <a name="response"></a>Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|default|Fehler beim Vorgang.|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## removemember
-Mitglied aus der Liste entfernen: Löschen eines Mitglied aus der Liste
+## <a name="removemember"></a>removemember
+Remove Member from list: Delete a member from a list. 
 
-```DELETE: /lists/replacemailwithhash/{list_id}/members/{member_email}```
+```DELETE: /lists/replacemailwithhash/{list_id}/members/{member_email}``` 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|list\_id|string|Ja|path|(Keine)|Die eindeutige ID für die Liste|
-|member\_email|string|Ja|path|(Keine)|Die E-Mail-Adresse des zu löschenden Mitglieds|
+|list_id|string|yes|path|none|The unique id for the list|
+|member_email|string|yes|path|none|The email address of the member to delete|
 
-#### Antwort
+#### <a name="response"></a>Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|default|Fehler beim Vorgang.|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## updatemember
-Mitgliedsinformationen aktualisieren: Aktualisieren von Informationen für ein bestimmtes Listenmitglied
+## <a name="updatemember"></a>updatemember
+Update member information: Update information for a specific list member 
 
-```PATCH: /lists/replacemailwithhash/{list_id}/members/{member_email}```
+```PATCH: /lists/replacemailwithhash/{list_id}/members/{member_email}``` 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|list\_id|string|Ja|path|(Keine)|Die eindeutige ID für die Liste|
-|member\_email|string|Ja|path|(Keine)|Die eindeutige E-Mail-Adresse des zu aktualisierenden Mitglieds|
-|updateMemberInListRequest| |Ja|body|(Keine)|JSON-Objekt mit den Informationen zum aktualisierten Mitglied, das im Text gesendet wird|
+|list_id|string|yes|path|none|The unique id for the list|
+|member_email|string|yes|path|none|The unique email address of the member to update|
+|updateMemberInListRequest| |yes|body|none|Json object to send in the body with the updated member information|
 
-#### Antwort
+#### <a name="response"></a>Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|default|Fehler beim Vorgang.|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## OnMemberSubscribed
-Wenn einer Liste ein Mitglied hinzugefügt wurde: Löst einen Workflow aus, wenn einer Liste ein neues Mitglied hinzugefügt wurde
+## <a name="onmembersubscribed"></a>OnMemberSubscribed
+When a Member has been added to a list: Triggers a workflow when a new member has been added to a list 
 
-```GET: /trigger/lists/{list_id}/members```
+```GET: /trigger/lists/{list_id}/members``` 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|list\_id|string|Ja|path|(Keine)|Die eindeutige ID für die Liste|
+|list_id|string|yes|path|none|The unique id for the list|
 
-#### Antwort
+#### <a name="response"></a>Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|Zulässig|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|default|Fehler beim Vorgang.|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## OnCreateList
-Wenn eine neue Liste erstellt wird: Löst einen Workflow aus, wenn eine neue Liste erstellt wird.
+## <a name="oncreatelist"></a>OnCreateList
+When a new list is created: Triggers a workflow when a new list is created 
 
-```GET: /trigger/lists```
+```GET: /trigger/lists``` 
 
-Es gibt keine Parameter für diesen Aufruf
-#### Antwort
+There are no parameters for this call
+#### <a name="response"></a>Response
 
-|Name|Beschreibung|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|Zulässig|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
-|default|Fehler beim Vorgang.|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## Objektdefinitionen 
+## <a name="object-definitions"></a>Object definitions 
 
-### NewCampaignRequest
+### <a name="newcampaignrequest"></a>NewCampaignRequest
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|Typ|string|Ja |
-|recipients|nicht definiert|Ja |
-|settings|nicht definiert|Ja |
-|variate\_settings|nicht definiert|Nein |
-|tracking|nicht definiert|Nein |
-|rss\_opts|nicht definiert|Nein |
-|social\_card|nicht definiert|Nein |
+|type|string|Yes |
+|recipients|not defined|Yes |
+|settings|not defined|Yes |
+|variate_settings|not defined|No |
+|tracking|not defined|No |
+|rss_opts|not defined|No |
+|social_card|not defined|No |
 
 
 
-### Recipient
+### <a name="recipient"></a>Recipient
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|list\_id|string|Ja |
-|segment\_opts|nicht definiert|Nein |
+|list_id|string|Yes |
+|segment_opts|not defined|No |
 
 
 
-### Einstellungen
+### <a name="settings"></a>Settings
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|subject\_line|string|Ja |
-|title|string|Nein |
-|from\_name|string|Ja |
-|reply\_to|string|Ja |
-|use\_conversation|Boolescher Wert|Nein |
-|to\_name|string|Nein |
-|folder\_id|integer|Nein |
-|authenticate|Boolescher Wert|Nein |
-|auto\_footer|Boolescher Wert|Nein |
-|inline\_css|Boolescher Wert|Nein |
-|auto\_tweet|Boolescher Wert|Nein |
-|auto\_fb\_post|array|Nein |
-|fb\_comments|Boolescher Wert|Nein |
+|subject_line|string|Yes |
+|title|string|No |
+|from_name|string|Yes |
+|reply_to|string|Yes |
+|use_conversation|boolean|No |
+|to_name|string|No |
+|folder_id|integer|No |
+|authenticate|boolean|No |
+|auto_footer|boolean|No |
+|inline_css|boolean|No |
+|auto_tweet|boolean|No |
+|auto_fb_post|array|No |
+|fb_comments|boolean|No |
 
 
 
-### Variate\_Settings
+### <a name="variate_settings"></a>Variate_Settings
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|winner\_criteria|string|Nein |
-|wait\_time|integer|Nein |
-|test\_size|integer|Nein |
-|subject\_lines|array|Nein |
-|send\_times|array|Nein |
-|from\_names|array|Nein |
-|reply\_to\_addresses|array|Nein |
+|winner_criteria|string|No |
+|wait_time|integer|No |
+|test_size|integer|No |
+|subject_lines|array|No |
+|send_times|array|No |
+|from_names|array|No |
+|reply_to_addresses|array|No |
 
 
 
-### Tracking
+### <a name="tracking"></a>Tracking
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|opens|Boolescher Wert|Nein |
-|html\_clicks|Boolescher Wert|Nein |
-|text\_clicks|Boolescher Wert|Nein |
-|goal\_tracking|Boolescher Wert|Nein |
-|ecomm360|Boolescher Wert|Nein |
-|google\_analytics|string|Nein |
-|clicktale|string|Nein |
-|salesforce|nicht definiert|Nein |
-|highrise|nicht definiert|Nein |
-|capsule|nicht definiert|Nein |
+|opens|boolean|No |
+|html_clicks|boolean|No |
+|text_clicks|boolean|No |
+|goal_tracking|boolean|No |
+|ecomm360|boolean|No |
+|google_analytics|string|No |
+|clicktale|string|No |
+|salesforce|not defined|No |
+|highrise|not defined|No |
+|capsule|not defined|No |
 
 
 
-### RSS\_Opts
+### <a name="rss_opts"></a>RSS_Opts
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|feed\_url|string|Nein |
-|frequency|string|Nein |
-|constrain\_rss\_img|string|Nein |
-|schedule|nicht definiert|Nein |
+|feed_url|string|No |
+|frequency|string|No |
+|constrain_rss_img|string|No |
+|schedule|not defined|No |
 
 
 
-### Social\_Card
+### <a name="social_card"></a>Social_Card
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|image\_url|string|Nein |
-|description|string|Nein |
-|title|string|Nein |
+|image_url|string|No |
+|description|string|No |
+|title|string|No |
 
 
 
-### Segment\_Opts
+### <a name="segment_opts"></a>Segment_Opts
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|saved\_segment\_id|integer|Nein |
-|match|string|Nein |
+|saved_segment_id|integer|No |
+|match|string|No |
 
 
 
-### Salesforce
+### <a name="salesforce"></a>Salesforce
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|campaign|Boolescher Wert|Nein |
-|notes|Boolescher Wert|Nein |
+|campaign|boolean|No |
+|notes|boolean|No |
 
 
 
-### Highrise
+### <a name="highrise"></a>Highrise
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|campaign|Boolescher Wert|Nein |
-|notes|Boolescher Wert|Nein |
+|campaign|boolean|No |
+|notes|boolean|No |
 
 
 
-### Capsule
+### <a name="capsule"></a>Capsule
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|notes|Boolescher Wert|Nein |
+|notes|boolean|No |
 
 
 
-### Schedule
+### <a name="schedule"></a>Schedule
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|hour|integer|Nein |
-|daily\_send|nicht definiert|Nein |
-|weekly\_send\_day|string|Nein |
-|monthly\_send\_date|number|Nein |
+|hour|integer|No |
+|daily_send|not defined|No |
+|weekly_send_day|string|No |
+|monthly_send_date|number|No |
 
 
 
-### Daily\_Send
+### <a name="daily_send"></a>Daily_Send
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|sunday|Boolescher Wert|Nein |
-|monday|Boolescher Wert|Nein |
-|tuesday|Boolescher Wert|Nein |
-|wednesday|Boolescher Wert|Nein |
-|thursday|Boolescher Wert|Nein |
-|friday|Boolescher Wert|Nein |
-|saturday|Boolescher Wert|Nein |
+|sunday|boolean|No |
+|monday|boolean|No |
+|tuesday|boolean|No |
+|wednesday|boolean|No |
+|thursday|boolean|No |
+|friday|boolean|No |
+|saturday|boolean|No |
 
 
 
-### CampaignResponseModel
+### <a name="campaignresponsemodel"></a>CampaignResponseModel
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|id|string|Nein |
-|Typ|string|Nein |
-|create\_time|string|Nein |
-|archive\_url|string|Nein |
-|status|string|Nein |
-|emails\_sent|integer|Nein |
-|send\_time|string|Nein |
-|content\_type|string|Nein |
-|recipient|array|Nein |
-|settings|nicht definiert|Nein |
-|variate\_settings|nicht definiert|Nein |
-|tracking|nicht definiert|Nein |
-|rss\_opts|nicht definiert|Nein |
-|ab\_split\_opts|nicht definiert|Nein |
-|social\_card|nicht definiert|Nein |
-|report\_summary|nicht definiert|Nein |
-|delivery\_status|nicht definiert|Nein |
-|\_links|array|Nein |
+|id|string|No |
+|type|string|No |
+|create_time|string|No |
+|archive_url|string|No |
+|status|string|No |
+|emails_sent|integer|No |
+|send_time|string|No |
+|content_type|string|No |
+|recipient|array|No |
+|settings|not defined|No |
+|variate_settings|not defined|No |
+|tracking|not defined|No |
+|rss_opts|not defined|No |
+|ab_split_opts|not defined|No |
+|social_card|not defined|No |
+|report_summary|not defined|No |
+|delivery_status|not defined|No |
+|_links|array|No |
 
 
 
-### AB\_Split\_Opts
+### <a name="ab_split_opts"></a>AB_Split_Opts
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|split\_test|string|Nein |
-|pick\_winner|string|Nein |
-|wait\_units|string|Nein |
-|wait\_time|integer|Nein |
-|split\_size|integer|Nein |
-|from\_name\_a|string|Nein |
-|from\_name\_b|string|Nein |
-|reply\_email\_a|string|Nein |
-|reply\_email\_b|string|Nein |
-|subject\_a|string|Nein |
-|subject\_b|string|Nein |
-|send\_time\_a|string|Nein |
-|send\_time\_b|string|Nein |
-|send\_time\_winner|string|Nein |
+|split_test|string|No |
+|pick_winner|string|No |
+|wait_units|string|No |
+|wait_time|integer|No |
+|split_size|integer|No |
+|from_name_a|string|No |
+|from_name_b|string|No |
+|reply_email_a|string|No |
+|reply_email_b|string|No |
+|subject_a|string|No |
+|subject_b|string|No |
+|send_time_a|string|No |
+|send_time_b|string|No |
+|send_time_winner|string|No |
 
 
 
-### Report\_Summary
+### <a name="report_summary"></a>Report_Summary
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|opens|integer|Nein |
-|unique\_opens|integer|Nein |
-|open\_rate|number|Nein |
-|clicks|integer|Nein |
-|subscriber\_clicks|number|Nein |
-|click\_rate|number|Nein |
+|opens|integer|No |
+|unique_opens|integer|No |
+|open_rate|number|No |
+|clicks|integer|No |
+|subscriber_clicks|number|No |
+|click_rate|number|No |
 
 
 
-### Delivery\_Status
+### <a name="delivery_status"></a>Delivery_Status
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|enabled|Boolescher Wert|Nein |
-|can\_cancel|Boolescher Wert|Nein |
-|status|string|Nein |
-|emails\_sent|integer|Nein |
-|emails\_canceled|integer|Nein |
+|enabled|boolean|No |
+|can_cancel|boolean|No |
+|status|string|No |
+|emails_sent|integer|No |
+|emails_canceled|integer|No |
 
 
 
-### Link
+### <a name="link"></a>Link
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|rel|string|Nein |
-|href|string|Nein |
-|method|string|Nein |
-|targetSchema|string|Nein |
-|schema|string|Nein |
+|rel|string|No |
+|href|string|No |
+|method|string|No |
+|targetSchema|string|No |
+|schema|string|No |
 
 
 
-### NewListRequest
+### <a name="newlistrequest"></a>NewListRequest
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|Name|string|Ja |
-|contact|nicht definiert|Ja |
-|permission\_reminder|string|Ja |
-|use\_archive\_bar|Boolescher Wert|Nein |
-|campaign\_defaults|nicht definiert|Ja |
-|notify\_on\_subscribe|string|Nein |
-|notify\_on\_unsubscribe|string|Nein |
-|email\_type\_option|Boolescher Wert|Ja |
-|visibility|string|Nein |
+|name|string|Yes |
+|contact|not defined|Yes |
+|permission_reminder|string|Yes |
+|use_archive_bar|boolean|No |
+|campaign_defaults|not defined|Yes |
+|notify_on_subscribe|string|No |
+|notify_on_unsubscribe|string|No |
+|email_type_option|boolean|Yes |
+|visibility|string|No |
 
 
 
-### Contact
+### <a name="contact"></a>Contact
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|company|string|Ja |
-|address1|string|Ja |
-|address2|string|Nein |
-|city|string|Ja |
-|state|string|Ja |
-|zip|string|Ja |
-|country|string|Ja |
-|phone|string|Ja |
+|company|string|Yes |
+|address1|string|Yes |
+|address2|string|No |
+|city|string|Yes |
+|state|string|Yes |
+|zip|string|Yes |
+|country|string|Yes |
+|phone|string|Yes |
 
 
 
-### Campaign\_Defaults
+### <a name="campaign_defaults"></a>Campaign_Defaults
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|from\_name|string|Ja |
-|from\_email|string|Ja |
-|subject|string|Nein |
-|language|string|Ja |
+|from_name|string|Yes |
+|from_email|string|Yes |
+|subject|string|No |
+|language|string|Yes |
 
 
 
-### CreateNewListResponseModel
+### <a name="createnewlistresponsemodel"></a>CreateNewListResponseModel
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|id|string|Ja |
-|Name|string|Ja |
-|contact|nicht definiert|Ja |
-|permission\_reminder|string|Ja |
-|use\_archive\_bar|Boolescher Wert|Nein |
-|campaign\_defaults|nicht definiert|Ja |
-|notify\_on\_subscribe|string|Nein |
-|notify\_on\_unsubscribe|string|Nein |
-|date\_created|string|Nein |
-|list\_rating|integer|Nein |
-|email\_type\_option|Boolescher Wert|Ja |
-|subscribe\_url\_short|string|Nein |
-|subscribe\_url\_long|string|Nein |
-|beamer\_address|string|Nein |
-|visibility|string|Nein |
-|modules|array|Nein |
-|stats|nicht definiert|Nein |
-|\_links|array|Nein |
+|id|string|Yes |
+|name|string|Yes |
+|contact|not defined|Yes |
+|permission_reminder|string|Yes |
+|use_archive_bar|boolean|No |
+|campaign_defaults|not defined|Yes |
+|notify_on_subscribe|string|No |
+|notify_on_unsubscribe|string|No |
+|date_created|string|No |
+|list_rating|integer|No |
+|email_type_option|boolean|Yes |
+|subscribe_url_short|string|No |
+|subscribe_url_long|string|No |
+|beamer_address|string|No |
+|visibility|string|No |
+|modules|array|No |
+|stats|not defined|No |
+|_links|array|No |
 
 
 
-### Stats
+### <a name="stats"></a>Stats
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|member\_count|integer|Nein |
-|unsubscribe\_count|integer|Nein |
-|cleaned\_count|integer|Nein |
-|member\_count\_since\_send|integer|Nein |
-|unsubscribe\_count\_since\_send|integer|Nein |
-|cleaned\_count\_since\_send|integer|Nein |
-|campaign\_count|integer|Nein |
-|campaign\_last\_sent|integer|Nein |
-|merge\_field\_count|integer|Nein |
-|avg\_sub\_rate|number|Nein |
-|avg\_unsub\_rate|number|Nein |
-|target\_sub\_rate|number|Nein |
-|open\_rate|number|Nein |
-|click\_rate|number|Nein |
-|last\_sub\_date|string|Nein |
-|last\_unsub\_date|string|Nein |
+|member_count|integer|No |
+|unsubscribe_count|integer|No |
+|cleaned_count|integer|No |
+|member_count_since_send|integer|No |
+|unsubscribe_count_since_send|integer|No |
+|cleaned_count_since_send|integer|No |
+|campaign_count|integer|No |
+|campaign_last_sent|integer|No |
+|merge_field_count|integer|No |
+|avg_sub_rate|number|No |
+|avg_unsub_rate|number|No |
+|target_sub_rate|number|No |
+|open_rate|number|No |
+|click_rate|number|No |
+|last_sub_date|string|No |
+|last_unsub_date|string|No |
 
 
 
-### GetListsResponseModel
+### <a name="getlistsresponsemodel"></a>GetListsResponseModel
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|lists|array|Nein |
-|total\_items|integer|Nein |
+|lists|array|No |
+|total_items|integer|No |
 
 
 
-### NewMemberInListRequest
+### <a name="newmemberinlistrequest"></a>NewMemberInListRequest
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|email\_type|string|Nein |
-|status|string|Ja |
-|merge\_fields|nicht definiert|Nein |
-|interests|string|Nein |
-|language|string|Nein |
-|VIP|Boolescher Wert|Nein |
-|location|nicht definiert|Nein |
-|email\_address|string|Ja |
+|email_type|string|No |
+|status|string|Yes |
+|merge_fields|not defined|No |
+|interests|string|No |
+|language|string|No |
+|vip|boolean|No |
+|location|not defined|No |
+|email_address|string|Yes |
 
 
 
-### FirstAndLastName
+### <a name="firstandlastname"></a>FirstAndLastName
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|FNAME|string|Nein |
-|LNAME|string|Nein |
+|FNAME|string|No |
+|LNAME|string|No |
 
 
 
-### Location
+### <a name="location"></a>Location
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|latitude|number|Nein |
-|longitude|number|Nein |
+|latitude|number|No |
+|longitude|number|No |
 
 
 
-### MemberResponseModel
+### <a name="memberresponsemodel"></a>MemberResponseModel
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|id|string|Nein |
-|email\_address|string|Nein |
-|unique\_email\_id|string|Nein |
-|email\_type|string|Nein |
-|status|string|Nein |
-|merge\_fields|nicht definiert|Nein |
-|interests|string|Nein |
-|stats|nicht definiert|Nein |
-|ip\_signup|string|Nein |
-|timestamp\_signup|string|Nein |
-|ip\_opt|string|Nein |
-|timestamp\_opt|string|Nein |
-|member\_rating|integer|Nein |
-|last\_changed|string|Nein |
-|language|string|Nein |
-|VIP|Boolescher Wert|Nein |
-|email\_client|string|Nein |
-|location|nicht definiert|Nein |
-|last\_note|nicht definiert|Nein |
-|list\_id|string|Nein |
-|\_links|array|Nein |
+|id|string|No |
+|email_address|string|No |
+|unique_email_id|string|No |
+|email_type|string|No |
+|status|string|No |
+|merge_fields|not defined|No |
+|interests|string|No |
+|stats|not defined|No |
+|ip_signup|string|No |
+|timestamp_signup|string|No |
+|ip_opt|string|No |
+|timestamp_opt|string|No |
+|member_rating|integer|No |
+|last_changed|string|No |
+|language|string|No |
+|vip|boolean|No |
+|email_client|string|No |
+|location|not defined|No |
+|last_note|not defined|No |
+|list_id|string|No |
+|_links|array|No |
 
 
 
-### Last\_Note
+### <a name="last_note"></a>Last_Note
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|note\_id|integer|Nein |
-|created\_at|string|Nein |
-|created\_by|string|Nein |
-|note|string|Nein |
+|note_id|integer|No |
+|created_at|string|No |
+|created_by|string|No |
+|note|string|No |
 
 
 
-### GetAllMembersResponseModel
+### <a name="getallmembersresponsemodel"></a>GetAllMembersResponseModel
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|members|array|Nein |
-|list\_id|string|Nein |
-|total\_items|integer|Nein |
+|members|array|No |
+|list_id|string|No |
+|total_items|integer|No |
 
 
 
-### Objekt
+### <a name="object"></a>Object
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
 
 
 
-### UpdateMemberInListRequest
+### <a name="updatememberinlistrequest"></a>UpdateMemberInListRequest
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|email\_address|string|Nein |
-|email\_type|string|Nein |
-|status|string|Ja |
-|merge\_fields|nicht definiert|Nein |
-|interests|string|Nein |
-|language|string|Nein |
-|VIP|Boolescher Wert|Nein |
-|location|nicht definiert|Nein |
+|email_address|string|No |
+|email_type|string|No |
+|status|string|Yes |
+|merge_fields|not defined|No |
+|interests|string|No |
+|language|string|No |
+|vip|boolean|No |
+|location|not defined|No |
 
 
 
-### GetMembersResponseModel
+### <a name="getmembersresponsemodel"></a>GetMembersResponseModel
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|members|array|Nein |
-|list\_id|string|Nein |
-|total\_items|integer|Nein |
+|members|array|No |
+|list_id|string|No |
+|total_items|integer|No |
 
 
 
-### AddUserResponseModel
+### <a name="adduserresponsemodel"></a>AddUserResponseModel
 
 
-| Eigenschaftenname | Datentyp | Erforderlich |
+| Property Name | Data Type | Required |
 |---|---|---|
-|id|string|Ja |
-|email\_address|string|Ja |
-|unique\_email\_id|string|Nein |
-|email\_type|string|Nein |
-|status|string|Nein |
-|merge\_fields|nicht definiert|Ja |
-|interests|string|Nein |
-|stats|nicht definiert|Nein |
-|ip\_signup|string|Nein |
-|timestamp\_signup|string|Nein |
-|ip\_opt|string|Nein |
-|timestamp\_opt|string|Nein |
-|member\_rating|integer|Nein |
-|last\_changed|string|Nein |
-|language|string|Nein |
-|VIP|Boolescher Wert|Nein |
-|email\_client|string|Nein |
-|location|nicht definiert|Nein |
-|last\_note|nicht definiert|Nein |
-|list\_id|string|Nein |
-|\_links|array|Nein |
+|id|string|Yes |
+|email_address|string|Yes |
+|unique_email_id|string|No |
+|email_type|string|No |
+|status|string|No |
+|merge_fields|not defined|Yes |
+|interests|string|No |
+|stats|not defined|No |
+|ip_signup|string|No |
+|timestamp_signup|string|No |
+|ip_opt|string|No |
+|timestamp_opt|string|No |
+|member_rating|integer|No |
+|last_changed|string|No |
+|language|string|No |
+|vip|boolean|No |
+|email_client|string|No |
+|location|not defined|No |
+|last_note|not defined|No |
+|list_id|string|No |
+|_links|array|No |
 
 
-## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

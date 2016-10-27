@@ -1,70 +1,71 @@
 <properties
-	pageTitle="Azure Active Directory B2C | Microsoft Azure"
-	description="Erstellen einer Webanwendung, die eine Web-API mithilfe von Azure Active Directory B2C aufruft."
-	services="active-directory-b2c"
-	documentationCenter=".net"
-	authors="dstrockis"
-	manager="msmbaldwin"
-	editor=""/>
+    pageTitle="Azure Active Directory B2C | Microsoft Azure"
+    description="How to build a web application that calls a web API by using Azure Active Directory B2C."
+    services="active-directory-b2c"
+    documentationCenter=".net"
+    authors="dstrockis"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/22/2016"
-	ms.author="dastrock"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="07/22/2016"
+    ms.author="dastrock"/>
 
-# Azure AD B2C: Aufrufen einer Web-API über eine .NET-Web-App
 
-Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Web-Apps und Web-APIs in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel wird erläutert, wie Sie eine .NET-MVC-Web-App (Model-View-Controller) für Aufgabenlisten erstellen, die eine Web-API mithilfe von Bearertoken aufruft.
+# <a name="azure-ad-b2c:-call-a-web-api-from-a-.net-web-app"></a>Azure AD B2C: Call a web API from a .NET web app
 
-Dieser Artikel behandelt nicht das Implementieren der Anmeldung, Registrierung und Profilverwaltung mit Azure AD B2C. Er konzentriert sich auf das Aufrufen von Web-APIs aufrufen, nachdem der Benutzer bereits authentifiziert wurde. Beginnen Sie, sofern noch nicht geschehen, mit dem [Tutorial zu den ersten Schritten mit .NET-Web-Apps](active-directory-b2c-devquickstarts-web-dotnet.md), um Informationen zu den Grundlagen von Azure AD B2C zu erhalten.
+By using Azure Active Directory (Azure AD) B2C, you can add powerful self-service identity management features to your web apps and web APIs in a few short steps. This article will discuss how to create a .NET Model-View-Controller (MVC) "to-do list" web app that calls a web API by using bearer tokens
 
-## Erstellen eines Azure AD B2C-Verzeichnisses
+This article does not cover how to implement sign-in, sign-up and profile management with Azure AD B2C. It focuses on calling web APIs after the user is already authenticated. If you haven't already, you should start with the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md) to learn about the basics of Azure AD B2C.
 
-Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für alle Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, sollten Sie [ein B2C-Verzeichnis erstellen](active-directory-b2c-get-started.md), bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
+## <a name="get-an-azure-ad-b2c-directory"></a>Get an Azure AD B2C directory
 
-## Erstellen einer Anwendung
+Before you can use Azure AD B2C, you must create a directory, or tenant.  A directory is a container for all your users, apps, groups, and more.  If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue in this guide.
 
-Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Dadurch werden Azure AD die Informationen bereitgestellt, die für die sichere Kommunikation mit Ihrer App erforderlich sind. In diesem Fall werden die Web-App und die Web-API durch eine einzige **Anwendungs-ID** dargestellt, da sie zusammen eine logische App bilden. Befolgen Sie zum Erstellen einer App [diese Anweisungen](active-directory-b2c-app-registration.md). Führen Sie folgende Schritte aus:
+## <a name="create-an-application"></a>Create an application
 
-- Fügen Sie der Anwendung eine **Web-App/Web-API** hinzu.
-- Geben Sie `https://localhost:44316/` als **Antwort-URL** ein. Dies ist die Standard-URL für dieses Codebeispiel.
-- Kopieren Sie die **Anwendungs-ID**, die Ihrer App zugewiesen ist. Diese benötigen sie später ebenfalls.
+Next, you need to create an app in your B2C directory. This gives Azure AD information that it needs to securely communicate with your app. In this case, both the web app and web API will be represented by a single **Application ID**, because they comprise one logical app. To create an app, follow [these instructions](active-directory-b2c-app-registration.md). Be sure to:
+
+- Include a **web app/web API** in the application.
+- Enter `https://localhost:44316/` as a **Reply URL**. It is the default URL for this code sample.
+- Copy the **Application ID** that is assigned to your app. You will also need this later.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## Erstellen der Richtlinien
+## <a name="create-your-policies"></a>Create your policies
 
-In Azure AD B2C wird jede Benutzeroberfläche durch eine [Richtlinie](active-directory-b2c-reference-policies.md) definiert. Diese Web-App enthält drei Benutzeroberflächen, für die Identitäten relevant sind: Registrierung, Anmeldung und Profilbearbeitung. Sie müssen eine Richtlinie jedes Typs erstellen, wie im [Artikel zu Richtlinienreferenzen](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) beschrieben. Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
+In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md). This web app contains three identity experiences: sign up, sign in, and edit profile. You need to create one policy of each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy). When you create the three policies, be sure to:
 
-- Wählen Sie den **Anzeigenamen** und andere Registrierungsattribute in der Registrierungsrichtlinie aus.
-- Wählen Sie den **Anzeigenamen** und die **Objekt-ID** als Anwendungsansprüche in jeder Richtlinie aus. Sie können auch andere Ansprüche auswählen.
-- Notieren Sie sich die **Namen** der einzelnen Richtlinien nach ihrer Erstellung. Sie müssen das Präfix `b2c_1_` aufweisen. Sie benötigen diese Richtliniennamen später.
+- Choose the **Display name** and other sign-up attributes in your sign-up policy.
+- Choose the **Display name** and **Object ID** application claims in every policy. You can choose other claims as well.
+- Copy the **Name** of each policy after you create it. It should have the prefix `b2c_1_`. You'll need those policy names later.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Nachdem Sie die drei Richtlinien erstellt haben, können Sie Ihre App erstellen.
+After you have created your three policies, you're ready to build your app.
 
-Beachten Sie, dass in diesem Artikel nicht behandelt wird, wie die gerade erstellten Richtlinien verwendet werden. Grundlegende Informationen zur Funktionsweise von Richtlinien in Azure AD B2C finden Sie im [Tutorial zu den ersten Schritten mit .NET-Web-Apps](active-directory-b2c-devquickstarts-web-dotnet.md).
+Note that this article does not cover how to use the policies that you just created. To learn about how policies work in Azure AD B2C, start with the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md).
 
-## Herunterladen des Codes
+## <a name="download-the-code"></a>Download the code
 
-Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet) verwaltet. Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
+The code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet). To build the sample as you go, you can [download the skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip). You can also clone the skeleton:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git
 ```
 
-Die fertige App ist ebenfalls [als ZIP-Datei](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip) oder unter der Verzweigung `complete` im gleichen Repository verfügbar.
+The completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip) or on the `complete` branch of the same repository.
 
-Nachdem Sie den Beispielcode heruntergeladen haben, öffnen Sie zum Einstieg die Visual Studio-SLN-Datei.
+After you download the sample code, open the Visual Studio .sln file to get started.
 
-## Konfigurieren der Aufgaben-Web-App
+## <a name="configure-the-task-web-app"></a>Configure the task web app
 
-Damit `TaskWebApp` mit Azure AD B2C kommunizieren kann, müssen Sie einige allgemeine Parameter angeben. Öffnen Sie im `TaskWebApp`-Projekt die Datei `web.config` im Stammverzeichnis des Projekts, und ersetzen Sie die Werte im Abschnitt `<appSettings>`. Sie können die Werte `AadInstance`, `RedirectUri` und `TaskServiceUrl` unverändert lassen.
+To get `TaskWebApp` to communicate with Azure AD B2C, you need to provide a few common parameters. In the `TaskWebApp` project, open the `web.config` file in the root of the project and replace the values in the `<appSettings>` section. You can leave the `AadInstance`, `RedirectUri`, and `TaskServiceUrl` values as they are.
 
 ```
   <appSettings>
@@ -81,19 +82,33 @@ Damit `TaskWebApp` mit Azure AD B2C kommunizieren kann, müssen Sie einige allge
   </appSettings>
 ```
 
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)] <appSettings> <add key="webpages:Version" value="3.0.0.0" /> <add key="webpages:Enabled" value="false" /> <add key="ClientValidationEnabled" value="true" /> <add key="UnobtrusiveJavaScriptEnabled" value="true" /> <add key="ida:Tenant" value="fabrikamb2c.onmicrosoft.com" /> <add key="ida:ClientId" value="90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6" /> <add key="ida:ClientSecret" value="E:i~5GHYRF$Y7BcM" /> <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}/v2.0/.well-known/openid-configuration?p={1}" /> <add key="ida:RedirectUri" value="https://localhost:44316/" /> <add key="ida:SignUpPolicyId" value="b2c\_1_sign\_up" /> <add key="ida:SignInPolicyId" value="b2c_1_sign\_in" /> <add key="ida:UserProfilePolicyId" value="b2c_1\_edit\_profile" /> <add key="api:TaskServiceUrl" value="https://aadb2cplayground.azurewebsites.net" /> </appSettings>
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]  <appSettings>
+    <add key="webpages:Version" value="3.0.0.0" />
+    <add key="webpages:Enabled" value="false" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+    <add key="ida:Tenant" value="fabrikamb2c.onmicrosoft.com" />
+    <add key="ida:ClientId" value="90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6" />
+    <add key="ida:ClientSecret" value="E:i~5GHYRF$Y7BcM" />
+    <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}/v2.0/.well-known/openid-configuration?p={1}" />
+    <add key="ida:RedirectUri" value="https://localhost:44316/" />
+    <add key="ida:SignUpPolicyId" value="b2c_1_sign_up" />
+    <add key="ida:SignInPolicyId" value="b2c_1_sign_in" />
+    <add key="ida:UserProfilePolicyId" value="b2c_1_edit_profile" />
+    <add key="api:TaskServiceUrl" value="https://aadb2cplayground.azurewebsites.net" />
+  </appSettings>
 
-## Abrufen von Zugriffstoken und Aufrufen der Aufgaben-API
+## <a name="get-access-tokens-and-call-the-task-api"></a>Get access tokens and call the task API
 
-In diesem Abschnitt wird beschrieben, wie Sie das während der Anmeldung mit Azure AD B2C erhaltene Token verwenden, um auf eine Web-API zuzugreifen, die ebenfalls mit Azure AD B2C geschützt ist.
+This section will discuss how to use the token received during sign-in with Azure AD B2C in order to access a web API that is also secured with Azure AD B2C.
 
-In diesem Artikel werden nicht die Details der Sicherung einer API behandelt. Um zu erfahren, wie eine Web-API Anforderungen mithilfe von Azure AD B2C sicher authentifiziert, können Sie sich den [Artikel mit den ersten Schritten für die Web-API](active-directory-b2c-devquickstarts-api-dotnet.md) durchlesen.
+This article does not cover the details of how to secure the API. To learn how a web API securely authenticates requests by using Azure AD B2C, check out the [web API getting started article](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-### Speichern des Anmeldetokens
+### <a name="save-the-sign-in-token"></a>Save the sign in token
 
-Zuerst authentifizieren Sie den Benutzer (mit einer Ihrer Richtlinien) und erhalten ein Anmeldetoken von Azure AD B2C. Wenn Sie nicht sicher sind, wie Sie Richtlinien ausführen sollen, hilft Ihnen das [Tutorial zu den ersten Schritten mit .NET-Web-Apps](active-directory-b2c-devquickstarts-web-dotnet.md) weiter. Darin werden die Grundlagen von Azure AD B2C beschrieben.
+First, authenticate the user (using any one of your policies) and receive a sign-in token from Azure AD B2C.  If you're not sure how to execute policies, go back and try the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md) to learn about the basics of Azure AD B2C.
 
-Öffnen Sie die Datei `App_Start\Startup.Auth.cs`. Sie müssen eine wichtige Änderung an `OpenIdConnectAuthenticationOptions` vornehmen. Folgendes muss gelten: `SaveSignInToken = true`.
+Open the file `App_Start\Startup.Auth.cs`.  There is one important change you must make to the `OpenIdConnectAuthenticationOptions` - you must set `SaveSignInToken = true`.
 
 ```C#
 // App_Start\Startup.Auth.cs
@@ -126,9 +141,9 @@ return new OpenIdConnectAuthenticationOptions
 };
 ```
 
-### Abrufen eines Tokens in den Controllern
+### <a name="get-a-token-in-the-controllers"></a>Get a token in the controllers
 
-`TasksController` ist verantwortlich für die Kommunikation mit der Web-API und sendet HTTP-Anforderungen an die API, um Aufgaben zu lesen, zu erstellen und zu löschen. Da die API mit Azure AD B2C geschützt wird, müssen Sie zuerst das Token abrufen, das Sie im obigen Schritt gespeichert haben.
+The `TasksController` is responsible for communicating with the web API, sending HTTP requests to the API to read, create, and delete tasks.  Becuase the API is secured by Azure AD B2C, you need to first retrieve the token you saved in the above step.
 
 ```C#
 // Controllers\TasksController.cs
@@ -139,15 +154,15 @@ public async Task<ActionResult> Index()
 
         var bootstrapContext = ClaimsPrincipal.Current.Identities.First().BootstrapContext as System.IdentityModel.Tokens.BootstrapContext;
         
-	...
+    ...
 }
 ```
 
-`BootstrapContext` enthält das Anmeldetoken, das Sie beschafft haben, indem Sie eine Ihrer B2C-Richtlinien ausgeführt haben.
+The `BootstrapContext` contains the sign in token that you acquired by executing one of your B2C policies.
 
-### Lesen von Aufgaben aus der Web-API
+### <a name="read-tasks-from-the-web-api"></a>Read tasks from the web API
 
-Wenn Sie über ein Token verfügen, können Sie es an die HTTP-`GET`-Anforderung im `Authorization`-Header anfügen, um `TaskService` sicher aufzurufen:
+When you have a token, you can attach it to the HTTP `GET` request in the `Authorization` header to securely call `TaskService`:
 
 ```C#
 // Controllers\TasksController.cs
@@ -191,15 +206,15 @@ public async Task<ActionResult> Index()
 
 ```
 
-### Erstellen und Löschen von Aufgaben mit der Web-API
+### <a name="create-and-delete-tasks-on-the-web-api"></a>Create and delete tasks on the web API
 
-Folgen Sie dem gleichen Muster, wenn Sie `POST`- und `DELETE`-Anforderungen an die Web-API senden, indem Sie `BootstrapContext` zum Abrufen des Anmeldetokens verwenden. Wir haben diese Aktion für Sie erstellt. Sie können versuchen, die Löschaktion in `TasksController.cs` zu beenden.
+Follow the same pattern when you send `POST` and `DELETE` requests to the web API, using the `BootstrapContext` to retrieve the sign in token. We implemented the create action for you. You can try finishing the delete action in `TasksController.cs`.
 
-## Ausführen der Beispiel-App
+## <a name="run-the-sample-app"></a>Run the sample app
 
-Der letzte Schritt besteht im Erstellen und Ausführen der App. Registrieren Sie sich, und melden Sie sich an. Erstellen Sie anschließend die Aufgaben für den angemeldeten Benutzer. Melden Sie sich ab, und melden Sie sich als ein anderer Benutzer an. Erstellen Sie Aufgaben für diesen Benutzer. Beachten Sie, wie die Aufgaben pro Benutzer in der API gespeichert werden, da die API die Benutzeridentität aus dem empfangenen Token extrahiert.
+Finally, build and run the app. Sign up and sign in, and create tasks for the signed-in user. Sign out and sign in as a different user. Create tasks for that user. Notice how the tasks are stored per-user on the API, because the API extracts the user's identity from the token it receives.
 
-Als Referenz wird das fertige Beispiel [als ZIP-Datei bereitgestellt](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip). Sie können sie auch aus GitHub klonen:
+For reference, the completed sample [is provided as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip). You can also clone it from GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git```
 
@@ -215,4 +230,8 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

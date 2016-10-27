@@ -1,51 +1,57 @@
 <properties
-	pageTitle="Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs | Microsoft Azure"
-	description="Erfahren Sie mehr zu den Unterschieden zwischen benutzerdefinierten Images und Formeln als Basis für virtuelle Computer, sodass Sie entscheiden können, welche Methode sich für Ihre Umgebung am besten eignet."
-	services="devtest-lab,virtual-machines"
-	documentationCenter="na"
-	authors="tomarcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Comparing custom images and formulas in DevTest Labs | Microsoft Azure"
+    description="Learn about the differences between custom images and formulas as VM bases so you can decide which one best suits your environment."
+    services="devtest-lab,virtual-machines"
+    documentationCenter="na"
+    authors="tomarcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2016"
-	ms.author="tarcher"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/25/2016"
+    ms.author="tarcher"/>
 
-# Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs
 
-## Übersicht
-Sowohl [benutzerdefinierte Images](./devtest-lab-create-template.md) als auch [Formeln](./devtest-lab-manage-formulas.md) können als Basis für [neu erstellte virtuelle Computer](./devtest-lab-add-vm-with-artifacts.md) verwendet werden. Der grundlegende Unterschied zwischen benutzerdefinierten Images und Formeln ist jedoch, dass ein benutzerdefiniertes Image einfach ein auf einer virtuellen Festplatte basierendes Image ist. Eine Formel ist ein Image, das ebenfalls auf einer virtuellen Festplatte, aber *zusätzlich* auch auf vorkonfigurierten Einstellungen basiert, wie beispielsweise VM-Größe, virtuelles Netzwerk und Subnetz, Artefakte usw. Diese vorkonfigurierten Einstellungen werden mit Standardwerten eingerichtet, die zum Zeitpunkt der Erstellung des virtuellen Computers überschrieben werden können. In diesem Artikel werden einige Vor- und Nachteile der Verwendung von benutzerdefinierten Images im Vergleich zur Verwendung von Formeln erläutert.
+# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Comparing custom images and formulas in DevTest Labs
+
+## <a name="overview"></a>Overview
+Both [custom images](./devtest-lab-create-template.md) and [formulas](./devtest-lab-manage-formulas.md) can be used as bases for [created new VMs](./devtest-lab-add-vm-with-artifacts.md). However, the key distinction between custom images and formulas is that a custom image is simply an image based on a VHD, while a formula is an image based on a VHD *in addition to* preconfigured settings - such as VM Size, virtual network and subnet, artifacts, and so on. These preconfigured settings are set up with default values that can be overridden at the time of VM creation. This article explains some of the advantages (pros) and disadvantages (cons) to using custom images versus using formulas.
  
-## Benutzerdefinierte Images – Vor- und Nachteile
-Benutzerdefinierte Images stellen eine statische, unveränderliche Möglichkeit zum Erstellen virtueller Computer aus einer bestimmten Umgebung bereit.
+## <a name="custom-image-pros-and-cons"></a>Custom image pros and cons
+Custom images provide a a static, immutable way to create VMs from a desired environment. 
 
-**Vorteile**
-- Die VM-Bereitstellung über ein benutzerdefiniertes Image ist schnell, da sich nichts mehr ändert, nachdem der virtuelle Computer aus dem Image erstellt wurde. Anders gesagt: Es müssen keine Einstellungen angewendet werden, da ein benutzerdefiniertes Image ganz einfach ein Image ohne Einstellungen ist.
-- Virtuelle Computer, die aus einem einzigen benutzerdefinierten Image erstellt wurden, sind identisch.
+**Pros**
+- VM provisioning from a custom image is fast as nothing changes after the VM is spun up from the image. In other words, there are no settings to apply as the custom image is simply an image without settings. 
+- VMs created from a single custom image are identical.
 
-**Nachteile**
-- Wenn Sie einen Aspekt des benutzerdefinierten Images aktualisieren müssen, muss das Image neu erstellt werden.
+**Cons**
+- If you need to update some aspect of the custom image, the image must be recreated.  
 
-## Formeln – Vor- und Nachteile
-Formeln stellen eine dynamische Möglichkeit bereit, um virtuelle Computer mithilfe der gewünschten Konfigurationseinstellungen zu erstellen.
+## <a name="formula-pros-and-cons"></a>Formula pros and cons
+Formulas provide a dynamic way to create VMs from the desired configuration/settings.
 
-**Vorteile**
-- Änderungen der Umgebung können über Artefakte dynamisch erfasst werden. Wenn Sie z.B. einen virtuellen Computer mit den neuesten Aktualisierungen aus Ihrer Releasepipeline installieren oder den neuesten Code aus Ihrem Repository eintragen möchten, können Sie einfach ein Artefakt angeben, das diese Aktualisierungen bereitstellt bzw. den neuesten Code in der Formel zusammen mit dem Basiszielimage einträgt. Wann immer diese Formel zum Erstellen eines virtuellen Computers verwendet wird, werden die neuesten Aktualisierungen bzw. der neueste Code in diesem virtuellen Computer bereitgestellt bzw. eingetragen.
-- Formeln können Standardeinstellungen definieren, die benutzerdefinierte Images nicht bereitstellen können, wie z.B. VM-Größen und Einstellungen des virtuellen Netzwerks.
-- Die in einer Formel gespeicherten Einstellungen werden als Standardwerte angezeigt, können jedoch bei der Erstellung des virtuellen Computers geändert werden.
+**Pros**
+- Changes in the environment can be captured on the fly via artifacts. For example, if you want a VM installed with the latest bits from your release pipeline or enlist the latest code from your repository, you can simply specify an artifact that deploys the latest bits or enlists the latest code in the formula together with a target base image. Whenever this formula is used to create VMs, the latest bits/code are deployed/enlisted to the VM. 
+- Formulas can define default settings that custom images cannot provide - such as VM sizes and virtual network settings. 
+- The settings saved in a formula are shown as default values, but can be modified when the VM is created. 
 
-**Nachteile**
-- Die Erstellung eines virtuellen Computers aus einer Formel dauert länger als die Erstellung eines virtuellen Computers aus einem benutzerdefinierten Image.
+**Cons**
+- Creating a VM from a formula can take more time than creating a VM from a custom image.
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## Verwandte Blogbeiträge
+## <a name="related-blog-posts"></a>Related blog posts
 
-- [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Custom images or formulas?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

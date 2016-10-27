@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Ressourcen-Manager-Vorlage für Ressourcensperren | Microsoft Azure"
-   description="Zeigt das Ressourcen-Manager-Schema für die Bereitstellung von Ressourcensperren über eine Vorlage."
+   pageTitle="Resource Manager template for resource locks | Microsoft Azure"
+   description="Shows the Resource Manager schema for deploying resource locks through a template."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -13,16 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/05/2016"
+   ms.date="10/03/2016"
    ms.author="tomfitz"/>
 
-# Vorlagenschema für Ressourcensperren
 
-Erstellt eine neue Sperre für eine Ressource und ihre untergeordneten Ressourcen.
+# <a name="resource-locks-template-schema"></a>Resource locks template schema
 
-## Schemaformat
+Creates a lock on a resource and its child resources.
 
-Fügen Sie zum Erstellen einer Sperre das folgende Schema im Ressourcenabschnitt der Vorlage hinzu.
+## <a name="schema-format"></a>Schema format
+
+To create a lock, add the following schema to the resources section of your template.
     
     {
         "type": enum,
@@ -38,47 +39,46 @@ Fügen Sie zum Erstellen einer Sperre das folgende Schema im Ressourcenabschnitt
 
 
 
-## Werte
+## <a name="values"></a>Values
 
-In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
+The following tables describe the values you need to set in the schema.
 
-| Name | Wert |
-| ---- | ---- | 
-| type | Enum<br />Erforderlich<br />**{Namespace}/{Typ}/providers/locks** – für Ressourcen oder<br />**Microsoft.Authorization/locks** – für Ressourcengruppen<br /><br />Der zu erstellende Ressourcentyp. |
-| apiVersion | Enum<br />Erforderlich<br />**2015-01-01**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. |  
-| name | String<br />Erforderlich<br />**{Ressource}/Microsoft.Authorization/{Sperrenname}** – für Ressourcen oder<br />**{Sperrenname}** – für Ressourcengruppen<br />bis zu 64 Zeichen; darf weder <, > %, &, ? noch irgendwelche Steuerzeichen enthalten.<br /><br />Ein Wert der sowohl die zu sperrende Ressource als auch den Namen für die Sperre angibt. |
-| dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Sammlung von Ressourcen, von denen diese Sperre abhängt. Wenn die Ressource, die Sie sperren, in derselben Vorlage bereitgestellt wird, fügen Sie den Ressourcennamen in diesem Element hinzu, um sicherzustellen, dass die Ressource zuerst bereitgestellt wird. | 
-| Eigenschaften | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das den Sperrentyp und Informationen zu der Sperre identifiziert. |  
+| Name | Required | Description |
+| ---- | -------- | ----------- |
+| type | Yes | The resource type to create.<br /><br />For resources:<br />**{namespace}/{type}/providers/locks**<br /><br/>For resource groups:<br />**Microsoft.Authorization/locks** |
+| apiVersion | Yes | The API version to use for creating the resource.<br /><br />Use:<br />**2015-01-01**<br /><br /> |
+| name | Yes | A value that specifies both the resource to lock and a name for the lock. Can be up to 64 characters, and cannot contain <, > %, &, ?, or any control characters.<br /><br />For resources:<br />**{resource}/Microsoft.Authorization/{lockname}**<br /><br />For resource groups:<br />**{lockname}** |
+| dependsOn | No | A comma-separated list of a resource names or resource unique identifiers.<br /><br />The collection of resources this lock depends on. If the resource you are locking is deployed in the same template, include that resource name in this element to ensure the resource is deployed first. | 
+| properties | Yes | An object that identifies the type of lock, and notes about the lock.<br /><br />See [properties object](#properties-object). |  
 
-<a id="properties" />
-### properties-Objekt
+### <a name="properties-object"></a>properties object
 
-| Name | Wert |
-| ------- | ---- |
-| level | Enum<br />Erforderlich<br />**CannotDelete**<br /><br />Der Sperrentyp, der auf den Bereich angewendet wird. CanNotDelete erlaubt Änderungen, verhindert jedoch die Löschung. |
-| HDInsight | String<br />Optional<br />bis zu 512 Zeichen<br /><br />Beschreibung der Sperre. |
+| Name | Required | Description |
+| ---- | -------- | ----------- |
+| level   | Yes | The type of lock to apply to the scope.<br /><br />**CannotDelete** - users can modify resource but not delete it.<br />**ReadOnly** - users can read from a resource, but they can't delete it or perform any actions on it. |
+| notes   | No | Description of the lock. Can be up to 512 characters. |
 
 
-## Verwenden der gesperrten Ressource
+## <a name="how-to-use-the-lock-resource"></a>How to use the lock resource
 
-Sie fügen diese Ressource Ihrer Vorlage hinzu, um zu verhindern, dass bestimmte Aktionen für eine Ressource ausgeführt werden. Die Sperre gilt für alle Benutzer und Gruppen. In der Regel wenden Sie eine Sperre nur für einen bestimmten Zeitraum an, z. B. wenn ein Prozess ausgeführt wird und Sie sicherstellen möchten, dass niemand in Ihrer Organisation eine Ressource versehentlich ändert oder löscht.
+You add this resource to your template to prevent specified actions on a resource. The lock applies to all users and groups.
 
-Zum Erstellen oder Löschen von Verwaltungssperren müssen Sie Zugriff auf Aktionen vom Typ **Microsoft.Authorization/*** oder **Microsoft.Authorization/locks/*** haben. Von den integrierten Rollen verfügen nur **Owner** (Besitzer) und **User Access Administrator** (Benutzerzugriffsadministrator) über diese Aktionen. Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Rollenbasierte Access Control in Azure](./active-directory/role-based-access-control-configure.md).
+To create or delete management locks, you must have access to **Microsoft.Authorization/*** or **Microsoft.Authorization/locks/*** actions. Of the built-in roles, only **Owner** and **User Access Administrator** are granted those actions. For information about role-based access control, see [Azure Role-based Access Control](./active-directory/role-based-access-control-configure.md).
 
-Die Sperre wird auf die angegebene Ressource und alle untergeordneten Ressourcen angewendet.
+The lock is applied to the specified resource and any child resources.
 
-Sie können eine Sperre mit dem PowerShell-Befehl **Remove-AzureRmResourceLock** oder mit dem [Löschvorgang](https://msdn.microsoft.com/library/azure/mt204562.aspx) der REST-API entfernen.
+You can remove a lock with the PowerShell command **Remove-AzureRmResourceLock** or with the [delete operation](https://msdn.microsoft.com/library/azure/mt204562.aspx) of the REST API.
 
-## Beispiele
+## <a name="examples"></a>Examples
 
-Im folgenden Beispiel wird ein Löschschutz für eine Web-App angewendet.
+The following example applies a cannot-delete lock to a web app.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "hostingPlanName": {
-      			"type": "string"
+                "type": "string"
             }
         },
         "variables": {
@@ -109,7 +109,7 @@ Im folgenden Beispiel wird ein Löschschutz für eine Web-App angewendet.
         "outputs": {}
     }
 
-Im nächsten Beispiel wird ein Löschschutz auf die Ressourcengruppe angewendet.
+The next example applies a cannot-delete lock to the resource group.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -131,9 +131,13 @@ Im nächsten Beispiel wird ein Löschschutz auf die Ressourcengruppe angewendet.
         "outputs": {}
     }
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Informationen zur Vorlagenstruktur finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
-- Weitere Informationen zu Sperren finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](resource-group-lock-resources.md).
+- For information about the template structure, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+- For more information about locks, see [Lock resources with Azure Resource Manager](resource-group-lock-resources.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

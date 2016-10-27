@@ -1,46 +1,50 @@
 <properties 
-	pageTitle="PDF-Datei mit SQL-Abfragespickzettel für DocumentDB | Microsoft Azure" 
-	description="Druckbare SQL-Spickzettel-PDF-Datei, die Ihnen hilft, die SQL-Syntax von DocumentDB zum Abfragen von JSON-Dokumenten in der NoSQL-Datenbank zu verwenden – SQL-Kurzübersicht" 
-	keywords="SQL-Spickzettel, PDF-Datei mit Sql-Spickzettel, Spickzettel für SQL-Abfragen"
-	services="documentdb" 
-	documentationCenter="" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="DocumentDB SQL cheat sheet PDF | Microsoft Azure" 
+    description="Printable SQL cheat sheet PDF that helps you use DocumentDB's SQL syntax to query JSON documents in its NoSQL database - SQL quick reference" 
+    keywords="sql cheat sheet, sql cheat sheet pdf, sql query cheat sheet"
+    services="documentdb" 
+    documentationCenter="" 
+    authors="mimig1" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2016" 
-	ms.author="mimig"/>
+    ms.service="documentdb" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/29/2016" 
+    ms.author="mimig"/>
 
-# PDF-Datei mit dem SQL-Abfragespickzettel für DocumentDB
 
-Mit dem **SQL-Abfragespickzettel für DocumentDB** können Sie schnell Abfragen für DocumentDB-Daten schreiben, da dort allgemeine Datenbankabfragen, Schlüsselwörter, integrierte Funktionen und Operatoren auf einem leicht zu druckenden PDF-Referenzblatt dargestellt werden.
+# <a name="documentdb-sql-query-cheat-sheet-pdf"></a>DocumentDB SQL query cheat sheet PDF
 
-DocumentDB unterstützt die relationale, hierarchische und räumliche Abfrage von JSON-Dokumenten mithilfe von [SQL](documentdb-sql-query.md) und ohne ein Schema oder sekundäre Indizes anzugeben. Neben den standardmäßigen ANSI-SQL-Schlüsselwörtern und -Operatoren unterstützt DocumentDB eine benutzerdefinierte JavaScript-Funktionen (UDFs), JavaScript-Operatoren und eine Vielzahl von integrierten Funktionen.
+The **DocumentDB SQL Query Cheat Sheet** helps you quickly write queries for DocumentDB data by displaying common  database queries, keywords, built-in functions, and operators in an easy to print PDF reference sheet. 
 
-## Herunterladen der PDF-Datei mit dem SQL-Abfragespickzettel für DocumentDB
+DocumentDB supports relational, hierarchical,  and spatial querying of JSON documents using [SQL](documentdb-sql-query.md) without specifying a schema or secondary indexes. In addition to the standard ANSI-SQL keywords and operators, DocumentDB supports JavaScript user defined functions (UDFs), JavaScript operators, and a multitude of built-in functions.
 
-Schreiben Sie Ihre Abfragen schneller, indem Sie den SQL-Abfragespickzettel herunterladen und ihn als Kurzübersicht verwenden. Die PDF-Datei mit dem SQL-Spickzettel enthält allgemeine Abfragen, die zum Abrufen von Daten aus zwei beispielhaften JSON-Dokumenten verwendet werden. Drucken Sie den einseitigen SQL-Abfragespickzettel in der Seitengröße Letter (8,5 x 11 Zoll) aus, um schnell darauf zugreifen zu können.
+## <a name="download-the-documentdb-sql-query-cheat-sheet-pdf"></a>Download the DocumentDB SQL query cheat sheet PDF
 
-**Laden Sie den Spickzettel hier herunter: [Microsoft Azure DocumentDB – SQL-Abfragespickzettel](http://go.microsoft.com/fwlink/?LinkId=623215)**
+Write your queries faster by downloading the SQL query cheat sheet and using it as a quick reference. The SQL cheat sheet PDF shows common queries used to retrieve data from two example JSON documents. To keep it nearby, you can print the single-sided SQL query cheat sheet in page letter size (8.5 x 11 in.).
 
-![SQL-Abfragespickzettel für DocumentDB: PDF-Datei mit einer Kurzübersicht über die von DocumentDB unterstützte SQL-Syntax – SQL-Spickzettel, SQL-Spickzettel (PDF), SQL-Kurzreferenz][cheat-sheet]
+**Download the SQL cheat sheet here: [Microsoft Azure DocumentDB SQL cheat sheet](http://go.microsoft.com/fwlink/?LinkId=623215)**
+
+![DocumentDB SQL query cheat sheet: A quick reference PDF to the SQL syntax supported by DocumentDB - SQL cheat sheet, SQL cheat sheet PDF, SQL quick reference][cheat-sheet]
 
 [cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
 
 
-## Weitere Hilfe beim Schreiben von SQL-Abfragen
+## <a name="more-help-with-writing-sql-queries"></a>More help with writing SQL queries
 
-- Eine exemplarische Vorgehensweise der Abfrageoptionen, die in DocumentDB verfügbar sind, finden Sie unter [Abfragen von DocumentDB](documentdb-sql-query.md).
-- Die zugehörige Referenzdokumentation finden Sie unter [SQL-Abfragesprache von DocumentDB](https://msdn.microsoft.com/library/azure/dn782250.aspx).
+- For a walk through of the query options available in DocumentDB, see [Query DocumentDB](documentdb-sql-query.md).
+- For the related reference documentation, see [DocumentDB SQL Query Language](https://msdn.microsoft.com/library/azure/dn782250.aspx).
 
-## Versionshinweise
+## <a name="release-notes"></a>Release notes
 
-Aktualisiert am 29.7.2016, um „TOP“ hinzuzufügen.
+Updated on 7/29/2016 to include TOP.
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

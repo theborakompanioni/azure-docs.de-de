@@ -1,49 +1,52 @@
 <!--author=alkohli last changed: 03/17/16-->
 
-#### So installieren Sie ein Update über das Azure-Portal
+#### <a name="to-install-an-update-from-the-azure-portal"></a>To install an update from the Azure portal
 
-1. Wählen Sie auf der Seite des StorSimple-Diensts Ihr Gerät aus. Navigieren Sie zu **Geräte** > **Wartung**.
+1. On the StorSimple service page, select your device. Navigate to **Devices** > **Maintenance**.
 
-2. Klicken Sie unten auf der Seite auf **Updates suchen**. Für die Suche nach verfügbaren Updates wird ein Auftrag erstellt. Sie werden benachrichtigt, wenn der Auftrag erfolgreich abgeschlossen wurde.
+2. At the bottom of the page, click **Scan Updates**. A job will be created to scan for available updates. You will be notified when the job has completed successfully.
 
-3. Im Abschnitt **Softwareupdates** auf derselben Seite sehen Sie, dass neue Softwareupdates verfügbar sind. Es empfiehlt sich, die Versionshinweise zu lesen, bevor Sie ein Update auf Ihr Gerät anwenden.
+3. In the **Software Updates** section on the same page, you will see that new software updates are available. We recommend that you review the release notes before you apply an update on your device.
 
-4. Klicken Sie unten auf der Seite auf **Updates installieren** und anschließend auf **OK**.
+4. At the bottom of the page, click **Install Updates**, and then **OK**.
 
-5. Vergewissern Sie sich im Dialogfeld **Updates installieren**, dass Sie sich an die Empfehlungen gehalten haben. Wählen Sie anschließend **Ich bin mir der oben genannten Voraussetzung bewusst und zum Upgrade meines Geräts bereit.** aus, und klicken Sie dann auf die Überprüfungsschaltfläche.
+5. In the **Install updates** dialog box, make sure that you've followed the recommendations, then select **I understand the above requirement and am ready to upgrade my device** and click the check button.
 
-    ![Bestätigungsmeldung](./media/storsimple-install-update2-via-portal/InstallUpdate12_2M.png)
+    ![Confirmation message](./media/storsimple-install-update2-via-portal/InstallUpdate12_2M.png)
 
-7. Eine Reihe von Voraussetzungsüberprüfungen wird gestartet. Diese umfassen:
+7. A set of prerequisite checks will now start. These include:
 
-	- **Controller Integritätsprüfungen**, um sicherzustellen, dass die beiden Gerätecontroller fehlerfrei und online sind.
+    - **Controller health checks** to verify that both the device controllers are healthy and online.
 
-	- **Integritätsprüfungen für Hardware-Komponente**, um zu überprüfen, ob alle Hardwarekomponenten auf dem StorSimple-Gerät fehlerfrei sind.
+    - **Hardware component health checks** to verify that all the hardware components on your StorSimple device are healthy.
 
-	- **DATA 0-Prüfungen**, um sicherzustellen, dass DATA 0 auf Ihrem Gerät aktiviert ist. Wenn diese Schnittstelle nicht aktiviert ist, müssen Sie sie aktivieren, und es dann erneut versuchen.
+    - **DATA 0 checks** to verify that DATA 0 is enabled on your device. If this interface is not enabled, you will need to enable it and then retry.
 
-	- **DATA 2- und DATA 3-Prüfungen**, um sicherzustellen, dass DATA 2- und DATA 3-Netzwerkschnittstellen nicht aktiviert sind. Wenn diese Schnittstellen aktiviert sind, müssen Sie deaktiviert werden, bevor Sie Ihr Gerät aktualisieren. Diese Prüfung wird nur bei der Aktualisierung auf einem Gerät durchgeführt, auf dem GA-Software ausgeführt wird. Bei Geräten, auf denen Versionen von 0.1, 0.2 oder 0.3 ausgeführt werden, ist diese Prüfung nicht erforderlich.
+    - **DATA 2 and DATA 3 checks** to verify that DATA 2 and DATA 3 network interfaces are not enabled. If these interfaces are enabled, then you will need to disable them and then try to update your device. This check is performed only if you are updating from a device running GA software. Devices running versions 0.1, 0.2, or 0.3 will not need this check.
 
-	- **Gateway-Prüfung** auf jedem Gerät, auf dem eine Version vor Update 1 ausgeführt wird. Diese Prüfung wird auf Geräten durchgeführt, auf denen Software zur Vorabprüfung 1 ausgeführt wird, aber auf Geräten fehlschlägt, auf denen ein Gateway für eine andere Netzwerkschnittstelle als DATA 0 konfiguriert ist.
+    - **Gateway check** on any device running a version prior to Update 1. This check is performed on all the device running pre-update 1 software but fails on the devices that have a gateway configured for a network interface other than DATA 0.
 
-	Das Update wird angewendet, wenn alle Überprüfungen erfolgreich abgeschlossen wurden. Sie werden davon in Kenntnis gesetzt, dass Überprüfungen ausgeführt werden.
+    The update is applied if all checks are successfully completed. You will be notified that checks are in progress.
 
-    ![Benachrichtigung zur Vorabprüfung](./media/storsimple-install-update2-via-portal/InstallUpdate12_3M.png)
+    ![Pre-check notification](./media/storsimple-install-update2-via-portal/InstallUpdate12_3M.png)
 
-    Nachfolgend sehen Sie ein Beispiel, in dem die Überprüfungen nicht erfolgreich waren. Sie müssen sicherstellen, dass beide Gerätecontroller fehlerfrei und online sind. Sie müssen außerdem den Zustand der Hardwarekomponenten überprüfen. In diesem Beispiel erfordern Controller 0- und Controller 1-Komponenten Ihre Aufmerksamkeit. Möglicherweise müssen Sie den Microsoft Support kontaktieren, wenn Sie diese Probleme nicht selbst beheben können.
+    The following is an example in which the checks failed. You will need to verify that both the device controllers are healthy and online. You will also need to check the health of the hardware components. In this example, Controller 0 and Controller 1 components need attention. You may need to contact Microsoft Support if you cannot address these issues by yourself.
 
-   	 ![Überprüfungsfehler](./media/storsimple-install-update2-via-portal/HCS_PreUpgradeChecksFailed-include.png)
+     ![Checks failed](./media/storsimple-install-update2-via-portal/HCS_PreUpgradeChecksFailed-include.png)
 
-8. Wenn die Überprüfungen erfolgreich abgeschlossen wurden, wird ein Updateauftrag erstellt. Sie werden benachrichtigt, wenn der Updateauftrag erfolgreich erstellt wurde.
+8. After the checks are successfully completed, an update job will be created. You will be notified when the update job is successfully created.
 
-    ![Erstellen eines Updateauftrags](./media/storsimple-install-update2-via-portal/InstallUpdate12_44M.png)
+    ![Update job creation](./media/storsimple-install-update2-via-portal/InstallUpdate12_44M.png)
 
-    Das Update wird dann auf Ihr Gerät angewendet.
+    The update will then be applied on your device.
 
-9. Um den Status des Updateauftrags zu verfolgen, klicken Sie auf **Auftrag anzeigen**. Auf der Seite **Aufträge** sehen Sie den Updatestatus.
+9. To monitor the progress of the update job, click **View Job**. On the **Jobs** page, you can see the update progress.
 
-10. Das Update kann einige Stunden dauern. Durch Auswählen des Updateauftrags und Klicken auf **Details** können Sie jederzeit die Details des Auftrags anzeigen.
+10. The update will take a few hours to complete. Select the update job and click **Details** to view the details of the job at any time.
 
-11. Navigieren Sie nach dem Abschließen des Auftrags zur Seite **Wartung**, und scrollen nach unten zu **Softwareupdates**.
+11. After the job is complete, navigate to the **Maintenance** page and scroll down to **Software Updates**.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

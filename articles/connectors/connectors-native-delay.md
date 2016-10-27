@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Hinzufügen einer Verzögerung in Logik-Apps | Microsoft Azure"
-	description="Übersicht über die Aktionen „Verzögern“ und „Verzögern bis“ sowie über deren Verwendung in einer Azure-Logik-App."
-	services=""
-	documentationCenter=""
-	authors="jeffhollan"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Add a delay in logic apps | Microsoft Azure"
+    description="Overview of the delay and delay-until actions, and how to use them with an Azure logic app."
+    services=""
+    documentationCenter=""
+    authors="jeffhollan"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,63 +17,70 @@
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
-# Erste Schritte mit den Aktionen „Verzögern“ und „Verzögern bis“
 
-Die Aktionen „Verzögern“ und „Verzögern bis“ eignen sich zur Durchführung von Workflowszenarien.
+# <a name="get-started-with-the-delay-and-delay-until-actions"></a>Get started with the delay and delay-until actions
 
-Dazu zählen z. B.:
+By using the delay and "delay-until" actions, you can complete workflow scenarios.
 
-- Versand einer E-Mail mit einem Statusupdate bis zum Erreichen eines Werktags verzögern.
-- Workflow verzögern, bis ein HTTP-Aufruf abgeschlossen werden konnte, und erst dann den Vorgang fortsetzen und das Ergebnis abrufen.
+For example, you can:
 
-Wenn Sie die Verzögerungsaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+- Wait until a weekday to send a status update over email.
+- Delay the workflow until an HTTP call has time to finish before resuming and retrieving the result.
 
-## Verwenden der Verzögerungsaktionen
+To get started using the delay action in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
+## <a name="use-the-delay-actions"></a>Use the delay actions
 
-Im Anschluss sehen Sie eine Beispielsequenz für die Verwendung eines Verzögerungsschritts in einer Logik-App:
+An action is an operation that is carried out by the workflow that is defined in a logic app. [Learn more about actions](connectors-overview.md).
 
-1. Klicken Sie nach dem Hinzufügen eines Triggers auf **Neuer Schritt**, um eine Aktion hinzuzufügen.
-2. Suchen Sie nach **verzögern**, um die Verzögerungsaktionen anzuzeigen. In diesem Beispiel wählen wir **Verzögern** aus.
+Here’s an example sequence of how to use a delay step in a logic app:
 
-	![Verzögern von Aktionen](./media/connectors-native-delay/using-action-1.png)
+1. After adding a trigger, click **New Step** to add an action.
+2. Search for **delay** to bring up the delay actions. In this example, we will select **Delay**.
 
-3. Geben Sie die gewünschten Aktionseigenschaften an, um die Verzögerung zu konfigurieren.
+    ![Delay actions](./media/connectors-native-delay/using-action-1.png)
 
-	![Verzögerungskonfiguration](./media/connectors-native-delay/using-action-2.png)
+3. Complete any of the action properties to configure the delay.
 
-4. Klicken Sie auf **Speichern**, um die Logik-App zu veröffentlichen und zu aktivieren.
+    ![Delay config](./media/connectors-native-delay/using-action-2.png)
+
+4. Click **Save** to publish and activate the logic app.
 
 
-## Aktionsdetails
+## <a name="action-details"></a>Action details
 
-Der Wiederholungstrigger verfügt über folgende konfigurierbare Eigenschaften:
+The recurrence trigger has the following properties that can be configured.
 
-### Aktion „Verzögern“
+### <a name="delay-action"></a>Delay action
 
-Diese Aktion verzögert die Ausführung für ein bestimmtes Zeitintervall. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+This action delays the run for a certain time interval.
+A * means that it is a required field.
 
-|Anzeigename|Eigenschaftenname|Beschreibung|
+|Display name|Property name|Description|
 |---|---|---|
-|Anzahl*|count|Die Anzahl von Zeiteinheiten für die Verzögerung.|
-|Einheit*|unit|Die Zeiteinheit: `Second`, `Minute`, `Hour` oder `Day`|
+|Count*|count|The number of time units to delay|
+|Unit*|unit|The unit of time: `Second`, `Minute`, `Hour`, or `Day`|
 <br>
 
-### Aktion „Verzögern bis“
+### <a name="delay-until-action"></a>Delay-until action
 
-Diese Aktion verzögert die Ausführung bis zum angegebenen Zeitpunkt (Datum/Uhrzeit). Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+This action delays the run until a specified date/time.
+A * means that it is a required field.
 
-|Anzeigename|Eigenschaftenname|Beschreibung|
+|Display name|Property name|Description|
 |---|---|---|
-|Jahr*|timestamp|Das Jahr, bis zu dem verzögert werden soll. (GMT)|
-|Monat*|timestamp|Der Monat, bis zu dem verzögert werden soll. (GMT)|
-|Tag*|timestamp|Der Tag, bis zu dem verzögert werden soll. (GMT)|
+|Year*|timestamp|The year to delay until (GMT)|
+|Month*|timestamp|The month to delay until (GMT)|
+|Day*|timestamp|The day to delay until (GMT)|
 <br>
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,23 +1,24 @@
 <properties
-	pageTitle="Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen | Microsoft Azure"
-	description="Erklärt, wie Gruppenrichtlinien konfiguriert werden müssen, damit Geräte durch Domänenbeitritt ins Unternehmensnetzwerk eingebunden werden können."
-	services="active-directory"
-	documentationCenter=""
-	authors="femila"
-	manager="swadhwa"
-	editor=""
-	tags="azure-classic-portal"/>
+    pageTitle="Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen | Microsoft Azure"
+    description="Erklärt, wie Gruppenrichtlinien konfiguriert werden müssen, damit Geräte durch Domänenbeitritt ins Unternehmensnetzwerk eingebunden werden können."
+    services="active-directory"
+    documentationCenter=""
+    authors="femila"
+    manager="swadhwa"
+    editor=""
+    tags="azure-classic-portal"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="femila"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/27/2016"
+    ms.author="femila"/>
 
-# Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen
+
+# <a name="connect-domain-joined-devices-to-azure-ad-for-windows-10-experiences"></a>Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen
 
 Der Domänenbeitritt ist das herkömmliche Verfahren, mit dem Unternehmen in den letzten 15 oder mehr Jahren eine Verbindung für geschäftliche Geräte hergestellt haben. Benutzer konnten sich mit ihren Geschäfts- oder Schulkonten in Windows Server Active Directory (Active Directory) bei ihren Geräten anmelden, und die IT-Mitarbeiter konnten diese Geräte vollständig verwalten. Organisationen nutzen normalerweise Verfahren für die Imageerstellung, um Geräte für Benutzer bereitzustellen, und sie verwalten die Geräte im Allgemeinen mit System Center Configuration Manager (SCCM) oder mit Gruppenrichtlinien.
 
@@ -29,7 +30,7 @@ Ein Domänenbeitritt unter Windows 10 bietet nach der Verbindung von Geräten m
 - Strenge Authentifizierung und bequeme Anmeldung beim Geschäfts- oder Schulkonto mit Microsoft Passport und Windows Hello
 - Möglichkeit, den Zugriff auf Geräte zu beschränken, die den Gruppenrichtlinien der Organisation für Geräte entsprechen
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Beitritte zu einer Domäne sind weiterhin nützlich. Damit Sie jedoch die Vorteile von Azure AD nutzen können, z. B. für einmaliges Anmelden, Roaming von Einstellungen bei Geschäfts- oder Schulkonten, Zugriff auf den Windows Store mit Geschäfts- oder Schulkonten, benötigen Sie Folgendes:
 
@@ -51,18 +52,18 @@ Um einen bedingten Zugriff zu ermöglichen, können Sie Gruppenrichtlinieneinste
 
 - System Center Configuration Manager, Version 1509 für Technical Preview, für Passport-Szenarien
 
-## Anweisungen zur Bereitstellung
+## <a name="deployment-instructions"></a>Anweisungen zur Bereitstellung
 
 
 
-### Schritt 1: Bereitstellen von Azure Active Directory Connect
+### <a name="step-1:-deploy-azure-active-directory-connect"></a>Schritt 1: Bereitstellen von Azure Active Directory Connect
 
 Azure AD Connect ermöglicht Ihnen die Bereitstellung lokaler Computer als Geräteobjekte in der Cloud. Informationen zum Bereitstellen von Azure AD Connect finden Sie unter „Installieren von Azure AD Connect“ im Artikel [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md#install-azure-ad-connect).
 
- - Wenn Sie eine [benutzerdefinierte Installation für Azure AD Connect](active-directory-aadconnect-get-started-custom.md) ausgeführt haben (nicht die Express-Installation), führen Sie das später in diesem Schritt beschriebene Verfahren **Erstellen eines Dienstverbindungspunkts im lokalen Active Directory** aus.
- - Wenn Sie vor dem Installieren von Azure AD Connect über eine Verbundkonfiguration für Azure AD verfügen (z. B. weil Sie zuvor Active Directory-Verbunddienste [AD FS] bereitgestellt haben), führen Sie das später in diesem Schritt beschriebene Verfahren **Konfigurieren von AD FS-Anspruchsregeln** aus.
+ - Wenn Sie eine [benutzerdefinierte Installation für Azure AD Connect](./aad-connect/active-directory-aadconnect-get-started-custom.md) ausgeführt haben (nicht die Express-Installation), führen Sie das später in diesem Schritt beschriebene Verfahren **Erstellen eines Dienstverbindungspunkts im lokalen Active Directory** aus.
+ - Wenn Sie vor dem Installieren von Azure AD Connect über eine Verbundkonfiguration für Azure AD verfügen (z.B. weil Sie zuvor Active Directory-Verbunddienste [AD FS] bereitgestellt haben), führen Sie das später in diesem Schritt beschriebene Verfahren **Konfigurieren von AD FS-Anspruchsregeln** aus.
 
-#### Erstellen eines Dienstverbindungspunkts im lokalen Active Directory
+#### <a name="create-a-service-connection-point-in-on-premises-active-directory"></a>Erstellen eines Dienstverbindungspunkts im lokalen Active Directory
 
 In die Domäne eingebundene Geräte verwenden den Dienstverbindungspunkt, um während der automatischen Registrierung beim Azure-Geräteregistrierungsdienst die Azure AD-Mandanteninformationen zu ermitteln.
 
@@ -79,7 +80,7 @@ Verwenden Sie beim Ausführen des Cmdlets „$aadAdminCred = Get-Credential“ d
 
 Ersetzen Sie beim Ausführen des Cmdlets „Initialize-ADSyncDomainJoinedComputerSync...“ den Konnektorkontonamen ([*connector account name*]) durch das Domänenkonto, das als Active Directory-Konnektorkonto verwendet wird.
 
-#### Konfigurieren von AD FS-Anspruchsregeln
+#### <a name="configure-ad-fs-claim-rules"></a>Konfigurieren von AD FS-Anspruchsregeln
 Konfigurieren von AD FS-Anspruchsregeln ermöglicht die sofortige Registrierung eines Computers beim Azure-Geräteregistrierungsdienst, indem den Computern die Authentifizierung mit Kerberos/NTLM über AD FS erlaubt wird. Ohne diesen Schritt werden Computer nur mit Verzögerung in Azure AD eingebunden (abhängig von den Synchronisationszeiten von Azure AD Connect).
 
 >[AZURE.NOTE]
@@ -118,24 +119,31 @@ Führen Sie auf Ihrem AD FS-Server (oder in einer mit dem AD FS-Server verbund
     Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString
 
 >[AZURE.NOTE]
-Windows 10-Computer authentifizieren sich mit der integrierten Windows-Authentifizierung bei einem aktiven von AD FS gehosteten WS-Trust-Endpunkt. Stellen Sie sicher, dass dieser Endpunkt aktiviert ist. Wenn Sie einen Webauthentifizierungsproxy verwenden, stellen Sie außerdem sicher, dass dieser Endpunkt durch den Proxy veröffentlicht wird. Überprüfen Sie hierzu adfs/services/trust/13/windowstransport. Es sollte in der AD FS-Verwaltungskonsole unter **Service** > **Endpunkte** als aktiviert angezeigt werden.
+Windows 10-Computer authentifizieren sich mit der integrierten Windows-Authentifizierung bei einem aktiven von AD FS gehosteten WS-Trust-Endpunkt. Stellen Sie sicher, dass dieser Endpunkt aktiviert ist. Wenn Sie einen Webauthentifizierungsproxy verwenden, stellen Sie außerdem sicher, dass dieser Endpunkt durch den Proxy veröffentlicht wird. Überprüfen Sie hierzu adfs/services/trust/13/windowstransport. Er sollte in der AD FS-Verwaltungskonsole unter „**Dienst** > **Endpunkte**“ als aktiviert angezeigt werden.
 
 
-### Schritt 2: Konfigurieren der automatischen Geräteregistrierung mithilfe einer Gruppenrichtlinie in Active Directory
+### <a name="step-2:-configure-automatic-device-registration-via-group-policy-in-active-directory"></a>Schritt 2: Konfigurieren der automatischen Geräteregistrierung mithilfe einer Gruppenrichtlinie in Active Directory
 
 Sie können eine Active Directory-Gruppenrichtlinie verwenden, um Ihre in die Domäne eingebundenen Windows 10-Geräte für die automatische Registrierung bei Azure AD zu konfigurieren.
 
 > [AZURE.NOTE]
-Aktuelle Anweisungen zum Einrichten der automatischen Geräteregistrierung finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+> Aktuelle Anweisungen zum Einrichten der automatischen Geräteregistrierung finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 >
-> Die Gruppenrichtlinienvorlage wurde in Windows 10 umbenannt. Wenn Sie das Gruppenrichtlinientool auf einem Windows 10-Computer ausführen, wird die Richtlinie angezeigt als: <br> **In die Domäne eingebundene Computer als Geräte registrieren** <br> Die Richtlinie befindet sich an folgendem Ort:<br> ***Computerkonfiguration/Richtlinien/Administrative Vorlagen/Windows-Komponenten/Geräteregistrierung***
+> Die Gruppenrichtlinienvorlage wurde in Windows 10 umbenannt. Wenn Sie das Gruppenrichtlinientool auf einem Windows 10-Computer ausführen, wird die Richtlinie angezeigt als:  <br>
+> **In die Domäne eingebundene Computer als Geräte registrieren**<br>
+> Die Richtlinie befindet sich an folgendem Speicherort:<br>
+> ***Computerkonfiguration/Richtlinien/Administrative Vorlagen/Windows-Komponenten/Geräteregistrierung***
 
 
-## Zusätzliche Informationen
+## <a name="additional-information"></a>Zusätzliche Informationen
 * [Windows 10 für Unternehmen: Möglichkeiten der geschäftlichen Nutzung von Geräten](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
 * [Weitere Informationen zu Verwendungsszenarios für Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

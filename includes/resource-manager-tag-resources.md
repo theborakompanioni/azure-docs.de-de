@@ -1,25 +1,28 @@
-1. Um vorhandenen Ressourcen und Ressourcengruppen Tags hinzuzufügen, wählen Sie das Tagsymbol.
+1. To add tags to existing resources and resource groups, select the tag icon. 
 
-     ![Tags-Bereich im Blatt für Ressourcen oder Ressourcengruppen](./media/resource-manager-tag-resources/select-tag-icon.png)
+     ![Tags part on resource and resource group blades](./media/resource-manager-tag-resources/select-tag-icon.png)
 
-1. Sie sehen eine Liste der Tags, die Ihre Organisation bereits auf Ressourcen angewandt hat. Wenn Sie noch keine Tags angewandt haben, ist die Liste leer. Um ein Tag hinzuzufügen, geben Sie einfach einen Namen und Wert an, und drücken Sie die EINGABETASTE. Nachdem Sie einige Tags hinzugefügt haben, sehen Sie die Optionen zur automatischen Vervollständigung auf Basis bereits vorhandener Tagnamen und -werte. Diese Optionen zur automatischen Vervollständigung sichern eine konsistente, alle Ihre Ressourcen übergreifende Taxonomie und vermeiden häufige Fehler, z.B. Rechtschreibfehler.
+1. You see a list of tags that your organization has already applied to resources. If you have not previously applied tags, the list is empty. To add a tag, simply specify a name and value and press Enter. After you've added a few tags, you'll notice autocomplete options based on pre-existing tag names and values. These autocomplete options ensure a consistent taxonomy across your resources and avoid common mistakes, like misspellings.
 
-     ![Markieren von Ressourcen mit Name-Wert-Paaren](./media/resource-manager-tag-resources/tag-resources.png)
+     ![Tag resources with name/value pairs](./media/resource-manager-tag-resources/tag-resources.png)
 
-1. Um die Taxonomie von Tags im Portal anzuzeigen, wählen Sie **Weitere Dienste** und **Tags** aus.
+1. To view your taxonomy of tags in the portal, select **More Services** and **Tags**.
 
-     ![Suchen von Markierungen über den Browse-Hub](./media/resource-manager-tag-resources/browse-tags.png)
+     ![Find tags via the Browse hub](./media/resource-manager-tag-resources/browse-tags.png)
 
-1. Sie sehen eine Übersicht über die Tags in Ihrem Abonnement.
+1. You see a summary of the tags in your subscription.
 
-     ![Alle Tags anzeigen](./media/resource-manager-tag-resources/tag-taxonomy.png)
+     ![Show all tags](./media/resource-manager-tag-resources/tag-taxonomy.png)
 
-1. Wenn Sie eines dieser Tags auswählen, werden die Ressourcen und Ressourcengruppen mit diesem Tag angezeigt.
+1. Select any of the tags to display the resources and resource groups with that tag.
 
-     ![Markierte Ressourcen anzeigen](./media/resource-manager-tag-resources/show-tagged-resources.png)
+     ![Show tagged resources](./media/resource-manager-tag-resources/show-tagged-resources.png)
 
-1. Fixieren Sie die wichtigsten Tags für den schnellen Zugriff auf dem Dashboard.
+1. Pin the most important tags to your Dashboard for quick access.
 
-     ![Anheften von Markierungen am das Startmenü](./media/resource-manager-tag-resources/show-pinned-tag.png)
+     ![Pin tags to the Startboard](./media/resource-manager-tag-resources/show-pinned-tag.png)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

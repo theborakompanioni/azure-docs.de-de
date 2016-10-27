@@ -1,507 +1,512 @@
 <properties 
-	pageTitle="Verwalten von Azure Media Services-Konten mit PowerShell" 
-	description="Erfahren Sie, wie Sie Azure Media Services-Konten mit PowerShell-Cmdlets verwalten." 
-	authors="Juliako" 
-	manager="erikre" 
-	editor="" 
-	services="media-services" 
-	documentationCenter=""/>
+    pageTitle="Manage Azure Media Services Accounts with PowerShell" 
+    description="Learn how to manage Azure Media Services accounts with PowerShell cmdlets." 
+    authors="Juliako" 
+    manager="erikre" 
+    editor="" 
+    services="media-services" 
+    documentationCenter=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/04/2016"
-	ms.author="juliako"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/03/2016"
+    ms.author="juliako"/>
 
 
-#Verwalten von Azure Media Services-Konten mit PowerShell
+
+#<a name="manage-azure-media-services-accounts-with-powershell"></a>Manage Azure Media Services Accounts with PowerShell
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
 - [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
-> [AZURE.NOTE] Um ein Azure Media Services-Konto erstellen zu können, müssen Sie ein Azure-Konto besitzen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Kostenlose Azure-Testversion</a>.
+> [AZURE.NOTE] To be able to create an Azure Media Services account, you must have an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure Free Trial</a>.
 
-##Übersicht 
+##<a name="overview"></a>Overview 
 
-In diesem Artikel sind die Azure PowerShell-Cmdlets für Azure Media Services (AMS) im Azure Resource Manager-Framework aufgeführt. Die Cmdlets sind im **Microsoft.Azure.Commands.Media**-Namespace vorhanden.
+This article lists the Azure PowerShell cmdlets for Azure Media Services (AMS) in the Azure Resource Manager framework. The cmdlets exist in the **Microsoft.Azure.Commands.Media** namespace.
 
-## Versionen
+## <a name="versions"></a>Versions
 
-**ApiVersion**: „2015-10-01“
+**ApiVersion**:   "2015-10-01"
                
 
-## New-AzureRmMediaService
+## <a name="new-azurermmediaservice"></a>New-AzureRmMediaService
 
-Erstellt einen Mediendienst.
+Creates a media service.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 
-Parametersatz: StorageAccountIdParamSet
+Parameter Set: StorageAccountIdParamSet
 
-	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccountId] <string> [-Tags <hashtable>]  [<CommonParameters>]
+    New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccountId] <string> [-Tags <hashtable>]  [<CommonParameters>]
 
-Parametersatz: StorageAccountsParamSet
+Parameter Set: StorageAccountsParamSet
 
-	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccounts] <PSStorageAccount[]> [-Tags <hashtable>]  [<CommonParameters>]
+    New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccounts] <PSStorageAccount[]> [-Tags <hashtable>]  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameters
 
 **-ResourceGroupName &lt;String&gt;**
 
-Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+Specifies the name of the resource group to which this media service belongs.
 
-Aliase | (Keine)
+Aliases | none
 ---|---
-Erforderlich | true
-Position? | 0
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Required?   |  true
+Position?   |  0
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters?  |false
 
 **-AccountName &lt;String&gt;**
 
-Gibt den Namen des Mediendiensts an.
+Specifies the name of the media service.
 
-Aliase |Name
+Aliases |Name
 ---|---
-Erforderlich |true
+Required? |true
 Position? |1
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |false
-Platzhalterzeichen akzeptieren? |false
+Default value |none
+Accept pipeline input? |false
+Accept wildcard characters? |false
 
 **-Location &lt;String&gt;**
 
-Gibt den Ressourcenspeicherort des Mediendiensts an.
+Specifies the resource location of the media service.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
+Required? |true
 Position? |2
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Default value  |none
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-StorageAccountId &lt;String&gt;**
 
-Gibt ein primäres Speicherkonto an, das dem Mediendienst zugeordnet ist.
+Specifies a primary storage account that associated with the media service.
 
-- Nur das neue Speicherkonto (per Resource Manager-API erstellt) wird unterstützt.
+- New storage account (created with the Resource Manager API) supported only.
 
-- Das Speicherkonto muss vorhanden sein und verfügt über den gleichen Speicherort wie der Mediendienst.
+- The storage account must exist and has the same location with the media service.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
+Required? |true
 Position? |3
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Parametersatzname |StorageAccountIdParamSet
-Platzhalterzeichen akzeptieren?|false
+Default value  |none
+Accept pipeline input? |true(ByPropertyName)
+Parameter set name |StorageAccountIdParamSet
+Accept wildcard characters?|false
 
-**-StorageAccounts &lt;PSStorageAccount[]&gt;**
+**-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Gibt Speicherkonten an, die dem Mediendienst zugeordnet sind.
+Specifies storage accounts that associated with the media service.
 
-- Nur das neue Speicherkonto (per Resource Manager-API erstellt) wird unterstützt.
+- New storage account (created with the Resource Manager API) supported only.
 
-- Das Speicherkonto muss vorhanden sein und verfügt über den gleichen Speicherort wie der Mediendienst.
+- The storage account must exist and has the same location with the media service.
 
-- Nur ein Speicherkonto kann als primäres Konto angegeben werden.
+- Only one storage account can be specified as primary.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |3
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Parametersatzname |StorageAccountsParamSet
-Platzhalterzeichen akzeptieren? |false
+Required?  |true
+Position?  |3
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Parameter set name |StorageAccountsParamSet
+Accept wildcard characters? |false
 
 **-Tags &lt;Hashtable&gt;**
 
-Gibt eine Hashtabelle mit den Tags an, die dem Mediendienst zugeordnet sind.
+Specifies a hash table of the tags that are associated with the media service.
 
-- Beispiel: @{"tag1"="value1";"tag2"=:value2"}
+- Example: @{"tag1"="value1";"tag2"=:value2"}
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |false
-Position? |benannt
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |false
-Platzhalterzeichen akzeptieren? |false
+Required?  |false
+Position?  |named
+Default value |none
+Accept pipeline input? |false
+Accept wildcard characters? |false
 
 **&lt;CommandParameters&gt;**
 
-Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Inputs
 
-Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+The input type is the type of the objects that you can pipe to the cmdlet.
 
-### Ausgaben
+### <a name="outputs"></a>Outputs
 
-Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+The output type is the type of the objects that the cmdlet emits.
 
-## Set-AzureRmMediaService
+## <a name="set-azurermmediaservice"></a>Set-AzureRmMediaService
 
-Aktualisiert einen Mediendienst.
+Updates a media service.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 
-	Set-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Tags <hashtable>] [-StorageAccounts <PSStorageAccount[]>]  [<CommonParameters>]
+    Set-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Tags <hashtable>] [-StorageAccounts <PSStorageAccount[]>]  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameters
 
 **-ResourceGroupName &lt;String&gt;**
 
-Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+Specifies the name of the resource group to which this media service belongs.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |0
-Standardwert |(Keine)
-Akzeptiert Pipeline-Eingabe? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Required?  |true
+Position?  |0
+Default Value |none
+Accept Pipeline Input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-AccountName &lt;String&gt;**
 
-Gibt den Namen des Mediendiensts an.
+Specifies the name of the media service.
 
-Aliase |Name
+Aliases |Name
 ---|---
-Erforderlich |True
+Required? |True
 Position? |1
-Standardwert |Keine
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |False
+Default value |None
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |False
 
-**-StorageAccounts &lt;PSStorageAccount[]&gt;**
+**-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Gibt Speicherkonten an, die dem Mediendienst zugeordnet sind.
+Specifies storage accounts that associated with the media service.
 
-- Nur das neue Speicherkonto (per Resource Manager-API erstellt) wird unterstützt.
+- New storage account (created with the Resource Manager API) supported only.
 
-- Das Speicherkonto muss vorhanden sein und verfügt über den gleichen Speicherort wie der Mediendienst.
+- The storage account must exist and has the same location with the media service.
 
-- Nur ein Speicherkonto kann als primäres Konto angegeben werden.
+- Only one storage account can be specified as primary.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |false
-Position? |Benannt
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Parametersatzname |StorageAccountsParamSet
-Platzhalterzeichen akzeptieren? |false
+Required? |false
+Position? |Named
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Parameter set name |StorageAccountsParamSet
+Accept wildcard characters? |false
 
 **-Tags &lt;Hashtable&gt;**
 
-Gibt eine Hashtabelle mit den Tags an, die diesem Mediendienst zugeordnet sind.
+Specifies a hash table of the tags that are associated with this media service.
 
-- Die Tags, die dem Mediendienst zugeordnet sind, werden durch den vom Kunden angegebenen Wert ersetzt.
+- The tags that are associated with the media service are replaced with value specified by the customer.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |False
-Position? |Benannt
-Standardwert |Keine
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Required? |False
+Position?  |Named
+Default value |None
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **&lt;CommandParameters&gt;**
 
-Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Inputs
 
-Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+The input type is the type of the objects that you can pipe to the cmdlet.
 
-### Ausgaben
+### <a name="outputs"></a>Outputs
 
-Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+The output type is the type of the objects that the cmdlet emits.
 
-## Remove-AzureRmMediaService
+## <a name="remove-azurermmediaservice"></a>Remove-AzureRmMediaService
 
-Entfernt einen Mediendienst.
+Removes a media service.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 
-	Remove-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+    Remove-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameters
 
 **-ResourceGroupName &lt;String&gt;**
 
-Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+Specifies the name of the resource group to which this media service belongs.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
+Required? |true
 Position? |0
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-AccountName &lt;String&gt;**
 
-Gibt den Namen des Mediendiensts an.
+Specifies the name of the media service.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
+Required? |true
 Position? |2
-Standardwert |Keine
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |False
+Default value |None
+Accept pipeline input?  |true(ByPropertyName)
+Accept wildcard characters? |False
 
 **&lt;CommandParameters&gt;**
 
-Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Inputs
 
-Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+The input type is the type of the objects that you can pipe to the cmdlet.
 
-### Ausgaben
+### <a name="outputs"></a>Outputs
 
-Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+The output type is the type of the objects that the cmdlet emits.
 
-## Get-AzureRmMediaService
+## <a name="get-azurermmediaservice"></a>Get-AzureRmMediaService
 
-Ruft alle Mediendienste in einer Ressourcengruppe oder einen Mediendienst mit einem bestimmten Namen ab.
+Gets all media services in a resource group or a media service with a given name.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 
 ParameterSet: ResourceGroupParameterSet
 
-	Get-AzureRmMediaService [-ResourceGroupName] <string>  [<CommonParameters>]	
+    Get-AzureRmMediaService [-ResourceGroupName] <string>  [<CommonParameters>] 
 
 ParameterSet: AccountNameParameterSet
 
-	Get-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+    Get-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameters
 
 **-ResourceGroupName &lt;String&gt;**
 
-Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+Specifies the name of the resource group to which this media service belongs.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |0
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Parametersatzname |ResourceGroupParameterSet, AccountNameParameterSet
-Platzhalterzeichen akzeptieren? false
+Required? |true
+Position?  |0
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Parameter set name |ResourceGroupParameterSet, AccountNameParameterSet
+Accept wildcard characters?   false
 
 **-AccountName &lt;String&gt;**
 
-Gibt den Namen des Mediendiensts an.
+Specifies the name of the media service.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |1
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Parametersatzname |AccountNameParameterSet
-Platzhalterzeichen akzeptieren? |false
+Required? |true
+Position?  |1
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Parameter set name  |AccountNameParameterSet
+Accept wildcard characters? |false
 
 **&lt;CommandParameters&gt;**
 
-Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Inputs
 
-Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+The input type is the type of the objects that you can pipe to the cmdlet.
 
-### Ausgaben
+### <a name="outputs"></a>Outputs
 
-Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+The output type is the type of the objects that the cmdlet emits.
 
-## Get-AzureRmMediaServiceKeys
+## <a name="get-azurermmediaservicekeys"></a>Get-AzureRmMediaServiceKeys
 
-Ruft die Schlüssel eines Mediendiensts ab.
+Gets keys of a media service.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 
-	Get-AzureRmMediaServiceKeys [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+    Get-AzureRmMediaServiceKeys [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameters
 
 **-ResourceGroupName &lt;String&gt;**
 
-Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+Specifies the name of the resource group to which this media service belongs.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |0
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Required? |true
+Position?  |0
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-AccountName &lt;String&gt;**
 
-Gibt den Namen des Mediendiensts an.
+Specifies the name of the media service.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
+Required? |true
 Position? |1
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **&lt;CommandParameters&gt;**
 
-Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Inputs
 
-Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+The input type is the type of the objects that you can pipe to the cmdlet.
 
-### Ausgaben
+### <a name="outputs"></a>Outputs
 
-Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+The output type is the type of the objects that the cmdlet emits.
 
-## Set-AzureRmMediaServiceKey
+## <a name="set-azurermmediaservicekey"></a>Set-AzureRmMediaServiceKey
 
-Generiert einen primären oder sekundären Schlüssel eines Mediendiensts neu.
+Regenerates a primary or secondary key of a media service.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 
-	Set-AzureRmMediaServiceKey [-ResourceGroupName] <string> [-AccountName] <string> [-KeyType] <KeyType> {Primary | Secondary}  [<CommonParameters>]
+    Set-AzureRmMediaServiceKey [-ResourceGroupName] <string> [-AccountName] <string> [-KeyType] <KeyType> {Primary | Secondary}  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameters
 
 **-ResourceGroupName &lt;String&gt;**
 
-Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+Specifies the name of the resource group to which this media service belongs.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |0
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Required?  |true
+Position?  |0
+Default value |none
+Accept pipeline input?  |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-AccountName &lt;String&gt;**
 
-Gibt den Namen des Mediendiensts an.
+Specifies the name of the media service.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |1
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Required? |true
+Position?  |1
+Default value |none
+Accept pipeline input?   |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-KeyType &lt;KeyType&gt;**
 
-Gibt den Schlüsseltyp des Mediendiensts an.
+Specifies the key type of the media service.
 
-- Primär oder sekundär
+- Primary or Secondary
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
-Position? |2
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |false
-Platzhalterzeichen akzeptieren? |false
+Required?  |true
+Position?  |2
+Default value |none
+Accept pipeline input? |false
+Accept wildcard characters? |false
 
 **&lt;CommandParameters&gt;**
 
-Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Inputs
 
-Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+The input type is the type of the objects that you can pipe to the cmdlet.
 
-### Ausgaben
+### <a name="outputs"></a>Outputs
 
-Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+The output type is the type of the objects that the cmdlet emits.
 
-## Sync-AzureRmMediaServiceStorageKeys
+## <a name="sync-azurermmediaservicestoragekeys"></a>Sync-AzureRmMediaServiceStorageKeys
 
-Synchronisiert Speicherkontoschlüssel für ein Speicherkonto, das dem Mediendienst zugeordnet ist.
+Synchronizes storage account keys for a storage account associated with the media service.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 
-	Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountName] <string>  [<CommonParameters>]
+    Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountId] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameters
 
 **-ResourceGroupName &lt;String&gt;**
 
-Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
+Specifies the name of the resource group to which this media service belongs.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
+Required? |true
 Position? |0
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-AccountName &lt;String&gt;**
 
-Gibt den Namen des Mediendiensts an.
+Specifies the name of the media service.
 
-Aliase |(Keine)
+Aliases |none
 ---|---
-Erforderlich |true
+Required? |true
 Position? |1
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? |true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Default value |none
+Accept pipeline input? |true(ByPropertyName)
+Accept wildcard characters? |false
 
 **-StorageAccountId &lt;String&gt;**
 
-Gibt das Speicherkonto an, das dem Mediendienst zugeordnet ist.
+Specifies the storage account associated with the media service.
 
-Aliase |ID
+Aliases |Id
 ---|---
-Erforderlich |true
-Position? |2
-Standardwert |(Keine)
-Pipelineeingabe akzeptieren? | true(ByPropertyName)
-Platzhalterzeichen akzeptieren? |false
+Required? |true
+Position?  |2
+Default value |none
+Accept pipeline input? |      true(ByPropertyName)
+Accept wildcard characters? |false
 
 **&lt;CommandParameters&gt;**
 
-Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Inputs
 
-Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
+The input type is the type of the objects that you can pipe to the cmdlet.
 
-### Ausgaben
+### <a name="outputs"></a>Outputs
 
-Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
+The output type is the type of the objects that the cmdlet emits.
 
-## Nächster Schritt 
+## <a name="next-step"></a>Next step 
 
-Informieren Sie sich über die Media Services-Lernpfade.
+Check out Media Services learning paths.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Feedback geben
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

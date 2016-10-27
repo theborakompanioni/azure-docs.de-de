@@ -1,35 +1,36 @@
 <properties
-	pageTitle="Verarbeiten des Status in Resource Manager-Vorlagen | Microsoft Azure"
-	description="Zeigt empfohlene Vorgehensweisen zum Verwenden komplexer Objekte, um Statusdaten für Azure-Ressourcen-Manager-Vorlagen und verknüpfte Vorlagen freizugeben."
-	services="azure-resource-manager"
-	documentationCenter=""
-	authors="tfitzmac"
-	manager="timlt"
-	editor="tysonn"/>
+    pageTitle="Handling State in Resource Manager Templates | Microsoft Azure"
+    description="Shows recommended approaches for using complex objects to share state data with Azure Resource Manager templates and linked templates"
+    services="azure-resource-manager"
+    documentationCenter=""
+    authors="tfitzmac"
+    manager="timlt"
+    editor="tysonn"/>
 
 <tags
-	ms.service="azure-resource-manager"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="tomfitz"/>
-
-# Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen
-
-Dieses Thema beschreibt bewährte Methoden für die Verwaltung und Freigabe des Status in Vorlagen. Die in diesem Thema erläuterten Parameter und Variablen sind Beispiele für die Art von Objekten, die Sie definieren können, um Ihre Bereitstellungsanforderungen bequem zu organisieren. Anhand dieser Beispiele können Sie Ihre eigenen Objekte mit Eigenschaftswerten implementieren, die für Ihre Umgebung sinnvoll sind.
-
-Dieses Thema ist Teil eines umfangreicheren Whitepapers. Um den vollständigen Artikel zu lesen, laden Sie [World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) herunter.
+    ms.service="azure-resource-manager"
+    ms.workload="multiple"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/12/2016"
+    ms.author="tomfitz"/>
 
 
-## Bereitstellen von Standardkonfigurationseinstellungen
+# <a name="sharing-state-in-azure-resource-manager-templates"></a>Sharing state in Azure Resource Manager templates
 
-Statt eine Vorlage zu bieten, die eine umfassende Flexibilität und unzählige Variationen zulässt, ist es empfehlenswert, bekannte Konfigurationen, die an T-Shirt-Größen wie S, M und L angelehnt sind, sowie eine Experimentierumgebung (auch Sandkasten genannt) zur Auswahl zu stellen. Weitere Beispiele für T-Shirt-Größen sind Produktangebote, wie z. B. Community Edition oder Enterprise Edition. In anderen Fällen gibt es möglicherweise workloadspezifische Konfigurationen einer Technologie wie z. B. MapReduce oder NoSQL.
+This topic shows best practices for managing and sharing state within templates. The parameters and variables shown in this topic are examples of the type of objects you can define to conveniently organize your deployment requirements. From these examples, you can implement your own objects with property values that make sense for your environment.
 
-Mit komplexen Objekten können Sie Variablen erstellen, die Datensammlungen – bisweilen auch als „Eigenschaftenbehälter“ bezeichnet – enthalten und diese Daten zum Ausführen der Ressourcendeklaration in Ihrer Vorlage verwenden. Dieser Ansatz bietet geeignete, bekannte Konfigurationen mit unterschiedlichen Größen, die für Kunden vorkonfiguriert sind. Ohne bekannte Konfigurationen müssen Endkunden Clustergrößen selbst bestimmen, Ressourcenbeschränkungen der Plattform berücksichtigen und Berechnungen ausführen, um die resultierende Partitionierung von Speicherkonten und anderen Ressourcen (aufgrund von Clustergrößen- und Ressourcenbeschränkungen) zu bestimmen. Zusätzlich zum Verbessern der Erfahrung für den Kunden ist eine kleine Anzahl bekannter Konfigurationen einfacher zu unterstützen und ermöglicht Ihnen das Erreichen einer höheren Dichte.
+This topic is part of a larger whitepaper. To read the full paper, download [World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf).
 
-Das folgende Beispiel zeigt, wie Sie Variablen definieren, die komplexe Objekte für die Darstellung von Datensammlungen enthalten. Die Sammlungen definieren Werte, die für die Größe des virtuellen Computers sowie Netzwerkeinstellungen, Betriebssystemeinstellungen und Verfügbarkeitseinstellungen verwendet werden.
+
+## <a name="provide-standard-configuration-settings"></a>Provide standard configuration settings
+
+Rather than offer a template that provides total flexibility and countless variations, a common pattern is to provide the ability to select known configurations — in effect, standard t-shirt sizes such as sandbox, small, medium, and large. Other examples of t-shirt sizes are product offerings, such as community edition or enterprise edition. In other cases, it may be workload specific configurations of a technology – such as map reduce or no sql.
+
+With complex objects, you can create variables that contain collections of data, sometimes known as "property bags" and use that data to drive the resource declaration in your template. This approach provides good, known configurations of varying sizes that are preconfigured for customers. Without known configurations, end customers must determine cluster sizing on their own, factor in platform resource constraints, and do math to identify the resulting partitioning of storage accounts and other resources (due to cluster size and resource constraints). In addition to making a better experience for the customer, a small number of known configurations is easier to support and can help you deliver a higher level of density.
+
+The following example shows how to define variables that contain complex objects for representing collections of data. The collections define values that are used for virtual machine size, network settings, operating system settings and availability settings.
 
     "variables": {
       "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
@@ -108,9 +109,9 @@ Das folgende Beispiel zeigt, wie Sie Variablen definieren, die komplexe Objekte 
       }
     }
 
-Beachten Sie, dass die **tshirtSize**-Variable die T-Shirt-Größe, die Sie über einen Parameter angegeben haben (**Small**, **Medium**, **Large**), mit dem Text **tshirtSize** verkettet. Sie verwenden diese Variable, um die zugeordnete komplexe Objektvariable für diese T-Shirt-Größe abzurufen.
+Notice that the **tshirtSize** variable concatenates the t-shirt size you provided through a parameter (**Small**, **Medium**, **Large**) to the text **tshirtSize**. You will use this variable to retrieve the associated complex object variable for that t-shirt size.
 
-Sie können später in der Vorlage auf diese Variablen verweisen. Die Möglichkeit zum Verweisen auf benannte Variablen und deren Eigenschaften vereinfacht die Vorlagensyntax und erleichtert es den Benutzern, den Kontext zu verstehen. Das folgende Beispiel definiert eine Ressource, die unter Verwendung der oben gezeigten Objekte zum Festlegen von Werten bereitgestellt werden soll. Beachten Sie beispielsweise, dass die Größe des virtuellen Computers durch Abrufen des Werts für `variables('tshirtSize').vmSize` festgelegt wird. Der Wert für die Festplattengröße wird aus `variables('tshirtSize').diskSize` abgerufen. Darüber hinaus wird der URI für eine verknüpfte Vorlage mit dem Wert für `variables('tshirtSize').vmTemplate` festgelegt.
+You can then reference these variables later in the template. The ability to reference named-variables and their properties simplifies the template syntax, and makes it easy to understand context. The following example defines a resource to deploy by using the objects shown above to set values. For example, note that the VM size is set by retrieving the value for `variables('tshirtSize').vmSize` while the value for the disk size is retrieved from `variables('tshirtSize').diskSize`. In addition, the URI for a linked template is set with the value for `variables('tshirtSize').vmTemplate`.
 
     "name": "master-node",
     "type": "Microsoft.Resources/deployments",
@@ -165,24 +166,24 @@ Sie können später in der Vorlage auf diese Variablen verweisen. Die Möglichke
       }
     }
 
-## Übergeben des Status an eine Vorlage
+## <a name="pass-state-to-a-template"></a>Pass state to a template
 
-Sie geben den Status in einer Vorlage mithilfe von Parametern frei, die Sie während der Bereitstellung direkt angeben.
+You share state into a template through parameters that you provide directly during deployment.
 
-Die folgende Tabelle führt häufig verwendete Parameter in Vorlagen auf.
+The following table lists commonly-used parameters in templates.
 
-Name | Wert | Beschreibung
+Name | Value | Description
 ---- | ----- | -----------
-location | Zeichenfolge aus einer eingeschränkten Liste von Azure-Regionen | Der Speicherort, an dem die Ressourcen bereitgestellt werden.
-storageAccountNamePrefix | String | Eindeutiger DNS-Name für das Speicherkonto, in dem die VM-Datenträger platziert werden.
-domainName | String | Domänenname des öffentlich zugänglichen virtuellen Jumpbox-Computers im Format **{domainName}.{location}.cloudapp.com**. Beispiel: **mydomainname.westus.cloudapp.azure.com**
-adminUsername | String | Benutzername für die virtuellen Computer
-adminPassword | String | Kennwort für die virtuellen Computer
-tshirtSize | Zeichenfolge aus einer eingeschränkten Liste von angebotenen T-Shirt-Größen | Die Größe der benannten Skalierungseinheit, die bereitgestellt werden soll. Beispielsweise "Small", "Medium", "Large".
-virtualNetworkName | String | Der Name des virtuellen Netzwerks, das der Nutzer verwenden möchte.
-enableJumpbox | Zeichenfolge aus einer eingeschränkten Liste (aktiviert/deaktiviert) | Parameter, der angibt, ob eine Jumpbox für die Umgebung aktiviert werden soll. Werte: "aktiviert", "deaktiviert".
+location    | String from a constrained list of Azure regions   | The location where the resources will be deployed.
+storageAccountNamePrefix    | String    | Unique DNS name for the Storage Account where the VM's disks will be placed
+domainName  | String    | Domain name of the publicly accessible jumpbox VM in the format: **{domainName}.{location}.cloudapp.com** For example: **mydomainname.westus.cloudapp.azure.com**
+adminUsername   | String    | Username for the VMs
+adminPassword   | String    | Password for the VMs
+tshirtSize  | String from a constrained list of offered t-shirt sizes   | The named scale unit size to provision. For example, "Small", "Medium", "Large"
+virtualNetworkName  | String    | Name of the virtual network that the consumer wants to use.
+enableJumpbox   | String from a constrained list (enabled/disabled) | Parameter that identifies whether to enable a jumpbox for the environment. Values: "enabled", "disabled"
 
-Der **tshirtSize**-Parameter, der im vorherigen Abschnitt verwendet wurde, ist wie folgt definiert:
+The **tshirtSize** parameter used in the previous section is defined as:
 
     "parameters": {
       "tshirtSize": {
@@ -200,17 +201,17 @@ Der **tshirtSize**-Parameter, der im vorherigen Abschnitt verwendet wurde, ist w
     }
 
 
-## Übergeben des Status an verknüpfte Vorlagen
+## <a name="pass-state-to-linked-templates"></a>Pass state to linked templates
 
-Bei der Verbindung mit verknüpften Vorlagen wird häufig eine Mischung aus statischen und generierten Variablen verwendet.
+When connecting to linked templates, you will often use a mix of static and generated variables.
 
-### Statische Variablen
+### <a name="static-variables"></a>Static variables
 
-Mithilfe statischer Variablen werden häufig Basiswerte wie z. B. URLs bereitgestellt, die in einer Vorlage verwendet werden.
+Static variables are often used to provide base values, such as URLs, that are used throughout a template.
 
-Im unten stehenden Vorlagenauszug gibt `templateBaseUrl` das Stammverzeichnis für die Vorlage in GitHub zurück. Die nächste Zeile erstellt eine neue `sharedTemplateUrl`-Variable, die die Basis-URL mit dem bekannten Namen der freigegebenen Ressourcenvorlage verkettet. Darunter wird eine komplexe Objektvariable verwendet, um eine T-Shirt-Größe zu speichern. Hierbei wird die Basis-URL mit dem bekannten Speicherort der Konfigurationsvorlage verkettet und in der Eigenschaft `vmTemplate` gespeichert.
+In the template excerpt below, `templateBaseUrl` specifies the root location for the template in GitHub. The next line builds a new variable `sharedTemplateUrl` that concatenates the base URL with the known name of the shared resources template. Below that, a complex object variable is used to store a t-shirt size, where the base URL is concatenated to the known configuration template location and stored in the `vmTemplate` property.
 
-Der Vorteil dieses Ansatzes ist, dass Sie bei einer Änderung des Speicherorts für die Vorlage die statische Variable nur an einer Stelle ändern müssen. Die Änderung wird dann an alle verknüpften Vorlagen übergeben.
+The benefit of this approach is that if the template location changes, you only need to change the static variable in one place which passes it throughout the linked templates.
 
     "variables": {
       "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
@@ -231,19 +232,19 @@ Der Vorteil dieses Ansatzes ist, dass Sie bei einer Änderung des Speicherorts f
       }
     }
 
-### Generierte Variablen
+### <a name="generated-variables"></a>Generated variables
 
-Neben den statischen Variablen werden einige Variablen dynamisch generiert. In diesem Abschnitt werden einige häufig verwendete Arten von generierten Variablen beschrieben.
+In addition to static variables, a number of variables are generated dynamically. This section identifies some of the common types of generated variables.
 
-#### tshirtSize
+#### <a name="tshirtsize"></a>tshirtSize
 
-Sie kennen diese generierte Variable aus den obigen Beispielen.
+You are familiar with this generated variable from the examples above.
 
-#### networkSettings
+#### <a name="networksettings"></a>networkSettings
 
-In Vorlagen für Kapazitäten, Funktionen oder End-to-End-Lösungen erstellen verknüpfte Vorlagen in der Regel Ressourcen, die in einem Netzwerk vorhanden sind. Eine einfache Lösung ist es, ein komplexes Objekt zum Speichern von Netzwerkeinstellungen zu verwenden und diese an verknüpfte Vorlagen zu übergeben.
+In a capacity, capability, or end-to-end scoped solution template, the linked templates typically create resources that exist on a network. One straightforward approach is to use a complex object to store network settings and pass them to linked templates.
 
-Hier finden Sie ein Beispiel für die Kommunikation der Netzwerkeinstellungen.
+An example of communicating network settings can be seen below.
 
     "networkSettings": {
       "vnetName": "[parameters('virtualNetworkName')]",
@@ -262,9 +263,9 @@ Hier finden Sie ein Beispiel für die Kommunikation der Netzwerkeinstellungen.
       }
     }
 
-#### availabilitySettings
+#### <a name="availabilitysettings"></a>availabilitySettings
 
-In verknüpften Vorlagen erstellte Ressourcen werden häufig in einer Verfügbarkeitsgruppe platziert. Im folgenden Beispiel ist der Name der Verfügbarkeitsgruppe ebenso angegeben wie die Anzahl der zu verwendenden Fehler- und Updatedomänen.
+Resources created in linked templates are often placed in an availability set. In the following example, the availability set name is specified and also the fault domain and update domain count to use.
 
     "availabilitySetSettings": {
       "name": "pgsqlAvailabilitySet",
@@ -272,11 +273,11 @@ In verknüpften Vorlagen erstellte Ressourcen werden häufig in einer Verfügbar
       "udCount": 5
     }
 
-Wenn Sie mehrere Verfügbarkeitsgruppen benötigen (z. B. eine für Masterknoten, eine weitere für Datenknoten), können Sie einen Namen als Präfix verwenden, mehrere Verfügbarkeitsgruppen angeben oder gemäß dem oben gezeigten Modell eine Variable für eine bestimmte T-Shirt-Größe erstellen.
+If you need multiple availability sets (for example, one for master nodes and another for data nodes), you can use a name as a prefix, specify multiple availability sets, or follow the model shown earlier for creating a variable for a specific t-shirt size.
 
-#### storageSettings
+#### <a name="storagesettings"></a>storageSettings
 
-Speicherdetails werden häufig mit verknüpften Vorlagen freigegeben. Im folgenden Beispiel stellt ein*storageSettings*-Objekt Details zu den Speicherkonto- und Containernamen bereit.
+Storage details are often shared with linked templates. In the example below, a *storageSettings* object provides details about the storage account and container names.
 
     "storageSettings": {
         "vhdStorageAccountName": "[parameters('storageAccountName')]",
@@ -284,11 +285,11 @@ Speicherdetails werden häufig mit verknüpften Vorlagen freigegeben. Im folgend
         "destinationVhdsContainer": "[concat('https://', parameters('storageAccountName'), variables('vmStorageAccountDomain'), '/', variables('vmStorageAccountContainerName'), '/')]"
     }
 
-#### osSettings
+#### <a name="ossettings"></a>osSettings
 
-Bei verknüpften Vorlagen müssen Sie möglicherweise Betriebssystemeinstellungen an verschiedene Arten von Knoten über verschiedene Arten von bekannten Konfigurationen hinweg übergeben. Ein komplexes Objekt ist eine einfache Möglichkeit zum Speichern und Freigeben von Betriebssysteminformationen und erleichtert zudem die Unterstützung mehrerer Betriebssystemoptionen für die Bereitstellung.
+With linked templates, you may need to pass operating system settings to various nodes types across different known configuration types. A complex object is an easy way to store and share operating system information and also makes it easier to support multiple operating system choices for deployment.
 
-Das folgende Beispiel zeigt ein Objekt für *osSettings*:
+The following example shows an object for *osSettings*:
 
     "osSettings": {
       "imageReference": {
@@ -299,9 +300,9 @@ Das folgende Beispiel zeigt ein Objekt für *osSettings*:
       }
     }
 
-#### machineSettings
+#### <a name="machinesettings"></a>machineSettings
 
-Die generierte Variable *machineSettings* ist ein komplexes Objekt, das verschiedene Hauptvariablen zum Erstellen eines neuen virtuellen Computers enthält: Administratorbenutzername und -kennwort, ein Präfix für die Namen der virtuellen Computer und einen Verweis auf ein Betriebssystemimage, wie unten gezeigt:
+A generated variable, *machineSettings* is a complex object containing a mix of core variables for creating a new VM: administrator user name and password, a prefix for the VM names, and an operating system image reference as shown below:
 
     "machineSettings": {
         "adminUsername": "[parameters('adminUsername')]",
@@ -315,19 +316,19 @@ Die generierte Variable *machineSettings* ist ein komplexes Objekt, das verschie
         }
     },
 
-Beachten Sie, dass *osImageReference* die Werte aus der in der Hauptvorlage definierten Variable *osSettings* abruft. Dies bedeutet, dass Sie das Betriebssystem eines virtuellen Computers problemlos ändern können – vollständig oder basierend auf den Einstellungen eines Vorlagenutzers.
+Note that *osImageReference* retrieves the values from the *osSettings* variable defined in the main template. That means you can easily change the operating system for a VM—entirely or based on the preference of a template consumer.
 
-#### vmScripts
+#### <a name="vmscripts"></a>vmScripts
 
-Das *vmScripts*-Objekt enthält Details zu den Skripts zum Herunterladen und Ausführen auf einer virtuellen Computerinstanz, einschließlich der externen und internen Verweise. Externe Verweise schließen die Infrastruktur ein. Interne Verweise umfassen die installierte Software und die Konfiguration.
+The *vmScripts* object contains details about the scripts to download and execute on a VM instance, including outside and inside references. Outside references include the infrastructure. Inside references include the installed software installed and configuration.
 
-Mithilfe der *scriptsToDownload*-Eigenschaft listen Sie die Skripts auf, die auf den virtuellen Computer heruntergeladen werden sollen.
+You use the *scriptsToDownload* property to list the scripts to download to the VM.
 
-Wie das folgende Beispiel zeigt, enthält dieses Objekt auch Verweise auf Befehlszeilenargumente für verschiedene Arten von Aktionen. Zu diesen Aktionen gehört die Ausführung der Standardinstallation für jeden einzelnen Knoten, eine Installation, die nach der Bereitstellung aller Knoten ausgeführt wird, sowie ggf. die Ausführung weiterer vorlagenspezifischer Skripts.
+As the example below shows, this object also contains references to command-line arguments for different types of actions. These actions include executing the default installation for each individual node, an installation that runs after all nodes are deployed, and any additional scripts that may be specific to a given template.
 
-Dieses Beispiel stammt aus einer Vorlage zum Bereitstellen von MongoDB, wofür ein Arbiter erforderlich ist, um Hochverfügbarkeit sicherzustellen. *arbiterNodeInstallCommand* wurde zu *vmScripts* hinzugefügt, um den Arbiter (Vermittlung) zu installieren.
+This example is from a template used to deploy MongoDB, which requires an arbiter to deliver high availability. The *arbiterNodeInstallCommand* has been added to *vmScripts* to install the arbiter.
 
-Sie finden die Variablen, die den spezifischen Text zum Ausführen des Skripts mit den richtigen Werten definieren, im Variablenabschnitt.
+The variables section is where you’ll find the variables that define the specific text to execute the script with the proper values.
 
     "vmScripts": {
         "scriptsToDownload": [
@@ -340,11 +341,11 @@ Sie finden die Variablen, die den spezifischen Text zum Ausführen des Skripts m
     },
 
 
-## Zurückgeben eines Status aus einer Vorlage
+## <a name="return-state-from-a-template"></a>Return state from a template
 
-Sie können nicht nur Daten in eine Vorlage übergeben, Sie können auch Daten wieder in der aufrufenden Vorlage freigeben. Im **outputs**-Abschnitt einer verknüpften Vorlage können Sie Schlüssel-Wert-Paare bereitstellen, die von der Quellvorlage genutzt werden können.
+Not only can you pass data into a template, you can also share data back to the calling template. In the **outputs** section of a linked template, you can provide key/value pairs that can be consumed by the source template.
 
-Das folgende Beispiel zeigt, wie die private IP-Adresse übergeben wird, die in einer verknüpften Vorlage generiert wurde.
+The following example shows how to pass the private IP address generated in a linked template.
 
     "outputs": {
         "masterip": {
@@ -353,11 +354,11 @@ Das folgende Beispiel zeigt, wie die private IP-Adresse übergeben wird, die in 
          }
     }
 
-Innerhalb der Hauptvorlage können Sie diese Daten mit folgender Syntax verwenden:
+Within the main template, you can use that data with the following syntax:
 
     "[reference('master-node').outputs.masterip.value]"
 
-Sie können diesen Ausdruck im Abschnitt „outputs“ oder im Abschnitt „resources“ der Hauptvorlage verwenden. Sie können den Ausdruck nicht im Abschnitt „variables“ verwenden, da er vom Laufzeitstatus abhängt. Verwenden Sie Folgendes, um diesen Wert aus der Hauptvorlage zurückzugeben:
+You can use this expression in either the outputs section or the resources section of the main template. You cannot use the expression in the variables section because it relies on the runtime state. To return this value from the main template, use:
 
     "outputs": { 
       "masterIpAddress": {
@@ -365,11 +366,11 @@ Sie können diesen Ausdruck im Abschnitt „outputs“ oder im Abschnitt „reso
         "type": "string"
       }
      
-Ein Beispiel für die Verwendung des Abschnitts „outputs“ einer verknüpften Vorlage, um Datenträger für einen virtuellen Computer zurückzugeben, finden Sie unter [Erstellen mehrerer Datenträger für einen virtuellen Computer](resource-group-create-multiple.md#creating-multiple-data-disks-for-a-virtual-machine).
+For an example of using the outputs section of a linked template to return data disks for a virtual machine, see [Creating multiple data disks for a Virtual Machine](resource-group-create-multiple.md#creating-multiple-data-disks-for-a-virtual-machine).
 
-## Definieren von Authentifizierungseinstellungen für den virtuellen Computer
+## <a name="define-authentication-settings-for-virtual-machine"></a>Define authentication settings for virtual machine
 
-Sie können das gleiche Muster, das oben für Konfigurationseinstellungen aufgeführt ist, für die Angabe der Authentifizierungseinstellungen für einen virtuellen Computer verwenden. Sie erstellen einen Parameter für die Übergabe des Authentifizierungstyps.
+You can use the same pattern shown above for configuration settings to specify the authentication settings for a virtual machine. You create a parameter for passing in the type of authentication.
 
     "parameters": {
       "authenticationType": {
@@ -385,7 +386,7 @@ Sie können das gleiche Muster, das oben für Konfigurationseinstellungen aufgef
       }
     }
 
-Sie fügen Variablen für den verschiedenen Authentifizierungstypen hinzu. Außerdem fügen Sie eine Variable hinzu, um zu speichern, welcher Typ basierend auf dem Wert des Parameters für diese Bereitstellung verwendet wird.
+You add variables for the different authentication types, and a variable to store which type is used for this deployment based on the value of the parameter.
 
     "variables": {
       "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
@@ -413,7 +414,7 @@ Sie fügen Variablen für den verschiedenen Authentifizierungstypen hinzu. Auße
       }
     }
 
-Wenn Sie den virtuellen Computer definieren, legen Sie **osProfile** auf die erstellte Variable fest.
+When defining the virtual machine, you set the **osProfile** to the variable you created.
 
     {
       "type": "Microsoft.Compute/virtualMachines",
@@ -422,8 +423,13 @@ Wenn Sie den virtuellen Computer definieren, legen Sie **osProfile** auf die ers
     }
 
 
-## Nächste Schritte
-- Informationen zu den Abschnitten der Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-- Unter [Vorlagenfunktionen in Azure Resource Manager](resource-group-template-functions.md) finden Sie alle Funktionen, die in einer Vorlage verfügbar sind.
+## <a name="next-steps"></a>Next steps
+- To learn about the sections of the template, see [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md)
+- To see the functions that are available within a template, see [Azure Resource Manager Template Functions](resource-group-template-functions.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

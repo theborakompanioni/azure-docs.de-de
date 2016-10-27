@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Ressourcen-Manager-Vorlage für Schlüsseltresore | Microsoft Azure"
-   description="Zeigt das Ressourcen-Manager-Schema für die Bereitstellung von Schlüsseltresoren über eine Vorlage."
+   pageTitle="Resource Manager template for key vault | Microsoft Azure"
+   description="Shows the Resource Manager schema for deploying key vaults through a template."
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,13 +16,14 @@
    ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
-# Vorlagenschema für einen Schlüsseltresor
 
-Erstellt einen Schlüsseltresor.
+# <a name="key-vault-template-schema"></a>Key vault template schema
 
-## Schemaformat
+Creates a key vault.
 
-Fügen Sie zum Erstellen eines Schlüsseltresors das folgende Schema im Ressourcenabschnitt der Vorlage hinzu.
+## <a name="schema-format"></a>Schema format
+
+To create a key vault, add the following schema to the resources section of your template.
 
     {
         "type": "Microsoft.KeyVault/vaults",
@@ -54,60 +55,60 @@ Fügen Sie zum Erstellen eines Schlüsseltresors das folgende Schema im Ressourc
         ]
     }
 
-## Werte
+## <a name="values"></a>Values
 
-In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
+The following tables describe the values you need to set in the schema.
 
-| Name | Wert |
+| Name | Value |
 | ---- | ---- | 
-| type | Enum<br />Erforderlich<br />**Microsoft.KeyVault/vaults**<br /><br />Der zu erstellende Ressourcentyp. |
-| apiVersion | Enum<br />Erforderlich<br />**2015-06-01** oder **2014-12-19-preview**<br /><br />Die API-Version zum Erstellen der Ressource. | 
-| name | String<br />Erforderlich<br />Ein innerhalb von Azure eindeutiger Name.<br /><br />Der Name des zu erstellenden Schlüsseltresors. Verwenden Sie zum Erstellen eines eindeutigen Namens die Funktion [uniqueString](resource-group-template-functions.md#uniquestring) mit Ihrer Benennungskonvention (wie im Beispiel weiter unten zu sehen). |
-| location | String<br />Erforderlich<br />Eine gültige Region für Schlüsseltresore. Gültige Regionen finden Sie unter [Unterstützte Regionen](resource-manager-supported-services.md#supported-regions).<br /><br />Die Region, in der der Schlüsseltresor gehostet werden soll. |
-| properties | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das die Art des zu erstellenden Schlüsseltresors angibt. |
-| resources | Array<br />Optional<br />Zulässige Werte: [Geheime Schlüsseltresorressourcen](resource-manager-template-keyvault-secret.md)<br /><br />Untergeordnete Ressourcen für den Schlüsseltresor. |
+| type | Enum<br />Required<br />**Microsoft.KeyVault/vaults**<br /><br />The resource type to create. |
+| apiVersion | Enum<br />Required<br />**2015-06-01** or **2014-12-19-preview**<br /><br />The API version to use for creating the resource. | 
+| name | String<br />Required<br />A name that is unique across Azure.<br /><br />The name of the key vault to create. Consider using the [uniqueString](resource-group-template-functions.md#uniquestring) function with your naming convention to create a unique name, as shown in the example below. |
+| location | String<br />Required<br />A valid region for key vaults. To determine valid regions, see [supported regions](resource-manager-supported-services.md#supported-regions).<br /><br />The region to host the key vault. |
+| properties | Object<br />Required<br />[properties object](#properties)<br /><br />An object that specifies the type of key vault to create. |
+| resources | Array<br />Optional<br />Permitted values: [Key vault secret resources](resource-manager-template-keyvault-secret.md)<br /><br />Child resources for the key vault. |
 
 <a id="properties" />
-### properties-Objekt
+### <a name="properties-object"></a>properties object
 
-| Name | Wert |
+| Name | Value |
 | ---- | ---- | 
-| enabledForDeployment | Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor für die Bereitstellung virtueller Computer oder die Service Fabric-Bereitstellung aktiviert ist. |
-| enabledForTemplateDeployment | Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor zur Verwendung in Resource Manager-Vorlagenbereitstellungen aktiviert ist. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md). |
-| enabledForVolumeEncryption | Boolean<br />Optional<br />**true** oder **false**<br /><br />Gibt an, ob der Tresor für die Volumeverschlüsselung aktiviert ist. |
-| tenantId | String<br />Erforderlich<br />**GUID**<br /><br />Die Mandanten-ID für das Abonnement. Diese ID können Sie mit dem PowerShell-Cmdlet [Get-AzureRmSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) oder mit dem Azure-CLI-Befehl **azure account show** abrufen. |
-| accessPolicies | Array<br />Erforderlich<br />[accessPolicies-Objekt](#accesspolicies)<br /><br />Ein Array von bis zu 16 Objekten, die die Berechtigungen für den Benutzer oder Dienstprinzipal angeben. |
-| sku | Objekt<br />Erforderlich<br />[sku-Objekt](#sku)<br /><br />Die SKU für den Schlüsseltresor. |
+| enabledForDeployment | Boolean<br />Optional<br />**true** or **false**<br /><br />Specifies if the vault is enabled for Virtual Machine or Service Fabric deployment. |
+| enabledForTemplateDeployment | Boolean<br />Optional<br />**true** or **false**<br /><br />Specifies if the vault is enabled for use in Resource Manager template deployments. For more information, see [Pass secure values during deployment](resource-manager-keyvault-parameter.md) |
+| enabledForVolumeEncryption | Boolean<br />Optional<br />**true** or **false**<br /><br />Specifies if the vault is enabled for volume encryption. |
+| tenantId | String<br />Required<br />**Globally-unique identifier**<br /><br />The tenant identifier for the subscription. You can retrieve it with the [Get-AzureRmSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell cmdlet or the **azure account show** Azure CLI command. |
+| accessPolicies | Array<br />Required<br />[accessPolicies object](#accesspolicies)<br /><br />An array of up to 16 objects that specify the permissions for the user or service principal. |
+| sku | Object<br />Required<br />[sku object](#sku)<br /><br />The SKU for the key vault. |
 
 <a id="accesspolicies" />
-### properties.accessPolicies-Objekt
+### <a name="properties.accesspolicies-object"></a>properties.accessPolicies object
 
-| Name | Wert |
+| Name | Value |
 | ---- | ---- | 
-| tenantId | String<br />Erforderlich<br />**GUID**<br /><br />Die Mandanten-ID des Azure Active Directory-Mandanten mit der **objectId** in dieser Zugriffsrichtlinie. |
-| objectId | String<br />Erforderlich<br />**GUID**<br /><br />Die Objekt-ID des Azure Active Directory-Benutzers oder -Dienstprinzipals, der Zugriff auf den Tresor hat. Sie können den Wert entweder mithilfe des PowerShell-Cmdlets [Get-AzureRmADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) oder [Get-AzureRmADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx) oder mithilfe des Azure CLI-Befehls **azure ad user** oder **azure ad sp** abrufen. |
-| Berechtigungen | Objekt<br />Erforderlich<br />[permissions-Objekt](#permissions)<br /><br />Die Berechtigungen, die in diesem Tresor für das Active Directory-Objekt gewährt werden. |
+| tenantId | String<br />Required<br />**Globally-unique identifier**<br /><br />The tenant identifier of the Azure Active Directory tenant containing the **objectId** in this access policy |
+| objectId | String<br />Required<br />**Globally-unique identifier**<br /><br />The object identifier of the Azure Active Directory user or service principal that will have access to the vault. You can retrieve the value from either the [Get-AzureRmADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) or the [Get-AzureRmADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx) PowerShell cmdlets, or the **azure ad user** or **azure ad sp** Azure CLI commands. |
+| permissions | Object<br />Required<br />[permissions object](#permissions)<br /><br />The permissions granted on this vault to the Active Directory object. |
 
 <a id="permissions" />
-### properties.accessPolicies.permissions-Objekt
+### <a name="properties.accesspolicies.permissions-object"></a>properties.accessPolicies.permissions object
 
-| Name | Wert |
+| Name | Value |
 | ---- | ---- | 
-| keys | Array<br />Erforderlich<br />**all**, **backup**, **create**, **decrypt**, **delete**, **encrypt**, **get**, **import**, **list**, **restore**, **sign**, **unwrapkey**, **update**, **verify**, **wrapkey**<br /><br />Die Berechtigungen, die für Schlüssel in diesem Tresor für das Active Directory-Objekt gewährt werden. Dieser Wert muss als Array von einem oder mehreren zulässigen Werten angegeben werden. |
-| secrets | Array<br />Erforderlich<br />**all**, **delete**, **get**, **list**, **set**<br /><br />Die Berechtigungen, die für geheime Schlüssel in diesem Tresor für das Active Directory-Objekt gewährt werden. Dieser Wert muss als Array von einem oder mehreren zulässigen Werten angegeben werden. |
+| keys | Array<br />Required<br />**all**, **backup**, **create**, **decrypt**, **delete**, **encrypt**, **get**, **import**, **list**, **restore**, **sign**, **unwrapkey**, **update**, **verify**, **wrapkey**<br /><br />The permissions granted on keys in this vault to this Active Directory object. This value must be specified as an array of one or more permitted values. |
+| secrets | Array<br />Required<br />**all**, **delete**, **get**, **list**, **set**<br /><br />The permissions granted on secrets in this vault to this Active Directory object. This value must be specified as an array of one or more permitted values. |
 
 <a id="sku" />
-### properties.sku-Objekt
+### <a name="properties.sku-object"></a>properties.sku object
 
-| Name | Wert |
+| Name | Value |
 | ---- | ---- | 
-| name | Enum<br />Erforderlich<br />**standard** oder **premium** <br /><br />Die Dienstebene des zu verwendenden Schlüsseltresors. In der Dienstebene „Standard“ werden geheime Schlüssel und geschützte Schlüssel unterstützt. In der Dienstebene „Premium“ werden zudem HSM-geschützte Schlüssel unterstützt. |
-| family | Enum<br />Erforderlich<br />**A** <br /><br />Die zu verwendende SKU-Familie. |
+| name | Enum<br />Required<br />**standard**, or **premium** <br /><br />The service tier of KeyVault to use.  Standard supports secrets and software-protected keys.  Premium adds support for HSM-protected keys. |
+| family | Enum<br />Required<br />**A** <br /><br />The sku family to use. |
  
-	
-## Beispiele
+    
+## <a name="examples"></a>Examples
 
-Im folgenden Beispiel werden ein Schlüsseltresor und ein geheimer Schlüssel bereitgestellt.
+The following example deploys a key vault and secret.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -233,16 +234,21 @@ Im folgenden Beispiel werden ein Schlüsseltresor und ein geheimer Schlüssel be
         }]
     }
 
-## Schnellstartvorlagen
+## <a name="quickstart-templates"></a>Quickstart templates
 
-Die folgende Schnellstartvorlage stellt einen Schlüsseltresor bereit.
+The following quickstart template deploys a key vault.
 
-- [Erstellen eines Schlüsseltresors](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)
+- [Create Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](./key-vault/key-vault-get-started.md).
-- Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
+- For general information about key vaults, see [Get started with Azure Key Vault](./key-vault/key-vault-get-started.md).
+- For an example of referencing a key vault secret when deploying templates, see [Pass secure values during deployment](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Grundlagen des PowerShell-Workflows"
-   description="Dieser Artikel ist als kurze Lektion für Autoren gedacht, die mit PowerShell vertraut sind, um die Grundlagen der speziellen Unterschiede zwischen PowerShell und dem PowerShell-Workflow zu verdeutlichen."
+   pageTitle="Learning PowerShell Workflow"
+   description="This article is intended as a quick lesson for authors familiar with PowerShell to understand the specific differences between PowerShell and PowerShell Workflow."
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
@@ -15,143 +15,144 @@
    ms.date="09/12/2016"
    ms.author="bwren" />
 
-# Grundlagen des Windows PowerShell-Workflows
 
-Runbooks in Azure Automation sind als Windows PowerShell-Workflows implementiert. Ein Windows PowerShell-Workflow ähnelt einem Windows PowerShell-Skript, weist aber einige wesentliche Unterschiede auf, die für einen neuen Benutzer verwirrend sein können. Dieser Artikel richtet sich an Benutzer, die bereits mit PowerShell vertraut sind. Er enthält kurze Erklärungen von Konzepten, mit denen Sie vertraut sein müssen, wenn Sie ein PowerShell-Skript zur Verwendung in einem Runbook in einen PowerShell-Workflow konvertieren.
+# <a name="learning-windows-powershell-workflow"></a>Learning Windows PowerShell Workflow
 
-Bei einem Workflow handelt es sich um eine Sequenz von programmierten, zusammenhängenden Schritten, mit denen zeitaufwändige Aufgaben ausgeführt werden oder für die mehrere Schritte auf verschiedenen Geräten oder verwalteten Knoten koordiniert werden müssen. Die Vorteile eines Workflows gegenüber einem normalen Skript liegen darin, dass eine Aktion gleichzeitig für mehrere Geräte ausgeführt und bei Auftreten von Fehlern eine automatische Wiederherstellung durchgeführt werden kann. Ein Windows PowerShell-Workflow ist ein Windows PowerShell-Skript, das Windows Workflow Foundation nutzt. Wenngleich der Workflow mit Windows PowerShell-Syntax geschrieben und über Windows PowerShell gestartet wird, erfolgt die Verarbeitung durch Windows Workflow Foundation.
+Runbooks in Azure Automation are implemented as Windows PowerShell Workflows.  A Windows PowerShell Workflow is similar to a Windows PowerShell script but has some significant differences that can be confusing to a new user.  This article is intended for users already familiar with PowerShell and briefly explains concepts that you require if you are converting a PowerShell script to a PowerShell Workflow for use in a runbook.  
 
-Ausführliche Informationen zu den Themen in diesem Artikel finden Sie unter [Erste Schritte mit dem Windows PowerShell-Workflow](http://technet.microsoft.com/library/jj134242.aspx).
+A workflow is a sequence of programmed, connected steps that perform long-running tasks or require the coordination of multiple steps across multiple devices or managed nodes. The benefits of a workflow over a normal script include the ability to simultaneously perform an action against multiple devices and the ability to automatically recover from failures. A Windows PowerShell Workflow is a Windows PowerShell script that leverages Windows Workflow Foundation. While the workflow is written with Windows PowerShell syntax and launched by Windows PowerShell, it is processed by Windows Workflow Foundation.
 
-## Arten von Runbooks
+For complete details on the topics in this article, see [Getting Started with Windows PowerShell Workflow](http://technet.microsoft.com/library/jj134242.aspx).
 
-Es gibt drei Arten von Runbooks in Azure Automation: *PowerShell-Workflow-Runbooks*, *PowerShell-Runbooks* und *grafische Runbooks*. Sie können den Runbooktyp beim Erstellen des Runbooks definieren, und es ist nicht möglich, ein Runbook nach der Erstellung in den anderen Typ zu konvertieren.
+## <a name="types-of-runbook"></a>Types of runbook
 
-PowerShell-Workflow-Runbooks und PowerShell-Runbooks sind für Benutzer bestimmt, die lieber direkt mit dem PowerShell-Code arbeiten – entweder mit dem Text-Editor in Azure Automation oder mit einem Offline-Editor wie PowerShell ISE. Sie sollten die Informationen in diesem Artikel verstanden haben, wenn Sie ein PowerShell-Workflow-Runbook erstellen.
+There are three types of runbook in Azure Automation, *PowerShell Workflow*, *PowerShell* and *graphical*.  You define the runbook type when you create the runbook, and you can't convert a runbook to the other type once it's been created.
 
-Grafische Runbooks ermöglichen Ihnen die Erstellung von Runbooks mit den gleichen Aktivitäten und Cmdlets, aber Sie nutzen eine grafische Oberfläche, bei der die komplexen Zusammenhänge des zugrunde liegenden PowerShell-Workflows verborgen sind. Die Konzepte in diesem Artikel, z. B. Prüfpunkte und parallele Ausführung, gelten auch für grafische Runbooks, aber Sie müssen sich dabei keine Gedanken über die ausführliche Syntax machen.
+PowerShell workflow runbooks and PowerShell runbooks are for users who prefer to work directly with the PowerShell code either using the textual editor in Azure Automation or an offline editor such as PowerShell ISE. You should understand the information in this article if you are creating a PowerShell Workflow runbook. 
 
-## Grundlegende Struktur eines Workflows
+Graphical runbooks allow you to create a runbook using the same activities and cmdlets but using a graphical interface that hides the complexities of the underlying PowerShell workflow.  Concepts in this article such as checkpoints and parallel execution still apply to graphical runbooks, but you won't have to worry about the detailed syntax. 
 
-Der erste Schritt beim Konvertieren eines PowerShell-Skripts in einen PowerShell-Workflow ist das Umschließen mit einem **Workflow**-Schlüsselwort. Ein Workflow beginnt mit dem Schlüsselwort **Workflow**, gefolgt vom Hauptteil des Skripts, der in Klammern gesetzt ist. Auf das Schlüsselwort **Workflow** folgt der Name des Workflows, wie in der folgenden Syntax gezeigt.
+## <a name="basic-structure-of-a-workflow"></a>Basic structure of a workflow
+
+The first step to converting a PowerShell script to a PowerShell workflow is enclosing it with the **Workflow** keyword.  A workflow starts with the **Workflow** keyword followed by the body of the script enclosed in braces. The name of the workflow follows the **Workflow** keyword as shown in the following syntax. 
 
     Workflow Test-Workflow
     {
        <Commands>
     }
 
-Der Name des Workflows muss mit dem Namen des Automation-Runbooks übereinstimmen. Wenn das Runbook importiert wird, muss der Dateiname mit dem Workflownamen übereinstimmen und auf .ps1 enden.
+The name of the workflow must match the name of the Automation runbook. If the runbook is being imported, then the filename must match the workflow name and must end in .ps1.
 
-Zum Hinzufügen von Parametern für den Workflow verwenden Sie das Schlüsselwort **Param** genauso wie bei einem Skript.
+To add parameters to the workflow, use the **Param** keyword just as you would to a script. 
 
-## Änderungen am Code
+## <a name="code-changes"></a>Code changes
 
-Der PowerShell-Workflowcode sieht bis auf einige signifikante Änderungen fast genauso wie PowerShell-Skriptcode aus. In den folgenden Abschnitten werden Änderungen beschrieben, die Sie an einem PowerShell-Skript vornehmen müssen, damit es in einem Workflow ausgeführt werden kann.
+PowerShell workflow code looks almost identical to PowerShell script code except for a few significant changes.  The following sections describe changes that you will need to make to a PowerShell script for it to run in a workflow.
 
-### Aktivitäten
+### <a name="activities"></a>Activities
 
-Eine Aktivität ist eine bestimmte Aufgabe in einem Workflow. Ebenso wie ein Skript aus einem oder mehreren Befehlen zusammengesetzt ist, setzt sich ein Workflow aus einer oder mehreren Aktivitäten zusammen, die in einer bestimmten Reihenfolge ausgeführt werden. Windows PowerShell Workflow konvertiert viele der Windows PowerShell-Cmdlets automatisch in Aktivitäten, wenn ein Workflow ausgeführt wird. Wenn Sie eines dieser Cmdlets in Ihrem Runbook angeben, wird von Windows Workflow Foundation tatsächlich die entsprechende Aktivität ausgeführt. Für Cmdlets ohne entsprechende Aktivität führt Windows PowerShell Workflow das Cmdlet automatisch in einer [InlineScript](#inlinescript)-Aktivität aus. Es gibt einen Satz Cmdlets, der hiervon ausgeschlossen ist und nicht in einem Workflow verwendet werden kann – es sei denn, Sie schließen diese Cmdlets explizit in einen InlineScript-Block ein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwenden von Aktivitäten in Skriptworkflows](http://technet.microsoft.com/library/jj574194.aspx).
+An activity is a specific task in a workflow. Just as a script is composed of one or more commands, a workflow is composed of one or more activities that are carried out in a sequence. Windows PowerShell Workflow automatically converts many of the Windows PowerShell cmdlets to activities when it runs a workflow. When you specify one of these cmdlets in your runbook, the corresponding activity is actually run by Windows Workflow Foundation. For those cmdlets without a corresponding activity, Windows PowerShell Workflow automatically runs the cmdlet within an [InlineScript](#inlinescript) activity. There is a set of cmdlets that are excluded and cannot be used in a workflow unless you explicitly include them in an InlineScript block. For further details on these concepts, see [Using Activities in Script Workflows](http://technet.microsoft.com/library/jj574194.aspx).
 
-Workflowaktivitäten teilen sich einen Satz allgemeiner Parameter, um ihren Betrieb zu konfigurieren. Ausführliche Informationen zu den allgemeinen Workflowparametern finden Sie unter [about\_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
+Workflow activities share a set of common parameters to configure their operation. For details about the workflow common parameters, see [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
 
-### Positionsparameter
+### <a name="positional-parameters"></a>Positional parameters
 
-Sie können Positionsparameter nicht mit Aktivitäten und Cmdlets in einem Workflow verwenden. Dies bedeutet lediglich, dass Sie Parameternamen verwenden müssen.
+You can't use positional parameters with activities and cmdlets in a workflow.  All this means is that you must use parameter names.
 
-Betrachten Sie beispielsweise den folgenden Code, mit dem alle ausgeführten Dienste abgerufen werden:
+For example, consider the following code that gets all running services.
 
-	 Get-Service | Where-Object {$_.Status -eq "Running"}
+     Get-Service | Where-Object {$_.Status -eq "Running"}
 
-Wenn Sie versuchen, den gleichen Code in einem Workflow auszuführen, erhalten Sie eine Meldung wie „Der Parametersatz kann mit den angegebenen benannten Parametern nicht aufgelöst werden“. Um dies zu korrigieren, geben Sie einfach den Parameternamen wie folgt an:
+If you try to run this same code in a workflow, you'll get a message like "Parameter set cannot be resolved using the specified named parameters."  To correct this, simply provide the parameter name as in the following.
 
-	Workflow Get-RunningServices
-	{
-		Get-Service | Where-Object -FilterScript {$_.Status -eq "Running"}
-	}
+    Workflow Get-RunningServices
+    {
+        Get-Service | Where-Object -FilterScript {$_.Status -eq "Running"}
+    }
 
-### Deserialisierte Objekte
+### <a name="deserialized-objects"></a>Deserialized objects
 
-Objekte in Workflows werden deserialisiert. Dies bedeutet, dass ihre Eigenschaften weiterhin verfügbar sind, aber nicht ihre Methoden. Sehen Sie sich beispielsweise den folgenden PowerShell-Code an, mit dem ein Dienst mit der Stop-Methode des Service-Objekts beendet wird.
+Objects in workflows are deserialized.  This means that their properties are still available, but not their methods.  For example, consider the following PowerShell code that stops a service using the Stop method of the Service object.
 
-	$Service = Get-Service -Name MyService
-	$Service.Stop()
+    $Service = Get-Service -Name MyService
+    $Service.Stop()
 
-Wenn Sie versuchen, dies in einem Workflow auszuführen, erhalten Sie den Fehler „Das Aufrufen von Methoden wird in einem Windows PowerShell-Workflow nicht unterstützt“.
+If you try to run this in a workflow, you'll get an error saying "Method invocation is not supported in a Windows PowerShell Workflow".  
 
-Eine Möglichkeit besteht darin, diese beiden Codezeilen in einen [InlineScript](#InlineScript)-Block einzufügen. In diesem Fall ist $Service ein Dienstobjekt innerhalb des Blocks.
+One option is to wrap these two lines of code in an [InlineScript](#InlineScript) block in which case $Service would be a service object within the block. 
 
-	Workflow Stop-Service
-	{
-		InlineScript {
-			$Service = Get-Service -Name MyService
-			$Service.Stop()
-		}
-	} 
+    Workflow Stop-Service
+    {
+        InlineScript {
+            $Service = Get-Service -Name MyService
+            $Service.Stop()
+        }
+    } 
 
-Eine weitere Möglichkeit ist die Verwendung eines anderen Cmdlets, mit dem die gleichen Funktionen wie mit der Methode durchgeführt werden (sofern verfügbar). In unserem Beispiel werden mit dem Stop-Service-Cmdlet die gleichen Funktionen wie mit der Stop-Methode bereitgestellt, und Sie können Folgendes für einen Workflow verwenden:
+Another option is to use another cmdlet that performs the same functionality as the method, if one is available.  In the case of our sample, the Stop-Service cmdlet provides the same functionality as the Stop method, and you could use the following for a workflow.
 
-	Workflow Stop-MyService
-	{
-		$Service = Get-Service -Name MyService
-		Stop-Service -Name $Service.Name
-	}
+    Workflow Stop-MyService
+    {
+        $Service = Get-Service -Name MyService
+        Stop-Service -Name $Service.Name
+    }
 
 
-## InlineScript
+## <a name="inlinescript"></a>InlineScript
 
-Die**InlineScript**-Aktivität ist nützlich, wenn Sie einen oder mehrere Befehle als herkömmliches PowerShell-Skript ausführen müssen, anstatt als PowerShell-Workflow. Wenngleich die Befehle in einem Workflow zur Verarbeitung an Windows Workflow Foundation gesendet werden, werden die Befehle in einem InlineScript-Block durch Windows PowerShell verarbeitet.
+The **InlineScript** activity is useful when you need to run one or more commands as traditional PowerShell script instead of PowerShell workflow.  While commands in a workflow are sent to Windows Workflow Foundation for processing, commands in an InlineScript block are processed by Windows PowerShell. 
 
-Der InlineScript-Block verwendet die nachstehende Syntax.
+InlineScript uses the syntax shown below.
 
     InlineScript
     {
       <Script Block>
     } <Common Parameters>
 
-Sie können die Ausgabe eines InlineScript-Blocks zurückgeben, indem Sie die Ausgabe einer Variablen zuweisen. Im unten angegebenen Beispiel wird ein Dienst beendet und anschließend der Dienstname ausgegeben.
+You can return output from an InlineScript by assigning the output to a variable. The following example stops a service and then outputs the service name.
 
-	Workflow Stop-MyService
-	{
-		$Output = InlineScript {
-			$Service = Get-Service -Name MyService
-			$Service.Stop()
-			$Service
-		}
+    Workflow Stop-MyService
+    {
+        $Output = InlineScript {
+            $Service = Get-Service -Name MyService
+            $Service.Stop()
+            $Service
+        }
 
-		$Output.Name
-	}
-
-
-Sie können Werte in einen InlineScript-Block übergeben, aber Sie müssen den **$Using**-Bereichsmodifizierer verwenden. Das folgende Beispiel ist mit dem vorherigen Beispiel identisch, mit der Ausnahme, dass der Dienstname über eine Variable bereitgestellt wird.
-
-	Workflow Stop-MyService
-	{
-		$ServiceName = "MyService"
-	
-		$Output = InlineScript {
-			$Service = Get-Service -Name $Using:ServiceName
-			$Service.Stop()
-			$Service
-		}
-
-		$Output.Name
-	}
+        $Output.Name
+    }
 
 
-InlineScript-Aktivitäten können in bestimmten Workflows wichtig sein, aber sie bieten keine Unterstützung für Workflowkonstrukte und sollten nur genutzt werden, wenn dies aus den folgenden Gründen erforderlich ist:
+You can pass values into an InlineScript block, but you must use **$Using** scope modifier.  The following example is identical to the previous example except that the service name is provided by a variable. 
 
-- Sie können keine [Prüfpunkte](#Checkpoints) in einem InlineScript-Block verwenden. Wenn innerhalb des Blocks ein Fehler auftritt, muss der Vorgang am Anfang des Blocks neu gestartet werden.
-- Sie können in einem InlineScript-Block keine [parallele Ausführung](#parallel-execution) nutzen.
-- InlineScript-Blöcke beeinträchtigen die Skalierbarkeit des Workflows, da die Windows PowerShell-Sitzung für die gesamte Dauer des InlineScript-Blocks übernommen wird.
+    Workflow Stop-MyService
+    {
+        $ServiceName = "MyService"
+    
+        $Output = InlineScript {
+            $Service = Get-Service -Name $Using:ServiceName
+            $Service.Stop()
+            $Service
+        }
 
-Ausführliche Informationen zur Verwendung von InlineScript finden Sie unter [Ausführen von Windows PowerShell-Befehlen in einem Workflow](http://technet.microsoft.com/library/jj574197.aspx) und unter [about\_InlinScript](http://technet.microsoft.com/library/jj649082.aspx).
+        $Output.Name
+    }
 
 
-## Parallele Verarbeitung
+While InlineScript activities may be critical in certain workflows, they do not support workflow constructs and should only be used when necessary for the following reasons:
 
-Ein Vorteil von Windows PowerShell-Workflows besteht darin, dass sie einen Satz an Befehlen parallel – und nicht wie in einem typischen Skript sequenziell – ausführen können.
+- You cannot use [checkpoints](#Checkpoints) inside of an InlineScript block. If a failure occurs within the block, it must be resumed from the beginning of the block.
+- You cannot use [parallel execution](#parallel-execution) inside of an InlineScriptBlock.
+- InlineScript affects scalability of the workflow since it holds the Windows PowerShell session for the entire length of the InlineScript block.
 
-Sie können mit dem Schlüsselwort **Parallel** einen Skriptblock mit mehreren Befehlen erstellen, die gleichzeitig ausgeführt werden. Diese Methode wird in der nachstehend gezeigten Syntax verwendet. In diesem Fall starten "Activity1" und "Activity2" gleichzeitig. "Activity3" startet erst, wenn sowohl "Activity1" als auch "Activity2" abgeschlossen wurden.
+For further details on using InlineScript, see [Running Windows PowerShell Commands in a Workflow](http://technet.microsoft.com/library/jj574197.aspx) and [about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx).
+
+
+## <a name="parallel-processing"></a>Parallel processing
+
+One advantage of Windows PowerShell Workflows is the ability to perform a set of commands in parallel instead of sequentially as with a typical script. 
+
+You can use the **Parallel** keyword to create a script block with multiple commands that will run concurrently. This uses the syntax shown below. In this case, Activity1 and Activity2 will start at the same time. Activity3 will start only after both Activity1 and Activity2 have completed.
 
     Parallel
     {
@@ -161,28 +162,28 @@ Sie können mit dem Schlüsselwort **Parallel** einen Skriptblock mit mehreren B
     <Activity3>
 
 
-Sehen Sie sich beispielsweise die folgenden PowerShell-Befehle an, mit denen mehrere Dateien an ein Netzwerkziel kopiert werden. Diese Befehle werden nacheinander ausgeführt, sodass der Kopiervorgang einer Datei abgeschlossen sein muss, bevor der nächste Vorgang gestartet wird.
+For example, consider the following PowerShell commands that copy multiple files to a network destination.  These commands are run sequentially so that one file must finish copying before the next is started.     
 
-	$Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
-	$Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
-	$Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
+    $Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
+    $Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
+    $Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 
-Im folgenden Workflow werden die gleichen Befehle parallel ausgeführt, sodass die Kopiervorgänge alle gleichzeitig beginnen. Die Abschlussmeldung wird erst angezeigt, nachdem alle Kopiervorgänge abgeschlossen sind.
+The following workflow runs these same commands in parallel so that they all start copying at the same time.  Only after they are all completely copied is the completion message displayed.
 
-	Workflow Copy-Files
-	{
-		Parallel 
-		{
-			$Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\\NetworkPath"
-			$Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\\NetworkPath"
-			$Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\\NetworkPath"
-		}
+    Workflow Copy-Files
+    {
+        Parallel 
+        {
+            $Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\\NetworkPath"
+            $Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\\NetworkPath"
+            $Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\\NetworkPath"
+        }
 
-		Write-Output "Files copied."
-	}
+        Write-Output "Files copied."
+    }
 
 
-Sie können das Konstrukt **ForEach -Parallel** verwenden, um Befehle für jedes Element in einer Auflistung gleichzeitig zu verarbeiten. Die Elemente in der Auflistung werden parallel ausgeführt, während die Befehle im Skriptblock sequenziell ausgeführt werden. Diese Methode wird in der nachstehend gezeigten Syntax verwendet. In diesem Fall startet "Activity1" für alle Elemente in der Auflistung gleichzeitig. "Activity2" wird für alle Elemente gestartet, nachdem "Activity1" abgeschlossen wurde. "Activity3" startet erst, wenn sowohl "Activity1" als auch "Activity2" für alle Elemente abgeschlossen wurden.
+You can use the **ForEach -Parallel** construct to process commands for each item in a collection concurrently. The items in the collection are processed in parallel while the commands in the script block run sequentially. This uses the syntax shown below. In this case, Activity1 will start at the same time for all items in the collection. For each item, Activity2 will start after Activity1 is complete. Activity3 will start only after both Activity1 and Activity2 have completed for all items.
 
     ForEach -Parallel ($<item> in $<collection>)
     {
@@ -191,29 +192,29 @@ Sie können das Konstrukt **ForEach -Parallel** verwenden, um Befehle für jedes
     }
     <Activity3>
 
-Das folgende Beispiel ähnelt dem vorherigen Beispiel mit dem parallelen Kopieren der Dateien. In diesem Fall wird für jede Datei nach Abschluss des Kopiervorgangs eine Meldung angezeigt. Die endgültige Abschlussmeldung wird aber erst angezeigt, nachdem alle Dateien vollständig kopiert wurden.
+The following example is similar to the previous example copying files in parallel.  In this case, a message is displayed for each file after it copies.  Only after they are all completely copied is the final completion message displayed.
 
-	Workflow Copy-Files
-	{
-		$files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
+    Workflow Copy-Files
+    {
+        $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-		ForEach -Parallel ($File in $Files) 
-		{
-			$Copy-Item -Path $File -Destination \\NetworkPath
-			Write-Output "$File copied."
-		}
-		
-		Write-Output "All files copied."
-	}
+        ForEach -Parallel ($File in $Files) 
+        {
+            $Copy-Item -Path $File -Destination \\NetworkPath
+            Write-Output "$File copied."
+        }
+        
+        Write-Output "All files copied."
+    }
 
-> [AZURE.NOTE]  Wir raten davon ab, untergeordnete Runbooks parallel auszuführen, da dies häufig zu unzuverlässigen Ergebnissen führt. Die Ausgabe des untergeordneten Runbooks wird in einigen Fällen nicht angezeigt, und die Einstellungen in einem untergeordneten Runbook können sich auf andere untergeordnete Runbooks auswirken.
+> [AZURE.NOTE]  We do not recommend running child runbooks in parallel since this has been shown to give unreliable results.  The output from the child runbook sometimes will not show up, and settings in one child runbook can affect the other parallel child runbooks 
 
 
-## Prüfpunkte
+## <a name="checkpoints"></a>Checkpoints
 
-Ein *Prüfpunkt* ist eine Momentaufnahme des aktuellen Zustands des Workflows, der den aktuellen Wert für Variablen und sämtliche Ausgaben einschließt, die bis zu diesem Punkt generiert wurden. Wenn ein Workflow mit einem Fehler endet oder angehalten wird, wird er bei der nächsten Ausführung am letzten Prüfpunkt gestartet, und nicht am Anfang des Workflows. Sie können mithilfe der Aktivität **Checkpoint-Workflow** einen Prüfpunkt in einem Workflow setzen.
+A *checkpoint* is a snapshot of the current state of the workflow that includes the current value for variables and any output generated to that point. If a workflow ends in error or is suspended, then the next time it is run it will start from its last checkpoint instead of the start of the worfklow.  You can set a checkpoint in a workflow with the **Checkpoint-Workflow** activity.
 
-Im folgenden Beispielcode führt eine Ausnahme nach „Activity2“ dazu, dass der Workflow beendet wird. Bei der Fortsetzung der Ausführung wird zunächst „Activity2“ ausgeführt, da diese Aktivität unmittelbar auf den zuletzt gesetzten Prüfpunkt folgt.
+In the following sample code, an exception occurs after Activity2 causing the workflow to end. When the workflow is run again, it starts by running Activity2 since this was just after the last checkpoint set.
 
     <Activity1>
     Checkpoint-Workflow
@@ -221,27 +222,27 @@ Im folgenden Beispielcode führt eine Ausnahme nach „Activity2“ dazu, dass d
     <Exception>
     <Activity3>
 
-Sie können Prüfpunkte in einem Workflow nach Aktivitäten setzen, die möglicherweise anfällig für das Auftreten von Ausnahmen sind und die nach dem Fortsetzen eines Workflows nicht wiederholt werden sollen. Angenommen, Ihr Workflow erstellt einen virtuellen Computer. Sie können sowohl vor als auch nach den Befehlen zum Erstellen des virtuellen Computers einen Prüfpunkt setzen. Wenn bei der Erstellung ein Fehler auftritt, werden die Befehle wiederholt, wenn der Workflow erneut gestartet wird. Falls für den Workflow nach der erfolgreichen Erstellung ein Fehler auftritt, wird der virtuelle Computer nicht erneut erstellt, wenn der Workflow fortgesetzt wird.
+You should set checkpoints in a workflow after activities that may be prone to exception and should not be repeated if the workflow is resumed. For example, your workflow may create a virtual machine. You could set a checkpoint both before and after the commands to create the virtual machine. If the creation fails, then the commands would be repeated if the workflow is started again. If the the worfklow fails after the creation succeeds, then the virtual machine will not be created again when the workflow is resumed.
 
-Im folgenden Beispiel werden mehrere Dateien an einen Netzwerkspeicherort kopiert, und nach jeder Datei wird ein Prüfpunkt gesetzt. Wenn die Verbindung mit dem Netzwerkspeicherort verloren geht, wird der Workflow mit einem Fehler beendet. Beim erneuten Starten wird der Vorgang beim letzten Prüfpunkt fortgesetzt. Dies bedeutet, dass nur die Dateien übersprungen werden, die bereits kopiert wurden.
+The following example copies multiple files to a network location and sets a checkpoint after each file.  If the network location is lost, then the workflow will end in error.  When it is started again, it will resume at the last checkpoint meaning that only the files that have already been copied will be skipped.
 
-	Workflow Copy-Files
-	{
-		$files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
+    Workflow Copy-Files
+    {
+        $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-		ForEach ($File in $Files) 
-		{
-			$Copy-Item -Path $File -Destination \\NetworkPath
-			Write-Output "$File copied."
-			Checkpoint-Workflow
-		}
-		
-		Write-Output "All files copied."
-	}
+        ForEach ($File in $Files) 
+        {
+            $Copy-Item -Path $File -Destination \\NetworkPath
+            Write-Output "$File copied."
+            Checkpoint-Workflow
+        }
+        
+        Write-Output "All files copied."
+    }
 
-Da Benutzernamen aus Anmeldeinformationen nicht über das Aufrufen der Aktivität [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) bzw. über den letzten Prüfpunkt hinaus gespeichert werden, müssen Sie die Anmeldeinformationen auf NULL festlegen und sie nach dem Aufrufen der Aktivität **Suspend-Workflow** oder des letzten Prüfpunkts erneut aus dem Objektspeicher abrufen. Andernfalls erscheint möglicherweise die folgende Fehlermeldung: *Der Workflowauftrag kann nicht fortgesetzt werden, weil Persistenzdaten nicht vollständig gespeichert werden konnten oder gespeicherte Persistenzdaten beschädigt wurden. Sie müssen den Workflow neu starten.*
+Because username credentials are not persisted after you call the [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) activity or after the last checkpoint, you need to set the credentials to null and then retrieve them again from the asset store after **Suspend-Workflow** or checkpoint is called.  Otherwise, you may receive the following error message: *The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.*
 
-Der folgende Code veranschaulicht die Behandlung dieses Aspekts in PowerShell-Workflow-Runbooks.
+The following same code demonstrates how to handle this in your PowerShell Workflow runbooks.
 
        
     workflow CreateTestVms
@@ -267,13 +268,17 @@ Der folgende Code veranschaulicht die Behandlung dieses Aspekts in PowerShell-Wo
      } 
 
 
-Dies ist nicht erforderlich, wenn die Authentifizierung mithilfe eines ausführenden Kontos erfolgt, das mit einem Dienstprinzipal konfiguriert ist.
+This is not required if you are authenticating using a Run As account configured with a service principal.  
 
-Weitere Informationen zu Prüfpunkten finden Sie unter [Hinzufügen von Prüfpunkten zu einem Skriptworkflow](http://technet.microsoft.com/library/jj574114.aspx).
+For more information about checkpoints, see [Adding Checkpoints to a Script Workflow](http://technet.microsoft.com/library/jj574114.aspx).
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-- Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
+- To get started with PowerShell workflow runbooks, see [My first PowerShell workflow runbook](automation-first-runbook-textual.md) 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

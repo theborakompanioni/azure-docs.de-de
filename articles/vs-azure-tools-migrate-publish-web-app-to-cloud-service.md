@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio | Microsoft Azure"
-   description="Sie erfahren, wie Sie Ihre Webanwendung mit Visual Studio zu einem Azure-Clouddienst migrieren und veröffentlichen."
+   pageTitle="How to Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio | Microsoft Azure"
+   description="Learn how to migrate and publish your web application to an Azure cloud service by using Visual Studio."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,197 +15,203 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio
 
-Um die Vorteile der Hostingdienste und der Skalierbarkeit von Azure zu nutzen, kann es ratsam sein, Ihre Webanwendung zu einem Azure-Clouddienst zu migrieren und dort zu veröffentlichen. Sie können eine Webanwendung in Azure mit minimalen Änderungen an der vorhandenen Anwendung ausführen.
+# <a name="how-to:-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>How to: Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio
 
->[AZURE.NOTE] In diesem Thema wird die Bereitstellung in Clouddiensten und nicht auf Websites behandelt. Weitere Informationen zum Bereitstellen auf Websites finden Sie unter [Bereitstellen von Web-Apps in Azure App Service](./app-service-web/web-sites-deploy.md).
+To take advantage of the hosting services and scalability of Azure, you might want to migrate and publish your web application to an Azure cloud service. You can run a web application in Azure with minimal changes to your existing application.
 
-Eine Liste der spezifischen Vorlagen, die sowohl für Visual C# als auch für Visual Basic unterstützt werden, finden Sie weiter unten in diesem Thema im Abschnitt **Unterstützte Projektvorlagen**.
+>[AZURE.NOTE] This topic is about deploying to cloud services, not to web sites. For information about deploying to web sites, see [Deploy a web app in Azure App Service](./app-service-web/web-sites-deploy.md).
 
-Zuerst müssen Sie Ihre Webanwendung für Azure über Visual Studio aktivieren. Die folgende Abbildung zeigt die wichtigsten Schritte zum Veröffentlichen Ihrer vorhandenen Webanwendung, indem Sie für die Bereitstellung ein Azure-Projekt hinzufügen. Bei diesem Prozess wird Ihrer Projektmappe ein Azure-Projekt mit der erforderlichen Webrolle hinzugefügt. Je nach Typ Ihres Webprojekts werden auch die Projekteigenschaften für Assemblys aktualisiert, wenn das Dienstpaket zusätzliche Assemblys für die Bereitstellung erfordert.
+For a list of specific templates that are supported for both Visual C# and Visual Basic, see the section **Supported Project Templates** later in this topic.
 
-![Veröffentlichen einer Webanwendung in Microsoft Azure](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC748917.png)
+You must first enable your web application for Azure from Visual Studio. The following illustration shows the key steps to publish your existing web application by adding an Azure project to use for deployment. This process adds an Azure project with the required web role to your solution. Based on the type of web project that you have, the project properties for assemblies are also updated if the service package requires additional assemblies for deployment.
 
->[AZURE.NOTE] Der Befehl **Konvertieren**, **In Azure-Clouddienstprojekt konvertieren** wird nur für das Webprojekt in Ihrer Projektmappe angezeigt. Beispielsweise ist der Befehl nicht für ein Silverlight-Projekt in Ihrer Projektmappe verfügbar. Wenn Sie ein Dienstpaket erstellen oder Ihre Anwendung in Azure veröffentlichen, können Warnungen oder Fehler auftreten. Diese Warnungen und Fehler sind hilfreich zum Beheben von Problemen, bevor Sie die Bereitstellung unter Azure durchführen. Beispielsweise können Sie eine Warnung zu einer fehlenden Assembly erhalten. Weitere Informationen dazu, wie Sie alle Warnungen wie Fehler behandeln, finden Sie unter [Konfigurieren eines Azure-Clouddienstprojekts mit Visual Studio](vs-azure-tools-configuring-an-azure-project.md). Wenn Sie Ihre Anwendung erstellen, lokal mit dem Serveremulator ausführen oder unter Azure veröffentlichen, wird im Fenster **Fehlerliste** ggf. der folgende Fehler angezeigt: **Der angegebene Pfad oder Dateiname bzw. beide sind zu lang.** Dieser Fehler tritt auf, da der vollqualifizierte Name des Azure-Projekts zu lang ist. Der Projektname, einschließlich des vollständigen Pfads, darf nicht mehr als 146 Zeichen lang sein. Dies ist beispielsweise der vollständige Projektname mit dem Dateinamen für ein Azure-Projekt, das für eine Silverlight-Anwendung erstellt wurde: `c:\users<user name>\documents\visual studio 2015\Projects\SilverlightApplication4\SilverlightApplication4.Web.Azure.ccproj`. Unter Umständen müssen Sie die Projektmappe in ein anderes Verzeichnis verschieben, das einen kürzeren Pfad hat, um die Länge des vollqualifizierten Projektnamens zu verringern.
+![Publish a Web application to Microsft Azure](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC748917.png)
 
-Führen Sie die unten angegebenen Schritte aus, um eine Webanwendung aus Visual Studio zu Azure zu migrieren und dort zu veröffentlichen.
+>[AZURE.NOTE] The **Convert**, **Convert to Azure Cloud Service Project** command is displayed only for the web project in your solution. For example, the command is not available for a Silverlight project in your solution.
+When you create a service package or publish your application to Azure, warnings or errors might occur. These warnings and errors can help you fix issues before you deploy to Azure. For example, you might receive a warning about a missing assembly. For more information about how to treat any warnings as errors, see [Configure an Azure Cloud Service Project with Visual Studio](vs-azure-tools-configuring-an-azure-project.md). If you build your application, run it locally using the compute emulator, or publish it to Azure, you might see the following error in the **Error List** window: **The specified path, file name, or both are too long**. This error occurs because the length of the fully qualified Azure project name is too long. The length of the project name, including the full path, cannot be more than 146 characters. For example, this is the full project name including file path for an Azure project that is created for a Silverlight application: `c:\users\<user name>\documents\visual studio 2015\Projects\SilverlightApplication4\SilverlightApplication4.Web.Azure.ccproj`. You might have to move your solution to a different directory that has a shorter path to reduce the length of the fully qualified project name.
 
-## Aktivieren einer Webanwendung für die Bereitstellung in Azure
+To migrate and publish a web application to Azure from Visual Studio, follow these steps.
 
-### So aktivieren Sie eine Webanwendung für die Bereitstellung in Azure
+## <a name="enable-a-web-application-for-deployment-to-azure"></a>Enable a Web Application for Deployment to Azure
 
-1. Um Ihre Webanwendung für die Bereitstellung in Azure zu aktivieren, öffnen Sie das Kontextmenü für ein Webprojekt in Ihrer Projektmappe und wählen die Option "Azure-Bereitstellungsobjekt hinzufügen" aus.
+### <a name="to-enable-a-web-application-for-deployment-to-azure"></a>To enable a web application for deployment to Azure
 
-    Die folgenden Aktionen werden ausgeführt:
+1. To enable your web application for deployment to Azure, open the shortcut menu for a web project in your solution and choose Add Azure Deployment Project.
 
-    - Der Projektmappe für Ihre Anwendung wird ein Azure-Projekt mit dem Namen `<name of the web project>.Azure` hinzugefügt.
+    The following actions occur:
 
-    - Eine Webrolle für das Webprojekt wird diesem Azure-Projekt hinzugefügt.
+    - An Azure project called `<name of the web project>.Azure` is added to the solution for your application.
 
-    - Die **Copy Local**-Eigenschaft wird für alle Assemblys, die für MVC 2-, MVC 3-, MVC 4- und Silverlight-Geschäftsanwendungen erforderlich sind, auf "true" festgelegt. So werden diese Assemblys dem Dienstpaket hinzugefügt, das für die Bereitstellung verwendet wird.
+    - A web role for the web project is added to this Azure project.
 
-  >[AZURE.IMPORTANT] Wenn Sie über andere Assemblys oder Dateien verfügen, die für diese Webanwendung benötigt werden, müssen Sie die Eigenschaften für diese Dateien manuell festlegen. Informationen zum Festlegen dieser Eigenschaften finden Sie im Abschnitt **Einschließen von Dateien in das Dienstpaket** weiter unten in diesem Artikel.  
+    - The **Copy Local** property is set to true for any assemblies that are required for MVC 2, MVC 3, MVC 4, and Silverlight Business Applications. This adds these assemblies to the service package that is used for deployment.
 
-  >[AZURE.NOTE] Wenn eine Webrolle für ein bestimmtes Webprojekt in einem Azure-Projekt der Lösung bereits vorhanden ist, wird **Konvertieren**, **In Azure-Clouddienstprojekt konvertieren** im Kontextmenü für dieses Webprojekt nicht angezeigt.
+  >[AZURE.IMPORTANT] If you have other assemblies or files that are required for this web application, you must manually set the properties for these files. For information about how to set these properties, see the section **Include Files in the Service Package** later in this article.
 
-  Falls Ihre Webanwendung mehrere Webprojekte umfasst und Sie Webrollen für jedes Webprojekt erstellen möchten, müssen Sie die Schritte in diesem Verfahren für jedes Webprojekt ausführen. Hierbei werden für jede Webrolle separate Azure-Projekte erstellt. Jedes Webprojekt kann separat veröffentlicht werden. Alternativ dazu können Sie einem vorhandenen Azure-Projekt in der Webanwendung eine weitere Webrolle hinzufügen. Öffnen Sie hierzu das Kontextmenü für den Ordner **Rollen** in Ihrem Azure-Projekt, wählen Sie **Hinzufügen** und **Webrollenprojekt in Lösung** und dann das Projekt aus, das als Webrolle hinzugefügt werden soll. Klicken Sie anschließend auf die Schaltfläche **OK**.
+  >[AZURE.NOTE] If a web role for a specific web project already exists in an Azure project in the solution, **Convert**, **Convert to Azure Cloud Service Project** is not displayed on the shortcut menu for this web project.
 
-## Verwenden einer Azure SQL-Datenbank für die Anwendung
+  If you have multiple web projects in your web application and you want to create web roles for each web project, you must perform the steps in this procedure for each web project. This creates separate Azure projects for each web role. Each web project can be published separately. Alternatively, you can manually add another web role to an existing Azure project in your web application. To do this, open the shortcut menu for the **Roles** folder in your Azure project, choose **Add**, then **Web Role Project in solution**, choose the project to add as a web role, and then choose the **OK** button.
 
-Wenn Sie eine Verbindungszeichenfolge für Ihre Webanwendung nutzen, für die eine lokale SQL Server-Datenbank verwendet wird, müssen Sie diese Verbindungszeichenfolge ändern, damit stattdessen eine von Azure gehostete Instanz der SQL-Datenbank verwendet wird.
+## <a name="use-an-azure-sql-database-for-your-application"></a>Use an Azure SQL Database for Your Application
 
->[AZURE.IMPORTANT] Sie müssen im Rahmen Ihres Abonnements zur Verwendung der SQL-Datenbank berechtigt sein. Wenn Sie auf Ihr Abonnement über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) zugreifen, können Sie festlegen, welche Dienste Ihr Abonnement umfasst. Die folgenden Anweisungen gelten für das veröffentlichte [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885). Fahren Sie mit dem nächsten Verfahren fort, wenn Sie das [Azure-Portal](http://portal.microsoft.com) verwenden.
+If you have a connection string for your web application that uses a SQL Server database that's on the premises, you must change this connection string to use an instance of SQL Database that Azure hosts instead.
 
-### So verwenden Sie eine SQL-Datenbankinstanz in der Webrolle für Ihre Verbindungszeichenfolge
+>[AZURE.IMPORTANT] Your subscription must enable you to use SQL Database. If you access your subscription from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), you can determine what services your subscription provides. The following instructions apply to the released [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885). If you are using the [Azure portal](http://portal.microsoft.com), skip to the next procedure.
 
-1. Führen Sie die Schritte im Artikel [Erstellen eines SQL-Datenbankservers](http://go.microsoft.com/fwlink/?LinkId=225109) aus, um eine Instanz von SQL-Datenbank im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) zu erstellen.
+### <a name="to-use-a-sql-database-instance-in-your-web-role-for-your-connection-string"></a>To use a SQL Database instance in your web role for your connection string
 
-    >[AZURE.NOTE] Wenn Sie die Firewallregeln für die Instanz von SQL-Datenbank einrichten, müssen Sie das Kontrollkästchen **Anderen Azure-Diensten Zugriff auf diesen Server gewähren** aktivieren.
+1. To create an instance of SQL Database in the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), follow the steps in the following article: [Create a SQL Database Server](http://go.microsoft.com/fwlink/?LinkId=225109).
 
-1. Führen Sie die Schritte im nächsten Abschnitt des folgenden Artikels aus, um eine Instanz von SQL-Datenbank für Ihre Verbindungszeichenfolge zu erstellen: [Erstellen einer SQL-Datenbank](http://go.microsoft.com/fwlink/?LinkId=225110).
+    >[AZURE.NOTE] When you set up the firewall rules for your instance of SQL Database, you must select the **Allow other Azure services to access this server** check box.
 
-1. Führen Sie die folgenden Schritte im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) aus, um die ADO.NET-Verbindungszeichenfolge zu kopieren, die Sie als Ihre Verbindungszeichenfolge verwenden möchten.
+1. To create an instance of SQL Database to use for your connection string, follow the steps in the next section in the following article: [Create a SQL Database](http://go.microsoft.com/fwlink/?LinkId=225110).
 
-  1. Wählen Sie die Schaltfläche **Datenbank**, und öffnen Sie den Knoten für das Abonnement, das Sie zum Erstellen Ihrer Instanz von SQL-Datenbank verwendet haben.
+1. To copy the ADO.NET connection string to use for your connection string, perform the following steps in the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).  
 
-  1. Um die verfügbaren Instanzen von SQL-Datenbank anzuzeigen, wählen Sie den Knoten **SQL-Datenbanken** aus.
+  1. Choose the **Database** button, and then open the node for the subscription that you used to create your instance of SQL Database.
 
-  1. Wählen Sie die Datenbank aus, um die Eigenschaften für die Datenbank anzuzeigen. Die Ansicht **Eigenschaften** wird angezeigt.
+  1. To display the available instances of SQL Database, choose the **SQL Databases** node.
 
-      >[AZURE.NOTE] Wenn die Ansicht **Eigenschaften** nicht angezeigt wird, müssen Sie sie ggf. mithilfe des Trennlinienelements öffnen.
+  1. To display the properties for the database, choose the database. The **Properties** view appears.
 
-  1. Wählen Sie die Schaltfläche mit den Auslassungspunkten (...) neben „Ansicht“, um die Verbindungszeichenfolgen anzuzeigen.
+      >[AZURE.NOTE] If the **Properties** view doesn't appear, you might need to open it by using the divider.
 
-    Das Dialogfeld **Verbindungszeichenfolgen** wird angezeigt.
+  1. To display the connection strings, choose the ellipsis (...) button next to View.
 
-  1. Markieren Sie den Text, und drücken Sie STRG+C, um die ADO.NET-Verbindungszeichenfolge zu kopieren.
+    The **Connection Strings** dialog box appears.
 
-  1. Wählen Sie die Schaltfläche **Schließen** aus, um das Dialogfeld zu schließen.
+  1. To copy the ADO.NET connection string, highlight the text, and choose the Ctrl+C keys.
 
-1. Gehen Sie wie folgt vor, um die Verbindungszeichenfolge in der Datei „web.config“ zu ersetzen, damit diese Instanz von SQL-Datenbank verwendet wird: Öffnen Sie die Datei „web.config“, markieren Sie den vorhandenen Eintrag der Verbindungszeichenfolge, und drücken Sie STRG+V. Die vorhandene Verbindungszeichenfolge wird durch die ADO.NET-Verbindungszeichenfolge für die Instanz von SQL-Datenbank ersetzt.
+  1. To close the dialog box, choose the **Close** button.
 
-1. Außerdem müssen Sie der Verbindungszeichenfolge den Parameter `MultipleActiveResultSets=True` hinzufügen. Die Verbindungszeichenfolge sollte das folgende Format haben:
+1. To replace the connection string in the web.config file to use this instance of SQL Database, open the web.config file, highlight the existing connection string entry, and then choose the Ctrl+V keys. The ADO.NET connection string for the instance of SQL Database replaces the existing connection string.
+
+1. You must also add the parameter `MultipleActiveResultSets=True` to the connection string. The connection string should have the following format:
 
     ```
     connectionString=”Server=tcp:<database_server>.database.windows.net,1433;Database=<database_name>;User ID=<user_name>@<database_server>;Password=<myPassword>;Trusted_Connection=False;Encrypt=True;MultipleActiveResultSets=True"
     ```
 
-1. (Optional) Eine alternative Methode zum Ändern der Verbindungszeichenfolge direkt in der Datei „web.config“ ist das Hinzufügen eines Abschnitt in einer der web.config-Transformationsdateien. Dies hängt von der Buildkonfiguration ab, die Sie zum Erstellen des Dienstpakets verwenden. Öffnen Sie entweder die Datei „Web.Debug.Config“ oder die Datei „Web.Release.Config“. Fügen Sie den folgenden Abschnitt in diese Datei ein:
+1. (Optional) An alternative method to changing the connection string directly in the web.config file is to add a section into one of the web.config transformation files, depending on the build configuration that you use to create your service package. Open either the Web.Debug.Config file or the Web.Release.Config file. Add the following section into this file:
 
     ```
     XMLCopy<connectionStrings><addname="DefaultConnection"connectionString="Server=tcp:<database_server>.database.windows.net,1433;Database=<database_name>;User ID=<user_name>@<database_server>;Password=<myPassword>;Trusted_Connection=False;Encrypt=True;MultipleActiveResultSets=True"xdt:Transform="SetAttributes"xdt:Locator="Match(name)"/></connectionStrings>
     ```
 
-1. Speichern Sie die Datei, die Sie geändert haben, und veröffentlichen Sie die Anwendung erneut.
+1. Save the file that you modified and republish your application.
 
-### So verwenden Sie eine Instanz von SQL-Datenbank mithilfe des klassischen Azure-Portals
+### <a name="to-use-an-instance-of-sql-database-by-using-the-azure-classic-portal"></a>To use an instance of SQL Database by using the Azure classic portal
 
-1. Wählen Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) den Knoten „SQL-Datenbanken“ aus.
+1. In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), choose the SQL Databases node.
 
-  - Wenn die Instanz von SQL-Datenbank angezeigt wird, die Sie verwenden möchten, öffnen Sie sie.
+  - If the instance of SQL Database that you want to use appears, choose to open it.
 
-  - Wenn Sie keine Instanzen erstellt haben, wählen Sie den entsprechenden Link aus, und erstellen Sie dann eine Instanz.
+  - If you haven't created any instances, choose the appropriate link, and then create an instance.
 
-1. Wählen Sie nach dem Öffnen oder Erstellen einer Datenbankinstanz den Link **Verbindungszeichenfolgen** aus.
+1. After you open or create a database instance, choose the **Connection Strings** link.
 
-1. Wählen Sie unten auf der Seite den Link zum Konfigurieren der Firewalleinstellungen, und übernehmen Sie die Standardwerte, oder konfigurieren Sie die Werte nach Bedarf.
+1. At the bottom of the page, choose the link to configure firewall settings, and accept the default values or configure the values that you need.
 
-1. Kopieren Sie die ADO.NET-Verbindungszeichenfolge, fügen Sie sie in der Datei "web.config" anstelle der alten Verbindungszeichenfolge für die lokale Datenbank ein, und vergessen Sie nicht, `MultipleActiveResultSets=True` hinzuzufügen.
+1. Copy the ADO.NET connection string, paste it into your web.config file over the old connection string for the on-premises database, and be sure to add `MultipleActiveResultSets=True`.
 
-## Veröffentlichen einer Webanwendung in Azure
+## <a name="publish-a-web-application-to-azure"></a>Publish a Web Application to Azure
 
-### So veröffentlichen Sie eine Webanwendung in Azure
+### <a name="to-publish-a-web-application-to-azure"></a>To publish a Web application to Azure
 
-1. Öffnen Sie zum Testen der Anwendung in der lokalen Entwicklungsumgebung mit dem Azure-Serveremulator das Kontextmenü für die Webrolle des Azure-Projekts, und wählen Sie die Option **Als Startprojekt festlegen** aus. Wählen Sie dann **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).
+1. To test the application in the local development environment using the Azure compute emulator, open the shortcut menu for the Azure project for the web role and choose **Set as Startup Project**. Then choose **Debug**, **Start Debugging** (Keyboard: **F5**).
 
-    Das Dialogfeld **Starten der Azure-Debugumgebung** wird geöffnet, und die Anwendung wird im Browser gestartet. Spezielle Details zum Starten der einzelnen Typen von Webanwendungen im Serveremulator finden Sie in der Tabelle in diesem Abschnitt.
+    The **Start the Azure Debugging Environment** dialog box opens and the application starts in the browser. For specific details about how to start each type of web application in the compute emulator, see the table in this section.
 
-1. Zum Einrichten der Dienste für Ihre Anwendung zur Veröffentlichung in Azure müssen Sie über ein Microsoft-Konto und ein Azure-Abonnement verfügen. Richten Sie mit den Schritten im folgenden Thema Ihre Dienste ein: [Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md).
+1. To set up the services for your application to publish to Azure, you must have a Microsoft account and an Azure subscription. Use the steps in the following topic to set up your services: [Prepare to publish or deploy an Azure application from Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md).
 
-1. Um die Webanwendung in Azure zu veröffentlichen, öffnen Sie das Kontextmenü für das Webprojekt und wählen **In Azure veröffentlichen** aus.
+1. To publish the web application to Azure, open the shortcut menu for the web project and choose **Publish to Azure**.
 
-    Das Dialogfeld **Azure-Anwendung veröffentlichen** wird geöffnet, und Visual Studio startet den Bereitstellungsprozess. Weitere Informationen zum Veröffentlichen der Anwendung finden Sie im Abschnitt **Veröffentlichen einer Azure-Anwendung aus Visual Studio** unter [Veröffentlichen eines Clouddiensts mit Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
+    The **Publish Azure Application** dialog box opens and Visual Studio starts the deployment process. For more information about how to publish the application, see the section **Publish an Azure Application from Visual Studio** in [Publishing a Cloud Service using the Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
 
-    >[AZURE.NOTE] Sie können die Webanwendung auch über das Azure-Projekt veröffentlichen. Öffnen Sie hierzu das Kontextmenü für das Azure-Projekt, und klicken Sie auf **Veröffentlichen**.
+    >[AZURE.NOTE] You can also publish the web application from the Azure project. To do this, open the shortcut menu for the Azure project and choose **Publish**.
 
-1. Sie können das Fenster mit dem **Azure-Aktivitätsprotokoll** anzeigen, um den Status der Bereitstellung zu verfolgen. Dieses Protokoll wird automatisch angezeigt, wenn der Bereitstellungsprozess gestartet wird. Sie können Positionen im Aktivitätsprotokoll erweitern, um ausführliche Informationen anzuzeigen. Dies ist in der folgenden Abbildung dargestellt:
+1. To see the progress of the deployment, you can view the **Azure Activity Log** window. This log is automatically displayed when the deployment process starts. You can expand the line item in the activity log to show detailed information, as shown in the following illustration:
 
-    ![VST\_AzureActivityLog](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744149.png)
+    ![VST_AzureActivityLog](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744149.png)
 
-1. (Optional) Um den Bereitstellungsprozess abzubrechen, öffnen Sie das Kontextmenü für die Position im Aktivitätsprotokoll und wählen **Abbrechen und entfernen** aus. Der Bereitstellungsprozess wird beendet, und die Bereitstellungsumgebung wird aus Azure gelöscht.
+1. (Optional) To cancel the deployment process, open the shortcut menu for the line item in the activity log and choose **Cancel and remove**. This stops the deployment process and deletes the deployment environment from Azure.
 
-    >[AZURE.NOTE] Sie müssen das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden, um diese Umgebung nach der Bereitstellung zu entfernen.
+    >[AZURE.NOTE] To remove this deployment environment after it has been deployed, you must use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-1. (Optional) Nach dem Starten Ihrer Rolleninstanzen wird die Bereitstellungsumgebung in Visual Studio im **Cloud Explorer** oder **Server-Explorer** automatisch unter dem Knoten **Azure Compute** angezeigt. Hier können Sie den Status der einzelnen Rolleninstanzen anzeigen.
+1. (Optional) After your role instances have started, Visual Studio automatically shows the deployment environment in the **Azure Compute** node in **Cloud Explorer** or **Server Explorer**. From here you can view the status of the individual role instances.
 
-    Die folgende Abbildung zeigt die Rolleninstanzen im **Server-Explorer**, während diese sich noch im Status "Wird initialisiert" befinden:
+    The following illustration shows the role instances in **Server Explorer** while they are still in the Initializing state:
 
-    ![VST\_DeployComputeNode](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744134.png)
+    ![VST_DeployComputeNode](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744134.png)
 
-1. Um nach der Bereitstellung auf Ihre Anwendung zuzugreifen, wählen Sie den Pfeil neben Ihrer Bereitstellung aus, wenn der Status **Abgeschlossen** im **Azure-Aktivitätsprotokoll** angezeigt wird. Die URL für Ihre Webanwendung in Azure wird angezeigt. Die folgende Tabelle enthält die Details zum Starten eines bestimmten Typs von Webanwendung unter Azure.
+1. To access your application after deployment, choose the arrow next to your deployment when a status of **Completed** appears in the **Azure Activity log**. This displays the URL for your web application in Azure. See the following table for the details about how to start a specific type of web application from Azure.
 
-    In der folgenden Tabelle sind die Details zum Starten bestimmter Webanwendungen unter Azure bzw. zum lokalen Ausführen oder Debuggen einer Webanwendung mit dem Azure-Serveremulator aufgeführt:
+    The following table lists the details about how to start specific web applications from Azure or to run or debug a web application locally using the Azure Compute Emulator:
 
-    |Webanwendungstyp|Lokales Ausführen/Debuggen per Serveremulator|Ausführen in Azure|
-    |---|---|---|
-    |ASP.NET-Webanwendung|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Wählen Sie den URL-Hyperlink aus, der auf der Registerkarte **Bereitstellung** für das **Azure-Aktivitätsprotokoll** angezeigt wird, um die Startseite in den Browser zu laden.|
-    |ASP.NET MVC 2-Webanwendung|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Wählen Sie den URL-Hyperlink aus, der auf der Registerkarte **Bereitstellung** für das **Azure-Aktivitätsprotokoll** angezeigt wird, um die Startseite in den Browser zu laden.|
-    |ASP.NET MVC 3-Webanwendung|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Wählen Sie den URL-Hyperlink aus, der auf der Registerkarte **Bereitstellung** für das **Azure-Aktivitätsprotokoll** angezeigt wird, um die Startseite in den Browser zu laden.|
-    |ASP.NET MVC 4-Webanwendung|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Wählen Sie den URL-Hyperlink aus, der auf der Registerkarte **Bereitstellung** für das **Azure-Aktivitätsprotokoll** angezeigt wird, um die Startseite in den Browser zu laden.|
-    |Leere ASP.NET-Webanwendung|Sie müssen in Ihrer Anwendung eine ASPX-Seite hinzufügen, die Sie als Startseite für Ihr Webprojekt festlegen. Wählen Sie dann in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Wenn Sie eine standardmäßige ASPX-Seite in der Anwendung verwenden, wählen Sie den URL-Hyperlink aus, der auf der Registerkarte **Bereitstellung** für das **Azure-Aktivitätsprotokoll** angezeigt wird. Diese Seite wird dann in den Browser geladen. Wenn Sie eine andere ASPX-Seite verwenden, müssen Sie zu dieser speziellen Seite navigieren, indem Sie für Ihre URL das folgende Format verwenden: `<url for deployment>/<name of page>.aspx`|
-    |Silverlight-Anwendung|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
-    |Silverlight-Geschäftsanwendung|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
-    |Silverlight-Navigationsanwendung|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
-    |WCF-Dienstanwendung|Sie müssen die SVC-Datei als Startseite für Ihr WCF-Dienstprojekt festlegen. Wählen Sie dann in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen zur SVC-Datei für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of service file>.svc`|
-    |Dienstanwendung für WCF-Workflows|Sie müssen die SVC-Datei als Startseite für Ihr WCF-Dienstprojekt festlegen. Wählen Sie dann in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen zur SVC-Datei für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of service file>.svc`|
-    |ASP.NET Dynamic Entities|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Sie müssen die Verbindungszeichenfolge aktualisieren (siehe nächsten Abschnitt). Sie müssen auch zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
-    |ASP.NET Dynamic Data-LINQ to SQL|Wählen Sie in der Menüleiste die Option **Debuggen**, **Debuggen starten** aus (Tastatur: **F5**).|Führen Sie die Schritte in diesem Verfahren aus: Verwenden einer SQL Azure-Datenbank für Ihre Anwendung (siehe Abschnitt weiter oben in diesem Thema). Sie müssen auch zur speziellen Seite für Ihre Anwendung navigieren, indem Sie das folgende Format für Ihre URL verwenden: `<url for deployment>/<name of page>.aspx`|
+  	|Web Application Type|Run/Debug Locally Using the Compute Emulator|Running in Azure|
+  	|---|---|---|
+  	|ASP.NET Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET MVC 2 Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET MVC 3 Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET MVC 4 Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET Empty Web Application|You must add an .aspx page in your application that you set as the start page for your web project. Then on the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|If you have a default .aspx page in your application, choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** and this page is loaded in the browser. If you have a different .aspx page, you need to navigate to this specific page using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|Silverlight Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|Silverlight Business Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|Silverlight Navigation Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the specific page for your application using the following format for your url:`<url for deployment>/<name of page>.aspx`|
+  	|WCF Service Application|You must set the .svc file as the start page for your WCF Service project. Then on the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the svc file for your application using the following format for your url: `<url for deployment>/<name of service file>.svc`|
+  	|WCF Workflow Service Application|You must set the .svc file as the start page for your WCF Service project. Then on the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the svc file for your application using the following format for your url: `<url for deployment>/<name of service file>.svc`|
+  	|ASP.NET Dynamic Entities|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You must update the connection string (see next section). You also need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|ASP.NET Dynamic Data Linq to SQL|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You must follow the steps in this procedure: Use a SQL Azure database for your application (see earlier section in this topic). You also need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
 
-## Aktualisieren einer Verbindungszeichenfolge für ASP.NET Dynamic Entities
+## <a name="update-a-connection-string-for-asp.net-dynamic-entities"></a>Update a Connection String for ASP.NET Dynamic Entities
 
-### So aktualisieren Sie eine Verbindungszeichenfolge für ASP.NET Dynamic Entities
+### <a name="to-update-a-connection-string-for-asp.net-dynamic-entities"></a>To Update a Connection String for ASP.NET Dynamic Entities
 
-1. Führen Sie die Schritte des Verfahrens unter **Verwenden einer SQL Azure-Datenbank für Ihre Anwendung** weiter oben in diesem Thema aus, um eine SQL Azure-Datenbank zu erstellen, die für eine ASP.NET Dynamic Entities-Webanwendung verwendet werden kann.
+1. To create a SQL Azure database that can be used for a ASP.NET Dynamic Entities web application, follow the steps in the procedure **Use a SQL Azure database for your application** earlier in this topic.
 
-1. Fügen Sie die Tabellen und Felder, die Sie für diese Datenbank benötigen, über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) hinzu.
+1. Add the tables and fields that you need for this database from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-1. Die Verbindungszeichenfolge für diese Art von Anwendung hat in der Datei „web.config“ das folgende Format:
-
-    ```
-    <addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=";data source=<server name>\SQLEXPRESS;initial catalog=<database name>;integrated security=True;multipleactiveresultsets=True;App=EntityFramework";"providerName="System.Data.EntityClient"/>
-    ```
-
-    Aktualisieren Sie den Wert *connectionString* mit der ADO.NET-Verbindungszeichenfolge wie folgt für Ihre SQL Azure-Datenbank:
+1. The connection string for this type of application has the following format in the web.config file:  
 
     ```
-    XMLCopy<addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=";Server=tcp:<SQL Azure server name>.database.windows.net,1433;Database=<database name>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;multipleactiveresultsets=True;App=EntityFramework";"providerName="System.Data.EntityClient"/>
+    <addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=<server name>\SQLEXPRESS;initial catalog=<database name>;integrated security=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
     ```
 
-1. Wählen Sie in der Menüleiste **Datei** und dann **web.config speichern** aus, um die Datei "web.config" mit den Änderungen zu speichern, die Sie an der Verbindungszeichenfolge vorgenommen haben.
+    Update the *connectionString* value with the ADO.NET connection string for your SQL Azure database as follows:
 
-## Unterstützte Projektvorlagen
+    ```
+    XMLCopy<addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;Server=tcp:<SQL Azure server name>.database.windows.net,1433;Database=<database name>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
+    ```
 
-Zum Veröffentlichen einer Webanwendung unter Azure muss für die Anwendung eine der Projektvorlagen für C# oder Visual Basic verwendet werden, die unten in der Tabelle enthalten ist.
+1. To save the web.config file with the changes that you have made to the connection string, on the menu bar choose **File**, **Save web.config**.
 
-|Projektvorlagengruppe|Projektvorlage|
+## <a name="supported-project-templates"></a>Supported Project Templates
+
+To publish a web application to Azure, the application must use one of the project templates for C# or Visual Basic that is listed in the table below.
+
+|Project Template Group|Project Template|
 |---|---|
-|Web|ASP.NET-Webanwendung|
-|Web|ASP.NET MVC 2-Webanwendung|
-|Web|ASP.NET MVC 3-Webanwendung|
-|Web|ASP.NET MVC 4-Webanwendung|
-|Web|Leere ASP.NET-Webanwendung|
-|Web|Leere ASP.NET MVC 2-Webanwendung|
-|Web|Webanwendung für ASP.NET Dynamic Data Entities|
-|Web|Webanwendung für ASP.NET Dynamic Data-LINQ to SQL|
-|Silverlight|Silverlight-Anwendung|
-|Silverlight|Silverlight-Geschäftsanwendung|
-|Silverlight|Silverlight-Navigationsanwendung|
-|WCF|WCF-Dienstanwendung|
-|WCF|Dienstanwendung für WCF-Workflows|
-|Workflow|Dienstanwendung für WCF-Workflows|
+|Web|ASP.NET Web Application|
+|Web|ASP.NET MVC 2 Web Application|
+|Web|ASP.NET MVC 3 Web Application|
+|Web|ASP.NET MVC4 Web Application|
+|Web|ASP.NET Empty Web Application|
+|Web|ASP.NET MVC 2 Empty Web Application|
+|Web|ASP.NET Dynamic Data Entities Web Application|
+|Web|ASP.NET Dynamic Data Linq to SQL Web Application|
+|Silverlight|Silverlight Application|
+|Silverlight|Silverlight Business Application|
+|Silverlight|Silverlight Navigation Application|
+|WCF|WCF Service Application|
+|WCF|WCF Workflow Service Application|
+|Workflow|WCF Workflow Service Application|
 
-## Nächste Schritte
-Weitere Informationen zur Veröffentlichung finden Sie unter [Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md). Sehen Sie sich auch [Einrichten benannter Authentifizierungsanmeldeinformationen](vs-azure-tools-setting-up-named-authentication-credentials.md) an.
+## <a name="next-steps"></a>Next Steps
+For more information on publishing, see [Prepare to Publish or Deploy an Azure Application from Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md). Also check out [Setting Up Named Authentication Credentials](vs-azure-tools-setting-up-named-authentication-credentials.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

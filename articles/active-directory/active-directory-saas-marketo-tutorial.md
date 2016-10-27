@@ -1,356 +1,357 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory-Integration mit Marketo | Microsoft Azure"
-	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Marketo konfigurieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with Marketo | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and Marketo."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/07/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/07/2016"
+    ms.author="jeedes"/>
 
 
-# Tutorial: Azure Active Directory-Integration mit Marketo
 
-In diesem Tutorial erfahren Sie, wie Sie Marketo in Azure Active Directory (Azure AD) integrieren.
+# <a name="tutorial:-azure-active-directory-integration-with-marketo"></a>Tutorial: Azure Active Directory integration with Marketo
 
-Die Integration von Marketo in Azure AD bietet die folgenden Vorteile:
+In this tutorial, you learn how to integrate Marketo with Azure Active Directory (Azure AD).
 
-- Sie können in Azure AD steuern, wer Zugriff auf Marketo hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Marketo anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+Integrating Marketo with Azure AD provides you with the following benefits:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- You can control in Azure AD who has access to Marketo
+- You can enable your users to automatically get signed-on to Marketo (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## Voraussetzungen
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Um die Azure AD-Integration mit Marketo konfigurieren zu können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- Ein Azure AD-Abonnement
-- Ein Marketo-Abonnement, für das einmaliges Anmelden aktiviert ist
+To configure Azure AD integration with Marketo, you need the following items:
 
-
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+- An Azure AD subscription
+- A Marketo single-sign on enabled subscription
 
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-## Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
+To test the steps in this tutorial, you should follow these recommendations:
 
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
-
-1. Hinzufügen von Marketo aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## Hinzufügen von Marketo aus dem Katalog
-Zum Konfigurieren der Integration von Marketo in Azure AD müssen Sie Marketo aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+## <a name="scenario-description"></a>Scenario description
+In this tutorial, you test Azure AD single sign-on in a test environment.
 
-**Um Marketo aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-
-	![Active Directory][1]
-
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
-
-	![Anwendungen][2]
-
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
-
-	![Anwendungen][3]
-
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-
-	![Anwendungen][4]
-
-6. Geben Sie im Suchfeld **Marketo** ein.
-
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_01.png)
-
-7. Wählen Sie im Ergebnisbereich **Marketo** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_02.png)
-
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit Marketo.
-
-Für das einmalige Anmelden muss Azure AD wissen, welcher Benutzer in Marketo als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Marketo muss eine Linkbeziehung eingerichtet werden.
-
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert für den **Benutzernamen** in Marketo zuweisen.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Marketo müssen Sie die folgenden Bausteine ausführen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Marketo-Testbenutzers](#creating-a-predictix-price-reporting-test-user)**, um eine Entsprechung von Britta Simon in Marketo zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
-
-### Konfigurieren des einmaligen Anmeldens von Azure AD
-
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Marketo-Anwendung.
+1. Adding Marketo from the gallery
+2. Configuring and testing Azure AD single sign-on
 
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Marketo die folgenden Schritte aus:**
+## <a name="adding-marketo-from-the-gallery"></a>Adding Marketo from the gallery
+To configure the integration of Marketo into Azure AD, you need to add Marketo from the gallery to your list of managed SaaS apps.
 
-1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Marketo** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-	 
-	![Einmaliges Anmelden konfigurieren][6]
+**To add Marketo from the gallery, perform the following steps:**
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Marketo anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_03.png)
+    ![Active Directory][1]
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_04.png)
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    a. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: `https://saml.marketo.com/sp`
-	
-	b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://login.marketo.com/saml/assertion/<munchkinid>`
+    ![Applications][2]
 
-	c. Klicken Sie auf **Weiter**.
+4. Click **Add** at the bottom of the page.
+
+    ![Applications][3]
+
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+
+    ![Applications][4]
+
+6. In the search box, type **Marketo**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_01.png)
+
+7. In the results pane, select **Marketo**, and then click **Complete** to add the application.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_02.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+In this section, you configure and test Azure AD single sign-on with Marketo based on a test user called "Britta Simon".
+
+For single sign-on to work, Azure AD needs to know what the counterpart user in Marketo is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Marketo needs to be established.
+
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Marketo.
+
+To configure and test Azure AD single sign-on with Marketo, you need to complete the following building blocks:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a Marketo test user](#creating-a-predictix-price-reporting-test-user)** - to have a counterpart of Britta Simon in Marketo that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+
+In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your Marketo application.
+
+
+**To configure Azure AD single sign-on with Marketo, perform the following steps:**
+
+1. In the classic portal, on the **Marketo** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
+
+2. On the **How would you like users to sign on to Marketo** page, select **Azure AD Single Sign-On**, and then click **Next**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_03.png) 
+
+3. On the **Configure App Settings** dialog page, perform the following steps:
+
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_04.png) 
+
+    a. In the **Identifier** textbox, type the URL using the following pattern: `https://saml.marketo.com/sp`
+    
+    b. In the **Reply URL** textbox, type the URL using the following pattern: `https://login.marketo.com/saml/assertion/\<munchkinid\>`
+
+    c. click **Next**
  
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Marketo** die folgenden Schritte aus:
+4. On the **Configure single sign-on at Marketo** page, perform the following steps:
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_05.png)
 
-    a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
+    a. Click **Download certificate**, and then save the file on your computer.
 
-    b. Klicken Sie auf **Next**.
+    b. Click **Next**.
 
 
-5. Um die Munchkin-ID Ihrer Anwendung zu erhalten, melden Sie sich mit Ihren Administratoranmeldeinformationen bei Marketo an und führen Sie folgende Aktionen aus:
+5. To get Munchkin Id of your application, log in to Marketo using admin credentials and perform following actions:
 
-	a. Melden Sie sich mit Ihren Administratoranmeldeinformationen bei der Marketo-Anwendung an.
+    a. Login to Marketo app using admin credentials.
 
-	b. Klicken Sie auf die Schaltfläche „Admin“ im oberen Navigationsbereich.
+    b. Click on the Admin button on the top navigation pane.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
 
-	c. Navigieren Sie zum Menü „Integration“, und klicken Sie auf den Munchkin-Link.
-	
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_11.png)
+    c. Navigate to the Integration menu and click on the Munchkin link
+    
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_11.png)
 
-	d. Kopieren Sie die Munchkin-ID, die auf dem Bildschirm angezeigt wird, und schließen Sie Ihre Antwort-URL im Azure AD-Konfigurations-Assistenten ab.
+    d. Copy the Munchkin Id shown on the screen and complete your Reply URL in the Azure AD configuration wizard.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_12.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_12.png)
 
-6.	Führen Sie die unten beschriebenen Schritte aus, um SSO in der Anwendung zu konfigurieren:
+6.  To configure the SSO in the application, please follow the below steps:
 
-	a. Melden Sie sich mit Ihren Administratoranmeldeinformationen bei der Marketo-Anwendung an.
+    a. Login to Marketo app using admin credentials.
 
-	b. Klicken Sie auf die Schaltfläche „Admin“ im oberen Navigationsbereich.
+    b. Click on the Admin button on the top navigation pane.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
 
-	c. Navigieren Sie zum Menü „Integration“, und klicken Sie auf „Einmaliges Anmelden“.
+    c. Navigate to the Integration menu and click on Single Sign On
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png) 
 
-	d. Klicken zum Aktivieren der SAML-Einstellungen auf die Schaltfläche „Bearbeiten“.
-	
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png)
+    d. To enable the SAML Settings click on Edit button
+    
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png) 
 
-	e. **Aktivieren** Sie die Einstellungen für einmaliges Anmelden.
+    e. **Enable** Single Sign-On settings
 
-	f. Geben Sie die Aussteller-ID ein, die Sie aus dem Azure AD-Konfigurations-Assistenten kopiert haben.
+    f. Enter the Issuer ID, whihc you have copied from Azure AD configuration wizard.
 
-	g. Geben Sie die URL als **http://saml.marketo.com/sp** in das Textfeld „Entitäts-ID“ ein.
+    g. In the Entity ID textbox enter the URL as **http://saml.marketo.com/sp**
 
-	h. Wählen Sie den Speicherort der Benutzer-ID als **Namensbezeichnerelement**.
+    h. Select the User ID Location as **Name Identifier element**
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
 
-	> [AZURE.NOTE] Wenn Ihre Benutzer-ID kein UPN-Wert ist, ändern Sie den Wert in der Registerkarte „Attribut“.
-	 
-	i. Laden Sie das aus Azure AD-Zertifikat hoch, das Sie aus dem Azure AD-Konfigurations-Assistenten heruntergeladen haben. Speichern Sie die Einstellungen.
+    > [AZURE.NOTE] If your User Identifier is not UPN value then change the value in the Attribute tab.
+     
+    i. Upload the certificate which you have downloaded from Azure AD configuration wizard. Save the settings.
 
-	j. Bearbeiten Sie die Einstellungen für Seitenumleitungen.
+    j. Edit the Redirect Pages settings
 
-	k. Kopieren Sie die Anmelde-URL aus dem Azure AD-Konfigurations-Assistenten in das Textfeld **Anmelde-URL**.
+    k. Copy the Login URL from Azure AD configuration wizard in the **Login URL** textbox.
 
-	l. Kopieren Sie die Abmelde-URL aus dem Azure AD-Konfigurations-Assistenten in das Textfeld **Abmelde-URL**.
+    l. Copy the Logout URL from Azure AD configuration wizard in the **Logout URL** textbox.
 
-	m. Kopieren Sie in der Fehler-URL die URL Ihrer Marketo-Instanz, und klicken Sie auf die Schaltfläche „Speichern“, um die Einstellungen zu speichern.
+    m. In the Error URL copy your Marketo instance URL and click on Save button to save settings.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
 
-7. Um SSO für Benutzer zu aktivieren, führen Sie die folgenden Aktionen aus:
+7. To enable the SSO for users, complete the following actions:
 
-	a. Melden Sie sich mit Ihren Administratoranmeldeinformationen bei der Marketo-Anwendung an.
+    a. Login to Marketo app using admin credentials.
 
-	b. Klicken Sie auf die Schaltfläche **Admin** im oberen Navigationsbereich.
+    b. Click on the **Admin** button on the top navigation pane.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
 
-	c. Navigieren Sie zum Menü **Sicherheit**, und klicken Sie auf **Anmeldeeinstellungen**.
+    c. Navigate to the **Security** menu and click on **Login Settings** 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_13.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_13.png)
 
-	d. Aktivieren Sie die Option **SSO erfordern**, und speichern Sie die Einstellungen.
-	
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_14.png)
+    d. Check the **Require SSO** option and Save the settings.
+    
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_14.png)
 
-8. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
-	
-	![Azure AD – einmaliges Anmelden][10]
+8. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    
+    ![Azure AD Single Sign-On][10]
 
-8. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+8. On the **Single sign-on confirmation** page, click **Complete**.  
  
-	![Azure AD – einmaliges Anmelden][11]
+    ![Azure AD Single Sign-On][11]
 
 
-### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+In this section, you create a test user in the classic portal called Britta Simon.
 
 
-![Azure AD-Benutzer erstellen][20]
+![Create Azure AD User][20]
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/create_aaduser_09.png) 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. To display the list of users, in the menu on the top, click **Users**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/create_aaduser_05.png)
+5. On the **Tell us about this user** dialog page, perform the following steps:  ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/create_aaduser_05.png) 
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    a. As Type Of User, select New user in your organization.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c. Klicken Sie auf **Weiter**.
+    c. Click **Next**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/create_aaduser_06.png)
+6.  On the **User Profile** dialog page, perform the following steps: ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/create_aaduser_06.png) 
 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. In the **Role** list, select **User**.
 
-    e. Klicken Sie auf **Weiter**.
+    e. Click **Next**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/create_aaduser_07.png) 
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-marketo-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-marketo-tutorial/create_aaduser_08.png) 
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
+    a. Write down the value of the **New Password**.
 
-    b. Klicken Sie auf **Fertig stellen**.
+    b. Click **Complete**.   
 
 
 
-### Erstellen eines Marketo-Testbenutzers
+### <a name="creating-an-marketo-test-user"></a>Creating an Marketo test user
 
-In diesem Abschnitt erstellen Sie in Marketo einen Benutzer namens Britta Simon. Befolgen Sie diese Schritte, um einen Benutzer in der Marketo-Plattform zu erstellen.
+In this section, you create a user called Britta Simon in Marketo. Please follow these steps to create a user in Marketo platform.
 
-1. Melden Sie sich mit Ihren Administratoranmeldeinformationen bei der Marketo-Anwendung an.
+1. Login to Marketo app using admin credentials.
 
-2. Klicken Sie auf die Schaltfläche **Admin** im oberen Navigationsbereich.
+2. Click on the **Admin** button on the top navigation pane.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
 
-3. Navigieren Sie zum Menü **Sicherheit**, und klicken Sie auf **Users & Roles** (Benutzer und Rollen).
+3. Navigate to the **Security** menu and click on **Users & Roles**
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_19.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_19.png)  
 
-4. Klicken Sie auf den Link **Invite New User** (Neuen Benutzer einladen) auf der Registerkarte „Benutzer“.
+4. Click on the **Invite New User** link on the Users tab
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_15.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_15.png) 
 
-5. Geben Sie die folgenden Informationen im Assistenten zum Einladen neuer Benutzer ein.
+5. In the Invite New User wizard fill the following information
 
-	a. Geben Sie die **E-Mail**-Adresse des Benutzers in das Textfeld ein.
+    a. Enter the user **Email** address in the textbox
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_16.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_16.png)
 
-	b. Geben Sie den **Vornamen** in das Textfeld ein.
-	
-	c. Geben Sie den **Nachnamen** in das Textfeld ein.
+    b. Enter the **First Name** in the textbox
+    
+    c. Enter the **Last Name**  in the textbox
 
-	d. Klicken Sie auf „Weiter“.
+    d. Click on Next
 
-6. Wählen Sie auf der Registerkarte **Berechtigungen** die Benutzerrollen aus, und klicken Sie auf „Weiter“.
+6. In the **Permissions** tab select the user Roles and click Next
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_17.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_17.png)
 
-7. Klicken Sie auf die Schaltfläche „Senden“, um die Benutzer-Einladung zu senden.
+7. Click on the Send button to send the user invitation
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_18.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_18.png)
 
-8. Der Benutzer erhält die e-Mail-Benachrichtigung und muss auf den Link klicken sowie das Kennwort ändern, um das Konto zu aktivieren.
+8. User will receive the email notification and has to click on the link and change the password to activate the account. 
 
 
-### Zuweisen des Azure AD-Testbenutzers
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf Marketo gewähren.
+In this section, you enable Britta Simon to use Azure single sign-on by granting her access to Marketo.
 
-![Benutzer zuweisen][200]
+![Assign User][200] 
 
-**Um Britta Simon Marketo zuzuweisen, führen Sie die folgenden Schritte aus:**
+**To assign Britta Simon to Marketo, perform the following steps:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
 
-	![Benutzer zuweisen][201]
+    ![Assign User][201] 
 
-2. Wählen Sie in der Anwendungsliste **Marketo** aus.
+2. In the applications list, select **Marketo**.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_50.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_50.png) 
 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
+3. In the menu on the top, click **Users**.
 
-	![Benutzer zuweisen][203]
+    ![Assign User][203]
 
-4. Wählen Sie in der Benutzerliste **Britta Simon** aus.
+4. In the Users list, select **Britta Simon**.
 
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+5. In the toolbar on the bottom, click **Assign**.
 
-	![Benutzer zuweisen][205]
+    ![Assign User][205]
 
 
-### Testen der einmaligen Anmeldung
+### <a name="testing-single-sign-on"></a>Testing Single Sign-On
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Marketo“ klicken, sollten Sie automatisch bei Ihrer Marketo-Anwendung angemeldet werden.
+When you click the Marketo tile in the Access Panel, you should get automatically signed-on to your Marketo application.
 
 
-## Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Additional resources
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -371,4 +372,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Marketo“ klicken, sollten Sie au
 [204]: ./media/active-directory-saas-marketo-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-marketo-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

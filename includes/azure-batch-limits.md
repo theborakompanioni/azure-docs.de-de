@@ -1,11 +1,14 @@
-**Ressource**|**Standardlimit**|**Maximales Limit**
+**Resource**|**Default Limit**|**Maximum Limit**
 ---|---|---
-Kerne pro Batch-Konto|20|N/V<sup>1</sup>
-Aufträge und Auftragszeitpläne<sup>2</sup> pro Batch-Konto|20|10\.000
-Pools pro Batch-Konto|20|5\.000
+Cores per Batch account|20|N/A<sup>1</sup>
+Jobs and job schedules<sup>2</sup> per Batch account|20|10,000
+Pools per Batch account|20|5000
 
-<sup>1</sup> Die Anzahl der Kerne pro Batch-Konto kann erhöht werden, die maximale Anzahl ist jedoch nicht festgelegt. Wenden Sie sich an den Kundensupport, um Fragen der Erhöhung zu erörtern.
+<sup>1</sup> The number of cores per Batch account can be increased, but the maximum number is unspecified. Contact customer support to discuss increase options.
 
-<sup>2</sup> Umfasst einmalig ausgeführte aktive Aufträge und aktive Auftragszeitpläne. Abgeschlossene Aufträge und Auftragszeitpläne sind nicht begrenzt.
+<sup>2</sup> Includes run-once active jobs and active job schedules. Completed jobs and job schedules are not limited.
 
-<!---HONumber=AcomDC_0615_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

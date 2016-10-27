@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Mobile Engagement – Handbuch zur Problembehandlung – Dienste" 
-   description="Handbücher zur Problembehandlung für Azure Mobile Engagement" 
+   pageTitle="Azure Mobile Engagement Troubleshooting Guide - Service" 
+   description="Troubleshooting Guides for Azure Mobile Engagement" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -16,77 +16,82 @@
    ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
-# Handbuch zur Problembehandlung bei Dienstproblemen
 
-Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mobile Engagement auftreten können.
+# <a name="troubleshooting-guide-for-service-issues"></a>Troubleshooting guide for Service issues
 
-## Dienstausfälle
+The following are possible issues you may encounter with how Azure Mobile Engagement runs.
 
-### Problem
-- Probleme, die offenbar von Dienstausfällen in Azure Mobile Engagement verursacht werden.
+## <a name="service-outages"></a>Service Outages
 
-### Ursachen
-- Probleme, die scheinbar von Azure Mobile Engagement-Dienstausfällen verursacht werden, können verschiedene Ursachen haben:
-    - Isolierte Probleme, die ursprünglich systemisch in Azure Mobile Engagement auftreten
-    - Bekannte Probleme, die durch Serverausfälle verursacht werden (nicht immer im Serverstatus angezeigt):
-	- Verzögerungen bei der Planung, Fehler bei der Zielgruppenadressierung, Probleme bei der Badgeaktualisierung, keine Erfassung von Statistiken, Pushvorgänge funktionieren nicht mehr, APIs funktionieren nicht mehr, neue Apps oder Benutzer können nicht erstellt werden, DNS-Fehler, Zeitüberschreitungen in Benutzeroberfläche, API oder Apps auf einem Gerät.
-    - Cloudabhängigkeitsfehler [Azure-Dienststatus](http://status.azure.com/)
-    - PNS-Abhängigkeitsfehler (Push Notification Services)
-    - App Store-Ausfälle
+### <a name="issue"></a>Issue
+- Issues that appear to be caused by Azure Mobile Engagement Service Outages.
 
-1) Um zu testen, ob es sich um ein systemisches Problem handelt, können Sie dieselbe Funktion von anderer Stelle ausführen:
+### <a name="causes"></a>Causes
+- Issues that appear to be caused by Azure Mobile Engagement Service Outages can be caused by several different issues:
+    - Isolated issues that originally appear systemic to all of Azure Mobile Engagement
+    - Known issues caused by server outages (not always shows in server status):
+    - Scheduling delays, Targeting errors, Badge update issues, Statistics stop collecting, Push stops working, API's stop working, New apps or users can't be created, DNS errors, and Timeout errors in the UI, API, or Apps on a device.
+    - Cloud Dependency Outages [Azure Service Status](http://status.azure.com/)
+    - Push Notification Services (PNS) Dependency Outages
+    - App Store Outages
+
+1) To test to see if the problem is systemic you can test the same function from a different
    
-   - Integrierte Azure Mobile Engagement-Anwendung
-   - Testgerät
-   - Betriebssystemversion des Testgeräts
-   - Kampagne
-   - Administratorbenutzerkonto
-   - Browser (IE, Firefox, Chrome usw.)
+   - Azure Mobile Engagement integrated application
+   - Test device
+   - Test device OS version
+   - Campaign
+   - Administrator user account
+   - Browser (IE, Firefox, Chrome, etc.)
    - Computer
 
-2) So testen Sie, ob das Problem nur die Benutzeroberfläche oder die APIs betrifft:
+2) To test if the problem only affects the UI or the API's:
 
-   - Testen Sie die gleiche Funktion über die Azure Mobile Engagement-Benutzeroberfläche und die Azure Mobile Engagement-APIs.
+   - Test the same function from both the Azure Mobile Engagement UI and the Azure Mobile Engagement API's.
 
-3) So testen Sie, ob ein Problem mit dem Mobilfunknetz vorliegt:
+3) To test if the problem is with your Cellular Phone Network:
 
-   - Testen Sie, während Sie über WIFI und über Ihr 3G-Mobilfunknetz mit dem Internet verbunden sind.
-   - Vergewissern Sie sich, dass Ihre Firewall keine Azure Mobile Engagement-IP-Adressen oder -Ports blockiert.
+   - Test while connected to the Internet via WIFI and while connected via your 3G cellular phone network.
+   - Confirm that your firewall is not blocking any of the Azure Mobile Engagement IP Addresses or Ports.
 
-4) So testen Sie, ob ein Geräteproblem vorliegt:
+4) To test if the problem is with your Device:
 
-   - Testen Sie, ob Ihr Gerät mit einer anderen integrierten Azure Mobile Engagement-App eine Verbindung mit Azure Mobile Engagement herstellen kann.
-   - Testen Sie, ob Sie Ereignisse, Aufträge und Abstürze über Ihr Telefon generieren können, die auf der Azure Mobile Engagement-Benutzeroberfläche angezeigt werden.
-   - Testen Sie, ob Sie Pushbenachrichtigungen von der Azure Mobile Engagement-Benutzeroberfläche basierend auf der Geräte-ID an Ihr Gerät senden können.
+   - Test if your Device is able to connect to Azure Mobile Engagement with another Azure Mobile Engagement integrated app.
+   - Test that you can generate Events, Jobs, and Crashes from your phone that can be seen in the Azure Mobile Engagement UI. 
+   - Test if you can send push notifications from the Azure Mobile Engagement UI to your device based on its Device ID. 
 
-5) So testen Sie, ob ein Problem mit der App vorliegt:
+5) To test if the problem is with your App:
 
-   - Installieren und testen Sie die Anwendung mit einem Emulator statt eines physischen Geräts:
+   - Install and test your application from an emulator instead of from a physical device:
    
-6) So testen Sie, ob ein Problem mit Betriebssystemupgrades auf Endbenutzergeräten vorliegt, für dessen Lösung ein SDK-Upgrade erforderlich ist:
+6) To test if the problem is with OS upgrades to end user Devices, which require an SDK upgrade to resolve:
 
-   - Testen Sie die Anwendung auf verschiedenen Geräten mit verschiedenen Versionen des Betriebssystems.
-   - Vergewissern Sie sich, dass Sie die neueste Version des SDK verwenden.
+   - Test your application on different devices with different versions of the OS.
+   - Confirm that you are using the most recent version of the SDK.
  
-## Konnektivitätsprobleme und falsche Informationen
+## <a name="connectivity-and-incorrect-information-issues"></a>Connectivity and Incorrect Information Issues
 
-### Problem
-- Es treten bei der Anmeldung an der Azure Mobile Engagement-Benutzeroberfläche Probleme auf.
-- Verbindungsfehler mit den Azure Mobile Engagement-APIs.
-- Probleme beim Hochladen von Infotags der App über die Geräte-API.
-- Probleme beim Herunterladen von Protokollen oder exportierten Daten aus Azure Mobile Engagement.
-- Anzeige von falschen Informationen in der Azure Mobile Engagement-Benutzeroberfläche.
-- Anzeige von falschen Informationen in Azure Mobile Engagement-Protokollen.
+### <a name="issue"></a>Issue
+- Problems logging into the Azure Mobile Engagement UI.
+- Connection errors with the Azure Mobile Engagement API's.
+- Problems uploading App Info Tags via the Device API.
+- Problems downloading logs or exported data from Azure Mobile Engagement.
+- Incorrect information shown in the Azure Mobile Engagement UI.
+- Incorrect information shown in Azure Mobile Engagement logs.
 
-### Ursachen
-* Vergewissern Sie sich, dass Ihr Benutzerkonto über ausreichende Berechtigungen zum Ausführen der Aufgabe verfügt.
-* Stellen Sie sicher, dass es sich nicht um ein isoliertes Problem mit einem Computer oder Ihrem lokalen Netzwerk handelt.
-* Vergewissern Sie sich, dass der Azure Mobile Engagement-Dienst keine Ausfälle meldet.
-* Stellen Sie sicher, dass Ihre App-Infotagdateien allen der folgenden Regeln entsprechen:
-	- Verwenden Sie ausschließlich den UTF8-Zeichensatz (der ANSI-Zeichensatz wird nicht unterstützt).
-    - Verwenden Sie als Trennzeichen ein Komma "," (Sie können über eine Dienstanfrage die Änderung des CSV-Trennzeichens von einem Komma "," in ein anderes Zeichen anfordern, beispielsweise ein Semikolon ";").
-    - Verwenden Sie ausschließlich Kleinbuchstaben für die booleschen Werte "true" und "false".
-    - Verwenden Sie eine Datei, die die maximale Größe von 35 MB nicht übersteigt.
+### <a name="causes"></a>Causes
+* Confirm your user account has sufficient permissions to perform the task.
+* Confirm that the problem is not isolated to one computer or your local network.
+* Confirm that that the Azure Mobile Engagement service has no reported outages.
+* Confirm that your App Info Tag files follow all of these rules:
+    - Use only the UTF8 character set (the ANSI character set is not supported).
+    - Use a comma "," as the separator character (you can open a service request to request to change the .csv separator character from a comma "," to another character such as a semi-colon ";").
+    - Use all lower case for Boolean values "true" and "false".
+    - Use a file that is smaller than the maximum file size of 35MB.
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

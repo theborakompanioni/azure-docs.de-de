@@ -1,32 +1,34 @@
-## Bereitstellen der Lösung
+## <a name="provision-the-solution"></a>Provision the solution
 
-1.  Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine neue Lösung zu erstellen.
+1.  Log on to [azureiotsuite.com][lnk-azureiotsuite] using your Azure account credentials, and click **+** to create a new solution.
 
-2.  Klicken Sie auf der Kachel **Remoteüberwachung** auf **Auswählen**.
+2.  Click **Select** on the **Remote monitoring** tile.
 
-3.  Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Remoteüberwachungslösung ein.
+3.  Enter a **Solution name** for your remote monitoring preconfigured solution.
 
-4.  Wählen Sie die **Region** und das **Abonnement**, die Sie zum Bereitstellen der Lösung verwenden möchten.
+4.  Select the **Region** and **Subscription** you want to use to provision the solution.
 
-5.  Klicken Sie auf **Lösung erstellen**, um den Bereitstellungsprozess zu beginnen. Dies dauert normalerweise einige Minuten.
+5.  Click **Create Solution** to begin the provisioning process. This typically takes several minutes to run.
 
-### Warten auf den Abschluss des Bereitstellungsvorgangs
+### <a name="wait-for-the-provisioning-process-to-complete"></a>Wait for the provisioning process to complete
 
-1. Klicken Sie auf die Kachel für Ihre Lösung mit dem Status **Bereitstellung**.
+1. Click on the tile for your solution with **Provisioning** status.
  
-2. Beachten Sie die **Bereitstellungsstatus** während der Bereitstellung von Azure-Diensten im Azure-Abonnement.
+2. Notice the **Provisioning states** as Azure services are deployed in your Azure subscription.
 
-3. Nach Abschluss der Bereitstellung ändert sich der Status in **Bereit**.
+3. Once provisioning completes, the status changes to **Ready**.
 
-4. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen.
+4. Click on the tile and you'll see the details of your solution in the right-hand pane.
 
-> [AZURE.NOTE] Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Falls die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
+> [AZURE.NOTE] If you are encountering issues deploying the pre-configured solution, take a look at [Permissions on the azureiotsuite.com site][lnk-permissions] and the [FAQ][lnk-faq]. If the issues persist, please create a service ticket on the [portal][lnk-portal].
 
-Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot) zu.
+Are there details you'd expect to see that aren't listed for your solution? Give us feature suggestions on [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-faq.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

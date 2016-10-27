@@ -1,250 +1,251 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory-Integration mit vxMaintain | Microsoft Azure"
-	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und vxMaintain konfigurieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with vxMaintain | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and vxMaintain."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="jeedes"/>
-
-
-# Tutorial: Azure Active Directory-Integration mit vxMaintain
-
-In diesem Tutorial erfahren Sie, wie Sie vxMaintain in Azure Active Directory (Azure AD) integrieren.
-
-Die Integration von vxMaintain in Azure AD bietet die folgenden Vorteile:
-
-- Sie können in Azure AD steuern, wer Zugriff auf vxMaintain hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei vxMaintain anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
-
-## Voraussetzungen
-
-Um die Azure AD-Integration mit vxMaintain konfigurieren zu können, benötigen Sie Folgendes:
-
-- Ein Azure AD-Abonnement
-- Ein vxMaintain-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-
-
-## Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
-
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
-
-1. Hinzufügen von vxMaintain aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-
-
-## Hinzufügen von vxMaintain aus dem Katalog
-Zum Konfigurieren der Integration von vxMaintain in Azure AD müssen Sie vxMaintain aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
-
-**Um vxMaintain aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-
-	![Active Directory][1]
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
-
-	![Anwendungen][2]
-
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
-
-	![Anwendungen][3]
-
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-
-	![Anwendungen][4]
-
-6. Geben Sie im Suchfeld als Suchbegriff **vxMaintain** ein.
-
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_01.png)
-7. Wählen Sie im Ergebnisbereich **vxMaintain** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/18/2016"
+    ms.author="jeedes"/>
 
 
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei vxMaintain mithilfe eines Testbenutzers namens Britta Simon.
+# <a name="tutorial:-azure-active-directory-integration-with-vxmaintain"></a>Tutorial: Azure Active Directory integration with vxMaintain
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in vxMaintain als Gegenstück für einen Benutzer in Azure AD fungiert. Das heißt, zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in vxMaintain muss eine Linkbeziehung eingerichtet werden.
+In this tutorial, you learn how to integrate vxMaintain with Azure Active Directory (Azure AD).
 
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert für den **Benutzernamen** in vxMaintain zuweisen.
+Integrating vxMaintain with Azure AD provides you with the following benefits:
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei vxMaintain müssen Sie die folgenden Schritte durchführen:
+- You can control in Azure AD who has access to vxMaintain
+- You can enable your users to automatically get signed-on to vxMaintain (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines vxMaintain-Testbenutzers](#creating-a-vxmaintain-test-user)**, um eine Entsprechung von Britta Simon in vxMaintain zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+## <a name="prerequisites"></a>Prerequisites
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer vxMaintain-Anwendung.
+To configure Azure AD integration with vxMaintain, you need the following items:
+
+- An Azure AD subscription
+- A vxMaintain single-sign on enabled subscription
 
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in vxMaintain die folgenden Schritte aus:**
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
-1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **vxMaintain** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-	 
-	![Einmaliges Anmelden konfigurieren][6]
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei vxMaintain anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+To test the steps in this tutorial, you should follow these recommendations:
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_03.png)
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_04.png)
+## <a name="scenario-description"></a>Scenario description
+In this tutorial, you test Azure AD single sign-on in a test environment.
 
-    a. Geben Sie im Textfeld **Bezeichner-URL** die URL nach folgendem Muster ein: **https://\<Unternehmensname>.verisae.com**.
-	
-	b. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: **https://\<Unternehmensname>.verisae.com/DataNett/action/ssoConsume/mobile?\_log=true**.
+The scenario outlined in this tutorial consists of two main building blocks:
 
-	c. Klicken Sie auf **Weiter**.
+1. Adding vxMaintain from the gallery
+2. Configuring and testing Azure AD single sign-on
+
+
+## <a name="adding-vxmaintain-from-the-gallery"></a>Adding vxMaintain from the gallery
+To configure the integration of vxMaintain into Azure AD, you need to add vxMaintain from the gallery to your list of managed SaaS apps.
+
+**To add vxMaintain from the gallery, perform the following steps:**
+
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+
+    ![Active Directory][1]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
+
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Applications][2]
+
+4. Click **Add** at the bottom of the page.
+
+    ![Applications][3]
+
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+
+    ![Applications][4]
+
+6. In the search box, type **vxMaintain**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_01.png)
+7. In the results pane, select **vxMaintain**, and then click **Complete** to add the application.
+
+
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+In this section, you configure and test Azure AD single sign-on with vxMaintain based on a test user called "Britta Simon".
+
+For single sign-on to work, Azure AD needs to know what the counterpart user in vxMaintain is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in vxMaintain needs to be established.
+
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in vxMaintain.
+
+To configure and test Azure AD single sign-on with vxMaintain, you need to complete the following building blocks:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a vxMaintain test user](#creating-a-vxmaintain-test-user)** - to have a counterpart of Britta Simon in vxMaintain that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+
+In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your vxMaintain application.
+
+
+**To configure Azure AD single sign-on with vxMaintain, perform the following steps:**
+
+1. In the classic portal, on the **vxMaintain** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
+
+2. On the **How would you like users to sign on to vxMaintain** page, select **Azure AD Single Sign-On**, and then click **Next**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_03.png) 
+
+3. On the **Configure App Settings** dialog page, perform the following steps:
+
+    ![Configure Single Sign-On](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_04.png) 
+
+    a. In the **Identifier URL** textbox, type the URL using the following pattern: **https://\<company name\>.verisae.com**
+    
+    b. In the **Reply URL** textbox, type the URL using the following pattern: **https://\<company name\>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true** 
+
+    c. click **Next**
  
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für vxMaintain** die folgenden Schritte aus:
+4. On the **Configure single sign-on at vxMaintain** page, perform the following steps:
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_05.png)
 
-    a. Klicken Sie auf **Metadaten herunterladen** und speichern Sie die Datei auf Ihrem Computer.
+    a. Click **Download metadata**, and then save the file on your computer.
 
-    b. Klicken Sie auf **Weiter**.
+    b. Click **Next**.
 
 
-5. Um das einmalige Anmelden (Single Sign-On, SSO) für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich an einen Account Executive bei Verisae, um Hilfe bei der Einrichtung von SSO für Ihre Organisation zu erhalten. Stellen Sie die folgenden Informationen bereit:
+5. To get SSO configured for your application, please reach out to Account Executive at Verisae and he will help you setup the SSO for your organization. Provide them following information:
 
-	• Die heruntergeladenen **Metadaten**
+    • The downloaded **metadata**
 
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
-	
-	![Azure AD – einmaliges Anmelden][10]
+6. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    
+    ![Azure AD Single Sign-On][10]
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+7. On the **Single sign-on confirmation** page, click **Complete**.  
  
-	![Azure AD – einmaliges Anmelden][11]
+    ![Azure AD Single Sign-On][11]
 
 
-### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+In this section, you create a test user in the classic portal called Britta Simon.
 
 
-![Azure AD-Benutzer erstellen][20]
+![Create Azure AD User][20]
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_09.png) 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. To display the list of users, in the menu on the top, click **Users**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_05.png)
+5. On the **Tell us about this user** dialog page, perform the following steps:  ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_05.png) 
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    a. As Type Of User, select New user in your organization.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c. Klicken Sie auf **Weiter**.
+    c. Click **Next**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_06.png)
+6.  On the **User Profile** dialog page, perform the following steps: ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_06.png) 
 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. In the **Role** list, select **User**.
 
-    e. Klicken Sie auf **Weiter**.
+    e. Click **Next**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_07.png) 
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_08.png) 
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
+    a. Write down the value of the **New Password**.
 
-    b. Klicken Sie auf **Fertig stellen**.
-
-
-
-### Erstellen eines vxMaintain-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in vxMaintain einen Benutzer namens Britta Simon. Wenden Sie sich an Ihren Account Executive bei Verisae, um Hilfe beim Hinzufügen von Benutzern zur vxMaintain-Plattform zu erhalten.
+    b. Click **Complete**.   
 
 
-### Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf vxMaintain gewähren.
+### <a name="creating-an-vxmaintain-test-user"></a>Creating an vxMaintain test user
 
-![Benutzer zuweisen][200]
-
-**Um Britta Simon vxMaintain zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
-
-	![Benutzer zuweisen][201]
-
-2. Wählen Sie in der Anwendungsliste **vxMaintain** aus.
-
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_50.png)
-
-3. Klicken Sie im oberen Menü auf **Benutzer**.
-
-	![Benutzer zuweisen][203]
-
-4. Wählen Sie in der Benutzerliste **Britta Simon** aus.
-
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-
-	![Benutzer zuweisen][205]
+In this section, you create a user called Britta Simon in vxMaintain. Please reach out to Account Executive at Verisae and he will help you to add the users in the vxMaintain platform.
 
 
-### Testen der einmaligen Anmeldung
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In this section, you enable Britta Simon to use Azure single sign-on by granting her access to vxMaintain.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „vxMaintain“ klicken, sollten Sie automatisch bei Ihrer vxMaintain-Anwendung angemeldet werden.
+![Assign User][200] 
+
+**To assign Britta Simon to vxMaintain, perform the following steps:**
+
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Assign User][201] 
+
+2. In the applications list, select **vxMaintain**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_50.png) 
+
+3. In the menu on the top, click **Users**.
+
+    ![Assign User][203]
+
+4. In the Users list, select **Britta Simon**.
+
+5. In the toolbar on the bottom, click **Assign**.
+
+    ![Assign User][205]
 
 
-## Zusätzliche Ressourcen
+### <a name="testing-single-sign-on"></a>Testing Single Sign-On
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+
+When you click the vxMaintain tile in the Access Panel, you should get automatically signed-on to your vxMaintain application.
+
+
+## <a name="additional-resources"></a>Additional resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -265,4 +266,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel „vxMaintain“ klicken, sollten Sie
 [204]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Integrieren von Anwendungen in Azure Active Directory | Microsoft Azure"
-   description="Erfahren Sie, wie Sie eine Anwendung in Azure AD hinzufügen, aktualisieren oder sie aus Azure Active Directory (Azure AD) entfernen."
+   pageTitle="Integrating Applications with Azure Active Directory | Microsoft Azure"
+   description="Details on how to add, update, or remove an application in Azure Active Directory (Azure AD)."
    services="active-directory"
    documentationCenter=""
-   authors="msmbaldwin"
+   authors="bryanla"
    manager="mbaldwin"
    editor="mbaldwin" />
 <tags
@@ -12,343 +12,351 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/25/2016"
+   ms.date="10/11/2016"
    ms.author="mbaldwin;bryanla" />
 
-# Integrieren von Anwendungen in Azure Active Directory
+
+# <a name="integrating-applications-with-azure-active-directory"></a>Integrating applications with Azure Active Directory
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service) können kommerzielle Clouddienste oder Branchenanwendungen entwickeln, die in Azure Active Directory (Azure AD) integriert werden können, um eine sichere Anmeldung und Autorisierung für ihre Dienste bereitzustellen Um eine Anwendung oder einen Dienst in Azure AD integrieren zu können, muss ein Entwickler zunächst die Details zu seiner Anwendung mithilfe des klassischen Azure-Portals in Azure AD registrieren.
+Enterprise developers and software-as-a-service (SaaS) providers can develop commercial cloud services or line of business applications that can be integrated with Azure Active Directory (Azure AD) to provide secure sign in and authorization for their services. To integrate an application or service with Azure AD, a developer must first register the details about their application with Azure AD through the Azure classic portal.
 
-Der vorliegende Artikel zeigt, wie Sie eine Anwendung in Azure AD hinzufügen, aktualisieren oder aus sie aus Azure AD entfernen. Sie lernen die verschiedenen Anwendungstypen kennen, die in Azure AD integriert werden können, und erfahren, wie Sie Ihre Anwendungen für den Zugriff auf andere Ressourcen (z. B. auf Web-APIs) konfigurieren.
+This article shows you how to add, update, or remove an application in Azure AD. You will learn about the different types of applications that can be integrated with Azure AD, how to configure your applications to access other resources such as Web APIs, and more.
 
-Weitere Informationen zu den beiden Azure AD-Objekten, die eine registrierte Anwendung darstellen, und der Beziehung zwischen ihnen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory-application-objects.md); weitere Informationen zu den Richtlinien zum Branding bei der Anwendungsentwicklung mit Azure Active Directory finden Sie unter [Brandingrichtlinien für integrierte Apps](active-directory-branding-guidelines.md).
+To learn more about the two Azure AD objects that represent a registered application and the relationship between them, see [Application Objects and Service Principal Objects](active-directory-application-objects.md); to learn more about the branding guidelines you should use when developing applications with Azure Active Directory, see [Branding Guidelines for Integrated Apps](active-directory-branding-guidelines.md).
 
-## Hinzufügen einer Anwendung
+## <a name="adding-an-application"></a>Adding an application
 
-Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um die Funktionen von Azure AD nutzen zu können. Dieser Registrierungsvorgang umfasst das Angeben von Details zu Ihrer Anwendung in Azure AD. Beispielsweise muss die URL für den Speicherort angegeben werden, die URL, an die nach der Authentifizierung eines Benutzers Antworten gesendet werden sollen, die URI zum Identifizieren der App usw.
+Any application that wants to use the capabilities of Azure AD must first be registered in an Azure AD tenant. This registration process involves giving Azure AD details about your application, such as the URL where it’s located, the URL to send replies after a user is authenticated, the URI that identifies the app, and so on.
 
-Wenn Sie eine Webanwendung entwickeln, für die nur eine Benutzeranmeldung in Azure AD erforderlich ist, können Sie einfach die nachstehend aufgeführten Anweisungen befolgen. Wenn Ihre Anwendung Zugriff auf eine Web-API benötigt, oder Sie Ihre Anwendung mehrinstanzenfähig machen möchten, damit Benutzer aus anderen Azure AD-Mandanten darauf zugreifen können, fahren Sie mit dem Abschnitt [Aktualisieren einer Anwendung](#updating-an-application) fort, um Ihre Anwendung weiter zu konfigurieren.
+If you’re building a Web application that just needs to support sign-in for users in Azure AD, you can simply follow the instructions below. If your application needs access to a Web API, or you want to enable your application as multi-tenant to allow users from other Azure AD tenants to access it, you’ll need to continue reading the [Updating an Application](#updating-an-application) section to continue configuring your application.
 
-### So registrieren Sie eine neue Anwendung im klassischen Azure-Portal
+### <a name="to-register-a-new-application-in-the-azure-classic-portal"></a>To register a new application in the Azure classic portal
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
 
-1. Klicken Sie im linken Menü auf das Active Directory-Symbol, und klicken Sie dann auf das gewünschte Verzeichnis.
+1. Click on the Active Directory icon on the left menu, and then click on the desired directory.
 
-1. Klicken Sie im oberen Menü auf **Anwendungen**. Wenn Ihrem Verzeichnis keine Apps hinzugefügt wurden, wird auf dieser Seite der Link "App hinzufügen" angezeigt. Klicken Sie auf den Link oder alternativ auf die Schaltfläche **Hinzufügen** in der Befehlsleiste.
+1. On the top menu, click **Applications**. If no apps have been added to your directory, this page will only show the Add an App link. Click on the link, or alternatively you can click on the **Add** button on the command bar.
 
-1. Klicken Sie auf der Seite „Was möchten Sie gerne tun?” auf den Link **Eine von meinem Unternehmen entwickelte Anwendung hinzufügen**.
+1. On the What do you want to do page, click on the link to **Add an application my organization is developing**.
 
-1. Auf der Seite "Erzählen Sie uns von Ihrer Anwendung" müssen Sie einen Namen für Ihre Anwendung sowie den Typ der Anwendung angeben, die Sie bei Azure AD registrieren. Sie können zwischen Webanwendung und/oder Web-API (Standardeinstellung, in OAuth2 als vertraulicher Client bezeichnet) oder einer nativen Clientanwendung wählen. Letztere stellt eine Anwendung dar, die auf einem Gerät wie z.B. einem Smartphone oder Computer installiert ist (in OAuth2 als öffentlicher Client bezeichnet). Klicken Sie danach auf das Pfeilsymbol in der rechten unteren Ecke der Seite.
+1. On the Tell us about your application page, you must specify a name for your application as well as indicate the type of application you are registering with Azure AD.  You can choose from a Web application and/or Web API (default, known as a confidential client in OAuth2) or Native client application which represents an application that is installed on a device such as a phone or computer (known as a public client in OAuth2). Once finished, click the arrow icon on the bottom-right corner of the page.
 
-1. Geben Sie auf der Seite „App-Eigenschaften“ die URL für die Anmeldung und den App-ID-URI an, wenn Sie eine Webanwendung registrieren. Andernfalls geben Sie lediglich den Weiterleitungs-URI für eine native Clientanwendung an, und klicken Sie dann auf das Kontrollkästchen unten rechts auf der Seite.
+1. On the App properties page, provide the Sign-on URL and App ID URI if you’re registering a Web application or just the Redirect URI for a Native client application, then click the checkbox in the bottom-right hand corner of the page.
 
-1. Ihre Anwendung wird hinzugefügt, und Sie werden auf die Seite "Schnellstart" für Ihre Anwendung umgeleitet. Abhängig davon, ob es sich bei Ihrer Anwendung um eine Web- oder eine systemeigene Anwendung handelt, werden andere Optionen zum Hinzufügen weiterer Funktionen zu Ihrer Anwendung angezeigt. Nachdem Ihre Anwendung hinzugefügt wurde, können Sie beginnen, Ihre Anwendung zu aktualisieren, um Benutzern die Anmeldung zu ermöglichen, auf Web-APIs in anderen Anwendungen zuzugreifen oder eine mehrinstanzenfähige Anwendung zu konfigurieren (um anderen Organisationen zu ermöglichen, auf Ihre Anwendung zuzugreifen).
+1. Your application has been added, and you will be taken to the Quick Start page for your application. Depending on whether your application is a Web or Native application, you will see different options on how to add additional capabilities to your application. Once your application has been added, you can begin updating your application to enable users to sign in, access Web APIs in other applications, or configure multi-tenant application (which allows other organizations to access your application).
 
->[AZURE.NOTE] Standardmäßig wird die neu erstellte Anwendung bei der Registrierung so konfiguriert, dass sich Benutzer aus Ihrem Verzeichnis bei der Anwendung anmelden können.
+>[AZURE.NOTE] By default, the newly created application registration is configured to allow users from your directory to sign in to your application.
 
-## Aktualisieren einer Anwendung
+## <a name="updating-an-application"></a>Updating an application
 
-Nachdem Ihre Anwendung in Azure AD registriert wurde, muss sie ggf. aktualisiert werden, um Zugriff auf Web-APIs bereitzustellen, für andere Unternehmen zur Verfügung gestellt zu werden usw. In diesem Abschnitt werden verschiedene Möglichkeiten beschrieben, Ihre Anwendung weiter zu konfigurieren. Zunächst erhalten Sie eine Übersicht über das Consent Framework. Dieses müssen Sie kennen, wenn Sie Ressourcen-/API-Anwendungen zur Nutzung durch Clientanwendungen erstellen, die von Entwicklern in Ihrer oder einer anderen Organisation erstellt wurden.
+Once your application has been registered with Azure AD, it may need to be updated to provide access to Web APIs, be made available in other organizations, and more. This section describes various ways in which you may need to configure your application further. First we will start with an overview of the Consent Framework, which is important to understand if you are building resource/API applications that will be consumed by client applications built by developers in your organization or another organization.
 
-Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
+For more information on the way authentication works in Azure AD, see [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md).
 
-### Übersicht über das Consent Framework
+### <a name="overview-of-the-consent-framework"></a>Overview of the consent framework
 
-Das Consent Framework von Azure AD erleichtert die Entwicklung mehrinstanzenfähiger Web- und systemeigener Clientanwendungen, die Zugriff auf Web-APIs benötigen, die von einem anderen Azure AD-Mandanten gesichert werden als dem, bei dem die Clientanwendung registriert ist. Zu diesen Web-APIs gehören neben Ihren eigenen Web-APIs die Graph-API, Office 365 und anderen Microsoft-Dienste. Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Zustimmung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Diese Zustimmung kann auch den Zugriff auf Verzeichnisdaten umfassen.
+Azure AD’s consent framework makes it easy to develop multi-tenant Web and Native client applications that need to access Web APIs secured by an Azure AD tenant, different from the one where the client application is registered. These Web APIs include the Graph API, Office 365, and other Microsoft services, in addition to your own Web APIs. The framework is based on a user or an administrator giving consent to an application that asks to be registered in their directory, which may involve accessing directory data.
 
-Wenn beispielsweise eine Webclientanwendung die Web-API/Ressourcenanwendung von Office 365 zum Lesen von Kalenderinformationen über einen Benutzer aufrufen muss, muss dieser Benutzer der Clientanwendung seine Zustimmung erteilen. Anschließend kann die Clientanwendung die Office 365-Web-API im Namen des Benutzers aufrufen und die Kalenderinformationen nach Bedarf verwenden.
+For example, if a Web client application needs to call an Office 365 Web API/resource application to read calendar information about the user, that user will be required to consent to the client application. After consent is given, the client application will be able to call the Office 365 Web API on behalf of the user, and use the calendar information as needed.
 
-Das Consent Framework basiert auf OAuth 2.0 und seinen verschiedenen Datenflüssen, z. B. Authorization Code Grant und Client Credentials Grant. Dabei kommen öffentliche oder vertrauliche Clients zum Einsatz. Durch die Verwendung von OAuth 2.0 ermöglicht Azure AD die Entwicklung zahlreicher verschiedener Typen von Clientanwendungen, z. B. für Telefon, Tablet, Server oder Web, und ermöglicht den Zugriff auf die erforderlichen Ressourcen.
+The consent framework is built on OAuth 2.0 and its various flows, such as authorization code grant and client credentials grant, using public or confidential clients. By using OAuth 2.0, Azure AD makes it possible to build many different types of client applications, such as on a phone, tablet, server, or a Web application, and gain access to the required resources.
 
-Ausführlichere Informationen zum Consent Framework finden Sie unter [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx), [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md) und im Office 365-Thema [Grundlagen der Authentifizierung mit Office 365-APIs](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks).
+For more detailed information about the consent framework, see [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx), [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md), and Office 365 topic [Understanding authentication with Office 365 APIs](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks).
 
-#### Beispiel für die Zustimmungsbenutzeroberfläche
+#### <a name="example-of-the-consent-experience"></a>Example of the consent experience
 
-Die folgenden Schritte zeigen, wie das Consent Framework in der Benutzeroberfläche für den Anwendungsentwickler und für den Benutzer umgesetzt wird.
+The following steps will show you how the consent experience works for both the application developer and user.
 
-1. Legen Sie im klassischen Azure-Portal auf der Seite für die Konfiguration Ihrer Webclientanwendung die erforderlichen Berechtigungen für Ihre Anwendung fest, indem Sie die Dropdownmenüs im Steuerelement „Berechtigungen für andere Anwendungen“ verwenden.
+1. On your Web client application’s configuration page in the Azure classic portal, set the permissions your application requires by using the drop-down menus in the Permissions to other applications control.
 
-    ![Berechtigungen für andere Anwendungen](./media/active-directory-integrating-applications/permissions.png)
+    ![Permissions to other applications](./media/active-directory-integrating-applications/permissions.png)
 
-1. Angenommen, die Berechtigungen für Ihre Anwendung wurden aktualisiert, die Anwendung wird ausgeführt, und ein Benutzer möchte die Anwendung zum ersten Mal verwenden. Falls die Anwendung noch kein Zugriffs- oder Aktualisierungstoken abgerufen hat, muss die Anwendung über den Autorisierungsendpunkt von Azure AD einen Autorisierungscode anfordern, der anschließend verwendet werden kann, um ein neues Zugriffs- und Aktualisierungstoken abzurufen.
+1. Consider that your application’s permissions have been updated, the application is running, and a user is about to use it for the first time. If the application has not already acquired an access or refresh token, the application needs to go to Azure AD’s authorization endpoint to obtain an authorization code that can be used to acquire a new access and refresh token.
 
-1. Falls der Benutzer noch nicht authentifiziert wurde, wird er zur Anmeldung bei Azure AD aufgefordert.
+1. If the user is not already authenticated, they’ll be asked to sign in to Azure AD.
 
-    ![Benutzer- oder Administratoranmeldung bei Azure AD](./media/active-directory-integrating-applications/useradminsignin.png)
+    ![User or administrator sign in to Azure AD](./media/active-directory-integrating-applications/useradminsignin.png)
 
-1. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob für den Benutzer eine Seite für die Zustimmungserteilung angezeigt werden muss. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat. Wenn die Zustimmung noch nicht erteilt wurde, fordert Azure AD den Benutzer zur Zustimmung auf und zeigt an, welche Berechtigungen für die Funktionalität benötigt werden. Der Berechtigungssatz, der im Dialogfeld für die Zustimmung angezeigt wird, ist identisch mit der Auswahl im Steuerelement „Berechtigungen für andere Anwendungen“ im klassischen Azure-Portal.
+1. After the user has signed in, Azure AD will determine if the user needs to be shown a consent page. This determination is based on whether the user (or their organization’s administrator) has already granted the application consent. If consent has not already been granted, Azure AD will prompt the user for consent and will display the required permissions it needs to function. The set of permissions that is displayed in the consent dialog are the same as what was selected in the Permissions to other applications control in the Azure classic portal.
 
-    ![Oberfläche für die Benutzerzustimmung](./media/active-directory-integrating-applications/userconsent.png)
+    ![User consent experience](./media/active-directory-integrating-applications/userconsent.png)
 
-1. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen werden kann. Weitere Informationen zu diesem Datenfluss finden Sie im Abschnitt [Webanwendung zu Web-API](active-directory-authentication-scenarios.md#web-application-to-web-api) im Thema [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
+1. After the user grants consent, an authorization code is returned to your application, which can be redeemed to acquire an access token and refresh token. For more information about this flow, see the [Web Application to Web API section](active-directory-authentication-scenarios.md#web-application-to-web-api) section in [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md).
 
-### Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
+### <a name="configuring-a-client-application-to-access-web-apis"></a>Configuring a client application to access Web APIs
 
-Wenn eine Clientanwendung für den Zugriff auf eine Web-API konfiguriert ist, die durch eine Ressourcenanwendung (d. h. Azure AD Graph-API) bereitgestellt wird, stellt das oben beschriebene Consent Framework sicher, dass dem Client die erforderlichen Berechtigungen basierend auf den angeforderten Berechtigungen erteilt werden. Standardmäßig können alle Anwendungen Berechtigungen aus Azure Active Directory (Graph-API) und der Azure Service Management-API auswählen. Hierbei ist die Azure AD-Berechtigung "Anmeldung aktivieren und Benutzerprofil lesen" bereits standardmäßig ausgewählt. Wenn Ihre Clientanwendung bei einem Office 365-Azure AD-Mandanten registriert ist, stehen Web-APIs und Berechtigungen für SharePoint und Exchange Online ebenfalls zur Auswahl. In den Dropdownmenüs neben der gewünschten Web-API können Sie zwischen zwei Arten von Berechtigungen wählen:
+When a client application is configured to access a Web API exposed by a resource application (ie: Azure AD Graph API), the consent framework described above will ensure the client obtains the permission grant required, based on the permissions requested. By default, all applications can choose permissions from Azure Active Directory (Graph API) and Azure Service Management API, with the Azure AD “Enable sign on and read user’s profile” permission already selected by default. If your client application is being registered in an Office 365 Azure AD tenant, Web APIs and permissions for SharePoint and Exchange Online will also be available for selection. You can select from two types of permissions in the drop-down menus next to the desired Web API:
 
-- Anwendungsberechtigungen: Ihre Clientanwendung benötigt direkten Zugriff auf die Web-API selbst (kein Benutzerkontext). Für diese Art von Berechtigung ist die Zustimmung des Administrators erforderlich, sie steht nicht für systemeigene Clientanwendungen zur Verfügung.
+- Application Permissions: Your client application needs to access the Web API directly as itself (no user context). This type of permission requires administrator consent and is also not available for Native client applications.
 
-- Delegierte Berechtigungen: Ihre Clientanwendung benötigt als angemeldeter Benutzer Zugriff auf die Web-API. Der Zugriff ist jedoch durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden – es sei denn, die Berechtigung ist so konfiguriert, dass sie die Zustimmung durch einen Administrator erfordert.
+- Delegated Permissions: Your client application needs to access the Web API as the signed-in user, but with access limited by the selected permission. This type of permission can be granted by a user unless the permission is configured as requiring administrator consent.
 
-#### So fügen Sie Zugriff auf Web-APIs hinzu
+#### <a name="to-add-access-to-web-apis"></a>To add access to Web APIs
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
 
-1. Klicken Sie im linken Menü auf das Active Directory-Symbol und anschließend auf das gewünschte Verzeichnis.
+1. Click on the Active Directory icon on the left menu, then click on the desired directory.
 
-1. Klicken Sie im oberen Menü auf **Anwendungen**, und klicken Sie dann auf die Anwendung, die Sie konfigurieren möchten. Die Seite "Schnellstart" wird geöffnet und zeigt Informationen zum einmaligen Anmelden (SSO) und weitere Konfigurationsinformationen an.
+1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
 
-1. Erweitern Sie auf der Seite „Schnellstart“ den Abschnitt „Auf Web-APIs in anderen Anwendungen zugreifen“, und klicken Sie dann im Abschnitt „Berechtigungen auswählen“ auf den Link **Jetzt konfigurieren**. Die Seite mit den Anwendungseigenschaften wird angezeigt.
+1. Expand the Access Web APIs in Other Applications section of the Quick Start, and then click the **Configure it now** link under the Select permissions section. The application properties page will appear.
 
-1. Scrollen Sie nach unten zum Abschnitt "Berechtigungen für andere Anwendungen". In der ersten Spalte können Sie aus den Ressourcenanwendungen in Ihrem Verzeichnis auswählen, die eine Web-API verfügbar machen. Nach der Auswahl können Sie ggf. die Anwendungs- und Delegierungsberechtigungen auswählen, die die Web-API bereitstellt.
+1. Scroll down to the Permissions to other applications section. The first column allows you to select from the available resource applications in your directory that expose a Web API.  Once selected, you may select application and delegation permissions that the Web API exposes.
 
-1. Klicken Sie nach der Auswahl auf der Befehlsleiste auf die Schaltfläche **Speichern**.
+1. Once selected, click the **Save** button on the command bar.
 
->[AZURE.NOTE] Wenn Sie auf die Schaltfläche "Speichern" klicken, werden basierend auf den von Ihnen konfigurierten "Berechtigungen für andere Anwendungen" automatisch die Berechtigungen für die Anwendung in Ihrem Verzeichnis festgelegt. Sie können diese Anwendungsberechtigungen auf der Registerkarte mit den Anwendungseigenschaften anzeigen.
+>[AZURE.NOTE] Clicking the Save button also automatically sets the permissions for your application in your directory based on the Permissions to other applications that you configured.  You can view these application permissions by looking at the application Properties tab.
 
-### Konfigurieren einer Ressourcenanwendung zum Bereitstellen von Web-APIs
+### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Configuring a resource application to expose Web APIs
 
-Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung stellen, indem Sie Zugriffsbereiche verfügbar machen. Eine ordnungsgemäß konfigurierte Web-API wird auf die gleiche Weise wie andere Microsoft-Web-APIs (einschließlich der Graph-API und der Office 365-APIs) zur Verfügung gestellt. Zugriffsbereiche werden durch Ihr Anwendungsmanifest verfügbar gemacht. Hierbei handelt es sich um eine JSON-Datei, die die Identitätskonfiguration Ihrer Anwendung repräsentiert. Sie können Ihre Bereiche verfügbar machen, indem Sie im klassischen Azure-Portal zu Ihrer Anwendung navigieren und dann auf der Befehlsleiste auf die Schaltfläche „Anwendungsmanifest“ klicken.
+You can develop a Web API and make it available to client applications by exposing access scopes. A correctly configured Web API is made available just like the other Microsoft Web APIs, including the Graph API and the Office 365 APIs. Access scopes are exposed through your application's manifest, which is a JSON file that represents your application’s identity configuration. You can expose your scopes by navigating to your application in the Azure classic portal and clicking on the Application Manifest button on the command bar.  
 
-#### Hinzufügen von Zugriffsbereichen zu Ihrer Ressourcenanwendung
+#### <a name="adding-access-scopes-to-your-resource-application"></a>Adding access scopes to your resource application
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
 
-1. Klicken Sie im linken Menü auf das Active Directory-Symbol und anschließend auf das gewünschte Verzeichnis.
+1. Click on the Active Directory icon on the left menu, then click on the desired directory.
 
-1. Klicken Sie im oberen Menü auf **Anwendungen**, und klicken Sie dann auf die Ressourcenanwendung, die Sie konfigurieren möchten. Die Seite "Schnellstart" wird geöffnet und zeigt Informationen zum einmaligen Anmelden (SSO) und weitere Konfigurationsinformationen an.
+1. On the top menu, click **Applications**, and then click the resource application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
 
-1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Manifest verwalten**, und wählen Sie dann **Manifest herunterladen** aus.
+1. Click on the **Manage manifest** button in the command bar, and select **Download manifest**.
 
-1. Öffnen Sie die JSON-Anwendungsmanifestdatei, und ersetzen Sie den Knoten "oauth2Permissions" durch den folgenden JSON-Codeausschnitt. Dieser Codeausschnitt ist ein Beispiel dafür, wie Sie einen Bereich verfügbar machen, der als „Benutzeridentitätswechsel“ bekannt ist. Damit kann ein Ressourcenbesitzer einer Clientanwendung eine Art delegierten Zugriff auf eine Ressource gewähren. Stellen Sie sicher, dass Sie den Text und die Werte für Ihre eigene Anwendung ändern:
+1. Open the JSON application manifest file and replace “oauth2Permissions” node with the following JSON snippet. This snippet is an example of how to expose a scope known as "user impersonation", which allows a resource owner to give a client application a type of delegated access to a resource. Make sure that you change the text and values for your own application:
 
-		"oauth2Permissions": [
-		{
-			"adminConsentDescription": "Allow the application full access to the Todo List service on behalf of the signed-in 	user",
-			"adminConsentDisplayName": "Have full access to the Todo List service",
-			"id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e40",
-			"isEnabled": true,
-			"type": "User",
-			"userConsentDescription": "Allow the application full access to the todo service on your behalf",
-			"userConsentDisplayName": "Have full access to the todo service",
-			"value": "user_impersonation"
-			}
-		],
+        "oauth2Permissions": [
+        {
+            "adminConsentDescription": "Allow the application full access to the Todo List service on behalf of the signed-in   user",
+            "adminConsentDisplayName": "Have full access to the Todo List service",
+            "id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e40",
+            "isEnabled": true,
+            "type": "User",
+            "userConsentDescription": "Allow the application full access to the todo service on your behalf",
+            "userConsentDisplayName": "Have full access to the todo service",
+            "value": "user_impersonation"
+            }
+        ],
 
-    Der Wert „id“ muss eine neu generierte GUID sein. Diese erstellen Sie, indem Sie ein [Tool zum Generieren von GUIDs](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) oder ein programmgesteuertes Verfahren verwenden. Die GUID repräsentiert einen eindeutigen Bezeichner für die Berechtigung, die von der Web-API bereitgestellt wird. Nachdem der Client ordnungsgemäß zum Anfordern des Zugriffs auf Ihre Web-API konfiguriert wurde und die Web-API-aufruft, stellt er ein OAuth 2.0 JWT-Token bereit, dessen Bereichsanspruch (scp) auf den oben genannten Wert festgelegt ist. In diesem Fall ist dies „user\_impersonation“.
+    The id value must be a new generated GUID that you create by using a [GUID generation tool](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) or programmatically. It represents a unique identifier for the permission that is exposed by the Web API. Once your client is appropriately configured to request access to your Web API and calls the Web API, it will present an OAuth 2.0 JWT token that has the scope (scp) claim set to the value above, which in this case is user_impersonation.
 
-	>[AZURE.NOTE] Sie können später bei Bedarf zusätzliche Bereiche verfügbar machen. Berücksichtigen Sie, dass Ihre Web-API verschiedene Berechtigungen verfügbar machen kann, die einer Vielzahl von unterschiedlichen Funktionen zugeordnet sind. Jetzt können Sie den Zugriff auf die Web-API steuern, indem Sie den Bereichsanspruch (scp) im empfangenen OAuth 2.0 JWT-Token verwenden.
+    >[AZURE.NOTE] You can expose additional scopes later as necessary. Consider that your Web API might expose multiple scopes associated with a variety of different functions. Now you can control access to the Web API by using the scope (scp) claim in the received OAuth 2.0 JWT token.
 
-1. Speichern Sie die aktualisierte JSON-Datei, und laden Sie sie durch Klicken auf die Schaltfläche **Manifest verwalten** auf der Befehlsleiste hoch. Wählen Sie **Manifest hochladen** aus, navigieren Sie zur aktualisierten Manifestdatei, und wählen Sie sie dann aus. Nach dem Hochladen ist Ihre Web-API jetzt so konfiguriert, dass sie von anderen Anwendungen im Verzeichnis verwendet werden kann.
+1. Save the updated JSON file and upload it by clicking the **Manage manifest** button in the command bar, selecting **Upload manifest**, browsing to your updated manifest file and then selecting it. Once uploaded, your Web API is now configured to be used by other applications in your directory.
 
-#### So überprüfen Sie, ob die Web-API für andere Anwendungen in Ihrem Verzeichnis bereitgestellt wird
+#### <a name="to-verify-the-web-api-is-exposed-to-other-applications-in-your-directory"></a>To verify the Web API is exposed to other applications in your directory
 
-1. Klicken Sie im oberen Menü auf **Anwendungen**, und wählen Sie die Clientanwendung aus, für die Sie den Zugriff auf die Web-API konfigurieren möchten. Klicken Sie dann auf **Konfigurieren**.
+1. On the top menu, click **Applications**, select the desired client application you want to configure access to the Web API, and then click **Configure**.
 
-1. Scrollen Sie nach unten zum Abschnitt "Berechtigungen für andere Anwendungen". Klicken Sie auf das Dropdownmenü „Anwendung auswählen“. Sie können nun die Web-API auswählen, für die Sie soeben eine Berechtigung bereitgestellt haben. Wählen Sie im Dropdownmenü „Delegierte Berechtigungen“ die neue Berechtigung aus.
+1. Scroll down to the permissions to other applications section. Click on the Select application drop-down menu and you will be able to select the Web API that you just exposed a permission for. From the Delegated Permissions drop-down menu, select the new permission.
 
-![Anzeige von Aufgabenlistenberechtigungen](./media/active-directory-integrating-applications/listpermissions.png)
+![Todo List permissions are shown](./media/active-directory-integrating-applications/listpermissions.png)
 
-#### Weitere Informationen zum Anwendungsmanifest
-Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsentität, der alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung einschließlich der erörterten API-Zugriffsbereiche definiert. Weitere Informationen zur Anwendungsentität finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Dort finden Sie umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben:
+#### <a name="more-on-the-application-manifest"></a>More on the application manifest
+The application manifest actually serves as a mechanism for updating the Application entity, which defines all attributes of an Azure AD application's identity configuration, including the API access scopes we discussed. For more information on the Application entity, please see the [Graph API Application entity documentation](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). In it, you will find complete reference information on the Application entity members used to specify permissions for your API:  
 
-- Das appRoles-Mitglied, das eine Sammlung von [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type)-Entitäten darstellt, die zum Definieren der **Anwendungsberechtigungen** für eine Web-API verwendet werden können
-- Das oauth2Permissions-Mitglied, das eine Sammlung von [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type)-Entitäten darstellt, die zum Definieren der **delegierten Berechtigungen** für eine Web-API verwendet werden können
+- the appRoles member, which is a collection of [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) entities that can be used to define the **Application Permissions** for a Web API  
+- the oauth2Permissions member, which is a collection of  [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) entities that can be used to define the **Delegated Permissions** for a Web API
 
-Weitere Informationen zu Anwendungsmanifestkonzepten im Allgemeinen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md).
+For more information on application manifest concepts in general, please refer to [Understanding the Azure Active Directory application manifest](active-directory-application-manifest.md).
 
-### Zugreifen auf die Azure AD-Graph- und Office 365-APIs
+### <a name="accessing-the-azure-ad-graph-and-office-365-apis"></a>Accessing the Azure AD Graph and Office 365 APIs
 
-Wie bereits zuvor erwähnt, können Sie zusätzlich zum Verfügbarmachen von/Zugreifen auf APIs über Ihre eigenen Ressourcenanwendungen auch Ihre Clientanwendung für den Zugriff auf APIs aktualisieren, die von Microsoft-Ressourcen verfügbar gemacht werden. Die Azure AD Graph-API, die in der Liste der Berechtigungen für andere Anwendungen als „Azure Active Directory“ bezeichnet wird, ist standardmäßig für alle Anwendungen verfügbar, die mit Azure AD registriert sind. Wenn Sie Ihre Clientanwendung in einem Azure AD-Mandanten registrieren, der von Office 365 bereitgestellt wurde, können Sie auch auf alle Berechtigungen zugreifen, die durch die APIs für verschiedene Office 365-Ressourcen verfügbar gemacht werden.
+As mentioned earlier, in addition to exposing/accessing APIs on your own resource applications, you can also update your client application to access APIs exposed by Microsoft resources.  The Azure AD Graph API, which is called “Azure Active Directory” in the list of Permissions to other applications, is available by default for all applications that are registered with Azure AD. If you are registering your client application in an Azure AD tenant that was provisioned by Office 365, you can also access all of the permissions exposed by the APIs to various Office 365 resources.
 
-Eine vollständige Erläuterung zu Zugriffsbereichen, die durch Folgendes verfügbar gemacht werden:
+For a complete discussion on access scopes exposed by:  
 
-- Graph-API von Azure AD, finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes).
-- Office 365-APIs, finden Sie im Artikel [Authentifizierung und Autorisierung mit dem allgemeinen Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest). Unter [Einrichten der Office 365-Entwicklungsumgebung](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) finden Sie eine umfangreiche Erörterung zum Erstellen einer Client-App, die in Office 365-APIs integriert wird.
+- Azure AD Graph API, please see the [Permission scopes | Graph API concepts](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) article.
+- Office 365 APIs, please see the [Authentication and Authorization using Common Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest) article. See [Set up your Office 365 development environment](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) for the larger discussion on how to build a client app that integrates with Office 365 APIs.
 
->[AZURE.NOTE] Aufgrund einer aktuellen Einschränkung können systemeigene Clientanwendungen die Azure AD Graph-API nur aufrufen, wenn sie die Berechtigung „Zugriff auf das Verzeichnis Ihrer Organisation“ verwenden. Diese Einschränkung gilt nicht für Webanwendungen.
+>[AZURE.NOTE] Due to a current limitation, Native client applications can only call into the Azure AD Graph API if they use the “Access your organization's directory” permission.  This restriction does not apply for Web applications.
 
-### Konfigurieren von mehrinstanzenfähigen Anwendungen
+### <a name="configuring-multi-tenant-applications"></a>Configuring multi-tenant applications
 
-Wenn Sie Azure AD eine Anwendung hinzufügen, möchten Sie vielleicht, dass auf Ihre Anwendung nur durch Benutzer in Ihrer Organisation zugegriffen werden kann. Alternativ sollen evtl. nur Benutzer in externen Organisationen auf Ihre Anwendung zugreifen können. Diese zwei Anwendungstypen werden als Einzelinstanzanwendung bzw. als mehrinstanzenfähige Anwendung bezeichnet. Sie können die Konfiguration einer Einzelinstanzanwendung so ändern, dass Sie eine mehrinstanzenfähige Anwendung erhalten. Dies wird weiter unten in diesem Abschnitt behandelt.
+When adding an application to Azure AD, you may want your application to be accessed only by users in your organization. Alternatively, you may want your application to be accessed by users in external organizations. These two application types are called single tenant and multi-tenant applications. You can modify the configuration of a single tenant application to make it a multi-tenant application, which this section discusses below.
 
-Es ist wichtig, die Unterschiede zwischen einer Einzelinstanzanwendung und einer mehrinstanzenfähigen Anwendung zu verstehen:
+It’s important to note the differences between a single tenant and multi-tenant application:  
 
-- Eine Einzelinstanzanwendung ist für die Verwendung in einem einzelnen Unternehmen gedacht. Es handelt sich dabei zumeist um eine Branchenanwendung (Line-of-Business, LOB), die von einem Unternehmensentwickler geschrieben wurde. Auf eine Einzelinstanzanwendung greifen nur Benutzer aus einem einzelnen Verzeichnis zu. Daher muss sie auch nur in einem Verzeichnis bereitgestellt werden.
-- Eine mehrinstanzenfähige Anwendung ist für die Verwendung in vielen Organisationen vorgesehen. Hierbei handelt es sich um eine SaaS-Webanwendung (Software-as-a-Service), die in der Regel von einem unabhängigen Softwarehersteller (ISV, Independent Software Vendor) geschrieben wurde. Mehrinstanzenfähige Anwendungen müssen in jedem Verzeichnis bereitgestellt werden, in dem sie verwendet werden. Für die Registrierung ist also jeweils die Zustimmung des Benutzers oder Administrators erforderlich, unterstützt durch das Azure AD-Consent Framework. Beachten Sie, dass alle systemeigenen Clientanwendungen standardmäßig mehrinstanzenfähig sind, da sie auf dem Gerät des Ressourcenbesitzers installiert sind. Weitere Informationen zum Consent Framework finden Sie oben in der „Übersicht über das Consent Framework“.
+- A single tenant application is intended for use in one organization. They are typically a line-of-business (LoB) application written by an enterprise developer. A single tenant application only needs to be accessed by users in one directory, and as a result, it only needs to be provisioned in one directory.
+- A multi-tenant application intended for use in many organizations. They are a software-as-a-service (SaaS) Web application typically written by an independent software vendor (ISV). Multi-tenant applications need to be provisioned in each directory where they will be used, which requires user or administrator consent to register them, supported via the Azure AD consent framework. Note that all Native client applications are multi-tenant by default as they are installed on the resource owner's device. See the Overview of the Consent Framework section above for more details on the consent framework.
 
-#### Externen Benutzern ermöglichen, Ihrer Anwendung Zugriff auf ihre Ressourcen zu gewähren
+#### <a name="enabling-external-users-to-grant-your-application-access-to-their-resources"></a>Enabling external users to grant your application access to their resources
 
-Wenn Sie eine Anwendung schreiben, die Sie Ihren Kunden oder Partnern außerhalb Ihrer Organisation zur Verfügung stellen möchten, müssen Sie die Anwendungsdefinition im klassischen Azure-Portal aktualisieren.
+If you are writing an application that you want to make available to your customers or partners outside of your organization, you will need to update the application definition in the Azure classic portal.
 
->[AZURE.NOTE] Wenn Sie die Mehrinstanzenfähigkeit aktivieren, müssen Sie sicherstellen, dass der App-ID-URI Ihrer Anwendung zu einer überprüften Domäne gehört. Darüber hinaus muss die Rückgabe-URL mit "https://" beginnen. Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory-application-objects.md).
+>[AZURE.NOTE] When enabling multi-tenant, you must ensure that your application’s App ID URI belongs in a verified domain. Additionally, the Return URL must begin with https://. For more information, see [Application Objects and Service Principal Objects](active-directory-application-objects.md).
 
-So aktivieren Sie den Zugriff auf Ihre App für externe Benutzer:
+To enable access to your app for external users: 
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
 
-1. Klicken Sie im linken Menü auf das Active Directory-Symbol und anschließend auf das gewünschte Verzeichnis.
+1. Click on the Active Directory icon on the left menu, then click on the desired directory.
 
-1. Klicken Sie im oberen Menü auf **Anwendungen**, und klicken Sie dann auf die Anwendung, die Sie konfigurieren möchten. Die Seite „Schnellstart“ wird mit Konfigurationsoptionen angezeigt.
+1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with configuration options.
 
-1. Erweitern Sie auf der Seite „Schnellstart“ den Abschnitt **Mehrinstanzenfähige Anwendung konfigurieren**, und klicken Sie dann im Abschnitt „Zugriff aktivieren“ auf den Link **Jetzt konfigurieren**. Die Seite mit den Anwendungseigenschaften wird angezeigt.
+1. Expand the **Configure Multi-tenant Application** section of the Quick Start, then click the **Configure it now** link in the Enable Access section. The application properties page will appear.
 
-1. Klicken Sie neben „Die Anwendung ist mehrinstanzenfähig“ auf **Ja**, und klicken Sie dann in der Befehlsleiste auf die Schaltfläche **Speichern**.
+1. Click the **Yes** button next to Application is multi-tenant, then click the **Save** button on the command bar.
 
-Nachdem Sie die oben genannten Änderungen vorgenommen haben, können Benutzer und Administratoren in anderen Organisationen Ihrer Anwendung Zugriff auf ihr Verzeichnis und andere Daten gewähren.
+Once you have made the change above, users and administrators in other organizations will be able to grant your application access to their directory and other data.
 
-#### Auslösen von Azure AD-Consent Framework zur Laufzeit
+#### <a name="triggering-the-azure-ad-consent-framework-at-runtime"></a>Triggering the Azure AD consent framework at runtime
 
-Zur Verwendung des Consent Frameworks müssen mehrinstanzenfähige Clientanwendungen mithilfe von OAuth 2.0 eine Autorisierung anfordern. Es stehen [Codebeispiele](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) zur Verfügung, die zeigen, wie eine Webanwendung, eine native Anwendung oder eine Server-/Daemonanwendung Autorisierungscodes und Zugriffstoken zum Aufrufen von Web-APIs anfordert.
+To use the consent framework, multi-tenant client applications must request authorization using OAuth 2.0. [Code samples](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) are available to show you how a Web application, Native application, or server/daemon application requests authorization codes and access tokens to call Web APIs.
 
-Ihre Webanwendung kann ggf. auch eine Registrierungsbenutzeroberfläche für Benutzer zur Verfügung stellen. Wenn Sie eine Registrierungsbenutzeroberfläche anbieten, muss der Benutzer üblicherweise auf eine Schaltfläche zur Registrierung klicken, die den Browser an den Azure AD OAuth2.0-Autorisierungsendpunkt oder einen OpenID Connect-Endpunkt mit Benutzerinformationen umleitet. Diese Endpunkte ermöglichen es der Anwendung, Informationen zum neuen Benutzer durch Untersuchen des id\_token-Objekts abzurufen. Nach der Registrierungsphase wird der Benutzer, ähnlich wie oben im Abschnitt „Übersicht über das Consent Framework“ gezeigt, zur Zustimmung aufgefordert.
+Your Web application may also offer a sign-up experience for users. If you do offer a sign-up experience, it is expected that the user will click on a sign up button that will redirect the browser to the Azure AD OAuth2.0 authorize endpoint or an OpenID Connect userinfo endpoint. These endpoints allow the application to get information about the new user by inspecting the id_token. Following the sign-up phase the user will be presented with a consent prompt similar to the one shown above in the Overview of the Consent Framework section.
 
-Alternativ kann Ihre Webanwendung auch eine Benutzeroberfläche bereitstellen, die es Administratoren ermöglicht, ihr Unternehmen zu registrieren. Eine solche Benutzeroberfläche würde den Benutzer ebenfalls an den Azure AD-OAuth 2.0-Autorisierungsendpunkt umleiten. In diesem Fall können Sie auch einen Parameter „prompt=admin\_consent“ an den Autorisierungsendpunkt übergeben, um das Aufrufen der Benutzeroberfläche für die Administratorzustimmung zu erzwingen, in der der Administrator die Zustimmung im Namen seiner Organisation erteilt. Nur ein Benutzer, der sich mit einem Konto authentifiziert, das zur globalen Administratorrolle gehört, kann zustimmen; andere Benutzer erhalten eine Fehlermeldung. Bei erfolgter Zustimmung enthält die Antwort "admin\_consent=true". Bei der Einlösung eines Zugriffstokens erhalten Sie ebenfalls ein "id\_token", das Informationen zu der Organisation und zum Administrator bereitstellt, der sich für Ihre Anwendung registriert hat.
+Alternatively, your Web application may also offer an experience that allows administrators to “sign up my company”. This experience would also redirect the user to the Azure AD OAuth 2.0 authorize endpoint. In this case though, you pass a prompt=admin_consent parameter to the authorize endpoint to force the administrator consent experience, where the administrator will grant consent on behalf of their organization. Only a user that authenticates with an account that belongs to the Global Admin role can provide consent; others will receive an error. On successful consent, the response will contain admin_consent=true. When redeeming an access token, you’ll also receive an id_token that will provide information on the organization and the administrator that signed up for your application.
 
-### Aktivieren der impliziten OAuth 2.0-Gewährung für Single-Page-Anwendungen
+### <a name="enabling-oauth-2.0-implicit-grant-for-single-page-applications"></a>Enabling OAuth 2.0 implicit grant for Single Page Applications
 
-Single-Page-Anwendungen (SPAs) sind in der Regel mit einem JavaScript-intensiven Front-End aufgebaut, das im Browser ausgeführt wird, der das Web-API-Back-End der Anwendung zum Ausführen ihrer Geschäftslogik aufruft. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Gewährung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an ihre Back-End-Web-API sichern können. Nachdem der Benutzer seine Zustimmung erteilt hat, können mit dem gleichen Authentifizierungsprotokoll Token zum Sichern von Aufrufen zwischen dem Client und anderen für die Anwendung konfigurierten Web-API-Ressourcen abgerufen werden. Weitere Informationen zur impliziten Gewährung der Autorisierung, damit Sie entscheiden können, ob diese sich für Ihr Anwendungsszenario eignet, finden Sie unter [Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)](active-directory-dev-understanding-oauth2-implicit-grant.md).
+Single Page Application’s (SPAs) are typically structured with a JavaScript-heavy front end that runs in the browser, which calls the application’s Web API back end to perform its business logic. For SPAs hosted in Azure AD, you use OAuth 2.0 Implicit Grant to authenticate the user with Azure AD and obtain a token that you can use to secure calls from the application's JavaScript client to its back end Web API. After the user has granted consent, this same authentication protocol can be used to obtain tokens to secure calls between the client and other Web API resources configured for the application. To learn more about the implicit authorization grant, and help you decide whether it's right for your application scenario, see [Understanding the OAuth2 implicit grant flow in Azure Active Directory ](active-directory-dev-understanding-oauth2-implicit-grant.md).
 
-Die implizite OAuth 2.0-Gewährung ist für Anwendungen standardmäßig deaktiviert. Sie können die implizite OAuth 2.0-Gewährung für Ihre Anwendung aktivieren, indem Sie den Wert `oauth2AllowImplicitFlow` in deren [Anwendungsmanifest](active-directory-application-manifest.md) festlegen. Dabei handelt es sich um eine JSON-Datei, welche die Identitätskonfiguration Ihrer Anwendung darstellt.
+By default, OAuth 2.0 implicit Grant is disabled for applications. You can enable OAuth 2.0 Implicit Grant for your application by setting the `oauth2AllowImplicitFlow`”` value in its [application manifest](active-directory-application-manifest.md), which is a JSON file that represents your application's identity configuration.
 
-#### So aktivieren Sie die implizite OAuth 2.0-Gewährung 
+#### <a name="to-enable-oauth-2.0-implicit-grant"></a>To enable OAuth 2.0 implicit grant 
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
-1. Klicken Sie im linken Menü auf das **Active Directory**-Symbol und anschließend auf das gewünschte Verzeichnis.
-1. Klicken Sie im oberen Menü auf **Anwendungen**, und klicken Sie dann auf die Anwendung, die Sie konfigurieren möchten. Die Seite "Schnellstart" wird geöffnet und zeigt Informationen zum einmaligen Anmelden (SSO) und weitere Konfigurationsinformationen an.
-1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Manifest verwalten**, und wählen Sie dann **Manifest herunterladen** aus. Öffnen Sie die JSON-Manifestdatei der Anwendung, und legen Sie den Wert „oauth2AllowImplicitFlow“ auf „true“ fest. Der Standardwert ist „false“.
+1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
+1. Click on the **Active Directory** icon on the left menu, then click on the desired directory.
+1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
+1. Click on the **Manage manifest** button in the command bar, and select **Download manifest**.
+Open the JSON application manifest file and set the “oauth2AllowImplicitFlow” value to “true”. By default, it is “false”.
 
     `"oauth2AllowImplicitFlow": true,`
 
-1. Speichern Sie die aktualisierte JSON-Datei, und laden Sie sie durch Klicken auf die Schaltfläche **Manifest verwalten** auf der Befehlsleiste hoch. Wählen Sie **Manifest hochladen** aus, navigieren Sie zur aktualisierten Manifestdatei, und wählen Sie sie dann aus. Nachdem das Manifest hochgeladen wurde, ist Ihre Web-API für die Verwendung der impliziten OAuth 2.0-Gewährung zum Authentifizieren von Benutzern konfiguriert.
+1. Save the updated JSON file and upload it by clicking the **Manage manifest** button in the command bar, selecting **Upload manifest**, browsing to your updated manifest file and then selecting it. Once uploaded, your Web API is now configured to use OAuth 2.0 Implicit Grant to authenticate users.
 
 
-### Legacybenutzeroberfläche zum Gewähren des Zugriffs
+### <a name="legacy-experiences-for-granting-access"></a>Legacy experiences for granting access
 
-Dieser Abschnitt beschreibt die Legacybenutzeroberfläche für die Zustimmung, die bis zum 12. März 2014 verwendet wurde. Diese Benutzeroberfläche wird weiterhin unterstützt und wird im Folgenden beschrieben. Vor Einführung der neuen Funktionalität konnten Sie nur die folgenden Berechtigungen erteilen:
+This section describes the legacy consent experience prior to March 12, 2014. This experience is still supported, and is described below. Prior to the new functionality, you could only grant the following permissions:
 
-- Anmelden von Benutzern aus ihrer Organisation
+- Sign on users from their organization
 
-- Anmelden von Benutzern und Lesen der Verzeichnisdaten ihrer Organisation (nur als Anwendung)
+- Sign on users and read the their organization’s directory data (as the application only)
 
-- Anmelden von Benutzern und Lesen und Schreiben der Verzeichnisdaten ihrer Organisation (nur als Anwendung)
+- Sign on users and read and write their organization’s directory data (as the application only)
 
-Sie können die unter [Entwickeln von mehrinstanzenfähigen Webanwendungen mit Azure AD](https://msdn.microsoft.com/library/azure/dn151789.aspx) beschriebenen Schritte ausführen, um Zugriff für neue Anwendungen zu erteilen, die in Azure AD registriert wurden. Beachten Sie unbedingt, dass das neue Consent Framework viel leistungsfähigere Anwendungen ermöglicht und darüber hinaus Benutzern (nicht nur Administratoren) die Möglichkeit bietet, ihre Zustimmung zu diesen Anwendungen zu erteilen.
+You can follow the steps in the [Developing Multi-Tenant Web Applications with Azure AD](https://msdn.microsoft.com/library/azure/dn151789.aspx) to grant access for new applications registered in Azure AD. It’s important to note that the new consent framework allows much more powerful applications, and also enables users to consent to these applications instead of just administrators.
 
-#### Erstellen des Links, der Zugriff für externe Benutzer erteilt (Legacy)
+#### <a name="building-the-link-that-grants-access-for-external-users-(legacy)"></a>Building the link that grants access for external users (Legacy)
 
-Damit sich externe Benutzer mithilfe ihrer Organisationskonten für Ihre App registrieren können, müssen Sie Ihre App so aktualisieren, dass Sie eine Schaltfläche anzeigt, mit der die Benutzer auf die Azure AD-Seite zur Erteilung von Zugriff weitergeleitet werden. Einen Brandingleitfaden für diese Registrierungsschaltfläche finden Sie im Thema [Brandingrichtlinien für integrierte Apps](active-directory-branding-guidelines.md). Nachdem der Benutzer den Zugriff gewährt oder verweigert hat, leitet die Azure AD-Seite zum Erteilen des Zugriffs den Browser mit einer Antwort wieder an Ihre App um. Weitere Informationen zu Anwendungseigenschaften finden Sie unter [Anwendungsobjekte und Dienstprinzipale](active-directory-application-objects.md).
+In order for external users to sign up for your app using their organizational accounts, you’ll need to update your app to show a button that links to the page on Azure AD that enables them to grant access. Branding guidance for this sign up button is discussed in the [Branding Guidelines for Integrated Applications](active-directory-branding-guidelines.md) topic. After the user either grants or denies access, the Azure AD grant access page will redirect the browser back to your app with a response. For more information about application properties, see [Application Objects and Service Principles](active-directory-application-objects.md).
 
-Die Seite zum Erteilen des Zugriffs wird von Azure AD erstellt. Sie finden einen Link zu dieser Seite im klassischen Azure-Portal auf der Seite für die Konfiguration der App. Klicken Sie zum Aufrufen der Seite „Konfiguration“ im oberen Menü Ihres Azure AD-Mandanten auf den Link **Anwendungen**, und klicken Sie auf die App, die Sie konfigurieren möchten. Klicken Sie anschließend im oberen Menü der Seite „Schnellstart“ auf **Konfigurieren**.
+The grant access page is created by Azure AD, and you can find a link to it in your app’s Configuration page in the Azure classic portal. To get to the Configuration page, click on the **Applications** link in the top menu of your Azure AD tenant, click the app you want to configure, then click on **Configure** from the top menu of the Quick Start page.
 
-Der Link für Ihre Anwendung sieht folgendermaßen aus: `http://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=058eb9b2-4f49-4850-9b78-469e3176e247&RequestedPermissions=DirectoryReaders&ConsentReturnURL=https%3A%2F%2Fadatum.com%2FExpenseReport.aspx%3FContextId%3D123456`. In der folgenden Tabelle werden die Bestandteile des Links beschrieben:
+The link for your application will look like this: `http://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=058eb9b2-4f49-4850-9b78-469e3176e247&RequestedPermissions=DirectoryReaders&ConsentReturnURL=https%3A%2F%2Fadatum.com%2FExpenseReport.aspx%3FContextId%3D123456`. The following table describes the parts of the link:
 
-|Parameter|Beschreibung|
+|Parameter|Description|
 |---|---|
-|ClientId|Erforderlich. Die Client-ID, die Sie beim Hinzufügen Ihrer App erhalten haben.|
-|RequestedPermissions|Optional. Die Zugriffsebene, die Ihre App anfordert. Diese wird dem Benutzer angezeigt, der Ihrer App den Zugriff gewährt. Wenn keine Angabe erfolgt, wird als angeforderte Zugriffsebene standardmäßig nur einmaliges Anmelden verwendet. Die weiteren Optionen sind "DirectoryReaders" und "DirectoryWriters". Weitere Informationen zu diesen Berechtigungen finden Sie unter "Anwendungszugriffsebenen".|
-|ConsentReturnUrl|Optional. Die URL, an die die Antwort zum Erteilen des Zugriffs zurückgegeben werden soll. Dieser Wert muss URL-codiert sein und sich in derselben Domäne wie die Antwort-URL befinden, die in Ihrer Anwendungsdefinition konfiguriert wurde. Wenn keine Angabe erfolgt, wird die Antwort zum Erteilen des Zugriffs an die konfigurierte Antwort-URL weitergeleitet.|
+|ClientId|Required. The Client ID you obtained as part of adding your app.|
+|RequestedPermissions|Optional. Access level that your app is requesting, that will be displayed to the user granting your app access. If not specified, the requested access level will default to single sign-on only. The other options are DirectoryReaders and DirectoryWriters. See Application Access Levels for more details on these access levels.|
+|ConsentReturnUrl|Optional. The URL that you want the grant access response returned to. This value must be URL-encoded and must be under the same domain as the Reply URL configured in your app definition. If not supplied, the grant access response will be redirected to your configured Reply URL.|
 
-Wenn Sie einen Wert für "ConsentReturnUrl" angeben, der sich von der Antwort-URL unterscheidet, kann Ihre App separate Logik implementieren, die die Antwort für eine andere URL aus der Antwort-URL verarbeiten kann (die normalerweise SAML-Token für die Anmeldung verarbeitet). Sie können außerdem zusätzliche Parameter in der ConsentReturnURL-codierten URL angeben. Diese werden als Abfragezeichenfolgenparameter bei der Umleitung zurück an Ihre Anwendung übergeben. Dieser Mechanismus kann verwendet werden, um zusätzliche Informationen zu verwalten oder die Anforderung Ihrer App für eine Zugriffserteilung an die Antwort von Azure AD zu binden.
+Specifying a ConsentReturnUrl separate from the Reply URL will allow your app to implement separate logic that can process the response on a different URL from the Reply URL (which normally processes SAML tokens for sign on). You may also specify additional parameters in the ConsentReturnURL encoded URL; these will be passed back as query string parameters to your app upon redirection.  This mechanism can be used to maintain additional info or to tie your app’s request for an access grant to the response from Azure AD.
 
-#### Benutzeroberfläche zum Erteilen des Zugriffs und Antwort (Legacy)
+#### <a name="grant-access-user-experience-and-response-(legacy)"></a>Grant access user experience and response (Legacy)
 
-Wenn eine Anwendung eine Weiterleitung an den Link zum Erteilen des Zugriffs durchführt, zeigen die folgenden Abbildungen, welche Benutzeroberfläche verwendet wird.
+When an application redirects to the grant access link, the following images demonstrate what the user will experience.
 
-Wenn der Benutzer noch nicht angemeldet ist, wird er zur Anmeldung aufgefordert:
+If the user is not already signed in, they will be prompted to do so:
 
-![Anmeldung bei AAD](./media/active-directory-integrating-applications/signintoaad.png)
+![Sign in to AAD](./media/active-directory-integrating-applications/signintoaad.png)
 
-Nachdem der Benutzer authentifiziert wurde, leitet Azure AD den Benutzer auf die Seite zum Erteilen des Zugriffs um:
+Once the user is authenticated, Azure AD will redirect the user to the grant access page:
 
-![Erteilen von Zugriff](./media/active-directory-integrating-applications/grantaccess.png)
+![Grant Access](./media/active-directory-integrating-applications/grantaccess.png)
 
->[AZURE.NOTE] Nur der Unternehmensadministrator der externen Organisation kann den Zugriff auf Ihre App erteilen. Wenn der Benutzer kein Unternehmensadministrator ist, wird eine Option zum Senden einer Nachrichten an den Unternehmensadministrator bereitgestellt, damit Zugriff für die App angefordert werden kann.
+>[AZURE.NOTE] Only the company administrator of the external organization can grant access to your app. If the user is not a company administrator, they will be given the option to send mail to their company administrator to request that this app be granted access.
 
-Nachdem der Kunde über "Zugriff gewähren" den Zugriff gewährt oder durch Klicken auf "Abbrechen" den Zugriff verweigert hat, sendet Azure AD eine Antwort an die "ConsentReturnUrl" oder an die konfigurierte Antwort-URL. Diese Antwort enthält die folgenden Parameter:
+After the customer has granted access for your app by clicking Grant Access, or if they have denied access by clicking Cancel, Azure AD sends a response to the ConsentReturnUrl or to your configured Reply URL. This response contains the following parameters:
 
-|Parameter|Beschreibung|
+|Parameter|Description|
 |---|---|
-|TenantId|Die eindeutige ID der Organisation in Azure AD, die Zugriff für Ihre App gewährt hat. Dieser Parameter wird nur angegeben, wenn der Kunde den Zugriff gewährt hat.|
-|Zustimmung|Der Wert wird auf "Gewährt" festgelegt, wenn der App der Zugriff gewährt wurde, oder auf "Verweigert", wenn die Anforderung abgelehnt wurde.|
+|TenantId|The unique ID of the organization in Azure AD that has granted access for your app. This parameter will only be specified if the customer granted access.|
+|Consent|The value will be set to Granted if the app was granted access, or Denied if the request was rejected.|
 
-Weitere Parameter werden an die Anwendung zurückgegeben, wenn sie als Bestandteil der ConsentReturnUrl-codierten URL angegeben wurden. Das folgende Beispiel zeigt eine Antwort auf eine Anforderung zum Erteilen des Zugriffs, die angibt, dass die Anwendung autorisiert wurde. Die Antwort enthält außerdem eine „ContextID“, die in der Anforderung zum Erteilen des Zugriffs bereitgestellt wurde: `https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Granted&TenantId=f03dcba3-d693-47ad-9983-011650e64134`.
+Additional parameters will be returned to the app if they were specified as part of the ConsentReturnUrl encoded URL. The following is an example response to a grant access request that indicates the application has been authorized, and it includes a ContextID that was supplied in the grant access request: `https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Granted&TenantId=f03dcba3-d693-47ad-9983-011650e64134`.
 
->[AZURE.NOTE] Die Antwort zum Erteilen des Zugriffs enthält kein Sicherheitstoken für den Benutzer. Die App muss den Benutzer separat anmelden.
+>[AZURE.NOTE] The access grant response will not contain a security token for the user; the app must sign the user in separately.
 
-Das folgende Beispiel zeigt eine Antwort auf eine Anforderung zum Erteilen des Zugriffs, die verweigert wurde: `https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Denied`
+The following is an example response to an access grant request that was denied: `https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Denied`
 
-#### Rollover von App-Schlüsseln für den ununterbrochenen Zugriff auf die Graph-API (Legacy)
+#### <a name="rolling-app-keys-for-uninterrupted-access-to-the-graph-api-(legacy)"></a>Rolling app keys for uninterrupted access to the Graph API (Legacy)
 
-Während der Lebensdauer Ihrer App müssen Sie ggf. die Schlüssel ändern, die Sie verwenden, um bei Azure AD ein Zugriffstoken für den Aufruf der Graph-API anzufordern. Es gibt im Allgemeinen zwei Fälle, in denen Schlüssel geändert werden müssen: Rollover nach einem Notfall, wenn der Schlüssel kompromittiert wurde, oder Rollover, wenn Ihr aktueller Schlüssel bald abläuft. Das folgende Verfahren sollte verwendet werden, um einen unterbrechungsfreien Zugriff auf Ihre App zu gewährleisten, während Sie Ihre Schlüssel (in erster Linie für den zweiten Fall) aktualisieren.
+During the lifetime of your app, you may need to change the keys that you use when you call into Azure AD to acquire an access token to call the Graph API.  Generally changing keys falls into two categories: emergency roll over where your key has been compromised or a roll over when your current key is about to expire. The following procedure should be followed to provide your app with uninterrupted access while you refresh your keys (primarily for the second case).
 
-1. Klicken Sie im klassischen Azure-Portal auf Ihren Verzeichnismandanten, klicken Sie im oberen Menü auf **Anwendungen** und dann auf die App, die Sie konfigurieren möchten. Die Seite "Schnellstart" wird geöffnet und zeigt Informationen zum einmaligen Anmelden (SSO) und weitere Konfigurationsinformationen an.
+1. In the Azure classic portal, click on your directory tenant, click **Applications** from the top menu, then click the app you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
 
-1. Klicken Sie im oberen Menü auf **Konfigurieren**, um eine Liste der Eigenschaften Ihrer App anzuzeigen. Es wird eine Liste Ihrer Schlüssel angezeigt.
+1. Click on **Configure** in the top menu to see a list of your app’s properties, and you’ll see a list of your keys.
 
-1. Klicken Sie unterhalb von „Schlüssel“ auf die Dropdownliste mit dem Titel **Dauer auswählen**, wählen Sie 1 oder 2 Jahre aus, und klicken Sie dann auf der Befehlsleiste auf **Speichern**. Ein neuer Kennwortschlüssel für die App wird generiert. Kopieren Sie diesen neuen Kennwortschlüssel. Zu diesem Zeitpunkt können Sie sowohl den vorhandenen als auch den neuen Schlüssel für die App verwenden, um ein Zugriffstoken aus Azure AD abzurufen.
+1. Under Keys, click on the drop down that says **Select duration** and pick 1 or 2 years, and then click **Save** in the command bar. This generates a new password key for your app. Copy this new password key. At this point both the existing and new key can be used by your app to obtain an access token from Azure AD.
 
-1. Kehren Sie zu Ihrer App zurück, und aktualisieren Sie die Konfiguration, um mit der Verwendung des neuen Kennwortschlüssels zu beginnen. Ein Beispiel dafür, wo diese Aktualisierung stattfinden sollte, finden Sie unter [Verwenden der Graph-API zum Abfragen von Azure AD](https://msdn.microsoft.com/library/azure/dn151791.aspx).
+1. Go back to your app and update the configuration to start using the new password key. See [Using the Graph API to Query Azure AD](https://msdn.microsoft.com/library/azure/dn151791.aspx) for an example of where this update should happen.
 
-1. Sie sollten nun ein Rollout dieser Änderung für Ihre Produktionsumgebung ausführen. Überprüfen Sie die Konfiguration hierbei zunächst auf einem Dienstknoten, bevor Sie das Rollout in der gesamten Umgebung ausführen.
+1. You should now roll this change out across your production environment – verifying it first on one service node, before rolling it out across the rest.
 
-1. Sobald das Update für die Produktionsbereitstellung abgeschlossen ist, können Sie zum klassischen Azure-Portal zurückkehren und den alten Schlüssel entfernen.
+1. Once the update is complete across your production deployment, you are free to come back to the Azure classic portal and remove the old key.
 
-#### Ändern der App-Eigenschaften nach dem Aktivieren des Zugriffs (Legacy)
+#### <a name="changing-app-properties-after-enabling-access-(legacy)"></a>Changing app properties after enabling access (Legacy)
 
-Nachdem Sie den Zugriff auf Ihre App für externe Benutzer aktiviert haben, können Sie weiterhin Änderungen an den Eigenschaften Ihrer App im klassischen Azure-Portal vornehmen. Kunden allerdings, die bereits Zugriff auf Ihre App erteilt haben, bevor Sie Änderungen an der App vorgenommenen haben, sehen diese Änderungen beim Anzeigen von Details zu Ihrer Anwendung im klassischen Azure-Portal nicht. Sobald die Anwendung Kunden zur Verfügung gestellt wurde, müssen Sie sehr vorsichtig sein, wenn Sie bestimmte Änderungen vornehmen. Wenn Sie z. B. den App-ID-URI aktualisieren, können sich Ihre vorhandenen Kunden, die den Zugriff vor dieser Änderung erteilt haben, nicht über ihre Geschäfts- oder Schulkonten bei Ihrer App anmelden.
+Once you enable access for external users to your app, you may still continue to make changes to your app’s properties in the Azure classic portal. However, customers who have already granted access to your app before you made app changes will not see those changes reflected when viewing details about your app in the Azure classic portal. Once the app is made available to customers, you need to be very careful when making certain changes. For example, if you update the App ID URI, then your existing customers who granted access before this change will be unable to log in to your app using their company or school accounts.
 
-Wenn Sie eine Änderung an "RequestedPermissions" vornehmen, um eine höhere Zugriffsebene anzufordern, erhalten vorhandene Kunden möglicherweise die Antwort "Zugriff verweigert" von der Graph-API, wenn sie App-Funktionen nutzen, die neue API-Aufrufe mit einer höheren Zugriffsebene verwenden. Ihre App sollte dem Kunden in diesen Fällen die Möglichkeit bieten, den Zugriff auf Ihre App mit einer höhere Zugriffsebene zu gewähren.
+If you make a change to the RequestedPermissions to request a greater access level, existing customers using app functionality that now leverages new API calls using this increased access level may get an access denied response from the Graph API.  Your app should handle these cases and ask the customer to grant access to your app with the request for an increased access level.
 
-## Entfernen einer Anwendung
+## <a name="removing-an-application"></a>Removing an application
 
-In diesem Abschnitt wird die Vorgehensweise beim Entfernen einer Anwendung aus Ihrem Azure AD-Mandanten beschrieben.
+This section describes how to remove an application from your Azure AD tenant.
 
-### Entfernen einer Anwendung, die von Ihrer Organisation erstellt wurde
-Dies sind die Anwendungen, die unter den Filter „Anwendungen im Besitz meines Unternehmens“ auf der Hauptseite „Anwendungen“ für Ihren Azure AD-Mandanten angezeigt werden. Technisch gesehen sind dies Anwendungen, die Sie entweder manuell über das klassische Azure-Portal oder programmgesteuert über PowerShell oder die Graph-API registriert haben. Genauer gesagt, werden sie sowohl durch ein Anwendungs- als auch Dienstprinzipalobjekt in Ihrem Mandanten dargestellt. Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory-application-objects.md).
+### <a name="removing-an-application-authored-by-your-organization"></a>Removing an application authored by your organization
+These are the applications that show under the "Applications my company owns" filter on the main "Applications" page for your Azure AD tenant. In technical terms, these are applications you registered either manually via the Azure classic portal, or programmatically via PowerShell or the Graph API. More specifically, they are represented by both an Application and Service Principal object in your tenant. See [Application Objects and Service Principal Objects](active-directory-application-objects.md) for more information.
 
-#### So entfernen Sie eine Einzelinstanzanwendung aus Ihrem Verzeichnis
+#### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>To remove a single tenant application from your directory
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
 
-1. Klicken Sie im linken Menü auf das Active Directory-Symbol, und klicken Sie dann auf das gewünschte Verzeichnis.
+1. Click on the Active Directory icon on the left menu, and then click on the desired directory.
 
-1. Klicken Sie im oberen Menü auf **Anwendungen**, und klicken Sie dann auf die Anwendung, die Sie konfigurieren möchten. Die Seite "Schnellstart" wird geöffnet und zeigt Informationen zum einmaligen Anmelden (SSO) und weitere Konfigurationsinformationen an.
+1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
 
-1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Löschen**.
+1. Click on the **Delete** button in the command bar.
 
-1. Klicken Sie in der Bestätigungsmeldung auf **Ja**.
+1. Click **Yes** in the confirmation message.
 
-#### So entfernen Sie eine mehrinstanzenfähige Anwendung aus Ihrem Verzeichnis
+#### <a name="to-remove-a-multi-tenant-application-from-your-directory"></a>To remove a multi-tenant application from your directory
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
 
-1. Klicken Sie im linken Menü auf das Active Directory-Symbol, und klicken Sie dann auf das gewünschte Verzeichnis.
+1. Click on the Active Directory icon on the left menu, and then click on the desired directory.
 
-1. Klicken Sie im oberen Menü auf **Anwendungen**, und klicken Sie dann auf die Anwendung, die Sie konfigurieren möchten. Die Seite "Schnellstart" wird geöffnet und zeigt Informationen zum einmaligen Anmelden (SSO) und weitere Konfigurationsinformationen an.
+1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
 
-1. Klicken Sie im Abschnitt „Die Anwendung ist mehrinstanzenfähig“ auf **Nein**. Dies konvertiert Ihre Anwendung in eine Einzelinstanzanwendung. Die Anwendung verbleibt jedoch weiterhin in einer Organisation, die bereits ihre Zustimmung für diese Anwendung erteilt hat.
+1. On the Application is multi-tenant section, click **No**. This converts your application to be single tenant, but the application will still remain in an organization who has already consented to it.
 
-1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Löschen**.
+1. Click on the **Delete** button in the command bar.
 
-1. Klicken Sie in der Bestätigungsmeldung auf **Ja**.
+1. Click **Yes** in the confirmation message.
 
-### Entfernen einer mehrinstanzenfähigen Anwendung, die von einer anderen Organisation autorisiert ist
-Dies ist eine Teilmenge der Anwendungen, die unter dem Filter „Anwendungen, die mein Unternehmen verwendet“ auf der Hauptseite „Anwendungen“ für Ihren Azure AD-Mandanten angezeigt werden, insbesondere diejenigen, die nicht in der Liste „Anwendungen im Besitz meines Unternehmens“ aufgeführt sind. Technisch gesehen sind dies mehrinstanzenfähige Anwendungen, die bei der Zustimmung registriert wurden. Genauer gesagt, werden sie nur durch ein Dienstprinzipalobjekt in Ihrem Mandanten dargestellt. Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory-application-objects.md).
+### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Removing a multi-tenant application authorized by another organization
+These are a subset of the applications that show under the "Applications my company uses" filter on the main "Applications" page for your Azure AD tenant, specifically the ones that are not listed under the "Applications my company owns" list. In technical terms, these are multi-tenant applications registered during the consent process. More specifically, they are represented by only a Service Principal object in your tenant. See [Application Objects and Service Principal Objects](active-directory-application-objects.md) for more information.
 
-Um den Zugriff einer mehrinstanzenfähigen Anwendung auf Ihr Verzeichnis zu entziehen (nachdem die Zustimmung erteilt wurde), muss der Unternehmensadministrator über ein Azure-Abonnement zum Entziehen des Zugriffs über das klassische Azure-Portal verfügen. Sie navigieren einfach zur Konfigurationsseite der Anwendung und klicken am unteren Rand auf die Schaltfläche „Zugriff verwalten“. Alternativ kann der Unternehmensadministrator [Azure AD PowerShell-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=294151) verwenden, um den Zugriff zu entziehen.
+In order to remove a multi-tenant application’s access to your directory (after having granted consent), the company administrator must have an Azure subscription to remove access through the Azure classic portal. You simply navigate to the application's configuration page, and click the "Manage Access" button at the bottom. Alternatively, the company administrator can use the [Azure AD PowerShell Cmdlets](http://go.microsoft.com/fwlink/?LinkId=294151) to remove access.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Siehe Abschnitt [Brandingrichtlinien für integrierte Apps](active-directory-branding-guidelines.md)
+- See the [Branding Guidelines for Integrated Apps](active-directory-branding-guidelines.md) for tips on visual guidance for your app.
 
-- Weitere Informationen über [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory-application-objects.md)
+- For more details on the relationship between an application's Application and Service Principal object(s), see [Application Objects and Service Principal Objects](active-directory-application-objects.md).
 
-- [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md)
+- To learn more about the role the app manifest plays, see [Understanding the Azure Active Directory application manifest](active-directory-application-manifest.md)
 
-- Besuchen Sie das [Entwicklerhandbuch zu Azure Active Directory](active-directory-developers-guide.md).
+- See the [Azure AD developer glossary](active-directory-dev-glossary.md) for definitions of some of the core Azure Active Directory (AD) developer concepts.
 
-<!---HONumber=AcomDC_0727_2016-->
+- Visit the [Active Directory developer's guide](active-directory-developers-guide.md) for an overview of all developer related content.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

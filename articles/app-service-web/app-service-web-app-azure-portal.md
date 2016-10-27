@@ -1,88 +1,93 @@
 <properties
-	pageTitle="Referenz zur Navigation im Azure-Portal"
-	description="Informationen zu den Unterschieden in Bezug auf App Service-Web-Apps zwischen dem Verwaltungsportal und dem Azure-Portal"
-	services="app-service"
-	documentationCenter=""
-	authors="jaime-espinosa"
-	manager="wpickett"
-	editor="jimbe"/>
+    pageTitle="Reference for navigating the Azure portal"
+    description="Learn the different user experiences for App Service Web between the management portal and the Azure Portal"
+    services="app-service"
+    documentationCenter=""
+    authors="jaime-espinosa"
+    manager="wpickett"
+    editor="jimbe"/>
 
 <tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="02/26/2016"
-	ms.author="jaime-espinosa"/>
+    ms.service="app-service"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="02/26/2016"
+    ms.author="jaime-espinosa"/>
 
-# Referenz zur Navigation im Azure-Portal
 
-Azure Websites heißen ab sofort [App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Wir aktualisieren unsere gesamte Dokumentation, um diese Namensänderung wiederzugeben und um Anweisungen für das Azure-Portal bereitzustellen. Bis dieser Prozess abgeschlossen ist, können Sie dieses Dokument als Leitfaden für die Arbeit mit Web-Apps im Azure-Portal verwenden.
+# <a name="reference-for-navigating-the-azure-portal"></a>Reference for navigating the Azure portal
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Azure Websites are now called [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). We're updating all of our documentation to reflect this name change and to provide instructions for the Azure Portal. Until that process is done, you can use this document as a guide for working with Web Apps in the Azure portal.
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
  
-## Die Zukunft des klassischen Azure-Portals
+## <a name="the-future-of-the-azure-classic-portal"></a>The future of the Azure Classic Portal
 
-Sie werden die Brandingänderungen am klassischen Azure-Portal schon bemerkt haben. Dieses Portal wird gerade durch das Azure-Portal ersetzt. Da das klassische Portal schrittweise außer Betrieb genommen wird, werden die neuen Entwicklungen auf das Azure-Portal verlagert. Alle anstehenden neuen Features für Web-Apps fließen in das Azure-Portal ein. Nutzen Sie das Azure-Portal, um von den neuesten und besten Features zu profitieren, die Web-Apps zu bieten haben.
+While you will notice the branding changes on the Azure Classic Portal, that portal is in the process of being replaced by the Azure Portal. As the classic portal is being phased out, the focus for new development is shifting to the Azure Portal. All upcoming new features for Web Apps will come in the Azure Portal. Start using the Azure Portal to take advantage of the latest and greatest that Web Apps have to offer.
 
-## Unterschiede beim Layout zwischen dem klassischen Azure-Portal und dem Azure-Portal
+## <a name="layout-differences-between-the-azure-classic-portal-and-azure-portal"></a>Layout differences between the Azure Classic Portal and Azure Portal
 
-Im klassischen Portal sind alle Azure-Dienste auf der linken Seite aufgeführt. Die Navigation im klassischen Portal erfolgt in einer Strukturansicht, bei der Sie bei einem Dienst starten und zu den einzelnen Elementen navigieren. Diese Struktur funktioniert gut, wenn Sie unabhängige Komponenten verwalten. Auf Azure basierende Anwendungen sind jedoch eine Sammlung miteinander verbundener Dienste, weshalb diese Struktur für die Arbeit mit Sammlungen von Diensten nicht ideal ist.
+In the classic portal, all the Azure services are listed on the left hand side. Navigation in the classic portal follows a tree structure, where you start from the service and navigate into each element. This structure works well when managing independent components. However, applications built on Azure are a collection of interconnected services, and this tree structure isn't ideal for working with collections of services. 
 
-Das Azure-Portal vereinfacht die Entwicklung von Anwendungen mit Komponenten aus mehreren Diensten in allen Aspekten. Das Portal ist in Form von *Abläufen* strukturiert. Ein *Ablauf* umfasst eine Folge von *Blättern*, die als Container für die verschiedenen Komponenten dienen. Das Einrichten der automatischen Skalierung für eine Web-App ist z. B. ein *Ablauf*, bei dem Sie, wie im folgenden Beispiel gezeigt, zu mehreren Blättern gelangen: zum Blatt **Website** (das die neue Terminologie noch nicht widerspiegelt), zum Blatt **Einstellungen** und zum Blatt **Horizontal skalieren**. Bei diesem Beispiel ist die automatische Skalierung so eingerichtet, dass sie von der CPU-Auslastung abhängig ist. Daher gibt es auch ein Blatt **CPU-Prozentsatz**. Die Komponenten in den *Blättern* heißen *Teile* und sehen wie Kacheln aus.
+The Azure portal makes it easy to build applications end-to-end with components from multiple services. The portal is organized as *journeys*. A *journey* is a series of *blades*, which are containers for the different components. For example, setting up auto-scaling for a web app is a *journey* which takes you several blades as shown in the following example: the **web-site** blade (that blade title has not yet been updated to use the new terminology), the **Settings** blade, and the **Scale out** blade. In the example, auto scaling is being set up to depend on CPU usage, so there is also a **CPU Percentage** blade. The components within the *blades* are called *parts*, which look like tiles. 
 
 ![](./media/app-service-web-app-azure-portal/AutoScaling.png)
 
-## Navigationsbeispiel: Erstellen einer Web-App
+## <a name="navigation-example:-create-a-web-app"></a>Navigation example: create a web app
 
-Das Erstellen neuer Web-Apps ist immer noch kinderleicht. Die folgende Abbildung zeigt das klassische Portal und das Portal nebeneinander. Sie können sehen, dass sich die Anzahl der Schritte, die für Erstellung und Inbetriebnahme einer neuen Web-App erforderlich sind, nur unwesentlich geändert hat.
+Creating new web apps is still as easy as 1-2-3. The following image shows the classic portal and the portal side-by-side to demonstrate that not much has changed in the number of steps needed to get a web app up and running. 
 
 ![](./media/app-service-web-app-azure-portal/CreateWebApp.png)
 
-Im Portal können Sie aus den gängigsten Typen von Web-Apps wählen, darunter z. B. auch beliebte Kataloganwendungen wie WordPress. Eine vollständige Liste der verfügbaren Anwendungen finden Sie im [Azure Marketplace].
+In the portal you can choose from the most common types of web apps, including popular gallery applications like WordPress. For a full list of available applications, visit the [Azure Marketplace].
 
-Wenn Sie eine Web-App erstellen, geben Sie im Portal die URL, den App Service-Plan und Speicherort genauso wie im klassischen Portal an.
+When you create a web app, you specify URL, App Service plan, and location in the portal just as you do in the classic portal. 
 
 ![](./media/app-service-web-app-azure-portal/CreateWebAppSettings.png)
 
-Darüber hinaus können Sie im Portal weitere allgemeine Einstellungen festlegen. Beispielsweise vereinfachen [Ressourcengruppen](../resource-group-overview.md) das Anzeigen und Verwalten zugehöriger Azure-Ressourcen.
+In addition, the portal lets you define other common settings. For example, [resource groups](../resource-group-overview.md) make it simple to see and manage related Azure resources. 
 
-## Navigationsbeispiel: Einstellungen und Features
+## <a name="navigation-example:-settings-and-features"></a>Navigation example: settings and features
 
-Alle Einstellungen und Features sind nun logisch in einem einzelnen Blatt gruppiert, von wo aus Sie navigieren können.
+All the settings and features are now logically grouped in a single blade, from which you can navigate.
 
 ![](./media/app-service-web-app-azure-portal/WebAppSettings.png)
 
-Beispielsweise können Sie benutzerdefinierte Domänen erstellen, indem Sie im Blatt **Einstellungen** auf **Benutzerdefinierte Domänen und SSL** klicken.
+For example, you can create custom domains by clicking **Custom domains and SSL** in the **Settings** blade.
 
 ![](./media/app-service-web-app-azure-portal/ConfigureWebApp.png)
 
-Um eine Überwachungswarnung einzurichten, klicken Sie auf **Anforderungen und Fehler** und anschließend auf **Warnung hinzufügen**.
+To set up a monitoring alert, click **Requests and errors** and then **Add Alert**.
 
 ![](./media/app-service-web-app-azure-portal/Monitoring.png)
 
-Um die Diagnose zu aktivieren, klicken Sie im Blatt **Einstellungen** auf **Diagnoseprotokolle**.
+To enable diagnostics, click **Diagnostics logs** in the **Settings** blade.
 
 ![](./media/app-service-web-app-azure-portal/Diagnostics.png)
  
-Zum Konfigurieren von Anwendungseinstellungen klicken Sie im Blatt **Einstellungen** auf **Anwendungseinstellungen**.
+To configure application settings, click **Application settings** in the **Settings** blade. 
 
 ![](./media/app-service-web-app-azure-portal/AppSettingsPreview.png)
 
-Neben dem Markennamen wurden einige Elemente im Portal umbenannt oder anders gruppiert, um ihr Auffinden zu erleichtern. Nachstehend sehen Sie beispielsweise einen Screenshot der entsprechenden Seite für App-Einstellungen (**Konfigurieren**) im klassischen Portal.
+Other than the brand name, a few things in the portal have been renamed or grouped differently to make it easier to find them. For example, below is a screenshot of the corresponding page for app settings (**Configure**) in the classic portal.
 
 ![](./media/app-service-web-app-azure-portal/AppSettings.png)
 
-## Weitere Ressourcen
+## <a name="more-resources"></a>More Resources
 
 [Azure Portal]: https://portal.azure.com
 [Azure Marketplace]: /marketplace/
 
->[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
-## Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
+## <a name="what's-changed"></a>What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
  
 
-<!---HONumber=AcomDC_0302_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

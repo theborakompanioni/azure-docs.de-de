@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Verwalten von DNS-Ressourceneintragssätzen und Einträgen mit dem Azure-Portal | Microsoft Azure"
-   description="Verwalten von DNS-Ressourceneintragssätzen und Einträgen, wenn Ihre Domäne in Azure DNS gehostet wird."
+   pageTitle="Manage DNS record sets and records using the Azure portal | Microsoft Azure"
+   description="Managing DNS record sets and records when hosting your domain on Azure DNS."
    services="dns"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
@@ -15,123 +15,128 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="08/16/2016"
-   ms.author="cherylmc"/>
+   ms.author="sewhee"/>
 
-# Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
+
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Manage DNS records and record sets by using the Azure portal
 
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](dns-operations-recordsets-portal.md)
-- [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
+- [Azure Portal](dns-operations-recordsets-portal.md)
+- [Azure CLI](dns-operations-recordsets-cli.md)
 - [PowerShell](dns-operations-recordsets.md)
 
 
-In diesem Artikel wird gezeigt, wie Sie Ressourceneintragssätze und Einträge für die DNS-Zone im Azure-Portal verwalten.
+This article shows you how to manage record sets and records for your DNS zone by using the Azure portal.
 
-Es ist wichtig, den Unterschied zwischen DNS-Ressourceneintragssätzen und einzelnen DNS-Ressourceneinträgen zu verstehen. Bei einem Ressourceneintragssatz handelt es sich um die Sammlung von Einträgen in einer Zone, die den gleichen Namen und den gleichen Typ aufweisen. Weitere Informationen finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md).
+It's important to understand the difference between DNS record sets and individual DNS records. A record set is a collection of records in a zone that have the same name and are the same type. For more information, see [Create DNS record sets and records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
 
-## Erstellen eines neuen Ressourceneintragssatzes und eines Eintrags
+## <a name="create-a-new-record-set-and-record"></a>Create a new record set and record
 
-Weitere Informationen zum Erstellen eines Ressourceneintragssatzes im Azure-Portal finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md).
-
-
-## Anzeigen eines Ressourceneintragssatzes
-
-1. Wechseln Sie im Azure-Portal zum Blatt **DNS-Zone**.
-
-2. Suchen Sie den Ressourceneintragssatz, und wählen Sie ihn aus. Dies öffnet die Eigenschaften des Ressourceneintragssatzes.
-
-	![Suchen nach einem Ressourceneintragssatz](./media/dns-operations-recordsets-portal/searchset500.png)
+To create a record set in the Azure portal, see [Create DNS records by using the Azure portal](dns-getstarted-create-recordset-portal.md).
 
 
-## Hinzufügen eines Eintrags zu einem Ressourceneintragssatz
+## <a name="view-a-record-set"></a>View a record set
 
-Sie können einem Ressourceneintragssatz bis zu 20 Einträge hinzufügen. Ein Ressourceneintragssatz darf nicht zwei identische Einträge enthalten. Leere Ressourceneintragssätze (ohne Einträge) können erstellt werden, doch werden sie nicht im Azure DNS-Namenserver angezeigt. Ressourceneintragssätze vom Typ CNAME können höchstens einen Eintrag enthalten.
+1. In the Azure portal, go to the **DNS zone** blade.
 
+2. Search for the record set and select it. This opens the record set properties.
 
-1. Klicken Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihrer DNS-Zone auf den Ressourceneintragssatz, dem Sie einen Eintrag hinzufügen möchten.
-
-	![Auswählen eines Ressourceneintragssatzes](./media/dns-operations-recordsets-portal/selectset500.png)
-
-2. Geben Sie die Einstellungen des Ressourceneintragssatzes an, indem Sie die Felder ausfüllen.
-
-	![Hinzufügen eines Eintrags](./media/dns-operations-recordsets-portal/addrecord500.png)
-
-2. Klicken Sie oben auf dem Blatt auf **Speichern**, um Ihre Einstellungen zu speichern. Schließen Sie dann das Blatt.
-
-3. In der Ecke sehen Sie, dass der Eintrag gespeichert wird.
-
-	![Speichern eines Ressourceneintragssatzes](./media/dns-operations-recordsets-portal/saving150.png)
-
-Nachdem der Eintrag gespeichert wurde, spiegeln die Werte auf dem Blatt **DNS-Zone** den neuen Eintrag wider.
+    ![Search for a record set](./media/dns-operations-recordsets-portal/searchset500.png)
 
 
-## Aktualisieren eines Eintrags
+## <a name="add-a-new-record-to-a-record-set"></a>Add a new record to a record set
 
-Wenn Sie einen Eintrag innerhalb eines vorhandenen Ressourceneintragssatzes aktualisieren, hängt vom Eintragstyp ab, welche Felder Sie aktualisieren können.
-
-1. Suchen Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihres Ressourceneintragssatzes nach dem Eintrag.
-
-2. Ändern Sie den Eintrag. Wenn Sie einen Eintrag ändern, können Sie die verfügbaren Einstellungen für den Eintrag ändern. Im folgenden Beispiel ist das Feld **IP-Adresse** ausgewählt, und die IP-Adresse wird gerade geändert.
-
-	![Ändern Sie eines Eintrags](./media/dns-operations-recordsets-portal/modifyrecord500.png)
-
-3. Klicken Sie oben auf dem Blatt auf **Speichern**, um Ihre Einstellungen zu speichern. In der oberen rechten Ecke wird die Benachrichtigung angezeigt, dass der Eintrag gespeichert wurde.
-
-	![Gespeicherter Ressourceneintragssatz](./media/dns-operations-recordsets-portal/saved150.png)
+You can add up to 20 records to any record set. A record set cannot contain two identical records. Empty record sets (with zero records) can be created, but do not appear on the Azure DNS name servers. Record sets of type CNAME can contain one record at most.
 
 
-Nachdem der Eintrag gespeichert wurde, spiegeln die Werte für den Ressourceneintragssatz auf dem Blatt **DNS-Zone** den aktualisierten Eintrag wider.
+1. On the **Record set properties** blade for your DNS zone, click the record set that you want to add a record to.
+
+    ![Select a record set](./media/dns-operations-recordsets-portal/selectset500.png)
+
+2. Specify the record set properties by filling in the fields.
+
+    ![Add a record](./media/dns-operations-recordsets-portal/addrecord500.png)
+
+2. Click **Save** at the top of the blade to save your settings. Then close the blade.
+
+3. In the corner, you will see that the record is saving.
+
+    ![Saving record set](./media/dns-operations-recordsets-portal/saving150.png)
+
+After the record has been saved, the values on the **DNS zone** blade will reflect the new record.
 
 
-## Entfernen eines Eintrags aus einem Ressourceneintragssatz
+## <a name="update-a-record"></a>Update a record
 
-Sie können Einträge mit dem Azure-Portal aus einem Ressourceneintragssatz entfernen. Beachten Sie, dass durch das Entfernen des letzten Eintrags aus einem Ressourceneintragssatz nicht der Ressourceneintragssatz an sich gelöscht wird.
+When you update a record in an existing record set, the fields you can update depend on the type of record you're working with.
 
-1. Suchen Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihres Ressourceneintragssatzes nach dem Eintrag.
+1. On the **Record set properties** blade for your record set, search for the record.
 
-2. Klicken Sie auf den Eintrag, den Sie entfernen möchten. Wählen Sie dann **Entfernen**.
+2. Modify the record. When you modify a record, you can change the available settings for the record. In the following example, the **IP address** field is selected, and the IP address is in the process of being modified.
 
-	![Entfernen eines Eintrags](./media/dns-operations-recordsets-portal/removerecord500.png)
+    ![Modify a record](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Klicken Sie oben auf dem Blatt auf **Speichern**, um Ihre Einstellungen zu speichern.
+3. Click **Save** at the top of the blade to save your settings. In the upper right corner, you'll see the notification that the record has been saved.
 
-3. Nachdem der Eintrag entfernt wurde, zeigen die Werte für den Eintrag auf dem Blatt **DNS-Zone** an, dass der Eintrag entfernt wurde.
-
-
-## <a name="delete"></a>Löschen eines Ressourceneintragssatzes
-
-1. Klicken Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihres Ressourceneintragssatzes auf **Entfernen**.
-
-	![Löschen einer Datensatzgruppe](./media/dns-operations-recordsets-portal/deleterecordset500.png)
-
-2. Sie werden in einer Meldung gefragt, ob Sie den Ressourceneintragssatz wirklich löschen möchten.
-
-3. Überprüfen Sie, ob der Name des Ressourceneintragssatzes dem entspricht, den Sie entfernen möchten, und klicken Sie dann auf **Ja**.
-
-4. Überprüfen Sie auf dem Blatt **DNS-Zone**, ob der Ressourceneintragssatz nicht mehr sichtbar ist.
+    ![Saved record set](./media/dns-operations-recordsets-portal/saved150.png)
 
 
-## Arbeiten mit NS- und SOA-Einträgen
+After the record has been saved, the values for the record set on the **DNS zone** blade will reflect the updated record.
 
-Automatisch erstellte NS- und SOA-Einträge werden anderes verwaltet als andere Ressourceneintragssätze.
 
-### Ändern von SOA-Einträgen
+## <a name="remove-a-record-from-a-record-set"></a>Remove a record from a record set
 
-Sie können dem automatisch erstellten SOA-Ressourceneintragssatz an der Zonenspitze (Name = „@“) weder Einträge hinzufügen, noch Einträge daraus entfernen. Allerdings können Sie jeden Parameter im SOA-Eintrag (mit Ausnahme von „Host“) und die Gültigkeitsdauer des Ressourceneintragssatzes ändern.
+You can use the Azure portal to remove records from a record set. Note that removing the last record from a record set does not delete the record set.
 
-### Ändern von NS-Einträgen an der Zonenspitze
+1. On the **Record set properties** blade for your record set, search for the record.
 
-Sie können dem automatisch erstellten NS-Ressourceneintragssatz an der Zonenspitze (Name = „@“) weder Einträge hinzufügen, noch Einträge daraus entfernen oder darin ändern. Sie können nur die Gültigkeitsdauer (TTL) des Ressourceneintragssatzes ändern.
+2. Click the record that you want to remove. Then select **Remove**.
 
-### Löschen von SOA- oder NS-Ressourceneintragssätzen
+    ![Remove a record](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-Sie können den SOA- und NS-Ressourceneintragssatz an der Zonenspitze (Name = „@“), die beim Erstellen der Zone automatisch erstellt werden, nicht löschen. Sie werden automatisch gelöscht, wenn Sie die Zone löschen.
+3. Click **Save** at the top of the blade to save your settings.
 
-## Nächste Schritte
+3. After the record has been removed, the values for the record on the **DNS zone** blade will reflect the removal.
 
--   Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
--   Weitere Informationen zum Automatisieren von DNS finden Sie unter [Erstellen von DNS-Zonen und -Datensatzgruppen mithilfe des .NET SDK](dns-sdk.md).
--   Weitere Informationen zu Reverse-DNS-Einträgen finden Sie unter [Mit PowerShell Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten](dns-reverse-dns-record-operations-ps.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+## <a name="<a-name="delete"></a>delete-a-record-set"></a><a name="delete"></a>Delete a record set
+
+1. On the **Record set properties** blade for your record set, click **Delete**.
+
+    ![Delete a record set](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+
+2. A message appears asking if you want to delete the record set.
+
+3. Verify that the name matches the record set that you want to delete, and then click **Yes**.
+
+4. On the **DNS zone** blade, verify that the record set is no longer visible.
+
+
+## <a name="work-with-ns-and-soa-records"></a>Work with NS and SOA records
+
+NS and SOA records that are automatically created are managed differently from other record types.
+
+### <a name="modify-soa-records"></a>Modify SOA records
+
+You cannot add or remove records from the automatically created SOA record set at the zone apex (name = "@"). However, you can modify any of the parameters within the SOA record (except "Host") and the record set TTL.
+
+### <a name="modify-ns-records-at-the-zone-apex"></a>Modify NS records at the zone apex
+
+You cannot add to, remove, or modify the records in the automatically created NS record set at the zone apex (name = "@"). The only change that's permitted is to modify the record set TTL.
+
+### <a name="delete-soa-or-ns-record-sets"></a>Delete SOA or NS record sets
+
+You cannot delete the SOA and NS record sets at the zone apex (name = "@") that are created automatically when the zone is created. They are deleted automatically when you delete the zone.
+
+## <a name="next-steps"></a>Next steps
+
+-   For more information about Azure DNS, see the [Azure DNS overview](dns-overview.md).
+-   For more information about automating DNS, see [Creating DNS zones and record sets using the .NET SDK](dns-sdk.md).
+-   For more information about reverse DNS records, see [How to manage reverse DNS records for your services using PowerShell](dns-reverse-dns-record-operations-ps.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,7 +1,9 @@
-Dieser Artikel bezieht sich auf Azure App Service (Web-Apps, API-Apps, mobile Apps, Logik-Apps). Informationen zu Cloud Services finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../articles/cloud-services/cloud-services-custom-domain-name.md).
+This article is for Azure App Service (Web Apps, API Apps, Mobile Apps, Logic Apps); for Cloud Services, see [Configuring a custom domain name for an Azure cloud service](../articles/cloud-services/cloud-services-custom-domain-name.md).
 
-> [AZURE.NOTE]  Wenn für Ihre App durch [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) ein Lastenausgleich erfolgt, klicken Sie auf den Selektor am Anfang dieses Artikels, um spezifische Informationen zu erhalten.
+> [AZURE.NOTE]  If you app is load-balanced by [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), click the selector at the top of this article to get specific steps.
 >
-> **Benutzerdefinierte Domänennamen sind im Free-Tarif nicht aktiviert**. Sie müssen eine [Skalierung auf einen höheren Tarif vornehmen](../articles/app-service-web/web-sites-scale.md), wodurch sich die Kosten für Ihr Abonnement ändern können. Weitere Informationen finden Sie in der [App Service-Preisübersicht](https://azure.microsoft.com/pricing/details/app-service/).
+> **Custom domain names are not enabled for Free tier**. You must [scale up to a higher pricing tier](../articles/app-service-web/web-sites-scale.md), which may change how much you are billed for your subscription. See [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/) for more information.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

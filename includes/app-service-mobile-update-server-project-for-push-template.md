@@ -1,23 +1,23 @@
-In diesem Abschnitt aktualisieren Sie Code in Ihrem vorhandenen Mobile Apps-Back-End-Projekt so, dass bei jedem Hinzufügen eines neuen Elements eine Pushbenachrichtigung gesendet wird. Da die Clients mithilfe einer Vorlagenregistrierung für Pushbenachrichtigungen registriert sind, kann eine einzelne Pushbenachrichtigung an alle Clientplattformen gesendet werden. Jede Clientvorlagenregistrierung enthält den Parameter *MessageParam*. Wenn die Benachrichtigung gesendet wird, enthält *MessageParam* eine Zeichenfolge, die den Text des eingefügten Elements darstellt. Weitere Informationen zum Verwenden von Vorlagen mit Notification Hubs finden Sie unter [Vorlagen](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+In this section, you update code in your existing Mobile Apps backend project to send a push notification every time a new item is added. Because the clients are registered for push notifications using a template registration, a single push notification message can be sent to all of the client platforms. Each client template registration contains a *messageParam* parameter". When the notification is sent, *messageParam* contains a string that is the text of the item being inserted. For more information on using templates with Notification Hubs, see [Templates](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
-Wählen Sie das Ihrem Back-End-Projekttyp entsprechende folgende Verfahren: entweder [.NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs).
+Choose the procedure below that matches your backend project type&mdash;either [.NET backend](#dotnet) or [Node.js backend](#nodejs).
 
-### <a name="dotnet"></a>.NET-Back-End-Projekt
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, und klicken Sie auf **NuGet-Pakete verwalten**, und suchen Sie nach `Microsoft.Azure.NotificationHubs`. Klicken Sie anschließend auf **Installieren**. Dadurch wird die Notification Hubs-Bibliothek zum Senden von Benachrichtigungen von Ihrem Back-End installiert.
+### <a name="<a-name="dotnet"></a>.net-backend-project"></a><a name="dotnet"></a>.NET backend project
+1. In Visual Studio, right-click the server project and click **Manage NuGet Packages**, search for `Microsoft.Azure.NotificationHubs`, then click **Install**. This installs the Notification Hubs library for sending notifications from your backend.
 
-3. Öffnen Sie **Controller** > **TodoItemController.cs** im Serverprojekt, und fügen Sie die folgenden using-Anweisungen hinzu:
+3. In the server project, open **Controllers** > **TodoItemController.cs**, and add the following using statements:
 
-		using System.Collections.Generic;
-		using Microsoft.Azure.NotificationHubs;
-		using Microsoft.Azure.Mobile.Server.Config;
-	
+        using System.Collections.Generic;
+        using Microsoft.Azure.NotificationHubs;
+        using Microsoft.Azure.Mobile.Server.Config;
+    
 
-2. Fügen Sie in der **PostTodoItem**-Methode den folgenden Code nach dem Aufruf von **InsertAsync** hinzu:
+2. In the **PostTodoItem** method, add the following code after the call to **InsertAsync**:  
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
         MobileAppSettingsDictionary settings = 
-			this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+            this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
         
         // Get the Notification Hubs credentials for the Mobile App.
         string notificationHubName = settings.NotificationHubName;
@@ -48,57 +48,60 @@ Wählen Sie das Ihrem Back-End-Projekttyp entsprechende folgende Verfahren: entw
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-	Damit wird eine Vorlagenbenachrichtigung gesendet, die „item.Text“ enthält, wenn ein neues Element eingefügt wird.
+    This sends a template notification that contains the item.Text when a new item is inserted.
 
-4. Veröffentlichen Sie das Serverprojekt erneut.
+4. Republish the server project. 
 
-### <a name="nodejs"></a>Node.js-Back-End-Projekt
+### <a name="<a-name="nodejs"></a>node.js-backend-project"></a><a name="nodejs"></a>Node.js backend project
 
-1. Falls nicht bereits geschehen, [laden Sie das Schnellstart-Back-End-Projekt herunter](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), oder verwenden Sie den [Online-Editor im Azure-Portal](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
+1. If you haven't already done so, [download the quickstart backend project](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) or else use the [online editor in the Azure portal](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
 
-2. Ersetzen Sie den bestehenden Code in „todoitem.js“ durch den folgenden Code:
+2. Replace the existing code in todoitem.js with the following:
 
-		var azureMobileApps = require('azure-mobile-apps'),
-	    promises = require('azure-mobile-apps/src/utilities/promises'),
-	    logger = require('azure-mobile-apps/src/logger');
-	
-		var table = azureMobileApps.table();
-		
-		table.insert(function (context) {
-	    // For more information about the Notification Hubs JavaScript SDK, 
-	    // see http://aka.ms/nodejshubs
-	    logger.info('Running TodoItem.insert');
-	    
-	    // Define the template payload.
-	    var payload = '{"messageParam": "' + context.item.text + '" }';  
-	    
-	    // Execute the insert.  The insert returns the results as a Promise,
-	    // Do the push as a post-execute action within the promise flow.
-	    return context.execute()
-	        .then(function (results) {
-	            // Only do the push if configured
-	            if (context.push) {
-					// Send a template notification.
-	                context.push.send(null, payload, function (error) {
-	                    if (error) {
-	                        logger.error('Error while sending push notification: ', error);
-	                    } else {
-	                        logger.info('Push notification sent successfully!');
-	                    }
-	                });
-	            }
-	            // Don't forget to return the results from the context.execute()
-	            return results;
-	        })
-	        .catch(function (error) {
-	            logger.error('Error while running context.execute: ', error);
-	        });
-		});
+        var azureMobileApps = require('azure-mobile-apps'),
+        promises = require('azure-mobile-apps/src/utilities/promises'),
+        logger = require('azure-mobile-apps/src/logger');
+    
+        var table = azureMobileApps.table();
+        
+        table.insert(function (context) {
+        // For more information about the Notification Hubs JavaScript SDK, 
+        // see http://aka.ms/nodejshubs
+        logger.info('Running TodoItem.insert');
+        
+        // Define the template payload.
+        var payload = '{"messageParam": "' + context.item.text + '" }';  
+        
+        // Execute the insert.  The insert returns the results as a Promise,
+        // Do the push as a post-execute action within the promise flow.
+        return context.execute()
+            .then(function (results) {
+                // Only do the push if configured
+                if (context.push) {
+                    // Send a template notification.
+                    context.push.send(null, payload, function (error) {
+                        if (error) {
+                            logger.error('Error while sending push notification: ', error);
+                        } else {
+                            logger.info('Push notification sent successfully!');
+                        }
+                    });
+                }
+                // Don't forget to return the results from the context.execute()
+                return results;
+            })
+            .catch(function (error) {
+                logger.error('Error while running context.execute: ', error);
+            });
+        });
 
-		module.exports = table;  
+        module.exports = table;  
 
-	Damit wird eine Vorlagenbenachrichtigung gesendet, die „item.Text“ enthält, wenn ein neues Element eingefügt wird.
+    This sends a template notification that contains the item.text when a new item is inserted.
 
-2. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.
+2. When editing the file on your local computer, republish the server project.
 
-<!---HONumber=AcomDC_0629_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

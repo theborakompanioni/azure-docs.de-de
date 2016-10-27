@@ -1,264 +1,265 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory-Integration mit FieldGlass | Microsoft Azure"
-	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und FieldGlass konfigurieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with FieldGlass | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and FieldGlass."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/01/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/18/2016"
+    ms.author="jeedes"/>
 
 
-# Tutorial: Azure Active Directory-Integration mit FieldGlass
 
-Dieses Tutorial soll Ihnen zeigen, wie Sie FieldGlass in Azure Active Directory (Azure AD) integrieren können.
+# <a name="tutorial:-azure-active-directory-integration-with-fieldglass"></a>Tutorial: Azure Active Directory integration with FieldGlass
 
-Die Integration von FieldGlass in Azure AD bietet die folgenden Vorteile:
+The objective of this tutorial is to show you how to integrate FieldGlass with Azure Active Directory (Azure AD).
 
-- Sie können in Azure AD steuern, wer Zugriff auf FieldGlass hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei FieldGlass anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+Integrating FieldGlass with Azure AD provides you with the following benefits:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- You can control in Azure AD who has access to FieldGlass
+- You can enable your users to automatically get signed-on to FieldGlass (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## Voraussetzungen
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Um die Azure AD-Integration mit FieldGlass konfigurieren zu können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- Ein Azure AD-Abonnement
-- Ein FieldGlass-Abonnement, für das einmaliges Anmelden aktiviert ist
+To configure Azure AD integration with FieldGlass, you need the following items:
 
+- An Azure AD subscription
+- A FieldGlass single-sign on enabled subscription
 
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+To test the steps in this tutorial, you should follow these recommendations:
 
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
-## Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
 
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+## <a name="scenario-description"></a>Scenario description
+The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.
 
-1. Hinzufügen von FieldGlass aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+The scenario outlined in this tutorial consists of two main building blocks:
 
+1. Adding FieldGlass from the gallery
+2. Configuring and testing Azure AD single sign-on
 
-## Hinzufügen von FieldGlass aus dem Katalog
-Zum Konfigurieren der Integration von FieldGlass in Azure AD müssen Sie FieldGlass aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um FieldGlass aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+## <a name="adding-fieldglass-from-the-gallery"></a>Adding FieldGlass from the gallery
+To configure the integration of FieldGlass into Azure AD, you need to add FieldGlass from the gallery to your list of managed SaaS apps.
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**.
+**To add FieldGlass from the gallery, perform the following steps:**
 
-	![Active Directory][1]
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Active Directory][1]
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
-	
-	![Anwendungen][2]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
+    
+    ![Applications][2]
 
-	![Anwendungen][3]
+4. Click **Add** at the bottom of the page.
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+    ![Applications][3]
 
-	![Anwendungen][4]
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-6. Geben Sie im Suchfeld als Suchbegriff **FieldGlass** ein.
+    ![Applications][4]
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_01.png)
-7. Wählen Sie im Ergebnisbereich **FieldGlass** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+6. In the search box, type **FieldGlass**.
 
-	![Auswählen der App im Katalog](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_0001.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_01.png)
+7. In the results pane, select **FieldGlass**, and then click **Complete** to add the application.
 
+    ![Selecting the app in the gallery](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_0001.png)
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in FieldGlass konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in FieldGlass als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in FieldGlass muss eine Linkbeziehung eingerichtet werden.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+The objective of this section is to show you how to configure and test Azure AD single sign-on with FieldGlass based on a test user called "Britta Simon".
 
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in FieldGlass zuweisen.
+For single sign-on to work, Azure AD needs to know what the counterpart user in FieldGlass to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in FieldGlass needs to be established.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei FieldGlass müssen Sie die folgenden Bausteine ausführen:
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in FieldGlass.
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines FieldGlass-Testbenutzers](#creating-a-fieldglass-test-user)**, um eine Entsprechung von Britta Simon in FieldGlass zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+To configure and test Azure AD single sign-on with FieldGlass, you need to complete the following building blocks:
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a FieldGlass test user](#creating-a-fieldglass-test-user)** - to have a counterpart of Britta Simon in FieldGlass that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer FieldGlass-Anwendung.
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in FieldGlass die folgenden Schritte aus:**
+In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your FieldGlass application.
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **FieldGlass** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-	 
-	![Einmaliges Anmelden konfigurieren][6]
+**To configure Azure AD single sign-on with FieldGlass, perform the following steps:**
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei FieldGlass anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+1. In the classic portal, on the **FieldGlass** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_03.png)
+2. On the **How would you like users to sign on to FieldGlass** page, select **Azure AD Single Sign-On**, and then click **Next**.
 
-3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie anschließend auf **Weiter**:
+    ![Configure Single Sign-On](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_03.png) 
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_04.png)
+3. On the **Configure App Settings** dialog page, perform the following steps and click **Next**:
 
-    a. Geben Sie im Textfeld **Bezeichner** die URL `https://www.fieldglass.com` ein, oder verwenden Sie das folgende Muster: `https://<company name>.fgvms.com`
+    ![Configure Single Sign-On](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_04.png)
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach einem der folgenden Muster ein:
-	- `https://<company name>.fgvms.com/<company name>`
-	
-	- `https://www.fieldglass.net/<company name>`
+    a. In the **Identifier** textbox, type URL `https://www.fieldglass.com` or follow the pattern: `https://<company name>.fgvms.com`
 
-	c. Klicken Sie auf **Weiter**.
+    b. In the **Reply URL** textbox, type a URL using the following patterns: 
+    - `https://<company name>.fgvms.com/<company name>`
+    
+    - `https://www.fieldglass.net/<company name>`
 
-	> [AZURE.NOTE] Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen die Werte mit dem eigentlichen Bezeichner und der Antwort-URL aktualisieren. Wenden Sie sich an [FieldGlass](http://www.fieldglass.com/solutions/support), um diese Werte zu erhalten.
+    c. Click **Next**
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für FieldGlass** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+    > [AZURE.NOTE] Please note that these are not the real values. You have to update the values with the actual Identifier and Reply URL. To get these values, contact [FieldGlass](http://www.fieldglass.com/solutions/support).
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_05.png)
+4. On the **Configure single sign-on at FieldGlass** page, perform the following steps and click **Next**:
 
-    a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
+    ![Configure Single Sign-On](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_05.png)
 
-    b. Klicken Sie auf **Weiter**.
+    a. Click **Download certificate**, and then save the file on your computer.
 
-5. Wenden Sie sich an das Supportteam von FieldGlass, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
+    b. Click **Next**.
 
-	- Die **heruntergeladene Zertifikatdatei**
+5. To get SSO configured for your application, contact your FieldGlass support team and provide them with the following: 
 
-	- Die **Entitäts-ID**
+    - The **Downloaded certificate** file
 
-	- Die **Dienst-URL für einmaliges Abmelden**
+    - The **Entity ID**
 
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
+    - The **Single Sign-Out Service URL**
 
-	![Azure AD – einmaliges Anmelden][10]
+6. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+    ![Azure AD Single Sign-On][10]
 
-	![Azure AD – einmaliges Anmelden][11]
+7. On the **Single sign-on confirmation** page, click **Complete**.  
 
+    ![Azure AD Single Sign-On][11]
 
 
-### Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
-	
-![Azure AD-Benutzer erstellen][20]
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the classic portal called Britta Simon.
+    
+![Create Azure AD User][20]
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**.
+**To create a test user in Azure AD, perform the following steps:**
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_09.png)
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_09.png)
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_03.png)
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_04.png)
+3. To display the list of users, in the menu on the top, click **Users**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_03.png)
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_04.png)
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_05.png)
+5. On the **Tell us about this user** dialog page, perform the following steps:
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_05.png)
 
-    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
+    a. As Type Of User, select New user in your organization.
 
-    c. Klicken Sie auf **Weiter**.
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_06.png)
+    c. Click **Next**.
 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
+6.  On the **User Profile** dialog page, perform the following steps:
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_06.png)
 
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    a. In the **First Name** textbox, type **Britta**.  
 
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    e. Klicken Sie auf **Weiter**.
+    d. In the **Role** list, select **User**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_07.png)
+    e. Click **Next**.
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-	
-	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_08.png)
+7. On the **Get temporary password** dialog page, click **create**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_07.png)
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
+8. On the **Get temporary password** dialog page, perform the following steps:
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_08.png)
 
-    b. Klicken Sie auf **Fertig stellen**.
+    a. Write down the value of the **New Password**.
 
+    b. Click **Complete**.   
 
 
-### Erstellen eines FieldGlass-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in FieldGlass. Wenden Sie sich an das Supportteam von FieldGlass, um die Benutzer unter dem FieldGlass-Konto hinzufügen zu lassen.
+### <a name="creating-a-fieldglass-test-user"></a>Creating a FieldGlass test user
 
+The objective of this section is to create a user called Britta Simon in FieldGlass.Please work with your FieldGlass support team to add the users in the FieldGlass account.
 
-### Zuweisen des Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf FieldGlass erhält.
-	
-![Benutzer zuweisen][200]
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-**Um Britta Simon FieldGlass zuzuweisen, führen Sie die folgenden Schritte aus:**
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to FieldGlass.
+    
+![Assign User][200]
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+**To assign Britta Simon to FieldGlass, perform the following steps:**
 
-	![Benutzer zuweisen][201]
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
 
-2. Wählen Sie in der Anwendungsliste **FieldGlass** aus.
+    ![Assign User][201]
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_50.png)
+2. In the applications list, select **FieldGlass**.
 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
-	
-	![Benutzer zuweisen][203]
+    ![Configure Single Sign-On](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_50.png)
 
-4. Wählen Sie in der Benutzerliste **Britta Simon** aus.
+3. In the menu on the top, click **Users**.
+    
+    ![Assign User][203]
 
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+4. In the Users list, select **Britta Simon**.
 
-	![Benutzer zuweisen][205]
+5. In the toolbar on the bottom, click **Assign**.
 
+    ![Assign User][205]
 
 
-### Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="testing-single-sign-on"></a>Testing single sign-on
 
-Wenn Sie im Zugriffsbereich auf die Kachel „FieldGlass“ klicken, sollten Sie automatisch bei Ihrer FieldGlass-Anwendung angemeldet werden.
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
 
+When you click the FieldGlass tile in the Access Panel, you should get automatically signed-on to your FieldGlass application.
 
-## Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a>Additional resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -280,4 +281,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel „FieldGlass“ klicken, sollten Sie
 [204]: ./media/active-directory-saas-fieldglass-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-fieldglass-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

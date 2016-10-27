@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Benutzeroberfläche von Azure Mobile Engagement – Dashboard" 
-   description="Informationen zum Überwachen und Verwalten von Datendiagrammen zu Ihrer Anwendung mithilfe von Azure Mobile Engagement" 
+   pageTitle="Azure Mobile Engagement User Interface - Dashboard" 
+   description="Learn how to view and manage charts of data about your application using Azure Mobile Engagement" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -16,20 +16,21 @@
    ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
-# Anzeigen und Verwalten von Datendiagrammen zu Ihrer Anwendung
-Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen angepasster Diagramme, indem zeitsparend genau die gewünschten Informationen bereitgestellt werden, ohne dass diese im Abschnitt "Analyse" gesucht werden müssen. Ein Dashboard zeigt Trends der Anwendung und die Anzahl aktiver Benutzer für die verschiedenen Versionen der Anwendung über einen bestimmten Zeitraum (Stunde/Tag/Woche/Monat/benutzerdefiniert). Die gezeigten Trends basieren auf den letzten sieben Tagen.
 
-### Siehe auch
--  [Handbuch zur Problembehandlung - Analyse][Link 21]
+# <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>How to view and manage charts of data about your application
+The Dashboard section of the UI allows customers to create customized charts to maximize their time by providing the exact information they want instead of searching for it in the analytics section. A dashboard shows the trends of your application and the Active User Counts for the different versions of your application during a given time (hour/day/week/month/customized). The trends shown are based on the last 7 days.
 
-## Dashboard
-- Sie können einem leeren Dashboard Diagramme hinzufügen, indem Sie im Abschnitt "Analyse" der Benutzeroberfläche die Aktion "An Dashboard senden" im Zahnradmenü eines Diagramms auswählen, das in einem Dashboard angezeigt werden soll.
+### <a name="see-also"></a>See also
+-  [Troubleshooting Guide - Analytics][Link 21]
+
+## <a name="dashboard"></a>Dashboard
+- You can add charts to an empty dashboard by choosing the "Send to dashboard" action from the gear menu of any chart in the Analytics section of the UI that you'd like to see on a dashboard.
  
-## + (Dashboard hinzufügen)
-- Sie können auf dem Menüband auf das Menüelement "+" klicken, um ein neues Dashboard zu erstellen, das im Menübandmenü angezeigt wird.
+## <a name="+-(add-a-dashboard)"></a>+ (Add a Dashboard)
+- You can use the "+" ribbon menu item to create a new dashboard that will show on the ribbon menu.
  
-## Zahnradmenü
-- Im Zahnradmenü eines Dashboards können Sie Ihr Dashboard löschen, umbenennen, freigeben oder den E-Mail-Empfang planen. Mithilfe der Zeitplanoption können Sie den Zeitplan definieren, gemäß dem Sie Ihr benutzerdefiniertes Dashboard per E-Mail empfangen möchten. Sie können planen, es täglich, wöchentlich oder monatlich zu empfangen. Sie können die Tageszeit und den Wochentag oder Tag des Monats wählen, an dem Sie die E-Mail empfangen möchten. Ihre E-Mail-Adresse und Zeitzone basieren auf den Einstellungen, die Sie im Abschnitt "Mein Konto" der Benutzeroberfläche konfiguriert haben.
+## <a name="gear-menu"></a>Gear Menu
+- You can use the gear menu of a dashboard to Delete, Rename, Share, or Schedule (E-mail Reception) of your dashboard. You can use the Schedule option to define the schedule at which you would like to receive your custom dashboard by email. You can schedule to receive it daily, weekly, or monthly. You can choose the time of the day, and the day of the week, or day of the month when you would like to receive the e-mail. Your e-mail address and time zone are based on the settings you have configured in the My Account section of the UI.
  
  ![dashboard1][34]
 
@@ -129,4 +130,8 @@ Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen a
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

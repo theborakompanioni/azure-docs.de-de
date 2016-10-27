@@ -1,8 +1,8 @@
-## Ein Ressourcen-Manager-Token abrufen
+## <a name="obtain-a-resource-manager-token"></a>Obtain a Resource Manager token
 
-Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des Azure-Ressourcen-Managers für die Ressourcen ausführen. Im hier gezeigten Beispiel wird die Kennwortauthentifizierung verwendet, andere Ansätze finden Sie unter [Authentifizieren von Anforderungen des Azure-Ressourcen-Managers][lnk-authenticate-arm].
+Azure Active Directory must authenticate all the tasks that you perform on resources using the Azure Resource Manager. The example shown here uses password authentication, for other approaches see [Authenticating Azure Resource Manager requests][lnk-authenticate-arm].
 
-1. Fügen Sie der **Main**-Methode in „Program.cs“ folgenden Code hinzu, um mithilfe der Anwendungs-ID und des Kennworts ein Token von Azure AD abzurufen.
+1. Add the following code to the **Main** method in Program.cs to retrieve a token from Azure AD using the application id and password.
 
     ```
     var authContext = new AuthenticationContext(string.Format  
@@ -18,7 +18,7 @@ Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des
     }
     ```
 
-2. Erstellen Sie ein **ResourceManagementClient**-Objekt, das das Token verwendet. Fügen Sie dazu folgenden Code am Ende der **Main**-Methode hinzu:
+2. Create a **ResourceManagementClient** object that uses the token by adding the following code to the end of the **Main** method:
 
     ```
     var creds = new TokenCredentials(token.AccessToken);
@@ -26,7 +26,7 @@ Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des
     client.SubscriptionId = subscriptionId;
     ```
 
-3. Erstellen Sie oder erhalten Sie einen Verweis auf die Ressourcengruppe, die Sie verwenden:
+3. Create, or obtain a reference to, the resource group you are using:
 
     ```
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,
@@ -40,4 +40,6 @@ Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

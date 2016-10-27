@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Bereitstellen von StorSimple-Geräten im Government-Portal | Microsoft Azure"
-   description="Beschreibt die Schritte und bewährten Methoden für die Bereitstellung des StorSimple Update 1-Geräts und -Diensts im Azure Government-Portal."
+   pageTitle="Deploy StorSimple device in Government Portal | Microsoft Azure"
+   description="Describes the steps and best practices for deploying the StorSimple Update 1 device and service in the Azure Government portal."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,268 +15,273 @@
    ms.date="06/17/2016"
    ms.author="v-sharos" />
 
-# Bereitstellen lokaler StorSimple-Geräte im Government-Portal
+
+# <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Deploy your on-premises StorSimple device in the Government Portal
 
 [AZURE.INCLUDE [storsimple-version-selector-deploy-gov](../../includes/storsimple-version-selector-deploy-gov.md)]
 
-## Übersicht
+## <a name="overview"></a>Overview
 
-Willkommen bei der exemplarischen Vorgehensweise für die Bereitstellung von Microsoft Azure StorSimple-Geräten. Diese Bereitstellungstutorials betreffen die StorSimple 8000-Serie mit Update 1 im Azure Governmment-Portal. Diese Reihe von Tutorials beschreibt die Konfiguration Ihrer StorSimple-Geräte. Sie enthält darüber hinaus eine Konfigurationsprüfliste, Konfigurationsvoraussetzungen und detaillierte Konfigurationsschritte.
+Welcome to Microsoft Azure StorSimple device deployment. These deployment tutorials apply to the StorSimple 8000 Series running Update 1 software in the Azure Government Portal. This series of tutorials describes how to configure your StorSimple device, and includes a configuration checklist, configuration prerequisites, and detailed configuration steps.
 
-Bei den Informationen in diesen Tutorials wird davon ausgegangen, dass Sie die Sicherheitsvorkehrungen geprüft und Ihr StorSimple-Gerät ausgepackt, installiert und verkabelt haben. Wenn Sie diese Aufgaben noch ausführen müssen, beginnen Sie mit der Prüfung der [Sicherheitsvorkehrungen](storsimple-safety.md). Je nach Modell können Sie anschließend das Gerät auspacken, im Rack einbauen und verkabeln, indem Sie folgende Anweisungen befolgen:
+The information in these tutorials assumes that you have reviewed the safety precautions, and unpacked, racked, and cabled your StorSimple device. If you still need to perform those tasks, start with reviewing the [safety precautions](storsimple-safety.md). Depending on your device model, you can then unpack, rack mount, and cable by following the instructions in:
 
-- [Auspacken, Einsetzen und Verkabeln – 8100](storsimple-8100-hardware-installation.md)
-- [Auspacken, Einsetzen und Verkabeln – 8600](storsimple-8600-hardware-installation.md)
+- [Unpack, rack mount, and cable your 8100](storsimple-8100-hardware-installation.md)
+- [Unpack, rack mount, and cable your 8600](storsimple-8600-hardware-installation.md)
 
-Sie benötigen Administratorrechte, um die Einrichtung und Konfiguration abzuschließen. Es wird empfohlen, dass Sie die Konfigurationsprüfliste überprüfen, bevor Sie beginnen. Die Bereitstellung und Konfiguration kann einige Zeit in Anspruch nehmen.
+You will need administrator privileges to complete the setup and configuration process. We recommend that you review the configuration checklist before you begin. The deployment and configuration process can take some time to complete.
 
-> [AZURE.NOTE] Die auf der Microsoft Azure-Website veröffentlichten StorSimple-Bereitstellungsinformationen gelten nur für Geräte der StorSimple 8000-Reihe. Vollständige Informationen zu Geräten der Serie 7000 finden Sie unter: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Bereitstellungsinformationen zur Serie 7000 finden Sie in der [Schnellstartanleitung zum StorSimple-System](http://onlinehelp.storsimple.com/111_Appliance/) (in englischer Sprache).
+> [AZURE.NOTE] The StorSimple deployment information published on the Microsoft Azure website applies to StorSimple 8000 series devices only. For complete information about the 7000 series devices, go to: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). For 7000 series deployment information, see the [StorSimple System Quick Start Guide](http://onlinehelp.storsimple.com/111_Appliance/).
 
-## Bereitstellungsschritte
+## <a name="deployment-steps"></a>Deployment steps
 
-Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSimple-Geräts und zum Verbinden des Geräts mit dem StorSimple Manager-Dienst aus. Zusätzlich zu diesen erforderlichen Schritten müssen Sie während der Bereitstellung möglicherweise optionale Schritte ausführen. Die schrittweise Bereitstellungsanleitung gibt auch an, wann Sie die folgenden optionalen Schritte jeweils ausführen sollten.
+Perform these required steps to configure your StorSimple device and connect it to your StorSimple Manager service. In addition to the required steps, there are optional steps and procedures you may need during the deployment. The step-by-step deployment instructions indicate when you should perform each of these optional steps.
 
 
-| Schritt | Beschreibung |
+| Step                                                                                   | Description                                                                                                                                                   |
 |----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **VORAUSSETZUNGEN** | Diese Schritte müssen zur Vorbereitung der Bereitstellung ausgeführt werden. |
-| Konfigurationsprüfliste für die Bereitstellung. | Verwenden Sie diese Prüfliste, um vor und während der Bereitstellung Informationen zu erfassen und aufzuzeichnen. |
-| Voraussetzungen für die Bereitstellung. | Mit diesen Schritten überprüfen Sie, ob die Umgebung für die Bereitstellung vorbereitet ist. |
-| | |
-| **SCHRITTWEISE BEREITSTELLUNG** | Diese Schritte sind zur Bereitstellung Ihres StorSimple-Geräts in einer Produktionsumgebung erforderlich. |
-| Schritt 1: Erstellen Sie einen neuen Dienst. | Richten Sie Cloudverwaltung und -speicher für Ihr StorSimple-Gerät ein. Überspringen Sie diesen Schritt, wenn Sie bereits über einen Dienst für andere StorSimple-Geräte verfügen. |
-| Schritt 2: Rufen Sie den Dienstregistrierungsschlüssel ab. | Verwenden Sie diesen Schlüssel zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Verwaltungsdienst. |
-| Schritt 3: Konfigurieren und registrieren Sie das Gerät über Windows PowerShell für StorSimple. | Verwenden Sie den Verwaltungsdienst, um das Gerät zum Abschluss der Einrichtung mit Ihrem Netzwerk zu verbinden und in Azure zu registrieren. |
-| Schritt 4: Schließen Sie die minimale Gerätekonfiguration ab.</br>Optional: Aktualisieren Sie Ihr StorSimple-Gerät. | Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
-| Schritt 5: Erstellen Sie einen Volumecontainer. | Erstellen Sie einen Container zum Bereitstellen von Volumes. Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle darin enthaltenen Volumes. |
-| Schritt 6: Erstellen Sie ein Volume. | Stellen Sie ein oder mehrere Speichervolumes für Ihre Server auf dem StorSimple-Gerät bereit. |
-| Schritt 7: Stellen Sie ein Volume bereit, und initialisieren und formatieren Sie es.</br>Optional: Konfigurieren Sie MPIO. | Verbinden Sie Ihre Server mit dem vom Gerät bereitgestellten iSCSI-Speicher. Konfigurieren Sie optional MPIO, um sicherzustellen, dass Ihre Server Link-, Netzwerk- und Schnittstellenfehler tolerieren können. |
-| Schritt 8: Erstellen Sie eine Sicherung. | Richten Sie Ihre Sicherungsrichtlinie zum Schutz Ihrer Daten ein. |
-| | |
-| **WEITERE VERFAHREN** | Möglicherweise müssen Sie beim Bereitstellen Ihrer Lösung auf diese Prozeduren zurückgreifen. |
-| Konfigurieren Sie ein neues Speicherkonto für den Dienst. | |
-| Verwenden Sie PuTTY, um eine Verbindung mit der seriellen Gerätekonsole herzustellen. | |
-| Suchen nach und Anwenden von Updates | |
-| Rufen Sie den IQN eines Windows Server-Hosts ab. | |
-| Erstellen Sie eine manuelle Sicherung. | 
-| Konfigurieren Sie MPIO. |
+| **PREREQUISITES**                                                                      | These need to be completed in preparation for the upcoming deployment.                                                                                        |
+| Deployment configuration checklist.                                                     | Use this checklist to gather and record information prior to and during the deployment.                                                                       |
+| Deployment prerequisites.                                                               | These  validate the environment is ready for deployment.                                                                                                     |
+|                                                                                        |                                                                                                                                                               |
+| **STEP-BY-STEP DEPLOYMENT**                                                                   | These steps are required to deploy your StorSimple device in production.                                                                                      |
+| Step 1: Create a new service.                                                         | Set up cloud management and storage for your   StorSimple device. Skip this step if you have an existing service for other StorSimple devices.                |
+| Step 2: Get the service registration key.                                               | Use this key to register & connect your StorSimple device with the management service.                                                                         |
+| Step 3: Configure and register the device through Windows PowerShell for StorSimple.    | Connect the device to your network and register it with Azure to complete   the setup using the management service.                                            |
+| Step 4: Complete minimum device setup</br>Optional: Update your StorSimple device.      | Use the management service to complete the device setup and enable it to provide storage.                                                                      |
+| Step 5: Create a volume container.                                                      | Create a container to provision volumes. A volume container has storage   account, bandwidth, and encryption settings for all the volumes contained in it.    |
+| Step 6: Create a volume.                                                                | Provision storage volume(s) on the StorSimple device for your servers.                                                                                        |
+| Step 7: Mount, initialize, and format a volume.</br>Optional: Configure MPIO.            | Connect your servers to the iSCSI storage provided by the device. Optionally configure MPIO to ensure that your servers can tolerate link, network, and interface failure.                                                                                                                                                              |
+| Step 8: Take a backup.                                                                  | Set up your backup policy to protect your data                                                                                                                 |
+|                                                                                        |                                                                                                                                                               |
+| **OTHER PROCEDURES**                                                                   | You may need to refer to these procedures as you deploy your solution.                                                                                        |
+| Configure a new storage account for the service.                                      |                                                                                                                                                               |
+| Use PuTTY to connect to the device serial console.                                    |                                                                                                                                                               |
+| Scan for and apply updates.                                                   |                                                                                                                                                               |
+| Get the IQN of a Windows Server host.                                                   |                                                                                                                                                               |
+| Create a manual backup.                                                                 | 
+| Configure MPIO.                                                                          |
 
 
-## Konfigurationsprüfliste für die Bereitstellung
+## <a name="deployment-configuration-checklist"></a>Deployment configuration checklist
 
-Die folgende Konfigurationsprüfliste für die Bereitstellung enthält die Informationen, die Sie vor und während der Konfiguration der Software auf dem StorSimple-Gerät erfassen müssen. Wenn Sie einige dieser Informationen im Voraus erfassen, beschleunigt dies die Bereitstellung des StorSimple-Geräts in Ihrer Umgebung. Verwenden Sie diese Prüfliste auch, um während der Bereitstellung des Geräts die Konfigurationsdetails zu notieren.
+The following deployment configuration checklist describes the information that you need to collect before and as you configure the software on your StorSimple device. Preparing some of this information ahead of time will help streamline the process of deploying the StorSimple device in your environment. Use this checklist to also note down the configuration details as you deploy your device.
 
-| Phase | Parameter | Details | Werte |
+| Stage                                  | Parameter                                         | Details                                                                                                                                                                | Values |
 |----------------------------------------|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
-| **Verkabeln Ihres Geräts** | Serieller Zugriff | Anfängliche Gerätekonfiguration | Ja/Nein |
-| | | | |
-| **Konfigurieren und Registrieren des Geräts** | DATA 0-Netzwerkeinstellungen | DATA 0-IP-Adresse:</br>Subnetzmaske:</br>Gateway:</br>Primärer DNS-Server:</br>Primärer NTP-Server:</br>Webproxyserver-IP/FQDN (optional):</br>Webproxyport:| |
-| | Geräteadministratorkennwort | Das Kennwort muss zwischen 8 und 15 Zeichen lang sein und Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen umfassen. | |
-| | StorSimple Snapshot Manager-Kennwort | Das Kennwort muss 14 oder 15 Zeichen lang sein und Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen umfassen.| |
-| | Dienstregistrierungsschlüssel | Dieser Schlüssel wird im Azure-Portal generiert. | |
-| | Verschlüsselungsschlüssel für Dienstdaten | Dieser Schlüssel wird erstellt, wenn das Gerät über die Windows PowerShell für StorSimple beim Verwaltungsdienst registriert wird. Kopieren Sie diesen Schlüssel, und bewahren Sie ihn an einem sicheren Ort auf.| |
-| | | | |
-| **Abschließen der minimalen Gerätekonfiguration** | Anzeigename für Ihr Gerät | Dies ist ein beschreibender Name für das Gerät. | |
-| | Zeitzone | Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge. | |
-| | Sekundärer DNS-Server | Dies ist eine erforderliche Konfiguration. | |
-| | Netzwerkschnittstelle: feste IP-Adressen für DATA 0-Controller | Diese IP-Adressen sollten über das Internet geroutet werden können.</br>Feste IP-Adresse Controller 0:</br>Feste IP-Adresse Controller 1:|
-| | | | |
-| **Zusätzliche Netzwerkschnittstelleneinstellungen** | Netzwerkschnittstelle: DATA 1</br>Wenn iSCSI aktiviert ist, Gateway nicht konfigurieren | Zweck: Cloud/iSCSI/Nicht verwendet</br>IP-Adresse:</br>Subnetzmaske:</br>Gateway:|
-| | Netzwerkschnittstelle: DATA 2</br>Wenn iSCSI aktiviert ist, Gateway nicht konfigurieren | Zweck: Cloud/iSCSI/Nicht verwendet</br>IP-Adresse:</br>Subnetzmaske:</br>Gateway:|
-| | Netzwerkschnittstelle: DATA 3</br>Wenn iSCSI aktiviert ist, Gateway nicht konfigurieren | Zweck: Cloud/iSCSI/Nicht verwendet</br>IP-Adresse:</br>Subnetzmaske:</br>Gateway:|
-| | Netzwerkschnittstelle: DATA 4</br>Wenn iSCSI aktiviert ist, Gateway nicht konfigurieren | Zweck: Cloud/iSCSI/Nicht verwendet</br>IP-Adresse:</br>Subnetzmaske:</br>Gateway:|
-| | Netzwerkschnittstelle: DATA 5</br>Wenn iSCSI aktiviert ist, Gateway nicht konfigurieren | Zweck: Cloud/iSCSI/Nicht verwendet</br>IP-Adresse:</br>Subnetzmaske:</br>Gateway:|
-| | | | |
-| **Erstellen eines Volumecontainers** | Volumecontainername: | Name für den Container. | |
-| | Azure-Speicherkonto: | Name und Zugriffsschlüssel des Speicherkontos, das diesem Volumecontainer zugeordnet werden soll. | |
-| | Verschlüsselungsschlüssel für Cloudspeicher: | Verschlüsselungsschlüssel für Speicher in jedem Container. | |
-| | | | |
-| **Erstellen eines Volumes** | Details zu jedem Volume | Volumename: | |
-| | | Größe: | |
-| | | Verwendungstyp: | |
-| | | ACR-Name: | |
-| | | Standardsicherungsrichtlinie: | |
-| | | | |
-| **Bereitstellen, Initialisieren und Formatieren eines Volumes** | Details zu jedem Hostserver, der eine Verbindung mit dem Speicher herstellt | Windows Server-Name: | |
-| | | Windows Server-IQN: | |
-| | | Windows Server-Volumename: | |
-| | | NTFS-Bereitstellungspunkt/Laufwerkbuchstabe: | |
+| **Cable your device**                      | Serial access                                     | Initial device configuration                                                                  | Yes/No |
+|   |   |  |  |
+| **Configure and register device**          | Data 0 network settings                           | Data 0 IP Address:</br>Subnet mask:</br>Gateway:</br>Primary DNS server:</br>Primary NTP server:</br>Web proxy server IP/FQDN (optional):</br>Web proxy port:|        |
+|                                        | Device administrator password                     | Password must be between 8 and 15 characters containing lowercase, uppercase, numeric and special characters. |        |
+|                                        | StorSimple Snapshot Manager password              | Password must be 14 or 15 characters containing lowercase, uppercase, numeric and special characters.|        |
+|                                        | Service Registration Key                          | This key is generated from the Azure portal.    |        |
+|                                        | Service Data Encryption Key                       | This key is created when the device is registered with the management service via the Windows PowerShell for StorSimple. Copy this key and save it in a safe location.|  |
+|   |   |  |  |
+| **Complete minimum device setup**          | Friendly name for your device                     | This is a descriptive name for the device. |        |
+|                                        | Timezone                                          | Your device will use this time zone for all scheduled operations.  |        |
+|                                        | Secondary DNS server                              | This is a required configuration.                                  |        |
+|                                        | Network interface: Data 0 controller fixed IPs                                     | These IP’s should be routable to the Internet.</br>Controller 0 fixed IP address:</br>Controller 1 fixed IP address:|
+|   |   |  |  |
+| **Additional network interface settings**  | Network interface: Data 1</br>If iSCSI enabled, do not configure the Gateway.      | Purpose: Cloud/iSCSI/Not used</br>IP address:</br>Subnet mask:</br>Gateway:|
+|                                        | Network interface: Data 2</br>If iSCSI enabled, do not configure the Gateway.      | Purpose: Cloud/iSCSI/Not used</br>IP address:</br>Subnet mask:</br>Gateway:|
+|                                        | Network interface: Data 3</br>If iSCSI enabled, do not configure the Gateway.      | Purpose: Cloud/iSCSI/Not used</br>IP address:</br>Subnet mask:</br>Gateway:|
+|                                        | Network interface: Data 4</br>If iSCSI enabled, do not configure the Gateway.      | Purpose: Cloud/iSCSI/Not used</br>IP address:</br>Subnet mask:</br>Gateway:|
+|                                        | Network interface: Data 5</br>If iSCSI enabled, do not configure the Gateway.      | Purpose: Cloud/iSCSI/Not used</br>IP address:</br>Subnet mask:</br>Gateway:|
+|   |   |  |  |
+| **Create a volume container**                      | Volume container name:                            | Name for the container                                                                                                                                                 |        |
+|                                        | Azure storage account:                            | Storage account name & access key to associate with this volume container                                                                                              |        |
+|                                        | Cloud storage encryption key:                     | Encryption key for storage in each container                                                                                                                           |        |
+|   |   |  |  |
+| **Create a volume**                        | Details for each volume                           | Volume name:                                                                                                                                                           |        |
+|                                        |                                                   | Size:                                                                                                                                                                  |        |
+|                                        |                                                   | Usage type:                                                                                                                                                            |        |
+|                                        |                                                   | ACR name:                                                                                                                                                              |        |
+|                                        |                                                   | Default backup policy:                                                                                                                                                 |        |
+|   |   |  |  |
+| **Mount, initialize, and format a volume** | Details for each host server connecting to the storage | Windows Server name:                                                                                                                                                   |        |
+|                                        |                                                   | Windows Server IQN:                                                                                                                                                    |        |
+|                                        |                                                   | Windows Server volume name:                                                                                                                                                   |        |
+|                                        |                                                   | NTFS mount point/Drive letter:                                                                                                                                      |        |
 
 
-## Voraussetzungen für die Bereitstellung
+## <a name="deployment-prerequisites"></a>Deployment prerequisites
 
-In den folgenden Abschnitten werden die Konfigurationsvoraussetzungen für den StorSimple Manager-Dienst und das StorSimple-Gerät beschrieben.
+The following sections explain the configuration prerequisites for your StorSimple Manager service and your StorSimple device.
 
-### Für den StorSimple Manager-Dienst
+### <a name="for-the-storsimple-manager-service"></a>For the StorSimple Manager service
 
-Stellen Sie Folgendes sicher, bevor Sie beginnen:
+Before you begin, make sure that:
 
-- Sie besitzen ein Microsoft-Konto mit Anmeldeinformationen für den Zugriff.
+- You have your Microsoft account with access credentials.
 
-- Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
+- You have your Microsoft Azure storage account with access credentials.
 
-- Ihr Microsoft Azure-Abonnement ist für den StorSimple Manager-Dienst aktiviert. Ihr Abonnement sollten Sie über das [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) erwerben.
+- Your Microsoft Azure subscription is enabled for the StorSimple Manager service. Your subscription should be purchased through the [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/).
 
-- Sie haben Zugriff auf Terminalemulationssoftware wie PuTTY.
+- You have access to terminal emulation software such as PuTTY.
 
-### Für das Gerät im Datencenter
+### <a name="for-the-device-in-the-datacenter"></a>For the device in the datacenter
 
-Stellen Sie vor der Konfiguration des Geräts Folgendes sicher:
+Before configuring the device, make sure that:
 
-- Ihr Gerät wurde vollständig ausgepackt, in einem Rack installiert und für Stromversorgung, Netzwerk- und seriellen Zugriff verkabelt, wie in folgenden Themen beschrieben:
+- Your device is fully unpacked, mounted on a rack and fully cabled for power, network, and serial access as described in:
 
-	-  [Auspacken, Einsetzen und Verkabeln – 8100-Gerät](storsimple-8100-hardware-installation.md)
-	-  [Auspacken, Einsetzen und Verkabeln – 8600-Gerät](storsimple-8600-hardware-installation.md)
+    -  [Unpack, rack mount, and cable your 8100 device](storsimple-8100-hardware-installation.md)
+    -  [Unpack, rack mount, and cable your 8600 device](storsimple-8600-hardware-installation.md)
 
 
-### Für das Netzwerk im Datencenter
+### <a name="for-the-network-in-the-datacenter"></a>For the network in the datacenter
 
-Stellen Sie Folgendes sicher, bevor Sie beginnen:
+Before you begin, make sure that:
 
-- Die Ports in der Datencenter-Firewall werden geöffnet, um iSCSI- und Clouddatenverkehr zu ermöglichen, wie in [Netzwerkanforderungen für das StorSimple-Gerät](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device) beschrieben.
+- The ports in your datacenter firewall are opened to allow for iSCSI and cloud traffic as described in [Networking requirements for your StorSimple device](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device).
 
-## Schrittweise Bereitstellung
+## <a name="step-by-step-deployment"></a>Step-by-step deployment
 
-Verwenden Sie die folgenden schrittweisen Anweisungen, um Ihr StorSimple-Gerät im Datencenter bereitzustellen.
+Use the following step-by-step instructions to deploy your StorSimple device in the datacenter.
 
-## Schritt 1: Erstellen eines neuen Diensts
+## <a name="step-1:-create-a-new-service"></a>Step 1: Create a new service
 
-Ein StorSimple Manager-Dienst kann mehrere StorSimple-Geräte verwalten. Führen Sie die folgenden Schritte aus, um einen neuen StorSimple-Manager-Dienst zu erstellen.
+A StorSimple Manager service can manage multiple StorSimple devices. Perform the following steps to create a new instance of the StorSimple Manager service.
 
 [AZURE.INCLUDE [storsimple-create-new-service-gov](../../includes/storsimple-create-new-service-gov.md)]
 
-> [AZURE.IMPORTANT] Wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben, müssen Sie mindestens ein Speicherkonto erstellen, nachdem Sie einen Dienst erstellt haben. Dieses Speicherkonto wird beim Erstellen eines Volumecontainers verwendet.
+> [AZURE.IMPORTANT] If you did not enable the automatic creation of a storage account with your service, you will need to create at least one storage account after you have successfully created a service. This storage account will be used when you create a volume container. 
 >
-> * Wenn Sie nicht automatisch ein Speicherkonto erstellt haben, finden Sie unter [Konfigurieren eines neuen Speicherkontos für den Dienst](#configure-a-new-storage-account-for-the-service) ausführliche Anweisungen. 
-> * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) fort.
+> * If you did not create a storage account automatically, go to [Configure a new storage account for the service](#configure-a-new-storage-account-for-the-service) for detailed instructions. 
+> * If you enabled the automatic creation of a storage account, go to [Step 2: Get the service registration key](#step-2-get-the-service-registration-key).
 
-## Schritt 2: Abrufen des Dienstregistrierungsschlüssels
+## <a name="step-2:-get-the-service-registration-key"></a>Step 2: Get the service registration key
 
-Nachdem der StorSimple-Manager-Dienst eingerichtet wurde und ausgeführt wird, müssen Sie den Dienstregistrierungsschlüssel abrufen. Dieser Schlüssel wird zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Dienst verwendet.
+After the StorSimple Manager service is up and running, you will need to get the service registration key. This key is used to register and connect your StorSimple device to the service.
 
-Führen Sie im Government-Portal die folgenden Schritte aus.
+Perform the following steps in the Government Portal.
 
 [AZURE.INCLUDE [storsimple-get-service-registration-key-gov](../../includes/storsimple-get-service-registration-key-gov.md)]
 
 
-## Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple
+## <a name="step-3:-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Step 3: Configure and register the device through Windows PowerShell for StorSimple
 
-Verwenden Sie Windows PowerShell für StorSimple zum Abschließen der anfänglichen Installation Ihres StorSimple-Geräts wie im folgenden Verfahren erläutert. Sie müssen eine Terminalemulationssoftware verwenden, um diesen Schritt auszuführen. Weitere Informationen finden Sie unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](#use-putty-to-connect-to-the-device-serial-console).
+Use Windows PowerShell for StorSimple to complete the initial setup of your StorSimple device as explained in the following procedure. You will need to use terminal emulation software to complete this step. For more information, see [Use PuTTY to connect to the device serial console](#use-putty-to-connect-to-the-device-serial-console).
 
 [AZURE.INCLUDE [storsimple-configure-and-register-device-gov](../../includes/storsimple-configure-and-register-device-gov.md)]
 
-## Schritt 4: Abschließen der minimalen Geräteinstallation
+## <a name="step-4:-complete-minimum-device-setup"></a>Step 4: Complete minimum device setup
 
-Sie müssen für die Gerätemindestkonfiguration des StorSimple-Geräts die folgenden Aufgaben ausführen:
+For the minimum device configuration of your StorSimple device, you are required to: 
 
-- Einrichten des sekundären DNS-Servers
-- Aktivieren von iSCSI an mindestens einer Netzwerkschnittstelle
-- Zuweisen fester IP-Adressen an beide Controller
+- Set up the secondary DNS server.
+- Enable iSCSI on at least one network interface.
+- Assign fixed IP addresses to both the controllers.
 
-Führen Sie im Government-Portal die folgenden Schritte aus, um das mindestens erforderliche Setup für das Gerät auszuführen:
+Perform the following steps in the Government Portal to complete the minimum device setup.
 
 [AZURE.INCLUDE [storsimple-complete-minimum-device-setup](../../includes/storsimple-complete-minimum-device-setup-u1.md)]
 
-## Schritt 5: Erstellen eines Volumecontainers
+## <a name="step-5:-create-a-volume-container"></a>Step 5: Create a volume container
 
-Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle darin enthaltenen Volumes. Sie müssen einen Volumecontainer erstellen, bevor Sie mit der Bereitstellung von Volumes auf Ihrem StorSimple-Gerät beginnen können.
+A volume container has storage account, bandwidth, and encryption settings for all the volumes contained in it. You will need to create a volume container before you can start provisioning volumes on your StorSimple device. 
 
-Führen Sie im Government-Portal die folgenden Schritte aus, um einen Volumecontainer zu erstellen.
+Perform the following steps in the Government Portal to create a volume container.
 
 [AZURE.INCLUDE [storsimple-create-volume-container](../../includes/storsimple-create-volume-container.md)]
 
-## Schritt 6: Erstellen eines Volumes
+## <a name="step-6:-create-a-volume"></a>Step 6: Create a volume
 
-Nach dem Erstellen eines Volumecontainers können Sie ein Speichervolume auf dem StorSimple-Gerät für Ihre Server bereitstellen. Führen Sie im Government-Portal die folgenden Schritte aus, um ein Volume zu erstellen.
+After you create a volume container, you can provision a storage volume on the StorSimple device for your servers. Perform the following steps in the Government Portal to create a volume.
 
-> [AZURE.IMPORTANT] Mit Azure StorSimple können nur nach Bedarf bereitgestellte Volumes erstellt werden. In einem Azure StorSimple-System können keine vollständig oder teilweise bereitgestellten Volumes erstellt werden.
+> [AZURE.IMPORTANT] Azure StorSimple can create only thinly provisioned volumes.  You cannot create fully provisioned or partially provisioned volumes on an Azure StorSimple system. 
 
 [AZURE.INCLUDE [storsimple-create-volume](../../includes/storsimple-create-volume.md)]
 
-## Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes
+## <a name="step-7:-mount,-initialize,-and-format-a-volume"></a>Step 7: Mount, initialize, and format a volume
 
-Führen Sie die folgenden Schritte auf Ihrem Windows Server-Host aus.
+Perform these steps on your Windows Server host.
 
 > [AZURE.IMPORTANT]
 
-> - Um die hohe Verfügbarkeit Ihrer StorSimple-Lösung sicherzustellen, empfiehlt es sich, vor der Konfiguration von iSCSI auf Ihren Hostservern optional MPIO auf diesen Hosts zu konfigurieren. Die MPIO-Konfiguration auf Hostservern sorgt dafür, dass die Server Fehler bei Links, dem Netzwerk oder einzelnen Schnittstellen tolerieren können.
+> - For the high availability of your StorSimple solution, we recommend that you configure MPIO on your host servers (optional) prior to configuring iSCSI. MPIO configuration on host servers will ensure that the servers can tolerate a link, network, or interface failure.
 
-> - Installations- und Konfigurationsanweisungen für MPIO und iSCSI auf einem Windows Server-Host finden Sie unter [Konfigurieren von MPIO für Ihr StorSimple-Gerät](storsimple-configure-mpio-windows-server.md). Diese enthalten auch die Schritte zum Bereitstellen, Initialisieren und Formatieren von StorSimple-Volumes.
+> - For MPIO and iSCSI installation and configuration instructions on Windows Server host, go to [Configure MPIO for your StorSimple device](storsimple-configure-mpio-windows-server.md). These will also include the steps to mount, initialize and format StorSimple volumes.
 
-> - Installations- und Konfigurationsanweisungen für MPIO und iSCSI auf einem Linux-Host finden Sie unter [Konfigurieren von MPIO für Ihren StorSimple-Linux-Host](storsimple-configure-mpio-on-linux.md).
+> - For MPIO and iSCSI installation and configuration instructions on a Linux host, go to [Configure MPIO for your StorSimple Linux host](storsimple-configure-mpio-on-linux.md)
 
-Wenn Sie MPIO nicht konfigurieren, führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Windows Server-Host bereitzustellen, zu initialisieren und zu formatieren.
+If you decide not to configure MPIO, perform the following steps to mount, initialize, and format your StorSimple volumes on a Windows Server host.
 
 [AZURE.INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
-## Schritt 8: Erstellen einer Sicherung
+## <a name="step-8:-take-a-backup"></a>Step 8: Take a backup
 
-Sicherungen stellen Zeitpunktschutz für Volumes zur Verfügung und verbessern die Wiederherstellbarkeit bei gleichzeitiger Minimierung der Wiederherstellungszeiten. Für Ihr StorSimple-Gerät können zwei Arten von Sicherungen angefertigt werden: lokale Momentaufnahmen und Cloudmomentaufnahmen. Jeder dieser Sicherungstypen kann **geplant** sein oder **manuell** erfolgen.
+Backups provide point-in-time protection of volumes and improve recoverability while minimizing restore times. You can take two types of backup on your StorSimple device: local snapshots and cloud snapshots. Each of these backup types can be **Scheduled** or **Manual**. 
 
-Führen Sie im Government-Portal die folgenden Schritte aus, um eine geplante Sicherung zu erstellen.
+Perform the following steps in the Government Portal to create a scheduled backup.
 
 [AZURE.INCLUDE [storsimple-take-backup](../../includes/storsimple-take-backup.md)]
 
-Sie können jederzeit eine manuelle Sicherung vornehmen. Anweisungen dazu finden Sie unter [Erstellen einer manuellen Sicherung](#create-a-manual-backup).
+You can take a manual backup at any time. For procedures, go to [Create a manual backup](#create-a-manual-backup). 
 
-## Konfigurieren eines neuen Speicherkontos für den Dienst
+## <a name="configure-a-new-storage-account-for-the-service"></a>Configure a new storage account for the service
 
-Dies ist ein optionaler Schritt, den Sie nur dann ausführen müssen, wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben. Ein Microsoft Azure-Speicherkonto ist erforderlich, um einen StorSimple-Volumecontainer zu erstellen.
+This is an optional step that you need to perform only if you did not enable the automatic creation of a storage account with your service. A Microsoft Azure storage account is required to create a StorSimple volume container.
 
-Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) schrittweise Anweisungen.
+If you need to create an Azure storage account in a different region, see [About Azure Storage Accounts](../storage/storage-create-storage-account.md) for step-by-step instructions.
 
-Führen Sie im Government-Portal auf der Seite für den **StorSimple-Manager-Dienst** die folgenden Schritte aus.
+Perform the following steps in the Government Portal, on the **StorSimple Manager service** page.
 
 [AZURE.INCLUDE [storsimple-configure-new-storage-account-u1](../../includes/storsimple-configure-new-storage-account-u1.md)]
 
 
-## Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole
+## <a name="use-putty-to-connect-to-the-device-serial-console"></a>Use PuTTY to connect to the device serial console
 
-Zum Herstellen einer Verbindung mit Windows PowerShell für StorSimple benötigen Sie eine Terminalemulationssoftware wie etwa PuTTY. Sie können PuTTY verwenden, wenn Sie über die serielle Konsole direkt auf das Gerät zugreifen oder eine Telnet-Sitzung von einem Remotecomputer aus öffnen.
+To connect to Windows PowerShell for StorSimple, you need to use terminal emulation software such as PuTTY. You can use PuTTY when you access the device directly through the serial console or by opening a telnet session from a remote computer.
 
-[AZURE.INCLUDE [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](../../includes/storsimple-use-putty.md)]
+[AZURE.INCLUDE [Use PuTTY to connect to the device serial console](../../includes/storsimple-use-putty.md)]
 
-## Suchen nach und Anwenden von Updates
+## <a name="scan-for-and-apply-updates"></a>Scan for and apply updates
 
-Die Aktualisierung eines Geräts kann mehrere Stunden dauern. Führen Sie die folgenden Schritte aus, um nach Updates für Ihr Gerät zu suchen und diese anzuwenden.
+Updating your device can take several hours. Perform the following steps to scan for and apply updates on your device.
 
 <!--If you have a gateway configured on a network interface other than Data 0, you will need to disable Data 2 and Data 3 network interfaces before installing the update. Go to **Devices > Configure** and disable Data 2 and Data 3 interfaces. You should re-enable these interfaces after the device is updated.-->
 
-#### So aktualisieren Sie Ihr Gerät
+#### <a name="to-update-your-device"></a>To update your device
 
-1.	Klicken Sie auf der Seite **Schnellstart** für das Gerät auf **Geräte**. Wählen Sie das physische Gerät aus, und klicken Sie auf **Wartung** und dann auf **Updates scannen**.  
-2.	Für die Suche nach verfügbaren Updates wird ein Auftrag erstellt. Wenn Updates verfügbar sind, ändert sich die Option **Updates scannen** in **Updates installieren**. Klicken Sie auf **Updates installieren**. 
-3.	Es wird ein Updateauftrag erstellt. Überwachen Sie den Status Ihres Updates, indem Sie zu **Aufträge** wechseln.
+1.  On the device **Quick Start** page, click **Devices**. Select the physical device, click **Maintenance** and then click **Scan Updates**.  
+2.  A job to scan for available updates is created. If updates are available, the **Scan Updates** changes to **Install Updates**. Click **Install Updates**. 
+3.  An update job will be created. Monitor the status of your update by navigating to **Jobs**.
 
-	> [AZURE.NOTE] Wenn der Updateauftrag startet, wird der Status sofort mit 50 Prozent angezeigt. Der Status ändert sich erst in 100 Prozent, wenn der Updateauftrag abgeschlossen ist. Für den Updateprozess gibt es keinen Echtzeitstatus.
+    > [AZURE.NOTE] When the update job starts, it immediately displays the status as 50 percent. The status changes to 100 percent only after the update job is complete. There is no real-time status for the update process.
 
-4.	Falls die Netzwerkschnittstellen DATA 2 und DATA 3 deaktiviert wurden, aktivieren Sie diese nach der erfolgreichen Aktualisierung des Geräts wieder.
+4.  After the device is successfully updated, enable Data 2 and Data 3 network interfaces if these were disabled.
 
-## Abrufen des IQN eines Windows Server-Hosts
+## <a name="get-the-iqn-of-a-windows-server-host"></a>Get the IQN of a Windows Server host
 
-Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines Windows-Hosts abzurufen, auf dem Windows Server® 2012 ausgeführt wird.
+Perform the following steps to get the iSCSI Qualified Name (IQN) of a Windows host that is running Windows Server® 2012.
 
-[AZURE.INCLUDE [Erstellen einer manuellen Sicherung](../../includes/storsimple-get-iqn.md)]
+[AZURE.INCLUDE [Create a manual backup](../../includes/storsimple-get-iqn.md)]
 
-## Erstellen einer manuellen Sicherung
+## <a name="create-a-manual-backup"></a>Create a manual backup
 
-Führen Sie im Government-Portal die folgenden Schritte aus, um ein manuelles On-Demand-Backup für ein einzelnes Volume auf dem StorSimple-Gerät zu erstellen.
+Perform the following steps in the Government Portal to create an on-demand manual backup for a single volume on your StorSimple device.
 
-[AZURE.INCLUDE [Erstellen einer manuellen Sicherung](../../includes/storsimple-create-manual-backup-gov.md)]
+[AZURE.INCLUDE [Create a manual backup](../../includes/storsimple-create-manual-backup-gov.md)]
 
-## Konfigurieren von MPIO
+## <a name="configure-mpio"></a>Configure MPIO
 
-Multipfad-E/A (Multipath I/O, MPIO) ist ein optionales Feature und wird unter Windows Server nicht standardmäßig installiert. Diese Funktion sollte als Feature über den Server-Manager installiert werden. Installationsanweisungen für MPIO finden Sie unter [Konfigurieren von MPIO für Ihr StorSimple-Gerät](storsimple-configure-mpio-windows-server.md).
+Multipath I/O (MPIO) is an optional feature and is not installed on Windows Server by default. It should be installed as a feature through Server Manager. For MPIO installation instructions, go to [Configure MPIO for your StorSimple device](storsimple-configure-mpio-windows-server.md).
 
-Installations- und Konfigurationsanweisungen für MPIO auf einem StorSimple-Gerät, das mit einem Linux-Host verbunden ist, finden Sie unter [Konfigurieren von MPIO für Ihren Linux-Host](storsimple-configure-mpio-on-linux.md).
+For MPIO installation instructions for a StorSimple device connected to a Linux host, go to [Configure MPIO for your Linux host](storsimple-configure-mpio-on-linux.md).
 
-> [AZURE.NOTE] MPIO wird auf einem virtuellen StorSimple-Gerät nicht unterstützt.
+> [AZURE.NOTE] MPIO is not supported on a StorSimple virtual device. 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Konfigurieren eines [virtuellen Geräts](storsimple-virtual-device-u2.md)
+- Configure a [virtual device](storsimple-virtual-device-u2.md).
 
-- Verwenden des [StorSimple-Manager-Diensts](https://msdn.microsoft.com/library/azure/dn772396.aspx) für das Verwalten Ihres StorSimple-Geräts
+- Use the [StorSimple Manager service](https://msdn.microsoft.com/library/azure/dn772396.aspx) to manage your StorSimple device.
  
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

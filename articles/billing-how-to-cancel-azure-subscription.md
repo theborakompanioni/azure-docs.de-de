@@ -1,47 +1,66 @@
 <properties
-	pageTitle="Kündigung Ihres Azure-Abonnements | Microsoft Azure"
-	description="Beschreibt, wie Sie Ihr Azure-Abonnement, etwa das Abonnement für die kostenlose Testversion, kündigen."
-	services=""
-	documentationCenter=""
-	authors="genlin"
-	manager="mbaldwin"
-	editor=""
-	tags="billing"
-	/>
+    pageTitle="Cancel your Azure subscription | Microsoft Azure"
+    description="Describes how to cancel your Azure subscription, like the Free Trial subscription"
+    services=""
+    documentationCenter=""
+    authors="genlin"
+    manager="mbaldwin"
+    editor=""
+    tags="billing"
+    />
 
 <tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2016"
-	ms.author="genli"/>
+    ms.service="billing"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/26/2016"
+    ms.author="genli"/>
 
-# Kündigung Ihres Azure-Abonnements
 
->[AZURE.NOTE] Bei Azure-Supportplänen mit 6-monatiger Laufzeit bleiben die finanziellen Verpflichtungen für die Dauer der Laufzeit bestehen. Eine Kündigung vor Ablauf der Laufzeit entbindet den Kunden nicht von verbleibenden Zahlungsverpflichtungen, und Vorauszahlungen werden nicht erstattet. Wenn Sie Ihr Abonnement versehentlich gekündigt haben und es wieder aktivieren möchten, können Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden.
+# <a name="cancel-your-azure-subscription"></a>Cancel your Azure subscription
 
-Wenn Sie Ihr Abonnement kündigen, werden Ihre Daten gemäß der [Aufbewahrungsrichtlinie von Microsoft](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) 90 Tage lang gespeichert. Weitere Informationen erhalten Sie vom [Microsoft Trust Center](https://www.microsoft.com/de-DE/TrustCenter/Privacy/You-are-in-control-of-your-data).
+Cancel your Azure subscription from the [Azure Account Center](https://account.windowsazure.com/subscriptions). After you cancel the subscription, your access to Azure services and resources will end.
 
-1. Melden Sie sich im [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
+Before you cancel your subscription:
 
-2. Wählen Sie unter **Klicken Sie auf ein Abonnement, um Details und Nutzung anzuzeigen.** das Abonnement aus, das Sie kündigen möchten.
+- Back up your data. For example, if you're storing data in Azure storage or SQL, download a copy. If you have a virtual machine, save an image of it locally.
 
-	![selectsub](./media/billing-how-to-cancel-azure-subscription/Selectsub.png)
+- Shut down your services. Go to the [resources page in the management portal](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), and **Stop** any running virtual machines, applications, or other services.
 
-3. Wählen Sie rechts auf der Seite **Abonnement kündigen**.
-	
-	![cancelsub](./media/billing-how-to-cancel-azure-subscription/cancelsub.png)
+If you cancel a paid [Azure Support plan](https://azure.microsoft.com/support/plans/), you will still be billed monthly for the rest of the 6-months term.
 
-4. Wählen Sie **Ja, mein Abonnement kündigen**.
-	
-	![cancelbox](./media/billing-how-to-cancel-azure-subscription/cancelbox.png)
+## <a name="cancel-subscription"></a>Cancel subscription
 
-5. Klicken Sie auf ![checkbutton](./media/billing-how-to-cancel-azure-subscription/checkbutton.png), um das Dialogfenster zu schließen und zu Ihrer Abonnementseite zurückkehren.
+1. Log on to the [Azure Account Center](https://account.windowsazure.com/subscriptions) as the Account Administrator.
 
-	> [AZURE.NOTE] Wenn Sie versehentlich Ihr Abonnement mit nutzungsbasierter Bezahlung gekündigt haben, können Sie es mithilfe [dieser](https://azure.microsoft.com/documentation/articles/billing-subscription-become-disable/) Anweisungen erneut aktivieren.
+2. Under **Click a subscription to view details and usage**, select the subscription that you want to cancel. 
 
-> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+    ![selectsub](./media/billing-how-to-cancel-azure-subscription/Selectsub.png)
 
-<!---HONumber=AcomDC_0914_2016-->
+3. On the right side of the page, select **Cancel Subscription**.
+    
+    ![cancelsub](./media/billing-how-to-cancel-azure-subscription/cancelsub.png)
+
+4. Select **Yes, cancel my subscription**.
+    
+    ![cancelbox](./media/billing-how-to-cancel-azure-subscription/cancelbox.png)
+
+5. Click ![checkbutton](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) to close the dialog window and return to your subscription page.
+
+After you cancel your subscription, we wait 90 days before permanently deleting your data in case you need to access it or change your mind. For more information, see [Microsoft Trust Center - How we manage your data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+
+## <a name="reactivate-subscription"></a>Reactivate subscription
+
+If you canceled your Pay-As-You-Go subscription accidentally, you can [reactivate it in the Accounts Center](billing-subscription-become-disable.md#how-to-re-enable-non-pay-as-you-go-subscriptions).
+
+## <a name="need-help?-contact-support."></a>Need help? Contact support.
+
+If you still have further questions, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

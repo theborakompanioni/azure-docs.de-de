@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Hochladen von Daten in Azure Search über die REST-API | Microsoft Azure | Gehosteter Cloudsuchdienst"
-    description="Erfahren Sie, wie Sie Daten in einen Index in Azure Search über die REST-API hochladen."
+    pageTitle="Data upload in Azure Search using the REST API | Microsoft Azure | Hosted cloud search service"
+    description="Learn how to upload data to an index in Azure Search using the REST API."
     services="search"
     documentationCenter=""
     authors="ashmaka"
@@ -17,55 +17,56 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
-# Hochladen von Daten in Azure Search über die REST-API
+
+# <a name="upload-data-to-azure-search-using-the-rest-api"></a>Upload data to Azure Search using the REST API
 > [AZURE.SELECTOR]
-- [Übersicht](search-what-is-data-import.md)
+- [Overview](search-what-is-data-import.md)
 - [.NET](search-import-data-dotnet.md)
 - [REST](search-import-data-rest-api.md)
 
-In diesem Artikel erfahren Sie, wie Sie die [Azure Search REST-API](https://msdn.microsoft.com/library/azure/dn798935.aspx) zum Importieren von Daten in einen Azure Search-Index verwenden.
+This article will show you how to use the [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) to import data into an Azure Search index.
 
-[Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen.
+Before beginning this walkthrough, you should already have [created an Azure Search index](search-what-is-an-index.md).
 
-Um Dokumente mit der REST-API mithilfe von Push in Ihren Index zu verschieben, geben Sie eine HTTP POST-Anforderung an das URL-Endpunkt Ihres Indexes aus. Der Hauptteil der HTTP-Anforderung ist ein JSON-Objekt, das die Dokumente enthält, die hinzugefügt, geändert oder gelöscht werden sollen.
+In order to push documents into your index using the REST API, you will issue an HTTP POST request to your index's URL endpoint. The body of the HTTP request body is a JSON object containing the documents to be added, modified, or deleted.
 
-## I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
-Beim Ausgeben von HTTP-Anforderungen in Ihrem Dienst mithilfe der REST-API muss *jede* API-Anforderung den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
+## <a name="i.-identify-your-azure-search-service's-admin-api-key"></a>I. Identify your Azure Search service's admin api-key
+When issuing HTTP requests against your service using the REST API, *each* API request must include the api-key that was generated for the Search service you provisioned. Having a valid key establishes trust, on a per request basis, between the application sending the request and the service that handles it.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu suchen.
-2. Wechseln Sie zum Blatt Ihres Azure Search-Diensts.
-3. Klicken Sie auf das Schlüsselsymbol.
+1. To find your service's api-keys you must log into the [Azure Portal](https://portal.azure.com/)
+2. Go to your Azure Search service's blade
+3. Click on the "Keys" icon
 
-Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
+Your service will have *admin keys* and *query keys*.
 
-  - Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
-  - Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
+  - Your primary and secondary *admin keys* grant full rights to all operations, including the ability to manage the service, create and delete indexes, indexers, and data sources. There are two keys so that you can continue to use the secondary key if you decide to regenerate the primary key, and vice-versa.
+  - Your *query keys* grant read-only access to indexes and documents, and are typically distributed to client applications that issue search requests.
 
-Verwenden Sie zum Importieren von Daten in einen Index entweder den primären oder den sekundären Admin-Schlüssel.
+For the purposes of importing data into an index, you can use either your primary or secondary admin key.
 
-## II. Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
-Wenn Sie die REST-API verwenden, werden HTTP POST-Anforderungen mit JSON-Anforderungstexten an die Endpunkt-URL Ihres Azure Search-Indexes ausgegeben. Das JSON-Objekt im HTTP-Anforderungstext enthält ein einzelnes JSON-Array namens „value“, das JSON-Objekte enthält. Diese stellen Dokumente dar, die Sie zum Index hinzufügen, aktualisieren oder löschen möchten.
+## <a name="ii.-decide-which-indexing-action-to-use"></a>II. Decide which indexing action to use
+When using the REST API, you will issue HTTP POST requests with JSON request bodies to your Azure Search index's endpoint URL. The JSON object in your HTTP request body will contain a single JSON array named "value" containing JSON objects representing documents you would like to add to your index, update, or delete.
 
-Jedes JSON-Objekt im Array „value“ stellt ein zu indizierendes Dokument dar. Jedes der Objekte enthält den Schlüssel des Dokuments und bestimmt die gewünschte Indizierungsaktion (Hochladen, Zusammenführen, Löschen usw.). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
+Each JSON object in the "value" array represents a document to be indexed. Each of these objects contains the document's key and specifies the desired indexing action (upload, merge, delete, etc). Depending on which of the below actions you choose, only certain fields must be included for each document:
 
-@search.action | Beschreibung | Erforderliche Felder für jedes Dokument | Hinweise
+@search.action | Description | Necessary fields for each document | Notes
 --- | --- | --- | ---
-`upload` | Eine `upload`-Aktion entspricht „upsert“, wobei neue Dokumente eingefügt und bestehende Dokumente aktualisiert/ersetzt werden. | Schlüssel und alle anderen zu definierenden Felder | Wenn ein bestehendes Dokument aktualisiert/ersetzt wird, werden alle in der Anforderung nicht festgelegten Felder auf `null` festgelegt. Dies tritt auch auf, wenn das Feld zuvor auf einen Wert festgelegt wurde, der nicht Null ist.
-`merge` | Aktualisiert ein bestehendes Dokument mit den angegebenen Feldern. Wenn das Dokument im Index nicht vorhanden ist, schlägt die Zusammenführung fehl. | Schlüssel und alle anderen zu definierenden Felder | Jedes Feld, das Sie in einer Zusammenführung angeben, ersetzt das vorhandene Feld im Dokument. Dies beinhaltet auch Felder vom Typ `Collection(Edm.String)`. Wenn das Dokument beispielsweise das Feld `tags` mit dem Wert `["budget"]` enthält und Sie eine Zusammenführung mit dem Wert `["economy", "pool"]` für `tags` durchführen, hat das Feld `tags` am Ende den Wert `["economy", "pool"]`. Der Wert lautet nicht `["budget", "economy", "pool"]`.
-`mergeOrUpload` | Verhält sich wie `merge`, wenn im Index bereits ein Dokument mit dem entsprechenden Schlüssel vorhanden ist. Wenn das Dokument nicht vorhanden ist, verhält es sich wie `upload` mit einem neuen Dokument. | Schlüssel und alle anderen zu definierenden Felder | - 
-`delete` | Entfernt das festgelegte Dokument aus dem Index. | Nur Schlüssel | Alle festgelegten Felder mit Ausnahme des Schlüsselfelds werden ignoriert. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `merge` und setzen das Feld ausdrücklich auf null.
+`upload` | An `upload` action is similar to an "upsert" where the document will be inserted if it is new and updated/replaced if it exists. | key, plus any other fields you wish to define | When updating/replacing an existing document, any field that is not specified in the request will have its field set to `null`. This occurs even when the field was previously set to a non-null value.
+`merge` | Updates an existing document with the specified fields. If the document does not exist in the index, the merge will fail. | key, plus any other fields you wish to define | Any field you specify in a merge will replace the existing field in the document. This includes fields of type `Collection(Edm.String)`. For example, if the document contains a field `tags` with value `["budget"]` and you execute a merge with value `["economy", "pool"]` for `tags`, the final value of the `tags` field will be `["economy", "pool"]`. It will not be `["budget", "economy", "pool"]`.
+`mergeOrUpload` | This action behaves like `merge` if a document with the given key already exists in the index. If the document does not exist, it behaves like `upload` with a new document. | key, plus any other fields you wish to define | -
+`delete` | Removes the specified document from the index. | key only | Any fields you specify other than the key field will be ignored. If you want to remove an individual field from a document, use `merge` instead and simply set the field explicitly to null.
 
-## III. Erstellen Sie die HTTP-Anforderung und den Anforderungstext
-Da Sie nun die erforderlichen Feldwerte für Ihre Indexaktionen gesammelt haben, können Sie die HTTP-Anforderung und den JSON-Anforderungstext für den Datenimport erstellen.
+## <a name="iii.-construct-your-http-request-and-request-body"></a>III. Construct your HTTP request and request body
+Now that you have gathered the necessary field values for your index actions, you are ready to construct the actual HTTP request and JSON request body to import your data.
 
-#### Anforderung und Anforderungsheader
-In der URL müssen Sie Ihren Dienstnamen, den Indexnamen (in diesem Fall „hotels“) sowie die entsprechende API-Version (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2015-02-28`) bereitstellen. Sie müssen die Anforderungsheader `Content-Type` und `api-key` festlegen. Verwenden Sie für letzteres einen der Admin-Schlüssel Ihres Diensts.
+#### <a name="request-and-request-headers"></a>Request and Request Headers
+In the URL, you will need to provide your service name, index name ("hotels" in this case), as well as the proper API version (the current API version is `2015-02-28` at the time of publishing this document). You will need to define the `Content-Type` and `api-key` request headers. For the latter, use one of your service's admin keys.
 
     POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
     Content-Type: application/json
     api-key: [admin key]
 
-#### Anforderungstext
+#### <a name="request-body"></a>Request Body
 
 ```JSON
 {
@@ -114,15 +115,15 @@ In der URL müssen Sie Ihren Dienstnamen, den Indexnamen (in diesem Fall „hote
 }
 ```
 
-In diesem Fall verwenden wir `upload`, `mergeOrUpload` und `delete` als Suchaktionen.
+In this case, we are using `upload`, `mergeOrUpload`, and `delete` as our search actions.
 
-Wir gehen davon aus, dass der Index in diesem Beispiel („hotels“) bereits mit einigen Dokumenten gefüllt ist. Beachten Sie, dass bei `mergeOrUpload` nicht alle möglichen Dokumentfelder festgelegt werden mussten und dass bei `delete` nur der Dokumentschlüssel (`hotelId`) definiert wurde.
+Assume that this example "hotels" index is already populated with a number of documents. Note how we did not have to specify all the possible document fields when using `mergeOrUpload` and how we only specified the document key (`hotelId`) when using `delete`.
 
-Beachten Sie außerdem, dass nur bis zu 1000 Dokumente (oder 16 MB) in einer einzigen Indizierungsanforderung enthalten sein können.
+Also, note that you can only include up to 1000 documents (or 16 MB) in a single indexing request.
 
-## IV. Erläuterungen zum HTTP-Antwortcode
-#### 200
-Nach der Übermittlung einer erfolgreichen Indizierungsanforderung erhalten Sie eine HTTP-Antwort mit dem Statuscode `200 OK`. Der JSON-Text der HTTP-Antwort lautet wie folgt:
+## <a name="iv.-understand-your-http-response-code"></a>IV. Understand your HTTP response code
+#### <a name="200"></a>200
+After submitting a successful indexing request you will receive an HTTP response with status code of `200 OK`. The JSON body of the HTTP response will be as follows:
 
 ```JSON
 {
@@ -137,8 +138,8 @@ Nach der Übermittlung einer erfolgreichen Indizierungsanforderung erhalten Sie 
 }
 ```
 
-#### 207
-Der Statuscode `207` wird zurückgegeben, wenn mindestens ein Element nicht erfolgreich indiziert wurde. Der JSON-Text der HTTP-Antwort enthält Informationen zu den fehlgeschlagenen Dokumenten.
+#### <a name="207"></a>207
+A status code of `207` will be returned when at least one item was not successfully indexed. The JSON body of the HTTP response will contain information about the unsuccessful document(s).
 
 ```JSON
 {
@@ -153,19 +154,23 @@ Der Statuscode `207` wird zurückgegeben, wenn mindestens ein Element nicht erfo
 }
 ```
 
-> [AZURE.NOTE] Dies bedeutet häufig, dass die Auslastung Ihres Suchdiensts einen Punkt erreicht, an dem Indizierungsanforderungen damit beginnen, `503`-Antworten zurückzugeben. In diesem Fall empfehlen wir ein Backoff des Clientcodes. Versuchen Sie es daraufhin nach einer Weile erneut. Dadurch hat das System ausreichend Zeit für eine Wiederherstellung, und die Wahrscheinlichkeit, dass spätere Anforderungen gelingen, steigt. Wenn Sie Ihre Anforderungen schnell wiederholen, dauert das Problem nur an.
+> [AZURE.NOTE] This often means that the load on your search service is reaching a point where indexing requests will begin to return `503` responses. In this case, we highly recommend that your client code back off and wait before retrying. This will give the system some time to recover, increasing the chances that future requests will succeed. Rapidly retrying your requests will only prolong the situation.
 
-#### 429
-Der Statuscode `429` wird zurückgegeben, wenn Sie Ihr Kontingent hinsichtlich der Anzahl der Dokumente pro Index überschritten haben.
+#### <a name="429"></a>429
+A status code of `429` will be returned when you have exceeded your quota on the number of documents per index.
 
-#### 503
-Der Statuscode `503` wird zurückgegeben, wenn keines der Elemente in der Anforderung erfolgreich indiziert wurde. Dieser Fehler bedeutet, dass die Auslastung des Systems sehr hoch ist und Ihre Anforderungen aktuell nicht verarbeitet werden können.
+#### <a name="503"></a>503
+A status code of `503` will be returned if none of the items in the request were successfully indexed. This error means that the system is under heavy load and your request can't be processed at this time.
 
-> [AZURE.NOTE] In diesem Fall empfehlen wir ein Backoff des Clientcodes. Versuchen Sie es daraufhin nach einer Weile erneut. Dadurch hat das System ausreichend Zeit für eine Wiederherstellung, und die Wahrscheinlichkeit, dass spätere Anforderungen gelingen, steigt. Wenn Sie Ihre Anforderungen schnell wiederholen, dauert das Problem nur an.
+> [AZURE.NOTE] In this case, we highly recommend that your client code back off and wait before retrying. This will give the system some time to recover, increasing the chances that future requests will succeed. Rapidly retrying your requests will only prolong the situation.
 
-Weitere Informationen zu Dokumentaktionen und Antworten bei Erfolg/Fehler finden Sie unter [Hinzufügen, Aktualisieren und Löschen von Dokumenten](https://msdn.microsoft.com/library/azure/dn798930.aspx). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP-Statuscodes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
+For more information on document actions and success/error responses, please see [Add, Update, or Delete Documents](https://msdn.microsoft.com/library/azure/dn798930.aspx). For more information on other HTTP status codes that could be returned in case of failure, see [HTTP status codes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
 
-## Weiter
-Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen in Azure Search](search-query-overview.md).
+## <a name="next"></a>Next
+After populating your Azure Search index, you will be ready to start issuing queries to search for documents. See [Query Your Azure Search Index](search-query-overview.md) for details.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

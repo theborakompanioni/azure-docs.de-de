@@ -1,12 +1,22 @@
-### Voraussetzungen
-- Ein [GitHub](http://GitHub.com)-Konto 
+### <a name="prerequisites"></a>Prerequisites
+- A [GitHub](http://GitHub.com) account 
 
-Bevor Sie Ihr GitHub-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem GitHub-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.
+Before you can use your GitHub account in a Logic app, you must authorize the Logic app to connect to your GitHub account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem GitHub-Konto:
+Here are the steps to authorize your Logic app to connect to your GitHub account:
 
-1. Um eine Verbindung mit GitHub herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *GitHub* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die Aktion aus: ![](./media/connectors-create-api-github/github-1.png)
-2. Wenn Sie noch keine Verbindungen mit GitHub hergestellt haben, werden Sie aufgefordert, Ihre GitHub-Anmeldeinformationen anzugeben. Mithilfe dieser Anmeldeinformationen wird Ihre Logik-App autorisiert, die eine Verbindung herstellen und auf Ihr GitHub-Konto zugreifen soll: ![](./media/connectors-create-api-github/github-2.png)
-3. Geben Sie Ihren GitHub-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an: ![](./media/connectors-create-api-github/github-3.png)   
-4. Bestätigen Sie Ihre Änderungen: ![](./media/connectors-create-api-github/github-4.png)   
-5. Beachten Sie, dass die Verbindung im Portal erstellt wurde. Sie können nun mit dem Erstellen Ihrer Logik-App fortfahren und darin GitHub verwenden: ![](./media/connectors-create-api-github/github-5.png)   
+1. To create a connection to GitHub, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *GitHub* in the search box. Select the trigger or action you'll like to use:  
+  ![](./media/connectors-create-api-github/github-1.png)
+2. If you haven't created any connections to GitHub before, you'll get prompted to provide your GitHub credentials. These credentials will be used to authorize your Logic app to connect to, and access your GitHub account's data:  
+  ![](./media/connectors-create-api-github/github-2.png)
+3. Provide your GitHub user name and password to authorize your Logic app:  
+  ![](./media/connectors-create-api-github/github-3.png)   
+4. Confirm your intentions:  
+  ![](./media/connectors-create-api-github/github-4.png)   
+5. Notice the connection has been created in the portal. You can now proceed with creating your Logic app and using GitHub in it:   
+  ![](./media/connectors-create-api-github/github-5.png)   
+
+
+<!--HONumber=Oct16_HO2-->
+
+

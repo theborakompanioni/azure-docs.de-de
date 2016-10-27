@@ -1,89 +1,94 @@
 <properties
-	pageTitle="Bereitstellen von sicherem Remotezugriff auf lokale Apps"
-	description="Erläutert, wie Sie mit dem Azure AD-Anwendungsproxy sicheren Remotezugriff auf Ihre lokalen Anwendungen bereitstellen können."
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="How to provide secure remote access to on-premises apps"
+    description="Covers how to use Azure AD Application Proxy to provide secure remote access to your on-premises apps."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/25/2016"
+    ms.author="kgremban"/>
 
-# Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen
 
-> [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+# <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>How to provide secure remote access to on-premises applications
 
-Heutzutage möchten Mitarbeiter an jedem Ort, zu jeder Zeit und mit jedem Gerät produktiv arbeiten können. Sie möchten auf ihren eigenen Geräten arbeiten, z.B. Tablet-PCs, Smartphones oder Laptops. Und sie erwarten, sowohl auf SaaS-Apps in der Cloud als auch auf lokale Unternehmens-Apps zugreifen zu können. Für die Bereitstellung des Zugriffs auf lokale Anwendungen wurden bisher virtuelle private Netzwerke (VPNs), demilitarisierte Zonen (DMZs) oder lokale Reverseproxys eingesetzt. Diese Lösungen sind aber nicht nur komplex und schwer zu schützen, sondern können außerdem nur mit hohem Kostenaufwand eingerichtet und verwaltet werden.
+> [AZURE.NOTE] Application Proxy is a feature that is available only if you upgraded to the Premium or Basic edition of Azure Active Directory. For more information, see [Azure Active Directory editions](active-directory-editions.md).
 
-Es gibt eine bessere Möglichkeit!
+Employees today want to be productive at any place, at any time, and from any device. They want to work on their own devices, whether they be tablets, phones, or laptops. And they expect to be able to access all their applications, both SaaS apps in the cloud and corporate apps on-premises. Providing access to on-premises applications has traditionally involved virtual private networks (VPNs), demilitarized zones (DMZs), or on-premises reverse proxies. Not only are these solutions complex and hard to make secure, but they are costly to set up and manage.
 
-Moderne Mitarbeiter in einer Arbeitswelt mit dem Motto „mobile-first, cloud-first“ benötigen auch eine moderne Lösung für den Remotezugriff. Der Azure AD-Anwendungsproxy ist ein Feature des Azure Active Directory Premium-Angebots und verfügt über den Remotezugriff als Dienst. Dies bedeutet, dass die Bereitstellung, Nutzung und Verwaltung einfach ist.
+There is a better way!
 
-## Was ist der Azure Active Directory-Anwendungsproxy?
-Der Azure AD-Anwendungsproxy ermöglicht das einmalige Anmelden (SSO) und den sicheren Remotezugriff für lokal gehostete Webanwendungen. Dies können SharePoint-Websites, Outlook Web Access oder beliebige andere Branchenwebanwendungen sein, die Sie einsetzen. Diese lokalen Webanwendungen sind in Azure AD integriert, also in die gleiche Identitäts- und Steuerungsplattform, die auch von O365 verwendet wird. Dadurch können Endbenutzer auf Ihre lokalen Anwendungen auf die gleiche Weise zugreifen wie auf O365 und andere SaaS-Apps, die in Azure AD integriert sind. Dafür müssen Sie weder die Netzwerkinfrastruktur ändern noch VPN verwenden.
+A modern workforce in the mobile-first, cloud-first world needs a modern remote access solution. Azure AD Application Proxy is a feature of the Azure Active Directory Premium offering, and offers remote access as a service. That means it's easy to deploy, use, and manage.
 
-## Warum ist dies eine bessere Lösung?
-Der Azure AD-Anwendungsproxy ist eine einfache, sichere und kostengünstige Lösung für den Remotezugriff auf alle lokalen Anwendungen.
+## <a name="what-is-azure-active-directory-application-proxy?"></a>What is Azure Active Directory Application Proxy?
+Azure AD Application Proxy provides single sign-on (SSO) and secure remote access for web applications hosted on-premises. This can include SharePoint sites, Outlook Web Access, or any other LOB web applications you have. These on-premises web applications are integrated with Azure AD, the same identity and control platform that is used by O365. End users can then access your on-premises applications the same way they access O365 and other SaaS apps integrated with Azure AD. You don't need to change the network infrastructure or require VPN to provide this solution for your users.
 
-Azure AD-Anwendungsproxy:
+## <a name="why-is-this-a-better-solution?"></a>Why is this a better solution?
+Azure AD Application Proxy provides a simple, secure, and cost-effective remote access solution to all your on-premises applications.
 
-- Funktioniert in der Cloud, und Sie können Zeit und Kosten sparen. Für lokale Lösungen müssen Sie DMZs, Edgeserver oder andere komplexe Infrastrukturen einrichten und verwalten.
+Azure AD Application Proxy:  
 
-- Sie sind einfacher einzurichten und zu schützen als lokale Lösungen, da Sie keine eingehenden Verbindungen über Ihre Firewall öffnen müssen.
+- Works in the cloud, so you can save time and money. On-premises solutions require you to set up and maintain DMZs, edge servers, or other complex infrastructures.  
 
-- Bietet ein hohes Maß an Sicherheit. Wenn Sie Ihre Apps mit dem Azure AD-Anwendungsproxy veröffentlichen, können Sie die umfassenden Autorisierungssteuerungen und Sicherheitsanalysen in Azure nutzen. Dies bedeutet, dass Sie erweiterte Sicherheitsfunktionen für alle vorhandenen Apps erhalten, ohne Apps dafür ändern zu müssen.
+- Is easier to set up and secure than on-premises solutions because you don't have to open any inbound connections through your firewall.  
 
-- Ermöglicht Ihren Benutzern einen einheitlichen Authentifizierungsvorgang. Mit dem einmaligen Anmelden können Ihre Benutzer leicht und problemlos mit nur einem Kennwort auf alle Apps zugreifen, die sie zum produktiven Arbeiten benötigen.
+- Offers great security. When you publish your apps using Azure AD Application Proxy, you can take advantage of the rich authorization controls and security analytics in Azure. This means that you get advanced security capabilities for all your existing apps without having to change any app.  
 
-## Welche Arten von Anwendungen können mit dem Azure AD-Anwendungsproxy verwendet werden?
-Mit dem Azure AD-Anwendungsproxy können Sie auf verschiedene Arten von internen Anwendungen zugreifen:
+- Gives your users a consistent authentication experience. Single sign-on gives your end users the ease and simplicity of access to all the apps they need to be productive with one password.  
 
-- Webanwendungen, für die zur Authentifizierung die integrierte Windows-Authentifizierung verwendet wird
-- Webanwendungen mit formularbasiertem Zugriff
-- Web-APIs, die Sie für umfassende Anwendungen auf unterschiedlichen Geräten verfügbar machen möchten
-- Hinter einem Remotedesktopgateway gehostete Anwendungen
+## <a name="what-kind-of-applications-work-with-azure-ad-application-proxy?"></a>What kind of applications work with Azure AD Application Proxy?
+With Azure AD Application Proxy you can access different types of internal applications:
 
-## Wie funktioniert dies?
-Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Mit dem Connector müssen Sie keine eingehenden Ports öffnen oder Ressourcen in der DMZ anordnen. Bei hohem Datenverkehrsaufkommen für Ihre Apps können Sie weitere Connectors hinzufügen. Der Lastenausgleich wird vom Dienst übernommen. Connectors sind zustandslos und rufen alle Informationen nach Bedarf aus der Cloud ab.
+- Web applications that use Integrated Windows Authentication for authentication  
+- Web applications that use form-based access  
+- Web APIs that you want to expose to rich applications on different devices  
+- Applications hosted behind a Remote Desktop Gateway  
 
-Wenn Benutzer per Remotezugriff auf Anwendungen zugreifen, stellen sie eine Verbindung mit dem veröffentlichten Endpunkt her. Benutzer authentifizieren sich in Azure AD und werden dann über den Connector an die lokale Anwendung geleitet.
+## <a name="how-does-it-work?"></a>How does it work?
+Application Proxy works by installing a slim Windows Server service called a connector inside your network. With the connector, you don't have to open any inbound ports or put anything in the DMZ. If you have high traffic in your apps you can add more connectors, and the service takes care of the load balancing. The connectors are stateless and pull everything from the cloud as necessary.
 
- ![Azure AD-Anwendungsproxy – Diagramm](./media/active-directory-appssoaccess-whatis/azureappproxxy.png)
+When users access applications remotely, they connect to the published endpoint. Users authenticate in Azure AD and then are routed through the connector to the on-premises application.
 
-1. Der Benutzer greift auf die Anwendung über den Anwendungsproxy zu und wird zur Authentifizierung an die Azure AD-Anmeldeseite geleitet.
-2. Nach der erfolgreichen Anmeldung wird ein Token generiert und an den Benutzer gesendet.
-3. Der Benutzer sendet das Token an den Anwendungsproxy, der den Benutzerprinzipalnamen (User Principal Name, UPN) und den Sicherheitsprinzipalnamen (Security Principal Name, SPN) aus dem Token abruft und die Anforderung dann an den Connector weiterleitet.
-4. Der Connector fordert im Namen des Benutzers ein Kerberos-Ticket an, das für die interne Authentifizierung (Windows) verwendet werden kann. Dies wird als eingeschränkte Kerberos-Delegierung bezeichnet.
-5. Active Directory ruft das Kerberos-Ticket ab.
-6. Das Ticket wird an den Anwendungsserver gesendet und überprüft.
-7. Die Antwort wird über den Anwendungsproxy an den Benutzer gesendet.
+ ![AzureAD Application Proxy diagram](./media/active-directory-appssoaccess-whatis/azureappproxxy.png)
 
-### Einmaliges Anmelden
-Der Azure AD-Anwendungsproxy ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, nimmt der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung die Identität des Benutzers an, um das einmalige Anmelden zu ermöglichen. Wenn Sie über eine Anwendung verfügen, die Ansprüche unterstützt und die Azure Active Directory vertraut, wird das einmalige Anmelden möglich, weil der Benutzer bereits über Azure Active Directory authentifiziert wurde.
+1. The user accesses the application through the Application Proxy and is directed to the Azure AD sign-in page to authenticate.
+2. After a successful sign-in, a token is generated and sent to the user.
+3. The user sends the token to Application Proxy, which retrieves the user principal name (UPN) and security principal name (SPN) from the token, then directs the request to the connector.
+4. On behalf of the user, the connector requests a Kerberos ticket that can be used for internal (Windows) authentication. This is known as Kerberos Constrained Delegation.
+5. Active Directory retrieves the Kerberos ticket.
+6. The ticket is sent to the application server and verified.
+7. The response is sent through Application Proxy to the user.
 
-## Erste Schritte
-Stellen Sie sicher, dass Sie über ein Azure AD Basic- oder Premium-Abonnement und ein Azure AD-Verzeichnis verfügen, für die Sie als globaler Administrator angemeldet sind. Sie benötigen auch Azure AD Basic- oder Premium-Lizenzen für den Verzeichnisadministrator und Benutzer, die auf die Apps zugreifen. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+### <a name="single-sign-on"></a>Single sign-on
+Azure AD Application Proxy provides single sign-on (SSO) to applications that use Integrated Windows Authentication (IWA), or claims-aware applications. If your application uses IWA, Application Proxy impersonates the user using Kerberos Constrained Delegation to provide SSO. If you have a claims-aware application that trusts Azure Active Directory, SSO is achieved because the user was already authenticated by Azure AD.
 
-Das Einrichten des Anwendungsproxys erfolgt in zwei Schritten:
+## <a name="how-to-get-started"></a>How to get started
+Make sure you have an Azure AD basic or premium subscription and an Azure AD directory for which you are a global administrator. You also need Azure AD basic or premium licenses for the directory administrator and users accessing the apps. See [Azure Active Directory editions](active-directory-editions.md) for more information.
 
-1. [Aktivieren des Anwendungsproxys und Konfigurieren des Connectors](active-directory-application-proxy-enable.md)
-2. [Veröffentlichen von Anwendungen](active-directory-application-proxy-publish.md) – Verwenden Sie den schnell und einfach einzusetzenden Assistenten, um Ihre lokalen Apps zu veröffentlichen und den Remotezugriff darauf zu ermöglichen.
+Setting up Application Proxy is accomplished in two steps:
 
-## Wie geht es weiter?
-Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
+1. [Enable Application Proxy and configure the connector](active-directory-application-proxy-enable.md)    
+2. [Publish applications](active-directory-application-proxy-publish.md) - use the quick and easy wizard to get your on-premises apps published and accessible remotely.
 
-- [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
-- [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
-- [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
-- [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
+## <a name="what's-next?"></a>What's next?
+There's a lot more you can do with Application Proxy:
 
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
+- [Publish applications using your own domain name](active-directory-application-proxy-custom-domains.md)
+- [Enable single-sign on](active-directory-application-proxy-sso-using-kcd.md)
+- [Working with claims aware applications](active-directory-application-proxy-claims-aware-apps.md)
+- [Enable conditional access](active-directory-application-proxy-conditional-access.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+For the latest news and updates, check out the [Application Proxy blog](http://blogs.technet.com/b/applicationproxyblog/)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

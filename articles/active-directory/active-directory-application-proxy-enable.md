@@ -1,93 +1,98 @@
 <properties
-	pageTitle="Aktivieren des Azure AD-Anwendungsproxys | Microsoft Azure"
-	description="Aktivieren Sie den Anwendungsproxy über das klassische Azure-Portal, und installieren Sie die Connectors für den Reverseproxy."
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="Enable Azure AD Application Proxy | Microsoft Azure"
+    description="Turn on Application Proxy in the Azure classic portal, and install the Connectors for the reverse proxy."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/19/2016"
-	ms.author="kgremban"/>
-
-# Aktivieren des Anwendungsproxys über das Azure-Portal
-
-In diesem Artikel wird anhand der erforderlichen Schritte beschrieben, wie Sie den Microsoft Azure AD-Anwendungsproxy für Ihr Cloudverzeichnis in Azure AD aktivieren.
-
-Weitere Informationen zu den Vorteilen des Anwendungsproxys finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](active-directory-application-proxy-get-started.md).
-
-## Voraussetzungen für den Anwendungsproxy
-Bevor Sie die Anwendungsproxydienste aktivieren und verwenden können, benötigen Sie Folgendes:
-
-- Ein [Basic- oder Premium-Abonnement](active-directory-editions.md) für Microsoft Azure AD und ein Azure AD-Verzeichnis, für das Sie als globaler Administrator fungieren.
-- Einen Server, auf dem Windows Server 2012 R2 bzw. Windows 8.1 oder höher installiert ist und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server sendet Anforderungen an die Anwendungsproxydienste in der Cloud und benötigt eine HTTP- oder HTTPS-Verbindung mit den Anwendungen, die Sie veröffentlichen.
-
-	- Für das einmalige Anmelden an Ihren veröffentlichten Anwendungen sollte dieser Computer in dieselbe AD-Domäne wie die veröffentlichten Anwendungen eingebunden sein.
-
-- Wenn der Pfad durch eine Firewall geschützt ist, sollten Sie sich vergewissern, dass diese so konfiguriert ist, dass der Connector HTTPS-Anforderungen (TCP) an den Anwendungsproxy richten kann. Der Connector verwendet diese Ports zusammen mit untergeordneten Domänen, die Teil der übergeordneten Domänen „msappproxy.net“ und „servicebus.windows.net“ sind. Stellen Sie sicher, dass die folgenden Ports für den **ausgehenden** Datenverkehr geöffnet sind:
-
-	| Portnummer | Beschreibung |
-	| --- | --- |
-	| 80 | Ermöglicht ausgehenden HTTP-Verkehr für die Sicherheitsüberprüfung. |
-	| 443 | Ermöglicht die Benutzerauthentifizierung für Azure AD (nur für den Connectorregistrierungsprozess erforderlich). |
-	| 10100 - 10120 | Ermöglicht das Zurücksenden von LOB HTTP-Antworten an den Proxy. |
-	| 9352, 5671 | Ermöglicht eine Kommunikation zwischen Connector und Azure-Dienst für eingehende Anforderungen. |
-	| 9350 | Optional; verbessert die Leistung für eingehende Anforderungen. |
-	| 8080 | Aktiviert die Bootstrapsequenz des Connectors sowie eine automatische Aktualisierung des Connectors. |
-	| 9090 | Ermöglicht die Connectorregistrierung (nur für den Connectorregistrierungsprozess erforderlich). |
-	| 9091 | Ermöglicht die automatische Erneuerung des Vertrauenszertifikats für den Connector. |
-
-	Wenn Ihre Firewall Datenverkehr gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden. Stellen Sie außerdem sicher, dass Port 8080 für "NT Authority\\System" aktiviert ist.
-
-- Wenn in Ihrer Organisation Proxyserver zum Herstellen einer Verbindung mit dem Internet verwendet werden, helfen Ihnen die Details zur Konfiguration im Blogbeitrag [Working with existing on-premises proxy servers](https://blogs.technet.microsoft.com/applicationproxyblog/2016/03/07/working-with-existing-on-prem-proxy-servers-configuration-considerations-for-your-connectors/) (Verwenden von vorhandenen lokalen Proxyservern) weiter.
-
-## Schritt 1: Aktivieren des Anwendungsproxys in Azure AD
-1. Melden Sie sich als Administrator am [klassischen Azure-Portal](https://manage.windowsazure.com/) an.
-2. Gehen Sie zu Active Directory, und wählen Sie das Verzeichnis aus, in dem Sie den Anwendungsproxy aktivieren möchten.
-
-	![Active Directory – Symbol](./media/active-directory-application-proxy-enable/ad_icon.png)
-
-3. Wählen Sie auf der Verzeichnisseite die Option **Konfigurieren** aus, und navigieren Sie nach unten zu **Anwendungsproxy**.
-4. Legen Sie die Option **Anwendungsproxydienste für dieses Verzeichnis aktivieren** auf **Aktiviert** fest.
-
-	![Aktivieren des Anwendungsproxys](./media/active-directory-application-proxy-enable/app_proxy_enable.png)
-
-5. Wählen Sie **Jetzt herunterladen** aus. Hierdurch gelangen Sie zum Download des Azure AD-Anwendungsproxyconnectors. Lesen und akzeptieren Sie die Lizenzbedingungen, und klicken Sie auf **Herunterladen**, um die Windows Installer-Datei (.exe) für den Connector zu speichern.
-
-## Schritt 2: Installieren und Registrieren des Connectors
-1. Führen Sie die Datei **AADApplicationProxyConnectorInstaller.exe** auf dem Server aus, den Sie gemäß den Vorgaben vorbereitet haben.
-2. Befolgen Sie die Anweisungen des Assistenten für die Installation.
-3. Während der Installation werden Sie aufgefordert, den Connector beim Anwendungsproxy Ihres Azure AD-Mandanten zu registrieren.
-
-  - Geben Sie Ihre globalen Azure AD-Administratoranmeldeinformationen ein. Ihr globaler Administratorenmandant kann von Ihren Microsoft Azure-Anmeldeinformationen abweichen.
-  - Achten Sie darauf, dass sich der Administrator, der den Connector registriert, in dem Verzeichnis befindet, in dem Sie auch den Anwendungsproxydienst aktiviert haben. Wenn die Mandantendomäne also beispielsweise „contoso.com“ lautet, muss sich der Administrator als admin@contoso.com oder mit einem anderen Aliasnamen in dieser Domäne anmelden.
-  - Falls auf dem Server, auf dem Sie den Connector installieren, die Option **Verstärkte Sicherheitskonfiguration für IE** auf **Ein** festgelegt ist, wird der Registrierungsbildschirm möglicherweise blockiert. Befolgen Sie die Anweisungen in der Fehlermeldung, um den Zugriff zuzulassen. Stellen Sie sicher, dass die erweiterte Sicherheit von Internet Explorer deaktiviert ist.
-  - Falls die Connectorregistrierung nicht erfolgreich war, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md) weiter.
-
-4. Nach Abschluss der Installation werden zwei neue Dienste auf dem Server hinzugefügt:
-
- 	- **Microsoft AAD-Anwendungsproxyconnector** ermöglicht die Konnektivität.
-	- **Microsoft AAD Application Proxy Connector Updater** (Updater für Microsoft AAD-Anwendungsproxyconnector) ist ein automatisierter Updatedienst, der in regelmäßigen Abständen prüft, ob neue Versionen des Connectors verfügbar sind, und den Connector ggf. aktualisiert.
-
-	![Anwendungsproxy-Connectordienste – Screenshot](./media/active-directory-application-proxy-enable/app_proxy_services.png)
-
-5. Klicken Sie im Installationsfenster auf **Fertig stellen**.
-
-Falls Sie hohe Verfügbarkeit benötigen, sollten Sie mindestens zwei Connectors bereitstellen. Wiederholen Sie dazu die oben angegebenen Schritte 2 und 3. Jeder Connector muss separat registriert werden.
-
-Wenn Sie den Connector deinstallieren möchten, müssen Sie sowohl den Connector- als auch den Updatedienst deinstallieren. Starten Sie den Computer neu, um den Dienst vollständig zu entfernen.
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="07/19/2016"
+    ms.author="kgremban"/>
 
 
-## Nächste Schritte
+# <a name="enable-application-proxy-in-the-azure-portal"></a>Enable Application Proxy in the Azure portal
 
-Nun können Sie [Anwendungen mit dem Anwendungsproxy veröffentlichen](active-directory-application-proxy-publish.md).
+This article walks you through the steps to enable Microsoft Azure AD Application Proxy for your cloud directory in Azure AD.
 
-Wenn Sie über Anwendungen verfügen, die sich in separaten Netzwerken oder an unterschiedlichen Standorten befinden, können Sie Connectorgruppen verwenden, um die verschiedenen Connectors in logischen Einheiten anzuordnen. Weitere Informationen zur Verwendung von Anwendungsproxy-Connectors finden Sie unter [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Speicherorten mit Connectorgruppen](active-directory-application-proxy-connectors.md).
+If you're unfamiliar with what Application Proxy can help you do, learn more about [How to provide secure remote access to on-premises applications](active-directory-application-proxy-get-started.md).
 
-<!----HONumber=AcomDC_0727_2016-->
+## <a name="application-proxy-prerequisites"></a>Application Proxy prerequisites
+Before you can enable and use Application Proxy services, you need to have:
+
+- A [Microsoft Azure AD basic or premium subscription](active-directory-editions.md) and an Azure AD directory for which you are a global administrator.
+- A server running Windows Server 2012 R2, or Windows 8.1 or higher, on which you can install the Application Proxy Connector. The server sends requests to the Application Proxy services in the cloud, and it needs an HTTP or HTTPS connection to the applications that you are publishing.
+
+    - For single sign-on to your published applications, this machine should be domain-joined in the same AD domain as the applications that you are publishing.
+
+- If there is a firewall in the path, make sure that it's open so that the Connector can make HTTPS (TCP) requests to the Application Proxy. The Connector uses these ports together with subdomains that are part of the high-level domains msappproxy.net and servicebus.windows.net. Make sure to open the following ports to **outbound** traffic:
+
+  	| Port Number | Description |
+  	| --- | --- |
+  	| 80 | Enable outbound HTTP traffic for security validation. |
+  	| 443 | Enable user authentication against Azure AD (required only for the Connector registration process) |
+  	| 10100–10120 | Enable LOB HTTP responses sent back to the proxy |
+  	| 9352, 5671 | Enable communication between the Connector toward the Azure service for incoming requests. |
+  	| 9350 | Optional, to enable better performance for incoming requests |
+  	| 8080 | Enable the Connector bootstrap sequence and Connector automatic update |
+  	| 9090 | Enable Connector registration (required only for the Connector registration process) |
+  	| 9091 | Enable Connector trust certificate automatic renewal |
+
+    If your firewall enforces traffic according to originating users, open these ports for traffic coming from Windows services running as a Network Service. Also, make sure to enable port 8080 for NT Authority\System.
+
+- If your organization uses proxy servers to connect to the internet, please take a look at the blog post [Working with existing on-premises proxy servers](https://blogs.technet.microsoft.com/applicationproxyblog/2016/03/07/working-with-existing-on-prem-proxy-servers-configuration-considerations-for-your-connectors/) for details on how to configure them.
+
+## <a name="step-1:-enable-application-proxy-in-azure-ad"></a>Step 1: Enable Application Proxy in Azure AD
+1. Sign in as an administrator in the [Azure classic portal](https://manage.windowsazure.com/).
+2. Go to Active Directory and select the directory in which you want to enable Application Proxy.
+
+    ![Active Directory - icon](./media/active-directory-application-proxy-enable/ad_icon.png)
+
+3. Select **Configure** from the directory page, and scroll down to **Application Proxy**.
+4. Toggle **Enable Application Proxy Services for this Directory** to **Enabled**.
+
+    ![Enable Application Proxy](./media/active-directory-application-proxy-enable/app_proxy_enable.png)
+
+5. Select **Download now**. This takes you to the **Azure AD Application Proxy Connector Download**. Read and accept the license terms and click **Download** to save the Windows Installer file (.exe) for the connector.
+
+## <a name="step-2:-install-and-register-the-connector"></a>Step 2: Install and register the Connector
+1. Run **AADApplicationProxyConnectorInstaller.exe** on the server you prepared according to the prerequisites.
+2. Follow the instructions in the wizard to install.
+3. During installation, you will are prompted to register the connector with the Application Proxy of your Azure AD tenant.
+
+  - Provide your Azure AD global administrator credentials. Your global administrator tenant may be different from your Microsoft Azure credentials.
+  - Make sure the admin who registers the connector is in the same directory where you enabled the Application Proxy service. For example, if the tenant domain is contoso.com, the admin should be admin@contoso.com or any other alias on that domain.
+  - If **IE Enhanced Security Configuration** is set to **On** on the server where you are installing the connector, the registration screen might be blocked. Follow the instructions in the error message to allow access. Make sure that Internet Explorer Enhanced Security is off.
+  - If connector registration does not succeed, see [Troubleshoot Application Proxy](active-directory-application-proxy-troubleshoot.md).  
+
+4. When the installation completes, two new services are added to your server:
+
+    - **Microsoft AAD Application Proxy Connector** enables connectivity
+    - **Microsoft AAD Application Proxy Connector Updater** is an automated update service, which periodically checks for new versions of the connector and updates the connector as needed.
+
+    ![App Proxy Connector services - screenshot](./media/active-directory-application-proxy-enable/app_proxy_services.png)
+
+5. Click **Finish** in the installation window.
+
+For high availability purposes, you should deploy at least two connectors. To deploy more connectors, repeat steps 2 and 3, above. Each connector must be registered separately.
+
+If you want to uninstall the Connector, uninstall both the Connector service and the Updater service. Restart your computer to fully remove the service.
+
+
+## <a name="next-steps"></a>Next steps
+
+You are now ready to [Publish applications with Application Proxy](active-directory-application-proxy-publish.md).
+
+If you have applications that are on separate networks or different locations, you can use connector groups to organize the different connectors into logical units. Learn more about [Working with Application Proxy connectors](active-directory-application-proxy-connectors.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

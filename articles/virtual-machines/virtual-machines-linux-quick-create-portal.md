@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Erstellen einer Linux-VM mit dem Azure-Portal | Microsoft Azure"
-    description="Erstellen Sie eine Linux-VM mit dem Azure-Portal."
+    pageTitle="Create a Linux VM using the Azure Portal | Microsoft Azure"
+    description="Create a Linux VM using the Azure Portal."
     services="virtual-machines-linux"
     documentationCenter=""
     authors="vlivech"
@@ -19,63 +19,68 @@
     ms.author="v-livech"
 />
 
-# Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Portals
+
+# <a name="create-a-linux-vm-on-azure-using-the-portal"></a>Create a Linux VM on Azure using the Portal
 
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) schnell einen virtuellen Linux-Computer erstellen. Die einzigen Voraussetzungen sind [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) und [Dateien mit öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md).
+This article shows how to use the [Azure portal](https://portal.azure.com/) to create a Linux Virtual Machine quickly. The only requirements are [an Azure account](https://azure.microsoft.com/pricing/free-trial/) and [SSH public and private key files](virtual-machines-linux-mac-create-ssh-keys.md).
 
 
-1. Melden Sie sich mit Ihrer Azure-Kontoidentität beim Azure-Portal an, und klicken Sie links oben auf **+ Neu**:
+1. Signed into the Azure portal with your Azure account identity, click **+ New** in the upper left corner:
 
-    ![Bildschirm 1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
+    ![screen1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
-2. Klicken Sie im **Marketplace** auf **Virtual Machines** und dann in der Imageliste **Ausgewählte Apps** auf **Ubuntu Server 14.04 LTS**. Vergewissern Sie sich im unteren Bereich, dass das Bereitstellungsmodell auf `Resource Manager` festgelegt ist, und klicken Sie dann auf **Erstellen**.
+2. Click **Virtual Machines** in the **Marketplace** then **Ubuntu Server 14.04 LTS** from the **Featured Apps** images list.  Verify at the bottom that the deployment model is `Resource Manager` and then click **Create**.
 
-    ![Bildschirm 2](../media/virtual-machines-linux-quick-create-portal/screen2.png)
+    ![screen2](../media/virtual-machines-linux-quick-create-portal/screen2.png)
 
-3. Gehen Sie auf der Seite **Grundlagen** wie folgt vor:
-    - Geben Sie einen Namen für den virtuellen Computer ein.
-    - Geben Sie einen Benutzernamen für den Administratorbenutzer ein.
-    - Legen Sie den Authentifizierungstyp auf **Öffentlicher SSH-Schlüssel** fest.
-    - Geben Sie Ihren öffentlichen SSH-Schlüssel als Zeichenfolge ein (aus dem Verzeichnis `~/.ssh/`).
-    - Geben Sie einen Ressourcengruppennamen ein, oder wählen Sie eine vorhandene Gruppe aus.
+3. On the **Basics** page, enter:
+    - a name for the VM
+    - a username for the Admin User
+    - the Authentication Type set to **SSH public key**
+    - your SSH public Key as a string (from your `~/.ssh/` directory)
+    - a resource group name or select an existing group
 
-    Klicken Sie auf **OK**, um den Vorgang fortzusetzen und die VM-Größe auszuwählen. Das sollte dann in etwa wie folgt aussehen:
+    and Click **OK** to continue and choose the VM size; it should look something like the following:
 
-    ![Bildschirm 3](../media/virtual-machines-linux-quick-create-portal/screen3.png)
+    ![screen3](../media/virtual-machines-linux-quick-create-portal/screen3.png)
 
-4. Wählen Sie die Größe **DS1** aus, um Ubuntu auf einem Premium-SSD-Datenträger zu installieren, und klicken Sie auf **Auswählen**, um die Einstellungen zu konfigurieren.
+4. Choose the **DS1** size, which installs Ubuntu on a Premium SSD, and click **Select** to configure settings.
 
-    ![Bildschirm 4](../media/virtual-machines-linux-quick-create-portal/screen4.png)
+    ![screen4](../media/virtual-machines-linux-quick-create-portal/screen4.png)
 
-5. Behalten Sie unter **Einstellungen** die Standardwerte für Speicher und Netzwerk bei, und klicken Sie auf **OK**, um die Zusammenfassung anzuzeigen. Durch Auswählen von „DS1“ wurde der Datenträgertyp auf „Premium-SSD“ festgelegt. Das **S** steht hierbei für SSD.
+5. In **Settings**, leave the defaults for Storage and Network values, and click **OK** to view the summary.  Notice the disk type has been set to Premium SSD by choosing DS1, the **S** notates SSD.
 
-    ![Bildschirm 5](../media/virtual-machines-linux-quick-create-portal/screen5.png)
+    ![screen5](../media/virtual-machines-linux-quick-create-portal/screen5.png)
 
-6. Überprüfen Sie die Einstellungen für den neuen virtuellen Ubuntu-Computer, und klicken Sie auf **OK**.
+6. Confirm the settings for your new Ubuntu VM, and click **OK**.
 
-    ![Bildschirm 6](../media/virtual-machines-linux-quick-create-portal/screen6.png)
+    ![screen6](../media/virtual-machines-linux-quick-create-portal/screen6.png)
 
-7. Öffnen Sie das Portal-Dashboard, und wählen Sie unter **Netzwerkschnittstellen** Ihre NIC aus.
+7. Open the Portal Dashboard and in **Network interfaces** choose your NIC
 
-    ![Bildschirm 7](../media/virtual-machines-linux-quick-create-portal/screen7.png)
+    ![screen7](../media/virtual-machines-linux-quick-create-portal/screen7.png)
 
-8. Öffnen Sie in den NIC-Einstellungen das Menü „Öffentliche IP-Adresse“.
+8. Open the Public IP addresses menu under the NIC settings
 
-    ![Bildschirm 8](../media/virtual-machines-linux-quick-create-portal/screen8.png)
+    ![screen8](../media/virtual-machines-linux-quick-create-portal/screen8.png)
 
-9. SSH-Verbindung über die öffentliche IP-Adresse mit Ihrem öffentlichen SSH-Schlüssel
+9. SSH into the public IP using your SSH public key
 
 ```
 ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke erstellt. Lesen Sie zum Erstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel:
+Now you've created a Linux VM quickly to use for testing or demonstration purposes. To create a Linux VM customized for your infrastructure, you can follow any of these articles.
 
-- [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
-- [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-- [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md)
+- [Create a Linux VM on Azure using Templates](virtual-machines-linux-cli-deploy-templates.md)
+- [Create an SSH Secured Linux VM on Azure using Templates](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+- [Create a Linux VM using the Azure CLI](virtual-machines-linux-create-cli-complete.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

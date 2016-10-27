@@ -1,19 +1,21 @@
-### Voraussetzungen
-- Ein Twitter-Konto
+### <a name="prerequisites"></a>Prerequisites
+- A Twitter account 
 
-Bevor Sie Ihr Twitter-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem Twitter-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach aus Ihrer Logik-App heraus im Azure-Portal durchführen.
+Before you can use your Twitter account in a logic app, you must authorize the logic app to connect to your Twitter account. Fortunately, you can do this easily from within your logic app on the Azure Portal. 
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem Twitter-Konto:
+Here are the steps to authorize your logic app to connect to your Twitter account:
 
-1. Um eine Verbindung mit Twitter herzustellen, wählen Sie im Designer für Logik-Apps in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *Twitter* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus:  
-  ![Twitter-Verbindung – Abbildung 0](./media/connectors-create-api-twitter/twitter-0.png)
-2. Wenn Sie noch keine Verbindungen mit Twitter hergestellt haben, werden Sie aufgefordert, Ihre Twitter-Anmeldeinformationen anzugeben. Mit diesen Anmeldeinformationen wird Ihre Logik-App autorisiert, eine Verbindung mit dem Twitter-Konto herzustellen und auf dessen Daten zuzugreifen:  
-  ![Twitter-Verbindung – Abbildung 1](./media/connectors-create-api-twitter/twitter-1.png)  
-3. Geben Sie Ihren Twitter-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an:  
-  ![Twitter-Verbindung – Abbildung 2](./media/connectors-create-api-twitter/twitter-2.png)  
-4. Bestätigen Sie die Autorisierung:  
-  ![Twitter-Verbindung – Abbildung 3](./media/connectors-create-api-twitter/twitter-3.png)  
-6. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können:  
-  ![Twitter-Verbindung – Abbildung 4](./media/connectors-create-api-twitter/twitter-4.png)
+1. To create a connection to Twitter, in the logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Twitter* in the search box. Select the trigger or action you'll like to use:  
+  ![Twitter connection image 0](./media/connectors-create-api-twitter/twitter-0.png)
+2. If you haven't created any connections to Twitter before, you'll get prompted to provide your Twitter credentials. These credentials will be used to authorize your logic app to connect to, and access your Twitter account's data:  
+  ![Twitter connection image 1](./media/connectors-create-api-twitter/twitter-1.png)  
+3. Provide your Twitter user name and password to authorize your logic app:  
+  ![Twitter connection image 2](./media/connectors-create-api-twitter/twitter-2.png)  
+4. Confirm your authorization:  
+  ![Twitter connection image 3](./media/connectors-create-api-twitter/twitter-3.png)  
+6. Notice the connection has been created and you are now free to proceed with the other steps in your logic app:  
+  ![Twitter connection image 4](./media/connectors-create-api-twitter/twitter-4.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

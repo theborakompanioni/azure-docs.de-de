@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell | Microsoft Azure"
-   description="Informationen zum Herstellen von Verbindungen zwischen virtuellen Azure-Netzwerken mithilfe von PowerShell und dem klassischen Azure-Portal."
+   pageTitle="Configure a VNet-to-VNet connection for the classic deployment model| Microsoft Azure"
+   description="How to connect Azure virtual networks together using PowerShell and the Azure classic portal."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -18,225 +18,227 @@
    ms.author="cherylmc"/>
 
 
-# Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell
+
+# <a name="configure-a-vnet-to-vnet-connection-for-the-classic-deployment-model"></a>Configure a VNet-to-VNet connection for the classic deployment model
 
 > [AZURE.SELECTOR]
-- [Klassisches Azure-Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
-- [PowerShell – Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Classic - Classic Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
 
 
-Dieser Artikel führt Sie durch die Schritte zum Erstellen und Verbinden virtueller Netzwerke mithilfe des klassischen Bereitstellungsmodells (auch als Dienstverwaltung bezeichnet). In den folgenden Schritten wird das klassische Azure-Portal verwendet, um die VNets und Gateways zu erstellen, und PowerShell wird zum Konfigurieren der VNet-zu-VNet-Verbindung verwendet. Sie können die Verbindung nicht im Portal konfigurieren.
 
-![VNet-zu-VNet-Konnektivitätsdiagramm](./media/virtual-networks-configure-vnet-to-vnet-connection/v2vclassic.png)
+This article walks you through the steps to create and connect virtual networks together using the classic deployment model (also known as Service Management). The following steps use the Azure classic portal to create the VNets and gateways, and PowerShell to configure the VNet-to-VNet connection. You cannot configure the connection in the portal.
+
+![VNet to VNet Connectivity Diagram](./media/virtual-networks-configure-vnet-to-vnet-connection/v2vclassic.png)
 
 
-### Bereitstellungsmodelle und Tools für VNet-zu-VNet
+### <a name="deployment-models-and-methods-for-vnet-to-vnet"></a>Deployment models and methods for VNet-to-VNet
 
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Eine VNET-zu-VNET-Verbindung kann in beiden Bereitstellungsmodellen und mit unterschiedlichen Tools konfiguriert werden. Ausführlichere Informationen finden Sie in der Tabelle weiter unten. Wir aktualisieren diese Tabelle, wenn neue Artikel, neue Bereitstellungsmodelle und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir in der Tabelle einen direkten Link dazu ein.
+A VNet-to-VNet connection can be configured in both deployment models and by using several different tools. We update the following table as new articles and additional tools become available for this configuration. When an article is available, we link directly to it from the table.<br><br>
 
 [AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-## Über VNet-zu-VNet-Verbindungen
+## <a name="about-vnet-to-vnet-connections"></a>About VNet-to-VNet connections
 
-Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines virtuellen Netzwerks mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPSec/IKE bereitzustellen.
+Connecting a virtual network to another virtual network (VNet-to-VNet) is similar to connecting a virtual network to an on-premises site location. Both connectivity types use a VPN gateway to provide a secure tunnel using IPsec/IKE. 
 
-Die VNets, die Sie verbinden, können sich in verschiedenen Abonnements und Regionen befinden. Sie können die VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
-
-
-### Gründe für Verbindungen zwischen virtuellen Netzwerken
-
-Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
-
-- **Regionsübergreifende Georedundanz und Geopräsenz**
-	- Sie können Ihre eigene Georeplikation oder -synchronisierung mit sicheren Verbindungen einrichten, ohne Endpunkte mit Internetzugriff verwenden zu müssen.
-	- Mit dem Azure Load Balancer und Clustertechnologie von Microsoft oder Drittanbietern können Sie Workloads mit hoher Verfügbarkeit mit Georedundanz über mehrere Azure-Regionen hinweg einrichten. Ein wichtiges Beispiel ist die Einrichtung von SQL Always On mit Verfügbarkeitsgruppen, die sich über mehrere Azure-Regionen erstrecken.
-
-- **Regionale Anwendungen mit mehreren Ebenen mit starker Isolierungsgrenze**
-	- Innerhalb der gleichen Region können Sie Anwendungen mit mehreren Ebenen mit mehreren verbundenen VNets einrichten, die starke Isolierung und sichere Kommunikation zwischen den Ebenen aufweisen.
-
-- **Abonnementübergreifende Kommunikation zwischen Organisationen in Azure**
-	- Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie Workloads aus verschiedenen Abonnements sicher zwischen virtuellen Netzwerken verbinden.
-	- Für Unternehmen und Dienstanbieter können Sie die organisationsübergreifende Kommunikation mit sicherer VPN-Technologie in Azure aktivieren.
-
-### Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen für klassische VNets
-
-- Die virtuellen Netzwerke können sich im gleichen Abonnement oder in verschiedenen Abonnements befinden.
-
-- Die virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen (Standorte) befinden.
-
-- Ein Clouddienst oder Endpunkt mit Lastenausgleich darf auch dann nicht mehrere virtuelle Netzwerke umfassen, wenn diese verbunden sind.
-
-- Für das Verbinden mehrerer virtueller Netzwerke sind keine VPN-Geräte erforderlich.
-
-- VNet-zu-VNet unterstützt das Verbinden virtueller Azure-Netzwerke. Nicht unterstützt werden hingegen Verbindungen virtueller Computer oder Clouddienste, die nicht in einem virtuellen Netzwerk bereitgestellt wurden.
-
-- Für VNet-zu-VNet sind Gateways mit dynamischem Routing erforderlich. Azure-Gateways mit statischem Routing werden nicht unterstützt.
-
-- Virtuelle Netzwerkverbindungen können simultan mit VPNs mit mehreren Standorten verwendet werden. Maximal 10 VPN-Tunnel können für ein VPN-Gateway des virtuellen Netzwerks verwendet werden, das Verbindungen mit anderen virtuellen Netzwerken oder lokalen Standorten herstellt.
-
-- Die Adressräume der virtuellen Netzwerke und der lokalen Netzwerkstandorte dürfen sich nicht überschneiden. Wenn sich Adressbereiche überschneiden, tritt beim Erstellen eines virtuellen Netzwerks oder beim Hochladen von NETCFG-Konfigurationsdateien ein Fehler auf.
-
-- Redundante Tunnel zwischen einem Paar virtueller Netzwerke werden nicht unterstützt.
-
-- Alle VPN-Tunnel des VNet (einschließlich P2S-VPNs) verwenden die verfügbare Bandbreite für das VPN-Gateway und die gleiche SLA für die Verfügbarkeit des VPN-Gateways in Azure gemeinsam.
-
-- VNet-zu-VNet-Datenverkehr wird über den Azure-Backbone übertragen.
+The VNets you connect can be in different subscriptions and different regions. You can combine VNet to VNet communication with multi-site configurations. This lets you establish network topologies that combine cross-premises connectivity with inter-virtual network connectivity.
 
 
-## <a name="step1"></a>Schritt 1: Planen der IP-Adressbereiche
+### <a name="why-connect-virtual-networks?"></a>Why connect virtual networks?
 
-Eine wichtige Entscheidung betrifft die Bereiche, die Sie zum Konfigurieren Ihrer virtuellen Netzwerke verwenden. Bei dieser Konfiguration müssen Sie sicherstellen, dass sich die VNet-Bereiche weder untereinander überlappen, noch mit lokalen Netzwerken, mit denen sie eine Verbindung herstellen.
+You may want to connect virtual networks for the following reasons:
 
-Die folgende Tabelle zeigt ein Beispiel zur Definition von VNets. Verwenden Sie die aufgeführten Bereiche nur als Richtlinie. Notieren Sie sich die Bereiche für Ihre virtuellen Netzwerke. Sie benötigen diese Informationen in den späteren Schritten.
+- **Cross region geo-redundancy and geo-presence**
+    - You can set up your own geo-replication or synchronization with secure connectivity without going over Internet-facing endpoints.
+    - With Azure Load Balancer and Microsoft or third-party clustering technology, you can set up highly available workload with geo-redundancy across multiple Azure regions. One important example is to set up SQL Always On with Availability Groups spreading across multiple Azure regions.
 
-**Beispieleinstellungen**
+- **Regional multi-tier applications with strong isolation boundary**
+    - Within the same region, you can set up multi-tier applications with multiple VNets connected together with strong isolation and secure inter-tier communication.
 
-|Virtual Network |Adressraum |Region |Verbindung mit dem lokalen Netzwerkstandort|
+- **Cross subscription, inter-organization communication in Azure**
+    - If you have multiple Azure subscriptions, you can connect workloads from different subscriptions together securely between virtual networks.
+    - For enterprises or service providers, you can enable cross-organization communication with secure VPN technology within Azure.
+
+### <a name="vnet-to-vnet-faq-for-classic-vnets"></a>VNet-to-VNet FAQ for classic VNets
+
+- The virtual networks can be in the same or different subscriptions.
+
+- The virtual networks can be in the same or different Azure regions (locations).
+
+- A cloud service or a load balancing endpoint can't span across virtual networks, even if they are connected together.
+
+- Connecting multiple virtual networks together doesn't require any VPN devices.
+
+- VNet-to-VNet supports connecting Azure Virtual Networks. It does not support connecting virtual machines or cloud services that are not deployed to a virtual network.
+
+- VNet-to-VNet requires dynamic routing gateways. Azure static routing gateways are not supported.
+
+- Virtual network connectivity can be used simultaneously with multi-site VPNs. There is a maximum of 10 VPN tunnels for a virtual network VPN gateway connecting to either other virtual networks, or on-premises sites.
+
+- The address spaces of the virtual networks and on-premises local network sites must not overlap. Overlapping address spaces will cause the creation of virtual networks or uploading netcfg configuration files to fail.
+
+- Redundant tunnels between a pair of virtual networks are not supported.
+
+- All VPN tunnels for the VNet, including P2S VPNs, share the available bandwidth for the VPN gateway, and the same VPN gateway uptime SLA in Azure.
+
+- VNet-to-VNet traffic travels across the Azure backbone.
+
+
+## <a name="<a-name="step1"></a>step-1---plan-your-ip-address-ranges"></a><a name="step1"></a>Step 1 - Plan your IP address ranges
+
+It’s important to decide the ranges that you’ll use to configure your virtual networks. For this configuration, you must make sure that none of your VNet ranges overlap with each other, or with any of the local networks that they connect to.
+
+The following table shows an example of how to define your VNets. Use the ranges as a guideline only. Write down the ranges for your virtual networks. You need this information for later steps.
+
+**Example settings**
+
+|Virtual Network  |Address Space               |Region      |Connects to local network site|
 |:----------------|:---------------------------|:-----------|:-----------------------------|
-|VNet1 |VNet1 (10.1.0.0/16) |USA, Westen |VNet2Local (10.2.0.0/16) |
-|VNet2 |VNet2 (10.2.0.0/16) |Japan Ost |VNet1Local (10.1.0.0/16) |
+|VNet1            |VNet1 (10.1.0.0/16)         |US West     |VNet2Local (10.2.0.0/16)      |
+|VNet2            |VNet2 (10.2.0.0/16)         |Japan East  |VNet1Local (10.1.0.0/16)      |
   
-## Schritt 2: Erstellen von VNet1
+## <a name="step-2---create-vnet1"></a>Step 2 - Create VNet1
 
-In diesem Schritt erstellen wir VNet1. Wenn Sie eines der Beispiele verwenden, achten Sie darauf, dass Sie Ihre eigenen Werte einsetzen. Wenn Ihr VNet bereits vorhanden ist, müssen Sie diesen Schritt nicht ausführen. Aber Sie müssen sicherstellen, dass die IP-Adressbereiche sich nicht mit den Bereichen für das zweite VNet oder mit einem der anderen VNets überlappen, mit denen Sie eine Verbindung herstellen möchten.
+In this step, we create VNet1. When using any of the examples, be sure to substitute your own values. If your VNet already exists, you don't need to do this step. But, you do need to verify that the IP address ranges don't overlap with the ranges for your second VNet, or with any of the other VNets to which you want to connect.
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an. In diesem Artikel verwenden wir das klassische Portal, da einige der erforderlichen Konfigurationseinstellungen noch nicht im Azure-Portal verfügbar sind.
+1. Log in to the [Azure classic portal](https://manage.windowsazure.com). In this article, we use the classic portal because some of the required configuration settings are not yet available in the Azure portal.
 
-2. Klicken Sie in der unteren linken Ecke des Bildschirms auf **Neu** > **Netzwerkdienste** > **Virtuelles Netzwerk** > **Benutzerdefiniert erstellen**, um den Konfigurations-Assistenten zu starten. Während Sie den Assistenten bearbeiten, fügen Sie die angegebenen Werte auf jeder Seite hinzu.
+2. In the lower left-hand corner of the screen, click **New** > **Network Services** > **Virtual Network** > **Custom Create** to begin the configuration wizard. As you navigate through the wizard, add the specified values to each page.
 
-### Details zum virtuellen Netzwerk
+### <a name="virtual-network-details"></a>Virtual Network Details
 
-Geben Sie auf der Seite Details des virtuellen Netzwerks die folgenden Informationen ein:
+On the Virtual Network Details page, enter the following information:
 
-  ![Details zum virtuellen Netzwerk](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736055.png)
+  ![Virtual Network Details](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736055.png)
 
-  - **Name** – Der Name des virtuellen Netzwerks. Beispiel: VNet1
-  - **Standort** – Wenn Sie ein virtuelles Netzwerk erstellen, ordnen Sie dieses einem Azure-Standort (einer Region) zu. Wenn Sie z. B. wünschen, dass Ihre virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitgestellt haben, physisch in "USA West" vorhanden sind, wählen Sie diesen Standort aus. Sie können den Ihrem virtuellen Netzwerk zugeordnete Standort nach dem Erstellen nicht mehr ändern.
+  - **Name** - Name your virtual network. For example, VNet1.
+  - **Location** – When you create a virtual network, you associate it with an Azure location (region). For example, if you want your VMs that are deployed to your virtual network to be physically located in West US, select that location. You can’t change the location associated with your virtual network after you create it.
 
-### DNS-Server und VPN-Konnektivität
+### <a name="dns-servers-and-vpn-connectivity"></a>DNS Servers and VPN Connectivity
 
-Geben Sie auf der Seite DNS Servers and VPN Connectivity die folgenden Informationen ein, und klicken Sie dann in der unteren rechten Ecke auf den Weiter-Pfeil.
+On the DNS Servers and VPN Connectivity page, enter the following information, and then click the next arrow on the lower right.
 
-  ![DNS-Server und VPN-Konnektivität](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736056.jpg)
+  ![DNS Servers and VPN Connectivity](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736056.jpg)  
 
-- **DNS-Server** – Geben Sie den Namen und die IP-Adresse des DNS-Servers ein, oder wählen Sie einen zuvor registrierten DNS-Server in der Dropdown-Liste aus. Mit dieser Einstellung wird kein DNS-Server erstellt. Sie bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Wenn Sie Namensauflösung zwischen Ihren virtuellen Netzwerken wünschen, müssen Sie Ihren eigenen DNS-Server konfigurieren, anstatt die Namensauflösung zu verwenden, die von Azure bereitgestellt wird.
-- Aktivieren Sie keines der Kontrollkästchen für die P2S- oder S2S-Verbindungen. Klicken Sie unten rechts auf den Pfeil, um zum nächsten Bildschirm zu gelangen.
+- **DNS Servers** - Enter the DNS server name and IP address, or select a previously registered DNS server from the dropdown. This setting does not create a DNS server. It allows you to specify the DNS servers that you want to use for name resolution for this virtual network. If you want to have name resolution between your virtual networks, you have to configure your own DNS server, rather than using the name resolution that is provided by Azure.
+- Don’t select any of the checkboxes for P2S or S2S connectivity. Click the arrow on the lower right to move to the next screen.
 
-### Adressräume des virtuellen Netzwerks
+### <a name="virtual-network-address-spaces"></a>Virtual Network Address Spaces
 
-Geben Sie auf der Seite „Adressräume des virtuellen Netzwerks“ die Adressbereiche an, die für das virtuelle Netzwerk verwendet werden sollen. Dies sind die dynamischen IP-Adressen (DIPS), die den virtuellen Computern und anderen Rolleninstanzen zugewiesen werden, die Sie für dieses virtuelle Netzwerk bereitstellen.
+On the Virtual Network Address Spaces page, specify the address range that you want to use for your virtual network. These are the dynamic IP addresses (DIPS) that will be assigned to the VMs and other role instances that you deploy to this virtual network. 
 
-Wenn Sie ein VNet erstellen, das auch mit Ihrem lokalen Netzwerk verbunden ist, ist es besonders wichtig, einen Bereich auszuwählen, der nicht mit den Bereichen überlappt, die für das lokale Netzwerk verwendet werden. Sprechen Sie sich in diesem Fall mit Ihrem Netzwerkadministrator ab. Der Netzwerkadministrator muss ggf. einen Bereich von IP-Adressen aus dem Adressraum Ihres lokalen Netzwerks reservieren, den Sie für Ihr VNet verwenden können.
+If you are creating a VNet that will also have a connection to your on-premises network, it's especially important to select a range that does not overlap with any of the ranges that are used for your on-premises network. In that case, you need to coordinate with your network administrator. Your network administrator may need to carve out a range of IP addresses from your on-premises network address space for you to use for your VNet.
 
-  ![Seite "Adressräume des virtuellen Netzwerks"](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736057.jpg)
+  ![Virtual Network Address Spaces page](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736057.jpg)
 
-  - **Adressraum** – Umfasst Start-IP und die Anzahl Adressen. Stellen Sie sicher, dass die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überlappen. In diesem Beispiel verwenden Sie 10.1.0.0/16 für VNet1.
-  - **Subnetz hinzufügen** – Umfasst Start-IP und Anzahl Adressen. Zusätzliche Subnetze sind nicht erforderlich, aber Sie können eine getrenntes Subnetz für virtuelle Computer erstellen, die über statische DIPs verfügen sollen. Vielleicht möchten Sie jedoch auch Ihre virtuellen Computer in einem Subnetz zusammenfassen, das von Ihren anderen Rolleninstanzen getrennt ist.
+  - **Address Space** - including Starting IP and Address Count. Verify that the address spaces you specify don’t overlap with any of the address spaces that you have on your on-premises network. For this example, we use 10.1.0.0/16 for VNet1.
+  - **Add subnet** - including Starting IP and Address Count. Additional subnets are not required, but you may want to create a separate subnet for VMs that will have static DIPS. Or you might want to have your VMs in a subnet that is separate from your other role instances.
  
-**Klicken Sie auf das Häkchen** rechts unten auf der Seite, damit das virtuelle Netzwerk erstellt wird. Sobald der Vorgang abgeschlossen ist, wird auf der Seite „Netzwerke“ unter „Status“ der Eintrag „Erstellt“ angezeigt.
+**Click the checkmark** on the lower right of the page and your virtual network will begin to create. When it completes, you will see "Created" listed under Status on the Networks page.
 
-## Schritt 3: Erstellen von VNet2
+## <a name="step-3---create-vnet2"></a>Step 3 - Create VNet2
 
-Wiederholen Sie anschließend die oben aufgeführten Schritte, um ein weiteres VNet zu erstellen. In einem späteren Schritt verbinden Sie die beiden VNets. Sie können auf die [Beispieleinstellungen](#step1) in Schritt 1 zurückgreifen. Wenn Ihr VNet bereits vorhanden ist, müssen Sie diesen Schritt nicht ausführen. Aber Sie müssen sicherstellen, dass die IP-Adressbereiche sich nicht mit den Bereichen der anderen VNets oder lokalen Netzwerke überlappen, mit denen Sie eine Verbindung herstellen möchten.
+Next, repeat the preceding steps to create another VNet. In later steps, you will connect the two VNets. You can refer to the [example settings](#step1) in Step 1. If your VNet already exists, you don't need to do this step. However, you need to verify that the IP address ranges don't overlap with any of the other VNets or on-premises networks that you want to connect to.
 
-## Schritt 4: Hinzufügen der lokalen Netzwerkstandorte
+## <a name="step-4---add-the-local-network-sites"></a>Step 4 - Add the local network sites
 
-Wenn Sie eine VNet-zu-VNet-Konfiguration erstellen, müssen Sie lokale Netzwerkstandorte konfigurieren, die auf der Seite **Lokale Netzwerke** des Portals angezeigt werden. Azure verwendet die für die einzelnen lokalen Netzwerkstandorte angegebenen Einstellungen, um zu bestimmen, wie Datenverkehr zwischen den VNets weitergeleitet wird. Sie legen den Namen fest, den Sie zum Verweisen auf die einzelnen lokalen Netzwerkstandorte verwenden möchten. Sie sollten einen aussagekräftigen Namen verwenden, da Sie den Wert in späteren Schritten aus einer Dropdownliste auswählen.
+When you create a VNet-to-VNet configuration, you need to configure local network sites, which are shown in the **Local Networks** page of the portal. Azure uses the settings specified in each local network site to determine how to route traffic between the VNets. You determine the name you want to use to refer to each local network site. It's best to use something descriptive, as you select the value from a dropdown list in later steps.
 
-Beispielsweise stellt VNet1 eine Verbindung mit einem lokalen Netzwerkstandort her, den Sie mit dem Namen „VNet2Local“ erstellt haben. Die Einstellungen für VNet2Local enthalten die Adresspräfixe für VNet2 und eine öffentliche IP-Adresse für das VNet2-Gateway. VNet2 stellt eine Verbindung mit einem lokalen Netzwerkstandort her, den Sie mit dem Namen „VNet1Local“ erstellt haben, und der die Adresspräfixe für VNet1 und die öffentliche IP-Adresse für das VNet1-Gateway enthält.
+For example, VNet1 connects to a local network site that you create named "VNet2Local". The settings for VNet2Local contain the address prefixes for VNet2, and a public IP address for the VNet2 gateway. VNet2 connects to a local network site you create named "VNet1Local" that contains the address prefixes for VNet1 and the public IP address for the VNet1 gateway.
 
-### <a name="localnet"></a>Hinzufügen des lokalen Netzwerkstandorts VNet1Local
+### <a name="<a-name="localnet"></a>add-the-local-network-site-vnet1local"></a><a name="localnet"></a>Add the local network site VNet1Local
 
-1. Klicken Sie in der unteren linken Ecke des Bildschirms auf **Neu** > **Netzwerkdienste** > **Virtuelles Netzwerk** > **Lokales Netzwerk hinzufügen**.
+1. In the lower left-hand corner of the screen, click **New** > **Network Services** > **Virtual Network** > **Add Local Network**.
 
-2. Geben Sie auf der Seite **Details zum lokalen Netzwerk angeben** unter **Name** einen Namen ein, den Sie für das Netzwerk verwenden möchten, mit dem Sie eine Verbindung herstellen möchten. In diesem Beispiel können Sie „VNet1Local“ verwenden, um auf die IP-Adressbereiche und das Gateway für VNet1 zu verweisen.
+2. On the **Specify your local network details** page, for **Name**, enter a name that you want to use to represent the network that you want to connect to. In this example, you can use "VNet1Local" to refer to the IP address ranges and gateway for VNet1.
 
-3. Geben Sie in **IP-Adresse des VPN-Geräts (optional)** eine beliebige gültige öffentliche IP-Adresse an. Normalerweise verwenden Sie die tatsächliche externe IP-Adresse für ein VPN-Gerät. Verwenden Sie für VNet-zu-VNet-Konfigurationen die öffentliche IP-Adresse, die dem Gateway für das VNet zugewiesen ist. Wenn Sie das Gateway jedoch noch nicht erstellt haben, können Sie eine beliebige gültige öffentliche IP-Adresse als Platzhalter eingeben. Lassen Sie dieses Feld nicht leer, es ist für diese Konfiguration nicht optional. In einem späteren Schritt kehren Sie zu diesen Einstellungen zurück und konfigurieren sie dann mit den entsprechenden Gateway-IP-Adressen, nachdem Azure diese generiert hat. Klicken Sie auf den Pfeil, um zum nächsten Bildschirm zu gelangen.
+3. For **VPN Device IP address (optional)**, specify any valid public IP address. Typically, you’d use the actual external IP address for a VPN device. For VNet-to-VNet configurations, you use the public IP address that is assigned to the gateway for your VNet. But, given that you’ve not yet created the gateway, you can specify any valid public IP address as a placeholder. Don't leave this blank - it's not optional for this configuration. In a later step, you go back into these settings and configure them with the corresponding gateway IP addresses once Azure generates it. Click the arrow to advance to the next screen.
 
-4. Geben Sie auf der Seite **Adresse angeben** den tatsächlichen IP-Adressbereich und die Adressenanzahl für VNet1 ein. Diese Angaben müssen genau dem Bereich entsprechen, den Sie für VNet1 konfiguriert haben. Azure verwendet den IP-Adressbereich, den Sie angeben, um den Datenverkehr für VNet1 weiterzuleiten. Klicken Sie auf das Häkchen, um das lokale Netzwerk zu erstellen.
+4. On the **Specify the address page**, enter the IP address range and address count for VNet1. This must correspond exactly to the range that is configured for VNet1. Azure uses the IP address ranges that you specify to route the traffic intended for VNet1. Click the checkmark to create the local network.
 
-### Hinzufügen des lokalen Netzwerkstandorts VNet2Local
+### <a name="add-the-local-network-site-vnet2local"></a>Add the local network site VNet2Local
 
-Verwenden Sie die oben aufgeführten Schritte, um den lokalen Netzwerkstandort „VNet2Local“ zu erstellen. Sie können bei Bedarf auf die Werte in den [Beispieleinstellungen](#step1) in Schritt 1 zurückgreifen.
+Use the steps above to create the local network site "VNet2Local". You can refer to the values in the [example settings](#step1) in Step 1, if necessary.
 
-### Konfigurieren der einzelnen VNets, sodass sie auf ein lokales Netzwerk verweisen
+### <a name="configure-each-vnet-to-point-to-a-local-network"></a>Configure each VNet to point to a local network
 
-Jedes VNet muss auf das entsprechende lokale Netzwerk verweisen, an das Sie Datenverkehr weiterleiten möchten.
+Each VNet must point to the respective local network that you want to route traffic to. 
 
-#### Für VNet1
+#### <a name="for-vnet1"></a>For VNet1
 
-1. Navigieren Sie zur Seite **Konfigurieren** für das virtuelle Netzwerk **VNet1**.
-2. Wählen Sie unter „Site-to-Site-Konnektivität“ die Option „Eine Verbindung mit dem lokalen Netzwerk herstellen“ aus, und wählen Sie dann **VNet2Local** als lokales Netzwerk aus der Dropdownliste aus.
-3. Speichern Sie die Einstellungen.
+1. Navigate to the **Configure** page for virtual network **VNet1**. 
+2. Under site-to-site connectivity, select "Connect to the local network", and then select **VNet2Local** as the local network from the dropdown. 
+3. Save your settings.
 
-#### Für VNet2
+#### <a name="for-vnet2"></a>For VNet2
 
-1. Navigieren Sie zur Seite **Konfigurieren** für das virtuelle Netzwerk **VNet2**.
-2. Wählen Sie unter „Site-to-Site-Konnektivität“ die Option „Eine Verbindung mit dem lokalen Netzwerk herstellen“ aus, und wählen Sie dann **VNet1Local** als lokales Netzwerk aus der Dropdownliste aus.
-3. Speichern Sie die Einstellungen.
+1. Navigate to the **Configure** page for virtual network **VNet2**. 
+2. Under site-to-site connectivity, select "Connect to the local network", then select **VNet1Local** from the dropdown as the local network. 
+3. Save your settings.
 
-## Schritt 5: Konfigurieren eines Gateways für jedes VNet
+## <a name="step-5---configure-a-gateway-for-each-vnet"></a>Step 5 - Configure a gateway for each VNet
 
-Konfigurieren Sie ein Gateway mit dynamischem Routing für jedes virtuelle Netzwerk. Diese Konfiguration unterstützt keine Gateways mit statischem Routing. Wenn Sie VNets verwenden, die zuvor konfiguriert wurden und die bereits über Gateways mit dynamischem Routing verfügen, müssen Sie diesen Schritt nicht ausführen. Wenn Sie Gateways mit statischem Routing haben, müssen Sie diese löschen und dann erneut als Gateways mit dynamischem Routing erstellen. Beim Löschen eines Gateways wird die zugewiesene öffentliche IP-Adresse freigegeben. Sie müssen dann lokale Netzwerke und VPN-Geräte mit der neuen öffentlichen IP-Adresse für das neue Gateway neu konfigurieren.
+Configure a Dynamic Routing gateway for each virtual network. This configuration does not support Static Routing gateways. If you are using VNets that were previously configured and that already have Dynamic Routing gateways, you don't need to do this step. If your gateways are Static Routing, you need to delete them and recreate them as Dynamic Routing gateways. If you delete a gateway, the public IP address assigned to it gets released, and you need to go back and reconfigure any of your local networks and VPN devices with the new public IP address for the new gateway.
 
-1. Stellen Sie auf der Seite **Netzwerke** sicher, dass in der Statusspalte für Ihr virtuelles Netzwerk **Erstellt** angezeigt wird.
+1. On the **Networks** page, verify that the status column for your virtual network is **Created**.
 
-2. Klicken Sie in der Spalte **Name** auf den Namen Ihres virtuellen Netzwerks. In diesem Beispiel verwenden wir „VNet1“.
+2. In the **Name** column, click the name of your virtual network. For this example, we use "VNet1".
 
-3. Vergewissern Sie sich auf der Seite **Dashboard**, dass dieses VNet noch kein konfiguriertes Gateway besitzt. Diese Statusänderung wird angezeigt, wenn Sie die Konfigurationsschritte für Ihr Gateway absolvieren.
+3. On the **Dashboard** page, notice that this VNet doesn’t have a gateway configured yet. You’ll see this status change as you go through the steps to configure your gateway.
 
-4. Klicken Sie unten auf der Seite auf **Gateway erstellen** und **Dynamisches Routing**. Wenn Sie aufgefordert werden zu bestätigen, dass das Gateway erstellt werden soll, klicken Sie auf "Ja".
+4. At the bottom of the page, click **Create Gateway** and **Dynamic Routing**. When the system prompts you to confirm that you want the gateway created, click Yes.
 
-  	![Gatewaytyp](./media/virtual-networks-configure-vnet-to-vnet-connection/IC717026.png)
+    ![Gateway type](./media/virtual-networks-configure-vnet-to-vnet-connection/IC717026.png)  
 
-5. Während der Gatewayerstellung wechselt die Gatewaygrafik auf der Seite zu gelb und zeigt „Gateway wird erstellt“ an. Die Erstellung des Gateways nimmt normalerweise 30 Minuten in Anspruch.
+5. When your gateway is creating, notice the gateway graphic on the page changes to yellow and says "Creating Gateway". It typically takes about 30 minutes for the gateway to create.
 
-6. Wiederholen Sie die gleichen Schritte für VNet2. Das erste VNet-Gateway muss nicht fertiggestellt sein, wenn Sie mit dem Erstellen des Gateways für das andere VNet beginnen.
+6. Repeat the same steps for VNet2. You don’t need the first VNet gateway to complete before you begin to create the gateway for your other VNet.
 
-7. Wenn sich der Gatewaystatus in „Verbinden“ ändert, wird die öffentliche IP-Adresse für jedes Gateway im Dashboard angezeigt. Notieren Sie sich die IP-Adressen, die für jedes VNet gelten. Gehen Sie dabei sorgfältig vor, um sie nicht zu verwechseln. Diese IP-Adressen werden verwendet, wenn Sie die IP-Platzhalteradressen für das VPN-Gerät für jedes lokale Netzwerk bearbeiten.
+7. When the gateway status changes to "Connecting", the public IP address for each gateway is visible in the Dashboard. Write down the IP address that corresponds to each VNet, taking care not to mix them up. These are the IP addresses that are used when you edit your placeholder IP addresses for the VPN Device for each local network.
 
-## Schritt 6: Bearbeiten des lokalen Netzwerks
+## <a name="step-6---edit-the-local-network"></a>Step 6 - Edit the local network
 
-1. Klicken Sie auf der Seite **Lokale Netzwerke** auf den Namen des lokalen Netzwerks, den Sie bearbeiten möchten, und klicken Sie dann unten auf der Seite auf **Bearbeiten**. Geben Sie als **IP-Adresse des VPN-Geräts** die IP-Adresse des Gateways ein, das dem VNet entspricht. Geben Sie z.B. für VNet1Local die Gateway-IP-Adresse ein, die VNet1 zugewiesen ist. Klicken Sie unten auf der Seite auf den Pfeil.
+1. On the **Local Networks** page, click the name of the Local Network name that you want to edit, then click **Edit** at the bottom of the page. For **VPN Device IP address**, input the IP address of the gateway that corresponds to the VNet. For example, for VNet1Local, put in the gateway IP address assigned to VNet1. Then click the arrow at the bottom of the page.
 
-2. Klicken Sie auf der Seite **Den Adressraum angeben** unten rechts auf das Häkchen, ohne Änderungen vorzunehmen.
+2. On the **Specify the address space** page, click the checkmark on the lower right without making any changes.
 
-## Schritt 7: Erstellen der VPN-Verbindung
+## <a name="step-7---create-the-vpn-connection"></a>Step 7 - Create the VPN connection
 
-Legen Sie nach Abschluss aller zuvor beschriebenen Schritte die vorinstallierten IPSec-/IKE-Schlüssel fest, und stellen Sie die Verbindung her. Diese Schritte werden mit PowerShell ausgeführt und können nicht im Portal konfiguriert werden. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Stellen Sie sicher, dass Sie die neueste Version der Dienstverwaltungs-Cmdlets (SM) herunterladen.
+When all the previous steps have been completed, set the IPsec/IKE pre-shared keys and create the connection. This set of steps uses PowerShell and cannot be configured in the portal. See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for more information about installing the Azure PowerShell cmdlets. Make sure to download the latest version of the Service Management (SM) cmdlets. 
 
-1. Öffnen Sie Windows PowerShell, und melden Sie sich an.
+1. Open Windows PowerShell and log in.
 
-		Add-AzureAccount
+        Add-AzureAccount
 
-2. Wählen Sie das Abonnement aus, in dem sich Ihre VNets befinden.
+2. Select the subscription that your VNets reside in.
 
-		Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
-		Select-AzureSubscription -SubscriptionName "<Subscription Name>"
+        Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
+        Select-AzureSubscription -SubscriptionName "<Subscription Name>"
 
-3. Erstellen Sie die Verbindungen. Beachten Sie in den folgenden Beispielen, dass der Wert für „SharedKey“ identisch ist. Dieser Wert muss immer übereinstimmen.
+3. Create the connections. In the examples, notice that the shared key is exactly the same. The shared key must always match.
 
 
-	VNet1-zu-VNet2-Verbindung
+    VNet1 to VNet2 connection
 
-		Set-AzureVNetGatewayKey -VNetName VNet1 -LocalNetworkSiteName VNet2Local -SharedKey A1b2C3D4
+        Set-AzureVNetGatewayKey -VNetName VNet1 -LocalNetworkSiteName VNet2Local -SharedKey A1b2C3D4
 
-	VNet2-zu-VNet1-Verbindung
+    VNet2 to VNet1 connection
 
-		Set-AzureVNetGatewayKey -VNetName VNet2 -LocalNetworkSiteName VNet1Local -SharedKey A1b2C3D4
+        Set-AzureVNetGatewayKey -VNetName VNet2 -LocalNetworkSiteName VNet1Local -SharedKey A1b2C3D4
 
-4. Warten Sie, bis die Verbindung initialisiert wird. Nach der Initialisierung entspricht das Gateway der folgenden Grafik.
+4. Wait for the connections to initialize. Once the gateway has initialized, the gateway looks like the following graphic.
 
-	![Gatewaystatus – verbunden](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736059.jpg)
+    ![Gateway Status - Connected](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736059.jpg)  
 
-	[AZURE.INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
+    [AZURE.INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)] 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
+You can add virtual machines to your virtual networks. See the [Virtual Machines documentation](https://azure.microsoft.com/documentation/services/virtual-machines/) for more information.
 
 
 
@@ -244,4 +246,8 @@ Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere 
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple-Sicherheit | Microsoft Azure" 
-   description="In diesem Abschnitt werden die Sicherheits- und Datenschutzfunktionen zum Schutz Ihres StorSimple-Diensts und -Geräts sowie Ihrer lokalen Daten und Daten in der Cloud beschrieben." 
+   pageTitle="StorSimple security | Microsoft Azure" 
+   description="Describes the security and privacy features that protect your StorSimple service, device, and data on premises and in the cloud." 
    services="storsimple" 
    documentationCenter="NA" 
    authors="SharS" 
@@ -16,257 +16,262 @@
    ms.date="05/03/2016"
    ms.author="v-sharos"/>
 
-# StorSimple-Sicherheit und -Datenschutz
 
-## Übersicht
+# <a name="storsimple-security-and-data-protection"></a>StorSimple security and data protection
 
-Sicherheit ist für alle, die eine neue Technologie implementieren, ein zentrales Anliegen. Dies gilt insbesondere, wenn die Technologie mit vertraulichen oder proprietären Daten verwendet wird. Bei der Bewertung der verschiedenen Technologien müssen Sie die erhöhten Risiken und Kosten für den Datenschutz berücksichtigen. Microsoft Azure StorSimple bietet sowohl eine Sicherheits- als auch Datenschutzlösung Ihre Daten, wodurch Folgendes sichergestellt werden kann:
+## <a name="overview"></a>Overview
 
-- **Vertraulichkeit** – Nur autorisierte Entitäten können Ihre Daten anzeigen. 
-- **Integrität** – Nur autorisierte Entitäten können Ihre Daten ändern oder löschen.
+Security is a major concern for anyone who is adopting a new technology, especially when the technology is used with confidential or proprietary data. As you evaluate different technologies, you must consider increased risks and costs for data protection. Microsoft Azure StorSimple provides both a security and privacy solution for data protection, helping to ensure: 
 
-Die Microsoft Azure StorSimple-Lösung besteht aus vier Hauptkomponenten, die miteinander interagieren:
+- **Confidentiality** – Only authorized entities can view your data. 
+- **Integrity** – Only authorized entities can modify or delete your data.
 
-- **In Microsoft Azure gehosteter StorSimple-Manager-Dienst** – Der Verwaltungsdienst, den Sie zum Konfigurieren und Bereitstellen des StorSimple-Geräts verwenden.
-- **StorSimple-Gerät** – Ein physisches Gerät, das in Ihrem Datencenter installiert ist. Alle Hosts und Clients, die Daten generieren, stellen eine Verbindung zum StorSimple-Gerät her, während das Gerät die Daten verwaltet und entsprechend in die Azure-Cloud verschiebt.
-- **Mit dem Gerät verbundene Clients/Hosts** – Die Clients in Ihrer Infrastruktur, die eine Verbindung zum StorSimple-Gerät herstellen und zu schützende Daten generieren.
-- **Cloud-Speicher** – Der Speicherort in der Azure-Cloud, an dem die Daten gespeichert werden.
+The Microsoft Azure StorSimple solution consists of four main components that interact with each other:
 
-In den folgenden Abschnitten werden die in der StorSimple-Sicherheitsfunktionen beschrieben, mit denen alle diese Komponenten und die in ihnen gespeicherten Daten geschützt werden. Außerdem finden Sie eine Liste von Fragen, die Sie ggf. hinsichtlich der Sicherheit von Microsoft Azure StorSimple haben, und die entsprechenden Antworten.
+- **StorSimple Manager service hosted in Microsoft Azure** – The management service that you use to configure and provision the StorSimple device.
+- **StorSimple device** – A physical device installed in your datacenter. All hosts and clients that generate data connect to the StorSimple device, and the device manages the data and moves it to the Azure cloud as appropriate.
+- **Clients/hosts connected to the device** – The clients in your infrastructure that connect to the StorSimple device and generate data that needs to be protected.
+- **Cloud storage** – The location in the Azure cloud where data is stored.
 
-## Schutz des StorSimple-Manager-Diensts
+The following sections describe the StorSimple security features that help protect each of these components and the data stored on them. It also includes a list of questions that you might have about Microsoft Azure StorSimple security, and the corresponding answers.
 
-Der StorSimple-Manager-Dienst ist ein in Microsoft Azure gehosteter Verwaltungsdienst, der zum Verwalten aller StorSimple-Geräte verwendet wird, die Ihre Organisation beschafft hat. Sie können auf den StorSimple Manager-Dienst zugreifen, indem Sie sich beim klassischen Azure-Portal mithilfe eines Webbrowsers unter Verwendung Ihrer Organisationsanmeldeinformationen anmelden.
+## <a name="storsimple-manager-service-protection"></a>StorSimple Manager service protection
 
-Für den Zugriff auf den StorSimple-Manager-Dienst ist es erforderlich, dass Ihre Organisation über ein Azure-Abonnement verfügt, das StorSimple einschließt. Ihr Abonnement bestimmt die Funktionen, auf die Sie im klassischen Azure-Portal zugreifen können. Wenn Ihre Organisation kein Azure-Abonnement besitzt, und Sie weitere Informationen dazu erhalten möchten, lesen Sie [Als Unternehmen für Azure registrieren](../active-directory/sign-up-organization.md).
+The StorSimple Manager service is a management service hosted in Microsoft Azure and used to manage all StorSimple devices that your organization has procured. You can access the StorSimple Manager service by using your organizational credentials to log on to the Azure classic portal through a web browser. 
 
-Da der StorSimple-Manager-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
+Access to the StorSimple Manager service requires that your organization have an Azure subscription that includes StorSimple. Your subscription governs the features that you can access in the Azure classic portal. If your organization does not have an Azure subscription and you want to learn more about them, see [Sign up for Azure as an organization](../active-directory/sign-up-organization.md). 
 
-## StorSimple-Geräteschutz
+Because the StorSimple Manager service is hosted in Azure, it is protected by the Azure security features. For more information about the security features provided by Microsoft Azure, go to the [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
 
-Das StorSimple-Gerät ist ein lokales Hybridspeicherarray mit Solid-State-Laufwerken (SSDs) und Festplattenlaufwerken (HDDs) sowie redundanten Controllern und automatischen Failoverfunktionen. Die Controller verwalten die Speicherstaffelung, wobei derzeit verwendete d. h. aktiv genutzte) Daten in lokalem Speicher (auf dem StorSimple-Gerät oder lokalen Server) abgelegt werden, während weniger häufig verwendete Daten in die Cloud verschoben werden.
+## <a name="storsimple-device-protection"></a>StorSimple device protection
 
-Nur autorisierte StorSimple-Geräte dürfen dem StorSimple-Manager-Dienst hinzugefügt werden, den Sie in Ihrem Azure-Abonnement erstellt haben. Um ein Gerät zu autorisieren, müssen Sie es beim StorSimple-Manager-Dienst registrieren, indem Sie den Dienstregistrierungsschlüssel bereitstellen. Der Dienstregistrierungsschlüssel ist ein im klassischen Azure-Portal generierter zufälliger 128-Bit-Schlüssel.
+The StorSimple device is an on-premises hybrid storage device that contains solid state drives (SSDs) and hard disk drives (HDDs), together with redundant controllers and automatic failover capabilities. The controllers manage storage tiering, placing currently used (or hot) data on local storage (in the StorSimple device or on-premises servers), while moving less frequently used data to the cloud.
 
-![Dienstregistrierungsschlüssel](./media/storsimple-security/ServiceRegistrationKey.png)
+Only authorized StorSimple devices are allowed to join the StorSimple Manager service that you created in your Azure subscription. To authorize a device, you must register it with the StorSimple Manager service by providing the service registration key. The service registration key is a 128-bit random key generated in the Azure classic portal. 
 
-Infomationen zum Abrufen eines Dienstregistrierungsschlüssels erhalten Sie unter [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-deployment-walkthrough.md#step-2-get-the-service-registration-key).
+![Service registration key](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Der Dienstregistrierungsschlüssel ist ein langer Schlüssel mit mehr als 100 Zeichen. Sie können den Schlüssel kopieren und ihn an einem sicheren Ort in einer Textdatei speichern, damit Sie bei Bedarf weitere Geräte mit dem Schlüssel autorisieren können. Wenn der Dienstregistrierungsschlüssel nach der Registrierung Ihres ersten Geräts verloren geht, können Sie über den StorSimple-Manager-Dienst einen neuen Schlüssel generieren. Dies wirkt sich nicht auf den Betrieb vorhandener Geräte aus.
+To learn how get a service registration key, go to [Step 2: Get the service registration key](storsimple-deployment-walkthrough.md#step-2-get-the-service-registration-key).
 
-Nachdem ein Gerät registriert wurde, verwendet es Token für die Kommunikation mit Microsoft Azure. Der Dienstregistrierungsschlüssel wird nach der Geräteregistrierung nicht verwendet.
+The service registration key is a long key that contains 100+ characters. You can copy the key and save it in a text file in a secure location so that you can use it to authorize additional devices as necessary. If the service registration key is lost after you register your first device, you can generate a new key from the StorSimple Manager service. This will not affect the operation of existing devices. 
 
-> [AZURE.NOTE] Es wird empfohlen, den Dienstregistrierungsschlüssel nach jeder Verwendung neu zu generieren.
+After a device is registered, it uses tokens to communicate with Microsoft Azure. The service registration key is not used after device registration.
 
-## Schützen der StorSimple-Lösung mittels Kennwörtern
+> [AZURE.NOTE] We recommend that you regenerate the service registration key after every use.
 
-Kennwörter sind ein wichtiger Aspekt der Computersicherheit und werden in der StorSimple-Lösung ausgiebig verwendet, um sicherzustellen, dass nur autorisierte Benutzer auf Ihre Daten zugreifen können. StorSimple ermöglicht die Konfiguration der folgenden Kennwörter:
+## <a name="protect-your-storsimple-solution-via-passwords"></a>Protect your StorSimple solution via passwords
 
-- StorSimple-Geräteadministratorkennwort
-- CHAP-Initiator- und Zielkennwörter (Challenge Handshake Authentication Protocol)
-- StorSimple Snapshot Manager-Kennwort
+Passwords are an important aspect of computer security and are used extensively in the StorSimple solution to help ensure that your data is accessible to authorized users only. StorSimple allows you to configure the following passwords:
 
-### Windows PowerShell für StorSimple und das StorSimple-Geräteadministratorkennwort
+- StorSimple device administrator password
+- Challenge Handshake Authentication Protocol (CHAP) initiator and target passwords
+- StorSimple Snapshot Manager password
 
-Windows PowerShell für StorSimple ist eine Befehlszeilenschnittstelle, mit der Sie das StorSimple-Gerät verwalten können. Windows PowerShell für StorSimple bietet Features, mit denen Sie Ihr Gerät registrieren, die Netzwerkschnittstelle Ihres Geräts konfigurieren, bestimmte Arten von Updates installieren, Probleme Ihres Geräts durch Zugriff auf eine Supportsitzung beheben und den Gerätestatus ändern können. Sie können auf Windows PowerShell für StorSimple zugreifen, indem Sie eine Verbindung mit der seriellen Konsole auf dem Gerät herstellen oder Windows PowerShell-Remoting verwenden.
+### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>Windows PowerShell for StorSimple and the StorSimple device administrator password
 
-Das PowerShell-Remoting kann über HTTPS oder HTTP erfolgen. Wenn die Remoteverwaltung über HTTPS aktiviert ist, müssen Sie das Remoteverwaltungszertifikat vom Gerät herunterladen und es auf dem Remoteclient installieren. Weitere Informationen zum PowerShell-Remoting finden Sie unter [Herstellen einer Remoteverbindung mit dem StorSimple-Gerät](storsimple-remote-connect.md).
+Windows PowerShell for StorSimple is a command-line interface that you can use to manage the StorSimple device. Windows PowerShell for StorSimple has features that allow you to register your device, configure the network interface on your device, install certain types of updates, troubleshoot your device by accessing the support session, and change the device state. You can access Windows PowerShell for StorSimple by connecting to the serial console on the device or by using Windows PowerShell remoting.
 
-Nachdem Sie Windows PowerShell für StorSimple verwendet haben, um eine Verbindung mit dem Gerät herzustellen, müssen Sie das Geräteadministratorkennwort für die Anmeldung auf dem Gerät bereitstellen.
+PowerShell remoting can be done over HTTPS or HTTP. If remote management over HTTPS is enabled, you will need to download the remote management certificate from the device and install it on the remote client. For more information about PowerShell remoting, go to [Connect remotely to your StorSimple device](storsimple-remote-connect.md).
 
-![Geräteadministratorkennwort](./media/storsimple-security/DeviceAdminPW.png)
+After you use Windows PowerShell for StorSimple to connect to the device, you will need to provide the device administrator password to log on to the device.
 
-Beachten Sie die folgenden bewährten Methoden:
+![Device administrator password](./media/storsimple-security/DeviceAdminPW.png)
 
-- Die Remoteverwaltung ist standardmäßig deaktiviert. Sie können sie mithilfe des StorSimple-Manager-Diensts aktivieren. Als bewährte Sicherheitsmethode sollte der Remotezugriff nur während der tatsächlich erforderlichen Zeit aktiviert werden.
-- Wenn Sie das Kennwort ändern, stellen Sie sicher, dass Sie alle Benutzer mit Remotezugriff benachrichtigen, damit es bei diesen nicht zu unerwarteten Verbindungsunterbrechungen kommt.
-- Der StorSimple-Manager-Dienst kann keine vorhandenen Kennwörter abrufen, sondern nur zurücksetzen. Es wird empfohlen, alle Kennwörter an einem sicheren Ort zu speichern, damit Sie ein Kennwort nicht zurücksetzen müssen, wenn Sie es vergessen haben. Wenn Sie ein Kennwort zurücksetzen müssen, stellen Sie sicher, dass Sie alle Benutzer vor der Zurücksetzung benachrichtigen. 
+Keep the following best practices in mind:
 
-Sie können über eine serielle Verbindung mit dem Gerät auf die Windows PowerShell-Benutzeroberfläche zugreifen. Sie können auch über HTTP oder HTTPS remote darauf zugreifen, was zusätzliche Sicherheit bringt. HTTPS bietet eine höhere Sicherheit als eine serielle oder HTTP-Verbindung. Für HTTPS müssen Sie allerdings zunächst auf dem Clientcomputer, der auf das Gerät zugreift, ein Zertifikat installieren. Sie können das Zertifikat für den Remotezugriff von der Konfigurationsseite des Geräts im StorSimple-Manager-Dienst herunterladen. Wenn das Zertifikat für den Remotezugriff verloren geht, müssen Sie ein neues Zertifikat herunterladen und es auf allen Clients bereitstellen, die für die Remoteverwaltung autorisiert sind.
+- Remote management is turned off by default. You can use the StorSimple Manager service to enable it. As a security best practice, remote access should be enabled only during the time period that it is actually needed.
+- If you change the password, be sure to notify all remote access users so that they do not experience an unexpected connectivity loss.
+- The StorSimple Manager service cannot retrieve existing passwords: it can only reset them. We recommend that you store all passwords in a secure place so that you do not have to reset a password if it is forgotten. If you do need to reset a password, be sure to notify all users before you reset it. 
 
-### CHAP-Initiator- und Zielkennwörter (Challenge Handshake Authentication Protocol)
+You can access the Windows PowerShell interface by using a serial connection to the device. You can also access it remotely by using either HTTP or HTTPS, which provide additional security. HTTPS provides a higher level of security than either a serial or HTTP connection. However, to use HTTPS, you must first install a certificate on the client computer that will access the device. You can download the remote access certificate from the device configuration page in the StorSimple Manager service. If the certificate for remote access is lost, you must download a new certificate and propagate it to all clients that are authorized to use remote management.
 
-CHAP ist ein vom StorSimple-Gerät verwendetes Authentifizierungsschema zum Überprüfen der Identität von Remoteclients. Die Überprüfung basiert auf einem gemeinsam genutzten Kennwort. HAP kann unidirektional oder bidirektional verwendet werden. Beim unidirektionalen CHAP authentifiziert das Ziel (das StorSimple-Gerät) einen Initiator (Host). Beim bidirektionalen oder umgekehrten CHAP ist es erforderlich, dass das Ziel den Initiator und der Initiator dann das Ziel authentifiziert. Ihr StorSimple-Gerät kann für die Verwendung beider Methoden konfiguriert werden.
+### <a name="challenge-handshake-authentication-protocol-(chap)-initiator-and-target-passwords"></a>Challenge Handshake Authentication Protocol (CHAP) initiator and target passwords
 
-Beachten Sie beim Konfigurieren von CHAP Folgendes:
+CHAP is an authentication scheme used by the StorSimple device to validate the identity of remote clients. The verification is based on a shared password. CHAP can be one-way (unidirectional) or mutual (bidirectional). With one-way CHAP, the target (the StorSimple device) authenticates an initiator (host). Mutual or reverse CHAP requires that the target authenticate the initiator and then the initiator authenticate the target. Your StorSimple can be configured to use either method.
 
-- Der CHAP-Benutzername darf maximal 233 Zeichen enthalten.
-- Das CHAP-Kennwort muss zwischen 12 und 16 Zeichen umfassen. Wenn Sie versuchen, einen längeren Benutzernamen oder ein längeres Kennwort zu verwenden, führt dies auf dem Windows-Host zu einem Authentifizierungsfehler.
-- Sie können für den CHAP-Initiator und das CHAP-Ziel nicht dasselbe Kennwort verwenden.
-- Nachdem Sie das Kennwort festgelegt haben, kann es zwar geändert, aber nicht mehr abgerufen werden. Wenn das Kennwort geändert wird, stellen Sie sicher, dass Sie alle Benutzer mit Remotezugriff benachrichtigen, damit diese erfolgreich Verbindungen mit dem StorSimple-Gerät herstellen können.
+Be aware of the following when you configure CHAP:
 
-Weitere Informationen zu CHAP und zum Konfigurieren von CHAP für StorSimple-Lösungen finden Sie unter [Konfigurieren von CHAP für Ihr StorSimple-Gerät](storsimple-configure-chap.md).
+- The CHAP user name must contain fewer than 233 characters.
+- The CHAP password must be between 12 and 16 characters. Attempting to use a longer user name or password will result in an authentication failure on the Windows host.
+- You cannot use the same password for both the CHAP initiator and the CHAP target.
+- After you set the password, it can be changed but it cannot be retrieved. If the password is changed, be sure to notify all remote access users so that they can successfully connect to the StorSimple device.
 
-### StorSimple Snapshot Manager-Kennwort
+For more information about CHAP and how to configure it for your StorSimple solution, go to [Configure CHAP for your StorSimple device](storsimple-configure-chap.md).
 
-StorSimple Snapshot Manager ist ein MMC-Snap-In (Microsoft Management Console), das Volumegruppen und den Volumeschattenkopie-Dienst von Windows verwendet, um anwendungskonsistente Sicherungen zu generieren. Darüber hinaus können Sie den StorSimple-Momentaufnahmen-Manager zum Erstellen von Sicherungszeitplänen und Klonen oder Wiederherstellen von Volumes einsetzen.
+### <a name="storsimple-snapshot-manager-password"></a>StorSimple Snapshot Manager password
 
-Wenn Sie ein Gerät für die Verwendung von StorSimple Snapshot Manager konfigurieren, müssen Sie das Kennwort für den StorSimple Snapshot Manager angeben. Dieses Kennwort wird erstmalig in Windows PowerShell für StorSimple während der Registrierung festgelegt. Das Kennwort kann auch über den StorSimple-Manager-Dienst festgelegt und geändert werden. Mit diesem Kennwort wird das Gerät im StorSimple-Momentaufnahme-Manager authentifiziert.
+StorSimple Snapshot Manager is a Microsoft Management Console (MMC) snap-in that uses volume groups and the Windows Volume Shadow Copy Service to generate application-consistent backups. In addition, you can use StorSimple Snapshot Manager to create backup schedules and clone or restore volumes.
 
-![StorSimple Snapshot Manager-Kennwort](./media/storsimple-security/SnapshotMgrPassword.png)
+When you configure a device to use StorSimple Snapshot Manager, you will be required to provide the StorSimple Snapshot Manager password. This password is first set in Windows PowerShell for StorSimple during registration. The password can also be set and changed from the StorSimple Manager service. This password authenticates the device with StorSimple Snapshot Manager.
 
-Das Kennwort für StorSimple Snapshot Manager muss 14 bis 15 Zeichen lang sein und mindestens drei der folgenden Elemente miteinander kombinieren: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen. Nachdem Sie das StorSimple-Momentaufnahmen-Manager-Kennwort festgelegt haben, kann es zwar geändert, aber nicht mehr abgerufen werden. Wenn Sie das Kennwort ändern, stellen Sie sicher, dass alle Remotebenutzer benachrichtigt werden.
+![StorSimple Snapshot Manager password](./media/storsimple-security/SnapshotMgrPassword.png)
 
-Weitere Informationen zu StorSimple Snapshot Manager finden Sie unter [Was ist der StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+The StorSimple Snapshot Manager password must be 14 to 15 characters and must contain 3 or more of a combination of uppercase, lowercase, numeric, and special characters. After you set the StorSimple Snapshot Manager password, it can be changed but it cannot be retrieved. If you change the password, be sure to notify all remote users.
 
-### Bewährte Methoden für Kennwörter
+For more information about StorSimple Snapshot Manager, go to [What is StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
 
-Es wird empfohlen, die folgenden Richtlinien zu befolgen, um sicherzustellen, dass die StorSimple-Kennwörter sicher und ausreichend geschützt sind:
+### <a name="password-best-practices"></a>Password best practices
 
-- Ändern Sie Ihre Kennwörter alle drei Monate. Ein Ändern der Kennwörter wird jährlich erzwungen.
-- Verwenden Sie sichere Kennwörter. Weitere Informationen finden Sie unter [Create stronger passwords and protect them](http://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/) (in englischer Sprache).
-- Wählen Sie für verschiedene Zugriffsmechanismen stets unterschiedliche Kennwörter. Jedes gewählte Kennwort muss eindeutig sein.
-- Teilen Sie Kennwörter nicht mit Personen, die nicht für den Zugriff auf das StorSimple-Gerät autorisiert sind.
-- Erwähnen Sie Kennwörter nicht in Gegenwart anderer Personen, und geben Sie keine Hinweise zum Format eines Kennworts.
-- Wenn Sie den Verdacht haben, dass ein Konto oder Kennwort gefährdet ist, melden Sie den Vorfall der für Informationssicherheit zuständigen Abteilung.
-- Behandeln Sie alle Kennwörter als sensible, vertrauliche Informationen. 
+We recommend that you use the following guidelines to help ensure that StorSimple passwords are strong and well-protected:
 
-## StorSimple-Datenschutz
+- Change your passwords every three months. Changing the passwords is enforced annually.
+- Use strong passwords. For more information, go to [Create stronger passwords and protect them](http://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
+- Always use different passwords for different access mechanisms; each of the passwords you specify should be unique.
+- Do not share passwords with anyone who is not authorized to access the StorSimple device.
+- Do not speak about a password in front of others or hint at the format of a password.
+- If you suspect that an account or password has been compromised, report the incident to your information security department.
+- Treat all passwords as sensitive, confidential information. 
 
-In diesem Abschnitt werden die StorSimple-Sicherheitsfunktionen für in der Übertragung befindliche und gespeicherte Daten beschrieben.
+## <a name="storsimple-data-protection"></a>StorSimple data protection
 
-Wie in anderen Abschnitten erläutert, werden Kennwörter verwendet, um Benutzer zu autorisieren und zu authentifizieren, bevor diese Zugriff auf Ihre StorSimple-Lösung erhalten. Ein weiterer Sicherheitsaspekt ist der Schutz der Daten vor nicht autorisierten Benutzern, während die Daten zwischen Speichersystemen übertragen oder gespeichert werden. In den folgenden Abschnitten werden die Datenschutzfunktionen von StorSimple beschrieben.
+This section describes the StorSimple security features that protect data in transit and stored data.
 
-> [AZURE.NOTE] Eine Deduplizierung bietet zusätzlichen Schutz für Daten, die auf dem StorSimple-Gerät und in Microsoft Azure-Speicher gespeichert. Bei einer Deduplizierung der Daten werden die Datenobjekte getrennt auf den Metadaten gespeichert, die für Zuordnung und Zugriff genutzt werden. Es gibt keinen verfügbaren Speicherebenenkontext zum Rekonstruieren der Daten basierend auf Volumestruktur, Dateisystem oder Dateiname.
+As described in other sections, passwords are used to authorize and authenticate users before they can gain access to your StorSimple solution. Another security consideration is protecting data from unauthorized users while it is being transferred between storage systems and while it is being stored. The following sections describe the data protection features provided with StorSimple.
 
-## Schützen von durch den Dienst geleiteten Daten
+> [AZURE.NOTE] Deduplication provides additional protection for data stored on the StorSimple device and in Microsoft Azure storage. When data is deduplicated, the data objects are stored separately from the metadata used to map and access them: there is no available storage-level context to reconstruct the data based on volume structure, file system, or file name.
 
-Der Hauptzweck des StorSimple-Manager-Diensts ist die Verwaltung und Konfiguration des StorSimple-Geräts. Der StorSimple Manager-Dienst wird in Microsoft Azure ausgeführt. Sie können Gerätekonfigurationsdaten über das klassische Azure-Portal eingeben. Anschließend verwendet Microsoft Azure den StorSimple Manager-Dienst, um die Daten an das Gerät zu senden. StorSimple verwendet ein System aus asymmetrischen Schlüsselpaaren, um sicherzustellen, dass eine Gefährdung des Azure-Diensts nicht zu einer Gefährdung der gespeicherten Daten führt.
+## <a name="protect-data-flowing-through-the-service"></a>Protect data flowing through the service
 
-![Datenverschlüsselung in Aktion](./media/storsimple-security/DataEncryption.png)
+The primary purpose of the StorSimple Manager service is to manage and configure the StorSimple device. The StorSimple Manager service runs in Microsoft Azure. You use the Azure classic portal to enter device configuration data, and then Microsoft Azure uses the StorSimple Manager service to send the data to the device. StorSimple uses a system of asymmetric key pairs to help ensure that a compromise of the Azure service will not result in a compromise of stored information. 
 
-Das asymmetrische Schlüsselsystem schützt die durch den Dienst geleiteten Daten wie folgt:
+![Data encryption in flight](./media/storsimple-security/DataEncryption.png)
 
-1. Ein Datenverschlüsselungszertifikat, das ein asymmetrisches öffentliches und privates Schlüsselpaar verwendet, wird auf dem Gerät generiert und dient zum Schutz der Daten. Die Schlüssel werden bei der Registrierung des ersten Geräts generiert. 
-2. Die Zertifikatschlüssel für die Datenverschlüsselung werden in eine PFX-Datei (Personal Information Exchange) exportiert, die über den Verschlüsselungsschlüssel für Dienstdaten geschützt wird. Dies ist ein sicherer 128-Bit-Schlüssel, der vom ersten Gerät während der Registrierung zufällig generiert wird.
-3. Der öffentliche Schlüssel des Zertifikats wird für den StorSimple-Manager-Dienst auf sichere Weise zur Verfügung gestellt. Der private Schlüssel verbleibt beim Gerät.
-4. Die im Dienst eingehenden Daten werden mithilfe des öffentlichen Schlüssels verschlüsselt und mithilfe des privaten Schlüssels, der auf dem Gerät gespeichert wird, wieder entschlüsselt.
+The asymmetric key system helps protect the data that flows through the service as follows:
 
-Der Verschlüsselungsschlüssel für Dienstdaten wird nur auf dem ersten Gerät generiert, das beim Dienst registriert wird. Alle nachfolgenden Geräte, die beim Dienst registriert werden, müssen denselben Verschlüsselungsschlüssel für Dienstdaten verwenden.
+1. A data encryption certificate that uses an asymmetric public and private key pair is generated on the device and is used to protect the data. The keys are generated when the first device is registered. 
+2. The data encryption certificate keys are exported into a Personal Information Exchange (.pfx) file that is protected by the service data encryption key, which is a strong 128-bit key that is randomly generated by the first device during registration.
+3. The public key of the certificate is securely made available to the StorSimple Manager service, and the private key remains with the device.
+4. Data entering the service is encrypted using the public key and decrypted using the private key stored on the device, ensuring that the Azure service cannot decrypt the data flowing to the device.
+
+The service data encryption key is generated on only the first device registered with the service. All subsequent devices that are registered with the service must use the same service data encryption key. 
 
 > [AZURE.IMPORTANT] 
 > 
-> Es ist sehr wichtig, dass Sie eine Kopie des Verschlüsselungsschlüssels für Dienstdaten erstellen und diese an einem sicheren Ort aufbewahren. Die Kopie des Verschlüsselungsschlüssels für Dienstdaten muss so gespeichert werden, dass autorisierte Personen darauf zugreifen und er problemlos dem Geräteadministrator mitgeteilt werden kann.
+> It is very important to make a copy of the service data encryption key and save it in a secure location. A copy of the service data encryption key should be stored in such a way that it can be accessed by an authorized person and can be easily communicated to the device administrator.
 >
-> Wenn der Verschlüsselungsschlüssel für Dienstdaten verloren geht, kann Ihnen ein Microsoft-Supportmitarbeiter helfen, ihn abzurufen, vorausgesetzt, mindestens ein Gerät ist online. Wir empfehlen, den Verschlüsselungsschlüssel für Dienstdaten zu ändern, nachdem dieser abgerufen wurde. Anweisungen hierzu finden Sie unter [Ändern des Verschlüsselungsschlüssels für Dienstdaten](storsimple-service-dashboard.md#change-the-service-data-encryption-key).
+> If the service data encryption key is lost, a Microsoft support person can help you to retrieve it provided that you have at least one device in an online state. We recommend that you change the service data encryption key after it is retrieved. For instructions, go to [Change the service data encryption key](storsimple-service-dashboard.md#change-the-service-data-encryption-key).
 
-Sie können den Verschlüsselungsschlüssel für Dienstdaten und das entsprechende Datenverschlüsselungszertifikat ändern, indem Sie im Dashboard des Diensts die Option **Verschlüsselungsschlüssel für Dienstdaten ändern** auswählen. Um sicherzustellen, dass die Datensicherheit nicht gefährdet ist, müssen Sie ein physisches StorSimple-Gerät verwenden, um den Verschlüsselungsschlüssel für Dienstdaten zu ändern. Die Änderung der Verschlüsselungsschlüssel erfordert, dass alle Geräte mit dem neuen Schlüssel aktualisiert werden. Daher wird empfohlen, den Schlüssel zu ändern, wenn alle Geräte online sind. Wenn Geräte offline sind, können ihre Schlüssel zu einem anderen Zeitpunkt geändert werden. Die Geräte mit abgelaufenen Schlüsseln können weiterhin Sicherungen ausführen, aber Daten erst nach der Aktualisierung des Schlüssels wiederherstellen. Weitere Informationen finden Sie unter [Verwenden des StorSimple-Manager-Dienstdashboards](storsimple-service-dashboard.md).
+You can change the service data encryption key and the corresponding data encryption certificate by selecting the **Change service data encryption key** option on the service dashboard. To ensure that data security is not compromised, you must use a physical StorSimple device to change the service data encryption key. Changing the encryption keys requires that all devices be updated with the new key. Therefore, we recommend that you change the key when all devices are online. If devices are offline, their keys can be changed at a different time. The devices with out-of-date keys will still be able to run backups, but they will not be able to restore data until the key is updated. For more information, go to [Use the StorSimple Manager service dashboard](storsimple-service-dashboard.md).
 
-Der Verschlüsselungsschlüssel für Dienstdaten und das Datenverschlüsselungszertifikat haben kein Ablaufdatum. Wir empfehlen jedoch, den Verschlüsselungsschlüssel für Dienstdaten jährlich zu ändern, um eine Gefährdung des Schlüssels zu vermeiden.
+The service data encryption key and the data encryption certificate do not expire. However, we recommend that you change the service data encryption key annually to help prevent key compromise.
 
-## Schutz gespeicherter Daten
+## <a name="protect-data-at-rest"></a>Protect data at rest
 
-Das StorSimple-Gerät verwaltet Daten, indem diese lokal und in der Cloud abhängig von der Häufigkeit ihrer Nutzung auf Ebenen gespeichert werden. Alle Hostcomputer, die mit dem Gerät verbunden sind, senden Daten an das Gerät, das die Daten dann ggf. in die Cloud verschiebt. Die Daten werden vom Gerät über das Internet sicher in die Cloud gesendet. Jedes Gerät verfügt über ein iSCSI-Ziel, das alle freigegebenen Volumes auf diesem Gerät zum Vorschein bringt. Alle Daten werden verschlüsselt, bevor sie zum Cloud-Speicher gesendet werden.
+The StorSimple device manages data by storing it in tiers locally and in the cloud, depending on frequency of use. All host machines that are connected to the device send data to the device, which then moves data to the cloud, as appropriate. Data is transferred from the device to the cloud securely over the Internet. Each device has one iSCSI target that surfaces all shared volumes on that device. All data is encrypted before it is sent to cloud storage. 
 
-![Verschlüsselungsschlüssel für Cloudspeicher](./media/storsimple-security/CloudStorageEncryption.png)
+![Cloud storage encryption key](./media/storsimple-security/CloudStorageEncryption.png)
 
-Um die Sicherheit und Integrität von Daten sicherzustellen, die in die Cloud verschoben werden, gestattet es StorSimple, Verschlüsselungsschlüssel für Cloudspeicher wie folgt zu definieren:
+To help ensure the security and integrity of data moved to the cloud, StorSimple allows you to define cloud storage encryption keys as follows:
 
-- Sie geben bei der Erstellung eines Volumecontainers den Verschlüsselungsschlüssel für Cloud-Speicher an. Der Schlüssel kann nicht später geändert oder hinzugefügt werden. 
-- Alle Volumes in einem Volumecontainer teilen sich denselben Verschlüsselungsschlüssel. Wenn Sie für ein bestimmtes Volume eine andere Form der Verschlüsselung wünschen, wird empfohlen, einen neuen Volumecontainer als Host für dieses Volume zu erstellen.
-- Wenn Sie den Verschlüsselungsschlüssel für Cloud-Speicher im StorSimple-Manager-Dienst eingeben, wird der Schlüssel mit dem öffentlichen Teil des Verschlüsselungsschlüssels für Dienstdaten verschlüsselt und an das Gerät gesendet.
-- Der Verschlüsselungsschlüssel für Cloud-Speicher wird nicht innerhalb des Diensts gespeichert und ist ausschließlich dem Gerät bekannt.
-- Die Angabe eines Verschlüsselungsschlüssels für Cloud-Speicher ist optional. Sie können die auf dem Host verschlüsselten Daten zum Gerät senden.
+- You specify the cloud storage encryption key when you create a volume container. The key cannot be modified or added later. 
+- All volumes in a volume container share the same encryption key. If you want a different form of encryption for a specific volume, we recommend that you create a new volume container to host that volume.
+- When you enter the cloud storage encryption key in the StorSimple Manager service, the key is encrypted using the public portion of the service data encryption key and then sent to the device.
+- The cloud storage encryption key is not stored anywhere in the service and is known only to the device.
+- Specifying a cloud storage encryption key is optional. You can send data that has been encrypted at the host to the device.
 
-### Zusätzliche bewährte Methoden für die Sicherheit
+### <a name="additional-security-best-practices"></a>Additional security best practices
 
-- Aufteilen des Datenverkehrs: Isolieren Sie den iSCSI-SAN-Datenverkehr vom Benutzerdatenverkehr in einem Unternehmens-LAN, indem Sie ein vollständig getrenntes Netzwerk bereitstellen und VLANs einsetzen, wenn eine physische Isolation nicht möglich ist. Ein dediziertes Netzwerk für die iSCSI-Speicherung garantiert die Sicherheit und Leistung Ihrer unternehmenskritischen Daten. Die Mischung von Speicher- und Benutzerdatenverkehr in einem Unternehmens-LAN wird nicht empfohlen und kann die Latenz erhöhen sowie zu Netzwerkfehlern führen.
+- Split traffic: isolate your iSCSI SAN from user traffic on a corporate LAN by deploying a totally separated network and using VLANs where physical isolation is not an option. A dedicated network for iSCSI storage will guarantee the safety and performance of your business-critical data. Mixing storage and user traffic over a corporate LAN is not recommended and can increase latency and cause network failures.
 
-- Zur Netzwerksicherheit auf Hostseite verwenden Sie Netzwerkschnittstellen, die TOE (TCP/IP Offload Engine) unterstützen. TOE reduziert die CPU-Auslastung, da TCP-Datenverkehr über den Netzwerkadapter verarbeitet wird.
+- For host-side network security, use network interfaces that support TCP/IP Offload Engine (TOE). TOE reduces CPU load by processing TCP on the network adapter.
 
-## Schützen von Daten über Speicherkonten
+## <a name="protect-data-via-storage-accounts"></a>Protect data via storage accounts
 
-Bei jedem Microsoft Azure-Abonnement kann mindestens ein Speicherkonto erstellt werden. (Ein Speicherkonto bietet einen eindeutigen Namespace für die Arbeit mit Daten, die in der Azure-Cloud gespeichert werden.) Der Zugriff auf ein Speicherkonto wird über die Abonnement- und Zugriffsschlüssel gesteuert, die dem Speicherkonto zugeordnet sind.
+Each Microsoft Azure subscription can create one or more storage accounts. (A storage account provides a unique namespace for working with data stored in the Azure cloud.) Access to a storage account is controlled by the subscription and access keys associated with that storage account. 
 
-Wenn Sie ein Speicherkonto erstellen, generiert Microsoft Azure zwei 512-Bit-Speicherzugriffsschlüssel, von denen einer für die Authentifizierung verwendet wird, wenn das StorSimple-Gerät auf das Speicherkonto zugreift. Beachten Sie, dass nur einer dieser Schlüssel verwendet wird. Der andere Schlüssel dient als Reserve und gestattet Ihnen, die Schlüssel regelmäßig zu rotieren. Um die Schlüssel zu rotieren, aktivieren Sie den sekundären Schlüssel und löschen dann den primären Schlüssel. Sie können dann einen neuen Schlüssel erstellen, der während der nächsten Rotation verwendet werden kann. (Aus Sicherheitsgründen ist in vielen Datencentern eine Schlüsselrotation erforderlich.)
+When you create a storage account, Microsoft Azure generates two 512-bit storage access keys, one of which is used for authentication when the StorSimple device accesses the storage account. Note that only one of these keys is in use. The other key is held in reserve, allowing you to rotate the keys periodically. To rotate keys, you make the secondary key active, and then delete the primary key. You can then create a new key for use during the next rotation. (For security reasons, many datacenters require key rotation.) 
 
-Es wird empfohlen, diese bewährten Methoden für die Schlüsselrotation zu befolgen:
+We recommend that you follow these best practices for key rotation:
 
-- Sie sollten die Speicherkontoschlüssel regelmäßig rotieren, um sicherzustellen, dass keine nicht autorisierten Benutzer auf Ihr Speicherkonto zugreifen.
-- Der Azure-Administrator sollte den primären oder sekundären Schlüssel regelmäßig über den Bereich „Storage“ des klassischen Azure-Portals neu generieren, um direkt auf das Speicherkonto zuzugreifen.
+- You should rotate storage account keys regularly to help ensure that your storage account is not accessed by unauthorized users.
+- Periodically, your Azure administrator should change or regenerate the primary or secondary key by using the Storage section of the Azure classic portal to directly access the storage account.
 
 
-## Schützen von Daten durch Verschlüsselung
+## <a name="protect-data-via-encryption"></a>Protect data via encryption
 
-In der folgenden Tabelle werden die Verschlüsselungsalgorithmen beschrieben, die von der Azure StorSimple-Lösung zum Schutz von gespeicherten oder in der Übertragung befindlichen Daten verwendet werden.
+StorSimple uses the following encryption algorithms to protect data stored in or traveling between the components of your StorSimple solution.
 
-| Algorithmus | Schlüssellänge | Protokolle/Anwendungen/Kommentare |
+| Algorithm | Key length | Protocols/applications/comments |
 | --------- | ---------- | ------------------------------- |
-| RSA | 2048 | RSA PKCS 1 v1.5 wird vom klassischen Azure-Portal verwendet, um Konfigurationsdaten zu verschlüsseln, die an das Gerät gesendet werden. Beispiel: Anmeldeinformationen für Speicherkonten, StorSimple-Gerätekonfiguration und Verschlüsselungsschlüssel für Cloudspeicher. |
-| AES | 256 | AES mit CBC wird zum Verschlüsseln des öffentlichen Teils des Verschlüsselungsschlüssels für Dienstdaten verwendet, bevor dieser vom StorSimple-Gerät zum klassischen Azure-Portal gesendet wird. Er wird auch vom StorSimple-Gerät verwendet, um Daten zu verschlüsseln, bevor diese zum Cloud-Speicherkonto gesendet werden. |
+| RSA       | 2048       | RSA PKCS 1 v1.5 is used by the Azure classic portal to encrypt configuration data that is sent to the device: for example, storage account credentials, StorSimple device configuration, and cloud storage encryption keys. |
+| AES       | 256        | AES with CBC is used to encrypt the public portion of the service data encryption key before it is sent to the Azure classic portal from the StorSimple device. It is also used by the StorSimple device to encrypt data before the data is sent to the cloud storage account. |
 
 
-## Sicherheit für virtuelle Geräte bei StorSimple
+## <a name="storsimple-virtual-device-security"></a>StorSimple virtual device security
 
-[AZURE.INCLUDE [Sicherheit für virtuelle Geräte bei StorSimple](../../includes/storsimple-virtual-device-security.md)]
+[AZURE.INCLUDE [storsimple virtual device security](../../includes/storsimple-virtual-device-security.md)]
 
-## Häufig gestellte Fragen (FAQ)
+## <a name="frequently-asked-questions-(faq)"></a>Frequently asked questions (FAQ)
 
-Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsoft Azure StorSimple.
+The following are some questions and answers about security and Microsoft Azure StorSimple.
 
-**F:** Mein Dienst ist gefährdet. Was ist als Nächstes zu tun?
+**Q:** My service is compromised. What should be my next steps?
 
-**A:** Sie sollten sofort den Verschlüsselungsschlüssel für Dienstdaten und die Speicherkontoschlüssel des Speicherkontos ändern, das für die Datenstaffelung verwendet wird. Anweisungen dazu finden Sie unter:
+**A:** You should immediately change the service data encryption key and the storage account keys for the storage account that is being used for tiering data. For instructions, go to: 
 
-- [Ändern des Verschlüsselungsschlüssels für Dienstdaten](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
-- [Schlüsselrotation von Speicherkonten](storsimple-manage-storage-accounts.md#key-rotation-of-storage-accounts)
+- [Change the service data encryption key](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+- [Key rotation of storage accounts](storsimple-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**F:** Ich habe ein neues StorSimple-Gerät, für das ich den Dienstregistrierungsschlüssel eingeben muss. Wie kann ich diesen abrufen?
+**Q:** I have a new StorSimple device that is asking for the service registration key. How do I retrieve it?
 
-**A:** Dieser Schlüssel wurde erstellt, als Sie den StorSimple Manager-Dienst erstmals angelegt haben. Wenn Sie eine Verbindung mit dem Gerät mithilfe des StorSimple-Manager-Diensts herstellen, können Sie den Dienstregistrierungsschlüssel auf der Seite "Schnellstart" des Diensts anzeigen oder erneut generieren. Das Generieren eines neuen Dienstregistrierungsschlüssels wirkt sich nicht auf die vorhandenen registrierten Geräte aus. Anweisungen dazu finden Sie unter:
+**A:** This key was created when you first created the StorSimple Manager service. When you use the StorSimple Manager service to connect to the device, you can use the service quick start page to view or regenerate the service registration key. Generating a new service registration key will not affect the existing registered devices. For instructions, go to:
 
-- [Anzeigen oder Neugenerieren des Dienstregistrierungsschlüssels](storsimple-service-dashboard.md#view-or-regenerate-the-service-registration-key)
+- [View or regenerate the service registration key](storsimple-service-dashboard.md#view-or-regenerate-the-service-registration-key)
 
-**F:** Ich habe meinen Verschlüsselungsschlüssel für Dienstdaten verloren. Wie gehe ich vor?
+**Q:** I lost my service data encryption key. What do I do?
 
-**A:** Wenden Sie sich an den Microsoft-Support. Der Support kann sich in einer Supportsitzung bei Ihrem Gerät anmelden und Ihnen helfen, den Schlüssel abzurufen (vorausgesetzt, dass mindestens ein Gerät online ist). Sie sollten den Verschlüsselungsschlüssel für Dienstdaten sofort nach Erhalt ändern, damit der neue Schlüssel nur Ihnen bekannt ist. Anweisungen dazu finden Sie unter:
+**A:** Contact Microsoft Support. They can log on to a support session on your device and help you retrieve the key (provided at least one device is online). Immediately after you obtain the service data encryption key, you should change it to ensure that the new key is known only to you. For instructions, go to:
 
-- [Ändern des Verschlüsselungsschlüssels für Dienstdaten](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+- [Change the service data encryption key](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
 
-**F:** Ich habe ein Gerät für die Änderung des Verschlüsselungsschlüssels für Dienstdaten autorisiert, aber den Änderungsvorgang nicht gestartet. Wie sollte ich vorgehen?
+**Q:**  I authorized a device for a service data encryption key change, but did not start the key change process. What should I do?
 
-**A:** Wenn der Timeoutzeitraum abgelaufen ist, müssen Sie das Gerät zur Änderung des Verschlüsselungsschlüssels für Dienstdaten erneut autorisieren und den Vorgang neu starten.
+**A:** If the time-out period has expired, you will need to reauthorize the device for the service data encryption key change and start the process again.
 
-**F:** Ich habe den Verschlüsselungsschlüssel für Dienstdaten geändert, konnte die anderen Geräte aber nicht innerhalb von 4 Stunden aktualisieren. Muss ich jetzt von vorn beginnen?
+**Q:**  I changed the service data encryption key, but I was not able to update the other devices within 4 hours. Do I have to start again?
 
-**A:** Der Zeitraum von 4 Stunden bezieht sich nur auf das Einleiten der Änderung. Nachdem die Änderung auf dem autorisierten StorSimple-Gerät gestartet wurde, ist sie gültig, bis alle Geräte aktualisiert wurden.
+**A:** The 4-hour time period is only for initiating the change. After you start the update process on the authorized StorSimple device, the authorization is valid until all devices are updated.
 
-**F:** Unser StorSimple-Administrator hat das Unternehmen verlassen. Wie sollte ich vorgehen?
+**Q:** Our StorSimple administrator has left the company. What should I do?
 
-**A:** Sie sollten die Kennwörter für den Zugriff auf das StorSimple-Gerät ändern und zurücksetzen und den Verschlüsselungsschlüssel für Dienstdaten ändern, um zu gewährleisten, dass die neuen Informationen unbefugten Dritten nicht bekannt sind. Anweisungen dazu finden Sie unter:
+**A:** Change and reset the passwords that allow access to the StorSimple device, and change the service data encryption key to ensure that the new information is not known to unauthorized personnel. For instructions, go to:
 
-- [Verwenden des StorSimple Manager-Diensts, um StorSimple-Kennwörter zu ändern](storsimple-change-passwords.md)
-- [Ändern des Verschlüsselungsschlüssels für Dienstdaten](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
-- [Konfigurieren von CHAP für Ihr StorSimple-Gerät](storsimple-configure-chap.md)
+- [Use the StorSimple Manager service to change your storsimple passwords](storsimple-change-passwords.md)
+- [Change the service data encryption key](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+- [Configure CHAP for your StorSimple device](storsimple-configure-chap.md)
 
-**F:** Ich möchte das Kennwort für den StorSimple Snapshot Manager auf einem Host bereitstellen, der eine Verbindung mit dem StorSimple-Gerät herstellt, aber das Kennwort ist nicht verfügbar. Was kann ich tun?
+**Q:** I want to provide the StorSimple Snapshot Manager password to a host that is connecting to the StorSimple device, but the password is not available. What can I do?
 
-**A:** Wenn Sie das Kennwort vergessen haben, müssen Sie ein neues erstellen. Stellen Sie anschließend sicher, dass Sie alle vorhandenen Benutzer über die Kennwortänderung sowie darüber informieren, dass sie ihre Clients aktualisieren müssen, damit diese das neue Kennwort verwenden. Anweisungen dazu finden Sie unter:
+**A:** If you have forgotten the password, you should create a new one. Then, be sure to inform all existing users that the password has been changed and that they should update their clients to use the new password. For instructions, go to:
 
-- [Ändern des StorSimple Snapshot Manager-Kennworts](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)
-- [Authentifizieren eines Geräts](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
+- [Change the StorSimple Snapshot Manager password](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)
+- [Authenticate a device](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**F:** Das Zertifikat für den Remotezugriff auf Windows PowerShell für StorSimple wurde auf dem Gerät geändert. Wie kann ich meine Remotezugriffsclients aktualisieren?
+**Q:** The certificate for remote access to the Windows PowerShell for StorSimple has been changed on the device. How do I update my remote access clients?
 
-**A:** Sie können das neue Zertifikat aus dem StorSimple Manager-Dienst herunterladen und dann für die Installation im Zertifikatspeicher der Remotezugriffsclients bereitstellen. Anweisungen dazu finden Sie unter:
+**A:** You can download the new certificate from the StorSimple Manager service, and then provide it to be installed in the certificate store of your remote access clients. For instructions, go to:
 
-- [Cmdlet "Import-Certificate"](https://technet.microsoft.com/library/hh848630.aspx)
+- [Import-Certificate cmdlet](https://technet.microsoft.com/library/hh848630.aspx)
 
-**F:** Sind meine Daten im Fall einer Gefährdung des StorSimple Manager-Diensts geschützt?
+**Q:** Is my data protected if the StorSimple Manager service is compromised?
 
-**A:** Die Dienstkonfigurationsdaten werden stets mit Ihrem öffentlichen Schlüssel verschlüsselt, wenn Sie diese in einem Webbrowser anzeigen. Da der Dienst keinen Zugriff auf den privaten Schlüssel hat, ist er nicht in der Lage, Daten offenzulegen. Die Gefährdung des StorSimple-Manager-Diensts hat keine weiteren Auswirkungen, da im StorSimple-Manager-Dienst keine Schlüssel gespeichert sind.
+**A:** Service configuration data is always encrypted with your public key when you view it in a web browser. Because the service doesn’t have access to the private key, the service will not be able to see any data. If the StorSimple Manager service is compromised, there is no impact, as there are no keys stored in the StorSimple Manager service.
 
-**F:** Sind meine Daten gefährdet, falls jemand an das Datenverschlüsselungszertifikat gelangt?
+**Q:** If someone gains access to the data encryption certificate, will my data be compromised?
 
-**A:** Der Datenverschlüsselungsschlüssel (PFX-Datei) von Kunden wird in Microsoft Azure in einem verschlüsselten Format gespeichert. Da die PFX-Datei verschlüsselt ist und der StorSimple-Dienst nicht über den Verschlüsselungsschlüssel für Dienstdaten verfügt und folglich die PFX-Datei nicht entschlüsseln kann, reicht der bloße Zugriff auf die PFX-Datei nicht aus, um vertrauliche Daten offenzulegen.
+**A:** Microsoft Azure stores the customer’s data encryption key (.pfx file) in an encrypted format. Because the .pfx file is encrypted and the StorSimple service doesn’t have the service data encryption key to decrypt the .pfx file, simply getting access to the .pfx file will not expose any secrets.
 
-**F:** Was geschieht, wenn Microsoft von einer Behörde aufgefordert wird, meine Daten offenzulegen?
+**Q:** What happens if a governmental entity asks Microsoft for my data?
 
-**A:** Da alle Daten im Dienst verschlüsselt werden und der private Schlüssel im Gerät verbleibt, muss die Behörde die Daten direkt vom Kunden anfordern.
+**A:** Because all of the data is encrypted on the service and the private key is kept with the device, the governmental entity must ask the customer for the data. 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Bereitstellen von StorSimple-Geräten](storsimple-deployment-walkthrough.md).
+[Deploy your StorSimple device](storsimple-deployment-walkthrough.md).
  
 
-<!---HONumber=AcomDC_0511_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

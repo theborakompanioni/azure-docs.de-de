@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Testability: Dienstkommunikation | Microsoft Azure"
-   description="Die Kommunikation von Dienst zu Dienst ist ein wichtiger Integrationspunkt einer Service Fabric-Anwendung. In diesem Artikel werden Entwurfsaspekte und Testverfahren beschrieben."
+   pageTitle="Testability: Service communication | Microsoft Azure"
+   description="Service-to-service communication is a critical integration point of a Service Fabric application. This article discusses design considerations and testing techniques."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -16,42 +16,43 @@
    ms.date="07/06/2016"
    ms.author="vturecek"/>
 
-# Service Fabric-Testability-Szenarien: Dienstkommunikation
 
-Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.
+# <a name="service-fabric-testability-scenarios:-service-communication"></a>Service Fabric testability scenarios: Service communication
 
-Die Kommunikation von Dienst zu Dienst ist ein entscheidender Integrationspunkt einer Anwendung, da von jedem Dienst eine Remote-API für andere Dienste verfügbar gemacht wird. Die Verwendung einer Gruppe von API-Grenzen mit E/A erfordert häufig besondere Sorgfalt und einen relativ hohen Test- und Überprüfungsaufwand.
+Microservices and service-oriented architectural styles surface naturally in Azure Service Fabric. In these types of distributed architectures, componentized microservice applications are typically composed of multiple services that need to talk to each other. In even the simplest cases, you generally have at least a stateless web service and a stateful data storage service that need to communicate.
 
-Es gibt viele Punkte, die beachtet werden müssen, wenn diese Dienstgrenzen in einem verteilten System miteinander verknüpft sind:
+Service-to-service communication is a critical integration point of an application, because each service exposes a remote API to other services. Working with a set of API boundaries that involves I/O generally requires some care, with a good amount of testing and validation.
 
- - *Transportprotokoll*: Nutzen Sie HTTP, um für eine bessere Interoperabilität zu sorgen, oder ein benutzerdefiniertes binäres Protokoll, um einen maximalen Durchsatz zu erzielen?
- - *Fehlerbehandlung*: Wie werden dauerhafte und vorübergehende Fehler behandelt? Was geschieht, wenn ein Dienst auf einen anderen Knoten verschoben wird?
- - *Timeouts und Wartezeit*: Wie behandeln die einzelnen Dienstschichten in Anwendungen mit mehreren Ebenen die Wartezeit über den Stapel und zum Benutzer?
+There are numerous considerations to make when these service boundaries are wired together in a distributed system:
 
-Das Testen der Interaktion zwischen Ihren Diensten ist wichtig, um die Resilienz Ihrer Anwendung sicherzustellen. Dabei spielt es keine Rolle, ob Sie eine der integrierten Komponenten für die Dienstkommunikation von Service Fabric verwenden oder eine eigene Komponente erstellen.
+ - *Transport protocol*. Will you use HTTP for increased interoperability, or a custom binary protocol for maximum throughput?
+ - *Error handling*. How will permanent and transient errors be handled? What will happen when a service moves to a different node?
+ - *Timeouts and latency*. In multitiered applications, how will each service layer handle latency through the stack and to the user?
 
-## Vorbereiten von Dienste auf das Verschieben
+Whether you use one of the built-in service communication components provided by Service Fabric or you build your own, testing the interactions between your services is critical to ensuring resiliency in your application.
 
-Dienstinstanzen können im Laufe der Zeit verschoben werden. Dies gilt insbesondere, wenn sie mit Auslastungsmetriken für einen maßgeschneiderten optimalen Lastenausgleich für Ressourcen konfiguriert werden. Service Fabric verschiebt Ihre Dienstinstanzen zur Maximierung der Verfügbarkeit sogar während Upgrades, Failovers, horizontalem Hochskalieren und verschiedenen anderen Situationen, die während der Lebensdauer eines verteilten Systems eintreten.
+## <a name="prepare-for-services-to-move"></a>Prepare for services to move
 
-Wenn Dienste im Cluster verschoben werden, gibt es zwei Szenarien, auf deren Behandlung Ihre Clients und Dienste bei der Kommunikation mit einem Dienst vorbereitet sein sollten:
+Service instances may move around over time. This is especially true when they are configured with load metrics for custom-tailored optimal resource balancing. Service Fabric moves your service instances to maximize their availability even during upgrades, failovers, scale-out, and other situations that occur over the lifetime of a distributed system.
 
-- Die Dienstinstanz oder das Partitionsreplikat wurden verschoben, seitdem Sie das letzte Mal damit kommuniziert haben. Dies ist ein normaler Bestandteil eines Dienstlebenszyklus, und es ist zu erwarten, dass dies während der Lebensdauer Ihrer Anwendung vorkommt.
-- Die Dienstinstanz oder das Partitionsreplikat wird gerade verschoben. Obwohl der Failovervorgang eines Diensts von einem Knoten auf einen anderen Knoten in Service Fabric sehr schnell erfolgt, kann es bei der Verfügbarkeit zu einer Verzögerung kommen, falls die Kommunikationskomponente Ihrer Dienste langsam gestartet werden.
+As services move around in the cluster, your clients and other services should be prepared to handle two scenarios when they talk to a service:
 
-Die ordnungsgemäße Behandlung dieser Szenarien ist wichtig dafür, dass das System reibungslos ausgeführt werden kann. Bedenken Sie dazu Folgendes:
+- The service instance or partition replica has moved since the last time you talked to it. This is a normal part of a service lifecycle, and it should be expected to happen during the lifetime of your application.
+- The service instance or partition replica is in the process of moving. Although failover of a service from one node to another occurs very quickly in Service Fabric, there may be a delay in availability if the communication component of your service is slow to start.
 
-- Jeder Dienst, mit dem eine Verbindung hergestellt werden kann, verfügt über eine *Adresse*, die er überwacht (z. B. HTTP oder WebSockets). Wenn eine Dienstinstanz oder Partition verschoben wird, ändert sich der dazugehörige Adressendpunkt. (Er wechselt zu einem anderen Knoten mit einer anderen IP-Adresse.) Wenn Sie die integrierten Kommunikationskomponenten verwenden, werden darüber die Dienstadressen neu für Sie aufgelöst.
-- Unter Umständen kann es zu einem vorübergehenden Anstieg der Dienstwartezeit kommen, während die Dienstinstanz ihren Listener neu startet. Dies hängt davon ab, wie schnell der Dienst den Listener öffnet, nachdem die Instanz verschoben wurde.
-- Alle vorhandenen Verbindungen müssen geschlossen und wieder geöffnet werden, nachdem der Dienst einen neuen Knoten öffnet. Beim ordnungsgemäßen Herunterfahren oder Neustart eines Knotens wird Zeit dafür veranschlagt, die für das ordnungsgemäße Herunterfahren vorhandener Verbindungen anfällt.
+Handling these scenarios gracefully is important for a smooth-running system. To do so, keep in mind that:
 
-### Testen: Verschieben von Dienstinstanzen
+- Every service that can be connected to has an *address* that it listens on (for example, HTTP or WebSockets). When a service instance or partition moves, its address endpoint changes. (It moves to a different node with a different IP address.) If you're using the built-in communication components, they will handle re-resolving service addresses for you.
+- There may be a temporary increase in service latency as the service instance starts up its listener again. This depends on how quickly the service opens the listener after the service instance is moved.
+- Any existing connections need to be closed and reopened after the service opens on a new node. A graceful node shutdown or restart allows time for existing connections to be shut down gracefully.
 
-Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Testen dieser Situationen auf unterschiedliche Weise erstellen.
+### <a name="test-it:-move-service-instances"></a>Test it: Move service instances
 
-1. Verschieben Sie das primäre Replikat eines zustandsbehafteten Diensts.
+By using Service Fabric's testability tools, you can author a test scenario to test these situations in different ways:
 
-    Das primäre Replikat einer zustandsbehafteten Dienstpartition kann aus verschiedenen Gründen verschoben werden. Nutzen Sie dies für das primäre Replikat einer bestimmten Partition, um auf kontrollierte Weise zu ermitteln, wie Ihre Dienste auf die Verschiebung reagieren.
+1. Move a stateful service's primary replica.
+
+    The primary replica of a stateful service partition can be moved for any number of reasons. Use this to target the primary replica of a specific partition to see how your services react to the move in a very controlled manner.
 
     ```powershell
 
@@ -59,11 +60,11 @@ Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Te
 
     ```
 
-2. Beenden Sie einen Knoten.
+2. Stop a node.
 
-    Wenn ein Knoten beendet wird, verschiebt Service Fabric alle Dienstinstanzen oder -partitionen, die sich auf dem Knoten befunden haben, auf einen der anderen verfügbaren Knoten im Cluster. Nutzen Sie dies zum Testen einer Situation, in der ein Knoten in Ihrem Cluster verloren geht und alle Dienstinstanzen und Replikate auf dem Knoten verschoben werden müssen.
+    When a node is stopped, Service Fabric moves all of the service instances or partitions that were on that node to one of the other available nodes in the cluster. Use this to test a situation where a node is lost from your cluster and all of the service instances and replicas on that node have to move.
 
-    Sie können einen Knoten mithilfe des PowerShell-Cmdlets **Stop-ServiceFabricNode** beenden:
+    You can stop a node by using the PowerShell **Stop-ServiceFabricNode** cmdlet:
 
     ```powershell
 
@@ -71,17 +72,17 @@ Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Te
 
     ```
 
-## Aufrechterhalten der Dienstverfügbarkeit
+## <a name="maintain-service-availability"></a>Maintain service availability
 
-Service Fabric ist eine Plattform, mit der für Ihre Dienste eine hohe Verfügbarkeit erzielt werden soll. In Extremfällen können zugrunde liegende Infrastrukturprobleme trotzdem noch zum Ausfall der Verfügbarkeit führen. Es ist wichtig, auch für diese Szenarien Tests durchzuführen.
+As a platform, Service Fabric is designed to provide high availability of your services. But in extreme cases, underlying infrastructure problems can still cause unavailability. It is important to test for these scenarios, too.
 
-Für zustandsbehaftete Dienste wird ein quorumbasiertes System zum Replizieren des Zustands mit dem Ziel einer hohen Verfügbarkeit verwendet. Dies bedeutet, dass ein Quorum von Replikaten verfügbar sein muss, um Schreibvorgänge ausführen zu können. In seltenen Fällen, z. B. bei einem umfangreicheren Hardwarefehler, ist unter Umständen kein Quorum von Replikaten verfügbar. Sie können dann keine Schreibvorgänge ausführen, während Lesevorgänge weiterhin möglich sind.
+Stateful services use a quorum-based system to replicate state for high availability. This means that a quorum of replicas needs to be available to perform write operations. In rare cases, such as a widespread hardware failure, a quorum of replicas may not be available. In these cases, you will not be able to perform write operations, but you will still be able to perform read operations.
 
-### Testen: Nichtverfügbarkeit von Schreibvorgängen
+### <a name="test-it:-write-operation-unavailability"></a>Test it: Write operation unavailability
 
-Mithilfe der Testability-Tools in Service Fabric können Sie als Test einen Fehler einfügen, der Quorumverlust ausgelöst. Ein solches Szenario ist zwar selten, aber es ist trotzdem ist es wichtig, dass Clients und Dienste, die von einem zustandsbehafteten Dienst abhängig sind, auf die Behandlung von Situationen vorbereitet sind, in denen keine Schreibanforderungen an den Dienst möglich sind. Außerdem ist es wichtig, dass der zustandsbehaftete Dienst selbst über diese Möglichkeit informiert ist und mit Aufrufern ordnungsgemäß kommunizieren kann.
+By using the testability tools in Service Fabric, you can inject a fault that induces quorum loss as a test. Although such a scenario is rare, it is important that clients and services that depend on a stateful service are prepared to handle situations where they cannot make write requests to it. It is also important that the stateful service itself is aware of this possibility and can gracefully communicate it to callers.
 
-Mithilfe des PowerShell-Cmdlets **Invoke-ServiceFabricPartitionQuorumLoss** kann Quorumverlust ausgelöst werden:
+You can induce quorum loss by using the PowerShell **Invoke-ServiceFabricPartitionQuorumLoss** cmdlet:
 
 ```powershell
 
@@ -89,12 +90,16 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-In diesem Beispiel wird `QuorumLossMode` auf `QuorumReplicas` festgelegt, um anzugeben, dass ein Quorumverlust ausgelöst werden soll, ohne alle Replikate herunterzufahren. Auf diese Weise sind Lesevorgänge weiterhin möglich. Um ein Szenario zu testen, in dem eine gesamte Partition nicht verfügbar ist, können Sie diesen Schalter auf `AllReplicas` festlegen.
+In this example, we set `QuorumLossMode` to `QuorumReplicas` to indicate that we want to induce quorum loss without taking down all replicas. This way, read operations are still possible. To test a scenario where an entire partition is unavailable, you can set this switch to `AllReplicas`.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Weitere Informationen zu Testability-Aktionen](service-fabric-testability-actions.md)
+[Learn more about testability actions](service-fabric-testability-actions.md)
 
-[Weitere Informationen zu Testability-Szenarien](service-fabric-testability-scenarios.md)
+[Learn more about testability scenarios](service-fabric-testability-scenarios.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

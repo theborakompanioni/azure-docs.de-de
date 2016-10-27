@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Analysieren von Daten im Data Lake-Speicher mithilfe von Power BI | Azure"
-   description="Analysieren von im Azure Data Lake-Speicher gespeicherten Daten mithilfe von Power BI"
+   pageTitle="Analyze data in Data Lake Store by using Power BI | Microsoft Azure"
+   description="Use Power BI to analyze data stored in Azure Data Lake Store"
    services="data-lake-store" 
    documentationCenter=""
    authors="nitinme"
@@ -13,116 +13,119 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/18/2016"
+   ms.date="10/05/2016"
    ms.author="nitinme"/>
 
-# Analysieren von Daten im Data Lake-Speicher mithilfe von Power BI
 
-In diesem Artikel erfahren Sie, wie Sie Power BI Desktop verwenden, um Daten im Azure Data Lake-Speicher zu analysieren und zu visualisieren.
+# <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>Analyze data in Data Lake Store by using Power BI
 
-## Voraussetzungen
+In this article you will learn how to use Power BI Desktop to analyze and visualize data stored in Azure Data Lake Store.
 
-Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+Before you begin this tutorial, you must have the following:
 
-- **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
 
-- **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus. In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Data Lake-Speicherkonto erstellt, **mybidatalakestore** aufgerufen und eine Beispieldatendatei (**Drivers.txt**) geladen haben. Diese Beispieldatei kann aus dem [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt) heruntergeladen werden.
+- **Azure Data Lake Store account**. Follow the instructions at [Get started with Azure Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md). This article assumes that you have already created a Data Lake Store account, called **mybidatalakestore**, and uploaded a sample data file (**Drivers.txt**) to it. This sample file is available for download from [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
 
-- **Power BI Desktop** Sie können das Tool aus dem [Microsoft Download Center](https://www.microsoft.com/de-DE/download/details.aspx?id=45331) herunterladen.
+- **Power BI Desktop**. You can download this from [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 
-## Erstellen eines Berichts in Power BI Desktop
+## <a name="create-a-report-in-power-bi-desktop"></a>Create a report in Power BI Desktop
 
-1. Starten Sie Power BI Desktop auf Ihrem Computer.
+1. Launch Power BI Desktop on your computer.
 
-2. Klicken Sie auf dem Menüband **Start** auf **Daten abrufen** und dann auf „Mehr“. Klicken Sie im Dialogfeld **Daten abrufen** auf **Azure**. Klicken Sie auf **Azure Data Lake-Speicher** und dann auf **Verbinden**.
+2. From the **Home** ribbon, click **Get Data**, and then click More. In the **Get Data** dialog box, click **Azure**, click **Azure Data Lake Store**, and then click **Connect**.
 
-	![Herstellen einer Verbindung mit dem Data Lake-Speicher](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Herstellen einer Verbindung mit dem Data Lake-Speicher")
+    ![Connect to Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Connect to Data Lake Store")
 
-3. Wenn ein Dialogfeld anzeigt, dass der Connector sich in der Entwicklungsphase befindet, klicken Sie auf die Option zum Fortfahren.
+3. If you see a dialog box about the connector being in a development phase, opt to continue.
 
-4. Geben Sie im Dialogfeld **Microsoft Azure Data Lake-Speicher** die URL zu Ihrem Data Lake-Speicherkonto an, und klicken Sie dann auf **OK**.
+4. In the **Microsoft Azure Data Lake Store** dialog box, provide the URL to your Data Lake Store account, and then click **OK**.
 
-	![URL für den Data Lake-Speicher](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "URL für den Data Lake-Speicher")
+    ![URL for Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "URL for Data Lake Store")
 
-5. Klicken Sie im nächsten Dialogfeld auf **Anmelden**, um sich beim Data Lake-Speicherkonto anzumelden. Sie werden zur Anmeldeseite Ihrer Organisation weitergeleitet. Folgen Sie den Anweisungen, um sich beim Konto anzumelden.
+5. In the next dialog box, click **Sign in** to sign into Data Lake Store account. You will be redirected to your organization's sign in page. Follow the prompts to sign into the account.
 
-	![Anmelden am Data Lake-Speicher](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Anmelden am Data Lake-Speicher")
+    ![Sign into Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Sign into Data Lake Store")
 
-6. Wenn Sie sich erfolgreich angemeldet haben, klicken Sie auf **Verbinden**.
+6. After you have successfully signed in, click **Connect**.
 
-	![Herstellen einer Verbindung mit dem Data Lake-Speicher](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Herstellen einer Verbindung mit dem Data Lake-Speicher")
+    ![Connect to Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Connect to Data Lake Store")
 
-7. Das nächste Dialogfeld zeigt die Datei, die Sie in Ihr Data Lake-Speicherkonto hochgeladen haben. Überprüfen Sie die Informationen, und klicken Sie dann auf **Laden**.
+7. The next dialog box shows the file that you uploaded to your Data Lake Store account. Verify the info and then click **Load**.
 
-	![Laden von Daten aus dem Data Lake-Speicher](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Laden von Daten aus dem Data Lake-Speicher")
+    ![Load data from Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Load data from Data Lake Store")
 
-8. Nachdem die Daten erfolgreich in Power BI geladen wurden, werden auf der Registerkarte **Felder** folgende Felder angezeigt.
+8. After the data has been successfully loaded into Power BI, you will see the following fields in the **Fields** tab.
 
-	![Importierte Felder](./media/data-lake-store-power-bi/imported-fields.png "Importierte Felder")
+    ![Imported fields](./media/data-lake-store-power-bi/imported-fields.png "Imported fields")
 
-	Um die Daten visualisieren und analysieren zu können, sollten sie jedoch gemäß der folgenden Felder verfügbar sein:
+    However, to visualize and analyze the data, we prefer the data to be available per the following fields
 
-	![Gewünschte Felder](./media/data-lake-store-power-bi/desired-fields.png "Gewünschte Felder")
+    ![Desired fields](./media/data-lake-store-power-bi/desired-fields.png "Desired fields")
 
-	In den nächsten Schritten aktualisieren wir die Abfrage, sodass die importierten Daten in das gewünschte Format konvertiert werden.
+    In the next steps, we will update the query to convert the imported data in the desired format.
 
-9. Klicken Sie auf dem Menüband **Start** auf **Abfragen bearbeiten**.
+9. From the **Home** ribbon, click **Edit Queries**.
 
-	![Abfragen bearbeiten](./media/data-lake-store-power-bi/edit-queries.png "Abfragen bearbeiten")
+    ![Edit queries](./media/data-lake-store-power-bi/edit-queries.png "Edit queries")
 
-10. Klicken Sie im Abfrage-Editor unter der Spalte **Inhalt** auf **Binär**.
+10. In the Query Editor, under the **Content** column, click **Binary**.
 
-	![Abfragen bearbeiten](./media/data-lake-store-power-bi/convert-query1.png "Abfragen bearbeiten")
+    ![Edit queries](./media/data-lake-store-power-bi/convert-query1.png "Edit queries")
 
-11. Es wird ein Dateisymbol angezeigt, das die von Ihnen hochgeladene Datei **Drivers.txt** darstellt. Klicken Sie mit der rechten Maustaste auf die Datei, und klicken Sie auf **CSV**.
+11. You will see a file icon, that represents the **Drivers.txt** file that you uploaded. Right-click the file, and click **CSV**.  
 
-	![Abfragen bearbeiten](./media/data-lake-store-power-bi/convert-query2.png "Abfragen bearbeiten")
+    ![Edit queries](./media/data-lake-store-power-bi/convert-query2.png "Edit queries")
 
-12. Es sollte eine Ausgabe wie unten angezeigt werden. Ihre Daten stehen jetzt in einem Format zur Verfügung, das Sie zum Erstellen von Visualisierungen verwenden können.
+12. You should see an output as shown below. Your data is now available in a format that you can use to create visualizations.
 
-	![Abfragen bearbeiten](./media/data-lake-store-power-bi/convert-query3.png "Abfragen bearbeiten")
+    ![Edit queries](./media/data-lake-store-power-bi/convert-query3.png "Edit queries")
 
-13. Klicken Sie auf dem Menüband **Start** auf **Schließen und übernehmen** und dann auf **Schließen & übernehmen**.
+13. From the **Home** ribbon, click **Close and Apply**, and then click **Close and Apply**.
 
-	![Abfragen bearbeiten](./media/data-lake-store-power-bi/load-edited-query.png "Abfragen bearbeiten")
+    ![Edit queries](./media/data-lake-store-power-bi/load-edited-query.png "Edit queries")
 
-14. Sobald die Abfrage aktualisiert wurde, zeigt die Registerkarte **Felder** die neuen Felder, die zur Visualisierung verfügbar sind.
+14. Once the query is updated, the **Fields** tab will show the new fields available for visualization.
 
-	![Aktualisierte Felder](./media/data-lake-store-power-bi/updated-query-fields.png "Aktualisierte Felder")
+    ![Updated fields](./media/data-lake-store-power-bi/updated-query-fields.png "Updated fields")
 
-15. Erstellen wir nun ein Kreisdiagramm, um für ein bestimmtes Land die Fahrer in jeder Stadt darzustellen. Wählen Sie dazu folgende Optionen aus.
+15. Let us create a pie chart to represent the drivers in each city for a given country. To do so, make the following selections.
 
-	1. Klicken Sie auf der Registerkarte „Visualisierungen“ auf das Symbol für ein Kreisdiagramm.
+    1. From the Visualizations tab, click the symbol for a pie chart.
 
-		![Kreisdiagramm erstellen](./media/data-lake-store-power-bi/create-pie-chart.png "Kreisdiagramm erstellen")
+        ![Create pie chart](./media/data-lake-store-power-bi/create-pie-chart.png "Create pie chart")
 
-	2. Wir verwenden folgende Spalten: **Spalte 4** (Name der Stadt) und **Spalte 7** (Name des Landes). Ziehen Sie diese Spalten aus der Registerkarte **Felder** auf die Registerkarte **Visualisierungen**, wie unten gezeigt.
+    2. The columns that we are going to use are **Column 4** (name of the city) and **Column 7** (name of the country). Drag these columns from **Fields** tab to **Visualizations** tab as shown below.
 
-		![Erstellen von Visualisierungen](./media/data-lake-store-power-bi/create-visualizations.png "Erstellen von Visualisierungen")
+        ![Create visualizations](./media/data-lake-store-power-bi/create-visualizations.png "Create visualizations")
 
-	3. Das Kreisdiagramm sollte nun wie das unten gezeigte aussehen.
+    3. The pie chart should now resemble like the one shown below.
 
-		![Kreisdiagramm](./media/data-lake-store-power-bi/pie-chart.png "Erstellen von Visualisierungen")
+        ![Pie chart](./media/data-lake-store-power-bi/pie-chart.png "Create visualizations")
 
-16. Indem Sie aus den Filtern auf Seitenebene ein bestimmtes Land auswählen, können Sie die Anzahl von Fahrern in jeder Stadt des ausgewählten Landes anzeigen. Wählen Sie z.B. auf der Registerkarte **Visualisierungen** unter **Filter auf Seitenebene** als Land **Brasilien** aus.
+16. By selecting a specific country from the page level filters, you can now see the number of drivers in each city of the selected country. For example, under the **Visualizations** tab, under **Page level filters**, select **Brazil**.
 
-	![Land auswählen](./media/data-lake-store-power-bi/select-country.png "Land auswählen")
+    ![Select a country](./media/data-lake-store-power-bi/select-country.png "Select a country")
 
-17. Das Kreisdiagramm wird automatisch aktualisiert und zeigt die Fahrer in den brasilianischen Städten an.
+17. The pie chart is automatically updated to display the drivers in the cities of Brazil.
 
-	![Fahrer in einem Land](./media/data-lake-store-power-bi/driver-per-country.png "Fahrer nach Land")
+    ![Drivers in a country](./media/data-lake-store-power-bi/driver-per-country.png "Drivers per country")
 
-18. Klicken Sie im Menü **Datei** auf **Speichern**, um die Visualisierung als Power BI Desktop-Datei zu speichern.
+18. From the **File** menu, click **Save** to save the visualization as a Power BI Desktop file.
 
-## Veröffentlichen des Berichts im Power BI-Dienst
+## <a name="publish-report-to-power-bi-service"></a>Publish report to Power BI service
 
-Nachdem Sie die Visualisierungen in Power BI Desktop erstellt haben, können Sie diese für andere Personen freigeben, indem Sie sie im Power BI-Dienst veröffentlichen. Ausführliche Anweisungen hierzu finden Sie unter [Veröffentlichen aus Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
+Once you have created the visualizations in Power BI Desktop, you can share it with others by publishing it to the Power BI service. For instructions on how to do that, see [Publish from Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
-## Siehe auch
+## <a name="see-also"></a>See also
 
-* [Analysieren von Daten im Data Lake-Speicher mit Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Analyze data in Data Lake Store using Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

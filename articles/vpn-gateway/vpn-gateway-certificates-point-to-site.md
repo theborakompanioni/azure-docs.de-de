@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Erstellen selbstsignierter Zertifikate für standortübergreifende Punkt-zu-Standort-Verbindungen mit einem virtuellen Netzwerk mithilfe von „makecert“ | Microsoft Azure"
-   description="In diesem Artikel werden die Schritte erläutert, die zum Erstellen selbstsignierter Zertifikate unter Windows 10 mithilfe von „makecert“ erforderlich sind."
+   pageTitle="Create self-signed certificates for Point-to-Site virtual network cross-premises connections by using makecert | Microsoft Azure"
+   description="This article contains steps to use makecert to create self-signed certificates on Windows 10."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -16,106 +16,110 @@
    ms.date="08/22/2016"
    ms.author="cherylmc" />
 
-# Arbeiten mit selbstsignierten Zertifikaten für Punkt-zu-Standort-Verbindungen
 
-Dieser Artikel unterstützt Sie dabei, mithilfe von **makecert** ein selbstsigniertes Zertifikat zu erstellen und aus diesem Clientzertifikate zu generieren. Die Schritte gelten für „makecert“ unter Windows 10. „makecert“ wurde für die Erstellung von Zertifikaten validiert, die mit Punkt-zu-Standort-Verbindungen kompatibel sind.
+# <a name="working-with-self-signed-certificates-for-point-to-site-connections"></a>Working with self-signed certificates for Point-to-Site connections
 
-Bei Punkt-zu-Standort-Verbindungen ist die bevorzugte Methode für Zertifikate die Verwendung Ihrer unternehmenseigenen Zertifikatlösung. Stellen Sie dabei sicher, dass Sie die Clientzertifikate im allgemeinen Format für Namenswerte „Name@Ihre\_Domäne.com“ erstellen, nicht im Format „NetBIOS-Domänenname\\Benutzername“.
+This article helps you create a self-signed certificate using **makecert**, and then generate client certificates from it. The steps are written for makecert on Windows 10. Makecert has been validated to create certificates that are compatible with P2S connections. 
 
-Wenn Sie nicht über eine Unternehmenslösung verfügen, ist ein selbstsigniertes Zertifikat erforderlich, um Punkt-zu-Standort-Clients die Verbindung mit einem virtuellen Netzwerk zu ermöglichen. Wir wissen, dass „makecert“ veraltet ist, es ist aber immer noch eine gültige Methode zum Erstellen selbstsignierter Zertifikate, die mit Punkt-zu-Standort-Verbindungen kompatibel sind. Wir arbeiten an einer anderen Lösung für das Erstellen selbstsignierter Zertifikate, aber zurzeit ist „makecert“ die bevorzugte Methode.
+For P2S connections, the preferred method for certificates is to use your enterprise certificate solution, making sure to issue the client certificates with the common name value format 'name@yourdomain.com', rather than the 'NetBIOS domain name\username' format.
 
-## Erstellen eines selbstsignierten Zertifikats
+If you don't have an enterprise solution, a self-signed certificate is necessary to allow P2S clients to connect to a virtual network. We are aware that makecert has been deprecated, but it is still a valid method for creating self-signed certificates that are compatible with P2S connections. We're working on another solution for creating self-signed certificates, but at this time, makecert is the preferred method.
 
-„makecert“ ist eine Möglichkeit zum Erstellen eines selbstsignierten Zertifikats. Die folgenden Schritte führen Sie durch die Erstellung eines selbstsignierten Zertifikats mithilfe von „makecert“. Diese Schritte gelten nicht spezifisch für ein Bereitstellungsmodell. Sie sind für das Ressourcen-Manager-Modell und das klassische Modell gültig.
+## <a name="create-a-self-signed-certificate"></a>Create a self-signed certificate
 
-### So erstellen Sie ein selbstsigniertes Zertifikat
+Makecert is one way of creating a self-signed certificate. The following steps walk you through creating a self-signed certificate using makecert. These steps are not deployment-model specific. They are valid for both Resource Manager and classic.
 
-1. Laden Sie auf einem Windows 10-Computer das [Windows Software Development Kit (SDK) für Windows 10](https://dev.windows.com/de-DE/downloads/windows-10-sdk) herunter, und installieren Sie es.
+### <a name="to-create-a-self-signed-certificate"></a>To create a self-signed certificate
 
-2. Nach der Installation finden Sie das Hilfsprogramm „makecert.exe“ unter folgendem Pfad: C:\\Programme (x86)\\Windows Kits\\10\\bin<arch>.
-		
-	Beispiel: `C:\Program Files (x86)\Windows Kits\10\bin\x64`
+1. From a computer running Windows 10, download and install the [Windows Software Development Kit (SDK) for Windows 10](https://dev.windows.com/en-us/downloads/windows-10-sdk).
 
-3. Als Nächstes erstellen und installieren Sie ein Zertifikat im Speicher für persönliche Zertifikate auf dem Computer. Das folgende Beispiel erstellt eine entsprechende *CER*-Datei, die Sie beim Konfigurieren der Punkt-zu-Standort-Verbindung in Azure hochladen. Führen Sie den folgenden Befehl als Administrator aus. Ersetzen Sie *ARMP2SRootCert* und *ARMP2SRootCert.cer* mit dem Namen, den Sie für das Zertifikat verwenden möchten.<br><br>Das Zertifikat wird sich in Ihrem Speicher „Zertifikate - Aktueller Benutzer\\Eigene Zertifikate\\Zertifikate“ befinden.
+2. After installation, you can find the makecert.exe utility under this path: C:\Program Files (x86)\Windows Kits\10\bin\<arch>. 
+        
+    Example: `C:\Program Files (x86)\Windows Kits\10\bin\x64`
 
-    	makecert -sky exchange -r -n "CN=ARMP2SRootCert" -pe -a sha1 -len 2048 -ss My "ARMP2SRootCert.cer"
+3. Next, create and install a certificate in the Personal certificate store on your computer. The following example creates a corresponding *.cer* file that you upload to Azure when configuring P2S. Run the following command, as administrator. Replace  *ARMP2SRootCert* and *ARMP2SRootCert.cer* with the name that you want to use for the certificate.<br><br>The certificate will be located in your Certificates - Current User\Personal\Certificates.
+
+        makecert -sky exchange -r -n "CN=ARMP2SRootCert" -pe -a sha1 -len 2048 -ss My "ARMP2SRootCert.cer"
 
 
-###  <a name="rootpublickey"></a>So erhalten Sie den öffentlichen Schlüssel
+###  <a name="<a-name="rootpublickey"></a>to-obtain-the-public-key"></a><a name="rootpublickey"></a>To obtain the public key
 
-Als Teil der VPN Gateway-Konfiguration für Punkt-zu-Standort-Verbindungen wird der öffentliche Schlüssel für das Stammzertifikat in Azure hochgeladen.
+As part of the VPN Gateway configuration for Point-to-Site connections, the public key for the root certificate is uploaded to Azure.
 
-1. Um eine CER-Datei aus dem Zertifikat zu erhalten, öffnen Sie **certmgr.msc**. Klicken Sie mit der rechten Maustaste auf das selbstsignierte Stammzertifikat, und klicken Sie auf **Alle Aufgaben** und dann auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent** geöffnet.
+1. To obtain a .cer file from the certificate, open **certmgr.msc**. Right-click the self-signed root certificate, click **all tasks**, and then click **export**. This opens the **Certificate Export Wizard**.
 
-2. Klicken Sie im Assistenten auf **Weiter**, wählen Sie **Nein, privaten Schlüssel nicht exportieren** aus, und klicken Sie dann auf **Weiter**.
+2. In the Wizard, click **Next**, select **No, do not export the private key**, and then click **Next**.
 
-3. Wählen Sie auf der Seite **Dateiformat für den Export** **Base-64-codiert X.509 (.CER)**. Klicken Sie auf **Weiter**.
+3. On the **Export File Format** page, select **Base-64 encoded X.509 (.CER).** Then, click **Next**. 
 
-4. Wählen Sie unter **Zu exportierende Datei** die Option **Durchsuchen**, um zu dem Speicherort zu wechseln, in den das Zertifikat exportiert werden soll. Geben Sie unter **Dateiname** einen Namen für die Zertifikatdatei ein. Klicken Sie auf **Weiter**.
+4. On the **File to Export**, **Browse** to the location to which you want to export the certificate. For **File name**, name the certificate file. Then click **Next**.
 
-5. Klicken Sie auf **Fertig stellen**, um das Zertifikat zu exportieren.
+5. Click **Finish** to export the certificate.
 
  
-### Exportieren des selbstsignierten Zertifikats (optional)
+### <a name="export-the-self-signed-certificate-(optional)"></a>Export the self-signed certificate (optional)
 
-Möglicherweise möchten Sie das selbstsignierte Zertifikat exportieren und sicher speichern. Bei Bedarf können Sie es später auf einem anderen Computer installieren und weitere Clientzertifikate generieren oder eine andere CER-Datei exportieren. Jeder Computer, auf dem ein Clientzertifikat installiert ist, das auch mit den entsprechenden VPN-Clienteinstellungen konfiguriert ist, kann über P2S eine Verbindung mit Ihrem virtuellen Netzwerk herstellen. Aus diesem Grund müssen Sie sicherstellen, dass Clientzertifikate nur bei Bedarf generiert und installiert werden, und dass das selbstsignierte Zertifikat sicher gespeichert wird.
+You may want to export the self-signed certificate and store it safely. If need be, you can later install it on another computer and generate more client certificates, or export another .cer file. Any computer with a client certificate installed and that is also configured with the proper VPN client settings can connect to your virtual network via P2S. For that reason, you want to make sure that client certificates are generated and installed only when needed and that the self-signed certificate is stored safely.
 
-Um das selbstsignierte Zertifikat als PFX-Datei zu exportieren, wählen Sie das Stammzertifikat aus und führen zum Exportieren die in [Exportieren eines Clientzertifikats](#clientkey) beschriebenen Schritte aus.
+To export the self-signed certificate as a .pfx, select the root certificate and use the same steps as described in [Export a client certificate](#clientkey) to export.
 
-## Erstellen und Installieren von Clientzertifikaten
+## <a name="create-and-install-client-certificates"></a>Create and install client certificates
 
-Das selbstsignierte Zertifikat wird nicht direkt auf dem Clientcomputer installiert. Sie müssen aus einem selbstsignierten Zertifikat ein Clientzertifikat generieren. Dieses Clientzertifikat exportieren und installieren Sie auf den Clientcomputern. Die folgenden Schritte gelten nicht für ein spezifisches Bereitstellungsmodell. Sie sind für das Ressourcen-Manager-Modell und das klassische Modell gültig.
+You don't install the self-signed certificate directly on the client computer. You need to generate a client certificate from the self-signed certificate. You then export and install the client certificate to the client computer. The following steps are not deployment-model specific. They are valid for both Resource Manager and classic.
 
-### Teil 1: Generieren eines Clientzertifikats aus einem selbstsignierten Zertifikat
+### <a name="part-1---generate-a-client-certificate-from-a-self-signed-certificate"></a>Part 1 - Generate a client certificate from a self-signed certificate
 
-Die folgenden Schritte stellen eine der Möglichkeiten dar, ein Clientzertifikat aus einem selbstsignierten Zertifikat zu generieren. Sie können mehrere Clientzertifikate aus dem gleichen Zertifikat generieren. Jedes Clientzertifikat kann anschließend exportiert und auf dem Clientcomputer installiert werden.
+The following steps walk you through one way to generate a client certificate from a self-signed certificate. You may generate multiple client certificates from the same certificate. Each client certificate can then be exported and installed on the client computer. 
 
-1. Öffnen Sie auf dem Computer, den Sie zum Erstellen des selbstsignierten Zertifikats verwendet haben, eine Eingabeaufforderung als Administrator.
+1. On the same computer that you used to create the self-signed certificate, open a command prompt as administrator.
 
-2. In diesem Beispiel steht „ARMP2SRootCert“ für das selbstsignierte Zertifikat, das Sie generiert haben.
-	- Ändern Sie *ARMP2SRootCert* in den Namen des selbstsignierten Stammzertifikats, aus dem Sie das Clientzertifikat generieren.
-	- Ändern Sie *ClientCertificateName* in den Namen, den das Clientzertifikat bekommen soll, das Sie generieren möchten.
+2. In this example, "ARMP2SRootCert" refers to the self-signed certificate that you generated. 
+    - Change *"ARMP2SRootCert"* to the name of the self-signed root that you are generating the client certificate from. 
+    - Change *ClientCertificateName* to the name you want to generate a client certificate to be. 
 
 
-	Ändern Sie das Beispiel, und führen Sie es aus, um ein Clientzertifikat zu generieren. Wenn Sie das folgende Beispiel ausführen, ohne es zu ändern, wird ein Clientzertifikat mit Namen ClientCertificateName aus dem Stammzertifikat ARMP2SRootCert generiert und in Ihrem Zertifikatspeicher „Eigene Zertifikate“ abgelegt.
+    Modify and run the sample to generate a client certificate. If you run the following example without modifying it, the result is a client certificate named ClientCertificateName in your Personal certificate store that was generated from root certificate ARMP2SRootCert.
 
-    	makecert.exe -n "CN=ClientCertificateName" -pe -sky exchange -m 96 -ss My -in "ARMP2SRootCert" -is my -a sha1
+        makecert.exe -n "CN=ClientCertificateName" -pe -sky exchange -m 96 -ss My -in "ARMP2SRootCert" -is my -a sha1
 
-4. Alle Zertifikate werden im Zertifikatspeicher „Zertifikate - Aktueller Benutzer\\Eigene Zertifikate\\Zertifikate“ auf Ihrem Computer gespeichert. Sie können mit diesem Verfahren bei Bedarf beliebig viele Clientzertifikate generieren.
+4. All certificates are stored in your 'Certificates - Current User\Personal\Certificates' store on your computer. You can generate as many client certificates as needed based on this procedure.
 
-### <a name="clientkey"></a>Teil 2 – Exportieren eines Clientzertifikats
+### <a name="<a-name="clientkey"></a>part-2---export-a-client-certificate"></a><a name="clientkey"></a>Part 2 - Export a client certificate
 
-1. Um ein Clientzertifikat zu exportieren, öffnen Sie **certmgr.msc**. Klicken Sie mit der rechten Maustaste auf das Clientzertifikat, das Sie exportieren möchten, klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent** geöffnet.
+1. To export a client certificate, open **certmgr.msc**. Right-click the client certificate that you want to export, click **all tasks**, and then click **export**. This opens the **Certificate Export Wizard**.
 
-2. Klicken Sie im Assistenten auf **Weiter**, wählen Sie **Ja, privaten Schlüssel exportieren** aus, und klicken Sie dann auf **Weiter**.
+2. In the Wizard, click **Next**, then select **Yes, export the private key**, and then click **Next**.
 
-3. Auf der Seite **Format der zu exportierenden Datei** können Sie die Standardwerte übernehmen. Klicken Sie auf **Weiter**.
+3. On the **Export File Format** page, you can leave the defaults selected. Then click **Next**. 
  
-4. Auf der Seite **Sicherheit** müssen Sie den privaten Schlüssel schützen. Wenn Sie ein Kennwort verwenden möchten, müssen Sie sich das für dieses Zertifikat festgelegte Kennwort unbedingt merken oder notieren. Klicken Sie auf **Weiter**.
+4. On the **Security** page, you must protect the private key. If you select to use a password, make sure to record or remember the password that you set for this certificate. Then click **Next**.
 
-5. Wählen Sie unter **Zu exportierende Datei** die Option **Durchsuchen**, um zu dem Speicherort zu wechseln, in den das Zertifikat exportiert werden soll. Geben Sie unter **Dateiname** einen Namen für die Zertifikatdatei ein. Klicken Sie auf **Weiter**.
+5. On the **File to Export**, **Browse** to the location to which you want to export the certificate. For **File name**, name the certificate file. Then click **Next**.
 
-6. Klicken Sie auf **Fertig stellen**, um das Zertifikat zu exportieren.
+6. Click **Finish** to export the certificate.  
 
-### Teil 3: Installieren eines Clientzertifikats
+### <a name="part-3---install-a-client-certificate"></a>Part 3 - Install a client certificate
 
-Auf jedem Client, der über eine Punkt-zu-Standort-Verbindung mit Ihrem virtuellen Netzwerk verbunden werden soll, muss ein Clientzertifikat installiert sein. Dieses Zertifikat wird zusätzlich zum erforderlichen VPN-Konfigurationspaket benötigt. Die folgenden Schritte führen Sie durch die manuelle Installation des Clientzertifikats.
+Each client that you want to connect to your virtual network by using a Point-to-Site connection must have a client certificate installed. This certificate is in addition to the required VPN configuration package. The following steps walk you through installing the client certificate manually.
 
-1. Suchen Sie die *PFX*-Datei, und kopieren Sie sie auf den Clientcomputer. Doppelklicken Sie auf dem Clientcomputer auf die *PFX*-Datei, um sie zu installieren. Lassen Sie den **Speicherort** auf **Aktueller Benutzer** eingestellt, und klicken Sie dann auf **Weiter**.
+1. Locate and copy the *.pfx* file to the client computer. On the client computer, double-click the *.pfx* file to install. Leave the **Store Location** as **Current User**, then click **Next**.
 
-2. Nehmen Sie auf der Seite **Zu importierende Datei** keine Änderungen vor. Klicken Sie auf **Weiter**.
+2. On the **File** to import page, don't make any changes. Click **Next**.
 
-3. Geben Sie auf der Seite **Schutz für den privaten Schlüssel** das Kennwort für das Zertifikat ein (sofern Sie ein Kennwort festgelegt haben), oder überprüfen Sie die Richtigkeit des Sicherheitsprinzipals, der das Zertifikat installiert, und klicken Sie dann auf **Weiter**.
+3. On the **Private key protection** page, input the password for the certificate if you used one, or verify that the security principal that is installing the certificate is correct, then click **Next**.
 
-4. Behalten Sie auf der Seite **Zertifikatspeicher** den Standardspeicherort bei, und klicken Sie dann auf **Weiter**.
+4. On the **Certificate Store** page, leave the default location, and then click **Next**.
 
-5. Klicken Sie auf **Fertig stellen**. Klicken Sie in der **Sicherheitswarnung** für die Zertifikatinstallation auf **Ja**. Das Zertifikat wird nun erfolgreich importiert.
+5. Click **Finish**. On the **Security Warning** for the certificate installation, click **Yes**. The certificate is now successfully imported.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Setzen Sie die Punkt-zu-Standort-Konfiguration fort.
+Continue with your Point-to-Site configuration. 
 
-- Schritte für das Bereitstellungsmodell **Resource Manager** finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md).
-- Schritte für das **klassische** Bereitstellungsmodell finden Sie unter [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem VNet mit dem klassischen Portal](vpn-gateway-point-to-site-create.md).
+- For **Resource Manager** deployment model steps, see [Configure a Point-to-Site connection to a VNet using PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md). 
+- For **classic** deployment model steps, see [Configure a Point-to-Site VPN connection to a VNet using the classic portal](vpn-gateway-point-to-site-create.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,71 +1,75 @@
 <properties
-	pageTitle="Erstellen eines Labs in Azure DevTest Labs | Microsoft Azure"
-	description="Erstellen eines Labs in Azure DevTest Labs für virtuelle Computer"
-	services="devtest-lab,virtual-machines"
-	documentationCenter="na"
-	authors="tomarcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Create a lab in Azure DevTest Labs | Microsoft Azure"
+    description="Create a lab in Azure DevTest Labs for virtual machines"
+    services="devtest-lab,virtual-machines"
+    documentationCenter="na"
+    authors="tomarcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/12/2016"
-	ms.author="tarcher"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/12/2016"
+    ms.author="tarcher"/>
 
-# Erstellen eines Labs in Azure DevTest Labs
 
-## Voraussetzungen
+# <a name="create-a-lab-in-azure-devtest-labs"></a>Create a lab in Azure DevTest Labs
 
-Zum Erstellen eines Labs benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- Ein Azure-Abonnement. Weitere Informationen zu den Azure-Kaufoptionen finden Sie unter [Azure erwerben](https://azure.microsoft.com/pricing/purchase-options/) oder [Kostenlose Testversion (1 Monat)](https://azure.microsoft.com/pricing/free-trial/). Zum Erstellen des Labs müssen Sie der Besitzer des Abonnements sein.
+To create a lab, you need:
 
-## Schritte zum Erstellen eines Labs in Azure DevTest Labs
+- An Azure subscription. To learn about Azure purchase options, see [How to buy Azure](https://azure.microsoft.com/pricing/purchase-options/) or [Free one-month trial](https://azure.microsoft.com/pricing/free-trial/). You must be the owner of the subscription to create the lab.
 
-Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab in Azure DevTest Labs erstellen.
+## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>Steps to create a lab in Azure DevTest Labs
 
-1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+The following steps illustrate how to use the Azure portal to create a lab in Azure DevTest Labs. 
 
-1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
+1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Wählen Sie auf dem Blatt **DevTest Labs** die Option **Hinzufügen**.
+1. Select **More services**, and then select **DevTest Labs** from the list.
 
-    ![Hinzufügen eines Labs](./media/devtest-lab-create-lab/add-lab-button.png)
+1. On the **DevTest Labs** blade, select **Add**.
 
-1. Führen Sie auf dem Blatt **DevTest Lab erstellen** folgende Schritte aus:
+    ![Add a lab](./media/devtest-lab-create-lab/add-lab-button.png)
 
-    1. Geben Sie einen **Labnamen** für das neue Lab ein.
+1. On the **Create a DevTest Lab** blade:
+
+    1. Enter a **Lab Name** for the new lab.
     
-	1. Wählen Sie das **Abonnement** aus, das mit dem Lab verknüpft werden soll.
+    1. Select the **Subscription** to associate with the lab.
     
-	1. Wählen Sie einen **Speicherort** für das Lab aus.
+    1. Select a **Location** in which to store the lab.
     
-	1. Geben Sie mithilfe von **Auto-shutdown** (Automatisch herunterfahren) an, ob Sie das automatische Herunterfahren für alle virtuellen Computer im Lab aktivieren und die entsprechenden Parameter festlegen möchten.
-	
-	1. Wählen Sie den **Speichertyp**, um den Speicherdatenträgertyp für die virtuellen Computer im Lab anzugeben.
+    1. Select **Auto-shutdown** to specify if you want to enable - and define the parameters for - the automatic shutting down of all the lab's VMs.
     
-	1. Klicken Sie auf **Erstellen**.
+    1. Select the **Storage type** to indicate the storage disk type for the lab's VMs. 
+    
+    1. Select **Create**.
 
-    ![Erstellen eines Lab-Blatts](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+    ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführen:
+Once you've created your lab, here are some next steps to consider:
 
-- [Sicherstellen des Zugriffs auf ein Lab](devtest-lab-add-devtest-user.md).
+- [Secure access to a lab](devtest-lab-add-devtest-user.md).
 
-- [Festlegen von Labrichtlinien](devtest-lab-set-lab-policy.md).
+- [Set lab policies](devtest-lab-set-lab-policy.md).
 
-- [Erstellen einer Labvorlage](devtest-lab-create-template.md).
+- [Create a lab template](devtest-lab-create-template.md).
 
-- [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
+- [Create custom artifacts for your VMs](devtest-lab-artifact-author.md).
 
-- [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
+- [Add a VM with artifacts to a lab](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

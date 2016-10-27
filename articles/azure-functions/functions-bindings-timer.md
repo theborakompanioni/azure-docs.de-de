@@ -1,34 +1,35 @@
 <properties
-	pageTitle="Azure Functions-Trigger mit Timer | Microsoft Azure"
-	description="Erfahren Sie, wie Trigger mit Timer in Azure Functions verwendet werden."
-	services="functions"
-	documentationCenter="na"
-	authors="christopheranderson"
-	manager="erikre"
-	editor=""
-	tags=""
-	keywords="Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur"/>
+    pageTitle="Azure Functions timer trigger | Microsoft Azure"
+    description="Understand how to use timer triggers in Azure Functions."
+    services="functions"
+    documentationCenter="na"
+    authors="christopheranderson"
+    manager="erikre"
+    editor=""
+    tags=""
+    keywords="azure functions, functions, event processing, dynamic compute, serverless architecture"/>
 
 <tags
-	ms.service="functions"
-	ms.devlang="multiple"
-	ms.topic="reference"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="08/22/2016"
-	ms.author="chrande; glenga"/>
+    ms.service="functions"
+    ms.devlang="multiple"
+    ms.topic="reference"
+    ms.tgt_pltfrm="multiple"
+    ms.workload="na"
+    ms.date="08/22/2016"
+    ms.author="chrande; glenga"/>
 
-# Azure Functions-Trigger mit Timer
+
+# <a name="azure-functions-timer-trigger"></a>Azure Functions timer trigger
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Dieser Artikel erläutert das Konfigurieren von Triggern mit Timer in Azure Functions. Trigger mit Timer rufen Funktionen anhand eines Zeitplans einmalig oder wiederholt auf.
+This article explains how to configure timer triggers in Azure Functions. Timer triggers call functions based on a schedule, one time or recurring.  
 
-[AZURE.INCLUDE [Einführung](../../includes/functions-bindings-intro.md)]
+[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)] 
 
-## „function.json“ für Trigger mit Timer
+## <a name="function.json-for-timer-trigger"></a>function.json for timer trigger
 
-Die Datei *function.json* enthält einen Zeitplanausdruck. Der folgende Zeitplan führt die Funktion beispielsweise einmal pro Minute aus:
+The *function.json* file provides a schedule expression. For example, the following schedule runs the function every minute:
 
 ```json
 {
@@ -44,55 +45,55 @@ Die Datei *function.json* enthält einen Zeitplanausdruck. Der folgende Zeitplan
 }
 ```
 
-Der Trigger mit Timer übernimmt automatisch das horizontale Hochskalieren über mehrere Instanzen: Nur eine einzelne Instanz einer bestimmten Timerfunktion wird für alle Instanzen ausgeführt.
+The timer trigger handles multi-instance scale-out automatically: only a single instance of a particular timer function will be running across all instances.
 
-## Format des Zeitplanausdrucks
+## <a name="format-of-schedule-expression"></a>Format of schedule expression
 
-Der Zeitplanausdruck ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit sechs Feldern: `{second} {minute} {hour} {day} {month} {day of the week}`.
+The schedule expression is a [CRON expression](http://en.wikipedia.org/wiki/Cron#CRON_expression) that includes 6 fields:  `{second} {minute} {hour} {day} {month} {day of the week}`. 
 
-In vielen der online verfügbaren CRON-Ausdrücke wird das Feld „{second}“ (Sekunde) weggelassen. Wenn Sie also etwas aus einem dieser Dokumente kopieren, ist eine entsprechende Anpassung erforderlich, um das zusätzliche Feld zu berücksichtigen.
+Note that many of the cron expressions you find online omit the {second} field, so if you copy from one of those you'll have to adjust for the extra field. 
 
-Im Anschluss finden Sie weitere Beispiele für Zeitplanausdrücke:
+Here are some other schedule expression examples:
 
-Alle 5 Minuten auslösen:
+To trigger once every 5 minutes:
 
 ```json
 "schedule": "0 */5 * * * *"
 ```
 
-Einmal zu jeder vollen Stunde auslösen:
+To trigger once at the top of every hour:
 
 ```json
 "schedule": "0 0 * * * *",
 ```
 
-Einmal alle zwei Stunden auslösen:
+To trigger once every two hours:
 
 ```json
 "schedule": "0 0 */2 * * *",
 ```
 
-Zwischen 9:00 und 17:00 Uhr jeweils einmal pro Stunde auslösen:
+To trigger once every hour from 9 AM to 5 PM:
 
 ```json
 "schedule": "0 0 9-17 * * *",
 ```
 
-Täglich um 9:30 Uhr auslösen:
+To trigger At 9:30 AM every day:
 
 ```json
 "schedule": "0 30 9 * * *",
 ```
 
-Werktags um 9:30 Uhr auslösen:
+To trigger At 9:30 AM every weekday:
 
 ```json
 "schedule": "0 30 9 * * 1-5",
 ```
 
-## C#-Codebeispiel für Trigger mit Timer
+## <a name="timer-trigger-c#-code-example"></a>Timer trigger C# code example
 
-Dieses C#-Codebeispiel schreibt bei jedem Auslösen der Funktion ein Protokoll.
+This C# code example writes a single log each time the function is triggered.
 
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
@@ -101,8 +102,12 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 }
 ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
+[AZURE.INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)] 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

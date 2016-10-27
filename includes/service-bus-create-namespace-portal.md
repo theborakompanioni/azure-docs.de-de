@@ -1,34 +1,34 @@
-1. Melden Sie sich beim [Azure-Portal][] an.
+1. Log on to the [Azure portal][].
 
-2. Klicken Sie im linken Navigationsbereich des Portals auf **Neu** > **Enterprise Integration** > **Service Bus**.
+2. In the left navigation pane of the portal, click **New**, then click **Enterprise Integration**, and then click **Service Bus**.
 
-4. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
+4. In the **Create namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.
 
-5. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
+5. After making sure the namespace name is available, choose the pricing tier (Basic, Standard, or Premium).
 
-7. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
+7. In the **Subscription** field, choose an Azure subscription in which to create the namespace.
 
-9. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.
+9. In the **Resource group** field, choose an existing resource group in which the namespace will live, or create a new one.      
 
-8. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
+8. In **Location**, choose the country or region in which your namespace should be hosted.
 
-	![Erstellen des Namespaces][create-namespace]
+    ![Create namespace][create-namespace]
 
-6. Klicken Sie auf **Create**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
+6. Click **Create**. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
  
-### Abrufen der Verwaltungsanmeldeinformationen
+### <a name="obtain-the-management-credentials"></a>Obtain the management credentials
 
-1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
+1. In the list of namespaces, click the newly created namespace name.
  
-3. Klicken Sie auf dem Blatt „Namespace“ auf **Richtlinien für gemeinsamen Zugriff**.
+3. In the namespace blade, click **Shared access policies**.
 
-4. Klicken Sie auf dem Blatt **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
+4. In the **Shared access policies** blade, click **RootManageSharedAccessKey**.
 
-	![connection-info][connection-info]
+    ![connection-info][connection-info]
 
-5. Klicken Sie auf dem Blatt **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Kopierschaltfläche, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
+5. In the **Policy: RootManageSharedAccessKey** blade, click the copy button next to **Connection string–primary key**, to copy the connection string to your clipboard for later use. Paste this value into Notepad or some other temporary location.
 
-	![connection-string][connection-string]
+    ![connection-string][connection-string]
 
 <!--Image references-->
 
@@ -37,6 +37,8 @@
 [connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0921_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,32 +1,35 @@
-Azure bestimmt, dass Ihre Anwendung Python verwendet, **wenn beide der folgenden Bedingungen zutreffen**:
+Azure will determine that your application uses Python **if both of these conditions are true**:
 
-- requirements.txt-Datei im Stammordner
-- eine .py-Datei im Stammordner ODER eine runtime.txt-Datei, die Python angibt
+- requirements.txt file in the root folder
+- any .py file in the root folder OR a runtime.txt that specifies python
 
-Wenn dies der Fall ist, wird ein Python-Bereitstellungsskript verwendet, das die standardmäßige Synchronisierung von Dateien sowie zusätzliche Python-Vorgänge ausführt, beispielsweise:
+When that's the case, it will use a Python specific deployment script, which performs the standard synchronization of files, as well as additional Python operations such as:
 
-- Automatische Verwaltung der virtuellen Umgebung
-- Installation von in requirements.txt aufgelisteten Paketen mit Pip
-- Die Erstellung der entsprechenden web.config basierend auf der ausgewählten Python-Version
-- Sammeln von statischen Dateien für Django-Anwendungen
+- Automatic management of virtual environment
+- Installation of packages listed in requirements.txt using pip
+- Creation of the appropriate web.config based on the selected Python version.
+- Collect static files for Django applications
 
-Sie können bestimmte Aspekte der Standardbereitstellungsschritte steuern, ohne das Skript anzupassen.
+You can control certain aspects of the default deployment steps without having to customize the script.
 
-Wenn Sie alle Python-spezifischen Bereitstellungsschritte überspringen möchten, können Sie diese leere Datei erstellen:
+If you want to skip all Python specific deployment steps, you can create this empty file:
 
     \.skipPythonDeployment
 
-Für mehr Kontrolle über die Bereitstellung können Sie das Standardskript für die Bereitstellung überschreiben, indem Sie die folgenden Dateien erstellen:
+For more control over deployment, you can override the default deployment script by creating the following files:
 
     \.deployment
     \deploy.cmd
 
-Sie können die [Azure-Befehlszeilenschnittstelle][] verwenden, um die Dateien zu erstellen. Verwenden Sie diesen Befehl vom Projektordner aus:
+You can use the [Azure command-line interface][] to create the files.  Use this command from your project folder:
 
     azure site deploymentscript --python
 
-Wenn diese Dateien nicht vorhanden sind, wird von Azure ein temporäres Bereitstellungsskript erstellt und ausgeführt. Es ist identisch mit dem, das Sie mit dem oben aufgeführten Befehl erstellen.
+When these files don't exist, Azure creates a temporary deployment script and runs it.  It is identical to the one you create with the command above.
 
-[Azure-Befehlszeilenschnittstelle]: http://azure.microsoft.com/downloads/
+[Azure command-line interface]: http://azure.microsoft.com/downloads/
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,13 +1,16 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### So rufen Sie den IQN eines Windows Server-Hosts ab
+#### <a name="to-get-the-iqn-of-a-windows-host"></a>To get the IQN of a Windows host
 
-1. Starten Sie den Microsoft iSCSI-Initiator auf dem Windows-Host. Klicken Sie auf **Start** > **Verwaltungstools** > **iSCSI-Initiator**.
+1. Start the Microsoft iSCSI initiator on your Windows host. Click **Start** > **Administrative Tools** > **iSCSI initiator**.
 
-2. Wählen Sie im Fenster **iSCSI Initiator Properties** auf der Registerkarte **Configuration** die Zeichenfolge im Feld **Initiator Name** aus, und kopieren Sie sie.
+2. In the **iSCSI Initiator Properties** window, on the **Configuration** tab, select and copy the string from the **Initiator Name** field.
  
-    ![Eigenschaften des iSCSI-Initiators](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
+    ![iSCSI initiator properties](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
 
-3. Speichern Sie diese Zeichenfolge.
+3. Save this string.
 
-<!---HONumber=AcomDC_0218_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

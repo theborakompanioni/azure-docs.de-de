@@ -1,87 +1,88 @@
 <properties
-	pageTitle="Erste Schritte mit Blob-Speicher und verbundenen Visual Studio-Diensten (WebJob-Projekte) | Microsoft Azure"
-	description="Erste Schritte mit Blobspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten"
-	services="storage"
-	documentationCenter=""
-	authors="TomArcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Get started with blob storage and Visual Studio connected services (WebJob projects) | Microsoft Azure"
+    description="How to get started using Blob storage in a WebJob project after connecting to an Azure storage using Visual Studio connected services."
+    services="storage"
+    documentationCenter=""
+    authors="TomArcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="storage"
-	ms.workload="web"
-	ms.tgt_pltfrm="vs-getting-started"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="tarcher"/>
+    ms.service="storage"
+    ms.workload="web"
+    ms.tgt_pltfrm="vs-getting-started"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/18/2016"
+    ms.author="tarcher"/>
 
-# Erste Schritte mit Azure Blob-Speicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
+
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-(webjob-projects)"></a>Get started with Azure Blob storage and Visual Studio connected services (WebJob projects)
 
 [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## Übersicht
+## <a name="overview"></a>Overview
 
-Dieser Artikel enthält C#-Codebeispiele, die zeigen, wie Sie einen Prozess auslösen, wenn ein Azure-Blob erstellt oder aktualisiert wird. In den Codebeispielen wird Version 1.x des [WebJobs-SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) verwendet. Wenn Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** ein Speicherkonto zu einem WebJob-Projekt hinzufügen, wird das entsprechende Azure Storage-NuGet-Paket installiert, die entsprechenden .NET-Verweise werden dem Projekt hinzugefügt, und die Verbindungszeichenfolgen für das Speicherkonto werden in der Datei "App.config" aktualisiert.
+This article provides C# code samples that show how to trigger a process when an Azure blob is created or updated. The code samples use the [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) version 1.x. When you add a storage account to a WebJob project by using the Visual Studio **Add Connected Services** dialog, the appropriate Azure Storage NuGet package is installed, the appropriate .NET references are added to the project, and connection strings for the storage account are updated in the App.config file.
 
 
 
-## Auslösen einer Funktion, wenn ein BLOB erstellt oder aktualisiert wird
+## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>How to trigger a function when a blob is created or updated
 
-Dieser Abschnitt beschreibt die Verwendung des **BlobTrigger**-Attributs.
+This section shows how to use the **BlobTrigger** attribute.
 
- **Hinweis:** Das WebJobs-SDK durchsucht Protokolldateien nach neuen oder geänderten Blobs. Dieser Vorgang ist naturgemäß recht langsam. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung (oder noch später) ausgelöst. Wenn Ihre Anwendung Blobs sofort verarbeiten muss, empfiehlt es sich, zusammen mit dem Blob eine Warteschlangennachricht zu erstellen, und für die Funktion, die das Blob verarbeitet, anstelle des **BlobTrigger**-Attributs das [QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger)-Attribut zu verwenden.
+ **Note:** The WebJobs SDK scans log files to watch for new or changed blobs. This process is inherently slow; a function might not get triggered until several minutes or longer after the blob is created.  If your application needs to process blobs immediately, the recommended method is to create a queue message when you create the blob, and use the [QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) attribute instead of the **BlobTrigger** attribute on the function that processes the blob.
 
-### Einzelner Platzhalter für Blobnamen mit Erweiterung  
+### <a name="single-placeholder-for-blob-name-with-extension"></a>Single placeholder for blob name with extension  
 
-Das folgende Codebeispiel kopiert Text-Blobs aus dem Container *input* in den Container *output*:
+The following code sample copies text blobs that appear in the *input* container to the *output* container:
 
-		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
-		    [Blob("output/{name}")] out string output)
-		{
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
+            [Blob("output/{name}")] out string output)
+        {
+            output = input.ReadToEnd();
+        }
 
-Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Containernamen und einen Platzhalter für den Blobnamen angibt. Wenn in diesem Beispiel im Container *input* ein Blob mit dem Namen *Blob1.txt* erstellt wird, erstellt die Funktion ein Blob mit dem Namen *Blob1.txt* im Container *output*.
+The attribute constructor takes a string parameter that specifies the container name and a placeholder for the blob name. In this example, if a blob named *Blob1.txt* is created in the *input* container, the function creates a blob named *Blob1.txt* in the *output* container.
 
-Sie können mit dem Platzhalter für Blobnamen ein Namensmuster angeben, wie im folgenden Codebeispiel gezeigt:
+You can specify a name pattern with the blob name placeholder, as shown in the following code sample:
 
-		public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
-		    [Blob("output/copy-{name}")] out string output)
-		{
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
+            [Blob("output/copy-{name}")] out string output)
+        {
+            output = input.ReadToEnd();
+        }
 
-Dieser Code kopiert nur Blob, deren Namen mit "original-" beginnt. So wird beispielsweise *original-Blob1.txt* aus dem Container *input* als *copy-Blob1.txt* in den Container *output* kopiert.
+This code copies only blobs that have names beginning with "original-". For example, *original-Blob1.txt* in the *input* container is copied to *copy-Blob1.txt* in the *output* container.
 
-Wenn Sie ein Namensmuster für Blobnamen angeben müssen, die geschweifte Klammern enthalten, verdoppeln Sie die geschweiften Klammern. Wenn Sie beispielsweise Blob im Container *images* suchen, deren Namen wie folgt lauten:
+If you need to specify a name pattern for blob names that have curly braces in the name, double the curly braces. For example, if you want to find blobs in the *images* container that have names like this:
 
-		{20140101}-soundfile.mp3
+        {20140101}-soundfile.mp3
 
-verwenden Sie dies für das Muster:
+use this for your pattern:
 
-		images/{{20140101}}-{name}
+        images/{{20140101}}-{name}
 
-In diesem Beispiel lautet der Platzhalterwert *name* wie folgt: *soundfile.mp3*.
+In the example, the *name* placeholder value would be *soundfile.mp3*.
 
-### Separate Platzhalter für Blobnamen und Erweiterung
+### <a name="separate-blob-name-and-extension-placeholders"></a>Separate blob name and extension placeholders
 
-Im folgenden Beispiel ändert sich die Dateierweiterung, wenn Blob aus dem Container *input* in den Container *output* kopiert werden. Der Code protokolliert die Erweiterung des Blobs vom Typ *input* und legt die Erweiterung des Blobs vom Typ *output* auf *.txt* fest.
+The following code sample changes the file extension as it copies blobs that appear in the *input* container to the *output* container. The code logs the extension of the *input* blob and sets the extension of the *output* blob to *.txt*.
 
-		public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
-		    [Blob("output/{name}.txt")] out string output,
-		    string name,
-		    string ext,
-		    TextWriter logger)
-		{
-		    logger.WriteLine("Blob name:" + name);
-		    logger.WriteLine("Blob extension:" + ext);
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
+            [Blob("output/{name}.txt")] out string output,
+            string name,
+            string ext,
+            TextWriter logger)
+        {
+            logger.WriteLine("Blob name:" + name);
+            logger.WriteLine("Blob extension:" + ext);
+            output = input.ReadToEnd();
+        }
 
-## Typen, die Sie an BLOBs binden können
+## <a name="types-that-you-can-bind-to-blobs"></a>Types that you can bind to blobs
 
-Sie können das **BlobTrigger**-Attribut für die folgenden Typen verwenden:
+You can use the **BlobTrigger** attribute on the following types:
 
 * **string**
 * **TextReader**
@@ -89,146 +90,150 @@ Sie können das **BlobTrigger**-Attribut für die folgenden Typen verwenden:
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
-* Andere von [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder) deserialisierte Typen
+* Other types deserialized by [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
 
-Wenn Sie direkt mit dem Azure-Speicherkonto arbeiten möchten, können Sie der Methodensignatur auch einen **CloudStorageAccount**-Parameter hinzufügen.
+If you want to work directly with the Azure storage account, you can also add a **CloudStorageAccount** parameter to the method signature.
 
-## Abrufen von BLOB-Textinhalt durch Bindung an eine Zeichenfolge
+## <a name="getting-text-blob-content-by-binding-to-string"></a>Getting text blob content by binding to string
 
-Wenn Textblobs erwartet werden, kann **BlobTrigger** auf einen **string**-Parameter angewendet werden. Im folgenden Beispiel wird ein Textblob an einen **string**-Parameter mit dem Namen **logMessage** gebunden. Die Funktion verwendet diesen Parameter, um den Inhalt des Blobs in das Dashboard des WebJobs-SDK zu schreiben.
+If text blobs are expected, **BlobTrigger** can be applied to a **string** parameter. The following code sample binds a text blob to a **string** parameter named **logMessage**. The function uses that parameter to write the contents of the blob to the WebJobs SDK dashboard.
 
-		public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
-		    string name,
-		    TextWriter logger)
-		{
-		     logger.WriteLine("Blob name: {0}", name);
-		     logger.WriteLine("Content:");
-		     logger.WriteLine(logMessage);
-		}
+        public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
+            string name,
+            TextWriter logger)
+        {
+             logger.WriteLine("Blob name: {0}", name);
+             logger.WriteLine("Content:");
+             logger.WriteLine(logMessage);
+        }
 
-## Abrufen serialisierter BLOB-Inhalte mithilfe von ICloudBlobStreamBinder
+## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Getting serialized blob content by using ICloudBlobStreamBinder
 
-Im folgenden Codebeispiel wird eine Klasse verwendet, die **ICloudBlobStreamBinder** implementiert, um das **BlobTrigger**-Attribut für das Binden eines Blobs an den **WebImage**-Typ zu aktivieren.
+The following code sample uses a class that implements **ICloudBlobStreamBinder** to enable the **BlobTrigger** attribute to bind a blob to the **WebImage** type.
 
-		public static void WaterMark(
-		    [BlobTrigger("images3/{name}")] WebImage input,
-		    [Blob("images3-watermarked/{name}")] out WebImage output)
-		{
-		    output = input.AddTextWatermark("WebJobs SDK",
-		        horizontalAlign: "Center", verticalAlign: "Middle",
-		        fontSize: 48, opacity: 50);
-		}
-		public static void Resize(
-		    [BlobTrigger("images3-watermarked/{name}")] WebImage input,
-		    [Blob("images3-resized/{name}")] out WebImage output)
-		{
-		    var width = 180;
-		    var height = Convert.ToInt32(input.Height * 180 / input.Width);
-		    output = input.Resize(width, height);
-		}
+        public static void WaterMark(
+            [BlobTrigger("images3/{name}")] WebImage input,
+            [Blob("images3-watermarked/{name}")] out WebImage output)
+        {
+            output = input.AddTextWatermark("WebJobs SDK",
+                horizontalAlign: "Center", verticalAlign: "Middle",
+                fontSize: 48, opacity: 50);
+        }
+        public static void Resize(
+            [BlobTrigger("images3-watermarked/{name}")] WebImage input,
+            [Blob("images3-resized/{name}")] out WebImage output)
+        {
+            var width = 180;
+            var height = Convert.ToInt32(input.Height * 180 / input.Width);
+            output = input.Resize(width, height);
+        }
 
-Der **WebImage**-Bindungscode wird in einer **WebImageBinder**-Klasse bereitgestellt, die von **ICloudBlobStreamBinder** abgeleitet ist.
+The **WebImage** binding code is provided in a **WebImageBinder** class that derives from **ICloudBlobStreamBinder**.
 
-		public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
-		{
-		    public Task<WebImage> ReadFromStreamAsync(Stream input,
-		        System.Threading.CancellationToken cancellationToken)
-		    {
-		        return Task.FromResult<WebImage>(new WebImage(input));
-		    }
-		    public Task WriteToStreamAsync(WebImage value, Stream output,
-		        System.Threading.CancellationToken cancellationToken)
-		    {
-		        var bytes = value.GetBytes();
-		        return output.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
-		    }
-		}
+        public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
+        {
+            public Task<WebImage> ReadFromStreamAsync(Stream input,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                return Task.FromResult<WebImage>(new WebImage(input));
+            }
+            public Task WriteToStreamAsync(WebImage value, Stream output,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                var bytes = value.GetBytes();
+                return output.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
+            }
+        }
 
-## Behandlung von nicht verarbeitbaren BLOBs
+## <a name="how-to-handle-poison-blobs"></a>How to handle poison blobs
 
-Wenn bei einer **BlobTrigger**-Funktion ein Fehler auftritt, wird sie für den Fall, dass es sich um einen vorübergehenden Fehler handelt, erneut vom SDK aufgerufen. Wenn der Inhalt des Blobs den Fehler verursacht hat, misslingt die Funktion bei jedem Versuch, das Blob zu verarbeiten. Standardmäßig ruft das SDK eine Funktion bis zu 5 Mal für ein angegebenes Blob auf. Ist auch der fünfte Versuch nicht erfolgreich, fügt das SDK einer Warteschlange namens *webjobs-blobtrigger-poison* eine Nachricht hinzu.
+When a **BlobTrigger** function fails, the SDK calls it again, in case the failure was caused by a transient error. If the failure is caused by the content of the blob, the function fails every time it tries to process the blob. By default, the SDK calls a function up to 5 times for a given blob. If the fifth try fails, the SDK adds a message to a queue named *webjobs-blobtrigger-poison*.
 
-Die maximale Anzahl von Wiederholungen ist konfigurierbar. Für die Verarbeitung nicht verarbeitbarer Blobs und der dazugehörigen Nachrichtenwarteschlange wird die gleiche [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue)-Einstellung verwendet.
+The maximum number of retries is configurable. The same [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) setting is used for poison blob handling and poison queue message handling.
 
-Die Warteschlangennachricht für nicht verarbeitbare Blobs ist ein JSON-Objekt, das die folgenden Eigenschaften enthält:
+The queue message for poison blobs is a JSON object that contains the following properties:
 
-* FunctionId (im Format *{WebJob-Name}*.Functions.*{Funktionsname}*; Beispiel: WebJob1.Functions.CopyBlob)
-* BlobType ("BlockBlob" oder "PageBlob")
+* FunctionId (in the format *{WebJob name}*.Functions.*{Function name}*, for example: WebJob1.Functions.CopyBlob)
+* BlobType ("BlockBlob" or "PageBlob")
 * ContainerName
 * BlobName
-* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
+* ETag (a blob version identifier, for example: "0x8D1DC6E70A277EF")
 
-Im folgenden Codebeispiel enthält die **CopyBlob**-Funktion Code, der bewirkt, dass bei jedem Aufruf ein Fehler auftritt. Nachdem das SDK die Funktion mit der maximalen Anzahl von Wiederholungen aufgerufen hat, wird in der Warteschlange für nicht verarbeitbare Blobs eine Nachricht erstellt. Diese Nachricht wird von der **LogPoisonBlob**-Funktion verarbeitet.
+In the following code sample, the **CopyBlob** function has code that causes it to fail every time it's called. After the SDK calls it for the maximum number of retries, a message is created on the poison blob queue, and that message is processed by the **LogPoisonBlob** function.
 
-		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
-		    [Blob("textblobs/output-{name}")] out string output)
-		{
-		    throw new Exception("Exception for testing poison blob handling");
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
+            [Blob("textblobs/output-{name}")] out string output)
+        {
+            throw new Exception("Exception for testing poison blob handling");
+            output = input.ReadToEnd();
+        }
 
-		public static void LogPoisonBlob(
-		[QueueTrigger("webjobs-blobtrigger-poison")] PoisonBlobMessage message,
-		    TextWriter logger)
-		{
-		    logger.WriteLine("FunctionId: {0}", message.FunctionId);
-		    logger.WriteLine("BlobType: {0}", message.BlobType);
-		    logger.WriteLine("ContainerName: {0}", message.ContainerName);
-		    logger.WriteLine("BlobName: {0}", message.BlobName);
-		    logger.WriteLine("ETag: {0}", message.ETag);
-		}
+        public static void LogPoisonBlob(
+        [QueueTrigger("webjobs-blobtrigger-poison")] PoisonBlobMessage message,
+            TextWriter logger)
+        {
+            logger.WriteLine("FunctionId: {0}", message.FunctionId);
+            logger.WriteLine("BlobType: {0}", message.BlobType);
+            logger.WriteLine("ContainerName: {0}", message.ContainerName);
+            logger.WriteLine("BlobName: {0}", message.BlobName);
+            logger.WriteLine("ETag: {0}", message.ETag);
+        }
 
-Das SDK deserialisiert die JSON-Nachricht automatisch. Hier sehen Sie die **PoisonBlobMessage**-Klasse:
+The SDK automatically deserializes the JSON message. Here is the **PoisonBlobMessage** class:
 
-		public class PoisonBlobMessage
-		{
-		    public string FunctionId { get; set; }
-		    public string BlobType { get; set; }
-		    public string ContainerName { get; set; }
-		    public string BlobName { get; set; }
-		    public string ETag { get; set; }
-		}
+        public class PoisonBlobMessage
+        {
+            public string FunctionId { get; set; }
+            public string BlobType { get; set; }
+            public string ContainerName { get; set; }
+            public string BlobName { get; set; }
+            public string ETag { get; set; }
+        }
 
-### BLOB-Abrufalgorithmus
+### <a name="blob-polling-algorithm"></a>Blob polling algorithm
 
-Das WebJobs-SDK durchsucht beim Start der Anwendung alle vom **BlobTrigger**-Attribut angegebenen Container. Bei einem großen Speicherkonto kann diese Überprüfung durchaus länger dauern. Daher kann etwas Zeit vergehen, bis neue Blobs gefunden und **BlobTrigger**-Funktionen ausgeführt werden.
+The WebJobs SDK scans all containers specified by **BlobTrigger** attributes at application start. In a large storage account this scan can take some time, so it might be a while before new blobs are found and **BlobTrigger** functions are executed.
 
-Um neue oder geänderte Blobs nach dem Start der Anwendung zu erkennen, liest das SDK in regelmäßigen Abständen die Blobspeicherprotokolle. Die Blobprotokolle werden gepuffert und nur etwa alle 10 Minuten physisch geschrieben. Daher kann, nachdem ein Blob erstellt oder aktualisiert wurde, möglicherweise eine erhebliche Verzögerung eintreten, ehe die entsprechende **BlobTrigger**-Funktion ausgeführt wird.
+To detect new or changed blobs after application start, the SDK periodically reads from the blob storage logs. The blob logs are buffered and only get physically written every 10 minutes or so, so there may be significant delay after a blob is created or updated before the corresponding **BlobTrigger** function executes.
 
-Für Blobs, die Sie mit dem **Blob**-Attribut erstellen, gibt es eine Ausnahme. Wenn das WebJobs-SDK ein neues Blob erstellt, übergibt es dieses sofort an alle entsprechenden **BlobTrigger**-Funktionen. Wenn Sie also eine Kette von Ein- und Ausgaben von Blobs haben, kann das SDK sie effizient verarbeiten. Wenn es Ihnen bei Ihren Blobverarbeitungsfunktionen für anderweitig erstellte oder aktualisierte Blobs allerdings auf eine geringe Latenz ankommt, empfiehlt sich die Verwendung von **QueueTrigger** anstelle von **BlobTrigger**.
+There is an exception for blobs that you create by using the **Blob** attribute. When the WebJobs SDK creates a new blob, it passes the new blob immediately to any matching **BlobTrigger** functions. Therefore if you have a chain of blob inputs and outputs, the SDK can process them efficiently. But if you want low latency running your blob processing functions for blobs that are created or updated by other means, we recommend using **QueueTrigger** rather than **BlobTrigger**.
 
-### BLOB-Zugänge
+### <a name="blob-receipts"></a>Blob receipts
 
-Das WebJobs-SDK stellt sicher, dass **BlobTrigger**-Funktionen für ein neues oder aktualisiertes Blob nicht mehrmals aufgerufen werden. Zu diesem Zweck wird mittels Verwaltung der *Blobbelege* bestimmt, ob eine bestimmte Blobversion verarbeitet wurde.
+The WebJobs SDK makes sure that no **BlobTrigger** function gets called more than once for the same new or updated blob. It does this by maintaining *blob receipts* in order to determine if a given blob version has been processed.
 
-Blobbelege werden in einem Container mit dem Namen *azure-webjobs-hosts* in dem Azure-Speicherkonto gespeichert, das in der Verbindungszeichenfolge "AzureWebJobsStorage" angegeben ist. Ein Blobbeleg enthält die folgenden Informationen:
+Blob receipts are stored in a container named *azure-webjobs-hosts* in the Azure storage account specified by the AzureWebJobsStorage connection string. A blob receipt has the following  information:
 
-* Die Funktion, die für das Blob aufgerufen wurde ("*{WebJob-Name}*.Functions.*{Funktionsname}*"; Beispiel: "WebJob1.Functions.CopyBlob")
-* Der Containername
-* Blobtyp ("BlockBlob" oder "PageBlob")
-* Blobname
-* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
+* The function that was called for the blob ("*{WebJob name}*.Functions.*{Function name}*", for example: "WebJob1.Functions.CopyBlob")
+* The container name
+* The blob type ("BlockBlob" or "PageBlob")
+* The blob name
+* The ETag (a blob version identifier, for example: "0x8D1DC6E70A277EF")
 
-Wenn Sie eine erneute Verarbeitung eines Blobs erzwingen möchten, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen.
+If you want to force reprocessing of a blob, you can manually delete the blob receipt for that blob from the *azure-webjobs-hosts* container.
 
-## Verwandte in den Artikeln zu Warteschlangen behandelte Themen
+## <a name="related-topics-covered-by-the-queues-article"></a>Related topics covered by the queues article
 
-Informationen zur Handhabung der Blobverarbeitung, die durch eine Warteschlangennachricht ausgelöst wird, oder zu Szenarien für das WebJobs-SDK, die sich nicht speziell auf die Blobverarbeitung beziehen, finden Sie unter [Verwenden von Azure-Warteschlangenspeicher mit dem WebJobs-SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md).
+For information about how to handle blob processing triggered by a queue message, or for WebJobs SDK scenarios not specific to blob processing, see [How to use Azure queue storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md).
 
-In diesem Artikel werden u. a. die folgenden Themen behandelt:
+Related topics covered in that article include the following:
 
-* Asynchrone Funktionen
-* Mehrere Instanzen
-* Ordnungsgemäßes Herunterfahren
-* Verwenden von WebJobs-SDK-Attributen im Hauptteil einer Funktion
-* Festlegen der SDK-Verbindungszeichenfolgen im Code
-* Festlegen von Werten für WebJobs SDK-Konstruktorparametern im Code
-* Konfigurieren von **MaxDequeueCount** für die Behandlung nicht verarbeitbarer Blobs
-* Manuelles Auslösen einer Funktion
-* Schreiben von Protokollen
+* Async functions
+* Multiple instances
+* Graceful shutdown
+* Use WebJobs SDK attributes in the body of a function
+* Set the SDK connection strings in code.
+* Set values for WebJobs SDK constructor parameters in code
+* Configure **MaxDequeueCount** for poison blob handling.
+* Trigger a function manually
+* Write logs
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-In diesem Artikel wurden Codebeispiele bereitgestellt, in denen der Umgang mit gängigen Szenarien für das Arbeiten mit Azure-Blobs veranschaulicht wird. Weitere Informationen zur Verwendung von Azure WebJobs und des WebJobs SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+This article has provided code samples that show how to handle common scenarios for working with Azure blobs. For more information about how to use Azure WebJobs and the WebJobs SDK, see [Azure WebJobs documentation resources](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

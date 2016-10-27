@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Planen der Service Fabric-Clusterkapazität | Microsoft Azure"
-   description="Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster. Knotentypen, Beständigkeit und Zuverlässigkeitsstufen"
+   pageTitle="Planning the Service Fabric cluster capacity | Microsoft Azure"
+   description="Service Fabric cluster capacity planning considerations. Nodetypes, Durability and Reliability tiers"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -17,94 +17,99 @@
    ms.author="chackdan"/>
 
 
-# Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
-Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
+# <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric cluster capacity planning considerations
 
-- Die Anzahl von Knotentypen, über die Ihr Cluster anfänglich verfügen muss
-- Die Eigenschaften der einzelnen Knotentypen (Größe, primärer Knotentyp, Internetzugriff, Anzahl von VMs usw.)
-- Die Zuverlässigkeits- und Dauerhaftigkeitsmerkmale des Clusters
+For any production deployment, capacity planning is an important step. Here are some of the items that you have to consider as a part of that process.
 
-Im Folgenden gehen wir kurz auf diese Aspekte ein.
+- The number of node types your cluster needs to start out with
+- The properties of each of node type (size, primary, internet facing, number of VMs, etc.)
+- The reliability and durability characteristics of the cluster
 
-## Die Anzahl von Knotentypen, über die Ihr Cluster anfänglich verfügen muss
+Let us briefly review each of these items.
 
-Zunächst müssen Sie herausfinden, zu welchem Zweck der Cluster verwendet werden soll und welche Arten von Anwendungen in diesem Cluster bereitgestellt werden sollen. Wenn Sie bezüglich des Verwendungszwecks des Clusters unsicher sind, ist es vermutlich noch zu früh für die Kapazitätsplanung.
+## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>The number of node types your cluster needs to start out with
 
-Legen Sie die Anzahl von Knotentypen fest, über die Ihr Cluster anfänglich verfügen muss. Jeder Knotentyp wird einer VM-Skalierungsgruppe zugeordnet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Wenn Sie die Anzahl von Knotentypen festlegen, sind also die folgenden Aspekte entscheidend:
+First, you need to figure out what the cluster you are creating is going to be used for and what kinds of applications you are planning to deploy into this cluster. If you are not clear on the purpose of the cluster, you are most likely not yet ready to enter the capacity planning process.
 
-- Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen? Typische Anwendungen umfassen einen Front-End-Gatewaydienst, der Eingaben von einem Client empfängt, und einen oder mehrere Back-End-Dienste, die mit den Front-End-Diensten kommunizieren. In diesem Fall verfügen Sie also über mindestens zwei Knotentypen.
+Establish the number of node types your cluster needs to start out with.  Each node type is mapped to a Virtual Machine Scale Set. Each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics. So the decision of the number of node types essentially comes down to the following considerations:
 
-- Haben Ihre Dienste (aus denen sich Ihre Anwendung zusammensetzt) unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen? Nehmen wir z. B. an, dass die Anwendung, die bereitgestellt werden soll, einen Front-End-Dienst und einen Back-End-Dienst umfasst. Der Front-End-Dienst kann auf kleineren virtuellen Computern (VM-Größen wie D2) platziert werden, die über geöffnete Ports für das Internet verfügen. Der rechenintensive Back-End-Dienst hingegen muss auf größeren virtuellen Computern (mit VM-Größen wie D4, D6, D15) platziert werden, die nicht vom Internet aus zugänglich sind.
+- Does your application have multiple services, and do any of them need to be public or internet facing? Typical applications contain a front-end gateway service that receives input from a client, and one or more back-end services that communicate with the front-end services. So in this case, you end up having at least two node types.
 
- Auch wenn beide Dienste in diesem Beispiel auf einem Knotentyp verwendet werden können, wird empfohlen, sie in einem Cluster mit zwei Knotentypen zu platzieren. Dadurch können für die Knotentypen unterschiedliche Eigenschaften (z. B. Internetkonnektivität oder VM-Größe) festgelegt werden. Außerdem kann die Anzahl von VMs individuell skaliert werden.
+- Do your services (that make up your application) have different infrastructure needs such as greater RAM or higher CPU cycles? For example, let us assume that the application that you want to deploy contains a front-end service and a back-end service. The front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  The back-end service, however, is computation intensive and needs to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet facing.
 
-- Da Sie nicht in die Zukunft blicken können, sollten Sie sich auf die Ihnen bekannten Fakten verlassen und die Anzahl von Knotentypen entsprechend festlegen, über die Ihre Anwendungen anfänglich verfügen müssen. Später können Knotentypen hinzugefügt oder entfernt werden. Ein Service Fabric-Cluster muss über mindestens einen Knotentyp verfügen.
+ In this example, although you can decide to put all the services on one node type, we recommended that you place them in a cluster with two node types.  This allows for each node type to have distinct properties such as internet connectivity or VM size. The number of VMs can be scaled independently, as well.  
 
-## Die Eigenschaften der einzelnen Knotentypen
+- Since you cannot predict the future, go with facts you know of and decide on the number of node types that your applications need to start with. You can always add or remove node types later. A Service Fabric cluster must have at least one node type.
 
-Der **Knotentyp** kann als Äquivalent zu Rollen in Cloud Services betrachtet werden. Knotentypen definieren die Größe, die Anzahl und die Eigenschaften der virtuellen Computer. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate VM-Skalierungsgruppe eingerichtet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Da die einzelnen Knotentypen als separate VM-Skalierungsgruppen definiert werden, können sie unabhängig voneinander zentral hoch- oder herunterskaliert werden. Außerdem können bei den verschiedenen Typen unterschiedliche Portgruppen geöffnet sein, und die Typen können unterschiedliche Kapazitätsmetriken aufweisen.
+## <a name="the-properties-of-each-node-type"></a>The properties of each node type
 
-Der Cluster kann über mehrere Knotentypen verfügen. Der primäre Knotentyp (der erste, den Sie im Portal definieren) muss bei Clustern, die für Produktionsworkloads eingesetzt werden, jedoch mindestens fünf VMs aufweisen (für Testcluster sind mindestens drei VMs erforderlich). Wenn Sie den Cluster anhand einer Resource Manager-Vorlage erstellen, enthält die Knotentypdefinition ein Attribut **Ist Primary**. Der primäre Knotentyp ist der Knotentyp mit den Service Fabric-Systemdiensten.
+The **node type** can be seen as equivalent to roles in Cloud Services. Node types define the VM sizes, the number of VMs, and their properties. Every node type that is defined in a Service Fabric cluster is set up as a separate Virtual Machine Scale Set. VM Scale Sets are an Azure compute resource you can use to deploy and manage a collection of virtual machines as a set. Being defined as distinct VM Scale Sets, each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics.
 
-### Primärer Knotentyp
-Bei Clustern mit mehreren Knotentypen muss ein Knotentyp als primärer Knotentyp festgelegt werden. Nachfolgend sind die Merkmale eines primären Knotentyps aufgeführt:
+Your cluster can have more than one node type, but the primary node type (the first one that you define on the portal) must have at least five VMs for clusters used for production workloads (or at least three VMs for test clusters). If you are creating the cluster using an Resource Manager template, then you will find a **is Primary** attribute under the node type definition. The primary node type is the node type where Service Fabric system services are placed.  
 
-- Die Mindestgröße von VMs für den primären Knotentyp hängt von der gewählten Dauerhaftigkeitsstufe ab. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Scrollen Sie nach unten, um Einzelheiten zur Dauerhaftigkeitsstufe und den möglichen Werten anzuzeigen.
+### <a name="primary-node-type"></a>Primary node type
+For a cluster with multiple node types, you will need to choose one of them to be primary. Here are the characteristics of a primary node type:
 
-- Die Mindestanzahl von VMs für den primären Knotentyp hängt von der gewählten Zuverlässigkeitsstufe ab. Der Standardwert für die Zuverlässigkeitsstufe ist „Silber“. Scrollen Sie nach unten, um Einzelheiten zur Zuverlässigkeitsstufe und den möglichen Werten anzuzeigen.
+- The minimum size of VMs for the primary node type is determined by the durability tier you choose. The default for the durability tier is Bronze. Scroll down for details on what the durability tier is and the values it can take.  
 
-- Die Service Fabric-Systemdienste (z. B. der Cluster-Manager-Dienst oder der Imagespeicherdienst) werden auf dem primären Knotentyp platziert. Die Zuverlässigkeit und die Dauerhaftigkeit des Clusters hängt also von der Zuverlässigkeitsstufe und der Dauerhaftigkeitsstufe ab, die Sie für den primären Knotentyp auswählen.
+- The minimum number of VMs for the primary node type is determined by the reliability tier you choose. The default for the reliability tier is Silver. Scroll down for details on what the reliability tier is and the values it can take.
 
-![Screenshot eines Clusters mit zwei Knotentypen][SystemServices]
+- The Service Fabric system services (for example, the Cluster Manager service or Image Store service) are placed on the primary node type and so the reliability and durability of the cluster is determined by the reliability tier value and durability tier value you select for the primary node type.
 
-
-### Nicht primärer Knotentyp
-Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp. Die übrigen Knotentypen sind keine primären Knotentypen. Nachfolgend sind die Merkmale eines nicht primären Knotentyps aufgeführt:
-
-- Die Mindestgröße von VMs für diesen Knotentyp hängt von der gewählten Dauerhaftigkeitsstufe ab. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Scrollen Sie nach unten, um Einzelheiten zur Dauerhaftigkeitsstufe und den möglichen Werten anzuzeigen.
-
-- Die Mindestanzahl von VMs für diesen Knotentyp beträgt 1. Diese Anzahl sollte jedoch basierend auf der Anzahl von Replikaten der Anwendung/Dienste gewählt werden, die auf diesem Knotentyp ausgeführt werden soll bzw. sollen. Die Anzahl von VMs auf einem Knotentyp kann nach der Bereitstellung des Clusters erhöht werden.
+![Screen shot of a cluster that has two Node Types ][SystemServices]
 
 
-## Die Dauerhaftigkeitsmerkmale des Clusters
+### <a name="non-primary-node-type"></a>Non-primary node type
+For a cluster with multiple node types, there is one primary node type and the rest of them are non-primary. Here are the characteristics of a non-primary node type:
 
-Über die Dauerhaftigkeitsstufe wird dem System angezeigt, über welche Berechtigungen Ihre VMs für die zugrunde liegende Azure-Infrastruktur verfügen. Auf dem primären Knotentyp kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene anhalten (z. B. einen VM-Neustart, ein VM-Reimaging oder eine VM-Migration), die sich auf die Quorumanforderungen für die Systemdienste und Ihre zustandsbehafteten Dienste auswirken. Auf den nicht primären Knotentypen kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene (z.B. einen VM-Neustart, ein VM-Reimaging oder eine VM-Migration) anhalten, die sich auf die Quorumanforderungen für Ihre zustandsbehafteten Dienste auf diesem Knoten auswirken.
+- The minimum size of VMs for this node type is determined by the durability tier you choose. The default for the durability tier is Bronze. Scroll down for details on what the durability tier is and the values it can take.  
 
-Für diese Berechtigung können die folgenden Werte festgelegt werden:
+- The minimum number of VMs for this node type can be one. However you should choose this number based on the number of replicas of the application/services that you would like to run in this node type. The number of VMs in a node type can be increased after you have deployed the cluster.
 
-- Gold: Die Infrastrukturaufträge können für eine Dauer von 2 Stunden pro UD angehalten werden
 
-- Silber: Die Infrastrukturaufträge können für eine Dauer von 30 Minuten pro UD angehalten werden. (Diese Option steht derzeit nicht zur Verfügung. Sobald aktiviert, wird diese Option für alle Standard-VMs ab einem Kern verfügbar sein.)
+## <a name="the-durability-characteristics-of-the-cluster"></a>The durability characteristics of the cluster
 
-- Bronze: Keine Berechtigungen Dies ist die Standardoption.
+The durability tier is used to indicate to the system the privileges that your VMs have with the underlying Azure infrastructure. In the primary node type, this privilege allows Service Fabric to pause any VM level infrastructure request (such as a VM reboot, VM reimage, or VM migration) that impact the quorum requirements for the system services and your stateful services. In the non-primary node types, this privilege allows Service Fabric to pause any VM level infrastructure request like VM reboot, VM reimage, VM migration etc., that impact the quorum requirements for your stateful services running in it.
 
-## Die Zuverlässigkeitsmerkmale des Clusters
+This privilege is expressed in the following values:
 
-Über die Zuverlässigkeitsstufe wird die Anzahl von Replikaten der Systemdienste festgelegt, die in diesem Cluster auf dem primären Knotentyp ausgeführt werden sollen. Je mehr Replikate vorhanden sind, desto größer ist die Zuverlässigkeit der Systemdienste in Ihrem Cluster.
+- Gold - The infrastructure Jobs can be paused for a duration of 2 hours per UD
 
-Für die Zuverlässigkeitsstufe können folgende Werte festgelegt werden:
+- Silver - The infrastructure Jobs can be paused for a duration of 30 minutes per UD (This is currently not enabled for use. Once enabled this will be available on all standard VMs of single core and above).
 
-- Platin: Systemdienste mit einer Replikatgruppen-Zielanzahl von 9 ausführen
+- Bronze - No privileges. This is the default.
 
-- Gold: Systemdienste mit einer Replikatgruppen-Zielanzahl von 7 ausführen
+## <a name="the-reliability-characteristics-of-the-cluster"></a>The reliability characteristics of the cluster
 
-- Silber: Systemdienste mit einer Replikatgruppen-Zielanzahl von 5 ausführen
+The reliability tier is used to set the number of replicas of the system services that you want to run in this cluster on the primary node type. The more the number of replicas, the more reliable the system services are in your cluster.  
 
-- Bronze: Systemdienste mit einer Replikatgruppen-Zielanzahl von 3 ausführen
+The reliability tier can take the following values.
 
->[AZURE.NOTE] Die gewählte Zuverlässigkeitsstufe bestimmt die Mindestanzahl von Knoten, über die Ihr primärer Knotentyp verfügen muss. Die Zuverlässigkeitsstufe hat keinen Einfluss auf die maximale Größe des Clusters. Sie können also einen Cluster mit 20 Knoten ausführen, der über die Zuverlässigkeitsstufe „Bronze“ verfügt.
+- Platinum - Run the System services with a target replica set count of 9
 
- Sie können die Zuverlässigkeitsstufe Ihres Clusters jederzeit ändern. Durch diesen Vorgang werden die erforderlichen Clusterupgrades ausgelöst, um die Replikatgruppenanzahl der Systemdienste zu ändern. Warten Sie, bis das laufende Upgrade abgeschlossen ist, ehe Sie Änderungen am Cluster vornehmen, beispielsweise Knoten hinzufügen usw. Sie können den Fortschritt des Upgrades im Service Fabric Explorer oder durch Ausführen von [Get-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt126012.aspx) verfolgen.
+- Gold - Run the System services with a target replica set count of 7
+
+- Silver - Run the System services with a target replica set count of 5
+
+- Bronze - Run the System services with a target replica set count of 3
+
+>[AZURE.NOTE] The reliability tier you choose determines the minimum number of nodes your primary node type must have. The reliability tier has no bearing on the max size of the cluster. So you can have a 20 node cluster, that is running at Bronze reliability.
+
+ You can choose to update the reliability of your cluster from one tier to another. Doing this will trigger the cluster upgrades needed to change the system services replica set count. Wait for the upgrade in progress to complete before making any other changes to the cluster, like adding nodes etc.  You can monitor the progress of the upgrade on Service Fabric Explorer or by running [Get-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt126012.aspx)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Wenn Sie die Kapazitätsplanung abgeschlossen haben und einen Cluster einrichten, sollten Sie folgende Artikel lesen:
-- [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md)
-- [Einführung in das Service Fabric-Integritätsmodell](service-fabric-health-introduction.md)
+Once you finish your capacity planning and set up a cluster, please read the following:
+- [Service Fabric cluster security](service-fabric-cluster-security.md)
+- [Service Fabric health model introduction](service-fabric-health-introduction.md)
 
 <!--Image references-->
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

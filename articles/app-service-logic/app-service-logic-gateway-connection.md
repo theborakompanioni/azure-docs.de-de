@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Lokale Datengatewayverbindung mit Logik-Apps | Microsoft Azure"
-   description="Informationen zum Herstellen einer Verbindung mit dem lokalen Datengateway aus einer Logik-App heraus."
+   pageTitle="Logic Apps on-premises data gateway connection | Microsoft Azure"
+   description="Information on how to create a connection to the on-premises data gateway from a logic app."
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -16,58 +16,62 @@
    ms.date="07/05/2016"
    ms.author="jehollan"/>
 
-# Herstellen einer Verbindung mit dem lokalen Datengateway für Logik-Apps
 
-Mit unterstützten Logik-Apps-Connectors können Sie die Verbindung zum Zugriff auf lokale Daten über das lokale Datengateway konfigurieren. Die folgenden Schritte führen Sie durch die Installation und Konfiguration des lokalen Datengateways für den Einsatz mit einer Logik-App.
+# <a name="connect-to-the-on-premises-data-gateway-for-logic-apps"></a>Connect to the on-premises data gateway for Logic Apps
 
-## Voraussetzungen
+Supported logic apps connectors allow you to configure your connection to access on-premises data via the on-premises data gateway.  The following steps will walk you through how to install and configure the on-premises data gateway to work with a logic app.
 
-* Um das lokale Datengateway Ihrem Konto (auf Azure Active Directory-Basis) zuzuordnen, müssen Sie eine E-Mail-Adresse Ihrer Schule bzw. Ihres Unternehmens in Azure angeben.
-    * Bei Verwendung eines Microsoft-Kontos (z.B. @outlook.com, @live.com) können Sie mit Ihrem Azure-Konto mit [folgenden Schritten](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal) eine Schul- bzw. Unternehmens-E-Mailadresse erstellen.
+## <a name="prerequisites"></a>Prerequisites
 
-> [AZURE.WARNING] Derzeit gilt eine Einschränkung, dass die lokale Gateway-Installation nur abgeschlossen wird, wenn ein mit Power BI registriertes Konto verwendet wird. Registrieren Sie in der Zwischenzeit ein Konto mit „Power BI Free“, um die Installation erfolgreich abzuschließen.
+* Must be using a work or school email address in Azure to associate the on-premises data gateway with your account (Azure Active Directory based account)
+    * If you are using a Microsoft Account (e.g. @outlook.com, @live.com) you can use your Azure account to create a work or school email address by [following the steps here](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)
 
-* Das lokale Datengateway muss [auf einem lokalen Computer installiert sein](app-service-logic-gateway-install.md).
-* Das Gateway darf nicht bereits anderweitig als lokales Azure-Datengateway in Anspruch genommen werden ([der Anspruch erfolgt mit der Erstellung von Schritt 2 unten](#2-create-an-azure-on-premises-data-gateway-resource)) – eine Installation kann nur einer einzigen Gatewayressource zugeordnet werden.
+> [AZURE.WARNING] There is a limitation currently that on-premises gateway install will only complete when using an account that has been registered with Power BI.  In the meantime please register any account with "Power BI Free" to complete the installation successfully.
 
-## Installieren und Konfigurieren der Verbindung
+* Must have the on-premises data gateway [installed on a local machine](app-service-logic-gateway-install.md).
+* Gateway must not have been claimed by another Azure on-premises data gateway ([claim happens with creation of step 2 below](#2-create-an-azure-on-premises-data-gateway-resource)) - an installation can only be associated to one gateway resource.
 
-### 1\. Installieren des lokalen Datengateways
+## <a name="installing-and-configuring-the-connection"></a>Installing and configuring the connection
 
-Informationen zum Installieren von lokalen Datengateways finden Sie [in diesem Artikel](app-service-logic-gateway-install.md). Das Gateway muss auf einem lokalen Computer installiert werden, bevor Sie mit den verbleibenden Schritten fortfahren können.
+### <a name="1.-install-the-on-premises-data-gateway"></a>1. Install the on-premises data gateway
 
-### 2\. Erstellen einer lokalen Azure-Datengatewayressource
+Information on installing the on-premises data gateway can be found [in this article](app-service-logic-gateway-install.md).  The gateway must be installed on an on-premises machine before you can continue with the rest of the steps.
 
-Nach der Installation müssen Sie das lokale Datengateway Ihrem Azure-Abonnement zuordnen.
+### <a name="2.-create-an-azure-on-premises-data-gateway-resource"></a>2. Create an Azure on-premises data gateway resource
 
-1. Melden Sie sich mit der gleichen Schul- bzw. Unternehmens-E-Mailadresse bei Azure an, die Sie während der Installation des Gateways verwendet haben.
-1. Klicken Sie auf die Ressourcenschaltfläche **Neu**.
-1. Suchen Sie das **Lokale Datengateway** und wählen Sie es aus.
-1. Geben Sie die Informationen ein, um das Gateway Ihrem Konto zuzuordnen – einschließlich der Auswahl des entsprechenden **Installationsnamens**.
+Once installed, you must associate your Azure subscription with the on-premises data gateway.
 
-    ![Verbindung mit einem lokalen Datengateway][1]
-1. Klicken Sie auf die Schaltfläche **Erstellen**, um die Ressource zu erstellen.
+1. Login to Azure using the same work or school email address that was used during installation of the gateway
+1. Click **New** resource button
+1. Search and select the **On-premises data gateway**
+1. Complete the information to associate the gateway with your account - including selecting the appropriate **Installation Name**
 
-### 3\. Erstellen einer Logik-App-Verbindung im Designer
+    ![On-Premises Data Gateway Connection][1]
+1. Click the **Create** button to create the resource
 
-Da Ihr Azure-Abonnement jetzt einer Instanz des lokalen Datengateways zugeordnet ist, können Sie aus einer Logik-App heraus eine Verbindung zu dem Gateway erstellen.
+### <a name="3.-create-a-logic-app-connection-in-the-designer"></a>3. Create a logic app connection in the designer
 
-1. Öffnen Sie eine Logik-App und wählen Sie einen Connector, der lokale Konnektivität unterstützt (zum Zeitpunkt der Erstellung dieses Dokuments SQL Server).
-1. Aktivieren Sie das Kontrollkästchen für **Verbinden über lokales Datengateway**.
+Now that your Azure subscription is associated with an instance of the on-premises data gateway, you can create a connection to it from within a logic app.
 
-    ![Gatewayerstellung mit Logik-App-Designer][2]
-1. Wählen Sie das **Gateway**, mit dem eine Verbindung hergestellt werden soll, und geben Sie alle anderen erforderlichen Verbindungsinformationen an.
-1. Klicken Sie auf **Erstellen**, um die Verbindung zu erstellen.
+1. Open a logic app and choose a connector that supports on-premises connectivity (as of this writing, SQL Server)
+1. Select the checkbox for **Connect via on-premises data gateway**
 
-Die Verbindung sollte jetzt erfolgreich für die Verwendung in Ihrer Logik-App konfiguriert werden.
+    ![Logic App Designer Gateway Creation][2]
+1. Select the **Gateway** to connect to and complete any other connection information required
+1. Click **Create** to create the connection
 
-## Nächste Schritte
-- [Allgemeine Beispiele und Szenarien für Logik-Apps](app-service-logic-examples-and-scenarios.md)
-- [Unternehmensintegrationsfeatures](app-service-logic-enterprise-integration-overview.md)
+The connection should now be successfully configured for use in your logic app.  
+
+## <a name="next-steps"></a>Next Steps
+- [Common examples and scenarios for logic apps](app-service-logic-examples-and-scenarios.md)
+- [Enterprise integration features](app-service-logic-enterprise-integration-overview.md)
 
 <!-- Image references -->
 [1]: ./media/app-service-logic-gateway-connection/createblade.PNG
 [2]: ./media/app-service-logic-gateway-connection/blankconnection.PNG
 [3]: ./media/app-service-logic-gateway-connection/checkbox.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Verwalten von StorSimple-Sicherungskatalog | Microsoft Azure"
-   description="Erläutert, wie Sie die Seite ";Sicherungskatalog"; des StorSimple Manager-Diensts nutzen können, um Sicherungssätze für ein Volume aufzulisten, auszuwählen und zu löschen."
+   pageTitle="Manage your StorSimple backup catalog | Microsoft Azure"
+   description="Explains how to use the StorSimple Manager service Backup Catalog page to list, select, and delete backup sets for a volume."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,106 +15,111 @@
    ms.date="04/28/2016"
    ms.author="v-sharos" />
 
-# Verwalten des Sicherungskatalogs mithilfe des StorSimple Manager-Diensts
 
-## Übersicht
+# <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a>Use the StorSimple Manager service to manage your backup catalog
 
-Auf der Seite **Sicherungskatalog** des StorSimple Manager-Diensts werden alle Sicherungssätze angezeigt, die mithilfe manueller oder geplanter Sicherungen erstellt wurden. Sie können auf dieser Seite alle Sicherungen für eine Sicherungsrichtlinie oder ein Volume auflisten, Sicherungen auswählen oder löschen oder eine Sicherung zum Wiederherstellen oder Klonen eines Volumes verwenden.
+## <a name="overview"></a>Overview
 
-In diesem Tutorial wird erläutert, wie ein Sicherungssatz aufgeführt, ausgewählt und gelöscht wird. Um zu erfahren, wie Sie Ihr Gerät aus einer Sicherung wiederherstellen, gehen Sie zu [Wiederherstellen Ihres Geräts aus einem Sicherungssatz](storsimple-restore-from-backup-set.md). Um zu erfahren, wie Sie ein Volume klonen, gehen Sie zu [Klonen von StorSimple-Volumes](storsimple-clone-volume.md).
+The StorSimple Manager service **Backup Catalog** page displays all the backup sets that are created when manual or scheduled backups are taken. You can use this page to list all the backups for a backup policy or a volume, select or delete backups, or use a backup to restore or clone a volume.
 
-![Sicherungskatalog](./media/storsimple-manage-backup-catalog/backupcatalog.png)
+This tutorial explains how to list, select, and delete a backup set. To learn how to restore your device from backup, go to [Restore your device from a backup set](storsimple-restore-from-backup-set.md). To learn how to clone a volume, go to [Clone a StorSimple volume](storsimple-clone-volume.md).
 
-Die Seite **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der Sicherungssätze einschränken können. Sie können die abgerufenen Sicherungssätze anhand der folgenden Parameter filtern:
+![Backup catalog](./media/storsimple-manage-backup-catalog/backupcatalog.png) 
 
-- **Gerät**: das Gerät, auf dem der Sicherungssatz erstellt wurde.
+The **Backup Catalog** page provides a query to narrow your backup set selection. You can filter the backup sets that are retrieved, based on the following parameters:
 
-- **Sicherungsrichtlinie oder Volume**: die Sicherungsrichtlinie oder das Volume, der oder dem dieser Sicherungssatz zugeordnet ist.
+- **Device** – The device on which the backup set was created.
 
-- **Von und Bis**: der Datums- und Uhrzeitbereich, in dem die Sicherung erstellt wurde.
+- **Backup Policy or Volume** – The backup policy or volume associated with this backup set.
 
-Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attributen in Tabellenform angezeigt:
+- **From and To** – The date and time range when the backup set was created.
 
-- **Name**: der Name der Sicherungsrichtlinie oder des Volumes, der oder dem dieser Sicherungssatz zugeordnet ist.
+The filtered backup sets are then tabulated based on the following attributes:
 
-- **Größe**: die tatsächliche Größe des Sicherungssatzes.
+- **Name** – The name of the backup policy or volume associated with the backup set.
 
-- **Erstellt am**: das Datum und die Uhrzeit der Erstellung der Sicherungen.
+- **Size** – The actual size of the backup set.
 
-- **Typ**: Sicherungssätze können lokale Momentaufnahmen oder Cloudmomentaufnahmen sein. Eine lokale Momentaufnahme ist eine Sicherung aller Volumedaten, die auf dem lokalen Gerät gespeichert ist, während die Sicherung von Volumedaten in der Cloud als Cloudmomentaufnahme bezeichnet wird. Lokale Momentaufnahmen bieten schnelleren Zugriff, während Cloudmomentaufnahmen für Datenstabilität ausgewählt werden.
+- **Created On** – The date and time when the backups were created. 
 
-- **Initiiert von**: Die Sicherungen können automatisch nach einem Zeitplan oder manuell durch einen Benutzer initiiert werden. Sie können eine Sicherungsrichtlinie verwenden, um Sicherungen zu planen. Es ist aber auch möglich, mithilfe der Option **Sicherung erstellen** eine manuelle Sicherung durchzuführen.
+- **Type** – Backup sets can be local snapshots or cloud snapshots. A local snapshot is a backup of all your volume data stored locally on the device, whereas a cloud snapshot refers to the backup of volume data residing in the cloud. Local snapshots provide faster access, whereas cloud snapshots are chosen for data resiliency.
 
-## Aufführen der Sicherungssätze für ein Volume
+- **Initiated By** – The backups can be initiated automatically by a schedule or manually by a user. You can use a backup policy to schedule backups. Alternatively, you can use the **Take backup** option to take a manual backup.
+
+## <a name="list-backup-sets-for-a-volume"></a>List backup sets for a volume
  
-Führen Sie die folgenden Schritte aus, um alle Sicherungen für ein Volume aufzuführen.
+Complete the following steps to list all the backups for a volume.
 
-#### Aufführen der Sicherungssätze
+#### <a name="to-list-backup-sets"></a>To list backup sets
 
-1. Klicken Sie auf der Seite des StorSimple Manager-Diensts auf die Registerkarte **Sicherungskatalog**.
+1. On the StorSimple Manager service page, click the **Backup catalog** tab.
 
-2. Filtern Sie die Auswahl wie folgt:
+2. Filter the selections as follows:
 
-    1. Wählen Sie das entsprechende Gerät aus.
+    1. Select the appropriate device.
 
-    2. Wählen Sie in der Dropdown-Liste ein Volume zum Anzeigen der entsprechenden Sicherungen aus.
+    2. In the drop-down list, choose a volume to view the corresponding the backups.
 
-    3. Geben Sie den Zeitraum an.
+    3. Specify the time range.
 
-    4. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png), um diese Abfrage durchzuführen.
+    4. Click the check icon ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) to execute this query.
  
-    Die dem ausgewählten Volume zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
+    The backups associated with the selected volume should appear in the list of backup sets.
 
-## Wählen Sie einen Sicherungssatz aus
+## <a name="select-a-backup-set"></a>Select a backup set
 
-Führen Sie die folgenden Schritte aus, um einen Sicherungssatz für ein Volume oder eine Sicherungsrichtlinie auszuwählen.
+Complete the following steps to select a backup set for a volume or backup policy.
 
-#### Auswählen eines Sicherungssatzes
+#### <a name="to-select-a-backup-set"></a>To select a backup set
 
-1. Klicken Sie auf der Seite des StorSimple Manager-Diensts auf die Registerkarte **Sicherungskatalog**.
+1. On the StorSimple Manager service page, click the **Backup catalog** tab.
 
-2. Filtern Sie die Auswahl wie folgt:
+2. Filter the selections as follows:
 
-    1. Wählen Sie das entsprechende Gerät aus.
+    1. Select the appropriate device.
 
-    2. Wählen Sie in der Dropdownliste das Volume oder die Sicherungsrichtlinie für die gewünschte Sicherung aus.
+    2. In the drop-down list, choose the volume or backup policy for the backup that you wish to select.
 
-    3. Geben Sie den Zeitraum an.
+    3. Specify the time range.
 
-    4. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png), um diese Abfrage durchzuführen.
+    4. Click the check icon ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) to execute this query.
 
-    Die dem ausgewählten Volume oder der Sicherungsrichtlinie zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
+    The backups associated with the selected volume or backup policy should appear in the list of backup sets.
 
-3. Wählen Sie einen Sicherungssatz aus und erweitern Sie diesen. Die Optionen **Wiederherstellen** und **Löschen** werden unten auf der Seite angezeigt. Sie können beide Aktionen in dem Sicherungssatz durchführen, den Sie ausgewählt haben.
+3. Select and expand a backup set. The **Restore** and **Delete** options are displayed at the bottom of the page. You can perform either of these actions on the backup set that you selected.
 
-## Löschen eines Sicherungssatzes
+## <a name="delete-a-backup-set"></a>Delete a backup set
 
-Löschen Sie eine Sicherung, wenn Sie die zugeordneten Daten nicht mehr beibehalten möchten. Führen Sie die folgenden Schritte aus, um einen Sicherungssatz zu löschen.
+Delete a backup when you no longer wish to retain the data associated with it. Perform the following steps to delete a backup set.
 
-#### Löschen eines Sicherungssatzes
+#### <a name="to-delete-a-backup-set"></a>To delete a backup set
 
-1. Klicken Sie auf der Seite des StorSimple Manager-Diensts auf die Registerkarte **Sicherungskatalog**.
+1. On the StorSimple Manager service page, click the **Backup Catalog tab**.
 
-2. Filtern Sie die Auswahl wie folgt:
+2. Filter the selections as follows:
 
-    1. Wählen Sie das entsprechende Gerät aus.
+    1. Select the appropriate device.
 
-    2. Wählen Sie in der Dropdownliste das Volume oder die Sicherungsrichtlinie für die gewünschte Sicherung aus.
+    2. In the drop-down list, choose the volume or backup policy for the backup that you wish to select.
 
-    3. Geben Sie den Zeitraum an.
+    3. Specify the time range.
 
-    4. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png), um diese Abfrage durchzuführen.
+    4. Click the check icon ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) to execute this query.
 
-    Die dem ausgewählten Volume oder der Sicherungsrichtlinie zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
+    The backups associated with the selected volume or backup policy should appear in the list of backup sets.
 
-3. Wählen Sie einen Sicherungssatz aus und erweitern Sie diesen. Die Optionen **Wiederherstellen** und **Löschen** werden unten auf der Seite angezeigt. Klicken Sie auf **Löschen**.
+3. Select and expand a backup set. The **Restore** and **Delete** options are displayed at the bottom of the page. Click **Delete**.
 
-4. Sie werden benachrichtigt, wenn der Löschvorgang durchgeführt wird und wenn er erfolgreich abgeschlossen wurde. Aktualisieren Sie die Abfrage auf dieser Seite, nachdem der Löschvorgang abgeschlossen wurde. Der gelöschte Sicherungssatz wird nicht mehr in der Liste der Sicherungssätze angezeigt.
+4. You will be notified when the deletion is in progress and when it has successfully finished. After the deletion is done, refresh the query on this page. The deleted backup set will no longer appear in the list of backup sets.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Informationen zur [Verwendung des Sicherungskatalogs zum Wiederherstellen Ihres Geräts aus einem Sicherungssatz](storsimple-restore-from-backup-set.md).
+- Learn how to [use the backup catalog to restore your device from a backup set](storsimple-restore-from-backup-set.md).
 
-- Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,146 +1,145 @@
 <properties 
-	pageTitle="Bereitstellen Ihrer ersten Python-Web-App für Azure in fünf Minuten | Microsoft Azure" 
-	description="Erfahren Sie, wie einfach die Ausführung von Web-Apps in App Service ist, indem Sie eine Beispiel-App bereitstellen. Sie können in kürzester Zeit mit der Entwicklung beginnen und sofort Ergebnisse erzielen." 
-	services="app-service\web"
-	documentationCenter=""
-	authors="cephalin"
-	manager="wpickett"
-	editor=""
+    pageTitle="Deploy your first Python web app to Azure in five minutes | Microsoft Azure" 
+    description="Learn how easy it is to run web apps in App Service by deploying a sample app. Start doing real development quickly and see results immediately." 
+    services="app-service\web"
+    documentationCenter=""
+    authors="cephalin"
+    manager="wpickett"
+    editor=""
 />
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="09/16/2016" 
-	ms.author="cephalin"
+    ms.service="app-service-web"
+    ms.workload="web"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="09/16/2016" 
+    ms.author="cephalin"
 />
-	
-# Bereitstellen Ihrer ersten Python-Web-App für Azure in fünf Minuten
+    
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre erste Python-Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md) bereitstellen. 
-Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) 
-und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
+# <a name="deploy-your-first-python-web-app-to-azure-in-five-minutes"></a>Deploy your first Python web app to Azure in five minutes
 
-In diesem Tutorial führen Sie folgende Schritte aus:
+This tutorial helps you deploy your first Python web app to [Azure App Service](../app-service/app-service-value-prop-what-is.md).
+You can use App Service to create web apps, [mobile app back ends](/documentation/learning-paths/appservice-mobileapps/), and [API apps](../app-service-api/app-service-api-apps-why-best-platform.md).
 
-- Erstellen einer Web-App in Azure App Service
-- Bereitstellen von Python-Beispielcode
-- Anzeigen des live in der Produktion ausgeführten Codes
-- Aktualisieren Ihrer Web-App wie beim [Ausführen von Git-Commits mittels Push](https://git-scm.com/docs/git-push)
+You will: 
 
-## Voraussetzungen
+- Create a web app in Azure App Service.
+- Deploy sample Python code.
+- See your code running live in production.
+- Update your web app the same way you would [push Git commits](https://git-scm.com/docs/git-push).
 
-- [Git installieren](http://www.git-scm.com/downloads). Stellen Sie sicher, dass die Installation erfolgreich war, indem Sie `git --version` in einer neuen Windows-Eingabeaufforderung, 
-einem PowerShell-Fenster, einer Linux-Shell oder einem OS X-Terminal ausführen.
-- Microsoft Azure-Konto erstellen. Falls Sie noch kein Konto haben, können Sie sich 
-[für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder 
-[Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Prerequisites
 
->[AZURE.NOTE] Zum [Testen von App Service](http://go.microsoft.com/fwlink/?LinkId=523751) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
+- [Install Git](http://www.git-scm.com/downloads). Verify that your installation is successful by running `git --version` from a new Windows command prompt, PowerShell window, Linux shell, or OS X terminal.
+- Get a Microsoft Azure account. If you don't have an account, you can [sign up for a free trial](/pricing/free-trial/?WT.mc_id=A261C142F) or [activate your Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+
+>[AZURE.NOTE] You can [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751) without an Azure account. Create a starter app and play with it for up to an hour--no credit card required, no commitments.
 
 <a name="create"></a>
-## Erstellen einer Web-App
+## <a name="create-a-web-app"></a>Create a web app
 
-1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Sign in to the [Azure portal](https://portal.azure.com) with your Azure account.
 
-2. Klicken Sie im linken Menü auf **Neu** > **Web und mobil** > **Web-App**.
+2. From the left menu, click **New** > **Web + Mobile** > **Web App**.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-portal.png)
 
-3. Legen Sie auf dem Blatt für die App-Erstellung die folgenden Einstellungen für die neue App fest:
+3. In the app creation blade, use the following settings for your new app:
 
-    - **App-Name**: Geben Sie einen eindeutigen Namen ein.
-    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
-    - **App Service-Plan/Standort**: Klicken Sie auf diese Option, um sie zu konfigurieren. Klicken Sie anschließend auf **Neu erstellen**, um den Namen, Standort und 
-    Tarif des App Service-Plans festzulegen. Sie können auch den Tarif **Free** verwenden.
+    - **App name**: Type a unique name.
+    - **Resource group**: Select **Create new** and give the resource group a name.
+    - **App Service plan/Location**: Click it to configure, then click **Create New** to set the name, location, and pricing tier of the App Service plan. Feel free to use the **Free** pricing tier.
 
-    Wenn Sie fertig sind, sollte das Blatt für die App-Erstellung wie folgt aussehen:
+    When you're done, your app creation blade should look like this:
 
     ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)
 
-3. Klicken Sie unten auf dem Blatt auf **Erstellen**. Sie können oben auf das Symbol **Benachrichtigung** klicken, um den Status anzuzeigen.
+3. Click **Create** at the bottom. You can click the **Notification** icon at the top to see the progress.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-started.png)
 
-4. Nach Abschluss der Bereitstellung sollte die folgende Benachrichtigungsmeldung angezeigt werden. Klicken Sie auf die Meldung, um das Blatt Ihrer Bereitstellung zu öffnen.
+4. When deployment is finished, you should see this notification message. Click the message to open your deployment's blade.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-finished.png)
 
-5. Klicken Sie auf dem Blatt **Bereitstellung erfolgreich** auf den Link **Ressource**, um das Blatt Ihrer neuen Web-App zu öffnen.
+5. In the **Deployment succeeded** blade, click the **Resource** link to open your new web app's blade.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)
 
-## Bereitstellen von Code für die Web-App
+## <a name="deploy-code-to-your-web-app"></a>Deploy code to your web app
 
-Als Nächstes stellen wir mithilfe von Git Code in Azure bereit.
+Now, let's deploy some code to Azure using Git.
 
-5. Klicken Sie auf dem Blatt der Web-App auf **Bereitstellungsoptionen** (scrollen Sie dazu nach unten, oder suchen Sie nach der Option).
+5. In the web app blade, scroll down to **Deployment options** or search for it, then click it. 
 
     ![](./media/app-service-web-get-started-languages/deploy-web-app-deployment-options.png)
 
-6. Klicken Sie auf **Quelle auswählen** > **Lokales Git-Repository** > **OK**.
+6. Click **Choose Source** > **Local Git Repository** > **OK**.
 
-7. Klicken Sie auf dem Blatt der Web-App auf **Anmeldeinformationen für Bereitstellung**.
+7. Back in the web app blade, click **Deployment credentials**.
 
-8. Legen Sie Ihre Anmeldeinformationen für die Bereitstellung fest, und klicken Sie auf **Speichern**.
+8. Set your deployment credentials and click **Save**.
 
-7. Klicken Sie auf dem Blatt der Web-App auf **Eigenschaften** (scrollen Sie dazu nach unten, oder suchen Sie nach der Option). Klicken Sie neben **Git-URL** auf die Schaltfläche **Kopieren**.
+7. Back in the web app blade, scroll down to **Properties** or search for it, then click it. Next to **Git URL**, click the **Copy** button.
 
     ![](./media/app-service-web-get-started-languages/deploy-web-app-properties.png)
 
-    Jetzt können Sie Ihren Code mit Git bereitstellen.
+    You're now ready to deploy your code with Git.
 
-1. Wechseln Sie im Befehlszeilenterminal zu einem Arbeitsverzeichnis (`CD`), und klonen Sie die Beispiel-App wie folgt:
+1. In your command-line terminal, change to a working directory (`CD`) and clone the sample app like this:
 
         git clone https://github.com/Azure-Samples/app-service-web-python-get-started.git
 
-    ![Klonen des App-Beispielcodes für Ihre erste Web-App in Azure](./media/app-service-web-get-started-languages/python-git-clone.png)
+    ![Clone the app sample code for your first web app in Azure](./media/app-service-web-get-started-languages/python-git-clone.png)
 
-    Verwenden Sie für *&lt;github_sample_url>* je nach gewünschtem Framework eine der folgenden URLs:
+    For *&lt;github_sample_url>*, use one of the following URLs, depending on the framework that you like:
 
-2. Wechseln Sie in das Repository Ihrer Beispiel-App. Beispiel:
+2. Change to the repository of your sample app. For example, 
 
         cd app-service-web-html-get-started
 
-3. Konfigurieren Sie für die Git-Remote-URL Ihrer Azure-App die Git-URL, die Sie in einem der vorherigen Schritte aus dem Portal kopiert haben.
+3. Configure the Git remote for your Azure app its Git URL, which you copied from the Portal a few steps ago.
 
         git remote add azure <giturlfromportal>
 
-4. Gehen Sie wie bei anderen Pushübertragungen von Code mit Git vor, um Ihren Beispielcode für die Azure-App bereitzustellen:
+4. Deploy your sample code to your Azure app like you would push any code with Git:
 
         git push azure master
 
-    ![Übertragen von Code an Ihre ersten Web-App in Azure mittels Push](./media/app-service-web-get-started-languages/python-git-push.png)
+    ![Push code to your first web app in Azure](./media/app-service-web-get-started-languages/python-git-push.png)    
 
-    Bei Verwendung eines der Sprachen-Frameworks wird eine andere Ausgabe angezeigt. Das hat folgenden Grund: Mit `git push` wird nicht nur Code in Azure eingefügt, sondern es werden auch Bereitstellungsaufgaben im Bereitstellungsmodul ausgelöst. Falls Ihr Projektstamm (Repositorystamm) die Datei „requirements.txt“ enthält, stellt das Bereitstellungsskript die erforderlichen Pakete wieder für Sie her.
+    If you used one of the language frameworks, you'll see different output. This is because `git push` not only puts code in Azure, but also triggers deployment tasks in the deployment engine. If you have any requirements.txt in your project (repository) root, the deployment script restores the required packages for you. 
 
-Das ist alles! Ihr Code wird jetzt live in Azure ausgeführt. Navigieren Sie im Browser zu „http://*&lt;appname>*.azurewebsites.net“, um ihn in Aktion zu sehen.
+That's it! Your code is now running live in Azure. In your browser, navigate to http://*&lt;appname>*.azurewebsites.net to see it in action. 
 
-## Durchführen von Updates für die App
+## <a name="make-updates-to-your-app"></a>Make updates to your app
 
-Sie können jetzt Git verwenden, um aus Ihrem Projektstamm (Repositorystamm) jederzeit einen Pushvorgang durchzuführen und so ein Update für die Live-Website vorzunehmen. Dazu gehen Sie wie bei der erstmaligen Bereitstellung Ihres Codes vor. Wenn Sie beispielsweise eine neue Änderung übertragen möchten, die Sie lokal getestet haben, führen Sie einfach die folgenden Befehle in Ihrem Projektstamm (Repositorystamm) aus:
+You can now use Git to push from your project (repository) root anytime to make an update to the live site. You do it the same way as when you deployed your code the first time. For example, every time you want to push a new change that you've tested locally, just run the following commands from your project (repository) root:
 
     git add .
     git commit -m "<your_message>"
     git push azure master
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Erstellen, Konfigurieren und Bereitstellen einer Django-Web-App für Azure in Visual Studio](web-sites-python-ptvs-django-mysql.md) In diesem Tutorial eignen Sie sich grundlegende Kenntnisse zum Ausführen einer Python-Web-App in Azure an. Sie erhalten u.a. Informationen zu den folgenden Schritten:
+[Create, configure, and deploy a Django web app to Azure in Visual Studio](web-sites-python-ptvs-django-mysql.md). By following this tutorial, you will learn the basic skills you need to run a Python web app in Azure, including:
 
-- Erstellen und Bereitstellen einer Python-App mithilfe einer Vorlage
-- Festlegen der Python-Version
-- Erstellen virtueller Umgebungen
-- Herstellen einer Verbindung mit einer Datenbank
+- Create and deploy a Python app using a template.
+- Set Python version.
+- Create virtual environments.
+- Connect to a database.
 
-Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
+Or, do more with your first web app. For example:
 
-- Testen Sie [weitere Methoden zum Bereitstellen Ihres Codes in Azure](../app-service-web/web-sites-deploy.md). Wenn Sie eines Ihrer GitHub-Repositorys zur Bereitstellung verwenden möchten, wählen Sie beispielsweise unter 
-**Bereitstellungsoptionen** einfach **GitHub** anstelle von **Lokales Git-Repository** aus.
-- Entwickeln Sie Ihre Azure-App weiter. Authentifizieren Sie Ihre Benutzer. Skalieren Sie die App je nach Bedarf. Richten Sie einige Leistungswarnungen ein. Es sind jeweils nur wenige Klicks erforderlich. Weitere Informationen finden Sie unter 
-[Hinzufügen von Funktionen zu Ihrer ersten Web-App](app-service-web-get-started-2.md).
+- Try out [other ways to deploy your code to Azure](../app-service-web/web-sites-deploy.md). For example, to deploy from one of your GitHub repositories, simply select **GitHub** instead of **Local Git Repository** in **Deployment options**.
+- Take your Azure app to the next level. Authenticate your users. Scale it based on demand. Set up some performance alerts. All with a few clicks. See [Add functionality to your first web app](app-service-web-get-started-2.md).
 
-<!----HONumber=AcomDC_0920_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

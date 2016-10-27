@@ -1,9 +1,9 @@
 <properties
-    pageTitle="Abfragen des Azure Search-Indexes mit dem Azure-Portal | Microsoft Azure | Gehosteter Cloudsuchdienst"
-    description="Eingeben einer Suchabfrage in den Suchexplorer im Azure-Portal."
+    pageTitle="Query your Azure Search Index using the Azure Portal | Microsoft Azure | Hosted cloud search service"
+    description="Issue a search query in the Azure Portal's Search Explorer."
     services="search"
     documentationCenter=""
-	authors="ashmaka"
+    authors="ashmaka"
 />
 
 <tags
@@ -15,36 +15,41 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"
 />
-# Abfragen des Azure Search-Indexes mit dem Azure-Portal
+
+# <a name="query-your-azure-search-index-using-the-azure-portal"></a>Query your Azure Search index using the Azure Portal
 > [AZURE.SELECTOR]
-- [Übersicht](search-query-overview.md)
+- [Overview](search-query-overview.md)
 - [Portal](search-explorer.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihren Azure Search-Index im Azure-Portal abfragen.
+This guide will show you how to query your Azure Search index in the Azure Portal.
 
-[Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md) und [füllen Sie ihn mit Daten](search-what-is-data-import.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen.
+Before beginning this walkthrough, you should already have [created an Azure Search index](search-what-is-an-index.md) and [populated it with data](search-what-is-data-import.md).
 
-## I. Wechseln Sie zu Ihrem Azure Search-Blatt.
-1. Klicken Sie auf im Menü auf der linken Seite des [Azure-Portals](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) auf „Alle Ressourcen“.
-2. Wählen Sie Ihren Azure Search-Dienst aus.
+## <a name="i.-go-to-your-azure-search-blade"></a>I. Go to your Azure Search blade
+1. Click on "All resources" in the menu on the left side of the [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
+2. Select your Azure Search service
 
-## II. Wählen Sie den Index aus, den Sie durchsuchen möchten.
-1. Wählen Sie in der Kachel „Indizes“ den Index aus, den Sie durchsuchen möchten.
+## <a name="ii.-select-the-index-you-would-like-to-search"></a>II. Select the index you would like to search
+1. Select the index you would like to search from the "Indexes" tile.
 
 ![](./media/search-explorer/pick-index.png)
 
-## III. Klicken Sie auf die Kachel „Suchexplorer“.
+## <a name="iii.-click-on-the-"search-explorer"-tile"></a>III. Click on the "Search Explorer" tile
 ![](./media/search-explorer/search-explorer-tile.png)
 
-## III. Beginnen Sie mit der Suche.
-1. Beginnen Sie mit einer Texteingabe in das Feld „ *Abfragezeichenfolge* “, und drücken Sie danach auf „**Suchen**“.
- * Wenn Sie den Suchexplorer verwenden, können Sie alle beliebigen [Abfrageparameter](https://msdn.microsoft.com/library/dn798927.aspx) festlegen.
+## <a name="iii.-start-searching"></a>III. Start searching
+1. To search your Azure Search index, start typing into the "*Query string*" field and then press "**Search**".
+ * When using the Search Explorer, you can specify any of the [query parameters](https://msdn.microsoft.com/library/dn798927.aspx)
 
-2. Im Abschnitt „ *Ergebnisse* “ werden die Abfrageergebnisse im unformatierten JSON-Format angezeigt, das Sie bei Suchanfragen an die Azure Search REST-API in einem HTML-Antworttext erhalten würden.
-3. Die Abfragezeichenfolge wird automatisch in die richtige Anforderungs-URL gelesen, um eine HTTP-Anforderung für die Azure Search REST-API zu übermitteln.
+2. In the "*Results*" section, the query's results will be presented in the raw JSON that you would receiving in an HTTP Response Body when issuing search requests against the Azure Search REST API.
+3. The query string is automatically parsed into the proper request URL to submit a HTTP request against the Azure Search REST API
 
 ![](./media/search-explorer/search-bar.png)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

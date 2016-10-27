@@ -1,24 +1,25 @@
 <properties
-	pageTitle=".NET-Anwendungen mit mehreren Ebenen | Microsoft Azure"
-	description="Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren Ebenen in Azure zu erstellen, die Service Bus-Warteschlangen für die Kommunikation zwischen Ebenen verwendet."
-	services="service-bus-messaging"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+    pageTitle=".NET-Anwendungen mit mehreren Ebenen | Microsoft Azure"
+    description="Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren Ebenen in Azure zu erstellen, die Service Bus-Warteschlangen für die Kommunikation zwischen Ebenen verwendet."
+    services="service-bus"
+    documentationCenter=".net"
+    authors="sethmanheim"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="service-bus-messaging"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="get-started-article"
-	ms.date="09/01/2016"
-	ms.author="sethm"/>
+    ms.service="service-bus"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="get-started-article"
+    ms.date="09/01/2016"
+    ms.author="sethm"/>
 
-# .NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
 
-## Einführung
+# <a name=".net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
+
+## <a name="introduction"></a>Einführung
 
 Mit Visual Studio und dem kostenlosen Azure SDK für .NET können Sie schnell und einfach für Microsoft Azure entwickeln. In diesem Tutorial werden Sie durch die Schritte zum Erstellen einer Anwendung geführt, von der mehrere in der lokalen Umgebung ausgeführte Azure-Ressourcen verwendet werden. In den Schritten wird davon ausgegangen, dass Sie noch keine Erfahrung mit Azure haben.
 
@@ -37,7 +38,7 @@ Der folgende Screenshot zeigt die fertige Anwendung.
 
 ![][0]
 
-## Szenario-Übersicht: Kommunikation zwischen Rollen
+## <a name="scenario-overview:-inter-role-communication"></a>Szenario-Übersicht: Kommunikation zwischen Rollen
 
 Um eine Bestellung zur Verarbeitung zu übermitteln, muss die Front-End-GUI in ihrer Funktion als Webrolle mit der Logikkomponente in der mittleren Ebene interagieren, die eine Workerrolle erfüllt. Dieses Beispiel verwendet die verwaltete Servicebus-Messaging-Funktion für die Kommunikation zwischen Ebenen.
 
@@ -49,23 +50,23 @@ Service Bus bietet zwei Entitäten für das Brokermessaging: Warteschlangen und 
 
 Dieser Kommunikationsmechanismus bietet verschiedene Vorteile gegenüber direkten Nachrichten:
 
--   **Zeitliche Entkopplung.** Dank des asynchronen Nachrichtenmusters müssen Producer und Consumer nicht gleichzeitig online sein. Der Servicebus speichert die Nachrichten zuverlässig, bis der Consumer diese entgegennehmen kann. Auf diese Weise können die Komponenten verteilter Anwendungen voneinander entkoppelt werden, z. B. zu Wartungszwecken oder bei einem Komponentenausfall, ohne das Gesamtsystem zu beeinträchtigen. Außerdem genügt es unter Umständen, wenn die konsumierende Anwendung nur zu bestimmten Tageszeiten online ist.
+-   **Zeitliche Entkopplung:** Dank des asynchronen Nachrichtenmusters müssen Producer und Consumer nicht gleichzeitig online sein. Der Servicebus speichert die Nachrichten zuverlässig, bis der Consumer diese entgegennehmen kann. Auf diese Weise können die Komponenten verteilter Anwendungen voneinander entkoppelt werden, z. B. zu Wartungszwecken oder bei einem Komponentenausfall, ohne das Gesamtsystem zu beeinträchtigen. Außerdem genügt es unter Umständen, wenn die konsumierende Anwendung nur zu bestimmten Tageszeiten online ist.
 
--   **Belastungsausgleich.** In vielen Anwendungen schwankt die Systemlast mit der Zeit, während die Bearbeitungszeit pro Arbeitseinheit normalerweise konstant ist. Durch die Einführung einer Warteschlange zwischen Nachrichtenproducer und Consumer muss der Consumer (Arbeiter) anstatt der Spitzenlast nur die durchschnittliche Last verarbeiten können. Die Tiefe der Warteschlange erhöht und verringert sich mit der eingehenden Last. Dies ermöglicht direkte Einsparungen bei der Infrastruktur, die zur Bearbeitung der Anwendungslast benötigt wird.
+-   **Belastungsausgleich:** In vielen Anwendungen schwankt die Systemlast mit der Zeit, während die Bearbeitungszeit pro Arbeitseinheit normalerweise konstant ist. Durch die Einführung einer Warteschlange zwischen Nachrichtenproducer und Consumer muss der Consumer (Arbeiter) anstatt der Spitzenlast nur die durchschnittliche Last verarbeiten können. Die Tiefe der Warteschlange erhöht und verringert sich mit der eingehenden Last. Dies ermöglicht direkte Einsparungen bei der Infrastruktur, die zur Bearbeitung der Anwendungslast benötigt wird.
 
--   **Lastenausgleich.** Mit zunehmender Last können zusätzliche Arbeitsprozesse zur Verarbeitung der Warteschlange eingesetzt werden. Jede Nachricht wird nur von einem der Arbeitsprozesse verarbeitet. Außerdem ermöglicht dieser entnahmebasierte Lastenausgleich eine optimale Auslastung der Workercomputer, selbst wenn sich deren Rechenleistung stark unterscheidet, da jeder Workercomputer die Nachrichten mit seinem eigenen Maximaldurchsatz aus der Warteschlange entnimmt. Dieses Schema wird auch als *Konkurrierende Consumer* bezeichnet.
+-   **Lastenausgleich:** Mit zunehmender Last können zusätzliche Arbeitsprozesse zur Verarbeitung der Warteschlange eingesetzt werden. Jede Nachricht wird nur von einem der Arbeitsprozesse verarbeitet. Außerdem ermöglicht dieser entnahmebasierte Lastenausgleich eine optimale Auslastung der Workercomputer, selbst wenn sich deren Rechenleistung stark unterscheidet, da jeder Workercomputer die Nachrichten mit seinem eigenen Maximaldurchsatz aus der Warteschlange entnimmt. Dieses Schema hat auch die Bezeichnung *Konkurrierende Consumer*.
 
     ![][2]
 
 In den folgenden Abschnitten wird der Code für die Implementierung dieser Architektur behandelt.
 
-## Einrichten der Entwicklungsumgebung
+## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
 
 Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Sie über die entsprechenden Tools verfügen und die Entwicklungsumgebung einrichten.
 
-1.  Installieren Sie das Azure-SDK für .NET auf [Tools und SDK herunterladen][].
+1.  Installieren Sie das Azure-SDK für .NET über [Tools und SDK herunterladen][].
 
-2. 	Klicken Sie für Ihre Visual Studio-Version auf **Installieren des SDK**. Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet.
+2.  Klicken Sie für Ihre Visual Studio-Version auf **Installieren des SDK**. Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet.
 
 4.  Wenn Sie aufgefordert werden, das Installationsprogramm auszuführen oder zu speichern, klicken Sie auf **Ausführen**.
 
@@ -73,19 +74,20 @@ Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Si
 
 6.  Nach Abschluss der Installation haben Sie alles zur Hand, was Sie benötigen, um mit der Entwicklung der App zu beginnen. Das SDK enthält Tools, mit denen Sie ganz leicht Azure-Anwendungen in Visual Studio entwickeln können. Wenn Visual Studio nicht installiert ist, wird außerdem die kostenlose Version Visual Studio Express vom SDK installiert.
 
-## Erstellen eines Namespace
+## <a name="create-a-namespace"></a>Erstellen eines Namespace
 
 Der nächste Schritt ist die Einrichtung des Dienstnamespace und das Abrufen eines SAS (Shared Access Signature)-Schlüssels. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Namespace erstellt wird. Namespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## Erstellen einer Webrolle
+## <a name="create-a-web-role"></a>Erstellen einer Webrolle
 
-In diesem Abschnitt lernen Sie, wie Sie das Front-End Ihrer Anwendung erstellen. Zunächst erstellen Sie die Seiten, aus denen Ihre Anwendung besteht. Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Warteschlange übermittelt und Statusinformationen zur Warteschlange angezeigt werden.
+In diesem Abschnitt lernen Sie, wie Sie das Front-End Ihrer Anwendung erstellen. Zunächst erstellen Sie die Seiten, aus denen Ihre Anwendung besteht.
+Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Warteschlange übermittelt und Statusinformationen zur Warteschlange angezeigt werden.
 
-### Erstellen des Projekts
+### <a name="create-the-project"></a>Erstellen des Projekts
 
-1.  Starten Sie Microsoft Visual Studio mit Administratorrechten. Um Visual Studio mit Administratorrechten zu starten, klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio** und klicken dann auf **Als Administrator ausführen**. Für den ebenfalls in diesem Artikel behandelten Azure-Serveremulator muss Visual Studio mit Administratorrechten gestartet werden.
+1.  Starten Sie Microsoft Visual Studio mit Administratorrechten. Klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio**, und klicken Sie anschließend auf **Als Administrator ausführen**, um Visual Studio mit Administratorrechten zu starten. Für den ebenfalls in diesem Artikel behandelten Azure-Serveremulator muss Visual Studio mit Administratorrechten gestartet werden.
 
     Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** und anschließend auf **Projekt**.
 
@@ -97,7 +99,7 @@ In diesem Abschnitt lernen Sie, wie Sie das Front-End Ihrer Anwendung erstellen.
 
     ![][10]
 
-4.  Zeigen Sie auf **WebRole1** unter **Azure-Clouddienst-Lösung**, klicken Sie auf das Stiftsymbol und geben Sie der Webrolle den Namen **FrontendWebRole**. Klicken Sie dann auf **OK**. (Achten Sie darauf „Frontend“ mit kleinem „e“ einzugeben, nicht als „FrontEnd“.)
+4.  Zeigen Sie auf **WebRole1** unter **Azure-Clouddienst-Lösung**, klicken Sie auf das Stiftsymbol, und geben Sie der Webrolle den Namen **FrontendWebRole**. Klicken Sie dann auf **OK**. (Achten Sie darauf „Frontend“ mit kleinem „e“ einzugeben, nicht als „FrontEnd“.)
 
     ![][11]
 
@@ -107,97 +109,97 @@ In diesem Abschnitt lernen Sie, wie Sie das Front-End Ihrer Anwendung erstellen.
 
 6. Klicken Sie ebenfalls im Dialogfeld **Neues ASP.NET-Projekt** auf die Schaltfläche **Authentifizierung ändern**. Klicken Sie im Dialogfeld **Authentifizierung ändern** auf **Keine Authentifizierung** und dann auf **OK**. Für dieses Tutorial stellen Sie eine App bereit, für die keine Benutzeranmeldung erforderlich ist.
 
-	![][16]
+    ![][16]
 
 7. Klicken Sie im Dialogfeld **Neues ASP.NET-Projekt** auf **OK**, um das Projekt zu erstellen.
 
-6.  Klicken Sie im Projektmappen-Explorer im Projekt **FrontendWebRole** mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
+6.  Klicken Sie im **Projektmappen-Explorer** im Projekt **FrontendWebRole** mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 
 7.  Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 
     ![][13]
 
-	Beachten Sie, dass die benötigten Clientassemblys nun referenziert sind und einige neue Codedateien hinzugefügt wurden.
+    Beachten Sie, dass die benötigten Clientassemblys nun referenziert sind und einige neue Codedateien hinzugefügt wurden.
 
 9.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Modelle**, und klicken Sie anschließend auf **Hinzufügen** und dann auf **Klasse**. Geben Sie in das Feld **Name** den Namen **OnlineOrder.cs** ein. Klicken Sie anschließend auf **Hinzufügen**.
 
-### Schreiben des Codes für Ihre Webrolle
+### <a name="write-the-code-for-your-web-role"></a>Schreiben des Codes für Ihre Webrolle
 
 In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwendung besteht.
 
 1.  Ersetzen Sie in der Datei "OnlineOrder.cs" in Visual Studio die bestehende Namespacedefinition durch den folgenden Code:
 
-	```
-	namespace FrontendWebRole.Models
-	{
-	    public class OnlineOrder
-	    {
-	        public string Customer { get; set; }
-	        public string Product { get; set; }
-	    }
-	}
-	```
+    ```
+    namespace FrontendWebRole.Models
+    {
+        public class OnlineOrder
+        {
+            public string Customer { get; set; }
+            public string Product { get; set; }
+        }
+    }
+    ```
 
-2.  Doppelklicken Sie im **Projektmappen-Explorer** auf **Controllers\\HomeController.cs**. Fügen Sie die folgenden **using**-Anweisungen am Anfang Ihrer Datei hinzu, um die Namespaces für Ihr neu erstelltes Modell sowie Service Bus einzuschließen.
+2.  Doppelklicken Sie im **Projektmappen-Explorer** auf **Controllers\HomeController.cs**. Fügen Sie die folgenden **using**-Anweisungen am Anfang Ihrer Datei hinzu, um die Namespaces für Ihr neu erstelltes Modell sowie Service Bus einzuschließen.
 
-	```
-	using FrontendWebRole.Models;
-	using Microsoft.ServiceBus.Messaging;
-	using Microsoft.ServiceBus;
-	```
+    ```
+    using FrontendWebRole.Models;
+    using Microsoft.ServiceBus.Messaging;
+    using Microsoft.ServiceBus;
+    ```
 
 3.  Ersetzen Sie in der Datei "HomeController.cs" in Visual Studio die bestehende Namespacedefinition ebenfalls durch den folgenden Code. Dieser Code enthält die Methoden für die Übermittlung von Elementen in die Warteschlange.
 
-	```
-	namespace FrontendWebRole.Controllers
-	{
-	    public class HomeController : Controller
-	    {
-	        public ActionResult Index()
-	        {
-	            // Simply redirect to Submit, since Submit will serve as the
-	            // front page of this application.
-	            return RedirectToAction("Submit");
-	        }
-	
-	        public ActionResult About()
-	        {
-	            return View();
-	        }
-	
-	        // GET: /Home/Submit.
-	        // Controller method for a view you will create for the submission
-	        // form.
-	        public ActionResult Submit()
-	        {
-	            // Will put code for displaying queue message count here.
-	
-	            return View();
-	        }
-	
-	        // POST: /Home/Submit.
-	        // Controller method for handling submissions from the submission
-	        // form.
-	        [HttpPost]
-			// Attribute to help prevent cross-site scripting attacks and
-			// cross-site request forgery.  
-			[ValidateAntiForgeryToken]
-	        public ActionResult Submit(OnlineOrder order)
-	        {
-	            if (ModelState.IsValid)
-	            {
-	                // Will put code for submitting to queue here.
-	
-	                return RedirectToAction("Submit");
-	            }
-	            else
-	            {
-	                return View(order);
-	            }
-	        }
-	    }
-	}
-	```
+    ```
+    namespace FrontendWebRole.Controllers
+    {
+        public class HomeController : Controller
+        {
+            public ActionResult Index()
+            {
+                // Simply redirect to Submit, since Submit will serve as the
+                // front page of this application.
+                return RedirectToAction("Submit");
+            }
+    
+            public ActionResult About()
+            {
+                return View();
+            }
+    
+            // GET: /Home/Submit.
+            // Controller method for a view you will create for the submission
+            // form.
+            public ActionResult Submit()
+            {
+                // Will put code for displaying queue message count here.
+    
+                return View();
+            }
+    
+            // POST: /Home/Submit.
+            // Controller method for handling submissions from the submission
+            // form.
+            [HttpPost]
+            // Attribute to help prevent cross-site scripting attacks and
+            // cross-site request forgery.  
+            [ValidateAntiForgeryToken]
+            public ActionResult Submit(OnlineOrder order)
+            {
+                if (ModelState.IsValid)
+                {
+                    // Will put code for submitting to queue here.
+    
+                    return RedirectToAction("Submit");
+                }
+                else
+                {
+                    return View(order);
+                }
+            }
+        }
+    }
+    ```
 
 4.  Klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die Richtigkeit Ihrer bisherigen Arbeit zu überprüfen.
 
@@ -211,25 +213,25 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
 
 7.  Klicken Sie auf **Hinzufügen**.
 
-8.  Ändern Sie nun den angezeigten Namen Ihrer Anwendung. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\\Shared\\_Layout.cshtml**, um diese im Visual Studio-Editor zu öffnen.
+8.  Ändern Sie nun den angezeigten Namen Ihrer Anwendung. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\Shared\\_Layout.cshtml**, um sie im Visual Studio-Editor zu öffnen.
 
-9.  Ersetzen Sie alle Vorkommnisse von **My ASP.NET Application** mit **LITWARE's Products**.
+9.  Ersetzen Sie alle Vorkommnisse von **My ASP.NET Application** durch **LITWARE's Products**.
 
 10. Entfernen Sie die Links **Home**, **About** und **Contact**. Löschen Sie den hervorgehobenen Code:
 
-	![][28]
+    ![][28]
 
-11. Erweitern Sie anschließend die Übermittlungsseite um einige Informationen zur Warteschlange. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\\Home\\Submit.cshtml**, um diese im Visual Studio-Editor zu öffnen. Fügen Sie nach `<h2>Submit</h2>` die folgende Zeile hinzu. Derzeit ist `ViewBag.MessageCount` leer. Sie werden diesen Bereich später ausfüllen.
+11. Erweitern Sie anschließend die Übermittlungsseite um einige Informationen zur Warteschlange. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\Home\Submit.cshtml**, um sie im Visual Studio-Editor zu öffnen. Fügen Sie nach `<h2>Submit</h2>` die folgende Zeile hinzu. Derzeit ist `ViewBag.MessageCount` leer. Sie werden diesen Bereich später ausfüllen.
 
-	```
-	<p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
-	```
+    ```
+    <p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
+    ```
 
-12. Sie haben nun Ihre GUI implementiert. Drücken Sie **F5**, um Ihre Anwendung auszuführen und zu prüfen, ob diese korrekt angezeigt wird.
+12. Sie haben nun Ihre GUI implementiert. Drücken Sie F5****, um Ihre Anwendung auszuführen und zu prüfen, ob diese korrekt angezeigt wird.
 
     ![][17]
 
-### Schreiben des Codes für die Übermittlung von Elementen an die Service Bus-Warteschlange
+### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Schreiben des Codes für die Übermittlung von Elementen an die Service Bus-Warteschlange
 
 Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlange hinzu. Zuerst erstellen Sie die Klasse mit den Verbindungsinformationen für die Service Bus-Warteschlange. Anschließend initialisieren Sie Ihre Verbindung in „Global.aspx.cs“. Zuletzt aktualisieren Sie den zuvor in „HomeController.cs“ erstellten Übermittlungscode, um die Elemente an die Service Bus-Warteschlange zu übermitteln.
 
@@ -239,121 +241,121 @@ Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlang
 
 3.  Sie fügen nun den Code hinzu, der Ihre Verbindungsinformationen kapselt und die Verbindung zur Service Bus-Warteschlange initialisiert. Ersetzen Sie den gesamten Inhalt von „QueueConnector.cs“ durch den folgenden Code, und geben Sie Werte für `your Service Bus namespace` (Ihr Namespacename) und `yourKey` ein. Letzterer ist der **Primärschlüssel**, den Sie über das Azure-Portal abgerufen haben.
 
-	```
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web;
-	using Microsoft.ServiceBus.Messaging;
-	using Microsoft.ServiceBus;
-	
-	namespace FrontendWebRole
-	{
-	    public static class QueueConnector
-	    {
-	        // Thread-safe. Recommended that you cache rather than recreating it
-	        // on every request.
-	        public static QueueClient OrdersQueueClient;
-	
-	        // Obtain these values from the portal.
-	        public const string Namespace = "your Service Bus namespace";
-	
-	        // The name of your queue.
-	        public const string QueueName = "OrdersQueue";
-	
-	        public static NamespaceManager CreateNamespaceManager()
-	        {
-	            // Create the namespace manager which gives you access to
-	            // management operations.
-	            var uri = ServiceBusEnvironment.CreateServiceUri(
-	                "sb", Namespace, String.Empty);
-	            var tP = TokenProvider.CreateSharedAccessSignatureTokenProvider(
-	                "RootManageSharedAccessKey", "yourKey");
-	            return new NamespaceManager(uri, tP);
-	        }
-	
-	        public static void Initialize()
-	        {
-	            // Using Http to be friendly with outbound firewalls.
-	            ServiceBusEnvironment.SystemConnectivity.Mode =
-	                ConnectivityMode.Http;
-	
-	            // Create the namespace manager which gives you access to
-	            // management operations.
-	            var namespaceManager = CreateNamespaceManager();
-	
-	            // Create the queue if it does not exist already.
-	            if (!namespaceManager.QueueExists(QueueName))
-	            {
-	                namespaceManager.CreateQueue(QueueName);
-	            }
-	
-	            // Get a client to the queue.
-	            var messagingFactory = MessagingFactory.Create(
-	                namespaceManager.Address,
-	                namespaceManager.Settings.TokenProvider);
-	            OrdersQueueClient = messagingFactory.CreateQueueClient(
-	                "OrdersQueue");
-	        }
-	    }
-	}
-	```
+    ```
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using Microsoft.ServiceBus.Messaging;
+    using Microsoft.ServiceBus;
+    
+    namespace FrontendWebRole
+    {
+        public static class QueueConnector
+        {
+            // Thread-safe. Recommended that you cache rather than recreating it
+            // on every request.
+            public static QueueClient OrdersQueueClient;
+    
+            // Obtain these values from the portal.
+            public const string Namespace = "your Service Bus namespace";
+    
+            // The name of your queue.
+            public const string QueueName = "OrdersQueue";
+    
+            public static NamespaceManager CreateNamespaceManager()
+            {
+                // Create the namespace manager which gives you access to
+                // management operations.
+                var uri = ServiceBusEnvironment.CreateServiceUri(
+                    "sb", Namespace, String.Empty);
+                var tP = TokenProvider.CreateSharedAccessSignatureTokenProvider(
+                    "RootManageSharedAccessKey", "yourKey");
+                return new NamespaceManager(uri, tP);
+            }
+    
+            public static void Initialize()
+            {
+                // Using Http to be friendly with outbound firewalls.
+                ServiceBusEnvironment.SystemConnectivity.Mode =
+                    ConnectivityMode.Http;
+    
+                // Create the namespace manager which gives you access to
+                // management operations.
+                var namespaceManager = CreateNamespaceManager();
+    
+                // Create the queue if it does not exist already.
+                if (!namespaceManager.QueueExists(QueueName))
+                {
+                    namespaceManager.CreateQueue(QueueName);
+                }
+    
+                // Get a client to the queue.
+                var messagingFactory = MessagingFactory.Create(
+                    namespaceManager.Address,
+                    namespaceManager.Settings.TokenProvider);
+                OrdersQueueClient = messagingFactory.CreateQueueClient(
+                    "OrdersQueue");
+            }
+        }
+    }
+    ```
 
-4.  Nun stellen Sie sicher, dass Ihre **Initialize**-Methode aufgerufen wird. Doppelklicken Sie im **Projektmappen-Explorer** auf **Global.asax\\Global.asax.cs**.
+4.  Stellen Sie nun sicher, dass Ihre **Initialize**-Methode aufgerufen wird. Doppelklicken Sie im **Projektmappen-Explorer** auf **Global.asax\Global.asax.cs**.
 
-5.  Fügen Sie am Ende der **Application\_Start**-Methode die folgende Codezeile hinzu.
+5.  Fügen Sie am Ende der **Application_Start**-Methode die folgende Codezeile hinzu.
 
-	```
-	FrontendWebRole.QueueConnector.Initialize();
-	```
+    ```
+    FrontendWebRole.QueueConnector.Initialize();
+    ```
 
-6.  Zuletzt aktualisieren Sie den zuvor erstellten Webcode, um die Elemente an die Warteschlange zu übermitteln. Doppelklicken Sie im **Projektmappen-Explorer** auf **Controllers\\HomeController.cs**.
+6.  Zuletzt aktualisieren Sie den zuvor erstellten Webcode, um die Elemente an die Warteschlange zu übermitteln. Doppelklicken Sie im **Projektmappen-Explorer** auf **Controllers\HomeController.cs**.
 
 7.  Aktualisieren Sie die `Submit()`-Methode (Überladung ohne Parameter) wie folgt, um die Nachrichtenanzahl für die Warteschlange abzurufen.
 
-	```
-	public ActionResult Submit()
-	{
-	    // Get a NamespaceManager which allows you to perform management and
-	    // diagnostic operations on your Service Bus queues.
-	    var namespaceManager = QueueConnector.CreateNamespaceManager();
-	
-	    // Get the queue, and obtain the message count.
-	    var queue = namespaceManager.GetQueue(QueueConnector.QueueName);
-	    ViewBag.MessageCount = queue.MessageCount;
-	
-	    return View();
-	}
-	```
+    ```
+    public ActionResult Submit()
+    {
+        // Get a NamespaceManager which allows you to perform management and
+        // diagnostic operations on your Service Bus queues.
+        var namespaceManager = QueueConnector.CreateNamespaceManager();
+    
+        // Get the queue, and obtain the message count.
+        var queue = namespaceManager.GetQueue(QueueConnector.QueueName);
+        ViewBag.MessageCount = queue.MessageCount;
+    
+        return View();
+    }
+    ```
 
 8.  Aktualisieren Sie die `Submit(OnlineOrder order)`-Methode (Überladung mit einem Parameter) wie folgt, um Bestellinformationen an die Warteschlange zu übermitteln.
 
-	```
-	public ActionResult Submit(OnlineOrder order)
-	{
-	    if (ModelState.IsValid)
-	    {
-	        // Create a message from the order.
-	        var message = new BrokeredMessage(order);
-	
-	        // Submit the order.
-	        QueueConnector.OrdersQueueClient.Send(message);
-	        return RedirectToAction("Submit");
-	    }
-	    else
-	    {
-	        return View(order);
-	    }
-	}
-	```
+    ```
+    public ActionResult Submit(OnlineOrder order)
+    {
+        if (ModelState.IsValid)
+        {
+            // Create a message from the order.
+            var message = new BrokeredMessage(order);
+    
+            // Submit the order.
+            QueueConnector.OrdersQueueClient.Send(message);
+            return RedirectToAction("Submit");
+        }
+        else
+        {
+            return View(order);
+        }
+    }
+    ```
 
 9.  Führen Sie die Anwendung nun erneut aus. Bei jeder Übermittlung einer Bestellung steigt der Nachrichtenzähler an.
 
     ![][18]
 
-## Erstellen einer Workerrolle
+## <a name="create-the-worker-role"></a>Erstellen einer Workerrolle
 
-Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten erstellen. Dieses Beispiel verwendet die Visual Studio-Projektvorlage **Workerrolle mit Service Bus-Warteschlange**. Sie haben die erforderlichen Anmeldeinformationen bereits aus dem Portal abgerufen.
+Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten erstellen. In diesem Beispiel wird die Visual Studio-Projektvorlage **Workerrolle mit Service Bus-Warteschlange** verwendet. Sie haben die erforderlichen Anmeldeinformationen bereits aus dem Portal abgerufen.
 
 1. Stellen Sie sicher, dass Sie Visual Studio mit Ihrem Azure-Konto verbunden haben.
 
@@ -361,66 +363,66 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
 
 3.  Klicken Sie auf **Hinzufügen** und anschließend auf **Neues Workerrollenprojekt**. Das Dialogfeld **Neues Rollenprojekt hinzufügen** wird geöffnet.
 
-	![][26]
+    ![][26]
 
 4.  Klicken Sie im Dialogfeld **Neues Rollenprojekt hinzufügen** auf **Workerrolle mit Service Bus-Warteschlange**.
 
-	![][23]
+    ![][23]
 
 5.  Geben Sie in das Feld **Name** den Namen **OrderProcessingRole** für das Projekt ein. Klicken Sie anschließend auf **Hinzufügen**.
 
 6.  Kopieren Sie die Verbindungszeichenfolge, die Sie in Schritt 9 des Abschnitts „Erstellen eines Service Bus-Namespaces“ abgerufen haben, in die Zwischenablage.
 
-7.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die in Schritt 5 erstellte **OrderProcessingRole** (klicken Sie auf **OrderProcessingRole** unter **Rollen**, nicht auf die Klasse). Klicken Sie anschließend auf **Eigenschaften**.
+7.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die in Schritt 5 erstellte **OrderProcessingRole** (klicken Sie auf **OrderProcessingRole** unter **Rollen**, nicht auf die Klasse). Klicken Sie anschließend auf **Eigenschaften**.
 
-8.  Klicken Sie auf der Registerkarte **Einstellungen** im Dialogfeld **Eigenschaften** in das Textfeld **Wert** für **Microsoft.ServiceBus.ConnectionString**, und fügen Sie den in Schritt 6 kopierten Endpunktwert ein.
+8.  Klicken Sie auf der Registerkarte **Einstellungen** im Dialogfeld **Eigenschaften** in das Textfeld **Wert** für **Microsoft.ServiceBus.ConnectionString**, und fügen Sie den in Schritt 6 kopierten Endpunktwert ein.
 
-	![][25]
+    ![][25]
 
-9.  Erstellen Sie die **OnlineOrder**-Klasse, um die Nachrichten abzubilden, während diese aus der Warteschlange verarbeitet werden. Sie können dabei eine zuvor erstellte Klasse wiederverwenden. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die **OrderProcessingRole**-Klasse (Rechtsklick auf die Klasse, nicht die Rolle). Klicken Sie auf **Hinzufügen** und anschließend auf **Vorhandenes Element**.
+9.  Erstellen Sie die **OnlineOrder**-Klasse, um die Nachrichten abzubilden, während diese aus der Warteschlange verarbeitet werden. Sie können dabei eine zuvor erstellte Klasse wiederverwenden. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die **OrderProcessingRole**-Klasse (Rechtsklick auf die Klasse, nicht die Rolle). Klicken Sie auf **Hinzufügen** und anschließend auf **Vorhandenes Element**.
 
-10. Durchsuchen Sie den Unterordner nach **FrontendWebRole\\Models**, und doppelklicken Sie dann auf **OnlineOrder.cs**, um die Klasse dem Projekt hinzuzufügen.
+10. Durchsuchen Sie den Unterordner nach **FrontendWebRole\Models**, und doppelklicken Sie dann auf **OnlineOrder.cs**, um die Klasse dem Projekt hinzuzufügen.
 
 11. Ändern Sie wie im folgenden Code gezeigt in **WorkerRole.cs** den Wert der Variablen **QueueName** von `"ProcessingQueue"` in `"OrdersQueue"`.
 
-	```
-	// The name of your queue.
-	const string QueueName = "OrdersQueue";
-	```
+    ```
+    // The name of your queue.
+    const string QueueName = "OrdersQueue";
+    ```
 
 12. Fügen Sie die folgende using-Anweisung am Anfang der Datei "WorkerRole.cs" hinzu.
 
-	```
-	using FrontendWebRole.Models;
-	```
+    ```
+    using FrontendWebRole.Models;
+    ```
 
 13. Ersetzen Sie in der Funktion `Run()` im `OnMessage()`-Aufruf den Inhalt der `try`-Klausel durch den folgenden Code.
 
-	```
-	Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
-	// View the message as an OnlineOrder.
-	OnlineOrder order = receivedMessage.GetBody<OnlineOrder>();
-	Trace.WriteLine(order.Customer + ": " + order.Product, "ProcessingMessage");
-	receivedMessage.Complete();
-	```
+    ```
+    Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
+    // View the message as an OnlineOrder.
+    OnlineOrder order = receivedMessage.GetBody<OnlineOrder>();
+    Trace.WriteLine(order.Customer + ": " + order.Product, "ProcessingMessage");
+    receivedMessage.Complete();
+    ```
 
-14. Ihre Anwendung ist nun fertig. Sie können die vollständige Anwendung testen, indem Sie das MultiTierApp-Projekt im Projektmappen-Explorer mit der rechten Maustaste anklicken und dann **Set as Startup Project** auswählen und F5 drücken. Beachten Sie, dass die Nachrichtenzahl nicht ansteigt, da die Workerrolle die Elemente in der Warteschlange verarbeitet und als abgeschlossen markiert. Sie können die Ausgabe Ihrer Workerrolle in der Azure-Serveremulator-GUI anzeigen. Klicken Sie dazu mit der rechten Maustaste in den Infobereich Ihrer Taskleiste und wählen Sie **Serveremulator-GUI anzeigen**.
+14. Ihre Anwendung ist nun fertig. Sie können die vollständige Anwendung testen, indem Sie im Projektmappen-Explorer mit der rechten Maustaste auf das MultiTierApp-Projekt klicken und dann **Set as Startup Project** auswählen und F5 drücken. Beachten Sie, dass die Nachrichtenzahl nicht ansteigt, da die Workerrolle die Elemente in der Warteschlange verarbeitet und als abgeschlossen markiert. Sie können die Ausgabe Ihrer Workerrolle in der Azure-Serveremulator-GUI anzeigen. Klicken Sie dazu mit der rechten Maustaste in den Infobereich Ihrer Taskleiste, und wählen Sie **Serveremulator-GUI anzeigen**.
 
     ![][19]
 
     ![][20]
 
-## Nächste Schritte  
+## <a name="next-steps"></a>Nächste Schritte  
 
-Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:
+Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:  
 
-* [Azure-Servicebus][sbmsdn]
-* [Servicebus-Dienstseite][sbwacom]
-* [Verwenden von Servicebus-Warteschlangen][sbwacomqhowto]
+* [Azure Service Bus][sbmsdn]  
+* [Seite für Service Bus-Dienst][sbwacom]  
+* [Einsatz von Service Bus-Warteschlangen][sbwacomqhowto]  
 
-Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
+Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:  
 
-* [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage]
+* [.NET-Anwendungen mit mehreren Ebenen mithilfe von Speichertabellen, Warteschlangen und Blobs][mutitierstorage]  
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
@@ -456,10 +458,13 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
   [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
   [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-  [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx
-  [sbwacom]: /documentation/services/service-bus/
-  [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md
+  [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
+  [sbwacom]: /documentation/services/service-bus/  
+  [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

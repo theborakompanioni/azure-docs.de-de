@@ -1,58 +1,62 @@
 <properties
-	pageTitle="Azure Active Directory B2C: Registrierung einer Anwendung | Microsoft Azure"
-	description="Registrieren Ihrer Anwendung bei Azure Active Directory B2C"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="mbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: Application registration | Microsoft Azure"
+    description="How to register your application with Azure Active Directory B2C"
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/30/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/30/2016"
+    ms.author="swkrish"/>
 
 
-# Azure Active Directory B2C: Registrieren der Anwendung
 
-## Voraussetzung
+# <a name="azure-active-directory-b2c:-register-your-application"></a>Azure Active Directory B2C: Register your application
 
-Zum Erstellen einer Anwendung, die Registrierungen und Anmeldungen von Kunden akzeptiert, müssen Sie die Anwendung zunächst bei einem Azure Active Directory B2C-Mandanten registrieren. Erstellen Sie einen eigenen Mandanten mithilfe der unter [Erstellen eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md) beschriebenen Schritte. Nachdem Sie alle Schritte in diesem Artikel ausgeführt haben, ist das Blatt „B2C-Funktionen“ an Ihr Startmenü angeheftet.
+## <a name="prerequisite"></a>Prerequisite
+
+To build an application that accepts consumer sign-up and sign-in, you first need to register the application with an Azure Active Directory B2C tenant. Get your own tenant by using the steps outlined in [Create an Azure AD B2C tenant](active-directory-b2c-get-started.md). After you follow all the steps in that article, you will have the B2C features blade pinned to your Startboard.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## Navigieren zum Blatt „B2C-Funktionen“
+## <a name="navigate-to-the-b2c-features-blade"></a>Navigate to the B2C features blade
 
-Wenn das Blatt „B2C-Funktionen“ an Ihr Startmenü angeheftet ist, sehen Sie das Blatt, sobald Sie sich als globaler Administrator des B2C-Mandanten beim [Azure-Portal](https://portal.azure.com/) anmelden.
+If you have the B2C features blade pinned to your Startboard, you will see the blade as soon as you sign in to the [Azure portal](https://portal.azure.com/) as the Global Administrator of the B2C tenant.
 
-Sie können auf das Blatt auch zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com/) im linken Navigationsbereich auf **Durchsuchen** und dann auf **Azure AD B2C** klicken.
+You can also access the blade by clicking **Browse** and then **Azure AD B2C** in the left navigation pane on the [Azure portal](https://portal.azure.com/).
 
-> [AZURE.IMPORTANT] 
-Sie müssen als globaler Administrator des B2C-Mandanten festgelegt sein, um auf das Blade mit den B2C-Features zugreifen zu können. Globale Administratoren anderer Mandanten oder Benutzer von Mandanten haben keinen Zugriff. Mit dem Mandantenumschalter in der oberen rechten Ecke des Azure-Portals können Sie zu Ihrem B2C-Mandanten wechseln.
+> [AZURE.IMPORTANT] You need to be a Global Administrator of the B2C tenant to be able to access the B2C features blade. A Global Administrator from any other tenant or a user from any tenant cannot access it.  You can switch to your B2C tenant by using the tenant switcher in the top right corner of the Azure Portal.
 
-## Registrieren einer Anwendung
+## <a name="register-an-application"></a>Register an application
 
-1. Klicken Sie auf dem Blatt „B2C-Funktionen“ im Azure-Portal auf **Anwendungen**.
-2. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
-3. Geben Sie einen Namen für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z. B. „Contoso B2C-App“ eingeben.
-4. Wenn Sie eine webbasierte Anwendung entwickeln, stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**. Die **Antwort-URLs** sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie z. B. Folgendes ein: `https://localhost:44321/`. Falls Ihre Webanwendung auch eine durch Azure AD B2C geschützte Web-API aufruft, wird darüber hinaus die Erstellung eines **geheimen Anwendungsschlüssels** empfohlen. Klicken Sie dazu auf die Schaltfläche **Schlüssel generieren**.
+1. On the B2C features blade on the Azure portal, click **Applications**.
+2. Click **+Add** at the top of the blade.
+3. Enter a **Name** for the application that will describe your application to consumers. For example, you could enter "Contoso B2C app".
+4. If you are writing a web-based application, toggle the **Include web app / web API** switch to **Yes**. The **Reply URLs** are endpoints where Azure AD B2C will return any tokens that your application requests. For example, enter `https://localhost:44321/`. If your web application will also be calling some web API secured by Azure AD B2C, you'll want to create an **Application Secret** as well by clicking the **Generate Key** button.
 
-    > [AZURE.NOTE] **Geheime Anwendungsschlüssel** sind wichtige Sicherheitsanmeldeinformationen, die entsprechend geschützt werden müssen.
+    > [AZURE.NOTE] An **Application Secret** is an important security credential, and should be secured appropriately.
 
-5. Wenn Sie eine mobile Anwendung entwickeln, stellen Sie den Schalter **Systemeigenen Client einschließen** auf **Ja**. Notieren Sie sich den standardmäßigen **Umleitungs-URI**, der automatisch für Sie erstellt wurde.
-6. Klicken Sie auf **Erstellen**, um Ihre Anwendung zu registrieren.
-7. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
+5. If you are writing a mobile application, toggle the **Include native client** switch to **Yes**. Copy down the default **Redirect URI** that is automatically created for you.
+6. Click **Create** to register your application.
+7. Click the application that you just created and copy down the globally unique **Application Client ID** that you'll use later in your code.
 
-> [AZURE.IMPORTANT] Über das Blatt „B2C-Funktionen“ erstellte Anwendungen müssen am gleichen Ort verwaltet werden. Mit PowerShell oder über ein anderes Portal bearbeitete B2C-Anwendungen werden nicht mehr unterstützt und können voraussichtlich nicht mehr mit Azure Active Directory B2C verwendet werden.
+> [AZURE.IMPORTANT] Applications created in the B2C features blade have to managed in the same location. If you edit B2C applications using PowerShell or another portal, they become unsupported and will likely not work with Azure AD B2C.
 
-## Erstellen einer Schnellstart-App
+## <a name="build-a-quick-start-application"></a>Build a Quick Start Application
 
-Nachdem Sie nun über eine bei Azure AD B2C registrierte Anwendung verfügen, können Sie zum Einstieg eines der Schnellstarttutorials ausführen. Hier sind einige Vorschläge:
+Now that you have an application registered with Azure AD B2C, you can complete one of our quick-start tutorials to get up and running. Here are a few recommendations:
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

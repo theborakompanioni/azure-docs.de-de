@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Ersetzen des Gehäuses eines StorSimple-Geräts | Microsoft Azure"
-   description="Beschreibt das Entfernen und Ersetzen des primären StorSimple- oder EBOD-Gehäuses."
+   pageTitle="Replace the chassis on a StorSimple device | Microsoft Azure"
+   description="Describes how to remove and replace the chassis for your StorSimple primary enclosure or EBOD enclosure."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,52 +15,58 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
-# Ersetzen des Gehäuses des StorSimple-Geräts
 
-## Übersicht
+# <a name="replace-the-chassis-on-your-storsimple-device"></a>Replace the chassis on your StorSimple device
 
-In diesem Tutorial wird erläutert, wie Sie das Gehäuse eines StorSimple-Geräts der 8000-Serie austauschen oder entfernen. Das StorSimple-Modell 8100 ist ein Gerät mit einem einzelnen Gehäuse, das Modell 8600 ein Gerät mit zwei Gehäusen. Beim Modell 8600 können potenziell zwei Gehäuse im Gerät ausfallen: das primäre Gehäuse oder das EBOD-Gehäuse.
+## <a name="overview"></a>Overview
 
-In beiden Fällen wird ein leeres Ersatzgehäuse von Microsoft ausgeliefert. Die Gehäuse enthalten keine Stromversorgungs- und Kühleinheiten (PCMs), Controllermodule, SSDs (Solid-State-Festplatten), HDDs (Festplattenlaufwerke) oder EBOD-Module.
+This tutorial explains how to remove and replace a chassis in a StorSimple 8000 series device. The StorSimple 8100 model is a single enclosure device (one chassis), whereas the 8600 is a dual enclosure device (two chassis). For an 8600 model, there are potentially two chassis that could fail in the device: the chassis for the primary enclosure or the chassis for the EBOD enclosure.
 
->[AZURE.IMPORTANT] Vor dem Entfernen und Austauschen des Gehäuses überprüfen Sie die Sicherheitsinformationen unter [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+In either case, the replacement chassis that is shipped by Microsoft is empty. No Power and Cooling Modules (PCMs), controller modules, solid state disk drives (SSDs), hard disk drives (HDDs), or EBOD modules will be included.
 
-## Entfernen des Gehäuses
+>[AZURE.IMPORTANT] Before removing and replacing the chassis, review the safety information in [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
 
-Führen Sie die folgenden Schritte aus, um das Gehäuse des StorSimple-Geräts zu entfernen.
+## <a name="remove-the-chassis"></a>Remove the chassis
 
-#### So entfernen Sie ein Gehäuse
+Perform the following steps to remove the chassis on your StorSimple device.
 
-1. Stellen Sie sicher, dass das StorSimple-Gerät ausgeschaltet und von der Stromversorgung getrennt ist.
+#### <a name="to-remove-a-chassis"></a>To remove a chassis
 
-2. Entfernen Sie ggf. alle Netzwerk- und SAS-Kabel.
+1. Make sure that the StorSimple device is shut down and disconnected from all the power sources.
 
-3. Entfernen Sie die Einheit aus dem Rack.
+2. Remove all the network and SAS cables, if applicable.
 
-4. Entfernen Sie alle Laufwerke, und notieren Sie sich die Steckplätze, aus denen sie entfernt werden. Weitere Informationen finden Sie unter [Entfernen der Festplatte](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
+3. Remove the unit from the rack.
 
-5. Entfernen Sie die EBOD-Controllermodule aus dem EBOD-Gehäuse (falls dies das fehlerhafte Gehäuse ist). Weitere Informationen finden Sie unter [Entfernen eines EBOD-Controllers](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller).
+4. Remove each of the drives and note the slots from which they are removed. For more information, see [Remove the disk drive](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
 
-    Entfernen Sie die Controller aus dem primären Gehäuse (falls dies das fehlerhafte Gehäuse ist), und notieren Sie sich die Steckplätze, aus denen sie entfernt werden. Weitere Informationen finden Sie unter [Entfernen eines Controllers](storsimple-controller-replacement.md#remove-a-controller).
+5. On the EBOD enclosure (if this is the chassis that failed), remove the EBOD controller modules. For more information, see [Remove an EBOD controller](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller). 
 
-## Installieren des Gehäuses
+    On the primary enclosure (if this is the chassis that failed), remove the controllers and note the slots from which they are removed. For more information, see [Remove a controller](storsimple-controller-replacement.md#remove-a-controller).
 
-Führen Sie die folgenden Schritte aus, um das Gehäuse in Ihrem StorSimple-Gerät zu installieren.
+## <a name="install-the-chassis"></a>Install the chassis
 
-#### So installieren Sie ein Gehäuse
+Perform the following steps to install the chassis on your StorSimple device.
 
-1. Installieren Sie das Gehäuse im Rack. Weitere Informationen finden Sie unter [Einbauen des StorSimple 8100-Geräts in ein Rack](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) oder [Einbauen des StorSimple 8600-Geräts in ein Rack](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
+#### <a name="to-install-a-chassis"></a>To install a chassis
 
-2. Nachdem Sie das Gehäuse in das Rack eingebaut haben, installieren Sie die Controllermodule an den gleichen Positionen, an denen sie sich zuvor befanden.
+1. Mount the chassis in the rack. For more information, see [Rack-mount your StorSimple 8100 device](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) or [Rack-mount your StorSimple 8600 device](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
 
-3. Installieren Sie die Laufwerke an den gleichen Positionen und Steckplätzen, an denen sie zuvor installiert waren.
+2. After the chassis is mounted in the rack, install the controller modules in the same positions that they were previously installed in.
 
-    >[AZURE.NOTE] Wir empfehlen, dass Sie zuerst die SSDs installieren und dann die Festplatten.
+3. Install the drives in the same positions and slots that they were previously installed in.
 
-2. Nach dem Einbau des Geräts und der Installation der Komponenten verbinden Sie das Gerät mit den entsprechenden Stromquellen, und schalten Sie es ein. Weitere Informationen finden Sie unter [Verkabeln des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) bzw. [Verkabeln des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+    >[AZURE.NOTE] We recommend that you install the SSDs in the slots first, and then install the HDDs.
 
-## Nächste Schritte
+2. With the device mounted in the rack and the components installed, connect your device to the appropriate power sources, and turn on the device. For details, see [Cable your StorSimple 8100 device](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) or [Cable your StorSimple 8600 device](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
-Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0817_2016-->
+Learn more about [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

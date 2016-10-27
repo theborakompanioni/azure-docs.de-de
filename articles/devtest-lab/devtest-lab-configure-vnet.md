@@ -1,70 +1,74 @@
 <properties
-	pageTitle="Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs | Microsoft Azure"
-	description="Erfahren Sie, wie Sie mit Azure DevTest Labs ein vorhandenes virtuelles Netzwerk und ein Subnetz konfigurieren und auf einem virtuellen Computer verwenden."
-	services="devtest-lab,virtual-machines"
-	documentationCenter="na"
-	authors="tomarcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Configure a virtual network in Azure DevTest Labs  | Microsoft Azure"
+    description="Learn how to configure an existing virtual network and subnet, and use them in a VM with Azure DevTest Labs"
+    services="devtest-lab,virtual-machines"
+    documentationCenter="na"
+    authors="tomarcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/06/2016"
-	ms.author="tarcher"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/06/2016"
+    ms.author="tarcher"/>
 
-# Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs
 
-Wie im Artikel [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md) erläutert, können Sie beim Erstellen eines virtuellen Computers in einem Lab ein konfiguriertes virtuelles Netzwerk angeben. Ein Szenario hierfür wäre, wenn Sie von Ihren virtuellen Computern aus auf Ihre Unternehmensnetzwerkressourcen zugreifen müssen, und zwar über ein virtuelles Netzwerk, das mit ExpressRoute oder Site-to-Site-VPN konfiguriert wurde. In den folgenden Abschnitten wird veranschaulicht, wie Sie Ihr vorhandenes virtuelles Netzwerk in den Einstellungen für virtuelle Netzwerke eines Labs hinzufügen, sodass es beim Erstellen Ihrer virtuellen Computer zur Auswahl steht.
+# <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Configure a virtual network in Azure DevTest Labs
 
-## Konfigurieren eines virtuellen Netzwerks für ein Lab über das Azure-Portal
-Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtuellen Netzwerks (und Subnetzes) zu einem Lab, sodass es beim Erstellen eines virtuellen Computers in dem gleichen Lab verwendet werden kann.
+As explained in the article, [Add a VM with artifacts to a lab](devtest-lab-add-vm-with-artifacts.md), when you create a VM in a lab, you can specify a configured virtual network. One scenario for doing this is if you need to access your corpnet resources from your VMs using the virtual network that was configured with ExpressRoute or site-to-site VPN. The following sections illustrate how to add your existing virtual network into a lab's Virtual Network settings so that it is available to choose when creating VMs.
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Configure a virtual network for a lab using the Azure portal
+The following steps walk you through adding an existing virtual network (and subnet) to a lab so that it can be used when creating a VM in the same lab. 
 
-1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
+1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
+1. Select **More Services**, and then select **DevTest Labs** from the list.
 
-1. Wählen Sie auf dem Blatt des Labs **Konfiguration** aus.
+1. From the list of labs, select the desired lab. 
 
-1. Wählen Sie auf dem Blatt **Konfiguration** für das Lab die Option **Virtuelle Netzwerke** aus.
+1. On the lab's blade, select **Configuration**.
 
-1. Auf dem Blatt **Virtuelle Netzwerke** sehen Sie eine Liste der virtuellen Netzwerke, die für das aktuelle Lab konfiguriert wurden, sowie das standardmäßige virtuelle Netzwerk, das für Ihr Lab erstellt wird.
+1. On the lab's **Configuration** blade, select **Virtual networks**.
 
-1. Wählen Sie **+ Hinzufügen**.
+1. On the **Virtual networks** blade, you see a list of virtual networks configured for the current lab as well as the default virtual network that is created for your lab. 
 
-	![Fügen Sie Ihrem Lab ein vorhandenes virtuelles Netzwerk hinzu.](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-	
-1. Wählen Sie auf dem Blatt **Virtuelles Netzwerk** **[Virtuelles Netzwerk auswählen]**.
+1. Select **+ Add**.
 
-	![Wählen Sie ein vorhandenes virtuelles Netzwerk aus.](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
-	
-1. Wählen Sie auf dem Blatt **Virtuelles Netzwerk wählen** das gewünschte virtuelle Netzwerk aus. Das Blatt zeigt alle virtuellen Netzwerke, die sich im Abonnement in derselben Region wie das Lab befinden.
+    ![Add an existing virtual network to your lab](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
+    
+1. On the **Virtual network** blade, select **[Select virtual network]**.
 
-1. Nachdem Sie ein virtuelles Netzwerk ausgewählt haben, wird Ihnen wieder das Blatt **Virtuelles Netzwerk** angezeigt, und mehrere Felder sind aktiviert.
+    ![Select an existing virtual network](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
+    
+1. On the **Choose virtual network** blade, select the desired virtual network. The blade shows all the virtual networks that are under the same region in the subscription as the lab.  
 
-	![Wählen Sie ein vorhandenes virtuelles Netzwerk aus.](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
+1. After selecting a virtual network, you are returned to the **Virtual network** blade and several fields are enabled.  
 
-1. Geben Sie eine Beschreibung für Ihre Kombination aus virtuellem Netzwerk und Lab an.
+    ![Select an existing virtual network](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
 
-1. Damit ein Subnetz bei der Lab-VM-Erstellung verwendet werden kann, aktivieren Sie die Option **USE IN VIRTUAL MACHINE CREATION** (BEIM ERSTELLEN VIRTUELLER COMPUTER VERWENDEN).
+1. Specify a description for your virtual network / lab combination.
 
-1. Um die Verwendung öffentlicher IP-Adressen in einem Subnetz zu ermöglichen, aktivieren Sie die Option **ALLOW PUBLIC IP** (ÖFFENTLICHE IP-ADRESSE ZULASSEN).
+1. To allow a subnet to be used in lab VM creation, select **USE IN VIRTUAL MACHINE CREATION**.
 
-1. Geben Sie im Feld **MAX. VIRTUELLE COMPUTER PRO BENUTZER** die maximale Anzahl von virtuellen Computern pro Benutzer für jedes Subnetz an. Wenn eine unbeschränkte Anzahl von VMs verwendet werden soll, lassen Sie dieses Feld leer.
+1. To allow public IP addresses in a subnet, select **ALLOW PUBLIC IP**.
 
-1. Wählen Sie **Speichern** aus.
+1. In the **MAXIMUM VIRTUAL MACHINES PER USER** field, specify the maximum VMs per user for each subnet. If you want an unrestricted number of VMs, leave this field blank.
 
-1. Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines virtuellen Computers ausgewählt werden. Informationen zum Erstellen eines virtuellen Computers und zum Angeben eines virtuellen Netzwerks finden Sie im Artikel [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
+1. Select **Save**.
+
+1. Now that the virtual network is configured, it can be selected when creating a VM. To see how to create a VM and specify a virtual network, refer to the article, [Add a VM with artifacts to a lab](devtest-lab-add-vm-with-artifacts.md). 
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Nachdem Sie Ihrem Lab das gewünschte virtuelle Netzwerk hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
+Once you have added the desired virtual network to your lab, the next step is to [add a VM to your lab](devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

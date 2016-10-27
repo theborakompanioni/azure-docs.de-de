@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Öffentliche und private IP-Adressen in Azure-Ressourcen-Manager | Microsoft Azure"
-   description="Hier erfahren Sie mehr über die Verwendung öffentlicher und privater IP-Adressen in Azure-Ressourcen-Manager."
+   pageTitle="Public and private IP addressing in Azure Resource Manager | Microsoft Azure"
+   description="Learn about public and private IP addressing in Azure Resource Manager"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -16,124 +16,129 @@
    ms.date="04/27/2016"
    ms.author="jdial" />
 
-# IP-Adressen in Azure
-Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden.
 
-- **Öffentliche IP-Adressen**: Sie werden für die Kommunikation mit dem Internet verwendet. Hierzu zählen auch öffentliche Azure-Dienste.
-- **Private IP-Adressen**: Sie werden für die Kommunikation innerhalb eines virtuellen Azure-Netzwerks (VNet) und innerhalb Ihres lokalen Netzwerks verwendet, wenn Sie Ihr Netzwerk mithilfe eines VPN-Gateways oder einer ExpressRoute-Verbindung auf Azure ausdehnen.
+# <a name="ip-addresses-in-azure"></a>IP addresses in Azure
+You can assign IP addresses to Azure resources to communicate with other Azure resources, your on-premises network, and the Internet. There are two types of IP addresses you can use in Azure:
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [Klassisches Bereitstellungsmodell](virtual-network-ip-addresses-overview-classic.md).
+- **Public IP addresses**: Used for communication with the Internet, including Azure public-facing services
+- **Private IP addresses**: Used for communication within an Azure virtual network (VNet), and your on-premises network when you use a VPN gateway or ExpressRoute circuit to extend your network to Azure.
 
-Wenn Sie mit dem klassischen Bereitstellungsmodell vertraut sind, sehen Sie sich die [Unterschiede bei IP-Adressen zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments) an.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md).
 
-## Öffentliche IP-Adressen
-Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md) und [Azure Storage](../storage/storage-introduction.md).
+If you are familiar with the classic deployment model, check the [differences in IP addressing between classic and Resource Manager](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments).
 
-In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](resource-groups-networking.md#public-ip-address) eine Ressource, die über eigene Eigenschaften verfügt. Sie können eine öffentliche IP-Adressressource einer der folgenden Ressourcen zuordnen:
+## <a name="public-ip-addresses"></a>Public IP addresses
+Public IP addresses allow Azure resources to communicate with Internet and Azure public-facing services such as [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL databases](../sql-database/sql-database-technical-overview.md), and [Azure storage](../storage/storage-introduction.md).
 
-- Virtuelle Computer (VMs)
-- Load Balancer mit Internetzugriff
-- VPN-Gateways
-- Anwendungsgateways
+In Azure Resource Manager, a [public IP](resource-groups-networking.md#public-ip-address) address is a resource that has its own properties. You can associate a public IP address resource with any of the following resources:
 
-### Zuordnungsmethode
-Es gibt zwei Methoden zum Zuordnen einer IP-Adresse zu einer *öffentlichen* IP-Ressource: *dynamisch* oder *statisch*. Die Standardmethode für die Zuordnung ist *dynamisch*. Bei diesem Verfahren wird eine IP-Adresse **nicht** zum Zeitpunkt ihrer Erstellung zugewiesen. Stattdessen wird die öffentliche IP-Adresse zugeordnet, wenn Sie die zugeordnete Ressource (z.B. einen virtuellen Computer oder einen Load Balancer) starten oder erstellen. Die IP-Adresse wird freigegeben, wenn Sie die Ressource beenden oder löschen. Dies hat zur Folge, dass die IP-Adresse geändert wird, wenn Sie eine Ressource beenden und starten.
+- Virtual machines (VM)
+- Internet-facing load balancers
+- VPN gateways
+- Application gateways
 
-Damit die IP-Adresse für die zugeordnete Ressource unverändert bleibt, können Sie die Zuordnungsmethode explizit auf *statisch* festlegen. In diesem Fall wird sofort eine IP-Adresse zugewiesen. Sie wird nur freigegeben, wenn Sie die Ressource löschen oder deren Zuordnungsmethode in *dynamisch* ändern.
+### <a name="allocation-method"></a>Allocation method
+There are two methods in which an IP address is allocated to a *public* IP resource - *dynamic* or *static*. The default allocation method is *dynamic*, where an IP address is **not** allocated at the time of its creation. Instead, the public IP address is allocated when you start (or create) the associated resource (like a VM or load balancer). The IP address is released when you stop (or delete) the resource. This causes the IP address to change when you stop and start a resource.
 
->[AZURE.NOTE] Auch wenn Sie die Zuordnungsmethode auf *statisch* festlegen, können Sie nicht die tatsächliche IP-Adresse festlegen, die der *öffentlichen IP-Ressource* zugewiesen wird. Sie wird stattdessen aus einem Pool der verfügbaren IP-Adressen an dem Azure-Standort zugeordnet, an dem die Ressource erstellt wird.
+To ensure the IP address for the associated resource remains the same, you can set the allocation method explicitly to *static*. In this case an IP address is assigned immediately. It is released only when you delete the resource or change its allocation method to *dynamic*.
 
-Statische öffentliche IP-Adressen werden häufig in den folgenden Szenarien verwendet:
+>[AZURE.NOTE] Even when you set the allocation method to *static*, you cannot specify the actual IP address assigned to the *public IP resource*. Instead, it gets allocated from a pool of available IP addresses in the Azure location the resource is created in.
 
-- Endbenutzer müssen Firewallregeln für die Kommunikation mit Ihren Azure-Ressourcen aktualisieren.
-- Bei der DNS-Namensauflösung erfordert eine Änderung einer IP-Adresse eine Aktualisierung von A-Datensätzen.
-- Ihre Azure-Ressourcen kommunizieren mit anderen Apps oder Diensten, die ein auf IP-Adressen basierendes Sicherheitsmodell verwenden.
-- Sie verwenden SSL-Zertifikate, die mit einer IP-Adresse verknüpft sind.
+Static public IP addresses are commonly used in the following scenarios:
 
->[AZURE.NOTE] Die Liste mit den IP-Adressbereichen, aus denen den Azure-Ressourcen öffentliche IP-Adressen (dynamisch/statisch) zugewiesen werden, finden Sie unter [IP-Bereiche des Azure-Datencenters](https://www.microsoft.com/download/details.aspx?id=41653).
+- End-users need to update firewall rules to communicate with your Azure resources.
+- DNS name resolution, where a change in IP address would require updating A records.
+- Your Azure resources communicate with other apps or services that use an IP address-based security model.
+- You use SSL certificates linked to an IP address.
 
-### DNS-Hostnamensauflösung
-Sie können eine DNS-Domänennamensbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für *Domänennamensbezeichnung*.*Standort*.cloudapp.azure.com eine Zuordnung zur öffentlichen IP-Adresse in den von Azure verwalteten DNS-Servern. Wenn Sie z. B. eine öffentliche IP-Ressource mit **contoso** als *Domänennamensbezeichung* am Azure-*Standort* **USA, Westen** erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.westus.cloudapp.azure.com** in die öffentliche IP-Adresse der Ressource aufgelöst. Mit diesem FQDN können Sie einen benutzerdefinierten CNAME-Domäneneintrag mit Verweis auf die öffentliche IP-Adresse in Azure erstellen.
+>[AZURE.NOTE] The list of IP ranges from which public IP addresses (dynamic/static) are allocated to Azure resources is published at [Azure Datacenter IP ranges](https://www.microsoft.com/download/details.aspx?id=41653).
 
->[AZURE.IMPORTANT] Jede erstellte Domänennamensbezeichnung muss innerhalb des Azure-Standorts eindeutig sein.
+### <a name="dns-hostname-resolution"></a>DNS hostname resolution
+You can specify a DNS domain name label for a public IP resource, which creates a mapping for *domainnamelabel*.*location*.cloudapp.azure.com to the public IP address in the Azure-managed DNS servers. For instance, if you create a public IP resource with **contoso** as a *domainnamelabel* in the **West US** Azure *location*, the fully-qualified domain name (FQDN) **contoso.westus.cloudapp.azure.com** will resolve to the public IP address of the resource. You can use this FQDN to create a custom domain CNAME record pointing to the public IP address in Azure.
 
-### Virtuelle Computer
-Sie können eine öffentliche IP-Adresse einem virtuellen [Windows](../virtual-machines/virtual-machines-windows-about.md)- oder [Linux](../virtual-machines/virtual-machines-linux-about.md)-Computer zuordnen, indem Sie sie dessen **Netzwerkschnittstelle** zuweisen. Im Fall eines virtuellen Computers mit mehreren Netzwerkschnittstellen weisen Sie sie nur der *primären* Netzwerkschnittstelle zu. Sie können einem virtuellen Computer (VM) eine dynamische oder eine statische öffentliche IP-Adresse zuweisen.
+>[AZURE.IMPORTANT] Each domain name label created must be unique within its Azure location.  
 
-### Load Balancer mit Internetzugriff
-Sie können eine öffentliche IP-Adresse einem [Azure Load Balancer](../load-balancer/load-balancer-overview.md) zuordnen, indem Sie sie der **Front-End**-Konfiguration des Load Balancers zuweisen. Diese öffentliche IP-Adresse fungiert als virtuelle IP-Adresse (VIP) mit Lastenausgleich. Sie können einem Load Balancer-Front-End eine dynamische oder eine statische öffentliche IP-Adresse zuweisen. Sie können einem Load Balancer-Front-End auch mehrere öffentliche IP-Adressen zuweisen. Dadurch werden Szenarien mit [mehreren VIPs](../load-balancer/load-balancer-multivip.md) ermöglicht, wie z.B. mehrinstanzenfähige Umgebungen mit SSL-basierten Websites.
+### <a name="virtual-machines"></a>Virtual machines
+You can associate a public IP address with a [Windows](../virtual-machines/virtual-machines-windows-about.md) or [Linux](../virtual-machines/virtual-machines-linux-about.md) VM by assigning it to its **network interface**. In the case of a multi-network interface VM, you can assign it to the *primary* network interface only. You can assign either a dynamic or a static public IP address to a VM.
 
-### VPN-Gateways
-Über [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) wird eine Verbindung zwischen einem virtuellen Azure-Netzwerk (VNet) und anderen Azure-VNets oder lokalen Netzwerken hergestellt. Sie müssen der **IP-Konfiguration** dieses Gateways eine öffentliche IP-Adresse zuweisen, um eine Kommunikation mit dem Remotenetzwerk zu ermöglichen. Derzeit können Sie einem VPN-Gateway nur eine *dynamische* öffentliche IP-Adresse zuweisen.
+### <a name="internet-facing-load-balancers"></a>Internet-facing load balancers
+You can associate a public IP address with an [Azure Load Balancer](../load-balancer/load-balancer-overview.md), by assigning it to the load balancer **frontend** configuration. This public IP address serves as a load-balanced virtual IP address (VIP). You can assign either a dynamic or a static public IP address to a load balancer front-end. You can also assign multiple public IP addresses to a load balancer front-end, which enables [multi-VIP](../load-balancer/load-balancer-multivip.md) scenarios like a multi-tenant environment with SSL-based websites.
 
-### Anwendungsgateways
-Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/application-gateway-introduction.md) zuordnen, indem Sie sie der **Front-End**-Konfiguration des Gateways zuweisen. Diese öffentliche IP-Adresse fungiert als VIP (virtuelle IP-Adresse) mit Lastenausgleich. Derzeit können Sie der Front-End-Konfiguration eines Anwendungsgateways nur eine *dynamische* öffentliche IP-Adresse zuweisen.
+### <a name="vpn-gateways"></a>VPN gateways
+[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) is used to connect an Azure virtual network (VNet) to other Azure VNets or to an on-premises network. You need to assign a public IP address to its **IP configuration** to enable it to communicate with the remote network. Currently, you can only assign a *dynamic* public IP address to a VPN gateway.
 
-### Auf einen Blick
-Die nachstehende Tabelle zeigt die spezifischen Eigenschaften, durch die eine öffentliche IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann und die möglichen Zuweisungsverfahren (dynamisch oder statisch).
+### <a name="application-gateways"></a>Application gateways
+You can associate a public IP address with an Azure [Application Gateway](../application-gateway/application-gateway-introduction.md), by assigning it to the gateway's **frontend** configuration. This public IP address serves as a load-balanced VIP. Currently, you can only assign a *dynamic* public IP address to an application gateway frontend configuration.
 
-|Ressource der obersten Ebene|Zuordnung der IP-Adresse|Dynamisch|Statisch|
+### <a name="at-a-glance"></a>At-a-glance
+The table below shows the specific property through which a public IP address can be associated to a top-level resource, and the possible allocation methods (dynamic or static) that can be used.
+
+|Top-level resource|IP Address association|Dynamic|Static|
 |---|---|---|---|
-|Virtueller Computer|Netzwerkschnittstelle|Ja|Ja|
-|Load Balancer|Front-End-Konfiguration|Ja|Ja|
-|VPN Gateway|Gateway-IP-Konfiguration|Ja|Nein|
-|Anwendungsgateway|Front-End-Konfiguration|Ja|Nein|
+|Virtual machine|Network interface|Yes|Yes|
+|Load balancer|Front end configuration|Yes|Yes|
+|VPN gateway|Gateway IP configuration|Yes|No|
+|Application gateway|Front end configuration|Yes|No|
 
-## Private IP-Adressen
-Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem [virtuellen Netzwerk](virtual-networks-overview.md) oder in einem lokalen Netzwerk über ein VPN-Gateway oder eine ExpressRoute-Verbindung, ohne dass dabei eine über das Internet erreichbare IP-Adresse verwendet wird.
+## <a name="private-ip-addresses"></a>Private IP addresses
+Private IP addresses allow Azure resources to communicate with other resources in a [virtual network](virtual-networks-overview.md) or an on-premises network through a VPN gateway or ExpressRoute circuit, without using an Internet-reachable IP address.
 
-Im Azure Resource Manager-Bereitstellungsmodell wird den folgenden Typen von Azure-Ressourcen eine private IP-Adresse zugeordnet.
+In the Azure Resource Manager deployment model, a private IP address is associated to the following types of Azure resources:
 
 - VMs
-- Interne·Load Balancer (ILBs)
-- Anwendungsgateways
+- Internal load balancers (ILBs)
+- Application gateways
 
-### Zuordnungsmethode
-Eine private IP-Adresse wird aus dem Adressbereich des Subnetzes zugeordnet, dem die Ressource hinzugefügt wurde. Der Adressbereich des Subnetzes ist ein Teil des VNet-Adressbereichs.
+### <a name="allocation-method"></a>Allocation method
+A private IP address is allocated from the address range of the subnet to which the resource is attached. The address range of the subnet itself is a part of the VNet's address range.
 
-Es gibt zwei Methoden zum Zuordnen von privaten IP-Adressen: *dynamisch* oder *statisch*. Die Standardmethode ist die *dynamische* Zuordnung. Dabei wird die IP-Adresse aus dem Subnetz der Ressource per DHCP automatisch zugewiesen. Wenn Sie die Ressource beenden und wieder starten, kann sich diese IP-Adresse ändern.
+There are two methods in which a private IP address is allocated: *dynamic* or *static*. The default allocation method is *dynamic*, where the IP address is automatically allocated from the resource's subnet (using DHCP). This IP address can change when you stop and start the resource.
 
-Sie können die Zuordnungsmethode auf *statisch* festlegen, damit die IP-Adresse unverändert bleibt. In diesem Fall müssen Sie eine gültige IP-Adresse angeben, die zum Subnetz der Ressource gehört.
+You can set the allocation method to *static* to ensure the IP address remains the same. In this case, you also need to provide a valid IP address that is part of the resource's subnet.
 
-Statische private IP-Adressen werden häufig für Folgendes verwendet:
+Static private IP addresses are commonly used for:
 
-- VMs, die als Domänencontroller oder DNS-Server fungieren
-- Ressourcen, die Firewallregeln mit IP-Adressen erfordern
-- Ressourcen, auf die von anderen Apps oder Ressourcen über eine IP-Adresse zugegriffen wird.
+- VMs that act as domain controllers or DNS servers.
+- Resources that require firewall rules using IP addresses.
+- Resources accessed by other apps/resources through an IP address.
 
-### Virtuelle Computer
-Eine private IP-Adresse wird der **Netzwerkschnittstelle** eines virtuellen [Windows](../virtual-machines/virtual-machines-windows-about.md)- oder [Linux](../virtual-machines/virtual-machines-linux-about.md)-Computers zugewiesen. Bei einer VM mit mehreren Netzwerkschnittstellen wird jeder Schnittstelle eine private IP-Adresse zugewiesen. Für eine Netzwerkschnittstelle können Sie als Zuordnungsmethode „dynamisch“ oder „statisch“ angeben.
+### <a name="virtual-machines"></a>Virtual machines
+A private IP address is assigned to the **network interface** of a [Windows](../virtual-machines/virtual-machines-windows-about.md) or [Linux](../virtual-machines/virtual-machines-linux-about.md) VM. In case of a multi-network interface VM, each interface gets a private IP address assigned. You can specify the allocation method as either dynamic or static for a network interface.
 
-#### Interne DNS-Hostnamensauflösung (für VMs)
-Alle Azure-VMs werden standardmäßig mit [von Azure verwalteten DNS-Servern](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) konfiguriert, sofern nicht explizit benutzerdefinierte DNS-Server konfiguriert werden. Diese DNS-Server stellen die interne Namensauflösung für VMs im gleichen VNet bereit.
+#### <a name="internal-dns-hostname-resolution-(for-vms)"></a>Internal DNS hostname resolution (for VMs)
+All Azure VMs are configured with [Azure-managed DNS servers](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) by default, unless you explicitly configure custom DNS servers. These DNS servers provide internal name resolution for VMs that reside within the same VNet.
 
-Beim Erstellen einer VM wird den von Azure verwalteten DNS-Servern eine Hostnamenzuordnung für die private IP-Adresse hinzugefügt. Bei einer VM mit mehreren Netzwerkschnittstellen wird der Hostname der privaten IP-Adresse der primären Netzwerkschnittstelle zugeordnet.
+When you create a VM, a mapping for the hostname to its private IP address is added to the Azure-managed DNS servers. In case of a multi-network interface VM, the hostname is mapped to the private IP address of the primary network interface.
 
-VMs, die mit von Azure verwalteten DNS-Servern konfiguriert wurden, können die Hostnamen aller VMs innerhalb ihres VNets in deren private IP-Adressen auflösen.
+VMs configured with Azure-managed DNS servers will be able to resolve the hostnames of all VMs within their VNet to their private IP addresses.
 
-### Interne Load Balancer (ILB) und Anwendungsgateways
-Sie können der **Front-End**-Konfiguration eines [Azure-ILBs](../load-balancer/load-balancer-internal-overview.md) oder eines [Azure Application Gateways](../application-gateway/application-gateway-introduction.md) eine private IP-Adresse zuweisen. Diese private IP-Adresse fungiert als interner Endpunkt und steht nur den Ressourcen innerhalb des entsprechenden virtuellen Netzwerks (VNet) und der damit verbundenen Remotenetzwerke zur Verfügung. Der Front-End-Konfiguration kann eine dynamische oder eine statische private IP-Adresse zugewiesen werden.
+### <a name="internal-load-balancers-(ilb)-&-application-gateways"></a>Internal load balancers (ILB) & Application gateways
+You can assign a private IP address to the **front end** configuration of an [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) or an [Azure Application Gateway](../application-gateway/application-gateway-introduction.md). This private IP address serves as an internal endpoint, accessible only to the resources within its virtual network (VNet) and the remote networks connected to the VNet. You can assign either a dynamic or static private IP address to the front end configuration.
 
-### Auf einen Blick
-Die nachstehende Tabelle zeigt die spezifischen Eigenschaften, durch die eine private IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann und die möglichen Zuweisungsverfahren (dynamisch oder statisch).
+### <a name="at-a-glance"></a>At-a-glance
+The table below shows the specific property through which a private IP address can be associated to a top-level resource, and the possible allocation methods (dynamic or static) that can be used.
 
-|Ressource der obersten Ebene|Zuordnung der IP-Adresse|Dynamisch|Statisch|
+|Top-level resource|IP address association|Dynamic|Static|
 |---|---|---|---|
-|Virtueller Computer|Netzwerkschnittstelle|Ja|Ja|
-|Load Balancer|Front-End-Konfiguration|Ja|Ja|
-|Anwendungsgateway|Front-End-Konfiguration|Ja|Ja|
+|Virtual machine|Network interface|Yes|Yes|
+|Load balancer|Front end configuration|Yes|Yes|
+|Application gateway|Front end configuration|Yes|Yes|
 
-## Grenzen
+## <a name="limits"></a>Limits
 
-Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](azure-subscription-service-limits.md#networking-limits) in Azure. Diese Grenzwerte werden pro Region und pro Abonnement angegeben. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um die Standardgrenzwerte Ihren Unternehmensanforderungen entsprechend auf die maximalen Grenzwerte zu erhöhen.
+The limits imposed on IP addressing are indicated in the full set of [limits for networking](azure-subscription-service-limits.md#networking-limits) in Azure. These limits are per region and per subscription. You can [contact support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to increase the default limits up to the maximum limits based on your business needs.
 
-## Preise
+## <a name="pricing"></a>Pricing
 
-In den meisten Fällen sind öffentliche IP-Adressen kostenlos. Es wird eine Schutzgebühr für die Verwendung zusätzlicher und/oder statischer öffentlicher IP-Adressen erhoben. Informieren Sie sich unbedingt über die [Preisstruktur für öffentliche IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/).
+Public IP addresses may have a nominal charge. To learn more about IP address pricing in Azure, review the [IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses) page.
 
-## Nächste Schritte
-- [Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals](virtual-network-deploy-static-pip-arm-portal.md)
-- [Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse über eine Vorlage](virtual-network-deploy-static-pip-arm-template.md)
-- [Bereitstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe des Azure-Portals](virtual-networks-static-private-ip-arm-pportal.md)
+## <a name="next-steps"></a>Next steps
+- [Deploy a VM with a static public IP using the Azure portal](virtual-network-deploy-static-pip-arm-portal.md)
+- [Deploy a VM with a static public IP using a template](virtual-network-deploy-static-pip-arm-template.md)
+- [Deploy a VM with a static private IP address using the Azure portal](virtual-networks-static-private-ip-arm-pportal.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Lernprogramm: Azure Active Directory-Integration mit Canvas LMS | Microsoft Azure" 
-    description="Erfahren Sie, wie Sie Canvas LMS mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
+    pageTitle="Tutorial: Azure Active Directory Integration with Canvas LMS | Microsoft Azure" 
+    description="Learn how to use Canvas LMS with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,156 +11,165 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#Lernprogramm: Azure Active Directory-Integration mit Canvas LMS
 
-In diesem Lernprogramm wird die Integration von Azure und Canvas erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+#<a name="tutorial:-azure-active-directory-integration-with-canvas-lms"></a>Tutorial: Azure Active Directory Integration with Canvas LMS
 
--   Ein gültiges Azure-Abonnement
--   Einen Canvas-Mandanten
+The objective of this tutorial is to show the integration of Azure and Canvas.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
-Nach Abschluss dieses Tutorials können sich die Canvas zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf der Canvas-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+-   A valid Azure subscription
+-   A Canvas tenant
 
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+After completing this tutorial, the Azure AD users you have assigned to Canvas will be able to single sign into the application at your Canvas company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-1.  Aktivieren der Anwendungsintegration für Canvas
-2.  Konfigurieren der einmaligen Anmeldung
-3.  Konfigurieren der Benutzerbereitstellung
-4.  Zuweisen von Benutzern
+The scenario outlined in this tutorial consists of the following building blocks:
 
-![Szenario](./media/active-directory-saas-canvas-lms-tutorial/IC775984.png "Szenario")
-##Aktivieren der Anwendungsintegration für Canvas
+1.  Enabling the application integration for Canvas
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Canvas aktivieren.
+![Scenario](./media/active-directory-saas-canvas-lms-tutorial/IC775984.png "Scenario")
+##<a name="enabling-the-application-integration-for-canvas"></a>Enabling the application integration for Canvas
 
-###So aktivieren Sie die Anwendungsintegration für Canvas
+The objective of this section is to outline how to enable the application integration for Canvas.
 
-1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
+###<a name="to-enable-the-application-integration-for-canvas,-perform-the-following-steps:"></a>To enable the application integration for Canvas, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-canvas-lms-tutorial/IC700993.png "Active Directory")
 
-2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![Anwendungen](./media/active-directory-saas-canvas-lms-tutorial/IC700994.png "Anwendungen")
+    ![Applications](./media/active-directory-saas-canvas-lms-tutorial/IC700994.png "Applications")
 
-4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
+4.  Click **Add** at the bottom of the page.
 
-    ![Anwendung hinzufügen](./media/active-directory-saas-canvas-lms-tutorial/IC749321.png "Anwendung hinzufügen")
+    ![Add application](./media/active-directory-saas-canvas-lms-tutorial/IC749321.png "Add application")
 
-5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-canvas-lms-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
+    ![Add an application from gallerry](./media/active-directory-saas-canvas-lms-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  Geben Sie im **Suchfeld** als Suchbegriff **Canvas** ein.
+6.  In the **search box**, type **Canvas**.
 
-    ![Anwendungskatalog](./media/active-directory-saas-canvas-lms-tutorial/IC775985.png "Anwendungskatalog")
+    ![Application Gallery](./media/active-directory-saas-canvas-lms-tutorial/IC775985.png "Application Gallery")
 
-7.  Wählen Sie im Ergebnisbereich **Canvas** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+7.  In the results pane, select **Canvas**, and then click **Complete** to add the application.
 
-    ![Zeichenbereich](./media/active-directory-saas-canvas-lms-tutorial/IC775986.png "Zeichenbereich")
-##Konfigurieren der einmaligen Anmeldung
+    ![Canvas](./media/active-directory-saas-canvas-lms-tutorial/IC775986.png "Canvas")
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Canvas zu authentifizieren. Zum Konfigurieren des einmaligen Anmeldens für Canvas müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (in englischer Sprache) weitere Informationen.
+The objective of this section is to outline how to enable users to authenticate to Canvas with their account in Azure AD using federation based on the SAML protocol.  
+Configuring single sign-on for Canvas requires you to retrieve a thumbprint value from a certificate.  
+If you are not familiar with this procedure, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
 
-###So konfigurieren Sie einmaliges Anmelden
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Canvas** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  In the Azure classic portal, on the **Canvas** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-canvas-lms-tutorial/IC771709.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-canvas-lms-tutorial/IC771709.png "Configure single sign-on")
 
-2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Canvas anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2.  On the **How would you like users to sign on to Canvas** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-canvas-lms-tutorial/IC775987.png "Einmaliges Anmelden konfigurieren")
+    ![Configure Single Sign-On](./media/active-directory-saas-canvas-lms-tutorial/IC775987.png "Configure Single Sign-On")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Canvas-Anmelde-URL** die URL im Format `https://<tenant-name>.instructure.com` ein, und klicken Sie dann auf **Weiter**.
+3.  On the **Configure App URL** page, in the **Canvas Sign In URL** textbox, type your URL using the following pattern `https://<tenant-name>.instructure.com`, and then click **Next**.
 
-    ![App-URL konfigurieren](./media/active-directory-saas-canvas-lms-tutorial/IC775988.png "App-URL konfigurieren")
+    ![Configure App URL](./media/active-directory-saas-canvas-lms-tutorial/IC775988.png "Configure App URL")
 
-4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren um Canvas** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer.
+4.  On the **Configure single sign-on at Canvas** page, to download your certificate, click **Download certificate**, and then save the certificate file locally on your computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-canvas-lms-tutorial/IC775989.png "Einmaliges Anmelden konfigurieren")
+    ![Configure Single Sign-On](./media/active-directory-saas-canvas-lms-tutorial/IC775989.png "Configure Single Sign-On")
 
-5.  Melden Sie sich in einem anderen Webbrowserfenster bei der Canvas-Unternehmenswebsite als Administrator an.
+5.  In a different web browser window, log into your Canvas company site as an administrator.
 
-6.  Wechseln Sie zu **Courses > Managed Accounts > Microsoft**.
+6.  Go to **Courses \> Managed Accounts \> Microsoft**.
 
-    ![Zeichenbereich](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "Zeichenbereich")
+    ![Canvas](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "Canvas")
 
-7.  Wählen Sie im Navigationsbereich auf der linken Seite **Authentication** aus und klicken Sie dann auf **Add New SAML Config**.
+7.  In the navigation pane on the left, select **Authentication**, and then click **Add New SAML Config**.
 
-    ![Authentifizierung](./media/active-directory-saas-canvas-lms-tutorial/IC775991.png "Authentifizierung")
+    ![Authentication](./media/active-directory-saas-canvas-lms-tutorial/IC775991.png "Authentication")
 
-8.  Führen Sie auf der Seite "Current Integration" die folgenden Schritte aus.
+8.  On the Current Integration page, perform the following steps:
 
-    ![Aktuelle Integration](./media/active-directory-saas-canvas-lms-tutorial/IC775992.png "Aktuelle Integration")
+    ![Current Integration](./media/active-directory-saas-canvas-lms-tutorial/IC775992.png "Current Integration")
 
-    1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Canvas** den Wert der **Entitäts-ID**, und fügen Sie ihn in das Textfeld **IdP Entity ID** ein.
-    2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Canvas** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Log On URL** ein.
-    3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Canvas** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Log Out URL** ein.
-    4.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Canvas** den Wert für **Kennwort-URL ändern**, und fügen Sie ihn in das Textfeld **Change Password Link** ein.
-    5.  Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck des Zertifikats** ein.
+    1.  In the Azure classic portal, on the **Configure single sign-on at Canvas** dialog page, copy the **Entity ID** value, and then paste it into the **IdP Entity ID** textbox.
+    2.  In the Azure classic portal, on the **Configure single sign-on at Canvas** dialog page, copy the **Remote Login URL** value, and then paste it into the **Log On URL** textbox.
+    3.  In the Azure classic portal, on the **Configure single sign-on at Canvas** dialog page, copy the **Remote Login URL** value, and then paste it into the **Log Out URL** textbox.
+    4.  In the Azure classic portal, on the **Configure single sign-on at Canvas** dialog page, copy the **Change Password URL** value, and then paste it into the **Change Password Link** textbox.
+    5.  Copy the **Thumbprint** value from the exported certificate, and then paste it into the **Certificate Fingerprint** textbox.  
 
-        >[AZURE.TIP] Weitere Informationen finden Sie unter [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (in englischer Sprache).
+        >[AZURE.TIP] For more details, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
 
-    6.  Wählen Sie in der Liste **Login Attribute** die Option **NameID** aus.
-    7.  Wählen Sie in der Liste **Identifier Format** die Option **emailAddress** aus.
-    8.  Klicken Sie auf **Save Authentication Settings**.
+    6.  From the **Login Attribute** list, select **NameID**.
+    7.  From the **Identifier Format** list, select **emailAddress**.
+    8.  Click **Save Authentication Settings**.
 
-9.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+9.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-canvas-lms-tutorial/IC775993.png "Einmaliges Anmelden konfigurieren")
-##Konfigurieren der Benutzerbereitstellung
+    ![Configure Single Sign-On](./media/active-directory-saas-canvas-lms-tutorial/IC775993.png "Configure Single Sign-On")
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Damit sich Azure AD-Benutzer bei Canvas anmelden können, müssen sie in Canvas bereitgestellt werden. Im Fall von Canvas ist die Bereitstellung eine manuelle Aufgabe.
+In order to enable Azure AD users to log into Canvas, they must be provisioned into Canvas.  
+In the case of Canvas, provisioning is a manual task.
 
-###So stellen Sie Benutzerkonten bereit
+###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
 
-1.  Melden Sie sich bei Ihrem **Canvas**-Mandanten an.
+1.  Log in to your **Canvas** tenant.
 
-2.  Wechseln Sie zu **Courses > Managed Accounts > Microsoft**.
+2.  Go to **Courses \> Managed Accounts \> Microsoft**.
 
-    ![Zeichenbereich](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "Zeichenbereich")
+    ![Canvas](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "Canvas")
 
-3.  Klicken Sie auf **Users**.
+3.  Click **Users**.
 
-    ![Benutzer](./media/active-directory-saas-canvas-lms-tutorial/IC775995.png "Benutzer")
+    ![Users](./media/active-directory-saas-canvas-lms-tutorial/IC775995.png "Users")
 
-4.  Klicken Sie auf **Add New User**.
+4.  Click **Add New User**.
 
-    ![Benutzer](./media/active-directory-saas-canvas-lms-tutorial/IC775996.png "Benutzer")
+    ![Users](./media/active-directory-saas-canvas-lms-tutorial/IC775996.png "Users")
 
-5.  Führen Sie auf der Dialogseite "Add a New User" die folgenden Schritte aus:
+5.  On the Add a New User dialog page, perform the following steps:
 
-    ![Benutzer hinzufügen](./media/active-directory-saas-canvas-lms-tutorial/IC775997.png "Benutzer hinzufügen")
+    ![Add User](./media/active-directory-saas-canvas-lms-tutorial/IC775997.png "Add User")
 
-    1.  Geben Sie im Textfeld **Full Name** den Namen des Benutzers ein.
-    2.  Geben Sie im Textfeld **Email** die E-Mail-Adresse des Benutzers ein.
-    3.  Geben Sie im Textfeld **Login** die Azure AD-E-Mail-Adresse des Benutzers ein.
-    4.  Aktivieren Sie **Email the user about this account creation**.
-    5.  Klicken Sie auf **Add User**.
+    1.  In the **Full Name** textbox, type the user’s name.
+    2.  In the **Email** textbox, type the user’s email address.
+    3.  In the **Login** textbox, type the user’s Azure AD email address.
+    4.  Select **Email the user about this account creation**.
+    5.  Click **Add User**.
 
->[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von Canvas-Benutzerkonten oder mithilfe der von Canvas bereitgestellten APIs erstellen.
+>[AZURE.NOTE] You can use any other Canvas user account creation tools or APIs provided by Canvas to provision AAD user accounts.
 
-##Zuweisen von Benutzern
+##<a name="assigning-users"></a>Assigning users
 
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###So weisen Sie Canvas Benutzer zu
+###<a name="to-assign-users-to-canvas,-perform-the-following-steps:"></a>To assign users to Canvas, perform the following steps:
 
-1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
+1.  In the Azure classic portal, create a test account.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für **Canvas** auf **Benutzer zuweisen**.
+2.  On the **Canvas **application integration page, click **Assign users**.
 
-    ![Zuweisen von Benutzern](./media/active-directory-saas-canvas-lms-tutorial/IC775998.png "Zuweisen von Benutzern")
+    ![Assigning users](./media/active-directory-saas-canvas-lms-tutorial/IC775998.png "Assigning users")
 
-3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
-    ![Ja](./media/active-directory-saas-canvas-lms-tutorial/IC767830.png "Ja")
+    ![Yes](./media/active-directory-saas-canvas-lms-tutorial/IC767830.png "Yes")
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

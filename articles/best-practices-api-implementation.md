@@ -1,6 +1,6 @@
 <properties
-   pageTitle="API-Implementierungsleitfaden | Microsoft Azure"
-   description="Anleitung zur Implementierung einer API"
+   pageTitle="API implementation guidance | Microsoft Azure"
+   description="Guidance upon how to implement an API."
    services=""
    documentationCenter="na"
    authors="dragon119"
@@ -17,431 +17,432 @@
    ms.date="07/13/2016"
    ms.author="masashin"/>
 
-# API-Implementierungsleitfaden
+
+# <a name="api-implementation-guidance"></a>API implementation guidance
 
 [AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
-Einige Themen in diesem Leitfaden werden noch diskutiert und können sich unter Umständen ändern. Wir freuen uns auf Ihr Feedback!
+Some topics in this guidance are under discussion and may change in the future. We welcome your feedback!
 
-## Übersicht
-Mit einer sorgfältig entworfenen REST-Web-API werden die Ressourcen, Beziehungen und Navigationsschemas definiert, auf die mit Clientanwendungen zugegriffen werden kann. Beim Implementieren und Bereitstellen einer Web-API sollten Sie die physischen Anforderungen der Umgebung berücksichtigen, in der die Web-API gehostet wird. Außerdem sollten Sie eher darauf achten, wie die Web-API erstellt wurde, als auf die logische Struktur der Daten. In diesem Leitfaden geht es hauptsächlich um die bewährten Methoden zur Implementierung einer Web-API und deren Veröffentlichung, um sie für Clientanwendungen verfügbar zu machen. Sicherheitsaspekte werden separat im Leitfaden zur API-Sicherheit beschrieben. Ausführliche Informationen zum Web-API-Design finden Sie im Leitfaden zum API-Design.
+## <a name="overview"></a>Overview
+A carefully-designed RESTful web API defines the resources, relationships, and navigation schemes that are accessible to client applications. When you implement and deploy a web API, you should consider the physical requirements of the environment hosting the web API and the way in which the web API is constructed rather than the logical structure of the data. This guidance focusses on best practices for implementing a web API and publishing it to make it available to client applications. Security concerns are described separately in the API Security Guidance document. You can find detailed information about web API design in the API Design Guidance document.
 
-## Aspekte der Implementierung einer REST-Web-API
-In den folgenden Abschnitten werden die bewährten Methoden zur Verwendung der ASP.NET-Web-API-Vorlage zum Erstellen einer REST-Web-API veranschaulicht. Ausführliche Informationen zur Verwendung der Web-API-Vorlage finden Sie auf der Microsoft-Website unter [Informationen zur ASP.NET-Web-API](http://www.asp.net/web-api).
+## <a name="considerations-for-implementing-a-restful-web-api"></a>Considerations for implementing a RESTful web API
+The following sections illustrate best practice for using the ASP.NET Web API template to build a RESTful web API. For detailed information on using the Web API template, visit the [Learn About ASP.NET Web API](http://www.asp.net/web-api) page on the Microsoft website.
 
-## Aspekte der Implementierung des Anforderungsroutings
+## <a name="considerations-for-implementing-request-routing"></a>Considerations for implementing request routing
 
-Bei einem Dienst, der mit der ASP.NET-Web-API implementiert wird, wird jede Anforderung an eine Methode in einer _Controller_-Klasse weitergeleitet. Das Web-API-Framework enthält zwei vorrangige Optionen für die Implementierung des Routings: _konventionsbasiertes_ Routing und _attributbasiertes_ Routing. Beachten Sie die folgenden Punkte, wenn Sie das beste Verfahren zum Weiterleiten von Anforderungen in Ihrer Web-API ermitteln möchten:
+In a service implemented by using the ASP.NET Web API, each request is routed to a method in a _controller_ class. The Web API framework provides two primary options for implementing routing; _convention-based_ routing and _attribute-based_ routing. Consider the following points when you determine the best way to route requests in your web API:
 
-- **Machen Sie sich mit den Einschränkungen und Anforderungen des konventionsbasierten Routings vertraut**.
+- **Understand the limitations and requirements of convention-based routing**.
 
-	Standardmäßig wird für das Web-API-Framework das konventionsbasierte Routing verwendet. Das Web-API-Framework erstellt eine anfängliche Routingtabelle mit dem folgenden Eintrag:
+    By default, the Web API framework uses convention-based routing. The Web API framework creates an initial routing table that contains the following entry:
 
-	```C#
-	config.Routes.MapHttpRoute(
-  		name: "DefaultApi",
-	  	routeTemplate: "api/{controller}/{id}",
-	  	defaults: new { id = RouteParameter.Optional }
-	);
-	```
+    ```C#
+    config.Routes.MapHttpRoute(
+        name: "DefaultApi",
+        routeTemplate: "api/{controller}/{id}",
+        defaults: new { id = RouteParameter.Optional }
+    );
+    ```
 
-	Routen können generisch sein und Literale wie _api_ und Variablen wie _{controller}_ und _{id}_ umfassen. Beim konventionsbasierten Routing können einige Elemente der Route optional sein. Das Web-API-Framework bestimmt wie folgt, welche Methode im Controller aufgerufen wird: Die HTTP-Methode der Anforderung wird mit dem ersten Teil des Methodennamens in der API abgeglichen, und anschließend werden alle optionalen Parameter abgeglichen. Wenn ein Controller mit dem Namen _orders_ die Methoden _GetAllOrders()_ oder _GetOrderByInt(int id)_ enthält, wird die GET-Anforderung \_http://www.adventure-works.com/api/orders/_ an die _GetAlllOrders()_-Methode geleitet, und die GET-Anforderung \_http://www.adventure-works.com/api/orders/99_ wird an die _GetOrderByInt(int id)_-Methode weitergeleitet. Falls keine übereinstimmende Methode verfügbar ist, die im Controller mit dem Präfix „Get“ beginnt, antwortet das Web-API-Framework mit der Nachricht „HTTP 405 (Method Not Allowed)“. Außerdem muss der in der Routingtabelle angegebene Name des Parameters (id) dem Namen des Parameters für die _GetOrderById_-Methode entsprechen. Andernfalls antwortet das Web-API-Framework mit der Antwort „HTTP 404 (Nicht gefunden)“.
+    Routes can be generic, comprising literals such as _api_ and variables such as _{controller}_ and _{id}_. Convention-based routing allows some elements of the route to be optional. The Web API framework determines which method to invoke in the controller by matching the HTTP method in the request to the initial part of the method name in the API, and then by matching any optional parameters. For example, if a controller named _orders_ contains the methods _GetAllOrders()_ or _GetOrderByInt(int id)_ then the GET request _http://www.adventure-works.com/api/orders/_ will be directed to the method _GetAlllOrders()_ and the GET request _http://www.adventure-works.com/api/orders/99_ will be routed to the method _GetOrderByInt(int id)_. If there is no matching method available that begins with the prefix Get in the controller, the Web API framework replies with an HTTP 405 (Method Not Allowed) message. Additionally, name of the parameter (id) specified in the routing table must be the same as the name of the parameter for the _GetOrderById_ method, otherwise the Web API framework will reply with an HTTP 404 (Not Found) response.
 
-	Dieselben Regeln gelten für POST-, PUT- und DELETE HTTP-Anforderungen. Eine PUT-Anforderung, mit der die Details von Bestellung 101 aktualisiert werden, wird an den URI \_http://www.adventure-works.com/api/orders/101_ geleitet. Der Text der Nachricht enthält die neuen Details der Bestellung, und diese Informationen werden als Parameter an eine Methode im orders-Controller mit einem Namen übergeben, der mit dem Präfix _Put_ beginnt, z. B. _PutOrder_.
+    The same rules apply to POST, PUT, and DELETE HTTP requests; a PUT request that updates the details of order 101 would be directed to the URI _http://www.adventure-works.com/api/orders/101_, the body of the message will contain the new details of the order, and this information will be passed as a parameter to a method in the orders controller with a name that starts with the prefix _Put_, such as _PutOrder_.
 
-	Die standardmäßige Routingtabelle ergibt keine Übereinstimmung mit einer Anforderung, bei der auf untergeordnete Ressourcen in einer REST-Web-API verwiesen wird, z. B. \_http://www.adventure-works.com/api/customers/1/orders_ (Suche nach den Details aller Bestellungen von „customer 1“). Zum Behandeln dieser Fälle können Sie der Routingtabelle benutzerdefinierte Routen hinzufügen:
+    The default routing table will not match a request that references child resources in a RESTful web API, such as _http://www.adventure-works.com/api/customers/1/orders_ (find the details of all orders placed by customer 1). To handle these cases, you can add custom routes to the routing table:
 
-	```C#
-	config.Routes.MapHttpRoute(
-	    name: "CustomerOrdersRoute",
-	    routeTemplate: "api/customers/{custId}/orders",
-	    defaults: new { controller="Customers", action="GetOrdersForCustomer" })
-	);
-	```
+    ```C#
+    config.Routes.MapHttpRoute(
+        name: "CustomerOrdersRoute",
+        routeTemplate: "api/customers/{custId}/orders",
+        defaults: new { controller="Customers", action="GetOrdersForCustomer" })
+    );
+    ```
 
-	Diese Route leitet Anforderungen, für die sich eine Übereinstimmung mit dem URI ergibt, an die _GetOrdersForCustomer_-Methode im _Customers_-Controller. Diese Methode muss einen einzelnen Parameter mit dem Namen _custI_ verwenden:
+    This route directs requests that match the URI to the _GetOrdersForCustomer_ method in the _Customers_ controller. This method must take a single parameter named _custI_:
 
-	```C#
-	public class CustomersController : ApiController
-	{
-	    ...
-	    public IEnumerable<Order> GetOrdersForCustomer(int custId)
-	    {
-	        // Find orders for the specified customer
-	        var orders = ...
-	        return orders;
-	    }
-	    ...
-	}
-	```
+    ```C#
+    public class CustomersController : ApiController
+    {
+        ...
+        public IEnumerable<Order> GetOrdersForCustomer(int custId)
+        {
+            // Find orders for the specified customer
+            var orders = ...
+            return orders;
+        }
+        ...
+    }
+    ```
 
-	> [AZURE.TIP] Nutzen Sie das Standardrouting, wenn dies möglich ist, und vermeiden Sie das Festlegen von vielen komplizierten benutzerdefinierten Routen. Dies kann zu „Brüchigkeit“ (einfaches Hinzufügen von Methoden zu einem Controller, die zu mehrdeutigen Routen führen) und einer verringerten Leistung führen (je größer die Routingtabelle, desto größer ist der Aufwand für das Web-API-Framework beim Ermitteln, welche Route mit einem bestimmten URI übereinstimmt). Verwenden Sie einfache APIs und Routen. Weitere Informationen finden Sie im Abschnitt „Organisieren der Web-API basierend auf Ressourcen“ im API-Entwurfsleitfaden. Wenn Sie benutzerdefinierte Routen definieren müssen, ist die Verwendung des attributbasierten Routings ein guter Ansatz. Dies wird weiter unten in diesem Abschnitt beschrieben.
+    > [AZURE.TIP] Utilize the default routing wherever possible and avoid defining many complicated custom routes as this can result in brittleness (it is very easy to add methods to a controller that result in ambiguous routes) and reduced performance (the bigger the routing table, the more work the Web API framework has to do to work out which route matches a given URI). Keep the API and routes simple. For more information, see the section Organizing the Web API Around Resources in the API Design Guidance. If you must define custom routes, a preferable approach is to use attribute-based routing described later in this section.
 
-	Weitere Informationen zum konventionsbasierten Routing finden Sie auf der Microsoft-Website unter [Routing in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api).
+    For more information about convention-based routing, see the page [Routing in ASP.NET Web API](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api) on the Microsoft website.
 
-- **Vermeiden Sie Mehrdeutigkeit beim Routing**.
+- **Avoid ambiguity in routing**.
 
-	Das konventionsbasierte Routing kann zu mehrdeutigen Pfaden führen, wenn mehrere Methoden in einem Controller die gleiche Route aufweisen. In diesen Fällen antwortet das Web-API-Framework mit der Antwortnachricht „HTTP 500 (Internal Server Error)“ mit dem Text „Multiple actions were found that match the request“ (Es wurden mehrere Aktionen gefunden, die mit der Anforderung übereinstimmen).
+    Convention-based routing can result in ambiguous pathways if multiple methods in a controller match the same route. In these situations, the Web API framework responds with an HTTP 500 (Internal Server Error) response message containing the text "Multiple actions were found that match the request".
 
-- **Ziehen Sie das attributbasierte Routing vor**.
+- **Prefer attribute-based routing**.
 
-	Das attributbasierte Routing ist eine Alternative zum Verbinden von Routen mit Methoden in einem Controller. Anstatt sich auf die Musterabgleichfeatures des konventionsbasierten Routings zu verlassen, können Sie Methoden in einem Controller explizit mit den Details der Route versehen, der sie zugeordnet sein sollen. Dieser Ansatz trägt zur Vermeidung möglicher Mehrdeutigkeiten bei. Da explizite Routen zur Entwurfszeit definiert werden, ist dieser Ansatz außerdem effizienter als das konventionsbasierte Routing zur Laufzeit. Im folgenden Code wird veranschaulicht, wie Sie das _Route_-Attribut auf Methoden im Customers-Controller anwenden. Bei diesen Methoden wird auch das HttpGet-Attribut genutzt, um anzugeben, dass sie auf _HTTP GET_-Anforderungen antworten sollen. Mit diesem Attribut können Sie Ihre Methoden anhand eines bequemen Benennungsschemas benennen und müssen nicht das Schema verwenden, das beim konventionsbasierten Routing erwartet wird. Sie können Methoden auch mit den Attributen _HttpPost_, _HttpPut_ und _HttpDelete_ versehen, um Methoden zu definieren, die auf andere Arten von HTTP-Anforderungen antworten.
+    Attribute-based routing provides an alternative means for connecting routes to methods in a controller. Rather than relying on the pattern-matching features of convention-based routing, you can explicitly annotate methods in a controller with the details of the route to which they should be associated. This approach help to remove possible ambiguities. Furthermore, as explicit routes are defined at design time this approach is more efficient than convention-based routing at runtime. The following code shows how to apply the _Route_ attribute to methods in the Customers controller. These methods also use the HttpGet attribute to indicate that they should respond to _HTTP GET_ requests. This attribute enables you to name your methods using any convenient naming scheme rather than that expected by convention-based routing. You can also annotate methods with the _HttpPost_, _HttpPut_, and _HttpDelete_ attributes to define methods that respond to other types of HTTP requests.
 
-	```C#
-	public class CustomersController : ApiController
-	{
-	    ...
-	    [Route("api/customers/{id}")]
-	    [HttpGet]
-	    public Customer FindCustomerByID(int id)
-	    {
-	        // Find the matching customer
-	        var customer = ...
-	        return customer;
-	    }
-	    ...
-	    [Route("api/customers/{id}/orders")]
-	    [HttpGet]
-	    public IEnumerable<Order> FindOrdersForCustomer(int id)
-	    {
-	        // Find orders for the specified customer
-	        var orders = ...
-	        return orders;
-	    }
-	    ...
-	}
-	```
+    ```C#
+    public class CustomersController : ApiController
+    {
+        ...
+        [Route("api/customers/{id}")]
+        [HttpGet]
+        public Customer FindCustomerByID(int id)
+        {
+            // Find the matching customer
+            var customer = ...
+            return customer;
+        }
+        ...
+        [Route("api/customers/{id}/orders")]
+        [HttpGet]
+        public IEnumerable<Order> FindOrdersForCustomer(int id)
+        {
+            // Find orders for the specified customer
+            var orders = ...
+            return orders;
+        }
+        ...
+    }
+    ```
 
-	Das attributbasierte Routing hat zudem den nützlichen Nebeneffekt, dass es als Dokumentation für Entwickler fungiert, die den Code später warten müssen. Es ist immer sofort klar, welche Methode zu welcher Route gehört, und mit dem _HttpGet_-Attribut wird angegeben, auf welche Art von HTTP-Anforderung die Methode antwortet.
+    Attribute-based routing also has the useful side-effect of acting as documentation for developers needing to maintain the code in the future; it is immediately clear which method belongs to which route, and the _HttpGet_ attribute clarifies the type of HTTP request to which the method responds.
 
-	Beim attributbasierten Routing können Sie Einschränkungen festlegen, um vorzugeben, wie die Parameter abgeglichen werden. Mit Einschränkungen kann die Art des Parameters angegeben werden, und in einigen Fällen kann damit auch der zulässige Bereich der Parameterwerte angegeben werden. Im folgenden Beispiel muss der id-Parameter der _FindCustomerByID_-Methode eine Ganzzahl sein, die nicht negativ ist. Wenn eine Anwendung eine HTTP GET-Anforderung mit einer negativen Kundennummer übermittelt, antwortet das Web-API-Framework mit der Nachricht „HTTP 405 (Method Not Allowed)“:
+    Attribute-based routing enables you to define constraints which restrict how the parameters are matched. Constraints can specify the type of the parameter, and in some cases they can also indicate the acceptable range of parameter values. In the following example, the id parameter to the _FindCustomerByID_ method must be a non-negative integer. If an application submits an HTTP GET request with a negative customer number, the Web API framework will respond with an HTTP 405 (Method Not Allowed) message:
 
-	```C#
-	public class CustomersController : ApiController
-	{
-	    ...
-	    [Route("api/customers/{id:int:min(0)}")]
-	    [HttpGet]
-	    public Customer FindCustomerByID(int id)
-	    {
-	        // Find the matching customer
-	        var customer = ...
-	        return customer;
-	    }
-	    ...
-	}
-	```
+    ```C#
+    public class CustomersController : ApiController
+    {
+        ...
+        [Route("api/customers/{id:int:min(0)}")]
+        [HttpGet]
+        public Customer FindCustomerByID(int id)
+        {
+            // Find the matching customer
+            var customer = ...
+            return customer;
+        }
+        ...
+    }
+    ```
 
-	Weitere Informationen zum attributbasierten Routing finden Sie auf der Microsoft-Website unter [Attributrouting in der Web-API 2](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2).
+    For more information on attribute-based routing, see the page [Attribute Routing in Web API 2](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2) on the Microsoft website.
 
-- **Unterstützen Sie Unicode-Zeichen in Routen**.
+- **Support Unicode characters in routes**.
 
-	Die Schlüssel zum Identifizieren von Ressourcen in GET-Anforderungen können Zeichenfolgen sein. In einer globalen Anwendung müssen Sie daher unter Umständen URIs unterstützen, die auch andere Zeichen als englische Zeichen enthalten.
+    The keys used to identify resources in GET requests could be strings. Therefore, in a global application, you may need to support URIs that contain non-English characters.
 
-- **Unterscheiden Sie Methoden, die nicht weitergeleitet werden sollen**.
+- **Distinguish methods that should not be routed**.
 
-	Wenn Sie das konventionsbasierte Routing verwenden, geben Sie Methoden an, die keinen HTTP-Aktionen entsprechen, indem Sie sie mit dem _NonAction_-Attribut versehen. Dies gilt normalerweise für Hilfsmethoden, die für die Verwendung mit anderen Methoden in einem Controller definiert sind. Mit diesem Attribut wird verhindert, dass diese Methoden von einer fehlgeleiteten HTTP-Anforderung abgeglichen und aufgerufen werden.
+    If you are using convention-based routing, indicate methods that do not correspond to HTTP actions by decorating them with the _NonAction_ attribute. This typically applies to helper methods defined for use by other methods within a controller, and this attribute will prevent these methods from being matched and invoked by an errant HTTP request.
 
-- **Berücksichtigen Sie die Vor- und Nachteile einer Platzierung der API in einer Unterdomäne**.
+- **Consider the benefits and tradeoffs of placing the API in a subdomain**.
 
-	Standardmäßig werden APIs von der ASP.NET-Web-API im Verzeichnis _/api_ einer Domäne angeordnet, z. B. \_http://www.adventure-works.com/api/orders_. Dieses Verzeichnis befindet sich in derselben Domäne wie alle anderen Dienste, die vom Host verfügbar gemacht werden. Es kann vorteilhaft sein, eine Web-API in ihre eigenen Unterdomänen aufzuteilen, die auf einem separaten Host ausgeführt werden (mit URIs wie \_http://api.adventure-works.com/orders_). Bei dieser Trennung können Sie die Web-API effektiver partitionieren und skalieren, ohne dass sich dies auf andere Webanwendungen oder Dienste auswirkt, die in der Domäne _www.adventure-works.com_ ausgeführt werden.
+    By default, the ASP.NET web API organizes APIs into the _/api_ directory in a domain, such as _http://www.adventure-works.com/api/orders_. This directory resides in the same domain as any other services exposed by the same host. It may be beneficial to split the web API out into its own subdomain running on a separate host, with URIs such as _http://api.adventure-works.com/orders_. This separation enables you to partition and scale the web API more effectively without affecting any other web applications or services running in the _www.adventure-works.com_ domain.
 
-	Das Platzieren einer Web-API in einer anderen Unterdomäne kann aber auch zu Sicherheitsproblemen führen. Unter _www.adventure-works.com_ gehostete Webanwendungen oder Dienste, bei denen eine an einem anderen Ort ausgeführte Web-API aufgerufen wird, können die Richtlinie vieler Webbrowser zum identischen Ursprung verletzen. In diesem Fall ist es erforderlich, zwischen den Hosts das Cross-Origin Resource Sharing (CORS) zu ermöglichen. Weitere Informationen finden Sie im Leitfaden zur API-Sicherheit.
+    However, placing a web API in a different subdomain can also lead to security concerns. Any web applications or services hosted at _www.adventure-works.com_ that invoke a web API running elsewhere may violate the same-origin policy of many web browsers. In this situation, it will be necessary to enable cross-origin resource sharing (CORS) between the hosts. For more information, see the API Security Guidance document.
 
-## Aspekte der Verarbeitung von Anforderungen
+## <a name="considerations-for-processing-requests"></a>Considerations for processing requests
 
-Nachdem eine Anforderung einer Clientanwendung erfolgreich an eine Methode in einer Web-API weitergeleitet wurde, muss die Anforderung so effizient wie möglich verarbeitet werden. Beachten Sie die folgenden Punkte, wenn Sie den Code zum Behandeln von Anforderungen implementieren:
+Once a request from a client application has been successfully routed to a method in a web API, the request must be processed in as efficient manner as possible. Consider the following points when you implement the code to handle requests:
 
-- **GET-, PUT-, DELETE-, HEAD- und PATCH-Aktionen sollten idempotent sein**.
+- **GET, PUT, DELETE, HEAD, and PATCH actions should be idempotent**.
 
-	Der Code, mit dem diese Anforderungen implementiert werden, sollte nicht mit Nebeneffekten verbunden sein. Eine Anforderung, die für eine Ressource wiederholt ausgeführt wird, sollte zum gleichen Ergebnis führen. Wenn Sie beispielsweise mehrere DELETE-Anforderungen an denselben URI senden, sollte dies immer die gleiche Auswirkung haben. Hierbei kann der HTTP-Statuscode in den Antwortnachrichten variieren (für die erste DELETE-Anforderung wird ggf. Statuscode 204 (No Content) zurückgegeben, während für eine nachfolgende DELETE-Anforderung Statuscode 404 (Nicht gefunden) zurückgegeben werden kann).
+    The code that implements these requests should not impose any side-effects. The same request repeated over the same resource should result in the same state. For example, sending multiple DELETE requests to the same URI should have the same effect, although the HTTP status code in the response messages may be different (the first DELETE request might return status code 204 (No Content) while a subsequent DELETE request might return status code 404 (Not Found)).
 
-> [AZURE.NOTE] Der Artikel [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/) (Muster der Idempotenz) im Blog von Jonathan Oliver enthält eine Übersicht über die Idempotenz und ihre Verbindung mit Datenverwaltungsvorgängen.
+> [AZURE.NOTE] The article [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/) on Jonathan Oliver’s blog provides an overview of idempotency and how it relates to data management operations.
 
-- **Bei POST-Aktionen, mit denen neue Ressourcen erstellt werden, sollten keine nicht relevanten Nebeneffekte auftreten**.
+- **POST actions that create new resources should do so without unrelated side-effects**.
 
-	Wenn mit einer POST-Anforderung eine neue Ressource erstellt werden soll, sollten die Auswirkungen der Anforderung auf die neue Ressource beschränkt sein (sowie unter Umständen auf alle direkt verwandten Ressourcen, falls eine Verknüpfung besteht). In einem E-Commerce-System werden mit einer POST-Anforderung, mit der eine neue Bestellung für einen Kunden erstellt wird, ggf. auch Lagerbestände verändert und Rechnungsinformationen erzeugt. Es sollten aber keine Informationen geändert werden, die sich nicht direkt auf die Bestellung beziehen, und es sollten sich auch keine anderen Nebeneffekte für den Gesamtzustand des Systems ergeben.
+    If a POST request is intended to create a new resource, the effects of the request should be limited to the new resource (and possibly any directly related resources if there is some sort of linkage involved) For example, in an ecommerce system, a POST request that creates a new order for a customer might also amend inventory levels and generate billing information, but it should not modify information not directly related to the order or have any other side-effects on the overall state of the system.
 
-- **Vermeiden Sie die Implementierung von umfangreichen POST-, PUT- und DELETE-Vorgängen**.
+- **Avoid implementing chatty POST, PUT, and DELETE operations**.
 
-	Bauen Sie die Unterstützung von POST-, PUT- und DELETE-Anforderungen über Ressourcenauflistungen ein. Eine POST-Anforderung kann die Details für mehrere neue Ressourcen enthalten und diese derselben Auflistung hinzufügen. Mit einer PUT-Anforderung kann der gesamte Ressourcensatz in einer Auflistung ersetzt werden, und mit einer DELETE-Anforderung kann eine gesamte Auflistung entfernt werden.
+    Support POST, PUT and DELETE requests over resource collections. A POST request can contain the details for multiple new resources and add them all to the same collection, a PUT request can replace the entire set of resources in a collection, and a DELETE request can remove an entire collection.
 
-	Beachten Sie, dass die in der ASP.NET-Web-API 2 enthaltene OData-Unterstützung das Zusammenfassen von Anforderungen in Batches ermöglicht. Eine Clientanwendung kann mehrere Web-API-Anforderungen verpacken und in einer einzelnen HTTP-Anforderung an den Server senden. Sie erhält dann eine einzelne HTTP-Antwort mit den Antworten für die einzelnen Anforderungen. Weitere Informationen finden Sie auf der Microsoft-Website unter [Einführung in die Batchunterstützung in der Web-API und Web-API-OData](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx).
+    Note that the OData support included in ASP.NET Web API 2 provides the ability to batch requests. A client application can package up several web API requests and send them to the server in a single HTTP request, and receive a single HTTP response that contains the replies to each request. For more information, see the page [Introducing Batch Support in Web API and Web API OData](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx) on the Microsoft website.
 
-- **Halten Sie sich an das HTTP-Protokoll, wenn Sie eine Antwort zurück an eine Clientanwendung senden**.
+- **Abide by the HTTP protocol when sending a response back to a client application**.
 
-	Eine Web-API muss Nachrichten mit dem richtigen HTTP-Statuscode zurückgeben, damit der Client bestimmen kann, wie er das Ergebnis behandeln soll. Außerdem die richtigen HTTP-Header, damit der Client die Art des Ergebnisses versteht, sowie einen richtig formatierten Text, damit der Client das Ergebnis analysieren kann. Bei Verwendung der ASP.NET-Web-API-Vorlage besteht die Standardstrategie zum Implementieren von Methoden, die auf HTTP POST-Anforderungen antworten, einfach darin, eine Kopie der neu erstellten Ressource zurückzugeben. Dies ist im folgenden Beispiel dargestellt:
+    A web API must return messages that contain the correct HTTP status code to enable the client to determine how to handle the result, the appropriate HTTP headers so that the client understands the nature of the result, and a suitably formatted body to enable the client to parse the result. If you are using the ASP.NET Web API template, the default strategy for implementing methods that respond to HTTP POST requests is simply to return a copy of the newly created resource, as illustrated by the following example:
 
-	```C#
-	public class CustomersController : ApiController
-	{
-	    ...
-	    [Route("api/customers")]
-	    [HttpPost]
-	    public Customer CreateNewCustomer(Customer customerDetails)
-	    {
-	        // Add the new customer to the repository
-	        // This method returns a customer with a unique ID allocated
-	        // by the repository
-	        var newCust = repository.Add(customerDetails);
-	        // Return the newly added customer
-	        return newCust;
-	    }
-	    ...
-	}
-	```
+    ```C#
+    public class CustomersController : ApiController
+    {
+        ...
+        [Route("api/customers")]
+        [HttpPost]
+        public Customer CreateNewCustomer(Customer customerDetails)
+        {
+            // Add the new customer to the repository
+            // This method returns a customer with a unique ID allocated
+            // by the repository
+            var newCust = repository.Add(customerDetails);
+            // Return the newly added customer
+            return newCust;
+        }
+        ...
+    }
+    ```
 
-	Wenn der POST-Vorgang erfolgreich ist, erstellt das Web-API-Framework eine HTTP-Antwort mit dem Statuscode 200 (OK) und den Details des Kunden als Text der Nachricht. Gemäß HTTP-Protokoll sollte ein POST-Vorgang in diesem Fall aber den Statuscode 201 (Created) zurückgeben, und die Antwortnachricht sollte den URI der neu erstellten Ressource im Location-Header enthalten.
+    If the POST operation is successful, the Web API framework creates an HTTP response with status code 200 (OK) and the details of the customer as the message body. However, in this case, according to the HTTP protocol, a POST operation should return status code 201 (Created) and the response message should include the URI of the newly created resource in the Location header of the response message.
 
-	Geben Sie Ihre eigene HTTP-Antwortnachricht zum Bereitstellen dieser Features über die `IHttpActionResult`-Schnittstelle an. Bei diesem Ansatz haben Sie eine gute Kontrolle über den HTTP-Statuscode, die Header in der Antwortnachricht und sogar das Format der Daten im Text der Antwortnachricht. Dies wird im folgenden Codebeispiel veranschaulicht. Diese Version der `CreateNewCustomer`-Methode liegt näher an den Erwartungen des Clients gemäß HTTP-Protokoll. Die `Created`-Methode der `ApiController`-Klasse erstellt die Antwortnachricht aus den angegebenen Daten und fügt den Location-Header den Ergebnissen hinzu:
+    To provide these features, return your own HTTP response message by using the `IHttpActionResult` interface. This approach gives you fine control over the HTTP status code, the headers in the response message, and even the format of the data in the response message body, as shown in the following code example. This version of the `CreateNewCustomer` method conforms more closely to the expectations of client following the HTTP protocol. The `Created` method of the `ApiController` class constructs the response message from the specified data, and adds the Location header to the results:
 
-	```C#
-	public class CustomersController : ApiController
-	{
-	    ...
-	    [Route("api/customers")]
-	    [HttpPost]
-	    public IHttpActionResult CreateNewCustomer(Customer customerDetails)
-	    {
-	        // Add the new customer to the repository
-	        var newCust = repository.Add(customerDetails);
+    ```C#
+    public class CustomersController : ApiController
+    {
+        ...
+        [Route("api/customers")]
+        [HttpPost]
+        public IHttpActionResult CreateNewCustomer(Customer customerDetails)
+        {
+            // Add the new customer to the repository
+            var newCust = repository.Add(customerDetails);
 
-	        // Create a value for the Location header to be returned in the response
-	        // The URI should be the location of the customer including its ID,
-	        // such as http://adventure-works.com/api/customers/99
-	        var location = new Uri(...);
+            // Create a value for the Location header to be returned in the response
+            // The URI should be the location of the customer including its ID,
+            // such as http://adventure-works.com/api/customers/99
+            var location = new Uri(...);
 
             // Return the HTTP 201 response,
             // including the location and the newly added customer
-	        return Created(location, newCust);
-	    }
-	    ...
-	}
-	```
+            return Created(location, newCust);
+        }
+        ...
+    }
+    ```
 
-- **Unterstützen Sie die Inhaltsaushandlung**.
+- **Support content negotiation**.
 
-	Der Text einer Antwortnachricht kann Daten in unterschiedlichen Formaten enthalten. Bei einer HTTP GET-Anforderung können Daten beispielsweise im JSON- oder XML-Format zurückgegeben werden. Wenn der Client eine Anforderung sendet, kann diese einen Accept-Header zum Angeben der Datenformate enthalten, die behandelt werden können. Diese Formate werden als Medientypen angegeben. Ein Client, der eine GET-Anforderung zum Abrufen eines Bilds ausgibt, kann beispielsweise einen Accept-Header angeben, mit dem die für den Client verarbeitbaren Medientypen aufgeführt werden, z. B. „image/jpeg, image/gif, image/png“. Wenn die Web-API das Ergebnis zurückgibt, sollte sie die Daten mit einem dieser Medientypen formatieren und das Format im Content-Type-Header der Antwort angeben.
+    The body of a response message may contain data in a variety of formats. For example, an HTTP GET request could return data in JSON, or XML format. When the client submits a request, it can include an Accept header that specifies the data formats that it can handle. These formats are specified as media types. For example, a client that issues a GET request that retrieves an image can specify an Accept header that lists the media types that the client can handle, such as "image/jpeg, image/gif, image/png".  When the web API returns the result, it should format the data by using one of these media types and specify the format in the Content-Type header of the response.
 
-	Falls der Client keinen Accept-Header angibt, sollten Sie für den Text der Antwort ein geeignetes Standardformat verwenden. Beispiel: Das ASP.NET-Web-API-Framework nutzt für textbasierte Daten standardmäßig JSON.
+    If the client does not specify an Accept header, then use a sensible default format for the response body. As an example, the ASP.NET Web API framework defaults to JSON for text-based data.
 
-	> [AZURE.NOTE] Das ASP.NET-Web-API-Framework führt eine automatische Erkennung von Accept-Headern durch und behandelt diese selbst basierend auf dem Typ der Daten im Text der Antwortnachricht. Wenn der Text einer Antwortnachricht beispielsweise ein CLR-Objekt (Common Language Runtime) enthält, formatiert die ASP.NET-Web-API die Antwort automatisch im JSON-Format, wobei der Content-Type-Header der Antwort auf „application/json“ festgelegt ist – es sei denn, der Client gibt an, dass er die Ergebnisse im XML-Format benötigt. In diesem Fall formatiert das ASP.NET-Web-API-Framework die Antwort im XML-Format und legt den Content-Type-Header der Antwort auf „text/xml“ fest. Es kann aber auch erforderlich sein, Accept-Header zu behandeln, für die verschiedene Medientypen explizit im Implementierungscode für einen Vorgang angegeben werden.
+    > [AZURE.NOTE] The ASP.NET Web API framework performs some automatic detection of Accept headers and handles them itself based on the type of the data in the body of the response message. For example, if the body of a response message contains a CLR (common language runtime) object, the ASP.NET Web API automatically formats the response as JSON with the Content-Type header of the response set to "application/json" unless the client indicates that it requires the results as XML, in which case the ASP.NET Web API framework formats the response as XML and sets the Content-Type header of the response to "text/xml". However, it may be necessary to handle Accept headers that specify different media types explicitly in the implementation code for an operation.
 
-- **Stellen Sie Links zum Unterstützen der Navigation im HATEOAS-Stil und der Ermittlung von Ressourcen bereit**.
+- **Provide links to support HATEOAS-style navigation and discovery of resources**.
 
-	Im Leitfaden zum API-Entwurf wird beschrieben, wie ein Client bei Verwendung des HATEOAS-Ansatzes navigieren und Ressourcen von einem anfänglichen Startpunkt aus ermitteln kann. Dies wird erreicht, indem Links mit URIs verwendet werden. Wenn ein Client eine HTTP GET-Anforderung zum Abrufen einer Ressource ausgibt, sollte die Antwort URIs enthalten, mit denen eine Clientanwendung alle direkt verwandten Ressourcen schnell finden kann. Es kann beispielsweise sein, dass ein Kunde in einer Web-API, die eine E-Commerce-Lösung unterstützt, viele Bestellungen aufgegeben hat. Wenn eine Clientanwendung die Details für einen Kunden abruft, sollte die Antwort Links enthalten, mit denen die Clientanwendung HTTP GET-Anforderungen zum Abrufen dieser Bestellungen senden kann. Darüber hinaus sollten mit Links im HATEOAS-Stil die anderen Vorgänge (POST, PUT, DELETE usw.) beschrieben werden, die von jeder verknüpften Ressource zusammen mit dem entsprechenden URI zum Durchführen der einzelnen Anforderungen unterstützt werden. Dieser Ansatz wird im Leitfaden zum API-Entwurf ausführlicher beschrieben.
+    The API Design Guidance describes how following the HATEOAS approach enables a client to navigate and discover resources from an initial starting point. This is achieved by using links containing URIs; when a client issues an HTTP GET request to obtain a resource, the response should contain URIs that enable a client application to quickly locate any directly related resources. For example, in a web API that supports an e-commerce solution, a customer may have placed many orders. When a client application retrieves the details for a customer, the response should include links that enable the client application to send HTTP GET requests that can retrieve these orders. Additionally, HATEOAS-style links should describe the other operations (POST, PUT, DELETE, and so on) that each linked resource supports together with the corresponding URI to perform each request. This approach is described in more detail in the API Design Guidance document.
 
-	Derzeit gibt es keine Standards, mit denen die Implementierung von HATEOAS geregelt wird, aber im folgenden Beispiel wird ein möglicher Ansatz veranschaulicht. In diesem Beispiel wird mit einer HTTP GET-Anforderung zum Suchen nach den Details für einen Kunden eine Antwort zurückgegeben, die HATEOAS-Links enthält, mit denen auf die Bestellungen des Kunden verwiesen wird:
+    Currently there are no standards that govern the implementation of HATEOAS, but the following example illustrates one possible approach. In this example, an HTTP GET request that finds the details for a customer returns a response that include HATEOAS links that reference the orders for that customer:
 
-	```HTTP
-	GET http://adventure-works.com/customers/2 HTTP/1.1
-	Accept: text/json
-	...
-	```
+    ```HTTP
+    GET http://adventure-works.com/customers/2 HTTP/1.1
+    Accept: text/json
+    ...
+    ```
 
-	```HTTP
-	HTTP/1.1 200 OK
-	...
-	Content-Type: application/json; charset=utf-8
-	...
-	Content-Length: ...
-	{"CustomerID":2,"CustomerName":"Bert","Links":[
-	  {"rel":"self",
-	   "href":"http://adventure-works.com/customers/2",
-	   "action":"GET",
-	   "types":["text/xml","application/json"]},
-	  {"rel":"self",
-	   "href":"http://adventure-works.com/customers/2",
-	   "action":"PUT",
-	   "types":["application/x-www-form-urlencoded"]},
-	  {"rel":"self",
-	   "href":"http://adventure-works.com/customers/2",
-	   "action":"DELETE",
-	   "types":[]},
-	  {"rel":"orders",
-	   "href":"http://adventure-works.com/customers/2/orders",
-	   "action":"GET",
-	   "types":["text/xml","application/json"]},
-	  {"rel":"orders",
-	   "href":"http://adventure-works.com/customers/2/orders",
-	   "action":"POST",
-	   "types":["application/x-www-form-urlencoded"]}
-	]}
-	```
+    ```HTTP
+    HTTP/1.1 200 OK
+    ...
+    Content-Type: application/json; charset=utf-8
+    ...
+    Content-Length: ...
+    {"CustomerID":2,"CustomerName":"Bert","Links":[
+      {"rel":"self",
+       "href":"http://adventure-works.com/customers/2",
+       "action":"GET",
+       "types":["text/xml","application/json"]},
+      {"rel":"self",
+       "href":"http://adventure-works.com/customers/2",
+       "action":"PUT",
+       "types":["application/x-www-form-urlencoded"]},
+      {"rel":"self",
+       "href":"http://adventure-works.com/customers/2",
+       "action":"DELETE",
+       "types":[]},
+      {"rel":"orders",
+       "href":"http://adventure-works.com/customers/2/orders",
+       "action":"GET",
+       "types":["text/xml","application/json"]},
+      {"rel":"orders",
+       "href":"http://adventure-works.com/customers/2/orders",
+       "action":"POST",
+       "types":["application/x-www-form-urlencoded"]}
+    ]}
+    ```
 
-	Die Kundendaten werden hierbei mit der `Customer`-Klasse dargestellt, wie im folgenden Codeausschnitt zu sehen ist. Die HATEOAS-Links sind in der `Links`-Auflistungseigenschaft enthalten:
+    In this example, the customer data is represented by the `Customer` class shown in the following code snippet. The HATEOAS links are held in the `Links` collection property:
 
-	```C#
-	public class Customer
-	{
-    	public int CustomerID { get; set; }
-    	public string CustomerName { get; set; }
-    	public List<Link> Links { get; set; }
-    	...
-	}
+    ```C#
+    public class Customer
+    {
+        public int CustomerID { get; set; }
+        public string CustomerName { get; set; }
+        public List<Link> Links { get; set; }
+        ...
+    }
 
-	public class Link
-	{
-    	public string Rel { get; set; }
-    	public string Href { get; set; }
-    	public string Action { get; set; }
-    	public string [] Types { get; set; }
-	}
-	```
+    public class Link
+    {
+        public string Rel { get; set; }
+        public string Href { get; set; }
+        public string Action { get; set; }
+        public string [] Types { get; set; }
+    }
+    ```
 
-	Der HTTP GET-Vorgang ruft die Kundendaten aus dem Speicher ab und erstellt ein `Customer`-Objekt und füllt anschließend die `Links`-Auflistung auf. Das Ergebnis ist als JSON-Antwortnachricht formatiert. Jeder Link umfasst die folgenden Felder:
+    The HTTP GET operation retrieves the customer data from storage and constructs a `Customer` object, and then populates the `Links` collection. The result is formatted as a JSON response message. Each link comprises the following fields:
 
-	- Die Beziehung zwischen dem zurückgegebenen Objekt und dem Objekt, das vom Link beschrieben wird. Hierbei wird mit „self“ angegeben, dass der Link ein Verweis zurück auf das Objekt selbst ist (ähnlich wie bei einem `this`-Zeiger in vielen objektorientierten Sprachen), und „orders“ ist der Name einer Auflistung, in der die dazugehörigen Bestellinformationen enthalten sind.
+    - The relationship between the object being returned and the object described by the link. In this case "self" indicates that the link is a reference back to the object itself (similar to a `this` pointer in many object-oriented languages), and "orders" is the name of a collection containing the related order information.
 
-	- Der Hyperlink (`Href`) für das Objekt, das mit dem Link beschrieben wird, in Form eines URI.
+    - The hyperlink (`Href`) for the object being described by the link in the form of a URI.
 
-	- Der Typ der HTTP-Anforderung (`Action`), die an diesen URI gesendet werden kann.
+    - The type of HTTP request (`Action`) that can be sent to this URI.
 
-	- Das Format der Daten (`Types`), die in der HTTP-Anforderung bereitgestellt werden sollen oder die je nach Art der Anforderung in der Antwort zurückgegeben werden können.
+    - The format of any data (`Types`) that should be provided in the HTTP request or that can be returned in the response, depending on the type of the request.
 
-	Mit den HATEOAS-Links in der HTTP-Beispielantwort wird angegeben, dass eine Clientanwendung die folgenden Vorgänge durchführen kann:
+    The HATEOAS links shown in the example HTTP response indicate that a client application can perform the following operations:
 
-	- Eine HTTP GET-Anforderung an den URI \_http://adventure-works.com/customers/2_, um die Details des Kunden (erneut) abzurufen. Die Daten können im XML- oder JSON-Format zurückgegeben werden.
+    - An HTTP GET request to the URI _http://adventure-works.com/customers/2_ to fetch the details of the customer (again). The data can be returned as XML or JSON.
 
-	- Eine HTTP PUT-Anforderung an den URI \_http://adventure-works.com/customers/2_, um die Details des Kunden zu ändern. Die neuen Daten müssen in der Anforderungsnachricht im Format „x-www-form-urlencoded“ bereitgestellt werden.
+    - An HTTP PUT request to the URI _http://adventure-works.com/customers/2_ to modify the details of the customer. The new data must be provided in the request message in x-www-form-urlencoded format.
 
-	- Eine HTTP DELETE-Anforderung an den URI \_http://adventure-works.com/customers/2_, um den Kunden zu löschen. Die Anforderung erwartet keine zusätzlichen Informationen oder Rückgabedaten im Text der Antwortnachricht.
+    - An HTTP DELETE request to the URI _http://adventure-works.com/customers/2_ to delete the customer. The request does not expect any additional information or return data in the response message body.
 
-	- Eine HTTP GET-Anforderung an den URI \_http://adventure-works.com/customers/2/orders_, um nach allen Bestellungen des Kunden zu suchen. Die Daten können im XML- oder JSON-Format zurückgegeben werden.
+    - An HTTP GET request to the URI _http://adventure-works.com/customers/2/orders_ to find all the orders for the customer. The data can be returned as XML or JSON.
 
-	- Eine HTTP PUT-Anforderung an den URI \_http://adventure-works.com/customers/2/orders_, um für den Kunden eine neue Bestellung zu erstellen. Die Daten müssen in der Anforderungsnachricht im Format „x-www-form-urlencoded“ bereitgestellt werden.
+    - An HTTP PUT request to the URI _http://adventure-works.com/customers/2/orders_ to create a new order for this customer. The data must be provided in the request message in x-www-form-urlencoded format.
 
-## Aspekte der Behandlung von Ausnahmen
-Wenn ein Vorgang im ASP.NET-Web-API-Framework eine unerwartete Ausnahme auslöst, gibt das Framework standardmäßig eine Antwortnachricht mit dem HTTP-Statuscode 500 (Internal Server Error) zurück. Häufig ist dieser allzu simple Ansatz allein nicht hilfreich und erschwert die Ermittlung der Ausnahmeursache. Daher sollten Sie zum Behandeln von Ausnahmen einen umfassenderen Ansatz wählen. Beachten Sie hierbei die folgenden Punkte:
+## <a name="considerations-for-handling-exceptions"></a>Considerations for handling exceptions
+By default, in the ASP.NET Web API framework, if an operation throws an uncaught exception the framework returns a response message with HTTP status code 500 (Internal Server Error). In many cases, this simplistic approach is not useful in isolation, and makes determining the cause of the exception difficult. Therefore you should adopt a more comprehensive approach to handling exceptions, considering the following points:
 
-- **Erfassen Sie Ausnahmen, und geben Sie eine aussagekräftige Antwort an Clients zurück**.
+- **Capture exceptions and return a meaningful response to clients**.
 
-	Mit dem Code zum Implementieren eines HTTP-Vorgangs sollte eine umfassende Ausnahmebehandlung bereitgestellt werden, anstatt zuzulassen, dass unerwartete Ausnahmen ins Web-API-Framework gelangen. Wenn eine Ausnahme den erfolgreichen Abschluss des Vorgangs verhindert, kann die Ausnahme in der Antwortnachricht zurück übergeben werden. Sie sollte aber eine aussagekräftige Beschreibung des Fehlers enthalten, der die Ausnahme verursacht hat. Außerdem sollte die Ausnahme den passenden HTTP-Statuscode enthalten, anstatt einfach für jede Situation den Statuscode 500 zurückzugeben. Wenn eine Benutzeranforderung beispielsweise eine Datenbankaktualisierung bewirkt, die eine Verletzung einer Einschränkung darstellt (z. B. das versuchte Löschen eines Kunden, für den noch Bestellungen ausstehen), sollten Sie den Statuscode 409 (Conflict) und einen Nachrichtentext zurückgeben, um die Ursache des Konflikts anzugeben. Falls die Anforderung aufgrund einer anderen Bedingung nicht durchführbar ist, können Sie den Statuscode 400 (Bad Request) zurückgeben. Eine vollständige Liste mit HTTP-Statuscodes finden Sie auf der W3C-Website im Thema zu den [Statuscodedefinitionen](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+    The code that implements an HTTP operation should provide comprehensive exception handling rather than letting uncaught exceptions propagate to the Web API framework. If an exception makes it impossible to complete the operation successfully, the exception can be passed back in the response message, but it should include a meaningful description of the error that caused the exception. The exception should also include the appropriate HTTP status code rather than simply returning status code 500 for every situation. For example, if a user request causes a database update that violates a constraint (such as attempting to delete a customer that has outstanding orders), you should return status code 409 (Conflict) and a message body indicating the reason for the conflict. If some other condition renders the request unachievable, you can return status code 400 (Bad Request). You can find a full list of HTTP status codes on the [Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) page on the W3C website.
 
-	Der folgende Code enthält ein Beispiel, bei dem unterschiedliche Bedingungen abgefangen werden und eine geeignete Antwort zurückgegeben wird.
+    The following code shows an example that traps different conditions and returns an appropriate response.
 
-	```C#
-	[HttpDelete]
-	[Route("customers/{id:int}")]
-	public IHttpActionResult DeleteCustomer(int id)
-	{
-		try
-		{
-			// Find the customer to be deleted in the repository
-			var customerToDelete = repository.GetCustomer(id);
+    ```C#
+    [HttpDelete]
+    [Route("customers/{id:int}")]
+    public IHttpActionResult DeleteCustomer(int id)
+    {
+        try
+        {
+            // Find the customer to be deleted in the repository
+            var customerToDelete = repository.GetCustomer(id);
 
-			// If there is no such customer, return an error response
-			// with status code 404 (Not Found)
-			if (customerToDelete == null)
-			{
-					return NotFound();
-			}
+            // If there is no such customer, return an error response
+            // with status code 404 (Not Found)
+            if (customerToDelete == null)
+            {
+                    return NotFound();
+            }
 
-			// Remove the customer from the repository
-			// The DeleteCustomer method returns true if the customer
-			// was successfully deleted
-			if (repository.DeleteCustomer(id))
-			{
-				// Return a response message with status code 204 (No Content)
-				// To indicate that the operation was successful
-				return StatusCode(HttpStatusCode.NoContent);
-			}
-			else
-			{
-				// Otherwise return a 400 (Bad Request) error response
-				return BadRequest(Strings.CustomerNotDeleted);
-			}
-		}
-		catch
-		{
-			// If an uncaught exception occurs, return an error response
-			// with status code 500 (Internal Server Error)
-			return InternalServerError();
-		}
-	}
-	```
+            // Remove the customer from the repository
+            // The DeleteCustomer method returns true if the customer
+            // was successfully deleted
+            if (repository.DeleteCustomer(id))
+            {
+                // Return a response message with status code 204 (No Content)
+                // To indicate that the operation was successful
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+            else
+            {
+                // Otherwise return a 400 (Bad Request) error response
+                return BadRequest(Strings.CustomerNotDeleted);
+            }
+        }
+        catch
+        {
+            // If an uncaught exception occurs, return an error response
+            // with status code 500 (Internal Server Error)
+            return InternalServerError();
+        }
+    }
+    ```
 
-	> [AZURE.TIP] Fügen Sie keine Informationen ein, die für Angreifer beim Eindringen in Ihre Web-API nützlich sein könnten. Weitere Informationen finden Sie auf der Microsoft-Website auf der Seite [Ausnahmebehandlung in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/error-handling/exception-handling).
+    > [AZURE.TIP] Do not include information that could be useful to an attacker attempting to penetrate your web API.For further information, visit the [Exception Handling in ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling) page on the Microsoft website.
 
-	> [AZURE.NOTE] Viele Webserver fangen Fehlerbedingungen selbst ab, bevor sie die Web-API erreichen. Wenn Sie beispielsweise die Authentifizierung für eine Website konfigurieren und der Benutzer keine richtigen Authentifizierungsinformationen angibt, sollte der Webserver mit dem Statuscode 401 (Unauthorized) antworten. Nachdem ein Client authentifiziert wurde, kann Ihr Code eigene Überprüfungen durchführen, um zu bestätigen, dass der Client auf die angeforderte Ressource zugreifen kann. Wenn diese Autorisierung nicht erfolgreich ist, sollten Sie den Statuscode 403 (Forbidden) zurückgeben.
+    > [AZURE.NOTE] Many web servers trap error conditions themselves before they reach the web API. For example, if you configure authentication for a web site and the user fails to provide the correct authentication information, the web server should respond with status code 401 (Unauthorized). Once a client has been authenticated, your code can perform its own checks to verify that the client should be able access the requested resource. If this authorization fails, you should return status code 403 (Forbidden).
 
-- **Behandeln Sie Ausnahmen auf konsistente Weise, und protokollieren Sie Informationen zu Fehlern**.
+- **Handle exceptions in a consistent manner and log information about errors**.
 
-	Erwägen Sie zum einheitlichen Behandeln von Ausnahmen die Implementierung einer globalen Strategie zur Fehlerbehandlung in der gesamten Web-API. Dies erreichen Sie teilweise wie folgt: Sie erstellen einen Ausnahmefilter, der immer ausgeführt wird, wenn ein Controller eine unbehandelte Ausnahme auslöst, bei der es sich nicht um eine `HttpResponseException`-Ausnahme handelt. Dieser Ansatz ist auf der Microsoft-Website auf der Seite [Ausnahmebehandlung in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/error-handling/exception-handling) beschrieben.
+    To handle exceptions in a consistent manner, consider implementing a global error handling strategy across the entire web API. You can achieve part of this by creating an exception filter that runs whenever a controller throws any unhandled exception that is not an `HttpResponseException` exception. This approach is described on the [Exception Handling in ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling) page on the Microsoft website.
 
-	Es gibt jedoch mehrere Situationen, in denen ein Ausnahmefilter eine Ausnahme nicht abfängt, z. B.:
+    However, there are several situations where an exception filter will not catch an exception, including:
 
-	- Von Controllerkonstruktoren ausgelöste Ausnahmen
+    - Exceptions thrown from controller constructors.
 
-	- Von Meldungshandlern ausgelöste Ausnahmen
+    - Exceptions thrown from message handlers.
 
-	- Während des Routings ausgelöste Ausnahmen
+    - Exceptions thrown during routing.
 
-	- Beim Serialisieren des Inhalts für eine Antwortnachricht ausgelöste Ausnahmen
+    - Exceptions thrown while serializing the content for a response message.
 
-	Zum Behandeln dieser Fälle müssen Sie ggf. einen stärker angepassten Ansatz implementieren. Außerdem sollten Sie für eine Fehlerprotokollierung sorgen, bei der für jede Ausnahme alle Details erfasst werden. Dieses Fehlerprotokoll kann ausführliche Informationen enthalten, sofern es nicht für Clients über das Web zugänglich ist. Auf der Microsoft-Website wird im Artikel [Globale Fehlerbehandlung für die Web-API](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling) eine mögliche Vorgehensweise für diese Aufgabe veranschaulicht.
+    To handle these cases, you may need to implement a more customized approach. You should also incorporate error logging which captures the full details of each exception; this error log can contain detailed information as long as it is not made accessible over the web to clients. The article [Web API Global Error Handling](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling) on the Microsoft website shows one way of performing this task.
 
-- **Unterscheiden Sie zwischen clientseitigen und serverseitigen Fehlern**.
+- **Distinguish between client-side errors and server-side errors**.
 
-	Im HTTP-Protokoll wird zwischen Fehlern unterschieden, die aufgrund der Clientanwendung auftreten (HTTP 4xx-Statuscodes), und Fehlern, die aufgrund eines Problems auf dem Server auftreten (HTTP 5xx-Statuscodes). Achten Sie darauf, dass Sie diese Konvention in allen Fehlerantwortnachrichten befolgen.
+    The HTTP protocol distinguishes between errors that occur due to the client application (the HTTP 4xx status codes), and errors that are caused by a mishap on the server (the HTTP 5xx status codes). Make sure that you respect this convention in any error response messages.
 
 <a name="considerations-for-optimizing"></a>
-## Aspekte der Optimierung des clientseitigen Datenzugriffs
+## <a name="considerations-for-optimizing-client-side-data-access"></a>Considerations for optimizing client-side data access
 
-In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, ist das Netzwerk eines der Elemente, die am stärksten beachtet werden müssen. Es können sich erhebliche Engpässe ergeben, und zwar vor allem, wenn eine Clientanwendung häufig Anforderungen sendet oder Daten empfängt. Daher sollten Sie versuchen, die Menge des im Netzwerk übertragenen Datenverkehrs möglichst zu verringern. Beachten Sie beim Implementieren des Codes zum Abrufen und Verwalten von Daten die folgenden Punkte:
+In a distributed environment such as that involving a web server and client applications, one of the primary sources of concern is the network. This can act as a considerable bottleneck, especially if a client application is frequently sending requests or receiving data. Therefore you should aim to minimize the amount of traffic that flows across the network. Consider the following points when you implement the code to retrieve and maintain data:
 
-- **Unterstützen Sie die clientseitige Zwischenspeicherung**.
+- **Support client-side caching**.
 
-	Das HTTP 1.1-Protokoll unterstützt die Zwischenspeicherung auf Clients und Zwischenservern, über die eine Anforderung mit Cache-Control-Header weitergeleitet wird. Wenn eine Clientanwendung eine HTTP GET-Anforderung an die Web-API sendet, kann die Antwort einen Cache-Control-Header enthalten. Hiermit wird angegeben, ob die Daten im Text der Antwort vom Client oder einem Zwischenserver, über den die Anforderung weitergeleitet wurde, sicher zwischengespeichert werden können. Außerdem wird angegeben, nach welchem Zeitraum die Daten ablaufen und als veraltet angesehen werden. Das folgende Beispiel enthält eine HTTP GET-Anforderung und die dazugehörige Antwort mit einem Cache-Control-Header:
+    The HTTP 1.1 protocol supports caching in clients and intermediate servers through which a request is routed by the use of the Cache-Control header. When a client application sends an HTTP GET request to the web API, the response can include a Cache-Control header that indicates whether the data in the body of the response can be safely cached by the client or an intermediate server through which the request has been routed, and for how long before it should expire and be considered out-of-date. The following example shows an HTTP GET request and the corresponding response that includes a Cache-Control header:
 
-	```HTTP
-	GET http://adventure-works.com/orders/2 HTTP/1.1
-	...
-	```
+    ```HTTP
+    GET http://adventure-works.com/orders/2 HTTP/1.1
+    ...
+    ```
 
-	```HTTP
-	HTTP/1.1 200 OK
-	...
-	Cache-Control: max-age=600, private
-	Content-Type: text/json; charset=utf-8
-	Content-Length: ...
-	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
-	```
+    ```HTTP
+    HTTP/1.1 200 OK
+    ...
+    Cache-Control: max-age=600, private
+    Content-Type: text/json; charset=utf-8
+    Content-Length: ...
+    {"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
+    ```
 
-	In diesem Beispiel wird mit dem Cache-Control-Header angegeben, dass die zurückgegebenen Daten nach 600 Sekunden ablaufen sollen. Außerdem sind sie nur für einen einzelnen Client geeignet und dürfen nicht in einem freigegebenen Cache gespeichert werden, der von anderen Clients verwendet wird (sie sind _private_). Im Cache-Control-Header kann anstelle von _private_ auch _public_ angegeben werden, damit die Daten in einem freigegebenen Cache gespeichert werden können. Oder es kann _no-store_ angegeben werden, wenn die Daten vom Client **nicht** zwischengespeichert werden dürfen. Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Cache-Control-Header in einer Antwortnachricht erstellen:
+    In this example, the Cache-Control header specifies that the data returned should be expired after 600 seconds, and is only suitable for a single client and must not be stored in a shared cache used by other clients (it is _private_). The Cache-Control header could specify _public_ rather than _private_ in which case the data can be stored in a shared cache, or it could specify _no-store_ in which case the data must **not** be cached by the client. The following code example shows how to construct a Cache-Control header in a response message:
 
-	```C#
-	public class OrdersController : ApiController
-	{
-    	...
-    	[Route("api/orders/{id:int:min(0)}")]
-    	[HttpGet]
-    	public IHttpActionResult FindOrderByID(int id)
-    	{
-    		// Find the matching order
-    		Order order = ...;
-    		...
-    		// Create a Cache-Control header for the response
-    		var cacheControlHeader = new CacheControlHeaderValue();
-    		cacheControlHeader.Private = true;
-    		cacheControlHeader.MaxAge = new TimeSpan(0, 10, 0);
-    		...
+    ```C#
+    public class OrdersController : ApiController
+    {
+        ...
+        [Route("api/orders/{id:int:min(0)}")]
+        [HttpGet]
+        public IHttpActionResult FindOrderByID(int id)
+        {
+            // Find the matching order
+            Order order = ...;
+            ...
+            // Create a Cache-Control header for the response
+            var cacheControlHeader = new CacheControlHeaderValue();
+            cacheControlHeader.Private = true;
+            cacheControlHeader.MaxAge = new TimeSpan(0, 10, 0);
+            ...
 
-    		// Return a response message containing the order and the cache control header
-    		OkResultWithCaching<Order> response = new OkResultWithCaching<Order>(order, this)
-    		{
-    			CacheControlHeader = cacheControlHeader
-    		};
-    		return response;
-    	}
-    	...
-	}
-	```
+            // Return a response message containing the order and the cache control header
+            OkResultWithCaching<Order> response = new OkResultWithCaching<Order>(order, this)
+            {
+                CacheControlHeader = cacheControlHeader
+            };
+            return response;
+        }
+        ...
+    }
+    ```
 
-	In diesem Code wird eine benutzerdefinierte `IHttpActionResult`-Klasse mit dem Namen `OkResultWithCaching` verwendet. Diese Klasse ermöglicht dem Controller das Festlegen des Cacheheaderinhalts:
+    This code makes use of a custom `IHttpActionResult` class named `OkResultWithCaching`. This class enables the controller to set the cache header contents:
 
-	```C#
-	public class OkResultWithCaching<T> : OkNegotiatedContentResult<T>
+    ```C#
+    public class OkResultWithCaching<T> : OkNegotiatedContentResult<T>
     {
         public OkResultWithCaching(T content, ApiController controller)
             : base(content, controller) { }
@@ -462,98 +463,98 @@ In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, 
             return response;
         }
     }
-	```
+    ```
 
-	> [AZURE.NOTE] Außerdem wird im HTTP-Protokoll auch die _no-cache_-Direktive für den Cache-Control-Header definiert. Es ist etwas verwirrend, dass diese Direktive nicht etwa „nicht zwischenspeichern“, sondern „zwischengespeicherte Informationen vor dem Zurückgeben per Server neu bewerten“ bedeutet. Die Daten können zwar zwischengespeichert werden, aber sie werden bei jeder Verwendung überprüft, um sicherzustellen, dass sie noch aktuell sind.
+    > [AZURE.NOTE] The HTTP protocol also defines the _no-cache_ directive for the Cache-Control header. Rather confusingly, this directive does not mean "do not cache" but rather "revalidate the cached information with the server before returning it"; the data can still be cached, but it is checked each time it is used to ensure that it is still current.
 
-	Für die Cacheverwaltung ist die Clientanwendung oder der Zwischenserver verantwortlich, aber bei einer richtigen Implementierung kann Bandbreite gespart und die Leistung verbessert werden. Zu diesem Zweck wird verhindert, dass keine Daten mehr abgerufen werden müssen, die bereits vorher abgerufen wurden.
+    Cache management is the responsibility of the client application or intermediate server, but if properly implemented it can save bandwidth and improve performance by removing the need to fetch data that has already been recently retrieved.
 
-	Der _max-age_-Wert im Cache-Control-Header ist nur ein Anhaltspunkt und keine Garantie, dass sich die entsprechenden Daten während des angegebenen Zeitraums nicht ändern. Die Web-API sollte den max-age-Wert je nach der erwarteten Volatilität der Daten auf einen geeigneten Wert festlegen. Wenn dieser Zeitraum abgelaufen ist, sollte der Client das Objekt aus dem Cache entfernen.
+    The _max-age_ value in the Cache-Control header is only a guide and not a guarantee that the corresponding data won't change during the specified time. The web API should set the max-age to a suitable value depending on the expected volatility of the data. When this period expires, the client should discard the object from the cache.
 
-	> [AZURE.NOTE] Die meisten modernen Webbrowser unterstützen die clientseitige Zwischenspeicherung, indem Anforderungen die passenden Cache-Control-Header hinzugefügt werden und die Header der Ergebnisse (wie beschrieben) untersucht werden. Einige ältere Browser speichern aber keine Werte zwischen, die über eine URL mit einer Abfragezeichenfolge zurückgegeben werden. Normalerweise ist dies kein Problem für benutzerdefinierte Clientanwendungen, bei denen basierend auf dem hier beschriebenen Protokoll eine eigene Strategie zur Cacheverwaltung implementiert wird.
-	>
-	> Einige ältere Proxys weisen das gleiche Verhalten auf und speichern unter Umständen keine Anforderungen zwischen, die auf URLs mit Abfragezeichenfolgen basieren. Dies kann für benutzerdefinierte Clientanwendungen ein Problem darstellen, die über einen Proxy dieser Art eine Verbindung mit einem Webserver herstellen.
+    > [AZURE.NOTE] Most modern web browsers support client-side caching by adding the appropriate cache-control headers to requests and examining the headers of the results, as described. However, some older browsers will not cache the values returned from a URL that includes a query string. This is not usually an issue for custom client applications which implement their own cache management strategy based on the protocol discussed here.
+    >
+    > Some older proxies exhibit the same behavior and might not cache requests based on URLs with query strings. This could be an issue for custom client applications that connect to a web server through such a proxy.
 
-- **Stellen Sie ETags zum Optimieren der Abfrageverarbeitung bereit**.
+- **Provide ETags to Optimize Query Processing**.
 
-	Wenn eine Clientanwendung ein Objekt abruft, kann die Antwortnachricht auch ein _ETag_ (Entitätstag) enthalten. Ein ETag ist eine opake Zeichenfolge, mit der die Version einer Ressource angegeben wird. Wenn eine Ressource geändert wird, wird auch das ETag geändert. Dieses ETag sollte von der Clientanwendung als Teil der Daten zwischengespeichert werden. Im folgenden Codebeispiel wird veranschaulicht, wie Sie einer HTTP GET-Anforderung ein ETag als Teil der Antwort hinzufügen. In diesem Code wird die `GetHashCode`-Methode eines Objekts zum Generieren eines numerischen Werts verwendet, mit dem das Objekt identifiziert wird (Sie können diese Methode bei Bedarf außer Kraft setzen und einen eigenen Hashwert generieren, indem Sie einen Algorithmus verwenden, z. B. MD5):
+    When a client application retrieves an object, the response message can also include an _ETag_ (Entity Tag). An ETag is an opaque string that indicates the version of a resource; each time a resource changes the Etag is also modified. This ETag should be cached as part of the data by the client application. The following code example shows how to add an ETag as part of the response to an HTTP GET request. This code uses the `GetHashCode` method of an object to generate a numeric value that identifies the object (you can override this method if necessary and generate your own hash using an algorithm such as MD5) :
 
-	```C#
-	public class OrdersController : ApiController
-	{
-    	...
-    	public IHttpActionResult FindOrderByID(int id)
-    	{
-    		// Find the matching order
-    		Order order = ...;
-    		...
+    ```C#
+    public class OrdersController : ApiController
+    {
+        ...
+        public IHttpActionResult FindOrderByID(int id)
+        {
+            // Find the matching order
+            Order order = ...;
+            ...
 
-    		var hashedOrder = order.GetHashCode();
-    		string hashedOrderEtag = String.Format(""{0}"", hashedOrder);
-    		var eTag = new EntityTagHeaderValue(hashedOrderEtag);
+            var hashedOrder = order.GetHashCode();
+            string hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
+            var eTag = new EntityTagHeaderValue(hashedOrderEtag);
 
-    		// Return a response message containing the order and the cache control header
-    		OkResultWithCaching<Order> response = new OkResultWithCaching<Order>(order, this)
-    		{
-    			...,
-    			ETag = eTag
-    		};
-    		return response;
-    	}
-    	...
+            // Return a response message containing the order and the cache control header
+            OkResultWithCaching<Order> response = new OkResultWithCaching<Order>(order, this)
+            {
+                ...,
+                ETag = eTag
+            };
+            return response;
+        }
+        ...
     }
-	```
+    ```
 
-	Die von der Web-API bereitgestellte Antwortnachricht sieht wie folgt aus:
+    The response message posted by the web API looks like this:
 
-	```HTTP
-	HTTP/1.1 200 OK
-	...
-	Cache-Control: max-age=600, private
-	Content-Type: text/json; charset=utf-8
-	ETag: "2147483648"
-	Content-Length: ...
-	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
-	```
+    ```HTTP
+    HTTP/1.1 200 OK
+    ...
+    Cache-Control: max-age=600, private
+    Content-Type: text/json; charset=utf-8
+    ETag: "2147483648"
+    Content-Length: ...
+    {"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
+    ```
 
-	> [AZURE.TIP] Aus Sicherheitsgründen sollten Sie nicht zulassen, dass sensible Daten oder Daten, die über eine authentifizierte Verbindung (HTTPS) zurückgegeben werden, zwischengespeichert werden.
+    > [AZURE.TIP] For security reasons, do not allow sensitive data or data returned over an authenticated (HTTPS) connection to be cached.
 
-	Eine Clientanwendung kann eine nachfolgende GET-Anforderung ausgeben, um jederzeit dieselbe Ressource abzurufen. Wenn sich die Ressource geändert hat (also ein anderes ETag aufweist), sollte die zwischengespeicherte Version verworfen und die neue Version dem Cache hinzugefügt werden. Falls eine Ressource umfangreich ist und für die Übertragung zurück auf den Client eine erhebliche Menge an Bandbreite erfordert, kann die Verwendung wiederholter Anforderungen zum Abrufen derselben Daten ineffizient werden. Als Lösung definiert das HTTP-Protokoll den folgenden Prozess zum Optimieren von GET-Anforderungen, die Sie in einer Web-API unterstützen sollten:
+    A client application can issue a subsequent GET request to retrieve the same resource at any time, and if the resource has changed (it has a different ETag) the cached version should be discarded and the new version added to the cache. If a resource is large and requires a significant amount of bandwidth to transmit back to the client, repeated requests to fetch the same data can become inefficient. To combat this, the HTTP protocol defines the following process for optimizing GET requests that you should support in a web API:
 
-	- Der Client erstellt eine GET-Anforderung mit dem ETag für die derzeit zwischengespeicherte Version der Ressource, auf die in einem If-None-Match-HTTP-Header verwiesen wird:
+    - The client constructs a GET request containing the ETag for the currently cached version of the resource referenced in an If-None-Match HTTP header:
 
-	```HTTP
-	GET http://adventure-works.com/orders/2 HTTP/1.1
-	If-None-Match: "2147483648"
-	...
-	```
+    ```HTTP
+    GET http://adventure-works.com/orders/2 HTTP/1.1
+    If-None-Match: "2147483648"
+    ...
+    ```
 
-	- Der GET-Vorgang in der Web-API ruft das aktuelle ETag für die angeforderten Daten ab („Order 2“ im obigen Beispiel) und vergleicht es mit dem Wert im If-None-Match-Header.
+    - The GET operation in the web API obtains the current ETag for the requested data (order 2 in the above example), and compares it to the value in the If-None-Match header.
 
-	- Wenn das aktuelle ETag für die angeforderten Daten mit dem von der Anforderung bereitgestellten ETag übereinstimmt, hat sich die Ressource nicht geändert. Die Web-API sollte also eine HTTP-Antwort mit leerem Nachrichtentext und dem Statuscode 304 (Not Modified) zurückgeben.
+    - If the current ETag for the requested data matches the ETag provided by the request, the resource has not changed and the web API should return an HTTP response with an empty message body and a status code of 304 (Not Modified).
 
-	- Wenn das aktuelle ETag für die angeforderten Daten nicht mit dem von der Anforderung bereitgestellten ETag übereinstimmt, haben sich die Daten geändert. Die Web-API sollte also eine HTTP-Antwort mit den neuen Daten im Nachrichtentext und dem Statuscode 200 (OK) zurückgeben.
+    - If the current ETag for the requested data does not match the ETag provided by the request, then the data has changed and the web API should return an HTTP response with the new data in the message body and a status code of 200 (OK).
 
-	- Falls die angeforderten Daten nicht mehr vorhanden sind, sollte die Web-API eine HTTP-Antwort mit dem Statuscode 404 (Nicht gefunden) zurückgeben.
+    - If the requested data no longer exists then the web API should return an HTTP response with the status code of 404 (Not Found).
 
-	- Der Client verwendet den Statuscode zum Verwalten des Cache. Wenn sich die Daten nicht geändert haben (Statuscode 304), kann das Objekt zwischengespeichert bleiben, und die Clientanwendung sollte weiterhin diese Version des Objekts nutzen. Wenn sich die Daten geändert haben (Statuscode 200), sollte das zwischengespeicherte Objekt verworfen und das neue Objekt eingefügt werden. Falls die Daten nicht mehr verfügbar sind (Statuscode 404), sollte das Objekt aus dem Cache entfernt werden.
+    - The client uses the status code to maintain the cache. If the data has not changed (status code 304) then the object can remain cached and the client application should continue to use this version of the object. If the data has changed (status code 200) then the cached object should be discarded and the new one inserted. If the data is no longer available (status code 404) then the object should be removed from the cache.
 
-	> [AZURE.NOTE] Wenn der Antwortheader den Cache-Control-Header „no-store“ enthält, sollte das Objekt unabhängig vom HTTP-Statuscode aus dem Cache entfernt werden.
+    > [AZURE.NOTE] If the response header contains the Cache-Control header no-store then the object should always be removed from the cache regardless of the HTTP status code.
 
-	Im Code unten wird die erweiterte `FindOrderByID`-Methode zum Unterstützen des If-None-Match-Headers veranschaulicht. Beachten Sie Folgendes: Wenn der If-None-Match-Header weggelassen wird, wird immer die angegebene Bestellung abgerufen:
+    The code below shows the `FindOrderByID` method extended to support the If-None-Match header. Notice that if the If-None-Match header is omitted, the specified order is always retrieved:
 
-	```C#
-	public class OrdersController : ApiController
-	{
-   		...
-    	[Route("api/orders/{id:int:min(0)}")]
-    	[HttpGet]
-    	public IHttpActionResult FindOrderById(int id)
+    ```C#
+    public class OrdersController : ApiController
+    {
+        ...
+        [Route("api/orders/{id:int:min(0)}")]
+        [HttpGet]
+        public IHttpActionResult FindOrderById(int id)
         {
             try
             {
                 // Find the matching order
-    		    Order order = ...;
+                Order order = ...;
 
                 // If there is no such order then return NotFound
                 if (order == null)
@@ -563,7 +564,7 @@ In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, 
 
                 // Generate the ETag for the order
                 var hashedOrder = order.GetHashCode();
-                string hashedOrderEtag = String.Format(""{0}"", hashedOrder);
+                string hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
 
                 // Create the Cache-Control and ETag headers for the response
                 IHttpActionResult response = null;
@@ -607,17 +608,17 @@ In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, 
         }
     ...
     }
-	```
+    ```
 
-	Dieses Beispiel enthält eine zusätzliche benutzerdefinierte `IHttpActionResult`-Klasse mit dem Namen `EmptyResultWithCaching`. Diese Klasse dient lediglich als Wrapper für ein `HttpResponseMessage`-Objekt ohne Antworttext:
+    This example incorporates an additional custom `IHttpActionResult` class named `EmptyResultWithCaching`. This class simply acts as a wrapper around an `HttpResponseMessage` object that does not contain a response body:
 
-	```C#
+    ```C#
     public class EmptyResultWithCaching : IHttpActionResult
     {
         public CacheControlHeaderValue CacheControlHeader { get; set; }
         public EntityTagHeaderValue ETag { get; set; }
         public HttpStatusCode StatusCode { get; set; }
-		public Uri Location { get; set; }
+        public Uri Location { get; set; }
 
         public async Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
@@ -628,45 +629,45 @@ In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, 
             return response;
         }
     }
-	```
+    ```
 
-	> [AZURE.TIP] In diesem Beispiel wird das ETag für die Daten generiert, indem die Daten, die aus der zugrunde liegenden Datenquelle abgerufen werden, mit einem Hashwert versehen werden. Wenn das ETag auf andere Art berechnet werden kann, kann der Prozess weiter optimiert werden, und die Daten müssen nur dann aus der Datenquelle abgerufen werden, wenn sie sich geändert haben. Dieser Ansatz ist besonders nützlich, wenn die Daten sehr umfangreich sind oder das Zugreifen auf die Datenquelle zu einer längeren Wartezeit führen kann (beispielsweise bei einer Remotedatenbank als Datenquelle).
+    > [AZURE.TIP] In this example, the ETag for the data is generated by hashing the data retrieved from the underlying data source. If the ETag can be computed in some other way, then the process can be optimized further and the data only needs to be fetched from the data source if it has changed.  This approach is especially useful if the data is large or accessing the data source can result in significant latency (for example, if the data source is a remote database).
 
-- **Verwenden Sie ETags zum Unterstützen der optimistischen Parallelität**.
+- **Use ETags to Support Optimistic Concurrency**.
 
-	Zum Ermöglichen von Updates für zuvor zwischengespeicherte Daten unterstützt das HTTP-Protokoll die Strategie der optimistischen Parallelität. Wenn die Clientanwendung nach dem Abrufen und Zwischenspeichern einer Ressource nachfolgend eine PUT- oder DELETE-Anforderung sendet, um die Ressource zu ändern oder zu entfernen, sollte diese einen If-Match-Header mit Verweis auf das ETag enthalten. Mit diesen Informationen kann die Web-API dann bestimmen, ob die Ressource bereits von einem anderen Benutzer geändert wurde, seitdem sie abgerufen wurde, und wie folgt eine geeignete Antwort zurück an die Clientanwendung senden:
+    To enable updates over previously cached data, the HTTP protocol supports an optimistic concurrency strategy. If, after fetching and caching a resource, the client application subsequently sends a PUT or DELETE request to change or remove the resource, it should include in If-Match header that references the ETag. The web API can then use this information to determine whether the resource has already been changed by another user since it was retrieved and send an appropriate response back to the client application as follows:
 
-	- Der Client erstellt eine PUT-Anforderung mit den neuen Details für die Ressource und dem ETag für die derzeit zwischengespeicherte Version der Ressource, auf die in einem If-Match-HTTP-Header verwiesen wird. Das folgende Beispiel enthält eine PUT-Anforderung, mit der eine Bestellung aktualisiert wird:
+    - The client constructs a PUT request containing the new details for the resource and the ETag for the currently cached version of the resource referenced in an If-Match HTTP header. The following example shows a PUT request that updates an order:
 
-	```HTTP
-	PUT http://adventure-works.com/orders/1 HTTP/1.1
-	If-Match: "2282343857"
-	Content-Type: application/x-www-form-urlencoded
-	...
-	Date: Fri, 12 Sep 2014 09:18:37 GMT
-	Content-Length: ...
-	productID=3&quantity=5&orderValue=250
-	```
+    ```HTTP
+    PUT http://adventure-works.com/orders/1 HTTP/1.1
+    If-Match: "2282343857"
+    Content-Type: application/x-www-form-urlencoded
+    ...
+    Date: Fri, 12 Sep 2014 09:18:37 GMT
+    Content-Length: ...
+    productID=3&quantity=5&orderValue=250
+    ```
 
-	- Der PUT-Vorgang in der Web-API ruft das aktuelle ETag für die angeforderten Daten ab („Order 1“ im obigen Beispiel) und vergleicht es mit dem Wert im If-Match-Header.
+    - The PUT operation in the web API obtains the current ETag for the requested data (order 1 in the above example), and compares it to the value in the If-Match header.
 
-	- Wenn das aktuelle ETag für die angeforderten Daten mit dem von der Anforderung bereitgestellten ETag übereinstimmt, hat sich die Ressource nicht geändert. Die Web-API sollte also das Update durchführen und eine Nachricht mit dem HTTP-Statuscode 204 (No Content) zurückgeben, wenn der Vorgang erfolgreich ist. Die Antwort kann Cache-Control- und ETag-Header für die aktualisierte Version der Ressource enthalten. Die Antwort sollte immer den Location-Header enthalten, mit dem auf den URI der gerade aktualisierten Ressource verwiesen wird.
+    - If the current ETag for the requested data matches the ETag provided by the request, the resource has not changed and the web API should perform the update, returning a message with HTTP status code 204 (No Content) if it is successful. The response can include Cache-Control and ETag headers for the updated version of the resource. The response should always include the Location header that references the URI of the newly updated resource.
 
-	- Wenn das aktuelle ETag für die angeforderten Daten nicht mit dem von der Anforderung bereitgestellten ETag übereinstimmt, wurden die Daten von einem anderen Benutzer geändert, seitdem sie abgerufen wurden. Die Web-API sollte eine HTTP-Antwort mit einem leeren Nachrichtentext und dem Statuscode 412 (Precondition Failed) zurückgeben.
+    - If the current ETag for the requested data does not match the ETag provided by the request, then the data has been changed by another user since it was fetched and the web API should return an HTTP response with an empty message body and a status code of 412 (Precondition Failed).
 
-	- Falls die zu aktualisierende Ressource nicht mehr vorhanden ist, sollte die Web-API eine HTTP-Antwort mit dem Statuscode 404 (Nicht gefunden) zurückgeben.
+    - If the resource to be updated no longer exists then the web API should return an HTTP response with the status code of 404 (Not Found).
 
-	- Der Client nutzt den Statuscode und die Antwortheader zum Verwalten des Cache. Wenn die Daten aktualisiert wurden (Statuscode 204), kann das Objekt zwischengespeichert bleiben (sofern im Cache-Control-Header nicht „no-store“ angegeben ist), aber das ETag muss aktualisiert werden. Falls die Daten von einem anderen Benutzer geändert (Statuscode 412) oder Nicht gefunden wurden (Statuscode 404), sollte das zwischengespeicherte Objekt verworfen werden.
+    - The client uses the status code and response headers to maintain the cache. If the data has been updated (status code 204) then the object can remain cached (as long as the Cache-Control header does not specify no-store) but the ETag should be updated. If the data was changed by another user changed (status code 412) or not found (status code 404) then the cached object should be discarded.
 
-	Im nächsten Codebeispiel wird eine Implementierung des PUT-Vorgangs für den Orders-Controller veranschaulicht:
+    The next code example shows an implementation of the PUT operation for the Orders controller:
 
-	```C#
-	public class OrdersController : ApiController
-	{
-   		...
-    	[HttpPut]
-    	[Route("api/orders/{id:int}")]
-    	        public IHttpActionResult UpdateExistingOrder(int id, DTOOrder order)
+    ```C#
+    public class OrdersController : ApiController
+    {
+        ...
+        [HttpPut]
+        [Route("api/orders/{id:int}")]
+                public IHttpActionResult UpdateExistingOrder(int id, DTOOrder order)
         {
             try
             {
@@ -678,7 +679,7 @@ In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, 
                 }
 
                 var hashedOrder = orderToUpdate.GetHashCode();
-                string hashedOrderEtag = String.Format(""{0}"", hashedOrder);
+                string hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
 
                 // Retrieve the If-Match header from the request (if it exists)
                 var matchEtags = Request.Headers.IfMatch;
@@ -704,7 +705,7 @@ In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, 
                     cacheControlHeader.MaxAge = new TimeSpan(0, 10, 0);
 
                     hashedOrder = order.GetHashCode();
-                    hashedOrderEtag = String.Format(""{0}"", hashedOrder);
+                    hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
                     var eTag = new EntityTagHeaderValue(hashedOrderEtag);
 
                     var location = new Uri(string.Format("{0}/{1}/{2}", baseUri, Constants.ORDERS, id));
@@ -729,28 +730,28 @@ In einer verteilten Umgebung, z. B. mit einem Webserver und Clientanwendungen, 
         }
         ...
     }
-	```
+    ```
 
-	> [AZURE.TIP] Die Verwendung des If-Match-Headers ist absolut optional. Wenn er weggelassen wird, versucht die Web-API stets, die angegebene Bestellung zu aktualisieren. Hierbei kann es unter Umständen vorkommen, dass ein Update eines anderen Benutzers versehentlich überschrieben wird. Geben Sie zur Vermeidung von Problemen aufgrund von verloren gegangenen Updates immer einen If-Match-Header an.
+    > [AZURE.TIP] Use of the If-Match header is entirely optional, and if it is omitted the web API will always attempt to update the specified order, possibly blindly overwriting an update made by another user. To avoid problems due to lost updates, always provide an If-Match header.
 
 <a name="considerations-for-handling-large"></a>
-## Aspekte zur Behandlung umfangreicher Anforderungen und Antworten
+## <a name="considerations-for-handling-large-requests-and-responses"></a>Considerations for handling large requests and responses
 
-Wenn eine Clientanwendung Anforderungen ausgibt, bei denen Daten gesendet oder empfangen werden, kann es vorkommen, dass diese mehrere Megabyte groß (oder noch größer) sind. Das Warten auf den Abschluss der Übertragung dieser Datenmenge kann dazu führen, dass die Clientanwendung nicht mehr reagiert. Beachten Sie die folgenden Punkte, wenn Sie Anforderungen behandeln müssen, die größere Datenmengen enthalten:
+There may be occasions when a client application needs to issue requests that send or receive data that may be several megabytes (or bigger) in size. Waiting while this amount of data is transmitted could cause the client application to become unresponsive. Consider the following points when you need to handle requests that include significant amounts of data:
 
-- **Optimieren Sie Anforderungen und Antworten, die große Objekte enthalten**.
+- **Optimize requests and responses that involve large objects**.
 
-	Einige Ressourcen können große Objekte sein oder große Felder enthalten, z. B. Grafiken oder andere Arten von Binärdaten. Eine Web-API sollte das Streamen unterstützen, um das Hoch- und Herunterladen dieser Ressourcen zu optimieren.
+    Some resources may be large objects or include large fields, such as graphics images or other types of binary data. A web API should support streaming to enable optimized uploading and downloading of these resources.
 
-	Das HTTP-Protokoll stellt das Verfahren für die segmentierte Transfercodierung bereit, mit dem große Datenobjekte zurück auf einen Client gestreamt werden können. Wenn der Client eine HTTP GET-Anforderung für ein großes Objekt sendet, kann die Web-API die Antwort in einzelnen _Segmenten_ („Chunks“) über eine HTTP-Verbindung zurücksenden. Die Länge der Daten in der Antwort ist am Anfang unter Umständen noch nicht bekannt (ggf. werden sie erst generiert). Der Server, auf dem die Web-API gehostet wird, sollte also mit jedem Segment eine Antwortnachricht senden, für die der Header „Transfer-Encoding: Chunked“ angegeben ist, und kein Content-Length-Header. Die Clientanwendung kann die einzelnen Segmente empfangen, um die vollständige Antwort zusammenzusetzen. Die Datenübertragung ist abgeschlossen, wenn der Server das letzte Segment mit einer Größe von null zurücksendet. Sie können das „Chunking“ in der ASP.NET-Web-API implementieren, indem Sie die `PushStreamContent`-Klasse verwenden.
+    The HTTP protocol provides the chunked transfer encoding mechanism to stream large data objects back to a client. When the client sends an HTTP GET request for a large object, the web API can send the reply back in piecemeal _chunks_ over an HTTP connection. The length of the data in the reply may not be known initially (it might be generated), so the server hosting the web API should send a response message with each chunk that specifies the Transfer-Encoding: Chunked header rather than a Content-Length header. The client application can receive each chunk in turn to build up the complete response. The data transfer completes when the server sends back a final chunk with zero size. You can implement chunking in the ASP.NET Web API by using the `PushStreamContent` class.
 
-	Das folgende Beispiel enthält einen Vorgang, mit dem auf HTTP GET-Anforderungen für die Produktbilder geantwortet wird:
+    The following example shows an operation that responds to HTTP GET requests for product images:
 
-	```C#
-	public class ProductImagesController : ApiController
-	{
-    	...
-    	[HttpGet]
+    ```C#
+    public class ProductImagesController : ApiController
+    {
+        ...
+        [HttpGet]
         [Route("productimages/{id:int}")]
         public IHttpActionResult Get(int id)
         {
@@ -776,16 +777,16 @@ Wenn eine Clientanwendung Anforderungen ausgibt, bei denen Daten gesendet oder e
                 return InternalServerError();
             }
         }
-    	...
-	}
-	```
+        ...
+    }
+    ```
 
-	In diesem Beispiel ist `ConnectBlobToContainer` eine Hilfsmethode, mit der eine Verbindung mit einem angegebenen Container (Name wird nicht angezeigt) im Azure-Blobspeicher hergestellt wird. `BlobExists` ist eine weitere Hilfsmethode zum Zurückgeben eines booleschen Werts, mit dem angegeben wird, ob ein Blob mit dem angegebenen Namen im Blobspeichercontainer vorhanden ist.
+    In this example, `ConnectBlobToContainer` is a helper method that connects to a specified container (name not shown) in Azure Blob storage. `BlobExists` is another helper method that returns a Boolean value that indicates whether a blob with the specified name exists in the blob storage container.
 
-	Für jedes Produkt ist das eigene Bild im Blobspeicher enthalten. Die `FileDownloadResult`-Klasse ist eine benutzerdefinierte `IHttpActionResult`-Klasse, bei der ein `PushStreamContent`-Objekt zum Lesen der Bilddaten aus dem entsprechenden Blob und asynchronen Übertragen als Inhalt der Antwortnachricht verwendet wird:
+    Each product has its own image held in blob storage. The `FileDownloadResult` class is a custom `IHttpActionResult` class that uses a `PushStreamContent` object to read the image data from appropriate blob and transmit it asynchronously as the content of the response message:
 
-	```C#
-	public class FileDownloadResult : IHttpActionResult
+    ```C#
+    public class FileDownloadResult : IHttpActionResult
     {
         public CloudBlobContainer Container { get; set; }
         public int ImageId { get; set; }
@@ -811,14 +812,14 @@ Wenn eine Clientanwendung Anforderungen ausgibt, bei denen Daten gesendet oder e
             return response;
         }
     }
-	```
+    ```
 
-	Sie können auch das Streamen zum Hochladen von Vorgängen verwenden, wenn ein Client eine neue Ressource bereitstellen muss (POST), die ein großes Objekt enthält. Im nächsten Beispiel wird die Post-Methode für den `ProductImages`-Controller veranschaulicht. Diese Methode ermöglicht dem Client das Hochladen eines neuen Produktbilds:
+    You can also apply streaming to upload operations if a client needs to POST a new resource that includes a large object. The next example shows the Post method for the `ProductImages` controller. This method enables the client to upload a new product image:
 
-	```C#
-	public class ProductImagesController : ApiController
-	{
-    	...
+    ```C#
+    public class ProductImagesController : ApiController
+    {
+        ...
         [HttpPost]
         [Route("productimages")]
         public async Task<IHttpActionResult> Post()
@@ -846,13 +847,13 @@ Wenn eine Clientanwendung Anforderungen ausgibt, bei denen Daten gesendet oder e
                 return InternalServerError();
             }
         }
-    	...
-	}
-	```
+        ...
+    }
+    ```
 
-	In diesem Code wird eine andere benutzerdefinierte `IHttpActionResult`-Klasse mit dem Namen `FileUploadResult` verwendet. Diese Klasse enthält die Logik zum asynchronen Hochladen der Daten:
+    This code uses another custom `IHttpActionResult` class called `FileUploadResult`. This class contains the logic for uploading the data asynchronously:
 
-	```C#
+    ```C#
     public class FileUploadResult : IHttpActionResult
     {
         public CloudBlobContainer Container { get; set; }
@@ -870,285 +871,289 @@ Wenn eine Clientanwendung Anforderungen ausgibt, bei denen Daten gesendet oder e
             return response;
         }
     }
-	```
+    ```
 
-	> [AZURE.TIP] Die Datenmenge, die Sie für einen Webdienst hochladen können, ist beim Streamen nicht beschränkt. Eine einzelne Anforderung kann also zu einem riesigen Objekt führen, das Ressourcen in erheblichem Umfang verbraucht. Wenn die Web-API während des Streamingvorgangs ermittelt, dass die Menge der Daten in einer Anforderung nicht mehr akzeptabel ist, kann sie den Vorgang abbrechen und eine Antwortnachricht mit dem Statuscode 413 (Request Entity Too Large) zurückgeben.
+    > [AZURE.TIP] The volume of data that you can upload to a web service is not constrained by streaming, and a single request could conceivably result in a massive object that consumes considerable resources. If, during the streaming process, the web API determines that the amount of data in a request has exceeded some acceptable bounds, it can abort the operation and return a response message with status code 413 (Request Entity Too Large).
 
-	Sie können die Größe von großen Objekten, die über das Netzwerk übertragen werden, per HTTP-Komprimierung verringern. Dieser Ansatz ist hilfreich, um die Menge des Datenverkehrs im Netzwerk und die damit verbundene Netzwerklatenz zu reduzieren. Der Nachteil ist, dass auf dem Client und dem Server, auf dem die Web-API gehostet wird, zusätzlicher Verarbeitungsaufwand anfällt. Eine Clientanwendung, die den Eingang von komprimierten Daten erwartet, kann beispielsweise den Anforderungsheader „Accept-Encoding: gzip“ einfügen (auch andere Algorithmen zur Datenkomprimierung können angegeben werden). Wenn der Server die Komprimierung unterstützt, sollte die Antwort den Inhalt im gzip-Format im Nachrichtentext sowie den Antwortheader „Content-Encoding: gzip“ enthalten.
+    You can minimize the size of large objects transmitted over the network by using HTTP compression. This approach helps to reduce the amount of network traffic and the associated network latency, but at the cost of requiring additional processing at the client and the server hosting the web API. For example, a client application that expects to receive compressed data can include an Accept-Encoding: gzip request header (other data compression algorithms can also be specified). If the server supports compression it should respond with the content held in gzip format in the message body and the Content-Encoding: gzip response header.
 
-	> [AZURE.TIP] Sie können die codierte Komprimierung mit dem Streaming kombinieren. Komprimieren Sie die Daten vor dem Streamen, und geben Sie die gzip-Inhaltscodierung und die segmentierte Transfercodierung in den Nachrichtenheadern an. Beachten Sie außerdem, dass einige Webserver (z. B. Internet Information Server) so konfiguriert werden können, dass HTTP-Antworten automatisch komprimiert werden. Dies gilt unabhängig davon, ob die Web-API die Daten komprimiert oder nicht.
+    > [AZURE.TIP] You can combine encoded compression with streaming; compress the data first before streaming it, and specify the gzip content encoding and chunked transfer encoding in the message headers. Also note that some web servers (such as Internet Information Server) can be configured to automatically compress HTTP responses regardless of whether the web API compresses the data or not.
 
-- **Implementieren Sie Teilantworten für Clients, die keine asynchronen Vorgänge unterstützen**.
+- **Implement partial responses for clients that do not support asynchronous operations**.
 
-	Als Alternative zum asynchronen Streaming kann eine Clientanwendung Daten für große Objekte explizit in Segmenten anfordern. Diese werden als Teilantworten bezeichnet. Die Clientanwendung sendet eine HTTP HEAD-Anforderung, um Informationen zum Objekt abzurufen. Wenn die Web-API Teilantworten unterstützt, sollte sie auf die HEAD-Anforderung mit einer Antwortnachricht reagieren, die einen Accept-Ranges-Header und einen Content-Length-Header zum Angeben der Gesamtgröße des Objekts enthält. Der Text der Nachricht sollte aber leer sein. Die Clientanwendung kann diese Informationen verwenden, um eine Reihe von GET-Anforderungen zu erstellen, mit denen ein Bereich für den zu empfangenden Bytebereich angegeben wird. Die Web-API sollte eine Antwortnachricht mit dem HTTP-Status 206 (Partial Content), einen Content-Length-Header zum Angeben des tatsächlichen Betrags an Daten im Text der Antwortnachricht und einen Content-Range-Header zurückgeben, mit dem angegeben wird, welchen Teil des Objekts (z. B. Bytes 4.000 bis 8.000) diese Daten darstellen.
+    As an alternative to asynchronous streaming, a client application can explicitly request data for large objects in chunks, known as partial responses. The client application sends an HTTP HEAD request to obtain information about the object. If the web API supports partial responses if should respond to the HEAD request with a response message that contains an Accept-Ranges header and a Content-Length header that indicates the total size of the object, but the body of the message should be empty. The client application can use this information to construct a series of GET requests that specify a range of bytes to receive. The web API should return a response message with HTTP status 206 (Partial Content), a Content-Length header that specifies the actual amount of data included in the body of the response message, and a Content-Range header that indicates which part (such as bytes 4000 to 8000) of the object this data represents.
 
-	HTTP HEAD-Anforderungen und Teilantworten werden im Leitfaden zum API-Entwurf ausführlicher beschrieben.
+    HTTP HEAD requests and partial responses are described in more detail in the API Design Guidance document.
 
-- **Vermeiden Sie das Senden unnötiger Continue-Statusnachrichten in Clientanwendungen**.
+- **Avoid sending unnecessary Continue status messages in client applications**.
 
-	Eine Clientanwendung, die eine große Datenmenge an einen Server senden möchte, kann auch zuerst ermitteln, ob auf dem Server die Bereitschaft zum Annehmen der Anforderung besteht. Vor dem Senden der Daten kann die Clientanwendung eine HTTP-Anforderung mit einem Header „Expect: 100-Continue“ und einem Content-Length-Header zum Angeben der Größe für die Daten übermitteln. Der Nachrichtentext ist hierbei leer. Wenn der Server zum Behandeln der Anforderung bereit ist, sollte er mit einer Nachricht antworten, in der der HTTP-Status 100 (Continue) angegeben ist. Die Clientanwendung kann den Vorgang dann fortsetzen und die gesamte Anforderung senden, einschließlich der Daten im Nachrichtentext.
+    A client application that is about to send a large amount of data to a server may determine first whether the server is actually willing to accept the request. Prior to sending the data, the client application can submit an HTTP request with an Expect: 100-Continue header, a Content-Length header that indicates the size of the data, but an empty message body. If the server is willing to handle the request, it should respond with a message that specifies the HTTP status 100 (Continue). The client application can then proceed and send the complete request including the data in the message body.
 
-	Wenn Sie einen Dienst per IIS hosten, werden Expect: 100-Continue-Header vom Treiber „HTTP.sys“ automatisch erkannt und behandelt, bevor Anforderungen an Ihre Webanwendung übergeben werden. Dies bedeutet, dass Sie diese Header wahrscheinlich nicht in Ihrem Anwendungscode sehen, und Sie können davon ausgehen, dass per IIS bereits alle Nachrichten herausgefiltert wurden, die als ungeeignet oder zu groß angesehen werden.
+    If you are hosting a service by using IIS, the HTTP.sys driver automatically detects and handles Expect: 100-Continue headers before passing requests to your web application. This means that you are unlikely to see these headers in your application code, and you can assume that IIS has already filtered any messages that it deems to be unfit or too large.
 
-	Wenn Sie Clientanwendungen mit dem .NET Framework erstellen, werden für alle POST- und PUT-Nachrichten standardmäßig zuerst Nachrichten mit Expect: 100-Continue-Headern gesendet. Wie auf der Serverseite auch, wird der Prozess vom .NET Framework transparent behandelt. Dieser Prozess führt aber dazu, dass jede POST- und PUT-Anforderung zwei Roundtrips zum Server verursacht. Dies gilt auch für kleine Anforderungen. Wenn von Ihrer Anwendung keine Anforderungen mit großen Datenmengen gesendet werden, können Sie dieses Feature deaktivieren. Verwenden Sie hierzu die `ServicePointManager`-Klasse, um `ServicePoint`-Objekte in der Clientanwendung zu erstellen. Ein `ServicePoint`-Objekt behandelt die Verbindungen, die der Client basierend auf dem Schema und den Hostfragmenten von URIs, mit denen Ressourcen auf dem Server identifiziert werden, mit einem Server herstellt. Sie können die `Expect100Continue`-Eigenschaft des `ServicePoint`-Objekts dann auf „false“ festlegen. Alle nachfolgenden POST- und PUT-Anforderungen, die vom Client über einen URI gesendet werden, der mit dem Schema und den Hostfragmenten des `ServicePoint`-Objekts übereinstimmt, werden ohne Expect: 100-Continue-Header gesendet. Im folgenden Code wird veranschaulicht, wie Sie ein `ServicePoint`-Objekt konfigurieren, mit dem alle an URIs gesendeten Anforderungen mit dem Schema `http` und dem Host `www.contoso.com` konfiguriert werden.
+    If you are building client applications by using the .NET Framework, then all POST and PUT messages will first send messages with Expect: 100-Continue headers by default. As with the server-side, the process is handled transparently by the .NET Framework. However, this process results in each POST and PUT request causing 2 round-trips to the server, even for small requests. If your application is not sending requests with large amounts of data, you can disable this feature by using the `ServicePointManager` class to create `ServicePoint` objects in the client application. A `ServicePoint` object handles the connections that the client makes to a server based on the scheme and host fragments of URIs that identify resources on the server. You can then set the `Expect100Continue` property of the `ServicePoint` object to false. All subsequent POST and PUT requests made by the client through a URI that matches the scheme and host fragments of the `ServicePoint` object will be sent without Expect: 100-Continue headers. The following code shows how to configure a `ServicePoint` object that configures all requests sent to URIs with a scheme of `http` and a host of `www.contoso.com`.
 
-	```C#
-	Uri uri = new Uri("http://www.contoso.com/");
-	ServicePoint sp = ServicePointManager.FindServicePoint(uri);
-	sp.Expect100Continue = false;
-	```
+    ```C#
+    Uri uri = new Uri("http://www.contoso.com/");
+    ServicePoint sp = ServicePointManager.FindServicePoint(uri);
+    sp.Expect100Continue = false;
+    ```
 
-	Sie können die statische `Expect100Continue`-Eigenschaft der `ServicePointManager`-Klasse auch so festlegen, dass der Standardwert dieser Eigenschaft für alle nachfolgend erstellten `ServicePoint`-Objekte angegeben wird. Weitere Informationen finden Sie auf der Microsoft-Website unter [ServicePoint-Klasse](https://msdn.microsoft.com/library/system.net.servicepoint.aspx).
+    You can also set the static `Expect100Continue` property of the `ServicePointManager` class to specify the default value of this property for all subsequently created `ServicePoint` objects. For more information, see the [ServicePoint Class](https://msdn.microsoft.com/library/system.net.servicepoint.aspx) page on the Microsoft website.
 
-- **Unterstützen Sie die Paginierung für Anforderungen, bei denen ggf. eine große Zahl von Objekten zurückgegeben wird**.
+- **Support pagination for requests that may return large numbers of objects**.
 
-	Wenn eine Auflistung eine große Zahl von Ressourcen enthält, kann das Ausgeben einer GET-Anforderung an den entsprechenden URI zu erheblichem Verarbeitungsaufwand auf dem Hostserver der Web-API führen. Dies kann die Leistung beeinträchtigen und einen signifikanten Anstieg des Netzwerkdatenverkehrs und somit längere Wartezeiten nach sich ziehen.
+    If a collection contains a large number of resources, issuing a GET request to the corresponding URI could result in significant processing on the server hosting the web API affecting performance, and generate a significant amount of network traffic resulting in increased latency.
 
-	Zum Behandeln dieser Fälle sollte die Web-API Abfragezeichenfolgen unterstützen, mit denen die Clientanwendung Anforderungen verfeinern oder Daten in besser verwaltbaren, diskreten Blöcken (bzw. Seiten) abrufen kann. Das ASP.NET-Web-API-Framework analysiert Abfragezeichenfolgen und teilt sie in eine Reihe von Parameter-Wert-Paaren auf, die an die entsprechende Methode übergeben werden. Dabei werden die bereits beschriebenen Routingregeln befolgt. Die Methode sollte so implementiert werden, dass diese Parameter anhand der gleichen Namen akzeptiert werden, die in der Abfragezeichenfolge angegeben sind. Außerdem sollten diese Parameter optional sein (falls der Client die Abfragezeichenfolge in einer Anforderung weglässt) und über aussagekräftige Standardwerte verfügen. Im folgenden Code wird die `GetAllOrders`-Methode im `Orders`-Controller veranschaulicht. Mit dieser Methode werden die Details der Bestellungen abgerufen. Wenn für diese Methode keine Einschränkungen vorliegen, kann darüber ggf. eine große Datenmenge zurückgegeben werden. Mit den Parametern `limit` und `offset` soll der Umfang der Daten auf eine kleinere Teilmenge reduziert werden. In diesem Fall sind dies standardmäßig nur die ersten zehn Bestellungen:
+    To handle these cases, the web API should support query strings that enable the client application to refine requests or fetch data in more manageable, discrete blocks (or pages). The ASP.NET Web API framework parses query strings and splits them up into a series of parameter/value pairs which are passed to the appropriate method, following the routing rules described earlier. The method should be implemented to accept these parameters using the same names specified in the query string. Additionally, these parameters should be optional (in case the client omits the query string from a request) and have meaningful default values. The code below shows the `GetAllOrders` method in the `Orders` controller. This method retrieves the details of orders. If this method was unconstrained, it could conceivably return a large amount of data. The `limit` and `offset` parameters are intended to reduce the volume of data to a smaller subset, in this case only the first 10 orders by default:
 
-	```C#
-	public class OrdersController : ApiController
-	{
-    	...
-    	[Route("api/orders")]
-    	[HttpGet]
-    	public IEnumerable<Order> GetAllOrders(int limit=10, int offset=0)
-    	{
-    	    // Find the number of orders specified by the limit parameter
-    	    // starting with the order specified by the offset parameter
-    	    var orders = ...
-    	    return orders;
-    	}
-    	...
-	}
-	```
+    ```C#
+    public class OrdersController : ApiController
+    {
+        ...
+        [Route("api/orders")]
+        [HttpGet]
+        public IEnumerable<Order> GetAllOrders(int limit=10, int offset=0)
+        {
+            // Find the number of orders specified by the limit parameter
+            // starting with the order specified by the offset parameter
+            var orders = ...
+            return orders;
+        }
+        ...
+    }
+    ```
 
-	Eine Clientanwendung kann eine Anforderung zum Abrufen von 30 Bestellungen ausgeben, bei der bei Offset = 50 begonnen wird. Hierfür wird der URI \_http://www.adventure-works.com/api/orders?limit=30&offset=50_ verwendet.
+    A client application can issue a request to retrieve 30 orders starting at offset 50 by using the URI _http://www.adventure-works.com/api/orders?limit=30&offset=50_.
 
-	> [AZURE.TIP] Sie sollten verhindern, dass Clientanwendungen Abfragezeichenfolgen angeben können, die zu einem URI mit einer Länge von mehr als 2.000 Zeichen führen. Viele Webclients und -server können keine URIs dieser Länge verarbeiten.
+    > [AZURE.TIP] Avoid enabling client applications to specify query strings that result in a URI that is more than 2000 characters long. Many web clients and servers cannot handle URIs that are this long.
 
 <a name="considerations-for-maintaining-responsiveness"></a>
-## Aspekte zur Aufrechterhaltung der Reaktionsfähigkeit, Skalierbarkeit und Verfügbarkeit
+## <a name="considerations-for-maintaining-responsiveness,-scalability,-and-availability"></a>Considerations for maintaining responsiveness, scalability, and availability
 
-Eine Web-API kann von vielen Clientanwendungen, die weltweit an den unterschiedlichsten Orten ausgeführt werden, gemeinsam verwendet werden. Es ist wichtig sicherzustellen, dass für die Implementierung der Web-API Folgendes gilt: Auch bei einer hohen Auslastung bleibt die Reaktionsfähigkeit erhalten, sie kann zur Unterstützung stark variierender Workloads skaliert werden, und für Clients, auf denen unternehmenskritische Vorgänge ausgeführt werden, wird die Verfügbarkeit garantiert. Beachten Sie die folgenden Punkte, wenn Sie ermitteln möchten, wie diese Anforderungen erfüllt werden können:
+The same web API might be utilized by many client applications running anywhere in the world. It is important to ensure that the web API is implemented to maintain responsiveness under a heavy load, to be scalable to support a highly varying workload, and to guarantee availability for clients that perform business-critical operations. Consider the following points when determining how to meet these requirements:
 
-- **Stellen Sie die asynchrone Unterstützung für Anforderungen mit langer Ausführungsdauer bereit**.
+- **Provide Asynchronous Support for Long-Running Requests**.
 
-	Eine Anforderung, deren Verarbeitung unter Umständen sehr lange dauern kann, sollte durchgeführt werden, ohne den übermittelnden Client zu blockieren. Die Web-API kann einige erste Überprüfungen durchführen, um die Anforderung zu validieren, eine separate Aufgabe zum Ausführen der Arbeit initiieren und dann eine Antwortnachricht mit dem HTTP-Code 202 (Accepted) zurückgeben. Die Aufgabe kann asynchron als Teil der Web-API-Verarbeitung ausgeführt werden, oder sie kann in einen Azure WebJob (wenn die Web-API von einer Azure-Website gehostet wird) oder eine Workerrolle (wenn die Web-API als Azure-Clouddienst implementiert wird) verlagert werden.
+    A request that might take a long time to process should be performed without blocking the client that submitted the request. The web API can perform some initial checking to validate the request, initiate a separate task to perform the work, and then return a response message with HTTP code 202 (Accepted). The task could run asynchronously as part of the web API processing, or it could be offloaded to an Azure WebJob (if the web API is hosted by an Azure Website) or a worker role (if the web API is implemented as an Azure cloud service).
 
-	> [AZURE.NOTE] Weitere Informationen zur Verwendung von WebJobs mit der Azure-Website finden Sie auf der Microsoft-Website unter [Ausführen von Hintergrundaufgaben mit Webaufträgen](../articles/app-service-web/web-sites-create-web-jobs.md).
+    > [AZURE.NOTE] For more information about using WebJobs with Azure Website, visit the page [Use WebJobs to run background tasks in Microsoft Azure Websites](../articles/app-service-web/web-sites-create-web-jobs.md) on the Microsoft website.
 
-	Außerdem sollte die Web-API über ein Verfahren zum Zurückgeben der Ergebnisse einer Verarbeitung an die Clientanwendung verfügen. Hierzu können Sie einen Abrufmechanismus für Clientanwendungen bereitstellen, um regelmäßig abzufragen, ob die Verarbeitung abgeschlossen ist, und das Ergebnis abzurufen. Sie können die Web-API auch so einrichten, dass nach Abschluss des Vorgangs eine Benachrichtigung gesendet wird.
+    The web API should also provide a mechanism to return the results of the processing to the client application. You can achieve this by providing a polling mechanism for client applications to periodically query whether the processing has finished and obtain the result, or enabling the web API to send a notification when the operation has completed.
 
-	Sie können einen einfachen Abrufmechanismus implementieren, indem Sie einen _polling_-URI angeben, der als virtuelle Ressource fungiert. Gehen Sie hierbei wie folgt vor:
+    You can implement a simple polling mechanism by providing a _polling_ URI that acts as a virtual resource using the following approach:
 
-	1. Die Clientanwendung sendet die erste Anfrage an die Web-API.
+    1. The client application sends the initial request to the web API.
 
-	2. Die Web-API speichert Informationen zur Anforderung in einer Tabelle, die im Tabellenspeicher oder im Microsoft Azure Cache vorgehalten wird, und generiert einen eindeutigen Schlüssel für diesen Eintrag, z. B. in Form einer GUID.
+    2. The web API stores information about the request in a table held in table storage or Microsoft Azure Cache, and generates a unique key for this entry, possibly in the form of a GUID.
 
-	3. Von der Web-API wird die Verarbeitung als separate Aufgabe initiiert. Die Web-API zeichnet den Status der Aufgabe in der Tabelle als _Running_ auf.
+    3. The web API initiates the processing as a separate task. The web API records the state of the task in the table as _Running_.
 
-	4. Die Web-API gibt eine Antwortnachricht mit dem HTTP-Statuscode 202 (Accepted) und der GUID des Tabelleneintrags im Text der Nachricht zurück.
+    4. The web API returns a response message with HTTP status code 202 (Accepted), and the GUID of the table entry in the body of the message.
 
-	5. Wenn die Aufgabe abgeschlossen ist, speichert die Web-API die Ergebnisse in der Tabelle und legt den Status der Aufgabe auf _Complete_ fest. Beachten Sie Folgendes: Wenn die Durchführung der Aufgabe nicht erfolgreich ist, kann die Web-API auch Informationen zum Fehler speichern und den Status auf _Failed_ festlegen.
+    5. When the task has completed, the web API stores the results in the table, and sets the state of the task to _Complete_. Note that if the task fails, the web API could also store information about the failure and set the status to _Failed_.
 
-	6. Während der Ausführung der Aufgabe kann der Client mit seiner eigenen Verarbeitung fortfahren. Er kann regelmäßig eine Anforderung an den URI _/polling/{guid}_ senden. Hierbei steht _{guid}_ für die GUID, die von der Web-API in der 202-Antwortnachricht zurückgegeben wird.
+    6. While the task is running, the client can continue performing its own processing. It can periodically send a request to the URI _/polling/{guid}_ where _{guid}_ is the GUID returned in the 202 response message by the web API.
 
-	7. Die Web-API am URI _/polling/{guid}_ fragt den Status der entsprechenden Aufgabe in der Tabelle ab und gibt eine Antwortnachricht mit dem HTTP-Statuscode 200 (OK) und dem Status zurück (_Running_, _Complete_ oder _Failed_). Wenn die Aufgabe abgeschlossen ist oder nicht erfolgreich war, kann die Antwortnachricht auch die Ergebnisse der Verarbeitung oder Informationen enthalten, die zur Ursache des Fehlers verfügbar sind.
+    7. The web API at the _/polling/{guid}_ URI queries the state of the corresponding task in the table and returns a response message with HTTP status code 200 (OK) containing this state (_Running_, _Complete_, or _Failed_). If the task has completed or failed, the response message can also include the results of the processing or any information available about the reason for the failure.
 
-	Falls Sie es vorziehen, Benachrichtigungen zu implementieren, können Sie beispielsweise die folgenden verfügbaren Optionen verwenden:
+    If you prefer to implement notifications, the options available include:
 
-	- Verwenden Sie ein Azure Notification Hub, um asynchrone Antworten per Pushvorgang an Clientanwendungen zu übertragen. Ausführlichere Informationen finden Sie auf der Microsoft-Website unter [Azure Notification Hubs – Benachrichtigen von Benutzern](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md).
+    - Using an Azure Notification Hub to push asynchronous responses to client applications. The page [Azure Notification Hubs Notify Users](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) on the Microsoft website provides further details.
 
-	- Verwenden Sie das Comet-Modell, um eine dauerhafte Netzwerkverbindung zwischen dem Client und dem Hostserver der Web-API aufrechtzuerhalten. Nutzen Sie diese Verbindung, um Nachrichten vom Server zurück an den Client zu übertragen. Eine Beispiellösung ist im Artikel [Erstellen einer einfachen Comet-Anwendung in Microsoft .NET Framework](https://msdn.microsoft.com/magazine/jj891053.aspx) des MSDN-Magazins enthalten.
+    - Using the Comet model to retain a persistent network connection between the client and the server hosting the web API, and using this connection to push messages from the server back to the client. The MSDN magazine article [Building a Simple Comet Application in the Microsoft .NET Framework](https://msdn.microsoft.com/magazine/jj891053.aspx) describes an example solution.
 
-	- Verwenden Sie SignalR, um Daten über eine dauerhafte Netzwerkverbindung in Echtzeit vom Webserver auf den Client zu übertragen. SignalR ist für ASP.NET-Webanwendungen als NuGet-Paket verfügbar. Weitere Informationen finden Sie auf der Website [ASP.NET SignalR](http://signalr.net/).
+    - Using SignalR to push data in real-time from the web server to the client over a persistent network connection. SignalR is available for ASP.NET web applications as a NuGet package. You can find more information on the [ASP.NET SignalR](http://signalr.net/) website.
 
-	> [AZURE.NOTE] Für Comet und SignalR werden jeweils dauerhafte Netzwerkverbindungen zwischen dem Webserver und der Clientanwendung verwendet. Dies kann die Skalierbarkeit beeinträchtigen, da eine große Anzahl von Clients ggf. eine ebenso große Anzahl von gleichzeitigen Verbindungen erfordern kann.
+    > [AZURE.NOTE] Comet and SignalR both utilize persistent network connections between the web server and the client application. This can affect scalability as a large number of clients may require an equally large number of concurrent connections.
 
-- **Stellen Sie sicher, dass jede Anforderung zustandslos ist**.
+- **Ensure that each request is stateless**.
 
-	Jede Anforderung sollte als atomarisch angesehen werden. Es sollten keine Abhängigkeiten zwischen der Anforderung einer Clientanwendung und allen nachfolgenden Anforderungen bestehen, die von demselben Client übermittelt werden. Dieser Ansatz ist in Bezug auf die Skalierbarkeit hilfreich. Instanzen des Webdiensts können auf einer Reihe von Servern bereitgestellt werden. Clientanforderungen können an all diese Instanzen geleitet werden, und die Ergebnisse sollten immer gleich sein. Die Verfügbarkeit wird aus einem ähnlichen Grund verbessert. Wenn ein Webserver ausfällt, können Anforderungen an eine andere Instanz weitergeleitet werden (per Azure Traffic Manager), während der Server neu gestartet wird. Dies hat keine negativen Auswirkungen auf Clientanwendungen.
+    Each request should be considered atomic. There should be no dependencies between one request made by a client application and any subsequent requests submitted by the same client. This approach assists in scalability; instances of the web service can be deployed on a number of servers. Client requests can be directed at any of these instances and the results should always be the same. It also improves availability for a similar reason; if a web server fails requests can be routed to another instance (by using Azure Traffic Manager) while the server is restarted with no ill effects on client applications.
 
-- **Verfolgen Sie Clients nach, und implementieren Sie die Drosselung, um die Gefahr von DoS-Angriffen zu verringern**.
+- **Track clients and implement throttling to reduce the chances of DOS attacks**.
 
-	Wenn ein bestimmter Client innerhalb eines bestimmten Zeitraums eine große Zahl von Anforderungen sendet, kann dies zu einer Monopolisierung des Diensts führen und die Leistung anderer Clients beeinträchtigen. Zur Beseitigung dieses Problems kann eine Web-API die Aufrufe von Clientanwendungen überwachen, indem entweder die IP-Adresse aller eingehenden Anforderungen nachverfolgt wird oder indem jeder authentifizierte Zugriff protokolliert wird. Sie können diese Informationen nutzen, um den Zugriff auf Ressourcen zu beschränken. Wenn ein Client einen festgelegten Grenzwert überschreitet, kann die Web-API eine Antwortnachricht mit dem Status 503 (Service Unavailable) zurückgeben und einen Retry-After-Header einfügen. Mit diesem Header wird angegeben, wann der Client die nächste Anforderung senden kann, ohne dass diese abgelehnt wird. Diese Strategie kann die Gefahr eines DoS-Angriffs (Denial Of Service) über Clients in Verbindung mit einem Zusammenbruch des Systems verringern.
+    If a specific client makes a large number of requests within a given period of time it might monopolize the service and affect the performance of other clients. To mitigate this issue, a web API can monitor calls from client applications either by tracking the IP address of all incoming requests or by logging each authenticated access. You can use this information to limit resource access. If a client exceeds a defined limit, the web API can return a response message with status 503 (Service Unavailable) and include a Retry-After header that specifies when the client can send the next request without it being declined. This strategy can help to reduce the chances of a Denial Of Service (DOS) attack from a set of clients stalling the system.
 
-- **Verwalten Sie dauerhafte HTTP-Verbindungen sorgfältig**.
+- **Manage persistent HTTP connections carefully**.
 
-	Das HTTP-Protokoll unterstützt dauerhafte HTTP-Verbindungen, sofern sie verfügbar sind. Mit der HTTP 1.0-Spezifikation wurde der Connection:Keep-Alive-Header hinzugefügt. Hiermit kann eine Clientanwendung für den Server angeben, dass dieselbe Verbindung zum Senden nachfolgender Anforderungen genutzt werden kann, anstatt neue Verbindungen zu öffnen. Die Verbindung wird automatisch geschlossen, wenn der Client die Verbindung nicht innerhalb eines vom Host definierten Zeitraums wiederverwendet. Dies ist das Standardverhalten in HTTP 1.1, das von Azure-Diensten verwendet wird. Es ist also nicht erforderlich, Keep-Alive-Header in Nachrichten einzufügen.
+    The HTTP protocol supports persistent HTTP connections where they are available. The HTTP 1.0 specificiation added the Connection:Keep-Alive header that enables a client application to indicate to the server that it can use the same connection to send subsequent requests rather than opening new ones. The connection closes automatically if the client does not reuse the connection within a period defined by the host. This behavior is the default in HTTP 1.1 as used by Azure services, so there is no need to include Keep-Alive headers in messages.
 
-	Das Offenhalten einer Verbindung kann die Reaktionsfähigkeit verbessern, indem die Latenz und Netzwerküberlastung reduziert wird. Aber es kann sich negativ auf die Skalierbarkeit auswirken, wenn nicht benötigte Verbindungen länger als erforderlich geöffnet bleiben, da das gleichzeitige Herstellen von Verbindungen für andere Clients eingeschränkt wird. Außerdem kann es sich auf die Akkulaufzeit auswirken, wenn die Clientanwendung auf einem Mobilgerät ausgeführt wird. Falls die Anwendung nur gelegentlich Anforderungen an den Server sendet, kann das Aufrechterhalten einer offenen Verbindung dazu führen, dass der Akku schneller leer ist. Um sicherzustellen, dass eine Verbindung unter HTTP 1.1 nicht dauerhaft eingerichtet wird, kann der Client einen Connection:Close-Header in Nachrichten einfügen, um das Standardverhalten außer Kraft zu setzen. Wenn ein Server eine sehr große Anzahl von Clients behandelt, kann er einen Connection:Close-Header in Antwortnachrichten einfügen, mit dem die Verbindung geschlossen wird und Serverressourcen gespart werden.
+    Keeping a connection open can can help to improve responsiveness by reducing latency and network congestion, but it can be detrimental to scalability by keeping unnecessary connections open for longer than required, limiting the ability of other concurrent clients to connect. It can also affect battery life if the client application is running on a mobile device; if the application only makes occassional requests to the server, maintaining an open connection can cause the battery to drain more quickly. To ensure that a connection is not made persistent with HTTP 1.1, the client can include a Connection:Close header with messages to override the default behavior. Similarly, if a server is handling a very large number of clients it can include a Connection:Close header in response messages which should close the connection and save server resources.
 
-	> [AZURE.NOTE] Dauerhafte HTTP-Verbindungen sind ein rein optionales Feature zum Reduzieren des Netzwerkaufwands, der mit dem wiederholten Einrichten eines Kommunikationskanals verbunden ist. Weder die Web-API noch die Clientanwendung sollten davon abhängig sein, dass eine dauerhafte HTTP-Verbindung verfügbar ist. Nutzen Sie keine dauerhaften HTTP-Verbindungen, um Benachrichtigungssysteme im Comet-Stil zu implementieren. Stattdessen sollten Sie Sockets (oder WebSockets, falls verfügbar) auf TCP-Ebene verwenden. Beachten Sie außerdem Folgendes: Der Nutzen von Keep-Alive-Headern ist eingeschränkt, wenn eine Clientanwendung mit einem Server über einen Proxy kommuniziert. Nur die Verbindung mit dem Client und dem Proxy ist dauerhafter Art.
+    > [AZURE.NOTE] Persistent HTTP connections are a purely optional feature to reduce the network overhead associated with repeatedly establishing a communications channel. Neither the web API nor the client application should depend on a persistent HTTP connection being available. Do not use persistent HTTP connections to implement Comet-style notification systems; instead you should utilize sockets (or websockets if available) at the TCP layer. Finally, note Keep-Alive headers are of limited use if a client application communicates with a server via a proxy; only the connection with the client and the proxy will be persistent.
 
-## Aspekte zur Veröffentlichung und Verwaltung einer Web-API
+## <a name="considerations-for-publishing-and-managing-a-web-api"></a>Considerations for publishing and managing a web API
 
-Die Web-API muss in einer Hostumgebung bereitgestellt werden, um sie für Clientanwendungen verfügbar zu machen. Bei dieser Umgebung handelt es sich normalerweise um einen Webserver, aber es kann auch eine andere Art von Hostprozess sein. Berücksichtigen Sie beim Veröffentlichen einer Web-API die folgenden Punkte:
+To make a web API available for client applications, the web API must be deployed to a host environment. This environment is typically a web server, although it may be some other type of host process. You should consider the following points when publishing a web API:
 
-- Alle Anforderungen müssen authentifiziert und autorisiert werden, und die Zugriffssteuerung muss im angemessenen Umfang durchgesetzt werden.
-- Eine kommerzielle Web-API kann in Bezug auf die Reaktionszeiten verschiedenen Qualitätsgarantien unterliegen. Es ist wichtig sicherzustellen, dass die Hostumgebung skalierbar ist, wenn die Auslastung im Laufe der Zeit erheblich variieren kann.
-- Es kann erforderlich sein, Anforderungen aus Gründen der Monetarisierung zu messen.
-- Es kann erforderlich sein, den Fluss des Datenverkehrs an die Web-API zu regulieren und für bestimmte Clients, die ihr Kontingent ausgeschöpft haben, eine Drosselung zu implementieren.
-- Unter Umständen ist es gesetzlich vorgeschrieben, alle Anforderungen und Antworten zu protokollieren und zu überwachen.
-- Zum Sicherstellen der Verfügbarkeit kann es erforderlich sein, die Integrität des Servers zu überwachen, auf dem die Web-API gehostet wird, und ihn bei Bedarf neu zu starten.
+- All requests must be authenticated and authorized, and the appropriate level of access control must be enforced.
+- A commercial web API might be subject to various quality guarantees concerning response times. It is important to ensure that host environment is scalable if the load can vary significantly over time.
+- If may be necessary to meter requests for monetization purposes.
+- It might be necessary to regulate the flow of traffic to the web API, and implement throttling for specific clients that have exhausted their quotas.
+- Regulatory requirements might mandate logging and auditing of all requests and responses.
+- To ensure availability, it may be necessary to monitor the health of the server hosting the web API and restart it if necessary.
 
-Es ist hilfreich, diese Probleme von den technischen Problemen in Bezug auf die Implementierung der Web-API abkoppeln zu können. Erwägen Sie aus diesem Grund das Erstellen einer so genannten [Fassade](http://en.wikipedia.org/wiki/Facade_pattern) (Façade), die als separater Prozess ausgeführt wird und Anforderungen an die Web-API weiterleitet. Mit dieser Fassade können die Verwaltungsvorgänge bereitgestellt und geprüfte Anforderungen an die Web-API weitergeleitet werden. Die Nutzung einer Fassade ist ferner mit vielen funktionellen Vorteilen verbunden, z. B.:
+It is useful to be able to decouple these issues from the technical issues concerning the implementation of the web API. For this reason, consider creating a [façade](http://en.wikipedia.org/wiki/Facade_pattern), running as a separate process and that routes requests to the web API. The façade can provide the management operations and forward validated requests to the web API. Using a façade can also bring many functional advantages, including:
 
-- Sie dient als Integrationspunkt für mehrere Web-APIs.
-- Sie ermöglicht das Transformieren von Nachrichten und das Übersetzen von Kommunikationsprotokollen für Clients, die mit unterschiedlicher Technologie erstellt wurden.
-- Sie ermöglicht das Zwischenspeichern von Anforderungen und Antworten, um die Auslastung des Servers zu reduzieren, auf dem die Web-API gehostet wird.
+- Acting as an integration point for multiple web APIs.
+- Transforming messages and translating communications protocols for clients built by using varying technologies.
+- Caching requests and responses to reduce load on the server hosting the web API.
 
-## Aspekte zum Testen einer Web-API
-Eine Web-API sollte so gründlich wie jede andere Software getestet werden. Erwägen Sie die Erstellung von Komponententests zum Überprüfen der Funktionalität jedes Vorgangs, wie Sie dies auch bei jeder anderen Art von Anwendung tun. Weitere Informationen finden Sie auf der Microsoft-Website unter [Überprüfen von Code mithilfe von Komponententests](https://msdn.microsoft.com/library/dd264975.aspx).
+## <a name="considerations-for-testing-a-web-api"></a>Considerations for testing a web API
+A web API should be tested as thoroughly as any other piece of software. You should consider creating unit tests to validate the functionality of each operation, as you would with any other type of application. For more information, see the page [Verifying Code by Using Unit Tests](https://msdn.microsoft.com/library/dd264975.aspx) on the Microsoft website.
 
-> [AZURE.NOTE] Das Web-API-Beispiel dieses Leitfadens enthält ein Testprojekt, das verdeutlicht, wie Komponententests für ausgewählte Vorgänge durchgeführt werden.
+> [AZURE.NOTE] The sample web API available with this guidance includes a test project that shows how to perform unit testing over selected operations.
 
-Die Art einer Web-API bringt eigene zusätzliche Anforderungen in Bezug auf die Überprüfung der korrekten Funktionsweise mit sich. Achten Sie besonders auf die folgenden Aspekte:
+The nature of a web API brings its own additional requirements to verify that it operates correctly. You should pay particular attention to the following aspects:
 
-- Testen Sie alle Routen, um zu überprüfen, ob dabei die richtigen Vorgänge aufgerufen werden. Achten Sie besonders darauf, ob der HTTP-Statuscode 405 (Method Not Allowed) unerwartet zurückgegeben wird. Dies kann auf eine fehlende Übereinstimmung zwischen einer Route und den HTTP-Methoden (GET, POST, PUT, DELETE) hindeuten, die auf dieser Route genutzt werden können.
+- Test all routes to verify that they invoke the correct operations. Be especially aware of HTTP status code 405 (Method Not Allowed) being returned unexpectedly as this can indicate a mismatch between a route and the HTTP methods (GET, POST, PUT, DELETE) that can be dispatched to that route.
 
-	Senden Sie HTTP-Anforderungen an Routen, die dafür keine Unterstützung aufweisen, z. B. per Übermittlung einer POST-Anforderung an eine bestimmte Ressource (POST-Anforderungen sollten nur an Ressourcenauflistungen gesendet werden). In diesen Fällen _sollte_ die einzig gültige Antwort der Statuscode 405 (Not Allowed) sein.
+    Send HTTP requests to routes that do not support them, such as submitting a POST request to a specific resource (POST requests should only be sent to resource collections). In these cases, the only valid response _should_ be status code 405 (Not Allowed).
 
-- Vergewissern Sie sich, dass alle Routen richtig geschützt sind und geeignete Authentifizierungs- und Autorisierungsüberprüfungen aufweisen.
+- Verify that all routes are protected properly and are subject to the appropriate authentication and authorization checks.
 
-	> [AZURE.NOTE] Für einige Aspekte der Sicherheit, z. B. die Benutzerauthentifizierung, ist meist nicht die Web-API verantwortlich, sondern die Hostumgebung. Es ist trotzdem erforderlich, Sicherheitstests in den Bereitstellungsprozess einzubinden.
+    > [AZURE.NOTE] Some aspects of security such as user authentication are most likely to be the responsibility of the host environment rather than the web API, but it is still necessary to include security tests as part of the deployment process.
 
-- Testen Sie die Ausnahmebehandlung, die von den einzelnen Vorgängen durchgeführt wird, und stellen Sie sicher, dass eine passende und aussagekräftige HTTP-Antwort zurück an die Clientanwendung übergeben wird.
-- Achten Sie darauf, dass Anforderungs- und Antwortnachrichten richtig formatiert sind. Wenn eine HTTP POST-Anforderung beispielsweise die Daten für eine neue Ressource im Format „x-www-form-urlencoded“ enthält, müssen Sie bestätigen, dass der entsprechende Vorgang die Daten richtig analysiert, die Ressourcen erstellt und eine Antwort mit den Details der neuen Ressource zurückgibt, einschließlich des richtigen Location-Headers.
-- Überprüfen Sie alle Links und URIs in Antwortnachrichten. Beispielsweise sollte eine HTTP POST-Nachricht den URI der neu erstellten Ressource zurückgeben. Alle HATEOAS-Links müssen gültig sein.
+- Test the exception handling performed by each operation and verify that an appropriate and meaningful HTTP response is passed back to the client application.
+- Verify that request and response messages are well-formed. For example, if an HTTP POST request contains the data for a new resource in x-www-form-urlencoded format, confirm that the corresponding operation correctly parses the data, creates the resources, and returns a response containing the details of the new resource, including the correct Location header.
+- Verify all links and URIs in response messages. For example, an HTTP POST message should return the URI of the newly-created resource. All HATEOAS links should be valid.
 
-	> [AZURE.IMPORTANT] Wenn Sie die Web-API über einen API Management-Dienst veröffentlichen, sollten diese URIs die URL des Management-Diensts widerspiegeln, und nicht die URL des Webservers, auf dem die Web-API gehostet wird.
+    > [AZURE.IMPORTANT] If you publish the web API through an API Management Service, then these URIs should reflect the URL of the management service and not that of the web server hosting the web API.
 
-- Stellen Sie sicher, dass jeder Vorgang für unterschiedliche Eingabekombinationen die richtigen Statuscodes zurückgibt. Beispiel:
-	- Wenn eine Abfrage erfolgreich ist, sollte der Vorgang den Statuscode 200 (OK) zurückgeben.
-	- Wenn eine Ressource nicht gefunden wird, sollte der Vorgang den HTTP-Statuscode 404 (Nicht gefunden) zurückgeben.
-	- Wenn der Client eine Anforderung sendet, mit der eine Ressource erfolgreich gelöscht wird, sollte der Statuscode 204 (No Content) lauten.
-	- Wenn der Client eine Anforderung sendet, mit der eine neue Ressource erstellt wird, sollte der Statuscode 201 (Created) lauten.
+- Ensure that each operation returns the correct status codes for different combinations of input. For example:
+    - If a query is successful, it should return status code 200 (OK)
+    - If a resource is not found, the operation should returs HTTP status code 404 (Not Found).
+    - If the client sends a request that successfully deletes a resource, the status code should be 204 (No Content).
+    - If the client sends a request that creates a new resource, the status code should be 201 (Created)
 
-Achten Sie auf unerwartete Antwortstatuscodes im Bereich 5xx. Diese Nachrichten werden normalerweise vom Server gemeldet, um anzugeben, dass eine gültige Anforderung nicht erfüllt werden konnte.
+Watch out for unexpected response status codes in the 5xx range. These messages are usually reported by the host server to indicate that it was unable to fulfill a valid request.
 
-- Testen Sie die unterschiedlichen Anforderungsheaderkombinationen, die von einer Clientanwendung angegeben werden können, und stellen Sie sicher, dass die Web-API in Antwortnachrichten die erwarteten Informationen zurückgibt.
+- Test the different request header combinations that a client application can specify and ensure that the web API returns the expected information in response messages.
 
-- Testen Sie Abfragezeichenfolgen. Wenn ein Vorgang optionale Parameter verwenden kann (z. B. Paginierungsanforderungen), sollten Sie die unterschiedlichen Kombinationen und die Reihenfolge von Parametern testen.
+- Test query strings. If an operation can take optional parameters (such as pagination requests), test the different combinations and order of parameters.
 
-- Vergewissern Sie sich, dass asynchrone Vorgänge erfolgreich abgeschlossen werden. Wenn die Web-API das Streamen für Anforderungen unterstützt, die große binäre Objekte zurückgeben (z. B. Video oder Audio), sollten Sie sicherstellen, dass Clientanforderungen beim Streamen der Daten nicht blockiert werden. Wenn die Web-API das Abrufen für Datenänderungsvorgänge mit langer Ausführungsdauer implementiert, sollten Sie sicherstellen, dass die Vorgänge ihren Status während des Ablaufs richtig melden.
+- Verify that asynchronous operations complete successfully. If the web API supports streaming for requests that return large binary objects (such as video or audio), ensure that client requests are not blocked while the data is streamed. If the web API implements polling for long-running data modification operations, verify that that the operations report their status correctly as they proceed.
 
-Außerdem sollten Sie Leistungstests erstellen und ausführen, um zu überprüfen, ob die Web-API auch in Notfällen zufriedenstellend arbeitet. Sie können mit Visual Studio Ultimate ein Projekt zum Testen der Webleistung und Auslastung erstellen. Weitere Informationen finden Sie auf der Microsoft-Website unter [Ausführen von Leistungstests für Ihre App](https://msdn.microsoft.com/library/dn250793.aspx).
+You should also create and run performance tests to check that the web API operates satisfactorily under duress. You can build a web performance and load test project by using Visual Studio Ultimate. For more information, see the page [Run performance tests on an application before a release](https://msdn.microsoft.com/library/dn250793.aspx) on the Microsoft website.
 
-## Veröffentlichen und Verwalten einer Web-API mit dem Azure API Management-Dienst
+## <a name="publishing-and-managing-a-web-api-by-using-the-azure-api-management-service"></a>Publishing and managing a web API by using the Azure API Management Service
 
-Azure stellt den [API Management-Dienst](https://azure.microsoft.com/documentation/services/api-management/) bereit, den Sie zum Veröffentlichen und Verwalten einer Web-API verwenden können. Hiermit können Sie einen Dienst generieren, der für eine oder mehrere Web-APIs als „Fassade“ (Façade) dient. Bei diesem Dienst handelt es sich selbst um einen skalierbaren Webdienst, den Sie mit dem Azure-Verwaltungsportal erstellen und konfigurieren können. Sie können diesen Dienst verwenden, um eine Web-API wie folgt zu veröffentlichen und zu verwalten:
+Azure provides the [API Management Service](https://azure.microsoft.com/documentation/services/api-management/) which you can use to publish and manage a web API. Using this facility, you can generate a service that acts a façade for one or more web APIs. The service is itself a scalable web service that you can create and configure by using the Azure Management portal. You can use this service to publish and manage a web API as follows:
 
-1. Stellen Sie die Web-API auf einer Website, in einem Azure-Clouddienst oder auf einem virtuellen Azure-Computer bereit.
+1. Deploy the web API to a website, Azure cloud service, or Azure virtual machine.
 
-2. Verbinden Sie den API Management-Dienst mit der Web-API. Anforderungen, die an die URL der Verwaltungs-API gesendet werden, werden den URIs in der Web-API zugeordnet. Ein und derselbe API Management-Dienst kann Anforderungen an mehr als eine Web-API weiterleiten. So können Sie mehrere Web-APIs zu einem zentralen Management-Dienst zusammenfassen. Außerdem kann von mehr als einem API Management-Dienst auf dieselbe Web-API verwiesen werden, wenn Sie die Funktionalität, die für unterschiedliche Anwendungen verfügbar ist, einschränken oder partitionieren müssen.
+2. Connect the API management service to the web API. Requests sent to the URL of the management API are mapped to URIs in the web API. The same API management service can route requests to more than one web API. This enables you to aggregate multiple web APIs into a single management service. Similarly, the same web API can be referenced from more than one API management service if you need to restrict or partition the functionality available to different applications.
 
-	> [AZURE.NOTE] Die URIs in HATEOAS-Links, die als Teil der Antwort für HTTP GET-Anforderungen generiert werden, sollten auf die URL des API Management-Diensts verweisen, und nicht auf den Webserver, auf dem die Web-API gehostet wird.
+    > [AZURE.NOTE] The URIs in HATEOAS links generated as part of the response for HTTP GET requests should reference the URL of the API management service and not the web server hosting the web API.
 
-3. Geben Sie für jede Web-API die HTTP-Vorgänge an, die von der Web-API zusammen mit den optionalen Parametern, die ein Vorgang als Eingabe verwenden kann, verfügbar gemacht werden. Sie können auch konfigurieren, ob der API Management-Dienst die von der Web-API empfangene Antwort zwischenspeichern soll, um wiederholte Anforderungen für dieselben Daten zu optimieren. Zeichnen Sie die Details der HTTP-Antworten auf, die von den einzelnen Vorgängen generiert werden können. Diese Informationen werden zum Generieren der Dokumentation für Entwickler verwendet. Es ist also wichtig, dass sie richtig und vollständig sind.
+3. For each web API, specify the HTTP operations that the web API exposes together with any optional parameters that an operation can take as input. You can also configure whether the API management service should cache the response received from the web API to optimize repeated requests for the same data. Record the details of the HTTP responses that each operation can generate. This information is used to generate documentation for developers, so it is important that it is accurate and complete.
 
-	Sie können Vorgänge entweder manuell definieren, indem Sie die Assistenten im Azure-Verwaltungsportal verwenden, oder Sie können sie aus einer Datei importieren, in der die Definitionen im WADL- oder Swagger-Format enthalten sind.
+    You can either define operations manually using the wizards provided by the Azure Management portal, or you can import them from a file containing the definitions in WADL or Swagger format.
 
-4. Konfigurieren Sie die Sicherheitseinstellungen zwischen dem API Management-Dienst und dem Webserver, auf dem die Web-API gehostet wird. Der API Management-Dienst unterstützt derzeit die Standardauthentifizierung und die wechselseitige Authentifizierung mit Zertifikaten sowie die OAuth 2.0-Benutzerautorisierung.
+4. Configure the security settings for communications between the API management service and the web server hosting the web API. The API management service currently supports Basic authentication and mutual authentication using certificates, and OAuth 2.0 user authorization.
 
-5. Erstellen Sie ein Produkt. Ein Produkt ist die Einheit der Veröffentlichung. Sie fügen die Web-APIs, die Sie zuvor mit dem Management-Dienst verbunden haben, dem Produkt hinzu. Wenn das Produkt veröffentlicht wird, werden die Web-APIs für Entwickler verfügbar gemacht.
+5. Create a product. A product is the unit of publication; you add the web APIs that you previously connected to the management service to the product. When the product is published, the web APIs become available to developers.
 
-	> [AZURE.NOTE] Vor dem Veröffentlichen eines Produkts können Sie auch Benutzergruppen definieren, die Zugriff auf das Produkt haben, und diesen Gruppen Benutzer hinzufügen. So haben Sie die Kontrolle darüber, welche Entwickler und Anwendungen die Web-API verwenden können. Wenn eine Web-API genehmigt werden muss, müssen Entwickler eine Anforderung an den Produktadministrator senden, bevor sie Zugriff erhalten können. Der Administrator kann dem Entwickler den Zugriff gewähren oder verweigern. Außerdem können vorhandene Entwickler blockiert werden, wenn sich die Umstände ändern.
+    > [AZURE.NOTE] Prior to publishing a product, you can also define user-groups that can access the product and add users to these groups. This gives you control over the developers and applications that can use the web API. If a web API is subject to approval, prior to being able to access it a developer must send a request to the product administrator. The administrator can grant or deny access to the developer. Existing developers can also be blocked if circumstances change.
 
-6.	Konfigurieren Sie Richtlinien für jede Web-API. Mit Richtlinien werden beispielsweise folgende Aspekte geregelt: ob domänenübergreifende Aufrufe zulässig sind, wie Clients authentifiziert werden, ob zwischen den Datenformaten XML und JSON transparent konvertiert werden soll, ob Aufrufe für einen bestimmten IP-Bereich beschränkt werden sollen, Verwendungskontingente und ob die Aufrufrate begrenzt werden soll. Richtlinien können global über das gesamte Produkt hinweg, für eine einzelne Web-API in einem Produkt oder für einzelne Vorgänge in einer Web-API angewendet werden.
+6.  Configure policies for each web API. Policies govern aspects such as whether cross-domain calls should be allowed, how to authenticate clients, whether to convert between XML and JSON data formats transparently, whether to restrict calls from a given IP range, usage quotas, and whether to limit the call rate. Policies can be applied globally across the entire product, for a single web API in a product, or for individual operations in a web API.
 
-Ausführliche Informationen dazu, wie Sie diese Aufgaben durchführen, finden Sie auf der Microsoft-Website unter [API Management](https://azure.microsoft.com/services/api-management/). Der Azure API Management-Dienst stellt auch seine eigene REST-Schnittstelle bereit. Hiermit können Sie eine benutzerdefinierte Schnittstelle zum Vereinfachen des Prozesses erstellen, der zum Konfigurieren einer Web-API verwendet wird. Weitere Informationen finden Sie auf der Microsoft-Website unter [Azure API-Verwaltung für REST-API-Referenz](https://msdn.microsoft.com/library/azure/dn776326.aspx).
+You can find full details describing how to perform these tasks on the [API Management](https://azure.microsoft.com/services/api-management/) page on the Microsoft website. The Azure API Management Service also provides its own REST interface, enabling you to build a custom interface for simplifying the process of configuring a web API. For more information, visit the [Azure API Management REST API Reference](https://msdn.microsoft.com/library/azure/dn776326.aspx) page on the Microsoft website.
 
-> [AZURE.TIP] Azure stellt den Azure Traffic Manager bereit, mit dem Sie das Failover und den Lastenausgleich implementieren und die Latenz über mehrere Instanzen einer Website hinweg, die an unterschiedlichen geografischen Orten gehostet wird, reduzieren können. Sie können den Azure Traffic Manager zusammen mit dem API Management-Dienst verwenden. Der API Management-Dienst kann Anforderungen über den Azure Traffic Manager an die Instanzen einer Website weiterleiten. Weitere Informationen finden Sie auf der Microsoft-Website unter [Traffic Manager-Routingmethoden](../articles/traffic-manager/traffic-manager-routing-methods.md)
+> [AZURE.TIP] Azure provides the Azure Traffic Manager which enables you to implement failover and load-balancing, and reduce latency across multiple instances of a web site hosted in different geographic locations. You can use Azure Traffic Manager in conjunction with the API Management Service; the API Management Service can route requests to instances of a web site through Azure Traffic Manager.  For more information, visit the [Traffic Manager routing Methods](../articles/traffic-manager/traffic-manager-routing-methods.md) page on the Microsoft website.
 
-> Wenn Sie benutzerdefinierte DNS-Namen für Ihre Websites verwenden, sollten Sie in dieser Struktur den richtigen CNAME-Eintrag für jede Website konfigurieren, damit jeweils auf den DNS-Namen der Azure Traffic Manager-Website verwiesen wird.
+> In this structure, if you are using custom DNS names for your web sites, you should configure the appropriate CNAME record for each web site to point to the DNS name of the Azure Traffic Manager web site.
 
-## Unterstützen von Entwicklern beim Erstellen von Clientanwendungen
-Entwickler, die Clientanwendungen erstellen, benötigen normalerweise Informationen dazu, wie sie auf die Web-API zugreifen können. Außerdem benötigen sie Dokumentation zu den Parametern, Datentypen, Rückgabetypen und Rückgabecodes, mit denen die verschiedenen Anforderungen und Antworten zwischen dem Webdienst und der Clientanwendung beschrieben werden.
+## <a name="supporting-developers-building-client-applications"></a>Supporting developers building client applications
+Developers constructing client applications typically require information on how to access the web API, and documentation concerning the parameters, data types, return types, and return codes that describe the different requests and responses between the web service and the client application.
 
-### Dokumentieren der REST-Vorgänge für eine Web-API
-Der Azure API Management-Dienst enthält ein Entwicklerportal, mit dem die von einer Web-API verfügbar gemachten REST-Vorgänge beschrieben werden. Wenn ein Produkt veröffentlicht wird, wird es in diesem Portal angezeigt. Entwickler können sich über dieses Portal für den Zugriff registrieren. Der Administrator kann die Anforderung dann genehmigen oder ablehnen. Wenn Entwickler die Genehmigung erhalten, wird ihnen ein Abonnementschlüssel zugewiesen. Dieser wird zum Authentifizieren der Aufrufe von Clientanwendungen verwendet, die von den Entwicklern entwickelt werden. Dieser Schlüssel muss bei jedem Web-API-Aufruf bereitgestellt werden. Andernfalls wird der Aufruf abgelehnt.
+### <a name="documenting-the-rest-operations-for-a-web-api"></a>Documenting the REST operations for a web API
+The Azure API Management Service includes a developer portal that describes the REST operations exposed by a web API. When a product has been published it appears on this portal. Developers can use this portal to sign up for access; the administrator can then approve or deny the request. If the developer is approved, they are assigned a subscription key that is used to authenticate calls from the client applications that they develop. This key must be provided with each web API call otherwise it will be rejected.
 
-Außerdem bietet das Portal Folgendes:
+This portal also provides:
 
-- Dokumentation zum Produkt mit den verfügbaren Vorgängen, den erforderlichen Parametern und den unterschiedlichen Antworten, die zurückgegeben werden können. Beachten Sie, dass diese Informationen anhand der Details generiert werden, die in Schritt 3 in der Liste im Abschnitt [Veröffentlichen einer Web-API mit dem Microsoft Azure API Management-Dienst](#publishing-a-web-API) enthalten sind.
+- Documentation for the product, listing the operations that it exposes, the parameters required, and the different responses that can be returned. Note that this information is generated from the details provided in step 3 in the list in the section [Publishing a web API by using the Microsoft Azure API Management Service](#publishing-a-web-API).
 
-- Codeausschnitte, die das Aufrufen von Vorgängen für mehrere Sprachen veranschaulichen, z. B. JavaScript, C#, Java, Ruby, Python und PHP.
+- Code snippets that show how to invoke operations from several languages, including JavaScript, C#, Java, Ruby, Python, and PHP.
 
-- Eine Entwicklerkonsole, über die Entwickler eine HTTP-Anforderung zum Testen der Vorgänge im Produkt und zum Anzeigen der Ergebnisse senden können.
+- A developers' console that enables a developer to send an HTTP request to test each operation in the product and view the results.
 
-- Eine Seite, auf der Entwickler Fehler oder aufgetretene Probleme melden können.
+- A page where the developer can report any issues or problems found.
 
-Über das Azure-Verwaltungsportal können Sie das Entwicklerportal anpassen und die Formatierung und das Layout ändern, um es an das Branding Ihres Unternehmens anzugleichen.
+The Azure Management portal enables you to customize the developer portal to change the styling and layout to match the branding of your organization.
 
-### Implementieren eines Client-SDK
-Das Erstellen einer Clientanwendung, mit der REST-Anforderungen zum Zugreifen auf eine Web-API aufgerufen werden, erfordert das Schreiben einer beträchtlichen Menge an Code. Jede Anforderung muss richtig erstellt und formatiert werden, die Anforderung muss an den Hostserver des Webdiensts gesendet werden, und die Antwort muss analysiert werden, um zu ermitteln, ob die Anforderung erfolgreich war. Außerdem müssen alle zurückgegebenen Daten extrahiert werden. Um die Clientanwendung hiervon abzukoppeln, können Sie ein SDK bereitstellen, das die REST-Schnittstelle umschließt und diese Low-Level-Details in einem funktionelleren Methodensatz abstrahiert. Eine Clientanwendung verwendet diese Methoden, mit denen Aufrufe transparent in REST-Anforderungen konvertiert werden. Anschließend werden die Antworten zurück in Methodenrückgabewerte konvertiert. Dies ist ein gängiges Verfahren, das von vielen Diensten implementiert wird, einschließlich des Azure-SDK.
+### <a name="implementing-a-client-sdk"></a>Implementing a client SDK
+Building a client application that invokes REST requests to access a web API requires writing a significant amount of code to construct each request and format it appropriately, send the request to the server hosting the web service, and parse the response to work out whether the request succeeded or failed and extract any data returned. To insulate the client application from these concerns, you can provide an SDK that wraps the REST interface and abstracts these low-level details inside a more functional set of methods. A client application uses these methods, which transparently convert calls into REST requests and then convert the responses back into method return values. This is a common technique that is implemented by many services, including the Azure SDK.
 
-Die Erstellung eines clientseitigen SDK ist ein aufwendiges Unterfangen, da es konsistent implementiert und sorgfältig getestet werden muss. Ein Großteil dieses Prozesses kann aber „mechanisiert“ werden, und viele Anbieter stellen Tools bereit, mit denen viele Aufgaben automatisiert werden können.
+Creating a client-side SDK is a considerable undertaking as it has to be implemented consistently and tested carefully. However, much of this process can be made mechanical, and many vendors supply tools that can automate many of these tasks.
 
-## Überwachen einer Web-API
+## <a name="monitoring-a-web-api"></a>Monitoring a web API
 
-Je nach Art der Veröffentlichung und Bereitstellung Ihrer Web-API können Sie die Web-API direkt überwachen, oder Sie können Informationen zur Verwendung und Integrität sammeln, indem Sie den Datenverkehr analysieren, der den API Management-Dienst durchläuft.
+Depending on how you have published and deployed your web API you can monitor the web API directly, or you can gather usage and health information by analyzing the traffic that passes through the API Management service.
 
-### Direktes Überwachen einer Web-API
-Wenn Sie Ihre Web-API mit der ASP.NET-Web-API-Vorlage (entweder als Web-API-Projekt oder Webrolle in einem Azure-Clouddienst) und Visual Studio 2013 implementiert haben, können Sie per ASP.NET Application Insights Daten zur Verfügbarkeit, Leistung und Verwendung sammeln. Application Insights ist ein Paket, mit dem Informationen zu Anforderungen und Antworten transparent nachverfolgt und aufgezeichnet werden, wenn die Web-API in der Cloud bereitgestellt wird. Nachdem das Paket installiert und konfiguriert wurde, müssen Sie in Ihrer Web-API zur Nutzung keinen Code ändern. Wenn Sie die Web-API auf einer Azure-Website bereitstellen, wird der gesamte Datenverkehr untersucht, und die folgenden statistischen Daten werden gesammelt:
+### <a name="monitoring-a-web-api-directly"></a>Monitoring a web API directly
+If you have implemented your web API by using the ASP.NET Web API template (either as a Web API project or as a Web role in an Azure cloud service) and Visual Studio 2013, you can gather availability, performance, and usage data by using ASP.NET Application Insights. Application Insights is a package that transparently tracks and records information about requests and responses when the web API is deployed to the cloud; once the package is installed and configured, you don't need to amend any code in your web API to use it. When you deploy the web API to an Azure web site, all traffic is examined and the following statistics are gathered:
 
-- Reaktionszeit des Servers
+- Server response time.
 
-- Anzahl von Serveranforderungen und die Details jeder Anforderung
+- Number of server requests and the details of each request.
 
-- Langsamste Anforderungen in Bezug auf die durchschnittliche Reaktionszeit
+- The top slowest requests in terms of average response time.
 
-- Details nicht erfolgreicher Anforderungen
+- The details of any failed requests.
 
-- Anzahl von Sitzungen, die von unterschiedlichen Browsern und Benutzer-Agents initiiert werden
+- The number of sessions initiated by different browsers and user agents.
 
-- Am häufigsten angezeigte Seiten (vor allem nützlich für Webanwendungen und nicht für Web-APIs)
+- The most frequently viewed pages (primarily useful for web applications rather than web APIs).
 
-- Unterschiedliche Benutzerrollen, mit denen auf die Web-API zugegriffen wird
+- The different user roles accessing the web API.
 
-Sie können diese Daten im Azure-Verwaltungsportal in Echtzeit anzeigen. Außerdem können Sie WebTests erstellen, mit denen die Integrität der Web-API überwacht wird. Ein WebTest sendet eine regelmäßige Anforderung an einen angegebenen URI in der Web-API und erfasst die Antwort. Sie können die Definition einer erfolgreichen Antwort angeben (z. B. HTTP-Statuscode 200). Und wenn die Anforderung diese Antwort nicht zurückgibt, können Sie vorgeben, dass eine Warnung an einen Administrator gesendet wird. Bei Bedarf kann der Administrator den Server neu starten, auf dem die Web-API gehostet wird, wenn er ausgefallen ist.
+You can view this data in real time from the Azure Management portal. You can also create webtests that monitor the health of the web API. A webtest sends a periodic request to a specified URI in the web API and captures the response. You can specify the definition of a successful response (such as HTTP status code 200), and if the request does not return this response you can arrange for an alert to be sent to an administrator. If necessary, the administrator can restart the server hosting the web API if it has failed.
 
-Weitere Informationen finden Sie auf der Microsoft-Website unter [Einrichten von Application Insights für ASP.NET](../articles/application-insights/app-insights-asp-net.md).
+The [Application Insights - Get started with ASP.NET](../articles/application-insights/app-insights-asp-net.md) page on the Microsoft website provides more information.
 
-### Überwachen einer Web-API per API Management-Dienst
+### <a name="monitoring-a-web-api-through-the-api-management-service"></a>Monitoring a web API through the API Management Service
 
-Wenn Sie Ihre Web-API mit dem API Management-Dienst veröffentlicht haben, enthält die Seite „API Management“ im Azure-Verwaltungsportal ein Dashboard, auf dem Sie die allgemeine Leistung des Diensts anzeigen können. Auf der Seite „Analytics“ können Sie auf die Details zur Verwendung des Produkts zugreifen. Diese Seite enthält die folgenden Registerkarten:
+If you have published your web API by using the API Management service, the API Management page on the Azure Management portal contains a dashboard that enables you to view the overall performance of the service. The Analytics page enables you to drill down into the details of how the product is being used. This page contains the following tabs:
 
-- **Verwendung**: Diese Registerkarte enthält Informationen zur Anzahl der durchgeführten API-Aufrufe und zur Bandbreite, die zum Behandeln dieser Aufrufe im Laufe der Zeit verwendet wurde. Sie können die Verwendungsdetails nach Produkt, API und Vorgang filtern.
+- **Usage**. This tab provides information about the number of API calls made and the bandwidth used to handle these calls over time. You can filter usage details by product, API, and operation.
 
-- **Integrität**: Auf dieser Registerkarte können Sie das Ergebnis von API-Anforderungen (zurückgegebenen HTTP-Statuscodes), die Effektivität der Richtlinie für die Zwischenspeicherung, die API-Reaktionszeit und die Reaktionszeit des Diensts anzeigen. Sie können auch die Integritätsdaten nach Produkt, API und Vorgang filtern.
+- **Health**. This tab enables you view the outcome of API requests (the HTTP status codes returned), the effectiveness of the caching policy, the API response time, and the service response time. Again, you can filter health data by product, API, and operation.
 
-- **Aktivität**: Diese Registerkarte enthält eine Textzusammenfassung der Anzahl von erfolgreichen Aufrufen, fehlgeschlagenen Aufrufen, blockierten Aufrufen, der durchschnittlichen Reaktionszeit und Reaktionszeiten für Produkt, Web-API und Vorgang. Auf dieser Seite ist auch die Anzahl von Aufrufen angegeben, die von den einzelnen Entwicklern durchgeführt wurden.
+- **Activity**. This tab provides a text summary of the numbers of successful calls, failed called, blocked calls, average response time, and response times for each product, web API, and operation. This page also lists the number of calls made by each developer.
 
-- **Auf einen Blick**: Auf dieser Registerkarte wird eine Zusammenfassung der Leistungsdaten angezeigt, z. B. die Entwickler mit den meisten API-Aufrufen und die Produkte, Web-APIs und Vorgänge, von denen diese Aufrufe empfangen wurden.
+- **At a glance**. This tab displays a summary of the performance data, including the developers responsible for making the most API calls, and the products, web APIs, and operations that received these calls.
 
-Anhand dieser Informationen können Sie bestimmen, ob eine bestimmte Web-API oder ein Vorgang einen Engpass verursacht, und bei Bedarf die Hostumgebung skalieren und weitere Server hinzufügen. Sie können auch prüfen, ob eine oder mehrere Anwendungen eine unangemessen hohe Menge an Ressourcen verbrauchen, und entsprechende Richtlinien anwenden, um Kontingente festzulegen und die Aufrufraten zu beschränken.
+You can use this information to determine whether a particular web API or operation is causing a bottleneck, and if necessary scale the host environment and add more servers. You can also ascertain whether one or more applications are using a disproportionate volume of resources and apply the appropriate policies to set quotas and limit call rates.
 
-> [AZURE.NOTE] Sie können die Details für ein veröffentlichtes Produkt ändern. Die Änderungen werden dann sofort angewendet. Beispielsweise können Sie einen Vorgang einer Web-API hinzufügen oder daraus entfernen, ohne dass Sie hierfür das Produkt neu veröffentlichen müssen, in dem die Web-API enthalten ist.
+> [AZURE.NOTE] You can change the details for a published product, and the changes are applied immediately. For example, you can add or remove an operation from a web API without requiring that you republish the product that contains the web API.
 
-## Verwandte Muster
-- Das Muster [Fassade](http://en.wikipedia.org/wiki/Facade_pattern) (Façade) beschreibt, wie eine Schnittstelle für eine Web-API bereitgestellt wird.
+## <a name="related-patterns"></a>Related patterns
+- The [façade](http://en.wikipedia.org/wiki/Facade_pattern) pattern describes how to provide an interface to a web API.
 
-## Weitere Informationen
-- Auf der Microsoft-Website unter [Informationen zur ASP.NET-Web-API](http://www.asp.net/web-api) finden Sie eine ausführliche Einführung in die Erstellung von REST-Webdiensten mit der Web-API.
-- Auf der Microsoft-Website unter [Routing in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api) wird beschrieben, wie das konventionsbasierte Routing im ASP.NET-Web-API-Framework funktioniert.
-- Weitere Informationen zum attributbasierten Routing finden Sie auf der Microsoft-Website unter [Attributrouting in der Web-API 2](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2).
-- Die Seite mit dem [Lernprogramm](http://www.odata.org/getting-started/basic-tutorial/) auf der OData-Website enthält eine Einführung in die Features des OData-Protokolls.
-- Die Seite [ASP.NET-Web-API-OData](http://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api) auf der Microsoft-Website enthält Beispiele und weitere Informationen zur Implementierung einer OData-Web-API mit ASP.NET.
-- Auf der Seite [Einführung der Batchunterstützung für die Web-API und Web-API-OData](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx) der Microsoft-Website wird beschrieben, wie Sie Batchvorgänge in einer Web-API mit OData implementieren.
-- Der Artikel [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/) (Muster der Idempotenz) im Blog von Jonathan Oliver enthält eine Übersicht über die Idempotenz und ihre Verbindung mit Datenverwaltungsvorgängen.
-- Die Seite [Statuscodedefinitionen](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) auf der W3C-Website enthält eine vollständige Liste mit HTTP-Statuscodes und den dazugehörigen Beschreibungen.
-- Ausführliche Informationen zur Behandlung von HTTP-Ausnahmen mit der ASP.NET-Web-API finden Sie auf der Microsoft-Website unter [Ausnahmebehandlung in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/error-handling/exception-handling).
-- Im Artikel [Globale Fehlerbehandlung für die Web-API](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling) auf der Microsoft-Website wird beschrieben, wie Sie eine globale Strategie zur Fehlerbehandlung und Protokollierung für eine Web-API implementieren.
-- Die Seite [Ausführen von Hintergrundaufgaben mit WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md) auf der Microsoft-Website enthält Informationen und Beispiele zur Verwendung von WebJobs zum Durchführen von Hintergrundvorgängen auf einer Azure-Website.
-- Auf der Seite [Azure Notification Hubs – Benachrichtigen von Benutzern](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) der Microsoft-Website wird beschrieben, wie Sie ein Azure Notification Hub zum Übertragen von asynchronen Antworten per Pushvorgang auf Clientanwendungen verwenden können.
-- Auf der Seite [API Management](https://azure.microsoft.com/services/api-management/) der Microsoft-Website wird beschrieben, wie Sie ein Produkt veröffentlichen, das kontrollierten und sicheren Zugriff auf eine Web-API ermöglicht.
-- Auf der Seite [Azure API-Verwaltung für REST-API-Referenz](https://msdn.microsoft.com/library/azure/dn776326.aspx) der Microsoft-Website wird beschrieben, wie Sie die API Management-REST-API zum Erstellen von benutzerdefinierten Verwaltungsanwendungen verwenden.
-- Auf der Seite [Traffic Manager-Routingmethoden](../articles/traffic-manager/traffic-manager-routing-methods.md) auf der Microsoft-Website wird zusammengefasst, wie Azure Traffic Manager verwendet werden kann, um für mehrere Instanzen einer Website, auf der eine Web-API gehostet wird, den Lastenausgleich für Anforderungen durchzuführen.
-- Auf der Seite [Einrichten von Application Insights für ASP.NET](../articles/application-insights/app-insights-asp-net.md) auf der Microsoft-Website werden ausführliche Informationen zum Installieren und Konfigurieren von Application Insights in einem ASP.NET-Web-API-Projekt bereitgestellt.
-- Auf der Seite [Überprüfen von Code mithilfe von Komponententests](https://msdn.microsoft.com/library/dd264975.aspx) der Microsoft-Website werden ausführliche Informationen zum Erstellen und Verwalten von Komponententests mit Visual Studio bereitgestellt.
-- Auf der Seite [Ausführen von Leistungstests für Ihre App](https://msdn.microsoft.com/library/dn250793.aspx) der Microsoft-Website wird beschrieben, wie Sie Visual Studio Ultimate zum Erstellen eines Projekts zum Testen der Webleistung und Auslastung verwenden.
+## <a name="more-information"></a>More information
+- The page [Learn About ASP.NET Web API](http://www.asp.net/web-api) on the Microsoft website provides a detailed introduction to building RESTful web services by using the Web API.
+- The page [Routing in ASP.NET Web API](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api) on the Microsoft website describes how convention-based routing works in the ASP.NET Web API framework.
+- For more information on attribute-based routing, see the page [Attribute Routing in Web API 2](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2) on the Microsoft website.
+- The [Basic Tutorial](http://www.odata.org/getting-started/basic-tutorial/) page on the OData website provides an introduction to the features of the OData protocol.
+- The [ASP.NET Web API OData](http://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api) page on the Microsoft website contains examples and further information on implementing an OData web API by using ASP.NET.
+- The page [Introducing Batch Support in Web API and Web API OData](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx) on the Microsoft website describes how to implement batch operations in a web API by using OData.
+- The article [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/) on Jonathan Oliver’s blog provides an overview of idempotency and how it relates to data management operations.
+- The [Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) page on the W3C website contains a full list of HTTP status codes and their descriptions.
+- For detailed information on handling HTTP exceptions with the ASP.NET Web API, visit the [Exception Handling in ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling) page on the Microsoft website.
+- The article [Web API Global Error Handling](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling) on the Microsoft website describes how to implement a global error handling and logging strategy for a web API.
+- The page [Run background tasks with WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md) on the Microsoft website provides information and examples on using WebJobs to perform background operations on an Azure Website.
+- The page [Azure Notification Hubs Notify Users](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) on the Microsoft website shows how you can use an Azure Notification Hub to push asynchronous responses to client applications.
+- The [API Management](https://azure.microsoft.com/services/api-management/) page on the Microsoft website describes how to publish a product that provides controlled and secure access to a web API.
+- The [Azure API Management REST API Reference](https://msdn.microsoft.com/library/azure/dn776326.aspx) page on the Microsoft website describes how to use the API Management REST API to build custom management applications.
+- The [Traffic Manager Routing Methods](../articles/traffic-manager/traffic-manager-routing-methods.md) page on the Microsoft website summarizes how Azure Traffic Manager can be used to load-balance requests across multiple instances of a website hosting a web API.
+- The [Application Insights - Get started with ASP.NET](../articles/application-insights/app-insights-asp-net.md) page on the Microsoft website provides detailed information on installing and configuring Application Insights in an ASP.NET Web API project.
+- The page [Verifying Code by Using Unit Tests](https://msdn.microsoft.com/library/dd264975.aspx) on the Microsoft website provides detailed information on creating and managing unit tests by using Visual Studio.
+- The page [Run performance tests on an application before a release](https://msdn.microsoft.com/library/dn250793.aspx) on the Microsoft website describes how to use Visual Studio Ultimate to create a web performance and load test project.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,12 +1,12 @@
 <properties 
-   pageTitle="Rollenbasierte Zugriffsteuerung in Azure Automation | Microsoft Azure"
-   description="Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Dieser Artikel beschreibt, wie eine rollenbasierte Zugriffssteuerung in Azure Automation eingerichtet wird."
+   pageTitle="Role-based access control in Azure Automation | Microsoft Azure"
+   description="Role-based access control (RBAC) enables access management for Azure resources. This article describes how to set up RBAC in Azure Automation."
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
    manager="jwhit"
    editor="tysonn"
-   keywords="Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC" />
+   keywords="automation rbac, role based access control, azure rbac" />
 <tags 
    ms.service="automation"
    ms.devlang="na"
@@ -16,219 +16,230 @@
    ms.date="09/12/2016"
    ms.author="magoedte;sngun"/>
 
-# Rollenbasierte Zugriffssteuerung in Azure Automation
 
-## Rollenbasierte Zugriffssteuerung
+# <a name="role-based-access-control-in-azure-automation"></a>Role-based access control in Azure Automation
 
-Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) können Sie Aufgaben innerhalb Ihres Teams verteilen und Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Den Benutzern kann die rollenbasierte Zugriffssteuerung über das Azure-Portal, Azure Befehlszeilenwerkzeuge oder Azure Management APIs zugewiesen werden.
+## <a name="role-based-access-control"></a>Role-based access control
 
-## Rollenbasierte Zugriffssteuerung in Automation-Konten
+Role-based access control (RBAC) enables access management for Azure resources. Using [RBAC](../active-directory/role-based-access-control-configure.md), you can segregate duties within your team and grant only the amount of access to users, groups and applications that they need to perform their jobs. Role-based access can be granted to users using the Azure portal, Azure Command-Line tools or Azure Management APIs.
 
-Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und Anwendungen im Automation-Konten-Bereich die passende RBAC-Rolle zugewiesen wird. Die folgenden vordefinierten Rollen werden von Automation-Konten unterstützt:
+## <a name="rbac-in-automation-accounts"></a>RBAC in Automation Accounts
 
-|**Rolle** | **Beschreibung** |
+In Azure Automation, access is granted by assigning the appropriate RBAC role to users, groups, and applications at the Automation account scope. Following are the built-in roles supported by an Automation account:  
+
+|**Role** | **Description** |
 |:--- |:---|
-| Besitzer | Die Rolle „Besitzer“ erlaubt den Zugriff auf alle Ressourcen und Aktionen innerhalb des Automation-Kontos, z.B. den Zugriff auf andere Benutzer, Gruppen und Anwendungen, um das Automation-Konto zu verwalten. |
-| Mitwirkender | Die Rolle „Mitwirkender“ erlaubt Ihnen, fast alles zu verwalten. Das Einzige, was Sie nicht können, ist das Ändern der Zugriffsberechtigungen für ein Automation-Konto anderer Benutzer. |
-| Leser | Die Rolle „Leser“ erlaubt Ihnen, alle Ressourcen im Automation-Konto zu betrachten, aber Sie können keine Änderungen vornehmen.|
-| Operator für Automation | Die Rolle „Operator für Automation“ erlaubt Ihnen operative Aufgaben wie das Starten, Anhalten, Unterbrechen, Fortführen und Einplanen von Aufgaben. Diese Rolle ist hilfreich, wenn Sie Ihre Automation-Konten-Ressourcen wie Anmeldeinformationsobjekte und Runbooks vor Einblicken und Änderungen schützen wollen, es Mitgliedern Ihrer Organisation aber dennoch ermöglichen wollen, diese Runbooks auszuführen. |
-| Benutzerzugriffsadministrator | Mit der Rolle „Benutzerzugriffsadministrator“ können Sie den Benutzerzugriff auf Azure Automation-Konten verwalten. |
+| Owner | The Owner role allows access to all resources and actions within an Automation account including providing access to other users, groups and applications to manage the Automation account. |
+| Contributor | The Contributor role allows you to manage everything except modifying other user’s access permissions to an Automation account. |
+| Reader | The Reader role allows you to view all the resources in an Automation account but cannot make any changes.|
+| Automation Operator | The Automation Operator role allows you to perform operational tasks such as start, stop, suspend, resume and schedule jobs. This role is helpful if you want to protect your Automation Account resources like credentials assets and runbooks from being viewed or modified but still allow members of your organization to execute these runbooks. |
+| User Access Administrator | The User Access Administrator role allows you to manage user access to Azure Automation accounts. |
 
->[AZURE.NOTE] Es ist nicht möglich, Zugriffsrechte bestimmten Runbooks zu gewähren, sondern nur für die Ressourcen und Aktionen im Automation-Konto.
+>[AZURE.NOTE] You cannot grant access rights to a specific runbook or runbooks, only to the resources and actions within the Automation account.  
 
-In diesem Artikel zeigen wir Ihnen Schritt für Schritt, wie Sie eine rollenbasierte Zugriffssteuerung in Azure Automation einrichten. Zuerst sehen wir uns aber die einzelnen Berechtigungen genauer an, die für die Rollen „Mitwirkender“, „Leser“, „Operator für Automation“ und „Benutzerzugriffsadministrator“ gewährt werden. Das Ziel ist ein gutes Verständnis der Berechtigungen, bevor wir Benutzern Rechte für das Automation-Konto gewähren. Andernfalls kann dies unbeabsichtigte oder unerwünschte Konsequenzen haben.
+In this article we will walk you through how to set up RBAC in Azure Automation. But first, let's take a closer look at the individual permissions granted to the Contributor, Reader, Automation Operator and User Access Administrator so that we gain a good understanding before granting anyone rights to the Automation account.  Otherwise it could result in unintended or undesirable consequences.     
 
-## Berechtigungen für die Rolle „Mitwirkender“
+## <a name="contributor-role-permissions"></a>Contributor role permissions
 
-Die folgende Tabelle enthält die speziellen Aktionen, die von der Rolle „Mitwirkender“ in Automation durchgeführt werden können.
+The following table presents the specific actions that can be performed by the Contributor role in Automation.
 
-| **Ressourcentyp** | **Lesen** | **Schreiben** | **Löschen** | **Andere Aktionen** |
+| **Resource Type** | **Read** | **Write** | **Delete** | **Other Actions** |
 |:--- |:---|:--- |:---|:--- |
-| Azure Automation-Konto | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | 
-| Automation-Zertifikatobjekt | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | |
-| Automation-Verbindungsobjekt | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | 
-| Automation-Verbindungstypasset | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | 
-| Automation-Anmeldeinformationsobjekt | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | |
-| Automation-Zeitplanasset | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | |
-| Automation-Variablenressource | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | |
-| Automation-Konfiguration für den gewünschten Zustand | | | | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) |
-| Hybrid Runbook Worker-Ressourcentyp | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | 
-| Azure Automation-Auftrag | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | 
-| Automation-Auftragsdatenstrom | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
-| Automation-Auftragszeitplan | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | |
-| Automation-Modul | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | |
-| Azure Automation-Runbook | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) |
-| Automation-Runbookentwurf | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) |
-| Testauftrag für Automation-Runbookentwurf | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | 
-| Automation-Webhook | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) |
+| Azure Automation Account | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Automation Certificate Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation Connection Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Automation Connection Type Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Automation Credential Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation Schedule Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation Variable Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation Desired State Configuration | | | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
+| Hybrid Runbook Worker Resource Type | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Azure Automation Job | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | 
+| Automation Job Stream | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation Job Schedule | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation Module | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Azure Automation Runbook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
+| Automation Runbook Draft | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
+| Automation Runbook Draft Test Job | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | 
+| Automation Webhook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
 
-## Berechtigungen für die Rolle „Leser“
+## <a name="reader-role-permissions"></a>Reader role permissions
 
-Die folgende Tabelle enthält die speziellen Aktionen, die von der Rolle „Leser“ in Automation durchgeführt werden können.
+The following table presents the specific actions that can be performed by the Reader role in Automation.
 
-| **Ressourcentyp** | **Lesen** | **Schreiben** | **Löschen** | **Andere Aktionen** |
+| **Resource Type** | **Read** | **Write** | **Delete** | **Other Actions** |
 |:--- |:---|:--- |:---|:--- |
-| Administrator für klassisches Abonnement | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
-| Verwaltungssperre | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
-| Berechtigung | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | |
-| Anbietervorgänge | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
-| Rollenzuweisung | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
-| Rollendefinition | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| Classic subscription administrator | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| Management lock | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| Permission | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
+| Provider operations | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| Role assignment | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| Role definition | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
 
-## Berechtigungen für die Rolle „Operator für Automation“
+## <a name="automation-operator-role-permissions"></a>Automation Operator role permissions
 
-Die folgende Tabelle enthält die speziellen Aktionen, die von der Rolle „Operator für Automation“ in Automation durchgeführt werden können.
+The following table presents the specific actions that can be performed by the Automation Operator role in Automation.
 
-| **Ressourcentyp** | **Lesen** | **Schreiben** | **Löschen** | **Andere Aktionen** |
+| **Resource Type** | **Read** | **Write** | **Delete** | **Other Actions** |
 |:--- |:---|:--- |:---|:--- |
-| Azure Automation-Konto | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
-| Automation-Zertifikatobjekt | | | |
-| Automation-Verbindungsobjekt | | | |
-| Automation-Verbindungstypasset | | | |
-| Automation-Anmeldeinformationsobjekt | | | |
-| Automation-Zeitplanasset | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | |
-| Automation-Variablenressource | | | |
-| Automation-Konfiguration für den gewünschten Zustand | | | | |
-| Hybrid Runbook Worker-Ressourcentyp | | | | | 
-| Azure Automation-Auftrag | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | 
-| Automation-Auftragsdatenstrom | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | |  
-| Automation-Auftragszeitplan | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | |
-| Automation-Modul | | | |
-| Azure Automation-Runbook | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Runbookentwurf | | | |
-| Testauftrag für Automation-Runbookentwurf | | | |  
-| Automation-Webhook | | | |
+| Azure Automation Account | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| Automation Certificate Asset | | | |
+| Automation Connection Asset | | | |
+| Automation Connection Type Asset | | | |
+| Automation Credential Asset | | | |
+| Automation Schedule Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
+| Automation Variable Asset | | | |
+| Automation Desired State Configuration | | | | |
+| Hybrid Runbook Worker Resource Type | | | | | 
+| Azure Automation Job | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | 
+| Automation Job Stream | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |  
+| Automation Job Schedule | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
+| Automation Module | | | |
+| Azure Automation Runbook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Runbook Draft | | | |
+| Automation Runbook Draft Test Job | | | |  
+| Automation Webhook | | | |
 
-Ausführlichere Informationen finden Sie unter [Operator für Automation – Aktionen](../active-directory/role-based-access-built-in-roles.md#automation-operator). Hier sind die von der Rolle „Operator für Automation“ im Automation-Konto unterstützten Aktionen sowie dessen Ressourcen aufgelistet.
+For further details, the [Automation operator actions](../active-directory/role-based-access-built-in-roles.md#automation-operator) lists the actions supported by the Automation operator role on the Automation account and its resources.
 
-## Berechtigungen für die Rolle „Benutzerzugriffsadministrator“
+## <a name="user-access-administrator-role-permissions"></a>User Access Administrator role permissions
 
-Die folgende Tabelle enthält die speziellen Aktionen, die von der Rolle „Benutzerzugriffsadministrator“ in Automation durchgeführt werden können.
+The following table presents the specific actions that can be performed by the User Access Administrator role in Automation.
 
-| **Ressourcentyp** | **Lesen** | **Schreiben** | **Löschen** | **Andere Aktionen** |
+| **Resource Type** | **Read** | **Write** | **Delete** | **Other Actions** |
 |:--- |:---|:--- |:---|:--- |
-| Azure Automation-Konto | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Zertifikatobjekt | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Verbindungsobjekt | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Verbindungstypasset | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Anmeldeinformationsobjekt | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Zeitplanasset | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Variablenressource | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Konfiguration für den gewünschten Zustand | | | | |
-| Hybrid Runbook Worker-Ressourcentyp | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
-| Azure Automation-Auftrag | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
-| Automation-Auftragsdatenstrom | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
-| Automation-Auftragszeitplan | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Modul | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Azure Automation-Runbook | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Automation-Runbookentwurf | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
-| Testauftrag für Automation-Runbookentwurf | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
-| Automation-Webhook | ![Grüner Status](media/automation-role-based-access-control/green-checkmark.png) | | |
+| Azure Automation Account | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Certificate Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Connection Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Connection Type Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Credential Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Schedule Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Variable Asset | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Desired State Configuration | | | | |
+| Hybrid Runbook Worker Resource Type | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Azure Automation Job | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation Job Stream | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation Job Schedule | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Module | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Azure Automation Runbook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Runbook Draft | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Runbook Draft Test Job | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation Webhook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
 
-## Konfigurieren einer rollenbasierten Zugriffssteuerung für Automation-Konten mittels Azure-Portal
+## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Configure RBAC for your Automation Account using Azure Portal
 
-1.	Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf dem Blatt „Automation-Konten“ Ihr Automation-Konto.
+1.  Log in to the [Azure Portal](https://portal.azure.com/) and open your Automation account from the Automation Accounts blade.  
 
-2.	Klicken Sie oben rechts auf die **Zugriffssteuerung**. Dadurch wird das Blatt **Benutzer** geöffnet, auf dem Sie neue Benutzer, Gruppen und Anwendungen hinzufügen können, um Ihr Automation-Konto zu verwalten. Des Weiteren können Sie die vorhandenen Rollen anzeigen, die für das Automation-Konto konfiguriert werden können.
+2.  Click on the **Access** control at the top right corner. This opens the **Users** blade where you can add new users, groups and applications to manage your Automation account and view existing roles that can be configured for the Automation Account.  
 
-    ![Zugriffsschaltfläche](media/automation-role-based-access-control/automation-01-access-button.png)
+    ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)  
 
->[AZURE.NOTE] **Abonnement-Administratoren** ist als Standardbenutzer bereits vorhanden. Die Active Directory-Gruppe der Abonnementadministratoren umfasst die Dienstadministratoren und Co-Administratoren für Ihr Azure-Abonnement. Der Dienstadministrator ist der Besitzer Ihres Azure-Abonnements und dessen Ressourcen und wird auch für die Automation-Konten die Rolle des Besitzers erben. Dies bedeutet, dass der Zugriff für **Dienstadministratoren und Co-Administratoren** eines Abonnements **geerbt** wird, während er für alle anderen Benutzer **zugewiesen** wird. Klicken Sie auf **Abonnement-Administratoren**, um mehr über deren Rechte zu erfahren.
+>[AZURE.NOTE] **Subscription admins** already exists as the default user. The subscription admins active directory group includes the service administrator(s) and co-administrator(s) for your Azure subscription. The Service admin is the owner of your Azure subscription and its resources, and will have the owner role inherited for the automation accounts too. This means that the access is **Inherited** for **service administrators and co-admins** of a subscription and it’s **Assigned** for all the other users. Click **Subscription admins** to view more details about their permissions.  
 
-### Einen neuen Benutzer hinzufügen und eine Rolle zuweisen
+### <a name="add-a-new-user-and-assign-a-role"></a>Add a new user and assign a role
 
-1.	Klicken Sie im Benutzerblatt auf **Hinzufügen**, um das Blatt **Zugriff hinzufügen** zu öffnen, auf dem Sie einen Benutzer, eine Gruppe oder eine Anwendung hinzufügen und ihnen Rollen zuweisen können.
+1.  From the Users blade, click **Add** to open the **Add access blade** where you can add a user, group, or application, and assign a role to them.  
 
-    ![Benutzer hinzufügen](media/automation-role-based-access-control/automation-02-add-user.png)
+    ![Add user](media/automation-role-based-access-control/automation-02-add-user.png)  
 
-2.	Wählen Sie eine Rolle aus der Liste der verfügbaren Rollen aus. Wir wählen die Rolle **Leser** aus. Sie können aber jede der verfügbaren, integrierten Rollen, die von Automation-Konten unterstützt werden, oder auch eine eigene, benutzerdefinierte Rolle auswählen.
+2.  Select a role from the list of available roles. We will choose the **Reader** role, but you can choose any of the available built-in roles that an Automation Account supports or any custom role you may have defined.  
 
-    ![Rolle wählen](media/automation-role-based-access-control/automation-03-select-role.png)
+    ![Select role](media/automation-role-based-access-control/automation-03-select-role.png)  
 
-3.	Klicken Sie auf **Benutzer hinzufügen**, um das Blatt **Benutzer hinzufügen** zu öffnen. Falls Sie bereits Benutzer, Gruppen oder Anwendungen hinzugefügt haben, um Ihr Abonnement zu verwalten, werden diese Benutzer aufgelistet, und Sie können sie auswählen, um ihnen den Zugriff zu erteilen. Falls keine Benutzer aufgeführt werden oder falls der Benutzer, den Sie hinzufügen möchten, nicht auf der Liste steht, klicken Sie auf **Einladen**, um das Blatt **Einen Gast einladen** zu öffnen. Von dort können Sie jeden Benutzer mit einer gültigen Microsoft-Konto-E-Mail-Adresse wie Outlook.com, OneDrive oder Xbox Live ID einladen. Wenn Sie die E-Mail-Adresse des Benutzers eingegeben haben, klicken Sie auf **Auswählen**, um den Benutzer hinzuzufügen, und dann auf **OK**.
+3.  Click on **Add users** to open the **Add users** blade. If you have added any users, groups, or applications to manage your subscription then those users are listed and you can select them to add access. If there aren’t any users listed, or if the user you are interested in adding is not listed then click **invite** to open the **Invite a guest** blade, where you can invite a user with a valid Microsoft account email address such as Outlook.com, OneDrive, or Xbox Live Ids. Once you have entered the email address of the user, click **Select** to add the user, and then click **OK**. 
 
-    ![Hinzufügen von Benutzern](media/automation-role-based-access-control/automation-04-add-users.png)
+    ![Add users](media/automation-role-based-access-control/automation-04-add-users.png)  
  
-    Sie sollten jetzt den Benutzer auf dem Blatt **Benutzer** mit seiner zugewiesenen Rolle als **Leser** sehen.
+    Now you should see the user added to the **Users** blade with the **Reader** role assigned.  
 
-    ![Benutzer auflisten](media/automation-role-based-access-control/automation-05-list-users.png)
+    ![List users](media/automation-role-based-access-control/automation-05-list-users.png)  
 
-    Sie können dem Benutzer die Rolle über das Blatt **Rollen** zuweisen.
+    You can also assign a role to the user from the **Roles** blade. 
 
-1. Klicken Sie auf dem Blatt „Benutzer“ auf **Rollen**, um das Blatt **Rollen** zu öffnen. In diesem Blatt können Sie den Namen der Rolle sowie die Anzahl der Benutzer und Gruppen sehen, denen diese Rolle zugewiesen wurde.
+1. Click **Roles** from the Users blade to open the **Roles blade**. From this blade, you can view the name of the role, the number of users and groups assigned to that role.
 
-    ![Rollen vom Benutzerblatt zuweisen](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
+    ![Assign role from users blade](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
    
-    >[AZURE.NOTE] Die rollenbasierte Zugriffssteuerung kann nur auf der Automation-Konto-Ebene eingerichtete werden und nicht bei einer Ressource unter dem Automation-Konto.
+    >[AZURE.NOTE] Role-based access control can only be set at the Automation Account level and not at any resource below the Automation Account.
 
-    Sie können einem Benutzer, einer Gruppe oder einer Anwendung mehr als eine Rolle zuweisen. Falls wir dem Benutzer beispielsweise die Rolle **Operator für Automation** zusammen mit der Rolle **Leser** zuweisen, kann er alle Automation-Ressourcen anzeigen und die Runbookaufträge ausführen. Sie können das Dropdown-Menü erweitern, um eine Liste mit allen dem Benutzer zugewiesenen Rollen anzeigen zu lassen.
+    You can assign more than one role to a user, group, or application. For example, if we add the **Automation Operator** role along with the **Reader role** to the user, then they can view all the Automation resources, as well as execute the runbook jobs. You can expand the dropdown to view a list of roles assigned to the user.  
 
-    ![Mehrere Rollen anzeigen](media/automation-role-based-access-control/automation-07-view-multiple-roles.png)
+    ![View multiple roles](media/automation-role-based-access-control/automation-07-view-multiple-roles.png)  
  
-### Benutzer entfernen
+### <a name="remove-a-user"></a>Remove a user
 
-Sie können die Zugriffserlaubnisse eines Benutzers, der selbst nicht das Automation-Konto verwaltet oder nicht mehr für die Organisation arbeitet, entfernen. Folgende Schritte müssen Sie durchführen, um einen Benutzer zu entfernen:
+You can remove the access permission for a user who is not managing the Automation Account, or who no longer works for the organization. Following are the steps to remove a user: 
 
-1.	Wählen Sie auf dem Blatt **Benutzer** die Rollenzuweisung aus, die Sie entfernen möchten.
+1.  From the **Users** blade, select the role assignment that you wish to remove.
 
-2.	Klicken Sie auf dem Blatt mit den Zuweisungsdetails auf die Schaltfläche **Entfernen**.
+2.  Click the **Remove** button in the assignment details blade.
 
-3.	Klicken Sie auf **Ja**, um die Entfernung zu bestätigen.
+3.  Click **Yes** to confirm removal. 
 
-    ![Benutzer entfernen](media/automation-role-based-access-control/automation-08-remove-users.png)
+    ![Remove users](media/automation-role-based-access-control/automation-08-remove-users.png)  
 
-## Benutzer mit zugewiesener Rolle
+## <a name="role-assigned-user"></a>Role Assigned User
 
-Wenn sich Benutzer, denen eine Rolle zugewiesen ist, bei ihrem Automation-Konto anmelden, wird ihnen das Konto des Besitzers in der Liste mit den **Standardverzeichnissen** angezeigt. Um das Automation-Konto, dem sie hinzugefügt wurden, sehen zu können, müssen sie das Standardverzeichnis auf das Standardverzeichnis des Besitzers ändern.
+When a user assigned to a role logs in to their Automation account, they can now see the owner’s account listed in the list of **Default Directories**. In order to view the Automation account that they have been added to, they must switch the default directory to the owner’s default directory.  
 
-![Standardverzeichnis](media/automation-role-based-access-control/automation-09-default-directory-in-role-assigned-user.png)
+![Default directory](media/automation-role-based-access-control/automation-09-default-directory-in-role-assigned-user.png)  
 
-### Die Benutzererfahrung mit der Rolle „Operator für Automation“
+### <a name="user-experience-for-automation-operator-role"></a>User experience for Automation operator role
 
-Wenn Benutzer, denen die Rolle „Operator für Automation“ zugewiesen wurde, das ihnen zugewiesene Automation-Konto anzeigen, können sie lediglich die Liste mit den Runbooks, Runbookaufgaben und Zeitplänen sehen, die im Automation-Konto erstellt wurden. Dies gilt aber nicht für deren Definition. Sie können die Runbookaufgabe starten, anhalten, unterbrechen, fortführen oder einplanen. Der Benutzer wird auf die anderen Automation-Ressourcen wie Konfigurationen, Hybrid-Worker-Gruppen oder DSC-Knoten nicht zugreifen können.
+When a user, who is assigned to the Automation Operator role views the Automation account they are assigned to, they can only view the list of runbooks, runbook jobs and schedules created in the Automation account but can’t view their definition. They can start, stop, suspend, resume or schedule the runbook job. The user will not have access to other Automation resources such as configurations, hybrid worker groups or DSC nodes.  
 
-![Kein Zugriff auf Ressourcen](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
+![No access to resourcres](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)  
 
-Wenn der Benutzer das Runbook anklickt, werden ihm die Befehle, die Quelle anzuzeigen oder das Runbook zu bearbeiten, nicht angeboten, da die Rolle „Operator für Automation“ diese Zugriffe nicht erlaubt.
+When the user clicks on the runbook, the commands to view the source or edit the runbook are not provided as the Automation operator role doesn’t allow access to them.  
 
-![Kein Änderungszugriff auf Runbook](media/automation-role-based-access-control/automation-11-no-access-to-edit-runbook.png)
+![No access to edit runbook](media/automation-role-based-access-control/automation-11-no-access-to-edit-runbook.png)  
 
-Der Benutzer wird einen Lese- und Erstellungszugriff für die Zeitpläne haben, aber keinen Zugriff auf andere Assettypen.
+The user will have access to view and to create schedules but will not have access to any other asset type.  
 
-![Kein Zugriff auf Assets](media/automation-role-based-access-control/automation-12-no-access-to-assets.png)
+![No access to assets](media/automation-role-based-access-control/automation-12-no-access-to-assets.png)  
 
-Dieser Benutzer hat auch keine Zugriffsrechte, um die einem Runbook zugeordneten Webhooks zu sehen.
+This user also doesn’t have access to view the webhooks associated with a runbook
 
-![Kein Zugriff auf Webhooks](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)
+![No access to webhooks](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)  
 
-## Rollenbasierte Zugriffssteuerung für das Automation-Konto mit Azure PowerShell konfigurieren
+## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>Configure RBAC for your Automation Account using Azure PowerShell
 
-Rollenbasierter Zugriff kann für ein Automation-Konto auch mit den folgenden [Azure PowerShell-Cmdlets](../active-directory/role-based-access-control-manage-access-powershell.md) konfiguriert werden.
+Role-based access can also be configured to an Automation Account using the following [Azure PowerShell cmdlets](../active-directory/role-based-access-control-manage-access-powershell.md).
 
-• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) listet alle in Azure Active Directory verfügbaren RBAC-Rollen auf. Sie können diesen Befehl zusammen mit der **Name**-Eigenschaft verwenden, um alle Aktionen aufzulisten, die von einer bestimmten Rolle durchgeführt werden können. **Beispiel:** ![Beziehe Rollendefinition](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)
+• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) lists all RBAC roles that are available in Azure Active Directory. You can use this command along with the **Name** property to list all the actions that can be performed by a specific role.  
+    **Example:**  
+    ![Get role definition](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)  
 
-• [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) listet die Rollenzuweisungen durch Azure AD RBAC für den angegebenen Bereich auf. Ohne einschränkende Parameter gibt dieser Befehl alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den **ExpandPrincipalGroups**-Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten. **Beispiel:** Verwenden Sie den folgenden Befehl, um alle Benutzer innerhalb eines Automation-Kontos mit ihren Rollen aufzulisten.
+• [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) lists Azure AD RBAC role assignments at the specified scope. Without any parameters, this command returns all the role assignments made under the subscription. Use the **ExpandPrincipalGroups** parameter to list access assignments for the specified user as well as the groups the user is a member of.  
+    **Example:** Use the following command to list all the users and their roles within an automation account.
 
     Get-AzureRMRoleAssignment -scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>” 
 
-![Beziehe Rollenzuweisung](media/automation-role-based-access-control/automation-15-get-azurerm-role-assignment.png)
+![Get role assignment](media/automation-role-based-access-control/automation-15-get-azurerm-role-assignment.png)
 
-• Verwenden Sie [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx), um Benutzern, Gruppen und Anwendungen die Zugriffsberechtigung für einen bestimmten Bereich zuzuweisen. **Beispiel:** Verwenden Sie den folgenden Befehl, um die Rolle „Operator für Automation“ für einen Benutzer im Bereich des Automation-Kontos zuzuweisen.
+• [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx) to assign access to users, groups and applications to a particular scope.  
+    **Example:** Use the following command to assign the “Automation Operator” role for a user in the Automation Account scope.
 
     New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName "Automation operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”  
 
-![Neue Rollenzuweisung](media/automation-role-based-access-control/automation-16-new-azurerm-role-assignment.png)
+![New role assignment](media/automation-role-based-access-control/automation-16-new-azurerm-role-assignment.png)
 
-• Verwenden Sie [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx), um den Zugriff eines angegebenen Benutzers, der Gruppe oder der Anwendung für einen bestimmten Bereich zu entfernen. **Beispiel:** Verwenden Sie den folgenden Befehl, um den Benutzer aus der Rolle „Operator für Automation“ im Bereich des Automation-Kontos zu entfernen.
+• Use [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx) to remove access of a specified user, group or application from a particular scope.  
+    **Example:** Use the following command to remove the user from the “Automation Operator” role in the Automation Account scope.
 
     Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName "Automation Operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”
 
-Ersetzen Sie in den obigen Beispielen die **Anmelde-ID**, die **Abonnement-ID**, den **Namen der Ressourcengruppe** und den **Namen des Automation-Kontos** durch die entsprechenden Werte Ihres Kontos. Wählen Sie **Ja**, wenn Sie zum Bestätigen aufgefordert werden, bevor Sie mit dem Entfernen von Benutzerrollenzuweisungen fortfahren.
+In the above examples, replace **sign in Id**, **subscription Id**, **resource group name** and **Automation account name** with your account details. Choose **yes** when prompted to confirm before continuing to remove user role assignment.   
 
 
-## Nächste Schritte
--  Weitere Informationen zu den verschiedenen Möglichkeiten, die rollenbasierte Zugriffsteuerung für Azure Automation zu konfigurieren, finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md).
-- Weitere Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
-- Weitere Informationen zu verschiedenen Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
+## <a name="next-steps"></a>Next Steps
+-  For information on different ways to configure RBAC for Azure Automation, refer to [manage RBAC with Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md).
+- For details on different ways to start a runbook, see [Starting a runbook](automation-starting-a-runbook.md)
+- For information about different runbook types, refer to [Azure Automation runbook types](automation-runbook-types.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

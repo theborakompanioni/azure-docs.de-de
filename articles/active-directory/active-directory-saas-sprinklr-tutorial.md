@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory-Integration mit Sprinklr | Microsoft Azure" 
-    description="Hier erfahren Sie, wie Sie Sprinklr mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
+    pageTitle="Tutorial: Azure Active Directory integration with Sprinklr | Microsoft Azure" 
+    description="Learn how to use Sprinklr with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,176 +14,182 @@
     ms.date="09/19/2016" 
     ms.author="jeedes" />
 
-#Tutorial: Azure Active Directory-Integration mit Sprinklr
+
+#<a name="tutorial:-azure-active-directory-integration-with-sprinklr"></a>Tutorial: Azure Active Directory integration with Sprinklr
   
-In diesem Tutorial wird die Integration von Azure und Sprinklr erläutert.  
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+The objective of this tutorial is to show the integration of Azure and Sprinklr.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   Ein gültiges Azure-Abonnement
--   Ein Sprinklr-Mandant
+-   A valid Azure subscription
+-   A Sprinklr tenant
   
-Nach Abschluss dieses Tutorials können sich die Sprinklr zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Sprinklr-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+After completing this tutorial, the Azure AD users you have assigned to Sprinklr will be able to single sign into the application at your Sprinklr company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Aktivieren der Anwendungsintegration für Sprinklr
-2.  Konfigurieren der einmaligen Anmeldung
-3.  Konfigurieren der Benutzerbereitstellung
-4.  Zuweisen von Benutzern
+1.  Enabling the application integration for Sprinklr
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![Szenario](./media/active-directory-saas-sprinklr-tutorial/IC782900.png "Szenario")
+![Scenario](./media/active-directory-saas-sprinklr-tutorial/IC782900.png "Scenario")
 
-##Aktivieren der Anwendungsintegration für Sprinklr
+##<a name="enabling-the-application-integration-for-sprinklr"></a>Enabling the application integration for Sprinklr
   
-In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Sprinklr aktivieren.
+The objective of this section is to outline how to enable the application integration for Sprinklr.
 
-###So aktivieren Sie die Anwendungsintegration für Sprinklr:
+###<a name="to-enable-the-application-integration-for-sprinklr,-perform-the-following-steps:"></a>To enable the application integration for Sprinklr, perform the following steps:
 
-1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-sprinklr-tutorial/IC700993.png "Active Directory")
 
-2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![Anwendungen](./media/active-directory-saas-sprinklr-tutorial/IC700994.png "Anwendungen")
+    ![Applications](./media/active-directory-saas-sprinklr-tutorial/IC700994.png "Applications")
 
-4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
+4.  Click **Add** at the bottom of the page.
 
-    ![Anwendung hinzufügen](./media/active-directory-saas-sprinklr-tutorial/IC749321.png "Anwendung hinzufügen")
+    ![Add application](./media/active-directory-saas-sprinklr-tutorial/IC749321.png "Add application")
 
-5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-sprinklr-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
+    ![Add an application from gallerry](./media/active-directory-saas-sprinklr-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  Geben Sie in das **Suchfeld** **Sprinklr** ein.
+6.  In the **search box**, type **Sprinklr**.
 
-    ![Anwendungskatalog](./media/active-directory-saas-sprinklr-tutorial/IC782901.png "Anwendungskatalog")
+    ![Application Gallery](./media/active-directory-saas-sprinklr-tutorial/IC782901.png "Application Gallery")
 
-7.  Wählen Sie im Ergebnisbereich **Sprinklr** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+7.  In the results pane, select **Sprinklr**, and then click **Complete** to add the application.
 
     ![Sprinklr](./media/active-directory-saas-sprinklr-tutorial/IC782902.png "Sprinklr")
 
-##Konfigurieren der einmaligen Anmeldung
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Sprinklr zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (Konvertieren eines binären Zertifikats in eine Textdatei; in englischer Sprache) weitere Informationen.
+The objective of this section is to outline how to enable users to authenticate to Sprinklr with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to create a base-64 encoded certificate file.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
 
-###So konfigurieren Sie einmaliges Anmelden
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Sprinklr** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  In the Azure classic portal, on the **Sprinklr** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sprinklr-tutorial/IC782903.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sprinklr-tutorial/IC782903.png "Configure single sign-on")
 
-2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer Sprinklr anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2.  On the **How would you like users to sign on to Sprinklr** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sprinklr-tutorial/IC782904.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sprinklr-tutorial/IC782904.png "Configure single sign-on")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Sprinklr-Anmelde-URL** die URL im Format „*https://\<Mandanten-Name>.sprinklr.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  On the **Configure App URL** page, in the **Sprinklr Sign In URL** textbox, type your URL using the following pattern "*https://\<tenant-name\>.sprinklr.com*", and then click **Next**.
 
-    ![App-URL konfigurieren](./media/active-directory-saas-sprinklr-tutorial/IC782905.png "App-URL konfigurieren")
+    ![Configure App URL](./media/active-directory-saas-sprinklr-tutorial/IC782905.png "Configure App URL")
 
-4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Sprinklr** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
+4.  On the **Configure single sign-on at Sprinklr** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sprinklr-tutorial/IC782906.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sprinklr-tutorial/IC782906.png "Configure single sign-on")
 
-5.  Melden Sie sich in einem anderen Webbrowserfenster bei der Sprinklr-Unternehmenswebsite als Administrator an.
+5.  In a different web browser window, log into your Sprinklr company site as an administrator.
 
-6.  Wechseln Sie zu **Verwaltung > Einstellungen**.
+6.  Go to **Administration \> Settings**.
 
-    ![Verwaltung](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "Verwaltung")
+    ![Administration](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "Administration")
 
-7.  Wechseln Sie zur **Partner verwalten > Einmaliges Anmelden** im linken Fensterbereich.
+7.  Go to **Manage Partner \> Single Sign** on from the left pane.
 
-    ![Partner verwalten](./media/active-directory-saas-sprinklr-tutorial/IC782908.png "Partner verwalten")
+    ![Manage Partner](./media/active-directory-saas-sprinklr-tutorial/IC782908.png "Manage Partner")
 
-8.  Klicken Sie auf **+Einmalige Anmeldungen hinzufügen**.
+8.  Click **+Add Single Sign Ons**.
 
-    ![Einmaliges Anmelden](./media/active-directory-saas-sprinklr-tutorial/IC782909.png "Einmaliges Anmelden")
+    ![Single Sign-Ons](./media/active-directory-saas-sprinklr-tutorial/IC782909.png "Single Sign-Ons")
 
-9.  Führen Sie im Dialogfeld **Einmaliges Anmelden** die folgenden Schritte aus:
+9.  On the **Single Sign on** page, perform the following steps:
 
-    ![Einmaliges Anmelden](./media/active-directory-saas-sprinklr-tutorial/IC782910.png "Einmaliges Anmelden")
+    ![Single Sign-Ons](./media/active-directory-saas-sprinklr-tutorial/IC782910.png "Single Sign-Ons")
 
-    1.  Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein (z. B.: *WAADSSOTest*).
-    2.  Wählen Sie **Aktiviert**.
-    3.  Wählen Sie **Neues SSO-Zertifikat verwenden**.
-    4.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.
+    1.  In the **Name** textbox, type a name for your configuration (e.g.: *WAADSSOTest*).
+    2.  Select **Enabled**.
+    3.  Select **Use new SSO Certificate**.
+    4.  Create a **base-64 encoded** file from your downloaded certificate.  
 
-        >[AZURE.TIP] Weitere Informationen finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o).
+        >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-    5.  Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat des Identitätsanbieters** ein.
-    6.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Sprinklr** den Wert der **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Entitäts-ID** ein.
-    7.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Sprinklr** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmelde-URL des ID-Anbieters** ein.
-    8.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Sprinklr** den Wert der **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmelde-URL des ID-Anbieters** ein.
-    9.  Wählen Sie für **SAML-Benutzer-ID-Typ** **Erklärung enthält sprinklr.com-Benutzernamen des Benutzers**.
-    10. Wählen Sie für **SAML-Benutzer-ID-Speicherort** die Option **Benutzer-ID ist das Namensbezeichnerelement der Ausstellererklärung**.
-    11. Schließen Sie das Textfeld mit **Speichern**.
+    5.  Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **Identity Provider Certificate** textbox,
+    6.  In the Azure classic portal, on the **Configure single sign-on at Sprinklr** dialog page, copy the **Identity Provider ID** value, and then paste it into the **Entity Id** textbox.
+    7.  In the Azure classic portal, on the **Configure single sign-on at Sprinklr** dialog page, copy the **Remote Login URL** value, and then paste it into the **Identity Provider Login URL** textbox.
+    8.  In the Azure classic portal, on the **Configure single sign-on at Sprinklr** dialog page, copy the **Remote Logout URL** value, and then paste it into the **Identity Provider Logout URL** textbox.
+    9.  As **SAML User ID Type**, select **Assertion contains User”s sprinklr.com username**.
+    10. As **SAML User ID Location**, select **User ID is in the Name Identifier element of the Subject statement**.
+    11. Close **Save**.
 
         ![SAML](./media/active-directory-saas-sprinklr-tutorial/IC782911.png "SAML")
 
-10. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sprinklr-tutorial/IC782912.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign-on](./media/active-directory-saas-sprinklr-tutorial/IC782912.png "Configure single sign-on")
 
-##Konfigurieren der Benutzerbereitstellung
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Damit sich AAD-Benutzer anmelden können, müssen sie für den Zugriff innerhalb der Sprinklr-Anwendung bereitgestellt werden.  
-In diesem Abschnitt wird beschrieben, wie in Sprinklr AAD-Benutzerkonten erstellt werden.
+For AAD users to be able to sign in, they must be provisioned for access inside the Sprinklr application.  
+This section describes how to create AAD user accounts inside Sprinklr.
 
-###Führen Sie zum Bereitstellen von Benutzerkonten in Sprinklr die folgenden Schritte aus:
+###<a name="to-provision-a-user-account-in-sprinklr,-perform-the-following-steps:"></a>To provision a user account in Sprinklr, perform the following steps:
 
-1.  Melden Sie sich bei der Sprinklr-Unternehmenswebsite als Administrator an.
+1.  Log into your Sprinklr company site as an administrator.
 
-2.  Wechseln Sie zu **Verwaltung > Einstellungen**.
+2.  Go to **Administration \> Settings**.
 
-    ![Verwaltung](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "Verwaltung")
+    ![Administration](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "Administration")
 
-3.  Wechseln Sie zur **Client verwalten > Benutzer** im linken Fensterbereich.
+3.  Go to **Manage Client \> Users** from the left pane.
 
-    ![Einstellungen](./media/active-directory-saas-sprinklr-tutorial/IC782914.png "Einstellungen")
+    ![Settings](./media/active-directory-saas-sprinklr-tutorial/IC782914.png "Settings")
 
-4.  Klicken Sie auf **Benutzer hinzufügen**.
+4.  Click **Add User**.
 
-    ![Einstellungen](./media/active-directory-saas-sprinklr-tutorial/IC782915.png "Einstellungen")
+    ![Settings](./media/active-directory-saas-sprinklr-tutorial/IC782915.png "Settings")
 
-5.  Führen Sie im Dialogfeld **Benutzer bearbeiten** die folgenden Schritte aus:
+5.  On the **Edit user** dialog, perform the following steps:
 
-    ![Benutzer bearbeiten](./media/active-directory-saas-sprinklr-tutorial/IC782916.png "Benutzer bearbeiten")
+    ![Edit user](./media/active-directory-saas-sprinklr-tutorial/IC782916.png "Edit user")
 
-    1.  Geben Sie in die Textfelder **E-Mail**, **Vorname** und **Nachname** die Informationen des Azure AD-Benutzerkontos ein, welches Sie bereitstellen möchten.
-    2.  Wählen Sie **Kennwort deaktiviert**.
-    3.  Wählen Sie eine **Sprache** aus.
-    4.  Wählen Sie einen **Benutzertyp** aus.
-    5.  Klicken Sie auf **Aktualisieren**.
+    1.  In the **Email**, **First Name** and **Last Name** textboxes, type the information of an Azure AD user account you want to provision.
+    2.  Select **Password Disabled**.
+    3.  Select a **Language**.
+    4.  Select a **User Type**.
+    5.  Click **Update**.
 
-    >[AZURE.IMPORTANT] **Kennwort deaktiviert** muss ausgewählt sein, um einem Benutzer die Anmeldung über einen Identitätsanbieter zu ermöglichen.
+    >[AZURE.IMPORTANT] **Password Disabled** must be selected to enable a user to log in via an Identity provider.
 
-6.  Wechseln Sie zu **Rolle**, und führen Sie dann die folgenden Schritte aus:
+6.  Go to **Role**, and then perform the following steps:
 
-    ![Partnerrollen](./media/active-directory-saas-sprinklr-tutorial/IC782917.png "Partnerrollen")
+    ![Partner Roles](./media/active-directory-saas-sprinklr-tutorial/IC782917.png "Partner Roles")
 
-    1.  Wählen Sie aus der Liste **Global** die Option **ALL\_Permissions** aus.
-    2.  Klicken Sie auf **Aktualisieren**.
+    1.  From the **Global** list, select **ALL\_Permissions**.
+    2.  Click **Update**.
 
->[AZURE.NOTE] Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Sprinklr-Benutzerkonten oder mithilfe der von Sprinklr bereitgestellten APIs erstellen.
+>[AZURE.NOTE] You can use any other Sprinklr user account creation tools or APIs provided by Sprinklr to provision Azure AD user accounts.
 
-##Zuweisen von Benutzern
+##<a name="assigning-users"></a>Assigning users
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###So weisen Sie Sprinklr Benutzer zu:
+###<a name="to-assign-users-to-sprinklr,-perform-the-following-steps:"></a>To assign users to Sprinklr, perform the following steps:
 
-1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
+1.  In the Azure classic portal, create a test account.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für **Sprinklr** auf **Benutzer zuweisen**.
+2.  On the **Sprinklr **application integration page, click **Assign users**.
 
-    ![Benutzer zuweisen](./media/active-directory-saas-sprinklr-tutorial/IC782918.png "Benutzer zuweisen")
+    ![Assign users](./media/active-directory-saas-sprinklr-tutorial/IC782918.png "Assign users")
 
-3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
-    ![Ja](./media/active-directory-saas-sprinklr-tutorial/IC767830.png "Ja")
+    ![Yes](./media/active-directory-saas-sprinklr-tutorial/IC767830.png "Yes")
   
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,76 +1,81 @@
 <properties
-	pageTitle="Hinzufügen von Benutzern aus anderen Verzeichnissen oder Partnerunternehmen in der Azure Active Directory-Vorschau | Microsoft Azure"
-	description="Erklärt, wie neue Benutzer hinzugefügt oder Benutzerinformationen in Azure Active Directory geändert werden, z.B. externe Benutzer und Gastbenutzer."
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="Add users from other directories or partner companies in Azure Active Directory preview | Microsoft Azure"
+    description="Explains how to add users or change user information in Azure Active Directory, including external and guest users."
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/12/2016"
-	ms.author="curtand"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/12/2016"
+    ms.author="curtand"/>
 
-# Hinzufügen von Benutzern aus anderen Verzeichnissen oder Partnerunternehmen in der Azure Active Directory-Vorschau
+
+# <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory-preview"></a>Add users from other directories or partner companies in Azure Active Directory preview
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](active-directory-users-create-external-azure-portal.md)
-- [Klassisches Azure-Portal](active-directory-create-users-external.md)
+- [Azure portal](active-directory-users-create-external-azure-portal.md)
+- [Azure classic portal](active-directory-create-users-external.md)
 
-In diesem Artikel wird beschrieben, wie Sie in der Azure Active Directory-Vorschau (Azure AD) Benutzer aus anderen Verzeichnissen sowie Benutzer von Partnerunternehmen hinzufügen. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation sowie Benutzer mit Microsoft-Konten hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
+This article explains how to add users either from other directories in Azure Active Directory (Azure AD) preview or from partner companies. [What's in the preview?](active-directory-preview-explainer.md) For information about adding new users in your organization, and adding users who have Microsoft accounts, see [Add new users to Azure Active Directory](active-directory-users-create-azure-portal.md). Added users don't have administrator permissions by default, but you can assign roles to them at any time.
 
-## Hinzufügen eines Benutzers
+## <a name="add-a-user"></a>Add a user
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
+1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
 
-2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
 
-    ![Öffnen der Benutzerverwaltung](./media/active-directory-users-create-external-azure-portal/create-users-user-management.png)
+    ![Opening user management](./media/active-directory-users-create-external-azure-portal/create-users-user-management.png)
 
-3.  Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Benutzer** aus, und klicken Sie dann auf **Hinzufügen**.
+3.  On the **Users and groups** blade, select **Users**, and then select **Add**.
 
-    ![Auswählen des Befehls „Hinzufügen“](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
+    ![Selecting the Add command](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
 
-4. Geben Sie auf dem Blatt **Benutzer** im Feld **Name** einen Anzeigenamen und im Feld **Benutzername** den Anmeldenamen des Benutzers ein.
+4. On the **User** blade, provide a display name in **Name** and the user's sign-in name in **User name**.
 
-5. Kopieren oder notieren Sie sich das generierte Benutzerkennwort, damit sie es nach Abschluss des Vorgangs dem Benutzer mitteilen können.
+5. Copy or otherwise note the generated user password so that you can provide it to the user after this process is complete.
 
-6. Wählen Sie optional **Profil** aus, um den Vor- und Nachnamen des Benutzers, eine Position und einen Abteilungsnamen hinzuzufügen.
+6. Optionally, select **Profile** to add the users first and last name, a job title, and a department name.
 
-	![Opening the user profile](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
+        ![Opening the user profile](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
 
-	- Wählen Sie **Gruppen** aus, um den Benutzer mindestens einer Gruppe hinzuzufügen.
+    - Select **Groups** to add the user to one or more groups.
 
-		![Hinzufügen eines Benutzers zu Gruppen](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
+        ![Adding a user to groups](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
 
-	- Wählen Sie **Organisationsrolle** aus, um den Benutzer über die Liste **Rollen** einer Rolle zuzuweisen. Weitere Informationen zu Benutzer- und Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](active-directory-assign-admin-roles.md).
+    - Select **Organizational role** to assign the user to a role from the **Roles** list. For more information about user and administrator roles, see [Assigning administrator roles in Azure AD](active-directory-assign-admin-roles.md).
 
-		![Zuweisen eines Benutzers zu einer Rolle](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
+        ![Assigning a user to a role](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
 
-7. Klicken Sie auf **Erstellen**.
+7. Select **Create**.
 
-8. Sorgen Sie für eine sichere Übermittlung des generierten Kennworts an den neuen Benutzer, damit sich dieser anmelden kann.
+8. Securely distribute the generated password to the new user so that the user can sign in.
 
-> [AZURE.IMPORTANT] Achten Sie auf die folgenden Probleme, die beim Hinzufügen eines Benutzerkontos auftreten können, wenn Ihre Organisation mehr als eine Domäne verwendet:
+> [AZURE.IMPORTANT] If your organization uses more than one domain, you should know about the following issues when you add a user account:
 >
-> - Um Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzuzufügen, können Sie beispielsweise **zuerst** geoffgrisso@contoso.onmicrosoft.com und **anschließend** geoffgrisso@contoso.com hinzufügen.
-> - Fügen Sie geoffgrisso@contoso.com **nicht** vor geoffgrisso@contoso.onmicrosoft.com hinzu. Diese Reihenfolge ist wichtig, und es kann umständlich sein, diesen Vorgang rückgängig zu machen.
+> - TO add user accounts with the same user principal name (UPN) across domains, **first** add, for example, geoffgrisso@contoso.onmicrosoft.com, **followed by** geoffgrisso@contoso.com.
+> - **Don't** add geoffgrisso@contoso.com before you add geoffgrisso@contoso.onmicrosoft.com. This order is important, and can be cumbersome to undo.
 
-Wenn Sie Informationen für einen Benutzer ändern, dessen Identität mit Ihrem lokalen Active Directory-Dienst synchronisiert ist, können Sie die Benutzerinformationen im klassischen Azure-Portal nicht ändern. Verwenden Sie zum Ändern der Benutzerinformationen Ihre lokalen Active Directory-Verwaltungstools.
+If you change information for a user whose identity is synchronized with your on-premises Active Directory service, you can't change the user information in the Azure classic portal. To change the user information, use your on-premises Active Directory management tools.
 
 
-## Nächste Schritte
+## <a name="what's-next"></a>What's next
 
-- [Hinzufügen eines Benutzers](active-directory-users-create-azure-portal.md)
-- [Zurücksetzen des Kennworts für einen Benutzer im neuen Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-- [Zuweisen eines Benutzers zu einer Rolle in Azure AD](active-directory-users-assign-role-azure-portal.md)
-- [Ändern der Arbeitsinformationen für einen Benutzer](active-directory-users-work-info-azure-portal.md)
-- [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
-- [Löschen eines Benutzers in Azure AD](active-directory-users-delete-user-azure-portal.md)
+- [Add a user](active-directory-users-create-azure-portal.md)
+- [Reset a user's password in the new Azure portal](active-directory-users-reset-password-azure-portal.md)
+- [Assign a user to a role in your Azure AD](active-directory-users-assign-role-azure-portal.md)
+- [Change a user's work information](active-directory-users-work-info-azure-portal.md)
+- [Manage user profiles](active-directory-users-profile-azure-portal.md)
+- [Delete a user in your Azure AD](active-directory-users-delete-user-azure-portal.md)
 
-<!----HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

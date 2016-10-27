@@ -1,32 +1,36 @@
 <properties 
-	pageTitle="Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (WebApi-Projekte) | Microsoft Azure" 
-	description="Erfahren Sie etwas über die ersten Schritte mit Azure Active Directory in WebApi-Projekten nach dem Herstellen einer Verbindung oder dem Erstellen eines Azure AD mithilfe von verbundenen Visual Studio-Diensten." 
+    pageTitle="Get Started with Azure Active Directory and Visual Studio connected services (WebApi projects) | Microsoft Azure" 
+    description="How to get started using Azure Active Directory in WebApi projects after connecting to or creating an Azure AD using Visual Studio connected services" 
   services="active-directory"
-	documentationCenter="" 
-	authors="TomArcher" 
-	manager="douge" 
-	editor=""/>
+    documentationCenter="" 
+    authors="TomArcher" 
+    manager="douge" 
+    editor=""/>
   
 <tags 
-	ms.service="active-directory" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/15/2016"
-	ms.author="tarcher"/>
+    ms.service="active-directory" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="vs-getting-started" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/15/2016"
+    ms.author="tarcher"/>
 
-# Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (WebApi-Projekte)
+
+# <a name="get-started-with-azure-active-directory-and-visual-studio-connected-services-(webapi-projects)"></a>Get Started with Azure Active Directory and Visual Studio connected services (WebApi projects)
 
 > [AZURE.SELECTOR]
-> - [Erste Schritte](vs-active-directory-webapi-getting-started.md)
-> - [Was ist passiert?](vs-active-directory-webapi-what-happened.md)
+> - [Getting Started](vs-active-directory-webapi-getting-started.md)
+> - [What Happened](vs-active-directory-webapi-what-happened.md)
 
-##Erfordern von Authentifizierung für den Zugriff auf Controller
+##<a name="requiring-authentication-to-access-controllers"></a>Requiring authentication to access controllers
  
-Alle Controller in Ihrem Projekt wurden mit dem Attribut **Authorize** versehen. Dieses Attribut erfordert, dass der Benutzer vor dem Zugriff auf die durch diese Controller definierten APIs authentifiziert werden muss. Wenn Sie anonymen Zugriff auf diesen Controller erlauben möchten, entfernen Sie dieses Attribut vom Controller. Wenn Sie die Berechtigungen präziser festlegen möchten, wenden Sie das Attribut auf jede Methode an, die Autorisierung erfordert, anstatt es auf die Controllerklasse anzuwenden.
+All controllers in your project were adorned with the **Authorize** attribute. This attribute will require the user to be authenticated before accessing the APIs defined by these controllers. To allow the controller to be accessed anonymously, remove this attribute from the controller. If you want to set the permissions at a more granular level, apply the attribute to each method that requires authorization instead of applying it to the controller class.
 
-[Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
+[Learn more about Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,52 +1,57 @@
 <properties 
-	pageTitle="Überwachen des Codierauftragsstatus mithilfe des Azure-Portals" 
-	description="Dieses Tutorial führt Sie durch die Schritte zur Überwachung des Auftragsstatus mithilfe des Azure-Portals." 
-	services="media-services" 
-	documentationCenter="" 
-	authors="juliako" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="Monitor encoding job progress with the Azure portal" 
+    description="This tutorial walks you through the steps of monitoring your job progress using the Azure portal." 
+    services="media-services" 
+    documentationCenter="" 
+    authors="juliako" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/29/2016"  
-	ms.author="juliako"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/29/2016"  
+    ms.author="juliako"/>
 
-#Überwachen des Codierauftragsstatus mithilfe des Azure-Portals
+
+#<a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Monitor encoding job progress with the Azure portal
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-check-job-progress.md)
 - [.NET](media-services-check-job-progress.md)
 - [REST](media-services-rest-check-job-progress.md)
 
-## Übersicht
+## <a name="overview"></a>Overview
 
-> [AZURE.NOTE] Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.NOTE] To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/). 
 
-Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können.
+When you run jobs, you often require a way to track job progress. 
 
-Klicken Sie zum Überwachen des Codierauftragsstatus auf **Einstellungen** (oben auf der Seite), und wählen Sie dann **Aufträge** aus.
+To monitor the progress of the encoding job, click **Settings** (at the top of the page) and then select **Jobs**.
 
-![Aufträge](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![Jobs](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-Sie können auf den Auftrag klicken, um weitere Details anzuzeigen.
+You can click the job to see more details.
 
-![Aufträge](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
+![Jobs](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 
-##Nächste Schritte
+##<a name="next-steps"></a>Next steps
 
-Nach der Codierung eines Auftrags können Sie Ihre Medienobjekte, wie [hier](media-services-portal-publish.md) beschrieben, veröffentlichen und wiedergeben.
+After your encoding job is one, you can publish and play your assets, as described [here](media-services-portal-publish.md).
 
-##Media Services-Lernpfade
+##<a name="media-services-learning-paths"></a>Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Feedback geben
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

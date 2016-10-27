@@ -1,65 +1,68 @@
 <properties 
-	pageTitle="Preismodell für Logik-Apps | Microsoft Azure" 
-	description="Enthält Details zu den Preisen von Logik-Apps." 
-	authors="kevinlam1" 
-	manager="dwrede" 
-	editor="" 
-	services="logic-apps" 
-	documentationCenter=""/>
+    pageTitle="Logic Apps pricing model | Microsoft Azure" 
+    description="Details about how pricing works in Logic Apps" 
+    authors="kevinlam1" 
+    manager="dwrede" 
+    editor="" 
+    services="logic-apps" 
+    documentationCenter=""/>
 
 <tags
-	ms.service="logic-apps"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="07/27/2016"
-	ms.author="klam"/>
+    ms.service="logic-apps"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article" 
+    ms.date="10/12/2016"
+    ms.author="klam"/>
 
-# Preismodell für Logik-Apps
 
-Mit Azure Logic Apps können Sie Integrationsworkflows in der Cloud skalieren und ausführen. Weiter unten finden Sie Details zum Abrechnungsplan und den Tarifen für Logic Apps.
+# <a name="logic-apps-pricing-model"></a>Logic Apps pricing model
 
-## Nutzungspreise
+Azure Logic Apps allows you to scale and execute integration workflows in the cloud.  Below are details on the billing and pricing plans for Logic Apps.
 
-Für neu erstellte Logik-Apps wird ein Nutzungsplan verwendet. Beim Preismodell, das auf der Nutzung von Logik-Apps basiert, ist die Bezahlung nutzungsabhängig. Logik-Apps werden bei Verwendung eines Nutzungsplans nicht gedrosselt. Alle in einer Ausführung einer Logik-App-Instanz ausgeführten Aktionen werden gemessen.
+## <a name="consumption-pricing"></a>Consumption pricing
 
-### Was sind Aktionsausführungen?
+Newly created Logic Apps use a consumption plan. With the Logic Apps consumption pricing model, you only pay for what you use.  Logic Apps are not throttled when using a consumption plan.
+All actions executed in a run of a logic app instance are metered.
 
-Jeder Schritt einer Logik-App-Definition ist eine Aktion. Beispiele hierfür sind Trigger, Ablaufsteuerungsschritte wie Bedingungen, Bereiche, For-Each-Schleifen und Do-Until-Schleifen, Aufrufe von Connectors und Aufrufe von nativen Aktionen. Trigger sind einfach spezielle Aktionen, die für das Instanziieren einer neuen Instanz einer Logik-App beim Auftreten eines bestimmten Ereignisses ausgelegt sind. Es gibt eine Reihe verschiedener Verhalten für Trigger, die sich darauf auswirken können, wie die Logik-App gemessen wird.
+### <a name="what-are-action-executions?"></a>What are action executions?
 
--	**Abfragetrigger**: Mit diesem Trigger wird ein Endpunkt fortlaufend abgefragt, bis er eine Nachricht empfängt, die die Kriterien für die Erstellung einer neuen Instanz einer Logik-App erfüllt. Das Abrufintervall kann mit dem Designer für Logik-Apps im Trigger konfiguriert werden. Jede Abfrageanforderung wird als Aktionsausführung gezählt. Dies gilt auch, wenn keine neue Instanz einer Logik-App erstellt wird.
+Every step in a logic app definition is an action.  This includes triggers, control flow steps like conditions, scopes, for each loops, do until loops, calls to connectors and calls to native actions.
+Triggers are just special actions that are designed to instantiate a new instance of a logic app when a particular event occurs.  There are a number of different behaviors for triggers which could affect how the logic app is metered.
 
--	**Webhooktrigger**: Dieser Trigger wartet darauf, dass von einem Client eine Anforderung an einen bestimmten Endpunkt gesendet wird. Jede Anforderung, die an den Webhookendpunkt gesendet wird, wird als eine Aktionsausführung gezählt. Sowohl beim Anforderungstrigger als auch beim HTTP-Webhooktrigger handelt es sich um Webhooktrigger.
+-   **Polling trigger** – this trigger continually polls an endpoint until it receives a message that satisfies the criteria for creating a new instance of a logic app.  The polling interval can be configured in the trigger in the Logic Apps designer.  Each polling request, even if it doesn’t create a new instance of a logic app, will count as an action execution.
 
--	**Wiederholungstrigger**: Dieser Trigger erstellt eine neue Instanz der Logik-App basierend auf dem Wiederholungsintervall, das im Trigger konfiguriert ist. Beispielsweise kann ein Wiederholungstrigger so konfiguriert werden, dass er alle drei Tage oder auch jede Minute ausgeführt wird.
+-   **Webhook trigger** – this trigger waits for a client to send it a request on a particular endpoint.  Each request sent to the webhook endpoint counts as an action execution. The Request and the HTTP Webhook trigger are both webhook triggers.
 
-Triggerausführungen werden auf dem Ressourcenblatt „Logik-Apps“ unter dem „Triggerverlauf“ angezeigt.
+-   **Recurrence trigger** – this trigger will create a new instance of the logic app based on the recurrence interval configured in the trigger.  For example, a recurrence trigger can be configured to run every 3 days or even every minute.
 
-Alle Aktionen, die ausgeführt wurden – ob erfolgreich oder nicht – werden als Aktionsausführung gemessen. Aktionen, die aufgrund einer nicht erfüllten Bedingung übersprungen wurden, oder Aktionen, die aufgrund einer Beendigung der Logik-App vor dem Abschluss nicht ausgeführt wurden, werden nicht als Aktionsausführungen gezählt.
+Trigger executions can be seen in the Logic Apps resource blade in the Trigger History part.
 
-Innerhalb von Schleifen ausgeführte Aktionen werden pro Iteration der Schleife gezählt. Eine einzelne Aktion in einer For-Each-Schleife, die eine Liste mit zehn Einträgen durchläuft, wird wie folgt gezählt: Anzahl von Einträgen in der Liste (10) multipliziert mit der Anzahl von Aktionen in der Schleife (1) plus eine Aktion für die Initiierung der Schleife. Für dieses Beispiel ergeben sich also (10 * 1) + 1 = 11 Aktionsausführungen.
+All actions that were executed, whether they were successful or failed are metered as an action execution.  Actions that were skipped due to a condition not being met or actions that didn’t execute because the logic app terminated before completion are not counted as action executions.
 
-Für Logik-Apps, die deaktiviert sind, können keine neuen Instanzen instanziiert werden. Daher werden sie für die Dauer der Deaktivierung auch nicht berechnet. Beachten Sie, dass es nach dem Deaktivieren einer Logik-App etwas dauern kann, bis die Instanzen stillgelegt werden und vollständig deaktiviert sind.
+Actions executed within loops are counted per iteration of the loop.  For example, a single action in a for each loop iterating through a list of 10 items will be counted as the count of items in the list (10) multiplied by the number of actions in the loop (1) plus one for the initiation of the loop which, in this example, would be (10 * 1) + 1 = 11 action executions.
 
-## App Service-Pläne
+Logic Apps that are disabled cannot have new instances instantiated and therefore during the time that they are disabled will not get charged.  Be mindful that after disabling a logic app it may take a little time for the instances to quiesce before being completely disabled.
 
-App Service-Pläne sind für das Erstellen einer Logik-App nicht mehr erforderlich. Sie können mit einer vorhandenen Logik-App auch auf einen App Service-Plan verweisen. Mit einem App Service-Plan zuvor erstellte Logik-Apps verhalten sich wie bisher. Je nach dem gewählten Plan werden sie nach dem Überschreiten einer bestimmten Anzahl von täglichen Ausführungen gedrosselt und nicht per Messung der Aktionsausführungen berechnet.
+## <a name="app-service-plans"></a>App Service plans
 
-App Service-Pläne und ihre täglich zulässigen Aktionsausführungen:
+App Service Plans are no longer required to create a Logic App.  You can also reference an App Service Plan with an existing logic app.  Logic apps previously created with an App Service Plan will continue to behave as before where, depending on the plan chosen, will get throttled after a number of daily executions are exceeded and will not be billed using the action execution meter.
+
+App Service Plans and their daily allowed action executions:
 
 | |Free/Shared/Basic|Standard|Premium|
 |---|---|---|---|
-|Aktionsausführungen pro Tag| 200|10\.000|50\.000|
+|Action executions per day| 200|10,000|50,000|
 
-### Umstellen vom nutzungsbasierten Modell auf einen Tarif des App Service-Plans
+### <a name="convert-from-consumption-to-app-service-plan-pricing"></a>Convert from Consumption to App Service Plan pricing
 
-Wenn Sie für eine nutzungsbasierte Logik-App auf einen App Service-Plan verweisen möchten, [führen Sie einfach das nachfolgende PowerShell-Skript aus](https://github.com/logicappsio/ConsumptionToAppServicePlan). Vergewissern Sie sich zunächst, dass die [Azure PowerShell-Tools](https://github.com/Azure/azure-powershell) installiert sind.
+To reference an App Service Plan for a consumption Logic App, you can simply [run the below PowerShell script](https://github.com/logicappsio/ConsumptionToAppServicePlan).  Make sure you first have the [Azure PowerShell tools](https://github.com/Azure/azure-powershell) installed.
 
 ``` powershell
 Param(
     [string] $AppService_RG = '<app-service-resource-group>',
-	[string] $AppService_Name = '<app-service-name>',
+    [string] $AppService_Name = '<app-service-name>',
     [string] $LogicApp_RG = '<logic-app-resource-group>',
     [string] $LogicApp_Name = '<logic-app-name>',
     [string] $subscriptionId = '<azure-subscription-id>'
@@ -84,23 +87,28 @@ $updatedProperties = $logicapp.Properties | Add-Member @{sku = $sku;} -PassThru
 $updatedLA = Set-AzureRmResource -ResourceId $logicapp.ResourceId -Properties $updatedProperties -ApiVersion 2015-08-01-preview
 ```
 
-### Umstellung von einem App Service-Plan auf den nutzungsbasierten Tarif
+### <a name="convert-from-app-service-plan-pricing-to-consumption"></a>Convert from App Service Plan pricing to Consumption
 
-Um eine Logik-App mit zugeordnetem App Service-Plan in ein Verbrauchsmodell zu ändern, entfernen Sie den Verweis auf den App Service-Plan in der Logik-App-Definition. Dies ist durch einen Aufruf eines PowerShell-Cmdlets möglich:
+To change a Logic App that has an App Service Plan associated with it to a consumption model remove the reference to the App Service Plan in the Logic App definition.  This can be done with a call to a PowerShell cmdlet:
 
 `Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`
 
-## Preise
+## <a name="pricing"></a>Pricing
 
-Eine Preisübersicht finden Sie unter [Logik-Apps Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
+For pricing details please see [Logic Apps Pricing](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- [Übersicht über Logik-Apps][whatis]
-- [Erstellen Ihrer ersten Logik-App][create]
+- [An overview of Logic Apps][whatis]
+- [Create your first logic app][create]
 
 [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/
 [whatis]: app-service-logic-what-are-logic-apps.md
 [create]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

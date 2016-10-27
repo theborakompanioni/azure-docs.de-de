@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure-Sicherheits-MVP-Programm | Microsoft Azure"
-   description="Der Artikel enthält eine Übersicht über den Beitragsbereich zur Azure-Sicherheit im MVP-Programm."
+   pageTitle="Azure Security MVP Program | Microsoft Azure"
+   description="The article provides an overview of the Azure Security contribution area in the MVP Program."
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -13,19 +13,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/02/2016"
+   ms.date="10/18/2016"
    ms.author="yurid"/>
 
-# Azure-Sicherheits-MVP-Programm
 
-Most Valuable Professionals (MVPs) von Microsoft sind wichtige Mitglieder der Community, die sich durch ein beispielhaftes Engagement darin auszeichnen, anderen zu einem optimalen Ergebnis bei der Arbeit mit Microsoft-Technologien zu verhelfen. Sie teilen ihre außergewöhnliche Leidenschaft, ihr praktisches Wissen und technisches Können mit der Community und Microsoft.
+# <a name="azure-security-mvp-program"></a>Azure Security MVP Program
 
-Wir freuen uns, ankündigen zu können, dass Microsoft Azure jetzt Communityexperten mit speziellen Fachkenntnissen in Azure-Sicherheit anerkennt. Microsoft-MVPs können im Bereich für Azure-Sicherheitsbeiträge als Microsoft Azure-MVP anerkannt werden.
+Microsoft Most Valuable Professionals (MVPs) are community leaders who’ve demonstrated an exemplary commitment to helping others get the most out of their experience with Microsoft technologies. They share their exceptional passion, real-world knowledge, and technical expertise with the community and with Microsoft.
 
-![Microsoft-MVP](./media/azure-security-mvp/azure-security-mvp-fig1.png)
+We are happy to announce that Microsoft Azure now recognizes community experts with special expertise in Azure security. Microsoft MVPs can be awarded the MVP in Microsoft Azure in the Azure Security contribution area.
 
-Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein MVP zu werden, unter anderem darum, weil dies abhängig von der Technologie und ihrem Lebenszyklus variiert, bewerten wir u.a. den Einfluss der Beiträge des Kandidaten auf Onlineforen wie Microsoft Answers, TechNet und MSDN, Wikis, Online-Inhalte, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und soziale Medien sowie Artikel und Bücher.
+![Microsoft MVP](./media/azure-security-mvp/azure-security-mvp-fig1.png)
 
-Sind Sie Experte für Azure-Sicherheit? Kennen Sie eine Person, auf die dies zutrifft? Dann [nominieren Sie sich selbst oder eine andere Person](https://mvp.microsoft.com/Nomination/nominate-an-mvp) heute als Azure-Sicherheits-MVP!
+While there is no benchmark for becoming an MVP, in part because it varies by technology and its life-cycle, some of the criteria we evaluate include the impact of a nominee’s contributions to online forums such as Microsoft Answers, TechNet and MSDN; wikis and online content; conferences and user groups; podcasts, Web sites, blogs and social media; and articles and books. 
 
-<!---HONumber=AcomDC_0803_2016-->
+Are you an expert in Azure security? Do you know someone who is? Then [Nominate yourself or someone else](https://mvp.microsoft.com/Nomination/nominate-an-mvp) to become an Azure security MVP today!
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

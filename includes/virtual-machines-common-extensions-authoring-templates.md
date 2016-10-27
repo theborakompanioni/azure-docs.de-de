@@ -1,11 +1,12 @@
-## Übersicht über Azure-Ressourcen-Manager-Vorlagen
+## <a name="overview-of-azure-resource-manager-templates"></a>Overview of Azure Resource Manager templates
 
-Azure Resource Manager-Vorlagen ermöglichen es Ihnen, deklarativ die Azure IaaS-Infrastruktur in der Json-Sprache anzugeben, indem Sie die Abhängigkeiten zwischen Ressourcen definieren. Eine ausführliche Übersicht über Azure Resource Manager-Vorlagen finden Sie in den folgenden Artikeln:
+Azure Resource Manager templates allow you to declaratively specify the Azure IaaS infrastructure in Json language by defining the dependencies between resources. For a detailed overview of Azure Resource Manager Templates, please refer to the article below:
 
-[Übersicht über Ressourcengruppen](../articles/resource-group-overview.md)
+[Resource Group Overview](../articles/resource-group-overview.md)
 
-## Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer.
-Bereitstellen der Erweiterung für virtuelle Computer als Teil der Azure Resource Manager-Vorlage erfordert das deklarative Festlegen der Konfiguration für die Erweiterung in der Vorlage. Dies ist das Format für die Angabe der Konfiguration für die Erweiterung.
+## <a name="sample-template-snippet-for-vm-extensions"></a>Sample template snippet for VM extensions
+Deploying VM extensions as part of an Azure Resource Manager template requires you to declaratively specify the extension configuration in the template.
+Here is the format for specifying the extension configuration.
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -24,13 +25,15 @@ Bereitstellen der Erweiterung für virtuelle Computer als Teil der Azure Resourc
       }
       }
 
-Wie Sie oben sehen können, enthält die Erweiterungsvorlage zwei Hauptabschnitte:
+As you can see from the above, the extension template contains two main parts:
 
-1. Name, Herausgeber und Version der Erweiterung
-2. Konfiguration der Erweiterung.
+1. Extension name, publisher and version
+2. Extension Configuration.
 
-## Identifizieren des Herausgebers, des Typs und des typeHandlerVersion-Elements für eine beliebige Erweiterung
+## <a name="identifying-the-publisher,-type,-and-typehandlerversion-for-any-extension"></a>Identifying the publisher, type, and typeHandlerVersion for any extension
 
-Erweiterungen für virtuelle Azure-Computer werden von Microsoft und vertrauenswürdigen Drittanbietern veröffentlicht. Jede Erweiterung wird eindeutig durch Herausgeber, Typ und typeHandlerVersion-Element identifiziert. Diese können wie folgt bestimmt werden:
+Azure VM extensions are published by Microsoft and trusted 3rd party publishers and each extension is uniquely identified by its publisher,type and the typeHandlerVersion. These can be determined as following:  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

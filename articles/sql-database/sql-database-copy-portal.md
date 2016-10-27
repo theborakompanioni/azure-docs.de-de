@@ -1,92 +1,93 @@
 <properties
-	pageTitle="Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals | Microsoft Azure"
-	description="Erstellen der Kopie einer Azure SQL-Datenbank"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Copy an Azure SQL database using the Azure portal | Microsoft Azure"
+    description="Create a copy of an Azure SQL database"
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="09/19/2016"
-	ms.author="sstein"
-	ms.workload="data-management"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="09/19/2016"
+    ms.author="sstein"
+    ms.workload="data-management"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
 
-# Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals
+
+# <a name="copy-an-azure-sql-database-using-the-azure-portal"></a>Copy an Azure SQL Database using the Azure portal
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-database-copy.md)
-- [Azure-Portal](sql-database-copy-portal.md)
+- [Overview](sql-database-copy.md)
+- [Azure portal](sql-database-copy-portal.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [T-SQL](sql-database-copy-transact-sql.md)
 
-Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank über das [Azure-Portal](https://portal.azure.com) auf den gleichen oder einen anderen Server kopieren.
+The following steps show you how to copy a SQL database with the [Azure portal](https://portal.azure.com) to the same server or a different server.
 
-Zum Kopieren einer SQL-Datenbank benötigen Sie Folgendes:
+To copy a SQL database, you need the following items:
 
-- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **Kostenlose Testversion** klicken. Lesen Sie anschließend den Artikel weiter.
-- Eine zu kopierende SQL-Datenbank. Wenn Sie nicht über eine SQL-Datenbank verfügen, können Sie die Erstellung anhand der Schritte im folgenden Artikel durchführen: [Erstellen der ersten Azure SQL-Datenbank](sql-database-get-started.md).
-
-
-## Kopieren der SQL-Datenbank
-
-Öffnen Sie das Blatt „SQL-Datenbank“ für die Datenbank, die Sie kopieren möchten:
-
-1.	Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2.	Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**, und klicken Sie dann auf die gewünschte Datenbank.
-3.	Klicken Sie auf der Seite der SQL-Datenbank auf **Kopieren**:
-
-    ![SQL-Datenbank](./media/sql-database-copy-portal/sql-database-copy.png)
-
-1.  Auf der Seite **Kopieren** wird ein Standarddatenbankname bereitgestellt. Geben Sie bei Bedarf einen anderen Namen ein (alle Datenbanken auf einem Server müssen eindeutige Namen aufweisen).
-2.  Wählen Sie einen **Zielserver** aus. Auf dem Zielserver wird die Kopie der Datenbank erstellt. Sie können die Datenbank auf den gleichen oder einen anderen Server kopieren. Sie können einen Server erstellen oder einen vorhandenen Server aus der Liste auswählen.
-3.  Nach Auswahl des **Zielservers** werden die Optionen **Pool für elastische Datenbanken** und **Tarif** aktiviert. Wenn der Server über einen Pool verfügt, können Sie die Datenbank in diesen Pool kopieren.
-3.  Klicken Sie auf **OK**, um den Kopiervorgang zu starten.
-
-    ![SQL-Datenbank](./media/sql-database-copy-portal/copy-page.png)
+- An Azure subscription. If you need an Azure subscription simply click **FREE TRIAL** at the top of this page, and then come back to finish this article.
+- A SQL database to copy. If you do not have a SQL database, create one following the steps in this article: [Create your first Azure SQL Database](sql-database-get-started.md).
 
 
-## Überwachen des Fortschritts des Kopiervorgangs
+## <a name="copy-your-sql-database"></a>Copy your SQL database
 
-- Klicken Sie nach dem Starten des Kopiervorgangs auf die Portalbenachrichtigung, um Details anzuzeigen.
+Open the SQL database page for the database you want to copy:
 
-    ![Benachrichtigung][3]
+1.  Go to the [Azure portal](https://portal.azure.com).
+2.  Click **More services** > **SQL databases**, and then click the desired database.
+3.  On the SQL database page, click **Copy**:
+
+    ![SQL Database](./media/sql-database-copy-portal/sql-database-copy.png)
+
+1.  On the **Copy** page, a default database name is provided. Type a different name if you want (all databases on a server must have unique names).
+2.  Select a **Target server**. The target server is where the database copy is created. You can copy the database to the same server, or a different server. You can create a server or select an existing server from the list. 
+3.  After selecting the **Target server**, the **Elastic database pool**, and **Pricing tier** options will be enabled. If the server has a pool, you can copy the database into it.
+3.  Click **OK** to start the copy process.
+
+    ![SQL Database](./media/sql-database-copy-portal/copy-page.png)
+
+
+## <a name="monitor-the-progress-of-the-copy-operation"></a>Monitor the progress of the copy operation
+
+- After starting the copy, click the portal notification for details.
+
+    ![notification][3]
  
-    ![Überwachen][4]
+    ![monitor][4]
 
 
-## Sicherstellen, dass die Datenbank auf dem Server aktiv ist
+## <a name="verify-the-database-is-live-on-the-server"></a>Verify the database is live on the server
 
-- Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**, und überprüfen Sie, ob die neue Datenbank **online** ist.
-
-
-## Auflösen von Anmeldungen
-
-Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlossen wurde, finden Sie unter [Auflösen von Anmeldungen](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes).
+- Click **More services** > **SQL databases** and verify the new database is **Online**.
 
 
-## Nächste Schritte
+## <a name="resolve-logins"></a>Resolve logins
 
-- Einen Überblick über das Kopieren einer Azure SQL-Datenbank finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
-- Informationen zum Kopieren einer Datenbank mithilfe von PowerShell finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe von PowerShell](sql-database-copy-powershell.md).
-- Informationen zum Kopieren einer Datenbank mithilfe von Transact-SQL finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe von T-SQL](sql-database-copy-transact-sql.md).
-- Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
+To resolve logins after the copy operation completes, see [Resolve logins](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)
 
 
+## <a name="next-steps"></a>Next steps
 
-## Zusätzliche Ressourcen
+- See [Copy an Azure SQL database](sql-database-copy.md) for an overview of copying an Azure SQL Database.
+- See [Copy an Azure SQL database using PowerShell](sql-database-copy-powershell.md) to copy a database using PowerShell.
+- See [Copy an Azure SQL database using T-SQL](sql-database-copy-transact-sql.md) to copy a database using Transact-SQL.
+- See [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md) to learn about managing users and logins when copying a database to a different logical server.
 
-- [Verwalten von Anmeldungen](sql-database-manage-logins.md)
-- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
-- [Exportieren der Datenbank in eine BACPAC-Datei](sql-database-export.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
+
+
+## <a name="additional-resources"></a>Additional resources
+
+- [Manage logins](sql-database-manage-logins.md)
+- [Connect to SQL Database with SQL Server Management Studio and perform a sample T-SQL query](sql-database-connect-query-ssms.md)
+- [Export the database to a BACPAC](sql-database-export.md)
+- [Business Continuity Overview](sql-database-business-continuity.md)
+- [SQL Database documentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
 
 
@@ -97,4 +98,9 @@ Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlo
 [3]: ./media/sql-database-copy-portal/copy-notification.png
 [4]: ./media/sql-database-copy-portal/monitor-copy.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,5 +1,7 @@
-Die virtuellen IaaS-Computer (VMs) und PaaS-Rolleninstanzen in einem virtuellen Netzwerk erhalten automatisch eine private IP-Adresse aus einem von Ihnen angegebenen Bereich, je nach Subnetz, mit dem Sie verbunden sind. Diese Adresse wird von den virtuellen Computern und Rolleninstanzen beibehalten, bis sie außer Betrieb gesetzt werden. Sie setzen einen virtuellen Computer oder eine Rolleninstanz durch Beenden von PowerShell, der Azure-Befehlszeilenschnittstelle oder dem Azure-Portal aus außer Betrieb. Sobald der virtuelle Computer oder die Rolleninstanz erneut gestartet wird, wird in diesen Fällen eine verfügbare IP-Adresse aus der Azure-Infrastruktur bereitgestellt. Möglicherweise ist diese nicht dieselbe wie vorher. Wenn Sie den virtuellen Computer oder die Rolleninstanz aus dem Gastbetriebssystem herunterfahren, behält er die verwendete IP-Adresse bei.
+Your IaaS virtual machines (VMs) and PaaS role instances in a virtual network automatically receive a private IP address from a range that you specify, based on the subnet they are connected to. That address is retained by the VMs and role instances, until they are decommissioned. You decommission a VM or role instance by stopping it from PowerShell, the Azure CLI, or the Azure portal. In those cases, once the VM or role instance starts again, it will receive an available IP address from the Azure infrastructure, which might not be the same it previously had. If you shut down the VM or role instance from the guest operating system, it retains the IP address it had.  
 
-In bestimmten Fällen sollte ein virtueller Computer oder eine Rolleninstanz eine statische IP-Adresse besitzen, wenn beispielsweise auf Ihrem virtuellen Computer DNS ausgeführt wird oder der virtuelle Computer als Domänencontroller fungieren soll. Dazu können Sie eine statische private IP-Adresse festlegen.
+In certain cases, you want a VM or role instance to have a static IP address, for example, if your VM is going to run DNS or will be a domain controller. You can do so by setting a static private IP address.
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

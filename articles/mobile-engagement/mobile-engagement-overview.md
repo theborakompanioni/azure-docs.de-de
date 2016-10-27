@@ -1,54 +1,59 @@
 <properties
-	pageTitle="Mobile Engagement-Übersicht | Microsoft Azure"
-	description="Übersicht über Azure Mobile Engagement"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="erikre"
-	editor="" />
+    pageTitle="Mobile Engagement Overview | Microsoft Azure"
+    description="Overview of Azure Mobile Engagement"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-multiple"
-	ms.devlang="na"
-	ms.topic="hero-article" 
-	ms.date="01/04/2016"
-	ms.author="piyushjo;matt-gibbs" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-multiple"
+    ms.devlang="na"
+    ms.topic="hero-article" 
+    ms.date="01/04/2016"
+    ms.author="piyushjo;matt-gibbs" />
 
-#Übersicht über Azure Mobile Engagement
 
-Azure Mobile Engagement ist eine als Software-as-a-Service (SaaS) bereitgestellte Benutzerengagementplattform, die Folgendes ermöglicht: datenbezogene Einblicke in die App-Nutzung, Benutzersegmentierung in Echtzeit und kontextbezogene Pushbenachrichtigungen sowie In-App-Messaging.
+#<a name="azure-mobile-engagement-overview"></a>Azure Mobile Engagement overview
 
-###Übersichtsvideo
+Azure Mobile Engagement is a software-as-a-service (SaaS) user-engagement platform that provides data-driven insights into app usage, real-time user segmentation, and enables contextually-aware push notifications and in-app messaging.
+
+###<a name="overview-video"></a>Overview video
 > [AZURE.VIDEO azure-mobile-engagement-overview]
 
-Mit Azure Mobile Engagement können App-Herausgeber und Marketingspezialisten App-Benutzer besser verstehen und mit ihnen interagieren.
+With Azure Mobile Engagement, application publishers and marketing professionals can better understand and interact with the app users.
 
-##Aussagefähige Echtzeitanalysen zur Maximierung des ROI
+##<a name="real-time-actionable-analytics-to-maximize-return-on-investment"></a>Real-time actionable analytics to maximize return on investment
 
-Sie können Engagementszenarien entsprechend dem Benutzerverhalten und den demografischen Daten auslösen, indem Sie die Erfassung von `big data` mit Nachrichtenverarbeitung in Echtzeit kombinieren. Mobile Engagement kann praktisch alle Fragen beantworten, die für Ihre spezifischen Geschäftsanforderungen relevant sind. Sie können beispielsweise benutzerdefinierte Dashboards zum Messen von Leistungskennzahlen (Key Performance Indicators, KPIs) erstellen, Nutzungsengpässe im Benutzerpfad schnell feststellen und beheben, Benutzerzurückhaltung und -bindung nachverfolgen und somit feststellen, welche Kampagnen den höchsten ROI einbringen. Die 360°-Benutzerpfadansicht von Mobile Engagement ermöglicht Ihnen, die Benutzererfahrung auf einfache Weise kontinuierlich zu verbessern und zu optimieren – und somit eine höhere Kundenbindung und verbesserte Verwendung der App zu erzielen.
+Trigger engagement scenarios according to user behavior and demographics by combining `big data` collection with real-time message processing. Mobile Engagement can answer nearly any question relevant to your particular business needs. For example, you can create custom dashboards to measure key performance indicators (KPIs), rapidly find and fix usage bottlenecks in a user funnel path, track retention and user stickiness, and by that determine what campaigns are driving the highest return on investment. Mobile Engagement’s 360° user path view allows you to easily and continually enhance and optimize the user experience – driving higher retention rates and improve app usage.
 
-##Push- und Kommunikationsplattform mit erhöhtem Nutzen
+##<a name="value-added-push-and-communications-platform"></a>Value-added push and communications platform
 
-Mobile Engagement bietet In-App-Messaging-Funktionen und arbeitet nahtlos mit nativen Pushbenachrichtigungs-Gateways wie GCM von Google, APNS von Apple und MPNS von Microsoft zusammen. Darüber hinaus werden Sie in die Lage versetzt, gezielte Kampagnen zu erstellen, indem Sie das Benutzerverhalten analysieren, um individuelle Kundensegmente zu identifizieren.
+Mobile Engagement provides in-app messaging capabilities and works seamlessly with native push notifications gateways such as Google’s GCM, Apple’s APNS and Microsoft MPNS. And it goes beyond to give you the power to create targeted campaigns by analyzing user behaviors to identify unique customer segments.
 
-Hiervon profitieren App-Entwickler, indem sie ihre Kunden auf höchst effektive Weise und sehr unaufdringlich erreichen.
+This benefits app developers by reaching their customers in a highly effective and non-intrusive manner.
 
-##Offene APIs und einfache Integration
+##<a name="open-apis-and-ease-of-integration"></a>Open APIs and ease of integration
 
-Durch die Bereitstellung offener APIs und SDKs, die die Integration erleichtern, können Sie Daten aus Ihrem vorhandenen CRM, CMS oder anderen Back-End-Systemen nutzen. Dadurch können Sie die Genauigkeit Ihrer Zielgruppenadressierung erhöhen und Ihre Investitionen schützen.
+By providing open APIs and SDKs that ease integration, you can leverage data from your existing CRM, CMS or other backend systems. This allows you to further improve your audience targeting and protect your investments.
 
-##Datensicherheit und Datenschutz weltweit
+##<a name="data-protection-&-privacy-across-the-globe"></a>Data protection & privacy across the globe
 
-Microsoft bekennt sich seit langer Zeit zum Datenschutz, einem wichtigen Teil unseres Produkt- und Dienstelebenszyklus. Wir arbeiten an der Transparenz unserer Datenschutzpraktiken, indem wir Kunden sinnvolle Optionen zum Datenschutz bieten und die von uns gespeicherten Daten verantwortungsbewusst verwalten. Wie bei allen Azure-Diensten gibt Mobile Engagement keine aus dem Besitz des Kunden abgeleiteten Daten weiter und verkauft diese nicht. Mobile Engagement ist global verfügbar, und die Einhaltung regionaler oder landesspezifischer Datenschutzgesetze ist möglich.
+Microsoft has a longstanding commitment to privacy, which is an integral part of our product and services lifecycle. We work to be transparent in our privacy practices, offering customers meaningful privacy choices, and responsibly manage the data we store. As with all Azure services, Mobile Engagement does not share or sell information derived from customers’ property. Mobile Engagement is available globally, allowing for regional or country specific data privacy laws to be upheld.
 
-###Nächste Schritte:
+###<a name="next-steps:"></a>Next Steps:
 
-[Bewährte Methoden und Prozess zur Erstellung Ihres Mobile Engagement](mobile-engagement-getting-started-best-practices.md)
+[Best practices and process to create your Mobile Engagement](mobile-engagement-getting-started-best-practices.md)
 
-[Erste Schritte](/documentation/services/mobile-engagement/)
+[Getting Started](/documentation/services/mobile-engagement/)
 
-[Herunterladen von Demo-Apps mit Quellcode](https://aka.ms/azmedemoapps)
+[Download demo apps with source code](https://aka.ms/azmedemoapps)
 
-<!---HONumber=AcomDC_0608_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

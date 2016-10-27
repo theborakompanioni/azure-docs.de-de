@@ -1,11 +1,15 @@
-Sie müssen beachten, dass es zwei Methoden zum Konfigurieren eines Verfügbarkeitsgruppenlisteners in Azure gibt. Diese Methoden unterscheiden sich durch den Typ des Azure-Lastenausgleichs, den Sie verwenden, wenn Sie den Listener erstellen. In der folgenden Tabelle sind die Unterschiede beschrieben:
+It is important to realize that there are two ways to configure an Availability Group listener in Azure. These methods differ in the type of Azure load balancer you use when you create the listener. The following table describes the differences:
 
-| Lastenausgleichsmodul | Implementierung | Verwendung: |
+| Load Balancer | Implementation | Use When: |
 | ------------- | -------------- | ----------- |
-| **Extern** | Verwendet die **öffentliche virtuelle IP-Adresse** des Clouddiensts, der die virtuellen Computer hostet. | Sie müssen auf den Listener von außerhalb des virtuellen Netzwerks zugreifen, auch über das Internet. |
-| **Intern** | Verwendet **internen Lastenausgleich (ILB)** mit einer privaten Adresse für den Listener. | Sie greifen auf den Listener nur im gleichen virtuellen Netzwerk zu. Dies schließt Site-to-SiteVPNs in Hybridszenarien ein. |
+| **External** | Uses the **public Virtual IP address** of the cloud service that hosts the Virtual Machines. | You need to access the listener from outside the virtual network, including from the internet. |
+| **Internal** | Uses **Internal Load Balancing (ILB)** with a private address for the listener. | You only access the listener from within the same virtual network. This includes site-to-site VPN in hybrid scenarios. |
 
->[AZURE.IMPORTANT] Für einen Listener, der die öffentliche VIP-Adresse des Clouddiensts (externer Load Balancer) verwendet, fallen keine Gebühren für ausgehende Datenübertragungen an, solange sich der Client, der Listener und die Datenbanken in der gleichen Azure-Region befinden. Andernfalls gelten alle über den Listener zurückgegebenen Daten als ausgehende Datenübertragungen, die zu normalen Datenübertragungsraten berechnet werden.
+>[AZURE.IMPORTANT] For a listener using the cloud service's public VIP (external load balancer), as long as the client, listener, and databases are in the same Azure region you will not incur egress charges. Otherwise, any data returned through the listener is considered egress and charged at normal data transfer rates. 
 
-ILB kann nur für virtuelle Netzwerke mit regionalem Umfang konfiguriert werden. Vorhandene virtuelle Netzwerke, die für eine Affinitätsgruppe konfiguriert wurden, können kein ILB verwenden. Weitere Informationen finden Sie unter [Interner Lastenausgleich](../articles/load-balancer/load-balancer-internal-overview.md).
+ILB can only be configured on virtual networks with a regional scope. Existing virtual networks that have been configured for an affinity group cannot use ILB. For more information, see [Internal Load Balancer](../articles/load-balancer/load-balancer-internal-overview.md).
+
+
+<!--HONumber=Oct16_HO2-->
+
 

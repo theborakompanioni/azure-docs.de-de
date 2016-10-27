@@ -16,7 +16,8 @@
    ms.date="09/24/2016" 
    ms.author="rortloff;barbkess;sonyama"/>
 
-# SQL Data Warehouse – Unterstützung von Vorgängerversionsclients für Überwachung und dynamische Datenmaskierung
+
+# <a name="sql-data-warehouse---downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>SQL Data Warehouse – Unterstützung von kompatiblen Clients für Überwachung und dynamische Datenmaskierung
 
 [Überwachung](sql-data-warehouse-auditing-overview.md) kann mit SQL-Clients genutzt werden, die die TDS-Umleitung unterstützen.
 
@@ -35,6 +36,10 @@ Eine unvollständige Liste der "Vorgängerversionsclients":
 - JDBC (JDBC unterstützt zwar TDS 7.4, aber die TDS-Umleitungsfunktion wird nicht vollständig unterstützt)
 - Tedious (for Node.JS)
 
-**Anmerkung:** Die oben genannte Änderung des vollqualifizierten Domänennamens des Servers kann sich auch als nützlich erweisen bei der Anwendung einer Richtlinie für die Überwachung auf SQL Server-Ebene, ohne dass ein Konfigurationsschritt in jeder Datenbank ausgeführt werden muss (temporäre Minderung).
+**Anmerkung:** Die oben genannte Änderung des vollqualifizierten Domänennamens des Servers kann sich auch als nützlich erweisen bei der Anwendung einer Richtlinie für die Überwachung auf SQL Server-Ebene, ohne dass ein Konfigurationsschritt in jeder Datenbank ausgeführt werden muss (temporäre Minderung).     
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

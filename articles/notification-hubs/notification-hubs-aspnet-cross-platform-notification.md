@@ -1,39 +1,40 @@
 <properties
-	pageTitle="Senden plattformübergreifender Benachrichtigungen an Benutzer mit Notification Hubs (ASP.NET)"
-	description="Erfahren Sie, wie Sie mithilfe von Notification Hubs-Vorlagen in einer einzigen Anforderung eine plattformunabhängige Benachrichtigung senden können, die auf alle Plattformen abzielt."
-	services="notification-hubs"
-	documentationCenter=""
-	authors="wesmc7777"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Send cross-platform notifications to users with Notification Hubs (ASP.NET)"
+    description="Learn how to use Notification Hubs templates to send, in a single request, a platform-agnostic notification that targets all platforms."
+    services="notification-hubs"
+    documentationCenter=""
+    authors="wesmc7777"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="06/29/2016" 
-	ms.author="wesmc"/>
-
-# Senden plattformübergreifender Benachrichtigungen an Benutzer mit Benachrichtigungs-Hubs
+    ms.service="notification-hubs"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-windows"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="10/03/2016" 
+    ms.author="wesmc"/>
 
 
-Im vorherigen Lernprogramm [Benachrichtigen von Benutzern mit Notification Hubs] haben Sie gelernt, wie Sie Pushbenachrichtigungen an alle Geräte eines bestimmten authentifizierten Benutzers senden können. Dieses Lernprogramm benötigte mehrere Anfragen für den Versand einer Benachrichtigung an jede unterstützte Client-Plattform. Notification Hubs unterstützen Vorlagen, mit denen Sie angeben können, wie ein bestimmtes Gerät Benachrichtigungen empfangen soll. Damit können Sie den Versand plattformübergreifender Benachrichtigungen vereinfachen. Dieser Artikel beschreibt den Einsatz von Vorlagen für den Versand einer plattformunabhängigen Benachrichtigung für alle Plattformen mit nur einer Anfrage. Weitere Informationen zu Vorlagen finden Sie unter [Übersicht über Benachrichtigungshubs][Templates].
+# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Send cross-platform notifications to users with Notification Hubs
 
-> [AZURE.NOTE] Mit Notification Hubs kann ein Gerät mehrere Vorlagen mit demselben Tag registrieren. In diesem Fall werden bei einer eingehenden Nachricht für das entsprechende Tag mehrere Benachrichtigungen an das Gerät verschickt (eine pro Vorlage). Auf diese Weise können Sie dieselbe Nachricht in mehreren visuellen Darstellungen anzeigen, z. B. als Signal und als Popupbenachrichtigung in einer Windows Store-App.
 
-Führen Sie die folgenden Schritte aus, um plattformunabhängige Benachrichtigungen mit Vorlagen zu verschicken:
+In the previous tutorial [Notify users with Notification Hubs], you learned how to push notifications to all devices registered by a specific authenticated user. In that tutorial, multiple requests were required to send a notification to each supported client platform. Notification Hubs supports templates, which let you specify how a specific device wants to receive notifications. This simplifies sending cross-platform notifications. This topic demonstrates how to take advantage of templates to send, in a single request, a platform-agnostic notification that targets all platforms. For more detailed information about templates, see [Azure Notification Hubs Overview][Templates].
 
-1. Erweitern Sie im Projektmappen-Explorer in Visual Studio den Ordner **Controllers** und öffnen Sie die Datei RegisterController.cs.
+> [AZURE.NOTE] Notification Hubs allows a device to register multiple templates with the same tag. In this case, an incoming message targeting that tag results in multiple notifications delivered to the device, one for each template. This enables you to display the same message in multiple visual notifications, such as both as a badge and as a toast notification in a Windows Store app.
 
-2. Suchen Sie den Codeblock in der **Post**-Methode, der eine neue Registrierung erstellt, und ersetzen Sie den `switch`-Inhalt von durch den folgenden Code:
+Complete the following steps to send cross-platform notifications using templates:
 
-		switch (deviceUpdate.Platform)
+1. In the Solution Explorer in Visual Studio, expand the **Controllers** folder, then open the RegisterController.cs file.
+
+2. Locate the block of code in the **Post** method that creates a new registration replace the `switch` content with the following code:
+
+        switch (deviceUpdate.Platform)
         {
             case "mpns":
-                var toastTemplate = "<?xml version="1.0" encoding="utf-8"?>" +
-                    "<wp:Notification xmlns:wp="WPNotification">" +
+                var toastTemplate = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                    "<wp:Notification xmlns:wp=\"WPNotification\">" +
                        "<wp:Toast>" +
                             "<wp:Text1>$(message)</wp:Text1>" +
                        "</wp:Toast> " +
@@ -45,20 +46,20 @@ Führen Sie die folgenden Schritte aus, um plattformunabhängige Benachrichtigun
                 registration = new WindowsTemplateRegistrationDescription(deviceUpdate.Handle, toastTemplate);
                 break;
             case "apns":
-                var alertTemplate = "{"aps":{"alert":"$(message)"}}";
+                var alertTemplate = "{\"aps\":{\"alert\":\"$(message)\"}}";
                 registration = new AppleTemplateRegistrationDescription(deviceUpdate.Handle, alertTemplate);
                 break;
             case "gcm":
-                var messageTemplate = "{"data":{"msg":"$(message)"}}";
+                var messageTemplate = "{\"data\":{\"message\":\"$(message)\"}}";
                 registration = new GcmTemplateRegistrationDescription(deviceUpdate.Handle, messageTemplate);
                 break;
             default:
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
         }
 
-	Dieser Code ruft die plattformspezifische Methode zur Erstellung einer Vorlagenregistrierung anstelle der Systemregistrierung auf. Existierende Registrierungen müssen nicht verändert werden, da Vorlagenregistrierungen von Systemregistrierungen abgeleitet sind.
+    This code calls the platform-specific method to create a template registration instead of a native registration. Existing registrations need not be modified because template registrations derive from native registrations.
 
-3. Ersetzen Sie im **Notifications**-Controller die Methode **sendNotification** durch den folgenden Code:
+3. In the **Notifications** controller, replace the **sendNotification** method with the following code:
 
         public async Task<HttpResponseMessage> Post()
         {
@@ -71,23 +72,23 @@ Führen Sie die folgenden Schritte aus, um plattformunabhängige Benachrichtigun
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-	Dieser Code sendet eine Benachrichtigung an alle Plattformen gleichzeitig, ohne dass eine System-Nutzlast angegeben werden muss. Notification Hubs erstellen und senden die korrekte Nutzlast an alle Geräte mit dem angegebenen _tag_-Wert entsprechend der registrierten Vorlagen.
+    This code sends a notification to all platforms at the same time and without having to specify a native payload. Notification Hubs builds and delivers the correct payload to every device with the provided _tag_ value, as specified in the registered templates.
 
-4. Veröffentlichen Sie Ihr WebAPI-Back-End-Projekt erneut.
+4. Re-publish your WebApi back-end project.
 
-5. Führen Sie die Client-App erneut aus und vergewissern Sie sich, dass die Registrierung erfolgreich.
+5. Run the client app again and verify that registration succeeds.
 
-6. (Optional) Stellen Sie die Client-App auf einem zweiten Gerät bereit und führen Sie die App aus.
+6. (Optional) Deploy the client app to a second device, then run the app.
 
-	Beachten Sie, dass auf jedem Gerät eine Benachrichtigung angezeigt wird.
+    Note that a notification is displayed on each device.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-Nach Abschluss dieses Lernprogramms finden Sie weitere Informationen über Notification Hubs und Vorlagen in den folgenden Themen:
+Now that you have completed this tutorial, find out more about Notification Hubs and templates in these topics:
 
-+ **[Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten ]** <br/>Stellt ein weiteres Szenario für die Verwendung von Vorlagen dar.
++ **[Use Notification Hubs to send breaking news]** <br/>Demonstrates another scenario for using templates
 
-+  **[Übersicht über Benachrichtigungshubs][Templates]**<br/>Dieser Übersichtsartikel enthält weitere Detailinformationen zu Vorlagen.
++  **[Azure Notification Hubs Overview][Templates]**<br/>Overview topic has more detailed information on templates.
 
 
 <!-- Anchors. -->
@@ -102,10 +103,14 @@ Nach Abschluss dieses Lernprogramms finden Sie weitere Informationen über Notif
 [Push to users Mobile Services]: /manage/services/notification-hubs/notify-users/
 [Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
 
-[Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten ]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
-[Benachrichtigen von Benutzern mit Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
+[Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

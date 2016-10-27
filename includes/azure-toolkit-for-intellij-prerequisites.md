@@ -1,24 +1,27 @@
-### Voraussetzungen
+### <a name="prerequisites"></a>Prerequisites
 
-Für das Azure-Toolkit für IntelliJ sind folgende Softwarekomponenten notwendig:
+The Azure Toolkit for IntelliJ requires the following software components:
 
-* IntelliJ IDEA Ultimate Edition. Dies kann von <https://www.jetbrains.com/idea/download/> heruntergeladen werden.
+* IntelliJ IDEA Ultimate Edition. This can be downloaded from <https://www.jetbrains.com/idea/download/>.
 
-* Ein Java Developer Kit (JDK) der Version 1.8 oder höher.
+* A Java Developer Kit (JDK), v1.8 or later. 
 
-* Betriebssysteme – Das Azure-Toolkit für IntelliJ wurde unter folgenden Betriebssystemen getestet:
-    * Windows 10, Windows 8 und Windows 8.1, Windows 7
-    * Windows Server 2012 und 2012 R2, Windows Server 2008 und 2008 R2
-    * [Mac OS X](http://www.apple.com/osx) Versionen „Yosemite“ und „El Captain“
-    * [Ubuntu Linux](http://www.ubuntu.com) Versionen 12, 14 und 15
+* Operating Systems - the Azure Toolkit for IntelliJ has been tested on the following operating systems:
+    * Windows 10, Windows 8 and 8.1, Windows 7
+    * Windows Server 2012 and 2012 R2, Windows Server 2008 and 2008 R2
+    * [Mac OS X](http://www.apple.com/osx) Versions "Yosemite" and "El Captain"
+    * [Ubuntu Linux](http://www.ubuntu.com) Versions 12, 14, and 15
 
-Weitere Informationen finden Sie im Repository für JetBrains-Plug-Ins auf der Seite [Azure-Toolkit für IntelliJ](https://plugins.jetbrains.com/plugin/8053).
+More information can be found on the [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) page at the JetBrains Plugin Repository.
 
-> [AZURE.IMPORTANT] Bei Verwendung des Azure-Toolkits für IntelliJ unter Windows ist für das Toolkit die Installation von mindestens Version 2.9.1 des Azure SDK erforderlich. Für das Installieren des Azure SDK gibt es zwei Möglichkeiten:
+> [AZURE.IMPORTANT] If you are using the Azure Toolkit for IntelliJ on Windows, the toolkit requires installing the Azure SDK 2.9.1 or later. You have two options for installing the Azure SDK:
 > 
-> * Sie können das Azure SDK mithilfe des Programms [Webplattform-Installer (WebPI)](http://go.microsoft.com/fwlink/?LinkID=252838) herunterladen und installieren.
-> * Falls Sie dieses noch nicht installiert haben, wenn Sie Ihr erstes Azure-Bereitstellungsprojekt erstellen, werden Sie aufgefordert, automatisch die erforderliche Version von Azure SDK herunterzuladen.
+> * You can download and install the Azure SDK by using the [Web Platform Installer (WebPI)](http://go.microsoft.com/fwlink/?LinkID=252838).
+> * If you do not have the Azure SDK installed when you create your first Azure deployment project, you will be prompted to automatically download install the requisite version of the Azure SDK.
 > 
-> Beachten Sie, dass das Azure SDK nur unter Windows erforderlich ist.
+> Note that the Azure SDK is only required on Windows.
 
-<!---HONumber=AcomDC_0706_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

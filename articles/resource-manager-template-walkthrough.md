@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager-Vorlage – Exemplarische Vorgehensweise | Microsoft Azure"
-   description="Enthält eine exemplarische Schritt-für-Schritt-Vorgehensweise für eine Resource Manager-Vorlage zur Bereitstellung einer grundlegenden Azure-IaaS-Architektur."
+   pageTitle="Resource Manager Template Walkthrough | Microsoft Azure"
+   description="A step by step walkthrough of a resource manager template provisioning a basic Azure IaaS architecture."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="navalev"
@@ -16,29 +16,30 @@
    ms.date="08/04/2016"
    ms.author="navale;tomfitz"/>
    
-# Resource Manager-Vorlage – Exemplarische Vorgehensweise
 
-Beim Erstellen einer Vorlage müssen Sie sich unter anderem zuerst überlegen, wie Sie anfangen möchten. Sie können beispielsweise mit einer leeren Vorlage beginnen und unter Berücksichtigung der grundlegenden, im Artikel [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md#template-format) beschriebenen Struktur Ressourcen und entsprechende Parameter und Variablen hinzufügen. Eine gute Alternative wäre, im [Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates) zunächst nach ähnlichen Szenarien zu suchen. Sie können mehrere Vorlagen zusammenführen oder eine bereits vorhandene Vorlage an Ihr individuelles Szenario anpassen.
+# <a name="resource-manager-template-walkthrough"></a>Resource Manager template walkthrough
 
-Die Infrastruktur besteht im Allgemeinen aus Folgendem:
+One of the first questions when creating a template is "how to start?". One can start from a blank template, following the basic structure described in [Authoring Template article](resource-group-authoring-templates.md#template-format), and add the resources and appropriate parameters and variables. A good alternative would be to start by going through the [quickstart gallery](https://github.com/Azure/azure-quickstart-templates) and look for similar scenarios to the one you are trying to create. You can merge several templates or edit an existing one to suit your own specific scenario. 
 
-* Zwei virtuellen Computern, die das gleiche Speicherkonto verwenden und sich in der gleichen Verfügbarkeitsgruppe und im gleichen Subnetz eines virtuellen Netzwerks befinden.
-* Einer einzelnen NIC- und VM-IP-Adresse für jeden virtuellen Computer.
-* Load Balancer mit Lastenausgleichsregel an Port 80
+Let's take a look at a common infrastructure:
 
-![Architektur](./media/resource-group-overview/arm_arch.png)
+* Two virtual machines that use the same storage account, are in the same availability set, and on the same subnet of a virtual network.
+* A single NIC and VM IP address for each virtual machine.
+* A load balancer with a load balancing rule on port 80
 
-In diesem Thema werden die Schritte zum Erstellen einer Resource Manager-Vorlage für diese Infrastruktur erläutert. Die endgültige Vorlage, die Sie erstellen, basiert auf der Schnellstartvorlage namens [2 VMs in a Load Balancer and load balancing rules](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/) (Zwei virtuelle Computer in einem Load Balancer und Lastenausgleichsregeln).
+![architecture](./media/resource-group-overview/arm_arch.png)
 
-Das wäre aber ein bisschen viel auf einmal. Daher erstellen wir zunächst ein Speicherkonto und stellen es bereit. Nachdem Sie sich mit der Erstellung des Speicherkontos vertraut gemacht haben, können Sie die anderen Ressourcen hinzufügen und die Vorlage erneut bereitstellen, um die Infrastruktur fertigzustellen.
+This topic walks you through the steps of creating a Resource Manager template for that infrastructure. The final template you create is based on a Quickstart template called [2 VMs in a Load Balancer and load balancing rules](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/).
 
->[AZURE.NOTE] Sie können beim Erstellen der Vorlage eine beliebige Art von Editor verwenden. Visual Studio enthält Tools, mit denen die Vorlagenentwicklung vereinfacht wird, aber Sie benötigen Visual Studio für dieses Tutorial nicht. Ein Tutorial zur Verwendung von Visual Studio für die Erstellung einer Bereitstellung mit Web-App und SQL-Datenbank finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+But, that's a lot to build all at once, so let's first create a storage account and deploy it. After you have mastered creating the storage account, you will add the other resources and re-deploy the template to complete the infrastructure.
 
-## Erstellen der Resource Manager-Vorlage
+>[AZURE.NOTE] You can use any type of editor when creating the template. Visual Studio provides tools that simplify template development, but you do not need Visual Studio to complete this tutorial. For a tutorial on using Visual Studio to create a Web App and SQL Database deployment, see [Creating and deploying Azure resource groups through Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). 
 
-Die Vorlage ist eine JSON-Datei, mit der alle von Ihnen bereitgestellten Ressourcen definiert werden. Hiermit können Sie auch Folgendes definieren: Parameter, die während der Bereitstellung angegeben werden, Variablen, die aus anderen Werten und Ausdrücken erstellt werden, sowie Ausgaben der Bereitstellung.
+## <a name="create-the-resource-manager-template"></a>Create the Resource Manager template
 
-Wir beginnen mit der einfachsten Vorlage:
+The template is a JSON file that defines all of the resources you will deploy. It also permits you to define parameters that are specified during deployment, variables that constructed from other values and expressions, and outputs from the deployment. 
+
+Let's start with the simplest template:
 
 ```json
     {
@@ -51,10 +52,10 @@ Wir beginnen mit der einfachsten Vorlage:
     }
  ```
 
-Speichern Sie diese Datei unter dem Namen **azuredeploy.json**. (Die Vorlage kann einen beliebigen Namen besitzen, es muss sich nur um eine JSON-Datei handeln.)
+Save this file as **azuredeploy.json** (note that the template can have any name you want, just that it must be a json file).
 
-## Erstellen Sie ein Speicherkonto.
-Fügen Sie im Abschnitt **resources** ein Objekt hinzu, mit dem das Speicherkonto wie unten gezeigt definiert wird.
+## <a name="create-a-storage-account"></a>Create a storage account
+Within the **resources** section, add an object that defines the storage account, as shown below. 
 
 ```json
 "resources": [
@@ -70,15 +71,15 @@ Fügen Sie im Abschnitt **resources** ein Objekt hinzu, mit dem das Speicherkont
 ]
 ```
 
-Sie fragen sich vielleicht, woher diese Eigenschaften und Werte kommen. Die Eigenschaften **type**, **name**, **apiVersion** und **location** sind Standardelemente, die für alle Ressourcentypen verfügbar sind. Informationen zu den allgemeinen Elementen finden Sie unter [Ressourcen](resource-group-authoring-templates.md#resources). **name** wird auf einen Parameterwert festgelegt, der bei der Bereitstellung übergeben wird. **location** gibt den von der Ressourcengruppe verwendeten Speicherort an. Die Bestimmung der Elemente **type** und **apiVersion** wird in den folgenden Abschnitten beschrieben.
+You may be wondering where these properties and values come from. The properties **type**, **name**, **apiVersion**, and **location** are standard elements that are available for all resource types. You can learn about the common elements at [Resources](resource-group-authoring-templates.md#resources). **name** is set to a parameter value that you pass in during deployment and **location** as the location used by the resource group. We'll look at how you determine **type** and **apiVersion** in the sections below.
 
-Der Abschnitt **properties** enthält alle Eigenschaften, die für einen bestimmten Ressourcentyp eindeutig sind. Die Werte, die Sie in diesem Abschnitt angeben, stimmen genau mit dem PUT-Vorgang in der REST-API für die Erstellung dieses Ressourcentyps überein. Beim Erstellen eines Speicherkontos müssen Sie einen **accountType** angeben. Beachten Sie bei der REST-API zum [Erstellen eines Speicherkontos](https://msdn.microsoft.com/library/azure/mt163564.aspx), dass der Abschnitt „properties“ des REST-Vorgangs auch eine **accountType**-Eigenschaft enthält und dass die zulässigen Werte dokumentiert sind. In diesem Beispiel wird der Kontotyp auf **Standard\_LRS** festgelegt, Sie können aber auch einen anderen Wert angeben oder zulassen, dass der Kontotyp von Benutzern übergeben wird.
+The **properties** section contains all of the properties that are unique to a particular resource type. The values you specify in this section exactly match the PUT operation in the REST API for creating that resource type. When creating a storage account, you must provide an **accountType**. Notice in the [REST API for creating a Storage account](https://msdn.microsoft.com/library/azure/mt163564.aspx) that the properties section of the REST operation also contains an **accountType** property, and the permitted values are documented. In this example, the account type is set to **Standard_LRS**, but you could specify some other value or permit users to pass in the account type as a parameter.
 
-Kommen wir nun zurück zum Abschnitt **parameters**, wo wir uns mit dem Definieren des Speicherkontonamens beschäftigen. Weitere Informationen zum Verwenden von Parametern finden Sie unter [Parameter](resource-group-authoring-templates.md#parameters).
+Now let's jump back to the **parameters** section, and see how you define the name of the storage account. You can learn more about the use of parameters at [Parameters](resource-group-authoring-templates.md#parameters). 
 
 ```json
 "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -86,17 +87,17 @@ Kommen wir nun zurück zum Abschnitt **parameters**, wo wir uns mit dem Definier
     }
 }
 ```
-Hier haben Sie einen Zeichenfolgenparameter zum Speichern des Speicherkontonamens definiert. Der Wert für diesen Parameter wird im Zuge der Vorlagenbereitstellung angegeben.
+Here you defined a parameter of type string that will hold the name of the storage account. The value for this parameter will be provided during template deployment.
 
-## Bereitstellen der Vorlage
-Wir verfügen über eine vollständige Vorlage zum Erstellen eines neuen Speicherkontos. Die Vorlage wurde in der Datei **azuredeploy.json** gespeichert:
+## <a name="deploying-the-template"></a>Deploying the template
+We have a full template for creating a new storage account. As you recall, the template was saved in  **azuredeploy.json** file:
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -117,7 +118,7 @@ Wir verfügen über eine vollständige Vorlage zum Erstellen eines neuen Speiche
 }
 ```
 
-Vorlagen können auf unterschiedliche Arten bereitgestellt werden. Diese werden im Artikel [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md) beschrieben. Wenn Sie die Vorlage mit Azure PowerShell bereitstellen möchten, verwenden Sie Folgendes:
+There are quite a few ways to deploy a template, as you can see in the [Resource Deployment article](resource-group-template-deploy.md). To deploy the template using Azure PowerShell, use:
 
 ```powershell
 # create a new resource group
@@ -127,7 +128,7 @@ New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West Europe"
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile azuredeploy.json
 ```
 
-Wenn Sie die Vorlage dagegen über die Azure-Befehlszeilenschnittstelle bereitstellen möchten, verwenden Sie Folgendes:
+Or, to deploy the template using Azure CLI, use:
 
 ```
 azure group create -n ExampleResourceGroup -l "West Europe"
@@ -135,12 +136,12 @@ azure group create -n ExampleResourceGroup -l "West Europe"
 azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n ExampleDeployment
 ```
 
-Sie sind nun stolzer Besitzer eines Speicherkontos.
+You are now the proud owner of a storage account!
 
-Als Nächstes müssen die Ressourcen hinzugefügt werden, die zum Bereitstellen der zu Beginn dieses Tutorials beschriebenen Architektur benötigt werden. Diese Ressourcen werden in der gleichen Vorlage hinzugefügt, die Sie vorhin bearbeitet haben.
+The next steps will be to add all the resources required to deploy the architecture described in the start of this tutorial. You will add these resources in the same template you have been working on.
 
-## Verfügbarkeitsgruppe
-Fügen Sie nach der Definition für das Speicherkonto einen verfügbaren Satz für die virtuellen Computer hinzu. In diesem Fall sind keine zusätzlichen Eigenschaften erforderlich, sodass die Definition relativ einfach ist. Den vollständigen Abschnitt „properties“ finden Sie unter [Erstellen einer Verfügbarkeitsgruppe](https://msdn.microsoft.com/library/azure/mt163607.aspx). Dies ist hilfreich, falls Sie die Werte für die Updatedomänenanzahl und Fehlerdomänenanzahl definieren möchten.
+## <a name="availability-set"></a>Availability Set
+After the definition for the storage account, add an availably set for the virtual machines. In this case, there are no additional properties required, so its definition is fairly simple. See the [REST API for creating an Availability Set](https://msdn.microsoft.com/library/azure/mt163607.aspx) for the full properties section, in case you want to define the update domain count and fault domain count values.
 
 ```json
 {
@@ -152,40 +153,40 @@ Fügen Sie nach der Definition für das Speicherkonto einen verfügbaren Satz f�
 }
 ```
 
-Beachten Sie, dass **name** auf den Wert einer Variablen festgelegt ist. Für diese Vorlage wird der Name der Verfügbarkeitsgruppe an einigen Stellen benötigt. Sie können die Vorlage mit weniger Aufwand warten, indem Sie diesen Wert einmal definieren und dann an mehreren Orten verwenden.
+Notice that the **name** is set to the value of a variable. For this template, the name of the availability set is needed in a few different places. You can more easily maintain your template by defining that value once and using it in multiple places.
 
-Der Wert, den Sie für **type** angeben, enthält sowohl den Ressourcenanbieter als auch den Ressourcentyp. Für Verfügbarkeitsgruppen lautet der Ressourcenanbieter **Microsoft.Compute** und der Ressourcentyp **availabilitySets**. Sie können die Liste mit den verfügbaren Ressourcenanbietern abrufen, indem Sie den folgenden PowerShell-Befehl ausführen:
+The value you specify for **type** contains both the resource provider and the resource type. For availability sets, the resource provider is **Microsoft.Compute** and the resource type is **availabilitySets**. You can get the list of available resource providers by running the following PowerShell command:
 
 ```powershell
     Get-AzureRmResourceProvider -ListAvailable
 ```
 
-Falls Sie die Azure-Befehlszeilenschnittstelle verwenden, können Sie den folgenden Befehl ausführen:
+Or, if you are using Azure CLI, you can run the following command:
 ```
     azure provider list
 ```
-Da Sie die Erstellung in diesem Thema mit Speicherkonten, virtuellen Computern und virtuellen Netzwerken durchführen, arbeiten Sie mit folgenden Elementen:
+Given that in this topic you are creating with storage accounts, virtual machines, and virtual networking, you will work with:
 
 - Microsoft.Storage
 - Microsoft.Compute
 - Microsoft.Network
 
-Führen Sie den folgenden PowerShell-Befehl aus, um die Ressourcentypen für einen bestimmten Anbieter anzuzeigen:
+To see the resource types for a particular provider, run the following PowerShell command:
 
 ```powershell
     (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 ```
 
-Für die Azure-Befehlszeilenschnittstelle gibt der folgende Befehl die verfügbaren Typen im JSON-Format zurück und speichert sie in einer Datei.
+Or, for Azure CLI, the following command will return the available types in JSON format and save it to a file.
 
 ```
     azure provider show Microsoft.Compute --json > c:\temp.json
 ```
 
-**availabilitySets** sollte als einer der Typen unter **Microsoft.Compute** angezeigt werden. Der vollständige Name des Typs lautet **Microsoft.Compute/availabilitySets**. Sie können den Ressourcentypnamen für alle Ressourcen der Vorlage bestimmen.
+You should see **availabilitySets** as one of the types within **Microsoft.Compute**. The full name of the type is **Microsoft.Compute/availabilitySets**. You can determine the resource type name for any of the resources in you template.
 
-## Öffentliche IP
-Definieren Sie eine öffentliche IP-Adresse. Sehen Sie hier wieder unter [Erstellen oder Aktualisieren einer öffentlichen IP-Adresse](https://msdn.microsoft.com/library/azure/mt163590.aspx) nach, um die festzulegenden Eigenschaften zu ermitteln.
+## <a name="public-ip"></a>Public IP
+Define a public IP address. Again, look at the [REST API for public IP addresses](https://msdn.microsoft.com/library/azure/mt163590.aspx) for the properties to set.
 
 ```json
 {
@@ -202,25 +203,25 @@ Definieren Sie eine öffentliche IP-Adresse. Sehen Sie hier wieder unter [Erstel
 }
 ```
 
-Die Zuordnungsmethode ist auf **Dynamic** festgelegt, Sie können sie aber auch auf den gewünschten Wert festlegen oder die Verwendung eines Parameterwerts zulassen. Sie haben für die Benutzer der Vorlage zugelassen, einen Wert für die Domänennamenbezeichnung zu übergeben.
+The allocation method is set to **Dynamic** but you could set it to the value you need or set it to accept a parameter value. You have enabled users of your template to pass in a value for the domain name label.
 
-Kommen wir nun zur Bestimmung von **apiVersion**. Es ist einfach so, dass der von Ihnen angegebene Wert mit der Version der REST-API übereinstimmt, die Sie beim Erstellen der Ressource verwenden möchten. Sie können diesen Ressourcentyp also in der Dokumentation zur REST-API nachschlagen. Sie können aber auch den folgenden PowerShell-Befehl für einen bestimmten Typ ausführen.
+Now, let's look at how you determine the **apiVersion**. The value you specify simply matches the version of the REST API that you want to use when creating the resource. So, you can look at the REST API documentation for that resource type. Or, you can run the following PowerShell command for a particular type.
 
 ```powershell
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
 ```
-Hiermit werden folgende Werte zurückgegeben:
+Which returns the following values:
 
     2015-06-15
     2015-05-01-preview
     2014-12-01-preview
 
-Führen Sie zum Anzeigen der API-Versionen den bereits gezeigten Befehl **azure provider show** über die Azure-Befehlszeilenschnittstelle aus.
+To see the API versions with Azure CLI, run the same **azure provider show** command shown previously.
 
-Wählen Sie beim Erstellen einer neuen Vorlage die aktuelle API-Version aus.
+When creating a new template, pick the most recent API version.
 
-## Virtuelles Netzwerk und Subnetz
-Erstellen Sie ein virtuelles Netzwerk mit einem Subnetz. Die festzulegenden Eigenschaften finden Sie unter [Erstellen oder Aktualisieren eines virtuellen Netzwerks](https://msdn.microsoft.com/library/azure/mt163661.aspx).
+## <a name="virtual-network-and-subnet"></a>Virtual network and subnet
+Create a virtual network with one subnet. Look at the [REST API for virtual networks](https://msdn.microsoft.com/library/azure/mt163661.aspx) for all the properties to set.
 
 ```json
 {
@@ -246,10 +247,10 @@ Erstellen Sie ein virtuelles Netzwerk mit einem Subnetz. Die festzulegenden Eige
 }
 ```
 
-## Load Balancer
-Sie erstellen jetzt ein extern ausgerichtetes Lastenausgleichsmodul (Load Balancer). Da für dieses Load Balancer die öffentliche IP-Adresse verwendet wird, müssen Sie im Abschnitt **dependsOn** eine Abhängigkeit von der öffentlichen IP-Adresse deklarieren. Dies bedeutet, dass der Lastenausgleich erst bereitgestellt wird, nachdem die Bereitstellung der öffentlichen IP-Adresse abgeschlossen ist. Wenn Sie diese Abhängigkeit nicht definieren, erhalten Sie einen Fehler. Resource Manager versucht dann, die Ressourcen parallel bereitzustellen und das Lastenausgleichsmodul auf eine öffentliche IP-Adresse festzulegen, die noch nicht vorhanden ist.
+## <a name="load-balancer"></a>Load balancer
+Now you will create an external facing load balancer. Because this load balancer uses the public IP address, you must declare a dependency on the public IP address in the **dependsOn** section. This means the load balancer will not get deployed until the public IP address has finished deploying. Without defining this dependency, you will receive an error because Resource Manager will attempt to deploy the resources in parallel, and will try to set the load balancer to public IP address that doesn't exist yet. 
 
-Außerdem erstellen Sie einen Back-End-Adresspool, einige eingehende NAT-Regeln für RDP von VMs und eine Lastenausgleichsregel mit einer TCP-Überprüfung an Port 80 in dieser Ressourcendefinition. Alle Eigenschaften sind unter [Erstellen oder Aktualisieren eines Lastenausgleichs](https://msdn.microsoft.com/library/azure/mt163574.aspx) angegeben.
+You will also create a backend address pool, a couple of inbound NAT rules to RDP into the VMs, and a load balancing rule with a tcp probe on port 80 in this resource definition. Checkout the [REST API for load balancer](https://msdn.microsoft.com/library/azure/mt163574.aspx) for all the properties.
 
 ```json
 {
@@ -338,8 +339,9 @@ Außerdem erstellen Sie einen Back-End-Adresspool, einige eingehende NAT-Regeln 
 }
 ```
 
-## Netzwerkschnittstelle
-Sie erstellen zwei Netzwerkschnittstellen, und zwar eine für jeden virtuellen Computer. Anstatt doppelte Einträge für die Netzwerkschnittstellen einzufügen, können Sie die [copyIndex()-Funktion](resource-group-create-multiple.md) verwenden, um die Kopierschleife (nicLoop) zu durchlaufen und die Anzahl von Netzwerkschnittstellen gemäß Definition in den `numberOfInstances`-Variablen zu erstellen. Die Netzwerkschnittstelle ist von der Erstellung des virtuellen Netzwerks und des Lastenausgleichsmoduls abhängig. Hierbei wird das Subnetz verwendet, das bei der Erstellung des virtuellen Netzwerks definiert wird, sowie die Lastenausgleichsmodul-ID für die Konfiguration des Lastenausgleich-Adresspools und der eingehenden NAT-Regeln. Alle Eigenschaften finden Sie unter [Erstellen oder Aktualisieren einer Netzwerkschnittstellenkarte](https://msdn.microsoft.com/library/azure/mt163668.aspx).
+## <a name="network-interface"></a>Network interface
+You will create 2 network interfaces, one for each VM. Rather than having to include duplicate entries for the network interfaces, you can use the [copyIndex() function](resource-group-create-multiple.md) to iterate over the copy loop (referred to as nicLoop) and create the number network interfaces as defined in the `numberOfInstances` variables. The network interface depends on creation of the virtual network and the load balancer. It uses the subnet defined in the virtual network creation, and the load balancer id to configure the load balancer address pool and the inbound NAT rules.
+Look at the [REST API for network interfaces](https://msdn.microsoft.com/library/azure/mt163668.aspx) for all the properties.
 
 ```json
 {
@@ -381,10 +383,11 @@ Sie erstellen zwei Netzwerkschnittstellen, und zwar eine für jeden virtuellen C
 }
 ```
 
-## Virtueller Computer
-Sie erstellen zwei virtuelle Computer. Dabei verwenden Sie genau wie bei der Erstellung der [Netzwerkschnittstellen](#network-interface) die copyIndex()-Funktion. Die VM-Erstellung hängt vom Speicherkonto, der Netzwerkschnittstelle und der Verfügbarkeitsgruppe ab. Dieser VM wird auf der Grundlage eines Marketplace-Image erstellt (gemäß Definition in der `storageProfile`-Eigenschaft). `imageReference` wird verwendet, um für das Image Herausgeber, Angebot, SKU und Version zu definieren. Zuletzt wird ein Diagnoseprofil konfiguriert, um die Diagnose für die VM zu ermöglichen.
+## <a name="virtual-machine"></a>Virtual machine
+You will create 2 virtual machines, using copyIndex() function, as you did in creation of the [network interfaces](#network-interface).
+The VM creation depends on the storage account, network interface and availability set. This VM will be created from a marketplace image, as defined in the `storageProfile` property - `imageReference` is used to define the image publisher, offer, sku and version. Finally, a diagnostic profile is configured to enable diagnostics for the VM. 
 
-Befolgen Sie die Anweisungen im Artikel zum [Auswählen virtueller Linux-Computer](./virtual-machines/virtual-machines-linux-cli-ps-findimage.md) bzw. im Artikel zum [Auswählen virtueller Windows-Computer](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md), um nach den relevanten Eigenschaften für ein Marketplace-Image zu suchen.
+To find the relevant properties for a marketplace image, follow the [select Linux virtual machine images](./virtual-machines/virtual-machines-linux-cli-ps-findimage.md) or [select Windows virtual machine images](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md) articles.
 
 ```json
 {
@@ -445,13 +448,13 @@ Befolgen Sie die Anweisungen im Artikel zum [Auswählen virtueller Linux-Compute
 }
 ```
 
->[AZURE.NOTE] Für Images, die von Drittanbietern veröffentlicht werden, müssen Sie eine andere Eigenschaft namens `plan` angeben. Ein Beispiel hierfür finden Sie in [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic) im Schnellstartkatalog.
+>[AZURE.NOTE] For images published by **3rd party vendors**, you will need to specify another property named `plan`. An example can be found in [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic) from the quickstart gallery. 
 
-Sie haben das Definieren der Ressourcen für die Vorlage abgeschlossen.
+You have finished defining the resources for your template.
 
-## Parameter
+## <a name="parameters"></a>Parameters
 
-Definieren Sie im Abschnitt „parameters“ die Werte, die beim Bereitstellen der Vorlage angegeben werden können. Definieren Sie nur Parameter für Werte, die während der Bereitstellung ggf. variiert werden sollen. Sie können einen Standardwert für einen Parameter angeben, der verwendet wird, falls während der Bereitstellung kein Wert angegeben wird. Sie können auch die zulässigen Werte definieren, wie für den Parameter **imageSKU** gezeigt.
+In the parameters section, define the values that can be specified when deploying the template. Only define parameters for values that you think should be varied during deployment. You can provide a default value for a parameter that is used if one is not provided during deployment. You can also define the allowed values as shown for the **imageSKU** parameter.
 
 ```json
 "parameters": {
@@ -550,9 +553,9 @@ Definieren Sie im Abschnitt „parameters“ die Werte, die beim Bereitstellen d
   }
 ```
 
-## Variablen
+## <a name="variables"></a>Variables
 
-Im Abschnitt „variables“ können Sie Werte definieren, die an mehr als einer Stelle in Ihrer Vorlage verwendet werden, oder Werte, die aus anderen Ausdrücken oder Variablen erstellt werden. Variablen werden häufig verwendet, um die Syntax der Vorlage zu vereinfachen.
+In the variables section, you can define values that are used in more than one place in your template, or values that are constructed from other expressions or variables. Variables are frequently used to simplify the syntax of your template.
 
 ```json
 "variables": {
@@ -569,14 +572,18 @@ Im Abschnitt „variables“ können Sie Werte definieren, die an mehr als einer
   }
 ```
 
-Ihre Vorlage ist nun fertig. Sie können Ihre Vorlage mit der vollständigen Vorlage [2 VMs with load balancer and load balancer rules](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) (Vorlage für zwei VMs mit Load Balancer und Lastenausgleichsregeln) aus dem [Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates) vergleichen. Ihre Vorlage sieht aufgrund abweichender Versionsnummern unter Umständen geringfügig anders aus.
+You have completed the template! You can compare your template against the full template in the [quickstart gallery](https://github.com/Azure/azure-quickstart-templates) under [2 VMs with load balancer and load balancer rules template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules). Your template might be slightly different based on using different version numbers. 
 
-Sie können die Vorlage mithilfe der Befehle, die Sie auch zum Bereitstellen des Speicherkontos verwendet haben, erneut bereitstellen. Das Speicherkonto muss vor dem erneuten Bereitstellen nicht gelöscht werden, da Resource Manager die Neuerstellung von Ressourcen überspringt, die bereits vorhanden sind und nicht geändert wurden.
+You can re-deploy the template by using the same commands you used when deploying the storage account. You do not need to delete the storage account before re-deploying because Resource Manager will skip re-creating resources that already exist and have not changed.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- [Azure Resource Manager Template Visualizer (ARMViz)](http://armviz.io/#/) ist ein praktisches Tool zum Anzeigen von ARM-Vorlagen, die sich aufgrund ihrer Größe womöglich nicht mehr ohne Weiteres nur anhand des Inhalts der JSON-Datei nachvollziehen lassen.
-- Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-- Informationen zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
+- [Azure Resource Manager Template Visualizer (ARMViz)](http://armviz.io/#/) is a great tool to visualize ARM templates, as they might become too large to understand just from reading the json file.
+- To learn more about the structure of a template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+- To learn about deploying a template, see [Deploy a Resource Group with Azure Resource Manager template](resource-group-template-deploy.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,150 +1,153 @@
 <properties
-	pageTitle="Erste Schritte mit Azure Active Directory Premium"
-	description="In diesem Thema erfahren Sie, wie Sie sich über die Volumenlizenzierungs-Website für die Premium Edition von Azure Active Directory registrieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="markusvi"
-	manager="femila" 
-	editor=""/>
+    pageTitle="Getting started with Azure Active Directory Premium"
+    description="A topic that explains how to sign up for Azure Active Directory Premium edition through the Volume Licensing web site."
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="femila" 
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/16/2016"
-	ms.author="markvi"/>
-
-# Erste Schritte mit Azure Active Directory Premium
+    ms.service="active-directory"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/16/2016"
+    ms.author="markvi"/>
 
 
-Es gibt mehrere Möglichkeiten, sich für Active Directory Premium zu registrieren:
-
-**Azure oder Office 365**: Als Abonnent von Azure oder Office 365 können Sie Active Directory Premium online erwerben. Ausführliche Schritte finden Sie unter [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) (Erwerben von Azure Active Directory Premium – Bestandskunden) oder [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Erwerben von Azure Active Directory Premium – Neukunden).
-
-**Enterprise Mobility + Security**: Enterprise Mobility + Security (früher „Enterprise Mobility Suite“) ist eine kostengünstige Lösung für Unternehmen, die die folgenden Dienste zusammen unter einem Lizenzplan verwenden möchten: Active Directory Premium, Azure Rights Management und Microsoft Intune. Weitere Informationen finden Sie auf der Website [Enterprise Mobility + Security](https://www.microsoft.com/de-DE/server-cloud/enterprise-mobility/overview.aspx). Klicken Sie [hier](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0), um eine kostenlose Testversion für 30 Tage zu erhalten.
+# <a name="getting-started-with-azure-active-directory-premium"></a>Getting started with Azure Active Directory Premium
 
 
-**Microsoft-Volumenlizenzierung**: Azure Active Directory Premium ist per [Microsoft Enterprise Agreement](https://www.microsoft.com/de-DE/licensing/licensing-programs/enterprise.aspx) (250 Lizenzen oder mehr) oder das [Open Volume License](https://www.microsoft.com/de-DE/licensing/licensing-programs/open-license.aspx)-Programm (5 bis 250 Lizenzen) erhältlich.
+To sign up for Active Directory Premium, you have several options: 
+
+**Azure or Office 365** - As an Azure or Office 365 subscriber, you can buy Active Directory Premium online. For detailed steps, see [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) or [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).  
+
+**Enterprise Mobility + Security** - Enterprise Mobility + Security (formerly Enterprise Mobility Suite) is a cost effective way for organizations to use the following services together under one licensing plan: Active Directory Premium, Azure Rights Management, Microsoft Intune. For more information, see the [Enterprise Mobility + Security](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) web site. To get e free 30-day trial, click [here](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0).
 
 
-In diesem Thema werden die ersten Schritte mit Azure Active Directory Premium beschrieben, das Sie im Rahmen des Volumenlizenzprogramms erworben haben. Falls Sie mit den verschiedenen Editionen von Azure Active Directory noch nicht vertraut sind, helfen Ihnen die Informationen unter [Azure Active Directory-Editionen](active-directory-editions.md) weiter.
+**Microsoft Volume Licensing** - Azure Active Directory Premium is available through a [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 or more licenses) or the [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5–250 licenses) program.
+
+
+This topic shows you how to get started with an Azure Active Directory Premium you have purchased through the Volume Licensing program. If you are not yet familiar with the different editions of Azure Active Directory, see [Azure Active Directory editions](active-directory-editions.md).  
 
 > [AZURE.NOTE]
-Die Azure Active Directory-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+Azure Active Directory Premium and Basic editions are available for customers in China using the worldwide instance of Azure Active Directory. Azure Active Directory Premium and Basic editions are not currently supported in the Microsoft Azure service operated by 21Vianet in China. For more information, contact us at the [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 
 
 
-## Schritt 1: Registrieren Sie sich für Active Directory Premium
+## <a name="step-1:-sign-up-for-active-directory-premium"></a>Step 1: Sign up for Active Directory Premium
 
-Informationen zur Registrierung finden Sie unter [How to purchase through Volume Licensing](http://www.microsoft.com/de-DE/licensing/how-to-buy/how-to-buy.aspx) (Kauf per Volumenlizenzierung).
-
-
-
-## Schritt 2: Aktivieren Sie Ihren Lizenzplan
-
-Ist dies Ihr erster Kauf eines Lizenzplans über das Enterprise Volume Licensing-Programm von Microsoft? In diesem Fall erhalten Sie eine Bestätigungs-E-Mail, wenn Ihr Kauf abgeschlossen wurde. Sie benötigen diese E-Mail zum Aktivieren Ihres ersten Lizenzplans.
-
-Bei jedem nachfolgenden Kauf für dieses Verzeichnis werden die Lizenzen automatisch im gleichen Verzeichnis aktiviert.
+To sign up, see [How to purchase through Volume Licensing](http://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
 
 
-**Führen Sie einen der folgenden Schritte aus, um den Lizenzplan zu aktivieren:**
+## <a name="step-2:-activate-your-license-plan"></a>Step 2: Activate your license plan
 
+Is this your first license plan purchase through the Enterprise Volume Licensing program from Microsoft?
+In this case, you get a confirmation email when your purchase has been completed.
+You need this email to activate your first license plan.
 
-1. Klicken Sie zum Starten der Aktivierung entweder auf **Anmelden** oder **Registrieren**.
-
-    ![Anmelden][1]
-
-
-
-    - Wenn Sie bereits über einen Mandanten verfügen, klicken Sie auf **Anmelden**, um sich bei Ihrem vorhandenen Administratorkonto anzumelden. Sie müssen sich mit den Anmeldeinformationen des globalen Administrators des Verzeichnisses anmelden, in dem die Lizenzen aktiviert werden sollen.
-
-    - Wenn Sie einen neuen Azure Active Directory-Mandanten für die Verwendung mit Ihrem Lizenzplan erstellen möchten, klicken Sie auf **Registrieren**, um das Dialogfeld **Kontoprofil erstellen** zu öffnen.
-
-        ![Kontoprofil erstellen][2]
-
-Nach Abschluss des Vorgangs wird das folgende Dialogfeld angezeigt, um zu bestätigen, dass die Aktivierung des Lizenzplans für Ihren Mandanten durchgeführt wurde.
-
-![Bestätigung][3]
-
-## Schritt 3: Aktivieren Sie den Zugriff auf Azure Active Directory
-
-Wenn Sie Microsoft Azure bereits verwendet haben, können Sie mit [Schritt 4](#step-4-assign-license-to-user-accounts) fortfahren.
-
-Wenn die Lizenzen für Ihr Verzeichnis bereitgestellt wurden, wird eine **Begrüßungs-E-Mail** an Ihre Adresse gesendet. Mit der E-Mail wird bestätigt, dass Sie mit der Verwaltung der Lizenzen und Features von Azure Active Directory Premium oder der Enterprise Mobility Suite beginnen können.
-
-Wenn Sie versuchen, den Zugriff auf Azure Active Directory zu aktivieren, bevor Ihnen die Begrüßungs-E-Mail zugestellt wurde, erhalten Sie die unten angegebene Fehlermeldung.
-
-![Zugriff nicht verfügbar][9]
-
-Wiederholen Sie den Aktivierungsversuch in diesem Fall in wenigen Minuten, wenn Sie die E-Mail erhalten haben.
-
-Neue Administratoren innerhalb Ihres Abonnements können ihren Zugriff auf das klassische Azure-Portal ebenfalls über diesen Link aktivieren.
+On any subsequent purchase for this directory, the licenses are automatically activated in the same directory.
 
 
 
+**To activate your license plan, perform one of the following steps:**
+
+
+1. To start the activation, click either **Sign In** or **Sign Up**.
+
+    ![Sign in][1]
 
 
 
-**Führen Sie die folgenden Schritte aus, um den Azure Active Directory-Zugriff zu aktivieren:**
+    - If you have an existing tenant, click **Sign In** to sign in with your existing administrator account. You need to sign in with the global administrator credentials from the directory where the licenses must be activated.
 
-1. Klicken Sie in der **Willkommens-E-Mail** auf **Anmelden**.
+    - If you want to create a new Azure Active Directory tenant to use with your licensing plan, click **Sign Up** to open the **Create Account Profile** dialog.
+
+        ![Create account profile][2]
+
+When you are done, the following dialog shows up as confirmation for the activation of the license plan for your tenant.
+
+![Confirmation][3]
+
+## <a name="step-3:-activate-your-azure-active-directory-access"></a>Step 3: Activate your Azure Active Directory access
+
+If you have used Microsoft Azure before, you can proceed to [Step 4](#step-4-assign-license-to-user-accounts). 
+
+When the licenses are provisioned to your directory, a **Welcome email** is sent to you. The email confirms that you can start managing your Azure Active Directory Premium or Enterprise Mobility Suite licenses and features. 
+
+If you make an attempt to activate your access to Azure Active Directory prior to receiving the Welcome email, you get the following error message. 
+
+![Access is not available][9]
+
+If you Please try again in a few minutes once you have received the email.
+
+New administrators in your subscription can also activate their access to the Azure classic portal through this link.
+
+
+
+
+
+
+**To activate your Azure Active Directory access, perform the following steps:**
+
+1. In your **Welcome email**, click **Sign In**. 
     
-    ![Willkommens-E-Mail][4]
+    ![Welcome email][4]
 
-2. Nach der Anmeldung müssen Sie eine zweistufige Authentifizierung in Form einer mobilen Verifizierung durchführen:
+2. When you have signed in successfully, you need to complete a second factor authentication in form of a mobile verification:
 
-    ![Mobile Verifizierung][5]
+    ![Mobile verification][5]
 
-Die Aktivierung kann einige Minuten dauern. Nachdem der Zugriff aktiviert wurde, wird die braune Leiste ausgeblendet, und Sie können auf **Portal** klicken.
+The activation can take a few minutes. Once your access is active, the brown bar disappears and you are able to click **Portal**.
 
-![Bitte warten Sie, bis die Einrichtung abgeschlossen ist][6]
+![Please wait while we set up][6]
 
-In diesem Fall ist Ihr Azure-Zugriff auf Azure Active Directory beschränkt.
+In this case, your Azure access is limited to Azure Active Directory.
 
-![Azure-Funktionen][7]
+![Azure capabilities][7]
 
-Möglicherweise hatten Sie aufgrund einer früheren Verwendung bereits Zugriff auf Azure. Außerdem können Sie Ihren Azure Active Directory-Zugriff durch Aktivierung weiterer Azure-Abonnements auf einen vollständigen Azure-Zugriff erweitern. In diesen Fällen verfügt das klassische Azure-Portal über mehr Funktionen.
+You may already have had access to Azure from prior usage; in addition, you can upgrade your Access Azure Active Directory to full Azure access by activating additional Azure subscriptions. In these cases, the Azure classic portal has more capabilities.
 
-![Azure-Funktionen][8]
+![Azure capabilities][8]
 
 
 
-## Schritt 4: Weisen Sie die Lizenzen Benutzerkonten zu
+## <a name="step-4:-assign-license-to-user-accounts"></a>Step 4: Assign license to user accounts
 
-Bevor Sie den erworbenen Plan verwenden können, müssen Sie die Lizenzen manuell Benutzerkonten Ihres Unternehmens zuweisen, damit diese das reichhaltige Featureangebot der Premium Edition nutzen können. Führen Sie zur Zuweisung von Lizenzen zu Benutzern die folgenden Schritte aus, so dass diese die Features der Premium Edition von Azure Active Directory nutzen können.
+Before you can start using the plan you purchased, you need to manually assign licenses to user accounts within your organization so that they can use the rich features provided with Premium. Use the following steps to assign licenses to users so they can use Azure Active Directory Premium features.
 
-**Führen Sie die folgenden Schritte aus, um Benutzern Lizenzen zuzuweisen:**
+**To assign licenses to users, perform the following steps:**
 
-1. Melden Sie sich beim klassischen Azure-Portal als globaler Administrator des Verzeichnisses an, das Sie anpassen möchten.
-2. Klicken Sie auf **Active Directory**, und wählen Sie dann das Verzeichnis aus, in dem Sie Lizenzen zuweisen möchten.
-3. Klicken Sie auf die Registerkarte **Lizenzen**, wählen Sie **Active Directory Premium** oder **Enterprise Mobility Suite** aus, und klicken Sie dann auf **Zuweisen**.
+1. Sign into the Azure classic portal as the global administrator of the directory you wish to customize.
+2. Click **Active Directory**, and then select the directory where you want to assign licenses.
+3. Select the **Licenses** tab, select **Active Directory Premium** or **Enterprise Mobility Suite**, and then click **Assign**.
 
-    ![Lizenzpläne][10]
+    ![License plans][10]
 
-4. Wählen Sie im Dialogfeld die Benutzer aus, denen Sie Lizenzen zuweisen möchten, und klicken Sie dann auf das Häkchen, um die Änderungen zu speichern.
+4. In the dialog box, select the users you want to assign licenses to, and then click the check mark icon to save the changes.
 
-    ![Zuweisen von Lizenzen][11]
+    ![Assign licenses][11]
 
-### Lizenzeinschränkungen
+### <a name="license-restrictions"></a>License restrictions
 
-Es gibt Lizenzpläne, die in anderen Lizenzplänen enthalten sind oder andere Lizenzpläne enthalten. Normalerweise kann einem Benutzer kein Lizenzplan zugewiesen werden, der ihm bereits zugewiesen wurde. Wenn Sie einem Benutzer einen Lizenzplan zuweisen möchten, der andere Lizenzpläne enthält, die dem Benutzer bereits zugewiesen sind, müssen Sie die bereits zugewiesenen Lizenzpläne zunächst entfernen.
+Some license plans are subsets or supersets of other license plans. Typically, a user cannot be assigned a license plan that has already been assigned to them. If it is your intention to assign a license plan that is a superset, you need to first remove the subset license plan.
 
-### Lizenzanforderungen
+### <a name="license-requirements"></a>License requirements
 
-Wenn Sie einem Benutzer eine Lizenz zuweisen, können Sie in den Eigenschaften des Benutzerkontos einen primären Verwendungsort angeben. Wenn kein solcher Verwendungsort angegeben ist, wird dem Benutzer automatisch der Standort des Mandanten zugewiesen.
+When you assign a license to a user, you can specify a primary usage location in the properties of their account. If a usage location is not specified, the tenant’s location is automatically assigned to the user.
 
-![Benutzerstandort][12]
+![User location][12]
 
-Die Verfügbarkeit der Dienste und Features eines Microsoft Clouddiensts variieren je nach Land und Region. Ein Dienst wie Voice over IP (VoIP) kann in einem Land bzw. einer Region verfügbar sein, in einem anderen hingegen nicht. Die Features eines Diensts können aus rechtlichen Gründen in einigen Ländern oder Regionen eingeschränkt sein. Um festzustellen, ob ein Dienst oder ein Feature für Sie uneingeschränkt oder mit Einschränkungen verfügbar ist, suchen Sie Ihr Land bzw. Ihre Region auf der Website mit den Lizenzeinschränkungen des jeweiligen Diensts.
+The availability of services and features for a Microsoft cloud service varies by country or region. A service, such as Voice over Internet Protocol (VoIP), may be available in one country or region, and not available in another. Features within a service can be restricted for legal reasons in certain countries or regions. To see if a service or feature is available with or without restrictions, look for your country or region on license restrictions site of a service.
 
-## Nächste Schritte
+## <a name="what's-next"></a>What's next
 
-- [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
-- [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
+- [Add company branding to your Sign In and Access Panel pages](active-directory-add-company-branding.md)
+- [View your access and usage reports](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-get-started-premium/MOLSEmail.png
@@ -160,4 +163,8 @@ Die Verfügbarkeit der Dienste und Features eines Microsoft Clouddiensts variier
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

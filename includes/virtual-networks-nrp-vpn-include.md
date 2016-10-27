@@ -1,13 +1,15 @@
-## VPN-Gateway 
-Eine VPN-Gateway-Ressource ermöglicht Ihnen, eine sichere Verbindung zwischen ihrem lokalen Rechenzentrum und Azure zu erstellen. Eine VPN-Gateway-Ressource kann auf drei unterschiedliche Arten konfiguriert werden:
+## <a name="vpn-gateway"></a>VPN Gateway 
+A VPN gateway resource enables you to create a secure connection between their on-premises data center and Azure. A VPN gateway resource can be configured in three different ways:
  
-- **Punkt-zu-Standort** – Mit einem VPN-Client von einem beliebigen Computer können Sie sicher auf Ihre in einem VNET gehosteten Azure-Ressourcen zugreifen. 
-- **Multisite-Verbindung** – Sie können von Ihren lokalen Rechenzentren eine sichere Verbindung zu Ressourcen aufbauen, die in einem VNET ausgeführt werden. 
-- **VNET-zu-VNET** – Sie können über Azure-VNETs hinweg (in der gleichen Region oder regionsübergreifend) eine sichere Verbindung aufbauen, um Arbeitsauslastungen mit Georedundanz zu erstellen.
+- **Point to Site** – you can securely access your Azure resources hosted in a VNET by using a VPN client from any computer. 
+- **Multi-site connection** – you can securely connect from your on-premises data centers to resources running in a VNET. 
+- **VNET to VNET** – you can securely connect across Azure VNETS within the same region, or across regions to build workloads with geo-redundancy.
 
-Zu den Schlüsseleigenschaften eines VPN-Gateway zählen:
+Key properties of a VPN gateway include:
  
-- **Gateway-Typ** - dynamisch oder statisch weitergeleitetes Gateway. 
-- **Adresspool-Präfix des VPN-Client** – IP-Adressen, die den Clients mit Punkt-zu-Standort-Verbindung zuzuweisen sind.
+- **Gateway type** - dynamically routed or a static routed gateway. 
+- **VPN Client Address Pool Prefix** – IP addresses to be assigned to clients connecting in a point to site configuration.
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

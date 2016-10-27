@@ -1,68 +1,74 @@
 <properties 
-	pageTitle="Übersicht über Partner und Enterprise Integration Pack | Microsoft Azure App Service" 
-	description="Erfahren Sie, wie Sie Partner mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+    pageTitle="Overview of partners and Enterprise Integration Pack | Microsoft Azure App Service" 
+    description="Learn how to use partners with the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="msftman" 
+    manager="erikre" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/29/2016" 
-	ms.author="deonhe"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="06/29/2016" 
+    ms.author="deonhe"/>
 
 
-# Informationen zu Vereinbarungen und Enterprise Integration Pack
 
-## Übersicht
-Vereinbarungen sind die Eckpfeiler der B2B-Kommunikation (Business-to-Business, Kommunikation zwischen Unternehmen) und ermöglichen Geschäftsentitäten eine reibungslose Kommunikation über Protokolle gemäß Industriestandard.
+# <a name="learn-about-agreements-and-enterprise-integration-pack"></a>Learn about agreements and Enterprise Integration Pack
 
-## Was ist eine Vereinbarung?
+## <a name="overview"></a>Overview
+Agreements are the cornerstone of business-to-business (B2B) communications, allowing business entities to communicate seamlessly using industry standard protocols.  
 
-Eine Vereinbarung mit Blick auf das Enterprise Integration Pack ist eine Kommunikationsabsprache zwischen B2B-Handelspartnern. Eine Vereinbarung basiert auf der Kommunikation, die beide Partner wünschen, und ist protokoll- oder transportspezifisch.
+## <a name="what-is-an-agreement?"></a>What is an agreement?
 
-Für die Unternehmensintegration werden drei Protokoll- bzw. Transportstandards unterstützt:
+An agreement, as far as the Enterprise Integration Pack is concerned, is a communications arrangement between B2B trading partners. An agreement is based on the communications the partners wish to achieve and is protocol or transport specific.
+
+Enterprise integration supports three protocol/transport standards:  
 
 - [AS2](./app-service-logic-enterprise-integration-as2.md)
 - [X12](./app-service-logic-enterprise-integration-x12.md)
 - [EDIFACT](./app-service-logic-enterprise-integration-edifact.md)
 
-## Gründe für Vereinbarungen
-Es folgen einige Vorteile der Verwendung von Vereinbarungen:
-- Ermöglichen, dass Organisationen und Unternehmen Informationen in einem bekannten Format austauschen können.
-- Verbessern der Effizienz von B2B-Transaktionen
-- Einfache Erstellung, Verwaltung und Nutzung beim Erstellen von Apps für die Unternehmensintegration
+## <a name="why-use-agreements"></a>Why use agreements
+Some of the common benefits of using agreements are:
+- Enables different organizations and businesses to be able to exchange information in a well known format.  
+- Improves efficiency when conducting B2B transactions  
+- Easy to create, manage and use them when creating enterprise integration apps  
 
-## Erstellen von Vereinbarungen
-- [Erstellen einer AS2-Vereinbarung](./app-service-logic-enterprise-integration-as2.md)
-- [Erstellen einer X12-Vereinbarung](./app-service-logic-enterprise-integration-x12.md)
+## <a name="how-to-create-agreements"></a>How to create agreements
+- [Create an AS2 agreement](./app-service-logic-enterprise-integration-as2.md)   
+- [Create an X12 agreement](./app-service-logic-enterprise-integration-x12.md)   
 
-## Verwenden einer Vereinbarung
-Nach dem Erstellen einer Vereinbarung können Sie sie im Azure-Portal zum Erstellen von [Logik-Apps](./app-service-logic-what-are-logic-apps.md "Informationen zu Logik-Apps") mit B2B-Features nutzen.
+## <a name="how-to-use-an-agreement"></a>How to use an agreement
+After creating an agreement, you can use it via the Azure portal to create [Logic apps](./app-service-logic-what-are-logic-apps.md "Learn about Logic apps") with B2B features.
 
-## Bearbeiten einer Vereinbarung
-Sie können eine Vereinbarung bearbeiten, indem Sie folgende Schritte ausführen:
-1. Wählen Sie das Integrationskonto aus, das die Vereinbarung enthält, die Sie ändern möchten.
-2. Wählen Sie die Kachel **Vereinbarungen** aus.
-3. Wählen Sie auf dem Blatt **Vereinbarungen** die Vereinbarung aus, die Sie ändern möchten.
-4. Wählen Sie im oberen Menü **Bearbeiten** aus.
-5. Nehmen Sie im eingeblendeten Menü „Bearbeiten“ die gewünschten Änderungen vor, und wählen Sie dann **OK** aus, um die Änderungen zu speichern.
+## <a name="how-to-edit-an-agreement"></a>How to edit an agreement
+You can edit any agreement by following these steps:  
+1. Select the Integration account that contains the agreement you wish to modify.  
+2. Select the **Agreements** tile  
+3. Select the agreement you wish to modify on the **Agreements** blade  
+4. Select **Edit** from the menu above   
+5. On the Edit menu that opens, make you changes then select the **OK** button to save the changes  
 
-## Löschen einer Vereinbarung
-Sie können eine Vereinbarung löschen, indem Sie diese Schritte im Integrationskonto mit der Vereinbarung ausführen, die Sie löschen möchten:
-1. Wählen Sie die Kachel **Vereinbarungen** aus.
-2. Wählen Sie auf dem Blatt **Vereinbarungen** die Vereinbarung aus, die Sie löschen möchten.
-3. Wählen Sie im oberen Menü **Löschen** aus.
-4. Bestätigen Sie, dass Sie die Vereinbarung tatsächlich löschen möchten.
-5. Die Vereinbarung ist nun nicht mehr auf dem Blatt „Vereinbarungen“ aufgeführt.
+## <a name="how-to-delete-an-agreement"></a>How to delete an agreement
+You can delete any agreement by following these steps from within the integration account that contains the agreement you wish to delete:   
+1. Select the **Agreements** tile  
+2. Select the agreement you wish to delete on the **Agreements** blade  
+3. Select **Delete** from the menu above  
+4. Confirm that you really want to delete the agreement  
+5. Notice that the agreement is no longer listed on the Agreements blade  
  
 
-## Nächste Schritte
-- [Erstellen einer AS2-Vereinbarung](./app-service-logic-enterprise-integration-as2.md)
+## <a name="next-steps"></a>Next steps
+- [Create an AS2 agreement](./app-service-logic-enterprise-integration-as2.md)  
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

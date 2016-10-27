@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle | Microsoft Azure"
-   description="Beschreibt, wie Sie mit der Azure-Befehlszeilenschnittstelle Probleme in der Resource Manager-Bereitstellung erkennen können."
+   pageTitle="View deployment operations with Azure CLI | Microsoft Azure"
+   description="Describes how to use the Azure CLI to detect issues from Resource Manager deployment."
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
@@ -17,31 +17,32 @@
    ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
-# Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle
+
+# <a name="view-deployment-operations-with-azure-cli"></a>View deployment operations with Azure CLI
 
 > [AZURE.SELECTOR]
 - [Portal](resource-manager-troubleshoot-deployments-portal.md)
 - [PowerShell](resource-manager-troubleshoot-deployments-powershell.md)
-- [Azure-Befehlszeilenschnittstelle](resource-manager-troubleshoot-deployments-cli.md)
-- [REST-API](resource-manager-troubleshoot-deployments-rest.md)
+- [Azure CLI](resource-manager-troubleshoot-deployments-cli.md)
+- [REST API](resource-manager-troubleshoot-deployments-rest.md)
 
-Wenn Sie einen Fehler beim Bereitstellen von Ressourcen in Azure erhalten haben, empfiehlt es sich, weitere Details zu den ausgeführten Bereitstellungsvorgängen anzuzeigen. Die Azure-Befehlszeilenschnittstelle enthält Befehle, die es Ihnen ermöglichen, die Fehler zu finden und potenzielle Korrekturen zu ermitteln.
+If you've received an error when deploying resources to Azure, you may want to see more details about the deployment operations that were executed. Azure CLI provides commands that enable you to find the errors and determine potential fixes.
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
-Einige Fehler lassen sich vermeiden, indem Sie Ihre Vorlage und die Infrastruktur vor der Bereitstellung überprüfen. Sie können auch zusätzliche Anforderungs- und Antwortinformationen während der Bereitstellung protokollieren, die später für die Problembehandlung hilfreich sein können. Unter [Bereitstellen eine Ressourcengruppe mit Azure Resource Manager-Vorlage](resource-group-template-deploy-cli.md) erfahren Sie mehr über die Überprüfung und Protokollierung von Anforderungs- und Antwortinformationen.
+You can avoid some errors by validating your template and infrastructure before deployment. You can also log additional request and response information during deployment that may be helpful later for troubleshooting. To learn about validating, and logging request and response information, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy-cli.md).
 
-## Verwenden von Überwachungsprotokollen zur Problembehandlung
+## <a name="use-audit-logs-to-troubleshoot"></a>Use audit logs to troubleshoot
 
 [AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
 
-Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
+To see errors for a deployment, use the following steps:
 
-1. Führen Sie zum Anzeigen der Überwachungsprotokolle den Befehl **azure group log show** aus. Sie können die Option **--last-deployment** angeben, um nur das Protokoll der letzten Bereitstellung abzurufen.
+1. To see the audit logs, run the **azure group log show** command. You can include the **--last-deployment** option to retrieve only the log for the most recent deployment.
 
         azure group log show ExampleGroup --last-deployment
 
-2. Mit dem Befehl **azure group log show** werden zahlreiche Informationen abgerufen. Bei der Problembehandlung konzentrieren Sie sich in der Regel auf fehlgeschlagene Vorgänge. Im folgenden Skript werden die Option **--json** und das JSON-Hilfsprogramm [jq](https://stedolan.github.io/jq/) verwendet, um das Protokoll nach Bereitstellungsfehlern zu durchsuchen.
+2. The **azure group log show** command returns a lot of information. For troubleshooting, you usually want to focus on operations that failed. The following script uses the **--json** option and the [jq](https://stedolan.github.io/jq/) JSON utility to search the log for deployment failures.
 
         azure group log show ExampleGroup --json | jq '.[] | select(.status.value == "Failed")'
         
@@ -75,24 +76,24 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
         },
         "properties": {
           "statusCode": "Conflict",
-          "statusMessage": "{"Code":"Conflict","Message":"Website with given name mysite already exists.","Target":null,"Details":[{"Message":"Website with given name
-            mysite already exists."},{"Code":"Conflict"},{"ErrorEntity":{"Code":"Conflict","Message":"Website with given name mysite already exists.","ExtendedCode":
-            "54001","MessageTemplate":"Website with given name {0} already exists.","Parameters":["mysite"],"InnerErrors":null}}],"Innererror":null}"
+          "statusMessage": "{\"Code\":\"Conflict\",\"Message\":\"Website with given name mysite already exists.\",\"Target\":null,\"Details\":[{\"Message\":\"Website with given name
+            mysite already exists.\"},{\"Code\":\"Conflict\"},{\"ErrorEntity\":{\"Code\":\"Conflict\",\"Message\":\"Website with given name mysite already exists.\",\"ExtendedCode\":
+            \"54001\",\"MessageTemplate\":\"Website with given name {0} already exists.\",\"Parameters\":[\"mysite\"],\"InnerErrors\":null}}],\"Innererror\":null}"
         },
         ...
 
-    **properties** enthält Informationen in JSON zum fehlgeschlagenen Vorgang.
+    You can see **properties** includes information in json about the failed operation.
 
-    Mit den Optionen **--verbose** und **-vv** können Sie weitere Informationen aus dem Protokoll anzeigen. Mit der Option **--verbose** können Sie die einzelnen Schritte der Vorgänge in `stdout` anzeigen. Den vollständigen Anforderungsverlauf zeigen Sie mit der Option **-vv** an. Die Mitteilungen liefern häufig wertvolle Hinweise zur Ursache von Fehlern.
+    You can use the **--verbose** and **-vv** options to see more information from the logs.  Use the **--verbose** option to display the steps the operations go through on `stdout`. For a complete request history, use the **-vv** option. The messages often provide vital clues about the cause of any failures.
 
-3. Verwenden Sie den folgenden Befehl, um den Fokus auf die Statusmeldung für fehlerhafte Einträge zu legen:
+3. To focus on the status message for failed entries, use the following command:
 
-        azure group log show ExampleGroup --json | jq -r ".[] | select(.status.value == "Failed") | .properties.statusMessage"
+        azure group log show ExampleGroup --json | jq -r ".[] | select(.status.value == \"Failed\") | .properties.statusMessage"
 
 
-## Verwenden von Bereitstellungsvorgängen zur Problembehandlung
+## <a name="use-deployment-operations-to-troubleshoot"></a>Use deployment operations to troubleshoot
 
-1. Rufen Sie den allgemeinen Status einer Bereitstellung mit dem Befehl **azure group deployment show** ab. Im folgenden Beispiel ist die Bereitstellung fehlgeschlagen.
+1. Get the overall status of a deployment with the **azure group deployment show** command. In the example below the deployment has failed.
 
         azure group deployment show --resource-group ExampleGroup --name ExampleDeployment
         
@@ -112,15 +113,19 @@ Gehen Sie wie folgt vor, um Fehler für eine Bereitstellung anzuzeigen:
         data:    workerSize       String  0
         info:    group deployment show command OK
 
-2. Verwenden Sie Folgendes, um die Meldung für die fehlerhaften Vorgänge einer Bereitstellung anzuzeigen:
+2. To see the message for failed operations for a deployment, use:
 
-        azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json  | jq ".[] | select(.properties.provisioningState == "Failed") | .properties.statusMessage.Message"
+        azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json  | jq ".[] | select(.properties.provisioningState == \"Failed\") | .properties.statusMessage.Message"
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
-- Informationen zur Überwachung anderer Arten von Aktionen anhand der Überwachungsprotokolle finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-- Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).
+- For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
+- To learn about using the audit logs to monitor other types of actions, see [Audit operations with Resource Manager](resource-group-audit.md).
+- To validate your deployment before executing it, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

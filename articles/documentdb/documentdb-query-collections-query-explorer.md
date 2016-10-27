@@ -1,80 +1,86 @@
 <properties
-	pageTitle="DocumentDB-Abfrage-Explorer: SQL-Abfrage-Editor | Microsoft Azure"
-	description="Sie erhalten Informationen zum DocumentDB-Abfrage-Explorer, einem SQL-Abfrage-Editor im Azure-Portal zum Schreiben von SQL-Abfragen und Ausführen dieser Abfragen für eine NoSQL-DocumentDB-Sammlung."
-	keywords="SQL-Abfragen schreiben, SQL-Abfrage-Editor"
-	services="documentdb"
-	authors="AndrewHoh"
-	manager="jhubbard"
-	editor="monicar"
-	documentationCenter=""/>
+    pageTitle="DocumentDB Query Explorer: A SQL query editor | Microsoft Azure"
+    description="Learn about the DocumentDB Query Explorer, a SQL query editor in the Azure portal for writing SQL queries and running them against a NoSQL DocumentDB collection."
+    keywords="writing sql queries, sql query editor"
+    services="documentdb"
+    authors="kirillg"
+    manager="jhubbard"
+    editor="monicar"
+    documentationCenter=""/>
 
 <tags
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2016"
-	ms.author="anhoh"/>
+    ms.service="documentdb"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/30/2016"
+    ms.author="kirillg"/>
 
-# Schreiben, Bearbeiten und Ausführen von SQL-Abfragen für DocumentDB mit dem Abfrage-Explorer 
 
-Dieser Artikel enthält eine Übersicht über den Abfrage-Explorer von [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). Hierbei handelt es sich um ein Tool im Azure-Portal, mit dem Sie SQL-Abfragen für eine [DocumentDB-Sammlung](documentdb-create-collection.md) schreiben und bearbeiten und darauf anwenden können.
+# <a name="write,-edit,-and-run-sql-queries-for-documentdb-using-query-explorer"></a>Write, edit, and run SQL queries for DocumentDB using Query Explorer 
 
-1. Klicken Sie im Azure-Portal in der Navigationsleiste auf **DocumentDB (NoSQL)**. Wenn **DocumentDB (NoSQL)** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**.
+This article provides an overview of the [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) Query Explorer, an Azure portal tool that enables you to write, edit, and run SQL queries against a [DocumentDB collection](documentdb-create-collection.md).
 
-2. Klicken Sie im Ressourcenmenü auf **Abfrage-Explorer**.
+1. In the Azure portal, in the Jumpbar, click **DocumentDB (NoSQL)**. If **DocumentDB (NoSQL)** is not visible, click **More Services** and then click **DocumentDB (NoSQL)**.
 
-	![Screenshot: Azure-Portal mit hervorgehobenem Abfrage-Explorer](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
+2. In the resource menu, click **Query Explorer**. 
 
-3. Wählen Sie auf dem Blatt **Abfrage-Explorer** in den Dropdownlisten die **Datenbanken** und **Sammlungen** aus, die abgefragt werden sollen, und geben Sie die auszuführende Abfrage ein.
+    ![Screenshot of the Azure portal with Query Explorer highlighted](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
 
-    Die Dropdownlisten **Datenbanken** und **Sammlungen** werden basierend auf dem Kontext, in dem Sie den Abfrage-Explorer starten, automatisch ausgefüllt.
+3. In the **Query Explorer** blade, select the **Databases** and **Collections** to query from the drop down lists, and type the query to run. 
 
-    Die Standardabfrage `SELECT TOP 100 * FROM c` ist bereits vorhanden. Sie können die Standardabfrage akzeptieren oder eine eigene Abfrage erstellen. Verwenden Sie hierfür die SQL-Abfragesprache, die unter [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) bzw. im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md) beschrieben wird.
+    The **Databases** and **Collections** drop-down lists are pre-populated depending on the context in which you launch Query Explorer. 
 
-    Klicken Sie auf **Abfrage ausführen**, um die Ergebnisse anzuzeigen.
+    A default query of `SELECT TOP 100 * FROM c` is provided.  You can accept the default query or construct your own query using the SQL query language described in the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md) or the [SQL query and SQL syntax](documentdb-sql-query.md) article.
 
-	![Screenshot: Schreiben von SQL-Abfragen im Abfrage-Explorer, SQL-Abfrage-Editor](./media/documentdb-query-collections-query-explorer/queryexplorerinitial.png)
+    Click **Run query** to view the results.
 
-4. Auf dem Blatt **Ergebnisse** wird die Ausgabe der Abfrage angezeigt.
+    ![Screenshot of writing SQL queries in Query Explorer, a SQL query editor](./media/documentdb-query-collections-query-explorer/queryexplorerinitial.png)
 
-	![Screenshot: Ergebnisse des Schreibens von SQL-Abfragen im Abfrage-Explorer](./media/documentdb-query-collections-query-explorer/queryresults1.png)
+4. The **Results** blade displays the output of the query. 
 
-## Arbeiten mit Ergebnissen
+    ![Screenshot of results of writing SQL queries in Query Explorer](./media/documentdb-query-collections-query-explorer/queryresults1.png)
 
-Standardmäßig zeigt der Abfrage-Explorer die Ergebnisse in Gruppen von jeweils 100 zurück. Wenn Ihre Abfrage mehr als 100 Ergebnisse erzeugt, verwenden Sie einfach die Befehle **Nächste Seite** und **Vorherige Seite**, um durch die Ergebnisse zu navigieren.
+## <a name="work-with-results"></a>Work with results
 
-![Screenshot des Abfrage-Explorers – Seitennummerierung](./media/documentdb-query-collections-query-explorer/queryresultspagination.png)
+By default, Query Explorer returns results in sets of 100.  If your query produces more than 100 results, simply use the **Next page** and **Previous page** commands to navigate through the result set.
 
-Um erfolgreiche Abfragen zu erhalten, enthält der Bereich **Informationen** Kennzahlen, z.B. die Anforderungskosten, die Anzahl von Roundtrips der Abfrage und den aktuell angezeigten Ergebnissatz. Sie erfahren auch, ob weitere Ergebnisse vorhanden sind, die – wie bereits erwähnt – über den Befehl **Nächste Seite** angezeigt werden können.
+![Screenshot of Query Explorer pagination support](./media/documentdb-query-collections-query-explorer/queryresultspagination.png)
 
-![Screenshot der Abfrage-Explorers – Abfrageinformationen](./media/documentdb-query-collections-query-explorer/queryinformation.png)
+For successful queries, the **Information** pane contains metrics such as the request charge,  the number of round trips the query made, the set of results currently being shown, and whether there are more results, which can then be accessed via the **Next page** command, as mentioned previously.
 
-## Verwenden mehrerer Abfragen
+![Screenshot of Query Explorer query information](./media/documentdb-query-collections-query-explorer/queryinformation.png)
 
-Wenn Sie mehrere Abfragen verwenden und schnell zwischen den Abfragen wechseln möchten, können Sie alle Abfragen im Blatt **Abfrage-Explorer** in das Abfragetextfeld eingeben und dann die Abfrage markieren, die Sie ausführen möchten. Klicken Sie anschließend auf **Abfrage ausführen**, um die Ergebnisse anzuzeigen.
+## <a name="use-multiple-queries"></a>Use multiple queries
 
-![Screenshot: Schreiben mehrerer SQL-Abfragen im Abfrage-Explorer (SQL-Abfrage-Editor) und Markieren und Ausführen einzelner Abfragen](./media/documentdb-query-collections-query-explorer/queryexplorerhighlightandrun.png)
+If you're using multiple queries and want to quickly switch between them, you can enter all the queries in the query text box of the **Query Explorer** blade, then highlight the one you want to run, and then click **Run query** to view the results.
 
-## Hinzufügen von Abfragen aus einer Datei in den SQL-Abfrage-Editor
+![Screenshot of writing multiple SQL queries in Query Explorer (a SQL query editor) and highlighting and running individual queries](./media/documentdb-query-collections-query-explorer/queryexplorerhighlightandrun.png)
 
-Mithilfe des Befehls **Datei laden** können Sie die Inhalte einer vorhandenen Datei laden.
+## <a name="add-queries-from-a-file-into-the-sql-query-editor"></a>Add queries from a file into the SQL query editor
 
-![Screenshot: Laden von SQL-Abfragen aus einer Datei in den Abfrage-Explorer per „Datei laden“](./media/documentdb-query-collections-query-explorer/loadqueryfile.png)
+You can load the contents of an existing file using the **Load File** command.
 
-## Problembehandlung
+![Screenshot showing how to load SQL queries from a file into Query Explorer using Load File](./media/documentdb-query-collections-query-explorer/loadqueryfile.png)
 
-Wenn eine Abfrage mit Fehlern abgeschlossen wird, zeigt der Abfrage-Explorer eine Liste der Fehler an, die Sie bei der Fehlerbehebung unterstützen.
+## <a name="troubleshoot"></a>Troubleshoot
 
-![Screenshot der Abfrage-Explorers – Abfragefehler](./media/documentdb-query-collections-query-explorer/queryerror.png)
+If a query completes with errors, Query Explorer displays a list of errors that can help with troubleshooting efforts.
 
-## Ausführen von DocumentDB-SQL-Abfragen außerhalb des Portals
+![Screenshot of Query Explorer query errors](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
-Der Abfrage-Explorer im Azure-Portal ist nur eine Möglichkeit, um SQL-Abfragen für DocumentDB auszuführen. Sie können SQL-Abfragen auch mit der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder den [Client-SDKs](documentdb-sdk-dotnet.md) ausführen. Weitere Informationen zur Verwendung dieser oder anderer Methoden finden Sie unter [Ausführen von SQL-Abfragen](documentdb-sql-query.md#executing-sql-queries).
+## <a name="run-documentdb-sql-queries-outside-the-portal"></a>Run DocumentDB SQL queries outside the portal
 
-## Nächste Schritte
+The Query Explorer in the Azure portal is just one way to run SQL queries against DocumentDB. You can also run SQL queries using the [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) or the [client SDKs](documentdb-sdk-dotnet.md). For more information about using these other methods, see [Executing SQL queries](documentdb-sql-query.md#executing-sql-queries)
 
-Weitere Informationen zur DocumentDB-SQL-Grammatik, die im Abfrage-Explorer unterstützt wird, finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md), oder drucken Sie sich den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) aus. Sie können auch experimentieren, indem Sie auf den [Query Playground](https://www.documentdb.com/sql/demo) zugreifen, um Abfragen online mit einem Beispieldataset zu testen.
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0831_2016-->
+To learn more about the DocumentDB SQL grammar supported in Query Explorer, see the [SQL query and SQL syntax](documentdb-sql-query.md) article or print out the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md).
+You may also enjoy experimenting with the [Query Playground](https://www.documentdb.com/sql/demo) where you can test out queries online using a sample dataset.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,31 +1,34 @@
-## Definieren einer Sicherungsrichtlinie
+## <a name="defining-a-backup-policy"></a>Defining a backup policy
 
-Mit einer Sicherungsrichtlinie wird eine Matrix dafür definiert, wann Datenmomentaufnahmen erstellt werden und wie lange diese Momentaufnahmen aufbewahrt werden. Wenn Sie eine Richtlinie zum Sichern eines virtuellen Computers definieren, können Sie einen Sicherungsauftrag *einmal pro Tag* auslösen. Wenn Sie eine neue Richtlinie erstellen, wird sie auf den Tresor angewendet. Die Oberfläche für die Sicherungsrichtlinie sieht wie folgt aus:
+A backup policy defines a matrix of when the data snapshots are taken, and how long those snapshots are retained. When defining a policy for backing up a VM, you can trigger a backup job *once a day*. When you create a new policy, it is applied to the vault. The backup policy interface looks like this:
 
-![Sicherungsrichtlinie](./media/backup-create-policy-for-vms/backup-policy.png)
+![Backup policy](./media/backup-create-policy-for-vms/backup-policy.png)
 
-So erstellen Sie eine Richtlinie
+To create a policy:
 
-1. Geben Sie einen Namen für die **Richtlinie** ein.
+1. Enter a name for the **Policy name**.
 
-2. Sie können in täglichen oder wöchentlichen Abständen Momentaufnahmen Ihrer Daten erstellen. Wählen Sie im Dropdownmenü **Sicherungshäufigkeit** aus, ob Momentaufnahmen der Daten täglich oder wöchentlich erstellt werden sollen.
+2. Snapshots of your data can be taken at Daily or Weekly intervals. Use the **Backup Frequency** drop-down menu to choose whether data snapshots are taken Daily or Weekly.
 
-    - Wenn Sie als Intervall „Täglich“ auswählen, können Sie das hervorgehobene Steuerelement verwenden, um die Tageszeit für die Momentaufnahme auszuwählen. Deaktivieren Sie zum Ändern der Stundenangabe die vorhandene Stunde, und wählen Sie dann die neue Stunde aus.
+    - If you choose a Daily interval, use the highlighted control to select the time of the day for the snapshot. To change the hour, de-select the hour, and select the new hour.
 
-    ![Tägliche Sicherungsrichtlinie](./media/backup-create-policy-for-vms/backup-policy-daily.png) <br/>
+    ![Daily backup policy](./media/backup-create-policy-for-vms/backup-policy-daily.png) <br/>
 
-    - Verwenden Sie bei Auswahl des Intervalls „Wöchentlich“ die hervorgehobenen Steuerelemente, um die Wochentage und die Uhrzeit für die Erstellung der Momentaufnahme auszuwählen. Wählen Sie im Menü „Tag“ einen oder mehrere Tage aus. Wählen Sie im Menü „Stunde“ eine Stunde aus. Deaktivieren Sie zum Ändern der Stundenangabe die ausgewählte Stunde, und wählen Sie dann die neue Stunde aus.
+    - If you choose a Weekly interval, use the highlighted controls to select the day(s) of the week, and the time of day to take the snapshot. In the day menu, select one or multiple days. In the hour menu, select one hour. To change the hour, de-select the selected hour, and select the new hour.
 
-    ![Wöchentliche Sicherungsrichtlinie](./media/backup-create-policy-for-vms/backup-policy-weekly.png)
+    ![Weekly backup policy](./media/backup-create-policy-for-vms/backup-policy-weekly.png)
 
-3. Standardmäßig sind alle Optionen unter **Beibehaltungsdauer** aktiviert. Deaktivieren Sie alle einschränkenden Optionen für die Beibehaltungsdauer, die Sie nicht verwenden möchten. Geben Sie dann die zu verwendenden Intervalle an.
+3. By default, all **Retention Range** options are selected. Uncheck any retention range limit you do not want to use. Then, specify the interval(s) to use.
 
-    Mit monatlichen und jährlichen Beibehaltungsdauern können Sie die Momentaufnahmen basierend auf einem wöchentlichen oder täglichen Inkrement angeben.
+    Monthly and Yearly retention ranges allow you to specify the snapshots based on a weekly or daily increment.
 
-    >[AZURE.NOTE] Wenn eine VM geschützt wird, wird einmal pro Tag ein Sicherungsauftrag ausgeführt. Der Zeitpunkt, zu dem die Sicherung ausgeführt wird, ist für jede Beibehaltungsdauer gleich.
+    >[AZURE.NOTE] When protecting a VM, a backup job runs once a day. The time when the backup runs is the same for each retention range.
 
-4. Nachdem Sie alle Optionen für die Richtlinie festgelegt haben, klicken Sie oben auf dem Blatt auf **Speichern**.
+4. After setting all options for the policy, at the top of the blade click **Save**.
 
-    Die neue Richtlinie wird sofort auf den Tresor angewendet.
+    The new policy is immediately applied to the vault.
 
-<!---HONumber=AcomDC_0608_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

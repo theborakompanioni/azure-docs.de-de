@@ -1,82 +1,89 @@
 <properties 
-	pageTitle="Einführung in Data Factory, einen Datenintegrationsdienst | Microsoft Azure" 
-	description="Erfahren Sie, was Azure Data Factory ist: Ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert." 
-	keywords="Datenintegration, Clouddatenintegration, Was ist Azure Data Factory?"
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="Introduction to Data Factory, a data integration service | Microsoft Azure" 
+    description="Learn what Azure Data Factory is: A cloud data integration service that orchestrates and automates movement and transformation of data." 
+    keywords="data integration, cloud data integration, what is azure data factory"
+    services="data-factory" 
+    documentationCenter="" 
+    authors="sharonlo101" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="09/22/2016" 
-	ms.author="spelluru"/>
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="get-started-article" 
+    ms.date="09/22/2016" 
+    ms.author="shlo"/>
 
-# Einführung in den Azure Data Factory-Dienst (Datenintegrationsdienst in der Cloud)
 
-## Was ist Azure Data Factory? 
-Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das **Verschieben** und **Transformieren** von Daten organisiert und automatisiert. Mit dem Data Factory-Dienst können Sie Datenintegrationslösungen erstellen, die Daten aus verschiedenen Datenspeichern erfassen, die Daten transformieren/verarbeiten und anschließend die Ergebnisdaten in den Datenspeichern veröffentlichen.
+# <a name="introduction-to-azure-data-factory-service,-a-data-integration-service-in-the-cloud"></a>Introduction to Azure Data Factory Service, a data integration service in the cloud
 
-Der Data Factory-Dienst ermöglicht die Erstellung von Datenpipelines zum Verschieben und Transformieren von Daten und die Ausführung dieser Pipelines nach einem festgelegten Zeitplan (stündlich, täglich, wöchentlich usw.). Darüber hinaus stehen umfangreiche Visualisierungen zur Verfügung, um Herkunft und Abhängigkeiten zwischen Ihren Datenpipelines anzuzeigen und alle Ihre Datenpipelines über eine zentrale, einheitliche Ansicht zu überwachen. Dadurch können Sie nicht nur mühelos Probleme lokalisieren, sondern auch Überwachungswarnungen einrichten.
+## <a name="what-is-azure-data-factory?"></a>What is Azure Data Factory? 
+Data Factory is a cloud-based data integration service that orchestrates and automates the **movement** and **transformation** of data. You can create data integration solutions using the Data Factory service that can ingest data from various data stores, transform/process the data, and publish the result data to the data stores. 
 
-![Diagramm: Übersicht über Data Factory (Datenintegrationsdienst)](./media/data-factory-introduction/what-is-azure-data-factory.png)**Abbildung 1:** Erfassen Sie Daten aus unterschiedlichen Datenquellen, bereiten Sie sie vor, transformieren und analysieren Sie sie, und veröffentlichen Sie nutzbare Daten.
+Data Factory service allows you to create data pipelines that move and transform data, and then run the pipelines on a specified schedule (hourly, daily, weekly, etc.). It also provides rich visualizations to display the lineage and dependencies between your data pipelines, and monitor all your data pipelines from a single unified view to easily pinpoint issues and setup monitoring alerts.
 
-## Pipelines und Aktivitäten
-In einer Data Factory-Lösung erstellen Sie mindestens eine **Pipeline**. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten. Sie dienen zum Gruppieren von Aktivitäten zu einer Einheit, die zum Ausführen einer Aufgabe verwendet wird.
+![Diagram: Data Factory Overview, a data integration service](./media/data-factory-introduction/what-is-azure-data-factory.png)
+**Figure1.** Ingest data from various data sources, prepare, transform, and analyze the data, and then publish ready-to-use data for consumption.
 
-**Aktivitäten** definieren die Aktionen, die Sie für Ihre Daten ausführen. Beispielsweise können Sie eine Kopieraktivität verwenden, um Daten zwischen zwei Datenspeichern zu kopieren. Analog dazu können Sie eine Hive-Aktivität verwenden, die eine Hive-Abfrage für einen Azure-HDInsight-Cluster ausführt, um Ihre Daten zu transformieren oder zu analysieren. Data Factory unterstützt zwei Arten von Aktivitäten: Datenverschiebungen und Datentransformationen.
+## <a name="pipelines-and-activities"></a>Pipelines and activities
+In a Data Factory solution, you create one or more data **pipelines**. A pipeline is a logical grouping of activities. They are used to group activities into a unit that together perform a task. 
+
+**Activities** define the actions to perform on your data. For example, you may use a Copy activity to copy data from one data store to another data store. Similarly, you may use a Hive activity, which runs a Hive query on an Azure HDInsight cluster to transform or analyze your data. Data Factory supports two types of activities: data movement activities and data transformation activities. 
   
-## Datenverschiebungsaktivitäten 
+## <a name="data-movement-activities"></a>Data movement activities 
 [AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-Ausführlichere Informationen finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
+See [Data Movement Activities](data-factory-data-movement-activities.md) article for more details. 
 
-## Datentransformationsaktivitäten
+## <a name="data-transformation-activities"></a>Data transformation activities
 [AZURE.INCLUDE [data-factory-transformation-activities](../../includes/data-factory-transformation-activities.md)]
 
-Ausführlichere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md).
+See [Data Transformation Activities](data-factory-data-transformation-activities.md) article for more details.
 
-Falls Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, oder Daten mit Ihrer eigenen Logik transformieren möchten, erstellen Sie eine **benutzerdefinierte .NET-Aktivität**. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
+If you need to move data to/from a data store that Copy Activity doesn't support, or transform data using your own logic, create a **custom .NET activity**. For details on creating and using a custom activity, see [Use custom activities in an Azure Data Factory pipeline](data-factory-use-custom-activities.md).
 
-## Verknüpfte Dienste
-Verknüpfte Dienste definieren die Informationen, die Data Factory zum Herstellen einer Verbindung mit externen Ressourcen benötigt. (Beispiele: Azure Storage, lokale SQL Server-Instanz, Azure HDInsight) Verknüpfte Dienste haben in Data Factory zwei Zwecke:
+## <a name="linked-services"></a>Linked services
+Linked services define the information needed for Data Factory to connect to external resources (Examples: Azure Storage, on-premises SQL Server, Azure HDInsight). Linked services are used for two purposes in Data Factory:
 
-- Sie stellen einen **Datenspeicher** dar (beispielsweise eine lokale SQL Server-Instanz, eine Oracle-Datenbank, eine Dateifreigabe oder ein Azure Blob Storage-Konto). Eine Liste mit unterstützten Datenspeichern finden Sie im Abschnitt [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
-- Sie stellen eine **Computeressource** dar, die die Ausführung einer Aktivität hosten kann. So wird beispielsweise die HDInsightHive-Aktivität in einem HDInsight-Hadoop-Cluster ausgeführt. Eine Liste mit unterstützten Computeumgebungen finden Sie unter [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md).
+- To represent a **data store** including, but not limited to, an on-premises SQL Server, Oracle database, file share, or an Azure Blob Storage account. See the [Data movement activities](data-factory-data-movement-activities.md) section for a list of supported data stores. 
+- To represent a **compute resource** that can host the execution of an activity. For example, the HDInsightHive activity runs on an HDInsight Hadoop cluster. See [Data transformation activities](data-factory-data-transformation-activities.md) section for a list of supported compute environments. 
 
-## Datasets 
-Verknüpfte Dienste verknüpfen Datenspeicher mit einer Azure-Data Factory. Datasets stellen Datenstrukturen in den Datenspeichern dar. So stellt etwa ein verknüpfter Azure Storage-Dienst Verbindungsinformationen für Data Factory bereit, um eine Verbindung mit einem Azure Storage-Konto herstellen zu können. Ein Azure-Blob-Dataset gibt den Blobcontainer und -ordner in Azure Blob Storage an, aus dem die Pipeline die Daten lesen soll. Analog dazu stellt ein verknüpfter Azure SQL-Dienst Verbindungsinformationen für eine Azure SQL-Datenbank bereit, und ein Azure SQL-Dataset gibt die Tabelle mit den Daten an.
+## <a name="datasets"></a>Datasets 
+Linked services link data stores to an Azure data factory. Datasets represent data structures with in the data stores. For example, an Azure Storage linked service provides connection information for Data Factory to connect to an Azure Storage account. An Azure Blob dataset specifies the blob container and folder in the Azure Blob Storage from which the pipeline should read the data. Similarly, an Azure SQL linked service provides connection information for an Azure SQL database and an Azure SQL dataset specifies the table that contains the data.   
 
-## Beziehung zwischen Data Factory-Entitäten
-Data Factory verfügt über einige wichtige Entitäten, die zusammenarbeiten, um Ein- und Ausgabedaten, Verarbeitungsereignisse sowie den Zeitplan und die Ressourcen zu bestimmen, die für den Ablauf des gewünschten Datenflusses erforderlich sind.
+## <a name="relationship-between-data-factory-entities"></a>Relationship between Data Factory entities
+Data Factory has a few key entities that work together to define input and output data, processing events, and the schedule and resources required to execute the desired data flow.
 
-![Diagramm: Data Factory, ein Clouddaten-Integrationsdienst – Grundlegende Konzepte](./media/data-factory-introduction/data-integration-service-key-concepts.png) **Abbildung 2** Beziehungen zwischen Dataset, Aktivität, Pipeline und verknüpftem Dienst
+![Diagram: Data Factory, a cloud data integration service - Key Concepts](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+**Figure 2.** Relationships between Dataset, Activity, Pipeline, and Linked service
 
-Nachdem Sie sich mit den vier einfachen Konzepten (verknüpfte Dienste, Datasets, Aktivitäten und Pipelines) vertraut gemacht haben, kann es auch schon losgehen: [Erstellen Sie Ihre erste Pipeline](data-factory-build-your-first-pipeline.md)!
+With the four simple concepts of linked services, datasets, activities, and pipelines, you are ready to get started! You can [build your first pipeline](data-factory-build-your-first-pipeline.md). 
 
-## Unterstützte Regionen
-Derzeit können Data Factorys in den Regionen **USA, Westen**, **USA, Osten** und **Europa, Norden** erstellt werden. Eine Data Factory kann jedoch auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten.
+## <a name="supported-regions"></a>Supported regions
+Currently, you can create data factories in the **West US**, **East US**, and **North Europe** regions. However, a data factory can access data stores and compute services in other Azure regions to move data between data stores or process data using compute services. 
 
-In Azure Data Factory selbst werden keine Daten gespeichert. Der Dienst ermöglicht das Erstellen von Datenflüssen, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](data-factory-data-movement-activities.md#supported-data-stores) und die Verarbeitung von Daten mithilfe von [Compute Services](data-factory-compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem können Sie mit programmgesteuerten und UI-basierten Mechanismen [Workflows überwachen und verwalten](data-factory-monitor-manage-pipelines.md).
+Azure Data Factory itself does not store any data. It lets you create data-driven flows to orchestrate movement of data between [supported data stores](data-factory-data-movement-activities.md#supported-data-stores) and processing of data using [compute services](data-factory-compute-linked-services.md) in other regions or in an on-premises environment. It also allows you to [monitor and manage workflows](data-factory-monitor-manage-pipelines.md) using both programmatic and UI mechanisms. 
 
-Obwohl Azure Data Factory nur in den Regionen **USA, Westen**, **USA, Osten** und **Europa, Norden** verfügbar ist, steht der Datenverschiebungsdienst in Data Factory [global](data-factory-data-movement-activities.md#global) in verschiedenen Regionen zur Verfügung. Falls sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einem in der lokalen Umgebung installierten [Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) verschoben.
+Even though Azure Data Factory is available in only **West US**, **East US**, and **North Europe** regions, the service powering the data movement in Data Factory is available [globally](data-factory-data-movement-activities.md#global) in several regions. In case a data store sits behind a firewall then a [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) installed in your on-premises environment moves the data instead. 
 
-Nehmen wir beispielsweise an, dass Ihre Computeumgebungen wie Azure HDInsight-Cluster und Azure Machine Learning außerhalb der Region „Europa, Westen“ ausgeführt werden. Sie können eine Azure Data Factory-Instanz in der Region „Europa, Norden“ erstellen und mit ihr Aufträge in Ihren Computeumgebungen in der Region „Europa, Westen“ planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Computeumgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Computeumgebung ändert sich aber nicht.
+For an example, let us assume that your compute environments such as Azure HDInsight cluster and Azure Machine Learning are running out of West Europe region. You can create and use an Azure Data Factory instance in North Europe and use it to schedule jobs on your compute environments in West Europe. It takes a few milliseconds for Data Factory to trigger the job on your compute environment but the time for running the job on your computing environment does not change.
 
-Es ist geplant, Azure Data Factory in Zukunft in allen von Azure unterstützten Gebieten bereitzustellen.
+We intend to have Azure Data Factory in every geography supported by Azure in the future.
   
-## Nächste Schritte
-Befolgen Sie die Schritt-für-Schritt-Anleitungen in den folgenden Tutorials, um zu erfahren, wie Sie Data Factorys mit Datenpipelines erstellen.
+## <a name="next-steps"></a>Next steps
+To learn how to build data factories with data pipelines, follow step-by-step instructions in the following tutorials. 
 
-Lernprogramm: | Beschreibung
+Tutorial | Description
 -------- | -----------
-[Erstellen einer Datenpipeline zur Datenverarbeitung mit Hadoop-Cluster](data-factory-build-your-first-pipeline.md) | In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline zur **Datenverarbeitung**, indem ein Hive-Skript in einem Azure HDInsight (Hadoop)-Cluster ausgeführt wird. |
-[Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, mit der **Daten aus Blob Storage in SQL-Datenbank verschoben werden**.
-[Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) | In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, die Daten aus einer **lokalen** SQL Server-Datenbank in ein Azure-Blob **verschiebt**. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer. 
+[Build a data pipeline that processes data using Hadoop cluster](data-factory-build-your-first-pipeline.md) | In this tutorial, you build your first Azure data factory with a data pipeline that **processes data** by running Hive script on an Azure HDInsight (Hadoop) cluster. |
+[Build a data pipeline to move data between two cloud data stores](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | In this tutorial, you create a data factory with a pipeline that **moves data** from Blob storage to SQL database.
+[Build a data pipeline to move data between an on-premises data store and a cloud data store using Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) | In this tutorial, you build a data factory with a pipeline that **moves data** from an **on-premises** SQL Server database to an Azure blob. As part of the walkthrough, you install and configure the Data Management Gateway on your machine. 
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

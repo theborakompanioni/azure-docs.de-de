@@ -1,9 +1,9 @@
 
 <properties
-    pageTitle="Anforderungen an Azure RemoteApp-Images | Microsoft Azure"
-    description="Erfahren Sie, welche Anforderungen bei der Erstellung von Images für die Verwendung mit Azure RemoteApp bestehen."
+    pageTitle="Azure RemoteApp image requirements | Microsoft Azure"
+    description="Learn about the requirements for creating images to be used with Azure RemoteApp"
     services="remoteapp"
-	documentationCenter=""
+    documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -18,34 +18,39 @@
 
 
 
-# Anforderungen für Azure RemoteApp-Images
+
+# <a name="requirements-for-azure-remoteapp-images"></a>Requirements for Azure RemoteApp images
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Azure RemoteApp verwendet ein Windows Server 2012 R2-Image, um alle Programme zu hosten, die Sie an die Benutzer freigeben möchten. Um ein benutzerdefiniertes Image zu erstellen, beginnen Sie mit einem bestehenden Image oder [erstellen ein neues](remoteapp-create-custom-image.md).
+Azure RemoteApp uses a Windows Server 2012 R2 image to host all the programs that you want to share with your users. To create a custom image, you can start with an existing image or [create a new one](remoteapp-create-custom-image.md).
 
-> [AZURE.TIP] Wussten Sie, dass Ihnen Ihr Azure RemoteApp-Abonnement Zugriff auf ein Windows Server 2012 R2-Image im Azure-VM-Katalog bietet, mit dem Sie Ihr eigenes Vorlagenimage erstellen können? [Probieren Sie es aus](remoteapp-image-on-azurevm.md).
-
-
-Das Abbild, das für die Verwendung mit Azure RemoteApp hochgeladen werden soll, muss folgende Anforderungen erfüllen:
+> [AZURE.TIP] Did you know that your Azure RemoteApp subscription gives you access to a Windows Server 2012 R2 image in the Azure VM gallery that you can use to create your own template image? [Check it out](remoteapp-image-on-azurevm.md).  
 
 
-- Benutzerdefinierte Anwendungen speichern keine lokalen Daten im Image. Diese Images verfügen über keinen Status und sollten nur Anwendungen enthalten.
-- Das Image enthält keine Daten, die verloren gehen können.
-- Die Größe des Abbilds sollte ein Vielfaches der Einheit MB (1.024 KB) betragen. Wenn Sie versuchen, ein Abbild hochzuladen, das kein exaktes Vielfaches ist, treten beim Upload Fehler auf.
-- Das Abbild darf nicht größer als 127 GB sein.
-- Es muss sich auf einer VHD-Datei befinden (VHDX-Dateien werden derzeit nicht unterstützt).
-- Die VHD darf kein virtueller Computer der 2. Generation sein.
-- Die VHD kann eine feste Größe haben oder dynamisch erweiterbar sein. Wir empfehlen eine dynamisch erweiterbare VHD, da das Hochladen dieser in Azure weniger Zeit in Anspruch nimmt.
-- Der Datenträger muss mit der Master Boot Record (MBR)-Partitionierung initialisiert werden. Die GPT-Partitionierung (GUID-Partitionstabelle) wird nicht unterstützt.
-- Die VHD muss eine einzige Installation von Windows Server 2012 R2 enthalten. Sie kann mehrere Volumes enthalten, jedoch nur eines mit einer Windows-Installation.
-- Die RDSH-Rolle (Remote Desktop Session Host) und das Desktopdarstellung-Feature müssen installiert sein.
-- Die Remotedesktop-Verbindungsbroker-Rolle darf *nicht* installiert sein.
-- Encrypting File System (EFS) muss deaktiviert sein.
-- Das Abbild muss mit SYSPREP unter Verwendung der Parameter **/oobe /generalize /shutdown** vorbereitet werden. Verwenden Sie nicht den Parameter **/mode:vm**.
-- VHD-Uploads aus einer Momentaufnahmenkette werden nicht unterstützt.
+The requirements for the image that can be uploaded for use with Azure RemoteApp are:
 
-Weitere Informationen zum Erstellen von Images für Azure RemoteApp finden Sie unter [Erstellen von Azure RemoteApp-Images](remoteapp-imageoptions.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+- Custom applications don’t store data locally on the image. These images are stateless and should only contain applications.
+- The image does not contain data that can be lost.
+- The image size should be a multiple of MBs. If you try to upload an image that is not an exact multiple, the upload will fail.
+- The image size must be 127 GB or smaller.
+- It must be on a VHD file (VHDX files are not currently supported).
+- The VHD must not be a generation 2 virtual machine.
+- The VHD can be either fixed-size or dynamically expanding. A dynamically expanding VHD is recommended because it takes less time to upload to Azure than a fixed-size VHD file.
+- The disk must be initialized using the Master Boot Record (MBR) partitioning style. The GUID partition table (GPT) partition style is not supported.
+- The VHD must contain a single installation of Windows Server 2012 R2. It can contain multiple volumes, but only one that contains an installation of Windows.
+- The Remote Desktop Session Host (RDSH) role and the Desktop Experience feature must be installed.
+- The Remote Desktop Connection Broker role must *not* be installed.
+- The Encrypting File System (EFS) must be disabled.
+- The image must be SYSPREPed using the parameters **/oobe /generalize /shutdown** (DO NOT use the **/mode:vm** parameter).
+- Uploading your VHD from a snapshot chain is not supported.
+
+See [Create an Azure RemoteApp image](remoteapp-imageoptions.md) for more information about creating images for Azure RemoteApp.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

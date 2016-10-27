@@ -1,19 +1,22 @@
-## Inkrementelle und vollständige Bereitstellungen
+## <a name="incremental-and-complete-deployments"></a>Incremental and complete deployments
 
-Standardmäßig behandelt Ressourcen-Manager Bereitstellungen als inkrementelle Updates für die Ressourcengruppe. Bei der inkrementellen Bereitstellung kann Ressourcen-Manager Folgendes:
+By default, Resource Manager handles deployments as incremental updates to the resource group. With incremental deployment, Resource Manager:
 
-- Ressourcen **unverändert lassen**, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
-- Ressourcen **hinzufügen**, die in der Vorlage angegeben, jedoch nicht in der Ressourcengruppe vorhanden sind.
-- **das erneute Bereitstellen von Ressourcen unterlassen**, die in der Ressourcengruppe gemäß der in der Vorlage definierten Bedingung vorhanden sind.
-- vorhandene Ressourcen, die aktualisierte Einstellungen in der Vorlage enthalten, **erneut bereitstellen**.
+- **leaves unchanged** resources that exist in the resource group but are not specified in the template
+- **adds** resources that are specified in the template but do not exist in the resource group 
+- **does not re-provision** resources that exist in the resource group in the same condition defined in the template
+- **re-provisions** existing resources that have updated settings in the template
 
-Bei der vollständigen Bereitstellung kann Ressourcen-Manager Folgendes:
+With complete deployment, Resource Manager:
 
-- Ressourcen **löschen**, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
-- Ressourcen **hinzufügen**, die in der Vorlage angegeben, jedoch nicht in der Ressourcengruppe vorhanden sind.
-- **das erneute Bereitstellen von Ressourcen unterlassen**, die in der Ressourcengruppe gemäß der in der Vorlage definierten Bedingung vorhanden sind.
-- vorhandene Ressourcen, die aktualisierte Einstellungen in der Vorlage enthalten, **erneut bereitstellen**.
+- **deletes** resources that exist in the resource group but are not specified in the template
+- **adds** resources that are specified in the template but do not exist in the resource group 
+- **does not re-provision** resources that exist in the resource group in the same condition defined in the template
+- **re-provisions** existing resources that have updated settings in the template
  
-Die Art der Bereitstellung wird mithilfe der Eigenschaft **Mode** angegeben.
+You specify the type of deployment through the **Mode** property.
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

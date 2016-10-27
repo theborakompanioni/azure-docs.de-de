@@ -1,33 +1,35 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### So stellen Sie über die serielle Konsole eine Verbindung her
+#### <a name="to-connect-through-the-serial-console"></a>To connect through the serial console
 
-1. Schließen Sie das serielle Kabel (direkt oder über einen seriellen USB-Adapter) an das Gerät an.
+1. Connect your serial cable to the device (directly or through a USB-serial adapter).
 
-2. Öffnen Sie die **Systemsteuerung**, und öffnen Sie dann den **Geräte-Manager**.
+2. Open the **Control Panel**, and then open the **Device Manager**.
 
-3. Identifizieren Sie den COM-Anschluss, wie in der folgenden Abbildung dargestellt.
+3. Identify the COM port as shown in the following illustration.
 
-     ![Herstellen einer Verbindung über die serielle Konsole](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
+     ![Connecting through serial console](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
 
-4. Starten Sie PuTTY.
+4. Start PuTTY. 
 
-5. Ändern Sie im rechten Bereich den **Verbindungstyp** in **Seriell**.
+5. In the right pane, change the **Connection type** to **Serial**.
 
-6. Geben Sie im rechten Bereich den entsprechenden COM-Anschluss ein. Stellen Sie sicher, dass die Parameter für die serielle Konfiguration wie folgt festgelegt sind:
-  - Geschwindigkeit: 115.200
-  - Datenbits: 8
-  - Stoppbits: 1
-  - Parität: Kein(e)
-  - Flusssteuerung: Kein(e)
+6. In the right pane, type the appropriate COM port. Make sure that the serial configuration parameters are set as follows:
+  - Speed: 115,200
+  - Data bits: 8
+  - Stop bits: 1
+  - Parity: None
+  - Flow control: None
 
-    Diese Einstellungen werden in der folgenden Abbildung gezeigt.
+    These settings are shown in the following illustration.
 
-     ![PuTTY-Einstellungen](./media/storsimple-use-putty/HCS_PuttyConfig-include.png)
+     ![PuTTY settings](./media/storsimple-use-putty/HCS_PuttyConfig-include.png) 
 
-    > [AZURE.NOTE]Wenn die Standardeinstellungen für die Flusssteuerung nicht funktionieren, versuchen Sie, die Flusssteuerung auf "XON/XOFF" festzulegen.
+    > [AZURE.NOTE] If the default flow control setting does not work, try setting the flow control to XON/XOFF.
 
-7. Klicken Sie auf **Öffnen**, um eine serielle Sitzung zu starten.
+7. Click **Open** to start a serial session.
  
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,39 +1,40 @@
 <properties 
-	pageTitle="Einrichten von Warnungen in Application Insights mithilfe von PowerShell" 
-	description="Automatisieren Sie die Konfiguration von Application Insights so, dass Sie bei Metrikänderungen E-Mails erhalten." 
-	services="application-insights" 
+    pageTitle="Use Powershell to set alerts in Application Insights" 
+    description="Automate configuration of Application Insights to get emails about metric changes." 
+    services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/19/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="02/19/2016" 
+    ms.author="awills"/>
  
-# Einrichten von Warnungen in Application Insights mithilfe von PowerShell
 
-Sie können die Konfiguration von [Warnungen](app-insights-alerts.md) in [Visual Studio Application Insights](app-insights-overview.md) automatisieren.
+# <a name="use-powershell-to-set-alerts-in-application-insights"></a>Use PowerShell to set alerts in Application Insights
 
-Darüber hinaus können Sie [Webhooks zum Automatisieren Ihrer Reaktion auf eine Warnung festlegen](../azure-portal/insights-webhooks-alerts.md).
+You can automate the configuration of [alerts](app-insights-alerts.md) in [Visual Studio Application Insights](app-insights-overview.md). 
 
-## Einmalige Konfiguration
+In addition, you can [set webhooks to automate your response to an alert](../azure-portal/insights-webhooks-alerts.md).
 
-Wenn Sie PowerShell noch nicht mit Ihrem Azure-Abonnement verwendet haben:
+## <a name="one-time-setup"></a>One-time setup
 
-Installieren Sie das Azure-PowerShell-Modul auf dem Computer, auf dem die Skripts ausgeführt werden sollen.
+If you haven't used PowerShell with your Azure subscription before:
 
- * Installieren Sie [Microsoft-Webplattform-Installer (Version 5 oder höher)](http://www.microsoft.com/web/downloads/platform.aspx).
- * Installieren Sie hiermit Microsoft Azure PowerShell.
+Install the Azure Powershell module on the machine where you want to run the scripts. 
+
+ * Install [Microsoft Web Platform Installer (v5 or higher)](http://www.microsoft.com/web/downloads/platform.aspx).
+ * Use it to install Microsoft Azure Powershell
 
 
-## Herstellen einer Verbindung mit Azure
+## <a name="connect-to-azure"></a>Connect to Azure
 
-Starten Sie Azure PowerShell, und [stellen Sie eine Verbindung mit Ihrem Abonnement her](../powershell-install-configure.md):
+Start Azure PowerShell and [connect to your subscription](../powershell-install-configure.md):
 
 ```PowerShell
 
@@ -42,11 +43,11 @@ Starten Sie Azure PowerShell, und [stellen Sie eine Verbindung mit Ihrem Abonnem
 ```
 
 
-## Abrufen von Warnungen
+## <a name="get-alerts"></a>Get alerts
 
     Get-AlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
-## Warnung hinzufügen
+## <a name="add-alert"></a>Add alert
 
 
     Add-AlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
@@ -63,11 +64,11 @@ Starten Sie Azure PowerShell, und [stellen Sie eine Verbindung mit Ihrem Abonnem
 
 
 
-## Beispiel 1
+## <a name="example-1"></a>Example 1
 
-E-Mail-Nachricht senden, wenn die Antwort des Servers auf HTTP-Anforderungen, gemittelt über 5 Minuten, langsamer als 1 Sekunde ist. Der Name meiner Application Insights-Ressource lautet IceCreamWebApp, und sie befindet sich in der Ressourcengruppe "Fabrikam". Ich bin Besitzer des Azure-Abonnements.
+Email me if the server's response to HTTP requests, averaged over 5 minutes, is slower than 1 second. My Application Insights resource is called IceCreamWebApp, and it is in resource group Fabrikam. I am the owner of the Azure subscription.
 
-Die GUID ist die Abonnement-ID (nicht der Instrumentierungsschlüssel der Anwendung).
+The GUID is the subscription ID (not the instrumentation key of the application).
 
     Add-AlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
@@ -80,9 +81,9 @@ Die GUID ist die Abonnement-ID (nicht der Instrumentierungsschlüssel der Anwend
      -SendEmailToServiceOwners `
      -Location "East US" -RuleType Metric
 
-## Beispiel 2
+## <a name="example-2"></a>Example 2
 
-Ich habe eine Anwendung, in der ich mit [TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) eine Metrik namens „salesPerHour“ melde. Eine E-Mail an meine Kollegen senden, wenn "salesPerHour" gemittelt über 24 Stunden unter 100 fällt.
+I have an application in which I use [TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) to report a metric named "salesPerHour." Send an email to my colleagues if "salesPerHour" drops below 100, averaged over 24 hours.
 
     Add-AlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -95,57 +96,60 @@ Ich habe eine Anwendung, in der ich mit [TrackMetric()](app-insights-api-custom-
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-Dieselbe Regel kann für die Metrik verwendet werden, die mit dem [Messparameter](app-insights-api-custom-events-metrics.md#properties) eines anderen Trackingaufrufs gemeldet wird, z. B. TrackEvent oder trackPageView.
+The same rule can be used for the metric reported by using the [measurement parameter](app-insights-api-custom-events-metrics.md#properties) of another tracking call such as TrackEvent or trackPageView.
 
-## Metriknamen
+## <a name="metric-names"></a>Metric names
 
-Metrikname | Anzeigename | Beschreibung
+Metric name | Screen name | Description
 ---|---|---
-`basicExceptionBrowser.count`|Browserausnahmen|Anzahl nicht erfasster Ausnahmen, die im Browser ausgelöst wurden.
-`basicExceptionServer.count`|Serverausnahmen|Anzahl der nicht behandelten Ausnahmen, die von der Anwendung ausgelöst wurden
-`clientPerformance.clientProcess.value`|Clientverarbeitungszeit|Zeit zwischen dem Empfang des letzten Byte eines Dokuments und dem Laden des DOM. Asynchrone Anforderungen werden möglicherweise immer noch verarbeitet.
-`clientPerformance.networkConnection.value`|Netzwerkverbindungszeit zum Laden der Seite| Zeit, die der Browser für die Verbindung mit dem Netzwerk benötigt. Kann bei Zwischenspeicherung 0 sein.
-`clientPerformance.receiveRequest.value`|Empfängt Antwortzeit| Zeit zwischen dem Senden der Anforderung durch den Browser und dem Empfangen der Antwort.
-`clientPerformance.sendRequest.value`|Anforderungszeit senden| Vom Browser benötigte Zeit zum Senden der Anforderung.
-`clientPerformance.total.value`|Browser-Seitenladezeit|Zeit ab der Benutzeranforderung, bis DOM, Stylesheets, Skripts und Bilder geladen werden.
-`performanceCounter.available_bytes.value`|Verfügbarer Arbeitsspeicher|Physischer Arbeitsspeicher, der sofort für einen Prozess oder für die Nutzung durch das System verfügbar ist.
-`performanceCounter.io_data_bytes_per_sec.value`|E/A-Rate für Prozess|Gesamtanzahl von pro Sekunde in Dateien, im Netzwerk und auf Geräten gelesenen und geschriebenen Bytes.
-`performanceCounter.number_of_exceps_thrown_per_sec`|Ausnahmerate|Pro Sekunde ausgelöste Ausnahmen.
-`performanceCounter.percentage_processor_time.value`|Prozess-CPU|Der Prozentsatz der verstrichenen Zeit für alle Prozessthreads, die vom Prozessor zur Ausführung von Anweisungen für den Anwendungsprozess verwendet wird.
-`performanceCounter.percentage_processor_total.value`|Prozessorzeit|Der Prozentsatz der Zeit, die der Prozessor nicht im Leerlauf in Threads verbringt.
-`performanceCounter.process_private_bytes.value`|Private Bytes für Prozess|Speicher, der exklusiv den überwachten Anwendungsprozessen zugewiesen ist.
-`performanceCounter.request_execution_time.value`|Ausführungsdauer für ASP.NET-Anforderungen|Ausführungszeit der aktuellen Anforderung.
-`performanceCounter.requests_in_application_queue.value`|ASP.NET-Anforderungen in Ausführungswarteschlange|Länge der Anwendungsanforderungswarteschleife.
-`performanceCounter.requests_per_sec`|ASP.NET-Anforderungsrate|Rate aller Anforderungen an die Anwendung pro Sekunde von ASP.NET.
-`remoteDependencyFailed.durationMetric.count`|Abhängigkeitsfehler|Anzahl der Aufrufe mit Fehlern von der Serveranwendung an externe Ressourcen.
-`request.duration`|Serverantwortzeit|Zeit zwischen dem Empfang einer HTTP-Anforderung und dem Abschluss des Sendevorgangs der Antwort.
-`request.rate`|Anforderungsrate|Rate aller Anforderungen an die Anwendung pro Sekunde.
-`requestFailed.count`|Anforderungsfehler|Anzahl von HTTP-Anforderungen, die als Ergebnis Antwortcode >= 400 hatten. 
-`view.count`|Seitenaufrufe|Anzahl der Clientbenutzeranforderungen für eine Webseite. Synthetischer Datenverkehr wird herausgefiltert.
-{benutzerdefinierter Metrikname}|{Ihr Metrikname}|Der von [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) oder im [Messparameter eines Trackingaufrufs](app-insights-api-custom-events-metrics.md#properties) gemeldete Metrikwert.
+`basicExceptionBrowser.count`|Browser exceptions|Count of uncaught exceptions thrown in the browser.
+`basicExceptionServer.count`|Server exceptions|Count of unhandled exceptions thrown by the app
+`clientPerformance.clientProcess.value`|Client processing time|Time between receiving the last byte of a document until the DOM is loaded. Async requests may still be processing.
+`clientPerformance.networkConnection.value`|Page load network connect time| Time the browser takes to connect to the network. Can be 0 if cached.
+`clientPerformance.receiveRequest.value`|Receiving response time| Time between browser sending request to starting to receive response.
+`clientPerformance.sendRequest.value`|Send request time| Time taken by browser to send request.
+`clientPerformance.total.value`|Browser page load time|Time from user request until DOM, stylesheets, scripts and images are loaded.
+`performanceCounter.available_bytes.value`|Available memory|Physical memory immediately available for a process or for system use.
+`performanceCounter.io_data_bytes_per_sec.value`|Process IO Rate|Total bytes per second read and written to files, network and devices.
+`performanceCounter.number_of_exceps_thrown_per_sec`|exception rate|Exceptions thrown per second.
+`performanceCounter.percentage_processor_time.value`|Process CPU|The percentage of elapsed time of all process threads used by the processor to execution instructions for the applications process.
+`performanceCounter.percentage_processor_total.value`|Processor time|The percentage of time that the processor spends in non-Idle threads.
+`performanceCounter.process_private_bytes.value`|Process private bytes|Memory exclusively assigned to the monitored application's processes.
+`performanceCounter.request_execution_time.value`|ASP.NET request execution time|Execution time of the most recent request.
+`performanceCounter.requests_in_application_queue.value`|ASP.NET requests in execution queue|Length of the application request queue.
+`performanceCounter.requests_per_sec`|ASP.NET request rate|Rate of all requests to the application per second from ASP.NET.
+`remoteDependencyFailed.durationMetric.count`|Dependency failures|Count of failed calls made by the server application to external resources.
+`request.duration`|Server response time|Time between receiving an HTTP request and finishing sending the response.
+`request.rate`|Request rate|Rate of all requests to the application per second.
+`requestFailed.count`|Failed requests|Count of HTTP requests that resulted in a response code >= 400 
+`view.count`|Page views|Count of client user requests for a web page. Synthetic traffic is filtered out.
+{your custom metric name}|{Your metric name}|Your metric value reported by [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) or in the [measurements parameter of a tracking call](app-insights-api-custom-events-metrics.md#properties).
 
-Die Metriken werden von verschiedenen Telemetriemodulen gesendet:
+The metrics are sent by different telemetry modules:
 
-Metrikgruppe | Erfassungsmodul
+Metric group | Collector module
 ---|---
 basicExceptionBrowser,<br/>clientPerformance,<br/>view | [Browser JavaScript](app-insights-javascript.md)
-performanceCounter | [Leistung](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)
-remoteDependencyFailed| [Abhängigkeit](app-insights-configuration-with-applicationinsights-config.md#nuget-package-1)
-request,<br/>requestFailed|[Serveranfrage](app-insights-configuration-with-applicationinsights-config.md#nuget-package-2)
+performanceCounter | [Performance](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)
+remoteDependencyFailed| [Dependency](app-insights-configuration-with-applicationinsights-config.md#nuget-package-1)
+request,<br/>requestFailed|[Server request](app-insights-configuration-with-applicationinsights-config.md#nuget-package-2)
 
-## Webhooks
+## <a name="webhooks"></a>Webhooks
 
-Sie können [Ihre Reaktion auf eine Warnung automatisieren](../azure-portal/insights-webhooks-alerts.md). Azure ruft eine Webadresse Ihrer Wahl auf, wenn eine Warnung ausgelöst wird.
+You can [automate your response to an alert](../azure-portal/insights-webhooks-alerts.md). Azure will call a web address of your choice when an alert is raised. 
 
-## Weitere Informationen
+## <a name="see-also"></a>See also
 
 
-* [Skript zum Konfigurieren von Application Insights](app-insights-powershell-script-create-resource.md)
-* [Erstellen von Application Insights- und Webtestressourcen aus Vorlagen](app-insights-powershell.md)
-* [Automatisieren der Kopplung der Microsoft Azure-Diagnose mit Application Insights](app-insights-powershell-azure-diagnostics.md)
-* [Automatisieren Ihrer Reaktion auf eine Warnung](../azure-portal/insights-webhooks-alerts.md)
+* [Script to configure Application Insights](app-insights-powershell-script-create-resource.md)
+* [Create Application Insights and web test resources from templates](app-insights-powershell.md)
+* [Automate coupling Microsoft Azure Diagnostics to Application Insights](app-insights-powershell-azure-diagnostics.md)
+* [Automate your response to an alert](../azure-portal/insights-webhooks-alerts.md)
 
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

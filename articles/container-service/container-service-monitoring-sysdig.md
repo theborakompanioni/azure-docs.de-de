@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Überwachen eines Azure Container Service-Clusters mit Sysdig | Microsoft Azure"
-   description="Es wird beschrieben, wie Sie einen Azure Container Service-Cluster mit Sysdig überwachen."
+   pageTitle="Monitor an Azure Container Service cluster with Sysdig | Microsoft Azure"
+   description="Monitor an Azure Container Service cluster with Sysdig."
    services="container-service"
    documentationCenter=""
    authors="rbitia"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Container, DC/OS, Azure"/>
+   keywords="Containers, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -18,40 +18,44 @@
    ms.date="08/08/2016"
    ms.author="t-ribhat"/>
 
-# Überwachen eines Azure Container Service-Clusters mit Sysdig
 
-In diesem Artikel stellen wir Sysdig-Agents für alle Agent-Knoten im Azure Container Service-Cluster bereit. Für diese Konfiguration benötigen Sie ein Konto mit Sysdig.
+# <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Monitor an Azure Container Service cluster with Sysdig
 
-## Voraussetzungen 
+In this article, we will deploy Sysdig agents to all the agent nodes in your Azure Container Service cluster. You need an account with Sysdig for this configuration. 
 
-Sie müssen einen per Azure Container Service konfigurierten Cluster [bereitstellen](container-service-deployment.md) und [eine Verbindung dafür herstellen](container-service-connect.md). Erkunden Sie die [Marathon-Benutzeroberfläche](container-service-mesos-marathon-ui.md). Navigieren Sie zu [http://app.sysdigcloud.com](http://app.sysdigcloud.com), um ein Sysdig-Cloudkonto einzurichten.
+## <a name="prerequisites"></a>Prerequisites 
 
-## Sysdig
+[Deploy](container-service-deployment.md) and [connect](container-service-connect.md) a cluster configured by Azure Container Service. Explore the [Marathon UI](container-service-mesos-marathon-ui.md). Go to [http://app.sysdigcloud.com](http://app.sysdigcloud.com) to set up a Sysdig cloud account. 
 
-Sysdig ist ein Überwachungsdienst, mit dem Sie Container im Cluster überwachen können. Sysdig ist als Unterstützung bei der Problembehandlung bekannt, verfügt aber auch über grundlegende Überwachungsmetriken für CPU, Netzwerk, Arbeitsspeicher und E/A. Mit Sysdig können Sie leicht erkennen, welche Container am stärksten ausgelastet sind bzw. die größte Menge an Arbeitsspeicher und CPU verbrauchen. Diese Ansicht ist im Abschnitt „Übersicht“ enthalten, der sich derzeit im Betastatus befindet.
+## <a name="sysdig"></a>Sysdig
 
-![Sysdig-Benutzeroberfläche](./media/container-service-monitoring-sysdig/sysdig6.png)
+Sysdig is a monitoring service that allows you to monitor your containers within your cluster. Sysdig is known to help with troubleshooting but it also has your basic monitoring metrics for CPU, Networking, Memory, and I/O. Sysdig makes it easy to see which containers are working the hardest or essentially using the most memory and CPU. This view is in the “Overview” section, which is currently in beta. 
 
-## Konfigurieren einer Sysdig-Bereitstellung mit Marathon
+![Sysdig UI](./media/container-service-monitoring-sysdig/sysdig6.png) 
 
-Diese Schritte verdeutlichen, wie Sie Sysdig-Anwendungen für Ihren Cluster mit Marathon konfigurieren und bereitstellen.
+## <a name="configure-a-sysdig-deployment-with-marathon"></a>Configure a Sysdig deployment with Marathon
 
-Greifen Sie über [http://localhost:80/](http://localhost:80/) auf Ihre DC/OS-Benutzeroberfläche zu, und navigieren Sie zur Option „Universe“ unten links. Suchen Sie darin nach „Sysdig“.
+These steps will show you how to configure and deploy Sysdig applications to your cluster with Marathon. 
+
+Access your DC/OS UI via [http://localhost:80/](http://localhost:80/) Once in the DC/OS UI navigate to the "Universe", which is on the bottom left and then search for "Sysdig."
 
 ![Sysdig in DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig1.png)
 
-Zum Durchführen der Konfiguration benötigen Sie nun ein Sysdig-Cloudkonto oder ein kostenloses Testkonto. Klicken Sie nach dem Anmelden an der Sysdig-Cloudwebsite auf Ihren Benutzernamen. Auf der Seite sollte Ihr „Zugriffsschlüssel“ angezeigt werden.
+Now to complete the configuration you need a Sysdig cloud account or a free trial account. Once you're logged in to the Sysdig cloud website, click on your user name, and on the page you should see your "Access Key." 
 
-![Sysdig-API-Schlüssel](./media/container-service-monitoring-sysdig/sysdig2.png)
+![Sysdig API key](./media/container-service-monitoring-sysdig/sysdig2.png) 
 
-Geben Sie als Nächstes den Zugriffsschlüssel in die Sysdig-Konfiguration in DC/OS Universe ein.
+Next enter your Access Key into the Sysdig configuration within the DC/OS Universe. 
 
-![Sysdig-Konfiguration in DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig3.png)
+![Sysdig configuration in the DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig3.png)
 
-Legen Sie die Instanzen auf „10000000“ fest, damit Sysdig für jeden neu hinzugefügten Knoten des Clusters automatisch einen Agent bereitstellt. Dies ist eine provisorische Lösung, um sicherzustellen, dass Sysdig für alle neuen Agents im Cluster bereitgestellt wird.
+Now set the instances to 10000000 so whenever a new node is added to the cluster Sysdig will automatically deploy an agent to that new node. This is an interim solution to make sure Sysdig will deploy to all new agents within the cluster. 
 
-![Sysdig-Konfiguration in DC/OS Universe-Instanzen](./media/container-service-monitoring-sysdig/sysdig4.png)
+![Sysdig configuration in the DC/OS Universe-instances](./media/container-service-monitoring-sysdig/sysdig4.png)
 
-Navigieren Sie nach dem Installieren des Pakets zurück zur Sysdig-Benutzeroberfläche. Sie können darin die unterschiedlichen Nutzungsmetriken für die Container im Cluster untersuchen.
+Once you've installed the package navigate back to the Sysdig UI and you'll be able to explore the different usage metrics for the containers within your cluster. 
 
-<!---HONumber=AcomDC_0810_2016--->
+
+<!--HONumber=Oct16_HO2-->
+
+

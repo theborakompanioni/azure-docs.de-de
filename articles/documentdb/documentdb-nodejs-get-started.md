@@ -1,6 +1,6 @@
 <properties
-  pageTitle="NoSQL Node.js-Tutorial für DocumentDB | Microsoft Azure"
-  description="Ein NoSQL Node.js-Tutorial, in dem Sie eine Node-Datenbank und eine Konsolenanwendung mit dem DocumentDB Node.js SDK erstellen. DocumentDB ist eine NoSQL-Datenbank für JSON."
+  pageTitle="NoSQL Node.js tutorial for DocumentDB | Microsoft Azure"
+  description="A NoSQL Node.js tutorial that creates a node database and console application using the DocumentDB Node.js SDK. DocumentDB is a NoSQL database for JSON."
     keywords="node.js tutorial, node database"
   services="documentdb"
   documentationCenter="node.js"
@@ -17,68 +17,69 @@
   ms.date="08/11/2016"
   ms.author="anhoh"/>
 
-# NoSQL Node.js-Tutorial: DocumentDB Node.js-Konsolenanwendung  
+
+# <a name="nosql-node.js-tutorial:-documentdb-node.js-console-application"></a>NoSQL Node.js tutorial: DocumentDB Node.js console application  
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-get-started.md)
 - [Node.js](documentdb-nodejs-get-started.md)
 
-Willkommen beim Node.js-Tutorial für das Azure DocumentDB Node.js SDK! Im Rahmen dieses Tutorials erstellen Sie eine Konsolenanwendung, mit der DocumentDB-Ressourcen, einschließlich einer Node-Datenbank, erstellt und abgefragt werden können.
+Welcome to the Node.js tutorial for the Azure DocumentDB Node.js SDK! After following this tutorial, you'll have a console application that creates and queries DocumentDB resources, including a Node database.
 
-Folgende Themen werden behandelt:
+We'll cover:
 
-- Erstellen eines DocumentDB-Kontos und Verbindungsaufbau
-- Einrichten der Anwendung
-- Erstellen einer Node-Datenbank
-- Erstellen einer Sammlung
-- Erstellen von JSON-Dokumenten
-- Abfragen der Sammlung
-- Ersetzen eines Dokuments
-- Löschen eines Dokuments
-- Löschen der Node-Datenbank
+- Creating and connecting to a DocumentDB account
+- Setting up your application
+- Creating a node database
+- Creating a collection
+- Creating JSON documents
+- Querying the collection
+- Replacing a document
+- Deleting a document
+- Deleting the node database
 
-Sie haben nicht genügend Zeit? Keine Sorge! Die vollständige Lösung ist auf [GitHub](https://github.com/Azure-Samples/documentdb-node-getting-started) verfügbar. In [Abrufen der vollständigen Lösung](#GetSolution) finden Sie eine Kurzanleitung.
+Don't have time? Don't worry! The complete solution is available on [GitHub](https://github.com/Azure-Samples/documentdb-node-getting-started). See [Get the complete solution](#GetSolution) for quick instructions.
 
-Bitte verwenden Sie nach Abschluss des Node.js-Tutorials die Abstimmungsschaltflächen am Anfang und am Ende dieser Seite, um uns Ihre Meinung mitzuteilen. Wenn wir mit Ihnen Kontakt aufnehmen sollen, können Sie Ihre E-Mail-Adresse im Kommentar hinterlassen.
+After you've completed the Node.js tutorial, please use the voting buttons at the top and bottom of this page to give us feedback. If you'd like us to contact you directly, feel free to include your email address in your comments.
 
-Lassen Sie uns anfangen.
+Now let's get started!
 
-## Voraussetzungen für das Node.js-Tutorial
+## <a name="prerequisites-for-the-node.js-tutorial"></a>Prerequisites for the Node.js tutorial
 
-Stellen Sie sicher, dass Sie über Folgendes verfügen:
+Please make sure you have the following:
 
-- Ein aktives Azure-Konto. Wenn Sie kein Konto haben, können Sie sich für eine [kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-- [Node.js](https://nodejs.org/) Version v0.10.29 oder höher.
+- An active Azure account. If you don't have one, you can sign up for a [Free Azure Trial](https://azure.microsoft.com/pricing/free-trial/).
+- [Node.js](https://nodejs.org/) version v0.10.29 or higher.
 
-## Schritt 1: Erstellen eines DocumentDB-Kontos
+## <a name="step-1:-create-a-documentdb-account"></a>Step 1: Create a DocumentDB account
 
-In diesem Schritt erstellen Sie ein DocumentDB-Konto. Wenn Sie bereits über ein Konto verfügen, das Sie verwenden möchten, können Sie diesen Schritt überspringen und mit [Einrichten der Node.js-Anwendung](#SetupNode) fortfahren.
+Let's create a DocumentDB account. If you already have an account you want to use, you can skip ahead to [Setup your Node.js application](#SetupNode).
 
-[AZURE.INCLUDE [DocumentDB-Erstellen-DB-Account](../../includes/documentdb-create-dbaccount.md)]
+[AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a id="SetupNode"></a>Schritt 2: Einrichten der Node.js-Anwendung
+## <a name="<a-id="setupnode"></a>step-2:-setup-your-node.js-application"></a><a id="SetupNode"></a>Step 2: Setup your Node.js application
 
-1. Öffnen Sie den bevorzugten Terminaldienst.
-2. Suchen Sie nach dem Ordner oder Verzeichnis, in dem Sie die Node.js-Anwendung speichern möchten.
-3. Erstellen Sie mit den folgenden Befehlen zwei leere JavaScript-Dateien:
+1. Open your favorite terminal.
+2. Locate the folder or directory where you'd like to save your Node.js application.
+3. Create two empty JavaScript files with the following commands:
   - Windows:
       * ```fsutil file createnew app.js 0```
         * ```fsutil file createnew config.js 0```
   - Linux/OS X:
       * ```touch app.js```
         * ```touch config.js```
-4. Installieren Sie das documentdb-Modul über npm. Verwenden Sie den folgenden Befehl:
+4. Install the documentdb module via npm. Use the following command:
     * ```npm install documentdb --save```
 
-Prima. Damit ist die Einrichtung abgeschlossen, und wir können mit dem Schreiben von Code beginnen.
+Great! Now that you've finished setting up, let's start writing some code.
 
-## <a id="Config"></a>Schritt 3: Festlegen der Konfigurationen der App
+## <a name="<a-id="config"></a>step-3:-set-your-app's-configurations"></a><a id="Config"></a>Step 3: Set your app's configurations
 
-Öffnen Sie ```config.js``` in einem Text-Editor Ihrer Wahl.
+Open ```config.js``` in your favorite text editor.
 
-Fügen Sie dann den folgenden Codeausschnitt ein, und legen Sie die Eigenschaften ```config.endpoint``` und ```config.primaryKey``` auf den Endpunkt-URI und den Primärschlüssel Ihrer DocumentDB-Datenbank fest. Beide Konfigurationen finden Sie im [Azure-Portal](https://portal.azure.com).
+Then, copy and paste the code snippet below and set properties ```config.endpoint``` and ```config.primaryKey``` to your DocumentDB endpoint uri and primary key. Both these configurations can be found in the [Azure Portal](https://portal.azure.com).
 
-![Node.js-Tutorial – Screenshot des Azure-Portals mit einem DocumentDB-Konto, bei dem der AKTIVE Hub, die Schaltfläche SCHLÜSSEL auf dem Blatt „DocumentDB-Konto“ und auf dem Blatt „Schlüssel“ die Werte URI, PRIMÄRSCHLÜSSEL und SEKUNDÄRSCHLÜSSEL hervorgehoben sind – Node-Datenbank][keys]
+![Node.js tutorial - Screen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the KEYS button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade - Node database][keys]
 
     // ADD THIS PART TO YOUR CODE
     var config = {}
@@ -86,7 +87,7 @@ Fügen Sie dann den folgenden Codeausschnitt ein, und legen Sie die Eigenschafte
     config.endpoint = "~your DocumentDB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
 
-Fügen Sie ```database id```, ```collection id```, und ```JSON documents``` an der Stelle in Ihr ```config```-Objekt ein, an der die Eigenschaften ```config.endpoint``` und ```config.authKey``` festgelegt werden. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie das [Datenmigrationstool](documentdb-import-data.md) von DocumentDB verwenden, statt Dokumentdefinitionen hinzuzufügen.
+Copy and paste the ```database id```, ```collection id```, and ```JSON documents``` to your ```config``` object below where you set your ```config.endpoint``` and ```config.authKey``` properties. If you already have data you'd like to store in your database, you can use DocumentDB's [Data Migration tool](documentdb-import-data.md) rather than adding the document definitions.
 
     config.endpoint = "~your DocumentDB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
@@ -158,9 +159,9 @@ Fügen Sie ```database id```, ```collection id```, und ```JSON documents``` an d
     };
 
 
-Die Datenbank-, Sammlungs- und Dokumentdefinitionen dienen als ```database id```, ```collection id``` und Dokumentdaten Ihrer DocumentDB-Datenbank.
+The database, collection, and document definitions will act as your DocumentDB ```database id```, ```collection id```, and documents' data.
 
-Exportieren Sie abschließend das ```config```-Objekt, um in der Datei ```app.js``` darauf verweisen zu können.
+Finally, export your ```config``` object, so that you can reference it within the ```app.js``` file.
 
             },
             "isRegistered": false
@@ -170,9 +171,9 @@ Exportieren Sie abschließend das ```config```-Objekt, um in der Datei ```app.js
     // ADD THIS PART TO YOUR CODE
     module.exports = config;
 
-##<a id="Connect"></a> Schritt 4: Herstellen einer Verbindung mit einem DocumentDB-Konto
+##<a name="<a-id="connect"></a>-step-4:-connect-to-a-documentdb-account"></a><a id="Connect"></a> Step 4: Connect to a DocumentDB account
 
-Öffnen Sie die leere Datei ```app.js``` im Text-Editor. Fügen Sie den folgenden Code ein, um das ```documentdb```-Modul und das neu erstellte ```config```-Modul zu importieren.
+Open your empty ```app.js``` file in the text editor. Copy and paste the code below to import the ```documentdb``` module and your newly created ```config``` module.
 
     // ADD THIS PART TO YOUR CODE
     "use strict";
@@ -181,7 +182,7 @@ Exportieren Sie abschließend das ```config```-Objekt, um in der Datei ```app.js
     var config = require("./config");
     var url = require('url');
 
-Fügen Sie den Code ein, um unter Verwendung der zuvor gespeicherten Eigenschaften ```config.endpoint``` und ```config.primaryKey``` ein neues DocumentClient-Element zu erstellen.
+Copy and paste the code to use the previously saved ```config.endpoint``` and ```config.primaryKey``` to create a new DocumentClient.
 
     var config = require("./config");
     var url = require('url');
@@ -189,10 +190,10 @@ Fügen Sie den Code ein, um unter Verwendung der zuvor gespeicherten Eigenschaft
     // ADD THIS PART TO YOUR CODE
     var client = new documentClient(config.endpoint, { "masterKey": config.primaryKey });
 
-Nachdem Sie nun über den Code zum Initialisieren des DocumentDB-Clients verfügen, beschäftigen wir uns im nächsten Schritt mit der Verwendung von DocumentDB-Ressourcen.
+Now that you have the code to initialize the documentdb client, let's take a look at working with DocumentDB resources.
 
-## Schritt 5: Erstellen einer Node-Datenbank
-Fügen Sie den folgenden Code ein, um den HTTP-Status für „Nicht gefunden“, die Datenbank-URL und die Sammlungs-URL festzulegen. Anhand dieser URLs ermittelt der DocumentDB-Client die richtige Datenbank und Sammlung.
+## <a name="step-5:-create-a-node-database"></a>Step 5: Create a Node database
+Copy and paste the code below to set the HTTP status for Not Found, the database url, and the collection url. These urls are how the DocumentDB client will find the right database and collection.
 
     var client = new documentClient(config.endpoint, { "masterKey": config.primaryKey });
 
@@ -201,9 +202,9 @@ Fügen Sie den folgenden Code ein, um den HTTP-Status für „Nicht gefunden“,
     var databaseUrl = `dbs/${config.database.id}`;
     var collectionUrl = `${databaseUrl}/colls/${config.collection.id}`;
 
-Eine [Datenbank](documentdb-resources.md#databases) kann mithilfe der [createDatabase](https://azure.github.io/azure-documentdb-node/DocumentClient.html)-Funktion der **DocumentClient**-Klasse erstellt werden. Eine Datenbank ist ein logischer Container für Dokumentspeicher, der auf Sammlungen aufgeteilt ist.
+A [database](documentdb-resources.md#databases) can be created by using the [createDatabase](https://azure.github.io/azure-documentdb-node/DocumentClient.html) function of the **DocumentClient** class. A database is the logical container of document storage partitioned across collections.
 
-Fügen Sie die **getDatabase**-Funktion zum Erstellen der neuen Datenbank in der Datei „app.js“ mit der ```id``` aus dem ```config```-Objekt hinzu. Die Funktion überprüft, ob die Datenbank mit der gleichen ```FamilyRegistry```-ID bereits vorhanden ist. Wenn eine vorhanden ist, verwenden wir diese Datenbank, statt eine neue zu erstellen.
+Copy and paste the **getDatabase** function for creating your new database in the app.js file with the ```id``` specified in the ```config``` object. The function will check if the database with the same ```FamilyRegistry``` id does not already exist. If it does exist, we'll return that database instead of creating a new one.
 
     var collectionUrl = `${databaseUrl}/colls/${config.collection.id}`;
 
@@ -229,7 +230,7 @@ Fügen Sie die **getDatabase**-Funktion zum Erstellen der neuen Datenbank in der
         });
     }
 
-Fügen Sie den folgenden Code an der Stelle ein, an der die **getDatabase**-Funktion festgelegt wird. Dadurch wird die **exit**-Hilfsfunktion hinzugefügt, die die Beendigungsmeldung ausgibt und die **getDatabase**-Funktion aufruft.
+Copy and paste the code below where you set the **getDatabase** function to add the helper function **exit** that will print the exit message and the call to **getDatabase** function.
 
                 } else {
                     resolve(result);
@@ -251,17 +252,17 @@ Fügen Sie den folgenden Code an der Stelle ein, an der die **getDatabase**-Funk
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-Suchen Sie auf Ihrem Terminal nach der Datei ```app.js```, und führen Sie den Befehl ```node app.js``` aus.
+In your terminal, locate your ```app.js``` file and run the command: ```node app.js```
 
-Glückwunsch! Sie haben die Erstellung einer DocumentDB-Datenbank erfolgreich abgeschlossen.
+Congratulations! You have successfully created a DocumentDB database.
 
-##<a id="CreateColl"></a>Schritt 6: Erstellen einer Sammlung  
+##<a name="<a-id="createcoll"></a>step-6:-create-a-collection"></a><a id="CreateColl"></a>Step 6: Create a collection  
 
-> [AZURE.WARNING] **CreateDocumentCollectionAsync** erstellt eine neue Sammlung, die Auswirkungen auf die Preise hat. Weitere Informationen finden Sie auf unserer [Preisseite](https://azure.microsoft.com/pricing/details/documentdb/).
+> [AZURE.WARNING] **CreateDocumentCollectionAsync** will create a new collection, which has pricing implications. For more details, please visit our [pricing page](https://azure.microsoft.com/pricing/details/documentdb/).
 
-Eine [Sammlung](documentdb-resources.md#collections) kann mithilfe der [createCollection](https://azure.github.io/azure-documentdb-node/DocumentClient.html)-Funktion der **DocumentClient**-Klasse erstellt werden. Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik.
+A [collection](documentdb-resources.md#collections) can be created by using the [createCollection](https://azure.github.io/azure-documentdb-node/DocumentClient.html) function of the **DocumentClient** class. A collection is a container of JSON documents and associated JavaScript application logic.
 
-Fügen Sie unterhalb der **getDatabase**-Funktion die **getCollection**-Funktion ein, um die neue Sammlung mit der ```id``` aus dem ```config```-Objekt zu erstellen. Auch hier vergewissern wir uns, dass noch keine Sammlung mit der gleichen ```FamilyCollection```-ID vorhanden ist. Wenn eine vorhanden ist, verwenden wir diese Sammlung, statt eine neue zu erstellen.
+Copy and paste the **getCollection** function underneath the **getDatabase** function for creating your new collection with the ```id``` specified in the ```config``` object. Again, we'll check to make sure a collection with the same ```FamilyCollection``` id does not already exist. If it does exist, we'll return that collection instead of creating a new one.
 
                 } else {
                     resolve(result);
@@ -292,7 +293,7 @@ Fügen Sie unterhalb der **getDatabase**-Funktion die **getCollection**-Funktion
         });
     }
 
-Fügen Sie den Code unterhalb des Aufrufs von **getDatabase** ein, um die **getCollection**-Funktion auszuführen.
+Copy and paste the code below the call to **getDatabase** to execute the **getCollection** function.
 
     getDatabase()
 
@@ -303,14 +304,14 @@ Fügen Sie den Code unterhalb des Aufrufs von **getDatabase** ein, um die **getC
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-Suchen Sie auf Ihrem Terminal nach der Datei ```app.js```, und führen Sie den Befehl ```node app.js``` aus.
+In your terminal, locate your ```app.js``` file and run the command: ```node app.js```
 
-Glückwunsch! Sie haben erfolgreich eine DocumentDB-Sammlung erstellt.
+Congratulations! You have successfully created a DocumentDB collection.
 
-##<a id="CreateDoc"></a>Schritt 7: Erstellen eines Dokuments
-Ein [Dokument](documentdb-resources.md#documents) kann mithilfe der [createDocument](https://azure.github.io/azure-documentdb-node/DocumentClient.html)-Funktion der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Sie können nun ein Dokument in DocumentDB einfügen.
+##<a name="<a-id="createdoc"></a>step-7:-create-a-document"></a><a id="CreateDoc"></a>Step 7: Create a document
+A [document](documentdb-resources.md#documents) can be created by using the [createDocument](https://azure.github.io/azure-documentdb-node/DocumentClient.html) function of the **DocumentClient** class. Documents are user defined (arbitrary) JSON content. You can now insert a document into DocumentDB.
 
-Fügen Sie unterhalb der **getCollection**-Funktion die **getFamilyDocument**-Funktion ein, um die Dokumente mit den im ```config```-Objekt gespeicherten JSON-Daten zu erstellen. Auch hier stellen wir sicher, dass ein Dokument mit der gleichen ID noch nicht vorhanden ist.
+Copy and paste the **getFamilyDocument** function underneath the **getCollection** function for creating the documents containing the JSON data saved in the ```config``` object. Again, we'll check to make sure a document with the same id does not already exist.
 
                 } else {
                     resolve(result);
@@ -342,7 +343,7 @@ Fügen Sie unterhalb der **getCollection**-Funktion die **getFamilyDocument**-Fu
         });
     };
 
-Fügen Sie den Code unterhalb des Aufrufs von **getCollection** ein, um die **getFamilyDocument**-Funktion auszuführen.
+Copy and paste the code below the call to **getCollection** to execute the **getFamilyDocument** function.
 
     getDatabase()
     .then(() => getCollection())
@@ -355,17 +356,17 @@ Fügen Sie den Code unterhalb des Aufrufs von **getCollection** ein, um die **ge
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-Suchen Sie auf Ihrem Terminal nach der Datei ```app.js```, und führen Sie den Befehl ```node app.js``` aus.
+In your terminal, locate your ```app.js``` file and run the command: ```node app.js```
 
-Glückwunsch! Sie haben erfolgreich ein DocumentDB-Dokument erstellt.
+Congratulations! You have successfully created a DocumentDB documents.
 
-![Node.js-Tutorial – Diagramm zur Veranschaulichung der hierarchischen Beziehung zwischen dem Konto, der Datenbank, der Sammlung und den Dokumenten – Node-Datenbank](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
+![Node.js tutorial - Diagram illustrating the hierarchical relationship between the account, the database, the collection, and the documents - Node database](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
 
-##<a id="Query"></a>Schritt 8: Abfragen von DocumentDB-Ressourcen
+##<a name="<a-id="query"></a>step-8:-query-documentdb-resources"></a><a id="Query"></a>Step 8: Query DocumentDB resources
 
-DocumentDB unterstützt [umfassende Abfragen](documentdb-sql-query.md) der in jeder Sammlung gespeicherten JSON-Dokumente. Der folgende Beispielcode zeigt eine Abfrage, die Sie für die Dokumente in Ihrer Sammlung ausführen können.
+DocumentDB supports [rich queries](documentdb-sql-query.md) against JSON documents stored in each collection. The following sample code shows a query that you can run against the documents in your collection.
 
-Fügen Sie die **queryCollection**-Funktion unterhalb der **getFamilyDocument**-Funktion ein. DocumentDB unterstützt SQL-ähnliche Abfragen, wie unten dargestellt. Weitere Informationen zum Erstellen von komplexen Abfragen finden Sie unter [Query Playground](https://www.documentdb.com/sql/demo) (in englischer Sprache) und in der [Abfragedokumentation](documentdb-sql-query.md).
+Copy and paste the **queryCollection** function underneath the **getFamilyDocument** function. DocumentDB supports SQL-like queries as shown below. For more information on building complex queries, check out the [Query Playground](https://www.documentdb.com/sql/demo) and the [query documentation](documentdb-sql-query.md).
 
                 } else {
                     resolve(result);
@@ -397,13 +398,13 @@ Fügen Sie die **queryCollection**-Funktion unterhalb der **getFamilyDocument**-
     };
 
 
-Das folgende Diagramm veranschaulicht, wie die DocumentDB-SQL-Abfragesyntax für die erstellte Sammlung aufgerufen wird.
+The following diagram illustrates how the DocumentDB SQL query syntax is called against the collection you created.
 
-![Node.js-Tutorial – Diagramm zur Veranschaulichung des Bereichs und der Bedeutung der Abfrage – Node-Datenbank](./media/documentdb-nodejs-get-started/node-js-tutorial-collection-documents.png)
+![Node.js tutorial - Diagram illustrating the scope and meaning of the query - Node database](./media/documentdb-nodejs-get-started/node-js-tutorial-collection-documents.png)
 
-Das [FROM](documentdb-sql-query.md#from-clause) -Schlüsselwort ist in der Abfrage optional, da DocumentDB Abfragen auf eine Sammlung begrenzt. Aus diesem Grund ist "FROM Familien f" austauschbar mit "FROM Stamm r" oder einem anderen variablen Namen, den Sie auswählen. DocumentDB wird ableiten, dass Familien, Stamm oder der variable Name, den Sie ausgewählt haben, standardmäßig auf die aktuelle Sammlung verweisen.
+The [FROM](documentdb-sql-query.md#from-clause) keyword is optional in the query because DocumentDB queries are already scoped to a single collection. Therefore, "FROM Families f" can be swapped with "FROM root r", or any other variable name you choose. DocumentDB will infer that Families, root, or the variable name you chose, reference the current collection by default.
 
-Fügen Sie den Code unterhalb des Aufrufs von **getFamilyDocument** ein, um die **queryCollection**-Funktion auszuführen.
+Copy and paste the code below the call to **getFamilyDocument** to execute the **queryCollection** function.
 
     .then(() => getFamilyDocument(config.documents.Andersen))
     .then(() => getFamilyDocument(config.documents.Wakefield))
@@ -415,14 +416,14 @@ Fügen Sie den Code unterhalb des Aufrufs von **getFamilyDocument** ein, um die 
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-Suchen Sie auf Ihrem Terminal nach der Datei ```app.js```, und führen Sie den Befehl ```node app.js``` aus.
+In your terminal, locate your ```app.js``` file and run the command: ```node app.js```
 
-Glückwunsch! Sie haben erfolgreich eine DocumentDB-Dokumentabfrage durchgeführt.
+Congratulations! You have successfully queried DocumentDB documents.
 
-##<a id="ReplaceDocument"></a>Schritt 9: Ersetzen eines Dokuments
-DocumentDB unterstützt das Ersetzen von JSON-Dokumenten.
+##<a name="<a-id="replacedocument"></a>step-9:-replace-a-document"></a><a id="ReplaceDocument"></a>Step 9: Replace a document
+DocumentDB supports replacing JSON documents.
 
-Fügen Sie die **replaceDocument**-Funktion unterhalb der **queryCollection**-Funktion ein.
+Copy and paste the **replaceDocument** function underneath the **queryCollection** function.
 
                     }
                     console.log();
@@ -448,7 +449,7 @@ Fügen Sie die **replaceDocument**-Funktion unterhalb der **queryCollection**-Fu
         });
     };
 
-Fügen Sie den Code unterhalb des Aufrufs von **queryCollection** ein, um die **replaceDocument**-Funktion auszuführen. Fügen Sie außerdem den Code zum erneuten Aufrufen von **queryCollection** hinzu, um sich zu vergewissern, dass das Dokument erfolgreich geändert wurde.
+Copy and paste the code below the call to **queryCollection** to execute the **replaceDocument** function. Also, add the code to call **queryCollection** again to verify that the document had successfully changed.
 
     .then(() => getFamilyDocument(config.documents.Andersen))
     .then(() => getFamilyDocument(config.documents.Wakefield))
@@ -462,14 +463,14 @@ Fügen Sie den Code unterhalb des Aufrufs von **queryCollection** ein, um die **
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-Suchen Sie auf Ihrem Terminal nach der Datei ```app.js```, und führen Sie den Befehl ```node app.js``` aus.
+In your terminal, locate your ```app.js``` file and run the command: ```node app.js```
 
-Glückwunsch! Sie haben die Ersetzung eines DocumentDB-Dokuments erfolgreich abgeschlossen.
+Congratulations! You have successfully replaced a DocumentDB document.
 
-##<a id="DeleteDocument"></a>Schritt 10: Löschen eines Dokuments
-DocumentDB unterstützt das Löschen von JSON-Dokumenten.
+##<a name="<a-id="deletedocument"></a>step-10:-delete-a-document"></a><a id="DeleteDocument"></a>Step 10: Delete a document
+DocumentDB supports deleting JSON documents.
 
-Fügen Sie die **deleteDocument**-Funktion unterhalb der **replaceDocument**-Funktion ein.
+Copy and paste the **deleteDocument** function underneath the **replaceDocument** function.
 
                 else {
                     resolve(result);
@@ -493,7 +494,7 @@ Fügen Sie die **deleteDocument**-Funktion unterhalb der **replaceDocument**-Fun
         });
     };
 
-Fügen Sie den Code unterhalb des zweiten Aufrufs von **queryCollection** ein, um die **deleteDocument**-Funktion auszuführen.
+Copy and paste the code below the call to the second **queryCollection** to execute the **deleteDocument** function.
 
     .then(() => queryCollection())
     .then(() => replaceFamilyDocument(config.documents.Andersen))
@@ -506,15 +507,15 @@ Fügen Sie den Code unterhalb des zweiten Aufrufs von **queryCollection** ein, u
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-Suchen Sie auf Ihrem Terminal nach der Datei ```app.js```, und führen Sie den Befehl ```node app.js``` aus.
+In your terminal, locate your ```app.js``` file and run the command: ```node app.js```
 
-Glückwunsch! Sie haben das Löschen eines DocumentDB-Dokuments erfolgreich abgeschlossen.
+Congratulations! You have successfully deleted a DocumentDB document.
 
-##<a id="DeleteDatabase"></a>Schritt 11: Löschen der Node-Datenbank
+##<a name="<a-id="deletedatabase"></a>step-11:-delete-the-node-database"></a><a id="DeleteDatabase"></a>Step 11: Delete the Node database
 
-Das Löschen der erstellten Datenbank entfernt die Datenbank und alle untergeordneten Ressourcen (Sammlungen, Dokumente usw.).
+Deleting the created database will remove the database and all children resources (collections, documents, etc.).
 
-Fügen Sie den folgenden Codeausschnitt (**cleanup**-Funktion) ein, um die Datenbank und alle untergeordneten Ressourcen zu entfernen.
+Copy and paste the following code snippet (function **cleanup**) to remove the database and all the children resources.
 
                 else {
                     resolve(result);
@@ -535,7 +536,7 @@ Fügen Sie den folgenden Codeausschnitt (**cleanup**-Funktion) ein, um die Daten
         });
     }
 
-Fügen Sie den Code unterhalb des Aufrufs von **deleteDocument** ein, um die **cleanup**-Funktion auszuführen.
+Copy and paste the code below the call to **deleteDocument** to execute the **cleanup** function.
 
     .then(() => deleteFamilyDocument(config.documents.Andersen))
 
@@ -546,9 +547,9 @@ Fügen Sie den Code unterhalb des Aufrufs von **deleteDocument** ein, um die **c
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-##<a id="Run"></a> Schritt 12: Ausführen der gesamten Node.js-Anwendung
+##<a name="<a-id="run"></a>step-12:-run-your-node.js-application-all-together!"></a><a id="Run"></a>Step 12: Run your Node.js application all together!
 
-Die Aufrufsequenz der Funktionen muss wie folgt aussehen:
+Altogether, the sequence for calling your functions should look like this:
 
     getDatabase()
     .then(() => getCollection())
@@ -562,9 +563,9 @@ Die Aufrufsequenz der Funktionen muss wie folgt aussehen:
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-Suchen Sie auf Ihrem Terminal nach der Datei ```app.js```, und führen Sie den Befehl ```node app.js``` aus.
+In your terminal, locate your ```app.js``` file and run the command: ```node app.js```
 
-Die Ausgabe der GetStarted-Anwendung sollte angezeigt werden. Die Ausgabe sollte dem folgenden Beispieltext entsprechen.
+You should see the output of your get started app. The output should match the example text below.
 
     Getting database:
     FamilyDB
@@ -596,29 +597,33 @@ Die Ausgabe der GetStarted-Anwendung sollte angezeigt werden. Die Ausgabe sollte
     Completed successfully
     Press any key to exit
 
-Glückwunsch! Sie haben das Node.js-Tutorial abgeschlossen und Ihre erste DocumentDB-Konsolenanwendung erstellt.
+Congratulations! You've created you've completed the Node.js tutorial and have your first DocumentDB console application!
 
-## <a id="GetSolution"></a>Abrufen der vollständigen Projektmappe für das Node.js-Tutorial
-Um die "GetStarted"-Lösung zu erstellen, die alle Beispiele dieses Artikels enthält, ist Folgendes erforderlich:
+## <a name="<a-id="getsolution"></a>get-the-complete-node.js-tutorial-solution"></a><a id="GetSolution"></a>Get the complete Node.js tutorial solution
+To build the GetStarted solution that contains all the samples in this article, you will need the following:
 
--   [DocumentDB-Konto][documentdb-create-account].
--   Die [GetStarted-Lösung](https://github.com/Azure-Samples/documentdb-node-getting-started) auf GitHub.
+-   [DocumentDB account][documentdb-create-account].
+-   The [GetStarted](https://github.com/Azure-Samples/documentdb-node-getting-started) solution available on GitHub.
 
-Installieren Sie das **documentdb**-Modul über npm. Verwenden Sie den folgenden Befehl:
+Install the **documentdb** module via npm. Use the following command:
 * ```npm install documentdb --save```
 
-Aktualisieren Sie dann in der Datei ```config.js``` die Werte für „config.endpoint“ und „config.authKey“, wie unter [Schritt 3: Festlegen der Konfigurationen der App](#Config) beschrieben.
+Next, in the ```config.js``` file, update the config.endpoint and config.authKey values as described in [Step 3: Set your app's configurations](#Config).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
--   Benötigen Sie ein komplexeres Node.js-Beispiel? Sie finden eines unter [Erstellen einer Node.js-Webanwendung mithilfe von DocumentDB](documentdb-nodejs-application.md).
--  Sie erfahren, wie Sie ein [DocumentDB-Konto überwachen](documentdb-monitor-accounts.md).
--  Fragen Sie unser Beispieldataset im [Query Playground](https://www.documentdb.com/sql/demo) ab.
--  Weitere Informationen zum Programmiermodell finden Sie auf der [DocumentDB-Dokumentationsseite](https://azure.microsoft.com/documentation/services/documentdb/) im Abschnitt "Entwickeln".
+-   Want a more complex Node.js sample? See [Build a Node.js web application using DocumentDB](documentdb-nodejs-application.md).
+-  Learn how to [monitor a DocumentDB account](documentdb-monitor-accounts.md).
+-  Run queries against our sample dataset in the [Query Playground](https://www.documentdb.com/sql/demo).
+-  Learn more about the programming model in the Develop section of the [DocumentDB documentation page](https://azure.microsoft.com/documentation/services/documentdb/).
 
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
 
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

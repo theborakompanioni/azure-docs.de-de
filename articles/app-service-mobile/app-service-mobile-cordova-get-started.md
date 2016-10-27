@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Erstellen einer Cordova-App in Azure Mobile App Service-Apps | Microsoft Azure"
-    description="Befolgen Sie dieses Tutorial für die ersten Schritte bei der Verwendung mobiler Azure-App-Back-Ends für die Apache Cordova-Entwicklung."
+    pageTitle="Create a Cordova app on Azure App Service Mobile Apps | Microsoft Azure"
+    description="Follow this tutorial to get started with using Azure mobile app backends for Apache Cordova development"
     services="app-service\mobile"
     documentationCenter="javascript"
     authors="adrianhall"
@@ -18,70 +18,75 @@
     ms.date="10/01/2016"
     ms.author="adrianha"/>
 
-#Erstellen einer Apache Cordova-App
+
+#<a name="create-an-apache-cordova-app"></a>Create an Apache Cordova app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## Übersicht
+## <a name="overview"></a>Overview
 
-Dieses Tutorial zeigt Ihnen, wie Sie einen cloudbasierten Back-End-Dienst mithilfe eines mobilen Azure-App-Back-Ends zu einer mobilen Apache Cordova-App hinzufügen. Sie erstellen sowohl ein neues Mobile App-Back-End als auch eine einfache _Todo list_-Apache Cordova-App, die App-Daten in Azure speichert.
+This tutorial shows you how to add a cloud-based backend service to an Apache Cordova mobile app by using an Azure mobile app backend.  You will create both a new mobile app backend and a simple _Todo list_ Apache Cordova app that stores app data in Azure.
 
-Das Absolvieren dieses Tutorials ist Voraussetzung für alle anderen Apache Cordova-Tutorials zur Verwendung des Features „Mobile Apps“ von Azure App Service.
+Completing this tutorial is a prerequisite for all other Apache Cordova tutorials about using the Mobile Apps feature in Azure App Service.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Für dieses Tutorial benötigen Sie Folgendes:
+To complete this tutorial, you need the following:
 
-* Einen PC mit [Visual Studio Community 2015] oder höher.
-* [Visual Studio-Tools für Apache Cordova].
-* Ein [aktives Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
+* A PC with [Visual Studio Community 2015] or newer.
+* [Visual Studio Tools for Apache Cordova].
+* An [active Azure account](https://azure.microsoft.com/pricing/free-trial/).
 
-Sie können auch Visual Studio umgehen und direkt die Apache Cordova-Befehlszeile verwenden. Dies ist hilfreich, wenn Sie das Tutorial auf einem Macintosh-Computer ausführen. Das Kompilieren von Apache Cordova-Clientanwendungen über die Befehlszeile wird in diesem Tutorial nicht behandelt.
+You may also bypass Visual Studio and use the Apache Cordova command line directly.  This is useful when completing the tutorial on a Mac computer.  Compiling Apache Cordova client applications using the command line is not covered by this tutorial.
 
-## Erstellen eines neuen mobilen Azure-App-Back-Ends
+## <a name="create-a-new-azure-mobile-app-backend"></a>Create a new Azure mobile app backend
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-[Ansehen eines Videos mit ähnlichen Schritten](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
+[Watch a video showing similar steps](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
 
-## Konfigurieren des Serverprojekts
+## <a name="configure-the-server-project"></a>Configure the server project
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## Herunterladen und Ausführen der Apache Cordova-App
+## <a name="download-and-run-the-apache-cordova-app"></a>Download and run the Apache Cordova app
 
 [AZURE.INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-Nachdem Sie dieses Schnellstarttutorial abgeschlossen haben, fahren Sie mit einem der folgenden Tutorials fort:
+Now that you completed this quick start tutorial, move on to one of the following tutorials:
 
-* [Hinzufügen von Authentifizierung] zu Ihrer Apache Cordova-App
-* [Hinzufügen von Pushbenachrichtigungen] zu Ihrer Apache Cordova-App
+* [Add Authentication] to your Apache Cordova app.
+* [Add Push Notifications] to your Apache Cordova app.
 
-Erfahren Sie mehr über die Schlüsselkonzepte von Azure App Service.
+Learn more about key concepts with Azure App Service.
 
-* [Authentifizierung]
-* [Pushbenachrichtigungen]
+* [Authentication]
+* [Push Notifications]
 
-Erfahren Sie, wie Sie die SDKs nutzen,
+Learn how to use the SDKs.
 
-* [Apache Cordova-SDK]
-* [ASP.NET Server-SDK]
-* [Node.js Server-SDK]
+* [Apache Cordova SDK]
+* [ASP.NET Server SDK]
+* [Node.js Server SDK]
 
 <!-- Images. -->
 
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: http://www.visualstudio.com/
-[Visual Studio-Tools für Apache Cordova]: https://www.visualstudio.com/de-DE/features/cordova-vs.aspx
-[Hinzufügen von Authentifizierung]: app-service-mobile-cordova-get-started-users.md
-[Hinzufügen von Pushbenachrichtigungen]: app-service-mobile-cordova-get-started-push.md
-[Authentifizierung]: app-service-mobile-auth.md
-[Pushbenachrichtigungen]: ../notification-hubs/notification-hubs-push-notification-overview.md
-[Apache Cordova-SDK]: app-service-mobile-cordova-how-to-use-client-library.md
-[ASP.NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Node.js Server-SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
+[Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[Add Authentication]: app-service-mobile-cordova-get-started-users.md
+[Add Push Notifications]: app-service-mobile-cordova-get-started-push.md
+[Authentication]: app-service-mobile-auth.md
+[Push Notifications]: ../notification-hubs/notification-hubs-push-notification-overview.md
+[Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
+[ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

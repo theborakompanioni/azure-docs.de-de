@@ -1,9 +1,11 @@
-#### So erstellen Sie ein virtuelles Gerät
+#### <a name="to-delete-a-virtual-device"></a>To delete a virtual device
 
-1. Melden Sie sich am klassischen Azure-Portal an.
+1. Sign in to the Azure classic portal.
 
-- Klicken Sie auf **Virtuelle Computer**, und wählen Sie das virtuelle Gerät aus.
+- Click **Virtual Machines**, and then select the virtual device.
 
-- Klicken Sie auf **Löschen**, und wählen Sie alle Datenträger des virtuellen Computers aus.
+- Click **Delete** and choose to delete all the virtual machine disks.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

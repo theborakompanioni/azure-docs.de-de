@@ -1,51 +1,56 @@
 <properties
-	pageTitle="Dokumentieren von Datenquellen | Microsoft Azure"
-	description="Anleitungsartikel, in dem die Dokumentation von Datenressourcen in Azure Data Catalog beschrieben wird"
-	services="data-catalog"
-	documentationCenter=""
-	authors="spelluru"
-	manager="NA"
-	editor=""
-	tags=""/>
+    pageTitle="How to document data sources | Microsoft Azure"
+    description="How-to article highlighting how to document data assets in Azure Data Catalog."
+    services="data-catalog"
+    documentationCenter=""
+    authors="spelluru"
+    manager="NA"
+    editor=""
+    tags=""/>
 <tags
-	ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="09/13/2016"
-	ms.author="spelluru"/>
+    ms.service="data-catalog"
+    ms.devlang="NA"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"
+    ms.workload="data-catalog"
+    ms.date="09/13/2016"
+    ms.author="spelluru"/>
 
-# Dokumentdatenquellen
 
-## Einführung
+# <a name="document-data-sources"></a>Document data sources
 
-**Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Mit anderen Worten ist es die Aufgabe von **Azure Data Catalog**, den Benutzern zu helfen, Datenquellen zu ermitteln, zu *verstehen* und zu nutzen, und Unternehmen zu helfen, mehr Nutzen aus ihren vorhandenen Daten zu ziehen.
+## <a name="introduction"></a>Introduction
 
-Wenn eine Datenquelle in **Azure Data Catalog** registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Dies ist aber noch nicht alles. **Azure Data Catalog** ermöglicht Benutzer auch das Bereitstellen ihrer eigenen vollständigen Dokumentation, in der die Verwendung und allgemeine Szenarien für die Datenquelle beschrieben werden können.
+**Microsoft Azure Data Catalog** is a fully managed cloud service that serves as a system of registration and system of discovery for enterprise data sources. In other words, **Azure Data Catalog** is all about helping people discover, *understand*, and use data sources, and helping organizations to get more value from their existing data.
 
-Unter [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-how-to-annotate.md) erfahren Sie, dass Experten, denen die Datenquelle bekannt ist, diese mit Tags und einer Beschreibung versehen können. Das **Azure Data Catalog** Portal enthält einen Rich-Text-Editor, damit Benutzer Datenressourcen und Container vollständig dokumentieren können. Der Editor bietet Absatzformatierung, z. B. für Überschriften, das Formatieren von Text, Aufzählungen, nummerierte Listen und Tabellen.
+When a data source is registered with **Azure Data Catalog**, its metadata is copied and indexed by the service, but the story doesn’t end there. **Azure Data Catalog** also allows users to provide their own complete documentation that can describe the usage and common scenarios for the data source.
 
-Tags und Beschreibungen eignen sich hervorragend für einfache Anmerkungen. Um Datennutzern ein besseres Verständnis der Verwendung einer Datenquelle und von Geschäftsszenarien für eine Datenquelle zu vermitteln, kann ein Experte eine vollständige, ausführliche Dokumentation bereitstellen. Das Dokumentieren einer Datenquelle ist einfach. Wählen Sie einfach ein Datenasset oder einen Container aus, und wählen Sie dann **Dokumentation**.
+In [How to annotate data sources](data-catalog-how-to-annotate.md), you learn that experts who know the data source can annotate it with tags and a description. The **Azure Data Catalog** portal includes a rich text editor so that users can fully document data assets and containers. The editor includes paragraph formatting, such as headings, text formatting, bulleted lists, numbered lists, and tables.
+
+Tags and descriptions are great for simple annotations. However, to help data consumers better understand the use of a data source, and business scenarios for a data source, an expert can provide complete, detailed documentation. It's easy to document a data source. Select a data asset or container, and choose **Documentation**.
 
 ![](media\data-catalog-documentation\data-catalog-documentation.png)
 
-## Dokumentieren von Datenressourcen
+## <a name="documenting-data-assets"></a>Documenting data assets
 
-Der Vorteil der **Azure Data Catalog**-Dokumentation besteht darin, dass Sie Ihren Data Catalog als Inhaltsrepository zum Erstellen einer vollständigen Textbeschreibung Ihrer Datenressourcen verwenden können. Es stehen Ihnen detaillierte Inhalte zur Verfügung, die Container und Tabellen beschreiben. Wenn Sie bereits Inhalt in einem anderen Inhaltsrepository wie SharePoint oder einer Dateifreigabe haben, können Sie der Ressourcendokumentation Links hinzufügen, die auf diesen vorhandenen Inhalt verweisen. Mit diesem Feature sind Ihre vorhandenen Dokumente leichter auffindbar.
+The benefit of **Azure Data Catalog** documentation allows you to use your Data Catalog as a content repository to create a complete narrative of your data assets. You can explore detailed content that describes containers and tables. If you already have content in another content repository, such as SharePoint or a file share, you can add to the asset documentation links to reference this existing content. This feature makes your existing documents more discoverable.
 
-> [AZURE.NOTE] Dokumentation ist nicht im Suchindex enthalten.
+> [AZURE.NOTE] Documentation is not included in search index.
 
 ![](media\data-catalog-documentation\data-catalog-documentation2.png)
 
-In der Dokumentation können z. B. die Merkmale und der Wert eines Datenressourcencontainers beschrieben werden, es kann sich jedoch auch um eine ausführliche Beschreibung des Tabellenschemas innerhalb eines Containers handeln. Der Umfang der bereitgestellten Dokumentation sollte von Ihren geschäftlichen Anforderungen abhängig sein. Hier finden Sie einige allgemeine Vor- und Nachteile der Dokumentation von Datenressourcen:
+The level of documentation can range from describing the characteristics and value of a data asset container to a detailed description of table schema within a container. The level of documentation provided should be driven by your business needs. But in general, here are a few pros and cons of documenting data assets:
 
--	Dokumentation nur für einen Container: Der gesamte Inhalt befindet sich an einem Ort, Benutzern fehlen jedoch möglicherweise erforderliche Informationen, um eine fundierte Entscheidung zu treffen.
--	Dokumentation nur für die Tabellen: Der Inhalt bezieht sich auf das bestimmte Objekt, Benutzer verwenden jedoch mehrere Orte für Dokumente.
--	Dokumentation für Container und Tabellen: Dies ist der umfassendste Ansatz, kann jedoch eine zusätzliche Wartung der Dokumente zur Folge haben.
+-   Document just a container: All the content is in one place, but might lack necessary details for users to make an informed decision.
+-   Document just the tables: Content is specific to that object, but your users have multiple places for documents.
+-   Document containers and tables: Most comprehensive approach, but might introduce more maintenance of the documents.
 
-## Zusammenfassung
+## <a name="summary"></a>Summary
 
-Durch das Dokumentieren von Datenquellen mit **Azure Data Catalog** können Sie eine Textbeschreibung Ihrer Datenressourcen mit allen erforderlichen Details erstellen. Mithilfe von Links können Sie auf Inhalte in einem vorhandenen Inhaltsrepository verweisen; so werden Ihre vorhandenen Dokumente und Datenressourcen zusammengefasst. Sobald Ihre Benutzer geeignete Datenressourcen ermitteln, steht ihnen ein vollständiger Dokumentationssatz zur Verfügung.
+Documenting data sources with **Azure Data Catalog** can create a narrative about your data assets in as much detail as you need.  By using links, you can link to content stored in an existing content repository, which brings your existing docs and data assets together. Once your users discover appropriate data assets, they can have a complete set of documentation.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

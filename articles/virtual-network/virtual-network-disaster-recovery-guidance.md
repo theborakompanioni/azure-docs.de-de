@@ -1,49 +1,54 @@
 <properties
-	pageTitle="Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Netzwerke | Microsoft Azure"
-	description="Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Netzwerke."
-	services="virtual-network"
-	documentationCenter=""
-	authors="NarayanAnnamalai"
-	manager="jefco"
-	editor=""/>
+    pageTitle="What to do in the event of an Azure service disruption impacting Azure Virtual Networks | Microsoft Azure"
+    description="Learn what to do in the event of an Azure service disruption impacting Azure Virtual Networks."
+    services="virtual-network"
+    documentationCenter=""
+    authors="NarayanAnnamalai"
+    manager="jefco"
+    editor=""/>
 
 <tags
-	ms.service="virtual-network"
-	ms.workload="virtual-network"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/16/2016"
-	ms.author="narayan;aglick"/>
+    ms.service="virtual-network"
+    ms.workload="virtual-network"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/16/2016"
+    ms.author="narayan;aglick"/>
 
-#Virtuelles Netzwerk: Geschäftskontinuität
 
-##Übersicht
+#<a name="virtual-network-–-business-continuity"></a>Virtual Network – Business Continuity
 
-Ein virtuelles Netzwerk (VNet) ist eine logische Darstellung Ihres Netzwerks in der Cloud. Es ermöglicht Ihnen das Definieren Ihres eigenen privaten IP-Adressraums und das Segmentieren des Netzwerks in Subnetze. VNets dienen als Vertrauensstellungsgrenze beim Hosten von Computeressourcen wie Azure Virtual Machines und Cloud Services (Web-/Workerrollen). Ein VNet ermöglicht die direkte private IP-Kommunikation zwischen den darin gehosteten Ressourcen. Ein virtuelles Netzwerk kann auch über eine der Hybridoptionen wie VPN-Gateway oder ExpressRoute mit einem lokalen Netzwerk verknüpft werden.
+##<a name="overview"></a>Overview
+
+A Virtual Network (VNet) is a logical representation of your network in the cloud. It allows you to define your own private IP address space and segment the network into subnets. VNets serves as a trust boundary to host your compute resources such as Azure Virtual Machines and Cloud Services (web/worker roles). A VNet allows direct private IP communication between the resources hosted in it. A Virtual Network can also be linked to an on-premises network through one of the hybrid options such as a VPN Gateway or ExpressRoute.
  
-Ein VNet wird innerhalb des Geltungsbereichs einer Region erstellt. Sie können VNets mit demselben Adressraum in zwei verschiedenen Regionen erstellen (z. B. USA, Osten und USA, Westen), sie aber nicht direkt mit einer anderen verbinden.
+A VNet is created within the scope of a region. You can create VNets with same address space in two different regions (i.e. US East and US West but cannot connect them to one another directly). 
 
-##Geschäftskontinuität
+##<a name="business-continuity"></a>Business Continuity
 
-Es gibt verschiedene Möglichkeiten, warum Ihre Anwendung unterbrochen werden kann. Eine bestimmte Region kann aufgrund einer Naturkatastrophe oder eines Teilausfalls mehrerer Geräte und Dienste vollständig abgeschnitten sein. Die Auswirkung auf den VNet-Dienst unterscheidet sich in allen diesen Fällen.
+There could be several different ways that your application could be disrupted. A given region could be completely cut off due to a natural disaster or a partial disaster due to a failure of multiple devices/services. The impact on the VNet service is different in each of these situations.
 
-**F: Was ist beim Ausfall einer gesamten Region zu tun, z.B. aufgrund einer Naturkatastrophe? Was geschieht mit den virtuellen Netzwerken, die in der Region gehostet werden?**
+**Q: What do you do in the event of an outage to an entire region? i.e. if a region is completely cutoff due to a natural disaster? What happens to the Virtual Networks hosted in the region?**
 
-A: Auf das virtuelle Netzwerk und die Ressourcen in der betroffenen Region kann während der Dienstunterbrechung nicht zugegriffen werden.
+A: The Virtual Network and the resources in the affected region remains inaccessible during the time of the service disruption.
 
-![Diagramm eines einfachen virtuellen Netzwerks](./media/virtual-network-disaster-recovery-guidance/vnet.png)
+![Simple Virtual Network Diagram](./media/virtual-network-disaster-recovery-guidance/vnet.png)
 
-**F: Was kann ich tun, um dasselbe virtuelle Netzwerk in einer anderen Region neu zu erstellen?**
+**Q: What can I to do re-create the same Virtual Network in a different region?**
 
-A: Ein virtuelles Netzwerk (VNet) ist eine relativ schlanke Ressource. Sie können Azure-APIs zum Erstellen eines VNet mit dem gleichen Adressraum in einer anderen Region aufrufen. Um die gleiche Umgebung neu zu erstellen, die in der betroffenen Region vorhanden war, müssen Sie APIs aufrufen, um Ihre Clouddienste (Web-/Workerrollen) und virtuellen Computer erneut bereitzustellen. Sie müssen auch ein VPN-Gateway einrichten und die Verbindung mit Ihrem lokalen Netzwerk herstellen, sofern eine solche Verbindung vorhanden war (z.B. bei einer Hybridbereitstellung).
+A: Virtual Network (VNet) is fairly lightweight resource. You can invoke Azure APIs to create a VNet with the same address space in a different region. To re-create the same environment that was present in the affected region, you have to make API calls to re-deploy your Cloud Services (web/worker roles) and Virtual Machines that you had. You will also have to spin up a VPN Gateway and connect to your on-premises network if you had on-premises connectivity (such as in a hybrid deployment).
 
-Die Anweisungen zum Erstellen eines VNet finden Sie [hier](./virtual-networks-create-vnet-arm-pportal.md).
+The instructions for creating a VNet are found [here](./virtual-networks-create-vnet-arm-pportal.md). 
 
-**F: Kann ein Replikat eines VNet in einer bestimmten Region in einer anderen Region im Voraus neu erstellt werden?**
+**Q: Can a replica of a VNet in a given region be re-created in another region ahead of time?**
 
-A: Ja, Sie können im Voraus zwei VNets erstellen, die denselben privaten IP-Adressraum und dieselben Ressourcen im VNet in zwei verschiedenen Regionen nutzen. Wenn der Kunde im VNet Dienste mit Internetzugriff hostet, kann er Traffic Manager einrichten, um den Datenverkehr an die aktive Region geografisch zu verteilen. Ein Kunde kann jedoch nicht zwei VNets mit demselben Adressraum mit dem lokalen Netzwerk verbinden, da dies Routingprobleme verursachen würde. Im Falle eines Notfalls und Verlusts eines VNet in einer Region kann der Kunde das andere verfügbare VNet mit demselben Adressraum mit dem lokalen Netzwerk verbinden.
+A: Yes, you can create two VNets using the same private IP address space and resources under the VNet in two different regions ahead of time. If the customer was hosting internet facing services in the VNet, he could have setup Traffic Manager to geo distribute traffic to the region that is active. However, a customer cannot connect two VNets with the same address space to on-premises network as it would cause routing issues. At the time of a disaster and loss of a VNet in one region, the customer can connect the other available VNet with the same address space to on-premises network.
 
-Die Anweisungen zum Erstellen eines VNet finden Sie [hier](./virtual-networks-create-vnet-arm-pportal.md).
+The instructions for creating a VNet are found [here](./virtual-networks-create-vnet-arm-pportal.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

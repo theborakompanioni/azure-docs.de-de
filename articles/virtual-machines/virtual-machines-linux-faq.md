@@ -1,123 +1,127 @@
 <properties
-	pageTitle="Häufig gestellte Fragen zu virtuellen Linux-Computern | Microsoft Azure"
-	description="Hier finden Sie Antworten auf die häufigsten Fragen zu virtuellen Linux-Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden."
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="cynthn"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-management"/>
+    pageTitle="FAQ for Linux VMs | Microsoft Azure"
+    description="Provides answers to some of the common questions about Linux virtual machines created with the Resource Manager model."
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="cynthn"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-management"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/16/2016"
-	ms.author="cynthn"/>
-
-# Häufig gestellte Fragen zu virtuellen Linux-Computern 
-
-Dieser Artikel enthält einige häufig gestellte Fragen zu virtuellen Linux-Computern, die in Azure mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Die Windows-Version dieses Themas finden Sie unter [Häufig gestellte Fragen zu virtuellen Windows-Computern](virtual-machines-windows-faq.md).
-
-## Was kann ich auf einem virtuellen Azure-Computer ausführen?
-
-Alle Abonnenten können Serversoftware auf einem virtuellen Azure-Computer ausführen. Weitere Informationen finden Sie unter [Linux auf von Azure unterstützten Verteilungen](virtual-machines-linux-endorsed-distros.md).
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/16/2016"
+    ms.author="cynthn"/>
 
 
-## Wie viel Speicher kann mit einem virtuellen Computer verwendet werden?
+# <a name="frequently-asked-question-about-linux-virtual-machines"></a>Frequently asked question about Linux Virtual Machines 
 
-Jeder Datenträger kann bis zu 1 TB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md).
+This article addresses some common questions about Linux virtual machines created in Azure using the Resource Manager deployment model. For the Windows version of this topic, see [Frequently asked question about Windows Virtual Machines](virtual-machines-windows-faq.md)
 
-Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datenträger für Daten. Bei jedem Datenträger handelt es sich um eine VHD-Datei, die als Seiten-Blob gespeichert wird. Ausführliche Informationen zu Preisen finden Sie unter [Speicherpreisübersicht](https://azure.microsoft.com/pricing/details/storage/).
+## <a name="what-can-i-run-on-an-azure-vm?"></a>What can I run on an Azure VM?
 
-
-## Wie kann ich auf meinen virtuellen Computer zugreifen?
-
-Stellen Sie eine Remoteverbindung mit Secure Shell (SSH) her, um sich beim virtuellen Computer anzumelden. Weitere Informationen zum Herstellen einer Verbindung finden Sie in den Anweisungen [für Windows](virtual-machines-linux-ssh-from-windows.md) oder [für Linux und Mac](virtual-machines-linux-mac-create-ssh-keys.md). SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
+All subscribers can run server software on an Azure virtual machine. For more information, see [Linux on Azure-Endorsed Distributions](virtual-machines-linux-endorsed-distros.md)
 
 
-Wenn Probleme auftreten, finden Sie weitere Informationen unter [Problembehandlung für SSH-Verbindungen (Secure Shell)](virtual-machines-linux-troubleshoot-ssh-connection.md).
+## <a name="how-much-storage-can-i-use-with-a-virtual-machine?"></a>How much storage can I use with a virtual machine?
+
+Each data disk can be up to 1 TB. The number of data disks you can use depends on the size of the virtual machine. For details, see [Sizes for Virtual Machines](virtual-machines-linux-sizes.md).
+
+An Azure storage account provides storage for the operating system disk and any data disks. Each disk is a .vhd file stored as a page blob. For pricing details, see [Storage Pricing Details](https://azure.microsoft.com/pricing/details/storage/).
 
 
-## Kann ich den temporären Datenträger (/dev/sdb1) zum Speichern von Daten verwenden?
+## <a name="how-can-i-access-my-virtual-machine?"></a>How can I access my virtual machine?
 
-Verwenden Sie den temporären Datenträger (/dev/sdb1) nicht zum Speichern von Daten. Er dient nur zur temporären Speicherung. Sie riskieren den Verlust von Daten, die nicht wiederhergestellt werden können.
-
-
-## Kann ich einen vorhandenen virtuellen Azure-Computer kopieren oder klonen?
-
-Ja. Anweisungen hierzu finden Sie unter [Erstellen einer Kopie eines virtuellen Linux-Computers im Resource Manager-Bereitstellungsmodell](virtual-machines-linux-copy-vm.md).
+Establish a remote connection to log on to the virtual machine, using Secure Shell (SSH). See the instructions on how to connect [from Windows](virtual-machines-linux-ssh-from-windows.md) or [from Linux and Mac](virtual-machines-linux-mac-create-ssh-keys.md). By default, SSH allows a maximum of 10 concurrent connections. You can increase this number by editing the configuration file.
 
 
-## Warum werden die Regionen „Kanada, Mitte“ und „Kanada, Osten“ nicht in Azure Resource Manager angezeigt?
-
-Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nicht automatisch für das Erstellen von virtuellen Computern im Rahmen von vorhandenen Azure-Abonnements registriert. Diese Registrierung erfolgt automatisch, wenn ein virtueller Computer mit Azure Resource Manager über das Azure-Portal für eine andere Region bereitgestellt wird. Nach der Bereitstellung eines virtuellen Computers in einer anderen Azure-Region sollten die neuen Regionen für nachfolgende virtuelle Computer verfügbar sein.
+If you’re having problems, check out [Troubleshoot Secure Shell (SSH) connections](virtual-machines-linux-troubleshoot-ssh-connection.md).
 
 
-## Kann ich meinem virtuellen Computer nach der Erstellung eine NIC hinzufügen?
+## <a name="can-i-use-the-temporary-disk-(/dev/sdb1)-to-store-data?"></a>Can I use the temporary disk (/dev/sdb1) to store data?
 
-Nein. Das Hinzufügen einer Netzwerkkarte ist nur zum Zeitpunkt der Erstellung möglich.
-
-
-## Gibt es Anforderungen an den Computernamen?
-
-Ja. Der Computername kann maximal 64 Zeichen lang sein. Weitere Informationen zur Benennung von Ressourcen finden Sie unter [Benennungsrichtlinien für die Infrastruktur](virtual-machines-linux-infrastructure-naming-guidelines.md).
+Don't use the temporary disk (/dev/sdb1) to store data. It is only there for temporary storage. You risk losing data that can’t be recovered. 
 
 
-## Welche Anforderungen an den Benutzernamen gelten beim Erstellen eines virtuellen Computers?
+## <a name="can-i-copy-or-clone-an-existing-azure-vm?"></a>Can I copy or clone an existing Azure VM?
 
-Benutzernamen müssen 1 bis 64 Zeichen lang sein.
+Yes. For instructions, see [How to create a copy of a Linux virtual machine in the Resource Manager deployment model](virtual-machines-linux-copy-vm.md).
 
-Die folgenden Benutzernamen sind nicht zulässig:
+
+## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager?"></a>Why am I not seeing Canada Central and Canada East regions through Azure Resource Manager?
+
+The two new regions of Canada Central and Canada East are not automatically registered for virtual machine creation for existing Azure subscriptions. This registration is done automatically when a virtual machine is deployed through the Azure portal to any other region using Azure Resource Manager. After a virtual machine is deployed to any other Azure region, the new regions should be available for subsequent virtual machines.
+
+
+## <a name="can-i-add-a-nic-to-my-vm-after-it's-created?"></a>Can I add a NIC to my VM after it's created?
+
+No. Adding a NIC can only be done at creation time.
+
+
+## <a name="are-there-any-computer-name-requirements?"></a>Are there any computer name requirements?
+
+Yes. The computer name can be a maximum of 64 characters in length. See [Infrastructure naming guidelines](virtual-machines-linux-infrastructure-naming-guidelines.md) for more information around naming your resources.
+
+
+## <a name="what-are-the-username-requirements-when-creating-a-vm?"></a>What are the username requirements when creating a VM?
+
+Usernames must be 1 - 64 characters in length. 
+
+The following usernames are not allowed:
 
 <table>
-	<tr>
-		<td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">Sichern </td><td style="text-align:center"> console </td><td style="text-align:center"> david </td><td style="text-align:center"> guest</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">john </td><td style="text-align:center"> owner </td><td style="text-align:center"> root </td><td style="text-align:center"> server</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">sql </td><td style="text-align:center"> support </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
-	</tr>
+    <tr>
+        <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">backup </td><td style="text-align:center"> console </td><td style="text-align:center"> david </td><td style="text-align:center"> guest</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">john </td><td style="text-align:center"> owner </td><td style="text-align:center"> root </td><td style="text-align:center"> server</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">sql </td><td style="text-align:center"> support </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
+    </tr>
 </table>
 
 
-## Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?
+## <a name="what-are-the-password-requirements-when-creating-a-vm?"></a>What are the password requirements when creating a VM?
 
-Kennwörter müssen 6 bis 72 Zeichen lang sein und 3 der 4 folgenden Komplexitätsanforderungen erfüllen:
+Passwords must be 6 - 72 characters in length and meet 3 out of the following 4 complexity requirements:
 
-- Kleinbuchstaben
-- Großbuchstaben
-- Eine Ziffer
-- Ein Sonderzeichen (Übereinstimmung mit regulärem Ausdruck [\\W\_])
+- Have lower characters
+- Have upper characters
+- Have a digit
+- Have a special character (Regex match [\W_])
 
-Die folgenden Kennwörter sind nicht zulässig:
+The following passwords are not allowed:
 
 <table>
-	<tr>
-		<td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
-	</tr>
+    <tr>
+        <td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+    </tr>
 </table>
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

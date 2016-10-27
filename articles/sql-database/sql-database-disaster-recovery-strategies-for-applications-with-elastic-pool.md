@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Entwerfen von Cloud-Lösungen für die Notfallwiederherstellung mithilfe der Azure SQL-Datenbank-Georeplikation | Microsoft Azure"
-   description="Erfahren Sie, wie Sie durch Wahl des richtigen Failovermusters Ihre Cloud-Lösung für die Notfallwiederherstellung entwerfen können."
+   pageTitle="Designing Cloud Solutions for Disaster Recovery Using SQL Database Geo-Replication | Microsoft Azure"
+   description="Learn how to design your cloud solution for disaster recovery by choosing the right failover pattern."
    services="sql-database"
    documentationCenter="" 
    authors="anosov1960" 
@@ -16,158 +16,163 @@
    ms.date="07/16/2016"
    ms.author="sashan"/>
 
-# Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool 
 
-Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über eine Reihe von Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Elastische Pools](sql-database-elastic-pool.md) und eigenständige Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für elastische Pools beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
+# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pool"></a>Disaster recovery strategies for applications using SQL Database Elastic Pool 
 
-Im Rahmen dieses Artikels verwenden wir das kanonische SaaS-ISV-Anwendungsmuster:
+Over the years we have learned that cloud services are not foolproof and catastrophic incidents can and will happen. SQL Database provides a number of capabilities to provide for the business continuity of your application when these incidents occur. [Elastic pools](sql-database-elastic-pool.md) and standalone databases support the same kind of disaster recovery capabilities. This article describes several DR strategies for elastic pools that leverage these SQL Database business continuity features.
 
-<i>Bei einer modernen cloudbasierten Webanwendung wird eine SQL-Datenbank für jeden Endbenutzer bereitgestellt. Der ISV verfügt über eine große Zahl von Kunden und setzt aus diesem Grund viele Datenbanken ein, die als Mandantendatenbanken bezeichnet werden. Da die Mandantendatenbanken in der Regel unvorhersagbare Aktivitätsmuster aufweisen, nutzt der ISV einen elastischen Pool, um die Datenbankkosten für längere Zeiträume eindeutig vorhersagbar zu machen. Mit dem elastischen Pool wird außerdem die Leistungsverwaltung bei Spitzen der Benutzeraktivität vereinfacht. Zusätzlich zu den Mandantendatenbanken werden für die Anwendung auch mehrere Datenbanken genutzt, um Benutzerprofile und die Sicherheit zu verwalten, Verwendungsmuster zu erfassen usw. Die Verfügbarkeit der einzelnen Mandanten wirkt sich nicht auf die Gesamtverfügbarkeit der Anwendung aus. Die Verfügbarkeit und Leistung von Verwaltungsdatenbanken ist für die Funktion der Anwendung von entscheidender Bedeutung, und wenn die Verwaltungsdatenbanken offline sind, ist auch die gesamte Anwendung offline.</i>
+For the purposes of this article we will use the canonical SaaS ISV application pattern:
 
-Im weiteren Verlauf des Artikels werden Strategien für die Notfallwiederherstellung anhand mehrerer Szenarios besprochen, angefangen bei kostenbewussten Anwendungen bis hin zu Anwendungen mit strengen Verfügbarkeitsanforderungen.
+<i>A modern cloud based web application provisions one SQL database for each end user. The ISV has a large number of customers and therefore uses many databases, known as tenant databases. Because the tenant databases typically have unpredictable activity patterns, the ISV uses an elastic pool to make the database cost very predictable over extended periods of time. The elastic pool also simplifies the performance management when the user activity spikes. In addition to the tenant databases the application also uses several databases to manage user profiles, security, collect usage patterns etc. Availability of the individual tenants does not impact the application’s availability as whole. However, the availability and performance of management databases is critical for the application’s function and if the management databases are offline the entire application is offline.</i>  
 
-## Szenario 1: Kostenbewusste Anwendung für Startup-Unternehmen
+In the rest of the paper we will discuss the DR strategies covering a range of scenarios from the cost sensitive startup applications to the ones with stringent availability requirements.  
 
-<i>Wir sind ein Startup-Unternehmen, bei dem stark auf die Kosten geachtet wird. Wir möchten die Bereitstellung und Verwaltung der Anwendung vereinfachen und einen eingeschränkten Servicelevel (SLA) für einzelne Kunden verwenden. Es soll aber sichergestellt sein, dass die Anwendung als Ganzes niemals offline ist.</i>
+## <a name="scenario-1.-cost-sensitive-startup"></a>Scenario 1. Cost sensitive startup
 
-Zur Erfüllung der Anforderung zur Vereinfachung sollten Sie alle Mandantendatenbanken in einem elastischen Pool in der Azure-Region Ihrer Wahl bereitstellen und die Verwaltungsdatenbank(en) als georeplizierte eigenständige Datenbank(en) bereitstellen. Verwenden Sie für die Notfallwiederherstellung von Mandanten die Geowiederherstellung, für die keine zusätzlichen Kosten anfallen. Um die Verfügbarkeit der Verwaltungsdatenbanken sicherzustellen, sollten sie in eine andere Region georepliziert werden (Schritt 1). Die laufenden Kosten der Notfallwiederherstellungskonfiguration in diesem Szenario entsprechen den Gesamtkosten der sekundären Datenbanken. Diese Konfiguration ist im nächsten Diagramm dargestellt.
+<i>I am a startup business and am extremely cost sensitive.  I want to simplify deployment and management of the application and I am willing to have a limited SLA for individual customers. But I want to ensure the application as a whole is never offline.</i>
 
-![Abbildung 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
+To satisfy the simplicity requirement, you should deploy all tenant databases into one elastic pool in the Azure region of your choice and deploy the management database(s) as geo-replicated standalone database(s). For the disaster recovery of tenants, use geo-restore, which comes at no additional cost. To ensure the availability of the management databases, they should be geo-replicated to another region (step 1). The ongoing cost of the disaster recovery configuration in this scenario is equal to the total cost of the secondary database(s). This configuration is illustrated on the next diagram.
 
-Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschritte ausführen, die im nächsten Diagramm angegeben sind, um die Anwendung wieder in den Onlinezustand zu versetzen.
+![Figure 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
-- Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken (2) in die Region für die Notfallwiederherstellung durch.
-- Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Kunden sind die Daten vorübergehend nicht verfügbar.
-- Erstellen Sie den elastischen Pool mit der gleichen Konfiguration wie für den ursprünglichen Pool (3).
-- Verwenden Sie die Geowiederherstellung, um Kopien der Mandantendatenbanken zu erstellen (4). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
+In case of an outage in the primary region, the recovery steps to bring your application online are illustrated by the next diagram.
 
-An diesem Punkt befindet sich die Anwendung in der Region für die Notfallwiederherstellung wieder im Onlinezustand, aber bei einigen Kunden kommt es beim Zugreifen auf ihre Daten zu Verzögerungen.
+- Immediately failover the management databases (2) to the DR region. 
+- Change the the application's connection string to point to the DR region. All new accounts and tenant databases will be created in the DR region. The existing customers will see their data temporarily unavailable.
+- Create the elastic pool with the same configuration as the original pool (3). 
+- Use geo-restore to create copies of the tenant databases (4). You can consider triggering the individual restores by the end-user connections or use some other application specific priority scheme.
 
-![Abbildung 2](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-2.png)
+At this point your application is back online in the DR region, but some customers will experience delay when accessing their data.
 
-Wenn der Ausfall temporärer Art ist, ist es möglich, dass die primäre Region von Azure wiederhergestellt wird, bevor in der Region für die Notfallwiederherstellung alle Wiederherstellungen abgeschlossen sind. In diesem Fall sollten Sie orchestrieren, dass die Anwendung zurück in die primäre Region verschoben wird. Während des Vorgangs werden die Schritte ausgeführt, die im nächsten Diagramm dargestellt sind.
+![Figure 2](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-2.png)
+
+If the outage was temporary, it is possible that the primary region will be recovered by Azure before all the restores are complete in the DR region. In this case, you should orchestrate moving the application back to the primary region. The process will take the steps illustrated on the next diagram.
  
-- Brechen Sie alle ausstehenden Anforderungen zur Geowiederherstellung ab.
-- Führen Sie für die Verwaltungsdatenbanken ein Failover in die primäre Region durch (5). Hinweis: Nach der Wiederherstellung der Region sind aus den alten primären Replikaten automatisch sekundäre Replikate geworden. Nun werden die Rollen wieder gewechselt.
-- Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie wieder auf die primäre Region verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der primären Region erstellt. Für einige vorhandene Kunden sind die Daten vorübergehend nicht verfügbar.
-- Legen Sie alle Datenbanken im Pool für die Notfallwiederherstellung auf „Schreibgeschützt“ fest, um sicherzustellen, dass sie in der Region für die Notfallwiederherstellung nicht geändert werden können (6).
-- Benennen Sie für jede Datenbank im Pool für die Notfallwiederherstellung, die sich seit der Wiederherstellung geändert hat, die entsprechenden Datenbanken im primären Pool um, oder löschen Sie sie (7).
-- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (8).
-- Löschen Sie den Pool für die Notfallwiederherstellung (9).
+- Cancel all outstanding geo-restore requests.   
+- Failover the management database(s) to the primary region (5). Note: After the region’s recovery the old primaries have automatically become secondaries. Now they will switch roles again. 
+- Change the the application's connection string to point back to the primary region. Now all new accounts and tenant databases will be created in the primary region. Some existing customers will see their data temporarily unavailable.   
+- Set all databases in the DR pool to read-only to ensure they cannot be modified in the DR region (6). 
+- For each database in the DR pool that has changed since the recovery, rename or delete the corresponding databases in the primary pool (7). 
+- Copy the updated databases from the DR pool to the primary pool (8). 
+- Delete the DR pool (9)
 
-An diesem Punkt ist die Anwendung in der primären Region online, und alle Mandantendatenbanken sind im primären Pool verfügbar.
+At this point your application will be online in the primary region with all tenant databases available in the primary pool.
 
-![Abbildung 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
+![Figure 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
 
-Der **Hauptvorteil** dieser Strategie sind die geringen laufenden Kosten für die Datenebenenredundanz. Sicherungen werden automatisch über den SQL-Datenbankdienst ohne Umschreiben der Anwendung und zusätzliche Kosten durchgeführt. Kosten fallen nur an, wenn die elastischen Datenbanken wiederhergestellt werden. Der **Nachteil** besteht darin, dass die gesamte Wiederherstellung aller Mandantendatenbanken sehr lange dauert. Die Dauer hängt von der Anzahl von Wiederherstellungen ab, die Sie in der Region für die Notfallwiederherstellung initiieren, sowie von der Gesamtgröße der Mandantendatenbanken. Auch wenn Sie den Wiederherstellungen einiger Mandanten Vorrang einräumen, entsteht ein Wettbewerb mit allen anderen Wiederherstellungen, die in derselben Region initiiert werden. Der Dienst führt Vermittlungen und Drosselungen durch, um die allgemeinen Auswirkungen auf die Datenbanken der vorhandenen Kunden gering zu halten. Außerdem kann die Wiederherstellung der Mandantendatenbanken erst beginnen, nachdem der neue elastische Pool in der Region für die Notfallwiederherstellung erstellt wurde.
+The key **benefit** of this strategy is low ongoing cost for data tier redundancy. Backups are taken automatically by the SQL Database service with no application rewrite and at no additional cost.  The cost is incurred only when the elastic databases are restored. The **trade-off** is that the complete recovery of all tenant databases will take significant time. It will depend on the total number of restores you will initiate in the DR region and overall size of the tenant databases. Even if you prioritize some tenants' restores over others, you will be competing with all the other restores that are initiated in the same region as the service will arbitrate and throttle to minimize the overall impact on the existing customers' databases. In addition, the recovery of the tenant databases cannot start until the new elastic pool in the DR region is created.
 
-## Szenario 2: Ausgereifte Anwendung mit Diensten auf mehreren Ebenen 
+## <a name="scenario-2.-mature-application-with-tiered-service"></a>Scenario 2. Mature application with tiered service 
 
-<i>Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren Ebenen und unterschiedlichen SLAs für Testkunden und zahlende Kunden. Für die Testkunden sollen die Kosten so weit wie möglich reduziert werden. Für Testkunden kann es zu Ausfallzeiten kommen, aber die Wahrscheinlichkeit dafür soll verringert werden. In Bezug auf die zahlenden Kunden ist jede Ausfallzeit mit einem Abwanderungsrisiko verbunden. Daher soll sichergestellt sein, dass zahlende Kunden immer auf ihre Daten zugreifen können.</i>
+<i>I am a mature SaaS application with tiered service offers and different SLAs for trial customers and for paying customers. For the trial customers, I have to reduce the cost as much as possible. Trial customers can take downtime but I want to reduce its likelihood. For the paying customers, any downtime is a flight risk. So I want to make sure that paying customers are always able to access their data.</i> 
 
-Zur Unterstützung dieses Szenarios sollten Sie die Testmandanten von den zahlenden Mandanten trennen, indem Sie sie in separaten elastischen Pools anordnen. Für die Testkunden gilt dann ein niedrigerer eDTU-Wert pro Mandant und ein SLA mit einer längeren Wiederherstellungszeit. Die zahlenden Kunden sind in einem Pool mit einem höheren eDTU-Wert pro Mandant und einem höheren SLA angeordnet. Um die kürzeste Wiederherstellungsdauer zu gewährleisten, sollten die Mandantendatenbanken der zahlenden Kunden georepliziert werden. Diese Konfiguration ist im nächsten Diagramm dargestellt.
+To support this scenario, you should separate the trial tenants from paid tenants by putting them into separate elastic pools. The trial customers would have lower eDTU per tenant and lower SLA with a longer recovery time. The paying customers would be in a pool with higher eDTU per tenant and a higher SLA. To guarantee the lowest recovery time, the paying customers' tenant databases should be geo-replicated. This configuration is illustrated on the next diagram. 
 
-![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![Figure 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
-Wie beim ersten Szenario auch, sind die Verwaltungsdatenbanken ziemlich aktiv, sodass Sie dafür eine eigenständige georeplizierte Datenbank verwenden sollten (1). So wird die vorhersagbare Leistung für neue Kundenabonnements, Profilupdates und andere Verwaltungsvorgänge sichergestellt. Die Region, in der sich die primären Replikate der Verwaltungsdatenbanken befinden, ist die primäre Region, und die Region, in der sich die sekundären Replikate der Verwaltungsdatenbanken befinden, ist die Region für die Notfallwiederherstellung.
+As in the first scenario, the management database(s) will be quite active so you use a standalone geo-replicated database for it (1). This will ensure the predictable performance for new customer subscriptions, profile updates and other management operations. The region in which the primaries of the management database(s) reside will be the primary region and the region in which the secondaries of the management database(s) reside will be the DR region.
 
-Die Mandantendatenbanken der zahlenden Kunden verfügen über aktive Datenbanken im „bezahlten“ Pool, der in der primären Region bereitgestellt wird. Sie sollten in der Region für die Notfallwiederherstellung einen sekundären Pool gleichen Namens bereitstellen. Jeder Mandant wird dann in den sekundären Pool georepliziert (2). Dies ermöglicht eine schnelle Wiederherstellung aller Mandantendatenbanken per Failover.
+The paying customers’ tenant databases will have active databases in the “paid” pool provisioned in the primary region. You should provision a secondary pool with the same name in the DR region. Each tenant would be geo-replicated to the secondary pool (2). This will enable a quick recovery of all tenant databases using failover. 
 
-Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschritte ausführen, die im nächsten Diagramm angegeben sind, um die Anwendung wieder in den Onlinezustand zu versetzen:
+If an outage occurs in the primary region, the recovery steps to bring your application online are illustrated in the next diagram:
 
-![Abbildung 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
-- Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken in die Region für die Notfallwiederherstellung durch (3).
-- Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
-- Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in den Pool in der Region für die Notfallwiederherstellung durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden.
-- Falls die eDTU-Größe des sekundären Pools niedriger als die Größe des primären Pools war, weil für die sekundären Datenbanken die Kapazität zum Verarbeiten der Änderungsprotokolle nur erforderlich war, als es sich um sekundäre Replikate gehandelt hat, sollten Sie die Poolkapazität jetzt sofort erhöhen. Dies ist nötig, um die gesamte Workload aller Mandanten abdecken zu können (5).
-- Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in der Notfallwiederherstellungsregion für die Datenbanken der Testkunden (6).
-- Nachdem der Pool für die Testkunden erstellt wurde, verwenden Sie die Geowiederherstellung, um die einzelnen Testmandanten-Datenbanken im neuen Pool wiederherzustellen (7). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
+- Immediately fail over the management database(s) to the DR region (3).
+- Change the application’s connection string to point to the DR region. Now all new accounts and tenant databases will be created in the DR region. The existing trial customers will see their data temporarily unavailable.
+- Failover the paid tenant's databases to the pool in the DR region to immediately restore their availability (4). Since the failover is a quick metadata level change you may consider an optimization where the individual failovers are triggered on demand by the end user connections. 
+- If your secondary pool eDTU size was lower than the primary because the secondary databases only required the capacity to process the change logs while they were secondaries, you should immediately increase the pool capacity now to accommodate the full workload of all tenants (5). 
+- Create the new elastic pool with the same name and the same configuration in the DR region for the trial customers' databases (6). 
+- Once the trial customers’ pool is created, use geo-restore to restore the individual trial tenant databases into the new pool (7). You can consider triggering the individual restores by the end-user connections or use some other application specific priority scheme.
 
-An diesem Punkt ist Ihre Anwendung in der Region für die Notfallwiederherstellung wieder online. Alle zahlenden Kunden haben Zugriff auf ihre Daten, während es für Testkunden beim Zugreifen auf die Daten zu Verzögerungen kommt.
+At this point your application is back online in the DR region. All paying customers have access to their data while the trial customers will experience delay when accessing their data.
 
-Wenn die primäre Region von Azure wiederhergestellt wurde, *nachdem* Sie die Anwendung in der Region für die Notfallwiederherstellung wiederhergestellt haben, können Sie die Ausführung der Anwendung in dieser Region fortsetzen, oder Sie können ein Failback zurück zur primären Region durchführen. Falls die primäre Region wiederhergestellt wird, *bevor* der Failoverprozess abgeschlossen ist, sollten Sie erwägen, sofort ein Failback durchzuführen. Beim Failback werden die Schritte ausgeführt, die im nächsten Diagramm dargestellt sind:
+When the primary region is recovered by Azure *after* you have restored the application in the DR region you can continue running the application in that region or you can decide to fail back to the primary region. If the primary region is recovered *before* the failover process is completed, you should consider failing back right away. The failback will take the steps illustrated in the next diagram: 
  
-![Abbildung 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![Figure 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
-- Brechen Sie alle ausstehenden Anforderungen zur Geowiederherstellung ab.
-- Führen Sie das Failover für die Verwaltungsdatenbanken durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.
-- Führen Sie das Failover der bezahlten Mandantendatenbanken durch (9). Entsprechend werden die alten primären Replikate nach der Wiederherstellung der Region automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.
-- Legen Sie die wiederhergestellten Testdatenbanken, die sich in der Region für die Notfallwiederherstellung geändert haben, auf „Schreibgeschützt“ fest (10).
-- Benennen Sie für jede Datenbank im Notfallwiederherstellungspool für die Testkunden, die sich seit der Wiederherstellung geändert hat, die entsprechende Datenbank im primären Pool für Testkunden um, oder löschen Sie sie (11).
-- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (12).
-- Löschen Sie den Pool für die Notfallwiederherstellung (13).
+- Cancel all outstanding geo-restore requests.   
+- Failover the management database(s) (8). After the region’s recovery the old primary had automatically become the secondary. Now it becomes the primary again.  
+- Failover the paid tenant databases (9). Similarly, after the region’s recovery the old primaries automatically become the secondaries. Now they will become the primaries again. 
+- Set the restored trial databases that have changed in the DR region to read-only (10).
+- For each database in the trial customers DR pool that changed since the recovery, rename or delete the corresponding database in the trial customers primary pool (11). 
+- Copy the updated databases from the DR pool to the primary pool (12). 
+- Delete the DR pool (13) 
 
-> [AZURE.NOTE] Der Failovervorgang ist asynchron. Um die Wiederherstellungszeit zu minimieren, ist es wichtig, dass Sie den Failoverbefehl der Mandantendatenbanken für Batches von mindestens 20 Datenbanken ausführen.
+> [AZURE.NOTE] The failover operation is asynchronous. To minimize the recovery time it is important that you execute the tenant databases' failover command in batches of at least 20 databases. 
 
-Der **Hauptvorteil** dieser Strategie besteht darin, dass für die zahlenden Kunden der höchste Servicelevel (SLA) erzielt wird. Außerdem ist sichergestellt, dass die Blockierung der neuen Testzugriffe sofort aufgehoben wird, sobald der Notfallwiederherstellungspool für Testkunden erstellt wurde. Der **Nachteil** ist, dass sich bei dieser Einrichtung die Gesamtkosten der Mandantendatenbanken um die Kosten für den sekundären Notfallwiederherstellungspool für zahlende Kunden erhöhen. Wenn der sekundäre Pool eine andere Größe hat, verringert sich für zahlende Kunden außerdem die Leistung nach einem Failover, bis das Poolupgrade in der Region für die Notfallwiederherstellung abgeschlossen ist.
+The key **benefit** of this strategy is that it provides the highest SLA for the paying customers. It also guarantees that the new trials are unblocked as soon as the trial DR pool is created. The **trade-off** is that this setup will increase the total cost of the tenant databases by the cost of the secondary DR pool for paid customers. In addition, if the secondary pool has a different size, the paying customers will experience lower performance after failover until the pool upgrade in the DR region is completed. 
 
-## Szenario 3: Geografisch verteilte Anwendung mit Diensten auf mehreren Ebenen
+## <a name="scenario-3.-geographically-distributed-application-with-tiered-service"></a>Scenario 3. Geographically distributed application with tiered service
 
-<i>Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren Ebenen. Wir möchten zahlenden Kunden einen sehr aggressiven Servicelevel (SLA) anbieten und die Auswirkungen bei Ausfällen gering halten, da auch kurze Unterbrechungen bei Kunden zu Unzufriedenheit führen können. Es ist sehr wichtig, dass die zahlenden Kunden immer Zugriff auf ihre Daten haben. Die Testversionen sind kostenlos, und während des Testzeitraums wird kein SLA angeboten. </i>
+<i>I have a mature SaaS application with tiered service offers. I want to offer a very aggressive SLA to my paid customers and minimize the risk of impact when outages occur because even brief interruption can cause customer dissatisfaction. It is critical that the paying customers can always access their data. The trials are free and an SLA is not offered during the trial period. </i> 
 
-Für dieses Szenario sollten Sie drei separate elastische Pools verwenden. Zwei Pools gleicher Größe mit hohen eDTUs pro Datenbank sollten in zwei unterschiedlichen Regionen bereitgestellt werden, um die Mandantendatenbanken der zahlenden Kunden aufnehmen zu können. Der dritte Pool mit den Testmandanten verfügt hierbei über niedrigere eDTUs pro Datenbank und wird in einer der beiden Regionen bereitgestellt.
+To support this scenario, you should have three separate elastic pools. Two equal size pools with high eDTUs per database should be provisioned in two different regions to contain the paid customers' tenant databases. The third pool containing the trial tenants would have a lower eDTUs per database and be provisioned in one of the two region.
 
-Um bei Ausfällen die kürzesten Wiederherstellungsdauern garantieren zu können, sollten die Mandantendatenbanken der zahlenden Kunden mit 50% der primären Datenbanken in beiden Regionen georepliziert werden. Außerdem verfügt jede Region über 50% der sekundären Datenbanken. Wenn eine Region offline ist, wären hierbei also nur 50% der Datenbanken zahlender Kunden betroffen und müssten einem Failover unterzogen werden. Die restlichen Datenbanken würden intakt bleiben. Diese Konfiguration ist im folgenden Diagramm dargestellt:
+To guarantee the lowest recovery time during outages the paying customers' tenant databases should be geo-replicated with 50% of the primary databases in each of the two regions. Similarly, each region would have 50% of the secondary databases. This way if a region is offline only 50% of the paid customers' databases would be impacted and would have to failover. The other databases would remain intact. This configuration is illustrated in the following diagram:
 
-![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![Figure 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
-Wie in den vorherigen Szenarien auch, sind die Verwaltungsdatenbanken sehr aktiv, sodass Sie sie als eigenständige georeplizierte Datenbanken konfigurieren sollten (1). Auf diese Weise wird die vorhersagbare Leistung der neuen Kundenabonnements, Profilupdates und anderen Verwaltungsvorgänge sichergestellt. Region A ist die primäre Region für die Verwaltungsdatenbanken, und Region B wird für die Wiederherstellung der Verwaltungsdatenbanken verwendet.
+As in the previous scenarios, the management database(s) will be quite active so you should configure them as standalone geo-replicated database(s) (1). This will ensure the predictable performance of the new customer subscriptions, profile updates and other management operations. Region A would be the primary region for the management database(s) and the region B will be used for recovery of the management database(s).
 
-Die Mandantendatenbanken der zahlenden Kunden werden auch georepliziert, aber die primären und sekundären Replikate werden auf Region A und Region B aufgeteilt (2). So kann für die primären Mandantendatenbanken, die vom Ausfall betroffen sind, ein Failover in die andere Region durchgeführt werden, damit sie verfügbar sind. Die andere Hälfte der Mandantendatenbanken ist davon nicht betroffen.
+The paying customers’ tenant databases will be also geo-replicated but with primaries and secondaries split between region A and region B (2). This way the tenant primary databases impacted by the outage can failover to the other region and become available. The other half of the tenant databases will not be impacted at all. 
 
-Im nächsten Diagramm sind die Wiederherstellungsschritte dargestellt, die ausgeführt werden müssen, wenn es in Region A zu einem Ausfall kommt.
+The next diagram illustrates the recovery steps to take if  an outage occurs in region A.
 
-![Abbildung 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
-- Führen Sie für die Verwaltungsdatenbanken sofort ein Failover in Region B durch (3).
-- Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Verwaltungsdatenbanken in Region B verweist. Ändern Sie die Verwaltungsdatenbanken, um sicherzustellen, dass die neuen Konten und Mandantendatenbanken in Region B erstellt werden und die vorhandenen Mandantendatenbanken ebenfalls dort angeordnet sind. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
-- Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in Pool 2 von Region B durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden.
-- Da Pool 2 jetzt nur primäre Datenbanken enthält, erhöht sich die gesamte Workload im Pool, sodass Sie die eDTU-Größe sofort erhöhen sollten (5).
-- Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in Region B für die Datenbanken der Testkunden (6).
-- Verwenden Sie nach der Erstellung des Pools die Geowiederherstellung, um die individuelle Testmandanten-Datenbank im Pool wiederherzustellen (7). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
+- Immediately fail over the management databases to region B (3).
+- Change the application’s connection string to point to the management database(s) in region B. Modify the management database(s) to make sure the new accounts and tenant databases will be created in region B and the existing tenant databases will be found there as well. The existing trial customers will see their data temporarily unavailable.
+- Failover the paid tenant's databases to pool 2 in region B to immediately restore their availability (4). Since the failover is a quick metadata level change you may consider an optimization where the individual failovers are triggered on demand by the end user connections. 
+- Since now pool 2 contains only primary  databases the total workload in the pool will increase so you should immediately increase its eDTU size (5). 
+- Create the new elastic pool with the same name and the same configuration in the region B for the trial customers' databases (6). 
+- Once the pool is created use geo-restore to restore the individual trial tenant database into the pool (7). You can consider triggering the individual restores by the end-user connections or use some other application specific priority scheme.
 
 
-> [AZURE.NOTE] Der Failovervorgang ist asynchron. Um die Wiederherstellungszeit zu minimieren, ist es wichtig, dass Sie den Failoverbefehl der Mandantendatenbanken für Batches von mindestens 20 Datenbanken ausführen.
+> [AZURE.NOTE] The failover operation is asynchronous. To minimize the recovery time it is important that you execute the tenant databases' failover command in batches of at least 20 databases. 
 
-An diesem Punkt ist die Anwendung in Region B wieder online. Alle zahlenden Kunden haben Zugriff auf ihre Daten, während es für Testkunden beim Zugreifen auf die Daten zu Verzögerungen kommt.
+At this point your application is back online in region B. All paying customers have access to their data while the trial customers will experience delay when accessing their data.
 
-Nach dem Wiederherstellen von Region A müssen Sie entscheiden, ob Sie Region B für Testkunden verwenden oder ein Failback zur Verwendung des Testkundenpools in Region A durchführen möchten. Ein Kriterium kann der Prozentsatz der Testmandanten-Datenbanken sein, die seit der Wiederherstellung geändert wurden. Unabhängig von dieser Entscheidung müssen Sie die Balance der bezahlten Mandanten zwischen den beiden Pools neu festlegen. Im nächsten Diagramm ist der Prozess dargestellt, bei dem für die Testmandanten-Datenbanken ein Failback zu Region A durchgeführt wird.
+When region A is recovered you need to decide if you want to use region B for trial customers or failback to using the trial customers pool in region A. One criteria could be the % of trial tenant databases modified since the recovery. Regardless of that decision you will need to re-balance the paid tenants between two pools. the next diagram illustrates the process when the trial tenant databases fail back to region A.  
  
-![Abbildung 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![Figure 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
-- Brechen Sie alle ausstehenden Anforderungen der Geowiederherstellung an den Notfallwiederherstellungspool für Testkunden ab.
-- Führen Sie das Failover für die Verwaltungsdatenbank durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.
-- Wählen Sie aus, für welche Datenbanken für bezahlte Mandaten ein Failback zu Pool 1 durchgeführt werden soll, und initiieren Sie das Failover zu den sekundären Replikaten (9). Nach der Wiederherstellung der Region werden alle Datenbanken in Pool 1 automatisch zu sekundären Replikaten. Nun werden 50% davon wieder zu primären Replikaten.
-- Reduzieren Sie die Größe von Pool 2 auf den eDTU-Originalwert (10).
-- Legen Sie alle wiederhergestellten Testdatenbanken in Region B auf „Schreibgeschützt“ fest (11).
-- Benennen Sie für jede Datenbank im Notfallwiederherstellungspool für Testkunden, die sich seit der Wiederherstellung geändert hat, die entsprechende Datenbank im primären Testpool um, oder löschen Sie sie (12).
-- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (13).
-- Löschen Sie den Pool für die Notfallwiederherstellung (14).
+- Cancel all outstanding geo-restore requests to trial DR pool.   
+- Failover the management database (8). After the region’s recovery, the old primary had automatically became the secondary. Now it becomes the primary again.  
+- Select which paid tenant databases will fail back to pool 1 and initiate failover to their secondaries (9). After the region’s recovery all databases in pool 1 automatically became secondaries. Now 50% of them will become primaries again. 
+- Reduce the size of pool 2 to the original eDTU (10).
+- Set all restored trial databases in the region B to read-only (11).
+- For each database in the trial DR pool that has changed since the recovery rename or delete the corresponding database in the trial primary pool (12). 
+- Copy the updated databases from the DR pool to the primary pool (13). 
+- Delete the DR pool (14) 
 
-Die **Hauptvorteile** dieser Strategie lauten:
+The key **benefits** of this strategy are:
 
-- Es wird ein aggressiver Servicelevel (SLA) für die zahlenden Kunden unterstützt, da sichergestellt ist, dass bei einem Ausfall nicht mehr als 50% der Mandantendatenbanken betroffen sind.
-- Es ist sichergestellt, dass die Blockierung der neuen Testzugriffe sofort aufgehoben wird, sobald der Notfallwiederherstellungspool für Testkunden bei der Wiederherstellung erstellt wurde.
-- Ermöglicht eine effizientere Nutzung der Poolkapazität, da 50% der sekundären Datenbanken in Pool 1 und Pool 2 garantiert weniger aktiv als die primären Datenbanken sind.
+- It supports the most aggressive SLA for the paying customers because it ensures that an outage cannot impact more than 50% of the tenant databases. 
+- It guarantees that the new trials are unblocked as soon as the trail DR pool is created during the recovery. 
+- It allows more efficient use of the pool capacity as 50% of secondary databases in pool 1 and pool 2 are guaranteed to be less active then the primary databases.
 
-Die **Hauptnachteile** lauten:
+The main **trade-offs** are:
 
-- Die CRUD-Vorgänge für die Verwaltungsdatenbanken weisen für die Endbenutzer, die mit Region A verbunden sind, eine geringere Latenz als für die Endbenutzer auf, die mit Region B verbunden sind. Der Grund ist, dass sie für das primäre Replikat der Verwaltungsdatenbanken ausgeführt werden.
-- Hierfür ist ein komplexeres Design der Verwaltungsdatenbank erforderlich. Beispielsweise muss jeder Mandantendatensatz über eine Standortkennzeichnung verfügen, die beim Failover und Failback geändert werden muss.
-- Für die zahlenden Kunden kann sich die Leistung ggf. verschlechtern, bis das Poolupgrade in Region B abgeschlossen ist.
+- The CRUD operations against the management database(s) will have lower latency for the end users connected to region A than for the end users connected to region B as they will be executed against the primary of the management database(s).
+- It requires more complex design of the management database. For example, each tenant record would have to have a location tag that needs to be changed during failover and failback.  
+- The paying customers may experience lower performance than usual until the pool upgrade in region B is completed. 
 
-## Zusammenfassung
+## <a name="summary"></a>Summary
 
-In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Datenbankebene, die für eine mehrinstanzenfähige SaaS-ISV-Anwendung verwendet werden. Die gewählte Strategie sollte auf den Anforderungen der Anwendung basieren, z.B. dem Geschäftsmodell, dem SLA, das Sie Ihren Kunden anbieten möchten, Budgetbeschränkungen usw. Für jede Strategie werden die Vor- und Nachteile beschrieben, damit Sie eine fundierte Entscheidung treffen können. Ihre Anwendung umfasst wahrscheinlich noch weitere Azure-Komponenten. Es ist ratsam, die damit verbundenen Hinweise zur Geschäftskontinuität zu beachten und die Wiederherstellung der Datenbankebene mit ihnen zu orchestrieren. Weitere Informationen zum Verwalten der Wiederherstellung von Datenbankanwendungen in Azure finden Sie unter [Entwerfen von Cloudlösungen für die Notfallwiederherstellung](./sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+This article focuses on the disaster recovery strategies for the database tier used by a SaaS ISV multi-tenant application. The strategy you choose should be based on the needs of the application, such as the business model, the SLA you want to offer to your customers, budget constraint etc.. Each described strategy outlines the benefits and trade-off so you could make an informed decision. Also, your specific application will likely include other Azure components. So you should review their business continuity guidance and orchestrate the recovery of the database tier with them. To learn more about managing recovery of database applications in Azure, refer to [Designing cloud solutions for disaster recovery](./sql-database-designing-cloud-solutions-for-disaster-recovery.md) .  
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
-- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
-- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
-- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
+- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
+- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
+- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

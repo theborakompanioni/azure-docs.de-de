@@ -1,75 +1,80 @@
 <properties
-	pageTitle="SSL-Zertifikate-Bindung mithilfe von PowerShell"
-	description="Erfahren Sie mehr darüber, wie SSL-Zertifikate an Ihre Web-App mithilfe von PowerShell gebunden werden können."
-	services="app-service\web"
-	documentationCenter=""
-	authors="ahmedelnably"
-	manager="stefsch"
-	editor=""/>
+    pageTitle="SSL Certificates binding using PowerShell"
+    description="Learn how to bind SSL certificates to your web app using PowerShell."
+    services="app-service\web"
+    documentationCenter=""
+    authors="ahmedelnably"
+    manager="stefsch"
+    editor=""/>
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/13/2016"
-	ms.author="ahmedelnably"/>
+    ms.service="app-service-web"
+    ms.workload="web"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/13/2016"
+    ms.author="ahmedelnably"/>
 
-# Azure App Service SSL-Zertifikatbindung mit PowerShell #
 
-Mit der Veröffentlichung von Microsoft Azure PowerShell Version 1.1.0 wurde ein neues Cmdlet hinzugefügt, das dem Benutzer ermöglicht, vorhandene oder neue SSL-Zertifikate an eine vorhandene Web-App zu binden.
+# <a name="azure-app-service-ssl-certificate-binding-using-powershell"></a>Azure App Service SSL Certificate Binding using PowerShell #
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+With the release of Microsoft Azure PowerShell version 1.1.0 a new cmdlet has been added that would give the user the ability to bind existing or new SSL certificates to an existing Web App.
 
-Weitere Informationen zur Verwendung Azure Resource Manager-basierter Azure-PowerShell-Cmdlets zum Verwalten Ihrer Web-Apps finden Sie unter [Azure Resource Manager-basierte PowerShell-Befehle zum Verwalten von Azure-Web-Apps](app-service-web-app-azure-resource-manager-powershell.md).
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## Hochladen und Binden eines neuen SSL-Zertifikats ##
+To learn about using Azure Resource Manager based Azure PowerShell cmdlets to manage your Web Apps check [Azure Resource Manager based PowerShell commands for Azure Web App](app-service-web-app-azure-resource-manager-powershell.md)
 
-Das Szenario: Der Benutzer möchte ein SSL-Zertifikat an eine seiner Web-Apps binden.
+## <a name="uploading-and-binding-a-new-ssl-certificate"></a>Uploading and Binding a new SSL certificate ##
 
-Mit dem Namen der Ressourcengruppe, die die Web-App enthält, dem Namen der Web-App, dem Zertifikat des PFX-Dateipfads auf dem Computer des Benutzers, dem Kennwort für das Zertifikat und dem benutzerdefinierten Hostnamen können wir den folgenden PowerShell-Befehl verwenden, um die SSL-Bindung zu erstellen:
+Scenario: The user would like to bind an SSL certificate to one of his web apps.
+
+Knowing the resource group name that contains the web app, the web app name, the certificate .pfx file path on the user machine, the password for the certificate, and the custom hostname, we can use the following PowerShell command to create that SSL binding:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -CertificateFilePath PathToPfxFile -CertificatePassword PlainTextPwd -Name www.contoso.com
 
-Beachten Sie Folgendes: Bevor Sie eine SSL-Bindung zu einer Web-App hinzufügen können, muss bereits ein Hostname (benutzerdefinierte Domäne) konfiguriert sein. Wenn kein Hostname konfiguriert ist, erhalten Sie beim Ausführen von New-AzureRmWebAppSSLBinding einen Fehler, dass der Hostname nicht existiert. Sie können einen Hostnamen direkt über das Portal oder mithilfe von Azure PowerShell hinzufügen. Mit folgendem PowerShell-Codeausschnitt können Sie den Hostnamen konfigurieren, bevor Sie New-AzureRmWebAppSSLBinding ausführen.
+Note that before adding a SSL binding to a web app, you must have a host name (custom domain) already configured. If the host name is not configured , then you will get an error 'hostname' does not exist while running  New-AzureRmWebAppSSLBinding. You can add a hostname directly from the portal or using Azure PowerShell. The following PowerShell snippet can be to configure the hostname before running New-AzureRmWebAppSSLBinding.   
   
     $webApp = Get-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup  
     $hostNames = $webApp.HostNames  
     $HostNames.Add("www.contoso.com")  
     Set-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup -HostNames $HostNames   
   
-Wichtiger Hinweis: Das Cmdlet Set-AzureRmWebApp überschreibt die Hostnamen für die Web-App. Daher fügt der oben stehende PowerShell-Codeausschnitt die Hostnamen an die vorhandene Liste der Hostnamen für die Web-App an.
+It is important to understand that the Set-AzureRmWebApp cmdlet overwrites the hostnames for the web app. Hence the above PowerShell snippet is appending to the existing list of the host names for the web app.  
 
-## Hochladen und Binden eines bereits existierenden SSL-Zertifikats ##
+## <a name="uploading-and-binding-an-existing-ssl-certificate"></a>Uploading and Binding an existing SSL certificate ##
 
-Das Szenario: Der Benutzer möchte ein zuvor hochgeladenes SSL-Zertifikat an eine seiner Web-Apps binden.
+Scenario: The user would like to bind a previously uploaded SSL certificate to one of his web apps.
 
-Wir können die Liste der Zertifikate, die schon in eine bestimmte Ressourcengruppe hochgeladen wurden, erhalten, indem wir folgenden Befehl abrufen:
+We can get the list of certificates already uploaded to a specific resource group by using the following command
 
-	Get-AzureRmWebAppCertificate -ResourceGroupName myresourcegroup
+    Get-AzureRmWebAppCertificate -ResourceGroupName myresourcegroup
 
-Beachten Sie, dass die Zertifikate lokal für einen bestimmten Speicherort und eine Ressourcengruppe gelten. Der Benutzer muss das Zertifikat erneut hochladen, wenn sich die konfigurierte Web-App an einem anderen Speicherort und in einer anderen Ressourcengruppe befindet, als das erforderliche Zertifikat
+Note that the certificates are local to a specific location and resource group, the user need to re-upload the certificate if the configured web app is in a different location and resource group other that that of the needed certificate 
 
-Mit dem Namen der Ressourcengruppe, die die Web-App enthält, dem Namen der Web-App, dem Zertifikatfingerabdruck und dem benutzerdefinierten Hostnamen können wir den folgenden PowerShell-Befehl verwenden, um die SSL-Bindung zu erstellen:
+Knowing the resource group name that contains the web app, the web app name, the certificate thumbprint, and the custom hostname, we can use the following PowerShell command to create that SSL binding:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Thumbprint <certificate thumbprint> -Name www.contoso.com
 
-## Löschen einer vorhandenen SSL-Bindung  ##
+## <a name="deleting-an-existing-ssl-binding"></a>Deleting an existing SSL binding  ##
 
-Das Szenario: Der Benutzer möchte eine vorhandene SSL-Bindung löschen.
+Scenario: The user would like to delete an existing SSL binding.
 
-Mit dem Namen der Ressourcengruppe, die die Web-App enthält, dem Namen der Web-App und dem benutzerdefinierten Hostnamen können wir den folgenden PowerShell-Befehl verwenden, um die SSL-Bindung zu entfernen:
+Knowing the resource group name that contains the web app, the web app name, and the custom hostname, we can use the following PowerShell command to remove that SSL binding:
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com
 
-Beachten Sie, dass das Zertifikat standardmäßig gelöscht wird, wenn die entfernte SSL-Bindung die letzte Bindung war, die dieses Zertifikat an diesem Speicherort verwendet hat. Falls der Benutzer das Zertifikat behalten möchte, kann er die DeleteCertificate-Option anpassen, um das Zertifikat zu behalten.
+Note that if the removed SSL binding was the last binding using that certificate in that location, by default the certificate will be deleted, if the user want to keep the certificate he can use the DeleteCertificate option to keep the certificate
 
-	Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
+    Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
 
-### Referenzen ###
-- [Azure Resource Manager-basierte PowerShell-Befehle zum Verwalten von Azure-Web-Apps](app-service-web-app-azure-resource-manager-powershell.md)
-- [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md)
-- [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
+### <a name="references"></a>References ###
+- [Azure Resource Manager based PowerShell commands for Azure Web App](app-service-web-app-azure-resource-manager-powershell.md)
+- [Introduction to App Service Environment](app-service-app-service-environment-intro.md)
+- [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

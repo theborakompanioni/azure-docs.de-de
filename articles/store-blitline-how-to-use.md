@@ -1,55 +1,56 @@
 <properties 
-	pageTitle="Gewusst wie: Verwenden von Blitline zur Bildverarbeitung - Leitfaden zu Azure-Features" 
-	description="Erfahren Sie mehr über die Verwendung des Blitline-Dienstes zum Verarbeiten von Bildern in einer Azure-Anwendung." 
-	services="" 
-	documentationCenter=".net" 
-	authors="blitline-dev" 
-	manager="jason@blitline.com" 
-	editor="jason@blitline.com"/>
+    pageTitle="How to use Blitline for image processing - Azure feature guide" 
+    description="Learn how to use the Blitline service to process images within an Azure application." 
+    services="" 
+    documentationCenter=".net" 
+    authors="blitline-dev" 
+    manager="jason@blitline.com" 
+    editor="jason@blitline.com"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/09/2014" 
-	ms.author="support@blitline.com"/>
-# Verwenden von Blitline mit Azure und Azure Storage
+    ms.service="multiple" 
+    ms.workload="na" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="12/09/2014" 
+    ms.author="support@blitline.com"/>
 
-Dieser Leitfaden erläutert den Zugriff auf Blitline-Dienste und das Übertragen von Jobs zu Blitline.
+# <a name="how-to-use-blitline-with-azure-and-azure-storage"></a>How to use Blitline with Azure and Azure Storage
 
-## Was ist Blitline?
+This guide will explain how to access Blitline services and how to submit jobs to Blitline.
 
-Blitline ist ein cloudbasierter Bildverarbeitungsdienst, der Bildverarbeitung auf Unternehmensebene zu einem Bruchteil des Preises bereitstellt, der das Erstellen eines eigenen Diensts kosten würde.
+## <a name="what-is-blitline?"></a>What is Blitline?
 
-Bildverarbeitung wurde immer wieder überarbeitet und normalweise für jede Website von Grund auf neu erstellt. Das wissen wir, weil wir selbst unzählige Lösungen dieser Art implementiert haben. Eines Tages haben wir entschieden, dass vielleicht die Zeit für einen allgemeinen Ansatz gekommen ist. Wir wissen, wie es geht, sind schnell und effizient und sorgen dabei noch für Zeiteinsparungen.
+Blitline is a cloud-based image processing service that provides enterprise level image processing at a fraction of the price that it would cost to build it yourself.
 
-Weitere Informationen erhalten Sie unter [http://www.blitline.com](http://www.blitline.com).
+The fact is that image processing has been done over and over again, usually rebuilt from the ground up for each and every website. We realize this because we’ve built them a million times too. One day we decided that perhaps it‘s time we just do it for everyone. We know how to do it, to do it fast and efficiently, and save everyone work in the meantime.
 
-## Was Blitline NICHT ist...
+For more information, see [http://www.blitline.com](http://www.blitline.com).
 
-Um zu erläutern, wozu Blitline nützlich ist, ist es zunächst häufig einfacher, zu beschreiben, was Blitline NICHT ist.
+## <a name="what-blitline-is-not..."></a>What Blitline is NOT...
 
-- Blitline hat KEINE HTML-Widgets zum Hochladen von Bildern. Bilder müssen öffentlich oder mit eingeschränkten Rechten verfügbar sein, damit Blitline sie verwenden kann.
+To clarify what Blitline is useful for, it is often easier to identify what Blitline does NOT do before moving forward.
 
-- Blitline führt, zum Beispiel im Gegensatz zu Aviary.com, KEINE Livebildverarbeitung durch.
+- Blitline does NOT have HTML widgets to upload images. You must have images available publicly or with restricted permissions available for Blitline to reach.
 
-- Blitline akzeptiert KEINE Bilduploads – Sie können Bilder nicht direkt per Push an Blitline übertragen. Sie müssen sie per Push an Azure Storage oder andere von Blitline unterstützte Speicherorte übertragen und Blitline dann mitteilen, wo sie abgerufen werden können.
+- Blitline does NOT do live image processing, like Aviary.com
 
-- Blitline arbeitet weitestgehend parallel und führt KEINE synchrone Verarbeitung durch. Sie müssen also einen Wert für "postback\_url" angeben und werden informiert, sobald die Verarbeitung abgeschlossen ist.
+- Blitline does NOT accept image uploads, you cannot push your images to Blitline directly. You must push them to Azure Storage or other places Blitline supports and then tell Blitline where to go get them.
 
-## Erstellen eines Blitline-Kontos
+- Blitline is massively parallel and does NOT do any synchronous processing. Meaning you must give us a postback_url and we can tell you when we are done processing.
+
+## <a name="create-a-blitline-account"></a>Create a Blitline account
 
 [AZURE.INCLUDE [blitline-signup](../includes/blitline-signup.md)]
 
-## Erstellen eines Blitline-Jobs
+## <a name="how-to-create-a-blitline-job"></a>How to create a Blitline job
 
-Blitline verwendet JSON, um die Aktionen für ein Bild zu definieren. JSON besteht aus einigen einfachen Feldern.
+Blitline uses JSON to define the actions you want to take on an image. This JSON is composed of a few simple fields.
 
-Es folgt das einfachste Beispiel:
+The simplest example is as follows:
 
-	    json : '{
+        json : '{
        "application_id": "MY_APP_ID",
        "src" : "http://cdn.blitline.com/filters/boys.jpeg",
        "functions" : [ {
@@ -59,19 +60,19 @@ Es folgt das einfachste Beispiel:
        } ]
     }'
 
-Hier ruft JSON ein "src"-Bild namens "...boys.jpeg" ab und ändert dann die Größe in 240x140.
+Here we have JSON that will take a "src" image "...boys.jpeg" and then resize that image to 240x140.
 
-Die Anwendungs-ID finden Sie auf der Registerkarte **Verbindungsinformationen** oder **Verwalten** in Azure. Dabei handelt es sich um Ihre geheime ID zum Ausführen von Jobs in Blitline.
+The Application ID is something you can find in your **CONNECTION INFO** or **MANAGE** tab on Azure. It is your secret identifier that allows you to run jobs on Blitline.
 
-Der "save"-Parameter gibt Informationen zum Ablageort des Bilds nach Abschluss der Verarbeitung an. In diesem einfachen Fall wurde keiner angegeben. Wenn kein Speicherort definiert wird, speichert Blitline das Bild lokal (und temporär) an einem eindeutigen Cloudspeicherplatz. Sie können diesen Speicherort von JSON abrufen, der von Blitline beim Erstellen der Blitline zurückgegeben wird. Die "image"-ID ist erforderlich und wird zurückgegeben, um dieses spezielle gespeicherte Bild zu identifizieren.
+The "save" parameter identifies information about where you want to put the image once we have processed it. In this trivial case, we haven't defined one. If no location is defined Blitline will store it locally (and temporarily) at a unique cloud location. You will be able to get that location from the JSON returned by Blitline when you make the Blitline. The "image" identifier is required and is returned to you when to identify this particular saved image.
 
-Weitere Informationen zu den unterstützten *Funktionen* erhalten Sie hier: <http://www.blitline.com/docs/functions> (in englischer Sprache)
+You can find more information about the *functions* we support here: <http://www.blitline.com/docs/functions>
 
-Eine Dokumentation zu den Joboptionen erhalten Sie hier: <http://www.blitline.com/docs/api> (in englischer Sprache)
+You can also find documentation about the job options here: <http://www.blitline.com/docs/api>
 
-Nach dem Erstellen müssen Sie das JSON-Objekt nur noch per **POST** an `http://api.blitline.com/job` übertragen.
+Once you have your JSON all you need to do is **POST** it to `http://api.blitline.com/job`
 
-Sie erhalten ein JSON-Objekt ähnlich dem folgenden:
+You will get JSON back that looks something like this:
 
     {
      "results":
@@ -85,13 +86,13 @@ Sie erhalten ein JSON-Objekt ähnlich dem folgenden:
     }
 
 
-Dadurch wissen Sie, dass Blitline Ihre Anforderung erhalten und in eine Verarbeitungswarteschlange eingereiht hat. Nach Abschluss der Verarbeitung ist das Bild hier verfügbar: **https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+This tells you that Blitline has recieved your request, it has put it in a processing queue, and when it has completed the image will be available at: **https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
-## Speichern eines Bilds im Azure-Speicherkonto
+## <a name="how-to-save-an-image-to-your-azure-storage-account"></a>How to save an image to your Azure Storage account
 
-Wenn Sie über eine Azure Storage-Konto verfügen, kann Blitline die verarbeiteten Bilder auch per Push in Ihren Azure-Container übertragen. Durch Hinzufügen von "azure\_destination" definieren Sie den Speicherort und die Berechtigungen für den Push durch Blitline.
+If you have an Azure Storage account, you can easily have Blitline push the processed images into your Azure container. By adding an "azure_destination" you define the location and permissions for Blitline to push to.
 
-Beispiel:
+Here is an example:
 
     job : '{
       "application_id": "YOUR_APP_ID",
@@ -109,27 +110,31 @@ Beispiel:
        }'
 
 
-Wenn Sie die Werte in GROSSBUCHSTABEN durch eigene ersetzen, können Sie das JSON-Objekt an http://api.blitline.com/job übertragen. Das "src"-Bild wird mit einem Unschärfefilter verarbeitet und dann per Push an Ihr Azure-Ziel übertragen.
+By filling in the CAPITALIZED values with your own, you can submit this JSON to http://api.blitline.com/job and the "src" image will be processed with a blur filter and then pushed to you Azure destination.
 
-###Hinweis:
+###<a name="please-note:"></a>Please note:
 
-Die SAS muss die gesamte SAS-URL einschließlich Dateiname der Zieldatei enthalten.
+The SAS must contain the entire SAS url, including the filename of the destination file.
 
-Beispiel:
+Example:
 
     http://blitline.blob.core.windows.net/sample/image.jpg?sr=b&sv=2012-02-12&st=2013-04-12T03%3A18%3A30Z&se=2013-04-12T04%3A18%3A30Z&sp=w&sig=Bte2hkkbwTT2sqlkkKLop2asByrE0sIfeesOwj7jNA5o%3D
 
 
-Weitere Informationen finden Sie auch [hier](http://www.blitline.com/docs/azure_storage) in den Azure Storage-Dokumenten von Blitline.
+You can also read the latest edition of Blitline's Azure Storage docs [here](http://www.blitline.com/docs/azure_storage).
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-Besuchen Sie "blitline.com", um Informationen zu allen anderen Funktionen zu erhalten:
+Visit blitline.com to read about all our other features:
 
-* Blitline-API-Endpunktdokumente <http://www.blitline.com/docs/api>
-* Blitline-API-Funktionen <http://www.blitline.com/docs/functions>
-* Blitline-API-Beispiele <http://www.blitline.com/docs/examples>
-* Drittanbieter-NuGet-Bibliothek <http://nuget.org/packages/Blitline.Net>
+* Blitline API Endpoint Docs <http://www.blitline.com/docs/api>
+* Blitline API Functions <http://www.blitline.com/docs/functions>
+* Blitline API Examples <http://www.blitline.com/docs/examples>
+* Third Part Nuget Library <http://nuget.org/packages/Blitline.Net>
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

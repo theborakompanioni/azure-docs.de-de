@@ -1,110 +1,114 @@
 <properties
-	pageTitle="Richtlinien für die Netzwerkinfrastruktur | Microsoft Azure"
-	description="Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung virtueller Netzwerke in Azure-Infrastrukturdiensten."
-	documentationCenter=""
-	services="virtual-machines-linux"
-	authors="iainfoulds"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Networking Infrastructure Guidelines | Microsoft Azure"
+    description="Learn about the key design and implementation guidelines for deploying virtual networking in Azure infrastructure services."
+    documentationCenter=""
+    services="virtual-machines-linux"
+    authors="iainfoulds"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/08/2016"
-	ms.author="iainfou"/>
-
-# Richtlinien für die Netzwerkinfrastruktur
-
-[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
-
-In diesem Artikel werden die erforderlichen Planungsschritte für virtuelle Netzwerke in Azure sowie die Verbindungen zwischen vorhandenen lokalen Umgebungen erläutert.
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/08/2016"
+    ms.author="iainfou"/>
 
 
-## Implementierungsrichtlinien für virtuelle Netzwerke
+# <a name="networking-infrastructure-guidelines"></a>Networking infrastructure guidelines
 
-Entscheidungen:
+[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)] 
 
-- Welchen virtuellen Netzwerktyp benötigen Sie, um Ihre IT-Workload oder -Infrastruktur zu hosten (cloudbasiert oder standortübergreifend)?
-- Wie groß muss der Adressraum bei standortübergreifenden virtuellen Netzwerken sein, um die Subnetze und virtuellen Computer jetzt und zukünftig bei erwartungsgemäßer Erweiterung zu hosten?
-- Werden Sie zentrale virtuelle Netzwerke oder individuelle virtuelle Netzwerke für jede Ressourcengruppe erstellen?
-
-Aufgaben:
-
-- Definieren Sie den Adressraum für die zu erstellenden virtuellen Netzwerke.
-- Definieren Sie den Satz von Subnetzen und den Adressraum für die Netzwerke.
-- Definieren Sie für standortübergreifende virtuelle Netzwerke den Adressraumsatz des lokalen Netzwerks für die lokalen Speicherorte, die von den virtuellen Computern im virtuellen Netzwerk erreicht werden müssen.
-- Arbeiten Sie mit dem lokalen Netzwerkteam zusammen, um sicherzustellen, dass beim Erstellen von standortübergreifenden virtuellen Netzwerken das richtige Routing konfiguriert wird.
-- Erstellen Sie das virtuelle Netzwerk mit der Benennungskonvention.
+This article focuses on understanding the required planning steps for virtual networking within Azure and connectivity between existing on-prem environments.
 
 
-## Virtuelle Netzwerke
+## <a name="implementation-guidelines-for-virtual-networks"></a>Implementation guidelines for virtual networks
 
-Virtuelle Netzwerke sind erforderlich, um die Kommunikation zwischen virtuellen Computern zu unterstützen. Sie können Subnetze, benutzerdefinierte IP-Adressen, DNS-Einstellungen, Sicherheitsfilter und Lastenausgleich definieren, genau wie bei physischen Netzwerken. Durch Verwendung eines [Standort-zu-Standort-VPN](../vpn-gateway/vpn-gateway-topology.md) oder einer [ExpressRoute-Verbindung](../expressroute/expressroute-introduction.md) können Sie virtuelle Azure-Netzwerke mit Ihren lokalen Netzwerken verbinden. Hier finden Sie weitere Informationen zu [virtuellen Netzwerken und ihren Komponenten](../virtual-network/virtual-networks-overview.md).
+Decisions:
 
-Die Verwendung von Ressourcengruppen bietet Flexibilität beim Entwurf der virtuellen Netzwerkkomponenten. Virtuelle Computer können Verbindungen mit virtuellen Netzwerken außerhalb ihrer eigenen Ressourcengruppe herstellen. Ein gängiger Entwurfsansatz besteht darin, zentralisierte Ressourcengruppen zu erstellen, die Ihre zentrale, von einem gemeinsamen Team verwaltete Netzwerkinfrastruktur enthalten. Anschließend können virtuelle Computer und ihre Anwendungen in verschiedenen Ressourcengruppen bereitgestellt werden. Dieser Ansatz ermöglicht Anwendungsbesitzern, auf die Ressourcengruppe mit ihren virtuellen Computern zuzugreifen, ohne diesen gleichzeitig Zugriff auf die Konfiguration der weiteren virtuellen Netzwerkressourcen zu gewähren.
+- What type of virtual network do you need to host your IT workload or infrastructure (cloud-only or cross-premises)?
+- For cross-premises virtual networks, how much address space do you need to host the subnets and VMs now and for reasonable expansion in the future?
+- Are you going to create centralized virtual networks or create individual virtual networks for each resource group?
 
-## Standortkonnektivität
+Tasks:
 
-### Rein cloudbasierte virtuelle Netzwerke
-Wenn lokale Benutzer und Computer nicht kontinuierlich mit virtuellen Computern im virtuellen Azure-Netzwerk verbunden sein müssen, wird der Entwurf Ihres virtuellen Netzwerks geradlinig ausfallen:
-
-![Grundlegendes Diagramm eines rein cloudbasierten virtuellen Netzwerks](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
-
-Dieser Ansatz eignet sich normalerweise für Internetworkloads, wie z. B. Internetwebserver. Sie können diese virtuellen Computer mit SSH oder Punkt-zu-Standort-VPN-Verbindungen verwalten.
-
-Da sie nicht mit Ihrem lokalen Netzwerk verbunden sind, können auf Azure beschränkte virtuelle Netzwerke einen beliebigen Teil des privaten IP-Adressbereichs verwenden. Beim Adressraum kann es sich um den gleichen privaten Adressraum handeln, der lokal verwendet wird.
+- Define the address space for the virtual networks to be created.
+- Define the set of subnets and the address space for each.
+- For cross-premises virtual networks, define the set of local network address spaces for the on-premises locations that the VMs in the virtual network need to reach.
+- Work with on-premises networking team to ensure the appropriate routing is configured when creating cross-premises virtual networks.
+- Create the virtual network using your naming convention.
 
 
-### Standortübergreifende virtuelle Netzwerke
-Wenn lokale Benutzer und Computer nicht kontinuierlich mit virtuellen Computern im virtuellen Azure-Netzwerk verbunden sein müssen, erstellen Sie ein standortübergreifendes virtuelles Netzwerk. Verbinden Sie das virtuelle Netzwerk über eine ExpressRoute- oder Standort-zu-Standort-VPN-Verbindung mit Ihrem lokalen Netzwerk.
+## <a name="virtual-networks"></a>Virtual networks
 
-![Diagramm eines standortübergreifenden virtuellen Netzwerks](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
+Virtual networks are necessary to support communications between virtual machines (VMs). You can define subnets, custom IP address, DNS settings, security filtering, and load balancing, as with physical networks. By using a [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) or [Express Route circuit](../expressroute/expressroute-introduction.md), you can connect Azure virtual networks to your on-premises networks. You can read more about [virtual networks and their components](../virtual-network/virtual-networks-overview.md).
 
-In dieser Konfiguration stellt das virtuelle Azure-Netzwerk im Grunde eine cloudbasierte Erweiterung des lokalen Netzwerks dar.
+By using Resource Groups, you have flexibility in how you design your virtual networking components. VMs can connect to virtual networks outside of their own resource group. A common design approach would be to create centralized resource groups that contain your core networking infrastructure that can be managed by a common team. VMs and their applications deployed to separate resource groups. This approach allows application owners access to the resource group that contains their VMs without opening up access to the configuration of the wider virtual networking resources.
 
-Da sie mit Ihrem lokalen Netzwerk verbunden sind, müssen standortübergreifende virtuelle Netzwerke einen Teil des von Ihrem Unternehmen genutzten Adressraums verwenden, der eindeutig ist. Ebenso wie verschiedenen Unternehmensstandorten ein spezifisches IP-Subnetz zugewiesen wird, wird Azure bei Erweiterung Ihres Netzwerks zu einem weiteren Standort.
+## <a name="site-connectivity"></a>Site connectivity
 
-Um Pakete aus Ihrem standortübergreifenden virtuellen Netzwerk in Ihr lokales Netzwerk zu übertragen, müssen Sie den Satz von entsprechenden lokalen Adresspräfixen als Teil der Definition des lokalen Netzwerks für das virtuelle Netzwerk konfigurieren. Je nach dem Adressraum des virtuellen Netzwerks sowie den entsprechenden lokalen Standorten können viele Adresspräfixe im lokalen Netzwerk vorhanden sein.
+### <a name="cloud-only-virtual-networks"></a>Cloud-only virtual networks
+If on-premises users and computers do not require ongoing connectivity to VMs in an Azure virtual network, your virtual network design is straight forward:
 
-Sie können ein rein cloudbasiertes virtuelles Netzwerk in ein standortübergreifendes virtuelles Netzwerk konvertieren. Dabei müssen Sie jedoch höchstwahrscheinlich die IP-Adressen des virtuellen Netzwerkadressraums und der Azure-Ressourcen neu zuweisen. Prüfen Sie daher sorgfältig, ob ein virtuelles Netzwerk mit Ihrem lokalen Netzwerk verbunden werden muss, wenn Sie ein IP-Subnetz zuweisen.
+![Basic cloud-only virtual network diagram](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
 
-## Subnetze
-Subnetze ermöglichen Ihnen, Ressourcen zu organisieren, die entweder logisch (z.B. in einem Subnetz für virtuelle Computer, die der gleichen Anwendung zugeordnet sind) oder physisch (z.B. in einem Subnetz pro Ressourcengruppe) verknüpft sind. Sie können mit Subnetzen auch Isolationstechniken zur Erhöhung der Sicherheit implementieren.
+This approach is typically for Internet-facing workloads, such as an Internet-based web server. You can manage these VMs using SSH or point-to-site VPN connections.
 
-Für standortübergreifende virtuelle Netzwerke sollten Sie Subnetze gemäß den gleichen Konventionen entwerfen, die für lokale Ressourcen gelten. **Azure verwendet für jedes Subnetz stets die ersten drei IP-Adressen des Adressbereichs**. Um die Anzahl der für das Subnetz benötigten Adressen zu ermitteln, starten Sie mit dem Bestimmen der Anzahl virtueller Computer, die Sie derzeit benötigen. Schätzen Sie das künftige Wachstum, und verwenden Sie dann die folgende Tabelle, um die Größe des Subnetzes zu bestimmen.
+Because they do not connect to your on-premises network, Azure-only virtual networks can use any portion of the private IP address space. The address space can be the same private space that is in use on-premises.
 
-Anzahl der erforderlichen virtuellen Computer | Anzahl der erforderlichen Hostbits | Subnetzgröße
+
+### <a name="cross-premises-virtual-networks"></a>Cross-premises virtual networks
+If on-premises users and computers require ongoing connectivity to VMs in an Azure virtual network, create a cross-premises virtual network. Connect the virtual network to your on-premises network with an ExpressRoute or site-to-site VPN connection.
+
+![Cross-premises virtual network diagram](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
+
+In this configuration, the Azure virtual network is essentially a cloud-based extension of your on-premises network.
+
+Because they connect to your on-premises network, cross-premises virtual networks must use a portion of the address space used by your organization that is unique. In the same way that different corporate locations are assigned a specific IP subnet, Azure becomes another location as you extend out your network.
+
+To allow packets to travel from your cross-premises virtual network to your on-premises network, you must configure the set of relevant on-premises address prefixes as part of the local network definition for the virtual network. Depending on the address space of the virtual network and the set of relevant on-premises locations, there can be many address prefixes in the local network.
+
+You can convert a cloud-only virtual network to a cross-premises virtual network, but it most likely requires you to re-IP your virtual network address space and Azure resources. Therefore, carefully consider if a virtual network needs to be connected to your on-premises network when you assign an IP subnet.
+
+## <a name="subnets"></a>Subnets
+Subnets allow you to organize resources that are related, either logically (for example, one subnet for VMs associated to the same application), or physically (for example, one subnet per resource group). You can also employ subnet isolation techniques for added security.
+
+For cross-premises virtual networks, you should design subnets with the same conventions that you use for on-premises resources. **Azure always uses the first three IP addresses of the address space for each subnet**. To determine the number of addresses needed for the subnet, start by counting the number of VMs that you need now. Estimate for future growth, and then use the following table to determine the size of the subnet.
+
+Number of VMs needed | Number of host bits needed | Size of the subnet
 --- | --- | ---
 1–3 | 3 | /29
-4–11 | 4 | /28
+4–11     | 4 | /28
 12–27 | 5 | /27
 28–59 | 6 | /26
 60–123 | 7 | /25
 
-> [AZURE.NOTE] Für normale lokale Subnetze ist die maximale Anzahl von Adressen für ein Subnetz mit n Hostbits 2<sup>n</sup>-2. Für ein Azure-Subnetz ist die maximale Anzahl von Adressen für ein Subnetz mit n Hostbits 2<sup>n</sup>-5 (2+3 für die Adressen, die Azure in jedem Subnetz verwendet).
+> [AZURE.NOTE] For normal on-premises subnets, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> – 2. For an Azure subnet, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> – 5 (2 plus 3 for the addresses that Azure uses on each subnet).
 
-Wenn Sie eine zu kleine Subnetzgröße wählen, müssen Sie den virtuellen Computern im Subnetz neue IP-Adressen zuweisen und die Computer neu bereitstellen.
-
-
-## Netzwerksicherheitsgruppen
-Sie können Filterregeln auf den Datenverkehr in Ihren virtuellen Netzwerken anwenden, indem Sie Netzwerksicherheitsgruppen verwenden. Sie können differenzierte Filterregeln zum Schutz Ihrer virtuellen Netzwerkumgebung erstellen, um eingehenden und ausgehenden Datenverkehr, Quell- und Ziel-IP-Bereiche, zugelassene Ports usw. zu steuern. Netzwerksicherheitsgruppen können auf Subnetze innerhalb eines virtuellen Netzwerks oder direkt auf eine bestimmte virtuelle Netzwerkschnittstelle angewendet werden. Es wird empfohlen, ein gewisses Maß an Datenverkehrsfilterung für die Netzwerksicherheitsgruppen in Ihren virtuellen Netzwerken bereitzustellen. Hier finden Sie weitere Informationen zu[ Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
+If you choose a subnet size that is too small, you have to re-IP and redeploy the VMs in the subnet.
 
 
-## Zusätzliche Netzwerkkomponenten
-Ebenso wie eine lokale physische Netzwerkinfrastruktur können auch virtuelle Azure-Netzwerke mehr als nur Subnetze und IP-Adressen enthalten. Beim Erstellen Ihrer Anwendungsinfrastruktur möchten Sie möglicherweise einige dieser zusätzlichen Komponenten integrieren:
-
-- [VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) verbinden virtuelle Azure-Netzwerke mit anderen virtuellen Azure-Netzwerken oder ermöglichen über eine Standort-zu-Standort-VPN-Verbindung eine Anbindung an lokale Netzwerke. Richten Sie ExpressRoute-Verbindungen ein, um für fest zugeordnete, sichere Verbindungen zu sorgen. Über Punkt-zu-Standort-VPN-Verbindungen können Sie Benutzern auch einen Direktzugriff bereitstellen.
-- [Load Balancer](../load-balancer/load-balancer-overview.md): Bietet Lastenausgleich für Datenverkehr, ganz nach Wunsch sowohl für externen als auch für internen.
-- [Application Gateway](../application-gateway/application-gateway-introduction.md): Bietet mit HTTP-Lastenausgleich auf der Anwendungsschicht mehr Vorteile für Webanwendungen als die alleinige Bereitstellung von Azure Load Balancer.
-- [Traffic Manager](../traffic-manager/traffic-manager-overview.md): DNS-basierte Verteilung des Datenverkehrs, sodass Endbenutzer zum nächsten verfügbaren Anwendungsendpunkt geleitet werden und Sie Ihre Anwendung außerhalb von Azure-Rechenzentren in unterschiedlichen Regionen hosten können.
+## <a name="network-security-groups"></a>Network Security Groups
+You can apply filtering rules to the traffic that flows through your virtual networks by using Network Security Groups. You can build granular filtering rules to secure your virtual networking environment, controlling inbound and outbound traffic, source and destination IP ranges, allowed ports, etc. Network Security Groups can be applied to subnets within a virtual network or directly to a given virtual network interface. It is recommended to have some level of Network Security Group filtering traffic on your virtual networks. You can read more about [Network Security Groups](../virtual-network/virtual-networks-nsg.md).
 
 
-## Nächste Schritte
+## <a name="additional-network-components"></a>Additional network components
+As with an on-premises physical networking infrastructure, Azure virtual networking can contain more than just subnets and IP addressing. As you design your application infrastructure, you may want to incorporate some of these additional components:
 
-[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
+- [VPN gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) - connect Azure virtual networks to other Azure virtual networks, or connect to on-premises networks through a Site-to-Site VPN connection. Implement Express Route connections for dedicated, secure connections. You can also provide users direct access with Point-to-Site VPN connections.
+- [Load balancer](../load-balancer/load-balancer-overview.md) - provides load balancing of traffic for both external and internal traffic as desired.
+- [Application Gateway](../application-gateway/application-gateway-introduction.md) - HTTP load-balancing at the application layer, providing some additional benefits for web applications rather than deploying the Azure load balancer.
+- [Traffic Manager](../traffic-manager/traffic-manager-overview.md) - DNS-based traffic distribution to direct end-users to the closest available application endpoint, allowing you to host your application out of Azure datacenters in different regions.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+## <a name="next-steps"></a>Next steps
+
+[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)] 
+
+
+<!--HONumber=Oct16_HO2-->
+
+

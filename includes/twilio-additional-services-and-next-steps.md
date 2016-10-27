@@ -1,14 +1,14 @@
-## <a name="AdditionalServices"></a>Verwenden zusätzlicher Twilio-Dienste
-Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API-Dokumentation][twilio_api_documentation].
+## <a name="<a-name="additionalservices"></a>how-to:-use-additional-twilio-services"></a><a name="AdditionalServices"></a>How to: Use additional Twilio services
+In addition to the examples shown here, Twilio offers web-based APIs that you can use to leverage additional Twilio functionality from your Azure application. For full details, see the [Twilio API documentation] [twilio_api_documentation].
 
-## <a name="NextSteps"></a>Nächste Schritte
-Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
+## <a name="<a-name="nextsteps"></a>next-steps"></a><a name="NextSteps"></a>Next steps
+Now that you've learned the basics of the Twilio service, follow these links to learn more:
 
-* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien, in englischer Sprache)][twilio_security_guidelines]
-* [Twilio HowTos and Example Code (Twilio-Anleitungen und Beispielcode, in englischer Sprache)][twilio_howtos]
-* [Twilio Quickstart Tutorials (Twilio-Schnellstart-Lernprogramme, in englischer Sprache)][twilio_quickstarts] 
-* [Twilio auf GitHub][twilio_on_github]
-* [Kontakt zum Twilio-Support][twilio_support]
+* [Twilio Security Guidelines] [twilio_security_guidelines]
+* [Twilio HowTos and Example Code] [twilio_howtos]
+* [Twilio Quickstart Tutorials][twilio_quickstarts] 
+* [Twilio on GitHub] [twilio_on_github]
+* [Talk to Twilio Support] [twilio_support]
 
 [twilio_api_documentation]: http://www.twilio.com/api
 [twilio_security_guidelines]: http://www.twilio.com/docs/security
@@ -17,4 +17,9 @@ Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

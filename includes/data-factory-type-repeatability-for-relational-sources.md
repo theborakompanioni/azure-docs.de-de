@@ -1,29 +1,32 @@
-## Wiederholbarkeit beim Kopieren
+## <a name="repeatability-during-copy"></a>Repeatability during Copy
 
-Beim Kopieren von Daten aus und in relationale Speicher müssen Sie die Wiederholbarkeit berücksichtigen, um unbeabsichtigte Ergebnisse zu vermeiden.
+When copying data from and to relational stores, you need to keep repeatability in mind to avoid unintended outcomes. 
 
-Ein Slice kann in Azure Data Factory automatisch gemäß der angegebenen Wiederholungsrichtlinie wiederholt werden. Sie sollten eine Wiederholungsrichtlinie zum Schutz vor vorübergehenden Fehlern festzulegen. Wiederholbarkeit ist ein wichtiger Aspekt, den Sie beim Verschieben von Daten berücksichtigen sollten.
+A slice can be rerun automatically in Azure Data Factory as per the retry policy specified. We recommend that you set a retry policy to guard against transient failures. Hence repeatability is an important aspect to take care of during data movement. 
 
-**Als Quelle:**
+**As a source:**
 
-> [AZURE.NOTE] Die folgenden Beispiele beziehen sich auf Azure SQL, sie gelten aber auch für beliebige Datenspeicher, die rechteckige Datasets unterstützen. Sie müssen möglicherweise den **Typ** der Quelle und die **query**-Eigenschaft (z.B. „query“ anstelle von sqlReaderQuery) für den Datenspeicher anpassen.
+> [AZURE.NOTE] The following samples are for Azure SQL but are applicable to any data store that supports rectangular datasets. You may have to adjust the **type** of source and the **query** property (for example: query instead of sqlReaderQuery) for the data store.   
 
-Generell möchten Sie beim Lesen aus relationalen Speichern nur die Daten lesen, die dem Slice entsprechen. Sie können dies beispielsweise erreichen, indem Sie die Variablen "WindowStart" und "WindowEnd" verwenden, die in Azure Data Factory verfügbar sind. Im Artikel [Planung und Ausführung](../articles/data-factory/data-factory-scheduling-and-execution.md) erfahren Sie mehr über die Variablen und Funktionen in Azure Data Factory. Beispiel:
-	
-	  "source": {
-	    "type": "SqlSource",
-	    "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
-	  },
+Usually, when reading from relational stores, you would want to read only the data corresponding to that slice. A way to do so would be by using the WindowStart and WindowEnd variables available in Azure Data Factory. Read about the variables and functions in Azure Data Factory here in the [Scheduling and Execution](../articles/data-factory/data-factory-scheduling-and-execution.md) article. Example: 
+    
+      "source": {
+        "type": "SqlSource",
+        "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
+      },
 
-Mit dieser Abfrage werden Daten aus „MyTable“ gelesen, die zum Dauerbereich für den Slice gehören. Bei einer erneuten Ausführung dieses Slices wäre dieses Verhalten auch immer sichergestellt.
+This query reads data from ‘MyTable’ that falls in the slice duration range. Rerun of this slice would also always ensure this behavior. 
 
-In anderen Fällen möchten Sie möglicherweise die gesamte Tabelle lesen (beispielsweise bei einer einmaligen Verschiebung) und könnten "sqlReaderQuery" wie folgt definieren:
+In other cases, you may wish to read the entire Table (suppose for one time move only) and may define the sqlReaderQuery as follows:
 
-	
-	"source": {
-	            "type": "SqlSource",
-	            "sqlReaderQuery": "select * from MyTable"
-	          },
-	
+    
+    "source": {
+                "type": "SqlSource",
+                "sqlReaderQuery": "select * from MyTable"
+              },
+    
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

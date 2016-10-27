@@ -1,32 +1,33 @@
 <properties 
-	pageTitle="Verknüpfen von Ressourcen in Azure Resource Manager | Microsoft Azure" 
-	description="Erstellen Sie in Azure Resource Manager eine Verknüpfung zwischen verwandten Ressourcen in verschiedenen Ressourcengruppen." 
-	services="azure-resource-manager" 
-	documentationCenter="" 
-	authors="tfitzmac" 
-	manager="timlt" 
-	editor="tysonn"/>
+    pageTitle="Linking resources in Azure Resource Manager | Microsoft Azure" 
+    description="Create a link between related resources in different resource groups in Azure Resource Manager." 
+    services="azure-resource-manager" 
+    documentationCenter="" 
+    authors="tfitzmac" 
+    manager="timlt" 
+    editor="tysonn"/>
 
 <tags 
-	ms.service="azure-resource-manager" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/01/2016" 
-	ms.author="tomfitz"/>
+    ms.service="azure-resource-manager" 
+    ms.workload="multiple" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/01/2016" 
+    ms.author="tomfitz"/>
 
-# Verknüpfen von Ressourcen im Azure-Ressourcen-Manager
 
-Während der Bereitstellung können Sie eine Ressource als von einer anderen Ressource abhängig markieren, aber dieser Lebenszyklus endet bei der Bereitstellung. Nach der Bereitstellung gibt es keine identifizierte Beziehung zwischen abhängigen Ressourcen. Stattdessen bietet Resource Manager ein neues Feature namens Ressourcenverknüpfungen, um dauerhafte Beziehungen zwischen Ressourcen herzustellen.
+# <a name="linking-resources-in-azure-resource-manager"></a>Linking resources in Azure Resource Manager
 
-Mithilfe von Ressourcenverknüpfungen können Sie Beziehungen ressourcengruppenübergreifend dokumentieren. Beispielsweise ist es üblich, dass eine Datenbank mit einem eigenen Lebenszyklus sich in einer Ressourcengruppe und eine App mit einem anderen Lebenszyklus in einer anderen Ressourcengruppe befindet. Die App verbindet sich mit der Datenbank, weshalb Sie eine Verknüpfung zwischen der App und der Datenbank markieren sollten.
+During deployment, you can mark a resource as dependent on another resource, but that lifecycle ends at deployment. After deployment, there is no identified relationship between dependent resources. Resource Manager provides a feature called resource linking to establish persistent relationships between resources.
 
-Alle verknüpften Ressourcen müssen zum selben Abonnement gehören. Jede Ressource kann mit 50 anderen Ressourcen verknüpft werden. Die einzige Möglichkeit, verwandte Ressourcen abzufragen, ist über die REST-API. Wenn verknüpfte Ressourcen gelöscht oder verschoben werden, muss der Besitzer des Links den verbleibenden Link bereinigen. Sie werden **nicht** gewarnt, wenn Sie eine Ressource löschen, die mit anderen Ressourcen verknüpft ist.
+With resource linking, you can document relationships that span resource groups. For example, it is common to have a database with its own lifecycle reside in one resource group, and an app with a different lifecycle reside in a different resource group. The app connects to the database so you want to mark a link between the app and the database. 
 
-## Verknüpfen in Vorlagen
+All linked resources must belong to the same subscription. Each resource can be linked to 50 other resources. The only way to query related resources is through the REST API. If any of the linked resources are deleted or moved, the link owner must clean up the remaining link. You are **not** warned when deleting a resource that is linked to other resources.
 
-Um eine Verknüpfung in einer Vorlage zu definieren, schließen Sie einen Ressourcentyp ein, der den Namespace des Ressourcenanbieters kombiniert, und geben die Quellressource mit **/providers/links** ein. Der Name muss den Namen der Quellressource enthalten. Sie geben die Ressourcen-ID der Zielressource an. Im folgenden Beispiel wird eine Verknüpfung zwischen einer Website und einem Speicherkonto eingerichtet.
+## <a name="linking-in-templates"></a>Linking in templates
+
+To define a link in a template, you include a resource type that combines the resource provider namespace and type of the source resource with **/providers/links**. The name must include the name of the source resource. You provide the resource id of the target resource. The following example establishes a link between a web site and a storage account.
 
     {
       "type": "Microsoft.Web/sites/providers/links",
@@ -40,17 +41,17 @@ Um eine Verknüpfung in einer Vorlage zu definieren, schließen Sie einen Ressou
     }
 
 
-Eine vollständige Beschreibung der Vorlage finden Sie unter [Ressourcenverknüpfungen – Vorlagenschema](resource-manager-template-links.md).
+For a full description of the template format, see [Resource links - template schema](resource-manager-template-links.md).
 
-## Verknüpfen mit der REST-API
+## <a name="linking-with-rest-api"></a>Linking with REST API
 
-Um einen Link zwischen bereitgestellten Ressourcen zu definieren, führen Sie die folgenden Schritte aus:
+To define a link between deployed resources, run:
 
     PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/{provider-namespace}/{resource-type}/{resource-name}/providers/Microsoft.Resources/links/{link-name}?api-version={api-version}
 
-Ersetzen Sie {subscription-id} durch Ihre Abonnement-ID. Ersetzen Sie {resource-group}, {provider-namespace}, {resource-type} und {resource-name} durch die Werte, die die erste Ressource im Link identifizieren. Ersetzen Sie {link-name} durch den Namen des zu erstellenden Links. Verwenden Sie "api-version" 2015-01-01.
+Replace {subscription-id} with your subscription id. Replace {resource-group}, {provider-namespace, {resource-type}, and {resource-name} with the values that identify the first resource in the link. Replace {link-name} with the name of the link to create. Use 2015-01-01 for the api-version.
 
-Schließen Sie in die Anforderung ein Objekt ein, das die zweite Ressource im Link definiert:
+In the request, include an object that defines the second resource in the link:
 
     {
         "name": "{new-link-name}",
@@ -60,17 +61,21 @@ Schließen Sie in die Anforderung ein Objekt ein, das die zweite Ressource im Li
         }
     }
 
-Das properties-Element enthält den Bezeichner für die zweite Ressource.
+The properties element contains the identifier for the second resource.
 
-Sie können Verknüpfungen in Ihrem Abonnement wie folgt abfragen:
+You can query links in your subscription with:
 
     https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Resources/links?api-version={api-version}
 
-Weitere Beispiele, wie z. B. das Abrufen von Informationen zu Links, finden Sie unter [Verknüpfte Ressourcen](https://msdn.microsoft.com/library/azure/mt238499.aspx).
+For more examples, including how to retrieve information about links, see [Linked Resources](https://msdn.microsoft.com/library/azure/mt238499.aspx).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Sie können Ihre Ressourcen auch mithilfe von Tags organisieren. Informationen zum Markieren von Ressourcen mit Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).
-- Eine Beschreibung der Vorgehensweise zum Erstellen von Vorlagen und Definieren der bereitzustellenden Ressourcen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
+- You can also organize your resources with tags. To learn about tagging resources, see [Using tags to organize your resources](resource-group-using-tags.md).
+- For a description of how to create templates and define the resources to be deployed, see [Authoring templates](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

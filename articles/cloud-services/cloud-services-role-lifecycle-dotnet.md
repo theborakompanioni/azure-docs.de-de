@@ -1,6 +1,6 @@
 <properties 
-pageTitle="Behandlung von Lebenszyklusereignissen für Clouddienste | Microsoft Azure" 
-description="Erfahren Sie, wie die Lebenszyklusmethoden einer Clouddienstrolle in .NET verwendet werden können." 
+pageTitle="Handle Cloud Service lifecycle events | Microsoft Azure" 
+description="Learn how the lifecycle methods of a Cloud Service role can be used in .NET" 
 services="cloud-services" 
 documentationCenter=".net" 
 authors="Thraka" 
@@ -15,35 +15,36 @@ ms.topic="article"
 ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
-# Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
 
-Wenn Sie eine Workerrolle erstellen, erweitern Sie die [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx)-Klasse, die Methoden zum Außerkraftsetzen bereitstellt, sodass Sie auf Lebenszyklusereignisse reagieren können. Für Webrollen ist diese Klasse optional, daher wird sie in erster Linie für die Reaktion auf Lebenszyklusereignisse verwendet.
+# <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-.net"></a>Customize the Lifecycle of a Web or Worker role in .NET
 
-## Erweitern der RoleEntryPoint-Klasse
+When you create a worker role, you extend the [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) class which provides methods for you to override that let you respond to lifecycle events. For web roles this class is optional, so you must use it to respond to lifecycle events.
 
-Die [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx)-Klasse enthält Methoden, die von Azure beim **Starten**, **Ausführen** oder **Beenden** einer Web- oder Workerrolle aufgerufen werden. Sie können diese Methoden optional außer Kraft setzen, um die Rolleninitialisierung, Herunterfahrsequenzen für Rollen oder den Ausführungsthread der Rolle zu verwalten.
+## <a name="extend-the-roleentrypoint-class"></a>Extend the RoleEntryPoint class
 
-Berücksichtigen Sie beim Erweitern von **RoleEntryPoint** das folgende Verhalten der Methoden:
+The [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) class includes methods that are called by Azure when it **starts**, **runs**, or **stops** a web or worker role. You can optionally override these methods to manage role initialization, role shutdown sequences, or the execution thread of the role. 
 
--   Die [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx)- und die [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx)-Methode geben einen booleschen Wert zurück, daher kann von diesen Methoden **false** zurückgegeben werden.
+When extending **RoleEntryPoint**, you should be aware of the following behaviors of the methods:
 
-     Wenn Ihr Code **false** zurückgibt, wird der Rollenvorgang abrupt beendet, ohne dass eine möglicherweise eingerichtete Herunterfahrsequenz ausgeführt wird. Im Allgemeinen sollte das Zurückgeben von **false** durch die **OnStart**-Methode vermieden werden.
+-   The [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) and [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) methods return a boolean value, so it is possible to return **false** from these methods.
+
+     If your code returns **false**, the role process is abruptly terminated, without running any shutdown sequence you may have in place. In general, you should avoid returning **false** from the **OnStart** method.
      
--   Jede nicht abgefangene Ausnahme in einer Überladung einer **RoleEntryPoint**-Methode wird als nicht behandelte Ausnahme behandelt.
+-   Any uncaught exception within an overload of a **RoleEntryPoint** method is treated as an unhandled exception.
 
-     Wenn in einer der Lebenszyklusmethoden eine Ausnahme auftritt, löst Azure das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx)-Ereignis aus, und der Prozess wird beendet. Nachdem die Rolle offline geschaltet wurde, wird sie von Azure neu gestartet. Wenn eine nicht behandelte Ausnahme auftritt, wird das [Stopping](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx)-Ereignis nicht ausgelöst, und die **OnStop**-Methode wird nicht aufgerufen.
+     If an exception occurs within one of the lifecycle methods, Azure will raise the [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) event, and then the process is terminated. After your role has been taken offline, it will be restarted by Azure. When an unhandled exception occurs, the [Stopping](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) event is not raised, and the **OnStop** method is not called.
 
-Wenn Ihre Rolle nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, wirft Ihr Code bei jedem Neustart der Rolle möglicherweise eine nicht behandelte Ausnahme in einem der Lebenszyklusereignisse aus. Verwenden Sie in diesem Fall das [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx)-Ereignis, um die Ursache der Ausnahme zu ermitteln und die Ausnahme entsprechend zu behandeln. Ihre Rolle kann auch von der [Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode zurückgegeben werden, wodurch ein Neustart der Rolle veranlasst wird. Weitere Informationen zu den Bereitstellungszuständen finden Sie unter [Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+If your role does not start, or is recycling between the initializing, busy, and stopping states, your code may be throwing an unhandled exception within one of the lifecycle events each time the role restarts. In this case, use the [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) event to determine the cause of the exception and handle it appropriately. Your role may also be returning from the [Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method, which causes the role to restart. For more information about deployment states, see [Common Issues Which Cause Roles to Recycle](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
-> [AZURE.NOTE] Wenn Sie zum Entwickeln Ihrer Anwendung die **Azure-Tools für Microsoft Visual Studio** verwenden, erweitern die Rollenprojektvorlagen die **RoleEntryPoint**-Klasse automatisch in den Dateien *WebRole.cs* und *WorkerRole.cs*.
+> [AZURE.NOTE] If you are using the **Azure Tools for Microsoft Visual Studio** to develop your application, the role project templates automatically extend the **RoleEntryPoint** class for you, in the *WebRole.cs* and *WorkerRole.cs* files.
 
-## OnStart-Methode
+## <a name="onstart-method"></a>OnStart method
 
-Die **OnStart**-Methode wird aufgerufen, wenn die Rolleninstanz von Azure online geschaltet wird. Während der OnStart-Code ausgeführt wird, wird die Rolleninstanz als **Ausgelastet** gekennzeichnet, und es wird vom Lastenausgleich kein externer Datenverkehr an sie gesendet. Sie können diese Methode außer Kraft setzen, um Initialisierungsaufgaben wie das Implementieren von Ereignishandlern und Starten der [Azure-Diagnose](cloud-services-how-to-monitor.md) auszuführen.
+The **OnStart** method is called when your role instance is brought online by Azure. While the OnStart code is executing, the role instance is marked as **Busy** and no external traffic will be directed to it by the load balancer. You can override this method to perform initialization work, such as implementing event handlers and starting [Azure Diagnostics](cloud-services-how-to-monitor.md).
 
-Wenn **OnStart** das Ergebnis **true** zurückgibt, wurde die Instanz erfolgreich initialisiert, und Azure ruft die **RoleEntryPoint.Run**-Methode auf. Wenn **OnStart**das Ergebnis **false** zurückgibt, wird die Rolle sofort beendet, ohne dass gegebenenfalls. geplante Herunterfahrsequenzen ausgeführt werden.
+If **OnStart** returns **true**, the instance is successfully initialized and Azure calls the **RoleEntryPoint.Run** method. If **OnStart** returns **false**, the role terminates immediately, without executing any planned shutdown sequences.
 
-Im folgenden Codebeispiel wird veranschaulicht, wie die **OnStart**-Methode außer Kraft gesetzt wird. Diese Methode konfiguriert und startet einen Diagnosemonitor, wenn die Rolleninstanz gestartet wird, und richtet die Übertragung von Protokollierungsdaten an ein Speicherkonto ein:
+The following code example shows how to override the **OnStart** method. This method configures and starts a diagnostic monitor when the role instance starts and sets up a transfer of logging data to a storage account:
 
 ```csharp
 public override bool OnStart()
@@ -59,25 +60,28 @@ public override bool OnStart()
 }
 ```
 
-## OnStop-Methode
+## <a name="onstop-method"></a>OnStop method
 
-Die **OnStop**-Methode wird aufgerufen, nachdem eine Rolleninstanz von Azure offline geschaltet wurde und bevor der Prozess beendet wird. Sie können diese Methode zum Aufrufen von Code außer Kraft setzen, der für das saubere Herunterfahren der Rolleninstanz erforderlich ist.
+The **OnStop** method is called after a role instance has been taken offline by Azure and before the process exits. You can override this method to call code required for your role instance to cleanly shut down.
 
-> [AZURE.IMPORTANT] Die Codeausführung in der **OnStop**-Methode muss innerhalb eines begrenzten Zeitraums abgeschlossen werden, wenn er nicht im Rahmen des vom Benutzer initiierten Herunterfahrens, sondern aus anderen Gründen aufgerufen wird. Nach diesem Zeitraum wird der Prozess beendet. Sie müssen also sicherstellen, dass der Code in der **OnStop**-Methode schnell ausgeführt werden kann oder die nicht vollständige Ausführung toleriert. Die **OnStop**-Methode wird nach dem Auslösen des **Stopping**-Ereignisses aufgerufen.
-
-
-## Run-Methode
-
-Sie können die **Run**-Methode außer Kraft setzen, um einen Thread mit langer Ausführungsdauer für die Rolleninstanz zu implementieren.
-
-Die Außerkraftsetzung der **Run**-Methode ist nicht erforderlich. Die Standardimplementierung startet einen Thread, der sich unbegrenzt im Ruhezustand befindet. Die Außerkraftsetzung der **Run**-Methode hat eine Codeblockierung auf unbestimmte Zeit zur Folge. Wenn die **Run**-Methode wieder aktiv ist, wird die Rolle automatisch ordnungsgemäß wiederverwendet. Anders ausgedrückt: Azure löst das **Stopping**-Ereignis aus und ruft die **OnStop**-Methode auf, sodass Ihre Herunterfahrsequenzen ausgeführt werden, bevor die Rolle offline geschaltet wird.
+> [AZURE.IMPORTANT] Code running in the **OnStop** method has a limited time to finish when it is called for reasons other than a user-initiated shutdown. After this time elapses, the process is terminated, so you must make sure that code in the **OnStop** method can run quickly or tolerates not running to completion. The **OnStop** method is called after the **Stopping** event is raised.
 
 
-### Implementieren der ASP.NET-Lebenszyklusmethoden für eine Webrolle
+## <a name="run-method"></a>Run method
 
-Sie können die ASP.NET-Lebenszyklusmethoden zusätzlich zu den Methoden der **RoleEntryPoint**-Klasse verwenden, um Initialisierungs- und Herunterfahrsequenzen für eine Webrolle zu verwalten. Dies kann für die Kompatibilität nützlich sein, wenn Sie eine vorhandene ASP.NET-Anwendung in Azure portieren. Die ASP.NET-Lebenszyklusmethoden werden in den **RoleEntryPoint**-Methoden aufgerufen. Die **Application\_Start**-Methode wird nach Ausführung der **RoleEntryPoint.OnStart**-Methode aufgerufen. Die **Application\_End**-Methode wird vor dem Aufrufen der **RoleEntryPoint.OnStop**-Methode aufgerufen.
+You can override the **Run** method to implement a long-running thread for your role instance.
 
-## Nächste Schritte
-Hier erfahren Sie, wie Sie ein [Clouddienstpaket erstellen](cloud-services-model-and-package.md).
+Overriding the **Run** method is not required; the default implementation starts a thread that sleeps forever. If you do override the **Run** method, your code should block indefinitely. If the **Run** method returns, the role is automatically gracefully recycled; in other words, Azure raises the **Stopping** event and calls the **OnStop** method so that your shutdown sequences may be executed before the role is taken offline.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+### <a name="implementing-the-asp.net-lifecycle-methods-for-a-web-role"></a>Implementing the ASP.NET lifecycle methods for a web role
+
+You can use the ASP.NET lifecycle methods, in addition to those provided by the **RoleEntryPoint** class, to manage initialization and shutdown sequences for a web role. This may be useful for compatibility purposes if you are porting an existing ASP.NET application to Azure. The ASP.NET lifecycle methods are called from within the **RoleEntryPoint** methods. The **Application\_Start** method is called after the **RoleEntryPoint.OnStart** method finishes. The **Application\_End** method is called before the **RoleEntryPoint.OnStop** method is called.
+
+## <a name="next-steps"></a>Next steps
+Learn how to [create a cloud service package](cloud-services-model-and-package.md).
+
+
+<!--HONumber=Oct16_HO2-->
+
+

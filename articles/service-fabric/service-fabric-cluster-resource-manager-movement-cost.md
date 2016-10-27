@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Der Clusterressourcen-Manager von Service Fabric – Verschiebungskosten | Microsoft Azure"
-   description="Übersicht über die Verschiebungskosten für Service Fabric-Dienste"
+   pageTitle="Service Fabric Cluster Resource Manager: Movement cost | Microsoft Azure"
+   description="Overview of movement cost for Service Fabric services"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,17 +16,18 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
-# Kosten von Dienstverschiebungen zum Beeinflussen der Optionen im Clusterressourcen-Manager
-Ein wichtiger Faktor bei den Überlegungen zu Veränderungen an einem Cluster und der Bewertung einer Lösung sind die Gesamtkosten, die mit der Umsetzung dieser Lösung verbunden sind.
 
-Das Verschieben von Dienstinstanzen oder Replikaten kostet zumindest CPU-Zeit und Netzwerkbandbreite. Für zustandsbehaftete Dienste kostet es auch den Umfang an Speicherplatz auf dem Datenträger, den Sie benötigen, um eine Kopie des Zustands vor dem Herunterfahren alter Replikate zu erstellen. Natürlich möchten Sie die Kosten einer Lösung minimieren, die vom Clusterressourcen-Manager in Azure Service Fabric erstellt wird. Aber Sie möchten auch alle Lösungen kennen, die die Zuordnung von Ressourcen im Cluster erheblich verbessern würden.
+# <a name="service-movement-cost-for-influencing-cluster-resource-manager-choices"></a>Service movement cost for influencing Cluster Resource Manager choices
+An important factor to consider when you're trying to determine what changes to make to a cluster and the score of a solution is the overall cost of achieving that solution.
 
-Der Clusterressourcen-Manager bietet zwei Möglichkeiten, die Kosten zu berechnen und zu beschränken und gleichzeitig den Cluster im Hinblick auf seine anderen Ziele möglichst optimal zu verwalten. Wenn der Clusterressourcen-Manager ein neues Layout für den Cluster plant, zählt er jede einzelne Verschiebung, die bei diesem Vorgang erforderlich ist. Wenn Sie zwei Lösungen mit etwa dem gleichen Endergebnis (Bewertung) zur Auswahl haben, wählen Sie diejenige mit den geringsten Kosten (Gesamtzahl der Verschiebungen).
+Moving service instances or replicas costs CPU time and network bandwidth at a minimum. For stateful services, it also costs the amount of space on disk that you need to create a copy of the state before shutting down old replicas. Clearly you’d want to minimize the cost of any solution that Azure Service Fabric Cluster Resource Manager comes up with. But you also don’t want to ignore solutions that would significantly improve the allocation of resources in the cluster.
 
-Dies funktioniert recht gut. Aber wie bei standardmäßigen oder statischen Lasten ist es in einem komplexen System unwahrscheinlich, dass alle Verschiebungen gleich sind. Einige sind wahrscheinlich viel teurer.
+Cluster Resource Manager has two ways of computing costs and limiting them, even while it tries to manage the cluster according to its other goals. The first is that when Cluster Resource Manager is planning a new layout for the cluster, it counts every move that it would make. In a simple case, if you get two solutions with about the same overall balance (score) at the end, then take the one with the lowest cost (total number of moves).
 
-## Ändern der Bewegungskosten eines Replikats und zu berücksichtigende Faktoren
-Genau wie beim Melden von Lasten (ein weiteres Feature des Clusterressourcen-Managers) können Sie dem Dienst ermöglichen, selbst zu melden, wie teuer es jeweils ist, den Dienst zu einem beliebigen Zeitpunkt zu verschieben.
+This works pretty well. But as with default or static loads, it's unlikely in any complex system that all moves are equal. Some are likely to be much more expensive.
+
+## <a name="changing-a-replica's-move-cost-and-factors-to-consider"></a>Changing a replica's move cost and factors to consider
+As with reporting load (another feature of Cluster Resource Manager), you give the service a way of self-reporting how costly the service is to move at a particular time.
 
 Code:
 
@@ -34,20 +35,24 @@ Code:
 this.ServicePartition.ReportMoveCost(MoveCost.Medium);
 ```
 
-MoveCost hat vier Stufen: Zero, Low, Medium und High. Diese stehen zueinander in einem Verhältnis, mit Ausnahme von Zero. Zero bedeutet, dass das Verschieben eines Replikats keine Kosten generiert und die Bewertung der Lösung nicht negativ beeinflussen sollte. Wenn Sie die Kosten für die Verschiebung als „High“ einstufen, garantiert dies *nicht*, dass das Replikat nicht verschoben wird, sondern nur, dass die Verschiebung nicht ohne triftigen Grund erfolgt.
+MoveCost has four levels: Zero, Low, Medium, and High. These are relative to each other, except for Zero. Zero means that moving a replica is free and should not count against the score of the solution. Setting your move cost to High is *not* a guarantee that the replica won’t move, just that it won't be moved unless there’s a good reason to.
 
-![Verschiebungskosten als Faktor bei der Auswahl der zu verschiebenden Replikate][Image1]
+![Move cost as a factor in selecting replicas for movement][Image1]
 
-MoveCost hilft Ihnen dabei, Lösungen zu finden, die insgesamt die geringsten Unterbrechungen verursachen, am leichtesten umzusetzen sind und dabei das beste Gleichgewicht versprechen. Die Kosten für einen Dienst können von Vielem abhängen. Die gängigsten Faktoren bei der Berechnung der Kosten von Verschiebungen sind:
+MoveCost helps you find the solutions that cause the least disruption overall and are easiest to achieve while still arriving at equivalent balance. A service’s notion of cost can be relative to many things. The most common factors in calculating your move cost are:
 
-- Die Menge von Zuständen oder Daten, die ein Dienst verschieben soll.
-- Die Kosten der Trennung von Clients. Die Kosten für das Verschieben eines primären Replikats sind normalerweise höher als die für ein sekundäres Replikat.
-- Die Kosten für Unterbrechungen einer sich in der Ausführung befindenden Operation. Einige Operationen auf Datenspeicherebene oder Operationen, die als Antwort auf einen Clientaufruf ausgeführt werden, sind kostenaufwendig. Ab einem bestimmten Punkt werden sie nicht mehr unnötigerweise freiwillig abgebrochen. Für die Dauer der Operation stufen Sie die Kosten hoch, um die Wahrscheinlichkeit zu minimieren, dass das Replikat oder die Instanz des Diensts verschoben wird. Wenn die Operation abgeschlossen ist, können Sie sie auf normal zurückstufen.
+- The amount of state or data that the service has to move.
+- The cost of disconnection of clients. The cost of moving a primary replica is usually higher than the cost of moving a secondary replica.
+- The cost of interrupting an in-flight operation. Some operations at the data store level or operations performed in response to a client call are costly. After a certain point, you don’t want to stop them if you don’t have to. So for the duration of the operation, you bump up the cost to reduce the likelihood that the service replica or instance will move. When the operation is done, you put it back to normal.
 
-## Nächste Schritte
-- Der Clusterressourcen-Manager von Service Fabric verwendet Metriken, um den Ressourcenverbrauch und die Kapazität im Cluster zu verwalten. Weitere Informationen zu Metriken und deren Konfiguration finden Sie unter [Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken](service-fabric-cluster-resource-manager-metrics.md).
-- Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie unter [Lastenausgleich für Service Fabric-Cluster](service-fabric-cluster-resource-manager-balancing.md).
+## <a name="next-steps"></a>Next steps
+- Service Fabric Cluster Resource Manger uses metrics to manage consumption and capacity in the cluster. To learn more about metrics and how to configure them, check out [Managing resource consumption and load in Service Fabric with metrics](service-fabric-cluster-resource-manager-metrics.md).
+- To learn about how the Cluster Resource Manager manages and balances load in the cluster, check out [Balancing your Service Fabric cluster](service-fabric-cluster-resource-manager-balancing.md).
 
-[Image1]: ./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
+[Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

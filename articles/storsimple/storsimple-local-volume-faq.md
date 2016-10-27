@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Lokale StorSimple-Volumes: Häufig gestellte Fragen |Microsoft Azure"
-   description="Enthält Antworten auf häufig gestellte Fragen zu lokalen StorSimple-Volumes."
+   pageTitle="StorSimple locally pinned volumes FAQ|Microsoft Azure"
+   description="Provides answers to frequently asked questions about StorSimple locally pinned volumes."
    services="storsimple"
    documentationCenter="NA"
    authors="manuaery"
@@ -15,202 +15,209 @@
    ms.date="08/16/2016"
    ms.author="manuaery" />
 
-# Lokale StorSimple-Volumes: Häufig gestellte Fragen (FAQ)
 
-## Übersicht
+# <a name="storsimple-locally-pinned-volumes:-frequently-asked-questions-(faq)"></a>StorSimple locally pinned volumes: frequently asked questions (FAQ)
 
-Hier finden Sie Fragen und Antworten, die sich auf das Erstellen eines lokalen StorSimple-Volumes, Konvertieren eines mehrstufigen Volumes in ein lokales Volume (und umgekehrt) oder Sichern und Wiederherstellen eines lokalen Volumes beziehen.
+## <a name="overview"></a>Overview
 
-Die Fragen und Antworten sind in folgende Kategorien unterteilt:
+The following are questions and answers that you might have when you create a StorSimple locally pinned volume, convert a tiered volume to a locally pinned volume (and vice versa), or back up and restore a locally pinned volume.
 
-- Erstellen eines lokalen Volumes
-- Sichern eines lokalen Volumes
-- Konvertieren eines mehrstufigen Volumes in ein lokales Volume
-- Wiederherstellen eines lokalen Volumes
-- Ausführen eines Failovers für ein lokales Volume
+Questions and answers are arranged into the following categories
 
-## Fragen zum Erstellen eines lokalen Volumes
+- Creating a locally pinned volume
+- Backing up a locally pinned
+- Converting a tiered volume to a locally pinned volume
+- Restoring a locally pinned volume
+- Failing over a locally pinned volume
 
-**F.** Wie groß kann ein lokales Volume auf Geräten der 8000-Serie maximal sein?
+## <a name="questions-about-creating-a-locally-pinned-volume"></a>Questions about creating a locally pinned volume
 
-**A** Sie können lokale Volumes von bis zu 8,5 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 22,5 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen.
+**Q.** What is the maximum size of a locally pinned volume that I can create on the 8000 series devices?
 
-**F.** Ich habe vor Kurzem mein 8100-Gerät auf Update 2 aktualisiert. Wenn ich nun versuche, ein lokales Volume zu erstellen, beträgt die verfügbare maximale Größe statt 8,5 TB nur 6 TB. Warum kann ich kein Volume mit 8,5 TB erstellen?
+**A** You can provision locally pinned volumes up to 8.5 TB or tiered volumes up to 200 TB on the 8100 device. On the larger 8600 device, you can provision locally pinned volumes up to 22.5 TB or tiered volumes up to 500 TB.
 
-**A** Sie können lokale Volumes von bis zu 8,5 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Wenn auf Ihrem Gerät bereits mehrstufige Volumes bereitgestellt wurden, ist der Platz zum Erstellen eines lokalen Volumes proportional kleiner als diese Höchstgrenze. Beispiel: Wenn auf dem 8100-Gerät bereits mehrstufige Volumes mit 100 TB (also der Hälfte der Kapazität mehrstufiger Volumes) bereitgestellt wurden, verringert sich die maximale Größe eines lokalen Volumes, das Sie auf dem 8100-Gerät erstellen können, dementsprechend auf 4 TB (ca. die Hälfte der maximalen Kapazität lokaler Volumes).
+**Q.** I recently upgraded my 8100 device to Update 2 and when I try to create a locally pinned volume, the maximum available size is only 6 TB and not 8.5 TB. Why can’t I create an 8.5 TB volume?
 
-Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssatzes mehrstufiger Volumes verwendet wird, verringert sich der verfügbare Speicherplatz für die Erstellung eines lokalen Volumes, wenn das Gerät über mehrstufige Volumes verfügt. Umgekehrt verringert sich beim Erstellen eines lokalen Volumes der verfügbare Speicherplatz für mehrstufige Volumes proportional. In der folgenden Tabelle wird die Kapazität für mehrstufige Volumes auf 8100- und 8600-Geräten bei der Erstellung lokaler Volumes zusammengefasst.
+**A** You can provision locally pinned volumes up to 8.5 TB OR tiered volumes up to 200 TB on the 8100 device. If your device already has tiered volumes, then the space available for creating a locally pinned volume will be proportionally lower than this maximum limit. For example, if 100 TB of tiered volumes have already been provisioned on your 8100 device (which is half of the tiered capacity), then the maximum size of a local volume that you can create on the 8100 device will be correspondingly reduced to 4 TB (roughly half of the maximum locally pinned volume capacity).
 
-|Bereitgestellte Kapazität lokaler Volumes|Verfügbare Kapazität für mehrstufige Volumes – 8100|Verfügbare Kapazität für mehrstufige Volumes – 8600|
+Because some local space on the device is used to host the working set of tiered volumes, the available space for creating a locally pinned volume is reduced if the device has tiered volumes. Conversely, creating a locally pinned volume proportionally reduces the available space for tiered volumes. The following table summarizes the available tiered capacity on the 8100 and 8600 devices when locally pinned volumes are created.
+
+|Locally pinned volumes provisioned capacity|Available capacity to be provisioned for tiered volumes - 8100|Available capacity to be provisioned for tiered volumes - 8600|
 |-----|------|------|
-|0 | 200 TB | 500 TB |
-|1 TB | 176,5 TB | 477,8 TB|
-|4 TB | 105,9 TB | 411,1 TB |
-|8,5 TB | 0 TB | 311,1 TB|
-|10 TB | NA | 277,8 TB |
-|15 TB | NA | 166,7 TB |
-|22,5 TB | NA | 0 TB |
+|0 | 200 TB | 500 TB |
+|1 TB | 176.5 TB | 477.8 TB|
+|4 TB | 105.9 TB | 411.1 TB |
+|8.5 TB | 0 TB | 311.1 TB|
+|10 TB | NA | 277.8 TB |
+|15 TB | NA | 166.7 TB |
+|22.5 TB | NA | 0 TB |
 
 
-**F.** Warum dauert die Erstellung eines lokalen Volumes so lange?
+**Q.** Why is locally pinned volume creation a long running operation? 
 
-**A.** Lokale Volumes werden mit vollständiger Speicherzuweisung bereitgestellt. Um Platz auf den lokalen Ebenen des Geräts zu schaffen, können einige Daten von vorhandenen mehrstufigen Volumes während des Bereitstellungsvorgangs in die Cloud übertragen werden. Da dieser Vorgang von der Größe des bereitzustellenden Volumes, den vorhandenen Daten auf Ihrem Gerät und der verfügbaren Bandbreite für die Cloudverbindung abhängt, kann die Erstellung eines lokalen Volumes mehrere Stunden dauern.
+**A.** Locally pinned volumes are thickly provisioned. To create space on the local tiers of the device, some data from existing tiered volumes might be pushed to the cloud during the provisioning process. And since this depends upon the size of the volume being provisioned, the existing data on your device and the available bandwidth to the cloud, the time taken to create a local volume may be several hours.
 
-**F.** Wie lange dauert die Erstellung eines lokalen Volumes?
+**Q.** How long does it take to create a locally pinned volume?
 
-**A.** Da lokal angeheftete Volumes mit vollständiger Speicherzuweisung bereitgestellt werden, werden vorhandene Daten von mehrstufigen Volumes während der Bereitstellung möglicherweise in die Cloud übertragen. Daher hängt die Dauer zum Erstellen eines lokalen Volumes von mehreren Faktoren ab, u. a. von der Größe des Volumes, den Daten auf dem Gerät und der verfügbaren Bandbreite. Auf einem neu installierten Gerät ohne Volumes dauert die Erstellung eines lokalen Volumes etwa zehn Minuten pro Terabyte an Daten. Die Erstellung eines lokalen Volumes kann jedoch basierend auf den oben erläuterten Faktoren auf einem verwendeten Gerät mehrere Stunden dauern.
+**A.** Because locally pinned volumes are thickly provisioned, some existing data from tiered volumes might be pushed to the cloud during the provisioning process. Therefore, the time taken to create a locally pinned volume depends upon multiple factors, including the size of the volume, the data on your device and the available bandwidth. On a freshly installed device that has no volumes, the time to create a locally pinned volume is about 10 minutes per terabyte of data. However, creation of local volumes may take several hours based on the factors explained above on a device that is in use.
 
-**F.** Ich möchte ein lokales Volume erstellen. Gibt es bewährte Verfahren, die beachtet werden sollten?
+**Q.** I want to create a locally pinned volume. Are there any best practices I need to be aware of?
 
-**A.** Lokale Volumes eignen sich für Workloads, die jederzeit lokale Garantien für Daten erfordern und empfindlich auf Cloudlatenzen reagieren. Wenn Sie die Nutzung lokaler Volumes für Ihre Workloads in Betracht ziehen, berücksichtigen Sie Folgendes:
+**A.** Locally pinned volumes are suitable for workloads that require local guarantees of data at all times and are sensitive to cloud latencies. While considering usage of local volumes for any of your workloads, please be aware of the following:
 
-- Lokale Volumes werden mit vollständiger Speicherzuweisung bereitgestellt. Die Erstellung lokaler Volumes wirkt sich auf den verfügbaren Platz für mehrstufige Volumes aus. Aus diesem Grund wird empfohlen, mit kleineren Volumes zu beginnen und bei steigenden Speicheranforderungen zentral hochzuskalieren.
+- Locally pinned volumes are thickly provisioned, and creating local volumes impacts the available space for tiered volumes. Therefore, we suggest you start with smaller-sized volumes and scale up as your storage requirement increases.
 
-- Die Bereitstellung lokaler Volumes ist ein zeitintensiver Vorgang, bei dem unter Umständen vorhandene Daten von mehrstufigen Volumes in die Cloud übertragen werden. Dies kann zu einer Beeinträchtigung der Leistung auf diesen Volumes führen.
+- Provisioning of local volumes is a long running operation that might involve pushing existing data from tiered volumes to the cloud. As a result, you may experience reduced performance on these volumes.
 
-- Die Bereitstellung von lokalen Volumes ist ein zeitaufwendiger Vorgang. Die tatsächliche Dauer hängt von mehreren Faktoren ab: der Größe des Volumes, das bereitgestellt wird, den Daten auf Ihrem Gerät und der verfügbaren Bandbreite. Wenn Sie Ihre vorhandenen Volumes nicht in der Cloud gesichert haben, dauert die Volumeerstellung länger. Es wird empfohlen, vor dem Bereitstellen eines lokalen Volumes Cloudmomentaufnahmen Ihrer vorhandenen Volumes zu erstellen.
+- Provisioning of local volumes is a time consuming operation. The actual time involved depends on multiple factors: the size of the volume being provisioned, data on your device, and available bandwidth. If you have not backed up your existing volumes to the cloud, then volume creation is slower. We suggest you take cloud snapshots of your existing volumes before you provision a local volume.
  
-- Sie können vorhandene mehrstufige Volumes in lokale Volumes konvertieren. Bei dieser Konvertierung muss auf dem Gerät Platz für das geplante lokale Volume geschaffen werden (zudem müssen ggf. ausgelagerte Daten aus der Cloud geladen werden). Dies ist ein zeitaufwendiger Vorgang, der von den oben besprochenen Faktoren abhängig ist. Sie sollten Ihre vorhandenen Volumes vor der Konvertierung sichern, da der Prozess langsamer ist, wenn vorhandene Volumes nicht gesichert wurden. Während dieses Vorgangs treten auf dem Gerät möglicherweise Leistungseinbußen auf.
-	
-Weitere Informationen zum [Erstellen eines lokalen Volumes](storsimple-manage-volumes-u2.md#add-a-volume)
+- You can convert existing tiered volumes to locally pinned volumes, and this conversion involves provisioning of space on the device for the resulting locally pinned volume (in addition to bringing down tiered data [if any] from the cloud). Again, this is a long running operation that depends on factors we’ve discussed above. We suggest that you back up your existing volumes prior to conversion as the process will be even slower if existing volumes are not backed up. Your device might also experience reduced performance during this process.
+    
+More information on how to [create a locally pinned volume](storsimple-manage-volumes-u2.md#add-a-volume)
 
-**F.** Kann ich mehrere lokale Volumes gleichzeitig erstellen?
+**Q.** Can I create multiple locally pinned volumes at the same time?
 
-**A.** Ja, aber Aufträge zum Erstellen und Erweitern lokaler Volumes werden nacheinander verarbeitet.
+**A.** Yes, but any locally pinned volume creation and expansion jobs are processed sequentially.
 
-Lokale Volumes werden mit vollständiger Speicherzuweisung bereitgestellt. Dafür muss auf dem Gerät lokal Speicherplatz geschaffen werden (was unter Umständen dazu führt, dass vorhandene Daten von mehrstufigen Volumes während des Bereitstellungsvorgangs in die Cloud übertragen werden). Während der Ausführung eines Bereitstellungsauftrags werden andere Aufträge zur Erstellung lokaler Volumes daher in die Warteschlange verschoben, bis der Auftrag abgeschlossen ist.
+Locally pinned volumes are thickly provisioned and this requires creation of local space on the device (which might result in existing data from tiered volumes to be pushed to the cloud during the provisioning process). Therefore, if a provisioning job is in progress, other local volume creation jobs will be queued until that job is finished.
 
-Wenn ein vorhandenes lokales Volume erweitert oder ein mehrstufiges Volume in ein lokales Volume konvertiert wird, wird die Erstellung eines neuen lokalen Volumes in die Warteschlange verschoben, bis der vorherige Auftrag abgeschlossen ist. Wenn Sie ein lokales Volume erweitern, muss auch der lokale Speicherplatz für das Volume erweitert werden. Bei der Konvertierung von einem mehrstufigen in ein lokales Volume muss lokaler Speicherplatz für das resultierende lokale Volume freigegeben werden. Bei beiden Vorgängen ist das Freigeben oder Erweitern des lokalen Speicherplatzes ein zeitintensiver Vorgang.
+Similarly, if an existing local volume is being expanded or a tiered volume is being converted to a locally pinned volume, then the creation of a new locally pinned volume is queued until the previous job is completed. Expanding the size of a locally pinned volume involves the expansion of the existing local space for that volume. Conversion from a tiered to locally pinned volume also involves the creation of local space for the resulting locally pinned volume. In both of these operations, creation or expansion of local space is a long running job.
 
-Sie können diese Aufträge im Azure StorSimple Manager-Dienst auf der Seite **Aufträge** anzeigen. Der Auftrag, der derzeit verarbeitet wird, wird kontinuierlich aktualisiert, um den Status der Speicherplatzbereitstellung widerzuspiegeln. Die übrigen Aufträge für lokale Volumes werden als aktiv gekennzeichnet, ihr Fortschritt wird jedoch nicht aktualisiert, und sie werden in der Reihenfolge ausgewählt, in der sie der Warteschlange hinzugefügt wurden.
+You can view these jobs in the **Jobs** page of the Azure StorSimple Manager service. The job that is actively being processed is continually updated to reflect the progress of space provisioning. The remaining locally pinned volume jobs is marked as running, but their progress is stalled and they are picked in the order they were queued.
 
-**F.** Ich habe ein lokales Volume gelöscht. Warum wird der freigegebene Speicherplatz im verfügbaren Speicherplatz nicht angezeigt, wenn ich versuche, ein neues Volume zu erstellen?
+**Q.** I deleted a locally pinned volume. Why don't I see the reclaimed space reflected in the available space when I try to create a new volume? 
 
-**A.** Wenn Sie ein lokales Volume löschen, wird der für neue Volumes verfügbare Speicherplatz möglicherweise nicht sofort aktualisiert. Der StorSimple Manager-Dienst aktualisiert den verfügbaren lokalen Speicherplatz ungefähr stündlich. Es wird empfohlen, eine Stunde zu warten, bevor Sie versuchen, das neue Volume zu erstellen.
+**A.** If you delete a locally pinned volume, the space available for new volumes may not be updated immediately. The StorSimple Manager Service updates the local space available approximately every hour. We suggest you wait for an hour before you try to create the new volume.
 
-**F.** Werden lokale Volumes auf Cloud Appliances unterstützt?
+**Q.** Are locally pinned volumes supported on the cloud appliance?
 
-**A.** Lokale Volumes werden auf der Cloud Appliance (8010- und 8020-Geräte, zuvor als virtuelles StorSimple-Gerät bezeichnet) nicht unterstützt.
+**A.** Locally pinned volumes are not supported on the cloud appliance (8010 and 8020 devices formerly referred to as the StorSimple virtual device).
 
-**F.** Kann ich Azure PowerShell-Cmdlets zum Erstellen und Verwalten lokaler Volumes verwenden?
+**Q.** Can I use the Azure PowerShell cmdlets to create and manage locally pinned volumes? 
 
-**A.** Nein, Sie können keine lokalen Volumes über Azure PowerShell-Cmdlets erstellen (alle mithilfe von Azure PowerShell erstellten Volumes sind mehrstufig). Darüber hinaus wird empfohlen, die Azure PowerShell-Cmdlets nicht zum Ändern der Eigenschaften eines lokalen Volumes zu verwenden, da dadurch das Volume ungewollt in ein mehrstufiges Volume geändert wird.
+**A.** No, you cannot create locally pinned volumes via Azure PowerShell cmdlets (any volume you create via Azure PowerShell is tiered). We also suggest that you do not use the Azure PowerShell cmdlets to modify any properties of a locally pinned volume, as it will have the undesired effect of modifying the volume type to tiered.
 
-## Fragen zum Sichern eines lokalen Volumes
+## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Questions about backing up a locally pinned volume
 
-**F.** Werden lokale Momentaufnahmen der lokalen Volumes unterstützt?
+**Q.** Are local snapshots of locally pinned volumes supported?
 
-**A.** Ja, Sie können lokale Momentaufnahmen der lokalen Volumes erstellen. Es wird jedoch dringend empfohlen, die lokalen Volumes regelmäßig mit Cloudmomentaufnahmen zu sichern, um den Schutz Ihrer Daten im Notfall zu gewährleisten.
+**A.** Yes, you can take local snapshots of your locally pinned volumes. However, we strongly suggest that you regularly back up your locally pinned volumes with cloud snapshots to ensure that your data is protected in the eventuality of a disaster.
 
-**F.** Gibt es Richtlinien zum Verwalten lokaler Momentaufnahmen für lokale Volumes?
+**Q.** Are there any guidelines for managing local snapshots for locally pinned volumes?
 
-**A.** Häufige lokale Momentaufnahmen können in Kombination mit umfassenden Datenänderungen auf dem lokalen Volume dazu führen, dass der lokale Speicherplatz auf dem Gerät schnell verbraucht ist und Daten auf mehrstufigen Volumes in die Cloud übertragen werden. Daher wird empfohlen, die Anzahl der lokalen Momentaufnahmen möglichst gering zu halten.
+**A.** Frequent local snapshots alongside a high rate of data churn in the locally pinned volume might cause local space on the device to be consumed quickly and result in data from tiered volumes being pushed to the cloud. We therefore suggest you minimize the number of local snapshots.
 
-**F.** Ich habe eine Warnung mit dem Hinweis erhalten, dass meine lokalen Momentaufnahmen der lokalen Volumes möglicherweise ungültig gemacht werden. Wann kann dieser Fall eintreten?
+**Q.** I received an alert stating that my local snapshots of locally pinned volumes might be invalidated. When can this happen?
 
-**A.** Häufige lokale Momentaufnahmen können in Kombination mit umfassenden Datenänderungen auf dem lokalen Volume dazu führen, dass der lokale Speicherplatz auf dem Gerät schnell verbraucht ist. Wenn die lokalen Ebenen des Geräts stark ausgelastet sind, kann ein längerer Ausfall der Cloud dazu führen, dass das Gerät voll wird. Eingehende Schreibvorgänge auf dem Volume haben unter Umständen eine Invalidierung der Momentaufnahmen zur Folge (da kein Speicherplatz zum Aktualisieren der Momentaufnahmen für den Verweis auf ältere Datenblöcke verfügbar ist, die überschrieben wurden). In diesem Fall werden die Schreibvorgänge auf dem Volume weiterhin bedient, aber die lokalen Momentaufnahmen sind möglicherweise ungültig. Vorhandene Cloudmomentaufnahmen sind davon nicht betroffen.
+**A.** Frequent local snapshots alongside a high rate of data churn in the locally pinned volume might cause local space on the device to be consumed quickly. If the local tiers of the device are heavily used, an extended cloud outage might result in the device becoming full, and incoming writes to the volume might result in invalidation of the snapshots (as no space exists to update the snapshots to refer to the older blocks of data that have been overwritten). In such a situation the writes to the volume will continue to be served, but the local snapshots might be invalid. There is no impact to your existing cloud snapshots.
 
-Die Warnmeldung soll Sie darüber informieren, dass solch eine Situation eintreten kann, und sicherstellen, dass Sie sich rechtzeitig Maßnahmen ergreifen, indem Sie entweder die Zeitpläne für lokale Momentaufnahmen anpassen, um weniger häufig lokale Momentaufnahmen zu erstellen, oder ältere lokale Momentaufnahmen löschen, die nicht mehr erforderlich sind.
+The alert warning is to notify you that such a situation can arise and ensure you address the same in a timely manner by either reviewing your local snapshots schedules to take less frequent local snapshots or deleting older local snapshots that are no longer required.
 
-Wenn die lokalen Momentaufnahmen ungültig werden, erhalten Sie eine Warnung mit der Information, dass die lokalen Momentaufnahmen für die spezifische Sicherungsrichtlinie ungültig gemacht wurden, sowie die Liste mit den Zeitstempeln der lokalen Momentaufnahmen, die ungültig gemacht wurden. Diese Momentaufnahmen werden automatisch gelöscht, und Sie können sie nicht mehr auf der Seite **Sicherungskataloge** im klassischen Azure-Portal anzeigen.
+If the local snapshots are invalidated, you will receive an information alert notifying you that the local snapshots for the specific backup policy have been invalidated alongside the list of timestamps of the local snapshots that were invalidated. These snapshots will be auto-deleted and you will no longer be able to view them in the **Backup Catalogs** page in the Azure classic portal.
 
-## Fragen zum Konvertieren eines mehrstufigen Volumes in ein lokales Volume
+## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Questions about converting a tiered volume to a locally pinned volume
 
-**F.** Ich habe bemerkt, dass das Gerät beim Konvertieren eines mehrstufigen Volumes in ein lokales Volume langsam reagiert. Warum ist das so?
+**Q.** I’m observing some slowness on the device while converting a tiered volume to a locally pinned volume. Why is this happening? 
 
-**A.** Die Konvertierung umfasst zwei Schritte:
+**A.** The conversion process involves two steps: 
 
-  1. Bereitstellen von Speicherplatz auf dem Gerät für das lokale Volume, das in Kürze konvertiert wird
-  2. Herunterladen ausgelagerter Daten aus der Cloud, um lokale Garantien zu gewährleisten
+  1. Provisioning of space on the device for the soon-to-be-converted locally pinned volume.
+  2. Downloading any tiered data from the cloud to ensure local guarantees.
 
-Bei beiden Schritten handelt es sich um Vorgänge mit langer Ausführungsdauer, die von der Größe des zu konvertierenden Volumes, den Daten auf dem Gerät und der verfügbaren Bandbreite abhängig sind. Da einige Daten von vorhandenen mehrstufigen Volumes im Rahmen des Bereitstellungsprozesses möglicherweise in die Cloud übergehen, kann es während dieser Zeit zu Leistungseinbußen auf dem Gerät kommen. Darüber hinaus kann der Konvertierungsprozess in folgenden Fällen langsamer sein:
+Both of these steps are long running operations that are dependent on the size of the volume being converted, data on the device, and available bandwidth. As some data from existing tiered volumes might spill to the cloud as part of the provisioning process, your device might experience reduced performance during this time. In addition, the conversion process can be slower if:
 
-- Vorhandene Volumes wurden nicht in der Cloud gesichert. Daher wird empfohlen, die Volumes vor dem Initiieren einer Konvertierung zu sichern.
+- Existing volumes have not been backed up to the cloud; so we suggest you backup your volumes prior to initiating a conversion.
 
-- Richtlinien zur Bandbreitendrosselung wurden angewendet, die die verfügbare Bandbreite der Cloudverbindung einschränken können. Aus diesem Grund sollten Sie sicherstellen, dass eine dedizierte Bandbreite von mindestens 40 MBit/s für die Cloudverbindung verfügbar ist.
+- Bandwidth throttling policies have been applied, which might constrain the available bandwidth to the cloud; we therefore recommend you have a dedicated 40 Mbps or more connection to the cloud.
 
-- Der Konvertierungsvorgang kann aufgrund der oben erläuterten Faktoren einige Stunden dauern. Daher wird empfohlen, den Vorgang am Wochenende bzw. nicht während Spitzenzeiten auszuführen, damit Endbenutzer nicht beeinträchtigt werden.
+- The conversion process can take several hours due to the multiple factors explained above; therefore, we suggest that you perform this operation during non-peaks times or on a weekend to avoid the impact on end consumers.
 
-Weitere Informationen zum [Konvertieren eines mehrstufigen Volumes in ein lokales Volume](storsimple-manage-volumes-u2.md#change-the-volume-type)
+More information on how to [convert a tiered volume to a locally pinned volume](storsimple-manage-volumes-u2.md#change-the-volume-type)
 
-**F.** Kann ich den Vorgang für die Volumekonvertierung abbrechen?
+**Q.** Can I cancel the volume conversion operation?
 
-**A.** Nein, der Konvertierungsvorgang kann nach seiner Initiierung nicht mehr abgebrochen werden. Wie in der vorherigen Frage erläutert, sollten Sie potenzielle Leistungsprobleme bedenken, die während des Prozesses auftreten können, und sich beim Planen der Konvertierung an die oben genannten Empfehlungen halten.
+**A.** No, you cannot the cancel the conversion operation once initiated. As discussed in the previous question, please be aware of the potential performance issues that you might encounter during the process, and follow the best practices listed above when you plan your conversion.
 
-**F.** Was geschieht mit dem Volume, wenn die Konvertierung fehlschlägt?
+**Q.** What happens to my volume if the conversion operation fails?
 
-**A.** Bei der Volumekonvertierung können aufgrund von Cloudkonnektivitätsproblemen Fehler auftreten. Nach mehreren nicht erfolgreichen Versuchen, ausgelagerte Dateien aus der Cloud abzurufen, beendet das Gerät die Konvertierung möglicherweise. In solch einem Szenario ist der Volumetyp der gleiche wie vor der Konvertierung. Zudem geschieht Folgendes:
+**A.** Volume conversion can fail due to cloud connectivity issues. The device may eventually stop the conversion process after a series of unsuccessful attempts to bring down tiered data from the cloud. In such a scenario, the volume type will continue to be the source volume type prior to conversion, and:
 
-- Eine kritische Warnung wird angezeigt, um Sie über den Volumekonvertierungsfehler zu informieren. Weitere Informationen zu [Warnungen im Zusammenhang mit lokalen Volumes](storsimple-manage-alerts.md#locally-pinned-volume-alerts)
+- A critical alert will be raised to notify you of the volume conversion failure. More information on [alerts related to locally pinned volumes](storsimple-manage-alerts.md#locally-pinned-volume-alerts)
 
-- Wenn Sie ein mehrstufiges Volume in ein lokales Volume konvertieren, weist das Volume weiterhin Eigenschaften eines mehrstufigen Volumes auf, da sich möglicherweise immer noch Daten in der Cloud befinden. Es wird empfohlen, die Konnektivitätsprobleme zu beheben und den Konvertierungsvorgang zu wiederholen.
+- If you are converting a tiered to a locally pinned volume, the volume will continue to exhibit properties of a tiered volume as data might still reside on the cloud. We suggest that you resolve the connectivity issues and then retry the conversion operation.
  
-- Dasselbe gilt bei der fehlgeschlagenen Konvertierung eines lokalen Volumes in ein mehrstufiges Volume: Obwohl das Volume als lokales Volume gekennzeichnet wird, wird es als mehrstufiges Volume ausgeführt (da Daten möglicherweise in die Cloud übergegangen sind). Es belegt jedoch weiterhin Speicherplatz auf den lokalen Ebenen des Geräts. Dieser Speicherplatz ist nicht für andere lokale Volumes verfügbar. Es wird empfohlen, den Vorgang zu wiederholen, um sicherzustellen, dass die Volumekonvertierung abgeschlossen ist und der lokale Speicherplatz auf dem Gerät freigegeben werden kann.
+- Similarly, when conversion from a locally pinned to a tiered volume fails, although the volume will be marked as a locally pinned volume, it will function as a tiered volume (because data could have spilled to the cloud). However, it will continue to occupy space on the local tiers of the device. This space will not be available for other locally pinned volumes. We suggest that you retry this operation to ensure that the volume conversion is complete and the local space on the device can be reclaimed.
 
-## Fragen zum Wiederherstellen eines lokalen Volumes
+## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Questions about restoring a locally pinned volume
 
-**F.** Werden lokale Volumes sofort wiederhergestellt?
+**Q.** Are locally pinned volumes restored instantly?
 
-**A.** Ja, lokale Volumes werden sofort wiederhergestellt. Sobald die Metadateninformationen für das Volume im Rahmen des Wiederherstellungsvorgangs aus der Cloud abgerufen werden, wird das Volume online geschaltet, und vom Host kann darauf zugegriffen werden. Lokale Garantien für die Volumedaten sind erst vorhanden, wenn alle Daten aus der Cloud heruntergeladen wurden. Während der Wiederherstellung kann die Leistung auf diesen Volumes beeinträchtigt sein.
+**A.** Yes, locally pinned volumes are restored instantly. As soon as the metadata information for the volume is pulled from the cloud as part of the restore operation, the volume is brought online and can be accessed by the host. However, local guarantees for the volume data will not be present until all the data has been downloaded from the cloud, and you may experience reduced performance on these volumes for the duration of the restore.
 
-**F.** Wie lange dauert die Wiederherstellung eines lokalen Volumes?
+**Q.** How long does it take to restore a locally pinned volume?
 
-**A.** Lokale Volumes werden sofort wiederhergestellt und online geschaltet, wenn die Volumemetadateninformationen aus der Cloud abgerufen werden. Die Volumedaten werden weiterhin im Hintergrund heruntergeladen. Dieser letzte Teil des Wiederherstellungsvorgangs, also das Abrufen der lokalen Garantien für die Volumedaten, ist ein zeitintensiver Prozess. Es kann mehrere Stunden dauern, bis alle Daten wieder lokal verfügbar sind. Die Dauer zum Abschließen dieses Vorgangs hängt von mehreren Faktoren ab, etwa der Größe des wiederherzustellenden Volumes und der verfügbaren Bandbreite. Wenn das ursprüngliche Volume, das wiederhergestellt wird, gelöscht wurde, wird zusätzlich Zeit darauf verwendet, im Rahmen des Wiederherstellungsvorgangs den lokalen Speicherplatz auf dem Gerät freizugeben.
+**A.** Locally pinned volumes are restored instantly and brought online as soon as the volume metadata information is retrieved from the cloud, while the volume data continues to be downloaded in the background. This latter part of the restore operation--getting back the local guarantees for the volume data--is a long running operation and might take several hours for all the data to be made local again. The time taken to complete the same depends on multiple factors, such as the size of the volume being restored and the available bandwidth. If the original volume that is being restored has been deleted, additional time will be taken to create the local space on the device as part of the restore operation.
 
-**F.** Ich muss für mein vorhandenes lokales Volume eine ältere (bei der Auslagerung des Volumes erstellte) Momentaufnahme wiederherstellen. Wird das Volume in diesem Fall als mehrstufiges Volume wiederhergestellt?
+**Q.** I need to restore my existing locally pinned volume to an older snapshot (taken when the volume was tiered). Will the volume be restored as tiered in this case?
 
-**A.** Nein, das Volume wird als lokales Volume wiederhergestellt. Die Momentaufnahme wurde zwar zum Zeitpunkt der Volumeauslagerung erstellt, beim Wiederherstellen vorhandener Volumes verwendet StorSimple jedoch immer den derzeit vorhandenen Volumetyp auf dem Datenträger.
+**A.** No, the volume will be restored as a locally pinned volume. Although the snapshot dates to the time when the volume was tiered, while restoring existing volumes, StorSimple always uses the type of volume on the disk as it exists currently.
 
-**F.** Ich habe mein lokales Volume vor Kurzem erweitert, nun muss ich die Daten jedoch auf einen Zeitpunkt zurücksetzen, zu dem das Volume kleiner war. Wird bei der Wiederherstellung die Größe des aktuellen Volumes geändert, und muss ich das Volume nach der Wiederherstellung erweitern?
+**Q.** I extended my locally pinned volume recently, but I now need to restore the data to a time when the volume was smaller in size. Will restore resize the current volume and will I need to extend the size of the volume once the restore is completed?
 
-**A.** Ja, bei der Wiederherstellung wird die Größe des Volumes geändert, und Sie müssen das Volume nach der Wiederherstellung erweitern.
+**A.** Yes, the restore will resize the volume, and you will need to extend the size of the volume after the restore is completed.
 
-**F.** Kann ich den Volumetyp während der Wiederherstellung ändern?
+**Q.** Can I change the type of a volume during restore?
 
-**A.** Nein, Sie können den Volumetyp während der Wiederherstellung nicht ändern.
+**A.**No, you cannot change the volume type during restore.
 
-- Volumes, die gelöscht wurden, werden als der in der Momentaufnahme gespeicherte Typ wiederhergestellt.
+- Volumes that have been deleted are restored as the type stored in the snapshot.
 
-- Vorhandene Volumes werden basierend auf ihrem aktuellen Typ wiederhergestellt und zwar unabhängig von dem in der Momentaufnahme gespeicherten Typ (siehe die zwei vorherigen Fragen).
+- Existing volumes are restored based on their current type, irrespective of the type stored in the snapshot (refer to the previous two questions).
  
-**F.** Ich muss mein lokales Volume wiederherstellen, habe jedoch die Momentaufnahme des falschen Zeitpunkts ausgewählt. Kann ich den aktuellen Wiederherstellungsvorgang abbrechen?
+**Q.** I need to restore my locally pinned volume, but I picked an incorrect point in time snapshot. Can I cancel the current restore operation?
 
-**A.** Ja, Sie können einen gerade ausgeführten Wiederherstellungsvorgang abbrechen. Das Volume wird auf den Zustand zu Beginn der Wiederherstellung zurückgesetzt. Alle Schreibvorgänge, die auf dem Volume während der Wiederherstellung vorgenommen wurden, gehen jedoch verloren.
+**A.** Yes, you can cancel an on-going restore operation. The state of the volume will be rolled back to the state at the start of the restore. However, any writes that were made to the volume while the restore was in progress will be lost.
 
-**F.** Ich habe einen Wiederherstellungsvorgang auf einem meiner lokalen Volumes gestartet, und jetzt wird im Backlogkatalog eine Momentaufnahme angezeigt, an deren Erstellung ich mich nicht erinnere. Wofür wird sie verwendet?
+**Q.** I started a restore operation on one of my locally pinned volumes, and now I see a snapshot in my backlog catalog that I don't recollect creating. What is this used for?
 
-**A.** Hierbei handelt es sich um die temporäre Momentaufnahme, die vor dem Wiederherstellungsvorgang erstellt und für Rollbackvorgänge verwendet wird, falls die Wiederherstellung abgebrochen wird oder fehlschlägt. Löschen Sie diese Momentaufnahme nicht. Sie wird nach Abschluss der Wiederherstellung automatisch gelöscht. Dieses Verhalten ist möglich, wenn der Wiederherstellungsauftrag nur lokale Volumes oder eine Mischung aus lokalen und mehrstufigen Volumes enthält. Wenn der Wiederherstellungsauftrag nur mehrstufige Volumes enthält, tritt dieses Verhalten nicht auf.
+**A.** This is the temporary snapshot that is created prior to the restore operation and is used for rollback in case the restore is canceled or fails. Do not delete this snapshot; it will be automatically deleted when the restore is complete. This behavior can occur if your restore job has only locally pinned volumes or a mix of locally pinned and tiered volumes. If the restore job includes only tiered volumes, then this behavior will not occur.
 
-**F.** Kann ich ein lokales Volume klonen?
+**Q.** Can I clone a locally pinned volume?
 
-**A.** Ja, das ist möglich. Das lokale Volume wird jedoch standardmäßig als mehrstufiges Volume geklont. Weitere Informationen zum [Klonen eines lokalen Volumes](storsimple-clone-volume-u2.md)
+**A.** Yes, you can. However, the locally pinned volume will be cloned as a tiered volume by default. More information on how to [clone a  locally pinned volume](storsimple-clone-volume-u2.md)
 
-## Fragen zum Ausführen eines Failovers für ein lokales Volume
+## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Questions about failing over a locally pinned volume
 
-**F.** Ich muss für mein Gerät ein Failover auf ein anderes physisches Gerät ausführen. Erhalte ich beim Failover meiner lokalen Volumes lokale oder mehrstufige Volumes?
+**Q.** I need to fail over my device to another physical device. Will my locally pinned volumes be failed over as locally pinned or tiered?
 
-**A.** Abhängig von der Softwareversion des Zielgeräts erhalten Sie beim Failover lokaler Volumes Folgendes:
+**A.** Depending on the software version of the target device, locally pinned volumes will be failed over as:
 
-- Lokale Volumes, wenn auf dem Zielgerät Update 2 für die StorSimple 8000-Serie ausgeführt wird
-- Mehrstufige Volumes, wenn auf dem Zielgerät Update 1.x für die StorSimple 8000-Serie ausgeführt wird
-- Mehrstufige Volumes, wenn es sich beim Zielgerät um die Cloud Appliance handelt (Softwareversion Update 2 oder Update 1.x)
+- Locally pinned if the target device is running StorSimple 8000 series update 2
+- Tiered if the target device is running StorSimple 8000 series update 1.x
+- Tiered if the target device is the cloud appliance (software version update 2 or update 1.x)
 
-Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volumes mit verschiedenen Versionen](storsimple-device-failover-disaster-recovery.md#device-failover-across-software-versions)
+More information on [failover and DR of locally pinned volumes across versions](storsimple-device-failover-disaster-recovery.md#device-failover-across-software-versions)
 
-**F.** Werden lokale Volumes bei der Notfallwiederherstellung sofort wiederhergestellt?
+**Q.** Are locally pinned volumes instantly restored during disaster recovery (DR)?
 
-**A.** Ja, lokale Volumes werden beim Failover sofort wiederhergestellt. Sobald die Metadateninformationen für das Volume im Rahmen des Failovervorgangs aus der Cloud abgerufen werden, wird das Volume auf dem Gerät online geschaltet, und vom Host kann darauf zugegriffen werden. In der Zwischenzeit werden die Volumedaten weiterhin im Hintergrund heruntergeladen. Während des Failovers treten möglicherweise Leistungseinbußen auf diesen Volumes auf.
+**A.** Yes, locally pinned volumes are restored instantly during failover. As soon as the metadata information for the volume is pulled from the cloud as part of the failover operation, the volume is brought online on the target device and can be accessed by the host. Meanwhile, the volume data will continue to download in the background, and you may experience reduced performance on these volumes for the duration of the failover.
 
-**F.** Der Failoverauftrag wird als abgeschlossen angezeigt. Wie kann ich den Status eines lokalen Volumes nachverfolgen, das auf dem Zielgerät wiederhergestellt wird?
+**Q.** I see the failover job completed, how can I track the progress of locally pinned volume that is being restored on the target device?
 
-**A.** Bei einem Failover wird der Failoverauftrag als abgeschlossen markiert, sobald alle Volumes in der Failovergruppe wiederhergestellt und auf dem Zielgerät online geschaltet wurden. Dazu gehören alle lokalen Volumes, für die möglicherweise ein Failover ausgeführt wurde. Lokale Garantien der Daten sind jedoch nur verfügbar, wenn alle Daten für das Volume heruntergeladen wurden. Sie können den Status für jedes lokale Volume, für das ein Failover ausgeführt wurde, durch die Überwachung der entsprechenden Wiederherstellungsaufträge nachverfolgen, die im Rahmen des Failovers erstellt werden. Diese individuellen Wiederherstellungsaufträge werden nur für lokale Volumes erstellt.
+**A.** During a failover operation, the failover job is marked as complete once all the volumes in the failover set have been instantly restored and brought online on the target device. This includes any locally pinned volumes that might have been failed over; however, local guarantees of the data will only be available when all the data for the volume has been downloaded. You can track this progress for each locally pinned volume that was failed over by monitoring the corresponding restore jobs that are created as part of the failover. These individual restore jobs will only be created for locally pinned volumes.
 
-**F.** Kann ich den Volumetyp während des Failovers ändern?
+**Q.** Can I change the type of a volume during failover?
 
-**A.** Nein, Sie können den Volumetyp während eines Failovers nicht ändern. Bei einem Failover auf ein anderes physisches Gerät, auf dem Update 2 der StorSimple 8000-Serie ausgeführt wird, wird für die Volumes basierend auf dem in der Momentaufnahme gespeicherten Volumetyp ein Failover ausgeführt. Bei einem Failover auf eine andere Geräteversion lesen Sie oben die Frage zum Volumetyp nach einem Failover.
+**A.** No, you cannot change the volume type during a failover. If you are failing over to another physical device that is running StorSimple 8000 series update 2, the volumes will be failed over based on the volume type stored in the snapshot. When failing over to any other device version, refer to the question above on the volume type after a failover.
 
-**F.** Kann ich für einen Volumecontainer mit lokalen Volumes ein Failover auf die Cloud Appliance ausführen?
+**Q.** Can I fail over a volume container with locally pinned volumes to the cloud appliance?
 
-**A.** Ja, das ist möglich. Bei einem Failover der lokalen Volumes erhalten Sie mehrstufige Volumes. Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volumes mit verschiedenen Versionen](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
+**A.** Yes, you can. The locally pinned volumes will be failed over as tiered volumes. More information on [failover and DR of locally pinned volumes across versions](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

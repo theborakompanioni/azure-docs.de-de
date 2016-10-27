@@ -9,15 +9,17 @@
 <tags
    ms.service="application-gateway"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="09/26/2016"
    ms.author="amsriva"/>
 
-# Web Application Firewall für Application Gateway (Vorschau)
 
-Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Zu diesen Sicherheitslücken (Exploits) gehören üblicherweise Angriffe durch Einschleusung von SQL-Befehlen oder Angriffe durch websiteübergreifende Skripts, um nur einige zu nennen. Das Verhindern solcher Angriffe im Anwendungscode ist oft schwierig und erfordert strenge Wartung, Patching und Überwachung auf verschiedenen Ebenen der Anwendungstopologie. Ein zentraler Schutz vor Webangriffen vereinfacht die Sicherheitsverwaltung erheblich und verleiht der Anwendung eine bessere Sicherung gegen die Bedrohungen durch Angriffe. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendungen separat zu sichern.
+# <a name="application-gateway-web-application-firewall-(preview)"></a>Web Application Firewall für Application Gateway (Vorschau)
+
+Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannte Sicherheitslücken ausnutzen. Zu diesen Sicherheitslücken (Exploits) gehören üblicherweise Angriffe durch Einschleusung von SQL-Befehlen oder Angriffe durch websiteübergreifende Skripts, um nur einige zu nennen.
+Das Verhindern solcher Angriffe im Anwendungscode ist oft schwierig und erfordert strenge Wartung, Patching und Überwachung auf verschiedenen Ebenen der Anwendungstopologie. Ein zentraler Schutz vor Webangriffen vereinfacht die Sicherheitsverwaltung erheblich und verleiht der Anwendung eine bessere Sicherung gegen die Bedrohungen durch Angriffe. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendungen separat zu sichern.
 
 ![imageURLroute](./media/application-gateway-webapplicationfirewall-overview/WAF1.png)
 
@@ -30,7 +32,7 @@ Das Konfigurieren einer WAF auf dem Anwendungsgateway bietet die folgenden Vorte
 - Überwachen Sie Ihre Webanwendung auf Angriffe, indem Sie Echtzeitberichte verwenden, die anhand von WAF-Protokollen des Anwendungsgateways generiert werden.
 - Bestimmte Kompatibilitätssteuerelemente erfordern, dass alle über das Internet zugänglichen Endpunkte durch eine WAF-Lösung geschützt werden müssen. Durch die Verwendung von Application Gateway mit aktivierter WAF können Sie diese Kompatibilitätsauflagen erfüllen.
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 
 Die Application Gateway-WAF wird in einer neuen SKU angeboten (WAF SKU) und ist mit ModSecurity und dem OWASP-Kernregelsatz vorkonfiguriert. So bietet sie Baselineschutz vor den meisten von OWASP zusammengestellten Top 10-Sicherheitslücken im Web.
 
@@ -43,14 +45,14 @@ Die Application Gateway-WAF wird in einer neuen SKU angeboten (WAF SKU) und ist 
 - Verhindern von Bots, Crawlern und Scannern
 - Erkennung häufiger Fehler bei der Anwendungskonfiguration (d.h. Apache, IIS usw.)
 
-## WAF-Modi
+## <a name="waf-modes"></a>WAF-Modi
 
 Die Application Gateway-WAF kann für die Ausführung in den folgenden beiden Modi konfiguriert werden:
 
-- **Erkennungsmodus**: Wenn sie für die Ausführung im Erkennungsmodus konfiguriert ist, überwacht die Application Gateway-WAF alle Bedrohungswarnungen und protokolliert sie in einer Protokolldatei. Sie müssen sicherstellen, dass die Protokollierung von Diagnosedaten für Application Gateway im Abschnitt „Diagnose“ aktiviert ist. Zudem müssen Sie sicherstellen, dass das WAF-Protokoll ausgewählt und aktiviert ist.
-- **Schutzmodus**: Wenn die WAF für die Ausführung im Schutzmodus konfiguriert ist, blockiert Application Gateway aktiv Eindringlinge und Angriffe, die von den Regeln erkannt werden. Der Angreifer erhält eine Ausnahme 403 (nicht autorisierter Zugriff), und die Verbindung wird beendet. Der Schutzmodus protokolliert solche Angriffe weiterhin in den WAF-Protokollen.
+- **Erkennungsmodus** : Wenn sie für die Ausführung im Erkennungsmodus konfiguriert ist, überwacht die Application Gateway-WAF alle Bedrohungswarnungen und protokolliert sie in einer Protokolldatei. Sie müssen sicherstellen, dass die Protokollierung von Diagnosedaten für Application Gateway im Abschnitt „Diagnose“ aktiviert ist. Zudem müssen Sie sicherstellen, dass das WAF-Protokoll ausgewählt und aktiviert ist.
+- **Schutzmodus** : Wenn die WAF für die Ausführung im Schutzmodus konfiguriert ist, blockiert Application Gateway aktiv Eindringlinge und Angriffe, die von den Regeln erkannt werden. Der Angreifer erhält eine Ausnahme 403 (nicht autorisierter Zugriff), und die Verbindung wird beendet. Der Schutzmodus protokolliert solche Angriffe weiterhin in den WAF-Protokollen.
 
-## Application Gateway-WAF-Berichte
+## <a name="application-gateway-waf-reports"></a>Application Gateway-WAF-Berichte
 
 Die Application Gateway-WAF bietet detaillierte Berichte zu jeder erkannten Bedrohung. Die Protokollierung ist in Azure-Diagnoseprotokolle integriert, und Warnungen werden in einem JSON-Format aufgezeichnet.
 
@@ -74,12 +76,16 @@ Die Application Gateway-WAF bietet detaillierte Berichte zu jeder erkannten Bedr
             "details":{"message":" Warning. Pattern match "(?i)(<script","file":"/owasp_crs/base_rules/modsecurity_crs_41_xss_attacks.conf","line":"14"}}
     }
 
-## SKU-Preise für die Application Gateway-WAF
+## <a name="application-gateway-waf-sku-pricing"></a>SKU-Preise für die Application Gateway-WAF
 
 Während der Vorschau fallen keine zusätzlichen Gebühren für die Nutzung der Application Gateway-WAF an. Ihre vorhandenen Basic-SKU-Gebühren werden weiterhin in Rechnung gestellt. Zum Zeitpunkt der allgemeinen Verfügbarkeit werden wir Ihnen die WAF-SKU-Gebühren mitteilen. Bei Kunden, die sich für die Bereitstellung von Application Gateway in der WAF-SKU entschieden haben, fallen die WAF-SKU-Preise erst nach Ankündigung der allgemeinen Verfügbarkeit an.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie weitere Funktionen der WAF kennen gelernt haben, finden Sie weitere Informationen unter [Konfigurieren der Web Application Firewall auf Application Gateway](application-gateway-web-application-firewall-portal.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

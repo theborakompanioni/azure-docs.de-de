@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen einer pfadbasierten Regel für ein Application Gateway über das Portal | Microsoft Azure"
-   description="Erfahren Sie, wie Sie eine pfadbasierte Regel für ein Application Gateway über das Portal erstellen."
+   pageTitle="Create a Path-based rule for an application gateway by using the portal | Microsoft Azure"
+   description="Learn how to create a Path-based rule for an application gateway by using the portal"
    services="application-gateway"
    documentationCenter="na"
    authors="georgewallace"
@@ -17,71 +17,76 @@
    ms.date="08/18/2016"
    ms.author="gwallace" />
 
-# Erstellen einer pfadbasierten Regel für ein Application Gateway über das Portal
+
+# <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-portal"></a>Create a Path-based rule for an application gateway by using the portal
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](application-gateway-create-url-route-portal.md)
+- [Azure portal](application-gateway-create-url-route-portal.md)
 - [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
 
-Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf dem URL-Pfad der Http-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Backend-Pool für die URL-Listen im Application Gateway konfiguriert ist, und der Netzwerkverkehr wird an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
+URL Path-based routing enables you to associate routes based on the URL path of Http request. It checks if there is a route to a back-end pool configured for the URL lists in Application Gateway and send the network traffic to the defined back-end pool. A common use for URL-based routing is to load balance requests for different content types to different back-end server pools.
 
-Mit Routing auf URL-Basis wird ein neuer Regeltyp für das Application Gateway eingeführt. Application Gateways verfügen über zwei Regeltypen: Basisregeln und pfadbasierte Regeln. Der Basisregeltyp bietet einen Roundrobin-Dienst für die Back-End-Pools, während pfadbasierte Regeln neben der Roundrobin-Verteilung auch Pfadmuster der Anforderungs-URL beim Auswählen des Back-End-Pools berücksichtigen.
+URL-based routing introduces a new rule type to application gateway. Application gateway has two rule types: basic and Path-Based rules. Basic rule type provides round-robin service for the back-end pools while Path-Based rules in addition to round robin distribution, also takes path pattern of the request URL into account while choosing the backend pool.
 
 
 
-## Szenario
+## <a name="scenario"></a>Scenario
 
-Das folgende Szenario führt Sie durch die Erstellung einer pfadbasierten Regel in einem vorhandenen Application Gateway. Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway-portal.md) bereits durchgeführt haben.
+The following scenario goes through creating a Path-based rule in an existing application gateway.
+The scenario assumes that you have already followed the steps to [Create an Application Gateway](application-gateway-create-gateway-portal.md).
 
-![URL-Route][scenario]
+![url route][scenario]
 
-## <a name="createrule"></a>Erstellen der pfadbasierten Regel
+## <a name="<a-name="createrule"></a>create-the-path-based-rule"></a><a name="createrule"></a>Create the Path-based rule
 
-Eine pfadbasierende Regel erfordert einen eigenen Listener. Stellen Sie daher vor dem Erstellen der Regel sicher, dass Ihnen ein Listener zur Verfügung steht, den Sie verwenden können.
+A Path-based rule requires its own listener, before creating the rule be sure to verify you have an available listener to use.
 
-### Schritt 1
+### <a name="step-1"></a>Step 1
 
-Navigieren Sie zu http://portal.azure.com, und wählen Sie ein vorhandenes Anwendungsgateway aus. Klicken Sie auf **Regeln**.
+Navigate to http://portal.azure.com and select an existing application gateway. Click **Rules**
 
-![Übersicht über Application Gateway][1]
+![Application Gateway overview][1]
 
-### Schritt 2
+### <a name="step-2"></a>Step 2
 
-Klicken Sie auf **Pfadbasiert**, um eine neue pfadbasierte Regel hinzuzufügen.
+Click **Path-based** button to add a new Path-based rule.
 
-### Schritt 3
+### <a name="step-3"></a>Step 3
 
-Das Blatt **Add path-based rule** (Pfadbasierte Regel hinzufügen) verfügt über zwei Abschnitte. Im ersten Abschnitt haben Sie den Listener, den Namen der Regel und die Standardpfadeinstellungen festgelegt. Die Standardpfadeinstellungen gelten für Routen, die nicht unter benutzerdefinierte, pfadbasierte Regeln fallen. Im zweiten Abschnitt des Blatts **Add path-based rule** (Pfadbasierte Regel hinzufügen) definierten Sie die pfadbasierten Regeln.
+The **Add path-based rule** blade has two sections. The first section is where you defined the listener, the name of the rule and the default path settings. The default path settings are for routes that do not fall under the custom path-based route. The second section of the **Add path-based rule** blade is where you define the path-based rules themselves.
 
 **Basic Settings**
 
-- **Name**: Dies ist der Anzeigename für die Regel, auf die Sie über das Portal zugreifen können.
-- **Listener**: Dies ist der Listener, der für die Regel verwendet wird.
-- **Default backend pool** (Standard-Back-End-Pool): Dies ist die Einstellung, die das Back-End für die Standardregel festlegt.
-- **Default HTTP settings** (Standard-HTTP-Einstellungen): Dies ist die Einstellung, die die HTTP-Einstellungen für die Standardregel festlegt.
+- **Name** - This is a friendly name to the rule that is accessible in the portal.
+- **Listener** - This is the listener that is used for the rule.
+- **Default backend pool** - This setting is the setting that defines the back-end to be used for the default rule
+- **Default HTTP settings** - This setting is the setting that defines the HTTP settings to be used for the default rule.
 
-**Pfadbasierte Regeln**
+**Path-based rules**
 
-- **Name**: Dies ist der Anzeigename der pfadbasierten Regel.
-- **Pfade**: Diese Einstellung legt den Pfad fest, nach dem die Regel beim Weiterleiten von Datenverkehr sucht.
-- **Back-End-Pool**: Dies ist die Einstellung, die das Back-End für die Regel festlegt.
-- **HTTP-Einstellung**: Dies ist die Einstellung, die die HTTP-Einstellungen für die Regel festlegt.
+- **Name** - This is a friendly name to path-based rule.
+- **Paths** - This setting defines the path the rule will look for when forwarding traffic
+- **Backend Pool** - This setting is the setting that defines the back-end to be used for the rule
+- **HTTP setting** - This setting is the setting that defines the HTTP settings to be used for the rule.
 
->[AZURE.IMPORTANT] Pfade: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/*“.
+>[AZURE.IMPORTANT] Paths: The list of path patterns to match. Each must start with / and the only place a "\*" is allowed is at the end. Valid examples are /xyz, /xyz* or /xyz/*.  
 
-![Hinzufügen eines Blatts mit pfadbasierten Regeln mit bereitgestellten Informationen][2]
+![Add path-based rule blade with information filled out][2]
 
-Das Hinzufügen einer pfadbasierten Regel zu einem bestehenden Application Gateway ist über das Portal ein einfacher Prozess. Nachdem eine pfadbasierte Regel erstellt wurde, kann sie bearbeitet werden, damit zusätzliche Regeln einfach hinzugefügt werden können.
+Adding a path-based rule to an existing application gateway is an easy process through the portal. Once a path-based rule has been created, it can be edited to add additional rules easily. 
 
-![Hinzufügen zusätzlicher pfadbasierter Regeln][3]
+![adding additional path-based rules][3]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gateway finden Sie unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md).
+To learn how to configure SSL Offloading with Azure Application Gateway see [Configure SSL Offload](application-gateway-ssl-portal.md)
 
 [1]: ./media/application-gateway-create-url-route-portal/figure1.png
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png
 [3]: ./media/application-gateway-create-url-route-portal/figure3.png
 [scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

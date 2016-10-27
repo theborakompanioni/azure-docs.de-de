@@ -1,210 +1,215 @@
 <properties 
-	pageTitle="Testumgebung für Branchenanwendung | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie eine webbasierte Branchenanwendung in einer Hybrid Cloud-Umgebung für Tests durch IT-Spezialisten oder zu Entwicklungszwecken erstellen." 
-	services="virtual-machines-windows" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="LOB application test environment | Microsoft Azure" 
+    description="Learn how to create a web-based, line of business application in a hybrid cloud environment for IT pro or development testing." 
+    services="virtual-machines-windows" 
+    documentationCenter="" 
+    authors="JoeDavies-MSFT" 
+    manager="timlt" 
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines-windows" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-windows" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/08/2016" 
-	ms.author="josephd"/>
+    ms.service="virtual-machines-windows" 
+    ms.workload="infrastructure-services" 
+    ms.tgt_pltfrm="vm-windows" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/30/2016" 
+    ms.author="josephd"/>
 
-# Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken
 
-In diesem Thema werden die Schritte zum Erstellen einer simulierten Hybrid Cloud-Umgebung zum Testen einer in Microsoft Azure gehosteten webbasierten Branchenanwendung erläutert. Die resultierende Konfiguration sieht folgendermaßen aus.
+# <a name="set-up-a-web-based-lob-application-in-a-hybrid-cloud-for-testing"></a>Set up a web-based LOB application in a hybrid cloud for testing
+
+This topic steps you through creating a simulated hybrid cloud environment for testing a web-based line of business (LOB) application hosted in Microsoft Azure. Here is the resulting configuration.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph3.png)
 
-Diese Konfiguration umfasst Folgendes:
+This configuration consists of:
 
-- Ein simuliertes lokales Netzwerk, das unter Azure gehostet wird (TestLab VNet)
-- Ein standortübergreifendes virtuelles und in Azure gehostetes Netzwerk (TestVNET)
-- Eine VNet-zu-VNet-VPN-Verbindung
-- Einen webbasierten Branchenserver, einen SQL Server-Computer und einen sekundären Domänencontroller im virtuellen Netzwerk „TestVNET“
+- A simulated on-premises network hosted in Azure (the TestLab VNet).
+- A cross-premises virtual network hosted in Azure (TestVNET).
+- A VNet-to-VNet VPN connection.
+- A web-based LOB server, SQL server, and secondary domain controller in the TestVNET virtual network.
 
-Diese Konfiguration bietet eine Grundlage und einen allgemeinen Ausgangspunkt für Folgendes:
+This configuration provides a basis and common starting point from which you can:
 
-- Entwickeln und Testen von Branchenanwendungen, die in Internetinformationsdienste (IIS) gehostet werden und über ein SQL Server 2014-Datenbank-Back-End in Azure verfügen
-- Ausführen und Testen dieser simulierten Hybrid Cloud-basierten IT-Workload
+- Develop and test LOB applications hosted on Internet Information Services (IIS) with a SQL Server 2014 database backend in Azure.
+- Perform testing of this simulated hybrid cloud-based IT workload.
 
-Die Einrichtung dieser Hybrid Cloud-Testumgebung besteht aus drei Hauptphasen:
+There are three major phases to setting up this hybrid cloud test environment:
 
-1.	Einrichten der simulierten Hybrid Cloud-Umgebung
-2.	Konfigurieren des SQL Server-Computers (SQL1)
-3.	Konfigurieren den Branchenservers (LOB1)
+1.  Set up the simulated hybrid cloud environment.
+2.  Configure the SQL server computer (SQL1).
+3.  Configure the LOB server (LOB1).
 
-Für diese Workload ist ein Azure-Abonnement nötig. Wenn Sie ein MSDN- oder Visual Studio-Abonnement besitzen, finden Sie weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+This workload requires an Azure subscription. If you have an MSDN or Visual Studio subscription, see [Monthly Azure credit for Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
-Ein Beispiel für eine in Azure gehostete Produktionsbranchenanwendung finden Sie in der Architekturblaupause für **Branchenanwendungen** unter [Blaupausen für Software-Architekten](http://msdn.microsoft.com/dn630664).
+For an example of a production LOB application hosted in Azure, see the **Line of business applications** architecture blueprint at [Microsoft Software Architecture Diagrams and Blueprints](http://msdn.microsoft.com/dn630664).
 
-## Phase 1: Einrichten der simulierten Hybrid Cloud-Umgebung
+## <a name="phase-1:-set-up-the-simulated-hybrid-cloud-environment"></a>Phase 1: Set up the simulated hybrid cloud environment
 
-Erstellen Sie die [simulierte Hybrid Cloud-Testumgebung](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md). Da das Vorhandensein des APP1-Servers im Subnetz „Corpnet“ in dieser Testumgebung nicht erforderlich ist, können Sie ihn vorerst herunterfahren.
+Create the [simulated hybrid cloud test environment](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md). Because this test environment does not require the presence of the APP1 server on the Corpnet subnet, you can shut it down for now.
 
-Die aktuelle Konfiguration sieht folgendermaßen aus.
+This is your current configuration.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph1.png)
  
-## Phase 2: Konfigurieren des SQL Server-Computers (SQL1)
+## <a name="phase-2:-configure-the-sql-server-computer-(sql1)"></a>Phase 2: Configure the SQL server computer (SQL1)
 
-Starten Sie gegebenenfalls den DC2-Computer über das Azure-Portal.
+From the Azure portal, start the DC2 computer if needed.
 
-Erstellen Sie als Nächstes über eine Azure PowerShell-Eingabeaufforderung auf dem lokalen Computer mit den folgenden Befehlen einen virtuellen Computer für SQL1. Füllen Sie vor dem Ausführen dieser Befehle die Variablenwerte aus, und entfernen Sie die Zeichen < und >.
+Next, create a virtual machine for SQL1 with these commands at an Azure PowerShell command prompt on your local computer. Prior to running these commands, fill in the variable values and remove the < and > characters.
 
-	$rgName="<your resource group name>"
-	$locName="<the Azure location of your resource group>"
-	$saName="<your storage account name>"
-	
-	$vnet=Get-AzureRMVirtualNetwork -Name "TestVNET" -ResourceGroupName $rgName
-	$subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "TestSubnet"
-	$pip=New-AzureRMPublicIpAddress -Name SQL1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-	$nic=New-AzureRMNetworkInterface -Name SQL1-NIC -ResourceGroupName $rgName -Location $locName -Subnet $subnet -PublicIpAddress $pip
-	$vm=New-AzureRMVMConfig -VMName SQL1 -VMSize Standard_A4
-	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
-	$vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/SQL1-SQLDataDisk.vhd"
-	Add-AzureRMVMDataDisk -VM $vm -Name "Data" -DiskSizeInGB 100 -VhdUri $vhdURI  -CreateOption empty
-	
-	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the SQL Server computer." 
-	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName SQL1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftSQLServer -Offer SQL2014-WS2012R2 -Skus Standard -Version "latest"
-	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
-	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
-	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/SQL1-OSDisk.vhd"
-	$vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
-	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
+    $rgName="<your resource group name>"
+    $locName="<the Azure location of your resource group>"
+    $saName="<your storage account name>"
+    
+    $vnet=Get-AzureRMVirtualNetwork -Name "TestVNET" -ResourceGroupName $rgName
+    $subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "TestSubnet"
+    $pip=New-AzureRMPublicIpAddress -Name SQL1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+    $nic=New-AzureRMNetworkInterface -Name SQL1-NIC -ResourceGroupName $rgName -Location $locName -Subnet $subnet -PublicIpAddress $pip
+    $vm=New-AzureRMVMConfig -VMName SQL1 -VMSize Standard_A4
+    $storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+    $vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/SQL1-SQLDataDisk.vhd"
+    Add-AzureRMVMDataDisk -VM $vm -Name "Data" -DiskSizeInGB 100 -VhdUri $vhdURI  -CreateOption empty
+    
+    $cred=Get-Credential -Message "Type the name and password of the local administrator account for the SQL Server computer." 
+    $vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName SQL1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+    $vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftSQLServer -Offer SQL2014-WS2012R2 -Skus Standard -Version "latest"
+    $vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
+    $storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+    $osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/SQL1-OSDisk.vhd"
+    $vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
+    New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-Verwenden Sie das Azure-Portal zum Herstellen einer Verbindung mit SQL1 mithilfe des lokalen Administratorkontos von SQL1.
+Use the Azure portal to connect to SQL1 using the local administrator account of SQL1.
 
-Konfigurieren Sie anschließend Windows-Firewallregeln, um das Testen der allgemeinen Konnektivität und SQL Server-Datenverkehr zuzulassen. Führen Sie in der Windows PowerShell-Eingabeaufforderung von SQL1 die folgenden Befehle auf Administratorebene aus.
+Next, configure Windows Firewall rules to allow basic connectivity testing and SQL Server traffic. From an administrator-level Windows PowerShell command prompt on SQL1, run these commands.
 
-	New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -LocalPort 1433,1434,5022 -Action allow 
-	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
-	ping dc2.corp.contoso.com
+    New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -LocalPort 1433,1434,5022 -Action allow 
+    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
+    ping dc2.corp.contoso.com
 
-Der Ping-Befehl sollte zu vier erfolgreichen Antworten von der IP-Adresse 192.168.0.4 führen.
+The ping command should result in four successful replies from IP address 192.168.0.4.
 
-Fügen Sie anschließend den zusätzlichen Datenträger auf SQL1 als neues Volume mit dem Laufwerkbuchstaben „F:“ hinzu.
+Next, add the extra data disk on SQL1 as a new volume with the drive letter F:.
 
-1.	Klicken Sie im linken Bereich des Server-Managers auf **Datei- und Speicherdienste** und anschließend auf **Datenträger**.
-2.	Klicken Sie im Inhaltsbereich in der Gruppe **Datenträger** auf **Datenträger 2** (wobei **Partition** die Einstellung **Unbekannt** aufweisen muss).
-3.	Klicken Sie auf **Aufgaben** und anschließend auf **Neues Volume**.
-4.	Klicken Sie auf der Seite „Voraussetzungen“ des Assistenten für neue Volumes auf **Weiter**.
-5.	Klicken Sie auf der Seite „Server und Datenträger auswählen“ auf **Datenträger 2** und anschließend auf **Weiter**. Wenn Sie dazu aufgefordert werden, klicken Sie auf **OK**.
-6.	Klicken Sie auf der Seite „Geben Sie die Größe des Volumes an“ auf **Weiter**.
-7.	Klicken Sie auf der Seite „Einem Laufwerkbuchstaben oder Ordner zuweisen“ auf **Weiter**.
-8.	Klicken Sie auf der Seite „Dateisystemeinstellungen auswählen“ auf **Weiter**.
-9.	Klicken Sie auf der Seite „Auswahl bestätigen“ auf **Erstellen**.
-10.	Wenn Sie fertig sind, klicken Sie auf **Schließen**.
+1.  In the left pane of Server Manager, click **File and Storage Services**, and then click **Disks**.
+2.  In the contents pane, in the **Disks** group, click **disk 2** (with the **Partition** set to **Unknown**).
+3.  Click **Tasks**, and then click **New Volume**.
+4.  On the Before you begin page of the New Volume Wizard, click **Next**.
+5.  On the Select the server and disk page, click **Disk 2**, and then click **Next**. When prompted, click **OK**.
+6.  On the Specify the size of the volume page, click **Next**.
+7.  On the Assign to a drive letter or folder page, click **Next**.
+8.  On the Select file system settings page, click **Next**.
+9.  On the Confirm selections page, click **Create**.
+10. When complete, click **Close**.
 
-Führen Sie die folgenden Befehle in der Windows PowerShell-Eingabeaufforderung auf SQL1 aus:
+Run these commands at the Windows PowerShell command prompt on SQL1:
 
-	md f:\Data
-	md f:\Log
-	md f:\Backup
+    md f:\Data
+    md f:\Log
+    md f:\Backup
 
-Verknüpfen Sie SQL1 als Nächstes mit der Windows Server Active Directory-Domäne CORP, indem Sie diese Befehle an der Windows PowerShell-Eingabeaufforderung auf SQL1 verwenden.
+Next, join SQL1 to the CORP Windows Server Active Directory domain with these commands at the Windows PowerShell prompt on SQL1.
 
-	Add-Computer -DomainName corp.contoso.com
-	Restart-Computer
+    Add-Computer -DomainName corp.contoso.com
+    Restart-Computer
 
-Verwenden Sie das Konto „CORP\\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
+Use the CORP\User1 account when prompted to supply domain account credentials for the **Add-Computer** command.
 
-Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit SQL1 mithilfe des *lokalen Administratorkontos von SQL1*.
+After restarting, use the Azure portal to connect to SQL1 *with the local administrator account of SQL1*.
 
-Konfigurieren Sie anschließend SQL Server 2014 so, dass das Laufwerk F: für neue Datenbanken und Berechtigungen für Benutzerkonten verwendet werden kann.
+Next, configure SQL Server 2014 to use the F: drive for new databases and for user account permissions.
 
-1.	Geben Sie auf dem Startbildschirm **SQL Server Management** ein, und klicken Sie auf **SQL Server 2014 Management Studio**.
-2.	Klicken Sie unter **Mit Server verbinden** auf **Verbinden**.
-3.	Klicken Sie im Strukturbereich "Objekt-Explorer" mit der rechten Maustaste auf **SQL1**, und klicken Sie anschließend auf **Eigenschaften**.
-4.	Klicken Sie im Fenster **Servereigenschaften** auf **Datenbankeinstellungen**.
-5.	Suchen Sie den Eintrag **Standardspeicherorte für Datenbank**, und legen Sie die folgenden Werte fest:
-	- Geben Sie für **Daten** den Pfad **f:\\Data** ein.
-	- Geben Sie für **Protokoll** den Pfad **f:\\Log** ein.
-	- Geben Sie für **Sicherung** den Pfad **f:\\Backup** ein.
-	- Hinweis: Nur neue Datenbanken verwenden diese Speicherorte.
-6.	Klicken Sie auf **OK**, um das Fenster zu schließen.
-7.	Öffnen Sie im Strukturbereich **Objekt-Explorer** den Abschnitt **Sicherheit**.
-8.	Klicken Sie mit der rechten Maustaste auf **Anmeldungen**, und klicken Sie dann auf **Neue Anmeldung**.
-9.	Geben Sie in das Feld **Anmeldename** den Namen **CORP\\User1** ein.
-10.	Klicken Sie auf der Seite **Serverrollen** auf **Sysadmin** und anschließend auf **OK**.
-11.	Schließen Sie Microsoft SQL Server Management Studio.
+1.  From the Start screen, type **SQL Server Management**, and then click **SQL Server 2014 Management Studio**.
+2.  In **Connect to Server**, click **Connect**.
+3.  In the Object Explorer tree pane, right-click **SQL1**, and then click **Properties**.
+4.  In the **Server Properties** window, click **Database Settings**.
+5.  Locate the **Database default locations** and set these values: 
+    - For **Data**, type the path **f:\Data**.
+    - For **Log**, type the path **f:\Log**.
+    - For **Backup**, type the path **f:\Backup**.
+    - Note: Only new databases use these locations.
+6.  Click the **OK** to close the window.
+7.  In the **Object Explorer** tree pane, open **Security**.
+8.  Right-click **Logins** and then click **New Login**.
+9.  In **Login name**, type **CORP\User1**.
+10. On the **Server Roles** page, click **sysadmin**, and then click **OK**.
+11. Close Microsoft SQL Server Management Studio.
 
-Die aktuelle Konfiguration sieht folgendermaßen aus.
+This is your current configuration.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph2.png)
  
-## Phase 3: Konfigurieren den Branchenservers (LOB1)
+## <a name="phase-3:-configure-the-lob-server-(lob1)"></a>Phase 3: Configure the LOB server (LOB1)
 
-Führen Sie als Erstes auf dem lokalen Computer die folgenden Befehle in der Azure PowerShell-Eingabeaufforderung aus, um einen virtuellen Computer für LOB1 zu erstellen.
+First, create a virtual machine for LOB1 with these commands at the Azure PowerShell command prompt on your local computer.
 
-	$rgName="<your resource group name>"
-	$locName="<your Azure location, such as West US>"
-	$saName="<your storage account name>"
-	
-	$vnet=Get-AzureRMVirtualNetwork -Name "TestVNET" -ResourceGroupName $rgName
-	$subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "TestSubnet"
-	$pip=New-AzureRMPublicIpAddress -Name LOB1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-	$nic=New-AzureRMNetworkInterface -Name LOB1-NIC -ResourceGroupName $rgName -Location $locName -Subnet $subnet -PublicIpAddress $pip
-	$vm=New-AzureRMVMConfig -VMName LOB1 -VMSize Standard_A2
-	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
-	$cred=Get-Credential -Message "Type the name and password of the local administrator account for LOB1."
-	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName LOB1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
-	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/LOB1-TestLab-OSDisk.vhd"
-	$vm=Set-AzureRMVMOSDisk -VM $vm -Name LOB1-TestVNET-OSDisk -VhdUri $osDiskUri -CreateOption fromImage
-	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
+    $rgName="<your resource group name>"
+    $locName="<your Azure location, such as West US>"
+    $saName="<your storage account name>"
+    
+    $vnet=Get-AzureRMVirtualNetwork -Name "TestVNET" -ResourceGroupName $rgName
+    $subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "TestSubnet"
+    $pip=New-AzureRMPublicIpAddress -Name LOB1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+    $nic=New-AzureRMNetworkInterface -Name LOB1-NIC -ResourceGroupName $rgName -Location $locName -Subnet $subnet -PublicIpAddress $pip
+    $vm=New-AzureRMVMConfig -VMName LOB1 -VMSize Standard_A2
+    $storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+    $cred=Get-Credential -Message "Type the name and password of the local administrator account for LOB1."
+    $vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName LOB1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+    $vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+    $vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
+    $osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/LOB1-TestLab-OSDisk.vhd"
+    $vm=Set-AzureRMVMOSDisk -VM $vm -Name LOB1-TestVNET-OSDisk -VhdUri $osDiskUri -CreateOption fromImage
+    New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-Verwenden Sie als Nächstes das Azure-Portal zum Herstellen einer Verbindung mit LOB1 mithilfe der Anmeldeinformationen des lokalen Administratorkontos von LOB1.
+Next, use the Azure portal to connect to LOB1 with the credentials of the local administrator account of LOB1.
 
-Konfigurieren Sie anschließend eine Windows-Firewall-Regel, um Datenverkehr zum Testen der allgemeinen Konnektivität zuzulassen. Führen Sie auf LOB1 in einer Windows PowerShell-Eingabeaufforderung auf Administratorebene die folgenden Befehle aus.
+Next, configure a Windows Firewall rule to allow traffic for basic connectivity testing. From an administrator-level Windows PowerShell command prompt on LOB1, run these commands.
 
-	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
-	ping dc2.corp.contoso.com
+    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
+    ping dc2.corp.contoso.com
 
-Der Ping-Befehl sollte zu vier erfolgreichen Antworten von der IP-Adresse 192.168.0.4 führen.
+The ping command should result in four successful replies from IP address 192.168.0.4.
 
-Verknüpfen Sie LOB1 als Nächstes mit der Active Directory-Domäne CORP, indem Sie diese Befehle bei der Windows PowerShell-Eingabeaufforderung verwenden.
+Next, join LOB1 to the CORP Active Directory domain with these commands at the Windows PowerShell prompt.
 
-	Add-Computer -DomainName corp.contoso.com
-	Restart-Computer
+    Add-Computer -DomainName corp.contoso.com
+    Restart-Computer
 
-Verwenden Sie das Konto „CORP\\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
+Use the CORP\User1 account when prompted to supply domain account credentials for the **Add-Computer** command.
 
-Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit LOB1 mithilfe des Kontos „CORP\\User1“ und des Kennworts.
+After restarting, use the Azure portal to connect to LOB1 with the CORP\User1 account and password.
 
-Konfigurieren Sie dann LOB1 für IIS, und testen Sie den Zugriff von CLIENT1.
+Next, configure LOB1 for IIS and test access from CLIENT1.
 
-1.	Klicken Sie im Server-Manager auf **Rollen und Features hinzufügen**.
-2.	Klicken Sie auf der Seite **Vorbereitungen** auf **Weiter**.
-3.	Klicken Sie auf der Seite **Installationstyp auswählen** auf **Weiter**.
-4.	Klicken Sie auf der Seite **Zielserver auswählen** auf **Weiter**.
-5.	Klicken Sie auf der Seite **Serverrollen** in der Liste **Rollen** auf **Webserver (IIS)**.
-6.	Klicken Sie bei der entsprechenden Aufforderung auf **Features hinzufügen** und anschließend auf **Weiter**.
-7.	Klicken Sie auf der Seite **Features auswählen** auf **Weiter**.
-8.	Klicken Sie auf der Seite **Webserver (IIS)** auf **Weiter**.
-9.	Aktivieren oder deaktivieren Sie auf der Seite **Rollendienste auswählen** die Kontrollkästchen für die Dienste, die Sie zum Testen der Branchenanwendung benötigen, und klicken Sie dann auf **Weiter**.
-10.	Klicken Sie auf der Seite **Installationsauswahl bestätigen** auf **Installieren**.
-11.	Warten Sie, bis die Installation der Komponenten abgeschlossen ist, und klicken Sie dann auf **Schließen**.
-12.	Stellen Sie über das Azure-Portal eine Verbindung mit dem Computer CLIENT1 mit den Anmeldeinformationen des Kontos „CORP\\User1“ her, und starten Sie anschließend Internet Explorer.
-13.	Geben Sie in die Adressleiste **http://lob1/** ein, und drücken Sie dann die EINGABETASTE. Die Standardwebseite für IIS 8 sollte angezeigt werden.
+1.  From Server Manager, click **Add roles and features**.
+2.  On the **Before you begin** page, click **Next**.
+3.  On the **Select installation type** page, click **Next**.
+4.  On the **Select destination server** page, click **Next**.
+5.  On the **Server roles** page, click **Web Server (IIS)** in the list of **Roles**.
+6.  When prompted, click **Add Features**, and then click **Next**.
+7.  On the **Select features** page, click **Next**.
+8.  On the **Web Server (IIS)** page, click **Next**.
+9.  On the **Select role services** page, select or clear the check boxes for the services you need for testing your LOB application, and then click **Next**.
+10. On the **Confirm installation selections** page, click **Install**.
+11. Wait until the installation of components has completed and then click **Close**.
+12. From the Azure portal, connect to the CLIENT1 computer with the CORP\User1 account credentials, and then start Internet Explorer.
+13. In the Address bar, type **http://lob1/** and then press ENTER. You should see the default IIS 8 web page.
 
-Die aktuelle Konfiguration sieht folgendermaßen aus.
+This is your current configuration.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph3.png)
  
-Diese Umgebung kann jetzt zum Bereitstellen der webbasierten Anwendung auf LOB1 und für Funktionstests von CLIENT1 aus dem Subnetz „Corpnet“ verwendet werden.
+This environment is now ready for you to deploy your web-based application on LOB1 and test functionality from CLIENT1 on the Corpnet subnet.
 
-## Nächster Schritt
+## <a name="next-step"></a>Next step
 
-- Hinzufügen eines neuen virtuellen Computers über das [Azure-Portal](virtual-machines-windows-hero-tutorial.md)
+- Add a new virtual machine using the [Azure portal](virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

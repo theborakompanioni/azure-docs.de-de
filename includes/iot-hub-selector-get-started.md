@@ -3,18 +3,20 @@
 - [Java](../articles/iot-hub/iot-hub-java-java-getstarted.md)
 - [Node.js](../articles/iot-hub/iot-hub-node-node-getstarted.md)
 
-## Einführung
+## <a name="introduction"></a>Introduction
 
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einem Lösungs-Back-End ermöglicht. Eines der größten Probleme im Zusammenhang mit IoT-Projekten ist die sichere und zuverlässige Verbindung von Geräten mit dem Lösungs-Back-End. Um diese Herausforderungen zu meistern, bietet IoT Hub:
+Azure IoT Hub is a fully managed service that enables reliable and secure bi-directional communications between millions of Internet of Things (IoT) devices and a solution back end. One of the biggest challenges that IoT projects face is how to reliably and securely connect devices to the solution back end. To address this challenge, IoT Hub:
 
-- Ein zuverlässiges, hyperskalierbares Messaging zwischen Geräten und Cloud (Device-to-Cloud, D2C) sowie zwischen Cloud und Geräten (Cloud-to-Device, C2D)
-- Eine sichere Kommunikation unter Verwendung von Zugriffssteuerung und Sicherheitsanmeldeinformationen auf Gerätebasis
-- Gerätebibliotheken für die gängigsten Sprachen und Plattformen
+- Offers reliable device-to-cloud and cloud-to-device hyper-scale messaging.
+- Enables secure communications using per-device security credentials and access control.
+- Includes device libraries for the most popular languages and platforms.
 
-Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
+This tutorial shows you how to:
 
-- Erstellen eines IoT Hubs mit dem Azure-Portal
-- Erstellen einer Geräteidentität im IoT Hub
-- Erstellen eines simulierten Geräts, das Telemetrie an das Cloud-Back-End sendet und vom Cloud-Back-End Befehle empfängt
+- Use the Azure portal to create an IoT hub.
+- Create a device identity in your IoT hub.
+- Create a simulated device that sends telemetry to your cloud back end, and receives commands from your cloud back end.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

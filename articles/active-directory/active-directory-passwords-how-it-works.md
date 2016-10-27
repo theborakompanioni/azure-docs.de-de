@@ -1,119 +1,121 @@
 <properties
-	pageTitle="Funktionsweise: Azure AD-Kennwortverwaltung | Microsoft Azure"
-	description="Lernen Sie die verschiedenen Komponenten der Azure AD-Kennwortverwaltung kennen und erfahren Sie, wo Benutzer sich registrieren, ihre Kennwörter zurücksetzen und ändern, wo Administratoren die Verwaltung lokaler Active Directory-Kennwörter konfigurieren, aktivieren und Berichte zur Kennwortverwaltung anzeigen können."
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="femila"
-	editor="curtand"/>
+    pageTitle="How it works: Azure AD Password Management | Microsoft Azure"
+    description="Learn about the different components of Azure AD Password Management, including where users register, reset, and change their passwords, and where admins configure, report on, and enable management of on-premises Active Directory passwords."
+    services="active-directory"
+    documentationCenter=""
+    authors="asteen"
+    manager="femila"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="asteen"/>
-
-# Funktionsweise der Kennwortverwaltung  
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/12/2016"
+    ms.author="asteen"/>
 
 
-> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+# <a name="how-password-management-works"></a>How Password Management works
 
-Die Kennwortverwaltung in Azure Active Directory umfasst verschiedene logische Komponenten, nachfolgend beschrieben werden. Klicken Sie auf jeden Link, um mehr über die jeweilige Komponente zu erfahren.
+> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
 
-- [**Portal für die Konfiguration der Kennwortverwaltung**](#password-management-configuration-portal) – Administratoren können verschiedene Aspekte der Kennwortverwaltung ihrer Mandanten steuern, indem sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) zur Registerkarte "Konfigurieren" navigieren.
-- [**Portal für die Benutzerregistrierung**](#user-registration-portal) – Benutzer können sich über dieses Self-Service-Webportal für die Kennwortzurücksetzung registrieren.
-- [**Portal für das Zurücksetzen von Benutzerkennwörtern**](#user-password-reset-portal) – Benutzer können durch das Ausführen verschiedener Überprüfungsschritte – diese werden über die vom Administrator gesteuerte Richtlinie für die Kennwortzurücksetzung festlegt – ihre eigenen Kennwörter zurücksetzen.
-- [**Portal zum Ändern von Benutzerkennwörtern**](#user-password-change-portal) – Benutzer können ihre eigenen Kennwörter jederzeit ändern, indem sie über dieses Webportal ihr altes Kennwort eingeben und dann ein neues Kennwort festlegen.
-- [**Berichte zur Kennwortverwaltung**](#password-management-reports) – Administratoren können Aktivitäten zu Kennwortzurücksetzung und Registrierung in ihrem Mandanten anzeigen und analysieren, indem sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) zur Registerkarte "Berichte" für ihr Verzeichnis wechseln und den Abschnitt "Aktivitätsberichte" anzeigen.
-- [**Komponente zur Kennwortrückschreibung von Azure AD Connect**](#password-writeback-component-of-azure-ad-connect) – Administratoren können beim Installieren von Azure AD Connect die Funktion zur Kennwortrückschreibung aktivieren, um die Verwaltung von Verbundkennwörtern oder synchronisierten Benutzerkennwörtern aus der Cloud zu aktivieren.
+Password Management in Azure Active Directory is comprised of several logical components that are described below.  Click on each link to learn more about that component.
 
-## Portal für die Konfiguration der Kennwortverwaltung
-Sie können im [Azure-Verwaltungsportal](https://manage.windowsazure.com) Richtlinien für die Kennwortverwaltung konfigurieren, indem Sie auf der Registerkarte **Konfigurieren** zum Abschnitt **Richtlinie zum Zurücksetzen des Benutzerkennworts** navigieren. Auf dieser Konfigurationsseite können Sie zahlreiche Aspekte der Kennwortverwaltung für Ihre Organisation steuern, darunter:
+- [**Password Management Configuration Portal**](#password-management-configuration-portal) – Administrators can control different facets of how passwords are managed in their tenants by navigating to their directory’s Configure tab in the [Azure Management Portal](https://manage.windowsazure.com).
+- [**User Registration Portal**](#user-registration-portal) – Users can self-register for password reset through this web portal.
+- [**User Password Reset Portal**](#user-password-reset-portal) – Users can reset their own passwords using a number of different challenges in accordance with the administrator-controlled password reset policy
+- [**User Password Change Portal**](#user-password-change-portal) – Users can change their own passwords at any time by entering their old password and selecting a new password using this web portal
+- [**Password Management Reports**](#password-management-reports) – Administrators can view and analyze password reset and registration activity in their tenant by navigating to the “Activity Reports” section of their directory’s “Reports” tab in the [Azure Management Portal](https://manage.windowsazure.com)
+- [**Password Writeback Component of Azure AD Connect**](#password-writeback-component-of-azure-ad-connect) – Administrators can optionally enable the Password Writeback feature when installing Azure AD Connect to enable management of federated or password synchronized user passwords from the cloud.
 
-- Aktivieren und Deaktivieren der Kennwortzurücksetzung für alle Benutzer in einem Verzeichnis
-- Festlegen der Mindestanzahl von Überprüfungsschritten (einer oder zwei), die ein Benutzer zum Zurücksetzen des Kennworts durchlaufen muss
-- Festlegen der Art von Überprüfungsschritten, die Sie für Benutzer in Ihrer Organisation aktivieren möchten. Es stehen folgende Optionen zur Auswahl:
- - Mobiltelefon (Prüfcode per SMS oder Sprachanruf)
- - Bürotelefon (Sprachanruf)
- - Alternative E-Mail-Adresse (Prüfcode per E-Mail)
- - Sicherheitsfragen (informationsbasierte Authentifizierung)
-- Festlegen der Anzahl von Fragen, die ein Benutzer registrieren muss, damit die Authentifizierungsmethode "Sicherheitsfragen" verwenden kann (nur sichtbar, wenn Sicherheitsfragen aktiviert sind)
-- Festlegen der Anzahl von Fragen, die ein Benutzer beim Zurücksetzen beantworten muss, um die Authentifizierungsmethode "Sicherheitsfragen" zu verwenden (nur sichtbar, wenn Sicherheitsfragen aktiviert sind)
-- Anhand vordefinierter, lokalisierter Sicherheitsfragen, aus denen ein Benutzer beim Registrieren für das Kennwortzurücksetzen auswählen kann (nur sichtbar, wenn Sicherheitsfragen aktiviert sind)
-- Anhand der benutzerdefinierten Sicherheitsfragen, die ein Benutzer beim Registrieren für das Kennwortzurücksetzen auswählen kann (nur sichtbar, wenn Sicherheitsfragen aktiviert sind)
-- Erzwingen der Benutzerregistrierung für die Kennwortzurücksetzung, wenn Benutzer zum Zugriffsbereich der Anwendung unter [http://myapps.microsoft.com](http://myapps.microsoft.com) wechseln
-- Erzwingen der erneuten Bestätigung von zuvor registrierten Daten durch die Benutzer, nachdem eine bestimmte Anzahl von Tagen vergangen ist (nur sichtbar, wenn die erzwungene Registrierung aktiviert ist)
-- Bereitstellen einer benutzerdefinierten Helpdesk-E-Mail-Adresse oder -URL, die Benutzern angezeigt wird, wenn beim Zurücksetzen von Kennwörtern Probleme auftreten
-- Aktivieren oder Deaktivieren der Kennwortrückschreibung (wenn die Kennwortrückschreibung mithilfe von AAD Connect bereitgestellt wurde)
-- Anzeigen des Status für den Kennwortrückschreibung-Agent (wenn die Kennwortrückschreibung mithilfe von AAD Connect bereitgestellt wurde)
-- Aktivieren von E-Mail-Benachrichtigungen für Benutzer, wenn ihre eigenen Kennwörter zurückgesetzt wurden (Abschnitt **Benachrichtigungen** im [Azure-Verwaltungsportal](https://manage.windowsazure.com))
-- Aktivieren von E-Mail-Benachrichtigungen für Administratoren, wenn andere Administratoren ihre eigenen Kennwörter zurücksetzen (Abschnitt **Benachrichtigungen** im [Azure-Verwaltungsportal](https://manage.windowsazure.com))
-- Branding des Portals für das Zurücksetzen von Benutzerkennwörtern und von E-Mails- zur Kennwortzurücksetzung mit Ihrem Unternehmenslogo und -namen über die Anpassungsfunktion für das Mandantenbranding (Abschnitt **Verzeichniseigenschaften** im [Azure-Verwaltungsportal](https://manage.windowsazure.com))
+## <a name="password-management-configuration-portal"></a>Password Management Configuration Portal
+You can configure Password Management policies for a specific directory using the [Azure Management Portal](https://manage.windowsazure.com) by navigating to the **User Password Reset Policy** section in the directory’s **Configure** tab.  From this configuration page, you can control many aspects of how passwords are managed in your organization, including:
 
-Weitere Informationen zum Konfigurieren der Kennwortverwaltung in Ihrer Organisation finden Sie unter [Erste Schritte: Azure AD-Kennwortverwaltung](active-directory-passwords-getting-started.md).
+- Enabling and disabling password reset for all users in a directory
+- Setting the number of challenges (either one or two) a user must go through to reset his or her password
+- Setting the specific types of challenges you want to enable for users in your organization from the choices below:
+ - Mobile Phone (a verification code via text or a voice call)
+ - Office Phone (a voice call)
+ - Alternate Email (a verification code via email)
+ - Security Questions (knowledge-based authentication)
+- Setting the number of questions a user must register in order to use the security questions authentication method (only visible if security questions are enabled)
+- Setting the number of questions a user must supply during reset to use the security questions authentication method (only visible if security questions are enabled)
+- Using pre-canned, localized, security questions that a user may choose to use when registering for password reset (only visible if security questions are enabled)
+- Defining the custom security questions that a user may choose to use when registering for password reset (only visible if security questions are enabled)
+- Requiring users to register for password reset when they go to the application Access Panel at [http://myapps.microsoft.com](http://myapps.microsoft.com).
+- Requiring users to re-confirm their previously registered data after a configurable number of days have passed (only visible if enforced registration is enabled)
+- Providing a custom helpdesk email or URL that will be shown to users in case they have a problem resetting their passwords
+- Enabling or disabling the Password Writeback capability (when Password Writeback has been deployed using AAD Connect)
+- Viewing the status of the Password Writeback agent (when Password Writeback has been deployed using AAD Connect)
+- Enabling email notifications to users when their own password has been reset (found in the **Notifications** section of the [Azure Management Portal](https://manage.windowsazure.com))
+- Enabling email notifications to administrators when other administrators reset their own passwords (found in the **Notifications** section of the [Azure Management Portal](https://manage.windowsazure.com)
+- Branding the user password reset portal and password reset emails with your organization’s logo and name by using the tenant branding customization feature (found in the **Directory Properties** section of the [Azure Management Portal](https://manage.windowsazure.com)
 
-##Portal für die Benutzerregistrierung
-Bevor Benutzer ihre Kennwörter zurücksetzen können, müssen ihre Cloudbenutzerkonten mit den richtigen Authentifizierungsdaten aktualisiert werden. Auf diese Weise wird sichergestellt, dass sie die geeignete Anzahl von Überprüfungsschritten für die Kennwortzurücksetzung durchlaufen können, die vom Administrator festgelegt wurde. Administratoren können diese Authentifizierungsinformationen unter Verwendung des Azure- oder Office-Verwaltungsportals, mit DirSync / Azure AD Connect oder Windows PowerShell auch im Namen der Benutzer definieren.
+To learn more about configuring Password Management in your organization, see [Getting Started: Azure AD Password Management](active-directory-passwords-getting-started.md).
 
-Wenn Sie möchten, dass Benutzer eigene Daten registrieren, wird auch eine Webseite bereitgestellt, auf der Benutzer diese Informationen selbst eingeben können. Auf dieser Seite können Benutzer Authentifizierungsinformationen gemäß den Richtlinien für die Kennwortzurücksetzung eingeben, die in der Organisation aktiviert wurde. Nachdem diese Daten überprüft wurden, werden sie im zugehörigen Cloudbenutzerkonto gespeichert, damit sie zu einem späteren Zeitpunkt wiederhergestellt werden können. Das Registrierungsportal sieht folgendermaßen aus:
+##<a name="user-registration-portal"></a>User Registration Portal
+Before users are able to use password reset, their cloud user accounts must be updated with the correct authentication data to ensure that they can pass through the appropriate number of password reset challenges defined by their administrator.  Administrators can also define this authentication information on their user’s behalf by using the Azure or Office web portals, DirSync / Azure AD Connect, or Windows PowerShell.
+
+However, if you’d rather have your users register their own data, we also provide a web page that users can go to in order to provide this information.  This page will allow users to specify authentication information in accordance with the password reset policies that have been enabled in their organization.  Once this data is verified, it is stored in their cloud user account to be used for account recovery at a later time. Here’s what the registration portal looks like:
 
   ![][001]
 
-Weitere Informationen finden Sie unter [Erste Schritte: Azure AD-Kennwortverwaltung](active-directory-passwords-getting-started.md) und [Best Practices: Azure AD-Kennwortverwaltung](active-directory-passwords-best-practices.md).
+For more information, see [Getting Started: Azure AD Password Management](active-directory-passwords-getting-started.md) and [Best Practices: Azure AD Password Management](active-directory-passwords-best-practices.md).
 
-##Portal für das Zurücksetzen von Benutzerkennwörtern
-Nachdem Sie die Self-Service-Kennwortzurücksetzung aktiviert haben, richten Sie eine Unternehmensrichtlinie für die Self-Service-Kennwortzurücksetzung ein und stellen sicher, dass Ihre Benutzer über geeignete Kontaktdaten im Verzeichnis verfügen. Benutzer innerhalb der Organisation können ihre eigenen Kennwörter automatisch über eine beliebige Webseite zurücksetzen, die ein Geschäfts- oder Schulkonto für die Anmeldung verwendet (z. B. [portal.microsoftonline.com](https://portal.microsoftonline.com)). Auf Seiten wie dieser wird den Benutzern der Link **Können Sie nicht auf Ihr Konto zugreifen?** angezeigt.
+##<a name="user-password-reset-portal"></a>User Password Reset Portal
+Once you have enabled self-service password reset, set up your organization’s self-service password reset policy, and ensured that your users have the appropriate contact data in the directory, users in your organization will be able to reset their own passwords automatically from any web page which uses a Work or School account for sign in (such as [portal.microsoftonline.com](https://portal.microsoftonline.com)). On pages such as these, users will see a **Can’t access your account?** link.
 
   ![][002]
 
-Durch Klicken auf diesen Link wird das Self-Service-Portal für die Kennwortzurücksetzung gestartet.
+Clicking on this link will launch the self-service password reset portal.
 
   ![][003]
 
-Weitere Informationen dazu, wie Benutzer ihre eigenen Kennwörter zurücksetzen können, finden Sie unter [Erste Schritte: Azure AD-Kennwortverwaltung](active-directory-passwords-getting-started.md).
+To learn more about how users can reset their own passwords, see [Getting Started: Azure AD Password Management](active-directory-passwords-getting-started.md).
 
-##Portal zum Ändern von Benutzerkennwörtern
-Wenn Benutzer ihre eigenen Kennwörter ändern möchten, können sie hierzu jederzeit das Portal zum Ändern von Benutzerkennwörtern verwenden. Benutzer können über die Profilseite im Zugriffsbereich auf das Portal zur Kennwortänderung zugreifen, oder indem sie auf den Link "Kennwort ändern" aus einer Office 365-Anwendung klicken. Wenn ein Kennwort abläuft, werden Benutzer bei der Anmeldung automatisch aufgefordert, ihr Kennwort zu ändern.
+##<a name="user-password-change-portal"></a>User Password Change Portal
+If users want to change their own passwords, they can do so by using the password change portal at any time.  Users can access the password change portal via the Access Panel profile page, or clicking the “change password” link from within Office 365 applications.  In the case when their passwords expire, users will also be asked to change them automatically when signing in.
 
   ![][004]
 
-In beiden Fällen werden die geänderten Kennwörter – sofern die Kennwortrückschreibung aktiviert ist und der Benutzer entweder ein Verbundkennwort oder ein synchronisiertes Kennwort verwendet – in das lokale Active Directory zurückgeschrieben. Das Portal zum Ändern von Benutzerkennwörtern sieht folgendermaßen aus:
+In both of these cases, if Password Writeback has been enabled and the user is either federated or password sync’d, these changed passwords are written back to your on-premises Active Directory. Here’s what the password change portal looks like:
 
   ![][005]
 
-Weitere Informationen dazu, wie Benutzer ihre eigenen, lokalen Active Directory-Kennwörter zurücksetzen können, finden Sie unter [Erste Schritte: Azure AD-Kennwortverwaltung](active-directory-passwords-getting-started.md).
+To learn more about how users can change their own on-premises Active Directory passwords, see [Getting Started: Azure AD Password Management](active-directory-passwords-getting-started.md).
 
-##Berichte zur Kennwortverwaltung
-Wenn Sie zur Registerkarte **Berichte** navigieren und sich den Abschnitt **Aktivitätsprotokolle** ansehen, werden unterhalb dieses Abschnitts zwei Berichte zur Kennwortverwaltung angezeigt: **Aktivität "Zurücksetzen des Kennworts"** und **Aktivität "Registrierung für Zurücksetzen des Kennworts"**. Diese zwei Berichte liefern einen Überblick über Benutzer innerhalb Ihrer Organisation, die sich für das Zurücksetzen von Kennwörtern registrieren und die Kennwortzurücksetzung verwenden. Diese Berichte sehen im [Azure-Verwaltungsportal](https://manage.windowsazure.com) folgendermaßen aus:
+##<a name="password-management-reports"></a>Password Management reports
+By navigating to the **Reports** tab and looking under the **Activity Logs** section, you will see two Password Management reports: **Password reset activity** and **Password reset registration activity**.  Using these two reports, you can get a view of users registering for and using password reset in your organization. Here’s what these reports look like in the [Azure Management Portal](https://manage.windowsazure.com):
 
   ![][006]
 
-Weitere Informationen finden Sie unter [Operative Einblicke: Kennwortverwaltung in Azure AD](active-directory-passwords-get-insights.md).
+For more information, see [Get Insights: Azure AD Password Management Reports](active-directory-passwords-get-insights.md).
 
-##Komponente zur Kennwortrückschreibung von Azure AD Connect
-Wenn die Kennwörter von Benutzern in Ihrer Organisation aus Ihrer lokalen Umgebung stammen (Verbund oder Kennwortsynchronisierung), können Sie die aktuelle Version von Azure AD Connect installieren, um diese Kennwörter direkt aus der Cloud zu aktualisieren. Dies bedeutet, dass Benutzer ihre AD-Kennwörter direkt über das Web zurücksetzen oder ändern können, wenn sie sie vergessen haben oder ändern möchten. Die Kennwortrückschreibung wird an dieser Stelle im Installations-Assistenten von Azure AD Connect aktiviert:
+##<a name="password-writeback-component-of-azure-ad-connect"></a>Password Writeback component of Azure AD Connect
+If the passwords of users in your organization originate from your on-premises environment (either via federation or password synchronization), you can install the latest version of Azure AD Connect to enable updating those passwords directly from the cloud.  This means that when your users forget or want to modify their AD password, they can do so straight from the web.  Here’s where to find Password Writeback in the Azure AD Connect installation wizard:
 
   ![][007]
 
-Weitere Informationen zu Azure AD Connect finden Sie unter [Erste Schritte: Azure AD Connect](active-directory-aadconnect.md). Weitere Informationen zum Rückschreiben von Kennwörtern finden Sie unter [Erste Schritte: Azure AD-Kennwortverwaltung](active-directory-passwords-getting-started.md).
+For more information about Azure AD Connect, see [Get Started: Azure AD Connect](active-directory-aadconnect.md). For more information about Password Writeback, see [Getting Started: Azure AD Password Management](active-directory-passwords-getting-started.md).
 
 
-<br/> <br/> <br/>
+<br/>
+<br/>
+<br/>
 
-## Links zur Dokumentation für die Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
+Below are links to all of the Azure AD Password Reset documentation pages:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
-* [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
-* [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
-* [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.
-* [**Einblicke erhalten**](active-directory-passwords-get-insights.md) – Erfahren Sie mehr über unsere integrierten Berichtsfunktionen.
-* [**Häufig gestellte Fragen**](active-directory-passwords-faq.md) – Hier erhalten Sie Antworten auf häufig gestellte Fragen.
-* [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
-* [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
+* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
+* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
+* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
+* [**Get insights**](active-directory-passwords-get-insights.md) - learn about our integrated reporting capabilities
+* [**FAQ**](active-directory-passwords-faq.md) - get answers to frequently asked questions
+* [**Troubleshooting**](active-directory-passwords-troubleshoot.md) - learn how to quickly troubleshoot problems with the service
+* [**Learn more**](active-directory-passwords-learn-more.md) - go deep into the technical details of how the service works
 
 
 
@@ -125,4 +127,8 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [006]: ./media/active-directory-passwords-how-it-works/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

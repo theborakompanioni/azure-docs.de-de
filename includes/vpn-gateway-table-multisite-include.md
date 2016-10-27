@@ -1,9 +1,9 @@
-Sie können eine Verbindung zwischen dem virtuellen Netzwerk und mehreren lokalen Standorten konfigurieren. Weitere Informationen finden Sie in der folgenden Tabelle. Wir aktualisieren diese Tabelle, wenn neue Artikel, neue Bereitstellungsmodelle und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir in der Tabelle einen direkten Link dazu ein.
+|**Bereitstellungsmodell/Methode**| **Azure-Portal** | **Klassisches Portal** | **PowerShell**|
+|---|---|---|---|
+| **Ressourcen-Manager**      |[Artikel](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)| Nicht unterstützt | Unterstützt|
+| **Klassisch** | Nicht unterstützt | Nicht unterstützt | [Artikel](vpn-gateway-multi-site.md) | 
+ 
 
-| | **Klassische Bereitstellung** | **Resource Manager-Bereitstellung** |
-|-----------------------------------------|-------------|---------------------|
-| **Klassisches Portal** | Nicht unterstützt | Nicht unterstützt |
-| **Azure-Portal** | Nicht unterstützt | Nicht unterstützt |
-| **PowerShell** | [Artikel](../articles/vpn-gateway/vpn-gateway-multi-site.md) | Ja |
+<!--HONumber=Oct16_HO2-->
 
-<!---HONumber=AcomDC_0224_2016-->
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Timer und Erinnerungen für Reliable Actors | Microsoft Azure"
-   description="Einführung in Timer und Erinnerungen für Service Fabric Reliable Actors."
+   pageTitle="Reliable Actors timers and reminders | Microsoft Azure"
+   description="Introduction to timers and reminders for Service Fabric Reliable Actors."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -17,13 +17,14 @@
    ms.author="vturecek"/>
 
 
-# Actor-Timer und -Erinnerungen
-Akteure können regelmäßige Arbeit an sich selbst einplanen, indem sie entweder Timer oder Erinnerungen registrieren. In diesem Artikel wird gezeigt, wie Timer und Erinnerungen verwendet werden können, und es werden die Unterschiede zwischen ihnen erklärt.
 
-## Actor-Timer
-Actor-Timer bieten einen einfachen Wrapper um .NET-Timer, um sicherzustellen, dass die Rückrufmethoden die von der Actors-Laufzeit bereitgestellten wechselseitigen Parallelitätsgarantien respektieren.
+# <a name="actor-timers-and-reminders"></a>Actor timers and reminders
+Actors can schedule periodic work on themselves by registering either timers or reminders. This article shows how to use timers and reminders and explains the differences between them.
 
-Actor können sich mithilfe der Methoden `RegisterTimer` und `UnregisterTimer` ihrer Basisklasse bei ihren Timern an- und abmelden. Das folgende Beispiel zeigt die Verwendung von Timer-APIs. Die APIs sind dem .NET-Timer sehr ähnlich. In diesem Beispiel wird die `MoveObject`-Methode von der Actors-Laufzeit aufgerufen, wenn der Timer abgelaufen ist. Es ist sichergestellt, dass die Methode die wechselseitige Parallelität respektiert. Dies bedeutet, dass keine anderen Actor-Methoden oder Timer-/Erinnerungsrückrufe ausgeführt werden, bis dieser Rückruf die Ausführung abgeschlossen hat.
+## <a name="actor-timers"></a>Actor timers
+Actor timers provide a simple wrapper around .NET timer to ensure that the callback methods respect the turn-based concurrency guarantees that the Actors runtime provides.
+
+Actors can use the `RegisterTimer` and `UnregisterTimer` methods on their base class to register and unregister their timers. The example below shows the use of timer APIs. The APIs are very similar to the .NET timer. In this example, when the timer is due, the Actors runtime will call the `MoveObject` method. The method is guaranteed to respect the turn-based concurrency. This means that no other actor methods or timer/reminder callbacks will be in progress until this callback completes execution.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -61,16 +62,16 @@ class VisualObjectActor : Actor, IVisualObject
 }
 ```
 
-Der nächste Timerzeitraum beginnt nach Abschluss des Rückrufs. Dies bedeutet, dass der Timer während des Rückrufs angehalten und nach Abschluss des Rückrufs erneut gestartet wird.
+The next period of the timer starts after the callback completes execution. This implies that the timer is stopped while the callback is executing and is started when the callback finishes.
 
-Die Actors-Laufzeit speichert die Änderungen, die im Zustands-Manager des Actors vorgenommen wurden, wenn der Rückruf endet. Tritt ein Fehler beim Speichern des Zustands auf, wird das Actor-Objekt deaktiviert und eine neue Instanz aktiviert.
+The Actors runtime saves changes made to the actor's State Manager when the callback finishes. If an error occurs in saving the state, that actor object will be deactivated and a new instance will be activated. 
 
-Alle Timer werden angehalten, wenn der Actor im Rahmen einer Garbage Collection deaktiviert wird. Danach werden keine Timerrückrufe mehr aufgerufen. Zur Actor-Laufzeit werden zudem keine Informationen über die Timer gespeichert, die vor der Deaktivierung ausgeführt wurden. Es ist die Aufgabe des Actors, alle für zukünftige Reaktivierungen erforderlichen Timer zu registrieren. Weitere Informationen finden Sie im Abschnitt zur [Actor Garbage Collection](service-fabric-reliable-actors-lifecycle.md).
+All timers are stopped when the actor is deactivated as part of garbage collection. No timer callbacks are invoked after that. Also, the Actors runtime does not retain any information about the timers that were running before deactivation. It is up to the actor to register any timers that it needs when it is reactivated in the future. For more information, see the section on [actor garbage collection](service-fabric-reliable-actors-lifecycle.md).
 
-## Actor-Erinnerungen
-Erinnerungen sind ein Mechanismus zum Auslösen persistenter Rückrufe für einen Actor zu bestimmten Zeiten. Die Funktionalität ähnelt dabei Timern. Im Gegensatz zu Timern werden Erinnerungen aber unter allen Umständen ausgelöst, bis ihre Registrierung vom Actor explizit aufgehoben oder der Actor explizit gelöscht wird. Erinnerungen werden insbesondere über Actor-Deaktivierungen und Failover ausgelöst, da zur Actor-Laufzeit Informationen über die Erinnerungen des Actors gespeichert werden.
+## <a name="actor-reminders"></a>Actor reminders
+Reminders are a mechanism to trigger persistent callbacks on an actor at specified times. Their functionality is similar to timers. But unlike timers, reminders are triggered under all circumstances until the actor explicitly unregisters them or the actor is explicitly deleted. Specifically, reminders are triggered across actor deactivations and failovers because the Actors runtime persists information about the actor's reminders.
 
-Zum Registrieren einer Erinnerung ruft ein Actor die in der Basisklasse bereitgestellte `RegisterReminderAsync`-Methode auf, wie im folgenden Beispiel gezeigt:
+To register a reminder, an actor calls the `RegisterReminderAsync` method provided on the base class, as shown in the following example:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -86,9 +87,9 @@ protected override async Task OnActivateAsync()
 }
 ```
 
-In diesem Beispiel ist `"Pay cell phone bill"` der Name der Erinnerung. Dies ist eine Zeichenfolge, die der Actor zur eindeutigen Identifizierung einer Erinnerung verwendet. `BitConverter.GetBytes(amountInDollars)` ist der mit der Erinnerung verknüpfte Kontext. Sie wird an den Actor als Argument für den Erinnerungsrückruf zurückgegeben, d. h. `IRemindable.ReceiveReminderAsync`.
+In this example, `"Pay cell phone bill"` is the reminder name. This is a string that the actor uses to uniquely identify a reminder. `BitConverter.GetBytes(amountInDollars)` is the context that is associated with the reminder. It will be passed back to the actor as an argument to the reminder callback, i.e. `IRemindable.ReceiveReminderAsync`.
 
-Actors, die Erinnerungen verwenden, müssen die `IRemindable`-Schnittstelle implementieren, wie im folgenden Beispiel gezeigt.
+Actors that use reminders must implement the `IRemindable` interface, as shown in the example below.
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -105,24 +106,28 @@ public class ToDoListActor : Actor, IToDoListActor, IRemindable
 }
 ```
 
-Wenn eine Erinnerung ausgelöst wird, ruft die Reliable Actors-Laufzeit die `ReceiveReminderAsync`-Methode auf dem Actor auf. Ein Actor kann mehrere Erinnerungen registrieren. Die `ReceiveReminderAsync`-Methode wird aufgerufen, sobald eine dieser Erinnerungen ausgelöst wurde. Der Actor kann mithilfe des an die Methode `ReceiveReminderAsync` übergebenen Erinnerungsnamens ermitteln, welche Erinnerung ausgelöst wurde.
+When a reminder is triggered, the Reliable Actors runtime will invoke the  `ReceiveReminderAsync` method on the Actor. An actor can register multiple reminders, and the `ReceiveReminderAsync` method is invoked when any of those reminders is triggered. The actor can use the reminder name that is passed in to the `ReceiveReminderAsync` method to figure out which reminder was triggered.
 
-Die Actors-Laufzeit speichert den Actor-Zustand nach Abschluss des Aufrufs `ReceiveReminderAsync`. Tritt ein Fehler beim Speichern des Zustands auf, wird das Actor-Objekt deaktiviert und eine neue Instanz aktiviert.
+The Actors runtime saves the actor's state when the `ReceiveReminderAsync` call finishes. If an error occurs in saving the state, that actor object will be deactivated and a new instance will be activated. 
 
-Zum Aufheben der Registrierung einer Erinnerung ruft ein Actor die `UnregisterReminder`-Methode auf, wie im folgenden Beispiel gezeigt.
+To unregister a reminder, an actor calls the `UnregisterReminder` method, as shown in the example below.
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
 Task reminderUnregistration = UnregisterReminder(reminder);
 ```
 
-Wie oben gezeigt, akzeptiert die Methode `UnregisterReminder` die Schnittstelle `IActorReminder`. Die Basisklasse des Actors unterstützt die Methode `GetReminder`, die zum Abrufen der Schnittstelle `IActorReminder` durch Übergabe des Erinnerungsnamens verwendet werden kann. Dies ist praktisch, da der Actor die Schnittstelle `IActorReminder` nicht beibehalten muss, die bei Aufruf der Methode `RegisterReminder` zurückgegeben wurde.
+As shown above, the `UnregisterReminder` method accepts an `IActorReminder` interface. The actor base class supports a `GetReminder` method that can be used to retrieve the `IActorReminder` interface by passing in the reminder name. This is convenient because the actor does not need to persist the `IActorReminder` interface that was returned from the `RegisterReminder` method call.
 
-## Nächste Schritte
- - [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
- - [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
- - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
- - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [Beispielcode](https://github.com/Azure/servicefabric-samples)
+## <a name="next-steps"></a>Next Steps
+ - [Actor events](service-fabric-reliable-actors-events.md)
+ - [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
+ - [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Sample code](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

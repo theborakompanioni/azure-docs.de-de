@@ -1,11 +1,14 @@
-## Szenario
+## <a name="scenario"></a>Scenario
 
-In diesem Dokument wird eine Bereitstellung veranschaulicht, die eine statische öffentliche IP-Adresse verwendet, die einer virtuellen Maschine (VM) zugeordnet ist. In diesem Szenario besitzen Sie eine einzelne VM mit ihrer eigenen statischen öffentlichen IP-Adresse. Die VM ist Teil des Subnetzes **FrontEnd** und verfügt zudem über eine statische private IP-Adresse (**192.168.1.101**) in diesem Subnetz.
+This document will walk through a deployment that uses a static public IP address allocated to a virtual machine (VM). In this scenario, you have a single VM with its own static public IP address. The VM is part of a subnet named **FrontEnd** and also has a static private IP address (**192.168.1.101**) in that subnet.
 
-Sie benötigen unter Umständen eine statische IP-Adresse für Webserver, für die SSL-Verbindungen erforderlich sind, bei denen das SSL-Zertifikat mit einer IP-Adresse verknüpft ist.
+You may need a static IP address for web servers that require SSL connections in which the SSL certificate is linked to an IP address. 
 
-![BILDBESCHREIBUNG](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
+![IMAGE DESCRIPTION](./media/virtual-network-deploy-static-pip-scenario-include/figure1.png)
 
-Sie können die folgenden Schritte ausführen, um die in der Abbildung oben gezeigte Umgebung bereitzustellen.
+You can follow the steps below to deploy the environment shown in the figure above.
 
-<!---HONumber=AcomDC_0114_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

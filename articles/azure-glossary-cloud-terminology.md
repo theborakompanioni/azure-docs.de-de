@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure-Glossar – Azure-Wörterbuch | Microsoft Azure"
-    description="Verwenden Sie das Azure-Glossar, um die Cloudterminologie für die Azure Platform zu verstehen. Dieses kompakte Azure-Wörterbuch bietet Definitionen für gängige Cloudbegriffe für Azure."
+    pageTitle="Azure glossary - Azure dictionary | Microsoft Azure"
+    description="Use the Azure glossary to understand cloud terminology on the Azure platform. This short Azure dictionary provides definitions for common cloud terms for Azure."
     keywords="Azure dictionary, cloud terminology, Azure glossary, terminology definitions, cloud terms"
     services="na"
     documentationCenter="na"
@@ -18,136 +18,169 @@
     ms.author="monicar"/>
 
 
-# Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
-Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie für die Azure Platform.
+# <a name="microsoft-azure-glossary:-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure glossary: A dictionary of cloud terminology on the Azure platform
 
-## Auffinden von Dienstdefinitionen und anderen Cloudbegriffen
+The Microsoft Azure glossary is a short dictionary of cloud terminology for the Azure platform.
 
-* Definitionen der Azure-Dienste und ihrer AWS-Entsprechungen finden Sie unter [Microsoft Azure und Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/).
+## <a name="find-service-definitions-and-other-cloud-terms"></a>Find service definitions and other cloud terms
 
-* Eine Liste allgemeiner Begriffe aus der Cloudbranche finden Sie unter [Cloud Computing-Terminologie](https://azure.microsoft.com/overview/cloud-computing-dictionary/).
+* For definitions of Azure services and their AWS counterparts see [Microsoft Azure and Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/).
 
-Das Azure-Glossar sowie die zwei oben genannten Referenzen bieten eine umfassende Taxonomie für Azure und die Cloudbranche.
+* For general industry cloud terms see [Cloud computing terms](https://azure.microsoft.com/overview/cloud-computing-dictionary/).
 
-## Azure-Glossarliste
+The Azure glossary with the above two references provides an end-to-end taxonomy for Azure and the cloud industry.  
 
+## <a name="azure-glossary-list"></a>Azure glossary list
 
-### <a name="account"></a>Konto  
-Ein Geschäfts- oder Schulkonto oder ein persönliches Microsoft-Konto, das für den Zugriff und die Verwaltung eines Azure-Abonnements verwendet wird. Siehe auch [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md).
 
+### <a name="<a-name="account"></a>account"></a><a name="account"></a>account  
+A work or school, or personal Microsoft account that is used to access and manage an Azure subscription.  
+See also [How Azure subscriptions are associated with Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md)
 
-### <a name="availability-set"></a>Verfügbarkeitsgruppe  
-Eine Sammlung virtueller Computer, die gemeinsam verwaltet werden, um Anwendungsredundanz und -zuverlässigkeit zu bieten. Durch die Verwendung einer Verfügbarkeitsgruppe wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist. Siehe auch [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/virtual-machines-windows-manage-availability.md) oder [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/virtual-machines-linux-manage-availability.md).
 
+### <a name="<a-name="availability-set"></a>availability-set"></a><a name="availability-set"></a>availability set  
+A collection of virtual machines that are managed together to provide application redundancy and reliability. The use of an availability set ensures that during either a planned or unplanned maintenance event at least one virtual machine is available.  
+See also [Manage the availability of Windows virtual machines](./virtual-machines/virtual-machines-windows-manage-availability.md) or [Manage the availability of Linux virtual machines](./virtual-machines/virtual-machines-linux-manage-availability.md)
 
-### <a name="classic-model"></a>Klassisches Azure-Bereitstellungsmodell  
-Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), die in Azure zum Bereitstellen von Ressourcen verwendet werden. (Das neue Modell ist Azure Resource Manager.) Einige Azure-Ressourcen können entweder in dem einen oder dem anderen Modell bereitgestellt werden, während andere in beiden Modellen bereitgestellt werden können. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.
 
+### <a name="<a-name="classic-model"></a>azure-classic-deployment-model"></a><a name="classic-model"></a>Azure classic deployment model  
+One of two [deployment models](resource-manager-deployment-model.md) used to deploy resources in Azure (the new model is Azure Resource Manager). Some Azure resources can be deployed in one model or the other, while others can be deployed in both models. Guidance for individual Azure resources detail which model(s) a resource can be deployed with.
 
-### <a name="cli"></a>Azure-Befehlszeilenschnittstelle (CLI)  
-Eine [Befehlszeilenschnittstelle](xplat-cli-install.md), die zum Verwalten von Azure-Diensten über Windows-, OS X- und Linux-Computer verwendet werden kann.
 
+### <a name="<a-name="cli"></a>azure-command-line-interface-(cli)"></a><a name="cli"></a>Azure command-line interface (CLI)  
+A [command-line interface](xplat-cli-install.md) that can be used to manage Azure services from Windows, OSX, and Linux PCs.
 
-### <a name="powershell"></a>Azure PowerShell  
-Eine [Befehlszeilenschnittstelle](powershell-install-configure.md), mit der Azure-Dienste über eine Befehlszeile von einem Windows-PC aus verwaltet werden können. Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann. Siehe auch [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
 
+### <a name="<a-name="powershell"></a>azure-powershell"></a><a name="powershell"></a>Azure PowerShell  
+A [command-line interface](powershell-install-configure.md) to manage Azure services via a command line from Windows PCs. Some services or service features can be managed only via PowerShell or the CLI. Guidance for each individual Azure resource details which model(s) a resource can be deployed with.   
+See also [How to install and configure Azure PowerShell](powershell-install-configure.md)
 
-### <a name="arm-model"></a>Azure Resource Manager-Bereitstellungsmodell  
-Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), die in Microsoft Azure zum Bereitstellen von Ressourcen verwendet werden. (Das andere ist das klassische Bereitstellungsmodell.) Einige Azure-Ressourcen können entweder in dem einen oder dem anderen Modell bereitgestellt werden, während andere in beiden Modellen bereitgestellt werden können. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.
 
+### <a name="<a-name="arm-model"></a>azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager deployment model  
+One of two [deployment models](resource-manager-deployment-model.md) used to deploy resources in Microsoft Azure (the other is the classic deployment model). Some Azure resources can be deployed in one model or the other, while others can be deployed in both models. Guidance for individual Azure resources detail which model(s) a resource can be deployed with.
 
-### <a name="fault-domain"></a>Fehlerdomäne  
-Die Sammlung virtueller Computer in einer Verfügbarkeitsgruppe, die theoretisch zur selben Zeit ausfallen können. Ein Beispiel ist eine Gruppe von Computern in einem Rack, die gemeinsam eine Stromquelle und denselben Netzwerkswitch verwenden. In Azure werden die virtuellen Computer in einer Verfügbarkeitsgruppe automatisch auf mehrere Fehlerdomänen verteilt. Siehe auch [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/virtual-machines-windows-manage-availability.md) oder [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/virtual-machines-linux-manage-availability.md).
 
+### <a name="<a-name="fault-domain"></a>fault-domain"></a><a name="fault-domain"></a>fault domain  
+The collection of virtual machines in an availability set that can possibly fail at the same time. An example is a group of machines in a rack that share a common power source and network switch. In Azure, the virtual machines in an availability set are automatically separated across multiple fault domains.  
+See also [Manage the availability of Windows virtual machines](./virtual-machines/virtual-machines-windows-manage-availability.md) or [Manage the availability of Linux virtual machines](./virtual-machines/virtual-machines-linux-manage-availability.md)  
 
-### <a name="geo"></a>Geografischer Raum  
-Eine definierte Grenze für den Speicherort von Daten, der typischerweise zwei oder mehr Regionen umfasst. Die Grenzen können innerhalb nationaler Grenzen liegen oder über diese hinausgehen und verschiedenen steuerlichen Bestimmungen unterliegen. Jeder geografische Raum umfasst mindestens eine Region. Beispiele für geografische Räume sind Asien-Pazifik und Japan. Auch bezeichnet als *Geografie*. Siehe auch [Azure-Regionen](best-practices-availability-paired-regions.md).
 
+### <a name="<a-name="geo"></a>geo"></a><a name="geo"></a>geo  
+A defined boundary for data residency that typically contains two or more regions. The boundaries may be within or beyond national borders and are influenced by tax regulation. Every geo has at least one region. Examples of geos are Asia Pacific and Japan. Also called *geography*.  
+See also [Azure Regions](best-practices-availability-paired-regions.md)
 
-### <a name="geo-replication"></a>Georeplikation  
-Der Vorgang der automatischen Replikation von Inhalten wie beispielsweise Blobs, Tabellen und Warteschlangen innerhalb eines Regionspaars. Siehe auch [Aktive Georeplikation für Azure SQL-Datenbank](./sql-database/sql-database-geo-replication-overview.md).
 
+### <a name="<a-name="geo-replication"></a>geo-replication"></a><a name="geo-replication"></a>geo-replication  
+The process of automatically replicating content such as blobs, tables, and queues within a regional pair.  
+See also [Active Geo-Replication for Azure SQL Database](./sql-database/sql-database-geo-replication-overview.md)
 
-### <a name="image"></a>Image  
-Eine Datei, die das Betriebssystem und die Anwendungskonfiguration enthält, und die zum Erstellen einer beliebigen Anzahl von virtuellen Computern verwendet werden kann. In Azure können zwei Arten von Images verwendet werden: VM-Images und Betriebssystem-Images. Ein VM-Image enthält ein Betriebssystem und alle Datenträger, die an einen virtuellen Computer angefügt sind, wenn das Image erstellt wird. Ein Betriebssystem-Image enthält nur ein generalisiertes Betriebssystem ohne Datenträgerkonfigurationen. Siehe auch [Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell oder der Befehlszeilenschnittstelle](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md).
 
+### <a name="<a-name="image"></a>image"></a><a name="image"></a>image  
+A file that contains the operating system and application configuration that can be used to create any number of virtual machines. In Azure there are two types of images: VM image and OS image. A VM image includes an operating system and all disks attached to a virtual machine when the image is created. An OS image contains only a generalized operating system with no data disk configurations.  
+See also [Navigate and select Windows virtual machine images in Azure with PowerShell or the CLI](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md)
 
-### <a name="limits"></a>Einschränkungen  
-Die Anzahl von Ressourcen, die erstellt werden können oder der Leistungsbenchmark, der erzielt werden kann. Grenzwerte werden üblicherweise Abonnements, Diensten und Angeboten zugeordnet. Siehe auch [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](azure-subscription-service-limits.md).
 
+### <a name="<a-name="limits"></a>limits"></a><a name="limits"></a>limits  
+The number of resources that can be created or the performance benchmark that can be achieved. Limits are typically associated with subscriptions, services, and offerings.  
+See also [Azure subscription and service limits, quotas, and constraints](azure-subscription-service-limits.md)
 
-### <a name="load-balancer"></a>Load Balancer  
-Eine Ressource, die den eingehenden Datenverkehr auf die Computer in einem Netzwerk verteilt. In Azure verteilt ein Load Balancer den Datenverkehr auf virtuelle Computer, die in einer Lastenausgleichsgruppe definiert sind. Ein [Load Balancer](./load-balancer/load-balancer-overview.md) kann mit Internetverbindung oder intern eingerichtet werden.
 
+### <a name="<a-name="load-balancer"></a>load-balancer"></a><a name="load-balancer"></a>load balancer  
+A resource that distributes incoming traffic among computers in a network. In Azure, a load balancer distributes traffic to virtual machines defined in a load-balancer set. A [load balancer](./load-balancer/load-balancer-overview.md) can be internet-facing, or it can be internal.  
 
-### <a name="offer"></a>Angebot  
-Die Preise, Gutschriften und Bedingungen, die für ein Azure-Abonnement gelten. Siehe [Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/).
 
+### <a name="<a-name="offer"></a>offer"></a><a name="offer"></a>offer  
+The pricing, credits, and related terms applicable to an Azure subscription.  
+See the [Azure offer details page](https://azure.microsoft.com/support/legal/offer-details/)
 
-### <a name="portal"></a>Portal  
-Das sichere Webportal, das zum Bereitstellen und Verwalten von Azure-Diensten verwendet wird. Es gibt zwei Portale: Das [Azure-Portal](http://portal.azure.com/) und das [klassische Portal](http://manage.windowsazure.com/). Einige Dienste sind in beiden Portalen verfügbar, während andere nur in einem der Portale zur Verfügung stehen. Im [Verfügbarkeitsdiagramm der Azure-Portale](https://azure.microsoft.com/features/azure-portal/availability/) wird aufgeführt, welche Dienste in welchem Portal zur Verfügung stehen.
 
+### <a name="<a-name="portal"></a>portal"></a><a name="portal"></a>portal  
+The secure Web portal used to deploy and manage Azure services.  There are two portals: The [Azure portal](http://portal.azure.com/) and the [classic portal](http://manage.windowsazure.com/). Some services are available in both portals, whereas others are only available in one or the other. The [Azure portal availability chart](https://azure.microsoft.com/features/azure-portal/availability/) lists which services are available in which portal.  
 
-### <a name="region"></a>Region  
-Ein Bereich innerhalb eines geografischen Raums ohne Überschreitung nationaler Grenzen, der mindestens ein Rechenzentrum umfasst. Preise, regionale Dienste und Angebotstypen werden auf Regionsebene zur Verfügung gestellt. Eine Region bildet typischerweise ein Paar mit einer anderen Region. Diese kann sich mehrere Hundert Kilometer weit entfernt befinden. Regionspaare können als Mechanismus zur Notfallwiederherstellung und in Szenarien mit hoher Verfügbarkeit eingesetzt werden. Allgemein auch als *Standort* bezeichnet. Siehe auch [Azure-Regionen](best-practices-availability-paired-regions.md).
 
+### <a name="<a-name="region"></a>region"></a><a name="region"></a>region  
+An area within a geo that does not cross national borders and contains one or more datacenters. Pricing, regional services, and offer types are exposed at the region level. A region is typically paired with another region, which can be up to several hundred miles away, to form a regional pair. Regional pairs can be used as a mechanism for disaster recovery and high availability scenarios. Also referred to generally as *location*.  
+See also [Azure Regions](best-practices-availability-paired-regions.md)
 
-### <a name="resource"></a>Ressource  
-Ein Element, das Bestandteil Ihrer Azure-Lösung ist. Jeder Azure-Dienst ermöglicht Ihnen das Bereitstellen unterschiedlicher Ressourcentypen, z. B. Datenbanken oder virtuelle Computer. Siehe auch [Übersicht über Azure Resource Manager](resource-group-overview.md).
 
+### <a name="<a-name="resource"></a>resource"></a><a name="resource"></a>resource  
+An item that is part of your Azure solution. Each Azure service enables you to deploy different types of resources, such as databases or virtual machines.   
+See also [Azure Resource Manager overview](resource-group-overview.md)
 
-### <a name="resource-group"></a>Ressourcengruppe  
-Eine Container, der verwandte Ressourcen für eine Anwendung enthält. Die Ressourcengruppe kann alle Ressourcen für eine Anwendung enthalten, oder nur die Ressourcen, die logisch gruppiert sind. Je nachdem, was für Ihre Organisation am sinnvollsten ist, können Sie entscheiden, wie Sie die Ressourcen den Ressourcengruppen zuordnen möchten. Siehe auch [Übersicht über Azure Resource Manager](resource-group-overview.md).
 
+### <a name="<a-name="resource-group"></a>resource-group"></a><a name="resource-group"></a>resource group  
+A container in Resource Manager that holds related resources for an application. The resource group can include all of the resources for an application, or only those resources that are logically grouped together. You can decide how you want to allocate resources to resource groups based on what makes the most sense for your organization.  
+See also [Azure Resource Manager overview](resource-group-overview.md)
 
-### <a name="arm-template"></a>Resource Manager-Vorlage  
-Eine JSON-Datei, die deklarativ eine oder mehrere Azure-Ressourcen definiert, und die Abhängigkeiten zwischen den bereitgestellten Ressourcen definiert. Die Vorlage kann zum konsistenten und wiederholten Bereitstellen der Ressourcen verwendet werden. Siehe auch [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 
+### <a name="<a-name="arm-template"></a>resource-manager-template"></a><a name="arm-template"></a>Resource Manager template  
+A JSON file that declaratively defines one or more Azure resources and that defines dependencies between the deployed resources. The template can be used to deploy the resources consistently and repeatedly.  
+See also [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
 
-### <a name="resource-provider"></a>Ressourcenanbieter  
-Ein Dienst, über den Sie die Ressourcen beziehen, die Sie über Resource Manager bereitstellen und verwalten können. Jeder Ressourcenanbieter bietet Vorgänge zum Arbeiten mit den bereitgestellten Ressourcen. Auf Ressourcenanbieter kann über das Azure-Portal, Azure PowerShell und verschiedene SDKs für die Programmierung zugegriffen werden. Siehe auch [Übersicht über Azure Resource Manager](resource-group-overview.md).
 
+### <a name="<a-name="resource-provider"></a>resource-provider"></a><a name="resource-provider"></a>resource provider  
+A service that supplies the resources you can deploy and manage through Resource Manager. Each resource provider offers operations for working with the resources that are deployed. Resource providers can be accessed through the Azure portal, Azure PowerShell, and several programming SDKs.  
+See also [Azure Resource Manager overview](resource-group-overview.md)
 
-### <a name="role"></a>Rolle  
-Eine Möglichkeit zum Steuern des Zugriffs, die Benutzern, Gruppen und Diensten zugewiesen werden kann. Rollen können verschiedene Aktionen ausführen und so beispielsweise Azure-Ressourcen erstellen, verwalten und lesen. Siehe auch [RBAC: Integrierte Rollen](./active-directory/role-based-access-built-in-roles.md).
 
+### <a name="<a-name="role"></a>role"></a><a name="role"></a>role  
+A means for controlling access that can be assigned to users, groups, and services. Roles are able to perform actions such as create, manage, and read on Azure resources.  
+See also [RBAC: Built-in roles](./active-directory/role-based-access-built-in-roles.md)
 
-### <a name="sla"></a>Vereinbarung zum Servicelevel (SLA)  
-In dieser Vereinbarung ist die garantierte Verfügbarkeit und Konnektivität beschrieben, die Microsoft zusichert. Jeder Azure-Dienst verfügt über eine bestimmte Vereinbarung zum Servicelevel. Siehe auch [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
 
+### <a name="<a-name="sla"></a>service-level-agreement-(sla)"></a><a name="sla"></a>service level agreement (SLA)  
+The agreement that describes Microsoft’s commitments for uptime and connectivity. Each Azure service has a specific SLA.  
+See also [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/)
 
-### <a name="storage-account"></a>Speicherkonto  
-Ein Speicherkonto bietet Ihnen Zugriff auf die Azure Blob-, Warteschlangen-, Tabellen- und Dateidienste in Azure Storage. Ihr Speicherkonto stellt den eindeutigen Namespace für Ihre Azure Storage-Datenobjekte bereit. Siehe auch [Informationen zu Azure-Speicherkonten](./storage/storage-create-storage-account.md).
 
+### <a name="<a-name="storage-account"></a>storage-account"></a><a name="storage-account"></a>storage account  
+A storage account that gives you access to the Azure Blob, Queue, Table, and File services in Azure Storage. Your storage account provides the unique namespace for your Azure Storage data objects.  
+See also [About Azure storage accounts](./storage/storage-create-storage-account.md)
 
-### <a name="subscription"></a>Abonnement  
-Eine Vereinbarung des Kunden mit Microsoft, die die Inanspruchnahme von Azure-Diensten ermöglicht. Die Abonnementpreise und -bedingungen richten sich nach dem ausgewählten Angebot für das Abonnement. Siehe [Microsoft Online-Abonnementvertrag](https://azure.microsoft.com/support/legal/subscription-agreement/). Siehe auch [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md).
 
+### <a name="<a-name="subscription"></a>subscription"></a><a name="subscription"></a>subscription  
+A customer's agreement with Microsoft that enables them to obtain Azure services. The subscription pricing and related terms are governed by the offer chosen for the subscription. See [Microsoft Online Subscription Agreement](https://azure.microsoft.com/support/legal/subscription-agreement/).  
+See also [How Azure subscriptions are associated with Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md)
 
-### <a name="tag"></a>Tag  
-Ein Begriff aus dem Bereich der Indizierung, mit dem Sie Ressourcen gemäß Ihren Anforderungen für die Verwaltung oder Abrechnung kategorisieren können. Die Verwendung von Tags (Markierungen) kann ratsam sein, wenn Sie über eine komplexe Sammlung von Ressourcengruppen und Ressourcen verfügen und diese Ressourcen auf möglichst sinnvolle Weise visualisieren müssen. Beispielsweise können Sie Ressourcen markieren, die in Ihrer Organisation eine ähnliche Funktion haben oder zu derselben Abteilung gehören. Siehe auch [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
+### <a name="<a-name="tag"></a>tag"></a><a name="tag"></a>tag  
+An indexing term that enables you to categorize resources according to your requirements for managing or billing. You can use tags when you have a complex collection of resource groups and resources, and you need to visualize those assets in the way that makes the most sense. For example, you could tag resources that serve a similar role in your organization or belong to the same department.  
+See also [Using tags to organize your Azure resources](resource-group-using-tags.md)
 
-### <a name="update-domain"></a>Updatedomäne  
-Die Sammlung virtueller Computer in einer Verfügbarkeitsgruppe, die gleichzeitig aktualisiert werden. Virtuelle Computer in derselben Updatedomäne werden während einer geplanten Wartung gemeinsam neu gestartet. Azure startet nie mehr als eine Updatedomäne gleichzeitig. Wird auch als Upgradedomäne bezeichnet. Siehe auch [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/virtual-machines-windows-manage-availability.md) oder [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/virtual-machines-linux-manage-availability.md).
 
+### <a name="<a-name="update-domain"></a>update-domain"></a><a name="update-domain"></a>update domain  
+The collection of virtual machines in an availability set that are updated at the same time. Virtual machines in the same update domain are restarted together during planned maintenance. Azure never restarts more than one update domain at a time. Also referred to as an upgrade domain.  
+See also [Manage the availability of Windows virtual machines](./virtual-machines/virtual-machines-windows-manage-availability.md) or [Manage the availability of Linux virtual machines](./virtual-machines/virtual-machines-linux-manage-availability.md)  
 
-### <a name="vm"></a>Virtueller Computer  
-Die Softwareimplementierung eines physischen Computers, der ein Betriebssystem ausführt. Auf derselben Hardware können mehrere virtuelle Computer gleichzeitig ausgeführt werden. In Azure stehen virtuelle Computer in unterschiedlichsten Größen zur Verfügung. Siehe auch [Dokumentation zu virtuellen Computern](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
+### <a name="<a-name="vm"></a>virtual-machine"></a><a name="vm"></a>virtual machine  
+The software implementation of a physical computer that runs an operating system. Multiple virtual machines can run simultaneously on the same hardware. In Azure, virtual machines are available in a variety of sizes.  
+See also [Virtual Machines documentation](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
-### <a name="vm-extension"></a>VM-Erweiterung  
-Eine Ressource, die Verhalten oder Features implementiert, die entweder andere Programme bei der Arbeit unterstützen oder Ihnen die Möglichkeit bieten, mit einem ausgeführten Computer zu interagieren. Beispielsweise können Sie die VM-Erweiterung für den Zugriff dazu verwenden, die Werte für den Remotezugriff auf einem virtuellen Azure-Computer zurückzusetzen oder zu ändern. Siehe auch [Informationen zu Erweiterungen und Features für virtuelle Computer (Windows)](./virtual-machines/virtual-machines-windows-extensions-features.md) oder [Informationen zu Erweiterungen und Features für virtuelle Computer (Linux)](./virtual-machines/virtual-machines-linux-extensions-features.md).
 
+### <a name="<a-name="vm-extension"></a>virtual-machine-extension"></a><a name="vm-extension"></a>virtual machine extension  
+A resource that implements behaviors or features that either help other programs work or provide the ability for you to interact with a running computer. For example, you could use the VM Access extension to reset or modify remote access values on an Azure virtual machine.  
+See also [About virtual machine extensions and features (Windows)](./virtual-machines/virtual-machines-windows-extensions-features.md) or [About virtual machine extensions and features (Linux)](./virtual-machines/virtual-machines-linux-extensions-features.md)
 
-### <a name="vnet"></a>Virtuelles Netzwerk  
-Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und von allen anderen Azure-Mandanten isoliert ist. Es kann über [Azure VPN Gateway](./vpn-gateway/vpn-gateway-about-vpngateways.md) mit anderen virtuellen Azure-Netzwerken und über [verschiedene Optionen](./vpn-gateway/vpn-gateway-cross-premises-options.md) mit Ihrem lokalen Netzwerk verbunden werden. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Siehe auch [Übersicht über Azure Virtual Network](./virtual-network/virtual-networks-overview.md).
 
-###**Weitere Informationen**  
-- [Erste Schritte mit Azure](https://azure.microsoft.com/get-started/)
-- [Ressourcen für Ihren Einstieg in die Cloud](https://azure.microsoft.com/resources/)
-- [Azure für Ihre Geschäftsanwendungen](https://azure.microsoft.com/overview/business-apps-on-azure/)
-- [Azure in Ihrem Rechenzentrum](https://azure.microsoft.com/overview/business-apps-on-azure/)
+### <a name="<a-name="vnet"></a>virtual-network"></a><a name="vnet"></a>virtual network  
+A network that provides connectivity between your Azure resources that is isolated from all other Azure tenants. It can be connected to other Azure virtual networks through an [Azure VPN Gateway](./vpn-gateway/vpn-gateway-about-vpngateways.md) and to your on-premises network using [multiple options](./vpn-gateway/vpn-gateway-cross-premises-options.md). You can fully control the IP address blocks, DNS settings, security policies, and route tables within this network.  
+See also [Virtual Network Overview](./virtual-network/virtual-networks-overview.md)  
 
-<!---HONumber=AcomDC_0803_2016-->
+###<a name="**see-also**"></a>**See also**  
+- [Get started with Azure](https://azure.microsoft.com/get-started/)
+- [Cloud resource center](https://azure.microsoft.com/resources/)  
+- [Azure for your business application](https://azure.microsoft.com/overview/business-apps-on-azure/)
+- [Azure in your datacenter](https://azure.microsoft.com/overview/business-apps-on-azure/) 
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

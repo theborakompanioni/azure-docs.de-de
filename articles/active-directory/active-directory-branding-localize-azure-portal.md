@@ -1,6 +1,6 @@
 <properties
-pageTitle="Hinzufügen eines sprachspezifischen Unternehmensbrandings zur Anmeldeseite in der Azure Active Directory-Vorschau | Microsoft Azure"
-description="Erfahren Sie, wie Sie sprachspezifische Bilder und Texte zu einer Azure-Anmeldeseite hinzufügen."
+pageTitle="Add language-specific company branding to your sign-in page in the Azure Active Directory preview | Microsoft Azure"
+description="Learn how to add a language specific company branding pictures and text to an Azure sign-in page"
 services="active-directory"
 documentationCenter=""
 authors="curtand"
@@ -16,42 +16,47 @@ ms.topic="article"
 ms.date="09/12/2016"
 ms.author="curtand"/>
 
-# Hinzufügen eines sprachspezifischen Unternehmensbrandings zur Anmeldeseite in der Azure Active Directory-Vorschau
 
-Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in der Azure Active Directory-Vorschau möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Die Anmeldeseite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
+# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>Add language-specific company branding to your sign-in page in the Azure Active Directory preview
 
-## Anpassen der Anmeldeseite für eine andere Sprache
+To avoid confusion, many companies want to apply a consistent look and feel across all the websites and services they manage. Azure Active Directory preview provides this capability by allowing you to customize the appearance of the sign-in page with your company logo and custom color schemes. [What's in the preview?](active-directory-preview-explainer.md) The sign-in page is the page that appears when you sign in to Office 365 or other web-based applications that are using Azure AD as your identity provider. You interact with this page to enter your credentials.
 
-Sie können Ihrer benutzerdefinierten Anmeldeseite sprachspezifische Elemente hinzufügen, wenn Sie bereits eine benutzerdefinierte Anmeldeseite erstellt haben. Sie hierzu [Hinzufügen eines Unternehmensbrandings zur Anmeldeseite](active-directory-branding-custom-signon-azure-portal.md). Sie können mithilfe eines Standardsatzes anpassbarer Elementen eine Anmeldeseite pro Verzeichnis konfigurieren. Sobald Sie den Standardsatz an Seitenelementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Beispielsweise ist Folgendes möglich:
+## <a name="customizing-the-sign-in-page-for-another-language"></a>Customizing the sign-in page for another language
 
-- Erstellen Sie eine **Standardabbildung für die Anmeldeseite**, die für alle Kulturen verwendet werden kann, und erstellen Sie dann spezifische Versionen für Englisch und Französisch. Wenn Sie Ihre Browser auf eine dieser zwei Sprachen festlegen, wird das sprachspezifische Bild angezeigt, während für alle anderen Sprachen das Standardbild angezeigt wird.
+You can add language-specific elements to your custom sign-in page only if you have already created a custom sign-in page as described in [Add company branding to your sign-in page](active-directory-branding-custom-signon-azure-portal.md). You can configure one sign-in page per directory with a default set of customizable elements. After you’ve configured the default set of page elements, you can configure more versions for different locales. You can also mix and match various elements. For example, you could:
 
-- Konfigurieren Sie verschiedene Logos für Ihre Organisation (z.B. japanische oder hebräische Versionen).
+- Create a default **Sign-in page image** that works for all cultures, then create specific versions for English and French. When you set your browsers to one of these two languages, the language-specific image appears, while the default illustration appears for all other languages.
 
-Es wird empfohlen, die Anzahl der Sprachvariationen aus Wartungs- und Leistungsgründen gering zu halten.
+- Configure different logos for your organization (for example, Japanese or Hebrew versions).
 
-**So fügen Sie Ihrem Verzeichnis ein Unternehmensbranding hinzu**
+We recommend that you keep the number of language variations low, for maintenance and performance reasons.
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
+**To add company branding to your directory:**
 
-2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
 
-    ![Öffnen der Benutzerverwaltung](./media/active-directory-branding-localize-azure-portal/user-management.png)
+2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
 
-3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Unternehmensbranding** aus.
+    ![Opening user management](./media/active-directory-branding-localize-azure-portal/user-management.png)
 
-4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Unternehmensbranding** den Befehl **Sprache hinzufügen** aus.
+3. On the **Users and groups** blade, select **Company branding**.
 
-    ![Hinzufügen sprachspezifischer Brandingelemente](./media/active-directory-branding-localize-azure-portal/add-language.png)
+4. On the **Users and groups - Company branding** blade, select the **Add language** command.
 
-5. Ändern Sie die Elemente, die Sie anpassen möchten. Alle Elemente sind optional.
+    ![Add language-specific branding elements](./media/active-directory-branding-localize-azure-portal/add-language.png)
 
-6. Klicken Sie auf **Speichern**.
+5. Modify the elements you want to customize. All elements are optional.
 
-Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie am Branding der Anmeldeseite vorgenommen haben.
+6. Click **Save**.
 
-## Nächste Schritte
+It can take up to an hour for any changes you made to the sign-in page branding to appear.
 
-[Hinzufügen eines Unternehmensbrandings zu Ihrer Anmeldeseite](active-directory-branding-custom-signon-azure-portal.md)
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0914_2016-->
+[Add company branding to your sign-in page](active-directory-branding-custom-signon-azure-portal.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

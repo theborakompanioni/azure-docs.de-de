@@ -1,7 +1,7 @@
 
 <properties
-   pageTitle="Verwalten von geheimen Daten in Service Fabric-Anwendungen | Microsoft Azure"
-   description="In diesem Artikel wird beschrieben, wie geheime Werte in einer Service Fabric-Anwendung geschützt werden."
+   pageTitle="Managing secrets in Service Fabric applications | Microsoft Azure"
+   description="This article describes how to secure secret values in a Service Fabric application."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -14,62 +14,63 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/19/2016"
+   ms.date="10/19/2016"
    ms.author="vturecek"/>
 
-# Verwalten von geheimen Daten in Service Fabric-Anwendungen
 
-In diesem Leitfaden werden die Schritte zum Verwalten von geheimen Daten in einer Service Fabric-Anwendung beschrieben. Geheime Daten beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen).
+# <a name="managing-secrets-in-service-fabric-applications"></a>Managing secrets in Service Fabric applications
 
-In diesem Leitfaden wird Azure Key Vault für die Verwaltung von Schlüsseln und geheimen Daten verwendet. Die *Verwendung* von geheimen Daten in einer Anwendung ist jedoch cloudplattformunabhängig, sodass Anwendungen auf einem Cluster bereitgestellt werden können, der an einem beliebigen Standort gehostet wird.
+This guide walks you through the steps of managing secrets in a Service Fabric application. Secrets can be any sensitive information, such as storage connection strings, passwords, or other values that should not be handled in plain text.
 
-## Übersicht
+This guide uses Azure Key Vault to manage keys and secrets. However, *using* secrets in an application is cloud platform-agnostic to allow applications to be deployed to a cluster hosted anywhere. 
 
-Es wird empfohlen, Dienstkonfigurationseinstellungen über [Dienstkonfigurationspakete][config-package] zu verwalten. Konfigurationspakete verfügen über eine Versionsangabe und können über parallele Upgrades aktualisiert werden. Außerdem kann die Integrität überprüft und ein automatischer Rollback durchgeführt werden. Dies wird der globalen Konfiguration vorgezogen, da die Wahrscheinlichkeit eines globalen Dienstausfalls verringert wird. Verschlüsselte geheime Daten stellen keine Ausnahme dar. Service Fabric verfügt über integrierte Features zum Verschlüsseln und Entschlüsseln von Werten in der Konfigurationspaketdatei „Settings.xml“ mithilfe der Zertifikatverschlüsselung.
+## <a name="overview"></a>Overview
 
-Das Diagramm unten zeigt den grundlegenden Ablauf bei der Verwaltung geheimer Daten in einer Service Fabric-Anwendung:
+The recommended way to manage service configuration settings is through [service configuration packages][config-package]. Configuration packages are versioned and updatable through managed rolling upgrades with health-validation and auto rollback. This is preferred to global configuration as it reduces the chances of a global service outage. Encrypted secrets are no exception. Service Fabric has built-in features for encrypting and decrypting values in a configuration package Settings.xml file using certificate encryption.
 
-![Übersicht über die Verwaltung geheimer Daten][overview]
+The following diagram illustrates the basic flow for secret management in a Service Fabric application:
 
-Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
+![secret management overview][overview]
 
- 1. Abrufen eines Datenverschlüsselungszertifikats
- 2. Installieren des Zertifikats in Ihrem Cluster
- 3. Verschlüsseln geheimer Werte bei der Bereitstellung einer Anwendung mit dem Zertifikat und Einfügen dieser Daten in die Konfigurationsdatei „Settings.xml“ des Diensts
- 4. Lesen der verschlüsselten Werte aus der Datei „Settings.xml“, indem diese mit demselben Verschlüsselungszertifikat entschlüsselt werden
+There are four main steps in this flow:
 
-[Azure Key Vault][key-vault-get-started] wird als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten geheimer Daten in Service Fabric-Anwendungen eingesetzt werden.
+ 1. Obtain a data encipherment certificate.
+ 2. Install the certificate in your cluster.
+ 3. Encrypt secret values when deploying an application with the certificate and inject them into a service's Settings.xml configuration file.
+ 4. Read encrypted values out of Settings.xml by decrypting with the same encipherment certificate. 
 
-## Datenverschlüsselungszertifikat
+[Azure Key Vault][key-vault-get-started] is used here as a safe storage location for certificates and as a way to get certificates installed on Service Fabric clusters in Azure. If you are not deploying to Azure, you do not need to use Key Vault to manage secrets in Service Fabric applications.
 
-Ein Datenverschlüsselungszertifikat wird ausschließlich für die Verschlüsselung und Entschlüsselung von Konfigurationswerten in der Datei „Settings.xml“ eines Diensts und nicht für die Authentifizierung verwendet. Das Zertifikat muss die folgenden Anforderungen erfüllen:
+## <a name="data-encipherment-certificate"></a>Data encipherment certificate
 
- - Das Zertifikat muss einen privaten Schlüssel enthalten.
- - Das Zertifikat muss für den Schlüsselaustausch erstellt werden und in eine PFX-Datei (Persönlicher Informationsaustausch) exportiert werden können.
- - Zu den wichtigsten Verwendungszwecken des Zertifikatschlüssels muss die Datenverschlüsselung (10) zählen. Der Zertifikatschlüssel darf nicht für die Server- oder Clientauthentifizierung verwendet werden.
+A data encipherment certificate is used strictly for encryption and decryption of configuration values in a service's Settings.xml and is not used for authentication. The certificate must meet the following requirements:
+
+ - The certificate must contain a private key.
+ - The certificate must be created for key exchange, exportable to a Personal Information Exchange (.pfx) file.
+ - The certificate key usage must include Data Encipherment (10), and should not include Server Authentication or Client Authentication. 
  
- Beim Erstellen eines selbstsignierten Zertifikats mithilfe von PowerShell muss z.B. das Flag `KeyUsage` auf `DataEncipherment` festgelegt werden:
+ For example, when creating a self-signed certificate using PowerShell, the `KeyUsage` flag must be set to `DataEncipherment`:
 
  ```powershell
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
 ```
 
 
-## Installieren des Zertifikats in Ihrem Cluster
+## <a name="install-the-certificate-in-your-cluster"></a>Install the certificate in your cluster
 
-Dieses Zertifikat muss auf jedem Knoten innerhalb des Clusters installiert werden. Es wird zur Laufzeit zum Entschlüsseln von Werten verwendet, die in der Datei „Settings.xml“ eines Diensts gespeichert sind. Anweisungen zum Einrichten finden Sie im Artikel zum [Erstellen eines Clusters mithilfe von Azure Resource Manager][service-fabric-cluster-creation-via-arm].
+This certificate must be installed on each node in the cluster. It will be used at runtime to decrypt values stored in a service's Settings.xml. See [how to create a cluster using Azure Resource Manager][service-fabric-cluster-creation-via-arm] for setup instructions. 
 
-## Verschlüsseln von geheimen Daten in Anwendungen
+## <a name="encrypt-application-secrets"></a>Encrypt application secrets
 
-Das Service Fabric-SDK verfügt über integrierte Funktionen zum Verschlüsseln und Entschlüsseln von geheimen Daten. Geheime Werte können bei der Erstellung verschlüsselt und programmgesteuert im Dienstcode entschlüsselt und gelesen werden.
+The Service Fabric SDK has built-in secret encryption and decryption functions. Secret values can be encrypted at built-time and then decrypted and read programmatically in service code. 
 
-Der folgende PowerShell-Befehl wird zum Verschlüsseln eines geheimen Werts verwendet. Zum Erstellen des Chiffretexts für geheime Werte muss das Verschlüsselungszertifikat verwendet werden, das auf Ihrem Cluster installiert ist:
+The following PowerShell command is used to encrypt a secret. You must use the same encipherment certificate that is installed in your cluster to produce ciphertext for secret values:
 
 ```powershell
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Die resultierende Base64-Zeichenfolge enthält sowohl den Chiffretext des geheimen Werts als auch Informationen zum Zertifikat, das für die Verschlüsselung verwendet wurde. Die Base64-codierte Zeichenfolge kann in einen Parameter Ihrer Konfigurationsdatei „Settings.xml“ eingefügt werden, wobei das Attribut `IsEncrypted` auf `true` festgelegt wird:
+The resulting base-64 string contains both the secret ciphertext as well as information about the certificate that was used to encrypt it.  The base-64 encoded string can be inserted into a parameter in your service's Settings.xml configuration file with the `IsEncrypted` attribute set to `true`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -80,13 +81,13 @@ Die resultierende Base64-Zeichenfolge enthält sowohl den Chiffretext des geheim
 </Settings>
 ```
 
-### Einfügen von geheimen Daten aus Anwendungen in Anwendungsinstanzen  
+### <a name="inject-application-secrets-into-application-instances"></a>Inject application secrets into application instances  
 
-Die Bereitstellung in anderen Umgebungen sollte idealerweise so automatisiert wie möglich erfolgen. Zu diesem Zweck können Sie die geheimen Daten in einer Buildumgebung verschlüsseln und die verschlüsselten geheimen Daten beim Erstellen von Anwendungsinstanzen als Parameter angeben.
+Ideally, deployment to different environments should be as automated as possible. This can be accomplished by performing secret encryption in a build environment and providing the encrypted secrets as parameters when creating application instances.
 
-#### Verwenden von überschreibbaren Parametern in „Settings.xml“
+#### <a name="use-overridable-parameters-in-settings.xml"></a>Use overridable parameters in Settings.xml
 
-Die Konfigurationsdatei „Settings.xml“ ermöglicht die Verwendung überschreibbarer Parameter, die bei der Anwendungserstellung angegeben werden können. Verwenden Sie das Attribut `MustOverride`, anstatt einen Wert für einen Parameter anzugeben:
+The Settings.xml configuration file allows overridable parameters that can be provided at application creation time. Use the `MustOverride` attribute instead of providing a value for a parameter:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -97,7 +98,7 @@ Die Konfigurationsdatei „Settings.xml“ ermöglicht die Verwendung überschre
 </Settings>
 ```
 
-Um Werte in „Settings.xml“ zu überschreiben, deklarieren Sie einen Außerkraftsetzungsparameter für den Dienst in „ApplicationManifest.xml“:
+To override values in Settings.xml, declare an override parameter for the service in ApplicationManifest.xml:
 
 ```xml
 <ApplicationManifest ... >
@@ -118,15 +119,15 @@ Um Werte in „Settings.xml“ zu überschreiben, deklarieren Sie einen Außerkr
   </ServiceManifestImport>
  ```
 
-Der Wert kann nun beim Erstellen einer Instanz der Anwendung als *Anwendungsparameter* angeben werden. Sie können mithilfe von PowerShell ein Skript zum Erstellen einer Anwendungsinstanz erstellen. Alternativ können Sie C# verwenden, um eine problemlose Integration in einen Erstellungsprozess zu ermöglichen.
+Now the value can be specified as an *application parameter* when creating an instance of the application. Creating an application instance can be scripted using PowerShell, or written in C#, for easy integration in a build process.
 
-Bei Verwendung von PowerShell wird der Parameter als [Hashtabelle](https://technet.microsoft.com/library/ee692803.aspx) an den Befehl `New-ServiceFabricApplication` übergeben:
+Using PowerShell, the parameter is supplied to the `New-ServiceFabricApplication` command as a [hash table](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 PS C:\Users\vturecek> New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Bei Verwendung von C# werden Anwendungsparameter in einer `ApplicationDescription` als `NameValueCollection` angegeben:
+Using C#, application parameters are specified in an `ApplicationDescription` as a `NameValueCollection`:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -144,11 +145,11 @@ ApplicationDescription applicationDescription = new ApplicationDescription(
 await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescription);
 ```
 
-## Entschlüsseln von geheimen Daten aus dem Dienstcode
+## <a name="decrypt-secrets-from-service-code"></a>Decrypt secrets from service code
 
-Dienste in Service Fabric werden unter Windows standardmäßig unter dem Konto NETZWERKDIENST ausgeführt und können ohne weitere Einrichtungsschritte nicht auf Zertifikate zugreifen, die auf dem Knoten installiert sind.
+Services in Service Fabric run under NETWORK SERVICE by default on Windows and don't have access to certificates installed on the node without some extra setup.
 
-Bei Verwendung eines Datenverschlüsselungszertifikats müssen Sie sicherstellen, dass NETZWERKDIENST bzw. das Benutzerkonto, unter dem der Dienst ausgeführt wird, auf den privaten Schlüssel des Zertifikats zugreifen kann. Bei entsprechender Konfiguration gewährt Service Fabric automatisch Zugriff für Ihren Dienst. Diese Konfiguration kann in der Datei „ApplicationManifest.xml“ vorgenommen werden, indem Sie Benutzer und Sicherheitsrichtlinien für Zertifikate definieren. Im folgenden Beispiel erhält das Konto NETZWERKDIENST Lesezugriff auf ein Zertifikat, das durch seinen Fingerabdruck definiert ist:
+When using a data encipherment certificate, you need to make sure NETWORK SERVICE or whatever user account the service is running under has access to the certificate's private key. Service Fabric will handle granting access for your service automatically if you configure it to do so. This configuration can be done in ApplicationManifest.xml by defining users and security policies for certificates. In the following example, the NETWORK SERVICE account is given read access to a certificate defined by its thumbprint:
 
 ```xml
 <ApplicationManifest … >
@@ -168,27 +169,31 @@ Bei Verwendung eines Datenverschlüsselungszertifikats müssen Sie sicherstellen
 </ApplicationManifest>
 ```
 
-> [AZURE.NOTE] Beim Kopieren eines Zertifikatfingerabdrucks aus dem Windows-Snap-In „Zertifikatspeicher“ wird am Anfang der Fingerabdruckzeichenfolge ein unsichtbares Zeichen eingefügt. Dieses unsichtbare Zeichen kann einen Fehler verursachen, wenn Sie versuchen, basierend auf dem Fingerabdruck nach einem Zertifikat zu suchen. Stellen Sie also sicher, dass Sie dieses zusätzliche Zeichen löschen.
+> [AZURE.NOTE] When copying a certificate thumbprint from the certificate store snap-in on Windows, an invisible character is placed at the beginning of the thumbprint string. This invisible character can cause an error when trying to locate a certificate by thumbprint, so be sure to delete this extra character.
 
-### Verwenden von geheimen Daten aus Anwendungen in Dienstcode
+### <a name="use-application-secrets-in-service-code"></a>Use application secrets in service code
 
-Die API für den Zugriff auf Konfigurationswerte in der Datei „Settings.xml“ in einem Konfigurationspaket ermöglicht eine problemlose Entschlüsselung von Werten, bei denen das Attribut `IsEncrypted` auf `true` festgelegt ist. Da der verschlüsselte Text Informationen zum Zertifikat umfasst, das für die Verschlüsselung verwendet wurde, müssen Sie nicht manuell nach dem Zertifikat suchen. Das Zertifikat muss lediglich auf dem Knoten installiert sein, auf dem der Dienst ausgeführt wird. Rufen Sie ganz einfach die Methode `DecryptValue()` auf, um den ursprünglichen geheimen Wert abzurufen:
+The API for accessing configuration values from Settings.xml in a configuration package allows for easy decrypting of values that have the `IsEncrypted` attribute set to `true`. Since the encrypted text contains information about the certificate used for encryption, you do not need to manually find the certificate. The certificate just needs to be installed on the node that the service is running on. Simply call the `DecryptValue()` method to retrieve the original secret value:
 
 ```csharp
 ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
 SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Parameters["MySecret"].DecryptValue()
 ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-Weitere Informationen zum [Ausführen von Anwendungen mit unterschiedlichen Sicherheitsberechtigungen](service-fabric-application-runas-security.md)
+Learn more about [running applications with different security permissions](service-fabric-application-runas-security.md)
 
 <!-- Links -->
-[key-vault-get-started]: ../key-vault/key-vault-get-started.md
+[key-vault-get-started]:../key-vault/key-vault-get-started.md
 [config-package]: service-fabric-application-model.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 
 <!-- Images -->
-[overview]: ./media/service-fabric-application-secret-management/overview.png
+[overview]:./media/service-fabric-application-secret-management/overview.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

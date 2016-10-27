@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory-Integration mit Zscaler | Microsoft Azure" 
-    description="Hier erfahren Sie, wie Sie Zscaler mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
+    pageTitle="Tutorial: Azure Active Directory integration with Zscaler | Microsoft Azure" 
+    description="Learn how to use Zscaler with Azure Active Directory to enable single sign-on, automated provisioning, and more!." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,192 +14,199 @@
     ms.date="08/16/2016" 
     ms.author="jeedes" />
 
-#Tutorial: Azure Active Directory-Integration mit Zscaler
+
+#<a name="tutorial:-azure-active-directory-integration-with-zscaler"></a>Tutorial: Azure Active Directory integration with Zscaler
   
-In diesem Tutorial wird die Integration von Azure und Zscaler erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+The objective of this tutorial is to show the integration of Azure and Zscaler. The scenario outlined in this tutorial assumes that you already have the following items:
 
--   Ein gültiges Azure-Abonnement
--   Ein Mandant in Zscaler
+-   A valid Azure subscription
+-   A tenant in Zscaler
   
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Aktivieren der Anwendungsintegration für Zscaler
-2.  Konfigurieren der einmaligen Anmeldung
-3.  Konfigurieren von Proxyeinstellungen
-4.  Konfigurieren der Benutzerbereitstellung
-5.  Zuweisen von Benutzern
+1.  Enabling the application integration for Zscaler
+2.  Configuring single sign-on
+3.  Configuring proxy settings
+4.  Configuring user provisioning
+5.  Assigning users
 
-![Szenario](./media/active-directory-saas-zscaler-tutorial/IC769226.png "Szenario")
+![Scenario](./media/active-directory-saas-zscaler-tutorial/IC769226.png "Scenario")
 
-##Aktivieren der Anwendungsintegration für Zscaler
+##<a name="enabling-the-application-integration-for-zscaler"></a>Enabling the application integration for Zscaler
   
-In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Zscaler aktivieren.
+The objective of this section is to outline how to enable the application integration for Zscaler.
 
-###So aktivieren Sie die Anwendungsintegration für Zscaler:
+###<a name="to-enable-the-application-integration-for-zscaler,-perform-the-following-steps:"></a>To enable the application integration for Zscaler, perform the following steps:
 
-1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-zscaler-tutorial/IC700993.png "Active Directory")
 
-2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![Anwendungen](./media/active-directory-saas-zscaler-tutorial/IC700994.png "Anwendungen")
+    ![Applications](./media/active-directory-saas-zscaler-tutorial/IC700994.png "Applications")
 
-4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
+4.  Click **Add** at the bottom of the page.
 
-    ![Anwendung hinzufügen](./media/active-directory-saas-zscaler-tutorial/IC749321.png "Anwendung hinzufügen")
+    ![Add application](./media/active-directory-saas-zscaler-tutorial/IC749321.png "Add application")
 
-5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-zscaler-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
+    ![Add an application from gallerry](./media/active-directory-saas-zscaler-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  Geben Sie im **Suchfeld** das Wort **Zscaler** ein.
+6.  In the **search box**, type **Zscaler**.
 
-    ![Anwendungskatalog](./media/active-directory-saas-zscaler-tutorial/IC769227.png "Anwendungskatalog")
+    ![Application gallery](./media/active-directory-saas-zscaler-tutorial/IC769227.png "Application gallery")
 
-7.  Wählen Sie im Ergebnisbereich **Zscaler** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+7.  In the results pane, select **Zscaler**, and then click **Complete** to add the application.
 
     ![Zscaler](./media/active-directory-saas-zscaler-tutorial/IC769228.png "Zscaler")
 
-##Konfigurieren der einmaligen Anmeldung
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Zscaler zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie ein Zertifikat auf Zscaler hochladen.
+The objective of this section is to outline how to enable users to authenticate to Zscaler with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to upload a certificate to Zscaler.
 
-###So konfigurieren Sie einmaliges Anmelden
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Zscaler** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  In the Azure classic portal, on the **Zscaler** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
-    ![Einmaliges Anmelden aktivieren](./media/active-directory-saas-zscaler-tutorial/IC769229.png "Einmaliges Anmelden aktivieren")
+    ![Enable single sign-on](./media/active-directory-saas-zscaler-tutorial/IC769229.png "Enable single sign-on")
 
-2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Zscaler anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2.  On the **How would you like users to sign on to Zscaler** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zscaler-tutorial/IC769230.png "Einmaliges Anmelden konfigurieren")
+    ![Configure single sign on](./media/active-directory-saas-zscaler-tutorial/IC769230.png "Configure single sign on")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Zscaler-Anmelde-URL** die von Zscaler erhaltene Anmelde-URL ein, und klicken Sie auf **Weiter**:
+3.  On the **Configure App URL** page, in the **Zscaler Sign In URL** textbox, type your sign in URL you got from Zscaler, and then click **Next**: 
 
-    >[AZURE.NOTE] Bitte wenden Sie sich an das Zscaler-Supportteam, wenn Sie Ihre Anmelde-URL nicht kennen.
+    >[AZURE.NOTE] Please contact the Zscaler support team if you don’t know what your sign in URL is.
 
-    ![App-URL konfigurieren](./media/active-directory-saas-zscaler-tutorial/IC769231.png "App-URL konfigurieren")
+    ![Configure app URL](./media/active-directory-saas-zscaler-tutorial/IC769231.png "Configure app URL")
 
-4.  Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Zscaler** die folgenden Schritte aus.
+4.  On the **Configure single sign-on at Zscaler** page, perform the following steps:
 
     ![Configure single sign-on](./media/active-directory-saas-zscaler-tutorial/IC769232.png "Configure single sign-on")
 
-    1.  Klicken Sie auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat dann lokal unter **c:\\Zscaler.cer**.
-    2.  Kopieren Sie die **Authentifizierungsanforderungs-URL** in die Zwischenablage.
+    1.  Click **Download certificate**, and then save the certificate file locally as **c:\\Zscaler.cer**.
+    2.  Copy the **Authentication request URL** into your clipboard.
 
-5.  Melden Sie sich bei Ihrem Zscaler-Mandanten an.
+5.  Login to your Zscaler tenant.
 
-6.  Klicken Sie oben im Menü auf **Verwaltung**.
+6.  In the menu on the top, click **Administration**.
 
-    ![Verwaltung](./media/active-directory-saas-zscaler-tutorial/IC769486.png "Verwaltung")
+    ![Administration](./media/active-directory-saas-zscaler-tutorial/IC769486.png "Administration")
 
-7.  Klicken Sie unter **Administratoren & Rollen verwalten ** auf **Benutzer & Authentifizierung verwalten**.
+7.  Under **Manage Administrators & Roles**, click **Mange Users & Authentication**.
 
-    ![Administratoren und Rollen verwalten](./media/active-directory-saas-zscaler-tutorial/IC769487.png "Administratoren und Rollen verwalten")
+    ![Manage Administrators & Roles](./media/active-directory-saas-zscaler-tutorial/IC769487.png "Manage Administrators & Roles")
 
-8.  Führen Sie im Abschnitt **Auswählen von Authentifizierungsoptionen für Ihre Organisation** die folgenden Schritte aus:
+8.  In the **Choose Authentication Option for your Organization** section, perform the following steps:
 
-    ![Authentifizierungsoptionen wählen](./media/active-directory-saas-zscaler-tutorial/IC769488.png "Authentifizierungsoptionen wählen")
+    ![Choose Authentication Options](./media/active-directory-saas-zscaler-tutorial/IC769488.png "Choose Authentication Options")
 
-    1.  Wählen Sie **Authentifizeren mit der einmaligen Anmeldung für SAML**.
-    2.  Klicken Sie auf **Einzelne Parameter der einmaligen Anmeldung für SAML konfigurieren**.
+    1.  Select **Authenticate using SAML Single Sign-on**.
+    2.  Click **Configure SAML Single Sign-On Parameters**.
 
-9.  Führen Sie auf der Dialogfeldseite **Einzelne Parameter der einmaligen Anmeldung für SAML konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Fertig stellen**.
+9.  On the **Configure SAML Single Sign-On Parameters** dialog page, perform the following steps, and then click **Done**:
 
-    ![Hochladen des Zertifikats](./media/active-directory-saas-zscaler-tutorial/IC769489.png "Hochladen des Zertifikats")
+    ![Upload certificate](./media/active-directory-saas-zscaler-tutorial/IC769489.png "Upload certificate")
 
-    1.  Fügen Sie in das Textfeld **URL des SAML-Portals, an das Benutzer zur Authentifizierung weitergeleitet werden** den Wert des Felds **Authentifizierungsanforderungs-URL** aus dem klassischen Azure-Portal ein.
-    2.  Geben Sie im Textfeld **Attribut mit Anmeldenamen** die **NameID** ein.
-    3.  Laden Sie in das Feld **Öffentliches SSL-Zertifikat hochladen** das Zertifikat hoch, das Sie aus dem klassischen Azure-Portal heruntergeladen haben.
-    4.  Wählen Sie **Automatische SAML-Bereitstellung aktivieren**.
+    1.  In the **URL of the SAML Portal to which users are sent for authentication** textbox, paste the value of the **Authentication request URL** field from the Azure classic portal.
+    2.  In the **Attribute containing Login Name** textbox, type **NameID**.
+    3.  In the **Upload SSL Public Certificate** field, upload the certificate you have downloaded from the Azure classic portal.
+    4.  Select **Enable SAML Auto-Provisioning**.
 
-10. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
+10. On the **Configure User Authentication** dialog page, perform the following steps:
 
-    ![Benutzerauthentifizierung wählen](./media/active-directory-saas-zscaler-tutorial/IC769490.png "Benutzerauthentifizierung wählen")
+    ![Configure User Authentication](./media/active-directory-saas-zscaler-tutorial/IC769490.png "Configure User Authentication")
 
-    1.  Klicken Sie auf **Speichern**.
-    2.  Klicken Sie auf **Jetzt aktivieren**.
+    1.  Click **Save**.
+    2.  Click **Activate Now**.
 
-11. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+11. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-zscaler-tutorial/IC769491.png "Configure single sign-on")
 
-##Konfigurieren von Proxyeinstellungen
+##<a name="configuring-proxy-settings"></a>Configuring proxy settings
 
-###So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
+###<a name="to-configure-the-proxy-settings-in-internet-explorer"></a>To configure the proxy settings in Internet Explorer
 
-1.  Starten Sie **Internet Explorer**.
+1.  Start **Internet Explorer**.
 
-2.  Wählen Sie im Menü **Tools** **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.
+2.  Select **Internet options** from the **Tools** menu to open the **Internet Options** dialog.
 
-    !["Internetoptionen",](./media/active-directory-saas-zscaler-tutorial/IC769492.png ""Internetoptionen",")
+    ![Internet Options](./media/active-directory-saas-zscaler-tutorial/IC769492.png "Internet Options")
 
-3.  Klicken Sie auf die Registerkarte **Verbindungen**.
+3.  Click the **Connections** tab.
 
-    ![Verbindungen](./media/active-directory-saas-zscaler-tutorial/IC769493.png "Verbindungen")
+    ![Connections](./media/active-directory-saas-zscaler-tutorial/IC769493.png "Connections")
 
-4.  Klicken Sie zum Öffnen des Dialogfelds **LAN-Einstellungen** auf **LAN-Einstellungen**.
+4.  Click **LAN settings** to open the **LAN Settings** dialog.
 
-5.  Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:
+5.  In the Proxy server section, perform the following steps:
 
-    ![Proxyserver](./media/active-directory-saas-zscaler-tutorial/IC769494.png "Proxyserver")
+    ![Proxy server](./media/active-directory-saas-zscaler-tutorial/IC769494.png "Proxy server")
 
-    1.  Wählen Sie "Proxyserver für LAN verwenden" aus.
-    2.  Geben Sie in das Textfeld "Adresse" **gateway.zscalertwo.net** ein.
-    3.  Geben Sie im Textfeld „Port“ **80** ein.
-    4.  Wählen Sie **Proxyserver für lokale Adressen umgehen**.
-    5.  Klicken Sie zum Schließen des Dialogfelds **Local Area Network (LAN) Settings** auf **OK**.
+    1.  Select Use a proxy server for your LAN.
+    2.  In the Address textbox, type **gateway.zscalertwo.net**.
+    3.  In the Port textbox, type **80**.
+    4.  Select **Bypass proxy server for local addresses**.
+    5.  Click **OK** to close the **Local Area Network (LAN) Settings** dialog.
 
-6.  Klicken Sie zum Schließen des Dialogfelds **Internetoptionen** auf **OK**.
+6.  Click **OK** to close the **Internet Options** dialog.
 
-##Konfigurieren der Benutzerbereitstellung
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Damit sich Azure AD-Benutzer bei Zscaler anmelden können, müssen sie in Zscaler bereitgestellt werden. Im Fall von Zscaler ist die Bereitstellung eine manuelle Aufgabe.
+In order to enable Azure AD users to log into Zscaler, they must be provisioned into Zscaler.  
+In the case of Zscaler, provisioning is a manual task.
 
-###So konfigurieren Sie die Benutzerbereitstellung
+###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
 
-1.  Melden Sie sich bei Ihrem **Zscaler**-Mandanten an.
+1.  Log in to your **Zscaler** tenant.
 
-2.  Klicken Sie auf **Verwaltung**.
+2.  Click **Administration**.
 
-    ![Verwaltung](./media/active-directory-saas-zscaler-tutorial/IC781035.png "Verwaltung")
+    ![Administration](./media/active-directory-saas-zscaler-tutorial/IC781035.png "Administration")
 
-3.  Klicken Sie auf **Benutzerverwaltung**.
+3.  Click **User Management**.
 
-    ![Benutzerverwaltung](./media/active-directory-saas-zscaler-tutorial/IC781036.png "Benutzerverwaltung")
+    ![User Management](./media/active-directory-saas-zscaler-tutorial/IC781036.png "User Management")
 
-4.  Klicken Sie in der Registerkarte **Benutzer** auf **Hinzufügen**.
+4.  In the **Users** tab, click **Add**.
 
-    ![Hinzufügen](./media/active-directory-saas-zscaler-tutorial/IC781037.png "Hinzufügen")
+    ![Add](./media/active-directory-saas-zscaler-tutorial/IC781037.png "Add")
 
-5.  Führen Sie im Abschnitt "Benutzer hinzufügen" die folgenden Schritte aus:
+5.  In the Add User section, perform the following steps:
 
-    ![Benutzer hinzufügen](./media/active-directory-saas-zscaler-tutorial/IC781038.png "Benutzer hinzufügen")
+    ![Add User](./media/active-directory-saas-zscaler-tutorial/IC781038.png "Add User")
 
-    1.  Geben Sie die **Benutzer-ID**, den **Benutzeranzeigenamen**, das **Kennwort** und **Kennwort bestätigen** ein, und wählen Sie dann **Gruppen** und die **Abteilung** eines gültigen AAD-Kontos, das Sie bereitstellen möchten.
-    2.  Klicken Sie auf **Speichern**.
+    1.  Type the **UserID**, **User Display Name**, **Password**, **Confirm Password**, and then select **Groups** and the **Department** of a valid AAD account you want to provision.
+    2.  Click **Save**.
 
->[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Zscaler-Benutzerkonten oder mithilfe der von Zscaler bereitgestellten APIs erstellen.
+>[AZURE.NOTE] You can use any other Zscaler user account creation tool or APIs provided by Zscaler to provision AAD user accounts.
 
-##Zuweisen von Benutzern
+##<a name="assigning-users"></a>Assigning users
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###So weisen Sie Zscaler Benutzer zu:
+###<a name="to-assign-users-to-zscaler,-perform-the-following-steps:"></a>To assign users to Zscaler, perform the following steps:
 
-1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
+1.  In the Azure classic portal, create a test account.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für **Zscaler** auf **Benutzer zuweisen**.
+2.  On the **Zscaler** application integration page, click **Assign users**.
 
-    ![Benutzer zuweisen](./media/active-directory-saas-zscaler-tutorial/IC769495.png "Benutzer zuweisen")
+    ![Assign users](./media/active-directory-saas-zscaler-tutorial/IC769495.png "Assign users")
 
-3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
-    ![Ja](./media/active-directory-saas-zscaler-tutorial/IC767830.png "Ja")
+    ![Yes](./media/active-directory-saas-zscaler-tutorial/IC767830.png "Yes")
   
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

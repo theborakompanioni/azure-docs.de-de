@@ -1,77 +1,99 @@
 <properties 
-	pageTitle="Übersicht über Integrationskonten und das Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-	description="Erfahren Sie alles über Integrationskonten, das Enterprise Integration Pack und Logik-Apps" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+    pageTitle="Overview of integration accounts and the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
+    description="Learn all about Integration accounts, the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="msftman" 
+    manager="erikre" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/08/2016" 
+    ms.author="deonhe"/>
 
-# Übersicht über Integrationskonten
 
-## Was ist eine Integrationskonto?
-Ein Integrationskonto ist ein Azure-Konto, mit dem Apps für die Unternehmensintegration Artefakte wie Schemas, Zuordnungen, Zertifikate, Partner und Vereinbarungen verwalten können. Von Ihnen erstellte Integrations-Apps benötigen ein Integrationskonto, um z.B. auf ein Schema, eine Zuordnung oder ein Zertifikat zuzugreifen.
+# <a name="overview-of-integration-accounts"></a>Overview of integration accounts
 
-## Erstellen eines Integrationskontos 
-1. Wählen Sie **Durchsuchen** aus. ![](./media/app-service-logic-enterprise-integration-accounts/account-1.png)
-2. Geben Sie in das Filtersuchfeld **Integration** ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus. ![](./media/app-service-logic-enterprise-integration-accounts/account-2.png)
-3. Wählen im Menü oben auf der Seite die Schaltfläche *Hinzufügen* aus. ![](./media/app-service-logic-enterprise-integration-accounts/account-3.png)
-4. Geben Sie den **Namen** ein, und wählen Sie das **Abonnement** aus, das Sie verwenden möchten. Erstellen Sie entweder eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus. Wählen Sie einen **Speicherort** aus, in dem Ihr Integrationskonto gehostet wird. Wählen Sie einen **Tarif** und dann die Schaltfläche **Erstellen** aus.
+## <a name="what-is-an-integration-account?"></a>What is an integration account?
+An integration account is an Azure account that allows Enterprise Integration apps to manage artifacts including schemas, maps, certificates, partners and agreements. Any integration app you create will need to use an integration account in order to access a schema, map or certificate, for example.
 
-  Das Integrationskonto wird dann am ausgewählten Speicherort bereitgestellt. Dieser Vorgang sollte nicht länger als 1 Minute dauern. ![](./media/app-service-logic-enterprise-integration-accounts/account-4.png)
-5. Aktualisieren Sie die Seite. Das neue Integrationskonto ist nun aufgeführt. Glückwunsch! ![](./media/app-service-logic-enterprise-integration-accounts/account-5.png)
+## <a name="create-an-integration-account"></a>Create an integration account 
+1. Select **Browse**   
+![](./media/app-service-logic-enterprise-integration-accounts/account-1.png)  
+2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+ ![](./media/app-service-logic-enterprise-integration-accounts/account-2.png)  
+3. Select *Add* button from the menu at the top of the page      
+![](./media/app-service-logic-enterprise-integration-accounts/account-3.png)  
+4. Enter the **Name**, select the **Subscription** you want to use, either create a new **Resource group** or select an existing resource group, select a **Location** where your integration account will be hosted, select a **Pricing tier**, then select the **Create** button.   
 
-## Verknüpfen eines Integrationskontos mit einer Logik-App
-Damit Ihre Logik-Apps auf Zuordnungen, Schemas, Vereinbarungen und andere Artefakte zugreifen können, die in Ihrem Integrationskonto enthalten sind, müssen Sie zuerst das Integrationskonto mit Ihrer Logik-App verknüpfen.
+  At this point the integration account will be provisioned in the location you selected. This should complete within 1 minute.    
+![](./media/app-service-logic-enterprise-integration-accounts/account-4.png)  
+5. Refresh the page. You will see your new integration account listed. Congratulations!  
+![](./media/app-service-logic-enterprise-integration-accounts/account-5.png) 
 
-### Es folgen die Schritte zum Verknüpfen eines Integrationskontos mit einer Logik-App. 
+## <a name="how-to-link-an-integration-account-to-a-logic-app"></a>How to link an integration account to a Logic app
+In order for your Logic apps to access to maps, schemas, agreements and other artifacts that are located in your integration account, you must first link the integration account to your Logic app.
 
-#### Voraussetzungen
-- Ein Integrationskonto
-- Eine Logik-App
+### <a name="here-are-the-steps-to-link-an-integration-account-to-a-logic-app"></a>Here are the steps to link an integration account to a Logic app 
 
->[AZURE.NOTE]Vergewissern Sie sich, dass sich Ihr Integrationskonto und Ihre Logik-App am **gleichen Azure-Speicherort** befinden, bevor Sie beginnen.
+#### <a name="prerequisites"></a>Prerequisites
+- An integration account
+- A Logic app
 
-1. Wählen Sie im Menü Ihrer Logik-App den Link **Einstellungen** aus. ![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-1.png)
-2. Wählen Sie auf dem Blatt „Einstellungen“ das Element **Integrationskonto** aus. ![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-2.png)
-3. Wählen Sie das Integrationskonto aus, das Sie mit Ihrer Logik-App verknüpfen möchten, in der Dropdownliste **Integrationskonto wählen** aus. ![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-3.png)
-4. Speichern Sie Ihre Arbeit. ![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-4.png)
-5. Es wird die Benachrichtigung angezeigt, dass Ihr Integrationskonto mit Ihrer Logik-App verknüpft wurde und dass alle Artefakte in Ihrem Integrationskonto nun Ihrer Logik-App zur Verfügung stehen. ![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-5.png)
+>[AZURE.NOTE]Be sure your integration account and Logic app are in the **same Azure location** before you begin
 
-Nun da Ihr Integrationskonto mit Ihrer Logik-App verknüpft ist, können Sie zu Ihrer Logik-App wechseln und B2B-Connectors verwenden, wie z.B. die XML-Validierung, Codierung/Decodierung von Flatfiles oder Transformation, um Apps mit B2B-Features zu erstellen.
+1. Select **Settings** link from the menu of your Logic app  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-1.png)   
+2. Select the **Integration Account** item from the Settings blade  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-2.png)   
+3. Select the integration account you wish to link to your Logic app from the **Select an Integration account** drop down list box  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-3.png)   
+4. Save your work  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-4.png)   
+5. You will see a notification that indicates that your integration account has been linked to your Logic app and that all artifacts in your integration account are now available to your Logic app.  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-5.png)   
+
+Now that your integration account is linked to your Logic app, you can you go to your Logic app and use B2B connectors such as the XML Validation, Flat file encode/decode or Transform to create apps with B2B features.  
     
-## Löschen eines Integrationskontos
-1. Wählen Sie **Durchsuchen** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
-2. Geben Sie in das Filtersuchfeld **Integration** ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
-3. Wählen Sie das **Integrationskonto** aus, das Sie löschen möchten. ![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
-4. Wählen Sie den Link **Löschen** im Menü aus. ![](./media/app-service-logic-enterprise-integration-accounts/delete.png)
-5. Bestätigen Sie Ihre Auswahl.
+## <a name="how-to-delete-an-integration-account?"></a>How to delete an integration account?
+1. Select **Browse**  
+![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)    
+2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+ ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)  
+3. Select the **integration account** that you wish to delete  
+![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)  
+4. Select the **Delete** link that's located on the menu   
+![](./media/app-service-logic-enterprise-integration-accounts/delete.png)  
+5. Confirm your choice    
 
-## Verschieben eines Integrationskontos
-Sie können ein Integrationskonto einfach in ein neues Abonnement und eine neue Ressourcengruppe verschieben. Gehen Sie folgendermaßen vor, wenn Sie Ihr Integrationskonto verschieben müssen:
+## <a name="how-to-move-an-integration-account?"></a>How to move an integration account?
+You can easily move an integration account to a new subscription and a new resource group. Follow these steps if you need to move your integration account:
 
->[AZURE.IMPORTANT] Nach dem Verschieben eines Integrationskontos müssen Sie alle Skripts für die Verwendung der neuen Ressourcen-IDs ändern.
+>[AZURE.IMPORTANT] You will need to update all scripts to use the new resource IDs after you move an integration account.
 
-1. Wählen Sie **Durchsuchen** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
-2. Geben Sie in das Filtersuchfeld **Integration** ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus. ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
-3. Wählen Sie das **Integrationskonto** aus, das Sie löschen möchten. ![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
-4. Wählen Sie den Link **Verschieben** im Menü aus. ![](./media/app-service-logic-enterprise-integration-accounts/move.png)
-5. Bestätigen Sie Ihre Auswahl.
+1. Select **Browse**  
+![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)    
+2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+ ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)  
+3. Select the **integration account** that you wish to delete  
+![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)  
+4. Select the **Move** link that's located on the menu   
+![](./media/app-service-logic-enterprise-integration-accounts/move.png)  
+5. Confirm your choice    
 
-## Nächste Schritte
-- [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
-- [Weitere Informationen zu Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
+## <a name="next-steps"></a>Next Steps
+- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")  
+- [Learn more about agreements](./app-service-logic-enterprise-integration-agreements.md "Learn about enterprise integration agreements")  
 
 
  
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

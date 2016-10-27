@@ -1,49 +1,51 @@
-## Erstellen eines Ereignis-Hubs
+## <a name="create-an-event-hub"></a>Create an Event Hub
 
-1. Melden Sie sich beim [Azure-Portal][] an, und klicken Sie oben links auf dem Bildschirm auf **Neu**.
+1. Log on to the [Azure portal][], and click **New** at the top left of the screen.
 
-2. Klicken Sie auf **Daten + Analysen** und anschließend auf **Event Hubs**.
+2. Click **Data + Analytics**, then click **Event Hubs**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub9.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub9.png)
 
-3. Geben Sie auf dem Blatt **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
+3. In the **Create namespace** blade, enter a namespace name. The system immediately checks to see if the name is available.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub1.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub1.png)
 
-4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“ oder „Standard“) aus. Wählen Sie außerdem ein Azure-Abonnement, eine Ressourcengruppe und einen Standort, an dem die Ressource erstellt werden soll.
+4. After making sure the namespace name is available, choose the pricing tier (Basic or Standard). Also, choose an Azure subscription, resource group, and location in which to create the resource. 
 
-2. Klicken Sie auf **Erstellen**, um den Namespace zu erstellen.
+2. Click **Create** to create the namespace.
 
-6. Klicken Sie in der Liste der Event Hubs-Namespaces auf den neu erstellten Namespace.
+6. In the Event Hubs namespace list, click the newly-created namespace.      
 
-	![](./media/event-hubs-create-event-hub/create-event-hub2.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub2.png)
 
-7. Klicken Sie auf dem Blatt mit den Namespaces auf **Event Hubs**.
+7. In the namespace blade, click **Event Hubs**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub3.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub3.png)
 
-8. Klicken Sie oben auf dem Blatt auf **Event Hub hinzufügen**.
+8. At the top of the blade, click **Add Event Hub**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub4.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub4.png)
 
-3. Geben Sie einen Namen für den Event Hub ein, und klicken Sie auf **Erstellen**.
+3. Type a name for your Event Hub, then click **Create**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub5.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub5.png)
 
-4. Klicken Sie in der Liste der Event Hubs auf den Namen des neu erstellten Event Hubs.
+4. In the list of Event Hubs, click the newly created Event Hub name. 
 
-	![](./media/event-hubs-create-event-hub/create-event-hub6.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub6.png)
 
-5. Klicken Sie auf dem Blatt mit Namespaces (nicht auf dem Blatt für den bestimmten Event Hub) auf **Shared access policies** (Richtlinien für gemeinsamen Zugriff), und klicken Sie dann auf **RootManageSharedAccessKey**.
+5. Back in the namespace blade (not the specific Event Hub blade), click **Shared access policies**, and then click **RootManageSharedAccessKey**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub7.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub7.png)
 
-5. Klicken Sie auf die Kopierschaltfläche, um die Verbindungszeichenfolge **RootManageSharedAccessKey** in die Zwischenablage zu kopieren. Speichern Sie diese Verbindungszeichenfolge für die spätere Verwendung in diesem Tutorial.
+5. Click the copy button to copy the **RootManageSharedAccessKey** connection string to the clipboard. Save this connection string to use later in the tutorial.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub8.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub8.png)
 
-Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Empfangen von Ereignissen erforderlichen Verbindungszeichenfolgen.
+Your Event Hub is now created, and you have the connection strings you need to send and receive events.
 
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0921_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

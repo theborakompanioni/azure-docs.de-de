@@ -1,38 +1,43 @@
 <properties
-   pageTitle="Verweisen einer Unternehmensinternetdomäne auf eine Traffic Manager-Domäne | Microsoft Azure"
-   description="In diesem Artikel erfahren Sie, wie Sie mit Ihrem Unternehmensdomänennamen auf einen Traffic Manager-Domänennamen verweisen."
-   services="traffic-manager"
-   documentationCenter=""
-   authors="sdwheeler"
-   manager="carmonm"
-   editor="tysonn" />
+    pageTitle="Point a company Internet domain to a Traffic Manager domain name | Microsoft Azure"
+    description="This article will help you point your company domain name to a Traffic Manager domain name."
+    services="traffic-manager"
+    documentationCenter=""
+    authors="sdwheeler"
+    manager="carmonm"
+    editor=""
+/>
 <tags
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
-   ms.author="sewhee" />
+    ms.service="traffic-manager"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="infrastructure-services"
+    ms.date="10/11/2016"
+    ms.author="sewhee"
+/>
 
-# Verweisen einer Unternehmensinternetdomäne auf eine Azure Traffic Manager-Domäne
 
-Um mit Ihrem Unternehmensdomänennamen auf einen Traffic Manager-Domänennamen zu verweisen, ändern Sie den DNS-Ressourceneintrag auf dem Internet-DNS-Server mit dem CNAME-Eintragstyp, der den Domänennamen Ihres Unternehmens dem Domänennamen Ihres Traffic Manager-Profils zuordnet. Sie finden den Traffic Manager-Domänennamen auf der Konfigurationsseite des Traffic Manager-Profils im Abschnitt **Allgemein**.
+# <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Point a company Internet domain to an Azure Traffic Manager domain
 
-Um beispielsweise mit dem Unternehmens-Domänennamen www.contoso.com auf den Traffic Manager-Domänennamen contoso.trafficmanager.net zu verweisen, ändern Sie den DNS-Ressourceneintrag wie folgt:
+When you create a Traffic Manager profile, Azure automatically assigns a DNS name for that profile. To use a name from your DNS zone, create a CNAME DNS record that maps to the domain name of your Traffic Manager profile. You can find the Traffic Manager domain name in the **General** section on the Configuration page of the Traffic Manager profile.
+
+For example, to point name www.contoso.com to the Traffic Manager DNS name contoso.trafficmanager.net, you would create the following DNS resource record:
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Alle Datenverkehrsanforderungen an *www.contoso.com* werden jetzt an *contoso.trafficmanager.net* umgeleitet.
+All traffic requests to *www.contoso.com* get directed to *contoso.trafficmanager.net*.
 
->[AZURE.IMPORTANT] Sie können nicht mit Domänen der zweiten Ebene wie *contoso.com* auf Traffic Manager-Domänen verweisen. Dies ist eine Einschränkung des DNS-Protokolls, das keine CNAME-Datensätze für Domänennamen der zweiten Ebene zulässt.
+>[AZURE.IMPORTANT] You cannot point a second-level domain, such as *contoso.com*, to the Traffic Manager domain. DNS protocol standards do not allow CNAME records for second-level domain names.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md)
+- [Traffic Manager routing methods](traffic-manager-routing-methods.md)
+- [Traffic Manager - Disable, enable or delete a profile](disable-enable-or-delete-a-profile.md)
+- [Traffic Manager - Disable or enable an endpoint](disable-or-enable-an-endpoint.md)
 
-[Deaktivieren, Aktivieren oder Löschen eines Traffic Manager-Profils](disable-enable-or-delete-a-profile.md)
 
-[Deaktivieren oder Aktivieren eines Traffic Manager-Endpunkts](disable-or-enable-an-endpoint.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

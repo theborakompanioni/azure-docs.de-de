@@ -1,3 +1,6 @@
-VNet-Peering ist ein Mechanismus zum Verbinden von zwei Virtual Networks in derselben Region über das Azure-Backbonenetzwerk. Nach dem Peering werden die beiden Virtual Networks für alle Verbindungszwecke als ein Virtual Network angezeigt. Lesen Sie sich [Übersicht über VNet-Peering](../articles/virtual-network/virtual-network-peering-overview.md) durch, wenn Sie mit dem VNet-Peering noch nicht vertraut sind.
+VNet Peering is a mechanism to connect two Virtual Networks in the same region through the Azure backbone network. Once peered, the two Virtual Networks will appear like a single Virtual Network for all connectivity purposes. Read the [VNet Peering overview](../articles/virtual-network/virtual-network-peering-overview.md) if you are not familiar with VNet Peering.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

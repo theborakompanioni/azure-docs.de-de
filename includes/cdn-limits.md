@@ -1,10 +1,13 @@
 
-Ressource | Weicher Grenzwert
+Resource | Soft limit
 ---------|-----------
-CDN-Profile | 8
-CDN-Endpunkte pro Profil | 10
-Benutzerdefinierte Domänen pro Endpunkt | 10 
+CDN profiles | 8
+CDN endpoints per profile | 10
+Custom domains per endpoint | 10 
 
-Fordern Sie eine Aktualisierung der weichen Grenzwerte Ihres Abonnements an, indem Sie ein Supportticket eröffnen.
+Request an update to your subscription's soft limits by opening a support ticket.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,142 +1,147 @@
 <properties
-	pageTitle="Häufig gestellte Fragen zu Azure Active Directory B2C | Microsoft Azure"
-	description="Häufig gestellte Fragen zu Azure Active Directory B2C"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: FAQs | Microsoft Azure"
+    description="Frequently asked questions about Azure Active Directory B2C"
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/09/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/09/2016"
+    ms.author="swkrish"/>
 
-# Häufig gestellte Fragen zu Azure Active Directory B2C
 
-Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
+# <a name="azure-active-directory-b2c:-faqs"></a>Azure Active Directory B2C: FAQs
 
-### Kann ich Azure AD B2C-Features in meinem vorhandenen mitarbeiterbasierten Azure AD Directory-Mandanten nutzen?
+This page answers frequently asked questions about the Azure Active Directory (Azure AD) B2C. Keep checking back for updates.
 
-Derzeit können Azure AD B2C-Features in Ihrem vorhandenen Azure AD-Mandanten noch nicht aktiviert werden. Es wird empfohlen, einen separaten Mandanten zu erstellen, um Ihre Endkunden mit Azure AD B2C-Features zu verwalten.
+### <a name="can-i-use-azure-ad-b2c-features-in-my-existing,-employee-based-azure-ad-tenant?"></a>Can I use Azure AD B2C features in my existing, employee-based Azure AD tenant?
 
-### Kann ich Azure AD B2C zum Bereitstellen der Anmeldung für soziale Netzwerke (Facebook und Google+) in Office 365 verwenden?
+Currently Azure AD B2C features can't be turned on in your existing Azure AD tenant. We recommend that you create a separate tenant to use Azure AD B2C features to manage your consumers.
 
-Azure AD B2C kann nicht mit Microsoft Office 365 verwendet werden. Es kann generell nicht für die Bereitstellung der Authentifizierung für SaaS-Apps (Office 365, Salesforce, Workday usw.) verwendet werden. Es ermöglicht nur die Identitäts- und Zugriffsverwaltung für endkundenorientierte Webanwendungen und mobile Anwendungen und ist nicht für Mitarbeiter- oder Partnerszenarien ausgelegt.
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-(facebook-and-google+)-into-office-365?"></a>Can I use Azure AD B2C to provide social login (Facebook and Google+) into Office 365?
 
-### Was sind lokale Konten in Azure AD B2C? Wie unterscheiden sie sich von Geschäfts-, Schul- oder Unikonten in Azure AD?
+Azure AD B2C can't be used with Microsoft Office 365. In general, it can't be used to provide authentication to any SaaS apps (Office 365, Salesforce, Workday, etc.). It provides identity and access management only for consumer-facing web and mobile applications, and is not applicable to employee or partner scenarios.
 
-In einem Azure AD-Mandanten meldet sich jeder Benutzer im Mandanten (mit Ausnahme von Benutzern mit vorhandenen Microsoft-Konten) mit einer E-Mail-Adresse im Format `<xyz>@<tenant domain>` an. Hierbei ist `<tenant domain>` eine der überprüften Domänen im Mandanten oder die ursprüngliche `<...>.onmicrosoft.com`-Domäne. Dieser Kontotyp ist ein Geschäfts-, Schul- oder Unikonto.
+### <a name="what-are-local-accounts-in-azure-ad-b2c?-how-are-they-different-from-work-or-school-accounts-in-azure-ad?"></a>What are local accounts in Azure AD B2C? How are they different from work or school accounts in Azure AD?
 
-Bei einem Azure AD B2C-Mandanten kann sich der Benutzer in den meisten Apps mit einer beliebigen E-Mail-Adresse anmelden (also beispielsweise mit joe@comcast.net, bob@gmail.com, sarah@contoso.com oder jim@live.com). Diese Art von Konto ist ein lokales Konto. Jetzt werden auch beliebige Benutzernamen (einfache Zeichenfolgen) als lokale Konten unterstützt (z. B. joe, bob, sarah oder jim). Sie können eine dieser beiden lokalen Kontotypen im Azure AD B2C-Dienst auswählen.
+In an Azure AD tenant, every user in the tenant (except users with existing Microsoft accounts) signs in with an email address of the form `<xyz>@<tenant domain>`, where `<tenant domain>` is one of the verified domains in the tenant or the initial `<...>.onmicrosoft.com` domain. This type of account is a work or school account.
 
-### Welche Identitätsanbieter aus sozialen Netzwerken werden derzeit unterstützt? Welche sollen in Zukunft unterstützt werden?
+In an Azure AD B2C tenant, most apps want the user to sign in with any arbitrary email address (for example, joe@comcast.net, bob@gmail.com, sarah@contoso.com, or jim@live.com). This type of account is a local account. Today, we also support arbitrary user names (just plain strings) as local accounts (for example, joe, bob, sarah, or jim). You can choose one of these two local account types in the Azure AD B2C service.
 
-Gegenwärtig werden Facebook, Google+, LinkedIn und Amazon unterstützt. Die Unterstützung für andere beliebte soziale Identitätsanbieter wird je nach Kundennachfrage hinzugefügt.
+### <a name="which-social-identity-providers-do-you-support-now?-which-ones-do-you-plan-to-support-in-the-future?"></a>Which social identity providers do you support now? Which ones do you plan to support in the future?
 
-### Kann ich Bereiche konfigurieren, um von verschiedenen Identitätsanbietern aus sozialen Netzwerken mehr Informationen zu Endkunden zu erhalten?
+We currently support Facebook, Google+, LinkedIn, and Amazon. We will add support for other popular social identity providers based on customer demand.
 
-Nein, aber dieses Feature ist geplant. Die Standardbereiche für unsere unterstützten sozialen Identitätsanbieter sind:
+### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers?"></a>Can I configure scopes to gather more information about consumers from various social identity providers?
+
+No, but this feature is on our roadmap. The default scopes used for our supported set of social identity providers are:
 
 - Facebook: email
 - Google+: email
-- Microsoft-Konto: openid email profile
+- Microsoft account: openid email profile
 - Amazon: profile
-- LinkedIn: r\_emailaddress, r\_basicprofile
+- LinkedIn: r_emailaddress, r_basicprofile
 
-### Muss meine Anwendung unter Azure ausgeführt werden, damit sie mit Azure AD B2C funktioniert?
+### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c?"></a>Does my application have to be run on Azure for it work with Azure AD B2C?
 
-Nein, Sie können Ihre Anwendung überall hosten (in der Cloud oder lokal). Für die Interaktion mit Azure AD B2C muss nur die Fähigkeit zum Senden und Empfangen von HTTP-Anforderungen über öffentlich zugängliche Endpunkte möglich sein.
+No, you can host your application anywhere (in the cloud or on-premises). All it needs to interact with Azure AD B2C is the ability to send and receive HTTP requests on publicly-accessible endpoints.
 
-### Ich habe mehrere Azure AD B2C-Mandanten. Wie kann ich sie im Azure-Portal verwalten?
+### <a name="i-have-multiple-azure-ad-b2c-tenants.-how-can-i-manage-them-on-the-azure-portal?"></a>I have multiple Azure AD B2C Tenants. How can I manage them on the Azure Portal?
 
-Jeder Azure AD B2C-Mandant verfügt im Azure-Portal über ein eigenes Blatt mit B2C-Funktionen. Informationen dazu, wie Sie im Azure-Portal zum Blatt mit den B2C-Funktionen eines bestimmten Mandanten navigieren, finden Sie unter [Azure AD B2C: Registrieren Ihrer Anwendung](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade). Beim Wechseln zwischen Azure AD B2C-Verzeichnissen im Azure-Portal bleibt das Blatt mit den B2C-Funktionen in den meisten Browsern nicht geöffnet.
+Each Azure AD B2C tenant has its own B2C features blade on the Azure portal. See [Azure AD B2C: Register your application](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) to learn how you can navigate to a specific tenant's B2C features blade on the Azure portal. Switching between Azure AD B2C directories on the Azure portal will not keep your B2C features blade open on most browsers.
 
-### Wie kann ich Bestätigungs-E-Mails anpassen (Inhalt und das Feld „Von:“), die von Azure AD B2C gesendet werden?
+### <a name="how-do-i-customize-verification-emails-(the-content-and-the-"from:"-field)-sent-by-azure-ad-b2c?"></a>How do I customize verification emails (the content and the "From:" field) sent by Azure AD B2C?
 
-Sie können das [Feature für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) verwenden, um den Inhalt von Bestätigungs-E-Mails anzupassen. Insbesondere diese beiden Elemente einer E-Mail können angepasst werden:
+You can use the [company branding feature](../active-directory/active-directory-add-company-branding.md) to customize the content of verification emails. Specifically, these two elements of the email can be customized:
 
-- **Bannerlogo**: Wird unten rechts angezeigt.
-- **Hintergrundfarbe**: Wird oben angezeigt.
+- **Banner Logo**: Shown at the bottom-right.
+- **Background color**: Shown at the top.
 
-	![Screenshot einer angepassten Bestätigungs-E-Mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![Screen shot of a customized verification email](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-Die E-Mail-Signatur enthält den Namen des B2C-Mandanten, den Sie bei der ursprünglichen Erstellung des B2C-Mandanten angegeben haben. Sie können den Namen mit folgenden Schritten ändern:
+The email signature contains the B2C tenant's name that you provided when you first created the B2C tenant. You can change the name using these instructions:
 
-- Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an.
-- Navigieren Sie zu Ihrem B2C-Mandanten.
-- Klicken Sie auf die Registerkarte **Konfigurieren**.
-- Ändern Sie im Abschnitt **Verzeichniseigenschaften** das Feld **Name**.
-- Klicken Sie unten auf der Seite auf **Speichern**.
+- Sign into the [Azure classic portal](https://manage.windowsazure.com/) as the Subscription Administrator.
+- Navigate to your B2C tenant.
+- Click on the **Configure** tab.
+- Change the **Name** field under the **Directory properties** section.
+- Click **Save** at the bottom of the page.
 
-Zurzeit besteht keine Möglichkeit, das Feld „Von:“ der E-Mail zu ändern. Wenn Sie an dieser Funktionalität und einer vollständigen Bearbeitbarkeit des Texts der Bestätigungs-E-Mail interessiert sind, stimmen Sie unter [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) für dieses Feature ab.
+Currently there is no way to change the "From:" field on the email. If you are interested in this capability and in fully customizing the body of the verification email, do vote for the feature on [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails).
 
-### Wie kann ich meine vorhandenen Benutzernamen, Kennwörter und Profile von meiner Datenbank zu Azure AD B2C migrieren?
+### <a name="how-can-i-migrate-my-existing-user-names,-passwords,-and-profiles-from-my-database-to-azure-ad-b2c?"></a>How can I migrate my existing user names, passwords, and profiles from my database to Azure AD B2C?
 
-Sie können Ihr Migrationstool mithilfe der Azure AD Graph-API schreiben. Einzelheiten finden Sie im [Graph-API-Beispiel](active-directory-b2c-devquickstarts-graph-dotnet.md). In Zukunft werden verschiedene Migrationsoptionen und Tools standardmäßig vorhanden sein.
+You can use the Azure AD Graph API to write your migration tool. See the [Graph API sample](active-directory-b2c-devquickstarts-graph-dotnet.md) for details. We will provide various migration options and tools out-of-the-box in the future.
 
-### Welche Kennwortrichtlinie wird für lokale Konten in Azure AD B2C verwendet?
+### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c?"></a>What password policy is used for local accounts in Azure AD B2C?
 
-Die Kennwortrichtlinie von Azure AD B2C für lokale Konten basiert auf der Kennwortrichtlinie von Azure AD. Die Azure AD B2C-Richtlinien zur Registrierung, Anmeldung und Kennwortrücksetzung verwenden sichere Kennwörter, und die Kennwörter laufen nicht ab. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx).
+The Azure AD B2C password policy for local accounts is based on the policy for Azure AD. Azure AD B2C's sign-up, sign-up or sign-in and password reset policies uses the "strong" password strength and doesn't expire any passwords. Read the [Azure AD password policy](https://msdn.microsoft.com/library/azure/jj943764.aspx) for more details.
 
-### Kann ich Azure AD Connect zum Migrieren von Endkundenidentitäten, die in meinem lokalen Active Directory gespeichert sind, zu Azure AD B2C verwenden?
+### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c?"></a>Can I use Azure AD Connect to migrate consumer identities that are stored on my on-premises Active Directory to Azure AD B2C?
 
-Nein. Azure AD Connect ist nicht für die Verwendung mit Azure AD B2C ausgelegt. In Zukunft werden verschiedene Migrationsoptionen und Tools standardmäßig vorhanden sein.
+No, Azure AD Connect is not designed to work with Azure AD B2C. We will provide various migration options and tools out-of-the-box in the future.
 
-### Funktioniert Azure AD B2C in Verbindung mit CRM-Systemen wie Microsoft Dynamics?
+### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics?"></a>Does Azure AD B2C work with CRM systems such as Microsoft Dynamics?
 
-Derzeit ist dies nicht möglich. Die Integration dieser Systeme ist aber geplant.
+Not currently. Integrating these systems is on our roadmap.
 
-### Funktioniert Azure AD B2C in Verbindung mit SharePoint On-Premises 2016 oder früher?
+### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier?"></a>Does Azure AD B2C work with SharePoint on-premises 2016 or earlier?
 
-Derzeit ist dies nicht möglich. Azure AD B2C bietet keine Unterstützung für SAML 1.1-Token, die von Portalen und E-Commerce-Anwendungen benötigt werden, die auf SharePoint On-Premises beruhen. Beachten Sie, dass Azure AD B2C nicht für das SharePoint-Freigabeszenario für externe Partner vorgesehen ist. Informieren Sie sich dazu unter [Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx).
+Not currently. Azure AD B2C doesn't have support for SAML 1.1 tokens that portals and e-commerce applications built on SharePoint on-premises need. Note that Azure AD B2C is not meant for the SharePoint external partner-sharing scenario; see [Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) instead.
 
-### Sollte ich Azure AD B2C oder B2B zum Verwalten externer Identitäten verwenden?
+### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities?"></a>Should I use Azure AD B2C or B2B to manage external identities?
 
-Lesen Sie diesen Artikel über [externe Identitäten](../active-directory/active-directory-b2b-compare-external-identities.md), um mehr über das Anwenden der entsprechenden Features in Ihren Szenarien mit externen Identitäten zu erfahren.
+Read this article about [external identities](../active-directory/active-directory-b2b-compare-external-identities.md) to learn more about applying the appropriate features to your external identity scenarios.
 
-### Welche Funktionen für Berichterstellung und Überwachung bietet Azure AD B2C? Sind die Funktionen mit denen in Azure AD Premium identisch?
+### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide?-are-they-the-same-as-in-azure-ad-premium?"></a>What reporting and auditing features does Azure AD B2C provide? Are they the same as in Azure AD Premium?
 
-Nein. Azure AD B2C unterstützt nicht den gleichen Berichtssatz wie Azure AD Premium. Für Azure AD B2C werden in Kürze grundlegende APIs für Berichterstellung und Auditing veröffentlicht.
+No, Azure AD B2C does not support the same set of reports as Azure AD Premium. Azure AD B2C will be releasing basic reporting and auditing APIs soon.
 
-### Kann ich die Benutzeroberfläche von Seiten lokalisieren, die von Azure AD B2C bereitgestellt werden? Welche Sprachen werden unterstützt?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c?-what-languages-are-supported?"></a>Can I localize the UI of pages served by Azure AD B2C? What languages are supported?
 
-Derzeit ist Azure AD B2C nur für Englisch optimiert. Es ist geplant, die Lokalisierungsfeatures so bald wie möglich bereitzustellen.
+Currently, Azure AD B2C is optimized for English only. We plan to roll out localization features as soon as possible.
 
-### Kann ich auf meinen von Azure AD B2C bereitgestellten Seiten für die Registrierung und Anmeldung meine eigenen URLs verwenden? Kann ich beispielsweise die URL von „login.microsoftonline.com“ in „login.contoso.com“ ändern?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c?-for-instance,-can-i-change-the-url-from-login.microsoftonline.com-to-login.contoso.com?"></a>Can I use my own URLs on my sign-up and sign-in pages that are served by Azure AD B2C? For instance, can I change the URL from login.microsoftonline.com to login.contoso.com?
 
-Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Beachten Sie auch, dass dies nicht durch Überprüfen Ihrer Domäne auf der Registerkarte **Domänen** für den Mandanten im klassischen Azure-Portal erfolgen kann.
+Not currently. This feature is on our roadmap. Also note that verifying your domain in the **Domains** tab of your tenant on the Azure classic portal will not do this.
 
-### Wie lösche ich meinen Azure AD B2C-Mandanten?
+### <a name="how-do-i-delete-my-azure-ad-b2c-tenant?"></a>How do I delete my Azure AD B2C tenant?
 
-Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu löschen:
+Follow these steps to delete your Azure AD B2C tenant:
 
-- Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-- Navigieren Sie zu den Blättern **Anwendungen**, **Identitätsanbieter** und **Alle Richtlinien**, und löschen Sie jeweils alle Einträge.
-- Melden Sie sich jetzt beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an. (Dies ist dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
-- Navigieren Sie links zur Active Directory-Erweiterung, und klicken Sie auf Ihren B2C-Mandanten.
-- Klicken Sie auf die Registerkarte **Benutzer**.
-- Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Benutzers, als der Sie gerade angemeldet sind (Abonnementadministrator). Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
-- Klicken Sie auf die Registerkarte **Anwendungen**.
-- Wählen Sie im Dropdownfeld **Anzeigen** die Einstellung **Anwendungen im Besitz meines Unternehmens** aus, und klicken Sie auf das Häkchen.
-- Eine Anwendung namens**b2c-extensions-app** wird angezeigt. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
-- Navigieren Sie erneut zur Active Directory-Erweiterung, und wählen Sie Ihren B2C-Mandanten aus.
-- Klicken Sie unten auf der Seite auf **Löschen**. Folgen Sie den Anweisungen auf dem Bildschirm, um den Vorgang abzuschließen.
+- Follow these steps to [navigate to the B2C features blade](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) on the Azure portal.
+- Navigate to the **Applications**, **Identity providers** and **All policies** blades and delete all the entries in each of them.
+- Now sign in to the [Azure classic portal](https://manage.windowsazure.com/) as the Subscription Administrator. (This is the same work or school account or the same Microsoft account that you used to sign up for Azure.)
+- Navigate to the Active Directory extension on the left and click your B2C tenant.
+- Click the **Users** tab.
+- Select each user in turn (exclude the user you are currently signed in as, i.e., the Subscription Administrator). Click **Delete** at the bottom of the page and click **YES** when prompted.
+- Click the **Applications** tab.
+- Select **Applications my company owns** in the **Show** drop-down field and click on the check mark.
+- You'll see an application called **b2c-extensions-app** listed below. Click **Delete** at the bottom of the page and click **YES** when prompted.
+- Navigate to the Active Directory extension again and select your B2C tenant.
+- Click **Delete** at the bottom of the page. Follow the instructions on the screen to complete the process.
 
-### Kann ich Azure AD B2C als Teil der Enterprise Mobility Suite erwerben?
+### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite?"></a>Can I get Azure AD B2C as part of Enterprise Mobility Suite?
 
-Nein. Azure AD B2C ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nicht Teil der Enterprise Mobility Suite.
+No, Azure AD B2C is a pay-as-you-go Azure service and is not part of Enterprise Mobility Suite.
 
-### Wie melde ich Probleme mit Azure AD B2C?
+### <a name="how-do-i-report-issues-with-azure-ad-b2c?"></a>How do I report issues with Azure AD B2C?
 
-Siehe [Senden von Supportanfragen für Azure Active Directory B2C](active-directory-b2c-support.md).
+See [File support requests for Azure Active Directory B2C](active-directory-b2c-support.md).
 
-## Weitere Informationen
+## <a name="more-information"></a>More information
 
-Informieren Sie sich auch über die aktuellen [Einschränkungen des Diensts](active-directory-b2c-limitations.md).
+You also might want to review current [service limitations, restrictions, and constraints](active-directory-b2c-limitations.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

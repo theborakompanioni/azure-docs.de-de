@@ -1,70 +1,79 @@
 <properties
-	pageTitle="Häufig gestellte Fragen zu Cloud Services | Microsoft Azure"
-	description="Häufig gestellte Fragen zu Cloud Services"
-	services="cloud-services"
-	documentationCenter=""
-	authors="Thraka"
-	manager="timlt"
-	editor=""/>
+    pageTitle="Cloud Services FAQ | Microsoft Azure"
+    description="Frequently asked questions about Cloud Services."
+    services="cloud-services"
+    documentationCenter=""
+    authors="Thraka"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="adegeo"/>
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/19/2016"
+    ms.author="adegeo"/>
 
-# Häufig gestellte Fragen zu Cloud Services
-In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Cloud Services beantwortet. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen. Informationen zur Größe finden sie auch unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
 
-## Zertifikate
+# <a name="cloud-services-faq"></a>Cloud Services FAQ
+This article answers some frequently asked questions about Microsoft Azure Cloud Services. You can also visit the [Azure Support FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) for general Azure pricing and support information. You can also consult the [Cloud Services VM Size page](cloud-services-sizes-specs.md) for size information.
 
-### Wo soll ich mein Zertifikat installieren?
+## <a name="certificates"></a>Certificates
 
-- **My** Anwendungszertifikat mit privatem Schlüssel (*.pfx, *.p12)
+### <a name="where-should-i-install-my-certificate?"></a>Where should I install my certificate?
 
-- **CA** Alle Zwischenzertifikate werden in diesem Speicher gespeichert (Richtlinien und Sub-Zertifizierungsstellen)
+- **My**  
+Application Certificate with private key (\*.pfx, \*.p12).
 
-- **ROOT** Ihre Hauptzertifikate der Stammzertifizierungsstelle werden hier im Speicher für Zertifikate der Stammzertifizierungsstelle gespeichert
+- **CA**  
+All your intermediate certificates go in this store (Policy and Sub CAs).
 
-### Ich kann ein abgelaufenes Zertifikat nicht entfernen.
+- **ROOT**  
+The root CA store, so your main root CA cert should go here.
 
-Azure verhindert, dass Sie ein Zertifikat entfernen, während es verwendet wird. Sie müssen entweder die Bereitstellung löschen, die das Zertifikat verwendet, oder die Bereitstellung mit einem anderen oder einem erneuerten Zertifikat aktualisieren.
+### <a name="i-can't-remove-expired-certificate"></a>I can't remove expired certificate
 
-### Löschen eines abgelaufenen Zertifikats
+Azure prevents you from removing a certificate while it is in use. You need to either delete the deployment that uses the certificate, or update the deployment with a different or renewed certificate.
 
-Solange das Zertifikat nicht verwendet wird, können Sie das PowerShell-Cmdlet [Remove-AzureCertificate](https://msdn.microsoft.com/library/azure/mt589145.aspx) zum Entfernen eines Zertifikats verwendet.
+### <a name="delete-an-expired-certificate"></a>Delete an expired certificate
 
-### Ich verfüge über abgelaufene Zertifikate namens „Windows Azure Service Management for Extensions“.
+As long as the certificate is not in use, you can use the [Remove-AzureCertificate](https://msdn.microsoft.com/library/azure/mt589145.aspx) PowerShell cmdlet to remove a certificate.
 
-Diese Zertifikate werden erstellt, wenn dem Clouddienst eine Erweiterung hinzugefügt wird, wie etwa die Remotedesktoperweiterung. Diese Zertifikate werden nur zum Verschlüsseln und Entschlüsseln der privaten Konfiguration der Erweiterung verwendet. Es spielt keine Rolle, ob diese Zertifikate ablaufen. Das Ablaufdatum wird nicht geprüft.
+### <a name="i-have-expired-certificates-named-windows-azure-service-management-for-extensions"></a>I have expired certificates named Windows Azure Service Management for Extensions
 
-### Zertifikate, die ich gelöscht haben, werden wieder angezeigt.
+These certificates are created whenever an extension is added to the cloud service such as the Remote Desktop extension. These certificates are only used for encrypting and decrypting the private configuration of the extension. It does not matter if these certificates expire. The expiration date is not checked.
 
-Das liegt wahrscheinlich an einem von Ihnen verwendeten Tool wie etwa Visual Studio. Jedes Mal, wenn Sie mit einem Tool, das ein Zertifikat verwendet, eine Verbindung herstellen, wird dieses Zertifikat erneut auf Azure hochgeladen.
+### <a name="certificates-i-have-deleted-keep-reappearing"></a>Certificates I have deleted keep reappearing
 
-### Meine Zertifikate verschwinden.
+These keep reappearing most likely because of a tool you're using, such as Visual Studio. Whenever you reconnect with a tool that is using a certificate, it will again be uploaded to Azure.
 
-Wenn die Instanz des virtuellen Computers zyklisch ausgeführt wird, gehen alle lokalen Änderungen verloren. Verwenden Sie eine [Startaufgabe](cloud-services-startup-tasks.md), um Zertifikate bei jedem Start der Rolle auf dem virtuellen Computer zu installieren.
+### <a name="my-certificates-keep-disappearing"></a>My certificates keep disappearing
 
-### Ich kann meine Verwaltungszertifikate im Portal nicht finden.
+When the virtual machine instance recycles, all local changes are lost. Use a [startup task](cloud-services-startup-tasks.md) to install certificates to the virtual machine each time the role starts.
 
-[Verwaltungszertifikate](..\azure-api-management-certs.md) sind nur im klassischen Azure-Portal verfügbar. Das aktuelle Azure-Portal verwendet keine Verwaltungszertifikate.
+### <a name="i-cannot-find-my-management-certificates-in-the-portal"></a>I cannot find my management certificates in the portal
 
-### Wie kann ich ein Verwaltungszertifikat deaktivieren?
+[Management certificates](..\azure-api-management-certs.md) are only avialable in the Azure Classic Portal. The current Azure portal does not use management certificates. 
 
-[Verwaltungszertifikate](..\azure-api-management-certs.md) können nicht deaktiviert werden. Sie löschen sie über das klassische Azure-Portal, wenn Sie nicht möchten, dass weiterhin verwendet werden.
+### <a name="how-can-i-disable-a-management-certificate?"></a>How can I disable a management certificate?
 
-### Wie erstelle ich ein SSL-Zertifikat für eine bestimmte IP-Adresse?
+[Management certificates](..\azure-api-management-certs.md) cannot be disabled. You delete them through the Azure Classic Portal when you do not want them to be used anymore.
 
-Befolgen Sie die Anweisungen im [Tutorial zum Erstellen eines Zertifikats](cloud-services-certs-create.md). Verwenden Sie die IP-Adresse als DNS-Namen.
+### <a name="how-do-i-create-an-ssl-certificate-for-a-specific-ip-address?"></a>How do I create an SSL certificate for a specific IP address?
 
-## Problembehandlung
+Follow the directions in the [create a certificate tutorial](cloud-services-certs-create.md). Use the IP address as the DNS Name.
 
-### Ich kann keine IP in einem Clouddienst mit mehreren VIPs reservieren.
+## <a name="troubleshooting"></a>Troubleshooting
 
-Stellen Sie zunächst sicher, dass die Instanz des virtuellen Computers, für den Sie die IP reservieren möchten, eingeschaltet ist. Vergewissern Sie sich anschließend, dass Sie reservierte IPs für Staging- und Produktionsbereitstellungen verwenden. Ändern Sie die Einstellungen **nicht**, während ein Upgrade der Bereitstellung durchgeführt wird.
+### <a name="i-can't-reserve-an-ip-in-a-multi-vip-cloud-service"></a>I can't reserve an IP in a multi-VIP cloud service
 
-<!---HONumber=AcomDC_0914_2016-->
+First, make sure that the virtual machine instance that you're trying to reserve the IP for is turned on. Second, make sure that you're using Reserved IPs for bother the staging and production deployments. **Do not** change the settings while the deployment is upgrading.
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

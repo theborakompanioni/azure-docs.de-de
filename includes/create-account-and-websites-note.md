@@ -1,4 +1,8 @@
 
-> [AZURE.NOTE]Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können <a href="/pricing/member-offers/msdn-benefits-details/" target="_blank">Ihre Visual Studio-Abonnentenvorteile aktivieren</a> oder <a href="/pricing/free-trial/" target="_blank">sich für eine kostenlose Testversion anmelden</a>.
+> [AZURE.NOTE]
+> To complete this tutorial, you need an Azure account. You can <a href="/pricing/member-offers/msdn-benefits-details/" target="_blank">activate your Visual Studio subscriber benefits</a> or <a href="/pricing/free-trial/" target="_blank">sign up for a free trial</a>.
 
-<!---HONumber=AcomDC_1203_2015-->
+
+<!--HONumber=Oct16_HO2-->
+
+

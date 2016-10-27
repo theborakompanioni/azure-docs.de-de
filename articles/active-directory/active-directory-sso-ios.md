@@ -1,75 +1,76 @@
 <properties
-	pageTitle="Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL | Microsoft Azure"
-	description="Verwenden der ADAL SDK-Features zum Aktivieren von anwendungsübergreifendem SSO. "
-	services="active-directory"
-	documentationCenter=""
-	authors="brandwe"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="How to enable cross-app SSO on iOS using ADAL | Microsoft Azure"
+    description="How to use the features of the ADAL SDK to enable Single Sign On across your applications. "
+    services="active-directory"
+    documentationCenter=""
+    authors="brandwe"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="brandwe"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="ios"
+    ms.devlang="objective-c"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="brandwe"/>
 
 
-# Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL
+
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>How to enable cross-app SSO on iOS using ADAL
 
 
-Die Möglichkeit des einmaligen Anmeldens (Single Sign-On, SSO), bei dem Benutzer einmal eingegebene Anmeldeinformationen automatisch auch für andere Anwendungen verwenden können, wird heute von den Kunden erwartet. Die Schwierigkeit, den Benutzernamen und das Kennwort auf einem kleinen Bildschirm einzugeben – häufig in Kombination mit einer weiteren Datenabfrage wie etwa einem Telefonanruf oder einem per SMS gesendeten Code (zweistufige Authentifizierung) – führt beim Benutzer schnell zu Unmut, wenn dieser Vorgang für Ihr Produkt mehrfach durchgeführt werden muss.
+Providing Single Sign-On (SSO) so that users only need to enter their credentials once and have those credentials automatically work across applications is now expected by customers. The difficulty in entering their username and password on a small screen, often times combined with an additional factor (2FA) like a phone call or a texted code, results in quick dissatisfaction if a user has to do this more than one time for your product. 
 
-Wenn Sie außerdem eine Identitätsplattform nutzen, die andere Anwendungen verwenden können (beispielsweise Microsoft-Konten oder ein Office365-Geschäftskonto), erwarten Kunden, dass diese Anmeldeinformationen unabhängig vom Anbieter über all ihre Anwendungen hinweg verfügbar sind.
+In addition, if you leverage an identity platform that other applications may use such as Microsoft Accounts or a work account from Office365, customers expect that those credentials to be available to use across all their applications no matter the vendor. 
 
-Die Microsoft Identity-Plattform nimmt Ihnen in Kombination mit unseren Microsoft Identity-SDKs diese harte Arbeit ab. So können Sie Ihren Kunden SSO entweder innerhalb Ihrer eigenen Anwendungssuite oder – mithilfe unserer Brokerfeatures und Authentifizierungsanwendungen – für das gesamte Gerät bereitstellen.
+The Microsoft Identity platform, along with our Microsoft Identity SDKs, does all of this hard work for you and gives you the ability to delight your customers with SSO either within your own suite of applications or, as with our broker capability and Authenticator applications, across the entire device.
 
-In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie unser SDK innerhalb Ihrer Anwendung konfigurieren, damit Ihre Kunden von diesen Vorteilen profitieren.
+This walkthrough will tell you how to configure our SDK within your application to provide this benefit to your customers.
 
-Die vorliegende exemplarische Vorgehensweise gilt für:
+This walkthrough applies to:
 
 * Azure Active Directory
 * Azure Active Directory B2C
 * Azure Active Directory B2B
-* Bedingter Zugriff mit Azure Active Directory
+* Azure Active Directory Conditional Access 
 
 
-Hinweis: In diesem Dokument wird davon ausgegangen, dass Sie wissen, wie Sie [Anwendungen im Vorgängerportal für Azure Active Directory bereitstellen](active-directory-how-to-integrate.md), und dass Sie das [Microsoft Identity iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc) in Ihre Anwendung integriert haben.
+Note that the document below assumes you have knowledge of how to [provision applications in the legacy portal for Azure Active Directory](active-directory-how-to-integrate.md) as well as have integrated your application with the [Microsoft Identity iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
-## SSO-Konzepte in der Microsoft Identity-Plattform
+## <a name="sso-concepts-in-the-microsoft-identity-platform"></a>SSO Concepts in the Microsoft Identity Platform
 
-### Microsoft-Identitätsbroker
+### <a name="microsoft-identity-brokers"></a>Microsoft Identity Brokers
 
-Microsoft stellt Anwendungen für jede mobile Plattform bereit, die als Brücke für Anmeldeinformationen von Anwendungen verschiedener Anbieter fungieren sowie spezielle erweiterte Features unterstützen, bei denen die Überprüfung der Anmeldeinformationen über eine einzige sichere Stelle erfolgt. Wir nennen diese Komponenten **Broker**. Unter iOS und Android werden diese über herunterladbare Anwendungen bereitgestellt. Diese Anwendungen können Kunden entweder unabhängig installieren, oder sie werden von Unternehmen, die einige oder alle Geräte für ihre Mitarbeiter verwalten, per Push auf das Gerät übertragen. Diese Broker unterstützen die Sicherheitsverwaltung basierend auf der Konfiguration des IT-Administrators entweder nur für einige Anwendungen oder für das gesamte Gerät. Unter Windows wird diese Funktion durch eine Kontoauswahl bereitgestellt, die in das Betriebssystem integriert ist. Die technische Bezeichnung hierfür lautet Webauthentifizierungsbroker.
+Microsoft provides applications for every mobile platform that allow for the bridging of credentials across applications from different vendors as well as allows for special enhanced features that require a single secure place from where to validate credentials. We call these **brokers**. On iOS and Android these are provided through downloadable applications that customers either install independently or can be pushed to the device by a company who manages some or all of the device for their employee. These brokers support managing security just for some applications or the entire device based on what IT Administrators desire. In Windows this functionality is provided by an account chooser built in to the operating system, known technically as the Web Authentication Broker.
 
-Um zu verstehen, wie wir diese Broker einsetzen und wie Ihre Kunden diese während des Anmeldeflusses für die Microsoft Identity-Plattform wahrnehmen, werden diese Abläufe im Folgenden näher erläutert.
+To understand how we use these brokers and how your customers might see them in their login flow for the Microsoft Identity platform read on for more information.
 
-### Muster für die Anmeldung auf mobilen Geräten
+### <a name="patterns-for-logging-in-on-mobile-devices"></a>Patterns for logging in on mobile devices
 
-Der Zugriff auf Anmeldeinformationen auf Geräten folgt für die Microsoft Identity-Plattform zwei grundlegenden Mustern:
+Access to credentials on devices follow two basic patterns for the Microsoft Identity platform: 
 
-* Nicht brokergestützte Anmeldungen
-* Brokergestützte Anmeldungen
+* Non-broker assisted logins
+* Broker assisted logins
 
-#### Nicht brokergestützte Anmeldungen
+#### <a name="non-broker-assisted-logins"></a>Non-broker assisted logins
 
-Nicht brokergestützte Anmeldungen sind Anmeldungen, die anwendungsintern erfolgen und den lokalen Gerätespeicher für diese Anwendung nutzen. Dieser Speicher kann für mehrere Anwendungen freigegeben werden, aber die Anmeldeinformationen sind eng an die App oder App-Suite gebunden, die diese Anmeldeinformationen nutzt. Dieses Muster kennen Sie wahrscheinlich von zahlreichen mobilen Anwendungen, bei denen Sie innerhalb der Anwendung einen Benutzernamen und ein Kennwort eingeben.
+Non-broker assisted logins are login experiences that happen inline with the application and use the local storage on the device for that application. This storage may be shared across applications but the credentials are tightly bound to the app or suite of apps using that credential. This is the experience you've most likely experienced in many mobile applications where you enter a username and password within the application itself.
 
-Diese Anmeldungen bieten folgende Vorteile:
+These logins have the following benefits:
 
--  Die Benutzerinteraktion läuft vollständig innerhalb der Anwendung ab.
--  Anmeldeinformationen können gemeinsam mit anderen Anwendungen genutzt werden, die das gleiche Signaturzertifikat verwenden. Auf diese Weise erzielen Sie SSO-Funktionalität für Ihre Anwendungssuite.
--  Die Kontrolle der Anmeldeabläufe liegt sowohl vor als auch nach der Anmeldung bei der Anwendung.
+-  User experience exists entirely within the application.
+-  Credentials can be shared across applications that are signed by the same certificate, providing a single sign-on experience to your suite of applications. 
+-  Control around the experience of logging in is provided to the application before and after sign-in.
 
-Diese Anmeldungen haben folgende Nachteile:
+These logins have the following drawbacks:
 
-- Benutzer können nicht bei allen Apps mit einer Microsoft-Identität von SSO profitieren, sondern nur bei den Microsoft-Identitäten, die Ihre Anwendung besitzt und konfiguriert hat.
-- Ihre Anwendung kann nicht mit erweiterten Geschäftsfunktionen wie etwa dem bedingten Zugriff oder der Intune-Produktsuite verwendet werden.
-- Ihre Anwendung kann keine auf Zertifikaten basierende Authentifizierung für Geschäftsbenutzer bereitstellen.
+- User cannot experience single-sign on across all apps that use a Microsoft Identity, only across those Microsoft Identities that are your application owns and have configured.
+- Your application can not be used with more advanced business features such as Conditional Access or use the InTune suite of products.
+- Your application can't support certificate based authentication for business users.
 
-Die folgende Abbildung zeigt, wie die Microsoft Identity SDKs zusammen mit dem gemeinsam genutzten Speicher Ihrer Anwendung für die Bereitstellung von SSO sorgen:
+Here is a representation of how the Microsoft Identity SDKs work with the shared storage of your applications to enable SSO:
 
 ```
 +------------+ +------------+  +-------------+
@@ -85,35 +86,35 @@ Die folgende Abbildung zeigt, wie die Microsoft Identity SDKs zusammen mit dem g
 +--------------------------------------------+
 ```
 
-#### Brokergestützte Anmeldungen
+#### <a name="broker-assisted-logins"></a>Broker assisted logins
 
-Brokergestützte Anmeldungen sind Anmeldeabläufe, die innerhalb der Brokeranwendung stattfinden und auf den Speicher und die Sicherheit des Brokers zurückgreifen, um Anmeldeinformationen für alle Anwendungen auf dem Gerät einzusetzen, die die Microsoft Identity-Plattform nutzen. Das bedeutet, dass Ihre Anwendungen bei der Benutzeranmeldung auf den Broker zurückgreifen. Unter iOS und Android wird diese Funktion über herunterladbare Anwendungen bereitgestellt. Diese Anwendungen können Kunden entweder unabhängig installieren, oder sie werden von Unternehmen, die das Gerät für ihre Benutzer verwalten, per Push auf das Gerät übertragen. Ein Beispiel für diesen Anwendungstyp ist die Azure Authenticator-App unter iOS. Unter Windows wird diese Funktionalität durch eine Kontoauswahl bereitgestellt, die in das Betriebssystem integriert ist. Die technische Bezeichnung hierfür lautet Webauthentifizierungsbroker. Der Ablauf variiert je nach Plattform, und eine nicht ordnungsgemäße Verwaltung kann die Benutzererfahrung beeinträchtigen. Sie kennen dieses Muster sicherlich, wenn Sie Facebook installiert haben und die Facebook-Anmeldefunktion in einer anderen Anwendung verwenden. Die Microsoft Identity-Plattform bedient sich des gleichen Musters.
+Broker-assisted logins are login experiences that occur within the broker application and use the storage and security of the broker to share credentials across all applications on the device that leverage the Microsoft Identity platform. This means that your applications will rely on the broker in order to sign users in. On iOS and Android these are provided through downloadable applications that customers either install independently or can be pushed to the device by a company who manages the device for their user. An example of this type of application is the Azure Authenticator application on iOS. In Windows this functionality is provided by an account chooser built in to the operating system, known technically as the Web Authentication Broker. The experience varies by platform and can sometimes be disruptive to users if not managed correctly. You're probably most familiar with this pattern if you have the Facebook application installed and use Facebook Login functionality in another application. The Microsoft Identity platform leverages the same pattern.
 
-Bei iOS führt dies zu einer „Übergangsanimation“, bei der Ihre Anwendung in den Hintergrund und die Azure Authenticator-Anwendungen in den Vordergrund rückt, sodass der Benutzer das gewünschte Konto für die Anmeldung auswählen kann.
+For iOS this leads to a "transition" animation where your application is sent to the background while the Azure Authenticator applications comes to the foreground for the user to select which account they would like to sign in with.  
 
-Unter Android und Windows wird die Kontoauswahl im Vordergrund Ihrer Anwendung angezeigt, was für den Benutzer weniger störend ist.
+For Android and Windows the account chooser is displayed on top of your application which is less disruptive to the user.
 
-#### Aufrufen des Brokers
+#### <a name="how-the-broker-gets-invoked"></a>How the broker gets invoked
 
-Wenn ein kompatibler Broker auf dem Gerät installiert ist (beispielsweise die Azure Authenticator-Anwendung), übernehmen die Microsoft Identity SDKs automatisch den Aufruf des Brokers, wenn ein Benutzer angibt, dass er sich mit einem beliebigen Konto der Microsoft Identity-Plattform anmelden möchte. Hierbei kann es sich um ein persönliches Microsoft-Konto, um ein Geschäfts- oder Schulkonto oder um ein Konto handeln, das Sie über eines unserer B2C- und B2B-Produkte in Azure bereitstellen und hosten. Durch die Verwendung extrem sicherer Algorithmen und Verschlüsselungen stellen wir sicher, dass die Anmeldeinformationen auf sichere Weise abgerufen und an Ihre Anwendung zurückgegeben werden. Die technischen Details dieser Mechanismen werden nicht veröffentlicht, wurden aber in Zusammenarbeit mit Apple und Google entwickelt.
+If a compatible broker is installed on the device, like the Azure Authenticator application, the Microsoft Identity SDKs will automatically do the work of invoking the broker for you when a user indicates they wish to log in using any account from the Microsoft Identity platform. This could be a personal Microsoft Account, a work or school account, or an account that you provide and host in Azure using our B2C and B2B products. By using extremely secure algorithms and encryption we ensure that the credentials are asked for and delivered back to your application in a secure manner. The exact technical detail of these mechanisms is not published but have been developed with collaboration by Apple and Google.
 
-**Der Entwickler kann entscheiden, ob das Microsoft Identity SDK den Broker aufrufen oder den nicht brokergestützten Ablauf verwenden soll.** Wenn sich der Entwickler allerdings gegen den brokergestützten Ablauf entscheidet, verzichtet er auf die Vorteile der Nutzung von SSO-Anmeldeinformationen, die der Benutzer möglicherweise bereits auf dem Gerät hinzugefügt hat. Außerdem kann die Anwendung ohne brokergestützte Anmeldung keine der von Microsoft bereitgestellten Geschäftsfunktionen wie etwa den bedingten Zugriff, Intune-Verwaltungsfunktionen und eine zertifikatbasierte Authentifizierung nutzen.
+**The developer has the choice of if the Microsoft Identity SDK calls the broker or uses the non-broker assisted flow.** However if the developer chooses not to use the broker-assisted flow they lose the benefit of leveraging SSO credentials that the user may have already added on the device as well as prevents their application from being used with business features Microsoft provides its customers such as Conditional Access, Intune Management capabilities, and certificate based authentication.
 
-Diese Anmeldungen bieten die folgenden Vorteile:
+These logins have the following benefits:
 
--  Benutzer profitieren bei allen ihren Anwendungen von SSO – unabhängig vom Anbieter.
--  Ihre Anwendung kann mit erweiterten Geschäftsfunktionen wie etwa dem bedingten Zugriff oder der Intune-Produktsuite verwendet werden.
--  Ihre Anwendung kann eine auf Zertifikaten basierende Authentifizierung für Geschäftsbenutzer bereitstellen.
-- Die Anmeldung ist deutlich sicherer, da die Identität der Anwendung und des Benutzers von der Brokeranwendung mit zusätzlichen Sicherheitsalgorithmen und Verschlüsselung verifiziert wird.
+-  User experiences SSO across all their applications no matter the vendor.
+-  Your application can leverage more advanced business features such as Conditional Access or use the InTune suite of products.
+-  Your application can support certificate based authentication for business users.
+- Much more secure sign-in experience as the identity of the application and the user are verified by the broker application with additional security algorithms and encryption.
 
-Diese Anmeldungen haben folgende Nachteile:
+These logins have the following drawbacks:
 
-- Unter iOS muss der Benutzer die Anmeldeinformationen außerhalb der Anwendung auswählen.
-- Die Anmeldeumgebung für Ihre Kunden kann nicht innerhalb Ihrer Anwendung verwaltet werden.
+- In iOS the user is transitioned out of your application's experience while credentials are chosen.
+- Loss of the ability to manage the login experience for your customers within your application.
 
 
 
-Die folgende Abbildung zeigt, wie die Microsoft Identity SDKs zusammen mit den Brokeranwendungen für die Bereitstellung von SSO sorgen:
+Here is a representation of how the Microsoft Identity SDKs work with the broker applications to enable SSO:
 
 ```
 +------------+ +------------+   +-------------+
@@ -139,42 +140,42 @@ Die folgende Abbildung zeigt, wie die Microsoft Identity SDKs zusammen mit den B
               +-------------+
 ```
               
-Mit diesen Hintergrundinformationen verfügen Sie nun über ein besseres Verständnis der Funktionsweise und Implementierung von SSO innerhalb Ihrer Anwendung mithilfe der Microsoft Identity-Plattform und den zugehörigen SDKs verfügen.
+Armed with this background information you should be able to better understand and implement SSO within your application using the Microsoft Identity platform and SDKs.
 
 
-## Aktivieren von App-übergreifendem SSO mit ADAL
+## <a name="enabling-cross-app-sso-using-adal"></a>Enabling cross-app SSO using ADAL
 
-In diesem Abschnitt verwenden wir das ADAL iOS SDK für folgende Aufgaben:
+Here we'll use the ADAL iOS SDK to:
 
-- Aktivieren von nicht brokergestütztem SSO für Ihre App-Suite
-- Aktivieren der Unterstützung für brokergestütztes SSO
+- Turn on non-broker assisted SSO for your suite of apps
+- Turn on support for broker-assisted SSO
 
-### Aktivieren von SSO für nicht brokergestütztes SSO
+### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Turning on SSO for non-broker assisted SSO
 
-Für nicht brokergestütztes, anwendungsübergreifendes SSO übernehmen die Microsoft Identity SDKs einen Großteil der komplexen SSO-Verwaltung für Sie. Hierzu gehört das Suchen des richtigen Benutzers im Cache sowie das Verwalten einer Liste der angemeldeten Benutzer, die Sie abfragen können.
+For non-broker assisted SSO across applications the Microsoft Identity SDKs manage much of the complexity of SSO for you. This includes finding the right user in the cache and maintaining a list of logged in users for you to query. 
 
-Gehen Sie folgendermaßen vor, um übergreifendes SSO für Anwendungen in Ihrem Besitz zu aktivieren:
+To enable SSO across applications you own you need to do the following:
 
-1. Stellen Sie sicher, dass all Ihre Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden.
-* Stellen Sie sicher, dass all Ihre Anwendungen das gleiche Signaturzertifikat von Apple verwenden, um die gemeinsame Verwendung von Schlüsselbunden zu ermöglichen.
-* Fordern Sie für jede Ihrer Anwendungen die gleichen Schlüsselbundberechtigung an.
-* Geben Sie für die Microsoft Identity SDKs an, welchen freigegebenen Schlüsselbund wir verwenden sollen.
+1. Ensure all your applications user the same Client ID or Application ID. 
+* Ensure that all of your applications share the same signing certificate from Apple so that you can share keychains
+* Request the same keychain entitlement for each of your applications.
+* Tell the Microsoft Identity SDKs about the shared keychain you want us to use.
 
-#### Verwenden der gleichen Client-ID/Anwendungs-ID für alle Anwendungen in Ihrer App-Suite
+#### <a name="using-the-same-client-id-/-application-id-for-all-the-applications-in-your-suite-of-apps"></a>Using the same Client ID / Application ID for all the applications in your suite of apps
 
-Damit die Microsoft Identity-Plattform weiß, dass Token anwendungsübergreifend verwendet werden dürfen, muss jede Ihrer Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden. Hierbei handelt es sich um den eindeutigen Bezeichner, den Sie bei der Registrierung Ihrer ersten Anwendung im Portal erhalten haben.
+In order for the Microsoft Identity platform to know that it's allowed to share tokens across your applications, each of your applications will need to share the same Client ID or Application ID. This is the unique identifier that was provided to you when you registered your first application in the portal. 
 
-Nun fragen Sie sich vielleicht, wie unterschiedliche Apps gegenüber dem Microsoft Identity-Dienst identifiziert werden, wenn sie die gleiche Anwendungs-ID verwenden. Die Antwort lautet: mithilfe von **Umleitungs-URIs**. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Nachfolgend sehen Sie ein Beispiel hierfür:
+You may be wondering how you will identify different apps to the Microsoft Identity service if it uses the same Application ID. The answer is with the **Redirect URIs**. Each application can have multiple Redirect URIs registered in the onboarding portal. Each app in your suite will have a different redirect URI. An example of how this looks is below:
 
-Umleitungs-URI für App1: `x-msauth-mytestiosapp://com.myapp.mytestapp`
+App1 Redirect URI: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-Umleitungs-URI für App2: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 Redirect URI: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-Umleitungs-URI für App3: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 Redirect URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
-...
+....
 
-Diese URIs werden unterhalb der gleichen Client-ID/Anwendungs-ID geschachtelt und auf der Grundlage des Umleitungs-URIs ermittelt, den Sie in Ihrer SDK-Konfiguration an uns zurückgeben.
+These are nested under the same client ID / application ID and looked up based on the redirect URI you return to us in your SDK configuration. 
 
 ```
 +-------------------+
@@ -200,69 +201,69 @@ Diese URIs werden unterhalb der gleichen Client-ID/Anwendungs-ID geschachtelt un
 ```
 
 
-*Das Format dieser Umleitungs-URIs wird nachstehend erläutert. Grundsätzlich können Sie einen beliebigen Umleitungs-URI verwenden. Wenn Sie jedoch den Broker unterstützen möchten, muss ein ähnliches Format gewählt werden wie im obigen Beispiel zu sehen.*
+*Note that the format of these Redirect URIs are explained below. You may use any Redirect URI unless you wish to support the broker, in which case they must look something like the above*
 
 
 
-#### Erstellen einer anwendungsübergreifenden Schlüsselbundnutzung
+#### <a name="create-keychain-sharing-between-applications"></a>Create keychain sharing between applications
 
-Das Ermöglichen einer gemeinsamen Schlüsselbundnutzung würde den Rahmen dieses Dokuments sprengen und wird von Apple in [diesem Dokument](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) behandelt. Wichtig ist, dass Sie sich für einen Schlüsselbundnamen entscheiden und die Funktion allen Ihren Anwendungen hinzufügen.
+Enabling keychain sharing is beyond the scope of this document and covered by Apple in their document [Adding Capabilities](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html). What is important is that you decide what you want your keychain to be called and add that capability across all your applications. 
 
-Bei korrekter Einrichtung von Berechtigungen wird in Ihrem Projektverzeichnis eine Datei namens `entitlements.plist` angezeigt. Diese enthält in etwa Folgendes:
+When you do have entitlements set up correctly you should see a file in your project directory entitled `entitlements.plist` that contains something that looks like the following:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>$(AppIdentifierPrefix)com.myapp.mytestapp</string>
-		<string>$(AppIdentifierPrefix)com.myapp.mycache</string>
-	</array>
+    <key>keychain-access-groups</key>
+    <array>
+        <string>$(AppIdentifierPrefix)com.myapp.mytestapp</string>
+        <string>$(AppIdentifierPrefix)com.myapp.mycache</string>
+    </array>
 </dict>
 </plist>
 ```
 
-Informieren Sie das Microsoft Identity SDK über Ihren Schlüsselbund, sobald die Schlüsselbundberechtigung in jeder Ihrer Anwendungen aktiviert ist. Verwenden Sie hierzu in `ADAuthenticationSettings` die folgende Einstellung:
+Once you have the keychain entitlement enabled in each of your applications, and you are ready to use SSO, tell the Microsoft Identity SDK about your keychain by using the following setting in your `ADAuthenticationSettings` with the following setting:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 
 > [AZURE.WARNING] 
-Bei anwendungsübergreifender Nutzung eines Schlüsselbunds kann jede Anwendung Benutzer löschen und (schlimmer noch) anwendungsübergreifend alle Token löschen. Dies ist insbesondere dann katastrophal, wenn Sie über Anwendungen verfügen, die zur Ausführung von Hintergrundaufgaben auf die Token zurückgreifen. Seien Sie deshalb bei der Verwendung eines gemeinsam genutzten Schlüsselbunds bei allen Entfernungsvorgängen über die Microsoft Identity SDKs besonders vorsichtig.
+When you share a keychain across your applications any application can delete users or worse delete all the tokens across your application. This is particularly disastrous if you have applications that rely on the tokens to do background work. Sharing a keychain means that you must be very careful in any and all remove operations through the Microsoft Identity SDKs.
 
-Das ist alles! Das Microsoft Identity SDK verwendet jetzt Anmeldeinformationen über all Ihre Anwendungen hinweg. Die Benutzerliste wird ebenfalls über alle Anwendungsinstanzen hinweg verwendet.
+That's it! The Microsoft Identity SDK will now share credentials across all your applications. The user list will also be shared across application instances.
 
-### Aktivieren von SSO für brokergestütztes SSO
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>Turning on SSO for broker assisted SSO
 
-Die Fähigkeit einer Anwendung, jeden der auf dem Gerät installierten Broker zu verwenden, ist **standardmäßig deaktiviert**. Damit Ihre Anwendung mit dem Broker verwendet werden kann, müssen Sie einige zusätzliche Konfigurationsschritte ausführen und Ihrer Anwendung Code hinzufügen.
+The ability for an application to use any broker that is installed on the device is **turned off by default**. In order to use your application with the broker you must do some additional configuration and add some code to your application.
 
-Erforderliche Schritte:
+The steps to follow are:
 
-1. Aktivieren des Brokermodus im Anwendungscode für den MS SDK-Aufruf
-2. Festlegen eines neuen Umleitungs-URIs und Bereitstellen dieses URIs in Ihrer App und App-Registrierung
-3. Registrieren eines URL-Schemas
-4. iOS9-Unterstützung: Hinzufügen einer Berechtigung zur Datei „info.plist“
+1. Enable broker mode in your application code's call to the MS SDK.
+2. Establish a new redirect URI and provide that to both the app and your app registration.
+3. Registering a URL Scheme.
+4. iOS9 Support: Add a permission to your info.plist file.
 
 
-#### Schritt 1: Aktivieren des Brokermodus in Ihrer Anwendung
-Die Möglichkeit zur Verwendung des Brokers wird für Ihre Anwendung aktiviert, wenn Sie den Kontext oder die anfängliche Einrichtung Ihres Authentifizierungsobjekts erstellen. Erreicht wird dies durch Festlegen des Anmeldeinformationstyps in Ihrem Code:
+#### <a name="step-1:-enable-broker-mode-in-your-application"></a>Step 1: Enable broker mode in your application
+The ability for your application to use the broker is turned on when you create the "context" or initial setup of your Authentication object. You do this by setting your credentials type in your code:
 
 ```
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-Die Einstellung `AD_CREDENTIALS_AUTO` ermöglicht es dem Microsoft Identity SDK, Aufrufe an den Broker zu richten. `AD_CREDENTIALS_EMBEDDED` verhindert dies.
+The `AD_CREDENTIALS_AUTO` setting will allow the Microsoft Identity SDK to try to call out to the broker, `AD_CREDENTIALS_EMBEDDED` will prevent the Microsoft Identity SDK from calling to the broker.
 
-#### Schritt 2: Registrieren eines URL-Schemas
-Die Microsoft Identity-Plattform verwendet URLs, um den Broker aufzurufen und die Kontrolle anschließend wieder an die Anwendung abzugeben. Sie benötigen daher ein für Ihre Anwendung registriertes URL-Schema, das der Microsoft Identity-Plattform bekannt ist. Dieses kann zusätzlich zu den App-Schemas verwendet werden, die Sie ggf. bereits mit der Anwendung registriert haben.
+#### <a name="step-2:-registering-a-url-scheme"></a>Step 2: Registering a URL Scheme
+The Microsoft Identity platform uses URLs to invoke the broker and then return control back to your application. To finish that round trip you need a URL scheme registered for your application that the Microsoft Identity platform will know about. This can be in addition to any other app schemes you may have previously registered with your application.
 
 > [AZURE.WARNING] 
-Es empfiehlt sich, ein möglichst eindeutiges URL-Schema zu verwenden, um die Wahrscheinlichkeit zu verringern, dass das gleiche URL-Schema von einer anderen Anwendung verwendet wird. Die Eindeutigkeit von im App Store registrierten URL-Schemas wird von Apple nicht erzwungen.
+We recommend making the URL scheme fairly unique to minimize the chances of another app using the same URL scheme. Apple does not enforce the uniqueness of URL schemes that are registered in the app store. 
 
-Im Anschluss sehen Sie an einem Beispiel, wie dies in der Projektkonfiguration aussieht. Hierfür kann auch XCode verwendet werden:
+Below is an example of how this appears in your project configuration. You may also do this in XCode as well:
 
 ```
 <key>CFBundleURLTypes</key>
@@ -280,36 +281,52 @@ Im Anschluss sehen Sie an einem Beispiel, wie dies in der Projektkonfiguration a
 </array>
 ```
 
-#### Schritt 3: Festlegen eines neuen Umleitungs-URIs mit Ihrem URL-Schema
+#### <a name="step-3:-establish-a-new-redirect-uri-with-your-url-scheme"></a>Step 3: Establish a new redirect URI with your URL Scheme
 
-Um sicherzustellen, dass die Anmeldeinformationstoken immer an die richtige Anwendung zurückgegeben werden, muss sichergestellt werden, dass der Rückruf an Ihre Anwendung in einer Weise erfolgt, die das iOS-Betriebssystem überprüfen kann. Das iOS-Betriebssystem meldet den Brokeranwendungen von Microsoft die Paket-ID der aufrufenden Anwendung. Diese kann nicht durch eine nicht autorisierte Anwendung ausgespäht werden. Deshalb nutzen wir den Hash gemeinsam mit dem URI unserer Brokeranwendung, um sicherzustellen, dass die Token an die richtige Anwendung zurückgegeben werden. Es ist erforderlich, dass Sie diesen eindeutigen Umleitungs-URI sowohl in Ihrer Anwendung als auch in unserem Entwicklerportal als Umleitungs-URI festlegen.
+In order to ensure that we always return the credential tokens to the correct application, we need to make sure we call back to your application in a way that the iOS operating system can verify. The iOS operating system reports to the Microsoft broker applications the Bundle ID of the application calling it. This cannot be spoofed by a rogue application. Therefore, we leverage this along with the URI of our broker application to ensure that the tokens are returned to the correct application. We require you to establish this unique redirect URI both in your application and set as a Redirect URI in our developer portal. 
 
-Der Umleitungs-URI muss das folgende Format besitzen:
+Your redirect URI must be in the proper form of:
 
 `<app-scheme>://<your.bundle.id>`
 
-Beispiel: *x-msauth-mytestiosapp://com.myapp.mytestapp*
+ex: *x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-Dieser Umleitungs-URI muss in Ihrer App-Registrierung über das [klassische Azure-Portal](https://manage.windowsazure.com/) angegeben werden. Weitere Informationen zur Azure AD-App-Registrierung finden Sie unter [Integration in Azure Active Directory](active-directory-how-to-integrate.md).
+This Redirect URI needs to be specified in your app registration using the [Azure classic portal](https://manage.windowsazure.com/). For more information on Azure AD app registration, see [Integrating with Azure Active Directory](active-directory-how-to-integrate.md).
 
 
-##### Schritt 3a: Hinzufügen eines Umleitungs-URIs in Ihrer App und im Entwicklerportal zur Unterstützung der zertifikatbasierten Authentifizierung
+##### <a name="step-3a:-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Step 3a: Add a redirect URI in your app and dev portal to support certificate based authentication
 
-Zur Unterstützung der zertifikatbasierten Authentifizierung muss in Ihrer Anwendung und im [klassischen Azure-Portal](https://manage.windowsazure.com/) ein zweites msauth-Element für die Abwicklung der Zertifikatauthentifizierung registriert werden, wenn Sie dieses Feature in der Anwendung unterstützen möchten.
+To support cert based authentication a second "msauth"  needs to be registered in your application and the [Azure classic portal](https://manage.windowsazure.com/) to handle certificate authentication if you wish to add that support in your application.
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-Beispiel: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+ex: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
 
-#### Schritt 4: iOS9: Hinzufügen eines Konfigurationsparameters zu Ihrer App
+#### <a name="step-4:-ios9:-add-a-configuration-parameter-to-your-app"></a>Step 4: iOS9: Add a configuration parameter to your app
 
-ADAL prüft mithilfe von „–CanOpenURL:“, ob der Broker auf dem Gerät installiert ist. Unter iOS9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. Daher muss „msauth“ in `info.plist file` dem Abschnitt „LSApplicationQueriesSchemes“ hinzugefügt werden.
+ADAL uses –canOpenURL: to check if the broker is installed on the device. In iOS 9 Apple locked down what schemes an application can query for. You will need to add “msauth” to the LSApplicationQueriesSchemes section of your `info.plist file`.
 
-<key>LSApplicationQueriesSchemes</key> <array> <string>msauth</string> </array>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+     <string>msauth</string>
+</array>
 
-### Sie haben SSO konfiguriert!
+### <a name="you've-configured-sso!"></a>You've configured SSO!
 
-Das Microsoft Identity SDK verwendet Anmeldeinformationen nun automatisch anwendungsübergreifend und ruft den Broker auf, wenn dieser auf dem Gerät vorhanden ist.
+Now the Microsoft Identity SDK will automatically both share credentials across your applications and invoke the broker if it's present on their device.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO4-->
+
+

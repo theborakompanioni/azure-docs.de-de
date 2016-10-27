@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Datentypen für Tabellen in SQL Data Warehouse | Microsoft Azure"
-   description="Es werden die ersten Schritte für die Verwendung von Datentypen für Azure SQL Data Warehouse-Tabellen beschrieben."
+   pageTitle="Data types for tables in SQL Data Warehouse | Microsoft Azure"
+   description="Getting started with data types for Azure SQL Data Warehouse tables."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -16,20 +16,21 @@
    ms.date="06/29/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
-# Datentypen für Tabellen in SQL Data Warehouse
+
+# <a name="data-types-for-tables-in-sql-data-warehouse"></a>Data types for tables in SQL Data Warehouse
 
 > [AZURE.SELECTOR]
-- [Übersicht][]
-- [Datentypen][]
-- [Verteilen][]
+- [Overview][]
+- [Data Types][]
+- [Distribute][]
 - [Index][]
 - [Partition][]
-- [Statistiken][]
-- [Temporär][]
+- [Statistics][]
+- [Temporary][]
 
-SQL Data Warehouse unterstützt die gängigsten Datentypen. Unten ist eine Liste mit den Datentypen angegeben, die von SQL Data Warehouse unterstützt werden. Weitere Informationen zur Unterstützung von Datentypen finden Sie unter [CREATE TABLE][].
+SQL Data Warehouse supports the most commonly used data types.  Below is a list of the data types supported by SQL Data Warehouse.  For additional details on data type support, see [create table][].
 
-|**Unterstützte Datentypen**|||
+|**Supported Data Types**|||
 |---|---|---|
 [bigint][]|[decimal][]|[smallint][]|
 [binary][]|[float][]|[smallmoney][]|
@@ -41,34 +42,34 @@ SQL Data Warehouse unterstützt die gängigsten Datentypen. Unten ist eine Liste
 [datetimeoffset][]|[smalldatetime][]|[varchar][]|
 
 
-## Bewährte Methoden für Datentypen
+## <a name="data-type-best-practices"></a>Data type best practices
 
- Beim Definieren Ihrer Spaltentypen verbessert sich die Abfrageleistung, wenn Sie den kleinsten Datentyp verwenden, der für Ihre Daten unterstützt wird. Dies ist besonders für CHAR- und VARCHAR-Spalten wichtig. Wenn der längste Wert in einer Spalte 25 Zeichen lang ist, sollten Sie die Spalte VARCHAR(25) definieren. Vermeiden Sie es, für alle Zeichenspalten eine hohe Standardlänge zu definieren. Definieren Sie darüber hinaus Spalten als VARCHAR, sofern dies ausreicht, anstatt [NVARCHAR][] zu verwenden. Verwenden Sie anstelle von NVARCHAR(MAX) oder VARCHAR(MAX) nach Möglichkeit NVARCHAR(4000) oder VARCHAR(8000).
+ When defining your column types, using the smallest data type which will support your data will improve query performance. This is especially important for CHAR and VARCHAR columns. If the longest value in a column is 25 characters, then define your column as VARCHAR(25). Avoid defining all character columns to a large default length. In addition, define columns as VARCHAR when that is all that is needed rather than use [NVARCHAR][].  Use NVARCHAR(4000) or VARCHAR(8000) when possible instead of NVARCHAR(MAX) or VARCHAR(MAX).
 
-## PolyBase-Beschränkung
+## <a name="polybase-limitation"></a>Polybase limitation
 
-Falls Sie PolyBase zum Laden Ihrer Tabellen verwenden, definieren Sie Ihre Tabellen so, dass die maximal mögliche Zeilengröße, einschließlich der vollständigen Länge der Spalten mit variabler Länge, 32.767 Byte nicht überschreitet. Sie können zwar eine Zeile mit Daten variabler Länge definieren, bei der diese Breite überschritten wird und Zeilen mit BCP geladen werden können, aber Sie können PolyBase nicht zum Laden dieser Daten verwenden. Die PolyBase-Unterstützung für große Zeilen wird bald verfügbar sein.
+If you are using Polybase to load your tables, define your tables so that the maximum possible row size, including the full length of variable length columns, does not exceed 32,767 bytes.  While you can define a row with variable length data that can exceed this width and load rows with BCP, you will not be able to use Polybase to load this data.  Polybase support for wide rows will be added soon.
 
-## Nicht unterstützte Datentypen
+## <a name="unsupported-data-types"></a>Unsupported data types
 
-Wenn Sie die Datenbank von einer anderen SQL-Plattform wie Azure SQL-Datenbank migrieren, begegnen Ihnen während der Migration unter Umständen einige Datentypen, die in SQL Data Warehouse nicht unterstützt werden. Unten sind nicht unterstützte Datentypen und einige Alternativen angegeben, die Sie anstelle von nicht unterstützten Datentypen verwenden können.
+If you are migrating your database from another SQL platform like Azure SQL Database, as you migrate, you may encounter some data types that are not supported on SQL Data Warehouse.  Below are unsupported data types as well as some alternatives you can use in place of unsupported data types.
 
-|Datentyp|Problemumgehung|
+|Data Type|Workaround|
 |---|---|
 |[geometry][]|[varbinary][]|
 |[geography][]|[varbinary][]|
 |[hierarchyid][]|[nvarchar][](4000)|
-|[Image][ntext,text,image]|[varbinary][]|
-|[Text][ntext,text,image]|[varchar][]|
+|[image][ntext,text,image]|[varbinary][]|
+|[text][ntext,text,image]|[varchar][]|
 |[ntext][ntext,text,image]|[nvarchar][]|
-|[sql\_variant][]|Spalte in mehrere Spalten mit starker Typisierung unterteilen.|
-|[Tabelle][]|In temporäre Tabellen konvertieren.|
-|[timestamp][]|Code anpassen, sodass [datetime2][] und die `CURRENT_TIMESTAMP`-Funktion verwendet werden. Nur Konstanten werden als Standardwerte unterstützt. Daher kann „current\_timestamp“ nicht als Standardeinschränkung definiert werden. Wenn Sie Zeilenversionswerte aus einer Spalte mit timestamp-Typ migrieren müssen, sollten Sie [BINARY][](8) oder [VARBINARY][BINARY](8) für NOT NULL- oder NULL-Zeilenversionswerte verwenden.|
+|[sql_variant][]|Split column into several strongly typed columns.|
+|[table][]|Convert to temporary tables.|
+|[timestamp][]|Rework code to use [datetime2][] and `CURRENT_TIMESTAMP` function.  Only constants are supported as defaults, therefore current_timestamp cannot be defined as a default constraint. If you need to migrate row version values from a timestamp typed column then use [BINARY][](8) or [VARBINARY][BINARY](8) for NOT NULL or NULL row version values.|
 |[xml][]|[varchar][]|
-|[Benutzerdefinierte Typen][]|Zurück in native Typen konvertieren, falls möglich|
-|Standardwerte|Standardwerte unterstützen nur Literale und Konstanten. Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt.|
+|[user defined types][]|convert back to their native types where possible|
+|default values|default values support literals and constants only.  Non-deterministic expressions or functions, such as `GETDATE()` or `CURRENT_TIMESTAMP`, are not supported.|
 
-Der unten angegebene SQL-Code kann in Ihrer aktuellen SQL-Datenbank ausgeführt werden, um Spalten zu identifizieren, die von Azure SQL Data Warehouse nicht unterstützt werden:
+The below SQL can be run on your current SQL database to identify columns which are not be supported by Azure SQL Data Warehouse:
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
@@ -79,25 +80,21 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
  AND  y.[is_user_defined] = 1;
 ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+To learn more, see the articles on [Table Overview][Overview], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][].
 
 <!--Image references-->
 
 <!--Article references-->
 [Overview]: ./sql-data-warehouse-tables-overview.md
-[Übersicht]: ./sql-data-warehouse-tables-overview.md
-[Datentypen]: ./sql-data-warehouse-tables-data-types.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
 [Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Verteilen]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Statistiken]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Temporär]: ./sql-data-warehouse-tables-temporary.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
@@ -125,9 +122,9 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [smalldatetime]: https://msdn.microsoft.com/library/ms182418.aspx
 [smallint]: https://msdn.microsoft.com/library/ms187745.aspx
 [smallmoney]: https://msdn.microsoft.com/library/ms179882.aspx
-[sql\_variant]: https://msdn.microsoft.com/library/ms173829.aspx
+[sql_variant]: https://msdn.microsoft.com/library/ms173829.aspx
 [sysname]: https://msdn.microsoft.com/library/ms186939.aspx
-[Tabelle]: https://msdn.microsoft.com/library/ms175010.aspx
+[table]: https://msdn.microsoft.com/library/ms175010.aspx
 [time]: https://msdn.microsoft.com/library/bb677243.aspx
 [timestamp]: https://msdn.microsoft.com/library/ms182776.aspx
 [tinyint]: https://msdn.microsoft.com/library/ms187745.aspx
@@ -135,6 +132,10 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [varbinary]: https://msdn.microsoft.com/library/ms188362.aspx
 [varchar]: https://msdn.microsoft.com/library/ms186939.aspx
 [xml]: https://msdn.microsoft.com/library/ms187339.aspx
-[Benutzerdefinierte Typen]: https://msdn.microsoft.com/library/ms131694.aspx
+[user defined types]: https://msdn.microsoft.com/library/ms131694.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

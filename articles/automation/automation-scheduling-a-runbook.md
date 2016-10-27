@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Zeitpläne für Runbooks in Azure Automation | Microsoft Azure"
-   description="Beschreibt die Erstellung eines Zeitplans in Azure Automation, sodass ein Runbook automatisch zu einer bestimmten Uhrzeit oder nach einem sich wiederholenden Zeitplan gestartet wird."
+   pageTitle="Scheduling a runbook in Azure Automation | Microsoft Azure"
+   description="Describes how to create a schedule in Azure Automation so that you can automatically start a runbook at a particular time or on a recurring schedule."
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
@@ -15,140 +15,144 @@
    ms.date="08/05/2016"
    ms.author="bwren" />
 
-# Planen eines Runbooks in Azure Automation
 
-Um ein Runbook in Azure-Automation für die Ausführung zu einer bestimmten Uhrzeit zu planen, müssen Sie es mit einem oder mehreren Zeitplänen verknüpfen. Es kann ein Ausführungszeitplan für die einmalige Ausführung oder die stündliche oder tägliche Wiederholung für Runbooks im klassischen Azure-Portal und für Runbooks im Azure-Portal konfiguriert werden. Außerdem können Sie die Ausführung wöchentlich, monatlich oder für bestimmte Wochen- oder Monatstage bzw. einen bestimmten festen Tag des Monats planen. Ein Runbook kann mit mehreren Zeitplänen verknüpft werden, und mit einem Zeitplan können mehrere Runbooks verknüpft sein.
+# <a name="scheduling-a-runbook-in-azure-automation"></a>Scheduling a runbook in Azure Automation
+
+To schedule a runbook in Azure Automation to start at a specified time, you link it to one or more schedules. A schedule can be configured to either run once or on a reoccurring hourly or daily schedule for runbooks in the Azure classic portal and for runbooks in the Azure portal,  you can additionally schedule them for weekly, monthly, specific days of the week or days of the month, or a particular day of the month.  A runbook can be linked to multiple schedules, and a schedule can have multiple runbooks linked to it.
 
 
-## Erstellen eines Zeitplans
+## <a name="creating-a-schedule"></a>Creating a schedule
 
-Sie können einen neuen Zeitplan für Runbooks im Azure-Portal, im klassischen Portal oder mit Windows PowerShell erstellen. Außerdem haben Sie die Möglichkeit, einen neuen Zeitplan zu erstellen, wenn Sie ein Runbook über das klassische Azure-Portal oder das Azure-Portal mit einem Zeitplan verknüpfen.
+You can create a new schedule for runbooks in the Azure portal, in the classic portal, or with Windows PowerShell. You also have the option of creating a new schedule when you link a runbook to a schedule using the Azure classic or Azure portal.
 
->[AZURE.NOTE] Wenn Sie einen Zeitplan mit einem Runbook verknüpfen, speichert Automation die aktuellen Versionen der Module in Ihrem Konto und verknüpft sie mit diesem Zeitplan. Dies bedeutet: Wenn Ihr Konto zu dem Zeitpunkt, als Sie einen Zeitplan erstellten, ein Modul mit Version 1.0 enthielt, und Sie dann das Modul auf Version 2.0 aktualisieren, verwendet der Zeitplan weiterhin 1.0. Um die aktualisierte Modulversion verwenden zu können, müssen Sie einen neuen Zeitplan erstellen.
+>[AZURE.NOTE] When you associate a schedule with a runbook, Automation stores the current versions of the modules in your account and links them to that schedule.  This means that if you had a module with version 1.0 in your account when you created a schedule and then update the module to version 2.0, the schedule will continue to use 1.0.  In order to use the updated module version, you must create a new schedule. 
 
-### So erstellen Sie einen neuen Zeitplan im klassischen Azure-Portal
+### <a name="to-create-a-new-schedule-in-the-azure-classic-portal"></a>To create a new schedule in the Azure classic portal
 
-1. Wählen Sie im klassischen Azure-Portal die Option „Automation“, und wählen Sie den Namen eines Automation-Kontos aus.
-1. Wählen Sie die Registerkarte **Objekte** aus.
-1. Klicken Sie unten im Fenster auf **Einstellung hinzufügen**.
-1. Klicken Sie auf **Zeitplan hinzufügen**.
-1. Geben Sie einen **Namen** und optional eine **Beschreibung** für den neuen Zeitplan ein. Ihr Zeitplan wird **Einmalig**, **Stündlich**, **Täglich**, **Wöchentlich** oder **Monatlich** ausgeführt.
-1. Geben Sie eine **Startzeit** sowie weitere Optionen an, je nachdem, welche Art von Zeitplan Sie ausgewählt haben.
+1. In the Azure classic portal, select Automation and then then select the name of an automation account.
+1. Select the **Assets** tab.
+1. At the bottom of the window, click **Add Setting**.
+1. Click **Add Schedule**.
+1. Type a **Name** and optionally a **Description** for the new schedule.your schedule will run **One Time**, **Hourly**, **Daily**, **Weekly**, or **Monthly**.
+1. Specify a **Start Time** and other options depending on the type of schedule that you selected.
 
-### So erstellen Sie einen neuen Zeitplan im Azure-Portal
+### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>To create a new schedule in the Azure portal
 
-1. Klicken Sie im Azure-Portal unter Ihrem Automation-Konto auf die Kachel **Ressourcen**, um das Blatt **Ressourcen** zu öffnen.
-2. Klicken Sie auf die Kachel **Zeitpläne**, um das Blatt **Zeitpläne** zu öffnen.
-3. Klicken Sie oben auf dem Blatt auf **Zeitplan hinzufügen**.
-4. Geben Sie auf dem Blatt **Neuer Zeitplan** einen **Namen** und optional eine **Beschreibung** für den neuen Zeitplan ein.
-5. Wählen Sie aus, ob der Zeitplan einmalig oder nach einem Zeitplan häufiger ausgeführt werden soll, indem Sie **Einmalig** oder **Wiederholung** angeben. Geben Sie bei Auswahl von **Einmalig** eine **Startzeit** an, und klicken Sie auf **Erstellen**. Geben Sie bei Auswahl von **Wiederholung** eine **Startzeit** und den Wert an, der festlegt, wie oft die Ausführung des Runbooks wiederholt werden soll: **Stunde**, **Tag**, **Woche** oder **Monat**. Wenn Sie in der Dropdownliste die Option **Woche** oder **Monat** auswählen, wird auf dem Blatt die Option **Wiederholung** angezeigt. Bei Auswahl dieser Option wird das Blatt **Wiederholung** angezeigt, und Sie können den Wochentag auswählen, wenn Sie zuvor **Woche** gewählt haben. Falls Sie **Monat** gewählt haben, können Sie **Wochentage** oder bestimmte Tage des Monats im Kalender auswählen. Außerdem können Sie angeben, ob die Ausführung am letzten Tag des Monats durchgeführt werden soll. Klicken Sie anschließend auf **OK**.
+1. In the Azure portal, from your automation account, click the **Assets** tile to open the **Assets** blade.
+2. Click the **Schedules** tile to open the **Schedules** blade.
+3. Click **Add a schedule** at the top of the blade.
+4. On the **New schedule** blade, type a **Name** and optionally a **Description** for the new schedule.
+5. Select whether the schedule will run one time, or on a reoccurring schedule by selecting **Once** or **Recurrence**.  If you select **Once** specify a **Start time** and then click **Create**.  If you select **Recurrence**, specify a **Start time** and the frequency for how often you want the runbook to repeat - by **hour**, **day**, **week**, or by **month**.  If you select **week** or **month** from the drop-down list, the **Recurrence option** will appear in the blade and upon selection, the **Recurrence option** blade will be presented and you can select the day of week if you selected **week**.  If you selected **month**, you can choose by **week days** or specific days of the month on the calendar and finally, do you want to run it on the last day of the month or not and then click **OK**.   
 
-### So erstellen Sie einen neuen Zeitplan mit Windows PowerShell
+### <a name="to-create-a-new-schedule-with-windows-powershell"></a>To create a new schedule with Windows PowerShell
 
-Sie können das [New-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690271.aspx)-Cmdlet verwenden, um in Azure Automation einen neuen Zeitplan für klassische Runbooks zu erstellen, oder das [New-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603577.aspx)-Cmdlet für Runbooks im Azure-Portal. Sie müssen die Startzeit für den Zeitplan und die Häufigkeit der Ausführung angeben.
+You can use the [New-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690271.aspx) cmdlet to create a new schedule in Azure Automation for classic runbooks, or [New-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603577.aspx) cmdlet for runbooks in the Azure portal. You must specify the start time for the schedule and the frequency it should run.
 
-Die folgenden Beispielbefehle zeigen, wie ein neuer Zeitplan erstellt wird, der ab 20. Januar 2015 jeden Tag um 15:30 mit einem Azure-Dienstverwaltungs-Cmdlet ausgeführt wird.
-
-	$automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-DailySchedule"
-	New-AzureAutomationSchedule –AutomationAccountName $automationAccountName –Name `
-    $scheduleName –StartTime "1/20/2016 15:30:00" –DayInterval 1
-
-Mit den folgenden Beispielbefehlen wird veranschaulicht, wie Sie einen Zeitplan für den 15. und 30. jedes Monats mit einem Azure Resource Manager-Cmdlet erstellen.
+The following sample commands show how to create a new schedule that runs each day at 3:30 PM starting on January 20, 2015 with an Azure Service Management cmdlet.
 
     $automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
+    $scheduleName = "Sample-DailySchedule"
+    New-AzureAutomationSchedule –AutomationAccountName $automationAccountName –Name `
+    $scheduleName –StartTime "1/20/2016 15:30:00" –DayInterval 1
+
+The following sample commands shows how to create a schedule for the 15th and 30th of every month using an Azure Resource Manager cmdlet.
+
+    $automationAccountName = "MyAutomationAccount"
+    $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
     New-AzureRMAutomationSchedule –AutomationAccountName $automationAccountName –Name `
     $scheduleName -StartTime "7/01/2016 15:30:00" -MonthInterval 1 `
     -DaysOfMonth Fifteenth,Thirtieth -ResourceGroupName "ResourceGroup01"
     
 
-## Verknüpfen eines Zeitplans mit einem Runbook
+## <a name="linking-a-schedule-to-a-runbook"></a>Linking a schedule to a runbook
 
-Ein Runbook kann mit mehreren Zeitplänen verknüpft werden, und mit einem Zeitplan können mehrere Runbooks verknüpft sein. Wenn ein Runbook über Parameter verfügt, können Sie Werte für diese bereitstellen. Sie müssen Werte für alle verbindlichen Parameter angeben; für optionale Parameter können Sie Werte angeben. Diese Werte werden jedes Mal verwendet, wenn das Runbook durch diesen Zeitplan gestartet wird. Sie können das gleiche Runbook einem anderen Zeitplan zuordnen und dabei andere Parameterwerte festlegen.
+A runbook can be linked to multiple schedules, and a schedule can have multiple runbooks linked to it. If a runbook has parameters, then you can provide values for them. You must provide values for any mandatory parameters and may provide values for any optional parameters.  These values will be used each time the runbook is started by this schedule.  You can attach the same runbook to another schedule and specify different parameter values.
 
 
-### So verknüpfen Sie einen Zeitplan mit einem Runbook mit dem klassischen Azure-Portal
+### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-classic-portal"></a>To link a schedule to a runbook with the Azure classic portal
 
-1. Wählen Sie im klassischen Azure-Portal die Option **Automation**, und klicken Sie auf den Namen eines Automation-Kontos.
-2. Wählen Sie die Registerkarte **Runbooks**.
-3. Klicken Sie auf den Namen des Runbooks, das Sie mit einem Zeitplan verknüpfen möchten.
-4. Klicken Sie auf die Registerkarte **Zeitplan**.
-5. Wenn das Runbook gegenwärtig nicht mit einem Zeitplan verknüpft ist, stehen Ihnen die Optionen **Mit einem neuen Zeitplan verknüpfen** oder **Mit einem vorhandenen Zeitplan verknüpfen** zur Verfügung. Wenn das Runbook gegenwärtig mit einem Zeitplan verknüpft ist, klicken Sie auf **Link** am unteren Rand des Fensters, um auf diese Optionen zuzugreifen.
-6. Wenn das Runbook über Parameter verfügt, werden Sie zur Eingabe von Werten für diese Parameter aufgefordert.
+1. In the Azure classic portal, select **Automation** and then then click the name of an automation account.
+2. Select the **Runbooks** tab.
+3. Click on the name of the runbook to schedule.
+4. Click the **Schedule** tab.
+5. If the runbook is not currently linked to a schedule, then you will be given the option to **Link to a New Schedule** or **Link to an Existing Schedule**.  If the runbook is currently linked to a schedule, click **Link** at the bottom of the window to access these options.
+6. If the runbook has parameters, you will be prompted for their values.  
 
-### So verknüpfen Sie einen Zeitplan mit einem Runbook mit dem klassischen Azure-Portal
+### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>To link a schedule to a runbook with the Azure portal
 
-1. Klicken Sie im Azure-Portal unter Ihrem Automation-Konto auf die Kachel **Runbooks**, um das Blatt **Runbooks** zu öffnen.
-2. Klicken Sie auf den Namen des Runbooks, das Sie mit einem Zeitplan verknüpfen möchten.
-3. Wenn das Runbook gegenwärtig nicht mit einem Zeitplan verknüpft ist, stehen Ihnen die Optionen zum Erstellen eines neuen Zeitplans oder Verknüpfen mit einem vorhandenen Zeitplan zur Verfügung.
-4. Falls das Runbook über Parameter verfügt, können Sie die Option **Ausführungseinstellungen ändern (Standard: Azure)** wählen. Das Blatt **Parameter** wird angezeigt, auf dem Sie die Informationen entsprechend eingeben können.
+1. In the Azure portal, from your automation account, click the **Runbooks** tile to open the **Runbooks** blade.
+2. Click on the name of the runbook to schedule.
+3. If the runbook is not currently linked to a schedule, then you will be given the option to create a new schedule or link to an existing schedule.  
+4. If the runbook has parameters, you can select the option **Modify run settings (Default:Azure)** and the **Parameters** blade is presented where you can enter the information accordingly.  
 
-### So verknüpfen Sie einen Zeitplan mit einem Runbook mit Windows PowerShell
+### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>To link a schedule to a runbook with Windows PowerShell
 
-Sie können [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) verwenden, um einen Zeitplan mit einem klassischen Runbook zu verknüpfen, oder das [Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/library/mt603575.aspx)-Cmdlet für Runbooks im Azure-Portal. Sie können Werte für die Runbookparameter im Parameter "Parameters" angeben. Weitere Informationen zum Angeben von Parameterwerten finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
+You can use the [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) to link a schedule to a classic runbook or [Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/library/mt603575.aspx) cmdlet for runbooks in the Azure portal.  You can specify values for the runbook’s parameters with the Parameters parameter. See [Starting a Runbook in Azure Automation](automation-starting-a-runbook.md) for more information on specifying parameter values.
 
-Die folgenden Beispielbefehle verdeutlichen, wie Sie einen Zeitplan verknüpfen, indem Sie ein Azure-Dienstverwaltungs-Cmdlet mit Parametern verwenden.
-
-	$automationAccountName = "MyAutomationAccount"
-	$runbookName = "Test-Runbook"
-	$scheduleName = "Sample-DailySchedule"
-	$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-	Register-AzureAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
-    –Name $runbookName –ScheduleName $scheduleName –Parameters $params
-
-Die folgenden Beispielbefehle verdeutlichen, wie Sie einen Zeitplan mit einem Runbook verknüpfen, indem Sie ein Azure Resource Manager-Cmdlet mit Parametern verwenden.
+The following sample commands show how to link a schedule using an Azure Service Management cmdlet with parameters.
 
     $automationAccountName = "MyAutomationAccount"
-	$runbookName = "Test-Runbook"
-	$scheduleName = "Sample-DailySchedule"
-	$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-	Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
+    $runbookName = "Test-Runbook"
+    $scheduleName = "Sample-DailySchedule"
+    $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
+    Register-AzureAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
+    –Name $runbookName –ScheduleName $scheduleName –Parameters $params
+
+The following sample commands show how to link a schedule to a runbook using an Azure Resource Manager cmdlet with parameters.
+
+    $automationAccountName = "MyAutomationAccount"
+    $runbookName = "Test-Runbook"
+    $scheduleName = "Sample-DailySchedule"
+    $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
+    Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
     –Name $runbookName –ScheduleName $scheduleName –Parameters $params `
     -ResourceGroupName "ResourceGroup01"
 
-## Deaktivieren eines Zeitplans
+## <a name="disabling-a-schedule"></a>Disabling a schedule
 
-Wenn Sie einen Zeitplan deaktivieren, werden sämtliche damit verknüpften Runbooks nicht mehr nach diesem Zeitplan ausgeführt. Sie können einen Zeitplan manuell deaktivieren oder während der Erstellung für Zeitpläne eine Ablaufzeit festlegen. Wenn der Ablaufzeitpunkt erreicht ist, wird der Zeitplan deaktiviert.
+When you disable a schedule, any runbooks linked to it will no longer run on that schedule. You can manually disable a schedule or set an expiration time for schedules with a frequency when you create them. When the expiration time is reached, the schedule will be disabled.
 
-### So deaktivieren Sie einen Zeitplan über das klassische Azure-Portal
+### <a name="to-disable-a-schedule-from-the-azure-classic-portal"></a>To disable a schedule from the Azure classic portal
 
-Sie können einen Zeitplan im klassischen Azure-Portal über die Seite mit den Zeitplandetails für den Zeitplan deaktivieren.
+You can disable a schedule in the Azure classic portal from the Schedule Details page for the schedule.
 
-1. Wählen Sie im klassischen Azure-Portal die Option „Automation“, und klicken Sie auf den Namen eines Automation-Kontos.
-1. Wählen Sie die Registerkarte "Objekte" aus.
-1. Klicken Sie auf den Namen eines Zeitplans, um die Detailseite zu öffnen.
-2. Ändern Sie **Aktiviert** zu **Nein**.
+1. In the Azure classic portal, select Automation and then then click the name of an automation account.
+1. Select the Assets tab.
+1. Click the name of a schedule to open its detail page.
+2. Change **Enabled** to **No**.
 
-### So deaktivieren Sie einen Zeitplan über das Azure-Portal
+### <a name="to-disable-a-schedule-from-the-azure-portal"></a>To disable a schedule from the Azure portal
 
-1. Klicken Sie im Azure-Portal unter Ihrem Automation-Konto auf die Kachel **Ressourcen**, um das Blatt **Ressourcen** zu öffnen.
-2. Klicken Sie auf die Kachel **Zeitpläne**, um das Blatt **Zeitpläne** zu öffnen.
-2. Klicken Sie auf den Namen eines Zeitplans, um das Blatt mit den Details zu öffnen.
-3. Ändern Sie **Aktiviert** zu **Nein**.
+1. In the Azure portal, from your automation account, click the **Assets** tile to open the **Assets** blade.
+2. Click the **Schedules** tile to open the **Schedules** blade.
+2. Click the name of a schedule to open the details blade.
+3. Change **Enabled** to **No**.
 
-### So deaktivieren Sie einen Zeitplan mit Windows PowerShell
+### <a name="to-disable-a-schedule-with-windows-powershell"></a>To disable a schedule with Windows PowerShell
 
-Sie können das [Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx)-Cmdlet verwenden, um die Eigenschaften eines vorhandenen Zeitplans für ein klassisches Runbook zu ändern, oder das [Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603566.aspx)-Cmdlet für Runbooks im Azure-Portal. Um den Zeitplan zu deaktivieren, legen Sie für den Parameter **IsEnabled** den Wert **false** fest.
+You can use the [Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) cmdlet to change the properties of an existing schedule for a classic runbook or [Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603566.aspx) cmdlet for runbooks in the Azure portal. To disable the schedule, specify **false** for the **IsEnabled** parameter.
 
-Die folgenden Beispielbefehle verdeutlichen, wie Sie einen Zeitplan deaktivieren, indem Sie das Azure-Dienstverwaltungs-Cmdlet verwenden.
+The following sample commands show how to disable a schedule using the Azure Service Management cmdlet.
 
-	$automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-DailySchedule"
-	Set-AzureAutomationSchedule –AutomationAccountName $automationAccountName `
+    $automationAccountName = "MyAutomationAccount"
+    $scheduleName = "Sample-DailySchedule"
+    Set-AzureAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false
 
-Die folgenden Beispielbefehle verdeutlichen, wie Sie einen Zeitplan für ein Runbook deaktivieren, indem Sie ein Azure Resource Manager-Cmdlet verwenden.
+The following sample commands show how to disable a schedule for a runbook using an Azure Resource Manager cmdlet.
 
-	$automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
-	Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
+    $automationAccountName = "MyAutomationAccount"
+    $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
+    Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Weitere Informationen zum Verwenden von Zeitplänen finden Sie unter [Zeitpläne in Azure Automation](http://msdn.microsoft.com/library/azure/dn940016.aspx).
-- Informationen zu den ersten Schritten mit Runbooks in Azure Automation finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
+- To learn more about working with schedules, see [Schedule Assets in Azure Automation](http://msdn.microsoft.com/library/azure/dn940016.aspx)
+- To get started with runbooks in Azure Automation, see [Starting a Runbook in Azure Automation](automation-starting-a-runbook.md) 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

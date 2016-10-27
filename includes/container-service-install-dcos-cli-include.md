@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Installieren der DC/OS-CLI | Microsoft Azure"
-   description="Installieren Sie die DC/OS-CLI."
+   pageTitle="Install the DC/OS CLI | Microsoft Azure"
+   description="Install the DC/OS CLI."
    services="container-service"
    documentationCenter=""
    authors="rgardler"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Container, Microservices, DC/OS, Azure"/>
+   keywords="Containers, Micro-services, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -18,9 +18,10 @@
    ms.date="05/10/2016"
    ms.author="rogardle"/>
 
->[AZURE.NOTE] Diese Anleitung ist für die Verwendung von DC/OS-basierten ACS-Clustern bestimmt. Sie ist für Swarm-basierte ACS-Cluster nicht erforderlich.
 
-[Stellen Sie zuerst eine Verbindung mit Ihrem DC/OS-basierten ACS-Cluster her](../articles/container-service/container-service-connect.md). Anschließend können Sie die DC/OS-CLI mit den folgenden Befehlen auf Ihrem Clientcomputer installieren:
+>[AZURE.NOTE] This is for working with DC/OS-based ACS clusters. There is no need to do this for Swarm-based ACS clusters.
+
+First, [connect to your DC/OS-based ACS cluster](../articles/container-service/container-service-connect.md). Once you have done this, you can install the DC/OS CLI on your client machine with the commands below:
 
 ```bash
 sudo pip install virtualenv
@@ -30,18 +31,23 @@ chmod +x install-optout-dcos-cli.sh
 ./install-optout-dcos-cli.sh . http://localhost --add-path yes
 ```
 
-Wenn Sie eine alte Version von Python verwenden, kann es sein, dass Warnungen vom Typ „InsecurePlatformWarnings“ auftreten. Sie können dies ignorieren.
+If you are using an old version of Python, you may notice some "InsecurePlatformWarnings". You can safely ignore these.
 
-Führen Sie Folgendes aus, um zu beginnen, ohne die Shell neu zu starten:
+In order to get started without restarting your shell, run:
 
 ```bash
 source ~/.bashrc
 ```
 
-Dieser Schritt ist nicht erforderlich, wenn Sie neue Shells starten.
+This step will not be necessary when you start new shells.
 
-Jetzt können Sie überprüfen, ob die CLI installiert wurde:
+Now you can confirm that the CLI is installed:
 
 ```bash
 dcos --help
 ```
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,60 +1,65 @@
 <properties
-	pageTitle="Bereitstellen einer App in Skalierungsgruppen für virtuelle Computer | Microsoft Azure"
-	description="Bereitstellen einer App in Skalierungsgruppen für virtuelle Computer"
-	services="virtual-machine-scale-sets"
-	documentationCenter=""
-	authors="gbowerman"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Deploy an App on Virtual Machine Scale Sets| Microsoft Azure"
+    description="Deploy an app on Virtual Machine Scale Sets"
+    services="virtual-machine-scale-sets"
+    documentationCenter=""
+    authors="gbowerman"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machine-scale-sets"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2016"
-	ms.author="guybo"/>
+    ms.service="virtual-machine-scale-sets"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/26/2016"
+    ms.author="guybo"/>
 
-# Bereitstellen einer App in Skalierungsgruppen für virtuelle Computer
 
-Eine Anwendung, die in einer VM-Skalierungsgruppe ausgeführt wird, wird normalerweise auf drei verschiedene Arten bereitgestellt:
+# <a name="deploy-an-app-on-virtual-machine-scale-sets"></a>Deploy an App on Virtual Machine Scale Sets
 
-- Installieren Sie neue Software auf einem Plattformimage zum Zeitpunkt der Bereitstellung. Ein Plattformimage ist in diesem Kontext ein Betriebssystemimage aus dem Azure Marketplace, z.B. Ubuntu 16.04, Windows Server 2012 R2 usw.
+An application running on a VM Scale Set is typically deployed in one of three ways:
 
-Sie können neue Software auf einem Plattformimage mit einer [VM-Erweiterung](../virtual-machines/virtual-machines-windows-extensions-features.md) installieren. Eine VM-Erweiterung ist eine Software, die ausgeführt wird, wenn ein virtueller Computer bereitgestellt wird. Sie können beliebigen Code zum Zeitpunkt der Bereitstellung ausführen, indem Sie eine benutzerdefinierte Skripterweiterung verwenden. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) ist ein Beispiel für eine Azure Resource Manager-Vorlage mit zwei VM-Erweiterungen: eine benutzerdefinierte Linux-Skripterweiterung zum Installieren von Apache und PHP sowie eine Diagnoseerweiterung zum Ausgeben von Leistungsdaten, die von der automatischen Skalierung in Azure verwendet werden.
+- Installing new software on a platform image at deployment time. A platform image in this context is an operating system image from the Azure Marketplace, like Ubuntu 16.04, Windows Server 2012 R2, etc.
 
-Ein Vorteil dieses Ansatzes ist die Trennung von Anwendungscode und Betriebssystem, und Ihre Anwendung kann separat verwaltet werden. Natürlich bedeutet dies, dass auch mehr „bewegliche Teile“ vorhanden sind, und die Dauer der VM-Bereitstellung verlängert sich möglicherweise, wenn das Skript viel herunterladen und konfigurieren muss.
+You can install new software on a platform image using a [VM Extension](../virtual-machines/virtual-machines-windows-extensions-features.md). A VM extension is software that runs when a VM is deployed. You can run any code you like at deployment time using a custom script extension. [Here](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) is an example Azure Resource Manager Template with two VM extensions: a Linux Custom Script Extension to install Apache and PHP, and a Diagnostic Extension to emit performance data used by Azure Autoscale.
 
-**Wenn Sie vertrauliche Informationen im Befehl der benutzerdefinierten Skripterweiterung übergeben (z.B. ein Kennwort), müssen Sie statt des `settings`-Attributs `commandToExecute` im `protectedSettings`-Attribut der benutzerdefinierten Skripterweiterung angeben.**
+An advantage of this approach is you have a level of separation between your application code and the OS, and can maintain your application separately. Of course that means there are also more moving parts, and VM deployment time could be longer if there is a lot for the script to download and configure.
 
-- Erstellen Sie ein benutzerdefiniertes VM-Image, das das Betriebssystem und die Anwendung in einer einzelnen VHD enthält. Hier besteht die Skalierungsgruppe aus einer Gruppe von VMs, die aus einem von Ihnen erstellten Image kopiert wird, das Sie verwalten müssen. Dieser Ansatz erfordert keine zusätzliche Konfiguration zum Zeitpunkt der VM-Bereitstellung. In der Version `2016-03-30` der VM-Skalierungsgruppen (und in früheren Versionen) sind die Betriebssystemdatenträger für die VMs in der Skalierungsgruppe allerdings auf ein einzelnes Speicherkonto beschränkt. Folglich können Sie höchstens 40 VMs in einer Skalierungsgruppe verwenden, im Unterschied zum Höchstwert von 100 VM pro Skalierungsgruppe für Plattformimages. Weitere Details finden Sie unter [Entwerfen von VM-Skalierungsgruppen für die Skalierung](./virtual-machine-scale-sets-design-overview.md).
+**If you pass sensitive information in your Custom Script Extension command (such as a password), be sure to specify the `commandToExecute` in the `protectedSettings` attribute of the Custom Script Extension instead of the `settings` attribute.**
 
-- Stellen Sie eine Plattform oder ein benutzerdefiniertes Image bereit, bei der bzw. dem es sich im Grunde um einen Containerhost handelt, und installieren Sie die Anwendung als einen oder mehrere Container, die Sie mit einem Orchestrator oder einem Tool für die Konfigurationsverwaltung verwalten. Das Schöne an diesem Ansatz ist, dass Sie Ihre Cloudinfrastruktur von der Anwendungsebene abstrahiert haben und beides separat verwalten können.
+- Create a custom VM image that includes both the OS and the application in a single VHD. Here the scale set consists of a set of VMs copied from an image created by you, which you have to maintain. This approach requires no extra configuration at VM deployment time. However, in the `2016-03-30` version of VM Scale Sets (and earlier versions), the OS disks for the VMs in the scale set are limited to a single storage account. Thus, you can have a maximum of 40 VMs in a scale set, as opposed to the 100 VM per scale set limit with platform images. See [Scale Set Design Overview](./virtual-machine-scale-sets-design-overview.md) for more details.
 
-## Was geschieht, wenn eine VM-Skalierungsgruppe horizontal hochskaliert wird?
+- Deploy a platform or a custom image which is basically a container host, and install your application as one or more containers that you manage with an orchestrator or configuration management tool. The nice thing about this approach is that you have abstracted your cloud infrastructure from the application layer and can maintain them separately.
 
-Wenn Sie einer Skalierungsgruppe VMs hinzufügen, indem Sie die Kapazität erhöhen (manuell oder durch automatische Skalierung), wird die Anwendung automatisch installiert. Wenn z.B. Erweiterungen für die Skalierungsgruppe definiert wurden, werden sie auf einer neuen VM jedes Mal ausgeführt, wenn sie erstellt wird. Wenn die Skalierungsgruppe auf einem benutzerdefinierten Image basiert, ist jede neue VM eine Kopie des benutzerdefinierten Quellimages. Wenn es sich bei den Skalierungsgruppen-VMs um Containerhosts handelt, könnten Sie Startcode zum Laden der Container in einer benutzerdefinierten Skripterweiterung verwenden. Alternativ kann eine Erweiterung einen Agent installieren, der bei einem Clusterorchestrator (z.B. Azure Container Service) registriert wird.
+## <a name="what-happens-when-a-vm-scale-set-scales-out?"></a>What happens when a VM Scale Set scales out?
 
-## Wie verwalten Sie Anwendungsupdates in VM-Skalierungsgruppen?
+When you add one or more VMs to a scale set by increasing the capacity – whether manually or through autoscale – the application is automatically installed. For example if the scale set has extensions defined, they run on a new VM each time it is created. If the scale set is based on a custom image, any new VM is a copy of the source custom image. If the scale set VMs are container hosts, then you might have startup code to load the containers in a Custom Script Extension, or an extension might install an agent that registers with a cluster orchestrator (such as Azure Container Service).
 
-Für Anwendungsupdates in VM-Skalierungsgruppen ergeben sich aus den drei vorherigen Bereitstellungsmethoden für Anwendungen drei Verfahren:
+## <a name="how-do-you-manage-application-updates-in-vm-scale-sets?"></a>How do you manage application updates in VM Scale Sets?
 
-* Aktualisieren mit VM-Erweiterungen. VM-Erweiterungen, die für eine VM-Skalierungsgruppe definiert wurden, werden jedes Mal ausgeführt, wenn eine neue VM bereitgestellt, für eine vorhandene VM ein Reimaging durchgeführt oder eine VM-Erweiterung aktualisiert wird. Wenn Sie die Anwendung aktualisieren müssen, ist das direkte Aktualisieren einer Anwendung über Erweiterungen eine geeignete Vorgehensweise: Sie aktualisieren einfach die Definition der Erweiterung. Dazu können Sie einfach die fileUris so ändern, dass sie auf die neue Software verweisen.
+For application updates in VM Scale Sets, three main approaches follow from the three preceding application deployment methods:
 
-* Das Verfahren mit einem unveränderlichen benutzerdefinierten Image. Wenn Sie die Anwendung (oder App-Komponenten) in ein VM-Image integrieren, können Sie sich darauf konzentrieren, eine verlässliche Pipeline zum Automatisieren von Builds, Tests und Bereitstellungen der Images zu erstellen. Sie können Ihre Architektur so entwerfen, dass der schnelle Austausch einer bereitgestellten Skalierungsgruppe in der Produktion erleichtert wird. Ein gutes Beispiel dieses Verfahrens ist die [Azure Spinnaker-Treibermethode](https://github.com/spinnaker/deck/tree/master/app/scripts/modules/azure) – [http://www.spinnaker.io/](http://www.spinnaker.io/).
+* Updating with VM extensions. Any VM extensions that are defined for a VM Scale Set are executed each time a new VM is deployed, an existing VM is reimaged, or a VM extension is updated. If you need to update your application, directly updating an application through extensions is a viable approach – you simply update the extension definition. One simple way to do so is by changing the fileUris to point to the new software.
 
-Packer und Terraform unterstützen Azure Resource Manager ebenfalls. Daher können Sie Images auch „als Code“ definieren und in Azure erstellen und dann die VHD in der Skalierungsgruppe verwenden. Allerdings entstehen dadurch Probleme mit Marketplace-Images, in denen Erweiterungen/benutzerdefinierte Skripts wichtiger werden, da Sie Marketplace-Elemente nicht direkt bearbeiten.
+* The immutable custom image approach. When you bake the application (or app components) into a VM image you can focus on building a reliable pipeline to automate build, test, and deployment of the images. You can design your architecture to facilitate rapid swapping of a staged scale set into production. A good example of this approach is the [Azure Spinnaker driver work](https://github.com/spinnaker/deck/tree/master/app/scripts/modules/azure) - [http://www.spinnaker.io/](http://www.spinnaker.io/).
 
-* Aktualisieren von Containern. Fassen Sie die Verwaltung des Anwendungslebenszyklus auf einer Ebene über der Cloudinfrastruktur zusammen, indem Sie z.B. Anwendungen und App-Komponenten in Containern kapseln und diese Container durch Containerorchestratoren und Konfigurations-Manager wie Chef/Puppet verwalten.
+Packer and Terraform also support Azure Resource Manager, so you can also define your images “as code” and build them in Azure, then use the VHD in your scale set. However, doing so would become problematic for Marketplace images, where extensions/custom scripts become more important since you don’t directly manipulate bits from Marketplace.
 
-Die Skalierungsgruppen-VMs werden dann zu einem stabilen Substrat für die Container und erfordern nur gelegentliche Sicherheits- und Betriebssystemupdates. Wie bereits erwähnt, ist Azure Container Service ein gutes Beispiel für diesen Ansatz und das Erstellen eines entsprechenden Diensts.
+* Update containers. Abstract the application lifecycle management to a level above the cloud infrastructure, for example by encapsulating applications, and app components into containers and manage these containers through container orchestrators and configuration managers like Chef/Puppet.
 
-## Wie verteilen Sie ein Betriebssystemupdate auf Updatedomänen?
+The scale set VMs then become a stable substrate for the containers and only require occasional security and OS-related updates. As mentioned, the Azure Container Service is a good example of taking this approach and building a service around it.
 
-Nehmen wir an, dass Sie das Betriebssystemimage aktualisieren möchten, während gleichzeitig die VM-Skalierungsgruppe weiter ausgeführt wird. Eine Möglichkeit ist, die VM-Images der einzelnen VMs nacheinander zu aktualisieren. Sie können dazu PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Es gibt gesonderte Befehle zum Aktualisieren des VM-Skalierungsgruppenmodells (der Konfigurationsdefinition) und zur Ausgabe von Aufrufen zum „manuellen Upgrade“ auf einzelnen VMs.
+## <a name="how-do-you-roll-out-an-os-update-across-update-domains?"></a>How do you roll out an OS update across update domains?
 
-[Hier](https://github.com/gbowerman/vmsstools) ist ein Beispiel für ein Python-Skript, das das Aktualisieren einer VM-Skalierungsgruppe nacheinander auf den einzelnen Updatedomänen automatisiert. (Einschränkung: Es ist eher eine Machbarkeitsstudie als eine gesicherte einsatzbereite Lösung. Sie sollten Überprüfungen auf Fehler usw. ergänzen.)
+Suppose you want to update your OS image while keeping the VM Scale Set running. One way to do so is to update the VM images one VM at a time. You can do so with PowerShell or Azure CLI. There are separate commands to update the VM Scale Set model (how its configuration is defined), and to issue “manual upgrade” calls on individual VMs.
 
-<!---HONumber=AcomDC_0907_2016-->
+[Here](https://github.com/gbowerman/vmsstools) is an example Python script that automates the process of updating a VM Scale Set one update domain at a time. (Caveat: it’s more of a proof of concept than a hardened production-ready solution – you might want to add some error checking etc.).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

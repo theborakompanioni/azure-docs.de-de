@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Verwenden von U-SQL-Fensterfunktionen für Azure Data Lake Analytics-Aufträge| Azure" 
-   description="Erfahren Sie, wie Sie U-SQL-Fensterfunktionen verwenden. " 
+   pageTitle="Using U-SQL window functions for Azure Data Lake Aanlytics jobs | Azure" 
+   description="Learn how to use U-SQL window functions. " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
@@ -17,42 +17,43 @@
    ms.author="edmaca"/>
 
 
-# Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge  
 
-Fensterfunktionen wurden 2003 in den ISO/ANSI SQL-Standard eingeführt. U-SQL übernimmt eine Teilmenge der Fensterfunktionen gemäß der Definition durch den ANSI SQL-Standard.
+# <a name="using-u-sql-window-functions-for-azure-data-lake-analytics-jobs"></a>Using U-SQL window functions for Azure Data Lake Analytics jobs  
 
-Fensterfunktionen werden verwendet, um Berechnungen in Gruppen von Zeilen durchzuführen, die *Fenster* genannt werden. Fenster werden von der OVER-Klausel definiert. Fensterfunktionen bieten für verschiedene wichtige Szenarien Lösungen auf überaus effiziente Weise.
+Window functions were introduced to the ISO/ANSI SQL Standard in 2003. U-SQL adopts a subset of window functions as defined by the ANSI SQL Standard.
 
-In diesem Leitfaden werden zwei Beispieldatasets verwendet, mit deren Hilfe Sie ein Beispielszenario durchlaufen, in dem Sie Fensterfunktionen anwenden können. Weitere Informationen finden Sie in der [U-SQL-Referenz](http://go.microsoft.com/fwlink/p/?LinkId=691348).
+Window functions are used to do computation within sets of rows called *windows*. Windows are defined by the  OVER clause. Window functions solve some key scenarios in a highly efficient manner.
 
-Die Fensterfunktionen sind in die folgenden Kategorien unterteilt:
+This learning guide uses two sample datasets to walk you through some sample scenario where you can apply window functions. For more information, see [U-SQL reference](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
-- [Berichtsaggregationsfunktionen](#reporting-aggregation-functions), wie z. B. SUM oder AVG
-- [Rangfolgefunktionen](#ranking-functions), wie z. B. DENSE\_RANK, ROW\_NUMBER, NTILE und RANK
-- [Analysefunktionen](#analytic-functions), wie z. B. Summenverteilung, Perzentile oder Zugriffe auf Daten in einer vorherigen Zeile im selben Resultset ohne Selbstverknüpfung
+The window functions are categorized into: 
 
-**Voraussetzungen:**
+- [Reporting aggregation functions](#reporting-aggregation-functions), such as SUM or AVG
+- [Ranking functions](#ranking-functions), such as DENSE_RANK, ROW_NUMBER, NTILE, and RANK
+- [Analytic functions](#analytic-functions),  such as cumulative distribution, percentiles, or accesses data from a previous row in the same result set without the use of a self-join
 
-- Durchlaufen Sie die folgenden beiden Tutorials:
+**Prerequisites:**
 
-    - [Erste Schritte mit Azure Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-    - [Erste Schritte mit U-SQL für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-get-started.md).
-- Erstellen Sie ein Data Lake Analytic-Konto gemäß den Anweisungen unter [Erste Schritte mit Azure Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-- Erstellen Sie ein Visual Studio-U-SQL-Projekt gemäß den Anweisungen unter [Erste Schritte mit U-SQL für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-get-started.md).
+- Go through the following two tutorials:
 
-## Beispieldatasets
+    - [Get started using Azure Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+    - [Get started using U-SQL for Azure Data Lake Analytics jobs](data-lake-analytics-u-sql-get-started.md).
+- Create a Data Lake Analytic account as instructed in [Get started using Azure Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+- Create a Visual Studio U-SQL project as instructed in [Get started using U-SQL for Azure Data Lake Analytics jobs](data-lake-analytics-u-sql-get-started.md).
 
-In diesem Tutorial werden zwei Datasets verwendet:
+## <a name="sample-datasets"></a>Sample datasets
 
-- QueryLog
+This tutorial uses two datasets:
 
-    „QueryLog“ enthält eine Übersicht, wonach Benutzer in der Suchmaschine gesucht haben. Jedes Abfrageprotokoll enthält Folgendes:
+- QueryLog 
+
+    QueryLog represents a list of what people searched for in search engine. Each query log includes:
     
         - Query - What the user was searching for.
         - Latency - How fast the query came back to the user in milliseconds.
         - Vertical - What kind of content the user was interested in (Web links, Images, Videos).
     
-    Kopieren Sie das folgende Skript, und fügen Sie es in Ihr U-SQL-Projekt ein, um das Rowset „QueryLog“ zu erstellen:
+    Copy and paste the following scrip into your U-SQL project for constructing the QueryLog rowset:
     
         @querylog = 
             SELECT * FROM ( VALUES
@@ -67,7 +68,7 @@ In diesem Tutorial werden zwei Datasets verwendet:
                 ("Durian"  , 500, "Web"   ) )
             AS T(Query,Latency,Vertical);
     
-    In der Praxis sind die Daten wahrscheinlich in einer Datendatei gespeichert. Auf diese Daten in einer Datei mit Tabstopptrennzeichen wird über den folgenden Code zugegriffen:
+    In practice, the data is most likely stored in a data file. You would access that data inside of a tab-delimited file using the following code: 
     
         @querylog = 
         EXTRACT 
@@ -79,7 +80,7 @@ In diesem Tutorial werden zwei Datasets verwendet:
 
 - Employees
 
-    Das Dataset „Employees“ enthält die folgenden Felder:
+    The Employee dataset includes the following fields:
    
         - EmpID - Employee ID.
         - EmpName  Employee name.
@@ -87,7 +88,7 @@ In diesem Tutorial werden zwei Datasets verwendet:
         - DeptID - Deparment ID.
         - Salary - Employee salary.
 
-    Kopieren Sie das folgende Skript, und fügen Sie es in Ihr U-SQL-Projekt ein, um das Rowset „Employees“ zu erstellen:
+    Copy and paste the following script into your U-SQL project for construcint the Employees rowset:
 
         @employees = 
             SELECT * FROM ( VALUES
@@ -102,7 +103,7 @@ In diesem Tutorial werden zwei Datasets verwendet:
                 (9, "Ethan",  "Marketing",   400, 10000) )
             AS T(EmpID, EmpName, DeptName, DeptID, Salary);
     
-    Die folgende Anweisung veranschaulicht das Erstellen des Rowsets, indem es aus einer Datendatei extrahiert wird.
+    The following statement demonstrates creating the rowset by extracting it from a data file.
     
         @employees = 
         EXTRACT 
@@ -114,66 +115,66 @@ In diesem Tutorial werden zwei Datasets verwendet:
         FROM "/Samples/Employees.tsv"
         USING Extractors.Tsv();
 
-Wenn Sie die Beispiele im Tutorial testen, müssen Sie die Rowsetdefinitionen einschließen. U-SQL erfordert, dass Sie nur die Rowsets definieren, die verwendet werden. Einige Beispiele benötigen nur ein Rowset.
+When you test the samples in tutorial, you must include the rowset definitions. U-SQL requires you to define only the rowsets that are used. Some samples only need one rowset.
 
-Außerdem müssen Sie die folgende Anweisung hinzufügen, um das Ergebnisrowset in einer Datendatei auszugeben:
+You must also add the following statement to output the result rowset to a data file:
 
     OUTPUT @result TO "/wfresult.csv" 
         USING Outputters.Csv();
  
- Die meisten Beispiele verwenden die Variable **@result** für die Ergebnisse.
+ Most of the samples use the variable called **@result** for the results.
 
-## Vergleichen von Fensterfunktionen mit einer Gruppierung
+## <a name="compare-window-functions-to-grouping"></a>Compare window functions to Grouping
 
-Fensterfunktionen und Gruppierung sind zwar konzeptionell verwandt, aber auch unterschiedlich. Es empfiehlt sich, diese Beziehung zu verstehen.
+Windowing and Grouping are conceptually related by also different. It is helpful to understand this relationship.
 
-### Verwenden von Aggregation und Gruppierung
+### <a name="use-aggregation-and-grouping"></a>Use aggregation and Grouping
 
-Die folgende Abfrage verwendet eine Aggregation, um die Summe der Gehälter aller Mitarbeiter zu berechnen:
+The following query uses an aggregation to calculate the total salary for all employees:
 
     @result = 
         SELECT 
             SUM(Salary) AS TotalSalary
         FROM @employees;
     
->[AZURE.NOTE] Anweisungen zum Testen und Überprüfen der Ausgabe finden Sie unter [Erste Schritte mit U-SQL für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-get-started.md).
+>[AZURE.NOTE] For instructions for testing and checking the output, see [Get started using U-SQL for Azure Data Lake Analytics jobs](data-lake-analytics-u-sql-get-started.md).
 
-Das Ergebnis ist eine einzelne Zeile mit einer einzelnen Spalte. $165000 ist die Summe der Gehaltswerte in der gesamten Tabelle.
+The result is a single row with a single column. The $165000 is the sum of of the Salary value from the whole table. 
 
 |TotalSalary
 |-----------
 |165000
 
->[AZURE.NOTE] Wenn Sie noch nicht mit Fensterfunktionen vertraut sind, ist es hilfreich, die Werte in den Ausgaben zu speichern.
+>[AZURE.NOTE] If you are new to windows functions, it is helpful to remember the numbers in the outputs.  
 
-Die folgende Anweisung verwendet die GROUP BY-Klausel, um die gesamten Gehaltskosten für jede Abteilung zu berechnen:
+The following statement use the GROUP BY clause to calculate the total salery for each department:
 
     @result=
         SELECT DeptName, SUM(Salary) AS SalaryByDept
         FROM @employees
         GROUP BY DeptName;
 
-Die Ergebnisse sind wie folgt:
+The results are :
 
 |DeptName|SalaryByDept
 |--------|------------
-|Entwicklung|60000
+|Engineering|60000
 |HR|30000
-|Geschäftsleitung|50000
+|Executive|50000
 |Marketing|25000
 
-Die Summe der Spalte „SalaryByDept“ ist $165000, was dem Betrag im letzten Skript entspricht.
+The sum of the SalaryByDept column is $165000, which matches the amount in the last script.
  
-In beiden Fällen gibt es weniger Ausgabezeilen als Eingabezeilen:
+In both these cases the number of there are fewer output rows than input rows:
  
-- Ohne GROUP BY reduziert die Aggregation alle Zeilen zu einer einzelnen Zeile.
-- Mit GROUP BY gibt es N Ausgabezeilen, wobei N die Anzahl unterschiedliche Werte ist, die in den Daten enthalten sind. In diesem Fall sind 4 Zeilen in der Ausgabe enthalten.
+- Without GROUP BY, the aggregation collapses all the rows into a single row. 
+- With GROUP BY,  there are N output rows where N is the number of distinct values that appear in the data, In this case, you will get 4 rows in the output.
 
-###  Verwenden einer Fensterfunktion
+###  <a name="use-a-window-function"></a>Use a window function
 
-Die OVER-Klausel im folgenden Beispiel ist leer. Dadurch wird das „Fenster“ so definiert, dass es alle Zeilen aufnehmen soll. SUM wird in diesem Beispiel auf die OVER-Klausel angewendet, die vorausgeht.
+The OVER clause in the following sample is empty. This defines the "window" to include all rows. The SUM in this example is applied to the OVER clause that it precedes.
 
-Sie können diese Abfrage so lesen: „Die Summe der Gehälter über ein Fenster aller Zeilen“.
+You could read this query as: “The sum of Salary over a window of all rows”.
 
     @result=
         SELECT
@@ -181,7 +182,7 @@ Sie können diese Abfrage so lesen: „Die Summe der Gehälter über ein Fenster
             SUM(Salary) OVER( ) AS SalaryAllDepts
         FROM @employees;
 
-Im Gegensatz zu GROUP BY ist die Anzahl von Aus- und Eingabezeilen identisch:
+Unlike GROUP BY, there are as many output rows as input rows: 
 
 |EmpName|TotalAllDepts
 |-------|--------------------
@@ -196,9 +197,9 @@ Im Gegensatz zu GROUP BY ist die Anzahl von Aus- und Eingabezeilen identisch:
 |Ethan|165000
 
 
-Der Wert 165000 (die Summe aller Gehälter) wird in jeder Ausgabezeile platziert. Die Summe stammt aus dem „Fenster“ aller Zeilen, weshalb sie alle Gehälter einschließt.
+The value of 165000 (the total of all salaries) is placed in each output row. That total comes from the "window" of all rows, so it includes all the salaries. 
 
-Das nächste Beispiel veranschaulicht das Optimieren des „Fensters“, um alle Mitarbeiter, die Abteilung und die Gesamtgehaltskosten der Abteilung aufzulisten. PARTITION BY wird der OVER-Klausel hinzugefügt.
+The next example demonstrates how to refine the "window" to list all the employees, the department, and the total salary for the department. PARTITION BY is added to the OVER clause.
 
     @result=
     SELECT
@@ -206,49 +207,49 @@ Das nächste Beispiel veranschaulicht das Optimieren des „Fensters“, um alle
         SUM(Salary) OVER( PARTITION BY DeptName ) AS SalaryByDept
     FROM @employees;
 
-Die Ergebnisse sind wie folgt:
+The results are:
 
 |EmpName|DeptName|SalaryByDep
 |-------|--------|-------------------
-|Noah|Entwicklung|60000
-|Sophia|Entwicklung|60000
-|Liam|Entwicklung|60000
-|Mason|Geschäftsleitung|50000
+|Noah|Engineering|60000
+|Sophia|Engineering|60000
+|Liam|Engineering|60000
+|Mason|Executive|50000
 |Emma|HR|30000
 |Jacob|HR|30000
 |Olivia|HR|30000
 |Ava|Marketing|25000
 |Ethan|Marketing|25000
 
-Wiederum entspricht die Anzahl der Eingabezeilen der Anzahl der Ausgabezeilen. Jede Zeile enthält das Gesamtgehalt der jeweiligen Abteilung.
+Again, there are the same number of input rows as output rows. However each row has a total salary for the corresponding department.
 
 
 
 
-## Berichtsaggregationsfunktionen
+## <a name="reporting-aggregation-functions"></a>Reporting aggregation functions
 
-Fensterfunktionen unterstützen auch die folgenden Aggregate:
+Window functions also support the following aggregates:
 
 - COUNT
 - SUM
 - MIN
 - MAX
-- DURCHSCHN.
+- AVG
 - STDEV
 - VAR
 
-Die Syntax ist:
+The syntax:
 
     <AggregateFunction>( [DISTINCT] <expression>) [<OVER_clause>]
 
-Hinweis:
+Note: 
 
-- Standardmäßig werden NULL-Werte von allen Aggregatfunktionen außer COUNT ignoriert.
-- Wenn Aggregatfunktionen zusammen mit der OVER-Klausel angegeben werden, ist die ORDER BY-Klausel in der OVER-Klausel nicht zulässig.
+- By default, aggregate functions, except COUNT, ignore null values.
+- When aggregate functions are specified along with the OVER clause, the ORDER BY clause is not allowed in the OVER clause.
 
-### Verwenden von SUM
+### <a name="use-sum"></a>Use SUM
 
-Das folgende Beispiel fügt das Gesamtgehalt nach Abteilung den einzelnen Eingabezeilen hinzu:
+The following example adds a total salary by department to each input row:
  
     @result=
         SELECT 
@@ -256,37 +257,37 @@ Das folgende Beispiel fügt das Gesamtgehalt nach Abteilung den einzelnen Eingab
             SUM(Salary) OVER( PARTITION BY DeptName ) AS TotalByDept
         FROM @employees;
 
-Hier sehen Sie die Ausgabe:
+Here is the output:
 
 |EmpID|EmpName|DeptName|DeptID|Salary|TotalByDept
 |-----|-------|--------|------|------|-----------
-|1|Noah|Entwicklung|100|10000|60000
-|2|Sophia|Entwicklung|100|20000|60000
-|3|Liam|Entwicklung|100|30000|60000
-|7|Mason|Geschäftsleitung|300|50000|50000
+|1|Noah|Engineering|100|10000|60000
+|2|Sophia|Engineering|100|20000|60000
+|3|Liam|Engineering|100|30000|60000
+|7|Mason|Executive|300|50000|50000
 |4|Emma|HR|200|10000|30000
 |5|Jacob|HR|200|10000|30000
 |6|Olivia|HR|200|10000|30000
 |8|Ava|Marketing|400|15000|25000
 |9|Ethan|Marketing|400|10000|25000
 
-### Verwenden von COUNT
+### <a name="use-count"></a>Use COUNT
 
-Das folgende Beispiel fügt jeder Zeile ein zusätzliches Feld hinzu, um die Gesamtanzahl von Mitarbeitern in jeder Abteilung anzuzeigen.
+The following example adds an extra field to each row to show the total number employees in each department.
 
     @result =
         SELECT *, 
             COUNT(*) OVER(PARTITION BY DeptName) AS CountByDept 
         FROM @employees;
 
-Das Ergebnis:
+The result:
 
 |EmpID|EmpName|DeptName|DeptID|Salary|CountByDept
 |-----|-------|--------|------|------|-----------
-|1|Noah|Entwicklung|100|10000|3
-|2|Sophia|Entwicklung|100|20000|3
-|3|Liam|Entwicklung|100|30000|3
-|7|Mason|Geschäftsleitung|300|50000|1
+|1|Noah|Engineering|100|10000|3
+|2|Sophia|Engineering|100|20000|3
+|3|Liam|Engineering|100|30000|3
+|7|Mason|Executive|300|50000|1
 |4|Emma|HR|200|10000|3
 |5|Jacob|HR|200|10000|3
 |6|Olivia|HR|200|10000|3
@@ -294,9 +295,9 @@ Das Ergebnis:
 |9|Ethan|Marketing|400|10000|2
 
 
-### Verwenden von MIN und MAX
+### <a name="use-min-and-max"></a>Use MIN and MAX
 
-Das folgende Beispiel fügt jeder Zeile ein zusätzliches Feld hinzu, um das niedrigste Gehalt in jeder Abteilung anzuzeigen:
+The following example adds an extra field to each row to show the lowest salary of each department:
 
     @result =
         SELECT 
@@ -304,48 +305,48 @@ Das folgende Beispiel fügt jeder Zeile ein zusätzliches Feld hinzu, um das nie
             MIN(Salary) OVER( PARTITION BY DeptName ) AS MinSalary
         FROM @employees;
 
-Die Ergebnisse:
+The results:
 
 |EmpID|EmpName|DeptName|DeptID|Salary|MinSalary
 |-----|-------|--------|------|-------------|----------------
-|1|Noah|Entwicklung|100|10000|10000
-|2|Sophia|Entwicklung|100|20000|10000
-|3|Liam|Entwicklung|100|30000|10000
-|7|Mason|Geschäftsleitung|300|50000|50000
+|1|Noah|Engineering|100|10000|10000
+|2|Sophia|Engineering|100|20000|10000
+|3|Liam|Engineering|100|30000|10000
+|7|Mason|Executive|300|50000|50000
 |4|Emma|HR|200|10000|10000
 |5|Jacob|HR|200|10000|10000
 |6|Olivia|HR|200|10000|10000
 |8|Ava|Marketing|400|15000|10000
 |9|Ethan|Marketing|400|10000|10000
 
-Ersetzen Sie MIN durch MAX, und wiederholen Sie den Vorgang.
+Replace MIN with MAX and then give it a try.
 
 
-## Rangfolgefunktionen
+## <a name="ranking-functions"></a>Ranking Functions
 
-Rangfolgefunktionen geben gemäß der Definition der Klauseln PARTITION BY und OVER für jede Zeile in jeder Partition einen Rangfolgewert (LONG) zurück. Die Reihenfolge der Ränge wird über ORDER BY in der OVER-Klausel gesteuert.
+Ranking functions return a ranking value (a long) for each row in each partition as defined by the PARTITION BY and OVER clauses. The ordering of the rank is controlled by the ORDER BY in the OVER clause.
 
-Die folgenden Rangfolgefunktionen werden unterstützt:
+The following are supported ranking functions:
 
 - RANK
-- DENSE\_RANK
+- DENSE_RANK 
 - NTILE
-- ROW\_NUMBER
+- ROW_NUMBER
 
 **Syntax:**
 
-	[ RANK() | DENSE_RANK() | ROW_NUMBER() | NTILE(<numgroups>) ]
-	    OVER (
-	        [PARTITION BY <identifier, > …[n]]
-	        [ORDER BY <identifier, > …[n] [ASC|DESC]] 
-	) AS <alias>
+    [ RANK() | DENSE_RANK() | ROW_NUMBER() | NTILE(<numgroups>) ]
+        OVER (
+            [PARTITION BY <identifier, > …[n]]
+            [ORDER BY <identifier, > …[n] [ASC|DESC]] 
+    ) AS <alias>
 
-- Die ORDER BY-Klausel ist für Rangfolgefunktionen optional. Falls ORDER BY angegeben ist, wird damit die Rangfolge bestimmt. Falls ORDER BY nicht angegeben ist, werden Werte von U-SQL auf Grundlage der Lesereihenfolge von Datensätzen zugewiesen. Dies führt zu einem nicht deterministischen Wert für ROW\_NUMBER, RANK und DENSE\_RANK für den Fall, dass die ORDER BY-Klausel nicht angegeben wurde.
-- NTILE erfordert einen Ausdruck, der in eine positive ganze Zahl ausgewertet wird. Diese Zahl gibt die Anzahl der Gruppen an, in die jede Partition unterteilt werden muss. Dieser Bezeichner wird nur bei der Rangfolgefunktion NTILE verwendet.
+- The ORDER BY clause is optional for ranking functions. If ORDER BY is specified then it determines the order of the ranking. If ORDER BY is not specified then U-SQL assigns values based on the order it reads record. Thus resulting into non deterministic value of row number, rank or dense rank in the case were order by clause is not specified.
+- NTILE requires an expression that evaluates to a positive integer. This number specifies the number of groups into which each partition must be divided. This identifier is used only with the NTILE ranking function. 
 
-Weitere Informationen zur OVER-Klausel finden Sie in der [U-SQL-Referenz]().
+For more details on the OVER clause, see [U-SQL reference]().
 
-ROW\_NUMBER, RANK und DENSE\_RANK weisen Zeilen in einem Fenster Werte zu. Anstatt diese Funktionen separat zu behandeln, empfiehlt es sich zu prüfen, wie sie auf die gleiche Eingabe reagieren.
+ROW_NUMBER, RANK, and DENSE_RANK all assign numbers to rows in a window. Rather than cover them separately, it’s more intuitive to see how They respond to the same input.
 
     @result =
     SELECT 
@@ -355,9 +356,9 @@ ROW\_NUMBER, RANK und DENSE\_RANK weisen Zeilen in einem Fenster Werte zu. Ansta
         DENSE_RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS DenseRank 
     FROM @querylog;
         
-Beachten Sie, dass die OVER-Klauseln identisch sind. Das Ergebnis:
+Note the OVER clauses are identical. The result:
 
-|Abfragen|Latency:int|Vertical|RowNumber|Rank|DenseRank
+|Query|Latency:int|Vertical|RowNumber|Rank|DenseRank
 |-----|-----------|--------|--------------|---------|--------------
 |Banana|300|Image|1|1|1
 |Cherry|300|Image|2|1|1
@@ -369,55 +370,55 @@ Beachten Sie, dass die OVER-Klauseln identisch sind. Das Ergebnis:
 |Cherry|400|Web|5|5|4
 |Durian|500|Web|6|6|5
 
-### ROW\_NUMBER
+### <a name="row_number"></a>ROW_NUMBER
 
-In jedem Fenster (Vertical, entweder „Image“ oder „Web“) wird der Zeilenwert nach „Latency“ sortiert um 1 erhöht.
+Within each Window (Vertical,either Image or Web), the row number increases by 1 ordered by Latency.  
 
-![U-SQL-Fensterfunktion ROW\_NUMBER](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-row-number-result.png)
+![U-SQL window function ROW_NUMBER](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-row-number-result.png)
 
-### RANK
+### <a name="rank"></a>RANK
 
-Im Unterschied zu ROW\_NUMBER() berücksichtigt RANK() den Wert von „Latency“, der in der ORDER BY-Klausel für das Fenster angegeben ist.
+Different from ROW_NUMBER(), RANK() takes into account the value of the Latency which is specified in the ORDER BY clause for the window.
 
-RANK beginnt mit (1,1,3), da die beiden ersten Werte für „Latency“ identisch sind. Dann ist der nächste Wert 3, da der „Latency“-Wert in 500 geändert wurde. Wichtig ist der Hinweis, dass obwohl doppelte Werte denselben Rang erhalten, der RANK-Wert zum nächsten ROW\_NUMBER-Wert „springt“. Dieses Muster wird mit der Sequenz (2,2,4) für (Vertical, Web) wiederholt.
+RANK starts with (1,1,3) because the first two values for Latency are the same. Then the next value is 3 because the Latency value has moved on to 500. The key point being that even though duplicate values are given the same rank, the RANK number will “skip” to the next ROW_NUMBER value. You can see this pattern repeat with the sequence (2,2,4) in the Web vertical.
 
-![U-SQL-Fensterfunktion RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
+![U-SQL window function RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
 
-### DENSE\_RANK
-	
-DENSE\_RANK entspricht nahezu RANK, außer dass kein „Sprung“ zur nächsten ROW\_NUMBER, sondern zum nächsten Wert in der Sequenz erfolgt. Sehen Sie sich die Sequenzen (1,1,2) und (2,2,3) im Beispiel an.
+### <a name="dense_rank"></a>DENSE_RANK
+    
+DENSE_RANK is just like RANK except it doesn’t “skip” to the next ROW_NUMBER, instead it goes to the next number in the sequence. Notice the sequences (1,1,2) and (2,2,3) in the sample.
 
-![U-SQL-Fensterfunktion DENSE\_RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-dense-rank-result.png)
+![U-SQL window function DENSE_RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-dense-rank-result.png)
 
-### Hinweise
+### <a name="remarks"></a>Remarks
 
-- Wenn ORDER BY nicht angegeben ist, wird die Rangfolgefunktion ohne bestimmte Reihenfolge auf das Rowset angewendet. Dies führt zu einem nicht deterministischen Verhalten dahingehend, wie die Rangfolgefunktion angewendet wird.
-- Es gibt keine Garantie, dass die von einer Abfrage mit ROW\_NUMBER zurückgegebenen Zeilen bei jeder Ausführung exakt gleich sortiert werden, es sei denn, die folgenden Bedingungen treffen zu.
+- If ORDER BY is not specified than ranking function will be applied to rowset without any ordering. This will result into non deterministic behavior on how ranking function is applied
+- There is no guarantee that the rows returned by a query using ROW_NUMBER will be ordered exactly the same with each execution unless the following conditions are true.
 
-	- Die Werte der partitionierten Spalte sind eindeutig.
-	- Die Werte der ORDER BY-Spalten sind eindeutig.
-	- Kombinationen von Werten in der Partitionsspalte und den ORDER BY-Spalten sind eindeutig.
+    - Values of the partitioned column are unique.
+    - Values of the ORDER BY columns are unique.
+    - Combinations of values of the partition column and ORDER BY columns are unique.
 
-### NTILE
+### <a name="ntile"></a>NTILE
 
-Mit NTILE werden die Zeilen in einer sortierten Partition auf eine angegebene Anzahl von Gruppen verteilt. Die Gruppen sind beginnend mit 1 nummeriert.
+NTILE distributes the rows in an ordered partition into a specified number of groups. The groups are numbered, starting at one. 
 
 
-Im folgenden Beispiel wird die Menge der Zeilen in jeder Partition (Vertical) in 4 Gruppen in der Reihenfolge der Abfragelatenz geteilt und die Gruppennummer für jede Zeile zurückgegeben.
+The following example splits the set of rows in each partition (vertical) into 4 groups in the order of the query latency, and returns the group number for each row. 
 
-(Image, Vertical) hat 3 Zeilen, weshalb es 3 Gruppen gibt.
+The Image vertical has 3 rows, thus it has 3 groups. 
 
-(Web, Vertical) hat 6 Zeilen, wobei die zwei zusätzlichen Zeilen auf die ersten beiden Gruppen verteilt werden. Damit gibt es zwei Zeilen in Gruppe 1 und 2 und nur eine Zeile in Gruppe 3 und 4.
+The Web vertical has 6 rows, the two extra rows are distributed to the first two groups. That's why there are 2 rows in group 1 and group 2, and only 1 row in group 3 and group 4.  
 
     @result =
         SELECT 
             *,
             NTILE(4) OVER(PARTITION BY Vertical ORDER BY Latency) AS Quartile   
         FROM @querylog;
-		
-Die Ergebnisse:
+        
+The results:
 
-|Abfrage|Latenz|Vertical|Quartile
+|Query|Latency|Vertical|Quartile
 |-----|-----------|--------|-------------
 |Banana|300|Image|1
 |Cherry|300|Image|2
@@ -429,22 +430,22 @@ Die Ergebnisse:
 |Cherry|400|Web|3
 |Durian|500|Web|4
 
-NTILE verwendet den „numgroups“-Parameter. „numgroups“ ist eine positive ganze Zahl (int) oder ein Konstantenausdruck vom Typ „long“, der die Anzahl der Gruppen angibt, in die jede Partition unterteilt werden muss.
+NTILE takes a parameter ("numgroups"). Numgroups is a positive int or long constant expression that specifies the number of groups into which each partition must be divided. 
 
-- Wenn die Anzahl der Zeilen in der Partition von „numgroups“ gleichmäßig geteilt werden kann, haben die Gruppen dieselbe Größe.
-- Wenn die Anzahl der Zeilen in der Partition von „numgroups“ nicht gleichmäßig geteilt werden kann, sind das Ergebnis Gruppen mit zwei Größen, die sich in einem Element unterscheiden. Größere Gruppen stehen in der von der OVER-Klausel angegebenen Reihenfolge vor kleineren Gruppen.
+- If the number of rows in the partition is evenly divisible by numgroups then the groups will have equal size. 
+- If the number of rows in a partition is not divisible by numgroups, this will cause groups of two sizes that differ by one member. Larger groups come before smaller groups in the order specified by the OVER clause. 
 
-Beispiel:
+For example:
 
-- In 4 Gruppen unterteilte 100 Zeilen: [25, 25, 25, 25]
-- In 4 Gruppen unterteilte 102 Zeilen: [26, 26, 25, 25]
+- 100 rows divided into 4 groups: [ 25, 25, 25, 25 ]
+- 102 rows devided into 4 groups: [ 26, 26, 25, 25 ]
 
 
-### Top N Datensätze pro Partition über RANK, DENSE\_RANK oder ROW\_NUMBER
+### <a name="top-n-records-per-partition-via-rank,-dense_rank-or-row_number"></a>Top N Records per Partition via RANK, DENSE_RANK or ROW_NUMBER
 
-Viele Benutzer möchten nur die TOP N Zeilen pro Gruppe auswählen. Dies ist mit der herkömmlichen GROUP BY-Klausel nicht möglich.
+Many users want to select only TOP n rows per group. This is not possible with the traditional GROUP BY. 
 
-Sie haben am Anfang des Abschnitts zu Rangfolgefunktionen das folgende Beispiel gesehen. Es zeigt nicht die TOP N Datensätze für jede Partition:
+You have seen the following example at the beginning of the Ranking functions section. It doesn't show top N records for each partition:
 
     @result =
     SELECT 
@@ -454,9 +455,9 @@ Sie haben am Anfang des Abschnitts zu Rangfolgefunktionen das folgende Beispiel 
         DENSE_RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS DenseRank
     FROM @querylog;
 
-Die Ergebnisse:
+The results:
 
-|Abfrage|Latenz|Vertical|Rank|DenseRank|RowNumber
+|Query|Latency|Vertical|Rank|DenseRank|RowNumber
 |-----|-----------|--------|---------|--------------|--------------
 |Banana|300|Image|1|1|1
 |Cherry|300|Image|1|1|2
@@ -468,9 +469,9 @@ Die Ergebnisse:
 |Cherry|400|Web|5|4|5
 |Durian|500|Web|6|5|6
 
-### TOP N mit DENSE RANK
+### <a name="top-n-with-dense-rank"></a>TOP N with DENSE RANK
 
-Im folgenden Beispiel werden die TOP 3 Datensätze in jeder Gruppe ohne Lücken in der sequenziellen Rangnummerierung von Zeilen in jeder Fensterpartition zurückgegeben.
+The following example returns the top 3 records from each group with no gaps in the sequential rank numbering of rows in each windowing partition.
 
     @result =
     SELECT 
@@ -483,9 +484,9 @@ Im folgenden Beispiel werden die TOP 3 Datensätze in jeder Gruppe ohne Lücken 
         FROM @result
         WHERE DenseRank <= 3;
 
-Die Ergebnisse:
+The results:
 
-|Abfrage|Latenz|Vertical|DenseRank
+|Query|Latency|Vertical|DenseRank
 |-----|-----------|--------|--------------
 |Banana|300|Image|1
 |Cherry|300|Image|1
@@ -495,7 +496,7 @@ Die Ergebnisse:
 |Papaya|200|Web|2
 |Fig|300|Web|3
 
-### TOP N mit RANK
+### <a name="top-n-with-rank"></a>TOP N with RANK
 
     @result =
         SELECT 
@@ -508,9 +509,9 @@ Die Ergebnisse:
         FROM @result
         WHERE Rank <= 3;
 
-Die Ergebnisse:
+The results:    
 
-|Abfrage|Latenz|Vertical|Rank
+|Query|Latency|Vertical|Rank
 |-----|-----------|--------|---------
 |Banana|300|Image|1
 |Cherry|300|Image|1
@@ -520,7 +521,7 @@ Die Ergebnisse:
 |Papaya|200|Web|2
 
 
-### TOP N mit ROW\_NUMBER
+### <a name="top-n-with-row_number"></a>TOP N with ROW_NUMBER
 
     @result =
         SELECT 
@@ -533,9 +534,9 @@ Die Ergebnisse:
         FROM @result
         WHERE RowNumber <= 3;
 
-Die Ergebnisse:
+The results:   
     
-|Abfrage|Latenz|Vertical|RowNumber
+|Query|Latency|Vertical|RowNumber
 |-----|-----------|--------|--------------
 |Banana|300|Image|1
 |Cherry|300|Image|2
@@ -544,9 +545,9 @@ Die Ergebnisse:
 |Fig|200|Web|2
 |Papaya|200|Web|3
 
-### Zuweisen einer global eindeutigen Zeilennummer
+### <a name="assign-globally-unique-row-number"></a>Assign Globally Unique Row Number
 
-Es ist häufig nützlich, jeder Zeile eine global eindeutige Nummer zuzuweisen. Dies ist bei den Rangfolgefunktionen einfach (und effizienter als die Verwendung eines Reducers).
+It’s often useful to assign a globally unique number to each row. This is easy (and more efficient than using a reducer) with the ranking functions.
 
     @result =
         SELECT 
@@ -555,22 +556,22 @@ Es ist häufig nützlich, jeder Zeile eine global eindeutige Nummer zuzuweisen. 
         FROM @querylog;
 
 <!-- ################################################### -->
-## Analysefunktionen
+## <a name="analytic-functions"></a>Analytic functions
 
-Analysefunktionen dienen zum Verstehen der Verteilung von Werten in Fenstern. Das häufigste Szenario für die Verwendung von Analysefunktionen ist die Berechnung von Perzentilen.
+Analytic functions are used to understand the distributions of values in windows. The most common scenario for using analytic functions is the computation of percentiles.
 
-**Unterstützte Analysefunktionen für Fenster**
+**Supported analytic window functions**
 
-- CUME\_DIST
-- PERCENT\_RANK
-- PERCENTILE\_CONT
-- PERCENTILE\_DISC
+- CUME_DIST 
+- PERCENT_RANK
+- PERCENTILE_CONT
+- PERCENTILE_DISC
 
-### CUME\_DIST  
+### <a name="cume_dist"></a>CUME_DIST  
 
-CUME\_DIST berechnet die relative Position eines angegebenen Werts in einer Gruppe von Werten. Berechnet wird den Prozentsatz der Abfragen mit einer Latenz kleiner gleich der aktuellen Abfragelatenz im selben „Vertical“. Für eine Zeile R ist bei angenommener aufsteigender Reihenfolge CUME\_DIST von R die Anzahl von Zeilen mit Werten kleiner gleich dem Wert von R dividiert durch die Anzahl von Zeilen, die im Resultset der Partition oder Abfrage ausgewertet werden. CUME\_DIST gibt Zahlen im Bereich 0 < x < = 1 zurück.
+CUME_DIST computes the relative position of a specified value in a group of values. It calculates the percent of queries that have a latency less than or equal to the current query latency in the same vertical. For a row R, assuming ascending ordering, the CUME_DIST of R is the number of rows with values lower than or equal to the value of R, divided by the number of rows evaluated in the partition or query result set. CUME_DIST returns numbers in the range 0 < x <= 1.
 
-**Syntax**
+** Syntax**
 
     CUME_DIST() 
         OVER (
@@ -578,7 +579,7 @@ CUME\_DIST berechnet die relative Position eines angegebenen Werts in einer Grup
             ORDER BY <identifier, > …[n] [ASC|DESC] 
     ) AS <alias>
 
-Im folgenden Beispiel wird die CUME\_DIST-Funktion zum Berechnen des Latenzperzentils für jede Abfrage in einem „Vertical“ verwendet.
+The following example uses the CUME_DIST function to compute the latency percentile for each query within a vertical. 
 
     @result=
         SELECT 
@@ -586,44 +587,44 @@ Im folgenden Beispiel wird die CUME\_DIST-Funktion zum Berechnen des Latenzperze
             CUME_DIST() OVER(PARTITION BY Vertical ORDER BY Latency) AS CumeDist
         FROM @querylog;
 
-Die Ergebnisse:
+The results:
     
-|Abfrage|Latenz|Vertical|CumeDist
+|Query|Latency|Vertical|CumeDist
 |-----|-----------|--------|---------------
 |Durian|500|Image|1
-|Banana|300|Image|0\.666666666666667
-|Cherry|300|Image|0\.666666666666667
+|Banana|300|Image|0.666666666666667
+|Cherry|300|Image|0.666666666666667
 |Durian|500|Web|1
-|Cherry|400|Web|0\.833333333333333
-|Fig|300|Web|0\.666666666666667
-|Fig|200|Web|0,5
-|Papaya|200|Web|0,5
-|Apple|100|Web|0\.166666666666667
+|Cherry|400|Web|0.833333333333333
+|Fig|300|Web|0.666666666666667
+|Fig|200|Web|0.5
+|Papaya|200|Web|0.5
+|Apple|100|Web|0.166666666666667
 
-Es gibt in der Partition 6 Zeilen mit dem Partitionsschlüssel „Web“ (ab der 4. Zeile nach unten):
+There are 6 rows in the partition where partition key is “Web” (4th row and down):
 
-- Es gibt 6 Zeilen mit einem Wert kleiner gleich 500, sodass der CUME\_DIST-Wert 6:6 = 1 entspricht.
-- Es gibt fünf Zeilen mit einem Wert kleiner gleich 400, sodass der CUME\_DIST-Wert 5:6 = 0,83 entspricht.
-- Es gibt 4 Zeilen mit einem Wert kleiner gleich 300, sodass der CUME\_DIST-Wert 4:6 = 0,66 entspricht.
-- Es gibt drei Zeilen mit einem Wert kleiner gleich 200, sodass der CUME\_DIST-Wert 3:6 = 0,5 entspricht. Es gibt zwei Zeilen mit demselben Latenzwert.
-- Es gibt eine Zeile mit einem Wert kleiner gleich 100, sodass der CUME\_DIST-Wert 1:6 = 0,16 entspricht.
-
-
-**Hinweise zur Verwendung:**
-
-- Gleichwertige Werte werden stets in denselben kumulativen Verteilungswert ausgewertet.
-- NULL-Werte werden als die niedrigsten möglichen Werte behandelt.
-- Sie müssen die ORDER BY-Klausel angeben, um CUME\_DIST zu berechnen.
-- CUME\_DIST ist vergleichbar mit der PERCENT\_RANK-Funktion.
-
-Hinweis: Die ORDER BY-Klausel ist nicht zulässig, wenn auf die SELECT-Anweisung nicht OUTPUT folgt. Daher bestimmt die ORDER BY-Klausel in der OUTPUT-Anweisung die Anzeigereihenfolge des zurückgegebenen Rowsets.
+- There are 6 rows with the value equal or lower than 500, so the CUME_DIST equals to 6/6=1
+- There are 5 rows with the value equal or lower than 400, so the CUME_DIST equals to 5/6=0.83
+- There are 4 rows with the value equal or lower than 300, so the CUME_DIST equals to 4/6=0.66
+- There are 3 rows with the value equal or lower than 200, so the CUME_DIST equals to 3/6=0.5. There are two rows with the same latency value.
+- There is 1 row with the value equal or lower than 100, so the CUME_DIST equals to 1/6=0.16. 
 
 
-### PERCENT\_RANK
+**Usage notes:**
 
-PERCENT\_RANK berechnet den relativen Rang einer Zeile innerhalb einer Gruppe von Zeilen. Mit PERCENT\_RANK können Sie den relativen Rang eines Werts innerhalb eines Resultsets oder einer Partition ermitteln. Der von PERCENT\_RANK zurückgegebene Wertebereich ist größer als 0 und kleiner gleich 1. Im Gegensatz zu CUME\_DIST ist PERCENT\_RANK für die erste Zeile immer 0.
-	
-**Syntax**
+- Tie values always evaluate to the same cumulative distribution value.
+- NULL values are treated as the lowest possible values.
+- You must specify the ORDER BY clause to calculate CUME_DIST.
+- CUME_DIST is similar to the PERCENT_RANK function
+
+Note: The ORDER BY clause is not allowed if the SELECT statement is not followed by OUTPUT. Thus ORDER BY clause in the OUTPUT statement determines the display order of the resultant rowset.
+
+
+### <a name="percent_rank"></a>PERCENT_RANK
+
+PERCENT_RANK calculates the relative rank of a row within a group of rows. PERCENT_RANK is used to evaluate the relative standing of a value within a rowset or partition. The range of values returned by PERCENT_RANK is greater than 0 and less than or equal to 1. Unlike CUME_DIST, PERCENT_RANK is always 0 for the first row.
+    
+** Syntax**
 
     PERCENT_RANK() 
         OVER (
@@ -631,19 +632,19 @@ PERCENT\_RANK berechnet den relativen Rang einer Zeile innerhalb einer Gruppe vo
             ORDER BY <identifier, > …[n] [ASC|DESC] 
         ) AS <alias>
 
-**Hinweise**
+**Notes**
 
-- Die erste Zeile in einer Menge hat den PERCENT\_RANK 0.
-- NULL-Werte werden als die niedrigsten möglichen Werte behandelt.
-- Sie müssen die ORDER BY-Klausel angeben, um PERCENT\_RANK zu berechnen.
-- CUME\_DIST ist vergleichbar mit der PERCENT\_RANK-Funktion.
+- The first row in any set has a PERCENT_RANK of 0.
+- NULL values are treated as the lowest possible values.
+- You must specify the ORDER BY clause to calculate PERCENT_RANK.
+- CUME_DIST is similar to the PERCENT_RANK function 
 
 
-Im folgenden Beispiel wird die PERCENT\_RANK-Funktion zum Berechnen des Latenzperzentils für jede Abfrage in einem „Vertical“ verwendet.
+The following example uses the PERCENT_RANK function to compute the latency percentile for each query within a vertical. 
 
-Die PARTITION BY-Klausel wird angegeben, um die Zeilen im Resultset gemäß dem „Vertical“ zu partitionieren. Die ORDER BY-Klausel in der OVER-Klausel sortiert die Zeilen in jeder Partition.
+The PARTITION BY clause is specified to partition the rows in the result set by the vertical. The ORDER BY clause in the OVER clause orders the rows in each partition. 
 
-Der von der PERCENT\_RANK-Funktion zurückgegebene Wert stellt den Rang der Latenz der Abfragen in einem „Vertical“ als Prozentsatz dar.
+The value returned by the PERCENT_RANK function represents the rank of the queries’ latency within a vertical as a percentage. 
 
 
     @result=
@@ -652,41 +653,42 @@ Der von der PERCENT\_RANK-Funktion zurückgegebene Wert stellt den Rang der Late
             PERCENT_RANK() OVER(PARTITION BY Vertical ORDER BY Latency) AS PercentRank
         FROM @querylog;
 
-Die Ergebnisse:
+The results:
 
-|Abfrage|Latency:int|Vertical|PercentRank
+|Query|Latency:int|Vertical|PercentRank
 |-----|-----------|--------|------------------
 |Banana|300|Image|0
 |Cherry|300|Image|0
 |Durian|500|Image|1
 |Apple|100|Web|0
-|Fig|200|Web|0,2
-|Papaya|200|Web|0,2
-|Fig|300|Web|0,6
-|Cherry|400|Web|0,8
+|Fig|200|Web|0.2
+|Papaya|200|Web|0.2
+|Fig|300|Web|0.6
+|Cherry|400|Web|0.8
 |Durian|500|Web|1
 
-### PERCENTILE\_CONT und PERCENTILE\_DISC
+### <a name="percentile_cont-&-percentile_disc"></a>PERCENTILE_CONT & PERCENTILE_DISC
 
-Diese beiden Funktionen berechnen ein Perzentil basierend auf einer kontinuierlichen oder diskreten Verteilung der Spaltenwerte.
+These two functions calculates a percentile based on a continuous or discrete distribution of the column values.
 
 **Syntax**
 
-    [PERCENTILE_CONT | PERCENTILE_DISC] \( numeric_literal ) 
+    [PERCENTILE_CONT | PERCENTILE_DISC] ( numeric_literal ) 
         WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ] )
         OVER ( [ PARTITION BY <identifier,>…[n] ] ) AS <alias>
 
-**numeric\_literal**: Das zu berechnende Perzentil. Der Wert muss im Bereich von 0,0 bis 1,0 liegen.
+**numeric_literal** - The percentile to compute. The value must range between 0.0 and 1.0.
 
-WITHIN GROUP (ORDER BY <Bezeichner> [ ASC | DESC ]): Gibt eine Liste von numerischen Werten für die Sortierung und Berechnung des Perzentils an. Nur ein Spaltenbezeichner ist zulässig. Der Ausdruck muss in einen numerischen Datentyp ausgewertet werden. Andere Datentypen sind nicht zulässig. Die Standardsortierreihenfolge ist aufsteigend.
+WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ]) - Specifies a list of numeric values to sort and compute the percentile over. Only one column identifier is allowed. The expression must evaluate to a numeric type. Other data types are not allowed. The default sort order is ascending.
 
-OVER ([ PARTITION BY <Bezeichner,>…[n] ] ): Teilt das Eingaberowset in Partitionen gemäß dem Partitionsschlüssel auf, für den die Perzentilfunktion gilt. Weitere Informationen finden Sie im Abschnitt RANGFOLGE dieses Dokuments. Hinweis: Alle NULL-Werte im Dataset werden ignoriert.
+OVER ([ PARTITION BY <identifier,>…[n] ] ) - Divides the input rowset into partitions as per the partition key to which the percentile function is applied. For more information, see RANKING section of this document.
+Note: Any nulls in the data set are ignored.
 
-**PERCENTILE\_CONT** berechnet ein Perzentil basierend auf einer kontinuierlichen Verteilung der Spaltenwerte. Das Ergebnis wird interpoliert und entspricht ggf. keinem der spezifischen Werte in der Spalte.
+**PERCENTILE_CONT** calculates a percentile based on a continuous distribution of the column value. The result is interpolated and might not be equal to any of the specific values in the column. 
 
-**PERCENTILE\_DISC** berechnet ein Perzentil basierend auf einer diskreten Verteilung der Spaltenwerte. Das Ergebnis ist gleich einem bestimmten Wert in der Spalte. Mit anderen Worten gibt PERCENTILE\_DISC im Gegensatz zu PERCENTILE\_CONT stets einen tatsächlichen (ursprünglichen Eingabe-) Wert zurück.
+**PERCENTILE_DISC** calculates the percentile based on a discrete distribution of the column values. The result is equal to a specific value in the column. In other words, PERCENTILE_DISC, in contrast to PERCENTILE_CONT, always returns an actual (original input) value.
 
-Die Funktionsweise beider Funktionen zeigt das folgende Beispiel, bei dem der Medianwert (Perzentil=0,5) für „Latency“ in jedem „Vertical“ gesucht wird.
+You can see how both work in the example below which tries to find the median (percentile=0.50) value for Latency within each Vertical
 
     @result = 
         SELECT 
@@ -701,9 +703,9 @@ Die Funktionsweise beider Funktionen zeigt das folgende Beispiel, bei dem der Me
         
         FROM @querylog;
 
-Die Ergebnisse:
+The results:
 
-|Abfrage|Latency:int|Vertical|PercentileCont50|PercentilDisc50
+|Query|Latency:int|Vertical|PercentileCont50|PercentilDisc50
 |-----|-----------|--------|-------------------|----------------
 |Banana|300|Image|300|300
 |Cherry|300|Image|300|300
@@ -716,11 +718,9 @@ Die Ergebnisse:
 |Durian|500|Web|250|200
 
 
-Da die Werte für PERCENTILE\_CONT interpoliert werden können, ist der Median für „Web“ 250, obwohl keine Abfrage in diesem „Vertical“ die Latenz 250 hatte.
+For PERCENTILE_CONT because values can be interpolated, the median for web is 250 even though no query in the web vertical had a latency of 250. 
 
-PERCENTILE\_DISC interpoliert keine Werte, weshalb der Median für „Web“ 200 ist und so tatsächlich einem Wert in den Eingabezeilen entspricht.
-
-
+PERCENTILE_DISC does not interpolate values, so the median for Web is 200 - which is an actual value found in the input rows.
 
 
 
@@ -730,17 +730,23 @@ PERCENTILE\_DISC interpoliert keine Werte, weshalb der Median für „Web“ 200
 
 
 
-## Siehe auch
 
-- [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-- [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
-- [Erste Schritte mit Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-- [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-- [Verwenden interaktiver Lernprogramme zu Azure Data Lake Analytics](data-lake-analytics-use-interactive-tutorials.md)
-- [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
-- [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md)
-- [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
-- [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-- [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+## <a name="see-also"></a>See also
+
+- [Overview of Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+- [Get started with Data Lake Analytics using Azure Portal](data-lake-analytics-get-started-portal.md)
+- [Get started with Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)
+- [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+- [Use Azure Data Lake Analytics interactive tutorials](data-lake-analytics-use-interactive-tutorials.md)
+- [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
+- [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)
+- [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)
+- [Manage Azure Data Lake Analytics using Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
+- [Monitor and troubleshoot Azure Data Lake Analytics jobs using Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

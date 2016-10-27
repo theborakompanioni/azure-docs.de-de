@@ -1,45 +1,50 @@
 <!--author=alkohli last changed: 08/16/2016-->
 
-#### So erstellen Sie ein Volume
+#### <a name="to-create-a-volume"></a>To create a volume
 
-1. Klicken Sie auf der Seite **Schnellstart** des Geräts auf **Volume hinzufügen**, um den Assistenten zum Hinzufügen eines Volumes zu starten.
+1. On the device **Quick Start** page, click **Add a volume** to start the Add a volume wizard.
 
-2. Geben Sie im Assistenten "Volume hinzufügen" unter **Grundeinstellungen**
+2. In the Add a volume wizard, under **Basic Settings**:
 
-	4. den **Namen** für das Volume ein.
-	5. Wählen Sie aus der Dropdownliste den **Verwendungstyp** für das Volume aus. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie ein **lokales** Volume aus. Wählen Sie für alle anderen Daten ein **mehrstufiges** Volume aus. Wenn Sie dieses Volume für archivierte Daten verwenden, aktivieren Sie das Kontrollkästchen **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen**.
-	
-		Ein lokales Volume wird mit vollständiger Speicherzuweisung (Thick Provisioning) bereitgestellt und stellt sicher, dass die primären Daten auf dem Volume lokal auf dem Gerät verbleiben und nicht in die Cloud übergehen. Wenn Sie ein lokales Volume erstellen, überprüft das Gerät den verfügbaren Speicherplatz auf den lokalen Ebenen, um das Volume in der angeforderten Größe bereitzustellen. Bei der Erstellung eines lokalen Volumes werden vorhandene Daten eventuell vom Gerät in die Cloud übertragen, und das Erstellen des Volumes kann längere Zeit in Anspruch nehmen. Die gesamte Zeit hängt von der Größe des bereitgestellten Volumes, von der verfügbaren Netzwerkbandbreite und von den Daten auf Ihrem Gerät ab.
+    4. Type a **Name** for your volume.
+    5. On the drop-down list, select the **Usage Type** for your volume. For workloads that require local guarantees, low latencies, and higher performance, select a **Locally pinned** volume. For all other data, select a **Tiered** volume. If you are using this volume for archival data, check **Use this volume for less frequently accessed archival data**. 
+    
+        A locally pinned volume is thickly provisioned and ensures that the primary data on the volume stays local to the device and does not spill to the cloud.  If you create a locally pinned volume, the device checks for available space on the local tiers to provision the volume of the requested size. The operation of creating a locally pinned volume may involve spilling existing data from the device to the cloud and the time taken to create the volume may be long. The total time depends on the size of the provisioned volume, available network bandwidth, and the data on your device. 
 
-		Ein mehrstufiges Volume wird mit schlanker Speicherzuweisung bereitgestellt und kann schnell erstellt werden. Bei Verwendung des mehrstufigen Volumes für archivierte Daten wird durch Auswahl der Option **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen** die Deduplizierungblockgröße für das Volume in 512 KB geändert. Wenn dieses Feld nicht aktiviert ist, verwendet das entsprechende mehrstufige Volume eine Blockgröße von 64 KB. Bei Verwendung größerer Deduplizierungsblöcke kann das Gerät die Übertragung umfangreicher Archivdaten in die Cloud beschleunigen.
+        A tiered volume is thinly provisioned and can be created quickly. Selecting **Use this volume for less frequently accessed archival data** for tiered volume targeted for archival data changes the deduplication chunk size for your volume to 512 KB. If this field is not checked, the corresponding tiered volume uses a chunk size of 64 KB. A larger deduplication chunk size allows the device to expedite the transfer of large archival data to the cloud.
 
-	3. Geben Sie die **Bereitgestellte Kapazität** für das Volume an. Notieren Sie die Kapazität, die basierend auf dem ausgewählten Volumetyp verfügbar ist. Die angegebene Volumegröße darf den verfügbaren Speicherplatz nicht überschreiten.
+    3. Specify the **Provisioned Capacity** for your volume. Make a note of the capacity that is available based on the volume type selected. The specified volume size must not exceed the available space.
 
-		Sie können lokale Volumes von bis zu 8,5 TB oder mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 22,5 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen. Da für das Hosten des Arbeitssatzes mehrstufiger Volumes lokaler Speicher auf dem Gerät erforderlich ist, wirkt sich die Erstellung lokaler Volumes auf den Speicherplatz aus, der für die Bereitstellung mehrstufiger Volumes zur Verfügung steht. Wenn Sie daher ein lokales Volume erstellen, verringert sich dadurch der verfügbare Speicherplatz für die Erstellung mehrstufiger Volumes. Wenn Sie ein mehrstufiges Volume erstellen, reduziert sich in gleicher Weise der verfügbare Speicherplatz für die Erstellung lokaler Volumes.
+        You can provision locally pinned volumes up to 8.5 TB or tiered volumes up to 200 TB on the 8100 device. On the larger 8600 device, you can provision locally pinned volumes up to 22.5 TB or tiered volumes up to 500 TB. As local space on the device is required to host the working set of tiered volumes, creation of locally pinned volumes impacts the space available for provisioning tiered volumes. Therefore, if you create a locally pinned volume, space available for creation of tiered volumes will be reduced. Similarly, if a tiered volume is created, the available space for creation of locally pinned volumes is reduced.
 
-		Wenn Sie ein lokales Volume von 8,5 TB (maximal zulässige Größe) auf dem 8100-Gerät bereitstellen, haben Sie damit den gesamten lokalen Speicherplatz ausgeschöpft, der auf dem Gerät verfügbar ist. Ab diesem Zeitpunkt können Sie keine mehrstufigen Volumes mehr erstellen, da auf dem Gerät kein lokaler Speicherplatz zum Hosten des Arbeitssatzes mehrstufiger Volumes mehr vorhanden ist. Vorhandene mehrstufige Volumes wirken sich ebenfalls auf den verfügbaren Speicherplatz aus. Wenn Sie beispielsweise ein 8100-Gerät verwenden, auf dem bereits mehrstufige Volumes von ca. 106 TB vorhanden sind, stehen nur noch 4 TB Speicherplatz für lokale Volumes zur Verfügung.
+        If you provision a locally pinned volume of 8.5 TB (maximum allowable size) on your 8100 device, then you have exhausted all the local space available on the device. You will not be able to create any tiered volume from that point onwards as there is no local space on the device to host the working set of the tiered volume. Existing tiered volumes also affect the space available. For example, if you have an 8100 device that already has tiered volumes of roughly 106 TB, only 4 TB of space is available for locally pinned volumes.
 
-        Die folgende Abbildung zeigt das Dialogfeld **Grundeinstellungen** für ein lokales Volume.
+        The following image shows the **Basic Settings** dialog box for a locally pinned volume.
 
-         ![Hinzufügen eines lokalen Volumes](./media/storsimple-create-volume-u2/add-local-volume-include.png)
+         ![Add local volume](./media/storsimple-create-volume-u2/add-local-volume-include.png)
 
-        Die folgende Abbildung zeigt das Dialogfeld **Grundeinstellungen** für ein mehrstufiges Volume.
+        The following image shows the **Basic Settings** dialog box for a tiered volume.
 
-         ![Hinzufügen eines lokalen Volumes](./media/storsimple-create-volume-u2/add-tiered-volume-include.png)
+         ![Add local volume](./media/storsimple-create-volume-u2/add-tiered-volume-include.png)
 
-   4. Klicken Sie auf den Pfeil ![Pfeilsymbol](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png), um zur nächsten Seite zu wechseln.
+   4. Click the arrow icon ![arrow-icon](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png) to go to the next page.
 
 
-3. Fügen Sie im Dialogfeld **Zusätzliche Einstellungen** einen neuen Datensatz für die Zugriffssteuerung (Access Control Record, ACR) hinzu:
+3. In the **Additional Settings** dialog box, add a new access control record (ACR):
 
-	1. Geben Sie einen **Namen** für den ACR ein.
-	2. Geben Sie unter **iSCSI-Initiatorname** den qualifizierten iSCSI-Namen (IQN) des Windows-Hosts an. Wenn Sie den IQN nicht kennen, fahren Sie mit [Abrufen des IQNs eines Windows Server-Hosts](#get-the-iqn-of-a-windows-server-host) fort.
-	3. Aktivieren Sie unter **Standardsicherung für dieses Volume?** das Kontrollkästchen **Aktivieren**. Die Standardsicherung erstellt eine Richtlinie, die jeden Tag um 22:30 Uhr ausgeführt wird (Uhrzeit des Geräts) und eine Cloud-Momentaufnahme dieses Volumes erstellt.
-	 
-     > [AZURE.NOTE] Nachdem die Sicherung hier aktiviert wurde, kann sie nicht zurückgesetzt werden. Sie müssen das Volume bearbeiten, um diese Einstellung zu ändern.
+    1. Supply a **Name** for your ACR.
+    2. Under **iSCSI Initiator Name**, provide the iSCSI Qualified Name (IQN) of your Windows host. If you don't have the IQN, go to [Get the IQN of a Windows Server host](#get-the-iqn-of-a-windows-server-host).
+    3. Under **Default backup for this volume?**, select the **Enable** check box. The default backup creates a policy that executes at 22:30 each day (device time) and creates a cloud snapshot of this volume.
+     
+     > [AZURE.NOTE] After the backup is enabled here, it cannot be reverted. You need to edit the volume to modify this setting.
 
-     ![Volume hinzufügen](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
+     ![Add volume](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
 
-4. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). Ein Volume wird mit den angegebenen Einstellungen erstellt.
+4. Click the check icon ![check icon](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). A volume is created with the specified settings.
 
-<!----HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

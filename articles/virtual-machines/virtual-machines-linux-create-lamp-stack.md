@@ -1,37 +1,38 @@
 <properties
-	pageTitle="Bereitstellen eines LAMP-Stapels auf einem virtuellen Linux-Computer | Microsoft Azure"
-	description="Es wird beschrieben, wie Sie LAMP-Stapel auf einem virtuellen Linux-Computer installieren."
-	services="virtual-machines-linux"
-	documentationCenter="virtual-machines"
-	authors="jluk"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Deploy LAMP on a Linux virtual machine | Microsoft Azure"
+    description="Learn how to install the LAMP stack on a Linux VM"
+    services="virtual-machines-linux"
+    documentationCenter="virtual-machines"
+    authors="jluk"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.date="06/07/2016"
-	ms.author="jluk"/>
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="NA"
+    ms.topic="article"
+    ms.date="06/07/2016"
+    ms.author="jluk"/>
 
-# Bereitstellen des LAMP-Stapels unter Azure
-In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers und von MySQL und PHP (LAMP-Stapel) unter Azure geführt. Sie benötigen ein Azure-Konto ([hier erhalten Sie eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), die [mit Ihrem Azure-Konto verbunden ist](../xplat-cli-connect.md).
 
-In diesem Artikel werden zwei Methoden für die LAMP-Installation beschrieben:
+# <a name="deploy-lamp-stack-on-azure"></a>Deploy LAMP Stack on Azure
+This article will walk you through how to deploy an Apache web server, MySQL, and PHP (the LAMP stack) on Azure. You will need an Azure Account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/)) and the [Azure CLI](../xplat-cli-install.md) that is [connected to your Azure account](../xplat-cli-connect.md).
 
-## Kurze Zusammenfassung der Befehle
+There are two methods for installing LAMP covered in this article:
 
-1) Bereitstellen von LAMP auf einer neuen VM
+## <a name="quick-command-summary"></a>Quick Command Summary
+
+1) Deploy LAMP on new VM
 
 ```
 # One command to create a resource group holding a VM with LAMP already on it
 $ azure group create -n uniqueResourceGroup -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.json
 ```
 
-2) Bereitstellen von LAMP auf einer vorhandenen VM
+2) Deploy LAMP on existing VM
 
 ```
 # Two commands: one updates packages, the other installs Apache, MySQL, and PHP
@@ -39,9 +40,9 @@ user@ubuntu$ sudo apt-get update
 user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
 ```
 
-## Bereitstellen von LAMP auf einer neuen VM – Exemplarische Vorgehensweise
+## <a name="deploy-lamp-on-new-vm-walkthrough"></a>Deploy LAMP on new VM Walkthrough
 
-Sie können beginnen, indem Sie eine neue [Ressourcengruppe](../resource-group-overview.md) erstellen, die die VM enthält:
+You can start by creating a new [resource group](../resource-group-overview.md) that will contain the VM:
 
     $ azure group create uniqueResourceGroup westus
     info:    Executing command group create
@@ -56,11 +57,11 @@ Sie können beginnen, indem Sie eine neue [Ressourcengruppe](../resource-group-o
     data:
     info:    group create command OK
 
-Zum Erstellen der eigentlichen VM können Sie eine bereits geschriebene Azure Resource Manager-Vorlage verwenden, die [hier bei GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app) erhältlich ist.
+To create the VM itself, you can use an already written Azure Resource Manager template found [here on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app).
 
     $ azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.json uniqueResourceGroup uniqueLampName
 
-Eine Antwort mit Aufforderungen zur weiteren Eingabe wird angezeigt:
+You should see a response prompting some more inputs:
 
     info:    Executing command group deployment create
     info:    Supply values for the following parameters
@@ -94,75 +95,77 @@ Eine Antwort mit Aufforderungen zur weiteren Eingabe wird angezeigt:
     data:    ubuntuOSVersion           String        14.04.2-LTS
     info:    group deployment create command OK
 
-Sie haben nun eine Linux-VM erstellt, auf der LAMP bereits installiert ist. Bei Bedarf können Sie die Installation überprüfen, indem Sie nach unten zu [Überprüfen der erfolgreichen LAMP-Installation] springen.
+You have now created a Linux VM with LAMP already installed on it. If you wish, you can verify the install by jumping down to [Verify LAMP Successfully Installed].
 
-## Bereitstellen von LAMP auf einer vorhandenen VM – Exemplarische Vorgehensweise
+## <a name="deploy-lamp-on-existing-vm-walkthrough"></a>Deploy LAMP on existing VM Walkthrough
 
-Falls Sie bei der Erstellung einer Linux-VM Hilfe benötigen, helfen Ihnen diese [Informationen zum Erstellen einer Linux-VM](./virtual-machines-linux-quick-create-cli.md) weiter. Als Nächstes müssen Sie per SSH zur Linux-VM wechseln. Falls Sie bei der Erstellung eines SSH-Schlüssels Hilfe benötigen, helfen Ihnen diese [Informationen zum Erstellen eines SSH-Schlüssels unter Linux/Mac](./virtual-machines-linux-mac-create-ssh-keys.md) weiter. Wenn Sie bereits über einen SSH-Schlüssel verfügen, können Sie mit `ssh username@uniqueDNS` per SSH auf die Linux-VM wechseln.
+If you need help creating a Linux VM you can head [here to learn how to create a Linux VM] (./virtual-machines-linux-quick-create-cli.md). Next, you will need to SSH into the Linux VM. If you need help with creating an SSH key you can head [here to learn how to create an SSH key on Linux/Mac] (./virtual-machines-linux-mac-create-ssh-keys.md).
+If you have an SSH key already, go ahead and SSH into your Linux VM with `ssh username@uniqueDNS`.
 
-Da Sie sich jetzt auf der Linux-VM befinden, folgt nun die exemplarische Vorgehensweise zur Installation des LAMP-Stapels auf Debian-basierten Distributionen. Die Befehle können für andere Linux-Distributionen jeweils variieren.
+Now that you are working within your Linux VM, we will walk through installing the LAMP stack on Debian-based distributions. The exact commands might differ for other Linux distros.
 
-#### Installation unter Debian/Ubuntu
+#### <a name="installing-on-debian/ubuntu"></a>Installing on Debian/Ubuntu
 
-Die folgenden Pakete müssen installiert sein: `apache2`, `mysql-server`, `php5` und `php5-mysql`. Sie können diese Pakete installieren, indem Sie direkt darauf zugreifen oder Tasksel verwenden. Die Anleitungen für beide Optionen sind unten aufgeführt. Vor der Installation müssen Sie die Paketlisten herunterladen und aktualisieren.
+You will need the following packages installed: `apache2`, `mysql-server`, `php5`, and `php5-mysql`. You can install these by directly grabbing these packages or using Tasksel. Instructions for both options are listed below.
+Before installing you will need to download and update package lists.
 
     user@ubuntu$ sudo apt-get update
     
-##### Einzelne Pakete
-Verwenden von apt-get:
+##### <a name="individual-packages"></a>Individual Packages
+Using apt-get:
 
-	user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
+    user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
 
-##### Verwenden von Tasksel
-Alternativ dazu können Sie Tasksel herunterladen. Dabei handelt es sich um ein Debian/Ubuntu-Tool, das mehrere in Beziehung stehende Pakete als koordinierten „Task“ auf Ihrem System installiert.
+##### <a name="using-tasksel"></a>Using Tasksel
+Alternatively you can download Tasksel, a Debian/Ubuntu tool that installs multiple related packages as a coordinated "task" onto your system.
 
     user@ubuntu$ sudo apt-get install tasksel
     user@ubuntu$ sudo tasksel install lamp-server
 
-Nach der Ausführung der Schritte für eine der oben genannten Optionen werden Sie aufgefordert, diese Pakete und eine Reihe weiterer Abhängigkeiten zu installieren. Drücken Sie "y" und dann die EINGABETASTE, um den Vorgang fortzusetzen, und befolgen Sie weitere Aufforderungen zum Festlegen eines Administratorkennworts für MySQL. Daraufhin werden die PHP-Erweiterungen installiert, die mindestens für die Verwendung von PHP mit MySQL erforderlich sind.
+After running the either of the above options you will be prompted to install these packages and a number of other dependencies. Press 'y' and then 'Enter' to continue, and follow any other prompts to set an administrative password for MySQL. This will install the minimum required PHP extensions needed to use PHP with MySQL. 
 
 ![][1]
 
-Führen Sie folgenden Befehl aus, um weitere PHP-Erweiterungen anzuzeigen, die als Pakete verfügbar sind:
+Run the following command to see other PHP extensions that are available as packages:
 
-	user@ubuntu$ apt-cache search php5
+    user@ubuntu$ apt-cache search php5
 
 
-#### Erstellen des Dokuments „info.php“
+#### <a name="create-info.php-document"></a>Create info.php document
 
-Sie sollten jetzt in der Befehlszeile überprüfen können, welche Version von Apache, MySQL und PHP Sie verwenden, indem Sie `apache2 -v`, `mysql -v` oder `php -v` eingeben.
+You should now be able to check what version of Apache, MySQL, and PHP you have through the command line by typing `apache2 -v`, `mysql -v`, or `php -v`.
 
-Falls Sie weitere Tests durchführen möchten, können Sie schnell eine PHP-Infoseite zum Anzeigen in einem Browser erstellen. Erstellen Sie mit diesem Befehl eine neue Datei mit dem Nano-Text-Editor:
+If you would like to test further, you can create a quick PHP info page to view in a browser. Create a new file with Nano text editor with this command:
 
     user@ubuntu$ sudo nano /var/www/html/info.php
 
-Fügen Sie im GNU Nano-Text-Editor die folgenden Zeilen hinzu:
+Within the GNU Nano text editor, add the following lines:
 
     <?php
     phpinfo();
     ?>
 
-Speichern und beenden Sie anschließend den Text-Editor.
+Then save and exit the text editor.
 
-Starten Sie Apache mit diesem Befehl neu, damit alle neuen Installationen wirksam werden.
+Restart Apache with this command so all new installs will take effect.
 
     user@ubuntu$ sudo service apache2 restart
 
-## Überprüfen der erfolgreichen LAMP-Installation
+## <a name="verify-lamp-successfully-installed"></a>Verify LAMP Successfully Installed
 
-Sie können die PHP-Infoseite, die Sie gerade erstellt haben, jetzt im Browser überprüfen, indem Sie auf http://youruniqueDNS/info.php zugreifen. Sie sollte dieser Darstellung ähneln:
+Now you can check the PHP info page you just created in your browser by going to http://youruniqueDNS/info.php, it should look similar to this.
 
 ![][2]
 
-Sie können Ihre Apache-Installation überprüfen, indem Sie unter http://youruniqueDNS/ die Apache2 Ubuntu-Standardseite anzeigen. Die Ausgabe sollte folgendermaßen aussehen:
+You can check your Apache installation by viewing the Apache2 Ubuntu Default Page by going to you http://youruniqueDNS/. You should see something like this.
 
 ![][3]
 
-Glückwunsch! Sie haben einen LAMP-Stapel auf Ihrer Azure-VM eingerichtet.
+Congratulations, you have just setup a LAMP stack on your Azure VM!
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-Sehen Sie sich die Ubuntu-Dokumentation zum LAMP-Stapel an:
+Check out the Ubuntu documentation on the LAMP stack:
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 
@@ -170,4 +173,8 @@ Sehen Sie sich die Ubuntu-Dokumentation zum LAMP-Stapel an:
 [2]: ./media/virtual-machines-linux-deploy-lamp-stack/phpsuccesspage.png
 [3]: ./media/virtual-machines-linux-deploy-lamp-stack/apachesuccesspage.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

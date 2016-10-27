@@ -1,86 +1,92 @@
 <properties
-	pageTitle="Verbinden von Excel mit SQL-Datenbank | Microsoft Azure"
-	description="Erfahren Sie, wie Sie Microsoft Excel mit Azure SQL-Datenbank in der Cloud verbinden. Importieren Sie Daten zwecks Berichterstellung und Untersuchung in Excel."
-	services="sql-database"
-	keywords="Verbinden von Excel mit SQL, Importieren von Daten in Excel"
-	documentationCenter=""
-	authors="joseidz"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Connect Excel to SQL Database | Microsoft Azure"
+    description="Learn how to connect Microsoft Excel to Azure SQL database in the cloud. Import data into Excel for reporting and data exploration."
+    services="sql-database"
+    keywords="connect excel to sql, import data to excel"
+    documentationCenter=""
+    authors="joseidz"
+    manager="jhubbard"
+    editor=""/>
 
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/05/2016"
-	ms.author="joseidz"/>
+    ms.service="sql-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="07/05/2016"
+    ms.author="joseidz"/>
 
 
-# Tutorial zu SQL-Datenbank: Verbinden von Excel mit einer Azure SQL-Datenbank und Erstellen eines Berichts
+
+# <a name="sql-database-tutorial:-connect-excel-to-an-azure-sql-database-and-create-a-report"></a>SQL Database tutorial: Connect Excel to an Azure SQL database and create a report
 
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-Erfahren Sie, wie Sie für Excel eine Verbindung mit einer SQL-Datenbank in der Cloud herstellen, damit Sie Daten importieren und Tabellen und Diagramme basierend auf den Werten in der Datenbank erstellen können. In diesem Tutorial richten Sie die Verbindung zwischen Excel und einer Datenbanktabelle ein, speichern die Datei, in der die Daten und Verbindungsinformationen für Excel vorgehalten werden, und erstellen aus den Datenbankwerten dann ein PivotChart.
+Learn how to connect Excel to a SQL database in the cloud so you can import data and create tables and charts based on values in the database. In this tutorial you will set up the connection between Excel and a database table, save the file that stores data and the connection information for Excel, and then create a pivot chart from the database values.
 
-Bevor Sie beginnen können, benötigen Sie eine SQL-Datenbank in Azure. Wenn Sie keine haben, finden Sie unter [Erstellen Ihrer ersten SQL-Datenbank](sql-database-get-started.md) eine Datenbank mit Beispieldaten, die in wenigen Minuten startklar ist. In diesem Artikel importieren Sie Beispieldaten aus diesem Artikel in Excel, doch Sie können ähnliche Schritte auch mit Ihren eigenen Daten befolgen.
+You'll need a SQL database in Azure before you get started. If you don't have one, see [Create your first SQL database](sql-database-get-started.md) to get a database with sample data up and running in a few minutes. In this article, you'll import sample data into Excel from that article, but you can follow similar steps on your own data.
 
-Sie benötigen auch eine Kopie von Excel. In diesem Artikel wird [Microsoft Excel 2016](https://products.office.com/de-DE/) verwendet.
+You'll also need a copy of Excel. This article uses [Microsoft Excel 2016](https://products.office.com/en-US/).
 
-## Verbinden von Excel mit einer SQL-Datenbank und Erstellen einer ODC-Datei
+## <a name="connect-excel-to-a-sql-database-and-create-an-odc-file"></a>Connect Excel to a SQL database and create an odc file
 
-1.	Um Excel mit einer SQL-Datenbank zu verbinden, öffnen Sie Excel und erstellen dann eine neue Arbeitsmappe oder öffnen eine vorhandene Excel-Arbeitsmappe.
+1.  To connect Excel to SQL database, open Excel and then create a new workbook or open an existing Excel workbook.
 
-2.	Klicken Sie auf der Menüleiste am oberen Rand der Seite auf **Daten**. Klicken Sie auf **Aus anderen Quellen**, und klicken Sie dann auf **Von SQL Server**.
+2.  In the menu bar at the top of the page click **Data**, click **From Other Sources**, and then click **From SQL Server**.
 
-	![Auswählen einer Datenquelle: Verbinden Sie Excel mit SQL-Datenbank.](./media/sql-database-connect-excel/excel_data_source.png)
+    ![Select data source: Connect Excel to SQL database.](./media/sql-database-connect-excel/excel_data_source.png)
 
-	Der Datenverbindungs-Assistent wird geöffnet.
+    The Data Connection Wizard opens.
 
-3.	Geben Sie im Dialogfeld **Zum Datenbankserver verbinden** den **Servernamen** der SQL-Datenbank, mit der Sie die Verbindung herstellen möchten, im Format <*Servername*>**.database.windows.net** ein. Beispiel: **adworkserver.database.windows.net**.
+3.  In the **Connect to Database Server** dialog box, type the SQL Database **Server name** you want to connect to in the form <*servername*>**.database.windows.net**. For example, **adworkserver.database.windows.net**.
 
-4.	Klicken Sie unter **Anmeldeinformationen** auf **Benutzername und Kennwort verwenden**. Geben Sie den **Benutzernamen** und das **Kennwort** wie beim Erstellen des Azure SQL-Datenbank-Servers ein, und klicken Sie dann auf **Weiter**.
+4.  Under **Log on credentials**, click **Use the following User Name and Password**, type the **User Name** and **Password** you set up for the SQL Database server when you created it, and then click **Next**.
 
-    ![Servername und Anmeldeinformationen eingeben](./media/sql-database-connect-excel/connect-to-server.png)
+    ![Type the server name and login credentials](./media/sql-database-connect-excel/connect-to-server.png)
 
-	> [AZURE.TIP] Je nach Netzwerkumgebung kann es sein, dass Sie keine Verbindung herstellen können, oder die Verbindung geht verloren, wenn der SQL-Datenbank-Server keinen Datenverkehr von Ihrer Client-IP-Adresse zulässt. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), klicken Sie nacheinander auf „Server mit SQL Server“, Ihren Server und unter „Einstellungen“ auf „Firewall“, und fügen Sie Ihre Client-IP-Adresse hinzu. Weitere Einzelheiten finden Sie unter [Konfigurieren von Firewalleinstellungen](sql-database-configure-firewall-settings.md).
+    > [AZURE.TIP] Depending on your network environment, you may not be able to connect or you may lose the connection if the SQL Database server doesn't allow traffic from your client IP address. Go to the [Azure portal](https://portal.azure.com/), click SQL servers, click your server, click firewall under settings and add your client IP address. See [How to configure firewall settings](sql-database-configure-firewall-settings.md) for details.
 
-5. Wählen Sie im Dialogfeld **Datenbank und Tabelle wählen** in der Liste die gewünschte Datenbank aus, und klicken Sie dann auf die gewünschten Tabellen oder Ansichten (hier wurde **vGetAllCategories** gewählt). Klicken Sie anschließend auf **Weiter**.
+5. In the **Select Database and Table** dialog, select the database you want to work with from the list, and then click the tables or views you want to work with (we chose **vGetAllCategories**), and then click **Next**.
 
-	![Wählen Sie eine Datenbank und Tabelle aus.](./media/sql-database-connect-excel/select-database-and-table.png)
+    ![Select a database and table.](./media/sql-database-connect-excel/select-database-and-table.png)
 
-    Das Dialogfeld **Datenverbindungsdatei speichern und fertig stellen** wird geöffnet. Hier können Sie Informationen zu der Office Database Connection-Datei (*.odc) angeben, die von Excel verwendet wird. Sie können die Standardeinstellungen übernehmen oder die Auswahl anpassen.
+    The **Save Data Connection File and Finish** dialog box opens, where you provide information about the Office database connection (*.odc) file that Excel uses. You can leave the defaults or customize your selections.
 
-6. Es ist in Ordnung, die Standardeinstellungen beizubehalten, aber beachten Sie vor allem den **Dateinamen**. Die **Beschreibung**, der **Anzeigename** und die **Schlüsselwörter für Suche** dienen Ihnen und anderen Benutzern als Hilfe. Sie sehen, womit die Verbindung hergestellt wird, und Sie können die Verbindung schnell finden. Klicken Sie auf **Wenn möglich, immer diese Datei zum Aktualisieren der Daten verwenden**, wenn Verbindungsinformationen in der ODC-Datei gespeichert werden sollen, damit sie aktualisiert werden kann, wenn Sie die Verbindung herstellen. Klicken Sie anschließend auf **Fertig stellen**.
+6. You can leave the defaults, but note the **File Name** in particular. A **Description**, a **Friendly Name**, and **Search Keywords** help you and other users remember what you're connecting to and find the connection. Click **Always attempt to use this file to refresh data** if you want connection information stored in the odc file so it can update when you connect to it, and then click **Finish**.
 
-    ![ODC-Datei speichern](./media/sql-database-connect-excel/save-odc-file.png)
+    ![Saving an odc file](./media/sql-database-connect-excel/save-odc-file.png)
 
-    Das Dialogfeld **Daten importieren** wird angezeigt.
+    The **Import data** dialog box appears.
 
-## Importieren der Daten in Excel und Erstellen eines PivotChart
-Nachdem Sie die Verbindung hergestellt und die Datei mit Daten und Verbindungsinformationen erstellt haben, sind Sie bereit für den Import der Daten.
+## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Import the data into Excel and create a pivot chart
+Now that you've established the connection and created the file with data and connection information, you're reading to import the data.
 
-1. Klicken Sie im Dialogfeld **Daten importieren** auf die Option, die Sie zum Darstellen der Daten im Arbeitsblatt auswählen möchten, und klicken Sie dann auf **OK**. Wir haben hier **PivotChart** gewählt. Sie können auch ein **Neues Arbeitsblatt** erstellen oder die Option **Dem Datenmodell diese Daten hinzufügen** wählen. Weitere Informationen zu Datenmodellen finden Sie unter [Erstellen eines Datenmodells in Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). Klicken Sie auf **Eigenschaften**, um Informationen zur ODC-Datei zu untersuchen, die Sie im vorherigen Schritt erstellt haben, und Optionen zum Aktualisieren der Daten auszuwählen.
+1. In the **Import Data** dialog, click the option you want for presenting your data in the worksheet and then click **OK**. We chose **PivotChart**. You can also choose to create a **New worksheet** or to **Add this data to a Data Model**. For more information on Data Models, see [Create a data model in Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). Click **Properties** to explore information about the odc file you created in the previous step and to choose options for refreshing the data.
 
-	![Format für Daten in Excel auswählen](./media/sql-database-connect-excel/import-data.png)
+    ![Choosing the format for data in Excel](./media/sql-database-connect-excel/import-data.png)
 
-    Das Arbeitsblatt enthält jetzt eine leere PivotTable und ein leeres PivotChart.
+    The worksheet now has an empty pivot table and chart.
 
-8. Aktivieren Sie unter **PivotTable-Felder** alle Kontrollkästchen für die Felder, die Sie anzeigen möchten.
+8. Under **PivotTable Fields**, select all the check-boxes for the fields you want to view.
 
-	![Konfigurieren Sie den Datenbankbericht.](./media/sql-database-connect-excel/power-pivot-results.png)
+    ![Configure database report.](./media/sql-database-connect-excel/power-pivot-results.png)
 
-> [AZURE.TIP] Gehen Sie wie folgt vor, wenn Sie für andere Excel-Arbeitsmappen und -Arbeitsblätter eine Verbindung mit der Datenbank herstellen möchten: Klicken Sie nacheinander auf **Daten**, **Verbindungen** und **Hinzufügen**, wählen Sie die von Ihnen erstellte Verbindung in der Liste aus, und klicken Sie dann auf **Öffnen**. ![Verbindung aus einer anderen Arbeitsmappe öffnen](./media/sql-database-connect-excel/open-from-another-workbook.png)
+> [AZURE.TIP] If you want to connect other Excel workbooks and worksheets to the database, click **Data**, click **Connections**, click **Add**, choose the connection you created from the list, and then click **Open**.
+> ![Open a connection from another workbook](./media/sql-database-connect-excel/open-from-another-workbook.png)
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Erfahren Sie, wie Sie das [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio](sql-database-connect-query-ssms.md) durchführen, um erweiterte Abfragen und Analysen zu ermöglichen.
-- Erfahren Sie mehr über die Vorteile von [elastischen Pools](sql-database-elastic-pool.md).
-- Erfahren Sie, wie Sie [eine Webanwendung erstellen, die eine Verbindung mit SQL-Datenbank auf dem Back-End herstellt](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
+- Learn how to [Connect to SQL Database with SQL Server Management Studio](sql-database-connect-query-ssms.md) for advanced querying and analysis.
+- Learn about the benefits of [elastic pools](sql-database-elastic-pool.md).
+- Learn how to [create a web application that connects to SQL Database on the back-end](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
 
-<!----HONumber=AcomDC_0706_2016--->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

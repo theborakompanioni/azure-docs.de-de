@@ -1,65 +1,70 @@
 <properties
-	pageTitle="Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer | Microsoft Azure"
-	description="Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer."
-	services="virtual-machines"
-	documentationCenter=""
-	authors="kmouss"
-	manager="timlt"
-	editor=""/>
+    pageTitle="What to do in the event that an Azure service disruption impacts Azure virtual machines | Microsoft Azure"
+    description="Learn what to do in the event that an Azure service disruption impacts Azure virtual machines."
+    services="virtual-machines"
+    documentationCenter=""
+    authors="kmouss"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="virtual-machines"
-	ms.workload="virtual-machines"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/16/2016"
-	ms.author="kmouss;aglick"/>
+    ms.service="virtual-machines"
+    ms.workload="virtual-machines"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/16/2016"
+    ms.author="kmouss;aglick"/>
 
-#Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer
 
-Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
+#<a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-virtual-machines"></a>What to do in the event that an Azure service disruption impacts Azure virtual machines
 
-Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
+At Microsoft, we work hard to make sure that our services are always available to you when you need them. Forces beyond our control sometimes impact us in ways that cause unplanned service disruptions.
 
-Azure weist bereits viele integrierte Plattformfunktionen auf, die hoch verfügbare Anwendungen unterstützen. Weitere Informationen zu diesen Diensten finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Microsoft provides a Service Level Agreement (SLA) for its services as a commitment for uptime and connectivity. The SLA for individual Azure services can be found at [Azure Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
 
-Dieser Artikel behandelt ein echtes Szenario der Notfallwiederherstellung für den Fall, dass eine ganze Region aufgrund einer Naturkatastrophe oder einer umfangreichen Dienstunterbrechung von einem Ausfall betroffen ist. So etwas kommt zwar äußerst selten vor, dennoch müssen Sie für den Ausfall einer gesamten Region vorbereitet sein. Falls eine ganze Region von einer Dienstunterbrechung betroffen ist, sind die lokal redundanten Kopien Ihrer Daten vorübergehend nicht verfügbar. Bei aktivierter Georeplikation sind drei zusätzliche Kopien Ihrer Azure Storage-Blobs und -Tabellen in einer anderen Region gespeichert. Sollte eine gesamte Region ausfallen oder die primäre Region aufgrund einer Katastrophe nicht wiederherstellbar sein, ordnet Azure alle DNS-Einträge der georeplizierten Region zu.
+Azure already has many built-in platform features that support highly available applications. For more about these services, read [Disaster recovery and high availability for Azure applications](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
->[AZURE.NOTE]Denken Sie daran, dass Sie keine Kontrolle über diesen Prozess haben. Er tritt nur bei einer regionsweiten Dienstunterbrechung auf. Setzen Sie daher auch auf andere anwendungsspezifische Sicherungsstrategien, um eine möglichst hohe Verfügbarkeit zu erreichen. Weitere Informationen finden Sie im Abschnitt zu [Datenstrategien für die Notfallwiederherstellung](../resiliency/resiliency-disaster-recovery-azure-applications.md#data-strategies-for-disaster-recovery).
+This article covers a true disaster recovery scenario, when a whole region experiences an outage due to major natural disaster or widespread service interruption. These are rare occurrences, but you must prepare for the possibility that there is an outage of an entire region. If an entire region experiences a service disruption, the locally redundant copies of your data would temporarily be unavailable. If you have enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region is not recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
 
-In den folgenden Informationen zu virtuellen Azure-Computern erfahren Sie, welche Möglichkeiten Sie haben, wenn die gesamte Region, in der Ihre virtuelle Azure-Computeranwendung bereitgestellt wurde, von einer Dienstunterbrechung betroffen ist.
+>[AZURE.NOTE]Be aware that you do not have any control over this process, and it will only occur for region-wide service disruptions. Because of this, you must also rely on other application-specific backup strategies to achieve the highest level of availability. For more information, see the section on [Data strategies for disaster recovery](../resiliency/resiliency-disaster-recovery-azure-applications.md#data-strategies-for-disaster-recovery).
 
-##Option 1: Warten auf die Wiederherstellung
-In diesem Fall ist keine weitere Aktion erforderlich. Wir arbeiten intensiv daran, die Verfügbarkeit des Diensts wiederherzustellen. Der aktuelle Dienststatus wird auf dem [Dashboard zur Azure-Dienstintegrität](https://azure.microsoft.com/status/) angezeigt.
+To help you handle these rare occurrences, we provide the following guidance for Azure virtual machines in the case of a service disruption of the entire region where your Azure virtual machine application is deployed.
 
->[AZURE.NOTE]Dies ist die beste Option, wenn Sie vor der Unterbrechung nicht Azure Site Recovery, die Sicherung virtueller Computer, georedundanten Speicher mit Lesezugriff oder georedundanten Speicher eingerichtet haben. Wenn Sie den georedundanten Speicher oder den georedundanten Speicher mit Lesezugriff für das Speicherkonto eingerichtet haben, unter dem die virtuellen Festplatten (VHDs) der VM gespeichert sind, können Sie versuchen, die Festplatte mit dem Basisimage wiederherzustellen und darüber eine neue VM bereitzustellen. Dies ist nicht die bevorzugte Option, da die Synchronisierung der Daten nur dann sichergestellt ist, wenn eine Sicherung von Azure-VMs oder Azure Site Recovery verwendet wird. Daher kann nicht garantiert werden, dass diese Option funktioniert.
+##<a name="option-1:-wait-for-recovery"></a>Option 1: Wait for recovery
+In this case, no action on your part is required. Know that we are working diligently to restore service availability. You can see the current service status on our [Azure Service Health Dashboard](https://azure.microsoft.com/status/).
 
-Für Kunden, die umgehend Zugriff auf virtuelle Computer benötigen, stehen die beiden folgenden Optionen zur Verfügung.
+>[AZURE.NOTE]This is the best option if you have not set up Azure Site Recovery, virtual machine backup, read-access geo-redundant storage, or geo-redundant storage prior to the disruption. If you have set up geo-redundant storage or read-access geo-redundant storage for the storage account where your VM virtual hard drives (VHDs) are stored, you can look to recover the base image VHD and try to provision a new VM from it. This is not a preferred option because there are no guarantees of synchronization of data unless Azure VM backup or Azure Site Recovery are used. Consequently, this option is not guaranteed to work.
 
->[AZURE.NOTE]Bei beiden Optionen besteht die Gefahr von Datenverlusten.
+For customers who want immediate access to virtual machines, the following two options are available.  
 
-##Option 2: Wiederherstellen eines virtuellen Computers aus einer Sicherung
-Für Kunden, die eine VM-Sicherung konfiguriert haben, können Sie den virtuellen Computer auf der Grundlage einer Sicherung und eines Wiederherstellungspunkts wiederherstellen.
+>[AZURE.NOTE]Be aware that both of the following options have the possibility of some data loss.     
 
-Informationen zum Wiederherstellen einer neuen VM aus Azure Backup finden Sie unter [Wiederherstellen virtueller Computer in Azure](../backup/backup-azure-restore-vms.md).
+##<a name="option-2:-restore-a-vm-from-a-backup"></a>Option 2: Restore a VM from a backup
+For customers who have configured a VM backup, you can restore the VM from its backup and recovery point.
 
-Informationen zum Planen der Infrastruktur für die Sicherung von virtuellen Azure-Computern finden Sie unter [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../backup/backup-azure-vms-introduction.md).
+To restore a new VM from Azure Backup, see [Restore virtual machines in Azure](../backup/backup-azure-restore-vms.md).
 
-##Option 3: Initiieren eines Failovers per Azure Site Recovery
-Wenn Sie Azure Site Recovery für Ihre betroffenen virtuellen Azure-Computer konfiguriert haben, können Sie Ihre virtuellen Computer auf der Grundlage ihrer Replikate wiederherstellen. Diese Replikate können sich entweder in Azure befinden oder lokal vorhanden sein. In diesem Fall können Sie auf der Grundlage des vorhandenen Replikats einen neuen virtuellen Computer erstellen. Informationen zum Wiederherstellen Ihrer virtuellen Computer auf der Grundlage eines Azure Site Recovery-Replikats finden Sie unter [Migrieren von virtuellen Azure-IaaS-Computern zwischen Azure-Regionen mit Azure Site Recovery](../site-recovery/site-recovery-migrate-azure-to-azure.md).
+To help you plan for your Azure virtual machines backup infrastructure, see [Plan your VM backup infrastructure in Azure](../backup/backup-azure-vms-introduction.md).
 
->[AZURE.NOTE]Datenträger mit Betriebssystemen oder mit Daten von virtuellen Azure-Computern werden zwar auf einer sekundären VHD repliziert, aber wenn sie in einem georedundanten Speicher oder einem georedundanten Speicherkonto mit Lesezugriff vorliegen, wird jede VHD separat repliziert. Diese Replikationsebene garantiert keine Konsistenz über die replizierten VHDs hinweg. Wenn Ihre Anwendung und/oder Ihre Datenbanken, die diese Datenträger verwenden, voneinander abhängig sind, ist nicht gewährleistet, dass alle virtuellen Festplatten als einzelne Momentaufnahme repliziert werden. Außerdem ist nicht garantiert, dass das VHD-Replikat aus georedundantem Speicher oder georedundantem Speicher mit Lesezugriff zu einer für Anwendungen konsistenten Momentaufnahme zum Starten der VM führt.
+##<a name="option-3:-initiate-a-failover-by-using-azure-site-recovery"></a>Option 3: Initiate a failover by using Azure Site Recovery
+If you have configured Azure Site Recovery to work with your impacted Azure virtual machines, you can restore your VMs from their replicas. These replicas can reside either on Azure or on premises. In this case, you can create a new VM from its existing replica. To restore your VMs from an Azure Site Recovery replica, see [Migrate Azure IaaS virtual machines between Azure regions with Azure Site Recovery](../site-recovery/site-recovery-migrate-azure-to-azure.md).
 
-##Nächste Schritte
-Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und hohe Verfügbarkeit finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+>[AZURE.NOTE]Although Azure virtual machine operating system and data disks will be replicated to a secondary VHD, if they are in a geo-redundant storage or read-access geo-redundant storage account, each VHD is replicated independently. This level of replication doesn’t guarantee consistency across the replicated VHDs. If your application and/or databases that use these data disks have dependencies on each other, it is not guaranteed that all VHDs are replicated as one snapshot. It is also not guaranteed that the VHD replica from geo-redundant storage or read-access geo-redundant storage will result in an application consistent snapshot to boot the VM.
 
-Im [technischen Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md) können Sie detaillierte technische Kenntnisse hinsichtlich der Funktionen einer Cloudplattform erwerben.
+##<a name="next-steps"></a>Next steps
+To learn more about how to implement a disaster recovery and high availability strategy, see [Disaster recovery and high availability for Azure applications](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Informationen zum Sichern von VMs finden Sie unter [Sichern von virtuellen Azure-Computern](../backup/backup-azure-vms.md).
+To develop a detailed technical understanding of a cloud platform’s capabilities, see [Azure resiliency technical guidance](../resiliency/resiliency-technical-guidance.md).
 
-Informationen zur Verwendung von Azure Site Recovery zum Orchestrieren und Automatisieren des Schutzes Ihrer physischen (und virtuellen) Windows- und Linux-Computer, die auf VMWare- und Hyper-V-VMs ausgeführt werden, finden Sie unter [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/).
+To learn how to back up VMs, see [Back up Azure virtual machines](../backup/backup-azure-vms.md).
 
-Wenden Sie sich an den [Kundensupport](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls die Anweisungen nicht klar sein sollten oder Microsoft die Schritte für Sie ausführen soll.
+Learn how to use Azure Site Recovery to orchestrate and automate protection of your physical (and virtual) Windows and Linux machines that run on VMWare and Hyper-V VMs, see [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/).
 
-<!---HONumber=AcomDC_0824_2016-->
+If the instructions are not clear, or if you would like Microsoft to do the operations on your behalf, contact [Customer Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

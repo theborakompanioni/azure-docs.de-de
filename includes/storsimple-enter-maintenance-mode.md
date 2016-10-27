@@ -1,17 +1,20 @@
 <!--author=SharS last changed: 12/01/15-->
 
-#### So wechseln Sie in den Wartungsmodus
+#### <a name="to-enter-maintenance-mode"></a>To enter Maintenance mode
 
-1. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die** Anmeldung mit Vollzugriff**.
+1. In the serial console menu, choose option 1, **Log in with full access**.
 
-2. Geben Sie das Kennwort ein. Das Standardkennwort lautet **Password1**.
+2. Type the password. The default password is **Password1**.
 
-3. Geben Sie an der Eingabeaufforderung Folgendes ein:
+3. At the command prompt, type
 
      `Enter-HcsMaintenanceMode`
 
-4. Es wird eine Warnmeldung angezeigt, die Sie darüber informiert, dass durch den Wartungsmodus alle E/A-Anforderungen unterbrochen werden und die Verbindung mit dem klassischen Azure-Portal getrennt wird. Sie werden aufgefordert, dies zu bestätigen. Geben Sie **J** ein, um den Wartungsmodus zu beginnen.
+4. You will see a warning message telling you that Maintenance mode will disrupt all I/O requests and sever the connection to the Azure classic portal, and you will be prompted for confirmation. Type **Y** to enter Maintenance mode.
 
-    Beide Controller werden neu gestartet. Wenn der Neustart abgeschlossen ist, wird eine andere Meldung angezeigt, die besagt, dass das Gerät in den Wartungsmodus versetzt wird.
+    Both controllers will restart. When the restart is complete, another message will appear indicating that the device is in Maintenance mode.
 
-<!---HONumber=AcomDC_1203_2015-->
+
+<!--HONumber=Oct16_HO2-->
+
+

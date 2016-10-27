@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Authentifizieren von Runbooks mit Amazon Web Services | Microsoft Azure"
-   description="In diesem Artikel wird beschrieben, wie Sie AWS-Anmeldeinformationen für Runbooks in Azure Automation zum Verwalten von AWS-Ressourcen erstellen und überprüfen."
+   pageTitle="Configure Authentication with Amazon Web Services  | Microsoft Azure"
+   description="This article describes how to create and validate an AWS credential for runbooks in Azure Automation managing AWS resources."
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
    manager="jwhit"
    editor="tysonn"
-   keywords="AWS-Authentifizierung, AWS konfigurieren"/>
+   keywords="aws authentication, configure aws"/>
 <tags
    ms.service="automation"
    ms.workload="tbd"
@@ -16,24 +16,29 @@
    ms.date="09/12/2016"
    ms.author="magoedte"/>
 
-# Authentifizieren von Runbooks mit Amazon Web Services
-Die Automatisierung von häufigen Aufgaben mit Ressourcen in Amazon Web Services (AWS) kann mit Automation-Runbooks in Azure erreicht werden. Sie können viele Aufgaben in AWS mit Automation-Runbooks automatisieren, wie dies auch mit Ressourcen in Azure möglich ist. Sie benötigen lediglich zwei Dinge:
 
-* Ein AWS-Abonnement und einen Satz Anmeldeinformationen. Genauer gesagt: Ihren AWS-Zugriffsschlüssel und den geheimen Schlüssel. Weitere Informationen finden Sie im Artikel [Using AWS Credentials](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) (Verwenden von AWS-Anmeldeinformationen).
-* Ein Azure-Abonnement und ein Automation-Konto. Weitere Informationen zum Einrichten eines Azure Automation-Kontos finden Sie im Artikel [Konfigurieren eines ausführenden Kontos in Azure](../automation/automation-sec-configure-azure-runas-account.md).
+# <a name="authenticate-runbooks-with-amazon-web-services"></a>Authenticate Runbooks with Amazon Web Services
+Automating common tasks with resources in Amazon Web Services (AWS) can be accomplished with Automation runbooks in Azure.  You can automate many tasks in AWS using Automation runbooks just like you can with resources in Azure.  All that is required are two things:
 
-Zum Authentifizieren mit AWS müssen Sie einen Satz mit AWS-Anmeldeinformationen angeben, um Ihre über Azure Automation ausgeführten Anmeldeinformationen zu authentifizieren. Falls Sie bereits ein Automation-Konto erstellt haben und für die Authentifizierung mit AWS verwenden möchten, können Sie die Schritte im folgenden Abschnitt ausführen. Wenn Sie ein festes Konto für Runbooks zur Verwendung mit AWS-Ressourcen bestimmen möchten, müssen Sie zuerst ein neues [ausführendes Konto für Automation](../automation/automation-sec-configure-azure-runas-account.md) erstellen (überspringen Sie die Option zum Erstellen eines Dienstprinzipals) und dann die unten angegebenen Schritte ausführen.
+* An AWS subscription and a set of credentials.  Specifically your AWS Access Key and Secret Key.  For more information, please review the article [Using AWS Credentials](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html).
+* An Azure subscription and Automation account.  For more information on setting up an Azure Automation account, please review the article [Configure Azure Run As Account](../automation/automation-sec-configure-azure-runas-account.md).  
 
-## Konfigurieren des Automation-Kontos
-Damit Azure Automation mit AWS kommunizieren kann, müssen Sie zuerst Ihre AWS-Anmeldeinformationen abrufen und als Ressourcen in Azure Automation speichern. Führen Sie die folgenden Schritte aus, die im AWS-Dokument [Managing Access Keys for your AWS Account](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) (Verwalten von Zugriffsschlüsseln für Ihr AWS-Konto) enthalten sind, um einen Zugriffsschlüssel zu erstellen und die **Zugriffsschlüssel-ID** und den **geheimen Zugriffsschlüssel** zu kopieren (optional können Sie auch die Schlüsseldatei herunterladen und an einem sicheren Ort speichern).
+To authenticate with AWS, you must specify a set of AWS credentials to authenticate your runbooks running from Azure Automation. If you already have an Automation account created and you want to use that to authenticate with AWS, you can follow the steps in the following section.  If you want to dedicated an account for runbooks targetting AWS resources, you should first create a new [Automation Run As account](../automation/automation-sec-configure-azure-runas-account.md) (skip the option to create a service principal) and then follow the steps below.
 
-Nachdem Sie Ihre AWS-Sicherheitsschlüssel erstellt und kopiert haben, müssen Sie ein Anmeldeinformationsobjekt mit einem Azure Automation-Konto erstellen, um sie sicher zu speichern und in den Runbooks darauf verweisen zu können. Führen Sie die Schritte im Abschnitt **So erstellen Sie neue Anmeldeinformationen** des Artikels [Anmeldeinformationsobjekte in Azure Automation](../automation/automation-certificates.md/###So erstellen Sie neue Anmeldeinformationen mit dem Azure-Portal) aus, und geben Sie die folgenden Informationen ein:
+## <a name="configure-automation-account"></a>Configure Automation account
+For Azure Automation to communicate with AWS, you will first need to retrieve your AWS credentials and store them as assets in Azure Automation.  Perform the following steps documented in the AWS document [Managing Access Keys for your AWS Account](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) to create an Access Key and copy the **Access Key ID** and **Secret Access Key** (optionally download your key file to store it somewhere safe).
 
-1. Geben Sie im Feld **Name** den Wert **AWScred** oder einen anderen geeigneten Wert gemäß Ihren Benennungsvorgaben ein.
-2. Geben Sie im Feld **Benutzername** Ihre **Zugriffs-ID** und den **geheimen Zugriffsschlüssel** im Feld **Kennwort** bzw. **Kennwort bestätigen** ein.
+After you have created and copied your AWS security keys, you will need to create a Credential asset with an Azure Automation account to securely store them and reference them with your runbooks.  Follow the steps in the section **To create a new credential** in the [Credential assets in Azure Automation](../automation/automation-certificates.md/###To create a new credential with the Azure portal) article and enter the following information:
 
-## Nächste Schritte
+1. In the **Name** box, enter **AWScred** or an appropriate value following your naming standards.  
+2. In the **User name** box type your **Access ID** and your **Secret Access Key** in the **Password** and **Confirm password** box.   
 
-- Sehen Sie sich den Artikel [Automatisieren der Bereitstellung einer VM in Amazon Web Services](../automation/automation-scenario-aws-deployment.md) an, um zu erfahren, wie Sie Runbooks zum Automatisieren von Aufgaben in AWS erstellen.
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0914_2016-->
+- Reivew the solution article [Automating deployment of a VM in Amazon Web Services](../automation/automation-scenario-aws-deployment.md) to learn how to create runbooks to automate tasks in AWS.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

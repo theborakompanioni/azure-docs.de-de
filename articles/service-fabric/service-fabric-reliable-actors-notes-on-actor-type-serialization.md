@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/06/2015"
+   ms.date="10/19/2016"
    ms.author="vturecek"/>
 
 
@@ -39,6 +39,11 @@ The interface is impelemented by an actor, which uses the State Manager to store
 [StatePersistence(StatePersistence.Persisted)]
 public class VoiceMailBoxActor : Actor, IVoicemailBoxActor
 {
+    public VoiceMailBoxActor(ActorService actorService, ActorId actorId)
+        : base(actorService, actorId)
+    {
+    }
+
     public Task<VoicemailBox> GetMailboxAsync()
     {
         return this.StateManager.GetStateAsync<VoicemailBox>("Mailbox");
@@ -92,6 +97,7 @@ public class VoicemailBox
  - [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
  - [Actor polymorphism and object-oriented design patterns](service-fabric-reliable-actors-polymorphism.md)
  - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
+
 
 
 <!--HONumber=Oct16_HO2-->

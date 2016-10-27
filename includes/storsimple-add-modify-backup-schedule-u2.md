@@ -1,42 +1,46 @@
 
 <!--author=SharS last changed: 11/04/15-->
 
-#### So können sie einen StorSimple-Sicherungszeitplan hinzufügen oder ändern
+#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>To add or modify a StorSimple backup schedule
 
-1. Klicken Sie auf der Seite **Schnellstart** des Geräts auf die Registerkarte **Sicherungsrichtlinien**. Dadurch gelangen Sie auf die Seite **Sicherungsrichtlinien**.
+1. On the device **Quick Start** page, click the **Backup Policies** tab. This will take you to the **Backup Policies** page.
 
-2. Klicken Sie in der tabellarischen Auflistung der Richtlinien auf die Richtlinie, die Sie bearbeiten möchten.
+2. In the tabular listing of the policies, select and click the policy that you want to edit.
 
-3. Unter **Allgemein** können Sie den Namen der Sicherungsrichtlinie ändern.
+3. Under **General**, you can modify the backup policy name.
 
-     ![Verwalten von Zeitplänen](./media/storsimple-add-modify-backup-schedule-u2/AddModifyGeneral.png)
+     ![manage schedules](./media/storsimple-add-modify-backup-schedule-u2/AddModifyGeneral.png)
 
-4. Klicken Sie auf **Zeitpläne verwalten**.
+4. Click **Manage Schedules**. 
 
-5. Gehen Sie im Dialogfeld **Zeitplan verwalten** unter **Hinzufügen oder Ändern eines Zeitplans** folgendermaßen vor:
+5. In the **Manage Schedule** dialog box, under **Add or Modify a schedule**, do the following:
 
-    1. Wählen Sie in der Dropdownliste einen vorhandenen Zeitplan aus, oder erstellen Sie über **Hinzufügen** einen neuen Zeitplan.
-    2. Klicken Sie auf das Häkchensymbol ![Ändern von Zeitplänen 1](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png). 
+    1. From the drop-down list, choose an existing schedule or select **Add** to create a new schedule.
+    2. Click the check icon ![modify schedules 1](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png). 
 
-        ![Ändern von Zeitplänen 1](./media/storsimple-add-modify-backup-schedule-u2/AddModify1.png)
+        ![modify schedules 1](./media/storsimple-add-modify-backup-schedule-u2/AddModify1.png)
 
-    2. Wählen Sie als Typ der Sicherung die lokale Momentaufnahme oder die Cloudmomentaufnahme aus.
+    2. Select the type of backup as local or cloud snapshot.
 
-        ![Ändern von Zeitplänen 1](./media/storsimple-add-modify-backup-schedule-u2/AddModify2.png)
+        ![modify schedules 1](./media/storsimple-add-modify-backup-schedule-u2/AddModify2.png) 
 
-    3. Geben Sie die Sicherungshäufigkeit, Aufbewahrung und Startzeit des Zeitplans an.
+    3. Specify the backup frequency, retention, and starting time for the schedule.
 
-    4. Aktivieren Sie das Kontrollkästchen, um den Zeitplan zu aktivieren.
+    4. Select the check box to enable or disable the schedule.
 
-    5. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png), um den Zeitplan zu speichern.
+    5. Click the check icon ![check icon](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png) to save the schedule.
 
-5. Wählen Sie unter **Volumes** die Volumes aus, auf die diese Richtlinie angewendet werden soll.
+5. In the **Volumes** section, choose the volumes that this policy will be applied to.
 
-6. Klicken Sie unten auf der Seite auf **Speichern**, um die Änderungen an der Richtlinie zu speichern.
+6. At the bottom of the page, click **Save** to save the changes to this policy.
 
-7. Sie werden aufgefordert, diesen Schritt zu bestätigen. Klicken Sie zum Speichern der Richtlinie auf **Ja**.
+7. You will prompted for confirmation. Click **Yes** to save the policy.
 
-Die Seite **Sicherungsrichtlinien** wird aktualisiert, um die Änderungen an der Richtlinie zu speichern.
+The **Backup Policies** page will be updated to save the changes to the policy.
  
 
-<!---HONumber=AcomDC_1217_2015-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

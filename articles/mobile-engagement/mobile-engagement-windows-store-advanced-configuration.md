@@ -1,75 +1,80 @@
 <properties
-	pageTitle="Erweiterte Konfiguration für Engagement-SDK für Windows Universal-Apps"
-	description="Erweiterte Konfigurationsoptionen für Azure Mobile Engagement mit Windows Universal-Apps" 					
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="erikre"
-	editor="" />
+    pageTitle="Advanced Configuration for Windows Universal Apps Engagement SDK"
+    description="Advanced Configuration options for Azure Mobile Engagement with Windows Universal Apps"                    
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows-store"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/12/2016"
-	ms.author="piyushjo;ricksal" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-windows-store"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="10/04/2016"
+    ms.author="piyushjo;ricksal" />
 
-# Erweiterte Konfiguration für Engagement-SDK für Windows Universal-Apps
+
+# <a name="advanced-configuration-for-windows-universal-apps-engagement-sdk"></a>Advanced Configuration for Windows Universal Apps Engagement SDK
 
 > [AZURE.SELECTOR]
 - [Universal Windows](mobile-engagement-windows-store-advanced-configuration.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
 - [iOS](mobile-engagement-ios-integrate-engagement.md)
-- [Android](mobile-engagement-android-advan.mdced-configuration.md)
+- [Android](mobile-engagement-android-advanced-configuration.md)
 
-Hier wird erläutert, wie verschiedene Konfigurationsoptionen für Android-Apps in Azure Mobile Engagement konfiguriert werden.
+This procedure describes how to configure various configuration options for Azure Mobile Engagement Android apps.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-[AZURE.INCLUDE [Voraussetzungen](../../includes/mobile-engagement-windows-store-prereqs.md)]
+[AZURE.INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
-##Erweiterte Konfiguration
+##<a name="advanced-configuration"></a>Advanced configuration
 
-### Deaktivieren der automatischen Absturzberichtsfunktion
+### <a name="disable-automatic-crash-reporting"></a>Disable automatic crash reporting
 
-Sie können die automatische Absturzberichtsfunktion von Engagement deaktivieren. Dann erfolgt beim Auftreten einer nicht behandelten Ausnahme keine Aktion von Engagement.
+You can disable the automatic crash reporting feature of Engagement. Then, when an unhandled exception occurs, Engagement does nothing.
 
-> [AZURE.WARNING] Wenn Sie diese Funktion deaktivieren, sendet Engagement bei einem unbehandelten Absturz in Ihrer App keinen Absturzbericht **UND** schließt weder die Sitzung noch Aufträge.
+> [AZURE.WARNING] If you disable this feature, then when an unhandled crash occurs in your app, Engagement does not send the crash **AND** does not close the session and jobs.
 
-Zum Deaktivieren der automatischen Absturzberichtsfunktion passen Sie Ihre Konfiguration an, je nachdem, wie Sie sie deklariert haben:
+To disable automatic crash reporting, customize your configuration depending on the way you declared it:
 
-#### In der Datei `EngagementConfiguration.xml`
+#### <a name="from-`engagementconfiguration.xml`-file"></a>From `EngagementConfiguration.xml` file
 
-Setzen Sie die Berichterstattung bei Abstürzen zwischen den Tags `<reportCrash>` und `</reportCrash>` auf `false`.
+Set report crash to `false` between `<reportCrash>` and `</reportCrash>` tags.
 
-#### Im Objekt `EngagementConfiguration` während der Laufzeit
+#### <a name="from-`engagementconfiguration`-object-at-run-time"></a>From `EngagementConfiguration` object at run time
 
-Setzen Sie Absturzbericht auf „false“ mithilfe des Objekts „EngagementConfiguration“.
+Set report crash to false using your EngagementConfiguration object.
 
-		/* Engagement configuration. */
-		EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-		engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
+        /* Engagement configuration. */
+        EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+        engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
 
-		/* Disable Engagement crash reporting. */
-		engagementConfiguration.Agent.ReportCrash = false;
+        /* Disable Engagement crash reporting. */
+        engagementConfiguration.Agent.ReportCrash = false;
 
-### Deaktivieren der Echtzeit-Berichterstattung
+### <a name="disable-real-time-reporting"></a>Disable real time reporting
 
-Standardmäßig meldet der Engagement-Dienst Protokolle in Echtzeit. Wenn Ihre Anwendung Protokolle häufig meldet, ist es besser, die Protokolle zu puffern und sie in regelmäßigen Abständen alle auf einmal zu melden. Dies wird als „Burstmodus“ bezeichnet.
+By default, the Engagement service reports logs in real time. If your application reports logs frequently, it is better to buffer the logs and to report them all at once on a regular time basis. This is called “burst mode”.
 
-Rufen Sie dazu die folgende Methode auf:
+To do so, call the method:
 
-		EngagementAgent.Instance.SetBurstThreshold(int everyMs);
+        EngagementAgent.Instance.SetBurstThreshold(int everyMs);
 
-Das Argument ist ein Wert in **Millisekunden**. Immer wenn Sie die Protokollierung in Echtzeit erneut aktivieren möchten, rufen Sie die Methode ohne Parameter oder mit dem Wert 0 auf.
+The argument is a value in **milliseconds**. Whenever you want to reactivate the real-time logging, call the method without any parameter, or with the 0 value.
 
-Der Burstmodus verlängert leicht die Akkulaufzeit, wirkt sich jedoch auf den Engagement-Monitor aus: Die Dauer von allen Sitzungen und Aufträgen wird auf den Burstschwellenwert gerundet (folglich sind eventuell Sitzungen und Aufträge, die kürzer als der Burstschwellenwert sind, möglicherweise nicht sichtbar). Sie sollten einen Burstschwellenwert von höchstens 30.000 (30s) verwenden. Gespeicherte Protokolle sind auf 300 Elemente beschränkt. Wenn der Sendevorgang zu lange dauert, können einige Protokolle verloren gehen.
+Burst mode slightly increases the battery life but has an impact on the Engagement Monitor: all sessions and jobs duration are rounded to the burst threshold (thus, sessions and jobs shorter than the burst threshold may not be visible). We recommend using a burst threshold no longer than 30000 (30s). Saved logs are limited to 300 items. If sending is too long, you can lose some logs.
 
-> [AZURE.WARNING] Der Burstschwellenwert kann nicht auf einen Zeitraum von weniger als einer Sekunde konfiguriert werden. Wenn Sie dies versuchen, zeigt das SDK eine Ablaufverfolgung mit dem Fehler an und setzt sich automatisch auf den Standardwert (null Sekunden) zurück. Dies löst aus, dass das SDK die Protokolle in Echtzeit meldet.
+> [AZURE.WARNING] The burst threshold cannot be configured to a period less than one second. If you do so, the SDK shows a trace with the error and automatically resets to the default value, zero seconds. This triggers the SDK to report the logs in real-time.
 
-[here]: http://www.nuget.org/packages/Capptain.WindowsCS
-[NuGet website]: http://docs.nuget.org/docs/start-here/overview
+[here]:http://www.nuget.org/packages/Capptain.WindowsCS
+[NuGet website]:http://docs.nuget.org/docs/start-here/overview
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

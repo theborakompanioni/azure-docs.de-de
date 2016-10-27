@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Was ist Azure Data Catalog? | Microsoft Azure"
-   description="Dieser Artikel enthält eine Übersicht über Microsoft Azure Data Catalog, einschließlich seiner Funktionen und der Probleme, die er beheben soll. Data Catalog enthält Funktionen, mit denen alle Benutzer – von Analysten über Datenwissenschaftler bis hin zu Entwicklern – Datenquellen registrieren, ermitteln, verstehen und nutzen können."
+   pageTitle="What is Azure Data Catalog? | Microsoft Azure"
+   description="This article provides an overview of Microsoft Azure Data Catalog, including its features and the problems it is designed to address. Data Catalog provides capabilities that enable any user – from analysts to data scientists to developers – to register, discover, understand, and consume data sources."
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -16,62 +16,67 @@
    ms.date="09/21/2016"
    ms.author="maroche"/>
 
-# Was ist Azure Data Catalog?
 
-Azure Data Catalog ist ein vollständig verwalteter Clouddienst, mit dem Benutzer die benötigten Datenquellen ermitteln und die Ergebnisse besser verstehen können. Unternehmen können mit ihren vorhandenen Investitionen so einen höheren Wert erzielen. Data Catalog enthält Funktionen, mit denen alle Benutzer – von Analysten über Datenwissenschaftler bis hin zu Entwicklern – Datenquellen ermitteln, verstehen und nutzen können. Data Catalog umfasst ein Crowdsourcing-Modell für Metadaten und Anmerkungen und ermöglicht es allen Benutzern, ihr Wissen zum Aufbau einer Community und Datenkultur beizusteuern.
+# <a name="what-is-azure-data-catalog?"></a>What is Azure Data Catalog?
 
-## Aufgaben der Ermittlung für Datennutzer
+Azure Data Catalog is a fully managed cloud service that enables users to discover the data sources they need, and to understand the data sources they find, while helping organizations get more value from their existing investments. Data Catalog provides capabilities that enable any user – from analysts to data scientists to developers – to discover, understand, and consume data sources. Data Catalog includes a crowdsourcing model of metadata and annotations, and allows all users to contribute their knowledge to build a community and culture of data.
 
-Das Ermitteln der Datenquellen von Unternehmen war bisher ein natürlicher Prozess, der auf „Stammeswissen“ basierte. Dies schafft für Unternehmen, die aus ihren Informationsassets den größtmöglichen Nutzen ziehen möchten, eine Vielzahl von Problemen.
+## <a name="discovery-challenges-for-data-consumers"></a>Discovery challenges for data consumers
 
--	Benutzer wissen erst, dass Datenquellen vorhanden sind, wenn sie im Rahmen eines anderen Prozesses darauf stoßen. Es gibt keinen zentralen Speicherort, an dem Datenquellen registriert sind.
--	Nur wenn ein Benutzer den Speicherort der Datenquelle kennt, kann er mit einer Clientanwendung eine Verbindung damit herstellen. Für Oberflächen zur Datennutzung ist es erforderlich, dass Benutzer die Verbindungszeichenfolge bzw. den Pfad kennen.
--	Wenn ein Benutzer den Speicherort der Dokumentation für eine Datenquelle nicht kennt, kann er die beabsichtigte Verwendung der Daten nicht verstehen. Datenquellen und Dokumentation liegen an unterschiedlichen Orten vor und werden über unterschiedliche Umgebungen genutzt.
--	Wenn ein Benutzer Fragen zu einem Informationsasset hat, muss er den für die Daten verantwortlichen Experten bzw. das Team finden und diese Experten offline ansprechen. Es besteht keine explizite Verbindung zwischen Daten und den Personen, die dafür über Expertenwissen zur Nutzung verfügen.
--  Ein Benutzer muss den Prozess zum Anfordern des Zugriff auf die Datenquelle verstehen. Mit der ermittelten Datenquelle und der dazugehörigen Dokumentation allein kann er nämlich noch nicht auf die benötigten Daten zugreifen.
+Traditionally, discovering enterprise data sources has been an organic process based on tribal knowledge. This presents numerous challenges for companies wanting to get the most value from their information assets.
 
-## Aufgaben der Ermittlung für Datenproduzenten
+-   Users are not aware that data sources exist unless they come into contact with it as part of another process; there is no central location where data sources are registered.
+-   Unless a user knows the location of a data source, he cannot connect to the data using a client application; data consumption experiences require users to know the connection string or path.
+-   Unless a user knows the location of a data source's documentation, he cannot understand the intended uses of the data; data sources and documentation live in different places and are consumed through different experiences.
+-   If a user has questions about an information asset, he must locate the expert or team responsible for the data and engage those experts offline; there is no explicit connection between data and those with expert perspectives on its use.
+-  Unless a user understands the process for requesting access to the data source, discovering the data source and its documentation still does not enable him to access the data he requires.
 
-Oben sind die Hürden für die Nutzer der Daten angegeben, aber auch für Benutzer, die für die Erstellung und Pflege von Informationsassets verantwortlich sind, gelten besondere Anforderungen.
+## <a name="discovery-challenges-for-data-producers"></a>Discovery challenges for data producers
 
--	Das Versehen von Datenquellen mit beschreibenden Metadaten führt häufig nicht zum gewünschten Erfolg. Beschreibungen, die in der Datenquelle gespeichert sind, werden von Clientanwendungen meist ignoriert.
--	Das Erstellen von Dokumentation für Datenquellen ist oft sinnlos. Die ständige Synchronisierung der Dokumentation mit der Datenquelle ist eine kontinuierliche Aufgabe, und Benutzer haben kein Vertrauen in die Dokumentation, da sie häufig als veraltet angesehen wird.
-- Eine beständige Herausforderung besteht darin, den Zugriff auf die Datenquelle zu beschränken und sicherzustellen, dass die Datennutzer wissen, wie sie den Zugriff anfordern.
+While data consumers face these challenges, users responsible for producing and maintaining information assets face challenges of their own.
 
-Das Erstellen und Pflegen der Dokumentation für eine Datenquelle ist komplex und zeitaufwendig. Dies gilt in noch stärkerem Maße für die Aufgabe, die Dokumentation für alle Personen leicht zugänglich zu machen, die die Datenquelle verwenden.
+-   Annotating data sources with descriptive metadata is often a lost effort; client applications typically ignore descriptions stored in the data source.
+-   Creating documentation for data sources is often a lost effort; keeping documentation in sync with the data source is an ongoing responsibility, and users lack trust in documentation as it is often perceived as being out of date.
+- Restricting access to the data source, and ensuring that data consumers know how to request access is an ongoing challenge.
 
-Zusammen stellen diese Probleme eine erhebliche Hürde für Unternehmen dar, die die Nutzung und das Verständnis der Unternehmensdaten fördern möchten.
+Creating and maintaining documentation for a data source is complex and time-consuming. The challenge of making that documentation readily available to everyone who uses the data source is often even more so.
 
-## Hilfe von Azure Data Catalog
+When combined, these challenges present a significant barrier for companies who want to encourage and promote the use and understanding of enterprise data.
 
-Data Catalog ist für die Lösung dieser Probleme ausgelegt und ermöglicht es Unternehmen, mit den vorhandenen Datenressourcen den größten Nutzen zu erzielen. Data Catalog leistet Unterstützung, indem Datenquellen leicht ermittelbar gestaltet werden und von den Benutzern, die die verwalteten Daten benötigen, leicht verstanden werden.
+## <a name="azure-data-catalog-can-help"></a>Azure Data Catalog can help
 
-Data Catalog bietet einen cloudbasierten Dienst, unter dem Datenquellen registriert werden können. Die Daten verbleiben an ihrem vorhandenen Speicherort, aber eine Kopie der Metadaten wird Data Catalog hinzugefügt – zusammen mit einem Verweis auf den Speicherort der Datenquelle. Diese Metadaten werden außerdem indiziert, damit jede Datenquelle per Suchfunktion leicht ermittelt werden kann und für die Benutzer verständlich ist, die sie ermitteln.
+Data Catalog is designed to address these problems and to enable enterprises to get the most value from their existing information assets. Data Catalog helps by making data sources easily discoverable, and understandable by the users who need the data they manage.
 
-Nachdem eine Datenquelle registriert wurde, können die dazugehörigen Metadaten erweitert werden. Dies kann entweder von dem Benutzer übernommen werden, der die Registrierung durchgeführt hat, oder von anderen Benutzern des Unternehmens. Alle Benutzer können eine Datenquelle mit Anmerkungen versehen, indem Beschreibungen, Tags oder andere Metadaten bereitgestellt werden, z. B. Dokumentation und Prozesse für das Anfordern des Datenquellenzugriffs. Diese beschreibenden Metadaten sind eine Erweiterung der strukturellen Metadaten (z.B. Spaltennamen und Datentypen), die für die Datenquelle registriert wurden.
+Data Catalog provides a cloud-based service into which data source can be registered. The data remains in in its existing location, but a copy of the metadata is added to Data Catalog, along with a reference to the data source location. This metadata is also indexed to make each data source easily discoverable via search, and understandable to users who discover it.
 
-Das Ermitteln und Verstehen von Datenquellen und ihrer Nutzung sind der Hauptzweck bei der Registrierung von Quellen. Wenn Benutzer in Unternehmen Daten für ihre Arbeit benötigen (z. B. Business Intelligence, Anwendungsentwicklung, Datenwissenschaft oder andere Aufgaben, die spezielle Daten erfordern), können sie die Data Catalog-Ermittlungsoberfläche verwenden. Hiermit können sie schnell die passenden Daten für ihre Anforderungen finden, Daten auf ihre Eignung hin untersuchen und Daten nutzen, indem sie die Datenquelle im Tool ihrer Wahl öffnen. Zugleich ermöglicht es Data Catalog Benutzern durch Markieren, Dokumentieren und Kommentieren bereits registrierter Datenquellen sowie durch die Registrierung neuer Datenquellen, welche dann wiederum von anderen Benutzern des Katalogs gefunden, nachvollzogen und genutzt werden können, am Katalog mitzuarbeiten.
+Once a data source has been registered, its metadata can then be enriched, either by the user who performed the registration, or by other users in the enterprise. Any user can annotate a data source by providing descriptions, tags, or other metadata, such as documentation and processes for requesting data source access. This descriptive metadata supplements the structural metadata (such as column names and data types) registered from the data source.
 
-![Funktionen von Data Catalog](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
+Discovering and understanding data sources and their use is the primary purpose of registering the sources. When enterprise users need data for their efforts (which could be business intelligence, application development, data science, or any other task where the right data is required) they can use the Data Catalog discovery experience to quickly find data that matches their needs, understand the data to evaluate its fitness for purpose, and consume that data by opening the data source in their tool of choice. At the same time, Data Catalog allows users to contribute to the catalog, by tagging, documenting, and annotating data sources that have already been registered, and by registering new data sources which can then be discovered, understood, and consumed by the community of catalog users.
 
-## Erste Schritte mit Data Catalog
+![Data Catalog Capabilities](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
-Sie können noch heute mit der Nutzung von Data Catalog beginnen, indem Sie die Seite [www.azuredatacatalog.com](https://www.azuredatacatalog.com) besuchen.
+## <a name="get-started-with-data-catalog"></a>Get started with Data Catalog
 
-Einen Leitfaden zu den ersten Schritten finden Sie [hier](data-catalog-get-started.md).
+To get started with Data Catalog today, visit [www.azuredatacatalog.com](https://www.azuredatacatalog.com).
 
-## Weitere Informationen zu Data Catalog
+A getting started guide is available [here](data-catalog-get-started.md).
 
-Weitere Informationen zu den Funktionen von Data Catalog finden Sie unter:
+## <a name="learn-more-about-data-catalog"></a>Learn more about Data Catalog
 
-* [Registrieren von Datenquellen](data-catalog-how-to-register.md)
-* [Ermitteln von Datenquellen](data-catalog-how-to-discover.md)
-* [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-how-to-annotate.md)
-* [So dokumentieren Sie Datenquellen](data-catalog-how-to-documentation.md)
-* [Herstellen einer Verbindung mit Datenquellen](data-catalog-how-to-connect.md)
-* [Arbeiten mit großen Datenquellen in Azure Data Catalog](data-catalog-how-to-big-data.md)
-* [Verwalten von Datenassets](data-catalog-how-to-manage.md)
-* [Einrichten des Unternehmensglossars](data-catalog-how-to-business-glossary.md)
-* [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.md)
+To learn more about the capabilities of Data Catalog, see:
 
-<!---HONumber=AcomDC_0921_2016--->
+* [How to register data sources](data-catalog-how-to-register.md)
+* [How to discover data sources](data-catalog-how-to-discover.md)
+* [How to annotate data sources](data-catalog-how-to-annotate.md)
+* [How to document data sources](data-catalog-how-to-documentation.md)
+* [How to connect to data sources](data-catalog-how-to-connect.md)
+* [How to work with big data](data-catalog-how-to-big-data.md)
+* [How to manage data assets](data-catalog-how-to-manage.md)
+* [How to set up the Business Glossary](data-catalog-how-to-business-glossary.md)
+* [Frequently Asked Questions](data-catalog-frequently-asked-questions.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,249 +1,251 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory-Integration mit PostBeyond | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und PostBeyond konfigurieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with PostBeyond | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and PostBeyond."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/09/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/24/2016"
+    ms.author="jeedes"/>
 
 
-# Tutorial: Azure Active Directory-Integration mit PostBeyond
 
-In diesem Tutorial erfahren Sie, wie Sie PostBeyond in Azure Active Directory (Azure AD) integrieren.
+# <a name="tutorial:-azure-active-directory-integration-with-postbeyond"></a>Tutorial: Azure Active Directory integration with PostBeyond
 
-Die Integration von PostBeyond in Azure AD bietet folgende Vorteile:
+In this tutorial, you learn how to integrate PostBeyond with Azure Active Directory (Azure AD).
 
-- Sie können in Azure AD steuern, wer Zugriff auf PostBeyond haben soll.
-- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei PostBeyond anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+Integrating PostBeyond with Azure AD provides you with the following benefits:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- You can control in Azure AD who has access to PostBeyond
+- You can enable your users to automatically get signed-on to PostBeyond (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## Voraussetzungen
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Um die Azure AD-Integration mit PostBeyond konfigurieren zu können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- Ein Azure AD-Abonnement
-- Ein SSO-fähiges **PostBeyond**-Abonnement
+To configure Azure AD integration with PostBeyond, you need the following items:
 
+- An Azure AD subscription
+- A **PostBeyond** single-sign on enabled subscription
 
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+To test the steps in this tutorial, you should follow these recommendations:
 
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
-## Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von PostBeyond über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="scenario-description"></a>Scenario description
+In this tutorial, you test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
 
+1. Adding PostBeyond from the gallery
+2. Configuring and testing Azure AD single sign-on
 
-## Hinzufügen von PostBeyond über den Katalog
-Zum Konfigurieren der Integration von PostBeyond in Azure AD müssen Sie PostBeyond über den Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um PostBeyond über den Katalog hinzuzufügen:**
+## <a name="adding-postbeyond-from-the-gallery"></a>Adding PostBeyond from the gallery
+To configure the integration of PostBeyond into Azure AD, you need to add PostBeyond from the gallery to your list of managed SaaS apps.
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+**To add PostBeyond from the gallery, perform the following steps:**
 
-	![Active Directory][1]
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Active Directory][1]
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-	![Anwendungen][2]
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+    ![Applications][2]
 
-	![Anwendungen][3]
+4. Click **Add** at the bottom of the page.
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+    ![Applications][3]
 
-	![Anwendungen][4]
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-6. Geben Sie im Suchfeld die Zeichenfolge **PostBeyond** ein.
+    ![Applications][4]
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_01.png)
+6. In the search box, type **PostBeyond**.
 
-7. Wählen Sie im Ergebnisbereich die Option **PostBeyond** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_01.png)
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_02.png)
+7. In the results pane, select **PostBeyond**, and then click **Complete** to add the application.
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit PostBeyond.
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_02.png)
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in PostBeyond als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in PostBeyond muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen in Azure AD dem Benutzernamen in PostBeyond zuweisen.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+In this section, you configure and test Azure AD single sign-on with PostBeyond based on a test user called "Britta Simon".
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit PostBeyond müssen die folgenden Schritte ausgeführt werden:
+For single sign-on to work, Azure AD needs to know what the counterpart user in PostBeyond is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in PostBeyond needs to be established.
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in PostBeyond.
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines PostBeyond-Testbenutzers](#creating-a-PostBeyond-test-user)**, um in PostBeyond einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+To configure and test Azure AD single sign-on with PostBeyond, you need to complete the following building blocks:
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Creating a PostBeyond test user](#creating-a-PostBeyond-test-user)** - to have a counterpart of Britta Simon in PostBeyond that is linked to the Azure AD representation of her.
+5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und in der PostBeyond-Anwendung zu konfigurieren.
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
 
+The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your PostBeyond application.
 
-**Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit PostBeyond zu konfigurieren:**
 
-1. Klicken Sie im oberen Menü auf **Schnellstart**.
+**To configure Azure AD single sign-on with PostBeyond, perform the following steps:**
 
-	![Einmaliges Anmelden konfigurieren][6]
+1. In the menu on the top, click **Quick Start**.
 
-2. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **PostBeyond** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+    ![Configure Single Sign-On][6]
 
-	![Einmaliges Anmelden konfigurieren][7]
+2. In the classic portal, on the **PostBeyond** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
 
-3. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei PostBeyond anmelden** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
- 	
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_06.png)
+    ![Configure Single Sign-On][7] 
 
-4. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+3. On the **How would you like users to sign on to PostBeyond** page, select **Azure AD Single Sign-On**, and then click **Next**.
+    
+    ![Configure Single Sign-On](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_06.png)
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_07.png)
+4. On the **Configure App Settings** dialog page, perform the following steps: 
 
+    ![Configure Single Sign-On](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_07.png)
 
-    a. Geben Sie im Textfeld für die Anmelde-URL eine URL im folgenden Format ein: `https://app.postbeyond.com`.
 
-	b. Klicken Sie auf **Weiter**.
+    a. In the Sign On URL text box, type a URL using the following pattern: `https://app.postbeyond.com`. 
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für PostBeyond** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer. Kopieren Sie auch die Aussteller-URL, die Dienst-URL für einmaliges Anmelden und die Dienst-URL für einmaliges Abmelden. Der PostBeyond-Support benötigt diese Angaben, um das einmalige Anmelden konfigurieren zu können.
+    b. Click **Next**.
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_08.png)
+5. On the **Configure single sign-on at PostBeyond** page, Click **Download certificate**, and then save the file on your computer. Also, copy the issuer URL, single sign-on service URL and single sign-out service URL values. You will need to share this information with PostBeyond support to get SSO configured.
 
-6. Wenden Sie sich unter <sso@postbeyond.com> an das Supportteam von PostBeyond, um SSO für Ihre Anwendung konfigurieren zu lassen. Dort erhalten Sie Informationen zum richtigen Kanal für die SSO-Konfiguration. Dazu muss Folgendes bereitgestellt werden:
+    ![Configure Single Sign-On](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_08.png)
 
-	- Das heruntergeladene Zertifikat
-	- Die **Aussteller-URL**
-	- Die **SAML-SSO-URL**
-	- Die **Dienst-URL für einmaliges Abmelden**
+6. To get SSO configured for your application, contact PostBeyond support team at <sso@postbeyond.com>. They will assist with the proper channel to configure SSO and provide them the following: 
 
-7. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
-	
-	![Azure AD – einmaliges Anmelden][10]
+    - The downloaded certificate
+    - The **Issuer URL**
+    - The **SAML SSO URL**
+    - The **Single Sign-Out Service URL**
 
-8. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
-  	
-	![Azure AD – einmaliges Anmelden][11]
+7. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    
+    ![Azure AD Single Sign-On][10]
 
-### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+8. On the **Single sign-on confirmation** page, click **Complete**.  
+    
+    ![Azure AD Single Sign-On][11]
 
-![Azure AD-Benutzer erstellen][20]
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+In this section, you create a test user in the classic portal called Britta Simon.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+![Create Azure AD User][20]
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_09.png)
+**To create a test user in Azure AD, perform the following steps:**
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_09.png) 
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
-	
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_03.png)
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+3. To display the list of users, in the menu on the top, click **Users**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_03.png) 
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_04.png)
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_04.png) 
+
+5. On the **Tell us about this user** dialog page, perform the following steps:
  
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_05.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_05.png) 
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    a. As Type Of User, select New user in your organization.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c. Klicken Sie auf **Weiter**.
+    c. Click **Next**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+6.  On the **User Profile** dialog page, perform the following steps:
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_06.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_06.png) 
 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. In the **Role** list, select **User**.
 
-    e. Klicken Sie auf **Weiter**.
+    e. Click **Next**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_07.png) 
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_08.png) 
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
+    a. Write down the value of the **New Password**.
 
-    b. Klicken Sie auf **Fertig stellen**.
-
-
-
-### Erstellen eines PostBeyond-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in PostBeyond einen Benutzer namens Britta Simon. Falls Sie nicht wissen, wie Sie Britta Simon in PostBeyond hinzufügen sollen, können Sie sich beim Hinzufügen des Testbenutzers und beim Aktivieren von SSO vom PostBeyond-Supportteam unterstützen lassen. Verwenden Sie hierfür die E-Mail-Adresse <sso@postbeyond.com>.
-
-### Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf PostBeyond gewähren.
-
-![Benutzer zuweisen][200]
-
-**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu PostBeyond durchzuführen:**
-
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
-
-	![Benutzer zuweisen][201]
-
-2. Wählen Sie in der Anwendungsliste die Option **PostBeyond** aus.
-
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_09.png)
-
-1. Klicken Sie im oberen Menü auf **Benutzer**.
-
-	![Benutzer zuweisen][203]
-
-1. Wählen Sie in der Liste „Alle Benutzer“ den Eintrag **Britta Simon** aus.
-
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-
-	![Benutzer zuweisen][205]
+    b. Click **Complete**.   
 
 
-### Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="creating-a-postbeyond-test-user"></a>Creating a PostBeyond test user
 
-Wenn Sie im Zugriffsbereich auf die Kachel „PostBeyond“ klicken, sollte die Anmeldeseite von PostBeyond erscheinen. Klicken Sie auf **Sign in with Office 365** (Mit Office 365 anmelden), und geben Sie Ihre Azure AD-Anmeldeinformationen ein. Anschließend sollten Sie bei PostBeyond angemeldet sein.
+In this section, you create a user called Britta Simon in PostBeyond. If you don't know how to add Britta Simon in PostBeyond, please work with PostBeyond support team to add the test user and enable SSO. Contact them at <sso@postbeyond.com>.
 
-## Zusätzliche Ressourcen
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+In this section, you enable Britta Simon to use Azure single sign-on by granting her access to PostBeyond.
+
+![Assign User][200] 
+
+**To assign Britta Simon to PostBeyond, perform the following steps:**
+
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Assign User][201] 
+
+2. In the applications list, select **PostBeyond**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_09.png) 
+
+1. In the menu on the top, click **Users**.
+
+    ![Assign User][203] 
+
+1. In the All Users list, select **Britta Simon**.
+
+2. In the toolbar on the bottom, click **Assign**.
+
+    ![Assign User][205]
+
+
+### <a name="testing-single-sign-on"></a>Testing single sign-on
+
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+
+When you click the PostBeyond tile in the Access Panel, you should get to the PostBeyond sign in page. Click on **Sign in with Office 365**, enter your Azure AD credentials. Then, you should be logged in into PostBeyond.
+
+## <a name="additional-resources"></a>Additional resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -257,7 +259,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „PostBeyond“ klicken, sollte die 
 
 [5]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_05.png
 [6]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_06.png
-[7]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_050.png
+[7]:  ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_050.png
 [10]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_060.png
 [11]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_070.png
 [20]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_100.png
@@ -268,4 +270,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel „PostBeyond“ klicken, sollte die 
 [204]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-postbeyond-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

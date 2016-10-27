@@ -1,232 +1,234 @@
 <properties
-	pageTitle="Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite"
-	description="Erfahren Sie, wie Sie Unternehmensbranding der Anmelde- und Zugriffsbereichsseite hinzufügen."
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="Add company branding to your sign-in and Access Panel pages"
+    description="Learn how to add a company branding to the Azure sign-in page and the access panel page"
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/30/2016"
-	ms.author="curtand"/>
-
-# Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
+    ms.service="active-directory"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/30/2016"
+    ms.author="curtand"/>
 
 
-Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist mit Azure Active Directory möglich, da Sie die Anpassung der Darstellung folgender Websites mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas durchführen können:
-
-- **Anmeldeseite:** Diese Seite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite entweder während einer Startbereichserkennung oder per Eingabe Ihrer Anmeldeinformationen. Mit der Startbereichserkennung können Partnerbenutzer an ihren lokalen Sicherheitstokendienst (z.B. AD FS) weitergeleitet werden.
-
-- **Zugriffsbereichsseite:** Der Zugriffsbereich ist ein webbasiertes Portal, mit dem Sie die cloudbasierten Anwendungen anzeigen und starten können, für die Ihr Azure AD-Administrator Ihnen Zugriff gewährt hat. Verwenden Sie zum Zugreifen auf den Zugriffsbereich die folgende URL: [https://myapps.microsoft.com](https://myapps.microsoft.com).
-
-In diesem Thema wird beschrieben, wie Sie die Anmeldeseite und die Zugriffsbereichsseite anpassen können.
-
-> [AZURE.NOTE]
->
-- Unternehmensbranding ist ein Feature, das nur verfügbar ist, wenn Sie Ihre Azure Active Directory-Instanz auf die Premium oder Basic Edition aktualisiert haben oder Office 365-Benutzer sind. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-- Die Azure Active Directory-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+# <a name="add-company-branding-to-your-sign-in-and-access-panel-pages"></a>Add company branding to your sign-in and Access Panel pages
 
 
+To avoid confusion, many companies want to apply a consistent look and feel across all the websites and services they manage. Azure Active Directory provides this capability by allowing you to customize the appearance of the following web pages with your company logo and custom color schemes:
 
-## Anpassen der Anmeldeseite
+- **Sign-in page** - This is the page that appears when you sign in to Office 365 or other web-based applications that are using Azure AD as your identity provider. You interact with this page either during a Home Realm Discovery or to enter your credentials. The Home Realm Discovery allows the system to redirect federated users to their on-premises STS (such as AD FS).
 
-Normalerweise verwenden Sie die Anmeldeseite, wenn Sie browserbasierten Zugriff auf Ihre Cloud-Apps und -dienste benötigen, die von Ihrer Organisation abonniert wurden.
+- **Access Panel page** - The Access Panel is a web-based portal that allows you to view and launch the cloud-based applications your Azure AD administrator has granted you access to. To access the Access Panel, use the following URL: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
-Wenn Sie Änderungen auf Ihre Anmeldeseite angewendet haben, kann es bis zu einer Stunde dauern, bis die Änderungen angezeigt werden.
-
-Eine Anmeldeseite mit Branding wird nur angezeigt, wenn Sie einen Dienst mit einer mandantenspezifischen URL besuchen, z.B. https://outlook.com/**contoso**.com oder https://mail.**contoso**.com.
-
-Wenn Sie einen Dienst mit mandantenspezifischen URLs besuchen (z.B. https://mail.office365.com), wird eine Anmeldeseite ohne Branding angezeigt. In diesem Fall wird Ihr Branding angezeigt, nachdem Sie die Benutzer-ID eingegeben oder eine Benutzerkachel ausgewählt haben.
+This topic explains how you can customize the sign-in page and the access panel page.
 
 > [AZURE.NOTE]
 >
-- Ihr Domänenname muss im Abschnitt **Active Directory** > **Verzeichnis** > **Domänen** im klassischen Azure-Portal, in dem Sie das Branding konfiguriert haben, als „Aktiv“ angezeigt werden.
-- Die Anmeldeseite mit dem Branding wird nicht auf die Verbraucheranmeldeseite von Microsoft übertragen. Wenn Sie sich mit einem persönlichen Microsoft-Konto anmelden, wird eine Liste mit von Azure AD gerenderten Benutzerkacheln mit Branding angezeigt, aber das Branding Ihrer Organisation wird nicht auf die Anmeldeseite des Microsoft-Kontos übertragen.
+- Company branding is a feature that is available only if you upgraded to the Premium or Basic edition of Azure Active Directory, or are an Office 365 user. For more information, see [Azure Active Directory editions](active-directory-editions.md).
+- Azure Active Directory Premium and Basic editions are available for customers in China using the worldwide instance of Azure Active Directory. Azure Active Directory Premium and Basic editions are not currently supported in the Microsoft Azure service operated by 21Vianet in China. For more information, contact us at the [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 
-Wenn Sie Ihre Unternehmensmarke, -farben und andere anpassbare Elemente auf dieser Seite anzeigen möchten, schauen Sie sich die folgenden Bilder an, um den Unterschied zwischen den beiden Eindrücken zu verstehen.
 
-Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem Desktopcomputer **vor** einer Anpassung:
+## <a name="customizing-the-sign-in-page"></a>Customizing the sign-in page
 
-![Office 365-Anmeldeseite vor der Anpassung][1]
+Typically, if you need browser-based access to your cloud apps and services that your organization subscribes to, you use the sign-in page.
 
-Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem Desktopcomputer **nach** einer Anpassung:
+If you have applied changes to your sign-in page, it can take up to an hour for the changes to appear.
 
-![Office 365-Anmeldeseite nach der Anpassung][2]
+A branded sign-in page only appears when you visit a service with a tenant-specific URL such as https://outlook.com/**contoso**.com, or https://mail.**contoso**.com.
 
-Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem mobilen Gerät **vor** einer Anpassung:
+When you visit a service with non-tenant specific URLs (e.g.: https://mail.office365.com), a non-branded sign-in page appears. in this case, your branding appears once you have entered your user ID or you have selected a user tile.
 
-![Office 365-Anmeldeseite vor der Anpassung][3]
-
-
-Der folgende Screenshot zeigt ein Beispiel für die Office 365-Anmeldeseite auf einem mobilen Gerät **nach** einer Anpassung:
-
-![Office 365-Anmeldeseite nach der Anpassung][4]
+> [AZURE.NOTE]
+>
+- Your domain name must appear as “Active” in the **Active Directory** > **Directory** > **Domains** section of the Azure classic portal where you have configured branding.
+- Sign-in page branding doesn’t carry over to the consumer sign in page of Microsoft. If you sign in with a personal Microsoft account, you may see a branded list of user tiles rendered by Azure AD, but the branding of your organization does not apply to the Microsoft account sign-in page.
 
 
-Während der Größenänderung eines Browserfensters wird die große Abbildung (wie die zuvor gezeigte) häufig so zugeschnitten, dass verschiedene Bildschirm-Seitenverhältnisse möglich sind. Vor diesem Hintergrund sollten Sie die wichtigsten visuellen Elemente in der Abbildung beibehalten, sodass sie immer in der oberen linken Ecke erscheinen (oben rechts für Rechts-nach-links-Sprachen). Dies ist wichtig, da die Größenänderung normalerweise von der rechten unteren Ecke nach oben links oder von unten nach oben erfolgt.
+If you want to show your company brand, colors and other customizable elements on this page, see the following images to understand the difference between the two experiences.
 
-Die folgende Darstellung zeigt, wie die Abbildung zugeschnitten wird, wenn die Größe des Browsers nach links verschoben wird:
+The following screenshot shows and example for the Office 365 sign-in page on a desktop computer **before** a customization:
+
+![Office 365 sign-in page before customization][1]
+
+The following screenshot shows and example for the Office 365 sign-in page on a desktop computer **after** a customization:
+
+![Office 365 sign-in page after customization][2]
+
+The following screenshot shows an example of the Office 365 sign-in page on a mobile device **before** a customization:
+
+![Office 365 sign-in page before customization][3]
+
+
+The following screenshot shows an example of the Office 365 sign-in page on a mobile device **after** a customization:
+
+![Office 365 sign-in page after customization][4]
+
+
+When you resize a browser window, the large Illustration, like the one shown previously, is often cropped to accommodate different screen aspect ratios. With this in mind, you should try to keep the key visual elements in the illustration so that they always appear in the top-left corner (top-right for right-to-left languages). This is important because resizing typically occurs from the bottom-right corner going towards the top / left or from the bottom towards the top.
+
+The following picture shows how the illustration is cropped when the browser is resized to the left:
 
 ![][6]
 
-Hier wird verdeutlicht, wie der Browser nach Erweiterung der Größe nach oben aussieht:
+Here is how it appears after the browser is resized toward the top:
 
 ![][7]
 
-## Welche Elemente auf der Seite können angepasst werden?
+## <a name="what-elements-on-the-page-can-i-customize?"></a>What elements on the page can I customize?
 
-Sie können die folgenden Elemente auf der Anmeldeseite anpassen:
+You can customize the following elements on the sign-in page:
 
 ![][5]
 
 
 
-| Seitenelement | Position auf der Seite |
+| Page element  | Location on the page |
 |:--            | ---                  |
-|Bannerlogo | Rechts oben auf der Seite angezeigt. Ersetzt das Logo der Zielwebsite, an der Sie sich anmelden (z.B. Office 365 oder Azure).|
-|Große Abbildung / Hintergrundfarbe | Am linken Rand der Seite angezeigt. Ersetzt das Bild der Zielwebsite, an der Sie sich anmelden. Unter Umständen wird bei Verbindungen mit geringer Bandbreite oder auf kleinen Bildschirmen anstelle der großen Abbildung die Hintergrundfarbe angezeigt.|
-|Angemeldet bleiben | Wird unter dem Textfeld „Kennwort“ angezeigt. |
-|Text der Anmeldeseite | Wird über der Fußzeile angezeigt, wenn Sie hilfreiche Informationen vermitteln möchten, bevor eine Anmeldung mit einem Geschäfts- oder Schulkonto durchgeführt wird. Ein Beispiel: Sie möchten die Telefonnummer zu Ihrem Helpdesk oder einen rechtlichen Hinweis einfügen.|
+|Banner Logo    | Shown at the top-right of the page. Replaces the logo the destination site you are signing in to displays (For example. Office 365 or Azure).|
+|Large Illustration / Background Color | Shown at the left of the page. Replaces the image the destination site you are signing in to displays. The Background Color may be shown in place of the Large Illustration on low bandwidth connections, or on narrow screens.|
+|Keep me signed-in | Shown under the Password textbox. |
+|Sign-in Page Text | Shown above the page footer when you need to convey helpful information before a sign-in with a work or school account. For example, you may want to include the phone number to your help desk, or a legal statement.|
 
 
 > [AZURE.NOTE]
-Alle Elemente sind optional. Wenn Sie z.B. ein Bannerlogo angeben, aber keine große Abbildung, werden auf der Anmeldeseite Ihr Logo und die Abbildung für den Zielstandort (d.h. das Office 365-Bild mit dem kalifornischen Highway) angezeigt.
+All elements are optional. For example, if you specify a Banner Logo but no Large Illustration, the sign-in page shows your logo and the illustration for the destination site (that is, the Office 365 California highway image).
 
 
-Dank des Kontrollkästchens **Angemeldet bleiben** auf der Anmeldeseite kann der Benutzer angemeldet bleiben, wenn er den Browser schließt und wieder öffnet. Die Sitzungsdauer wird dadurch nicht beeinflusst. Das Kontrollkästchen kann auf der Azure Active Directory-Anmeldeseite ausgeblendet werden.
+On your sign-in page, the **Keep me signed in** checkbox allows a user to remain signed in when they close and re-open their browser. It does not effect session lifetime. You can hide the checkbox on the Azure Active Directory sign-in page.
 
-Ob das Kontrollkästchen angezeigt wird, hängt von der Einstellung **"Angemeldet bleiben" ausblenden** ab.
+Whether the checkbox is displayed depends on the setting of **Hide KMSI**.
 
 ![][9]
 
 
-Legen Sie diese Einstellung zum Ausblenden des Kontrollkästchens auf **Ausgeblendet** fest.
+To hide the checkbox, configure this setting to **Hidden**. 
 
-> [AZURE.NOTE] Einige Features von SharePoint Online und Office 2010 setzen voraus, dass dieses Kontrollkästchen von den Benutzern aktiviert werden kann. Wenn Sie das Kontrollkästchen mithilfe dieser Einstellung ausblenden, werden den Benutzern unter Umständen zusätzliche und unerwartete Anmeldeaufforderungen angezeigt.
-
-
-
-
-Sie können auch alle Elemente auf dieser Seite lokalisieren. Sobald Sie einen „Standardsatz“ mit Anpassungselementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Dazu zählen z. B.:
-
-- Erstellen Sie eine große "Standard"-Abbildung, die für alle Kulturen funktioniert, und erstellen Sie dann spezifische Versionen für Englisch und Französisch. Wenn Sie Ihre Browser auf eine dieser Sprachen festlegen, wird das jeweilige Bild angezeigt, während das Standardbild für alle anderen Sprachen angezeigt wird.
-
-- Konfigurieren Sie verschiedene Logos für Ihre Organisation (z. B. japanische oder hebräische Versionen).
+> [AZURE.NOTE] Some features of SharePoint Online and Office 2010 depend on users being able to check this box. If you configure this setting to hidden, your users may see additional and unexpected prompts to sign-in.
 
 
 
-## Anpassung der Zugriffsbereichsseite
 
-Die Zugriffsbereichsseite ist im Wesentlichen eine Portalseite für den schnellen Zugriff auf die Cloud-Apps, für die Ihnen vom Administrator der Zugriff gewährt wurde. Auf dieser Seite werden Ihre Apps als Anwendungskacheln aufgeführt, auf die Sie klicken können.
+You can also localize all elements on this page. Once you’ve configured a “default” set of customization elements, you can configure more versions for different locales. You can also mix and match various elements. For example, you can:
+
+- Create a “default” Large Illustration that works for all cultures, then create specific versions for English and French. When you set your browsers to one of these two languages, the specific image appears, while the default illustration appears for all other languages.
+
+- Configure different logos for your organization (e.g. Japanese or Hebrew versions).
 
 
-Der folgende Screenshot zeigt ein Beispiel für eine Zugriffsbereichsseite nach der Anpassung:
+
+## <a name="access-panel-page-customization"></a>Access panel page customization
+
+The Access Panel page is essentially a portal page for quick access to the cloud apps you have been granted access to by your administrator. On this page, your apps appear as clickable application tiles.
+
+
+The following screenshot shows an example of an access panel page after customization.
 
 ![][8]
 
-## Konfigurieren Sie Ihr Verzeichnis mit Unternehmensbranding
+## <a name="configure-your-directory-with-company-branding"></a>Configure your directory with company branding
 
-Sie können einen Standardsatz mit anpassbaren Elementen pro Verzeichnis im klassischen Azure-Portal konfigurieren. Nachdem die Standardeinstellungen gespeichert wurden, kann ein Administrator lokalisierte Versionen jedes Elements für verschiedene Sprachen bzw. Gebietsschemas hinzufügen. Alle anpassbaren Elemente sind optional.
+You can configure one default set of customizable elements per directory in the Azure classic portal. After the defaults have been saved, an administrator can add localized versions of each element, for different languages / locales. All customizable elements are optional.
 
-Wenn Sie beispielsweise ein standardmäßiges Bannerlogo konfigurieren, aber keine große Abbildung, wird Ihr Logo auf der Anmeldeseite oben rechts angezeigt. Außerdem wird die Standardabbildung der Website angezeigt.
+For example, if you configure a default Banner Logo but no Large Illustration, the sign-in page displays your logo in the upper-right corner. However the default illustration of the site is displayed.
 
-Stellen Sie sich die folgende Konfiguration vor:
+Imagine the following configuration:
 
-- Standardbannerlogo und Anmeldeseitentext in Englisch
-- Sprachspezifischer Anmeldeseitentext für Deutsch
+- A default Banner Logo and Sign-In Page Text in English
+- A language-specific sign in Page Text for German
 
-Wenn Ihre bevorzugte Sprache Deutsch ist, erhalten Sie das Standardbannerlogo und den deutschen Text.
+If your language preference is German, you get the default Banner Logo but the German text.
 
-Während Sie technisch gesehen einen anderen Satz für jede von Azure AD unterstützte Sprache konfigurieren könnten, empfehlen wir, dass die Anzahl der Varianten aus Wartungs- und Leistungsgründen so klein wie möglich bleibt.
+While you could technically configure a different set for each language supported by Azure AD, we recommend that you keep the number of variations low, for maintenance and performance reasons.
 
-**Führen Sie die folgenden Schritte aus, um Ihrem Verzeichnis Unternehmensbranding hinzuzufügen:**
+**To add company branding to your directory, perform the following steps:**
 
-1. Melden Sie sich am [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator des Verzeichnisses an, das Sie anpassen möchten.
-2. Wählen Sie das Verzeichnis, das Sie anpassen möchten.
-3. Klicken Sie in der Symbolleiste oben auf **Konfigurieren**.
-4. Klicken Sie auf **Branding anpassen**.
-4. Ändern Sie die Elemente, die Sie anpassen möchten. Alle Felder sind optional.
-5. Klicken Sie auf **Speichern**.
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) as an administrator of the directory you want to customize.
+2. Select the directory you want to customize.
+3. In the toolbar on the top, click **Configure**.
+4. Click **Customize Branding**.
+4. Modify the elements you want to customize. All fields are optional.
+5. Click **Save**.
 
-Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am Branding der Anmeldeseite vorgenommen haben.
+It can take up to an hour for new change you made to the sign-in page branding to appear.
 
-**Führen Sie die folgenden Schritte aus, um sprachspezifisches Unternehmensbranding hinzuzufügen:**
+**To add language-specific company branding, perform the following steps:**
 
-1. Melden Sie sich am [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator des Verzeichnisses an, das Sie anpassen möchten.
-2. Wählen Sie das Verzeichnis, das Sie anpassen möchten.
-3. Klicken Sie in der Symbolleiste oben auf **Konfigurieren**.
-4. Klicken Sie auf **Branding anpassen**.
-2. Klicken Sie auf **Brandingeinstellungen für eine bestimmte Sprache hinzufügen**.
-3. Wählen Sie die Sprache, für die Sie das Logo anpassen möchten, und klicken Sie dann auf **Weiter**.
-3. Bearbeiten Sie nur die Elemente, für die Sie sprachspezifische Überschreibungen konfigurieren möchten. Alle Felder sind optional. Wenn ein Feld leer bleibt, wird stattdessen der benutzerdefinierte Standardwert angezeigt (oder die Microsoft-Standardeinstellung, wenn kein benutzerdefinierter Standardwert konfiguriert ist).
-4. Klicken Sie auf **Speichern**.
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) as an administrator of the directory you want to customize.
+2. Select the directory you want to customize.
+3. In the toolbar on the top, click **Configure**.
+4. Click **Customize Branding**.
+2. Click **Add branding for a specific language**.
+3. Select the language you want to customize the logo for, and then click **Next**.
+3. Edit only the elements for which you want to configure language-specific overrides. All fields are optional. If a field is left blank, then the custom default value is displayed instead (or the Microsoft default if a custom default is not configured).
+4. Click **Save**.
 
-**Führen Sie die folgenden Schritte aus, um das Unternehmensbranding für Ihr Verzeichnis zu entfernen:**
+**To remove company branding from your directory, perform the following steps:**
 
-1. Melden Sie sich am [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator des Verzeichnisses an, das Sie anpassen möchten.
-2. Wählen Sie das Verzeichnis, das Sie anpassen möchten.
-3. Klicken Sie in der Symbolleiste oben auf **Konfigurieren**.
-4. Klicken Sie auf **Branding anpassen**.
-5. Wählen Sie auf der Seite Branding anpassen **Vorhandene Brandingeinstellungen bearbeiten** und fahren Sie anschließend mit der nächsten Seite fort.
-3. Abhängig von den Elementen, die Sie entfernen möchten, führen Sie eine oder mehrere der folgenden Aktionen aus:
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) as an administrator of the directory you want to customize.
+2. Select the directory you want to customize.
+3. In the toolbar on the top, click **Configure**.
+4. Click **Customize Branding**.
+5. On the Customize Branding page, select **Edit Existing Branding Settings** and then go to the next page.
+3. Depending on which elements you want to remove, do one or more of the following:
 
-	a. Wählen Sie unter **Bannerlogo** die Option **Hochgeladenes Logo entfernen**.
+    a. Under **Banner Logo**, select **Remove uploaded logo**.
 
-    b. Wählen Sie unter **Kachellogo** die Option **Hochgeladenes Logo entfernen**.
+    b. Under **Tile Logo**, select **Remove uploaded logo**.
 
-    c. Entfernen Sie den Text aus allen Textfeldern.
+    c. Remove the text from all textboxes.
 
-    d. Klicken Sie auf **Next**.
+    d. Click **Next**.
 
-    e. Entfernen Sie den Text aus allen Textfeldern.
+    e. Remove the text from all textboxes.
 
-4. Klicken Sie auf **Speichern**, um die Elemente zu entfernen.
-5. Klicken Sie ggf. erneut auf **Branding anpassen**, und wiederholen Sie diese Schritte für das gesamte sprachspezifische Branding, das entfernt werden soll. Alle Brandingeinstellungen wurden entfernt, wenn Sie auf **Branding anpassen** klicken und das Formular **Standardmäßiges Branding anpassen** ohne konfigurierte Einstellungen angezeigt wird.
+4. Click **Save** to remove the elements.
+5. If necessary, click **Customize Branding** again and repeat these steps for all language-specific branding that needs to be removed.
+    All branding settings have been removed when you click **Customize Branding** and see the **Customize Default Branding** form with no existing settings configured.
 
-## Testen und Beispiele
+## <a name="testing-and-examples"></a>Testing and examples
 
-Es wird empfohlen, dass Sie mit einem Testmandanten experimentieren, bevor Sie Änderungen in der Produktionsumgebung vornehmen.
+We recommend that you experiment with a test tenant before making changes in your production environment.
 
-**Überprüfen Sie wie folgt, ob Ihr Branding angewendet wurde:**
+**To verify whether your branding has been applied:**
 
-1. Öffnen Sie eine InPrivate- oder Inkognito-Browsersitzung.
-2. Greifen Sie auf https://outlook.com/contoso.com zu, und ersetzen Sie dabei „contoso.com“ durch die von Ihnen angepasste Domäne.
+1. Open an InPrivate or Incognito browser session.
+2. Visit https://outlook.com/contoso.com, replacing contoso.com with the domain you’ve customized.
 
-Dies funktioniert auch für Domänen, die ein Format wie „contoso.onmicrosoft.com“ haben.
+This also works with domains that look like contoso.onmicrosoft.com.
 
-Um Sie bei der Erstellung effektiver Anpassungssätze zu unterstützen, haben wir die folgenden beiden fiktiven Anmeldeseiten erstellt und angepasst:
+To help you create effective customization sets, we have customized the following two fictitious sign-in pages:
 
 - [http://aka.ms/aaddemo001](http://aka.ms/aaddemo001)
 - [http://aka.ms/aaddemo002](http://aka.ms/aaddemo002)
 
-Um die sprachspezifischen Einstellungen zu testen, müssen Sie die Standard-Spracheinstellungen in Ihrem Webbrowser in eine Sprache ändern, die Sie in Ihrer Anpassung festgelegt haben. In Internet Explorer wird dies im Menü **Internetoptionen** konfiguriert.
+To test the language-specific settings, you need to modify the default language preferences in your web browser to a language you have set in your customization. In Internet Explorer, you configure this in the **Internet Options** menu.
 
-## Anpassbare Elemente
+## <a name="customizable-elements"></a>Customizable elements
 
-Einige anpassbare Elemente in Azure AD dienen mehreren Verwendungszwecken. Sie können Firmenlogos einmal pro Verzeichnis konfigurieren, um es dann sowohl auf der Anmeldeseite als auch auf der Zugriffsbereichsseite zu verwenden. Einige anpassbare Elemente gelten nur speziell für die Anmeldeseite. Die folgende Tabelle enthält die Details für die verschiedenen anpassbaren Elemente.
+Some customizable elements in Azure AD have multiple use cases. You can configure company logos once per directory and is used on both, the sign-in and Access Panel pages. Some customizable elements are specific only to the sign-in page. The following table provides details for the different customizable elements.
 
-Name | Beschreibung | Einschränkungen | Empfehlungen
-	------------- | ------------- | ------------- | -------------
-Bannerlogo | Das Bannerlogo wird auf der Anmeldeseite und im Zugriffsbereich angezeigt. | <p>JPG oder PNG-</p><p>60 x 280 Pixel</p><p>10 KB</p> | <p>Verwenden Sie das vollständige Logo Ihrer Organisation (einschließlich Piktogramm und Firmenschriftzug)</p><p>Halten Sie es unter 30 Pixel, um Bildlaufleisten auf mobilen Geräten zu vermeiden</p><p>Halten Sie es kleiner als 4 KB</p><p>Verwenden Sie eine transparente PNG-Datei (gehen Sie nicht davon aus, dass die Anmeldeseite immer einen weißen Hintergrund hat)</p>
-Kachellogo | (zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um das generische „Geschäfts- oder Schulkonto“-Piktogramm an unterschiedlichen Stellen zu platzieren. | <p>JPG oder PNG-</p><p>120 x 120 Pixel</p><p>10 KB</p> | <p>Halten Sie es einfach (kein kleiner Text), da dieses Abbild um 50 % verkleinert werden kann
+Name | Description | Constraints | Recommendations
+    ------------- | ------------- | ------------- | -------------
+Banner Logo | The Banner Logo is displayed on the sign-in page and the Access panel. | <p>JPG or PNG</p><p>60x280 pixels</p><p>10 KB</p> | <p>Use your organization’s full logo (including pictogram and logotype)</p><p>Keep it under 30 pixels high to avoid introducing scrollbars on mobile devices</p><p>Keep it under 4 KB</p><p>Use a transparent PNG (don’t assume that the sign-in page always has a white background)</p>
+Tile Logo | (currently not used in the sign-in page) In the future, this text may be used to replace the generic “work or school account” pictogram in different places of the experience. | <p>JPG or PNG</p><p>120x120 pixels</p><p>10 KB</p> | <p>Keep it simple (no small text), as this image may be resized to 50%
 </p> |
-Benutzernamenbezeichnung auf der Anmeldeseite | (zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um die generische „Geschäfts- oder Schulkonto“-Zeichenfolge an unterschiedlichen Stellen zu platzieren. Sie können ihn beispielsweise auf „Contoso-Konto“ oder „Contoso-ID“ festlegen. | <p>Unicode-Text, bis zu 50 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> | <p>Halten Sie es kurz und einfach</p><p>Fragen Sie die Benutzer, wie Sie sich in der Regel auf das Geschäfts- oder Schulkonto beziehen, das Sie zur Verfügung stellen.</p>
-Text der Anmeldeseite | Dieser „Textbaustein“ wird unter dem Anmeldeseitenformular angezeigt und kann verwendet werden, um zusätzliche Anweisungen zu kommunizieren oder mitzuteilen, wo es Hilfe und Support gibt. | <p>Unicode-Text, bis zu 256 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> | Verwenden Sie maximal 250 Zeichen (ungefähr drei Zeilen Text)
-Abbildung auf der Anmeldeseite | Die Abbildung zeigt ein großes Bild, das auf der Anmeldeseite links neben dem Anmeldeseitenformular angezeigt wird. | <p>JPG oder PNG-</p><p>1420 x 1200</p><p>500 KB</p> | <p>1420 x 1200 Pixel</p><p>Wichtig: Halten Sie es so klein wie möglich, idealerweise unter 200 KB. Falls dieses Bild zu groß ist, beeinflusst dies die Leistung der Anmeldeseite, wenn das Bild nicht zwischengespeichert wird</p><p>Dieses Bild wird häufig zugeschnitten, um verschiedene Bildschirm-Seitenverhältnisse zu ermöglichen. Belassen Sie die visuellen Hauptelemente in der oberen linken Ecke (oben rechts für RTL-Sprachen), weil die Größenänderung von der Ecke unten rechts nach oben links erfolgt, wenn das Browserfenster verkleinert wird.</p>
-Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseite wird im Bereich links neben dem Anmeldeseitenformular verwendet. | Muss eine RGB-Farbe im hexadezimalen Format sein (Beispiel: #FFFFFF) | <p>Die Hintergrundfarbe wird bei Verbindungen mit geringer Bandbreite unter Umständen anstelle der großen Abbildung angezeigt</p><p>Wir empfehlen, die Grundfarbe des Bannerlogos auszuwählen</p>
+Sign-in Page User Name Label | (currently not used in the sign-in page) In the future, this text may be used to replace the generic “work or school account” string in different places of the experience. You can set it to something like “Contoso account” or “Contoso ID.” | <p>Unicode text, up to 50 characters</p><p>Plain text only (no links or HTML tags)</p> | <p>Keep it short and simple</p><p>Ask your users how they usually refer to the work or school account you provide them with.</p>
+Sign-in Page Text | This “boilerplate” text appears below the sign-in page form and can be used to communicate additional instructions, or where to get help and support. | <p>Unicode text, up to 256 characters</p><p>Plain text only (no links or HTML tags)</p> | Keep it under 250 characters (approximately 3 lines of text)
+Sign-in Page Illustration | The illustration is a large image that is displayed on the sign-in page to the left of the sign-in page form. | <p>JPG or PNG</p><p>1420x1200</p><p>500 KB</p> | <p>1420x1200 pixels</p><p>Important: Keep it as small as possible, ideally under 200 KB. If this image is too large, the performance of the Sign-in page is impacted when the image isn’t cached</p><p>This image is often cropped, to accommodate different screen ratios. Keep the primary visual elements in the top left corner (top right for RTL languages), because resizing occurs from the bottom/right corner, going towards the top / left, as the browser window shrinks.</p>
+Sign-in Page Background Color | The sign-in page background color is used in the area to the left of the sign-in page form. | Must be an RGB color in hexadecimal form (example: #FFFFFF) | <p>The background color may be shown in place of the large Illustration on low-bandwidth connections</p><p>We suggest picking the primary color of the Banner Logo</p>
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next Steps
 
-- [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md)
-- [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
+- [Getting started with Azure Active Directory Premium](active-directory-get-started-premium.md)
+- [View your access and usage reports](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-add-company-branding/SignInPage_beforecustomization.png
@@ -239,4 +241,8 @@ Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseit
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,41 +1,45 @@
-## Konfigurieren der Anwendung für den Zugriff auf Azure Storage
+## <a name="configure-your-application-to-access-azure-storage"></a>Configure your application to access Azure Storage
 
-Es gibt zwei Möglichkeiten, um Ihre Anwendung für den Zugriff auf die Storage-Dienste zu authentifizieren:
+There are two ways to authenticate your application to access Storage services:
 
-- Gemeinsam verwendeter Schlüssel: Verwenden Sie den gemeinsam verwendeten Schlüssel nur für Testzwecke.
-- Shared Access Signature (SAS): Verwenden Sie SAS für Produktionsanwendungen.
+- Shared Key: Use Shared Key for testing purposes only
+- Shared Access Signature (SAS): Use SAS for production applications
 
-### Gemeinsam verwendeter Schlüssel
-Bei der Authentifizierung mit gemeinsam verwendetem Schlüssel nutzt die Anwendung Ihren Kontonamen und Kontoschlüssel, um auf die Storage-Dienste zuzugreifen. Für eine schnelle Demonstration, wie Sie diese Bibliothek verwenden können, wird in diesen ersten Schritten die Authentifizierung mit gemeinsam verwendetem Schlüssel verwendet.
+### <a name="shared-key"></a>Shared Key
+Shared Key authentication means that your application will use your account name and account key to access Storage services. For the purposes of quickly showing how to use this library, we will be using Shared Key authentication in this getting started.
 
-> [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ] Ihr Kontoname und Kontoschlüssel, mit denen Sie vollständigen Lese-/Schreibzugriff auf das zugehörige Storage-Konto erhalten, werden an alle Personen verteilt, die Ihre App herunterladen. Diese Vorgehensweise wird **nicht** empfohlen, da das Risiko besteht, dass Ihr Schlüssel durch nicht vertrauenswürdige Clients beeinträchtigt werden kann.
+> [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ] Your account name and account key, which give full read/write access to the associated Storage account, will be distributed to every person that downloads your app. This is **not** a good practice as you risk having your key compromised by untrusted clients.
 
-Wenn Sie die Authentifizierung mit gemeinsam verwendetem Schlüssel nutzen, erstellen Sie eine [Verbindungszeichenfolge](../articles/storage/storage-configure-connection-string.md). Die Verbindungszeichenfolge besteht aus:
+When using Shared Key authentication, you will create a [connection string](../articles/storage/storage-configure-connection-string.md). The connection string is comprised of:  
 
-- dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
-- dem **Kontonamen** – der Name Ihres Storage-Kontos
-- dem **Kontoschlüssel** – navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten.
-- (Optional) **EndpointSuffix** – dieser Wert wird für Speicherdienste in Regionen mit anderen Endpunktsuffixen verwendet, z.B. Azure China oder Azure Governance.
+- The **DefaultEndpointsProtocol** - you can choose HTTP or HTTPS. However, using HTTPS is highly recommended.
+- The **Account Name** - the name of your storage account
+- The **Account Key** - On the [Azure Portal](https://portal.azure.com), navigate to your storage account and click the **Keys** icon to find this information.
+- (Optional) **EndpointSuffix** - This is used for storage services in regions with different endpoint suffixes, such as Azure China or Azure Governance.
 
-Hier sehen Sie ein Beispiel einer Verbindungszeichenfolge bei Authentifizierung mit gemeinsam verwendetem Schlüssel:
+Here is an example of connection string using Shared Key authentication:
 
 `"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here"`
 
-### Shared Access Signatures (SAS)
-Die empfohlene Methode für eine mobile Anwendung zum Authentifizieren einer Anforderung durch einen Client bei einem Azure Storage-Dienst ist die Nutzung einer Shared Access Signature (SAS). SAS ermöglicht es Ihnen, dem Client mit einem angegebenen Satz von Berechtigungen für einen bestimmten Zeitraum Zugriff auf eine Ressource zu gewähren. Als Speicherkontobesitzer müssen Sie eine SAS für Ihre mobilen Clients erstellen. Zum Generieren der SAS sollten Sie wahrscheinlich einen separaten Dienst schreiben, der die SAS generiert, die an Ihre Clients verteilt werden. Zu Testzwecken können Sie mit dem [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com) oder dem [Azure-Portal](https://portal.azure.com) eine SAS erstellen. Bei der Erstellung der SAS können Sie das Zeitintervall angeben, in dem die SAS gültig ist, sowie die Berechtigungen, die die SAS dem Client erteilt.
+### <a name="shared-access-signatures-(sas)"></a>Shared Access Signatures (SAS)
+For a mobile application, the recommended method for authenticating a request by a client against the Azure Storage service is by using a Shared Access Signature (SAS). SAS allows you to grant a client access to a resource for a specified period of time, with a specified set of permissions.
+As the storage account owner, you'll need to generate a SAS for your mobile clients to consume. To generate the SAS, you'll probably want to write a separate service that generates the SAS to be distributed to your clients. For testing purposes, you can use the [Microsoft Azure Storage Explorer](http://storageexplorer.com) or the [Azure Portal](https://portal.azure.com) to generate a SAS. When you create the SAS, you can specify the time interval over which the SAS is valid, and the permissions that the SAS grants to the client.
 
-Das folgende Beispiel zeigt die Verwendung des Microsoft Azure-Speicher-Explorers zum Erstellen einer SAS.
+The following example shows how to use the Microsoft Azure Storage Explorer to generate a SAS.
 
-1. Wenn Sie es nicht bereits getan haben, [installieren Sie den Microsoft Azure-Speicher-Explorer](http://storageexplorer.com).
+1. If you haven't already, [Install the Microsoft Azure Storage Explorer](http://storageexplorer.com)
 
-2. Stellen Sie eine Verbindung mit Ihrem Abonnement her.
+2. Connect to your subscription.
 
-3. Klicken Sie auf das Speicherkonto und auf die Registerkarte „Aktionen“ unten links. Klicken Sie auf „Shared Access Signature abrufen“, um eine „Verbindungszeichenfolge“ für Ihre SAS zu generieren.
+3. Click on your Storage account and click on the "Actions" tab at the bottom left. Click "Get Shared Access Signature" to generate a "connection string" for your SAS.
 
-4. Hier ist ein Beispiel für eine SAS-Verbindungszeichenfolge, die Lese- und Schreibberechtigungen auf Dienst-, Container- und Objektebene für den Blobdienst des Speicherkontos gewährt.
+4. Here is an example of a SAS connection string that grants read and write permissions at the service, container and object level for the blob service of the Storage account.
 
   `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Wie Sie sehen, machen Sie den Kontoschlüssel in Ihrer Anwendung nicht verfügbar, wenn Sie eine SAS verwenden. Weitere Informationen zu SAS und bewährten Methoden bei der Verwendung von SAS erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](../articles/storage/storage-dotnet-shared-access-signature-part-1.md).
+As you can see, when using a SAS, you’re not exposing your account key in your application. You can learn more about SAS and best practices for using SAS by checking out [Shared Access Signatures: Understanding the SAS model](../articles/storage/storage-dotnet-shared-access-signature-part-1.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

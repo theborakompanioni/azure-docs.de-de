@@ -1,68 +1,73 @@
 <properties
-	pageTitle="Ändern von Profilinformationen für Ihr Azure-Konto | Microsoft Azure"
-	description="Beschreibt, wie Sie das Profil für Ihr Azure-Konto ändern, und beantwortet häufig gestellte Fragen, z. B., warum im Azure-Kontocenter das Land nicht geändert werden kann."
-	services=""
-	documentationCenter=""
-	authors="genlin"
-	manager="mbaldwin"
-	editor=""
-	tags="billing"
-	/>
+    pageTitle="How to change profile information of your Azure account| Microsoft Azure"
+    description="Describes how to change the profile of your Azure account, and answers the common questions such as why cannot change country in the Azure Account Center"
+    services=""
+    documentationCenter=""
+    authors="genlin"
+    manager="mbaldwin"
+    editor=""
+    tags="billing"
+    />
 
 <tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="genli"/>
+    ms.service="billing"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/17/2016"
+    ms.author="genli"/>
 
-# Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer
 
-## Zusammenfassung
+# <a name="how-to-change-profile-information-of-your-azure-account-such-as-contact-email,-address-and-phone-number"></a>How to change profile information of your Azure account such as contact email, address and phone number
 
-Haben Sie eine wichtige E-Mail von Azure verpasst? Möchten Sie andere Kontaktinformationen in Ihrem Profil aktualisieren? In diesem Artikel erfahren Sie Folgendes:
+## <a name="summary"></a>Summary
 
--	[Ändern Ihrer Profilinformationen](#how-to-change-your-profile-information)
--	[Antworten auf häufige Fragen und Probleme](#frequently-asked-questions)
+Missed an important email from Azure? Want to update other contact information in your profile? In this article you will learn:
 
-> [AZURE.NOTE] Wenn Sie bei einem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+-   [How to change your profile information](#how-to-change-your-profile-information)
+-   [Answers to common issues and questions](#frequently-asked-questions)
 
-## Wichtige Informationen zu Ihrer Profil-E-Mail-Adresse
+> [AZURE.NOTE] If you need more help at any point in this article, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
 
-Die E-Mail-Adresse im Profil des Kontoadministrators wird von Microsoft dazu verwendet, Sie über wichtige abrechnungsbezogene Aktualisierungen für das Abonnement zu benachrichtigen. Es wird empfohlen, dass Sie eine Kontakt-E-Mail-Adresse angeben, die Sie häufig überprüfen.
+## <a name="important-information-about-your-profile-email-address"></a>Important information about your profile email address
 
-## Ändern Ihrer Profilinformationen
+The email address in the Account Administrator’s profile is used by Microsoft to notify you about important billing-related updates about the subscription. We recommend that you specify a contact email address that you check regularly.
 
-1.	Melden Sie sich im [Azure-Kontocenter](https://account.windowsazure.com/) als Kontoadministrator an, und klicken Sie auf **Profil**. Oder wechseln Sie zu https://account.windowsazure.com/Profile.
+## <a name="how-to-change-your-profile-information"></a>How to change your profile information
 
-2.	Klicken Sie auf die Schaltfläche **Details bearbeiten**, und aktualisieren Sie die Informationen für das **Profil**.
+1.  Sign in to the [Azure Account Center](https://account.windowsazure.com/) as the account administrator and then click **Profile**. Or go to https://account.windowsazure.com/Profile.
 
-	![Profil](./media/billing-how-to-change-azure-account-profile/profile.png)
+2.  Select the **Edit details** button, and then update the **Profile** information.
 
-## Häufig gestellte Fragen
+    ![profile](./media/billing-how-to-change-azure-account-profile/profile.png)
 
-### Kann ich die E-Mail-Adresse für den Kontoadministrator in meinem Profil ändern?
+## <a name="frequently-asked-questions"></a>Frequently asked questions
 
-Ja. Der Kontoadministrator ist die Person, die das Azure-Konto einrichtet und wichtige E-Mail-Benachrichtigungen zu allen Abonnements empfängt, die zu diesem Konto gehören. Es wird empfohlen, dass Sie eine Kontakt-E-Mail-Adresse angeben, die der Kontoadministrator häufig überprüft.
+### <a name="can-i-change-the-account-administrator-email-address-in-my-profile?"></a>Can I change the Account Administrator email address in my profile?
 
-### Wird beim Aktualisieren meiner Profil-E-Mail-Adresse auch meine E-Mail-Adresse für die Anmeldung aktualisiert?
+Yes. The Account Administrator is the person who set up the Azure account and who receives important email notifications about all the subscriptions under the account. We recommend that you specify a contact email address that the Account Administrator checks regularly.
 
-Nein. Das Aktualisieren der Profil-E-Mail-Adresse führt nicht zum Aktualisieren der E-Mail-Adresse für die Anmeldung. Um Ihre E-Mail-Adresse für die Anmeldung zu ändern, müssen Sie den Besitz für das Konto übertragen.
+### <a name="does-updating-my-profile-email-also-update-my-login-email-address?"></a>Does updating my profile email also update my login email address?
 
-### Wird durch das Aktualisieren meiner Profil-E-Mail-Adresse auch meine Adresse für die Kreditkartenabrechnung aktualisiert?
+No. Updating the profile email address does not update your login email address. To change your login email address, you have to transfer ownership of the account.
 
-Nein. Sie können die für Ihre Kreditkarte hinterlegte Rechnungsadresse ändern, indem Sie im Azure-Kontocenter zur [Abonnementseite](https://account.windowsazure.com/subscriptions) wechseln.
+### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address?"></a>Does updating my profile address also update my credit card billing address?
 
-### Warum kann ich das Land nicht aktualisieren?
+No. You can update the billing address associated with your credit card by going to the [subscription page](https://account.windowsazure.com/subscriptions) in the Azure Account Center.
 
-Aufgrund technischer Einschränkungen kann das Land für ein vorhandenes Konto nicht geändert werden. Sie können jedoch ein neues Konto im gewünschten Land erstellen und dann den Azure-Support kontaktieren, um ihre Dienste zu diesem Konto zu migrieren.
+### <a name="why-can’t-i-update-the-country?"></a>Why can’t I update the country?
 
-### Welche E-Mail-Adresse wird für das Feature Azure-Abrechnungswarnungen (Vorschau) verwendet?
+Because of technical constraints, we cannot change the country on an existing account. However, you can create a new account in the desired country and then contact Azure support to migrate your services to that account.
 
-Wenn Sie sich für das neue Feature Azure-Abrechnungswarnungen (Vorschau) anmelden, werden Azure-Abrechnungswarnungen an die angegebene E-Mail-Adresse gesendet – unabhängig davon, ob sie die E-Mail-Adresse für den Kontoadministrator geändert haben.
+### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use?"></a>What email address does the Azure Billing Alerts preview feature use?
 
-> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+If you sign up for the new Azure Billing Alerts preview feature, you will receive Azure Billing Alerts email at the address you specify, regardless of whether you have changed the Account Administrator email address.
 
-<!---HONumber=AcomDC_0824_2016-->
+> [AZURE.NOTE] If you still have further questions, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -3,22 +3,27 @@
     description="Erstellen einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle"
     services="virtual-machine-scale-sets"
     documentationCenter=""
-	authors="gatneil"
-	manager="madhana"
-	editor="tysonn"
-	tags="azure-resource-manager" />
+    authors="gatneil"
+    manager="madhana"
+    editor="tysonn"
+    tags="azure-resource-manager" />
 
 <tags
     ms.service="virtual-machine-scale-sets"
     ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="article"
+    ms.topic="get-started-article"
     ms.date="03/22/2016"
-	ms.author="gatneil"/>
+    ms.author="gatneil"/>
 
-# Erstellen einer Skalierungsgruppe für einen virtuellen Linux-Computer mit der Azure-Befehlszeilenschnittstelle
+
+# <a name="create-a-linux-virtual-machine-scale-set-using-azure-cli"></a>Erstellen einer Skalierungsgruppe für einen virtuellen Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
 [AZURE.INCLUDE [virtual-machines-linux-cli-vmss-quick-create-include](../../includes/virtual-machines-linux-cli-vmss-quick-create-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

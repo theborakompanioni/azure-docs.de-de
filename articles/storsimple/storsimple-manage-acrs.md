@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Verwalten von Zugriffssteuerungsdatensätzen in StorSimple | Microsoft Azure"
-   description="Beschreibt, wie Sie mit Zugriffssteuerungsdatensätzen (Access Control Record, ACR) angeben, welche Hosts Verbindungen mit einem Volume auf dem StorSimple-Gerät herstellen können."
+   pageTitle="Manage access control records in StorSimple | Microsoft Azure"
+   description="Describes how to use access control records (ACRs) to determine which hosts can connect to a volume on the StorSimple device."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,84 +15,89 @@
    ms.date="08/18/2016"
    ms.author="alkohli" />
 
-# Verwalten von Zugriffssteuerungsdatensätzen mithilfe des StorSimple Manager-Diensts
 
-## Übersicht
+# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Use the StorSimple Manager service to manage access control records
 
-Mit Zugriffssteuerungsdatensätzen (Access Control Record, ACR) können Sie angeben, welche Hosts Verbindungen mit einem Volume auf dem StorSimple-Gerät herstellen können. ACRs sind auf ein bestimmtes Volume festgelegt. Sie enthalten die qualifizierten iSCSI-Namen (IQN) der Hosts. Wenn ein Host versucht, eine Verbindung mit einem Volume herzustellen, überprüft das Gerät den ACR zu diesem Volume anhand des IQN-Namens. Bei einer Übereinstimmung wird eine Verbindung hergestellt. Im Abschnitt mit den Zugriffssteuerungsdatensätzen auf der Seite **Konfigurieren** werden alle Zugriffssteuerungsdatensätze zu den IQNs der Hosts angezeigt.
+## <a name="overview"></a>Overview
 
-In diesem Tutorial werden die folgenden häufig durchgeführten ACR-bezogenen Aufgaben erläutert:
+Access control records (ACRs) allow you to specify which hosts can connect to a volume on the StorSimple device. ACRs are set to a specific volume and contain the iSCSI Qualified Names (IQNs) of the hosts. When a host tries to connect to a volume, the device checks the ACR associated with that volume for the IQN name and if there is a match, then the connection is established. The access control records section on the **Configure** page displays all the access control records with the corresponding IQNs of the hosts.
 
-- Hinzufügen von Zugriffssteuerungsdatensätzen
-- Bearbeiten von Zugriffssteuerungsdatensätzen
-- Löschen von Zugriffssteuerungsdatensätzen
+This tutorial explains the following common ACR-related tasks:
+
+- Add an access control record 
+- Edit an access control record 
+- Delete an access control record 
 
 > [AZURE.IMPORTANT] 
 > 
-> - Achten Sie beim Zuweisen eines ACR zu einem Volume darauf, dass dabei nicht gleichzeitig von mehreren nicht gruppierten Hosts auf das Volume zugegriffen wird, da dadurch das Volume beschädigt werden könnte.
-> - Stellen Sie beim Löschen eines ACR von einem Volume sicher, dass der entsprechende Host nicht auf das Volume zugreift, da das Löschen zu einer Unterbrechung des Lese-/ Schreibzugriff führen kann.
+> - When assigning an ACR to a volume, take care that the volume is not concurrently accessed by more than one non-clustered host because this could corrupt the volume. 
+> - When deleting an ACR from a volume, make sure that the corresponding host is not accessing the volume because the deletion could result in a read-write disruption.
 
-## Hinzufügen von Zugriffssteuerungsdatensätzen
+## <a name="add-an-access-control-record"></a>Add an access control record
 
-ACRs werden auf der Seite **Konfigurieren** des StorSimple Manager-Diensts hinzugefügt. In der Regel ordnen Sie einem Volume einen ACR zu.
+You use the StorSimple Manager service **Configure** page to add ACRs. Typically, you will associate one ACR with one volume.
 
-Führen Sie die folgenden Schritte aus, um einen ACR hinzuzufügen:
+Perform the following steps to add an ACR.
 
-#### So fügen Sie einen Zugriffssteuerungsdatensatz hinzu
+#### <a name="to-add-an-access-control-record"></a>To add an access control record
 
-1. Wählen Sie auf der Startseite des Diensts Ihren Dienst aus, doppelklicken Sie auf den Namen, und klicken Sie dann auf die Registerkarte **Konfigurieren**.
+1. On the service landing page, select your service, double-click the service name, and then click the **Configure** tab.
 
-2. Geben Sie in der Tabelle unter **Zugriffssteuerungsdatensätze** einen **Namen** für Ihren ACR ein.
+2. In the tabular listing under **Access control records**, supply a **Name** for your ACR.
 
-3. Geben Sie unter **iSCSI-Initiatorname** den qualifizierten iSCSI-Namen (IQN) des Windows-Hosts an. Gehen Sie zum Abrufen des IQN des Windows Server-Hosts folgendermaßen vor:
+3. Provide the IQN name of your Windows host under **iSCSI Initiator Name**. To get the IQN of your Windows Server host, do the following:
 
-   - Starten Sie den Microsoft iSCSI-Initiator auf dem Windows-Host.
-   - Wählen Sie im Fenster **iSCSI Initiator Properties** auf der Registerkarte **Configuration** die Zeichenfolge im Feld **Initiator Name** aus, und kopieren Sie sie.
-   - Fügen Sie diese Zeichenfolge im klassischen Azure-Portal in das Feld **iSCSI-Initiatorname** der ACR-Tabelle ein.
+   - Start the Microsoft iSCSI initiator on your Windows host.
+   - In the **iSCSI Initiator Properties** window, on the **Configuration** tab, select and copy the string from the **Initiator Name** field.
+   - Paste this string in the **iSCSI Initiator Name** field on the ACRs table in the Azure classic portal.
 
-4. Klicken Sie auf **Speichern**, um den neu erstellten ACR zu speichern. Die tabellarische Auflistung wird mit dem hinzugefügten Eintrag aktualisiert.
+4. Click **Save** to save the newly created ACR. The tabular listing will be updated to reflect this addition.
 
-## Bearbeiten von Zugriffssteuerungsdatensätzen
+## <a name="edit-an-access-control-record"></a>Edit an access control record
 
-Navigieren Sie im klassischen Azure-Portal zur Seite **Konfigurieren**, um ACRs zu bearbeiten.
+You use the **Configure** page in the Azure classic portal to edit ACRs. 
 
-> [AZURE.NOTE] Sie können nur die ACRs ändern, die derzeit nicht verwendet werden. Zum Bearbeiten eines ACR, der einem das momentan verwendeten Volume zugeordnet ist, müssen Sie zunächst das Volume offline schalten.
+> [AZURE.NOTE] You can modify only those ACRs that are currently not in use. To edit an ACR associated with a volume that is currently in use, you must first take the volume offline.
 
-Führen Sie die folgenden Schritte aus, um einen ACR zu bearbeiten:
+Perform the following steps to edit an ACR.
 
-#### So bearbeiten Sie einen Zugriffssteuerungsdatensatz
+#### <a name="to-edit-an-access-control-record"></a>To edit an access control record
 
-1. Wählen Sie auf der Startseite des Diensts Ihren Dienst aus, doppelklicken Sie auf den Namen, und klicken Sie dann auf die Registerkarte **Konfigurieren**.
+1. On the service landing page, select your service, double-click the service name, and then click the **Configure** tab.
 
-2. Zeigen Sie in der tabellarischen Auflistung der Zugriffssteuerungsdatensätze auf den zu ändernden ACR.
+2. In the tabular listing of the access control records, hover over the ACR that you wish to modify.
 
-3. Geben Sie einen neuen Namen und/oder IQN für den ACR an.
+3. Supply a new name and/or IQN for the ACR.
 
-4. Klicken Sie auf **Speichern**, um den geänderten ACR zu speichern. Die tabellarische Auflistung wird den Änderungen entsprechend aktualisiert.
+4. Click **Save** to save the modified ACR. The tabular listing will be updated to reflect this change.
 
-## Löschen von Zugriffssteuerungsdatensätzen
+## <a name="delete-an-access-control-record"></a>Delete an access control record
 
-Navigieren Sie im klassischen Azure-Portal zur Seite **Konfigurieren**, um ACRs zu löschen.
+You use the **Configure** page in the Azure classic portal to delete ACRs. 
 
-> [AZURE.NOTE] Sie können nur die ACRs löschen, die derzeit nicht verwendet werden. Zum Löschen eines ACR, der einem momentan verwendeten Volume zugeordnet ist, müssen Sie zunächst das Volume offline schalten.
+> [AZURE.NOTE] You can delete only those ACRs that are currently not in use. To delete an ACR associated with a volume that is currently in use, you must first take the volume offline.
 
-Führen Sie die folgenden Schritte aus, um einen Zugriffssteuerungsdatensatz zu löschen.
+Perform the following steps to delete an access control record.
 
-#### So löschen Sie einen Zugriffssteuerungsdatensatz
+#### <a name="to-delete-an-access-control-record"></a>To delete an access control record
 
-1. Wählen Sie auf der Startseite des Diensts Ihren Dienst aus, doppelklicken Sie auf den Namen, und klicken Sie dann auf die Registerkarte **Konfigurieren**.
+1. On the service landing page, select your service, double-click the service name, and then click the **Configure** tab.
 
-2. Zeigen Sie in der tabellarischen Auflistung der Zugriffssteuerungsdatensätze (ACRs) auf den zu löschenden ACR.
+2. In the tabular listing of the access control records (ACRs), hover over the ACR that you wish to delete.
 
-3. Ein Löschsymbol (**x**) wird in der äußersten rechten Spalte für den ausgewählten ACR angezeigt. Klicken Sie auf das Symbol **x**, um den ACR zu löschen.
+3. A delete icon (**x**) will appear in the extreme right column for the ACR that you select. Click the **x** icon to delete the ACR.
 
-4. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um den Löschvorgang fortzusetzen. Die tabellarische Auflistung wird mit dem gelöschten Eintrag aktualisiert.
+4. When prompted for confirmation, click **YES** to continue with the deletion. The tabular listing will be updated to reflect the deletion.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Erfahren Sie mehr über das [Verwalten von StorSimple-Volumes](storsimple-manage-volumes.md).
+- Learn more about [managing StorSimple volumes](storsimple-manage-volumes.md).
 
-- Erfahren Sie mehr zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+- Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

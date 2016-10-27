@@ -1,23 +1,25 @@
-#### So erstellen Sie öffentliche Endpunkte auf dem virtuellen Gerät
+#### <a name="to-create-public-endpoints-on-the-virtual-device"></a>To create public endpoints on the virtual device
 
-1. Melden Sie sich am klassischen Azure-Portal an.
+1. Sign in to the Azure classic portal.
 
-- Klicken Sie auf **Virtuelle Computer**, und wählen Sie dann den als virtuelles Gerät zu verwendenden virtuellen Computer aus.
+- Click **Virtual Machines**, and then select the virtual machine that is being used as your virtual device.
 
-- Klicken Sie auf **Endpunkte**. Auf der Seite **Endpunkte** werden alle Endpunkte für den virtuellen Computer aufgelistet.
+- Click **Endpoints**. The **Endpoints** page lists all endpoints for the virtual machine.
 
-- Klicken Sie auf **Hinzufügen**. Das Dialogfeld **Endpunkt hinzufügen** wird angezeigt. Klicken Sie auf den Pfeil, um fortzufahren.
+- Click **Add**. The **Add Endpoint** dialog box appears. Click the arrow to continue.
 
-- Geben Sie unter **Name** den folgenden Namen für den Endpunkt ein: **WinRMHttps**.
+- For the **Name**, type the following name for the endpoint: **WinRMHttps**.
 
-- Geben Sie unter **Protokoll** den Wert **TCP** ein.
+- For the **Protocol**, specify **TCP**.
 
-- Geben Sie unter **Öffentlicher Port** die Portnummern für die Verbindung ein.
+- For the **Public Port**, type the port numbers that you want to use for the connection.
 
-- Geben Sie unter **Privater Port** den Wert **5986** ein.
+- For the **Private Port**, type **5986**.
 
-- Aktivieren Sie das Kontrollkästchen, um den Endpunkt zu erstellen.
+- Click the check mark to create the endpoint.
 
-Nach dem Erstellen des Endpunkts können Sie die Details zum Ermitteln der öffentlichen virtuellen IP-Adresse anzeigen. Notieren Sie sich diese Adresse.
+After the endpoint is created, you can view its details to determine the Public Virtual IP (VIP) address. Record this address.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,67 +1,74 @@
 <properties
-	pageTitle="Erstellen einer Logik-App | Microsoft Azure"
-	description="Informationen zum Erstellen einer Logik-App zum Verbinden von SaaS-Diensten"
-	authors="jeffhollan"
-	manager="dwrede"
-	editor=""
-	services="logic-apps"
-	documentationCenter=""/>
+    pageTitle="Create a Logic App | Microsoft Azure"
+    description="Learn how to create a Logic App connecting SaaS services"
+    authors="jeffhollan"
+    manager="dwrede"
+    editor=""
+    services="logic-apps"
+    documentationCenter=""/>
 
 <tags
-	ms.service="logic-apps"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/16/2016"
-	ms.author="jehollan"/>
+    ms.service="logic-apps"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="10/18/2016"
+    ms.author="jehollan"/>
 
-# Erstellen einer Logik-App zum Verbinden von SaaS-Diensten
 
-In diesem Thema wird veranschaulicht, wie Sie in nur wenigen Minuten in [Azure Logic Apps](app-service-logic-what-are-logic-apps.md) einsteigen können. Es werden die Schritte eines einfachen Workflows beschrieben, mit dem Sie interessante Tweets an Ihre E-Mail-Adresse senden können.
+# <a name="create-a-new-logic-app-connecting-saas-services"></a>Create a new logic app connecting SaaS services
 
-Für dieses Szenario benötigen Sie Folgendes:
+This topic demonstrates how, in just a few minutes, you can get started with [Azure Logic Apps](app-service-logic-what-are-logic-apps.md). We'll walk through a simple workflow that lets you send interesting tweets to your email.
 
-- Ein Azure-Abonnement
-- Ein Twitter-Konto
-- Ein Outlook.com- oder gehostetes Office 365-Postfach
+To use this scenario, you need:
 
-## Erstellen einer neuen Logik-App zum Empfangen von Tweets per E-Mail
+- An Azure subscription
+- A Twitter account
+- A Outlook.com or hosted Office 365 mailbox
 
-1. Wählen Sie im [Dashboard des Azure-Portals](https://portal.azure.com) die Option **Neu**.
-2. Suchen Sie in der Suchleiste nach „Logik-App“, und wählen Sie die Option **Logik-App**. Sie können auch **Neu**, **Web und mobil** und dann **Logik-App** wählen.
-3. Geben Sie einen Namen für die Logik-App ein, wählen Sie einen Speicherort und eine Ressourcengruppe aus, und wählen Sie die Option **Erstellen**. Wenn Sie **An Dashboard anheften** wählen, wird die Logik-App nach der Bereitstellung automatisch geöffnet.
-4. Nachdem Sie Ihre Logik-App zum ersten Mal geöffnet haben, können Sie eine Vorlage auswählen, um zu beginnen. Klicken Sie in diesem Fall auf **Blank Logic App** (Leere Logik-App), um die Erstellung von Grund auf durchzuführen.
-1. Als Erstes müssen Sie den Trigger erstellen. Dies ist das Ereignis, mit dem die Logik-App gestartet wird. Suchen Sie im Triggersuchfeld nach **Twitter**, und wählen Sie das Ergebnis aus.
-7. Als Nächstes geben Sie einen Suchbegriff ein, auf dem die Auslösung basieren soll. Mit der **Häufigkeit** und dem **Intervall** wird bestimmt, wie häufig Ihre Logik-App eine Prüfung auf neue Tweets durchführt (und alle Tweets dieses Zeitraums zurückgibt). ![Twitter-Suche](./media/app-service-logic-create-a-logic-app/twittersearch.png)
+## <a name="create-a-new-logic-app-to-email-you-tweets"></a>Create a new logic app to email you tweets
 
-5. Wählen Sie die Schaltfläche **Neuer Schritt** und dann die Option **Aktion hinzufügen** oder **Bedingung hinzufügen**.
-6. Bei Auswahl von **Aktion hinzufügen** können Sie eine Auswahl aus den [verfügbaren Connectors](../connectors/apis-list.md) treffen, um eine Aktion auszuwählen. Beispielsweise können Sie **Outlook.com – E-Mail senden** wählen, um E-Mails über eine outlook.com-Adresse zu senden: ![Aktionen](./media/app-service-logic-create-a-logic-app/actions.png)
+1. On the [Azure portal dashboard](https://portal.azure.com), select **New**. 
+2. In the search bar, search for 'logic app', and then select **Logic App**. You can also select **New**, **Web + Mobile**, and select **Logic App**. 
+3. Enter a name for your logic app, select a location, resource group, and select **Create**.  If you select **Pin to Dashboard** the logic app will automatically open once deployed.  
+4. After opening your logic app for the first time you can select from a template to start.  For now click **Blank Logic App** to build this from scratch. 
+1. The first item you need to create is the trigger.  This is the event that will start your logic app.  Search for **twitter** in the trigger search box, and select it.
+7. Now you'll type in a search term to trigger on.  The **Frequency** and **Interval** will determine how often your logic app will check for new tweets (and return all tweets during that time span).
+    ![Twitter search](./media/app-service-logic-create-a-logic-app/twittersearch.png)
 
-7. Nun müssen Sie die Parameter für die gewünschten E-Mails ausfüllen: ![Parameter](./media/app-service-logic-create-a-logic-app/parameters.png)
+5. Select the **New step** button, and then choose **Add an action** or **Add a condition**
+6. When you select **Add an Action**, you can search from the [available connectors](../connectors/apis-list.md) to choose an action. For example, you can select **Outlook.com - Send Email** to send mail from an outlook.com address:  
+    ![Actions](./media/app-service-logic-create-a-logic-app/actions.png)
 
-8. Wählen Sie abschließend **Speichern**, um Ihre Logik-App online zu stellen.
+7. Now you have to fill out the parameters for the email you want:  ![Parameters](./media/app-service-logic-create-a-logic-app/parameters.png)
 
-## Verwalten Ihrer Logik-App nach der Erstellung
+8. Finally, you can select **Save** to make your logic app live.
 
-Ihre Logik-App wird nun ausgeführt. Unter Verwendung des eingegebenen Suchbegriffs wird eine regelmäßige Prüfung auf Tweets durchgeführt. Wenn ein übereinstimmender Tweet gefunden wird, wird eine E-Mail an Sie gesendet. Schließlich wird noch gezeigt, wie Sie die App deaktivieren.
+## <a name="manage-your-logic-app-after-creation"></a>Manage your logic app after creation
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+Now your logic app is up and running. It will periodically check for tweets with the search term entered. When it finds a matching tweet, it will send you an email. Finally, you'll see how to disable the app, or see how it’s doing.
 
-1. Klicken Sie auf der linken Seite des Bildschirms auf **Durchsuchen**, und wählen Sie **Logik-Apps** aus.
+1. Go to the [Azure Portal](https://portal.azure.com)
 
-2. Klicken Sie auf die neue Logik-App, die Sie gerade erstellt haben, um den aktuellen Status und allgemeine Informationen anzuzeigen.
+1. Click **Browse** on the left side of the screen and select **Logic Apps**.
 
-3. Klicken Sie auf **Bearbeiten**, um die neue Logik-App zu bearbeiten.
+2. Click the new logic app that you just created to see current status and general information.
 
-5. Um die App zu deaktivieren, klicken Sie auf der Befehlsleiste auf **Deaktivieren**.
+3. To edit your new logic app, click **Edit**.
 
-1. Zeigen Sie die Ausführungs- und Triggerverläufe an, um zu überwachen, wann die Logik-App ausgeführt wird. Klicken Sie auf **Aktualisieren**, um die aktuellen Daten anzuzeigen.
+5. To turn off the app, click **Disable** in the command bar.
 
-In weniger als 5 Minuten haben Sie eine einfache Logik-App eingerichtet, die in der Cloud ausgeführt wird. Weitere Informationen zur Verwendung von Logik-App-Features finden Sie unter [Verwenden von Logik-App-Features]. Informationen zu den Logik-App-Definitionen selbst finden Sie unter [Logik-App-Definitionen erstellen](app-service-logic-author-definitions.md).
+1. View run and trigger histories to monitor when your logic app is running.  You can click **Refresh** to see the latest data.
+
+In less than 5 minutes you were able to set up a simple logic app running in the cloud. To learn more about using Logic Apps features, see [Use logic app features]. To learn about the Logic App definitions themselves, see [author Logic App definitions](app-service-logic-author-definitions.md).
 
 <!-- Shared links -->
 [Azure portal]: https://portal.azure.com
-[Verwenden von Logik-App-Features]: app-service-logic-create-a-logic-app.md
+[Use logic app features]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,9 +1,12 @@
-Die folgenden Grenzwerte gelten nur bei Verwendung des Azure-Ressourcen-Managers und von Azure-Ressourcengruppen.
+The following limits apply when using the Azure Resource Manager and Azure Resource Groups only.
 
-Ressource|Standardlimit
+Resource|Default Limit
 ---|---
-Storage-Kontoverwaltungsvorgänge (Lesen)|800 pro 5 Minuten
-Storage-Kontoverwaltungsvorgänge (Schreiben)|200 pro Stunde
-Storage-Kontoverwaltungsvorgänge (Liste)|100 pro 5 Minuten
+Storage account management operations (read)|800 per 5 minutes
+Storage account management operations (write)|200 per hour
+Storage account management operations (list)|100 per 5 minutes
 
-<!---HONumber=Nov15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

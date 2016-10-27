@@ -1,108 +1,113 @@
 <properties
-	pageTitle="Der Azure MFA-Anmeldevorgang mit Azure Multi-Factor Authentication"
-	description="Auf dieser Seite finden Sie Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind."
-	keywords="Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+    pageTitle="Azure MFA Signin experience with Azure Multi-Factor Authentication"
+    description="This page will provide you guidance on where to go to see the various signin methods available with Azure MFA."
+    keywords="user authentication, sign-in experience, sign-in with mobile phone, sign-in with office phone"
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="curtland"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="kgremban"/>
-
-# Der Anmeldevorgang mit Azure Multi-Factor Authentication
-> [AZURE.NOTE]  Die folgende Dokumentation auf dieser Seite zeigt eine normale Anmeldeumgebung. Hilfe zur Anmeldung finden Sie unter [Beheben von Problemen mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-manage-settings.md).
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/22/2016"
+    ms.author="kgremban"/>
 
 
+# <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>The sign in experience with Azure Multi-Factor Authentication
+> [AZURE.NOTE]  The following documentation provided on this page shows a typical sign-in experience.  For help with signing in see [Having trouble with Azure Multi-Factor Authentication](multi-factor-authentication-end-user-manage-settings.md)
 
-## Was sieht Ihr Anmeldevorgang aus?
-Der Anmeldevorgang hängt davon ab, wie Sie sich anmelden und Multi-Factor Authentication verwenden. In diesem Abschnitt finden Sie Informationen dazu, was Sie bei der Anmeldung erwartet. Wählen Sie die Option aus, die am besten auf Sie zutrifft.
 
 
-Vorgehensweise|Beschreibung
+## <a name="what-will-your-sign-in-experience-be?"></a>What will your sign in experience be?
+Depending on how you sign in and use multi-factor authentication, your experience will differ.  In this section we will provide information on what to expect when you sign in.  Choose the one that best describes what you are doing:
+
+
+What are you doing?|Description
 :------------- | :------------- |
-[Anmeldung mit Mobil- oder Bürotelefon](#signing-in-with-mobile-or-office-phone) | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
-[Anmelden mit der Microsoft Authenticator-App über eine Benachrichtigung](#signing-in-with-the-microsoft-authenticator-app-using-notification) | Beschreibt die benachrichtigungsbasierte Anmeldung mit der Microsoft Authenticator-App.
-[Anmelden mit der Microsoft Authenticator-App über einen Überprüfungscode](#signing-in-with-the-microsoft-authenticator-app-using-verification-code)|Beschreibt die prüfcodebasierte Anmeldung mit der Microsoft Authenticator-App.
-[Anmelden mit einer alternativen Methode](#signing-in-with-an-alternate-method)|Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten.
+[Signing in with mobile or office phone](#signing-in-with-mobile-or-office-phone) | This is what you can expect from signing in using your mobile or office phone.
+[Signing in with the Microsoft Authenticator app using notification](#signing-in-with-the-microsoft-authenticator-app-using-notification) | This is what you can expect using the Microsoft Authenticator app with notifications.
+[Signing in with the Microsoft Authenticator app using verification code](#signing-in-with-the-microsoft-authenticator-app-using-verification-code)|This is what you can expect using the Microsoft Authenticator thapp with a verification code.
+[Signing in with an alternate method](#signing-in-with-an-alternate-method)|This will show you what to expect if you want to use an alternate method.
 
-## Anmeldung mit Mobil- oder Bürotelefon
+## <a name="signing-in-with-mobile-or-office-phone"></a>Signing in with mobile or office phone
 
-Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- oder Mobiltelefon beschrieben.
+The following information will describe the experience of using multi-factor authentication with your mobile or office phone.
 
-### So melden Sie sich über einen Aufruf bei Ihrem Büro- oder Mobiltelefon an
+### <a name="to-sign-in-with-a-call-to-your-office-or-mobile-phone"></a>To sign in with a call to your office or mobile phone
 
-- Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
-- Sie erhalten einen Anruf von Microsoft.
+- Sign in to an application or service such as Office 365 using your user name and password.
+- Microsoft will call you.
 
-![Microsoft-Anrufe](./media/multi-factor-authentication-end-user-signin-phone/call.png)
+![Microsoft calls](./media/multi-factor-authentication-end-user-signin-phone/call.png)
 
-- Nehmen Sie den Anruf entgegen, und drücken Sie die #-Taste.
+- Answer the phone and hit the # key.
 
-![Antwort](./media/multi-factor-authentication-end-user-signin-phone/phone.png)
+![Answer](./media/multi-factor-authentication-end-user-signin-phone/phone.png)
 
-- Sie sollten jetzt angemeldet sein.</li>
+- You should now be signed in.</li>
 
-## Anmelden mit der Microsoft Authenticator-App über eine Benachrichtigung
+## <a name="signing-in-with-the-microsoft-authenticator-app-using-notification"></a>Signing in with the Microsoft Authenticator app using notification
 
-Die folgenden Informationen beschreiben die Verwendung der Multi-Factor Authentication mit der Microsoft Authenticator-App über eine an Sie gesendete Benachrichtigung.
+The following information will describe the experience of using multi-factor authentication with the Microsoft Authenticator app when you are sent a notification.
 
-### So melden Sie sich mit der Microsoft Authenticator-App über eine Benachrichtigung an
+### <a name="to-sign-in-with-a-notification-sent-the-microsoft-authenticator-app"></a>To sign in with a notification sent the Microsoft Authenticator app
 
-- Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
-- Sie erhalten eine Benachrichtigung von Microsoft.
+- Sign in to an application or service such as Office 365 using your user name and password.
+- Microsoft will send a notification.
 
-![Microsoft sendet Benachrichtigung](./media/multi-factor-authentication-end-user-signin-app-notify/notify.png)
-
-
-- Rufen Sie die Benachrichtigung auf Ihrem Mobiltelefon auf, und tippen Sie auf die Schaltfläche "Überprüfen". Wenn Ihr Unternehmen eine PIN anfordert, werden Sie hier zur Eingabe gebeten.
-
-![Überprüfen](./media/multi-factor-authentication-end-user-signin-app-notify/phone.png)
-
-![Einrichtung](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
-
-- Sie sollten jetzt angemeldet sein.
+![Microsoft sends notification](./media/multi-factor-authentication-end-user-signin-app-notify/notify.png)
 
 
-## Anmelden mit der Microsoft Authenticator-App über einen Überprüfungscode
+- Answer the phone and hit the verify key.  If your company requires a PIN you will be asked for it here.
 
-Im Folgenden wird der Vorgang für die Multi-Factor Authentication mit der Microsoft Authenticator-App unter Verwendung eines Überprüfungscodes beschrieben.
+![Verify](./media/multi-factor-authentication-end-user-signin-app-notify/phone.png)
 
-### So melden Sie sich mit der Microsoft Authenticator-App über einen Überprüfungscode an
+![Setup](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
 
-- Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
-- Sie werden von Microsoft aufgefordert, einen Bestätigungscode einzugeben.
-
-![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin-app-verify/verify.png)
-
-- Öffnen Sie die Microsoft Authenticator-App auf Ihrem Smartphone, und geben Sie den Code bei der Anmeldung in das entsprechende Feld ein.
-
-![Abrufen des Codes](./media/multi-factor-authentication-end-user-signin-app-verify/phone.png)
+- You should now be signed in.
 
 
+## <a name="signing-in-with-the-microsoft-authenticator-app-using-verification-code"></a>Signing in with the Microsoft Authenticator app using verification code
 
-- Sie sollten jetzt angemeldet sein.
+The following information will describe the experience of using multi-factor authentication with the Microsoft Authenticator app when you are using it with a verification code.
+
+### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>To sign in using a verification code with the Microsoft Authenticator app
+
+- Sign in to an application or service such as Office 365 using your user name and password.
+- Microsoft will prompt you for a verification code.
+
+![Enter verification code](./media/multi-factor-authentication-end-user-signin-app-verify/verify.png)
+
+- Open the Microsoft Authenticator app on your phone and enter the code in the box where you are signing in.
+
+![Get code](./media/multi-factor-authentication-end-user-signin-app-verify/phone.png)
 
 
-## Anmelden mit einer alternativen Methode
+
+- You should now be signed in.
 
 
-Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.
+## <a name="signing-in-with-an-alternate-method"></a>Signing in with an alternate method
 
-### So melden Sie sich mit einer alternativen Methode an
 
-- Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
-- Wählen Sie eine andere Überprüfungsoption aus. Es stehen verschiedene Optionen zur Auswahl. Die Anzahl der verfügbaren Optionen hängt davon ab, wie viele Sie eingerichtet haben.
+The following section will show you how to sign in with an alternate method when your primary method may not be available.
 
-![Anwenden einer alternativen Methode](./media/multi-factor-authentication-end-user-signin-alt/alt.png)
+### <a name="to-sign-in-with-an-alternate-method"></a>To sign in with an alternate method
 
-- Wählen Sie eine alternative Methode aus, und melden Sie sich an.
+- Sign in to an application or service such as Office 365 using your user name and password.
+- Select use a different verification option.  You will be present with a choice of different options. The number you see will be based on how many you have setup.
 
-<!---HONumber=AcomDC_0921_2016-->
+![Use alternate method](./media/multi-factor-authentication-end-user-signin-alt/alt.png)
+
+- Choose an alternate method and sign in.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

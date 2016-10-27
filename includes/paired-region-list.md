@@ -1,24 +1,27 @@
-|Primär |Sekundär |
+|Primary            |Secondary          |
 |:-----------------:|:-----------------:|
-|USA (Mitte/Norden) |USA (Mitte/Süden) |
-|USA (Mitte/Süden) |USA (Mitte/Norden) |
-|USA (Ost) |USA (West) |
-|USA (West) |USA (Ost) |
-|USA (Ost 2) |USA (Mitte) |
-|USA (Mitte) |USA (Ost 2) |
-|Nordeuropa |Westeuropa |
-|Westeuropa |Nordeuropa |
-|Südostasien |Ostasien |
-|Ostasien |Südostasien |
-|Ostchina |Nordchina |
-|Nordchina |Ostchina |
-|Japan Ost |Japan (Westen) |
-|Japan (Westen) |Japan Ost |
-|Brasilien Süd |USA (Mitte/Süden) |
-|Australien (Ost) |Australien (Südost)|
-|Australien (Südost)|Australien (Ost) |
-|Kanada, Osten |Kanada, Mitte |
-|Kanada, Mitte |Kanada, Osten |
-|USA, Westen 2 |USA, Westen-Mitte |
+|North Central US   |South Central US   |
+|South Central US   |North Central US   |
+|East US            |West US            |
+|West US            |East US            |
+|US East 2          |Central US         |
+|Central US         |US East 2          |
+|North Europe       |West Europe        |
+|West Europe        |North Europe       |
+|South East Asia    |East Asia          |
+|East Asia          |South East Asia    |
+|East China         |North China        |
+|North China        |East China         |
+|Japan East         |Japan West         |
+|Japan West         |Japan East         |
+|Brazil South       |South Central US   |
+|Australia East     |Australia Southeast|
+|Australia Southeast|Australia East     |
+|Canada East        |Canada Central     |
+|Canada Central     |Canada East        |
+|West US 2          |West Central US    |
 
-<!---HONumber=AcomDC_0720_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

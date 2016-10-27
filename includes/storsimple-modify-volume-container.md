@@ -1,29 +1,35 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### So ändern Sie einen Volumecontainer
+#### <a name="to-modify-a-volume-container"></a>To modify a volume container
 
-1. Wählen Sie auf der Seite **Geräte** das Gerät aus, doppelklicken Sie darauf, und klicken Sie dann auf die Registerkarte **Volumecontainer**.
+1. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
 
-2. Wählen Sie in der tabellarischen Auflistung der Volumecontainer die Einstellung aus, die Sie ändern möchten, und klicken Sie auf **Ändern**.
+2. In the tabular listing of the volume containers, select the setting that you want to modify, and click **Modify**.
 
-3. Führen Sie im Dialogfeld **Volumecontainer ändern** die folgenden Schritte aus:
+3. In the **Modify Volume container** dialog box, do the following:
 
-    1. Ändern Sie den Namen des Volumecontainers, und ändern Sie die Einstellung der zugeordneten Bandbreite. 
+    1. Change the name of the volume container and modify the associated bandwidth setting. 
 
-        ![Ändern eines Volumecontainers mit Bandbreitenvorlage 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
+        ![Modify Volume Container with Bandwidth Template 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
 
-    2. Der Verschlüsselungsschlüssel und das Speicherkonto können nicht geändert werden, nachdem sie einmal angegeben wurden. Wenn Sie **Bandbreitenvorlage auswählen** angegeben haben, klicken Sie auf den Pfeil, um zur nächsten Seite zu gelangen.
+    2. The encryption key and storage account cannot be changed after they are specified. If you specified **Select a bandwidth template**, click the arrow to proceed to the next page.
 
-4. Auf der nächsten Seite des Dialogfelds **Volumecontainer ändern**:
+4. In the next page of the **Modify Volume Container** dialog box:
 
-    1. Wählen Sie in der Dropdownliste eine vorhandene Bandbreitenvorlage aus.
+    1. From the drop-down list, choose an existing bandwidth template.
 
-    2. Überprüfen Sie die Zeitplaneinstellungen für die angegebene Bandbreitenvorlage.
+    2. Review the schedule settings for the specified bandwidth template.
 
-        ![Ändern eines Volumecontainers mit Bandbreitenvorlage 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
+        ![Modify Volume Container with Bandwidth Template 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
 
-    3. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png), um die aktualisierten Einstellungen zu speichern. Die Seite **Volumecontainer** wird den Änderungen entsprechend aktualisiert.
+    3. Click the check icon ![check icon](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) to save the updated settings. The **Volume containers** page will be updated to reflect the changes.
 
  
 
-<!---HONumber=AcomDC_0114_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

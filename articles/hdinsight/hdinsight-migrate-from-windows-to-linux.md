@@ -13,10 +13,11 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/25/2016"
+ms.date="10/11/2016"
 ms.author="larryfr"/>
 
-#Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
+
+#<a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
 
 Während HDInsight (Windows-basiert) eine einfache Möglichkeit bietet, Hadoop in der Cloud zu verwenden, stellen Sie möglicherweise fest, dass Sie einen Linux-basierten Cluster benötigen, um Tools und Technologien zu nutzen, die für Ihre Lösung erforderlich sind. Vieles im Hadoop-Ökosystem wird in Linux-basierten Systemen entwickelt. Einiges ist für die Nutzung mit HDInsight (Windows-basiert) möglicherweise nicht verfügbar. Darüber hinaus wird in vielen Büchern, Videos und anderem Trainingsmaterial angenommen, dass Sie beim Arbeiten mit Hadoop ein Linuxsystem verwenden.
 
@@ -24,7 +25,7 @@ Dieses Dokument enthält Informationen zu den Unterschieden zwischen HDInsight u
 
 > [AZURE.NOTE] HDInsight-Cluster verwenden Ubuntu LTS-Versionen (Long Term Support) als Betriebssystem für die Knoten im Cluster. HDInsight 3.3- und 3.4-Cluster verwenden Ubuntu 14.0.4 LTS; frühere Versionen von HDInsight verwendeten Ubuntu 12.04.05 LTS.
 
-## Migrationsaufgaben
+## <a name="migration-tasks"></a>Migrationsaufgaben
 
 Der allgemeine Workflow für die Migration sieht folgendermaßen aus:
 
@@ -50,11 +51,11 @@ Nachdem Sie überprüft haben, dass alles wie erwartet funktioniert, planen Sie 
 
 5.  Starten Sie Aufträge/Verarbeiten Sie weiterhin mithilfe des neuen Clusters.
 
-### Kopieren von Daten in die Testumgebung
+### <a name="copy-data-to-the-test-environment"></a>Kopieren von Daten in die Testumgebung
 
 Es existieren viele Methoden zum Kopieren von Daten und Aufträgen. Die in diesem Abschnitt beschriebenen sind jedoch die einfachsten Methoden, um Dateien direkt in einen Testcluster zu verschieben.
 
-#### Kopieren mit HDFS DFS
+#### <a name="hdfs-dfs-copy"></a>Kopieren mit HDFS DFS
 
 Mithilfe der folgenden Schritte können Sie den Hadoop-HDFS-Befehl verwenden, um Daten direkt aus dem Speicher für Ihren vorhandenen Produktionscluster in den Speicher für einen neuen Testcluster zu kopieren.
 
@@ -65,13 +66,13 @@ Mithilfe der folgenden Schritte können Sie den Hadoop-HDFS-Befehl verwenden, um
         write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
         write-host "Default container: $clusterInfo.DefaultStorageContainer"
 
-2. Folgen Sie der Anleitung im Dokument „Erstellen von Linux-basierten Hadoop-Clustern in HDInsight“, um eine neue Testumgebung zu erstellen. Bevor Sie den Cluster erstellen, wählen Sie stattdessen **Optionale Konfiguration** aus.
+2. Folgen Sie der Anleitung im Dokument „Erstellen von Linux-basierten Hadoop-Clustern in HDInsight“, um eine neue Testumgebung zu erstellen. Bevor Sie den Cluster erstellen, wählen Sie stattdessen **Optionale Konfiguration**aus.
 
-3. Wählen Sie auf dem Blatt „Optionale Konfiguration“ **Verknüpfte Speicherkonten** aus.
+3. Wählen Sie auf dem Blatt „Optionale Konfiguration“ **Verknüpfte Speicherkonten**aus.
 
-4. Wählen Sie **Einen Speicherschlüssel hinzufügen** aus, und wählen Sie, wenn Sie dazu aufgefordert werden, das Speicherkonto aus, das in Schritt 1 vom PowerShell-Skript zurückgegeben wurde. Klicken Sie zum Schließen auf jedem Blatt auf **Auswählen**. Erstellen Sie schließlich den Cluster.
+4. Wählen Sie **Einen Speicherschlüssel hinzufügen**aus, und wählen Sie, wenn Sie dazu aufgefordert werden, das Speicherkonto aus, das in Schritt 1 vom PowerShell-Skript zurückgegeben wurde. Klicken Sie zum Schließen auf jedem Blatt auf **Auswählen** . Erstellen Sie schließlich den Cluster.
 
-5. Nachdem der Cluster erstellt wurde, verbinden Sie sich mithilfe von **SSH** mit diesem. Wenn Sie mit dem Verwenden von SSH mit HDInsight nicht vertraut sind, finden Sie weitere Informationen in einem der folgenden Artikel.
+5. Nachdem der Cluster erstellt wurde, verbinden Sie sich mithilfe von **SSH** mit dem Cluster. Wenn Sie mit dem Verwenden von SSH mit HDInsight nicht vertraut sind, finden Sie weitere Informationen in einem der folgenden Artikel.
 
     * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 
@@ -87,15 +88,15 @@ Mithilfe der folgenden Schritte können Sie den Hadoop-HDFS-Befehl verwenden, um
 
     Der Schalter `-p` ermöglicht die Erstellung aller Verzeichnisse im Pfad.
 
-#### Direktes Kopieren zwischen Azure Storage-Blobs
+#### <a name="direct-copy-between-azure-storage-blobs"></a>Direktes Kopieren zwischen Azure Storage-Blobs
 
 Alternativ können Sie das Azure PowerShell-Cmdlet `Start-AzureStorageBlobCopy` verwenden, um Blobs zwischen Speicherkonten außerhalb von HDInsight zu kopieren. Weitere Informationen finden Sie im Abschnitt „Verwalten von Azure-Blobs“ im Artikel „Verwenden von Azure PowerShell mit Azure Storage“.
 
-##Clientseitige Technologien
+##<a name="client-side-technologies"></a>Clientseitige Technologien
 
-Im Allgemeinen werden clientseitige Technologien wie [Azure PowerShell-Cmdlets](../powershell-install-configure.md), die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder das [.NET SDK für Hadoop](https://hadoopsdk.codeplex.com/) mit Linux-basierten Clustern genauso funktionieren wie bisher, da sie auf REST-APIs basieren, die bei beiden Cluster-Betriebssystemtypen gleich sind.
+Im Allgemeinen funktionieren clientseitige Technologien wie [Azure PowerShell-Cmdlets](../powershell-install-configure.md), die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder das [.NET SDK für Hadoop](https://hadoopsdk.codeplex.com/) mit Linux-basierten Clustern weiterhin genauso wie bisher, da sie auf REST-APIs basieren, die bei beiden Cluster-Betriebssystemtypen gleich sind.
 
-##Serverseitige Technologien
+##<a name="server-side-technologies"></a>Serverseitige Technologien
 
 Die folgende Tabelle enthält eine Hilfestellung zum Migrieren von serverseitigen Komponenten, die Windows-spezifisch sind.
 
@@ -106,13 +107,13 @@ Die folgende Tabelle enthält eine Hilfestellung zum Migrieren von serverseitige
 | **.NET-Komponenten** | .NET wird für Linux-basierte HDInsight-Cluster derzeit nicht unterstützt, wird jedoch in einem späteren Update hinzugefügt. Wenn Sie bereits jetzt migrieren müssen, müssen Sie Ihre Komponenten in Java oder Python umschreiben. |
 | **Win32-Komponenten oder andere reine Windows-Technologie** | Die Anleitung hängt von der Komponente oder Technologie ab: Möglicherweise finden Sie eine mit Linux kompatible Version, möglicherweise brauchen Sie eine alternative Lösung oder müssen diese Komponente umschreiben. |
 
-##Clustererstellung
+##<a name="cluster-creation"></a>Clustererstellung
 
 Dieser Abschnitt enthält Informationen zu Unterschieden beim Erstellen von Clustern.
 
-### SSH-Benutzer
+### <a name="ssh-user"></a>SSH-Benutzer
 
-Linux-basierte HDInsight-Cluster nutzen das **Secure Shell (SSH)**-Protokoll, um den Clusterknoten Remotezugriff zu gewähren. Im Gegensatz zu Remotedesktop für Windows-basierte Cluster bieten die meisten SSH-Clients keine grafische Benutzeroberfläche. Stattdessen bieten sie eine Befehlszeile, mithilfe derer Sie Befehle im Cluster ausführen können. Einige Clients (z.B. [MobaXterm](http://mobaxterm.mobatek.net/)) bieten zusätzlich zu einer Remote-Befehlszeile einen grafischen Dateisystembrowser.
+Linux-basierte HDInsight-Cluster nutzen **Secure Shell (SSH)** als Protokoll, um Clusterknoten Remotezugriff zu gewähren. Im Gegensatz zu Remotedesktop für Windows-basierte Cluster bieten die meisten SSH-Clients keine grafische Benutzeroberfläche. Stattdessen bieten sie eine Befehlszeile, mithilfe derer Sie Befehle im Cluster ausführen können. Einige Clients (z. B. [MobaXterm](http://mobaxterm.mobatek.net/)) bieten zusätzlich zu einer Remotebefehlszeile einen grafischen Dateisystembrowser.
 
 Während der Clustererstellung müssen Sie einen SSH-Benutzer und entweder ein **Kennwort** oder ein **öffentliches Schlüsselzertifikat** für die Authentifizierung bereitstellen.
 
@@ -124,23 +125,23 @@ Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den fol
 
 - [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix und Mac OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-### Clusteranpassung
+### <a name="cluster-customization"></a>Clusteranpassung
 
 Mit Linux-basierten Clustern verwendete **Skriptaktionen** müssen in Bash-Skripts geschrieben sein. Skriptaktionen können während der Clustererstellung verwendet werden. Für Linux-basierte Cluster können sie außerdem zum Anpassen verwendet werden, sobald ein Cluster eingerichtet wurde und ausgeführt wird. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) und [Entwickeln von Skriptaktionen mit HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
-Eine weitere Anpassungsfunktion ist **bootstrap**. Diese ermöglicht Ihnen, bei Windows-Clustern den Speicherort zusätzlicher Bibliotheken zum Verwenden mit Hive anzugeben. Diese Bibliotheken sind nach der Clustererstellung automatisch für die Verwendung mit Hive-Abfragen verfügbar, ohne dass `ADD JAR` verwendet werden muss.
+Eine weitere Anpassungsfunktion ist **bootstrap**. Diese ermöglicht Ihnen, bei Windows-Clustern den Speicherort zusätzlicher Bibliotheken zum Verwenden mit Hive anzugeben. Diese Bibliotheken sind nach der Clustererstellung automatisch für die Verwendung mit Hive-Abfragen verfügbar, ohne dass `ADD JAR`verwendet werden muss.
 
-Bootstrap für Linux-basierte Cluster bietet diese Funktion nicht. Verwenden Sie stattdessen eine Skriptaktion, wie in [Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md) beschrieben.
+Bootstrap für Linux-basierte Cluster bietet diese Funktion nicht. Verwenden Sie stattdessen eine Skriptaktion, wie in [Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md)beschrieben.
 
-### Virtuelle Netzwerke
+### <a name="virtual-networks"></a>Virtuelle Netzwerke
 
 Windows-basierte HDInsight-Cluster funktionieren nur mit klassischen virtuellen Netzwerken, während für Linux-basierte HDInsight-Cluster virtuelle Resource Manager-Netzwerke erforderlich sind. Wenn Sie über Ressourcen in einem klassischen virtuellen Netzwerk verfügen, mit dem sich der Linux-basierte HDInsight-Cluster verbinden muss, finden Sie weitere Informationen dazu unter [Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen im Portal](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 Weitere Informationen zu den Konfigurationsanforderungen für das Verwenden von Azure Virtual Networks mit HDInsight finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
-##Verwaltung und Überwachung
+##<a name="management-and-monitoring"></a>Verwaltung und Überwachung
 
-Viele der Web-Benutzeroberflächen, die Sie möglicherweise mit Windows-basiertem HDInsight verwendet haben, wie Job History (Auftragsverlauf) oder die Yarn-Benutzeroberfläche, sind über Ambari verfügbar. Darüber hinaus bietet die Ambari-Hive-Ansicht eine Möglichkeit zum Ausführen von Hive-Abfragen mithilfe Ihres Webbrowsers. Die Ambari-Webbenutzeroberfläche ist für Linux-basierte Cluster unter https://CLUSTERNAME.azurehdinsight.net verfügbar.
+Viele der Web-Benutzeroberflächen, die Sie möglicherweise mit Windows-basiertem HDInsight verwendet haben, wie Job History (Auftragsverlauf) oder die Yarn-Benutzeroberfläche, sind über Ambari verfügbar. Darüber hinaus bietet die Ambari-Hive-Ansicht eine Möglichkeit zum Ausführen von Hive-Abfragen mithilfe Ihres Webbrowsers. Die Ambari-Webbenutzeroberfläche ist auf Linux-basierten Clustern verfügbar (unter „https://CLUSTERNAME.azurehdinsight.net“).
 
 Weitere Informationen zum Arbeiten mit Ambari finden Sie in den folgenden Dokumenten:
 
@@ -148,17 +149,17 @@ Weitere Informationen zum Arbeiten mit Ambari finden Sie in den folgenden Dokume
 
 - [Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md)
 
-### Ambari-Warnungen
+### <a name="ambari-alerts"></a>Ambari-Warnungen
 
 Ambari verfügt über ein Warnsystem, das Sie über potenzielle Probleme mit dem Cluster informiert. Warnungen werden als rote oder gelbe Einträge in der Ambari-Webbenutzeroberfläche angezeigt, Sie können sie aber auch über die REST-API abrufen.
 
-> [AZURE.IMPORTANT] Ambari-Warnungen geben an, dass *möglicherweise* ein Problem besteht, nicht, dass ein Problem *tatsächlich* besteht. Zum Beispiel erhalten Sie möglicherweise eine Warnung, dass der Zugriff auf HiveServer2 nicht möglich ist, obwohl Sie normal darauf zugreifen können.
+> [AZURE.IMPORTANT] Ambari-Warnungen weisen darauf hin, dass *möglicherweise* ein Problem besteht, nicht, dass ein Problem *tatsächlich* besteht. Zum Beispiel erhalten Sie möglicherweise eine Warnung, dass der Zugriff auf HiveServer2 nicht möglich ist, obwohl Sie normal darauf zugreifen können.
 >
 > Viele Warnungen werden als intervallbasierte Abfragen bei einem Dienst implementiert und erwarten innerhalb eines bestimmten Zeitrahmens eine Antwort. Die Warnung bedeutet also nicht zwingend, dass der Dienst nicht verfügbar ist, sondern nur, dass im erwarteten Zeitrahmen keine Ergebnisse zurückgegeben wurden.
 
 Im Allgemeinen sollten Sie vor einer Reaktion auf einen Alarm überprüfen, ob dieser schon seit längerer Zeit besteht oder ob er bereits gemeldete Benutzerprobleme widerspiegelt.
 
-##Dateisystem-Speicherorte
+##<a name="file-system-locations"></a>Dateisystem-Speicherorte
 
 Das Linux-Cluster-Dateisystem ist anders angeordnet als Windows-basierte HDInsight-Cluster. Verwenden Sie die folgende Tabelle, um häufig verwendete Dateien zu suchen.
 
@@ -175,7 +176,7 @@ Im Allgemeinen sollten Sie, falls Sie den Namen der Datei kennen, in einer SSH-S
 
 Sie können auch Platzhalter mit dem Dateinamen verwenden. Zum Beispiel gibt `find / -name *streaming*.jar 2>/dev/null` den Pfad für alle JAR-Dateien zurück, die als Teil des Dateinamens das Wort „Streaming“ enthalten.
 
-##Hive, Pig und MapReduce.
+##<a name="hive,-pig,-and-mapreduce"></a>Hive, Pig und MapReduce.
 
 Pig und MapReduce-Workloads sind für Linux-basierte Cluster sehr ähnlich – der Hauptunterschied liegt darin, dass Sie SSH mit Linux-basierten Clustern verwenden, wenn Sie Remotedesktop zum Verbinden mit einem Windows-basierten Cluster verwenden und Aufträge ausführen.
 
@@ -183,7 +184,7 @@ Pig und MapReduce-Workloads sind für Linux-basierte Cluster sehr ähnlich – d
 
 - [Verwenden von MapReduce mit SSH](hdinsight-hadoop-use-mapreduce-ssh.md)
 
-### Hive
+### <a name="hive"></a>Hive
 
 Das folgende Diagramm enthält Hilfestellungen zum Migrieren Ihrer Hive-Workloads:
 
@@ -192,37 +193,37 @@ Das folgende Diagramm enthält Hilfestellungen zum Migrieren Ihrer Hive-Workload
 | **Hive-Editor** | [Hive-Ansicht in Ambari](hdinsight-hadoop-use-hive-ambari-view.md) |
 | `set hive.execution.engine=tez;` zum Aktivieren von Tez | Tez ist das Standardausführungsmodul für Linux-basierte Cluster. Die SET-Anweisung wird also nicht mehr benötigt. |
 | CMD-Dateien oder -Skripts auf dem Server, die als Teil eines Hive-Auftrags aufgerufen wurden | Verwenden von Bash-Skripts |
-| `hive`-Befehl von Remotedesktop | Verwenden von [Beeline](hdinsight-hadoop-use-hive-beeline.md) oder [Hive in einer SSH-Sitzung](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` -Befehl von Remotedesktop | Verwenden von [Beeline](hdinsight-hadoop-use-hive-beeline.md) oder [Hive in einer SSH-Sitzung](hdinsight-hadoop-use-hive-ssh.md) |
 
-##Storm
+##<a name="storm"></a>Storm
 
 | Auf Windows-basierten Clustern verwende ich ... | Auf Linux-basierten Clustern verwende ich ... |
 | ----- | ----- |
-| Storm-Dashboard | Das Storm-Dashboard ist nicht verfügbar. Methoden zum Übermitteln von Topologien finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux](hdinsight-storm-deploy-monitor-topology-linux.md). |
-| Storm-Benutzeroberfläche | Die Storm-Benutzeroberfläche ist unter https://CLUSTERNAME.azurehdinsight.net/stormui verfügbar. |
-| Visual Studio zum Erstellen, Bereitstellen und Verwalten von C#- oder Hybridtopologien | .NET-Topologien werden derzeit nicht von Linux-basierten Clustern unterstützt, jedoch wird dies in einem späteren Update hinzugefügt. Wenn Sie vorher migrieren müssen, müssen Sie Ihre Topologien in Java erneut implementieren. Weitere Informationen zum Erstellen von Java-basierten Topologien finden Sie unter [Entwickeln von Java-basierten Topologien](hdinsight-storm-develop-java-topology.md). |
+| Storm-Dashboard | Das Storm-Dashboard ist nicht verfügbar. Methoden zum Übermitteln von Topologien finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux](hdinsight-storm-deploy-monitor-topology-linux.md) . |
+| Storm-Benutzeroberfläche | Die Storm-Benutzeroberfläche ist unter „https://CLUSTERNAME.azurehdinsight.net/stormui“ verfügbar. |
+| Visual Studio zum Erstellen, Bereitstellen und Verwalten von C#- oder Hybridtopologien | .NET-Topologien werden derzeit nicht von Linux-basierten Clustern unterstützt, jedoch wird dies in einem späteren Update hinzugefügt. Wenn Sie vorher migrieren müssen, müssen Sie Ihre Topologien in Java erneut implementieren. Weitere Informationen zum Erstellen von Java-basierten Topologien finden Sie unter [Entwickeln von Java-basierten Topologien](hdinsight-storm-develop-java-topology.md) . |
 
-##HBase
+##<a name="hbase"></a>HBase
 
-Auf Linux-basierten Clustern ist `/hbase-unsecure` der übergeordnete ZNode für HBase. Sie müssen dies in der Konfiguration für alle Java-Clientanwendungen festlegen, die native HBase-Java-API verwenden.
+Auf Linux-basierten Clustern ist `/hbase-unsecure`der übergeordnete ZNode für HBase. Sie müssen dies in der Konfiguration für alle Java-Clientanwendungen festlegen, die native HBase-Java-API verwenden.
 
-Einen Beispiel-Client, der diesen Wert festlegt, finden Sie unter [ Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven.md).
+Einen Beispiel-Client, der diesen Wert festlegt, finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven.md) .
 
-##Spark
+##<a name="spark"></a>Spark
 
 Spark-Cluster waren während der Vorschau für Windows-Cluster verfügbar. Mit der Veröffentlichung ist Spark jedoch nur für Linux-basierte Cluster verfügbar. Es existiert kein Migrationspfad von einer Vorabversion eines Windows-basierten Spark-Clusters zu einem veröffentlichten Linux-basierten Spark-Cluster.
 
-##Bekannte Probleme
+##<a name="known-issues"></a>Bekannte Probleme
 
-### Benutzerdefinierte Azure Data Factory-.NET-Aktivitäten
+### <a name="azure-data-factory-custom-.net-activities"></a>Benutzerdefinierte Azure Data Factory-.NET-Aktivitäten
 
 Benutzerdefinierte Azure Data Factory-.NET-Aktivitäten werden auf Linux-basierten HDInsight-Clustern derzeit nicht unterstützt. Stattdessen sollten Sie eine der folgenden Methoden zum Implementieren von benutzerdefinierten Aktivitäten als Teil Ihrer ADF-Pipeline verwenden.
 
--   Führen Sie .NET-Aktivitäten im Azure Batch-Pool aus. Informationen hierzu finden Sie im Abschnitt „Verwenden des mit Azure Batch verknüpften Dienstes“ im Artikel [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](../data-factory/data-factory-use-custom-activities.md#AzureBatch).
+-   Führen Sie .NET-Aktivitäten im Azure Batch-Pool aus. Informationen hierzu finden Sie im Abschnitt „Verwenden des mit Azure Batch verknüpften Dienstes“ im Artikel [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](../data-factory/data-factory-use-custom-activities.md#AzureBatch)
 
--   Implementieren Sie die Aktivität als MapReduce-Aktivität. Weitere Informationen finden Sie unter [Aufrufen von MapReduce-Programmen über Data Factory](../data-factory/data-factory-map-reduce.md).
+-   Implementieren Sie die Aktivität als MapReduce-Aktivität. Weitere Informationen finden Sie unter [Aufrufen von MapReduce-Programmen über Data Factory](../data-factory/data-factory-map-reduce.md) .
 
-### Zeilenenden
+### <a name="line-endings"></a>Zeilenenden
 
 Im Allgemeinen verwenden Zeilenenden in Windows-basierten Systemen CRLF und in Linux-basierten Systemen LF. Wenn Sie Daten mit CRLF-Zeilenenden erzeugen oder erwarten, müssen Sie die Producer oder Consumer möglicherweise dahingehend ändern, dass sie mit dem LF-Zeilenende arbeiten.
 
@@ -244,7 +245,7 @@ Wenn Sie wissen, dass die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeich
         tr -d '\r' < oldscript.py > script.py
         hdfs dfs -put -f script.py wasbs:///path/to/script.py
 
-##Nächste Schritte
+##<a name="next-steps"></a>Nächste Schritte
 
 -   [Erfahren Sie, wie Sie Linux-basierte HDInsight-Cluster erstellen](hdinsight-hadoop-provision-linux-clusters.md)
 
@@ -254,4 +255,8 @@ Wenn Sie wissen, dass die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeich
 
 -   [Verwalten eines Linux-basierten Clusters mithilfe von Ambari](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

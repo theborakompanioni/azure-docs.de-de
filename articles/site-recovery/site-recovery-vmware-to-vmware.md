@@ -1,167 +1,173 @@
 <properties
-	pageTitle="Replizieren von lokalen virtuellen VMware-Maschinen oder physischen Servern an einen sekundären Standort | Microsoft Azure"
-	description="Verwenden Sie diesen Artikel, wenn Sie VMware-VMs oder physische Windows-/Linux-Server mithilfe von Azure Site Recovery an einen sekundären Standort replizieren möchten."
-	services="site-recovery"
-	documentationCenter=""
-	authors="nsoneji"
-	manager="jwhit"
-	editor=""/>
+    pageTitle="Replicate on-premises VMware virtual machines or physical servers to a secondary site | Microsoft Azure"
+    description="Use this article to replicate VMware VMs or Windows/Linux physical servers to a secondary site with Azure Site Recovery."
+    services="site-recovery"
+    documentationCenter=""
+    authors="nsoneji"
+    manager="jwhit"
+    editor=""/>
 
 <tags
-	ms.service="site-recovery"
-	ms.workload="backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="nisoneji"/>
+    ms.service="site-recovery"
+    ms.workload="backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="nisoneji"/>
 
 
-# Replizieren von lokalen virtuellen VMware-Maschinen oder physischen Servern an einen sekundären Standort
+
+# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Replicate on-premises VMware virtual machines or physical servers to a secondary site
 
 
-## Übersicht
+## <a name="overview"></a>Overview
 
-InMage Scout in Azure Site Recovery ermöglicht eine Echtzeitreplikation zwischen lokalen VMware-Standorten. InMage Scout ist Teil der Abonnements des Azure Site Recovery-Diensts.
-
-
-## Voraussetzungen
-
-**Azure-Konto**: Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Erfahren Sie mehr über die [Preise für Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
+InMage Scout in Azure Site Recovery provides real-time replication between on-premises VMware sites. InMage Scout is included in Azure Site Recovery service subscriptions.
 
 
-## Schritt 1: Erstellen eines Tresors
+## <a name="prerequisites"></a>Prerequisites
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **Data Services** > **Recovery Services** > **Site Recovery-Tresor**.
-3. Klicken Sie auf **Neu erstellen** > **Schnellerfassung**.
-4. Geben Sie unter **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird.
-5. Wählen Sie unter **Region** die geografische Region für den Tresor aus. Informationen zu den unterstützten Regionen finden Sie unter [Site Recovery – Preise](https://azure.microsoft.com/pricing/details/site-recovery/).
-
-Überprüfen Sie auf der Statusleiste, ob der Tresor erfolgreich erstellt wurde. Der Tresor wird auf der Hauptseite von **Recovery Services** als **Aktiv** angegeben.
-
-## Schritt 2: Konfigurieren des Tresors und Herunterladen von InMage Scout-Komponenten
-
-1. Klicken Sie auf **Tresor erstellen**.
-2. Klicken Sie auf der Seite **Recovery Services** auf den Tresor, um die Seite **Schnellstart** zu öffnen.
-3. Wählen Sie in der Dropdownliste die Option **Zwischen zwei lokalen VMware-Standorten** aus.
-4. Laden Sie InMage Scout herunter. Die Setupdateien für alle erforderlichen Komponenten befinden sich in der heruntergeladenen ZIP-Datei.
+**Azure account**: You'll need a [Microsoft Azure](https://azure.microsoft.com/) account. You can start with a [free trial](https://azure.microsoft.com/pricing/free-trial/). [Learn more](https://azure.microsoft.com/pricing/details/site-recovery/) about Site Recovery pricing.
 
 
-## Schritt 3: Installieren von Komponentenupdates
+## <a name="step-1:-create-a-vault"></a>Step 1: Create a vault
 
-0Erfahren Sie mehr über die neuesten[Updates](#updates). Installieren Sie die Updatedateien in der folgenden Reihenfolge auf Servern:
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Click **Data Services** > **Recovery Services** > **Site Recovery Vault**.
+3. Click **Create New** > **Quick Create**.
+4. In **Name**, enter a friendly name to identify the vault.
+5. In **Region**, select the geographic region for the vault. To check supported regions, see [Azure Site Recovery Pricing](https://azure.microsoft.com/pricing/details/site-recovery/).
 
-1. RX-Server, falls vorhanden
-2. Konfigurationsserver
-3. Prozessserver
-3. Masterzielserver
-4. vContinuum-Server
-5. Quellserver (nur für Windows-Server)
+Check the status bar to confirm that the vault was successfully created. The vault will be listed as **Active** on the main **Recovery Services** page.
 
-Installieren Sie die Updates wie folgt:
+## <a name="step-2:-configure-the-vault-and-download-inmage-scout-components"></a>Step 2: Configure the vault and download InMage Scout components
 
-1. Laden Sie die ZIP-Datei für das [Update](https://aka.ms/asr-scout-update3) herunter. Diese ZIP-Datei enthält die folgenden Dateien:
-
-	-  RX_8.0.3.0_GA\_Update_3_6684045\_17Mar16.tar.gz
-	-  CX\_Windows_8.0.3.0_GA\_Update_3_5048668\_16Mar16.exe
-	-  UA\_Windows_8.0.3.0_GA\_Update_3_7101745\_04Apr16.exe
-	-  UA\_RHEL6-64_8.0.3.0_GA\_Update_3_7101745\_04Apr16.zip
-	-  vCon\_Windows_8.0.3.0_GA\_Update_3_6873369\_16Mar16.exe
-
-2. Extrahieren Sie die ZIP-Dateien.
-3. **Für den RX-Server**: Kopieren Sie **RX_8.0.3.0_GA\_Update_3_6684045\_17Mar16.tar.gz** auf den RX-Server, und extrahieren Sie die Datei. Führen Sie im extrahierten Ordner **/Install** aus.
-4. **Für den Konfigurationsserver/Prozessserver**: Kopieren Sie die Datei **CX\_Windows_8.0.3.0_GA\_Update_3_5048668\_16Mar16.exe** auf den Konfigurationsserver und Prozessserver. Doppelklicken Sie auf die Datei, um sie auszuführen.
-5. **Für den Windows-Masterzielserver**: Um die Kopie des vereinheitlichten Agents zu aktualisieren, kopieren Sie die Datei **UA\_Windows_8.0.3.0_GA\_Update_3_7101745\_04Apr16.exe** auf den Masterzielserver. Doppelklicken Sie auf die Datei, um sie auszuführen. Beachten Sie, dass der vereinheitlichte Agent auch für den Quellserver anwendbar ist. Sie sollten ihn auch auf dem Quellserver installieren. Dies ist weiter unten in dieser Liste beschrieben.
-6. **Für den Linux-Masterzielserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie die Datei **UA\_RHEL6-64_8.0.3.0_GA\_Update_3_7101745\_04Apr16.zip** auf den Masterzielserver und extrahieren die Datei. Führen Sie im extrahierten Ordner **/Install** aus.
-7. **Für den vContinuum-Server**: Kopieren Sie die Datei **vCon\_Windows_8.0.3.0_GA\_Update_3_6873369\_16Mar16.exe** auf den vContinuum-Server. Stellen Sie sicher, dass Sie den vContinuum-Assistenten geschlossen haben. Doppelklicken Sie auf die Datei, um sie auszuführen.
-8. **Für den Windows-Quellserver**: Um den vereinheitlichten Agent zu aktualisieren, kopieren Sie die Datei **UA\_Windows_8.0.3.0_GA\_Update_3_7101745\_04Apr16.exe** auf den Quellserver. Doppelklicken Sie auf die Datei, um sie auszuführen.
-
-## Schritt 4: Einrichten der Replikation
-1. Richten Sie die Replikation zwischen den Quell- und Zielstandorten von VMware ein.
-2. Anleitungen finden Sie in der InMage Scout-Dokumentation, die zusammen mit dem Produkt heruntergeladen wird. Alternativ hierzu können Sie wie folgt auf die Dokumentation zugreifen:
-
-	- [Versionshinweise](https://aka.ms/asr-scout-release-notes)
-	- [Kompatibilitätsmatrix](https://aka.ms/asr-scout-cm)
-	- [Benutzerhandbuch](https://aka.ms/asr-scout-user-guide)
-	- [RX-Benutzerhandbuch](https://aka.ms/asr-scout-rx-user-guide)
-	- [Schnellinstallationsanleitung](https://aka.ms/asr-scout-quick-install-guide)
+1. Click **Create vault**.
+2. On the **Recovery Services** page, click the vault to open the **Quick Start** page.
+3. In the dropdown list, select **Between two on-premises VMware sites**.
+4. Download InMage Scout. The setup files for all of the required components are in the downloaded .zip file.
 
 
-## Aktualisierungen
+## <a name="step-3:-install-component-updates"></a>Step 3: Install component updates
 
-### Azure Site Recovery Scout 8.0.1 Update 3
-Update 3 enthält die folgenden Fehlerbehebungen und Verbesserungen:
+Read about the latest [updates](#updates). You'll install the update files on servers in the following order:
 
-- Der Konfigurationsserver und RX können nicht im Site Recovery-Tresor registriert werden, wenn sie sich hinter dem Proxy befinden.
-- Die Anzahl von Stunden, in denen die Recovery Point Objective (RPO) nicht erfüllt ist, wird im Integritätsbericht nicht aktualisiert.
-- Der Konfigurationsserver wird nicht mit RX synchronisiert, wenn die ESX-Hardwaredetails oder Netzwerkdetails ein UTF-8-Zeichen enthalten.
-- Windows Server 2008 R2-Domänencontroller werden nach der Wiederherstellung nicht gestartet.
-- Die Offlinesynchronisierung funktioniert nicht wie erwartet.
-- Nach dem VM-Failover bleibt die Replikationspaarlöschung in der CX-UI längere Zeit hängen, und Benutzer können den Failback- oder Fortsetzungsvorgang nicht durchführen.
-- Momentaufnahmen-Gesamtvorgänge, die vom Konsistenzauftrag durchgeführt werden, wurden optimiert, um Trennungen von Anwendungsverbindungen zu reduzieren, z.B. für SQL-Clients.
-- Die Leistung des Konsistenztools (VACP.exe) wurde verbessert, indem die Arbeitsspeichernutzung reduziert wurde, die zum Erstellen von Momentaufnahmen unter Windows erforderlich ist.
-- Der Dienst für die Pushinstallation stürzt ab, wenn das Kennwort länger als 16 Zeichen ist.
-- Beim Ändern der Anmeldeinformationen führt vContinuum keine Überprüfung und Aufforderung zur Eingabe neuer vCenter-Anmeldeinformationen durch.
-- Unter Linux lädt der Masterziel-Cache-Manager (cachemgr) keine Dateien vom Prozessserver herunter, was zu einer Drosselung des Replikationspaars führt.
-- Wenn die Datenträgerreihenfolge des physischen Failoverclusters (MSCS) nicht auf allen Knoten gleich ist, wird die Replikation für einige Clustervolumen nicht festgelegt. <br/>Beachten Sie, dass der Cluster erneut geschützt werden muss, damit Sie von diesem Fix profitieren können.
-- SMTP-Funktionalität verhält sich nicht erwartungsgemäß, nachdem RX von Scout 7.1 auf Scout 8.0.1 aktualisiert wurde.
-- Dem Protokoll wurden weitere Statistiken hinzugefügt, damit der Rollbackvorgang nachverfolgt, wie viel Zeit bis zum Abschluss benötigt wird.
-- Unterstützung für Linux-Betriebssysteme auf dem Quellserver wurde hinzugefügt:
-	- Red Hat Enterprise Linux (RHEL) 6 Update 7
-	- CentOS 6 Update 7
-- Die CX- und RX-Benutzeroberfläche kann jetzt die Benachrichtigung für das Paar anzeigen, das in den Bitmapmodus wechselt.
-- Die folgenden Sicherheitsfixes wurden in RX hinzugefügt:
+1. RX server if there is one
+2. Configuration servers
+3. Process servers
+3. Master target servers
+4. vContinuum servers
+5. Source server (only for Windows Server)
 
-**Problembeschreibung**|**Implementierungsverfahren**
+Install the updates as follows:
+
+1. Download the [update](https://aka.ms/asr-scout-update3) .zip file. This .zip file contains the following files:
+
+    -  RX_8.0.3.0_GA_Update_3_6684045_17Mar16.tar.gz
+    -  CX_Windows_8.0.3.0_GA_Update_3_5048668_16Mar16.exe
+    -  UA_Windows_8.0.3.0_GA_Update_3_7101745_04Apr16.exe
+    -  UA_RHEL6-64_8.0.3.0_GA_Update_3_7101745_04Apr16.zip
+    -  vCon_Windows_8.0.3.0_GA_Update_3_6873369_16Mar16.exe
+
+2. Extract the .zip files.
+3. **For the RX server**: Copy **RX_8.0.3.0_GA_Update_3_6684045_17Mar16.tar.gz** to the RX server and extract it. In the extracted folder, run **/Install**.
+4. **For the configuration server/process server**: Copy **CX_Windows_8.0.3.0_GA_Update_3_5048668_16Mar16.exe** to the configuration server and process server. Double-click to run it.
+5. **For the Windows master target server**: To update the unified agent, copy **UA_Windows_8.0.3.0_GA_Update_3_7101745_04Apr16.exe** to the master target server. Double-click it to run it. Note that the unified agent is also applicable to the source server. You should install it on the source server as well, as mentioned later in this list.
+6. **For the Linux master target server**: To update the unified agent, copy **UA_RHEL6-64_8.0.3.0_GA_Update_3_7101745_04Apr16.zip** to the master target server and extract it. In the extracted folder, run **/Install**.
+7. **For the vContinuum server**: Copy **vCon_Windows_8.0.3.0_GA_Update_3_6873369_16Mar16.exe** to the vContinuum server. Make sure that you've closed the vContinuum wizard. Double-click on the file to run it.
+8. **For the Windows source server**: To update the unified agent, copy **UA_Windows_8.0.3.0_GA_Update_3_7101745_04Apr16.exe** to the source server. Double-click it to run it.
+
+## <a name="step-4:-set-up-replication"></a>Step 4: Set up replication
+1. Set up replication between the source and target VMware sites.
+2. For guidance, use the InMage Scout documentation that's downloaded with the product. Alternatively, you can access the documentation as follows:
+
+    - [Release notes](https://aka.ms/asr-scout-release-notes)
+    - [Compatibility matrix](https://aka.ms/asr-scout-cm)
+    - [User guide](https://aka.ms/asr-scout-user-guide)
+    - [RX user guide](https://aka.ms/asr-scout-rx-user-guide)
+    - [Quick installation guide](https://aka.ms/asr-scout-quick-install-guide)
+
+
+## <a name="updates"></a>Updates
+
+### <a name="azure-site-recovery-scout-8.0.1-update-3"></a>Azure Site Recovery Scout 8.0.1 Update 3
+Update 3 includes the following bug fixes and enhancements:
+
+- The configuration server and RX fail to register to the Site Recovery vault when they're behind the proxy.
+- The number of hours that the recovery point objective (RPO) is not met is not getting updated in the health report.
+- The configuration server is not syncing with RX when the ESX hardware details or network details contain any UTF-8 characters.
+- Windows Server 2008 R2 domain controllers fail to boot after recovery.
+- Offline sync is not working as expected.
+- After virtual machine (VM) failover, replication-pair deletion gets stuck in the CX UI for a long time, and users cannot complete the failback or resume operation.
+- Overall snapshot operations that are done by the consistency job have been optimized to help reduce application disconnects like SQL clients.
+- The performance of the consistency tool (VACP.exe) has been improved by reducing the memory usage that is required for creating snapshots on Windows.
+- The push install service crashes when the password is greater than 16 characters.
+- vContinuum is not checking and prompting for new vCenter credentials when the credentials are changed.
+- On Linux, the master target cache manager (cachemgr) is not downloading files from the process server, which results in replication pair throttling.
+- When the physical failover cluster (MSCS) disk order is not the same on all the nodes, replication is not set for some of the cluster volumes.
+<br/>Note that the cluster needs to be reprotected to take advantage of this fix.  
+- SMTP functionality is not working as expected after RX is upgraded from Scout 7.1 to Scout 8.0.1.
+- More stats have been added in the log for the rollback operation to track the time it has taken to complete it.
+- Support has been added for Linux operating systems on the source server:
+    - Red Hat Enterprise Linux (RHEL) 6 update 7
+    - CentOS 6 update 7
+- The CX and RX UI can now show the notification for the pair, which goes into bitmap mode.
+- The following security fixes have been added in RX:
+
+**Issue description**|**Implementation procedures**
 ---|---
-Autorisierungsumgehung per Parametermanipulation|Der Zugriff auf unzulässige Benutzer wurde beschränkt.
-Websiteübergreifende Anforderungsfälschung|Das Seitentokenkonzept mit zufälliger Generierung für jede Seite wurde implementiert. <br/>Dies bedeutet Folgendes: <li> Für einen Benutzer ist nur eine Instanz für das einmalige Anmelden vorhanden.</li><li>Die Seitenaktualisierung funktioniert nicht, sondern es wird eine Umleitung auf das Dashboard durchgeführt.</li>
-Upload schädlicher Dateien|Dateien wurden auf bestimmte Erweiterungen beschränkt. Zulässige Erweiterungen: 7z, aiff, asf, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, log, mid, mov, mp3, mp4, mpc, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, ram, rar, rm, rmi, rmvb, rtf, sdc, sitd, swf, sxc, sxw, tar, tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml und zip.
-Persistentes websiteübergreifendes Skripting | Eingabevalidierungen wurden hinzugefügt.
+Authorization bypass via parameter tampering|Restricted access to non-applicable users.
+Cross-site request forgery|Implemented the page-token concept, which generates randomly for every page. <br/>With this, you will see: <li> There is only a single sign-in instance for the same user.</li><li>Page refresh does not work--it will redirect to the dashboard.</li>
+Malicious file upload|Restricted files to certain extensions. Allowed extensions are: 7z, aiff, asf, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, log, mid, mov, mp3, mp4, mpc, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, ram, rar, rm, rmi, rmvb, rtf, sdc, sitd, swf, sxc, sxw, tar, tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml, and zip.
+Persistent cross-site scripting | Added input validations.
 
 
 >[AZURE.NOTE]
 >
->-	Alle Site Recovery-Updates sind kumulativ. Update 3 verfügt über alle Fixes von Update 1 und Update 2. Update 3 kann direkt auf 8.0.1 GA angewendet werden.
->-	Für die Updates für den Konfigurationsserver und RX kann kein Rollback durchgeführt werden, nachdem sie auf das System angewendet wurden.
+>-  All Site Recovery updates are cumulative. Update 3 has all the fixes of Update 1 and Update 2. Update 3 can be directly applied on 8.0.1 GA.
+>-  The configuration server and RX updates can’t be rolled back after they're applied on the system.
 
-### Azure Site Recovery Scout 8.0.1 Update 2 (Update 03Dec15)
+### <a name="azure-site-recovery-scout-8.0.1-update-2-(update-03dec15)"></a>Azure Site Recovery Scout 8.0.1 Update 2 (Update 03Dec15)
 
-Fixes in Update 2 umfassen Folgendes:
+Fixes in Update 2 include:
 
-- **Konfigurationsserver**: Behebung eines Problems, das die korrekte Funktion der kostenlosen 31-Tage-Messfunktion verhinderte, wenn der Konfigurationsserver in Site Recovery registriert wurde.
-- **Vereinheitlichter Agent**: Behebung eines Problems in Update 1, das die Installation des Updates auf dem Masterzielserver verhinderte, wenn ein Upgrade von Version 8.0 auf 8.0.1 durchgeführt wurde.
+- **Configuration server**: Fix for an issue that prevented the 31-day free metering feature from working as expected when the configuration server was registered in Site Recovery.
+- **Unified agent**: Fix for an issue in Update 1 that resulted in the update not being installed on the master target server when it was upgraded from version 8.0 to 8.0.1.
 
 
-### Azure Site Recovery Scout 8.0.1 Update 1
+### <a name="azure-site-recovery-scout-8.0.1-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 
-Update 1 enthält die folgenden Fehlerbehebungen und neuen Features:
+Update 1 includes the following bug fixes and new features:
 
-- 31 Tage lang kostenloser Schutz pro Serverinstanz. Dies ermöglicht es Ihnen, die Funktionalität zu testen oder eine Machbarkeitsstudie einzurichten.
-	- Alle Vorgänge auf dem Server, einschließlich Failover und Failback, sind für die ersten 31 Tage kostenlos. Dies gilt ab dem Zeitpunkt, zu dem ein Server erstmalig mit Site Recovery Scout geschützt wird.
-	- Ab dem 32. Tag wird für jeden geschützten Server die Standardinstanzgebühr für den Azure Site Recovery-Schutz für eine Website in Rechnung gestellt, die im Besitz eines Kunden ist.
-	- Die Anzahl der geschützten Server, die zurzeit in Rechnung gestellt werden, kann jederzeit auf der Seite "Dashboard" des Azure Site Recovery-Tresors angezeigt werden.
-- Unterstützung für die vSphere-Befehlszeilenschnittstelle (vCLI) 5.5 Update 2 wurde hinzugefügt.
-- Unterstützung für Linux-Betriebssysteme auf dem Quellserver hinzugefügt:
-	- RHEL 6 Update 6
-	- RHEL 5 Update 11
-	- CentOS 6 Update 6
-	- CentOS 5 Update 11
-- Fehlerbehebungen für folgende Probleme:
-	- Fehler der Tresorregistrierung für den Konfigurationsserver oder RX-Server.
-	- Clustervolumes werden nicht wie erwartet angezeigt, wenn gruppierte virtuelle Computer beim Fortsetzen erneut geschützt werden.
-	- Failbackfehler, wenn der Masterzielserver auf einem anderen ESXi-Server als den lokalen virtuellen Produktionscomputern gehostet wird.
-	- Die Konfigurationsdateiberechtigungen werden geändert, wenn Sie das Upgrade auf 8.0.1 durchführen. Dies wirkt sich auf den Schutz und die Vorgänge aus.
-	- Der Schwellenwert für die Neusynchronisierung wird nicht wie erwartet erzwungen, was zu inkonsistentem Replikationsverhalten führt.
-	- Die RPO-Einstellungen werden nicht richtig in der Konfigurationsserverschnittstelle angezeigt. Für den unkomprimierten Datenwert wird fälschlicherweise der komprimierte Wert angezeigt.
-	-  Der Vorgang „Entfernen“ führt das Löschen im vContinuum-Assistenten nicht wie erwartet durch, und die Replikation wird in der Konfigurationsserverschnittstelle nicht gelöscht.
-	-  Im vContinuum-Assistenten wird der Datenträger automatisch deaktiviert, wenn Sie in der Datenträgeransicht während des Schutzes von virtuellen MSCS-Computern auf **Details** klicken.
-	- Beim Szenario „physisch zu virtuell“ (P2V) werden erforderliche HP-Dienste, z.B. CIMnotify und CqMgHost, bei der VM-Wiederherstellung nicht auf manuell umgestellt. Dies führt dazu, dass sich die Startdauer verlängert.
-	- Für den Schutz eines virtuellen Linux-Computers tritt ein Fehler auf, wenn auf dem Masterzielserver mehr als 26 Datenträger vorhanden sind.
+- 31 days of free protection per server instance. This enables you to test functionality or set up a proof-of-concept.
+    - All operations on the server, including failover and failback, are free for the first 31 days, starting from the time that a server is first protected with Site Recovery Scout.
+    - From the 32nd day onwards, each protected server will be charged at the standard instance rate for Azure Site Recovery protection to a customer-owned site.
+    - At any time, the number of protected servers that are currently being charged is available on the Dashboard page of the Azure Site Recovery vault.
+- Support added for vSphere Command-Line Interface (vCLI) 5.5 Update 2.
+- Support added for Linux operating systems on the source server:
+    - RHEL 6 Update 6
+    - RHEL 5 Update 11
+    - CentOS 6 Update 6
+    - CentOS 5 Update 11
+- Bug fixes to address the following issues:
+    - Vault registration fails for the configuration server or RX server.
+    - Cluster volumes don't appear as expected when clustered virtual machines are reprotected when they resume.
+    - Failback fails when the master target server is hosted on a different ESXi server from the on-premises production virtual machines.
+    - Configuration file permissions are changed when you upgrade to 8.0.1, which affects protection and operations.
+    - The resynchronization threshold isn't enforced as expected, which leads to inconsistent replication behavior.
+    - The RPO settings are not appearing correctly in the configuration server interface. The uncompressed data value incorrectly shows the compressed value.
+    -  The Remove operation doesn't delete as expected in the vContinuum wizard, and replication isn't deleted from the configuration server interface.
+    -  In the vContinuum wizard, the disk is automatically unselected when you click **Details** in the disk view during protection of MSCS virtual machines.
+    - During the physical-to-virtual (P2V) scenario, required HP services, such as CIMnotify and CqMgHost, aren't moved to manual in virtual machine recovery. This results in additional boot time.
+    - Linux virtual machine protection fails when there are more than 26 disks on the master target server.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Etwaige Fragen können Sie im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) stellen.
+Post any questions that you have on the [Azure Recovery Services forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

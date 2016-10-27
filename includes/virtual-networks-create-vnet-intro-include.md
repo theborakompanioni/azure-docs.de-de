@@ -1,3 +1,7 @@
-Ein virtuelles Azure-Netzwerk (VNet) ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Sie können Ihre Azure-Netzwerkeinstellungen steuern und DHCP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien sowie das Routing definieren. Außerdem können Sie Ihr VNet in Subnetze segmentieren und virtuelle Azure-IaaS-Computer (VMs) und PaaS-Rolleninstanzen genauso bereitstellen wie Sie physische und virtuelle Computer im lokalen Datencenter bereitstellen. Im Wesentlichen bietet ein VNet Ihnen die Möglichkeit, Ihr Netzwerk unter Verwendung Ihrer eigenen IP-Adressblöcke auf Azure auszudehnen. Ziehen Sie [Virtuelle Netzwerke im Überblick](../articles/virtual-network/virtual-networks-overview.md) zurate, wenn Sie mit VNets nicht vertraut sind.
+An Azure virtual network (VNet) is a representation of your own network in the cloud. You can control your Azure network settings and define DHCP address blocks, DNS settings, security policies, and routing. You can also further segment your VNet into subnets and deploy Azure IaaS virtual machines (VMs) and PaaS role instances, in the same way you can deploy physical and virtual machines to your on-premises datacenter. In essence, you can expand your network to Azure, bringing your own IP address blocks. Read the [virtual network overview](../articles/virtual-network/virtual-networks-overview.md) if you are not familiar with VNets.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

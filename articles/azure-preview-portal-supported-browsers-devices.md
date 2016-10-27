@@ -1,35 +1,40 @@
 <properties
-	pageTitle="Unterstützte Browser und Geräte"
-	description="Beschreibt die Browser und Geräte, auf denen das Azure-Portal verwendet werden kann." 
-	services=""
-	documentationCenter=""
-	authors="flanakin"
-	writer="flanakin"
-	manager="lwelicki"
-	editor=""/>
+    pageTitle="Supported browsers and devices"
+    description="Describes the browsers and devices on which the Azure portal will work." 
+    services=""
+    documentationCenter=""
+    authors="flanakin"
+    writer="flanakin"
+    manager="lwelicki"
+    editor=""/>
 
 <tags
-	ms.service="multiple"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/23/2015"
-	ms.author="micflan"/>
+    ms.service="multiple"
+    ms.workload="multiple"
+    ms.tgt_pltfrm="ibiza"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/23/2015"
+    ms.author="micflan"/>
 
-#Unterstützte Browser und Geräte
-Das Microsoft Azure-Portal kann auf allen modernen Desktop- und Tablet-Geräten und mit allen Browsern ausgeführt werden.
 
-### Unterstützte Geräte
-Das Portal funktioniert einwandfrei auf modernen PCs, Macs und Tablets. Mobiltelefone werden zurzeit nicht unterstützt.
+#<a name="supported-browsers-and-devices"></a>Supported browsers and devices
+The Microsoft Azure portal runs on all modern desktop and tablet devices and browsers.
 
-### Unterstützte Browser
-Die neuesten Versionen der folgenden Browser werden unterstützt:
+### <a name="supported-devices"></a>Supported devices
+The portal will run great on modern PCs, Macs, and tablets. Mobile phones are not currently supported.
 
-- Edge (neueste Version)
+### <a name="supported-browsers"></a>Supported browsers
+The latest versions of the following browsers are supported:
+
+- Edge (latest)
 - Internet Explorer 11
-- Safari (neueste, nur auf Mac)
-- Chrome (neueste Version)
-- Firefox (neueste Version)
+- Safari (latest, Mac only)
+- Chrome (latest)
+- Firefox (latest)
 
-<!---HONumber=AcomDC_0420_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

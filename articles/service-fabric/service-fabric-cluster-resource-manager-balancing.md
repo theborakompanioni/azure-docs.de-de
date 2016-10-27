@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Azure Service Fabric | Microsoft Azure"
-   description="Eine Einführung in den Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Service Fabric."
+   pageTitle="Balancing Your Cluster With the Azure Service Fabric Cluster Resource Manager | Microsoft Azure"
+   description="An introduction to balancing your cluster with the Service Fabric Cluster Resource Manager."
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,19 +16,20 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
-# Lastenausgleich für Service Fabric-Cluster
-Der Clusterressourcen-Manager von Service Fabric ermöglicht Folgendes: Melden dynamischer Lasten, Reagieren auf Änderungen im Cluster, Korrigieren von Einschränkungsverletzungen sowie bei Bedarf das Ausführen eines Lastenausgleichs für den Cluster. Doch wie häufig werden diese Vorgänge ausgeführt, und wodurch werden sie ausgelöst? Hierfür gibt es mehrere Steuerungsmöglichkeiten.
 
-Die ersten Steuerelemente im Zusammenhang mit dem Lastenausgleich sind eine Reihe von Timern. Diese Timer legen fest, wie oft der Clusterressourcen-Manager den Zustand des Clusters überprüft, um Situationen zu ermitteln, die Maßnahmen erfordern. Es gibt drei verschiedene Kategorien von Tasks, für die jeweils ein Timer verfügbar ist. Sie lauten wie folgt:
+# <a name="balancing-your-service-fabric-cluster"></a>Balancing your service fabric cluster
+The Service Fabric Cluster Resource Manager allows reporting dynamic load, reacting to changes in the cluster, correcting constraint violations, and rebalancing the cluster if necessary. But how often does it do these things, and what triggers it? There are several controls related to this.
 
-1.	Platzierung – In dieser Phase erfolgt die Platzierung von zustandsbehafteten und zustandslosen Instanzen, die fehlen. Dies umfasst sowohl neue Dienste als auch die Behandlung von zustandsbehafteten Replikaten oder zustandslosen Instanzen, die ausgefallen sind und neu erstellt werden müssen. Das Löschen und Ablegen von Replikaten oder Instanzen erfolgt auch in dieser Phase.
-2.	Einschränkungsüberprüfungen – In dieser Phase erfolgt eine Überprüfung auf und Korrektur bei Verstößen gegen verschiedene Platzierungseinschränkungen (Regeln) im System. Beispiele hierfür sind z. B. das Sicherstellen, dass Knoten nicht ihre Kapazität überschreiten und die Platzierungseinschränkungen eines Diensts erfüllt werden (mehr dazu weiter unten).
-3.	Lastenausgleich – In dieser Phase wird geprüft, ob basierend auf dem gewünschten Ausgleichsgrad für verschiedene Metriken ein proaktiver erneuter Ausgleich erforderlich ist. Falls ja, wird versucht, eine ausgeglichenere Anordnung im Cluster zu finden.
+The first set of controls around balancing are a set of timers. These timers govern how often the Cluster Resource Manager examines the state of the cluster for things that need to be addressed. There are three different categories of work, each with their own corresponding timer. They are:
 
-## Konfigurieren von Schritten und Timern für den Clusterressourcen-Manager
-Für all diese Typen von Korrekturen, die der Clusterressourcen-Manager durchführen kann, sind unterschiedliche Timer verfügbar, mit denen festgelegt wird, wie häufig die Vorgänge ausgeführt werden. Wenn Sie z.B. stündlich neue Dienstworkloads im Cluster platzieren möchten (um diese zu Batches zusammenzufassen), jedoch regelmäßig alle paar Sekunden Lastenausgleichsprüfungen wünschen, können Sie dieses Verhalten konfigurieren. Beim Auslösen der einzelnen Timer wird der Task geplant. Standardmäßig überprüft der Ressourcen-Manager jede Zehntelsekunde seinen Zustand und wendet Updates (Zusammenfassung aller Änderungen seit der letzten Prüfung, z.B. das Ermitteln eines ausgefallenen Knotens) ebenfalls mit diesem Intervall an. Die Kennzeichen für die Platzierungs- und Einschränkungsüberprüfung werden auf „Jede Sekunde“, das Kennzeichen für den Ausgleich auf „Alle 5 Sekunden“ festgelegt.
+1.  Placement – this stage deals with placing any stateful replicas or stateless instances which are missing. This covers both new services and handling stateful replicas or stateless instances which have failed and need to be recreated. Deleting and dropping replicas or instances is also handled here.
+2.  Constraint Checks – this stage checks for and corrects violations of the different placement constraints (rules) within the system. Examples of rules are things like ensuring that nodes are not over capacity and that a service’s placement constraints (more on these later) are met.
+3.  Balancing – this stage checks to see if proactive rebalancing is necessary based on the configured desired level of balance for different metrics, and if so attempts to find an arrangement in the cluster that is more balanced.
 
-ClusterManifest.xml
+## <a name="configuring-cluster-resource-manager-steps-and-timers"></a>Configuring Cluster Resource Manager Steps and Timers
+Each of these different types of corrections the Cluster Resource Manager can make is controlled by a different timer which governs its frequency. So for example, if you only want to deal with placing new service workloads in the cluster every hour (to batch them up), but want regular balancing checks every few seconds, you can configure that behavior. When each timer fires, the task is scheduled. By default the Resource Manager scans its state and applies updates (batching all the changes that have occurred since the last scan, like noticing that a node is down) every 1/10th of a second, sets the placement and constraint check flags every second, and the balancing flag every 5 seconds.
+
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -39,14 +40,14 @@ ClusterManifest.xml
         </Section>
 ```
 
-Aktuell wird jeweils nur eine dieser Aktionen ausgeführt, sodass die Aktionen nacheinander ausgeführt werden (aus diesem Grund werden diese Konfigurationen als „Mindestintervalle“ bezeichnet). Der Grund dafür ist, dass Sie z.B. zunächst auf Anforderungen zum Erstellen neuer Replikate reagieren, bevor Sie mit einem Ausgleich des Clusters fortfahren. Wie Sie anhand der angegebenen standardmäßigen Zeitintervalle erkennen, können wir sehr schnell eine Überprüfung auf alle erforderlichen Schritte durchführen. Das heißt, dass die Änderungen, die wir am Ende jedes Schritts durchführen, in der Regel weniger umfangreich sind: Wir überprüfen also nicht eine große Menge an Änderungen, die über mehrere Stunden hinweg im Cluster vorgenommen wurden, um dann zu versuchen, alle Änderungen auf einmal zu korrigieren. Stattdessen wird versucht, sofort auf Vorkommnisse zu reagieren. Wenn jedoch viele Änderungen gleichzeitig vorgenommen werden, erfolgt die Korrektur für eine Gruppe von Vorkommnissen. Dadurch kann der Ressourcen-Manager von Service Fabric sehr schnell auf Ereignisse im Cluster reagieren.
+Today we only perform one of these actions at a time, sequentially (that’s why we refer to these configurations as “minimum intervals”)). This is so that, for example, we’ve already responded to any pending requests to create new replicas before we move on to balancing the cluster. As you can see by the default time intervals specified, we can scan and check for anything we need to do very frequently, meaning that the set of changes we make at the end of each step is usually smaller: we’re not scanning through hours of changes in the cluster and trying to correct them all at once, we are trying to handle things more or less as they happen but with some batching when many things happen at the same time. This makes the Service Fabric resource manager very responsive to things that happen in the cluster.
 
-Wenngleich die meisten dieser Tasks unkompliziert sind (wenn Einschränkungsverletzungen vorliegen, werden sie korrigiert, wenn Dienste erstellt werden müssen, werden sie erstellt), benötigt der Clusterressourcen-Manager einige zusätzliche Informationen, um zu bestimmen, ob für den Cluster ein Ausgleich vorgenommen werden muss. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* und *Aktivitätsschwellenwerte*.
+While most of these tasks are straightforward (if there are constraint violations, fix them, if there are services to be created, create them), the Cluster Resource Manager also needs some additional information to determine if the cluster imbalanced. For that we have two other pieces of configuration: *Balancing Thresholds* and *Activity Thresholds*.
 
-## Ausgleichsschwellenwerte
-Ein Ausgleichsschwellenwert ist das wesentliche Steuerelement, um einen proaktiven Ausgleich auszulösen (bedenken Sie, dass der Timer lediglich bestimmt, wie oft der Clusterressourcen-Manager den Cluster überprüft. Durch den Timer selbst werden keine Schritte ausgelöst). Der Ausgleichsschwellenwert legt fest, welche Bedingungen für eine bestimmte Metrik erfüllt sein müssen, damit der Clusterressourcen-Manager den Cluster als nicht ausgeglichen einstuft und einen Ausgleich auslöst.
+## <a name="balancing-thresholds"></a>Balancing thresholds
+A Balancing Threshold is the main control for triggering proactive rebalancing (remember that the timer is just for how often the Cluster Resource Manager should check - it doesn't mean that anything will happen). The Balancing Threshold defines how imbalanced the cluster needs to be for a specific metric in order for the Cluster Resource Manager to consider it imbalanced and trigger balancing.
 
-Ausgleichsschwellenwerte werden als Teil der Clusterdefinition metrikbezogen definiert. Weitere Informationen zu Metriken finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
+Balancing Thresholds are defined on a per-metric basis as a part of the cluster definition. For more information on metrics check out [this article](service-fabric-cluster-resource-manager-metrics.md).
 
 ClusterManifest.xml
 
@@ -57,26 +58,26 @@ ClusterManifest.xml
     </Section>
 ```
 
-Der Ausgleichsschwellenwert für eine Metrik ist ein Verhältnis. Wenn die Last auf dem am stärksten ausgelasteten Knoten dividiert durch die Last auf dem am wenigsten ausgelasteten Knoten diesen Wert überschreitet, gilt der Cluster als nicht ausgeglichen. Bei der nächsten Überprüfung durch den Clusterressourcen-Manager (über MinLoadBalancingInterval standardmäßig auf ein Intervall von 5 Sekunden festgelegt, siehe oben) wird ein Ausgleich ausgelöst.
+The Balancing Threshold for a metric is a ratio. If the amount of load on the most loaded node divided by the amount of load on the least loaded node exceeds this number, then the cluster is considered imbalanced and balancing will be triggered the next time the Cluster Resource Manager checks (by default, ever 5 seconds, as governed by the MinLoadBalancingInterval, shown above).
 
-![Beispiel eines Ausgleichsschwellenwerts][Image1]
+![Balancing Threshold Example][Image1]
 
-Bei diesem einfachen Beispiel belegt jeder Dienst eine Einheit einer bestimmten Metrik. Im Beispiel oben ist die maximale Auslastung auf einem Knoten 5 und die minimale Auslastung 2. Angenommen, der Ausgleichsschwellenwert für diese Metrik ist 3. Daher gilt der Cluster im Beispiel oben als ausgeglichen, sodass bei der nächsten Überprüfung durch den Clusterressourcen-Manager kein Lastenausgleich ausgelöst wird (das Verhältnis im Cluster beträgt 5/2 = 2,5, der Wert ist also kleiner als der angegebene Ausgleichsschwellenwert 3).
+In this simple example each service is consuming one unit of some metric. In the top example, the maximum load on a node is 5 and the minimum is 2. Let’s say that the balancing threshold for this metric is 3. Therefore, in the top example, the cluster is considered balanced and no balancing will be triggered when the Cluster Resource Manager checks (since the ratio in the cluster is 5/2 = 2.5 and that is less than the specified balancing threshold of 3).
 
-Im Beispiel unten ist die maximale Auslastung auf einem Knoten 10, während die Mindestauslastung 2 ist (was ein Verhältnis von 5 ergibt). Der Cluster überschreitet also den vorgesehenen Ausgleichsschwellenwert 3 für diese Metrik. Folglich wird beim nächsten Auslösen des Ausgleichstimers ein globaler Ausgleich geplant. Beachten Sie, dass allein durch die Suche zum Durchführen eines Ausgleichs noch keine Elemente verschoben werden. In einigen Fällen ist der Cluster nicht ausgeglichen, ohne dass die Situation verbessert werden kann. In einer Situation wie dieser hier wird jedoch (zumindest per Standardkonfiguration) mit ziemlicher Sicherheit ein Teil der Last auf Node3 verschoben. Da wir keinen „gierigen“ Ansatz befolgen, könnte ein Teil der Last auch auf Node2 verteilt werden, da dies zu einer Minimierung des allgemeinen Ungleichgewichts zwischen Knoten führen würde. Wir würden jedoch davon ausgehen, dass der größte Teil der Last auf Node3 platziert würde.
+In the bottom example, the max load on a node is 10, while the minimum is 2, resulting in a ratio of 5. This puts the cluster over the designed balancing threshold of 3 for that metric. As a result, a global rebalancing run will be scheduled next time the balancing timer fires. Note that just because a balancing search is kicked off doesn't mean anything will move - sometimes the cluster is imbalanced but the situation can't be improved - but in a situation like this one (at least by default) some the load will almost certainly be distributed to Node3. Note that since we are not using a greedy approach some load could also be distributed to Node2 since that would result in minimization of the overall differences between nodes, but we would expect that the majority of the load would flow to Node3.
 
-![Ausgleichsschwellenwert – Beispielaktionen][Image2]
+![Balancing Threshold Example Actions][Image2]
 
-Beachten Sie, dass die Unterschreitung des Ausgleichsschwellenwerts kein explizites Ziel ist – Ausgleichsschwellenwerte sind lediglich *Trigger*, die den Clusterressourcen-Manager von Service Fabric darüber informieren, dass er den Cluster prüfen sollte, um ggf. Verbesserungen vorzunehmen.
+Note that getting below the balancing threshold is not an explicit goal – Balancing Thresholds are just a *trigger* that tells the Cluster Resource Manager that it should look into the cluster to determine what improvements it can make, if any.
 
-## Aktivitätsschwellenwerte
-Mitunter ist die *Gesamtlast* des Clusters niedrig, obwohl Knoten relativ unausgeglichen sind. Der Grund hierfür kann bloß die Tageszeit sein oder dass der Cluster neu ist und einem Bootstrapping unterzogen wird. In beiden Fällen sollten Sie auf einen Lastenausgleich für den Cluster verzichten, da der Nutzen sehr gering ist und Sie lediglich viel Zeit für das Verschieben von Netzwerk- und Computeressourcen aufwenden, ohne dass dies zu einer wirklichen Veränderung führt. Um dies zu verhindern, gibt es im Ressourcen-Manager mit Aktivitätsschwellenwerten ein weiteres Steuerelement, mit dem Sie eine absolute Untergrenze für eine Aktivität angeben können. Wenn ein Knoten nicht mindestens diese Last aufweist, wird kein Ausgleich ausgelöst, selbst wenn der Ausgleichsschwellenwert erreicht wird.
+## <a name="activity-thresholds"></a>Activity thresholds
+Sometimes, although nodes are relatively imbalanced, the *total* amount of load in the cluster is low. This could be just because of the time of day, or because the cluster is new and just getting bootstrapped. In either case, you may not want to spend time balancing the cluster because there’s actually very little to be gained – you’ll just be spending network and compute resources to move things around, without making any absolute difference. Because we want to avoid doing this, there’s another control inside of the Resource Manager, known as Activity Thresholds, which allows you to specify some absolute lower bound for activity – if no node has at least this much load then balancing will not be triggered even if the Balancing Threshold is met.
 
-Nehmen wir als Beispiel Berichte mit den folgenden Summen für die Nutzung auf diesen Knoten. Nehmen wir außerdem an, dass wir unseren Ausgleichsschwellenwert 3 für diese Metrik beibehalten, aber zusätzlich auch den Aktivitätsschwellenwert 1536 festgelegt haben. Obgleich der Cluster im ersten Fall laut Ausgleichsschwellenwert unausgeglichen ist, erreicht kein Knoten den Mindestaktivitätsschwellenwert, sodass wir nicht eingreifen. Im unteren Beispiel wird der Aktivitätsschwellenwert von Node1 erheblich überschritten, sodass ein Ausgleich durchgeführt wird (sowohl der Ausgleichsschwellenwert als auch der Aktivitätsschwellenwert für die Metrik werden überschritten).
+As an example let’s say that we have reports with the following totals for consumption on these nodes. Let’s also say that we retain our Balancing Threshold of 3 for this metric, but now we also have an Activity Threshold of 1536. In the first case, while the cluster is imbalanced per the Balancing Threshold no node meets that minimum Activity Threshold, so we leave things alone. In the bottom example, Node1 is way over the Activity Threshold, so balancing will be performed (since both the Balancing Threshold and the Activity Threshold for the metric are exceeded)
 
-![Beispiel eines Aktivitätsschwellenwerts][Image3]
+![Activity Threshold Example][Image3]
 
-Aktivitätsschwellenwerte werden wie Ausgleichsschwellenwerte metrikbezogen in der Clusterdefinition definiert:
+Just like Balancing Thresholds, Activity Thresholds are defined per-metric via the cluster definition:
 
 ClusterManifest.xml
 
@@ -86,33 +87,37 @@ ClusterManifest.xml
     </Section>
 ```
 
-Sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert sind mit der Metrik verknüpft. Der Ausgleich wird nur ausgelöst, wenn sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert für die gleiche Metrik überschritten werden. Folglich gilt: Wenn der Ausgleichsschwellenwert für den Arbeitsspeicher und der Aktivitätsschwellenwert für die CPU überschritten werden, wird kein Ausgleich mehr ausgelöst, solange die verbleibenden Schwellenwerte (Ausgleichsschwellenwert für die CPU und Aktivitätsschwellenwert für den Arbeitsspeicher) nicht überschritten werden.
+Note that balancing and activity thresholds are both tied to the metric - balancing will only be triggered if both balancing and activity thresholds are exceeded for the same metric. Thus, if we exceed the Balancing Threshold for Memory and the Activity Threshold for CPU, balancing will not trigger as long as the remaining thresholds (Balancing Threshold for CPU and Activity Threshold for Memory) are not exceeded.
 
-## Gemeinsamer Lastenausgleich von Diensten
-Ein interessanter Hinweis ist, dass die Entscheidung, ob der Cluster unausgeglichen ist oder nicht, clusterweit gefällt wird. Doch die Korrektur darin besteht, einzelne Dienstreplikate und -instanzen zu verschieben. Das ist einleuchtend, nicht wahr? Wenn auf einem Knoten ein zu hoher Arbeitsspeicherwert erreicht wird, können mehrere Replikate oder Instanzen dazu beitragen. Daher kann es erforderlich sein, zustandsbehaftete Replikate oder zustandslose Instanzen zu verschieben, die die betroffene, unausgeglichene Metrik nutzen.
+## <a name="balancing-services-together"></a>Balancing services together
+Something that’s interesting to note is that whether the cluster is imbalanced or not is a cluster-wide decision, but the way we go about fixing it is moving individual service replicas and instances around. This makes sense, right? If memory is stacked up on one node, multiple replicas or instances could be contributing to it, so it could require moving any of the stateful replicas or stateless instances that use the affected, imbalanced metric.
 
-Gelegentlich aber ruft uns ein Kunde an oder schickt uns ein Ticket, das besagt, dass ein nicht unausgeglichener Dienst verschoben wurde. Wie kann es passieren, dass ein Dienst verschoben wird, obwohl alle Metriken dieses Diensts zum Zeitpunkt der anderen Diskrepanz (geradezu perfekt) ausgeglichen waren? Das wollen wir uns einmal ansehen.
+Occasionally though a customer will call us up or file a ticket saying that a service that wasn’t imbalanced got moved. How could it happen that a service gets moved around even if all of that service’s metrics were balanced, even perfectly so, at the time of the other imbalance? Let’s see!
 
-Sehen wir uns folgendes Beispiel mit den Diensten Service1, Service2, Service3 und Service4 an. Service1 meldet Werte für die Metriken Metric1 und Metric2, Service2 für die Metriken Metric2 und Metric3, Service3 für die Metriken Metric3 und Metric4 und Service4 für die Metrik Metric99. Sicherlich können Sie erkennen, in welche Richtung wir hier gehen. Wir haben eine Kette! Aus Sicht des Clusterressourcen-Managers verfügen wir nicht wirklich über vier unabhängige Dienste, sondern vielmehr über eine Reihe von Diensten, die in Bezug zueinander stehen (Service1, Service2 und Service3), sowie über einen weiteren Dienst, der unabhängig ist.
+Take for example four services, Service1, Service2, Service3, and Service4. Service1 reports against metrics Metric1 and Metric2, Service2 against Metric2 and Mmetric3, Service3 against Metric3 and Metric4, and Service4 against some metric Metric99. Surely you can see where we’re going here. We have a chain! From the perspective of the Cluster Resource Manager, we don’t really have four independent services, we have a bunch of services that are related (Service1, Service2, and Service3) and one that is off on its own.
 
-![Gemeinsamer Lastenausgleich von Diensten][Image4]
+![Balancing Services Together][Image4]
 
-Daher ist es möglich, dass ein Ungleichgewicht bei Metric1 bewirken kann, dass Replikate oder Instanzen, die zu Service3 gehören, verschoben werden. In der Regel sind diese Verschiebungen eher begrenzt, können aber umfassender sein, was genau davon abhängt, wie unausgeglichen Metrik 1 geworden ist und welche Änderungen im Cluster für die Korrektur erforderlich waren. Wir können auch mit Sicherheit sagen, dass ein Ungleichgewicht bei den Metriken 1, 2 oder 3 nie Verschiebungen in Dienst 4 bewirkt. Dies wäre sinnlos, da das Verschieben von Replikaten oder Instanzen, die zu Dienst 4 gehören, keinerlei Auswirkung auf die Ausgeglichenheit der Metriken 1, 2 oder 3 hat.
+So it is possible that an imbalance in Metric1 can cause replicas or instances belonging to Service3 to move around. Usually these movements are pretty limited, but can be larger depending on exactly how imbalanced Metric1 got and what changes were necessary in the cluster in order to correct it. We can also say with certainty that an imbalance in Metrics 1, 2, or 3 will never cause movements in Service4 – there’d be no point since moving the replicas or instances belonging to Service4 around can do absolutely nothing to impact the balance of Metrics 1, 2, or 3.
 
-Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste in Beziehung stehen, da Dienste ggf. hinzugefügt oder entfernt werden oder sich die Konfiguration ihrer Metriken geändert haben könnte. Zwischen zwei Ausführungen des Lastenausgleichs könnte Service2 z.B. so neu konfiguriert worden sein, dass Metric2 entfernt wurde. Dadurch wird die Kette zwischen Dienst 1 und Dienst 2 unterbrochen. Dann haben Sie anstelle von zwei Dienstgruppen drei:
+The Cluster Resource Manager automatically figures out what services are related, since services may have been added, removed, or had their metric configuration change – for example, between two runs of balancing Service2 may have been reconfigured to remove Metric2. This breaks the chain between Service1 and Service2. Now instead of two groups of services, you have three:
 
-![Gemeinsamer Lastenausgleich von Diensten][Image5]
+![Balancing Services Together][Image5]
 
-## Nächste Schritte
-- Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
-- Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md).
-- Der Clusterressourcen-Manager bietet mehrere Drosselungen, die Sie konfigurieren können, um Änderungen im Cluster zu verlangsamen. Sie sind normalerweise nicht erforderlich, aber bei Bedarf finden Sie [hier](service-fabric-cluster-resource-manager-advanced-throttling.md) weitere Informationen.
+## <a name="next-steps"></a>Next steps
+- Metrics are how the Service Fabric Cluster Resource Manger manages consumption and capacity in the cluster. To learn more about them and how to configure them check out [this article](service-fabric-cluster-resource-manager-metrics.md)
+- Movement Cost is one way of signaling to the Cluster Resource Manager that certain services are more expensive to move than others. To learn more about movement cost, refer to [this article](service-fabric-cluster-resource-manager-movement-cost.md)
+- The Cluster Resource Manager has several throttles that you can configure to slow down churn in the cluster. They're not normally necessary, but if you need them you can learn about them [here](service-fabric-cluster-resource-manager-advanced-throttling.md)
 
 
-[Image1]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
-[Image2]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png
-[Image3]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-activity-thresholds.png
-[Image4]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
-[Image5]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
+[Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
+[Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png
+[Image3]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-activity-thresholds.png
+[Image4]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
+[Image5]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

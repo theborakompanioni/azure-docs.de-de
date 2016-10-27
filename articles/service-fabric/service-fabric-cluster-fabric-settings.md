@@ -1,7 +1,7 @@
 
 <properties
-   pageTitle="Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie | Microsoft Azure"
-   description="Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können."
+   pageTitle="Customize Service Fabric cluster settings and Fabric Upgrade policy | Microsoft Azure"
+   description="This article describes the fabric settings and the fabric upgrade policies that you can customize."
    services="service-fabric"
    documentationCenter=".net"
    authors="chackdan"
@@ -17,59 +17,67 @@
    ms.date="09/20/2016"
    ms.author="chackdan"/>
 
-# Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 
-In diesem Dokument wird erläutert, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können im Portal oder mithilfe einer Resource Manager-Vorlage erfolgen.
+# <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Customize Service Fabric cluster settings and Fabric Upgrade policy
 
-## Fabric-Einstellungen, die Sie anpassen können
+This document tells you how to customize the various fabric settings and the fabric upgrade policy for your service fabric cluster. You can customize them on the portal or using a Resource Manager template.
+
+## <a name="fabric-settings-that-you-can-customize"></a>Fabric settings that you can customize
 
 
-Es folgen die Fabric-Einstellungen, die Sie anpassen können:
+Here are the Fabric settings that you can customize:
 
-### Name des Abschnitts: Security
+### <a name="section-name:-security"></a>Section Name: Security
 
-|**Parameter**|**Zulässige Werte**|**Anleitung oder Kurzbeschreibung**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|ClusterProtectionLevel|„None“ oder „EncryptAndSign“| „None“ (Standard) für unsichere Cluster, „EncryptAndSign“ für sichere Cluster. |
+|ClusterProtectionLevel|None or EncryptAndSign| None (default) for unsecured clusters, EncryptAndSign for secure clusters. |
 
-### Name des Abschnitts: Hosting
+### <a name="section-name:-hosting"></a>Section Name: Hosting
 
-|**Parameter**|**Zulässige Werte**|**Anleitung oder Kurzbeschreibung**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|ServiceTypeRegistrationTimeout|Zeit in Sekunden, Standardwert 300| Die maximale Zeit, die der Diensttyp bei der Fabric registriert sein darf|
-|ServiceTypeDisableFailureThreshold|Ganze Zahl, Standardeinstellung 1| Dies ist der Schwellenwert für die Anzahl der Fehler. Bei Überschreitung wird FailoverManager (FM) benachrichtigt. FM deaktiviert den Diensttyp auf diesem Knoten und versucht, die Workload auf einem anderen Knoten zu platzieren.|
-|ActivationRetryBackoffInterval|Zeit in Sekunden, Standardwert 5|Backoffintervall bei jedem Aktivierungsfehler. Bei jedem fortlaufenden Aktivierungsfehler wiederholt das System die Aktivierung bis zum Wert von „MaxActivationFailureCount“. Das Wiederholungsintervall bei jedem Versuch ist das Produkt der Anzahl fortlaufender Aktivierungsfehler und des Backoffintervalls für die Aktivierung.|
-|ActivationMaxRetryInterval|Zeit in Sekunden, Standardwert 300| Bei jedem fortlaufenden Aktivierungsfehler wiederholt das System die Aktivierung bis zum Wert von „ActivationMaxFailureCount“. „ActivationMaxRetryInterval“ gibt die Wartezeit nach jedem Aktivierungsfehler vor der Wiederholung an |
-|ActivationMaxFailureCount|Ganze Zahl, Standardeinstellung 10| Die maximale Anzahl der Wiederholungsversuche nach misslungener Aktivierung, ehe die Versuche eingestellt werden |
+|ServiceTypeRegistrationTimeout|Time in Seconds, default is 300| Maximum time allowed for the ServiceType to be  registered with fabric|
+|ServiceTypeDisableFailureThreshold|Whole number, default is 1| This is the threshold for the failure count after which FailoverManager (FM) is notified to disable the service type on that node and try a different node for placement.|
+|ActivationRetryBackoffInterval|Time in Seconds, default is 5|Backoff interval on every activation failure; On every continuous activation failure, the system retries the activation for up to the MaxActivationFailureCount. The retry interval on every try is a product of continuous activation failure and the activation back-off interval.|
+|ActivationMaxRetryInterval|Time in seconds, default is 300| On every continuous activation failure, the system retries the activation for up to ActivationMaxFailureCount. ActivationMaxRetryInterval specifies Wait time interval before retry after every activation failure |
+|ActivationMaxFailureCount|Whole number, default is 10| Number of times system retries failed activation before giving up |
 
-### Name des Abschnitts: FailoverManager
+### <a name="section-name:-failovermanager"></a>Section Name: FailoverManager
 
-|**Parameter**|**Zulässige Werte**|**Anleitung oder Kurzbeschreibung**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|PeriodicLoadPersistInterval|Zeit in Sekunden, Standardwert 10| Hiermit wird bestimmt, wie oft der FM eine Überprüfung auf neue Auslastungsberichte durchführt|
+|PeriodicLoadPersistInterval|Time in seconds, default is 10| This determines how often the FM check for new load reports|
 
-### Name des Abschnitts: Federation
+### <a name="section-name:-federation"></a>Section Name: Federation
 
-|**Parameter**|**Zulässige Werte**|**Anleitung oder Kurzbeschreibung**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|LeaseDuration|Zeit in Sekunden, Standardwert 30|Dauer einer Lease zwischen einem Knoten und seinen Nachbarn.|
-|LeaseDurationAcrossFaultDomain|Zeit in Sekunden, Standardwert 30|Dauer einer fehlerdomänenübergreifenden Lease zwischen einem Knoten und seinen Nachbarn.|
+|LeaseDuration|Time in seconds, default is 30|Duration that a lease lasts between a node and its neighbors.|
+|LeaseDurationAcrossFaultDomain|Time in seconds, default is 30|Duration that a lease lasts between a node and its neighbors across fault domains.|
 
-### Name des Abschnitts: ClusterManager
+### <a name="section-name:-clustermanager"></a>Section Name: ClusterManager
 
-|**Parameter**|**Zulässige Werte**|**Anleitung oder Kurzbeschreibung**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|UpgradeStatusPollInterval|Zeit in Sekunden, Standardwert 60|Die Häufigkeit des Abrufs des Upgradestatus der Anwendung. Dieser Wert bestimmt die Aktualisierungsrate für Aufrufe von „GetApplicationUpgradeProgress“|
-|UpgradeHealthCheckInterval|Zeit in Sekunden, Standardwert 60|Die Häufigkeit der Integritätsstatusprüfungen während eines überwachten Anwendungsupgrades|
-|FabricUpgradeStatusPollInterval|Zeit in Sekunden, Standardwert 60|Die Häufigkeit des Abrufs des Upgradestatus der Fabric. Dieser Wert bestimmt die Aktualisierungsrate für Aufrufe von „GetFabricUpgradeProgress“ |
-|FabricUpgradeHealthCheckInterval|Zeit in Sekunden, Standardwert 60|Die Häufigkeit der Integritätsstatusprüfungen während eines überwachten Fabric-Upgrades|
+|UpgradeStatusPollInterval|Time in seconds, default is 60|The frequency of polling for application upgrade status. This value determines the rate of update for any GetApplicationUpgradeProgress call|
+|UpgradeHealthCheckInterval|Time in seconds, default is 60|The frequency of health status checks during a monitored application upgrades|
+|FabricUpgradeStatusPollInterval|Time in seconds, default is 60|The frequency of polling for Fabric upgrade status. This value determines the rate of update for any GetFabricUpgradeProgress call |
+|FabricUpgradeHealthCheckInterval|Time in seconds, default is 60|The frequency of health status check during a  monitored Fabric upgrade|
 
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung zu enthalten:
+Read these articles for more information on cluster management:
 
-[Hinzufügen, Rollover und Entfernen von Zertifikaten in einem Azure-Cluster ](service-fabric-cluster-security-update-certs-azure.md)
+[Add, Roll over, remove certificates from your Azure cluster ](service-fabric-cluster-security-update-certs-azure.md) 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

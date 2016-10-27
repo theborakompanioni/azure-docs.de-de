@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für NSGs | Microsoft Azure"
-   description="Erfahren Sie, wie Sie Leistungsindikatoren-, Ereignis- und Überwachungsprotokolle für NSGs aktivieren."
+   pageTitle="Monitor operations, events, and counters for NSGs | Microsoft Azure"
+   description="Learn how to enable counters, events, and operational logging for NSGs"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -17,105 +17,110 @@
    ms.date="07/14/2016"
    ms.author="jdial" />
 
-#Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
 
-Sie können in Azure verschiedene Protokolltypen verwenden, um NSGs zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle können Sie über das Portal zugreifen, und alle Protokolle können aus einem Azure-Blobspeicher extrahiert und in anderen Tools wie [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md),Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
+#<a name="log-analytics-for-network-security-groups-(nsgs)"></a>Log analytics for network security groups (NSGs)
 
-- **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../azure-portal/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Vorschauportal angezeigt werden.
-- **Ereignisprotokolle:** Mithilfe dieses Protokolls können Sie anzeigen, welche NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
-- **Leistungsindikatorenprotokolle:** Verwenden Sie dieses Protokoll, um anzuzeigen, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+You can use different types of logs in Azure to manage and troubleshoot NSGs. Some of these logs can be accessed through the portal, and all logs can be extracted from an Azure blob storage, and viewed in different tools, such as [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excel and PowerBI. You can learn more about the different types of logs from the list below.
 
->[AZURE.WARNING] Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
+- **Audit logs:** You can use [Azure Audit Logs](../azure-portal/insights-debugging-with-events.md) (formerly known as Operational Logs) to view all operations being submitted to your Azure subscription(s), and their status. Audit logs are enabled by default, and can be viewed in the Azure preview portal.
+- **Event logs:** You can use this log to view what NSG rules are applied to VMs and instance roles based on MAC address. The status for these rules is collected every 60 seconds.
+- **Counter logs:** You can use this log to view how many times each NSG rule was applied to deny or allow traffic.
 
-##Aktivieren der Protokollierung
-Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Ereignis- und Leistungsindikatorenprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus.
+>[AZURE.WARNING] Logs are only available for resources deployed in the Resource Manager deployment model. You cannot use logs for resources in the classic deployment model. For a better understanding of the two models, reference the [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md) article.
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch keine Netzwerksicherheitsgruppe haben, [erstellen Sie eine NSG](virtual-networks-create-nsg-arm-ps.md), bevor Sie fortfahren.
+##<a name="enable-logging"></a>Enable logging
+Audit logging is automatically enabled at all times for every Resource Manager resource. You need to enable event and counter logging to start collecting the data available through those logs. To enable logging, follow the steps below.
 
-2.  Klicken Sie im Vorschauportal auf **Durchsuchen** > **Netzwerksicherheitsgruppen**.
+1.  Sign-in to the [Azure portal](https://portal.azure.com). If you don't already have an existing network security group, [create an NSG](virtual-networks-create-nsg-arm-ps.md) before you continue.
 
-	![Vorschauportal – Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable1.png)
+2.  In the preview portal, click **Browse** >> **Network security groups**.
 
-3. Wählen Sie eine vorhandene Netzwerksicherheitsgruppe aus.
+    ![Preview portal - Network security groups](./media/virtual-network-nsg-manage-log/portal-enable1.png)
 
-	![Vorschauportal – Einstellungen für Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable2.png)
+3. Select an existing network security group.
 
-4. Klicken Sie im Blatt **Einstellungen** auf **Diagnose** und dann im Blatt **Diagnose** neben **Status** auf **Ein**.
-5. Klicken Sie im Blatt **Einstellungen** auf **Speicherkonto**, und wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
+    ![Preview portal - Network security group settings](./media/virtual-network-nsg-manage-log/portal-enable2.png)
 
->[AZURE.INFORMATION] Für Überwachungsprotokolle ist kein separates Speicherkonto erforderlich. Bei der Nutzung von Speicher zur Ereignis- und Regelprotokollierung fallen Gebühren an.
+4. In the **Settings** blade, click **Diagnostics**, and then in the **Diagnostics** pane, next to **Status**, click **On**
+5. In the **Settings** blade, click **Storage Account**, and either select an existing storage account, or create a new one.  
 
-6. Wählen Sie in der Dropdownliste direkt unter **Speicherkonto** aus, ob Sie Ereignisse, Leistungsindikatoren oder beides protokollieren möchten, und klicken Sie dann auf **Speichern**.
+>[AZURE.INFORMATION] Audit logs do not require a separate storage account. The use of storage for event and rule logging will incur service charges.
 
-	![Vorschauportal – Diagnoseprotokolle](./media/virtual-network-nsg-manage-log/portal-enable3.png)
+6. In the drop-down list just under **Storage Account**, select whether you want to log events, counters, or both, and then click **Save**.
 
-## Überwachungsprotokoll
-Dieses Protokoll (früher als "Betriebsprotokoll" bekannt) wird standardmäßig von Azure generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../azure-portal/insights-debugging-with-events.md).
+    ![Preview portal - Diagnostics logs](./media/virtual-network-nsg-manage-log/portal-enable3.png)
 
-## Leistungsindikatorenprotokoll
-Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die jeweiligen NSGs aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Wie unten dargestellt, wird jede Regel, die auf Ressourcen angewendet wurden, im JSON-Format protokolliert.
+## <a name="audit-log"></a>Audit log
+This log (formerly known as the "operational log") is generated by Azure by default.  The logs are preserved for 90 days in Azure’s Event Logs store. Learn more about these logs by reading the [View events and audit logs](../azure-portal/insights-debugging-with-events.md) article.
 
-	{
-		"time": "2015-09-11T23:14:22.6940000Z",
-		"systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
-		"category": "NetworkSecurityGroupRuleCounter",
-		"resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
-		"operationName": "NetworkSecurityGroupCounters",
-		"properties": {
-			"vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
-			"subnetPrefix":"10.0.0.0/24",
-			"macAddress":"001517D9C43C",
-			"ruleName":"DenyAllOutBound",
-			"direction":"Out",
-			"type":"block",
-			"matchedConnections":0
-			}
-	}
+## <a name="counter-log"></a>Counter log
+This log is only generated if you've enabled it on a per NSG basis as detailed above. The data is stored in the storage account you specified when you enabled the logging. Each rule applied to resources is logged in JSON format, as seen below.
 
-## Ereignisprotokoll
-Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die jeweiligen NSGs aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
+    {
+        "time": "2015-09-11T23:14:22.6940000Z",
+        "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
+        "category": "NetworkSecurityGroupRuleCounter",
+        "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
+        "operationName": "NetworkSecurityGroupCounters",
+        "properties": {
+            "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
+            "subnetPrefix":"10.0.0.0/24",
+            "macAddress":"001517D9C43C",
+            "ruleName":"DenyAllOutBound",
+            "direction":"Out",
+            "type":"block",
+            "matchedConnections":0
+            }
+    }
 
-	{
-		"time": "2015-09-11T23:05:22.6860000Z",
-		"systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
-		"category": "NetworkSecurityGroupEvent",
-		"resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
-		"operationName": "NetworkSecurityGroupEvents",
-		"properties": {
-			"vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
-			"subnetPrefix":"10.0.0.0/24",
-			"macAddress":"001517D9C43C",
-			"ruleName":"AllowVnetOutBound",
-			"direction":"Out",
-			"priority":65000,
-			"type":"allow",
-			"conditions":{
-				"destinationPortRange":"0-65535",
-				"sourcePortRange":"0-65535",
-				"destinationIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32",
-				"sourceIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32"
-			}
-		}
-	}
+## <a name="event-log"></a>Event log
+This log is only generated if you've enabled it on a per NSG basis as detailed above. The data is stored in the storage account you specified when you enabled the logging. The following data is logged:
 
-## Anzeigen und Analysieren des Überwachungsprotokolls
-Mit einer der folgenden Methoden können Sie die Überwachungsprotokolldaten anzeigen und analysieren:
+    {
+        "time": "2015-09-11T23:05:22.6860000Z",
+        "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
+        "category": "NetworkSecurityGroupEvent",
+        "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
+        "operationName": "NetworkSecurityGroupEvents",
+        "properties": {
+            "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
+            "subnetPrefix":"10.0.0.0/24",
+            "macAddress":"001517D9C43C",
+            "ruleName":"AllowVnetOutBound",
+            "direction":"Out",
+            "priority":65000,
+            "type":"allow",
+            "conditions":{
+                "destinationPortRange":"0-65535",
+                "sourcePortRange":"0-65535",
+                "destinationIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32",
+                "sourceIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32"
+            }
+        }
+    }
 
-- **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md).
-- **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
+## <a name="view-and-analyze-the-audit-log"></a>View and analyze the audit log
+You can view and analyze audit log data using any of the following methods:
 
-## Anzeigen und Analysieren der Leistungsindikatoren- und Ereignisprotokolle
+- **Azure tools:** Retrieve information from the audit logs through Azure PowerShell, the Azure Command Line Interface (CLI), the Azure REST API, or the Azure preview portal.  Step-by-step instructions for each method are detailed in the [Audit operations with Resource Manager](../resource-group-audit.md) article.
+- **Power BI:** If you don't already have a [Power BI](https://powerbi.microsoft.com/pricing) account, you can try it for free. Using the [Azure Audit Logs content pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/) you can analyze your data with pre-configured dashboards that you can use as-is, or customize.
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) kann die Leistungsindikator- und Ereignisprotokolldateien aus Ihrem Blobspeicherkonto erfassen und enthält Visualisierungen und leistungsfähige Suchfunktionen, um Ihre Protokolle zu analysieren.
+## <a name="view-and-analyze-the-counter-and-event-log"></a>View and analyze the counter and event log
 
-Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für Leistungsindikator- und Ereignisprotokolle abrufen. Sobald Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, PowerBI oder einem anderen Datenvisualisierungstool anzeigen.
+Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) can collect the counter and event log files from your Blob storage account and includes visualizations and powerful search capabilities to analyze your logs.
 
->[AZURE.TIP] Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von Github verwenden
+You can also connect to your storage account and retrieve the JSON log entries for event and counter logs. Once you download the JSON files, you can convert them to CSV and view in Excel, PowerBI, or any other data visualization tool.
 
-## Nächste Schritte
+>[AZURE.TIP] If you are familiar with Visual Studio and basic concepts of changing values for constants and variables in C#, you can use the [log converter tools](https://github.com/Azure-Samples/networking-dotnet-log-converter) available from Github.
 
-- Visualisieren von Leistungsindikator- und Ereignisprotokollen mit [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
-- Blogbeitrag [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx).
-- Blogbeitrag [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0810_2016-->
+- Visualize counter and event logs with [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
+- [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blog post.
+- [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blog post.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

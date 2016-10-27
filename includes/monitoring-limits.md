@@ -1,6 +1,8 @@
 
-| Ressource | Begrenzung |
+| Resource | Limit |
 |----|----|
-| Einstellungen für die automatische Skalierung | 100 pro Region und Abonnement |
+| Autoscale Settings | 100 per region per subscription |
 
-<!---HONumber=AcomDC_0907_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

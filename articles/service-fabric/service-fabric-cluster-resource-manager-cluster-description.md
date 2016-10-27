@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Beschreibung eines Resource Balancer-Clusters | Microsoft Azure"
-   description="Beschreibung eines Service Fabric-Clusters durch Angabe von Fehlerdomänen, Upgradedomänen, Knoteneigenschaften und Knotenkapazitäten für den Clusterressourcen-Manager."
+   pageTitle="Resource Balancer cluster description | Microsoft Azure"
+   description="Describing a Service Fabric cluster by specifying fault domains, upgrade domains, node properties, and node capacities to the Cluster Resource Manager."
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,112 +16,114 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
-# Beschreiben eines Service Fabric-Clusters
-Der Service Fabric-Cluster-Ressourcen-Manager stellt verschiedene Methoden zum Beschreiben eines Clusters bereit. Während der Laufzeit nutzt der Clusterressourcen-Manager diese Informationen, um die hohe Verfügbarkeit der im Cluster ausgeführten Dienste zu gewährleisten und sicherzustellen, dass die Ressourcen im Cluster ordnungsgemäß verwendet werden.
 
-## Wichtige Begriffe
-Der Clusterressourcen-Manager unterstützt verschiedene Funktionen, die einen Cluster beschreiben:
+# <a name="describing-a-service-fabric-cluster"></a>Describing a service fabric cluster
+The Service Fabric Cluster Resource Manager provides several mechanisms for describing a cluster. During runtime, the Cluster Resource Manager uses this information to ensure high availability of the services running in the cluster while also ensuring that the resources in the cluster are being used appropriately.
 
-- Fehlerdomänen
-- Upgradedomänen
-- Knoteneigenschaften
-- Knotenkapazitäten
+## <a name="key-concepts"></a>Key concepts
+The Cluster Resource Manager supports several features that describe a cluster:
 
-## Fehlerdomänen
-Eine Fehlerdomäne ist ein beliebiger Bereich mit einem koordinierten Ausfall. Ein einzelner Computer ist eine Fehlerdomäne (da er aus zahlreichen unterschiedlichen Gründen ausfallen kann, z.B. infolge eines Stromausfalls oder aufgrund von Laufwerkfehlern oder fehlerhafter NIC-Firmware). Eine Reihe von Computern, die mit dem gleichen Ethernet-Switch verbunden sind, befinden sich genau wie an eine einzelne Stromquelle angeschlossene Computer in derselben Fehlerdomäne. Da diese sich natürlicherweise überschneiden, sind Fehlerdomänen inhärent hierarchisch und werden in Service Fabric als URIs dargestellt.
+- Fault Domains
+- Upgrade Domains
+- Node Properties
+- Node Capacities
 
-Wenn Sie Ihren eigenen Cluster einrichten, müssen Sie diese verschiedenen Ausfallbereiche berücksichtigen und sicherstellen, dass Ihre Fehlerdomänen ordnungsgemäß eingerichtet wurden. So weiß Service Fabric, in welchen Bereichen Dienste sicher platziert werden können. Mit „sicher“ ist eigentlich „intelligent“ gemeint: Dienste sollen nicht so platziert werden, dass der Ausfall einer Fehlerdomäne (beispielsweise der Ausfall einer der oben genannten Komponenten) zum Ausfall des Diensts führt. In der Azure-Umgebung nutzen wir die von der Umgebung bereitgestellten Fehlerdomäneninformationen, um die Knoten im Cluster in Ihrem Auftrag ordnungsgemäß zu konfigurieren. In der folgenden Abbildung (Abb. 7) sind als einfaches Beispiel alle Entitäten, die sinnvollerweise eine Fehlerdomäne bilden, farbig hervorgehoben und alle resultierenden Fehlerdomänen aufgeführt. Dieses Beispiel enthält Datencenter (DC), Racks (R) und Blades (B). Wenn jedes Blatt also mehrere virtuelle Computer enthält, kann die Fehlerdomänenhierarchie eine weitere Ebene umfassen.
+## <a name="fault-domains"></a>Fault domains
+A fault domain is any area of coordinated failure. A single machine is a fault domain (since it alone can fail for a variety of reasons, from power supply failures to drive failures to bad NIC firmware). A bunch of machines connected to the same Ethernet switch are in the same fault domain, as would be those connected to a single source of power. Since it's natural for these to overlap, Fault Domains are inherently hierarchal and are represented as URIs in Service Fabric.
 
-![Mithilfe von Fehlerdomänen strukturierte Knoten][Image1]
+If you were setting up your own cluster you’d need to think about all of these different areas of failure and make sure that your fault domains were set up correctly so that Service Fabric would know where it was safe to place services. By “safe” we really mean smart – we don’t want to place services such that a loss of a fault domain (the failure of any of the components listed above, for example) causes the service to go down.  In the Azure environment we leverage the fault domain information provided by the environment in order to correctly configure the nodes in the cluster on your behalf.
+In the graphic below (Fig. 7) we color all of the entities that reasonably result in a fault domain as a simple example and list out all of the different fault domains that result. In this example, we have datacenters (DC), racks (R), and blades (B). Conceivably, if each blade holds more than one virtual machine, there could be another layer in the fault domain hierarchy.
 
- Zur Laufzeit sieht sich der Service Fabric-Cluster-Ressourcen-Manager die Fehlerdomänen im Cluster an und versucht, die Replikate für einen bestimmten Dienst so zu verteilen, dass sie sich jeweils in separaten Fehlerdomänen befinden. Mit diesem Prozess wird sichergestellt, dass bei einem Ausfall einer Fehlerdomäne (auf einer beliebigen Ebene der Hierarchie) die Verfügbarkeit des Diensts nicht gefährdet wird.
+![Nodes organized via fault domains][Image1]
 
- Für den Cluster-Ressourcen-Manager von Service Fabric ist nicht wirklich wichtig, wie viele Ebenen die Hierarchie umfasst. Da er jedoch versucht, sicherzustellen, dass sich der Verlust eines Teils der Hierarchie nicht auf den Cluster oder die darin ausgeführten Dienste auswirkt, wird im Allgemeinen empfohlen, auf jeder Fehlerdomänenebene die gleiche Anzahl von Computern bereitzustellen. Dadurch wird verhindert, dass ein Teil der Hierarchie am Ende des Tages mehr Dienste enthält als andere Teile.
+ During run time, the Service Fabric Cluster Resource Manager considers the fault domains in the cluster and attempts to spread out the replicas for a given service so that they are all in separate fault domains. This process helps ensure that in case of failure of any one fault domain (at any level in the hierarchy), that the availability of that service is not compromised.
 
- Wenn der Cluster mit einer unausgeglichenen „Struktur“ der Fehlerdomänen konfiguriert wird, erschwert dies dem Clusterressourcen-Manager die Ermittlung der optimalen Replikatzuweisung. Das bedeutet, dass der Verlust einer bestimmten Domäne eine zu große Auswirkung auf die Verfügbarkeit des Clusters hat – der Clusterressourcen-Manager schwankt zwischen der effizienten Verwendung der Computer in dieser intensiv genutzten Domäne durch Platzierung von Diensten auf diesen Computern und der Platzierung von Diensten auf eine Weise, dass der Ausfall der Domäne keine Probleme verursacht.
+ Service Fabric’s Cluster Resource Manager doesn’t really care about how many layers there are in the hierarchy, however since it does try to ensure that the loss of any one portion of the hierarchy doesn’t impact the cluster or the services running on top of it, it is generally best if at each level of depth in the fault domain there are the same number of machines. This prevents one portion of the hierarchy from having to contain more services at the end of the day than others.
 
- Das folgende Diagramm zeigt zwei verschiedene Clusterlayouts: ein Cluster, bei dem die Knoten gleichmäßig über die Fehlerdomänen verteilt sind, und ein Cluster, bei dem eine Fehlerdomäne viel mehr Knoten enthält. Beachten Sie, dass in Azure für Sie festgelegt wird, welche Knoten in welche Fehler- und Upgradedomänen verschoben werden, daher bemerken Sie diese Art von Diskrepanzen nicht. Wenn Sie jedoch einen eigenen Cluster lokal oder in einer anderen Umgebung einrichten, müssen Sie diese Diskrepanzen berücksichtigen.
+ Configuring your cluster in such a way that the “tree” of fault domains is unbalanced makes it rather hard for the Cluster Resource Manager to figure out what the best allocation of replicas is, particularly since it means that the loss of a particular domain can overly impact the availability of the cluster – the Cluster Resource Manager is torn between using the machines in that “heavy” domain efficiently by placing services on them and placing services so that the loss of the domain doesn’t cause problems.
 
- ![Zwei unterschiedliche Clusterlayouts][Image2]
+ In the diagram below we show two different example cluster layouts, one where the nodes are well distributed across the fault domains, and another where one fault domain ends up with many more nodes.  Note that in Azure the choices about which nodes end up in which fault and upgrade domains is handled for you, so you should never see these sorts of imbalances. However, if you ever stand up your own cluster on-premise or in another environment, it’s something you have to think about.
 
-## Upgradedomänen
-Upgradedomänen sind ein weiteres Feature, mit dem der Service Fabric-Ressourcen-Manager das Layout des Clusters nachvollziehen kann, sodass er im Voraus für Ausfälle planen kann. Upgradedomänen definieren Bereiche (eigentlich Knotengruppen), die während eines Upgrades zur gleichen Zeit ausfallen.
+ ![Two different cluster layouts][Image2]
 
-Upgradedomänen sind Fehlerdomänen nicht unähnlich, es gibt jedoch einige wichtige Unterschiede. Zunächst einmal werden Upgradedomänen normalerweise durch eine Richtlinie definiert. Fehlerdomänen hingegen werden genau durch die Bereiche der koordinierten Ausfälle (und daher in der Regel durch das Hardwarelayout der Umgebung) festgelegt. Bei Upgradedomänen können Sie jedoch über die gewünschte Anzahl entscheiden. Ein weiterer Unterschied (zumindest zum jetzigen Zeitpunkt) ist, dass Upgradedomänen nicht hierarchisch aufgebaut sind – sie ähneln eher einem einfachen Tag als einer Hierarchie.
+## <a name="upgrade-domains"></a>Upgrade domains
+Upgrade Domains are another feature that helps the Service Fabric Resource Manager to understand the layout of the cluster so that it can plan ahead for failures. Upgrade Domains define areas (sets of nodes, really) that will go down at the same time during an upgrade.
 
-In der folgenden Abbildung ist ein fiktives Setup dargestellt, in dem drei Upgradedomänen auf drei Fehlerdomänen verteilt sind. Sie zeigt zudem eine mögliche Platzierung für drei verschiedene Replikate eines zustandsbehafteten Diensts. Beachten Sie, dass sie sich alle in verschiedenen Fehler- und Upgradedomänen befinden. Das bedeutet, dass mitten in einem Dienstupgrade eine Fehlerdomäne ausfallen kann und dennoch eine ausgeführte Kopie des Codes und der Daten im Cluster vorhanden ist. Je nach Bedarf kann dies ausreichend sein, diese Kopie ist jedoch möglicherweise alt (da Service Fabric eine quorumbasierte Replikation verwendet). Um tatsächlich zwei Ausfälle überstehen zu können, benötigen Sie mehr Replikate (mindestens fünf).
+Upgrade Domains are a lot like Fault Domains, but with a couple key differences. First, Upgrade Domains are usually defined by policy; whereas Fault Domains are rigorously defined by the areas of coordinated failures (and hence usually the hardware layout of the environment). In the case of Upgrade Domains however you get to decide how many you want. Another difference is that (today at least) Upgrade Domains are not hierarchical – they are more like a simple tag than a hierarchy.
 
-![Platzierung mit Fehler- und Upgradedomänen][Image3]
+The picture below shows a fictional setup where we have three upgrade domains striped across three fault domains. It also shows one possible placement for three different replicas of a stateful service. Note that they are all in different fault and upgrade domains. This means that we could lose a fault domain while in the middle of a service upgrade and there would still be one running copy of the code and data in the cluster. Depending on your needs this could be good enough, however you may notice though that this copy could be old (as Service Fabric uses quorum based replication). In order to truly survive two failures you’d need more replicas (five at a minimum).
 
-Eine große Anzahl von Upgradedomänen hat Vor- und Nachteile. Der Vorteil besteht in einer stärkeren Differenziertheit der einzelnen Upgradeschritte, die sich daher auf weniger Knoten oder Dienste auswirken. Infolgedessen muss jeweils eine kleinere Anzahl von Diensten verschoben werden, die weniger Änderungen im System verursachen, wodurch die Zuverlässigkeit insgesamt erhöht wird (da bei Problemen ein geringerer Teil des Diensts beeinträchtigt wird). Der Nachteil bei der Bereitstellung vieler Upgradedomänen besteht darin, dass Service Fabric beim Upgrade die Integrität jeder Upgradedomäne überprüft und sicherstellt, dass die Upgradedomäne fehlerfrei ist, bevor sie mit der nächsten Upgradedomäne fortfährt. Mit dieser Überprüfung soll vor dem Fortsetzen des Upgrades die Stabilisierung von Diensten sichergestellt und ihre Integrität bestätigt werden, um mögliche Probleme zu ermitteln. Dieser Kompromiss ist akzeptabel, da dadurch verhindert wird, dass sich negative Änderungen jeweils auf einen zu großen Teil des Diensts auswirken.
+![Placement With Fault and Upgrade Domains][Image3]
 
-Eine zu geringe Anzahl von Upgradedomänen hat ebenfalls Nebeneffekte: Während jede einzelne Upgradedomäne außer Betrieb genommen und aktualisiert wird, steht ein großer Teil der Gesamtkapazität nicht zur Verfügung. Beispiel: Wenn Sie nur drei Upgradedomänen besitzen, nehmen Sie jeweils etwa ein Drittel der Dienst- oder Clustergesamtkapazität außer Betrieb. Dies ist nicht erwünscht, da im übrigen Cluster ausreichend Kapazität zum Verarbeiten der Workload verfügbar sein muss. Das bedeutet, dass diese Knoten bei normalem Betrieb weniger ausgelastet sind, was zu höheren Umsatz- und Betriebskosten führt.
+There are pros and cons to having large numbers of upgrade domains – the pro is that each step of the upgrade is more granular and therefore affects a smaller number of nodes or services. This results in fewer services having to move at a time, introducing less churn into the system and overall improving reliability (since less of the service will be impacted by any issue). The downside of having many upgrade domains is that Service Fabric verifies the health of each Upgrade Domain as it is upgraded and ensures that the Upgrade Domain is healthy before moving on to the next Upgrade Domain. The goal of this check is to ensure that services have a chance to stabilize and that their health is validated before the upgrade proceeds, so that any issues are detected. The tradeoff is acceptable because it prevents bad changes from affecting too much of the service at a time.
 
-Es gibt keine tatsächliche Beschränkung bei der Gesamtanzahl der Fehler- oder Upgradedomänen in einer Umgebung bzw. keine Einschränkungen in Bezug auf ihre Überlappung. Wir haben folgende allgemeine Strukturen betrachtet: 1:1 (jede eindeutige Fehlerdomäne ist auch ihrer eigenen Upgradedomäne zugeordnet), eine Upgradedomäne pro Knoten (physische oder virtuelle Betriebssysteminstanz) und ein Stripeset- oder Matrixmodell, bei dem die Fehler- und Upgradedomänen eine Matrix bilden, in der Computer in der Regel diagonal zugeordnet sind.
+Too few upgrade domains has its own side effects – while each individual upgrade domain is down and being upgraded a large portion of your overall capacity is unavailable. For example, if you only have three upgrade domains you are taking down about 1/3 of your overall service or cluster capacity at a time. This isn’t desirable as you have to have enough capacity in the rest of your cluster to cover the workload, meaning that in the normal case those nodes are less-loaded than they would otherwise be, increasing COGS.
 
-![Layouts von Fehler- und Upgradedomänen][Image4]
+There’s no real limit to the total number of fault or upgrade domains in an environment, or constraints on how they overlap. Common structures that we’ve seen are 1:1 (where each unique fault domain maps to its own upgrade domain as well), an Upgrade Domain per Node (physical or virtual OS instance), and a “striped” or “matrix” model where the Fault Domains and Upgrade Domains form a matrix with machines usually running down the diagonal.
 
-Es gibt keine allgemeingültige Empfehlung für die Auswahl des Layouts, da jedes Layout seine Vor- und Nachteile hat. Das 1FD:1UD-Modell ist beispielsweise einfach einzurichten. Mit dem Modell mit einer Upgradedomäne pro Knoten sind die meisten Benutzer wahrscheinlich bereits vertraut, wenn sie in der Vergangenheit kleine Gruppen mit Computern verwaltet haben, die unabhängig voneinander heruntergefahren werden.
+![Fault and Upgrade Domain Layouts][Image4]
 
-Das am häufigsten verwendete Modell (das wir auch für die gehosteten Azure Service Fabric-Cluster verwenden) ist die FD/UD-Matrix. Dabei bilden die FDs und UDs eine Tabelle, und Knoten werden diagonal platziert. Ob die Tabelle eine geringe oder hohe Dichte aufweist hängt von der Gesamtanzahl der Knoten verglichen mit der Anzahl der FDs und UDs ab. Mit anderen Worten: Bei ausreichend großen Clustern sieht beinahe jede Struktur wie das Matrixmuster mit hoher Dichte aus (siehe Option unten rechts in Abbildung 10).
+There’s no best answer which layout to choose, each has some pros and cons. For example, the 1FD:1UD model is fairly simple to set up, whereas the 1 UD per Node model is most like what people are used to from managing small sets of machines in the past where each would be taken down independently.
 
-## Einschränkungen und daraus resultierendes Verhalten von Fehler- und Upgradedomänen
-Der Clusterressourcen-Manager behandelt die Anforderung, einen Dienst über Fehler- und Upgradedomänen hinweg auszugleichen, als Einschränkung. Weitere Informationen zu Einschränkungen finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-management-integration.md). Einschränkungen bei Fehler- und Upgradedomänen werden folgendermaßen definiert: „Für jede Dienstpartition sollte der Unterschied zwischen der Anzahl von Replikaten in zwei Domänen nie *mehr als eins* betragen.“ Praktisch bedeutet das, dass bestimmte Verschiebungen oder Anordnungen für einen Dienst im Cluster möglicherweise nicht gültig sind, da diese die Einschränkung der Fehler- oder Upgradedomäne verletzen würden.
+The most common model (and the one that we use for the hosted Azure Service Fabric clusters) is the FD/UD matrix, where the FDs and UDs form a table and nodes are placed starting along the diagonal. Whether this ends up sparse or packed depends on the total number of nodes compared to the number of FDs and UDs (put differently, for sufficiently large clusters, almost everything ends up looking like the dense matrix pattern, shown in the bottom right option of Figure 10).
 
-Sehen wir uns ein Beispiel an. Angenommen, wir haben einen Cluster mit sechs Knoten (N), der mit fünf Fehlerdomänen (FD) und fünf Upgradedomänen (UD) konfiguriert ist.
+## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Fault and upgrade domain constraints and resulting behavior
+The Cluster Resource manager treats the desire to keep a service balanced across fault and upgrade domains as a constraint. You can find out more about constraints in [this article](service-fabric-cluster-resource-manager-management-integration.md). The fault and upgrade domain  constraints are defined as following: "For a given service partition there should never be a difference *greater than one* in the number of replicas between two domains."  Practically what this means is that for a given service certain movements or certain arrangements might not be valid in the cluster, because doing so would violate the fault or upgrade domain constraint.
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |
+Let's take a look at one example. Let's say that we have a cluster with 6 nodes, configured with 5 fault domains and 5 upgrade domains.
+
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 |N1 | | | | |
-| UD1 |N6 |N2 | | | |
-| UD2 | | |N3 | | |
-| UD3 | | | |N4 | |
-| UD4 | | | | |N5 |
+| UD0   |N1     |       |       |       |       |
+| UD1   |N6     |N2     |       |       |       |
+| UD2   |       |       |N3     |       |       |
+| UD3   |       |       |       |N4     |       |
+| UD4   |       |       |       |       |N5     |
 
-Nun erstellen wir einen Dienst mit einem TargetReplicaSetSize-Wert von 5. Die Replikate (R) werden auf den Knoten N1-N5 gespeichert. N6 wird nie verwendet. Warum ist das so? Sehen wir uns den Unterschied zwischen dem jetzigen Layout und demjenigen Layout an, das entstehen würde, wenn wir stattdessen N6 ausgewählt hätten. Und dann fragen wir uns, wie dies mit unserer Definition der Einschränkung bei Fehler- und Upgradedomänen zusammenhängt.
+Now let's say that we create a service with a TargetReplicaSetSize of 5. The replicas land on N1-N5. In fact, N6 will never get used. But why? Well let's take a look at the difference between the current layout and what would happen if we had chosen N6 instead, and think about how that relates to our definition of the FD and UD constraint.
 
-Hier sehen Sie das Layout und die Gesamtanzahl von Replikaten pro Fehler- und Upgradedomäne.
+Here's the layout we got and the total number of replicas per fault and upgrade domain.
 
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |UDTotal|
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |UDTotal|
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 |R1 | | | | |1 |
-| UD1 | |R2 | | | |1 |
-| UD2 | | |R3 | | |1 |
-| UD3 | | | |R4 | |1 |
-| UD4 | | | | |R5 |1 |
-|FDTotal|1 |1 |1 |1 |1 |- |
+| UD0   |R1     |       |       |       |       |1      |
+| UD1   |       |R2     |       |       |       |1      |
+| UD2   |       |       |R3     |       |       |1      |
+| UD3   |       |       |       |R4     |       |1      |
+| UD4   |       |       |       |       |R5     |1      |
+|FDTotal|1      |1      |1      |1      |1      |-      |
 
-Beachten Sie, dass dieses Layout ausgeglichen ist, und zwar sowohl hinsichtlich der Knoten pro Fehler- und Upgradedomäne als auch hinsichtlich der Anzahl von Replikaten pro Fehler- und Upgradedomäne. Jede Domäne verfügt über die gleiche Anzahl von Knoten und die gleiche Anzahl von Replikaten.
+Note that this layout is balanced in terms of nodes per fault domain and upgrade domain, and it is also balanced in terms of the number of replicas per fault and upgrade domain. Each domain has the same number of nodes and the same number of replicas.
 
-Sehen wir uns jetzt an, was passieren würde, wenn wir N6 statt N2 verwendet hätten. Wie wären die Replikate dann verteilt? Es sähe in etwa so aus:
+Now, let's take a look at what would happen if instead of N2, we'd used N6. How would the replicas be distributed then? Well, they'd look something like this:
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |UDTotal|
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |UDTotal|
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 |R1 | | | | |1 |
-| UD1 |R5 | | | | |1 |
-| UD2 | | |R2 | | |1 |
-| UD3 | | | |R3 | |1 |
-| UD4 | | | | |R4 |1 |
-|FDTotal|2 |0 |1 |1 |1 |- |
+| UD0   |R1     |       |       |       |       |1      |
+| UD1   |R5     |       |       |       |       |1      |
+| UD2   |       |       |R2     |       |       |1      |
+| UD3   |       |       |       |R3     |       |1      |
+| UD4   |       |       |       |       |R4     |1      |
+|FDTotal|2      |0      |1      |1      |1      |-      |
 
-Dies verletzt unsere Definition der Fehlerdomäneneinschränkung, da FD0 über 2 Replikate verfügt, FD1 dagegen 0 Replikate aufweist. Damit beträgt der Unterschied 2, und der Clusterressourcen-Manager lässt diese Anordnung nicht zu. Wenn wir N2-6 ausgewählt hätten, sähe das Ergebnis so aus:
+This violates our definition for the fault domain constraint, since FD0 has 2 replicas, while FD1 has 0, making the total difference 2 and thus the Cluster Resource Manager will not allow this arrangement. Similarly if we had picked N2-6 we'd get:
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |UDTotal|
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |UDTotal|
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 | | | | | |0 |
-| UD1 |R5 |R1 | | | |2 |
-| UD2 | | |R2 | | |1 |
-| UD3 | | | |R3 | |1 |
-| UD4 | | | | |R4 |1 |
-|FDTotal|1 |1 |1 |1 |1 |- |
+| UD0   |       |       |       |       |       |0      |
+| UD1   |R5     |R1     |       |       |       |2      |
+| UD2   |       |       |R2     |       |       |1      |
+| UD3   |       |       |       |R3     |       |1      |
+| UD4   |       |       |       |       |R4     |1      |
+|FDTotal|1      |1      |1      |1      |1      |-      |
 
-Diese Konfiguration ist zwar hinsichtlich der Fehlerdomänen ausgeglichen, verletzt aber die Upgradedomäneneinschränkung (da UD0 über 0 Replikate verfügt, UD1 dagegen über 2) und ist daher ebenfalls ungültig.
+Which while balanced in terms of fault domains is violating the upgrade domain constraint (since UD0 has 0 replicas while UD1 has 2), and hence is invalid as well.
 
-## Konfigurieren von Fehler- und Upgradedomänen
-Das Festlegen von Fehler- und Upgradedomänen erfolgt in von Azure gehosteten Service Fabric-Bereitstellungen automatisch. Service Fabric greift einfach die Umgebungsinformationen von Azure auf. In Azure scheinen die Informationen der Fehlerdomäne und der Upgradedomäne der gleichen Ebene anzugehören. Tatsächlich werden jedoch Informationen aus niedrigeren Ebenen von Azure Stack einbezogen und nur die logischen Fehler- und Upgradedomänen aus der Perspektive des Benutzers dargestellt.
+## <a name="configuring-fault-and-upgrade-domains"></a>Configuring fault and upgrade domains
+Defining Fault Domains and Upgrade Domains is done automatically in Azure hosted Service Fabric deployments; Service Fabric just picks up the environment information from Azure. In Azure both the fault and upgrade domain information looks “single level” but it really is encapsulating information from lower layers of the Azure stack and just presenting the logical fault and upgrade domains from the user’s perspective.
 
-Wenn Sie einen eigenen Cluster einrichten (oder nur eine bestimmte Topologie auf Ihrem Entwicklungscomputer ausführen möchten), müssen Sie die Informationen zu den Fehler- und Upgradedomänen selbst bereitstellen. In diesem Beispiel definieren wir einen Cluster für die lokale Entwicklung mit neun Knoten, der drei Rechenzentren (mit jeweils drei Racks) und drei Upgradedomänen umfasst, die über diese drei Rechenzentren verteilt sind. Dies sieht in der Clustermanifestvorlage etwa wie folgt aus:
+If you’re standing up your own cluster (or just want to try running a particular topology on your development machine) you’ll need to provide the fault domain and upgrade domain information yourself. In this example we define a 9 node local development cluster that spans three “datacenters” (each with three racks), and three upgrade domains striped across those three datacenters. In the cluster manifest template, it looks something like this:
 
 ClusterManifest.xml
 
@@ -143,49 +145,49 @@ ClusterManifest.xml
     </WindowsServer>
   </Infrastructure>
 ```
-> [AZURE.NOTE] In Azure-Bereitstellungen werden Fehlerdomänen und Upgradedomänen von Azure zugewiesen. Daher enthält die Definition Ihrer Knoten und Rollen unter der Infrastrukturoption für Azure keine Informationen zu Fehler- oder Upgradedomänen.
+> [AZURE.NOTE] In Azure deployments, fault domains and upgrade domains are assigned by Azure. Therefore, the definition of your nodes and roles within the infrastructure option for Azure does not include fault domain or upgrade domain information.
 
-## Platzierungseinschränkungen und Knoteneigenschaften
-Manchmal (eigentlich in den meisten Fällen) möchten Sie sicherstellen, dass bestimmte Workloads nur auf bestimmten Knoten oder bestimmten Knotengruppen im Cluster ausgeführt werden. Für einige Workloads sind beispielsweise GPUs oder SSDs erforderlich, für andere hingegen nicht. Ein gutes Beispiel hierfür ist nahezu jede Architektur mit n Ebenen, in der bestimmte Computer als Front-End bzw. Schnittstelle der Anwendung fungieren (und damit über das Internet erreichbar sind), während eine andere Gruppe (häufig mit anderen Hardwareressourcen) die Arbeitslast der Compute- oder Speicherschichten behandelt (und üblicherweise nicht über das Internet erreichbar sind). Service Fabric erwartet, dass es selbst in der Welt der Microservices Fälle gibt, in denen bestimmte Workloads in bestimmten Hardwarekonfigurationen, ausgeführt werden müssen, z. B.:
+## <a name="placement-constraints-and-node-properties"></a>Placement constraints and node properties
+Sometimes (in fact, most of the time) you’re going to want to ensure that certain workloads run only on certain nodes or certain sets of nodes in the cluster. For example, some workload may require GPUs or SSDs while others may not. A great example of this is pretty much every n-tier architecture out there, where certain machines serve as the front end/interface serving side of the application (and hence are probably exposed to the internet) while a different set (often with different hardware resources) handle the work of the compute or storage layers (and usually are not exposed to the internet). Service Fabric expects that even in a microservices world there are cases where particular workloads will need to run on particular hardware configurations, for example:
 
-- Eine vorhandene n-Ebenen-Anwendung wurde in eine Service Fabric-Umgebung verschoben.
-- Eine Workload soll aus Leistungs-, Skalierbarkeits- oder Sicherheitsisolationsgründen auf bestimmter Hardware ausgeführt werden.
--	Eine Workload muss aufgrund von Richtlinien oder des Ressourcenverbrauchs von anderen Workloads isoliert werden.
+- an existing n-tier application has been “lifted and shifted” into a Service Fabric environment
+- a workload wants to run on specific hardware for performance, scale, or security isolation reasons
+-   A workload needs to be isolated from other workloads for policy or resource consumption reasons
 
-Um diese Konfigurationstypen zu unterstützen, kommen bei Service Fabric erstklassige sogenannte Platzierungseinschränkungen zum Einsatz. Mit Platzierungseinschränkungen kann angegeben werden, wo bestimmte Dienste ausgeführt werden sollen. Der Satz von Einschränkungen kann durch Benutzer erweitert werden, d. h. sie können Knoten mit benutzerdefinierten Eigenschaften markieren und für sie dann ebenfalls eine Auswahl treffen.
+In order to support these sorts of configurations Service Fabric has a first class notion of what we call placement constraints. Placement constraints can be used to indicate where certain services should run. The set of constraints is extensible by users, meaning that people can tag nodes with custom properties and then select for those as well.
 
-![Clusterlayout bei verschiedenen Workloads][Image5]
+![Cluster Layout Different Workloads][Image5]
 
-Die verschiedenen Schlüssel-Wert-Tags für Knoten werden als *Knotenplatzierungseigenschaften* (oder einfach Knoteneigenschaften) bezeichnet. Die Anweisung im Dienst hingegen heißt *Platzierungseinschränkung*. Der Wert in der Knoteneigenschaft kann als Zeichenfolge, boolescher Wert oder als Wert vom Typ „signed long“ angegeben werden. Bei der Einschränkung kann es sich um eine boolesche Anweisung handeln, die für die verschiedenen Knoteneigenschaften im Cluster ausgeführt wird. In diesen booleschen Anweisungen (bei denen es sich um Zeichenfolgen handelt) sind folgende Selektoren gültig:
+The different key/value tags on nodes are known as node placement *properties* (or just node properties), whereas the statement at the service is called a placement *constraint*. The value specified in the node property can be a string, bool, or signed long. The constraint can be any Boolean statement that operates on the different node properties in the cluster. The valid selectors in these boolean statements (which are strings) are:
 
-- Bedingungsüberprüfungen zum Erstellen bestimmter Anweisungen
+- conditional checks for creating particular statements
   - "equal to" ==
   - "greater than" >
   - "less than" <
   - "not equal to" !=
   - "greater than or equal to" >=
   - "less than or equal to" <=
-- Boolesche Anweisungen für Gruppierung und Negation
+- boolean statements for grouping and negation
   - "and" &&
   - "or" ||
   - "not" !
-- Klammern zum Gruppieren von Vorgängen
+- parenthesis for grouping operations
   - ()
 
-  Hier finden Sie einige Beispiele für grundlegende Einschränkungsanweisungen, die einige der oben genannten Symbole verwenden. Beachten Sie, dass es sich bei den Knoteneigenschaften um Zeichenfolgen, boolesche Werte oder numerische Werte handeln kann.
+  Here are some examples of basic constraint statements that use some of the symbols above. Note that node properties can be strings, bools, or numerical values.   
 
   - "Foo >= 5"
   - "NodeColor != green"
   - "((OneProperty < 100) || ((AnotherProperty == false) && (OneProperty >= 100)))"
 
 
-Nur auf Knoten, bei denen die Anweisung insgesamt als „True“ ausgewertet wird, kann ein Dienst platziert werden. Knoten ohne definierte Eigenschaft entsprechen keiner Platzierungseinschränkung mit dieser Eigenschaft.
+Only nodes where the overall statement evaluates to “True” can have the service placed on it. Nodes without a property defined do not match any placement constraint that contains that property.
 
-Service Fabric definiert ebenfalls einige Standardeigenschaften, die automatisch verwendet werden können, ohne dass sie vom Benutzer definiert werden müssen. Zum Zeitpunkt der Erstellung dieses Dokuments sind für jeden Knoten die Standardeigenschaften „NodeType“ und „NodeName“ definiert. Sie könnten beispielsweise folgende Platzierungseinschränkung schreiben: "(NodeType == NodeType03)". Im Allgemeinen haben wir festgestellt, dass „NodeType“ die am häufigsten verwendete Eigenschaft ist, da sie in der Regel genau mit dem Typ eines Computers übereinstimmt, der wiederum einem Workloadtyp in einer herkömmlichen n-Ebenen-Anwendungsarchitektur entspricht.
+Service Fabric also defines some default properties which can be used automatically without the user having to define them. As of this writing the default properties defined at each node are the NodeType and the NodeName. So for example you could write a placement constraint as "(NodeType == NodeType03)". Generally we have found NodeType to be one of the most commonly used properties, as it usually corresponds 1:1 with a type of a machine, which in turn correspond to a type of workload in a traditional n-tier application architecture.
 
-![Platzierungseinschränkungen und Knoteneigenschaften][Image6]
+![Placement Constraints and Node Properties][Image6]
 
-Nehmen wir an, dass die folgenden Knoteneigenschaften für einen bestimmten Knotentyp definiert wurden: ClusterManifest.xml.
+Let’s say that the following node properties were defined for a given node type: ClusterManifest.xml
 
 ```xml
     <NodeType Name="NodeType01">
@@ -197,7 +199,7 @@ Nehmen wir an, dass die folgenden Knoteneigenschaften für einen bestimmten Knot
     </NodeType>
 ```
 
-Sie können Dienstplatzierungseinschränkungen für einen Dienst wie folgt erstellen:
+You can create service placement constraints for a service like this:
 
 C#
 
@@ -216,9 +218,9 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Wenn Sie sicher sind, dass alle Knoten von NodeType01 gültig sind, können Sie auch nur diesen Knotentyp auswählen. Verwenden Sie dazu Platzierungseinschränkungen wie in den obigen Abbildungen.
+If you are sure that all nodes of NodeType01 are valid, you could also just select that node type, using placement constraints like those show in the pictures above.
 
-Das Praktische an den Platzierungseinschränkungen eines Diensts ist, dass sie während der Laufzeit dynamisch aktualisiert werden können. Falls erforderlich, können Sie also einen Dienst im Cluster verschieben, Anforderungen hinzufügen und entfernen usw. Service Fabric stellt sicher, dass der Dienst einsatzbereit und verfügbar bleibt, selbst wenn diese Art von Änderungen fortlaufend ausgeführt wird.
+One of the cool things about a service’s placement constraints is that they can be updated dynamically during runtime. So if you need to, you can move a service around in the cluster, add and remove requirements, etc. Service Fabric takes care of ensuring that the service stays up and available even when these types of changes are ongoing.
 
 C#:
 
@@ -234,18 +236,18 @@ Powershell:
 Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstraints "NodeType == NodeType01"
 ```
 
-Platzierungseinschränkungen (und zahlreiche weitere Orchestratormechanismen, über die wir sprechen werden) werden für jede unterschiedliche benannte Dienstinstanz angegeben. Updates ersetzen (überschreiben) immer die vorherige Angabe.
+Placement constraints (along with many other orchestrator controls that we’re going to talk about) are specified for every different named service instance. Updates always take the place (overwrite) what was previously specified.
 
-Es muss auch darauf hingewiesen werden, dass an diesem Punkt die Eigenschaften auf einem Knoten über die Clusterdefinition definiert werden und daher nicht ohne ein Upgrade des Clusters aktualisiert werden können. Ebenso muss jeder Knoten heruntergefahren und neu gestartet werden, um seine Eigenschaften zu aktualisieren.
+It is also worth noting that at this point the properties on a node are defined via the cluster definition and hence cannot be updated without an upgrade to the cluster and will require each node to go down and then come back up in order to refresh its properties.
 
-## Kapazität
-Eine der wichtigsten Aufgaben eines Orchestrators besteht in der Verwaltung des Ressourcenverbrauchs im Cluster. Bei einer effizienten Dienstausführung sollen keine Knoten überlastet oder zu wenig ausgelastet sein. Eine Überlastung führt zu Ressourcenkonflikten und niedriger Leistung und eine zu geringe Auslastung zu einer Verschwendung von Ressourcen. Denken wir vor dem Lastenausgleich (dazu kommen wir gleich) jedoch zunächst an etwas Grundlegenderes: Warum stellen wir nicht einfach sicher, dass immer ausreichend Ressourcen vorhanden sind?
+## <a name="capacity"></a>Capacity
+One of the most important jobs of any orchestrator is to help manage resource consumption in the cluster. The last thing you want if you’re trying to run services efficiently is a bunch of nodes which are hot (leading to resource contention and poor performance) while others are cold (wasted resources). But let’s think even more basic than balancing (which we’ll get to in a minute) – what about just ensuring that nodes don’t run out of resources in the first place?
 
-Service Fabric stellt Ressourcen als „Metriken“ dar. Bei Metriken handelt es sich um alle logischen oder physischen Ressourcen, die Sie für Service Fabric beschreiben möchten. Beispiele für Metriken: WorkQueueDepth oder MemoryInMb. Metriken unterscheiden sich von Platzierungseinschränkungen und Knoteneigenschaften dahingehend, dass Knoteneigenschaften in der Regel statische Deskriptoren der Knoten selbst sind. Metriken hingegen beziehen sich auf Ressourcen, die auf Knoten vorhanden sind und von Diensten bei der Ausführung auf einem Knoten genutzt werden. Eine Eigenschaft wäre also beispielsweise „HasSSD“, und sie könnte auf wahr oder falsch festgelegt werden. Der auf dem SSD verfügbare (und von den Diensten verbrauchte) Speicherplatz wäre eine Metrik wie „DriveSpaceInMb“. Die Kapazität auf dem Knoten würde als „DriveSpaceInMb“ die Menge des gesamten nicht reservierten Speicherplatzes auf dem Laufwerk festlegen, und Dienste würden den zur Laufzeit verwendeten Teil der Metrik melden.
+Service Fabric represents resources as “Metrics”. Metrics are any logical or physical resource that you want to describe to Service Fabric. Examples of metrics are things like “WorkQueueDepth” or “MemoryInMb”. Metrics are different from placements constraints and node properties in that node properties are generally static descriptors of the nodes themselves, whereas metrics are about resources that nodes have and that services consume when they are running on a node. So a property would be something like HasSSD and could be set to true or false, but the amount of space available on that SSD (and consumed by services) would be a metric like “DriveSpaceInMb”. Capacity on the node would set the “DriveSpaceInMb” to the amount of total non-reserved space on the drive, and services would report how much of the metric they used during runtime.
 
-Wenn Sie den *Lastenausgleich* für alle Ressourcen deaktivieren, kann der Clusterressourcen-Manager von Service Fabric dennoch sicherstellen, dass kein Knoten überlastet wird (es sei denn, der Cluster insgesamt war zu voll). Die Kapazität ist eine weitere *Einschränkung*, die der Clusterressourcen-Manager verwendet, um zu ermitteln, wie viele Ressourcen auf einem Knoten verbraucht werden. Sowohl die Kapazität als auch der Verbrauch auf Dienstebene werden als Metrik ausgedrückt. Beispiel: Die Metrik lautet „MemoryInMb“ – ein bestimmter Knoten hat eine MemoryInMb-Kapazität von 2048, während ein bestimmter Dienst angibt, dass die aktuelle Nutzung von MemoryInMb bei 64 liegt.
+If you turned off all resource *balancing*, Service Fabric’s Cluster Resource Manager would still be able to ensure that no node ended up over its capacity (unless the cluster as a whole was too full). Capacity is another *constraint* which the Cluster Resource Manager uses to understand how much of a resource a node has. Both the capacity and the consumption at the service level are expressed in terms of metrics. So for example, the metric might be "MemoryInMb" - a given Node may have a capacity for MemoryInMb of 2048, while a given service can say it is currently consuming 64 of MemoryInMb.
 
-Während der Laufzeit verfolgt der Clusterressourcen-Manager, welcher Anteil von jeder Ressource auf den einzelnen Knoten (definiert durch seine Kapazität) vorhanden und welcher Anteil übrig ist (durch Subtrahieren der angegebenen Nutzung von jedem Dienst). Mit diesen Informationen kann der Service Fabric-Ressourcen-Manager ermitteln, wo Replikate platziert oder wohin diese verschoben werden sollen, um die Kapazität der Knoten nicht zu überschreiten.
+During runtime, the Cluster Resource Manager tracks how much of each resource is present on each node (defined by its capacity) and how much is remaining (by subtracting any declared usage from each service). With this information, the Service Fabric Resource Manager can figure out where to place or move replicas so that nodes don’t go over capacity.
 
 C#:
 
@@ -266,9 +268,9 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("Memory,High,64,64)
 ```
 
-![Clusterknoten und -kapazität][Image7]
+![Cluster nodes and capacity][Image7]
 
-Diese finden Sie im Clustermanifest:
+You can see these in the cluster manifest:
 
 ClusterManifest.xml
 
@@ -281,19 +283,19 @@ ClusterManifest.xml
     </NodeType>
 ```
 
-Möglicherweise ändert sich die Last eines Diensts auch dynamisch. Angenommen die Last eines Replikats ändert sich von 64 zu 1024, aber der Knoten, auf dem das Replikat ausgeführt wird, verfügte zu diesem Zeitpunkt nur noch über 512 (der MemoryInMb-Metrik). Aus diesem Grund kann der Ort, an dem ein Replikat oder eine Instanz derzeit platziert ist, ungültig werden, da durch die kombinierte Nutzung aller Replikate und Instanzen auf dem Knoten die Kapazität dieses Knotens überschritten wird. Auf das Szenario, in dem sich die Last dynamisch ändern kann, gehen wir später genauer ein. Die Kapazität wird jedoch genauso behandelt: Der Clusterressourcen-Manager schaltet sich automatisch ein und reduziert die Kapazität des Knotens, indem er Replikate oder Instanzen auf diesem Knoten auf andere Knoten verschiebt. Dabei versucht der Clusterressourcen-Manager, die Kosten aller Verschiebungen zu minimieren (auf die Kosten kommen wir später zu sprechen).
+It is also possible that a service’s load changes dynamically. Say that a replica's load changed from 64 to 1024, but the node it was running on at that time only had 512 (of the "MemoryInMb" metric) remaining. Because of this, where a replica or instance is currently placed becomes invalid since the combined usage of all of the replicas and instances on that node exceeds that node’s capacity. We’ll talk more about this scenario where load can change dynamically later, but as far as capacity goes it is handled the same way – the Cluster Resource Manager automatically kicks in and gets the node back below capacity by moving one or more of the replicas or instances on that node to different nodes. When doing this the Cluster Resource Manager tries to minimize the cost of all of the movements (we’ll come back to the notion of Cost later).
 
-## Clusterkapazität
-Wie verhindern wir eine Überlastung des Clusters? Bei einer dynamischen Last können wir nicht viel tun, da die Auslastung von Diensten unabhängig von den vom Clusterressourcen-Manager ausgeführten Aktionen rasant ansteigen kann: Ein Cluster, der heute noch genügend Spielraum bietet, hat morgen womöglich nicht mehr ausreichend Kapazität, wenn Sie berühmt werden. Es gibt jedoch einige integrierte Sicherheitsmechanismen, die grundlegende Probleme verhindern. Zunächst einmal können wir die Erstellung neuer Workloads verhindern, die eine Überlastung des Clusters verursachen.
+## <a name="cluster-capacity"></a>Cluster capacity
+So how do we keep the overall cluster from being too full? Well, with dynamic load there’s actually not a lot we can do (since services can have their load spike independent of actions taken by the Cluster Resource Manager – your cluster with a lot of headroom today may be rather underpowered when you become famous tomorrow), but there are some controls that are baked in to prevent basic problems. The first thing we can do is prevent the creation of new workloads that would cause the cluster to become full.
 
-Angenommen, Sie erstellen einen einfachen zustandslosen Dienst, dem eine bestimmte Last zugeordnet ist (weitere Informationen zur Meldung standardmäßiger und dynamischer Auslastung finden Sie weiter unten). Bei diesem Dienst gehen wir davon aus, dass er für eine gewisse Ressource, z. B. Speicherplatz, verwendet wird und standardmäßig fünf Speicherplatzeinheiten pro Dienstinstanz verbraucht. Sie möchten drei Instanzen des Diensts erstellen. Prima. Das bedeutet, dass im Cluster 15 Speicherplatzeinheiten vorhanden sein müssen, damit wir diese Dienstinstanzen überhaupt erstellen können. Service Fabric berechnet kontinuierlich die gesamte Kapazität und den Verbrauch der einzelnen Metriken, sodass einfach bestimmt werden kann, ob der Aufruf zur Diensterstellung abgewiesen werden soll, falls nicht ausreichend Platz zur Verfügung steht.
+Say that you go to create a simple stateless service and it has some load associated with it (more on default and dynamic load reporting later). For this service, let’s say that it cares about some resource (let’s say DiskSpace) and that by default it is going to consume 5 units of DiskSpace for every instance of the service. You want to create 3 instances of the service. Great! So that means that we need 15 units of DiskSpace to be present in the cluster in order for us to even be able to create these service instances. Service Fabric is continually calculating the overall capacity and consumption of each metric, so we can easily make the determination and reject the create service call if there’s insufficient space.
 
-Hinweis: Da nur die Anforderung besteht, dass 15 Einheiten vorhanden sein müssen, kann dieser Platz auf verschiedene Art und Weise zugewiesen werden: Beispielsweise kann eine Kapazitätseinheit auf 15 verschiedenen Knoten oder es können drei Kapazitätseinheiten auf fünf verschiedenen Knoten übrig sein. Ist nicht ausreichend Kapazität auf drei verschiedenen Knoten vorhanden, organisiert Service Fabric die bereits im Cluster bestehenden Dienste neu, um Platz auf den drei erforderlichen Knoten zu schaffen. Solche Neuanordnung ist fast immer möglich, es sei denn, der Cluster als Ganzes ist fast vollständig voll.
+Note that since the requirement is only that there be 15 units available, this space could be allocated many different ways; it could be one remaining unit of capacity on 15 different nodes, for example, or three remaining units of capacity on 5 different nodes, etc. If there isn’t sufficient capacity on three different nodes Service Fabric will reorganize the services already in the cluster in order to make room on the three necessary nodes. Such rearrangement is almost always possible unless the cluster as a whole is almost entirely full.
 
-## Gepufferte Kapazität
-Ein weiterer Aspekt, der Benutzer bei der Verwaltung der gesamten Clusterkapazität unterstützt, ist die Angabe eines reservierten Puffers für die für jeden Knoten angegebene Kapazität. Diese Einstellung ist optional, ermöglicht Benutzern jedoch die Reservierung eines Teils der Knotengesamtkapazität, sodass dieser Teil nur für die Platzierung von Diensten während Upgrades und Ausfällen verwendet wird – also in Fällen, in denen die Kapazität des Clusters anderweitig eingeschränkt ist. Heute wird der Puffer global pro Metrik für alle Knoten über das Clustermanifest angegeben. Der von Ihnen ausgewählte Wert für die reservierte Kapazität ist eine Funktion, die angibt, welche Ressourcen Ihrer Dienste stärker eingeschränkt sind und wie viele Fehler- und Upgradedomänen der Cluster enthält. Im Allgemeinen bedeutet eine höhere Anzahl von Fehler- und Upgradedomänen, dass Sie eine geringere Menge für die gepufferte Kapazität auswählen müssen, da bei Upgrades und Ausfällen ein geringerer Anteil Ihres Clusters nicht verfügbar ist. Beachten Sie, dass die Angabe des Pufferprozentsatzes nur sinnvoll ist, wenn Sie auch die Knotenkapazität für eine Metrik angegeben haben.
+## <a name="buffered-capacity"></a>Buffered Capacity
+Another thing that helps people manage overall cluster capacity is the notion of some reserved buffer to the capacity specified at each node. This setting is optional, but allows people to reserve some portion of the overall node capacity so that it is only used to place services during upgrades and failures – cases where the capacity of the cluster is otherwise reduced. Today buffer is specified globally per metric for all nodes via the ClusterManifest. The value you pick for the reserved capacity will be a function of which resources your services are more constrained on, as well as the number of fault and upgrade domains you have in the cluster. Generally more fault and upgrade domains means that you can pick a lower number for your buffered capacity, as you will expect smaller amounts of your cluster to be unavailable during upgrades and failures. Note that specifying the buffer percentage only makes sense if you have also specified the node capacity for a metric.
 
-Hier finden Sie ein Beispiel für die Angabe der gepufferten Kapazität:
+Here's an example of how to specify buffered capacity:
 
 ClusterManifest.xml
 
@@ -305,7 +307,7 @@ ClusterManifest.xml
         </Section>
 ```
 
-Bei der Erstellung neuer Dienste tritt ein Fehler auf, wenn dem Cluster keine gepufferte Kapazität mehr zur Verfügung steht. Dadurch wird sichergestellt, dass der Cluster über ausreichend Kapazitätsreserven verfügt und Upgrades und Ausfälle nicht dazu führen, dass Knoten die Kapazität überschreiten. Der Clusterressourcen-Manager macht viele dieser Informationen über PowerShell und die Abfrage-APIs verfügbar, sodass Sie die Einstellungen für die gepufferte Kapazität, die Gesamtkapazität und den aktuellen Verbrauch für jede im Cluster verwendete Metrik anzeigen können. Hier sehen Sie ein Beispiel für diese Ausgabe:
+The creation of new services will fail when the cluster is out of buffered capacity, ensuring that the cluster retains enough spare overhead such that upgrades and failures don’t result in nodes being actually over capacity. The Cluster Resource Manager exposes a lot of this information via PowerShell and the Query APIs, letting you see the buffered capacity settings, the total capacity, and the current consumption for every metric in use in the cluster. Here we see an example of that output:
 
 ```posh
 PS C:\Users\user> Get-ServiceFabricClusterLoadInformation
@@ -333,18 +335,22 @@ LoadMetricInformation     :
                             MaxNodeLoadNodeId     : 2cc648b6770be1bc9824fa995d5b68b1
 ```
 
-## Nächste Schritte
-- Informationen über die Architektur und den Informationsfluss innerhalb des Clusterressourcen-Managers finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-architecture.md).
-- Das Definieren von Defragmentierungsmetriken ist eine Möglichkeit, die Last auf Knoten zu konsolidieren, statt sie auszubreiten. Informationen zum Konfigurieren der Defragmentierung finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-defragmentation-metrics.md).
-- Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
-- Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md).
+## <a name="next-steps"></a>Next steps
+- For information on the architecture and information flow within the Cluster Resource manager, check out [this article ](service-fabric-cluster-resource-manager-architecture.md)
+- Defining Defragmentation Metrics is one way to consolidate load on nodes instead of spreading it out. To learn how to configure defragmentation, refer to [this article](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- Start from the beginning and [get an Introduction to the Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
+- To find out about how the Cluster Resource Manager manages and balances load in the cluster, check out the article on [balancing load](service-fabric-cluster-resource-manager-balancing.md)
 
-[Image1]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-domains.png
-[Image2]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-uneven-fault-domain-layout.png
-[Image3]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domains-with-placement.png
-[Image4]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domain-layout-strategies.png
-[Image5]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-layout-different-workloads.png
-[Image6]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
-[Image7]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
+[Image1]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-domains.png
+[Image2]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-uneven-fault-domain-layout.png
+[Image3]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domains-with-placement.png
+[Image4]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domain-layout-strategies.png
+[Image5]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-layout-different-workloads.png
+[Image6]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
+[Image7]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

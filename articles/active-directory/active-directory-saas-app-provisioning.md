@@ -16,11 +16,12 @@
     ms.date="02/09/2016"
     ms.author="asmalser-msft"/>
 
-#Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 
-##Was ist eine automatisierte Benutzerbereitstellung für SaaS-Anwendungen?
+#<a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 
-Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/), wie z.B. Dropbox, Salesforce und ServiceNow.
+##<a name="what-is-automated-user-provisioning-for-saas-apps?"></a>Was ist eine automatisierte Benutzerbereitstellung für SaaS-Anwendungen?
+
+Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), wie z.B. Dropbox, Salesforce und ServiceNow.
 
 **Nachstehend finden Sie einige Beispiele für Aufgaben, die Sie mit diesem Feature ausführen können:**
 
@@ -36,7 +37,7 @@ Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen
 - Optionale E-Mail-Warnungen zu Bereitstellungsfehlern.
 - Berichterstellung und Aktivitätsprotokolle unterstützen Sie bei der Überwachung und Problembehandlung.
 
-##Warum sollte eine automatisierte Bereitstellung eingesetzt werden?
+##<a name="why-use-automated-provisioning?"></a>Warum sollte eine automatisierte Bereitstellung eingesetzt werden?
 
 Nachfolgend werden einige Gründe aufgeführt, die für die Verwendung dieser Funktion sprechen:
 
@@ -45,7 +46,7 @@ Nachfolgend werden einige Gründe aufgeführt, die für die Verwendung dieser Fu
 - Einfacher Massenimport von Benutzern in eine bestimmte SaaS-Anwendung.
 - Mit dieser Bereitstellungslösung werden dieselben App-Zugriffsrichtlinien angewendet wie diejenigen, die Sie für die einmalige Azure AD-Anmeldung (SSO) definiert haben.
 
-##Häufig gestellte Fragen
+##<a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 **Wie häufig schreibt Azure AD Verzeichnisänderungen in die SaaS-Apps?**
 
@@ -57,7 +58,7 @@ Inkrementelle Änderungen werden nahezu sofort angewendet, wenn Sie jedoch versu
 
 **Wie kann ich den Fortschritt des aktuellen Bereitstellungsauftrags verfolgen?**
 
-Sie können den Bericht "Kontobereitstellung" im Abschnitt "Berichte" Ihres Verzeichnisses prüfen. Eine weitere Option besteht darin, die Registerkarte "Dashboard" für die SaaS-Anwendung anzuzeigen, für die Sie die Bereitstellung durchführen. Sie finden die entsprechenden Informationen im Abschnitt "Integrationsstatus" im unteren Bereich der Seite.
+Sie können den Bericht "Kontobereitstellung" im Abschnitt "Berichte" Ihres Verzeichnisses prüfen.  Eine weitere Option besteht darin, die Registerkarte "Dashboard" für die SaaS-Anwendung anzuzeigen, für die Sie die Bereitstellung durchführen. Sie finden die entsprechenden Informationen im Abschnitt "Integrationsstatus" im unteren Bereich der Seite.
 
 **Woher weiß ich, dass Benutzer nicht ordnungsgemäß bereitgestellt wurden?**
 
@@ -71,7 +72,7 @@ Für diese meisten SaaS-Apps erfolgt die Bereitstellung ausschließlich ausgehen
 
 Kontaktieren Sie uns über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
-##Wie funktioniert die automatisierte Bereitstellung?
+##<a name="how-does-automated-provisioning-work?"></a>Wie funktioniert die automatisierte Bereitstellung?
 
 Azure AD stellt Benutzer für SaaS-Apps bereit, indem eine Verbindung mit Bereitstellungsendpunkten hergestellt wird, die vom jeweiligen Anwendungsanbieter zur Verfügung gestellt werden. Diese Endpunkte ermöglichen Azure AD das programmgesteuerte Erstellen, Aktualisieren und Entfernen von Benutzern. Nachstehend finden Sie einen kurzen Überblick über die verschiedenen Schritte, die Azure AD bei der automatisierten Bereitstellung ausführt.
 
@@ -86,7 +87,7 @@ Azure AD stellt Benutzer für SaaS-Apps bereit, indem eine Verbindung mit Bereit
 
 Weitere Informationen dazu, wie Attribute zwischen Azure AD und Ihrer SaaS-App zugeordnet werden, finden Sie im Artikel [Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md).
 
-##Liste der Apps, die eine automatisierte Benutzerbereitstellung unterstützen
+##<a name="list-of-apps-that-support-automated-user-provisioning"></a>Liste der Apps, die eine automatisierte Benutzerbereitstellung unterstützen
 
 Klicken Sie auf die App, um ein Lernprogramm zum Konfigurieren der automatisierten Bereitstellung für diese App anzuzeigen:
 
@@ -106,7 +107,7 @@ Damit eine Anwendung die automatisierte Benutzerbereitstellung unterstützt, mü
 
 Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
-##Verwandte Artikel
+##<a name="related-articles"></a>Verwandte Artikel
 
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 - [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](active-directory-saas-customizing-attribute-mappings.md)
@@ -116,4 +117,8 @@ Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungs
 - [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
 - [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

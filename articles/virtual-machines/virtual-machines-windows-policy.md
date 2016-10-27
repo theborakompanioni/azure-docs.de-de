@@ -1,42 +1,43 @@
 <properties
-	pageTitle="Anwenden von Richtlinien auf virtuelle Computer des Azure Resource Manager | Microsoft Azure"
-	description="Anwenden einer Richtlinie auf einen virtuellen Windows-Computer des Azure Resource Manager"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="singhkays"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Apply policies to Azure Resource Manager Virtual Machines | Microsoft Azure"
+    description="How to apply a policy to an Azure Resource Manager Windows Virtual Machine"
+    services="virtual-machines-windows"
+    documentationCenter=""
+    authors="singhkays"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="04/13/2016"
-	ms.author="singhkay"/>
+    ms.service="virtual-machines-windows"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="04/13/2016"
+    ms.author="singhkay"/>
 
-# Verwenden Sie für virtuelle Azure Resource Manager-Computer diese PowerShell:
 
-Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
+# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Apply policies to Azure Resource Manager Virtual Machines
 
-Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
+By using policies, an organization can enforce various conventions and rules throughout the enterprise. Enforcement of the desired behavior can help mitigate risk while contributing to the success of the organization. In this article, we will describe how you can use Azure Resource Manager policies to define the desired behavior for your organization’s Virtual Machines.
 
-1. Grundlagen zu Azure Resource Manager-Richtlinien
-2. Definieren einer Richtlinie für den virtuellen Computer
-3. Erstellen der Richtlinie
-4. Anwenden der Richtlinie
+The outline for the steps to accomplish this is as below
 
-## Grundlagen zu Azure Resource Manager-Richtlinien
+1. Azure Resource Manager Policy 101
+2. Define a policy for your Virtual Machine
+3. Create the policy
+4. Apply the policy
 
-Für die ersten Schritte mit Azure Resource Manager-Richtlinien empfehlen wir zunächst, den folgenden Artikel zu lesen. Danach können Sie mit den Schritten in diesem Artikel fortfahren. Der unten stehende Artikel beschreibt die grundlegende Definition und die Struktur einer Richtlinie sowie die Art und Weise, wie Richtlinien ausgewertet werden. Darüber hinaus enthält er verschiedene Beispiele für Richtliniendefinitionen.
+## <a name="azure-resource-manager-policy-101"></a>Azure Resource Manager Policy 101
 
-* [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](../resource-manager-policy.md)
+For getting started with Azure Resource Manager policies, we recommend reading the article below and then continuing with the steps in this article. The article below describes the basic definition and structure of a policy, how policies get evaluated and gives various examples of policy definitions.
 
-## Definieren einer Richtlinie für den virtuellen Computer
+* [Use Policy to manage resources and control access](../resource-manager-policy.md)
 
-Ein allgemeines Szenario für ein Unternehmen besteht z. B. darin, es den Benutzern nur über bestimmte Betriebssysteme zu ermöglichen, die auf Kompatibilität mit einer LOB-Anwendung getestet wurden, virtuelle Computer zu erstellen. Mithilfe einer Azure Resource Manager-Richtlinie kann diese Aufgabe in wenigen Schritten durchgeführt werden. In dieser Beispielrichtlinie lassen wir nur das Erstellen von virtuellen Windows Server 2012 R2 Datacenter-Computern zu. Die Richtliniendefinition sieht wie folgt aus:
+## <a name="define-a-policy-for-your-virtual-machine"></a>Define a policy for your Virtual Machine
+
+One of the common scenarios for an enterprise might be to only allow their users to create Virtual Machines from specific operating systems that have been tested to be compatible with a LOB application. Using an Azure Resource Manager policy this task can be accomplished in a few steps. In this policy example, we are going to allow only Windows Server 2012 R2 Datacenter Virtual Machines to be created. The policy definition looks like below
 
 ```
 "if": {
@@ -70,7 +71,7 @@ Ein allgemeines Szenario für ein Unternehmen besteht z. B. darin, es den Benutz
 }
 ```
 
-Die oben beschriebene Richtlinie kann problemlos für ein Szenario geändert werden, in dem jedes Windows Server Datacenter-Image zugelassen wird, das für die Bereitstellung eines virtuellen Computers verwendet wird. Nehmen Sie dazu die unten stehende Änderung vor:
+The above policy can easily be modified to a scenario where you might want to allow any Windows Server Datacenter image to be used for a Virtual Machine deployment with the below change
 
 ```
 {
@@ -79,31 +80,35 @@ Die oben beschriebene Richtlinie kann problemlos für ein Szenario geändert wer
 }
 ```
 
-#### Eigenschaftenfelder für virtuelle Computer
+#### <a name="virtual-machine-property-fields"></a>Virtual Machine Property Fields
 
-In der folgenden Tabelle werden die Eigenschaften des virtuellen Computers beschrieben, die als Felder in der Richtliniendefinition verwendet werden können. Weitere Informationen zu Richtlinienfeldern finden Sie im folgenden Artikel:
+The table below describes the Virtual Machine properties that can be used as fields in your policy definition. For more on policy fields, see the article below:
 
-* [Felder und Quellen](../resource-manager-policy.md#fields-and-sources)
+* [Fields and Sources](../resource-manager-policy.md#fields-and-sources)
 
 
-| Feldname | Beschreibung |
+| Field Name     | Description                                        |
 |----------------|----------------------------------------------------|
-| imagePublisher | Gibt den Verleger des Images an. |
-| imageOffer | Gibt das Angebot für den ausgewählten Image-Verleger an. |
-| imageSku | Gibt die SKU für das ausgewählte Angebot an. |
-| imageVersion | Gibt die Imageversion für die ausgewählte SKU an. |
+| imagePublisher | Specifies the publisher of the image               |
+| imageOffer     | Specifies the offer for the chosen image publisher |
+| imageSku       | Specifies the SKU for the chosen offer             |
+| imageVersion   | Specifies the image version for the chosen SKU     |
 
-## Erstellen der Richtlinie
+## <a name="create-the-policy"></a>Create the Policy
 
-Eine Richtlinie kann problemlos über die REST-API direkt oder über PowerShell-Cmdlets erstellt werden. Informationen zum Erstellen der Richtlinie finden Sie im folgenden Artikel:
+A policy can easily be created using the REST API directly or the PowerShell cmdlets. For creating the policy, see the article below:
 
-* [Erstellen einer Richtlinie](../resource-manager-policy.md#creating-a-policy)
+* [Creating a Policy](../resource-manager-policy.md#creating-a-policy)
 
 
-## Anwenden der Richtlinie
+## <a name="apply-the-policy"></a>Apply the Policy
 
-Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, eine Ressourcengruppe oder die Ressource handeln. Informationen zum Anwenden der Richtlinie finden Sie im folgenden Artikel:
+After creating the policy you’ll need to apply it on a defined scope. The scope can be a subscription, resource group or even the resource. For applying the policy, see the article below:
 
-* [Erstellen einer Richtlinie](../resource-manager-policy.md#applying-a-policy)
+* [Creating a Policy](../resource-manager-policy.md#applying-a-policy)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

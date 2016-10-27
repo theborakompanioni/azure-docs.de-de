@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Anzeigen und Verwalten von StorSimple Virtual Array-Aufträgen | Microsoft Azure"
-   description="Es wird die Seite „Aufträge“ des StorSimple Manager-Diensts beschrieben, und Sie erfahren, wie Sie damit kürzlich durchgeführte und aktuelle Aufträge für das StorSimple Virtual Array nachverfolgen."
+   pageTitle="View and manage StorSimple Virtual Array jobs | Microsoft Azure"
+   description="Describes the StorSimple Manager service Jobs page and how to use it to track recent and current jobs for the StorSimple Virtual Array."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,61 +15,66 @@
    ms.date="06/07/2016"
    ms.author="alkohli" />
 
-# Verwenden des StorSimple Manager-Diensts zum Anzeigen von Aufträgen für das StorSimple Virtual Array
 
-## Übersicht
+# <a name="use-the-storsimple-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Use the StorSimple Manager service to view jobs for the StorSimple Virtual Array
 
-Die Seite **Aufträge** enthält ein zentrales Portal zum Anzeigen und Verwalten von Aufträgen auf Virtual Arrays (auch als lokale virtuelle Geräte bezeichnet), die über eine Verbindung mit Ihrem StorSimple Manager-Dienst verfügen. Sie können aktive, abgeschlossene und fehlgeschlagene Aufträge für mehrere virtuelle Geräte anzeigen. Die jeweiligen Ergebnisse werden in einem Tabellenformat angezeigt.
+## <a name="overview"></a>Overview
 
-![Seite „Aufträge“](./media/storsimple-ova-manage-jobs/ovajobs1.png)
+The **Jobs** page provides a single central portal for viewing and managing jobs that are started on Virtual Arrays (also known as on-premises virtual devices) that are connected to your StorSimple Manager service. You can view running, completed, and failed jobs for multiple virtual devices. Results are presented in a tabular format. 
 
-Sie können die Aufträge, an denen Sie interessiert sind, schnell finden, indem Sie nach folgenden Feldern filtern:
+![Jobs page](./media/storsimple-ova-manage-jobs/ovajobs1.png)
 
-- **Status** – Sie können nach allen, aktiven, abgeschlossenen oder fehlgeschlagenen Aufträgen suchen.
-- **Von und Bis** – Aufträge können entsprechend einem Datums- und Zeitbereich gefiltert werden.
-- **Typ** – Der Auftragstyp kann „Alle“, „Sicherung“, „Wiederherstellung“, „Failover“, „Updates herunterladen“ oder „Updates installieren“ lauten.
-- **Geräte** – Aufträge werden für ein bestimmtes Gerät ausgelöst, das mit Ihrem Dienst verbunden ist. Die gefilterten Aufträge werden dann anhand der folgenden Attribute tabellarisch aufgelistet:
+You can quickly find the jobs you are interested in by filtering on fields such as:
 
-    - **Typ** – Der Auftragstyp kann „Alle“, „Sicherung“, „Wiederherstellung“, „Failover“, „Updates herunterladen“ oder „Updates installieren“ lauten.
+- **Status** – You can search for all, running, completed, or failed jobs.
+- **From and To** – Jobs can be filtered based on the date and time range.
+- **Type** – The job type can be all, backup, restore, failover, download updates, or install updates.
+- **Devices** – Jobs are initiated on a specific device connected to your service. The filtered jobs are then tabulated on the basis of the following attributes:
 
-    - **Status** – Der Status für Aufträge kann „Alle“, „Aktiv“, „Abgeschlossen“ oder „Fehler“ lauten.
+    - **Type** – The job type can be all, backup, restore, failover, download updates, or install updates.
 
-    - **Entität** – Die Aufträge können einem Volume, einer Freigabe oder einem Gerät zugeordnet sein.
+    - **Status** – Jobs can be all, running, completed, or failed.
 
-    - **Gerät** – Der Name des Geräts, für den der Auftrag gestartet wurde.
+    - **Entity** – The jobs can be associated with a volume, share, or device. 
 
-    - **Gestartet am** – der Zeitpunkt, zu dem der Auftrag gestartet wurde.
+    - **Device** – The name of the device on which the job was started.
 
-    - **Status** – Der Prozentsatz, bis zu dem ein Auftrag abgearbeitet ist, der ausgeführt wird. Für einen abgeschlossenen Auftrag muss dieser Wert immer gleich 100 % sein.
+    - **Started on** – The time when the job was started.
 
-Die Liste der Aufträge wird alle 30 Sekunden aktualisiert.
+    - **Progress** – The percentage completion of a running job. For a completed job, this should always be 100%.
 
-## Anzeigen von Auftragsdetails
+The list of jobs is refreshed every 30 seconds.
 
-Führen Sie die folgenden Schritte aus, um die Details eines Auftrags anzuzeigen.
+## <a name="view-job-details"></a>View job details
 
-#### So zeigen Sie Auftragsdetails an
+Perform the following steps to view the details of any job.
 
-1. Zeigen Sie auf der Seite **Aufträge** die Aufträge an, an denen Sie interessiert sind, indem Sie eine Abfrage mit entsprechenden Filtern ausführen. Sie können nach abgeschlossenen oder aktiven Aufträgen suchen.
+#### <a name="to-view-job-details"></a>To view job details
 
-2. Wählen Sie in der tabellarischen Auftragsliste einen Auftrag aus.
+1. On the **Jobs** page, display the job(s) you are interested in by running a query with appropriate filters. You can search for completed or running jobs.
 
-3. Klicken Sie unten auf der Seite auf **Details**.
+2. Select a job from the tabular list of jobs.
 
-4. Im Dialogfeld **Details** können Sie Status, Details und Zeitstatistiken anzeigen. Die folgende Abbildung zeigt ein Beispiel für das Dialogfeld **Auftragsdetails sichern**.
+3. At the bottom of the page, click **Details**.
+
+4. In the **Details** dialog box, you can view status, details,  and time statistics. The following illustration shows an example of the **Backup Job Details** dialog box.
  
-    ![Seite „Auftragsdetails“](./media/storsimple-ova-manage-jobs/ovajobs2.png)
+    ![Job details page](./media/storsimple-ova-manage-jobs/ovajobs2.png)
 
-#### Auftragsfehler, wenn der virtuelle Computer im Hypervisor angehalten wird
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Job failures when the virtual machine is paused in the hypervisor
 
-Wenn ein Auftrag im virtuellen StorSimple-Array ausgeführt wird und das Gerät (bereitgestellter virtueller Computer im Hypervisor) für mehr als 15 Minuten angehalten wurde, schlägt der Auftrag fehl. Dies ist darauf zurückzuführen, dass die Zeit Ihres virtuellen StorSimple-Arrays nicht mehr synchron mit der Microsoft Azure-Zeit ist. Ein Beispiel für einen Fehler des Wiederherstellungsauftrags wird im folgenden Screenshot gezeigt.
+When a job is in progress on your StorSimple Virtual Array and the device (virtual machine provisioned in hypervisor) is paused for greater than 15 minutes, the job will fail. This is due to your StorSimple Virtual Array time being out of sync with the Microsoft Azure time. An example for a restore job failure is shown in the following screenshot.
 
-![Fehler bei Wiederherstellungsauftrag](./media/storsimple-ova-manage-jobs/restorejobfailure.png)
+![Restore job failure](./media/storsimple-ova-manage-jobs/restorejobfailure.png)
 
-Diese Fehler betreffen Sicherungs-, Wiederherstellungs-, Aktualisierungs- und Failover-Aufträge. Wenn der virtuelle Computer in Hyper-V bereitgestellt wird, synchronisiert der Computer die Zeit letztendlich mit dem Hypervisor. Sobald dies geschieht, können Sie den Auftrag neu starten.
+These failures will apply to backup, restore, update, and failover jobs. If your virtual machine is provisioned in Hyper-V, the machine will eventually synchronize time with your hypervisor. Once that happens, you can restart your job. 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Erfahren Sie, wie Sie Ihr StorSimple Virtual Array über die lokale Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
+[Learn how to use the local web UI to administer your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

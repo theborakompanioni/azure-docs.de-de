@@ -1,69 +1,75 @@
 <properties
-	pageTitle="Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten"
-	description="Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten – HockeyApp, AppInsights, Notification Hubs"
-	services="mobile-engagement"
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="erikre" 
-	editor="" />
+    pageTitle="Comparing Azure Mobile Engagement with other similar Azure services"
+    description="Comparing Azure Mobile Engagement with other similar Azure services - HockeyApp, AppInsights, Notification Hubs"
+    services="mobile-engagement"
+    documentationCenter="mobile" 
+    authors="piyushjo" 
+    manager="erikre" 
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/19/2016"
+    ms.author="piyushjo" />
 
-# Vergleich von Azure Mobile Engagement mit anderen ähnlichen Azure-Diensten
 
-Die Liste der Dienste, die von Microsoft Azure angeboten werden, wächst ständig, und vielleicht fragen Sie sich manchmal, was Azure Mobile Engagement von einem anderen Dienst unterscheidet, von dem Sie gerade gelesen oder gehört haben. Dieser Artikel soll der Verwirrung ein Ende setzen, damit Sie gezielt Azure Mobile Engagement auswählen können, wenn dieser Dienst für Ihre Zwecke am besten geeignet ist.
+# <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>Comparing Azure Mobile Engagement with other similar Azure services
+
+The list of services offered by Microsoft Azure is ever expanding and at times you may wonder how is Azure Mobile Engagement different than this other service that you just read or hear about. This article attempts to clear the confusion and directs you to choose Azure Mobile Engagement when it is most appropriate for your usage. 
  
-Azure Mobile Engagement ist ein Dienst, der sich speziell an **digitale Vermarkter/CMOs** wendet, jedoch von jedem **Besitzer oder Herausgeber einer mobilen App** verwendet werden kann, der die Nutzung, Beibehaltung und Monetarisierung seiner mobilen Apps steigern möchte.
+Azure Mobile Engagement is a service targeted specifically **for digital marketers/CMOs** but could be used by any **mobile app owner or publisher** who wants to increase the usage, retention and monetization of their mobile apps. 
 
-*Azure Mobile Engagement ist eine als Software-as-a-Service (SaaS) bereitgestellte Benutzerengagementplattform, die Folgendes ermöglicht: datenbezogene Einblicke in die App-Nutzung, Benutzersegmentierung in Echtzeit und kontextbezogene Pushbenachrichtigungen sowie In-App-Messaging.*
+*It is a software-as-a-service (SaaS) user-engagement platform that provides data-driven insights into app usage, real-time user segmentation, and enables contextually-aware push notifications and in-app messaging.* 
 
-Die Aufschlüsselung dieser Definition ergibt die folgenden Hauptmerkmale, die auch sein einzigartiges Wertangebot hervorheben:
+Breaking down this definition, we have the following key characteristics which also highlights its unique value proposition:
 
-1.	**Pushbenachrichtigungen und In-App-Messaging in Abhängigkeit vom Kontext**
-		
-	Dies ist der Schwerpunkt des Produkts – Ausführen gezielter und personalisierter Pushbenachrichtigungen. Und um dies zu ermöglichen, werden umfassende Verhaltensanalysedaten erfasst.
+1.  **Contextually-aware push notifications and in-app messaging**
+        
+    This is the core focus of the product - perform targeted and personalized push notifications. And for this to happen, we collect rich behavioral analytics data. 
 
-2.	**Datengesteuerte Einblicke in die App-Nutzung**
+2.  **Data-driven insights into app usage**
 
-	Wir bieten plattformübergreifende SDKs, um die Verhaltensanalysen der App-Benutzer zu erfassen. Beachten Sie den Begriff „Verhaltensanalyse“ (im Vergleich zu „Leistungsanalyse“), da wir uns darauf konzentrieren, „wie“ die App-Benutzer die App verwenden. Wir erfassen grundlegende Leistungsanalysedaten zu Fehlern, Abstürzen usw., aber das ist nicht der Schwerpunkt des Produkts.
+    We provide cross platform SDKs to collect the behavioral analytics about the app users. Note the term behavioral analytics (as against performance analytics) because we focus on how the app users are using the app. We do collect basic performance analytics data about errors, crashes etc but that is not the core focus of the product. 
 
-3.	**Benutzersegmentierung in Echtzeit**
+3.  **Real-time user segmentation**
 
-	Nachdem Sie die Verhaltensanalysedaten der App-Benutzer erfasst haben, können Sie Ihre Zielgruppe anhand verschiedener Parameter und gesammelter Daten segmentieren, damit Sie gezielte Pushkampagnen ausführen können.
+    Once you have collected app users' behavioral analytics data, we allow you to segment your audience based on various parameters and collected data to enable you to run targeted push campaigns. 
 
-4.	**Software-as-a-service (SaaS):**
+4.  **Software-as-a-service (SaaS):**
 
-	Wir verfügen über ein vom Azure-Verwaltungsportal getrenntes Portal, das zum Interagieren und zum Anzeigen umfassender Verhaltensanalysen über die App-Benutzer und zum Ausführen von Marketingpushkampagnen optimiert ist. Das Produkt soll Ihnen in kürzester Zeit den Einstieg ermöglichen!
+    We have a portal separate from the Azure management portal which is optimized to interact and view rich behavioral analytics about the app users and run marketing push campaigns. The product is geared to get you going in no time!   
  
-Diese Differenzierung ist hier die Basis des Vergleichs mit anderen scheinbar ähnlichen Azure-Angeboten – beachten Sie, dass der Artikel keinen Vergleich auf Featureebene bietet, sondern anhand eines eher szenarienbasierten Ansatzes definiert, welches Produkt seinen Zweck am besten erfüllt:
+With this set of differentiation in hand, here is how we compare against other seemingly similar Azure offerings - note that the article doesn’t do a feature level comparison but takes a more scenario based approach to define which product works best:
  
-1.	[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) ist die mobile DevOps-Lösung von Microsoft. Mit dieser Lösung können Sie Builds an Betatester verteilen, Daten sammeln und Benutzerfeedback erhalten. Sie ist auch in Visual Studio Team Services integrierbar und ermöglicht einfache Bereitstellungen von Builds und Integration von Arbeitselementen.
-	
-	Der Schwerpunkt liegt hier auf DevOps und dem Erfassen von Leistungsanalysedaten über die mobilen Apps. Möglicherweise integrieren Sie schließlich HockeyApps und Mobile Engagement in Ihre App – und dies wäre nicht ungewöhnlich, denn trotz einiger Überlappungen der gesammelten Daten haben die Produkte unterschiedliche Schwerpunkte und unterstützen Sie dabei, verschiedene Ziele zu erreichen.
+1.  [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) is the Microsoft's mobile DevOps solution. With it, you can distribute builds to beta testers, collect crash data, and get user feedback. It also integrates with Visual Studio Team Services enabling easy build deployments and work item integration. 
+    
+    The focus here is on DevOps and collecting performance analytics data about the mobile apps. You may end up with integrating both HockeyApps and Mobile Engagement in your app and that will not be unusual because even though there is some overlap in the collected data, the core focus of the products is different and they help in achieving different objectives for you.  
 
-2.	[Application Insights](../application-insights/app-insights-overview.md) Wenn Ihre mobile App eine Serverseite hat, verwenden Sie Application Insights, um die Webserverseite Ihrer App zu überwachen – für clientseitige mobile Apps sollten Sie jedoch HockeyApp verwenden.
+2.  [Application Insights](../application-insights/app-insights-overview.md) If your mobile app has a server side, then you will use Application Insights to monitor the web server side of your app but for the client side mobile apps, you should use HockeyApp. 
 
-3.	[Notification Hubs](https://azure.microsoft.com/services/notification-hubs/) bietet einen einfachen Dienst in dem Sinne, dass Sie kein SDK in die mobile Anwendung integrieren müssen und Sie die vollständige Kontrolle über Ihre mobile App haben. Sie können Pushbenachrichtigungen mit grundlegenden Markierungsfunktionen senden. Dies eignet sich hervorragend für alle App-Besitzer, die sich weniger für die Zielgruppenadressierung, sondern mehr dafür interessieren, Informationen sofort an die App-Benutzer zu senden (Übertragung an einen großen Adressatenkreis).
+3.  [Notification Hubs](https://azure.microsoft.com/services/notification-hubs/) provides a lightweight service in the sense that you don’t need an SDK integrated in the mobile app and you can have full control of your mobile app and it allows sending push notifications with basic tagging capabilities. This is great for any app owner who cares less about targeting and more about sending/communicating information instantly to their app users (broadcast to a large population). 
 
-	Beachten Sie, dass der Schwerpunkt hier auf dem Senden blitzschneller Benachrichtigungen mit grundlegender Segmentierungsfunktion liegt.
+    Note the focus here on sending blazing fast notifications with basic segmentation capability. 
 
-Wir betrachten nun einige Szenarien:
+Let’s take some scenarios:
 
-1.	Tim gehört zum Team für digitales Marketing im Kaufhaus Adventure Works, das mobile Apps für Benutzer veröffentlicht. Tim hat das Ziel, sicherzustellen, dass die Benutzer, die ihre mobilen Apps herunterladen, sie ständig verwenden – und zwar häufig. Dies steigert nicht nur die Markenbindung der App-Benutzer, sondern auch die Monetarisierung, wenn der App-Benutzer Käufe mithilfe der mobilen Anwendung tätigt. Dafür muss Tim gezielte Benachrichtigungen an die App-Benutzer senden, die sie als hilfreich empfinden, um sie aufzufordern, die App aufzurufen und oft zu nutzen. Hierfür setzt Tim Mobile Engagement ein.
+1.  Tim is part of the digital marketing team at Adventure Works store which publishes mobile apps for users. Tim's goal is to ensure that the users who download their mobile apps continue to use it and frequently. This not just increases a brand attach with the app users but also increases monetization when the app users make purchases using the mobile app. For this Tim will need to send targeted notifications to the app users, which they find useful, to encourage them to open the app and come back to it often. This is where Tim will find Mobile Engagement useful. 
 
-2.	Joann gehört zum Entwicklungsteam für mobile Apps bei Adventure Works und sucht ein Produkt, mit dem sie Details zu Abstürzen und Ausnahmen protokollieren und Leistungstelemetriedaten von einer App erhalten kann. Hierfür setzt Joann HockeyApp ein. Joann könnte sowohl HockeyApp für die Szenarien, auf die sich ihr Interesse als Entwicklerin richtet, als auch Azure Mobile Engagement für Tim in die gleiche App integrieren, um vom Besten von beiden zu profitieren.
+2.  Joann is part of the development team of the mobile apps at Adventure Works and is looking for a product to log details about crashes, exceptions, and get performance telemetry from an app. This is where Joann will find HockeyApp useful. Joann could integrate both HockeyApp for her developer focused scenarios and Azure Mobile Engagement for Tim in the same app to get the best of both. 
 
-3.	Robin gehört zum Entwicklungsteam für mobile Apps der Sendergruppe Contoso News, und sie möchte nur Eilmeldungsalarme ohne großartige Segmentierung an alle Benutzer senden, sobald der Meldungsalarm ausgelöst wird. Hierfür setzt Robin Notification Hubs ein. In diesem Szenario ist es jedoch möglich, dass mit fortschreitender Entwicklung der mobilen App die Anforderung nach umfangreicherer Segmentierung und Abrufen von Details zum Verhalten der App-Benutzer aufkommt. Wenn dieser Zeitpunkt gekommen ist, muss Robin Azure Mobile Engagement auf seine diesbezügliche Eignung beurteilen.
+3.  Robin is part of the development team of the mobile apps at Contoso News network and all she wants is to send out breaking news alerts to all users without much segmentation as soon as the news alert is triggered. This is where Robin will find Notification Hubs useful. In this scenario, it is possible however that as the mobile app matures, there is a requirement to do much richer segmentation and get details about the app user’s behavior. At this time, Robin will have to evaluate Azure Mobile Engagement. 
  
-Zusammengefasst: Mobile Engagement dient nicht nur zum Sammeln von Analysen – es ist nicht „einfach nur ein weiteres Analyseprodukt von Microsoft“. Es geht um zielgerichtetes Senden von Pushbenachrichtigungen, und für diese Zielgruppenadressierung erfassen wir Verhaltensanalysedaten, aber der Schwerpunkt bleibt das Senden von Pushbenachrichtigungen, die für die App-Benutzer interessant sind und nicht als Spam verkannt werden.
+To recap, the purpose of Mobile Engagement is not just to collect analytics - it is not "yet another Analytics product from Microsoft". It is about sending targeted push notifications and for this targeting, we collect behavioral analytics data but the focus remains on sending push notifications which make the most sense to the app users so that it does not come across as spam. 
 
-Eine Zusammenfassung weiterer Details bietet Ihnen dieses [kurze Video](mobile-engagement-overview.md) zu Mobile Engagement.
+For more details - take a look at this [quick video](mobile-engagement-overview.md) about Mobile Engagement in a nutshell. 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

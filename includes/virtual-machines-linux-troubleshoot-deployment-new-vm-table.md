@@ -1,6 +1,11 @@
-In der folgenden Tabelle sind die möglichen Upload- und Erfassungskombinationen von generalisierten und spezialisierten Linux-Betriebssystem-Images aufgeführt. Die Kombinationen, die ohne Fehler verarbeitet werden, sind durch ein „J“ gekennzeichnet, und die Kombinationen, bei denen Fehler ausgelöst werden, durch ein „N“. Die Ursachen und Lösungen für die verschiedenen auftretenden Fehler werden unterhalb der Tabelle beschrieben.
+The following table lists the possible upload and capture combinations of Linux generalized and specialized OS images. The combinations that will process without any errors are indicated by a Y, and those that will throw errors are indicated by an N. The causes and resolutions for the different errors you will run into are given below the table.
 
-| Betriebssystem | Upload (spez.) | Upload (gen.) | Erfassung (spez.) | Erfassung (gen.) |
+| OS            | Upload spec. | Upload gen. | Capture spec. | Capture gen. |
 |---------------|--------------|-------------|---------------|--------------|
-| Linux (gen.) | N<sup>1</sup> | J | N<sup>3</sup> | J |
-| Linux (spez.) | J | N<sup>2</sup> | J | N<sup>4</sup> |
+| Linux gen.  | N<sup>1</sup>            | Y           | N<sup>3</sup>             | Y            |
+| Linux spec. | Y            | N<sup>2</sup>           | Y             | N<sup>4</sup>            |
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,289 +1,290 @@
 <properties
-	pageTitle="Tutorial: Azure Active Directory-Integration mit Showpad | Microsoft Azure"
-	description="Es wird beschrieben, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Showpad konfigurieren."
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with Showpad | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and Showpad."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/01/2016"
+    ms.author="jeedes"/>
 
 
-# Tutorial: Azure Active Directory-Integration mit Showpad
 
-Dieses Tutorial soll Ihnen zeigen, wie Sie Showpad in Azure Active Directory (Azure AD) integrieren können.
+# <a name="tutorial:-azure-active-directory-integration-with-showpad"></a>Tutorial: Azure Active Directory integration with Showpad
 
-Die Integration von Showpad in Azure AD bietet die folgenden Vorteile:
+The objective of this tutorial is to show you how to integrate Showpad with Azure Active Directory (Azure AD).
 
-- Sie können in Azure AD steuern, wer Zugriff auf Showpad hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Showpad anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – dem Azure Active Directory-Portal
+Integrating Showpad with Azure AD provides you with the following benefits:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- You can control in Azure AD who has access to Showpad
+- You can enable your users to automatically get signed-on to Showpad (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure Active Directory Portal
 
-## Voraussetzungen
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Um die Azure AD-Integration mit Showpad konfigurieren zu können, benötigen Sie Folgendes:
+## <a name="prerequisites"></a>Prerequisites
 
-- Ein Azure AD-Abonnement
-- Ein Showpad-Abonnement
+To configure Azure AD integration with Showpad, you need the following items:
 
-
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+- An Azure AD subscription
+- A Showpad subscription
 
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-## Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
+To test the steps in this tutorial, you should follow these recommendations:
 
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
-
-1. Hinzufügen von Showpad aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## Hinzufügen von Showpad aus dem Katalog
-Zum Konfigurieren der Integration von Showpad in Azure AD müssen Sie Showpad aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+## <a name="scenario-description"></a>Scenario Description
+The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment. 
 
-**Führen Sie die folgenden Schritte aus, um Showpad aus dem Katalog hinzuzufügen:**
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. Adding Showpad from the gallery
+2. Configuring and testing Azure AD single sign-on
 
-	![Anwendungen][1]
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+## <a name="adding-showpad-from-the-gallery"></a>Adding Showpad from the gallery
+To configure the integration of Showpad into Azure AD, you need to add Showpad from the gallery to your list of managed SaaS apps.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+**To add Showpad from the gallery, perform the following steps:**
 
-	![Anwendungen][2]
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+    ![Applications][1]
 
-	![Anwendungen][3]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Applications][2]
+
+4. Click **Add** at the bottom of the page.
+
+    ![Applications][3]
+
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
  
-	![Anwendungen][4]
+    ![Applications][4]
 
-6. Geben Sie im Suchfeld **Showpad** ein.
+6. In the search box, type **Showpad**.
 
-	![Anwendungen](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_01.png)
+    ![Applications](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_01.png)
 
-7. Wählen Sie im Ergebnisbereich **Showpad** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+7. In the results pane, select **Showpad**, and then click **Complete** to add the application.
 
-	![Anwendungen](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_02.png)
+    ![Applications](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_02.png)
 
-##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Showpad konfiguriert und getestet werden kann.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+The objective of this section is to show you how to configure and test Azure AD single sign-on with Showpad based on a test user called "Britta Simon".
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Showpad als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Showpad muss eine Linkbeziehung eingerichtet werden.
+For single sign-on to work, Azure AD needs to know what the counterpart user in Showpad to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Showpad needs to be established.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Showpad zuweisen.
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Showpad.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Showpad müssen Sie die folgenden Bausteine ausführen:
+To configure and test Azure AD single sign-on with Showpad, you need to complete the following building blocks:
 
-1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Showpad-Testbenutzers](#creating-a-showpad-test-user)**, um eine Entsprechung von Britta Simon in Showpad zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a Showpad test user](#creating-a-showpad-test-user)** - to have a counterpart of Britta Simon in Showpad that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-### Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
 
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Showpad-Anwendung zu konfigurieren.
-
-
-
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Showpad die folgenden Schritte aus:**
-
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Showpad** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-
-	![Einmaliges Anmelden konfigurieren][6]
-
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Showpad anmelden** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
-
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_03.png)
-
-3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
-
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_04.png)
+The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Showpad application.
 
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der Showpad-Anwendung verwendet wird, nach folgendem Muster ein: `https://<company name>.showpad.biz/login`
 
-	b. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: `https://<company name>.showpad.biz`
+**To configure Azure AD single sign-on with Showpad, perform the following steps:**
 
-	c. Klicken Sie auf **Weiter**.
+1. In the Azure classic portal, on the **Showpad** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+
+    ![Configure Single Sign-On][6] 
+
+2. On the **How would you like users to sign on to Showpad** page, select **Azure AD Single Sign-On**, and then click **Next**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_03.png)
+
+3. On the **Configure App Settings** dialog page, perform the following steps and then click **Next**:
+
+    ![Configure Single Sign-On](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_04.png) 
 
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Showpad** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Showpad application using the following pattern: `https://<company name>.showpad.biz/login`
 
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_05.png)
+    b. In the **Identifier** textbox, type the URL using the following pattern: `https://<company name>.showpad.biz`
 
-    a. Klicken Sie auf **Metadaten herunterladen** und speichern Sie die Datei auf Ihrem Computer.
-
-    b. Klicken Sie auf **Weiter**.
+    c. Click **Next**
 
 
-5. Melden Sie sich bei Ihrem Showpad-Mandanten als Administrator an.
+4. On the **Configure single sign-on at Showpad** page, perform the following steps and then click **Next**:
 
-6. Klicken Sie im oberen Menü auf **Settings**.
+    ![Configure Single Sign-On](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_05.png)
 
-	![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_001.png)
+    a. Click **Download metadata**, and then save the file on your computer.
 
-7. Navigieren Sie zu **Single Sign-On**, und klicken Sie auf **Enable**.
+    b. Click **Next**.
+
+
+5. Sign-on to your Showpad tenant as an administrator.
+
+6. In the menu on the top, click the **Settings**.
+
+    ![Configure Single Sign-On On App Side](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_001.png) 
+
+7. Navigate to "**Single Sign-On**" and click "**Enable**".
  
-	![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_002.png)
+    ![Configure Single Sign-On On App Side](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_002.png)
 
-8. Führen Sie im Dialogfeld **Add a SAML 2.0 Service** die folgenden Schritte aus:
+8. On the **Add a SAML 2.0 Service** dialog, perform the following steps:
 
-	![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_003.png)
+    ![Configure Single Sign-On On App Side](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_003.png) 
 
-	a. Geben Sie im Textfeld **Name** den Namen der Partei ein, die die ID bereitgestellt hat (z.B. den Namen Ihres Unternehmens).
+    a. In the **Name** textbox, type the name of Identifier Provider (e.g.: your company name).
 
-	b. Wählen Sie für **Metadata Source** die Option **XML**.
+    b. As **Metadata Source**, select **XML**.
 
-	c. Kopieren Sie den Inhalt der heruntergeladenen XML-Metadatendatei, und fügen Sie ihn in das Textfeld **Metadata XML** ein.
+    c. Copy the content of the downloaded metadata XML file, and then paste it into the **Metadata XML** textbox.
 
-	d. Wählen Sie die Option **Auto-provision accounts for new users when they log in**.
+    d. Select **Auto-provision accounts for new users when they log in**.
 
-	e. Klicken Sie auf **Senden**.
-
-
-10. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
-
-	![Azure AD – einmaliges Anmelden][10]
+    e. Click **Submit**.
 
 
-11. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+10. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+
+    ![Azure AD Single Sign-On][10]
+
+
+11. On the **Single sign-on confirmation** page, click **Complete**.  
   
-	![Azure AD – einmaliges Anmelden][11]
+    ![Azure AD Single Sign-On][11]
 
 
 
 
 
 
-### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
 
-![Azure AD-Benutzer erstellen][20]
+![Create Azure AD User][20]
 
-**Führen Sie die folgenden Schritte aus, um einen Showpad-Testbenutzer in Azure AD zu erstellen:**
+**To create a Showpad test user in Azure AD, perform the following steps:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-showpad-tutorial/create_aaduser_09.png) 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. To display the list of users, in the menu on the top, click **Users**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-showpad-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-showpad-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+5. On the **Tell us about this user** dialog page, perform the following steps:
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_05.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-showpad-tutorial/create_aaduser_05.png) 
 
-    a. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    a. In the **User Name** textbox, type **BrittaSimon**.
 
-    b. Klicken Sie auf **Next**.
+    b. Click **Next**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+6.  On the **User Profile** dialog page, perform the following steps:
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_06.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-showpad-tutorial/create_aaduser_06.png) 
 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d. Wählen Sie für **Rolle** die Option **Benutzer** aus.
+    d. As **Role**, select **User**.
 
-    e. Klicken Sie auf **Weiter**.
+    e. Click **Next**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-showpad-tutorial/create_aaduser_07.png)
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-showpad-tutorial/create_aaduser_08.png) 
 
-    a. Notieren Sie den Wert von **Neues Kennwort**.
+    a. Write down the value of the **New Password**.
 
-    b. Klicken Sie auf **Fertig stellen**.
-
-
-### Erstellen eines Showpad-Testbenutzers
-
-Das Ziel dieses Abschnitts ist die Erstellung eines Benutzers namens Britta Simon in Showpad.
-
-Showpad unterstützt die Just-in-Time-Bereitstellung. Sie haben die Bereitstellung unter **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** aktiviert.
-
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung.
+    b. Click **Complete**.
 
 
+### <a name="creating-a-showpad-test-user"></a>Creating a Showpad test user
 
+The objective of this section is to create a user called Britta Simon in Showpad. 
 
-### Zuweisen des Azure AD-Testbenutzers
+Showpad supports just-in-time provisioning. You have enabled provisioning in **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)**. 
 
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf Showpad erhält.
-
-![Benutzer zuweisen][200]
-
-**Um Britta Simon Showpad zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie im klassischen Azure-Portal oben im Menü auf **Anwendungen**.
-
-	![Benutzer zuweisen][201]
-
-2. Klicken Sie in der Anwendungsliste auf **Showpad**.
-
-	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_50.png)
-
-1. Klicken Sie im oberen Menü auf **Benutzer**.
-
-	![Benutzer zuweisen][203]
-
-1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
-
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-
-	![Benutzer zuweisen][205]
+There is no action item for you in this section. 
 
 
 
 
-### Testen der einmaligen Anmeldung
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Showpad.
 
-Wenn Sie im Zugriffsbereich auf die Kachel **Showpad** klicken, sollten Sie automatisch bei Ihrer Showpad-Anwendung angemeldet werden.
+![Assign User][200]
+
+**To assign Britta Simon to Showpad, perform the following steps:**
+
+1. On the Azure classic portal, in the menu on the top, click **Applications**.
+
+    ![Assign User][201] 
+
+2. In the applications list, click **Showpad**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_50.png) 
+
+1. In the menu on the top, click **Users**.
+
+    ![Assign User][203]
+
+1. In the Users list, select **Britta Simon**.
+
+2. In the toolbar on the bottom, click **Assign**.
+
+    ![Assign User][205]
 
 
-## Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+
+When you click the **Showpad** tile in the Access Panel, you should get automatically signed-on to your Showpad application.
+
+
+## <a name="additional-resources"></a>Additional Resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -304,4 +305,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel **Showpad** klicken, sollten Sie auto
 [204]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

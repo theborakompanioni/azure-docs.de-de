@@ -1,8 +1,8 @@
 <properties
-    pageTitle="Herstellen einer Verbindung mit Azure Storage in der Xamarin.Forms-App"
-    description="Hinzufügen von Bildern zur mobilen Xamarin.Forms-Aufgabenlisten-App per Verbindung mit dem Azure-Blobspeicher"
+    pageTitle="Connect to Azure Storage in your Xamarin.Forms app"
+    description="Add images to the todo list Xamarin.Forms mobile app by connecting to Azure blob storage"
     documentationCenter="xamarin"
-    authors="lindydonna"
+    authors="adrianhall"
     manager="erikre"
     editor=""
     services="app-service\mobile"/>
@@ -13,59 +13,60 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-    ms.date="08/22/2016"
-    ms.author="donnam"/>
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-#Herstellen einer Verbindung mit Azure Storage in der Xamarin.Forms-App
 
-## Übersicht
+#<a name="connect-to-azure-storage-in-your-xamarin.forms-app"></a>Connect to Azure Storage in your Xamarin.Forms app
 
-Das Azure Mobile Apps-Client- und -Server-SDK unterstützt die Offlinesynchronisierung von strukturierten Daten mit CRUD-Vorgängen für den Endpunkt „/tables“. Diese Daten werden in der Regel in einer Datenbank oder einem ähnlichen Speicher abgelegt, und häufig ist es nicht möglich, in diesen Datenspeichern umfangreiche Binärdaten effizient zu speichern. Einige Anwendungen verfügen auch über zugehörige Daten, die an einem anderen Ort gespeichert werden (z. B. Blobspeicher, Dateifreigaben). Es ist hilfreich, wenn Sie Zuordnungen zwischen Datensätzen im Endpunkt „/tables“ und anderen Daten erstellen können.
+## <a name="overview"></a>Overview
 
-In diesem Thema erfahren Sie, wie Sie der Mobile Apps-Schnellstart-App „todo list“ (Aufgabenliste) Unterstützung für Bilder hinzufügen. Schließen Sie zunächst das Tutorial [Erstellen einer Xamarin.Forms-App] ab.
+The Azure Mobile Apps client and server SDK support offline sync of structured data with CRUD operations against the /tables endpoint. Generally this data is stored in a database or similar store, and generally these data stores cannot store large binary data efficiently. Also, some applications have related data that is stored elsewhere (e.g., blob storage, files shares), and it is useful to be able to create associations between records in the /tables endpoint and other data.
 
-In diesem Tutorial erstellen Sie ein Speicherkonto und fügen Ihrem Back-End für die mobile App eine Verbindungszeichenfolge hinzu. Anschließend fügen Sie eine neue Vererbung vom neuen Mobile Apps-Typ `StorageController<T>` zum Serverprojekt hinzu.
+This topic shows you how to add support for images to the Mobile Apps todo list quickstart. You must first complete the tutorial [Create a Xamarin.Forms app].
 
->[AZURE.TIP] Dieses Tutorial verfügt über ein [Begleitbeispiel](https://azure.microsoft.com/documentation/samples/app-service-mobile-dotnet-todo-list-files/), das Sie für Ihr eigenes Azure-Konto bereitstellen können.
+In this tutorial, you will create a storage account and add a connection string to your Mobile App backend. You will then add a new inheriting from the new Mobile Apps type `StorageController<T>` to your server project.
 
-## Voraussetzungen
+>[AZURE.TIP] This tutorial has a [companion sample](https://azure.microsoft.com/documentation/samples/app-service-mobile-dotnet-todo-list-files/) available, which can be deployed to your own Azure account. 
 
-* Schließen Sie das Tutorial [Erstellen einer Xamarin.Forms-App] ab. Dort werden weitere Voraussetzungen aufgeführt. In diesem Artikel wird die fertige App aus diesem Tutorial verwendet.
+## <a name="prerequisites"></a>Prerequisites
 
->[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](https://tryappservice.azure.com/?appServiceName=mobile). Dort können Sie direkt eine kurzzeitige mobile Start-App in App Service erstellen – keine Kreditkarte erforderlich, keine weiteren Verpflichtungen.
+* Complete the [Create a Xamarin.Forms app] tutorial, which lists other prerequisites. This article uses the completed app from that tutorial.
 
-## Erstellen Sie ein Speicherkonto.
+>[AZURE.NOTE] If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile). There, you can immediately create a short-lived starter mobile app in App Service—no credit card required, and no commitments.
 
-1. Erstellen Sie ein Speicherkonto, indem Sie die unter [Erstellen Sie ein Speicherkonto] angegebenen Schritte ausführen.
+## <a name="create-a-storage-account"></a>Create a storage account
 
-2. Navigieren Sie im Azure-Portal zum neu erstellten Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**. Kopieren Sie die **primäre Verbindungszeichenfolge**.
+1. Create a storage account by following the tutorial [Create an Azure Storage Account]. 
 
-3. Navigieren Sie zum Back-End der mobilen App. Erstellen Sie unter **Alle Einstellungen** > **Anwendungseinstellungen** > **Verbindungszeichenfolgen** einen neuen Schlüssel namens `MS_AzureStorageAccountConnectionString`, und verwenden Sie den aus Ihrem Speicherkonto kopierten Wert. Wählen Sie den Schlüsseltyp **Benutzerdefiniert**.
+2. In the Azure portal, navigate to your newly created storage account and click the **Keys** icon. Copy the **Primary Connection String**.
 
-## Hinzufügen eines Speichercontrollers zum Server
+3. Navigate to your mobile app backend. Under **All Settings** -> **Application Settings** -> **Connection Strings**, create a new key named `MS_AzureStorageAccountConnectionString` and use the value copied from your storage account. Use **Custom** as the key type.
 
-Sie müssen Ihrem Serverprojekt einen neuen Controller hinzufügen, der auf SAS-Tokenanforderungen für Azure Storage antwortet und eine Liste der Dateien zurückgibt, die einem Datensatz entsprechen:
+## <a name="add-a-storage-controller-to-the-server"></a>Add a storage controller to the server
 
-- [Hinzufügen eines Speichercontrollers zum Serverprojekt](#add-controller-code)
-- [Vom Speichercontroller registrierte Routen](#routes-registered)
-- [Kommunikation zwischen Client und Server](#client-communication)
+You need to add a new controller to your server project that will respond to requests for a SAS token for Azure Storage, as well as return a list of files that correspond to a record:
 
-###<a name="add-controller-code"> </a>Hinzufügen eines Speichercontrollers zu Ihrem Serverprojekt
+- [Add a storage controller to your server project](#add-controller-code)
+- [Routes registered by the storage controller](#routes-registered)
+- [Client and server communication](#client-communication)
 
-1. Öffnen Sie Ihr .NET-Serverprojekt in Visual Studio. Fügen Sie das NuGet-Paket [Microsoft.Azure.Mobile.Server.Files] hinzu. Aktivieren Sie die Einstellung **Vorabversion einbeziehen**.
+###<a name="<a-name="add-controller-code"></a>add-a-storage-controller-to-your-server-project"></a><a name="add-controller-code"></a>Add a storage controller to your server project
 
-2. Öffnen Sie Ihr .NET-Serverprojekt in Visual Studio. Klicken Sie mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie dann **Hinzufügen** > **Controller** > **Web API 2-Controller – Leer**. Geben Sie dem Controller den Namen `TodoItemStorageController`.
+1. In Visual Studio, open your .NET server project. Add the Nuget package [Microsoft.Azure.Mobile.Server.Files]. Be sure to select **Include prerelease**.
 
-3. Fügen Sie die folgenden using-Anweisungen hinzu:
+2. In Visual Studio, open your .NET server project. Right-click the **Controllers** folder and select **Add** -> **Controller** -> **Web API 2 Controller - Empty**. Name the controller `TodoItemStorageController`.
+
+3. Add the following using statements:
 
         using Microsoft.Azure.Mobile.Server.Files;
         using Microsoft.Azure.Mobile.Server.Files.Controllers;
 
-4. Ändern Sie die Basisklasse in `StorageController`:
+4. Change the base class to `StorageController`:
     
         public class TodoItemStorageController : StorageController<TodoItem>
 
-5. Fügen Sie der Klasse die folgenden Methoden hinzu:
+5. Add the following methods to the class:
 
         [HttpPost]
         [Route("tables/TodoItem/{id}/StorageToken")]
@@ -93,60 +94,60 @@ Sie müssen Ihrem Serverprojekt einen neuen Controller hinzufügen, der auf SAS-
             return base.DeleteFileAsync(id, name);
         }
 
-6. Aktualisieren Sie die Web-API-Konfiguration, um Attribut-Routing einzurichten. Fügen Sie in **Startup.MobileApp.cs** nach der Definition der `config`-Variable die folgende Zeile zur `ConfigureMobileApp()`-Methode hinzu:
+6. Update the Web API configuration to set up attribute routing. In **Startup.MobileApp.cs**, add the following line to the `ConfigureMobileApp()` method, after the definition of the `config` variable:
 
         config.MapHttpAttributeRoutes();
 
-7. Veröffentlichen Sie Ihr Serverprojekt auf dem Back-End für die mobile App.
+7. Publish your server project to your mobile app backend.
 
-###<a name="routes-registered"></a>Vom Speichercontroller registrierte Routen
+###<a name="<a-name="routes-registered"></a>routes-registered-by-the-storage-controller"></a><a name="routes-registered"></a>Routes registered by the storage controller
 
-Das neue `TodoItemStorageController`-Element macht zwei Unterressourcen unter dem verwalteten Datensatz verfügbar:
+The new `TodoItemStorageController` exposes two sub-resources under the record it manages:
 
 - StorageToken
 
-    + HTTP POST: Erstellt ein Speichertoken.
+    + HTTP POST: Creates a storage token
     
         `/tables/TodoItem/{id}/MobileServiceFiles`
     
 - MobileServiceFiles
 
-    + HTTP GET: Ruft eine Liste mit Dateien ab, die dem Datensatz zugeordnet sind.
+    + HTTP GET: Retrieves a list of files associated with the record
     
         `/tables/TodoItem/{id}/MobileServiceFiles`
 
-    + HTTP DELETE: Löscht die Datei, die im Dateiressourcenbezeichner angegeben ist.
+    + HTTP DELETE: Deletes the file specified in the file resource identifier
     
         `/tables/TodoItem/{id}/MobileServiceFiles/{fileid}`
 
-###<a name="client-communication"></a>Kommunikation zwischen Client und Server
+###<a name="<a-name="client-communication"></a>client-and-server-communication"></a><a name="client-communication"></a>Client and server communication
 
-Beachten Sie, dass `TodoItemStorageController` *keine* Route für den Upload oder Download eines Blobs umfasst. Dies liegt daran, dass ein mobiler Client *direkt* mit dem Blobspeicher interagiert, um diese Vorgänge durchzuführen. Vorher wird ein SAS-Token (Shared Access Signature) abgerufen, um sicher auf ein bestimmtes Blob oder einen bestimmten Container zugreifen zu können. Dies ist ein wichtiger Aspekt des Architekturentwurfs, da der Zugriff auf den Speicher andernfalls durch die Skalierbarkeit und Verfügbarkeit des mobilen Back-Ends eingeschränkt wäre. Indem Sie stattdessen eine direkte Verbindung mit Azure Storage herstellen, kann der mobile Client die darüber bereitgestellten Features nutzen, z. B. automatische Partitionierung und geografische Verteilung.
+Note that `TodoItemStorageController` does *not* have a route for uploading or downloading a blob. That is because a mobile client interacts with blob storage *directly* in order to perform these operations, after first getting a SAS token (Shared Access Signature) to securely access a particular blob or container. This is an important architectural design, as otherwise access to storage would be limited by the scalability and availability of the mobile backend. Instead, by connecting directly to Azure Storage, the mobile client can take advantage of its features such as auto-partitioning and geo-distribution.
 
-Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie haben die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell].
+A shared access signature provides delegated access to resources in your storage account. This means that you can grant a client limited permissions to objects in your storage account for a specified period of time and with a specified set of permissions, without having to share your account access keys. To learn more, see [Understanding Shared Access Signatures].
 
-Im folgenden Diagramm sind die Interaktionen zwischen Client und Server dargestellt. Vor dem Hochladen einer Datei fordert der Client ein SAS-Token vom Dienst an. Der Dienst verwendet die Verbindungszeichenfolge des Speichers zum Generieren einer neuen SAS, die er dann an den Client zurückgibt. Die SAS ist zeitlich begrenzt und beschränkt Berechtigungen auf eine bestimmte Datei oder einen Container. Der mobile Client verwendet dann diese SAS und das Azure Storage-Client-SDK, um die Datei in den Blobspeicher hochzuladen.
+The diagram below shows the client and server interactions. Before uploading a file, the client requests a SAS token from the service. The service uses the storage connection string to generate a new SAS, which it then returns to the client. The SAS is time-limited and restricts permissions to just a particular file or container. The mobile client then uses this SAS and the Azure Storage client SDK to upload the file to blob storage.
 
-![Anfordern eines SAS-Tokens](./media/app-service-mobile-xamarin-forms-blob-storage/storage-token-diagram.png)
+![Requesting a SAS token](./media/app-service-mobile-xamarin-forms-blob-storage/storage-token-diagram.png)
 
-## Aktualisieren der Client-App zum Hinzufügen der Unterstützung für Bilder
+## <a name="update-your-client-app-to-add-image-support"></a>Update your client app to add image support
 
-Öffnen Sie das Xamarin.Forms-Schnellstartprojekt entweder in Visual Studio oder Xamarin Studio. Sie installieren das NuGet-Paket und aktualisieren das Projekt der portablen Bibliothek sowie die iOS-, Android- und Windows-Clientprojekte:
+Open the Xamarin.Forms quickstart project in either Visual Studio or Xamarin Studio. You will install Nuget packages and update the portable library project and the iOS, Android, and Windows client projects:
 
-- [Hinzufügen von NuGet-Paketen](#add-nuget)
-- [Hinzufügen der IPlatform-Schnittstelle](#add-iplatform)
-- [Hinzufügen der FileHelper-Klasse](#add-filehelper)
-- [Hinzufügen eines Handlers für die Dateisynchronisierung](#file-sync-handler)
-- [Aktualisieren von TodoItemManager](#update-todoitemmanager)
-- [Hinzufügen einer Detailansicht](#add-details-view)
-- [Aktualisieren der Hauptansicht](#update-main-view)
-- [Aktualisieren des Android-Projekts](#update-android), [iOS-Projekt](#update-ios), [Windows-Projekt](#update-windows)
+- [Add Nuget packages](#add-nuget)
+- [Add IPlatform interface](#add-iplatform)
+- [Add FileHelper class](#add-filehelper)
+- [Add a file sync handler](#file-sync-handler)
+- [Update TodoItemManager](#update-todoitemmanager)
+- [Add a details view](#add-details-view)
+- [Update the main view ](#update-main-view)
+- [Update the Android project](#update-android), [iOS project](#update-ios), [Windows project](#update-windows)
 
->[AZURE.NOTE] Dieses Tutorial enthält nur eine Anleitung für die Plattformen Android, iOS und Windows Store, nicht für Windows Phone.
+>[AZURE.NOTE] This tutorial only contains instructions for the Android, iOS, and Windows Store platforms, not Windows Phone.
 
-###<a name="add-nuget"></a>Hinzufügen von NuGet-Paketen
+###<a name="<a-name="add-nuget"></a>add-nuget-packages"></a><a name="add-nuget"></a>Add Nuget packages
 
-Klicken Sie mit der rechten Maustaste auf die Projektmappe, und wählen Sie **NuGet-Pakete für Projektmappe verwalten...** aus. Fügen Sie **allen** Projekten der Projektmappe die unten angegebenen NuGet-Pakete hinzu. Vergessen Sie nicht, die Option **Vorabversion einbeziehen** zu aktivieren.
+Right-click the solution and select **Manage Nuget packages for solution**. Add the following Nuget packages to **all** projects in the solution. Be sure to check **Include prerelease**.
 
   - [Microsoft.Azure.Mobile.Client.Files]
 
@@ -154,21 +155,21 @@ Klicken Sie mit der rechten Maustaste auf die Projektmappe, und wählen Sie **Nu
 
   - [PCLStorage]
 
-Der Einfachheit halber wird in diesem Beispiel die Bibliothek [PCLStorage] verwendet, obwohl sie für das Azure Mobile Apps-Client-SDK nicht zwingend erforderlich ist.
+For convenience, this sample uses the [PCLStorage] library, but it is not required by the Azure Mobile Apps client SDK.
 
 [PCLStorage]: https://www.nuget.org/packages/PCLStorage/
 
-###<a name="add-iplatform"></a>Hinzufügen der IPlatform-Schnittstelle
+###<a name="<a-name="add-iplatform"></a>add-iplatform-interface"></a><a name="add-iplatform"></a>Add IPlatform interface
 
-Erstellen Sie eine neue `IPlatform`-Schnittstelle im Hauptprojekt der portablen Bibliothek. Dies basiert auf dem Muster [Xamarin.Forms DependencyService] zum Laden der richtigen plattformspezifischen Klasse zur Laufzeit. Später fügen Sie allen Clientprojekten plattformspezifische Implementierungen hinzu.
+Create a new interface `IPlatform` in the main portable library project. This follows the [Xamarin.Forms DependencyService] pattern to load the right platform-specific class at runtime. You will later add platform-specific implementations in each of the client projects.
 
-1. Fügen Sie die folgenden using-Anweisungen hinzu:
+1. Add the following using statements:
 
         using Microsoft.WindowsAzure.MobileServices.Files;
         using Microsoft.WindowsAzure.MobileServices.Files.Metadata;
         using Microsoft.WindowsAzure.MobileServices.Sync;
 
-2. Ersetzen Sie die Implementierung durch Folgendes:
+2. Replace the implementation with the following:
 
         public interface IPlatform
         {
@@ -181,16 +182,16 @@ Erstellen Sie eine neue `IPlatform`-Schnittstelle im Hauptprojekt der portablen 
             Task DownloadFileAsync<T>(IMobileServiceSyncTable<T> table, MobileServiceFile file, string filename);
         }
 
-###<a name="add-filehelper"></a>Hinzufügen der FileHelper-Klasse
+###<a name="<a-name="add-filehelper"></a>add-filehelper-class"></a><a name="add-filehelper"></a>Add FileHelper class
 
-1. Erstellen Sie eine neue `FileHelper`-Klasse im Hauptprojekt der portablen Bibliothek. Fügen Sie die folgenden using-Anweisungen hinzu:
+1. Create a new class `FileHelper` in the main portable library project. Add the following using statements:
 
         using System.IO;
         using PCLStorage;
         using System.Threading.Tasks;
         using Xamarin.Forms;
 
-2. Fügen Sie die Klassendefinition hinzu:
+2. Add the class definition:
 
         public class FileHelper
         {
@@ -239,13 +240,13 @@ Erstellen Sie eine neue `IPlatform`-Schnittstelle im Hauptprojekt der portablen 
             }
         }
 
-###<a name="file-sync-handler"></a>Hinzufügen eines Handlers für die Dateisynchronisierung
+###<a name="<a-name="file-sync-handler"></a>-add-a-file-sync-handler"></a><a name="file-sync-handler"></a> Add a file sync handler
 
-Erstellen Sie eine neue `TodoItemFileSyncHandler`-Klasse im Hauptprojekt der portablen Bibliothek. Diese Klasse enthält Rückrufe vom Azure SDK, um Ihren Code zu benachrichtigen, wenn eine Datei hinzugefügt oder entfernt wird.
+Create a new class `TodoItemFileSyncHandler` in the main portable library project. This class contains callbacks from the Azure SDK to notify your code when a file is added or removed.
 
-Das Azure Mobile Client-SDK speichert eigentlich keine Dateidaten: Das Client-SDK ruft Ihre Implementierung von `IFileSyncHandler` auf, von der wiederum abhängt, ob und wie Dateien auf dem lokalen Gerät gespeichert werden.
+The Azure Mobile Client SDK does not actually store any file data: the client SDK invokes your implementation of `IFileSyncHandler` which in turn determines whether and how files are stored on the local device.
 
-1. Fügen Sie die folgenden using-Anweisungen hinzu:
+1. Add the following using statements:
 
         using System.Threading.Tasks;
         using Microsoft.WindowsAzure.MobileServices.Files.Sync;
@@ -253,7 +254,7 @@ Das Azure Mobile Client-SDK speichert eigentlich keine Dateidaten: Das Client-SD
         using Microsoft.WindowsAzure.MobileServices.Files.Metadata;
         using Xamarin.Forms;
 
-2. Ersetzen Sie die Klassendefinition durch Folgendes:
+2. Replace the class definition with the following: 
 
         public class TodoItemFileSyncHandler : IFileSyncHandler
         {
@@ -281,11 +282,11 @@ Das Azure Mobile Client-SDK speichert eigentlich keine Dateidaten: Das Client-SD
             }
         }
 
-###<a name="update-todoitemmanager"></a>Aktualisieren von TodoItemManager
+###<a name="<a-name="update-todoitemmanager"></a>update-todoitemmanager"></a><a name="update-todoitemmanager"></a>Update TodoItemManager
 
-1. Heben Sie in der Datei **TodoItemManager.cs** die Auskommentierung der Zeile `#define OFFLINE_SYNC_ENABLED` auf.
+1. In **TodoItemManager.cs**, uncomment the line `#define OFFLINE_SYNC_ENABLED`.
 
-2. Fügen Sie in der Datei **TodoItemManager.cs** die folgenden using-Anweisungen hinzu:
+2. In **TodoItemManager.cs**, add the following using statements:
 
         using System.IO;
         using Xamarin.Forms;
@@ -293,20 +294,20 @@ Das Azure Mobile Client-SDK speichert eigentlich keine Dateidaten: Das Client-SD
         using Microsoft.WindowsAzure.MobileServices.Files.Sync;
         using Microsoft.WindowsAzure.MobileServices.Eventing;
 
-3. Fügen Sie im Konstruktor von `TodoItemManager` nach dem Aufruf von `DefineTable()` Folgendes hinzu:
+3. In the constructor of `TodoItemManager`, add the following after the call to `DefineTable()`:
 
         // Initialize file sync
         this.client.InitializeFileSyncContext(new TodoItemFileSyncHandler(this), store);
 
-4. Ersetzen Sie im Konstruktor den Aufruf von `InitializeAsync` durch Folgendes. So wird sichergestellt, dass Rückrufe vorhanden sind, wenn Datensätze im lokalen Speicher geändert werden. Vom Feature für die Dateisynchronisierung werden diese Rückrufe verwendet, um Ihren Handler für die Dateisynchronisierung auszulösen.
+4. In the constructor, replace the call to `InitializeAsync` with the following. This will ensure that there are callbacks when records are modified in the local store. The file sync feature uses these callbacks to trigger your file sync handler.
 
         this.client.SyncContext.InitializeAsync(store, StoreTrackingOptions.NotifyLocalAndServerOperations);
 
-5. Fügen Sie in `SyncAsync()` nach dem Aufruf von `PushAsync()` Folgendes hinzu:
+5. In `SyncAsync()`, add the following after the call to `PushAsync()`:
 
         await this.todoTable.PushFileChangesAsync();
 
-6. Fügen Sie `TodoItemManager` die folgenden Methoden hinzu:
+6. Add the following methods to `TodoItemManager`:
 
         internal async Task DownloadFileAsync(MobileServiceFile file)
         {
@@ -333,11 +334,11 @@ Das Azure Mobile Client-SDK speichert eigentlich keine Dateidaten: Das Client-SD
             return await this.todoTable.GetFilesAsync(todoItem);
         }
 
-###<a name="add-details-view"></a>Hinzufügen einer Detailansicht
+###<a name="<a-name="add-details-view"></a>add-a-details-view"></a><a name="add-details-view"></a>Add a details view
 
-In diesem Abschnitt fügen Sie eine neue Detailansicht für ein Aufgabenelement (todo item) hinzu. Diese Ansicht wird erstellt, wenn der Benutzer ein Aufgabenelement auswählt und es zulässig ist, dass einem Element neue Bilder hinzugefügt werden.
+In this section, you will add a new details view for a todo item. The view is created when the user selects a todo item and it allows new images to be added to an item.
 
-1. Fügen Sie dem portablen Bibliotheksprojekt eine neue **TodoItemImage**-Klasse hinzu, indem Sie die folgende Implementierung verwenden:
+1. Add a new class **TodoItemImage** to the portable library project with the following implementation:
 
         public class TodoItemImage : INotifyPropertyChanged
         {
@@ -382,17 +383,17 @@ In diesem Abschnitt fügen Sie eine neue Detailansicht für ein Aufgabenelement 
             }
         }
 
-2. Bearbeiten Sie die Datei **App.cs**. Ersetzen Sie die Initialisierung von `MainPage` durch Folgendes:
+2. Edit **App.cs**. Replace the initialization of `MainPage` with the following:
     
         MainPage = new NavigationPage(new TodoList());
 
-3. Fügen Sie in der Datei **App.cs** die folgende Eigenschaft hinzu:
+3. In **App.cs**, add the following property:
 
         public static object UIContext { get; set; }
 
-4. Klicken Sie mit der rechten Maustaste auf das portable Bibliotheksprojekt, und wählen Sie **Hinzufügen** > **Neues Element** > **Plattformübergreifend** > **Forms-XAML-Seite** aus. Benennen Sie die Ansicht `TodoItemDetailsView`.
+4. Right-click the portable library project and select **Add** -> **New Item** -> **Cross-platform** -> **Forms Xaml Page**. Name the view `TodoItemDetailsView`.
 
-5. Öffnen Sie die Datei **TodoItemDetailsView.xaml**, und ersetzen Sie den Textkörper von ContentPage durch Folgendes:
+5. Open **TodoItemDetailsView.xaml** and replace the body of the ContentPage with the following:
 
           <Grid>
             <Grid.RowDefinitions>
@@ -415,12 +416,12 @@ In diesem Abschnitt fügen Sie eine neue Detailansicht für ein Aufgabenelement 
             </ListView>
           </Grid>
 
-6. Bearbeiten Sie die Datei **TodoItemDetailsView.xaml.cs**, und fügen Sie die folgenden using-Anweisungen hinzu:
+6. Edit **TodoItemDetailsView.xaml.cs** and add the following using statements:
 
         using System.Collections.ObjectModel;
         using Microsoft.WindowsAzure.MobileServices.Files;
 
-7. Ersetzen Sie die Implementierung von `TodoItemDetailsView` durch Folgendes:
+7. Replace the implementation of `TodoItemDetailsView` with the following:
 
         public partial class TodoItemDetailsView : ContentPage
         {
@@ -466,11 +467,11 @@ In diesem Abschnitt fügen Sie eine neue Detailansicht für ein Aufgabenelement 
             }
         }
 
-###<a name="update-main-view"></a>Aktualisieren der Hauptansicht 
+###<a name="<a-name="update-main-view"></a>update-the-main-view"></a><a name="update-main-view"></a>Update the main view 
 
-Aktualisieren Sie die Hauptansicht, um die Detailansicht zu öffnen, wenn ein Aufgabenelement ausgewählt wird.
+Update the main view to open the details view when a todo item is selected.
 
-Ersetzen Sie in der Datei **TodoList.xaml.cs** die Implementierung von `OnSelected` durch Folgendes:
+In **TodoList.xaml.cs**, replace the implementation of `OnSelected` with the following:
 
     public async void OnSelected(object sender, SelectedItemChangedEventArgs e)
     {
@@ -485,15 +486,15 @@ Ersetzen Sie in der Datei **TodoList.xaml.cs** die Implementierung von `OnSelect
         todoList.SelectedItem = null;
     }
 
-###<a name="update-android"></a>Aktualisieren des Android-Projekts
+###<a name="<a-name="update-android"></a>update-the-android-project"></a><a name="update-android"></a>Update the Android project
 
-Fügen Sie dem Android-Projekt plattformspezifischen Code hinzu, z. B. Code zum Herunterladen einer Datei und Verwenden der Kamera zum Aufnehmen eines neuen Bilds.
+Add platform-specific code to the Android project, including code for downloading a file and using the camera to capture a new image. 
 
-Für diesen Code wird der Xamarin.Forms-[DependencyService](https://developer.xamarin.com/guides/xamarin-forms/dependency-service/) verwendet, um zur Laufzeit die richtige plattformspezifische Klasse zu laden.
+This code uses the Xamarin.Forms [DependencyService](https://developer.xamarin.com/guides/xamarin-forms/dependency-service/) to load the right platform-specific class at runtime.
 
-1. Fügen Sie dem Android-Projekt die Komponente **Xamarin.Mobile** hinzu.
+1. Add the component **Xamarin.Mobile** to the Android project.
 
-2. Fügen Sie eine neue `DroidPlatform`-Klasse mit der folgenden Implementierung hinzu. Ersetzen Sie „YourNamespace“ durch den Hauptnamespace Ihres Projekts.
+2. Add a new class `DroidPlatform` with the following implementation. Replace "YourNamespace" with the main namespace of your project.
 
         using System;
         using System.IO;
@@ -553,17 +554,17 @@ Für diesen Code wird der Xamarin.Forms-[DependencyService](https://developer.xa
             }
         }
 
-3. Bearbeiten Sie die Datei **MainActivity.cs**. Fügen Sie unter `OnCreate` vor dem Aufruf von `LoadApplication()` Folgendes hinzu:
+3. Edit **MainActivity.cs**. In `OnCreate`, add the following before the call to `LoadApplication()`:
 
         App.UIContext = this;
 
-###<a name="update-ios"></a>Aktualisieren des iOS-Projekts
+###<a name="<a-name="update-ios"></a>update-the-ios-project"></a><a name="update-ios"></a>Update the iOS project
 
-Fügen Sie dem iOS-Projekt plattformspezifischen Code hinzu.
+Add platform-specific code to the iOS project.
 
-1. Fügen Sie dem iOS-Projekt die Komponente **Xamarin.Mobile** hinzu.
+1. Add the component **Xamarin.Mobile** to the iOS project.
 
-2. Fügen Sie eine neue `TouchPlatform`-Klasse mit der folgenden Implementierung hinzu. Ersetzen Sie „YourNamespace“ durch den Hauptnamespace Ihres Projekts.
+2. Add a new class `TouchPlatform` with the following implementation. Replace "YourNamespace" with the main namespace of your project.
 
         using System;
         using System.Collections.Generic;
@@ -618,15 +619,15 @@ Fügen Sie dem iOS-Projekt plattformspezifischen Code hinzu.
             }
         }
 
-3. Bearbeiten Sie die Datei **AppDelegate.cs**, und heben Sie die Auskommentierung des Aufrufs von `SQLitePCL.CurrentPlatform.Init()` auf.
+3. Edit **AppDelegate.cs** and uncomment the call to `SQLitePCL.CurrentPlatform.Init()`.
 
-###<a name="update-windows"></a>Aktualisieren des Windows-Projekts
+###<a name="<a-name="update-windows"></a>update-the-windows-project"></a><a name="update-windows"></a>Update the Windows project
 
-1. Installieren Sie die Visual Studio-Erweiterung [SQLite für Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919). Weitere Informationen finden Sie im Tutorial [Aktivieren der Offlinesynchronisierung für Ihre Windows-App](app-service-mobile-windows-store-dotnet-get-started-offline-data.md).
+1. Install the Visual Studio extension [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919). For more information, see the tutorial [Enable offline sync for your Windows app](app-service-mobile-windows-store-dotnet-get-started-offline-data.md). 
 
-2. Bearbeiten Sie die Datei **Package.appxmanifest**, und aktivieren Sie die Funktion **Webcam**.
+2. Edit **Package.appxmanifest** and check the **Webcam** capability.
 
-3. Fügen Sie eine neue `WindowsStorePlatform`-Klasse mit der folgenden Implementierung hinzu. Ersetzen Sie „YourNamespace“ durch den Hauptnamespace Ihres Projekts.
+3. Add a new class `WindowsStorePlatform` with the following implementation. Replace "YourNamespace" with the main namespace of your project.
 
         using System;
         using System.Threading.Tasks;
@@ -687,51 +688,55 @@ Fügen Sie dem iOS-Projekt plattformspezifischen Code hinzu.
             }
         }
 
-##Zusammenfassung
+##<a name="summary"></a>Summary
 
-In diesem Artikel wird beschrieben, wie Sie die neue Dateiunterstützung im Azure Mobile-Client und -Server-SDK für Azure Storage verwenden.
+This article described how to use the new file support in the Azure Mobile client and server SDK to work with Azure Storage. 
 
-- Erstellen Sie ein Speicherkonto, und fügen Sie dem Back-End für die mobile App die Verbindungszeichenfolge hinzu. Nur das Back-End verfügt über den Schlüssel für Azure Storage: Der mobile Client fordert jeweils ein SAS-Token (Shared Access Signature) an, wenn er Zugriff auf Azure Storage benötigt. Weitere Informationen zu SAS-Token in Azure Storage finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell].
+- Create a storage account and add the connection string to your mobile app backend. Only the backend has the key to Azure Storage: the mobile client requests a SAS token (Shared Access Signature) whenever it needs to access Azure Storage. To learn more about SAS tokens in Azure Storage, see [Understanding Shared Access Signatures].
 
-- Erstellen Sie einen Controller, mit dem `StorageController` als Unterklasse eingerichtet wird, um die SAS-Tokenanforderungen zu verarbeiten und die Dateien abzurufen, die einem Datensatz zugeordnet sind. Standardmäßig werden Dateien einem Datensatz zugeordnet, indem die Datensatz-ID als Teil des Containernamens verwendet wird. Sie können das Verhalten anpassen, indem Sie eine Implementierung von `IContainerNameResolver` angeben. Die SAS-Tokenrichtlinie kann ebenfalls angepasst werden.
+- Create a controller that subclasses `StorageController` in order to handle the SAS token requests and to get the files that are associated with a record. By default, files are associated with a record by using the record ID as part of the container name; the behavior can be customized by specifying an implementation of `IContainerNameResolver`. The SAS token policy can also be customized.
 
-- Das Azure Mobile Client-SDK speichert selbst keine Dateidaten. Stattdessen ruft das Client-SDK Ihr `IFileSyncHandler`-Element auf, mit dem dann bestimmt wird, (ob und) wie Dateien auf dem lokalen Gerät gespeichert werden. Der Handler für die Synchronisierung wird wie folgt registriert:
+- The Azure Mobile Client SDK does not store actually store any file data. Rather, the client SDK invokes your `IFileSyncHandler`, which then decides how (and if) files are stored on the local device. The sync handler is registered as follows:
 
         client.InitializeFileSync(new MyFileSyncHandler(), store);
 
-      + `IFileSyncHandler.GetDataSource` wird aufgerufen, wenn das Azure Mobile Client-SDK die Dateidaten benötigt (z.B. beim Upload). So können Sie verwalten, wie Dateien (falls zutreffend) auf dem lokalen Gerät gespeichert werden, und diese Informationen bei Bedarf zurückgeben.
+      + `IFileSyncHandler.GetDataSource` is called when the Azure Mobile Client SDK needs the file data (e.g., as part of the upload process). This gives you the ability manage how (and if) files are stored on the local device and return that information when needed.
 
-      + `IFileSyncHandler.ProcessFileSynchronizationAction` wird im Rahmen des Dateisynchronisierungsflusses aufgerufen. Es werden ein Dateiverweis und ein FileSynchronizationAction-Enumerationswert bereitgestellt, damit Sie entscheiden können, wie das Ereignis von Ihrer Anwendung behandelt werden soll (z. B. automatisches Herunterladen einer Datei, wenn sie erstellt oder aktualisiert wird, oder Löschen einer Datei vom lokalen Gerät, wenn die Datei auf dem Server gelöscht wird).
+      + `IFileSyncHandler.ProcessFileSynchronizationAction` is invoked as part of the file synchronization flow. A file reference and a FileSynchronizationAction enumeration value are provided so you can decide how your application should handle that event (e.g. automatically downloading a file when it is created or updated, deleting a file from the local device when that file is deleted on the server).
 
-- Ein `MobileServiceFile`-Element kann entweder im Online- oder im Offlinemodus genutzt werden, indem entweder `IMobileServiceTable` oder `IMobileServiceSyncTable` verwendet wird. Im Offlineszenario wird der Upload durchgeführt, wenn die App `PushFileChangesAsync` aufruft. Dies führt dazu, dass die Offline-Betriebswarteschlange verarbeitet wird. Für jeden Dateivorgang ruft das Azure Mobile Client-SDK die `GetDataSource`-Methode für die `IFileSyncHandler`-Instanz auf, um die Dateiinhalte für den Upload abzurufen.
+- A `MobileServiceFile` can be used either in online or offline mode, by using a `IMobileServiceTable` or `IMobileServiceSyncTable`, respectively. In the offline scenario, the upload will occur when the app calls `PushFileChangesAsync`. This causes the offline operation queue to be processed; for each file operation, the Azure Mobile client SDK will invoke the `GetDataSource` method on the `IFileSyncHandler` instance to retrieve the file contents for the upload.
 
-- Rufen Sie zum Abrufen der Dateien eines Elements die `GetFilesAsync`-Methode für die `IMobileServiceTable<T>`- oder IMobileServiceSyncTable<T>-Instanz auf. Diese Methode gibt eine Liste mit Dateien zurück, die dem bereitgestellten Datenelement zugeordnet sind. (Hinweis: Dies ist ein *lokaler* Vorgang, bei dem die Dateien basierend auf dem Zustand des Objekts bei seiner letzten Synchronisierung zurückgegeben werden. Sie sollten zuerst einen Synchronisierungsvorgang initiieren, um eine aktualisierte Liste mit Dateien vom Server zu erhalten.)
+- In order to retrieve an item's files, call the ``GetFilesAsync` method on the  `IMobileServiceTable<T>` or IMobileServiceSyncTable<T>` instance. This method returns a list of files associated with the data item provided. (Note: this is a *local* operation and will return the files based on the state of the object when it was last synchronized. To get an updated list of files from the server, you should initiate a sync operation first.)
 
         IEnumerable<MobileServiceFile> files = await myTable.GetFilesAsync(myItem);
 
-- Das Feature für die Dateisynchronisierung verwendet im lokalen Speicher Benachrichtigungen über Datensatzänderungen, um die Datensätze abzurufen, die der Client im Rahmen eines Push- oder Pullvorgangs empfangen hat. Dies wird erreicht, indem lokale Benachrichtigungen und Serverbenachrichtigungen für den Synchronisierungskontext mit dem `StoreTrackingOptions`-Parameter aktiviert werden.
+- The file sync feature uses record change notifications on the local store in order to retrieve the records that the client received as part of a push or pull operation. This is achieved by turning on local and server notifications for the sync context using the `StoreTrackingOptions` parameter. 
 
         this.client.SyncContext.InitializeAsync(store, StoreTrackingOptions.NotifyLocalAndServerOperations);
 
-      + Es sind auch andere Optionen zur Speicherverfolgung verfügbar, z. B. Benachrichtigungen nur für den lokalen Speicher oder nur für den Server. Sie können benutzerdefinierte Rückrufe hinzufügen oder besitzen, indem Sie die `EventManager`-Eigenschaft von `IMobileServiceClient` verwenden:
+      + Other store tracking options are available, such as local-only or server-only notifications. You can add or own custom callback using the `EventManager` property of `IMobileServiceClient`:
 
             jobService.MobileService.EventManager.Subscribe<StoreOperationCompletedEvent>(StoreOperationEventHandler);
 
-- Es ist möglich, Dateien einem Datensatz hinzuzufügen oder daraus zu entfernen, indem Sie den Blobspeicher direkt ändern. Dies liegt daran, dass die Zuordnung über eine Benennungskonvention erfolgt. In diesem Fall sollten Sie aber immer den **Datensatz-Zeitstempel aktualisieren, wenn die zugeordneten Blobs geändert werden**. Das Azure Mobile Client-SDK führt immer eine Aktualisierung eines Datensatzes durch, wenn eine Datei hinzugefügt oder entfernt wird.
+- It is possible to add or remove files from a record by modifying blob storage directly, since the association is achieved through a naming convention. However, in this case you should always **update the record timestamp when the associated blobs are modified**. The Azure Mobile client SDK always updates a record when adding or removing a file. 
 
-    Der Grund für diese Anforderung ist, dass einige mobile Clients bereits im lokalen Speicher über den Datensatz verfügen. Wenn diese Clients einen inkrementellen Pullvorgang durchführen, wird dieser Datensatz nicht zurückgegeben, und der Client fragt keine neuen zugeordneten Dateien ab. Zur Vermeidung dieses Problems ist es ratsam, den Datensatz-Zeitstempel zu aktualisieren, wenn Sie eine Blobspeicheränderung vornehmen, bei der das Azure Mobile Client-SDK nicht verwendet wird.
+    The reason for this requirement is that some mobile clients will already have the record in local storage. When these clients perform an incremental pull, this record will not be returned and the client will not query for the new associated files. To avoid this problem, it is recommended that you update the record timestamp when performing any blob storage change that does not use the Azure Mobile client SDK.
 
-- Für das Clientprojekt wird das Muster [Xamarin.Forms DependencyService] verwendet, um zur Laufzeit die richtige plattformspezifische Klasse zu laden. In diesem Beispiel haben wir eine `IPlatform`-Schnittstelle mit Implementierungen in den einzelnen plattformspezifischen Projekten definiert.
+- The client project uses the [Xamarin.Forms DependencyService] pattern to load the right platform-specific class at run time. In this sample, we defined an interface `IPlatform` with implementations in each of the platform-specific projects.
 
 <!-- URLs. -->
 
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
-[Erstellen einer Xamarin.Forms-App]: app-service-mobile-xamarin-forms-get-started.md
+[Create a Xamarin.Forms app]: app-service-mobile-xamarin-forms-get-started.md
 [Xamarin.Forms DependencyService]: https://developer.xamarin.com/guides/xamarin-forms/dependency-service/
 [Microsoft.Azure.Mobile.Client.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.Files/
 [Microsoft.Azure.Mobile.Client.SQLiteStore]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.SQLiteStore/
 [Microsoft.Azure.Mobile.Server.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Files/
-[Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell]: ../storage/storage-dotnet-shared-access-signature-part-1.md
-[Erstellen Sie ein Speicherkonto]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Understanding Shared Access Signatures]: ../storage/storage-dotnet-shared-access-signature-part-1.md
+[Create an Azure Storage Account]:  ../storage/storage-create-storage-account.md#create-a-storage-account
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

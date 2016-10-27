@@ -1,32 +1,33 @@
-##<a name="create-client"></a>Erstellen einer Clientverbindung
+##<a name="<a-name="create-client"></a>create-a-client-connection"></a><a name="create-client"></a>Create a Client Connection
 
-Stellen Sie eine Clientverbindung her, indem Sie ein `WindowsAzure.MobileServiceClient`-Objekt erstellen. Ersetzen Sie `appUrl` durch die URL zu Ihrer mobilen App.
+Create a client connection by creating a `WindowsAzure.MobileServiceClient` object.  Replace `appUrl` with the URL to your Mobile App.
 
 ```
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-##<a name="table-reference"></a>Arbeiten mit Tabellen
+##<a name="<a-name="table-reference"></a>work-with-tables"></a><a name="table-reference"></a>Work with Tables
 
-Zum Zugreifen auf oder Aktualisieren von Daten erstellen Sie einen Verweis auf die Back-End-Tabelle. Ersetzen Sie `tableName` durch den Namen Ihrer Tabelle.
+To access or update data, create a reference to the backend table. Replace `tableName` with the name of your table
 
 ```
 var table = client.getTable(tableName);
 ```
 
-Sobald Sie einen Tabellenverweis haben, können Sie mit der Tabelle:
+Once you have a table reference, you can work further with your table:
 
-* [Eine Tabelle abfragen](#querying)
-  * [Daten filtern](#table-filter)
-  * [Daten auf Seiten aufteilen](#table-paging)
-  * [Daten sortieren](#sorting-data)
-* [Daten einfügen](#inserting)
-* [Daten ändern](#modifying)
-* [Daten löschen](#deleting)
+* [Query a Table](#querying)
+  * [Filtering Data](#table-filter)
+  * [Paging through Data](#table-paging)
+  * [Sorting Data](#sorting-data)
+* [Inserting Data](#inserting)
+* [Modifying Data](#modifying)
+* [Deleting Data](#deleting)
 
-###<a name="querying"></a>Vorgehensweise: Abfragen von Tabellenverweisen
+###<a name="<a-name="querying"></a>how-to:-query-a-table-reference"></a><a name="querying"></a>How to: Query a Table Reference
 
-Sobald Sie über einen Tabellenverweis verfügen, können Sie diesen zum Abfragen von Daten auf dem Server verwenden. Abfragen erfolgen in einer „LINQ-ähnlichen“ Sprache. Um alle Daten aus der Tabelle zurückzugeben, verwenden Sie Folgendes:
+Once you have a table reference, you can use it to query for data on the server.  Queries are made in a "LINQ-like" language.
+To return all data from the table, use the following:
 
 ```
 /**
@@ -54,13 +55,13 @@ table
     .then(success, failure);
 ```
 
-Die „success“-Funktion mit den Ergebnissen wird aufgerufen. Verwenden Sie `for (var i in results)` nicht in der „success“-Funktion, da dies zum Durchlaufen von Informationen in den Ergebnissen führt, wenn andere Abfragefunktionen verwendet werden (wie z. B. `.includeTotalCount()`).
+The success function is called with the results.   Do not use `for (var i in results)` in the success function as that will iterate over information that is included in the results when other query functions (such as `.includeTotalCount()`) are used.
 
-Weitere Informationen zur Abfragesyntax finden Sie in der [Dokumentation „Query-Objekt“].
+For more information on the Query syntax, refer to the [Query object documentation].
 
-####<a name="table-filter"></a>Filtern von Daten auf dem Server
+####<a name="<a-name="table-filter"></a>filtering-data-on-the-server"></a><a name="table-filter"></a>Filtering Data on the server
 
-Sie können für den Tabellenverweis eine `where` Klausel verwenden:
+You can use a `where` clause on the table reference:
 
 ```
 table
@@ -69,7 +70,7 @@ table
     .then(success, failure);
 ```
 
-Sie können auch eine Funktion nutzen, die das Objekt filtert. In diesem Fall wird die Variable `this` dem aktuell gefilterten Objekt zugewiesen. Folgendes ist funktionell gleichwertig mit dem vorherigen Beispiel:
+You can also use a function that filters the object.  In this case the `this` variable is assigned to the current object being filtered.  The following is functionally equivalent to the prior example:
 
 ```
 function filterByUserId(currentUserId) {
@@ -82,9 +83,9 @@ table
     .then(success, failure);
 ```
 
-####<a name="table-paging"></a>Aufteilung von Daten auf Seiten
+####<a name="<a-name="table-paging"></a>paging-through-data"></a><a name="table-paging"></a>Paging through data
 
-Verwenden Sie die Methoden „take()“ und „skip()“. Angenommen, die Tabelle soll in Datensätze mit 100 Zeilen aufgeteilt werden:
+Utilize the take() and skip() methods.  For example, if you wish to split the table into 100-row records:
 
 ```
 var totalCount = 0, pages = 0;
@@ -107,14 +108,14 @@ function loadPage(pageNum) {
 }
 ```
 
-Die Methode `.includeTotalCount()` wird verwendet, um ein totalCount-Feld dem „results“-Objekt hinzuzufügen. Das „totalCount“-Feld wird mit der Gesamtanzahl von Datensätzen aufgefüllt, die zurückgegeben wird, wenn keine Seitenverwaltung verwendet wird.
+The `.includeTotalCount()` method is used to add a totalCount field to the results object.  The totalCount field is filled with the total number of records that would be returned if no paging is used.
 
-Sie können dann die „pages“-Variable und einige Schaltflächen auf der Benutzeroberfläche verwenden, um eine Seitenliste bereitzustellen. Verwenden Sie „loadPage()“ zum Laden der neuen Datensätze für jede Seite. Implementieren Sie eine Zwischenspeicherung, um den Zugriff auf Datensätze zu beschleunigen, die bereits geladen wurden.
+You can then use the pages variable and some UI buttons to provide a page list; use loadPage() to load the new records for each page.  You should implement some sort of caching to speed access to records that have already been loaded.
 
 
-####<a name="sorting-data"></a>Vorgehensweise: Zurückgeben sortierter Daten
+####<a name="<a-name="sorting-data"></a>how-to:-return-data-sorted"></a><a name="sorting-data"></a>How to: Return data sorted
 
-Verwenden Sie die Abfragemethoden „.orderBy()“ oder „.orderByDescending()“:
+Use the .orderBy() or .orderByDescending() query methods:
 
 ```
 table
@@ -123,11 +124,11 @@ table
     .then(success, failure);
 ```
 
-Weitere Informationen zum „Query“-Objekt finden Sie in der [Dokumentation „Query-Objekt“].
+For more information on the Query object, refer to the [Query object documentation].
 
-###<a name="inserting"></a>Gewusst wie: Einfügen von Daten
+###<a name="<a-name="inserting"></a>how-to:-insert-data"></a><a name="inserting"></a>How to: Insert Data
 
-Erstellen Sie ein „JavaScript“-Objekt mit dem entsprechenden Datum, und rufen Sie „table.insert()“ asynchron auf:
+Create a JavaScript object with the appropriate date and call table.insert() asynchronously:
 
 ```
 var newItem = {
@@ -142,13 +143,14 @@ table
     }, failure);
 ```
 
-Bei erfolgreichem Einfügen wird das eingefügte Element mit den zusätzlichen Feldern zurückgegeben, die für Synchronisierungsvorgänge erforderlich sind. Sie müssen Ihren Cache mit diesen Informationen für spätere Updates aktualisieren.
+On successful insertion, the inserted item is returned with the additional fields that are required for sync operations.  You should update your own cache with this information for later updates.
 
-Beachten Sie, dass das Node.js-Server SDK für Azure Mobile Apps für Entwicklungszwecke ein dynamisches Schema unterstützt. Bei einem dynamischen Schema wird das Schema der Tabelle dynamisch aktualisiert, was das Hinzufügen von Spalten zur Tabelle ermöglicht, indem diese in einem Einfüge- oder Aktualisierungsvorgang angegeben werden. Es wird empfohlen, das dynamische Schema zu deaktivieren, bevor die Anwendung in die Produktion verlagert wird.
+Note that the Azure Mobile Apps Node.js Server SDK supports dynamic schema for development purposes.
+In the case of dynamic schema, the schema of the table is updated on the fly, allowing you to add columns to the table just by specifying them in an insert or update operation.  We recommend that you turn off dynamic schema before moving your application to production.
 
-###<a name="modifying"></a>Gewusst wie: Ändern von Daten
+###<a name="<a-name="modifying"></a>how-to:-modify-data"></a><a name="modifying"></a>How to: Modify Data
 
-Ähnlich wie bei der „.insert()“-Methode müssen Sie zuerst ein „Update“-Objekt erstellen und dann „.update()“ aufrufen. Das „Update“-Objekt muss die ID des Datensatzes enthalten, der aktualisiert werden soll. Diese wird beim Lesen des Datensatzes oder Aufrufen von „.insert()“ abgerufen.
+Similar to the .insert() method, you should create an Update object and then call .update().  The update object must contain the ID of the record to be updated - this is obtained when reading the record or when calling .insert().
 
 ```
 var updateItem = {
@@ -163,9 +165,9 @@ table
     }, failure);
 ```
 
-###<a name="deleting"></a>Gewusst wie: Löschen von Daten
+###<a name="<a-name="deleting"></a>how-to:-delete-data"></a><a name="deleting"></a>How to: Delete Data
 
-Rufen Sie die „.del()“-Methode auf, um einen Datensatz zu löschen. Übergeben Sie die ID in einen Objektverweis:
+Call the .del() method to delete a record.  Pass the ID in an object reference:
 
 ```
 table
@@ -175,4 +177,7 @@ table
     }, failure);
 ```
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+
