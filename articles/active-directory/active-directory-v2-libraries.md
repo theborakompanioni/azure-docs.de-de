@@ -20,7 +20,7 @@
 # Azure Active Directory (AD) v2.0 und Authentifizierungsbibliotheken
 Der Azure AD v2.0-Endpunkt unterstützt die Protokolle OAuth 2.0 und OpenID Connect 1.0 nach Branchenstandard. Mit dem v2.0-Endpunkt können zahlreiche Bibliotheken von Microsoft und anderen Anbietern verwendet werden.
 
-Beim Entwickeln einer Anwendung, die den v2.0-Endpunkt verwendet, wird empfohlen, von Domänenexperten geschriebene Bibliotheken zu verwenden, die einer SDL-Methodologie (Security Development Lifecycle) folgen, [beispielsweise der von Microsoft angewendeten Methodologie](Microsoft-SDL). Wenn Sie die Unterstützung für die Protokolle selbst schreiben möchten, wird empfohlen, sich nach SDL zu richten und die Sicherheitsaspekte in den Standardspezifikationen für jedes der Protokolle zu beachten.
+Beim Entwickeln einer Anwendung, die den v2.0-Endpunkt verwendet, wird empfohlen, von Domänenexperten geschriebene Bibliotheken zu verwenden, die einer SDL-Methodologie (Security Development Lifecycle) folgen, [beispielsweise der von Microsoft angewendeten Methodologie]\[Microsoft-SDL]. Wenn Sie die Unterstützung für die Protokolle selbst schreiben möchten, wird empfohlen, sich nach SDL zu richten und die Sicherheitsaspekte in den Standardspezifikationen für jedes der Protokolle zu beachten.
 
 ## Bibliothekstypen
 Es gibt zwei Arten von Bibliotheken, die mit v2.0 funktionieren:
