@@ -1,49 +1,50 @@
 <properties 
-	pageTitle="Stream Analytics – Anmerkungen zu dieser Version | Microsoft Azure" 
-	description="Versionshinweise zu Stream Analytics" 
-	services="stream-analytics" 
-	documentationCenter="" 
-	authors="jeffstokes72" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+    pageTitle="Stream Analytics – Anmerkungen zu dieser Version | Microsoft Azure" 
+    description="Versionshinweise zu Stream Analytics" 
+    services="stream-analytics" 
+    documentationCenter="" 
+    authors="jeffstokes72" 
+    manager="jhubbard" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="stream-analytics" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-services" 
-	ms.date="09/26/2016" 
-	ms.author="jeffstok"/>
+    ms.service="stream-analytics" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="data-services" 
+    ms.date="09/26/2016" 
+    ms.author="jeffstok"/>
 
-#Versionshinweise zu Stream Analytics
 
-## Hinweise zur Version von Stream Analytics vom 15.04.2016 ##
+#<a name="stream-analytics-release-notes"></a>Versionshinweise zu Stream Analytics
 
-Diese Version enthält das folgende Update.
-
-Titel | Beschreibung
----|---
-Allgemeine Verfügbarkeit für Power BI-Ausgaben | [Power BI-Ausgaben](stream-analytics-power-bi-dashboard.md) sind nun allgemein verfügbar. Der Ablauf der Autorisierung nach 90 Tagen für Power BI wurde entfernt. Weitere Informationen zu Szenarien, in denen die Autorisierung erneuert werden muss, finden Sie im Abschnitt [Erneuern der Autorisierung](stream-analytics-power-bi-dashboard.md#Renew-authorization) unter „Erstellen eines Power BI-Dashboards“.
-
-## Hinweise zur Version von Stream Analytics vom 03.03.2016 ##
+## <a name="notes-for-04/15/2016-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 15.04.2016 ##
 
 Diese Version enthält das folgende Update.
 
 Titel | Beschreibung
 ---|---
-Neue Elemente der Stream Analytics-Abfragesprache | SAQL bietet jetzt [GetType](https://msdn.microsoft.com/library/azure/mt643890.aspx "MSDN-Seite zu GetType"), [TRY\_CAST](https://msdn.microsoft.com/library/azure/mt643735.aspx "MSDN-Seite zu TRY_CAST") und [REGEXMATCH](https://msdn.microsoft.com/library/azure/mt643891.aspx "MSDN-Seite zu REGEXMATCH").
+Allgemeine Verfügbarkeit für Power BI-Ausgaben  | [Power BI-Ausgaben](stream-analytics-power-bi-dashboard.md) sind nun allgemein verfügbar. Der Ablauf der Autorisierung nach 90 Tagen für Power BI wurde entfernt. Weitere Informationen zu Szenarien, in denen die Autorisierung erneuert werden muss, finden Sie im Abschnitt [Erneuern der Autorisierung](stream-analytics-power-bi-dashboard.md#Renew-authorization) unter „Erstellen eines Power BI-Dashboards“.
 
-## Hinweise zur Stream Analytics-Version vom 10.12.2015 ##
+## <a name="notes-for-03/03/2016-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 03.03.2016 ##
+
+Diese Version enthält das folgende Update.
+
+Titel | Beschreibung
+---|---
+Neue Elemente der Stream Analytics-Abfragesprache  | SAQL bietet jetzt [GetType](https://msdn.microsoft.com/library/azure/mt643890.aspx "GetType MSDN Page"),[ TRY_CAST](https://msdn.microsoft.com/library/azure/mt643735.aspx "TRY_CAST MSDN Page") und [REGEXMATCH](https://msdn.microsoft.com/library/azure/mt643891.aspx "REGEXMATCH MSDN Page").
+
+## <a name="notes-for-12/10/2015-release-of-stream-analytics"></a>Hinweise zur Stream Analytics-Version vom 10.12.2015 ##
 
 Diese Version enthält das folgende Update.
 
 Titel | Beschreibung
 ---|---
 REST-API-Versionsupdate | Die REST-API-Version wurde auf 2015-10-01 aktualisiert. Details finden Sie auf MSDN unter [Stream Analytics-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx) und [Machine Learning-Integration in Stream Analytics](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md).
-Azure Machine Learning-Integration | Mit dieser Version wird die Unterstützung für benutzerdefinierte Azure Machine Learning-Funktionen eingeführt. Im [Tutorial ](stream-analytics-machine-learning-integration-tutorial.md) finden Sie weitere Informationen. Lesen Sie auch die [allgemeine Ankündigung im Blog](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx).
+Azure Machine Learning-Integration | Mit dieser Version wird die Unterstützung für benutzerdefinierte Azure Machine Learning-Funktionen eingeführt. Im [Tutorial](stream-analytics-machine-learning-integration-tutorial.md) finden Sie weitere Informationen. Lesen Sie auch die [allgemeine Ankündigung im Blog (in englischer Sprache)](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx).
 
-## Hinweise zur Version von Stream Analytics vom 12.11.2015 ##
+## <a name="notes-for-11/12/2015-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 12.11.2015 ##
 
 Diese Version enthält das folgende Update.
 
@@ -51,19 +52,19 @@ Titel | Beschreibung
 ---|---
 Neues Verhalten der SELECT-Anweisung | Die SELECT-Anweisung in Stream Analytics wurde erweitert, um * als Eigenschaftenaccessor eines verschachtelten Datensatzes zuzulassen. Weitere Informationen finden Sie unter [http://msdn.microsoft.com/library/mt622759.aspx](http://msdn.microsoft.com/library/mt622759.aspx "Komplexe Datentypen").
 
-## Hinweise zur Version von Stream Analytics vom 22.10.2015 ##
+## <a name="notes-for-10/22/2015-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 22.10.2015 ##
 
 Diese Version enthält die folgenden Updates.
 
 Titel | Beschreibung
 ---|---
 Zusätzliche Features für die Abfragesprache | Stream Analytics hat die Abfragesprache um die folgenden Features erweitert: [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx), [CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx), [EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx), [FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx), [POWER](https://msdn.microsoft.com/library/azure/mt605287.aspx), [SIGN](https://msdn.microsoft.com/library/azure/mt605290.aspx), [SQUARE](https://msdn.microsoft.com/library/azure/mt605288.aspx) und [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx).
-Aggregatbeschränkungen aufgehoben | Mit dieser Version wird die Beschränkung auf 15 Aggregate pro Abfrage aufgehoben. Es gibt jetzt keine Beschränkung für die Anzahl der Aggregate pro Abfrage mehr.
-Feature „GROUP BY System.Timestamp“ hinzugefügt | Die [GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx)-Funktion ermöglicht jetzt entweder „window\_type“ oder [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx).
-OFFSET für Tumbling- und Hopping-Fenster hinzugefügt | [Tumbling](https://msdn.microsoft.com/library/azure/dn835055.aspx)- und [Hopping](https://msdn.microsoft.com/library/azure/dn835041.aspx)-Fenster sind standardmäßig an der Nullzeit ausgerichtet (1.1.0001 0:00:00 UTC). Der neue (optionale) Parameter „offsetsize“ ermöglicht das Angeben eines benutzerdefinierten Versatzes (oder einer Ausrichtung).
+Aggregatbeschränkungen aufgehoben  | Mit dieser Version wird die Beschränkung auf 15 Aggregate pro Abfrage aufgehoben. Es gibt jetzt keine Beschränkung für die Anzahl der Aggregate pro Abfrage mehr.
+Feature „GROUP BY System.Timestamp“ hinzugefügt | Die [GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx)-Funktion ermöglicht jetzt entweder „window_type“ oder [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx).
+OFFSET für Tumbling- und Hopping-Fenster hinzugefügt | [Tumbling](https://msdn.microsoft.com/library/azure/dn835055.aspx)- und [Hopping](https://msdn.microsoft.com/library/azure/dn835041.aspx)-Fenster sind standardmäßig an der Nullzeit ausgerichtet (1.1.0001 00:00:00 UTC). Der neue (optionale) Parameter „offsetsize“ ermöglicht das Angeben eines benutzerdefinierten Versatzes (oder einer Ausrichtung).
 
 
-## Hinweise zur Version von Stream Analytics vom 29.09.2015 ##
+## <a name="notes-for-09/29/2015-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 29.09.2015 ##
 
 Diese Version enthält die folgenden Updates.
 
@@ -71,11 +72,11 @@ Titel | Beschreibung
 ---|---
 Öffentliche Vorschau zu Azure IoT Suite | Stream Analytics ist in der öffentlichen Vorschau von Azure IoT Suite enthalten.
 Azure-Portal, „Integration“ | Stream Analytics ist nicht nur weiterhin im Azure-Verwaltungsportal enthalten, sondern jetzt auch in das [Azure-Portal](https://azure.microsoft.com/overview/preview-portal/) integriert. Beachten Sie, dass im Vorschauportal derzeit nur ein Teil der im Azure-Verwaltungsportal bereitgestellten Stream Analytics-Funktionalität verfügbar ist. Nicht unterstützt werden Funktionen wir das Testen von Abfragen im Browser, das Konfigurieren der Power BI-Ausgabe und das Durchsuchen oder Erstellen neuer Eingabe- und Ausgaberessourcen in Abonnements, auf die Sie zugreifen können.
-Unterstützung für DocumentDB-Ausgabe | Stream Analytics-Aufträge können jetzt Ausgaben an [DocumentDB](https://azure.microsoft.com/services/documentdb/) senden.
+Unterstützung für DocumentDB-Ausgabe | Stream Analytics-Aufträge können jetzt Ausgaben an [DocumentDB](https://azure.microsoft.com/services/documentdb/)senden.
 Unterstützung für IoT Hub-Eingabe | Stream Analytics-Aufträge können jetzt Daten von IoT Hubs erfassen.
 TIMESTAMP BY für heterogene Ereignisse | Wenn ein einzelner Datenstrom mehrere Ereignistypen mit Zeitstempeln in verschiedenen Feldern enthält, können Sie nun [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) mit Ausdrücken verwenden, um für jeden Fall unterschiedliche Zeitstempelfelder anzugeben.
 
-## Hinweise zur Version von Stream Analytics vom 10.09.2015 ##
+## <a name="notes-for-09/10/2015-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 10.09.2015 ##
 
 Diese Version enthält die folgenden Updates.
 
@@ -83,27 +84,27 @@ Titel|Beschreibung
 ---|---
 Unterstützung für Power BI-Gruppen|Zum Aktivieren der Freigabe von Daten mit anderen Power BI-Benutzern können Stream Analytics-Aufträge jetzt in [PowerBI-Gruppen](stream-analytics-define-outputs.md#power-bi) innerhalb Ihres Power BI-Kontos schreiben.
 
-## Hinweise zur Stream Analytics-Version vom 20.08.2015 ##
+## <a name="notes-for-08/20/2015-release-of-stream-analytics"></a>Hinweise zur Stream Analytics-Version vom 20.08.2015 ##
 
 Diese Version enthält die folgenden Updates.
 
 Titel|Beschreibung
 ---|---
-Zusätzliche LAST-Funktion |Die [LAST](http://msdn.microsoft.com/library/mt421186.aspx)-Funktion steht nun in Stream Analytics-Aufträgen zur Verfügung und ermöglicht Ihnen, das letzte Ereignis in einem Ereignisdatenstrom innerhalb eines bestimmten Zeitrahmens abrufen.
+Zusätzliche LAST-Funktion |Die [LAST](http://msdn.microsoft.com/library/mt421186.aspx) -Funktion steht nun in Stream Analytics-Aufträgen zur Verfügung und ermöglicht Ihnen, das letzte Ereignis in einem Ereignisdatenstrom innerhalb eines bestimmten Zeitrahmens abrufen.
 Neue Arrayfunktionen|Die Arrayfunktionen [GetArrayElement](http://msdn.microsoft.com/library/mt270218.aspx), [GetArrayElements](http://msdn.microsoft.com/library/mt298451.aspx) und [GetArrayLength](http://msdn.microsoft.com/library/mt270226.aspx) sind jetzt verfügbar.
 Neue Datensatzfunktionen|Die Datensatzfunktionen [GetRecordProperties](http://msdn.microsoft.com/library/mt270221.aspx) und [GetRecordPropertyValue](http://msdn.microsoft.com/library/mt270220.aspx) sind jetzt verfügbar.
 
-## Hinweise zur Stream Analytics-Version vom 30.07.2015 ##
+## <a name="notes-for-07/30/2015-release-of-stream-analytics"></a>Hinweise zur Stream Analytics-Version vom 30.07.2015 ##
 
 Diese Version enthält die folgenden Updates.
 
 Titel|Beschreibung
 ---|---
 Die Power BI-Organisations-ID wurde von der Azure-ID entkoppelt.|Dieses Feature ermöglicht die [Power BI-Ausgabe](stream-analytics-power-bi-dashboard.md) für ASA-Aufträge unter einem beliebigen Azure-Kontotyp (Live-ID oder Organisations-ID). Darüber hinaus können Sie eine Organisations-ID für Ihre Azure-Konto einrichten und eine andere ID für die Autorisierung der Power BI-Ausgabe verwenden.
-Unterstützung für die Ausgabe von Service Bus-Warteschlangen|Ausgaben von [Service Bus-Warteschlangen](stream-analytics-connect-data-event-outputs.md#service-bus-queues) stehen nun in Stream Analytics-Aufträgen zur Verfügung.
-Unterstützung für die Ausgabe von Service Bus-Themen|Ausgaben von [Service Bus-Themen](stream-analytics-connect-data-event-outputs.md#service-bus-topics) stehen nun in Stream Analytics-Aufträgen zur Verfügung.
+Unterstützung für die Ausgabe von Service Bus-Warteschlangen|Die Ausgaben der [Service Bus-Warteschlangen](stream-analytics-define-outputs.md#service-bus-queues) stehen nun in Stream Analytics-Aufträgen zur Verfügung.
+Unterstützung für die Ausgabe von Service Bus-Themen|Die Ausgaben der [Service Bus-Themen](stream-analytics-define-outputs.md#service-bus-topics) stehen nun in Stream Analytics-Aufträgen zur Verfügung.
 
-## Hinweise zur Version von Stream Analytics vom 09.07.2015 ##
+## <a name="notes-for-07/09/2015-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 09.07.2015 ##
 
 Diese Version enthält die folgenden Updates.
 
@@ -112,7 +113,7 @@ Titel|Beschreibung
 ---|---
 Benutzerdefinierte Blob-Ausgabepartitionierung|Blob-Speicherausgaben erlauben einer Option nun, die Häufigkeit anzugeben, mit der Ausgabe-Blobs geschrieben werden und die Struktur und das Format der Ausgabepfad-Ordnerstruktur zu bestimmen. 
 
-## Hinweise zur Version von Stream Analytics vom 03.05.2015 ##
+## <a name="notes-for-05/03/2015-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 03.05.2015 ##
 
 Diese Version enthält die folgenden Updates.
 
@@ -122,7 +123,7 @@ Titel|Beschreibung
 Erhöhter maximaler Wert des Toleranzfensters für falsche Reihenfolge|Die maximale Größe für das Toleranzfenster für falsche Reihenfolge ist jetzt 59:59 (Min:Sek)
 JSON-Ausgabeformat: Trennung durch Zeile oder Array|Es gibt jetzt die Option der Ausgabe an einen Blob-Speicher oder Event Hub als Array von JSON-Objekten oder durch die Trennung von JSON-Objekten mit einer neuen Zeile. 
 
-## Hinweise zur Version von Stream Analytics vom 16.04.2015 ##
+## <a name="notes-for-04/16/2015-release-of-stream-analytics"></a>Hinweise zur Version von Stream Analytics vom 16.04.2015 ##
 
 
 Titel|Beschreibung
@@ -137,10 +138,10 @@ Große Blob-Eingaben ohne Nutzlastzeitstempel können Arbeitsspeicherprobleme ve
 Einschränkungen im Hinblick auf die SQL-Datenbank-Ereignismenge|Wenn Sie SQL-Datenbank als Ausgabeziel verwenden, kann es für einen Stream Analytics-Auftrag bei einer sehr großen Ausgabedatenmenge zu einem Timeout kommen. Reduzieren Sie zum Beheben dieses Problems entweder die Ausgabemenge mithilfe von Aggregaten oder Filter-Operatoren, oder wählen Sie stattdessen Azure-Blobspeicher oder den Event Hub als Ausgabeziel aus.
 PowerBI-Datasets können nur eine Tabelle enthalten.|PowerBI unterstützt nicht mehr als eine Tabelle in einem bestimmten Dataset.
 
-## Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Hier erhalten Sie Hilfe
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 - [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 - [Erste Schritte mit Azure Stream Analytics](stream-analytics-get-started.md)
@@ -149,4 +150,8 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

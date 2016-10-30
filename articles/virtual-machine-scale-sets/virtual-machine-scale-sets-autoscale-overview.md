@@ -1,23 +1,24 @@
 <properties
-	pageTitle="Automatische Skalierung und Skalierungsgruppen für virtuelle Computer | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie virtuelle Computer in einer Skalierungsgruppe mithilfe der Diagnose und mit Ressourcen für die automatische Skalierung automatisch skalieren."
+    pageTitle="Automatische Skalierung und Skalierungsgruppen für virtuelle Computer | Microsoft Azure"
+    description="Hier erfahren Sie, wie Sie virtuelle Computer in einer Skalierungsgruppe mithilfe der Diagnose und mit Ressourcen für die automatische Skalierung automatisch skalieren."
     services="virtual-machine-scale-sets"
-	documentationCenter=""
-	authors="davidmu1"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    documentationCenter=""
+    authors="davidmu1"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machine-scale-sets"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="davidmu"/>
+    ms.service="virtual-machine-scale-sets"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/27/2016"
+    ms.author="davidmu"/>
 
-# Automatische Skalierung und Skalierungsgruppen für virtuelle Computer
+
+# <a name="automatic-scaling-and-virtual-machine-scale-sets"></a>Automatische Skalierung und Skalierungsgruppen für virtuelle Computer
 
 Bei der automatischen Skalierung virtueller Computer in einer Skalierungsgruppe werden je nach Leistungsbedarf Computer in der Gruppe erstellt oder wieder gelöscht. Wenn das Arbeitsvolumen zunimmt, benötigt eine Anwendung unter Umständen zusätzliche Ressourcen, um ihre Aufgaben effizient auszuführen.
 
@@ -25,7 +26,7 @@ Die automatische Skalierung ist ein automatisierter Prozess, der den Verwaltungs
 
 Richten Sie die automatische Skalierung für eine Skalierungsgruppe mit einer Azure Resource Manager-Vorlage, Azure PowerShell oder der Azure-CLI ein.
 
-## Einrichten der Skalierung mithilfe von Resource Manager-Vorlagen
+## <a name="set-up-scaling-by-using-resource-manager-templates"></a>Einrichten der Skalierung mithilfe von Resource Manager-Vorlagen
 
 Anstatt jede Ressource Ihrer Anwendung gesondert bereitzustellen und zu verwalten, können Sie eine Vorlage verwenden, die alle Ressourcen in einem einzelnen koordinierten Vorgang bereitstellt. In der Vorlage werden Anwendungsressource definiert und Bereitstellungsparameter für verschiedene Umgebungen festgelegt. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
 
@@ -41,19 +42,19 @@ Die Kapazität gibt die Anzahl von virtuellen Computern in der Gruppe an. Sie k�
 
 Wenn die Kapazität der Skalierungsgruppe automatisch geändert werden soll, verwenden Sie eine Kombination aus der Ressource „autoscaleSettings“ und der Diagnoseerweiterung.
 
-### Konfigurieren der Azure-Diagnoseerweiterung
+### <a name="configure-the-azure-diagnostics-extension"></a>Konfigurieren der Azure-Diagnoseerweiterung
 
 Die automatische Skalierung ist nur möglich, wenn die Metrikauflistung auf jedem virtuellen Computer in der Skalierungsgruppe erfolgreich ist. Die Azure-Diagnoseerweiterung bietet Überwachungs- und Diagnosefunktionen, die die Anforderungen der Ressource für die automatische Skalierung in Bezug auf die Metrikauflistung erfüllen. Sie können die Erweiterung als Teil der Resource Manager-Vorlage installieren.
 
 Dieses Beispiel zeigt die Variablen, die in der Vorlage zum Konfigurieren der Diagnoseerweiterung verwendet werden:
 
-	"diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
-	"accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/', 'Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
-	"wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB="4096" xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error"/> <WindowsEventLog scheduledTransferPeriod="PT1M" > <DataSource name="Application!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="Security!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="System!*[System[(Level = 1 or Level = 2)]]" /></WindowsEventLog>",
-	"wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor(_Total)\\Thread Count" sampleRate="PT15S" unit="Percent"><annotation displayName="Thread Count" locale="de-DE"/></PerformanceCounterConfiguration></PerformanceCounters>",
-	"wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId="')]",
-	"wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
-	"wadcfgxend": "[concat('"><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
+    "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
+    "accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/', 'Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
+    "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
+    "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod=\"PT1M\"><PerformanceCounterConfiguration counterSpecifier=\"\\Processor(_Total)\\Thread Count\" sampleRate=\"PT15S\" unit=\"Percent\"><annotation displayName=\"Thread Count\" locale=\"en-us\"/></PerformanceCounterConfiguration></PerformanceCounters>",
+    "wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId=\"')]",
+    "wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
+    "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
 
 Parameter werden beim Bereitstellen der Vorlage angegeben. In diesem Beispiel werden der Name des Speicherkontos, in dem Daten gespeichert werden, und der Name der Skalierungsgruppe, in der Daten erfasst werden, angegeben. Außerdem wird in diesem Windows Server-Beispiel nur der Leistungsindikator für die Threadanzahl erfasst. Zum Erfassen von Diagnoseinformationen können alle in Windows oder Linux verfügbaren Leistungsindikatoren verwendet und in die Erweiterungskonfiguration einbezogen werden.
 
@@ -86,7 +87,7 @@ Wenn die Diagnoseerweiterung ausgeführt wird, werden die Daten in einer Tabelle
 
 ![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountBefore2.png)
 
-### Konfigurieren der Ressource „autoScaleSettings“
+### <a name="configure-the-autoscalesettings-resource"></a>Konfigurieren der Ressource „autoScaleSettings“
 
 Die Ressource „autoscaleSettings“ verwendet die Informationen aus der Diagnoseerweiterung, um zu entscheiden, ob die Anzahl virtueller Computer in der Skalierungsgruppe erhöht oder verringert werden muss.
 
@@ -159,18 +160,18 @@ Dieses Beispiel zeigt die Konfiguration der Ressource in der Vorlage:
 
 Im obigen Beispiel werden zwei Regeln erstellt, um Aktionen für die automatische Skalierung zu definieren: Die erste Regel definiert das horizontale Hochskalieren, die zweite das horizontale Herunterskalieren. Diese Werte werden in den Regeln bereitgestellt:
 
-- **metricName**: Der Leistungsindikator, den wir in der Variablen „wadperfcounter“ für die Diagnoseerweiterung definiert haben. Im obigen Beispiel wird der Zähler für die Threadanzahl verwendet.
-- **metricResourceUri**: Der Ressourcenbezeichner der VM-Skalierungsgruppe. Dieser Bezeichner enthält den Namen der Ressourcengruppe, den Namen des Ressourcenanbieters und den Namen der zu skalierenden Skalierungsgruppe.
-- **timeGrain**: Die Granularität der erfassten Metriken. Im vorherigen Beispiel werden Daten in einem Intervall von einer Minute erfasst. Dieser Wert wird zusammen mit „timeWindow“ verwendet.
-- **statistic**: Bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden sollen. Mögliche Werte sind: Average, Min, Max.
-- **timeWindow**: Der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
-- **timeAggregation**: Bestimmt, wie die gesammelten Daten im Laufe der Zeit kombiniert werden sollen. Der Standardwert ist "Average". Mögliche Werte sind: Average, Minimum, Maximum, Last, Total, Count.
-- **operator**: Der Operator, der zum Vergleichen der Metrikdaten und des Schwellenwerts verwendet wird. Mögliche Werte sind: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
-- **threshold**: Der Wert, der die Skalierungsaktion auslöst. Achten Sie auf eine ausreichende Differenz zwischen den Schwellenwerten für das horizontale Hochskalieren und für das horizontale Herunterskalieren. Ist beides auf den gleichen Wert festgelegt, erwartet das System kontinuierlich eine Veränderung und kann daher keine Skalierungsaktion implementieren. Wenn Sie also beispielsweise beide Werte wie im vorherigen Beispiel auf 600 Threads festlegen, funktioniert die Skalierung nicht.
-- **direction**: Bestimmt, welche Aktion bei Erreichen des Schwellenwerts ausgeführt werden soll. Mögliche Werte sind „Increase“ oder „Decrease“.
-- **type**: Die Art der auszuführenden Aktion. Diese Option muss auf „ChangeCount“ festgelegt werden.
-- **value**: Die Anzahl virtueller Computer, die der Skalierungsgruppe hinzugefügt bzw. daraus entfernt werden sollen. Dieser Wert muss 1 oder höher lauten.
-- **cooldown**: Gibt an, wie lange zwischen der letzten Skalierungsaktion und der nächsten Aktion gewartet werden soll. Dieser Wert muss zwischen einer Minute und einer Woche liegen.
+- **metricName** : Der Leistungsindikator, den wir in der Variablen „wadperfcounter“ für die Diagnoseerweiterung definiert haben. Im obigen Beispiel wird der Zähler für die Threadanzahl verwendet.  
+- **metricResourceUri** : Der Ressourcenbezeichner der VM-Skalierungsgruppe. Dieser Bezeichner enthält den Namen der Ressourcengruppe, den Namen des Ressourcenanbieters und den Namen der zu skalierenden Skalierungsgruppe.
+- **timeGrain** : Die Granularität der erfassten Metriken. Im vorherigen Beispiel werden Daten in einem Intervall von einer Minute erfasst. Dieser Wert wird zusammen mit „timeWindow“ verwendet.
+- **statistic** : Bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden sollen. Mögliche Werte sind: Average, Min, Max.
+- **timeWindow** : Der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
+- **timeAggregation** : Bestimmt, wie die gesammelten Daten im Laufe der Zeit kombiniert werden sollen. Der Standardwert ist "Average". Mögliche Werte sind: Average, Minimum, Maximum, Last, Total, Count.
+- **operator** : Der Operator, der zum Vergleichen der Metrikdaten und des Schwellenwerts verwendet wird. Mögliche Werte sind: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
+- **threshold** : Der Wert, der die Skalierungsaktion auslöst. Achten Sie auf eine ausreichende Differenz zwischen den Schwellenwerten für das horizontale Hochskalieren und für das horizontale Herunterskalieren. Ist beides auf den gleichen Wert festgelegt, erwartet das System kontinuierlich eine Veränderung und kann daher keine Skalierungsaktion implementieren. Wenn Sie also beispielsweise beide Werte wie im vorherigen Beispiel auf 600 Threads festlegen, funktioniert die Skalierung nicht.
+- **direction** : Bestimmt, welche Aktion bei Erreichen des Schwellenwerts ausgeführt werden soll. Mögliche Werte sind „Increase“ oder „Decrease“.
+- **type**: Die Art der auszuführenden Aktion. Dieser Wert muss auf „ChangeCount“ festgelegt werden.
+- **value**: Die Anzahl virtueller Computer, die der Skalierungsgruppe hinzugefügt bzw. daraus entfernt werden. Dieser Wert muss 1 oder höher lauten.
+- **cooldown** : Gibt an, wie lange zwischen der letzten Skalierungsaktion und der nächsten Aktion gewartet werden soll. Dieser Wert muss zwischen einer Minute und einer Woche liegen.
 
 Je nach dem verwendeten Leistungsindikator werden einige der Elemente in der Vorlagenkonfiguration unterschiedlich verwendet. Im vorherigen Beispiel wird die Threadanzahl als Leistungsindikator verwendet, und der Schwellenwert wird auf 650 (horizontales Hochskalieren) bzw. auf 550 (horizontales Herunterskalieren) festgelegt. Wenn Sie einen Indikator wie „Prozessorzeit (%)“ verwenden, wird der Wert auf den Prozentsatz der CPU-Auslastung festgelegt, der eine Skalierungsaktion bedingt.
 
@@ -196,18 +197,18 @@ Der Skalierungsgruppe wird ein virtueller Computer hinzugefügt:
 
 Wenn die durchschnittliche Threadanzahl nach einer Abkühlperiode von fünf Minuten noch immer größer ist als 600, wird der Gruppe ein weiterer Computer hinzugefügt. Wenn die durchschnittliche Threadanzahl kleiner als 550 bleibt, wird die Kapazität der Skalierungsgruppe um den Wert 1 verringert, und ein Computer wird aus der Gruppe entfernt.
 
-## Einrichten der Skalierung mithilfe von Azure PowerShell
+## <a name="set-up-scaling-using-azure-powershell"></a>Einrichten der Skalierung mithilfe von Azure PowerShell
 
 Beispiele für die Einrichtung der automatischen Skalierung mithilfe von PowerShell finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md).
 
-## Einrichten der Skalierung mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="set-up-scaling-using-azure-cli"></a>Einrichten der Skalierung mithilfe der Azure-Befehlszeilenschnittstelle
 
 Beispiele für die Einrichtung der automatischen Skalierung mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure Insights – Schnellstartbeispiele für plattformübergreifende Befehlszeilenschnittstelle](../azure-portal/insights-cli-samples.md).
 
-## Untersuchen von Skalierungsaktionen
+## <a name="investigate-scaling-actions"></a>Untersuchen von Skalierungsaktionen
 
-- [Azure-Portal](): Das Portal liefert aktuell eine begrenzte Menge an Informationen.
-- [Azure-Ressourcen-Explorer](): Dieses Tool eignet sich perfekt zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe. Über den folgenden Pfad gelangen Sie zur Instanzansicht für die von Ihnen erstellte Skalierungsgruppe: Abonnements > {Ihr Abonnement} > resourceGroups > {Ihre Ressourcengruppe} > Anbieter > Microsoft.Compute > virtualMachineScaleSets > {Ihre Skalierungsgruppe} > virtualMachines
+- [Azure-Portal]() : Das Portal liefert aktuell eine begrenzte Menge an Informationen.
+- [Azure-Ressourcen-Explorer]() : Dieses Tool eignet sich perfekt zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe. Über den folgenden Pfad gelangen Sie zur Instanzansicht für die von Ihnen erstellte Skalierungsgruppe: Abonnements > {Ihr Abonnement} > resourceGroups > {Ihre Ressourcengruppe} > Anbieter > Microsoft.Compute > virtualMachineScaleSets > {Ihre Skalierungsgruppe} > virtualMachines
 - Azure PowerShell: Verwenden Sie den folgenden Befehl, um Informationen zu erhalten:
 
         Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
@@ -215,12 +216,16 @@ Beispiele für die Einrichtung der automatischen Skalierung mithilfe der Azure-B
         
 - Stellen Sie eine Verbindung mit dem virtuellen Jumpbox-Computer her, wie Sie dies auch für jeden anderen Computer tun würden. Sie können dann per Remoteverbindung auf die virtuellen Computer der Skalierungsgruppe zugreifen, um die einzelnen Prozesse zu überwachen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 - Unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-autoscale.md) finden Sie ein Beispiel für die Erstellung einer Skalierungsgruppe mit automatischer Skalierung.
-- Beispiele für Überwachungsfeatures von Azure Insights finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md).
+- Beispiele für Überwachungsfeatures von Azure Insights finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md)
 - Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-autoscale-to-webhook-email.md).
-- Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights finden Sie [hier](../azure-portal/insights-auditlog-to-webhook-email.md).
+- Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights finden Sie [hier](../azure-portal/insights-auditlog-to-webhook-email.md)
 - Erfahren Sie mehr über [erweiterte Szenarien für die automatische Skalierung](./virtual-machine-scale-sets-advanced-autoscale.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

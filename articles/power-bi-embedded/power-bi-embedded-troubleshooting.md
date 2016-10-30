@@ -3,8 +3,8 @@
    description="Problembehandlung bei der Vorschau von Microsoft Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="mgblythe"
-   manager="NA"
+   authors="guyinacube"
+   manager="erikre"
    editor=""
    tags=""/>
 <tags
@@ -13,14 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/29/2016"
-   ms.author="mblythe"/>
+   ms.date="10/04/2016"
+   ms.author="asaxton"/>
 
-# Problembehandlung bei der Vorschau von Microsoft Power BI Embedded
+
+# <a name="microsoft-power-bi-embedded-preview-troubleshooting"></a>Problembehandlung bei der Vorschau von Microsoft Power BI Embedded
 Dieser Artikel enthält Möglichkeiten zur Problembehandlung bei **Power BI Embedded**.
 
 <a name="connection-string"/>
-## Festlegen von SQL Server-Verbindungszeichenfolgen
+## <a name="setting-sql-server-connection-strings"></a>Festlegen von SQL Server-Verbindungszeichenfolgen
 Beim Festlegen einer SQL Server-Verbindungszeichenfolge müssen Sie ein bestimmtes Format befolgen. Unten sehen Sie ein Beispiel für eine Verbindungszeichenfolge für SQL Server.
 
 ```
@@ -29,15 +30,19 @@ Beim Festlegen einer SQL Server-Verbindungszeichenfolge müssen Sie ein bestimmt
 
 Weitere Informationen zu SQL Server-Verbindungszeichenfolgen finden Sie in den folgenden Artikeln:
 
--	[SQL Server-Verbindungszeichenfolgen](https://msdn.microsoft.com/library/jj653752.aspx)
--	[SqlConnection.ConnectionString](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.connectionstring.aspx)
+-   [SQL Server-Verbindungszeichenfolgen](https://msdn.microsoft.com/library/jj653752.aspx)
+-   [SqlConnection.ConnectionString](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.connectionstring.aspx)
 
 <a name="credentials"/>
-## Festlegen von Anmeldeinformationen
+## <a name="setting-credentials"></a>Festlegen von Anmeldeinformationen
 Falls Sie Anmeldeinformationen für eine Entwicklungs- oder eine Stagingumgebung besitzen, d.h. einen Benutzernamen und ein Kennwort, müssen Sie möglicherweise Anmeldeinformationen aktualisieren, die einer Produktionslösung entsprechen.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 - [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
 - [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

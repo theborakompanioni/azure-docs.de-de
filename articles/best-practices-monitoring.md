@@ -17,14 +17,15 @@
    ms.date="07/13/2016"
    ms.author="masashin"/>
 
-# Anleitung zur Überwachung und Diagnose
+
+# <a name="monitoring-and-diagnostics-guidance"></a>Anleitung zur Überwachung und Diagnose
 
 [AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 Verteilte Anwendungen und Dienste in der Cloud sind naturgemäß komplexe Softwarekomponenten, die viele bewegliche Teile umfassen. In einer Produktionsumgebung sollten Sie unbedingt nachvollziehen können, auf welche Weise Benutzer Ihr System verwenden. Ferner müssen Sie in der Lage sein, die Ressourcennutzung nachzuverfolgen und allgemein die Integrität und Leistung des Systems zu überwachen. Diese Informationen dienen als Diagnosehilfe, um Probleme zu erkennen und zu korrigieren sowie potenzielle Probleme frühzeitig zu erkennen und zu verhindern.
 
-## Überwachung- und Diagnoseszenarien
+## <a name="monitoring-and-diagnostics-scenarios"></a>Überwachung- und Diagnoseszenarien
 Durch die Überwachung erhalten einen Einblick in die Funktionsweise eines Systems. Die Überwachung ist ein wichtiger Aspekt beim Einhalten von Zielen zur Servicequalität. Häufige Szenarien für das Sammeln von Überwachungsdaten sind:
 
 - Sicherstellen, dass das System fehlerfrei bleibt.
@@ -46,10 +47,10 @@ In den folgenden Abschnitten werden diese Szenarien ausführlich beschrieben. Di
 3. Die unformatierten Instrumentierungsdaten, die zur Unterstützung des Szenarios erforderlich sind, und mögliche Quellen für diese Informationen
 4. Wie Rohdaten analysiert und kombiniert werden können, um sinnvolle Diagnoseinformationen zu generieren
 
-## Systemüberwachung
+## <a name="health-monitoring"></a>Systemüberwachung
 Ein System ist fehlerfrei, wenn es ausgeführt wird und Anforderungen verarbeiten kann. Die Systemüberwachung dient zum Generieren einer Momentaufnahme der aktuellen Systemintegrität, damit Sie überprüfen können, ob alle Komponenten des Systems wie erwartet funktionieren.
 
-### Anforderungen für die Systemüberwachung
+### <a name="requirements-for-health-monitoring"></a>Anforderungen für die Systemüberwachung
 Ein Operator sollte schnell (innerhalb weniger Sekunden) benachrichtigt werden, wenn ein Teil des Systems als fehlerhaft eingestuft wird. Der Operator sollte ermitteln können, welche Teile des Systems ordnungsgemäß ausgeführt werden und in welchen Teile Probleme auftreten. Die Systemintegrität kann über ein Ampelsystem angezeigt werden:
 
 - Rot für fehlerhaft (das System wurde beendet)
@@ -58,7 +59,7 @@ Ein Operator sollte schnell (innerhalb weniger Sekunden) benachrichtigt werden, 
 
 Eine umfassende Systemüberwachung ermöglicht es einem Operator, der einen Drilldown durch das System zum Anzeigen des Integritätsstatus von Subsystemen und Komponenten ausführen. Wenn z. B. das gesamte System als teilweise fehlerfrei dargestellt ist, sollte der Operator in der Lage sein, es zu vergrößern und zu bestimmen, welche Funktionalität zurzeit nicht verfügbar ist.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Rohdaten, die zur Unterstützung der Systemüberwachung erforderlich sind, können als Ergebnis folgender Aktionen generiert werden:
 
 - Nachverfolgen der Ausführung von Benutzeranforderungen. Diese Informationen können verwendet werden, um zu bestimmen, welche Anforderungen erfolgreich ausgeführt wurden, welche fehlgeschlagen sind und wie lange jede Anforderung dauert.
@@ -68,7 +69,7 @@ Die Rohdaten, die zur Unterstützung der Systemüberwachung erforderlich sind, k
 - Endpunktüberwachung. Dieser Mechanismus wird im Abschnitt „Verfügbarkeitsüberwachung“ ausführlicher beschrieben.
 - Sammeln von umgebenden Leistungsinformationen, z. B. CPU-Auslastung im Hintergrund oder E/A-Aktivität (einschließlich Netzwerk).
 
-### Analysieren von Zustandsdaten
+### <a name="analyzing-health-data"></a>Analysieren von Zustandsdaten
 Die Systemüberwachung soll hauptsächlich rasch angeben können, ob das System ausgeführt wird. Durch die sofortige Analyse heißer Daten kann eine Warnung ausgelöst werden, wenn eine kritische Komponente als fehlerhaft erkannt wird. (Beispielsweise reagiert sie nicht auf eine aufeinanderfolgende Reihe von Pings.) Der Operator kann dann die entsprechenden Korrekturmaßnahmen einleiten.
 
 Ein fortgeschritteneres System kann ein Prognoseelement umfassen, das eine kalte Analyse über die letzten und die aktuellen Workloads ausführt. Durch eine kalte Analyse können Sie Trends ermitteln und feststellen, ob das System wahrscheinlich fehlerfrei bleibt oder ob das System zusätzliche Ressourcen benötigt. Dieses Prognoseelement sollte auf wichtigen Leistungsmetriken wie den folgenden basieren:
@@ -79,25 +80,25 @@ Ein fortgeschritteneres System kann ein Prognoseelement umfassen, das eine kalte
 
 Wenn der Wert einer Metrik einen festgelegten Schwellenwert überschreitet, kann das System eine Warnung auslösen, damit von einem Operator oder durch eine automatische Skalierung (falls verfügbar) vorbeugende Maßnahmen für das Aufrechterhalten der Systemintegrität ergriffen werden können. Diese Aktionen beinhalten möglicherweise das Hinzufügen von Ressourcen, den Neustart eines oder mehrerer fehlschlagender Dienste oder die Drosselung auf Anforderungen mit niedrigerer Priorität.
 
-## Verfügbarkeitsüberwachung
+## <a name="availability-monitoring"></a>Verfügbarkeitsüberwachung
 Ein wirklich fehlerfreies System erfordert, dass die Komponenten und Subsysteme, aus denen das System besteht, verfügbar sind. Die Verfügbarkeitsüberwachung ist mit der Integritätsüberwachung eng verknüpft. Während die Integritätsüberwachung jedoch eine sofortige Ansicht des aktuellen Systemzustands bereitstellt, ist die Verfügbarkeitsüberwachung für das Nachverfolgen der Verfügbarkeit des Systems und seiner Komponenten zuständig und erstellt Statistiken über die Betriebszeit des Systems.
 
 In vielen Systemen sind einige Komponenten (z. B. eine Datenbank) mit integrierten Redundanz konfiguriert, um schnelles Failover im Falle eines schwerwiegenden Fehlers oder eines Verlusts der Verbindung zuzulassen. Im Idealfall sollten Benutzer gar nicht bemerken, dass ein Fehler aufgetreten ist. Aus der Perspektive der Verfügbarkeitsüberwachung ist es jedoch notwendig, so viele Informationen wie möglich über solche Fehler zu sammeln, um die Ursache zu ermitteln und Korrekturmaßnahmen zu ergreifen, damit sie sich nicht wiederholen.
 
 Die Daten, die zum Nachverfolgen der Verfügbarkeit erforderlich sind, können von einer Reihe von Faktoren auf niedrigerer Ebene abhängen. Viele dieser Faktoren beziehen sich möglicherweise speziell auf Anwendung, System und Umgebung. Ein effektives Überwachungssystem erfasst die Verfügbarkeitsdaten, die diesen Faktoren auf niedriger Ebene entsprechen, und aggregiert diese anschließend, um einen allgemeinen Überblick über das System zu erhalten. Beispielsweise können in einem E-Commerce-System die Geschäftsfunktionen, mit denen der Kunde Bestellungen aufgeben kann, vom Repository abhängen, in dem Bestelldetails gespeichert sind, und vom Zahlungssystem, das die finanziellen Transaktionen für die Zahlung dieser Aufträge verarbeitet. Die Verfügbarkeit des Systemteils, der für die Platzierung von Bestellungen zuständig ist, ist daher eine Funktion der Verfügbarkeit des Repositorys und des Zahlungssubsystems.
 
-### Anforderungen für die Verfügbarkeitsüberwachung
+### <a name="requirements-for-availability-monitoring"></a>Anforderungen für die Verfügbarkeitsüberwachung
 Ein Operator sollte auch die bisherige Verfügbarkeit der einzelnen Systeme und Subsysteme anzeigen können und anhand dieser Informationen Trends erkennen, die in einem oder mehreren Subsystemen in regelmäßigen Abständen Fehler verursachen. (Fallen Dienste zu einer bestimmten Tageszeit aus, die den Spitzenverarbeitungszeiten entspricht?)
 
 Eine Überwachungslösung sollte eine unmittelbare und historische Ansicht der Verfügbarkeit bzw. Nichtverfügbarkeit der einzelnen Subsysteme bereitstellen. Sie sollte außerdem einen Operator schnell warnen können, wenn mindestens ein Dienst ausfällt oder wenn Benutzer keine Verbindung mit Diensten herstellen können. Hierbei geht es nicht nur darum, die einzelnen Dienste zu überwachen, sondern auch darum, die von den einzelnen Benutzern durchgeführten Aktionen zu untersuchen, wenn beim Kommunikationsversuch mit einem Dienst ein Fehler auftritt. In gewissem Umfang sind Verbindungsfehler normal und können durch vorübergehende Fehler verursacht werden. Es kann jedoch hilfreich sein, dem System das Ausgeben einer Warnung für die Anzahl von Verbindungsfehlern mit einem bestimmten Subsystem zu ermöglichen, die während eines bestimmten Zeitraums auftreten.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Wie bei der Integritätsüberwachung können die Rohdaten zur Unterstützung der Verfügbarkeitsüberwachung als Ergebnis der synthetischen Benutzerüberwachung und der Protokollierung aller Ausnahmen, Fehler und Warnungen generiert werden. Darüber hinaus können Verfügbarkeitsdaten durch eine Endpunktüberwachung abgerufen werden. Die Anwendung kann einen oder mehrere Integritätsendpunkte offenlegen, von dem jeder den Zugriff auf den Funktionsbereich innerhalb des Systems prüft. Das Überwachungssystem kann jeden Endpunkt nach einem definierten Zeitplan pingen und die Ergebnisse erfassen (erfolgreich oder Fehler).
 
 Alle Timeouts, Netzwerkkonnektivitätsfehler und wiederholte Verbindungsversuche müssen aufgezeichnet werden. Alle Daten sollten mit einem Zeitstempel versehen sein.
 
 <a name="analyzing-availability-data"></a>
-### Analysieren von Verfügbarkeitsdaten
+### <a name="analyzing-availability-data"></a>Analysieren von Verfügbarkeitsdaten
 Die Instrumentierungsdaten müssen zusammengefasst und korreliert werden, um die folgenden Arten der Analyse zu unterstützen:
 
 - Die sofortige Verfügbarkeit des Systems und der Subsysteme.
@@ -111,9 +112,9 @@ Sie können die prozentuale Verfügbarkeit eines Diensts über einen Zeitraum mi
 %Availability =  ((Total Time – Total Downtime) / Total Time ) * 100
 ```
 
-Dies ist zu SLA-Zwecken hilfreich. (Die [SLA-Überwachung](#SLA-monitoring) wird weiter unten in diesem Leitfaden ausführlicher beschrieben). Die Definition der _Ausfallzeiten_ hängt vom Dienst ab. Z. B. definiert der Visual Studio Team Services-Builddienst Ausfallzeiten als den Zeitraum (Gesamtzahl der Minuten), in dem der Builddienst nicht verfügbar ist. Eine Minute wird als nicht verfügbar betrachtet, wenn alle fortlaufend an den Builddienst gesendeten HTTP-Anforderungen zum Ausführen kundeninitiierter Vorgänge während dieser Minute zu einem Fehlercode führen oder keine Antwort zurückgeben.
+Dies ist zu SLA-Zwecken hilfreich. (Die [SLA-Überwachung](#SLA-monitoring) wird weiter unten in diesem Leitfaden ausführlicher beschrieben.) Die Definition von _Downtime_ hängt vom Dienst ab. Z. B. definiert der Visual Studio Team Services-Builddienst Ausfallzeiten als den Zeitraum (Gesamtzahl der Minuten), in dem der Builddienst nicht verfügbar ist. Eine Minute wird als nicht verfügbar betrachtet, wenn alle fortlaufend an den Builddienst gesendeten HTTP-Anforderungen zum Ausführen kundeninitiierter Vorgänge während dieser Minute zu einem Fehlercode führen oder keine Antwort zurückgeben.
 
-## Leistungsüberwachung
+## <a name="performance-monitoring"></a>Leistungsüberwachung
 Während das System (durch eine wachsende Anzahl von Benutzern) immer mehr belastet wird, wächst die Größe der Datasets, auf die diese Benutzer zugreifen, und die Fehlerwahrscheinlichkeit für die einzelnen Komponenten nimmt zu. Häufig ist eine Abnahme der Leistung Komponentenfehlern vorangestellt. Wenn Sie in der Lage sind, eine solche Leistungsabnahme zu erkennen, können Sie proaktive Maßnahmen zur Abhilfe ergreifen.
 
 Die Systemleistung hängt von einer Reihe von Faktoren ab. Jeder dieser Faktoren wird in der Regel mithilfe von Leistungskennzahlen (Key Performance Indicators, KPIs) gemessen, z. B. die Anzahl von Datenbanktransaktionen pro Sekunde oder die Menge der Netzwerkanforderungen, die in einem bestimmten Zeitrahmen erfolgreich bearbeitet werden. KPIs können als spezifische Leistungskennzahlen zur Verfügung stehen oder aus einer Kombination von Metriken abgeleitet werden.
@@ -122,7 +123,7 @@ Die Systemleistung hängt von einer Reihe von Faktoren ab. Jeder dieser Faktoren
 
 > Sie sollten auch sicherstellen, dass die Überwachung zu Leistungszwecken keine Belastung für das System darstellt. Sie können möglicherweise die Detailebene für die in der Leistungsüberwachung gesammelten Daten dynamisch anpassen.
 
-### Anforderungen für die Leistungsüberwachung
+### <a name="requirements-for-performance-monitoring"></a>Anforderungen für die Leistungsüberwachung
 Um die Systemleistung zu untersuchen, muss ein Operator in der Regel Informationen wie diese erhalten:
 
 - Die Antwortrate bei Benutzeranforderungen.
@@ -151,14 +152,14 @@ Bei allen Visualisierungen sollte ein Operator die Möglichkeit erhalten, einen 
 
 Ein Operator sollte basierend auf den Leistungsmeasures eine Warnung für jeden angegebenen Wert während eines angegebenen Zeitintervalls ausgeben können.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Durch Überwachen der Fortschritte von eingehenden und das System passierenden Benutzeranforderungen können Sie allgemeine Leistungsdaten sammeln (Durchsatz, Anzahl gleichzeitiger Benutzer, Anzahl von Geschäftstransaktionen, Fehlerraten und so weiter). Dies beinhaltet das Einbinden von Ablaufverfolgungsanweisungen an wichtigen Punkten im Anwendungscode zusammen mit Informationen zur zeitlichen Steuerung. Alle Fehler, Ausnahmen und Warnungen sollten mit einer ausreichenden Datenmenge erfasst werden, damit ein Bezug zu den Anforderungen hergestellt werden kann, die sie verursacht haben. Das IIS-Protokoll (Internet Information Services) ist eine weitere nützliche Datenquelle.
 
 Wenn möglich, sollten Sie Leistungsdaten für alle externen Systeme erfassen, die die Anwendung verwendet. Diese externen Systeme bieten möglicherweise eigene Leistungsindikatoren oder andere Features für die Anforderung von Leistungsdaten. Wenn dies nicht möglich ist, erfassen Sie Informationen wie z. B. die Start- und Endzeit der einzelnen Anforderungen an ein externes System zusammen mit dem Status des Vorgangs (Erfolgreich, Fehler oder Warnung). Beispielsweise können Sie einen Stoppuhransatz verfolgen, um Anforderungen zeitlich zu erfassen: Starten Sie einen Timer, wenn die Anforderung gestartet wird, und stoppen Sie den Timer, wenn die Anforderung abgeschlossen ist.
 
 Detaillierte Low-Level-Leistungsdaten für einzelne Komponenten in einem System stehen möglicherweise über Features und Dienste wie Windows-Leistungsindikatoren und Azure-Diagnose zur Verfügung.
 
-### Analysieren von Leistungsdaten
+### <a name="analyzing-performance-data"></a>Analysieren von Leistungsdaten
 Ein Großteil der Analysearbeit besteht aus dem Aggregieren von Leistungsdaten nach Benutzeranforderungstyp und/oder nach Subsystem oder Dienst, an das bzw. den die einzelnen Anforderungen gesendet werden. Ein Beispiel für eine Benutzeranforderung ist das Hinzufügen eines Elements zu einem Einkaufswagen oder der Auftragsabschluss in einem E-Commerce-System.
 
 Eine weitere häufige Anforderung ist die Zusammenfassung von Leistungsdaten in ausgewählten Prozentsätzen. Beispielsweise kann ein Operator die Antwortzeiten für 99 Prozent der Anforderungen, 95 Prozent der Anforderungen und 70 Prozent der Anforderungen ermitteln. Möglicherweise sind für jeden Prozentwert SLA-Ziele oder andere Ziele festgelegt. Die fortlaufenden Ergebnisse sollten nahezu in Echtzeit gemeldet werden, um Probleme sofort zu erkennen. Außerdem sollten die Ergebnisse zu statistischen Zwecken über längere Zeit aggregiert werden.
@@ -167,7 +168,7 @@ Im Fall von leistungsbeeinträchtigenden Latenzproblemen sollte ein Operator in 
 
 Je nach Visualisierungsanforderungen kann es hilfreich sein, einen Datencube zu generieren und zu speichern, der Ansichten der Rohdaten enthält. Dieser Datencube kann komplexe Ad-hoc-Abfragen und die Analyse der Leistungsdaten ermöglichen.
 
-## Sicherheitsüberwachung
+## <a name="security-monitoring"></a>Sicherheitsüberwachung
 Alle kommerziellen Systeme, die sensible Daten enthalten, müssen eine Sicherheitsstruktur implementieren. Die Komplexität des Sicherheitsmechanismus ist in der Regel eine Funktion der Sensibilität der Daten. In einem System, das die Authentifizierung von Benutzern verlangt, sollten Sie Folgendes aufzeichnen:
 
 - Alle Anmeldeversuche, sowohl fehlerhafte als auch erfolgreiche.
@@ -176,7 +177,7 @@ Alle kommerziellen Systeme, die sensible Daten enthalten, müssen eine Sicherhei
 
 Die Überwachung kann dabei helfen, Angriffe auf das System zu erkennen. Zum Beispiel kann eine große Anzahl misslungener Anmeldeversuche auf einen Brute-Force-Angriff hinweisen. Ein unerwarteter Anstieg von Anforderungen kann das Ergebnis eines verteilten Denial-of-Service-Angriffs (DDoS) sein. Sie müssen vorbereitet sein, um alle Anforderungen an alle Ressourcen unabhängig von der Quelle dieser Anforderungen zu überwachen. Ein System mit einer Sicherheitslücke bei der Anmeldung stellt möglicherweise unbeabsichtigt Ressourcen zum externen Gebrauch zur Verfügung, ohne dass ein Benutzer sich dafür anmelden muss.
 
-### Anforderungen für die Sicherheitsüberwachung
+### <a name="requirements-for-security-monitoring"></a>Anforderungen für die Sicherheitsüberwachung
 Die wichtigsten Aspekte der Sicherheitsüberwachung sollten einem Operator schnell Folgendes ermöglichen:
 
 - Erkennen von Angriffsversuchen von einer nicht authentifizierten Entität.
@@ -193,19 +194,19 @@ Die einem Operator bereitgestellten Informationen sollten für jede Anforderung 
 
 Eine wichtige Rolle bei der Wahrung der Sicherheit eines Systems ist das schnelle Erkennen von Aktionen, die vom üblichen Muster abweichen. Informationen wie z. B. die Anzahl fehlerhafter und/oder erfolgreicher Anmeldeanforderungen kann visuell dargestellt werden, um zu erkennen, ob zu einer ungewöhnlichen Zeit eine Spitze in der Aktivität vorliegt. (Ein Beispiel für diese Aktivität ist, wenn Benutzer sich um 3:00 Uhr morgens anmelden und eine große Anzahl von Vorgängen ausführen, wenn der Arbeitstag um 9:00 Uhr beginnt). Anhand dieser Informationen kann auch die zeitbasierte automatische Skalierung konfiguriert werden. Wenn z. B. ein Operator beobachtet, dass eine große Anzahl von Benutzern sich regelmäßig zu einer bestimmten Tageszeit anmeldet, kann er den Start zusätzlicher Authentifizierungsdienste veranlassen, um das Arbeitsvolumen verarbeiten zu können. Er kann diese zusätzlichen Dienste wieder beenden, wenn die Spitze vorbei ist.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Sicherheit ist bei den meisten verteilten Systemen ein allumfassender Aspekt. Die relevanten Daten werden wahrscheinlich an mehreren Punkten in einem System generiert. Sie sollten die Implementierung eines SIEM-Ansatzes (Security Information and Event Management) erwägen, um die Sicherheitsinformationen aus Ereignissen zu sammeln, die von der Anwendung, Netzwerkgeräten, Servern, Firewalls, Antivirensoftware und anderen Elementen des Eindringschutzes ausgelöst wurden.
 
 Die Sicherheitsüberwachung kann Daten aus Tools integrieren, die nicht Teil der Anwendung sind. Dazu gehören beispielsweise Hilfsprogramme, die Portüberwachungsaktivitäten durch externe Einrichtungen ermitteln, oder Netzwerkfilter, die nicht authentifizierte Zugriffsversuche auf Anwendung und Daten erkennen.
 
 In allen Fällen muss ein Administrator anhand der erfassten Daten die Art des Angriffs ermitteln und die entsprechenden Gegenmaßnahmen einleiten können.
 
-### Analysieren von Sicherheitsdaten
+### <a name="analyzing-security-data"></a>Analysieren von Sicherheitsdaten
 Ein Feature der Sicherheitsüberwachung ist die Vielzahl von Quellen, aus denen die Daten entstehen. Die verschiedenen Formate und Detailebenen erfordern häufig eine komplexe Analyse der erfassten Daten, um sie zu einem Thread zusammenhängender Informationen zusammenzufassen. Abgesehen von den einfachsten Fällen (z. B. dem Erkennen einer großen Anzahl fehlerhafter Anmeldungen oder wiederholter nicht autorisierter Zugriffsversuche auf wichtige Ressourcen) ist es gelegentlich nicht möglich, eine komplexe automatisierte Verarbeitung von Sicherheitsdaten durchzuführen. Stattdessen kann es sich anbieten, diese Daten mit einem Zeitstempel, ansonsten aber in ihrer ursprünglichen Form, in ein sicheres Repository zu schreiben, um sie einer manuellen Expertenanalyse zu unterziehen.
 
 <a name="SLA-monitoring"></a>
 
-## SLA-Überwachung
+## <a name="sla-monitoring"></a>SLA-Überwachung
 Viele kommerzielle Systeme, die zahlende Kunden unterstützen, bieten Garantien in Bezug auf die Leistung des Systems in Form von SLAs. Im Wesentlichen wird durch SLAs festgelegt, dass das System ein definiertes Arbeitsvolumen innerhalb eines vereinbarten Zeitrahmens und ohne Verlust wichtiger Informationen verarbeiten kann. Die SLA-Überwachung soll sicherstellen, dass das System messbare SLAs erfüllen kann.
 
 > [AZURE.NOTE] Die SLA-Überwachung ist mit der Leistungsüberwachung eng verknüpft. Während die Leistungsüberwachung jedoch sicherstellen soll, dass das System _optimal_ funktioniert, unterliegt die SLA-Überwachung einer vertraglichen Verpflichtung, die definiert, was _optimal_ eigentlich bedeutet.
@@ -218,7 +219,7 @@ SLAs werden häufig wie folgt definiert:
 
 > [AZURE.NOTE] Einige Verträge für kommerzielle Systeme können auch SLAs für den Kundensupport umfassen. Beispielsweise könnten alle Helpdeskanfragen innerhalb von fünf Minuten beantwortet und 99 Prozent aller Probleme innerhalb eines Arbeitstags vollständig behoben werden. Effektive [Problemverfolgung](#issue-tracking) (weiter unten in diesem Abschnitt beschrieben) ist der Schlüssel für die Einhaltung von SLAs wie diesen.
 
-### Anforderungen für die SLA-Überwachung
+### <a name="requirements-for-sla-monitoring"></a>Anforderungen für die SLA-Überwachung
 Auf der höchsten Ebene sollte ein Operator auf einen Blick feststellen können, ob das System die vereinbarten SLAs erfüllt oder nicht. Falls nicht, sollte der Operator einen Drilldown durchführen und die zugrunde liegenden Faktoren untersuchen können, um die Gründe für die nicht dem Standard entsprechende Leistung zu ermitteln.
 
 Typische Indikatoren höherer Ebene, die visuell dargestellt werden können, umfassen:
@@ -236,7 +237,7 @@ Eine Cloud-Anwendung umfasst wahrscheinlich eine Anzahl von Subsystemen und Komp
 
 Zu Warnzwecken sollte das System möglicherweise ein Ereignis auslösen, wenn einer der allgemeinen Indikatoren den angegebenen Schwellenwert überschreitet. Die Low-Level-Details der verschiedenen Faktoren, aus denen sich der High-Level-Indikator zusammensetzt, sollten dem Warnsystem als Kontextdaten zur Verfügung stehen.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Rohdaten, die zur Unterstützung der SLA-Überwachung erforderlich sind, ähneln den Rohdaten, die für die Leistungsüberwachung benötigt werden, und umfassen zudem einige Aspekte der Integritäts- und Verfügbarkeitsüberwachung. (Weitere Informationen hierzu finden Sie in den betreffenden Abschnitten.) Sie können diese Daten erfassen durch:
 
 - Durchführen von Endpunkt-Überwachung
@@ -247,28 +248,28 @@ Die Rohdaten, die zur Unterstützung der SLA-Überwachung erforderlich sind, äh
 
 Alle Daten müssen zeitlich festgelegt und mit einem Zeitstempel versehen werden.
 
-### Analysieren von SLA-Daten
+### <a name="analyzing-sla-data"></a>Analysieren von SLA-Daten
 Die Instrumentierungsdaten müssen aggregiert werden, um einen Überblick über die allgemeine Leistung des Systems zu generieren. Aggregierte Daten müssen auch einen Drilldown unterstützen, um eine Untersuchung der Leistung der zugrunde liegenden Subsysteme zu ermöglichen. Sie sollten z. B. in der Lage sein:
 
 - Die Gesamtzahl der Benutzeranforderungen in einem bestimmten Zeitraum zu berechnen und die Erfolgs- und Fehlerereignisrate dieser Anforderungen zu ermitteln.
 - Die Antwortzeiten von Benutzeranforderungen zu kombinieren, um einen allgemeinen Überblick über die Reaktionszeiten zu generieren.
-- Den Status der Benutzeranforderungen zu analysieren, um die gesamte Antwortzeit einer Anforderung in die Antwortzeiten der einzelnen Arbeitselemente in dieser Anforderung zu unterteilen.
+- Den Status der Benutzeranforderungen zu analysieren, um die gesamte Antwortzeit einer Anforderung in die Antwortzeiten der einzelnen Arbeitselemente in dieser Anforderung zu unterteilen.  
 - Die Gesamtverfügbarkeit des Systems als Betriebszeit in Prozent für einen bestimmten Zeitraum zu ermitteln.
 - Die zeitliche Verfügbarkeit in Prozent für die einzelnen Komponenten und Dienste im System zu analysieren. Hierzu gehört z. B. die Analyse von Protokollen, die von Drittanbieterdiensten erstellt wurden.
 
-Viele kommerzielle Systeme sind erforderlich, um reale Leistungsangaben gegen vereinbarte SLAs für einen bestimmten Zeitraum zu melden, in der Regel einen Monat. Diese Informationen können verwendet werden, um Guthaben oder andere Formen der Rückzahlung für Kunden zu berechnen, wenn während dieses Zeitraums die SLAs nicht erfüllt werden. Sie können die Verfügbarkeit für einen Dienst berechnen, indem Sie die im Abschnitt [Analysieren von Verfügbarkeitsdaten](#analyzing-availability-data) beschriebene Technik verwenden.
+Viele kommerzielle Systeme sind erforderlich, um reale Leistungsangaben gegen vereinbarte SLAs für einen bestimmten Zeitraum zu melden, in der Regel einen Monat. Diese Informationen können verwendet werden, um Guthaben oder andere Formen der Rückzahlung für Kunden zu berechnen, wenn während dieses Zeitraums die SLAs nicht erfüllt werden. Sie können die Verfügbarkeit für einen Dienst berechnen, indem Sie die im Abschnitt [Analysieren von Verfügbarkeitsdaten](#analyzing-availability-data)beschriebene Technik verwenden.
 
 Für interne Zwecke kann eine Organisation auch die Anzahl und Art der Vorfälle nachverfolgen, die die Ursache für das Fehlschlagen von Diensten waren. Erfahren Sie, wie Sie diese Probleme schnell beheben oder vollständig beseitigen. Dies trägt zur Reduzierung von Ausfallzeiten bei und dient der Erfüllung der SLAs.
 
-## Überwachung
+## <a name="auditing"></a>Überwachung
 Je nach Art der Anwendung gibt es möglicherweise gesetzliche Bestimmungen, die Anforderungen für die Überwachung von Benutzervorgängen und für das Aufzeichnen des gesamten Datenzugriffs festlegen. Die Überwachung kann nachweisen, dass Kunden mit bestimmten Anforderungen verknüpft sind. Nichtabstreitbarkeit ist ein wichtiger Faktor bei vielen E-Business-Systemen zur Erhaltung der Vertrauensstellung zwischen einem Kunden und der Organisation, die für die Anwendung oder den Dienst zuständig ist.
 
-### Anforderungen für das Überwachen
+### <a name="requirements-for-auditing"></a>Anforderungen für das Überwachen
 Analysten müssen in der Lage sein, die Abfolge der von den Benutzern durchgeführten Geschäftsvorgänge zu verfolgen, um die Aktionen des Benutzers nachvollziehen zu können. Dies kann einfach zu Aufzeichnungszwecken oder im Rahmen einer forensischen Untersuchung erforderlich sein.
 
 Überwachungsinformationen sind sehr vertraulich. Wahrscheinlich umfassen sie Daten, durch die die Benutzer des Systems sowie die von ihnen ausgeführten Aufgaben identifiziert werden. Aus diesem Grund werden Überwachungsinformationen wahrscheinlich in Form von Berichten bereitgestellt, die nur vertrauenswürdigen Analysten zur Verfügung stehen, und nicht als interaktives System, das grafische Drilldownvorgänge unterstützt. Ein Analyst sollte eine Reihe von Berichten generieren können. Beispielsweise können Berichte alle Benutzeraktivitäten während eines angegebenen Zeitraums auflisten, die Abfolge der Aktivitäten für einen einzelnen Benutzer beschreiben oder die aufeinanderfolgenden Vorgänge für eine oder mehrere Ressourcen umfassen.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die primären Informationsquellen für die Überwachung können umfassen:
 
 - Das Sicherheitssystem, das die Benutzerauthentifizierung verwaltet.
@@ -277,10 +278,10 @@ Die primären Informationsquellen für die Überwachung können umfassen:
 
 Das Format der Überwachungsdaten und die Form, in der sie gespeichert sind, unterliegen möglicherweise gesetzlichen Anforderungen. Beispielsweise können die Daten möglicherweise in keiner Form bereinigt werden. (Sie müssen im ursprünglichen Format aufgezeichnet werden.) Der Zugriff auf das Repository, in dem sie gespeichert sind, muss geschützt sein, um Manipulationen zu verhindern.
 
-### Analysieren von Überwachungsdaten
+### <a name="analyzing-audit-data"></a>Analysieren von Überwachungsdaten
 Analysten müssen auf die Rohdaten in ihrer Gesamtheit und ursprünglichen Form zugreifen können. Abgesehen von der Anforderung zum Generieren allgemeiner Überwachungsberichte, sind die Tools zum Analysieren der Daten wahrscheinlich spezialisiert und befinden sich außerhalb des Systems.
 
-## Nutzungsüberwachung
+## <a name="usage-monitoring"></a>Nutzungsüberwachung
 Die Nutzungsüberwachung verfolgt, wie die Features und Komponenten einer Anwendung verwendet werden. Ein Operator kann die erfassten Daten zu folgenden Zwecken verwenden:
 
 - Ermitteln sehr häufig verwendeter Features und potenzieller Hotspots im System. Elemente mit hohem Datenverkehr könnten von funktioneller Partitionierung oder sogar der Replikation profitieren, um die Last gleichmäßig zu verteilen. Ein Operator kann anhand dieser Informationen auch ermitteln, welche Funktionen selten verwendet werden und mögliche Kandidaten für die Stilllegung sind oder in einer zukünftigen Version des Systems ersetzt werden können.
@@ -289,7 +290,7 @@ Die Nutzungsüberwachung verfolgt, wie die Features und Komponenten einer Anwend
 - Generieren von Abrechnungsinformationen. Eine kommerzielle Anwendung oder ein Dienst mit mehreren Mandanten kann Kunden die verwendeten Ressourcen in Rechnung stellen.
 - Erzwingen von Kontingenten. Wenn ein Benutzer in einem System mit mehreren Mandanten das kostenpflichtige Kontingent an Verarbeitungszeit oder Ressourcenverbrauch innerhalb eines bestimmten Zeitraums überschreitet, kann der Zugriff begrenzt oder die Verarbeitung gedrosselt werden.
 
-### Anforderungen für die Nutzungsüberwachung
+### <a name="requirements-for-usage-monitoring"></a>Anforderungen für die Nutzungsüberwachung
 Um die Systemnutzung zu untersuchen, muss ein Operator in der Regel Informationen wie diese erhalten:
 
 - Die Anzahl der Anforderungen, die von den einzelnen Subsystemen verarbeitet und an die einzelnen Ressourcen geleitet werden.
@@ -299,7 +300,7 @@ Um die Systemnutzung zu untersuchen, muss ein Operator in der Regel Informatione
 
 Ein Operator sollte auch Diagramme generieren können. Ein Diagramm kann z. B. die Benutzer anzeigen, die die meisten Ressourcen verschlingen, oder die am häufigsten verwendeten Ressourcen oder Systemfunktionen.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Nutzungsverfolgung kann auf einer relativ allgemeinen Ebene ausgeführt werden. Dabei können die Anfangs- und die Endzeiten der einzelnen Anforderungen sowie die Art der jeweiligen Anforderung erfasst werden (Lesen, Schreiben usw., abhängig von der betreffenden Ressource). Sie erhalten diese Informationen durch:
 
 - Ablaufverfolgung der Benutzeraktivität.
@@ -309,13 +310,13 @@ Die Nutzungsverfolgung kann auf einer relativ allgemeinen Ebene ausgeführt werd
 Zu Zwecken der Messung müssen Sie auch erkennen können, welcher Benutzer für das Durchführen welcher Vorgänge verantwortlich ist und welche Ressourcen von diesen Vorgänge verwendet werden. Die gesammelten Informationen sollten detailliert genug sein, um eine genaue Abrechnung zu ermöglichen.
 
 <a name="issue-tracking"></a>
-## Problemverfolgung
+## <a name="issue-tracking"></a>Problemverfolgung
 Kunden und andere Benutzer könnten bei unerwarteten Ereignissen oder unerwartetem Verhalten im System möglicherweise Probleme melden. Die Problemverfolgung betrifft das Verwalten dieser Probleme, das Zuordnen zu Lösungen für alle zugrunde liegenden Probleme im System und dem Informieren der Kunden über mögliche Lösungen.
 
-### Anforderungen für die Problemverfolgung
+### <a name="requirements-for-issue-tracking"></a>Anforderungen für die Problemverfolgung
 Operatoren führen die Problemverfolgung häufig anhand eines separaten Systems durch, mit dem sie die Details der von den Benutzern gemeldeten Probleme aufzeichnen und in Berichten erfassen können. Zu diesen Details zählen die Aufgaben, die der Benutzer durchführen wollte, die Symptome des Problems, die Abfolge der Ereignisse und alle ausgegebenen Fehler- oder Warnmeldungen.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die ursprüngliche Datenquelle für die Problemverfolgung von Daten ist der Benutzer, der das Problem überhaupt gemeldet hat. Der Benutzer kann möglicherweise zusätzliche Daten bereitstellen, beispielsweise:
 
 - Ein Absturzabbild (wenn die Anwendung eine Komponente umfasst, die auf dem Desktop des Benutzers ausgeführt wird).
@@ -324,27 +325,27 @@ Die ursprüngliche Datenquelle für die Problemverfolgung von Daten ist der Benu
 
 Diese Informationen können beim Debuggen und beim Erstellen eines Backlogs für zukünftige Versionen der Software helfen.
 
-### Analysieren der Problemverfolgungsdaten
+### <a name="analyzing-issue-tracking-data"></a>Analysieren der Problemverfolgungsdaten
 Verschiedene Benutzer melden möglicherweise dasselbe Problem. Das Problemverfolgungssystem sollte gemeinsame Berichte zuordnen.
 
 Der Verlauf der Debugmaßnahmen sollte für jeden Problembericht aufgezeichnet werden. Wenn das Problem gelöst ist, kann der Kunde über die Lösung informiert werden.
 
 Wenn ein Benutzer ein Problem meldet, zu dem es eine bekannte Lösung im Problemverfolgungssystem gibt, sollte der Operator den Benutzer umgehend über die Lösung informieren können.
 
-## Ablaufverfolgung von Vorgängen und das Debuggen von Software-Versionen.
-Wenn ein Benutzer ein Problem meldet, sind ihm häufig nur die unmittelbaren Auswirkungen auf seine Vorgänge bekannt. Der Benutzer kann nur die Ergebnisse der eigenen Erfahrungen an einen Operator melden, der für die Wartung des Systems zuständig ist. Diese Erfahrungen sind in der Regel nur sichtbare Symptome für ein grundlegendes Problem oder mehrere. In vielen Fällen müssen Analysten die Abfolge der zugrunde liegenden Vorgänge prüfen, um die eigentliche Ursache des Problems zu rekonstruieren. Dieser Prozess wird als _Fehlerursachenanalyse_ bezeichnet.
+## <a name="tracing-operations-and-debugging-software-releases"></a>Ablaufverfolgung von Vorgängen und das Debuggen von Software-Versionen.
+Wenn ein Benutzer ein Problem meldet, sind ihm häufig nur die unmittelbaren Auswirkungen auf seine Vorgänge bekannt. Der Benutzer kann nur die Ergebnisse der eigenen Erfahrungen an einen Operator melden, der für die Wartung des Systems zuständig ist. Diese Erfahrungen sind in der Regel nur sichtbare Symptome für ein grundlegendes Problem oder mehrere. In vielen Fällen müssen Analysten die Abfolge der zugrunde liegenden Vorgänge prüfen, um die eigentliche Ursache des Problems zu rekonstruieren. Dieser Prozess wird als _Fehlerursachenanalyse_bezeichnet.
 
 > [AZURE.NOTE] Die Fehlerursachenanalyse kann Ineffizienzen im Design einer Anwendung aufdecken. In diesen Fällen kann es möglich sein, die betroffenen Elemente zu überarbeiten und im Rahmen einer späteren Version bereitzustellen. Dieser Vorgang erfordert eine sorgfältige Steuerung und die aktualisierten Komponenten sollten genau überwacht werden.
 
-### Anforderungen für Ablaufverfolgung und Debuggen
+### <a name="requirements-for-tracing-and-debugging"></a>Anforderungen für Ablaufverfolgung und Debuggen
 Für die Ablaufverfolgung unerwarteter Ereignisse und anderer Probleme ist es wichtig, dass die Überwachungsdaten aussagekräftig sind, damit ein Analyst die Ursprünge dieser Probleme nachverfolgen und die Abfolge der aufgetretenen Ereignisse rekonstruieren kann. Diese Informationen müssen ausreichen, um einem Analysten die Diagnose der Problemursache zu ermöglichen. Ein Entwickler kann dann die erforderlichen Änderungen vornehmen, um ein erneutes Auftreten zu verhindern.
 
-### Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Problembehandlung kann die Ablaufverfolgung aller Methoden (und ihrer Parameter) beinhalten, die im Rahmen eines Vorgangs aufgerufen werden. Daraus wird eine Struktur erstellt, die den logischen Fluss des Systems bei Eingang einer bestimmten Kundenanforderung darstellt. Vom System als Ergebnis dieses Flusses generierte Ausnahmen und Warnungen müssen erfasst und protokolliert werden.
 
 Um das Debuggen zu unterstützen, kann das System Hooks bereitstellen, mit denen ein Operator Zustandsinformationen an wichtigen Stellen im System erfassen kann. Alternativ dazu kann das System detaillierte Schritt-für-Schritt-Informationen liefern, während die ausgewählten Vorgänge fortschreiten. Die Erfassung von Daten auf dieser Detailebene kann das System zusätzlich belasten und sollte nur vorübergehend durchgeführt werden. Ein Operator verwendet diesen Prozess in erster Linie, wenn eine besonders ungewöhnliche Serie von Ereignissen auftritt und schwer zu replizieren ist oder wenn eine neue Version eines oder mehrerer Elemente in einem System sorgfältig überwacht werden muss, um sicherzustellen, dass die Elemente wie erwartet funktionieren.
 
-## Überwachungs- und Diagnosepipeline
+## <a name="the-monitoring-and-diagnostics-pipeline"></a>Überwachungs- und Diagnosepipeline
 Die Überwachung eines umfangreichen verteilten Systems stellt eine erhebliche Herausforderung dar. Jedes der im vorherigen Abschnitt erläuterten Szenarios sollte nicht unbedingt isoliert betrachtet werden. Es gibt wahrscheinlich erhebliche Überschneidungen bei der Überwachung und Diagnose von Daten, die für die einzelnen Situationen erforderlich sind, auch wenn diese Daten auf verschiedene Weise verarbeitet und dargestellt werden. Aus diesen Gründen sollten Sie die Überwachung und Diagnose ganzheitlich betrachten.
 
 Sie können sich die gesamte Überwachung und den Diagnoseprozess als eine Pipeline vorstellen, die die in Abbildung 1 dargestellten Phasen umfasst.
@@ -359,7 +360,7 @@ Beachten Sie, dass diese Schritte den fortlaufenden Prozessablauf bilden, in dem
 
 Darüber hinaus sollte der gesamte Überwachungsprozess als dynamische, fortlaufende Lösung angesehen werden, die der Feinabstimmung und Verbesserungen durch Feedback unterliegt. Sie könnten z. B. mit der Messung zahlreicher Faktoren beginnen, um die Systemintegrität zu ermitteln. Eine langfristige Analyse führt dann zu einer feineren Abstimmung, in deren Verlauf irrelevante Messungen verworfen werden, sodass Sie sich genauer auf die wirklich benötigten Daten konzentrieren können, während unnötige Daten auf ein Mindestmaß reduziert werden.
 
-## Datenquellen der Überwachung und Diagnose
+## <a name="sources-of-monitoring-and-diagnostic-data"></a>Datenquellen der Überwachung und Diagnose
 Die vom Überwachungsprozess verwendeten Informationen können aus verschiedenen Quellen stammen, wie in Abbildung 1 dargestellt. Auf der Anwendungsebene stammen Informationen aus Protokollen der Ablaufverfolgung, die im Code des Systems integriert sind. Entwickler sollten bei der Nachverfolgung des Steuerungsflusses durch ihren Code einen standardisierten Ansatz befolgen. Beispielsweise kann beim Einstieg in eine Methode eine Ablaufverfolgungsmeldung ausgegeben werden, die den Namen der Methode, die aktuelle Uhrzeit, den Wert der einzelnen Parameter und andere relevante Informationen angibt. Das Aufzeichnen der Einstiegs- und Ausgangszeiten könnten sich ebenso als nützlich erweisen.
 
 Sie sollten alle Ausnahmen und Warnungen protokollieren und sicherstellen, dass Sie eine vollständige Ablaufverfolgung von geschachtelten Ausnahmen und Warnungen beibehalten. Im Idealfall sollten Sie auch Informationen zum Identifizieren des Benutzers erfassen, der den Code ausführt, sowie Informationen zur Aktivitätskorrelation (zum Nachverfolgen von Anforderungen, während sie das System passieren). Ferner sollten Sie alle Versuche zum Zugreifen auf Ressourcen wie Nachrichtenwarteschlangen, Datenbanken, Dateien und andere abhängige Dienste protokollieren. Diese Informationen können zu Mess- und Überwachungszwecken verwendet werden.
@@ -386,11 +387,11 @@ Der Abschnitt [Instrumentieren einer Anwendung](#instrumenting-an-application) e
 
 - **Überwachung realer Benutzer**. Dieser Ansatz zeichnet die Interaktionen zwischen einem Benutzer und der Anwendung auf und beobachtet den Fluss der einzelnen Anforderungen und Antworten. Diese Informationen können zwei Zwecken dienen: Sie messen die Nutzung durch die einzelnen Benutzer, und sie zeigen, ob Benutzer die angemessene Servicequalität erhalten (z. B. schnelle Antwortzeiten, niedrige Latenz und eine minimale Fehlerquote). Anhand der erfassten Daten können Sie Problembereiche identifizieren, in denen Fehler am häufigsten auftreten. Sie können mithilfe der Daten auch Elemente ermitteln, die das System verlangsamen, möglicherweise aufgrund von Hotspots in der Anwendung oder einer anderen Form von Engpass. Wenn dieser Ansatz sorgfältig implementiert wird, ist es eventuell möglich, Benutzerabläufe in der Anwendung zu Debug- und Testzwecken zu rekonstruieren.
 
-	> [AZURE.IMPORTANT] Sie sollten die Daten, die durch die Überwachung realer Benutzer erfasst werden, als hochsensibel behandeln, da sie möglicherweise vertrauliches Material umfassen. Wenn Sie die erfassten Daten speichern, sorgen Sie für eine sichere Aufbewahrung. Wenn Sie die Daten zur Leistungsüberwachung und zum Debuggen verwenden möchten, löschen Sie zuerst alle personenbezogenen Informationen.
+    > [AZURE.IMPORTANT] Sie sollten die Daten, die durch die Überwachung realer Benutzer erfasst werden, als hochsensibel behandeln, da sie möglicherweise vertrauliches Material umfassen. Wenn Sie die erfassten Daten speichern, sorgen Sie für eine sichere Aufbewahrung. Wenn Sie die Daten zur Leistungsüberwachung und zum Debuggen verwenden möchten, löschen Sie zuerst alle personenbezogenen Informationen.
 
 - **Überwachung synthetischer Benutzer**. Bei dieser Vorgehensweise schreiben Sie Ihren eigenen Testclient, der einen Benutzer simuliert und eine konfigurierbare, aber typische Reihe von Vorgängen ausführt. Sie können die Leistung des Testclients verfolgen, um den Zustand des Systems zu ermitteln. Sie können auch mehrere Instanzen des Testclients als Teil eines Belastungstests einrichten, um festzustellen, wie das System unter Stress reagiert und welche Art von Überwachungsausgabe unter diesen Bedingungen generiert wird.
 
-	> [AZURE.NOTE] Sie können die tatsächliche und synthetische Benutzerüberwachung durch Einschließen von Code implementieren, der die Ausführung von Methodenaufrufen und anderen kritischen Teilen einer Anwendung verfolgt und zeitlich einordnet.
+    > [AZURE.NOTE] Sie können die tatsächliche und synthetische Benutzerüberwachung durch Einschließen von Code implementieren, der die Ausführung von Methodenaufrufen und anderen kritischen Teilen einer Anwendung verfolgt und zeitlich einordnet.
 
 - **Profilerstellung**. Dieser Ansatz zielt in erster Linie auf das Überwachen und Verbessern der Anwendungsleistung ab. Statt auf der Funktionsebene der Überwachung realer und synthetischer Benutzer anzusetzen, erfasst er Informationen auf niedrigerer Ebene, während die Anwendung ausgeführt wird. Sie können die Profilerstellung anhand regelmäßiger Stichproben zum Ausführungszustand einer Anwendung implementieren (und dabei ermitteln, welcher Teil des Codes von der Anwendung zu einem bestimmten Zeitpunkt ausgeführt wird). Sie können auch eine Instrumentierung verwenden, die Tests an wichtigen Stellen in den Code einfügt (z. B. den Start und das Ende eines Methodenaufrufs) und aufzeichnet, welche Methoden zu welchem Zeitpunkt aufgerufen wurden und wie lange die einzelnen Aufrufe gedauert haben. Diese Daten können Sie dann analysieren, um zu bestimmen, welche Teile der Anwendung zu Leistungsproblemen führen können.
 
@@ -399,7 +400,7 @@ Der Abschnitt [Instrumentieren einer Anwendung](#instrumenting-an-application) e
 Zur maximalen Absicherung sollten Sie eine Kombination dieser Techniken verwenden.
 
 <a name="instrumenting-an-application"></a>
-## Instrumentieren einer Anwendung
+## <a name="instrumenting-an-application"></a>Instrumentieren einer Anwendung
 Die Instrumentierung ist ein wichtiger Bestandteil des Überwachungsprozesses. Sie können nur dann fundierte Entscheidungen für die Leistung und Integrität des Systems treffen, wenn Sie zuerst die Daten erfassen, die diese Entscheidungen ermöglichen. Die Informationen, die Sie mithilfe der Instrumentierung sammeln, sollten zum Bewerten der Leistung, zum Diagnostizieren von Problemen und zum Treffen von Entscheidungen ausreichen, ohne dass Sie sich bei einem Remoteproduktionsserver anmelden und die Ablaufverfolgung (und das Debuggen) manuell ausführen müssen. Instrumentierungsdaten umfassen normalerweise Metriken und Informationen, die in Ablaufverfolgungsprotokolle geschrieben werden:
 
 Der Inhalt eines Ablaufverfolgungsprotokolls können Textdaten sein, die von der Anwendung geschrieben werden, oder binäre Daten, die als Ergebnis eines Ablaufverfolgungsereignisses erstellt werden (wenn die Anwendung die Ereignisablaufverfolgung für Windows, ETW, verwendet). Der Inhalt kann auch aus Systemprotokollen generiert werden, die Ereignisse aufzeichnen, die durch Teile der Infrastruktur, z. B. einen Webserver, ausgelöst werden. Protokollmeldungen sind oft auf Lesbarkeit für Personen ausgelegt, sollten aber auch in einem Format geschrieben sein, das eine einfache Analyse durch ein automatisiertes System ermöglicht.
@@ -411,7 +412,7 @@ Protokolle sollten zudem kategorisiert werden. Schreiben Sie nicht alle Ablaufve
 Metriken sind generell ein Maß oder eine Anzahl eines Aspekts oder einer Ressource im System zu einem bestimmten Zeitpunkt, mit einem oder mehren zugeordneten Tags oder Dimensionen (manchmal auch als _Stichprobe_ bezeichnet). Eine einzelne Instanz einer Metrik ist für sich betrachtet in der Regel nicht nützlich. Stattdessen müssen Metriken über einen Zeitraum erfasst werden. Die wichtigste zu berücksichtigende Frage ist, welche Metriken erfasst werden sollten und wie häufig. Die zu häufige Datengenerierung für Metriken kann oft eine erhebliche zusätzliche Last für das System bedeuten, während zu seltenes Erfassen der Metriken dazu führen kann, dass Sie die Umstände verpassen, die zu einem wichtigen Ereignis führen. Die Überlegungen variieren von Metrik zu Metrik. Z. B. kann die CPU-Auslastung auf einem Server von Sekunde zu Sekunde erheblich variieren, aber eine hohe Auslastung wird nur dann zu einem Problem, wenn sie über mehrere Minuten andauert.
 
 <a name="information-for-correlating-data"></a>
-### Informationen zum Korrelieren von Daten
+### <a name="information-for-correlating-data"></a>Informationen zum Korrelieren von Daten
 Sie können einfach einzelne Leistungsindikatoren auf Systemebene überwachen, Metriken für Ressourcen erfassen und Ablaufverfolgungsinformationen für die Anwendung aus verschiedenen Protokolldateien erhalten. Für einige Formen der Überwachung ist jedoch die Analyse- und Diagnosephase in der Überwachungspipeline erforderlich, um zwischen den aus verschiedenen Quellen abgerufenen Daten einen Zusammenhang herzustellen. Diese Daten können in den Rohdaten verschiedene Formen annehmen, und dem Analyseprozess müssen ausreichende Instrumentierungsdaten bereitgestellt werden, um die verschiedenen Formen abzubilden. Beispielsweise kann auf der Ebene des Anwendungsframeworks eine Aufgabe durch eine Thread-ID identifiziert werden. Innerhalb einer Anwendung kann die gleiche Arbeit der Benutzer-ID des Benutzer zugeordnet sein, der diese Aufgabe ausführt.
 
 Darüber hinaus gibt es wahrscheinlich keine 1:1-Zuordnung zwischen Threads und Benutzeranforderungen, da asynchrone Vorgänge dieselben Threads wiederverwenden, um Vorgänge für mehrere Benutzer durchzuführen. Um die Angelegenheit noch komplizierter zu machen, kann eine einzelne Anforderung von mehreren Threads verarbeitet werden, während die Ausführung das System durchläuft. Ordnen Sie nach Möglichkeit jeder Anforderung eine eindeutige Aktivitäts-ID zu, die als Teil des Anforderungskontexts durch das System weitergegeben wird. (Das Verfahren zum Generieren und Einschließen von Aktivitäts-IDs in Ablaufverfolgungsinformationen hängt von der Technologie ab, die zum Erfassen der Ablaufverfolgungsdaten verwendet wird.)
@@ -420,10 +421,10 @@ Alle Überwachungsdaten sollten auf gleiche Weise mit einem Zeitstempel versehen
 
 > [AZURE.NOTE] Computer in verschiedenen Zeitzonen und Netzwerken werden vielleicht nicht synchronisiert. Verlassen Sie sich nicht nur auf Zeitstempel, wenn Sie Instrumentierungsdaten korrelieren, die mehrere Computer umfassen.
 
-### In die Instrumentierungsdaten einzubeziehende Informationen
+### <a name="information-to-include-in-the-instrumentation-data"></a>In die Instrumentierungsdaten einzubeziehende Informationen
 Beachten Sie die folgenden Punkte, wenn Sie entscheiden, welche Instrumentierungsdaten gesammelt werden sollen:
 
-- Stellen Sie sicher, dass Informationen, die von Ablaufverfolgungsereignissen erfasst werden, für Computer und Personen lesbar sind. Implementieren Sie umfassend definierte Schemas für diese Informationen, um die automatisierte Verarbeitung von Protokolldaten über Systeme hinweg zu vereinfachen und Konsistenz für Vorgänge und technische Mitarbeiter sicherzustellen, die die Protokolle lesen. Schließen Sie die Umgebungsinformationen mit ein, wie z. B. die Bereitstellungsumgebung, den Computer, auf dem der Prozess ausgeführt wird, die Details des Prozesses und die Aufrufliste.
+- Stellen Sie sicher, dass Informationen, die von Ablaufverfolgungsereignissen erfasst werden, für Computer und Personen lesbar sind. Implementieren Sie umfassend definierte Schemas für diese Informationen, um die automatisierte Verarbeitung von Protokolldaten über Systeme hinweg zu vereinfachen und Konsistenz für Vorgänge und technische Mitarbeiter sicherzustellen, die die Protokolle lesen. Schließen Sie die Umgebungsinformationen mit ein, wie z. B. die Bereitstellungsumgebung, den Computer, auf dem der Prozess ausgeführt wird, die Details des Prozesses und die Aufrufliste.  
 - Aktivieren Sie die Profilerstellung nur bei Bedarf, da sie eine erhebliche Belastung für das System darstellen kann. Bei der Profilerstellung mithilfe der Instrumentierung wird ein Ereignis (z. B. ein Methodenaufruf) jedes Mal aufgezeichnet, wenn es auftritt. Bei Stichproben werden hingegen nur ausgewählte Ereignisse aufgezeichnet. Die Auswahl kann nach Zeit (alle *n* Sekunden) oder nach Häufigkeit (alle *n* Anforderungen) erfolgen. Wenn Ereignisse sehr häufig auftreten, kann die Profilerstellung mit der Instrumentierungsmethode eine zu große Belastung darstellen und die Gesamtleistung beeinträchtigen. In diesem Fall ist der Stichprobenansatz vorzuziehen. Wenn Ereignisse allerdings selten auftreten, werden sie bei der Stichprobenentnahme möglicherweise verpasst. In diesem Fall ist die Instrumentierung möglicherweise der bessere Ansatz.
 - Geben Sie genügend Kontext an, damit ein Entwickler oder Administrator die Quelle jeder einzelnen Anforderung ermitteln kann. Dazu gehört zum Beispiel eine Form von Aktivitäts-ID, die eine bestimmte Instanz einer Anforderung identifiziert. Dazu gehören beispielsweise auch Informationen, mit deren Hilfe diese Aktivität mit der durchgeführten Computerarbeit und den verwendeten Ressourcen in Bezug gesetzt werden kann. Beachten Sie, dass diese Arbeit Prozess- und Computergrenzen überschreiten kann. Für die Messung sollte der Kontext (entweder direkt oder indirekt über andere korrelierte Informationen) auch einen Verweis auf den Kunden beinhalten, der die Anforderung veranlasst hat. Dieser Kontext stellt wertvolle Informationen über den Anwendungszustand zum Zeitpunkt der Aufzeichnung der Überwachungsdaten bereit.
 - Notieren Sie alle Anforderungen und die Standorte oder Regionen, aus denen solche Anforderungen gesendet werden. Anhand dieser Informationen lässt sich feststellen, ob standortspezifische Hotspots vorliegen. Außerdem kann mithilfe dieser Informationen ermittelt werden, ob eine Anwendung oder die von ihr verwendeten Daten neu partitioniert werden sollten.
@@ -431,7 +432,7 @@ Beachten Sie die folgenden Punkte, wenn Sie entscheiden, welche Instrumentierung
 - Sorgen Sie für Konsistenz bei den Daten, die von den verschiedenen Elementen Ihrer Anwendung erfasst werden, da dies bei der Analyse von Ereignissen und bei deren Korrelation zu Benutzeranfragen hilfreich sein kann. Erwägen Sie die Nutzung eines umfassenden und konfigurierbaren Protokollierungspakets, um Informationen zu sammeln, anstatt sich darauf zu verlassen, dass Entwickler die verschiedenen Teile des Systems nach dem gleichen Ansatz implementieren. Das Sammeln von Daten zu wesentlichen Leistungsindikatoren, wie z. B. ausgeführtes E/A-Volumen, Netzwerkauslastung, Anzahl der Anforderungen, Speichernutzung und CPU-Auslastung. Einige Infrastrukturdienste stellen ihre eigenen Leistungsindikatoren bereit, wie z. B. die Anzahl der Verbindungen mit einer Datenbank, die Rate, mit der Transaktionen ausgeführt werden, und die Anzahl der erfolgreichen oder fehlerhaften Transaktionen. Anwendungen können auch ihre eigenen Leistungsindikatoren definieren.
 - Protokollieren Sie alle Aufrufe an externe Dienste wie Datenbanksysteme, Webdienste oder andere Dienste auf Systemebene, die Teil der Infrastruktur sind. Zeichnen Sie Informationen über die Verarbeitungszeit für jeden Aufruf auf, und ob der Aufruf erfolgreich war oder fehlgeschlagen ist. Wenn möglich, erfassen Sie Informationen über alle Wiederholungsversuche und Fehlversuche für vorübergehende Fehler, die auftreten.
 
-### Sicherstellen der Kompatibilität mit Telemetrie-Systemen
+### <a name="ensuring-compatibility-with-telemetry-systems"></a>Sicherstellen der Kompatibilität mit Telemetrie-Systemen
 In vielen Fällen werden mit der Instrumentierung produzierte Informationen als eine Reihe von Ereignissen generiert und zur Verarbeitung und Analyse an ein separates Telemetriesystem übergeben. Ein Telemetriesystem ist in der Regel unabhängig von einer bestimmten Anwendung oder Technologie, erwartet Informationen jedoch in einem bestimmten Format, das in der Regel durch ein Schema definiert ist. Das Schema gibt gewissermaßen einen Vertrag an, in dem die Datenfelder und Typen definiert sind, die das Telemetriesystem erfassen kann. Das Schema sollte generalisiert sein, damit Daten aus einer Reihe von Plattformen und Geräten stammen können.
 
 Ein allgemeines Schema sollte Felder enthalten, die auf alle Instrumentierungsereignisse zutreffen, wie z. B. den Namen und die Uhrzeit des Ereignisses, die IP-Adresse des Absenders und die für die Korrelation mit anderen Ereignissen erforderlichen Details (z. B. eine Benutzer-ID, eine Geräte-ID und eine Anwendungs-ID). Denken Sie daran, dass Ereignisse von einer beliebigen Anzahl von Geräten ausgelöst werden können, also sollte das Schema nicht vom Gerätetyp abhängig sein. Darüber hinaus können Ereignisse für dieselbe Anwendung durch verschiedene Geräte ausgelöst werden. Die Anwendung unterstützt womöglich Roaming oder eine andere Form der geräteübergreifenden Verteilung.
@@ -440,7 +441,7 @@ Das Schema kann auch Domänenfelder enthalten, die für ein bestimmtes Szenario 
 
 Zudem kann ein Schema benutzerdefinierte Felder zum Erfassen der Details von anwendungsspezifischen Ereignissen enthalten.
 
-### Empfehlungen zum Instrumentieren von Anwendungen
+### <a name="best-practices-for-instrumenting-applications"></a>Empfehlungen zum Instrumentieren von Anwendungen
 Die folgende Liste enthält Empfehlungen zum Instrumentieren einer verteilten Anwendung, die in der Cloud ausgeführt wird.
 
 - Erstellen Sie Protokolle so, dass sie einfach zu lesen und leicht zu analysieren sind. Verwenden Sie die strukturierte Protokollierung, wo möglich. Seien Sie in Protokollmeldungen prägnant und anschaulich.
@@ -455,7 +456,7 @@ Die folgende Liste enthält Empfehlungen zum Instrumentieren einer verteilten An
 - Stellen Sie sicher, dass die gesamte Protokollierung ausfallsicher ist und niemals kaskadierende Fehler auslöst. Protokollierungen dürfen keine Ausnahmen auslösen.
 - Behandeln Sie die Instrumentierung als fortlaufenden, iterativen Prozess und überprüfen Sie Protokolle regelmäßig, nicht nur, wenn ein Problem vorliegt.
 
-## Erfassen und Speichern von Daten
+## <a name="collecting-and-storing-data"></a>Erfassen und Speichern von Daten
 In der Sammlungsphase des Überwachungsprozesses werden die durch die Instrumentierung generierten Informationen abgerufen, so formatiert, dass sie in der Analyse-/Diagnosephase leichter zu nutzen sind, und als transformierte Daten in einem zuverlässigen Speicher abgelegt. Die Instrumentierungsdaten, die Sie aus verschiedenen Teilen eines verteilten Systems erfassen, können in einer Vielzahl von Speicherorten und in unterschiedlichen Formaten gehalten werden. Ihr Anwendungscode kann z. B. Ablaufverfolgungsprotokolle und Ereignisprotokolldaten für die Anwendung generieren, während die Leistungsindikatoren, die die wichtigsten Aspekte der von der Anwendung genutzten Infrastruktur überwachen, mithilfe anderer Technologien erfasst werden können. Alle von Ihrer Anwendung verwendeten Drittanbieterkomponenten und -dienste können Instrumentierungsinformationen in unterschiedlichen Formaten bereitstellen, indem sie separate Ablaufverfolgungsdateien, Blobspeicher oder sogar einen benutzerdefinierten Datenspeicher verwenden.
 
 Die Datensammlung erfolgt häufig über einen Sammlungsdienst, der unabhängig von der Anwendung ausgeführt werden kann, die die Instrumentierungsdaten generiert. Abbildung 2 zeigt ein Beispiel für diese Architektur, in dem das Subsystem der Instrumentierungsdatensammlung hervorgehoben ist.
@@ -473,19 +474,19 @@ Für Azure-Anwendungen und -Dienste bietet die Azure-Diagnose eine mögliche Lö
 - Windows-Ereignisprotokolle
 - Leistungsindikatoren
 - Absturzabbilder
-- Infrastrukturprotokolle der Azure-Diagnose
+- Infrastrukturprotokolle der Azure-Diagnose  
 - Benutzerdefinierte Fehlerprotokolle
 - .NET-EventSource
 - Manifestbasierte ETW
 
-Weitere Informationen finden Sie im Artikel [Azure: Telemetry Basics and Troubleshooting](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx) (Azure: Telemetrie-Grundlagen und Problembehandlung).
+Weitere Informationen finden Sie im Artikel [Azure: Telemetry Basics and Troubleshooting](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx)(Azure: Telemetrie-Grundlagen und Problembehandlung).
 
-### Strategien zum Erfassen von Instrumentierungsdaten
+### <a name="strategies-for-collecting-instrumentation-data"></a>Strategien zum Erfassen von Instrumentierungsdaten
 Angesichts der Elastizität der Cloud und um zu vermeiden, dass Telemetriedaten manuell von jedem Knoten im System abgerufen werden müssen, sollten Sie dafür sorgen, dass Daten an einen zentralen Standort übertragen und dort konsolidiert werden können. In einem System, das mehrere Rechenzentren umfasst, kann es hilfreich sein, Daten zunächst zu sammeln, zu konsolidieren und je nach Region zu speichern und dann die regionalen Daten in einem einzigen zentralen System zu aggregieren.
 
 Um die Verwendung der Bandbreite zu optimieren, können Sie festlegen, dass weniger dringende Daten in Segmenten als Batches übertragen werden. Jedoch dürfen die Daten nicht unbegrenzt verzögert werden, insbesondere, wenn sie zeitgebundene Informationen beinhalten.
 
-#### _Pullen und Pushen von Instrumentierungsdaten_
+#### <a name="_pulling-and-pushing-instrumentation-data_"></a>_Pullen und Pushen von Instrumentierungsdaten_
 Das Subsystem für die Instrumentierungsdatensammlung kann Instrumentierungsdaten aktiv aus den verschiedenen Protokollen und anderen Quellen für die einzelnen Instanzen der Anwendung abrufen (das _Pullmodell_). Alternativ dazu kann es als passiver Empfänger fungieren, der wartet, bis die Daten von den Komponenten gesendet werden, aus denen sich die einzelnen Instanzen der Anwendung zusammensetzen (das _Pushmodell_).
 
 Ein Ansatz zum Implementieren des Pullmodells ist die Verwendung von Überwachungs-Agents, die lokal auf den einzelnen Instanzen der Anwendung ausgeführt werden. Ein Überwachungs-Agent ist ein separater Prozess, der per Pull in regelmäßigen Abständen Telemetriedaten abruft, die vom lokalen Knoten gesammelt werden, und diese Informationen direkt in den zentralen Speicher schreibt, der von allen Instanzen der Anwendung gemeinsam verwendet wird. Dies ist der Mechanismus, der in der Azure-Diagnose implementiert wird. Jede Instanz einer Web- oder Workerrolle in Azure kann so konfiguriert werden, dass Diagnose- und andere lokal gespeicherte Ablaufverfolgungsinformationen erfasst werden. Der Überwachungs-Agent, der neben den einzelnen Instanzen ausgeführt wird, kopiert die angegebenen Daten in Azure Storage. Im Artikel [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md) finden Sie nähere Einzelheiten. Einige Elemente, wie z. B. IIS-Protokolle, Absturzabbilder und benutzerdefinierte Fehlerprotokolle, werden in Blobspeicher geschrieben. Daten aus dem Windows-Ereignisprotokoll, ETW-Ereignisse und Leistungsindikatoren werden im Tabellenspeicher aufgezeichnet. Dieser Mechanismus ist in Abbildung 3 dargestellt.
@@ -503,21 +504,21 @@ Um diese Aspekte abzudecken, können Sie Warteschlangen implementieren, wie in A
 
 ![Abbildung zur Verwendung einer Warteschlange zum Puffern von Instrumentierungsdaten](media/best-practices-monitoring/BufferedQueue.png)
 
-_Abbildung 4. Mithilfe einer Warteschlange Instrumentierungsdaten puffern_
+_Abbildung 4: Mithilfe einer Warteschlange Instrumentierungsdaten puffern_
 
 Der lokale Datensammlungsdienst kann Daten unmittelbar nach deren Empfang einer Warteschlange hinzufügen. Die Warteschlange fungiert als Puffer, und der Speicherschreibdienst kann die Daten in seinem eigenen Tempo abrufen und schreiben. Standardmäßig arbeitet eine Warteschlange nach dem Prinzip „First In, First Out“. Sie können Nachrichten jedoch priorisieren, um ihren Weg durch die Warteschlange zu beschleunigen, wenn sie Daten enthalten, die schneller verarbeitet werden müssen. Weitere Informationen finden Sie unter [Prioritätswarteschlange](https://msdn.microsoft.com/library/dn589794.aspx). Alternativ dazu können Sie, abhängig von der Form der erforderlichen analytischen Verarbeitung, verschiedene Kanäle (z. B. Service Bus-Topics) verwenden, um Daten an verschiedene Ziele zu leiten.
 
 Aus Gründen der Skalierbarkeit könnten Sie mehrere Instanzen des Speicherschreibdienstes ausführen. Gibt es eine große Anzahl von Ereignissen, können Sie einen Event Hub verwenden, um die Daten an verschiedene Computeressourcen zur Verarbeitung und Speicherung zu senden.
 
 <a name="consolidating-instrumentation-data"></a>
-#### _Konsolidierung von Instrumentierungsdaten_
+#### <a name="_consolidating-instrumentation-data_"></a>_Konsolidierung von Instrumentierungsdaten_
 Die vom Datensammlungsdienst aus einer einzelnen Instanz einer Anwendung abgerufenen Instrumentierungsdaten bieten eine lokalisierte Ansicht der Integrität und Leistung dieser Instanz. Um die allgemeine Integrität des Systems zu bewerten, ist es erforderlich, einige Aspekte der Daten in den lokalen Ansichten zu konsolidieren. Diesen Schritt können Sie nach der Speicherung der Daten durchführen. In einigen Fällen kann die Konsolidierung auch während der Sammlung erfolgen. Statt direkt in den freigegebenen Speicher geschrieben zu werden, können die Instrumentierungsdaten einen separaten Datenkonsolidierungsdienst durchlaufen, der Daten kombiniert und die Rolle eines Filter- und Bereinigungsprozesses übernimmt. Beispielsweise können Instrumentierungsdaten mit den gleichen Korrelationsinformationen, z. B. einer Aktivitäts-ID, zusammengelegt werden. (Es ist möglich, dass ein Benutzer einen Geschäftsvorgang auf einem Knoten beginnt und dann bei einem Knotenausfall oder durch die Konfiguration des Lastenausgleichs auf einen anderen Knoten verwiesen wird.) Dieser Prozess kann auch alle doppelt vorhandenen Daten erkennen und entfernen (immer eine Möglichkeit, wenn der Telemetriedienst Nachrichtenwarteschlangen verwendet, um Instrumentierungsdaten aus dem Speicher zu pushen). Abbildung 5 zeigt ein Beispiel für diese Struktur.
 
 ![Beispiel für das Verwenden eines Diensts zum Konsolidieren von Instrumentierungsdaten](media/best-practices-monitoring/Consolidation.png)
 
 _Abbildung 5: Verwenden eines separaten Dienstes zum Konsolidieren und Bereinigen von Instrumentierungsdaten_
 
-### Speichern von Instrumentierungsdaten
+### <a name="storing-instrumentation-data"></a>Speichern von Instrumentierungsdaten
 Die vorherigen Diskussionen haben auf eher simple Weise dargestellt, wie Instrumentierungsdaten gespeichert werden. In der Realität kann es sinnvoll sein, die verschiedenen Arten von Informationen mithilfe von Technologien zu speichern, die am besten für die Art der Verwendung geeignet sind.
 
 Beispielsweise weisen Azure-Blob- und -Tabellenspeicher Gemeinsamkeiten im Hinblick auf den Zugriff auf. Es gibt jedoch Einschränkungen in den Vorgängen, die Sie damit ausführen können, und die Granularität der darin enthaltenen Daten ist sehr unterschiedlich. Wenn Sie weitere analytische Vorgänge durchführen müssen oder Volltext-Suchfunktionen für die Daten erforderlich sind, ist möglicherweise die Nutzung einer Datenspeicherung besser geeignet, die für bestimmte Typen von Abfragen und Datenzugriff optimierte Funktionen bietet. Beispiel:
@@ -539,15 +540,15 @@ Sie sollten auch berücksichtigen, wie dringend die Daten benötigt werden. Date
 
 Informationen, die für eine eingehendere Analyse, für die Berichterstellung und für das Erkennen historischer Trends verwendet werden, sind weniger dringend und können so gespeichert werden, dass Data Mining und Ad-hoc-Abfragen unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Unterstützung von heißer, warmer und kalter Analyse](#supporting-hot-warm-and-cold-analysis) weiter unten in diesem Dokument.
 
-#### _Protokollrotation und Aufbewahrung von Daten_
+#### <a name="_log-rotation-and-data-retention_"></a>_Protokollrotation und Aufbewahrung von Daten_
 Die Instrumentierung kann erhebliche Datenmengen generieren. Diese Daten können an mehreren Stellen gehalten werden, von den rohen Protokolldateien, den Ablaufverfolgungsdateien und anderen Informationen, die in jedem Knoten erfasst werden, zur konsolidierten, bereinigten und partitionierten Ansicht der Daten im freigegebenen Speicher. In einigen Fällen können die ursprünglichen, rohen Quelldaten aus den einzelnen Knoten entfernt werden, sobald die Daten verarbeitet und übertragen wurden. In anderen Fällen kann es notwendig oder einfach nützlich sein, die unformatierten Informationen zu speichern. Z. B. kann es möglicherweise besser sein, zu Debugzwecken generierte Daten in unformatierter Form zu belassen. Diese Daten können jedoch schnell verworfen werden, sobald alle Fehler behoben wurden.
 
 Leistungsdaten haben häufig eine längere Lebensdauer, damit sie zum Erkennen von Leistungstrends und für die Kapazitätsplanung verwendet werden können. Die konsolidierte Ansicht dieser Daten bleibt in der Regel für einen begrenzten Zeitraum online, um einen schnellen Zugriff zu ermöglichen. Danach können diese Daten archiviert oder verworfen werden. Für die Messung und die Kundenabrechnung gesammelte Daten müssen möglicherweise dauerhaft gespeichert werden. Darüber hinaus kann es gesetzlich vorgeschrieben sein, dass für Überwachungs- und Sicherheitszwecke gesammelte Daten ebenfalls archiviert und gespeichert werden müssen. Diese Daten sind zudem vertraulich und müssen möglicherweise verschlüsselt oder auf andere Art geschützt werden, um Manipulationen zu verhindern. Sie sollten niemals Benutzerkennwörter oder andere Informationen aufzeichnen, die für Identitätsdiebstähle verwendet werden können. Diese Angaben sollten aus den Daten bereinigt werden, bevor sie gespeichert werden.
 
-#### _Downsampling_
+#### <a name="_down-sampling_"></a>_Downsampling_
 Dies ist zum Speichern von Verlaufsdaten sinnvoll, um langfristige Trends zu ermitteln zu können. Statt alte Daten in ihrer Gesamtheit zu speichern, kann ein Downsampling der Daten möglich sein, um die Auflösung zu reduzieren und Speicherkosten zu sparen. Anstatt beispielsweise Leistungsindikatoren minütlich zu speichern, können Sie Daten, die über einen Monat alt sind, so konsolidieren, dass sie einen stündlichen Überblick geben.
 
-### Bewährte Methoden für das Sammeln und Speichern von Protokollierungsinformationen
+### <a name="best-practices-for-collecting-and-storing-logging-information"></a>Bewährte Methoden für das Sammeln und Speichern von Protokollierungsinformationen
 Die folgende Liste enthält bewährte Methoden zum Erfassen und Speichern von Protokollierungsinformationen:
 
 - Der Überwachungs-Agent oder der Datensammlungsdienst sollte als prozessunabhängiger Dienst ausgeführt werden und einfach bereitzustellen sein.
@@ -555,14 +556,14 @@ Die folgende Liste enthält bewährte Methoden zum Erfassen und Speichern von Pr
 - Der Prozess der Überwachung und Datensammlung muss ausfallsicher sein und darf keine kaskadierenden Fehlerbedingungen auslösen.
 - Bei einem vorübergehenden Fehler beim Senden der Informationen an eine Datensenke sollten der Überwachungs-Agent oder der Datensammlungsdienst darauf vorbereitet sein, Telemetriedaten neu anzuordnen, damit die neuesten Informationen zuerst gesendet werden. (Der Überwachungs-Agent/Datensammlungsdienst entscheidet sich möglicherweise nach eigenem Ermessen dazu, die älteren Daten zu löschen, oder dazu, sie lokal zu speichern und später zu senden.)
 
-## Analysieren von Daten und Diagnose von Problemen
+## <a name="analyzing-data-and-diagnosing-issues"></a>Analysieren von Daten und Diagnose von Problemen
 Ein wichtiger Teil des Überwachungs- und Diagnoseprozesses ist die Analyse der gesammelten Daten, um einen Überblick über den allgemeinen Zustand des Systems zu erhalten. Sie sollten eigene KPIs und Leistungsmetriken definiert haben und wissen, wie Sie die gesammelten Daten so strukturieren können, dass sie Ihren Analyseanforderungen entsprechen. Sie sollten auch die in verschiedenen Metriken und Protokolldateien erfassten Daten in einen Zusammenhang setzen können, da diese Informationen für die Überwachung einer Sequenz von Ereignissen und bei der Diagnose auftretender Probleme entscheidend sein können.
 
-Wie im Abschnitt [Konsolidierung von Instrumentierungsdaten](#consolidating-instrumentation-data) beschrieben, werden die Daten für jeden Teil des Systems in der Regel lokal erfasst, müssen aber im Allgemeinen mit Daten kombiniert werden, die an anderen am System beteiligten Standorten generiert werden. Diese Informationen erfordern eine sorgfältige Korrelation, um sicherzustellen, dass die Daten genau kombiniert werden. Die Verwendungsdaten für einen Vorgang können zum Beispiel einen Knoten, der eine Website für Benutzerverbindungen hostet, einen Knoten mit einem separaten Dienst, auf den im Rahmen dieses Vorgangs zugegriffen wird, und Datenspeicher auf einem weiteren Knoten umfassen. Diese Informationen müssen miteinander verknüpft werden, um einen allgemeinen Überblick über die Verwendung von Ressourcen und der Verarbeitung für den Vorgang zu bieten. Eine Vorverarbeitung und Filterung von Daten kann auf dem Knoten erfolgen, auf dem die Daten erfasst werden, während Aggregation und Formatierung eher auf einem zentralen Knoten ausgeführt werden.
+Wie im Abschnitt [Konsolidierung von Instrumentierungsdaten](#consolidating-instrumentation-data)beschrieben, werden die Daten für jeden Teil des Systems in der Regel lokal erfasst, müssen aber im Allgemeinen mit Daten kombiniert werden, die an anderen am System beteiligten Standorten generiert werden. Diese Informationen erfordern eine sorgfältige Korrelation, um sicherzustellen, dass die Daten genau kombiniert werden. Die Verwendungsdaten für einen Vorgang können zum Beispiel einen Knoten, der eine Website für Benutzerverbindungen hostet, einen Knoten mit einem separaten Dienst, auf den im Rahmen dieses Vorgangs zugegriffen wird, und Datenspeicher auf einem weiteren Knoten umfassen. Diese Informationen müssen miteinander verknüpft werden, um einen allgemeinen Überblick über die Verwendung von Ressourcen und der Verarbeitung für den Vorgang zu bieten. Eine Vorverarbeitung und Filterung von Daten kann auf dem Knoten erfolgen, auf dem die Daten erfasst werden, während Aggregation und Formatierung eher auf einem zentralen Knoten ausgeführt werden.
 
 <a name="supporting-hot-warm-and-cold-analysis"></a>
-### Unterstützung von heißer, warmer und kalter Analyse
-Das Analysieren und Umformatieren von Daten zu Visualisierungs-, Berichterstellungs- und Alarmierungszwecken kann ein komplexer Prozess sein, der einen eigenen Satz von Ressourcen nutzt. Einige Formen der Überwachung sind zeitkritisch und erfordern eine sofortige Analyse der Daten, um effektiv zu sein. Dies bezeichnet man als _heiße Analysis_. Beispiele hierfür sind die für Warnungen und einige Aspekte der Sicherheitsüberwachung erforderlichen Analysen (z. B. Erkennen eines Angriffs auf das System). Daten, die für diese Zwecke benötigt werden, müssen schnell verfügbar und für eine effiziente Verarbeitung strukturiert sein. In einigen Fällen kann es erforderlich sein, die Analyseverarbeitung auf die einzelnen Knoten zu verschieben, auf denen die Daten gespeichert sind.
+### <a name="supporting-hot,-warm,-and-cold-analysis"></a>Unterstützung von heißer, warmer und kalter Analyse
+Das Analysieren und Umformatieren von Daten zu Visualisierungs-, Berichterstellungs- und Alarmierungszwecken kann ein komplexer Prozess sein, der einen eigenen Satz von Ressourcen nutzt. Einige Formen der Überwachung sind zeitkritisch und erfordern eine sofortige Analyse der Daten, um effektiv zu sein. Dies bezeichnet man als _heiße Analyse_. Beispiele hierfür sind die für Warnungen und einige Aspekte der Sicherheitsüberwachung erforderlichen Analysen (z. B. Erkennen eines Angriffs auf das System). Daten, die für diese Zwecke benötigt werden, müssen schnell verfügbar und für eine effiziente Verarbeitung strukturiert sein. In einigen Fällen kann es erforderlich sein, die Analyseverarbeitung auf die einzelnen Knoten zu verschieben, auf denen die Daten gespeichert sind.
 
 Andere Arten der Analyse sind weniger zeitkritisch und erfordern möglicherweise Berechnung und Aggregation, nachdem die Rohdaten empfangen wurden. Dies wird als _warme Analyse_ bezeichnet. Die Leistungsanalyse wird oft zu dieser Kategorie gezählt. In diesem Fall ist ein isoliertes, einzelnes Leistungsereignis statistisch wahrscheinlich nicht signifikant. (Es kann auf eine plötzliche Spitze oder Störung zurückzuführen sein.) Die Daten aus einer Reihe von Ereignissen sollten ein zuverlässigeres Bild der Systemleistung ergeben.
 
@@ -572,7 +573,7 @@ Einige Arten der Überwachung generieren langfristigere Daten. Diese Analyse kan
 
 Ein Operator kann die kalte Analyse auch zum Bereitstellen von Daten für die vorausschauende Integritätsanalyse verwenden. Der Operator kann historische Informationen über einen angegebenen Zeitraum sammeln und in Verbindung mit den aktuellen Integritätsdaten verwenden (abgerufen vom heißen Pfad), um Trends zu ermitteln, die bald zu Integritätsproblemen führen könnten. In diesen Fällen kann es erforderlich sein, eine Warnung auszulösen, damit Korrekturmaßnahmen eingeleitet werden können.
 
-### Korrelieren von Daten
+### <a name="correlating-data"></a>Korrelieren von Daten
 Die von der Instrumentierung erfassten Daten können eine Momentaufnahme des Systemzustands bereitstellen, allerdings besteht der Zweck der Analyse darin, die Daten als Aktionsgrundlage verwenden zu können. Zum Beispiel:
 
 - Wodurch wurde z. B. zu einem bestimmten Zeitpunkt eine ressourcenintensive E/A-Last auf Systemebene verursacht?
@@ -583,9 +584,9 @@ In diesem Fall könnte eine korrigierende Maßnahme zum Reduzieren der Last dari
 
 Aus diesen Gründen müssen Sie in der Lage sein, die verschiedenen Typen von Überwachungsdaten auf jeder Ebene zu korrelieren, um eine allgemeine Übersicht über den Zustand des Systems und der darauf ausgeführten Anwendungen zu erstellen. Sie können dann anhand dieser Informationen Entscheidungen darüber fällen, ob das System akzeptabel funktioniert oder nicht, und bestimmen, was zur Verbesserung der Systemqualität getan werden muss.
 
-Wie im Abschnitt [Informationen zum Korrelieren von Daten](#information-for-correlating-data) beschrieben, müssen Sie sicherstellen, dass die unformatierten Instrumentierungsdaten genügend Informationen zu Kontext und Aktivitäts-ID enthalten, um die erforderlichen Aggregationen für korrelierende Ereignisse zu unterstützen. Darüber hinaus werden diese Daten möglicherweise in verschiedenen Formaten gespeichert, und es kann erforderlich sein, die Informationen zur Analyse in ein standardisiertes Format umzuwandeln.
+Wie im Abschnitt [Informationen zum Korrelieren von Daten](#information-for-correlating-data)beschrieben, müssen Sie sicherstellen, dass die unformatierten Instrumentierungsdaten genügend Informationen zu Kontext und Aktivitäts-ID enthalten, um die erforderlichen Aggregationen für korrelierende Ereignisse zu unterstützen. Darüber hinaus werden diese Daten möglicherweise in verschiedenen Formaten gespeichert, und es kann erforderlich sein, die Informationen zur Analyse in ein standardisiertes Format umzuwandeln.
 
-### Problembehandlung und Diagnose von Problemen
+### <a name="troubleshooting-and-diagnosing-issues"></a>Problembehandlung und Diagnose von Problemen
 Für die Diagnose ist es erforderlich, die Ursache für Fehler oder unerwartetes Verhalten ermitteln zu können. Dazu gehört auch die Durchführung der Fehlerursachenanalyse. In der Regel sind folgende Informationen erforderlich:
 
 - Ausführliche Informationen aus Ereignisprotokollen und Ablaufverfolgungen, entweder für das gesamte System oder für ein bestimmtes Subsystem in einem angegebenen Zeitfenster.
@@ -595,12 +596,12 @@ Für die Diagnose ist es erforderlich, die Ursache für Fehler oder unerwartetes
 
 Das Analysieren von Daten zum Zweck der Problembehandlung erfordert häufig tiefgehende technische Kenntnisse der Systemarchitektur und der verschiedenen Komponenten der Lösung. Demzufolge ist häufig ein hohes Maß manuellen Eingreifens erforderlich, um die Daten zu interpretieren, die Ursache der Probleme festzustellen und eine geeignete Strategie zu deren Korrektur vorzuschlagen. Möglicherweise ist es zweckdienlich, eine Kopie dieser Informationen im ursprünglichen Format zu speichern und sie für die kalte Analyse durch einen Experten verfügbar zu machen.
 
-## Visualisieren von Daten und Auslösen von Warnungen
+## <a name="visualizing-data-and-raising-alerts"></a>Visualisieren von Daten und Auslösen von Warnungen
 Ein wichtiger Aspekt eines jeden Überwachungssystems ist die Fähigkeit, die Daten so darzustellen, dass ein Operator Trends oder Probleme schnell erkennen kann. Zudem muss ein Operator schnell informiert werden können, wenn ein wichtiges Ereignis eingetreten ist, das möglicherweise seine Aufmerksamkeit erfordert.
 
 Die Darstellung von Daten kann unterschiedliche Formen annehmen, einschließlich der Visualisierung mithilfe von Dashboards, Warnungen und Berichtserstellung.
 
-### Visualisierung mithilfe von Dashboards
+### <a name="visualization-by-using-dashboards"></a>Visualisierung mithilfe von Dashboards
 Die gängigste Methode zum Visualisieren von Daten ist die Verwendung von Dashboards, die Informationen als eine Reihe von Diagrammen, Graphen oder eine andere Art von Abbildung darstellen können. Diese Elemente könnten parametrisiert werden, und ein Analyst sollte die wichtigen Parameter (z. B. den Zeitraum) für jede beliebige Situation auswählen können.
 
 Dashboards können hierarchisch organisiert werden. Dashboards der höchsten Ebene bieten einen allgemeinen Überblick über die einzelnen Aspekte des Systems, erlauben dem Operator jedoch auch, die näheren Details zu untersuchen. Ein Dashboard, das z. B. die gesamte E/A für das System darstellt, sollte es einem Analysten ermöglichen, die E/A-Raten für jeden einzelnen Datenträger zu ermitteln, um festzustellen, ob ein bestimmtes Gerät oder mehrere für eine unverhältnismäßig große Menge an Datenverkehr verantwortlich sind. Im Idealfall sollte das Dashboard auch verknüpfte Informationen anzeigen, wie z. B. die Quelle der einzelnen Anforderungen (Benutzer oder Aktivität), die diese E/A verursachen. Anhand dieser Informationen kann dann ermittelt werden, ob (und wie) die Last gleichmäßiger über die Geräte verteilt werden sollte und ob das System eine bessere Leistung zeigen würde, wenn weitere Geräte hinzugefügt würden.
@@ -617,7 +618,7 @@ Ein gutes Dashboard zeigt nicht nur Informationen an, es bietet einem Analysten 
 
 > [AZURE.NOTE] Sie sollten den Zugriff auf Dashboards auf autorisierte Mitarbeiter beschränken, da die Informationen kommerziell vertraulich sein könnten. Sie sollten auch die den Dashboards zugrunde liegenden Daten schützen, um Benutzer an deren Änderung zu hindern.
 
-### Warnungen auslösen
+### <a name="raising-alerts"></a>Warnungen auslösen
 Unter Warnungen versteht man den Prozess der Analyse der Überwachungs- und Instrumentierungsdaten und dem Generieren einer Benachrichtigung, wenn ein wichtiges Ereignis erkannt wird.
 
 Mit Warnungen kann man sicherstellen, dass das System fehlerfrei, reaktionsfähig und sicher bleibt. Sie sind ein wichtiger Teil jedes Systems, das den Benutzern Leistungs-, Verfügbarkeits- und Datenschutzgarantien zusichert und in dem möglicherweise sofort auf die Daten reagiert werden muss. Ein Operator muss unter Umständen über das Ereignis informiert werden, das die Warnung ausgelöst hat. Warnungen können auch zum Aufrufen von Systemfunktionen wie für die automatische Skalierung verwendet werden.
@@ -632,7 +633,7 @@ Operatoren können Warnungsinformationen über viele Übermittlungskanäle erhal
 
 Ein Warnsystem sollten anpassbar sein, und die entsprechenden Werte aus den zugrunde liegenden Instrumentierungsdaten können als Parameter angegeben werden. Dieser Ansatz ermöglicht es einem Operator, Daten zu filtern und sich auf die Schwellenwerte oder Kombinationen von Werten zu konzentrieren, die von Interesse sind. Beachten Sie, dass dem Warnsystem in einigen Fällen die unformatierten Instrumentierungsdaten bereitgestellt werden können. In anderen Situationen ist es möglicherweise angebracht, aggregierte Daten bereitzustellen. (Beispielsweise kann eine Warnung ausgelöst werden, wenn die CPU-Auslastung für einen Knoten während der letzten 10 Minuten 90 Prozent überschritten hat.) Die dem Warnsystem bereitgestellten Angaben sollten auch alle erforderlichen Zusammenfassungs- und Kontextinformationen umfassen. Diese Daten können die Wahrscheinlichkeit verringern, dass falsch-positive Ereignisse eine Warnung auslösen.
 
-### Berichterstellung
+### <a name="reporting"></a>Berichterstellung
 Die Berichterstellung wird verwendet, um eine allgemeine Übersicht über das System zu generieren. Sie kann neben den aktuellen Informationen auch Verlaufsdaten umfassen. Anforderungen an die Berichterstellung selbst fallen in zwei breite Kategorien: die operative Berichterstellung für die Sicherheitsberichterstellung.
 
 Die operative Berichterstellung umfasst in der Regel die folgenden Aspekte:
@@ -649,12 +650,12 @@ Anhand der Sicherheitsberichterstellung wird die Nutzung des Systems durch den K
 
 In vielen Fällen können Batchprozesse Berichte nach einem definierten Zeitplan generieren. (Latenz ist normalerweise kein Problem.) Sie sollten aber bei Bedarf auch auf Ad-hoc-Basis generiert werden können. Wenn Sie beispielsweise Daten in einer relationalen Datenbank speichern, wie z. B. der Azure SQL-Datenbank, können Sie ein Tool wie SQL Server Reporting Services zum Extrahieren und Formatieren der Daten verwenden und diese als eine Reihe von Berichten darstellen.
 
-## Zugehörige Muster und Anleitungen
-- Im [Leitfaden zur automatischen Skalierung](best-practices-auto-scaling.md) wird beschrieben, wie der Verwaltungsaufwand dadurch gesenkt wird, dass der Operator nicht mehr ständig die Leistung des Systems überwachen und Entscheidungen über das Hinzufügen und Entfernen von Ressourcen treffen muss.
-- Das [Health Endpoint Monitoring Pattern](https://msdn.microsoft.com/library/dn589789.aspx) (Muster zur Integritätsüberwachung für Endpunkte) beschreibt, wie Sie funktionale Prüfungen innerhalb einer Anwendung implementieren, auf die externe Tools in regelmäßigen Abständen über verfügbar gemachte Endpunkte zugreifen können.
-- Das [Prioritätswarteschlangen-Muster](https://msdn.microsoft.com/library/dn589794.aspx) zeigt, wie Nachrichten in der Warteschlange so priorisiert werden, dass dringende Anforderungen vor weniger dringenden Nachrichten empfangen und verarbeitet werden.
+## <a name="related-patterns-and-guidance"></a>Zugehörige Muster und Anleitungen
+- [Leitfaden zur automatischen Skalierung](best-practices-auto-scaling.md) wird beschrieben, wie der Verwaltungsaufwand dadurch gesenkt wird, dass der Operator nicht mehr ständig die Leistung des Systems überwachen und Entscheidungen über das Hinzufügen und Entfernen von Ressourcen treffen muss.
+- [Überwachungsmuster für den Integritätsendpunkt](https://msdn.microsoft.com/library/dn589789.aspx) (Muster zur Integritätsüberwachung für Endpunkte) beschreibt, wie Sie funktionale Prüfungen innerhalb einer Anwendung implementieren, auf die externe Tools in regelmäßigen Abständen über verfügbar gemachte Endpunkte zugreifen können.
+- [Prioritätswarteschlangen-Muster](https://msdn.microsoft.com/library/dn589794.aspx) zeigt, wie Nachrichten in der Warteschlange so priorisiert werden, dass dringende Anforderungen vor weniger dringenden Nachrichten empfangen und verarbeitet werden.
 
-## Weitere Informationen
+## <a name="more-information"></a>Weitere Informationen
 - [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](./storage/storage-monitoring-diagnosing-troubleshooting.md)
 - [Azure: Telemetry Basics and Troubleshooting (Telemetriegrundlagen und Problembehandlung)](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx)
 - [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md)
@@ -664,4 +665,8 @@ In vielen Fällen können Batchprozesse Berichte nach einem definierten Zeitplan
 - [Empfangen von Warnbenachrichtigungen](./azure-portal/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](./azure-portal/insights-service-health.md)
 - [Application Insights](./application-insights/app-insights-overview.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

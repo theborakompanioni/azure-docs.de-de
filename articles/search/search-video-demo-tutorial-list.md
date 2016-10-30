@@ -1,64 +1,65 @@
 <properties
-	pageTitle="Videos, Beispiele und Tutorials in Azure Search | Microsoft Azure | Gehosteter Cloudsuchdienst"
-	description="Zentrale Liste mit allen Videos, Beispielen, Demos und Tutorials, die für Azure Search, einen in Microsoft Azure gehosteten Clouddienst, erstellt wurden."
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="jhubbard"
-	editor=""
+    pageTitle="Videos, Beispiele und Tutorials in Azure Search | Microsoft Azure | Gehosteter Cloudsuchdienst"
+    description="Zentrale Liste mit allen Videos, Beispielen, Demos und Tutorials, die für Azure Search, einen in Microsoft Azure gehosteten Clouddienst, erstellt wurden."
+    services="search"
+    documentationCenter=""
+    authors="HeidiSteen"
+    manager="jhubbard"
+    editor=""
     tags="azure-portal"/>
 
 <tags
-	ms.service="search"
-	ms.devlang="NA"
-	ms.workload="search"
-	ms.topic="article" 
-	ms.tgt_pltfrm="na"
-	ms.date="09/22/2016"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="NA"
+    ms.workload="search"
+    ms.topic="article" 
+    ms.tgt_pltfrm="na"
+    ms.date="09/22/2016"
+    ms.author="heidist"/>
 
-#Azure Search: Codebeispiele, Demos, Videos und Tutorials
+
+#<a name="azure-search:-code-samples,-demos,-videos-and-tutorials"></a>Azure Search: Codebeispiele, Demos, Videos und Tutorials
 
 Finden Sie mit den folgenden Videos, Demos, Tutorials und Beispiel-Apps einen schnelleren Einstieg.
 
-##Codebeispiele
+##<a name="code-samples"></a>Codebeispiele
 
-- Das [**Codebeispiel für die Demo-Website zu Jobs in New York City**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) enthält Quellcode für die Azure Search-Demowebsite für Jobdaten von New York City mit Verwendung von ASP.NET MVC.
+- [**Code sample for the demo site: NYC Jobs Website**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) (Codebeispiel für die Demo-Website zu Jobs in New York City) enthält Quellcode für die Azure Search-Demowebsite für Jobdaten von New York City unter Verwendung von ASP.NET MVC.
 
-- Das [**Codebeispiel für die Demowebsite: Tate Art Gallery**](https://github.com/liamca/azure-search-tate-art-gallery/) enthält Quellcode für die Azure Search-Demowebsite für Kunstgaleriedaten und zeigt den Sammlungsdatentyp und geschachtelte Datenstrukturen, Facetten und Filter, Namen von Personen und Miniaturbilder.
+- [**Code sample for the demo site: Tate Art Gallery**](https://github.com/liamca/azure-search-tate-art-gallery/) (Codebeispiel für die Demowebsite: Tate Art Gallery) enthält Quellcode für die Azure Search-Demowebsite für Kunstgaleriedaten und zeigt den Sammlungsdatentyp und geschachtelte Datenstrukturen, Facetten und Filter, Namen von Personen und Miniaturbilder.
 
-- [**Code sample for .NET client library**](https://github.com/Azure-Samples/search-dotnet-getting-started) (Codebeispiel für die .NET-Clientbibliothek) ist eine ASP.NET MVC 5-Anwendung, die die .NET-Clientbibliothek für Suchvorgänge verwendet.
+- [**Code sample for .NET client library**](https://github.com/Azure-Samples/search-dotnet-getting-started) (Codebeispiel für die .NET-Clientbibliothek) ist eine ASP.NET MVC 5-Anwendung, die die .NET-Clientbibliothek für Suchvorgänge verwendet.
 
-- Das [**Codebeispiel für die REST-API**](https://github.com/Azure-Samples/search-rest-api-getting-started) enthält Beispielcode, mit dem die Verwendung der REST-API veranschaulicht wird.
+- [**Code sample for  the REST API**](https://github.com/Azure-Samples/search-rest-api-getting-started) (Codebeispiel für die REST-API) enthält Beispielcode, mit dem die Verwendung der REST-API veranschaulicht wird.
 
 Alle oben angegebenen Codebeispiele sowie andere Beispiele zur Nutzung von Azure Search in bestimmten Szenarien finden Sie im GitHub-Repository für Azure-Beispiele: [**Azure Samples > Azure Search**](https://github.com/azure-samples?utf8=%E2%9C%93&query=search).
 
-## Onlinedemowebsites
+## <a name="online-demo-sites"></a>Onlinedemowebsites
 
-Bei diesen Websites handelt es sich um voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche einsetzen.
+Bei diesen Websites handelt es sich um voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche einsetzen. 
 
-Die [**Demo eines Jobportals für New York City (NYC) mit Azure Search**](http://aka.ms/azjobsdemo) ist eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx) verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx) auszuprobieren.
+[**New York City (NYC) Jobs portal demo for Azure Search**](http://aka.ms/azjobsdemo) (Demo eines Jobportals für New York City (NYC) mit Azure Search) ist eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx)verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx)auszuprobieren. 
 
-[**Azure Search-Demo-Website**](https://searchsamples.azurewebsites.net/#/) ist eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search.
+[**Azure Search Demo Site**](https://searchsamples.azurewebsites.net/#/) (Azure Search-Demo-Website) ist eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search.
 
-##Top 5
+##<a name="top-five"></a>Top 5
 
 Hier sind einige unserer beliebtesten Tutorials und Videos zu Azure Search aufgeführt.
 
-- [Video: Microsoft Virtual Academy introduction to Azure Search](https://mva.microsoft.com/de-DE/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382) (Microsoft Virtual Academy – Einführung in Azure Search) ist eine gute Ressource, um sich über die Grundlagen von Azure Search zu informieren.
-- [Video: AzureCon 2015: Best Practices for Azure Search](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/) (AzureCon 2015: Bewährte Methoden für Azure Search) enthält praktische Tipps, wie Sie beim Erstellen von Apps für das Web oder für mobile Szenarios horizontal skalieren, die Leistung optimieren und Codeeffizienz erreichen.
+- [Video: Microsoft Virtual Academy introduction to Azure Search](https://mva.microsoft.com/en-us/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382) (Microsoft Virtual Academy – Einführung in Azure Search) ist eine gute Ressource, um sich über die Grundlagen von Azure Search zu informieren.
+- [Video: AzureCon 2015: Best Practices for Azure Search](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/) (AzureCon 2015: Bewährte Methoden für Azure Search) enthält praktische Tipps, wie Sie beim Erstellen von Apps für das Web oder für mobile Szenarios horizontal skalieren, die Leistung optimieren und Codeeffizienz erreichen. 
 - [Code sample for .NET client library](https://github.com/Azure-Samples/search-dotnet-getting-started) (Codebeispiel für die .NET-Clientbibliothek) ist eine ASP.NET MVC 5-Anwendung, die die .NET-Clientbibliothek für Suchvorgänge verwendet.
 - [Tutorial: Verwenden von Azure Search in .NET](search-howto-dotnet-sdk.md)|Konfigurieren und Ausführen einer Beispielwebanwendung für Visual Studio, die in Azure Search integriert ist.
 - [Tutorial: Erste Schritte mit Azure Search im Portal](search-get-started-portal.md) ist eine rein portalbasierte exemplarische Vorgehensweise, bei der Sie einen Index und Daten erhalten, ohne Code schreiben zu müssen. Dieses Tutorial ist hilfreich, um zu lernen, wie allgemeine Aufgaben im Portal durchgeführt werden.
 
 
-##Videos
+##<a name="videos"></a>Videos
 
 Link|Veröffentlicht|Details
 ----|------------|-----------
-[Channel9 Build 2016: „Applications That Learn & Adapt: Azure Machine Learning + Search“ (Anwendungen, die lernen und sich anpassen: Azure Machine Learning + Search)](https://channel9.msdn.com/Events/Build/2016/P458)|Mai 2016|17 Minuten. Liam Cavanagh erläutert die Vorteile des Hinzufügens der „Für Sie empfohlen“-Funktionen zu Ihrer Azure Search-Anwendung, und wie Rückschlüsse auf die Voreinstellungen des Benutzers aus Machine Learning abgeleitet werden. 
+[Channel9 Build 2016: „Applications That Learn & Adapt: Azure Machine Learning + Search“](https://channel9.msdn.com/Events/Build/2016/P458) (Anwendungen, die lernen und sich anpassen: Azure Machine Learning + Search)|Mai 2016|17 Minuten. Liam Cavanagh erläutert die Vorteile des Hinzufügens der „Für Sie empfohlen“-Funktionen zu Ihrer Azure Search-Anwendung, und wie Rückschlüsse auf die Voreinstellungen des Benutzers aus Machine Learning abgeleitet werden. 
 [Channel9 Build 2016: „Intelligent Data Driven Applications that Learn and Adapt“ (Intelligente datengesteuerte Anwendungen, die lernen und sich anpassen)](https://channel9.msdn.com/Events/Build/2016/B857)|Mai 2016|1 Stunde. Erfahren Sie, wie Machine Learning und Azure Search zusammen verwendet werden können, um komplexe datengesteuerte Anwendungen zu erstellen.
-[Channel9 Data Exposed: „Custom Analyzers, Search Analytics, & Portal Querying in Azure Search“](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search)|Januar 2016|15 Minuten. Benutzerdefinierte Analysen ermöglichen das Konfigurieren von Tokenizern und Tokenfiltern. Über die Suchanalyse erhalten Sie Einblick in die von den Benutzern eingegebenen Suchbegriffe und in die Effektivität Ihres Suchindex. Suchexplorer ist ein integriertes Abfragetool, mit dem Sie Abfragen innerhalb des Portals testen können. 
+[Channel9 Data Exposed: „Custom Analyzers, Search Analytics, & Portal Querying in Azure Search“](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search) (Benutzerdefinierte Analyseprogramme, Search Analytics und Portalabfragen in Azure Search)|Januar 2016|15 Minuten. Benutzerdefinierte Analysen ermöglichen das Konfigurieren von Tokenizern und Tokenfiltern. Über die Suchanalyse erhalten Sie Einblick in die von den Benutzern eingegebenen Suchbegriffe und in die Effektivität Ihres Suchindex. Suchexplorer ist ein integriertes Abfragetool, mit dem Sie Abfragen innerhalb des Portals testen können. 
 [Channel9 Data Exposed: „Azure Search Enhancements“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-Enhancements)|November 2015|17 Minuten. Datenerfassung von StackExchange-Daten. Erstellung eines Index im Azure-Portal. Erfahren Sie, wie Indexer unterstützte Datenquellen durchforsten und Daten in den Azure Search-Index aufnehmen. Sprachanalysen. Lucene-Abfrageausdrücke.
 [Was ist Azure Search?](https://azure.microsoft.com/documentation/videos/what-is-azure-search/)|Oktober 2015|Haben Sie kurz Zeit? Dann sehen Sie sich diese Videoeinführung zu Azure Search an (1:30 Min.).
 [AzureCon 2015: Bewährte Methoden für Azure Search](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)|September 2015|Pablo Castro stellt praktische Tipps vor, wie Sie beim Erstellen von Apps für das Web oder für mobile Szenarios horizontal skalieren, die Leistung optimieren und Codeeffizienz erreichen. 
@@ -76,7 +77,7 @@ Link|Veröffentlicht|Details
 [Channel9 Cloud Cover: Episode 152](http://channel9.msdn.com/Shows/Cloud%20Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh)|September 2014|25 Minuten. Eine Erörterung zu technischen Funktionen: Wie werden reguläre und geodatenbezogene Abfragen über Fiddler ausgegeben, und wie werden die zurückgegebenen Ergebnisse interpretiert?
 [Channel9 Data Exposed: „Introduction to Azure Search“](https://channel9.msdn.com/Shows/Data-Exposed/Introduction-To-Azure-Search)|August 2014|22 Minuten. Architektur und Funktionen von Azure Search, jetzt in der öffentlichen Vorschau verfügbar.
 
-##Tutorials
+##<a name="tutorials"></a>Tutorials
 
 Exemplarische Vorgehensweise|Beschreibung
 -----------|-----------
@@ -91,4 +92,17 @@ Exemplarische Vorgehensweise|Beschreibung
 [Lernprogramm zu Bewertungsprofilen](search-get-started-scoring-profiles.md)|Testen von Bewertungsprofilen mit einer Konsolenanwendung.
 [Lernprogramm zur Azure Search Management-REST-API](search-get-started-management-api.md)|So verwenden Sie die Management-REST-API, um den Dienst bereitzustellen und Administrator- oder Abfrage-API-Schlüssel zu verwalten.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

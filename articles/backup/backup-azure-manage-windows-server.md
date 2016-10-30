@@ -1,23 +1,24 @@
 <properties
-	pageTitle="Verwalten von Azure Recovery Services-Tresoren und -Servern | Microsoft Azure"
-	description="In diesem Tutorial erfahren Sie, wie Sie Azure Recovery Services-Tresore und -Server verwalten."
-	services="backup"
-	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
-	editor="tysonn"/>
+    pageTitle="Verwalten von Azure Recovery Services-Tresoren und -Servern | Microsoft Azure"
+    description="In diesem Tutorial erfahren Sie, wie Sie Azure Recovery Services-Tresore und -Server verwalten."
+    services="backup"
+    documentationCenter=""
+    authors="Jim-Parker"
+    manager="jwhit"
+    editor="tysonn"/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/19/2016"
-	ms.author="jimpark; markgal"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/19/2016"
+    ms.author="jimpark; markgal"/>
 
 
-# Überwachen und Verwalten von Azure Recovery Services-Tresoren und -Servern für Windows-Computer
+
+# <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Überwachen und Verwalten von Azure Recovery Services-Tresoren und -Servern für Windows-Computer
 
 > [AZURE.SELECTOR]
 - [Ressourcen-Manager](backup-azure-manage-windows-server.md)
@@ -27,9 +28,9 @@ In diesem Artikel finden Sie eine Übersicht über die Aufgaben im Rahmen der Si
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Bereitstellungsmodell.
 
-## Aufgaben im Verwaltungsportal
+## <a name="management-portal-tasks"></a>Aufgaben im Verwaltungsportal
 
-### Zugreifen auf eigene Recovery Services-Tresore
+### <a name="access-your-recovery-services-vaults"></a>Zugreifen auf eigene Recovery Services-Tresore
 
 1. Melden Sie sich mit Ihrem Azure-Abonnement am [Azure-Portal](https://portal.azure.com/) an.
 
@@ -41,7 +42,7 @@ In diesem Artikel finden Sie eine Übersicht über die Aufgaben im Rahmen der Si
 
     ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-dashboard.png) <br/>
 
-## Überwachen von Aufträgen und Warnungen
+## <a name="monitor-jobs-and-alerts"></a>Überwachen von Aufträgen und Warnungen
 Sie überwachen Aufträge und Warnungen über das Dashboard des Recovery Services-Tresors, in dem Folgendes angezeigt wird:
 
 - Details von Sicherungswarnungen
@@ -60,13 +61,13 @@ Am oberen Rand des Dashboards:
 - Löschen: Wenn ein Recovery Services-Tresor nicht mehr verwendet wird, können Sie ihn löschen, um Speicherplatz freizugeben. „Löschen“ wird erst aktiviert, nachdem alle geschützten Server aus dem Tresor gelöscht wurden.
 
 ![Aufgaben im Sicherungsdashboard](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
-## Warnungen für Sicherungen mit dem Azure Backup-Agent:
-| Warnstufe | Gesendete Warnungen |
+## <a name="alerts-for-backups-using-azure-backup-agent:"></a>Warnungen für Sicherungen mit dem Azure Backup-Agent:
+| Warnstufe  | Gesendete Warnungen |
 | ------------- | ------------- |
-| Kritisch | Sicherungsfehler, Wiederherstellungsfehler |
-| Warnung | Sicherung mit Warnungen abgeschlossen ist (wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert werden und mehr als eine Million Dateien erfolgreich gesichert werden) |
-| Information | Keine |
-## Verwalten von Sicherungswarnungen
+| Kritisch | Sicherungsfehler, Wiederherstellungsfehler  |
+| Warnung  | Sicherung mit Warnungen abgeschlossen ist (wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert werden und mehr als eine Million Dateien erfolgreich gesichert werden)  |
+| Information  | Keine  |
+## <a name="manage-backup-alerts"></a>Verwalten von Sicherungswarnungen
 Klicken Sie auf die Kachel **Sicherungswarnungen**, um das Blatt **Sicherungswarnungen** zu öffnen und Warnungen zu verwalten.
 
 ![Sicherungswarnungen](./media/backup-azure-manage-windows-server/manage-backup-alerts.png)
@@ -102,16 +103,16 @@ Warnungen können für die folgenden Schweregrade gesendet werden:
 - Warnung
 - Information
 
-Sie deaktivieren die Warnung auf dem Blatt mit den Auftragsdetails mit der Schaltfläche **Deaktivieren**. Wenn Sie auf „Deaktivieren“ klicken, können Sie Lösungshinweise angeben.
+Sie deaktivieren die Warnung auf dem Blatt mit den Auftragsdetails mit der Schaltfläche **Deaktivieren** . Wenn Sie auf „Deaktivieren“ klicken, können Sie Lösungshinweise angeben.
 
 Sie wählen die Spalten, die im Rahmen der Warnung angezeigt werden sollen, mit der Schaltfläche **Spalten auswählen** aus.
 
 >[AZURE.NOTE] Auf dem Blatt **Einstellungen** verwalten Sie Sicherungswarnungen, indem Sie **Überwachung und Berichte > Warnungen und Ereignisse > Sicherungswarnungen** wählen und dann auf **Filter** oder **Benachrichtigungen konfigurieren** klicken.
 
-## Verwalten von Sicherungselementen
+## <a name="manage-backup-items"></a>Verwalten von Sicherungselementen
 Die Verwaltung von lokalen Sicherungen ist jetzt im Verwaltungsportal möglich. Im Abschnitt „Sicherung“ des Dashboards wird auf der Kachel **Sicherungselemente** die Anzahl von Sicherungselementen im Tresor angezeigt.
 
-Klicken Sie auf der Kachel „Sicherungselemente“ auf **Dateien/Ordner**.
+Klicken Sie auf der Kachel „Sicherungselemente“ auf **Dateien/Ordner** .
 
 ![Kachel „Sicherungselemente“](./media/backup-azure-manage-windows-server/backup-items-tile.png)
 
@@ -125,7 +126,7 @@ Wenn Sie in der Liste auf ein bestimmtes Sicherungselement klicken, werden die w
 
 ![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/backup-files-and-folders.png)
 
-## Verwalten von Sicherungsaufträgen
+## <a name="manage-backup-jobs"></a>Verwalten von Sicherungsaufträgen
 Sicherungsaufträge für lokale Sicherungen (wenn der lokale Server in Azure sichert) und Azure-Sicherungen werden im Dashboard angezeigt.
 
 Im Abschnitt „Sicherung“ des Dashboards wird auf der Kachel „Sicherung“ die Anzahl von Aufträgen angezeigt:
@@ -133,33 +134,33 @@ Im Abschnitt „Sicherung“ des Dashboards wird auf der Kachel „Sicherung“ 
 - In Arbeit
 - Fehler in den letzten 24 Stunden
 
-Klicken Sie zum Verwalten Ihrer Sicherungsaufträge auf die Kachel **Sicherungsaufträge**, um das Blatt „Sicherungsaufträge“ zu öffnen.
+Klicken Sie zum Verwalten Ihrer Sicherungsaufträge auf die Kachel **Sicherungsaufträge** , um das Blatt „Sicherungsaufträge“ zu öffnen.
 
 ![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/backup-jobs.png)
 
 Sie ändern die Informationen, die auf dem Blatt „Sicherungsaufträge“ verfügbar sind, mit der Schaltfläche **Spalten auswählen** oben auf der Seite.
 
-Verwenden Sie die Schaltfläche **Filter**, um zwischen „Dateien und Ordner“ und „Sicherung eines virtuellen Azure-Computers“ zu wählen.
+Verwenden Sie die Schaltfläche **Filter** , um zwischen „Dateien und Ordner“ und „Sicherung eines virtuellen Azure-Computers“ zu wählen.
 
 Gehen Sie wie folgt vor, wenn Ihre gesicherten Dateien und Ordner nicht angezeigt werden: Klicken Sie oben auf der Seite auf die Schaltfläche **Filter**, und wählen Sie im Menü „Elementtyp“ die Option **Dateien und Ordner**.
 
 >[AZURE.NOTE] Auf dem Blatt **Einstellungen** verwalten Sie Sicherungsaufträge, indem Sie **Überwachung und Berichte > Aufträge > Sicherungsaufträge** und dann im Dropdownmenü die Option **Dateien/Ordner** wählen.
 
-## Überwachen der Sicherungsverwendung
+## <a name="monitor-backup-usage"></a>Überwachen der Sicherungsverwendung
 Im Abschnitt „Sicherung“ des Dashboards wird auf der Kachel „Sicherungsverwendung“ der Speicher angezeigt, der in Azure genutzt wird. Die Speicherverwendung wird für Folgendes bereitgestellt:
 - Cloud-LRS-Speicherverwendung des Tresors
 - Cloud-GRS-Speicherverwendung des Tresors
 
-## Produktionsserver
+## <a name="production-servers"></a>Produktionsserver
 Klicken Sie zum Verwalten Ihrer Produktionsserver auf **Einstellungen**. Klicken Sie unter „Verwalten“ auf **Sicherungsinfrastruktur > Produktionsserver**.
 
 Auf dem Blatt „Produktionsserver“ sind alle verfügbaren Produktionsserver aufgelistet. Klicken Sie in der Liste auf einen Server, um die Serverdetails zu öffnen.
 
 ![Geschützte Elemente](./media/backup-azure-manage-windows-server/production-server-list.png)
 
-## Aufgaben im Microsoft Azure Backup-Agent
+## <a name="microsoft-azure-backup-agent-tasks"></a>Aufgaben im Microsoft Azure Backup-Agent
 
-## Öffnen des Backup-Agents
+## <a name="open-the-backup-agent"></a>Öffnen des Backup-Agents
 
 Öffnen Sie den **Microsoft Azure Backup-Agent**. (Sie finden den Agent, indem Sie auf Ihrem Computer nach *Microsoft Azure Backup* suchen.)
 
@@ -174,9 +175,9 @@ Auf dem Blatt „Produktionsserver“ sind alle verfügbaren Produktionsserver a
 
 ![Aktionen in der Microsoft Azure Backup-Agent-Konsole](./media/backup-azure-manage-windows-server/console-actions.png)
 
->[AZURE.NOTE] Informationen zum **Wiederherstellen von Daten** finden Sie unter [Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell](backup-azure-restore-windows-server.md).
+>[AZURE.NOTE] Informationen zum **Wiederherstellen von Daten**finden Sie unter [Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell](backup-azure-restore-windows-server.md).
 
-## Ändern einer vorhandenen Sicherung
+## <a name="modify-an-existing-backup"></a>Ändern einer vorhandenen Sicherung
 
 1. Klicken Sie im Microsoft Azure Backup-Agent auf **Sicherung planen**.
 
@@ -200,7 +201,7 @@ Auf dem Blatt „Produktionsserver“ sind alle verfügbaren Produktionsserver a
 
     ![Elemente einer Windows Server-Sicherung](./media/backup-azure-manage-windows-server/specify-backup-schedule-modify-close.png)
 
-    >[AZURE.NOTE] Die Festlegung des Sicherungszeitplans wird in diesem [Artikel](backup-azure-backup-cloud-as-tape.md) ausführlich beschrieben.
+    >[AZURE.NOTE] Die Festlegung des Sicherungszeitplans wird in diesem [Artikel](backup-azure-backup-cloud-as-tape.md)ausführlich beschrieben.
 
 6. Wählen Sie die **Aufbewahrungsrichtlinie** für die Sicherungskopie aus, und klicken Sie auf **Weiter**.
 
@@ -212,24 +213,24 @@ Auf dem Blatt „Produktionsserver“ sind alle verfügbaren Produktionsserver a
 
     Nach dem Ändern der Einstellungen können Sie die richtige Auslösung der Sicherungen überprüfen, indem Sie zur Registerkarte **Aufträge** wechseln und sich vergewissern, dass die Änderungen in den Sicherungsaufträgen übernommen wurden.
 
-## Aktivieren der Netzwerkdrosselung  
-Der Azure Backup-Agent verfügt über eine Registerkarte für die Drosselung, mit der Sie steuern können, wie die Netzwerkbandbreite während der Datenübertragung verwendet wird. Diese Steuerungsmöglichkeit kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den weiteren Internetdatenverkehr haben soll. Die Drosselung der Datenübertragung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
+## <a name="enable-network-throttling"></a>Aktivieren der Netzwerkdrosselung  
+Der Azure Backup-Agent verfügt über eine Registerkarte für die Drosselung, mit der Sie steuern können, wie die Netzwerkbandbreite während der Datenübertragung verwendet wird. Diese Steuerungsmöglichkeit kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den weiteren Internetdatenverkehr haben soll. Die Drosselung der Datenübertragung gilt für Sicherungs- und Wiederherstellungsaktivitäten.  
 
 So aktivieren Sie die Drosselung
 
 1. Klicken Sie im **Backup-Agent** auf **Eigenschaften ändern**.
 
-2. Aktivieren Sie das Kontrollkästchen **Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren**.
+2. Aktivieren Sie das Kontrollkästchen **Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren** .
 
     ![Netzwerkdrosselung](./media/backup-azure-manage-windows-server/throttling-dialog.png)
 
 3. Nachdem Sie die Drosselung aktiviert haben, geben Sie die zulässige Bandbreite für die Sicherungsdatenübertragung für **Arbeitsstunden** und **Arbeitsfreie Stunden** an.
 
-    Die Bandbreitenwerte beginnen bei 512 Kilobytes pro Sekunde (KBit/s) und können mit bis zu 1023 Megabytes pro Sekunde (MBit/s) angegeben werden. Sie können außerdem den Start und das Ende für die **Arbeitsstunden** angeben und festlegen, welche Tage der Woche als Arbeitstage betrachtet werden. Die Zeiten außerhalb der angegebenen Arbeitsstunden werden als arbeitsfreie Stunden betrachtet.
+    Die Bandbreitenwerte beginnen bei 512 Kilobytes pro Sekunde (KBit/s) und können mit bis zu 1023 Megabytes pro Sekunde (MBit/s) angegeben werden. Sie können außerdem den Start und das Ende für die **Arbeitsstunden**angeben und festlegen, welche Tage der Woche als Arbeitstage betrachtet werden. Die Zeiten außerhalb der angegebenen Arbeitsstunden werden als arbeitsfreie Stunden betrachtet.
 
 4. Klicken Sie auf **OK**.
 
-## Verwalten von Ausschlusseinstellungen
+## <a name="manage-exclusion-settings"></a>Verwalten von Ausschlusseinstellungen
 
 1. Öffnen Sie den **Microsoft Azure Backup-Agent**. (Sie finden den Agent, indem Sie auf Ihrem Computer nach *Microsoft Azure Backup* suchen.)
 
@@ -273,7 +274,7 @@ So aktivieren Sie die Drosselung
 
     ![Planen einer Windows Server-Sicherung](./media/backup-azure-manage-windows-server/finish-exclusions.png)
 
-## Häufig gestellte Fragen
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 **F1. Der Status des Sicherungsauftrags wird im Azure Backup-Agent als „Abgeschlossen“ angezeigt. Warum ist dies im Portal nicht sofort sichtbar?**
 
 A1. Zwischen dem Anzeigen des Sicherungsauftragsstatus im Azure Backup-Agent und im Azure-Portal kommt es zu einer Verzögerung von maximal 15 Minuten.
@@ -284,20 +285,27 @@ A2. Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung a
 
 **F3. Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?**
 
-A3. Nachfolgend sind Fälle aufgeführt, in denen die Benachrichtigung nicht gesendet wird, um das Warnungsaufkommen zu verringern:
+A3. Nachfolgend sind Fälle aufgeführt, in denen die Benachrichtigung nicht gesendet wird, um das Warnungsaufkommen zu verringern: 
 
    - Stündliche Benachrichtigungen wurden konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
    - Der Auftrag wird abgebrochen.
-   - Bei der zweiten Sicherung tritt ein Fehler auf, da der ursprüngliche Sicherungsauftrag ausgeführt wird.
+   - Bei der zweiten Sicherung tritt ein Fehler auf, da der ursprüngliche Sicherungsauftrag ausgeführt wird. 
 
-## Problembehandlung bei der Überwachung<br>
-#### Problem: Aufträge und Warnungen vom Azure Backup-Agent werden im Portal nicht angezeigt.
-##### Schritte zur Problembehandlung:
-„OBRecoveryServicesManagementAgent“ wird verwendet, um die Daten der Aufträge und Warnungen zum Azure Backup-Dienst zu senden. Öffnen Sie den Task-Manager, und prüfen Sie, ob der Prozess „OBRecoveryServicesManagementAgent“ ausgeführt wird. Von Zeit zu Zeit ist dieser Prozess fehlerhaft oder abgeschaltet. Wenn der Prozess nicht ausgeführt wird, durchsuchen Sie die Liste der Dienste in der Systemsteuerung, und starten Sie „Microsoft Azure Recovery Services Management Agent“ bzw. führen Sie einen Neustart durch. Weitere Informationen finden Sie in den Protokollen im Installationsordner des Azure Backup-Agents: \\Microsoft Azure Recovery Services Agent\\Temp\\GatewayProvider*. <b>Z.B.</b>: C:\\Programme\\Microsoft Azure Recovery Services Agent\\Temp\\GatewayProvider0.errlog
+## <a name="troubleshooting-monitoring-issues<br>"></a>Problembehandlung bei der Überwachung<br>
+#### <a name="issue:-jobs-and-alerts-from-azure-backup-agent-does-not-appear-on-the-portal."></a>Problem: Aufträge und Warnungen vom Azure Backup-Agent werden im Portal nicht angezeigt.
+##### <a name="troubleshooting-steps:"></a>Schritte zur Problembehandlung:
+„OBRecoveryServicesManagementAgent“ wird verwendet, um die Daten der Aufträge und Warnungen zum Azure Backup-Dienst zu senden. Öffnen Sie den Task-Manager, und prüfen Sie, ob der Prozess „OBRecoveryServicesManagementAgent“ ausgeführt wird.
+Von Zeit zu Zeit ist dieser Prozess fehlerhaft oder abgeschaltet. Wenn der Prozess nicht ausgeführt wird, durchsuchen Sie die Liste der Dienste in der Systemsteuerung, und starten Sie „Microsoft Azure Recovery Services Management Agent“ bzw. führen Sie einen Neustart durch.
+Weitere Informationen finden Sie in den Protokollen im Installationsordner des Azure Backup-Agents: \Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*.
+<b>Z.B.</b>: C:\Programme\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 - [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
-- Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md).
-- Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933).
+- Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
+- Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

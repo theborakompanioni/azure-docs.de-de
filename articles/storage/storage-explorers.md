@@ -1,22 +1,23 @@
 <properties
-	pageTitle="Azure Storage-Clienttools | Microsoft Azure"
-	description="Enthält eine Liste der Tools, die das Anzeigen von bzw. Interagieren mit Azure Storage-Daten ermöglichen."
-	services="storage"
-	documentationCenter=""
-	authors="micurd"
-	manager="jahogg"
-	editor="tysonn"/>
+    pageTitle="Azure Storage-Clienttools | Microsoft Azure"
+    description="Enthält eine Liste der Tools, die das Anzeigen von bzw. Interagieren mit Azure Storage-Daten ermöglichen."
+    services="storage"
+    documentationCenter=""
+    authors="micurd"
+    manager="jahogg"
+    editor="tysonn"/>
 
 <tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/21/2016"
-	ms.author="micurd;tamram"/>
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/18/2016"
+    ms.author="micurd"/>
 
-# Azure Storage-Clienttools
+
+# <a name="azure-storage-client-tools"></a>Azure Storage-Clienttools
 
 Häufig möchten Benutzer von Azure Storage ihre Daten mithilfe eines Azure Storage-Clienttools anzeigen oder mit den Daten interagieren. In den folgenden Tabellen sind eine Reihe von Tools aufgeführt, die Ihnen dies ermöglichen. Ein Block ist jeweils mit „X“ gekennzeichnet, wenn er das Aufzählen bzw. Zugreifen auf die Datenabstraktion ermöglicht. In der Tabelle ist auch angegeben, ob die Tools kostenlos sind. Mit „Testversion“ wird angegeben, dass es eine kostenlose Testversion gibt, das vollständige Produkt aber nicht kostenfrei ist. Mit „J/N“ wird angegeben, dass eine Version kostenlos erhältlich ist und eine andere Version zum Kauf zur Verfügung steht.
 
@@ -40,7 +41,7 @@ Dies ist nur eine Momentaufnahme der verfügbaren Azure Storage-Clienttools. Die
     <td>Web</td>
     <td>Windows</td>
     <td>OSX</td>
-    <td>Linux</td>
+    <td> Linux</td>
   </tr>
   <tr>
     <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure-Portal</a></td>
@@ -106,7 +107,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td>Web</td>
     <td>Windows</td>
     <td>OSX</td>
-    <td>Linux</td>
+    <td> Linux</td>
   </tr>
   <tr>
     <td><a href="http://www.cloudportam.com/">Cloud Portam</a></td>
@@ -250,4 +251,8 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
   </tr>
 </table>
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

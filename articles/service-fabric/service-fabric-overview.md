@@ -16,10 +16,11 @@
    ms.date="09/22/2016"
    ms.author="mfussell"/>
 
-# Übersicht über Service Fabric
+
+# <a name="overview-of-service-fabric"></a>Übersicht über Service Fabric
 Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich stattdessen auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. Service Fabric ist die Middlewareplattform der nächsten Generation für das Erstellen und Verwalten leistungsstarker Tier-1-Anwendungen mit Cloudskalierung.
 
-## Aus Microservices bestehende Anwendungen
+## <a name="applications-composed-of-microservices"></a>Aus Microservices bestehende Anwendungen
 Service Fabric ermöglicht das Erstellen und Verwalten skalierbarer und zuverlässiger Anwendungen, die sich aus Microservices zusammensetzen. Diese Microservices werden in einem gemeinsam genutzten Computerpool (als Cluster bezeichnet) mit sehr hoher Dichte ausgeführt. Die Plattform bietet eine ausgereifte Laufzeit für das Erstellen verteilter, skalierbarer zustandsloser und zustandsbehafteter Microservices sowie umfassende Anwendungsverwaltungsfunktionen zum Organisieren, Bereitstellen, Überwachen, Upgraden/Patchen und Löschen bereitgestellter Anwendungen.
 
 Warum ist ein Microserviceansatz wichtig? Die beiden wichtigsten Gründe sind:
@@ -36,16 +37,16 @@ Internetdienste setzen sich heutzutage aus Microservices zusammen. Beispiele fü
 
 Service Fabric bietet umfassende Verwaltungsfunktionen für die Laufzeit und den Lebenszyklus der Anwendungen, die sich aus diesen Microservices zusammensetzen. Die in Containern gehosteten Microservices werden im Service Fabric-Cluster bereitgestellt und aktiviert. Die Umstellung von VMs auf Container ermöglicht eine Zunahme der Dichte in größerem Umfang. Eine weitere deutliche Steigerung der Dichte lässt sich dann erzielen, indem die Umstellung von Containern auf Microservices durchgeführt wird. Ein einzelner Azure SQL-Datenbank-Cluster kann beispielsweise aus Hunderten von Rechnern bestehen, die Zehntausende von Containern ausführen, die wiederum Hunderttausende von Datenbanken hosten. Jede Datenbank ist dabei ein zustandsbehafteter Service Fabric-Microservice. Da dasselbe für die anderen erwähnten Dienste gilt, wird der Begriff der „Hyperskalierung“ verwendet, um Service Fabric-Funktionen zu beschreiben. Container bieten eine hohe Dichte, Microservices eine extrem hohe Skalierbarkeit.
 
-Weitere Informationen zum Microservice-Ansatz finden Sie unter [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md).
+Weitere Informationen zum Microservice-Ansatz finden Sie unter [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
 
-## Erstellen von Service Fabric-Clustern – überall
+## <a name="create-service-fabric-clusters-anywhere"></a>Erstellen von Service Fabric-Clustern – überall
 Sie können Service Fabric-Cluster in vielen Umgebungen erstellen, z.B. unter Azure oder lokal, unter Windows Server oder unter Linux. Darüber hinaus ist die Entwicklungsumgebung im SDK identisch mit der Produktionsumgebung ohne Beteiligung von Emulatoren. Anders ausgedrückt: Falls das SDK in Ihrem lokalen Entwicklungscluster ausgeführt wird, wird es für den gleichen Cluster in anderen Umgebungen bereitgestellt.
 
-Weitere Informationen zum lokalen Erstellen von Clustern finden Sie unter [Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux](service-fabric-deploy-anywhere.md). Informationen zum Erstellen von Azure-Clustern finden Sie im [Azure-Portal](service-fabric-cluster-creation-via-portal.md).
+Weitere Informationen zum lokalen Erstellen von Clustern finden Sie unter [Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux](service-fabric-deploy-anywhere.md). Informationen zum Erstellen von Azure-Clustern finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md).
 
 ![Service Fabric-Plattform][Image1]
 
-## Zustandsbehaftete und zustandslose Service Fabric-Microservices
+## <a name="stateless-and-stateful-service-fabric-microservices"></a>Zustandsbehaftete und zustandslose Service Fabric-Microservices
 
 Service Fabric ermöglicht es Ihnen, Anwendungen zu erstellen, die aus Microservices bestehen. Zustandslose Microservices (Protokollgateways, Webproxys und Ähnliches) behalten über die Anforderung und ihre Antwort vom Dienst hinaus keinen veränderbaren Zustand bei. Ein zustandsloser Dienst ist zum Beispiel die Workerrolle in Azure Cloud Services. Zustandsbehaftete Microservices (Benutzerkonten, Datenbanken, Geräte, Einkaufswagen, Warteschlangen und Ähnliches) behalten einen veränderbaren, autorisierenden Zustand über die Anforderung und ihre Antwort hinaus bei. Heutige Internetanwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices.
 
@@ -57,7 +58,7 @@ Warum sollte man sowohl zustandsbehaftete als auch zustandslose Microservices ha
 
 Weitere Informationen zu Anwendungsmustern mit Service Fabric finden Sie unter [Service Fabric-Anwendungsszenarien](service-fabric-application-scenarios.md) und [Auswählen eines Frameworks für den Dienst](service-fabric-choose-framework.md).
 
-## Anwendungslebenszyklusverwaltung
+## <a name="application-lifecycle-management"></a>Anwendungslebenszyklusverwaltung
 Service Fabric bietet erstklassige Unterstützung für die gesamte Anwendungslebenszyklusverwaltung (Application Lifecycle Management, ALM) von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis hin zur endgültigen Außerbetriebnahme.
 
 Dank der ALM-Funktionen von Service Fabric profitieren Anwendungsadministratoren/IT-Operatoren von einfache Workflows, um Anwendungen mit geringem Arbeitsaufwand vorzubereiten, bereitzustellen, zu patchen und zu überwachen. Diese integrierten Workflows entlasten IT-Operatoren bei der Gewährleistung der kontinuierlichen Anwendungsverfügbarkeit erheblich.
@@ -66,7 +67,7 @@ Die meisten Anwendungen bestehen aus einer Kombination aus zustandslosen und zus
 
 Weitere Informationen zur Verwaltung des Anwendungslebenszyklus finden Sie unter [Lebenszyklus der Service Fabric-Anwendung](service-fabric-application-lifecycle.md) und zum Bereitstellen eines beliebigen Codes unter [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
 
-## Wichtige Funktionen
+## <a name="key-capabilities"></a>Wichtige Funktionen
 Mit Service Fabric können Sie Folgendes tun:
 
 - Hochgradig skalierbare Anwendungen mit Selbstreparatur entwickeln.
@@ -100,14 +101,18 @@ Mit Service Fabric können Sie Folgendes tun:
 - Den selbstreparierenden Resource Balancer beim Organisieren einer erneuten Bereitstellung der Anwendungen im Cluster überwachen. Service Fabric führt nach Fehlern eine Wiederherstellung durch und optimiert die Lastenverteilung basierend auf den verfügbaren Ressourcen.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen finden Sie unter:
     * [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
     * [Technische Übersicht](service-fabric-technical-overview.md)
-* Einrichten der Service Fabric-[Entwicklungsumgebung](service-fabric-get-started.md)
+* Einrichten der Service Fabric- [Entwicklungsumgebung](service-fabric-get-started.md)  
 * [Auswählen eines Frameworks](service-fabric-choose-framework.md) für Ihren Dienst
 
-[Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
+[Bild1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -3,8 +3,8 @@
    description="Details zur Sicherheit auf Zeilenebene in Power BI Embedded"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="mgblythe"
-   manager="NA"
+   authors="guyinacube"
+   manager="erikre"
    editor=""
    tags=""/>
 <tags
@@ -13,10 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="07/05/2016"
-   ms.author="mblythe"/>
+   ms.date="10/04/2016"
+   ms.author="asaxton"/>
 
-# Sicherheit auf Zeilenebene in Power BI Embedded
+
+# <a name="row-level-security-with-power-bi-embedded"></a>Sicherheit auf Zeilenebene in Power BI Embedded
 
 Sicherheit auf Zeilenebene (Row-Level Security, RLS) kann verwendet werden, um den Benutzerzugriff auf bestimmte Daten in einem Bericht oder Dataset einzuschränken. So können mehrere unterschiedliche Benutzer denselben Bericht verwenden, sehen dabei aber unterschiedliche Daten. Power BI Embedded unterstützt jetzt Datasets, die mit Sicherheit auf Zeilenebene konfiguriert sind.
 
@@ -26,11 +27,11 @@ Um RLS nutzen zu können, ist es wichtig, dass Sie drei Hauptbegriffe verstanden
 
 **Benutzer**: Dies sind die eigentlichen Endbenutzer, die Berichte anzeigen. In Power BI Embedded werden Benutzer anhand der username-Eigenschaft in einem App-Token identifiziert.
 
-**Rollen**: Benutzer sind Rollen zugeordnet. Eine Rolle ist ein Container für Regeln und kann einen Namen wie „Verkaufsleiter“ oder „Vertriebsmitarbeiter“ haben. In Power BI Embedded werden Benutzer anhand der roles-Eigenschaft in einem App-Token identifiziert.
+**Rollen** : Benutzer sind Rollen zugeordnet. Eine Rolle ist ein Container für Regeln und kann einen Namen wie „Verkaufsleiter“ oder „Vertriebsmitarbeiter“ haben. In Power BI Embedded werden Benutzer anhand der roles-Eigenschaft in einem App-Token identifiziert.
 
-**Regeln**: Rollen verfügen über Regeln, bei denen es sich um die eigentlichen Filter handelt, die auf die Daten angewendet werden. Dies kann ein einfacher Filter wie „Country = USA“ oder auch ein dynamischerer Filter sein.
+**Regeln** : Rollen verfügen über Regeln, bei denen es sich um die eigentlichen Filter handelt, die auf die Daten angewendet werden. Dies kann ein einfacher Filter wie „Country = USA“ oder auch ein dynamischerer Filter sein.
 
-### Beispiel
+### <a name="example"></a>Beispiel
 
 Für den restlichen Teil dieses Artikels geben wir ein Beispiel für die Erstellung von RLS und die anschließende Verwendung in einer eingebetteten Anwendung an. In unserem Beispiel wird die PBIX-Datei [Retail Analysis Sample](http://go.microsoft.com/fwlink/?LinkID=780547) verwendet.
 
@@ -44,10 +45,10 @@ RLS wird in Power BI Desktop erstellt. Wenn das Dataset und der Bericht geöffne
 
 Für dieses Schema sind einige Punkte zu beachten:
 
--	Alle Kennzahlen, z.B. **Total Sales** (Gesamtumsatz), sind in der Faktentabelle **Sales** (Umsatz) gespeichert.
--	Hierzu gehören vier weitere Dimensionstabellen: **Item** (Artikel), **Time** (Uhrzeit), **Store** (Geschäft) und **District** (Bereich).
--	Die Pfeile auf die Beziehungslinien zeigen an, in welcher Richtung Filter aus einer Tabelle in eine andere Tabelle verlaufen können. Wenn ein Filter beispielsweise auf **Time[Date]** angewendet wird, wird damit unter dem aktuellen Schema nur nach Werten in der Tabelle **Sales** gefiltert. Von diesem Filter sind keine anderen Tabellen betroffen, da alle Pfeile auf den Beziehungslinien auf die Tabelle „Sales“ zeigen, und nicht davon weg.
--	Die Tabelle **District** gibt an, wer der Leiter des Bereichs ist:
+-   Alle Kennzahlen, z.B. **Total Sales** (Gesamtumsatz), sind in der Faktentabelle **Sales** (Umsatz) gespeichert.
+-   Hierzu gehören vier weitere Dimensionstabellen: **Item** (Artikel), **Time** (Uhrzeit), **Store** (Geschäft) und **District** (Bereich).
+-   Die Pfeile auf die Beziehungslinien zeigen an, in welcher Richtung Filter aus einer Tabelle in eine andere Tabelle verlaufen können. Wenn ein Filter beispielsweise auf **Time[Date]** angewendet wird, wird damit unter dem aktuellen Schema nur nach Werten in der Tabelle **Sales** gefiltert. Von diesem Filter sind keine anderen Tabellen betroffen, da alle Pfeile auf den Beziehungslinien auf die Tabelle „Sales“ zeigen, und nicht davon weg.
+-   Die Tabelle **District** gibt an, wer der Leiter des Bereichs ist:
 
     ![](media\power-bi-embedded-rls\pbi-embedded-rls-district-table-4.png)
 
@@ -55,17 +56,21 @@ Wenn wir basierend auf diesem Schema einen Filter auf die Spalte **District Mana
 
 So geht‘s:
 
-1.	Klicken Sie auf der Registerkarte „Modellierung“ auf **Rollen verwalten**. ![](media\power-bi-embedded-rls\pbi-embedded-rls-modeling-tab-5.png)
+1.  Klicken Sie auf der Registerkarte „Modellierung“ auf **Rollen verwalten**.  
+![](media\power-bi-embedded-rls\pbi-embedded-rls-modeling-tab-5.png)
 
-2.	Erstellen Sie eine neue Rolle mit dem Namen **Manager**. ![](media\power-bi-embedded-rls\pbi-embedded-rls-manager-role-6.png)
+2.  Erstellen Sie eine neue Rolle mit dem Namen **Manager**.  
+![](media\power-bi-embedded-rls\pbi-embedded-rls-manager-role-6.png)
 
-3.	Geben Sie in der Tabelle **District** den folgenden DAX-Ausdruck ein: **[District Manager] = USERNAME()** ![](media\power-bi-embedded-rls\pbi-embedded-rls-manager-role-7.png)
+3.  Geben Sie in der Tabelle **District** den folgenden DAX-Ausdruck ein: **[District Manager] = USERNAME()**  
+![](media\power-bi-embedded-rls\pbi-embedded-rls-manager-role-7.png)
 
-4.	Um sicherzustellen, dass die Regeln funktionieren, klicken Sie auf der Registerkarte **Modellierung** auf **Als Rollen anzeigen** und geben Folgendes ein: ![](media\power-bi-embedded-rls\pbi-embedded-rls-view-as-roles-8.png)
+4.  Um sicherzustellen, dass die Regeln funktionieren, klicken Sie auf der Registerkarte **Modellierung** auf **Als Rollen anzeigen** und geben Folgendes ein:  
+![](media\power-bi-embedded-rls\pbi-embedded-rls-view-as-roles-8.png)
 
-    In den Berichten werden jetzt die Daten angezeigt, die für die Anmeldung von **Andrew Ma** gelten.
+    In den Berichten werden jetzt die Daten angezeigt, die für die Anmeldung von **Andrew Ma**gelten.
 
-Mit dem hier angewendeten Filter wird nach allen Datensätzen in den Tabellen **District**, **Store** und **Sales** gefiltert. Aufgrund der Filterrichtung der Beziehungen zwischen **Sales** und**Time**, **Sales** und **Item** und **Item** und **Time** wird aber nicht nach den Tabellen gefiltert.
+Mit dem hier angewendeten Filter wird nach allen Datensätzen in den Tabellen **District**, **Store** und **Sales** gefiltert. Aufgrund der Filterrichtung der Beziehungen zwischen **Sales** und **Time**, **Sales** und **Item** und **Item** und **Time** wird aber nicht nach den Tabellen gefiltert.
 
 ![](media\power-bi-embedded-rls\pbi-embedded-rls-diagram-view-9.png)
 
@@ -79,15 +84,15 @@ Jetzt können Filter auch von der Tabelle „Sales“ zur Tabelle **Item** flie�
 
 **Hinweis** Wenn Sie den DirectQuery-Modus für Ihre Daten verwenden, müssen Sie die bidirektionale Kreuzfilterung aktivieren, indem Sie diese beiden Optionen auswählen:
 
-1.	**Datei** > **Optionen und Einstellungen** > **Vorschaufeatures** > **Kreuzfilterung in beide Richtungen für DirectQuery aktivieren**.
-2.	**Datei** > **Optionen und Einstellungen** > **DirectQuery** > **Unbeschränkte Measures im DirectQuery-Modus zulassen**.
+1.  **Datei** -> **Optionen und Einstellungen** -> **Vorschaufeatures** -> **Kreuzfilterung in beide Richtungen für DirectQuery aktivieren**.
+2.  **Datei** -> **Optionen und Einstellungen** -> **DirectQuery** -> **Unbeschränkte Measures im DirectQuery-Modus zulassen**.
 
 
-Weitere Informationen zur bidirektionalen Kreuzfilterung erhalten Sie, indem Sie das Whitepaper [Bidirektionale Kreuzfilterung in SQL Server Analysis Services 2016 und Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx) herunterladen.
+Weitere Informationen zur bidirektionalen Kreuzfilterung erhalten Sie, indem Sie das Whitepaper [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx) (Bidirektionale Kreuzfilterung in SQL Server Analysis Services 2016 und Power BI Desktop) herunterladen.
 
 Dies sind die Schritte, die in Power BI Desktop ausgeführt werden müssen. Es ist aber noch ein weiterer Schritt erforderlich, damit die definierten RLS-Regeln in Power BI Embedded funktionieren. Benutzer werden von Ihrer Anwendung authentifiziert und autorisiert, und App-Token werden verwendet, um den Benutzern Zugriff auf einen bestimmten Power BI Embedded-Bericht zu gewähren. Power BI Embedded verfügt nicht über spezifische Informationen darüber, wer der Benutzer ist. Damit RLS funktioniert, müssen Sie im Rahmen Ihres App-Tokens weiteren Kontext übergeben:
--	**username** (optional): Bei Verwendung mit RLS ist dies eine Zeichenfolge, die zum Identifizieren des Benutzers verwendet werden kann, wenn RLS-Regeln angewendet werden. Weitere Informationen finden Sie unter „Sicherheit auf Zeilenebene in Power BI Embedded“.
--	**roles**: Mit den in dieser Zeichenfolge enthaltenen Rollen wird ausgewählt, wann die Regeln der Sicherheit auf Zeilenebene (RLS) angewendet werden sollen. Wenn mehr als eine Rolle übergeben wird, sollten sie als Zeichenfolgenarray übergeben werden.
+-   **username** (optional): Bei Verwendung mit RLS ist dies eine Zeichenfolge, die zum Identifizieren des Benutzers verwendet werden kann, wenn RLS-Regeln angewendet werden. Weitere Informationen finden Sie unter „Sicherheit auf Zeilenebene in Power BI Embedded“.
+-   **roles** : Mit den in dieser Zeichenfolge enthaltenen Rollen wird ausgewählt, wann die Regeln der Sicherheit auf Zeilenebene (RLS) angewendet werden sollen. Wenn mehr als eine Rolle übergeben wird, sollten sie als Zeichenfolgenarray übergeben werden.
 
 Falls die username-Eigenschaft vorhanden ist, müssen Sie in den Rollen auch mindestens einen Wert übergeben.
 
@@ -99,7 +104,11 @@ Wenn sich nach Abschluss all dieser Schritte nun eine Person an unserer Anwendun
 
 ![](media\power-bi-embedded-rls\pbi-embedded-rls-dashboard-13.png)
 
-## Siehe auch
-[Sicherheit auf Zeilenebene](https://powerbi.microsoft.com/de-DE/documentation/powerbi-admin-rls/)
+## <a name="see-also"></a>Siehe auch
+[Row-level security (RLS) with Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-admin-rls/) (Sicherheit auf Zeilenebene)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

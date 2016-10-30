@@ -1,34 +1,35 @@
 <properties
-	pageTitle="Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen"
-	description="Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dies umfasst Informationen zum Erhöhen von Einschränkungen und Höchstwerten."
-	services=""
-	documentationCenter=""
-	authors="rothja"
-	manager="jeffreyg"
-	editor=""
-	tags="billing"
-	/>
+    pageTitle="Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen"
+    description="Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dies umfasst Informationen zum Erhöhen von Einschränkungen und Höchstwerten."
+    services=""
+    documentationCenter=""
+    authors="rothja"
+    manager="jeffreyg"
+    editor=""
+    tags="billing"
+    />
 
 <tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/29/2016"
-	ms.author="btardif"/>
+    ms.service="billing"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/29/2016"
+    ms.author="btardif"/>
 
-# Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
-## Übersicht
+# <a name="azure-subscription-and-service-limits,-quotas,-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
+
+## <a name="overview"></a>Übersicht
 
 Dieses Dokument beschreibt einige der wichtigsten Einschränkungen in Microsoft Azure. Dieses Dokument behandelt zurzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste der Einschränkungen erweitert, um größere Teile der Plattform abzudecken.
 
-Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/). Dort können Sie mithilfe des [Preisrechners](https://azure.microsoft.com/pricing/calculator/) oder durch Aufruf der Seite mit den Preisdetails für einen Dienst (beispielsweise [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Ihre Kosten bestimmen.
+Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/) . Dort können Sie mithilfe des [Preisrechners](https://azure.microsoft.com/pricing/calculator/) oder durch Aufruf der Seite mit der Preisübersicht für einen Dienst (beispielsweise [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Ihre Kosten bestimmen.
 
-> [AZURE.NOTE] Falls Sie einen Grenzwert über den **Standardgrenzwert** anheben möchten, können Sie [eine gebührenfreie Onlinekundensupport-Anforderung öffnen](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). Die Limits können nicht über die Werte unter **Maximales Limit** in der folgenden Tabelle angehoben werden. Falls keine Spalte **Maximales Limit** existiert, bedeutet dies, dass für die entsprechende Ressource keine änderbaren Limits existieren.
+> [AZURE.NOTE] Falls Sie einen Grenzwert über den **Standardgrenzwert**anheben möchten, können Sie [eine gebührenfreie Onlinekundensupport-Anforderung öffnen](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). Die Limits können nicht über die Werte unter **Maximales Limit** in der folgenden Tabelle angehoben werden. Falls keine Spalte **Maximales Limit** existiert, bedeutet dies, dass für die entsprechende Ressource keine änderbaren Limits existieren.
 
-## Grenzwerte und der Azure-Ressourcen-Manager
+## <a name="limits-and-the-azure-resource-manager"></a>Grenzwerte und der Azure-Ressourcen-Manager
 
 Es ist jetzt möglich, mehrere Azure-Ressourcen in einer einzigen Azure-Ressourcengruppe zu kombinieren. Bei der Verwendung von Ressourcengruppen werden Grenzwerte, die bisher global waren, auf einer regionalen Ebene mit dem Azure-Ressourcen-Manager verwaltet. Weitere Informationen zu Azure-Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](resource-group-overview.md).
 
@@ -36,10 +37,10 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 
 > [AZURE.NOTE] Wichtig ist, dass der Zugriff Ihres Abonnements auf Kontingente für Ressourcen in Azure-Ressourcengruppen pro Region erfolgt und nicht pro Abonnement wie bei Dienstverwaltungskontingenten. Verwenden wir Kernspeicherkontingente als Beispiel. Wenn Sie eine Erhöhung des Kontingents mit Unterstützung für Kernspeicher anfordern müssen, müssen Sie entscheiden, wie viel Kernspeicher Sie in den einzelnen Regionen verwenden möchten, und anschließend eine spezifische Anforderung für Azure-Ressourcengruppen-Kernspeicherkontingente für die gewünschten Beträge und Regionen vornehmen. Wenn Sie für die Ausführung Ihrer Anwendung 30 Kerne in Westeuropa benötigen, sollten Sie daher 30 Kerne in Westeuropa anfordern. In anderen Regionen erfolgt jedoch keine Erhöhung des Kernspeicherkontingents. Das Kontingent von 30 Kernen gilt nur für Westeuropa.
 <!-- -->
-Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengruppenkontingente für Ihre Workload in jeder Region sein müssen, und diesen Betrag in jeder Region anfordern, in der Sie eine Bereitstellung in Betracht ziehen. Weitere Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Problembehandlung bei der Bereitstellung](./resource-manager-common-deployment-errors.md).
+Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengruppenkontingente für Ihre Workload in jeder Region sein müssen, und diesen Betrag in jeder Region anfordern, in der Sie eine Bereitstellung in Betracht ziehen. Weitere Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Problembehandlung bei der Bereitstellung](./resource-manager-common-deployment-errors.md) .
 
 
-## Dienstspezifische Grenzwerte
+## <a name="service-specific-limits"></a>Dienstspezifische Grenzwerte
 
 - [Active Directory](#active-directory-limits)
 - [API Management](#api-management-limits)
@@ -83,64 +84,66 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [Skalierungsgruppen für virtuelle Computer](#virtual-machine-scale-sets-limits)
 
 
-### Grenzwerte für Abonnements
-#### Grenzwerte für Abonnements
+### <a name="subscription-limits"></a>Grenzwerte für Abonnements
+#### <a name="subscription-limits"></a>Grenzwerte für Abonnements
 [AZURE.INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
-#### Abonnementgrenzwerte – Azure Resource Manager
+#### <a name="subscription-limits---azure-resource-manager"></a>Abonnementgrenzwerte – Azure Resource Manager
 
 Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und der Azure-Ressourcengruppen. Grenzwerte, die durch den Azure-Ressourcen-Manager nicht geändert wurden, sind im Folgenden nicht aufgeführt. Diese Grenzwerte finden Sie in der vorherigen Tabelle.
+
+Informationen zum Umgang mit Grenzwerten bei Resource Manager-Anforderungen finden Sie unter [Throttling Resource Manager requests](resource-manager-request-limits.md) (Drosselung von Resource Manager-Anforderungen).
 
 [AZURE.INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
 
-### Grenzwerte für Ressourcengruppen
+### <a name="resource-group-limits"></a>Grenzwerte für Ressourcengruppen
 
 [AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
-### Grenzwerte für virtuelle Computer
-#### Grenzwerte für virtuelle Computer
+### <a name="virtual-machines-limits"></a>Grenzwerte für virtuelle Computer
+#### <a name="virtual-machine-limits"></a>Grenzwerte für virtuelle Computer
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 
-#### Grenzwerte für virtuelle Computer – Azure-Ressourcen-Manager
+#### <a name="virtual-machines-limits---azure-resource-manager"></a>Grenzwerte für virtuelle Computer – Azure-Ressourcen-Manager
 
 Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und der Azure-Ressourcengruppen. Grenzwerte, die durch den Azure-Ressourcen-Manager nicht geändert wurden, sind im Folgenden nicht aufgeführt. Diese Grenzwerte finden Sie in der vorherigen Tabelle.
 
 [AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
-### Grenzwerte für VM-Skalierungsgruppen
+### <a name="virtual-machine-scale-sets-limits"></a>Grenzwerte für VM-Skalierungsgruppen
 
 [AZURE.INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-### Grenzwerte für Netzwerke
+### <a name="networking-limits"></a>Grenzwerte für Netzwerke
 
 [AZURE.INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
-#### Grenzwerte für Netzwerke
+#### <a name="networking-limits"></a>Grenzwerte für Netzwerke
 [AZURE.INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
-#### Traffic Manager-Grenzwerte
+#### <a name="traffic-manager-limits"></a>Traffic Manager-Grenzwerte
 
 [AZURE.INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
-#### DNS-Grenzwerte
+#### <a name="dns-limits"></a>DNS-Grenzwerte
 
 [AZURE.INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-### Speichergrenzwerte
+### <a name="storage-limits"></a>Speichergrenzwerte
 
 Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/storage-scalability-targets.md).
 
-#### Grenzwerte für den Speicherdienst
+#### <a name="storage-service-limits"></a>Grenzwerte für den Speicherdienst
 
 [AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-#### Grenzwerte für Datenträger virtueller Computer
+#### <a name="virtual-machine-disk-limits"></a>Grenzwerte für Datenträger virtueller Computer
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-Weitere Informationen finden Sie unter [Größen virtueller Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md).
+Weitere Informationen finden Sie unter [Größen virtueller Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md) .
 
 **Standardspeicherkonten**
 
@@ -150,47 +153,47 @@ Weitere Informationen finden Sie unter [Größen virtueller Computer](../article
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
-#### Grenzwerte für Speicherressourcenanbieter
+#### <a name="storage-resource-provider-limits"></a>Grenzwerte für Speicherressourcenanbieter
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
 
-### Grenzwerte für Clouddienste
+### <a name="cloud-services-limits"></a>Grenzwerte für Clouddienste
 
 [AZURE.INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 
-### App Service-Grenzwerte
+### <a name="app-service-limits"></a>App Service-Grenzwerte
 Die folgenden App Service-Grenzwerte umfassen Grenzwerte für Web-Apps, Mobile Apps, API-Apps und Logik-Apps.
 
 [AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
-### Scheduler-Grenzwerte
+### <a name="scheduler-limits"></a>Scheduler-Grenzwerte
 
 [AZURE.INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
 
-### Batch-Grenzwerte
+### <a name="batch-limits"></a>Batch-Grenzwerte
 
 [AZURE.INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
-###BizTalk Services-Grenzwerte
+###<a name="biztalk-services-limits"></a>BizTalk Services-Grenzwerte
 In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgeführt.
 
 [AZURE.INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 
-### DocumentDB-Grenzwerte
+### <a name="documentdb-limits"></a>DocumentDB-Grenzwerte
 
 [AZURE.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
 
 Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](./documentdb/documentdb-increase-limits.md).
 
-### Mobile Engagement-Grenzwerte
+### <a name="mobile-engagement-limits"></a>Mobile Engagement-Grenzwerte
 
 [AZURE.INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 
-### Search-Grenzwerte
+### <a name="search-limits"></a>Search-Grenzwerte
 
 Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Folgende Tarife sind verfügbar:
 
@@ -208,101 +211,101 @@ Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Fol
 
 Detailliertere Informationen zu anderen Grenzwerten, einschließlich Dokumentgröße, Abfragen pro Sekunde, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
 
-### Media Services-Grenzwerte
+### <a name="media-services-limits"></a>Media Services-Grenzwerte
 
 [AZURE.INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
-### CDN-Grenzwerte
+### <a name="cdn-limits"></a>CDN-Grenzwerte
 
 [AZURE.INCLUDE [cdn-limits](../includes/cdn-limits.md)]
 
-### Mobile Services-Grenzwerte
+### <a name="mobile-services-limits"></a>Mobile Services-Grenzwerte
 
 [AZURE.INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
-### Überwachung von Grenzwerten
+### <a name="monitoring-limits"></a>Überwachung von Grenzwerten
 
 [AZURE.INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
 
-### Grenzwerte für den Notification Hubs-Dienst
+### <a name="notification-hub-service-limits"></a>Grenzwerte für den Notification Hubs-Dienst
 
 [AZURE.INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
 
-### Event Hubs-Grenzwerte
+### <a name="event-hubs-limits"></a>Event Hubs-Grenzwerte
 
 [AZURE.INCLUDE [azure-servicebus-limits](../includes/event-hubs-limits.md)]
 
-### Service Bus-Grenzwerte
+### <a name="service-bus-limits"></a>Service Bus-Grenzwerte
 
 [AZURE.INCLUDE [azure-servicebus-limits](../includes/service-bus-quotas-table.md)]
 
-### IoT Hub-Grenzwerte
+### <a name="iot-hub-limits"></a>IoT Hub-Grenzwerte
 
 [AZURE.INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
 
-### Data Factory-Grenzwerte
+### <a name="data-factory-limits"></a>Data Factory-Grenzwerte
 
 [AZURE.INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
 
-### Grenzwerte für Data Lake Analytics
+### <a name="data-lake-analytics-limits"></a>Grenzwerte für Data Lake Analytics
 [AZURE.INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
-### Stream Analytics-Grenzwerte
+### <a name="stream-analytics-limits"></a>Stream Analytics-Grenzwerte
 [AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
-### Active Directory-Grenzwerte
+### <a name="active-directory-limits"></a>Active Directory-Grenzwerte
 
-[AZURE.INCLUDE [AAD-Diensteinschränkungen](../includes/active-directory-service-limits-include.md)]
+[AZURE.INCLUDE [AAD-service-limits](../includes/active-directory-service-limits-include.md)]
 
 
-### Azure RemoteApp-Grenzwerte
+### <a name="azure-remoteapp-limits"></a>Azure RemoteApp-Grenzwerte
 
 [AZURE.INCLUDE [azure-remoteapp-limits](../includes/azure-remoteapp-limits.md)]
 
-### StorSimple-Systemgrenzwerte
+### <a name="storsimple-system-limits"></a>StorSimple-Systemgrenzwerte
 
 [AZURE.INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
 
-### Operational Insights-Grenzwerte
+### <a name="operational-insights-limits"></a>Operational Insights-Grenzwerte
 
 [AZURE.INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
 
-### Backup-Grenzwerte
+### <a name="backup-limits"></a>Backup-Grenzwerte
 
 [AZURE.INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
 
-### Site Recovery-Grenzwerte
+### <a name="site-recovery-limits"></a>Site Recovery-Grenzwerte
 
 [AZURE.INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]
 
-### Application Insights-Grenzwerte
+### <a name="application-insights-limits"></a>Application Insights-Grenzwerte
 
 [AZURE.INCLUDE [application-insights-limits](../includes/application-insights-limits.md)]
 
-### API Management-Grenzwerte
+### <a name="api-management-limits"></a>API Management-Grenzwerte
 
 [AZURE.INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
 
-### Azure Redis Cache-Grenzwerte
+### <a name="azure-redis-cache-limits"></a>Azure Redis Cache-Grenzwerte
 
 [AZURE.INCLUDE [redis-cache-service-limits](../includes/redis-cache-service-limits.md)]
 
-### Schlüsseltresor-Grenzwerte
+### <a name="key-vault-limits"></a>Schlüsseltresor-Grenzwerte
 
 [AZURE.INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 [AZURE.INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
-### Automatisierungsgrenzwerte
+### <a name="automation-limits"></a>Automatisierungsgrenzwerte
 [AZURE.INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
 
-### Grenzwerte für SQL-Datenbanken
+### <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
 
 Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkungen für SQL-Datenbank](sql-database/sql-database-resource-limits.md).
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 
 [Grundlegendes zu Azure-Einschränkungen und -Steigerungen](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
@@ -310,4 +313,8 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!----HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

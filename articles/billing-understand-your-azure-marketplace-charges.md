@@ -1,105 +1,115 @@
 <properties
-	pageTitle="Grundlegendes zu Azure Marketplace-Gebühren | Microsoft Azure"
-	description="Es wird beschrieben, wie Sie Ihre Marketplace-Bestellungen besser verstehen."
-	services=""
-	documentationCenter=""
-	authors="JiangChen79"
-	manager="felixwu"
-	editor=""
-	tags="billing"
-	/>
+    pageTitle="Grundlegendes zu Azure-Gebühren für externe Dienste | Microsoft Azure"
+    description="Informieren Sie sich über die Gebührenabrechnung für externe Dienste in Azure (früher Marketplace)."
+    services=""
+    documentationCenter=""
+    authors="adpick"
+    manager="felixwu"
+    editor=""
+    tags="billing"
+    />
 
 <tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="cjiang"/>
+    ms.service="billing"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/12/2016"
+    ms.author="adpick"/>
 
-# Grundlegendes zu Azure Marketplace-Gebühren
-Dieser Artikel enthält grundlegende Informationen zu den Gebühren, die für Ihre Marketplace-Bestellungen gelten. Einige Punkte, die beim Prüfen Ihrer Rechnung zu beachten sind, sind die unterschiedlichen Preistypen („Nur Basis“, „Nur Nutzung“ und „Basis und Nutzung“). Beachten Sie, dass jede von Ihnen aufgegebene Marketplace-Bestellung über einen eigenen monatlichen Abrechnungszyklus verfügt. Diese Themen werden unten ausführlich behandelt.
 
-> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+# <a name="understand-your-azure-external-service-charges"></a>Grundlegendes zu Azure-Gebühren für externe Dienste
 
-## Prüfen Ihrer Marketplace-Rechnung
-Nachdem Sie sich beim [Azure-Kontoportal](https://account.windowsazure.com/subscriptions/) angemeldet haben, können Sie aktuelle und ältere Rechnungen prüfen und herunterladen.
+In diesem Artikel wird die Abrechnung bei externen Diensten in Azure beschrieben. Externe Dienste wurden in der Vergangenheit als Marketplace-Bestellungen bezeichnet. Externe Dienste werden von unabhängigen Dienstanbietern angeboten, sind jedoch vollständig in das Azure-Ökosystem integriert. In diesem Artikel werden folgende Themen erläutert:
 
-So zeigen Sie eine Rechnung an oder laden sie herunter
+- Identifizieren von externen Diensten
+- Grundlegendes zu den Unterschieden bei der Abrechnung im Vergleich zu anderen Azure-Ressourcen
+- Anzeigen und Nachverfolgen der antizipierten Kosten durch die Nutzung externer Dienste
+- Verwalten von Bestellungen externer Dienste sowie der Bezahlung dieser Dienste
 
-1. Melden Sie sich mit Ihrer Organisations-ID am Azure-Kontoportal an.
-2. Klicken Sie auf **Marketplace**. Es wird eine vollständige Liste mit allen Marketplace-Bestellungen angezeigt, die über Ihr Azure-Konto aufgegeben wurden. Sie sehen, dass die Bestellungen nach Namen und ID des übergeordneten Azure-Abonnements gruppiert sind.
+## <a name="what-are-azure-external-services?"></a>Was sind externe Azure-Dienste?
 
-	![Marketplace-Bestellungen](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
+Externe Dienste wurden in der Vergangenheit als Azure Marketplace-Angebote bezeichnet. Diese Dienste werden im Allgemeinen von Drittanbietern veröffentlicht und für Azure zur Verfügung gestellt. Beispiele für externe Dienste, die Sie in Azure erwerben können, die jedoch nicht von Microsoft veröffentlicht werden, sind ClearDB und SendGrid.
 
-3. Wenn Sie auf eine der angezeigten Bestellungen klicken, gelangen Sie zur Zusammenfassung dieser Bestellung für den aktuellen Abrechnungszyklus. Eine Beschreibung der unterschiedlichen Preismodelle finden Sie unter [Häufig gestellte Fragen zum Marketplace](https://azure.microsoft.com/marketplace/faq/).
+### <a name="identify-external-services"></a>Identifizieren von externen Diensten
 
-	![Bestellübersicht](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
+Beim Bereitstellen eines neuen externen Diensts oder einer neuen externen Ressource wird eine Warnung angezeigt:
 
-Die Zusammenfassung enthält zu jedem Auftrag folgende Informationen:
-- Preis
-- Billing Cycle
-- Kaufdatum
-- Zugehöriges übergeordnetes Abonnement
-- Rechnungswährung
+![Warnung beim Erwerb von Marketplace-Angeboten](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
-Beachten Sie hierbei, dass wir einige Änderungen an der Anzeige dieser Informationen vorgenommen haben. Bisher wurden die Kosten der Bestellung inklusive Steuern angezeigt. Dies wurde aktualisiert. Es wird nun der Preis angezeigt, der je nach Land entweder inklusive oder exklusive Steuern gilt. Außerdem wurde die Position des Preises von der rechten Seite in die Mitte verschoben. Damit Sie besser verfolgen können, zu welchem Azure-Abonnement diese Gebühren gehören, haben wir den Navigationselementen auf der rechten Seite den Namen und die ID des Azure-Abonnements sowie die Option **Zahlungsmethode ändern** hinzugefügt.
+>[AZURE.NOTE] Externe Dienste werden von Drittanbietern veröffentlicht, einige Microsoft-Produkte sind jedoch ebenfalls als externe Dienste gekennzeichnet.
 
-## Aktualisieren der Zahlungsmethode und Bestellungsverwaltung
-Die Seite mit der Zusammenfassung verfügt über Benutzeraktionen, sodass Sie die Funktionen für das Zahlungsmodell und die Bestellungsverwaltung aktualisieren können:
+### <a name="external-services-are-billed-separately"></a>Externe Dienste werden separat in Rechnung gestellt.
 
-> [AZURE.NOTE] Wenn Sie Ihre Organisations-ID zum Ändern von persönlichen Informationen verwenden, müssen Sie beim Support ein Ticket erstellen.
+Externe Dienste werden als einzelne Bestellungen innerhalb Ihres Azure-Abonnements behandelt. Der Abrechnungszeitraum für die einzelnen Dienste wird beim Erwerb des Diensts festgelegt. Dieser Zeitraum darf nicht mit dem Abrechnungszeitraum des Abonnements verwechselt werden, das zum Kauf des externen Diensts verwendet wurde. Sie erhalten separate Rechnungen, und Ihre Kreditkarte wird separat belastet.
 
-Klicken Sie zum Aktualisieren der Zahlungsmethode rechts auf der Seite auf den Link **Zahlungsmethode ändern**.
+### <a name="each-external-service-has-a-different-billing-model"></a>Jeder externer Dienst verwendet ein eigenes Abrechnungsmodell.
 
-![Bestellübersicht](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
+Für einige Dienste wird die nutzungsbasierte Bezahlung verwendet, anderen liegt ein monatliches Zahlungsmodell zugrunde. Für externe Azure-Dienste wird eine Kreditkarte benötigt, eine Zahlung per Rechnung ist nicht möglich.
 
-Mit diesem Link gelangen Sie zu einem anderen Portal, in dem Sie Änderungen an der bevorzugten Zahlungsmethode vornehmen können.
+### <a name="you-can't-use-monthly-free-credits-for-external-services"></a>Die kostenlosen monatlichen Gutschriften können nicht für externe Dienste verwendet werden.
 
-Führen Sie die folgenden Schritte aus, um Ihre Zahlungsmethode zu ändern:
+Wenn Sie ein Azure-Abonnement mit [kostenlosen Gutschriften](https://azure.microsoft.com/pricing/spending-limits/) verwenden, können diese Gutschriften nicht zum Begleichen von Rechnungen genutzt werden, die Sie für externe Dienste erhalten. Nutzen Sie eine Kreditkarte, um externe Dienste zu erwerben.
 
-1. Klicken Sie auf **Zahlungsweise ändern**.
+## <a name="view-external-service-spending-and-history"></a>Anzeigen der Ausgaben und des Verlaufs für externe Dienste
 
-	![Abonnements](./media/billing-understand-your-azure-marketplace-charges/subscriptions.jpg)
+Im [Azure-Portal](https://portal.azure.com/) kann eine Liste der externen Dienste angezeigt werden, die unter den einzelnen Abonnements erworben wurden: 
 
-2. Wählen Sie die Zahlungsmethode aus, zu der Sie wechseln möchten. Bei der Option **Zahlung per** können Sie Ihre Kreditkarte auswählen. Bei der Option **Neue Zahlungsmethode hinzufügen** können Sie eine neue Kreditkarte hinzufügen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und [wechseln Sie auf das Blatt **Abrechnung**](https://portal.azure.com/?flight=1#blade/Microsoft_Azure_Billing/BillingBlade).
 
-	![Zahlungsmethode ändern](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
+    ![Auswählen der Option „Abrechnung“ im Hubmenü](./media/billing-understand-your-azure-marketplace-charges/billing-button.png) 
+  
+2. Wählen Sie im Abschnitt **Abonnementkosten** das Abonnement aus, das angezeigt werden soll. 
+   
+    ![Auswählen eines Abonnements auf dem Blatt „Abrechnung“](./media/billing-understand-your-azure-marketplace-charges/select-sub.png)
 
-## Bestellungsverwaltung
-Auf der Übersichtsseite wird der Link **Bestellung verwalten** angezeigt. Über diesen Link gelangen Sie zu Ihrem Portal, in dem Sie alle Marketplace-Bestellungen anzeigen, die Dienstintegrität verfolgen und Support anfordern können.
+3. Klicken Sie auf **Externe Dienste**.
 
-![Portal](./media/billing-understand-your-azure-marketplace-charges/portal.jpg)
+    ![Auswählen von „Externe Dienste“ auf dem Blatt „Abonnement“](./media/billing-understand-your-azure-marketplace-charges/external-service-blade.png)
 
-Klicken Sie zum Anfordern von Support auf die Kachel **Hilfe und Support**. Daraufhin wird die folgende Seite **Hilfe und Support** angezeigt, auf der Sie folgende Möglichkeiten haben:
-- Öffnen Sie eine Supportanfrage.
-- Verwalten Sie vorhandene Supportanfragen.
-- Verwalten Sie die Ressourcenintegrität.
+4. In dieser Anzeige sollten die einzelnen externen Dienste, der Name des Herausgebers, der erworbene Tarif, der von Ihnen zugewiesene Ressourcenname und der aktuelle Bestellstatus angezeigt werden. Wählen Sie einen externen Dienst aus, um die Rechnungen anzuzeigen, die bereits erstellt wurden.
 
-![Anfordern von Support](./media/billing-understand-your-azure-marketplace-charges/request-support.jpg)
+    ![Auswählen eines externen Diensts](./media/billing-understand-your-azure-marketplace-charges/external-service-blade2.png)
 
-## Abrechnungsverlauf
-Ein neues Feature auf der Zusammenfassungsseite ist das Anzeigen von nutzungsbasierten Angeboten, z. B. virtuellen Maschinen. Sie können jetzt sowohl für aktuelle als auch für vergangene Perioden die Nutzungsdaten nach Abrechnungszyklus herunterladen. Klicken Sie zum Anzeigen der Nutzungsdaten auf den Link **Nutzung herunterladen** für den gewünschten Zeitraum.
+5. In dieser Ansicht können Sie die Rechnungsbeträge einschließlich Steuern anzeigen.
 
-Wenn Sie die tatsächlich angefallenen Gebühren aufrufen möchten, können Sie auf **Gebühren anzeigen** klicken. Sie werden an ein anderes Portal weitergeleitet, in dem Sie alle Gebühren einschließlich Steuern anzeigen können. Wenn Sie eine Organisations-ID verwenden, ist die Schaltfläche **Gebühren anzeigen** nicht aktiviert, und Sie müssen ein Supportticket erstellen, um eine Übersicht über Ihre Gebühren anzufordern.
+    ![Anzeigen des Abrechnungsverlaufs für externe Dienste](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png)
 
-![Abrechnungsverlauf](./media/billing-understand-your-azure-marketplace-charges/billing-history.png)
+## <a name="manage-payment-methods-for-external-service-orders"></a>Verwalten der Zahlungsmethoden für Bestellungen externer Dienste
 
-Führen Sie die folgenden Schritte aus, um die tatsächlichen Gebühren anzuzeigen:
+Ihre Zahlungsmethoden für externe Dienste können über das [Kontocenter](https://account.windowsazure.com/) aktualisiert werden.
 
-1. Klicken Sie auf der Seite **ABRECHNUNGSVERLAUF** auf **Gebühren anzeigen**.
+> [AZURE.NOTE] Wenn Sie Ihr Abonnement über ein Geschäfts-, Schul- oder Unikonto erworben haben, [kontaktieren Sie den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um Ihre Zahlungsmethode zu ändern.
 
-	Eine neue Registerkarte mit dem [Bestellverlauf](https://account.microsoft.com/billing/orders#/) wird geöffnet.
+1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/) an, und [navigieren Sie auf die Registerkarte **Marketplace**](https://account.windowsazure.com/Store).
 
-    Beachten Sie Folgendes: Wenn Sie versuchen, im Portal für die Abrechnungs- und Kontoverwaltung auf die Rohdaten der Nutzung zuzugreifen, müssen Sie sich an den Support wenden. Klicken Sie hierfür unten auf der Seite auf den Link „Support“.
+    ![Auswählen von „Marketplace“ im Kontocenter](./media/billing-understand-your-azure-marketplace-charges/select-marketplace.png)
 
-	![Bestellverlauf](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
+2. Auswählen des externen Diensts, der verwaltet werden soll
 
-2. Wählen Sie die Bestellung aus, die Sie überprüfen möchten, und klicken Sie auf **Details**, um eine Aufstellung Ihrer Gebühren anzuzeigen. Die Aufstellung enthält Zwischensumme, Steuern und Gesamtgebühren.
+    ![Auswählen des externen Diensts, der verwaltet werden soll](./media/billing-understand-your-azure-marketplace-charges/select-ext-service.png)
 
-	![Bestelldetails](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
+3. Klicken Sie rechts auf der Seite auf **Zahlungsmethode ändern**. Sie gelangen in ein anderes Portal, um Ihre Zahlungsmethode zu verwalten.
+    
+    ![Bestellübersicht](./media/billing-understand-your-azure-marketplace-charges/change-payment.PNG)
 
-> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+4. Klicken Sie auf **Informationen bearbeiten**, und befolgen Sie die Anweisungen zum Aktualisieren Ihrer Zahlungsinformationen.
 
-<!---HONumber=AcomDC_0928_2016-->
+    ![Auswählen von „Informationen bearbeiten“](./media/billing-understand-your-azure-marketplace-charges/edit-info.png)
+    
+## <a name="cancel-an-external-service-order"></a>Kündigen eines externen Diensts
+
+Wenn Sie einen externen Dienst kündigen möchten, müssen Sie die Ressource im [Azure-Portal](https://portal.azure.com) löschen.
+
+![Löschen der Ressource](./media/billing-understand-your-azure-marketplace-charges/deleteMarketplaceOrder.PNG)
+
+## <a name="need-help?-contact-support."></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+
+Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um das Problem schnell zu lösen.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

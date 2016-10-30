@@ -16,7 +16,8 @@
    ms.date="09/24/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
-# Sichern einer Datenbank in SQL Data Warehouse
+
+# <a name="secure-a-database-in-sql-data-warehouse"></a>Sichern einer Datenbank in SQL Data Warehouse
 
 > [AZURE.SELECTOR]
 - [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
@@ -26,23 +27,23 @@
 
 Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehouse-Datenbank. Insbesondere erhalten Sie in diesem Artikel erste Informationen über Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten und zum Überwachen von Aktivitäten in einer Datenbank.
 
-## Verbindungssicherheit
+## <a name="connection-security"></a>Verbindungssicherheit
 
 Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewall-Regeln und Verbindungsverschlüsselung einschränken und sichern.
 
-Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken. Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt. Weitere Informationen finden Sie unter [Azure SQL-Datenbankfirewall][], [sp\_set\_firewall\_rule][] und [sp\_set\_database\_firewall\_rule][].
+Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt.  Weitere Informationen finden Sie unter [Azure SQL-Datenbankfirewall][], [sp_set_firewall_rule][] und [sp_set_database_firewall_rule][].
 
-Verbindungen mit Ihrem SQL Data Warehouse sind standardmäßig verschlüsselt. Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
+Verbindungen mit Ihrem SQL Data Warehouse sind standardmäßig verschlüsselt.  Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
 
-## Authentifizierung
+## <a name="authentication"></a>Authentifizierung
 
-Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL Data Warehouse unterstützt derzeit die SQL Server-Authentifizierung mit Benutzername und Kennwort sowie Azure Active Directory.
+Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL Data Warehouse unterstützt derzeit die SQL Server-Authentifizierung mit Benutzername und Kennwort sowie Azure Active Directory. 
 
 Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Server Admin"-Anmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich mittels SQL Server-Authentifizierung bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. „dbo“ (database owner) authentifizieren.
 
-Allerdings sollten die Benutzer in Ihrer Organisation als bewährte Methode ein anderes Konto für die Authentifizierung verwenden. Auf diese Weise können Sie die Berechtigungen für die Anwendung beschränken und die Risiken schädlicher Aktivitäten reduzieren, falls Ihr Anwendungscode für einen SQL-Injection-Angriff anfällig ist.
+Allerdings sollten die Benutzer in Ihrer Organisation als bewährte Methode ein anderes Konto für die Authentifizierung verwenden. Auf diese Weise können Sie die Berechtigungen für die Anwendung beschränken und die Risiken schädlicher Aktivitäten reduzieren, falls Ihr Anwendungscode für einen SQL-Injection-Angriff anfällig ist. 
 
-Um einen authentifizierten SQL Server-Benutzer zu erstellen, stellen Sie mit den Anmeldeinformationen des Serveradministrators eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie eine neue Serveranmeldung. Außerdem ist es eine gute Idee, einen Benutzer in der Masterdatenbank für Azure SQL Data Warehouse-Benutzer zu erstellen. Das Erstellen eines Benutzers in der Masterdatenbank ermöglicht einem Benutzer, sich mit Tools wie SSMS ohne Angabe eines Datenbanknamens anzumelden. Außerdem kann er mit dem Objekt-Explorer alle Datenbanken auf einer SQL Server-Instanz anzeigen.
+Um einen authentifizierten SQL Server-Benutzer zu erstellen, stellen Sie mit den Anmeldeinformationen des Serveradministrators eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie eine neue Serveranmeldung.  Außerdem ist es eine gute Idee, einen Benutzer in der Masterdatenbank für Azure SQL Data Warehouse-Benutzer zu erstellen. Das Erstellen eines Benutzers in der Masterdatenbank ermöglicht einem Benutzer, sich mit Tools wie SSMS ohne Angabe eines Datenbanknamens anzumelden.  Außerdem kann er mit dem Objekt-Explorer alle Datenbanken auf einer SQL Server-Instanz anzeigen.
 
 ```sql
 -- Connect to master database and create a login
@@ -57,10 +58,10 @@ Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindu
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Wenn Benutzer zusätzliche Vorgänge wie das Erstellen von Anmeldenamen oder neuer Datenbanken durchführen, müssen sie auch den Rollen `Loginmanager` und `dbmanager` in der Masterdatenbank zugewiesen werden. Weitere Informationen zu diesen zusätzlichen Rollen sowie zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][]. Weitere Informationen zu Azure AD für SQL Data Warehouse finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung][].
+Wenn Benutzer zusätzliche Vorgänge wie das Erstellen von Anmeldenamen oder neuer Datenbanken durchführen, müssen sie auch den Rollen `Loginmanager` und `dbmanager` in der Masterdatenbank zugewiesen werden. Weitere Informationen zu diesen zusätzlichen Rollen sowie zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][].  Weitere Informationen zu Azure AD für SQL Data Warehouse finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung][].
 
 
-## Autorisierung
+## <a name="authorization"></a>Autorisierung
 
 Autorisierung bezieht sich darauf, welche Aufgaben Sie in einer Azure SQL Data Warehouse-Datenbank ausführen können. Dies wird durch die Rollenmitgliedschaften und Berechtigungen Ihres Benutzerkontos gesteuert. Als bewährte Methode sollten Sie Benutzern nur die minimal erforderlichen Berechtigungen erteilen. Azure SQL Data Warehouse vereinfacht die Verwaltung durch Rollen in T-SQL:
 
@@ -69,46 +70,50 @@ EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationU
 EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationUser to write data
 ```
 
-Das Server-Admin-Konto, mit dem Sie eine Verbindung herstellen, ist Mitglied von db\_owner und verfügt daher über alle Berechtigungen in der Datenbank. Speichern Sie dieses Konto für die Bereitstellung von Schemaänderungen und andere Verwaltungsvorgänge. Verwenden Sie das Konto "ApplicationUser" mit eingeschränkteren Berechtigungen, um eine Verbindung von Ihrer Anwendung zur Datenbank mit den geringsten Berechtigungen herzustellen, die von Ihrer Anwendung benötigt werden.
+Das Server-Admin-Konto, mit dem Sie eine Verbindung herstellen, ist Mitglied von db_owner und verfügt daher über alle Berechtigungen in der Datenbank. Speichern Sie dieses Konto für die Bereitstellung von Schemaänderungen und andere Verwaltungsvorgänge. Verwenden Sie das Konto "ApplicationUser" mit eingeschränkteren Berechtigungen, um eine Verbindung von Ihrer Anwendung zur Datenbank mit den geringsten Berechtigungen herzustellen, die von Ihrer Anwendung benötigt werden.
 
 Es gibt Möglichkeiten, Benutzerberechtigungen für die Azure SQL-Datenbank noch weiter einzuschränken:
 
 - Mithilfe von granularen [Berechtigungen][] können Sie steuern, welche Aufgaben in einzelnen Spalten, Tabellen, Ansichten, Prozeduren und anderen Objekten in der Datenbank ausgeführt werden dürfen. Verwenden Sie präzise Berechtigungen, um die größtmögliche Kontrolle zu haben und die geringstmöglichen Berechtigungen zu erteilen. Das präzise Berechtigungssystem ist etwas kompliziert, und seine effektive Nutzung erfordert etwas Übung.
-- [Datenbankrollen][] können, mit Ausnahme von "db\_datareader" und "db\_datawriter", dazu verwendet werden, leistungsstärkere Benutzerkonten für Anwendungen oder weniger leistungsstarke Verwaltungskonten zu erstellen. Die integrierten festen Datenbankrollen bieten eine einfache Möglichkeit zum Erteilen von Berechtigungen, können jedoch auch dazu führen, dass mehr Berechtigungen als nötig erteilt werden.
+- [Datenbankrollen][] können, mit Ausnahme von „db_datareader“ und „db_datawriter“, dazu verwendet werden, Anwendungsbenutzerkonten mit mehr Berechtigungen oder Verwaltungskonten mit weniger Berechtigungen zu erstellen. Die integrierten festen Datenbankrollen bieten eine einfache Möglichkeit zum Erteilen von Berechtigungen, können jedoch auch dazu führen, dass mehr Berechtigungen als nötig erteilt werden.
 - [Gespeicherten Prozeduren][] können verwendet werden, um die Aktionen zu begrenzen, die in der Datenbank ausgeführt werden können.
 
 Die Verwaltung von Datenbanken und logischen Servern über das klassische Azure-Portal oder mit der Azure-Ressourcen-Manager-API wird durch die Rollenzuweisungen Ihres Portal-Benutzerkontos gesteuert. Weitere Informationen zu diesem Thema finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal][].
 
-## Verschlüsselung
+## <a name="encryption"></a>Verschlüsselung
 
-Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt. Wenn Sie Ihre Datenbank verschlüsseln, werden zugehörige Sicherungen und Transaktionsprotokolle verschlüsselt, ohne dass Änderungen an Ihren Anwendungen erforderlich sind. TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Der von SQL Data Warehouse verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparente Datenverschlüsselung (TDE)][].
+Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt.  Wenn Sie Ihre Datenbank verschlüsseln, werden zugehörige Sicherungen und Transaktionsprotokolle verschlüsselt, ohne dass Änderungen an Ihren Anwendungen erforderlich sind. TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Der von SQL Data Warehouse verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)][].
 
-Sie können Ihre Datenbank mit dem [Azure-Portal][Encryption with Portal] oder mit [T-SQL][Encryption with TSQL] verschlüsseln.
+Sie können Ihre Datenbank über das [Azure-Portal][Verschlüsselung im Portal] oder mit [T-SQL][Verschlüsselung mit TSQL] verschlüsseln.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehouse über verschiedene Protokolle finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][].
+Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehouse anhand von verschiedenen Protokollen finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][].
 
 <!--Image references-->
 
 <!--Article references-->
 [Herstellen einer Verbindung mit SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
-[Encryption with Portal]: ./sql-data-warehouse-encryption-tde.md
-[Encryption with TSQL]: ./sql-data-warehouse-encryption-tde-tsql.md
+[Verschlüsselung im Portal]: ./sql-data-warehouse-encryption-tde.md
+[Verschlüsselung mit TSQL]: ./sql-data-warehouse-encryption-tde-tsql.md
 [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
-[Azure SQL-Datenbankfirewall]: https://msdn.microsoft.com/library/ee621782.aspx
-[sp\_set\_firewall\_rule]: https://msdn.microsoft.com/library/dn270017.aspx
-[sp\_set\_database\_firewall\_rule]: https://msdn.microsoft.com/library/dn270010.aspx
+[Firewall für die Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee621782.aspx
+[sp_set_firewall_rule]: https://msdn.microsoft.com/library/dn270017.aspx
+[sp_set_database_firewall_rule]: https://msdn.microsoft.com/library/dn270010.aspx
 [Datenbankrollen]: https://msdn.microsoft.com/library/ms189121.aspx
 [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee336235.aspx
 [Berechtigungen]: https://msdn.microsoft.com/library/ms191291.aspx
 [Gespeicherten Prozeduren]: https://msdn.microsoft.com/library/ms190782.aspx
-[Transparente Datenverschlüsselung (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[Azure portal]: https://portal.azure.com/
+[Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Azure-Portal]: https://portal.azure.com/
 
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

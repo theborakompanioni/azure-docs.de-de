@@ -16,20 +16,21 @@
     ms.date="09/14/2016"
     ms.author="ShubhaVijayasarathy"/>
 
-# Erstellen eines Event Hubs-Namespace mit Event Hub und Aktivieren von Archive mithilfe einer Azure Resource Manager-Vorlage
+
+# <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>Erstellen eines Event Hubs-Namespace mit Event Hub und Aktivieren von Archive mithilfe einer Azure Resource Manager-Vorlage
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Event Hubs-Namespace mit einem Event Hub erstellt und Archive auf Ihrem Event Hub aktiviert. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder Ihren Anforderungen anpassen.
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][].
 
-Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][] \(Empfohlene Benennungskonventionen für Azure-Ressourcen).
+Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][](Empfohlene Benennungskonventionen für Azure-Ressourcen).
 
-Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][] \(Event Hub- und Archive-Aktivierungsvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Event Hub and enable Archive template][] (Event Hub- und Archive-Aktivierungsvorlage) auf GitHub.
 
 >[AZURE.NOTE]
-Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Event Hubs“.
+>Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Event Hubs“.
 
-## Was wird bereitgestellt?
+## <a name="what-you-deploy?"></a>Was wird bereitgestellt?
 
 Mit dieser Vorlage können Sie einen Event Hubs-Namespace mit einem Event Hub bereitstellen und Archive aktivieren.
 
@@ -39,13 +40,13 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 
 [![Bereitstellen in Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-archive%2Fazuredeploy.json)
 
-## Parameter
+## <a name="parameters"></a>Parameter
 
-Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens `Parameters`, der alle Parameterwerte enthält. Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
+Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens `Parameters` , der alle Parameterwerte enthält. Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
 
 Die Vorlage definiert die folgenden Parameter:
 
-### eventHubNamespaceName
+### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
 Der Name des zu erstellenden Event Hubs-Namespace.
 
@@ -58,7 +59,7 @@ Der Name des zu erstellenden Event Hubs-Namespace.
 }
 ```
 
-### eventHubName
+### <a name="eventhubname"></a>eventHubName
 
 Der Name des im Event Hubs-Namespace erstellten Event Hubs.
 
@@ -71,130 +72,130 @@ Der Name des im Event Hubs-Namespace erstellten Event Hubs.
 }
 ```
 
-### messageRetentionInDays
+### <a name="messageretentionindays"></a>messageRetentionInDays
 
-Die Anzahl der Tage, für die Nachrichten in Ihrem Event Hub beibehalten werden sollen.
+Die Anzahl der Tage, für die Nachrichten in Ihrem Event Hub beibehalten werden sollen. 
 
 ```
 "messageRetentionInDays":{
-	"type":"int",
-	"defaultValue": 1,
-	"minValue":"1",
-	"maxValue":"7",
-	"metadata":{
-	   "description":"How long to retain the data in Event Hub"
-	 }
+    "type":"int",
+    "defaultValue": 1,
+    "minValue":"1",
+    "maxValue":"7",
+    "metadata":{
+       "description":"How long to retain the data in Event Hub"
+     }
  }
 ```
 
-### partitionCount
+### <a name="partitioncount"></a>partitionCount
 
 Die Anzahl der Partitionen, die Sie in Ihrem Event Hub verwenden möchten.
 
 ```
 "partitionCount":{
-	"type":"int",
-	"defaultValue":2,
-	"minValue":2,
-	"maxValue":32,
-	"metadata":{
-		"description":"Number of partitions chosen"
-	}
+    "type":"int",
+    "defaultValue":2,
+    "minValue":2,
+    "maxValue":32,
+    "metadata":{
+        "description":"Number of partitions chosen"
+    }
  }
 ```
 
-### archiveEnabled
+### <a name="archiveenabled"></a>archiveEnabled
 
 Aktivieren des Archivs in Ihrem Event Hub.
 
 ```
 "archiveEnabled":{
-	"type":"string",
-	"defaultValue":"true",
-	"allowedValues": [
-	"false",
-	"true"],
-	"metadata":{
-		"description":"Enable or disable the Archive for your Event Hub"
-	}
+    "type":"string",
+    "defaultValue":"true",
+    "allowedValues": [
+    "false",
+    "true"],
+    "metadata":{
+        "description":"Enable or disable the Archive for your Event Hub"
+    }
  }
 ```
-### archiveEncodingFormat
+### <a name="archiveencodingformat"></a>archiveEncodingFormat
 
 Das Codierungsformat, das Sie zum Serialisieren der Ereignisdaten angeben möchten.
 
 ```
 "archiveEncodingFormat":{
-	"type":"string",
-	"defaultValue":"Avro",
-	"allowedValues":[
-	"Avro"],
-	"metadata":{
-		"description":"The encoding format Archive serializes the EventData"
-	}
+    "type":"string",
+    "defaultValue":"Avro",
+    "allowedValues":[
+    "Avro"],
+    "metadata":{
+        "description":"The encoding format Archive serializes the EventData"
+    }
 }
 ```
 
-### archiveTime
+### <a name="archivetime"></a>archiveTime
 
 Das Zeitintervall, in dem das Archiv beginnt, die Daten im Azure Blobspeicher zu archivieren.
 
 ```
 "archiveTime":{
-	"type":"int",
-	"defaultValue":300,
-	"minValue":60,
-	"maxValue":900,
-	"metadata":{
-		 "description":"the time window in seconds for the archival"
-	}
+    "type":"int",
+    "defaultValue":300,
+    "minValue":60,
+    "maxValue":900,
+    "metadata":{
+         "description":"the time window in seconds for the archival"
+    }
 }
 ```
 
-### archiveSize
+### <a name="archivesize"></a>archiveSize
 
 Das Größenintervall, in dem das Archiv beginnt, die Daten im Azure-Blobspeicher zu archivieren.
 
 ```
 "archiveSize":{
-	"type":"int",
-	"defaultValue":314572800,
-	"minValue":10485760,
-	"maxValue":524288000,
-	"metadata":{
-		"description":"the size window in bytes for archival"
-	}
+    "type":"int",
+    "defaultValue":314572800,
+    "minValue":10485760,
+    "maxValue":524288000,
+    "metadata":{
+        "description":"the size window in bytes for archival"
+    }
 }
 ```
 
-### destinationStorageAccountResourceId
+### <a name="destinationstorageaccountresourceid"></a>destinationStorageAccountResourceId
 
 Das Archiv benötigt eine Speicherkontoressourcen-ID, um das Archiv in Ihrem gewünschten Azure-Speicher zu aktivieren.
 
 ```
  "destinationStorageAccountResourceId":{
-	"type":"string",
-	"metadata":{
-		"description":"Your existing storage Account resource id where you want the blobs be archived"
-	}
+    "type":"string",
+    "metadata":{
+        "description":"Your existing storage Account resource id where you want the blobs be archived"
+    }
  }
 ```
 
-### blobContainerName
+### <a name="blobcontainername"></a>blobContainerName
 
 Der Blobcontainer, in dem Sie die Ereignisdaten archivieren möchten.
 
 ```
  "blobContainerName":{
-	"type":"string",
-	"metadata":{
-		"description":"Your existing storage Container that you want the blobs archived in"
-	}
+    "type":"string",
+    "metadata":{
+        "description":"Your existing storage Container that you want the blobs archived in"
+    }
 }
 ```
 
 
-### apiVersion
+### <a name="apiversion"></a>apiVersion
 
 Die API-Version der Vorlage.
 
@@ -208,9 +209,9 @@ Die API-Version der Vorlage.
  }
 ```
 
-## Bereitzustellende Ressourcen
+## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
 
-Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und aktiviert Archive.
+Erstellt einen Namespace des Typs **EventHubs**mit einem Event Hub und aktiviert Archive.
 
 ```
 "resources":[  
@@ -233,22 +234,22 @@ Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und aktivier
                ],
                "properties":{  
                   "path":"[parameters('eventHubName')]",
-				  "MessageRetentionInDays":"[parameters('messageRetentionInDays')]",
-				  "PartitionCount":"[parameters('partitionCount')]",
-				  "ArchiveDescription":{
-						"enabled":"[parameters('archiveEnabled')]",
-						"encoding":"[parameters('archiveEncodingFormat')]",
-						"intervalInSeconds":"[parameters('archiveTime')]",
-						"sizeLimitInBytes":"[parameters('archiveSize')]",
-						"destination":{
-							"name":"EventHubArchive.AzureBlockBlob",
-							"properties":{
-								"StorageAccountResourceId":"[parameters('destinationStorageAccountResourceId')]",
-								"BlobContainer":"[parameters('blobContainerName')]"
-							}
-						} 
-				  }
-				  
+                  "MessageRetentionInDays":"[parameters('messageRetentionInDays')]",
+                  "PartitionCount":"[parameters('partitionCount')]",
+                  "ArchiveDescription":{
+                        "enabled":"[parameters('archiveEnabled')]",
+                        "encoding":"[parameters('archiveEncodingFormat')]",
+                        "intervalInSeconds":"[parameters('archiveTime')]",
+                        "sizeLimitInBytes":"[parameters('archiveSize')]",
+                        "destination":{
+                            "name":"EventHubArchive.AzureBlockBlob",
+                            "properties":{
+                                "StorageAccountResourceId":"[parameters('destinationStorageAccountResourceId')]",
+                                "BlobContainer":"[parameters('blobContainerName')]"
+                            }
+                        } 
+                  }
+                  
                }
                
             }
@@ -257,36 +258,34 @@ Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und aktivier
    ]
 ```
 
-## Befehle zum Ausführen der Bereitstellung
+## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-## PowerShell
+## <a name="powershell"></a>PowerShell
 
 ```
-New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json
 ```
 
-## Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```
 azure config mode arm
 
-azure group deployment create <my-resource-group> <my-deployment-name> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
+azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
 ```
 
-## Nächste Schritte
+[Erstellen von Azure Resource Manager-Vorlagen]: ../resource-group-authoring-templates.md
+[Azure-Schnellstartvorlagen]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
+[Verwenden von Azure PowerShell mit dem Azure Resource Manager]: ../powershell-azure-resource-manager.md
+[Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung]: ../xplat-cli-azure-resource-manager.md
+[Event Hub- und Consumergruppenvorlage]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
+[Recommended naming conventions for Azure resources]: https://azure.microsoft.com/en-us/documentation/articles/guidance-naming-conventions/
+[Event Hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 
-Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt haben, lesen Sie die folgenden Artikel, und erfahren Sie, wie Sie diese Ressourcen verwalten können:
 
-- [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
-  [Erstellen von Azure Resource Manager-Vorlagen]: ../resource-group-authoring-templates.md
-  [Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=event+hubs
-  [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-  [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
-  [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
-  [Recommended naming conventions for Azure resources]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
-  [Event Hub and enable Archive template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
+<!--HONumber=Oct16_HO2-->
 
-<!---HONumber=AcomDC_0921_2016-->
+

@@ -1,60 +1,61 @@
 <properties 
-	pageTitle="Verwenden von Service Bus-Warteschlangen in Node.js | Microsoft Azure" 
-	description="Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App." 
-	services="service-bus-messaging" 
-	documentationCenter="nodejs" 
-	authors="sethmanheim" 
-	manager="timlt" 
-	editor=""/>
+    pageTitle="Verwenden von Service Bus-Warteschlangen in Node.js | Microsoft Azure" 
+    description="Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App." 
+    services="service-bus" 
+    documentationCenter="nodejs" 
+    authors="sethmanheim" 
+    manager="timlt" 
+    editor=""/>
 
 <tags 
-	ms.service="service-bus-messaging" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="05/06/2016" 
-	ms.author="sethm"/>
+    ms.service="service-bus" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="nodejs" 
+    ms.topic="article" 
+    ms.date="10/03/2016" 
+    ms.author="sethm"/>
 
-# Verwenden von Service Bus-Warteschlangen
+
+# <a name="how-to-use-service-bus-queues"></a>Verwenden von Service Bus-Warteschlangen
 
 [AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen in „Node.js“ verwenden. Die Beispiele sind in JavaScript geschrieben und verwenden das Azure-Modul Node.js. Die Szenarien behandeln die Themen **Erstellen von Warteschlangen**, **Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**. Weitere Informationen zu Warteschlangen finden Sie im Abschnitt [Nächste Schritte][].
+In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen in „Node.js“ verwenden. Die Beispiele sind in JavaScript geschrieben und verwenden das Azure-Modul Node.js. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen**, **Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**. Weitere Informationen zu Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
 [AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## Erstellen einer Node.js-Anwendung
+## <a name="create-a-node.js-application"></a>Erstellen einer Node.js-Anwendung
 
-Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][] oder [Node.js-Clouddienst][] \(mithilfe von Windows PowerShell).
+Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][] oder [Node.js-Clouddienst][] (mithilfe von Windows PowerShell).
 
-## Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
+## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 
 Damit Azure Service Bus verwendet werden kann, laden Sie das Node.js-Azure-Paket herunter und verwenden es. Dieses Paket enthält eine Reihe von Bibliotheken, die mit den Service Bus-REST-Diensten kommunizieren.
 
-### Verwenden von Node Package Manager (NPM) zum Beziehen des Pakets
+### <a name="use-node-package-manager-(npm)-to-obtain-the-package"></a>Verwenden von Node Package Manager (NPM) zum Beziehen des Pakets
 
-1. Verwenden Sie das Befehlsfenster von **Windows PowerShell für Node.js**, um zum Ordner **c:\\\node\\\sbqueues\\\WebRole1** zu navigieren, in dem Sie Ihre Beispielanwendung erstellt haben.
+1. Verwenden Sie das Befehlsfenster von **Windows PowerShell für Node.js**, um zum Ordner **c:\\node\\sbqueues\\WebRole1** zu navigieren, in dem Sie Ihre Beispielanwendung erstellt haben.
 
 2. Geben Sie **npm install azure** im Befehlsfenster ein. Die Ausgabe sollte in etwa wie folgt aussehen:
 
-	```
-	azure@0.7.5 node_modules\azure
-		├── dateformat@1.0.2-1.2.3
-		├── xmlbuilder@0.4.2
-		├── node-uuid@1.2.0
-		├── mime@1.2.9
-		├── underscore@1.4.4
-		├── validator@1.1.1
-		├── tunnel@0.0.2
-		├── wns@0.5.3
-		├── xml2js@0.2.7 (sax@0.5.2)
-		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
-	```
+    ```
+    azure@0.7.5 node_modules\azure
+        ├── dateformat@1.0.2-1.2.3
+        ├── xmlbuilder@0.4.2
+        ├── node-uuid@1.2.0
+        ├── mime@1.2.9
+        ├── underscore@1.4.4
+        ├── validator@1.1.1
+        ├── tunnel@0.0.2
+        ├── wns@0.5.3
+        ├── xml2js@0.2.7 (sax@0.5.2)
+        └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
+    ```
 
-3. Sie können den Befehl **ls** manuell aufrufen, um sich davon zu überzeugen, dass der Ordner **node\_modules** erstellt wurde. In diesem Ordner finden Sie das **azure**-Paket, das die für den Zugriff auf Service Bus-Warteschlangen benötigten Bibliotheken enthält.
+3. Sie können den Befehl **ls** manuell ausführen, um zu überprüfen, ob der Ordner **node\_modules** erstellt wurde. In diesem Ordner finden Sie das **azure**-Paket, das die für den Zugriff auf Service Bus-Warteschlangen benötigten Bibliotheken enthält.
 
-### Importieren des Moduls
+### <a name="import-the-module"></a>Importieren des Moduls
 
 Verwenden Sie Editor oder einen anderen Texteditor, um die folgende Zeile am Anfang der Datei **server.js** der Anwendung einzufügen:
 
@@ -62,17 +63,17 @@ Verwenden Sie Editor oder einen anderen Texteditor, um die folgende Zeile am Anf
 var azure = require('azure');
 ```
 
-### Einrichten einer Azure Service Bus-Verbindung
+### <a name="set-up-an-azure-service-bus-connection"></a>Einrichten einer Azure Service Bus-Verbindung
 
-Das Azure-Modul liest die Umgebungsvariablen AZURE\_STORAGE\_ACCOUNT und AZURE\_STORAGE\_ACCESS\_KEY nach Informationen aus, die für eine Verbindung zu Service Bus benötigt werden. Wenn diese Umgebungsvariablen nicht festgelegt wurden, müssen Sie beim Aufruf von **createServiceBusService** die Kontoinformationen angeben.
+Das Azure-Modul liest die Umgebungsvariablen AZURE\_SERVICEBUS\_NAMESPACE und AZURE\_SERVICEBUS\_ACCESS\_KEY nach Informationen aus, die für eine Verbindung zu Ihrem Namespace benötigt werden. Wenn diese Umgebungsvariablen nicht festgelegt wurden, müssen Sie beim Aufruf von **createServiceBusService** die Kontoinformationen angeben.
 
 Ein Beispiel zum Festlegen der Umgebungsvariablen in einer Konfigurationsdatei für einen Azure-Clouddienst finden Sie unter [Node.js-Clouddienst mit Speicher][].
 
 Ein Beispiel zum Festlegen der Umgebungsvariablen im [klassischen Azure-Portal][] für eine Azure-Website finden Sie unter [Node.js-Webanwendung mit Speicher][].
 
-## Erstellen einer Warteschlange
+## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 
-Das **ServiceBusService**-Objekt ermöglicht Ihnen, mit Service Bus-Warteschlangen zu arbeiten. Der folgende Code erstellt ein **ServiceBusService**-Objekt. Fügen Sie ihn am Anfang der Datei **server.js** hinzu, und zwar nach der Anweisung zum Importieren des Azure-Moduls:
+Das **ServiceBusService**-Objekt ermöglicht Ihnen, mit Service Bus-Warteschlangen zu arbeiten. Der folgende Code erstellt ein **ServiceBusService**-Objekt. Fügen Sie ihn am Anfang der Datei **server.js** hinzu, nach der Anweisung zum Importieren des Azure-Moduls:
 
 ```
 var serviceBusService = azure.createServiceBusService();
@@ -103,7 +104,7 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 });
 ```
 
-### Filter
+### <a name="filters"></a>Filter
 
 Mit **ServiceBusService** können Sie optionale Filteroperationen auf Operationen ausführen. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der folgenden Signatur implementieren:
 
@@ -126,9 +127,9 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
 ```
 
-## Senden von Nachrichten an eine Warteschlange
+## <a name="send-messages-to-a-queue"></a>Senden von Nachrichten an eine Warteschlange
 
-Um eine Nachricht an eine Service Bus-Warteschlange zu senden, ruft Ihre Anwendung die **sendQueueMessage**-Methode für das **ServiceBusService**-Objekt auf. Nachrichten, die an die Service Bus-Warteschlangen gesendet werden (und von diesen empfangen werden), sind **BrokeredMessage**-Objekte und verfügen über einen Satz von Standardeigenschaften (z. B. **Label** und **TimeToLive**), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Text der Nachricht festlegen, indem eine Zeichenfolge als Nachricht übergeben wird. Alle erforderlichen Standardeigenschaften werden mit Standardwerten aufgefüllt.
+Um eine Nachricht an eine Service Bus-Warteschlange zu senden, ruft Ihre Anwendung die Methode **sendQueueMessage** für das **ServiceBusService**-Objekt auf. Nachrichten, die an die Service Bus-Warteschlangen gesendet werden (und von diesen empfangen werden), sind **BrokeredMessage**-Objekte und verfügen über einen Satz von Standardeigenschaften (z.B. **Label** und **TimeToLive**), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Text der Nachricht festlegen, indem eine Zeichenfolge als Nachricht übergeben wird. Alle erforderlichen Standardeigenschaften werden mit Standardwerten aufgefüllt.
 
 Das folgende Beispiel zeigt, wie eine Testnachricht an die Warteschlange `myqueue` mithilfe von **sendQueueMessage** gesendet wird:
 
@@ -147,15 +148,15 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 
 Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][].
 
-## Empfangen von Nachrichten aus einer Warteschlange
+## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 
-Nachrichten werden von einer Warteschlange über die **receiveQueueMessage**-Methode auf dem **ServiceBusService**-Objekt empfangen. Nachrichten werden standardmäßig aus der Warteschlange gelöscht, wenn sie gelesen wurden. Sie können jedoch Nachrichten lesen (einen Blick darauf werfen) und sperren, ohne sie aus der Warteschlange zu löschen, indem Sie den optionalen Parameter **isPeekLock** auf **true** festlegen.
+Nachrichten werden von einer Warteschlange über die Methode **receiveQueueMessage** auf dem **ServiceBusService**-Objekt empfangen. Nachrichten werden standardmäßig aus der Warteschlange gelöscht, wenn sie gelesen wurden. Sie können jedoch Nachrichten lesen (einen Blick darauf werfen) und sperren, ohne sie aus der Warteschlange zu löschen, indem Sie den optionalen Parameter **isPeekLock** auf **TRUE** festlegen.
 
-Das Standardverhalten für das Lesen und Löschen der Nachricht als Teil des Empfangsvorgangs ist das einfachste Modell. Es wird am besten für Szenarien eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da Service Bus die Nachricht als verwendet markiert hat, wird er jene Nachricht auslassen, die vor dem Absturz verwendet wurde, wenn die Anwendung neu startet und erneut mit der Verwendung von Nachrichten beginnt.
+Das Standardverhalten für das Lesen und Löschen der Nachricht als Teil des Empfangsvorgangs ist das einfachste Modell. Es wird am besten für Szenarios eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da Service Bus die Nachricht als verwendet markiert hat, wird er jene Nachricht auslassen, die vor dem Absturz verwendet wurde, wenn die Anwendung neu startet und erneut mit der Verwendung von Nachrichten beginnt.
 
-Wenn der Parameter **isPeekLock** auf **true** festgelegt ist, wird der Empfangsvorgang zu einem zweistufigen Vorgang. Dadurch können Anwendungen unterstützt werden, die das Auslassen bzw. Fehlen von Nachrichten nicht zulassen können. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt Sie die zweite Phase des Empfangsprozesses durch Aufruf der **deleteMessage**-Methode und Bereitstellen der Nachricht durch, die als Parameter gelöscht wird. Die **deleteMessage**-Methode markiert die Nachricht als verarbeitet, und entfernt sie aus der Warteschlange.
+Wenn der Parameter **isPeekLock** auf **TRUE** festgelegt ist, wird der Empfangsvorgang zu einem zweistufigen Vorgang. Dadurch können Anwendungen unterstützt werden, die das Auslassen bzw. Fehlen von Nachrichten nicht zulassen können. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt Sie die zweite Phase des Empfangsprozesses durch Aufruf der **deleteMessage**-Methode und Bereitstellen der Nachricht durch, die als Parameter gelöscht wird. Die**deleteMessage**-Methode markiert die Nachricht als verarbeitet, und entfernt sie aus der Warteschlange.
 
-Im folgenden Beispiel wird veranschaulicht, wie Nachrichten mithilfe von **receiveQueueMessage** empfangen und verarbeitet werden. In diesem Beispiel wird zuerst eine Nachricht empfangen und gelöscht und anschließend eine Nachricht empfangen, wobei für **isPeekLock** der Wert **true** festgelegt ist. Anschließend wird die Nachricht mithilfe von **deleteMessage** gelöscht:
+Im folgenden Beispiel wird veranschaulicht, wie Nachrichten mithilfe von **receiveQueueMessage** empfangen und verarbeitet werden. In diesem Beispiel wird zuerst eine Nachricht empfangen und gelöscht und anschließend eine Nachricht empfangen, wobei für **isPeekLock** der Wert **TRUE** festgelegt ist. Anschließend wird die Nachricht mithilfe von **deleteMessage** gelöscht:
 
 ```
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
@@ -175,15 +176,15 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 });
 ```
 
-## Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
 
 Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine Empfängeranwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, so kann sie die **unlockMessage**-Methode zum **ServiceBusService**-Objekt hinzufügen. Dies führt dazu, dass Service Bus die Nachricht innerhalb der Warteschlange entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
 Zudem wird einer in der Warteschlange gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel, wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der **deleteMessage**-Methode abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing** (Verarbeitung mindestens einmal) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
+Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der **deleteMessage**-Methode abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing** (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Warteschlange finden Sie in den folgenden Ressourcen:
 
@@ -194,12 +195,16 @@ Weitere Informationen zu Warteschlange finden Sie in den folgenden Ressourcen:
   [Azure SDK für Node]: https://github.com/Azure/azure-sdk-for-node
   [klassischen Azure-Portal]: http://manage.windowsazure.com
   
-  [Node.js-Clouddienst]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+  [Node.js-Cloud-Dienst]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
   [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-  [Node.js-Clouddienst mit Speicher]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+  [Node.js-Cloud-Dienst mit Speicher]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
   [Node.js-Webanwendung mit Speicher]: ../storage/storage-nodejs-how-to-use-table-storage.md
   [Service Bus-Kontingente]: service-bus-quotas.md
  
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

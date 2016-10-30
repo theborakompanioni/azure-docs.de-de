@@ -17,7 +17,8 @@
   ms.date="08/31/2016"
   ms.author="sewhee" />
 
-# <a name="get-started"></a>Erstellen eines Load Balancers mit Internetzugriff in Resource Manager unter Verwendung von PowerShell
+
+# <a name="<a-name="get-started"></a>creating-an-internet-facing-load-balancer-in-resource-manager-by-using-powershell"></a><a name="get-started"></a>Erstellen eines Load Balancers mit Internetzugriff in Resource Manager unter Verwendung von PowerShell
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
@@ -27,7 +28,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## Bereitstellen der Lösung mithilfe von Azure PowerShell
+## <a name="deploying-the-solution-by-using-azure-powershell"></a>Bereitstellen der Lösung mithilfe von Azure PowerShell
 
 Im Folgenden lernen Sie die Verfahren kennen, mit denen Sie einen Load Balancer mit Internetzugriff mit Azure Resource Manager und PowerShell erstellen. Mit dem Azure Resource Manager werden die einzelnen Teilressourcen erstellt sowie individuell konfiguriert und dann zusammengeführt, um eine Ressource zu erstellen.
 
@@ -41,7 +42,7 @@ Zum Bereitstellen eines Load Balancers müssen Sie die folgenden Objekte erstell
 
 Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Managers für Load Balancer](load-balancer-arm.md).
 
-## Einrichten von PowerShell für die Verwendung des Resource Managers
+## <a name="set-up-powershell-to-use-resource-manager"></a>Einrichten von PowerShell für die Verwendung des Resource Managers
 
 Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Resource Manager-Moduls für PowerShell verfügen.
 
@@ -63,7 +64,7 @@ Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Reso
 
         New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
-## Erstellen eines virtuellen Netzwerks und einer öffentlichen IP-Adresse für den Front-End-IP-Adresspool
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Erstellen eines virtuellen Netzwerks und einer öffentlichen IP-Adresse für den Front-End-IP-Adresspool
 
 1. Erstellen Sie ein Subnetz und ein virtuelles Netzwerk.
 
@@ -74,9 +75,10 @@ Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Reso
 
         $publicIP = New-AzureRmPublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location 'West US' –AllocationMethod Static -DomainNameLabel loadbalancernrp
 
-    >[AZURE.IMPORTANT] Der Load Balancer verwendet die Domänenbezeichnung der öffentlichen IP-Adresse als Präfix seines vollqualifizierten Domänennamens (FQDN). Dies ist ein Unterschied gegenüber dem klassischen Bereitstellungsmodell, bei dem der Clouddienst als FQDN des Load Balancers verwendet wird. In diesem Beispiel lautet der FQDN **loadbalancernrp.westus.cloudapp.azure.com**.
+    >[AZURE.IMPORTANT] Der Load Balancer verwendet die Domänenbezeichnung der öffentlichen IP-Adresse als Präfix seines vollqualifizierten Domänennamens (FQDN). Dies ist ein Unterschied gegenüber dem klassischen Bereitstellungsmodell, bei dem der Clouddienst als FQDN des Load Balancers verwendet wird.
+    >In diesem Beispiel lautet der FQDN **loadbalancernrp.westus.cloudapp.azure.com**.
 
-## Erstellen eines Front-End-IP-Adresspools und eines Back-End-Adresspools
+## <a name="create-a-front-end-ip-pool-and-a-back-end-address-pool"></a>Erstellen eines Front-End-IP-Adresspools und eines Back-End-Adresspools
 
 1. Erstellen Sie einen Front-End-IP-Pool namens **LB-Frontend**, der die Ressource **PublicIp** verwendet.
 
@@ -86,13 +88,13 @@ Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Reso
 
         $beaddresspool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name LB-backend
 
-## Erstellen von NAT-Regeln, Lastenausgleichsregel, Test und Load Balancer
+## <a name="create-nat-rules,-a-load-balancer-rule,-a-probe,-and-a-load-balancer"></a>Erstellen von NAT-Regeln, Lastenausgleichsregel, Test und Load Balancer
 
 In diesem Beispiel werden die folgenden Elemente erstellt:
 
 - eine NAT-Regel, um sämtlichen an Port 3441 eingehenden Datenverkehr für Port 3389 zu übersetzen.
 - eine NAT-Regel, um sämtlichen an Port 3442 eingehenden Datenverkehr für Port 3389 zu übersetzen.
-- eine Testregel, die den Integritätsstatus der Seite **HealthProbe.aspx** überprüft.
+- eine Testregel, die den Integritätsstatus der Seite **HealthProbe.aspx**
 - eine Load Balancer-Regel für die gleichmäßige Verteilung des gesamten an Port 80 eingehenden Datenverkehrs an Port 80 der Adressen im Back-End-Pool.
 - ein Load Balancer, der alle diese Objekte verwendet.
 
@@ -122,7 +124,7 @@ Gehen Sie dazu folgendermaßen vor:
 
         $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName NRP-RG -Name NRP-LB -Location 'West US' -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
 
-## Erstellen von NICs
+## <a name="create-nics"></a>Erstellen von NICs
 
 Erstellen Sie Netzwerkschnittstellen (oder ändern Sie vorhandene) und ordnen Sie sie den NAT-Regeln, Load Balancer-Regeln und Tests zu:
 
@@ -157,7 +159,7 @@ Erstellen Sie Netzwerkschnittstellen (oder ändern Sie vorhandene) und ordnen Si
         IpConfigurations     : [
                             {
                             "Name": "ipconfig1",
-                            "Etag": "W/"d448256a-e1df-413a-9103-a137e07276d1"",
+                            "Etag": "W/\"d448256a-e1df-413a-9103-a137e07276d1\"",
                             "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigurations/ipconfig1",
                             "PrivateIpAddress": "10.0.2.6",
                             "PrivateIpAllocationMethod": "Static",
@@ -190,15 +192,15 @@ Erstellen Sie Netzwerkschnittstellen (oder ändern Sie vorhandene) und ordnen Si
                         }
         EnableIPForwarding   : False
         NetworkSecurityGroup : null
-        Primary              : 
+        Primary              :
 
 5. Weisen Sie die Netzwerkkarten mithilfe des Cmdlets `Add-AzureRmVMNetworkInterface` unterschiedlichen virtuellen Computern zu.
 
-## Erstellen eines virtuellen Computers
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Eine Anleitung zum Erstellen eines virtuellen Computers und Zuweisen einer NIC finden Sie unter Option 5 in [Erstellen und Vorkonfigurieren eines virtuellen Windows-Computers mit dem Resource Manager und Azure PowerShell](../virtual-machines/virtual-machines-windows-create-powershell.md#Example).
+Informationen zum Erstellen eines virtuellen Computers und zum Zuweisen einer NIC finden Sie unter [Erstellen eines virtuellen Azure-Computers mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md).
 
-## Hinzufügen der Netzwerkschnittstelle zum Load Balancer
+## <a name="add-the-network-interface-to-the-load-balancer"></a>Hinzufügen der Netzwerkschnittstelle zum Load Balancer
 
 1. Rufen Sie den Load Balancer aus Azure ab.
 
@@ -224,7 +226,7 @@ Eine Anleitung zum Erstellen eines virtuellen Computers und Zuweisen einer NIC f
 
     Sobald eine Netzwerkschnittstelle zum Back-End-Pool des Load Balancers hinzugefügt ist, empfängt sie Netzwerkdatenverkehr basierend auf den Lastenausgleichsregeln für diese Lastenausgleichsressouce.
 
-## Aktualisieren eines vorhandenen Load Balancers
+## <a name="update-an-existing-load-balancer"></a>Aktualisieren eines vorhandenen Load Balancers
 
 1. Weisen Sie unter Verwendung des Load Balancers aus dem vorherigen Beispiel mithilfe von `Get-AzureLoadBalancer` der Variablen **$slb** ein Load Balancer-Objekt zu.
 
@@ -238,15 +240,15 @@ Eine Anleitung zum Erstellen eines virtuellen Computers und Zuweisen einer NIC f
 
         $slb | Set-AzureRmLoadBalancer
 
-## Entfernen eines Load Balancers
+## <a name="remove-a-load-balancer"></a>Entfernen eines Load Balancers
 
-Verwenden Sie den Befehl `Remove-AzureLoadBalancer`, um den zuvor erstellten Load Balancer namens **NRP-LB** in der Ressourcengruppe **NRP-RG** zu löschen.
+Verwenden Sie den Befehl `Remove-AzureLoadBalancer`, um den zuvor erstellten Load Balancer **NRP-LB** aus der Ressourcengruppe **NRP-RG** zu löschen.
 
     Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
 >[AZURE.NOTE] Sie können den optionalen Parameter **-Force** verwenden, um die Aufforderung zum Löschen zu vermeiden.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 [Erste Schritte zum Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-ps.md)
 
@@ -254,4 +256,8 @@ Verwenden Sie den Befehl `Remove-AzureLoadBalancer`, um den zuvor erstellten Loa
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

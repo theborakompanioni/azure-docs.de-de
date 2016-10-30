@@ -17,7 +17,8 @@
   ms.date="09/27/2016" 
   ms.author="ahmetb" />
 
-# Bereitstellen einer privaten Docker-Registrierung in Azure
+
+# <a name="deploying-your-own-private-docker-registry-on-azure"></a>Bereitstellen einer privaten Docker-Registrierung in Azure
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -31,31 +32,33 @@ In diesem Dokument wird von Folgendem ausgegangen:
 2. Sie haben einen Server, auf dem ein Docker-Modul installiert ist. (Andernfalls [installieren Sie ein Docker-Modul in Azure](https://azure.microsoft.com/documentation/templates/docker-simple-on-ubuntu/).)
 
 
-## Was ist eine private Docker-Registrierung?
+## <a name="what-is-a-private-docker-registry?"></a>Was ist eine private Docker-Registrierung?
 
-Um Ihre Anwendungen in Containern in der Cloud bereitzustellen, erstellen Sie ein Docker-Containerimage und speichern es, sodass es von Ihnen selbst und von anderen Benutzern verwendet werden kann.
+Um Ihre Anwendungen in Containern in der Cloud bereitzustellen, erstellen Sie ein Docker-Containerimage und speichern es, sodass es von Ihnen selbst und von anderen Benutzern verwendet werden kann. 
 
 Das Erstellen des Containerimages und das Senden in die Cloud stellen kein Problem dar, es ist jedoch eine Herausforderung, das generierte Image zuverlässig zu speichern. Aus diesem Grund bietet Docker einen zentralisierten Dienst namens [Docker Hub][docker-hub] zum Speichern von Containerimages in der Cloud an, mit dem Sie jederzeit Container aus diesen Images erstellen können.
 
-Obwohl [Docker Hub][docker-hub] ein kostenpflichtiger Dienst zur Speicherung Ihrer privaten Anwendungscontainerimages ist, geht Docker auf die Anforderungen der Entwickler ein und stellt ein Open-Source-Toolset zum Speichern von Images in einer eigenen privaten Docker-Registrierung hinter einer Firewall oder lokal zur Verfügung, ohne dass dafür auf das öffentliche Internet zugegriffen werden muss. Da Azure-Blob-Speicher leicht zu sichern sind, können Sie damit schnell eine private Docker-Registrierung in Azure erstellen, die Sie selbst kontrollieren.
+Obwohl [Docker Hub][docker-hub] ein kostenpflichtiger Dienst zur Speicherung Ihrer privaten Anwendungscontainerimages ist, geht Docker auf die Anforderungen der Entwickler ein und stellt ein Open Source-Toolset zum Speichern von Images in einer eigenen privaten Docker-Registrierung hinter einer Firewall oder lokal zur Verfügung, ohne dass dafür auf das öffentliche Internet zugegriffen werden muss.
+Da Azure-Blob-Speicher leicht zu sichern sind, können Sie damit schnell eine private Docker-Registrierung in Azure erstellen, die Sie selbst kontrollieren.
 
-## Warum sollten Sie eine Docker-Registrierung in Azure hosten?
+## <a name="why-should-you-host-a-docker-registry-on-azure?"></a>Warum sollten Sie eine Docker-Registrierung in Azure hosten?
 
 Das Hosten der Docker-Registrierungsinstanz in Microsoft Azure und das Speichern der Images in Azure-Blob-Speicher bietet mehrere Vorteile:
 
-**Sicherheit**: Ihre Docker-Images benötigen keine Azure-Rechenzentren. Sie haben daher keine Verbindung ins öffentliche Internet, wie es bei der Verwendung von Docker Hub der Fall wäre.
+**Sicherheit**: Ihre Docker-Images benötigen keine Azure-Rechenzentren. Sie haben daher keine Verbindung mit dem öffentlichen Internet, wie es bei der Verwendung von Docker Hub der Fall wäre.
   
-**Leistung**: Ihre Docker-Images werden innerhalb desselben Rechenzentrums oder Bereichs gespeichert wie Ihre Anwendungen. Dies bedeutet, dass die Images im Vergleich zu Docker Hub schneller und zuverlässiger sind.
+**Leistung** : Ihre Docker-Images werden innerhalb desselben Rechenzentrums oder Bereichs gespeichert wie Ihre Anwendungen. Dies bedeutet, dass die Images im Vergleich zu Docker Hub schneller und zuverlässiger sind.
 
-**Zuverlässigkeit**: Mithilfe von Microsoft Azure-Blob-Speicher können Sie viele Speichereigenschaften nutzen, z. B. hohe Verfügbarkeit, Redundanz, Premium-Speicher (SSDs) usw.
+**Zuverlässigkeit**: Mithilfe von Microsoft Azure Blob Storage können Sie viele Speichereigenschaften nutzen, z.B. hohe Verfügbarkeit, Redundanz, Premium-Speicher (SSDs) usw.
 
-## Konfigurieren von Docker-Registrierungen zur Verwendung von Azure-Blob-Speicher
+## <a name="configuring-docker-registry-to-use-azure-blob-storage"></a>Konfigurieren von Docker-Registrierungen zur Verwendung von Azure-Blob-Speicher
 
 (Sie sollten die [Docker Registry 2.0-Dokumentation][registry-docs] lesen, bevor Sie fortfahren.)
 
-Sie können die Docker-Registrierung auf zwei unterschiedliche Arten [konfigurieren][registry-config]. Sie können:
+Sie können die Docker-Registrierung auf zwei unterschiedliche Arten [konfigurieren][registry-config].
+Sie können:
 
-1. Eine `config.yml`-Datei verwenden. In diesem Fall müssen Sie ein separates Docker-Image auf dem `registry`-Image erstellen.
+1. Eine `config.yml` -Datei verwenden. In diesem Fall müssen Sie ein separates Docker-Image auf dem `registry`-Image erstellen.
 2. Überschreiben Sie die Standardkonfigurationsdatei durch Umgebungsvariablen, sodass Sie kein separates Docker-Image erstellen und verwalten müssen.
 
 Der Einfachheit halber wird in diesem Thema Option 2 mit Umgebungsvariablen genutzt.
@@ -88,11 +91,11 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 
 > [AZURE.IMPORTANT] Das Konfigurieren der Sicherheit für die Docker-Registrierung wird in diesem Dokument nicht behandelt, und auf Ihre Registrierung können standardmäßig alle Benutzer ohne Authentifizierung zugreifen, wenn Sie den Registrierungsport am Endpunkt des virtuellen Computers oder des Lastenausgleichs durch die Verwendung des Bereitstellungsbefehls oben öffnen.
 >
-> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] \(in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
+> Lesen Sie das Dokument in englischer Sprache zum [Konfigurieren von Docker-Registrierungen][registry-config], um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-Sobald Sie Ihre Registrierung eingerichtet haben, ist es an der Zeit, sie verstärkt zu nutzen. Beginnen Sie unter [registry-docs].
+Sobald Sie Ihre Registrierung eingerichtet haben, ist es an der Zeit, sie verstärkt zu nutzen. Beginnen Sie unter [registry-docs]. 
 
 [docker-hub]: https://hub.docker.com/
 [registry]: https://github.com/docker/distribution
@@ -100,4 +103,8 @@ Sobald Sie Ihre Registrierung eingerichtet haben, ist es an der Zeit, sie verst�
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

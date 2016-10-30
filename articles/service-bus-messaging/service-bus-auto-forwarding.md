@@ -1,27 +1,28 @@
 <properties 
     pageTitle="Automatische Weiterleitung von Service Bus-Messagingentitäten | Microsoft Azure"
     description="So verketten Sie eine Warteschlange oder ein Abonnement mit einer anderen Warteschlange oder einem anderen Thema."
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
     editor="" /> 
 <tags 
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/06/2016"
+    ms.date="09/29/2016"
     ms.author="sethm" />
 
-# Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
+
+# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
 
 Mit der Funktion *Automatische Weiterleitung* können Sie eine Warteschlange oder ein Abonnement mit einer weiteren Warteschlange oder einem Thema aus dem selben Namespace verketten. Wenn die automatische Weiterleitung aktiviert ist, entfernt Service Bus die Nachrichten automatisch, die in der ersten Warteschlange oder dem Abonnement (Quelle) platziert wurden, und fügt sie in die zweite Warteschlange oder das Thema (Ziel) ein. Beachten Sie, dass es weiterhin möglich ist, eine Nachricht direkt an die Zielentität zu senden. Es ist außerdem nicht möglich, eine Unterwarteschlange, z.B. eine Warteschlange für unzustellbare Nachrichten, mit einer anderen Warteschlange oder einem Thema zu verketten.
 
-## Verwenden der automatischen Weiterleitung
+## <a name="using-auto-forwarding"></a>Verwenden der automatischen Weiterleitung
 
-Sie können die automatische Weiterleitung durch Festlegen der Eigenschaften [QueueDescription.ForwardTo][] oder [SubscriptionDescription.ForwardTo][] der Objekte [QueueDescription][] oder [SubscriptionDescription][] für die Quelle aktivieren, wie im folgenden Beispiel veranschaulicht.
+Sie können die automatische Weiterleitung durch Festlegen der Eigenschaften [QueueDescription.ForwardTo][] oder [SubscriptionDescription.ForwardTo][] der Objekte [QueueDescription][] oder [SubscriptionDescription][] für die Quelle aktivieren, wie im folgenden Beispiel veranschaulicht:
 
 ```
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -31,7 +32,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 Die Zielentität muss vorhanden sein, wenn die Quellentität erstellt wird. Wenn die Zielentität nicht vorhanden ist, gibt Service Bus eine Ausnahme zurück, wenn die Quellentität erstellt werden soll.
 
-Sie können die automatische Weiterleitung zum Skalieren eines einzelnen Themas verwenden. Service Bus beschränkt die [Anzahl von Abonnements für ein bestimmtes Thema](../service-bus/service-bus-quotas.md) auf 2.000. Sie können weitere Abonnements durch Erstellen von Themen der zweiten Ebene aufnehmen. Hinweis: Selbst wenn Sie nicht durch die Service Bus-Beschränkung für die Anzahl der Abonnements gebunden sind, kann das Hinzufügen einer zweiten Ebene von Themen den Gesamtdurchsatz Ihres Themas verbessern.
+Sie können die automatische Weiterleitung zum Skalieren eines einzelnen Themas verwenden. Service Bus beschränkt die [Anzahl von Abonnements für ein bestimmtes Thema](service-bus-quotas.md) auf 2.000. Sie können weitere Abonnements durch Erstellen von Themen der zweiten Ebene aufnehmen. Hinweis: Selbst wenn Sie nicht durch die Service Bus-Beschränkung für die Anzahl der Abonnements gebunden sind, kann das Hinzufügen einer zweiten Ebene von Themen den Gesamtdurchsatz Ihres Themas verbessern.
 
 ![Szenario mit automatischer Weiterleitung][0]
 
@@ -41,9 +42,9 @@ Sie können die automatische Weiterleitung auch verwenden, um Nachrichtenabsende
 
 Wenn Alice im Urlaub ist, wird ihre persönliche Warteschlange gefüllt, nicht das ERP-Thema. Da in diesem Szenario kein Vertriebsmitarbeiter Nachrichten empfangen hat, erreicht keines der ERP-Themen je das Kontingent.
 
-## Überlegungen zur automatischen Weiterleitung
+## <a name="auto-forwarding-considerations"></a>Überlegungen zur automatischen Weiterleitung
 
-Wenn die Zielentität viele Nachrichten gesammelt hat und das Kontingent überschreitet oder wenn die Zielentität deaktiviert ist, fügt die Quellentität die Nachrichten zur eigenen [Warteschlange für unzustellbare Nachrichten](./service-bus-dead-letter-queues.md) hinzu, bis Speicherplatz im Ziel vorhanden ist (oder die Entität wieder aktiviert wird). Diese Nachrichten sind weiterhin in der Warteschlange für unzustellbare Nachrichten aktiv, daher müssen Sie sie explizit aus der Warteschlange für unzustellbare Nachrichten empfangen und verarbeiten.
+Wenn die Zielentität viele Nachrichten gesammelt hat und das Kontingent überschreitet oder wenn die Zielentität deaktiviert ist, fügt die Quellentität die Nachrichten zur eigenen [Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md) hinzu, bis Speicherplatz im Ziel vorhanden ist (oder die Entität wieder aktiviert wird). Diese Nachrichten sind weiterhin in der Warteschlange für unzustellbare Nachrichten aktiv, daher müssen Sie sie explizit aus der Warteschlange für unzustellbare Nachrichten empfangen und verarbeiten.
 
 Beim Verketteten einzelner Themen, um ein kombiniertes Thema mit vielen Abonnements zu erhalten, wird empfohlen, dass Sie eine moderate Anzahl von Abonnements für das Thema der ersten Ebene und viele Abonnements für Themen der zweiten Ebene nutzen. Beispiel: Ein Thema der ersten Ebene mit 20 Abonnements, von denen jedes mit einem Thema der zweiten Ebene mit 200 Abonnements verkettet ist, ermöglicht einen höheren Durchsatz als ein Thema der ersten Ebene mit 200 Abonnements, von denen jedes mit einem Thema der zweiten Ebene mit 20 Abonnements verkettet ist.
 
@@ -51,7 +52,7 @@ Service Bus rechnet einen Vorgang für jede weitergeleitete Nachricht ab. Beispi
 
 Um ein Abonnement zu erstellen, das mit einer anderen Warteschlange oder einem Thema verkettet ist, muss der Ersteller des Abonnements über die Berechtigung **Verwalten** für die Quell- und die Zielentität verfügen. Das Senden von Nachrichten an das Quellthema erfordert nur die Berechtigung **Senden** für das Quellthema.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Detaillierte Informationen über die automatische Weiterleitung finden Sie in den folgenden Referenzthemen:
 
@@ -67,6 +68,9 @@ Weitere Informationen zu Service Bus-Leistungssteigerungen finden Sie unter [Par
   [SubscriptionDescription]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.aspx
   [0]: ./media/service-bus-auto-forwarding/IC628631.gif
   [1]: ./media/service-bus-auto-forwarding/IC628632.gif
-  [Partitionierte Nachrichtenentitäten]: service-bus-partitioning.md
+  [Partitionierte Messagingentitäten]: service-bus-partitioning.md
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

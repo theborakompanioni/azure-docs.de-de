@@ -1,30 +1,31 @@
 <properties
-	pageTitle="Alle Themen zum SQL Server Stretch-Datenbankdienst | Microsoft Azure"
-	description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL Server Stretch-Datenbank“ unter „https://azure.microsoft.com/de-de/documentation/articles/“, Titel und Beschreibung"
-	services="sql-server-stretch-database"
-	documentationCenter=""
-	authors="DouglasL"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Alle Themen zum SQL Server Stretch-Datenbankdienst | Microsoft Azure"
+    description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL Server Stretch-Datenbank“ unter „https://azure.microsoft.com/de-de/documentation/articles/“, Titel und Beschreibung"
+    services="sql-server-stretch-database"
+    documentationCenter=""
+    authors="DouglasL"
+    manager="jhubbard"
+    editor="MightyPen"/>
 
 <tags
-	ms.service="sql-server-stretch-database"
-	ms.workload="sql-server-stretch-database"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/21/2016"
-	ms.author="DouglasL"/>
-
-
-# Alle Themen für den SQL Server Stretch-Datenbankdienst
-
-Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Datenbankdienst** von Azure auf. Sie können auf dieser Webseite mit **STRG+F** nach Schlüsselwörtern suchen, um aktuell interessante Themen zu finden.
+    ms.service="sql-server-stretch-database"
+    ms.workload="sql-server-stretch-database"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/05/2016"
+    ms.author="DouglasL"/>
 
 
 
+# <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Alle Themen für den SQL Server Stretch-Datenbankdienst
 
-## Erste Schritte
+Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Datenbankdienst** von Azure auf. Sie können auf dieser Webseite mit **STRG+F**nach Schlüsselwörtern suchen, um aktuell interessante Themen zu finden.
+
+
+
+
+## <a name="get-started"></a>Erste Schritte
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
@@ -35,7 +36,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Date
 
 
 
-## Aktivieren
+## <a name="enable"></a>Aktivieren
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
@@ -45,18 +46,18 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Date
 
 
 
-## Verwalten
+## <a name="manage"></a>Verwalten
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
 | 8 | [Deaktivieren von Stretch-Datenbank und Zurückbringen von Remotedaten](sql-server-stretch-database-disable.md) | Erfahren Sie, wie Sie Stretch-Datenbank für eine Tabelle deaktivieren und optional Remotedaten zurückbringen können. |
-| 9 | [Verwalten von Stretch Database und Behandeln von Problemen ](sql-server-stretch-database-manage.md) | Erfahren Sie, wie Sie Stretch-Datenbank verwalten und Probleme behandeln können. |
+| 9 | [Verwalten von Stretch Database und Behandeln von Problemen](sql-server-stretch-database-manage.md) | Erfahren Sie, wie Sie Stretch-Datenbank verwalten und Probleme behandeln können. |
 | 10 | [Überwachen und Behandeln von Problemen der Datenmigration (Stretch-Datenbank)](sql-server-stretch-database-monitor.md) | Erfahren Sie Einzelheiten über das Überwachen des Status der Datenmigration. |
 | 11 | [Anhalten und Fortsetzen der Datenmigration (Stretch Database)](sql-server-stretch-database-pause.md) | Erfahren Sie Einzelheiten über das Anhalten oder Fortsetzen der Datenmigration in Azure. |
 
 
 
-## Sicherheit
+## <a name="security"></a>Sicherheit
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
@@ -65,11 +66,16 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Date
 
 
 
-## Sicherung und Wiederherstellung
+## <a name="backup-and-recovery"></a>Sicherung und Wiederherstellung
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
-| 14 | [Sichern von Stretch-fähigen Datenbanken](sql-server-stretch-database-backup.md) | Erfahren Sie mehr über das Sichern von Stretch-fähigen Datenbanken. |
-| 15 | [Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-restore.md) | Erfahren Sie mehr über das Wiederherstellen von Stretch-fähigen Datenbanken. |
+| 14 | [Sichern von Stretch-fähigen Datenbanken](sql-server-stretch-database-backup.md) | Erfahren Sie mehr über das Sichern von Stretch\-fähigen Datenbanken. |
+| 15 | [Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-restore.md) | Erfahren Sie mehr über das Wiederherstellen von Stretch\-fähigen Datenbanken. |
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

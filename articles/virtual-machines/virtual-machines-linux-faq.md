@@ -18,7 +18,7 @@
     ms.author="cynthn"/>
 
 
-# <a name="frequently-asked-question-about-linux-virtual-machines"></a>Frequently asked question about Linux Virtual Machines 
+# <a name="frequently-asked-question-about-linux-virtual-machines"></a>Frequently asked question about Linux Virtual Machines
 
 This article addresses some common questions about Linux virtual machines created in Azure using the Resource Manager deployment model. For the Windows version of this topic, see [Frequently asked question about Windows Virtual Machines](virtual-machines-windows-faq.md)
 
@@ -44,7 +44,7 @@ If you’re having problems, check out [Troubleshoot Secure Shell (SSH) connecti
 
 ## <a name="can-i-use-the-temporary-disk-(/dev/sdb1)-to-store-data?"></a>Can I use the temporary disk (/dev/sdb1) to store data?
 
-Don't use the temporary disk (/dev/sdb1) to store data. It is only there for temporary storage. You risk losing data that can’t be recovered. 
+Don't use the temporary disk (/dev/sdb1) to store data. It is only there for temporary storage. You risk losing data that can’t be recovered.
 
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm?"></a>Can I copy or clone an existing Azure VM?
@@ -69,7 +69,7 @@ Yes. The computer name can be a maximum of 64 characters in length. See [Infrast
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm?"></a>What are the username requirements when creating a VM?
 
-Usernames must be 1 - 64 characters in length. 
+Usernames must be 1 - 64 characters in length.
 
 The following usernames are not allowed:
 
@@ -114,12 +114,21 @@ The following passwords are not allowed:
 
 <table>
     <tr>
-        <td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+        <td style="text-align:center">abc@123</td>
+        <td style="text-align:center">P@$$w0rd</td>
+        <td style="text-align:center">P@ssw0rd</td>
+        <td style="text-align:center">P@ssword123</td>
+        <td style="text-align:center">Pa$$word</td>
     </tr>
     <tr>
-        <td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+        <td style="text-align:center">pass@word1</td>
+        <td style="text-align:center">Password!</td>
+        <td style="text-align:center">Password1</td>
+        <td style="text-align:center">Password22</td>
+        <td style="text-align:center">iloveyou!</td>
     </tr>
 </table>
+
 
 
 <!--HONumber=Oct16_HO2-->

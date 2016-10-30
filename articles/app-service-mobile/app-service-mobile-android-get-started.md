@@ -3,7 +3,7 @@
     description="Follow this tutorial to get started with using Azure mobile app backends for Android development"
     services="app-service\mobile"
     documentationCenter="android"
-    authors="yuaxu"
+    authors="ysxu"
     manager="erikre"
     editor=""/>
 
@@ -46,9 +46,6 @@ To complete this tutorial, you need the following:
 ## <a name="download-and-run-the-android-app"></a>Download and run the Android app
 
 [AZURE.INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
-
-
-<!-- Images. -->
 
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/

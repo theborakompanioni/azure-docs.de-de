@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/29/2016" 
+    ms.date="10/26/2016" 
     ms.author="mimig"/>
 
 
@@ -43,6 +43,7 @@ Write your queries faster by downloading the SQL query cheat sheet and using it 
 ## <a name="release-notes"></a>Release notes
 
 Updated on 7/29/2016 to include TOP.
+
 
 
 <!--HONumber=Oct16_HO2-->

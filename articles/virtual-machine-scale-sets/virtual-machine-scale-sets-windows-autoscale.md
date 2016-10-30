@@ -1,27 +1,28 @@
 <properties
-	pageTitle="Automatische Skalierung von Skalierungsgruppen virtueller Windows-Computer | Microsoft Azure"
-	description="Einrichten der automatischen Skalierung für eine Skalierungsgruppe virtueller Windows-Computer mit Azure PowerShell"
-	services="virtual-machine-scale-sets"
-	documentationCenter=""
-	authors="davidmu1"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Automatische Skalierung von Skalierungsgruppen virtueller Windows-Computer | Microsoft Azure"
+    description="Einrichten der automatischen Skalierung für eine Skalierungsgruppe virtueller Windows-Computer mit Azure PowerShell"
+    services="virtual-machine-scale-sets"
+    documentationCenter=""
+    authors="davidmu1"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machine-scale-sets"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="davidmu"/>
+    ms.service="virtual-machine-scale-sets"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/27/2016"
+    ms.author="davidmu"/>
 
-# Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe
+
+# <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe
 
 VM-Skalierungsgruppen erleichtern das Bereitstellen und Verwalten identischer virtueller Computer als Gruppe. Skalierungsgruppen stellen eine hoch skalierbare und anpassbare Compute-Ebene für Anwendungen mit Hyperskalierung bereit und bieten Unterstützung für Images der Windows-Plattform, Images der Linux-Plattform, benutzerdefinierte Images und Erweiterungen. Weitere Informationen zu Skalierungsgruppen finden Sie unter [VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
 
-In diesem Tutorial erfahren Sie, wie Sie eine Skalierungsgruppe mit virtuellen Windows-Computern erstellen und die Computer der Gruppe automatisch skalieren. Hierzu erstellen Sie die Skalierungsgruppe und richten die Skalierung ein, indem Sie eine Azure Resource Manager-Vorlage erstellen und mithilfe von Azure PowerShell bereitstellen. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md). Weitere Informationen zur automatischen Skalierung von Skalierungsgruppen finden Sie unter [Automatic scaling and Virtual Machine Scale Sets](virtual-machine-scale-sets-autoscale-overview.md) (Automatische Skalierung und VM-Skalierungsgruppen).
+In diesem Tutorial erfahren Sie, wie Sie eine Skalierungsgruppe mit virtuellen Windows-Computern erstellen und die Computer der Gruppe automatisch skalieren. Hierzu erstellen Sie die Skalierungsgruppe und richten die Skalierung ein, indem Sie eine Azure Resource Manager-Vorlage erstellen und mithilfe von Azure PowerShell bereitstellen. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md). Weitere Informationen zur automatischen Skalierung von Skalierungsgruppen finden Sie unter [Automatic scaling and Virtual Machine Scale Sets](virtual-machine-scale-sets-autoscale-overview.md)(Automatische Skalierung und VM-Skalierungsgruppen).
 
 In diesem Artikel stellen Sie die folgenden Ressourcen und Erweiterungen bereit:
 
@@ -37,20 +38,20 @@ In diesem Artikel stellen Sie die folgenden Ressourcen und Erweiterungen bereit:
 
 Weitere Informationen zu Ressourcen-Manager-Ressourcen finden Sie unter [Azure-Compute, -Netzwerk- und -Speicheranbieter unter dem Azure-Ressourcen-Manager](../virtual-machines/virtual-machines-windows-compare-deployment-models.md).
 
-## Schritt 1: Installieren von Azure PowerShell
+## <a name="step-1:-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
 
 Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Azure anmelden.
 
-## Schritt 2: Erstellen einer Ressourcengruppe und eines Speicherkontos
+## <a name="step-2:-create-a-resource-group-and-a-storage-account"></a>Schritt 2: Erstellen einer Ressourcengruppe und eines Speicherkontos
 
 1. **Erstellen einer Ressourcengruppe** – Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Erstellen Sie mithilfe des Cmdlets [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) eine Ressourcengruppe namens **vmsstestrg1**.
 
-2. **Erstellen eines Speicherkontos** – In diesem Speicherkonto wird die Vorlage gespeichert. Verwenden Sie [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx), um ein Speicherkonto mit dem Namen **vmsstestsa** zu erstellen.
+2. **Erstellen eines Speicherkontos** – In diesem Speicherkonto wird die Vorlage gespeichert. Verwenden Sie [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) , um ein Speicherkonto mit dem Namen **vmsstestsa**zu erstellen.
 
-## Schritt 3: Erstellen der Vorlage
+## <a name="step-3:-create-the-template"></a>Schritt 3: Erstellen der Vorlage
 Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemeinsam bereitstellen und verwalten. Sie verwenden hierfür eine JSON-Beschreibung der Ressourcen sowie der zugeordneten Bereitstellungsparameter.
 
-1. Erstellen Sie in Ihrem bevorzugten Editor die Datei „C:\\VMSSTemplate.json“, und fügen Sie die JSON-Ausgangsstruktur hinzu, um die Vorlage zu unterstützen.
+1. Erstellen Sie in Ihrem bevorzugten Editor die Datei „C:\VMSSTemplate.json“, und fügen Sie die JSON-Ausgangsstruktur hinzu, um die Vorlage zu unterstützen.
 
         {
           "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/VM.json",
@@ -92,17 +93,17 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
         "storageAccountSuffix": [ "a", "g", "m", "s", "y" ],
         "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'a')]",
         "accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/','Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
-	      "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB="4096" xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error"/> <WindowsEventLog scheduledTransferPeriod="PT1M" > <DataSource name="Application!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="Security!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="System!*[System[(Level = 1 or Level = 2)]]" /></WindowsEventLog>",
-        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor(_Total)\\% Processor Time" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU utilization" locale="de-DE"/></PerformanceCounterConfiguration></PerformanceCounters>",
-        "wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId="')]",
+          "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
+        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod=\"PT1M\"><PerformanceCounterConfiguration counterSpecifier=\"\\Processor(_Total)\\% Processor Time\" sampleRate=\"PT15S\" unit=\"Percent\"><annotation displayName=\"CPU utilization\" locale=\"en-us\"/></PerformanceCounterConfiguration></PerformanceCounters>",
+        "wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId=\"')]",
         "wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
-        "wadcfgxend": "[concat('"><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
+        "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
 
   - DNS-Namen, die von den Netzwerkschnittstellen verwendet werden.
-	- Die IP-Adressnamen und -präfixe für das virtuelle Netzwerk und die Subnetze.
-	- Die Namen und Bezeichner des virtuellen Netzwerks, des Load Balancers und der Netzwerkschnittstellen.
-	- Die Speicherkontonamen für die Konten, die den Computern in der Skalierungsgruppe zugeordnet sind.
-	- Einstellungen für die Diagnose-Erweiterung, die auf den virtuellen Computern installiert ist. Weitere Informationen zur Diagnose-Erweiterung finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/virtual-machines-extensions-diagnostics-windows-template.md).
+    - Die IP-Adressnamen und -präfixe für das virtuelle Netzwerk und die Subnetze.
+    - Die Namen und Bezeichner des virtuellen Netzwerks, des Load Balancers und der Netzwerkschnittstellen.
+    - Die Speicherkontonamen für die Konten, die den Computern in der Skalierungsgruppe zugeordnet sind.
+    - Einstellungen für die Diagnose-Erweiterung, die auf den virtuellen Computern installiert ist. Weitere Informationen zur Diagnoseerweiterung finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md).
     
 4. Fügen Sie die Speicherkontoressource unter dem übergeordneten Ressourcenelement hinzu, das Sie der Vorlage hinzugefügt haben. In dieser Vorlage wird eine Schleife verwendet, um die empfohlenen fünf Speicherkonten zu erstellen, unter denen die Betriebssystem-Datenträger und Diagnosedaten gespeichert werden. Diese Kontengruppe kann in einer Skalierungsgruppe bis zu 100 virtuelle Computer unterstützen. Dies ist derzeit der mögliche Höchstwert. Jedes Speicherkonto wird mit einem in den Variablen definierten Buchstaben und dem Präfix benannt, das Sie in den Parametern für die Vorlage angeben.
 
@@ -275,7 +276,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
           }
         },
 
-10.	Fügen Sie die Ressource für die VM-Skalierungsgruppe hinzu, und geben Sie die Diagnose-Erweiterung an, die auf allen virtuellen Computern der Skalierungsgruppe installiert ist. Viele Einstellungen für diese Ressource ähneln der Ressource für virtuelle Computer. Sie unterscheiden sich hauptsächlich durch das Kapazitätselement, das die Anzahl virtueller Computer in der Skalierungsgruppe angibt, und das upgradePolicy-Element, das angibt, wie virtuelle Computer aktualisiert werden sollen. Die Skalierungsgruppe wird erst erstellt, wenn alle Speicherkonten gemäß der Angabe des dependsOn-Elements erstellt wurden.
+10. Fügen Sie die Ressource für die VM-Skalierungsgruppe hinzu, und geben Sie die Diagnose-Erweiterung an, die auf allen virtuellen Computern der Skalierungsgruppe installiert ist. Viele Einstellungen für diese Ressource ähneln der Ressource für virtuelle Computer. Sie unterscheiden sich hauptsächlich durch das Kapazitätselement, das die Anzahl virtueller Computer in der Skalierungsgruppe angibt, und das upgradePolicy-Element, das angibt, wie virtuelle Computer aktualisiert werden sollen. Die Skalierungsgruppe wird erst erstellt, wenn alle Speicherkonten gemäß der Angabe des dependsOn-Elements erstellt wurden.
 
             {
               "type": "Microsoft.Compute/virtualMachineScaleSets",
@@ -378,7 +379,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
               }
             },
 
-11.	Fügen Sie die autoscaleSettings-Ressource hinzu, um zu definieren, wie die Skalierungsgruppe auf der Grundlage der Prozessorauslastung der enthaltenen Computer angepasst werden soll.
+11. Fügen Sie die autoscaleSettings-Ressource hinzu, um zu definieren, wie die Skalierungsgruppe auf der Grundlage der Prozessorauslastung der enthaltenen Computer angepasst werden soll.
 
             {
               "type": "Microsoft.Insights/autoscaleSettings",
@@ -428,51 +429,51 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 
     In diesem Tutorial sind folgende Werte von Bedeutung:
 
-    - **metricName**: Der Leistungsindikator, den wir in der Variablen „wadperfcounter“ definiert haben. Anhand dieser Variablen führt die Diagnose-Erweiterung die Erfassung für den Indikator **Prozessor(\_Total)\\Prozessorzeit (%)** durch.
-    - **metricResourceUri**: Der Ressourcenbezeichner der VM-Skalierungsgruppe.
-    - **timeGrain**: Die Granularität der erfassten Metriken. In dieser Vorlage ist sie auf eine Minute festgelegt.
-    - **statistic**: Bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden sollen. Mögliche Werte sind: Average, Min, Max. In dieser Vorlage wird die durchschnittliche CPU-Gesamtauslastung der virtuellen Computer erfasst.
-    - **timeWindow**: Der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
-    - **timeAggregation**: Bestimmt, wie die gesammelten Daten im Laufe der Zeit kombiniert werden sollen. Der Standardwert ist "Average". Mögliche Werte sind: Average, Minimum, Maximum, Last, Total, Count.
-    - **operator**: Der Operator, der zum Vergleichen der Metrikdaten und des Schwellenwerts verwendet wird. Mögliche Werte sind: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
-    - **threshold**: Der Wert, der die Skalierungsaktion auslöst. In dieser Vorlage werden die Computer der Skalierungsgruppe hinzugefügt, wenn die durchschnittliche CPU-Nutzung für die Computer der Gruppe über 50 % liegt.
-    - **direction**: Bestimmt, welche Aktion bei Erreichen des Schwellenwerts ausgeführt werden soll. Mögliche Werte sind „Increase“ oder „Decrease“. In dieser Vorlage wird die Anzahl der virtuellen Computer in der Skalierungsgruppe erhöht, wenn der Schwellenwert im festgelegten Zeitfenster über 50 % steigt.
+    - **metricName** : Der Leistungsindikator, den wir in der Variablen „wadperfcounter“ definiert haben. Anhand dieser Variablen führt die Diagnoseerweiterung die Erfassung für den Indikator **Prozessor(_Total)\% Prozessorzeit** durch.
+    - **metricResourceUri** : Der Ressourcenbezeichner der VM-Skalierungsgruppe.
+    - **timeGrain** : Die Granularität der erfassten Metriken. In dieser Vorlage ist sie auf eine Minute festgelegt.
+    - **statistic** : Bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden sollen. Mögliche Werte sind: Average, Min, Max. In dieser Vorlage wird die durchschnittliche CPU-Gesamtauslastung der virtuellen Computer erfasst.
+    - **timeWindow** : Der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
+    - **timeAggregation** : Bestimmt, wie die gesammelten Daten im Laufe der Zeit kombiniert werden sollen. Der Standardwert ist "Average". Mögliche Werte sind: Average, Minimum, Maximum, Last, Total, Count.
+    - **operator** : Der Operator, der zum Vergleichen der Metrikdaten und des Schwellenwerts verwendet wird. Mögliche Werte sind: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
+    - **threshold** : Der Wert, der die Skalierungsaktion auslöst. In dieser Vorlage werden die Computer der Skalierungsgruppe hinzugefügt, wenn die durchschnittliche CPU-Nutzung für die Computer der Gruppe über 50 % liegt.
+    - **direction** : Bestimmt, welche Aktion bei Erreichen des Schwellenwerts ausgeführt werden soll. Mögliche Werte sind „Increase“ oder „Decrease“. In dieser Vorlage wird die Anzahl der virtuellen Computer in der Skalierungsgruppe erhöht, wenn der Schwellenwert im festgelegten Zeitfenster über 50 % steigt.
     - **type**: Die Art der auszuführenden Aktion. Diese Option muss auf „ChangeCount“ festgelegt werden.
     - **value**: Die Anzahl virtueller Computer, die der Skalierungsgruppe hinzugefügt bzw. daraus entfernt werden sollen. Dieser Wert muss 1 oder höher lauten. Der Standardwert ist 1. In dieser Vorlage wird die Anzahl der Computer in der Skalierungsgruppe um 1 erhöht, wenn der Schwellenwert erreicht wird.
-    - **cooldown**: Gibt an, wie lange zwischen der letzten Skalierungsaktion und der nächsten Aktion gewartet werden soll. Dieser Wert muss zwischen einer Minute und einer Woche liegen.
+    - **cooldown** : Gibt an, wie lange zwischen der letzten Skalierungsaktion und der nächsten Aktion gewartet werden soll. Dieser Wert muss zwischen einer Minute und einer Woche liegen.
 
-12.	Speichern Sie die Vorlagendatei.
+12. Speichern Sie die Vorlagendatei.    
 
-## Schritt 4: Hochladen der Vorlage in den Speicher
+## <a name="step-4:-upload-the-template-to-storage"></a>Schritt 4: Hochladen der Vorlage in den Speicher
 
 Zum Hochladen der Vorlage müssen Sie den Namen und den primären Schlüssel des in Schritt 1 erstellten Speicherkontos kennen.
 
-1.	Legen Sie im Microsoft Azure PowerShell-Fenster eine Variable fest, mit der der Name des Speicherkontos angegeben wird, das Sie in Schritt 1 erstellt haben.
+1.  Legen Sie im Microsoft Azure PowerShell-Fenster eine Variable fest, mit der der Name des Speicherkontos angegeben wird, das Sie in Schritt 1 erstellt haben.
 
             $storageAccountName = "vmstestsa"
 
-2.	Legen Sie eine Variable fest, mit der der primäre Schlüssel des Speicherkontos angegeben wird.
+2.  Legen Sie eine Variable fest, mit der der primäre Schlüssel des Speicherkontos angegeben wird.
 
             $storageAccountKey = "<primary-account-key>"
 
-	Sie erhalten diesen Schlüssel, indem Sie auf das Schlüsselsymbol klicken, wenn Sie im Azure-Portal die Speicherkontoressource anzeigen.
+    Sie erhalten diesen Schlüssel, indem Sie auf das Schlüsselsymbol klicken, wenn Sie im Azure-Portal die Speicherkontoressource anzeigen.
 
-3.	Erstellen Sie das Speicherkonto-Kontextobjekt, das zum Überprüfen von Vorgängen für das Speicherkonto verwendet wird.
+3.  Erstellen Sie das Speicherkonto-Kontextobjekt, das zum Überprüfen von Vorgängen für das Speicherkonto verwendet wird.
 
             $ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 
-4.	Erstellen Sie den Container zum Speichern der Vorlage.
+4.  Erstellen Sie den Container zum Speichern der Vorlage.
 
             $containerName = "templates"
             New-AzureStorageContainer -Name $containerName -Context $ctx  -Permission Blob
 
-5.	Laden Sie die Vorlagendatei in den neuen Container hoch.
+5.  Laden Sie die Vorlagendatei in den neuen Container hoch.
 
             $blobName = "VMSSTemplate.json"
-            $fileName = "C:" + $BlobName
+            $fileName = "C:\" + $BlobName
             Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob  $blobName -Context $ctx
 
-## Schritt 5: Bereitstellen der Vorlage
+## <a name="step-5:-deploy-the-template"></a>Schritt 5: Bereitstellen der Vorlage
 
 Nachdem Sie die Vorlage erstellt haben, können Sie mit dem Bereitstellen der Ressourcen beginnen. Verwenden Sie diesen Befehl, um den Prozess zu starten:
 
@@ -481,22 +482,22 @@ Nachdem Sie die Vorlage erstellt haben, können Sie mit dem Bereitstellen der Re
 Wenn Sie die EINGABETASTE drücken, werden Sie aufgefordert, Werte für die von Ihnen zugewiesenen Variablen anzugeben. Geben Sie die folgenden Werte an:
 
     vmName: vmsstestvm1
-	  vmSSName: vmsstest1
-	  instanceCount: 5
-	  adminUserName: vmadmin1
-	  adminPassword: VMpass1
-	  resourcePrefix: vmsstest
+      vmSSName: vmsstest1
+      instanceCount: 5
+      adminUserName: vmadmin1
+      adminPassword: VMpass1
+      resourcePrefix: vmsstest
 
 Die Bereitstellung aller Ressourcen dauert etwa 15 Minuten.
 
 >[AZURE.NOTE] Sie können die Ressourcen auch über das Portal bereitstellen. Verwenden Sie dazu den folgenden Link: „https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>“
 
-## Schritt 6: Überwachen von Ressourcen
+## <a name="step-6:-monitor-resources"></a>Schritt 6: Überwachen von Ressourcen
 
 Mit den folgenden Methoden können Sie Informationen zu VM-Skalierungsgruppen erhalten:
 
  - Azure-Portal: Über das Portal können Sie derzeit eine begrenzte Menge an Informationen erhalten.
- - [Azure-Ressourcen-Explorer](https://resources.azure.com/): Dieses Tool eignet sich perfekt zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe. Wenn Sie diesem Pfad folgen, wird die Instanzansicht für die von Ihnen erstellte Skalierungsgruppe angezeigt:
+ - [Azure-Ressourcen-Explorer](https://resources.azure.com/) : Dieses Tool eignet sich perfekt zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe. Wenn Sie diesem Pfad folgen, wird die Instanzansicht für die von Ihnen erstellte Skalierungsgruppe angezeigt:
 
         subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
@@ -510,24 +511,28 @@ Mit den folgenden Methoden können Sie Informationen zu VM-Skalierungsgruppen er
 
  - Stellen Sie eine Verbindung mit dem separaten virtuellen Computer her. (Gehen Sie dazu wie bei jedem anderen Computer vor.) Anschließend können Sie per Remoteverbindung auf die virtuellen Computer in der Skalierungsgruppe zugreifen und einzelne Prozesse überwachen.
 
->[AZURE.NOTE] Eine vollständige REST-API zum Abrufen von Informationen zu Skalierungsgruppen finden Sie unter [VM-Skalierungsgruppen](https://msdn.microsoft.com/library/mt589023.aspx).
+>[AZURE.NOTE] Eine vollständige REST-API zum Abrufen von Informationen zu Skalierungsgruppen finden Sie unter [VM-Skalierungsgruppen](https://msdn.microsoft.com/library/mt589023.aspx)
 
-## Schritt 7: Entfernen der Ressourcen
+## <a name="step-7:-remove-the-resources"></a>Schritt 7: Entfernen der Ressourcen
 
 Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es sich grundsätzlich, nicht mehr benötigte Ressourcen zu löschen. Sie müssen nicht jede Ressource einzeln aus einer Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden automatisch auch alle darin enthaltenen Ressourcen gelöscht.
 
-	Remove-AzureRmResourceGroup -Name vmsstestrg1
+    Remove-AzureRmResourceGroup -Name vmsstestrg1
 
 Wenn Sie die Ressourcengruppe beibehalten möchten, können Sie auch nur die Skalierungsgruppe löschen.
 
-	Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name"
+    Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name"
     
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-- Verwalten Sie die Skalierungsgruppe, die Sie gerade erstellt haben. Entsprechende Informationen finden Sie unter [Verwalten virtueller Computer in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-manage.md).
-- Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) ausführlicher über die vertikale Skalierung.
-- Beispiele für Überwachungsfeatures von Azure Insights finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md).
-- Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-autoscale-to-webhook-email.md).
-- Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights finden Sie [hier](../azure-portal/insights-auditlog-to-webhook-email.md).
+- Verwalten Sie die Skalierungsgruppe, die Sie gerade erstellt haben, mithilfe der Informationen unter [Manage virtual machines in a Virtual Machine Scale Set](virtual-machine-scale-sets-windows-manage.md) (Verwalten virtueller Computer in einer VM-Skalierungsgruppe).
+- Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md)
+- Beispiele für Überwachungsfeatures von Azure Insights finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md)
+- Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-autoscale-to-webhook-email.md) 
+- Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights finden Sie [hier](../azure-portal/insights-auditlog-to-webhook-email.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

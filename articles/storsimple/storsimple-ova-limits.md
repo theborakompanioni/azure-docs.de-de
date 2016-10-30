@@ -12,18 +12,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/07/2016"
+   ms.date="10/05/2016"
    ms.author="alkohli" />
 
 
-# Einschränkungen von StorSimple Virtual Array
 
-##Übersicht
+# <a name="storsimple-virtual-array-limits"></a>Einschränkungen von StorSimple Virtual Array
+
+##<a name="overview"></a>Übersicht
 
 Berücksichtigen Sie diese Einschränkungen beim Planen, Bereitstellen und Betreiben von Microsoft Azure StorSimple Virtual Array. Die folgende Tabelle beschreibt diese Einschränkungen für das virtuelle Gerät.
 
-## Einschränkungen von StorSimple Virtual Array 
+## <a name="storsimple-virtual-array-limits"></a>Einschränkungen von StorSimple Virtual Array 
 
 [AZURE.INCLUDE [storsimple-virtual-array-limits](../../includes/storsimple-virtual-array-limits.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

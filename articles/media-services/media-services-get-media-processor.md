@@ -1,30 +1,31 @@
 <properties 
-	pageTitle="Erstellen eines Medienprozessors | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie eine Medienprozessorkomponente erstellen können, um Medieninhalte für Azure Media Services zu codieren, zu ver- oder entschlüsseln, und um Formate zu konvertieren. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET." 
-	services="media-services" 
-	documentationCenter="" 
-	authors="juliako" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="Erstellen eines Medienprozessors | Microsoft Azure" 
+    description="Erfahren Sie, wie Sie eine Medienprozessorkomponente erstellen können, um Medieninhalte für Azure Media Services zu codieren, zu ver- oder entschlüsseln, und um Formate zu konvertieren. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET." 
+    services="media-services" 
+    documentationCenter="" 
+    authors="juliako" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/26/2016" 
-	ms.author="juliako"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/26/2016" 
+    ms.author="juliako"/>
 
 
-#Gewusst wie: Abrufen einer Media Processor-Instanz
+
+#<a name="how-to:-get-a-media-processor-instance"></a>Gewusst wie: Abrufen einer Media Processor-Instanz
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-get-media-processor.md)
 - [REST](media-services-rest-get-media-processor.md)
 
 
-##Übersicht
+##<a name="overview"></a>Übersicht
 
 Der Medienprozessor in Media Services ist für bestimmte Verarbeitungsaufgaben wie z. B. Codierung, Formatumwandlungen, Verschlüsselung oder Entschlüsselung von Medieninhalten zuständig. Normalerweise erstellen Sie einen Medienprozessor, wenn Sie eine Aufgabe zur Codierung, Verschlüsselung oder Formatumwandlung von Medieninhalten erstellen.
 
@@ -41,32 +42,38 @@ Storage Decryption| Veraltet|
 Azure Media Packager|Veraltet|
 Azure Media Encryptor|Veraltet|
 
-##Abrufen von Medienprozessoren
+##<a name="get-media-processor"></a>Abrufen von Medienprozessoren
 
-Das folgende Beispiel zeigt, wie Sie eine Medienprozessor-Instanz erstellen. Das folgende Codebeispiel setzt eine Variable auf Modulebene mit dem Namen **\_context** voraus, die Zugriff auf den Serverkontext bietet. Siehe [Vorgehensweise: Programmgesteuertes Verbinden mit Media Services](media-services-dotnet-connect-programmatically.md).
+Das folgende Beispiel zeigt, wie Sie eine Medienprozessor-Instanz erstellen. Das folgende Codebeispiel setzt eine Variable auf Modulebene mit dem Namen **_context** voraus, die Zugriff auf den Serverkontext bietet. Siehe [Programmgesteuertes Herstellen einer Verbindung mit Media Services](media-services-dotnet-connect-programmatically.md).
 
-	private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-	{
-		var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-		ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-		
-		if (processor == null)
-		throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-		
-		return processor;
-	}
+    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+    {
+        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+        
+        if (processor == null)
+        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+        
+        return processor;
+    }
 
 
-##Media Services-Lernpfade
+##<a name="media-services-learning-paths"></a>Media Services-Lernpfade
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Feedback geben
+##<a name="provide-feedback"></a>Feedback geben
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##Nächste Schritte
+##<a name="next-steps"></a>Nächste Schritte
 
-Sie sind nun in der Lage, eine Medienprozessorinstanz zu erstellen, und können mit dem Thema [Gewusst wie: Codieren von Assets](media-services-dotnet-encode-with-media-encoder-standard.md) fortfahren. Dort lernen Sie, wie Sie Assets mit dem Media Encoder Standard codieren können.
+Sie sind nun in der Lage, eine Medienprozessorinstanz zu erstellen, und können mit dem Thema [Codieren von Medienobjekten](media-services-dotnet-encode-with-media-encoder-standard.md) fortfahren. Dort lernen Sie, wie Sie Medienobjekte mit dem Media Encoder Standard codieren können.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

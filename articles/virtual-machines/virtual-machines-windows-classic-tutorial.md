@@ -1,23 +1,24 @@
 <properties
-	pageTitle="Erstellen einer virtuellen Maschine unter Windows im klassischen Portal | Microsoft Azure"
-	description="Erstellen Sie einen virtuellen Windows-Computer im klassischen Azure-Portal."
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="cynthn"
-	manager="timlt"
-	editor=""
-	tags="azure-service-management"/>
+    pageTitle="Erstellen einer virtuellen Maschine unter Windows im klassischen Portal | Microsoft Azure"
+    description="Erstellen Sie einen virtuellen Windows-Computer im klassischen Azure-Portal."
+    services="virtual-machines-windows"
+    documentationCenter=""
+    authors="cynthn"
+    manager="timlt"
+    editor=""
+    tags="azure-service-management"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="cynthn"/>
+    ms.service="virtual-machines-windows"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/27/2016"
+    ms.author="cynthn"/>
 
-# Erstellen eines virtuellen Computers unter Windows im klassischen Azure-Portal
+
+# <a name="create-a-virtual-machine-running-windows-in-the-azure-classic-portal"></a>Erstellen eines virtuellen Computers unter Windows im klassischen Azure-Portal
 
 > [AZURE.SELECTOR]
 - [Klassisches Azure-Portal](virtual-machines-windows-classic-tutorial.md)
@@ -29,26 +30,30 @@
 
 In diesem Tutorial erfahren Sie, wie einfach es ist, eine virtuelle Azure-Maschine (VM) mit Windows im klassischen Azure-Portal zu erstellen. Als Beispiel wird ein Windows Server-Image verwendet. Dies ist jedoch nur eines von vielen Images, die Azure bietet. Beachten Sie, dass Ihre Imageauswahl von Ihrem Abonnement abhängt. Beispielsweise können Windows-Desktop-Images für MSDN-Abonnenten verfügbar sein.
 
-In diesem Abschnitt erfahren Sie, wie Sie die Option **Aus Galerie** im klassischen Azure-Portal verwenden, um einen virtuellen Computer zu erstellen. Mit dieser Option erhalten Sie mehr Konfigurationsoptionen als mit **Schnellerfassung**. Wenn Sie beispielsweise einen virtuellen Computer mit einem virtuellen Netzwerk verbinden möchten, sollten Sie die Option **Aus Galerie** verwenden.
+In diesem Abschnitt erfahren Sie, wie Sie die Option **Aus Galerie** im klassischen Azure-Portal verwenden, um einen virtuellen Computer zu erstellen. Mit dieser Option erhalten Sie mehr Konfigurationsoptionen als mit **Schnellerfassung** . Wenn Sie beispielsweise einen virtuellen Computer mit einem virtuellen Netzwerk verbinden möchten, sollten Sie die Option **Aus Galerie** verwenden.
 
-Sie können auch mithilfe [eigener Images](virtual-machines-windows-classic-createupload-vhd.md) virtuelle Computer erstellen. Informationen zu dieser und zu anderen Methoden finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](virtual-machines-windows-creation-choices.md).
+Sie können auch mithilfe [eigener Images](virtual-machines-windows-classic-createupload-vhd.md)virtuelle Computer erstellen. Informationen zu dieser und zu anderen Methoden finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](virtual-machines-windows-creation-choices.md).
 
 
 
-## Exemplarische Vorgehensweise per Video
+## <a name="video-walkthrough"></a>Exemplarische Vorgehensweise per Video
 
 Hier finden Sie eine exemplarische Vorgehensweise für dieses Lernprogramm.
 
 [AZURE.VIDEO creating-a-windows-vm-on-microsoft-azure-classic-portal]
 
-## <a id="createvirtualmachine"> </a>Erstellen des virtuellen Computers
+## <a name="<a-id="createvirtualmachine">-</a>create-the-virtual-machine"></a><a id="createvirtualmachine"> </a>Erstellen des virtuellen Computers
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 - Melden Sie sich beim virtuellen Computer an. Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](virtual-machines-windows-classic-connect-logon.md).
 
 - Fügen Sie einen Datenträger zum Speichern von Daten hinzu. Sie können sowohl leere Datenträger als auch Datenträger mit Daten anfügen. Anweisungen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde](virtual-machines-windows-classic-attach-disk.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

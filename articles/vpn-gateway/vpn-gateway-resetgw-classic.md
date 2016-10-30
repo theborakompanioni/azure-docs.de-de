@@ -17,14 +17,15 @@
    ms.date="09/23/2016"
    ms.author="cherylmc"/>
 
-# Zurücksetzen einer Azure VPN Gateway-Instanz mit PowerShell
+
+# <a name="reset-an-azure-vpn-gateway-using-powershell"></a>Zurücksetzen einer Azure VPN Gateway-Instanz mit PowerShell
 
 
 In diesem Artikel werden die Schritte zum Zurücksetzen einer Azure VPN Gateway-Instanz mithilfe von PowerShell-Cmdlets beschrieben. Diese Anweisungen erstrecken sich sowohl auf das klassische Bereitstellungsmodell als auch auf das Resource Manager-Bereitstellungsmodell.
 
-Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem S2S-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen.
+Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem S2S-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen. 
 
-Jede Azure VPN Gateway-Instanz umfasst zwei VM-Instanzen, die in einer Konfiguration mit aktivem Standbymodus ausgeführt werden. Bei Verwendung des PowerShell-Cmdlets zum Zurücksetzen des Gateways wird das Gateway neu gestartet, und die standortübergreifenden Konfigurationen werden erneut auf das Gateway angewendet. Die öffentliche IP-Adresse des Gateways bleibt unverändert. Die VPN-Routerkonfiguration muss also nicht mit einer neuen öffentlichen IP-Adresse für Azure VPN Gateway aktualisiert werden.
+Jede Azure VPN Gateway-Instanz umfasst zwei VM-Instanzen, die in einer Konfiguration mit aktivem Standbymodus ausgeführt werden. Bei Verwendung des PowerShell-Cmdlets zum Zurücksetzen des Gateways wird das Gateway neu gestartet, und die standortübergreifenden Konfigurationen werden erneut auf das Gateway angewendet. Die öffentliche IP-Adresse des Gateways bleibt unverändert. Die VPN-Routerkonfiguration muss also nicht mit einer neuen öffentlichen IP-Adresse für Azure VPN Gateway aktualisiert werden.  
 
 Wenn der Befehl ausgeführt wird, wird die gegenwärtig aktive Instanz der Azure VPN Gateway-Instanz umgehend neu gestartet. Während des Failovers von der aktiven Instanz (die Instanz, die neu gestartet wird) auf die Standbyinstanz kommt es zu einer kurzen Unterbrechung. Diese Unterbrechung sollte weniger als 1 Minute dauern.
 
@@ -32,7 +33,7 @@ Wenn die Verbindung nach dem ersten Neustart nicht wiederhergestellt wird, führ
 
 Wenn nach den beiden Neustarts weiterhin standortübergreifende Konnektivitätsprobleme auftreten, erstellen Sie über das Azure-Portal ein Supportticket.
 
-## Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
 Überprüfen Sie vor dem Zurücksetzen des Gateways die unten aufgeführten Elemente für die einzelnen IPsec-Site-to-Site-VPN-Tunnel (S2S). Treten bei diesen Elementen Konflikte auf, werden S2S-VPN-Tunnelverbindungen unterbrochen. Indem Sie die Konfigurationen für Ihre lokalen VPN-Gateways und Azure VPN Gateway-Instanzen überprüfen und korrigieren, werden nicht erforderliche Neustarts und Unterbrechungen anderer funktionierender Verbindungen der Gateways verhindert.
 
@@ -42,31 +43,41 @@ Wenn nach den beiden Neustarts weiterhin standortübergreifende Konnektivitätsp
 - Der vorinstallierte Schlüssel muss sowohl bei der Azure VPN Gateway-Instanz als auch auf dem lokalen VPN-Gateway identisch sein.
 - Wenn Sie eine bestimmte IPsec/IKE-Konfiguration – z.B. Verschlüsselung, Hashalgorithmus oder PFS (Perfect Forward Secrecy) – anwenden, müssen Sie sicherstellen, dass die Azure VPN Gateway-Instanz und das lokale VPN-Gateway dieselbe Konfiguration aufweisen.
 
-## Zurücksetzen einer VPN Gateway-Instanz über das Resource Manager-Bereitstellungsmodell
+## <a name="reset-a-vpn-gateway-using-the-resource-management-deployment-model"></a>Zurücksetzen einer VPN Gateway-Instanz über das Resource Manager-Bereitstellungsmodell
 
-Zum Zurücksetzen des Gateways wird das Resource Manager-PowerShell-Cmdlet `Reset-AzureRmVirtualNetworkGateway` verwendet. Im folgenden Beispiel wird das Azure VPN-Gateway „VNet1GW“ in der Ressourcengruppe „TestRG1“ zurückgesetzt.
+Zum Zurücksetzen des Gateways wird das Resource Manager-PowerShell-Cmdlet `Reset-AzureRmVirtualNetworkGateway`verwendet. Im folgenden Beispiel wird das Azure VPN-Gateway „VNet1GW“ in der Ressourcengruppe „TestRG1“ zurückgesetzt.
 
-	$gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
-	Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
+    $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
+    Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 
-## Zurücksetzen einer VPN Gateway-Instanz über das klassische Bereitstellungsmodell
+## <a name="reset-a-vpn-gateway-using-the-classic-deployment-model"></a>Zurücksetzen einer VPN Gateway-Instanz über das klassische Bereitstellungsmodell
 
-Zum Zurücksetzen von Azure VPN Gateway-Instanzen wird das PowerShell-Cmdlet `Reset-AzureVNetGateway` verwendet. Im folgenden Beispiel wird die Azure VPN Gateway-Instanz für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt.
+Zum Zurücksetzen von Azure VPN Gateway-Instanzen wird das PowerShell-Cmdlet `Reset-AzureVNetGateway`verwendet. Im folgenden Beispiel wird die Azure VPN Gateway-Instanz für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt.
  
-	Reset-AzureVNetGateway –VnetName “ContosoVNet” 
+    Reset-AzureVNetGateway –VnetName “ContosoVNet” 
 
 Ergebnis:
 
-	Error          :
-	HttpStatusCode : OK
-	Id             : f1600632-c819-4b2f-ac0e-f4126bec1ff8
-	Status         : Successful
-	RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
-	StatusCode     : OK
+    Error          :
+    HttpStatusCode : OK
+    Id             : f1600632-c819-4b2f-ac0e-f4126bec1ff8
+    Status         : Successful
+    RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
+    StatusCode     : OK
 
 
-## Nächste Schritte
-	
+## <a name="next-steps"></a>Nächste Schritte
+    
 Weitere Informationen finden Sie in der [Referenz zu PowerShell-Dienstverwaltungs-Cmdlets](https://msdn.microsoft.com/library/azure/mt617104.aspx) und in der [Referenz zu Resource Manager-PowerShell-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=828732).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+
