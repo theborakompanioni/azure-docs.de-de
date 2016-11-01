@@ -34,9 +34,9 @@ Wenn Sie ein benutzerdefiniertes Feld erstellen, muss Log Analytics wissen, mit 
 
 In den folgenden Abschnitten wird die Vorgehensweise zum Erstellen eines benutzerdefinierten Felds erläutert.  Am Ende dieses Artikels befindet sich eine exemplarische Vorgehensweise für eine Beispielextraktion.
 
-> [!NOTE] Das benutzerdefinierte Feld wird aufgefüllt, wenn dem OMS-Datenspeicher Datensätze hinzugefügt werden, die den angegebenen Kriterien entsprechen. Das Feld ist also nur für Datensätze verfügbar, die nach der Erstellung des benutzerdefinierten Felds gesammelt werden.  Das benutzerdefinierte Feld wird nicht zu Datensätzen hinzugefügt, die zum Zeitpunkt der Felderstellung bereits im Datenspeicher vorhanden sind.
+>[AZURE.NOTE] Das benutzerdefinierte Feld wird aufgefüllt, wenn dem OMS-Datenspeicher Datensätze hinzugefügt werden, die den angegebenen Kriterien entsprechen. Das Feld ist also nur für Datensätze verfügbar, die nach der Erstellung des benutzerdefinierten Felds gesammelt werden.  Das benutzerdefinierte Feld wird nicht zu Datensätzen hinzugefügt, die zum Zeitpunkt der Felderstellung bereits im Datenspeicher vorhanden sind.
 
-### <a name="step-1-–-identify-records-that-will-have-the-custom-field"></a>Schritt 1: Angeben der Datensätze, die über das benutzerdefinierte Feld verfügen sollen
+### <a name="step-1-identify-records-that-will-have-the-custom-field"></a>Schritt 1: Angeben der Datensätze, die über das benutzerdefinierte Feld verfügen sollen
 Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefinierte Feld verfügen sollen.  Hierzu führen Sie zunächst eine [Standard-Protokollsuche](log-analytics-log-searches.md) durch wählen dann einen Datensatz aus, der Log Analytics als Modell für die Ermittlung dient.  Wenn Sie angeben, dass Sie Daten in ein benutzerdefiniertes Feld extrahieren möchten, wird der Feldextraktions-Assistent **** geöffnet, in dem Sie die Kriterien überprüfen und anpassen können.
 
 2. Wechseln Sie zur Protokollsuche **** , und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](log-analytics-log-searches.md) , die über das benutzerdefinierte Feld verfügen sollen.
@@ -45,7 +45,7 @@ Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefin
 4. Der **Feldextraktions-Assistent** wird geöffnet, und der ausgewählte Datensatz wird in der Spalte **Hauptbeispiel** angezeigt.  Das benutzerdefinierte Feld wird für Datensätze mit den gleichen Werten in den ausgewählten Eigenschaften definiert.  
 5. Falls die Auswahl noch nicht ganz Ihren Vorstellungen entspricht, können Sie weitere Felder auswählen, um die Kriterien einzugrenzen.  Wenn Sie die Feldwerte für die Kriterien ändern möchten, müssen Sie den Vorgang abbrechen und einen anderen Datensatz auswählen, der den gewünschten Kriterien entspricht.
 
-### <a name="step-2---perform-initial-extract."></a>Schritt 2: Ausführen der ersten Extraktion
+### <a name="step-2-perform-initial-extract"></a>Schritt 2: Ausführen der ersten Extraktion
 Nach Angabe der Datensätze, die über das benutzerdefinierte Feld verfügen sollen, müssen die zu extrahierenden Daten angegeben werden.  Auf der Grundlage dieser Informationen ermittelt Log Analytics dann ähnliche Muster in ähnlichen Datensätzen.  Im nächsten Schritt können Sie die Ergebnisse überprüfen und weitere Details angeben, die Log Analytics bei der Analyse berücksichtigen soll.
 
 1. Markieren Sie im Beispieldatensatz den Text, mit dem das benutzerdefinierte Feld aufgefüllt werden soll.  Daraufhin erscheint ein Dialogfeld, in dem Sie einen Namen für das Feld angeben und die erste Extraktion durchführen können.  Die Zeichen **\_CF** werden automatisch angefügt.
@@ -53,7 +53,7 @@ Nach Angabe der Datensätze, die über das benutzerdefinierte Feld verfügen sol
 3. In den Abschnitten **Zusammenfassung** und **Suchergebnisse** werden die Ergebnisse der Extraktion zur Überprüfung angezeigt.  **Zusammenfassung** enthält die Kriterien, die zur Ermittlung der Datensätze verwendet wurden, sowie die Anzahl der einzelnen ermittelten Datenwerte.  **Suchergebnisse** enthält eine detaillierte Liste mit Datensätzen, die den Kriterien entsprechen.
 
 
-### <a name="step-3-–-verify-accuracy-of-the-extract-and-create-custom-field"></a>Schritt 3: Überprüfen der Extraktion und Erstellen des benutzerdefinierten Felds
+### <a name="step-3-verify-accuracy-of-the-extract-and-create-custom-field"></a>Schritt 3: Überprüfen der Extraktion und Erstellen des benutzerdefinierten Felds
 
 Im Anschluss an die erste Extraktion zeigt Log Analytics die Ergebnisse an, die auf der Grundlage bereits gesammelter Daten ermittelt wurden.  Wenn die Ergebnisse Ihren Vorstellungen entsprechen, können Sie das benutzerdefinierte Feld ohne weitere Schritte erstellen.  Andernfalls können Sie die Ergebnisse optimieren, damit Log Analytics seine Logik verbessern kann.
 
@@ -138,6 +138,7 @@ Nun können wir das benutzerdefinierte Feld wie jede andere Datensatzeigenschaft
 
 - Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) , um Abfragen mithilfe von benutzerdefinierten Feldern für die Kriterien zu erstellen.
 - Überwachen Sie [benutzerdefinierte Protokolldateien](log-analytics-data-sources-custom-logs.md), die Sie mithilfe von benutzerdefinierten Feldern analysieren.
+
 
 
 <!--HONumber=Oct16_HO2-->

@@ -3,7 +3,7 @@
     description="A topic that explains how to sign up for Azure Active Directory Premium edition through the Volume Licensing web site."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila" 
     editor=""/>
 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/16/2016"
+    ms.date="10/31/2016"
     ms.author="markvi"/>
 
 
@@ -38,13 +38,13 @@ Azure Active Directory Premium and Basic editions are available for customers in
 
 
 
-## <a name="step-1:-sign-up-for-active-directory-premium"></a>Step 1: Sign up for Active Directory Premium
+## <a name="step-1-sign-up-for-active-directory-premium"></a>Step 1: Sign up for Active Directory Premium
 
 To sign up, see [How to purchase through Volume Licensing](http://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
 
 
-## <a name="step-2:-activate-your-license-plan"></a>Step 2: Activate your license plan
+## <a name="step-2-activate-your-license-plan"></a>Step 2: Activate your license plan
 
 Is this your first license plan purchase through the Enterprise Volume Licensing program from Microsoft?
 In this case, you get a confirmation email when your purchase has been completed.
@@ -73,7 +73,7 @@ When you are done, the following dialog shows up as confirmation for the activat
 
 ![Confirmation][3]
 
-## <a name="step-3:-activate-your-azure-active-directory-access"></a>Step 3: Activate your Azure Active Directory access
+## <a name="step-3-activate-your-azure-active-directory-access"></a>Step 3: Activate your Azure Active Directory access
 
 If you have used Microsoft Azure before, you can proceed to [Step 4](#step-4-assign-license-to-user-accounts). 
 
@@ -116,7 +116,7 @@ You may already have had access to Azure from prior usage; in addition, you can 
 
 
 
-## <a name="step-4:-assign-license-to-user-accounts"></a>Step 4: Assign license to user accounts
+## <a name="step-4-assign-license-to-user-accounts"></a>Step 4: Assign license to user accounts
 
 Before you can start using the plan you purchased, you need to manually assign licenses to user accounts within your organization so that they can use the rich features provided with Premium. Use the following steps to assign licenses to users so they can use Azure Active Directory Premium features.
 
@@ -144,7 +144,7 @@ When you assign a license to a user, you can specify a primary usage location in
 
 The availability of services and features for a Microsoft cloud service varies by country or region. A service, such as Voice over Internet Protocol (VoIP), may be available in one country or region, and not available in another. Features within a service can be restricted for legal reasons in certain countries or regions. To see if a service or feature is available with or without restrictions, look for your country or region on license restrictions site of a service.
 
-## <a name="what's-next"></a>What's next
+## <a name="whats-next"></a>What's next
 
 - [Add company branding to your Sign In and Access Panel pages](active-directory-add-company-branding.md)
 - [View your access and usage reports](active-directory-view-access-usage-reports.md)

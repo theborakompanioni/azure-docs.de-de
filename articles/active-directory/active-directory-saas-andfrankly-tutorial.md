@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="08/12/2016"
+    ms.date="10/31/2016"
     ms.author="jeedes"/>
 
 
 
-# <a name="tutorial:-azure-active-directory-integration-with-&frankly"></a>Tutorial: Azure Active Directory integration with &frankly
+# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Tutorial: Azure Active Directory integration with &frankly
 
 The objective of this tutorial is to show you how to integrate &frankly with Azure Active Directory (Azure AD).
 
@@ -56,7 +56,7 @@ The scenario outlined in this tutorial consists of two main building blocks:
 2. Configuring and testing Azure AD single sign-on
 
 
-## <a name="adding-&frankly-from-the-gallery"></a>Adding &frankly from the gallery
+## <a name="adding-frankly-from-the-gallery"></a>Adding &frankly from the gallery
 To configure the integration of &frankly into Azure AD, you need to add &frankly from the gallery to your list of managed SaaS apps.
 
 **To add &frankly from the gallery, perform the following steps:**
@@ -87,7 +87,7 @@ To configure the integration of &frankly into Azure AD, you need to add &frankly
 
     ![Selecting the app in the gallery](./media/active-directory-saas-andfrankly-tutorial/tutorial_andfrankly_0001.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+##  <a name="configuring-and-testing-azure-ad-single-signon"></a>Configuring and testing Azure AD single sign-on
 The objective of this section is to show you how to configure and test Azure AD single sign-on with &frankly based on a test user called "Britta Simon".
 
 For single sign-on to work, Azure AD needs to know what the counterpart user in &frankly to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in &frankly needs to be established.
@@ -102,7 +102,7 @@ To configure and test Azure AD single sign-on with &frankly, you need to complet
 4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+### <a name="configuring-azure-ad-single-signon"></a>Configuring Azure AD single sign-on
 
 In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your &frankly application.
 
@@ -215,7 +215,7 @@ The objective of this section is to create a test user in the classic portal cal
 
 
 
-### <a name="creating-a-&frankly-test-user"></a>Creating a &frankly test user
+### <a name="creating-a-frankly-test-user"></a>Creating a &frankly test user
 
 In this section, you create a user called Britta Simon in &frankly. Please work with &frankly support team via [help@andfrankly.com](emailTo:help@andfrankly.com) to add the users in the &frankly platform.
 
@@ -248,7 +248,7 @@ The objective of this section is to enabling Britta Simon to use Azure single si
 
 
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### <a name="testing-single-signon"></a>Testing single sign-on
 
 The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
  

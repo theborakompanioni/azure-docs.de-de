@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter=""
    authors="ronortloff"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="09/24/2016" 
-   ms.author="rortloff;barbkess;sonyama"/>
+   ms.date="10/31/2016" 
+   ms.author="rortloff;barbkess"/>
 
 
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Überwachung in Azure SQL Data Warehouse
@@ -31,7 +31,7 @@ Mit SQL Data Warehouse-Überwachung können Sie Ereignisse in der Datenbank in e
 + [Einrichten der Überwachung für Ihre Datenbank]
 + [Analysieren von Überwachungsprotokollen und -berichten]
 
-##<a name="<a-id="subheading-1"></a>azure-sql-data-warehouse-database-auditing-basics"></a><a id="subheading-1"></a>Grundlagen zur Überwachung von Azure SQL Data Warehouse
+##<a name="a-idsubheading1aazure-sql-data-warehouse-database-auditing-basics"></a><a id="subheading-1"></a>Grundlagen zur Überwachung von Azure SQL Data Warehouse
 
 
 Die Überwachung von SQL Data Warehouse bietet folgende Möglichkeiten:
@@ -61,7 +61,7 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Stand
 Überprüfen Sie vor der Einrichtung der Überwachung, ob Sie einen [kompatiblen Client](sql-data-warehouse-auditing-downlevel-clients.md)verwenden.
 
 
-##<a name="<a-id="subheading-2"></a>set-up-auditing-for-your-database"></a><a id="subheading-2"></a>Einrichten der Überwachung für Ihre Datenbank
+##<a name="a-idsubheading2aset-up-auditing-for-your-database"></a><a id="subheading-2"></a>Einrichten der Überwachung für Ihre Datenbank
 
 1. Starten Sie das <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>.
 
@@ -92,7 +92,7 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Stand
 9. Klicken Sie auf **OK**.
 
 
-##<a name="<a-id="subheading-3">analyze-audit-logs-and-reports</a>"></a><a id="subheading-3">Analysieren von Überwachungsprotokollen und -berichten</a>
+##<a name="a-idsubheading3analyze-audit-logs-and-reportsa"></a><a id="subheading-3">Analysieren von Überwachungsprotokollen und -berichten</a>
 
 Überwachungsprotokolle werden im Azure-Speicherkonto, das Sie während der Einrichtung ausgewählt haben, in einer einzelnen Azure-Speichertabelle mit dem Präfix **SQLDBAuditLogs** zusammengefasst. Sie können Protokolldateien mit einem Tool wie <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure Storage-Explorer</a> anzeigen.
 
@@ -105,11 +105,11 @@ Ausführlichere Anweisungen zum Arbeiten mit der Berichtvorlage finden Sie unter
 ![][5]
 
 
-##<a name="<a-id="subheading-4">practices-for-usage-in-production</a>"></a><a id="subheading-4">Methoden zur Verwendung in der Produktion</a>
+##<a name="a-idsubheading4practices-for-usage-in-productiona"></a><a id="subheading-4">Methoden zur Verwendung in der Produktion</a>
 Die Beschreibung in diesem Abschnitt bezieht sich auf die obigen Screenshots. Sie können entweder das <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder das <a href= "https://manage.windowsazure.com/" target="_bank">klassische Azure-Portal</a> verwenden.
 
 
-##<a name="<a-id="subheading-5"></a>storage-key-regeneration"></a><a id="subheading-5"></a>Erneute Speicherschlüsselgenerierung
+##<a name="a-idsubheading5astorage-key-regeneration"></a><a id="subheading-5"></a>Erneute Speicherschlüsselgenerierung
 
 In der Produktion werden Sie wahrscheinlich Ihre Speicherschlüssel regelmäßig aktualisieren. Sie müssen beim Aktualisieren Ihrer Schlüssel die Richtlinie erneut speichern. Dieser Prozess verläuft wie folgt:
 
@@ -122,7 +122,7 @@ In der Produktion werden Sie wahrscheinlich Ihre Speicherschlüssel regelmäßig
 
 4. Wechseln Sie zurück zur Speicherbenutzeroberfläche, und **generieren Sie erneut** den *sekundären Zugriffsschlüssel* (als Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
 
-##<a name="<a-id="subheading-6"></a>automation"></a><a id="subheading-6"></a>Automatisierung
+##<a name="a-idsubheading6aautomation"></a><a id="subheading-6"></a>Automatisierung
 Es gibt mehrere PowerShell-Cmdlets, die Sie zum Konfigurieren der Überwachung in Azure SQL-Datenbank verwenden können. Für den Zugriff auf die Cmdlets zur Überwachung muss PowerShell im Azure-Ressourcen-Manager-Modus ausgeführt werden.
 
 > [AZURE.NOTE] Das [Azure Resource Manager](https://msdn.microsoft.com/library/dn654592.aspx)-Modul befindet sich derzeit in der Vorschau. Möglicherweise stellt es nicht die gleichen Verwaltungsfunktionen wie das Azure-Modul bereit.

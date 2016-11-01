@@ -3,7 +3,7 @@
     description="Sie können Windows Server Active Directory-Domänendienste (AD DS) oder Active Directory-Verbunddienste (AD FS) auf virtuellen Azure-Computern ausführen."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     tags="azure-classic-portal"/>
 

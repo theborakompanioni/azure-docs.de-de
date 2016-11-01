@@ -3,7 +3,7 @@
     description="Dieses Thema beschreibt Überlegungen zu Sicherheit und Datenschutz in Zusammenhang mit Cloud App Discovery."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -147,7 +147,7 @@ Wir möchten Administratoren die nötigen Tools bieten, um entsprechend den Anfo
 Der Cloud App Discovery-Endpunkt-Agent sammelt nur die Informationen, die im Abschnitt **Vom Agent gesammelte Daten** oben beschrieben sind.
 
 
-### <a name="intercepting-data-from-encrypted-connections-(deep-inspection)"></a>Abfangen von Daten von verschlüsselten Verbindungen (verschärfte Inspektion)
+### <a name="intercepting-data-from-encrypted-connections-deep-inspection"></a>Abfangen von Daten von verschlüsselten Verbindungen (verschärfte Inspektion)
 Wie bereits erwähnt können Administratoren den Agent zum Überwachen von Daten aus verschlüsselten Verbindungen ('verschärfte Inspektion') konfigurieren. TLS ([Transport Layer Security](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) ist eines der am häufigsten verwendeten Protokolle im Internet. Durch die Verschlüsselung der Kommunikation mit TLS kann ein Client einen sicheren und privaten Kommunikationskanal mit einem Webserver herstellen. TLS bietet grundlegenden Schutz bei der Übergabe von Anmeldeinformationen zur Authentifizierung und vor Offenlegung von vertraulichen Informationen.
 
 Während der durchgängig sicher verschlüsselte Kanal von TLS eine grundlegende Sicherheit und Datenschutz ermöglicht, wird das Protokoll häufig zu schädlichen oder böswilligen Zwecken missbraucht. Dies geht so weit, dass TLS oft als "universelles Protokoll zur Firewallumgehung" bezeichnet wird. Die Ursache des Problems ist, dass die meisten Firewalls die TLS-Kommunikation nicht überprüfen können, da die Daten auf Anwendungsebene mit SSL verschlüsselt werden. Mit diesem Wissen nutzen Angreifer häufig TLS zur Übermittlung von bösartigen Inhalten an einen Benutzer. Den Angreifern ist dabei klar, dass selbst die intelligentesten Firewalls auf Anwendungsebene TLS nicht erkennen und einfach die TLS-Kommunikation zwischen Hosts weitergeleitet werden muss. Häufig nutzen Endbenutzer TLS zum Umgehen der Zugriffskontrolle, die von den Firewalls und Proxyservern ihres Unternehmens erzwungen werden, um die Verbindung zu öffentlichen Proxys herzustellen und nicht-TLS-Protokolle durch die Firewall zu tunneln, die andernfalls von der Richtlinie blockiert werden.

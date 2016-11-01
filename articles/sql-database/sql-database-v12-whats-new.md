@@ -14,12 +14,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="08/15/2016"
+    ms.date="10/31/2016"
     ms.author="genemi"/>
 
 
 
-# <a name="what's-new-in-sql-database-v12"></a>What's new in SQL Database V12
+# <a name="whats-new-in-sql-database-v12"></a>What's new in SQL Database V12
 
 
 This topic describes the many advantages that the new V12 version of Azure SQL Database has over version V11.
@@ -74,7 +74,7 @@ For an explanation of how you can compare your most important queries between th
 
 
 
-## <a name="more-premium-performance,-new-performance-levels"></a>More premium performance, new performance levels
+## <a name="more-premium-performance-new-performance-levels"></a>More premium performance, new performance levels
 
 
 In V12, we increased the Database Transaction Units (DTUs) allocated to all Premium performance levels by 25% at no additional cost. Even greater performance gains can be achieved with new features like:
@@ -149,7 +149,7 @@ There are many good reasons why customers should upgrade now to Azure SQL Databa
 - Most new features are released on SQL Database V12 before they are being released for Microsoft SQL Server.
 
 
-## <a name="are-you-using-v12-already?"></a>Are you using V12 already?
+## <a name="are-you-using-v12-already"></a>Are you using V12 already?
 
 
 One easy way to see if you have a database or logical server running on an earlier version of the SQL Database service is to do the following:
@@ -176,7 +176,7 @@ A V12 database can be hosted only on a V12 logical server. And a V12 server can 
 If you are not yet running on V12, you can upgrade your logical server by following the steps in [Upgrade to SQL Database V12 in place](sql-database-v12-plan-prepare-upgrade.md).
 
 
-## <a name="<a-name="v12azuresqldbpreviewgatable"></a>-general-availability-regions"></a><a name="V12AzureSqlDbPreviewGaTable"></a> General Availability regions
+## <a name="a-namev12azuresqldbpreviewgatablea-general-availability-regions"></a><a name="V12AzureSqlDbPreviewGaTable"></a> General Availability regions
 
 
 - By July 31, 2015, all regions had been promoted to General Availability (GA).

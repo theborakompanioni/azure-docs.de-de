@@ -3,8 +3,8 @@
    description="Learn how to create an Azure SQL Data Warehouse with TSQL"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="lodipalm"
-   manager="barbkess"
+   authors="barbkess"
+   manager="jhubbard"
    editor=""
    tags="azure-sql-data-warehouse"/>
 
@@ -14,11 +14,11 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/24/2016"
-   ms.author="lodipalm;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
-# <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-(tsql)"></a>Create a SQL Data Warehouse database by using Transact-SQL (TSQL)
+# <a name="create-a-sql-data-warehouse-database-by-using-transactsql-tsql"></a>Create a SQL Data Warehouse database by using Transact-SQL (TSQL)
 
 > [AZURE.SELECTOR]
 - [Azure Portal](sql-data-warehouse-get-started-provision.md)

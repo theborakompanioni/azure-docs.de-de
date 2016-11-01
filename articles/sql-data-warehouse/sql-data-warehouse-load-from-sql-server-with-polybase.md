@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="ckarst"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
 
@@ -44,11 +44,11 @@ To step through this tutorial, you need
     ![Azure Storage Tools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
 
-## <a name="step-1:-add-sample-data-to-azure-blob-storage"></a>Step 1: Add sample data to Azure blob storage
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Step 1: Add sample data to Azure blob storage
 
 In order to load data, we need to put some sample data into an Azure blob storage. In this step we populate an Azure Storage blob with sample data. Later, we will use PolyBase to load this sample data into your SQL Data Warehouse database.
 
-### <a name="a.-prepare-a-sample-text-file"></a>A. Prepare a sample text file
+### <a name="a-prepare-a-sample-text-file"></a>A. Prepare a sample text file
 
 To prepare a sample text file:
 
@@ -69,7 +69,7 @@ To prepare a sample text file:
 20150101,1,3
 ```
 
-### <a name="b.-find-your-blob-service-endpoint"></a>B. Find your blob service endpoint
+### <a name="b-find-your-blob-service-endpoint"></a>B. Find your blob service endpoint
 
 To find your blob service endpoint:
 
@@ -83,7 +83,7 @@ To find your blob service endpoint:
 
     ![Blob service endpoint](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
-### <a name="c.-find-your-azure-storage-key"></a>C. Find your Azure storage key
+### <a name="c-find-your-azure-storage-key"></a>C. Find your Azure storage key
 
 To find your Azure storage key:
 
@@ -94,7 +94,7 @@ To find your Azure storage key:
 
     ![Copy Azure storage key](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d.-copy-the-sample-file-to-azure-blob-storage"></a>D. Copy the sample file to Azure blob storage
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. Copy the sample file to Azure blob storage
 
 To copy your data to Azure blob storage:
 
@@ -112,7 +112,7 @@ To copy your data to Azure blob storage:
 
 See also [Getting Started with the AzCopy Command-Line Utility][latest version of AzCopy].
 
-### <a name="e.-explore-your-blob-storage-container"></a>E. Explore your blob storage container
+### <a name="e-explore-your-blob-storage-container"></a>E. Explore your blob storage container
 
 To see the file you uploaded to blob storage:
 
@@ -125,7 +125,7 @@ To see the file you uploaded to blob storage:
     ![View Azure storage blob](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
 
-## <a name="step-2:-create-an-external-table-for-the-sample-data"></a>Step 2: Create an external table for the sample data
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>Step 2: Create an external table for the sample data
 
 In this section we create an external table that defines the sample data.
 
@@ -215,7 +215,7 @@ In SQL Server Object Explorer in Visual Studio, you can see the external file fo
 
 ![View external table](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
-## <a name="step-3:-load-data-into-sql-data-warehouse"></a>Step 3: Load data into SQL Data Warehouse
+## <a name="step-3-load-data-into-sql-data-warehouse"></a>Step 3: Load data into SQL Data Warehouse
 
 Once the external table is created, you can either load the data into a new table or insert it into an existing table.
 
@@ -235,7 +235,7 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-## <a name="step-4:-create-statistics-on-your-newly-loaded-data"></a>Step 4: Create statistics on your newly loaded data
+## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Step 4: Create statistics on your newly loaded data
 
 SQL Data Warehouse does not auto-create or auto-update statistics. Therefore, to achieve high query performance, it's important to create statistics on each column of each table after the first load. It's also important to update statistics after substantial changes in the data.
 

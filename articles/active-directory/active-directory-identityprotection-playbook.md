@@ -4,7 +4,7 @@
     services="active-directory"
     keywords="Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -37,7 +37,7 @@ Dieser Abschnitt bietet Ihnen die Schritte zum Simulieren der folgenden Risikoer
 Andere Risikoereignisse können nicht auf sichere Weise simuliert werden.
 
 
-### <a name="sign-ins-from-anonymous-ip-addresses"></a>Anmeldungen von anonymen IP-Adressen
+### <a name="signins-from-anonymous-ip-addresses"></a>Anmeldungen von anonymen IP-Adressen
 
 Bei dieser Art von Risikoereignis werden Benutzer identifiziert, die sich erfolgreich unter einer IP-Adresse angemeldet haben, die als anonyme Proxy-IP-Adresse identifiziert wurde. Diese Proxys werden von Personen verwendet, die die IP-Adresse ihres Geräts verbergen möchten, und können in böswilliger Absicht eingesetzt werden.
 
@@ -50,7 +50,7 @@ Bei dieser Art von Risikoereignis werden Benutzer identifiziert, die sich erfolg
 Die Anmeldung wird auf dem Identity Protection Dashboard innerhalb von fünf Minuten angezeigt. 
 
 
-###<a name="sign-ins-from-unfamiliar-locations"></a>Anmeldungen von unbekannten Standorten
+###<a name="signins-from-unfamiliar-locations"></a>Anmeldungen von unbekannten Standorten
 
 Beim Risiko vom Typ „Unbekannter Standort“ handelt es sich um ein Verfahren zur Echtzeitauswertung von Anmeldungen, bei dem die letzten Standorte (IP, Breiten-/Längengrad und ASN) berücksichtigt werden, um neue oder unbekannte Orte zu ermitteln. Das System speichert vorherige IPs, Breiten-/Längengrad und ASNs eines Benutzers und stuft diese als „vertraute“ Orte ein. Ein Anmeldestandort wird als nicht vertraut angesehen, wenn er nicht mit einem der vertrauten Standorte identisch ist.
 
@@ -138,7 +138,7 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 <br>
 
  
-##<a name="sign-in-risk"></a>Anmelderisiko
+##<a name="signin-risk"></a>Anmelderisiko
 
  
 **Führen Sie die folgenden Schritte aus, um das Anmelderisiko zu testen:**

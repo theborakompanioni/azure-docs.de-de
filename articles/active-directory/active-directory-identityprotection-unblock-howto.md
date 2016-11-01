@@ -4,7 +4,7 @@
     services="active-directory"
     keywords="azure active directory identity protection, unblock user"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -18,7 +18,7 @@
     ms.author="markvi"/>
 
 
-#<a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection - How to unblock users
+#<a name="azure-active-directory-identity-protection-how-to-unblock-users"></a>Azure Active Directory Identity Protection - How to unblock users
 
 With Azure Active Directory Identity Protection, you can configure policies to block users if the configured conditions are satisfied. Typically, a blocked user contacts help desk to become unblocked. This topics explains the steps you can perform to unblock a blocked user.
 
@@ -41,7 +41,7 @@ A user that is blocked by:
 - A user risk policy is also known as an account at risk
 
  
-## <a name="unblocking-suspicious-sign-ins"></a>Unblocking suspicious sign-ins
+## <a name="unblocking-suspicious-signins"></a>Unblocking suspicious sign-ins
 
 To unblock a suspicious sign-in, you have the following options:
 

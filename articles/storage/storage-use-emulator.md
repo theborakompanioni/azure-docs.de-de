@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="09/07/2016" 
+    ms.date="10/31/2016" 
     ms.author="tamram"/>
 
 
@@ -130,7 +130,7 @@ Die Dienstendpunkte für den Speicheremulator sind:
     Queue Service: http://127.0.0.1:10001/<account-name>/<resource-path>
     Table Service: http://127.0.0.1:10002/<account-name>/<resource-path>
 
-### <a name="addressing-the-account-secondary-with-ra-grs"></a>Adressieren des sekundären Kontos mit RA-GRS
+### <a name="addressing-the-account-secondary-with-ragrs"></a>Adressieren des sekundären Kontos mit RA-GRS
 
 Ab Version 3.1 unterstützt das Speicheremulatorkonto georedundante Replikation mit Lesezugriff (Read-Access Geo-Redundant Replication, RA-GRS). Für Speicherressourcen in der Cloud und im lokalen Emulator können Sie auf den sekundären Speicherort zugreifen, indem Sie "-secondary" an den Kontonamen anfügen. Beispielsweise kann die folgende Adresse für den Zugriff auf ein Blob mithilfe des sekundären Speicherorts mit Lesezugriff verwendet werden:
 
@@ -138,7 +138,7 @@ Ab Version 3.1 unterstützt das Speicheremulatorkonto georedundante Replikation 
 
 > [AZURE.NOTE] Für programmgesteuerten Zugriff auf den sekundären Speicherort mit dem Speicheremulator verwenden Sie die Speicherclientbibliothek für .NET, Version 3.2 oder höher. Weitere Informationen finden Sie in der [Microsoft Azure-Speicherclientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) .
 
-## <a name="storage-emulator-command-line-tool-reference"></a>Referenz zum Speicheremulator-Befehlszeilentool
+## <a name="storage-emulator-commandline-tool-reference"></a>Referenz zum Speicheremulator-Befehlszeilentool
 
 Ab Version 3.0 wird beim Start des Speicheremulators ein Befehlszeilenfenster angezeigt. In diesem Befehlszeilenfenster können Sie den Emulator starten und beenden, den Status abfragen und weitere Operationen ausführen.
 
@@ -206,11 +206,11 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 ## <a name="storage-emulator-release-notes"></a>Speicheremulator – Versionshinweise
 
-### <a name="version-4.5"></a>Version 4.5
+### <a name="version-45"></a>Version 4.5
 
 - Korrektur eines Fehlers, das verursacht hat, dass Initialisierung und Installation des Speicheremulators misslingen, wenn die Sicherungsdatenbank umbenannt wurde.
 
-### <a name="version-4.4"></a>Version 4.4
+### <a name="version-44"></a>Version 4.4
 
 - Der Speicheremulator unterstützt nun Version 2015-12-11 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
 
@@ -220,15 +220,15 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 - Ein Fehler, aufgrund dessen die Mindest- und Höchstwerte für „DateTime“ manchmal in der falschen Zeitzone gemeldet wurden, wurde behoben.
 
-### <a name="version-4.3"></a>Version 4.3
+### <a name="version-43"></a>Version 4.3
 
 - Der Speicheremulator unterstützt nun Version 2015-07-08 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
 
-### <a name="version-4.2"></a>Version 4.2
+### <a name="version-42"></a>Version 4.2
 
 - Der Speicheremulator unterstützt nun Version 2015-04-05 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
 
-### <a name="version-4.1"></a>Version 4.1
+### <a name="version-41"></a>Version 4.1
 
 - Der Speicheremulator unterstützt nun Version 2015-02-21 der Speicherdienste auf Blob-, Warteschlangen- und Dienstendpunkten, mit Ausnahme der neuen Anfügeblob-Funktionen. 
 
@@ -236,19 +236,19 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 - Es wurde ein Fehler behoben, bei der eine Racebedingung während der gleichzeitigen Zusammenführungsvorgänge zu falschen Tabellenentitätsdaten geführt hat.
 
-### <a name="version-4.0"></a>Version 4.0
+### <a name="version-40"></a>Version 4.0
 
 - Die ausführbare Datei des Speicheremulators wurde in *AzureStorageEmulator.exe*umbenannt.
 
-### <a name="version-3.2"></a>Version 3.2
+### <a name="version-32"></a>Version 3.2
 
 - Der Speicheremulator unterstützt nun Version 2014-02-14 der Speicherdienste auf Blob-, Warteschlangen- und Dienstendpunkten. Beachten Sie, dass Endpunkte für den Dateidienst im Speicheremulator zurzeit nicht unterstützt werden. Ausführliche Informationen über die Version 2014-02-14 finden Sie unter [Versionsverwaltung für den Blob-Dienst, den Warteschlangendienst und den Tabellendienst in Microsoft Azure](https://msdn.microsoft.com/library/azure/dd894041.aspx) .
 
-### <a name="version-3.1"></a>Version 3.1
+### <a name="version-31"></a>Version 3.1
 
 - Lesezugriff auf den geografisch redundanten Speicher (RA-GRS) wird nun im Speicheremulator unterstützt. Die API-Vorgänge "Get Blob Service Stats", "Get Queue Service Stats" und "Get Table Service Stats" werden für das sekundäre Konto unterstützt. Sie geben immer den Wert des LastSyncTime-Antwortelements als aktuelle Uhrzeit der zugrunde liegenden SQL-Datenbank zurück. Für programmgesteuerten Zugriff auf den sekundären Speicherort mit dem Speicheremulator verwenden Sie die Speicherclientbibliothek für .NET, Version 3.2 oder höher. In der Referenz zur Microsoft Azure Storage-Clientbibliothek für .NET finden Sie weitere Einzelheiten.
 
-### <a name="version-3.0"></a>Version 3.0
+### <a name="version-30"></a>Version 3.0
 
 - Der Azure-Speicheremulator wird nicht mehr im gleichen Paket wie der Serveremulator ausgeliefert.
 

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/30/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="jrj;barbkess"/>
 
 
 # <a name="distributing-tables-in-sql-data-warehouse"></a>Distributing tables in SQL Data Warehouse
@@ -209,7 +209,7 @@ Distributing data is a matter of finding the right balance between minimizing da
 
 The typical way to resolve data skew is to re-create the table with a different distribution column. Since there is no way to change the distribution column on an existing table, the way to change the distribution of a table it to recreate it with a [CTAS][].  Here are two examples of how resolve data skew:
 
-### <a name="example-1:-re-create-the-table-with-a-new-distribution-column"></a>Example 1: Re-create the table with a new distribution column
+### <a name="example-1-recreate-the-table-with-a-new-distribution-column"></a>Example 1: Re-create the table with a new distribution column
 
 This example uses [CTAS][] to re-create a table with a different hash distribution column. 
 
@@ -249,7 +249,7 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-### <a name="example-2:-re-create-the-table-using-round-robin-distribution"></a>Example 2: Re-create the table using round robin distribution
+### <a name="example-2-recreate-the-table-using-round-robin-distribution"></a>Example 2: Re-create the table using round robin distribution
 
 This example uses [CTAS][] to re-create a table with round robin instead of a hash distribution. This change will produce even data distribution at the cost of increased data movement. 
 

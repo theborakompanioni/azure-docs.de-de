@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/13/2016"
-   ms.author="barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-(powershell)"></a>Manage compute power in Azure SQL Data Warehouse (PowerShell)
+# <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>Manage compute power in Azure SQL Data Warehouse (PowerShell)
 
 > [AZURE.SELECTOR]
 - [Overview](sql-data-warehouse-manage-compute-overview.md)

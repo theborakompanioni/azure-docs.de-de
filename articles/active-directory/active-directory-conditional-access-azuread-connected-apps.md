@@ -3,7 +3,7 @@
     description="Der bedingte Zugriff in Azure AD ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für die mehrstufige Authentifizierung und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören. "
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -32,7 +32,7 @@ Diese Funktionen stehen Kunden zur Verfügung, die eine Azure Active Directory P
 
 * Verbundmandanten erfordern die Aktivierung der mehrstufigen Authentifizierung.
 
-## <a name="configure-per-application-access-rules"></a>Konfigurieren anwendungsspezifischer Zugriffsregeln
+## <a name="configure-perapplication-access-rules"></a>Konfigurieren anwendungsspezifischer Zugriffsregeln
 
 Dieser Abschnitt beschreibt die Konfiguration anwendungsspezifischer Zugriffsregeln.
 
@@ -78,7 +78,7 @@ Die folgenden Optionen werden unterstützt:
 
 Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung zugreift, die OAuth 2.0, OpenID Connect, SAML oder WS-Federation verwendet. Darüber hinaus werden Zugriffsregeln ausgewertet, wenn von OAuth 2.0 und OpenID Connect ein Aktualisierungstoken zum Abrufen eines Zugriffstokens verwendet wird. Wenn die Richtlinienauswertung bei Verwendung eines Aktualisierungstokens nicht erfolgreich ist, wird der Fehler **invalid_grant** zurückgegeben. Dies bedeutet, dass sich der Benutzer erneut beim Client authentifizieren muss.
 
-###<a name="configure-federation-services-to-provide-multi-factor-authentication"></a>Konfigurieren von Verbunddiensten für die Bereitstellung der mehrstufigen Authentifizierung
+###<a name="configure-federation-services-to-provide-multifactor-authentication"></a>Konfigurieren von Verbunddiensten für die Bereitstellung der mehrstufigen Authentifizierung
 
 Für Verbundmandanten kann MFA von Azure Active Directory oder vom lokalen AD FS-Server durchgeführt werden.
 

@@ -3,7 +3,7 @@
     description="Erfahren Sie, wie Sie durch das Aktivieren von Benachrichtigungen zur Kontobereitstellung sicherstellen können, dass Sie zu Problemen benachrichtigt werden, die sich auf die Benutzerbereitstellung beziehen und Ihr Eingreifen erfordern."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 

@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/10/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
 
@@ -45,11 +45,11 @@ Für dieses Tutorial ist Folgendes erforderlich:
     ![Azure-Speichertools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
 
-## <a name="step-1:-add-sample-data-to-azure-blob-storage"></a>Schritt 1: Hinzufügen von Beispieldaten zum Azure-Blobspeicher
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Schritt 1: Hinzufügen von Beispieldaten zum Azure-Blobspeicher
 
 Um Daten laden zu können, müssen wir einige Beispieldaten in einen Azure-Blobspeicher einfügen. In diesem Schritt füllen wir einen Azure-Blobspeicher mit Beispieldaten. Wir werden diese Beispieldaten später mit PolyBase in die SQL Data Warehouse-Datenbank laden.
 
-### <a name="a.-prepare-a-sample-text-file"></a>A: Vorbereiten einer Beispieltextdatei
+### <a name="a-prepare-a-sample-text-file"></a>A: Vorbereiten einer Beispieltextdatei
 
 So bereiten Sie eine Beispieltextdatei vor
 
@@ -70,7 +70,7 @@ So bereiten Sie eine Beispieltextdatei vor
 20150101,1,3
 ```
 
-### <a name="b.-find-your-blob-service-endpoint"></a>B. Suchen des Endpunkts Ihres Blobdiensts
+### <a name="b-find-your-blob-service-endpoint"></a>B. Suchen des Endpunkts Ihres Blobdiensts
 
 So suchen Sie den Endpunkt Ihres Blobdiensts
 
@@ -84,7 +84,7 @@ So suchen Sie den Endpunkt Ihres Blobdiensts
 
     ![Endpunkt des Blobdiensts](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
-### <a name="c.-find-your-azure-storage-key"></a>C. Suchen des Azure-Speicherschlüssels
+### <a name="c-find-your-azure-storage-key"></a>C. Suchen des Azure-Speicherschlüssels
 
 So suchen Sie den Azure-Speicherschlüssel
 
@@ -95,7 +95,7 @@ So suchen Sie den Azure-Speicherschlüssel
 
     ![Azure-Speicherschlüssel kopieren](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d.-copy-the-sample-file-to-azure-blob-storage"></a>D. Kopieren der Beispieldatei in den Azure-Blobspeicher
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. Kopieren der Beispieldatei in den Azure-Blobspeicher
 
 So kopieren Sie Ihre Daten in den Azure-Blobspeicher
 
@@ -113,7 +113,7 @@ So kopieren Sie Ihre Daten in den Azure-Blobspeicher
 
 Weitere Informationen finden Sie unter [Erste Schritte mit dem Befehlszeilenprogramm AzCopy][].
 
-### <a name="e.-explore-your-blob-storage-container"></a>E. Untersuchen des Blobspeichercontainers
+### <a name="e-explore-your-blob-storage-container"></a>E. Untersuchen des Blobspeichercontainers
 
 So zeigen Sie die Datei an, die Sie in den Blobspeicher hochgeladen haben
 
@@ -126,7 +126,7 @@ So zeigen Sie die Datei an, die Sie in den Blobspeicher hochgeladen haben
     ![Azure-Speicherblob anzeigen](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
 
-## <a name="step-2:-create-an-external-table-for-the-sample-data"></a>Schritt 2: Erstellen einer externen Tabelle für die Beispieldaten
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>Schritt 2: Erstellen einer externen Tabelle für die Beispieldaten
 
 In diesem Abschnitt erstellen wir eine externe Tabelle, die die Beispieldaten definiert.
 
@@ -216,7 +216,7 @@ Im SQL Server-Objekt-Explorer in Visual Studio sehen Sie das externe Dateiformat
 
 ![Externe Tabelle anzeigen](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
-## <a name="step-3:-load-data-into-sql-data-warehouse"></a>Schritt 3: Laden von Daten in SQL Data Warehouse
+## <a name="step-3-load-data-into-sql-data-warehouse"></a>Schritt 3: Laden von Daten in SQL Data Warehouse
 
 Sobald die externe Tabelle erstellt wurde, können Sie die Daten in eine neue Tabelle laden oder in eine vorhandene Tabelle einfügen.
 
@@ -236,7 +236,7 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-## <a name="step-4:-create-statistics-on-your-newly-loaded-data"></a>Schritt 4: Erstellen von Statistiken für die neu geladenen Daten
+## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Schritt 4: Erstellen von Statistiken für die neu geladenen Daten
 
 SQL Data Warehouse ermöglicht keine automatische Erstellung oder automatische Aktualisierung von Statistiken. Um eine hohe Abfrageleistung zu erzielen, ist es daher wichtig, nach dem ersten Laden Statistiken für jede Spalte der einzelnen Tabelle zu erstellen. Es ist auch wichtig, Statistiken nach wesentlichen Änderungen an den Daten zu aktualisieren.
 

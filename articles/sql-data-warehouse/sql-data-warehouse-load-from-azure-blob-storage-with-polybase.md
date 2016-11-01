@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/25/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
 
-# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-(polybase)"></a>Load data from Azure blob storage into SQL Data Warehouse (PolyBase)
+# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Load data from Azure blob storage into SQL Data Warehouse (PolyBase)
 
 > [AZURE.SELECTOR]
 - [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
@@ -38,11 +38,11 @@ In this tutorial you will:
 ## <a name="before-you-begin"></a>Before you begin
 To run this tutorial, you need an Azure account that already has a SQL Data Warehouse database. If you don't already have this, see [Create a SQL Data Warehouse][].
 
-## <a name="1.-configure-the-data-source"></a>1. Configure the data source
+## <a name="1-configure-the-data-source"></a>1. Configure the data source
 
 PolyBase uses T-SQL external objects to define the location and attributes of the external data. The external object definitions are stored in SQL Data Warehouse. The data itself is stored externally.
 
-### <a name="1.1.-create-a-credential"></a>1.1. Create a credential
+### <a name="11-create-a-credential"></a>1.1. Create a credential
 
 **Skip this step** if you are loading the Contoso public data. You don't need secure access to the public data since it is already accessible to anyone.
 
@@ -84,7 +84,7 @@ WITH (
 
 Skip to step 2.
 
-### <a name="1.2.-create-the-external-data-source"></a>1.2. Create the external data source
+### <a name="12-create-the-external-data-source"></a>1.2. Create the external data source
 
 Use this [CREATE EXTERNAL DATA SOURCE][] command to store the location of the data, and the type of data. 
 
@@ -99,7 +99,7 @@ WITH
 
 > [AZURE.IMPORTANT] If you choose to make your azure blob storage containers public, remember that as the data owner you will be charged for data egress charges when data leaves the data center. 
 
-## <a name="2.-configure-data-format"></a>2. Configure data format
+## <a name="2-configure-data-format"></a>2. Configure data format
 
 The data is stored in text files in Azure blob storage, and each field is separated with a delimiter. Run this [CREATE EXTERNAL FILE FORMAT][] command to specify the format of the data in the text files. The Contoso data is uncompressed and pipe delimited.
 
@@ -115,11 +115,11 @@ WITH
 );
 ``` 
 
-## <a name="3.-create-the-external-tables"></a>3. Create the external tables
+## <a name="3-create-the-external-tables"></a>3. Create the external tables
 
 Now that you have specified the data source and file format, you are ready to create the external tables. 
 
-### <a name="3.1.-create-a-schema-for-the-data."></a>3.1. Create a schema for the data. 
+### <a name="31-create-a-schema-for-the-data"></a>3.1. Create a schema for the data. 
 
 To create a place to store the Contoso data in your database, create a schema.
 
@@ -128,7 +128,7 @@ CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="3.2.-create-the-external-tables."></a>3.2. Create the external tables. 
+### <a name="32-create-the-external-tables"></a>3.2. Create the external tables. 
 
 Run this script to create the DimProduct and FactOnlineSales external tables. All we are doing here is defining column names and data types, and binding them to the location and format of the Azure blob storage files. The definition is stored in SQL Data Warehouse and the data is still in the Azure Storage Blob.
 
@@ -218,11 +218,11 @@ WITH
 ;
 ```
 
-## <a name="4.-load-the-data"></a>4. Load the data
+## <a name="4-load-the-data"></a>4. Load the data
 There's different ways to access external data.  You can query data directly from the external table, load the data into new database tables, or add external data to existing database tables.  
 
 
-### <a name="4.1.-create-a-new-schema"></a>4.1. Create a new schema
+### <a name="41-create-a-new-schema"></a>4.1. Create a new schema
 
 CTAS creates a new table that contains data.  First, create a schema for the contoso data.
 
@@ -231,7 +231,7 @@ CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="4.2.-load-the-data-into-new-tables"></a>4.2. Load the data into new tables
+### <a name="42-load-the-data-into-new-tables"></a>4.2. Load the data into new tables
 
 To load data from Azure blob storage and save it in a table inside of your database, use the [CREATE TABLE AS SELECT (Transact-SQL)][] statement. Loading with CTAS leverages the strongly typed external tables you have just created.To load the data into new tables, use one [CTAS][] statement per table. 
 
@@ -248,7 +248,7 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="4.3-track-the-load-progress"></a>4.3 Track the load progress
+### <a name="43-track-the-load-progress"></a>4.3 Track the load progress
 
 You can track the progress of your load using dynamic management views (DMVs). 
 
@@ -285,7 +285,7 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5.-optimize-columnstore-compression"></a>5. Optimize columnstore compression
+## <a name="5-optimize-columnstore-compression"></a>5. Optimize columnstore compression
 
 By default, SQL Data Warehouse stores the table as a clustered columnstore index. After a load completes, some of the data rows might not be compressed into the columnstore.  There's a variety of reasons why this can happen. To learn more, see [manage columnstore indexes][].
 
@@ -301,7 +301,7 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 For more information on maintaining columnstore indexes, see the [manage columnstore indexes][] article.
 
-## <a name="6.-optimize-statistics"></a>6. Optimize statistics
+## <a name="6-optimize-statistics"></a>6. Optimize statistics
 
 It is best to create single-column statistics immediately after a load. There are some choices for statistics. For example, if you create single-column statistics on every column it might take a long time to rebuild all the statistics. If you know certain columns are not going to be in query predicates, you can skip creating statistics on those columns.
 
@@ -352,7 +352,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_PromotionKey] ON [cso].[FactOnlineSa
 CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]([StoreKey]);
 ```
 
-## <a name="achievement-unlocked!"></a>Achievement unlocked!
+## <a name="achievement-unlocked"></a>Achievement unlocked!
 
 You have successfully loaded public data into Azure SQL Data Warehouse. Great job!
 

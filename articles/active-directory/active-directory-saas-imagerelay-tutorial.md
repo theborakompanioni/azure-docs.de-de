@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="08/15/2016"
+    ms.date="10/31/2016"
     ms.author="jeedes"/>
 
 
 
-# <a name="tutorial:-azure-active-directory-integration-with-imagerelay"></a>Tutorial: Azure Active Directory integration with ImageRelay
+# <a name="tutorial-azure-active-directory-integration-with-imagerelay"></a>Tutorial: Azure Active Directory integration with ImageRelay
 
 The objective of this tutorial is to show you how to integrate ImageRelay with Azure Active Directory (Azure AD).  
 Integrating ImageRelay with Azure AD provides you with the following benefits:
@@ -86,7 +86,7 @@ To configure the integration of ImageRelay into Azure AD, you need to add ImageR
 
     ![Creating an Azure AD test user](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+##  <a name="configuring-and-testing-azure-ad-single-signon"></a>Configuring and testing Azure AD single sign-on
 The objective of this section is to show you how to configure and test Azure AD single sign-on with ImageRelay based on a test user called "Britta Simon".
 
 For single sign-on to work, Azure AD needs a user account that represents the related user in ImageRelay.  In other words, a link relationship between an Azure AD user and the related user in ImageRelay needs to be established.  
@@ -100,7 +100,7 @@ To configure and test Azure AD single sign-on with ImageRelay, you need to compl
 5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### <a name="configuring-azure-ad-single-signon"></a>Configuring Azure AD Single Sign-On
 
 The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your ImageRelay application.
 
@@ -299,7 +299,7 @@ The objective of this section is to enabling Britta Simon to use Azure single si
     ![Assign User][205]
 
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+### <a name="testing-single-signon"></a>Testing Single Sign-On
 
 The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
 When you click the ImageRelay tile in the Access Panel, you should get automatically signed-on to your ImageRelay application.

@@ -4,7 +4,7 @@
     services="active-directory"
     keywords="Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -27,7 +27,7 @@ Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die 
 
 Die folgenden Abschnitte bieten Ihnen eine Übersicht der Sicherheitsrisiken, die von Identity Protection gemeldet werden.
 
-## <a name="multi-factor-authentication-registration-not-configured"></a>Multi-Factor Authentication-Registrierung nicht konfiguriert 
+## <a name="multifactor-authentication-registration-not-configured"></a>Multi-Factor Authentication-Registrierung nicht konfiguriert 
 
 Mit diesem Sicherheitsrisiko können Sie die Bereitstellung der Azure Multi-Factor Authentication in Ihrer Organisation besser steuern. 
 

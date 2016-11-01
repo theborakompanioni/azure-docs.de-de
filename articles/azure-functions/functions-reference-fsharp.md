@@ -19,7 +19,7 @@
     ms.author="syclebsc"/>
 
 
-# <a name="azure-functions-f#-developer-reference"></a>Azure Functions F# Developer Reference
+# <a name="azure-functions-f-developer-reference"></a>Azure Functions F# Developer Reference
 
 > [AZURE.SELECTOR]
 - [C# script](../articles/azure-functions/functions-reference-csharp.md)
@@ -30,7 +30,7 @@ F# for Azure Functions is a solution for easily running small pieces of code, or
 
 This article assumes that you've already read the [Azure Functions developer reference](functions-reference.md).
 
-## <a name="how-.fsx-works"></a>How .fsx works
+## <a name="how-fsx-works"></a>How .fsx works
 
 An `.fsx` file is an F# script. It can be thought of as an F# project that's contained in a single file. The file contains both the code for your program (in this case, your Azure Function) and directives for managing dependencies.
 
@@ -190,6 +190,7 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
 
 When Azure Functions executes your code, it processes the source with `COMPILED` defined, so the editor prelude will be ignored.
 
+<a name="package"></a>
 ## <a name="package-management"></a>Package management
 
 To use NuGet packages in an F# function, add a `project.json` file to the the function's folder in the function app's file system. Here is an example `project.json` file that adds a NuGet package reference to `Microsoft.ProjectOxford.Face` version 1.1.0:
@@ -212,7 +213,7 @@ When you upload a `project.json` file, the runtime gets the packages and automat
 
 You may wish to put automatically references assemblies in your editor prelude, to improve your editor's interaction with F# Compile Services.
 
-### <a name="how-to-add-a-`project.json`-file-to-your-azure-function"></a>How to add a `project.json` file to your Azure Function
+### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>How to add a `project.json` file to your Azure Function
 
 1. Begin by making sure your function app is running, which you can do by opening your function in the Azure portal. This also gives access to the streaming logs where package installation output will be displayed.
 
@@ -249,7 +250,7 @@ let Run(timer: TimerInfo, log: TraceWriter) =
     log.Info("Site = " + GetEnvironmentVariable("WEBSITE_SITE_NAME"))
 ```
 
-## <a name="reusing-.fsx-code"></a>Reusing .fsx code
+## <a name="reusing-fsx-code"></a>Reusing .fsx code
 
 You can use code from other `.fsx` files by using a `#load` directive. For example:
 

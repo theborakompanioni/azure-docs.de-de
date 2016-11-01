@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/24/2016"
-   ms.author="nicw;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="nicw;barbkess"/>
 
 
 # <a name="migration-to-premium-storage-details"></a>Migration to Premium Storage Details
@@ -100,10 +100,10 @@ Automatic migrations occur from 6pm – 6am (local time per region) during the f
 | West US             | June 23, 2016                | July 7, 2016                 |
 | West US2            | August 14, 2016              | August 31, 2016              |
 
-## <a name="self-migration-to-premium-storage"></a>Self-migration to Premium Storage
+## <a name="selfmigration-to-premium-storage"></a>Self-migration to Premium Storage
 If you would like to control when your downtime will occur, you can use the following steps to migrate an existing Data Warehouse on Standard Storage to Premium Storage.  If you choose to self-migrate, you must complete the self-migration before the automatic migration begins in that region to avoid any risk of the automatic migration causing a conflict (refer to the [automatic migration schedule][]).
 
-### <a name="self-migration-instructions"></a>Self-migration instructions
+### <a name="selfmigration-instructions"></a>Self-migration instructions
 If you would like to control your downtime, you can self-migrate your Data Warehouse by using backup/restore.  The restore portion of the migration is expected to take around one hour per TB of storage per DW.  If you want to keep the same name once migration is complete, follow the steps for [steps to rename during migration][]. 
 
 1.  [Pause][] your DW which takes an automatic backup
@@ -115,7 +115,7 @@ If you would like to control your downtime, you can self-migrate your Data Wareh
 >   -  Auditing at the Database level needs to be re-enabled
 >   -  Firewall rules at the **Database** level need to be readded.  Firewall rules at the **Server** level are not be impacted.
 
-#### <a name="optional:-steps-to-rename-during-migration"></a>Optional: steps to rename during migration 
+#### <a name="optional-steps-to-rename-during-migration"></a>Optional: steps to rename during migration 
 Two databases on the same logical server cannot have the same name. SQL Data Warehouse now supports the ability to rename a DW.
 
 In this example, imagine that your existing DW on Standard Storage is currently named “MyDW.”

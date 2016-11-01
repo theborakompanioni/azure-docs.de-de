@@ -3,7 +3,7 @@
     description="Durch das Konfigurieren bekannter Netzwerkwerke können Sie vermeiden, dass IP-Adressen Ihrer Organisation in die Berichte „Anmeldungen aus mehreren geografischen Regionen“ und „Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten“ aufgenommen werden." 
     services="active-directory" 
     documentationCenter="" 
-    authors="markusvi" 
+    authors="MarkusVi" 
     manager="femila"  
     editor=""/>
 
@@ -33,7 +33,7 @@ Dies kann in folgenden Fällen geschehen:
 Damit in diesen Fällen keine irreführenden Sicherheitsberichte generiert werden, wird empfohlen, der Liste der öffentlichen IP-Adressen Ihres Unternehmens bekannte IP-Adressbereiche hinzuzufügen.    
 
 
-###<a name="to-add-your-organization’s-public-ip-address-ranges,-perform-the-following-steps:"></a>Führen Sie zum Hinzufügen der öffentlichen IP-Adressbereiche Ihrer Organisation die folgenden Schritte aus: 
+###<a name="to-add-your-organizations-public-ip-address-ranges-perform-the-following-steps"></a>Führen Sie zum Hinzufügen der öffentlichen IP-Adressbereiche Ihrer Organisation die folgenden Schritte aus: 
 
 1.  Melden Sie sich beim [Azure-Verwaltungsportal](https://manage.windowsazure.com)an.
 

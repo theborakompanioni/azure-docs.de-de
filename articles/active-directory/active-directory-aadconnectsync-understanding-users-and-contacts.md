@@ -3,7 +3,7 @@
     description="Erläutert Benutzer und Kontakte in der Azure AD Connect-Synchronisierung."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -18,7 +18,7 @@
 
 
 
-# <a name="azure-ad-connect-sync:-understanding-users-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern und Kontakten
+# <a name="azure-ad-connect-sync-understanding-users-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern und Kontakten
 
 Es gibt verschiedene Gründe, weshalb Sie möglicherweise über mehrere Active Directory-Gesamtstrukturen verfügen, und es gibt eine Reihe unterschiedlicher Bereitstellungstopologien. Häufige Modelle umfassen eine Kontoressourcenbereitstellung und per GAL synchronisierte Gesamtstrukturen nach einer Unternehmensfusion oder -übernahme. Es gibt zwar reine Modelle, Hybridmodelle sind jedoch ebenfalls häufig vorhanden. Die Standardkonfiguration der Azure AD Connect-Synchronisierung geht von keinem bestimmten Modell aus. Es können jedoch auf Basis des im Installationshandbuch ausgewählten Benutzerabgleichs unterschiedliche Verhaltensweisen beobachtet werden.
 

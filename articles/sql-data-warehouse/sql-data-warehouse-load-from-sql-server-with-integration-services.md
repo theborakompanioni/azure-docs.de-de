@@ -3,8 +3,8 @@
    description="Shows you how to create a SQL Server Integration Services (SSIS) package to move data from a wide variety of data sources to SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="lodipalm"
-   manager="barbkess"
+   authors="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
-   ms.author="lodipalm;sonyama;barbkess"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
-# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-(ssis)"></a>Load data from SQL Server into Azure SQL Data Warehouse (SSIS)
+# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-ssis"></a>Load data from SQL Server into Azure SQL Data Warehouse (SSIS)
 
 > [AZURE.SELECTOR]
 - [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
@@ -59,7 +59,7 @@ To step through this tutorial, you need:
 5. **A SQL Data Warehouse database and permissions**. This tutorial connects to a SQL Data Warehouse instance and loads data into it. You have to have permissions to create a table and to load data.
 6. **A firewall rule**. You have to create a firewall rule on SQL Data Warehouse with the IP address of your local computer before you can upload data to the SQL Data Warehouse.
 
-## <a name="step-1:-create-a-new-integration-services-project"></a>Step 1: Create a new Integration Services project
+## <a name="step-1-create-a-new-integration-services-project"></a>Step 1: Create a new Integration Services project
 
 1. Launch Visual Studio 2015.
 2. On the **File** menu, select **New | Project**.
@@ -74,7 +74,7 @@ Visual Studio opens and creates a new Integration Services (SSIS) project. Then 
 
     ![][01]
 
-## <a name="step-2:-create-the-basic-data-flow"></a>Step 2: Create the basic data flow
+## <a name="step-2-create-the-basic-data-flow"></a>Step 2: Create the basic data flow
 
 1. Drag a Data Flow Task from the Toolbox to the center of the design surface (on the **Control Flow** tab).
 
@@ -86,7 +86,7 @@ Visual Studio opens and creates a new Integration Services (SSIS) project. Then 
 
     ![][09]
 
-## <a name="step-3:-configure-the-source-adapter"></a>Step 3: Configure the source adapter
+## <a name="step-3-configure-the-source-adapter"></a>Step 3: Configure the source adapter
 
 1. Double-click the source adapter to open the **ADO.NET Source Editor**.
 
@@ -125,7 +125,7 @@ Visual Studio opens and creates a new Integration Services (SSIS) project. Then 
 8. In the **Preview Query Results** dialog box, click **Close** to return to the **ADO.NET Source Editor**.
 9. In the **ADO.NET Source Editor**, click **OK** to finish configuring the data source.
 
-## <a name="step-4:-connect-the-source-adapter-to-the-destination-adapter"></a>Step 4: Connect the source adapter to the destination adapter
+## <a name="step-4-connect-the-source-adapter-to-the-destination-adapter"></a>Step 4: Connect the source adapter to the destination adapter
 
 1. Select the source adapter on the design surface.
 2. Select the blue arrow that extends from the source adapter and drag it to the destination editor until it snaps into place.
@@ -134,7 +134,7 @@ Visual Studio opens and creates a new Integration Services (SSIS) project. Then 
 
     In a typical SSIS package, you use a number of other components from the SSIS Toolbox in between the source and the destination to restructure, transform, and cleanse your data as it passes through the SSIS data flow. To keep this example as simple as possible, we’re connecting the source directly to the destination.
 
-## <a name="step-5:-configure-the-destination-adapter"></a>Step 5: Configure the destination adapter
+## <a name="step-5-configure-the-destination-adapter"></a>Step 5: Configure the destination adapter
 
 1. Double-click the destination adapter to open the **ADO.NET Destination Editor**.
 
@@ -171,7 +171,7 @@ Visual Studio opens and creates a new Integration Services (SSIS) project. Then 
 
 9. Click **OK** to finish configuring the data source.
 
-## <a name="step-6:-run-the-package-to-load-the-data"></a>Step 6: Run the package to load the data
+## <a name="step-6-run-the-package-to-load-the-data"></a>Step 6: Run the package to load the data
 
 Run the package by clicking the **Start** button on the toolbar or by selecting one of the **Run** options on the **Debug** menu.
 

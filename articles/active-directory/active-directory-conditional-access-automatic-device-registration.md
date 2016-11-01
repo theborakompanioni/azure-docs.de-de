@@ -3,7 +3,7 @@
     description="IT-Administratoren können Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -17,7 +17,7 @@
     ms.author="markvi"/>
 
 
-# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domain-joined-devices"></a>Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte
+# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domainjoined-devices"></a>Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte
 
 Als IT-Administrator können Sie Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren. Dies ist hilfreich, wenn Sie gerätebasierte Richtlinien für den bedingten Zugriff auf Office 365-Anwendungen oder Anwendungen, die lokal von AD FS verwaltet werden, konfiguriert haben. Weitere Informationen über die Geräteregistrierungsszenarien finden Sie in der [Übersicht zur Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md).
 
@@ -82,7 +82,7 @@ Wenn Sie beispielsweise in Ihrer Organisation zwei UPN-Suffixe namens @contoso.c
 | enterpriseregistration.contoso.com        | CNAME | enterpriseregistration.windows.net |
 | enterpriseregistration.region.contoso.com | CNAME | enterpriseregistration.windows.net |
 
-##<a name="configure-automatic-device-registration-for-windows-7-and-windows-8.1-domain-joined-devices"></a>Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7- und Windows 8.1-Geräte
+##<a name="configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices"></a>Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7- und Windows 8.1-Geräte
 
 Konfigurieren Sie die automatische Geräteregistrierung für Ihre in eine Domäne eingebundene Windows 7- und Windows 8.1-Geräte anhand der folgenden Links. Stellen Sie sicher, dass Sie die oben genannten Voraussetzungen abgeschlossen haben, bevor Sie fortfahren.
 

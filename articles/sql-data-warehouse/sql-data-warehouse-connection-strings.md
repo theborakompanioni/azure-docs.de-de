@@ -3,8 +3,8 @@
    description="Verbindungszeichenfolgen und Treiber für SQL Data Warehouse"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
+   authors="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/24/2016"
-   ms.author="sonyama;barbkess"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
 
@@ -22,7 +22,7 @@
 
 Sie können über verschiedene Anwendungsprotokolle eine Verbindung mit SQL Data Warehouse herstellen, z.B. über [ADO.NET][], [ODBC][], [PHP][] und [JDBC][]. Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt.  Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden.  Um die Verbindungszeichenfolge über das Azure-Portal zu erstellen, navigieren Sie zum Blatt Ihrer Datenbank, und klicken Sie unter *Zusammenfassung* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
 
-## <a name="sample-ado.net-connection-string"></a>Beispiel-Verbindungszeichenfolge für ADO.NET
+## <a name="sample-adonet-connection-string"></a>Beispiel-Verbindungszeichenfolge für ADO.NET
 
 ```C#
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;

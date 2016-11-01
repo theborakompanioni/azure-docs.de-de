@@ -3,7 +3,7 @@
    description="Lists the various available reports for Azure Active Directory preview"
    services="active-directory"
    documentationCenter=""
-   authors="markusvi"
+   authors="MarkusVi"
    manager="femila"
    editor=""/>
 
@@ -17,7 +17,7 @@
    ms.author="markvi"/>
 
 
-# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory reporting - preview
+# <a name="azure-active-directory-reporting-preview"></a>Azure Active Directory reporting - preview
 
 > [AZURE.SELECTOR]
 - [Azure portal](active-directory-reporting-azure-portal.md)
@@ -35,9 +35,9 @@ There are two main areas of reporting:
 
 Depending on the scope of the data you are looking for, you can access these reports either by clicking **Users and groups** or **Enterprise applications** in the services list in the [Azure portal](https://portal.azure.com).
 
-## <a name="sign-in-activities"></a>Sign-in activities
+## <a name="signin-activities"></a>Sign-in activities
 
-### <a name="user-sign-in-activities"></a>User sign-in activities
+### <a name="user-signin-activities"></a>User sign-in activities
 
 With the information provided by the user sign-in report, you find answers to questions such as:
 
@@ -111,7 +111,7 @@ By using the column chooser, you can select the data fields you want to display.
 
 
 
-### <a name="filtering-sign-ins"></a>Filtering sign-ins
+### <a name="filtering-signins"></a>Filtering sign-ins
 
 You can filter sign-ins by a time interval to limit the amount of displayed data.
 

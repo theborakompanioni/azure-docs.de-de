@@ -3,7 +3,7 @@
     description="In diesem Thema werden die Schritte beschrieben, die Sie ausführen müssen, um den erforderlichen Port auf den Computern mit dem Cloud App Discovery-Agent festzulegen." 
     services="active-directory" 
     documentationCenter="" 
-    authors="markusvi" 
+    authors="MarkusVi" 
     manager="femila"/>
 
 <tags 

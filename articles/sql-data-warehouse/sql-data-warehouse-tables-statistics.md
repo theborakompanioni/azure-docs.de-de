@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="jrj;barbkess"/>
 
 
 # <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Managing statistics on tables in SQL Data Warehouse
@@ -38,7 +38,7 @@ The process of creating and updating statistics is currently a manual process, b
 
  Creating sampled statistics on every column is an easy way to get started with statistics.  Since it is equally important to keep statistics up-to-date, a conservative approach may be to update your statistics daily or after each load. There are always trade-offs between performance and the cost to create and update statistics.  If you find it is taking too long to maintain all of your statistics, you may want to try to be more selective about which columns have statistics or which columns need frequent updating.  For example, you might want to update date columns daily, as new values may be added rather than after every load. Again, you will gain the most benefit by having statistics on columns involved in JOINs, GROUP BY, HAVING and WHERE clauses.  If you have a table with a lot of columns which are only used in the SELECT clause, statistics on these columns may not help, and spending a little more effort to identify only the columns where statistics will help, can reduce the time to maintain your statistics.
 
-## <a name="multi-column-statistics"></a>Multi-column statistics
+## <a name="multicolumn-statistics"></a>Multi-column statistics
 
 In addition to creating statistics on single columns, you may find that your queries will benefit from multi-column statistics.  Multi-column statistics are statistics created on a list of columns.  They include single column statistics on the first column in the list, plus some cross-column correlation information called densities.  For example, if you have a table that joins to another on two columns, you may find that SQL Data Warehouse can better optimize the plan if it understands the relationship between two columns.   Multi-column statistics can improve query performance for some operations such as composite joins and group by.
 
@@ -109,11 +109,11 @@ Some guiding principles are provided below for updating your statistics during t
 
 For further explanation, see  [Cardinality Estimation][] on MSDN.
 
-## <a name="examples:-create-statistics"></a>Examples: Create statistics
+## <a name="examples-create-statistics"></a>Examples: Create statistics
 
 These examples show how to use various options for creating statistics. The options that you use for each column depend on the characteristics of your data and how the column will be used in queries.
 
-### <a name="a.-create-single-column-statistics-with-default-options"></a>A. Create single-column statistics with default options
+### <a name="a-create-singlecolumn-statistics-with-default-options"></a>A. Create single-column statistics with default options
 
 To create statistics on a column, simply provide a name for the statistics object and the name of the column.
 
@@ -129,7 +129,7 @@ For example:
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
-### <a name="b.-create-single-column-statistics-by-examining-every-row"></a>B. Create single-column statistics by examining every row
+### <a name="b-create-singlecolumn-statistics-by-examining-every-row"></a>B. Create single-column statistics by examining every row
 
 The default sampling rate of 20 percent is sufficient for most situations. However, you can adjust the sampling rate.
 
@@ -145,7 +145,7 @@ For example:
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
-### <a name="c.-create-single-column-statistics-by-specifying-the-sample-size"></a>C. Create single-column statistics by specifying the sample size
+### <a name="c-create-singlecolumn-statistics-by-specifying-the-sample-size"></a>C. Create single-column statistics by specifying the sample size
 
 Alternatively, you can specify the sample size as a percent:
 
@@ -153,7 +153,7 @@ Alternatively, you can specify the sample size as a percent:
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
-### <a name="d.-create-single-column-statistics-on-only-some-of-the-rows"></a>D. Create single-column statistics on only some of the rows
+### <a name="d-create-singlecolumn-statistics-on-only-some-of-the-rows"></a>D. Create single-column statistics on only some of the rows
 
 Another option, you can create statistics on a portion of the rows in your table. This is called a filtered statistic.
 
@@ -167,7 +167,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 
 > [AZURE.NOTE] For the query optimizer to consider using filtered statistics when it chooses the distributed query plan, the query must fit inside the definition of the statistics object. Using the previous example, the query's where clause needs to specify col1 values between 2000101 and 20001231.
 
-### <a name="e.-create-single-column-statistics-with-all-the-options"></a>E. Create single-column statistics with all the options
+### <a name="e-create-singlecolumn-statistics-with-all-the-options"></a>E. Create single-column statistics with all the options
 
 You can, of course, combine the options together. The example below creates a filtered statistics object with a custom sample size:
 
@@ -177,7 +177,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 For the full reference, see [CREATE STATISTICS][] on MSDN.
 
-### <a name="f.-create-multi-column-statistics"></a>F. Create multi-column statistics
+### <a name="f-create-multicolumn-statistics"></a>F. Create multi-column statistics
 
 To create a multi-column statistics, simply use the previous examples, but specify more columns.
 
@@ -191,7 +191,7 @@ CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category)
 
 Since there is a correlation between *product\_category* and *product\_sub\_category*, a multi-column stat can be useful if these columns are accessed at the same time.
 
-### <a name="g.-create-statistics-on-all-the-columns-in-a-table"></a>G. Create statistics on all the columns in a table
+### <a name="g-create-statistics-on-all-the-columns-in-a-table"></a>G. Create statistics on all the columns in a table
 
 One way to create statistics is to issues CREATE STATISTICS commands after creating the table.
 
@@ -213,7 +213,7 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="h.-use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>H. Use a stored procedure to create statistics on all columns in a database
+### <a name="h-use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>H. Use a stored procedure to create statistics on all columns in a database
 
 SQL Data Warehouse does not have a system stored procedure equivalent to [sp_create_stats][] in SQL Server. This stored procedure creates a single column statistics object on every column of the database that doesn't already have statistics.
 
@@ -306,7 +306,7 @@ To create statistics on all columns in the table with this procedure, simply cal
 prc_sqldw_create_stats;
 ```
 
-## <a name="examples:-update-statistics"></a>Examples: update statistics
+## <a name="examples-update-statistics"></a>Examples: update statistics
 
 To update statistics, you can:
 
@@ -314,7 +314,7 @@ To update statistics, you can:
 2. Update all statistics objects on a table. Specify the name of the table instead of one specific statistics object.
 
 
-### <a name="a.-update-one-specific-statistics-object"></a>A. Update one specific statistics object ###
+### <a name="a-update-one-specific-statistics-object"></a>A. Update one specific statistics object ###
 Use the following syntax to update a specific statistics object:
 
 ```sql
@@ -330,7 +330,7 @@ UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 By updating specific statistics objects, you can minimize the time and resources required to manage statistics. This requires some thought, though, to choose the best statistics objects to update.
 
 
-### <a name="b.-update-all-statistics-on-a-table"></a>B. Update all statistics on a table ###
+### <a name="b-update-all-statistics-on-a-table"></a>B. Update all statistics on a table ###
 This shows a simple method for updating all the statistics objects on a table.
 
 ```sql
@@ -416,7 +416,7 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-show_statistics()-examples"></a>DBCC SHOW_STATISTICS() examples
+## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() examples
 
 DBCC SHOW_STATISTICS() shows the data held within a statistics object. This data comes in three parts.
 
@@ -426,7 +426,7 @@ DBCC SHOW_STATISTICS() shows the data held within a statistics object. This data
 
 The header metadata about the statistics. The histogram displays the distribution of values in the first key column of the statistics object. The density vector measures cross-column correlation. SQLDW computes cardinality estimates with any of the data in the statistics object.
 
-### <a name="show-header,-density,-and-histogram"></a>Show header, density, and histogram
+### <a name="show-header-density-and-histogram"></a>Show header, density, and histogram
 
 This simple example shows all three parts of a statistics object.
 
@@ -440,7 +440,7 @@ For example:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-show_statistics();"></a>Show one or more parts of DBCC SHOW_STATISTICS();
+### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Show one or more parts of DBCC SHOW_STATISTICS();
 
 If you are only interested in viewing specific parts, use the `WITH` clause and specify which parts you want to see:
 
@@ -454,7 +454,7 @@ For example:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-show_statistics()-differences"></a>DBCC SHOW_STATISTICS() differences
+## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS() differences
 DBCC SHOW_STATISTICS() is more strictly implemented in SQL Data Warehouse compared to SQL Server.
 
 1. Undocumented features are not supported

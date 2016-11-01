@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
-   ms.author="barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-(rest)"></a>Manage compute power in Azure SQL Data Warehouse (REST)
+# <a name="manage-compute-power-in-azure-sql-data-warehouse-rest"></a>Manage compute power in Azure SQL Data Warehouse (REST)
 
 > [AZURE.SELECTOR]
 - [Overview](sql-data-warehouse-manage-compute-overview.md)

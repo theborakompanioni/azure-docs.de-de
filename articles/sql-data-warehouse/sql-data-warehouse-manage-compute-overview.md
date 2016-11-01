@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/03/2016"
-   ms.author="barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-(overview)"></a>Manage compute power in Azure SQL Data Warehouse (Overview)
+# <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Manage compute power in Azure SQL Data Warehouse (Overview)
 
 > [AZURE.SELECTOR]
 - [Overview](sql-data-warehouse-manage-compute-overview.md)
@@ -41,7 +41,7 @@ In SQL Data Warehouse, you can quickly scale performance out or back by increasi
 
 Gone are the days where you need to research what type of processors, how much memory or what type of storage you need to have great performance in your data warehouse. By putting your Data Warehouse in the cloud, you no longer have to deal with low-level hardware issues. Instead, SQL Data Warehouse asks you this question: how fast do you want to analyze your data? 
 
-### <a name="how-do-i-scale-performance?"></a>How do I scale performance?
+### <a name="how-do-i-scale-performance"></a>How do I scale performance?
 
 To elastically increase or decrease your compute power, simply change the [data warehouse units (DWUs)][] setting for your database. Performance will increase linearly as you add more DWU.  At higher DWU levels, you need to add more than 100 DWUs to notice a significant improvement in performance. To help you select meaningful jumps in DWUs, we offer the DWU levels that will give the best results.
  
@@ -52,7 +52,7 @@ To adjust DWUs, you can use any of these individual methods.
 - [Scale compute power with REST APIs][]
 - [Scale compute power with TSQL][]
 
-### <a name="how-many-dwus-should-i-use?"></a>How many DWUs should I use?
+### <a name="how-many-dwus-should-i-use"></a>How many DWUs should I use?
  
 Performance in SQL Data Warehouse scales linearly, and changing from one compute scale to another (say from 100 DWUs to 2000 DWUs) happens in seconds. This gives you the flexibility to experiment with different DWU settings until you determine your scenario's best fit.
 
@@ -66,7 +66,7 @@ Recommendations for finding the best DWU for your workload:
 4. Increase or decrease the number of DWUs in proportion to how much faster or slower you want your workload to perform. The service will respond quickly and adjust the compute resources to meet the new DWU requirements.
 5. Continue making adjustments until you reach an optimum performance level for your business requirements.
 
-### <a name="when-should-i-scale-dwus?"></a>When should I scale DWUs?
+### <a name="when-should-i-scale-dwus"></a>When should I scale DWUs?
 
 When you need faster results, increase your DWUs and pay for greater performance.  When you need less compute power, decrease your DWUs and pay only for what you need. 
 

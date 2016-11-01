@@ -3,7 +3,7 @@
     description="Erfahren Sie, wie Sie die verschiedenen Varianten des Zugriffsbereichs (Webbrowser, Android-App, iPhone- und iPad-App) verwenden, um auf die Ihnen zugewiesenen SaaS-Apps zuzugreifen."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -150,13 +150,13 @@ Wenn eine Organisation Office 365-Anwendungen verwendet und der Benutzer für d
 
 Wenn ein Benutzer auf eine Anwendungskachel für eine Office 365-Anwendung klickt, wird er an diese Anwendung weitergeleitet und automatisch angemeldet.
 
-### <a name="microsoft-and-third-party-applications-configured-with-federation-based-sso"></a>Anwendungen von Microsoft und Drittanbietern, die mit verbundbasiertem SSO konfiguriert sind
+### <a name="microsoft-and-thirdparty-applications-configured-with-federationbased-sso"></a>Anwendungen von Microsoft und Drittanbietern, die mit verbundbasiertem SSO konfiguriert sind
 
 Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf*Azure AD – einmaliges Anmelden*festgelegt hat. Ein Benutzer sieht diese Anwendungen nur, wenn ihm durch den Administrator ausdrücklich Zugriff auf die Anwendung erteilt wurde.
 
 Wenn ein Benutzer auf eine Anwendungskachel für eine dieser Anwendungen klickt, wird er an die betreffende Anwendung weitergeleitet und automatisch angemeldet.
 
-### <a name="password-based-sso-without-identity-provisioning"></a>Kennwortbasiertes SSO ohne Identitätsbereitstellung
+### <a name="passwordbased-sso-without-identity-provisioning"></a>Kennwortbasiertes SSO ohne Identitätsbereitstellung
 
 Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf*Kennwortbasiertes einmaliges Anmelden*festgelegt hat. <br>  Alle Benutzer im Verzeichnis sehen alle Anwendungen, die in diesem Modus konfiguriert wurden.
 
@@ -166,7 +166,7 @@ Wenn der Benutzer das nächste Mal auf die Anwendungskachel klickt, wird er auto
 
 Wenn sich die Anmeldeinformationen in der Drittanbieteranwendung geändert haben, muss der Benutzer seine in Azure AD gespeicherten Anmeldeinformationen aktualisieren. Zu diesem Zweck wählt der Benutzer das Symbol in der unteren rechten Ecke der Anwendungskachel und dann "Anmeldeinformationen aktualisieren" aus, um den Benutzernamen und das Kennwort für die betreffende Anwendung erneut einzugeben.
 
-### <a name="password-based-sso-with-identity-provisioning"></a>Kennwortbasiertes SSO mit Identitätsbereitstellung
+### <a name="passwordbased-sso-with-identity-provisioning"></a>Kennwortbasiertes SSO mit Identitätsbereitstellung
 
 Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf*Kennwortbasiertes einmaliges Anmelden*festgelegt sowie die Identitätsbereitstellung eingerichtet hat.
 

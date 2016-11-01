@@ -3,7 +3,7 @@
     description="Erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung auch dann bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -18,7 +18,7 @@
 
 
 
-# <a name="attribute-based-app-provisioning-with-scoping-filters"></a>Attributbasierte App-Bereitstellung mit Bereichsfiltern
+# <a name="attributebased-app-provisioning-with-scoping-filters"></a>Attributbasierte App-Bereitstellung mit Bereichsfiltern
 
 In diesem Abschnitt wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer der Anwendung bereitgestellt werden.
 

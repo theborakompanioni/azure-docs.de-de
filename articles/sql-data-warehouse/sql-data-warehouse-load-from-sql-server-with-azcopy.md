@@ -13,12 +13,12 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
 
-# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-(azcopy)"></a>Load data from SQL Server into Azure SQL Data Warehouse (AZCopy)
+# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-azcopy"></a>Load data from SQL Server into Azure SQL Data Warehouse (AZCopy)
 
 Use bcp and AZCopy command-line utilities to load data from SQL Server to Azure blob storage. Then use PolyBase or Azure Data Factory to load the data into Azure SQL Data Warehouse. 
 
@@ -37,7 +37,7 @@ To step through this tutorial, you need:
 
 In this tutorial, you will create a table in Azure SQL Data Warehouse and import data into the table.
 
-### <a name="step-1:-create-a-table-in-azure-sql-data-warehouse"></a>Step 1: Create a table in Azure SQL Data Warehouse
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>Step 1: Create a table in Azure SQL Data Warehouse
 
 From a command prompt, use sqlcmd to run the following query to create a table on your instance:
 
@@ -59,7 +59,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 >[AZURE.NOTE] See [Table Overview][] or [CREATE TABLE syntax][] for more information about creating a table on SQL Data Warehouse and the  options available in the WITH clause.
 
-### <a name="step-2:-create-a-source-data-file"></a>Step 2: Create a source data file
+### <a name="step-2-create-a-source-data-file"></a>Step 2: Create a source data file
 
 Open Notepad and copy the following lines of data into a new text file and then save this file to your local temp directory, C:\Temp\DimDate2.txt.
 
@@ -80,7 +80,7 @@ Open Notepad and copy the following lines of data into a new text file and then 
 
 > [AZURE.NOTE] It is important to remember that bcp.exe does not support the UTF-8 file encoding. Please use ASCII files or UTF-16 encoded files when using bcp.exe.
 
-### <a name="step-3:-connect-and-import-the-data"></a>Step 3: Connect and import the data
+### <a name="step-3-connect-and-import-the-data"></a>Step 3: Connect and import the data
 Using bcp, you can connect and import the data using the following command replacing the values as appropriate:
 
 ```sql
@@ -110,7 +110,7 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-### <a name="step-4:-create-statistics-on-your-newly-loaded-data"></a>Step 4: Create Statistics on your newly loaded data
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Step 4: Create Statistics on your newly loaded data
 
 Azure SQL Data Warehouse does not yet support auto create or auto update statistics. In order to get the best performance from your queries, it's important that statistics be created on all columns of all tables after the first load or any substantial changes occur in the data. For a detailed explanation of statistics, see the [Statistics][] topic in the Develop group of topics. Below is a quick example of how to create statistics on the tabled loaded in this example
 
@@ -127,7 +127,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ## <a name="export-data-from-sql-data-warehouse"></a>Export data from SQL Data Warehouse
 In this tutorial, you will create a data file from a table in SQL Data Warehouse. We will export the data we created above to a new data file called DimDate2_export.txt.
 
-### <a name="step-1:-export-the-data"></a>Step 1: Export the data
+### <a name="step-1-export-the-data"></a>Step 1: Export the data
 
 Using the bcp utility, you can connect and export data using the following command replacing the values as appropriate:
 

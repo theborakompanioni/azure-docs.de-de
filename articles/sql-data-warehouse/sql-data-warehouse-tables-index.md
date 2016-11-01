@@ -3,8 +3,8 @@
    description="Getting started with table indexing in Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
+   authors="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/12/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indexing tables in SQL Data Warehouse
@@ -223,7 +223,7 @@ Once your tables have been loaded with some data, follow the below steps to iden
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Rebuilding indexes to improve segment quality
 
-### <a name="step-1:-identify-or-create-user-which-uses-the-right-resource-class"></a>Step 1: Identify or create user which uses the right resource class
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Step 1: Identify or create user which uses the right resource class
 
 One quick way to immediately improve segment quality is to rebuild the index.  The SQL returned by the above view will return an ALTER INDEX REBUILD statement which can be used to rebuild your indexes.  When rebuilding your indexes, be sure that you allocate enough memory to the session which will rebuild your index.  To do this, increase the resource class of a user which has permissions to rebuild the index on this table to the recommended minimum.  The resource class of the database owner user cannot be changed, so if you have not created a user on the system, you will need to do so first.  The minimum we recommend is xlargerc if you are using DW300 or less, largerc if you are using DW400 to DW600, and mediumrc if you are using DW1000 and above.
 
@@ -233,7 +233,7 @@ Below is an example of how to allocate more memory to a user by increasing their
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2:-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Step 2: Rebuild clustered columnstore indexes with higher resource class user
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Step 2: Rebuild clustered columnstore indexes with higher resource class user
 Logon as the user from step 1 (e.g. LoadUser), which is now using a higher resource class, and execute the ALTER INDEX statements.  Be sure that this user has ALTER permission to the tables where the index is being rebuilt.  These examples show how to rebuild the entire columnstore index or how to rebuild a single partition. On large tables, it is more practical to rebuild indexes a single partition at a time.
 
 Alternatively, instead of rebuilding the index, you could copy the table to a new table using [CTAS][].  Which way is best? For large volumes of data, [CTAS][] is usually faster than [ALTER INDEX][]. For smaller volumes of data, [ALTER INDEX][] is easier to use and won't require you to swap out the table.  See **Rebuilding indexes with CTAS and partition switching** below for more details on how to rebuild indexes with CTAS.
@@ -260,7 +260,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 Rebuilding an index in SQL Data Warehouse is an offline operation.  For more information about rebuilding indexes, see the ALTER INDEX REBUILD section in [Columnstore Indexes Defragmentation][] and the syntax topic [ALTER INDEX][].
  
-### <a name="step-3:-verify-clustered-columnstore-segment-quality-has-improved"></a>Step 3: Verify clustered columnstore segment quality has improved
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Step 3: Verify clustered columnstore segment quality has improved
 Rerun the query which identified table with poor segment quality and verify segment quality has improved.  If segment quality did not improve, it could be that the rows in your table are extra wide.  Consider using a higher resource class or DWU when rebuilding your indexes.
 
  

@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="storage"
-    ms.date="09/21/2016"
+    ms.date="10/31/2016"
     ms.author="tamram" />
 
 
@@ -30,7 +30,7 @@ The [Azure Code Sample Library](https://azure.microsoft.com/documentation/sample
 * [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
 * [Visual Studio Quick Starts for Azure Storage](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
 
-## <a name=".net-samples"></a>.NET samples
+## <a name="net-samples"></a>.NET samples
 
 To explore the .NET samples, download the [.NET Storage Client Library](https://www.nuget.org/packages/WindowsAzure.Storage/) from NuGet. The .NET storage client library is also available in the [Azure SDK for .NET](https://azure.microsoft.com/downloads/).
 
@@ -49,7 +49,7 @@ To explore the Java samples, download the [Java Storage Client Library](https://
 * [Get started with tables](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted)
 * [Get started with queues](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted)
 
-## <a name="node.js-samples"></a>Node.js samples
+## <a name="nodejs-samples"></a>Node.js samples
 
 To explore the Node.js samples, download the [Node.js Storage Client Library](https://github.com/Azure/azure-storage-node).
 
@@ -61,7 +61,7 @@ To explore the Node.js samples, download the [Node.js Storage Client Library](ht
 * [Snapshot](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
 * [Table query](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
 
-## <a name="c++-samples"></a>C++ samples
+## <a name="c-samples"></a>C++ samples
 
 To explore the C++ samples, download the [C++ Storage Client Library](https://www.nuget.org/packages/wastorage/) from NuGet.
 
@@ -71,7 +71,7 @@ To explore the C++ samples, download the [C++ Storage Client Library](https://ww
 
 ## <a name="see-also"></a>See also
 
-### <a name=".net-resources"></a>.NET resources
+### <a name="net-resources"></a>.NET resources
 
 - [Source code for the .NET storage client library](https://github.com/Azure/azure-storage-net)
 - [.NET Client Library Reference](https://msdn.microsoft.com/library/azure/dn261237.aspx)
@@ -81,12 +81,12 @@ To explore the C++ samples, download the [C++ Storage Client Library](https://ww
 - [Source code for the Java storage client library](https://github.com/azure/azure-storage-java)
 - [Java Client Library Reference](http://dl.windowsazure.com/storage/javadoc/)
 
-### <a name="node.js-resources"></a>Node.js resources
+### <a name="nodejs-resources"></a>Node.js resources
 
 - [Source code for the Node.js storage client library](https://github.com/Azure/azure-storage-node)
 - [Node.js Client Library Reference](http://dl.windowsazure.com/nodestoragedocs/index.html)
 
-### <a name="c++-resources"></a>C++ resources
+### <a name="c-resources"></a>C++ resources
 
 - [Source code for the C++ storage client library](https://github.com/Azure/azure-storage-cpp)
 - [C++ Client Library Reference](http://azure.github.io/azure-storage-cpp/)

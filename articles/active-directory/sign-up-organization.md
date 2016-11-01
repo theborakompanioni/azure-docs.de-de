@@ -3,7 +3,7 @@
     description="Erfahren Sie, wie Sie mithilfe eines Geschäfts- oder Schulkontos die Vorteile vorhandener Benutzerkonten, Richtlinien, Einstellungen oder lokaler Serverbereitstellungen, die Sie bereits besitzen, nutzen und die Effizienz zwischen der lokalen Identitätsinfrastruktur Ihres Unternehmens und Azure AD verbessern können."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 

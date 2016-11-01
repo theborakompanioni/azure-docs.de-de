@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="10/31/2016"
    ms.author="bwren;sngun" />
 
 
@@ -69,7 +69,7 @@ You cannot export certificates from Azure Automation.  You must ensure that any 
 You can export your configurations to script files using either the Azure Management Portal or the [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) cmdlet in Windows PowerShell. These configurations can be imported and used in another automation account.
 
 
-##<a name="geo-replication-in-azure-automation"></a>Geo-replication in Azure Automation
+##<a name="georeplication-in-azure-automation"></a>Geo-replication in Azure Automation
 
 Geo-replication, standard in Azure Automation accounts, backs up account data to a different geographical region for redundancy. You can choose a primary region when setting up your account, and then a secondary region is assigned to it automatically. The secondary data, copied from the primary region, is continuously updated in case of data loss.  
 

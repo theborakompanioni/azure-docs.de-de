@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""
    tags="azure-sql-data-warehouse"/>
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/13/2016"
+   ms.date="10/31/2016"
    ms.author="mausher;barbkess"/>
 
 
@@ -50,7 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen, müssen Sie über die folgenden Ressourc
 
    + **AZCopy**: Sie benötigen AZCopy, um die Beispieldaten von Ihrem lokalen Client in Ihr Azure Storage-Blob zu kopieren. Anweisungen zur Installation finden Sie in der [AZCopy-Dokumentation][].
 
-## <a name="step-1:-copy-sample-data-to-azure-storage-blob"></a>Schritt 1: Kopieren von Beispieldaten in Azure Storage-Blob
+## <a name="step-1-copy-sample-data-to-azure-storage-blob"></a>Schritt 1: Kopieren von Beispieldaten in Azure Storage-Blob
 
 Sobald alle Bestandteile bereitstehen, können Sie Beispieldaten in Ihr Azure Storage-Blob kopieren.
 
@@ -63,13 +63,13 @@ Sobald alle Bestandteile bereitstehen, können Sie Beispieldaten in Ihr Azure St
     ````
 
 
-## <a name="step-2:-connect-resources-to-azure-data-factory"></a>Schritt 2: Verbinden von Ressourcen mit Azure Data Factory
+## <a name="step-2-connect-resources-to-azure-data-factory"></a>Schritt 2: Verbinden von Ressourcen mit Azure Data Factory
 
 Da die Daten jetzt vorhanden ist, können wir die Azure Data Factory-Pipeline zum Verschieben der Daten aus dem Azure-Blobspeicher in SQL Data Warehouse erstellen.
 
 Öffnen Sie zuerst das [Azure-Portal][] , und wählen Sie im Menü auf der linken Seite Ihre Data Factory aus.
 
-### <a name="step-2.1:-create-linked-service"></a>Schritt 2.1: Erstellen eines verknüpften Dienstes
+### <a name="step-21-create-linked-service"></a>Schritt 2.1: Erstellen eines verknüpften Dienstes
 
 Verknüpfen Sie Ihr Azure-Speicherkonto und SQL Data Warehouse mit Ihrer Data Factory.  
 
@@ -90,7 +90,7 @@ Verknüpfen Sie Ihr Azure-Speicherkonto und SQL Data Warehouse mit Ihrer Data Fa
     }
     ```
 
-### <a name="step-2.2:-define-the-dataset"></a>Schritt 2.2: Definieren des Datasets
+### <a name="step-22-define-the-dataset"></a>Schritt 2.2: Definieren des Datasets
 
 Nach dem Erstellen der verknüpften Dienste müssen Sie die Datasets definieren.  Dies bedeutet in diesem Fall, dass die Struktur der Daten definiert wird, die aus dem Speicher in das Data Warehouse verschoben werden.  Informationen zur Erstellung
 
@@ -148,7 +148,7 @@ Nach dem Erstellen der verknüpften Dienste müssen Sie die Datasets definieren.
     }
     ```
 
-## <a name="step-3:-create-and-run-your-pipeline"></a>Schritt 3: Erstellen und Ausführen der Pipeline
+## <a name="step-3-create-and-run-your-pipeline"></a>Schritt 3: Erstellen und Ausführen der Pipeline
 
 Zuletzt richten wir die Pipeline in Azure Data Factory ein und führen sie aus.  Dies ist der Vorgang, durch den die eigentliche Datenverschiebung abgeschlossen wird.  Eine vollständige Übersicht über die Vorgänge, die Sie mit SQL Data Warehouse und Azure Data Factory durchführen können, finden Sie [hier][Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory].
 

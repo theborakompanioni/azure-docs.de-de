@@ -2,7 +2,7 @@
     pageTitle="Erste Schritte mit der zertifikatbasierten Authentifizierung auf Android | Microsoft Azure" 
     description="Erfahren Sie, wie Sie die zertifikatbasierte Authentifizierung in Lösungen mit Android-Geräten konfigurieren." 
     services="active-directory" 
-    authors="markusvi"  
+    authors="MarkusVi"  
     documentationCenter="na" 
     manager="femila"/>
 <tags 
@@ -17,7 +17,7 @@
 
 
 
-# <a name="get-started-with-certificate-based-authentication-on-android---public-preview"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung auf Android – öffentliche Vorschau  
+# <a name="get-started-with-certificate-based-authentication-on-android-public-preview"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung auf Android – öffentliche Vorschau  
 
 > [AZURE.SELECTOR]
 - [iOS](active-directory-certificate-based-authentication-ios.md)

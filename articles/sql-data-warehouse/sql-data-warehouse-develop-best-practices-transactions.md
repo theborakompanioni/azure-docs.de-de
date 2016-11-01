@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/31/2016"
+   ms.date="10/31/2016"
    ms.author="jrj;barbkess"/>
 
 
@@ -31,7 +31,7 @@ Azure SQL Data Warehouse commits changes to the database using transaction logs.
 - Process data using scoped batches to avoid singular long running transactions
 - Adopt a partition switching pattern for large modifications to a given partition
 
-## <a name="minimal-vs.-full-logging"></a>Minimal vs. full logging
+## <a name="minimal-vs-full-logging"></a>Minimal vs. full logging
 
 Unlike fully logged operations, which use the transaction log to keep track of every row change, minimally logged operations keep track of extent allocations and meta-data changes only. Therefore, minimal logging involves logging only the information that is required to rollback the transaction in the event of a failure or an explicit request (`ROLLBACK TRAN`). As much less information is tracked in the transaction log, a minimally logged operation performs better than a similarly sized fully logged operation. Furthermore, because fewer writes go the transaction log, a much smaller amount of log data is generated and so is more I/O efficient.
 

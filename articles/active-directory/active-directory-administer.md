@@ -3,7 +3,7 @@
     description="Hier wird erklärt, was ein Azure AD-Mandant ist und wie Azure über Azure Active Directory verwaltet wird."
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     writer="markvi"
     manager="femila"
     editor=""/>
@@ -20,7 +20,7 @@
 
 # <a name="administer-your-azure-ad-directory"></a>Verwalten Ihres Azure AD-Verzeichnisses
 
-## <a name="what-is-an-azure-ad-tenant?"></a>Was ist Azure AD-Mandant?
+## <a name="what-is-an-azure-ad-tenant"></a>Was ist Azure AD-Mandant?
 
 In der physischen Arbeitswelt kann der Wort-Mandant als Gruppe oder Firma definiert werden, die in einem Gebäude angesiedelt sind. Ihre Organisation kann z. B. Büroräume in einem Gebäude besitzen. Dieses Gebäude kann sich auf einer Straße mit mehreren anderen Organisationen befinden. Ihr Unternehmen wird somit als Mandant dieses Gebäudes betrachtet. Dieses Gebäude ist ein Anlagegut Ihrer Organisation, bietet Sicherheit und sorgt dafür, dass Sie Ihre Geschäfte zuverlässig durchführen können. Es ist auch von anderen Unternehmen in Ihrer Straße getrennt. Dadurch wird sichergestellt, dass Ihre Organisation und die darin befindlichen Bestände von anderen Organisationen isoliert sind.
 
@@ -30,7 +30,7 @@ Jedes Azure AD-Verzeichnis ist eindeutig und von anderen Azure AD-Verzeichnissen
 
 ![Verwalten von Azure Active Directory][1]
 
-## <a name="how-can-i-get-an-azure-ad-directory?"></a>Wie bekomme ich ein Azure AD-Verzeichnis?
+## <a name="how-can-i-get-an-azure-ad-directory"></a>Wie bekomme ich ein Azure AD-Verzeichnis?
 
 Azure AD bietet die wichtigsten Unternehmensverzeichnis- und Verwaltungsfunktionen für die meisten Clouddienste von Microsoft, einschließlich:
 
@@ -66,7 +66,7 @@ Wenn Sie noch nicht über ein Abonnement für einen Microsoft-Clouddienst verfü
 - [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
 - [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
 
-### <a name="manage-an-azure-provisioned-default-directory"></a>Ein Standardverzeichnis mit Azure-Bereitstellung verwalten
+### <a name="manage-an-azureprovisioned-default-directory"></a>Ein Standardverzeichnis mit Azure-Bereitstellung verwalten
 
 Heute wird ein Verzeichnis automatisch erstellt, wenn Sie sich für Azure registrieren und Ihr Abonnement diesem Verzeichnis zugeordnet ist. Wenn Sie sich ursprünglich vor Oktober 2013 für Azure registriert haben, wurde ein Verzeichnis jedoch nicht automatisch erstellt. In diesem Fall hat Azure Ihr Konto möglicherweise "abgeglichen", indem ein Standardverzeichnis bereitgestellt wurde. Ihr Abonnement wurde dann diesem Standardverzeichnis zugeordnet.
 
@@ -95,7 +95,7 @@ Diese Kontoportale und die zugehörigen Azure AD PowerShell-Cmdlets zur Verwaltu
 Beim Vornehmen von Änderungen an den Daten Ihrer Organisation mithilfe der Portale (oder Cmdlets) während der Anmeldung im Kontext mit einem dieser Dienste wird die Änderung bei der nächsten Anmeldung im Kontext mit diesem Dienst auch in den anderen Portalen angezeigt, da die Daten von allen abonnierten Microsoft-Clouddiensten gemeinsam verwendet werden (shared data).
 Wenn Sie z. B. das Office 365 Admin Center benutzt haben, um einen Benutzer von der Anmeldung zu blockieren, dann blockiert diese Aktion die Anmeldung bei jedem Dienst, den Ihre Organisation zurzeit abonniert hat. Wenn Sie das gleiche Benutzerkonto im Kontext des Microsoft Intune-Kontoportals ziehen, können Sie sehen, dass der Benutzer gesperrt ist.
 
-## <a name="how-can-i-add-and-manage-multiple-directories?"></a>Wie kann ich mehrere Verzeichnisse hinzufügen und verwalten?
+## <a name="how-can-i-add-and-manage-multiple-directories"></a>Wie kann ich mehrere Verzeichnisse hinzufügen und verwalten?
 
 Sie können ein Azure AD-Verzeichnis im Azure-Verwaltungsportal hinzufügen. Wählen Sie die Erweiterung **Active Directory** auf der linken Seite, und klicken Sie auf **Hinzufügen**.
 
@@ -115,7 +115,7 @@ Sie können jedes Verzeichnis als vollständig unabhängige Ressource verwalten:
 
 Beachten Sie außerdem, dass Ihre Verzeichnisse im Gegensatz zu anderen Azure-Ressourcen keine untergeordneten Ressourcen eines Azure-Abonnements sind. Wenn Sie also kündigen oder Ihr Azure-Abonnement ablaufen lassen, können Sie weiterhin auf Ihre Verzeichnisdaten mithilfe von Azure AD PowerShell, der Azure Graph-API oder anderen Schnittstellen wie Office 365 Admin Center zugreifen. Sie können dem Verzeichnis auch ein anderes Abonnement zuordnen.
 
-## <a name="how-can-i-delete-an-azure-ad-directory?"></a>Wie lösche ich ein Azure AD-Verzeichnis?
+## <a name="how-can-i-delete-an-azure-ad-directory"></a>Wie lösche ich ein Azure AD-Verzeichnis?
 Ein globaler Administrator kann ein Azure AD-Verzeichnis über das Portal löschen. Wenn ein Verzeichnis gelöscht wird, werden alle im Verzeichnis enthaltenen Ressourcen ebenfalls gelöscht. Sie sollten also vor dem Löschen sicher sein, dass Sie das Verzeichnis nicht mehr benötigen.
 
 > [AZURE.NOTE]

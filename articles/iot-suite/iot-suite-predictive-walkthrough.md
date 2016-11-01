@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="08/17/2016"
+ ms.date="10/31/2016"
  ms.author="araguila"/>
 
 
@@ -67,7 +67,7 @@ The **event processor** takes the average sensor values for a completed cycle. I
 
 For more information on how the model was created from the original data set, see the [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics].
 
-## <a name="let's-start-walking"></a>Let's start walking
+## <a name="lets-start-walking"></a>Let's start walking
 
 This section walks you through the components of the solution, describes the intended use case, and provides examples.
 

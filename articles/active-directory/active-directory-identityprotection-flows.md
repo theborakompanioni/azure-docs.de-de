@@ -4,7 +4,7 @@
     services="active-directory"
     keywords="azure active directory identity protection, cloud app discovery, managing applications, security, risk, risk level, vulnerability, security policy"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -14,11 +14,11 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="08/16/2016"
+    ms.date="10/31/2016"
     ms.author="markvi"/>
 
 
-# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Sign-in experiences with Azure AD Identity Protection
+# <a name="signin-experiences-with-azure-ad-identity-protection"></a>Sign-in experiences with Azure AD Identity Protection
 
 With Azure Active Directory Identity Protection, you can:
 
@@ -54,7 +54,7 @@ This topic gives you an overview of a user's sign-in experience for all cases th
 
 
 
-## <a name="multi-factor-authentication-registration"></a>Multi-factor authentication registration
+## <a name="multifactor-authentication-registration"></a>Multi-factor authentication registration
 
 The best user experience for both, the compromised account recovery flow and the risky sign-in flow, is when the user can self-recover. If users are registered for multi-factor authentication, they already have a phone number associated with their account that can be used to pass security challenges. No help desk or administrator involvement is needed to recover from account compromise. Thus, it’s highly recommended to get your users registered for multi-factor authentication. 
 
@@ -82,7 +82,7 @@ Administrators can:
 
 
 
-## <a name="risky-sign-in-recovery"></a>Risky sign-in recovery
+## <a name="risky-signin-recovery"></a>Risky sign-in recovery
 
 When an administrator has configured a policy for sign-in risks, the affected users are notified when they try to sign-in. 
 
@@ -99,7 +99,7 @@ When an administrator has configured a policy for sign-in risks, the affected us
 
 
  
-## <a name="risky-sign-in-blocked"></a>Risky sign-in blocked
+## <a name="risky-signin-blocked"></a>Risky sign-in blocked
 Administrators can also choose to set a Sign-In Risk policy to block users upon sign-in depending on the risk level. To get unblocked, end users must contact an administrator or help desk, or they can try signing in from a familiar location or device. Self-recovering by solving multi-factor authentication is not an option in this case.
 
 ![Remediation](./media/active-directory-identityprotection-flows/200.png "Remediation")

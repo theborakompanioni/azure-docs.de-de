@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="08/16/2016"
+    ms.date="10/31/2016"
     ms.author="markvi"/>
 
 
@@ -29,7 +29,7 @@ The Access Panel extension is also available for [Chrome](https://go.microsoft.c
 - You have set up [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), and you have joined your users' machines to your domain.
 - You must have the "Edit settings" permission in order to edit Group Policy Objects (GPOs). By default, members of the following security groups have this permission: Domain Administrators, Enterprise Administrators, and Group Policy Creator Owners. [Learn more.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-##<a name="step-1:-create-the-distribution-point"></a>Step 1: Create the Distribution Point
+##<a name="step-1-create-the-distribution-point"></a>Step 1: Create the Distribution Point
 
 First, you must place the installer package on a network location that can be accessed from all of the machines that you wish to remotely install the extension on. To do this, follow these steps:
 
@@ -53,7 +53,7 @@ First, you must place the installer package on a network location that can be ac
 
 8. Verify that your client machines are able to access the installer package from the share. 
 
-##<a name="step-2:-create-the-group-policy-object"></a>Step 2: Create the Group Policy Object
+##<a name="step-2-create-the-group-policy-object"></a>Step 2: Create the Group Policy Object
 
 1. Log on to the server that hosts your Active Directory Domain Services (AD DS) installation.
 
@@ -77,7 +77,7 @@ First, you must place the installer package on a network location that can be ac
 
     ![Edit the new GPO](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
-##<a name="step-3:-assign-the-installation-package"></a>Step 3: Assign the Installation Package
+##<a name="step-3-assign-the-installation-package"></a>Step 3: Assign the Installation Package
 
 1. Determine whether you would like to deploy the extension based on **Computer Configuration** or **User Configuration**. When using [computer configuration](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), the extension will be installed on the computer regardless of which users log on to it. On the other hand, with [user configuration](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), users will have the extension installed for them regardless of which computers they log on to.
 
@@ -101,7 +101,7 @@ First, you must place the installer package on a network location that can be ac
 
 The extension is now deployed to the OU that you selected. [Learn more about Group Policy Software Installation.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-##<a name="step-4:-auto-enable-the-extension-for-internet-explorer"></a>Step 4: Auto-Enable the Extension for Internet Explorer 
+##<a name="step-4-autoenable-the-extension-for-internet-explorer"></a>Step 4: Auto-Enable the Extension for Internet Explorer 
 
 In addition to running the installer, every extension for Internet Explorer must be explicitly enabled before it can be used. Follow the steps below to enable the Access Panel Extension using group policy:
 
@@ -130,7 +130,7 @@ In addition to running the installer, every extension for Internet Explorer must
 
 The extension should now be enabled for the machines in the selected OU. [Learn more about using group policy to enable or disable Internet Explorer add-ons.](https://technet.microsoft.com/library/dn454941.aspx)
 
-##<a name="step-5-(optional):-disable-"remember-password"-prompt"></a>Step 5 (Optional): Disable "Remember Password" Prompt
+##<a name="step-5-optional-disable-remember-password-prompt"></a>Step 5 (Optional): Disable "Remember Password" Prompt
 
 When users sign-in to websites using the Access Panel Extension, Internet Explorer may show the following prompt asking "Would you like to store your password?"
 
@@ -159,7 +159,7 @@ Users will no longer be able to store their credentials or use auto-complete to 
 
 > [AZURE.WARNING] If this policy is enabled after users have chosen to store some credentials, this policy will *not* clear the credentials that have already been stored.
 
-##<a name="step-6:-testing-the-deployment"></a>Step 6: Testing the Deployment
+##<a name="step-6-testing-the-deployment"></a>Step 6: Testing the Deployment
 
 Follow the steps below to verify if the extension deployment was successful:
 

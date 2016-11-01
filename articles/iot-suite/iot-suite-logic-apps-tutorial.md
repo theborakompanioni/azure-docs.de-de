@@ -14,11 +14,11 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
-  ms.date="08/16/2016"
+  ms.date="10/31/2016"
   ms.author="araguila"/>
   
 
-# <a name="tutorial:-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Tutorial: Connect Logic App to your Azure IoT Suite Remote Monitoring preconfigured solution
+# <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Tutorial: Connect Logic App to your Azure IoT Suite Remote Monitoring preconfigured solution
 
 The [Microsoft Azure IoT Suite][lnk-internetofthings] remote monitoring preconfigured solution is a great way to get started quickly with an end-to-end feature set that exemplifies an IoT solution. This tutorial walks you through how to add Logic App to your Microsoft Azure IoT Suite remote monitoring preconfigured solution. These steps demonstrate how you can take your IoT solution even further by connecting it to a business process.
 

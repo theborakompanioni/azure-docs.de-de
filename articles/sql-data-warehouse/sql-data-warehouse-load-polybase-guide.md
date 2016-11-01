@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
 
@@ -118,7 +118,7 @@ WHERE
 ```
 
 
-## <a name="working-around-the-polybase-utf-8-requirement"></a>Working around the PolyBase UTF-8 requirement
+## <a name="working-around-the-polybase-utf8-requirement"></a>Working around the PolyBase UTF-8 requirement
 At present PolyBase supports loading data files that have been UTF-8 encoded. As UTF-8 uses the same character encoding as ASCII PolyBase will also support loading data that is ASCII encoded. However, PolyBase does not support other character encoding such as UTF-16 / Unicode or extended ASCII characters. Extended ASCII includes characters with accents such as the umlaut which is common in German.
 
 To work around this requirement the best answer is to re-write to UTF-8 encoding.

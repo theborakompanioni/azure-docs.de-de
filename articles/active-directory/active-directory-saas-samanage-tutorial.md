@@ -11,11 +11,11 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="08/15/2016" 
+    ms.date="10/31/2016" 
     ms.author="jeedes" />
 
 
-# <a name="tutorial:-azure-active-directory-integration-with-samanage"></a>Tutorial: Azure Active Directory integration with Samanage
+# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Tutorial: Azure Active Directory integration with Samanage
   
 The objective of this tutorial is to show you how to integrate Samanage with Azure Active Directory (Azure AD).
 
@@ -82,7 +82,7 @@ To configure the integration of Samanage into Azure AD, you need to add Samanage
 
     ![Samanage](./media/active-directory-saas-samanage-tutorial/tutorial_samanage_02.png "Samanage")
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+##  <a name="configuring-and-testing-azure-ad-single-signon"></a>Configuring and testing Azure AD single sign-on
 The objective of this section is to show you how to configure and test Azure AD single sign-on with Samanage based on a test user called "Britta Simon".
 
 For single sign-on to work, Azure AD needs to know what the counterpart user in Samanage to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Samanage needs to be established.
@@ -97,7 +97,7 @@ To configure and test Azure AD single sign-on with Samanage, you need to complet
 4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+### <a name="configuring-azure-ad-single-signon"></a>Configuring Azure AD single sign-on
   
 In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your Samanage application.
 
@@ -226,7 +226,7 @@ The objective of this section is to create a test user in the classic portal cal
   
 In order to enable Azure AD users to log into Samanage, they must be provisioned into Samanage.In the case of Samanage, provisioning is a manual task.
 
-####<a name="to-provision-a-user-account,-perform-the-following-steps:"></a>To provision a user account, perform the following steps:
+####<a name="to-provision-a-user-account-perform-the-following-steps"></a>To provision a user account, perform the following steps:
 
 1.  Log into your Samanage company site as an administrator.
 
@@ -276,7 +276,7 @@ The objective of this section is to enabling Britta Simon to use Azure single si
     ![Assign users](./media/active-directory-saas-samanage-tutorial/assign_aaduser_03.png "Assign users")
 
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### <a name="testing-single-signon"></a>Testing single sign-on
 
 The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
  
