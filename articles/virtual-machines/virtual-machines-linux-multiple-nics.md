@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Configure multiple NICs on a Linux VM | Microsoft Azure"
-   description="Learn how to create a VM with multiple NICs attached to it using the Azure CLI or Resource Manager templates."
+   pageTitle="Konfigurieren von mehreren Netzwerkkarten auf einem virtuellen Linux-Computer | Microsoft Azure"
+   description="Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle oder mithilfe von Resource Manager-Vorlagen einen virtuellen Computer mit mehreren angefügten Netzwerkkarten erstellen."
    services="virtual-machines-linux"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,36 +16,35 @@
    ms.date="08/02/2016"
    ms.author="iainfou"/>
 
+# Erstellen eines virtuellen Computers mit mehreren Netzwerkkarten
+Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. Dieser Artikel bietet Informationen zu Schnellbefehlen zum Erstellen eines virtuellen Computers, an den mehrere Netzwerkkarten angefügt werden. Ausführliche Informationen hierzu sowie zum Erstellen von mehreren Netzwerkkarten in Ihren eigenen Bash-Skripts finden Sie unter [Bereitstellen von Multi-NIC-VMs](../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Verschiedene [VM-Größen](virtual-machines-linux-sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
 
-# <a name="creating-a-vm-with-multiple-nics"></a>Creating a VM with multiple NICs
-You can create a virtual machine (VM) in Azure that has multiple virtual network interfaces (NICs) attached to it. A common scenario would be to have different subnets for front-end and back-end connectivity, or a network dedicated to a monitoring or backup solution. This article provides quick commands to create a VM with multiple NICs attached to it. For detailed information, including how to create multiple NICs within your own Bash scripts, read more about [deploying multi-NIC VMs](../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Different [VM sizes](virtual-machines-linux-sizes.md) support a varying number of NICs, so size your VM accordingly.
+>[AZURE.WARNING] Das Anfügen der Netzwerkkarten muss während der Erstellung des virtuellen Computers erfolgen – Sie können keine Netzwerkkarten an einen vorhandenen virtuellen Computer anfügen. Sie können [einen neuen virtuellen Computer basierend auf dem/den ursprünglichen virtuellen Datenträger(n) erstellen](virtual-machines-linux-copy-vm.md) und beim Bereitstellen des virtuellen Computers mehrere Netzwerkkarten erstellen.
 
->[AZURE.WARNING] You must attach multiple NICs when you create a VM - you cannot add NICs to an existing VM. You can [create a new VM based on the original virtual disk(s)](virtual-machines-linux-copy-vm.md) and create multiple NICs as you deploy the VM.
+## Schnellbefehle
+Vergewissern Sie sich, dass die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) angemeldet ist und den Resource Manager-Modus (`azure config mode arm`) nutzt.
 
-## <a name="quick-commands"></a>Quick commands
-Make sure that you have the [Azure CLI](../xplat-cli-install.md) logged in and using Resource Manager mode (`azure config mode arm`).
-
-First, create a resource group:
+Erstellen Sie zunächst eine Ressourcengruppe:
 
 ```bash
 azure group create TestRG --location WestUS
 ```
 
-Create a storage account to hold your VMs:
+Erstellen Sie ein Speicherkonto für Ihre virtuellen Computer:
 
 ```bash
 azure storage account create teststorage --resource-group TestRG \
     --location WestUS --kind Storage --sku-name PLRS
 ```
 
-Create a virtual network to connect your VMs to:
+Erstellen Sie ein virtuelles Netzwerk, mit Ihre virtuellen Computer eine Verbindung herstellen können:
 
 ```bash
 azure network vnet create --resource-group TestRG --location WestUS \
     --name TestVNet --address-prefixes 192.168.0.0/16 
 ```
 
-Create two virtual network subnets - one for front-end traffic and one for back-end traffic:
+Erstellen Sie zwei virtuelle Subnetze – eins für den Front-End-Datenverkehr, eins für den Back-End-Datenverkehr:
 
 ```bash
 azure network vnet subnet create --resource-group TestRG --vnet-name TestVNet \
@@ -54,7 +53,7 @@ azure network vnet subnet create --resource-group TestRG --vnet-name TestVNet \
     --name BackEnd --address-prefix 192.168.2.0/24
 ```
 
-Create two NICs, attaching one NIC to the front-end subnet and one NIC to the back-end subnet:
+Erstellen Sie zwei Netzwerkkarten, und fügen Sie eine an das Front-End-Subnetz und die andere an das Back-End-Subnetz an:
 
 ```bash
 azure network nic create --resource-group TestRG --location WestUS \
@@ -63,7 +62,7 @@ azure network nic create --resource-group TestRG --location WestUS \
     -n NIC2 --subnet-vnet-name TestVNet --subnet-name BackEnd
 ```
 
-Finally create your VM, attaching the two NICs you previously created:
+Schließlich erstellen Sie Ihren virtuellen Computer und fügen die beiden zuvor erstellten Netzwerkkarten an:
 
 ```bash
 azure vm create \            
@@ -79,10 +78,10 @@ azure vm create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="creating-multiple-nics-using-azure-cli"></a>Creating multiple NICs using Azure CLI
-If you have previously created a VM using the Azure CLI, the quick commands should be familiar. The process is the same to create one NIC or multiple NICs. You can read more details about [deploying multiple NICs using the Azure CLI](../virtual-network/virtual-network-deploy-multinic-arm-cli.md), including scripting the process of looping through to create all the NICs.
+## Erstellen mehrerer Netzwerkkarten über die Azure-Befehlszeilenschnittstelle
+Wenn Sie bereits früher einen virtuellen Computer über die Azure-Befehlszeilenschnittstelle erstellt haben, sollten Ihnen die Schnellbefehle vertraut sein. Ob Sie eine oder mehrere Netzwerkkarten erstellen – der Prozess ist der gleiche. Informieren Sie sich über das [Bereitstellen von mehreren Netzwerkkarten mithilfe der Azure-Befehlszeilenschnittstelle](../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Hier finden Sie Informationen darüber, wie Sie ein Skript für den Prozess zum Durchlaufen einer Schleife verwenden, um alle Netzwerkkarten zu erstellen.
 
-The following example creates two NICs, with one NIC connecting to each subnet:
+Das folgende Beispiel erstellt zwei Netzwerkkarten. Jede dieser Netzwerkkarten wird mit einem der Subnetze verbunden:
 
 ```bash
 azure network nic create --resource-group TestRG --location WestUS \
@@ -91,14 +90,14 @@ azure network nic create --resource-group TestRG --location WestUS \
     -n NIC2 --subnet-vnet-name TestVNet --subnet-name BackEnd
 ```
 
-Typically you would also create a [network security group](../virtual-network/virtual-networks-nsg.md) or [load balancer](../load-balancer/load-balancer-overview.md) to help manage and distribute traffic across your VMs. Again, the commands are the same when working with multiple NICs. The NICs you create get bound to a network security group or load balancer using `azure network nic set`, such as in the following example:
+Üblicherweise erstellen Sie auch eine [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) oder einen [Lastenausgleich](../load-balancer/load-balancer-overview.md), um den Datenverkehr zwischen den virtuellen Computern zu verwalten und zu verteilen. Die Befehle sind die gleichen, wenn Sie mit mehreren Netzwerkkarten arbeiten. Die von Ihnen erstellen Netzwerkkarten werden mithilfe von `azure network nic set` an eine Netzwerksicherheitsgruppe oder einen Lastenausgleich gebunden, wie im folgenden Beispiel gezeigt:
 
 ```bash
 azure network nic set --resource-group TestRG --name NIC1 \
     --network-security-group-name TestNSG
 ```
 
-When creating the VM, you now specify multiple NICs. Rather using `--nic-name` to provide a single NIC, instead you use `--nic-names` and provide a comma-separated list of NICs. You also need to take care when you select the VM size. There are limits for the total number of NICs that you can add to a VM. Read more about [Linux VM sizes](virtual-machines-linux-sizes.md). The following example shows how to specify multiple NICs and then a VM size that supports using multiple NICs (`Standard_DS2_v2`):
+Beim Erstellen des virtuellen Computers geben Sie jetzt mehrere Netzwerkkarten an. Statt `--nic-name` (zum Bereitstellen einer einzelnen Netzwerkkarte) verwenden Sie `--nic-names` und stellen eine durch Trennzeichen getrennte Liste von Netzwerkkarten bereit. Gehen Sie umsichtig vor, wenn Sie die Größe der virtuellen Computer auswählen. Sie können einem virtuellen Computer nur eine bestimmte Anzahl von Netzwerkkarten hinzufügen. Weitere Informationen finden Sie unter [Linux-VM-Größen](virtual-machines-linux-sizes.md). Das folgende Beispiel zeigt, wie Sie mehrere Netzwerkkarten angeben und eine Größe für die virtuellen Computer festlegen, die die Verwendung von mehreren Netzwerkkarten unterstützt (`Standard_DS2_v2`):
 
 ```bash
 azure vm create \            
@@ -114,8 +113,8 @@ azure vm create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="creating-multiple-nics-using-resource-manager-templates"></a>Creating multiple NICs using Resource Manager templates
-Azure Resource Manager templates use declarative JSON files to define your environment. You can read an [overview of Azure Resource Manager](../resource-group-overview.md). Resource Manager templates provide a way to create multiple instances of a resource during deployment, such as creating multiple NICs. You use *copy* to specify the number of instances to create:
+## Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen
+Azure Resource Manager-Vorlagen verwenden deklarative JSON-Dateien zum Definieren Ihrer Umgebung. Lesen Sie eine [Übersicht über Azure Resource Manager](../resource-group-overview.md). Resource Manager-Vorlagen bieten eine Möglichkeit, während der Bereitstellung mehrere Instanzen einer Ressource zu erstellen – z.B. mehrere Netzwerkkarten. Mit *copy* geben Sie die Anzahl der zu erstellenden Instanzen an:
 
 ```bash
 "copy": {
@@ -124,22 +123,19 @@ Azure Resource Manager templates use declarative JSON files to define your envir
 }
 ```
 
-Read more about [creating multiple instances using *copy*](../resource-group-create-multiple.md). 
+Informieren Sie sich über das [Erstellen mehrerer Instanzen mithilfe von *copy*](../resource-group-create-multiple.md).
 
-You can also use a `copyIndex()` to then append a number to a resource name, which allows you to create `NIC1`, `NIC2`, etc. The following shows an example of appending the index value:
+Sie können auch `copyIndex()` verwenden und eine Zahl an einen Ressourcennamen anfügen, sodass Sie `NIC1`, `NIC2` usw. erstellen können. Das folgende Beispiel veranschaulicht das Anfügen des Indexwerts:
 
 ```bash
 "name": "[concat('NIC-', copyIndex())]", 
 ```
 
-You can read a complete example of [creating multiple NICs using Resource Manager templates](../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
-## <a name="next-steps"></a>Next steps
-Make sure to review [Linux VM sizes](virtual-machines-linux-sizes.md) when trying to creating a VM with multiple NICs. Pay attention to the maximum number of NICs each VM size supports. 
+## Nächste Schritte
+Überprüfen Sie die [Linux-VM-Größen](virtual-machines-linux-sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird.
 
-Remember that you cannot add additional NICs to an existing VM, you must create all the NICs when you deploy the VM. Take care when planning your deployments to make sure that you have all the required network connectivity from the outset.
+Denken Sie daran, dass Sie einem vorhandenen virtuellen Computer keine weiteren Netzwerkkarten hinzufügen können. Sie müssen alle Netzwerkkarten während der Bereitstellung des virtuellen Computers erstellen. Planen Sie Ihre Bereitstellungen sorgfältig, um sicherzustellen, dass Sie die erforderliche Netzwerkkonnektivität von Anfang an einberechnen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

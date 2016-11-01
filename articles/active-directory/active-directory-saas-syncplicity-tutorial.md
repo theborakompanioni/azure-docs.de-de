@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Syncplicity | Microsoft Azure" 
-    description="Learn how to use Syncplicity with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="Tutorial: Azure Active Directory-Integration mit Syncplicity | Microsoft Azure" 
+    description="Hier erfahren Sie, wie Sie Syncplicity mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,156 +14,150 @@
     ms.date="09/11/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-syncplicity"></a>Tutorial: Azure Active Directory integration with Syncplicity
+#Lernprogramm: Azure Active Directory-Integration mit Syncplicity
   
-The objective of this tutorial is to show how to set up single sign-on between Azure Active Directory (Azure AD) and Syncplicity.
+In diesem Tutorial wird erläutert, wie einmaliges Anmelden zwischen Azure Active Directory (Azure AD) und Syncplicity eingerichtet wird.
   
-The scenario outlined in this tutorial assumes that you already have the following items:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
--   A valid Azure subscription
--   A Syncplicity tenant
+-   Ein gültiges Azure-Abonnement
+-   Ein Syncplicity-Mandant
   
-After completing this tutorial, the Azure AD users to whom you have assign Syncplicity access will be able to single sign into the application at your Syncplicity company site (service provider initiated sign on), or using the Azure AD Access Panel.
+Nach Abschluss dieses Tutorials können sich die Syncplicity zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Syncplicity-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen.
 
-1.  Enabling the application integration for Syncplicity
-2.  Configuring Single Sign-On
-3.  Configuring user provisioning
-4.  Assigning users
+1.  Aktivieren der Anwendungsintegration für Syncplicity
+2.  Konfigurieren der einmaligen Anmeldung
+3.  Konfigurieren der Benutzerbereitstellung
+4.  Zuweisen von Benutzern
 
-![Scenario](./media/active-directory-saas-syncplicity-tutorial/IC769524.png "Scenario")
+![Szenario](./media/active-directory-saas-syncplicity-tutorial/IC769524.png "Szenario")
 
-##<a name="enabling-the-application-integration-for-syncplicity"></a>Enabling the application integration for Syncplicity
+##Aktivieren der Anwendungsintegration für Syncplicity
   
-The objective of this section is to outline how to enable the application integration for Syncplicity.
+In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Syncplicity aktivieren.
 
-###<a name="to-enable-the-application-integration-for-syncplicity,-perform-the-following-steps:"></a>To enable the application integration for Syncplicity, perform the following steps:
+###So aktivieren Sie die Anwendungsintegration für Syncplicity:
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-syncplicity-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Applications](./media/active-directory-saas-syncplicity-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-syncplicity-tutorial/IC700994.png "Anwendungen")
 
-4.  Click **Add** at the bottom of the page.
+4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-    ![Add application](./media/active-directory-saas-syncplicity-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-syncplicity-tutorial/IC749321.png "Anwendung hinzufügen")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Add an application from gallerry](./media/active-directory-saas-syncplicity-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-syncplicity-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
-6.  In the **search box**, type **Syncplicity**.
+6.  Geben Sie in das **Suchfeld** **Syncplicity** ein.
 
-    ![Syncplicity application gallery](./media/active-directory-saas-syncplicity-tutorial/IC769532.png "Syncplicity application gallery")
+    ![Syncplicity-Anwendungskatalog](./media/active-directory-saas-syncplicity-tutorial/IC769532.png "Syncplicity-Anwendungskatalog")
 
-7.  In the results pane, select **Syncplicity**, and then click **Complete** to add the application.
+7.  Wählen Sie im Ergebnisbereich **Syncplicity** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
     ![Syncplicity](./media/active-directory-saas-syncplicity-tutorial/IC769533.png "Syncplicity")
 
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##Konfigurieren der einmaligen Anmeldung
   
-This section outlines how to enable users to authenticate to Syncplicity with their account in Azure Active Directory, using federation based on the SAML protocol.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Konto in Azure Active Directory bei Syncplicity zu authentifizieren.
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  In the Azure classic portal, on the **Syncplicity** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Syncplicity** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Configure single sign-on](./media/active-directory-saas-syncplicity-tutorial/IC769534.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to Syncplicity** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Syncplicity anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Microsoft Azure AD Single Sign-On](./media/active-directory-saas-syncplicity-tutorial/IC769535.png "Microsoft Azure AD Single Sign-On")
+    ![Microsoft Azure AD – einmaliges Anmelden](./media/active-directory-saas-syncplicity-tutorial/IC769535.png "Microsoft Azure AD – einmaliges Anmelden")
 
-3.  On the **Configure App URL** page, in the **Syncplicity Sign In URL** textbox, type the URL users are using to sign into your Syncplicity application click **Next**. 
+3.  Geben Sie auf der Seite **App-URL konfigurieren** in das Textfeld **Syncplicity-Anmelde-URL** die URL ein, mit der sich die Benutzer bei der Syncplicity-Anwendung anmelden. Klicken Sie dann auf **Weiter**.
 
-    The app URL is your Syncplicity tenant URL (e.g.: *http://company.Syncplicity.com*):
+    Bei der App-URL handelt es sich um die URL Ihres Syncplicity-Mandanten (z.B. *http://company.Syncplicity.com*):
 
-    ![Configure app URL](./media/active-directory-saas-syncplicity-tutorial/IC769536.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-syncplicity-tutorial/IC769536.png "App-URL konfigurieren")
 
-4.  On the **Configure single sign-on at Syncplicity** page, to download your certificate, click **Download certificate**, and then save the certificate file locally to your computer.
+4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Syncplicity** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
 
     ![Configure single sign-on](./media/active-directory-saas-syncplicity-tutorial/IC769543.png "Configure single sign-on")
 
-5.  Sign in to your **Syncplicity** tenant.
+5.  Melden Sie sich bei Ihrem **Syncplicity**-Mandanten an.
 
-6.  In the menu on the top, click **admin**, select **settings**, and then click **Custom domain and single sign-on**.
+6.  Klicken Sie im Menü oben auf **Admin**, wählen Sie **Einstellungen**, und klicken Sie dann auf **Benutzerdefinierte Domäne und einmaliges Anmelden**.
 
     ![Syncplicity](./media/active-directory-saas-syncplicity-tutorial/IC769545.png "Syncplicity")
 
-7.  On the **Single Sign-On (SSO)** dialog page, perform the following steps:
+7.  Führen Sie auf der Dialogfeldseite **Einmaliges Anmelden (SSO)** die folgenden Schritte aus:
 
-    ![Single Sign-On \(SSO\)](./media/active-directory-saas-syncplicity-tutorial/IC769550.png "Single Sign-On \(SSO\)")
+    ![Einmaliges Anmelden (Single Sign-On, SSO)](./media/active-directory-saas-syncplicity-tutorial/IC769550.png "Single Sign-On (SSO)")
 
-    1.  In the **Custom Domain** textbox, type the name of your domain.
-    2.  Select **Enabled** as **Single Sign-On Status**.
-    3.  In the Azure classic portal, on the **Configure single sign-on at Syncplicity** page, copy the **Entity ID** value, and then paste it into the **Entity Id** textbox.
-    4.  In the Azure classic portal, on the **Configure single sign-on at Syncplicity** page, copy the **Single Sign-On Service URL** value, and then paste it into the **Sign-in page URL** textbox.
-    5.  In the Azure classic portal, on the **Configure single sign-on at Syncplicity** page, copy the **Remote Logout URL** value, and then paste it into the **Logout page URL** textbox.
-    6.  In **Identity Provider Certificate**, click **Choose file**, and then upload the certificate you have downloaded from the Azure classic portal.
-    7.  Click **Save Changes**.
+    1.  Geben Sie in das Textfeld **Benutzerdefinierte Domäne** den Namen Ihrer Domäne ein.
+    2.  Wählen Sie **Aktiviert** als **Status der einmaligen Anmeldung**.
+    3.  Kopieren Sie im klassischen Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für Syncplicity** den Wert der **Entitäts-ID**, und fügen Sie ihn in das Textfeld **Entitäts-ID** ein.
+    4.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Syncplicity** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **URL der Anmeldeseite** ein.
+    5.  Kopieren Sie im klassischen Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für Syncplicity** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **URL der Abmeldeseite** ein.
+    6.  Klicken Sie unter **Zertifikat des Identitätsanbieters** auf **Datei auswählen**, und laden Sie dann das Zertifikat hoch, das Sie aus dem klassischen Azure-Portal heruntergeladen haben.
+    7.  Klicken Sie auf **Änderungen speichern**.
 
-8.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+8.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-    ![Confirmation](./media/active-directory-saas-syncplicity-tutorial/IC769554.png "Confirmation")
+    ![Bestätigung](./media/active-directory-saas-syncplicity-tutorial/IC769554.png "Bestätigung")
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##Konfigurieren der Benutzerbereitstellung
   
-For AAD users to be able to sign in, they must be provisioned to Syncplicity application. This section describes how to create AAD user accounts in Syncplicity.
+Damit sich AAD-Benutzer anmelden können, müssen sie in der Syncplicity-Anwendung bereitgestellt werden. In diesem Abschnitt wird beschrieben, wie in Syncplicity AAD-Benutzerkonten erstellt werden.
 
-###<a name="to-provision-a-user-account-to-syncplicity,-perform-the-following-steps:"></a>To provision a user account to Syncplicity, perform the following steps:
+###Führen Sie zum Bereitstellen von Benutzerkonten in Syncplicity die folgenden Schritte aus:
 
-1.  Log in to your **Syncplicity** tenant (e.g.: *https://company.Syncplicity.com*).
+1.  Melden Sie sich bei Ihrem **Syncplicity**-Mandanten an (z.B.: *https://company.Syncplicity.com*).
 
-2.  Click **Admin** and select **user accounts**.
+2.  Klicken Sie auf **Admin**, und wählen Sie **Benutzerkonten**.
 
-3.  Click **Add a user**.
+3.  Klicken Sie auf **Benutzer hinzufügen**.
 
     ![Manage Users](./media/active-directory-saas-syncplicity-tutorial/IC769764.png "Manage Users")
 
-4.  Type the **Email address** of an AAD account you want to provision, select **User** as **Role**, and then click **Next**.
+4.  Geben Sie die **E-Mail-Adresse** eines AAD-Kontos ein, das Sie bereitstellen möchten, und wählen Sie dann **Benutzer** als **Rolle**. Klicken Sie abschließend auf **Weiter**.
 
-    ![Account Information](./media/active-directory-saas-syncplicity-tutorial/IC769765.png "Account Information")
+    ![Azure-Kontoinformationen](./media/active-directory-saas-syncplicity-tutorial/IC769765.png "Azure-Kontoinformationen")
 
-    >[AZURE.NOTE] The AAD account holder will get an email including a link to confirm and activate the account.
+    >[AZURE.NOTE] Der AAD-Kontoinhaber erhält eine E-Mail mit einem Link zur Bestätigung und Aktivierung des Kontos.
 
-5.  Select a group in your company that your new user should become a member of, and then click **Next**.
+5.  Wählen Sie eine Gruppe in Ihrem Unternehmen aus, bei der Ihr neuer Benutzer Mitglied werden soll. Klicken Sie dann auf **Weiter**.
 
-    ![Group Membership](./media/active-directory-saas-syncplicity-tutorial/IC769772.png "Group Membership")
+    ![Gruppenmitgliedschaft](./media/active-directory-saas-syncplicity-tutorial/IC769772.png "Gruppenmitgliedschaft")
 
-    >[AZURE.NOTE] If there are no groups listed, just click **Next**.
+    >[AZURE.NOTE] Wenn keine Gruppen aufgelistet sind, klicken Sie einfach auf **Weiter**.
 
-6.  Select the folders you would like to place under Syncplicity’s control on the user’s computer, and then click **Next**.
+6.  Wählen Sie die Ordner aus, die Sie auf dem Computer des Benutzers unter die Kontrolle von Syncplicity stellen möchten. Klicken Sie dann auf **Weiter**.
 
-    ![Syncplicity Folders](./media/active-directory-saas-syncplicity-tutorial/IC769773.png "Syncplicity Folders")
+    ![Syncplicity-Ordner](./media/active-directory-saas-syncplicity-tutorial/IC769773.png "Syncplicity-Ordner")
 
->[AZURE.NOTE] You can use any other Syncplicity user account creation tools or APIs provided by Syncplicity to provision AAD user accounts.
+>[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Syncplicity-Benutzerkonten oder mithilfe der von Syncplicity bereitgestellten APIs erstellen.
 
-##<a name="assigning-users"></a>Assigning users
+##Zuweisen von Benutzern
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-###<a name="to-assign-users-to-syncplicity,-perform-the-following-steps:"></a>To assign users to Syncplicity, perform the following steps:
+###So weisen Sie Syncplicity Benutzer zu:
 
-1.  In the Azure classic portal, create a test account.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  On the **Syncplicity** application integration page, click **Assign users**.
+2.  Klicken Sie auf der **Anwendungsintegrationsseite** für **Syncplicity** auf **Benutzer zuweisen**.
 
-    ![Assign users](./media/active-directory-saas-syncplicity-tutorial/IC769557.png "Assign users")
+    ![Benutzer zuweisen](./media/active-directory-saas-syncplicity-tutorial/IC769557.png "Benutzer zuweisen")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
 
-    ![Yes](./media/active-directory-saas-syncplicity-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-syncplicity-tutorial/IC767830.png "Ja")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

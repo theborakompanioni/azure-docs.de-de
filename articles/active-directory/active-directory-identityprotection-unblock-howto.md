@@ -1,81 +1,75 @@
 <properties
-    pageTitle="Azure Active Directory Identity Protection - How to unblock users | Microsoft Azure"
-    description="Learn how unblock users that were blocked by an Azure Active Directory Identity Protection policy."
-    services="active-directory"
-    keywords="azure active directory identity protection, unblock user"
-    documentationCenter=""
-    authors="MarkusVi"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory Identity Protection – Aufheben der Blockierung von Benutzern | Microsoft Azure"
+	description="Hier erfahren Sie, wie Sie die Blockierung von Benutzern aufheben, die durch eine Azure Active Directory Identity Protection-Richtlinie blockiert wurden."
+	services="active-directory"
+	keywords="Azure Active Directory Identity Protection, Benutzerblockierung aufheben"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/20/2016"
-    ms.author="markvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/20/2016"
+	ms.author="markvi"/>
+
+#Azure Active Directory Identity Protection – Aufheben der Blockierung von Benutzern
+
+Mit Azure Active Directory Identity Protection können Sie Richtlinien konfigurieren, um Benutzer zu blockieren, wenn die konfigurierten Bedingungen erfüllt sind. Ein blockierter Benutzer wendet sich zur Aufhebung der Blockierung in der Regel an den Helpdesk. In diesem Thema erfahren Sie Schritt für Schritt, wie Sie die Blockierung eines Benutzers wieder aufheben können.
 
 
-#<a name="azure-active-directory-identity-protection-how-to-unblock-users"></a>Azure Active Directory Identity Protection - How to unblock users
+## Ermitteln der Ursache für die Blockierung
 
-With Azure Active Directory Identity Protection, you can configure policies to block users if the configured conditions are satisfied. Typically, a blocked user contacts help desk to become unblocked. This topics explains the steps you can perform to unblock a blocked user.
+Wenn Sie die Blockierung eines Benutzers aufheben möchten, müssen Sie zunächst ermitteln, durch welche Art von Richtlinie der Benutzer blockiert wurde, da hiervon die weitere Vorgehensweise abhängt. Bei Azure Active Directory Identity Protection kann die Blockierung des Benutzers entweder auf eine Anmelderisikorichtlinie oder auf eine Benutzerrisikorichtlinie zurückzuführen sein.
 
+Die Art der Richtlinie, durch die ein Benutzer blockiert wurde, können Sie der Überschrift des Dialogfelds entnehmen, das dem Benutzer bei der Anmeldung angezeigt wurde:
 
-## <a name="determine-the-reason-for-blocking"></a>Determine the reason for blocking
-
-As a first step to unblock a user, you need to determine the type of policy that has blocked the user because your next steps are depending on it. With Azure Active Directory Identity Protection, a user can be either blocked by a sign-in risk policy or a user risk policy. 
-
-You can get the type of policy that has blocked a user from the heading in the dialog that was presented to the user during a sign-in attempt:
-
-|Policy | User dialog|
+|Richtlinie | Benutzerdialogfeld|
 |--- | --- |
-|Sign-in risk | ![Blocked sign-in](./media/active-directory-identityprotection-unblock-howto/02.png) |
-|User risk | ![Blocked account](./media/active-directory-identityprotection-unblock-howto/104.png) |
+|Anmelderisiko | ![Blockierte Anmeldung](./media/active-directory-identityprotection-unblock-howto/02.png) |
+|Benutzerrisiko | ![Blockiertes Konto](./media/active-directory-identityprotection-unblock-howto/104.png) |
 
 
-A user that is blocked by:
+Dabei gilt Folgendes:
 
-- A sign-in risk policy is also known as suspicious sign-in
-- A user risk policy is also known as an account at risk
+- Ein Benutzer, der durch eine Anmelderisikorichtlinie blockiert wird, wird auch als verdächtige Anmeldung bezeichnet.
+- Ein Benutzer, der durch eine Benutzerrisikorichtlinie blockiert wird, wird auch als gefährdetes Konto bezeichnet.
 
  
-## <a name="unblocking-suspicious-signins"></a>Unblocking suspicious sign-ins
+## Aufheben der Blockierung verdächtiger Anmeldungen
 
-To unblock a suspicious sign-in, you have the following options:
+Zur Aufheben der Blockierung verdächtiger Anmeldungen stehen folgende Optionen zur Verfügung:
 
-1. **Sign-in from a familiar location or device** - A common reason for blocked suspicious sign-ins are sign-in attempts from unfamiliar locations or devices. Your users can quickly determine whether this is the blocking reason by trying to sign-in from a familiar location or device.
+1. **Anmelden über einen bekannten Ort oder ein bekanntes Gerät:** Die Blockierung einer verdächtigen Anmeldung ist häufig auf Anmeldeversuche über einen unbekannten Ort oder ein unbekanntes Gerät zurückzuführen. Um zu ermitteln, ob dies die Ursache für die Blockierung ist, muss sich der betroffene Benutzer lediglich über einen bekannten Ort oder über ein bekanntes Gerät anmelden.
 
 
-3. **Exclude from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. See [sign-in risk policy](active-directory-identityprotection.md#sign-in-risk-policy) for more details.
+3. **Ausschließen von der Richtlinie:** Wenn Sie vermuten, dass die aktuelle Konfiguration Ihrer Anmelderichtlinie Probleme für bestimmte Benutzer verursacht, können Sie diese Benutzer von der Richtlinie ausschließen. Ausführlichere Informationen finden Sie unter [Anmelderisikorichtlinie](active-directory-identityprotection.md#sign-in-risk-policy).
  
-4. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. See [sign-in risk policy](active-directory-identityprotection.md#sign-in-risk-policy) for more details.
+4. **Deaktivieren der Richtlinie:** Wenn Sie vermuten, dass Ihre Richtlinienkonfiguration Probleme für alle Benutzer verursacht, können Sie die Richtlinie deaktivieren. Ausführlichere Informationen finden Sie unter [Anmelderisikorichtlinie](active-directory-identityprotection.md#sign-in-risk-policy).
 
 
-## <a name="unblocking-accounts-at-risk"></a>Unblocking accounts at risk
+## Aufheben der Blockierung gefährdeter Konten
 
-To unblock an account at risk, you have the following options:
+Zur Aufheben der Blockierung gefährdeter Konten stehen folgende Optionen zur Verfügung:
 
-1. **Reset password** - You can reset the user's password. See [manual secure password reset](active-directory-identityprotection.md#manual-secure-password-reset) for more details.
+1. **Zurücksetzen des Kennworts:** Sie können das Kennwort des Benutzers zurücksetzen. Ausführlichere Informationen finden Sie unter [Manuelle Kennwortzurücksetzung](active-directory-identityprotection.md#manual-secure-password-reset).
 
-2. **Dismiss all risk events** - The user risk policy blocks a user if the configured user risk level for blocking access has been reached. You can reduce a user's risk level by manually closing reported risk events. For more details, see [closing risk events manually](active-directory-identityprotection.md#closing-risk-events-manually).
+2. **Schließen aller Risikoereignisse:** Die Benutzerrisikorichtlinie blockiert einen Benutzer, wenn die konfigurierte Benutzerrisikostufe für die Blockierung des Zugriffs erreicht wurde. Sie können die Risikostufe eines Benutzers verringern, indem Sie gemeldete Risikoereignisse manuell schließen. Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
 
-3. **Exclude from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. See [user risk policy](active-directory-identityprotection.md#user-risk-policy) for more details.
+3. **Ausschließen von der Richtlinie:** Wenn Sie vermuten, dass die aktuelle Konfiguration Ihrer Anmelderichtlinie Probleme für bestimmte Benutzer verursacht, können Sie diese Benutzer von der Richtlinie ausschließen. Ausführlichere Informationen finden Sie unter [Benutzerrisikorichtlinie](active-directory-identityprotection.md#user-risk-policy).
  
-4. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. See [user risk policy](active-directory-identityprotection.md#user-risk-policy) for more details.
+4. **Deaktivieren der Richtlinie:** Wenn Sie vermuten, dass Ihre Richtlinienkonfiguration Probleme für alle Benutzer verursacht, können Sie die Richtlinie deaktivieren. Ausführlichere Informationen finden Sie unter [Benutzerrisikorichtlinie](active-directory-identityprotection.md#user-risk-policy).
 
 
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
- Do you want to know more about Azure AD Identity Protection? Check out [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+ Sie möchten mehr über Azure AD Identity Protection erfahren? Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
  
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

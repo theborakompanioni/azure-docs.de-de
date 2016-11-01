@@ -1,67 +1,61 @@
 <properties
-    pageTitle="Azure Active Directory hybrid identity design considerations - determine multi-factor authentication requirements"
-    description="With Conditional access control, Azure Active Directory checks the specific conditions you pick when authenticating the user and before allowing access to the application. Once those conditions are met, the user is authenticated and allowed access to the application."
-    documentationCenter=""
-    services="active-directory"
-    authors="femila"
-    manager="billmath"
-    editor=""/>
+	pageTitle="Überlegungen zum Entwurf der Azure Active Directory-Hybrididentität – Ermitteln der Anforderungen für die Multi-Factor Authentication"
+	description="Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung."
+	documentationCenter=""
+	services="active-directory"
+	authors="femila"
+	manager="billmath"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="article"
+	ms.service="active-directory"
+	ms.devlang="na"
+	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-    ms.date="08/08/2016"
-    ms.author="billmath"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
+# Ermitteln der Anforderungen an die Multi-Factor Authentication für Ihre Hybrid-Identitätslösung
 
-# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Determine multi-factor authentication requirements for your hybrid identity solution
-
-In this world of mobility, with users accessing data and applications in the cloud and from any device, securing this information has become paramount.  Every day there is a new headline about a security breach.  Although, there is no guarantee against such breaches, multi-factor authentication, provides an additional layer of security to help prevent these breaches.
-Start by evaluating the organizations requirements for multi-factor authentication. That is, what is the organization trying to secure.  This evaluation is important to define the technical requirements for setting up and enabling the organizations users for multi-factor authentication.
+In dieser Welt mit ihrem hohen Mobilitätsgrad, in der Benutzer mit allen Geräten auf Daten und Anwendungen in der Cloud zugreifen können, ist der Schutz dieser Daten zu einer sehr wichtigen Aufgabe geworden. Jeden Tag kann man neue Artikel über Sicherheitsverletzungen lesen. Es gibt zwar keinen absoluten Schutz vor diesen Sicherheitsverletzungen, aber die Multi-Factor Authentication bietet eine zusätzliche Sicherheitsebene als Schutz vor Verletzungen dieser Art. Beginnen Sie, indem Sie die Anforderungen des Unternehmens in Bezug auf die Multi-Factor Authentication auswerten. Hierbei geht es um die Daten, die vom Unternehmen geschützt werden sollen. Diese Auswertung ist wichtig, um die technischen Anforderungen zum Einrichten und Aktivieren der Unternehmensbenutzer für die Multi-Factor Authentication zu definieren.
 
 >[AZURE.NOTE]
-If you are not familiar with MFA and what it does, it is strongly recommended that you read the article [What is Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) prior to continue reading this section.
+Wenn Sie mit MFA und den damit verbundenen Funktionen nicht vertraut sind, empfehlen wir Ihnen dringend, den Artikel [Was ist Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) zu lesen, bevor Sie mit diesem Abschnitt fortfahren.
 
-Make sure to answer the following:
+Beantworten Sie die folgenden Fragen:
 
-- Is your company trying to secure Microsoft apps? 
-- How these apps are published?
-- Does your company provide remote access to allow employees to access on-premises apps?
+- Sollen in Ihrem Unternehmen Microsoft-Apps geschützt werden?
+- Wie werden diese Apps veröffentlicht?
+- Wird von Ihrem Unternehmen der Remotezugriff bereitgestellt, damit die Mitarbeiter auf lokale Apps zugreifen können?
 
-If yes, what type of remote access?You also need to evaluate where the users who are accessing these applications will be located. This evaluation is another important step to define the proper multi-factor authentication strategy. Make sure to answer the following questions:
+Wenn ja: Welche Art von Remotezugriff? Außerdem müssen Sie auswerten, wo sich die Benutzer befinden sollen, die auf diese Anwendungen zugreifen. Diese Auswertung ist ein weiterer wichtiger Schritt zur Definition der Multi-Factor Authentication-Strategie. Beantworten Sie die folgenden Fragen:
 
-- Where are the users going to be located?
-- Can they be located anywhere?
-- Does your company want to establish restrictions according to the user’s location?
+- Wo werden sich die Benutzer befinden?
+- Können Sie sich an beliebigen Orten befinden?
+- Möchte Ihr Unternehmen Einschränkungen in Bezug auf den Standort des Benutzers festlegen?
 
-Once you understand these requirements, it is important to also evaluate the user’s requirements for multi-factor authentication. This evaluation is important because it will define the requirements for rolling out multi-factor authentication. Make sure to answer the following questions:
+Nachdem Sie diese Anforderungen verstanden haben, ist es wichtig, auch die Anforderungen des Benutzers an die Multi-Factor Authentication auszuwerten. Diese Auswertung ist wichtig, weil hierbei die Anforderungen für die Einführung der Multi-Factor Authentication festgelegt werden. Beantworten Sie die folgenden Fragen:
 
-- Are the users familiar with multi-factor authentication?
-- Will some uses be required to provide additional authentication?  
- - If yes, all the time, when coming from external networks, or accessing specific applications, or under other conditions?
-- Will the users require training on how to setup and implement multi-factor authentication?
-- What are the key scenarios that your company wants to enable multi-factor authentication for their users?
+- Sind die Benutzer mit der Multi-Factor Authentication vertraut?
+- Ist für einige Verwendungen eine zusätzliche Authentifizierung erforderlich?
+ - Wenn ja: Gilt dies immer, für den Eingang aus externen Netzwerken, beim Zugreifen auf bestimmte Anwendungen oder unter anderen Bedingungen?
+- Müssen die Benutzer darin geschult werden, wie die Multi-Factor Authentication eingerichtet und implementiert wird?
+- Für welche wichtigen Szenarien möchte Ihr Unternehmen die Multi-Factor Authentication für die Benutzer ermöglichen?
 
-After answering the previous questions, you will be able to understand if there are multi-factor authentication already implemented on-premises. This evaluation is important to define the technical requirements for setting up and enabling the organizations users for multi-factor authentication. Make sure to answer the following questions:
+Nach der Beantwortung der obigen Fragen wissen Sie, ob lokal bereits eine Multi-Factor Authentication implementiert wurde. Diese Auswertung ist wichtig, um die technischen Anforderungen zum Einrichten und Aktivieren der Unternehmensbenutzer für die Multi-Factor Authentication zu definieren. Beantworten Sie die folgenden Fragen:
 
-- Does your company need to protect privileged accounts with MFA?
-- Does your company need to enable MFA for certain application for compliance reasons?
-- Does your company need to enable MFA for all eligible users of these application or only administrators?
-- Do you need have MFA always enabled or only when the users are logged outside of your corporate network?
-
-
-## <a name="next-steps"></a>Next steps
-[Define a hybrid identity adoption strategy](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+- Müssen in Ihrem Unternehmen privilegierte Konten per MFA geschützt werden?
+- Muss Ihr Unternehmen MFA für bestimmte Anwendungen aus Compliance-Gründen aktivieren?
+- Muss Ihr Unternehmen MFA für alle betroffenen Benutzer dieser Anwendungen oder nur für Administratoren aktivieren?
+- Muss MFA immer aktiviert sein, oder ist dies nur der Fall, wenn die Benutzer von außerhalb Ihres Unternehmensnetzwerks angemeldet sind?
 
 
-## <a name="see-also"></a>See also
-[Design considerations overview](active-directory-hybrid-identity-design-considerations-overview.md)
+## Nächste Schritte
+[Definieren einer Strategie zur Hybrididentitätsübernahme](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 
+## Siehe auch
+[Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

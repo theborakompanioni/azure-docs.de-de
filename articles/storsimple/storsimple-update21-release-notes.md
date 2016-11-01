@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple 8000 Series Update 2.2 release notes | Microsoft Azure"
-   description="Describes the new features, issues, and workarounds for StorSimple 8000 Series Update 2.2."
+   pageTitle="Versionsanmerkungen zu Update 2.2 der StorSimple 8000-Serie | Microsoft Azure"
+   description="Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 2.2 der StorSimple 8000-Serie."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,107 +15,102 @@
    ms.date="07/18/2016"
    ms.author="alkohli" />
 
+# Versionsanmerkungen zu Update 2.2 der StorSimple 8000-Serie  
 
-# <a name="storsimple-8000-series-update-2.2-release-notes"></a>StorSimple 8000 Series Update 2.2 release notes  
+## Übersicht
 
-## <a name="overview"></a>Overview
+Die folgenden Versionsanmerkungen beschreiben die neuen Features und weisen auf wichtige offene Probleme bei Update 2.2 der StorSimple 8000-Serie hin. Es enthält auch eine Liste der StorSimple-Software-Updates, die in dieser Version enthalten sind.
 
-The following release notes describe the new features and identify the critical open issues for StorSimple 8000 Series Update 2.2. They also contain a list of the StorSimple software updates included in this release. 
+Update 2.2 kann auf alle StorSimple-Geräte angewendet werden, auf denen Release (GA) oder Update 0.1 bis Update 2.1 ausgeführt wird. Update 2.2 ist die Geräteversion 6.3.9600.17708 zugeordnet.
 
-Update 2.2 can be applied to any StorSimple device running Release (GA) or Update 0.1 through Update 2.1. The device version associated with Update 2.2 is 6.3.9600.17708.
-
-Please review the information contained in the release notes before you deploy the update in your StorSimple solution.
+Lesen Sie vor der Bereitstellung des Updates in Ihrer StorSimple-Lösung die Informationen in den Versionsanmerkungen sorgfältig durch.
 
 >[AZURE.IMPORTANT]
 > 
-> - Update 2.2 has software only updates. It takes approximately 1.5-2 hours to install this update. 
+> - Update 2.2 enthält nur Updates für die Software. Es dauert ungefähr 1,5-2 Stunden, dieses Update zu installieren.
 
-> - If you are running Update 2.1, we recommend that you apply Update 2.2 as soon as possible.
+> - Wenn Sie Update 2.1 ausführen, wird empfohlen, dass Sie so bald wie möglich Update 2.2 anwenden.
 
-> - For new releases, you may not see updates immediately because we do a phased rollout of the updates. Wait a few days, and then scan for updates again as these will become available soon.
+> - Bei neuen Versionen werden Updates möglicherweise nicht sofort angezeigt, da diese in mehreren Phasen bereitgestellt werden. Warten Sie einige Tage, und suchen Sie dann erneut nach Updates, da diese bald verfügbar werden.
 
 
-## <a name="what's-new-in-update-2.2"></a>What's new in Update 2.2
+## Neuerungen in Update 2.2
 
-The following key improvements have been made in Update 2.2.
+Die folgenden wichtigen Verbesserungen wurden mit Update 2.2 durchgeführt.
 
  
-- **Automated space reclamation optimization** – When data is deleted on thinly provisioned volumes, the unused storage blocks need to be reclaimed. This release has improved the space reclamation process from the cloud resulting in the unused space becoming available faster as compared to the previous versions.
+- **Optimierte automatisierte Speicherplatzrückgewinnung **: Wenn Daten auf Volumes mit schlanker Speicherzuweisung gelöscht werden, müssen die nicht verwendeten Speicherblöcke wieder freigegeben werden. In dieser Version wurde der Prozess zur Speicherplatzrückgewinnung in der Cloud verbessert, was dazu führt, dass nicht genutzter Speicherplatz im Vergleich mit den vorherigen Versionen schneller wieder verfügbar ist.
 
 
-- **Snapshot performance enhancements** – Update 2.2 has improved the time to process a cloud snapshot in certain scenarios where large volumes are being used and there is minimal to no data churn. A scenario that would benefit from this enhancement would be the archive volumes.
+- **Leistungssteigerungen der Momentaufnahme**: Update 2.2 hat die Verarbeitungsdauer einer Cloudmomentaufnahme in bestimmten Szenarien verbessert, in denen große Datenmengen verwendet werden und es nur geringe bis keine Datenänderungen gibt. Ein Szenario, das von dieser Erweiterung profitieren würde, wären die Archiv-Volumes.
 
 
-- **Hardening of Support package gathering** – There have been improvements in the way the Support package is gathered and uploaded in this release. 
+- **Verstärkung der Supportpaketsammlung**: In dieser Version gibt es Verbesserungen im Hinblick auf das Sammeln und Hochladen des Supportpakets.
 
 
-- **Update reliability improvements** – This release has bug fixes that result in an improved Update reliability.
+- **Verbesserte Updatezuverlässigkeit**: In dieser Version sind Fehlerbehebungen enthalten, die zu einer verbesserten Updatezuverlässigkeit führen.
 
   
  
 
-## <a name="issues-fixed-in-update-2.2"></a>Issues fixed in Update 2.2
+## Behobene Probleme in Update 2.2
 
-The following tables provides a summary of issues that were fixed in Updates 2.2 and 2.1.    
+Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in den Updates 2.2 und 2.1 behoben wurden.
 
-| No | Feature                                    | Issue                                                                                                                                                                                                                                                                                        | Applies to physical device | Applies to virtual device |
+| Nein | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 |----|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|---------------------------|
-| 1  | Host performance                      | In the earlier release, host-side performance issues were observed during the creation of a locally pinned volume and during the conversion of a tiered volume to a locally pinned volume. These issues are fixed in this release thereby resulting in an improvement in the host performance during the volume creation and conversion procedures.                                                                        | Yes                        | No                        |
-| 2  | Locally pinned volumes                     | In rare instances, the system would crash when creating a locally pinned volume. This bug has been fixed in this release.                                                                                                                                                               | Yes                        | No                        |
-| 3  | Tiering                                    | There were sporadic crashes when the metadata for the StorSimple Cloud Appliances (8010 and 8020) tiered to   the cloud. This issue is fixed in this release.                                                                                                                              | No                         | Yes                       |
-| 4  | Snapshot creation                          | There were issues related to the creation of incremental snapshots in scenarios with large volumes and minimal to no data churn. These issues are fixed in this release.                                                                                                                 | Yes                        | Yes                       |
-| 5  | Openstack authentication                   | When using Openstack as the cloud service provider, the user would run into an infrequent bug related to the authentication where the JSON parser resulted in a crash. This bug is fixed in this release.                                                                                                                              | Yes                        | No                        |
-| 6  | Host-side copy                             | In earlier versions of software,   an infrequent bug related to the ODX timing was seen when copying the data   from one volume to another volume. This would result in a controller failover and the system could potentially go into Recovery mode. This bug is fixed in   this release. | Yes                        | No       |
-| 7  | Windows Management   Instrumentation (WMI) | In the previous versions of   software, there were several instances of web proxy failure with the   exception “<ManagementException> Provider load failure”. This bug was attributed to a WMI memory leak and is now fixed.                                                               | Yes                        | No                        |
-| 8  | Update                                     | In certain rare instances, in   the previous versions of software, the user received a   "CisPowershellHcsscripterror" when trying to scan or install updates. This issue is fixed in this release.                                                                                        | Yes                        | Yes                       |
-| 9  | Support package                            | In this release, there have been improvements to the way the Support package is gathered and uploaded.                                                                                                                                                                                                      | Yes                        | Yes                                    |
+| 1 | Host-Leistung | In der früheren Version wurden die hostseitigen Leistungsprobleme während der Erstellung eines lokalen Volumes und während der Konvertierung eines mehrstufigen Volumes in ein lokales Volume erfasst. Diese Probleme wurden in dieser Version behoben, was zu einer Verbesserung der Hostleistung während der Erstellung des Volume und des Konvertierungsverfahrens führt. | Ja | Nein |
+| 2 | Lokale Volumes | In seltenen Fällen stürzt das System beim Erstellen eines lokalen Volumes ab. Dieser Fehler wurde in dieser Version behoben. | Ja | Nein |
+| 3 | Staffelung | Es gab sporadische Abstürze als die Metadaten für die StorSimple Cloud Appliances (8010 und 8020) in die Cloud ausgelagert wurden. Dieses Problem wurde in dieser Version behoben. | Nein | Ja |
+| 4 | Erstellung der Momentaufnahme | Es gab Probleme im Zusammenhang mit der Erstellung von inkrementellen Momentaufnahmen in Szenarien mit hohem Datenvolumen und geringen oder gar keinen Datenänderungen. Diese Probleme wurden in dieser Version behoben. | Ja | Ja |
+| 5 | Openstack-Authentifizierung | Benutzer, die Openstack als Clouddienstanbieter verwendet haben, stießen in der Vergangenheit auf einen seltenen Fehler, der auf die Authentifizierung zurückzuführen ist, bei der der JSON-Parser zu einem Absturz führte. Dieser Fehler wurde in dieser Version behoben. | Ja | Nein |
+| 6 | Hostseitige Kopie | In früheren Versionen der Software trat ein seltene Fehler im Zusammenhang mit der ODX-Zeitmessung beim Kopieren von Daten von einem Volume auf ein anderes Volume auf. Dies führt zu einem Controller-Failover und das System wechselt möglicherweise in den Wiederherstellungsmodus. Dieser Fehler wurde in dieser Version behoben. | Ja | Nein |
+| 7 | Windows-Verwaltungsinstrumentation (WMI) | In früheren Versionen der Software gab es mehrere Instanzen von Webproxyfehlern mit der Ausnahme „<ManagementException> Fehler beim Laden des Anbieters“. Dieser Fehler wurde einem WMI-Speicherverlust zugeordnet und ist nun behoben. | Ja | Nein |
+| 8 | Aktualisieren | Bei vorherigen Versionen der Software kam es gelegentlich vor, dass Nutzern beim Versuch, nach Updates zu suchen oder Updates zu installieren, der Fehler „CisPowershellHcsscripterror“ angezeigt wurde. Dieses Problem wurde in dieser Version behoben. | Ja | Ja |
+| 9 | Supportpaket | In dieser Version gibt es Verbesserungen im Hinblick auf das Sammeln und Hochladen des Supportpakets. | Ja | Ja |
 
 
-## <a name="known-issues-in-update-2.2"></a>Known issues in Update 2.2
+## Bekannte Probleme in Update 2.2
 
-The following table provides a summary of known issues in this release.
+Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| No. | Feature | Issue | Comments / workaround | Applies to physical device | Applies to virtual device |
+| Nr. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 |-----|---------|-------|----------------------------|----------------------------|---------------------------|
-| 1 | Disk quorum | In rare instances, if the majority of disks in the EBOD enclosure of an 8600 device are disconnected resulting in no disk quorum, then the storage pool will go offline. It will stay offline even if the disks are reconnected. | You will need to reboot the device. If the issue persists, please contact Microsoft Support for next steps. | Yes | No |
-| 2 | Incorrect controller ID | When a controller replacement is performed, controller 0 may show up as controller 1. During controller replacement, when the image is loaded from the peer node, the controller ID can show up initially as the peer controller’s ID. In rare instances, this behavior may also be seen after a system reboot. | No user action is required. This situation will resolve itself after the controller replacement is complete. | Yes | No |
-| 3 | Storage accounts | Using the Storage service to delete the storage account is an unsupported scenario. This will lead to a situation in which user data cannot be retrieved.|  | Yes | Yes |
-| 4 | Device failover | Multiple failovers of a volume container from the same source device to different target devices is not supported. Failover from a single dead device to multiple devices will make the volume containers on the first failed over device lose data ownership. After such a failover, these volume containers will appear or behave differently when you view them in the Azure classic portal. | | Yes | No |
-| 5 | Installation | During StorSimple Adapter for SharePoint installation, you need to provide a device IP in order for the install to finish successfully.    | | Yes | No |
-| 6 | Web proxy | If your web proxy configuration has HTTPS as the specified protocol, then your device-to-service communication will be affected and the device will go offline. Support packages will also be generated in the process, consuming significant resources on your device. | Make sure that the web proxy URL has HTTP as the specified protocol. For more information, go to [Configure web proxy for your device](storsimple-configure-web-proxy.md). | Yes | No |
-| 7 | Web proxy | If you configure and enable web proxy on a registered device, then you will need to restart the active controller on your device. | | Yes | No |
-| 8 | High cloud latency and high I/O workload | When your StorSimple device encounters a combination of very high cloud latencies (order of seconds) and high I/O workload, the device volumes go into a degraded state and the I/Os may fail with a "device not ready" error. | You will need to manually reboot the device controllers or perform a device failover to recover from this situation. | Yes | No |
-| 9 | Azure PowerShell | When you use the StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** to select the first object so that you can create a new **VolumeContainer** object, the cmdlet returns all the objects. | Wrap the cmdlet in parentheses as follows: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** | Yes | Yes |
-| 10| Migration | When multiple volume containers are passed for migration, the ETA for latest backup is accurate only for the first volume container. Additionally, parallel migration will start after the first 4 backups in the first volume container are migrated. | We recommend that you migrate one volume container at a time. | Yes | No |
-| 11| Migration | After the restore, volumes are not added to the backup policy or the virtual disk group. | You will need to add these volumes to a backup policy in order to create backups. | Yes | Yes |
-| 12| Migration | After the migration is complete, the 5000/7000 series device must not access the migrated data containers. | We recommend that you delete the migrated data containers after the migration is complete and committed. | Yes | No |
-| 13| Clone and DR | A StorSimple device running Update 1 cannot clone or perform disaster recovery to a device running pre-update 1 software. | You will need to update the target device to Update 1 to allow these operations | Yes | Yes |
-| 14 | Migration | Configuration backup for migration may fail on a 5000-7000 series device when there are volume groups with no associated volumes. | Delete all the empty volume groups with no associated volumes and then retry the configuration backup.| Yes | No |
-| 15 | Azure PowerShell cmdlets and locally pinned volumes | You cannot create a locally pinned volume via Azure PowerShell cmdlets. (Any volume you create via Azure PowerShell will be tiered.) |Always use the StorSimple Manager service to configure locally pinned volumes.| Yes | No |
-| 16 |Space available for locally pinned volumes | If you delete a locally pinned volume, the space available for new volumes may not be updated immediately. The StorSimple Manager service updates the local space available approximately every hour.| Wait for an hour before you try to create the new volume. | Yes | No |
-| 17 | Locally pinned volumes | Your restore job exposes the temporary snapshot backup in the Backup Catalog, but only for the duration of the restore job. Additionally, it exposes a virtual disk group with prefix **tmpCollection** on the **Backup Policies** page, but only for the duration of the restore job. | This behavior can occur if your restore job has only locally pinned volumes or a mix of locally pinned and tiered volumes. If the restore job includes only tiered volumes, then this behavior will not occur. No user intervention is required. | Yes | No |
-| 18 | Locally pinned volumes | If you cancel a restore job and a controller failover occurs immediately afterwards, the restore job will show **Failed** instead of **Canceled**. If a restore job fails and a controller failover occurs immediately afterwards, the restore job will show **Canceled** instead of **Failed**. | This behavior can occur if your restore job has only locally pinned volumes or a mix of locally pinned and tiered volumes. If the restore job includes only tiered volumes, then this behavior will not occur. No user intervention is required. | Yes | No |
-| 19 |Locally pinned volumes | If you cancel a restore job or if a restore fails and then a controller failover occurs, an additional restore job appears on the **Jobs** page. | This behavior can occur if your restore job has only locally pinned volumes or a mix of locally pinned and tiered volumes. If the restore job includes only tiered volumes, then this behavior will not occur. No user intervention is required. | Yes | No |
-| 20 |Locally pinned volumes | If you try to convert a tiered volume (created and cloned with Update 1.2 or earlier) to a locally pinned volume and your device is running out of space or there is a cloud outage, then the clone(s) can be corrupted.| This problem occurs only with volumes that were created and cloned with pre-Update 2.1 software. This should be an infrequent scenario.|
-| 21 | Volume conversion | Do not update the ACRs attached to a volume while a volume conversion is in progress (tiered to locally pinned or vice versa). Updating the ACRs could result in data corruption. | If needed, update the ACRs prior to the volume conversion and do not make any further ACR updates while the conversion is in progress. |
+| 1 | Datenträgerquorum | In seltenen Fällen kann der Speicherpool offline geschaltet werden, wenn der Großteil der Datenträger im EBOD-Gehäuse eines 8600-Geräts getrennt wird, sodass kein Datenträgerquorum verfügbar ist. Der Speicherpool bleibt offline, auch wenn die Verbindung zu den Datenträgern wiederhergestellt wird. | Sie müssen das Gerät neu starten. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. | Ja | Nein |
+| 2 | Falsche Controller-ID | Beim Austausch eines Controllers kann es vorkommen, dass Controller 0 als Controller 1 angezeigt wird. Während des Controlleraustauschs kann die Controller-ID anfänglich als ID des Peercontrollers angezeigt werden, wenn das Image vom Peerknoten geladen wurde. In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. | Es ist keine Benutzeraktion erforderlich. Dieses Problem löst sich von selbst, nachdem der Controlleraustausch abgeschlossen ist. | Ja | Nein |
+| 3 | Speicherkonten | Das Verwenden des Speicherdiensts zum Löschen des Speicherkontos wird nicht unterstützt. Dies führt dazu, dass keine Benutzerdaten abgerufen werden können.| | Ja | Ja |
+| 4 | Gerätefailover | Mehrere Failover eines Volumecontainers von demselben Quellgerät auf verschiedene Zielgeräte werden nicht unterstützt. Das Failover von einem einzelnen nicht reagierenden Gerät auf mehrere Geräte führt dazu, dass die Volumecontainer auf dem ersten Gerät mit erfolgtem Failover die Dateneigentümerschaft verlieren. Wenn Sie diese Volumecontainer nach einem solchen Failover im klassischen Azure-Portal betrachten, werden sie anders angezeigt oder verhalten sie sich anders. | | Ja | Nein |
+| 5 | Installation | Während der Installation von StorSimple-Adapter für SharePoint müssen Sie die IP-Adresse eines Geräts angeben, damit die Installation erfolgreich abgeschlossen wird. | | Ja | Nein |
+| 6 | Webproxy | Wenn Ihre Webproxykonfiguration das Protokoll "HTTPS" verwendet, ist die Kommunikation zwischen dem Gerät und dem Dienst beeinträchtigt, und das Gerät wird offline geschaltet. Supportpakete werden bei diesem Vorgang ebenfalls generiert. Sie beanspruchen auf Ihrem Gerät erhebliche Ressourcen. | Stellen Sie sicher, dass "HTTP" als Protokoll für die Webproxy-URL angegeben ist. Weitere Informationen finden Sie unter [Konfigurieren des Webproxys für Ihr Gerät](storsimple-configure-web-proxy.md). | Ja | Nein |
+| 7 | Webproxy | Wenn Sie den Webproxy für ein registriertes Gerät konfigurieren und aktivieren, müssen Sie den aktiven Controller auf Ihrem Gerät neu starten. | | Ja | Nein |
+| 8 | Hohe Cloud-Latenzen und hohe E/A-Arbeitsauslastung | Wenn Ihr StorSimple-Gerät mit einer Kombination aus sehr hohen Cloud-Latenzen (mehrere Sekunden) und hoher E/A-Arbeitsauslastung konfrontiert wird, verschlechtert sich die Leistung der Gerätevolumes, und es tritt ggf. der E/A-Fehler "Gerät nicht bereit" auf. | Sie müssen die Gerätecontroller manuell neu starten oder ein Gerätefailover ausführen, um dieses Problem zu beheben. | Ja | Nein |
+| 9 | Azure PowerShell | Bei Verwendung des StorSimple-Cmdlets **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait**, um das erste Objekt zu markieren, damit ein neues **Volumecontainer** -Objekt erstellt werden kann, gibt das Cmdlet alle Objekte zurück. | Schließen Sie das Cmdlet wie folgt in Klammern ein:**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** | Ja | Ja |
+| 10| Migration | Wenn mehrere Volumecontainer für die Migration übergeben werden, ist der ETA für die neueste Sicherung nur für den ersten Volumecontainer korrekt. Außerdem tritt nach erfolgter Migration der ersten 4 Sicherungen im ersten Volumecontainer Parallelmigration auf. | Es wird empfohlen, immer nur einen Volumecontainer gleichzeitig zu migrieren. | Ja | Nein |
+| 11| Migration | Nach der Wiederherstellung werden Volumes nicht der Sicherungsrichtlinie oder dem virtuellen Datenträger hinzugefügt. | Zum Erstellen von Sicherungen müssen diese Volumes einer Sicherungsrichtlinie hinzugefügt werden. | Ja | Ja |
+| 12| Migration | Nach Abschluss die Migration darf das Gerät der 5000/7000 Serie nicht auf die migrierten Datencontainer zugreifen. | Es wird empfohlen, die migrierten Datencontainer zu löschen, nachdem die Migration vollständig abgeschlossen ist. | Ja | Nein |
+| 13| Klonen und Notfallwiederherstellung | Ein StorSimple-Gerät mit Update 1 kann für ein Gerät, auf dem ältere Software als Update 1 ausgeführt wird, keinen Klonvorgang bzw. keine Notfallwiederherstellung durchführen. | Das Zielgerät muss auf Update 1 aktualisiert werden, damit diese Operationen ausgeführt werden können. | Ja | Ja |
+| 14 | Migration | Die Konfigurationssicherung für die Migration kann auf einem Gerät der Serie 5000-7000 fehlschlagen, wenn Volumegruppen ohne zugehörige Volumes vorhanden sind. | Löschen Sie die leeren Volumegruppen ohne zugehörige Volumes, und wiederholen Sie dann die Konfigurationssicherung.| Ja | Nein |
+| 15 | Azure PowerShell-Cmdlets und lokale Volumes | Sie können über Azure PowerShell-Cmdlets kein lokales Volume erstellen. (Alle Volumes, die Sie mithilfe von Azure PowerShell erstellen, sind mehrstufig.) |Verwenden Sie immer den StorSimple Manager-Dienst, um lokale Volumes zu konfigurieren.| Ja | Nein |
+| 16 |Für lokale Volumes verfügbarer Speicherplatz | Wenn Sie ein lokales Volume löschen, wird der für neue Volumes verfügbare Speicherplatz möglicherweise nicht sofort aktualisiert. Der StorSimple Manager-Dienst aktualisiert den verfügbaren lokalen Speicherplatz ungefähr stündlich.| Warten Sie eine Stunde, bevor Sie versuchen, das neue Volume zu erstellen. | Ja | Nein |
+| 17 | Lokale Volumes | Der Wiederherstellungsauftrag macht die temporäre Momentaufnahmensicherung im Sicherungskatalog verfügbar, jedoch nur während der Dauer des Wiederherstellungsauftrags. Er macht außerdem eine Gruppe virtueller Datenträger mit dem Präfix **tmpCollection** auf der Seite **Sicherungsrichtlinien** verfügbar, jedoch nur während der Dauer des Wiederherstellungsauftrags. | Dieses Verhalten ist möglich, wenn der Wiederherstellungsauftrag nur lokale Volumes oder eine Mischung aus lokalen und mehrstufigen Volumes enthält. Wenn der Wiederherstellungsauftrag nur mehrstufige Volumes enthält, tritt dieses Verhalten nicht auf. Es ist kein Benutzereingriff erforderlich. | Ja | Nein |
+| 18 | Lokale Volumes | Wenn Sie einen Wiederherstellungsauftrag abbrechen und direkt danach ein Controllerfailover auftritt, zeigt der Wiederherstellungsauftrag **Fehler** anstelle von **Abgebrochen** an. Wenn es bei einem Wiederherstellungsauftrag zu einem Fehler kommt und direkt danach ein Controllerfailover auftritt, zeigt der Wiederherstellungsauftrag **Abgebrochen** anstelle von **Fehler** an. | Dieses Verhalten ist möglich, wenn der Wiederherstellungsauftrag nur lokale Volumes oder eine Mischung aus lokalen und mehrstufigen Volumes enthält. Wenn der Wiederherstellungsauftrag nur mehrstufige Volumes enthält, tritt dieses Verhalten nicht auf. Es ist kein Benutzereingriff erforderlich. | Ja | Nein |
+| 19 |Lokale Volumes | Wenn Sie einen Wiederherstellungsauftrag abbrechen oder es bei einer Wiederherstellung zu einem Fehler kommt und danach ein Controllerfailover auftritt, wird auf der Seite **Aufträge** ein zusätzlicher Wiederherstellungsauftrag angezeigt. | Dieses Verhalten ist möglich, wenn der Wiederherstellungsauftrag nur lokale Volumes oder eine Mischung aus lokalen und mehrstufigen Volumes enthält. Wenn der Wiederherstellungsauftrag nur mehrstufige Volumes enthält, tritt dieses Verhalten nicht auf. Es ist kein Benutzereingriff erforderlich. | Ja | Nein |
+| 20 |Lokale Volumes | Wenn Sie versuchen, ein mehrstufiges Volume (erstellt und geklont mit Update 1.2 oder früher) in ein lokales Volume zu konvertieren, und das Gerät nicht genügend Speicherplatz bietet oder die Cloud nicht verfügbar ist, kann dies zu einer Beschädigung des Klons/der Klone führen.| Dieses Problem tritt nur bei Volumes auf, die mit einer Softwareversion vor Update 2.1 erstellt und geklont wurden. Dieses Szenario sollte eher selten vorkommen.|
+| 21 | Volumekonvertierung | Aktualisieren Sie die einem Volume zugeordneten ACRs nicht, während eine Volumekonvertierung (mehrstufig in lokal oder umgekehrt) ausgeführt wird. Eine Aktualisierung der ACRs kann zur Datenbeschädigung führen. | Aktualisieren Sie die ACRs bei Bedarf vor der Volumekonvertierung, und nehmen Sie keine weiteren ACR-Updates vor, während die Konvertierung stattfindet. |
 
-## <a name="controller-and-firmware-updates-in-update-2.2"></a>Controller and firmware updates in Update 2.2
+## Updates des Controllers und der Firmware in Update 2.2
 
-This release has software-only updates. However, if you are updating from a version prior to Update 2, you will need to install driver, Storport, Spaceport, and (in some cases) disk firmware updates on your device.
+Diese Version enthält nur-Software-Updates. Wenn Sie jedoch von einer Version vor Update 2 aktualisieren, müssen Sie Treiber-, Storport-, Spaceport- und (in einigen Fällen) Datenträgerfirmware-Updates auf Ihrem Gerät installieren.
  
-For more information on how to install the driver, Storport, Spaceport, and disk firmware updates, see [install Update 2.2](storsimple-install-update-21.md) on your StorSimple device.
+Weitere Informationen zum Installieren von Treiber-, Storport-, Spaceport- und Datenträgerfirmware-Updates finden Sie unter [Installieren von Update 2.2](storsimple-install-update-21.md) auf Ihrem StorSimple-Gerät.
 
  
-## <a name="virtual-device-updates-in-update-2.2"></a>Virtual device updates in Update 2.2
+## Updates von virtuellen Geräten in Update 2.2
 
-This update cannot be applied to the virtual device. New virtual devices will need to be created. 
+Dieses Update kann nicht auf das virtuelle Gerät angewendet werden. Es müssen neue virtuelle Geräte erstellt werden.
 
-## <a name="next-step"></a>Next step
+## Nächster Schritt
 
-Learn how to [install Update 2.2](storsimple-install-update-21.md) on your StorSimple device.
+Erfahren Sie, wie Sie [Update 2.2 auf Ihrem StorSimple-Gerät installieren](storsimple-install-update-21.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

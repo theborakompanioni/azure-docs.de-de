@@ -1,72 +1,69 @@
 
-### <a name="basic-elastic-pool-limits"></a>Basic elastic pool limits
+### Grenzwerte für elastische Pools – Basic
 
-|   |  |
+| | |
 |---|:---:|
-| Max eDTUs per pool | &nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
-| Max storage per pool (GB)*| &nbsp;&nbsp;&nbsp;&nbsp;10 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;39 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;73 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;117 |
-| Max number of databases per pool | &nbsp;&nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 |
-| Max in-memory OLTP storage (GB) per pool| N/A |
-| Max concurrent workers per pool | &nbsp;&nbsp;&nbsp;200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp;&nbsp;2400 |
-| Max concurrent logins per pool | &nbsp;&nbsp;&nbsp;200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp;&nbsp;2400 |
-| Max concurrent sessions per pool | 4800 &nbsp;9600 &nbsp; 19200 &nbsp; 28800 &nbsp; 28800 |
-| Max eDTUs per database* | 5 |
-| Min eDTUs per database* | 0,5 |
-| Max storage per database (GB)** | 2 |
-| Point-in-time-restore | Any point last 7 days |
-| Disaster recovery | Active Geo-Replication |
+| Maximale Anzahl von eDTUs pro Pool | &nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
+| Max. Speicherkapazität pro Pool (GB)*| &nbsp;&nbsp;&nbsp;&nbsp;10 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;39 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;73 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;117 |
+| Max. Anzahl von Datenbanken pro Pool | &nbsp;&nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB)| – |
+| Max. gleichzeitige Worker pro Pool | &nbsp;&nbsp;&nbsp;200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp;&nbsp;2400 |
+| Max. gleichzeitige Anmeldungen pro Pool | &nbsp;&nbsp;&nbsp;200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp;&nbsp;2400 |
+| Max. gleichzeitige Sitzungen pro Pool | 4800 &nbsp;9600 &nbsp; 19.200 &nbsp; 28.800 &nbsp; 28.800 |
+| Max. Anzahl von eDTUs pro Datenbank* | 5 |
+| Min. Anzahl von eDTUs pro Datenbank* | 0,5 |
+| Max. Speicherkapazität pro Datenbank (GB)** | 2 |
+| Point-in-Time-Wiederherstellung | Beliebiger Punkt der letzten sieben Tage |
+| Notfallwiederherstellung | Aktive Georeplikation |
 |||
 
-* Max and Min eDTU’s per database may be set to any of the listed values as long as the pool DTU size selected is at least as great as the max eDTUs per DB 
+* Die maximale und minimale Anzahl von eDTUs pro Datenbank kann auf einen der aufgeführten Werte festgelegt werden, sofern die ausgewählte Pool-DTU-Größe mindestens der maximalen Anzahl von eDTUs pro Datenbank entspricht.
 
-** Elastic database share pool storage, so database storage is limited to the smaller of the remaining pool storage or max storage per database
+**Elastische Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenbankspeicher auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt.
 
 
-### <a name="standard-elastic-pool-limits"></a>Standard elastic pool limits
+### Grenzwerte für elastische Pools – Standard
 
-|   |  |
+| | |
 |---|:---:|
-| Max eDTUs per pool | &nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
-| Max storage per pool (GB)*| &nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
-| Max number of databases per pool | &nbsp;200 &nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 |
-| Max in-memory OLTP storage (GB) per pool| N/A |
-| Max concurrent workers per pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
-| Max concurrent logins per pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
-| Max concurrent sessions per pool | 4800 &nbsp; 9600 &nbsp;19200 &nbsp;28800 &nbsp;&nbsp; 28800 |
-| Max eDTUs per database* | 10, 20, 50, 100 |
-| Min eDTUs per database* | 0, 10, 20, 50, 100 |
-| Max storage per database (GB)** | 250 |
-| Point-in-time-restore | Any point last 35 days |
-| Disaster recovery | Active Geo-Replication |
+| Maximale Anzahl von eDTUs pro Pool | &nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
+| Max. Speicherkapazität pro Pool (GB)*| &nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
+| Max. Anzahl von Datenbanken pro Pool | &nbsp;200 &nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400 |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB)| – |
+| Max. gleichzeitige Worker pro Pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
+| Max. gleichzeitige Anmeldungen pro Pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
+| Max. gleichzeitige Sitzungen pro Pool | 4800 &nbsp; 9600 &nbsp;19.200 &nbsp;28.800 &nbsp;&nbsp; 28.800 |
+| Max. Anzahl von eDTUs pro Datenbank* | 10, 20, 50, 100 |
+| Min. Anzahl von eDTUs pro Datenbank* | 0, 10, 20, 50, 100 |
+| Max. Speicherkapazität pro Datenbank (GB)** | 250 |
+| Point-in-Time-Wiederherstellung | Beliebiger Punkt der letzten 35 Tage |
+| Notfallwiederherstellung | Aktive Georeplikation |
 |||
 
-* Max and Min eDTU’s per database may be set to any of the listed values as long as the pool DTU size selected is at least as great as the max eDTUs per DB 
+* Die maximale und minimale Anzahl von eDTUs pro Datenbank kann auf einen der aufgeführten Werte festgelegt werden, sofern die ausgewählte Pool-DTU-Größe mindestens der maximalen Anzahl von eDTUs pro Datenbank entspricht.
 
-** Elastic database share pool storage, so database storage is limited to the smaller of the remaining pool storage or max storage per database
+**Elastische Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenbankspeicher auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt.
 
-### <a name="premium-elastic-pool-limits"></a>Premium elastic pool limits
+### Grenzwerte für elastische Pools – Premium
 
-|   |  |
+| | |
 |---|:---:|
-| Max eDTUs per pool | 125 &nbsp;&nbsp;&nbsp; 250 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 1000 &nbsp;&nbsp;&nbsp; &nbsp;1500 |
-| Max storage per pool (GB)*| 250 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 750 &nbsp;&nbsp;&nbsp;&nbsp; 750 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 750 |
-| Max number of databases per pool | 50 |
-| Max in-memory OLTP storage (GB) per pool| N/A |
-| Max concurrent workers per pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
-| Max concurrent logins per pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
-| Max concurrent sessions per pool | 4800 &nbsp; 9600 &nbsp;19200 &nbsp;28800 &nbsp;&nbsp; 28800 |
-| Max eDTUs per database* | 125, 250, 500, 1000 |
-| Min eDTUs per database* | 0, 125, 250, 500, 1000 |
-| Max storage per database (GB)** | 500 |
-| Point-in-time-restore | Any point last 35 days |
-| Disaster recovery | Active Geo-Replication |
+| Maximale Anzahl von eDTUs pro Pool | 125 &nbsp;&nbsp;&nbsp; 250 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 1000 &nbsp;&nbsp;&nbsp; &nbsp;1500 |
+| Max. Speicherkapazität pro Pool (GB)*| 250 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 750 &nbsp;&nbsp;&nbsp;&nbsp; 750 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 750 |
+| Max. Anzahl von Datenbanken pro Pool | 50 |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB)| – |
+| Max. gleichzeitige Worker pro Pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
+| Max. gleichzeitige Anmeldungen pro Pool | &nbsp;&nbsp;200 &nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp;&nbsp;&nbsp; 2400 |
+| Max. gleichzeitige Sitzungen pro Pool | 4800 &nbsp; 9600 &nbsp;19.200 &nbsp;28.800 &nbsp;&nbsp; 28.800 |
+| Max. Anzahl von eDTUs pro Datenbank* | 125, 250, 500, 1000 |
+| Min. Anzahl von eDTUs pro Datenbank* | 0, 125, 250, 500, 1000 |
+| Max. Speicherkapazität pro Datenbank (GB)** | 500 |
+| Point-in-Time-Wiederherstellung | Beliebiger Punkt der letzten 35 Tage |
+| Notfallwiederherstellung | Aktive Georeplikation |
 |||
 
-* Max and Min eDTU’s per database may be set to any of the listed values as long as the pool DTU size selected is at least as great as the max eDTUs per DB 
+* Die maximale und minimale Anzahl von eDTUs pro Datenbank kann auf einen der aufgeführten Werte festgelegt werden, sofern die ausgewählte Pool-DTU-Größe mindestens der maximalen Anzahl von eDTUs pro Datenbank entspricht.
 
-** Elastic database share pool storage, so database storage is limited to the smaller of the remaining pool storage or max storage per database
+**Elastische Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenbankspeicher auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

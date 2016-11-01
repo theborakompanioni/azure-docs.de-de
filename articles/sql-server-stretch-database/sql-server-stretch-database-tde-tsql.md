@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Enable Transparent Data Encryption (TDE) for SQL Server Stretch Database on Azure TSQL | Microsoft Azure"
-   description="Enable Transparent Data Encryption (TDE) for SQL Server Stretch Database on Azure TSQL"
+   pageTitle="Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure T-SQL | Microsoft Azure"
+   description="Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure T-SQL"
    services="sql-server-stretch-database"
    documentationCenter=""
    authors="douglaslMS"
-   manager="jhubbard"
+   manager=""
    editor=""/>
 
 <tags
@@ -16,66 +16,61 @@
    ms.date="06/14/2016"
    ms.author="douglaslMS"/>
 
-
-# <a name="enable-transparent-data-encryption-(tde)-for-stretch-database-on-azure-(transact-sql)"></a>Enable Transparent Data Encryption (TDE) for Stretch Database on Azure (Transact-SQL)
+# Aktivieren von Transparent Data Encryption (TDE) für eine Stretch-Datenbank in Azure (Transact-SQL)
 > [AZURE.SELECTOR]
-- [Azure portal](sql-server-stretch-database-encryption-tde.md)
+- [Azure-Portal](sql-server-stretch-database-encryption-tde.md)
 - [TSQL](sql-server-stretch-database-tde-tsql.md)
 
-Transparent Data Encryption (TDE) helps protect against the threat of malicious activity by performing real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
+Transparent Data Encryption (TDE) bietet Schutz vor der Bedrohung durch böswillige Aktivitäten. Hierzu werden die Datenbank, die dazugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind.
 
-TDE encrypts the storage of an entire database by using a symmetric key called the database encryption key. The database encryption key is protected by a built-in server certificate. The built-in server certificate is unique for each Azure server. Microsoft automatically rotates these certificates at least every 90 days. For a general description of TDE, see [Transparent Data Encryption (TDE)].
+TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. Der Datenbank-Verschlüsselungsschlüssel ist mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Azure-Server einmalig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparente Datenverschlüsselung (TDE)].
 
-##<a name="enabling-encryption"></a>Enabling Encryption
+##Aktivieren der Verschlüsselung
 
-To enable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
+Befolgen Sie folgende Schritte zum Aktivieren von TDE für eine Azure-Datenbank, die die Daten speichert, die aus einer SQL Server Datenbank migriert wurden, für die Stretch aktiviert ist:
 
-1. Connect to the *master* database on the Azure server hosting the database using a login that is an administrator or a member of the **dbmanager** role in the master database
-2. Execute the following statement to encrypt the database.
+1. Stellen Sie eine Verbindung mit der Datenbank *master* auf dem Azure-Server her, auf dem die Datenbank gehostet wird. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
+2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
-##<a name="disabling-encryption"></a>Disabling Encryption
+##Deaktivieren der Verschlüsselung
 
-To disable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
+Befolgen Sie folgende Schritte zum Deaktivieren von TDE für eine Azure-Datenbank, die die Daten speichert, die aus einer SQL Server Datenbank migriert wurden, für die Stretch aktiviert ist:
 
-1. Connect to the *master* database using a login that is an administrator or a member of the **dbmanager** role in the master database
-2. Execute the following statement to encrypt the database.
+1. Stellen Sie eine Verbindung mit der Datenbank *master* her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
+2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
-##<a name="verifying-encryption"></a>Verifying Encryption
+##Überprüfen der Verschlüsselung
 
-To verify encryption status for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
+Befolgen Sie folgende Schritte zur Überprüfung des Verschlüsselungsstatus für eine Azure-Datenbank, die die Daten speichert, die aus einer SQL Server Datenbank migriert wurden, für die Stretch aktiviert ist:
 
-1. Connect to the *master* or instance database using a login that is an administrator or a member of the **dbmanager** role in the master database
-2. Execute the following statement to encrypt the database.
+1. Stellen Sie eine Verbindung mit der Datenbank *master* oder einer Instanzdatenbank her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
+2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
 
 ```sql
 SELECT
-    [name],
-    [is_encrypted]
+	[name],
+	[is_encrypted]
 FROM
-    sys.databases;
+	sys.databases;
 ```
 
-A result of ```1``` indicates an encrypted database, ```0``` indicates a non-encrypted database.
+Das Ergebnis ```1``` steht für eine verschlüsselte Datenbank, und mit ```0``` wird eine nicht verschlüsselte Datenbank angegeben.
 
 
 <!--Anchors-->
-[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparente Datenverschlüsselung (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->
 
 <!--Link references-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

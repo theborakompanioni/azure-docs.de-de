@@ -1,164 +1,163 @@
 <properties
-    pageTitle="Signing Key Rollover in Azure AD | Microsoft Azure"
-    description="This article discusses the signing key rollover best practices for Azure Active Directory"
-    services="active-directory"
-    documentationCenter=".net"
-    authors="gsacavdm"
-    manager="krassk"
-    editor=""/>
+	pageTitle="Rollover von Signaturschlüsseln in Azure AD | Microsoft Azure"
+	description="Dieser Artikel beschreibt bewährte Verfahren für das Rollover von Signaturschlüsseln für Azure Active Directory."
+	services="active-directory"
+	documentationCenter=".net"
+	authors="gsacavdm"
+	manager="krassk"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/18/2016"
-    ms.author="gsacavdm"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/18/2016"
+	ms.author="gsacavdm"/>
 
+# Rollover von Signaturschlüsseln in Azure Active Directory
 
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Signing key rollover in Azure Active Directory
+In diesem Thema wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Azure Active Directory (Azure AD) zum Signieren von Sicherheitstoken verwendet werden. Es ist wichtig zu beachten, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Azure AD verwenden, müssen den Schlüsselrolloverprozess programmgesteuert abwickeln können oder über einen regelmäßigen manuellen Rolloverprozess verfügen. In diesem Artikel erfahren Sie, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf aktualisieren oder einen regelmäßigen manuellen Rolloverprozess für Schlüssel einrichten.
 
-This topic discusses what you need to know about the public keys that are used in Azure Active Directory (Azure AD) to sign security tokens. It is important to note that these keys rollover on a periodic basis and, in an emergency, could be rolled over immediately. All applications that use Azure AD should be able to programmatically handle the key rollover process or establish a periodic manual rollover process. Continue reading to understand how the keys work, how to assess the impact of the rollover to your application and how to update your application or establish a periodic manual rollover process to handle key rollover if necessary.
+## Übersicht über Signaturschlüssel in Azure AD
 
-## <a name="overview-of-signing-keys-in-azure-ad"></a>Overview of signing keys in Azure AD
+Azure AD verwendet die auf Branchenstandards basierende Verschlüsselung mit öffentlichem Schlüssel zum Einrichten einer Vertrauensstellung zwischen sich selbst und den Anwendungen, die Azure AD verwenden. Konkret funktioniert dies wie folgt: Azure AD verwendet einen Signaturschlüssel, der aus einem Paar mit einem öffentlichen und einem privaten Schlüssel besteht. Wenn sich ein Benutzer bei einer Anwendung anmeldet, die Azure AD für die Authentifizierung verwendet, erstellt Azure AD ein Sicherheitstoken, das Informationen zum Benutzer enthält. Das Token wird von Azure AD mithilfe seines privaten Schlüssels signiert, bevor es zur Anwendung zurückgesendet wird. Um zu überprüfen, ob das Token gültig ist und tatsächlich von Azure AD stammt, muss die Anwendung die Signatur des Tokens überprüfen. Hierzu wird der öffentliche, von Azure AD verfügbar gemachte Schlüssel verwendet, der im [OpenID Connect Discovery-Dokument](http://openid.net/specs/openid-connect-discovery-1_0.html) oder SAML/WS-Fed-[Verbundmetadaten-Dokument](active-directory-federation-metadata.md) des Mandanten enthalten ist.
 
-Azure AD uses public-key cryptography built on industry standards to establish trust between itself and the applications that use it. In practical terms, this works in the following way: Azure AD uses a signing key that consists of a public and private key pair. When a user signs in to an application that uses Azure AD for authentication, Azure AD creates a security token that contains information about the user. This token is signed by Azure AD using its private key before it is sent back to the application. To verify that the token is valid and actually originated from Azure AD, the application must validate the token’s signature using the public key exposed by Azure AD that is contained in the tenant’s [OpenID Connect discovery document](http://openid.net/specs/openid-connect-discovery-1_0.html) or SAML/WS-Fed [federation metadata document](active-directory-federation-metadata.md).
+Aus Sicherheitsgründen wird für den Signaturschlüssel von Azure AD regelmäßig ein Rollover durchgeführt, und bei einem Notfall kann auch sofort ein Rollover erfolgen. Jede in Azure AD integrierte Anwendung muss in der Lage sein, ein Schlüsselrollover zu verarbeiten, unabhängig davon, wie häufig dies geschieht. Wenn dies nicht der Fall ist und die Anwendung versucht, einen abgelaufenen Schlüssel zum Überprüfen der Signatur auf einem Token zu verwenden, schlägt die Anmeldeanforderung fehl.
 
-For security purposes, Azure AD’s signing key rolls on a periodic basis and, in the case of an emergency, could be rolled over immediately. Any application that integrates with Azure AD should be prepared to handle a key rollover event no matter how frequently it may occur. If it doesn’t, and your application attempts to use an expired key to verify the signature on a token, the sign-in request will fail.
+Im OpenID Connect Discovery-Dokument und Verbundmetadaten-Dokument ist immer mehr als ein gültiger Schlüssel verfügbar. Ihre Anwendung sollte einen der im Dokument angegebenen Schlüssel verwenden können, da ein Schlüssel z.B. geändert oder durch einen anderen ersetzt werden kann usw.
 
-There is always more than one valid key available in the OpenID Connect discovery document and the federation metadata document. Your application should be prepared to use any of the keys specified in the document, since one key may be rolled soon, another may be its replacement, and so forth.
+## Bewerten, ob Ihre Anwendung betroffen ist und welche Schritte erforderlich sind
 
-## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>How to assess if your application will be affected and what to do about it
+Die Art und Weise, wie Ihre Anwendung den Schlüsselrollover behandelt, hängt von Variablen ab, z.B. dem Typ der Anwendung oder dem Identitätsprotokoll und der Bibliothek. In den folgenden Abschnitten wird bewertet, ob die häufigsten Arten von Anwendungen vom Schlüsselrollover betroffen sind. Außerdem enthalten sie eine Anleitung, wie Sie die Anwendung aktualisieren, damit der automatische Rollover oder die manuelle Aktualisierung des Schlüssels unterstützt werden.
 
-How your application handles key rollover depends on variables such as the type of application or what identity protocol and library was used. The sections below assess whether the most common types of applications are impacted by the key rollover and provide guidance on how to update the application to support automatic rollover or manually update the key.
+* [Native Clientanwendungen mit Ressourcenzugriff](#nativeclient)
+* [Webanwendungen/-APIs mit Ressourcenzugriff](#webclient)
+* [Mit Azure App Services erstellte Webanwendungen/-APIs zum Schutz von Ressourcen](#appservices)
+* [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET OWIN OpenID Connect-, WS-Fed- oder WindowsAzureActiveDirectoryBearerAuthentication-Middleware](#owin)
+* [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET Core OpenID Connect- oder JwtBearerAuthentication-Middleware](#owincore)
+* [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung des Node.js-passport-azure-ad-Moduls](#passport)
+* [Mit Visual Studio 2015 erstellte Webanwendungen/-APIs zum Schutz von Ressourcen](#vs2015)
+* [Mit Visual Studio 2013 erstellte Webanwendungen zum Schutz von Ressourcen](#vs2013)
+* [Mit Visual Studio 2013 erstellte Web-APIs zum Schutz von Ressourcen](#vs2013_webapi)
+* [Mit Visual Studio 2012 erstellte Webanwendungen zum Schutz von Ressourcen](#vs2012)
+* [Mit Visual Studio 2010/2008 oder Windows Identity Foundation erstellte Webanwendungen zum Schutz von Ressourcen](#vs2010)
+* [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle](#other)
 
-* [Native client applications accessing resources](#nativeclient)
-* [Web applications / APIs accessing resources](#webclient)
-* [Web applications / APIs protecting resources and built using Azure App Services](#appservices)
-* [Web applications / APIs protecting resources using .NET OWIN OpenID Connect, WS-Fed or WindowsAzureActiveDirectoryBearerAuthentication middleware](#owin)
-* [Web applications / APIs protecting resources using .NET Core OpenID Connect or  JwtBearerAuthentication middleware](#owincore)
-* [Web applications / APIs protecting resources using Node.js passport-azure-ad module](#passport)
-* [Web applications / APIs protecting resources and created with Visual Studio 2015](#vs2015)
-* [Web applications protecting resources and created with Visual Studio 2013](#vs2013)
-* [Web APIs protecting resources and created with Visual Studio 2013](#vs2013_webapi)
-* [Web applications protecting resources and created with Visual Studio 2012](#vs2012)
-* [Web applications protecting resources and created with Visual Studio 2010, 2008 o using Windows Identity Foundation](#vs2010)
-* [Web applications / APIs protecting resources using any other libraries or manually implementing any of the supported protocols](#other)
+**Ausnahmen:**
 
-This guidance is **not** applicable for:
+* Bei Anwendungen, die über den Azure AD-Anwendungskatalog hinzugefügt werden, steht jeweils eine separate Anleitung für Signaturschlüssel zur Verfügung. (Dies gilt auch für benutzerdefinierte Anwendungen.) Weitere Informationen finden Sie [hier](active-directory-sso-certs.md).
+* Für lokale, mittels Anwendungsproxy veröffentlichte Anwendungen sind Signaturschlüssel nicht relevant.
 
-* Applications added from Azure AD Application Gallery (including Custom) have separate guidance with regards to signing keys. [More information.](active-directory-sso-certs.md)
-* On-premises applications published via application proxy don't have to worry about signing keys.
+### <a name="nativeclient"></a>Native Clientanwendungen mit Ressourcenzugriff
 
-### <a name="<a-name="nativeclient"></a>native-client-applications-accessing-resources"></a><a name="nativeclient"></a>Native client applications accessing resources
+Anwendungen, die nur auf Ressourcen zugreifen (also Microsoft Graph, KeyVault, Outlook-API und andere Microsoft-APIs), beziehen in der Regel lediglich ein Token und übergeben es an den Ressourcenbesitzer. Da sie keine Ressourcen schützen, untersuchen sie das Token nicht und müssen somit auch nicht sicherstellen, dass es ordnungsgemäß signiert ist.
 
-Applications that are only accessing resources (i.e Microsoft Graph, KeyVault, Outlook API and other Microsoft APIs) generally only obtain a token and pass it along to the resource owner. Given that they are not protecting any resources, they do not inspect the token and therefore do not need to ensure it is properly signed.
+Native Clientanwendungen (sowohl für Desktop- als auch für Mobilgeräte) fallen in diese Kategorie und werden durch den Rollover nicht beeinträchtigt.
 
-Native client applications, whether desktop or mobile, fall into this category and are thus not impacted by the rollover.
+### <a name="webclient"></a>Webanwendungen/-APIs mit Ressourcenzugriff
 
-### <a name="<a-name="webclient"></a>web-applications-/-apis-accessing-resources"></a><a name="webclient"></a>Web applications / APIs accessing resources
+Anwendungen, die nur auf Ressourcen zugreifen (also Microsoft Graph, KeyVault, Outlook-API und andere Microsoft-APIs), beziehen in der Regel lediglich ein Token und übergeben es an den Ressourcenbesitzer. Da sie keine Ressourcen schützen, untersuchen sie das Token nicht und müssen somit auch nicht sicherstellen, dass es ordnungsgemäß signiert ist.
 
-Applications that are only accessing resources (i.e Microsoft Graph, KeyVault, Outlook API and other Microsoft APIs) generally only obtain a token and pass it along to the resource owner. Given that they are not protecting any resources, they do not inspect the token and therefore do not need to ensure it is properly signed.
+Webanwendungen und Web-APIs, die den App-exklusiven Fluss (Clientanmeldeinformationen/Clientzertifikat) verwenden, fallen in diese Kategorie und werden durch den Rollover nicht beeinträchtigt.
 
-Web applications and web APIs that are using the app-only flow (client credentials / client certificate), fall into this category and are thus not impacted by the rollover.
+### <a name="appservices"></a>Mit Azure App Services erstellte Webanwendungen/-APIs zum Schutz von Ressourcen
 
-### <a name="<a-name="appservices"></a>web-applications-/-apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Web applications / APIs protecting resources and built using Azure App Services
+Die Authentifizierungs-/Autorisierungsfunktion von Azure App Services (EasyAuth) verfügt bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
-Azure App Services' Authentication / Authorization (EasyAuth) functionality already has the necessary logic to handle key rollover automatically.
+### <a name="owin"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET OWIN OpenID Connect-, WS-Fed- oder WindowsAzureActiveDirectoryBearerAuthentication-Middleware
 
-### <a name="<a-name="owin"></a>web-applications-/-apis-protecting-resources-using-.net-owin-openid-connect,-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Web applications / APIs protecting resources using .NET OWIN OpenID Connect, WS-Fed or WindowsAzureActiveDirectoryBearerAuthentication middleware
+Wenn Ihre Anwendung .NET OWIN OpenID Connect-, WS-Fed- oder WindowsAzureActiveDirectoryBearerAuthentication-Middleware verwendet, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
-If your application is using the .NET OWIN OpenID Connect, WS-Fed or WindowsAzureActiveDirectoryBearerAuthentication middleware, it already has the necessary logic to handle key rollover automatically.
-
-You can confirm that your application is using any of these by looking for any of the following snippets in your application's Startup.cs or Startup.Auth.cs
+Sie können überprüfen, ob Ihre Anwendung diese Komponenten nutzt, indem Sie in der Datei „Startup.cs“ oder „Startup.Auth.cs“ der Anwendung nach den folgenden Codeausschnitten suchen:
 
 ```
 app.UseOpenIdConnectAuthentication(
-     new OpenIdConnectAuthenticationOptions
-     {
-         // ...
-     });
+	 new OpenIdConnectAuthenticationOptions
+	 {
+		 // ...
+	 });
 ```
 ```
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-     // ...
-    });
+	 // ...
+ 	});
 ```
 ```
  app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-     {
-     // ...
-     });
+	 new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+	 {
+	 // ...
+	 });
 ```
 
-### <a name="<a-name="owincore"></a>web-applications-/-apis-protecting-resources-using-.net-core-openid-connect-or-jwtbearerauthentication-middleware"></a><a name="owincore"></a>Web applications / APIs protecting resources using .NET Core OpenID Connect or  JwtBearerAuthentication middleware
+### <a name="owincore"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET Core OpenID Connect- oder JwtBearerAuthentication-Middleware
 
-If your application is using the .NET Core OWIN OpenID Connect  or JwtBearerAuthentication middleware, it already has the necessary logic to handle key rollover automatically.
+Wenn Ihre Anwendung .NET Core OWIN OpenID Connect- oder JwtBearerAuthentication-Middleware verwendet, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
-You can confirm that your application is using any of these by looking for any of the following snippets in your application's Startup.cs or Startup.Auth.cs
+Sie können überprüfen, ob Ihre Anwendung diese Komponenten nutzt, indem Sie in der Datei „Startup.cs“ oder „Startup.Auth.cs“ der Anwendung nach den folgenden Codeausschnitten suchen:
 
 ```
 app.UseOpenIdConnectAuthentication(
-     new OpenIdConnectAuthenticationOptions
-     {
-         // ...
-     });
+	 new OpenIdConnectAuthenticationOptions
+	 {
+		 // ...
+	 });
 ```
 ```
 app.UseJwtBearerAuthentication(
     new JwtBearerAuthenticationOptions
     {
-     // ...
-    });
+	 // ...
+ 	});
 ```
 
-### <a name="<a-name="passport"></a>web-applications-/-apis-protecting-resources-using-node.js-passport-azure-ad-module"></a><a name="passport"></a>Web applications / APIs protecting resources using Node.js passport-azure-ad module
+### <a name="passport"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung des Node.js-passport-azure-ad-Moduls
 
-If your application is using the Node.js passport-ad module, it already has the necessary logic to handle key rollover automatically.
+Wenn Ihre Anwendung das Node.js-passport-ad-Modul verwendet, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
-You can confirm that your application passport-ad by searching for the following snippet in your application's app.js
+Sie können überprüfen, ob Ihre Anwendung passport-ad verwendet, indem Sie in der Datei „app.js“ der Anwendung nach dem folgenden Codeausschnitt suchen:
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 passport.use(new OIDCStrategy({
-    //...
+	//...
 ));
 ```
 
-### <a name="<a-name="vs2015"></a>web-applications-/-apis-protecting-resources-and-created-with-visual-studio-2015"></a><a name="vs2015"></a>Web applications / APIs protecting resources and created with Visual Studio 2015
+### <a name="vs2015"></a>Mit Visual Studio 2015 erstellte Webanwendungen/-APIs zum Schutz von Ressourcen
 
-If your application was built using a web application template in Visual Studio 2015 and you selected **Work And School Accounts** from the **Change Authentication** menu, it already has the necessary logic to handle key rollover automatically. This logic, embedded in the OWIN OpenID Connect middleware, retrieves and caches the keys from the OpenID Connect discovery document and periodically refreshes them.
+Wenn Ihre Anwendung mithilfe einer Webanwendungsvorlage in Visual Studio 2015 erstellt wurde und Sie im Menü **Authentifizierung ändern** die Option **Geschäfts- und Schulkonten** ausgewählt haben, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers. Mit dieser Logik, die in die OWIN OpenID Connect-Middleware eingebettet ist, werden die Schlüssel aus dem OpenID Connect Discovery-Dokument abgerufen und zwischengespeichert und regelmäßig aktualisiert.
 
-If you added authentication to your solution manually, your application might not have the necessary key rollover logic. You will need to write it yourself, or follow the steps in [Web applications / APIs using any other libraries or manually implementing any of the supported protocols.](#other).
+Wenn Sie die Authentifizierung Ihrer Lösung manuell hinzugefügt haben, verfügt die Anwendung unter Umständen nicht über die erforderliche Logik für einen Schlüsselrollover. Sie müssen diese Logik selbst erstellen oder die Schritte unter [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle](#other) ausführen.
 
-### <a name="<a-name="vs2013"></a>web-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Web applications protecting resources and created with Visual Studio 2013
+### <a name="vs2013"></a>Mit Visual Studio 2013 erstellte Webanwendungen zum Schutz von Ressourcen
 
-If your application was built using a web application template in Visual Studio 2013 and you selected **Organizational Accounts** from the **Change Authentication** menu, it already has the necessary logic to handle key rollover automatically. This logic stores your organization’s unique identifier and the signing key information in two database tables associated with the project. You can find the connection string for the database in the project’s Web.config file.
+Wenn Ihre Anwendung mithilfe einer Webanwendungsvorlage in Visual Studio 2013 erstellt wurde und Sie im Menü **Authentifizierung ändern** die Option **Organisationskonten** ausgewählt haben, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers. Diese Logik speichert den eindeutigen Bezeichner Ihrer Organisation und die Signaturschlüsselinformationen in zwei Datenbanktabellen, die dem Projekt zugeordnet sind. Sie finden die Verbindungszeichenfolge für die Datenbank in der „Web.config“-Datei des Projekts.
 
-If you added authentication to your solution manually, your application might not have the necessary key rollover logic. You will need to write it yourself, or follow the steps in [Web applications / APIs using any other libraries or manually implementing any of the supported protocols.](#other).
+Wenn Sie die Authentifizierung Ihrer Projektmappe manuell hinzugefügt haben, verfügt die Anwendung unter Umständen nicht über die erforderliche Logik für einen Schlüsselrollover. Sie müssen diese Logik selbst erstellen oder die Schritte unter [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle](#other) ausführen.
 
-The following steps will help you verify that the logic is working properly in your application.
+Die folgenden Schritte helfen Ihnen dabei, sicherzustellen, dass die Logik in Ihrer Anwendung korrekt funktioniert.
 
-1. In Visual Studio 2013, open the solution, and then click on the **Server Explorer** tab on the right window.
-2. Expand **Data Connections**, **DefaultConnection**, and then **Tables**. Locate the **IssuingAuthorityKeys** table, right-click it, and then click **Show Table Data**.
-3. In the **IssuingAuthorityKeys** table, there will be at least one row, which corresponds to the thumbprint value for the key. Delete any rows in the table.
-4. Right-click the **Tenants** table, and then click **Show Table Data**.
-5. In the **Tenants** table, there will be at least one row, which corresponds to a unique directory tenant identifier. Delete any rows in the table. If you don't delete the rows in both the **Tenants** table and **IssuingAuthorityKeys** table, you will get an error at runtime.
-6. Build and run the application. After you have logged in to your account, you can stop the application.
-7. Return to the **Server Explorer** and look at the values in the **IssuingAuthorityKeys** and **Tenants** table. You’ll notice that they have been automatically repopulated with the appropriate information from the federation metadata document.
+1. Öffnen Sie die Projektmappe in Visual Studio 2013, und klicken Sie im rechten Fensterbereich auf die Registerkarte **Server-Explorer**.
+2. Erweitern Sie **Datenverbindungen**, **DefaultConnection** und anschließend **Tabellen**. Suchen Sie die Tabelle **IssuingAuthorityKeys**, klicken Sie mit der rechten Maustaste darauf, und klicken Sie anschließend auf **Tabellendaten anzeigen**.
+3. In der Tabelle **IssuingAuthorityKeys** befindet sich mindestens eine Zeile, die dem Fingerabdruckwert des Schlüssels entspricht. Löschen Sie alle Zeilen in der Tabelle.
+4. Klicken Sie mit der rechten Maustaste auf die Tabelle **Mandanten**, und klicken Sie anschließend auf **Tabellendaten anzeigen**.
+5. Die Tabelle **Mandanten** enthält mindestens eine Zeile, die einer eindeutigen Verzeichnismandanten-ID entspricht. Löschen Sie alle Zeilen in der Tabelle. Wenn Sie die Zeilen in den Tabellen **Mandanten** und **IssuingAuthorityKeys** nicht löschen, erhalten Sie einen Laufzeitfehler.
+6. Erstellen Sie die Anwendung, und führen Sie sie aus. Wenn Sie sich bei Ihrem Konto angemeldet haben, können Sie die Anwendung anhalten.
+7. Kehren Sie zum **Server-Explorer** zurück, und sehen Sie sich die Werte in den Tabellen **IssuingAuthorityKeys** und **Mandanten** an. Sie werden feststellen, dass sie automatisch mit den entsprechenden Informationen aus dem Verbundmetadaten-Dokument aufgefüllt worden sind.
 
-### <a name="<a-name="vs2013"></a>web-apis-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Web APIs protecting resources and created with Visual Studio 2013
+### <a name="vs2013"></a>Mit Visual Studio 2013 erstellte Web-APIs zum Schutz von Ressourcen
 
-If you created a web API application in Visual Studio 2013 using the Web API template, and then selected **Organizational Accounts** from the **Change Authentication** menu, you already have the necessary logic in your application.
+Wenn Sie eine Web-API-Anwendung mithilfe der Web-API-Vorlage in Visual Studio 2013 erstellt und im Menü **Authentifizierung ändern** die Option **Organisationskonten** ausgewählt haben, verfügt sie bereits über die erforderliche Logik für einen Schlüsselrollover.
 
-If you manually configured authentication, follow the instructions below to learn how to configure your Web API to automatically update its key information.
+Wenn Sie die Authentifizierung manuell konfiguriert haben, gehen Sie folgendermaßen vor, um zu erfahren, wie Sie Ihre Web-API konfigurieren, damit die Schlüsselinformationen automatisch aktualisiert werden.
 
-The following code snippet demonstrates how to get the latest keys from the federation metadata document, and then use the [JWT Token Handler](https://msdn.microsoft.com/library/dn205065.aspx) to validate the token. The code snippet assumes that you will use your own caching mechanism for persisting the key to validate future tokens from Azure AD, whether it be in a database, configuration file, or elsewhere.
+Der folgende Codeausschnitt veranschaulicht, wie die neuesten Schlüssel aus dem Verbundmetadaten-Dokument abgerufen werden. Verwenden Sie anschließend den [JWT-Tokenhandler](https://msdn.microsoft.com/library/dn205065.aspx), um das Token zu überprüfen. Bei diesem Codeausschnitt wird davon ausgegangen, dass Sie Ihre eigenen Verfahren zum Zwischenspeichern verwenden, um den Schlüssel zum Überprüfen zukünftiger Token von Azure AD in einer Datenbank, Konfigurationsdatei usw. beizubehalten.
 
 ```
 using System;
@@ -248,29 +247,29 @@ namespace JWTValidation
 }
 ```
 
-### <a name="<a-name="vs2012"></a>web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Web applications protecting resources and created with Visual Studio 2012
+### <a name="vs2012"></a>Mit Visual Studio 2012 erstellte Webanwendungen zum Schutz von Ressourcen
 
-If your application was built in Visual Studio 2012, you probably used the Identity and Access Tool to configure your application. It’s also likely that you are using the [Validating Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). The VINR is responsible for maintaining information about trusted identity providers (Azure AD) and the keys used to validate tokens issued by them. The VINR also makes it easy to automatically update the key information stored in a Web.config file by downloading the latest federation metadata document associated with your directory, checking if the configuration is out of date with the latest document, and updating the application to use the new key as necessary.
+Wenn Ihre Anwendung in Visual Studio 2012 erstellt wurde, haben Sie wahrscheinlich das Identitäts- und Zugriffstool zum Konfigurieren Ihrer Anwendung verwendet. Möglicherweise verwenden Sie auch die [Validierung der Ausstellernamenregistration (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). Die VINR ist für die Verwaltung von Informationen zu vertrauenswürdigen Identitätsanbietern (Azure AD) und den Schlüsseln, die zum Überprüfen der von ihnen ausgestellten Token verwendet werden, zuständig. Die VINR erleichtert es zudem, die in einer „Web.config“-Datei gespeicherten Schlüsselinformationen automatisch zu aktualisieren, indem das aktuelle Ihrem Verzeichnis zugeordnete Verbundmetadaten-Dokument heruntergeladen wird. Mit dem aktuellen Dokument wird geprüft, ob die Konfiguration veraltet ist, und bei Bedarf wird die Anwendung aktualisiert, sodass der neue Schlüssel verwendet wird.
 
-If you created your application using any of the code samples or walkthrough documentation provided by Microsoft, the key rollover logic is already included in your project. You will notice that the code below already exists in your project. If your application does not already have this logic, follow the steps below to add it and to verify that it’s working correctly.
+Wenn Sie die Anwendung mithilfe eines der Codebeispiele oder der von Microsoft bereitgestellten Dokumentation zur exemplarischen Vorgehensweise erstellt haben, ist die Logik für das Schlüsselrollover in Ihrem Projekt bereits enthalten. Beachten Sie, dass der folgende Code in Ihrem Projekt bereits vorhanden ist. Wenn Ihre Anwendung diese Logik noch nicht enthält, führen Sie die folgenden Schritte aus, um sie hinzuzufügen und um sicherzustellen, dass sie korrekt funktioniert.
 
-1. In **Solution Explorer**, add a reference to the **System.IdentityModel** assembly for the appropriate project.
-2. Open the **Global.asax.cs** file and add the following using directives:
+1. Fügen Sie im **Projektmappen-Explorer** einen Verweis auf die **System.IdentityModel**-Assembly für das entsprechende Projekt hinzu.
+2. Öffnen Sie die Datei **Global.asax.cs**, und fügen Sie die folgenden using-Direktiven hinzu:
 ```
 using System.Configuration;
 using System.IdentityModel.Tokens;
 ```
-3. Add the following method to the **Global.asax.cs** file:
+3. Fügen Sie der Datei **Global.asax.cs** die folgende Methode hinzu:
 ```
 protected void RefreshValidationSettings()
 {
-    string configPath = AppDomain.CurrentDomain.BaseDirectory + "\\" + "Web.config";
+    string configPath = AppDomain.CurrentDomain.BaseDirectory + "\" + "Web.config";
     string metadataAddress =
                   ConfigurationManager.AppSettings["ida:FederationMetadataLocation"];
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
 }
 ```
-4. Invoke the **RefreshValidationSettings()** method in the **Application_Start()** method in **Global.asax.cs** as shown:
+4. Rufen Sie wie folgt die Methode **RefreshValidationSettings()** in der Methode **Application\_Start()** in **Global.asax.cs** auf:
 ```
 protected void Application_Start()
 {
@@ -280,11 +279,11 @@ protected void Application_Start()
 }
 ```
 
-Once you have followed these steps, your application’s Web.config will be updated with the latest information from the federation metadata document, including the latest keys. This update will occur every time your application pool recycles in IIS; by default IIS is set to recycle applications every 29 hours.
+Nachdem Sie diese Schritte ausgeführt haben, wird die „Web.config“-Datei Ihrer Anwendung mit den neuesten Informationen aus den Verbundmetadaten-Dokument, einschließlich der neuesten Schlüssel, aktualisiert. Diese Aktualisierung erfolgt jedes Mal, wenn Ihr Anwendungspool in IIS wiederverwendet wird. Standardmäßig ist IIS so eingestellt, dass Anwendungen alle 29 Stunden wiederverwendet werden.
 
-Follow the steps below to verify that the key rollover logic is working.
+Gehen Sie folgendermaßen vor, um sicherzustellen, dass die Logik für das Schlüsselrollover funktioniert.
 
-1. After you have verified that your application is using the code above, open the **Web.config** file and navigate to the **<issuerNameRegistry>** block, specifically looking for the following few lines:
+1. Wenn Sie sich vergewissert haben, dass Ihre Anwendung den oben dargestellten Code verwendet, öffnen Sie die Datei **Web.config**, navigieren Sie zum Block **<issuerNameRegistry>**, und suchen Sie speziell nach den folgenden Zeilen:
 ```
 <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -292,42 +291,38 @@ Follow the steps below to verify that the key rollover logic is working.
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
 ```
-2. In the **<add thumbprint=””>** setting, change the thumbprint value by replacing any character with a different one. Save the **Web.config** file.
+2. Ändern Sie in der Einstellung **<add thumbprint=””>** den Fingerabdruckwert, indem Sie ein beliebiges Zeichen durch ein anderes ersetzen. Speichern Sie die Datei **Web.config**.
 
-3. Build the application, and then run it. If you can complete the sign-in process, your application is successfully updating the key by downloading the required information from your directory’s federation metadata document. If you are having issues signing in, ensure the changes in your application are correct by reading the [Adding Sign-On to Your Web Application Using Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) topic, or downloading and inspecting the following code sample: [Multi-Tenant Cloud Application for Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
-
-
-### <a name="<a-name="vs2010"></a>web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-(wif)-v1.0-for-.net-3.5"></a><a name="vs2010"></a>Web applications protecting resources and created with Visual Studio 2008 or 2010 and Windows Identity Foundation (WIF) v1.0 for .NET 3.5
-
-If you built an application on WIF v1.0, there is no provided mechanism to automatically refresh your application’s configuration to use a new key.
-
-- *Easiest way* Use the FedUtil tooling included in the WIF SDK, which can retrieve the latest metadata document and update your configuration.
-- Update your application to .NET 4.5, which includes the newest version of WIF located in the System namespace. You can then use the [Validating Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) to perform automatic updates of the application’s configuration.
-- Perform a manual rollover as per the instructions at the end of this guidance document.
-
-Instructions to use the FedUtil to update your configuration:
-
-1. Verify that you have the WIF v1.0 SDK installed on your development machine for Visual Studio 2008 or 2010. You can [download it from here](https://www.microsoft.com/en-us/download/details.aspx?id=4451) if you have not yet installed it.
-2. In Visual Studio, open the solution, and then right-click the applicable project and select **Update federation metadata**. If this option is not available, FedUtil and/or the WIF v1.0 SDK has not been installed.
-3. From the prompt, select **Update** to begin updating your federation metadata. If you have access to the server environment where the application is hosted, you can optionally use FedUtil’s [automatic metadata update scheduler](https://msdn.microsoft.com/library/ee517272.aspx).
-4. Click **Finish** to complete the update process.
-
-### <a name="<a-name="other"></a>web-applications-/-apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Web applications / APIs protecting resources using any other libraries or manually implementing any of the supported protocols
-
-If you are using some other library or manually implemented any of the supported protocols, you'll need to review the library or your implementation to ensure that the key is being retrieved from either the OpenID Connect discovery document or the federation metadata document. One way to check for this is to do a search in your code or the library's code for any calls out to either the OpenID discovery document or the federation metadata document.
-
-If they key is being stored somewhere or hardcoded in your application, you can manually retrieve the key and update it accordingly by perform a manual rollover as per the instructions at the end of this guidance document. **It is strongly encouraged that you enhance your application to support automatic rollover** using any of the approaches outline in this article to avoid future disruptions and overhead if Azure AD increases it's rollover cadence or has an emergency out-of-band rollover.
-
-## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>How to test your application to determine if it will be affected
-
-You can validate whether your application supports automatic key rollover by downloading the scripts and following the instructions in [this GitHub repository.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
-
-## <a name="how-to-perform-a-manual-rollover-if-you-application-does-not-support-automatic-rollover"></a>How to perform a manual rollover if you application does not support automatic rollover
-
-If your application does **not** support automatic rollover, you will need to establish a process that periodically monitors Azure AD's signing keys and performs a manual rollover accordingly. [This GitHub repository](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) contains scripts and instructions on how to do this.
+3. Erstellen Sie die Anwendung, und führen Sie sie anschließend aus. Wenn Sie den Anmeldevorgang abschließen, aktualisiert die Anwendung den Schlüssel, indem die erforderlichen Informationen vom Verbundmetadaten-Dokument Ihres Verzeichnisses heruntergeladen werden. Falls bei der Anmeldung Probleme auftreten, vergewissern Sie sich, dass die Änderungen in Ihrer Anwendung korrekt sind. Lesen Sie hierzu [dieses Thema](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect), oder laden Sie das folgende Codebeispiel herunter: [Multi-Tenant Cloud Application for Microsoft Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b) \(Mehrinstanzenfähige Cloudanwendung für Azure Active Directory).
 
 
+### <a name="vs2010"></a>Mit Visual Studio 2008 oder 2010 und Windows Identity Foundation (WIF) v1.0 für .NET 3.5 erstellte Webanwendungen zum Schutz von Ressourcen
 
-<!--HONumber=Oct16_HO2-->
+Wenn Sie eine Anwendung auf WIF v1. 0 erstellt haben, gibt es keine automatische Aktualisierung der Konfiguration Ihrer Anwendung, um einen neuen Schlüssel zu verwenden.
 
+- *Einfachste Möglichkeit:* Verwenden Sie das im WIF SDK enthaltene Tool „FedUtil“. Dieses Tool kann das neueste Metadatendokument abrufen und Ihre Konfiguration aktualisieren.
+- Aktualisieren Sie Ihre Anwendung auf .NET 4.5, das die aktuelle Version von WIF im System-Namespace enthält. Verwenden Sie anschließend die [Validierung der Ausstellernamenregistration (VINR)](https://msdn.microsoft.com/library/dn205067.aspx), um automatische Aktualisierungen der Anwendungskonfiguration durchzuführen.
+- Führen Sie gemäß den Anweisungen am Ende dieses Anleitungsdokuments einen manuellen Rollover durch.
 
+Anweisungen zum Aktualisieren Ihrer Konfiguration mithilfe des FedUtil-Tools:
+
+1. Stellen Sie sicher, dass das WIF v1.0-SDK auf Ihrem Entwicklungscomputer für Visual Studio 2008 oder 2010 installiert ist. Falls es noch nicht installiert ist, können Sie es [hier](https://www.microsoft.com/de-DE/download/details.aspx?id=4451) herunterladen.
+2. Öffnen Sie die Projektmappe in Visual Studio, klicken Sie anschließend mit der rechten Maustaste auf das betreffende Projekt, und wählen Sie **Update federation metadata** (Verbundmetadaten aktualisieren) aus. Wenn diese Option nicht verfügbar ist, wurde FedUtil und/oder das WIF v1. 0 SDK nicht installiert.
+3. Wenn Sie dazu aufgefordert werden, wählen Sie **Aktualisieren** aus, um mit der Aktualisierung Ihrer Verbundmetadaten zu beginnen. Sofern Sie über Zugriff auf die Serverumgebung verfügen, in der die Anwendung gehostet wird, können Sie optional die [automatische Metadaten-Aktualisierungsplanung](https://msdn.microsoft.com/library/ee517272.aspx) von FedUtil verwenden.
+4. Klicken Sie auf **Fertig stellen**, um die Aktualisierung abzuschließen.
+
+### <a name="other"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle
+
+Wenn Sie eine andere Bibliothek verwenden oder eines der unterstützten Protokolle manuell implementiert haben, müssen Sie die Bibliothek bzw. die Implementierung überprüfen. Stellen Sie sicher, dass der Schlüssel entweder aus dem OpenID Connect Discovery-Dokument oder aus dem Verbundmetadaten-Dokument abgerufen wird. Eine Möglichkeit der Überprüfung ist das Durchsuchen Ihres Codes oder des Codes der Bibliothek nach Aufrufen des OpenID Discovery-Dokuments oder Verbundmetadaten-Dokuments.
+
+Wenn der Schlüssel an einem Speicherort gespeichert wird oder in der Anwendung hartcodiert ist, können Sie ihn manuell abrufen und entsprechend aktualisieren, indem Sie gemäß den Anweisungen am Ende dieses Anleitungsdokuments einen manuellen Rollover durchführen. **Es wird dringend empfohlen, Ihre Anwendung zu erweitern, damit sie den automatischen Rollover unterstützt**, wie in den Vorgehensweisen dieses Artikels beschrieben. So verhindern Sie zukünftige Störungen und Mehraufwand, wenn die Rolloverkadenz von Azure AD erhöht oder im Notfall ein Out-of-Band-Rollover durchgeführt wird.
+
+## So ermitteln Sie, ob Ihre Anwendung betroffen ist
+
+Sie können überprüfen, ob Ihre Anwendung automatische Schlüsselrollover unterstützt, indem Sie die Skripts aus [diesem GitHub-Repository](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) herunterladen und die dort beschriebenen Schritte ausführen.
+
+## Gewusst wie: Durchführen eines manuellen Rollovers, falls die Anwendung keinen automatischen Rollover unterstützt
+
+Falls Ihre Anwendung **keinen** automatischen Rollover unterstützt, müssen Sie einen Prozess einrichten, der in regelmäßigen Abständen die Signaturschlüssel von Azure AD überprüft und ggf. einen manuellen Rollover durchführt. Entsprechende Skripts und Anweisungen finden Sie in [diesem GitHub-Repository](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey).
+
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Security alerts by Type in Azure Security Center | Microsoft Azure"
-   description="This document helps to understand the type of security alerts available in Azure Security Center."
+   pageTitle="Sicherheitswarnungen nach Typ in Azure Security Center | Microsoft Azure"
+   description="In diesem Dokument werden die Arten von Sicherheitswarnungen beschrieben, die in Azure Security Center verfügbar sind."
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,215 +16,209 @@
    ms.date="09/20/2016"
    ms.author="yurid"/>
 
+# Sicherheitswarnungen nach Typ in Azure Security Center
+In diesem Dokument werden die verschiedenen Arten von Sicherheitswarnungen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-# <a name="security-alerts-by-type-in-azure-security-center"></a>Security Alerts by Type in Azure Security Center
-This document helps you to understand the different types of security alerts available in Azure Security Center. Read [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) for more information on how to manage alerts.
-
-> [AZURE.NOTE] To enable advanced detections, upgrade to Azure Security Center Standard. A free 90-day trial is available. To upgrade, select Pricing Tier in the [Security Policy](security-center-policies.md). See the [pricing page](https://azure.microsoft.com/pricing/details/security-center/) to learn more.
-
-
-## <a name="what-type-of-alerts-are-available?"></a>What type of alerts are available?
-Azure Security Center provides a variety of alerts that align with the stages of the cyber kill chain. The figure below provides some examples of various alerts as they relate to some of these stages.
-
-![Kill chain](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
+> [AZURE.NOTE] Führen Sie ein Upgrade auf Azure Security Center Standard durch, um erweiterte Erkennungsfunktionen zu aktivieren. Sie können auch eine kostenlose 90-Tage-Testversion nutzen. Wenn Sie ein Upgrade durchführen möchten, wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md) die Tarifoption aus. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
 
-**Target & Attack**
+## Welche Art von Warnungen ist verfügbar?
+Azure Security Center verfügt über viele verschiedene Warnungen, die den Phasen der „Cyber Kill Chain“ entsprechen. Die folgende Abbildung enthält Beispiele für verschiedene Warnungen in Bezug auf einige dieser Phasen.
 
-- Inbound RDP/SSH attacks
-- Application and DDoS attacks (WAF partners)
-- Intrusion detection (NG Firewall partners)
+![Kill Chain](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
 
-**Install & Exploit**
 
-- Known malware signatures (AM partners)
-- In-memory malware & exploit attempts
-- Suspicious process execution
-- Evasive maneuvers to avoid discovery
-- Lateral movement
-- Internal reconnaissance
-- Suspicious PowerShell activity
+**Ziel und Angriff**
 
-**Post Breach**  
+- Eingehende RDP/SSH-Angriffe
+- Anwendungs- und DDoS-Angriffe (WAF-Partner)
+- Angriffserkennung (NG Firewall-Partner)
 
-- Communication to a known malicious IP (data exfiltration or command & control)
-- Using compromised resources to mount additional attacks (outbound port scanning RDP/SSH brute force attacks, and spam)
+**Installation und Ausnutzung (Exploit)**
 
-Different types of attacks are associated with each stage and they target different subsystems. To address attacks during these stages, Security Center has three categories of alerts:
+- Bekannte Schadsoftwaresignaturen (AM-Partner)
+- Versuche mit In-Memory-Schadsoftware und Exploits
+- Ausführung verdächtiger Prozesse
+- Ausweichmanöver zur Vermeidung der Entdeckung
+- Seitwärtsbewegung
+- Interne Erkundung
+- Verdächtige PowerShell-Aktivität
 
-- Virtual Machine Behavioral Analysis (VMBA)
-- Network Analysis
-- Resource Analysis
+**Nach einer Sicherheitsverletzung**
 
-## <a name="virtual-machine-behavioral-analysis"></a>Virtual machine behavioral analysis
+- Kommunikation mit einer bekannten schädlichen IP (Herausfilterung von Daten oder Befehl und Steuerung)
+- Verwendung von kompromittierten Ressourcen zum Starten zusätzlicher Angriffe (Überwachung von ausgehenden Ports, RDP/SSH-Brute-Force-Angriffe und Spam)
 
-Azure Security Center can use behavioral analytics to identify compromised resources based on analysis of virtual machine event logs, for example: Process Creation Events, Login Events, etc.). In addition, there is correlation with other signals to check for supporting evidence of a widespread campaign.
+Jeder Phase sind unterschiedliche Arten von Angriffen zugeordnet, die jeweils auf andere Subsysteme abzielen. Security Center verfügt über drei Kategorien von Warnungen für Angriffe während dieser Phasen:
 
-> [AZURE.NOTE] For more information about how Security Center detection capabilities work, read [Azure Security Center Detection Capabilities](security-center-detection-capabilities.md).
+- Verhaltensanalyse von VMs (Virtual Machine Behavioral Analysis, VMBA)
+- Netzwerkanalyse
+- Ressourcenanalyse
 
-### <a name="crash-analysis"></a>Crash analysis
+## Verhaltensanalyse von VMs
 
-Crash dump memory analysis is a method used to detect sophisticated malware that is able to evade traditional security solutions. Various forms of malware try to reduce the chance of being detected by anti-virus products by never writing to disk or by encrypting software components written to disk. This makes the malware difficult to detect using traditional antimalware approaches. However, such malware can be detected using memory analysis, as malware must leave traces in memory in order to function.
+In Azure Security Center kann die Verhaltensanalyse verwendet werden, um kompromittierte Ressourcen basierend auf der Analyse von VM-Ereignisprotokollen zu ermitteln (z.B Prozesserstellungsereignisse, Anmeldeereignisse usw.). Außerdem ist eine Korrelation mit anderen Signalen vorhanden, damit weitere Beweise für eine größere Aktion ermittelt werden können.
 
-When software crashes, a crash dump captures a portion of memory at the time of the crash. The crash may be caused by malware, general application or system issues. By analyzing the memory in the crash dump, Security Center can detect techniques used to exploit vulnerabilities in software, access confidential data, and surreptitiously persist with-in a compromised machine. This is accomplished with minimum performance impact to hosts as the analysis is performed by the Security Center back-end.
+> [AZURE.NOTE] Weitere Informationen zur Funktionsweise der Security Center-Erkennungsfunktionen finden Sie unter [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md).
 
-The following fields are common to crash dump analysis alerts listed below:
+### Absturzanalyse
 
-- DUMPFILE: Name of the crash dump file
-- PROCESSNAME: Name of the crashing process
-- PROCESSVERSION: Version of the crashing process
+Die Absturzabbild-Speicheranalyse ist ein Verfahren zum Erkennen von anspruchsvoller Schadsoftware, mit der herkömmliche Sicherheitslösungen umgangen werden können. Mit verschiedenen Arten von Schadsoftware wird versucht, die Wahrscheinlichkeit für die Entdeckung durch Antivirenprogramme zu verringern. Zu diesem Zweck werden niemals Daten auf Datenträger geschrieben oder auf Datenträger geschriebene Softwarekomponenten verschlüsselt. So wird erreicht, dass die Schadsoftware mit herkömmlichen Antischadsoftware-Verfahren nur schwer erkannt werden kann. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können.
 
-### <a name="shellcode-discovered"></a>Shellcode discovered
+Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Der Absturz kann durch Schadsoftware, allgemeine Anwendungsprobleme oder Systemfehler verursacht werden. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer. Dies wird mit einer minimalen Auswirkung auf die Leistung von Hosts erreicht, da die Analyse vom Security Center-Back-End durchgeführt wird.
 
-Shellcode is the payload that is run after malware has exploited a software vulnerability. This alert indicates that crash dump analysis has detected executable code exhibiting behavior commonly performed by malicious payloads. Although non-malicious software may perform this behavior, it is not typical of normal software development practices.
+Die folgenden Felder gelten für die unten aufgeführten Warnungen für Absturzabbildanalysen:
 
-This alert provides the following additional field:
+- DUMPFILE: Name der Absturzabbilddatei
+- PROCESSNAME: Name des abstürzenden Prozesses
+- PROCESSVERSION: Version des abstürzenden Prozesses
 
-- ADDRESS: The location in memory of the shellcode
+### Erkennung von Shellcode
 
-This is an example of this type of alert:
+Shellcode ist die Nutzlast, die ausgeführt wird, nachdem eine Schadsoftware ein Sicherheitsrisiko einer Software ausgenutzt hat. Diese Warnung gibt an, dass bei einer Absturzabbild-Analyse ausführbarer Code mit einem Verhalten erkannt wurde, das üblicherweise von schädlichen Nutzlasten gezeigt wird. Zwar kann auch nicht schädliche Software dieses Verhalten aufweisen, aber es ist nicht typisch für normale Vorgehensweisen bei der Softwareentwicklung.
 
-![Shellcode alert](./media/security-center-alerts-type/security-center-alerts-type-fig2.png) 
+Diese Warnung enthält das folgende zusätzliche Feld:
 
-### <a name="module-hijacking-discovered"></a>Module hijacking discovered
+- ADDRESS: Speicherort im Arbeitsspeicher des Shellcodes
 
-Windows relies on Dynamic Link Libraries (DLLs) to allow software to utilize common Windows system functionality. DLL Hijacking occurs when malware changes the DLL load order to load malicious payloads into memory, where arbitrary code can be executed. This alert indicates the crash dump analysis has detected a similarly named module is loaded from two different paths, where one of the loaded paths comes from a common Windows system binary location.
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
-Legitimate software developers occasionally change the DLL load order for non-malicious reasons, such as instrumenting, extending the Windows OS or Windows applications. To help differentiate between malicious and potentially benign changes to the DLL load order, Azure Security Center checks whether or not a loaded module conforms to a suspicious profile. The result of this check is indicated by the “SIGNATURE” field of the alert and is reflected in the severity of the alert, alert description, and alert remediation steps. Analyzing the on disk copy of the hijacking module, such as by verifying the files digital signature or running an anti-virus scan, may provide more information as to the legitimate or malicious nature of the hijacking module.
+![Shellcode-Warnung](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
 
-In addition to the common fields described in the “Shellcode Discovered” section above, this alert provides the following fields:
+### Erkennung von Modul-Hijacking
 
-- SIGNATURE: Indicates if the hijacking module conforms to a profile of suspicious behavior
-- HIJACKEDMODULE: The name of the hijacked Windows system module
-- HIJACKEDMODULEPATH: The path of the hijacked Windows system module
-- HIJACKINGMODULEPATH: The path of the hijacking module
+In Windows werden DLLs (Dynamic Link Libraries) verwendet, um für Software die Nutzung von allgemeinen Windows-Systemfunktionen zu ermöglichen. „DLL-Hijacking“ tritt auf, wenn von Schadsoftware die DLL-Ladereihenfolge geändert wird, um schädliche Nutzlasten in den Arbeitsspeicher zu laden und darin beliebigen Code auszuführen. Diese Warnung weist darauf hin, dass bei der Absturzabbildanalyse das Laden eines Moduls aus zwei unterschiedlichen Pfaden erkannt wurde, wobei einer der geladenen Pfade von einem gemeinsamen binären Speicherort des Windows-Systems stammt.
 
-This is an example of this type of alert:
+Seriöse Softwareentwickler ändern gelegentlich die DLL-Ladereihenfolge zu nicht schädlichen Zwecken, z.B. zur Instrumentierung, um das Windows-Betriebssystem oder Windows-Anwendungen zu erweitern. Zur besseren Unterscheidung zwischen schädlichen und potenziell unkritischen Änderungen an der DLL-Ladereihenfolge überprüft Azure Security Center, ob ein geladenes Modul einem verdächtigen Profil entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt. Die Analyse der auf dem Datenträger befindlichen Kopie des Hijacking-Moduls, z.B. durch das Überprüfen der digitalen Signatur von Dateien oder das Durchführen eines Virenscans, kann weitere Informationen dazu liefern, ob das Hijacking-Modul unschädlich oder schädlich ist.
 
-![Module hijacking alert](./media/security-center-alerts-type/security-center-alerts-type-fig3.png) 
+Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von Shellcode“ beschrieben werden, verfügt diese Warnung über die folgenden Felder:
 
-### <a name="masquerading-windows-module-detected"></a>Masquerading Windows module detected
+- SIGNATURE: Gibt an, ob das Hijacking-Modul einem Profil mit verdächtigem Verhalten entspricht.
+- HIJACKEDMODULE: Name des Windows-Systemmoduls, das Opfer des Hijacking-Vorgangs geworden ist.
+- HIJACKEDMODULEPATH: Pfad des Windows-Systemmoduls, das Opfer des Hijacking-Vorgangs geworden ist.
+- HIJACKINGMODULEPATH: Enthält den Pfad des Hijacking-Moduls.
 
-Malware may use common names of Windows system binaries (e.g., SVCHOST.EXE) or modules (e.g., NTDLL.DLL) in order to “blend-in” and obscure the nature of the malicious software from system administrators. This alert indicates the crash dump analysis has detected that the crash dump file contains modules that use Windows system module names, but do not satisfy other criteria that are typical of Windows modules. Analyzing the on disk copy of the masquerading module may provide more information as to the legitimate or malicious nature of this module. Analysis may include:
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
-- Confirm that the file in question is shipped as part of a legitimate software package
-- Verify the file’s digital signature
-- Run an anti-virus scan on the file
+![Warnung vor Modul-Hijacking](./media/security-center-alerts-type/security-center-alerts-type-fig3.png)
 
-In addition to the common fields described in the “Shellcode Discovered” section above, this alert provides the following additional fields:
+### Erkennung eines Windows-Maskerademoduls
 
-- DETAILS: Describes whether the modules metadata is valid and whether the module was loaded from a system path.
-- NAME: The name of the masquerading Windows module
-- PATH: The path to the masquerading Windows module.
+Für Schadsoftware werden unter Umständen gängige Namen von Windows-Systembinärdateien (z.B. SVCHOST.EXE) oder Modulen (z.B. NTDLL.DLL) genutzt, um eine Verschleierung zu erzielen und die Schadsoftware vor Systemadministratoren zu verbergen. Diese Warnung gibt an, dass bei der Absturzabbildanalyse in der Absturzabbilddatei Module erkannt wurden, in denen Modulnamen des Windows-Systems verwendet werden, für die andere typische Kriterien von Windows-Modulen nicht erfüllt sind. Die Analyse der auf dem Datenträger befindlichen Kopie des Maskerademoduls kann weitere Informationen darüber liefern, ob das Modul unschädlich oder schädlich ist. Die Analyse kann Folgendes umfassen:
 
-This alert also extracts and displays the certain fields, from the module’s PE header, such as “CHECKSUM” and “TIMESTAMP”. These fields are only displayed if the fields are present in the module. See the [Microsoft PE and COFF Specification](https://msdn.microsoft.com/windows/hardware/gg463119.aspx) for details on these fields.
+- Bestätigen, dass die fragliche Datei im Rahmen eines legitimen Softwarepakets bereitgestellt wird
+- Überprüfen der digitalen Signatur der Datei
+- Ausführen eines Virenscans für die Datei
 
-This is an example of this type of alert:
+Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von Shellcode“ beschrieben werden, verfügt diese Warnung über die folgenden weiteren Felder:
 
-![Masquerading Windows alert](./media/security-center-alerts-type/security-center-alerts-type-fig4.png) 
+- DETAILS: Beschreibt, ob die Metadaten des Moduls gültig sind und ob das Modul aus einem Systempfad geladen wurde.
+- NAME: Gibt den Namen des Windows-Maskerademoduls an.
+- PATH: Gibt den Pfad zum Windows-Maskerademodul an.
 
-### <a name="modified-system-binary-discovered"></a>Modified system binary discovered
+Diese Warnung extrahiert auch die jeweiligen Felder aus dem PE-Header des Moduls, z.B. „CHECKSUM“ und „TIMESTAMP“, und zeigt sie an. Diese Felder werden nur angezeigt, wenn sie im Modul vorhanden sind. Details zu diesen Feldern finden Sie in der [Microsoft PE- und COFF-Spezifikation](https://msdn.microsoft.com/windows/hardware/gg463119.aspx).
 
-Malware may modify core system binaries in order to covertly access data or surreptitiously persist on a compromised system. This alert indicates the crash dump analysis has detected that core Windows OS binaries have been modified in memory or on disk.
-Legitimate software developers occasionally modify system modules in memory for non-malicious reasons, such as Detours or for application compatibility. To help differentiate between malicious and potentially legitimate modules, Azure Security Center checks whether or not the modified module conforms to a suspicious profile. The result of this check is indicated by the severity of the alert, alert description, and alert remediation steps.
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
-In addition to the common fields described in the “Shellcode Discovered” section above, this alert provides the following additional fields:
+![Warnung vor Windows-Maskerade](./media/security-center-alerts-type/security-center-alerts-type-fig4.png)
 
-- MODULENAME: Name of the modified system binary
-- MODULEVERSION: Version of the modified system binary
+### Erkennung der Änderung einer Systembinärdatei
 
-This is an example of this type of alert:
+Mit Schadsoftware können wichtige Systembinärdateien geändert werden, um unerkannt auf Daten zuzugreifen oder sich heimlich dauerhaft auf einem kompromittierten System aufzuhalten. Diese Warnung gibt an, dass bei der Absturzabbildanalyse erkannt wurde, dass wichtige Binärdateien des Windows-Betriebssystems im Arbeitsspeicher oder auf dem Datenträger geändert wurden. Seriöse Softwareentwickler ändern Systemmodule im Arbeitsspeicher gelegentlich zu nicht schädlichen Zwecken, z.B. für Umwege oder aus Gründen der Anwendungskompatibilität. Zur besseren Unterscheidung zwischen schädlichen und potenziell unschädlichen Modulen wird von Azure Security Center überprüft, ob das geänderte Modul einem verdächtigen Profil entspricht. Das Ergebnis dieser Überprüfung wird im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt.
 
-![System binary alert](./media/security-center-alerts-type/security-center-alerts-type-fig5.png) 
+Zusätzlich zu den allgemeinen Feldern, die oben im Abschnitt „Erkennung von Shellcode“ beschrieben werden, verfügt diese Warnung über die folgenden weiteren Felder:
 
-### <a name="suspicious-process-executed"></a>Suspicious process executed
+- MODULENAME: Enthält den Namen der geänderten Systembinärdatei.
+- MODULEVERSION: Enthält die Version der geänderten Systembinärdatei.
 
-Security Center identifies suspicious process in execution in the target virtual machine and trigger an alert. The detection doesn’t look for the specific name, but by its parameter, therefore even if the attacker renames the executable, Security Center still be able to detect.
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
+
+![Warnung vor Änderung einer Systembinärdatei](./media/security-center-alerts-type/security-center-alerts-type-fig5.png)
+
+### Ausgeführter verdächtiger Prozess
+
+Security Center identifiziert einen ausgeführten verdächtigen Prozesse auf dem virtuellen Zielcomputer und löst eine Warnung aus. Bei der Erkennung wird nicht nach dem spezifischen Namen gesucht, sondern nach dem dazugehörigen Parameter. So kann Security Center die ausführbare Datei auch dann erkennen, wenn sie vom Angreifer umbenannt wird.
  
-This is an example of this type of alert:
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
-![Suspicious process alert](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
+![Warnung vor verdächtigem Prozess](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
-### <a name="multiple-domain-accounts-queried"></a>Multiple domain accounts queried
+### Vermehrte Abfragen von Domänenkonten
 
-Security Center can detect multiple attempts to query domain accounts, which is something usually performed by attackers during network reconnaissance. Attackers can leverage this technique to query the domain to identify who are the users, what are the domain admin accounts, which computers are Domain Controllers and also potential domain trust relationship with other domains.
+Security Center kann mehrere Abfrageversuche für Domänenkonten erkennen. Dies wird von Angreifern normalerweise während der Netzwerkerkundung durchgeführt. Angreifer können dieses Verfahren nutzen, um die Domäne für folgende Zwecke abzufragen: Wer sind die Benutzer, wie lauten die Administratorkonten der Domäne, welche Computer sind Domänencontroller und welche potenziellen Vertrauensstellungen mit anderen Domänen bestehen für die Domäne?
 
-This is an example of this type of alert:
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
-![Multiple domains account alert](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
+![Warnung vor mehreren Domänenkonten](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
 
-## <a name="network-analysis"></a>Network analysis
+## Netzwerkanalyse
 
-Security Center network threat detection works by automatically collecting security information from your Azure IPFIX (Internet Protocol Flow Information Export) traffic. It analyzes this information, often correlating information from multiple sources, to identify threats.
+Bei der Security Center-Bedrohungserkennung für Netzwerke werden automatisch Sicherheitsinformationen für Ihren Azure IPFIX-Datenverkehr (Internet Protocol Flow Information Export) erfasst. Diese Informationen, bei denen es sich häufig um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren.
 
-### <a name="suspicious-outgoing-traffic-detected"></a>Suspicious outgoing traffic detected
+### Erkennung von verdächtigem ausgehendem Datenverkehr
 
-Network devices can be discovered and profiled in much the same way as other types of systems. Attackers usually start with port scanning / port sweeping. In the example below you have a suspicious SSH traffic from a VM that can be performing a SSH brute force or port sweeping attack against an external resource.
+Für Netzwerkgeräte ist die Ermittlung und Profilerstellung nahezu genauso wie für andere Arten von Systemen möglich. Angreifer beginnen in der Regel mit der Portüberwachung bzw. Port-Sweeping. Im folgenden Beispiel ist es zu verdächtigem SSH-Datenverkehr von einer VM gekommen, für den die Gefahr eines Brute-Force-SSH-Angriffs oder Port-Sweeping-Angriffs gegen eine externe Ressource besteht.
 
-![Suspicious outgoing traffic alert](./media/security-center-alerts-type/security-center-alerts-type-fig8.png) 
+![Warnung vor verdächtigem ausgehendem Datenverkehr](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
 
-This alert gives information that enables you to identify the resource that was used to initiate this attack, the compromised machine, the detection time, the protocol and port that was used. This blade also gives you a list of remediation steps that can be used to mitigate this issue.
+Diese Warnung enthält Informationen, mit denen Sie die für die Initiierung verwendete Ressource, den kompromittierten Computer, die Erkennungsdauer und das verwendete Protokoll und den Port identifizieren können. Auf diesem Blatt ist auch eine Liste mit Lösungsschritten angegeben, die Sie ausführen können, um das Problem zu beseitigen.
 
-### <a name="network-communication-with-a-malicious-machine"></a>Network communication with a malicious machine
+### Netzwerkkommunikation mit einem schädlichen Computer
 
-By leveraging Microsoft threat intelligence feeds, Azure Security Center can detect compromised machines that are communicating with malicious IP addresses, in many cases a command and control center. In this case Azure Security Center detected that the communication was done using Pony Loader malware (also known as [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF)).
+Durch die Nutzung von Microsoft Threat Intelligence-Feeds kann Azure Security Center kompromittierte Computer erkennen, die mit schädlichen IP-Adressen kommunizieren. Häufig ist dies ein Befehls- und Steuerungszentrum (Command and Control Center). In diesem Fall hat Azure Security Center erkannt, dass für die Kommunikation die Schadsoftware „Pony Loader“ (auch als [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF) bekannt) verwendet wurde.
 
-![network communication alert](./media/security-center-alerts-type/security-center-alerts-type-fig9.png)
+![Warnung vor verdächtiger Netzwerkkommunikation](./media/security-center-alerts-type/security-center-alerts-type-fig9.png)
 
-This alert gives information that enables you to identify the resource that was used to initiate this attack, the attacked resource, the victim IP, the attacker IP and the detection time.
+Diese Warnung enthält Informationen, mit denen Sie die für den Angriff verwendete Ressource, die Ziel-IP-Adresse, die IP-Adresse des Angreifers und die Erkennungsdauer identifizieren können.
 
-[AZURE.NOTE] Live IP addresses were removed from this screenshot for privacy purpose.
+[AZURE.NOTE] Aus Datenschutzgründen wurden die realen IP-Adressen aus diesem Screenshot entfernt.
 
 
-### <a name="possible-outgoing-denial-of-service-attack-detected"></a>Possible outgoing denial-of-service attack detected
+### Möglichen Denial-of-Service-Angriff in ausgehender Richtung erkannt
 
-Anomalous network traffic originated from one virtual machine can lead Security Center to trigger a potential denial-of-service type of attack.
+Anomaler Netzwerkdatenverkehr, der von einem virtuellen Computer stammt, kann dazu führen, dass Security Center eine Warnung vor einem potenziellen Denial-of-Service-Angriff auslöst.
  
-This is an example of this type of alert:
+Hier ist ein Beispiel für diese Art von Warnung angegeben:
 
-![Outgoing DOS](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
+![Ausgehender DoS-Angriff](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
-## <a name="resource-analysis"></a>Resource analysis
+## Ressourcenanalyse
 
-Security Center resource analysis focuses in PaaS services, such as the integration with [Azure SQL Db Threat Detection](../sql-database/sql-database-threat-detection-get-started.md) feature. Based on the analysis’s results from these areas, Security Center triggers a resource related alert.
+Bei der Security Center-Ressourcenanalyse liegt der Schwerpunkt auf PaaS-Diensten, z.B. der Integration in das Feature für die Azure SQL DB-Bedrohungserkennung (siehe [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](../sql-database/sql-database-threat-detection-get-started.md)). Basierend auf den Analyseergebnissen aus diesen Bereichen löst Security Center eine ressourcenbezogene Warnung aus.
 
-### <a name="potential-sql-injection"></a>Potential SQL injection
+### Potenzielle Einschleusung von SQL-Befehlen
 
-SQL injection is an attack in which malicious code is inserted into strings that are later passed to an instance of SQL Server for parsing and execution. Any procedure that constructs SQL statements should be reviewed for injection vulnerabilities because SQL Server executes all syntactically valid queries that it receives. SQL Threat Detection uses machine learning, behavioral analysis and anomaly detection to determine suspicious events that might be taking place in your Azure SQL Databases. For example:
+Eine Einschleusung von SQL-Befehlen ist ein Angriff, bei dem Schadcode in Zeichenfolgen eingefügt wird, die später zur Analyse und Ausführung an eine Instanz von SQL Server übergeben werden. Jedes Verfahren, bei dem SQL-Anweisungen erstellt werden, sollte auf Sicherheitsrisiken in Bezug auf Einschleusungen überprüft werden, da SQL Server alle syntaktisch gültigen Abfragen ausführt, die empfangen werden. Für die SQL-Bedrohungserkennung werden Machine Learning, Verhaltensanalyse und Anomalieerkennung genutzt, um verdächtige Ereignisse zu ermitteln, die in Ihren Azure SQL-Datenbanken unter Umständen auftreten. Beispiel:
 
-- Attempted database access by a former employee 
-- SQL injection attacks 
-- Unusual access to production database from a user at home
+- Versuchter Datenbankzugriff durch einen früheren Mitarbeiter
+- Angriffe mit Einschleusung von SQL-Befehlen
+- Ungewöhnlicher Zugriff auf eine Produktionsdatenbank durch einen Benutzer von zu Hause
 
-![Potential SQL Injection alert](./media/security-center-alerts-type/security-center-alerts-type-fig11.png)
+![Warnung vor potenzieller Einschleusung von SQL-Befehlen](./media/security-center-alerts-type/security-center-alerts-type-fig11.png)
 
-This alert gives information that enables you to identify the attacked resource, the detection time, the state of the attack and it also provides a link to further investigation steps.
+Diese Warnung enthält Informationen, mit denen Sie die angegriffene Ressource, die Erkennungsdauer und den Status des Angriffs identifizieren können. Außerdem ist ein Link zu weiteren Untersuchungsschritten angegeben.
 
-### <a name="vulnerability-to-sql-injection"></a>Vulnerability to SQL Injection
+### Anfälligkeit für die Einschleusung von SQL-Befehlen
 
-This alert is triggered when an application error has been detected on a database which may indicate a possible vulnerability to SQL injection attacks.
+Diese Warnung wird ausgelöst, wenn ein Anwendungsfehler in einer Datenbank erkannt wurde, bei dem es Hinweise auf eine mögliche Anfälligkeit für die Einschleusung von SQL-Befehlen gibt.
 
-![Potential SQL Injection alert](./media/security-center-alerts-type/security-center-alerts-type-fig12-new.png)
+![Warnung vor potenzieller Einschleusung von SQL-Befehlen](./media/security-center-alerts-type/security-center-alerts-type-fig12-new.png)
 
-### <a name="unusual-access-from-unfamiliar-location"></a>Unusual access from unfamiliar location
+### Ungewöhnlicher Zugriff von unbekanntem Standort
 
-This alert is triggered when an access from an unfamiliar IP address was detected on server, which was not seen in the last period.
+Diese Warnung wird ausgelöst, wenn ein Zugriff von einer unbekannten IP-Adresse auf einem Server entdeckt wurde, der in der letzten Periode nicht aufgetreten ist.
 
-![Unusual access alert](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
-
-
-## <a name="see-also"></a>See also
-
-In this document, you learned about the different types of security alerts in Security Center. To learn more about Security Center, see the following:
-
-- [Handling Security Incident in Azure Security Center](security-center-incident.md)
-- [Azure Security Center Detection Capabilities](security-center-detection-capabilities.md)
-- [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md)
-- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Find blog posts about Azure security and compliance.
+![Warnung vor ungewöhnlichem Zugriff](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
 
 
+## Siehe auch
 
-<!--HONumber=Oct16_HO2-->
+In diesem Dokument wurden die unterschiedlichen Arten von Sicherheitswarnungen in Security Center beschrieben. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
+- [Behandeln von Sicherheitswarnungen in Azure Security Center](security-center-incident.md)
+- [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md)
+- [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
+- [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
 
+<!---HONumber=AcomDC_0921_2016-->

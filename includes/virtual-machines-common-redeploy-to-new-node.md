@@ -1,25 +1,23 @@
-## <a name="using-azure-portal"></a>Using Azure portal
+## Verwenden des Azure-Portals
 
-1. Select the VM you wish to redeploy, and click the 'Redeploy' button in the 'Settings' blade. Scroll down to see the **Support and Troubleshooting** section that contains the 'Redeploy' button as in the following example:
+1. Wählen Sie den virtuellen Computer aus, der erneut bereitgestellt werden soll, und klicken Sie auf dem Blatt „Einstellungen“ auf die Schaltfläche „Erneut bereitstellen“. Scrollen Sie nach unten, um den Abschnitt **Support und Problembehandlung** anzuzeigen, in dem die Schaltfläche „Erneut bereitstellen“ enthalten ist, wie im folgenden Beispiel gezeigt:
 
-    ![Azure VM blade](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
+	![Blatt „Azure-VM“](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
 
-2. To confirm the operation, click the 'Redeploy' button:
+2. Klicken Sie auf die Schaltfläche „Erneut bereitstellen“, um den Vorgang zu bestätigen:
 
-    ![Redeploy a VM blade](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
+	![Blatt „Erneutes Bereitstellen eines virtuellen Computers“](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
 
-3. The **Status** of the VM changes to *Updating* as the VM prepares to redeploy, as in the following example:
+3. Der **Status** des virtuellen Computers ändert sich zu *Wird aktualisiert*, wenn der virtuelle Computer zur erneuten Bereitstellung vorbereitet wird, wie im folgenden Beispiel gezeigt:
 
-    ![VM updating](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
+	![Virtueller Computer wird aktualisiert](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
 
-4. The **Status** then changes to *Starting* as the VM boots up on a new Azure host, as in the following example:
+4. Der **Status** ändert sich dann zu *Wird gestartet*, wenn der virtuelle Computer auf einem neuen Azure-Host gestartet wird, wie im folgenden Beispiel gezeigt:
 
-    ![VM starting](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
+	![Virtueller Computer wird gestartet](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
 
-5. After the VM finishes the boot process, the **Status** then returns to *Running*, indicating the VM has been successfully redeployed:
+5. Nachdem der virtuelle Computer den Startvorgang abgeschlossen hat, wechselt der **Status** wieder zu *Wird ausgeführt* und gibt damit an, dass der virtuelle Computer erfolgreich erneut bereitgestellt wurde:
 
-    ![VM running](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
+	![Virtueller Computer wird ausgeführt](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

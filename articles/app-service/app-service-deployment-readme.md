@@ -1,31 +1,26 @@
 <properties
-    pageTitle="Deploying Applications to Azure App Service"
-    description="Learn how to Deploy applications to App Service work"
-    keywords="app service, azure app service, deploying, deployment"
-    services="app-service"
-    documentationCenter=""
-    authors="dariagrigoriu"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Bereitstellen von Anwendungen auf Azure App Service."
+	description="Erfahren Sie, wie Sie Anwendungen in App Service bereitstellen"
+	keywords="App Service, Azure App Service, bereitstellen, Bereitstellung"
+	services="app-service"
+	documentationCenter=""
+	authors="dariagrigoriu"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="02/09/2016"
-    ms.author="dariagrigoriu"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/09/2016"
+	ms.author="dariagrigoriu"/>
 
+# Übersicht zur Azure App-Service Bereitstellung
 
-# <a name="azure-app-service-deployment-overview"></a>Azure App Service Deployment Overview
-
-Azure App Service provides a rich and integrated feature set to support creating powerful and flexible deployment workflows. App deployment can leverage options that include continuous integration or local source control publishing, WebDeploy, and FTP. The recommended method for production app deployment is deployment slot swap. Deployment slots represent staging and integration environments associated with production apps. Deployment slots can be configured and targeted with web traffic for validation, and traffic can be swapped on demand for deployment to production with no down time and automated warm-up. The steps of a deployment workflow can be easily automated via release management products such as Visual Studio Release Management. This is useful for coordination with other solution resources (e.g. data store), recurrence, and replication across multiple units of deployment. 
+Azure App Service bietet umfassende integrierte Funktionen zum Erstellen von leistungsstarken und flexiblen Bereitstellungsworkflows. Die App-Bereitstellung kann Optionen für fortlaufende Integration oder Veröffentlichung über die lokale Quellcodeverwaltung sowie WebDeploy und FTP wiederverwenden. Die empfohlene Methode zum Bereitstellen von Produktions-Apps ist der Austausch eines Bereitstellungsslots. Bereitstellungsslots stellen Staging- und Integrationsumgebungen dar, die Produktions-Apps zugeordnet sind. Bereitstellungsslots können konfiguriert und für den Empfang von Webdatenverkehr zur Überprüfung eingerichtet werden und bei Bedarf auf Produktions-Bereitstellung umgestellt werden. Hierbei entstehen durch automatisiertes Anfahren keine Ausfallzeiten. Die Schritte des Bereitstellungsworkflows können einfach über Release Management-Produkte wie z. B. Visual Studio Release Management automatisiert werden. Dies ist nützlich für die Koordination mit anderen Lösungsressourcen (z. B. Datenspeicher), Wiederholung sowie Replikation über mehrere Einheiten der Bereitstellung.
 
 [AZURE.INCLUDE [app-service-blueprint-deployment](../../includes/app-service-blueprint-deployment.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

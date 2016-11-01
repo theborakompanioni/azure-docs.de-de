@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Test your VM offer for the Marketplace | Microsoft Azure"
-   description="Understand how to test your VM image for the Azure Marketplace."
+   pageTitle="Testen Ihres VM-Angebots für Marketplace | Microsoft Azure"
+   description="Grundlegendes zum Testen Ihres VM-Images für Azure Marketplace."
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
-   manager="hascipio"
+   manager=""
    editor=""/>
 
 <tags
@@ -16,48 +16,43 @@
    ms.date="08/01/2016"
    ms.author="hascipio" />
 
+# Testen Ihres VM-Angebots für den Azure Marketplace in der Stagingumgebung
 
-# <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Test your VM offer for the Azure Marketplace in staging
+In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitgestellt, in dem Sie seine Funktionalität vor der Bereitstellung in Marketplace testen und überprüfen können. Die SKU wird in der Stagingumgebung genau wie bei einem Kunden angezeigt, der sie bereitgestellt hat. Ihr VM-Image muss für die Freigabe in der Stagingumgebung zertifiziert sein.
 
-Staging means deploying your SKU in a private “sandbox” where you can test and validate its functionality before deploying it to the Marketplace. The SKU appears in staging just as it would to a customer who has deployed it. Your VM image must be certified to be pushed to staging.
+## Schritt 1: Freigeben Ihres Angebot in der Stagingumgebung
 
-## <a name="step-1:-push-your-offer-to-staging"></a>Step 1: Push your offer to staging
+1. Klicken Sie auf der Registerkarte **Veröffentlichen** auf **Für Stagingumgebung freigeben**.
 
-1. On the **Publish** tab, click **Push to Staging**.
+    ![Abbildung](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
 
-    ![drawing](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
+2. Sollten Sie vom Veröffentlichungsportal auf Fehler hingewiesen werden, beheben Sie sie.
+3.	Geben Sie im Dialogfeld für den Zugriff auf Ihr in der Stagingumgebung bereitgestelltes Angebot die Azure-Abonnements an, die Sie für die Vorschau Ihres Angebots im [Azure-Vorschauportal](https://portal.azure.com) verwenden möchten.
 
-2. If the Publishing Portal notifies you of any errors, correct them.
-3.  In the **Who can access your staged offer?** dialog box, enter the list of Azure subscriptions that you will use to preview your offer in the [Azure preview portal](https://portal.azure.com).
-
-    >[AZURE.NOTE] In case of Virtual Machines and Solution templates, please **do not** whitelist subscriptions of type CSP, DreamSpark or Azure in Open.
+    >[AZURE.NOTE] Erstellen Sie bei virtuellen Computern und Lösungsvorlagen bitte **nicht** eine Whitelist von Abonnements der Typen CSP, DreamSpark oder Azure in Open.
 
 
-    > In case of Virtual Machines, when you click on the button **PUSH TO STAGING**, the following steps are performed behind the scene. You will be able to view the progress of each step under the PUBLISH tab in the Publishing portal. You must check this page at regular interval (until the status shows STAGED) for any failure information which need correction from your end.
+    > Wenn Sie bei virtuellen Computern auf die Schaltfläche **PUSH TO STAGING** (Für Stagingumgebung freigeben) klicken, werden die folgenden Schritte im Hintergrund ausgeführt. Sie können den Fortschritt der einzelnen Schritte auf der Registerkarte VERÖFFENTLICHEN im Veröffentlichungsportal verfolgen. Sie müssen diese Seite in regelmäßigen Intervallen (bis der Status BEREITGESTELLT angezeigt wird) auf Fehlerinformationen überprüfen, die Korrektur Ihrerseits erfordern.
 
-    > - At first your staging request goes to the certification team who validate the vhd. However, if your request has got only marketing change, then the certification step is skipped.
-    > - Once the certification is complete, replication of the offer start across all the Azure datacenters. It generally takes 24-48hours for the replication to complete but may take up to a week depending on the size of the vhd. However, if your request has got only marketing change, then the replication is faster.
-    > - When the replication is complete, then the offer will be available in the [Azure portal](http:/portal.azure.com). At that time the status become STAGED in the Publishing portal. A staged offer is visible in the [Azure portal](http:/portal.azure.com) only using the email id(s) associated with the subscription with which the offer is staged.
+    > - Ihre Staginganforderung wird zunächst an das Zertifizierungsteam geleitet, das die VHD-Datei überprüft. Wenn Ihre Anforderung allerdings nur einer Marketingänderung entspricht, wird der Zertifizierungsschritt übersprungen.
+    > - Wenn die Zertifizierung abgeschlossen ist, startet die Replikation des Angebots in allen Azure-Rechenzentren. In der Regel dauert es 24-48 Stunden, bis die Replikation abgeschlossen hat, aber es kann je nach Größe der virtuellen Festplatte bis zu einer Woche dauern. Wenn Ihre Anforderung allerdings nur einer Marketingänderung entspricht, verläuft die Replikation schneller.
+    > - Nach Abschluss der Replikation ist das Angebot im [Azure-Portal](http:/portal.azure.com) verfügbar. Zu diesem Zeitpunkt erhält es den Status BEREITGESTELLT im Veröffentlichungsportal. Ein bereitgestelltes Angebot ist nur dann im [Azure-Portal](http:/portal.azure.com) sichtbar, wenn die E-Mail-IDs verwendet werden, die mit dem Abonnement verknüpft sind, mit dem das Angebot bereitgestellt wird.
 
-4. Sign in to the [Azure preview portal](https://portal.azure.com) by using one of the Azure subscriptions listed in the previous step.
-5. Find your offer and validate your VM image points:
-  - Make sure that marketing content shows up correctly in the Marketplace.
-  - End-to-end deployment of the VM image.
+4. Melden Sie sich beim [Azure-Vorschauportal](https://portal.azure.com) mit einem der Azure-Abonnements aus dem vorherigen Schritt an.
+5. Suchen Sie Ihr Angebot, und überprüfen Sie für Ihr VM-Image die folgenden Punkte:
+  - Vergewissern Sie sich, dass Marketinginhalte im Marketplace korrekt angezeigt werden.
+  - End-to-End-Bereitstellung des VM-Images
 
       ![img-map-portal](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
 
-> [AZURE.IMPORTANT] Your offer will remain in staging until you notify Microsoft via the Publishing Portal [**Publish** tab > click on the button **"Request Approval to Push to Production"**] that you are ready to push to production. This is an ideal time to have all members of your team check over everything in preparation for your offer going listed.
+> [AZURE.IMPORTANT] Ihr Angebot bleibt so lange in der Stagingphase, bis Sie Microsoft über das Veröffentlichungsportal [Registerkarte **Veröffentlichen** > auf Schaltfläche **Genehmigung für Freigabe in Produktionsumgebungen anfordern** klicken] informieren, dass Ihr Angebot für die Veröffentlichung bereit ist. Vor der Auflistung Ihres Angebots sollte das gesamte Team noch einmal alles überprüfen.
 
-> The staging platform is designed for testing the offer in a preview mode by the publisher. We strongly discourage using this platofrm for commerical purposes.
+> Die Stagingplattform dient zum Testen des Angebots durch den Herausgeber in einem Vorschaumodus. Wir raten dringend ab, diese Plattform zu kommerziellen Zwecken zu verwenden.
 
-## <a name="next-steps"></a>Next steps
-Now that your offer is "staged" and you have tested its functionality and marketing content, you can proceed to the final publishing phase, **Step 4**: [Deploying your offer to the Marketplace](marketplace-publishing-push-to-production.md).
+## Nächste Schritte
+Nachdem Ihr Angebot in die Stagingphase versetzt wurde und Sie die Funktionalität und die Marketinginhalte getestet haben, können Sie zur letzten Veröffentlichungsphase übergehen: **Schritt 4**: [Bereitstellen Ihres Angebots im Marketplace](marketplace-publishing-push-to-production.md).
 
-## <a name="see-also"></a>See also
-- [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
+## Weitere Informationen
+- [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Temporary tables in SQL Data Warehouse | Microsoft Azure"
-   description="Getting started with temporary tables in Azure SQL Data Warehouse."
+   pageTitle="Temporäre Tabellen in SQL Data Warehouse | Microsoft Azure"
+   description="Enthält Informationen zu den ersten Schritten mit temporären Tabellen in Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
-   manager="jhubbard"
+   manager="barbkess"
    editor=""/>
 
 <tags
@@ -13,83 +13,82 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/31/2016"
-   ms.author="jrj;barbkess"/>
+   ms.date="06/29/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
-
-# <a name="temporary-tables-in-sql-data-warehouse"></a>Temporary tables in SQL Data Warehouse
+# Temporäre Tabellen in SQL Data Warehouse
 
 > [AZURE.SELECTOR]
-- [Overview][]
-- [Data Types][]
-- [Distribute][]
+- [Übersicht][]
+- [Datentypen][]
+- [Verteilen][]
 - [Index][]
 - [Partition][]
-- [Statistics][]
-- [Temporary][]
+- [Statistiken][]
+- [Temporär][]
 
-Temporary tables are very useful when processing data - especially during transformation where the intermediate results are transient. In SQL Data Warehouse temporary tables exist at the session level.  They are only visible to the session in which they were created and are automatically dropped when that session logs off.  Temporary tables offer a performance benefit because their results are written to local rather than remote storage.  Temporary tables are slightly different in Azure SQL Data Warehouse than Azure SQL Database as they can be accessed from anywhere inside the session, including both inside and outside of a stored procedure.
+Temporäre Tabellen sind sehr nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In SQL Data Warehouse befinden sich temporäre Tabellen auf Sitzungsebene. Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und werden automatisch verworfen, wenn die Sitzung abgemeldet wird. Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher. In Azure SQL Data Warehouse sind temporäre Tabellen etwas anders als in Azure SQL-Datenbank aufgebaut, da darauf innerhalb einer Sitzung von jedem Ort aus zugegriffen werden kann, z.B. innerhalb und außerhalb einer gespeicherten Prozedur.
 
-This article contains essential guidance for using temporary tables and highlights the principles of session level temporary tables. Using the information in this article can help you modularize your code, improving both reusability and ease of maintenance of your code.
+Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. Mit den Informationen in diesem Artikel können Sie Ihren Code modularisieren und sowohl die Wiederverwendbarkeit als auch die Einfachheit der Verwaltung für den Code verbessern.
 
-## <a name="create-a-temporary-table"></a>Create a temporary table
+## Erstellen einer temporären Tabelle
 
-Temporary tables are created by simply prefixing your table name with a `#`.  For example:
+Temporäre Tabellen werden erstellt, indem dem Tabellennamen einfach `#` als Präfix vorangestellt wird. Zum Beispiel:
 
 ```sql
 CREATE TABLE #stats_ddl
 (
-    [schema_name]       NVARCHAR(128) NOT NULL
-,   [table_name]            NVARCHAR(128) NOT NULL
-,   [stats_name]            NVARCHAR(128) NOT NULL
-,   [stats_is_filtered]     BIT           NOT NULL
-,   [seq_nmbr]              BIGINT        NOT NULL
-,   [two_part_name]         NVARCHAR(260) NOT NULL
-,   [three_part_name]       NVARCHAR(400) NOT NULL
+	[schema_name]		NVARCHAR(128) NOT NULL
+,	[table_name]            NVARCHAR(128) NOT NULL
+,	[stats_name]            NVARCHAR(128) NOT NULL
+,	[stats_is_filtered]     BIT           NOT NULL
+,	[seq_nmbr]              BIGINT        NOT NULL
+,	[two_part_name]         NVARCHAR(260) NOT NULL
+,	[three_part_name]       NVARCHAR(400) NOT NULL
 )
 WITH
 (
-    DISTRIBUTION = HASH([seq_nmbr])
-,   HEAP
+	DISTRIBUTION = HASH([seq_nmbr])
+,	HEAP
 )
 ```
 
-Temporary tables can also be created with a `CTAS` using exactly the same approach:
+Temporäre Tabellen können auch mit `CTAS` auf genau die gleiche Weise erstellt werden:
 
 ```sql
 CREATE TABLE #stats_ddl
 WITH
 (
-    DISTRIBUTION = HASH([seq_nmbr])
-,   HEAP
+	DISTRIBUTION = HASH([seq_nmbr])
+,	HEAP
 )
 AS
 (
 SELECT
-        sm.[name]                                                               AS [schema_name]
-,       tb.[name]                                                               AS [table_name]
-,       st.[name]                                                               AS [stats_name]
-,       st.[has_filter]                                                         AS [stats_is_filtered]
+		sm.[name]				                                                AS [schema_name]
+,		tb.[name]				                                                AS [table_name]
+,		st.[name]				                                                AS [stats_name]
+,		st.[has_filter]			                                                AS [stats_is_filtered]
 ,       ROW_NUMBER()
         OVER(ORDER BY (SELECT NULL))                                            AS [seq_nmbr]
-,                                QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
-,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
-FROM    sys.objects         AS ob
-JOIN    sys.stats           AS st   ON  ob.[object_id]      = st.[object_id]
-JOIN    sys.stats_columns   AS sc   ON  st.[stats_id]       = sc.[stats_id]
-                                    AND st.[object_id]      = sc.[object_id]
-JOIN    sys.columns         AS co   ON  sc.[column_id]      = co.[column_id]
-                                    AND sc.[object_id]      = co.[object_id]
-JOIN    sys.tables          AS tb   ON  co.[object_id]      = tb.[object_id]
-JOIN    sys.schemas         AS sm   ON  tb.[schema_id]      = sm.[schema_id]
-WHERE   1=1
-AND     st.[user_created]   = 1
+,								 QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
+,		QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
+FROM	sys.objects			AS ob
+JOIN	sys.stats			AS st	ON	ob.[object_id]		= st.[object_id]
+JOIN	sys.stats_columns	AS sc	ON	st.[stats_id]		= sc.[stats_id]
+									AND st.[object_id]		= sc.[object_id]
+JOIN	sys.columns			AS co	ON	sc.[column_id]		= co.[column_id]
+									AND	sc.[object_id]		= co.[object_id]
+JOIN	sys.tables			AS tb	ON	co.[object_id]		= tb.[object_id]
+JOIN	sys.schemas			AS sm	ON	tb.[schema_id]		= sm.[schema_id]
+WHERE	1=1
+AND		st.[user_created]   = 1
 GROUP BY
-        sm.[name]
-,       tb.[name]
-,       st.[name]
-,       st.[filter_definition]
-,       st.[has_filter]
+		sm.[name]
+,		tb.[name]
+,		st.[name]
+,		st.[filter_definition]
+,		st.[has_filter]
 )
 SELECT
     CASE @update_type
@@ -107,34 +106,34 @@ FROM    t1
 ;
 ``` 
 
->[AZURE.NOTE] `CTAS` is a very powerful command and has the added advantage of being very efficient in its use of transaction log space. 
+>[AZURE.NOTE] `CTAS` ist ein sehr leistungsfähiger Befehl. Er bietet den zusätzlichen Vorteil, dass er bei der Verwendung des Speicherplatzes für das Transaktionsprotokoll sehr effizient ist.
 
 
-## <a name="dropping-temporary-tables"></a>Dropping temporary tables
+## Löschen von temporären Tabellen
 
-When a new session is created, no temporary tables should exist.  However, if you are calling the same stored procedure, which creates a temporary with the same name, to ensure that your `CREATE TABLE` statements are successful a simple pre-existence check with a `DROP` can be used as in the below example:
+Beim Erstellen einer neuen Sitzung sollten keine temporären Tabellen vorhanden sein. Wenn Sie aber dieselbe gespeicherte Prozedur aufrufen, mit der eine temporäre Tabelle mit dem gleichen Namen erstellt wird, können Sie mit einer einfachen Überprüfung auf das Vorhandensein per `DROP` sicherstellen, dass Ihre `CREATE TABLE`-Anweisungen erfolgreich sind. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
 BEGIN
-    DROP TABLE #stats_ddl
+	DROP TABLE #stats_ddl
 END
 ```
 
-For coding consistency, it is a good practice to use this pattern for both tables and temporary tables.  It is also a good idea to use `DROP TABLE` to remove temporary tables when you have finished with them in your code.  In stored procedure development it is quite common to see the drop commands bundled together at the end of a procedure to ensure these objects are cleaned up.
+In Bezug auf die Codekonsistenz ist es eine bewährte Methode, dieses Muster sowohl für Tabellen als auch für temporäre Tabellen zu verwenden. Es ist auch eine gute Idee, mit `DROP TABLE` temporäre Tabellen zu entfernen, wenn Sie sie in Ihrem Code nicht mehr benötigen. Bei der Entwicklung gespeicherter Prozeduren ist es üblich, die Befehle zum Löschen am Ende einer Prozedur zu bündeln, um sicherzustellen, dass diese Objekte bereinigt werden.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-## <a name="modularizing-code"></a>Modularizing code
+## Modularisieren von Code
 
-Since temporary tables can be seen anywhere in a user session, this can be exploited to help you modularize your application code.  For example, the stored procedure below brings together the recommended practices from above to generate DDL which will update all statistics in the database by statistic name.
+Da temporäre Tabellen in einer Benutzersitzung an einer beliebigen Stelle angezeigt werden können, kann dies zur Modularisierung des Anwendungscodes genutzt werden. Mit der unten angegebenen gespeicherten Prozedur werden beispielsweise die oben beschriebenen empfohlenen Methoden zusammengeführt, um eine DDL zu generieren, mit der alle Statistiken in der Datenbank nach dem Statistiknamen aktualisiert werden.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
 (   @update_type    tinyint -- 1 default 2 fullscan 3 sample 4 resample
-    ,@sample_pct     tinyint
+	,@sample_pct     tinyint
 )
 AS
 
@@ -150,41 +149,41 @@ END;
 
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
 BEGIN
-    DROP TABLE #stats_ddl
+	DROP TABLE #stats_ddl
 END
 
 CREATE TABLE #stats_ddl
 WITH
 (
-    DISTRIBUTION = HASH([seq_nmbr])
+	DISTRIBUTION = HASH([seq_nmbr])
 )
 AS
 (
 SELECT
-        sm.[name]                                                               AS [schema_name]
-,       tb.[name]                                                               AS [table_name]
-,       st.[name]                                                               AS [stats_name]
-,       st.[has_filter]                                                         AS [stats_is_filtered]
+		sm.[name]				                                                AS [schema_name]
+,		tb.[name]				                                                AS [table_name]
+,		st.[name]				                                                AS [stats_name]
+,		st.[has_filter]			                                                AS [stats_is_filtered]
 ,       ROW_NUMBER()
         OVER(ORDER BY (SELECT NULL))                                            AS [seq_nmbr]
-,                                QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
-,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
-FROM    sys.objects         AS ob
-JOIN    sys.stats           AS st   ON  ob.[object_id]      = st.[object_id]
-JOIN    sys.stats_columns   AS sc   ON  st.[stats_id]       = sc.[stats_id]
-                                    AND st.[object_id]      = sc.[object_id]
-JOIN    sys.columns         AS co   ON  sc.[column_id]      = co.[column_id]
-                                    AND sc.[object_id]      = co.[object_id]
-JOIN    sys.tables          AS tb   ON  co.[object_id]      = tb.[object_id]
-JOIN    sys.schemas         AS sm   ON  tb.[schema_id]      = sm.[schema_id]
-WHERE   1=1
-AND     st.[user_created]   = 1
+,								 QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [two_part_name]
+,		QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])  AS [three_part_name]
+FROM	sys.objects			AS ob
+JOIN	sys.stats			AS st	ON	ob.[object_id]		= st.[object_id]
+JOIN	sys.stats_columns	AS sc	ON	st.[stats_id]		= sc.[stats_id]
+									AND st.[object_id]		= sc.[object_id]
+JOIN	sys.columns			AS co	ON	sc.[column_id]		= co.[column_id]
+									AND	sc.[object_id]		= co.[object_id]
+JOIN	sys.tables			AS tb	ON	co.[object_id]		= tb.[object_id]
+JOIN	sys.schemas			AS sm	ON	tb.[schema_id]		= sm.[schema_id]
+WHERE	1=1
+AND		st.[user_created]   = 1
 GROUP BY
-        sm.[name]
-,       tb.[name]
-,       st.[name]
-,       st.[filter_definition]
-,       st.[has_filter]
+		sm.[name]
+,		tb.[name]
+,		st.[name]
+,		st.[filter_definition]
+,		st.[has_filter]
 )
 SELECT
     CASE @update_type
@@ -203,7 +202,7 @@ FROM    t1
 GO
 ```
 
-At this stage the only action that has occurred is the creation of a stored procedure which will simply generated a temporary table, #stats_ddl, with DDL statements.  This stored procedure will drop #stats_ddl if it already exists to ensure it does not fail if run more than once within a session.  However, since there is no `DROP TABLE` at the end of the stored procedure, when the stored procedure completes, it will leave the created table so that it can be read outside of the stored procedure.  In SQL Data Warehouse, unlike other SQL Server databases, it is possible to use the temporary table outside of the procedure that created it.  SQL Data Warehouse temporary tables can be used **anywhere** inside the session. This can lead to more modular and manageable code as in the below example:
+In dieser Phase ist die einzige Aktion, die durchgeführt wurde, die Erstellung einer gespeicherten Prozedur. Dabei wird einfach die temporäre Tabelle „#stats\_ddl“ mit DDL-Anweisungen generiert. Diese gespeicherte Prozedur verwirft „#stats\_ddl“, wenn sie bereits vorhanden ist, um sicherzustellen, dass kein Fehler auftritt, wenn sie innerhalb einer Sitzung mehr als einmal ausgeführt wird. Da am Ende der gespeicherten Prozedur das Element `DROP TABLE` nicht vorhanden ist, wird die erstellte Tabelle nach Abschluss der gespeicherten Prozedur beibehalten, damit sie außerhalb der gespeicherten Prozedur gelesen werden kann. In SQL Data Warehouse ist es im Gegensatz zu anderen SQL Server-Datenbanken möglich, diese temporäre Tabelle außerhalb der Prozedur zu verwenden, mit der sie erstellt wurde. Temporäre SQL Data Warehouse-Tabellen können **überall** innerhalb der Sitzung verwendet werden. Dies kann zu modularerem und besser verwaltbarem Code führen, wie im Beispiel unten dargestellt:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -224,32 +223,32 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-## <a name="temporary-table-limitations"></a>Temporary table limitations
+## Einschränkungen der temporären Tabelle
 
-SQL Data Warehouse does impose a couple of limitations when implementing temporary tables.  Currently, only session scoped temporary tables are supported.  Global Temporary Tables are not supported.  In addition, views cannot be created on temporary tables.
+SQL Data Warehouse weist eine Reihe von Einschränkungen bei der Implementierung von temporären Tabellen auf. Derzeit werden nur temporäre Tabellen für den Sitzungsbereich unterstützt. Globale temporäre Tabellen werden nicht unterstützt. Außerdem können Sichten nicht in temporären Tabellen erstellt werden.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn more, see the articles on [Table Overview][Overview], [Table Data Types][Data Types], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition] and [Maintaining Table Statistics][Statistics].  For more about best practices, see [SQL Data Warehouse Best Practices][].
+Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition] und [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse). Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 <!--Image references-->
 
 <!--Article references-->
 [Overview]: ./sql-data-warehouse-tables-overview.md
+[Übersicht]: ./sql-data-warehouse-tables-overview.md
 [Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Datentypen]: ./sql-data-warehouse-tables-data-types.md
 [Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Verteilen]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[Statistiken]: ./sql-data-warehouse-tables-statistics.md
+[Temporär]: ./sql-data-warehouse-tables-temporary.md
+[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

@@ -1,7 +1,3 @@
-To use this feature and other new Azure capabilities, sign up for the [free preview](https://account.windowsazure.com/PreviewFeatures).
+Melden Sie sich für die [kostenlose Vorschau](https://account.windowsazure.com/PreviewFeatures) an, um diese und weitere Azure-Funktionen zu verwenden.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

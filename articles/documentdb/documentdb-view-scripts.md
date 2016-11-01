@@ -1,123 +1,118 @@
 <properties
-    pageTitle="DocumentDB Script Explorer, a JavaScript editor | Microsoft Azure"
-    description="Learn about the DocumentDB Script Explorer, an Azure Portal tool to manage DocumentDB server-side programming artifacts including stored procedures, triggers, and user-defined functions."
-    keywords="javascript editor"
-    services="documentdb"
-    authors="kirillg"
-    manager="jhubbard"
-    editor="monicar"
-    documentationCenter=""/>
+	pageTitle="DocumentDB-Skript-Explorer, ein JavaScript-Editor | Microsoft Azure"
+	description="Erfahren Sie mehr über den DocumentDB-Skript-Explorer, ein Azure-Portaltool, das Ihnen die Verwaltung von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen."
+	keywords="JavaScript-Editor"
+	services="documentdb"
+	authors="AndrewHoh"
+	manager="jhubbard"
+	editor="monicar"
+	documentationCenter=""/>
 
 <tags
-    ms.service="documentdb"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/30/2016"
-    ms.author="kirillg"/>
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/30/2016"
+	ms.author="anhoh"/>
 
+# Erstellen und Ausführen von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen mit dem DocumentDB-Skript-Explorer
 
-# <a name="create-and-run-stored-procedures,-triggers,-and-user-defined-functions-using-the-documentdb-script-explorer"></a>Create and run stored procedures, triggers, and user-defined functions using the DocumentDB Script Explorer
+Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)-Skript-Explorer, einen JavaScript-Editor im Azure-Portal, der Ihnen die Anzeige von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen. Im Artikel [DocumentDB-serverseitige Programmierung: gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
 
-This article provides an overview of the [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) Script Explorer, which is a JavaScript editor in the Azure portal that enables you to view and execute DocumentDB server-side programming artifacts including stored procedures, triggers, and user-defined functions. Read more about DocumentDB server-side programming in the [Stored procedures, database triggers, and UDFs](documentdb-programming.md) article.
+## Starten des Skript-Explorers
 
-## <a name="launch-script-explorer"></a>Launch Script Explorer
+1. Klicken Sie im Azure-Portal in der Navigationsleiste auf **DocumentDB (NoSQL)**. Wenn **DocumentDB-Konten** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**.
 
-1. In the Azure portal, in the Jumpbar, click **DocumentDB (NoSQL)**. If **DocumentDB Accounts** is not visible, click **More Services** and then click **DocumentDB (NoSQL)**.
+2. Klicken Sie im Ressourcenmenü auf **Skript-Explorer**.
 
-2. In the resources menu, click **Script Explorer**.
-
-    ![Screenshot of the Script Explorer command](./media/documentdb-view-scripts/scriptexplorercommand.png)
+	![Screenshot des Skript-Explorer-Befehls](./media/documentdb-view-scripts/scriptexplorercommand.png)
  
-    The **Database** and **Collection** drop-down list boxes are pre-populated depending on the context in which you launch Script Explorer.  For example, if you launch from a database blade, then the current database is pre-populated.  If you launch from a collection blade, then the current collection is pre-populated.
+    Die Dropdown-Listen **Datenbank** und **Sammlung** werden basierend auf dem Kontext, in dem der Skript-Explorer gestartet wird, automatisch ausgefüllt. Wenn Sie diesen z. B. aus einem Datenbankblatt starten, sind die Felder der aktuellen Datenbank bereits ausgefüllt. Wenn Sie diesen aus einem Auflistungsblatt starten, sind die Felder der aktuellen Auflistung ausgefüllt.
 
-4.  Use the **Database** and **Collection** drop-down list boxes to easily change the collection from which scripts are currently being viewed without having to close and re-launch Script Explorer.  
+4.  Mit den Dropdownlistenfeldern **Datenbank** und **Sammlung** können Sie die Sammlung, aus der aktuell Skripte angezeigt werden, auf einfache Weise ändern, ohne den Skript-Explorer beenden oder erneut starten zu müssen.
 
-5. Script Explorer also supports filtering the currently loaded set of scripts by their id property.  Simply type in the filter box and the results in the Script Explorer list are filtered based on your supplied criteria.
+5. Der Skript-Explorer unterstützt auch das Filtern des aktuell geladenen Skriptsets nach der id-Eigenschaft. Nehmen Sie einfach eine Eingabe im Filterfeld vor, und die Ergebnisse werden in der Skript-Explorer-Liste basierend auf den angegebenen Kriterien gefiltert.
 
-    ![Screenshot of Script Explorer with filtered results](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
-
-
-    > [AZURE.IMPORTANT] The Script Explorer filter functionality only filters from the ***currently*** loaded set of scripts and does not automatically refresh the currently selected collection.
-
-5. To refresh the list of scripts loaded by Script Explorer, simply click the **Refresh** command at the top of the blade.
-
-    ![Screenshot of Script Explorer refresh command](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
+	![Screenshot des Skript-Explorers mit gefilterten Ergebnissen](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
 
 
-## <a name="create,-view,-and-edit-stored-procedures,-triggers,-and-user-defined-functions"></a>Create, view, and edit stored procedures, triggers, and user-defined functions
+	> [AZURE.IMPORTANT] Die Filterfunktion vom Skript-Explorer filtert nur aus dem ***aktuell*** geladenen Satz an Skripten und aktualisiert die aktuell ausgewählte Sammlung nicht automatisch.
 
-Script Explorer allows you to easily perform CRUD operations on DocumentDB server-side programming artifacts.  
+5. Zum Aktualisieren der vom Skript-Explorer geladenen Skriptliste klicken Sie einfach auf den Befehl **Aktualisieren** im oberen Bereich des Blatts.
 
-- To create a script, simply click on the applicable create command within script explorer, provide an id, enter the contents of the script, and click **Save**.
-
-    ![Screenshot of Script Explorer create option, showing the JavaScript editor](./media/documentdb-view-scripts/scriptexplorercreatecommand.png)
-
-- When creating a trigger, you must also specify the trigger type and trigger operation
-
-    ![Screenshot of Script Explorer create trigger option](./media/documentdb-view-scripts/scriptexplorercreatetrigger.png)
-
-- To view a script, simply click the script in which you're interested.
-
-    ![Screenshot of Script Explorer view script experience](./media/documentdb-view-scripts/scriptexplorerviewscript.png)
-
-- To edit a script, simply make the desired changes in the JavaScript editor and click **Save**.
-
-    ![Screenshot of Script Explorer view script experience](./media/documentdb-view-scripts/scriptexplorereditscript.png)
-
-- To discard any pending changes to a script, simply click the **Discard** command.
-
-    ![Screenshot of Script Explorer discard changes experience](./media/documentdb-view-scripts/scriptexplorerdiscardchanges.png)
-
-- Script Explorer also allows you to easily view the system properties of the currently loaded script by clicking the **Properties** command.
-
-    ![Screenshot of Script Explorer script properties view](./media/documentdb-view-scripts/scriptproperties.png)
-
-    > [AZURE.NOTE] The timestamp (_ts) property is internally represented as epoch time, but Script Explorer displays the value in a human readable GMT format.
-
-- To delete a script, select it in Script Explorer and click the **Delete** command.
-
-    ![Screenshot of Script Explorer delete command](./media/documentdb-view-scripts/scriptexplorerdeletescript1.png)
-
-- Confirm the delete action by clicking **Yes** or cancel the delete action by clicking **No**.
-
-    ![Screenshot of Script Explorer delete command](./media/documentdb-view-scripts/scriptexplorerdeletescript2.png)
-
-## <a name="execute-a-stored-procedure"></a>Execute a stored procedure
-
-> [AZURE.WARNING] Executing stored procedures in Script Explorer is not yet supported for server side partitioned collections. For more information, visit [Partitioning and Scaling in DocumentDB](documentdb-partition-data.md).
-
-Script Explorer allows you to execute server-side stored procedures from the Azure portal.
-
-- When opening a new create stored procedure blade, a default script (*prefix*) will already be provided. In order to run the *prefix* script or your own script, add an *id* and *inputs*. For stored procedures that accept multiple parameters, all inputs must be within an array (e.g. *["foo", "bar"]*).
-
-    ![Screenshot of Script Explorer Stored Procedures blade to add input and execute a stored procedure](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-input.png)
-
-- To execute a stored procedure, simply click on the **Save & Execute** command within script editor pane.
-
-    > [AZURE.NOTE] The **Save & Execute** command will save your stored procedure before executing, which means it will overwrite the previously saved version of the stored procedure.
-
-- Successful stored procedure executions will have a *Successfully saved and executed the stored procedure* status and the returned results will be populated in the *Results* pane.
-
-    ![Screenshot of Script Explorer Stored Procedures blade, to execute a stored procedure](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure.png)
-
-- If the execution encounters an error, the error will be populated in the *Results* pane.
-
-    ![Screenshot of Script Explorer script properties view. Execute a stored procedure with errors](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-error.png)
-
-## <a name="work-with-scripts-outside-the-portal"></a>Work with scripts outside the portal
-
-The Script Explorer in the Azure portal is just one way to work with stored procedures, triggers, and user-defined functions in DocumentDB. You can also work with scripts using the the REST API and the [client SDKs](documentdb-sdk-dotnet.md). The REST API documentation includes samples for working with [stored procedures using REST](https://msdn.microsoft.com/library/azure/mt489092.aspx), [user defined functions using REST](https://msdn.microsoft.com/library/azure/dn781481.aspx), and [triggers using REST](https://msdn.microsoft.com/library/azure/mt489116.aspx). Samples are also available showing how to [work with scripts using C#](documentdb-dotnet-samples.md#server-side-programming-examples) and [work with scripts using Node.js](documentdb-nodejs-samples.md#server-side-programming-examples).
-
-## <a name="next-steps"></a>Next steps
-
-Learn more about DocumentDB server-side programming in the [Stored procedures, database triggers, and UDFs](documentdb-programming.md) article.
-
-The [Learning path](https://azure.microsoft.com/documentation/learning-paths/documentdb/) is also a useful resource to guide you as you learn more about DocumentDB.  
+	![Screenshot des Befehls Aktualisieren in Skript-Explorer](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
 
 
+## Erstellen, Anzeigen und Bearbeiten von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen
 
-<!--HONumber=Oct16_HO2-->
+Mit dem Skript-Explorer können Sie problemlos CRUD-Vorgänge an serverseitigen Programmierartefakten in DocumentDB durchführen.
 
+- Um ein Skript zu erstellen, klicken Sie im Skript-Explorer auf den entsprechenden Erstellungsbefehl, geben Sie eine ID an, geben Sie den Inhalt des Skripts ein, und klicken Sie auf **Speichern**.
 
+	![Screenshot der Option zum Erstellen des Skript-Explorers, der den JavaScript-Editor zeigt](./media/documentdb-view-scripts/scriptexplorercreatecommand.png)
+
+- Wenn Sie einen Trigger erstellen, müssen Sie auch Triggertyp und Triggervorgang angeben.
+
+	![Screenshot der Option zum Erstellen eines Triggers im Skript-Explorer](./media/documentdb-view-scripts/scriptexplorercreatetrigger.png)
+
+- Klicken Sie zum Anzeigen eines Skripts einfach auf das für Sie relevante Skript.
+
+	![Screenshot der Ansicht Skript-Erfahrung in Skript-Explorer](./media/documentdb-view-scripts/scriptexplorerviewscript.png)
+
+- Um ein Skript zu bearbeiten, nehmen Sie einfach die gewünschten Änderungen im JavaScript-Editor vor, und klicken Sie auf **Speichern**.
+
+	![Screenshot der Ansicht Skript-Erfahrung in Skript-Explorer](./media/documentdb-view-scripts/scriptexplorereditscript.png)
+
+- Um alle ausstehenden Änderungen an einem Skript zu verwerfen, klicken Sie einfach auf den Befehl **Verwerfen**.
+
+	![Screenshot der Skript-Explorer-Ansicht zum Verwerfen von Änderungen](./media/documentdb-view-scripts/scriptexplorerdiscardchanges.png)
+
+- Mit dem Skript-Explorer können außerdem problemlos die Systemeigenschaften des aktuell geladenen Skripts durch Klicken auf den Befehl **Eigenschaften** angezeigt werden.
+
+	![Screenshot der Ansicht Skript-Eigenschaften in Skript-Explorer](./media/documentdb-view-scripts/scriptproperties.png)
+
+	> [AZURE.NOTE] Die Zeitstempeleigenschaft (\_ts) wird intern als Epochenzeit dargestellt, im Skript-Explorer wird der Wert jedoch in einem vom Menschen lesbaren GMT-Format angezeigt.
+
+- Um ein Skript zu löschen, wählen Sie dieses im Skript-Explorer aus, und klicken Sie auf den Befehl **Löschen**.
+
+	![Screenshot des Befehls "Löschen" im Skript-Explorer](./media/documentdb-view-scripts/scriptexplorerdeletescript1.png)
+
+- Bestätigen Sie den Löschvorgang mit **Ja**, oder brechen Sie den Löschvorgang ab, indem Sie auf **Nein** klicken.
+
+	![Screenshot des Befehls "Löschen" im Skript-Explorer](./media/documentdb-view-scripts/scriptexplorerdeletescript2.png)
+
+## Ausführen einer gespeicherten Prozedur
+
+> [AZURE.WARNING] Das Ausführen von gespeicherten Prozeduren im Skript-Explorer wird für serverseitige partitionierte Sammlungen noch nicht unterstützt. Weitere Informationen finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
+
+Mit dem Skript-Explorer können Sie serverseitige gespeicherte Prozeduren über das Azure-Portal ausführen.
+
+- Beim Öffnen eines Blatts einer neu zu erstellenden gespeicherten Prozedur wird bereits ein Standardskript (*Präfix*) bereitgestellt. Fügen Sie zum Ausführen des *Präfixskripts* oder Ihres eigenen Skripts eine *ID* und *Eingaben* hinzu. Für gespeicherte Prozeduren, die mehrere Parameter akzeptieren, müssen alle Eingaben in einem Array liegen (z.B. *["foo", "bar"]*).
+
+	![Screenshot des Skript-Explorer-Blatts „Gespeicherte Prozeduren“ zum Hinzufügen der Eingabe und Ausführen einer gespeicherten Prozedur](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-input.png)
+
+- Um eine gespeicherte Prozedur auszuführen, klicken Sie im Skript-Editor-Bereich auf den Befehl **Speichern und ausführen**.
+
+	> [AZURE.NOTE] Mit dem Befehl **Speichern und ausführen** wird die gespeicherte Prozedur vor der Ausführung gespeichert, d.h., die zuvor gespeicherte Version der gespeicherten Prozedur wird überschrieben.
+
+- Erfolgreiche Ausführungen gespeicherter Prozeduren erhalten den Status *Die gespeicherte Prozedur wurde erfolgreich gespeichert und ausgeführt*, und die zurückgegebenen Ergebnisse werden im Bereich *Ergebnisse* eingetragen.
+
+	![Screenshot des Skript-Explorer-Blatts „Gespeicherte Prozeduren“ zum Ausführen einer gespeicherten Prozedur](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure.png)
+
+- Wenn bei der Ausführung ein Fehler auftritt, wird der Fehler im Bereich *Ergebnisse* eingetragen.
+
+	![Screenshot der Skripteigenschaftenansicht im Skript-Explorer Ausführen einer gespeicherten Prozedur mit Fehlern](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-error.png)
+
+## Arbeiten mit Skripts außerhalb des Portals
+
+Der Skript-Explorer im Azure-Portal ist nur eine Möglichkeit, mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in DocumentDB zu arbeiten. Sie können mit Skripts auch arbeiten, indem Sie die REST-API und die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Die REST-API-Dokumentation enthält Beispiele für die Arbeit mit [gespeicherten Prozeduren mithilfe von REST](https://msdn.microsoft.com/library/azure/mt489092.aspx), [benutzerdefinierten Funktionen mithilfe von REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) und [Triggern mithilfe von REST](https://msdn.microsoft.com/library/azure/mt489116.aspx). Es sind auch Beispiele verfügbar, die das [Arbeiten mit Skripts mit C#](documentdb-dotnet-samples.md#server-side-programming-examples) und das [Arbeiten mit Skripts mithilfe von Node.js](documentdb-nodejs-samples.md#server-side-programming-examples) zeigen.
+
+## Nächste Schritte
+
+Im Artikel [Gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
+
+Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist ebenfalls eine hilfreiche Ressource, um mehr über DocumentDB zu erfahren.
+
+<!---HONumber=AcomDC_0831_2016-->

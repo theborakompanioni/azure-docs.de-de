@@ -1,101 +1,95 @@
 <properties 
-    pageTitle="Overview of schemas and the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-    description="Learn how to use schemas with the Enterprise Integration Pack and Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="msftman" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="Übersicht über Schemas und das Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
+	description="Erfahren Sie, wie Sie Schemas mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/29/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/29/2016" 
+	ms.author="deonhe"/>
 
+# Informationen zu Schemas und zum Enterprise Integration Pack  
 
-# <a name="learn-about-schemas-and-the-enterprise-integration-pack"></a>Learn about schemas and the Enterprise Integration Pack  
+## Gründe für die Verwendung eines Schemas
+Mithilfe von Schemas bestätigen Sie, dass von Ihnen empfangene XML-Dokumente gültig sind, was heißt, dass die Dokumente die erwarteten Daten in einem vordefinierten Format enthalten.
 
-## <a name="why-use-a-schema"></a>Why use a schema
-You use schemas to confirm that XML documents you receive are valid, meaning that the documents contain the expected data in a predefined format.
+## Hinzufügen eines Schemas
+Gehen Sie im Azure-Portal so vor:
 
-## <a name="how-to-add-a-schema"></a>How to add a schema
-From the Azure portal:  
-
-1. Select **More Services**  
+1. Wählen Sie **Weitere Dienste**.  
 ![](./media/app-service-logic-enterprise-integration-overview/overview-11.png)    
-2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+2. Geben Sie in das Filtersuchfeld **Integration** ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus.     
 ![](./media/app-service-logic-enterprise-integration-overview/overview-21.png)  
-3. Select the **integration account** to which you add the schema    
+3. Wählen Sie das **Integrationskonto** aus, dem Sie das Schema hinzufügen.     
 ![](./media/app-service-logic-enterprise-integration-overview/overview-31.png)  
-4. Select the **Schemas** tile  
+4. Wählen Sie die Kachel **Schemas** aus.  
 ![](./media/app-service-logic-enterprise-integration-schemas/schema-11.png)  
 
-#### <a name="to-add-schema-file-less-than-2-mb"></a>To add schema file less than 2 MB  
+#### So fügen Sie eine Schemadatei hinzu, die kleiner als 2 MB ist:  
 
-5. Select the **Add** button in the Schemas blade that opens  
-![](./media/app-service-logic-enterprise-integration-schemas/schema-21.png)  
-6. Enter a **Name** for your schema, then to upload the schema file, select the folder icon on the right side of the **Schema** text box. After the upload process is completed, select the **OK** button.    
-![](./media/app-service-logic-enterprise-integration-schemas/schema-31.png)  
+5. Wählen Sie auf dem geöffneten Blatt „Schema“ die Schaltfläche **Hinzufügen** aus.  
+![](./media/app-service-logic-enterprise-integration-schemas/schema-21.png)
+6. Geben Sie einen **Namen** für das Schema ein. Wählen Sie dann zum Hochladen der Schemadatei das Ordnersymbol rechts neben dem Textfeld **Schema** aus. Wählen Sie nach Abschluss des Hochladevorgangs die Schaltfläche **OK** aus.    
+![](./media/app-service-logic-enterprise-integration-schemas/schema-31.png)
 
-#### <a name="to-add-schema-file-larger-than-2-mb-(max-8-mb)"></a>To add schema file larger than 2 MB (Max 8 MB)  
+#### So fügen Sie eine Schemadatei hinzu, die größer als 2 MB (max. 8 MB) ist:  
 
-7. If blob security access level is **Public**  
-  ![](./media/app-service-logic-enterprise-integration-schemas/blob-public.png)  
+7. Wenn die Blob-Sicherheitszugriffsebene **Öffentlich** ist:  
+  ![](./media/app-service-logic-enterprise-integration-schemas/blob-public.png)
 
-  * Upload the schema to storage and copy the URI  
-  ![](./media/app-service-logic-enterprise-integration-schemas/schema-blob.png)  
+  * Laden Sie das Schema in den Speicher hoch, und kopieren Sie den URI.  
+  ![](./media/app-service-logic-enterprise-integration-schemas/schema-blob.png)
 
-  * Select Large file in Add Schema and provide the URI in the Content URI  
-  ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)  
+  * Wählen Sie unter „Schema hinzufügen“ die Option „Große Datei“ aus, und geben Sie unter „Inhalts-URI“ den URI an.
 
-8. If blob security access level is **No anonymous access**  
-  ![](./media/app-service-logic-enterprise-integration-schemas/blob-1.png)  
+8. Wenn die Blob-Sicherheitszugriffsebene **Kein anonymer Zugriff** ist:  
+  ![](./media/app-service-logic-enterprise-integration-schemas/blob-1.png)
 
-  * Upload the schema to storage  
+  * Laden Sie das Schema in den Speicher hoch.  
   ![](./media/app-service-logic-enterprise-integration-schemas/blob-3.png)
 
-  * Generate a Shared Access Signature for the schema  
+  * Generieren Sie einen Shared Access Signature-URI für das Schema.  
   ![](./media/app-service-logic-enterprise-integration-schemas/blob-2.png)
 
-  * Select Large file in Add Schema and provide the Shared Access Signature URI in the Content URI  
-  ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)  
+  * Wählen Sie unter „Schema hinzufügen“ die Option „Große Datei“ aus, und geben Sie unter „Inhalts-URI“ den Shared Access Signature-URI an.  
+  ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)
 
-9. You should see the newly added schema  
+9. Das neu hinzugefügte Schema wird angezeigt:  
 ![](./media/app-service-logic-enterprise-integration-schemas/schema-41.png) 
 
-## <a name="how-to-use-schemas"></a>How to use schemas
-- Schemas are used to validate messages that are exchanged in a B2B scenario.  
+## Verwenden von Schemas
+- Schemas dienen zum Überprüfen von Nachrichten, die in einem B2B-Szenario ausgetauscht werden.
 
-## <a name="how-to-edit-schemas"></a>How to edit schemas
-1. Select the **Schemas** tile  
-2. Select the schema you wish to edit from the Schemas blade that opens up
-3. Select the **Upload** link on the Schemas blade  
-![](./media/app-service-logic-enterprise-integration-schemas/edit-12.png)    
-4. Select the schema file you wish to upload by using the file picker dialog that opens up.
-5. Select **Open** in the file picker  
-![](./media/app-service-logic-enterprise-integration-schemas/edit-31.png)  
-6. You receive a notification that indicates the upload was successful  
+## Bearbeiten von Schemas
+1. Wählen Sie die Kachel **Schemas** aus.
+2. Wählen Sie auf dem geöffneten Blatt „Schemas“ das Schema aus, das Sie bearbeiten möchten.
+3. Wählen Sie auf dem Blatt „Schemas“ den Link **Hochladen** aus.  
+![](./media/app-service-logic-enterprise-integration-schemas/edit-12.png)
+4. Wählen Sie im eingeblendeten Dialogfeld zur Dateiauswahl die Schemadatei aus, die Sie hochladen möchten.
+5. Wählen Sie in der Dateiauswahl **Öffnen** aus.  
+![](./media/app-service-logic-enterprise-integration-schemas/edit-31.png)
+6. Sie erhalten eine Benachrichtigung, die angibt, dass das Hochladen erfolgreich war.
 
-## <a name="how-to-delete-schemas"></a>How to delete schemas
-1. Select the **Schemas** tile  
-2. Select the schema you wish to delete from the Schemas blade that opens up  
-3. Select the **Delete** link from the menu bar on the Schemas blade ![](./media/app-service-logic-enterprise-integration-schemas/delete-12.png)  
-4. If you really wish to delete the schema you selected, choose **Yes** on the Delete schema dialog to confirm your choice  
-![](./media/app-service-logic-enterprise-integration-schemas/delete-21.png)  
-5. Finally, notice that the list of schemas in the Schemas blade refreshes and the schema you deleted is no longer listed  
-![](./media/app-service-logic-enterprise-integration-schemas/delete-31.png)    
+## Löschen von Schemas
+1. Wählen Sie die Kachel **Schemas** aus.
+2. Wählen Sie auf dem geöffneten Blatt „Schemas“ das Schema aus, das Sie löschen möchten.
+3. Wählen Sie auf dem Blatt „Schemas“ auf der Menüleiste den Link **Löschen** aus.
+![](./media/app-service-logic-enterprise-integration-schemas/delete-12.png)
+4. Wenn Sie das ausgewählte Schema wirklich löschen möchten, wählen Sie im Dialogfeld „Schema löschen“ **Ja** aus, um Ihre Auswahl zu bestätigen.  
+![](./media/app-service-logic-enterprise-integration-schemas/delete-21.png)
+5. Auf der aktualisierten Liste auf dem Blatt „Schemas“ wird das gelöschte Schema nicht mehr angezeigt.  
+![](./media/app-service-logic-enterprise-integration-schemas/delete-31.png)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about the enterprise integration pack")  
+- [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!-----HONumber=AcomDC_0921_2016-->

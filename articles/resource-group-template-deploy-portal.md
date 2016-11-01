@@ -1,131 +1,121 @@
 <properties 
-    pageTitle="Use Azure portal to deploy Azure resources | Microsoft Azure" 
-    description="Use Azure portal and Azure Resource Manage to deploy your resources." 
-    services="azure-resource-manager,azure-portal" 
-    documentationCenter="" 
-    authors="tfitzmac" 
-    manager="timlt" 
-    editor="tysonn"/>
+	pageTitle="Verwenden des Azure-Portals zum Bereitstellen von Azure-Ressourcen | Microsoft Azure" 
+	description="Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen." 
+	services="azure-resource-manager,azure-portal" 
+	documentationCenter="" 
+	authors="tfitzmac" 
+	manager="timlt" 
+	editor="tysonn"/>
 
 <tags 
-    ms.service="azure-resource-manager" 
-    ms.workload="multiple" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/15/2016" 
-    ms.author="tomfitz"/>
+	ms.service="azure-resource-manager" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/15/2016" 
+	ms.author="tomfitz"/>
 
-
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal
+# Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-template-deploy.md)
-- [Azure CLI](resource-group-template-deploy-cli.md)
+- [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
 - [Portal](resource-group-template-deploy-portal.md)
-- [REST API](resource-group-template-deploy-rest.md)
+- [REST-API](resource-group-template-deploy-rest.md)
 
-This topic shows how to use the [Azure portal](https://portal.azure.com) with [Azure Resource Manager](resource-group-overview.md) to deploy your Azure resources. To learn about managing your resources, see [Manage Azure resources through portal](./azure-portal/resource-group-portal.md).
+In diesem Thema wird veranschaulicht, wie Sie das [Azure-Portal](https://portal.azure.com) mit [Azure Resource Manager](resource-group-overview.md) verwenden, um Ihre Azure-Ressourcen bereitzustellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](./azure-portal/resource-group-portal.md).
 
-Currently, not every service supports the portal or Resource Manager. For those services, you need to use the [classic portal](https://manage.windowsazure.com). For the status of each service, see [Azure portal availability chart](https://azure.microsoft.com/features/azure-portal/availability/).
+Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten unterstützt. Für diese Dienste müssen Sie das [klassische Portal](https://manage.windowsazure.com) verwenden. Den Status der einzelnen Dienste können Sie dem [Verfügbarkeitsdiagramm für das Azure-Portal](https://azure.microsoft.com/features/azure-portal/availability/) entnehmen.
 
-## <a name="create-resource-group"></a>Create resource group
+## Erstellen einer Ressourcengruppe
 
-1. To create an empty resource group, select **New** > **Management** > **Resource Group**.
+1. Wählen Sie zum Erstellen einer leeren Ressourcengruppe **Neu** > **Verwaltung** > **Ressourcengruppe** aus.
 
-    ![create empty resource group](./media/resource-group-template-deploy-portal/create-empty-group.png)
+    ![Leere Ressourcengruppe erstellen](./media/resource-group-template-deploy-portal/create-empty-group.png)
 
-2. Give it a name and location, and, if necessary, select a subscription. You need to provide a location for the resource group because the resource group stores metadata about the resources. For compliance reasons, you may want to specify where that metadata is stored. In general, we recommend that you specify a location where most of your resources will reside. Using the same location can simplify your template.
+2. Geben Sie einen Namen und einen Speicherort an, und wählen Sie ggf. ein Abonnement aus. Sie müssen einen Standort für die Ressourcengruppe angeben, da diese Metadaten zu den Ressourcen speichert. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
 
-    ![set group values](./media/resource-group-template-deploy-portal/set-group-properties.png)
+    ![Gruppenwerte festlegen](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
-## <a name="deploy-resources-from-marketplace"></a>Deploy resources from Marketplace
+## Bereitstellen von Ressourcen über den Marketplace
 
-After you create a resource group, you can deploy resources to it from the Marketplace. The Marketplace provides pre-defined solutions for common scenarios.
+Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie Ressourcen dafür über den Marketplace bereitstellen. Der Marketplace bietet vordefinierte Lösungen für gängige Szenarien.
 
-1. To start a deployment, select **New** and the type of resource you would like to deploy. Then, look for the particular version of the resource you would like to deploy.
+1. Wählen Sie zum Starten einer Bereitstellung **Neu** aus, und geben Sie den Ressourcentyp an, den Sie bereitstellen möchten. Suchen Sie anschließend die bestimmte Version der Ressource, die Sie bereitstellen möchten.
 
-    ![deploy resource](./media/resource-group-template-deploy-portal/deploy-resource.png)
+    ![Ressource bereitstellen](./media/resource-group-template-deploy-portal/deploy-resource.png)
 
-2. If you do not see the particular solution you would like to deploy, you can search the Marketplace for it.
+2. Falls die gewünschte bereitzustellende Lösung nicht angezeigt wird, können Sie im Marketplace danach suchen.
 
-    ![search marketplace](./media/resource-group-template-deploy-portal/search-resource.png)
+    ![Marketplace durchsuchen](./media/resource-group-template-deploy-portal/search-resource.png)
 
-3. Depending on the type of selected resource, you have a collection of relevant properties to set before deployment. Those options are not shown here, as they vary based on resource type. For all types, you must select a destination resource group. The following image shows how to create a web app and deploy it to the resource group you created.
+3. Je nach ausgewähltem Ressourcentyp müssen Sie einige relevante Eigenschaften festlegen, bevor die Bereitstellung beginnen kann. Diese Optionen werden hier nicht angezeigt, da sie je nach Ressourcentyp variieren. Für alle Typen müssen Sie eine Zielressourcengruppe auswählen. Die folgende Abbildung zeigt, wie Sie eine Web-App erstellen und in der erstellten Ressourcengruppe bereitstellen.
 
-    ![create resource group](./media/resource-group-template-deploy-portal/select-existing-group.png)
+    ![Ressourcengruppe erstellen](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
-    Alternatively, you can decide to create a resource group when deploying your resources. Select **Create new** and give the resource group a name.
+    Alternativ können Sie eine Ressourcengruppe beim Bereitstellen Ihrer Ressourcen erstellen. Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
 
-    ![create new resource group](./media/resource-group-template-deploy-portal/select-new-group.png)
+    ![neue Ressourcengruppe erstellen](./media/resource-group-template-deploy-portal/select-new-group.png)
 
-4. Your deployment begins. The deployment could take a few minutes. When the deployment has finished, you see a notification.
+4. Die Bereitstellung wird gestartet. Der Vorgang kann mehrere Minuten dauern. Nachdem die Bereitstellung abgeschlossen wurde, wird eine Benachrichtigung angezeigt.
 
-    ![view notification](./media/resource-group-template-deploy-portal/view-notification.png)
+    ![Benachrichtigung anzeigen](./media/resource-group-template-deploy-portal/view-notification.png)
 
-5. After deploying your resources, you can add more resources to the resource group by using the **Add** command on the resource group blade.
+5. Nach dem Bereitstellen Ihrer Ressourcen können Sie mit dem Befehl **Hinzufügen** auf dem Blatt „Ressourcengruppe“ einer Ressourcengruppe weitere Ressourcen hinzufügen.
 
-    ![add resource](./media/resource-group-template-deploy-portal/add-resource.png)
+    ![Ressource hinzufügen](./media/resource-group-template-deploy-portal/add-resource.png)
 
-## <a name="deploy-resources-from-custom-template"></a>Deploy resources from custom template
+## Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage
 
-If you want to execute a deployment but not use any of the templates in the Marketplace, you can create a customized template that defines the infrastructure for your solution. To learn about creating templates, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Marketplace zu nutzen, können Sie eine angepasste Vorlage erstellen, mit der die Infrastruktur für Ihre Lösung definiert wird. Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 
-1. To deploy a customized template through the portal, select **New**, and start searching for **Template Deployment** until you can select it from the options.
+1. Wählen Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal die Option **Neu** aus, suchen Sie nach **Vorlagenbereitstellung**, und wählen Sie diese Option aus.
 
-    ![search template deployment](./media/resource-group-template-deploy-portal/search-template.png)
+    ![Vorlagenbereitstellung suchen](./media/resource-group-template-deploy-portal/search-template.png)
 
-2. Select **Template Deployment** from the available resources.
+2. Wählen Sie in den verfügbaren Ressourcen **Vorlagenbereitstellung** aus.
 
-    ![select template deployment](./media/resource-group-template-deploy-portal/select-template.png)
+    ![Vorlagenbereitstellung auswählen](./media/resource-group-template-deploy-portal/select-template.png)
 
-3. After launching the template deployment, open the blank template that is available for customizing.
+3. Öffnen Sie nach dem Starten der Vorlagenbereitstellung die leere Vorlage, die zum Anpassen verfügbar ist.
 
-    ![create template](./media/resource-group-template-deploy-portal/show-custom-template.png)
+    ![Vorlage erstellen](./media/resource-group-template-deploy-portal/show-custom-template.png)
 
-    In the editor, add the JSON syntax that defines the resources you want to deploy. Select **Save** when done. For guidance on writing the JSON syntax, see [Resource Manager template walkthrough](resource-manager-template-walkthrough.md).
+    Fügen Sie im Editor die JSON-Syntax hinzu, die die Ressourcen definiert, die Sie bereitstellen möchten. Wenn Sie abschließend **Speichern** aus. Einen Leitfaden zum Schreiben der JSON-Syntax finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
 
-    ![edit template](./media/resource-group-template-deploy-portal/edit-template.png)
+    ![Bearbeiten der Vorlage](./media/resource-group-template-deploy-portal/edit-template.png)
 
-4. Or, you can select a pre-existing template from the [Azure quickstart templates](https://azure.microsoft.com/documentation/templates/). These templates are contributed by the community. They cover many common scenarios, and someone may have added a template that is similar to what you are trying to deploy. You can search the templates to find something that matches your scenario.
+4. Sie können auch in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) eine bereits vorhandene Vorlage auswählen. Diese Vorlagen sind ein Beitrag der Community. Sie decken viele häufig vorkommende Szenarien ab, und unter Umständen wurde bereits eine Vorlage für einen Fall hinzugefügt, der Ihrer Bereitstellung ähnelt. Sie können die Vorlagen nach Übereinstimmungen mit Ihrem Szenario durchsuchen.
 
-    ![select quickstart template](./media/resource-group-template-deploy-portal/select-quickstart-template.png)
+    ![Schnellstartvorlage auswählen](./media/resource-group-template-deploy-portal/select-quickstart-template.png)
 
-    You can view the selected template in the editor.
+    Sie können die ausgewählte Vorlage im Editor anzeigen.
 
-5. After providing all the other values, select **Create** to deploy the template. 
+5. Nachdem Sie alle anderen Werte angegeben haben, wählen Sie **Erstellen** aus, um die Vorlage bereitzustellen.
 
-    ![deploy template](./media/resource-group-template-deploy-portal/create-custom-deploy.png)
+    ![Bereitstellen der Vorlage](./media/resource-group-template-deploy-portal/create-custom-deploy.png)
 
-## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Deploy resources from a template saved to your account
+## Bereitstellen von Ressourcen aus einer in Ihrem Konto gespeicherten Vorlage
 
-The portal enables you to save a template to your Azure account, and redeploy it later. For more information about working with these saved templates, [Get started with private templates on the Azure portal](./marketplace-consumer/mytemplates-getstarted.md).
+Über das Portal können Sie eine Vorlage in Ihrem Azure-Konto speichern und später erneut bereitstellen. Weitere Informationen zur Verwendung dieser gespeicherten Vorlagen finden Sie unter [Erste Schritte mit privaten Vorlagen im Azure-Portal](./marketplace-consumer/mytemplates-getstarted.md).
 
-1. To find your saved templates, select **Browse** > **Templates**.
+1. Ihre gespeicherten Vorlagen finden Sie unter **Durchsuchen** > **Vorlagen**.
 
-    ![browse templates](./media/resource-group-template-deploy-portal/browse-templates.png)
+    ![Vorlagen durchsuchen](./media/resource-group-template-deploy-portal/browse-templates.png)
 
-2. From the list of templates saved to your account, select the one you wish to work on.
+2. Wählen Sie in der Liste der Vorlagen, die in Ihrem Konto gespeichert sind, diejenige aus, mit der Sie arbeiten möchten.
 
-    ![saved templates](./media/resource-group-template-deploy-portal/saved-templates.png)
+    ![Gespeicherte Vorlagen](./media/resource-group-template-deploy-portal/saved-templates.png)
 
-3. Select **Deploy** to redeploy this saved template.
+3. Wählen Sie **Bereitstellen** aus, um diese gespeicherte Vorlage erneut bereitzustellen.
 
-    ![deploy saved template](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
+    ![Bereitstellen der gespeicherten Vorlage](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
-## <a name="next-steps"></a>Next Steps
+## Nächste Schritte
 
-- To view audit logs, see [Audit operations with Resource Manager](resource-group-audit.md).
-- To troubleshoot deployment errors, see [Troubleshooting resource group deployments with Azure portal](resource-manager-troubleshoot-deployments-portal.md).
-- To retrieve a template from a deployment or resource group, see [Export Azure Resource Manager template from existing resources](resource-manager-export-template.md).
+- Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
+- Informationen zum Behandeln von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
+- Informationen zum Abrufen einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
 
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

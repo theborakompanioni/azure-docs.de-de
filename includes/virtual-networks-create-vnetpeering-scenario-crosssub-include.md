@@ -1,14 +1,11 @@
-## <a name="peering-across-subscriptions"></a>Peering across subscriptions
+## Abonnementübergreifendes Peering
 
-In this scenario you will create a peering between two VNets belonging to different subscriptions.
+In diesem Szenario erstellen Sie ein Peering zwischen zwei VNets, die zu unterschiedlichen Abonnements gehören.
 
-![cross sub scenario](./media/virtual-networks-create-vnetpeering-scenario-crosssub-include/figure01.PNG)
+![Abonnementübergreifendes Szenario](./media/virtual-networks-create-vnetpeering-scenario-crosssub-include/figure01.PNG)
 
-VNet peering relies on Role based access control (RBAC) for authorization. For cross-subscriptions scenario, you first need to grant sufficient permission to users who will create the peering link:
+Beim VNet-Peering wird die rollenbasierte Zugriffssteuerung (RBAC) für die Autorisierung genutzt. Für abonnementübergreifende Szenarien müssen Sie zuerst den Benutzern, die den Peeringlink erstellen sollen, ausreichende Berechtigungen gewähren:
 
-> [AZURE.NOTE] If the same user has the privilege over both subscriptions, then you can skip step1-4 below.
+> [AZURE.NOTE] Wenn derselbe Benutzer über die Berechtigung für beide Abonnements verfügt, können Sie unten die Schritte 1 bis 4 überspringen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

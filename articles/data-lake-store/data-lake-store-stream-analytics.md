@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Stream data from Stream Analytics into Data Lake Store | Azure"
-   description="Use Azure Stream Analytics to stream data into Azure Data Lake Store"
+   pageTitle="Streamen von Daten aus Stream Analytics in Data Lake-Speicher | Azure"
+   description="Verwenden von Azure Stream Analytics zum Streamen von Daten in Azure Data Lake-Speicher"
    services="data-lake-store,stream-analytics" 
    documentationCenter=""
    authors="nitinme"
@@ -16,122 +16,117 @@
    ms.date="07/07/2016"
    ms.author="nitinme"/>
 
+# Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
 
-# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Stream data from Azure Storage Blob into Data Lake Store using Azure Stream Analytics
+In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
 
-In this article you will learn how to use Azure Data Lake Store as an output for an Azure Stream Analytics job. This article demonstrates a simple scenario that reads data from an Azure Storage blob (input) and writes the data to Data Lake Store (output).
+>[AZURE.NOTE] Derzeit wird die Erstellung und Konfiguration von Data Lake Store-Ausgaben für Stream Analytics nur im [klassischen Azure-Portal](https://manage.windowsazure.com) unterstützt. Daher wird für einige Teile dieses Tutorials das klassische Azure-Portal verwendet.
 
->[AZURE.NOTE] At this time, creation and configuration of Data Lake Store outputs for Stream Analytics is supported only in the [Azure Classic Portal](https://manage.windowsazure.com). Hence, some parts of this tutorial will use the Azure Classic Portal.
+## Voraussetzungen
 
-## <a name="prerequisites"></a>Prerequisites
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
-Before you begin this tutorial, you must have the following:
+- **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
+- **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 
-- **Enable your Azure subscription** for Data Lake Store Public Preview. See [instructions](data-lake-store-get-started-portal.md#signup).
+- **Azure-Speicherkonto**. Sie verwenden einen Blobcontainer aus diesem Konto, um Daten für einen Stream Analytics-Auftrag einzugeben. Gehen Sie für dieses Tutorial davon aus, dass Sie ein Speicherkonto namens **datalakestoreasa** und einen Container innerhalb des Kontos namens **datalakestoreasacontainer** erstellen. Nachdem Sie den Container erstellt haben, laden Sie eine Beispieldatendatei in diesen hoch. Eine Beispieldatendatei finden Sie im [Azure Data Lake Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Sie können verschiedene Clients verwenden, z. B. [Azure-Speicher-Explorer](http://storageexplorer.com/), zum Hochladen von Daten in einen Blobcontainer.
 
-- **Azure Storage account**. You will use a blob container from this account to input data for a Stream Analytics job. For this tutorial, assume you create a storage account called **datalakestoreasa** and a container within the account called **datalakestoreasacontainer**. Once you have created the container, upload a sample data file to it. You can get a sample data file from the [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). You can use various clients, such as [Azure Storage Explorer](http://storageexplorer.com/), to upload data to a blob container.
+	>[AZURE.NOTE] Wenn Sie das Konto aus dem Azure-Portal heraus erstellen, stellen Sie sicher, dass Sie es mit dem **klassischen** Bereitstellungsmodell erstellen. Dadurch wird sichergestellt, dass aus dem klassischen Azure-Portal heraus auf das Speicherkonto zugegriffen werden kann, denn dies verwenden wir zum Erstellen eines Stream Analytics-Auftrags. Eine Anleitung zum Erstellen eines Speicherkontos über das Azure-Portal mithilfe der klassischen Bereitstellung finden Sie unter [Erstellen von Azure-Speicherkonten](../storage/storage-create-storage-account/#create-a-storage-account).
+	>
+	> Sie können ein Speicherkonto auch über das klassische Azure-Portal erstellen.
 
-    >[AZURE.NOTE] If you create the account from the Azure Portal, make sure you create it with the **Classic** deployment model. This ensures that the storage account can be accessed from the Azure Classic Portal, because that is what we use to create a Stream Analytics job. For instructions on how to create a storage account from the Azure Portal using the Classic deployment, see [Create an Azure Storage account](../storage/storage-create-storage-account/#create-a-storage-account).
-    >
-    > Or, you could create a storage account from the Azure Classic Portal.
-
-- **Azure Data Lake Store account**. Follow the instructions at [Get started with Azure Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md).  
-
-
-## <a name="create-a-stream-analytics-job"></a>Create a Stream Analytics Job
-
-You start by creating a Stream Analytics job that includes an input source and an output destination. For this tutorial, the source is an Azure blob container and the destination is Data Lake Store.
-
-1. Sign on to the [Azure Classic Portal](https://manage.windowsazure.com).
-
-2. From the bottom-left of the screen, click **New**, **Data Services**, **Stream Analytics**, **Quick Create**. Provide the values as shown below and then click **Create Stream Analytics Job**.
-
-    ![Create a Stream Analytics Job](./media/data-lake-store-stream-analytics/create.job.png "Create a Stream Analytics job")
-
-## <a name="create-a-blob-input-for-the-job"></a>Create a Blob input for the job
-
-1. Open the page for the Stream Analytics job, click the **Inputs** tab, and then click **Add an Input** to launch a wizard.
-
-2. On the **Add an input to your job** page, select **Data stream**, and then click the forward arrow.
-
-    ![Add an input to your job](./media/data-lake-store-stream-analytics/create.input.1.png "Add an input to your job")
-
-3. On the **Add a data stream to your job** page, select **Blob storage**, and then click the forward arrow.
-
-    ![Add a data stream to the job](./media/data-lake-store-stream-analytics/create.input.2.png "Add a data stream to the job")
-
-4. On the **Blob storage settings** page, provide details for the blob storage that you will use as the input data source.
-
-    ![Provide the blob storage settings](./media/data-lake-store-stream-analytics/create.input.3.png "Provide the blob storage settings")
-
-    * **Enter an input alias**. This is a unique name you provide for the job input.
-    * **Select a storage account**. Make sure the storage account is in the same region as the Stream Analytics job or you will incur additional cost of moving data between regions.
-    * **Provide a storage container**. You can choose to create a new container or select an existing container.
-
-    Click the forward arrow.
-
-5. On the **Serialization settings** page, set the serialization format as **CSV**, delimiter as **tab**, encoding as **UTF8**, and then click the checkmark.
-
-    ![Provide the serialization settings](./media/data-lake-store-stream-analytics/create.input.4.png "Provide the serialization settings")
-
-6. Once you are done with the wizard, the blob input will be added under the **Inputs** tab and the **Diagnosis** column should show **OK**. You can also explicitly test the connection to the input by using the **Test Connection** button at the bottom.
-
-## <a name="create-a-data-lake-store-output-for-the-job"></a>Create a Data Lake Store output for the job
-
-1. Open the page for the Stream Analytics job, click the **Outputs** tab, and then click **Add an Output** to launch a wizard.
-
-2. On the **Add an output to your job** page, select **Data Lake Store**, and then click the forward arrow.
-
-    ![Add an output to your job](./media/data-lake-store-stream-analytics/create.output.1.png "Add an output to your job")
-
-3. On the **Authorize connection** page, if you have already created a Data Lake Store account, click **Authorize Now**. Otherwise, click **Sign up now** to create a new account. For this tutorial, let us assume that you already have a Data Lake Store account created (as mentioned in the prerequisite). You will be automatically authorized using the credentials with which you signed into the Azure Classic Portal.
-
-    ![Authorize Data Lake Store](./media/data-lake-store-stream-analytics/create.output.2.png "Authorize Data Lake Store")
-
-4. On the **Data Lake Store Settings** page, enter the information as shown in the screen capture below.
-
-    ![Specify Data Lake Store settings](./media/data-lake-store-stream-analytics/create.output.3.png "Specify Data Lake Store settings")
-
-    * **Enter an output alias**. This is a unique name you provide for the job output.
-    * **Specify a Data Lake Store account**. You should have already created this, as mentioned in the prerequisite.
-    * **Specify a path prefix pattern**. This is required to identify the output files that are written to Data Lake Store by the Stream Analytics job. Because the titles of outputs written by the job are in a GUID format, including a prefix will help identify the written output. If you want to include a date and time stamp as part of the prefix make sure you include `{date}/{time}` in the prefix pattern. If you include this, the **Date Format **and **Time Format** fields are enabled and you can select the format of choice.
-
-    Click the forward arrow.
-
-5. On the **Serialization settings** page, set the serialization format as **CSV**, delimiter as **tab**, encoding as **UTF8**, and then click the check mark.
-
-    ![Specify the output format](./media/data-lake-store-stream-analytics/create.output.4.png "Specify the output format")
-
-6. Once you are done with the wizard, the Data Lake Store output will be added under the **Outputs** tab and the **Diagnosis** column should show **OK**. You can also explicitly test the connection to the output by using the **Test Connection** button at the bottom.
-
-## <a name="run-the-stream-analytics-job"></a>Run the Stream Analytics job
-
-To run a Stream Analytics job, you must run a query from the Query tab. For this tutorial, you can run the sample query by replacing the placeholders with the job input and output aliases, as shown in the screen capture below.
-
-![Run query](./media/data-lake-store-stream-analytics/run.query.png "Run query")
-
-Click **Save** from the bottom of the screen, and then click **Start**. From the dialog box, select **Custom Time**, and then select a date from the past, such as **1/1/2016**. Click the check mark to start the job. It can take up to a couple minutes to start the job.
-
-![Set job time](./media/data-lake-store-stream-analytics/run.query.2.png "Set job time")
-
-After the job starts, click the **Monitor** tab to see how the data was processed.
-
-![Monitor job](./media/data-lake-store-stream-analytics/run.query.3.png "Monitor job")
-
-Finally, you can use the [Azure Portal](https://portal.azure.com) to open your Data Lake Store account and verify whether the data was successfully written to the account.
-
-![Verify output](./media/data-lake-store-stream-analytics/run.query.4.png "Verify output")
-
-In the Data Explorer pane, notice that the output is written to a folder as specified in the Data Lake Store output settings (`streamanalytics/job/output/{date}/{time}`).  
-
-## <a name="see-also"></a>See also
-
-* [Create an HDInsight cluster to use Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+- **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus.
 
 
+## Erstellen eines Stream Analytics-Auftrags
 
-<!--HONumber=Oct16_HO2-->
+Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle und ein Ausgabeziel enthält. In diesem Tutorial ist die Quelle ein Azure-Blobcontainer, und das Ziel ist der Data Lake-Speicher.
 
+1. Melden Sie sich am [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 
+2. Klicken Sie unten links im Bildschirm auf **Neu** > **Data Services** > **Stream Analytics** > **Schnellerfassung**. Geben Sie die folgenden Werte an, und klicken Sie dann auf **Stream Analytics-Auftrag erstellen**.
+
+	![Erstellen eines Stream Analytics-Auftrags](./media/data-lake-store-stream-analytics/create.job.png "Erstellen eines Stream Analytics-Auftrags")
+
+## Erstellen einer Blobeingabe für den Auftrag
+
+1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie auf die Registerkarte **Eingaben**, und klicken Sie dann auf **Eingabe hinzufügen** um einen Assistenten zu starten.
+
+2. Wählen Sie auf der Seite **Ihrem Auftrag eine Eingabe hinzufügen** **Datenstrom** aus, und klicken Sie dann auf den Vorwärtspfeil.
+
+	![Hinzufügen einer Eingabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.input.1.png "Hinzufügen einer Eingabe zu Ihrem Auftrag")
+
+3. Wählen Sie auf der Seite **Ihrem Auftrag einen Datenstrom hinzufügen** **Blobspeicher** aus, und klicken Sie dann auf den Vorwärtspfeil.
+
+	![Hinzufügen eines Datenstroms zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.input.2.png "Hinzufügen eines Datenstroms zu Ihrem Auftrag")
+
+4. Geben Sie auf der Seite **Einstellungen des Blobspeichers** Details für den Blobspeicher ein, den Sie als Eingabedatenquelle verwenden.
+
+	![Angeben der Blobspeichereinstellungen](./media/data-lake-store-stream-analytics/create.input.3.png "Angeben der Blobspeichereinstellungen")
+
+	* **Geben Sie einen Eingabealias ein**. Dies ist ein eindeutiger Namen, den Sie für die Auftragseingabe angeben.
+	* **Wählen Sie ein Speicherkonto aus**. Stellen Sie sicher, dass sich das Speicherkonto in der gleichen Region wie der Stream Analytics-Auftrag befindet, anderenfalls fallen zusätzliche Kosten für das Verschieben von Daten zwischen Regionen an.
+	* **Geben Sie einen Speichercontainer an**. Sie können auch einen neuen Container erstellen oder einen vorhandenen Container auswählen.
+
+	Klicken Sie auf den Vorwärtspfeil.
+
+5. Legen Sie auf der Seite **Serialisierungseinstellungen** **CSV** als Serialisierungsformat, **Tabulator** als Trennzeichen und **UTF8** als Codierung fest, und klicken Sie dann auf das Häkchen.
+
+	![Angeben der Serialisierungseinstellungen](./media/data-lake-store-stream-analytics/create.input.4.png "Angeben der Serialisierungseinstellungen")
+
+6. Nachdem Sie den Assistenten abgeschlossen haben, wird die Blobeingabe unter der Registerkarte **Eingaben** hinzugefügt. Daraufhin sollte in der Spalte **Diagnose** **OK** angezeigt werden. Sie können die Verbindung auch auf die Eingabe hin mithilfe der Taste **Verbindung testen** unten explizit testen.
+
+## Erstellen einer Data Lake-Speicherausgabe für den Auftrag
+
+1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie auf die Registerkarte **Ausgaben**, und klicken Sie dann auf **Ausgabe hinzufügen** um einen Assistenten zu starten.
+
+2. Wählen Sie auf der Seite **Ihrem Auftrag eine Ausgabe hinzufügen** **Data Lake-Speicher** aus, und klicken Sie dann auf den Vorwärtspfeil.
+
+	![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.1.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
+
+3. Klicken Sie auf der Seite **Verbindung autorisieren** auf **Jetzt autorisieren**, wenn Sie bereits ein Data Lake-Speicherkonto erstellt haben. Klicken Sie andernfalls auf **Jetzt anmelden**, um ein neues Konto zu erstellen. Für dieses Tutorial gehen wir davon aus, dass Sie bereits ein Data Lake-Speicherkonto erstellt haben (wie in den Voraussetzungen angegeben). Sie werden automatisch mit den Anmeldeinformationen autorisiert, mit denen Sie sich am klassischen Azure-Portal angemeldet haben.
+
+	![Autorisieren von Data Lake-Speicher](./media/data-lake-store-stream-analytics/create.output.2.png "Autorisieren von Data Lake-Speicher")
+
+4. Geben Sie auf der Seite **Data Lake-Speichereinstellungen** die Informationen ein, wie in der folgenden Bildschirmaufnahme gezeigt.
+
+	![Festlegen der Data Lake-Speichereinstellungen](./media/data-lake-store-stream-analytics/create.output.3.png "Festlegen der Data Lake-Speichereinstellungen")
+
+	* **Geben Sie einen Ausgabealias ein**. Dies ist ein eindeutiger Namen, den Sie für die Auftragsausgabe angeben.
+	* **Geben Sie ein Data Lake-Speicherkonto an**. Sie sollten es bereits erstellt haben, wie in den Voraussetzungen angegeben.
+	* **Geben Sie ein Präfixmuster des Pfads an**. Dies ist erforderlich, um die Ausgabedateien zu identifizieren, die vom Stream Analytics-Auftrag in den Data Lake-Speicher geschrieben werden. Da die Titel der Ausgaben, die vom Auftrag geschrieben werden, ein GUID-Format haben, hilft die Angabe eines Präfixes bei der Identifizierung der geschriebenen Ausgabe. Wenn Sie ein Datum und einen Zeitstempel als Teil des Präfixes einschließen möchten, stellen Sie sicher, dass Sie `{date}/{time}` im Präfixmuster angeben. Wenn Sie dies einschließen, werden die Felder **Datumsformat** und **Zeitformat** aktiviert, sodass Sie das bevorzugte Format auswählen können.
+
+	Klicken Sie auf den Vorwärtspfeil.
+
+5. Legen Sie auf der Seite **Serialisierungseinstellungen** **CSV** als Serialisierungsformat, **Tabulator** als Trennzeichen und **UTF8** als Codierung fest, und klicken Sie dann auf das Häkchen.
+
+	![Festlegen des Ausgabeformats](./media/data-lake-store-stream-analytics/create.output.4.png "Festlegen des Ausgabeformats")
+
+6. Nachdem Sie den Assistenten abgeschlossen haben, wird die Data Lake Store-Ausgabe unter der Registerkarte **Ausgaben** hinzugefügt. Daraufhin sollte in der Spalte **Diagnose** **OK** angezeigt werden. Sie können die Verbindung auch mithilfe der Taste **Verbindung testen** unten explizit auf die Ausgabe hin testen.
+
+## Ausführen des Stream Analytics-Auftrags
+
+Um einen Stream Analytics-Auftrag auszuführen, müssen Sie eine Abfrage auf der Registerkarte „Abfrage“ ausführen. Für dieses Tutorial können Sie die Beispielabfrage ausführen, indem Sie die Platzhalter durch die Auftragseingabe- und Auftragsausgabealiase ersetzen, wie in der folgenden Bildschirmaufnahme gezeigt.
+
+![Abfrage ausführen](./media/data-lake-store-stream-analytics/run.query.png "Abfrage ausführen")
+
+Klicken Sie am unteren Bildschirmrand auf **Speichern** und dann auf **Starten**. Wählen Sie im Dialogfeld **Benutzerdefinierte Uhrzeit** und dann ein Datum aus der Vergangenheit aus, z.B. **1/1/2016**. Klicken Sie auf das Häkchen, um den Auftrag zu starten. Es kann einige Minuten dauern, bis der Auftrag startet.
+
+![Festlegen der Auftragszeit](./media/data-lake-store-stream-analytics/run.query.2.png "Festlegen der Auftragszeit")
+
+Klicken Sie, nachdem der Auftrag gestartet wurde, auf die Registerkarte **Überwachen**, um anzuzeigen, wie die Daten verarbeitet wurden.
+
+![Überwachen des Auftrags](./media/data-lake-store-stream-analytics/run.query.3.png "Überwachen des Auftrags")
+
+Abschließend können Sie das Data Lake Store-Konto mit dem [Azure-Portal](https://portal.azure.com) öffnen und überprüfen, ob die Daten erfolgreich in das Konto geschrieben wurden.
+
+![Überprüfen der Ausgabe](./media/data-lake-store-stream-analytics/run.query.4.png "Überprüfen der Ausgabe")
+
+Beachten Sie, dass die Ausgabe im Daten-Explorer-Fenster gemäß Angabe in den Data Lake Store-Ausgabeeinstellungen (`streamanalytics/job/output/{date}/{time}`) in einen Ordner geschrieben wird.
+
+## Siehe auch
+
+* [Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
+
+<!---HONumber=AcomDC_0914_2016-->

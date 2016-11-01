@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Learn how to use the Twitter connector in logic apps | Microsoft Azure"
-    description="Overview of Twitter connector with REST API parameters"
-    services=""
-    documentationCenter="" 
-    authors="msftman"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="Informationen zum Verwenden des Twitter-Connectors in Logik-Apps | Microsoft Azure"
+	description="Übersicht über den Twitter-Connector mit REST-API-Parametern"
+	services=""
+	documentationCenter="" 
+	authors="msftman"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -18,449 +18,446 @@
    ms.author="deonhe"/>
 
 
+# Erste Schritte mit dem Twitter-Connector
 
-# <a name="get-started-with-the-twitter-connector"></a>Get started with the Twitter connector
+Der Twitter-Connector ermöglicht Folgendes:
 
-With the Twitter connector you can:
+- Tweets posten und abrufen
+- Auf Timelines, Freunde und Follower zugreifen
+- Andere Aktionen und Trigger ausführen, die weiter unten beschrieben sind
 
-- Post tweets and get tweets
-- Access timelines, friends and followers
-- Perform any of the other actions and triggers described below  
+Wenn Sie einen [Connector](./apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).  
+## Verbinden mit Twitter
 
-## <a name="connect-to-twitter"></a>Connect to Twitter
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine [Verbindung](./connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.
 
-Before your logic app can access any service, you first need to create a *connection* to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service.  
+### Erstellen einer Verbindung mit Twitter
 
-### <a name="create-a-connection-to-twitter"></a>Create a connection to Twitter
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Twitter](../../includes/connectors-create-api-twitter.md)]
 
->[AZURE.INCLUDE [Steps to create a connection to Twitter](../../includes/connectors-create-api-twitter.md)]
+## Verwenden eines Twitter-Triggers
 
-## <a name="use-a-twitter-trigger"></a>Use a Twitter trigger
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+In diesem Beispiel zeige ich Ihnen, wie der Trigger **Wenn ein neuer Tweet gepostet wird** verwendet wird, um nach #Seattle zu suchen, und wie eine Datei in Dropbox mit dem Text aus dem Tweet aktualisiert wird, wenn #Seattle gefunden wird. In einem Unternehmensbeispiel könnten Sie nach dem Namen Ihres Unternehmens suchen und eine SQL-Datenbank mit dem Text aus dem Tweet aktualisieren.
 
-In this example, I will show you how to use the **When a new tweet is posted**  trigger to search for #Seattle and, if #Seattle is found, update a file in Dropbox with the text from the tweet. In an enterprise example, you could search for the name of your company and update a SQL database with the text from the tweet.
+1. Geben Sie *Twitter* in das Suchfeld im Designer für Logik-Apps ein, und wählen Sie dann den Trigger **Twitter - Wenn ein neuer Tweet gepostet wird** aus   
+![Twitter-Trigger – Abbildung 1](./media/connectors-create-api-twitter/trigger-1.png)  
+- Geben Sie *#Seattle* in das Steuerelement **Suchtext** ein.  
+![Twitter-Trigger – Abbildung 2](./media/connectors-create-api-twitter/trigger-2.png)  
 
-1. Enter *twitter* in the search box on the logic apps designer then select the **Twitter - When a new tweet is posted**  trigger   
-![Twitter trigger image 1](./media/connectors-create-api-twitter/trigger-1.png)  
-- Enter *#Seattle* in the **Search Text** control  
-![Twitter trigger image 2](./media/connectors-create-api-twitter/trigger-2.png) 
+Jetzt haben Sie Ihre Logik-App mit einem Trigger konfiguriert, der eine Ausführung der anderen Trigger und Aktionen im Workflow startet.
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow. 
+>[AZURE.NOTE]Damit eine Logik-App funktionsfähig ist, muss sie mindestens einen Trigger und eine Aktion enthalten. Führen Sie die Schritte im nächsten Abschnitt aus, um eine Aktion hinzuzufügen.
 
->[AZURE.NOTE]For a logic app to be functional, it must contain at least one trigger and one action. Follow the steps in the next section to add an action.  
+## Bedingung hinzufügen
+Da uns nur Tweets von Benutzern mit mehr als 50 Benutzern interessieren, muss zunächst eine Bedingung, die die Anzahl der Follower überprüft, zur Logik-App hinzugefügt werden.
 
-## <a name="add-a-condition"></a>Add a condition
-Since we are only interested in tweets from users with more than 50 users, a condition that confirms the number of followers must first be added to the logic app.  
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen, die ausgeführt werden soll, wenn #Seattle in einem neuen Tweet gefunden wird.  
+![Twitter-Aktion – Abbildung 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
+- Wählen Sie den Link **Bedingung hinzufügen** aus.  
+![Twitter-Bedingung – Abbildung 1](../../includes/media/connectors-create-api-twitter/condition-1.png)  
+Daraufhin wird das Steuerelement **Bedingung** geöffnet, in dem Sie Bedingungen wie z.B. *ist gleich*, *ist kleiner als*, *ist größer als* und *enthält* auswählen können.  
+![Twitter-Bedingung – Abbildung 2](../../includes/media/connectors-create-api-twitter/condition-2.png)  
+- Wählen Sie das Steuerelement **Wert auswählen** aus. In diesem Steuerelement können Sie eine oder mehrere Eigenschaften von vorherigen Aktionen oder Triggern als den Wert auswählen, dessen Bedingung als wahr oder falsch ausgewertet wird.  
+![Twitter-Bedingung – Abbildung 3](../../includes/media/connectors-create-api-twitter/condition-3.png)  
+- Wählen Sie **...** aus, um die Liste der Eigenschaften zu erweitern, damit Sie alle verfügbaren Eigenschaften sehen können.  
+![Twitter-Bedingung – Abbildung 4](../../includes/media/connectors-create-api-twitter/condition-4.png)  
+- Wählen Sie die Eigenschaft **Anzahl von Followern** aus.  
+![Twitter-Bedingung – Abbildung 5](../../includes/media/connectors-create-api-twitter/condition-5.png)  
+- Beachten Sie, dass die Eigenschaft für die Anzahl von Followern jetzt in das Steuerelement für den Wert aufgenommen wurde.  
+![Twitter-Bedingung – Abbildung 6](../../includes/media/connectors-create-api-twitter/condition-6.png)  
+- Wählen Sie **ist größer als** aus der Liste der Operatoren aus.  
+![Twitter-Bedingung – Abbildung 7](../../includes/media/connectors-create-api-twitter/condition-7.png)  
+- Geben Sie „50“ als Operanden für den Operator *ist größer als* ein. Die Bedingung wird hinzugefügt. Speichern Sie Ihre Arbeit mit dem Link **Speichern** oben im Menü.  
+![Twitter-Bedingung – Abbildung 8](../../includes/media/connectors-create-api-twitter/condition-8.png)  
 
-1. Select **+ New step** to add the action you would like to take when #Seattle is found in a new tweet  
-![Twitter action image 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
-- Select the **Add a condition** link.  
-![Twitter condition image 1](../../includes/media/connectors-create-api-twitter/condition-1.png)   
-This opens the **Condition** control where you can check conditions such as *is equal to*, *is less than*, *is greater than*, *contains*, etc.  
-![Twitter condition image 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
-- Select the **Choose a value** control.  
-In this control, you can select one or more of the properties from any previous actions or triggers as the value whose condition will be evaluated to true or false.
-![Twitter condition image 3](../../includes/media/connectors-create-api-twitter/condition-3.png)   
-- Select the **...** to expand the list of properties so you can see all the properties that are available.        
-![Twitter condition image 4](../../includes/media/connectors-create-api-twitter/condition-4.png)   
-- Select the **Followers count** property.    
-![Twitter condition image 5](../../includes/media/connectors-create-api-twitter/condition-5.png)   
-- Notice the Followers count property is now in the value control.    
-![Twitter condition image 6](../../includes/media/connectors-create-api-twitter/condition-6.png)   
-- Select **is greater than** from the operators list.    
-![Twitter condition image 7](../../includes/media/connectors-create-api-twitter/condition-7.png)   
-- Enter 50 as the operand for the *is greater than* operator.  
-The condition is now added. Save your work using the **Save** link on the menu above.    
-![Twitter condition image 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
+## Verwenden einer Twitter-Aktion
 
-## <a name="use-a-twitter-action"></a>Use a Twitter action
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
+Nachdem Sie nun einen Trigger hinzugefügt haben, gehen Sie wie folgt vor, um eine Aktion hinzuzufügen, mit der ein neuer Tweet gepostet wird, der den Inhalt der vom Trigger gefundenen Tweets enthält. Im Rahmen dieser exemplarischen Vorgehensweise werden nur die Tweets von Benutzern mit mehr als 50 Followern gepostet.
 
-Now that you have added a trigger, follow these steps to add an action that will post a new tweet with the contents of the tweets found by the trigger. For the purposes of this walk-through only tweets from users with more than 50 followers will be posted.  
+Im nächsten Schritt fügen Sie eine Twitter-Aktion hinzu, die mit einigen der Eigenschaften der einzelnen Tweets, die von einem Benutzer mit mehr als 50 Followern gepostet wurden hat, einen Tweet postet.
 
-In the next step, you will add a Twitter action that will post a tweet using some of the properties of each tweet that has been posted by a user who has more than 50 followers.  
+1. Wählen Sie **Aktion hinzufügen** aus. Daraufhin wird das Steuerelement für die Suche geöffnet, in dem Sie nach anderen Aktionen und Triggern suchen können.  
+![Twitter-Bedingung – Abbildung 9](../../includes/media/connectors-create-api-twitter/condition-9.png)  
+- Geben Sie *Twitter* in das Suchfeld ein, und wählen Sie die Aktion **Twitter - Tweet posten** aus. Daraufhin wird das Steuerelement **Tweet posten** geöffnet, in das Sie alle Details für den zu postenden Tweet eingeben.  
+![Twitter-Aktion – Abbildung 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)  
+- Wählen Sie das Steuerelement **Tweettext** aus. Alle Ausgaben früherer Aktionen und Trigger in der Logik-App werden jetzt angezeigt. Sie können beliebige davon auswählen und als Teil des Tweettexts des neuen Tweets verwenden.  
+![Twitter-Aktion – Abbildung 2](../../includes/media/connectors-create-api-twitter/action-2.png)  
+- Wählen Sie **Benutzername** aus.
+- Geben Sie in das Steuerelement für den Tweettext *sagt:* direkt nach dem Benutzernamen ein.
+- Wählen Sie *Tweettext* aus.  
+![Twitter-Aktion – Abbildung 3](../../includes/media/connectors-create-api-twitter/action-3.png)  
+- Speichern Sie Ihre Arbeit, und senden Sie einen Tweet mit dem Hashtag #Seattle, um den Workflow zu aktivieren.
 
-1. Select **Add an action**. This opens the search control where you can search for other actions and triggers.  
-![Twitter condition image 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
-- Enter *twitter* into the search box then select the **Twitter - Post a tweet** action. This opens the **Post a tweet** control where you will enter all details for the tweet being posted.      
-![Twitter action image 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   
-- Select the **Tweet text** control. All outputs from previous actions and triggers in the logic app are now visible. You can select any of these and use them as part of the tweet text of the new tweet.     
-![Twitter action image 2](../../includes/media/connectors-create-api-twitter/action-2.png)   
-- Select **User name**   
-- Enter *says:* in the tweet text control. Do this just after User name.  
-- Select *Tweet text*.       
-![Twitter action image 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
-- Save your work and send a tweet with the #Seattle hashtag to activate your workflow.  
+## Technische Details
 
-## <a name="technical-details"></a>Technical Details
+Im Folgenden finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
 
-Here are the details about the triggers, actions and responses that this connection supports:
+## Twitter-Trigger
 
-## <a name="twitter-triggers"></a>Twitter triggers
+Der Twitter-Connector verfügt über folgende Trigger:
 
-The Twitter connector has the following trigger(s):  
-
-|Trigger | Description|
+|Trigger | Beschreibung|
 |--- | ---|
-|[When a new tweet is posted](connectors-create-api-twitter.md#when-a-new-tweet-is-posted)|This operation triggers a flow when a new tweet that matches a given search query is posted.|
+|[Wenn ein neuer Tweet gepostet wird](connectors-create-api-twitter.md#when-a-new-tweet-is-posted)|Mit diesem Vorgang wird einen Datenfluss ausgelöst, wenn ein neuer Tweet gepostet wird, der einer bestimmten Suchabfrage entspricht.|
 
 
-## <a name="twitter-actions"></a>Twitter actions
+## Twitter-Aktionen
 
-The Twitter connector has the following actions:
+Der Twitter-Connector verfügt über folgende Aktionen:
 
 
-|Action|Description|
+|Aktion|Beschreibung|
 |--- | ---|
-|[Get user timeline](connectors-create-api-twitter.md#get-user-timeline)|This operation gets a list of the most recent tweets posted by a given user.|
-|[Get home timeline](connectors-create-api-twitter.md#get-home-timeline)|This operation gets the most recent tweets and re-tweets posted by me and my followers.|
-|[Search tweets](connectors-create-api-twitter.md#search-tweets)|This operation gets a list of relevant tweets matching the search query.|
-|[Get followers](connectors-create-api-twitter.md#get-followers)|This operation gets the list of users that follow a given user.|
-|[Get my followers](connectors-create-api-twitter.md#get-my-followers)|This operation gets the list of users who are following me.|
-|[Get following](connectors-create-api-twitter.md#get-following)|The operation gets the list of people the given user follows.|
-|[Get my following](connectors-create-api-twitter.md#get-my-following)|This operation gets the list of users that I am following.|
-|[Get user](connectors-create-api-twitter.md#get-user)|This operation gets the profile details for a given user, such as user name, description, followers count, and more.|
-|[Post a tweet](connectors-create-api-twitter.md#post-a-tweet)|This operation posts a new tweet.|
-## <a name="action-details"></a>Action details
+|[Timeline des Benutzers abrufen](connectors-create-api-twitter.md#get-user-timeline)|Mit diesem Vorgang wird eine Liste der neuesten Tweets abgerufen, die von einem bestimmten Benutzer gepostet wurden.|
+|[Eigene Timeline abrufen](connectors-create-api-twitter.md#get-home-timeline)|Mit diesem Vorgang werden die neuesten Tweets und Retweets abgerufen, die von mir und meinen Followern gepostet wurden.|
+|[Tweets durchsuchen](connectors-create-api-twitter.md#search-tweets)|Mit diesem Vorgang wird eine Liste der relevanten Tweets abgerufen, die mit der Suchabfrage übereinstimmen.|
+|[Follower abrufen](connectors-create-api-twitter.md#get-followers)|Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die einem bestimmten Benutzer folgen.|
+|[Meine Follower abrufen](connectors-create-api-twitter.md#get-my-followers)|Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die mir folgen.|
+|[Gefolge abrufen](connectors-create-api-twitter.md#get-following)|Mit diesem Vorgang wird die Liste der Personen abgerufen, denen ein bestimmter Benutzer folgt.|
+|[Mein Gefolge abrufen](connectors-create-api-twitter.md#get-my-following)|Mit diesem Vorgang wird die Liste der Benutzer abgerufen, denen ich folge.|
+|[Benutzer abrufen](connectors-create-api-twitter.md#get-user)|Mit diesem Vorgang werden die Profildetails für einen bestimmten Benutzer abgerufen, z.B. Benutzername, Beschreibung, Anzahl von Followern usw.|
+|[Tweet posten](connectors-create-api-twitter.md#post-a-tweet)|Mit diesem Vorgang wird ein neuer Tweet gepostet.|
+## Aktionsdetails
 
-Here are the details for the actions and triggers for this connector, along with their responses:
-
-
-
-### <a name="get-user-timeline"></a>Get user timeline
-This operation gets a list of the most recent tweets posted by a given user. 
+Im Folgenden finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten:
 
 
-|Property Name| Display Name|Description|
+
+### Timeline des Benutzers abrufen
+Mit diesem Vorgang wird eine Liste der neuesten Tweets abgerufen, die von einem bestimmten Benutzer gepostet wurden.
+
+
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
-|maxResults|Maximum results|Maximum number of tweets to return|
+|userName*|Benutzername|Twitter-Handle für den Benutzer|
+|maxResults|Maximale Anzahl von Ergebnissen|Die maximale Anzahl von Tweets, die zurückgegeben werden sollen|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-TweetModel: Representation of Tweet Object
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Property Name | Data Type | Description |
+
+#### Ausgabedetails
+
+TweetModel: Darstellung des Tweet-Objekts
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|TweetText|string|Text content of the tweet|
-|TweetId|string|Id of the tweet|
-|CreatedAt|string|Time at which the tweet was posted|
-|RetweetCount|integer|Total number of re-tweets for the tweet|
-|TweetedBy|string|Name of the user who has posted the tweet|
-|MediaUrls|array|Url of the media posted along with the tweet|
-|TweetLanguageCode|string|Language code of the tweet|
-|TweetInReplyToUserId|string|User Id of the author of the tweet that the current tweet is a reply to|
-|Favorited|boolean|Indicates whether the tweet is marked as favorited or not|
-|UserMentions|array|List of users mentioned in the tweet|
-|OriginalTweet|not defined|Original tweet from which the current tweet is re-tweeted|
-|UserDetails|not defined|Details of the user who tweeted|
+|TweetText|string|Textinhalt des Tweets|
+|TweetId|string|ID des Tweets|
+|CreatedAt|string|Zeitpunkt, zu dem der Tweet gepostet wurde|
+|RetweetCount|integer|Gesamtanzahl von Retweets für den Tweet|
+|TweetedBy|string|Name des Benutzers, der den Tweet gepostet hat|
+|MediaUrls|array|URL der Medien, die mit dem Tweet gepostet wurden|
+|TweetLanguageCode|string|Sprachcode des Tweets|
+|TweetInReplyToUserId|string|Benutzer-ID des Autors des Tweets, auf den der aktuelle Tweet eine Antwort ist|
+|Favorited|Boolescher Wert|Gibt an, ob der Tweet als Favorit markiert ist|
+|UserMentions|array|Liste der im Tweet erwähnten Benutzer|
+|OriginalTweet|nicht definiert|Ursprünglicher Tweet, aus dem der aktuelle Tweet als Retweet erstellt wurde|
+|UserDetails|nicht definiert|Details zu dem Benutzer, der getweetet hat|
 
 
 
 
-### <a name="get-home-timeline"></a>Get home timeline
-This operation gets the most recent tweets and re-tweets posted by me and my followers. 
+### Eigene Timeline abrufen
+Mit diesem Vorgang werden die neuesten Tweets und Retweets abgerufen, die von mir und meinen Followern gepostet wurden.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|maxResults|Maximum results|Maximum number of tweets to return|
+|maxResults|Maximale Anzahl von Ergebnissen|Die maximale Anzahl von Tweets, die zurückgegeben werden sollen|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-TweetModel: Representation of Tweet Object
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Property Name | Data Type | Description |
+
+#### Ausgabedetails
+
+TweetModel: Darstellung des Tweet-Objekts
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|TweetText|string|Text content of the tweet|
-|TweetId|string|Id of the tweet|
-|CreatedAt|string|Time at which the tweet was posted|
-|RetweetCount|integer|Total number of re-tweets for the tweet|
-|TweetedBy|string|Name of the user who has posted the tweet|
-|MediaUrls|array|Url of the media posted along with the tweet|
-|TweetLanguageCode|string|Language code of the tweet|
-|TweetInReplyToUserId|string|User Id of the author of the tweet that the current tweet is a reply to|
-|Favorited|boolean|Indicates whether the tweet is marked as favorited or not|
-|UserMentions|array|List of users mentioned in the tweet|
-|OriginalTweet|not defined|Original tweet from which the current tweet is re-tweeted|
-|UserDetails|not defined|Details of the user who tweeted|
+|TweetText|string|Textinhalt des Tweets|
+|TweetId|string|ID des Tweets|
+|CreatedAt|string|Zeitpunkt, zu dem der Tweet gepostet wurde|
+|RetweetCount|integer|Gesamtanzahl von Retweets für den Tweet|
+|TweetedBy|string|Name des Benutzers, der den Tweet gepostet hat|
+|MediaUrls|array|URL der Medien, die mit dem Tweet gepostet wurden|
+|TweetLanguageCode|string|Sprachcode des Tweets|
+|TweetInReplyToUserId|string|Benutzer-ID des Autors des Tweets, auf den der aktuelle Tweet eine Antwort ist|
+|Favorited|Boolescher Wert|Gibt an, ob der Tweet als Favorit markiert ist|
+|UserMentions|array|Liste der im Tweet erwähnten Benutzer|
+|OriginalTweet|nicht definiert|Ursprünglicher Tweet, aus dem der aktuelle Tweet als Retweet erstellt wurde|
+|UserDetails|nicht definiert|Details zu dem Benutzer, der getweetet hat|
 
 
 
 
-### <a name="search-tweets"></a>Search tweets
-This operation gets a list of relevant tweets matching the search query. 
+### Tweets durchsuchen
+Mit diesem Vorgang wird eine Liste der relevanten Tweets abgerufen, die mit der Suchabfrage übereinstimmen.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|searchQuery*|Search text|Search term like "happy hour", #haiku, love OR hate|
-|maxResults|Maximum results|Maximum number of tweets to return|
+|searchQuery*|Suchtext|Suchbegriff wie „Happy Hour“, „#haiku“, „Liebe OR Hass“|
+|maxResults|Maximale Anzahl von Ergebnissen|Die maximale Anzahl von Tweets, die zurückgegeben werden sollen|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-TweetModel: Representation of Tweet Object
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Property Name | Data Type | Description |
+
+#### Ausgabedetails
+
+TweetModel: Darstellung des Tweet-Objekts
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|TweetText|string|Text content of the tweet|
-|TweetId|string|Id of the tweet|
-|CreatedAt|string|Time at which the tweet was posted|
-|RetweetCount|integer|Total number of re-tweets for the tweet|
-|TweetedBy|string|Name of the user who has posted the tweet|
-|MediaUrls|array|Url of the media posted along with the tweet|
-|TweetLanguageCode|string|Language code of the tweet|
-|TweetInReplyToUserId|string|User Id of the author of the tweet that the current tweet is a reply to|
-|Favorited|boolean|Indicates whether the tweet is marked as favorited or not|
-|UserMentions|array|List of users mentioned in the tweet|
-|OriginalTweet|not defined|Original tweet from which the current tweet is re-tweeted|
-|UserDetails|not defined|Details of the user who tweeted|
+|TweetText|string|Textinhalt des Tweets|
+|TweetId|string|ID des Tweets|
+|CreatedAt|string|Zeitpunkt, zu dem der Tweet gepostet wurde|
+|RetweetCount|integer|Gesamtanzahl von Retweets für den Tweet|
+|TweetedBy|string|Name des Benutzers, der den Tweet gepostet hat|
+|MediaUrls|array|URL der Medien, die mit dem Tweet gepostet wurden|
+|TweetLanguageCode|string|Sprachcode des Tweets|
+|TweetInReplyToUserId|string|Benutzer-ID des Autors des Tweets, auf den der aktuelle Tweet eine Antwort ist|
+|Favorited|Boolescher Wert|Gibt an, ob der Tweet als Favorit markiert ist|
+|UserMentions|array|Liste der im Tweet erwähnten Benutzer|
+|OriginalTweet|nicht definiert|Ursprünglicher Tweet, aus dem der aktuelle Tweet als Retweet erstellt wurde|
+|UserDetails|nicht definiert|Details zu dem Benutzer, der getweetet hat|
 
 
 
 
-### <a name="get-followers"></a>Get followers
-This operation gets the list of users that follow a given user. 
+### Follower abrufen
+Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die einem bestimmten Benutzer folgen.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
-|maxResults|Maximum results|Maximum number of users to return|
+|userName*|Benutzername|Twitter-Handle für den Benutzer|
+|maxResults|Maximale Anzahl von Ergebnissen|Maximale Anzahl zurückzugebender Benutzer|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Property Name | Data Type | Description |
+
+#### Ausgabedetails
+
+UserDetailsModel: Twitter-Benutzerdetails
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|Name des Benutzers|
+|Standort|string|Standort des Benutzers|
+|ID|integer|Twitter-ID des Benutzers|
+|UserName|string|Bildschirmname des Benutzers|
+|FollowersCount|integer|Anzahl von Followern|
+|Beschreibung|string|Benutzerbeschreibung|
+|StatusesCount|integer|Anzahl von Benutzerstatuswerten|
+|FriendsCount|integer|Anzahl von Freunden|
+|FavouritesCount|integer|Anzahl von Tweets, die der Benutzer als Favorit markiert hat|
+|ProfileImageUrl|string|URL des Profilbilds|
 
 
 
 
-### <a name="get-my-followers"></a>Get my followers
-This operation gets the list of users who are following me. 
+### Meine Follower abrufen
+Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die mir folgen.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|maxResults|Maximum results|Maximum number of users to get|
+|maxResults|Maximale Anzahl von Ergebnissen|Maximale Anzahl abzurufender Benutzer|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Property Name | Data Type | Description |
+
+#### Ausgabedetails
+
+UserDetailsModel: Twitter-Benutzerdetails
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|Name des Benutzers|
+|Standort|string|Standort des Benutzers|
+|ID|integer|Twitter-ID des Benutzers|
+|UserName|string|Bildschirmname des Benutzers|
+|FollowersCount|integer|Anzahl von Followern|
+|Beschreibung|string|Benutzerbeschreibung|
+|StatusesCount|integer|Anzahl von Benutzerstatuswerten|
+|FriendsCount|integer|Anzahl von Freunden|
+|FavouritesCount|integer|Anzahl von Tweets, die der Benutzer als Favorit markiert hat|
+|ProfileImageUrl|string|URL des Profilbilds|
 
 
 
 
-### <a name="get-following"></a>Get following
-The operation gets the list of people the given user follows. 
+### Gefolge abrufen
+Mit diesem Vorgang wird die Liste der Personen abgerufen, denen ein bestimmter Benutzer folgt.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
-|maxResults|Maximum results|Maximum number of users to return|
+|userName*|Benutzername|Twitter-Handle für den Benutzer|
+|maxResults|Maximale Anzahl von Ergebnissen|Maximale Anzahl zurückzugebender Benutzer|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Property Name | Data Type | Description |
+
+#### Ausgabedetails
+
+UserDetailsModel: Twitter-Benutzerdetails
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|Name des Benutzers|
+|Standort|string|Standort des Benutzers|
+|ID|integer|Twitter-ID des Benutzers|
+|UserName|string|Bildschirmname des Benutzers|
+|FollowersCount|integer|Anzahl von Followern|
+|Beschreibung|string|Benutzerbeschreibung|
+|StatusesCount|integer|Anzahl von Benutzerstatuswerten|
+|FriendsCount|integer|Anzahl von Freunden|
+|FavouritesCount|integer|Anzahl von Tweets, die der Benutzer als Favorit markiert hat|
+|ProfileImageUrl|string|URL des Profilbilds|
 
 
 
 
-### <a name="get-my-following"></a>Get my following
-This operation gets the list of users that I am following. 
+### Mein Gefolge abrufen
+Mit diesem Vorgang wird die Liste der Benutzer abgerufen, denen ich folge.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|maxResults|Maximum results|Maximum number of users to return|
+|maxResults|Maximale Anzahl von Ergebnissen|Maximale Anzahl zurückzugebender Benutzer|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Property Name | Data Type | Description |
+
+#### Ausgabedetails
+
+UserDetailsModel: Twitter-Benutzerdetails
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|Name des Benutzers|
+|Standort|string|Standort des Benutzers|
+|ID|integer|Twitter-ID des Benutzers|
+|UserName|string|Bildschirmname des Benutzers|
+|FollowersCount|integer|Anzahl von Followern|
+|Beschreibung|string|Benutzerbeschreibung|
+|StatusesCount|integer|Anzahl von Benutzerstatuswerten|
+|FriendsCount|integer|Anzahl von Freunden|
+|FavouritesCount|integer|Anzahl von Tweets, die der Benutzer als Favorit markiert hat|
+|ProfileImageUrl|string|URL des Profilbilds|
 
 
 
 
-### <a name="get-user"></a>Get user
-This operation gets the profile details for a given user, such as user name, description, followers count, and more. 
+### Benutzer abrufen
+Mit diesem Vorgang werden die Profildetails für einen bestimmten Benutzer abgerufen, z.B. Benutzername, Beschreibung, Anzahl von Followern usw.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
+|userName*|Benutzername|Twitter-Handle für den Benutzer|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
-UserDetailsModel: Twitter user details
+UserDetailsModel: Twitter-Benutzerdetails
 
 
-| Property Name | Data Type | Description |
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|Name des Benutzers|
+|Standort|string|Standort des Benutzers|
+|ID|integer|Twitter-ID des Benutzers|
+|UserName|string|Bildschirmname des Benutzers|
+|FollowersCount|integer|Anzahl von Followern|
+|Beschreibung|string|Benutzerbeschreibung|
+|StatusesCount|integer|Anzahl von Benutzerstatuswerten|
+|FriendsCount|integer|Anzahl von Freunden|
+|FavouritesCount|integer|Anzahl von Tweets, die der Benutzer als Favorit markiert hat|
+|ProfileImageUrl|string|URL des Profilbilds|
 
 
 
 
-### <a name="post-a-tweet"></a>Post a tweet
-This operation posts a new tweet. 
+### Tweet posten
+Mit diesem Vorgang wird ein neuer Tweet gepostet.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|tweetText|Tweet text|Text to be posted|
-|body|Media|Media to be posted|
+|tweetText|Tweettext|Text, der gepostet werden soll|
+|body|Medien|Zu veröffentlichende Medien|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
-TweetResponseModel: Model representing Posted Tweet
+TweetResponseModel: Modell zur Darstellung eines geposteten Tweets
 
 
-| Property Name | Data Type | Description |
+| Eigenschaftenname | Datentyp | Beschreibung |
 |---|---|---|
-|TweetId|string|ID of the retrieved tweet|
+|TweetId|string|ID des abgerufenen Tweets|
 
 
 
 
-### <a name="when-a-new-tweet-is-posted"></a>When a new tweet is posted
-This operation triggers a flow when a new tweet that matches a given search query is posted. 
+### Wenn ein neuer Tweet gepostet wird
+Mit diesem Vorgang wird einen Datenfluss ausgelöst, wenn ein neuer Tweet gepostet wird, der einer bestimmten Suchabfrage entspricht.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|searchQuery*|Search text|Search term like "happy hour", #haiku, love OR hate|
+|searchQuery*|Suchtext|Suchbegriff wie „Happy Hour“, „#haiku“, „Liebe OR Hass“|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 TriggerBatchResponse[TweetModel]
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
 |value|array|
 
 
 
-## <a name="http-responses"></a>HTTP responses
+## HTTP-Antworten
 
-The actions and triggers above can return one or more of the following HTTP status codes: 
+Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occurred.|
-|default|Operation Failed.|
+|202|Zulässig|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 
@@ -470,10 +467,7 @@ The actions and triggers above can return one or more of the following HTTP stat
 
 
 
-## <a name="next-steps"></a>Next steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## Nächste Schritte
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

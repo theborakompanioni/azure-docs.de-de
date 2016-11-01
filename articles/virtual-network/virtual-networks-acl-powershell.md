@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to manage Access Control Lists (ACLs) for Endpoints by using PowerShell"
-   description="Learn how to manage ACLs with PowerShell"
+   pageTitle="Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell"
+   description="Hier erfahren Sie, wie Sie ACLs mit PowerShell verwalten."
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,89 +15,84 @@
    ms.date="03/15/2016"
    ms.author="jdial" />
 
+# Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell
 
-# <a name="how-to-manage-access-control-lists-(acls)-for-endpoints-by-using-powershell"></a>How to manage Access Control Lists (ACLs) for Endpoints by using PowerShell
+Sie können mit Azure PowerShell oder im Verwaltungsportal Netzwerk-Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte erstellen und verwalten. In diesem Thema finden Sie Verfahren für häufige Aufgaben in Zusammenhang mit ACLs, die Sie mit PowerShell durchführen können. Die Liste der Azure PowerShell-Cmdlets, finden Sie unter [Azure-Verwaltungs-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=317721). Weitere Informationen zu ACLs finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (ACL)?](virtual-networks-acl.md). Informationen zum Verwalten der ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuelle Computer](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 
-You can create and manage Network Access Control Lists (ACLs) for endpoints by using Azure PowerShell or in the Management Portal. In this topic, you'll find procedures for ACL common tasks that you can complete using PowerShell. For the list of Azure PowerShell cmdlets see [Azure Management Cmdlets](http://go.microsoft.com/fwlink/?LinkId=317721). For more information about ACLs, see [What is a Network Access Control List (ACL)?](virtual-networks-acl.md). If you want to manage your ACLs by using the Management Portal, see [How to Set Up Endpoints to a Virtual Machine](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
+## Verwalten von Netzwerk-ACLs mithilfe von Azure PowerShell
 
-## <a name="manage-network-acls-by-using-azure-powershell"></a>Manage Network ACLs by using Azure PowerShell
+Sie können Azure PowerShell-Cmdlets zum Erstellen, Entfernen und Konfigurieren (Festlegen) von Netzwerk-Zugriffssteuerungslisten (ACLs) verwenden. Im Folgenden finden Sie einige Beispiele dafür, wie Sie eine ACL mit PowerShell konfigurieren können.
 
-You can use Azure PowerShell cmdlets to create, remove, and configure (set) Network Access Control Lists (ACLs). We've included a few examples of some of the ways you can configure an ACL using PowerShell.
+Eine vollständige Liste der PowerShell-Cmdlets für ACLs können Sie mit einem der folgenden Befehle abrufen:
 
-To retrieve a complete list of the ACL PowerShell cmdlets, you can use either of the following:
+	Get-Help *AzureACL*
+	Get-Command -Noun AzureACLConfig
 
-    Get-Help *AzureACL*
-    Get-Command -Noun AzureACLConfig
+### Erstellen einer Netzwerk-ACL mit Regeln, die den Zugriff von einem Remotesubnetz zulassen
 
-### <a name="create-a-network-acl-with-rules-that-permit-access-from-a-remote-subnet"></a>Create a Network ACL with rules that permit access from a remote subnet
+Das folgende Beispiel veranschaulicht eine Möglichkeit zum Erstellen einer neuen ACL, die Regeln enthält. Diese ACL wird dann auf den Endpunkt eines virtuellen Computers angewendet. Die ACL-Regeln im folgenden Beispiel lassen den Zugriff von einem Remotesubnetz zu. Um eine neue Netzwerk-ACL mit Zulassungsregeln für ein Remotesubnetz zu erstellen, öffnen Sie eine Azure PowerShell ISE. Kopieren Sie das unten stehende Skript, fügen Sie es ein, konfigurieren Sie es mit Ihren eigenen Werten, und führen Sie es anschließend aus.
 
-The example below illustrates a way to create a new ACL that contains rules. This ACL is then applied to a virtual machine endpoint. The ACL rules in the example below will allow access from a remote subnet. To create a new Network ACL with permit rules for a remote subnet, open an Azure PowerShell ISE. Copy and paste the script below, configuring the script with your own values, and then run the script.
+1. Erstellen Sie das neue Netzwerk-ACL-Objekt.
 
-1. Create the new network ACL object.
+		$acl1 = New-AzureAclConfig
 
-        $acl1 = New-AzureAclConfig
+1. Legen Sie eine Regel fest, die den Zugriff von einem Remotesubnetz zulässt. Im folgenden Beispiel legen Sie die Regel *100* fest (diese hat Priorität vor der Regel 200 und höher), um dem Remotesubnetz *10.0.0.0/8* den Zugriff auf den Endpunkt des virtuellen Computers zu ermöglichen. Ersetzen Sie die Werte durch Ihre eigenen Konfigurationswerte. Der Name „SharePoint ACL config“ sollte durch den Anzeigenamen ersetzt werden, den Sie für diese Regel verwenden möchten.
 
-1. Set a rule that permits access from a remote subnet. In the example below, you set rule *100* (which has priority over rule 200 and higher) to allow the remote subnet *10.0.0.0/8* access to the virtual machine endpoint. Replace the values with your own configuration requirements. The name "SharePoint ACL config" should be replaced with the friendly name that you want to call this rule.
+		Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
+			–Action permit –RemoteSubnet "10.0.0.0/8" `
+			–Description "SharePoint ACL config"
 
-        Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
-            –Action permit –RemoteSubnet "10.0.0.0/8" `
-            –Description "SharePoint ACL config"
+1. Wiederholen Sie das Cmdlet zum Festlegen weiterer Regeln, und ersetzen Sie dabei die Werte entsprechend Ihren Konfigurationsanforderungen. Denken Sie daran, die Reihenfolge der Regelnummern entsprechend der gewünschten Anwendungsreihenfolge der Regeln zu ändern. Niedrigere Nummern haben Vorrang vor höheren Nummern.
 
-1. For additional rules, repeat the cmdlet, replacing the values with your own configuration requirements. Be sure to change the rule number Order to reflect the order in which you want the rules to be applied. The lower rule number takes precedence over the higher number.
+		Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
+			–Action permit –RemoteSubnet "157.0.0.0/8" `
+			–Description "web frontend ACL config"
 
-        Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
-            –Action permit –RemoteSubnet "157.0.0.0/8" `
-            –Description "web frontend ACL config"
+1. Als Nächstes können Sie entweder einen neuen Endpunkt erstellen (hinzufügen) oder die ACL für einen vorhandenen Endpunkt festlegen (einstellen). In diesem Beispiel fügen wir einen neuen Endpunkt des virtuellen Computers mit dem Namen „Web“ hinzu und aktualisieren den Endpunkt des virtuellen Computers mit den ACL-Einstellungen.
 
-1. Next, you can either create a new endpoint (Add) or set the ACL for an existing endpoint (Set). In this example, we will add a new virtual machine endpoint called "web" and update the virtual machine endpoint with the ACL settings.
+		Get-AzureVM –ServiceName $serviceName –Name $vmName `
+		| Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
+		| Update-AzureVM
 
-        Get-AzureVM –ServiceName $serviceName –Name $vmName `
-        | Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
-        | Update-AzureVM
+1. Danach kombinieren Sie die Cmdlets und führen das Skript aus. In diesem Beispiel würden die kombinierten Cmdlets wie folgt aussehen:
 
-1. Next, combine the cmdlets and run the script. For this example, the combined cmdlets would look like this:
+		$acl1 = New-AzureAclConfig
+		Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
+			–Action permit –RemoteSubnet "10.0.0.0/8" `
+			–Description "Sharepoint ACL config"
+		Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
+			–Action permit –RemoteSubnet "157.0.0.0/8" `
+			–Description "web frontend ACL config"
+		Get-AzureVM –ServiceName $serviceName –Name $vmName `
+		|Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
+		|Update-AzureVM
 
-        $acl1 = New-AzureAclConfig
-        Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
-            –Action permit –RemoteSubnet "10.0.0.0/8" `
-            –Description "Sharepoint ACL config"
-        Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
-            –Action permit –RemoteSubnet "157.0.0.0/8" `
-            –Description "web frontend ACL config"
-        Get-AzureVM –ServiceName $serviceName –Name $vmName `
-        |Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
-        |Update-AzureVM
+### Entfernen einer Netzwerk-ACL-Regel, die den Zugriff von einem Remotesubnetz zulässt
 
-### <a name="remove-a-network-acl-rule-that-permits-access-from-a-remote-subnet"></a>Remove a Network ACL rule that permits access from a remote subnet
+Das folgende Beispiel veranschaulicht eine Möglichkeit zum Entfernen einer Netzwerk-ACL-Regel. Um eine Netzwerk-ACL -Regel mit Zulassungsregeln für ein Remotesubnetz zu entfernen, öffnen Sie eine Azure PowerShell ISE. Kopieren Sie das unten stehende Skript, fügen Sie es ein, konfigurieren Sie es mit Ihren eigenen Werten, und führen Sie es anschließend aus.
 
-The example below illustrates a way to remove a network ACL rule.  To remove a Network ACL rule with permit rules for a remote subnet, open an Azure PowerShell ISE. Copy and paste the script below, configuring the script with your own values, and then run the script.
+1. Als Erstes rufen Sie das Netzwerk-ACL-Objekt für den Endpunkt des virtuellen Computers ab. Anschließend entfernen Sie die ACL-Regel. In diesem Fall entfernen wir die Regel anhand der Regel-ID. Dadurch wird nur die Regel-ID 0 aus der ACL entfernt. Das ACL-Objekt wird nicht aus dem Endpunkt des virtuellen Computers entfernt.
 
-1. First step is to get the Network ACL object for the virtual machine endpoint. You'll then remove the ACL rule. In this case, we are removing it by rule ID. This will only remove the rule ID 0 from the ACL. It does not remove the ACL object from the virtual machine endpoint.
+		Get-AzureVM –ServiceName $serviceName –Name $vmName `
+		| Get-AzureAclConfig –EndpointName "web" `
+		| Set-AzureAclConfig –RemoveRule –ID 0 –ACL $acl1
 
-        Get-AzureVM –ServiceName $serviceName –Name $vmName `
-        | Get-AzureAclConfig –EndpointName "web" `
-        | Set-AzureAclConfig –RemoveRule –ID 0 –ACL $acl1
+1. Als Nächstes müssen Sie das Netzwerk-ACL-Objekt auf den Endpunkt des virtuellen Computers anwenden und den virtuellen Computer aktualisieren.
 
-1. Next, you must apply the Network ACL object to the virtual machine endpoint and update the virtual machine.
+		Get-AzureVM –ServiceName $serviceName –Name $vmName `
+		| Set-AzureEndpoint –ACL $acl1 –Name "web" `
+		| Update-AzureVM
 
-        Get-AzureVM –ServiceName $serviceName –Name $vmName `
-        | Set-AzureEndpoint –ACL $acl1 –Name "web" `
-        | Update-AzureVM
+### Entfernen einer Netzwerk-ACL aus einem Endpunkt des virtuellen Computers
 
-### <a name="remove-a-network-acl-from-a-virtual-machine-endpoint"></a>Remove a Network ACL from a virtual machine endpoint
+In bestimmten Szenarien ist es erforderlich, ein Netzwerk-ACL-Objekt aus einem Endpunkt des virtuellen Computers zu entfernen. Dazu öffnen Sie eine Azure PowerShell ISE. Kopieren Sie das unten stehende Skript, fügen Sie es ein, konfigurieren Sie es mit Ihren eigenen Werten, und führen Sie es anschließend aus.
 
-In certain scenarios, you might want to remove a Network ACL object from a virtual machine endpoint. To do that, open an Azure PowerShell ISE. Copy and paste the script below, configuring the script with your own values, and then run the script.
+		Get-AzureVM –ServiceName $serviceName –Name $vmName `
+		| Remove-AzureAclConfig –EndpointName "web" `
+		| Update-AzureVM
 
-        Get-AzureVM –ServiceName $serviceName –Name $vmName `
-        | Remove-AzureAclConfig –EndpointName "web" `
-        | Update-AzureVM
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+[Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?](virtual-networks-acl.md)
 
-[What is a Network Access Control List (ACL)?](virtual-networks-acl.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,63 +1,58 @@
 <properties
-    pageTitle="Connect to SQL Database by using Java with JDBC on Windows | Microsoft Azure"
-    description="Presents a Java code sample you can use to connect to Azure SQL Database. The sample uses JDBC, and it runs on a Windows client computer."
-    services="sql-database"
-    documentationCenter=""
-    authors="LuisBosquez"
-    manager="jhubbard"
-    editor="genemi"/>
+	pageTitle="Herstellen von Verbindungen mit der SQL-Datenbank mithilfe von Java mit JDBC unter Windows | Microsoft Azure"
+	description="Zeigt ein Java-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank. Das Beispiel verwendet JDBC und wird auf einem Clientcomputer unter Windows ausgeführt."
+	services="sql-database"
+	documentationCenter=""
+	authors="LuisBosquez"
+	manager="jhubbard"
+	editor="genemi"/>
 
 
 <tags
-    ms.service="sql-database"
-    ms.workload="drivers"
-    ms.tgt_pltfrm="na"
-    ms.devlang="java"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="lbosq"/>
+	ms.service="sql-database"
+	ms.workload="drivers"
+	ms.tgt_pltfrm="na"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="06/16/2016"
+	ms.author="lbosq"/>
 
 
-
-# <a name="connect-to-sql-database-by-using-java-with-jdbc-on-windows"></a>Connect to SQL Database by using Java with JDBC on Windows
-
-
-[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)] 
+# Herstellen von Verbindungen mit der SQL-Datenbank mithilfe von Java mit JDBC unter Windows
 
 
-This topic presents a Java code sample that you can use to connect to Azure SQL Database. The Java sample relies on the Java Development Kit (JDK) version 1.8. The sample connects to an Azure SQL Database by using the JDBC driver.
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
-## <a name="step-1:-configure-development-environment"></a>Step 1:  Configure Development Environment
 
-[Configure development environment for Java development](https://msdn.microsoft.com/library/mt720658.aspx)
+Dieses Thema enthält ein Java-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank. Das Java-Beispiel beruht auf dem Java Development Kit (JDK), Version 1.8. Das Beispiel stellt mithilfe des JDBC-Treibers eine Verbindung mit Azure SQL-Datenbank her.
 
-## <a name="step-2:-create-a-sql-database"></a>Step 2: Create a SQL database
+## Schritt 1: Konfigurieren der Entwicklungsumgebung
 
-See the [getting started page](sql-database-get-started.md) to learn how to create a database.  
+[Configure development environment for Java development](https://msdn.microsoft.com/library/mt720658.aspx) (Konfigurieren der Entwicklungsumgebung für die Java-Entwicklung)
 
-## <a name="step-3:-get-connection-string"></a>Step 3: Get Connection String
+## Schritt 2: Erstellen einer SQL-Datenbank
+
+Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Datenbank.
+
+## Schritt 3: Abrufen der Verbindungszeichenfolge
 
 [AZURE.INCLUDE [sql-database-include-connection-string-jdbc-20-portalshots](../../includes/sql-database-include-connection-string-jdbc-20-portalshots.md)]
 
-> [AZURE.NOTE] If you are using the JTDS JDBC driver, then you will need to add "ssl=require" to the URL of the connection string and you need to set the following option for the JVM "-Djsse.enableCBCProtection=false". This JVM option disables a fix for a security vulnerability, so make sure you understand what risk is involved before setting this option.
+> [AZURE.NOTE] Wenn Sie den JTDS JDBC-Treiber verwenden, müssen Sie „ssl=require“ in der URL der Verbindungszeichenfolge hinzufügen, und Sie müssen die folgende Option für die JVM festlegen: „-Djsse.enableCBCProtection=false“. Diese JVM-Option deaktiviert einen Fix für ein Sicherheitsrisiko. Daher sollten Sie diese Option nur festlegen, wenn Sie das Risiko genau kennen.
 
-## <a name="step-4:-run-sample-code"></a>Step 4: Run sample code
+## Schritt 4: Ausführen von Beispielcode
 
-* [Proof of concept connecting to SQL using Java](https://msdn.microsoft.com/library/mt720656.aspx)
+* [Proof of concept connecting to SQL using Java](https://msdn.microsoft.com/library/mt720656.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von Java)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-* Visit the [Java Developer Center](/develop/java/).
-* Review the [SQL Database Development Overview](sql-database-develop-overview.md)
-* More information on the [Microsoft JDBC Driver for SQL Server](https://msdn.microsoft.com/library/mt484311.aspx)
+* Besuchen Sie das [Java Developer Center](/develop/java/).
+* Lesen Sie die [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
+* Weitere Informationen zum [Microsoft JDBC-Treiber für SQL Server](https://msdn.microsoft.com/library/mt484311.aspx)
 
-## <a name="additional-resources"></a>Additional resources 
+## Zusätzliche Ressourcen 
 
-* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/)
+* [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="What is a Network Security Group (NSG)"
-   description="Learn about the distributed firewall in Azure using Network Security Groups (NSGs), and how to use NSGs to isolate and control traffic flow within your virtual networks (VNets)."
+   pageTitle="Was ist eine Netzwerksicherheitsgruppe (NSG)?"
+   description="Erfahren Sie mehr zur verteilten Firewall in Azure mit Netzwerksicherheitsgruppen (NSGs) und zur Verwendung von NSGs zum Isolieren und Steuern von Datenverkehr in Ihren virtuellen Netzwerken (VNets)."
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,276 +15,271 @@
    ms.date="02/11/2016"
    ms.author="jdial" />
 
+# Was ist eine Netzwerksicherheitsgruppe (NSG)?
 
-# <a name="what-is-a-network-security-group-(nsg)?"></a>What is a Network Security Group (NSG)?
+Eine Netzwerksicherheitsgruppe (NSG) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerkwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einer einzelnen virtuellen Maschine weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
 
-Network security group (NSG) contains a list of Access Control List (ACL) rules that allow or deny network traffic to your VM instances in a Virtual Network. NSGs can be associated with either subnets or individual VM instances within that subnet. When a NSG is associated with a subnet, the ACL rules apply to all the VM instances in that subnet. In addition, traffic to an individual VM can be restricted further by associating a NSG directly to that VM.
+## NSG-Ressource
 
-## <a name="nsg-resource"></a>NSG resource
+NSGs haben die folgenden Eigenschaften:
 
-NSGs contain the following properties.
-
-|Property|Description|Constraints|Considerations|
+|Eigenschaft|Beschreibung|Einschränkungen|Überlegungen|
 |---|---|---|---|
-|Name|Name for the NSG|Must be unique within the region<br/>Can contain letters, numbers, underscores, periods and hyphens<br/>Must start with a letter or number<br/>Must end with a letter, number, or underscore<br/>Can have up to 80 characters|Since you may need to create several NSGs, make sure you have a naming convention that makes it easy to identify the function of your NSGs|
-|Region|Azure region where the NSG is hosted|NSGs can only be applied to resources within the region it is created|See [limits](#Limits) below to understand how many NSGs you can have in a region|
-|Resource group|Resource group the NSG belongs to|Although an NSG belongs to a resource group, it can be associated to resources in any resource group, as long as the resource is part of the same Azure region as the NSG|Resource groups are used to manage multiple resources together, as a deployment unit<br/>You may consider grouping the NSG with resources it is associated to|
-|Rules|Rules that define what traffic is allowed, or denied||See [NSG rules](#Nsg-rules) below| 
+|Name|Name der NSG|Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Kann bis zu 80 Zeichen enthalten.|Da Sie u. U. eine ganze Reihe von NSGs erstellen müssen, sollten Sie durch Ihre Namenskonvention sicherstellen, dass sich die Funktion der NSGs leicht am Namen erkennen lässt.|
+|Region|Die Azure-Region, in der die NSG gehostet wird|NSGs können nur auf Ressourcen innerhalb der Region angewendet werden, in der sie erstellt wurden.|Lesen Sie unten unter [Einschränkungen](#Limits), wie viele NSGs Sie in einer Region nutzen können.|
+|Ressourcengruppe|Die Ressourcengruppe, zu der die NSG gehört|Obwohl eine NSG zu einer Ressourcengruppe gehört, kann sie Ressourcen in beliebigen Ressourcengruppen zugeordnet werden, sofern die Ressource zu derselben Azure-Region gehört wie die NSG.|Ressourcengruppen werden verwendet, um mehrere Ressourcen gemeinsam als eine Bereitstellungseinheit zu verwalten.<br/>Unter Umständen ist es ratsam, NSGs mit den Ressourcen zu gruppieren, denen sie zugeordnet sind.|
+|Regeln|Regeln definieren, welcher Datenverkehr zugelassen oder verweigert wird.||Siehe Abschnitt [NSG-Regeln](#Nsg-rules) unten.| 
 
->[AZURE.NOTE] Endpoint-based ACLs and network security groups are not supported on the same VM instance. If you want to use an NSG and have an endpoint ACL already in place, first remove the endpoint ACL. For information about how to do this, see [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md).
+>[AZURE.NOTE] Endpunktbasierte ACLs und Netzwerksicherheitsgruppen können nicht für die gleiche VM-Instanz verwendet werden. Wenn Sie eine NSG verwenden möchten und bereits eine Endpunkt-ACL eingerichtet ist, entfernen Sie zuerst die Endpunkt-ACL. Informationen zur Vorgehensweise finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md).
 
-### <a name="nsg-rules"></a>NSG rules
+### NSG-Regeln
 
-NSG rules contain the following properties.
+NSG-Regeln haben die folgenden Eigenschaften:
 
-|Property|Description|Constraints|Considerations|
+|Eigenschaft|Beschreibung|Einschränkungen|Überlegungen|
 |---|---|---|---|
-|**Name**|Name for the rule|Must be unique within the region<br/>Can contain letters, numbers, underscores, periods and hyphens<br/>Must start with a letter or number<br/>Must end with a letter, number, or underscore<br/>Can have up to 80 characters|You may have several rules within an NSG, so make sure you follow a naming convention that allows you to identify the function of your rule|
-|**Protocol**|Protocol to match for the rule|TCP, UDP, or \*|Using \* as a protocol includes ICMP (East-West traffic only), as well as UDP and TCP and may reduce the number of rules you need<br/>At the same time, using \* might be too broad an approach, so make sure you only use when really necessary|
-|**Source port range**|Source port range to match for the rule|Single port number from 1 to 65535, port range (i.e. 1-65635), or \* (for all ports)|Source ports could be ephemeral. Unless your client program is using a specific port, please use "*" in most cases.<br/>Try to use port ranges as much as possible to avoid the need for multiple rules<br/>Multiple ports or port ranges cannot be grouped by a comma
-|**Destination port range**|Destination port range to match for the rule|Single port number from 1 to 65535, port range (i.e. 1-65535), or \* (for all ports)|Try to use port ranges as much as possible to avoid the need for multiple rules<br/>Multiple ports or port ranges cannot be grouped by a comma
-|**Source address prefix**|Source address prefix or tag to match for the rule|Single IP address (i.e. 10.10.10.10), IP subnet (i.e. 192.168.1.0/24), [default tag](#default-tags), or * (for all addresses)|Consider using ranges, default tags, and * to reduce the number of rules|
-|**Destination address prefix**|Destination address prefix or tag to match for the rule|single IP address (i.e. 10.10.10.10), IP subnet (i.e. 192.168.1.0/24), [default tag](#default-tags), or * (for all addresses)|Consider using ranges, default tags, and * to reduce the number of rules|
-|**Direction**|Direction of traffic to match for the rule|inbound or outbound|Inbound and outbound rules are processed separately, based on direction|
-|**Priority**|Rules are checked in the order of priority, once a rule applies, no more rules are tested for matching|Number between 100 and 4096|Consider creating rules jumping priorities by 100 for each rule, to leave space for new rules to come between existing rules|
-|**Access**|Type of access to apply if the rule matches|allow or deny|Keep in mind that if an allow rule is not found for a packet, the packet is dropped|
+|**Name**|Name der Regel|Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Kann bis zu 80 Zeichen enthalten.|Da eine NSG mehrere Regeln enthalten kann, sollten Sie durch Ihre Namenskonvention sicherstellen, dass sich die Funktion der Regel leicht am Namen erkennen lässt.|
+|**Protokoll**|Protokoll entsprechend der Regel|TCP, UDP oder *|Wenn Sie das Protokoll mit * angeben, schließt dies ICMP (nur Ost-West-Datenverkehr) sowie UDP und TCP ein. Auf diese Weise können Sie u. U. die Anzahl der benötigten Regeln reduzieren.<br/>Gleichzeitig kann die Angabe von * zu allgemein sein. Verwenden Sie diesen Ansatz deshalb nur, wenn er wirklich nötig ist.|
+|**Quellportbereich**|Quellportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65635) oder * (für alle Ports)|Quellports könnte kurzlebig sein. Sofern Ihr Clientprogramm keinen bestimmten Port nutzt, verwenden Sie in den meisten Fällen „*“.<br/>Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden.
+|**Zielportbereich**|Zielportbereich entsprechend der Regel|Eine einzelne Portnummer von 1 bis 65535, ein Portbereich (z.B. 1-65535) oder * (für alle Ports)|Versuchen Sie, weitestgehend mit Portbereichen zu arbeiten, um die Anzahl von notwendigen Regeln zu reduzieren.<br/>Mehrere Ports oder Portbereiche können nicht mit Kommas gruppiert werden.
+|**Quelladresspräfix**|Quelladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#default-tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
+|**Zieladresspräfix**|Zieladresspräfix oder -tag entsprechend der Regel|Eine einzelne IP-Adresse (z. B. 10.10.10.10), ein IP-Subnetz (z. B. 192.168.1.0/24), ein [Standardtag](#default-tags) oder * (für alle Adressen)|Verwenden Sie nach Möglichkeit Bereiche, Standard-Tags und *, um die Anzahl von Regeln zu reduzieren.|
+|**Richtung**|Richtung des Datenverkehrs entsprechend der Regel|Eingehend oder ausgehend|Die Regeln für eingehenden und ausgehenden Datenverkehr werden getrennt verarbeitet, abhängig von der Richtung.|
+|**Priority**|Regeln werden in der Reihenfolge ihrer Priorität überprüft. Sobald eine Regel erfüllt ist, werden keine Übereinstimmungen mit weiteren Regeln gesucht.|Eine Zahl zwischen 100 und 4096|Vergeben Sie beim Erstellen von Regeln die Prioritäten am besten jeweils in Hunderterschritten, damit noch Platz für später hinzukommende Regeln bleibt, die von der Priorität her zwischen die bestehenden Regeln eingeordnet werden müssen.|
+|**Access**|Typ des Zugriffs bei Übereinstimmung mit der Regel|Zulassen oder verweigern|Beachten Sie, dass ein Paket verworfen wird, wenn keine Zulassungsregel dafür gefunden wird.|
 
-NSGs contain two sets of rules: inbound and outbound. The priority for a rule must be unique within each set. 
+NGSs enthalten zwei Regelsätze: eingehende und ausgehende Regeln. Die Priorität für eine Regel muss innerhalb jedes Satzes eindeutig sein.
 
-![NSG rule processing](./media/virtual-network-nsg-overview/figure3.png) 
+![Verarbeitung von NSG-Regeln](./media/virtual-network-nsg-overview/figure3.png)
 
-The figure above shows how NSG rules are processed.
+Die Abbildung oben zeigt, wie die NSG-Regeln verarbeitet werden.
 
-### <a name="default-tags"></a>Default Tags
+### Standardtags
 
-Default tags are system-provided identifiers to address a category of IP addresses. You can use default tags in the **source address prefix** and **destination address prefix** properties of any rule. There are three default tags you can use.
+Standardtags sind vom System bereitgestellte Bezeichner für eine Kategorie von IP-Adressen. In den Eigenschaften **Quelladresspräfix** und **Zieladresspräfix** von Regeln können Standardtags verwendet werden. Es gibt drei Standard-Tags, die Sie verwenden können.
 
-- **VIRTUAL_NETWORK:** This default tag denotes all of your network address space. It includes the virtual network address space (CIDR ranges defined in Azure) as well as all connected on-premises address spaces and connected Azure VNets (local networks).
+- **VIRTUAL\_NETWORK**: Standardtag für Ihren gesamten Netzwerkadressraum. Dieser umfasst den Adressraum des virtuellen Netzwerks (in Azure definierte CIDR-Bereiche) sowie den gesamten verbundenen lokalen Adressraum und verbundene Azure VNets (lokale Netzwerke).
 
-- **AZURE_LOADBALANCER:** This default tag denotes Azure’s Infrastructure load balancer. This will translate to an Azure datacenter IP where Azure’s health probes originate.
+- **AZURE\_LOADBALANCER**: Standardtag für den Infrastruktur-Load Balancer von Azure. Wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert.
 
-- **INTERNET:** This default tag denotes the IP address space that is outside the virtual network and reachable by public Internet. This range includes [Azure owned public IP space](https://www.microsoft.com/download/details.aspx?id=41653) as well.
+- **INTERNET**: Standardtag für den IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Dieser Bereich schließt auch den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) mit ein.
 
-### <a name="default-rules"></a>Default Rules
+### Standardregeln
 
-All NSGs contain a set of default rules. The default rules cannot be deleted, but because they are assigned the lowest priority, they can be overridden by the rules that you create. 
+Alle NSGs enthalten eine Gruppe von Standardregeln. Die Standardregeln können zwar nicht gelöscht werden, haben aber niedrigste Priorität und können somit durch selbst erstellte Regeln außer Kraft gesetzt werden.
 
-As illustrated by the default rules below, traffic originating and ending in a virtual network is allowed both in Inbound and Outbound directions. While connectivity to the Internet is allowed for Outbound direction, it is by default blocked for Inbound direction. There is a default rule to allow Azure’s load balancer to probe the health of your VMs and role instances. You can override this rule, if you are not using a load balanced set.
+Wie in den folgenden Standardregeln zu sehen, wird Datenverkehr aus einem bzw. in ein virtuelles Netzwerk in ein- und ausgehender Richtung zugelassen. In ausgehender Richtung wird die Verbindung mit dem Internet zugelassen, in eingehender Richtung wird sie dagegen standardmäßig blockiert. Eine der Standardregeln ermöglicht dem Load Balancer von Azure die Überprüfung der Integrität der virtuellen Computer und der Rolleninstanzen. Sie können diese Regel außer Kraft setzen, wenn Sie keine Gruppe mit Lastenausgleich verwenden.
 
-**Inbound default rules**
+**Eingehende Standardregeln**
 
-| Name                              | Priority | Source IP          | Source Port | Destination IP  | Destination Port | Protocol | Access |
+| Name | Priority | Quell-IP | Quellport | Ziel-IP | Zielport | Protocol | Access |
 |-----------------------------------|----------|--------------------|-------------|-----------------|------------------|----------|--------|
-| ALLOW VNET INBOUND                | 65000    | VIRTUAL_NETWORK    | *           | VIRTUAL_NETWORK | *                | *        | ALLOW  |
-| ALLOW AZURE LOAD BALANCER INBOUND | 65001    | AZURE_LOADBALANCER | *           | *               | *                | *        | ALLOW  |
-| DENY ALL INBOUND                  | 65500    | *                  | *           | *               | *                | *        | DENY   |
+| ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ZULASSEN |
+| ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | * | * | * | * | ZULASSEN |
+| DENY ALL INBOUND | 65500 | * | * | * | * | * | VERWEIGERN |
 
-**Outbound default rules**
+**Ausgehende Standardregeln**
 
-| Name                    | Priority | Source IP       | Source Port | Destination IP  | Destination Port | Protocol | Access |
+| Name | Priority | Quell-IP | Quellport | Ziel-IP | Zielport | Protocol | Access |
 |-------------------------|----------|-----------------|-------------|-----------------|------------------|----------|--------|
-| ALLOW VNET OUTBOUND     | 65000    | VIRTUAL_NETWORK | *           | VIRTUAL_NETWORK | *                | *        | ALLOW  |
-| ALLOW INTERNET OUTBOUND | 65001    | *               | *           | INTERNET        | *                | *        | ALLOW  |
-| DENY ALL OUTBOUND       | 65500    | *               | *           | *               | *                | *        | DENY   |
+| ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ZULASSEN |
+| ALLOW INTERNET OUTBOUND | 65001 | * | * | INTERNET | * | * | ZULASSEN |
+| DENY ALL OUTBOUND | 65500 | * | * | * | * | * | VERWEIGERN |
 
-## <a name="associating-nsgs"></a>Associating NSGs
+## Zuordnen von NSGs
 
-You can associate an NSG to VMs, NICs, and subnets, depending on the deployment model you are using.
+Je nach verwendetem Bereitstellungsmodell können Sie eine NSG einem virtuellen Computer, Netzwerkkarten (NICs) und Subnetzen zuordnen.
 
 [AZURE.INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
  
-- **Associating an NSG to a VM (classic deployments only).** When you associate an NSG to a VM, the network access rules in the NSG are applied to all traffic that destined and leaving the VM. 
+- **Zuordnen einer NSG zu einem virtuellen Computer (nur klassische Bereitstellungen).** Wenn Sie eine NSG einem virtuellen Computer zuordnen, werden die Netzwerkzugriffsregeln in der NSG auf jeglichen Datenverkehr angewendet, der für den virtuellen Computer bestimmt ist oder diesen verlässt.
 
-- **Associating an NSG to a NIC (Resource Manager deployments only).** When you associate an NSG to a NIC, the network access rules in the NSG are applied only to that NIC. That means that in a multi-NIC VM, if an NSG is applied to a single NIC, it does not affect traffic bound to other NICs. 
+- **Zuordnen einer NSG zu einer Netzwerkkarte (nur Ressourcen-Manager-Bereitstellungen).** Wenn Sie eine NSG zu einer Netzwerkkarte zuordnen, werden die Netzwerkzugriffsregeln in der NSG nur auf diese Netzwerkkarte angewendet. Für einen virtuellen Computer mit mehreren Netzwerkkarten bedeutet dies, dass sich eine NSG, die auf eine einzelne Netzwerkkarte angewendet wird, nicht auf die anderen Netzwerkkarten auswirkt.
 
-- **Associating an NSG to a subnet (all deployments)**. When you associate an NSG to a subnet, the network access rules in the NSG are applied to all the IaaS and PaaS resources in the subnet. 
+- **Zuordnen einer NSG zu einem Subnetz (alle Bereitstellungen)**. Wenn Sie eine NSG einem Subnetz zuordnen, werden die Netzwerk-Zugriffsregeln in der NSG auf alle IaaS- und PaaS-Ressourcen im Subnetz angewendet.
 
-You can associate different NSGs to a VM (or NIC, depending on the deployment model) and the subnet that a NIC or VM is bound to. When that happens, all network access rules are applied to the traffic, by priority in each NSG,  in the following order:
+Sie können verschiedene NSGs einem virtuellen Computer (oder einer Netzwerkkarte, abhängig vom Bereitstellungsmodell) und dem Subnetz zuordnen, an das eine Netzwerkkarte oder ein virtueller Computer gebunden ist. In diesem Fall werden alle Netzwerkzugriffsregeln in der Reihenfolge Ihrer Priorität in der NSG auf den Datenverkehr angewendet:
 
-- **Inbound traffic**
-    1. NSG applied to subnet. 
-    
-           If subnet NSG has a matching rule to deny traffic, packet will be dropped here.
-    2. NSG applied to NIC (Resource Manager) or VM (classic). 
-       
-           If VM\NIC NSG has a matching rule to deny traffic, packet will be dropped at VM\NIC, although subnet NSG has a matching rule to allow traffic.
-- **Outbound traffic**
-    1. NSG applied to NIC (Resource Manager) or VM (classic). 
-      
-           If VM\NIC NSG has a matching rule to deny traffic, packet will be dropped here.
-    2. NSG applied to subnet.
-       
-           If subnet NSG has a matching rule to deny traffic, packet will be dropped here, although VM\NIC NSG has a matching rule to allow traffic.
+- **Eingehender Datenverkehr**
+	1. Auf das Subnetz angewendete NSG
+	
+           Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
+	2. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch)
+	   
+           Wenn die NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket auf dem virtuellen Computer/der Netzwerkkarte abgelegt, auch wenn die Subnetz-NSG über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
+- **Ausgehender Datenverkehr**
+	1. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch)
+	  
+           Wenn eine NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
+	2. Auf das Subnetz angewendete NSG
+	   
+           Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt, auch wenn die NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
 
-    ![NSG ACLs](./media/virtual-network-nsg-overview/figure2.png)
+	![NSG-ACLs](./media/virtual-network-nsg-overview/figure2.png)
 
->[AZURE.NOTE] Although you can only associate a single NSG to a subnet, VM, or NIC; you can associate the same NSG to as many resources as you want.
+>[AZURE.NOTE] Sie können einem Subnetz, einem virtuellen Computer oder einer Netzwerkkarte zwar nur eine einzelne NSG zuordnen, Sie können eine solche NSG aber beliebig vielen Ressourcen zuordnen.
 
-## <a name="implementation"></a>Implementation
-You can implement NSGs in the classic or Resource Manager deployment models using the different tools listed below.
+## Implementierung
+Sie können NSGs mit den verschiedenen unten aufgeführten Tools im klassischen oder im Ressourcen-Manager-Bereitstellungsmodell implementieren.
 
-|Deployment tool|Classic|Resource Manager|
+|Bereitstellungstool|Klassisch|Ressourcen-Manager|
 |---|---|---|
-|Classic portal|![No](./media/virtual-network-nsg-overview/red.png)|![No](./media/virtual-network-nsg-overview/red.png)|
-|Azure portal|![Yes](./media/virtual-network-nsg-overview/green.png)|[![Yes][green]](virtual-networks-create-nsg-arm-pportal.md)|
-|PowerShell|[![Yes][green]](virtual-networks-create-nsg-classic-ps.md)|[![Yes][green]](virtual-networks-create-nsg-arm-ps.md)|
-|Azure CLI|[![Yes][green]](virtual-networks-create-nsg-classic-cli.md)|[![Yes][green]](virtual-networks-create-nsg-arm-cli.md)|
-|ARM template|![No](./media/virtual-network-nsg-overview/red.png)|[![Yes][green]](virtual-networks-create-nsg-arm-template.md)|
+|Klassisches Portal|![Nein](./media/virtual-network-nsg-overview/red.png)|![Nein](./media/virtual-network-nsg-overview/red.png)|
+|Azure-Portal|![Ja](./media/virtual-network-nsg-overview/green.png)|[![Ja][green]](virtual-networks-create-nsg-arm-pportal.md)|
+|PowerShell|[![Ja][green]](virtual-networks-create-nsg-classic-ps.md)|[![Ja][green]](virtual-networks-create-nsg-arm-ps.md)|
+|Azure-Befehlszeilenschnittstelle|[![Ja][green]](virtual-networks-create-nsg-classic-cli.md)|[![Ja][green]](virtual-networks-create-nsg-arm-cli.md)|
+|ARM-Vorlage|![Nein](./media/virtual-network-nsg-overview/red.png)|[![Ja][green]](virtual-networks-create-nsg-arm-template.md)|
 
-|**Key**|![Yes](./media/virtual-network-nsg-overview/green.png) Supported.|![No](./media/virtual-network-nsg-overview/red.png) Not Supported.|
+|**Schlüssel**|![Ja](./media/virtual-network-nsg-overview/green.png) Unterstützt.|![Nein](./media/virtual-network-nsg-overview/red.png) Nicht unterstützt.|
 |---|---|---|
 
-## <a name="planning"></a>Planning
+## Planung
 
-Before implementing NSGs, you need to answer the questions below:   
+Bevor Sie NSGs implementieren, müssen Sie folgende Fragen beantworten:
 
-1. What types of resources do you want to filter traffic to or from (NICs in the same VM, VMs or other resources such as cloud services or application service environments connected to the same subnet, or between resources connected to different subnets)?
+1. Für welche Arten von Ressourcen möchten Sie eingehenden oder ausgehenden Datenverkehr filtern (für Netzwerkkarten in demselben virtuellen Computer, für virtuelle Computer oder andere Ressourcen wie Clouddienste oder Anwendungsdienstumgebungen, die mit demselben Subnetz verbunden sind, oder für Datenverkehr zwischen Ressourcen, die mit verschiedenen Subnetzen verbunden sind)?
 
-2. Are the resources you want to filter traffic to/from connected to subnets in existing VNets or will they be connected to new VNets or subnets?
+2. Sind die Ressourcen, für die Sie eingehenden oder ausgehenden Datenverkehr filtern möchten, mit Subnetzen in vorhandenen VNETs verbunden, oder werden sie mit neuen VNETs oder Subnetzen verbunden?
  
-For more information on planning for network security in Azure, read the [best practices for cloud services and network security](../best-practices-network-security.md). 
+Weitere Informationen zum Planen der Netzwerksicherheit in Azure finden Sie in den [bewährten Verfahren für Clouddienste und Netzwerksicherheit](../best-practices-network-security.md).
 
-## <a name="design-considerations"></a>Design considerations
+## Überlegungen zum Entwurf
 
-Once you know the answers to the questions in the [Planning](#Planning) section, review the following before defining your NSGs.
+Wenn Sie die Antworten auf die Fragen im Abschnitt [Planung](#Planning) kennen, machen Sie sich mit dem Folgenden vertraut, bevor Sie Ihre NSGs definieren.
 
-### <a name="limits"></a>Limits
+### Grenzen
 
-You need to consider the following limits when designing your NSGs.
+Sie müssen die folgenden Begrenzungen berücksichtigen, wenn Sie Ihre NSGs entwerfen.
 
-|**Description**|**Default Limit**|**Implications**|
+|**Beschreibung**|**Standardlimit**|**Implikationen**|
 |---|---|---|
-|Number of NSGs you can associate to a subnet, VM, or NIC|1|This means you cannot combine NSGs. Ensure all the rules needed for a given set of resources are included in a single NSG.|
-|NSGs per region per subscription|100|By default, a new NSG is created for each VM you create in the Azure portal. If you allow this default behavior, you will run out of NSGs quickly. Make sure you keep this limit in mind during your design, and separate your resources into multiple regions or subscriptions if necessary. |
-|NSG rules per NSG|200|Use a broad range of IP and ports to ensure you do not go over this limit. |
+|Anzahl von NSGs, die Sie einem Subnetz, einem virtuellen Computer oder einer Netzwerkkarte zuordnen können|1|Das bedeutet, dass Sie NSGs nicht kombinieren können. Stellen Sie sicher, dass sich alle für eine Gruppe von Ressourcen benötigten Regeln in einer einzigen NSG befinden.|
+|NSGs pro Region und Abonnement|100|Standardmäßig wird für jeden im Azure-Portal erstellten virtuellen Computer eine neue NSG erstellt. Wenn Sie dieses Standardverhalten zulassen, werden Ihnen die NSGs schnell ausgehen. Denken Sie beim Entwurf an dieses Limit, und teilen Sie Ihre Ressourcen gegebenenfalls auf mehrere Regionen oder Abonnements auf. |
+|NSG-Regeln pro NSG|200|Verwenden Sie einen breiten Bereich von IP-Adressen und Ports, um dieses Limit nicht zu überschreiten. |
 
->[AZURE.IMPORTANT] Make sure you view all the [limits related to networking services in Azure](../azure-subscription-service-limits.md#networking-limits) before designing your solution. Some limits can be increased by opening a support ticket.
+>[AZURE.IMPORTANT] Sehen Sie sich alle [Einschränkungen an, die es hinsichtlich der Netzwerkdienste in Azure gibt](../azure-subscription-service-limits.md#networking-limits), bevor Sie Ihre Lösung entwerfen. Einige Einschränkungen können durch Öffnen eines Supporttickets erhöht werden.
 
-### <a name="vnet-and-subnet-design"></a>VNet and subnet design
+### Entwurf von VNET und Subnetz
 
-Since NSGs can be applied to subnets, you can minimize the number of NSGs by grouping your resources by subnet, and applying NSGs to subnets.  If you decide to apply NSGs to subnets, you may find that existing VNets and subnets you have were not defined with NSGs in mind. You may need to define new VNets and subnets to support your NSG design. And deploy your new resources to your new subnets. You could then define a migration strategy to move existing resources to the new subnets. 
+Da NSGs auf Subnetze angewendet werden können, können Sie die Anzahl der NSGs minimieren, indem Sie Ihre Ressourcen nach Subnetz gruppieren und die NSGs auf Subnetze anwenden. Wenn Sie sich dafür entscheiden, NSGs auf Subnetze anzuwenden, werden Sie u. U. feststellen, dass beim Definieren der vorhandenen VNETs und Subnetze die NSGs nicht bedacht wurden. Möglicherweise müssen Sie neue VNETs und Subnetze definieren, die Ihr NSG-Design unterstützen. Außerdem müssen Sie in den neuen Subnetzen neue Ressourcen bereitstellen. Anschließend können Sie in einer Migrationsstrategie festlegen, wie die vorhandenen Ressourcen in die neuen Subnetze verlagert werden.
 
-### <a name="special-rules"></a>Special rules
+### Spezielle Regeln
 
-You need to take into account the special rules listed below. Make sure you do not block traffic allowed by those rules, otherwise your infrastructure will not be able to communicate with essential Azure services.
+Sie müssen die folgenden besonderen Regeln berücksichtigen. Vergewissern Sie sich, dass Sie keinen Datenverkehr blockieren, der durch diese Regeln zugelassen wird. Andernfalls hat Ihre Infrastruktur keine Möglichkeit, mit wesentlichen Azure-Diensten zu kommunizieren.
 
-- **Virtual IP of the Host Node:** Basic infrastructure services such as DHCP, DNS, and Health monitoring are provided through the virtualized host IP address 168.63.129.16. This public IP address belongs to Microsoft and will be the only virtualized IP address used in all regions for this purpose. This IP address maps to the physical IP address of the server machine (host node) hosting the virtual machine. The host node acts as the DHCP relay, the DNS recursive resolver, and the probe source for the load balancer health probe and the machine health probe. Communication to this IP address should not be considered as an attack.
+- **Virtuelle IP des Hostknotens**: Grundlegende Infrastrukturdienste wie DHCP, DNS und die Systemüberwachung werden über die virtualisierte Host-IP-Adresse 168.63.129.16 bereitgestellt. Diese öffentliche IP-Adresse gehört Microsoft und ist die einzige virtuelle IP-Adresse, die in allen Regionen zu diesem Zweck verwendet wird. Die IP-Adresse wird der physischen IP-Adresse des Servercomputers (Hostknoten) zugeordnet, der den virtuellen Computer hostet. Der Hostknoten fungiert als DHCP-Relay, als rekursiver DNS-Resolver und als Integritätstestquelle für den Load Balancer und den Computer. Eingehende Kommunikation für diese IP-Adresse darf nicht als Angriff betrachtet werden.
 
-- **Licensing (Key Management Service):** Windows images running in the virtual machines should be licensed. To do this, a licensing request is sent to the Key Management Service host servers that handle such queries. This will always be on outbound port 1688.
+- **Lizenzierung (Schlüsselverwaltungsdienst)**: Die auf den virtuellen Computern verwendeten Windows-Images müssen lizenziert werden. Zu diesem Zweck wird eine Lizenzierungsanforderung an die Hostserver des Schlüsselverwaltungsdiensts gesendet, die solche Abfragen verarbeiten. Dafür wird immer der ausgehende Port 1688 verwendet.
 
-### <a name="icmp-traffic"></a>ICMP traffic
+### ICMP-Datenverkehr
 
-The current NSG rules only allow for protocols *TCP* or *UDP*. There is not a specific tag for *ICMP*. However, ICMP traffic is allowed within a Virtual Network by default through the Inbound VNet rule(Default rule 65000 inbound) that allows traffic from/to any port and protocol within the VNet.
+In NSG-Regeln kann derzeit als Protokoll nur *TCP* oder *UDP* angegeben werden. Ein spezielles Tag für *ICMP* ist nicht verfügbar. ICMP-Datenverkehr ist in einem virtuellen Netzwerk jedoch standardmäßig über die eingehende VNet-Regel (Standardregel 65000 eingehend) zulässig, die ein-/ausgehenden Datenverkehr für sämtliche Ports und Protokolle innerhalb des VNets zulassen.
 
-### <a name="subnets"></a>Subnets
+### Subnetze
 
-- Consider the number of tiers your workload requires. Each tier can be isolated by using a subnet, with an NSG applied to the subnet. 
-- If you need to implement a subnet for a VPN gateway, or ExpressRoute circuit, make sure you do **NOT** apply an NSG to that subnet. If you do so, your cross VNet or cross premises connectivity will not work.
-- If you need to implement a virtual appliance, make sure you deploy the virtual appliance on its own subnet, so that your User Defined Routes (UDRs) can work correctly. You can implement a subnet level NSG to filter traffic in and out of this subnet. Learn more about [how to control traffic flow and use virtual appliances](virtual-networks-udr-overview.md).
+- Bedenken Sie die Anzahl der Ebenen, die für Ihre Workload erforderlich sind. Jede Ebene kann mithilfe eines Subnetzes isoliert werden, auf das eine NSG angewendet wird.
+- Wenn Sie ein Subnetz für ein VPN-Gateway oder eine ExpressRoute-Verbindung implementieren müssen, dürfen Sie auf dieses Subnetz **KEINE** NSG anwenden. Wenn Sie dies dennoch tun, funktionieren die Verbindungen zwischen VNETs oder zwischen Standorten nicht.
+- Wenn Sie ein virtuelles Gerät implementieren müssen, müssen Sie das virtuelle Gerät in seinem eigenen Subnetz bereitstellen, damit die benutzerdefinierten Routen (UDRs, User Defined Routes) ordnungsgemäß funktionieren. Sie können eine NSG auf Subnetzebene implementieren, um den bei diesem Subnetz eingehenden und ausgehenden Datenverkehr zu filtern. Informieren Sie sich ausführlicher über das [Steuern des Datenverkehrsflusses und das Verwenden virtueller Geräte](virtual-networks-udr-overview.md).
 
-### <a name="load-balancers"></a>Load balancers
+### Load Balancer
 
-- Consider the load balancing and NAT rules for each load balancer being used by each of your workloads.These rules are bound to a back end pool that contains NICs (Resource Manager deployments) or VMs/role instances (classic deployments). Consider creating an NSG for each back end pool, allowing only traffic mapped through the rules implemented in the load balancers. That guarantees that traffic coming to the backend pool directly, without passing through the load balancer, is also filtered.
-- In classic deployments, you create endpoints that map ports on a load balancer to ports on your VMs or role instances. You can also create your own individual public facing load balancer in a Resource Manager deployment. If you are restricting traffic to VMs and role instances that are part of a backend pool in a load balancer by using NSGs, keep in mind that the destination port for the incoming traffic is the actual port in the VM or role instance, not the port exposed by the load balancer. Also keep in mind that the source port and address for the connection to the VM is a port and address on the remote computer in the Internet, not the port and address exposed by the load balancer.
-- Similar to public facing load balancers, when you create NSGs to filter traffic coming through an internal load balancer (ILB), you need to understand that the source port and address range applied are the ones from the computer originating the call, not the load balancer. And the destination port and address range are related to the computer receiving the traffic, not the load balancer.
+- Berücksichtigen Sie die Lastenausgleichs- und NAT-Regeln für jeden Load Balancer, der von Ihren Workloads verwendet wird. Diese Regeln sind an einen Back-End-Pool gebunden, der Netzwerkkarten (bei Ressourcen-Manager-Bereitstellungen) oder virtuelle Computer/Rolleninstanzen (bei klassischen Bereitstellungen) enthält. Ziehen Sie in Erwägung, eine NSG für jeden Back-End-Pool zu erstellen und dadurch nur den Datenverkehr zuzulassen, der den in den Load Balancern implementierten Regeln entspricht. Dies garantiert, dass der direkt durch den Back-End-Pool kommende und den Load Balancer nicht passierende Datenverkehr ebenfalls gefiltert wird.
+- In klassischen Bereitstellungen erstellen Sie Endpunkte, die die Ports auf einem Load Balancer zu Ports auf den virtuellen Computern oder Rolleninstanzen zuordnen. In einer Ressourcen-Manager-Bereitstellung können Sie auch eigene öffentlich zugängliche Load Balancer erstellen. Wenn Sie den Datenverkehr zu virtuellen Computern und Rolleninstanzen, die Teil eines Back-End-Pools in einem Load Balancer sind, mit NSGs einschränken, müssen Sie Folgendes bedenken: Der Zielport für den eingehenden Datenverkehr ist der tatsächliche Port im virtuellen Computer oder in der Rolleninstanz und nicht der Port, der durch den Load Balancer verfügbar gemacht wird. Bedenken Sie außerdem, das der Quellport und die Quelladresse für die Verbindung mit dem virtuellen Computer ein Port und eine Adresse auf dem Remotecomputer im Internet sind und nicht der Port und die Adresse, die vom Load Balancer verfügbar gemacht wird.
+- Wenn Sie NSGs zum Filtern von Datenverkehr erstellen, der durch einen internen Load Balancer (ILB) geleitet wird, gilt Ähnliches wie bei öffentlich zugänglichen Load Balancern: Sie müssen berücksichtigen, dass der Quellport und der Quelladressbereich des Computers angewendet werden, von dem der Aufruf stammt, und nicht Port und Adresse des Load Balancers. Und der Zielport und der Zieladressbereich beziehen sich auf den Computer, bei dem der Datenverkehr eingeht, und nicht auf den Load Balancer.
 
-### <a name="other"></a>Other
+### Andere
 
-- Endpoint-based ACLs and NSGs are not supported on the same VM instance. If you want to use an NSG and have an endpoint ACL already in place, first remove the endpoint ACL. For information about how to do this, see [Manage endpoint ACLs](virtual-networks-acl-powershell.md).
-- In the Resource Manager deployment model, you can use an NSG associated to a NIC for VMs with multiple NICs to enable management (remote access) by NIC, therefore segregating traffic.
-- Similar to the use of load balancers, when filtering traffic from other VNets, you must use the source address range of the remote computer, not the gateway connecting the VNets.
-- Many Azure services cannot be connected to Azure Virtual Networks and therefore, traffic to and from them cannot be filtered with NSGs.  Read the documentation for the services you use to determine whether or not they can be connected to VNets.
+- Endpunktbasierte ACLs und NSGs können nicht für die gleiche VM-Instanz verwendet werden. Wenn Sie eine NSG verwenden möchten und bereits eine Endpunkt-ACL eingerichtet ist, entfernen Sie zuerst die Endpunkt-ACL. Informationen über die Vorgehensweise finden Sie unter [Verwalten von Endpunkt-ACLs](virtual-networks-acl-powershell.md).
+- Im Bereitstellungsmodell mit Ressourcen-Manager können Sie eine NSG, die einer Netzwerkkarte zugeordnet ist, für virtuelle Computer mit mehreren Netzwerkkarten verwenden. Auf diese Weise wird eine Verwaltung (ein Remotezugriff) nach Netzwerkkarte und eine Trennung des Datenverkehrs ermöglicht.
+- Beim Filtern von Datenverkehr aus anderen VNETs müssen Sie ähnlich wie bei Load Balancern den Quelladressbereich des Remotecomputers verwenden und nicht das Gateway, das die VNETs verbindet.
+- Viele Azure-Dienste können nicht mit Azure Virtual Networks verbunden werden. Daher kann der ein- und ausgehende Datenverkehr dieser Dienste nicht mit NSGs gefiltert werden. Lesen Sie die Dokumentation zu den von Ihnen genutzten Diensten, um herauszufinden, ob sie mit VNETs verbunden werden können.
 
-## <a name="sample-deployment"></a>Sample deployment
+## Beispielbereitstellung
 
-To illustrate the application of the information in this article, we’ll define NSGs to filter network traffic for a two tier workload solution with the following requirements:
+Im Folgenden wird veranschaulicht, wie die Informationen in diesem Artikel praktisch umgesetzt werden können. Dazu definieren wir NSGs, die den Netzwerk-Datenverkehr für eine Workloadlösung mit zwei Ebenen filtern. Es gelten diese Anforderungen:
 
-1. Separation of traffic between front end (Windows web servers) and back end (SQL database servers).
-2. Load balancing rules forwarding traffic to the load balancer to all web servers on port 80.
-3. NAT rules forwarding traffic coming in port 50001 on load balancer to port 3389 on only one VM in the front end.
-4. No access to the front end or back end VMs from the Internet, with exception of requirement number 1.
-5. No access from the front end or back end to the Internet.
-6. Access to port 3389 to any web server in the front end, for traffic coming from the front end subnet itself.
-7. Access to port 3389 to all SQL Server VMs in the back end from the front end subnet only.
-8. Access to port 1433 to all SQL Server VMs in the back end from the front end subnet only.
-9. Separation of management traffic (port 3389) and database traffic (1433) on different NICs in the back end VMs.
+1. Trennung des Datenverkehrs zwischen Front-End (Windows-Webserver) und Back-End (SQL-Datenbankserver).
+2. Lastenausgleichsregeln leiten den am Load Balancer eingehenden Datenverkehr auf allen Webservern an Port 80 weiter.
+3. NAT-Regeln leiten den an Port 50001 des Load Balancers eingehenden Datenverkehr an Port 3389 auf nur einem virtuellen Computer im Front-End weiter.
+4. Kein Zugriff auf die virtuellen Computer des Front-Ends oder Back-Ends aus dem Internet, mit Ausnahme von Anforderung 1.
+5. Kein Zugriff aus dem Front-End oder Back-End auf das Internet.
+6. Zugriff auf Port 3389 auf jedem Webserver im Front-End für Datenverkehr, der aus dem Front-End-Subnetz selbst stammt.
+7. Zugriff auf Port 3389 auf allen virtuellen SQL Server-Computern im Back-End nur für Datenverkehr aus dem Front-End-Subnetz.
+8. Zugriff auf Port 1433 auf allen virtuellen SQL Server-Computern im Back-End nur für Datenverkehr aus dem Front-End-Subnetz.
+9. Trennung des Verwaltungsdatenverkehrs (Port 3389) und des Datenbank-Datenverkehrs (Port 1433) auf verschiedene Netzwerkkarten der virtuellen Computer im Back-End.
 
 ![NSGs](./media/virtual-network-nsg-overview/figure1.png)
 
-As seen in the diagram above, the *Web1* and *Web2* VMs are connected to the *FrontEnd* subnet, and the *DB1* and *DB2* VMs are connected to the *BackEnd* subnet.  Both subnets are part of the *TestVNet* VNet. All resources are assigned to the *West US* Azure region.
+Wie im Diagramm oben zu sehen, sind die virtuellen Maschinen *Web1* und *Web2* mit dem Subnetz *FrontEnd* verbunden, und die virtuellen Maschinen *DB1* und *DB2* sind mit dem Subnetz *BackEnd* verbunden. Beide Subnetze sind Teil des VNETs *TestVNet*. Alle Ressourcen sind der Azure-Region *USA, Westen* zugeordnet.
 
-Requirements 1-6 (with exception of 3) above are all confined to subnet spaces. To minimize the number of rules required for each NSG, and to make it easy to add additional VMs to the subnets running the same workload types as the existing VMs, we can implement the following subnet level NSGs.
+Die Anforderungen 1–6 (außer 3) beschränken sich alle auf Subnetzräume. Die Anzahl der für die einzelnen NSGs nötigen Regeln soll möglichst gering sein, und es soll einfach sein, den Subnetzen weitere virtuelle Computer hinzuzufügen, die die gleichen Workloadarten ausführen. Deshalb werden die folgenden NSGs auf Subnetzebene implementiert.
 
-### <a name="nsg-for-frontend-subnet"></a>NSG for FrontEnd subnet
+### NSG für das Subnetz „FrontEnd“
 
-**Incoming rules**
+**Regeln für eingehenden Datenverkehr**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|allow HTTP|Allow|100|INTERNET|\*|\*|80|TCP|
-|allow RDP from FrontEnd|Allow|200|192.168.1.0/24|\*|\*|3389|TCP|
-|deny anything from Internet|Deny|300|INTERNET|\*|\*|\*|TCP|
+|HTTP zulassen|Zulassen|100|INTERNET|*|*|80|TCP|
+|RDP von FrontEnd zulassen|Zulassen|200|192\.168.1.0/24|*|*|3389|TCP|
+|Alles aus dem Internet verweigern|Verweigern|300|INTERNET|*|*|*|TCP|
 
-**Outgoing rules**
+**Regeln für ausgehenden Datenverkehr**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|deny Internet|Deny|100|\*|\*|INTERNET|\*|\*|
+|Internet verweigern|Verweigern|100|*|*|INTERNET|*|*|
 
-### <a name="nsg-for-backend-subnet"></a>NSG for BackEnd subnet
+### NSG für das Subnetz „BackEnd“
 
-**Incoming rules**
+**Regeln für eingehenden Datenverkehr**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|deny Internet|Deny|100|INTERNET|\*|\*|\*|\*|
+|Internet verweigern|Verweigern|100|INTERNET|*|*|*|*|
 
-**Outgoing rules**
+**Regeln für ausgehenden Datenverkehr**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|deny Internet|Deny|100|\*|\*|INTERNET|\*|\*|
+|Internet verweigern|Verweigern|100|*|*|INTERNET|*|*|
 
-### <a name="nsg-for-single-vm-(nic)-in-frontend-for-rdp-from-internet"></a>NSG for single VM (NIC) in FrontEnd for RDP from Internet
+### NSG für einen einzigen virtuellen Computer (Netzwerkkarte) in „FrontEnd“ für RDP aus dem Internet
 
-**Incoming rules**
+**Regeln für eingehenden Datenverkehr**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|allow RDP from Internet|Allow|100|INTERNET|*|\*|3389|TCP|
+|RDP aus dem Internet zulassen|Zulassen|100|INTERNET|*|\*|3389|TCP|
 
->[AZURE.NOTE] Notice how the source address range for this rule is **Internet**, and not the VIP for the load balancer; the source port is **\***, not 500001. Do not get confused between NAT rules/load balancing rules and NSG rules. The NSG rules are always related to the original source and final destination of traffic, **NOT** the load balancer between the two. 
+>[AZURE.NOTE] Beachten Sie, dass der Quelladressbereich für dieser Regel **Internet** ist und nicht die VIP des Load Balancers; der Quellport ist ***** und nicht 500001. Verwechseln Sie NAT-Regeln und Lastenausgleichsregeln nicht mit NSG-Regeln. Die NSG-Regeln beziehen sich immer auf die ursprüngliche Quelle und das endgültige Ziel des Datenverkehrs, **NICHT** auf den zwischen beiden liegenden Load Balancer.
 
-### <a name="nsg-for-management-nics-in-backend"></a>NSG for management NICs in BackEnd
+### NSG für Verwaltungsnetzwerkkarten in „BackEnd“
 
-**Incoming rules**
+**Regeln für eingehenden Datenverkehr**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|allow RDP from front end|Allow|100|192.168.1.0/24|*|\*|3389|TCP|
+|RDP von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|\*|3389|TCP|
 
-### <a name="nsg-for-database-access-nics-in-back-end"></a>NSG for database access NICs in back end
+### NSG für die Datenbankzugriffs-Netzwerkkarten in „BackEnd“
 
-**Incoming rules**
+**Regeln für eingehenden Datenverkehr**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|Regel|Access|Priority|Quelladressbereich|Quellport|Zieladressbereich|Zielport|Protocol|
 |---|---|---|---|---|---|---|---|
-|allow SQL from front end|Allow|100|192.168.1.0/24|*|\*|1433|TCP|
+|SQL von FrontEnd zulassen|Zulassen|100|192\.168.1.0/24|*|\*|1433|TCP|
 
-Since some of the NSGs above need to be associated to individual NICs, you need to deploy this scenario as a Resource Manager deployment. Notice how rules are combined for subnet and NIC level, depending on how they need to be applied. 
+Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden müssen, müssen Sie dieses Szenario als Ressourcen-Manager-Bereitstellung bereitstellen. Beachten Sie, wie der Regeln für die Subnetz- und Netzwerkkartenebene je nach Notwendigkeit kombiniert werden.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- [Deploy NSGs in the classic deployment model](virtual-networks-create-nsg-classic-ps.md).
-- [Deploy NSGs in Resource Manager](virtual-networks-create-nsg-arm-pportal.md).
-- [Manage NSG logs](virtual-network-nsg-manage-log.md).
+- [Bereitstellen von NSGs im klassischen Bereitstellungsmodell](virtual-networks-create-nsg-classic-ps.md)
+- [Bereitstellen von NSGs im Ressourcen-Manager](virtual-networks-create-nsg-arm-pportal.md)
+- [Verwalten von NSG-Protokollen](virtual-network-nsg-manage-log.md)
 
 [green]: ./media/virtual-network-nsg-overview/green.png
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=AcomDC_0907_2016--->

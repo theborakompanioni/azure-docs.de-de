@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get started with Service Fabric Reliable Actors | Microsoft Azure"
-   description="This tutorial walks you through the steps of creating, debugging, and deploying a simple actor-based service using Service Fabric Reliable Actors."
+   pageTitle="Erste Schritte mit Service Fabric Reliable Actors | Microsoft Azure"
+   description="Dieses Tutorial führt Sie durch die Schritte zum Erstellen, Debuggen und Bereitstellen eines einfachen actorbasierten Diensts mithilfe von Service Fabric Reliable Actors."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,64 +13,54 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
+# Erste Schritte mit Reliable Actors
+Dieser Artikel erläutert die Grundlagen von Azure Service Fabric Reliable Actors und führt Sie durch das Erstellen, Debuggen und Bereitstellen einer einfachen Reliable Actors-Anwendung in Visual Studio.
 
-# <a name="getting-started-with-reliable-actors"></a>Getting started with Reliable Actors
+## Installation und Setup
+Bevor Sie beginnen, vergewissern Sie sich, dass sich das Setup der Entwicklungsumgebung von Service Fabric auf Ihrem Computer befindet. Wenn Sie die Umgebung einrichten müssen, finden Sie ausführliche Anweisungen unter [Einrichten der Entwicklungsumgebung](service-fabric-get-started.md).
 
-> [AZURE.SELECTOR]
-- [C# on Windows](service-fabric-reliable-actors-get-started.md)
-- [Java on Linux](service-fabric-reliable-actors-get-started-java.md)
+## Grundlegende Konzepte
+Um mit Reliable Actors zu beginnen, müssen Sie lediglich vier grundlegende Konzepte verstehen:
 
-This article explains the basics of Azure Service Fabric Reliable Actors and walks you through creating, debugging, and deploying a simple Reliable Actor application in Visual Studio.
+* **Actor-Dienst**. Reliable Actors sind in Reliable Services gepackt, die in der Service Fabric-Infrastruktur bereitgestellt werden können. Ein Dienst kann einen oder mehrere Actors hosten. Die Vor- und Nachteile von einem oder mehreren Actors pro Dienst werden weiter unten ausführlicher behandelt. Zunächst gehen wir davon aus, dass nur ein Actor implementiert werden soll.
+* **Actor-Schnittstelle**. Die Actor-Schnittstelle wird zum Definieren einer stark typisierten öffentlichen Schnittstelle eines Actors verwendet. In der Terminologie von Reliable Actor-Modellen definiert die Actor-Schnittstelle die Nachrichtentypen, die der Actor verstehen und verarbeiten kann. Die Actor-Schnittstelle wird von anderen Actors oder von Clientanwendungen zum (asynchronen) „Senden“ von Nachrichten an den Actor verwendet. Reliable Actors können mehrere Schnittstellen implementieren. Wie noch zu sehen sein wird, kann ein HelloWorld-Actor die IHelloWorld-Schnittstelle implementieren, jedoch auch eine ILogging-Schnittstelle, die verschiedene Nachrichten und/oder Funktionalitäten definiert.
+* **Actor-Registrierung**. Im Reliable Actors-Dienst muss der Actor-Typ registriert werden. Auf diese Weise ist der neue Typ in Service Fabric bekannt und kann zum Erstellen neuer Actors verwendet werden.
+* **ActorProxy-Klasse**. Die ActorProxy-Klasse dient Clientanwendungen zum Aufrufen der Methoden, die über ihre Schnittstellen verfügbar gemacht werden. Die ActorProxy-Klasse bietet zwei wichtige Funktionen:
+	* Namensauflösung. Kann zum Lokalisieren des Actors im Cluster verwendet werden (den Knoten des Clusters suchen, auf dem er gehostet wird).
+	* Behandeln von Fehlern. Kann Methodenaufrufe erneut versuchen und den Actor-Speicherort erneut bestimmen, z. B. nach einem Fehler, der erfordert, dass der Actor auf einen anderen Knoten im Cluster verschoben wird.
 
-## <a name="installation-and-setup"></a>Installation and setup
-Before you start, ensure that you have the Service Fabric development environment set up on your machine.
-If you need to set it up, see detailed instructions on [how to set up the development environment](service-fabric-get-started.md).
+Die folgenden Regeln zu Actor-Schnittstellen sind erwähnenswert:
 
-## <a name="basic-concepts"></a>Basic concepts
-To get started with Reliable Actors, you only need to understand a few basic concepts:
+- Actor-Schnittstellenmethoden können nicht überladen werden.
+- Actor-Schnittstellenmethoden dürfen keine out-, ref- oder optionalen Parameter aufweisen.
+- Generische Schnittstellen werden nicht unterstützt.
 
- * **Actor service**. Reliable Actors are packaged in Reliable Services that can be deployed in the Service Fabric infrastructure. Actor instances are activated in a named service instance.
- 
- * **Actor registration**. As with Reliable Services, a Reliable Actor service needs to be registered with the Service Fabric runtime. In addition, the actor type needs to be registered with the Actor runtime.
- 
- * **Actor interface**. The actor interface is used to define a strongly typed public interface of an actor. In the Reliable Actor model terminology, the actor interface defines the types of messages that the actor can understand and process. The actor interface is used by other actors and client applications to "send" (asynchronously) messages to the actor. Reliable Actors can implement multiple interfaces.
- 
- * **ActorProxy class**. The ActorProxy class is used by client applications to invoke the methods exposed through the actor interface. The ActorProxy class provides two important functionalities:
-    * Name resolution: It is able to locate the actor in the cluster (find the node of the cluster where it is hosted).
-    * Failure handling: It can retry method invocations and re-resolve the actor location after, for example, a failure that requires the actor to be relocated to another node in the cluster.
-
-The following rules that pertain to actor interfaces are worth mentioning:
-
-- Actor interface methods cannot be overloaded.
-- Actor interface methods must not have out, ref, or optional parameters.
-- Generic interfaces are not supported.
-
-## <a name="create-a-new-project-in-visual-studio"></a>Create a new project in Visual Studio
-After you have installed the Service Fabric tools for Visual Studio, you can create new project types. The new project types are under the **Cloud** category of the **New Project** dialog box.
+## Erstellen eines neuen Projekts in Visual Studio
+Nachdem Sie die Service Fabric-Tools für Visual Studio installiert haben, können Sie neue Projekttypen erstellen. Die neuen Projekttypen befinden sich in der Kategorie **Cloud** des Dialogfelds **Neues Projekt**.
 
 
-![Service Fabric tools for Visual Studio - new project][1]
+![Service Fabric-Tools für Visual Studio – Neues Projekt][1]
 
-In the next dialog box, you can choose the type of project that you want to create.
+Im nächsten Dialogfeld können Sie den Typ des Projekts auswählen, das Sie erstellen möchten.
 
-![Service Fabric project templates][5]
+![Service Fabric-Projektvorlagen][5]
 
-For the HelloWorld project, let's use the Service Fabric Reliable Actors service.
+Für das HelloWorld-Projekt wird der Service Fabric Reliable Actors-Dienst verwendet.
 
-After you have created the solution, you should see the following structure:
+Nachdem die Projektmappe erstellt wurde, sollte die folgende Struktur angezeigt werden:
 
-![Service Fabric project structure][2]
+![Service Fabric-Projektstruktur][2]
 
-## <a name="reliable-actors-basic-building-blocks"></a>Reliable Actors basic building blocks
+## Grundlegende Bausteine von Reliable Actors
 
-A typical Reliable Actors solution is composed of three projects:
+Eine typische Reliable Actors-Projektmappe besteht aus drei Projekten:
 
-* **The application project (MyActorApplication)**. This is the project that packages all of the services together for deployment. It contains the *ApplicationManifest.xml* and PowerShell scripts for managing the application.
+* **Das Anwendungsprojekt (MyActorApplication)**. Dies ist das Projekt, das alle Dienste für die Bereitstellung zusammenfasst. Es enthält die Datei *ApplicationManifest.xml* und PowerShell-Skripts zum Verwalten der Anwendung.
 
-* **The interface project (MyActor.Interfaces)**. This is the project that contains the interface definition for the actor. In the MyActor.Interfaces project, you can define the interfaces that will be used by the actors in the solution. Your actor interfaces can be defined in any project with any name, however the interface defines the actor contract that is shared by the actor implementation and the clients calling the actor, so it typically makes sense to define it in an assembly that is separate from the actor implementation and can be shared by multiple other projects.
+* **Das Schnittstellenprojekt (MyActor.Interfaces)**. Dies ist das Projekt, das die Schnittstellendefinition für den Actor enthält. Im Projekt „MyActor.Interfaces“ können Sie die Schnittstellen definieren, die von den Actors in der Lösung verwendet werden. Ihre Actor-Schnittstellen können in jedem beliebigen Projekt mit jedem beliebigen Namen definiert werden. Jedoch definiert die Schnittstelle den Actor-Vertrag, der von der Actor-Implementierung und den den Actor aufrufenden Clients gemeinsam verwendet wird. In der Regel ist es also sinnvoll, diesen in einer Assembly zu definieren, die getrennt ist von der Actor-Implementierung und die von mehreren anderen Projekten gemeinsam verwendet werden kann.
 
 ```csharp
 public interface IMyActor : IActor
@@ -79,7 +69,7 @@ public interface IMyActor : IActor
 }
 ```
 
-* **The actor service project (MyActor)**. This is the project used to define the Service Fabric service that is going to host the actor. It contains the implementation of the actor. An actor implementation is a class that derives from the base type `Actor` and implements the interface(s) that are defined in the MyActor.Interfaces project.
+* **Das Actordienst-Projekt (MyActor)**. Dies ist das Projekt, mit dem der Service Fabric-Dienst zum Hosten des Actors definiert wird. Es enthält die Implementierung des Actors. Eine Actor-Implementierung ist eine Klasse, die vom Basistyp `Actor` abstammt und die im Projekt „MyActor.Interfaces“ definierte(n) Schnittstelle(n) implementiert.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -92,7 +82,7 @@ internal class MyActor : Actor, IMyActor
 }
 ```
 
-The actor service must be registered with a service type in the Service Fabric runtime. In order for the Actor Service to run your actor instances, your actor type must also be registered with the Actor Service. The `ActorRuntime` registration method performs this work for actors.
+Der Actordienst muss mit einem Diensttyp in der Service Fabric-Laufzeit registriert sein. Damit der Actordienst Ihre Actor-Instanzen ausführen kann, muss auch Ihr Actortyp mit dem Actordienst registriert sein. Die `ActorRuntime`-Registrierungsmethode führt dies für Actors aus.
 
 ```csharp
 internal static class Program
@@ -116,31 +106,31 @@ internal static class Program
 
 ```
 
-If you start from a new project in Visual Studio and you have only one actor definition, the registration is included by default in the code that Visual Studio generates. If you define other actors in the service, you need to add the actor registration by using:
+Wenn Sie ein neues Projekt in Visual Studio beginnen und nur eine Actor-Definition haben, wird die Registrierung standardmäßig in den von Visual Studio generierten Code eingefügt. Wenn Sie in dem Dienst weitere Actors definieren, müssen Sie die Actor-Registrierung folgendermaßen hinzufügen:
 
 ```csharp
  ActorRuntime.RegisterActorAsync<MyOtherActor>();
 
 ```
 
-> [AZURE.TIP] The Service Fabric Actors runtime emits some [events and performance counters related to actor methods](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). They are useful in diagnostics and performance monitoring.
+> [AZURE.TIP] Die Service Fabric Actors-Laufzeit gibt einige [Ereignisse und Leistungsindikatoren im Zusammenhang mit Actor-Methoden](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters) aus. Sie sind hilfreich bei der Diagnose und Leistungsüberwachung.
 
 
-## <a name="debugging"></a>Debugging
+## Debuggen
 
-The Service Fabric tools for Visual Studio support debugging on your local machine. You can start a debugging session by hitting the F5 key. Visual Studio builds (if necessary) packages. It also deploys the application on the local Service Fabric cluster and attaches the debugger.
+Die Service Fabric-Tools für Visual Studio unterstützen das Debuggen auf dem lokalen Computer. Sie können eine Debugsitzung starten, indem Sie F5 drücken. Visual Studio erstellt Pakete (falls erforderlich). Es stellt außerdem die Anwendung auf dem lokalen Service Fabric-Cluster bereit und fügt den Debugger an.
 
-During the deployment process, you can see the progress in the **Output** window.
+Während der Bereitstellung wird der Fortschritt im Fenster **Ausgabe** angezeigt.
 
-![Service Fabric debugging output window][3]
+![Service Fabric-Debugging – Ausgabefenster][3]
 
 
-## <a name="next-steps"></a>Next steps
- - [How Reliable Actors use the Service Fabric platform](service-fabric-reliable-actors-platform.md)
- - [Actor state management](service-fabric-reliable-actors-state-management.md)
- - [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md)
- - [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [Sample code](https://github.com/Azure/servicefabric-samples)
+## Nächste Schritte
+ - [Verwendung der Service Fabric-Plattform durch Reliable Actors](service-fabric-reliable-actors-platform.md)
+ - [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
+ - [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
+ - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
 
 <!--Image references-->
@@ -150,8 +140,4 @@ During the deployment process, you can see the progress in the **Output** window
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

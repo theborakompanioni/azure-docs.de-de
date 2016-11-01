@@ -1,94 +1,89 @@
 <properties 
-    pageTitle="Customize Hadoop clusters for the Team Data Science Process | Microsoft Azure" 
-    description="Popular Python modules made available in custom Azure HDInsight Hadoop clusters."
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="bradsev" 
-    manager="jhubbard" 
-    editor="cgronlun"  />
+	pageTitle="Anpassen von Azure HDInsight Hadoop-Clustern für den Team Data Science-Prozess | Microsoft Azure" 
+	description="Beliebte Python-Module, die in benutzerdefinierten Azure HDInsight Hadoop-Clustern zur Verfügung gestellt werden."
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="bradsev" 
+	manager="jhubbard" 
+	editor="cgronlun"  />
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/19/2016" 
-    ms.author="hangzh;bradsev" />
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/19/2016" 
+	ms.author="hangzh;bradsev" />
 
+# Anpassen von Azure HDInsight Hadoop-Clustern für den Team Data Science-Prozess 
 
-# <a name="customize-azure-hdinsight-hadoop-clusters-for-the-team-data-science-process"></a>Customize Azure HDInsight Hadoop clusters for the Team Data Science Process 
+In diesem Artikel wird beschrieben, wie ein HDInsight Hadoop-Cluster durch die Installation der 64-Bit-Version von Anaconda (Python 2.7) auf jedem Knoten angepasst wird, wenn der Cluster als HDInsight-Dienst bereitgestellt wird. Es wird auch gezeigt, wie Sie auf den Hauptknoten zugreifen, um benutzerdefinierte Aufträge an den Cluster zu übermitteln. Diese Anpassung macht viele beliebte Python-Module verfügbar, die Bestandteil von Anaconda sind. Dies geschieht sehr benutzerfreundlich in UDFs (User Defined Function, benutzerdefinierte Funktion), die entwickelt wurden, um Hive-Datensätze im Cluster zu verarbeiten. Anweisungen zu den in diesem Szenario verwendeten Prozeduren finden Sie unter [Gewusst wie: Übermitteln von Hive-Abfragen](machine-learning-data-science-move-hive-tables.md#submit).
 
-This article describes how to customize an HDInsight Hadoop cluster by installing 64-bit Anaconda (Python 2.7) on each node when the cluster is provisioned as an HDInsight service. It also shows how to access the headnode to submit custom jobs to the cluster. This customization makes many popular Python modules that are included in Anaconda conveniently available for use in user defined functions (UDFs) that are designed to process Hive records in the cluster. For instructions on the procedures used in this scenario, see [How to submit Hive queries](machine-learning-data-science-move-hive-tables.md#submit).
-
-The menu below links to topics that describe how to set up the various data science environments used by the [Team Data Science Process (TDSP)](data-science-process-overview.md).
+Das nachstehende Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen beschrieben wird, die vom [Team Data Science-Prozess (TDSP)](data-science-process-overview.md) verwendet werden.
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
 
-## <a name="<a-name="customize"></a>customize-azure-hdinsight-hadoop-cluster"></a><a name="customize"></a>Customize Azure HDInsight Hadoop Cluster
+## <a name="customize"></a>Anpassen von Azure HDInsight Hadoop-Clustern
 
-To create a customized HDInsight Hadoop cluster, users need to log on to [**Classic Portal of Azure**](https://manage.windowsazure.com/), click **New** at the left bottom corner, and then select DATA SERVICES -> HDINSIGHT -> **CUSTOM CREATE** to bring up the **Cluster Details** window. 
+Zum Erstellen eines angepassten HDInsight Hadoop-Clusters müssen Sie sich beim [**klassischen Azure-Portal**](https://manage.windowsazure.com/) anmelden. Klicken Sie links unten auf **New** und wählen Sie dann DATA SERVICES -> HDINSIGHT -> **CUSTOM CREATE** aus, um das Fenster **Cluster Details** zu öffnen.
 
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
 
-Input the name of the cluster to be created on configuration page 1, and accept default values for the other fields. Click on the arrow to go to the next configuration page. 
+Geben Sie den Namen des zu erstellenden Clusters auf der 1. Konfigurationsseite ein, und übernehmen Sie die Standardwerte für die anderen Felder. Klicken Sie auf den Pfeil, um zur nächsten Konfigurationsseite zu wechseln.
 
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
 
-On configuration page 2, input the number of **DATA NODES**, select the **REGION/VIRTUAL NETWORK**, and select the sizes of the **HEAD NODE** and the **DATA NODE**. Click the arrow to go to the next configuration page.
+Geben Sie auf der 2. Konfigurationsseite die Anzahl der **DATA NODES** ein, wählen Sie eine Option für **REGION/VIRTUAL NETWORK** aus und wählen Sie dann die Größe für **HEAD NODE** und **DATA NODE** aus. Klicken Sie auf den Pfeil, um zur nächsten Konfigurationsseite zu wechseln.
 
->[AZURE.NOTE] The **REGION/VIRTUAL NETWORK** has to be the same as the region of the storage account that is going to be used for the HDInsight Hadoop cluster. Otherwise, in fourth configuration page, the storage account that the users want to use will not appear on the dropdown list of **ACCOUNT NAME**.
+>[AZURE.NOTE] Der Wert für **REGION/VIRTUAL NETWORK** muss mit der Region des Speicherkontos identisch sein, das für den HDInsight Hadoop-Cluster verwendet werden soll. Andernfalls wird auf der vierten Konfigurationsseite nicht das gewünschte Speicherkonto in der Dropdownliste **ACCOUNT NAME** angezeigt.
 
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img3.png)
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img3.png)
 
-On configuration page 3, provide a user name and password for the HDInsight Hadoop cluster. **Do not** select the _Enter the Hive/Oozie Metastore_. Then, click the arrow to go to the next configuration page. 
+Geben Sie auf der 3. Konfigurationsseite einen Benutzernamen und ein Kennwort für den HDInsight Hadoop-Cluster ein. **Wählen Sie nicht** _Enter the Hive/Oozie Metastore_ aus. Klicken Sie anschließend auf den Pfeil, um zur nächsten Konfigurationsseite zu wechseln.
 
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img4.png)
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img4.png)
 
-On configuration page 4, specify the storage account name, the default container of the HDInsight Hadoop cluster. If users select _Create default container_ in the **DEFAULT CONTAINER** drop down list, a container with the same name as the cluster will be created. Click the arrow to go to the last configuration page.
+Geben Sie auf der 4. Konfigurationsseite den Speicherkontonamen und den Standardcontainer des HDInsight Hadoop-Clusters an. Wenn Sie in der Dropdownliste **DEFAULT CONTAINER** _Create default container_ auswählen, wird ein Container mit demselben Namen wie der Cluster erstellt. Klicken Sie auf den Pfeil, um zur letzten Konfigurationsseite zu wechseln.
 
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img5.png)
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img5.png)
 
-On the final **Script Actions** configuration page, click **add script action** button, and fill the text fields with the following values.
+Klicken Sie auf der letzten Konfigurationsseite zu **Script Actions** auf die Schaltfläche** add script action** und füllen Sie die Felder mit den folgenden Werten aus.
  
-* **NAME** - any string as the name of this script action. 
-* **NODE TYPE** - select **All nodes**. 
-* **SCRIPT URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1* 
-    * *publicscripts* is a public container in storage account 
-    * *getgoing* we use to share PowerShell script files to facilitate users work in Azure. 
-* **PARAMETERS** - (leave blank)
+* **NAME** - eine beliebige Zeichenfolge als Name für diese Skriptaktion.
+* **NODE TYPE** - wählen Sie **All nodes** aus.
+* **SCRIPT URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
+	* *publicscripts* ist ein öffentlicher Container im Speicherkonto.
+	* *getgoing* wird für die Freigabe der PowerShell-Skriptdateien verwendet, um den Benutzern die Arbeit in Azure zu vereinfachen.
+* **PARAMETERS** - (leer lassen)
 
-Finally, click on the check mark to start the creation of the customized HDInsight Hadoop cluster. 
+Klicken Sie abschließend auf das Häkchen, um die Erstellung des benutzerdefinierten HDInsight Hadoop-Clusters zu starten.
 
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png)
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png)
 
-## <a name="<a-name="headnode"></a>-access-the-head-node-of-hadoop-cluster"></a><a name="headnode"></a> Access the Head Node of Hadoop Cluster
+## <a name="headnode"></a>Zugreifen auf den Hauptknoten des Hadoop-Clusters
 
-Users must enable remote access to the Hadoop cluster in Azure before they can access the head node of the Hadoop cluster through RDP. 
+Sie müssen den Remotezugriff auf den Hadoop-Cluster in Azure aktivieren, damit Benutzer über RDP auf den Hauptknoten des Hadoop-Clusters zugreifen können.
 
-1. Log in to the [**Classic Portal of Azure**](https://manage.windowsazure.com/), select **HDInsight** on the left, select your Hadoop cluster from the list of clusters, click the **CONFIGURATION** tab, and then click the **ENABLE REMOTE** icon at the bottom of the page.
-    
-    ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png)
+1. Melden Sie sich beim [**klassischen Azure-Portal**](https://manage.windowsazure.com/) an, und wählen Sie links **HDInsight** aus. Wählen Sie Ihren Hadoop-Cluster aus der Liste der Cluster aus, klicken Sie auf die Registerkarte **CONFIGURATION**, und klicken Sie dann unten auf der Seite auf das Symbol **ENABLE REMOTE**.
+	
+	![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png)
 
-2. In the **Configure Remote Desktop** window, enter the USER NAME and PASSWORD fields, and select the expiration date for remote access. Then click the check mark to enable the remote access to the head node of the Hadoop cluster.
+2. Geben Sie im Fenster **Configure Remote Desktop** den BENUTZERNAMEN und das KENNWORT ein, und wählen Sie das Ablaufdatum für den Remotezugriff aus. Klicken Sie anschließend auf das Häkchen, um den Remotezugriff auf den Hauptknoten des Hadoop-Clusters zu aktivieren.
 
-    ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-2.png)
-    
->[AZURE.NOTE] The user name and password for the remote access are not the user name and password that you use when you created the Hadoop cluster. These are a separate set of credentials. Also, the expiration date of the remote access has to be within 7 days from the current date.
+	![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-2.png)
+	
+>[AZURE.NOTE] Der Benutzername und das Kennwort für den Remotezugriff sind nicht der Benutzername und das Kennwort, die Sie zum Erstellen des Hadoop-Clusters verwendet haben. Hierbei handelt es sich um andere Anmeldeinformationen. Das Ablaufdatum für den Remotezugriff muss sich zudem innerhalb der nächsten sieben Tage ab dem aktuellen Datum befinden.
 
-After remote access is enabled, click **CONNECT** at the bottom of the page to remote into the head node. You log on to the head node of the Hadoop cluster by entering the credentials for the remote access user that you specified earlier.
+Klicken Sie nach dem Aktivieren des Remotezugriffs unten auf der Seite auf **CONNECT**, um remote auf den Hauptknoten zuzugreifen. So melden Sie sich auf dem Hauptknoten des Hadoop-Clusters durch Eingabe der Anmeldeinformationen für den RAS-Benutzer an, die Sie zuvor angegeben haben.
 
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png)
+![Arbeitsbereich erstellen](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png)
 
-The next steps in the advanced analytics process are mapped in the [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) and may include steps that move data into HDInsight, process and sample it there in preparation for learning from the data with Azure Machine Learning.
+Die nächsten Schritte des erweiterten Analyseprozesses sind unter [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) aufgeführt. Dazu gehören u.a. auch das Verschieben von Daten nach HDInsight sowie das Verarbeiten und Extrahieren von Stichproben, um anschließend mithilfe von Azure Machine Learning Erkenntnisse aus den Daten zu ziehen.
 
-See [How to submit Hive queries](machine-learning-data-science-move-hive-tables.md#submit) for instructions on how to access the Python modules that are included in Anaconda from the head node of the cluster in user defined functions (UDFs) that are used to process Hive records stored in the cluster.
+Unter [Gewusst wie: Übermitteln von Hive-Abfragen ](machine-learning-data-science-move-hive-tables.md#submit)finden Sie Anweisungen zum Zugreifen auf die Python-Module in Anaconda vom Hauptknoten des Clusters aus. Dazu werden UDFs (User Defined Function, benutzerdefinierte Funktion) verwendet, um im Cluster gespeicherte Hive-Datensätze zu verarbeiten.
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

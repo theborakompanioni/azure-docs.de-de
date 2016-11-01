@@ -1,93 +1,92 @@
 <properties
-    pageTitle="Multi-Tenant Web Application Pattern | Microsoft Azure"
-    description="Find architectural overviews and design patterns that describe how to implement a multi-tenant web application on Azure."
-    services=""
-    documentationCenter=".net"
-    authors="wadepickett" 
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Mehrinstanzenfähige Anwendungen in Azure | Microsoft Azure"
+	description="Hier finden Sie Übersichten über die Architektur und Entwurfsmuster, die beschreiben, wie Sie eine mehrinstanzenfähige Webanwendung in Azure implementieren."
+	services=""
+	documentationCenter=".net"
+	authors="wadepickett" 
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="06/05/2015"
-    ms.author="wpickett"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/05/2015"
+	ms.author="wpickett"/>
 
+# Mehrinstanzenfähige Anwendungen in Azure
 
-# <a name="multitenant-applications-in-azure"></a>Multitenant Applications in Azure
+Eine mehrinstanzenfähige Anwendung ist eine gemeinsame Ressource, mit der unterschiedliche Benutzer, oder "Mandanten", die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis individualisieren möchten, aber ansonsten die gleichen grundlegenden Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Office 365, Outlook.com und visualstudio.com.
 
-A multitenant application is a shared resource that allows separate users, or "tenants," to view the application as though it was their own. A typical scenario that lends itself to a multitenant application is one in which all users of the application may wish to customize the user experience but otherwise have the same basic business requirements. Examples of large multitenant applications are Office 365, Outlook.com, and visualstudio.com.
+Aus Sicht des Anbieters der Anwendung liegen die Vorteile vor allem in der Effizienz bei Betrieb und Kosten. Eine Version Ihrer Anwendung kann die Anforderungen vieler Mandanten/Kunden erfüllen. Dies ermöglicht eine Konsolidierung von Systemadministrationsaufgaben wie Überwachung, Leistungssteigerung, Softwarewartung und Datensicherung.
 
-From an application provider's perspective, the benefits of multitenancy mostly relate to operational and cost efficiencies. One version of your application can meet the needs of many tenants/customers, allowing consolidation of system administration tasks such as monitoring, performance tuning, software maintenance, and data backups.
+Im Folgenden finden Sie eine Liste der wichtigsten Anforderungen aus Sicht des Anbieters.
 
-The following provides a list of the most significant goals and requirements from a provider's perspective.
+- **Bereitstellung**: Sie müssen neue Mandanten für die Anwendung bereitstellen können. Bei mehrinstanzenfähigen Anwendungen mit einer großen Zahl an Mandanten ist es normalerweise notwendig, diesen Prozess mittels Self-Service-Bereitstellung zu automatisieren.
+- **Wartbarkeit**: Sie müssen in der Lage sein, Upgrades der Anwendung und weitere Wartungsaufgaben durchzuführen, während diese von mehreren Mandanten verwendet wird.
+- **Monitoring**: Sie müssen die Anwendung stets überwachen, um Probleme zu erkennen und zu beheben. Hier muss auch überwacht werden, wie jeder einzelne Mandat die Anwendung nutzt.
 
-- **Provisioning**: You must be able to provision new tenants for the application.  For multitenant applications with a large number of tenants, it is usually necessary to automate this process by enabling self-service provisioning.
-- **Maintainability**: You must be able to upgrade the application and perform other maintenance tasks while multiple tenants are using it.
-- **Monitoring**: You must be able to monitor the application at all times to identify any problems and to troubleshoot them. This includes monitoring how each tenant is using the application.
+Eine korrekt implementierte mehrinstanzenfähige Anwendung bietet Benutzern die folgenden Vorteile.
 
-A properly implemented multitenant application provides the following benefits to users.
+- **Isolation**: Die Aktivitäten einzelner Mandanten beeinflussen nicht die Nutzung der Anwendung durch andere Mandanten. Mandanten können untereinander nicht auf ihre Daten zugreifen. Dem Mandanten erscheint es so, als ob er die Anwendung exklusiv nutzt.
+- **Verfügbarkeit**: Für einzelne Mandanten muss die Anwendung konstant verfügbar sein, unter Umständen mit Garantien, die in einem SLA festgelegt sind. Erneut, die Aktivitäten anderer Mandanten sollten die Verfügbarkeit der Anwendung nicht beeinträchtigen.
+- **Skalierbarkeit**: Die Anwendung kann über Skalierung die Anforderungen einzelner Mandanten erfüllen. Die Präsenz und Aktivitäten anderer Mandanten sollten die Leistung der Anwendung nicht beeinträchtigen.
+- **Kosten**: Die Kosten sind niedriger als bei der Ausführung einer dedizierten Einzelinstanzanwendung, da Mehrinstanzenfähigkeit die gemeinsame Nutzung von Ressourcen ermöglicht.
+- **Individualisierbarkeit**. Die Möglichkeit, die Anwendung für einen einzelnen Mandanten auf verschiedene Weisen zu individualisieren, beispielsweise durch das Hinzufügen oder Entfernen von Funktionen, Ändern von Farben und Logos oder sogar durch das Hinzufügen eigener Codes oder Skripte.
 
-- **Isolation**: The activities of individual tenants do not affect the use of the application by other tenants. Tenants cannot access each other's data. It appears to the tenant as though they have exclusive use of the application.
-- **Availability**: Individual tenants want the application to be constantly available, perhaps with guarantees defined in an SLA. Again, the activities of other tenants should not affect the availability of the application.
-- **Scalability**: The application scales to meet the demand of individual tenants. The presence and actions of other tenants should not affect the performance of the application.
-- **Costs**: Costs are lower than running a dedicated, single-tenant application because multi-tenancy enables the sharing of resources.
-- **Customizability**. The ability to customize the application for an individual tenant in various ways such as adding or removing features, changing colors and logos, or even adding their own code or script.
+Kurz, obwohl es einige Überlegungen gibt, die Sie bei der Bereitstellung eines hochskalierbaren Dienstes berücksichtigen müssen, gibt es auch einige Ziele und Anforderungen, die bei vielen mehrinstanzenfähigen Anwendungen üblich sind. Einige sind möglicherweise für bestimmte Szenarien nicht relevant, und die Wichtigkeit einzelner Ziele und Anforderungen unterscheidet sich je nach Szenario. Als Anbieter einer mehrinstanzenfähigen Anwendung gibt es für Sie ebenfalls Ziele und Anforderungen wie das Erfüllen der Ziele und Anforderungen des Mandanten, Rentabilität, mehrere Serviceebenen, Bereitstellung, Wartbarkeit, Überwachung und Automatisierung.
 
-In short, while there are many considerations that you must take into account to provide a highly scalable service, there are also a number of the goals and requirements that are common to many multitenant applications. Some may not be relevant in specific scenarios, and the importance of individual goals and requirements will differ in each scenario. As a provider of the multitenant application, you will also have goals and requirements such as, meeting the tenants' goals and requirements, profitability, billing, multiple service levels, provisioning, maintainability monitoring, and automation.
+Weitere Informationen zu zusätzlichen Überlegungen bei der Entwicklung einer mehrinstanzenfähigen Anwendung finden Sie unter [Hosting a Multi-Tenant Application on Azure][] \(Hosten einer mehrinstanzenfähigen Anwendung in Azure, in englischer Sprache). Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-For more information on additional design considerations of a multitenant application, see [Hosting a Multi-Tenant Application on Azure][]. For information on common data architecture patterns of multi-tenant software-as-a-service (SaaS) database applications, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
-
-Azure provides many features that allow you to address the key problems encountered when designing a multitenant system.
+Azure bietet viele Funktionen, mit denen Sie die entscheidenden Probleme lösen können, die bei der Entwicklung eines mehrinstanzenfähigen Systems auftreten.
 
 **Isolation**
 
-- Segment Website Tenants by Host Headers with or without SSL communication
-- Segment Website Tenants by Query Parameters
-- Web Services in Worker Roles
-    - Worker Roles. that typically process data on the backend of an application.
-    - Web Roles that typically act as the frontend for applications.
+- Segmentieren Sie Websitemandanten nach Hostheadern mit oder ohne SSL-Kommunikation.
+- Segmentieren Sie Websitemandanten nach Abfrageparametern.
+- Webdienste in Workerrollen
+	- Workerrollen, die typischerweise Daten im Hintergrund einer Anwendung verarbeiten
+	- Workerrollen, die typischerweise als Frontend für Anwendungen agieren
 
-**Storage**
+**Speicher**
 
-Data management such as Azure SQL Database or Azure Storage services such as the Table service which provides services for storage of large amounts of unstructured data and the Blob service which provides services to store large amounts of unstructured text or binary data such as video, audio and images.
+Datenverwaltung wie eine Azure SQL-Datenbank oder Azure-Speicherdienste wie der Tabellenspeicherdienst, der Speicherdienste für große Mengen unstrukturierter Daten bietet, außerdem der Blob-Dienst, der Speicherdienste für große Mengen unstrukturierter Daten oder binäre Daten wie Videos, Audiodateien und Bilder bietet
 
-- Securing Multitenant Data in SQL Database appropriate per-tenant SQL Server logins.
-- Using Azure Tables for Application Resources By specifying a container level access policy, you can the ability to adjust permissions without having to issue new URL's for the resources protected with shared access signatures.
-- Azure Queues for Application Resources Azure queues are commonly used to drive processing on behalf of tenants, but may also be used to distribute work required for provisioning or management.
-- Service Bus Queues for Application Resources that pushes work to a shared a service, you can use a single queue where each tenant sender only has permissions (as derived from claims issued from ACS) to push to that queue, while only the receivers from the service have permission to pull from the queue the data coming from multiple tenants.
-
-
-**Connection and Security Services**
-
-- Azure Service Bus, a messaging infrastructure that sits between applications allowing them to exchange messages in a loosely coupled way for improved scale and resiliency.
-
-**Networking Services**
-
-Azure provides several networking services that support authentication, and improve manageability of your hosted applications. These services include the following:
-
-- Azure Virtual Network lets you provision and manage virtual private networks (VPNs) in Azure as well as securely link these with on-premises IT infrastructure.
-- Virtual Network Traffic Manager allows you to load balance incoming traffic across multiple hosted Azure services whether they're running in the same datacenter or across different datacenters around the world.
-- Azure Active Directory (Azure AD) is a modern, REST-based service that provides identity management and access control capabilities for your cloud applications. Using Azure AD for Application Resources Azure AD to provides an easy way of authenticating and authorizing users to gain access to your web applications and services while allowing the features of authentication and authorization to be factored out of your code.
-- Azure Service Bus provides a secure messaging and data flow capability for distributed and hybrid applications, such as communication between Azure hosted applications and on-premises applications and services, without requiring complex firewall and security infrastructures. Using Service Bus Relay for Application Resources to The services that are exposed as endpoints may belong to the tenant (for example, hosted outside of the system, such as on-premise), or they may be services provisioned specifically for the tenant (because sensitive, tenant-specific data travels across them).
+- Sichern mehrinstanzenfähiger Daten in einer SQL-Datenbank mit geeigneten SQL-Server-Anmeldungen pro Mandant
+- Wenn Sie Azure Tables für Anwendungsressourcen verwenden können Sie über das Festlegen einer Zugriffssteuerung auf Containerebene Berechtigungen anpassen, ohne neue URLs für die Ressourcen ausgeben zu müssen, die mit gemeinsamen Zugriffssignaturen geschützt sind.
+- Azure-Warteschlangen für Anwendungsressourcen: Azure-Warteschlangen werden meist verwendet, um die Verarbeitung für die Mandanten zu beschleunigen, können jedoch auch eingesetzt werden, um erforderliche Aufgaben für Bereitstellung oder Verwaltung zu verteilen.
+- Service Bus-Warteschlangen für Anwendungsressourcen lenken Aufgaben zu einem gemeinsamen Dienst. Sie können eine einzelne Warteschlange verwenden, bei der jeder sendende Mandant nur über Berechtigungen dazu verfügt (die sich von den ausgegebenen Ansprüchen aus ACS ableiten), Aufgaben in diese Warteschlange zu leiten, wobei nur die Empfänger des Dienstes die Berechtigung besitzen, aus dieser Warteschlange die Daten zu beziehen, die von mehreren Mandanten stammen.
 
 
+**Verbindungs- und Sicherheitsdienste**
 
-**Provisioning Resources**
+- Azure Service Bus dient zur besseren Skalierung und bietet mehr Resilienz. Es handelt sich hierbei um eine Nachrichteninfrastruktur, die sich zwischen Anwendungen befindet und es diesen ermöglicht, Nachrichten über eine lose Verbindung auszutauschen.
 
-Azure provides a number of ways provision new tenants for the application. For multitenant applications with a large number of tenants, it is usually necessary to automate this process by enabling self-service provisioning.
+**Netzwerkdienste**
 
-- Worker roles allow you to provision and de-provision per tenant resources (such as when a new tenant signs-up or cancels), collect metrics for metering use, and manage scale following a certain schedule or in response to the crossing of thresholds of key performance indicators. This same role may also be used to push out updates and upgrades to the solution.
-- Azure Blobs can be used to provision compute or pre-initialized storage resources for new tenants while providing container level access policies to protect the compute service Packages, VHD images and other resources.
-- Options for provisioning SQL Database resources for a tenant include:
+Azure bietet mehrere Netzwerkdienste, die Authentifizierung unterstützen und die Verwaltbarkeit gehosteter Anwendungen verbessern. Diese Dienste umfassen Folgendes:
 
-    -   DDL in scripts or embedded as resources within assemblies
-    -   SQL Server 2008 R2 DAC Packages deployed programmatically.
-    -   Copying from a master reference database
-    -   Using database Import and Export to provision new databases from a file.
+- Mit Azure – Virtuelles Netzwerk können Sie in Azure virtuelle private Netzwerke (VPN) bereitstellen und verwalten und diese sicher mit Ihrer IT-Infrastruktur vor Ort verbinden.
+- Der Traffic Manager für das virtuelle Netzwerk ermöglicht Ihnen einen Lastenausgleich für eingehenden Datenverkehr über mehrere gehostete Azure-Dienste, gleich, ob sie im selben Datencenter ausgeführt werden oder über verschiedene Datencenter weltweit.
+- Azure Active Directory (Azure AD) ist ein moderner, REST-basierter Dienst, der Identitätsverwaltung und Funktionen zur Zugriffssteuerung für Ihre Cloudanwendungen bietet. Die Verwendung von Azure AD für Anwendungsressourcen bietet einen einfachen Weg der Authentifizierung und Autorisierung von Benutzern für den Zugang zu Ihren Webanwendungen und Webdiensten. Gleichzeitig werden die Funktionen zur Authentifizierung und Autorisierung aus Ihrem Code herausgenommen.
+- Azure Service Bus bietet eine sichere Nachrichten- und Datenflussfunktion für verteilte und hybride Anwendungen, beispielsweise Kommunikation zwischen Anwendungen, die von Azure gehostet werden, und lokalen Anwendungen/Diensten, ganz ohne komplexe Firewall- und Sicherheitsinfrastruktur. Verwendung von Service Bus Relay für Anwendungsressourcen: Die Dienste, die als Endpunkte erreichbar sind, können dem Mandanten gehören (beispielsweise außerhalb des Systems gehostete, lokale Dienste) oder speziell für den Mandanten bereitgestellt werden (da sensible, mandantenspezifische Daten bewegt werden).
+
+
+
+**Bereitstellen von Ressourcen**
+
+Azure bietet viele verschiedene Möglichkeiten zur Bereitstellung neuer Mandanten. Bei mehrinstanzenfähigen Anwendungen mit einer großen Zahl an Mandanten ist es normalerweise notwendig, diesen Prozess mittels Self-Service-Bereitstellung zu automatisieren.
+
+- Mit Workerrollen können Sie für einzelne Mandanten Ressourcen bereitstellen oder entfernen (wenn sich beispielsweise ein neuer Mandant anmeldet oder ein bereits vorhandener kündigt), Metriken zu Messzwecken sammeln und die Skalierung verwalten, indem einem bestimmten Zeitplan gefolgt oder das Überschreiten bestimmter Schwellen von wesentlichen Leistungsindikatoren als Auslöser genommen wird. Diese Rolle können Sie außerdem verwenden, um Aktualisierungen und Upgrades für die Lösung bereitzustellen.
+- Sie können Azure Blobs verwenden, um Rechen- oder vorinitialisierte Speicherressourcen für neue Mandanten bereitzustellen und gleichzeitig Zugriffsrichtlinien auf Containerebene zu bieten, um die Rechendienstpakete, VHD-Images und andere Ressourcen zu schützen.
+- Optionen für die Bereitstellung von SQL-Datenbank-Ressourcen für einen Mandanten umfassen:
+
+	- 	DDL in Skripten oder eingebettet als Ressourcen in Assemblys
+	- 	Programmatisches Bereitstellen von DAC-Paketen für SQL Server 2008 R2
+	- 	Kopieren aus einer Masterreferenzdatenbank
+	- 	Verwenden von Datenbankimport und -export zur Bereitstellung einer neuen Datenbank aus einer Datei
 
 
 
@@ -96,8 +95,4 @@ Azure provides a number of ways provision new tenants for the application. For m
 [Hosting a Multi-Tenant Application on Azure]: http://msdn.microsoft.com/library/hh534480.aspx
 [Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

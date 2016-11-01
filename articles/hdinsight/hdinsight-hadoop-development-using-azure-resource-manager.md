@@ -1,110 +1,109 @@
 <properties
-    pageTitle="Migrate to Azure Resource Manager development tools for HDInsight clusters | Microsoft Azure"
-    description="How to migrate to Azure Resource Manager development tools for HDInsight clusters"
-    services="hdinsight"
-    editor="cgronlun"
-    manager="jhubbard"
-    authors="nitinme"
-    documentationCenter=""/>
+	pageTitle="Migrieren zu Azure Resource Manager-Entwicklungstools für HDInsight-Cluster | Microsoft Azure"
+	description="Gewusst wie: Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster"
+	services="hdinsight"
+	editor="cgronlun"
+	manager="jhubbard"
+	authors="nitinme"
+	documentationCenter=""/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/05/2016"
-    ms.author="nitinme"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/04/2016"
+	ms.author="nitinme"/>
+
+# Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster
+
+Die Azure Service Manager (ASM)-basierten Tools für HDInsight sind veraltet und werden ersetzt. Wenn Sie bisher Azure PowerShell, die Azure-CLI oder das HDInsight .NET SDK für die Arbeit mit HDInsight-Clustern verwendet haben, empfehlen wir Ihnen von nun an die Verwendung der Azure Resource Manager (ARM)-basierten Versionen von PowerShell, der CLI und des .NET SDK. Dieser Artikel bietet Ihnen hilfreiche Informationen für die Migration zum neuen ARM-basierten Ansatz. Außerdem weist dieser Artikel auch auf eventuelle Unterschiede zwischen den ASM- und ARM-basierten Ansätzen für HDInsight hin.
+
+>[AZURE.IMPORTANT] Die ASM-basierten Versionen von PowerShell, der CLI und des .NET SDK werden noch bis zum **1. Januar 2017** unterstützt.
+
+##Migrieren der Azure-CLI zu Azure Resource Manager
+
+Die Azure-CLI wird nun standardmäßig im Azure Resource Manager (ARM)-Modus verwendet. Ausgenommen davon sind Upgrades von vorherigen Installationen; in dem Fall müssen Sie ggf. den Befehl `azure config mode arm` für einen Wechsel zum ARM-Modus ausführen.
+
+Die grundlegenden Befehle, die die Azure-CLI für die Arbeit mit HDInsight mithilfe von Azure Service Management (ASM) bereitgestellt hat, gelten auch für die Verwendung von ARM. Einige Parameter und Switches haben jedoch unter Umständen andere Namen. Außerdem sind bei der Verwendung von ARM viele neue Parameter verfügbar. So können Sie jetzt beispielsweise `azure hdinsight cluster create` verwenden, um zu bestimmen, in welchem Azure Virtual Network ein Cluster erstellt werden soll, oder für Hive- und Oozie-Metastore-Informationen.
+
+Grundlegende Befehle für die Arbeit mit HDInsight über Azure Resource Manager sind:
+
+* `azure hdinsight cluster create` – erstellt einen neuen HDInsight-Cluster
+* `azure hdinsight cluster delete` – löscht einen vorhandenen HDInsight-Cluster
+* `azure hdinsight cluster show` – zeigt Informationen zu einem vorhandenen Cluster an
+* `azure hdinsight cluster list` – listet HDInsight-Cluster für Ihr Azure-Abonnement auf
+
+Verwenden Sie den Switch `-h`, um die Parameter und Switches für jeden Befehl zu überprüfen.
+
+###Neue Befehle
+
+Neue mit Azure Resource Manager verfügbare Befehle sind:
+
+* `azure hdinsight cluster resize` – ändert dynamisch die Anzahl von Workerknoten im Cluster
+* `azure hdinsight cluster enable-http-access` – aktiviert HTTPs-Zugriff auf den Cluster (standardmäßig aktiviert)
+* `azure hdinsight cluster disable-http-access` – deaktiviert den HTTPs-Zugriff auf den Cluster
+* `azure hdinsight-enable-rdp-access` – aktiviert das Remotedesktopprotokoll auf einem Windows-basierten HDInsight-Cluster
+* `azure hdinsight-disable-rdp-access` – deaktiviert das Remotedesktopprotokoll auf einem Windows-basierten HDInsight-Cluster
+* `azure hdinsight script-action` – enthält Befehle zum Erstellen/Verwalten von Skriptaktionen auf einem Cluster
+* `azure hdinsight config` – enthält Befehle zum Erstellen einer Konfigurationsdatei, die mit dem Befehl `hdinsight cluster create` zum Bereitstellen von Konfigurationsinformationen genutzt werden kann
+
+###Veraltete Befehle
+
+Die `azure hdinsight job`-Befehle, die Sie ggf. zum Übermitteln von Aufträgen an Ihren HDInsight-Cluster verwenden, stehen in den ARM-Befehlen nicht zur Verfügung. Wenn Sie Aufträge programmgesteuert von Skripts an HDInsight übermitteln möchten, verwenden Sie die von HDInsight bereitgestellten REST-APIs. Weitere Informationen zum Übermitteln von Aufträgen mithilfe von REST-APIs finden Sie in den folgenden Dokumenten.
+
+* [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](hdinsight-hadoop-use-mapreduce-curl.md)
+* [Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit Curl](hdinsight-hadoop-use-hive-curl.md)
+* [Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](hdinsight-hadoop-use-pig-curl.md)
+
+Informationen zu anderen Verfahren zur interaktiven Ausführung von MapReduce, Hive und Pig finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md), [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md) und [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md).
+
+###Beispiele
+
+__Erstellen eines Clusters__
+
+* Alter Befehl (ASM) – `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Neuer Befehl (ARM) – `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+
+__Löschen eines Clusters__
+
+* Alter Befehl (ASM) – `azure hdinsight cluster delete myhdicluster`
+* Neuer Befehl (ARM) – `azure hdinsight cluster delete mycluster -g myresourcegroup`
+
+__Auflisten von Clustern__
+
+* Alter Befehl (ASM) – `azure hdinsight cluster list`
+* Neuer Befehl (ARM) – `azure hdinsight cluster list`
+
+> [AZURE.NOTE] Wenn die Ressourcengruppe für den Listenbefehl mithilfe von `-g` festgelegt wird, werden nur die Cluster in der angegebenen Ressourcengruppe zurückgegeben.
+
+__Anzeigen von Clusterinformationen__
+
+* Alter Befehl (ASM) – `azure hdinsight cluster show myhdicluster`
+* Neuer Befehl (ARM) – `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 
-# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrating to Azure Resource Manager-based development tools for HDInsight clusters
+##Migrieren von Azure PowerShell zu Azure Resource Manager
 
-HDInsight is deprecating Azure Service Manager (ASM)-based tools for HDInsight. If you have been using Azure PowerShell, Azure CLI, or the HDInsight .NET SDK to work with HDInsight clusters, you are encouraged to use the Azure Resource Manager (ARM)-based versions of PowerShell, CLI, and .NET SDK going forward. This article provides pointers on how to migrate to the new ARM-based approach. Wherever applicable, this article also points out the differences between the ASM and ARM approaches for HDInsight.
+Allgemeine Informationen zu Azure PowerShell im Azure Resource Manager (ARM)-Modus finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
->[AZURE.IMPORTANT] The support for ASM based PowerShell, CLI, and .NET SDK will discontinue on **January 1, 2017**.
+Azure PowerShell-ARM-Cmdlets können neben ASM-Cmdlets installiert werden. Die Cmdlets der beiden Modi können nach ihren Namen unterschieden werden. Die Namen der Cmdlets enthalten im ARM-Modus *AzureRmHDInsight*, im ASM-Modus hingegen *AzureHDInsight*. Beispiel: *New-AzureRmHDInsightCluster* und *New-AzureHDInsightCluster*. Parameter und Switches haben unter Umständen neue Namen, und für die Verwendung von ARM stehen viele neue Parameter zur Verfügung. So erfordern beispielsweise verschiedene Cmdlets einen neuen Switch namens *-ResourceGroupName*.
 
-##<a name="migrating-azure-cli-to-azure-resource-manager"></a>Migrating Azure CLI to Azure Resource Manager
+Bevor Sie die HDInsight-Cmdlets verwenden können, müssen sich mit Ihrem Azure-Konto verbinden und eine neue Ressourcengruppe erstellen:
 
-The Azure CLI now defaults to Azure Resource Manager (ARM) mode, unless you are upgrading from a previous installation; in this case, you may need to use the `azure config mode arm` command to switch to ARM mode.
-
-The basic commands that the Azure CLI provided to work with HDInsight using Azure Service Management (ASM) are the same when using ARM; however some parameters and switches may have new names, and there are many new parameters available when using ARM. For example, you can now use `azure hdinsight cluster create` to specify the Azure Virtual Network that a cluster should be created in, or Hive and Oozie metastore information.
-
-Basic commands for working with HDInsight through Azure Resource Manager are:
-
-* `azure hdinsight cluster create` - creates a new HDInsight cluster
-* `azure hdinsight cluster delete` - deletes an existing HDInsight cluster
-* `azure hdinsight cluster show` - display information about an existing cluster
-* `azure hdinsight cluster list` - lists HDInsight clusters for your Azure subscription
-
-Use the `-h` switch to inspect the parameters and switches available for each command.
-
-###<a name="new-commands"></a>New commands
-
-New commands available with Azure Resource Manager are:
-
-* `azure hdinsight cluster resize` - dynamically changes the number of worker nodes in the cluster
-* `azure hdinsight cluster enable-http-access` - enables HTTPs access to the cluster (on by default)
-* `azure hdinsight cluster disable-http-access` - disables HTTPs access to the cluster
-* `azure hdinsight-enable-rdp-access` - enables Remote Desktop Protocol on a Windows-based HDInsight cluster
-* `azure hdinsight-disable-rdp-access` - disables Remote Desktop Protocol on a Windows-based HDInsight cluster
-* `azure hdinsight script-action` - provides commands for creating/managing Script Actions on a cluster
-* `azure hdinsight config` - provides commands for creating a configuration file that can be used with the `hdinsight cluster create` command to provide configuration information.
-
-###<a name="deprecated-commands"></a>Deprecated commands
-
-If you use the `azure hdinsight job` commands to submit jobs to your HDInsight cluster, these are not available through the ARM commands. If you need to programmatically submit jobs to HDInsight from scripts, you should instead use the REST APIs provided by HDInsight. For more information on submitting jobs using REST APIs, see the following documents.
-
-* [Run MapReduce jobs with Hadoop on HDInsight using cURL](hdinsight-hadoop-use-mapreduce-curl.md)
-* [Run Hive queries with Hadoop on HDInsight using cURL](hdinsight-hadoop-use-hive-curl.md)
-* [Run Pig jobs with Hadoop on HDInsight using cURL](hdinsight-hadoop-use-pig-curl.md)
-
-For information on other ways to run MapReduce, Hive, and Pig interactively, see [Use MapReduce with Hadoop on HDInsight](hdinsight-use-mapreduce.md), [Use Hive with Hadoop on HDInsight](hdinsight-use-hive.md), and [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md).
-
-###<a name="examples"></a>Examples
-
-__Creating a cluster__
-
-* Old command (ASM) - `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* New command (ARM) - `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
-
-__Deleting a cluster__
-
-* Old command (ASM) - `azure hdinsight cluster delete myhdicluster`
-* New command (ARM) - `azure hdinsight cluster delete mycluster -g myresourcegroup`
-
-__List clusters__
-
-* Old command (ASM) - `azure hdinsight cluster list`
-* New command (ARM) - `azure hdinsight cluster list`
-
-> [AZURE.NOTE] For the list command, specifying the resource group using `-g` will return only the clusters in the specified resource group.
-
-__Show cluster information__
-
-* Old command (ASM) - `azure hdinsight cluster show myhdicluster`
-* New command (ARM) - `azure hdinsight cluster show myhdicluster -g myresourcegroup`
-
-
-##<a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrating Azure PowerShell to Azure Resource Manager
-
-The general information about Azure PowerShell in the Azure Resource Manager (ARM) mode can be found at [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
-
-The Azure PowerShell ARM cmdlets can be installed side-by-side with the ASM cmdlets. The cmdlets from the two modes can be distinguished by their names.  The ARM mode has *AzureRmHDInsight* in the cmdlet names comparing to *AzureHDInsight* in the ASM mode.  For example, *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Parameters and switches may have news names, and there are many new parameters available when using ARM.  For example, several cmdlets require a new switch called *-ResourceGroupName*. 
-
-Before you can use the HDInsight cmdlets, you must connect to your Azure account, and create a new resource group:
-
-- Login-AzureRmAccount or [Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx). See [Authenticating a service principal with Azure Resource Manager](../resource-group-authenticate-service-principal.md)
+- Login-AzureRmAccount oder [Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx). Weitere Informationen finden Sie unter [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](../resource-group-authenticate-service-principal.md).
 - [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
-###<a name="renamed-cmdlets"></a>Renamed cmdlets
+###Umbenannte Cmdlets
 
-To list the HDInsight ASM cmdlets in Windows PowerShell console:
+So listen Sie die HDInsight-ASM-Cmdlets in der Windows-PowerShell-Konsole auf:
 
     help *azurermhdinsight*
 
-The following table lists the ASM cmdlets and their names in the ARM mode:
+Die folgende Tabelle enthält die ASM-Cmdlets und deren Namen im ARM-Modus:
 
-|ASM cmdlets|ARM cmdlets|
+|ASM-Cmdlets|ARM-Cmdlets|
 |------|------|
 | Add-AzureHDInsightConfigValues | [Add-AzureRmHDInsightConfigValues](https://msdn.microsoft.com/library/mt603530.aspx)|
 | Add-AzureHDInsightMetastore |[Add-AzureRmHDInsightMetastore](https://msdn.microsoft.com/library/mt603670.aspx)|
@@ -134,27 +133,27 @@ The following table lists the ASM cmdlets and their names in the ARM mode:
 | Use-AzureHDInsightCluster |[Use-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619442.aspx)|
 | Wait-AzureHDInsightJob |[Wait-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx)|
 
-###<a name="new-cmdlets"></a>New cmdlets
-The following are the new cmdlets that are only available in the ARM mode. 
+###Neue Cmdlets
+Die folgenden Cmdlets sind neu und nur im ARM-Modus verfügbar.
 
-**Script action related cmdlets:**
-- **Get-AzureRmHDInsightPersistedScriptAction**: Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action. 
-- **Get-AzureRmHDInsightScriptActionHistory**: Gets the script action history for a cluster and lists it in reverse chronological order, or gets details of a previously executed script action. 
-- **Remove-AzureRmHDInsightPersistedScriptAction**: Removes a persisted script action from an HDInsight cluster.
-- **Set-AzureRmHDInsightPersistedScriptAction**: Sets a previously executed script action to be a persisted script action.
-- **Submit-AzureRmHDInsightScriptAction**: Submits a new script action to an Azure HDInsight cluster. 
+**Cmdlets zu Skriptaktionen:**
+- **Get-AzureRmHDInsightPersistedScriptAction**: Ruft persistente Skriptaktionen für einen Cluster ab und listet diese in chronologischer Reihenfolge auf oder ruft Details zu einer bestimmten persistenten Skriptaktion ab.
+- **Get-AzureRmHDInsightScriptActionHistory**: Ruft den Skriptaktionsverlauf für einen Cluster ab und listet ihn in umgekehrter chronologischer Reihenfolge auf oder ruft Details zu zuvor ausgeführten Skritpaktionen ab.
+- **Remove-AzureRmHDInsightPersistedScriptAction**: Entfernt eine persistente Skriptaktion von einem HDInsight-Cluster.
+- **Set-AzureRmHDInsightPersistedScriptAction**: Legt eine zuvor ausgeführte Skriptaktion als persistente Skriptaktion fest.
+- **Submit-AzureRmHDInsightScriptAction**: Übermittelt eine neue Skriptaktion an einen Azure HDInsight-Cluster.
 
-For additional usage information, see [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md).
+Weitere Informationen zur Verwendung finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
-**Clsuter identity related cmdlets:**
+**Cmdlets zur Clusteridentität:**
 
-- **Add-AzureRmHDInsightClusterIdentity**: Adds a cluster identity to a cluster configuration object so that the HDInsight cluster can access Azure Data Lake Stores. See [Create an HDInsight cluster with Data Lake Store using Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+- **Add-AzureRmHDInsightClusterIdentity**: Fügt einem Clusterkonfigurationsobjekt eine Clusteridentität hinzu, sodass der HDInsight-Clusgter auf Azure Data Lake-Speicher zugreifen kann. Siehe hierzu auch [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
-### <a name="examples"></a>Examples
+### Beispiele
 
-**Create cluster**
+**Cluster erstellen**
 
-Old command (ASM): 
+Alter Befehl (ASM):
 
     New-AzureHDInsightCluster `
         -Name $clusterName `
@@ -169,7 +168,7 @@ Old command (ASM):
         -Credential $httpCredential `
         -SshCredential $sshCredential
 
-New command (ARM):
+Neuer Befehl (ARM):
 
     New-AzureRmHDInsightCluster `
         -ClusterName $clusterName `
@@ -186,130 +185,130 @@ New command (ARM):
         -SshCredential $sshCredentials
 
  
-**Delete cluster**
+**Löschen eines Clusters**
 
-Old command (ASM):
+Alter Befehl (ASM):
 
     Remove-AzureHDInsightCluster -name $clusterName 
 
-New command (ARM):
+Neuer Befehl (ARM):
 
     Remove-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
                 
-**List cluster**
+**Auflisten von Clusterdetails**
 
-Old command (ASM):
+Alter Befehl (ASM):
 
     Get-AzureHDInsightCluster
                 
-New command (ARM):
+Neuer Befehl (ARM):
 
     Get-AzureRmHDInsightCluster 
 
-**Show cluster**
+**Anzeigen von Clustern**
 
-Old command (ASM):
+Alter Befehl (ASM):
 
     Get-AzureHDInsightCluster -Name $clusterName
                 
-New command (ARM):
+Neuer Befehl (ARM):
 
     Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
 
 
-####<a name="other-samples"></a>Other samples
+####Weitere Beispiele
 
-- [Create HDInsight clusters](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-- [Submit Hive jobs](hdinsight-hadoop-use-hive-powershell.md)
-- [Submit Pig jobs](hdinsight-hadoop-use-pig-powershell.md)
-- [Submit Sqoop jobs](hdinsight-hadoop-use-sqoop-powershell.md)
+- [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+- [Übermitteln von Hive-Jobs](hdinsight-hadoop-use-hive-powershell.md)
+- [Übermitteln von Pig-Aufträgen](hdinsight-hadoop-use-pig-powershell.md)
+- [Übermitteln von Squoop-Aufträgen](hdinsight-hadoop-use-sqoop-powershell.md)
 
 
 
-##<a name="migrating-to-the-arm-based-hdinsight-.net-sdk"></a>Migrating to the ARM-based HDInsight .NET SDK
+##Migrieren zum ARM-basierten HDInsight .NET SDK
 
-The Azure Service Management-based [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) is now deprecated. You are encouraged to use the Azure Resource Management-based [(ARM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx). The following ASM-based HDInsight packages are being deprecated.
+Das [Azure Service Management (ASM)-basierte HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) ist veraltet. Wir empfehlen Ihnen, das [Azure Resource Management (ASM)-basierte HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx) zu verwenden. Die folgenden ASM-basierten HDInsight-Pakete sind veraltet.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
  
 
-This section provides pointers to more information on how to perform certain tasks using the ARM-based SDK.
+Dieser Abschnitt enthält weitere Informationen dazu, wie Sie bestimmte Aufgaben mithilfe des ARM-basierten SDK ausführen können.
 
-| How to... using the ARM-based HDInsight SDK | Links |
+| Gewusst wie: Verwenden des ARM-basierten HDInsight SDK | Links |
 | ------------------- | --------------- |
-| Create HDInsight clusters using .NET SDK| See [Create HDInsight clusters using .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)|
-| Customize a cluster using Script Action with .NET SDK | See [Customize HDInsight Linux clusters using Script Action](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
-| Authenticate applications interactively using Azure Active Directory with .NET SDK| See [Run Hive queries using .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md). The code snippet in this article uses the interactive authentication approach.|
-| Authenticate applications non-interactively using Azure Active Directory with .NET SDK | See [Create non-interactive applications for HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
-| Submit a Hive job using .NET SDK| See [Submit Hive jobs](hdinsight-hadoop-use-hive-dotnet-sdk.md) |
-| Submit a Pig job using .NET SDK | See [Submit Pig jobs](hdinsight-hadoop-use-pig-dotnet-sdk.md)|
-| Submit a Sqoop job using .NET SDK | See [Submit Sqoop jobs](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) |
-| List HDInsight clusters using .NET SDK | See [List HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
-| Scale HDInsight clusters using .NET SDK | See [Scale HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
-| Grant/revoke access to HDInsight clusters using .NET SDK | See [Grant/revoke access to HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
-| Update HTTP user credentials for HDInsight clusters using .NET SDK | See [Update HTTP user credentials for HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
-| Find the default storage account for HDInsight clusters using .NET SDK | See [Find the default storage account for HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
-| Delete HDInsight clusters using .NET SDK | See [Delete HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
+| Erstellen von HDInsight-Clustern mit dem .NET SDK| Siehe [Erstellen von HDInsight-Clustern mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)|
+| Anpassen eines Clusters mithilfe von Skriptaktionen mit dem .NET SDK | Siehe [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
+| Authentifizieren von Clientanwendungen, die Azure Active Directory mit dem .NET SDK interaktiv nutzen| Weitere Informationen finden Sie unter [Ausführen von Hive-Abfragen per HDInsight .NET-SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md). Der Codeausschnitt in diesem Artikel verwendet den interaktiven Authentifizierungsansatz.|
+| Authentifizieren von Clientanwendungen, die Azure Active Directory mit dem .NET SDK nicht interaktiv nutzen | Siehe [Erstellen von HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
+| Übermitteln eines Hive-Auftrags mit dem .NET SDK| Siehe [Übermitteln von Hive-Aufträgen](hdinsight-hadoop-use-hive-dotnet-sdk.md) |
+| Übermitteln eines Pig-Auftrags mit dem .NET SDK | Siehe [Übermitteln von Pig-Aufträgen](hdinsight-hadoop-use-pig-dotnet-sdk.md)|
+| Übermitteln eines Sqoop-Auftrags mit dem .NET SDK | Siehe [Übermitteln von Sqoop-Aufträgen](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) |
+| Auflisten von HDInsight-Clustern mit dem .NET SDK | Siehe [List HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#list-clusters) (Auflisten von HDInsight-Clustern) |
+| Skalieren von HDInsight-Clustern mit dem .NET SDK | Siehe [Scale HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) (Skalieren von HDInsight-Clustern) |
+| Gewähren/Widerrufen von Zugriff auf HDInsight-Cluster mit dem .NET SDK | Siehe [Grant/revoke access to HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) (Gewähren/Widerrufen von Zugriff auf HDInsight-Cluster) |
+| Aktualisieren von HTTP-Anmeldeinformationen für HDInsight-Cluster mit dem .NET SDK | Siehe [Update HTTP user credentials for HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) (Aktualisieren von HTTP-Anmeldeinformationen für HDInsight-Cluster) |
+| Suchen des standardmäßigen Speicherkonto für HDInsight-Cluster mit dem .NET SDK | Siehe [Find the default storage account for HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) (Suchen des standardmäßigen Speicherkonto für HDInsight-Cluster) |
+| Löschen von HDInsight-Clustern mithilfe des .NET SDK | Siehe [Delete HDInsight clusters](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) (Löschen von HDInsight-Clustern) |
 
-### <a name="examples"></a>Examples
+### Beispiele
 
-Following are some examples on how an operation is performed using the ASM-based SDK and the equivalent code snippet for the ARM-based SDK.
+Im Folgenden finden Sie einige Beispiele dazu, wie ein Vorgang mit dem ASM-basierten SDK durchgeführt wird und welcher der entsprechende Codeausschnitt für das ARM-basierte SDK ist.
 
-**Creating a cluster CRUD client**
+**Erstellen eines Cluster-CRUD-Clients**
 
-* Old command (ASM)
+* Alter Befehl (ASM)
 
-        //Certificate auth
-        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager (ARM)
-     
-        const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
-        var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
-        var client = HDInsightClient.Connect(cred);
+		//Certificate auth
+		//This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager (ARM)
+	 
+		const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
+		var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
+		var client = HDInsightClient.Connect(cred);
 
-* New command (ARM) (Service principal authorization)
+* Neuer Befehl (ARM) (Dienstprinzipalautorisierung)
 
-        //Service principal auth
-        //This will log the application in as itself, rather than on behalf of a specific user.
-        //For details, including how to set up the application, see:
-        //   https://azure.microsoft.com/en-us/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
-         
-        var authFactory = new AuthenticationFactory();
-         
-        var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
-         
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-         
-        var accessToken = authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
-         
-        var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
-         
-        _hdiManagementClient = new HDInsightManagementClient(creds);
+		//Service principal auth
+		//This will log the application in as itself, rather than on behalf of a specific user.
+		//For details, including how to set up the application, see:
+		//   https://azure.microsoft.com/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
+		 
+		var authFactory = new AuthenticationFactory();
+		 
+		var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
+		 
+		var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+		 
+		var accessToken = authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
+		 
+		var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
+		 
+		_hdiManagementClient = new HDInsightManagementClient(creds);
 
-* New command (ARM) (User authorization)
+* Neuer Befehl (ARM) (Benutzerautorisierung)
 
-        //User auth
-        //This will log the application in on behalf of the user.
-        //The end-user will see a login popup.
-         
-        var authFactory = new AuthenticationFactory();
-         
-        var account = new AzureAccount { Type = AzureAccount.AccountType.User, Id = username };
-         
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-         
-        var accessToken = authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto).AccessToken;
-         
-        var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
-         
-        _hdiManagementClient = new HDInsightManagementClient(creds);
+		//User auth
+		//This will log the application in on behalf of the user.
+		//The end-user will see a login popup.
+		 
+		var authFactory = new AuthenticationFactory();
+		 
+		var account = new AzureAccount { Type = AzureAccount.AccountType.User, Id = username };
+		 
+		var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+		 
+		var accessToken = authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto).AccessToken;
+		 
+		var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
+		 
+		_hdiManagementClient = new HDInsightManagementClient(creds);
 
 
-**Creating a cluster**
+**Erstellen eines Clusters**
 
-* Old command (ASM)
+* Alter Befehl (ASM)
 
-        var clusterInfo = new ClusterCreateParameters
+		var clusterInfo = new ClusterCreateParameters
                     {
                         Name = dnsName,
                         DefaultStorageAccountKey = key,
@@ -323,13 +322,13 @@ Following are some examples on how an operation is performed using the ASM-based
                         Version = version,
                         HeadNodeSize = NodeVMSize.Large,
                     };
-        clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
-        client.CreateCluster(clusterInfo);
+		clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
+		client.CreateCluster(clusterInfo);
 
 
-* New command (ARM)
+* Neuer Befehl (ARM)
 
-        var clusterCreateParameters = new ClusterCreateParameters
+		var clusterCreateParameters = new ClusterCreateParameters
             {
                 Location = "West US",
                 ClusterType = "Hadoop",
@@ -350,38 +349,30 @@ Following are some examples on how an operation is performed using the ASM-based
         clusterCreateParameters.Configurations.Add(ConfigurationKey.CoreSite, coreConfigs);
 
 
-**Enabling HTTP access**
+**Aktivieren von HTTP-Zugriff**
 
-* Old command (ASM)
+* Alter Befehl (ASM)
 
-        client.EnableHttp(dnsName, "West US", "admin", "*******");
+		client.EnableHttp(dnsName, "West US", "admin", "*******");
 
-* New command (ARM)
+* Neuer Befehl (ARM)
 
-        var httpParams = new HttpSettingsParameters
-        {
-               HttpUserEnabled = true,
-               HttpUsername = "admin",
-               HttpPassword = "*******",
-        };
-        client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
+		var httpParams = new HttpSettingsParameters
+		{
+		       HttpUserEnabled = true,
+		       HttpUsername = "admin",
+		       HttpPassword = "*******",
+		};
+		client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
 
-**Deleting a cluster**
+**Löschen eines Clusters**
 
-* Old command (ASM)
+* Alter Befehl (ASM)
 
-        client.DeleteCluster(dnsName);
+		client.DeleteCluster(dnsName);
 
-* New command (ARM)
+* Neuer Befehl (ARM)
 
-        client.Clusters.Delete(resourceGroup, dnsname);
+		client.Clusters.Delete(resourceGroup, dnsname);
 
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

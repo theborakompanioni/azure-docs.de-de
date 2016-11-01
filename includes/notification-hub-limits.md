@@ -1,15 +1,12 @@
 
-| TIER: | FREE | BASIC | STANDARD |
+| EBENE: | FREI | BASIC | STANDARD |
 |----|----|----|----|
-| Included Pushes | 1 Million | 10 Million | 10 Million |
-| Active Devices | 500 | Unlimited | Unlimited |
-| Tag quota per installation/registration | 60 | 60 | 60 |
+| Pushvorgänge enthalten | 1 Mio. | 10 Mio. | 10 Mio. |
+| Aktive Geräte | 500 | Unbegrenzt | Unbegrenzt |
+| Tagkontingent pro Installation/Registrierung | 60 | 60 | 60 |
 
 
 
-For additional details on these limits and for information on pricing, see [Notification Hubs Pricing](https://azure.microsoft.com/pricing/details/notification-hubs/). 
+Weitere Informationen zu diesen Einschränkungen und zu Preisen finden Sie unter [Notification Hubs Preise](https://azure.microsoft.com/pricing/details/notification-hubs/).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

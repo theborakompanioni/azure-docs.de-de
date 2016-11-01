@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a custom probe for an application gateway by using the portal | Microsoft Azure"
-   description="Learn how to create a custom probe for Application Gateway by using the portal"
+   pageTitle="Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal | Microsoft Azure"
+   description="Erfahren Sie, wie Sie einen benutzerdefinierten Test für ein Anwendungsgateway über das Portal erstellen."
    services="application-gateway"
    documentationCenter="na"
    authors="georgewallace"
@@ -14,80 +14,77 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/24/2016"
+   ms.date="08/09/2016"
    ms.author="gwallace" />
 
-
-# <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Create a custom probe for Application Gateway by using the portal
+# Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal
 
 > [AZURE.SELECTOR]
-- [Azure portal](application-gateway-create-probe-portal.md)
+- [Azure-Portal](application-gateway-create-probe-portal.md)
 - [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
-- [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
+- [Klassische Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
 <BR>
 
 [AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
-## <a name="scenario"></a>Scenario
+## Szenario
 
-The following scenario goes through creating a custom health probe in an existing application gateway.
-The scenario assumes that you have already followed the steps to [Create an Application Gateway](application-gateway-create-gateway-portal.md).
+Das folgende Szenario führt Sie durch die Erstellung eines benutzerdefinierten Integritätstests in einem vorhandenen Anwendungsgateway. Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway-portal.md) bereits durchgeführt haben.
 
-## <a name="<a-name="createprobe"></a>create-the-probe"></a><a name="createprobe"></a>Create the probe
+## <a name="createprobe"></a>Erstellen des Tests
 
-Probes are configured in a two-step process through the portal. The first step is to create the probe, next you add the probe to the backend http settings of the application gateway.
+Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguriert. Der erste Schritt besteht darin, den Test zu erstellen. Anschließend fügen Sie den Test den Back-End-HTTP-Einstellungen des Anwendungsgateways hinzu.
 
-### <a name="step-1"></a>Step 1
+### Schritt 1
 
-Navigate to http://portal.azure.com and select an existing application gateway.
+Navigieren Sie zu http://portal.azure.com, und wählen Sie ein vorhandenes Anwendungsgateway aus.
 
-![Application Gateway overview][1]
+![Übersicht über Application Gateway][1]
 
-### <a name="step-2"></a>Step 2
+### Schritt 2
 
-Click **Probes** and click the **Add** button to add a new probe.
+Klicken Sie auf **Tests** und dann auf die Schaltfläche **Hinzufügen**, um einen neuen Test hinzuzufügen.
 
-![Add Probe blade with information filled out][2]
+![Hinzufügen eines Blatts für einen Test mit bereitgestellten Informationen][2]
 
-### <a name="step-3"></a>Step 3
+### Schritt 3
 
-Fill out the required information for the probe and when complete click **OK**.
+Stellen Sie die erforderlichen Informationen für den Test bereit, und klicken Sie anschließend auf **OK**.
 
-- **Name** - This is a friendly name to the probe that is accessible in the portal.
-- **Host** - This is the host name that is used for the probe.
-- **Path** - The remainder of the full url for the custom probe.
-- **Interval (secs)** - How often the probe is run to check for health.
-- **Timeout (secs)** - The amount of time the probe waits before timing out.
-- **Unhealthy threshold** - Number of failed attempts to be considered unhealthy.
+- **Name**: Dies ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.
+- **Host**: Dies ist der Hostname, der für den Test verwendet wird.
+- **Pfad**: Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test.
+- **Intervall (Sek.)**: Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen.
+- **Timeout (Sek.)**: Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt.
+- **Fehlerschwellenwert**: Dies ist die Anzahl erfolgloser Versuche, nach denen der Test als „fehlerhaft“ eingestuft wird.
 
-> [AZURE.IMPORTANT] the host name is not the server name. This is the name of the virtual host running on the application server. The probe is sent to http://(host name):(port from httpsetting)/urlPath
+> [AZURE.IMPORTANT] Der Hostname ist nicht der Servername. Es ist der Name des virtuellen Hosts, der auf dem Anwendungsserver ausgeführt wird. Der Test wird an diese Adresse gesendet: http://(hostname):(Port aus HTTP-Einstellungen)/urlPath
 
-![probe configuration settings][3]
+![Konfigurationseinstellungen für Test][3]
 
-## <a name="add-probe-to-the-gateway"></a>Add probe to the gateway
+## Hinzufügen des Tests zum Gateway
 
-Now that the probe has been created, it is time to add it to the gateway. Probe settings are set on the backend http settings of the application gateway.
+Nachdem der Test erstellt wurde, können Sie ihn jetzt zum Gateway hinzufügen. Testeinstellungen werden in den Back-End-HTTP-Einstellungen des Anwendungsgateways festgelegt.
 
-### <a name="step-1"></a>Step 1
+### Schritt 1
 
-Click the **HTTP settings** of the application gateway, and then click the current backend http settings in the window to bring up the configuration blade.
+Klicken Sie auf die **HTTP-Einstellungen** des Anwendungsgateways, und klicken Sie auf die aktuellen Back-End-HTTP-Einstellungen im Fenster, um das Blatt „Konfiguration“ zu öffnen.
 
-![https settings window][4]
+![Fenster mit HTTPS-Einstellungen][4]
 
-### <a name="step-2"></a>Step 2
+### Schritt 2
 
-On the **appGatewayBackEndHttp** settings blade, click **Use custom probe** and choose the probe created in the [Create the probe](#createprobe) section.
-When complete, click **OK** and the settings are applied.
+Klicken Sie auf dem Blatt **appGatewayBackEndHttp**-Einstellungen auf **Benutzerdefinierten Test verwenden**, und wählen Sie den Test aus, den Sie im Abschnitt [Erstellen des Tests](#createprobe) erstellt haben. Wenn Sie fertig sind, klicken Sie auf **OK**, um die Einstellungen anzuwenden.
 
-![appgatewaybackend settings blade][5]
+![Blatt mit appgatewaybackend-Einstellungen][5]
 
-The default probe checks the default access to the web application. Now that a custom probe has been created, the application gateway uses the custom path defined to monitor health for the backend selected. Based on the criteria that was defined, the application gateway checks the file specified in the probe. If the call to host:Port/path does not return an Http 200 OK status response, the server is taken out of rotation, after the unhealthy threshold is reached. Probing continues on the unhealthy instance to determine when it becomes healthy again. Once the instance is added back to healthy server pool traffic begins flowing to it again and probing to the instance continues at user specified interval as normal.
+Der Standardtest prüft den Standardzugriff auf die Webanwendung. Nachdem nun ein benutzerdefinierter Test erstellt wurde, verwendet das Anwendungsgateway den benutzerdefinierten Pfad, um die Integrität des ausgewählten Back-Ends zu überwachen. Das Anwendungsgateway überprüft die im Test angegebene Datei basierend auf den definierten Kriterien. Wenn der Aufruf an „host:Port/path“ keine HTTP-Statusantwort 200 (OK) zurückgibt, wird der Server aus der Rotation herausgenommen, nachdem der Fehlerschwellenwert erreicht ist. Die fehlerhafte Instanz wird weiterhin überprüft, um festzustellen, wann die Integrität wiederhergestellt ist. Sobald die Instanz dem fehlerfreien Serverpool wieder hinzugefügt wurde, wird wieder Datenverkehr an die Instanz übertragen, und die Instanz wird wie üblich in den vom Benutzer angegebenen Intervallen getestet.
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn how to configure SSL Offloading with Azure Application Gateway see [Configure SSL Offload](application-gateway-ssl-portal.md)
+Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gateway finden Sie unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md).
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png
@@ -95,7 +92,4 @@ To learn how to configure SSL Offloading with Azure Application Gateway see [Con
 [4]: ./media/application-gateway-create-probe-portal/figure4.png
 [5]: ./media/application-gateway-create-probe-portal/figure5.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

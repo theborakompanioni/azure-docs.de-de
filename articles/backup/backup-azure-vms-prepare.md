@@ -1,146 +1,145 @@
 <properties
-    pageTitle="Preparing your environment to back up Azure virtual machines | Microsoft Azure"
-    description="Make sure your environment is prepared for backing up virtual machines in Azure"
-    services="backup"
-    documentationCenter=""
-    authors="markgalioto"
-    manager="cfreeman"
-    editor=""
-    keywords="backups; backing up;"/>
+	pageTitle="Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer | Microsoft Azure"
+	description="Vergewissern Sie sich, dass Ihre Umgebung für die Sicherung virtueller Computer in Azure vorbereitet ist."
+	services="backup"
+	documentationCenter=""
+	authors="markgalioto"
+	manager="cfreeman"
+	editor=""
+	keywords="Sicherung; Sichern;"/>
 
 <tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/26/2016"
-    ms.author="trinadhk; jimpark; markgal;"/>
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2016"
+	ms.author="trinadhk; jimpark; markgal;"/>
 
 
-
-# <a name="prepare-your-environment-to-back-up-azure-virtual-machines"></a>Prepare your environment to back up Azure virtual machines
+# Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer
 
 > [AZURE.SELECTOR]
-- [Resource manager model](backup-azure-arm-vms-prepare.md)
-- [Classic model](backup-azure-vms-prepare.md)
+- [Resource Manager-Modell](backup-azure-arm-vms-prepare.md)
+- [Klassisches Modell](backup-azure-vms-prepare.md)
 
-Before you can back up an Azure virtual machine (VM), there are three conditions that must exist.
+Bevor Sie einen virtuellen Azure-Computer sichern können, müssen drei Bedingungen erfüllt sein.
 
-- You need to create a backup vault or identify an existing backup vault *in the same region as your VM*.
-- Establish network connectivity between the Azure public Internet addresses and the Azure storage endpoints.
-- Install the VM agent on the VM.
+- Sie müssen einen Sicherungstresor erstellen oder einen vorhandenen Sicherungstresor angeben. Dieser muss sich *in der gleichen Region wie Ihr virtueller Computer* befinden.
+- Richten Sie die Netzwerkkonnektivität zwischen den öffentlichen Azure-Internetadressen und den Endpunkten des Azure-Speichers ein.
+- Installieren Sie den VM-Agent auf dem virtuellen Computer.
 
-If you know these conditions already exist in your environment then proceed to the [Back up your VMs article](backup-azure-vms.md). Otherwise, read on, this article will lead you through the steps to prepare your environment to back up an Azure VM.
-
-
-## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Limitations when backing up and restoring a VM
-
->[AZURE.NOTE] Azure has two deployment models for creating and working with resources: [Resource Manager and classic](../resource-manager-deployment-model.md). The following list provides the limitations when deploying in the classic model.
-
-- Backing up virtual machines with more than 16 data disks is not supported.
-- Backing up virtual machines with a reserved IP address and no defined endpoint is not supported.
-- Backup data doesn't include network mounted drives attached to VM. 
-- Replacing an existing virtual machine during restore is not supported. First delete the existing virtual machine and any associated disks, and then restore the data from backup.
-- Cross-region backup and restore is not supported.
-- Backing up virtual machines by using the Azure Backup service is supported in all public regions of Azure (see the [checklist](https://azure.microsoft.com/regions/#services) of supported regions). If the region that you are looking for is unsupported today, it will not appear in the dropdown list during vault creation.
-- Backing up virtual machines by using the Azure Backup service is supported only for select operating system versions:
-  - **Linux**: Azure Backup supports [a list of distributions that are endorsed by Azure](../virtual-machines/virtual-machines-linux-endorsed-distros.md) except Core OS Linux. Other Bring-Your-Own-Linux distributions also might work as long as the VM agent is available on the virtual machine and support for Python exists.
-  - **Windows Server**:  Versions older than Windows Server 2008 R2 are not supported.
-- Restoring a domain controller (DC) VM that is part of a multi-DC configuration is supported only through PowerShell. Read more about [restoring a multi-DC domain controller](backup-azure-restore-vms.md#restoring-domain-controller-vms).
-- Restoring virtual machines that have the following special network configurations is supported only through PowerShell. VMs that you create by using the restore workflow in the UI will not have these network configurations after the restore operation is complete. To learn more, see [Restoring VMs with special network configurations](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations).
-    - Virtual machines under load balancer configuration (internal and external)
-    - Virtual machines with multiple reserved IP addresses
-    - Virtual machines with multiple network adapters
-
-## <a name="create-a-backup-vault-for-a-vm"></a>Create a backup vault for a VM
-
-A backup vault is an entity that stores all the backups and recovery points that have been created over time. The backup vault also contains the backup policies that will be applied to the virtual machines being backed up.
-
-This image shows the relationships between the various Azure Backup entities:     ![Azure Backup entities and relationships](./media/backup-azure-vms-prepare/vault-policy-vm.png)
-
-To create a backup vault:
-
-1. Sign in to the [Azure portal](http://manage.windowsazure.com/).
-
-2. In the Azure portal click **New** > **Hybrid Integration** > **Backup**. When you click **Backup**, you will automatically switch to the classic portal (shown after the Note).
-
-    ![Ibiza portal](./media/backup-azure-vms-prepare/Ibiza-portal-backup01.png)
-
-    >[AZURE.NOTE] If your subscription was last used in the classic portal, then your subscription may open in the classic portal. In this event, to create a backup vault, click **New** > **Data Services** > **Recovery Services** > **Backup Vault** > **Quick Create** (see the image below).
-
-    ![Create backup vault](./media/backup-azure-vms-prepare/backup_vaultcreate.png)
-
-3. For **Name**, enter a friendly name to identify the vault. The name needs to be unique for the Azure subscription. Type a name that contains between 2 and 50 characters. It must start with a letter, and can contain only letters, numbers, and hyphens.
-
-4. In **Region**, select the geographic region for the vault. The vault must be in the same region as the virtual machines that you want to protect. If you have virtual machines in multiple regions, you must create a backup vault in each region. There is no need to specify storage accounts to store the backup data--the backup vault and the Azure Backup service handle this automatically.
-
-5. In **Subscription** select the subscription you want to associate with the backup vault. There will be multiple choices only if your organizational account is associated with multiple Azure subscriptions.
-
-6. Click **Create Vault**. It can take a while for the backup vault to be created. Monitor the status notifications at the bottom of the portal.
-
-    ![Create vault toast notification](./media/backup-azure-vms-prepare/creating-vault.png)
-
-7. A message will confirm that the vault has been successfully created. It will be listed on the **recovery services** page as **Active**. Make sure to choose the appropriate storage redundancy option right after the vault has been created. Read more about [setting the storage redundancy option in the backup vault](backup-configure-vault.md#azure-backup---storage-redundancy-options).
-
-    ![List of backup vaults](./media/backup-azure-vms-prepare/backup_vaultslist.png)
-
-8. Click the backup vault to go to the **Quick Start** page, where the instructions for backing up Azure virtual machines are shown.
-
-    ![Virtual machine backup instructions on the Dashboard page](./media/backup-azure-vms-prepare/vmbackup-instructions.png)
+Wenn Sie wissen, dass diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-vms.md) fort. Andernfalls führt dieser Artikel Sie durch die Schritte zum Vorbereiten Ihrer Umgebung für das Sichern einer Azure-VM.
 
 
-## <a name="network-connectivity"></a>Network connectivity
+## Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
 
-In order to manage the VM snapshots, the backup extension needs connectivity to the Azure public IP addresses. Without the right Internet connectivity, the virtual machine's HTTP requests time out and the backup operation fails. If your deployment has access restrictions in place (through a network security group (NSG), for example), then choose one of these options for providing a clear path for backup traffic:
+>[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Die folgende Liste enthält die Einschränkungen bei der Bereitstellung über das klassische Modell.
 
-- [Whitelist the Azure datacenter IP ranges](http://www.microsoft.com/en-us/download/details.aspx?id=41653) - see the article for instructions on how to whitelist the IP addresses.
-- Deploy an HTTP proxy server for routing traffic.
+- Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
+- Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
+- Im Netzwerk bereitgestellte und an den virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
+- Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Löschen Sie zuerst den vorhandenen virtuellen Computer und alle zugeordneten Datenträger, und stellen Sie dann die Daten aus der Sicherung wieder her.
+- Regionsübergreifende Sicherungs- und Wiederherstellungsvorgänge werden nicht unterstützt.
+- Die Sicherung von virtuellen Computern mithilfe des Azure Backup-Diensts wird in allen öffentlichen Azure-Regionen unterstützt (Informationen hierzu finden Sie in der [Liste der Azure-Regionen](https://azure.microsoft.com/regions/#services)). Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
+- Die Sicherung virtueller Computer mithilfe des Azure Backup-Diensts wird nur für bestimmte Betriebssystemversionen unterstützt:
+  - **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md). Ausnahme: CoreOS Linux. Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
+  - **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
+- Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen hierzu finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-restore-vms.md#restoring-domain-controller-vms).
+- Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations).
+    - Virtuelle Computer unter Load Balancer-Konfiguration (intern und extern)
+    - Virtuelle Computer mit mehreren reservierten IP-Adressen
+    - Virtuelle Computer mit mehreren Netzwerkadaptern
 
-When deciding which option to use, the trade-offs are between manageability, granular control, and cost.
+## Erstellen eines Sicherungstresors für einen virtuellen Computer
 
-|Option|Advantages|Disadvantages|
+Bei einem Sicherungstresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Sicherungstresor enthält auch die Sicherungsrichtlinien, die auf die zu sichernden virtuellen Computer angewendet werden.
+
+In der Abbildung sind die Beziehungen zwischen den verschiedenen Azure Backup-Entitäten dargestellt: ![Azure Backup-Entitäten und ihre Beziehungen](./media/backup-azure-vms-prepare/vault-policy-vm.png)
+
+So erstellen Sie einen Sicherungstresor
+
+1. Melden Sie sich auf dem [Azure-Portal](http://manage.windowsazure.com/) an.
+
+2. Klicken Sie im Azure-Portal auf **Neu** > **Hybridintegration** > **Sicherung**. Wenn Sie auf **Sicherung** klicken, wechseln Sie automatisch zum klassischen Portal (siehe Abbildung nach dem Hinweis).
+
+    ![Ibiza-Portal](./media/backup-azure-vms-prepare/Ibiza-portal-backup01.png)
+
+    >[AZURE.NOTE] Wenn Ihr Abonnement zuletzt im klassischen Portal verwendet wurde, wird es möglicherweise im klassischen Portal geöffnet. Klicken Sie in diesem Fall zum Erstellen eines Sicherungstresors auf **Neu** > **Data Services** > **Recovery Services** > **Sicherungstresor** > **Schnellerfassung** (siehe Abbildung unten).
+
+    ![Erstellen des Sicherungstresors](./media/backup-azure-vms-prepare/backup_vaultcreate.png)
+
+3. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+
+4. Wählen Sie unter **Region** die geografische Region für den Tresor aus. Der Tresor muss sich in der gleichen Region wie die zu schützenden virtuellen Computer befinden. Wenn Sie über virtuelle Computer in verschiedenen Regionen verfügen, müssen Sie in jeder dieser Regionen einen Sicherungstresor erstellen. Es müssen keine Speicherkonten zum Speichern der Sicherungsdaten angegeben werden. Dies erfolgt automatisch über den Sicherungstresor und den Azure Backup-Dienst.
+
+5. Wählen Sie unter **Abonnement** das Abonnement aus, das dem Sicherungstresor zugeordnet werden soll. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
+
+6. Klicken Sie auf **Tresor erstellen**. Es kann eine Weile dauern, bis der Sicherungstresor fertiggestellt wird. Unten im Portal können Sie anhand der Benachrichtigungen den Status prüfen.
+
+    ![Popupbenachrichtigung zur Erstellung des Tresors](./media/backup-azure-vms-prepare/creating-vault.png)
+
+7. In einer der Mitteilungen wird bestätigt, dass der Tresor erfolgreich erstellt wurde. Er wird auf der Seite **Recovery Services** als **Aktiv** aufgelistet. Stellen Sie nach der Erstellung des Tresors sicher, dass Sie eine geeignete Speicherredundanzoption auswählen. Weitere Informationen finden Sie unter [Festlegen der Speicherredundanzoption im Sicherungstresor](backup-configure-vault.md#azure-backup---storage-redundancy-options).
+
+    ![Liste der Sicherungstresore](./media/backup-azure-vms-prepare/backup_vaultslist.png)
+
+8. Klicken Sie auf den Sicherungstresor, um die Seite **Schnellstart** zu öffnen, auf der die Anweisungen für die Sicherung von virtuellen Azure-Computern angezeigt werden.
+
+    ![Anweisungen zur Sicherung von virtuellen Computern auf der Dashboard-Seite](./media/backup-azure-vms-prepare/vmbackup-instructions.png)
+
+
+## Netzwerkverbindung
+
+Um die VM-Momentaufnahmen zu verwalten, benötigt die Sicherungserweiterung eine Verbindung mit den öffentlichen Azure-IP-Adressen. Ohne die richtige Internetverbindung tritt bei diesen HTTP-Anforderungen des virtuellen Computers ein Timeout auf, und der Sicherungsvorgang funktioniert nicht. Wenn in Ihrer Bereitstellung Zugriffseinschränkungen aktiv sind (z.B. über eine Netzwerksicherheitsgruppe [NSG]), wählen Sie eine der folgenden Optionen für die Bereitstellung eines freien Pfades für den Sicherungsdatenverkehr:
+
+- [Whitelist der IP-Bereiche der Azure-Rechenzentren](http://www.microsoft.com/de-DE/download/details.aspx?id=41653): Im Artikel finden Sie Anweisungen zum Erstellen einer Whitelist der IP-Adressen.
+- Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit.
+
+Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse zwischen Verwaltbarkeit, differenzierter Kontrolle und Kosten abwägen.
+
+|Option|Vorteile|Nachteile|
 |------|----------|-------------|
-|Whitelist IP ranges| No additional costs.<br><br>For opening access in an NSG, use the <i>Set-AzureNetworkSecurityRule</i> cmdlet. | Complex to manage as the impacted IP ranges change over time.<br><br>Provides access to the whole of Azure, and not just Storage.|
-|HTTP proxy| Granular control in the proxy over the storage URLs allowed.<br>Single point of Internet access to VMs.<br>Not subject to Azure IP address changes.| Additional costs for running a VM with the proxy software.|
+|Whitelist der IP-Bereiche| Keine zusätzlichen Kosten.<br><br>Verwenden Sie zum Öffnen des Zugriffs in einer Netzwerksicherheitsgruppe das <i>Set-AzureNetworkSecurityRule</i>-Cmdlet. | Komplexe Verwaltung, da sich die betroffenen IP-Bereiche im Laufe der Zeit ändern.<br><br>Ermöglicht den Zugriff auf Azure insgesamt, nicht nur auf Storage.|
+|HTTP-Proxy| Feinsteuerung im Proxy über Speicher-URLs ist zulässig.<br>Zentraler Punkt für Internetzugriff auf virtuelle Computer.<br>Unterliegt keinen Azure-IP-Adressänderungen.| Zusätzliche Kosten für die Ausführung eines virtuellen Computers mit Proxysoftware.|
 
-### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Whitelist the Azure datacenter IP ranges
+### Aufnehmen der IP-Bereiche des Azure-Rechenzentrums in eine Positivliste
 
-To whitelist the Azure datacenter IP ranges, please see the [Azure website](http://www.microsoft.com/en-us/download/details.aspx?id=41653) for details on the IP ranges, and instructions.
+Ausführliche Informationen und Anweisungen zur Aufnahme der IP-Bereiche der Azure-Rechenzentren in eine Whitelist finden Sie auf der [Azure-Website](http://www.microsoft.com/de-DE/download/details.aspx?id=41653).
 
-### <a name="using-an-http-proxy-for-vm-backups"></a>Using an HTTP proxy for VM backups
-When backing up a VM, the backup extension on the VM sends the snapshot management commands to Azure Storage using an HTTPS API. Route the backup extension traffic through the HTTP proxy since it is the only component configured for access to the public Internet.
+### Verwenden eines HTTP-Proxys für die Sicherung von virtuellen Computern
+Beim Sichern eines virtuellen Computers werden die Befehle für die Momentaufnahmenverwaltung von der Sicherungserweiterung auf der VM per HTTPS-API an Azure Storage gesendet. Leiten Sie den Verkehr der Sicherungserweiterung über den HTTP-Proxy, da dies die einzige Komponente ist, die für den Zugriff auf das öffentliche Internet konfiguriert ist.
 
->[AZURE.NOTE] There is no recommendation for the proxy software that should be used. Ensure that you pick a proxy that is compatible with the configuration steps below.
+>[AZURE.NOTE] Für die zu verwendende Proxysoftware gibt es keine Empfehlung. Stellen Sie sicher, dass Sie einen Proxy wählen, der mit den unten stehenden Konfigurationsschritten kompatibel ist.
 
-The example image below shows the three configuration steps necessary to use an HTTP proxy:
+Die folgende Beispielabbildung zeigt die drei Konfigurationsschritte, die zur Verwendung einen HTTP-Proxys erforderlich sind:
 
-- App VM routes all HTTP traffic bound for the public Internet through Proxy VM.
-- Proxy VM allows incoming traffic from VMs in the virtual network.
-- The Network Security Group (NSG) named NSF-lockdown needs a security rule allowing outbound Internet traffic from Proxy VM.
+- „App VM“ leitet den gesamten HTTP-Datenverkehr für das öffentliche Internet über „Proxy VM“.
+- „Proxy VM“ lässt eingehenden Datenverkehr von virtuellen Computern in das virtuelle Netzwerk zu.
+- Die Netzwerksicherheitsgruppe (NSG) mit dem Namen „NSF-lockdown“ benötigt eine Sicherheitsregel, die von „Proxy VM“ ausgehenden Internetdatenverkehr zulässt.
 
-![NSG with HTTP proxy deployment diagram](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
+![NSG mit HTTP-Proxybereitstellung – Diagramm](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
-To use an HTTP proxy to communicating to the public Internet, follow these steps:
+Um einen HTTP-Proxy zur Kommunikation mit dem öffentlichen Internet zu verwenden, gehen Sie folgendermaßen vor:
 
-#### <a name="step-1.-configure-outgoing-network-connections"></a>Step 1. Configure outgoing network connections
-###### <a name="for-windows-machines"></a>For Windows machines
-This will setup proxy server configuration for Local System Account.
+#### Schritt 1: Ausgehende Netzwerkverbindungen konfigurieren
+###### Für Windows-Computer
+Damit wird die Proxyserverkonfiguration für das lokale Systemkonto eingerichtet.
 
-1. Download [PsExec](https://technet.microsoft.com/sysinternals/bb897553)
-2. Run following command from elevated prompt,
+1. Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553) herunter.
+2. Führen Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten aus.
 
      ```
      psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
      ```
-     It will open internet explorer window.
-3. Go to Tools -> Internet Options -> Connections -> LAN settings.
-4. Verify proxy settings for System account. Set Proxy IP and port.
-5. Close Internet Explorer.
+     Er öffnet das Internet Explorer-Fenster.
+3. Wechseln Sie zu „Extras -> Internetoptionen -> Verbindungen -> LAN-Einstellungen“.
+4. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest.
+5. Schließen Sie Internet Explorer.
 
-This will set up a machine-wide proxy configuration, and will be used for any outgoing HTTP/HTTPS traffic.
+Mit diesem Befehl wird eine computerweite Proxykonfiguration eingerichtet und für den gesamten ausgehenden HTTP/HTTPS-Datenverkehr verwendet.
 
-If you have setup a proxy server on a current user account(not a Local System Account), use the following script to apply them to SYSTEMACCOUNT:
+Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Systemkonto) eingerichtet haben, verwenden Sie das folgende Skript, um die Einstellungen dem SYSTEMKONTO zuzuweisen:
 
 ```
    $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
@@ -151,97 +150,93 @@ If you have setup a proxy server on a current user account(not a Local System Ac
    Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
 ```
 
->[AZURE.NOTE] If you observe "(407)Proxy Authentication Required" in proxy server log, check your authrntication is setup correctly.
+>[AZURE.NOTE] Wenn das Proxyserverprotokoll den Eintrag „(407) Proxyauthentifizierung erforderlich“ enthält, überprüfen Sie, ob Ihre Authentifizierung korrekt eingerichtet ist.
 
-######<a name="for-linux-machines"></a>For Linux machines
+######Für Linux-Computer
 
-Add the following line to the ```/etc/environment``` file:
+Fügen Sie der Datei ```/etc/environment``` die folgende Zeile hinzu:
 
 ```
 http_proxy=http://<proxy IP>:<proxy port>
 ```
 
-Add the following lines to the ```/etc/waagent.conf``` file:
+Fügen Sie der Datei ```/etc/waagent.conf``` die folgenden Zeilen hinzu:
 
 ```
 HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
 ```
 
-#### <a name="step-2.-allow-incoming-connections-on-the-proxy-server:"></a>Step 2. Allow incoming connections on the proxy server:
+#### Schritt 2: Zulassen von eingehenden Verbindungen auf dem Proxyserver:
 
-1. On the proxy server, open Windows Firewall. The easiest way to access the firewall is to search for Windows Firewall with Advanced Security.
+1. Öffnen Sie auf dem Proxyserver die Windows-Firewall. Die einfachste Möglichkeit zum Zugriff auf die Firewall besteht darin, die Windows-Firewall mit erweiterter Sicherheit zu suchen.
 
-    ![Open the Firewall](./media/backup-azure-vms-prepare/firewall-01.png)
+    ![Firewall öffnen](./media/backup-azure-vms-prepare/firewall-01.png)
 
-2. In the Windows Firewall dialog, right-click  **Inbound Rules** and click **New Rule...**.
+2. Klicken Sie im Dialogfeld „Windows-Firewall“ mit der rechten Maustaste auf **Eingangsregeln**, und klicken Sie auf **Neue Regel...**.
 
-    ![Create a new rule](./media/backup-azure-vms-prepare/firewall-02.png)
+    ![Neue Regel erstellen](./media/backup-azure-vms-prepare/firewall-02.png)
 
-3. In the **New Inbound Rule Wizard**, choose the **Custom** option for the **Rule Type** and click **Next**.
+3. Wählen Sie im **Assistenten für neue eingehende Regel** für **Regeltyp** die Option **Benutzerdefiniert**, und klicken Sie auf **Weiter**.
 
-4. On the page to select the **Program**, choose **All Programs** and click **Next**.
+4. Wählen Sie auf der Seite zum Auswählen des **Programms** die Option **Alle Programme**, und klicken Sie auf **Weiter**.
 
-5. On the **Protocol and Ports** page, enter the following information and click **Next**:
+5. Geben Sie auf der Seite **Protokoll und Ports** die folgenden Informationen ein, und klicken Sie auf **Weiter**:
 
-    ![Create a new rule](./media/backup-azure-vms-prepare/firewall-03.png)
+    ![Neue Regel erstellen](./media/backup-azure-vms-prepare/firewall-03.png)
 
-    - for *Protocol type* choose *TCP*
-    - for *Local port* choose *Specific Ports*, in the field below specify the ```<Proxy Port>``` that has been configured.
-    - for *Remote port* select *All Ports*
+    - Für *Protokolltyp* wählen Sie *TCP*.
+    - Für *Lokaler Port* wählen Sie *Bestimmte Ports*. Geben Sie im unteren Feld den konfigurierten ```<Proxy Port>``` an.
+    - Für *Remoteport* wählen Sie *Alle Ports*.
 
-    For the rest of the wizard, click all the way to the end and give this rule a name.
+    Klicken Sie sich im Assistenten bis zum Ende durch, und geben Sie dieser Regel einen Namen.
 
-#### <a name="step-3.-add-an-exception-rule-to-the-nsg:"></a>Step 3. Add an exception rule to the NSG:
+#### Schritt 3: Hinzufügen einer Ausnahmeregel zur NSG:
 
-In an Azure PowerShell command prompt, enter the following command:
+Geben Sie an einer Azure PowerShell-Eingabeaufforderung den folgenden Befehl ein:
 
-The following command adds an exception to the NSG. This exception allows TCP traffic from any port on 10.0.0.5 to any Internet address on port 80 (HTTP) or 443 (HTTPS). If you require a specific port in the public Internet, be sure to add that port to the ```-DestinationPortRange``` as well.
+Der folgende Befehl fügt der NSG eine Ausnahme hinzu. Diese Ausnahme lässt TCP-Datenverkehr von allen Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu. Falls Sie einen bestimmten Port im öffentlichen Internet benötigen, müssen Sie diesen Port auch zu ```-DestinationPortRange``` hinzufügen.
 
 ```
 Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
 Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
 ```
 
-*Ensure that you replace the names in the example with the details appropriate to your deployment.*
+*Stellen Sie sicher, dass Sie die Namen im Beispiel durch die Details Ihrer Bereitstellung ersetzen.*
 
 
-## <a name="vm-agent"></a>VM agent
+## VM-Agent
 
-Before you can back up the Azure virtual machine, you should ensure that the Azure VM agent is correctly installed on the virtual machine. Since the VM agent is an optional component at the time that the virtual machine is created, ensure that the check box for the VM agent is selected before the virtual machine is provisioned.
+Bevor Sie einen virtuellen Azure-Computer sichern können, müssen Sie zunächst sicherstellen, dass der Azure VM-Agent auf dem virtuellen Computer ordnungsgemäß installiert ist. Da es sich beim VM-Agent zum Zeitpunkt der Erstellung des virtuellen Computers um eine optionale Komponente handelt, müssen Sie sicherstellen, dass das Kontrollkästchen für den VM-Agent aktiviert ist, bevor der virtuelle Computer bereitgestellt wird.
 
-### <a name="manual-installation-and-update"></a>Manual installation and update
+### Manuelle Installation und Aktualisierung
 
-The VM agent is already present in VMs that are created from the Azure gallery. However, virtual machines that are migrated from on-premises datacenters would not have the VM agent installed. For such VMs, the VM agent needs to be installed explicitly. Read more about [installing the VM agent on an existing VM](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx).
+Der VM-Agent ist auf virtuellen Computern, die über den Azure-Katalog erstellt werden, bereits vorhanden. Auf virtuellen Computern, die aus lokalen Datencentern migriert werden, ist der VM-Agent jedoch nicht installiert. Für diese virtuellen Computer muss der VM-Agent explizit installiert werden. Erfahren Sie mehr über das [Installieren des VM-Agents auf einem vorhandenen virtuellen Computer](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx).
 
-| **Operation** | **Windows** | **Linux** |
+| **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Installing the VM agent | <li>Download and install the [agent MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). You will need Administrator privileges to complete the installation. <li>[Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. | <li> Install the latest [Linux agent](https://github.com/Azure/WALinuxAgent) from GitHub. You will need Administrator privileges to complete the installation. <li> [Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. |
-| Updating the VM agent | Updating the VM agent is as simple as reinstalling the [VM agent binaries](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Ensure that no backup operation is running while the VM agent is being updated. | Follow the instructions on [updating the Linux VM agent ](../virtual-machines-linux-update-agent.md). <br><br>Ensure that no backup operation is running while the VM agent is being updated. |
-| Validating the VM agent installation | <li>Navigate to the *C:\WindowsAzure\Packages* folder in the Azure VM. <li>You should find the WaAppAgent.exe file present.<li> Right-click the file, go to **Properties**, and then select the **Details** tab. The Product Version field should be 2.6.1198.718 or higher. | N/A |
+| Installieren des VM-Agents | <li>Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. | <li>Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li> [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. |
+| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des virtuellen Linux-Agents](../virtual-machines-linux-update-agent.md). <br><br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Überprüfen der VM-Agent-Installation | <li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\\WindowsAzure\\Packages*. <li>Dieser Ordner enthält die Datei „WaAppAgent.exe“.<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. | N/V |
 
 
-Learn about the [VM agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) and [how to install it](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/).
+Erfahren Sie mehr über den [VM-Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) und [seine Installation](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/).
 
-### <a name="backup-extension"></a>Backup extension
+### Backup-Erweiterung
 
-To back up the virtual machine, the Azure Backup service installs an extension to the VM agent. The Azure Backup service seamlessly upgrades and patches the backup extension without additional user intervention.
+Um den virtuellen Computer zu sichern, wird mit dem Azure Backup-Dienst eine Erweiterung für den VM-Agent installiert. Der Azure Backup-Dienst installiert nahtlos und ohne zusätzlichen Benutzereingriff Upgrades und Patches für die Backup-Erweiterung.
 
-The backup extension is installed if the VM is running. A running VM also provides the greatest chance of getting an application-consistent recovery point. However, the Azure Backup service will continue to back up the VM--even if it is turned off, and the extension could not be installed (aka Offline VM). In this case, the recovery point will be *crash consistent* as discussed above.
-
-
-## <a name="questions?"></a>Questions?
-If you have questions, or if there is any feature that you would like to see included, [send us feedback](http://aka.ms/azurebackup_feedback).
-
-## <a name="next-steps"></a>Next steps
-Now that you have prepared your environment for backing up your VM, your next logical step is to create a backup. The planning article provides more detailed information about backing up VMs.
-
-- [Back up virtual machines](backup-azure-vms.md)
-- [Plan your VM backup infrastructure](backup-azure-vms-introduction.md)
-- [Manage virtual machine backups](backup-azure-manage-vms.md)
+Die Sicherungserweiterung wird installiert, wenn der virtuelle Computer (Virtual Machine, VM) ausgeführt wird. Ein ausgeführter virtueller Computer bietet zudem die größte Chance auf einen anwendungskonsistenten Wiederherstellungspunkt. Der Azure Backup-Dienst setzt die Sicherung des virtuellen Computers jedoch auch dann fort, wenn der virtuelle Computer ausgeschaltet wurde und die Erweiterung nicht installiert werden konnte (auch als „Offline-VM“ bezeichnet). In diesem Fall ist der Wiederherstellungspunkt *absturzkonsistent*, wie oben beschrieben.
 
 
+## Fragen?
+Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!--HONumber=Oct16_HO2-->
+## Nächste Schritte
+Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet. Der nächste logische Schritt besteht darin, eine Sicherung zu erstellen. Der Planungsartikel enthält ausführlichere Informationen zum Sichern virtueller Computer.
 
+- [Sichern virtueller Computer](backup-azure-vms.md)
+- [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
+- [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
 
+<!---HONumber=AcomDC_0831_2016-->

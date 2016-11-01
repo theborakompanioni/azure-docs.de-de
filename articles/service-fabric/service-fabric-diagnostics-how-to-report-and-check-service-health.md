@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Report and check health with Azure Service Fabric | Microsoft Azure"
-   description="Learn how to send health reports from your service code and how to check the health of your service by using the health monitoring tools that Azure Service Fabric provides."
+   pageTitle="Melden und Überprüfen der Integrität mit Azure Service Fabric | Microsoft Azure"
+   description="Erfahren Sie, wie Sie Integritätsberichte aus Ihrem Dienstcode senden und die Integrität Ihres Diensts mithilfe von Integritätsüberwachungstools prüfen können, die von Azure Service Fabric bereitgestellt werden."
    services="service-fabric"
    documentationCenter=".net"
    authors="toddabel"
@@ -16,69 +16,66 @@
    ms.date="09/06/2016"
    ms.author="toddabel"/>
 
+# Melden und Überprüfen der Dienstintegrität
+Wenn in Ihren Diensten Probleme auftreten, hängt Ihre Fähigkeit zum Reagieren auf und Beheben von Vorfällen und Ausfällen von Ihrer Fähigkeit ab, die Probleme schnell zu erkennen. Indem Ihr Dienstcode Probleme und Ausfälle dem Azure Service Fabric-Integritätsdienst meldet, können Sie standardmäßige Systemüberwachungstools nutzen, die Service Fabric zum Überprüfen des Integritätsstatus bereitstellt.
 
-# <a name="report-and-check-service-health"></a>Report and check service health
-When your services encounter problems, your ability to respond to and fix incidents and outages depends on your ability to detect the issues quickly. If you report problems and failures to the Azure Service Fabric health manager from your service code, you can use standard health monitoring tools that Service Fabric provides to check the health status.
+Es gibt zwei Möglichkeiten, wie Sie Informationen zur Integrität über den Dienst melden können.
 
-There are two ways that you can report health from the service:
+- Verwenden Sie [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx)- oder [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx)-Objekte. Mit den Objekten `Partition` und `CodePackageActivationContext` können Sie Informationen zur Integrität von Elementen melden, die Teil des aktuellen Kontexts sind. Zum Beispiel kann als Teil eines Replikats ausgeführter Code Informationen zur Integrität nur für dieses Replikat, die dazugehörige Partition und für die Anwendung melden, von der er ein Teil ist.
 
-- Use [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx) or [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx) objects.  
-You can use the `Partition` and `CodePackageActivationContext` objects to report the health of elements that are part of the current context. For example, code that runs as part of a replica can report health only on that replica, the partition that it belongs to, and the application that it is a part of.
+- Verwenden Sie `FabricClient`. Sie können Integritätsinformationen über den Dienstcode mit `FabricClient` melden, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist, oder der Dienst mit Administratorrechten ausgeführt wird. In den meisten realen Szenarien wird dies nicht der Fall sein. Mit `FabricClient` können Sie Informationen zur Integrität jeder Entität melden, die Teil des Clusters ist. Im Idealfall sollte der Dienstcode jedoch nur Berichte senden, die im Zusammenhang mit seiner eigenen Integrität stehen.
 
-- Use `FabricClient`.   
-You can use `FabricClient` to report health from the service code if the cluster is not [secure](service-fabric-cluster-security.md) or if the service is running with admin privileges. This won't be true in most real-world scenarios. With `FabricClient`, you can report health on any entity that is a part of the cluster. Ideally, however, service code should only send reports that are related to its own health.
+Dieser Artikel führt Sie durch ein Beispiel, in dem Integritätsberichte auf Basis des Dienstcodes erstellt werden. Das Beispiel zeigt auch, wie die Tools, die Service Fabric bietet, verwendet werden können, um den Integritätsstatus zu überprüfen. Dieser Artikel soll als kurze Einführung in die Funktionen zur Integritätsüberwachung in Service Fabric dienen. Ausführlichere Informationen finden Sie in der Serie detaillierter Artikel zur Integrität, die mit dem Link am Ende dieses Artikels beginnt.
 
-This article walks you through an example that reports health from the service code. The example also shows how the tools that Service Fabric provides can be used to check the health status. This article is intended to be a quick introduction to the health monitoring capabilities of Service Fabric. For more detailed information, you can read the series of in-depth articles about health that start with the link at the end of this article.
-
-## <a name="prerequisites"></a>Prerequisites
-You must have the following installed:
+## Voraussetzungen
+Folgendes müssen Sie installiert haben:
 
    * Visual Studio 2015
-   * Service Fabric SDK
+   * Service Fabric-SDK
 
-## <a name="to-create-a-local-secure-dev-cluster"></a>To create a local secure dev cluster
-- Open PowerShell with admin privileges, and run the following commands.
+## So erstellen Sie einen lokalen, sicheren Entwicklungscluster
+- Öffnen Sie PowerShell mit Administratorrechten, und führen Sie die folgenden Befehle aus.
 
-![Commands that show how to create a secure dev cluster](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
+![Befehle, die zeigen, wie ein sicherer Dev-Cluster erstellt wird](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
 
-## <a name="to-deploy-an-application-and-check-its-health"></a>To deploy an application and check its health
+## So stellen Sie eine Anwendung bereit und überprüfen ihre Integrität
 
-1. Open Visual Studio as an administrator.
+1. Öffnen Sie Visual Studio als Administrator.
 
-2. Create a project by using the **Stateful Service** template.
+2. Erstellen Sie ein Projekt mithilfe der Vorlage **Zustandsbehafteter Dienst**.
 
-    ![Create a Service Fabric application with Stateful Service](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
+    ![Erstellen einer Service Fabric-Anwendung mit einem zustandsbehafteten Dienst](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
 
-3. Press **F5** to run the application in debug mode. The application will be deployed to the local cluster.
+3. Drücken Sie **F5**, um die Anwendung im Debugmodus auszuführen. Die Anwendung wird im lokalen Cluster bereitgestellt.
 
-4. After the application is running, right-click the Local Cluster Manager icon in the notification area and select **Manage Local Cluster** from the shortcut menu to open Service Fabric Explorer.
+4. Sobald die Anwendung ausgeführt wird, klicken Sie mit der rechten Maustaste im Infobereich auf das Symbol „Lokaler Cluster-Manager“, und wählen Sie **Lokalen Cluster verwalten** aus dem Kontextmenü, um Service Fabric Explorer zu öffnen.
 
-    ![Open Service Fabric Explorer from notification area](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
+    ![Öffnen von Service Fabric-Explorer aus dem Infobereich heraus](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
 
-5. The application health should be displayed as in this image. At this time, the application should be healthy with no errors.
+5. Die Anwendungsintegrität sollte wie in dieser Abbildung angezeigt werden. Zu diesem Zeitpunkt sollte die Anwendung stabil und fehlerfrei sein.
 
-    ![Healthy application in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
+    ![Fehlerfreie Anwendung in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
 
-6. You can also check the health by using PowerShell. You can use ```Get-ServiceFabricApplicationHealth``` to check an application's health, and you can use ```Get-ServiceFabricServiceHealth``` to check a service's health. The health report for the same application in PowerShell is in this image.
+6. Sie können die Integrität auch mithilfe der PowerShell überprüfen. Sie können ```Get-ServiceFabricApplicationHealth``` zum Überprüfen der Integrität einer Anwendung und ```Get-ServiceFabricServiceHealth``` zum Überprüfen der Integrität eines Diensts verwenden. Der Integritätsbericht für die gleiche Anwendung in PowerShell ist in diesem Bild dargestellt.
 
-    ![Healthy application in PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
+    ![Fehlerfreie Anwendung in PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
-## <a name="to-add-custom-health-events-to-your-service-code"></a>To add custom health events to your service code
-The Service Fabric project templates in Visual Studio contain sample code. The following steps show how you can report custom health events from your service code. Such reports will automatically show up in the standard tools for health monitoring that Service Fabric provides, such as Service Fabric Explorer, Azure portal health view, and PowerShell.
+## So fügen Sie dem Dienstcode benutzerdefinierte Integritätsereignisse hinzu
+Die Service Fabric-Projektvorlagen in Visual Studio enthalten Beispielcode. Die folgenden Schritte zeigen, wie Sie Integritätsereignisse aus dem Dienstcode melden können. Diese Berichte werden automatisch in den Standardtools für die Überwachung der Integrität angezeigt, die Service Fabric bietet, z. B. Service Fabric-Explorer, Integritätsanzeige im Azure-Portal und PowerShell.
 
-1. Reopen the application that you created previously in Visual Studio, or create a new application by using the **Stateful Service** Visual Studio template.
+1. Öffnen Sie erneut die Anwendung, die Sie zuvor in Visual Studio erstellt haben, oder erstellen Sie eine neue Anwendung, indem Sie die Visual Studio-Vorlage für einen **Zustandsbehafteten Dienst** verwenden.
 
-2. Open the Stateful1.cs file, and find the `myDictionary.TryGetValueAsync` call in the `RunAsync` method. You can see that this method returns a `result` that holds the current value of the counter because the key logic in this application is to keep a count running. If this were a real application, and if the lack of result represented a failure, you would want to flag that event.
+2. Öffnen Sie die Datei „Stateful1.cs“, und suchen Sie den`myDictionary.TryGetValueAsync`-Aufruf in der `RunAsync`-Methode. Wie Sie sehen, gibt diese Methode den aktuellen Wert des Zählers als Ergebnis (`result`) zurück, da die Schlüssellogik dieser Anwendung einen laufenden Zähler vorsieht. Wenn dies eine reale Anwendung wäre, und das Fehlen des Ergebnisses einen Fehler darstellen würde, würden Sie dieses Ereignis kennzeichnen wollen.
 
-3. To report a health event when the lack of result represents a failure, add the following steps.
+3. Um ein Integritätsereignis zu melden, wenn das Fehlen des Ergebnisses einen Fehler darstellt, fügen Sie die folgenden Schritte hinzu.
 
-    a. Add the `System.Fabric.Health` namespace to the Stateful1.cs file.
+    a. Fügen Sie der Datei „Stateful1.cs“ den Namespace `System.Fabric.Health` hinzu.
 
     ```csharp
     using System.Fabric.Health;
     ```
 
-    b. Add the following code after the `myDictionary.TryGetValueAsync` call
+    b. Fügen Sie nach dem `myDictionary.TryGetValueAsync`-Aufruf den folgenden Code hinzu.
 
     ```csharp
     if (!result.HasValue)
@@ -87,9 +84,9 @@ The Service Fabric project templates in Visual Studio contain sample code. The f
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-    We report replica health because it's being reported from a stateful service. The `HealthInformation` parameter stores information about the health issue that's being reported.
+    Wir melden Informationen zur Replikatintegrität, da die Meldung aus einem zustandsbehafteten Dienst erfolgt. Der Parameter `HealthInformation` speichert Informationen zum gemeldeten Integritätsproblem.
 
-    If you had created a stateless service, use the following code
+    Wenn Sie einen zustandslosen Dienst erstellt haben, verwenden Sie den folgenden Code.
 
     ```csharp
     if (!result.HasValue)
@@ -99,15 +96,15 @@ The Service Fabric project templates in Visual Studio contain sample code. The f
     }
     ```
 
-4. If your service is running with admin privileges or if the cluster is not [secure](service-fabric-cluster-security.md), you can also use `FabricClient` to report health as shown in the following steps.  
+4. Wenn Ihr Dienst mit Administratorrechten ausgeführt wird, oder wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist, können Sie auch `FabricClient` verwenden, um Informationen zur Integrität wie nachstehend beschrieben zu melden.
 
-    a. Create the `FabricClient` instance after the `var myDictionary` declaration.
+    a. Erstellen Sie die `FabricClient`-Instanz nach der `var myDictionary`-Deklaration.
 
     ```csharp
     var fabricClient = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
     ```
 
-    b. Add the following code after the `myDictionary.TryGetValueAsync` call.
+    b. Fügen Sie nach dem `myDictionary.TryGetValueAsync`-Aufruf folgenden Code hinzu:
 
     ```csharp
     if (!result.HasValue)
@@ -120,7 +117,7 @@ The Service Fabric project templates in Visual Studio contain sample code. The f
     }
     ```
 
-5. Let's simulate this failure and see it show up in the health monitoring tools. To simulate the failure, comment out the first line in the health reporting code that you added earlier. After you comment out the first line, the code will look like the following example.
+5. Wir simulieren diesen Fehler nun und prüfen, ob er in den Integritätsüberwachungstools angezeigt wird. Zum Simulieren des Fehlers kommentieren Sie zunächst die erste Zeile im Integritätsberichtscode aus, den Sie zuvor hinzugefügt haben. Nach dem Auskommentieren der ersten Zeile sieht der Code wie im folgenden Beispiel aus.
 
     ```csharp
     //if(!result.HasValue)
@@ -129,26 +126,26 @@ The Service Fabric project templates in Visual Studio contain sample code. The f
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
- This code will now fire this health report each time `RunAsync` executes. After you make the change, press **F5** to run the application.
+ Durch diesen Code wird nun bei jeder Ausführung von `RunAsync` dieser Integritätsbericht ausgelöst. Nachdem Sie die Änderung vorgenommen haben, drücken Sie **F5**, um die Anwendung auszuführen.
 
-6. After the application is running, open Service Fabric Explorer to check the health of the application. This time, Service Fabric Explorer will show that the application is unhealthy. This is because of the error that was reported from the code that we added previously.
+6. Sobald die Anwendung ausgeführt wird, öffnen Sie den Service Fabric-Explorer zum Überprüfen der Integrität der Anwendung. Dieses Mal zeigt der Service Fabric-Explorer die Anwendung als fehlerhaft an. Ursache ist der Fehler, der von dem zuvor hinzugefügten Code gemeldet wurde.
 
-    ![Unhealthy application in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
+    ![Fehlerhafte Anwendung in Service Fabric-Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
 
-7. If you select the primary replica in the tree view of Service Fabric Explorer, you will see that **Health State** indicates an error, too. Service Fabric Explorer also displays the health report details that were added to the `HealthInformation` parameter in the code. You can see the same health reports in PowerShell and the Azure portal.
+7. Wenn Sie im Service Fabric-Explorer in der Strukturansicht das primäre Replikat auswählen, erkennen Sie, dass auch hier der **Integritätsstatus** einen Fehler anzeigt. Außerdem zeigt der Service Fabric-Explorer Integritätsberichtsdetails an, die dem Parameter `HealthInformation` im Code hinzugefügt wurden. In PowerShell und im Azure-Portal werden die gleichen Integritätsberichte angezeigt.
 
-    ![Replica health in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
+    ![Replikatsintegrität in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
 
-This report will remain in the health manager until it is replaced by another report or until this replica is deleted. Because we did not set `TimeToLive` for this health report in the `HealthInformation` object, the report will never expire.
+Dieser Bericht verbleibt im Integritätsdienst, bis er durch einen anderen Bericht ersetzt oder dieses Replikat gelöscht wird. Da wir `TimeToLive` nicht für diesen Integritätsbericht im `HealthInformation`-Objekt festgelegt haben, läuft der Bericht nie ab.
 
-We recommend that health should be reported on the most granular level, which in this case is the replica. You can also report health on `Partition`.
+Informationen zur Integrität sollten auf differenziertester Ebene gemeldet werden – in diesem Fall auf Replikatebene. Sie können Informationen zur Integrität auch zur `Partition` melden.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-To report health on `Application`, `DeployedApplication`, and `DeployedServicePackage`, use  `CodePackageActivationContext`.
+Um Integritätsberichte zu `Application`, `DeployedApplication` und `DeployedServicePackage` zu melden, verwenden Sie `CodePackageActivationContext`.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
@@ -156,11 +153,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>Next steps
-[Deep dive on Service Fabric health](service-fabric-health-introduction.md)
+## Nächste Schritte
+[Ausführlichere Informationen zur Service Fabric-Integrität](service-fabric-health-introduction.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

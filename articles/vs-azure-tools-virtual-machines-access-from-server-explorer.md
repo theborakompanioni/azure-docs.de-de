@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Accessing Azure Virtual Machines from Server Explorer | Microsoft Azure"
-   description="Get an overview of how to view create and manage Azure virtual machines (VMs) in Server Explorer in Visual Studio."
+   pageTitle="Zugreifen auf virtuelle Azure-Computer über den Server-Explorer | Microsoft Azure"
+   description="In diesem Artikel erhalten Sie einen Überblick darüber, wie virtuelle Azure-Computer im Server-Explorer von Visual Studio angezeigt, erstellt und verwaltet werden können."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,47 +15,42 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Zugreifen auf virtuelle Computer in Azure über den Server-Explorer
 
-# <a name="accessing-azure-virtual-machines-from-server-explorer"></a>Accessing Azure Virtual Machines from Server Explorer
+Mit dem Server-Explorer in Visual Studio können Sie Informationen über die von Azure gehosteten virtuellen Computer anzeigen.
 
-By using Server Explorer in Visual Studio, you can display information about your virtual machines hosted by Azure.
+## Zugreifen auf virtuelle Computer im Server-Explorer
 
-## <a name="accessing-virtual-machines-in-server-explorer"></a>Accessing virtual machines in Server Explorer
+Wenn Sie in Azure gehostete virtuelle Computer verwenden, können Sie über den Server-Explorer auf diese Computer zugreifen. Sie müssen sich zunächst bei Ihrem Azure-Abonnement anmelden, um die mobilen Dienste anzeigen zu können. Öffnen Sie das Kontextmenü für den Azure-Knoten, und wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, um sich anzumelden.
 
-If you have virtual machines hosted by Azure, you can access them in Server Explorer. You must first sign in to your Azure subscription to view your mobile services. To sign in, open the shortcut menu for the Azure node in Server Explorer, and choose **Connect to Microsoft Azure**.
+### So rufen Sie Informationen zu Ihren virtuellen Computern ab
 
-### <a name="to-get-information-about-your-virtual-machines"></a>To get information about your virtual machines
+1. Wählen Sie im Server-Explorer einen virtuellen Computer aus, und drücken Sie anschließend F4, um das Eigenschaftenfenster für den Computer anzuzeigen.
 
-1. In Server Explorer, choose a virtual machine, and then choose the F4 key to show its properties window.
+    Die folgende Tabelle zeigt, welche Eigenschaften verfügbar sind – diese jedoch alle schreibgeschützt. Sie können sie über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) ändern.
 
-    The following table shows what properties are available, but they are all read-only. To change them, use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
-
-  	|Property|Description|
+  	|Eigenschaft|Beschreibung|
   	|---|---|
-  	|DNS Name|The URL with the Internet address of the virtual machine.|
-  	|Environment|For a virtual machine, the value of this property is always Production.|
-  	|Name|The name of the virtual machine.|
-  	|Size|The size of the virtual machine, which reflects the amount of memory and disk space that’s available. For more information, see How To: Configure Virtual Machine Sizes.|
-  	|Status|Values include Starting, Started, Stopping, Stopped, and Retrieving Status. If Retrieving Status appears, the current status is unknown. The values for this property differ from the values that are used on the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).|
-  	|SubscriptionID|The subscription ID for your Azure account. You can show this information on the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885) by viewing the properties for a subscription.|
+  	|DNS-Name|Die URL mit der Internetadresse des virtuellen Computers.|
+  	|Umgebung|Für einen virtuellen Computer lautet der Wert dieser Eigenschaft immer "Produktion".|
+  	|Name|Der Name des virtuellen Computers.|
+  	|Größe|Die Größe des virtuellen Computers. Diese Eigenschaft gibt die Menge an verfügbarem Arbeitsspeicher und Festplattenspeicher an. Weitere Informationen finden Sie unter "Konfigurieren von Größen für Clouddienste".|
+  	|Status|Mögliche Werte lauten "Wird gestartet", "Gestartet", "Wird angehalten", "Angehalten" und "Status wird abgerufen". Wird "Status wird abgerufen" angezeigt, ist der aktuelle Status unbekannt. Die Werte für diese Eigenschaft unterscheiden sich von den Werten, die im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwendet werden.|
+  	|SubscriptionID|Die Abonnement-ID für Ihr Azure-Konto. Sie können diese Informationen im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) anzeigen, indem Sie die Eigenschaften für ein Abonnement öffnen.|
 
-1. Choose an endpoint node, and then view the **Properties** window.
+1. Wählen Sie einen Endpunktknoten aus, und zeigen Sie dann das Fenster **Eigenschaften** an.
 
-1. The following table describes the available properties of endpoints, but they are read-only. To add or edit the endpoints for a virtual machine, use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885). 
+1. Die folgende Tabelle beschreibt die verfügbaren Endpunkteigenschaften. Alle Eigenschaften sind schreibgeschützt. Verwenden Sie zum Hinzufügen oder Bearbeiten der Endpunkte für einen virtuellen Computer das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-  	|Property|Description|
+  	|Eigenschaft|Beschreibung|
   	|---|---|
-  	|Name|An identifier for the endpoint.|
-  	|Private Port|The port for network access internal to your application.|
-  	|Protocol|The protocol that the transport layer for this endpoint uses, either TCP or UDP.|
-  	|Public Port|The port that’s used for public access to your application.|
+  	|Name|Ein Bezeichner für den Endpunkt.|
+  	|Privater Port|Der Port für den internen Netzwerkzugriff auf Ihre Anwendung.|
+  	|Protocol|Das Protokoll, das von der Transportschicht für diesen Endpunkt verwendet wird – entweder TCP oder UDP.|
+  	|Öffentlicher Port|Der Port, der für den öffentlichen Zugang auf Ihrer Anwendung verwendet wird.|
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn more about using Azure roles in Visual Studio, see [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md).
+Weitere Informationen zum Verwenden von Azure-Rollen in Visual Studio finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](vs-azure-tools-remote-desktop-roles.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

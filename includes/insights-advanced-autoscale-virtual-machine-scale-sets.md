@@ -1,242 +1,237 @@
-# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Advanced Autoscale configuration using Resource Manager templates for VM Scale Sets
+# Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen
 
-You can scale out and in Virtual Machine Scale Sets based on performance metric thresholds, by a recurring schedule, or by a particular date. You can also configure email and webhook notifications for scale actions. This walkthrough shows an example of configuring all the above using a Resource Manager template on a VM Scale Set.
+Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrikschwellenwerten horizontal hoch- und herunterskalieren – entweder nach einem sich wiederholenden Zeitplan oder an einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise beinhaltet ein Beispiel für die Konfiguration der oben genannten Elemente mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
 
->[AZURE.NOTE] While this walkthrough explains the steps for VM Scale Sets, you can apply the same for autoscaling Cloud Services and Web Apps.
-For a simple scale in/out setting on a VM Scale Set based on a simple performance metric such as CPU, refer to the [Linux](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) and [Windows](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) documents
-
+>[AZURE.NOTE] Zwar werden in dieser exemplarischen Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, Sie können diese aber auch für die automatische Skalierung von Cloud Services und Web-Apps anwenden. Wenn Sie eine einfache Einstellung für horizontales Herunterskalieren/Hochskalieren für eine VM-Skalierungsgruppe konfigurieren möchten, die auf einer einfachen Leistungsmetrik wie CPU basiert, finden Sie in Dokumenten zu [Linux](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) und [Windows](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) weitere Informationen.
 
 
-## <a name="walkthrough"></a>Walkthrough
-In this walkthrough, we use [Azure Resource Explorer](https://resources.azure.com/) to configure and update the autoscale setting for a scale set. Azure Resource Explorer is an easy way to manage Azure resources via Resource Manager templates. If you are new to Azure Resource Explorer tool, read [this introduction](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
 
-1. Deploy a new scale set with a basic autoscale setting. This article uses the one from the Azure QuickStart Gallery, which has a Windows scale set with a basic autoscale template. Linux scale sets work the same way.
+## Exemplarische Vorgehensweise
+In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Explorer](https://resources.azure.com/) zum Konfigurieren und Aktualisieren der Einstellung für das automatische Skalieren einer Skalierungsgruppe. Der Azure-Ressourcen-Explorer bietet eine einfache Möglichkeit zum Verwalten von Azure-Ressourcen über Resource Manager-Vorlagen. Wenn Sie den Azure-Ressourcen-Explorer noch nicht kennen, lesen Sie zunächst [diese Einführung](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
 
-2. After the scale set is created, navigate to the scale set resource from Azure Resource Explorer. You see the following under Microsoft.Insights node.
+1. Stellen Sie eine neue Skalierungsgruppe mit grundlegenden Einstellungen für die automatischen Skalierung bereit. In diesem Artikel wird die Windows-Skalierungsgruppe aus dem Azure-Schnellstartkatalog mit einer Standardvorlage für die automatische Skalierung verwendet. Die Linux-Skalierung erfolgt in gleicher Weise.
 
-    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+2. Navigieren Sie nach dem Erstellen der Skalierungsgruppe mithilfe des Azure-Ressourcen-Explorers zur Ressource der Skalierungsgruppe. Unter dem Microsoft.Insights-Knoten wird Folgendes angezeigt:
 
-    The template execution has created a default autoscale setting with the name **'autoscalewad'**. On the right-hand side, you can view the full definition of this autoscale setting. In this case, the default autoscale setting comes with a CPU% based scale-out and scale-in rule.
+	![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
-3. You can now add more profiles and rules based on the schedule or specific requirements. We create an autoscale setting with three profiles. To understand profiles and rules in autoscale, review [Autoscale Best Practices](../articles/azure-portal/insights-autoscale-best-practices.md). 
+	Durch die Ausführung der Vorlage wurde eine Standardeinstellung für die automatische Skalierung mit dem Namen **autoscalewad** erstellt. Auf der rechten Seite wird die vollständige Definition dieser Einstellung für die automatische Skalierung angezeigt. In diesem Fall verfügt die Standardeinstellung für die automatische Skalierung über eine CPU%-basierte Regel für horizontales Hoch- und Herunterskalieren.
 
-    | Profiles & Rules | Description |
-    |---------|-------------------------------------|
-    | **Profile** | **Performance/metric based**    |
-    | Rule    | Service Bus Queue Message Count > x |
-    | Rule    | Service Bus Queue Message Count < y |
-    | Rule    | CPU%,< n                            |
-    | Rule    | CPU% < p                            |
-    | **Profile** | **Weekday morning hours (no rules)**    |
-    | **Profile** | **Product Launch day (no rules)**       |
+3. Sie können nun basierend auf dem Zeitplan oder bestimmten Anforderungen weitere Profile und Regeln hinzufügen. Wir erstellen eine Einstellung für die automatische Skalierung mit drei Profilen. Weitere Informationen zu Profilen und Regeln bei der automatischen Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung in Azure Insights](../articles/azure-portal/insights-autoscale-best-practices.md).
 
-4. Here is a hypothetical scaling scenario that we use for this walkthrough.
-    - _**Load based** - I'd like to scale out or in based on the load on my application hosted on my scale set._
-    - _**Message Queue size** - I use a Service Bus Queue for the incoming messages to my application. I use the queue's message count and CPU% and configure a default profile to trigger a scale action if either of message count or CPU hits the threshold._
-    - _**Time of week and day** - I want a weekly recurring 'time of the day' based profile called 'Weekday Morning Hours'. Based on historical data, I know it is better to have certain number of VM instances to handle my application's load during this time._
-    - _**Special Dates** - I added a 'Product Launch Day' profile. I plan ahead for specific dates so my application is ready to handle the load due marketing announcements and when we put a new product in the application._
-    - _The last two profiles can also have other performance metric based rules within them. In this case, I decided not to have one and instead to rely on the default performance metric based rules. Rules are optional for the recurring and date-based profiles._
+    | Profile und Regeln | Beschreibung |
+	|---------|-------------------------------------|
+	| **Profil** | **Basierend auf Leistung/Metrik** |
+	| Regel | Anzahl von Service Bus-Warteschlangennachrichten > x |
+	| Regel | Anzahl von Service Bus-Warteschlangennachrichten < y |
+	| Regel | CPU% < n |
+	| Regel | CPU% < p |
+	| **Profil** | **Wochentage morgens, (keine Regeln)** |
+	| **Profil** | **Tag der Produkteinführung (keine Regeln)** |
 
-    Autoscale engine's prioritization of the profiles and rules is also captured in the [autoscaling best practices](../articles/azure-portal/insights-autoscale-best-practices.md) article.
-    For a list of common metrics for autoscale, refer [Common metrics for Autoscale](../articles/azure-portal/insights-autoscale-common-metrics.md)
+4. Dies ist ein hypothetisches Skalierungsszenario, das wir für diese exemplarische Vorgehensweise verwenden.
+	- _**Lastbasiert**: Ich möchte je nach Last meiner Anwendung, die in meiner Skalierungsgruppe gehostet wird, horizontal hoch- oder herunterskalieren._
+	- _**Länge der Nachrichtenwarteschlange**: Ich verwende eine Service Bus-Warteschlange für die eingehenden Nachrichten, die von meiner Anwendung empfangen werden. Ich verwende die Anzahl von Warteschlangennachrichten und CPU%. Außerdem konfiguriere ich ein Standardprofil zum Auslösen einer Skalierungsaktion, wenn entweder die Nachrichtenanzahl oder die CPU-Nutzung in Prozent den Schwellenwert erreicht._
+	- _**Zeitpunkt innerhalb einer Woche und Tageszeit**: Ich möchte ein sich wöchentlich wiederholendes, auf der Tageszeit basierendes Profil namens „Wochentage, morgens“. Den Verlaufsdaten habe ich entnommen, dass es besser ist, über eine bestimmte Anzahl von VM-Instanzen zu verfügen, damit meine Anwendungslast während dieser Zeit bewältigt werden kann._
+	- _**Sondertermine**: Ich habe ein Profil „Tag der Produkteinführung“ hinzugefügt. Ich plane für bestimmte Tage im Voraus, damit meine Anwendung die Last verarbeiten kann, die durch Marketingankündigungen und die Einführung neuer Produkte verursacht wird._
+	- _Die letzten zwei Profile können auch andere auf Leistungsmetriken basierende Regeln umfassen. In diesem Fall werden jedoch stattdessen die auf Leistungsmetriken basierenden Standardregeln verwendet. Regeln sind für sich wiederholende und datumsbasierte Profile optional._
 
-5. Make sure you are on the **Read/Write** mode in Resource Explorer
+	Die Profil- und Regelpriorisierung des Moduls für die automatische Skalierung wird auch im Artikel [Empfohlene Methoden für die automatische Skalierung in Azure Insights](../articles/azure-portal/insights-autoscale-best-practices.md) erläutert. Eine Liste mit gängigen Metriken für die automatische Skalierung finden Sie unter [Allgemeine Metriken für die automatische Skalierung](../articles/azure-portal/insights-autoscale-common-metrics.md).
 
-    ![Autoscalewad, default autoscale setting](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+5. Stellen Sie sicher, dass Sie sich im Ressourcen-Explorer im Modus **Lesen/Schreiben** befinden.
 
-6. Click Edit. **Replace** the 'profiles' element in autoscale setting with the following:
+	![Autoscalewad, Standardeinstellung für die automatische Skalierung](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
 
-    ![profiles](./media/insights-advanced-autoscale-vmss/profiles.png)
+6. Klicken Sie auf "Bearbeiten". **Ersetzen** Sie das profiles-Element in der Einstellung für die automatische Skalierung durch Folgendes:
 
-    ```
-    {
-            "name": "Perf_Based_Scale",
-            "capacity": {
-              "minimum": "2",
-              "maximum": "12",
-              "default": "2"
-            },
-            "rules": [
-              {
-                "metricTrigger": {
-                  "metricName": "MessageCount",
-                  "metricNamespace": "",
-                  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ServiceBus/namespaces/mySB/queues/myqueue",
-                  "timeGrain": "PT5M",
-                  "statistic": "Average",
-                  "timeWindow": "PT5M",
-                  "timeAggregation": "Average",
-                  "operator": "GreaterThan",
-                  "threshold": 10
-                },
-                "scaleAction": {
-                  "direction": "Increase",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              },
-              {
-                "metricTrigger": {
-                  "metricName": "MessageCount",
-                  "metricNamespace": "",
-                  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ServiceBus/namespaces/mySB/queues/myqueue",
-                  "timeGrain": "PT5M",
-                  "statistic": "Average",
-                  "timeWindow": "PT5M",
-                  "timeAggregation": "Average",
-                  "operator": "LessThan",
-                  "threshold": 3
-                },
-                "scaleAction": {
-                  "direction": "Decrease",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              },
-              {
-                "metricTrigger": {
-                  "metricName": "\\Processor(_Total)\\% Processor Time",
-                  "metricNamespace": "",
-                  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/<this_vmss_name>",
-                  "timeGrain": "PT5M",
-                  "statistic": "Average",
-                  "timeWindow": "PT30M",
-                  "timeAggregation": "Average",
-                  "operator": "GreaterThan",
-                  "threshold": 85
-                },
-                "scaleAction": {
-                  "direction": "Increase",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              },
-              {
-                "metricTrigger": {
-                  "metricName": "\\Processor(_Total)\\% Processor Time",
-                  "metricNamespace": "",
-                  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/<this_vmss_name>",
-                  "timeGrain": "PT5M",
-                  "statistic": "Average",
-                  "timeWindow": "PT30M",
-                  "timeAggregation": "Average",
-                  "operator": "LessThan",
-                  "threshold": 60
-                },
-                "scaleAction": {
-                  "direction": "Increase",
-                  "type": "ChangeCount",
-                  "value": "1",
-                  "cooldown": "PT5M"
-                }
-              }
-            ]
-          },
-          {
-            "name": "Weekday_Morning_Hours_Scale",
-            "capacity": {
-              "minimum": "4",
-              "maximum": "12",
-              "default": "4"
-            },
-            "rules": [],
-            "recurrence": {
-              "frequency": "Week",
-              "schedule": {
-                "timeZone": "Pacific Standard Time",
-                "days": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday"
-                ],
-                "hours": [
-                  6
-                ],
-                "minutes": [
-                  0
-                ]
-              }
-            }
-          },
-          {
-            "name": "Product_Launch_Day",
-            "capacity": {
-              "minimum": "6",
-              "maximum": "20",
-              "default": "6"
-            },
-            "rules": [],
-            "fixedDate": {
-              "timeZone": "Pacific Standard Time",
-              "start": "2016-06-20T00:06:00Z",
-              "end": "2016-06-21T23:59:00Z"
-            }
-          }
-    ```
-    For supported fields and their values, see [Autoscale REST API documentation](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx).
+	![Profile](./media/insights-advanced-autoscale-vmss/profiles.png)
 
-    Now your autoscale setting contains the three profiles explained previously.
+	```
+	{
+	        "name": "Perf_Based_Scale",
+	        "capacity": {
+	          "minimum": "2",
+	          "maximum": "12",
+	          "default": "2"
+	        },
+	        "rules": [
+	          {
+	            "metricTrigger": {
+	              "metricName": "MessageCount",
+	              "metricNamespace": "",
+	              "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ServiceBus/namespaces/mySB/queues/myqueue",
+	              "timeGrain": "PT5M",
+	              "statistic": "Average",
+	              "timeWindow": "PT5M",
+	              "timeAggregation": "Average",
+	              "operator": "GreaterThan",
+	              "threshold": 10
+	            },
+	            "scaleAction": {
+	              "direction": "Increase",
+	              "type": "ChangeCount",
+	              "value": "1",
+	              "cooldown": "PT5M"
+	            }
+	          },
+	          {
+	            "metricTrigger": {
+	              "metricName": "MessageCount",
+	              "metricNamespace": "",
+	              "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ServiceBus/namespaces/mySB/queues/myqueue",
+	              "timeGrain": "PT5M",
+	              "statistic": "Average",
+	              "timeWindow": "PT5M",
+	              "timeAggregation": "Average",
+	              "operator": "LessThan",
+	              "threshold": 3
+	            },
+	            "scaleAction": {
+	              "direction": "Decrease",
+	              "type": "ChangeCount",
+	              "value": "1",
+	              "cooldown": "PT5M"
+	            }
+	          },
+	          {
+	            "metricTrigger": {
+	              "metricName": "\\Processor(_Total)\\% Processor Time",
+	              "metricNamespace": "",
+	              "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/<this_vmss_name>",
+	              "timeGrain": "PT5M",
+	              "statistic": "Average",
+	              "timeWindow": "PT30M",
+	              "timeAggregation": "Average",
+	              "operator": "GreaterThan",
+	              "threshold": 85
+	            },
+	            "scaleAction": {
+	              "direction": "Increase",
+	              "type": "ChangeCount",
+	              "value": "1",
+	              "cooldown": "PT5M"
+	            }
+	          },
+	          {
+	            "metricTrigger": {
+	              "metricName": "\\Processor(_Total)\\% Processor Time",
+	              "metricNamespace": "",
+	              "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/<this_vmss_name>",
+	              "timeGrain": "PT5M",
+	              "statistic": "Average",
+	              "timeWindow": "PT30M",
+	              "timeAggregation": "Average",
+	              "operator": "LessThan",
+	              "threshold": 60
+	            },
+	            "scaleAction": {
+	              "direction": "Increase",
+	              "type": "ChangeCount",
+	              "value": "1",
+	              "cooldown": "PT5M"
+	            }
+	          }
+	        ]
+	      },
+	      {
+	        "name": "Weekday_Morning_Hours_Scale",
+	        "capacity": {
+	          "minimum": "4",
+	          "maximum": "12",
+	          "default": "4"
+	        },
+	        "rules": [],
+	        "recurrence": {
+	          "frequency": "Week",
+	          "schedule": {
+	            "timeZone": "Pacific Standard Time",
+	            "days": [
+	              "Monday",
+	              "Tuesday",
+	              "Wednesday",
+	              "Thursday",
+	              "Friday"
+	            ],
+	            "hours": [
+	              6
+	            ],
+	            "minutes": [
+	              0
+	            ]
+	          }
+	        }
+	      },
+	      {
+	        "name": "Product_Launch_Day",
+	        "capacity": {
+	          "minimum": "6",
+	          "maximum": "20",
+	          "default": "6"
+	        },
+	        "rules": [],
+	        "fixedDate": {
+	          "timeZone": "Pacific Standard Time",
+	          "start": "2016-06-20T00:06:00Z",
+	          "end": "2016-06-21T23:59:00Z"
+	        }
+	      }
+	```
+	Die unterstützten Felder und ihre Werte finden Sie in der [Dokumentation zur REST-API für die automatische Skalierung](https://msdn.microsoft.com/de-DE/library/azure/dn931928.aspx).
 
-7.  Finally let's look at the Autoscale **notification** section. Autoscale notifications allow you to do three things when a scale-out or in action is successfully triggered.
+	Ihre Einstellung für die automatische Skalierung enthält jetzt die drei zuvor erläuterten Profile.
 
-    1. Notify the admin and co-admins of your subscription
+7. 	Abschließend betrachten wir den **notification**-Abschnitt für die automatische Skalierung. Mit Benachrichtigungen für die automatische Skalierung können Sie drei Aufgaben ausführen, wenn eine Aktion zum horizontalen Hoch- oder Herunterskalieren erfolgreich ausgelöst wurde.
 
-    2. Email a set of users
+	1. Sie können den Administrator und Co-Administratoren Ihres Abonnements benachrichtigen.
 
-    3. Trigger a webhook call. When fired, this webhook sends metadata about the autoscaling condition and the scale set resource. To learn more about the payload of autoscale webhook, see [Configure Webhook & Email Notifications for Autoscale](../articles/azure-portal/insights-autoscale-to-webhook-email.md).
+	2. Sie können eine E-Mail an eine Benutzergruppe senden.
 
-    Add the following to the Autoscale setting replacing your **notification** element whose value is null
+	3. Sie können einen Webhookaufruf auslösen. Wenn dieser Webhook ausgelöst wird, sendet er Metadaten zur Bedingung für die automatische Skalierung sowie zur Ressource der Skalierungsgruppe. Weitere Informationen über die Nutzlast des Webhooks für die automatische Skalierung finden Sie unter [Konfigurieren von Webhook- und E-Mail-Benachrichtigungen für die automatische Skalierung](../articles/azure-portal/insights-autoscale-to-webhook-email.md).
 
-    ```
-    "notifications": [
-          {
-            "operation": "Scale",
-            "email": {
-              "sendToSubscriptionAdministrator": true,
-              "sendToSubscriptionCoAdministrators": false,
-              "customEmails": [
-                  "user1@mycompany.com",
-                  "user2@mycompany.com"
-                  ]
-            },
-            "webhooks": [
-              {
-                "serviceUri": "https://foo.webhook.example.com?token=abcd1234",
-                "properties": {
-                  "optional_key1": "optional_value1",
-                  "optional_key2": "optional_value2"
-                }
-              }
-            ]
-          }
-        ]
+	Ergänzen Sie die Einstellung für die automatische Skalierung wie folgt, und ersetzen Sie dabei Ihr **notification**-Element, dessen Wert NULL ist.
 
-    ```
+	```
+	"notifications": [
+	      {
+	        "operation": "Scale",
+	        "email": {
+	          "sendToSubscriptionAdministrator": true,
+	          "sendToSubscriptionCoAdministrators": false,
+	          "customEmails": [
+	              "user1@mycompany.com",
+	              "user2@mycompany.com"
+	              ]
+	        },
+	        "webhooks": [
+	          {
+	            "serviceUri": "https://foo.webhook.example.com?token=abcd1234",
+	            "properties": {
+	              "optional_key1": "optional_value1",
+	              "optional_key2": "optional_value2"
+	            }
+	          }
+	        ]
+	      }
+	    ]
 
-    Hit **Put** button in Resource Explorer to update the autoscale setting.
+	```
 
-You have updated an autoscale setting on a VM Scale set to include multiple scale profiles and scale notifications.
+	Klicken Sie im Ressourcen-Explorer auf die Schaltfläche **Put**, um die Einstellung für die automatische Skalierung zu aktualisieren.
 
-## <a name="next-steps"></a>Next Steps
+Sie haben eine Einstellung für die automatische Skalierung für eine VM-Skalierungsgruppe aktualisiert, um mehrere Skalierungsprofile und Skalierungsbenachrichtigungen aufzunehmen.
 
-Use these links to learn more about autoscaling.
+## Nächste Schritte
 
-[Common Metrics for Autoscale](../articles/azure-portal/insights-autoscale-common-metrics.md)
+Über die folgenden Links können Sie auf weitere Informationen zur automatischen Skalierung zugreifen.
 
-[Best Practices for Azure Autoscale](../articles/azure-portal/insights-autoscale-best-practices.md)
+[Allgemeine Metriken für die automatische Skalierung](../articles/azure-portal/insights-autoscale-common-metrics.md)
 
-[Manage Autoscale using PowerShell](../articles/azure-portal/insights-powershell-samples.md#create-and-manage-autoscale-settings)
+[Empfohlene Methoden für die automatische Skalierung](../articles/azure-portal/insights-autoscale-best-practices.md)
 
-[Manage Autoscale using CLI](../articles/azure-portal/insights-cli-samples.md#autoscale)
+[Verwalten der automatischen Skalierung mit PowerShell](../articles/azure-portal/insights-powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Configure Webhook & Email Notifications for Autoscale](../articles/azure-portal/insights-autoscale-to-webhook-email.md)
+[Verwalten der automatischen Skalierung über die CLI](../articles/azure-portal/insights-cli-samples.md#autoscale)
 
+[Konfigurieren von Webhook- und E-Mail-Benachrichtigungen für die automatische Skalierung](../articles/azure-portal/insights-autoscale-to-webhook-email.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

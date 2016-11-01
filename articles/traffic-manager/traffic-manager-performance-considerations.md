@@ -1,91 +1,87 @@
 <properties
-    pageTitle="Performance considerations for Azure Traffic Manager | Microsoft Azure"
-    description="Understand performance on Traffic Manager and how to test performance of your website when using Traffic Manager"
-    services="traffic-manager"
-    documentationCenter=""
-    authors="sdwheeler"
-    manager="carmonm"
-    editor=""
-/>
-<tags
-    ms.service="traffic-manager"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="10/11/2016"
-    ms.author="sewhee"
-/>
+   pageTitle="Leistungsüberlegungen zu Azure Traffic Manager | Microsoft Azure"
+   description="Grundlegendes zur Leistung von Traffic Manager und Testen der Leistung auf Websites bei Verwendung von Traffic Manager"
+   services="traffic-manager"
+   documentationCenter=""
+   authors="sdwheeler"
+   manager="carmonm"
+   editor="joaoma" />
+
+<tags 
+   ms.service="traffic-manager"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="06/10/2016"
+   ms.author="sewhee" />
 
 
-# <a name="performance-considerations-for-traffic-manager"></a>Performance considerations for Traffic Manager
+# Leistungsüberlegungen zu Traffic Manager
 
-This page explains performance considerations using Traffic Manager. Consider the following scenario:
+Auf dieser Seite werden Überlegungen zur Leistung bei der Verwendung von Traffic Manager erläutert. Beispielszenarien: Sie verfügen über eine Website in den USA und eine in Asien, und eine davon besteht die Integritätsprüfung für Traffic Manager-Tests nicht. Daraufhin werden alle Benutzer in die fehlerfreie Region geleitet. Das Verhalten kann wie ein Leistungsproblem erscheinen, aber es würde sich basierend auf der Entfernung für die Benutzeranforderung um erwartetes Verhalten handeln.
 
-You have instances of your website in the WestUS and EastAsia regions. One of the instances is failing the health check for the traffic manager probe. Application traffic is directed to the healthy region. This failover is expected but performance can be a problem based on the latency of the traffic now traveling to a distant region.
+  
 
-## <a name="how-traffic-manager-works"></a>How Traffic Manager works
+## Wichtiger Hinweis zur Funktionsweise von Traffic Manager
 
-The only performance impact that Traffic Manager can have on your website is the initial DNS lookup. A DNS request for the name of your Traffic Manager profile is handled by the Microsoft DNS root server that hosts the trafficmanager.net zone. Traffic Manager populates, and regularly updates, the Microsoft's DNS root servers based on the Traffic Manager policy and the probe results. So even during the initial DNS lookup, no DNS queries are sent to Traffic Manager.
+- Traffic Manager dient im Wesentlichen nur einem Zweck – der DNS-Auflösung. Dies bedeutet, dass sich die einzige Leistungsbeeinträchtigung, die Traffic Manager für Websites haben kann, bei der ersten DNS-Suche ergibt.
+- Klarstellung zur DNS-Suche durch Traffic Manager. Traffic Manager füllt und aktualisiert regelmäßig die regulären Microsoft DNS-Stammserver auf Grundlage Ihrer Richtlinie und der Testergebnisse. So erfolgt auch die erste DNS-Suche ohne Beteiligung von Traffic Manager, da die DNS-Anforderung von den regulären Microsoft DNS-Stammservern verarbeitet wird. Wenn Traffic Manager "ausfällt" (d. h. ein Fehler in den virtuellen Computern auftritt, die die Richtlinientests und die DNS-Aktualisierung durchführen), hat dies keine Auswirkungen auf den Traffic Manager-DNS-Namen, da die Einträge in den Microsoft DNS-Servern weiterhin beibehalten werden. Als einzige Auswirkungen werden die Tests und Aktualisierungen auf Grundlage der Richtlinie nicht durchgeführt (d. h., wenn der primäre Standort ausfällt, kann Traffic Manager das DNS nicht so aktualisieren, dass es auf den Failoverstandort verweist).
+- Der Datenverkehr fließt NICHT durch Traffic Manager. Es gibt keine Traffic Manager-Server, die als Zwischeninstanz zwischen den Clients und dem Azure-gehosteten Dienst fungieren. Nach Beendigung der DNS-Suche wird Traffic Manager vollständig aus der Kommunikation zwischen Client und Server entfernt.
+- Die DNS-Suche erfolgt sehr schnell und wird zwischengespeichert. Die erste DNS-Suche hängt vom Client und den konfigurierten DNS-Servern ab. In der Regel kann ein Client eine DNS-Suche in ca. 50 ms durchführen (siehe http://www.solvedns.com/dns-comparison/). Nach Abschluss der ersten Suche werden die Ergebnisse für die Gültigkeitsdauer des DNS zwischengespeichert. Für Traffic Manager gilt der Standardwert 300 Sekunden.
+- Die Traffic Manager-Richtlinie, die Sie auswählen (Leistung, Failover, Roundrobin) hat keinen Einfluss auf die DNS-Leistung. Die Leistungsrichtlinie kann sich negativ auf das Nutzererlebnis auswirken, wenn Sie beispielsweise Benutzer in den USA an einen in Asien gehosteten Dienst weiterleiten. Diese Leistungsbeeinträchtigung wird aber nicht von Traffic Manager verursacht.
 
-Traffic Manager is made up of several components: DNS name servers, an API service, the storage layer, and an endpoint monitoring service. If a Traffic Manager service component fails, there is no effect on the DNS name associated with your Traffic Manager profile. The records in the Microsoft DNS servers remain unchanged. However, endpoint monitoring and DNS updating do not happen. Therefore, Traffic Manager is not able to update DNS to point to your failover site when your primary site goes down.
+  
 
-DNS name resolution is fast and results are cached. The speed of the initial DNS lookup depends on the DNS servers the client uses for name resolution. Typically, a client can complete a DNS lookup within ~50 ms. The results of the lookup are cached for the duration of the DNS Time-to-live (TTL). The default TTL for Traffic Manager is 300 seconds.
+## Testen der Leistung von Traffic Manager
 
-Traffic does NOT flow through Traffic Manager. Once the DNS lookup completes, the client has an IP address for an instance of your web site. The client connects directly to that address and does not pass through Traffic Manager. The Traffic Manager policy you choose has no influence on the DNS performance. However, a Performance routing-method can negatively impact the application experience. For example, if your policy redirects traffic from North America to an instance hosted in Asia, the network latency for those sessions may be a performance issue.
+Es gibt einige öffentlich verfügbare Websites, die Sie verwenden können, um die Leistung und das Verhalten von Traffic Manager zu ermitteln. Diese Websites sind nützlich, um die DNS-Latenz und die gehosteten Dienste zu ermitteln, an die Ihre Benutzer weltweit weitergeleitet werden. Beachten Sie dabei, dass die meisten dieser Tools die DNS-Ergebnisse nicht zwischenspeichern. Dadurch wird beim mehrmaligen Ausführen der Tests die vollständige DNS-Suche angezeigt, während die Clients, die eine Verbindung mit Ihrem Traffic Manager-Endpunkt herstellen, die Leistungsbeeinträchtigung der vollständigen DNS-Suche nur einmal während der Gültigkeitsdauer sehen.
 
-## <a name="measuring-traffic-manager-performance"></a>Measuring Traffic Manager Performance
 
-There are several websites you can use to understand the performance and behavior of a Traffic Manager profile. Many of these sites are free but may have limitations. Some sites offer enhanced monitoring and reporting for a fee.
+## Beispieltools zum Messen der Leistung
 
-The tools on these sites measure DNS latencies and display the resolved IP addresses for client locations around the world. Most of these tools do not cache the DNS results. Therefore, the tools show the full DNS lookup each time a test is run. When you test from your own client, you only experience the full DNS lookup performance once during the TTL duration.
 
-## <a name="sample-tools-to-measure-dns-performance"></a>Sample tools to measure DNS performance
+Eines der einfachsten Tools ist WebSitePulse. Wenn Sie die URL eingeben, werden Statistiken wie z. B. die DNS-Auflösungszeit, erstes Byte, letztes Byte und andere Leistungsstatistiken angezeigt. Sie haben die Wahl zwischen drei verschiedenen Standorten zum Testen Ihrer Website. In diesem Beispiel können Sie sehen, dass die erste DNS-Suche bei der ersten Ausführung des Tests 0,204 Sekunden dauert. Wenn dieser Test das zweite Mal auf dem gleichen Traffic Manager-Endpunkt ausgeführt wird, dauert die DNS-Suche 0,002 Sekunden, da die Ergebnisse bereits zwischengespeichert sind.
 
-- [SolveDNS](http://www.solvedns.com/dns-comparison/)
+http://www.websitepulse.com/help/tools.php
 
-    SolveDNS offers many performance tools. The DNS Comparison tool can show you how long it takes to resolve your DNS name and how that compares to other DNS service providers.
 
-- [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+![Impuls1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    One of the simplest tools is WebSitePulse. Enter the URL to see DNS resolution time, First Byte, Last Byte, and other performance statistics. You can choose from three different test locations. In this example, you see that the first execution shows that DNS lookup takes 0.204 sec.
+DNS-Auflösungszeit bei Zwischenspeicherung:
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    Because the results are cached, the second test for the same Traffic Manager endpoint the DNS lookup takes 0.002 sec.
-
-    ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
-
-- [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
-
-    Formerly known as the Watchmouse Check Website tool, this site show you the DNS resolution time from multiple geographic regions simultaneously. Enter the URL to see DNS resolution time, connection time, and speed from several geographic locations. Use this test to see which hosted service is returned for different locations around the world.
-
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
-
-- [Pingdom](http://tools.pingdom.com/)
-
-    This tool provides performance statistics for each element of a web page. The Page Analysis tab shows the percentage of time spent on DNS lookup.
-
-- [What's My DNS?](http://www.whatsmydns.net/)
-
-    This site does a DNS lookup from 20 different locations and displays the results on a map.
-
-- [Dig Web Interface](http://www.digwebinterface.com)
-
-    This site shows more detailed DNS information including CNAMEs and A records. Make sure you check the 'Colorize output' and 'Stats' under options, and select 'All' under Nameservers.
-
-## <a name="next-steps"></a>Next Steps
-
-[About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md)
-
-[Test your Traffic Manager settings](traffic-manager-testing-settings.md)
-
-[Operations on Traffic Manager (REST API Reference)](http://go.microsoft.com/fwlink/?LinkId=313584)
-
-[Azure Traffic Manager Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+![Impuls2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
 
 
-<!--HONumber=Oct16_HO2-->
+Ein anderes ausgesprochen nützliches Tool zum Abrufen der DNS-Auflösungszeit aus mehreren geografischen Regionen gleichzeitig ist das Tool Check Website von Watchmouse. Wenn Sie die URL eingeben, werden die DNS-Auflösungszeit, die Verbindungszeit und die Verbindungsgeschwindigkeit aus mehreren geografischen Standorten angezeigt. Dies ist auch praktisch zum Testen der Traffic Manager-Leistungsrichtlinie, um zu ermitteln, an welche gehosteten Dienste Ihre Benutzer weltweit weitergeleitet werden.
+
+http://www.watchmouse.com/en/checkit.php
 
 
+![Impuls1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
+
+http://tools.pingdom.com/ – mit diesem Tool werden eine Website getestet und Leistungsstatistiken für jedes Element auf der Seite in einem Diagramm dargestellt. Wenn Sie zur Registerkarte "Page Analysis" wechseln, wird dort die für die DNS-Suche aufgewendete Zeit in Prozent angezeigt.
+
+ 
+
+http://www.whatsmydns.net/ – diese Website führt eine DNS-Suche von 20 verschiedenen geografischen Standorten aus durch und zeigt die Ergebnisse auf einer Karte an. Diese visuelle Darstellung eignet sich hervorragend zum Ermitteln der gehosteten Dienste, mit denen Ihre Clients eine Verbindung herstellen.
+
+ 
+
+http://www.digwebinterface.com – ähnelt der Watchmouse-Website, gibt jedoch detailliertere DNS-Informationen an, darunter CNAMEs- und A-Datensätze. Achten Sie darauf, dass Sie die Optionen "Colorize output" und "Stats" aktivieren und unter "Nameservers" die Option "All" auswählen.
+
+## Nächste Schritte
+
+
+[Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
+
+[Testen der Traffic Manager-Einstellungen](traffic-manager-testing-settings.md)
+
+[Vorgänge für Traffic Manager (REST-API-Referenz)](http://go.microsoft.com/fwlink/?LinkId=313584)
+
+[Azure Traffic Manager-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+ 
+
+<!---HONumber=AcomDC_0824_2016-->

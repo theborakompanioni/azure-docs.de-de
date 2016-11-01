@@ -1,47 +1,47 @@
 <properties
-    pageTitle="About Linux virtual machines | Microsoft Azure"
-    description="Learn about the basics of Linux virtual machines in Azure using both deployment models."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor="tysonn"
-    tags="azure-resource-manager,azure-service-management"/>
+	pageTitle="Über virtuelle Linux-Computer | Microsoft Azure"
+	description="Machen Sie sich mit den Grundlagen von virtuellen Linux-Computern in Azure unter Verwendung beider Bereitstellungsmodelle vertraut."
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="cynthn"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/15/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/15/2016"
+	ms.author="cynthn"/>
 
-
-#<a name="about-linux-virtual-machines-in-azure"></a>About Linux virtual machines in Azure
+#Über virtuelle Linux-Computer in Azure
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-Azure Virtual Machines is one of several types of on-demand, scalable computing resources that Azure offers. Typically, you'll choose a virtual machine if you need more control over the computing environment than the other choices offer.
+Virtuelle Azure-Computer sind eine von mehreren bedarfsgesteuerten, skalierbaren Computerressourcen, die von Azure angeboten werden. In der Regel wählen Sie eine virtuelle Maschine, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen, als die anderen Optionen bieten.
 
-An Azure virtual machine gives you the flexibility of virtualization without having to buy and maintain the physical hardware that runs the virtual machine. However, you still need to maintain the virtual machine -- configuring, patching, and maintaining the software that runs on the virtual machine. You can also learn [about Windows virtual machines in Azure](virtual-machines-windows-about.md).
+Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet. Allerdings müssen Sie den virtuellen Computer verwalten – Konfigurieren, Patchen und Verwalten der Software, die auf dem virtuellen Computer ausgeführt wird. Außerdem erhalten Sie Informationen [über virtuelle Azure-Computer](virtual-machines-windows-about.md)
 
-This table helps you compare the choices offered by Azure.
+Anhand dieser Tabelle können Sie die von Azure angebotenen Auswahlmöglichkeiten vergleichen.
 
 [AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
 
-[AZURE.INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
+[AZURE.INCLUDE [Virtuelle-Computer-Auswahlmöglichkeiten](../../includes/virtual-machines-choose-me-content.md)]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Try out a virtual machine by creating a simple virtual machine quickly. For instructions, see [Create a virtual machine running Linux](virtual-machines-linux-quick-create-cli.md).
+Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in nur wenigen Schritten einen einfachen virtuellen Computer. Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md).
 
-Because the tutorial helps you create a virtual machine quickly, it only shows you one way to do it instead of describing the various tools you can use to create virtual machines. For a summary of these tools and links to instructions, see [Different ways to create a Linux virtual machine](virtual-machines-linux-creation-choices.md).
-
-
+Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen Computer zu erstellen, zeigen sie nur eine von mehreren Möglichkeiten auf. Die verschiedenen Tools, die für die Erstellung virtueller Computers zur Verfügung stehen, werden hingegen nicht beschrieben. Eine Übersicht über diese Tools und Links zu Anweisungen finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-creation-choices.md).
 
 
-<!--HONumber=Oct16_HO2-->
+<!--links-->
+[App Service]: app-service-choose-me.md
+[Virtuelle Computer]: #tellmevm
+[Cloud-Dienste]: cloud-services-choose-me.md
 
-
+<!---HONumber=AcomDC_0615_2016-->

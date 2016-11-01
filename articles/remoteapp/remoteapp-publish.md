@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Publish an app in Azure RemoteApp | Microsoft Azure"
-    description="Learn how to publish applications and resources in Azure RemoteApp."
+    pageTitle="Veröffentlichen einer App in Azure RemoteApp | Microsoft Azure"
+    description="Erfahren Sie, wie Sie Anwendungen und Ressourcen in Azure RemoteApp veröffentlichen."
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -16,28 +16,24 @@
     ms.author="elizapo" />
 
 
-
-# <a name="how-to-publish-an-app-in-remoteapp"></a>How to publish an app in RemoteApp
+# Gewusst wie: Veröffentlichen einer App in RemoteApp
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
-After you create your RemoteApp collection, you need to publish the apps or resources that you want to make available for your users. The template images provided with your subscription only have a few apps published by default - to share the other apps, you need to publish them.
+Nach dem Erstellen der RemoteApp-Sammlung müssen Sie die Apps oder Ressourcen, die Sie für Ihre Benutzer zur Verfügung stellen möchten, veröffentlichen. Die Vorlagenimages, die mit Ihrem Abonnement bereitgestellt wurden, enthalten nur wenige Apps, die standardmäßig veröffentlicht werden. Um die anderen Apps freizugeben, müssen Sie diese zuerst veröffentlichen.
 
-> [AZURE.NOTE] Do you need to update an app? You'll need to [update the image](remoteapp-update.md) first.
+> [AZURE.NOTE] Müssen Sie eine App aktualisieren? Sie müssen zunächst [das Image aktualisieren](remoteapp-update.md).
 
-On the **Publishing** tab in the portal, click **Publish**. You can either add an app from your template image's **Start** menu or provide the path to where the app is installed on the template image. If you choose to add from the **Start** menu, choose the app to publish from the list. If you choose to provide the path to the app, enter a name for the app and the path to the app. Use variables in the path - for example, "%systemdrive%" instead of "c:\".
+Klicken Sie im Portal auf der Registerkarte **Veröffentlichung** auf **Veröffentlichen**. Sie können entweder eine App aus dem **Startmenü** des Vorlagenimages hinzufügen oder den Pfad angeben, in dem die App auf dem Vorlagenimage installiert ist. Wenn Sie die App aus dem **Startmenü** hinzufügen möchten, wählen Sie die zu veröffentlichende App in der Liste aus. Wenn Sie den Pfad zur App bereitstellen möchten, geben Sie einen Namen für die App und den Pfad zur App an. Verwenden Sie Variablen im Pfad, z. B. "%systemdrive%" anstelle von "c:".
 
-> [AZURE.NOTE] If you want to add your app from the **Start** menu, you need to have *added that app to the **Start** menu on your template image.* Otherwise, RemoteApp will only see what *is* on the **Start** menu, and you will be confused. 
+> [AZURE.NOTE] Wenn Sie die App aus dem **Startmenü** hinzufügen möchten, *müssen Sie diese App im Vorlagenimage dem **Startmenü** hinzugefügt haben.* Andernfalls wird in RemoteApp nur angezeigt, was sich *im* **Startmenü** befindet, was zu Verwechslungen führen kann.
 
->To make sure your app is in the **Start** menu, place a shortcut file - **.lnk** - inside the %systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs folder.
+>Um sicherzustellen, dass sich die App im **Startmenü** befindet, platzieren Sie eine Verknüpfungsdatei (**.lnk**) im Ordner „%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start“.
 
-> If you forgot to add the app to the **Start** menu when you created the template, choose to add the path to the app. (Or recreate your template image, but that's quite a bit more work.)
+> Wenn Sie beim Erstellen der Vorlage vergessen haben, die App dem **Startmenü** hinzufügen, fügen Sie der App den Pfad hinzu. (Oder erstellen Sie Ihr Vorlagenimage neu. Dies bedeutet allerdings einen etwas höheren Arbeitsaufwand.)
 
 
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

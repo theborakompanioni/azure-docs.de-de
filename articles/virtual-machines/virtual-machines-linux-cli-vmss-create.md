@@ -1,55 +1,49 @@
 <properties
-    pageTitle="What are VM scale sets? | Microsoft Azure"
-    description="Learn about VM scale sets."
-    keywords="linux virtual machine,virtual machine scale sets" 
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="gatneil"
-    manager="madhana"
-    editor="tysonn"
-    tags="azure-resource-manager" />
+	pageTitle="Was sind Skalierungsgruppen für VMs? | Microsoft Azure"
+	description="Erfahren Sie mehr über VM-Skalierungsgruppen."
+	keywords="virtueller Linux-Computer, Skalierungsgruppen für virtuelle Computer" 
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="gatneil"
+	manager="madhana"
+	editor="tysonn"
+	tags="azure-resource-manager" />
 
 <tags
-    ms.service="virtual-machine-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="03/24/2016"
-    ms.author="gatneil"/>
+	ms.service="virtual-machine-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/24/2016"
+	ms.author="gatneil"/>
 
+# Was sind Skalierungsgruppen für virtuelle Computer?
 
-# <a name="what-are-virtual-machine-scale-sets?"></a>What are virtual machine scale sets?
+Skalierungsgruppen virtueller Computer ermöglichen es Ihnen, mehrere VMs als Satz zu verwalten. Auf hoher Ebene haben Skalierungsgruppen die folgenden Vor- und Nachteile:
 
-Virtual Machine Scale Sets allow you to manage multiple VMs as a set. At a high level, scale sets have the following pros and cons:
+Vorteile:
 
-Pros:
+1. Hohe Verfügbarkeit. Jede Skalierungsgruppe platziert ihre virtuellen Computer in eine Verfügbarkeitsgruppe mit fünf Fehlerdomänen (FD) und fünf Updatedomänen (UD), um die Verfügbarkeit sicherzustellen (weitere Informationen zu FDs und UDs finden Sie unter [VM-Verfügbarkeit](./virtual-machines-linux-manage-availability.md)). 
+2. Einfache Integration mit dem Azure Load Balancer und App Gateway
+3. Leichtere Integration mit Azure Autoscale
+4. Vereinfachte Bereitstellung, Verwaltung und Bereinigung von virtuellen Computern
+5. Unterstützung häufiger Windows- und Linux-Varianten sowie benutzerdefinierter Images
 
-1. High availability. Each scale set puts its VMs into an Availability Set with 5 Fault Domains (FDs) and 5 Update Domains (UDs) to ensure availability (for more information on FDs and UDs, see [VM availability](./virtual-machines-linux-manage-availability.md)). 
-2. Easy integration with Azure Load Balancer and App Gateway.
-3. Easy integration with Azure Autoscale.
-4. Simplified deployment, management, and clean up of VMs.
-5. Support common Windows and Linux flavors, as well as custom images.
+Nachteile:
 
-Cons:
+1. Kann in einer Skalierungsgruppe keine Datenträger an VM-Instanzen anfügen. Muss stattdessen Azure Blob Storage, Azure Files Storage, Azure Table Storage oder andere Speicherlösungen verwenden.
 
-1. Cannot attach data disks to VM instances in a scale set. Instead, must use Blob Storage, Azure Files, Azure Tables, or other storage solution.
-
-## <a name="quick-create-using-azure-cli"></a>Quick-create using Azure CLI
+## Schnellerfassung mithilfe der Azure-Befehlszeilenschnittstelle
 
 [AZURE.INCLUDE [cli-vmss-quick-create](../../includes/virtual-machines-linux-cli-vmss-quick-create-include.md)]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-For general information, check out the [main landing page for scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+Allgemeine Informationen finden Sie auf der [Hauptseite für Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 
-For more documentation, check out the [main documentation page for scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
+Weitere Dokumente finden Sie auf der [Hauptdokumentationsseite für Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
 
-For example Resource Manager templates using scale sets, search for "vmss" in the [Azure Quickstart Templates github repo](https://github.com/Azure/azure-quickstart-templates).
+Wenn Sie Beispiele für Resource Manager-Vorlagen ansehen möchten, die Skalierungsgruppen verwenden, suchen Sie im [Github-Repository für Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) nach „vmss“.
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

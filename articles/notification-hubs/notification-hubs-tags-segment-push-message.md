@@ -1,121 +1,115 @@
 <properties
-    pageTitle="Routing and Tag Expressions"
-    description="This topic explains routing and tag expressions for Azure notification hubs."
-    services="notification-hubs"
-    documentationCenter=".net"
-    authors="ysxu"
-    manager="erikre"
-    editor=""/>
+	pageTitle="Weiterleitung und Tagausdrücke"
+	description="In diesem Thema werden Weiterleitung und Tagausdrücke für Azure Notification Hubs erläutert."
+	services="notification-hubs"
+	documentationCenter=".net"
+	authors="wesmc7777"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="notification-hubs"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="06/29/2016"
-    ms.author="yuaxu"/>
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/29/2016"
+	ms.author="wesmc"/>
+
+# Weiterleitung und Tagausdrücke
+
+##Übersicht
+
+Tagausdrücke ermöglichen Ihnen, bestimmte Sammlungen von Geräten oder speziell Registrierungen beim Senden einer Pushbenachrichtigung über Notification Hubs als Ziele anzugeben.
 
 
-# <a name="routing-and-tag-expressions"></a>Routing and tag expressions
+## Verwenden bestimmter Registrierungen als Ziel
 
-##<a name="overview"></a>Overview
+Die einzige Möglichkeit zum Verwenden bestimmter Benachrichtigungsregistrierungen als Ziel ist das Zuordnen von Tags und das anschließende Verwenden dieser Tags als Ziele. Wie in [Registrierungsverwaltung](notification-hubs-push-notification-registration-management.md) erläutert, muss eine App ein Gerätehandle auf einem Notification Hub registrieren, um Pushbenachrichtigungen empfangen zu können. Sobald eine Registrierung auf einem Notification Hub erstellt wurde, kann das Anwendungs-Back-End Pushbenachrichtigungen an diese senden. Das Anwendungs-Back-End kann folgendermaßen auswählen, an welche Registrierungen eine bestimmte Benachrichtigung gesendet werden soll:
 
-Tag expressions enable you to target specific sets of devices, or more specifically registrations, when sending a push notification through Notification Hubs.
+1. **Broadcast:** Alle Registrierungen im Notification Hub empfangen die Benachrichtigung.
+2. **Tag:** Alle Registrierungen, die das angegebene Tag enthalten, empfangen die Benachrichtigung.
+3. **Tagausdruck:** Alle Registrierungen, deren Satz von Tags mit dem angegebenen Ausdruck übereinstimmt, empfangen die Benachrichtigung.
 
+## Tags
 
-## <a name="targeting-specific-registrations"></a>Targeting specific registrations
-
-The only way to target specific notification registrations is to associate tags with them, then target those tags. As discussed in [Registration Management](notification-hubs-push-notification-registration-management.md), in order to receive push notifications an app has to register a device handle on a notification hub. Once a registration is created on a notification hub, the application backend can send push notifications to it.
-The application backend can choose the registrations to target with a specific notification in the following ways:
-
-1. **Broadcast**: all registrations in the notification hub receive the notification.
-2. **Tag**: all registrations that contain the specified tag receive the notification.
-3. **Tag expression**: all registrations whose set of tags match the specified expression receive the notification.
-
-## <a name="tags"></a>Tags
-
-A tag can be any string, up to 120 characters, containing alphanumeric and the following non-alphanumeric characters: ‘_’, ‘@’, ‘#’, ‘.’, ‘:’, ‘-’. The following example shows an application from which you can receive toast notifications about specific music groups. In this scenario, a simple way to route notifications is to label registrations with tags that represent the different bands, as in the following picture.
+Ein Tag kann eine beliebige bis zu 120 Zeichen umfassende Zeichenfolge mit alphanumerischen und den folgenden nicht-alphanumerischen Zeichen sein: „\_“, „@“, „#“, „.“, „:“, „-“. Das folgende Beispiel zeigt eine Anwendung, von der Sie Popupbenachrichtigungen zu bestimmten Musikgruppen empfangen können. In diesem Szenario besteht eine einfache Möglichkeit zum Weiterleiten von Benachrichtigungen im Kennzeichnen von Registrierungen mit Tags, die die verschiedenen Gruppen angeben. Dies ist in der folgenden Abbildung dargestellt.
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
-In this picture, the message tagged **Beatles** reaches only the tablet that registered with the tag **Beatles**.
+In dieser Abbildung erreicht die als **Beatles** markierte Nachricht nur den Tablet PC, der mit dem Tag **Beatles** registriert ist.
 
-For more information about creating registrations for tags, see [Registration Management](notification-hubs-push-notification-registration-management.md).
+Weitere Informationen zum Erstellen von Registrierungen für Tags finden Sie unter [Registrierungsverwaltung](notification-hubs-push-notification-registration-management.md).
 
-You can send notifications to tags using the send notifications methods of the `Microsoft.Azure.NotificationHubs.NotificationHubClient` class in the [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. You can also use Node.js, or the Push Notifications REST APIs.  Here's an example using the SDK.
-
-
-    Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
-
-    // Windows 8.1 / Windows Phone 8.1
-    var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
-    "You requested a Beatles notification</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Beatles");
-
-    // Windows 10
-    toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
-    "You requested a Wailers notification</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
+Sie können Benachrichtigungen mithilfe der Methoden zum Senden von Benachrichtigungen der `Microsoft.Azure.NotificationHubs.NotificationHubClient`-Klasse im [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)-SDK an Tags senden. Sie können auch Node.js oder die Pushbenachrichtigungs-REST-APIs verwenden. Hier ist ein Beispiel mit dem SDK.
 
 
+	Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
+
+	// Windows 8.1 / Windows Phone 8.1
+	var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
+	"You requested a Beatles notification</text></binding></visual></toast>";
+	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Beatles");
+
+	// Windows 10
+	toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
+	"You requested a Wailers notification</text></binding></visual></toast>";
+	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
 
 
-Tags do not have to be pre-provisioned and can refer to multiple app-specific concepts. For example, users of this example application can comment on bands and want to receive toasts, not only for the comments on their favorite bands, but also for all comments from their friends, regardless of the band on which they are commenting. The following picture shows an example of this scenario:
+
+
+Tags müssen nicht vorab bereitgestellt werden und können sich auf mehrere App-spezifische Konzepte beziehen. Beispielsweise können Benutzer dieser Beispielanwendung Musikgruppen kommentieren und Popups erhalten. Dies gilt nicht nur für die Kommentare zu ihren Lieblingsgruppen, sondern für alle Kommentare von ihren Freunden, unabhängig von den Gruppen, die diese bewerteten. Die folgende Abbildung zeigt ein Beispiel für dieses Szenario:
 
 
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
 
-In this picture, Alice is interested in updates for the Beatles, and Bob is interested in updates for the Wailers. Bob is also interested in Charlie’s comments, and Charlie is in interested in the Wailers. When a notification is sent for Charlie’s comment on the Beatles, both Alice and Bob receive it.
+In dieser Abbildung ist Alice an Nachrichten über die Beatles interessiert, und Bob ist an Nachrichten über die Wailers interessiert. Bob ist außerdem an Charlies Kommentaren interessiert, und Charlie ist an den Wailers interessiert. Wenn eine Benachrichtigung für Charlies Kommentar zu den Beatles gesendet wird, empfangen Alice und Bob diese.
 
-While you can encode multiple concerns in tags (for example, “band_Beatles” or “follows_Charlie”), tags are simple strings and not properties with values. A registration is matched only on the presence or absence of a specific tag.
+Es können zwar mehrere Konzepte in Tags codiert werden (z. B. „Band\_Beatles“ oder „Folgt\_Charlie“), Tags sind jedoch einfache Zeichenfolgen und keine Eigenschaften mit Werten. Eine Registrierung wird nur auf das Vorhandensein oder Fehlen eines bestimmten Tags überprüft.
 
-For a full step-by-step tutorial on how to use tags for sending to interest groups, see [Breaking News](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
+Ein vollständiges schrittweises Tutorial zur Verwendung von Tags zum Senden an Interessengruppen finden Sie unter [Aktuelle Nachrichten](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
 
-## <a name="using-tags-to-target-users"></a>Using tags to target users
+## Verwenden von Tags mit Benutzern als Ziel
 
-Another way to use tags is to identify all the devices of a particular user. Registrations can be tagged with a tag that contains a user id, as in the following picture:
+Eine weitere Möglichkeit zur Verwendung von Tags ist das Identifizieren aller Geräte eines bestimmten Benutzers. Registrierungen können mit einem Tag gekennzeichnet werden, das eine Benutzer-ID enthält. Dies ist in der folgenden Abbildung dargestellt:
 
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-In this picture, the message tagged uid:Alice reaches all registrations tagged uid:Alice; hence, all of Alice’s devices.
+In dieser Abbildung erreicht die Nachricht mit dem Tag „uid:Alice“ alle Registrierungen, die mit dem Tag „uid:Alice“ gekennzeichnet sind, und erreicht daher alle Geräte von Alice.
 
 
-##<a name="tag-expressions"></a>Tag expressions
+##Tagausdrücke
 
-There are cases in which a notification has to target a set of registrations that is identified not by a single tag, but by a Boolean expression on tags.
+In einigen Fällen hat eine Benachrichtigung eine Gruppe von Registrierungen zum Ziel, die nicht durch ein einzelnes Tag, sondern durch einen booleschen Ausdruck für Tags identifiziert wird.
 
-Consider a sports application that sends a reminder to everyone in Boston about a game between the Red Sox and Cardinals. If the client app registers tags about interest in teams and location, then the notification should be targeted to everyone in Boston who is interested in either the Red Sox or the Cardinals. This condition can be expressed with the following Boolean expression:
+Beispiel: Eine Sportanwendung sendet eine Erinnerung an alle Benutzer in Boston zu einem Spiel zwischen den Red Sox und den Cardinals. Wenn die Client-App Tags zu einem Interesse an Mannschaften und Orten registriert, sollte die Benachrichtigung alle Benutzer in Boston als Ziel verwenden, die an den Red Sox oder den Cardinals interessiert ist. Diese Bedingung kann mit dem folgenden booleschen Ausdruck ausgedrückt werden:
 
-    (follows_RedSox || follows_Cardinals) && location_Boston
+	(follows_RedSox || follows_Cardinals) && location_Boston
 
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
 
-Tag expressions can contain all Boolean operators, such as AND (&&), OR (||), and NOT (!). They can also contain parentheses. Tag expressions are limited to 20 tags if they contain only ORs; otherwise they are limited to 6 tags.
+Tagausdrücke können alle boolesche Operatoren enthalten, z. B. AND (&&), OR (||) oder NOT (!). Sie können auch Klammern enthalten. Tagausdrücke sind auf 20 Tags beschränkt, wenn sie nur OR enthalten. Andernfalls sind sie auf 6 Tags beschränkt.
 
-Here's an example for sending notifications with tag expressions using the SDK.
-
-
-    Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
-
-    String userTag = "(location_Boston && !follows_Cardinals)"; 
-
-    // Windows 8.1 / Windows Phone 8.1
-    var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
-    "You want info on the Red Socks</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
-
-    // Windows 10
-    toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
-    "You want info on the Red Socks</text></binding></visual></toast>";
-    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+Es folgt ein Beispiel für das Senden von Benachrichtigungen mit Tagausdrücken mithilfe des SDK.
 
 
+	Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
 
-<!--HONumber=Oct16_HO2-->
+	String userTag = "(location_Boston && !follows_Cardinals)";	
 
+	// Windows 8.1 / Windows Phone 8.1
+	var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
+	"You want info on the Red Socks</text></binding></visual></toast>";
+	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
 
+	// Windows 10
+	toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
+	"You want info on the Red Socks</text></binding></visual></toast>";
+	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+
+<!---HONumber=AcomDC_0706_2016-->

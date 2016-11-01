@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create Listener for AlwaysOn availabilty group for SQL Server in Azure Virtual Machines"
-   description="Step-by-step instructions for creating a listener for an AlwaysOn availabilty group for SQL Server in Azure Virtual Machines"
+   pageTitle="Erstellen eines Listeners für eine AlwaysOn-Verfügbarkeitsgruppe für SQL Server auf virtuellen Azure-Computern"
+   description="Eine schrittweise Anleitung zum Erstellen eines Listeners für eine AlwaysOn-Verfügbarkeitsgruppe für SQL Server auf virtuellen Azure-Computern."
    services="virtual-machines"
    documentationCenter="na"
    authors="MikeRayMSFT"
@@ -16,191 +16,190 @@
    ms.date="07/12/2016"
    ms.author="MikeRayMSFT"/>
 
+# Konfigurieren eines internen Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
 
-# <a name="configure-an-internal-load-balancer-for-an-alwayson-availability-group-in-azure"></a>Configure an internal load balancer for an AlwaysOn availability group in Azure
+In diesem Thema erfahren Sie, wie Sie einen internen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, die unter dem Resource Manager-Modell ausgeführt werden. Eine AlwaysOn-Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
 
-This topic explains how to create an internal load balancer for a SQL Server AlwaysOn availability group in Azure virtual machines running in resource manager model. An AlwaysOn availability group requires a load balancer when the SQL Server instances are on Azure virtual machines. The load balancer stores the IP address for the availability group listener. If an availability group spans mutliple regions, each region needs a load balancer.
+Für diese Aufgabe benötigen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die AlwaysOn-Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Diese Vorlage nimmt Ihnen die Erstellung des internen Load Balancers ab.
 
-To complete this task, you need to have a SQL Server AlwaysOn availability group deployed on Azure virtual machines in resource manager model. Both SQL Server virtual machines must belong to the same availability set. You can use the [Microsoft template](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) to automatically create the AlwaysOn availability group in Azure resource manager. This template automatically creates the internal load balancer for you. 
+Alternativ können Sie aber auch [eine AlwaysOn-Verfügbarkeitsgruppe manuell konfigurieren](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
 
-If you prefer, you can [manually configure an AlwaysOn availability group](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+Dieses Thema setzt voraus, dass Ihre Verfügbarkeitsgruppen bereits konfiguriert sind.
 
-This topic requires that your availablity groups are already configured.  
+Verwandte Themen:
 
-Related topics include:
-
- - [Configure AlwaysOn Availability Groups in Azure VM (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
+ - [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen in einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
  
- - [Configure a VNet-to-VNet connection by using Azure Resource Manager and PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+ - [Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-## <a name="steps"></a>Steps
+## Schritte
 
-By walking through this document you will create and configure a load balancer in the Azure portal. After that is complete, you will configure the cluster to use the IP address from the load balancer for the AlwaysOn availability group listener.
+Im Rahmen dieses Dokuments wird mithilfe des Azure-Portals Schritt für Schritt ein Load Balancer erstellt und konfiguriert. Anschließend wird der Cluster so konfiguriert, dass er die IP-Adresse aus dem Load Balancer für den AlwaysOn-Verfügbarkeitsgruppenlistener verwendet.
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>Create and configure the load balancer in the Azure portal
+## Erstellen und Konfigurieren des Load Balancers im Azure-Portal
 
-In this portion of the task you will do the following steps in the Azure portal:
+In diesem Teil führen Sie die folgenden Schritte im Azure-Portal aus:
 
-1. Create the load balancer and configure the IP address
+1. Erstellen des Load Balancers und Konfigurieren der IP-Adresse
 
-1. Configure the backend pool
+1. Konfigurieren des Back-End-Pools
 
-1. Create the probe 
+1. Erstellen des Tests
 
-1. Set the load balancing rules
+1. Festlegen der Lastenausgleichsregeln
 
->[AZURE.NOTE] If the SQL Servers are in different resource groups and regions, you will do all of these steps twice, once in each resource group.
+>[AZURE.NOTE] Falls sich die SQL Server in unterschiedlichen Ressourcengruppen und Regionen befinden, müssen alle diese Schritte zweimal (je einmal pro Ressourcengruppe) ausgeführt werden.
 
-## <a name="1.-create-the-load-balancer-and-configure-the-ip-address"></a>1. Create the load balancer and configure the IP address
+## 1\. Erstellen des Load Balancers und Konfigurieren der IP-Adresse
 
-The first step is to create the load balancer. In the Azure portal, open the resource group that contains the SQL Server virtual machines. In the resource group, click **Add**.
+Im ersten Schritt wird zunächst der Load Balancer erstellt. Öffnen Sie im Azure-Portal die Ressourcengruppe mit den virtuellen SQL Server-Computern. Klicken Sie in der Ressourcengruppe auf **Hinzufügen**.
 
-- Search for **load balancer**. From the search results select **Load Balancer**, which is published by **Microsoft**.
+- Suchen Sie nach **Load Balancer**. Wählen Sie in den Suchergebnissen den (von **Microsoft** veröffentlichten) **Load Balancer** aus.
 
-- On the **Load Balancer** blade, click **Create**.
+- Klicken Sie auf dem Blatt **Load Balancer** auf **Erstellen**.
 
-- On **Create load balancer**, configure the the load balancer as follows:
+- Konfigurieren Sie den Load Balancer unter **Load Balancer erstellen** wie folgt:
 
-| Setting | Value |
+| Einstellung | Wert |
 | ----- | ----- |
-| **Name** | A text name representing the load balancer. For example, **sqlLB**. |
-| **Schema** | **Internal** |
-| **Virtual network** | Choose the virtual network that the SQL Servers are in.   |
-| **Subnet**  | Choose the subnet that the SQL Servers are in. |
-| **Subscription** | If you have multiple subscriptions, this field may appear. Select the subscription that you want associated with this resource. It is normally the same subcription as all of the resources for the availability group.  |
-| **Resource group** | Choose the resource group that the SQL Servers are in. | 
-| **Location** | Choose the Azure location that the SQL Servers are in. |
+| **Name** | Namenstext für den Load Balancer. Beispiel: **sqlLB**. |
+| **Schema** | **Intern** |
+| **Virtuelles Netzwerk** | Wählen Sie das virtuelle Netzwerk aus, in dem sich die SQL Server befinden. |
+| **Subnetz** | Wählen Sie das Subnetz aus, in dem sich die SQL Server befinden. |
+| **Abonnement** | Dieses Feld wird unter Umständen angezeigt, wenn Sie über mehrere Abonnements verfügen. Wählen Sie das Abonnement aus, mit dem diese Ressource verknüpft werden soll. Hierbei handelt es sich üblicherweise um das gleiche Abonnement wie bei allen anderen Ressourcen für die Verfügbarkeitsgruppe. |
+| **Ressourcengruppe** | Wählen Sie die Ressourcengruppe aus, in der sich die SQL Server befinden. | 
+| **Standort** | Wählen Sie den Azure-Standort aus, an dem sich die SQL Server befinden. |
 
-- Click **Create**. 
+- Klicken Sie auf **Erstellen**.
 
-Azure creates the load balancer that you configured above. The load balancer belongs to a specific network, subnet, resource group, and location. After Azure completes, verify the load balancer settings in Azure. 
+Azure erstellt den Load Balancer, den Sie anhand der obigen Angaben konfiguriert haben. Der Load Balancer gehört zu einem bestimmten Netzwerk, Subnetz, einer bestimmten Ressourcengruppe und einem bestimmten Standort. Überprüfen Sie nach Abschluss des Vorgangs die Einstellungen für den Load Balancer in Azure.
 
-Now, configure the load balancer IP address.  
+Konfigurieren Sie nun die IP-Adresse des Load Balancers.
 
-- On the load balancer **Settings** blade, click **IP address**. The **IP address** blade shows that this is a private load balancer on the same virtual network as your SQL Servers. 
+- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **IP-Adresse**. Auf dem Blatt **IP-Adresse** sehen Sie, dass es sich um einen privaten Load Balancer handelt, der sich im gleichen virtuellen Netzwerk befindet wie Ihre SQL Server.
 
-- Set the following settings: 
+- Legen Sie folgende Einstellungen fest:
 
-| Setting | Value |
+| Einstellung | Wert |
 | ----- | ----- |
-| **Subnet** | Choose the subnet that the SQL Servers are in. |
-| **Assignment** | **Static** |
-| **IP address** | Type an unused virtual IP address from the subnet.  |
+| **Subnetz** | Wählen Sie das Subnetz aus, in dem sich die SQL Server befinden. |
+| **Zuweisung** | **Statisch** |
+| **IP-Adresse** | Geben Sie eine nicht verwendete virtuelle IP-Adresse aus dem Subnetz ein. |
 
-- Save the settings.
+- Speichern Sie die Einstellungen.
 
-Now the load balancer has an IP address. Record this IP address. You will use this IP address when you create a listener on the cluster. In a PowerShell script later in this article, use this address for the `$ILBIP` variable.
+Der Load Balancer besitzt nun eine IP-Adresse. Notieren Sie sich diese IP-Adresse. Sie wird bei der Listener-Erstellung für den Cluster benötigt. Die Adresse wird später in einem PowerShell-Skript für die `$ILBIP`-Variable verwendet.
 
 
 
-## <a name="2.-configure-the-backend-pool"></a>2. Configure the backend pool
+## 2\. Konfigurieren des Back-End-Pools
 
-The next step is to create a backend address pool. Azure calls the backend address pool *backend pool*. In this case, the backend pool is the addresses of the two SQL Servers in your availability group. 
+Als Nächstes muss ein Back-End-Adresspool erstellt werden. Im Kontext von Azure wird der Back-End-Adresspool als *Back-End-Pool* bezeichnet. Im vorliegenden Fall enthält der Back-End-Pool die Adressen der beiden SQL Server in Ihrer Verfügbarkeitsgruppe.
 
-- In your resource group, click on the load balancer you created. 
+- Klicken Sie in Ihrer Ressourcengruppe auf den zuvor erstellten Load Balancer.
 
-- On **Settings**, click **Backend pools**.
+- Klicken Sie unter **Einstellungen** auf **Back-End-Pools**.
 
-- On **Backend address pools**, click **Add** to create a backend address pool. 
+- Klicken Sie im Bereich **Back-End-Adresspools** auf **Hinzufügen**, um einen Back-End-Adresspool zu erstellen.
 
-- On **Add backend pool** under **Name**, type a name for the backend pool.
+- Geben Sie im Bereich **Back-End-Pool hinzufügen** unter **Name** einen Namen für den Back-End-Pool ein.
 
-- Under **Virtual machines** click **+ Add a virtual machine**. 
+- Klicken Sie unter **Virtuelle Computer** auf **+ Virtuellen Computer hinzufügen**.
 
-- Under **Choose virtual machines** click **Choose an availability set** and specify the availablity set that the SQL Server virtual machines belong to.
+- Klicken Sie unter **Choose virtual machines** (Virtuelle Computer auswählen) auf **Choose an availability set** (Verfügbarkeitsgruppe auswählen), und geben Sie die Verfügbarkeitsgruppe an, zu der die virtuellen SQL Server-Computer gehören.
 
-- After you have chosen the availability set, click **Choose the virtual machines**. Click the two virtual machines that host the SQL Server instances in the availability group. Click **Select**. 
+- Klicken Sie nach dem Auswählen der Verfügbarkeitsgruppe auf **Choose the virtual machines** (Virtuelle Computer auswählen). Klicken Sie auf die beiden virtuellen Computer, die die SQL Server-Instanzen in der Verfügbarkeitsgruppe hosten. Klicken Sie auf **Auswählen**.
 
-- Click **OK** to close the blades for **Choose virtual machines**, and **Add backend pool**. 
+- Klicken Sie auf **OK**, um die Blätter zum **Auswählen der virtuellen Computer** bzw. zum **Hinzufügen des Back-End-Pools** zu schließen.
 
-Azure updates the settings for the backend address pool. Now your availability set has a pool of two SQL Servers.
+Azure aktualisiert die Einstellungen für den Back-End-Adresspool. Die Verfügbarkeitsgruppe verfügt nun über einen Pool mit zwei SQL Server-Instanzen.
 
-## <a name="3.-create-a-probe"></a>3. Create a probe
+## 3\. Erstellen eines Tests
 
-The next step is to create a probe. The probe defines how Azure will verify which of the SQL Servers currently owns the availability group listener. Azure will probe the service based on IP address on a port that you define when you create the probe.
+Im nächsten Schritt wird ein Test erstellt. Mit dem Test wird definiert, wie Azure überprüft, welcher der SQL Server gerade für den Verfügbarkeitsgruppenlistener zuständig ist. Azure testet den Dienst auf der Grundlage der IP-Adresse an einem Port, den Sie beim Erstellen des Tests definieren.
 
-- On the load balancer **Settings** blade, click **Probes**. 
+- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **Tests**.
 
-- On the **Probes** blade, click **Add**.
+- Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
 
-- Configure the probe on the **Add probe** blade. Use the following values to configure the probe:
+- Konfigurieren Sie den Test auf dem Blatt **Test hinzufügen**. Verwenden Sie dabei die folgenden Werte:
 
-| Setting | Value |
+| Einstellung | Wert |
 | ----- | ----- |
-| **Name** | A text name representing the probe. For example, **SQLAlwaysOnEndPointProbe**. |
-| **Protocol** | **TCP** |
-| **Port** | You may use any available port. For example, *59999*.    |
-| **Interval**  | *5* | 
-| **Unhealthy threshold**  | *2* | 
+| **Name** | Namenstext für den Test. Beispiel: **SQLAlwaysOnEndPointProbe**. |
+| **Protokoll** | **TCP** |
+| **Port** | Ein beliebiger verfügbarer Port. Beispiel: *59999*. |
+| **Intervall** | *5* | 
+| **Fehlerhafter Schwellenwert** | *2* | 
 
-- Click **OK**. 
+- Klicken Sie auf **OK**.
 
->[AZURE.NOTE] Make sure that the port you specify is open on the firewall of both SQL Servers. Both servers require an inbound rule for the TCP port that you use. See [Add or Edit Firewall Rule](http://technet.microsoft.com/library/cc753558.aspx) for more information. 
+>[AZURE.NOTE] Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](http://technet.microsoft.com/library/cc753558.aspx).
 
-Azure creates the probe. Azure will use the probe to test which SQL Server has the listener for the availability group.
+Azure erstellt den Test. Mithilfe des Tests wird ermittelt, welcher SQL Server über den Listener für die Verfügbarkeitsgruppe verfügt.
 
-## <a name="4.-set-the-load-balancing-rules"></a>4. Set the load balancing rules
+## 4\. Festlegen der Lastenausgleichsregeln
 
-Set the load balancing rules. The load balancing rules configure how the load balancer routes traffic to the SQL Servers. For this load balancer you will enable direct server return because only one of the two SQL Servers will ever own the availability group listener resource at a time.
+Legen Sie die Lastenausgleichsregeln fest. Mit den Lastenausgleichsregeln wird konfiguriert, wir der Load Balancer Datenverkehr an die SQL Server weiterleitet. Für diesen Load Balancer wird „Direct Server Return“ aktiviert, da immer nur einer der beiden SQL Server für die Verfügbarkeitsgruppenlistener-Ressource zuständig ist.
 
-- On the load balancer **Settings** blade, click **Load balancing rules**. 
+- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **Lastenausgleichsregeln**.
 
-- On the **Load balancing rules** blade, click **Add**.
+- Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
 
-- Use the **Add load balancing rules** blade to configure the load balancing rule. Use the following settings: 
+- Konfigurieren Sie auf dem Blatt **Lastenausgleichsregeln hinzufügen** die Lastenausgleichsregel. Verwenden Sie folgende Einstellungen:
 
-| Setting | Value |
+| Einstellung | Wert |
 | ----- | ----- |
-| **Name** | A text name representing the load balancing rules. For example, **SQLAlwaysOnEndPointListener**. |
-| **Protocol** | **TCP** |
-| **Port** | *1433*   |
-| **Backend Port** | *1433*. Note that this will be disabled because this rule uses **Floating IP (direct server return)**.   |
-| **Probe** | Use the name of the probe that you created for this load balancer. |
-| **Session persistance**  | **None** | 
-| **Idle timeout (minutes)**  | *4* | 
-| **Floating IP (direct server return)**  | **Enabled** | 
+| **Name** | Namenstext für die Lastenausgleichsregeln. Beispiel: **SQLAlwaysOnEndPointListener**. |
+| **Protokoll** | **TCP** |
+| **Port** | *1433* |
+| **Back-End-Port** | *1433*. Wird deaktiviert, da diese Regel **Floating IP (Direct Server Return)** verwendet. |
+| **Test** | Verwenden Sie den Namen des Tests, den Sie für diesen Load Balancer erstellt haben. |
+| **Session persistence (Sitzungspersistenz)** | **Keine** | 
+| **Leerlaufzeitüberschreitung (Minuten)** | *4* | 
+| **Floating IP (Direct Server Return)** | **Aktiviert** | 
 
- >[AZURE.NOTE] You might have to scroll down on the blade to see all of the settings.
+ >[AZURE.NOTE] Möglicherweise müssen Sie auf dem Blatt einen Bildlauf nach unten durchführen, um alle Einstellungen anzuzeigen.
 
-- Click **OK**. 
+- Klicken Sie auf **OK**.
 
-- Azure configures the load balancing rule. Now the load balancer is configured to route traffic to the SQL Server that hosts the listener for the availability group. 
+- Azure konfiguriert die Lastenausgleichsregel. Damit ist die Lastenausgleichsregel konfiguriert, die Datenverkehr an den SQL Server weiterleitet, der den Listener für die Verfügbarkeitsgruppe hostet.
 
-At this point the resource group has a load balancer, connecting to both SQL Server machines. The load balancer also contains an IP address for the SQL Server AlwaysOn availablity group listener so that either machine can respond to requests for the availability groups.
+Die Ressourcengruppe verfügt nun also über einen mit beiden SQL Server-Computern verbundenen Load Balancer. Der Load Balancer verfügt zudem über eine IP-Adresse für den SQL Server-AlwaysOn-Verfügbarkeitsgruppenlistener, sodass beide Computer auf Anforderungen für die Verfügbarkeitsgruppen reagieren können.
 
->[AZURE.NOTE] If your SQL Servers are in two separate regions, repeat the steps in the other region. Each region requires a load balancer. 
+>[AZURE.NOTE] Falls sich Ihre SQL Server in unterschiedlichen Regionen befinden, wiederholen Sie die Schritte in der anderen Region. Jede Region benötigt einen Load Balancer.
 
-## <a name="configure-the-cluster-to-use-the-load-balancer-ip-address"></a>Configure the cluster to use the load balancer IP address 
+## Konfigurieren des Clusters, von dem die IP-Adresse des Load Balancers verwendet werden soll 
 
-The next step is to configure the listener on the cluster, and bring the listener online. To accomplish this, do the following: 
+Als Nächstes wird der Listener für den Cluster konfiguriert und online geschaltet. Führen Sie hierzu die folgenden Schritte aus:
 
-1. Create the availablity group listener on the failover cluster 
+1. Erstellen des Verfügbarkeitsgruppenlisteners für den Failovercluster
 
-1. Bring the listener online
+1. Onlineschalten des Listeners
 
-## <a name="1.-create-the-availablity-group-listener-on-the-failover-cluster"></a>1. Create the availablity group listener on the failover cluster
+## 1\. Erstellen des Verfügbarkeitsgruppenlisteners für den Failovercluster
 
-In this step, you manually create the availability group listener in Failover Cluster Manager and SQL Server Management Studio (SSMS).
+In diesem Schritt erstellen Sie manuell den Verfügbarkeitsgruppenlistener im Failovercluster-Manager und in SQL Server Management Studio (SSMS).
 
-- Use RDP to connect to the Azure virtual machine that hosts the primary replica. 
+- Stellen Sie eine RDP-Verbindung mit dem virtuellen Azure-Computer her, der das primäre Replikat hostet.
 
-- Open Failover Cluster Manager.
+- Öffnen Sie den Failovercluster-Manager.
 
-- Select the **Networks** node, and note the cluster network name. This name will be used in the `$ClusterNetworkName` variable in the PowerShell script.
+- Wählen Sie den Knoten **Netzwerke** aus, und notieren Sie den Netzwerknamen des Clusters. Dieser Name wird im PowerShell-Skript in der `$ClusterNetworkName`-Variablen verwendet.
 
-- Expand the cluster name, and then click **Roles**.
+- Erweitern Sie den Clusternamen, und klicken Sie dann auf **Rollen**.
 
-- In the **Roles** pane, right-click the availability group name and then select **Add Resource** > **Client Access Point**.
+- Klicken Sie im Bereich **Rollen** mit der rechten Maustaste auf den Verfügbarkeitsgruppennamen, und wählen Sie dann **Ressource hinzufügen** > **Clientzugriffspunkt** aus.
 
-- In the **Name** box, create a name for this new listener, then click **Next** twice, and then click **Finish**. Do not bring the listener or resource online at this point.
+- Erstellen Sie im Feld **Name** einen Namen für diesen neuen Listener, klicken Sie dann zweimal auf **Weiter**, und klicken Sie anschließend auf **Fertig stellen**. Schalten Sie den Listener oder die Ressource jetzt noch nicht online.
 
- >[AZURE.NOTE] The name for the new listener is the network name that applications will use to connect to databases in the SQL Server availability group.
+ >[AZURE.NOTE] Der Name für den neuen Listener ist der Netzwerkname, den Anwendungen beim Herstellen einer Verbindung mit Datenbanken in der SQL Server-Verfügbarkeitsgruppe verwenden.
 
-- Click the **Resources** tab, then expand the Client Access Point you just created. Right-click the IP resource and click properties. Note the name of the IP address. You will use this name in the `$IPResourceName` variable in the PowerShell script.
+- Klicken Sie auf die Registerkarte **Ressourcen**, und erweitern Sie dann den Clientzugriffspunkt, den Sie gerade erstellt haben. Klicken Sie mit der rechten Maustaste auf die IP-Ressource, und klicken Sie auf „Eigenschaften“. Notieren Sie sich den Namen der IP-Adresse. Dieser Name wird im PowerShell-Skript in der `$IPResourceName`-Variablen verwendet.
 
-- Under **IP Address** click **Static IP Address** and set the static IP address to the same address that you used when you set the load balancer IP address on the Azure portal. Enable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
+- Klicken Sie unter **IP-Adresse** auf **Statische IP-Adresse**, und legen Sie die statische IP-Adresse auf die Adresse fest, die Sie auch beim Festlegen der Load Balancer-IP-Adresse im Azure-Portal verwendet haben. Aktivieren Sie NetBIOS für diese Adresse, und klicken Sie auf **OK**. Wiederholen Sie diesen Schritt für jede IP-Ressource, wenn die Lösung mehrere Azure-VNets umfasst.
 
-- On the cluster node that currently hosts the primary replica, open an elevated PowerShell ISE and paste the following commands into a new script.
+- Öffnen Sie auf dem Clusterknoten, der gerade das primäre Replikat hostet, eine PowerShell-ISE, und fügen Sie die folgenden Befehle in ein neues Skript ein:
 
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP Address resource name
@@ -210,64 +209,60 @@ In this step, you manually create the availability group listener in Failover Cl
     
         Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
 
-- Update the variables and run the PowerShell script to configure the IP address and port for the new listener.
+- Aktualisieren Sie die Variablen, und führen Sie das PowerShell-Skript aus, um die IP-Adresse und den Port für den neuen Listener zu konfigurieren.
 
- >[AZURE.NOTE] If your SQL Servers are in separate regions, you need to run the PowerShell script twice. The first time use the cluster network name, cluster IP resource name, and load balancer IP address from the first resource group. The second time use the cluster network name, cluster IP resource name, and load balancer IP address from the second resource group.
+ >[AZURE.NOTE] Falls sich Ihre SQL Server in unterschiedlichen Regionen befinden, muss das PowerShell-Skript zweimal ausgeführt werden. Verwenden Sie beim ersten Mal den Clusternetzwerknamen, den Cluster-IP-Ressourcennamen und die Load Balancer-IP-Adresse aus der ersten Ressourcengruppe. Verwenden Sie beim zweiten Mal den Clusternetzwerknamen, den Cluster-IP-Ressourcennamen und die Load Balancer-IP-Adresse aus der zweiten Ressourcengruppe.
 
-Now the cluster has an availability group listener resource.
+Der Cluster verfügt nun über eine Verfügbarkeitsgruppenlistener-Ressource.
 
-## <a name="2.-bring-the-listener-online"></a>2. Bring the listener online
+## 2\. Onlineschalten des Listeners
 
-With the availability group listener resource configured, you can bring the listener online so that applications can connect to databases in the availability group with the listener.
+Nach dem Konfigurieren der Verfügbarkeitsgruppenlistener-Ressource können Sie den Listener online schalten, damit Clientanwendungen eine Verbindung mit Datenbanken in der Verfügbarkeitsgruppe mit dem Listener herstellen können.
 
-- Navigate back to Failover Cluster Manager. Expand **Roles** and then highlight your Availability Group. On the **Resources** tab, right-click the listener name and click **Properties**.
+- Wechseln Sie wieder zum Failovercluster-Manager. Erweitern Sie **Rollen**, und markieren Sie dann die Verfügbarkeitsgruppe. Klicken Sie auf der Registerkarte **Ressourcen** mit der rechten Maustaste auf den Listenernamen, und klicken Sie anschließend auf **Eigenschaften**.
 
-- Click the **Dependencies** tab. If there are multiple resources listed, verify that the IP addresses have OR, not AND, dependencies. Click **OK**.
+- Klicken Sie auf die Registerkarte **Abhängigkeiten**. Wenn mehrere Ressourcen aufgeführt sind, überprüfen Sie, ob die IP-Adressen OR-Abhängigkeiten aufweisen (statt AND-Abhängigkeiten). Klicken Sie auf **OK**.
 
-- Right-click the listener name and click **Bring Online**.
-
-
-- Once the listener is online, from the **Resources** tab, right-click the availability group and click **Properties**.
-
-- Create a dependency on the listener name resource (not the IP address resources name). Click **OK**.
+- Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Online schalten**.
 
 
-- Launch SQL Server Management Studio and connect to the primary replica.
+- Sobald der Listener online ist, klicken Sie auf der Registerkarte **Ressourcen** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie auf **Eigenschaften**.
+
+- Erstellen Sie eine Abhängigkeit für die Ressource des Listenernamens (nicht den Ressourcennamen der IP-Adresse). Klicken Sie auf **OK**.
 
 
-- Navigate to **AlwaysOn High Availability** | **Availability Groups** | **Availability Group Listeners**. 
+- Starten Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem primären Replikat her.
 
 
-- You should now see the listener name that you created in Failover Cluster Manager. Right-click the listener name and click **Properties**.
+- Navigieren Sie zu **Hohe Verfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener**.
 
 
-- In the **Port** box, specify the port number for the availability group listener by using the $EndpointPort you used earlier (1433 was the default), then click **OK**.
+- Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
 
-You now have a SQL Server AlwaysOn availability group in Azure virtual machines running in resource manager mode. 
 
-## <a name="test-the-connection-to-the-listener"></a>Test the connection to the listener
+- Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für „$EndpointPort“ (Standardwert: 1433). Klicken Sie anschließend auf **OK**.
 
-To test the connection:
+Sie verfügen nun über eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern im Azure Resource Manager-Modus.
 
-1. RDP to a SQL Server that is in the same virtual network, but does not own the replica. This can be the other SQL Server in the cluster.
+## Testen der Verbindung mit dem Listener
 
-1. Use **sqlcmd** utility to test the connection. For example, the following script establishes a **sqlcmd** connection to the primary replica through the listener with Windows authentication:
+Gehen Sie wie folgt vor, um die Verbindung zu testen:
+
+1. Stellen Sie eine RDP-Verbindung mit einem SQL Server her, der sich im gleichen virtuellen Netzwerk befindet, aber nicht für das Replikat zuständig ist. Hierbei kann es sich um den anderen SQL Server im Cluster handeln.
+
+1. Testen Sie die Verbindung mithilfe des Hilfsprogramms **sqlcmd**. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd**-Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
 
         sqlcmd -S <listenerName> -E
 
-The SQLCMD connection automatically connect to whichever instance of SQL Server hosts the primary replica. 
+Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet.
 
-## <a name="guidelines-and-limitations"></a>Guidelines and limitations
+## Richtlinien und Einschränkungen
 
-Note the following guidelines on availablity group listener in Azure using internal load balancer:
+Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten folgenden Richtlinien:
 
-- Only one internal availablity group listener is supported per cloud service because the listener is configured to the load balancer, and there is only one internal load balancer. However it is possible to create multipe external listeners. 
+- Da der Listener für den Load Balancer konfiguriert wird und nur ein interner Load Balancer vorhanden ist, wird pro Clouddienst maximal ein Verfügbarkeitsgruppenlistener unterstützt. Es können jedoch mehrere externe Listener erstellt werden.
 
-- With an internal load balancer you only access the listener from within the same virtual network.
+- Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb des gleichen virtuellen Netzwerks.
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

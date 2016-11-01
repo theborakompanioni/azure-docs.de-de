@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Builds Multi-Tenant Apps With Isolation and Efficiency"
-   description="Learn how SQL Database builds multi-tenant apps"
+   pageTitle="Azure SQL-Datenbank erstellt mehrinstanzenfähige Apps mit Isolation und Effizienz"
+   description="Erfahren Sie, wie Sie mithilfe von Azure SQL-Datenbank mehrinstanzenfähige Apps entwickeln können."
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -14,64 +14,55 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="10/13/2016"
+   ms.date="07/19/2016"
    ms.author="carlrab"/>
 
+# Erstellt mehrinstanzenfähige Apps mit Azure SQL-Datenbank mit Isolation und Effizienz
 
-# <a name="builds-multi-tenant-apps-with-azure-sql-database-with-isolation-and-efficiency"></a>Builds Multi-tenant Apps with Azure SQL Database With Isolation and Efficiency
+## Nutzen elastischer Pools und Entwickeln von effizienteren mehrinstanzenfähigen Apps
 
-## <a name="leverage-elastic-pools-and-build-more-efficient-multi-tenant-apps"></a>Leverage elastic pools and build more efficient multi-tenant apps
-
-If you're a SaaS dev writing a multi-tenant app and handling many customers, you often make tradeoffs in customer performance, management, and security. With Azure SQL Database Elastic Database Pools, you no longer have to make that compromise. These pools help you manage and monitor multi-tenant apps and gain isolation benefits of one-customer-per-database. See [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Wenn Sie als SaaS-Entwickler eine mehrinstanzenfähige App für eine Vielzahl von Kunden erstellen, gehen Sie häufig Kompromisse im Hinblick auf Leistung, Verwaltung und Sicherheit ein. Mit den Pools für elastische Datenbanken von Azure SQL-Datenbank gehören diese Kompromisse der Vergangenheit an. Die Pools unterstützen Sie bei der Verwaltung und Überwachung mehrinstanzenfähiger Apps und ermöglichen es Ihnen, von der Isolation eines Kunden pro Datenbank zu profitieren. Informationen finden Sie unter [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank).
 
 ![build-multi-tenant-apps](./media/sql-database-build-multi-tenant-apps/sql-database-build-multi-tenant-apps.png)
 
-## <a name="auto-scaling-you-control"></a>Auto-scaling you control
+## Automatische Skalierung, von Ihnen gesteuert
 
-Pools automatically scale performance and storage capacity for elastic databases on the fly. You can control the performance assigned to a pool, add or remove elastic databases on demand, and define performance of elastic databases without affecting the overall cost of the pool. This means you don't have to worry about managing the usage of individual databases.
+Pools führen basierend auf dem aktuellen Bedarf eine automatische Skalierung von Leistung und Speicherkapazität für elastische Datenbanken durch. Sie können die Leistung eines Pools steuern, elastische Datenbanken nach Bedarf hinzufügen oder entfernen und die Leistung elastischer Datenbanken definieren, ohne dass sich dies auf die Gesamtkosten des Pools auswirkt. Dies bedeutet, dass Sie sich keine Gedanken über die Verwaltung einzelner Datenbanken machen müssen.
 
-[Read the documentation](sql-database-elastic-pool.md)
+[Dokumentation lesen](sql-database-elastic-pool.md)
 
-## <a name="intelligent-management-of-your-environment"></a>Intelligent management of your environment
+## Intelligente Verwaltung Ihrer Umgebung
 
-Built-in sizing recommendations proactively identify databases that would benefit from pools. These recommendations allow "what-if" analysis for quick optimization to meet your performance goals. Rich performance monitoring and troubleshooting dashboards help you visualize historical pool utilization.
+Integrierte Empfehlungen sorgen für eine proaktive Identifizierung von Datenbanken, die von Pools profitieren würden. Diese Empfehlungen ermöglichen Was-wäre-wenn-Analysen für eine schnelle Optimierung zum Erreichen Ihrer Leistungsziele. Leistungsstarke Dashboards zur Leistungsüberwachung und Problembehandlung unterstützen Sie dabei, die Poolnutzung im zeitlichen Verlauf zu visualisieren.
 
-[Read the documentation](sql-database-elastic-pool-guidance.md)
+[Dokumentation lesen](sql-database-elastic-pool-guidance.md)
 
-## <a name="performance-and-price-to-meet-your-needs"></a>Performance and price to meet your needs
+## Auf Ihre Anforderungen abgestimmte Leistung und Preise
 
-Basic, Standard, and Premium pools provide you a broad spectrum of performance, storage and pricing options. Pools can contain up to 400 elastic databases. Elastic databases can auto-scale up to 1000 elastic database transaction units (eDTU).
+Basic-, Standard- und Premium-Pools bieten eine große Auswahl an Leistungs-, Speicher- und Preisoptionen. Pools können bis zu 400 elastische Datenbanken enthalten. Elastische Datenbanken können automatisch auf bis zu 1.000 Transaktionseinheiten für elastische Datenbanken (eDTUs) skaliert werden.
 
-[Read the documentation](https://azure.microsoft.com/pricing/details/sql-database/?b=16.50)
+[Dokumentation lesen](https://azure.microsoft.com/pricing/details/sql-database/?b=16.50)
 
-## <a name="elastic-tools"></a>Elastic tools
+## Elastische Tools
 
-In addition to elastic pools, there are SQL Database features to help manage operational activities across multiple databases:
+Zusätzlich zu den elastischen Pools stehen Features von SQL-Datenbank zur Verfügung, die Sie bei der Verwaltung operativer Aktivitäten über mehrere Datenbanken hinweg unterstützen:
 
-** Perform cross-database queries and reporting. **  
-[Elastic database query](sql-database-elastic-query-overview.md) enables you to run queries or reports across databases in your elastic pool and access remote data stored in many databases of your pool at once.
+** Ausführen Datenbanken übergreifender Abfragen und Berichterstattung. ** [Abfragen elastischer Datenbanken](sql-database-elastic-query-overview.md) ermöglichen Ihnen, Abfragen oder Berichte über die Datenbanken in Ihrem elastischen Pool hinweg auszuführen und in einem Arbeitsschritt auf Remotedaten zuzugreifen, die in verschiedenen Datenbanken Ihres Pools gespeichert sind.
 
-** Run cross database transactions. **  
-[Elastic database transactions](sql-database-elastic-transactions-overview.md) allow you to run transactions that span several databases in SQL Databases and perform operations (i.e. when processing financial transactions across databases, or when updating inventory in one database and orders).
+** Datenbanktransaktionen übergreifende Ausführung. ** [Transaktionen für elastische Datenbanken](sql-database-elastic-transactions-overview.md) ermöglichen Ihnen, Transaktionen und Vorgänge über verschiedene Datenbanken in SQL-Datenbanken hinweg auszuführen (z.B. bei der Verarbeitung von Datenbanken übergreifenden Finanztransaktionen oder beim Aktualisieren des Bestands in einer Datenbank und in Bestellungen).
 
-** Execute the same operations on several databases. **  
-[Elastic database jobs](sql-database-elastic-jobs-overview.md) execute administrative operations such as rebuilding indexes or updating schemas across each database in your elastic pool.
+** Ausführen der gleichen Vorgänge für mehrere Datenbanken. ** [Aufträge für elastische Datenbanken](sql-database-elastic-jobs-overview.md) ermöglichen Ihnen das Ausführen administrativer Vorgänge, z.B. das Neuerstellen von Indizes oder eine Schemaaktualisierung für jede Datenbank in Ihrem elastischen Pool.
 
-Go to the homepage to see what else SQL Database has to offer.
-[Check it out](https://azure.microsoft.com/services/sql-database/) 
+Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Get a [free Azure subscription](https://azure.microsoft.com/get-started/) and [create your first Azure SQL Database](sql-database-get-started.md).
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
+Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
  
-Review the [technical overview of SQL Database](sql-database-technical-overview.md).  
+Lesen Sie die [technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

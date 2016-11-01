@@ -1,48 +1,46 @@
 <properties
-    pageTitle="About Windows Virtual Machines | Microsoft Azure"
-    description="Learn about the basics of Windows virtual machines in Azure using both deployment models."
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor="tysonn"
-    tags="azure-resource-manager,azure-service-management"/>
+	pageTitle="Informationen zu virtuellen Windows-Computern | Microsoft Azure"
+	description="Machen Sie sich mithilfe von beiden Bereitstellungsmodellen mit den Grundlagen von virtuellen Windows-Computern vertraut."
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="cynthn"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/27/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/27/2016"
+	ms.author="cynthn"/>
 
-
-#<a name="about-windows-virtual-machines-in-azure"></a>About Windows virtual machines in Azure
+#Informationen zu virtuellen Windows-Computern in Azure
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-Azure Virtual Machines is one of several types of on-demand, scalable computing resources that Azure offers. Typically, you'll choose a virtual machine if you need more control over the computing environment than the other choices offer.
+Virtuelle Azure-Computer sind eine von mehreren bedarfsgesteuerten, skalierbaren Computerressourcen, die von Azure angeboten werden. In der Regel wählen Sie eine virtuelle Maschine, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen, als die anderen Optionen bieten.
 
-An Azure virtual machine gives you the flexibility of virtualization without having to buy and maintain the physical hardware that runs the virtual machine. However, you still need to maintain the virtual machine -- configuring, patching, and maintaining the software that runs on the virtual machine. You can also learn [about Linux virtual machines in Azure](virtual-machines-linux-about.md).
+Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet. Allerdings müssen Sie den virtuellen Computer verwalten – Konfigurieren, Patchen und Verwalten der Software, die auf dem virtuellen Computer ausgeführt wird. Außerdem erhalten Sie Informationen zu [virtuellen Linux-Computern in Azure](virtual-machines-linux-about.md).
 
-This table helps you compare the choices offered by Azure.
+Anhand dieser Tabelle können Sie die von Azure angebotenen Auswahlmöglichkeiten vergleichen.
 
 [AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
 
-[AZURE.INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
+[AZURE.INCLUDE [Virtuelle-Computer-Auswahlmöglichkeiten](../../includes/virtual-machines-choose-me-content.md)]
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Try out a virtual machine by creating a simple virtual machine quickly. For instructions, see [Create a virtual machine running Windows in the Azure portal](virtual-machines-windows-hero-tutorial.md).
+Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in nur wenigen Schritten einen einfachen virtuellen Computer. Anweisungen hierzu finden Sie unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](virtual-machines-windows-hero-tutorial.md).
 
-Because the tutorial helps you create a virtual machine quickly, it only shows you one way to do it instead of describing the various tools you can use to create virtual machines. For a summary of these tools and links to instructions, see [Different ways to create a Windows virtual machine](virtual-machines-windows-creation-choices.md).
+Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen Computer zu erstellen, zeigen sie nur eine von mehreren Möglichkeiten auf. Die verschiedenen Tools, die für die Erstellung virtueller Computers zur Verfügung stehen, werden hingegen nicht beschrieben. Eine Übersicht über diese Tools und Links zu Anweisungen finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](virtual-machines-windows-creation-choices.md).
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!--links-->
+[App Service]: app-service-choose-me.md
+[Cloud-Dienste]: cloud-services-choose-me.md
+[Virtuelle Computer]: #tellmevm
+<!---HONumber=AcomDC_0928_2016-->

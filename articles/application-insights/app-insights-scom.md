@@ -1,118 +1,113 @@
 <properties 
-    pageTitle="SCOM integration with Application Insights | Microsoft Azure" 
-    description="If you're an SCOM user, monitor performance and diagnose issues with Application Insights. Comprehensive dashboards, smart alerts, powerful diagnostic tools and analysis queries." 
-    services="application-insights" 
+	pageTitle="SCOM-Integration in Application Insights | Microsoft Azure" 
+	description="Nutzen Sie als SCOM-Benutzer Application Insights zur Überwachung der Leistung und zur Diagnose von Problem. Umfassende Dashboards, intelligente Warnungen, leistungsstarke Diagnosetools und Analyseabfragen." 
+	services="application-insights" 
     documentationCenter=""
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/12/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/12/2016" 
+	ms.author="awills"/>
  
+# Überwachung der Anwendungsleistung mithilfe von Application Insights für SCOM
 
-# <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Application Performance Monitoring using Application Insights for SCOM
+Falls Sie Ihre Server mithilfe von System Center Operations Manager (SCOM) verwalten, können Sie zum Überwachen der Leistung sowie zum Diagnostizieren von Leistungsproblemen [Visual Studio Application Insights](app-insights-asp-net.md) verwenden. Application Insights überwacht eingehende Anforderungen, ausgehende REST- und SQL-Aufrufe sowie Ausnahmen und Protokollablaufverfolgungen Ihrer Webanwendung. Die Lösung stellt Metrikdiagramme und intelligente Warnungen für Dashboards bereit und bietet leistungsfähige diagnostische Suchfunktionen und analytische Abfragen für die Telemetriedaten.
 
-If you use System Center Operations Manager (SCOM) to manage your servers, you can monitor performance and diagnose performance issues with the help of [Visual Studio Application Insights](app-insights-asp-net.md). Application Insights monitors your web application's incoming requests, outgoing REST and SQL calls, exceptions, and log traces. It provides dashboards with metric charts and smart alerts, as well as powerful diagnostic search and analytical queries over this telemetry. 
+Die Application Insights-Überwachung kann mithilfe eines SCOM-Management Packs aktiviert werden.
 
-You can switch on Application Insights monitoring by using an SCOM management pack.
+## Vorbereitung
 
-## <a name="before-you-start"></a>Before you start
+Wir treffen folgende Annahmen:
 
-We assume:
+* Sie sind mit SCOM vertraut und verwalten Ihre IIS-Webserver mithilfe von SCOM 2012 R2 oder 2016.
+* Sie haben auf Ihren Servern bereits eine Webanwendung installiert, die Sie mit Application Insights überwachen möchten.
+* Die App-Framework-Version ist mindestens .NET 4.5.
+* Sie haben Zugriff auf ein Abonnement in [Microsoft Azure](https://azure.com) und können sich beim [Azure-Portal](https://portal.azure.com) anmelden. Unter Umständen verfügt Ihre Organisation über ein Abonnement und kann diesem Ihr Microsoft-Konto hinzufügen.
 
-* You're familiar with SCOM, and that you use SCOM 2012 R2 or 2016 to manage your IIS web servers.
-* You have already installed on your servers a web application that you want to monitor with Application Insights.
-* App framework version is .NET 4.5 or later.
-* You have access to a subscription in [Microsoft Azure](https://azure.com) and can sign in to the [Azure portal](https://portal.azure.com). Your organization may have a subscription, and can add your Microsoft account to it.
+(Das Entwicklerteam kann das [Application Insights SDK](app-insights-asp-net.md) in die Web-App integrieren. Durch diese Instrumentation zur Buildzeit haben Entwickler mehr Freiheiten beim Schreiben von benutzerdefinierter Telemetrie. Dies spielt hier jedoch keine Rolle: Die beschriebenen Schritte können auch ausgeführt werden, wenn das SDK integriert wurde.)
 
-(The development team might build the [Application Insights SDK](app-insights-asp-net.md) into the web app. This build-time instrumentation gives them greater flexibility in writing custom telemetry. However, it doesn't matter: you can follow the steps described here either with or without the SDK built in.)
+## Installieren des Application Insights-Management Packs (einmaliger Schritt)
 
-## <a name="(one-time)-install-application-insights-management-pack"></a>(One time) Install Application Insights management pack
+Gehen Sie auf dem Computer, auf dem Operations Manager ausgeführt wird, wie folgt vor:
 
-On the machine where you run Operations Manager:
-
-2. Uninstall any old version of the management pack:
- 1. In Operations Manager, open Administration, Management Packs. 
- 2. Delete the old version.
-1. Download and install the management pack from the catalog.
-2. Restart Operations Manager.
+2. Deinstallieren Sie sämtliche alte Versionen des Management Packs:
+ 1. Öffnen Sie in Operations Manager „Verwaltung“ > „Management Packs“.
+ 2. Löschen Sie die alte Version.
+1. Laden Sie das Management Pack aus dem Katalog herunter, und installieren Sie es.
+2. Starten Sie Operations Manager neu.
 
 
-## <a name="create-a-management-pack"></a>Create a management pack
+## Erstellen eines Management Packs
 
-1. In Operations Manager, open **Authoring**, **.NET...with Application Insights**, **Add Monitoring Wizard**, and again choose **.NET...with Application Insights**.
+1. Öffnen Sie in Operations Manager **Konfiguration** > **.NET...mit Application Insights**, **Assistent zum Hinzufügen von Monitoren**, und wählen Sie erneut **.NET mit Application Insights** aus.
 
     ![](./media/app-insights-scom/020.png)
 
-2. Name the configuration after your app. (You have to instrument one app at a time.)
+2. Benennen Sie die Konfiguration nach Ihrer App. (Apps müssen immer einzeln instrumentiert werden.)
     
     ![](./media/app-insights-scom/030.png)
 
-3. On the same wizard page, either create a new management pack, or select a pack that you created for Application Insights earlier.
+3. Erstellen Sie auf der gleichen Seite des Assistenten entweder ein neues Management Pack, oder wählen Sie ein zuvor für Application Insights erstelltes Management Pack aus.
 
-     (The Application Insights [management pack](https://technet.microsoft.com/library/cc974491.aspx) is a template, from which you create an instance. You can reuse the same instance later.)
+     (Das Application Insights-[Management Pack](https://technet.microsoft.com/library/cc974491.aspx) ist eine Vorlage für die Erstellung einer Instanz. Die gleiche Instanz kann später erneut verwendet werden.)
 
 
-    ![In the General Properties tab, type the name of the app. Click New and type a name for a management pack. Click OK, then click Next.](./media/app-insights-scom/040.png)
+    ![Geben Sie auf der Registerkarte „Allgemeine Eigenschaften“ den Namen Ihrer App ein. Klicken Sie auf „Neu“, und geben Sie einen Namen für ein Management Pack ein. Klicken Sie auf „OK“ und anschließend auf „Weiter“.](./media/app-insights-scom/040.png)
 
-4. Choose one app that you want to monitor. The search feature searches among apps installed on your servers.
+4. Wählen Sie eine zu überwachende App aus. Das Suchfeature durchsucht die auf Ihren Servern installierten Apps.
 
-    ![On What to Monitor tab, click Add, type part of the app name, click Search, choose the app, and then Add, OK.](./media/app-insights-scom/050.png)
+    ![Klicken Sie auf der Registerkarte zur Angabe der zu überwachenden Elemente auf „Hinzufügen“, geben Sie einen Teil des App-Namens ein, klicken Sie auf „Suchen“, wählen Sie die App aus, klicken Sie auf „Hinzufügen“, und klicken Sie anschließend auf „OK“.](./media/app-insights-scom/050.png)
 
-    The optional Monitoring scope field can be used to specify a subset of your servers, if you don't want to monitor the app in all servers.
+    Falls die App nicht auf allen Servern überwacht werden soll, können Sie mithilfe des optionalen Felds „Überwachungsbereich“ eine Teilmenge Ihrer Server angeben.
 
-5. On the next wizard page, you must first provide your credentials to sign in to Microsoft Azure.
+5. Auf der nächsten Seite des Assistenten müssen Sie zunächst Ihre Anmeldeinformationen für die Anmeldung bei Microsoft Azure angeben.
 
-    On this page, you choose the Application Insights resource where you want the telemetry data to be analyzed and displayed. 
+    Auf dieser Seite wählen Sie die gewünschte Application Insights-Ressource für die Analyse und Darstellung der Telemetriedaten aus.
 
- * If the application was configured for Application Insights during development, select its existing resource.
- * Otherwise, create a new resource named for the app. If there are other apps that are components of the same system, put them in the same resource group, to make access to the telemetry easier to manage.
+ * Falls die Anwendung während der Entwicklung für Application Insights konfiguriert wurde, wählen Sie die vorhandene Ressource aus.
+ * Falls nicht, erstellen Sie eine neue, nach der App benannte Ressource. Sind weitere Apps vorhanden, bei denen es sich um Komponenten des gleichen Systems handelt, fügen Sie sie der gleichen Ressourcengruppe hinzu, um die Verwaltung des Telemetriedatenzugriffs zu vereinfachen.
 
-    You can change these settings later.
+    Diese Einstellungen können später geändert werden.
 
-    ![On Application Insights settings tab, click 'sign in' and provide your Microsoft account credentials for Azure. Then choose a subscription, resource group, and resource.](./media/app-insights-scom/060.png)
+    ![Klicken Sie auf der Registerkarte mit den Einstellungen für Application Insights auf „Anmelden“, und geben Sie die Anmeldeinformationen Ihres Microsoft-Kontos für Azure an. Wählen Sie dann ein Abonnement, eine Ressourcengruppe und eine Ressource aus.](./media/app-insights-scom/060.png)
 
-6. Complete the wizard.
+6. Schließen Sie den Assistenten ab.
 
-    ![Click Create](./media/app-insights-scom/070.png)
+    ![Klicken Sie auf „Erstellen“.](./media/app-insights-scom/070.png)
     
-Repeat this procedure for each app that you want to monitor.
+Wiederholen Sie dieses Verfahren für jede App, die Sie überwachen möchten.
 
-If you need to change settings later, re-open the properties of the monitor from the Authoring window.
+Falls Sie die Einstellungen später ändern möchten, öffnen Sie im Konfigurationsfenster die Eigenschaften des Monitors.
 
-![In Authoring, select .NET Application Performance Monitoring with Application Insights, select your monitor, and click Properties.](./media/app-insights-scom/080.png)
+![Wählen Sie in der Konfiguration die Option für die .NET-Anwendungsleistungsüberwachung mit Application Insights sowie Ihren Monitor aus, und klicken Sie anschließend auf „Eigenschaften“.](./media/app-insights-scom/080.png)
 
-## <a name="verify-monitoring"></a>Verify monitoring
+## Überprüfen der Überwachung
 
-The monitor that you have installed searches for your app on every server. Where it finds the app, it configures Application Insights Status Monitor to monitor the app. If necessary, it first installs Status Monitor on the server.
+Der installierte Monitor durchsucht jeden Server nach Ihrer App. Wo die App gefunden wird, wird der Application Insights-Statusmonitor für die Überwachung der App konfiguriert. Gegebenenfalls wird der Statusmonitor zuvor auf dem Server installiert.
 
-You can verify which instances of the app it has found:
+Sie können überprüfen, welche Instanzen der App gefunden wurden:
 
-![In Monitoring, open Application Insights](./media/app-insights-scom/100.png)
-
-
-## <a name="view-telemetry-in-application-insights"></a>View telemetry in Application Insights
-
-In the [Azure portal](https://portal.azure.com), browse to the resource for your app. You [see charts showing telemetry](app-insights-dashboards.md) from your app. (If it hasn't shown up on the main page yet, click Live Metrics Stream.)
+![Öffnen Sie Application Insights (unter „Überwachung“).](./media/app-insights-scom/100.png)
 
 
-## <a name="next-steps"></a>Next steps
+## Anzeigen von Telemetriedaten in Application Insights
 
-* [Set up a dashboard](app-insights-dashboards.md) to bring together the most important charts monitoring this and other apps.
-* [Learn about metrics](app-insights-metrics-explorer.md)
-* [Set up alerts](app-insights-alerts.md)
-* [Diagnosing performance issues](app-insights-detect-triage-diagnose.md)
-* [Powerful Analytics queries](app-insights-analytics.md)
-* [Availability web tests](app-insights-monitor-web-app-availability.md)
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Ressource für Ihre App. Hier werden [Diagramme mit Telemetriedaten](app-insights-dashboards.md) aus Ihrer App angezeigt. (Falls sie noch nicht auf der Hauptseite angezeigt wird, klicken Sie auf „Live Metrics Stream“.)
 
 
+## Nächste Schritte
 
-<!--HONumber=Oct16_HO2-->
+* [Richten Sie ein Dashboard ein](app-insights-dashboards.md), um die wichtigsten Diagramme zur Überwachung dieser und anderer Apps zusammenzuführen.
+* [Weitere Informationen zu Metriken](app-insights-metrics-explorer.md)
+* [Einrichten von Warnungen](app-insights-alerts.md)
+* [Diagnostizieren von Leistungsproblemen](app-insights-detect-triage-diagnose.md)
+* [Leistungsstarke Analytics-Abfragen](app-insights-analytics.md)
+* [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
 
-
+<!---HONumber=AcomDC_0817_2016-->

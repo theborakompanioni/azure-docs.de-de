@@ -1,167 +1,162 @@
 <properties
-    pageTitle="How to create, manage, or delete a storage account in the Azure Portal | Microsoft Azure"
-    description="Create a new storage account, manage your account access keys, or delete a storage account in the Azure Portal. Learn about standard and premium storage accounts."
-    services="storage"
-    documentationCenter=""
-    authors="robinsh"
-    manager="carmonm"
-    editor="tysonn"/>
+	pageTitle="Gewusst wie: Erstellen, Verwalten oder Löschen eines Speicherkontos im Azure-Portal | Microsoft Azure"
+	description="Erstellen Sie ein neues Speicherkonto, verwalten Sie die Zugriffsschlüssel für Ihr Konto, oder löschen Sie ein Speicherkonto im Azure-Portal. Erfahren Sie mehr über Standard- und Premium-Speicherkonten."
+	services="storage"
+	documentationCenter=""
+	authors="robinsh"
+	manager="carmonm"
+	editor="tysonn"/>
 
 <tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="07/26/2016"
-    ms.author="micurd;robinsh"/>
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="07/26/2016"
+	ms.author="micurd;robinsh"/>
 
 
-
-# <a name="about-azure-storage-accounts"></a>About Azure storage accounts
+# Informationen zu Azure-Speicherkonten
 
 [AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
 <br/>
 [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Overview
+## Übersicht
 
-An Azure storage account provides a unique namespace to store and access your Azure Storage data objects. All objects in a storage account are billed together as a group. By default, the data in your account is available only to you, the account owner.
+Ein Azure-Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer Azure Storage-Datenobjekte sowie für den Zugriff darauf bereit. Alle Objekte in einem Speicherkonto werden zusammen als Gruppe abgerechnet. Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Kontobesitzer verfügbar.
 
 [AZURE.INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
 
-## <a name="storage-account-billing"></a>Storage account billing
+## Speicherkontoabrechnung
 
 [AZURE.INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
-> [AZURE.NOTE] When you create an Azure virtual machine, a storage account is created for you automatically in the deployment location if you do not already have a storage account in that location. So it's not necessary to follow the steps below to create a storage account for your virtual machine disks. The storage account name will be based on the virtual machine name. See the [Azure Virtual Machines documentation](https://azure.microsoft.com/documentation/services/virtual-machines/) for more details.
+> [AZURE.NOTE] Wenn Sie einen virtuellen Azure-Computer erstellen, wird für Sie automatisch ein Speicherkonto in der Bereitstellungsregion erstellt, falls Sie noch kein Speicherkonto in der entsprechenden Region haben. Es ist nicht erforderlich, den unten aufgeführten Schritten zum Anlegen eines Speicherkontos für die Festplatten Ihres virtuelles Computers zu folgen. Der Name des Speicherkontos basiert auf dem Namen des virtuellen Computers. In der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) finden Sie weitere Einzelheiten.
 
-## <a name="storage-account-endpoints"></a>Storage account endpoints
+## Speicherkontoendpunkte
 
-Every object that you store in Azure Storage has a unique URL address. The storage account name forms the subdomain of that address. The combination of subdomain and domain name, which is specific to each service, forms an *endpoint* for your storage account.
+Jedes Objekt, das Sie in Azure Storage speichern, verfügt über eine eindeutige URL-Adresse. Der Name des Speicherkontos bildet die Unterdomäne dieser Adresse. Die Kombination aus Unterdomäne und Domänenname, die für jeden Dienst spezifisch ist, bildet einen *Endpunkt* für Ihr Speicherkonto.
 
-For example, if your storage account is named *mystorageaccount*, then the default endpoints for your storage account are:
+Wenn Ihr Speicherkonto beispielsweise *meinspeicherkonto* heißt, dann sind die Standardendpunkte für Ihr Speicherkonto wie folgt:
 
-- Blob service: http://*mystorageaccount*.blob.core.windows.net
+- Blob-Dienst: http://*mystorageaccount*.blob.core.windows.net
 
-- Table service: http://*mystorageaccount*.table.core.windows.net
+- Tabellendienst: http://*mystorageaccount*.table.core.windows.net
 
-- Queue service: http://*mystorageaccount*.queue.core.windows.net
+- Warteschlangendienst: http://*mystorageaccount*.queue.core.windows.net
 
-- File service: http://*mystorageaccount*.file.core.windows.net
+- Dateidienst: http://*mystorageaccount*.file.core.windows.net
 
-> [AZURE.NOTE] A Blob storage account only exposes the Blob service endpoint.
+> [AZURE.NOTE] Ein BLOB-Speicherkonto macht nur den Endpunkt des Blobdiensts verfügbar.
 
-The URL for accessing an object in a storage account is built by appending the object's location in the storage account to the endpoint. For example, a blob address might have this format: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhängen des Objektstandorts im Speicherkonto an den Endpunkt generiert. Eine Blob-Adresse kann beispielsweise folgendes Format haben: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
-You can also configure a custom domain name to use with your storage account. For classic storage accounts, see [Configure a custom domain Name for your Blob Storage Endpoint](storage-custom-domain-name.md) for details. For Resource Manager storage accounts, this capability has not been added to the [Azure portal](https://portal.azure.com) yet, but you can configure it with PowerShell. For more information, see the [Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx) cmdlet.  
+Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Informationen zu klassischen Speicherkonten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md). Für Resource Manager-Speicherkonten wurde diese Funktion im [Azure-Portal](https://portal.azure.com) noch nicht hinzugefügt, Sie können jedoch PowerShell für die Konfiguration verwenden. Weitere Informationen finden Sie unter dem Cmdlet [Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## Erstellen Sie ein Speicherkonto.
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. On the Hub menu, select **New** -> **Data + Storage** -> **Storage account**.
+2. Wählen Sie im Menü „Hub“ die Option **Neu** -> **Daten und Speicher** -> **Speicherkonto** aus.
 
-3. Enter a name for your storage account. See [Storage account endpoints](#storage-account-endpoints) for details about how the storage account name will be used to address your objects in Azure Storage.
+3. Geben Sie einen Namen für Ihr Speicherkonto ein. Unter [Speicherkontoendpunkte](#storage-account-endpoints) finden Sie Details dazu, wie der Name des Speicherkontos zum Adressieren Ihrer Objekte in Azure Storage verwendet wird.
 
-    > [AZURE.NOTE] Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
-    >  
-    > Your storage account name must be unique within Azure. The Azure portal will indicate if the storage account name you select is already in use.
+	> [AZURE.NOTE] Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
+	>  
+	> Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Im Azure-Portal wird angezeigt, ob der von Ihnen ausgewählte Speicherkontoname bereits verwendet wird.
 
-4. Specify the deployment model to be used: **Resource Manager** or **Classic**. **Resource Manager** is the recommended deployment model. For more information, see [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md).
+4. Geben Sie das Bereitstellungsmodell an, das verwendet werden soll: **Resource Manager** oder **Klassisch**. **Ressourcen-Manager** ist das empfohlene Bereitstellungsmodell. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
 
-    > [AZURE.NOTE] Blob storage accounts can only be created using the Resource Manager deployment model.
+	> [AZURE.NOTE] BLOB-Speicherkonten können nur mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden.
 
-5. Select the type of storage account: **General purpose** or **Blob storage**. **General purpose** is the default.
+5. Wählen Sie den Typ des Speicherkontos aus: **Allgemein** oder **Blob Storage**. **Allgemein** ist die Standardeinstellung.
 
-    If **General purpose** was selected, then specify the performance tier: **Standard** or **Premium**. The default is **Standard**. For more details on standard and premium storage accounts, see [Introduction to Microsoft Azure Storage](storage-introduction.md) and [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](storage-premium-storage.md).
+	Wenn **Allgemein** ausgewählt wurde, geben Sie die Leistungsstufe an: **Standard** oder **Premium**. Die Standardeinstellung ist **Standard**. Weitere Informationen zu Standard- und Premium-Speicherkonten finden Sie unter [Einführung in Microsoft Azure Storage](storage-introduction.md) und [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](storage-premium-storage.md).
 
-    If **Blob Storage** was selected, then specify the access tier: **Hot** or **Cool**. The default is **Hot**. See [Azure Blob Storage: Cool and Hot tiers](storage-blob-storage-tiers.md) for more details.
+	Wenn **Blob Storage** ausgewählt wurde, geben Sie den Zugriffstarif an: **Heiße Daten** oder **Kalte Daten**. Der Standardwert ist **Heiße Daten**. Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](storage-blob-storage-tiers.md).
 
-6. Select the replication option for the storage account: **LRS**, **GRS**, **RA-GRS**, or **ZRS**. The default is **RA-GRS**. For more details on Azure Storage replication options, see [Azure Storage replication](storage-redundancy.md).
+6. Wählen Sie die Replikationsoption für das Speicherkonto aus: **LRS**, **GRS**, **RA-GRS** oder **ZRS**. Die Standardeinstellung ist **RA-GRS**. Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
-7. Select the subscription in which you want to create the new storage account.
+7. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
 
-8. Specify a new resource group or select an existing resource group. For more information on resource groups, see [Azure Resource Manager overview](../resource-group-overview.md).
+8. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
-9. Select the geographic location for your storage account. See [Azure Regions](https://azure.microsoft.com/regions/#services) for more information about what services are available in which region.
+9. Wählen Sie den geografischen Standort für das Speicherkonto aus. Unter [Azure-Regionen](https://azure.microsoft.com/regions/#services) finden Sie weitere Informationen dazu, welche Dienste in welcher Region verfügbar sind.
 
-10. Click **Create** to create the storage account.
+10. Klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen.
 
-## <a name="manage-your-storage-account"></a>Manage your storage account
+## Verwalten von Speicherkonten
 
-### <a name="change-your-account-configuration"></a>Change your account configuration
+### Ändern der Kontokonfiguration
 
-After you create your storage account, you can modify its configuration, such as changing the replication option used for the account or changing the access tier for a Blob storage account. In the [Azure portal](https://portal.azure.com), navigate to your storage account, click **All settings** and then click **Configuration** to view and/or change the account configuration.
+Nach dem Erstellen eines Speicherkontos können Sie seine Konfiguration ändern. So können Sie beispielsweise die für das Konto verwendete Replikationsoption oder den Zugriffsstufe für ein BLOB-Speicherkonto ändern. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf **Alle Einstellungen** und anschließend auf **Konfiguration**, um die Kontokonfiguration anzuzeigen und/oder zu ändern.
 
-> [AZURE.NOTE] Depending on the performance tier you chose when creating the storage account, some replication options may not be available.
+> [AZURE.NOTE] Abhängig von der beim Erstellen des Speicherkontos ausgewählten Leistungsstufe sind einige Replikationsoptionen unter Umständen nicht verfügbar.
 
-Changing the replication option will change your pricing. For more details, see [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) page.
+Durch Änderung der Replikationsoption ändert sich auch der Preis. Weitere Informationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-For Blob storage accounts, changing the access tier may incur charges for the change in addition to changing your pricing. Please see the [Blob storage accounts - Pricing and Billing](storage-blob-storage-tiers.md#pricing-and-billing) for more details.
+Wenn Sie für BLOB-Speicherkonten die Zugriffsstufen ändern, fallen unter Umständen zusätzlich zur Preisänderung weitere Gebühren für die Änderung an. Weitere Informationen hierzu finden Sie unter [Blob-Speicherkonten – Preise und Abrechnung](storage-blob-storage-tiers.md#pricing-and-billing).
 
-### <a name="manage-your-storage-access-keys"></a>Manage your storage access keys
+### Verwalten von Speicherzugriffsschlüsseln
 
-When you create a storage account, Azure generates two 512-bit storage access keys, which are used for authentication when the storage account is accessed. By providing two storage access keys, Azure enables you to regenerate the keys with no interruption to your storage service or access to that service.
+Wenn Sie ein Speicherkonto erstellen, generiert Azure zwei 512-Bit-Speicherzugriffsschlüssel, die für die Authentifizierung verwendet werden, wenn der Zugriff auf das Speicherkonto erfolgt. Durch Bereitstellen von zwei Speicherzugriffsschlüsseln ermöglicht Azure Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Speicherdiensts oder Zugriff auf diesen Dienst.
 
-> [AZURE.NOTE] We recommend that you avoid sharing your storage access keys with anyone else. To permit access to storage resources without giving out your access keys, you can use a *shared access signature*. A shared access signature provides access to a resource in your account for an interval that you define and with the permissions that you specify. See [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) for more information.
+> [AZURE.NOTE] Sie sollten das Weitergeben von Speicherzugriffsschlüsseln an andere vermeiden. Um den Zugriff auf Speicherressourcen zu gewähren, ohne den Zugriffsschlüssel weiterzugeben, verwenden Sie eine *Shared Access Signature*. Eine Shared Access Signature (SAS) bietet Zugriff auf eine Ressource in Ihrem Konto für ein von Ihnen definiertes Zeitintervall und mit den von Ihnen festgelegten Berechtigungen. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).
 
-#### <a name="view-and-copy-storage-access-keys"></a>View and copy storage access keys
+#### Anzeigen und Kopieren von Speicherzugriffsschlüssel
 
-In the [Azure portal](https://portal.azure.com), navigate to your storage account, click **All settings** and then click **Access keys** to view, copy, and regenerate your account access keys. The **Access Keys** blade also includes pre-configured connection strings using your primary and secondary keys that you can copy to use in your applications.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf **Alle Einstellungen** und anschließend auf **Zugriffsschlüssel**, um Ihre Kontozugriffsschlüssel anzuzeigen, zu kopieren und erneut zu generieren. Das Blatt **Zugriffsschlüssel** enthält auch vorkonfigurierte Verbindungszeichenfolgen, in denen Ihre primären und sekundären Schlüssel verwendet werden, die Sie zur Nutzung in der Anwendung kopieren können.
 
-#### <a name="regenerate-storage-access-keys"></a>Regenerate storage access keys
+#### Erneutes Generieren von Speicherzugriffsschlüsseln
 
-We recommend that you change the access keys to your storage account periodically to help keep your storage connections secure. Two access keys are assigned so that you can maintain connections to the storage account by using one access key while you regenerate the other access key.
+Sie sollten die Zugriffsschlüssel für Ihr Speicherkonto regelmäßig ändern, um dafür zu sorgen, dass Ihre Speicherverbindungen sicher sind. Zwei Zugriffsschlüssel werden zugewiesen, um es Ihnen zu ermöglichen, Verbindungen zum Speicherkonto mit einem Zugriffsschlüssel aufrecht zu erhalten, während Sie den anderen Zugriffsschlüssel neu generieren.
 
-> [AZURE.WARNING] Regenerating your access keys can affect services in Azure as well as your own applications that are dependent on the storage account. All clients that use the access key to access the storage account must be updated to use the new key.
+> [AZURE.WARNING] Das erneute Generieren der Zugriffsschlüssel wirkt sich auf die Dienste in Azure sowie auf Ihre eigenen Anwendungen aus, die vom Speicherkonto abhängen. Alle Clients, die den Zugriffsschlüssel verwenden, um auf das Speicherkonto zuzugreifen, müssen aktualisiert werden, um den neuen Schlüssel zu verwenden.
 
-**Media services** - If you have media services that are dependent on your storage account, you must re-sync the access keys with your media service after you regenerate the keys.
+**Mediendienste**: Falls Sie Mediendienste haben, die auf Ihr Speicherkonto angewiesen sind, müssen Sie die Zugriffsschlüssel nach dem erneuten Generieren der Schlüssel mit Ihrem Mediendienst erneut synchronisieren.
 
-**Applications** - If you have web applications or cloud services that use the storage account, you will lose the connections if you regenerate keys, unless you roll your keys.
+**Anwendungen**: Falls Sie Webanwendungen oder Clouddienste haben, die das Speicherkonto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus.
 
-**Storage Explorers** - If you are using any [storage explorer applications](storage-explorers.md), you will probably need to update the storage key used by those applications.
+**Speicher-Explorer**: Wenn Sie beliebige [Speicher-Explorer-Anwendungen](storage-explorers.md) verwenden, müssen Sie möglicherweise den von diesen Anwendungen verwendeten Speicherschlüssel aktualisieren.
 
-Here is the process for rotating your storage access keys:
+Mit dem folgenden Prozess wechseln Sie Ihre Speicherzugriffsschlüssel:
 
-1. Update the connection strings in your application code to reference the secondary access key of the storage account.
+1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, damit sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
 
-2. Regenerate the primary access key for your storage account. On the **Access Keys** blade, click **Regenerate Key1**, and then click **Yes** to confirm that you want to generate a new key.
+2. Generieren Sie den primären Zugriffsschlüssel für das Speicherkonto neu. Klicken Sie auf dem Blatt **Zugriffsschlüssel** auf **Schlüssel 1 erneut generieren** und dann auf **Ja**, um das Generieren eines neuen Schlüssels zu bestätigen.
 
-3. Update the connection strings in your code to reference the new primary access key.
+3. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
 
-4. Regenerate the secondary access key in the same manner.
+4. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
 
-## <a name="delete-a-storage-account"></a>Delete a storage account
+## Löschen eines Speicherkontos
 
-To remove a storage account that you are no longer using, navigate to the storage account in the [Azure portal](https://portal.azure.com), and click **Delete**. Deleting a storage account deletes the entire account, including all data in the account.
+Um ein Speicherkonto zu entfernen, das Sie nicht mehr verwenden, wechseln Sie im [Azure-Portal](https://portal.azure.com) zum entsprechenden Speicherkonto, und klicken Sie auf **Löschen**. Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto.
 
-> [AZURE.WARNING] It's not possible to restore a deleted storage account or retrieve any of the content that it contained before deletion. Be sure to back up anything you want to save before you delete the account. This also holds true for any resources in the account—once you delete a blob, table, queue, or file, it is permanently deleted.
+> [AZURE.WARNING] Es ist nicht möglich, ein gelöschtes Speicherkonto wiederherzustellen oder Inhalte abzurufen, die das Konto vor dem Löschen enthielt. Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Dies gilt auch für alle Ressourcen im Konto – gelöschte Blobs, Tabellen, Warteschlangen oder Dateien können nicht wiederhergestellt werden.
 
-To delete a storage account that is associated with an Azure virtual machine, you must first ensure that any virtual machine disks have been deleted. If you do not first delete your virtual machine disks, then when you attempt to delete your storage account, you will see an error message similar to:
+Um ein Speicherkonto löschen zu können, das einer virtuellen Azure-Maschine zugeordnet ist, müssen Sie zuerst sicherstellen, dass alle Datenträger der virtuellen Maschine gelöscht wurden. Wenn Sie die Datenträger der virtuellen Maschine vorher nicht löschen, wird beim Versuch, das Speicherkonto zu löschen, eine Fehlermeldung der folgenden Art angezeigt:
 
     Failed to delete storage account <vm-storage-account-name>. Unable to delete storage account <vm-storage-account-name>: 'Storage account <vm-storage-account-name> has some active image(s) and/or disk(s). Ensure these image(s) and/or disk(s) are removed before deleting this storage account.'.
 
-If the storage account uses the Classic deployment model, you can remove the virtual machine disk by following these steps in the [Azure portal](https://manage.windowsazure.com):
+Wenn das Speicherkonto das klassische Bereitstellungsmodell verwendet, können Sie den Datenträger des virtuellen Computers entfernen, indem Sie folgende Schritte im [Azure-Portal](https://manage.windowsazure.com) ausführen:
 
-1. Navigate to the [classic Azure portal](https://manage.windowsazure.com).
-2. Navigate to the Virtual Machines tab.
-3. Click the Disks tab.
-4. Select your data disk, then click Delete Disk.
-5. To delete disk images, navigate to the Images tab and delete any images that are stored in the account.
+1. Navigieren Sie zum [klassischen Azure-Portal](https://manage.windowsazure.com).
+2. Navigieren Sie zur Registerkarte „Virtuelle Computer“.
+3. Klicken Sie auf die Registerkarte „Datenträger“.
+4. Wählen Sie Ihren Datenträger aus, und klicken Sie dann auf „Datenträger löschen“.
+5. Um Datenträgerimages zu löschen, navigieren Sie zur Registerkarte „Images“. Löschen Sie alle unter dem Konto gespeicherten Images.
 
-For more information, see the [Azure Virtual Machine documentation](http://azure.microsoft.com/documentation/services/virtual-machines/).
+Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Azure-Computern](http://azure.microsoft.com/documentation/services/virtual-machines/).
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- [Azure Blob Storage: Cool and Hot tiers](storage-blob-storage-tiers.md)
-- [Azure Storage replication](storage-redundancy.md)
-- [Configure Azure Storage Connection Strings](storage-configure-connection-string.md)
-- [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md)
-- Visit the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/).
+- [Azure Blob Storage: Cool and Hot tiers (Azure Blob Storage: Stufen für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data))](storage-blob-storage-tiers.md)
+- [Azure Storage-Replikation](storage-redundancy.md)
+- [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md)
+- [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
+- Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

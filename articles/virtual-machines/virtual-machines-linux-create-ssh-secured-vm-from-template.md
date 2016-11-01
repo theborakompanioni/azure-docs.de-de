@@ -1,45 +1,27 @@
 <properties
-    pageTitle="Create a Linux VM using an Azure template | Microsoft Azure"
-    description="Create a Linux VM on Azure using an Azure Resource Manager template."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="vlivech"
-    manager="timlt"
-    editor=""
-    tags="azure-service-management,azure-resource-manager" />
+	pageTitle="Erstellen einer Linux-VM mit einer Azure-Vorlage | Microsoft Azure"
+	description="Erfahren Sie, wie Sie eine Linux-VM auf Azure mit einer Azure Resource Manager-Vorlage erstellen."
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="vlivech"
+	manager="timlt"
+	editor=""
+	tags="azure-service-management,azure-resource-manager" />
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/17/2016"
-    ms.author="v-livech"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="08/17/2016"
+	ms.author="v-livech"/>
 
+# Erstellen einer Linux-VM mit einer Azure-Vorlage
 
-# <a name="create-a-linux-vm-using-an-azure-template"></a>Create a Linux VM using an Azure template
+Dieser Artikel zeigt, wie Sie mithilfe einer Azure-Vorlage schnell einen virtuellen Linux-Computer auf Azure bereitstellen können. Für die Schritte in diesem Artikel sind ein Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und die Anmeldung der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (`azure login`) erforderlich, die sich zudem im Resource Manager-Modus (`azure config mode arm`) befinden muss. Sie können mithilfe des [Azure-Portals](virtual-machines-linux-quick-create-portal.md) oder der [Azure-CLI](virtual-machines-linux-quick-create-cli.md) auch schnell einen virtuellen Linux-Computer bereitstellen.
 
-This article shows how to quickly deploy a Linux Virtual Machine on Azure using an Azure Template.  The article requires an Azure account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/)] with the [Azure CLI](../xplat-cli-install.md) logged in (`azure login`) and in Resource Manager mode (`azure config mode arm`).  You can also quickly deploy a Linux VM using the [Azure portal](virtual-machines-linux-quick-create-portal.md) or the [Azure CLI](virtual-machines-linux-quick-create-cli.md).
-
-## <a name="quick-command-summary"></a>Quick Command Summary
-
-```bash
-azure group create \
--n quicksecuretemplate \
--l eastus \
---template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
-```
-
-## <a name="detailed-walkthrough"></a>Detailed Walkthrough
-
-Templates allow you to create VMs on Azure with settings that you want to customize during the launch, settings like usernames and hostnames. For this article, we are launching an Azure template utilizing an Ubuntu VM along with a network security group (NSG) with port 22 open for SSH.
-
-Azure Resource Manager templates are JSON files that can be used for simple one-off tasks like launching an Ubuntu VM as done in this article.  Azure Templates can also be used to construct complex Azure configurations of entire environments like a testing, dev, or production deployment stack.
-
-## <a name="create-the-linux-vm"></a>Create the Linux VM
-
-The following code example shows how to call `azure group create` to create a resource group and deploy an SSH-secured Linux VM at the same time using [this Azure Resource Manager template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Remember that in your example you need to use names that are unique to your environment. This example uses `quicksecuretemplate` as the resource group name, `securelinux` as the VM name, and `quicksecurelinux` as a subdomain name.
+## Kurze Zusammenfassung der Befehle
 
 ```bash
 azure group create \
@@ -48,7 +30,24 @@ azure group create \
 --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 ```
 
-Output
+## Ausführliche exemplarische Vorgehensweise
+
+Mit Vorlagen können Sie VMs unter Azure mit Einstellungen erstellen, die Sie während des Startprozesses anpassen möchten, z.B. Einstellungen wie Benutzer- und Hostnamen. Für diesen Artikel starten wir eine Azure-Vorlage, indem wir eine Ubuntu-VM mit einer Netzwerksicherheitsgruppe (NSG) mit geöffnetem Port 22 für SSH verwenden.
+
+Azure Resource Manager-Vorlagen sind JSON-Dateien, die für einfache einmalige Aufgaben wie das Starten einer Ubuntu-VM in diesem Artikel verwendet werden können. Außerdem können Azure-Vorlagen auch zum Erstellen komplexer Azure-Konfigurationen für vollständige Umgebungen eingesetzt werden, z.B. eines Bereitstellungsstapels für Tests, Entwicklung oder Produktion.
+
+## Erstellen der Linux-VM
+
+Im folgenden Codebeispiel wird veranschaulicht, wie Sie `azure group create` aufrufen, um eine Ressourcengruppe zu erstellen, und gleichzeitig einen per SSH geschützten virtuellen Linux-Computer bereitstellen, indem Sie [diese Azure Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) verwenden. Beachten Sie, dass Sie in Ihrem Beispiel Namen verwenden müssen, die für Ihre Umgebung eindeutig sind. In diesem Beispiel wird `quicksecuretemplate` als Ressourcengruppenname, `securelinux` als VM-Name und `quicksecurelinux` als Name einer Unterdomäne verwendet.
+
+```bash
+azure group create \
+-n quicksecuretemplate \
+-l eastus \
+--template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
+```
+
+Ausgabe
 
 ```bash
 info:    Executing command group create
@@ -69,14 +68,10 @@ data:
 info:    group create command OK
 ```
 
-That example deployed a VM using the `--template-uri` parameter.  You can also download or create a template locally and pass the template using the `--template-file` parameter with a path to the template file as an argument. The Azure CLI prompts you for the parameters required by the template.
+In diesem Beispiel wird eine VM mit dem Parameter `--template-uri` bereitgestellt. Sie können eine Vorlage auch herunterladen oder lokal erstellen und mit dem Parameter `--template-file` mit einem Pfad zur Vorlagendatei als Argument übergeben. Sie werden von der Azure-Befehlszeilenschnittstelle aufgefordert, die für die Vorlage erforderlichen Parameter anzugeben.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Search the [templates gallery](https://azure.microsoft.com/documentation/templates/) to discover what app frameworks to deploy next.
+Im [Katalog mit den Vorlagen](https://azure.microsoft.com/documentation/templates/) können Sie weitere App-Frameworks für die Bereitstellung auswählen.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

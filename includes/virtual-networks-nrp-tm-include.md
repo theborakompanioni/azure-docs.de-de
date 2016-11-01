@@ -1,28 +1,28 @@
-## <a name="traffic-manager-profile"></a>Traffic Manager Profile
+## Traffic Manager-Profil
 
-Traffic manager and its child endpoint resource enable DNS routing to endpoints in Azure and outside of Azure. Such traffic distribution is governed by routing  policy methods. Traffic manager also allows endpoint health to be monitored, and traffic diverted appropriately based on the health of an endpoint. 
+Der Traffic Manager und seine untergeordnete Endpunkt-Ressource ermöglichen das DNS-Routing zu Endpunkten in und außerhalb von Azure. Eine solche Datenverkehrsverteilung wird durch Routingrichtlinien bestimmt. Der Traffic Manager lässt auch eine Überwachung der Endpunkt-Integrität zu, sowie eine angemessene Umleitung des Datenverkehrs basierend auf der Integrität eines Endpunktes.
 
-| Property | Description |
+| Eigenschaft | Beschreibung |
 |---|---|
-|**trafficRoutingMethod**| possible values are *Performance*, *Weighted*, and *Priority* | 
-| **dnsConfig** | FQDN for the profile | 
-| **Protocol** | monitoring protocol, possible values are *HTTP* and *HTTPS*|
-| **Port** | monitoring port |  
-| **Path** | monitoring path |
-| **Endpoints** |  container for endpoint resources | 
+|**trafficRoutingMethod**| Mögliche Werte sind *Leistung*, *Gewichtung* und *Priorität*. | 
+| **dnsConfig** | FQDN für das Profil | 
+| **Protokoll** | Überwachungsprotokoll, mögliche Werte sind *HTTP* und *HTTPS*|
+| **Port** | Überwachungsport |  
+| **Path** | Überwachungspfad |
+| **Endpunkte** | Container für Endpunkt-Ressourcen | 
 
-### <a name="endpoint"></a>Endpoint 
+### Endpunkt 
 
-An endpoint is a child resource of a Traffic Manager Profile. It represents a service or web endpoint to which user traffic is distributed based on the configured policy in the Traffic Manager Profile resource. 
+Ein Endpunkt ist eine dem Traffic Manager-Profil untergeordnete Ressource. Er stellt einen Dienst- oder Webendpunkt dar, an den der Benutzerdatenverkehr anhand der in der Traffic Manager-Ressource konfigurierten Richtlinie verteilt wird.
 
-| Property | Description | 
+| Eigenschaft | Beschreibung | 
 |---|---| 
-| **Type** |  the type of the endpoint, possible values are *Azure End point*, *External Endpoint*, and  *Nested Endpoint* | 
-| **targetResourceId** |  public IP address of a service or web endpoint. This can be an Azure or external endpoint. | 
-| **Weight** | endpoint weight used in traffic management. | 
-| **Priority** | priority of the endpoint, used to define a failover action |
+| **Typ** | Der Typ des Endpunkts, mögliche Werte sind *Azure-Endpunkt*, *externer Endpunkt* und *verschachtelter Endpunkt* | 
+| **targetResourceId** | Öffentliche IP-Adresse eines Dienst- oder Webendpunktes. Dabei kann es sich um einen Azure- oder externen Endpunkt handeln. | 
+| **Weight** | Endpunkt-Gewichtung, die für die Datenverkehrsverwaltung verwendet wird. | 
+| **Priority** | Priorität des Endpunktes, die zum Definieren einer Failover-Aktion verwendet wird |
 
-Sample of Traffic Manager in Json format: 
+Beispiel von Traffic Manager im JSON-Format:
 
 
         {
@@ -80,11 +80,8 @@ Sample of Traffic Manager in Json format:
         }
 
  
-## <a name="additional-resources"></a>Additional resources
+## Weitere Ressourcen
 
-Read [REST API documentation for Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx) for more information.
+Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1223_2015-->

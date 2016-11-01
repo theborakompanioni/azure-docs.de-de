@@ -1,65 +1,60 @@
 <properties
-    pageTitle="Connect to SQL Database by using PHP on Windows | Microsoft Azure"
-    description="Presents a sample PHP program that connects to Azure SQL Database from a Windows client, and provides links to the necessary software components needed by the client."
-    services="sql-database"
-    documentationCenter=""
-    authors="meet-bhagdev"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von PHP unter Windows | Microsoft Azure"
+	description="Enthält ein PHP-Beispielprogramm, das eine Verbindung von einem Windows-Client mit Azure SQL-Datenbank herstellt, sowie Links zu den auf dem Client erforderlichen Softwarekomponenten."
+	services="sql-database"
+	documentationCenter=""
+	authors="meet-bhagdev"
+	manager="jhubbard"
+	editor=""/>
 
 
 <tags
-    ms.service="sql-database"
-    ms.workload="drivers"
-    ms.tgt_pltfrm="na"
-    ms.devlang="php"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="meetb"/>
+	ms.service="sql-database"
+	ms.workload="drivers"
+	ms.tgt_pltfrm="na"
+	ms.devlang="php"
+	ms.topic="article"
+	ms.date="06/16/2016"
+	ms.author="meetb"/>
 
 
-
-# <a name="connect-to-sql-database-by-using-php-on-windows"></a>Connect to SQL Database by using PHP on Windows
-
-
-[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)] 
+# Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von PHP unter Windows
 
 
-This topic illustrates how you can connect to Azure SQL Database from a client application written in PHP that runs on Windows.
-
-## <a name="step-1:-configure-development-environment"></a>Step 1:  Configure Development Environment
-
-[Configure development environment for PHP development](https://msdn.microsoft.com/library/mt720663.aspx)
-
-## <a name="step-2:-create-a-sql-database"></a>Step 2: Create a SQL database
-
-See the [getting started page](sql-database-get-started.md) to learn how to create a sample database.  It is important you follow the guide to create an **AdventureWorks database template**. The samples shown below only work with the **AdventureWorks schema**.
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-## <a name="step-3:-get-connection-details"></a>Step 3: Get Connection Details
+In diesem Thema wird veranschaulicht, wie Sie von einer in PHP geschriebenen Clientanwendung, die unter Windows ausgeführt wird, eine Verbindung mit Azure SQL-Datenbank herstellen können.
+
+## Schritt 1: Konfigurieren der Entwicklungsumgebung
+
+[Configure development environment for PHP development](https://msdn.microsoft.com/library/mt720663.aspx) (Konfigurieren der Entwicklungsumgebung für die PHP-Entwicklung)
+
+## Schritt 2: Erstellen einer SQL-Datenbank
+
+Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank. Sie sollten unbedingt die Anleitung zum Erstellen einer **AdventureWorks-Datenbankvorlage** befolgen. Die unten gezeigten Beispiele funktionieren nur mit dem **AdventureWorks-Schema**.
+
+
+## Schritt 3: Abrufen der Verbindungsdetails
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 
-## <a name="step-4:-run-sample-code"></a>Step 4: Run sample code
+## Schritt 4: Ausführen von Beispielcode
 
-* [Proof of concept connecting to SQL using PHP](https://msdn.microsoft.com/library/mt720665.aspx)
-* [Connect resiliently to SQL with PHP](https://msdn.microsoft.com/library/mt720667.aspx)
-
-
-## <a name="next-steps"></a>Next steps
-
-* Review the [SQL Database Development Overview](sql-database-develop-overview.md)
-* More information on the [Microsoft PHP Driver for SQL Server](https://msdn.microsoft.com/library/dn865013.aspx)
-* For more information regarding PHP installation and usage, see [Accessing SQL Server Databases with PHP](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx).
-
-## <a name="additional-resources"></a>Additional resources 
-
-* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/)
+* [Proof of concept connecting to SQL using PHP](https://msdn.microsoft.com/library/mt720665.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von PHP)
+* [Connect resiliently to SQL with PHP](https://msdn.microsoft.com/library/mt720667.aspx) (Stabile Verbindung mit SQL mithilfe von PHP)
 
 
+## Nächste Schritte
 
-<!--HONumber=Oct16_HO2-->
+* Lesen Sie die [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
+* Weitere Informationen zum [Microsoft PHP-Treiber für SQL Server](https://msdn.microsoft.com/library/dn865013.aspx)
+* Weitere Informationen über die Installation und Verwendung von PHP finden Sie unter [Accessing SQL Server Databases with PHP](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx) (Zugreifen auf SQL Server-Datenbanken mit PHP, in englischer Sprache).
 
+## Weitere Ressourcen 
 
+* [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
+
+<!---HONumber=AcomDC_0622_2016-->

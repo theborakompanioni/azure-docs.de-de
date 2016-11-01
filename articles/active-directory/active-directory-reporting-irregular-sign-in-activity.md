@@ -1,29 +1,23 @@
 <properties
-    pageTitle="Irregular sign-in activity"
-    description="A report that includes sign ins that have been identified as anomalous by our machine learning algorithms."
-    services="active-directory"
-    documentationCenter=""
-    authors="SSalahAhmed"
-    manager="gchander"
-    editor=""/>
+	pageTitle="Irreguläre Anmeldeaktivitäten"
+	description="Ein Bericht mit Anmeldungen, die von unseren Algorithmen für maschinelles Lernen als anomal identifiziert wurden."
+	services="active-directory"
+	documentationCenter=""
+	authors="SSalahAhmed"
+	manager="gchander"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="03/04/2016"
-    ms.author="saah;kenhoff"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/04/2016"
+	ms.author="saah;kenhoff"/>
 
+# Irreguläre Anmeldeaktivitäten
 
-# <a name="irregular-sign-in-activity"></a>Irregular sign-in activity
+Irreguläre Anmeldungen sind Anmeldungen, die von Machine Learning-Algorithmen auf der Grundlage einer Bedingung für eine "unmögliche Strecke" in Kombination mit einem anomalen Standort und Gerät für die Anmeldung identifiziert wurden. Dies kann ein Hinweis darauf sein, dass sich ein Hacker erfolgreich mit diesem Konto angemeldet hat. Wir senden eine E-Mail-Benachrichtigung an die globalen Administratoren, wenn wir 10 oder mehr anomale Anmeldeereignisse innerhalb eines Zeitraums von 30 Tagen oder weniger feststellen. Fügen Sie aad-alerts-noreply@mail.windowsazure.com unbedingt der Liste sicherer Absender hinzu.
 
-Irregular sign-ins are those that have been identified by our machine learning algorithms, on the basis of an "impossible travel" condition combined with an anomalous sign in location and device. This may indicate that a hacker has successfully signed in using this account.
-We will send an email notification to the global admins if we encounter 10 or more anomalous sign-in events within a span of 30 days or less. Please be sure to include aad-alerts-noreply@mail.windowsazure.com in your safe senders list.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Control routing and use virtual appliances in Resource Manager using the Azure CLI | Microsoft Azure"
-   description="Learn how to control routing and use virtual appliances using the Azure CLI"
+   pageTitle="Steuern des Routings und Verwenden virtueller Geräte im Ressourcen-Manager mit der Azure-Befehlszeilenschnittstelle | Microsoft Azure"
+   description="Sie erfahren, wie Sie das Routing für virtuelle Geräte mit der Azure-Befehlszeilenschnittstelle steuern und diese verwenden."
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -17,191 +17,186 @@
    ms.date="03/15/2016"
    ms.author="jdial" />
 
-
-#<a name="create-user-defined-routes-(udr)-in-the-azure-cli"></a>Create User Defined Routes (UDR) in the Azure CLI
+#Erstellen benutzerdefinierter Routen (UDR) in der Azure-Befehlszeilenschnittstelle
 
 [AZURE.INCLUDE [virtual-network-create-udr-arm-selectors-include.md](../../includes/virtual-network-create-udr-arm-selectors-include.md)]
 
 [AZURE.INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This article covers the Resource Manager deployment model. You can also [create UDRs in the classic deployment model](virtual-network-create-udr-classic-cli.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie haben auch die Möglichkeit, [benutzerdefinierte Routen im klassischen Bereitstellungsmodell zu erstellen](virtual-network-create-udr-classic-cli.md).
 
 [AZURE.INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-The sample Azure CLI commands below expect a simple environment already created based on the scenario above. If you want to run the commands as they are displayed in this document, first build the test environment by deploying [this template](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), click **Deploy to Azure**, replace the default parameter values if necessary, and follow the instructions in the portal.
+Die folgenden Beispielbefehle für die Azure-Befehlszeilenschnittstelle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem obigen Szenario basiert. Wenn Sie die Befehle so ausführen möchten, wie sie in diesem Dokument angezeigt werden, erstellen Sie zunächst die Testumgebung durch Bereitstellen [dieser Vorlage](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before). Klicken Sie auf **In Azure bereitstellen**, ersetzen Sie bei Bedarf die Standardparameterwerte, und befolgen Sie dann die Anweisungen im Portal.
 
 [AZURE.INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Create the UDR for the front end subnet
-To create the route table and route needed for the front end subnet based on the scenario above, follow the steps below.
+## Erstellen der benutzerdefinierten Route für das Front-End-Subnetz
+Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz erforderlichen Route anhand des oben beschriebenen Szenarios die folgenden Schritte aus.
 
-3. Run the **`azure network route-table create`** command to create a route table for the front end subnet.
+3. Führen Sie den Befehl **`azure network route-table create`** aus, um eine Routingtabelle für das Front-End-Subnetz zu erstellen.
 
-        azure network route-table create -g TestRG -n UDR-FrontEnd -l uswest
+		azure network route-table create -g TestRG -n UDR-FrontEnd -l uswest
 
-    Output:
+	Ausgabe:
 
-        info:    Executing command network route-table create
-        info:    Looking up route table "UDR-FrontEnd"
-        info:    Creating route table "UDR-FrontEnd"
-        info:    Looking up route table "UDR-FrontEnd"
-        data:    Id                              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/
-        routeTables/UDR-FrontEnd
-        data:    Name                            : UDR-FrontEnd
-        data:    Type                            : Microsoft.Network/routeTables
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        info:    network route-table create command OK
+		info:    Executing command network route-table create
+		info:    Looking up route table "UDR-FrontEnd"
+		info:    Creating route table "UDR-FrontEnd"
+		info:    Looking up route table "UDR-FrontEnd"
+		data:    Id                              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/
+		routeTables/UDR-FrontEnd
+		data:    Name                            : UDR-FrontEnd
+		data:    Type                            : Microsoft.Network/routeTables
+		data:    Location                        : westus
+		data:    Provisioning state              : Succeeded
+		info:    network route-table create command OK
 
-    Parameters:
-    - **-g (or --resource-group)**. Name of the resource group where the UDR will be created. For our scenario, *TestRG*.
-    - **-l (or --location)**. Azure region where the new UDR will be created. For our scenario, *westus*.
-    - **-n (or --name)**. Name for the new UDR. For our scenario, *UDR-FrontEnd*.
+	Parameter:
+	- **-g (or --resource-group)**. Name der Ressourcengruppe, in der die UDR erstellt wird. In diesem Szenario *TestRG*.
+	- **-l (oder --location)**. Azure-Region, in der die neue UDR erstellt wird. In diesem Szenario *westus*.
+	- **-n (oder --name)**. Name der neuen UDR. In diesem Szenario *UDR-FrontEnd*.
 
-4. Run the **`azure network route-table route create`** command to create a route in the route table created above to send all traffic destined to the back end subnet (192.168.2.0/24) to the **FW1** VM (192.168.0.4).
+4. Führen Sie den Befehl **`azure network route-table route create`** aus, um in der oben erstellten Routingtabelle eine Route zu erstellen, die sämtlichen an das Back-End-Subnetz (192.168.2.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet.
 
-        azure network route-table route create -g TestRG -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -y VirtualAppliance -p 192.168.0.4
+		azure network route-table route create -g TestRG -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -y VirtualAppliance -p 192.168.0.4
 
-    Output:
+	Ausgabe:
 
-        info:    Executing command network route-table route create
-        info:    Looking up route "RouteToBackEnd" in route table "UDR-FrontEnd"
-        info:    Creating route "RouteToBackEnd" in a route table "UDR-FrontEnd"
-        info:    Looking up route "RouteToBackEnd" in route table "UDR-FrontEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        routeTables/UDR-FrontEnd/routes/RouteToBackEnd
-        data:    Name                            : RouteToBackEnd
-        data:    Provisioning state              : Succeeded
-        data:    Next hop type                   : VirtualAppliance
-        data:    Next hop IP address             : 192.168.0.4
-        data:    Address prefix                  : 192.168.2.0/24
-        info:    network route-table route create command OK
+		info:    Executing command network route-table route create
+		info:    Looking up route "RouteToBackEnd" in route table "UDR-FrontEnd"
+		info:    Creating route "RouteToBackEnd" in a route table "UDR-FrontEnd"
+		info:    Looking up route "RouteToBackEnd" in route table "UDR-FrontEnd"
+		data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		routeTables/UDR-FrontEnd/routes/RouteToBackEnd
+		data:    Name                            : RouteToBackEnd
+		data:    Provisioning state              : Succeeded
+		data:    Next hop type                   : VirtualAppliance
+		data:    Next hop IP address             : 192.168.0.4
+		data:    Address prefix                  : 192.168.2.0/24
+		info:    network route-table route create command OK
 
-    Parameters:
-    - **-r (or --route-table-name)**. Name of the route table where the route will be added. For our scenario, *UDR-FrontEnd*.
-    - **-a (or --address-prefix)**. Address prefix for the subnet where packets are destined to. For our scenario, *192.168.2.0/24*.
-    - **-y (or --next-hop-type)**. Type of object traffic will be sent to. Possible values are *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, or *None*.
-    - **-p (or --next-hop-ip-address**). IP address for next hop. For our scenario, *192.168.0.4*.
+	Parameter:
+	- **-r (oder --route-table-name)**. Der Name der Routingtabelle, der die Route hinzugefügt wird. In diesem Szenario *UDR-FrontEnd*.
+	- **-a (oder --address-prefix)**. Das Adresspräfix für das Zielsubnetz der Pakete. In diesem Szenario *192.168.2.0/24*.
+	- **-y (oder --next-hop-type)**. Der Typ des Zielobjekts für den Datenverkehr. Mögliche Werte sind *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet* oder *None*.
+	- **-p (oder --next-hop-ip-address**). Die IP-Adresse für den nächsten Hop. In diesem Szenario *192.168.0.4*.
 
-5. Run the **`azure network vnet subnet set`** command to associate the route table created above with the **FrontEnd** subnet.
+5. Führen Sie den Befehl **`azure network vnet subnet set`** aus, um die oben erstellte Routingtabelle dem Subnetz **FrontEnd** zuzuordnen.
 
-        azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -r UDR-FrontEnd
+		azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -r UDR-FrontEnd
 
-    Output:
+	Ausgabe:
 
-        info:    Executing command network vnet subnet set
-        info:    Looking up the subnet "FrontEnd"
-        info:    Looking up route table "UDR-FrontEnd"
-        info:    Setting subnet "FrontEnd"
-        info:    Looking up the subnet "FrontEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        virtualNetworks/TestVNet/subnets/FrontEnd
-        data:    Type                            : Microsoft.Network/virtualNetworks/subnets
-        data:    ProvisioningState               : Succeeded
-        data:    Name                            : FrontEnd
-        data:    Address prefix                  : 192.168.1.0/24
-        data:    Network security group          : [object Object]
-        data:    Route Table                     : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        routeTables/UDR-FrontEnd
-        data:    IP configurations:
-        data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB1/ipConf
-        igurations/ipconfig1
-        data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB2/ipConf
-        igurations/ipconfig1
-        data:    
-        info:    network vnet subnet set command OK
+		info:    Executing command network vnet subnet set
+		info:    Looking up the subnet "FrontEnd"
+		info:    Looking up route table "UDR-FrontEnd"
+		info:    Setting subnet "FrontEnd"
+		info:    Looking up the subnet "FrontEnd"
+		data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		virtualNetworks/TestVNet/subnets/FrontEnd
+		data:    Type                            : Microsoft.Network/virtualNetworks/subnets
+		data:    ProvisioningState               : Succeeded
+		data:    Name                            : FrontEnd
+		data:    Address prefix                  : 192.168.1.0/24
+		data:    Network security group          : [object Object]
+		data:    Route Table                     : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		routeTables/UDR-FrontEnd
+		data:    IP configurations:
+		data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB1/ipConf
+		igurations/ipconfig1
+		data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB2/ipConf
+		igurations/ipconfig1
+		data:    
+		info:    network vnet subnet set command OK
 
-    Parameters:
-    - **-e (or --vnet-name)**. Name of the VNet where the subnet is located. For our scenario, *TestVNet*.
+	Parameter:
+	- **-e (oder --vnet-name**. Name des VNets mit dem Subnetz. In diesem Szenario *TestVNet*.
  
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Create the UDR for the back end subnet
-To create the route table and route needed for the back end subnet based on the scenario above, follow the steps below.
+## Erstellen der benutzerdefinierten Route für das Back-End-Subnetz
+Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz erforderlichen Route anhand des oben beschriebenen Szenarios die folgenden Schritte aus.
 
-1. Run the **`azure network route-table create`** command to create a route table for the back end subnet.
+1. Führen Sie den Befehl **`azure network route-table create`** aus, um eine Routingtabelle für das Back-End-Subnetz zu erstellen.
 
-        azure network route-table create -g TestRG -n UDR-BackEnd -l westus
+		azure network route-table create -g TestRG -n UDR-BackEnd -l westus
 
-4. Run the **`azure network route-table route create`** command to create a route in the route table created above to send all traffic destined to the front end subnet (192.168.1.0/24) to the **FW1** VM (192.168.0.4).
+4. Führen Sie den Befehl **`azure network route-table route create`** aus, um in der oben erstellten Routingtabelle eine Route zu erstellen, die sämtlichen an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet.
 
-        azure network route-table route create -g TestRG -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -y VirtualAppliance -p 192.168.0.4
+		azure network route-table route create -g TestRG -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -y VirtualAppliance -p 192.168.0.4
 
-5. Run the **`azure network vnet subnet set`** command to associate the route table created above with the **BackEnd** subnet.
+5. Führen Sie den Befehl **`azure network vnet subnet set`** aus, um die oben erstellte Routingtabelle dem Subnetz **BackEnd** zuzuordnen.
 
-        azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -r UDR-BackEnd
+		azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -r UDR-BackEnd
 
-## <a name="enable-ip-forwarding-on-fw1"></a>Enable IP forwarding on FW1
-To enable IP forwarding in the NIC used by **FW1**, follow the steps below.
+## Aktivieren der IP-Weiterleitung auf „FW1“
+Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1** verwendeten Netzwerkkarte die folgenden Schritte aus.
 
-1. Run the **`azure network nic show`** command, and notice the value for **Enable IP forwarding**. It should be set to *false*.
+1. Führen Sie den Befehl **`azure network nic show`** aus, und achten Sie auf den Wert für die **Aktivierung der IP-Weiterleitung**. Er sollte auf *false* festgelegt sein.
 
-        azure network nic show -g TestRG -n NICFW1
+		azure network nic show -g TestRG -n NICFW1
 
-    Output:
-        
-        info:    Executing command network nic show
-        info:    Looking up the network interface "NICFW1"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        networkInterfaces/NICFW1
-        data:    Name                            : NICFW1
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    MAC address                     : 00-0D-3A-30-95-B3
-        data:    Enable IP forwarding            : false
-        data:    Tags                            : displayName=NetworkInterfaces - DMZ
-        data:    Virtual machine                 : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Compute/
-        virtualMachines/FW1
-        data:    IP configurations:
-        data:      Name                          : ipconfig1
-        data:      Provisioning state            : Succeeded
-        data:      Public IP address             : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        publicIPAddresses/PIPFW1
-        data:      Private IP address            : 192.168.0.4
-        data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        virtualNetworks/TestVNet/subnets/DMZ
-        data:    
-        info:    network nic show command OK
+	Ausgabe:
+		
+		info:    Executing command network nic show
+		info:    Looking up the network interface "NICFW1"
+		data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		networkInterfaces/NICFW1
+		data:    Name                            : NICFW1
+		data:    Type                            : Microsoft.Network/networkInterfaces
+		data:    Location                        : westus
+		data:    Provisioning state              : Succeeded
+		data:    MAC address                     : 00-0D-3A-30-95-B3
+		data:    Enable IP forwarding            : false
+		data:    Tags                            : displayName=NetworkInterfaces - DMZ
+		data:    Virtual machine                 : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Compute/
+		virtualMachines/FW1
+		data:    IP configurations:
+		data:      Name                          : ipconfig1
+		data:      Provisioning state            : Succeeded
+		data:      Public IP address             : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		publicIPAddresses/PIPFW1
+		data:      Private IP address            : 192.168.0.4
+		data:      Private IP Allocation Method  : Static
+		data:      Subnet                        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		virtualNetworks/TestVNet/subnets/DMZ
+		data:    
+		info:    network nic show command OK
 
-2. Run the **`azure network nic set`** command to enable IP forwarding.
+2. Führen Sie den Befehl **`azure network nic set`** aus, um die IP-Weiterleitung zu aktivieren.
 
-        azure network nic set -g TestRG -n NICFW1 -f true
+		azure network nic set -g TestRG -n NICFW1 -f true
 
-    Output:
+	Ausgabe:
 
-        info:    Executing command network nic set
-        info:    Looking up the network interface "NICFW1"
-        info:    Updating network interface "NICFW1"
-        info:    Looking up the network interface "NICFW1"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        networkInterfaces/NICFW1
-        data:    Name                            : NICFW1
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    MAC address                     : 00-0D-3A-30-95-B3
-        data:    Enable IP forwarding            : true
-        data:    Tags                            : displayName=NetworkInterfaces - DMZ
-        data:    Virtual machine                 : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Compute/
-        virtualMachines/FW1
-        data:    IP configurations:
-        data:      Name                          : ipconfig1
-        data:      Provisioning state            : Succeeded
-        data:      Public IP address             : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        publicIPAddresses/PIPFW1
-        data:      Private IP address            : 192.168.0.4
-        data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        virtualNetworks/TestVNet/subnets/DMZ
-        data:    
-        info:    network nic set command OK
+		info:    Executing command network nic set
+		info:    Looking up the network interface "NICFW1"
+		info:    Updating network interface "NICFW1"
+		info:    Looking up the network interface "NICFW1"
+		data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		networkInterfaces/NICFW1
+		data:    Name                            : NICFW1
+		data:    Type                            : Microsoft.Network/networkInterfaces
+		data:    Location                        : westus
+		data:    Provisioning state              : Succeeded
+		data:    MAC address                     : 00-0D-3A-30-95-B3
+		data:    Enable IP forwarding            : true
+		data:    Tags                            : displayName=NetworkInterfaces - DMZ
+		data:    Virtual machine                 : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Compute/
+		virtualMachines/FW1
+		data:    IP configurations:
+		data:      Name                          : ipconfig1
+		data:      Provisioning state            : Succeeded
+		data:      Public IP address             : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		publicIPAddresses/PIPFW1
+		data:      Private IP address            : 192.168.0.4
+		data:      Private IP Allocation Method  : Static
+		data:      Subnet                        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
+		virtualNetworks/TestVNet/subnets/DMZ
+		data:    
+		info:    network nic set command OK
 
-    Parameters:
+	Parameter:
 
-    - **-f (or --enable-ip-forwarding)**. *true* or *false*.
+	- **-f (oder --enable-ip-forwarding)**. *true* oder *false*.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

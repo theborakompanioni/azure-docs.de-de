@@ -1,43 +1,39 @@
 <properties
-    pageTitle="Azure Functions triggers and bindings | Microsoft Azure"
-    description="Understand how to use triggers and bindings in Azure Functions."
-    services="functions"
-    documentationCenter="na"
-    authors="christopheranderson"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
+	pageTitle="Trigger und Bindungen in Azure Functions | Microsoft Azure"
+	description="Hier wird erläutert, wie Trigger und Bindungen in Azure Functions verwendet werden."
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur"/>
 
 <tags
-    ms.service="functions"
-    ms.devlang="multiple"
-    ms.topic="reference"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="08/27/2016"
-    ms.author="chrande"/>
+	ms.service="functions"
+	ms.devlang="multiple"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="08/27/2016"
+	ms.author="chrande"/>
 
+# Entwicklerreferenz zu Triggern und Bindungen in Azure Functions
 
-# <a name="azure-functions-triggers-and-bindings-developer-reference"></a>Azure Functions triggers and bindings developer reference
+Die folgenden Artikel erläutern das Konfigurieren und Codieren von Triggern und Bindungen in Azure Functions. 
+In diesem Artikel wird davon ausgegangen, dass Sie die [Entwicklerreferenz zu Azure Functions](functions-reference.md) sowie die Referenzartikel zu [C#](functions-reference-csharp.md), [F#](functions-reference-fsharp.md) bzw. [Node.js](functions-reference-node.md) für Entwickler gelesen haben.
 
-The following articles explain how to configure and code triggers and bindings in Azure Functions. The articles assume that you've read the [Azure Functions developer reference](functions-reference.md), and the [C#](functions-reference-csharp.md), [F#](functions-reference-fsharp.md), or [Node.js](functions-reference-node.md) developer reference articles.
+## Artikel zu Triggern und Bindungen
 
-## <a name="triggers-and-bindings-articles"></a>Triggers and bindings articles
-
-Click on a trigger or binding listed below to learn more:
+Klicken Sie auf einen unten aufgeführten Trigger bzw. eine Bindung, um mehr zu erfahren:
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-For more information, see the following resources:
+Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* [Testing a function](functions-test-a-function.md)
-* [Scale a function](functions-scale.md)
+* [Testen einer Funktion](functions-test-a-function.md)
+* [Skalieren einer Funktion](functions-scale.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

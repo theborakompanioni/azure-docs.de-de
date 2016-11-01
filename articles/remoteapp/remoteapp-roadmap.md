@@ -1,6 +1,6 @@
 <properties
-    pageTitle="What's coming in Azure RemoteApp | Microsoft Azure"
-    description="Learn when new features for Azure RemoteApp will be available"
+    pageTitle="Geplante Neuerungen in Azure RemoteApp | Microsoft Azure"
+    description="Erfahren Sie, welche neuen Funktionen für Azure RemoteApp geplant sind."
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -15,43 +15,39 @@
     ms.date="09/19/2016"
     ms.author="elizapo" />
 
-
-# <a name="what's-coming-in-azure-remoteapp"></a>What's coming in Azure RemoteApp
+# Geplante Neuerungen in Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
-**All preview and roadmap items have been Canceled and ended due to the announced retirement of Azure RemoteApp.**
+**Aufgrund der angekündigten Einstellung von Azure RemoteApp wurden alle Vorschau- und angekündigten Elemente storniert.**
 
 |Feature|Status|
 |-----------|-------|-------|
-|Azure Remote App available in both the [Azure classic portal](http://manage.windowsazure.com) and [Azure portal](https://portal.azure.com) - Private preview|**Canceled**|
-|Ability to publish individual applications to specific users - Private preview ([feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))|**Canceled**|
-|Windows client redistributable MSI package ([feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/)) - Private preview|**Canceled**|
-|Azure Resource Manager (ARM) support|**Canceled**|
-|Azure v2 resource support|**Canceled**|
-|Cloud Solution Provider (CSP)|**Canceled**|
-|Availability in India region|**Canceled**|
-|Availability in UK region|**Canceled**|
+|Azure RemoteApp ist sowohl im [klassischen Azure-Portal](http://manage.windowsazure.com) als auch im [Azure-Portal](https://portal.azure.com) in der privaten Vorschau verfügbar.|**Canceled**|
+|Möglichkeit zum Veröffentlichen einzelner Anwendungen für bestimmte Benutzer – private Vorschau ([Feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))|**Canceled**|
+|Weiterverteilbares Windows-MSI-Clientpaket ([Feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/)) – private Vorschau|**Canceled**|
+|Support für Azure-Ressourcen-Manager (ARM)|**Canceled**|
+|Azure v2-Ressourcenunterstützung|**Canceled**|
+|Cloud-Lösungsanbieter (CSP)|**Canceled**|
+|Verfügbarkeit in der Region Indien|**Canceled**|
+|Verfügbarkeit in der Region Großbritannien|**Canceled**|
 
 
-Other improvements added earlier this year:
+Weitere Verbesserungen, die dieses Jahr bereits hinzugefügt wurden:
 
-- HTML5-based client for Azure RemoteApp
-- Windows 10 Universal Application with Continuum for Azure RemoteApp - Preview
-- Deploy to a VNET without joining a domain (cloud collection connection to the Azure VMs)
-- Re-use an existing virtual network for RemoteApp hybrid collection (also enables ExpressRoute)
+- HTML5-basierter Client für Azure RemoteApp
+- Universelle Windows 10-Anwendung mit Continuum für die Vorschauversion von Azure RemoteApp
+- Ohne Beitritt zu einer Domäne (Verbindung der Cloud-Sammlung mit den Azure-VMs) auf einem VNET bereitstellen
+- Ein vorhandenes virtuelles Netzwerk für die RemoteApp-Hybridsammlung erneut verwenden (ermöglicht auch ExpressRoute)
 - ExpressRoute
-- RemoteApp PowerShell cmdlets and SDK for deployment and management
-- Create and upload an image from an Azure VM
-- Upload line-of-business (LOB) applications to a cloud collection, as well as in a hybrid collection
-- Support for Windows Phone
-- Usage metrics dashboard
-- Provision a large number of users by using a CSV file
-- Availability in Australian data centers
+- PowerShell-Cmdlets für RemoteApp und SDK für die Bereitstellung und Verwaltung
+- Ein Image von einer Azure-VM erstellen und hochladen
+- Hochladen von Branchenanwendungen in eine Cloudsammlung sowie in eine Hybridsammlung
+- Support für Windows Phone
+- Dashboard für Nutzungsmetriken
+- Mithilfe einer CSV-Datei eine große Anzahl an Benutzern bereitstellen
+- Verfügbarkeit in australischen Rechenzentren
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,6 +1,6 @@
 <properties
- pageTitle="Logic App templates | Microsoft Azure"
- description="Learn how to use pre-created Logic app templates to help you get started"
+ pageTitle="Logik-App-Vorlagen | Microsoft Azure"
+ description="Erfahren Sie, wie Sie zuvor erstellte Logik-App-Vorlagen verwenden, die Ihnen beim Einstieg helfen."
  authors="kevinlam1"
  manager="dwrede"
  editor=""
@@ -8,69 +8,59 @@
  documentationCenter=""/>
 
 <tags
-    ms.service="app-service-logic"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/24/2016"
-    ms.author="klam"/>
+	ms.service="app-service-logic"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2016"
+	ms.author="klam"/>
 
+# Logik-App-Vorlagen
 
-# <a name="logic-app-templates"></a>Logic App templates
+## Verwenden von Logik-App-Vorlagen
 
-## <a name="what-are-logic-app-templates"></a>What are logic app templates
+Eine Logik-App-Vorlage ist eine vorgefertigte Logik-App, mit der Sie schnell mit dem Erstellen Ihrer eigenen Workflows beginnen können.
 
-A logic app template is a pre-built logic app that you can use to quickly get started creating your own workflow. 
+Diese Vorlagen eignen sich gut, um verschiedene Muster kennenzulernen, die mit Logik-Apps erstellt werden können. Sie können diese Vorlagen unverändert nutzen oder Ihrem Szenario anpassen.
 
-These templates are a good way to discover various patterns that can be built using logic apps. You can either use these templates as-is or modify them to fit your scenario.
+## Übersicht über die verfügbaren Vorlagen
 
-## <a name="overview-of-available-templates"></a>Overview of available templates
+Auf der Logik-App-Plattform wurden bereits zahlreiche Vorlagen veröffentlicht. Einige Beispielkategorien sowie die darin aufgeführten Connectorarten sind nachfolgend aufgeführt.
 
-There are many available templates currently published in the logic app platform. Some example categories, as well as the type of connectors used in them, are listed below.
+### Enterprise Cloud-Vorlagen
+Vorlagen für die Integration von Dynamics CRM, Salesforce, Box, Azure Blob und anderen Connectors für die Anforderungen Ihrer Unternehmenscloud. Mit diesen Vorlagen können Sie beispielsweise Ihre Leads organisieren und Ihre Unternehmensdateidaten sichern.
 
-### <a name="enterprise-cloud-templates"></a>Enterprise cloud templates
-Templates that integrate Dynamics CRM, Salesforce, Box, Azure Blob, and other connectors for your enterprise cloud needs. Some examples of what can be done with these templates include organizing your leads and backing up your corporate file data.
+### Enterprise Integration Pack-Vorlagen
+Konfigurationen von VETER-Pipelines (validate, extract, transform, enrich, route: überprüfen, extrahieren, transformieren, erweitern, weiterleiten) die ein X12 EDI-Dokument über AS2 erhalten und in XML umwandeln sowie X12 und AS2-Nachrichten verarbeiten.
 
-### <a name="enterprise-integration-pack-templates"></a>Enterprise integration pack templates
-Configurations of VETER (validate, extract, transform, enrich, route) pipelines, receiving an X12 EDI document over AS2 and transforming it to XML, as well as X12 and AS2 message handling.
+### Vorlagen für Protokollmuster
+Diese Vorlagen bestehen aus Logik-Apps, die Protokollmuster wie die Anforderungsantwort über HTTP sowie Integrationen über FTP und SFTP enthalten. Verwenden Sie diese im vorhandenen Zustand oder als Grundlage für die Erstellung komplexerer Protokollmuster.
 
-### <a name="protocol-pattern-templates"></a>Protocol pattern templates
-These templates consist of logic apps that contain protocol patterns such as request-response over HTTP as well as integrations across FTP and SFTP. Use these as they exist, or as a basis for creating more complex protocol patterns.  
+### Persönliche Produktivitätsvorlagen
+Vorlagen zum Steigern der persönlichen Produktivität enthalten Vorlagen, mit denen Sie tägliche Erinnerungen festlegen, Arbeitslisten für wichtige Arbeitsaufgaben erstellen und langwierige Aufgaben so automatisieren, dass nur noch die Genehmigung des Benutzers benötigt wird.
 
-### <a name="personal-productivity-templates"></a>Personal productivity templates
-Patterns to help improve personal productivity include templates that set daily reminders, turn important work items into to-do lists, and automate lengthy tasks down to a single user approval step.
+### Vorlagen für die Cloud für Consumer
+Einfache Vorlagen für die Integration in Social Media Services wie Twitter, Slack und E-Mail, mit denen Sie Marketing-Initiativen in sozialen Medien verstärken können. Dazu zählen auch Vorlagen zum Cloudkopieren, mit denen Sie die Produktivität steigern, da Sie die Zeit für wiederkehrende Aufgaben sparen.
 
-### <a name="consumer-cloud-templates"></a>Consumer cloud templates
-Simple templates that integrate with social media services such as Twitter, Slack, and email, ultimately capable of strengthening social media marketing initiatives. These also include templates such as cloudy copying, which can help increase productivity by saving time spent on traditionally repetitive tasks. 
+## Erstellen einer Logik-App mithilfe einer Vorlage 
 
-## <a name="how-to-create-a-logic-app-using-a-template"></a>How to create a logic app using a template 
+Um mit der Verwendung von Logik-App-Vorlagen zu beginnen, wechseln Sie zum Logik-App-Designer. Wenn Sie den Designer über eine vorhandene Logik-App öffnen, wird die Logik-App automatisch in Ihrer Designeransicht geladen. Wenn Sie jedoch eine neue Logik-App erstellen, sehen Sie den folgenden Bildschirm. ![](../../includes/media/app-service-logic-templates/template7.png)
 
-To get started using a logic app template, go into the logic app designer. If you're entering the designer by opening an existing logic app, the logic app automatically loads in your designer view. However, if you're creating a new logic app, you see the screen below.  
- ![](../../includes/media/app-service-logic-templates/template7.png)  
+In diesem Bildschirm können Sie wahlweise mit einer leeren Logik-App oder einer vorgefertigten Vorlage beginnen. Wenn Sie eine der Vorlagen auswählen, erhalten Sie weitere Informationen darüber. In diesem Beispiel verwenden wir die Vorlage *When a new file is created in Dropbox, copy it to OneDrive* (Wenn eine neue Datei in Dropbox erstellt wird, in OneDrive kopieren). ![](../../includes/media/app-service-logic-templates/template2.png)
 
-From this screen, you can either choose to start with a blank logic app or a pre-built template. If you select one of the templates, you are provided with additional information. In this example, we use the *When a new file is created in Dropbox, copy it to OneDrive* template.  
- ![](../../includes/media/app-service-logic-templates/template2.png)  
+Wenn Sie die Vorlage verwenden möchten, wählen Sie einfach die Schaltfläche *Verwenden der Vorlage*. Je nachdem, welche Connectors die Vorlage verwendet, werden Sie zur Anmeldung bei Ihren Konten aufgefordert. Wenn Sie zuvor bereits eine Verbindung zu diesen Connectors hergestellt haben, können Sie wie folgt fortfahren. ![](../../includes/media/app-service-logic-templates/template3.png)
 
-If you choose to use the template, just select the *use this template* button. You'll be asked to sign in to your accounts based on which connectors the template utilizes. Or, if you've previously established a connection with these connectors, you can select continue as seen below.  
- ![](../../includes/media/app-service-logic-templates/template3.png)  
+Wenn die Verbindung hergestellt wurde und Sie *Weiter* ausgewählt haben, wird die Logik-App in der Designeransicht geöffnet. ![](../../includes/media/app-service-logic-templates/template4.png)
 
-After establishing the connection and selecting *continue*, the logic app opens in designer view.  
- ![](../../includes/media/app-service-logic-templates/template4.png)  
+Im obigen Beispiel sind (wie bei vielen Vorlagen) einige der erforderlichen Eigenschaftsfelder in den Connectors ausgefüllt. Jedoch muss möglicherweise noch ein Wert eingegeben werden, bevor die Logik-App ordnungsgemäß bereitgestellt werden kann. Wenn Sie versuchen, sie ohne Ausfüllen der Pflichtfelder bereitzustellen, wird eine Fehlermeldung angezeigt.
 
-In the example above, as is the case with many templates, some of the mandatory property fields may be filled out within the connectors; however, some might still require a value before being able to properly deploy the logic app. If you try to deploy without entering some of the missing fields, you'll be notified with an error message.
+Wenn Sie in die Vorlagenansicht zurückkehren möchten, wählen Sie die Schaltfläche *Vorlagen* in der oberen Navigationsleiste. Wenn Sie zur Vorlagenansicht zurückwechseln, werden nicht gespeicherte Fortschritte verworfen. Bevor Sie zur Vorlagenansicht zurückwechseln, werden Sie mit einer Meldung davor gewarnt. ![](../../includes/media/app-service-logic-templates/template5.png)
 
-If you wish to return to the template viewer, select the *Templates* button in the top navigation bar. By switching back to the template viewer, you lose any unsaved progress. Prior to switching back into template viewer, you'll see a warning message notifying you of this.  
- ![](../../includes/media/app-service-logic-templates/template5.png)  
+## Bereitstellen einer Logik-App aus einer Vorlage
 
-## <a name="how-to-deploy-a-logic-app-created-from-a-template"></a>How to deploy a logic app created from a template
+Wenn Sie Ihre Vorlage geladen und alle gewünschten Änderungen vorgenommen haben, wählen Sie die Schaltfläche „Speichern“ in der oberen linken Ecke. So wird Ihre Logik-App gespeichert veröffentlicht. ![](../../includes/media/app-service-logic-templates/template6.png)
 
-Once you have loaded your template and made any desired changes, select the save button in the upper left corner. This saves and publishes your logic app.  
- ![](../../includes/media/app-service-logic-templates/template6.png)  
+Wenn Sie weitere Informationen über das Hinzufügen weiterer Schritte zu einer vorhandenen Logik-App-Vorlage oder das Bearbeiten im Allgemeinen wünschen, können Sie unter [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) mehr erfahren.
 
-If you would like more information on how to add more steps into an existing logic app template, or make edits in general, read more at [Create a logic app](app-service-logic-create-a-logic-app.md).
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

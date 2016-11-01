@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Update your Azure RemoteApp collection | Microsoft Azure"
-   description="Learn how to update your Azure RemoteApp collection"
+   pageTitle="Aktualisieren Ihrer Azure RemoteApp-Sammlung | Microsoft Azure"
+   description="Hier erfahren Sie, wie Sie Ihre Azure RemoteApp-Sammlung aktualisieren."
    services="remoteapp"
    documentationCenter=""
    authors="lizap"
@@ -16,30 +16,25 @@
    ms.date="08/15/2016"
    ms.author="elizapo"/>
 
-
-# <a name="update-a-collection-in-azure-remoteapp"></a>Update a collection in Azure RemoteApp
+# Aktualisieren einer Sammlung in Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
-There will come a time, inevitably, when you need to update the apps or image in your Azure RemoteApp collection. If you are using one of the images included with your Azure RemoteApp subscription, in either a cloud or hybrid collection, any and all updates are handled by Azure RemoteApp itself, so you can rest easy.
+Irgendwann kommt der Punkt, an dem eine Aktualisierung der Apps oder des Image in Ihrer Azure RemoteApp-Sammlung erforderlich wird. Wenn Sie eines der Images aus Ihrem Azure RemoteApp-Abonnement verwenden (ganz gleich, ob in einer Cloud- oder in einer Hybridsammlung), werden sämtliche Aktualisierungen von Azure RemoteApp abgewickelt, und Sie müssen sich um nichts weiter kümmern.
 
-However, if you are using a custom image (either that you built from scratch or that you created by modifying one of our images), you are in charge of maintaining the image and apps. If you need to update your image or any of the apps inside it, you need to create a new, updated version of the image, and then replace the existing image in your collection with this new updated image.
+Wenn Sie dagegen ein benutzerdefiniertes (von Grund auf neu erstelltes oder angepasstes) Image verwenden, müssen Sie das Image und die Apps selbst pflegen. Wenn Sie Ihr Image oder irgendeine der darin enthaltenen Apps aktualisieren müssen, müssen Sie eine neue aktualisierte Version des Images erstellen. Anschließend müssen Sie das vorhandene Image in Ihrer Sammlung mit diesem neuen aktualisierten Image ersetzen.
 
-So, how do you go about updating your collection? It's fairly straightforward:
+In diesem Artikel erfahren Sie, wie Sie Ihre Sammlung aktualisieren. Es ist ganz einfach:
 
-1. Update the image that you used in your collection. Apply any patches or updates needed, and then save it with a new name.
-2. [Upload](remoteapp-uploadimage.md) or [import](remoteapp-image-on-azurevm.md) that image to RemoteApp.
-3. Now, on the collection page, click **Update**.
-4. Choose the new image from the **Template Image** list.
-4. Here's the tricky part - you need to decide how to deal with any users that are currently using an app in the collection. You have the following choices:
-    - **Give users 60 minutes after the update**. As soon as the update is finished, Azure RemoteApp will display a message to any active users telling them to save their work and log off and log back in. After 60 minutes, any active users who have not logged off will be automatically logged off. Users can immediately log back on.
-    - **Sign users out immediately**. As soon as the update is finished, log off all users automatically without any warning. If you choose this option, users might lose data. However, they can reconnect to the app immediately.
+1. Aktualisieren Sie das Image, das Sie in Ihrer Sammlung verwendet haben. Wenden Sie alle erforderlichen Patches oder Updates an, und speichern Sie es anschließend unter einem neuen Namen.
+2. [Laden Sie das Image auf RemoteApp hoch](remoteapp-uploadimage.md), oder [importieren](remoteapp-image-on-azurevm.md) Sie es.
+3. Klicken Sie auf der Sammlungsseite auf **Aktualisieren**.
+4. Wählen Sie in der Liste **Vorlagenimage** das neue Image aus.
+4. Nun wird es etwas kniffliger: Sie müssen entscheiden, wie mit den Benutzern verfahren werden soll, die zurzeit eine App aus der Sammlung verwenden. Folgende Optionen stehen zur Auswahl:
+	- **Benutzern nach dem Update 60 Minuten geben**. Nach Abschluss der Aktualisierung werden alle aktiven Benutzer in einer Meldung aufgefordert, ihre Dateien zu speichern und sich ab- und wieder anzumelden. Nach 60 Minuten werden alle aktiven Benutzer, die sich nicht abgemeldet haben, automatisch abgemeldet. Die Benutzer können sich sofort wieder anmelden.
+	- **Benutzer sofort abmelden**. Bei dieser Option werden alle Benutzer ohne Vorwarnung automatisch abgemeldet, sobald die Aktualisierung abgeschlossen ist. Wenn Sie diese Option auswählen, gehen den Benutzern unter Umständen Daten verloren. Sie können sich aber umgehend wieder bei der App anmelden.
 
-1. Click the check mark to start the update.
+1. Klicken Sie auf das Häkchen, um die Aktualisierung zu starten.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

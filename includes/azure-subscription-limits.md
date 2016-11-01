@@ -1,23 +1,20 @@
-Resource|Default Limit|Maximum Limit
+Ressource|Standardlimit|Maximales Limit
 ---|---|---
-Cores per [subscription](../articles/billing-buy-sign-up-azure-subscription.md) <sup>1</sup>|20|10,000
-[Co-administrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription|200|200
-[Storage accounts](../articles/storage/storage-create-storage-account.md) per subscription<sup>2</sup>|200|250
-[Cloud services](../articles/cloud-services/cloud-services-choose-me.md) per subscription|20|200
-[Local networks](http://msdn.microsoft.com/library/jj157100.aspx) per subscription|10|500
-SQL Database servers per subscription|6|150
-DNS servers per subscription|9|100
-Reserved IPs per subscription|20|100
-Hosted service certificates per subscription|400|400
-[Affinity groups](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) per subscription|256|256
-[Batch](https://azure.microsoft.com/services/batch/) accounts per region per subscription|1|50
-Alert rules per subscription|250|250
+Prozessorkerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) <sup>1</sup>|20|10\.000
+[Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement|200|200
+[Speicherkonten](../articles/storage/storage-create-storage-account.md) pro Abonnement<sup>2</sup>|200|250
+[Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement|20|200
+[Lokale Netzwerke](http://msdn.microsoft.com/library/jj157100.aspx) pro Abonnement|10|500
+SQL-Datenbankserver pro Abonnement|6|150
+DNS-Server pro Abonnement|9|100
+Reservierte IPs pro Abonnement|20|100
+Zertifikate für gehostete Dienste pro Abonnement|400|400
+[Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement|256|256
+[Batch](https://azure.microsoft.com/services/batch/)-Konten pro Region und Abonnement|1|50
+Warnungsregeln pro Abonnement|250|250
 
-<sup>1</sup>Extra Small instances count as one core towards the core limit despite using a partial core.
+<sup>1</sup> Zusätzliche kleine Instanzen zählen als ganzer Prozessorkern im Sinn des Limits, obwohl nur ein Teil eines Kerns verwendet wird.
 
-<sup>2</sup>This includes both Standard and Premium storage accounts. If you require more than 200 storage accounts, make a request through [Azure Support](https://azure.microsoft.com/support/faq/). The Azure Storage team will review your business case and may approve up to 250 storage accounts. 
+<sup>2</sup>Dies umfasst sowohl Standard- als auch Premium-Speicherkonten. Wenn Sie mehr als 200 Speicherkonten benötigen, stellen Sie eine Anfrage an den [Azure-Support](https://azure.microsoft.com/support/faq/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten genehmigen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

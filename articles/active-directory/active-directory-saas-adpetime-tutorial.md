@@ -1,264 +1,258 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with ADP eTime | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and ADP eTime."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="Tutorial: Azure Active Directory-Integration mit ADP eTime | Microsoft Azure"
+	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ADP eTime konfigurieren."
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2016"
+	ms.author="jeedes"/>
 
 
+# Tutorial: Azure Active Directory-Integration mit ADP eTime
 
-# <a name="tutorial:-azure-active-directory-integration-with-adp-etime"></a>Tutorial: Azure Active Directory integration with ADP eTime
+Dieses Tutorial soll Ihnen zeigen, wie Sie ADP eTime in Azure Active Directory (Azure AD) integrieren können. Die Integration von ADP eTime in Azure AD bietet die folgenden Vorteile:
 
-The objective of this tutorial is to show you how to integrate ADP eTime with Azure Active Directory (Azure AD).  
-Integrating ADP eTime with Azure AD provides you with the following benefits:
+- Sie können in ADP eTime steuern, wer Zugriff auf ADP eTime hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ADP eTime anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-- You can control in Azure AD who has access to ADP eTime
-- You can enable your users to automatically get signed-on to ADP eTime (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
 
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## Voraussetzungen
 
-## <a name="prerequisites"></a>Prerequisites
+Um die Azure AD-Integration mit ADP eTime konfigurieren zu können, benötigen Sie Folgendes:
 
-To configure Azure AD integration with ADP eTime, you need the following items:
+- Ein Azure AD-Abonnement
+- Ein ADP eTime-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-- An Azure AD subscription
-- A ADP eTime single-sign on enabled subscription
 
+> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-To test the steps in this tutorial, you should follow these recommendations:
+- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
+## Beschreibung des Szenarios
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
+1. Hinzufügen von ADP eTime aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-1. Adding ADP eTime from the gallery
-2. Configuring and testing Azure AD single sign-on
 
+## Hinzufügen von ADP eTime aus dem Katalog
+Zum Konfigurieren der Integration von ADP eTime in Azure AD müssen Sie ADP eTime aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-## <a name="adding-adp-etime-from-the-gallery"></a>Adding ADP eTime from the gallery
-To configure the integration of ADP eTime into Azure AD, you need to add ADP eTime from the gallery to your list of managed SaaS apps.
+**Um ADP eTime aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-**To add ADP eTime from the gallery, perform the following steps:**
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+	![Active Directory][1]
 
-    ![Active Directory][1]
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+	![Anwendungen][2]
 
-    ![Applications][2]
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-4. Click **Add** at the bottom of the page.
+	![Anwendungen][3]
 
-    ![Applications][3]
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+	![Anwendungen][4]
 
-    ![Applications][4]
+6. Geben Sie im Suchfeld als Suchbegriff **ADP eTime** ein.
 
-6. In the search box, type **ADP eTime**.
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_01.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_01.png)
+7. Wählen Sie im Ergebnisbereich **ADP eTime** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-7. In the results pane, select **ADP eTime**, and then click **Complete** to add the application.
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_06.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_06.png)
+##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens „Britta Simon“ veranschaulicht werden, wie das einmalige Anmelden von Azure AD in ADP eTime konfiguriert und getestet werden kann.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with ADP eTime based on a test user called "Britta Simon".
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in ADP eTime als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ADP eTime muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamen** in ADP eTime zuweisen.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in ADP eTime to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in ADP eTime needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in ADP eTime.
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei ADP eTime müssen Sie die folgenden Bausteine ausführen:
 
-To configure and test Azure AD single sign-on with ADP eTime, you need to complete the following building blocks:
+1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Erstellen eines ADP eTime-Testbenutzers](#creating-a-adpetime-test-user)**, um eine Entsprechung von Britta Simon in ADP eTime zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a ADP eTime test user](#creating-a-adpetime-test-user)** - to have a counterpart of Britta Simon in ADP eTime that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+### Konfigurieren des einmaligen Anmeldens von Azure AD
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in der ADP eTime-Anwendung zu konfigurieren.
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your ADP eTime application.
+Die ADP eTime-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Anspruchsname ist immer eine Kombination aus **PersonImmutableID** und dem Wert, den Sie ExtensionAttribute2 zugewiesen haben. Dieses Attribut enthält die Mitarbeiter-ID (EmployeeID) des Benutzers. Hier erfolgt die Benutzerzuordnung von Azure AD zu ADP eTime auf Grundlage der Mitarbeiter-ID. Je nach Anwendungseinstellungen ist jedoch auch eine Zuordnung zu einem anderen Wert möglich. Wenden Sie sich also zunächst an das ADP eTime-Team, um den korrekten Bezeichner eines Benutzers zu verwenden, und ordnen Sie diesen Wert dann dem Anspruch **PersonImmutableID** zu.
 
-Your ADP eTime application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. The following screenshot shows an example for this. The claim name will always be **"PersonImmutableID"** and the value of which we have mapped to ExtensionAttribute2 which contains the EmployeeID of the user. Here the user mapping fron Azure AD to ADP eTime will be done on the EmployeeID but you can map this to a different value also based on your application settings. So please work with ADP eTime team first to use the correct identifier of a user and map that value with the **"PersonImmutableID"** claim.  
+![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_02.png)
 
-![Configure Single Sign-On](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_02.png) 
+Bevor Sie die SAML-Assertion konfigurieren können, müssen Sie sich an Ihr ADP eTime-Supportteam wenden und für Ihren Mandanten den Wert des Attributs für den eindeutigen Bezeichner anfordern. Sie benötigen diesen Wert, um den benutzerdefinierten Anspruch für Ihre Anwendung zu konfigurieren.
 
-Before you can configure the SAML assertion, you need to contact your ADP eTime support team and request the value of the unique identifier attribute for your tenant. You need this value to configure the custom claim for your application.
 
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens in Azure AD bei ADP eTime die folgenden Schritte aus:**
 
-**To configure Azure AD single sign-on with ADP eTime, perform the following steps:**
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ADP eTime** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-1. In the Azure classic portal, on the **ADP eTime** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+	![Einmaliges Anmelden konfigurieren][6]
 
-    ![Configure Single Sign-On][6] 
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ADP eTime anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-2. On the **How would you like users to sign on to ADP eTime** page, select **Azure AD Single Sign-On**, and then click **Next**.
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_03.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_03.png) 
+3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
-3. On the **Configure App Settings** dialog page, perform the following steps:.
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_04.png) 
 
+    a. Geben Sie im Textfeld **Antwort-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der ADP eTime-Anwendung verwendet wird, nach folgendem Muster ein: `https://<server name>.adp.com/affwebservices/public/saml2assertionconsumer`.
 
-    a. In the **Reply URL** textbox, type the URL used by your users to sign-on to your ADP eTime application using the following pattern: `https://<server name>.adp.com/affwebservices/public/saml2assertionconsumer`.
+    b. Klicken Sie auf **Next**.
 
-    b. Click **Next**.
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für ADP eTime** die folgenden Schritte aus:
 
-4. On the **Configure single sign-on at ADP eTime** page, perform the following steps:
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_05.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_05.png) 
+    a. Klicken Sie auf **Metadaten herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
-    a. Click **Download metadata**, and then save the file on your computer.
+    b. Klicken Sie auf **Next**.
 
-    b. Click **Next**.
 
+5. Um SSO für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich an das Supportteam von ADP eTime, und senden Sie zum Konfigurieren für die SSO-Integration die heruntergeladene Metadatendatei als E-Mail-Anhang.
 
-5. To get SSO configured for your application, contact your ADP eTime support team and email the attach downloaded metadata file, so that they can be configured for SSO integration.
+    > [AZURE.NOTE] Nachdem das **ADP eTime**-Team die Instanz konfiguriert hat, erfragen Sie den Wert **RelayState** und senden ihn an Azure AD, um die Anwendungsinstanz zu konfigurieren. Sie können diesen Wert, die Azure AD-Mandanten-ID und die Anwendungs-ID unter [waadpartners@microsoft.com](mailTo:waadpartners@microsoft.com) an das Azure AD-Team senden. Nach der Konfiguration können Sie die Integration testen – sie funktioniert. Bedenken Sie also, dass diese Konfiguration wichtig ist, damit die Anwendungsintegration funktioniert.
 
-    > [AZURE.NOTE] After **ADP eTime** team configure the instance, get the **RelayState** value from them and request to Azure AD to configure that for your application instance. You can send this value, your Azure AD tenanat id and application id to Azure AD team on [waadpartners@microsoft.com](mailTo:waadpartners@microsoft.com). After this configuring you can test the integration and it will work. So please note that this is important configuration for this application integration to work.
+6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+	![Azure AD – einmaliges Anmelden][10]
 
-    ![Azure AD Single Sign-On][10]
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+	![Azure AD – einmaliges Anmelden][11]
 
-    ![Azure AD Single Sign-On][11]
 
 
+### Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
-In the Users list, select **Britta Simon**.
+![Azure AD-Benutzer erstellen][20]
 
-![Create Azure AD User][20]
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-**To create a test user in Azure AD, perform the following steps:**
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/create_aaduser_09.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/create_aaduser_09.png) 
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 
-3. To display the list of users, in the menu on the top, click **Users**.
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/create_aaduser_03.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/create_aaduser_03.png) 
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/create_aaduser_04.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/create_aaduser_04.png) 
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/create_aaduser_05.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/create_aaduser_05.png) 
+    a. Wählen Sie als **Benutzertyp** die Option **Neuer Benutzer in Ihrer Organisation** aus.
 
-    a. As **Type Of User**, select **New user in your organization**.
+    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
 
-    b. In the **User Name** textbox, type **BrittaSimon**.
+    c. Klicken Sie auf **Weiter**.
 
-    c. Click **Next**.
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
 
-6.  On the **User Profile** dialog page, perform the following steps:
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/create_aaduser_06.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/create_aaduser_06.png) 
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
-    a. In the **First Name** textbox, type **Britta**.  
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
 
-    d. In the **Role** list, select **User**.
+    e. Klicken Sie auf **Weiter**.
 
-    e. Click **Next**.
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
-7. On the **Get temporary password** dialog page, click **create**.
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/create_aaduser_07.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/create_aaduser_07.png) 
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-adpetime-tutorial/create_aaduser_08.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpetime-tutorial/create_aaduser_08.png) 
+    a. Notieren Sie den Wert von **Neues Kennwort**.
 
-    a. Write down the value of the **New Password**.
+    b. Klicken Sie auf **Fertig stellen**.
 
-    b. Click **Complete**.   
 
 
+### Erstellen eines ADP eTime-Testbenutzers
 
-### <a name="creating-a-adp-etime-test-user"></a>Creating a ADP eTime test user
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in ADP eTime. Wenden Sie sich an das Supportteam von ADP eTime, um die Benutzer unter dem ADP eTime-Konto hinzufügen zu lassen.
 
-The objective of this section is to create a user called Britta Simon in ADP eTime. Please work with ADP eTime support team to add the users in the ADP eTime account. 
 
+> [AZURE.NOTE] Setzen Sie sich mit dem Supportteam von ADP eTime in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
-> [AZURE.NOTE] If you need to create an user manually, you need to contact the ADP eTime support team.
 
+### Zuweisen des Azure AD-Testbenutzers
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf ADP eTime erhält.
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to ADP eTime.
+![Benutzer zuweisen][200]
 
-![Assign User][200] 
+**Um Britta Simon ADP eTime zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-**To assign Britta Simon to ADP eTime, perform the following steps:**
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen**.
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+	![Benutzer zuweisen][201]
 
-    ![Assign User][201] 
+2. Wählen Sie in der Anwendungsliste **ADP eTime** aus.
 
-2. In the applications list, select **ADP eTime**.
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_50.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_50.png) 
+1. Klicken Sie im oberen Menü auf **Benutzer**.
 
-1. In the menu on the top, click **Users**.
+	![Benutzer zuweisen][203]
 
-    ![Assign User][203] 
+1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-1. In the Users list, select **Britta Simon**.
+2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
 
-2. In the toolbar on the bottom, click **Assign**.
+	![Benutzer zuweisen][205]
 
-    ![Assign User][205]
 
 
+### Testen der einmaligen Anmeldung
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Wenn Sie im Zugriffsbereich auf die Kachel „ADP eTime“ klicken, sollten Sie automatisch bei Ihrer ADP eTime-Anwendung angemeldet werden.
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the ADP eTime tile in the Access Panel, you should get automatically signed-on to your ADP eTime application.
 
+## Weitere Ressourcen
 
-## <a name="additional-resources"></a>Additional Resources
-
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -279,8 +273,4 @@ When you click the ADP eTime tile in the Access Panel, you should get automatica
 [204]: ./media/active-directory-saas-adpetime-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-adpetime-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

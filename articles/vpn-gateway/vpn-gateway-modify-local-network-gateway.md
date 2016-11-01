@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Modify local network gateway IP address prefixes and gateway IP | Microsoft Azure"
-   description="This article walks you through changing IP address prefixes for your local network gateway"
+   pageTitle="Ändern der IP-Adresspräfixe eines lokalen Netzwerkgateways und der Gateway-IP | Microsoft Azure"
+   description="In diesem Artikel wird erläutert, wie Sie die IP-Adresspräfixe für Ihr lokales Netzwerkgateway ändern."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -17,30 +17,24 @@
    ms.date="08/08/2016"
    ms.author="cherylmc"/>
 
+# Ändern der Einstellungen des lokalen Netzwerkgateways mit PowerShell
 
-# <a name="modify-local-network-gateway-settings-using-powershell"></a>Modify local network gateway settings using PowerShell
+Manchmal ändern sich die Einstellungen für „AddressPrefix“ oder „GatewayIPAddress“ Ihres lokalen Netzwerkgateways. Die folgenden Anweisungen unterstützen Sie beim Ändern der Einstellungen für Ihr lokales Netzwerkgateway. Sie können diese Einstellungen auch im Azure-Portal ändern.
 
-Sometimes the settings for your local network gateway AddressPrefix or GatewayIPAddress change. The instructions below will help you modify your local network gateway settings. You can also modify these settings in the Azure portal.
+## Voraussetzungen
+	
+Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-## <a name="before-you-begin"></a>Before you begin
-    
-You'll need to install the latest version of the Azure Resource Manager PowerShell cmdlets. See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for more information about installing the PowerShell cmdlets.
-
-## <a name="to-modify-ip-address-prefixes"></a>To modify IP address prefixes
+## So ändern Sie IP-Adresspräfixe
 
 [AZURE.INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="to-modify-the-gateway-ip-address"></a>To modify the gateway IP address
+## So ändern Sie die Gateway-IP-Adresse
 
 [AZURE.INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-You can verify your gateway connection. See [Verify a gateway connection](vpn-gateway-verify-connection-resource-manager.md).
+Sie können die Gatewayverbindung überprüfen. Informationen finden Sie unter [Überprüfen einer Gatewayverbindung](vpn-gateway-verify-connection-resource-manager.md).
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

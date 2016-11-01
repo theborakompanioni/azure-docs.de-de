@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Guest OS family 1 retirement notice | Microsoft Azure"
-   description="Provides information about when the Azure Guest OS Family 1 retirement happened and how to determine if you are affected"
+   pageTitle="Deaktivierungsinformationen für die Gastbetriebssystemfamilie 1 | Microsoft Azure"
+   description="Bietet Informationen zum Zeitpunkt der Deaktivierung der Azure-Gastbetriebssystemfamilie 1 und dazu, wie Sie ermitteln, ob Sie betroffen sind"
    services="cloud-services"
    documentationCenter="na"
-   authors="raiye"
+   authors="yuemlu"
    manager="timlt"
    editor=""/>
 
@@ -13,34 +13,33 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="10/24/2016"
-   ms.author="raiye"/>
+   ms.date="06/10/2016"
+   ms.author="yuemlu"/>
+
+
+
+# Deaktivierungsinformationen für die Azure-Gastbetriebssystemfamilie 1
+
+Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 angekündigt.
+
+**2. September 2014** Die Azure-Gastbetriebssystemfamilie 1.x, die auf dem Betriebssystem Windows Server 2008 basiert, wurde offiziell außer Betrieb gestellt. Alle Versuche der Bereitstellung neuer Dienste oder der Aktualisierung vorhandener Dienste mithilfe von Familie 1 führen zu einer Fehlermeldung, die Sie darüber informiert, dass die Gastbetriebssystemfamilie 1 eingestellt wurde.
+
+**3. November 2014** Die erweiterte Unterstützung für die Gastbetriebssystemfamilie 1 wurde beendet, und die Familie wurde vollständig außer Betrieb genommen. Alle noch in Familie 1 enthaltenen Dienste sind davon betroffen. Wir können diese Dienste jederzeit beenden. Es gibt keine Garantie dafür, dass Ihre Dienste weiterhin ausgeführt werden können, sofern Sie diese nicht selbst manuell aktualisieren.
+
+Wenn Sie weitere Fragen haben, besuchen Sie die [Cloud Services-Foren](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc), oder wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/).
 
 
 
 
-# <a name="guest-os-family-1-retirement-notice"></a>Guest OS Family 1 retirement notice
+## Sind Sie betroffen?
 
-The retirement of OS Family 1 was first announced on June 1, 2013.
+Ihre Clouddienste sind betroffen, wenn eine der folgenden Bedingungen zutrifft:
 
-**Sept 2, 2014** The Azure Guest operating system (Guest OS) Family 1.x, which is based on the Windows Server 2008 operating system, was officially retired. All attempts to deploy new services or upgrade existing services using Family 1 will fail with an error message informing you that the Guest OS Family 1 has been retired.
+1. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist explizit der Wert "osFamily = "1" angegeben.
+2. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist kein expliziter Wert für "osFamily" angegeben. In diesem Fall verwendet das System aktuell den Standardwert "1".
+3. Im klassischen Azure-Portal ist der Wert Ihrer Gastbetriebssystemfamilie als „Windows Server 2008“ angegeben.
 
-**November 3, 2014** Extended support for Guest OS Family 1 ended and it is fully retired. All services still on Family 1 will be impacted. We may stop those services at any time. There is no guarantee your services will continue to run unless you manually upgrade them yourself.
-
-If you have additional questions, please visit the [Cloud Services Forums](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) or [contact Azure support](https://azure.microsoft.com/support/options/).
-
-
-
-
-## <a name="are-you-affected?"></a>Are you affected?
-
-Your Cloud Services are affected if any one of the following applies:
-
-1. You have a value of "osFamily = "1" explicitly specified in the ServiceConfiguration.cscfg file for your Cloud Service.
-2. You do not have a value for osFamily explicitly specified in the ServiceConfiguration.cscfg file for your Cloud Service. Currently, the system uses the default value of "1" in this case.
-3. The Azure classic portal lists your Guest Operating System family value as "Windows Server 2008".
-
-To find which of your cloud services are running which OS Family, you can run the script below in Azure PowerShell, though you must [set up Azure PowerShell](../powershell-install-configure.md) first. For additional details on the script, see [Azure Guest OS Family 1 End of Life: June 2014](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx). 
+Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das unten stehende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](../powershell-install-configure.md). Weitere Details zum Skript finden Sie unter [Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -52,38 +51,34 @@ foreach($subscription in Get-AzureSubscription) {
 }
 ```
 
-Your cloud services will be impacted by OS Family 1 retirement if the osFamily column in the script output is empty or contains a "1".
+Ihre Clouddienste sind von der Deaktivierung der Betriebssystemfamilie 1 betroffen, wenn die Spalte "osFamily" in der Ausgabe des Skripts leer ist oder den Wert "1" enthält.
 
-## <a name="recommendations-if-you-are-affected"></a>Recommendations if you are affected
+## Empfehlungen, wenn Sie betroffen sind
 
-We recommend you migrate your Cloud Service roles to one of the supported Guest OS Families:
+Wir empfehlen Ihnen, Ihre Clouddienstrollen zu einer der unterstützten Gastbetriebssystemfamilien zu migrieren:
 
-**Guest OS family 4.x** - Windows Server 2012 R2 *(recommended)*
+**Gastbetriebssystemfamilie 4.x** - Windows Server 2012 R2 *(empfohlen)*
 
-1. Ensure that your application is using SDK 2.1 or later with .NET framework 4.0, 4.5 or 4.5.1.
-2. Set the osFamily attribute to “4” in the ServiceConfiguration.cscfg file, and redeploy your cloud service.
-
-
-**Guest OS family 3.x** - Windows Server 2012
-
-1. Ensure that your application is using SDK 1.8 or later with .NET framework 4.0 or 4.5.
-2. Set the osFamily attribute to “3” in the ServiceConfiguration.cscfg file, and redeploy your cloud service.
+1. Stellen Sie sicher, dass Ihre Anwendung SDK 2.1 oder höher mit .NET-Framework 4.0, 4.5 oder 4.5.1 verwendet.
+2. Legen Sie in der Datei "ServiceConfiguration.cscfg" das osFamily-Attribut auf den Wert "4" fest, und stellen Sie Ihren Clouddienst erneut bereit.
 
 
-**Guest OS family 2.x** - Windows Server 2008 R2
+**Gastbetriebssystemfamilie 3.x** - Windows Server 2012
 
-1. Ensure that your application is using SDK 1.3 and above with .NET framework 3.5 or 4.0.
-2. Set the osFamily attribute to "2" in the ServiceConfiguration.cscfg file, and redeploy your cloud service.
-
-
-## <a name="extended-support-for-guest-os-family-1-ended-nov-3,-2014"></a>Extended Support for Guest OS Family 1 ended Nov 3, 2014
-Cloud services on Guest OS family 1 are no longer supported. Please migrate off family 1 as soon as possible to avoid service disruption.  
-
-## <a name="next-steps"></a>Next steps
-Review the latest [Guest OS releases](cloud-services-guestos-update-matrix.md).
+1. Stellen Sie sicher, dass Ihre Anwendung SDK 1.8 oder höher mit .NET-Framework 4.0 oder 4.5 verwendet.
+2. Legen Sie in der Datei "ServiceConfiguration.cscfg" das osFamily-Attribut auf den Wert "3" fest, und stellen Sie Ihren Clouddienst erneut bereit.
 
 
+**Gastbetriebssystemfamilie 2.x** - Windows Server 2008 R2
 
-<!--HONumber=Oct16_HO2-->
+1. Stellen Sie sicher, dass Ihre Anwendung SDK 1.3 oder höher mit .NET-Framework 3.5 oder 4.0 verwendet.
+2. Legen Sie in der Datei "ServiceConfiguration.cscfg" das osFamily-Attribut auf den Wert "2" fest, und stellen Sie Ihren Clouddienst erneut bereit.
 
 
+## Erweiterte Unterstützung für Gastbetriebssystemfamilie 1 wurde am 3. November 2014 beendet
+Clouddienste unter Gastbetriebssystemfamilie 1 werden nicht mehr unterstützt. Migrieren Sie schnellst möglich von Familie 1 zu einer neueren Familie, um Dienstunterbrechungen zu vermeiden.
+
+## Nächste Schritte
+Überprüfen Sie die neuesten [Gastbetriebssystemreleases](cloud-services-guestos-update-matrix.md).
+
+<!---HONumber=AcomDC_0615_2016-->

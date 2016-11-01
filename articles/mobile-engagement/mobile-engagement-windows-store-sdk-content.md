@@ -1,55 +1,50 @@
 <properties 
-    pageTitle="Windows Universal Apps SDK content" 
-    description="Learn about the contents of the Windows Universal Apps SDK for Azure Mobile Engagement"                    
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo" 
-    manager="dwrede" 
-    editor="" />
+	pageTitle="Windows Universal Apps SDK – Inhalt" 
+	description="Informieren Sie sich über den Inhalt des Windows Universal Apps SDK für Azure Mobile Engagement" 					
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="dwrede" 
+	editor="" />
 
 <tags 
-    ms.service="mobile-engagement" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="mobile-windows-store" 
-    ms.devlang="dotnet" 
-    ms.topic="article" 
-    ms.date="08/19/2016" 
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-store" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="08/19/2016" 
+	ms.author="piyushjo" />
 
+#Windows Universal Apps SDK – Inhalt
 
-#<a name="windows-universal-apps-sdk-content"></a>Windows Universal Apps SDK content
+In diesem Dokument wird aufgelistet und beschrieben, was durch das SDK in der Anwendung bereitgestellt wird.
 
-This document lists and describes the content deployed by the SDK in your application.
+##Der Ordner `/Resources`
 
-##<a name="the-`/resources`-folder"></a>The `/Resources` folder
+Dieser Ordner enthält alle von Mobile Engagement benötigten Ressourcen. Sie können diese auch an Ihre App anpassen.
 
-This folder contains all the resources that Mobile Engagement needs. You can also customize them to fit your app.
+- `EngagementConfiguration.xml` : Die Konfigurationsdatei von Mobile Engagement, hier können Sie Mobile Engagement-Einstellungen (Mobile Engagement-Verbindungszeichenfolge, Absturzbericht...) anpassen.
 
-- `EngagementConfiguration.xml` : The Mobile Engagement's configuration file, this is where you can customize Mobile Engagement settings (Mobile Engagement connection string, report crash...).
+### /html-Ordner
 
-### <a name="/html-folder"></a>/html folder
+- `EngagementNotification.html` : Der `Notification`-Webansichts-HTML-Entwurf für In-App-Banner.
 
-- `EngagementNotification.html` : The `Notification` web view html design for in-app banners.
+- `EngagementAnnouncement.html` : Der `Announcement`-Webansichts-HTML-Entwurf für In-App-Interstitialansichten.
 
-- `EngagementAnnouncement.html` : The `Announcement` web view html design for in-app interstitial views.
+### /images-Ordner
 
-### <a name="/images-folder"></a>/images folder
+- `EngagementIconNotification.png` : Das Markensymbol, das auf der linken Seite einer Benachrichtigung angezeigt wird. Ersetzen Sie dieses Symbol durch Ihr eigenes Markensymbol.
 
-- `EngagementIconNotification.png` : The brand icon displayed at the left of a notification, replace this one by your brand icon.
+- `EngagementIconOk.png` : Das `Ok`-Symbol der Reach-Inhaltsseiten für die Aktions- oder Validierungsschaltfläche.
 
-- `EngagementIconOk.png` : The `Ok` icon of the reach content pages for the action or validation button.
-
-- `EngagementIconNOK.png` : The `NOK` icon used when the validation button of the reach content pages is disabled.
+- `EngagementIconNOK.png` : Das `NOK`-Symbol, das verwendet wird, wenn die Validierungsschaltfläche der Reach-Inhaltsseiten deaktiviert ist.
  
-- `EngagementIconClose.png` : The `Close` icon of the reach notifications and contents for the dismiss button.
+- `EngagementIconClose.png` : Das `Close`-Symbol der Reach-Benachrichtigungen und -Inhalte für die Schaltfläche zum Verwerfen.
 
-### <a name="/overlay-folder"></a>/overlay folder
+### /overlay-Ordner
 
-- `EngagementPageOverlay.cs` : The overlay page responsible for adding the Engagement reach in-app UI to its child.
+- `EngagementPageOverlay.cs` : Die Overlayseite, die für das Hinzufügen der Engagement-Reach-In-App-Benutzeroberfläche zu ihrem untergeordneten Element verantwortlich ist.
   
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,16 +1,16 @@
-#### <a name="to-configure-mpio-for-storsimple-volumes"></a>To configure MPIO for StorSimple volumes
+#### So konfigurieren Sie MPIO für StorSimple-Volumes
 
-1. Open the **MPIO configuration**. Click **Server Manager > Dashboard > Tools > MPIO**.
+1. Öffnen Sie die **MPIO-Konfiguration**. Klicken Sie auf **Server-Manager > Dashboard > Tools > MPIO**.
 
-2. In the **MPIO Properties** dialog box, select the **Discover Multi-Paths** tab.
+2. Wählen Sie im Dialogfeld **MPIO-Eigenschaften** die Registerkarte **Multipfade suchen** aus.
 
-3. Select **Add support for iSCSI devices**, and then click **Add**.  
+3. Wählen Sie **Unterstützung für iSCSI-Geräte hinzufügen** aus, und klicken Sie dann auf **Hinzufügen**.
 
-    ![MPIO Properties Discover Multi Paths](./media/storsimple-configure-mpio-volumes/IC741003.png)
+	![MPIO-Eigenschaften – Multipfade ermitteln](./media/storsimple-configure-mpio-volumes/IC741003.png)
 
-4. Reboot the server when prompted.
+4. Starten Sie den Server neu, wenn Sie dazu aufgefordert werden.
+5. Klicken Sie im Dialogfeld **MPIO-Eigenschaften** auf die Registerkarte **MPIO-Geräte**. Klicken Sie auf **Hinzufügen**.
 
+	![MPIO-Eigenschaften – MPIO-Geräte](./media/storsimple-configure-mpio-volumes/IC741004.png)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0323_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Using the BizTalk XPath Extractor in logic apps in Azure App Service | Microsoft Azure"
+   pageTitle="Verwendung des BizTalk XPath Extractor in Logik-Apps in Azure App Service | Microsoft Azure"
    description="BizTalk XPath Extractor"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
@@ -16,42 +16,35 @@
    ms.date="04/20/2016"
    ms.author="rajram"/>
 
-
-# <a name="biztalk-xpath-extractor"></a>BizTalk XPath Extractor
+# BizTalk XPath Extractor
 
 [AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 
-BizTalk XPath Extract connector helps your app lookup and extract data from XML content based on a given XPath.
+Mit dem BizTalk XPath Extract-Connector kann Ihre App Daten aus dem XML-Inhalt suchen und basierend auf einem bestimmten XPath extrahieren.
 
-## <a name="using-the-biztalk-xpath-extractor"></a>Using the BizTalk Xpath Extractor
-1. To use the BizTalk Xpath Extractor, you need to first create an instance of the BizTalk Xpath Extractor API app. This can be done either inline while creating a logic app or by selecting the BizTalk Xpath Extractor API app from the Azure Marketplace.
+## Verwenden von BizTalk XPath Extractor
+1. Um den BizTalk Xpath Extractor zu verwenden, müssen Sie zunächst eine Instanz der BizTalk Xpath Extractor-API-App erstellen. Dies kann entweder inline beim Erstellen einer Logik-App oder durch Auswählen der BizTalk Xpath Extractor-API-App aus dem Azure Marketplace erfolgen.
 
-    >[AZURE.NOTE] There are no configuration settings associated with BizTalk Xpath Extractor.
-2. [Create a new logic app]. Open “Triggers and Actions” within your Logic App to open the Logic Apps Designer to configure your flow.
-3. On designer, the right pane lists the API Apps available to build your flow. Find the "BizTalk XPath Extractor". Selecting it adds the Xpath Extractor to your flow and provisions an instance of it.
-4. Once provisioned, the designer shows up the action associated with BizTalk XPath Extractor API App:  
-    ![BizTalk XPath Extractor Choose Action][1]
+	>[AZURE.NOTE] Es sind keine Konfigurationseinstellungen für BizTalk Xpath Extractor vorhanden.
+2. [Erstellen einer neuen Logik-App] Öffnen Sie In Ihrer Logik-Apps „Trigger und Aktionen“, um den Logik-Apps-Designer zu öffnen und den Datenfluss zu konfigurieren.
+3. Im Designer werden im rechten Bereich die verfügbaren API-Apps für das Erstellen des Datenflusses aufgeführt. Suchen Sie "BizTalk XPath Extractor". Durch diese Auswahl wird der XPath Extractor Ihrem Datenfluss hinzugefügt und eine Instanz davon bereitgestellt.
+4. Nach der Bereitstellung zeigt der Designer die Aktion, die der BizTalk XPath Extractor-API-App zugeordnet sind: ![BizTalk XPath Extractor Aktion auswählen][1]
 
-5. Choose "Extract Using XPath". "Extract Using XPath" evaluates input xpath expression on a given input XML:  
-    ![BizTalk XPath Extractor Input][2]
+5. Wählen Sie „Extract Using XPath“ aus. „Extract Using XPath“ wertet den Eingabe-XPath-Ausdruck auf eine bestimmte Eingabe-XML aus: ![BizTalk XPath Extractor Eingabe][2]
 
-    Parameter|Type|Description of the parameter
+	Parameter|Typ|Beschreibung des Parameters
 ---|---|---
-XPath|string|Query path inside xml.
-Input Xml|string|Input Xml content.
+XPath|Zeichenfolge|Abfragepfad in XML
+Eingabe-XML|Zeichenfolge|Eingabe-XML-Inhalt
 
-The action returns the output as a string - Result. Result contains the value of query path inside the XML.
+Die Aktion gibt die Ausgabe als Zeichenfolge zurück - Ergebnis. Das Ergebnis enthält den Wert des Abfragepfads in der XML.
 
 <!-- References -->
 [1]: ./media/app-service-logic-xpath-extract/ChooseAction.PNG
 [2]: ./media/app-service-logic-xpath-extract/ConfigureInput.PNG
 
 <!-- Links -->
-[Create a new Logic App]: app-service-logic-create-a-logic-app.md
+[Erstellen einer neuen Logik-App]: app-service-logic-create-a-logic-app.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

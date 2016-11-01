@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Managing partner solutions in Azure Security Center | Microsoft Azure"
-   description="This document walks you through how Azure Security Center lets you monitor at a glance the health status of your partner solutions integrated with your Azure subscription."
+   pageTitle="Verwalten von Sicherheitsempfehlungen in Azure Security Center | Microsoft Azure"
+   description="Dieses Dokument beschreibt, wie Sie mithilfe von Azure Security Center auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen können, die in Ihr Azure-Abonnement integriert sind."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,54 +13,48 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/26/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
+# Überwachen von Partnerlösungen mit Azure Security Center
 
-# <a name="monitoring-partner-solutions-with-azure-security-center"></a>Monitoring partner solutions with Azure Security Center
+In diesem Dokument erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen in Azure Security Center überwacht wird.
 
-This document walks you through how to monitor the health status of your partner solutions in Azure Security Center.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
-> [AZURE.NOTE] This document introduces the service by using an example deployment. This is not a step-by-step guide.
+## Überwachen von Partnerlösungen
 
-## <a name="monitoring-partner-solutions"></a>Monitoring partner solutions
+Auf der Kachel **Partnerlösungen** auf dem Blatt **Security Center** können Sie auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind. ![Kachel „Partnerlösungen“][1]
 
-The **Partner solutions** tile on the **Security Center** blade lets you monitor at a glance the health status of your partner solutions integrated with your Azure subscription.
-![Partner solutions tile][1]
+Die Kachel **Partnerlösungen** zeigt die Anzahl der Partnerlösungen und eine Statusübersicht für diese Lösungen an.
 
-The **Partner solutions** tile displays the number of partner solutions and a status summary for those solutions.
+Eine Partnerlösung kann den folgenden **STATUS** haben:
 
-The **STATUS** of a partner solution can be:
+- Geschützt (grün): Es liegt kein Integritätsproblem vor.
+- Fehlerhaft (rot): Es liegt ein Integritätsproblem vor, das sofort untersucht werden muss.
+- Melden beendet (orange): Die Lösung hat das Melden der Integrität beendet.
+- Unbekannter Schutzstatus (orange): Der Integritätsstatus der Lösung ist derzeit unbekannt, da beim Hinzufügen einer neuen Ressource zur vorhandenen Lösung ein Fehler aufgetreten ist.
+- Nicht gemeldet (grau): Die Lösung hat noch keine Meldung berichtet. Der Status einer Lösung kann unter Umständen noch nicht gemeldet worden sein, wenn die Verbindung gerade hergestellt wurde und die Bereitstellung noch nicht abgeschlossen ist.
 
-- Protected (green) - there is no health issue.
-- Unhealthy (red) - there is a health issue that requires immediate attention.
-- Stopped reporting (orange) - the solution has stopped reporting its health.
-- Unknown protection status (orange) - the health of the solution is unknown at this time due to a failed process of adding a new resource to the existing solution.
-- Not reported (gray) - the solution has not reported anything yet, a solution's status may be unreported if it has just been connected and is still deploying.
+Wenn in Ihr Abonnement keine Lösungen integriert sind, zeigt die Kachel an, dass es keine Lösungen gibt. Wenn Sie die Kachel **Partnerlösungen** auswählen, können Sie das Blatt **Empfehlungen** zum Bereitstellen von Partnersicherheitslösungen öffnen. ![Keine Partnerlösungen][2]
 
-If there are no solutions integrated with your subscription the tile will state that there are no solutions. Selecting the **Partner solutions** tile will enable you to open the **Recommendations** blade to deploy partner security solutions.
-![No partner solutions][2]
+So zeigen der Integrität Ihrer Partnerlösungen an:
 
-To view the health of your partner solutions:
+1. Wählen Sie die Kachel **Partnerlösungen**. Ein Blatt mit einer Liste der Partnerlösungen, die mit dem Security Center verbunden sind, wird geöffnet. ![Partnerlösungen][3]
 
-1. Select the **Partner solutions** tile. A blade opens displaying a list of your partner solutions connected to Security Center.
-![Partner solutions][3]
+2. Wählen Sie eine Partnerlösung aus. In diesem Beispiel wählen wir die Lösung **F5-WAF2** aus. Auf einem Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole**, um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen. ![Details der Partnerlösung][4]
 
-2. Select a partner solution. In this example, lets select the **F5-WAF2** solution.  A blade opens showing you the status of the partner solution and the solution's associated resources. Select **Solution console** to open the partner management experience for this solution.
-![Partner solution detail][4]
+3. Wechseln Sie zurück zum Blatt **F5-WAF2**, und wählen Sie **App verknüpfen**. Das Blatt **Anwendungen verknüpfen** wird geöffnet. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen. ![Verknüpfen Sie Ressourcen mit Partnerlösungen][5]
 
-3. Go back to the **F5-WAF2** blade and select **Link app**. The **Link Applications** blade opens. Here you can connect resources to the partner solution.
-![Link resources to partner solution][5]
+## Siehe auch
+In diesem Dokument wurden Ihnen die **Partnerlösungen** in Security Center vorgestellt. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-## <a name="see-also"></a>See also
-In this document, you were introduced to the **Partner Solutions** tile in Security Center. To learn more about Security Center, see the following:
-
-- [Setting security policies in Azure Security Center](security-center-policies.md) — Learn how to configure security policies for your Azure subscriptions and resource groups.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) — Learn how recommendations help you protect your Azure resources.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md) — Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) — Learn how to manage and respond to security alerts.
-- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Get the latest Azure security news and information.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+- [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png
@@ -69,8 +63,4 @@ In this document, you were introduced to the **Partner Solutions** tile in Secur
 [4]: ./media/security-center-partner-solutions/partner-solutions-detail.png
 [5]: ./media/security-center-partner-solutions/link-applications.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

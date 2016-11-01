@@ -1,237 +1,232 @@
 <properties
-    pageTitle="High availability features of Linux-based HDInsight (Hadoop) | Microsoft Azure"
-    description="Learn how Linux-based HDInsight clusters improve reliability and availability by using an additional head node. You will learn how this impacts Hadoop services such as Ambari and Hive, as well as how to individually connect to each head node using SSH."
-    services="hdinsight"
-    editor="cgronlun"
-    manager="jhubbard"
-    authors="Blackmist"
-    documentationCenter=""
-    tags="azure-portal"/>
+	pageTitle="Funktionen für hohe Verfügbarkeit bei Linux-basiertem HDInsight (Hadoop) | Microsoft Azure"
+	description="Erfahren Sie, wie Linux-basierte HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird."
+	services="hdinsight"
+	editor="cgronlun"
+	manager="jhubbard"
+	authors="Blackmist"
+	documentationCenter=""
+	tags="azure-portal"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.date="09/13/2016"
-    ms.author="larryfr"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="09/13/2016"
+	ms.author="larryfr"/>
 
+#Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
-#<a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Availability and reliability of Hadoop clusters in HDInsight
+Hadoop erzielt hohe Verfügbarkeit und Zuverlässigkeit durch Verteilen von redundanten Kopien von Diensten und Daten auf die Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert.
 
-Hadoop achieves high availability and reliability by distributing redundant copies of services and data across the nodes in a cluster. However standard distributions of Hadoop typically have only a single head node. Any outage of the single head node can cause the cluster to stop working.
+Zur Behebung dieses potenziellen Problems stellen Linux-basierte HDInsight-Cluster in Azure zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Hadoop-Diensten und -Aufträgen zu verbessern.
 
-To address this potential problem, Linux-based HDInsight clusters on Azure provide two head nodes to increase the availability and reliability of Hadoop services and jobs running.
+> [AZURE.NOTE] Die Schritte in diesem Dokument gelten für Linux-basierte HDInsight-Cluster. Wenn Sie einen Windows-basierten Cluster verwenden, finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Windows-basierten Hadoop-Clustern in HDInsight](hdinsight-high-availability.md) entsprechende Informationen für Windows.
 
-> [AZURE.NOTE] The steps used in this document are specific to Linux-based HDInsight clusters. If you are using a Windows-based cluster, see [Availability and reliability of Windows-based Hadoop clusters in HDInsight](hdinsight-high-availability.md) for Windows-specific information.
+##Grundlegendes zu den Knoten
 
-##<a name="understanding-the-nodes"></a>Understanding the nodes
+Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. Falls ein Knoten ausfällt, wird er offline geschaltet, und es wird ein neuer Knoten erstellt, um den fehlerhaften Knoten zu ersetzen. Während der Knoten offline ist, wird ein anderer Knoten desselben Typs verwendet, bis der neue Knoten online geschaltet wird.
 
-Nodes in an HDInsight cluster are implemented using Azure Virtual Machines. In the event that a node fails, it is taken offline and a new node is created to replace the failed node. While the node is offline, another node of the same type will be used until the new node is brought online.
+> [AZURE.NOTE] Wenn auf dem Knoten zum Zeitpunkt des Ausfalls Daten analysiert wurden, gehen die Fortschritte dieses Auftrags verloren. Der Auftrag, der auf dem Knoten ausgeführt wurde, wird neu an einen anderen Knoten übermittelt.
 
-> [AZURE.NOTE] If the node is analyzing data when it fails, its progress on the job is lost. The job that the failing node was working on will be resubmitted to another node.
+In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden. Es werden nicht alle Knotentypen für alle Clustertypen verwendet. Ein Hadoop-Cluster z. B. weist keine Nimbusknoten auf. Weitere Informationen zu den von den HDInsight-Clustertypen verwendeten Knoten finden Sie im Artikel [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) im Abschnitt „Clustertypen“.
 
-The following sections discuss the individual node types used with HDInsight. Not all node types are used for a cluster type. For example, a Hadoop cluster type will not have any Nimbus nodes. For more information on nodes used by HDInsight cluster types, see the Cluster types section of [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+###Hauptknoten
 
-###<a name="head-nodes"></a>Head nodes
+In einigen Implementierungen von Hadoop hostet ein einzelner Hauptknoten Dienste und Komponenten, die zur reibungslosen Verwaltung ausgefallener Workerknoten dienen. Bei einem Ausfall eines Masterdiensts auf dem Hauptknoten würde jedoch der komplette Cluster ausfallen.
 
-Some implementations of Hadoop have a single head node that hosts services and components that manage the failure of worker nodes smoothly. But any outages of master services running on the head node would cause the cluster to cease to work.
+HDInsight-Cluster verfügen über einen sekundären Hauptknoten, sodass Masterdienste und -komponenten bei einem Ausfall des primären Knotens weiterhin auf dem sekundären Knoten ausgeführt werden können.
 
-HDInsight clusters provide a secondary head node, which allows master services and components to continue to run on on the secondary node in the event of a failure on the primary.
+> [AZURE.IMPORTANT] Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des Clusters ausgeführt. Einige Dienste (z. B. HDFS oder YARN) sind jeweils nur auf einem Hauptknoten „aktiv“ (und auf dem anderen Hauptknoten im „Standby“). Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
 
-> [AZURE.IMPORTANT] Both head nodes are active and running within the cluster simultaneously. Some services, such as HDFS or YARN, are only 'active' on one head node at any given time (and ‘standby’ on the other head node). Other services such as HiveServer2 or Hive MetaStore are active on both head nodes at the same time.
+Hauptknoten (und andere Knoten in HDInsight) verfügen über numerische Werte als Teil des Hostnamens des Knotens. Beispiel: `hn0-CLUSTERNAME` oder `hn4-CLUSTERNAME`.
 
-Head nodes (and other nodes in HDInsight,) have a numeric value as part of the hostname of the node. For example, `hn0-CLUSTERNAME` or `hn4-CLUSTERNAME`. 
+> [AZURE.IMPORTANT] Der numerische Wert gibt nicht an, ob ein Knoten primär oder sekundär ist; der numerische Wert vergibt nur einen eindeutigen Namen für jeden Knoten.
 
-> [AZURE.IMPORTANT] Do not associate the numeric value with whether a node is primary or secondary; the numeric value is only present to provide a unique name for each node.
+###Nimbusknoten
 
-###<a name="nimbus-nodes"></a>Nimbus Nodes
+In Storm-Clustern stellen Nimbusknoten die gleiche Funktionalität für den Hadoop JobTracker bereit, indem sie die Verarbeitung auf Workerknoten verteilen und überwachen. HDInsight stellt zwei Nimbusknoten für den Storm-Clustertyp bereit.
 
-For Storm clusters, the Nimbus nodes provide similar functionality to the Hadoop JobTracker by distributing and monitoring processing across worker nodes. HDInsight provides 2 Nimbus nodes for the Storm cluster type.
+###Zookeeper-Knoten
 
-###<a name="zookeeper-nodes"></a>Zookeeper nodes
+[ZooKeeper](http://zookeeper.apache.org/)-Knoten (ZKs) wählen eine übergeordnete Instanz von Masterdiensten auf Hauptknoten aus und teilen Diensten, Datenknoten (Workerknoten) und Gateways mit, auf welchem Hauptknoten ein Masterdienst aktiv ist. Standardmäßig stellt HDInsight drei Zookeeper-Knoten bereit.
 
-[ZooKeeper](http://zookeeper.apache.org/ ) nodes (ZKs) are used for leader election of master services on head nodes, and to insure that services, data (worker) nodes and gateways know which head node a master service is active on. By default, HDInsight provides 3 ZooKeeper nodes.
+###Workerknoten
 
-###<a name="worker-nodes"></a>Worker nodes
+Workerknoten führen die eigentliche Analyse aus, wenn ein Auftrag an den Cluster übermittelt wird. Wenn ein Workerknoten ausfällt, wird die Ausgabe, die auf dem Knoten gerade ausgeführt wurde, an einen anderen Workerknoten übermittelt. Standardmäßig erstellt HDInsight vier Workerknoten. Sie können diese Anzahl jedoch sowohl während als auch nach der Clustererstellung gemäß Ihren Anforderungen ändern.
 
-Worker nodes perform the actual data analysis when a job is submitted to the cluster. If a worker node fails, the task that it was performing will be submitted to another worker node. By default, HDInsight will create 4 worker nodes; however, you can change this number to suit your needs both during cluster creation and after cluster creation.
+###Edgeknoten
 
-###<a name="edge-node"></a>Edge node
+Ein Edgeknoten ist nicht aktiv an der Datenanalyse im Cluster beteiligt, sondern wird von Entwicklern oder Datenspezialisten bei der Arbeit mit Hadoop verwendet. Der Edgeknoten befindet sich im gleichen virtuellen Azure-Netzwerk wie die anderen Knoten im Cluster und kann direkt auf alle anderen Knoten zugreifen. Da dieser Knoten nicht an der Analyse von Daten für den Cluster beteiligt ist, kann er problemlos eingesetzt werden, ohne dass Sie sich Gedanken darüber machen müssen, ob dadurch Ressourcen von kritischen Hadoop-Diensten oder -Analyseaufträgen abgezogen werden.
 
-An edge node does not actively participate in data analysis within the cluster, but is instead used by developers or data scientists when working with Hadoop. The edge node lives in the same Azure Virtual Network as the other nodes in the cluster, and can directly access all other nodes. Since it is not involved in analyzing data for the cluster, it can be used without any concern of taking resources away from critical Hadoop services or analysis jobs.
+Zurzeit ist R Server auf HDInsight der einzige Clustertyp, der standardmäßig einen Edgeknoten bereitstellt. Für R Server auf HDInsight wird der Edgeknoten verwendet, um R-Code lokal auf dem Knoten zu testen, bevor der Code zur verteilten Verarbeitung an den Cluster übermittelt wird.
 
-Currently, R Server on HDInsight is the only cluster type that provides an edge node by default. For R Server on HDInsight, the edge node is used test R code locally on the node before submitting it to the cluster for distributed processing.
+[Create a Linux-based HDInsight cluster with Hue on an Edge Node](https://azure.microsoft.com/documentation/templates/hdinsight-linux-with-hue-on-edge-node/) (Erstellen eines Linux-basierten HDInsight-Clusters mit Hue auf einem Edgeknoten) ist eine Beispielvorlage, die zum Erstellen eines Hadoop-Clustertyps verwendet werden kann, der über einen Edgeknoten verfügt.
 
-[Create a Linux-based HDInsight cluster with Hue on an Edge Node](https://azure.microsoft.com/documentation/templates/hdinsight-linux-with-hue-on-edge-node/) is an example template that can be used to create a Hadoop cluster type that has an Edge node.
 
+## Zugreifen auf die Knoten
 
-## <a name="accessing-the-nodes"></a>Accessing the nodes
+Der Zugriff auf den Cluster über das Internet wird über ein öffentliches Gateway bereitgestellt und ist auf das Herstellen einer Verbindung mit den Hauptknoten und (wenn es sich um einen Cluster mit R Server in HDInsight handelt) dem Edgeknoten beschränkt. Die Bereitstellung mehrerer Hauptknoten wirkt sich nicht auf den Zugriff auf die auf den Hauptknoten ausgeführten Dienste aus, da das öffentliche Gateway Anforderungen an den Hauptknoten weiterleitet, der den angeforderten Dienst hostet. Ein Beispiel: Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
 
-Access to the cluster over the internet is provided through a public gateway, and is limited to connecting to the head nodes and (if an R Server on HDInsight cluster,) the edge node. Access to services running on the head nodes is not effected by having multiple head nodes, as the public gateway routes requests to the head node that hosts the requested service. For example, if Ambari is currently hosted on the secondary head node, the gateway will route incoming requests for Ambari to that node.
+Beim Zugriff auf den Cluster über SSH wird bei Verwendung von Port 22 (Standardport für SSH) eine Verbindung mit dem primären Hauptknoten hergestellt; bei Verwendung von Port 23 eine Verbindung mit dem sekundären Hauptknoten. `ssh username@mycluster-ssh.azurehdinsight.net` stellt z.B. eine Verbindung mit dem primären Hauptknoten des Clusters mit der Bezeichnung __mycluster__ her.
 
-When accessing the cluster using SSH, connecting through port 22 (the default for SSH,) will connect to the primary head node; connecting through port 23 will connect to the secondary head node. For example, `ssh username@mycluster-ssh.azurehdinsight.net` will connect to the primary head node of the cluster named __mycluster__.
+> [AZURE.NOTE] Dies gilt auch für SSH-basierte Protokolle, wie etwa SFTP (SSH File Transfer Protocol).
 
-> [AZURE.NOTE] This also applies to protocols based on SSH, such as the SSH File Transfer Protocol (SFTP).
+Auf den Edgeknoten, der in Clustern mit R Server in HDInsight bereitgestellt wird, kann auch direkt mithilfe von SSH über Port 22 zugegriffen werden. `ssh username@RServer.mycluster.ssh.azurehdinsight.net` stellt z. B. eine Verbindung mit dem Edgeknoten für einen Cluster mit R Server in HDInsight mit der Bezeichnung __mycluster__ her.
 
-The edge node provided with R Server on HDInsight clusters can also be directly accessed using SSH through port 22. For example, `ssh username@RServer.mycluster.ssh.azurehdinsight.net` will connect to the edge node for an R Server on HDInsight cluster named __mycluster__. 
+### Interne vollqualifizierte Domänennamen (FQDN)
 
-### <a name="internal-fully-qualified-domain-names-(fqdn)"></a>Internal fully qualified domain names (FQDN)
+Knoten in einem HDInsight-Cluster besitzen eine interne IP-Adresse und einen internen FQDN, auf die nur über den Cluster zugegriffen werden kann (z. B. eine SSH-Sitzung mit dem Hauptknoten oder ein im Cluster ausgeführter Auftrag). Wenn Sie mit dem internen FQDN oder der internen IP-Adresse auf Dienste im Cluster zugreifen, sollten Sie die zu verwendende IP-Adresse oder den FQDN mithilfe von Ambari überprüfen.
 
-Nodes in an HDInsight cluster have an internal IP address and FQDN that can only be accessed from the cluster (such as an SSH session to the head node or a job running on the cluster.) When accessing services on the cluster using the internal FQDN or IP address, you should use Ambari to verify the IP or FQDN to use when accessing the service.
+Der Oozie-Dienst kann z. B. nur auf einem Hauptknoten ausgeführt werden, und zur Verwendung des `oozie`-Befehls in einer SSH-Sitzung ist die URL des Diensts erforderlich. Die URL kann mit dem folgenden Befehl aus Ambari abgerufen werden:
 
-For example, the Oozie service can only run on one head node, and using the `oozie` command from an SSH session requires the URL to the service. This can be retrieved from Ambari by using the following command:
+	curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
-    curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
+Der zurückgegebene Wert enthält die mit dem `oozie`-Befehl zu verwendende interne URL und sieht in etwa wie folgt aus:
 
-This will return a value similar to the following, which contains the internal URL to use with the `oozie` command:
+	"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-    "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+### Zugreifen auf andere Knotentypen
 
-### <a name="accessing-other-node-types"></a>Accessing other node types
+Mit den folgenden Methoden können Sie eine Verbindung mit Knoten herstellen, auf die nicht direkt über das Internet zugegriffen werden kann.
 
-You can connect to nodes that are not directly accessible over the internet by using the following methods.
+* __SSH__: Sobald über SSH eine Verbindung mit dem Hauptknoten hergestellt wurde, können Sie SSH auf dem Hauptknoten verwenden, um Verbindungen mit anderen Knoten im Cluster herzustellen.
+* __SSH-Tunnel__: Wenn Sie auf einen Webdienst zugreifen müssen, der auf einem der nicht direkt mit dem Internet verbundenen Knoten gehostet wird, müssen Sie [einen SSH-Tunnel verwenden](hdinsight-linux-ambari-ssh-tunnel.md).
+* __Virtuelles Azure-Netzwerk__: Wenn Ihr HDInsight-Cluster zu einem virtuellen Azure-Netzwerk gehört, können alle Ressourcen in diesem virtuellen Netzwerk direkt auf alle Knoten im Cluster zugreifen.
 
-* __SSH__: Once connected to a head node using SSH, you can then use SSH from the head node to connect to other nodes in the cluster.
-* __SSH Tunnel__: If you need to access a web service hosted on one of the nodes that is not exposed to the internet, you must [use an SSH tunnel](hdinsight-linux-ambari-ssh-tunnel.md).
-* __Azure Virtual Network__: If your HDInsight cluster is part of an Azure Virtual Network, any resource on the same Virtual Network can directly access all nodes in the cluster.
+## Überprüfen eines Dienststatus
 
-## <a name="how-to-check-on-a-service-status"></a>How to check on a service status
+Sie können sowohl die Ambari-Webbenutzeroberfläche als auch die Ambari-REST-API verwenden, um den Status von Diensten zu überprüfen, die auf dem Hauptknoten ausgeführt werden.
 
-Either the Ambari Web UI or the Ambari REST API can be used to check the status of services that run on the head nodes.
+###Ambari-Webbenutzeroberfläche
 
-###<a name="ambari-web-ui"></a>Ambari Web UI
+Die Ambari-Webbenutzeroberfläche ist unter https://CLUSTERNAME.azurehdinsight.net verfügbar. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Wenn Sie dazu aufgefordert werden, geben Sie die HTTP-Anmeldeinformationen für Ihren Cluster ein. Der standardmäßige HTTP-Benutzername ist **admin**, und das Kennwort ist das Kennwort, das Sie beim Erstellen des Clusters eingegeben haben.
 
-The Ambari Web UI is viewable at https://CLUSTERNAME.azurehdinsight.net. Replace **CLUSTERNAME** with the name of your cluster. If prompted, enter the HTTP user credentials for your cluster. The default HTTP user name is **admin** and the password is the password you entered when creating the cluster.
+Die installierten Dienste werden im linken Bereich der Ambari-Seite aufgeführt.
 
-When you arrive on the Ambari page, the installed services will be listed on the left of the page.
+![Installierte Dienste](./media/hdinsight-high-availability-linux/services.png)
 
-![Installed services](./media/hdinsight-high-availability-linux/services.png)
+Neben den Diensten werden möglicherweise Statussymbole angezeigt. Alle Warnungen in Zusammenhang mit einem Dienst können über den Link **Warnungen** oben auf der Seite angezeigt werden. Sie können einen Dienst auswählen, um weitere Informationen anzuzeigen.
 
-There are a series of icons that may appear next to a service to indicate status. Any alerts related to a service can be viewed using the **Alerts** link at the top of the page. You can select each service to view more information on it.
+Auf der Dienstseite werden zwar Informationen zum Status und zur Konfiguration jedes Diensts angezeigt, aber keine Informationen dazu, auf welchem Hauptknoten der Dienst ausgeführt wird. Diese Informationen können über den Link **Hosts** oben auf der Seite aufgerufen werden. Wenn Sie auf den Link klicken, werden die Hosts innerhalb des Clusters angezeigt, einschließlich der Hauptknoten.
 
-While the service page provides information on the status and configuration of each service, it does not provide information on which head node the service is running on. To view this information, use the **Hosts** link at the top of the page. This will display hosts within the cluster, including the head nodes.
+![Liste der Hosts](./media/hdinsight-high-availability-linux/hosts.png)
 
-![hosts list](./media/hdinsight-high-availability-linux/hosts.png)
+Wenn Sie auf den Link für einen der Hauptknoten klicken, werden die auf diesem Knoten ausgeführten Dienste und Komponenten angezeigt.
 
-Selecting the link for one of the head nodes will display the services and components running on that node.
+![Komponentenstatus](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-![Component status](./media/hdinsight-high-availability-linux/nodeservices.png)
+###Ambari-REST-API
 
-###<a name="ambari-rest-api"></a>Ambari REST API
+Die Ambari-REST-API ist über das Internet verfügbar, und das öffentliche Gateway verarbeitet Routinganforderungen an den Hauptknoten, auf dem die REST-API derzeit gehostet wird.
 
-The Ambari REST API is available over the internet, and the public gateway handles routing requests to the head node that is currently hosting the REST API.
+Sie können den folgenden Befehl verwenden, um den Status eines Diensts über die Ambari-REST-API zu überprüfen:
 
-You can use the following command to check the state of a service through the Ambari REST API:
+	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
+* Ersetzen Sie **PASSWORD** durch Kontokennwort des HTTP-Benutzers (Administrator).
 
-* Replace **PASSWORD** with the HTTP user (admin,) account password
+* Ersetzen Sie **CLUSTERNAME** durch den Namen des Clusters.
 
-* Replace **CLUSTERNAME** with the name of the cluster
+* Ersetzen Sie **SERVICENAME** durch den Namen des Diensts, dessen Status Sie überprüfen möchten.
 
-* Replace **SERVICENAME** with the name of the service to check the status of
+Wenn Sie z. B. den Status des **HDFS**-Diensts in einem Cluster mit dem Namen **mycluster** überprüfen möchten und das Kennwort **password** lautet, würden Sie folgenden Befehl verwenden:
 
-For example, to check the status of the **HDFS** service on a cluster named **mycluster**, with a password of **password**, you would use the following:
+	curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
-    curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
+Die Antwort sieht in etwa wie folgt aus:
 
-The response will be similar to the following:
+	{
+	  "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+	  "ServiceInfo" : {
+	    "cluster_name" : "mycluster",
+	    "service_name" : "HDFS",
+	    "state" : "STARTED"
+	  }
+	}
 
-    {
-      "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
-      "ServiceInfo" : {
-        "cluster_name" : "mycluster",
-        "service_name" : "HDFS",
-        "state" : "STARTED"
-      }
-    }
+Der URL können Sie entnehmen, dass der Dienst zurzeit auf einem Hauptknoten namens __hn0-CLUSTERNAME__ ausgeführt wird.
 
-The URL tells us that the service is currently running on a head node named __hn0-CLUSTERNAME__.
+Der Statuswert (state) gibt an, dass der Dienst zurzeit ausgeführt wird bzw. sich im Status **STARTED** befindet.
 
-The state tells us that the service is currently running, or **STARTED**.
+Falls Sie nicht wissen, welche Dienste auf dem Cluster installiert sind, können Sie mit dem folgenden Befehl eine Liste abrufen:
 
-If you do not know what services are installed on the cluster, you can use the following to retrieve a list:
+	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
+####Dienstkomponenten
 
-####<a name="service-components"></a>Service components
+Dienste können Komponenten enthalten, deren Status Sie einzeln überprüfen möchten. HDFS enthält z. B. die NameNode-Komponente. Der Befehl zum Anzeigen von Informationen zu einer Komponente lautet wie folgt:
 
-Services may contain components that you wish to check the status of individually. For example, HDFS contains the NameNode component. To view information on a component, the command would be:
+	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+Falls Sie nicht wissen, welche Komponenten von einem Dienst bereitgestellt werden, können Sie mit dem folgenden Befehl eine Liste abrufen:
 
-If you do not know what components are provided by a service, you can use the following to retrieve a list:
-
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
     
-## <a name="how-to-access-log-files-on-the-head-nodes"></a>How to access log files on the head nodes
+## Zugreifen auf Protokolldateien auf den Hauptknoten
 
-###<a name="ssh"></a>SSH
+###SSH
 
-While connected to a head node through SSH, log files can be found under **/var/log**. For example, **/var/log/hadoop-yarn/yarn** contain logs for YARN.
+Wenn Sie über SSH mit einem Hauptknoten verbunden sind, sind die Protokolldateien unter **/Var/Log** verfügbar. **/var/log/hadoop-yarn/yarn** enthält z. B. Protokolle für YARN.
 
-Each head node can have unique log entries, so you should check the logs on both.
+Da für jeden Hauptknoten spezifische Protokolleinträge vorhanden sein können, sollten Sie die Protokolle auf beiden Hauptknoten überprüfen.
 
-###<a name="sftp"></a>SFTP
+###SFTP
 
-You can also connect to the head node using the SSH File Transfer Protocol or Secure File Transfer Protocol (SFTP), and download the log files directly.
+Sie können auch über das SSH File Transfer Protocol oder das Secure File Transfer Protocol (SFTP) eine Verbindung mit dem Hauptknoten herstellen und die Protokolldateien direkt herunterladen.
 
-Similar to using an SSH client, when connecting to the cluster you must provide the SSH user account name and the SSH address of the cluster. For example, `sftp username@mycluster-ssh.azurehdinsight.net`. You must also provide the password for the account when prompted, or provide a public key using the `-i` parameter.
+Ähnlich wie bei der Verwendung eines SSH-Clients müssen Sie beim Herstellen einer Verbindung mit dem Cluster den SSH-Benutzerkontonamen und die SSD-Adresse des Clusters angeben. Beispiel: `sftp username@mycluster-ssh.azurehdinsight.net`. Sie müssen auch das Kennwort für das Konto eingeben, wenn Sie dazu aufgefordert werden, oder mit dem Parameter `-i` einen öffentlichen Schlüssel bereitstellen.
 
-Once connected, you are presented with a `sftp>` prompt. From this prompt, you can change directories, upload and download files. For example, the following commands change directories to the **/var/log/hadoop/hdfs** directory and then download all files in the directory.
+Wenn die Verbindung hergestellt ist, wird Ihnen eine `sftp>`-Eingabeaufforderung angezeigt. An dieser Eingabeaufforderung können Sie Verzeichnisse wechseln sowie Dateien hoch- und herunterladen. Folgende Befehle wechseln z. B. zum Verzeichnis **/var/log/hadoop/hdfs** und laden dann alle Dateien in diesem Verzeichnis herunter.
 
     cd /var/log/hadoop/hdfs
     get *
 
-For a list of available commands, enter `help` at the `sftp>` prompt.
+Um eine Liste aller verfügbaren Befehle zu erhalten, geben Sie an der `sftp>`-Eingabeaufforderung den Befehlt `help` ein.
 
-> [AZURE.NOTE] There are also graphical interfaces that allow you to visualize the file system when connected using SFTP. For example, [MobaXTerm](http://mobaxterm.mobatek.net/) allows you to browse the file system using an interface similar to Windows Explorer.
+> [AZURE.NOTE] Es gibt auch grafische Benutzeroberflächen, mit denen Sie das Dateisystem visuell anzeigen können, wenn eine Verbindung über SFTP hergestellt wurde. [MobaXTerm](http://mobaxterm.mobatek.net/) z. B. ermöglicht das Durchsuchen des Dateisystems in einer Benutzeroberfläche ähnlich Windows Explorer.
 
 
-###<a name="ambari"></a>Ambari
+###Ambari
 
-> [AZURE.NOTE] Accessing log files through Ambari requires an SSH tunnel, as the web sites for the individual services are not exposed publicly on the Internet. For information on using an SSH tunnel, see [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's](hdinsight-linux-ambari-ssh-tunnel.md).
+> [AZURE.NOTE] Für den Zugriff auf Protokolldateien über Ambari ist ein SSH-Tunnel erforderlich, da die Websites für die einzelnen Dienste nicht öffentlich im Internet verfügbar sind. Informationen zum Verwenden eines SSH-Tunnels finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
 
-From the Ambari Web UI, select the service you wish to view logs for (for example, YARN,) and then use **Quick Links** to select which head node to view the logs for.
+Wählen Sie in der Ambari-Webbenutzeroberfläche den Dienst aus, für den Sie Protokolle anzeigen möchten (z. B. YARN), und wählen Sie dann mithilfe von **Quicklinks** den gewünschten Hauptknoten aus.
 
-![Using quick links to view logs](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Verwenden von Quicklinks zum Anzeigen von Protokollen](./media/hdinsight-high-availability-linux/viewlogs.png)
 
-## <a name="how-to-configure-the-node-size"></a>How to configure the node size ##
+## Konfigurieren der Knotengröße ##
 
-The size of the a node can only be selected during cluster creation. You can find a list of the different VM sizes available for HDInsight, including the core, memory, and local storage for each, on the [HDInsight pricing page](https://azure.microsoft.com/pricing/details/hdinsight/).
+Die Größe eines Knotens kann nur beim Erstellen des Clusters ausgewählt werden. Eine Liste der verschiedenen VM-Größen, die für HDInsight verfügbar sind (einschließlich Kerne, Arbeitsspeicher und lokaler Speicher), finden Sie auf der Seite [HDInsight-Preisdetails](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-When creating a new cluster, you can specify the size of the nodes. The following provide information on how to specify the size using the [Azure Portal][preview-portal], [Azure PowerShell][azure-powershell], and the [Azure CLI][azure-cli]:
+Beim Erstellen eines neuen Clusters können Sie die Größe der Knoten angeben. Die Größe kann wie folgt im [Azure-Portal][preview-portal], mit [Azure PowerShell][azure-powershell] und mit der [Azure-Befehlszeilenschnittstelle][azure-cli] festgelegt werden:
 
-* **Azure Portal**: When creating a new cluster, you are given the option of setting the size (pricing tier,) of the head, worker and (if used by the cluster type,) ZooKeeper nodes for the cluster:
+* **Azure-Portal**: Beim Erstellen eines neuen Clusters haben Sie die Möglichkeit, die Größe (Tarif) der Haupt- und Workerknoten sowie (sofern vom Clustertyp verwendet) der Zookeeper-Knoten für den Cluster festzulegen:
 
-    ![Image of cluster creation wizard with node size selection](./media/hdinsight-high-availability-linux/headnodesize.png)
+	![Screenshot des Assistenten zur Clustererstellung mit der Auswahl der Knotengröße](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure CLI**: When using the `azure hdinsight cluster create` command, you can set the size of the head, worker, and ZooKeeper nodes by using the `--headNodeSize`, `--workerNodeSize`, and `--zookeeperNodeSize` parameters.
+* **Azure-Befehlszeilenschnittstelle**: Die Größe der Haupt-, Worker- und Zookeeper-Knoten kann bei Verwendung des Befehls `azure hdinsight cluster create` mit den Parametern `--headNodeSize`, `--workerNodeSize` und `--zookeeperNodeSize` angegeben werden.
 
-* **Azure PowerShell**: When using the `New-AzureRmHDInsightCluster` cmdlet, you can set the size of the head, worker, and ZooKeeper nodes by using the `-HeadNodeVMSize`, `-WorkerNodeSize`, and `-ZookeeperNodeSize` parameters.
+* **Azure-PowerShell**: Die Größe der Haupt-, Worker- und Zookeeper-Knoten kann bei Verwendung des Cmdlets `New-AzureRmHDInsightCluster` mit den Parametern `-HeadNodeVMSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` angegeben werden.
 
-##<a name="next-steps"></a>Next steps
+##Nächste Schritte
 
-In this document you have learned how Azure HDInsight provides high availability for Hadoop. Use the following to learn more about things mentioned in this document.
+In diesem Dokument haben Sie erfahren, wie Azure HDInsight hohe Verfügbarkeit für Hadoop bietet. In den folgenden Artikeln finden Sie weiterführende Informationen.
 
-- [Ambari REST Reference](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+- [Ambari-REST-Referenz](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 
-- [Install and configure the Azure CLI](../xplat-cli-install.md)
+- [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)
 
-- [Install and configure Azure PowerShell](../powershell-install-configure.md)
+- [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
 
-- [Manage HDInsight using Ambari](hdinsight-hadoop-manage-ambari.md)
+- [Verwalten von HDInsight mit Ambari](hdinsight-hadoop-manage-ambari.md)
 
-- [Provision Linux-based HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)
+- [Bereitstellen Linux-basierter HDInsight-Cluster](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

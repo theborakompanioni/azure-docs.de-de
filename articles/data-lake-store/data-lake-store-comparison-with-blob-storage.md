@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Lake Store comparison with Azure Storage Blob | Microsoft Azure"
-   description="Azure Data Lake Store comparison with Azure Storage Blob"
+   pageTitle="Vergleich von Azure Data Lake Store mit Azure Storage Blob | Microsoft Azure"
+   description="Vergleich von Azure Data Lake Store mit Azure Storage Blob"
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
@@ -16,44 +16,36 @@
    ms.date="08/15/2016"
    ms.author="nitinme"/>
 
+# Vergleich von Azure Data Lake Store und Azure Blob Storage
 
-# <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Comparing Azure Data Lake Store and Azure Blob Storage
+In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lake Store und Azure Blob Storage zusammengefasst und einige wichtige Aspekte der Big Data-Verarbeitung aufgezeigt. Azure Blob Storage ist ein universell einsetzbarer und skalierbarer Objektspeicher, der auf eine Vielzahl von Speicherszenarien ausgelegt ist. Azure Data Lake Store ist ein hochgradig skalierbares Repository, das für Big Data-Analyseworkloads optimiert ist.
 
-The table in this article summarizes the differences between Azure Data Lake Store and Azure Blob Storage along some key aspects of big data processing. Azure Blob Storage is a general purpose, scalable object store that is designed for a wide variety of storage scenarios. Azure Data Lake Store is a hyper-scale repository that is optimized for big data analytics workloads.
-
-|    | Azure Data Lake Store  | Azure Blob Storage  |
+| | Azure Data Lake Store | Azure Blob Storage |
 |----|-----------------------|--------------------|
-| Purpose  | Optimized storage for big data analytics workloads                                                                          | General purpose object store for a wide variety of storage scenarios                                                                                |
-| Use Cases                                   | Batch, interactive, streaming analytics and machine learning data such as log files, IoT data, click streams, large datasets | Any type of text or binary data, such as application back end, backup data, media storage for streaming and general purpose data |
-| Key Concepts                                | Data Lake Store account contains folders, which in turn contains data stored as files | Storage account has containers, which in turn has data in the form of blobs |
-| Structure | Hierarchical file system                                                                                                    | Object store with flat namespace  |
-| API   | REST API over HTTPS | REST API over HTTP/HTTPS                                                                                                                            |
-| Server-side API                             | [WebHDFS-compatible REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)                                                                                                 | [Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)                                                                                                                         |
-| Hadoop File System Client                   | Yes                                                                                                                         | Yes                                                                                                                                                 |
-| Data Operations - Authentication            | Based on [Azure Active Directory Identities](../active-directory/active-directory-authentication-scenarios.md) | Based on shared secrets - [Account Access Keys](../storage/storage-create-storage-account.md#manage-your-storage-account) and [Shared Access Signature Keys](../storage/storage-dotnet-shared-access-signature-part-1.md).                                                                       |
-| Data Operations - Authentication Protocol     | OAuth 2.0. Calls must contain a valid JWT (JSON Web Token) issued by Azure Active Directory                     | Hash-based Message Authentication Code (HMAC) . Calls must contain a Base64-encoded SHA-256 hash over a part of the HTTP request. |
-| Data Operations - Authorization               | POSIX Access Control Lists (ACLs).  ACLs based on Azure Active Directory Identities can be set file and folder level. | For account-level authorization – Use [Account Access Keys](../storage/storage-create-storage-account.md#manage-your-storage-account)<br>For account, container, or blob authorization -  Use [Shared Access Signature Keys](../storage/storage-dotnet-shared-access-signature-part-1.md) |
-| Data Operations - Auditing                    | Available. See [here](data-lake-store-diagnostic-logs.md) for information.                                                                                                                   | Available                                                                                                                                           |
-| Encryption data at rest                     | Transparent, Server side (coming soon)<ul><li>With service-managed keys</li><li>With customer-managed keys in Azure KeyVault</li></ul>| <ul><li>Transparent, Server side</li> <ul><li>With service-managed keys</li><li>With customer-managed keys in Azure KeyVault (coming soon)</li></ul><li>Client-side encryption</li></ul> |
-| Management operations (e.g. Account Create) | [Role-based access control](../active-directory/role-based-access-control-what-is.md) (RBAC) provided by Azure for account management                                                                       | [Role-based access control](../active-directory/role-based-access-control-what-is.md) (RBAC) provided by Azure for account management                                                                                               |
-| Developer SDKs                              | .NET, Java, Node.js                                                                                                         | .Net, Java, Python, Node.js, C++, Ruby                                                                                                              |
-| Analytics Workload Performance              | Optimized performance for parallel analytics workloads. High Throughput and IOPS.                                           | Not optimized for analytics workloads                                                                                                               |
-| Size limits                                 | No limits on account sizes, file sizes or number of files                                                                   | Specific limits documented [here](../azure-subscription-service-limits.md#storage-limits)                                                                                                                     |
-| Geo-redundancy                              | Locally-redundant (multiple copies of data in one Azure region)                                                             | Locally redundant (LRS), globally redundant (GRS), read-access globally redundant (RA-GRS). See [here](../storage/storage-redundancy.md) for more information |
-| Service state                               | Public Preview                                                                                                              | Generally Available                                                                                                                                 |
-| Regional availability  | See [here](https://azure.microsoft.com/regions/#services)| See [here](https://azure.microsoft.com/regions/#services) |
-| Price                                       |     See [Pricing](https://azure.microsoft.com/pricing/details/data-lake-store/)| See [Pricing](https://azure.microsoft.com/pricing/details/storage/) |
+| Zweck | Optimierter Speicher für Big Data-Analyseworkloads | Universell einsetzbarer Objektspeicher für eine Vielzahl von Speicherszenarien |
+| Anwendungsfälle | Batch-, interaktive Streaming Analytics- und Machine Learning-Daten wie beispielsweise Protokolldateien, IoT-Daten, Clickstreams, große Datasets | Jede Art von Text oder Binärdaten, beispielsweise Daten vom Anwendungs-Back-End, Sicherungsdaten, Medienspeicher für Streaming- und allgemeine Daten |
+| Wichtige Begriffe | Das Data Lake Store-Konto enthält Ordner, die wiederum als Dateien gespeicherte Daten enthalten. | Das Speicherkonto enthält Container, die wiederum Daten in Form von Blobs enthalten. |
+| Strukturdefinition | Hierarchisches Dateisystem | Objektspeicher mit flachem Namespace |
+| API | REST-API über HTTPS | REST-API über HTTP/HTTPS |
+| Serverseitige API | [WebHDFS-kompatible REST-API](https://msdn.microsoft.com/library/azure/mt693424.aspx) | [Azure Blob Storage-REST-API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| Hadoop-Dateisystemclient | Ja | Ja |
+| Datenvorgänge – Authentifizierung | Basierend auf [Azure Active Directory-Identitäten](../active-directory/active-directory-authentication-scenarios.md) | Basierend auf gemeinsamen geheimen Schlüsseln – [Kontozugriffsschlüssel](../storage/storage-create-storage-account.md#manage-your-storage-account) und [Shared Access Signature-Schlüssel](../storage/storage-dotnet-shared-access-signature-part-1.md) |
+| Datenvorgänge – Authentifizierungsprotokoll | OAuth 2.0. Aufrufe müssen ein gültiges, über Azure Active Directory ausgestelltes JWT (JSON Web Token) enthalten. | Hashbasierter Nachrichtenauthentifizierungscode (Hashed Message Authentication Code, HMAC). Aufrufe müssen einen Base64-codierten SHA-256-Hash über einen Teil der HTTP-Anforderung enthalten. |
+| Datenvorgänge – Autorisierung | POSIX-Zugriffssteuerungslisten (ACLs). Auf Azure Active Directory-Identitäten basierende ACLs können auf Datei- und Ordnerebene festgelegt werden. | Für eine Autorisierung auf Kontoebene: Verwenden Sie [Kontozugriffsschlüssel](../storage/storage-create-storage-account.md#manage-your-storage-account)<br>Für eine Konto-, Container- oder Blobautorisierung: Verwenden Sie [Shared Access Signature-Schlüssel](../storage/storage-dotnet-shared-access-signature-part-1.md). |
+| Datenvorgänge – Überwachung | Verfügbar. Weitere Informationen finden Sie [hier](data-lake-store-diagnostic-logs.md). | Verfügbar |
+| Verschlüsselung für ruhende Daten | Transparent, serverseitig (bald verfügbar)<ul><li>Mit vom Dienst verwalteten Schlüsseln</li><li>Mit vom Kunden verwalteten Schlüsseln in Azure Key Vault</li></ul>| <ul><li>Transparent, serverseitig</li> <ul><li>Mit vom Dienst verwalteten Schlüsseln</li><li>Mit vom Kunden verwalteten Schlüsseln in Azure Key Vault (bald verfügbar)</li></ul><li>Clientseitige Verschlüsselung</li></ul> |
+| Verwaltungsvorgänge (z.B. Kontoerstellung) | [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung | [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |
+| Entwickler-SDKs | .NET, Java, Node.js | .Net, Java, Python, Node.js, C++, Ruby |
+| Leistung von Analyseworkloads | Optimierte Leistung für parallele Analyseworkloads. Hoher Durchsatz, hohe IOPS. | Nicht für Analyseworkloads optimiert. |
+| Größenbeschränkungen | Keine Beschränkungen für Kontogrößen, Dateigrößen oder die Anzahl von Dateien. | Die geltenden Einschränkungen sind [hier](../azure-subscription-service-limits.md#storage-limits) dokumentiert. |
+| Georedundanz | Lokal redundant (mehrere Kopien von Daten in einer Azure-Region) | Lokal redundant (LRS), global redundant (GRS), global redundant mit Lesezugriff (RA-GRS). Weitere Informationen finden Sie [hier](../storage/storage-redundancy.md). |
+| Dienstzustand | Öffentliche Vorschau | Allgemein verfügbar |
+| Regionale Verfügbarkeit | Siehe [hier](https://azure.microsoft.com/regions/#services)| Siehe [hier](https://azure.microsoft.com/regions/#services) |
+| Preis | Siehe [Preise](https://azure.microsoft.com/pricing/details/data-lake-store/)| Siehe [Preise](https://azure.microsoft.com/pricing/details/storage/) |
 
-### <a name="next-steps"></a>Next steps
+### Nächste Schritte
 
-- [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-- [Get Started with Data Lake Store](data-lake-store-get-started-portal.md)
+- [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
+- [Erste Schritte mit dem Data Lake-Speicher](data-lake-store-get-started-portal.md)
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

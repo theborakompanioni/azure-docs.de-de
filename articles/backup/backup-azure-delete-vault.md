@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Delete an Azure Backup vault | Microsoft Azure"
-   description="How to delete an Azure Backup vault. Troubleshooting why you can't delete a backup vault. "
+   pageTitle="Löschen eines Azure Backup-Tresors | Microsoft Azure"
+   description="Es wird beschrieben, wie Sie einen Azure Backup-Tresor löschen. Problembehandlung, falls ein Sicherungstresor nicht gelöscht werden kann "
    services="service-name"
    documentationCenter="dev-center-name"
    authors="markgalioto"
@@ -16,238 +16,230 @@
    ms.date="08/29/2016"
    ms.author="markgal;trinadhk"/>
 
+# Löschen eines Azure Backup-Tresors
 
-# <a name="delete-an-azure-backup-vault"></a>Delete an Azure Backup vault
+Der Azure Backup-Dienst umfasst zwei Arten von Tresoren: den Backup-Tresor und den Recovery Services-Tresor. Der Backup-Tresor wurde zuerst eingeführt. Anschließend folgte der Recovery Services-Tresor als Unterstützung für die erweiterten Resource Manager-Bereitstellungen. Aufgrund der erweiterten Funktionen und Informationsabhängigkeiten, die im Tresor gespeichert werden müssen, kann das Löschen eines Recovery Services-Tresors schwierig erscheinen. Dies muss aber nicht der Fall sein.
 
-The Azure Backup service has two types of vaults - the Backup vault and the Recovery Services vault. The Backup vault came first. Then the Recovery Services vault came along to support the expanded Resource Manager deployments. Because of the expanded capabilities and the information dependencies that must be stored in the vault, deleting a Recovery Services vault can seem harder than it has to be.
-
-|**Deployment Type**|**Portal**|**Vault name**|
+|**Bereitstellungstyp**|**Portal**|**Tresorname**|
 |--------------|----------|---------|
-|Classic|Classic|Backup vault|
-|Resource Manager|Azure|Recovery Services vault|
+|Klassisch|Klassisch|Sicherungstresor|
+|Ressourcen-Manager|Azure|Recovery Services-Tresor|
 
 
-> [AZURE.NOTE] Backup vaults cannot protect Resource Manager-deployed solutions. However, you can use a Recovery Services vault to protect classically deployed servers and VMs.  
+> [AZURE.NOTE] Mit Resource Manager bereitgestellte Lösungen können nicht mit einem Sicherungstresor geschützt werden. Sie können einen Recovery Services-Tresor aber zum Schützen von Servern und virtuellen Computern verwenden, die mit dem klassischen Modell bereitgestellt wurden.
 
-In this article, we use the term, vault, to refer to the generic form of the Backup vault or Recovery Services vault. We use the formal name, Backup vault, or Recovery Services vault, when it is necessary to distinguish between the vaults.
+In diesem Artikel verwenden wir den Begriff „Tresor“ für die generische Form des Backup-Tresors bzw. Recovery Services-Tresors. Wir nutzen den formellen Namen „Backup-Tresor“ bzw. „Recovery Services-Tresor“, wenn zwischen den Tresoren unterschieden werden muss.
 
 
 
-## <a name="deleting-a-recovery-services-vault"></a>Deleting a Recovery Services vault
+## Löschen eines Recovery Services-Tresors
 
-Deleting a Recovery Services vault is a one-step process - *provided the vault doesn't contain any resources*. Before you can delete a Recovery Services vault, you must remove or delete all resources in the vault. If you attempt to delete a vault that contains resources, you get an error like the following image.
+Das Löschen eines Recovery Services-Tresors ist ein Prozess, der aus nur einem Schritt besteht – *sofern der Tresor keine Ressourcen enthält*. Bevor Sie einen Recovery Services-Tresor löschen, müssen Sie alle Ressourcen im Tresor entfernen oder löschen. Wenn Sie versuchen, einen Tresor zu löschen, der Ressourcen enthält, erhalten Sie eine Fehlermeldung wie in der folgenden Abbildung.
 
-![Vault deletion error](./media/backup-azure-delete-vault/vault-deletion-error.png) <br/>
+![Fehler beim Löschen des Tresors](./media/backup-azure-delete-vault/vault-deletion-error.png) <br/>
 
-Until you have cleared the resources from the vault, clicking **Retry** produces the same error. If you're stuck on this error message, click **Cancel** and follow the steps below to delete the resources in the Recovery Services vault.
+Beim Klicken auf **Wiederholen** wird so lange der gleiche Fehler angezeigt, bis Sie die Ressourcen aus dem Tresor gelöscht haben. Wenn Sie an dieser Fehlermeldung hängen bleiben, können Sie auf **Abbrechen** klicken und die unten angegebenen Schritte ausführen, um die Ressourcen im Recovery Services-Tresor zu löschen.
 
 
-### <a name="removing-the-items-from-a-vault-protecting-a-vm"></a>Removing the items from a vault protecting a VM
+### Entfernen der Elemente aus einem Tresor zum Schutz einer VM
 
-If you already have the Recovery Services vault open, skip to the second step.
+Wenn Sie den Recovery Services-Tresor bereits geöffnet haben, können Sie zum zweiten Schritt springen.
 
-1.  Open the Azure portal, and from the Dashboard open the vault you want to delete.
+1.  Öffnen Sie das Azure-Portal und dann über das Dashboard den Tresor, den Sie löschen möchten.
 
-    If you don't have the Recovery Services vault pinned to the Dashboard, on the Hub menu, click **More Services** and in the list of resources, type **Recovery Services**. As you begin typing, the list filters based on your input. Click **Recovery Services vaults**.
+    Klicken Sie im Hub-Menü auf **Weitere Dienste**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein, wenn Sie den Recovery Services-Tresor nicht im Dashboard angeheftet haben. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresore**.
 
-    ![Create Recovery Services Vault step 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
+    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-    The list of Recovery Services vaults is displayed. From the list, select the vault you want to delete.
+    Die Liste mit den Recovery Services-Tresoren wird angezeigt. Wählen Sie in der Liste den Tresor aus, den Sie löschen möchten.
 
-    ![choose vault from list](./media/backup-azure-work-with-vaults/choose-vault-to-delete.png)
+    ![Tresor in Liste auswählen](./media/backup-azure-work-with-vaults/choose-vault-to-delete.png)
 
-2. In the vault view, look at the **Essentials** pane. To delete a vault, there cannot be any protected items. If you see a number other than zero, under either **Backup Items** or **Backup management servers**, you must remove those items before you can delete the vault.
+2. Sehen Sie sich in der Tresoransicht den Bereich **Zusammenfassung** an. Wenn ein Tresor gelöscht werden soll, dürfen keine geschützten Elemente vorhanden sein. Falls unter **Sicherungselemente** oder **Sicherungsverwaltungsserver** eine andere Zahl als Null angegeben ist, müssen Sie diese Elemente entfernen, bevor Sie den Tresor löschen können.
 
-    ![Look at Essentials pane for protected items](./media/backup-azure-delete-vault/contoso-bkpvault-settings.png)
+    ![Bereich „Zusammenfassung“ für geschützte Elemente anzeigen](./media/backup-azure-delete-vault/contoso-bkpvault-settings.png)
 
-    VMs and Files/Folders are considered Backup Items, and are listed in the **Backup Items** area of the Essentials pane. A DPM server is listed in the **Backup Management Server** area of the Essentials pane. **Replicated Items** pertain to the Azure Site Recovery service.
+    VMs und Dateien/Ordner werden als Sicherungselemente angesehen und sind im Bereich „Zusammenfassung“ unter **Sicherungselemente** aufgeführt. Ein DPM-Server ist unter „Zusammenfassung“ im Bereich **Sicherungsverwaltungsserver** aufgeführt. **Replizierte Elemente** bezieht sich auf den Azure Site Recovery-Dienst.
 
-3. To begin removing the protected items from the vault, find the items in the vault. In the vault dashboard click **Settings**, and then click **Backup items** to open that blade.
+3. Suchen Sie nach den Elementen im Tresor, um mit dem Entfernen der geschützten Elemente aus dem Tresor zu beginnen. Klicken Sie im Dashboard des Tresors auf **Einstellungen** und dann auf **Sicherungselemente**, um das Blatt zu öffnen.
 
-    ![choose vault from list](./media/backup-azure-delete-vault/open-settings-and-backup-items.png)
+    ![Tresor in Liste auswählen](./media/backup-azure-delete-vault/open-settings-and-backup-items.png)
 
-    The **Backup Items** blade has separate lists, based on the Item Type: Azure Virtual Machines or File-Folders (see image). The default Item Type list shown is Azure Virtual Machines. To view the list of File-Folders items in the vault, select **File-Folders** from the drop-down menu.
+    Das Blatt **Sicherungselemente** enthält separate Listen, die auf dem Elementtyp basieren: „Virtuelle Azure-Computer“ oder „Dateien/Ordner“ (siehe Abbildung). Standardmäßig wird für die Liste „Elementtyp“ die Option „Virtuelle Azure-Computer“ angezeigt. Wählen Sie im Dropdownmenü die Option **Dateien/Ordner**, um die Liste mit den Elementen vom Typ „Dateien/Ordner“ anzuzeigen, die im Tresor enthalten sind.
 
-4. Before you can delete an item from the vault protecting a VM, you must stop the item's backup job and delete the recovery point data. For each item in the vault, follow these steps:
+4. Bevor Sie ein Element aus dem Tresor zum Schutz einer VM löschen können, müssen Sie den Sicherungsauftrag des Elements beenden und die Wiederherstellungspunktdaten löschen. Gehen Sie für jedes Element im Tresor wie folgt vor:
 
-    a. On the **Backup Items** blade, right-click the item, and from the context menu, select **Stop backup**.
+    a. Klicken Sie auf dem Blatt **Sicherungselemente** mit der rechten Maustaste auf das Element, und wählen Sie im Kontextmenü die Option **Sicherung beenden**.
 
-    ![stop the backup job](./media/backup-azure-delete-vault/stop-the-backup-process.png)
+    ![Sicherungsauftrag beenden](./media/backup-azure-delete-vault/stop-the-backup-process.png)
 
-    The Stop Backup blade opens.
+    Das Blatt „Sicherung beenden“ wird geöffnet.
 
-    b. On the **Stop Backup** blade, from the **Choose an option** menu, select **Delete Backup Data** > type the name of the item > and click **Stop backup**.
+    b. Wählen Sie auf dem Blatt **Sicherung beenden** im Menü **Option wählen** die Option **Sicherungsdaten löschen**, geben Sie den Namen des Elements ein, und klicken Sie auf **Sicherung beenden**.
 
-      Type the name of the item to verify you want to delete it. The **Stop Backup** button will not activate until you verify the item to stop. If you do not see the dialog box to type the name of the backup item, you have chosen the **Retain Backup Data** option.
+      Geben Sie den Namen des Elements ein, um zu bestätigen, dass Sie es löschen möchten. Die Schaltfläche **Sicherung beenden** wird erst aktiviert, nachdem Sie das zu beendende Element bestätigt haben. Wenn das Dialogfeld zum Eingeben des Namens eines Sicherungselements nicht angezeigt wird, haben Sie die Option **Sicherungsdaten beibehalten** gewählt.
 
-    ![delete backup data](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-      Optionally, you can provide a reason why you are deleting the data, and add comments. After you click **Stop Backup**, allow the delete job to complete before attempting to delete the vault. To verify that the job has completed, check the Azure Messages ![delete backup data](./media/backup-azure-delete-vault/messages.png). <br/>
-      Once the job is complete, you'll receive a message stating the backup process was stopped and the backup data was deleted for that item.
+      Optional können Sie einen Grund angeben, warum Sie die Daten löschen, und Sie können Kommentare hinzufügen. Warten Sie nach dem Klicken auf **Sicherung beenden** ab, bis der Löschvorgang abgeschlossen ist, und versuchen Sie dann, den Tresor zu löschen. Um zu überprüfen, ob der Vorgang abgeschlossen wurde, können Sie die Azure-Meldungen anzeigen: ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png). <br/> Nach Abschluss des Vorgangs erhalten Sie eine Meldung mit Hinweis, dass der Sicherungsvorgang beendet wurde und die Sicherungsdaten für das Element gelöscht wurden.
 
-    c. After deleting an item in the list, on the **Backup Items** menu, click **Refresh** to see the remaining items in the vault.
+    c. Klicken Sie nach dem Löschen eines Elements aus der Liste auf das Menü **Sicherungselemente** und dann auf **Aktualisieren**, um die restlichen Elemente des Tresors anzuzeigen.
 
-      ![delete backup data](./media/backup-azure-delete-vault/empty-items-list.png)
+      ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/empty-items-list.png)
 
-      When there are no items in the list, scroll to the **Essentials** pane in the Backup vault blade. There shouldn't be any **Backup items**, **Backup management servers**, or **Replicated items** listed. If items still appear in the vault, return to step three above and choose a different item type list.  
+      Scrollen Sie auf dem Blatt „Backup-Tresor“ zum Bereich **Zusammenfassung**, wenn in der Liste keine Elemente enthalten sind. Hier sollten keine **Sicherungselemente**, **Sicherungsverwaltungsserver** oder **Replizierten Elemente** angezeigt werden. Falls für den Tresor weiterhin Elemente angezeigt werden, sollten Sie zu Schritt 3 oben zurückkehren und eine andere Elementtypliste auswählen.
 
-5. When there are no more items in the vault toolbar, click **Delete**.
+5. Klicken Sie auf **Löschen**, wenn in der Symbolleiste des Tresors keine Elemente mehr enthalten sind.
 
-    ![delete backup data](./media/backup-azure-delete-vault/delete-vault.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/delete-vault.png)
 
-6. When asked to verify that you want to delete the vault, click **Yes**.
+6. Klicken Sie auf **Ja**, wenn Sie aufgefordert werden, das Löschen des Tresors zu bestätigen.
 
-    The vault is deleted and the portal returns to the **New** service menu.
+    Der Tresor wird gelöscht, und Sie gelangen im Portal zurück zum Dienstmenü **Neu**.
 
 
-## <a name="what-if-i-stopped-the-backup-process-but-retained-the-data?"></a>What if I stopped the backup process but retained the data?
+## Was passiert, wenn ich den Sicherungsprozess beendet, die Daten aber beibehalten habe?
 
-If you stopped the backup process but accidentally *retained* the data, you must delete the backup data before you can delete the vault. To delete the backup data:
+Wenn Sie den Sicherungsprozess beendet und die Daten versehentlich *beibehalten* haben, müssen Sie die Sicherungsdaten löschen, bevor Sie den Tresor löschen können. So löschen Sie die gesicherten Daten
 
-1. On the **Backup Items** blade, right-click the item, and on the context menu click **Delete backup data**.
+1. Klicken Sie auf dem Blatt **Sicherungselemente** mit der rechten Maustaste auf das Element, und klicken Sie dann im Kontextmenü auf **Sicherungsdaten löschen**.
 
-    ![delete backup data](./media/backup-azure-delete-vault/delete-backup-data-menu.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/delete-backup-data-menu.png)
 
-    The **Delete Backup Data** blade opens.
+    Das Blatt **Sicherungsdaten löschen** wird geöffnet.
 
-2. On the **Delete Backup Data** blade, type the name of the item, and click **Delete**.
+2. Geben Sie auf dem Blatt **Sicherungsdaten löschen** den Namen des Elements ein, und klicken Sie auf **Löschen**.
 
-    ![delete backup data](./media/backup-azure-delete-vault/delete-retained-vault.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/delete-retained-vault.png)
 
-    Once you have deleted the data, go to step 4c, above, and continue with the process.
+    Springen Sie nach dem Löschen der Daten oben zu Schritt 4c, und setzen Sie den Vorgang fort.
 
-## <a name="delete-a-vault-used-to-protect-a-dpm-server"></a>Delete a vault used to protect a DPM server
+## Löschen eines Tresors zum Schutz eines DPM-Servers
 
-Before you can delete a vault used to protect a DPM server, you must clear any recovery points that have been created, and then unregister the server from the vault.
+Bevor Sie einen Tresor löschen können, der als Schutz für einen DPM-Server verwendet wird, müssen Sie alle erstellten Wiederherstellungspunkte löschen und anschließend die Registrierung des Servers für den Tresor aufheben.
 
-To delete the data associated with a protection group:
+So löschen Sie die Daten, die einer Schutzgruppe zugeordnet sind
 
-1. In the DPM Administrator Console, click **Protection**, select a protection group, select the Protection Group Member, and in the tool ribbon click **Remove**. You must select the member for the **Remove** button to appear in the tool ribbon. In the example, the member is **dummyvm9**. If there are multiple members in the protection group, hold down the Ctrl key to select multiple members.
+1. Klicken Sie in der DPM-Verwaltungskonsole auf **Schutz**, wählen Sie eine Schutzgruppe, wählen Sie ein Schutzgruppenmitglied, und klicken Sie im Menüband des Tools auf **Entfernen**. Sie müssen das Mitglied auswählen, damit die Schaltfläche **Entfernen** im Menüband des Tools angezeigt wird. Im Beispiel lautet der Name des Mitglieds **dummyvm9**. Halten Sie die STRG-TASTE gedrückt, um mehrere Mitglieder auszuwählen, falls die Schutzgruppe mehrere Mitglieder enthält.
 
-    ![delete backup data](./media/backup-azure-delete-vault/az-portal-delete-protection-group.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/az-portal-delete-protection-group.png)
 
-    The **Stop Protection** dialog opens.
+    Das Dialogfeld **Schutz beenden** wird geöffnet.
 
-2. In the **Stop Protection** dialog, select **Delete protected data**, and click **Stop Protection**.
+2. Wählen Sie im Dialogfeld **Schutz beenden** die Option **Geschützte Daten löschen**, und klicken Sie auf **Schutz beenden**.
 
-    ![delete backup data](./media/backup-azure-delete-vault/delete-dpm-protection-group.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/delete-dpm-protection-group.png)
 
-    You don't want to retain protected data because you need to clear the vault in order to delete it. Depending on how many recovery points and how much data is in the protection group, it may take anywhere from a few seconds to a few minutes to delete the data. The **Stop Protection** dialog shows the status when the job has completed.
+    Sie sollten keine geschützten Daten beibehalten, da Sie den Tresor bereinigen müssen, um ihn löschen zu können. Je nachdem, wie viele Wiederherstellungspunkte und Daten in der Schutzgruppe enthalten sind, kann es einige Sekunden oder auch einige Minuten dauern, bis die Daten gelöscht wurden. Im Dialogfeld **Schutz beenden** wird der Status angezeigt, nachdem der Vorgang abgeschlossen wurde.
 
-    ![delete backup data](./media/backup-azure-delete-vault/success-deleting-protection-group.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/success-deleting-protection-group.png)
 
-3. Continue this process for all members in all protection groups.
+3. Setzen Sie diesen Vorgang für alle Mitglieder in allen Schutzgruppen fort.
 
-    You must remove all protected data, and the protection group(s).
+    Sie müssen alle geschützten Daten und die Schutzgruppe(n) entfernen.
 
-4. After deleting all members from the protection group, switch to the Azure portal. Open the vault dashboard, and make sure there are no **Backup Items**, **Backup management servers**, or **Replicated items**. On the vault toolbar, click **Delete**.
+4. Wechseln Sie nach dem Löschen aller Mitglieder aus der Schutzgruppe zum Azure-Portal. Öffnen Sie das Dashboard des Tresors, und stellen Sie sicher, dass keine **Sicherungselemente**, **Sicherungsverwaltungsserver** oder **Replizierten Elemente** vorhanden sind. Klicken Sie auf der Symbolleiste des Tresors auf **Löschen**.
 
-    ![delete backup data](./media/backup-azure-delete-vault/delete-vault.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/delete-vault.png)
 
-    If there are Backup management servers registered to the vault, you won't be able to delete the vault even if there is no data in the vault. If you thought you'd deleted the Backup management servers associated with the vault, but there are still servers showing in the **Essentials** pane, see [Find the Backup management servers registered to the vault](backup-azure-delete-vault.md#find-the-backup-management-servers-registered-to-the-vault).
+    Wenn für den Tresor Sicherungsverwaltungsserver registriert wurden, können Sie den Tresor auch dann nicht löschen, wenn er keine Daten enthält. Wenn Sie der Meinung sind, dass Sie die Sicherungsverwaltungsserver des Tresors gelöscht haben, und im Bereich **Zusammenfassung** trotzdem noch Server angezeigt werden, helfen Ihnen die Informationen unter [Suchen nach Sicherungsverwaltungsservern, die für den Tresor registriert sind](backup-azure-delete-vault.md#find-the-backup-management-servers-registered-to-the-vault) weiter.
 
-5. When asked to verify that you want to delete the vault, click **Yes**.
+5. Klicken Sie auf **Ja**, wenn Sie aufgefordert werden, das Löschen des Tresors zu bestätigen.
 
-    The vault is deleted and the portal returns to the **New** service menu.
+    Der Tresor wird gelöscht, und Sie gelangen im Portal zurück zum Dienstmenü **Neu**.
 
 
-## <a name="delete-a-vault-used-to-protect-a-production-server"></a>Delete a vault used to protect a Production server
+## Löschen eines Tresors zum Schutz eines Produktionsservers
 
-Before you can delete a vault used to protect a Production server, you must delete or unregister the server from the vault.
+Bevor Sie einen Tresor löschen können, der als Schutz für einen Produktionsserver verwendet wird, müssen Sie den Server löschen oder seine Registrierung für den Tresor aufheben.
 
-To delete the Production server associated with the vault:
+So löschen Sie den Produktionsserver, der dem Tresor zugeordnet ist
 
-1. In the Azure portal, open the vault dashboard and click **Settings** > **Backup Infrastructure** > **Production Servers**.
+1. Öffnen Sie im Azure-Portal das Dashboard des Tresors, und klicken Sie auf **Einstellungen** > **Sicherungsinfrastruktur** > **Produktionsserver**.
 
-    ![open Production Servers blade](./media/backup-azure-delete-vault/delete-production-server.png)
+    ![Blatt „Produktionsserver“ öffnen](./media/backup-azure-delete-vault/delete-production-server.png)
 
-    The **Production Servers** blade opens and lists all Production servers in the vault.
+    Das Blatt **Produktionsserver** wird geöffnet und enthält eine Liste mit allen Produktionsservern des Tresors.
 
-    ![list of Production Servers](./media/backup-azure-delete-vault/list-of-production-servers.png)
+    ![Liste mit Produktionsservern](./media/backup-azure-delete-vault/list-of-production-servers.png)
 
-2. On the **Production Servers** blade, right-click on the server, and click **Delete**.
+2. Klicken Sie auf dem Blatt **Produktionsserver** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
 
-    ![delete production server ](./media/backup-azure-delete-vault/delete-server-on-production-server-blade.png)
+    ![Produktionsserver löschen](./media/backup-azure-delete-vault/delete-server-on-production-server-blade.png)
 
-    The **Delete** blade opens.
+    Das Blatt **Löschen** wird geöffnet.
 
-    ![delete production server ](./media/backup-azure-delete-vault/delete-blade.png)
+    ![Produktionsserver löschen](./media/backup-azure-delete-vault/delete-blade.png)
 
-3. On the **Delete** blade, confirm the name of the server to delete and click **Delete**. You must correctly enter the name of the server to activate the **Delete** button.
+3. Bestätigen Sie auf dem Blatt **Löschen** den Namen des Servers, der gelöscht werden soll, und klicken Sie auf **Löschen**. Sie müssen den Namen des Servers richtig eingeben, um die Schaltfläche **Löschen** zu aktivieren.
 
-    Once the vault has been deleted, you'll receive a message stating the vault has been deleted. After deleting all servers in the vault, scroll back to the Essentials pane in the vault dashboard.
+    Nachdem der Tresor gelöscht wurde, erhalten Sie eine Meldung mit dem Hinweis, dass der Tresor gelöscht wurde. Scrollen Sie nach dem Löschen aller Server des Tresors zurück zum Bereich „Zusammenfassung“ des Tresor-Dashboards.
 
-4. In the vault dashboard, make sure there are no **Backup Items**, **Backup management servers**, or **Replicated items**. On the vault toolbar, click **Delete**.
+4. Stellen Sie im Dashboard des Tresors sicher, dass keine **Sicherungselemente**, **Sicherungsverwaltungsserver** oder **Replizierten Elemente** vorhanden sind. Klicken Sie auf der Symbolleiste des Tresors auf **Löschen**.
 
-5. When asked to verify that you want to delete the vault, click **Yes**.
+5. Klicken Sie auf **Ja**, wenn Sie aufgefordert werden, das Löschen des Tresors zu bestätigen.
 
-    The vault is deleted and the portal returns to the **New** service menu.
+    Der Tresor wird gelöscht, und Sie gelangen im Portal zurück zum Dienstmenü **Neu**.
 
 
-## <a name="delete-a-backup-vault"></a>Delete a Backup vault
+## Löschen eines Backup-Tresors
 
-The following instructions are for deleting a Backup vault in the classic portal. A Backup vault and Recovery Services vault are the same: before you can delete the vault, delete the items and the retained data.
+Die folgende Anleitung gilt für das Löschen eines Backup-Tresors im klassischen Portal. Sowohl für einen Backup-Tresor als auch für einen Recovery Services-Tresor gilt: Bevor Sie den Tresor löschen können, müssen Sie die Elemente und die beibehaltenen Daten löschen.
 
-1. Open the Classic portal.
+1. Öffnen Sie das klassische Portal.
 
-2. From the list of backup vaults, select the vault you want to delete.
+2. Wählen Sie in der Liste mit den Sicherungstresoren den Tresor aus, den Sie löschen möchten.
 
-    ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-open-vault.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/classic-portal-delete-vault-open-vault.png)
 
-    The vault dashboard opens. Look at the number of Windows Servers and/or Azure virtual machines associated with the vault. Also, look at the total storage consumed in Azure. You'll need to stop any backup jobs and delete existing data before deleting the vault.
+    Das Dashboard des Tresors wird geöffnet. Sehen Sie sich die Anzahl von Windows-Servern und virtuellen Azure-Computern an, die dem Tresor zugeordnet sind. Sehen Sie sich auch die Gesamtmenge des verbrauchten Speichers an. Sie müssen alle Sicherungsaufträge beenden und die vorhandenen Daten löschen, bevor Sie den Tresor löschen können.
 
-3. Click the **Protected Items** tab, and then click **Stop Protection**
+3. Klicken Sie auf die Registerkarte **Geschützte Elemente** und dann auf **Schutz beenden**.
 
-    ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-stop-protect.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/classic-portal-delete-vault-stop-protect.png)
 
-    The **Stop protection of 'your vault'** dialog appears.
+    Das Dialogfeld **Schutz von „Ihr Tresor“ beenden** wird angezeigt.
 
-4. In the **Stop protection of 'your vault'** dialog, check **Delete associated backup data** and click ![checkmark](./media/backup-azure-delete-vault/checkmark.png). <br/>
-    Optionally, you can choose a reason for stopping protection, and provide a comment.
+4. Aktivieren Sie im Dialogfeld **Schutz von „Ihr Tresor“ beenden** das Kontrollkästchen **Zugehörige Sicherungsdaten löschen**, und klicken Sie auf ![Häkchen](./media/backup-azure-delete-vault/checkmark.png). <br/> Optional können Sie einen Grund für das Beenden des Schutzes auswählen und einen Kommentar angeben.
 
-    ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-verify-stop-protect.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/classic-portal-delete-vault-verify-stop-protect.png)
 
-    After deleting the items in the vault, the vault will be empty.
+    Nach dem Löschen der Elemente im Tresor ist der Tresor leer.
 
-    ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-post-delete-data.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/classic-portal-delete-vault-post-delete-data.png)
 
-5. In the list of tabs, click **Registered Items**. For each item registered in the vault, select the item, and click **Unregister**.
+5. Klicken Sie in der Liste mit den Registerkarten auf **Registrierte Elemente**. Wählen Sie ein im Tresor registriertes Element jeweils aus, und klicken Sie auf **Registrierung aufheben**.
 
-    ![delete backup data](./media/backup-azure-delete-vault/classic-portal-unregister.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/classic-portal-unregister.png)
 
-6. In the list of tabs, click **Dashboard** to open that tab. Verify there are no registered servers or Azure virtual machines protected in the cloud. Also, verify there is no data in storage. Click **Delete** to delete the vault.
+6. Klicken Sie in der Liste mit den Registerkarten auf **Dashboard**, um die Registerkarte zu öffnen. Stellen Sie sicher, dass in der Cloud keine registrierten Server oder virtuellen Azure-Computer geschützt sind. Vergewissern Sie sich auch, dass im Speicher keine Daten enthalten sind. Klicken Sie auf **Löschen**, um den Tresor zu löschen.
 
-    ![delete backup data](./media/backup-azure-delete-vault/classic-portal-list-of-tabs-dashboard.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/classic-portal-list-of-tabs-dashboard.png)
 
-    The Delete Backup vault confirmation screen opens. Select an option why you're deleting the vault, and click ![checkmark](./media/backup-azure-delete-vault/checkmark.png). <br/>
+    Der Bestätigungsbildschirm „Sicherung löschen“ des Tresors wird geöffnet. Wählen Sie einen Grund für das Löschen des Tresors aus, und klicken Sie auf ![Häkchen](./media/backup-azure-delete-vault/checkmark.png). <br/>
 
-    ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-confirmation-1.png)
+    ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/classic-portal-delete-vault-confirmation-1.png)
 
-    The vault is deleted, and you return to the classic portal dashboard.
+    Der Tresor wird gelöscht, und Sie gelangen zurück zum Dashboard des klassischen Portals.
 
-### <a name="find-the-backup-management-servers-registered-to-the-vault"></a>Find the Backup Management servers registered to the vault
+### Suchen nach Sicherungsverwaltungsservern, die für den Tresor registriert sind
 
-If you have multiple servers registered to a vault, it can be difficult to remember them. To see the servers registered to the vault, and delete them:
+Wenn Sie für einen Tresor mehrere Server registriert haben, kann es schwierig sein, alle im Kopf zu behalten. So zeigen Sie die für den Tresor registrierten Server an und löschen sie
 
-1. Open the vault dashboard.
+1. Öffnen Sie das Dashboard des Tresors.
 
-2. In the **Essentials** pane, click **Settings** to open that blade.
+2. Klicken Sie im Bereich **Zusammenfassung** auf **Einstellungen**, um das entsprechende Blatt zu öffnen.
 
-    ![open settings blade](./media/backup-azure-delete-vault/backup-vault-click-settings.png)
+    ![Blatt „Einstellungen“ öffnen](./media/backup-azure-delete-vault/backup-vault-click-settings.png)
 
-3. On the **Settings blade**, click **Backup Infrastructure**.
+3. Klicken Sie auf dem Blatt **Einstellungen** auf **Sicherungsinfrastruktur**.
 
-4. On the **Backup Infrastructure** blade, click **Backup Management Servers**. The Backup Management Servers blade opens.
+4. Klicken Sie auf dem Blatt **Sicherungsinfrastruktur** auf **Sicherungsverwaltungsserver**. Das Blatt „Sicherungsverwaltungsserver“ wird geöffnet.
 
-    ![list of backup management servers](./media/backup-azure-delete-vault/list-of-backup-management-servers.png)
+    ![Liste mit Sicherungsverwaltungsservern](./media/backup-azure-delete-vault/list-of-backup-management-servers.png)
 
-5. To delete a server from the list, right-click the name of the server and then click **Delete**.
-    The **Delete** blade opens.
+5. Klicken Sie mit der rechten Maustaste auf den Namen des Servers, und klicken Sie dann auf **Löschen**, um einen Server aus der Liste zu löschen. Das Blatt **Löschen** wird geöffnet.
 
-6. On the **Delete** blade, provide the name of the server. If it is a long name, you can copy and paste it from the list of Backup Management Servers. Then click **Delete**.  
+6. Geben Sie auf dem Blatt **Löschen** den Namen des Servers an. Wenn es sich um einen langen Namen handelt, können Sie ihn auch in der Liste mit den Sicherungsverwaltungsservern kopieren und einfügen. Klicken Sie dann auf **Löschen**.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

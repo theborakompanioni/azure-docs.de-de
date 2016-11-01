@@ -1,239 +1,238 @@
 <properties
-    pageTitle="Upload data for Hadoop jobs in HDInsight | Microsoft Azure"
-    description="Learn how to upload and access data for Hadoop jobs in HDInsight using the Azure CLI, Azure Storage Explorer, Azure PowerShell, the Hadoop command line, or Sqoop."
-    services="hdinsight,storage"
-    documentationCenter=""
-    tags="azure-portal"
-    authors="mumian"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="Hochladen von Daten für Hadoop-Aufträge in HDInsight | Microsoft Azure"
+	description="Erfahren Sie, wie Sie Daten für Hadoop-Aufträge in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle, Azure-Speicher-Explorer, Azure PowerShell, der Hadoop-Befehlszeile oder Sqoop hochladen und abrufen können."
+	services="hdinsight,storage"
+	documentationCenter=""
+	tags="azure-portal"
+	authors="mumian"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/10/2016"
-    ms.author="jgao"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/10/2016"
+	ms.author="jgao"/>
 
 
 
+#Hochladen von Daten für Hadoop-Aufträge in HDInsight
 
-#<a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Upload data for Hadoop jobs in HDInsight
+Azure HDInsight stellt über Azure-BLOB-Speicher ein Hadoop Distributed File System (HDFS) mit vollem Funktionsumfang zur Verfügung. Es ist als eine HDFS-Erweiterung konzipiert, die eine nahtlose Benutzererfahrung bietet. Der vollständige Satz von Komponenten im Hadoop-Ökosystem kann direkt mit den verwalteten Daten verwendet werden. Azure-BLOB-Speicher und HDFS sind unterschiedliche Dateisysteme, die jeweils für die Datenspeicherung und Berechnungen dieser Daten optimiert sind. Die Vorteile der Verwendung von Azure-BLOB-Speicher werden unter [Verwenden von Azure-BLOB-Speicher mit HDInsight][hdinsight-storage] beschrieben.
 
-Azure HDInsight provides a full-featured Hadoop distributed file system (HDFS) over Azure Blob storage. It is designed as an HDFS extension to provide a seamless experience to customers. It enables the full set of components in the Hadoop ecosystem to operate directly on the data it manages. Azure Blob storage and HDFS are distinct file systems that are optimized for storage of data and computations on that data. For information about the benefits of using Azure Blob storage, see [Use Azure Blob storage with HDInsight][hdinsight-storage].
+**Voraussetzungen**
 
-**Prerequisites**
+Beachten Sie die folgenden Voraussetzungen, bevor Sie beginnen:
 
-Note the following requirement before you begin:
+* Ein Azure HDInsight-Cluster. Anweisungen finden Sie unter [Erste Schritte mit Azure HDInsight][hdinsight-get-started] or [Bereitstellen eines HDInsight-Clusters][hdinsight-provision].
 
-* An Azure HDInsight cluster. For instructions, see [Get started with Azure HDInsight][hdinsight-get-started] or [Provision HDInsight clusters][hdinsight-provision].
+##Warum Blob-Speicher?
 
-##<a name="why-blob-storage?"></a>Why blob storage?
+Azure HDInsight-Cluster werden in der Regel bereitgestellt, um MapReduce-Aufträge auszuführen. Die Cluster werden gelöscht, sobald diese Aufträge abgeschlossen sind. Nachdem die Berechnungen erfolgt sind, wäre es zu teuer, diese Daten weiterhin in den HDFS-Clustern zu speichern. Der Azure-BLOB-Speicher ist eine hoch skalierbare und verfügbare, kostengünstige und freigabefähige Speicheroption mit hoher Kapazität für Daten, die mit HDInsight verarbeitet werden sollen. Das Speichern von Daten in einem Blob sorgt dafür, dass die für Berechnungen verwendeten HDInsight-Cluster sicher freigegeben werden können, ohne Daten zu verlieren.
 
-Azure HDInsight clusters are typically deployed to run MapReduce jobs, and the clusters are dropped after these jobs complete. Keeping the data in the HDFS clusters after computations are complete would be an expensive way to store this data. Azure Blob storage is a highly available, highly scalable, high capacity, low cost, and shareable storage option for data that is to be processed using HDInsight. Storing data in a blob enables the HDInsight clusters that are used for computation to be safely released without losing data.
+###Verzeichnisse
 
-###<a name="directories"></a>Directories
+In Azure-BLOB-Speichercontainern werden Daten als Schlüssel-Wert-Paare gespeichert, und es gibt keine Verzeichnishierarchie. Allerdings kann im Schlüsselnamen das Zeichen '/' verwendet werden, damit es so aussieht, als wäre eine Datei in einer Verzeichnisstruktur gespeichert. HDInsight betrachtet diese Schlüsselnamen, als wären es tatsächliche Verzeichnisse.
 
-Azure Blob storage containers store data as key/value pairs, and there is no directory hierarchy. However the "/" character can be used within the key name to make it appear as if a file is stored within a directory structure. HDInsight sees these as if they are actual directories.
+Der Schlüssel eines Blobs kann z. B. *input/log1.txt* heißen. Das Verzeichnis 'input' existiert zwar nicht, wegen des Zeichens '/' im Schlüsselnamen sieht es jedoch so aus, als gäbe es einen Dateipfad.
 
-For example, a blob's key may be *input/log1.txt*. No actual "input" directory exists, but due to the presence of the "/" character in the key name, it has the appearance of a file path.
+Daher werden in den Azure Explorer-Tools möglicherweise einige Dateien mit 0 Byte angezeigt. Diese Dateien dienen zwei Zwecken:
 
-Because of this, if you use Azure Explorer tools you may notice some 0 byte files. These files serve two purposes:
+- Bei leeren Ordnern markieren sie das Vorhandensein der Ordner. Azure-BLOB-Speicher erkennt, dass es bei Vorhandensein eines Blobs mit dem Namen "foo/bar" einen Ordner namens **foo** gibt. Soll es jedoch einen leeren Ordner namens **foo** geben, kann dieser nur mit der speziellen 0-Byte-Datei bezeichnet werden.
 
-- If there are empty folders, they mark of the existence of the folder. Azure Blob storage is clever enough to know that if a blob called foo/bar exists, there is a folder called **foo**. But the only way to signify an empty folder called **foo** is by having this special 0 byte file in place.
+- Diese Dateien enthalten einige spezielle vom Hadoop-Dateisystem benötigte Metadaten, insbesondere die Berechtigungen und Eigentümer der Ordner.
 
-- They hold special metadata that is needed by the Hadoop file system, notably the permissions and owners for the folders.
+##Befehlszeilenprogramme
 
-##<a name="command-line-utilities"></a>Command-line utilities
-
-Microsoft provides the following utilities to work with Azure Blob storage:
+Microsoft bietet die folgenden Hilfsprogramme für die Verwendung mit dem Azure-Blob-Speicher:
 
 | Tool | Linux | OS X | Windows |
 | ---- |:-----:|:----:|:-------:|
-| [Azure Command-Line Interface][azurecli] | ✔ | ✔ | ✔ |
+| [Azure-Befehlszeilenschnittstelle][azurecli] | ✔ | ✔ | ✔ |
 | [Azure PowerShell][azure-powershell] | | | ✔ |
 | [AzCopy][azure-azcopy] | | | ✔ |
-| [Hadoop command](#commandline) | ✔ | ✔ | ✔ |
+| [Hadoop-Befehl](#commandline) | ✔ | ✔ | ✔ |
 
-> [AZURE.NOTE] While the Azure CLI, Azure PowerShell, and AzCopy can all be used from outside Azure, the Hadoop command is only available on the HDInsight cluster and only allows loading data from the local file system into Azure Blob storage.
+> [AZURE.NOTE] Während die Azure-Befehlszeilenschnittstelle, Azure PowerShell und AzCopy von außerhalb von Azure verwendet werden können, ist der Hadoop-Befehl nur im HDInsight-Cluster verfügbar, außerdem lässt er nur das Laden von Daten aus dem lokalen Dateisystem in den Azure-Blob-Speicher zu.
 
-###<a name="<a-id="xplatcli"></a>azure-cli"></a><a id="xplatcli"></a>Azure CLI
+###<a id="xplatcli"></a>Azure-Befehlszeilenschnittstelle
 
-The Azure CLI is a cross-platform tool that allows you to manage Azure services. Use the following steps to upload data to Azure Blob storage:
+Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool zur Verwaltung von Azure-Diensten. Verwenden Sie die folgenden Schritte zum Hochladen von Daten in Azure-BLOB-Speicher:
 
 [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-1. [Install and configure the Azure CLI for Mac, Linux and Windows](../xplat-cli-install.md).
+1. [Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows](../xplat-cli-install.md).
 
-2. Open a command prompt, bash, or other shell, and use the following to authenticate to your Azure subscription.
+2. Öffnen Sie eine Eingabeaufforderung, Bash oder eine andere Shell, und authentifizieren Sie Ihr Azure-Abonnement wie folgt.
 
-        azure login
+		azure login
 
-    When prompted, enter the user name and password for your subscription.
+	Geben Sie nach Aufforderung den Benutzernamen und das Kennwort für Ihr Abonnement ein.
 
-3. Enter the following command to list the storage accounts for your subscription:
+3. Geben Sie den folgenden Befehl ein, um die Speicherkonten für Ihr Abonnement aufzulisten:
 
-        azure storage account list
+		azure storage account list
 
-4. Select the storage account that contains the blob you want to work with, then use the following command to retrieve the key for this account:
+4. Wählen Sie das Speicherkonto mit dem zu verwendenden Blob aus, und rufen Sie mit dem folgenden Befehl den Schlüssel für dieses Konto ab:
 
-        azure storage account keys list <storage-account-name>
+		azure storage account keys list <storage-account-name>
 
-    This should return **Primary** and **Secondary** keys. Copy the **Primary** key value because it will be used in the next steps.
+	Damit sollten der **primäre** und der **sekundäre** Schlüssel zurückgegeben werden. Kopieren Sie den Wert des **primären** Schlüssels für die Verwendung in den nächsten Schritten.
 
-5. Use the following command to retrieve a list of blob containers within the storage account:
+5. Rufen Sie mit dem folgenden Befehl eine Liste der Blobcontainer im Speicherkonto ab:
 
-        azure storage container list -a <storage-account-name> -k <primary-key>
+		azure storage container list -a <storage-account-name> -k <primary-key>
 
-6. Use the following commands to upload and download files to the blob:
+6. Verwenden Sie die folgenden Befehle zum Hoch- und Herunterladen von Dateien im Blob:
 
-    * To upload a file:
+	* So laden Sie eine Datei hoch:
 
-            azure storage blob upload -a <storage-account-name> -k <primary-key> <source-file> <container-name> <blob-name>
+			azure storage blob upload -a <storage-account-name> -k <primary-key> <source-file> <container-name> <blob-name>
 
-    * To download a file:
+	* So laden Sie eine Datei herunter:
 
-            azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
+			azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
 
-> [AZURE.NOTE] If you will always be working with the same storage account, you can set the following environment variables instead of specifying the account and key for every command:
+> [AZURE.NOTE] Wenn Sie immer mit demselben Speicherkonto arbeiten, können die folgenden Umgebungsvariablen festlegen, anstatt das Konto und den Schlüssel für jeden Befehl anzugeben:
 >
-> * **AZURE\_STORAGE\_ACCOUNT**: The storage account name
+> * **AZURE\_STORAGE\_ACCOUNT**: der Name des Speicherkontos
 >
-> * **AZURE\_STORAGE\_ACCESS\_KEY**: The storage account key
+> * **AZURE\_STORAGE\_ACCESS\_KEY**: der Speicherkontoschlüssel
 
-###<a name="<a-id="powershell"></a>azure-powershell"></a><a id="powershell"></a>Azure PowerShell
+###<a id="powershell"></a>Azure PowerShell
 
-Azure PowerShell is a scripting environment that you can use to control and automate the deployment and management of your workloads in Azure. For information about configuring your workstation to run Azure PowerShell, see [Install and configure Azure PowerShell](../powershell-install-configure.md).
+Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Workloads in Azure steuern und automatisieren können. Informationen zum Konfigurieren der Arbeitsstation für die Ausführung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
-**To upload a local file to Azure Blob storage**
+**So laden Sie eine lokale Datei in den Azure-Blobspeicher hoch**
 
-1. Open the Azure PowerShell console as instructed in [Install and configure Azure PowerShell](../powershell-install-configure.md).
-2. Set the values of the first five variables in the following script:
+1. Öffnen Sie die Azure PowerShell-Konsole entsprechend den Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+2. Legen Sie die Werte der ersten fünf Variablen im folgenden Skript fest:
 
-        $resourceGroupName = "<AzureResourceGroupName>"
-        $storageAccountName = "<StorageAccountName>"
-        $containerName = "<ContainerName>"
+		$resourceGroupName = "<AzureResourceGroupName>"
+		$storageAccountName = "<StorageAccountName>"
+		$containerName = "<ContainerName>"
 
-        $fileName ="<LocalFileName>"
-        $blobName = "<BlobName>"
+		$fileName ="<LocalFileName>"
+		$blobName = "<BlobName>"
 
-        # Get the storage account key
-        $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName)[0].Value
-        # Create the storage context object
-        $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
+		# Get the storage account key
+		$storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName)[0].Value
+		# Create the storage context object
+		$destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
 
-        # Copy the file from local workstation to the Blob container
-        Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob $blobName -context $destContext
+		# Copy the file from local workstation to the Blob container
+		Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob $blobName -context $destContext
 
-3. Paste the script into the Azure PowerShell console to run it to copy the file.
+3. Fügen Sie das Skript in die Azure PowerShell-Konsole ein, um es auszuführen und die Datei zu kopieren.
 
-For example PowerShell scripts created to work with HDInsight, see [HDInsight tools](https://github.com/blackmist/hdinsight-tools).
+PowerShell-Skripts, die für die Verwendung mit HDInsight erstellt wurden, finden Sie z. B. unter [HDInsight-Tools](https://github.com/blackmist/hdinsight-tools).
 
-###<a name="<a-id="azcopy"></a>azcopy"></a><a id="azcopy"></a>AzCopy
+###<a id="azcopy"></a>AzCopy
 
-AzCopy is a command-line tool that is designed to simplify the task of transferring data into and out of an Azure Storage account. You can use it as a standalone tool or incorporate this tool in an existing application. [Download AzCopy][azure-azcopy-download].
+AzCopy ist ein Befehlszeilenprogramm, das den Austausch von Daten mit einem Azure Storage-Konto vereinfachen soll. Sie können dieses Dienstprogramm als eigenständiges Tool verwenden oder in eine vorhandene Anwendung integrieren. [AzCopy herunterladen][azure-azcopy-download].
 
-The AzCopy syntax is:
+Die AzCopy-Syntax lautet folgendermaßen:
 
-    AzCopy <Source> <Destination> [filePattern [filePattern...]] [Options]
+	AzCopy <Source> <Destination> [filePattern [filePattern...]] [Options]
 
-For more information, see [AzCopy - Uploading/Downloading files for Azure Blobs][azure-azcopy].
+Weitere Informationen finden Sie unter [AzCopy – Hochladen/Herunterladen von Dateien für Azure-Blobs][azure-azcopy].
 
 
-###<a name="<a-id="commandline"></a>hadoop-command-line"></a><a id="commandline"></a>Hadoop command line
+###<a id="commandline"></a>Hadoop-Befehlszeile
 
-The Hadoop command line is only useful for storing data into blob storage when the data is already present on the cluster head node.
+Die Hadoop-Befehlszeile eignet sich nur zum Speichern von Daten im Blob-Speicher, wenn die Daten bereits auf dem Hauptknoten des Clusters vorhanden sind.
 
-In order to use the Hadoop command, you must first connect to the headnode using one of the following methods:
+Um den Hadoop-Befehl verwenden zu können, müssen Sie zunächst mithilfe einer der folgenden Methoden eine Verbindung zum Hauptknoten herstellen:
 
-* **Windows-based HDInsight**: [Connect using Remote Desktop](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)
+* **HDInsight (Windows-basiert)**: [Herstellen einer Verbindung mithilfe von Remotedesktop](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)
 
-* **Linux-based HDInsight**: Connect using SSH ([the SSH command](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster) or [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster))
+* **HDInsight (Linux-basiert)**: Herstellen einer Verbindung mithilfe von SSH ([SSH-Befehl](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster) oder [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster))
 
-Once connected, you can use the following syntax to upload a file to storage.
+Nachdem die Verbindung hergestellt wurde, verwenden Sie die folgende Syntax, um eine Datei in den Speicher hochzuladen.
 
-    hadoop -copyFromLocal <localFilePath> <storageFilePath>
+	hadoop -copyFromLocal <localFilePath> <storageFilePath>
 
-For example, `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
+Beispiel: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
-Because the default file system for HDInsight is in Azure Blob storage, /example/data.txt is actually in Azure Blob storage. You can also refer to the file as:
+Da sich das Standarddateisystem für HDInsight im Azure-Blob-Speicher befindet, befindet sich die Datei "/example/data.txt" auch tatsächlich im Azure-Blob-Speicher. Sie können auch folgendermaßen auf die Datei verweisen:
 
-    wasbs:///example/data/data.txt
+	wasbs:///example/data/data.txt
 
-or
+oder
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+	wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-For a list of other Hadoop commands that work with files, see [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Eine Liste weiterer Hadoop-Befehle für die Arbeit mit Dateien finden Sie unter [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html).
 
-##<a name="graphical-clients"></a>Graphical clients
+##Clients mit grafischer Benutzeroberfläche
 
-There are also several applications that provide a graphical interface for working with Azure Storage. The following is a list of a few of these applications:
+Es gibt auch einige Anwendungen, die eine grafische Benutzeroberfläche für die Arbeit mit Azure Storage bereitstellen. Im Folgenden sind einige dieser Anwendungen aufgelistet:
 
-| Client | Linux | OS X | Windows |
+| Client- | Linux | OS X | Windows |
 | ------ |:-----:|:----:|:-------:|
-| [Microsoft Visual Studio Tools for HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) | ✔ | ✔ | ✔ |
-| [Azure Storage Explorer](http://storageexplorer.com/) | ✔ | ✔ | ✔ |
+| [Microsoft Visual Studio-Tools für HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) | ✔ | ✔ | ✔ |
+| [Azure-Speicher-Explorer](http://storageexplorer.com/) | ✔ | ✔ | ✔ |
 | [Cloud Storage Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | | ✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | | ✔ |
 | [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | | ✔ |
-| [Cyberduck](https://cyberduck.io/) |  | ✔ | ✔ |
+| [Cyberduck](https://cyberduck.io/) | | ✔ | ✔ |
 
-###<a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools for HDInsight
+###Visual Studio-Tools für HDInsight
 
-For more information, see [Navigate the linked resources](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
+Weitere Informationen finden Sie unter [Navigieren durch die verknüpften Ressourcen](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
 
-###<a name="<a-id="storageexplorer"></a>azure-storage-explorer"></a><a id="storageexplorer"></a>Azure Storage Explorer
+###<a id="storageexplorer"></a>Azure-Speicher-Explorer
 
-*Azure Storage Explorer* is a useful tool for inspecting and altering the data in blobs. It is a free, open source tool that can be downloaded from [http://storageexplorer.com/](http://storageexplorer.com/). The source code is available from this link as well.
+*Azure-Speicher-Explorer* ist ein hilfreiches Tool zum Prüfen und Ändern der Daten in BLOBs. Dieses kostenlose Open Source-Tool kann von [http://storageexplorer.com/](http://storageexplorer.com/) heruntergeladen werden. Der Quellcode ist über diesen Link ebenfalls verfügbar.
 
-Before using the tool, you must know your Azure storage account name and account key. For instructions about getting this information, see the "How to: View, copy and regenerate storage access keys" section of [Create, manage, or delete a storage account][azure-create-storage-account].  
+Bevor Sie das Tool verwenden können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen. Anleitungen zum Abrufen dieser Informationen finden Sie unter [Erstellen, Verwalten oder Löschen von Speicherkonten][azure-create-storage-account] im Abschnitt "Anzeigen, Kopieren und Neuerstellen von Speicherzugriffsschlüsseln".
 
-1. Run Azure Storage Explorer. If this is the first time you have ran the Storage Explorer, you will be prompted for the ___Storage account name__ and __Storage account key__. If you have ran it before, use the __Add__ button to add a new storage account name and key.
+1. Führen Sie den Azure-Speicher-Explorer aus. Wenn Sie den Speicher-Explorer erstmals ausführen, werden Sie zur Eingabe des ___Speicherkontonamens_ und __Speicherkontoschlüssels__ aufgefordert. Wenn Sie den Speicher-Explorer zuvor bereits ausgeführt haben, wählen Sie die Schaltfläche __Add\_\_, um einen neuen Speicherkontonamen und -schlüssel hinzuzufügen.
 
-    Enter the name and key for the storage account used by your HDinsight cluster and then select __SAVE & OPEN__.
+    Geben Sie den Namen und Schlüssel für das vom HDinsight-Cluster verwendete Speicherkonto ein, und wählen Sie dann __SPEICHERN UND ÖFFNEN__ aus.
 
-    ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
+	![HDI.AzureStorageExplorer][image-azure-storage-explorer]
 
-5. In the list of containers to the left of the interface, click the name of the container that is associated with your HDInsight cluster. By default, this is the name of the HDInsight cluster, but may be different if you entered a specific name when creating the cluster.
+5. Klicken Sie in der Liste der Container links auf der Benutzeroberfläche auf den Namen des Containers, der Ihrem HDInsight-Cluster zugeordnet ist. Standardmäßig handelt es sich dabei um den Namen des HDInsight-Clusters, der jedoch abweichen kann, wenn Sie bei der Clustererstellung einen bestimmten Namen eingegeben haben.
 
-6. From the tool bar, select the upload icon.
+6. Wählen Sie auf der Symbolleiste das Uploadsymbol aus.
 
-    ![Tool bar with upload icon highlighted](./media/hdinsight-upload-data/toolbar.png)
+    ![Symbolleiste mit hervorgehobenem Uploadsymbol](./media/hdinsight-upload-data/toolbar.png)
 
-7. Specify a file to upload, and then click **Open**. When prompted, select __Upload__ to upload the file to the root of the storage container. If you want to upload the file to a specific path, enter the path in the __Destination__ field and then select __Upload__.
+7. Geben Sie eine hochzuladende Datei an, und klicken Sie auf **Öffnen**. Sobald Sie dazu aufgefordert werden, wählen Sie __Hochladen__ aus, um die Dateien in das Stammverzeichnis des Speichercontainers hochzuladen. Wenn Sie die Datei in einen bestimmten Pfad hochladen möchten, geben Sie den Pfad in Feld __Ziel__ ein und wählen dann __Hochladen__ aus.
 
-    ![File upload dialog](./media/hdinsight-upload-data/fileupload.png)
+    ![Dateiupload (Dialogfeld)](./media/hdinsight-upload-data/fileupload.png)
     
-    Once the file has finished uploading, you can use it from jobs on the HDInsight cluster.
+    Nachdem der Upload der Datei abgeschlossen wurde, können Sie sie in den Aufträgen des HDInsight-Clusters verwenden.
 
-##<a name="mount-azure-blob-storage-as-local-drive"></a>Mount Azure Blob Storage as Local Drive
+##Bereitstellen von Azure-BLOB-Speicher als lokales Laufwerk
 
-See [Mount Azure Blob Storage as Local Drive](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Informationen finden Sie unter [Bereitstellen von Azure-BLOB-Speicher als lokales Laufwerk](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
 
-##<a name="services"></a>Services
+##Dienste
 
-###<a name="azure-data-factory"></a>Azure Data Factory
+###Azure Data Factory
 
-The Azure Data Factory service is a fully managed service for composing data storage, data processing, and data movement services into streamlined, scalable, and reliable data production pipelines.
+Der Azure Data Factory-Dienst ist ein vollständig verwalteter Dienst für das Kombinieren von Verarbeitungs-, Speicher- und Verschiebungsdienste für Daten in optimierten, skalierbaren und zuverlässigen Datenproduktions-Pipelines.
 
-Azure Data Factory can be used to move data into Azure Blob storage, or to create data pipelines that directly use HDInsight features such as Hive and Pig.
+Mit Azure Data Factory können Daten in den Azure-Blob-Speicher verschoben oder Datenpipelines erstellt werden, die HDInsight-Funktionen, z. B. Hive und Pig, direkt verwenden.
 
-For more information, see the [Azure Data Factory documentation](https://azure.microsoft.com/documentation/services/data-factory/).
+Weitere Informationen finden Sie in der [Dokumentation zu Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
 
-###<a name="<a-id="sqoop"></a>apache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
+###<a id="sqoop"></a>Apache Sqoop
 
-Sqoop is a tool designed to transfer data between Hadoop and relational databases. You can use it to import data from a relational database management system (RDBMS), such as SQL Server, MySQL, or Oracle into the Hadoop distributed file system (HDFS), transform the data in Hadoop with MapReduce or Hive, and then export the data back into an RDBMS.
+Sqoop ist ein Tool zum Übertragen von Daten zwischen Hadoop und relationalen Datenbanken. Sie können damit Daten aus einem Managementsystem für relationale Datenbanken (RDBMS) wie SQL Server, MySQL oder Oracle in das verteilte Dateisystem von Hadoop (HDFS) importieren, die Daten in Hadoop mit MapReduce oder Hive transformieren und sie anschließend wieder in ein RDBMS exportieren.
 
-For more information, see [Use Sqoop with HDInsight][hdinsight-use-sqoop].
+Weitere Informationen finden Sie unter [Verwenden von Sqoop mit HDInsight][hdinsight-use-sqoop].
 
-##<a name="development-sdks"></a>Development SDKs
+##Entwicklungs-SDKs
 
-Azure Blob storage can also be accessed using an Azure SDK from the following programming languages:
+Auf den Azure-Blob-Speicher kann auch mithilfe eines Azure-SDK über die folgenden Programmiersprachen zugegriffen werden:
 
 * .NET
 * Java
@@ -242,16 +241,16 @@ Azure Blob storage can also be accessed using an Azure SDK from the following pr
 * Python
 * Ruby
 
-For more information on installing the Azure SDKs, see [Azure downloads](https://azure.microsoft.com/downloads/)
+Weitere Informationen zum Installieren der Azure-SDKs finden Sie unter [Azure-Downloads](https://azure.microsoft.com/downloads/).
 
 
-## <a name="next-steps"></a>Next steps
-Now that you understand how to get data into HDInsight, read the following articles to learn how to perform analysis:
+## Nächste Schritte
+Jetzt wissen Sie, wie Sie Daten in HDInsight importieren. Lesen Sie in den folgenden Artikeln, wie Sie die Daten analysieren:
 
-* [Get started with Azure HDInsight][hdinsight-get-started]
-* [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]
-* [Use Hive with HDInsight][hdinsight-use-hive]
-* [Use Pig with HDInsight][hdinsight-use-pig]
+* [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
+* [Programmgesteuerte Übermittlung von Hadoop-Aufträgen][hdinsight-submit-jobs]
+* [Verwenden von Hive mit HDInsight][hdinsight-use-hive]
+* [Verwenden von Pig mit HDInsight][hdinsight-use-pig]
 
 
 
@@ -287,8 +286,4 @@ Now that you understand how to get data into HDInsight, read the following artic
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

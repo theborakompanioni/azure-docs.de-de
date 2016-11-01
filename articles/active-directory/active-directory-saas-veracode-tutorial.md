@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Veracode | Microsoft Azure" 
-    description="Learn how to use Veracode with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="Tutorial: Azure Active Directory-Integration mit Veracode | Microsoft Azure" 
+    description="Erfahren Sie, wie Sie Veracode mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu aktivieren." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,174 +14,166 @@
     ms.date="09/11/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-veracode"></a>Tutorial: Azure Active Directory integration with Veracode
+#Tutorial: Azure Active Directory-Integration mit Veracode
   
-The objective of this tutorial is to show the integration of Azure and Veracode. The scenario outlined in this tutorial assumes that you already have the following items:
+In diesem Tutorial wird die Integration von Azure und Veracode erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
--   A valid Azure subscription
--   A Veracode single sign-on enabled subscription
+-   Ein gültiges Azure-Abonnement
+-   Ein Veracode-Abonnement, für das einmaliges Anmelden aktiviert ist
   
-After completing this tutorial, the Azure AD users you have assigned to Veracode will be able to single sign into the application using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+Nach Abschluss dieses Tutorials können sich die Veracode zugewiesenen Azure AD-Benutzer wie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) beschrieben mittels einmaliger Anmeldung bei der Anwendung anmelden.
   
-The scenario outlined in this tutorial consists of the following building blocks:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
-1.  Enabling the application integration for Veracode
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  Aktivieren der Anwendungsintegration für Veracode
+2.  Konfigurieren der einmaligen Anmeldung
+3.  Konfigurieren der Benutzerbereitstellung
+4.  Zuweisen von Benutzern
 
-![Scenario](./media/active-directory-saas-veracode-tutorial/IC802903.png "Scenario")
+![Szenario](./media/active-directory-saas-veracode-tutorial/IC802903.png "Szenario")
 
-##<a name="enabling-the-application-integration-for-veracode"></a>Enabling the application integration for Veracode
+##Aktivieren der Anwendungsintegration für Veracode
   
-The objective of this section is to outline how to enable the application integration for Veracode.
+In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Veracode aktivieren.
 
-###<a name="to-enable-the-application-integration-for-veracode,-perform-the-following-steps:"></a>To enable the application integration for Veracode, perform the following steps:
+###So aktivieren Sie die Anwendungsintegration für Veracode
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-veracode-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Applications](./media/active-directory-saas-veracode-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-veracode-tutorial/IC700994.png "Anwendungen")
 
-4.  Click **Add** at the bottom of the page.
+4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-    ![Add application](./media/active-directory-saas-veracode-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-veracode-tutorial/IC749321.png "Anwendung hinzufügen")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Add an application from gallerry](./media/active-directory-saas-veracode-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-veracode-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
-6.  In the **search box**, type **Veracode**.
+6.  Geben Sie im **Suchfeld** als Suchbegriff **Veracode** ein.
 
-    ![Application Gallery](./media/active-directory-saas-veracode-tutorial/IC802904.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-veracode-tutorial/IC802904.png "Anwendungskatalog")
 
-7.  In the results pane, select **Veracode**, and then click **Complete** to add the application.
+7.  Wählen Sie im Ergebnisbereich **Veracode** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
     ![Veracode](./media/active-directory-saas-veracode-tutorial/IC802905.png "Veracode")
 
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##Konfigurieren der einmaligen Anmeldung
   
-The objective of this section is to outline how to enable users to authenticate to Veracode with their account in Azure AD using federation based on the SAML protocol.  
-Your Veracode application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your **saml token attributes** configuration.  
-The following screenshot shows an example for this.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Veracode zu authentifizieren. Die Veracode-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
-![Attributes](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
+![Attribute](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attribute")
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  In the Azure classic portal, on the **Veracode** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Veracode** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802907.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802907.png "Einmaliges Anmelden konfigurieren")
 
-2.  On the **How would you like users to sign on to Veracode** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Veracode anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802908.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802908.png "Einmaliges Anmelden konfigurieren")
 
-3.  On the **Configure App Settings** page, click **Next**.
+3.  Klicken Sie auf der Seite **App-Einstellungen konfigurieren** auf **Weiter**.
 
-    ![Configure App Settings](./media/active-directory-saas-veracode-tutorial/IC802909.png "Configure App Settings")
+    ![Konfigurieren von App-Einstellungen](./media/active-directory-saas-veracode-tutorial/IC802909.png "Konfigurieren von App-Einstellungen")
 
-4.  On the **Configure single sign-on at Veracode** page, to download your certificate, click **Download certificate**, and then save the certificate file locally on your computer.
+4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Veracode** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802910.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802910.png "Einmaliges Anmelden konfigurieren")
 
-5.  In a different web browser window, log into your Veracode company site as an administrator.
+5.  Melden Sie sich in einem anderen Webbrowserfenster bei der Veracode-Unternehmenswebsite als Administrator an.
 
-6.  In the menu on the top, click **Settings**, and then click **Admin**.
+6.  Klicken Sie im oberen Menü auf **Einstellungen** und dann auf **Administration**.
 
-    ![Administration](./media/active-directory-saas-veracode-tutorial/IC802911.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802911.png "Verwaltung")
 
-7.  Click the **SAML** tab.
+7.  Klicken Sie auf die Registerkarte **SAML**.
 
-8.  In the **Organization SAML Settings** section, perform the following steps:
+8.  Führen Sie im Abschnitt für die **SAML-Einstellungen der Organisation** die folgenden Schritte aus:
 
-    ![Administration](./media/active-directory-saas-veracode-tutorial/IC802912.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802912.png "Verwaltung")
 
-    1.  In the Azure classic portal, on the **Configure single sign-on at Veracode** dialog page, copy the **Issuer URL** value, and then paste it into the **Issuer** textbox
-    2.  To upload your downloaded certificate, click **Choose File**.
-    3.  Select **Enable Self Registration**.
+    1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Veracode** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Aussteller** ein.
+    2.  Klicken Sie auf **Datei auswählen**, um das heruntergeladene Zertifikat hochzuladen.
+    3.  Wählen Sie **Selbstregistrierung aktivieren**.
 
-9.  In the **Self Registration Settings** section, perform the following steps, and then click **Save**:
+9.  Führen Sie im Abschnitt **Selbstregistrierungseinstellungen** die folgenden Schritte aus. Klicken Sie dann auf **Speichern**:
 
-    ![Administration](./media/active-directory-saas-veracode-tutorial/IC802913.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-veracode-tutorial/IC802913.png "Verwaltung")
 
-    1.  As **New User Activation**, select **No Activation Required**.
-    2.  As **User Data Updates**, select **Preference Veracode User Data**.
-    3.  For **SAML Attribute Details**, select the following:
-        -   **User Roles**
-        -   **Policy Administrator**
-        -   **Reviewer**
-        -   **Security Lead**
-        -   **Executive**
-        -   **Submitter**
-        -   **Creator**
-        -   **All Scan Types**
-        -   **Team Memberships**
-        -   **Default Team**
+    1.  Wählen Sie für **Aktivierung neuer Benutzer** die Option **Keine Aktivierung erforderlich**.
+    2.  Wählen Sie für **Benutzerdaten-Aktualisierungen** die Option **Präferenz Veracode- Benutzerdaten**.
+    3.  Wählen Sie für die **SAML-Attributdetails** Folgendes aus:
+        -   **Benutzerrollen**
+        -   **Richtlinien-Administrator**
+        -   **Prüfer**
+        -   **Leiter der Sicherheitsabteilung**
+        -   **Geschäftsleitung**
+        -   **Absender**
+        -   **Ersteller**
+        -   **Alle Scantypen**
+        -   **Teammitgliedschaften**
+        -   **Standardteam**
 
-10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+10. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802914.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-veracode-tutorial/IC802914.png "Einmaliges Anmelden konfigurieren")
 
-11. In the menu on the top, click **Attributes** to open the **SAML Token Attributes** dialog.
+11. Klicken Sie oben im Menü auf **Attribute**, um das Dialogfeld **SAML-Tokenattribute** zu öffnen.
 
-    ![Attributes](./media/active-directory-saas-veracode-tutorial/IC795920.png "Attributes")
+    ![Attribute](./media/active-directory-saas-veracode-tutorial/IC795920.png "Attribute")
 
-12. To add the required attribute mappings, perform the following steps:
+12. So fügen Sie die erforderlichen Attributzuordnungen hinzu:
 
-    ![Attributes](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
+    ![Attribute](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attribute")
 
-  	| Attribute Name | Attribute Value |
-  	|:---------------|:----------------|
-  	| firstname      | User.givenname  |
-  	| lastname       | User.surname    |
-  	| email          | User.mail       |
+	| Attributname | Attributwert |
+	|:---------------|:----------------|
+	| firstname | User.givenname |
+	| lastname | User.surname |
+	| E-Mail | User.mail |
 
-    1.  For each data row in the table above, click **add user attribute**.
+    1.  Klicken Sie für jede Datenzeile in der obigen Tabelle auf **Benutzerattribut hinzufügen**.
     
-    2.  In the **Attribute Name** textbox, type the attribute name shown for that row.
+	2.  Geben Sie im Textfeld **Attribute Name** den für die Zeile angezeigten Attributnamen ein.
 
-    3.  In the **Attribute Value** textbox, select the attribute value shown for that row.
+    3.  Geben Sie im Textfeld **Attribute Value** den für die Zeile angezeigten Attributwert ein.
 
-    4.  Click **Complete**.
+    4.  Klicken Sie auf **Fertig stellen**.
 
-13. Click **Apply Changes**.
+13. Klicken Sie auf **Apply Changes**.
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##Konfigurieren der Benutzerbereitstellung
   
-In order to enable Azure AD users to log into Veracode, they must be provisioned into Veracode.  
-In the case of Veracode, provisioning is an automated task.  
-There is no action item for you..
+Damit sich Azure AD-Benutzer bei Veracode anmelden können, müssen sie in Veracode bereitgestellt werden. Im Fall von Veracode ist die Bereitstellung eine automatisierte Aufgabe. Für Sie steht kein Aktionselement zur Verfügung.
   
-Users are automatically created if necessary during the first single sign-on attempt.
+Benutzer werden beim Versuch des einmaligen Anmeldens bei Bedarf automatisch erstellt.
 
->[AZURE.NOTE] You can use any other Veracode user account creation tools or APIs provided by Veracode to provision AAD user accounts.
+>[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Veracode-Benutzerkonten oder mithilfe der von Veracode bereitgestellten APIs erstellen.
 
-##<a name="assigning-users"></a>Assigning users
+##Zuweisen von Benutzern
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-###<a name="to-assign-users-to-veracode,-perform-the-following-steps:"></a>To assign users to Veracode, perform the following steps:
+###So weisen Sie Veracode Benutzer zu:
 
-1.  In the Azure classic portal, create a test account.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  On the **Veracode **application integration page, click **Assign users**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **Veracode** auf **Benutzer zuweisen**.
 
-    ![Assign Users](./media/active-directory-saas-veracode-tutorial/IC802915.png "Assign Users")
+    ![Benutzer zuweisen](./media/active-directory-saas-veracode-tutorial/IC802915.png "Benutzer zuweisen")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
 
-    ![Yes](./media/active-directory-saas-veracode-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-veracode-tutorial/IC767830.png "Ja")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

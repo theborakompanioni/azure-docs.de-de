@@ -1,32 +1,27 @@
 <properties
-    pageTitle="Deploy and manage VM with templates | Microsoft Azure"
-    description="Deploy and manage the most common configurations for Azure virtual machines using Resource Manager templates and Azure CLI."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="squillace"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Bereitstellen und Verwalten von virtuellen Computer mit Vorlagen | Microsoft Azure"
+	description="Stellen Sie ganz einfach die am häufigsten verwendeten Konfigurationen für virtuelle Azure-Computer bereit, und verwalten Sie sie mithilfe von Ressourcen-Manager-Vorlagen und der Azure-CLI."
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="squillace"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/23/2016"
-    ms.author="rasquill"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/23/2016"
+	ms.author="rasquill"/>
 
+# Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI
 
-# <a name="deploy-and-manage-virtual-machines-by-using-azure-resource-manager-templates-and-the-azure-cli"></a>Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI
-
-This article shows you how to use Azure Resource Manager templates and the Azure CLI to do the following common tasks for deploying and managing Azure virtual machines. For more templates you can use, see [Azure Quickstart templates](https://azure.microsoft.com/documentation/templates/) and [Application frameworks using templates](virtual-machines-linux-app-frameworks.md).
+In diesem Artikel wird gezeigt, wie mit Azure-Ressourcen-Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle (Azure-CLI) die folgenden allgemeinen Aufgaben zum Bereitstellen und Verwalten von virtuellen Azure-Computern automatisiert werden. Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](virtual-machines-linux-app-frameworks.md).
 
 
 [AZURE.INCLUDE [virtual-machines-common-cli-deploy-templates](../../includes/virtual-machines-common-cli-deploy-templates.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

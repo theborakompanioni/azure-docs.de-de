@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a web hook or API Azure Function | Microsoft Azure"
-   description="Use Azure Functions to create a function that is invoked by a WebHook or API call."
+   pageTitle="Erstellen eines Webhooks oder einer API Azure Functions-Funktion | Microsoft Azure"
+   description="Verwenden von Azure Functions zum Erstellen einer Funktion, die durch einen Webhook oder API-Aufruf aufgerufen wird."
    services="azure-functions"
    documentationCenter="na"
    authors="ggailey777"
@@ -18,84 +18,75 @@
    ms.date="08/30/2016"
    ms.author="glenga"/>
    
+# Erstellen eines Webhooks oder einer API-Azure-Funktion
 
-# <a name="create-a-webhook-or-api-azure-function"></a>Create a webhook or API Azure Function
+Azure Functions vermittelt eine durch Ereignissteuerung und Bedarfsabhängigkeit geprägte Benutzererfahrung. Dies bedeutet, dass Sie geplante oder ausgelöste, in verschiedenen Programmiersprachen implementierte Codeeinheiten erstellen können. Weitere Informationen zu Azure Functions finden Sie in der [Übersicht zu Azure Functions](functions-overview.md).
 
-Azure Functions is an event-driven, compute-on-demand experience that enables you to create scheduled or triggered units of code implemented in a variety of programming languages. To learn more about Azure Functions, see the [Azure Functions Overview](functions-overview.md).
+In diesem Thema erfahren Sie, wie Sie eine neue Node.js-Funktion erstellen, die von einem GitHub-Webhook aufgerufen wird. Die neue Funktion wird basierend auf einer vordefinierten Vorlage im Azure Functions-Portal erstellt. Sie können sich auch ein kurzes Video ansehen, das die Ausführung dieser Schritte im Portal zeigt.
 
-This topic shows you how to create a new Node.js function that is invoked by a GitHub webhook. The new function is created based on a pre-defined template in the Azure Functions portal. You can also watch a short video to see how these steps are performed in the portal.
+## Video ansehen
 
-## <a name="watch-the-video"></a>Watch the video
-
-The following video show how to perform the basic steps in this tutorial 
+Das folgende Video zeigt die Ausführung der grundlegenden Schritte in diesem Tutorial.
 
 [AZURE.VIDEO create-a-web-hook-or-api-azure-function]
 
-##<a name="create-a-webhook-triggered-function-from-the-template"></a>Create a webhook-triggered function from the template
+##Erstellen einer durch einen Webhook ausgelösten Funktion aus der Vorlage
 
-A function app hosts the execution of your functions in Azure. Before you can create a function, you need to have an active Azure account. If you don't already have an Azure account, [free accounts are available](https://azure.microsoft.com/free/). 
+Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
 
-1. Go to the [Azure Functions portal](https://functions.azure.com/signin) and sign-in with your Azure account.
+1. Rufen Sie das [Azure Functions-Portal](https://functions.azure.com/signin) auf, und melden Sie sich mit Ihrem Azure-Konto an.
 
-2. If you have an existing function app to use, select it from **Your function apps** then click **Open**. To create a new function app, type a unique **Name** for your new function app or accept the generated one, select your preferred **Region**, then click **Create + get started**. 
+2. Wenn Sie bereits eine Funktions-App besitzen, wählen Sie diese in **Ihre Funktions-Apps** aus, und klicken Sie dann auf **Öffnen**. Um eine neue Funktions-App zu erstellen, geben Sie einen eindeutigen **Namen** für Ihre neue Funktions-App ein, oder nehmen Sie den generierten Namen an, wählen Sie die bevorzugte **Region** aus, und klicken Sie anschließend auf **Erstellen und starten**.
 
-3. In your function app, click **+ New Function** > **GitHub Webhook - Node** > **Create**. This creates a function with a default name that is based on the specified template. 
+3. Klicken Sie in Ihrer Funktions-App auf **+ Neue Funktion** > **GitHub-Webhook - Knoten** > **Erstellen**. Eine Funktion wird mit einem Standardnamen erstellt, der auf der angegebenen Vorlage basiert.
 
-    ![Create new GitHub webhook function](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook.png) 
+	![Erstellen einer neuen GitHub-Webhookfunktion](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook.png)
 
-4. In **Develop**, note the sample express.js function in the **Code** window. This function receives a GitHub request from an issue comment webhook, logs the issue text and sends a response to the webhook as `New GitHub comment: <Your issue comment text>`.
+4. Beachten Sie unter **Entwickeln** die express.js-Beispielfunktion im Fenster **Code**. Diese Funktion empfängt eine GitHub-Anforderung von einem Problemberichtwebhook, protokolliert den Problemtext und sendet eine Antwort als `New GitHub comment: <Your issue comment text>` an den Webhook.
 
 
-    ![Create new GitHub webhook function](./media/functions-create-a-web-hook-or-api-function/functions-new-webhook-in-portal.png) 
+	![Erstellen einer neuen GitHub-Webhookfunktion](./media/functions-create-a-web-hook-or-api-function/functions-new-webhook-in-portal.png)
 
-5. Copy the **Function URL** and **GitHub Secret** values. You will need these when you create the webhook in GitHub. 
+5. Kopieren Sie die Werte **Funktions-URL** und **GitHub-Schlüssel**. Diese benötigen Sie, wenn Sie den Webhook in GitHub erstellen.
 
-6. Scroll down to **Run**, note the predefined JSON body of an issue comment in the Request body, then click **Run**. 
+6. Scrollen Sie nach unten zu **Ausführen**, beachten Sie den vordefinierten JSON-Text eines Problemberichts im Anforderungstext, und klicken Sie auf **Ausführen**.
  
-    You can always test a new template-based function right in the **Develop** tab by supplying any expected body JSON data and clicking the **Run** button. In this case, the template has a predefined body for an issue comment. 
+	Sie können rechts in der Registerkarte **Entwickeln** immer eine neue vorlagenbasierte Funktion testen, indem Sie erwartete JSON-Textdaten eingeben und auf die Schaltfläche **Ausführen** klicken. In diesem Fall hat die Vorlage einen vordefinierten Text für einen Problembericht.
  
-Next, you will create the actual webhook in your GitHub repository.
+Als Nächstes erstellen Sie den aktuellen Webhook im GitHub-Repository.
 
-##<a name="configure-the-webhook"></a>Configure the webhook
+##Konfigurieren des Webhooks
 
-1. In GitHub, navigate to a repository that you own; this includes any repositories that you have forked.
+1. Navigieren Sie in GitHub zu einem Repository, das Sie besitzen. Dies schließt auch alle Repositorys in Verzweigungen ein.
  
-2. Click **Settings** > **Webhooks & services** > **Add webhook**.
+2. Klicken Sie auf **Einstellungen** > **Webhooks & Dienste** > **Webhook hinzufügen**.
 
-    ![Create new GitHub webhook function](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook-2.png)   
+	![Erstellen einer neuen GitHub-Webhookfunktion](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook-2.png)
 
-3. Paste your function's URL and secret into **Payload URL** and **Secret**, then click **Let me select individual events**, select **Issue comment** and click **Add webhook**.
+3. Fügen Sie die URL und den Schlüssel Ihrer Funktion in **Nutzlast-URL** und **Schlüssel** ein, klicken Sie dann auf **Einzelne Ereignisse auswählen**, wählen Sie **Problembericht**, und klicken Sie auf **Webhook hinzufügen**.
 
-    ![Create new GitHub webhook function](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook-3.png) 
+	![Erstellen einer neuen GitHub-Webhookfunktion](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook-3.png)
 
-At this point, the GitHub webhook is configured to trigger your function when a new issue comment is added.  
-Now, it's time to test it out.
+An diesem Punkt ist der GitHub-Webhook so konfiguriert, dass die Funktion ausgelöst wird, wenn ein neuer Problembericht hinzugefügt wurde. Jetzt ist es Zeit, zu testen.
 
-##<a name="test-the-function"></a>Test the function
+##Testen der Funktion
 
-1. In your GitHub repo, open the **Issues** tab in a new browser window, click **New Issue**, type a title then click **Submit new issue**. You can also open an existing issue.
+1. Öffnen Sie in Ihrem GitHub-Repository die Registerkarte **Probleme** in einem neuen Browserfenster, klicken Sie auf **Neues Problem**, geben Sie einen Titel ein, und klicken Sie auf **Neues Problem melden**. Sie können auch eine vorhandene Problemmeldung öffnen.
 
-2. In the issue, type a comment and click **Comment**. At this point, you can go back to your new webhook in GitHub and under **Recent Deliveries** see that a webhook request was sent and that the body of response is `New GitHub comment: <Your issue comment text>`.
+2. Geben Sie in die Problemmeldung einen Kommentar ein, und klicken Sie auf **Kommentar**. An diesem Punkt können Sie zu Ihrem neuen Webhook in GitHub zurückkehren, und sehen unter **Aktuelle Übermittlungen**, dass eine Webhookanforderung gesendet wurde, und der Text der Antwort `New GitHub comment: <Your issue comment text>` ist.
 
-3. Back in the Functions portal, scroll down to the logs and see that the function has been triggered and the value `New GitHub comment: <Your issue comment text>` is written to the streaming logs.
-
-
-##<a name="next-steps"></a>Next steps
-
-See these topics for more information about Azure Functions.
-
-+ [Azure Functions developer reference](functions-reference.md)  
-Programmer reference for coding functions.
-+ [Testing Azure Functions](functions-test-a-function.md)  
-Describes various tools and techniques for testing your functions.
-+ [How to scale Azure Functions](functions-scale.md)  
-Discusses service plans available with Azure Functions, including the Dynamic service plan, and how to choose the right plan.  
+3. Wenn Sie zum „Functions“-Portal zurückgekehrt sind, scrollen Sie zu den Protokollen hinunter, und dort werden Sie feststellen, dass die Funktion ausgelöst und der Wert `New GitHub comment: <Your issue comment text>` in die Streamingprotokolle geschrieben wurde.
 
 
-[AZURE.INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
+##Nächste Schritte
+
+Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
+
++ [Entwicklerreferenz zu Azure Functions](functions-reference.md) Referenz zu Codierfunktionen für Programmierer.
++ [Testing Azure Functions (Testen von Azure Functions)](functions-test-a-function.md) Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
++ [How to scale Azure Functions (Skalieren von Azure Functions)](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden
 
 
+[AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

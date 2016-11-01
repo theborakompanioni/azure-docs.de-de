@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Branding Guidelines for Applications | Microsoft Azure"
-   description="A comprehensive guide to developer-oriented resources for Azure Active Directory"
+   pageTitle="Brandingrichtlinien für Anwendungen | Microsoft Azure"
+   description="Eine umfassende Anleitung zu entwicklerorientierten Ressourcen für Azure Active Directory"
    services="active-directory"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -17,85 +17,80 @@
    ms.author="mbaldwin"/>
 
 
-
-# <a name="branding-guidelines-for-applications"></a>Branding Guidelines for Applications
-
-
-This topic discusses the branding guidelines you should use when developing applications with Azure Active Directory (Azure AD). These guidelines will help direct your customers when they want to use their work or school account, managed in Azure AD, or their personal account for sign-up and sign-in to your application.
-
-## <a name="personal-accounts-vs.-work-or-school-accounts-from-microsoft"></a>Personal accounts vs. work or school accounts from Microsoft
-
-Microsoft manages two kinds of user accounts:
-
-- **Personal accounts** (formerly known as Windows Live ID). These accounts represent the relationship between *individual* users and Microsoft, and are used to access consumer devices and services from Microsoft. These accounts are intended for personal use.
-
-- **Work or school accounts.** These accounts are managed by Microsoft on behalf of organizations that use Azure Active Directory. These accounts are used to sign in to Office 365 and other business services from Microsoft.
-
-Microsoft work or school accounts are typically assigned to end users (employees, students, federal employees) by their organizations (company, school, government agency). These accounts are either mastered directly in the cloud, in the Azure AD platform, or synced to Azure AD from an on-premises directory, such as Windows Server Active Directory. Microsoft is the *custodian* of the work or school accounts, but the accounts are owned and controlled by the organization.
-
-## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Referring to Azure AD accounts in your application
-
-Microsoft doesn’t expose end-users to the Azure or the Active Directory brand names, and neither should you.
-
-- Once users are signed in, you should use the organization’s name and logo as much as possible. This is better than using generic terms like “your organization”.
-
-- When users are not signed in, you should refer to their accounts as “Work or school accounts” and use the Microsoft logo to convey that these accounts are managed by Microsoft. Don’t use terms like “enterprise account”, “business account” or “corporate account” which create user confusion.
-
-## <a name="user-account-pictogram"></a>User account pictogram
-In an earlier version of these guidelines, we recommended using a “blue badge” pictogram. Based on user and developer feedback, we now recommend the use of the Microsoft logo instead. This will help users understand that they can reuse the account they use with Office 365 or other Microsoft business services to sign in to your app.
-
-## <a name="signing-up-and-signing-in-with-azure-ad"></a>Signing up and signing in with Azure AD
-
-Your app may present separate paths for sign-up and sign-in and the following sections provide visual guidance for both scenarios.
-
-**If your app supports end user sign up (e.g. free to trial or freemium model)**: You can show a **sign-in** button that allows users to access your app with their work account or their personal account. Azure AD will show a consent prompt the first time they access your app.
-
-**If your app requires permissions that only admins can consent to, or if your app requires organizational licensing**: You should separate admin acquisition from user sign in. The **“get this app” button** will redirect admins to sign in then ask them to grant consent on behalf of users in their organization. This has the added benefit of suppressing end users consent prompts to your app.
-
-## <a name="visual-guidance-for-app-acquisition"></a>Visual guidance for app acquisition
-
-Your “get the app” link must redirect the user to the Azure AD grant access (authorize) page, to allow an organization’s administrator to authorize your app to have access to their organization’s data that is hosted by Microsoft. Details on how to request access are discussed in the [Integrating Applications with Azure Active Directory](active-directory-integrating-applications.md) article.
-
-After admins consent to your app, they can choose to add it to their users’ Office 365 app launcher experience (accessible from the waffle and from [https://portal.office.com/myapps](https://portal.office.com/myapps)). If you want to advertise this capability, you can use terms like “Add this app to your organization” and show a button like this:
-
-![Application Types and scenarios](./media/active-directory-branding-guidelines/add-to-my-org.png)
-
-However, we recommend that you write explanatory text instead of relying on buttons. For example:
-> *If you already use Office 365 or other business service from Microsoft, you can simply grant <your_app_name> access to your organization’s data. This will allow your users to access <your_app_name> with their existing work accounts.*
+# Brandingrichtlinien für Anwendungen
 
 
-## <a name="visual-guidance-for-sign-in"></a>Visual guidance for sign-in
-Your app should display a sign in button that redirects users to the sign-in endpoint that corresponds to the protocol you use to integrate with Azure AD. The following section provides details on what that button should look like.
+Dieses Thema behandelt die empfohlenen Brandingrichtlinien für die Entwicklung von Anwendungen mit Azure Active Directory (Azure AD). Die Richtlinien stellen sicher, dass sich Kunden besser zurechtfinden, die sich über ihr in Azure AD verwaltetes Geschäfts- oder Schulkonto (oder über ihr persönliches Konto) bei Ihrer Anwendung registrieren und anmelden möchten.
 
-### <a name="pictogram-and-“sign-in-with-microsoft”"></a>Pictogram and “Sign in with Microsoft”
-It’s the association of the Microsoft logo and the “Sign in with Microsoft” terms that uniquely represents Azure AD amongst other identity providers your app may support. If you don’t have enough space for “Sign in with Microsoft,” it’s ok to shorten it to “Sign in”.
+## Gegenüberstellung von persönlichen Konten und Geschäfts- oder Schulkonten von Microsoft
 
-![Application Types and scenarios](./media/active-directory-branding-guidelines/sign-in-with-microsoft-light.png)
+Microsoft verwaltet zwei Arten von Benutzerkonten:
 
-![Application Types and scenarios](./media/active-directory-branding-guidelines/sign-in-light.png)
+- **Persönliche Konten** (ehemals Windows Live ID). Diese Konten stellen die Beziehung zwischen *einzelnen* Benutzern und Microsoft dar und werden für den Zugriff auf Verbrauchergeräte und -dienste von Microsoft verwendet. Konten dieser Art sind für den persönlichen Gebrauch vorgesehen.
 
-You can also use a dark color scheme for the buttons.
+- **Geschäfts- oder Schulkonten.** Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Office 365 und anderen Unternehmensdiensten von Microsoft.
 
-![Application Types and scenarios](./media/active-directory-branding-guidelines/sign-in-with-microsoft-dark.png)
+Geschäfts- oder Schulkonten von Microsoft werden den Endbenutzern (Angestellten, Schülern/Studenten, Behördenmitarbeitern) üblicherweise von der jeweiligen Organisation (Unternehmen, Bildungseinrichtung, Behörde) zugewiesen. Diese Konten werden entweder direkt in der Cloud oder über die Azure AD-Plattform gemastert oder über ein lokales Verzeichnis (wie etwa Windows Server Active Directory) mit Azure AD synchronisiert. Microsoft fungiert als *Verwaltungsberechtigter* des Geschäfts- oder Schulkontos, die Konten gehören aber der Organisation und werden auch von dieser gesteuert.
 
-![Application Types and scenarios](./media/active-directory-branding-guidelines/sign-in-dark.png)
+## Verweisen auf Azure AD-Konten in Ihrer Anwendung
 
-## <a name="branding-do’s-and-don’ts"></a>Branding Do’s and Don’ts
+Microsoft verwendet die Markennamen „Azure“ und „Active Directory“ nicht gegenüber Endbenutzern – eine Regel, an die auch Sie sich halten sollten.
 
-**DO** use “work or school account” in combination with the "Sign in with Microsoft" button to provide additional explanation to help end-users recognize whether they can use it. **DON’T** use other terms such as “enterprise account”, “business account” or “corporate account.”
+- Nach der Anmeldung eines Benutzers sollten Sie möglichst häufig den Namen und das Logo der Organisation verwenden. Das ist besser als die Verwendung generischer Formulierungen wie „Ihre Organisation“.
 
-**DON’T** use “Office 365 ID” or “Azure ID”. Office 365 is also the name of a consumer offering from Microsoft which doesn’t use Azure AD for authentication.
+- Wenn der Benutzer nicht angemeldet sind, sollten Sie dessen Konto als „Geschäfts- oder Schulkonto“ bezeichnen und durch die Verwendung des Microsoft-Logos deutlich machen, dass das Konto von Microsoft verwaltet wird. Verwenden Sie keine Begriffe wie „Unternehmenskonto“, „Business-Konto“ oder „Firmenkonto“, um den Benutzer nicht zu verwirren.
 
-**DON’T** alter the Microsoft logo.
+## Piktogramm für Benutzerkonten
+In einer früheren Version dieser Richtlinien haben wir die Verwendung eines blauen Badge-Piktogramms empfohlen. Aufgrund von Benutzer- und Entwicklerfeedback empfehlen wir inzwischen aber stattdessen die Verwendung des Microsoft-Logos. Dadurch wird den Benutzern besser vermittelt, dass sie sich bei Ihrer App mit dem gleichen Konto anmelden können, das sie auch für Office 365 und andere Unternehmensdienste von Microsoft verwenden.
 
-**DON’T** expose end-users to the Azure or Active Directory brands. It’s ok however to use these terms with developers, IT pros and admins.
+## Registrieren und Anmelden mit Azure AD
 
-## <a name="navigation-do’s-and-don’ts"></a>Navigation Do’s and Don’ts
+Ihre Anwendung verwendet möglicherweise separate Vorgehensweisen für Registrierung und Anmeldung. Dies wird in den folgenden Abschnitten berücksichtigt.
 
-**DO** provide a way for users to sign out and switch to another user account. While most people have a single personal account from Microsoft/Facebook/Google/Twitter, people are often associated with more than one organization. Support for multiple signed-in users is coming soon.
+**Ihre App unterstützt die Registrierung von Endbenutzern (etwa bei einer kostenlosen Testversion oder bei einem Freemium-Modell)**: Sie können eine **Registrierungsschaltfläche** anzeigen, mit deren Hilfe Benutzer über ihr Geschäftskonto oder persönliches Konto auf Ihre App zugreifen können. Beim ersten Zugriff auf Ihre App zeigt Azure AD eine Zustimmungsaufforderung an.
+
+**Ihre App benötigt Berechtigungen, die die Zustimmung eines Administrators voraussetzen, oder Ihre App muss von der Organisation lizenziert werden**: Administratorzustimmung und Benutzeranmeldung sollten getrennt werden. Die **Schaltfläche zum Abrufen der App** leitet Administratoren zur Anmeldung weiter und fordert sie auf, im Namen von Benutzern in der Organisation ihre Zustimmung zu geben. Dies hat den zusätzlichen Vorteil, dass Zustimmungsaufforderungen für Endbenutzer Ihrer App unterdrückt werden.
+
+## Darstellungsleitfaden für den App-Erwerb
+
+Über den Link zum Abrufen der App muss der Benutzer auf die Zugriffsgewährungs- bzw. Autorisierungsseite von Azure AD weitergeleitet werden, damit ein Organisationsadministrator Ihrer App den Zugriff auf die von Microsoft gehosteten Organisationsdaten gewähren kann. Ausführliche Informationen zum Anfordern von Zugriff finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md).
+
+Nach der Zustimmung des Administrators kann dieser entscheiden, ob Ihre App dem App-Startfeld von Office 365 hinzugefügt werden soll, sodass die Benutzer über das Startfeld oder über [https://portal.office.com/myapps](https://portal.office.com/myapps) darauf zugreifen können. Wenn Sie auf diese Funktion hinweisen möchten, können Sie beispielsweise eine Formulierung wie „App zur Organisation hinzufügen“ und die folgende Schaltfläche verwenden:
+
+![Anwendungstypen und -szenarien](./media/active-directory-branding-guidelines/add-to-my-org.png)
+
+Es empfiehlt sich jedoch, eine Erläuterung in Textform zu verwenden, anstatt nur auf Schaltflächen zu setzen. Beispiel:
+> *Wenn Sie bereits Office 365 oder andere Unternehmensdienste von Microsoft verwenden, können Sie <Name\_Ihrer\_App> einfach Zugriff auf die Daten Ihrer Organisation gewähren. Dadurch können Benutzer mit ihren bereits vorhandenen Geschäftskonten auf <Name\_Ihrer\_App> zugreifen.*
 
 
+## Darstellungsleitfaden für die Anmeldung
+Ihre App sollte eine Anmeldeschaltfläche besitzen, über die der Benutzer an den Anmelde-Endpunkt mit dem Protokoll weitergeleitet wird, das Sie für die Azure AD-Integration verwenden. Im folgenden Abschnitt erfahren Sie, wie diese Schaltfläche auszusehen hat.
 
-<!--HONumber=Oct16_HO2-->
+### Piktogramm und „Bei Microsoft anmelden“
+Durch die Kombination aus Microsoft-Logo und dem Text „Bei Microsoft anmelden“ hebt sich Azure AD von anderen Identitätsanbietern ab, die Ihre App möglicherweise unterstützt. Sollte für „Bei Microsoft anmelden“ nicht genügend Platz zur Verfügung stehen, kann der Text auch zu „Anmelden“ verkürzt werden.
 
+![Anwendungstypen und -szenarien](./media/active-directory-branding-guidelines/sign-in-with-microsoft-light.png)
 
+![Anwendungstypen und -szenarien](./media/active-directory-branding-guidelines/sign-in-light.png)
+
+Für die Schaltflächen kann auch ein dunkles Farbschema verwendet werden.
+
+![Anwendungstypen und -szenarien](./media/active-directory-branding-guidelines/sign-in-with-microsoft-dark.png)
+
+![Anwendungstypen und -szenarien](./media/active-directory-branding-guidelines/sign-in-dark.png)
+
+## Brandingempfehlungen
+
+Verwenden Sie „Geschäfts- oder Schulkonto“ in Kombination mit der Schaltfläche „Bei Microsoft anmelden“, um eine zusätzliche Erläuterung bereitzustellen, damit Endbenutzer sofort wissen, ob sie die Option verwenden können. Verwenden Sie keine Begriffe wie „Unternehmenskonto“, „Geschäftskonto“ oder „Firmenkonto“.
+
+„Office 365-ID“ und „Azure-ID“ dürfen **nicht** verwendet werden. Office 365 ist auch der Name eines Verbraucherangebots von Microsoft, bei dem Azure AD nicht für die Authentifizierung verwendet wird.
+
+Das Microsoft-Logo darf **nicht** verändert werden.
+
+Endbenutzer sollen **nicht** mit den Marken Azure und Active Directory in Berührung kommen. Gegenüber Entwicklern, IT-Experten und Administratoren können diese Begriffe dagegen problemlos verwendet werden.
+
+## Navigationsempfehlungen
+
+Stellen Sie den Benutzern eine Funktion zur Verfügung, über die sie sich abmelden und das Benutzerkonto wechseln können. Die meisten Benutzer besitzen zwar nur ein einzelnes persönliches Konto von Microsoft/Facebook/Google/Twitter, gehören aber häufig mehreren Organisationen an. Die Unterstützung mehrerer angemeldeter Benutzer folgt in Kürze.
+
+<!---HONumber=AcomDC_0629_2016-->

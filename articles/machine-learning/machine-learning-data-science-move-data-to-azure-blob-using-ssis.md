@@ -1,96 +1,91 @@
 <properties
-    pageTitle="Move Data to or from Azure Blob Storage using SSIS connectors | Microsoft Azure"
-    description="Move Data to or from Azure Blob Storage using SSIS connectors."
-    services="machine-learning,storage"
-    documentationCenter=""
-    authors="bradsev"
-    manager="jhubbard"
-    editor="cgronlun" />
+	pageTitle="Verschieben von Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors | Microsoft Azure"
+	description="Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors."
+	services="machine-learning,storage"
+	documentationCenter=""
+	authors="bradsev"
+	manager="jhubbard"
+	editor="cgronlun" />
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/14/2016"
-    ms.author="bradsev" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/14/2016"
+	ms.author="bradsev" />
 
+# Verschieben von Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors
 
-# <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Move Data to or from Azure Blob Storage using SSIS connectors
+Das [SQL Server Integration Services Feature Pack für Azure](https://msdn.microsoft.com/library/mt146770.aspx) bietet Komponenten zum Herstellen einer Verbindung mit Azure, Übertragen von Daten zwischen Azure und lokalen Datenquellen und Verarbeiten von in Azure gespeicherten Daten.
 
-The [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) provides components to connect to Azure, transfer data between Azure and on-premises data sources, and process data stored in Azure.
-
-Guidance on technologies used to move data to and/or from Azure Blob storage are linked here:
+Nachstehend finden Sie Links zu Anleitungen für Technologien zum Verschieben von Daten in den und aus dem Azure-BLOB-Speicher:
 
 [AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 
-Once customers have moved on-premises data into the cloud, they can access it from any Azure service to leverage the full power of the suite of Azure technologies. It may be used, for example, in Azure Machine Learning or on an HDInsight cluster.
+Nachdem Kunden lokale Daten in die Cloud verschoben haben, können sie über sämtliche Azure-Dienste darauf zugreifen, um die ganze Leistungsfähigkeit der Azure-Technologiepalette zu nutzen. Die Daten können beispielsweise in Azure Machine Learning oder einem HDInsight-Cluster verwendet werden.
 
-This is typically be the first step for the [SQL](machine-learning-data-science-process-sql-walkthrough.md) and [HDInsight](machine-learning-data-science-process-hive-walkthrough.md) walkthroughs.
+Dies ist normalerweise der erste Schritt in exemplarischen Vorgehensweisen für [SQL](machine-learning-data-science-process-sql-walkthrough.md) und [HDInsight](machine-learning-data-science-process-hive-walkthrough.md).
 
-For a discussion of canonical scenarios that use SSIS to accomplish business needs common in hybrid data integration scenarios, see [Doing more with SQL Server Integration Services Feature Pack for Azure](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog.
+Eine Beschreibung gängiger Szenarien, in denen SQL Server Integration Services (SSIS) zum Erfüllen geschäftlicher Anforderungen in hybriden Datenintegrationsszenarien zum Einsatz kommt, finden Sie im Blog [Doing more with SQL Server Integration Services Feature Pack for Azure](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx).
 
-> [AZURE.NOTE] For a complete introduction to Azure blob storage, refer to [Azure Blob Basics](../storage/storage-dotnet-how-to-use-blobs.md) and to [Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> [AZURE.NOTE] Eine umfassende Einführung in Azure-Blobspeicher finden Sie unter [Erste Schritte mit Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
-## <a name="prerequisites"></a>Prerequisites
+## Voraussetzungen
 
-To perform the tasks described in this article, you must have an Azure subscription and an Azure storage account set up. You must know your Azure storage account name and account key to upload or download data.
+Zum Ausführen der in diesem Artikel beschriebenen Aufgaben benötigen Sie ein eingerichtetes Azure-Abonnement und Azure-Speicherkonto. Um Daten hoch- und herunterladen zu können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen.
 
-- To set up an **Azure subscription**, see [Free one-month trial](https://azure.microsoft.com/pricing/free-trial/).
+- Informationen zum Einrichten eines **Azure-Abonnements** finden Sie unter [Kostenlose 1-Monat-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-- For instructions on creating a **storage account** and for getting account and key information, see [About Azure storage accounts](../storage/storage-create-storage-account.md).
-
-
-To use the **SSIS connectors**, you must download:
-
-- **SQL Server 2014 or 2016 Standard (or above)**: Install includes SQL Server Integration Services.
-- **Microsoft SQL Server 2014 or 2016 Integration Services Feature Pack for Azure**: These can be downloaded, respectively, from the [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) and [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) pages.
-
-> [AZURE.NOTE] SSIS is installed with SQL Server, but is not included in the Express version. For information on what applications are included in various editions of SQL Server, see [SQL Server Editions](http://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
-
-For training materials on SSIS, see [Hands On Training for SSIS](http://www.microsoft.com/download/details.aspx?id=20766)
-
-For information on how to get up-and-running using SISS to build simple extraction, transformation, and load (ETL) packages, see [SSIS Tutorial: Creating a Simple ETL Package](https://msdn.microsoft.com/library/ms169917.aspx).
-
-## <a name="download-nyc-taxi-dataset"></a>Download NYC Taxi dataset  
-The example described here use a publicly available dataset -- the [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) dataset. The dataset consists of about 173 million taxi rides in NYC in the year 2013. There are two types of data: trip details data and fare data. As there is a file for each month, we have 24 files in all, each of which is approximately 2GB uncompressed.
+- Anleitungen zum Erstellen eines **Speicherkontos** und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
 
 
-## <a name="upload-data-to-azure-blob-storage"></a>Upload data to Azure blob storage
-To move data using the SSIS feature pack from on-premises to Azure blob storage, we use an instance of the [**Azure Blob Upload Task**](https://msdn.microsoft.com/library/mt146776.aspx), shown here:
+Zum Verwenden der **SSIS-Connectors** müssen Sie Folgendes herunterladen:
+
+- **SQL Server 2014 oder 2016 Standard (oder höher)**: Die Installation umfasst SQL Server Integration Services.
+- **Microsoft SQL Server 2014 oder 2016 Integration Services Feature Pack für Azure:** Diese Pakete können auf den Seiten [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) und [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) heruntergeladen werden.
+
+> [AZURE.NOTE] SSIS wird mit SQL Server installiert, ist aber nicht in der Express-Version enthalten. Informationen dazu, welche Anwendungen in verschiedenen Editionen von SQL Server enthalten sind, finden Sie unter [SQL Server-Editionen](http://www.microsoft.com/de-DE/server-cloud/products/sql-server-editions/).
+
+Schulungsmaterialien für SSIS finden Sie unter [Praktische Schulung für SSIS](http://www.microsoft.com/download/details.aspx?id=20766).
+
+Informationen zur Inbetriebnahme von SSIS zum Erstellen von ETL-Paketen (Extrahieren, Transformieren, Laden) finden Sie im [SSIS-Tutorial: Erstellen eines einfachen ETL-Pakets](https://msdn.microsoft.com/library/ms169917.aspx).
+
+## Herunterladen des Datasets „NYC Taxi Trips“  
+Das hier beschriebene Beispiel verwendet ein öffentlich verfügbares Dataset mit dem Namen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/). Das Dataset besteht aus ca. 173 Millionen Taxifahrten in New York im Jahr 2013. Es gibt zwei Arten von Daten: Daten zu Fahrten und Daten zum Fahrpreis. Für jeden Monat gibt es jeweils eine Datei, sodass wir insgesamt 24 Dateien haben, die unkomprimiert jeweils 2 GB groß sind.
+
+
+## Hochladen von Daten in Azure-Blobspeicher
+Um Daten mithilfe des SSIS Feature Packs aus lokalem Speicher in Azure-Blobspeicher zu verschieben, verwenden wir eine Instanz der nachstehend gezeigten [**Aufgabe zum Hochladen von Azure-Blobs**](https://msdn.microsoft.com/library/mt146776.aspx):
 
 ![configure-data-science-vm](./media/machine-learning-data-science-move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
 
-The parameters that the task uses are described here:
+Die Parameter dieser Aufgabe werden nachfolgend beschrieben:
 
 
-Field|Description|
+Feld|Beschreibung|
 ----------------------|----------------|
-**AzureStorageConnection**|Specifies an existing Azure Storage Connection Manager or creates a new one that refers to an Azure storage account that points to where the blob files are hosted.|
-**BlobContainer**|Specifies the name of the blob container that hold the uploaded files as blobs.|
-**BlobDirectory**|Specifies the blob directory where the uploaded file is stored as a block blob. The blob directory is a virtual hierarchical structure. If the blob already exists, it ia replaced.|
-**LocalDirectory**|Specifies the local directory that contains the files to be uploaded.|
-**FileName**|Specifies a name filter to select files with the specified name pattern. For example, MySheet\*.xls\* includes files such as MySheet001.xls and MySheetABC.xlsx|
-**TimeRangeFrom/TimeRangeTo**|Specifies a time range filter. Files modified after *TimeRangeFrom* and before *TimeRangeTo* are included.|
+**AzureStorageConnection**|Gibt einen vorhandenen Azure Storage-Verbindungs-Manager an oder erstellt einen neuen, der auf ein Azure-Speicherkonto verweist, das dorthin zeigt, wo die Blobdateien gehostet werden.|
+**BlobContainer**|Gibt den Namen des Blobcontainers an, der die hochgeladenen Dateien als Blobs enthält.|
+**BlobDirectory**|Gibt das Blobverzeichnis an, in dem die hochgeladene Datei als Blockblob gespeichert wird. Das Blobverzeichnis ist eine virtuelle hierarchische Struktur. Wenn das Blob bereits vorhanden ist, wird es ersetzt.|
+**LocalDirectory**|Gibt das lokale Verzeichnis mit den hochzuladenden Dateien an.|
+**FileName**|Gibt einen Namensfilter an, um Dateien mit dem angegebenen Namensmuster auszuwählen. Beispielsweise enthält „MySheet*.xls*“ Dateien wie „MySheet001.xls“ und „MySheetABC.xlsx“.|
+**TimeRangeFrom/TimeRangeTo**|Gibt einen Zeitbereichsfilter an. Nach *TimeRangeFrom* und vor *TimeRangeTo* geänderte Dateien werden eingeschlossen.|
 
 
-> [AZURE.NOTE] The **AzureStorageConnection** credentials need to be correct and the **BlobContainer** must exist before the transfer is attempted.
+> [AZURE.NOTE] Die Anmeldeinformationen für **AzureStorageConnection** müssen ordnungsgemäß sein, und der **BlobContainer** muss vorhanden sein, bevor die Übertragung versucht wird.
 
-## <a name="download-data-from-azure-blob-storage"></a>Download data from Azure blob storage
+## Herunterladen von Daten aus Azure Blob Storage
 
-To download data from Azure blob storage to on-premise storage with SSIS, use an instance of the [Azure Blob Upload Task](https://msdn.microsoft.com/library/mt146779.aspx).
+Um Daten mit SSIS aus Azure-Blobspeicher in den lokalen Speicher herunterzuladen, verwenden Sie eine Instanz der [Aufgabe zum Hochladen von Azure-Blobs](https://msdn.microsoft.com/library/mt146779.aspx).
 
-##<a name="more-advanced-ssis-azure-scenarios"></a>More advanced SSIS-Azure scenarios
-We note here that the SSIS feature pack allows for more complex flows to be handled by packaging tasks together. For example, the blob data could feed directly into an HDInsight cluster, whose output could be downloaded back to a blob and then to on-premise storage. SSIS can run Hive and Pig jobs on an HDInsight cluster using additional SSIS connectors:
+##Erweiterte Azure/SSIS-Szenarien
+Hier sei angemerkt, dass das SSIS Feature Pack komplexere zu verarbeitende Abläufe ermöglicht, indem diese Aufgaben in einem Paket zusammengeführt werden. Beispielsweise können die Blobdaten direkt in einen HDInsight-Cluster übertragen werden, dessen Ausgabe zunächst zurück in ein Blob und anschließend in lokalen Speicher heruntergeladen werden kann. SSIS kann mithilfe eines zusätzlichen SSIS-Connectors Hive- und Pig-Aufträge auf einem HDInsight-Cluster anwenden:
 
-- To run a Hive script on an Azure HDInsight cluster with SSIS, use [Azure HDInsight Hive Task](https://msdn.microsoft.com/library/mt146771.aspx).
-- To run a Pig script on an Azure HDInsight cluster with SSIS, use [Azure HDInsight Pig Task](https://msdn.microsoft.com/library/mt146781.aspx).
+- Verwenden Sie zum Anwenden eines Hive-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Hive-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146771.aspx).
+- Verwenden Sie zum Anwenden eines Pig-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Pig-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146781.aspx).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

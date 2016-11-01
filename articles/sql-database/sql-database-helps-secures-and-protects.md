@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Secures and Protects"
-   description="Learn how SQL Database helps secure and protect"
+   pageTitle="Azure SQL-Datenbank sichert und schützt"
+   description="Erfahren Sie, wie SQL-Datenbank hilft, sichert und schützt"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -17,50 +17,42 @@
    ms.date="09/13/2016"
    ms.author="carlrab"/>
    
+# Azure SQL-Datenbank sichert und schützt
 
-# <a name="azure-sql-database-secures-and-protects"></a>Azure SQL Database Secures and Protects
+## Sichern und Schützen Ihrer App-Daten
 
-## <a name="keep-your-app’s-data-safe-and-secure"></a>Keep your app’s data safe and secure
-
-Azure SQL Database supports millions of mission-critical databases in the cloud&mdash;where they all benefit from high availability, security, compliance, and high performance. From the smallest startup to the largest enterprise, data security is increasingly top of mind for all businesses, and SQL Database supports everyone.
+Azure SQL-Datenbank unterstützt Millionen von unternehmenswichtigen Datenbanken in der Cloud, in der sie alle von hoher Verfügbarkeit, Sicherheit, Compliance und hoher Leistung profitieren. Datensicherheit wird vom kleinsten Startup- bis zum größten Unternehmen immer wichtiger, und SQL-Datenbank unterstützt sie alle.
 
 ![helps-secures-and-protects](./media/sql-database-helps-secures-and-protects/sql-database-helps-secures-and-protects.png)
 
-## <a name="we’ve-got-your-back"></a>We’ve got your back
+## Wir halten Ihnen den Rücken frei!
 
-You can only hope you don't need to access yesterday's backups or recover from a disaster. But if you find yourself in this situation, SQL Database is there to help. With 99.99% availability, automatic backups, Point-in-Time Restore, built-in Geo-Replication, and failover options, you'll rest easy knowing your app is safe and sound.
+Sie können nur hoffen, nicht auf vorhandene Sicherungen zugreifen oder eine Notfallwiederherstellung ausführen zu müssen. Aber falls dies doch notwendig ist, kann Ihnen SQL-Datenbank helfen. Mit einer Verfügbarkeit von 99,99 %, automatischen Sicherungen, Point-in-Time-Wiederherstellung, integrierter Georeplikation und Failoveroptionen wissen Sie immer, dass Ihre App sicher und geschützt ist.
 
-[Read the documentation](sql-database-business-continuity.md)
+[Dokumentation lesen](sql-database-business-continuity.md)
 
-## <a name="the-largest-compliance-portfolio"></a>The largest compliance portfolio
+## Das größte Kompatibilitätsportfolio
 
-SQL Database has the largest compliance portfolio in the industry. So if you need HIPPA compliance or FERPA or even Singapore MTCS Level 3 don't worry&mdash;we got you covered.  
+SQL-Datenbank hat das größte Kompatibilitätsportfolio der Branche. Wenn z.B. Kompatibilität mit HIPPA oder FERPA oder sogar Singapur MTCS Level 3 erforderlich ist, ist das kein Problem – wir decken das alles ab.
 
-[Read the documentation](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
+[Dokumentation lesen](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 
-## <a name="layers-of-protection"></a>Layers of protection
+## Schutzebenen
 
-SQL Database provides multiple layers of data protection. Your data is protected by encrypting data while at rest, in motion or in use, authenticating only authorized users against the database or application, and limiting user access to the appropriate subset of the data. Additionally, SQL Database provides continuous monitoring and auditing of activities to help detect potential threats and provide a record of critical events in case of a breach. These features are balanced by the ability to quickly implement features and mitigate security risk without compromising developer productivity or a customer’s experience.
+SQL-Datenbank bietet mehrere Datenschutzebenen. Ihre Daten werden durch Verschlüsselung im Ruhezustand, während der Übertragung und der Verwendung geschützt, und nur Benutzer, die sich bei der Datenbank oder Anwendung authentifizieren, erhalten eingeschränkten Zugriff auf die entsprechende Datenteilmenge. Darüber hinaus bietet SQL-Datenbank kontinuierliche Überwachungs- und Überprüfungsaktivitäten, die dabei helfen, potenzielle Risiken zu erkennen und einen Datensatz mit kritischen Ereignissen im Falle einer Verletzung bereitzustellen. Diesen Funktionen gegenüber steht die Möglichkeit, Funktionen schnell zu implementieren und Sicherheitsrisiken ohne Gefährdung der Entwicklerproduktivität oder der Kundenerfahrung zu minimieren.
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787593)
+[Dokumentation lesen](http://go.microsoft.com/fwlink/?LinkID=787593)
 
-Go to the homepage to see what else SQL Database has to offer.
-[Check it out](https://azure.microsoft.com/services/sql-database/) 
+Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Get a [free Azure subscription](https://azure.microsoft.com/get-started/) and [create your first Azure SQL Database](sql-database-get-started.md).
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
+Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
  
-Review the [technical overview of SQL Database](sql-database-technical-overview.md).  
+Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

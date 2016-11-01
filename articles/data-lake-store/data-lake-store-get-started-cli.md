@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get started with Data Lake Store using cross-platform command line interface | Microsoft Azure"
-   description="Use Azure cross-platform command line to create a Data Lake Store account and perform basic operations"
+   pageTitle="Erste Schritte mit Data Lake-Speicher mithilfe der plattformübergreifenden Befehlszeilenschnittstelle | Microsoft Azure"
+   description="Verwenden Sie die plattformübergreifende Befehlszeile zum Erstellen eines Data Lake-Speicherkontos und Durchführen grundlegender Vorgänge."
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
@@ -16,185 +16,180 @@
    ms.date="09/27/2016"
    ms.author="nitinme"/>
 
-
-# <a name="get-started-with-azure-data-lake-store-using-azure-command-line"></a>Get started with Azure Data Lake Store using Azure Command Line
+# Erste Schritte mit Azure Data Lake-Speicher unter Verwendung der Azure-Befehlszeile
 
 > [AZURE.SELECTOR]
 - [Portal](data-lake-store-get-started-portal.md)
 - [PowerShell](data-lake-store-get-started-powershell.md)
 - [.NET SDK](data-lake-store-get-started-net-sdk.md)
 - [Java SDK](data-lake-store-get-started-java-sdk.md)
-- [REST API](data-lake-store-get-started-rest-api.md)
-- [Azure CLI](data-lake-store-get-started-cli.md)
+- [REST-API](data-lake-store-get-started-rest-api.md)
+- [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Learn how to use Azure command line interface to create an Azure Data Lake Store account and perform basic operations such as create folders, upload and download data files, delete your account, etc. For more information about Data Lake Store, see [Overview of Data Lake Store](data-lake-store-overview.md).
+Hier erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) ein Azure Data Lake-Speicherkonto erstellen und grundlegende Vorgänge ausführen (also etwa Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen und Ähnliches). Weitere Informationen zum Data Lake-Speicher finden Sie unter [Übersicht über Data Lake-Speicher](data-lake-store-overview.md).
 
-The Azure CLI is implemented in Node.js. It can be used on any platform that supports Node.js, including Windows, Mac, and Linux. The Azure CLI is open source. The source code is managed in GitHub at <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>. This article covers only using the Azure CLI with Data Lake Store. For a general guide on how to use Azure CLI, see [How to use the Azure CLI] [azure-command-line-tools].
+Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux. Die Azure-Befehlszeilenschnittstelle ist Open Source. Der Quellcode wird auf GitHub unter <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a> verwaltet. In diesem Artikel wird lediglich die Verwendung der Azure-CLI mit dem Data Lake-Speicher behandelt. Eine allgemeine Anleitung zur Verwendung der Azure-CLI finden Sie unter [Verwenden der Azure-CLI][azure-command-line-tools].
 
 
-##<a name="prerequisites"></a>Prerequisites
+##Voraussetzungen
 
-Before you begin this article, you must have the following:
+Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
+- **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-- **Azure CLI** - See [Install and configure the Azure CLI](../xplat-cli-install.md) for installation and configuration information. Make sure you reboot your computer after you install the CLI.
+- **Azure-CLI** – Informationen zur Installation und Konfiguration finden Sie unter [Installieren und Konfigurieren der Azure-CLI](../xplat-cli-install.md). Achten Sie darauf, Ihren Computer nach der Installation der Befehlszeilenschnittstelle neu zu starten.
 
-## <a name="authentication"></a>Authentication
+## Authentifizierung
 
-This article uses a simpler authentication approach with Data Lake Store where you log in as an end-user user. The access level to Data Lake Store account and file system is then governed by the access level of the logged in user. However, there are other approaches as well to authenticate with Data Lake Store, which are **end-user authentication** or **service-to-service authentication**. For instructions and more information on how to authenticate, see [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake Store verwendet, bei dem Sie sich als Endbenutzer anmelden. Die Zugriffsebene für das Data Lake Store-Konto und das Dateisystem hängt dann von der Zugriffsebene des angemeldeten Benutzers ab. Für die Authentifizierung mit Data Lake Store stehen mit **Endbenutzerauthentifizierung** und **Dienst-zu-Dienst-Authentifizierung** aber auch noch andere Konzepte zur Verfügung. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory).
 
-##<a name="login-to-your-azure-subscription"></a>Login to your Azure subscription
+##Anmelden bei Ihrem Azure-Abonnement
 
-1. Follow the steps documented in [Connect to an Azure subscription from the Azure Command-Line Interface (Azure CLI)](../xplat-cli-connect.md) and connect to your subscription using the `azure login` method.
+1. Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md) dokumentiert sind, und stellen Sie über die `azure login`-Methode eine Verbindung mit Ihrem Abonnement her.
 
-2. List the subscriptions that are associated with your account using the `azure account list` command.
+2. Listen Sie mithilfe des `azure account list`-Befehls die mit Ihrem Konto verknüpften Abonnements auf.
 
-        info:    Executing command account list
-        data:    Name              Id                                    Current
-        data:    ----------------  ------------------------------------  -------
-        data:    Azure-sub-1       ####################################  true
-        data:    Azure-sub-2       ####################################  false
+		info:    Executing command account list
+		data:    Name              Id                                    Current
+		data:    ----------------  ------------------------------------  -------
+		data:    Azure-sub-1       ####################################  true
+		data:    Azure-sub-2       ####################################  false
 
-    From the output above, **Azure-sub-1** is currently enabled, and the other subscription is **Azure-sub-2**. 
+	In der obigen Ausgabe ist **Azure-sub-1** aktiviert. Das andere Abonnement ist **Azure-sub-2**.
 
-3. Select the subscription you want to work under. If you want to work under the Azure-sub-2 subscription, use the `azure account set` command.
+3. Wählen Sie das Abonnement aus, mit dem Sie arbeiten möchten. Wenn Sie mit dem Abonnement „Azure-sub-2“ arbeiten möchten, verwenden Sie den Befehl `azure account set`.
 
-        azure account set Azure-sub-2
+		azure account set Azure-sub-2
 
 
-## <a name="create-an-azure-data-lake-store-account"></a>Create an Azure Data Lake Store account
+## Erstellen eines Azure Data Lake-Speicherkontos
 
-Open a command prompt, shell, or a terminal session and run the following commands.
+Öffnen Sie eine Eingabeaufforderung, Shell oder Terminalsitzung, und führen Sie die folgenden Befehle aus:
 
-2. Switch to Azure Resource Manager mode using the following command:
+2. Wechseln Sie mit dem folgenden Befehl in den Azure-Ressourcen-Manager-Modus:
 
-        azure config mode arm
+		azure config mode arm
 
 
-5. Create a new resource group. In the following command, provide the parameter values you want to use.
+5. Erstellen Sie eine neue Ressourcengruppe. Geben Sie für den folgenden Befehl die Parameterwerte ein, die Sie verwenden möchten.
 
-        azure group create <resourceGroup> <location>
+		azure group create <resourceGroup> <location>
 
-    If the location name contains spaces, put it in quotes. For example "East US 2".
+	Wenn der Name des Standorts Leerzeichen enthält, setzen Sie ihn in doppelte Anführungszeichen. Beispiel: „USA (Ost) 2“.
 
-5. Create the Data Lake Store account.
+5. Erstellen Sie das Data Lake-Speicherkonto.
 
-        azure datalake store account create <dataLakeStoreAccountName> <location> <resourceGroup>
+		azure datalake store account create <dataLakeStoreAccountName> <location> <resourceGroup>
 
-## <a name="create-folders-in-your-data-lake-store"></a>Create folders in your Data Lake Store
+## Erstellen von Ordnern im Data Lake-Speicher
 
-You can create folders under your Azure Data Lake Store account to manage and store data. Use the following command to create a folder called "mynewfolder" at the root of the Data Lake Store.
+Sie können in Ihrem Azure Data Lake-Speicherkonto Ordner zum Verwalten und Speichern von Daten erstellen. Verwenden Sie den folgenden Befehl, um im Stammverzeichnis des Data Lake-Speichers den Ordner „mynewfolder“ zu erstellen.
 
-    azure datalake store filesystem create <dataLakeStoreAccountName> <path> --folder
+	azure datalake store filesystem create <dataLakeStoreAccountName> <path> --folder
 
-For example:
+Beispiel:
 
-    azure datalake store filesystem create mynewdatalakestore /mynewfolder --folder
+	azure datalake store filesystem create mynewdatalakestore /mynewfolder --folder
 
-## <a name="upload-data-to-your-data-lake-store"></a>Upload data to your Data Lake Store
+## Hochladen von Daten in den Data Lake-Speicher
 
-You can upload your data to Data Lake Store directly at the root level or to a folder that you created within the account. The snippets below demonstrate how to upload some sample data to the folder (**mynewfolder**) you created in the previous section.
+Sie können Ihre Daten direkt auf die Stammebene eines Data Lake-Speichers oder in einen im Konto erstellten Ordner hochladen. Die folgenden Codeausschnitte veranschaulichen das Hochladen von Beispieldaten in den im vorigen Abschnitt erstellten Ordner (**mynewfolder**).
 
-If you are looking for some sample data to upload, you can get the **Ambulance Data** folder from the [Azure Data Lake Git Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Download the file and store it in a local directory on your computer, such as  C:\sampledata\.
+Wenn Sie Beispieldaten hochladen möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) herunterladen. Laden Sie die Datei herunter, und speichern Sie sie in ein lokales Verzeichnis auf dem Computer, z. B. „C:\\sampledata“.
 
-    azure datalake store filesystem import <dataLakeStoreAccountName> "<source path>" "<destination path>"
+	azure datalake store filesystem import <dataLakeStoreAccountName> "<source path>" "<destination path>"
 
-For example:
+Beispiel:
 
-    azure datalake store filesystem import mynewdatalakestore "C:\SampleData\AmbulanceData\vehicle1_09142014.csv" "/mynewfolder/vehicle1_09142014.csv"
+	azure datalake store filesystem import mynewdatalakestore "C:\SampleData\AmbulanceData\vehicle1_09142014.csv" "/mynewfolder/vehicle1_09142014.csv"
 
 
-## <a name="list-files-in-data-lake-store"></a>List files in Data Lake Store
+## Auflisten von Dateien im Data Lake-Speicher
 
-Use the following command to list the files in a Data Lake Store account.
+Verwenden Sie den folgenden Befehl, um die Dateien in einem Data Lake-Speicherkonto aufzulisten.
 
-    azure datalake store filesystem list <dataLakeStoreAccountName> <path>
+	azure datalake store filesystem list <dataLakeStoreAccountName> <path>
 
-For example:
+Beispiel:
 
-    azure datalake store filesystem list mynewdatalakestore /mynewfolder
+	azure datalake store filesystem list mynewdatalakestore /mynewfolder
 
-The output of this should be similar to the following:
+Die Ausgabe sollte in etwa wie folgt aussehen:
 
-    info:    Executing command datalake store filesystem list
-    data:    accessTime: 1446245025257
-    data:    blockSize: 268435456
-    data:    group: NotSupportYet
-    data:    length: 1589881
-    data:    modificationTime: 1446245105763
-    data:    owner: NotSupportYet
-    data:    pathSuffix: vehicle1_09142014.csv
-    data:    permission: 777
-    data:    replication: 0
-    data:    type: FILE
-    data:    ------------------------------------------------------------------------------------
-    info:    datalake store filesystem list command OK
+	info:    Executing command datalake store filesystem list
+	data:    accessTime: 1446245025257
+	data:    blockSize: 268435456
+	data:    group: NotSupportYet
+	data:    length: 1589881
+	data:    modificationTime: 1446245105763
+	data:    owner: NotSupportYet
+	data:    pathSuffix: vehicle1_09142014.csv
+	data:    permission: 777
+	data:    replication: 0
+	data:    type: FILE
+	data:    ------------------------------------------------------------------------------------
+	info:    datalake store filesystem list command OK
 
-## <a name="rename,-download,-and-delete-data-from-your-data-lake-store"></a>Rename, download, and delete data from your Data Lake Store
+## Umbenennen, Herunterladen und Löschen von Daten im Data Lake-Speicher
 
-* **To rename a file**, use the following command:
+* Verwenden Sie zum **Umbenennen einer Datei** den folgenden Befehl:
 
-        azure datalake store filesystem move <dataLakeStoreAccountName> <path/old_file_name> <path/new_file_name>
+    	azure datalake store filesystem move <dataLakeStoreAccountName> <path/old_file_name> <path/new_file_name>
 
-    For example:
+	Beispiel:
 
-        azure datalake store filesystem move mynewdatalakestore /mynewfolder/vehicle1_09142014.csv /mynewfolder/vehicle1_09142014_copy.csv
+		azure datalake store filesystem move mynewdatalakestore /mynewfolder/vehicle1_09142014.csv /mynewfolder/vehicle1_09142014_copy.csv
 
-* **To download a file**, use the following command. Make sure the destination path you specify already exists.
+* Verwenden Sie zum **Herunterladen einer Datei** den folgenden Befehl: Stellen Sie sicher, dass der angegebene Zielpfad bereits vorhanden ist.
 
-        azure datalake store filesystem export <dataLakeStoreAccountName> <source_path> <destination_path>
+		azure datalake store filesystem export <dataLakeStoreAccountName> <source_path> <destination_path>
 
-    For example:
+	Beispiel:
 
-        azure datalake store filesystem export mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv "C:\mysampledata\vehicle1_09142014_copy.csv"
+		azure datalake store filesystem export mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv "C:\mysampledata\vehicle1_09142014_copy.csv"
 
-* **To delete a file**, use the following command:
+* Verwenden Sie zum **Löschen einer Datei** den folgenden Befehl:
 
-        azure datalake store filesystem delete <dataLakeStoreAccountName> <path>
+		azure datalake store filesystem delete <dataLakeStoreAccountName> <path>
 
-    For example:
+	Beispiel:
 
-        azure datalake store filesystem delete mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv
+		azure datalake store filesystem delete mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv
 
-    When prompted, enter **Y** to delete the item.
+	Geben Sie nach entsprechender Aufforderung **Y** ein, um das Element zu löschen.
 
-## <a name="view-the-access-control-list-for-a-folder-in-data-lake-store"></a>View the access control list for a folder in Data Lake Store
+## Anzeigen der Zugriffssteuerungsliste für einen Ordner im Data Lake-Speicher
 
-Use the following command to view the ACLs on a Data Lake Store folder. In the current release, ACLs can be set only on the root of the Data Lake Store. So, the path parameter below will always be root (/).
+Verwenden Sie den folgenden Befehl, um die Zugriffssteuerungslisten in einem Ordner des Data Lake-Speichers anzuzeigen. In der aktuellen Version können Zugriffssteuerungslisten nur im Stammverzeichnis des Data Lake-Speichers festgelegt werden. Für den path-Parameter im folgenden Codeabschnitt wird also immer das Stammverzeichnis (/) angegeben.
 
-    azure datalake store permissions show <dataLakeStoreName> <path>
+	azure datalake store permissions show <dataLakeStoreName> <path>
 
-For example:
+Beispiel:
 
-    azure datalake store permissions show mynewdatalakestore /
+	azure datalake store permissions show mynewdatalakestore /
 
 
-## <a name="delete-your-data-lake-store-account"></a>Delete your Data Lake Store account
+## Löschen Ihres Data Lake-Speicherkontos
 
-Use the following command to delete a Data Lake Store account.
+Verwenden Sie zum Löschen eines Data Lake-Speicherkontos den folgenden Befehl.
 
-    azure datalake store account delete <dataLakeStoreAccountName>
+	azure datalake store account delete <dataLakeStoreAccountName>
 
-For example:
+Beispiel:
 
-    azure datalake store account delete mynewdatalakestore
+	azure datalake store account delete mynewdatalakestore
 
-When prompted, enter **Y** to delete the account.
+Geben Sie nach entsprechender Aufforderung **Y** ein, um das Konto zu löschen.
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- [Secure data in Data Lake Store](data-lake-store-secure-data.md)
-- [Use Azure Data Lake Analytics with Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-- [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+- [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+- [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

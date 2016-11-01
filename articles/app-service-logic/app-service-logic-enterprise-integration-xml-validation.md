@@ -1,53 +1,43 @@
 <properties 
-    pageTitle="Overview of XML validation in the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-    description="Learn how validation works in the Enterprise Integration Pack and Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="msftman" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="Übersicht über die XML-Überprüfung im Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
+	description="Erfahren Sie, wie die Überprüfung im Enterprise Integration Pack und in Logik-Apps erfolgt" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/08/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/08/2016" 
+	ms.author="deonhe"/>
 
+# Unternehmensintegration mit XML-Überprüfung
 
-# <a name="enterprise-integration-with-xml-validation"></a>Enterprise integration with XML validation
+## Übersicht
+In B2B-Szenarien müssen die Vereinbarungspartner häufig überprüfen, ob die untereinander ausgetauschten Nachrichten gültig sind, ehe die Verarbeitung der Daten beginnen kann. Im Enterprise Integration Pack können Sie den XML-Connector „Überprüfung“ verwenden, um Dokumente im Abgleich mit einem vordefinierten Schema auf Gültigkeit zu überprüfen.
 
-## <a name="overview"></a>Overview
-Often, in B2B scenarios, the partners to an agreement need to validate that messages they exchange among each other are valid before processing of the data can begin. In the Enterprise Integration Pack, you can use the XML Validation connector to validate documents against a predefined schema.  
+## Überprüfen eines Dokuments mit dem XML-Connector „Überprüfung“
+1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](./app-service-logic-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"), das das Schema enthält, das Sie zum Überprüfen der XML-Daten verwenden.
+2. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu. ![](./media/app-service-logic-enterprise-integration-xml/xml-1.png)
+3. Fügen Sie die Aktion **XML-Überprüfung** hinzu, indem Sie zuerst **Aktion hinzufügen** auswählen.
+4. Geben Sie *xml* in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten.
+5. Wählen Sie **XML-Überprüfung** aus. ![](./media/app-service-logic-enterprise-integration-xml/xml-2.png)
+6. Wählen Sie das Textfeld **INHALT** aus. ![](./media/app-service-logic-enterprise-integration-xml/xml-1-5.png)
+7. Wählen Sie das „Body“-Tag als den Inhalt aus, den Sie überprüfen möchten. ![](./media/app-service-logic-enterprise-integration-xml/xml-3.png)
+8. Wählen Sie das Listenfeld **SCHEMANAME** und dann das Schema aus, das Sie verwenden möchten, um den zuvor eingegebenen *Inhalt* zu überprüfen. ![](./media/app-service-logic-enterprise-integration-xml/xml-4.png)
+9. Speichern Sie Ihre Arbeit. ![](./media/app-service-logic-enterprise-integration-xml/xml-5.png)
 
-## <a name="how-to-validate-a-document-with-the-xml-validation-connector"></a>How to validate a document with the XML Validation connector
-1. Create a Logic app and [link it to your integration account](./app-service-logic-enterprise-integration-accounts.md "Learn to link an integration account to a Logic app") that contains the schema you will use to validate the XML data.
-2. Add a **Request - When an HTTP request is received** trigger to your Logic app  
-![](./media/app-service-logic-enterprise-integration-xml/xml-1.png)    
-3. Add the **XML Validation** action by first selecting **Add an action**  
-4. Enter *xml* in the search box in order to filter all the actions to the one that you want to use 
-5. Select **XML Validation**     
-![](./media/app-service-logic-enterprise-integration-xml/xml-2.png)   
-6. Select the **CONTENT** text box  
-![](./media/app-service-logic-enterprise-integration-xml/xml-1-5.png)
-7. Select the body tag as the content that will be validated.   
-![](./media/app-service-logic-enterprise-integration-xml/xml-3.png)  
-8. Select the **SCHEMA NAME** list box and chose the schema you want to use to validate the input *content* above     
-![](./media/app-service-logic-enterprise-integration-xml/xml-4.png) 
-9. Save your work  
-![](./media/app-service-logic-enterprise-integration-xml/xml-5.png) 
+An diesem Punkt ist das Einrichten des Überprüfungsconnectors abgeschlossen. In einer realen Anwendung werden die überprüften Daten in einer branchenspezifischen Anwendung wie Salesforce gespeichert. Sie können problemlos eine Aktion zum Senden der Ausgabe der Überprüfung an Salesforce hinzufügen.
 
-At this point, you are finished setting up your validation connector. In a real world application, you may want to store the validated data in an LOB application such as SalesForce. You can easily add an action to send the output of the validation to Salesforce. 
+Sie können jetzt Ihre Überprüfungsaktion testen, indem Sie eine Anforderung an den HTTP-Endpunkt stellen.
 
-You can now test your validation action by making a request to the HTTP endpoint.  
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+[Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-[Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")   
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

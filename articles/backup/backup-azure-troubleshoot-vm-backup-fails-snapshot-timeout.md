@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure VM Backup fails: Could not communicate with the VM agent for snapshot status - Snapshot VM sub task timed out | Microsoft Azure"
-   description="Symptoms causes and resolutions for Azure VM backup failures related to could not communicate with the VM agent for snapshot status. Snapshot VM sub task timed out error"
+   pageTitle="Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM. | Microsoft Azure"
+   description="Hier erfahren Sie mehr zu den Symptomen und Ursachen von Azure-VM-Sicherungsfehlern sowie Lösungen für diese Fehler, die im Zusammenhang mit dem Problem „Die Kommunikation mit dem VM-Agent im Hinblick auf den Status der Momentaufnahme war nicht möglich.“ auftreten. Fehler „Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM“"
    services="backup"
    documentationCenter=""
    authors="genlin"
@@ -16,129 +16,124 @@
     ms.date="07/14/2016"
     ms.author="jimpark; markgal;genli"/>
 
+# Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.
 
-# <a name="azure-vm-backup-fails:-could-not-communicate-with-the-vm-agent-for-snapshot-status---snapshot-vm-sub-task-timed-out"></a>Azure VM Backup fails: Could not communicate with the VM agent for snapshot status - Snapshot VM sub task timed out
+## Zusammenfassung
 
-## <a name="summary"></a>Summary
-
-After registering and scheduling a Virtual Machine (VM) for Azure Backup, the Azure Backup service initiates the backup job at the scheduled time by communicating with the backup extension in the VM to take a point-in-time snapshot. There are conditions that may prevent the snapshot from being triggered which leads to a backup failure. This article provides troubleshooting steps for issues related to Azure VM backup failures related to snapshot time out error.
+Nach dem Registrieren und Planen eines virtuellen Computers (Virtual Machine, VM) für die Azure-Sicherung initiiert der Azure Backup-Dienst den Sicherungsauftrag zur geplanten Zeit, indem er mit der Sicherungserweiterung auf dem virtuellen Computer zum Erstellen einer Momentaufnahme kommuniziert. Es gibt Umstände, die die Auslösung der Momentaufnahme verhindern, was dann zu einem Sicherungsfehler führt. Dieser Artikel enthält Schritte zum Beheben von Problemen im Zusammenhang mit Azure-VM-Sicherungsfehlern, die infolge einer Zeitüberschreitung bei der Momentaufnahme auftreten.
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="symptom"></a>Symptom
+## Symptom
 
-Microsoft Azure Backup for infrastructure as a service (IaaS) VM fails and returns the following error message in the job error details in Azure Portal.
+Bei Microsoft Azure Backup für IaaS-VMs (Infrastructure as a Service) tritt ein Fehler auf, und im Azure-Portal wird in den Auftragsfehlerdetails die folgende Fehlermeldung zurückgegeben:
 
-**Could not communicate with the VM agent for snapshot status - Snapshot VM sub task timed out.**
+**Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.**
 
-## <a name="cause"></a>Cause
-There are four common causes for this error:
+## Ursache
+Es gibt vier häufige Ursachen für diesen Fehler:
 
-- The VM does not have Internet access.
-- The Microsoft Azure VM agent installed in the VM is out of date (for Linux VMs).
-- The backup extension fails to update or load.
-- The snapshots status cannot be retrieved or the snapshots cannot be taken.
+- Der virtuelle Computer verfügt nicht über Internetzugriff.
+- Der auf dem virtuellen Computer installierte Microsoft Azure-VM-Agent ist veraltet (virtuelle Linux-Computer).
+- Die Sicherungserweiterung wird nicht aktualisiert oder geladen.
+- Der Momentaufnahmestatus kann nicht abgerufen werden, oder die Momentaufnahmen können nicht erstellt werden.
 
-## <a name="cause-1:-the-vm-does-not-have-internet-access"></a>Cause 1: The VM does not have Internet access
-Per the deployment requirement, the VM has no Internet access, or has restrictions in place that prevent access to the Azure infrastructure.
+## Ursache 1: Der virtuelle Computer verfügt nicht über Internetzugriff.
+Gemäß der Bereitstellungsanforderung verfügt der virtuelle Computers nicht über Internetzugriff, oder es liegen Einschränkungen vor, die den Zugriff auf die Azure-Infrastruktur verhindern.
 
-The backup extension requires connectivity to the Azure public IP addresses to function correctly. This is because it sends commands to an Azure Storage endpoint (HTTP URL) to manage the snapshots of the VM. If the extension does not have access to the public Internet, the backup eventually fails.
+Die Sicherungserweiterung muss eine Verbindung mit den öffentlichen Azure-IP-Adressen herstellen können, damit sie ordnungsgemäß funktioniert. Das liegt daran, dass sie Befehle an einen Azure Storage-Endpunkt (HTTP-URL) sendet, um die Momentaufnahmen des virtuellen Computers zu verwalten. Wenn die Erweiterung keinen Zugriff auf das öffentliche Internet hat, schlägt die Sicherung fehl.
 
-### <a name="solution"></a>Solution
-In this scenario, use one of the following methods to resolve the issue:
+### Lösung
+Verwenden Sie in diesem Szenario eine der folgenden Methoden, um das Problem zu beheben:
 
-- Whitelist the Azure datacenter IP ranges
-- Create a path for HTTP traffic to flow
+- Aufnehmen der IP-Bereiche des Azure-Rechenzentrums in eine Positivliste
+- Erstellen eines Pfads für HTTP-Datenverkehr
 
-### <a name="to-whitelist-the-azure-datacenter-ip-ranges"></a>To whitelist the Azure datacenter IP ranges
+### So nehmen Sie die IP-Bereiche des Azure-Rechenzentrums in eine Positivliste auf
 
-1. Obtain the [list of Azure datacenter IPs](https://www.microsoft.com/download/details.aspx?id=41653) to be whitelisted.
-2. Unblock the IPs by using the New-NetRoute cmdlet. Run this cmdlet in the Azure VM in an elevated PowerShell window (run as Administrator).
-3. Add rules to the Network Security Group (NSG) if you have one to allow access to the IPs.
+1. Beschaffen Sie sich die [Liste mit den IP-Adressen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653), die auf der Positivliste stehen sollen.
+2. Heben Sie die Blockierung für die IP-Adressen mit dem Cmdlet „New-NetRoute“ auf. Führen Sie dieses Cmdlet auf dem virtuellen Azure-Computer in einem PowerShell-Fenster mit erhöhten Rechten aus (als Administrator).
+3. Fügen Sie der Netzwerksicherheitsgruppe (NSG) (falls vorhanden) Regeln für den Zugriff auf die IP-Adressen hinzu.
 
-### <a name="to-create-a-path-for-http-traffic-to-flow"></a>To create a path for HTTP traffic to flow
+### So erstellen Sie einen Pfad für HTTP-Datenverkehr
 
-1. If you have network restrictions in place (for example, an NSG), deploy an HTTP proxy server to route the traffic.
-2. If you have a network security group (NSG), add rules to allow access to the Internet from the HTTP proxy.
+1. Wenn Netzwerkeinschränkungen bestehen (beispielsweise eine NSG), sollte ein HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereitgestellt werden.
+2. Falls Sie eine Netzwerksicherheitsgruppe eingerichtet haben, fügen Sie ihr Regeln für den Zugriff auf das Internet über den HTTP-Proxy hinzu.
 
-Learn how to [set up an HTTP proxy for VM backups](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
+Erfahren Sie, wie Sie [einen HTTP-Proxy für die Sicherung von virtuellen Computern einrichten](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
 
-## <a name="cause-2:-the-microsoft-azure-vm-agent-installed-in-the-vm-is-out-of-date-(for-linux-vms)"></a>Cause 2: The Microsoft Azure VM agent installed in the VM is out of date (for Linux VMs)
+## Ursache 2: Der auf dem virtuellen Computer installierte Microsoft Azure-VM-Agent ist veraltet (virtuelle Linux-Computer).
 
-### <a name="solution"></a>Solution
-Most agent-related or extension-related failures for Linux VMs are caused by issues that affect an old VM agent. As a general guideline, the first steps to troubleshoot this issue are the following:
+### Lösung
+Die meisten agent- oder erweiterungsbezogenen Fehler bei virtuellen Linux-Computern werden durch Probleme verursacht, die einen veralteten VM-Agent betreffen. Zur Problembehandlung werden im Allgemeinen zunächst die folgenden Schritte ausgeführt:
 
-1. [Install the latest Azure VM agent](https://github.com/Azure/WALinuxAgent).
-2. Make sure that the Azure agent is running on the VM. To do this, run the following command:     ```ps -e```
+1. [Installieren Sie den neuesten Azure-VM-Agent](https://github.com/Azure/WALinuxAgent).
+2. Stellen Sie sicher, dass der Azure-Agent auf dem virtuellen Computer ausgeführt wird. Führen Sie zu diesem Zweck den folgenden Befehl aus: ```ps -e```
 
-    If this process is not running, use the following commands to restart it.
+    Wenn dieser Prozess nicht ausgeführt wird, verwenden Sie die folgenden Befehle, um ihn neu zu starten.
 
-    For Ubuntu:     ```service walinuxagent start```
+    Für Ubuntu: ```service walinuxagent start```
 
-    For other distributions:     ```service waagent start
+    Für andere Distributionen: ```service waagent start
 ```
 
-3. [Configure the auto restart agent](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
+3. [Konfigurieren Sie den Agent für den automatischen Neustart](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 
-4. Run a new test backup. If the failures persist, please collect logs from the following folders for further debugging.
+4. Führen Sie eine neue Testsicherung aus. Wenn die Fehler weiterhin auftreten, verwenden Sie die Protokolle aus den folgenden Ordnern für weitere Debuggingschritte.
 
-    We require the following logs from the customer’s VM:
+    Wir benötigen die folgenden Protokolle von den virtuellen Computern des Kunden:
 
     - /var/lib/waagent/*.xml
     - /var/log/waagent.log
     - /var/log/azure/*
 
-If we require verbose logging for waagent, follow these steps to enable this:
+Ist die ausführliche Protokollierung für waagent erforderlich, führen Sie zu ihrer Aktivierung die folgenden Schritte aus:
 
-1. In the /etc/waagent.conf file, locate the following line:
+1. Suchen Sie in der Datei „/etc/waagent.conf“ die folgende Zeile:
 
     Enable verbose logging (y|n)
 
-2. Change the **Logs.Verbose** value from n to y.
-3. Save the change, and then restart waagent by following the previous steps in this section.
+2. Ändern Sie den Wert für **Logs.Verbose** von „n“ in „y“.
+3. Speichern Sie die Änderung, und starten Sie waagent neu, indem Sie die zuvor aufgeführten Schritte in diesem Abschnitt ausführen.
 
-## Cause 3: The backup extension fails to update or load
-If extensions cannot be loaded, then Backup fails because a snapshot cannot be taken.
+## Ursache 3: Die Sicherungserweiterung wird nicht aktualisiert oder geladen.
+Wenn Erweiterungen nicht geladen werden können, schlägt die Sicherung fehl, da keine Momentaufnahme erstellt werden kann.
 
-### Solution
-For Windows guests:
+### Lösung
+Für Windows-Gäste:
 
-1. Verify that the iaasvmprovider service is enabled and has a startup type of automatic.
-2. If this is not the configuration, enable the service to determine whether the next backup succeeds.
+1. Stellen Sie sicher, dass der iaasvmprovider-Dienst aktiviert und dafür der automatische Start festgelegt ist.
+2. Weicht die Konfiguration davon ab, aktivieren Sie den Dienst, um zu ermitteln, ob die nächste Sicherung erfolgreich ist.
 
-For Linux guests:
+Für Linux-Gäste:
 
-The latest version of VMSnapshot Linux (extension used by backup) is 1.0.91.0
+Die neueste Version von VMSnapshot Linux (die für die Sicherung verwendete Erweiterung) lautet 1.0.91.0.
 
-If the backup extension still fails to update or load, you can force the VMSnapshot extension to be reloaded by uninstalling the extension. The next backup attempt will reload the extension.
+Kann die Sicherungserweiterung immer noch nicht aktualisiert oder geladen werden, können Sie das erneute Laden der VMSnapshot-Erweiterung erzwingen, indem Sie die Erweiterung deinstallieren. Beim nächsten Sicherungsversuch wird die Erweiterung neu geladen.
 
-### To uninstall the extension
+### So deinstallieren Sie die Erweiterung
 
-1. Go to the [Azure portal](https://portal.azure.com/).
-2. Locate the particular VM that has backup problems.
-3. Click **Settings**.
-4. Click **Extensions**.
-5. Click **Vmsnapshot Extension**.
-6. Click **uninstall**.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
+2. Suchen Sie nach dem bestimmten virtuellen Computer, auf dem Sicherungsprobleme auftreten.
+3. Klicken Sie auf **Einstellungen**.
+4. Klicken Sie auf **Erweiterungen**.
+5. Klicken Sie auf **Vmsnapshot Extension** (Vmsnapshot-Erweiterung).
+6. Klicken Sie auf **Deinstallieren**.
 
-This will cause the extension to be reinstalled during the next backup.
+Dadurch wird die Erweiterung während der nächsten Sicherung neu installiert.
 
-## Cause 4: The snapshots status cannot be retrieved or the snapshots cannot be taken
-VM backup relies on issuing snapshot command to underlying storage. The backup can fail because it has no access to storage or because of a delay in snapshot task execution.
+## Ursache 4: Der Momentaufnahmestatus kann nicht abgerufen werden, oder die Momentaufnahmen können nicht erstellt werden.
+Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Speicher ausgegeben. Bei der Sicherung kann ein Fehler auftreten, weil kein Zugriff auf den Speicher besteht oder weil eine Verzögerung bei der Ausführung von Momentaufnahmeaufgaben auftritt.
 
-### Solution
-The following conditions can cause snapshot task failure:
+### Lösung
+Die folgenden Umstände können zu Fehlern bei Momentaufnahmeaufgaben führen:
 
-| Cause | Solution |
+| Ursache | Lösung |
 | ----- | ----- |
-| VMs that have Microsoft SQL Server Backup configured. By default, VM Backup runs a VSS Full backup on Windows VMs. On VMs that are running SQL Server-based servers and on which SQL Server Backup is configured, snapshot execution delays may occur. | Set following registry key if you are experiencing backup failures because of snapshot issues.<br><br>[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE" |
-| VM status is reported incorrectly because the VM is shut down in RDP. If you shut down the virtual machine in RDP, check the portal to determine whether that VM status is reflected correctly. | If it’s not, shut down the VM in the portal by using the ”Shutdown” option in the VM dashboard. |
-| Many VMs from the same cloud service are configured to back up at the same time. | It’s a best practice to spread out the VMs from the same cloud service to have different backup schedules. |
-| The VM is running at high CPU or memory usage. | If the VM is running at high CPU usage (more than 90 percent) or high memory usage, the snapshot task is queued and delayed and eventually times out. In this situation, try on-demand backup. |
-|The VM cannot get host/fabric address from DHCP.|DHCP must be enabled inside the guest for IaaS VM Backup to work.  If the VM cannot get host/fabric address from DHCP response 245, then it cannot download ir run any extensions. If you need a static private IP, you should configure it through the platform. The DHCP option inside the VM should be left enabled. View more information about [Setting a Static Internal Private IP](../virtual-network/virtual-networks-reserved-private-ip.md).|
+| Virtuelle Computer, auf denen die Microsoft SQL Server-Sicherung konfiguriert ist. Standardmäßig wird bei der Sicherung virtueller Computer eine vollständige VSS-Sicherung auf virtuellen Windows-Computern ausgeführt. Auf virtuellen Computern, auf denen SQL Server-basierte Server ausgeführt werden und auf denen SQL Server-Sicherung konfiguriert ist, können Verzögerungen bei der Ausführung von Momentaufnahmen auftreten. | Legen Sie den folgenden Registrierungsschlüssel fest, wenn aufgrund von Momentaufnahmeproblemen Fehler bei der Sicherung auftreten:<br><br>[HKEY\_LOCAL\_MACHINE\\SOFTWARE\\MICROSOFT\\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE" |
+| Der VM-Status wird falsch gemeldet, da der virtuelle Computer im RDP heruntergefahren ist. Wenn Sie den virtuellen Computer im RDP heruntergefahren haben, sollten Sie im Portal überprüfen, ob der VM-Status richtig wiedergegeben wird. | Falls nicht, fahren Sie den virtuellen Computer im Portal mithilfe der Option „Herunterfahren“ auf dem VM-Dashboard herunter. |
+| Viele virtuelle Computer desselben Clouddiensts sind so konfiguriert, dass die Sicherung zur selben Zeit durchgeführt wird. | Eine bewährte Methode besteht darin, für die virtuellen Computer eines Clouddiensts unterschiedliche Sicherungszeitpläne zu verwenden. |
+| Der virtuelle Computer wird bei hoher CPU-/Arbeitsspeicherauslastung ausgeführt. | Wird der virtuelle Computer bei hoher CPU-Auslastung (über 90 Prozent) oder hoher Arbeitsspeicherauslastung ausgeführt, wird die Momentaufnahmeaufgabe der Warteschlange hinzugefügt und verzögert, bis schließlich eine Zeitüberschreitung auftritt. Versuchen Sie es in diesem Fall mit bedarfsgesteuerten Sicherungen. |
+|Der virtuelle Computer kann keine Host-/Fabric-Adresse aus DHCP abrufen.|Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host-/Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese über die Plattform konfigurieren. Die DHCP-Option innerhalb des virtuellen Computers sollte aktiviert bleiben. Lesen Sie weitere Informationen zum [Festlegen einer statischen internen privaten IP-Adresse](../virtual-network/virtual-networks-reserved-private-ip.md).|
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

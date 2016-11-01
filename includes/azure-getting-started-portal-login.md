@@ -8,30 +8,27 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## <a name="connect-to-the-azure-portal-with-a-subscription"></a>Connect to the Azure portal with a subscription
+## Herstellen einer Verbindung mit dem Azure-Portal mit einem Abonnement
 
-To connect to the Azure portal, you must have a subscription.
+Zum Herstellen einer Verbindung mit dem Azure-Portal benötigen Sie ein Abonnement.
 
-### <a name="get-a-new-account"></a>Get a new account
+### Einrichten eines neuen Kontos
 
-If you do not have an existing Azure account, choose one of the following options to obtain an account:
+Falls Sie noch nicht über ein Azure-Konto verfügen, verwenden Sie eine der folgenden Optionen, um ein Konto zu erhalten:
 
-- Get a [free account](https://azure.microsoft.com/get-started/).
-- Use an [MSDN subscription](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/).
+- [Kostenloses Konto erhalten](https://azure.microsoft.com/get-started/)
+- [MSDN-Abonnement verwenden](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)
 
-### <a name="sign-in-by-using-your-existing-account"></a>Sign in by using your existing account
+### Anmelden mit einem vorhandenen Konto
 
-Using your [existing subscription]( https://account.windowsazure.com/Home/Index), follow these steps to connect to the Azure portal.
+Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorhandenen Abonnements](https://account.windowsazure.com/Home/Index) eine Verbindung mit dem Azure-Portal herzustellen.
 
-1. Open your browser of choice and connect to the [Azure portal](https://portal.azure.com/).
+1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/) her.
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/) an.
 
-1. On the **Sign in** page, provide the credentials for your subscription.
+1. Geben Sie auf der Anmeldeseite die Anmeldeinformationen für Ihr Abonnement ein.
 
-   ![Sign in](./media/azure-getting-started-portal-login/login.png)
+   ![Anmelden](./media/azure-getting-started-portal-login/login.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=AcomDC_0912_2016-->

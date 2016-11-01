@@ -1,59 +1,54 @@
 <properties
-    pageTitle="Change the name or logo of an enterprise app in Azure Active Directory preview | Microsoft Azure"
-    description="How to change the name or logo for a custom enterprise app in Azure Active Directory"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Ändern des Namens oder Logos einer Unternehmens-App in der Azure Active Directory-Vorschau | Microsoft Azure"
+	description="Ändern des Namens oder des Logos einer Unternehmens-App in der Azure Active Directory-Vorschau"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
+# Ändern des Namens oder Logos einer Unternehmens-App in der Azure Active Directory-Vorschau
 
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory-preview"></a>Change the name or logo of an enterprise app in Azure Active Directory preview
+In der Azure Active Directory-Vorschau (Azure AD) können Sie auf einfache Weise den Namen oder das Logo für eine benutzerdefinierte Unternehmensanwendung ändern. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Sie müssen über die geeigneten Berechtigungen zum Durchführen dieser Änderungen verfügen. In der aktuellen Vorschau müssen Sie der Ersteller der benutzerdefinierten App sein.
 
-It's easy to change the name or logo for a custom enterprise application in Azure Active Directory (Azure AD) preview. [What's in the preview?](active-directory-preview-explainer.md) You must have the appropriate permissions to make these changes. In the current preview, you must be the creator of the custom app.
+## Wie ändere ich den Namen oder das Logo einer Unternehmens-App?
 
-## <a name="how-do-i-change-an-enterprise-app's-name-or-logo?"></a>How do I change an enterprise app's name or logo?
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
-2. Select **More services**, enter **Azure Active Directory** in the text box, and then select **Enter**.
+3. Wählen Sie auf dem Blatt **Azure Active Directory – *Verzeichnisname*** (d.h. auf dem Azure AD-Blatt für das Verzeichnis, das Sie verwalten) **Unternehmensanwendungen** aus.
 
-3. On the **Azure Active Directory - *directoryname*** blade (that is, the Azure AD blade for the directory you are managing), select **Enterprise applications**.
+	![Öffnen von Unternehmens-Apps](./media/active-directory-coreapps-change-app-logo-azure-portal/open-enterprise-apps.png)
 
-    ![Opening Enterprise apps](./media/active-directory-coreapps-change-app-logo-azure-portal/open-enterprise-apps.png)
+4. Wählen Sie auf dem Blatt **Unternehmensanwendungen** die Einstellung **Alle Anwendungen** aus. Es wird eine Liste aller Apps angezeigt, die Sie verwalten können.
 
-4. On the **Enterprise applications** blade, select **All applications**. You'll see a list of the apps you can manage.
+5. Wählen Sie auf dem Blatt **Unternehmensanwendungen – Alle Anwendungen** eine App aus.
 
-5. On the **Enterprise applications - All applications** blade, select an app.
+6. Wählen Sie auf dem Blatt ***App-Name*** (dem Blatt mit dem Namen der ausgewählten App im Titel) die Einstellung **Eigenschaften**.
 
-6. On the ***appname*** blade (that is, the blade with the name of the selected app in the title), select **Properties**.
+	![Auswählen des Befehls „Eigenschaften“](./media/active-directory-coreapps-change-app-logo-azure-portal/select-app.png)
 
-    ![Selecting the properties command](./media/active-directory-coreapps-change-app-logo-azure-portal/select-app.png)
+7. Suchen Sie auf dem Blatt ***App-Name*** **– Eigenschaften** nach einer Datei, die Sie als neues Logo verwenden möchten, oder bearbeiten Sie den App-Namen (oder beides).
 
-7. On the ***appname*** **- Properties** blade, browse for a file to use as a new logo, or edit the app name, or both.
+	![Befehl zum Ändern des App-Logos oder des Namens](./media/active-directory-coreapps-change-app-logo-azure-portal/change-logo.png)
 
-    ![Changing the app logo or nameproperties command](./media/active-directory-coreapps-change-app-logo-azure-portal/change-logo.png)
+8. Klicken Sie auf **Speichern**.
 
-8. Select the **Save** command.
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+- [Alle meine Gruppen anzeigen](active-directory-groups-view-azure-portal.md)
+- [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](active-directory-coreapps-assign-user-azure-portal.md)
+- [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](active-directory-coreapps-remove-assignment-user-azure-portal.md)
+- [Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App](active-directory-coreapps-disable-app-azure-portal.md)
 
-- [See all of my groups](active-directory-groups-view-azure-portal.md)
-- [Assign a user or group to an enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
-- [Remove a user or group assignment from an enterprise app](active-directory-coreapps-remove-assignment-azure-portal.md)
-- [Disable user sign-ins for an enterprise app](active-directory-coreapps-disable-app-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

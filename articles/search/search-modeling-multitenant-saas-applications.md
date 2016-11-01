@@ -1,139 +1,134 @@
 <properties
-    pageTitle="Modeling Multitenancy in Azure Search | Microsoft Azure | Hosted cloud search service"
-    description="Learn about common design patterns for multitenant SaaS applications while using Azure Search."
-    services="search"
-    authors="ashmaka"
-    documentationCenter=""/>
+	pageTitle="Modellieren von Mehrinstanzenfähigkeit in Azure Search | Microsoft Azure | Gehosteter Cloudsuchdienst"
+	description="Erfahren Sie mehr über gängige Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen bei Verwendung von Azure Search."
+	services="search"
+	authors="ashmaka"
+	documentationCenter=""/>
 
 <tags
-    ms.service="search"
-    ms.devlang="NA"
-    ms.workload="search"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.date="09/20/2016"
-    ms.author="ashmaka"/>
+	ms.service="search"
+	ms.devlang="NA"
+	ms.workload="search"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.date="09/20/2016"
+	ms.author="ashmaka"/>
+
+# Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search
+
+Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit Azure Search erstellt werden.
+
+## Azure Search-Konzepte
+Azure Search ist eine Search-as-a-Service-Lösung, die Entwicklern ermöglicht, Anwendungen umfassende Suchfunktionen hinzuzufügen, ohne Infrastruktur verwalten oder Experte für Suchfunktionalität werden zu müssen. Daten werden in den Dienst hochgeladen und dann in der Cloud gespeichert. Mithilfe einfacher an die Azure Search-API gerichteter Anforderungen können die Daten geändert und durchsucht werden. Eine Übersicht über den Dienst finden Sie im [in diesem Artikel](http://aka.ms/whatisazsearch). Ehe wir näher auf Entwurfsmuster eingehen, ist es wichtig, einige Konzepte von Azure Search zu verstehen.
+
+### Suchdienste, Indizes, Felder und Dokumente
+Zur Verwendung von Azure Search muss ein _Suchdienst_ abonniert werden. Die in Azure Search hochgeladenen Daten werden in einem _Index_ innerhalb des Suchdiensts gespeichert. In einem einzelnen Dienst kann es mehrere Indizes geben. Analog zu den vertrauten Konzepten von Datenbanken kann der Suchdienst mit einer Datenbank verglichen werden, während die Indizes im Dienst mit Tabellen in einer Datenbank vergleichbar sind.
+
+Jeder Index in einen Suchdienst hat ein eigenes Schema, das mithilfe verschiedener anpassbarer _Felder_ definiert wird. Daten werden einem Azure Search-Index in Form einzelner _Dokumente_ hinzugefügt. Jedes Dokument muss in einen bestimmten Index hochgeladen werden und dem Schema dieses Indexes entsprechen. Beim Durchsuchen von Daten mithilfe von Azure Search werden die Volltextsuchabfragen auf einen bestimmten Index angewendet. Wiederum analog zu Datenbanken können Felder mit den Spalten einer Tabelle und Dokumente mit Zeilen verglichen werden.
+
+### Skalierbarkeit
+Ein Azure Search-Dienst im [Tarif „Standard“](https://azure.microsoft.com/pricing/details/search/) kann in zwei Bereichen skaliert werden: Speicherung und Verfügbarkeit.
+* _Partitionen_ können hinzugefügt werden, um die Speicherkapazität eines Suchdienst zu erhöhen.
+* _Replikate_ können einem Dienst hinzugefügt werden, um den Durchsatz von Anforderungen zu erhöhen, die ein Suchdienst verarbeiten kann.
+
+Das Hinzufügen und Entfernen von Partitionen und Replikaten nach Belieben ermöglicht, dass die Kapazität des Suchdiensts mit der Datenmenge und dem Datenverkehr entsprechend den Anforderungen der Anwendung wachsen kann. Damit der Suchdienst eine [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) für Lesevorgänge erfüllen kann, sind zwei Replikate erforderlich. Damit der Dienst eine [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) für Lese- und Schreibvorgänge erfüllen kann, sind drei Replikate erforderlich.
 
 
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Design patterns for multitenant SaaS applications and Azure Search
-
-A multitenant application is one that provides the same services and capabilities to any number of tenants who cannot see or share the data of any other tenant. This document discusses tenant isolation strategies for multitenant applications built with Azure Search.
-
-## <a name="azure-search-concepts"></a>Azure Search concepts
-As a search-as-a-service solution, Azure Search allows developers to add rich search experiences to applications without managing any infrastructure or becoming an expert in search. Data is uploaded to the service and then stored in the cloud. Using simple requests to the Azure Search API, the data can then be modified and searched. An overview of the service can be found in [this article](http://aka.ms/whatisazsearch). Before discussing design patterns, it is important to understand some concepts in Azure Search.
-
-### <a name="search-services,-indexes,-fields,-and-documents"></a>Search services, indexes, fields, and documents
-When using Azure Search, one subscribes to a _search service_. As data is uploaded to Azure Search, it is stored in an _index_ within the search service. There can be a number of indexes within a single service. To use the familiar concepts of databases, the search service can be likened to a database while the indexes within a service can be likened to tables within a database.
-
-Each index within a search service has its own schema, which is defined by a number of customizable _fields_. Data is added to an Azure Search index in the form of individual _documents_. Each document must be uploaded to a particular index and must fit that index's schema. When searching data using Azure Search, the full-text search queries are issued against a particular index.  To compare these concepts to those of a database, fields can be likened to columns in a table and documents can be likened to rows.
-
-### <a name="scalability"></a>Scalability
-Any Azure Search service in the Standard [pricing tier](https://azure.microsoft.com/pricing/details/search/) can scale in two dimensions: storage and availability.
-* _Partitions_ can be added to increase the storage of a search service.
-* _Replicas_ can be added to a service to increase the throughput of requests that a search service can handle.
-
-Adding and removing partitions and replicas at will allow the capacity of the search service to grow with the amount of data and traffic the application demands. In order for a search service to achieve a read [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), it requires two replicas. In order for a service to achieve a read-write [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), it requires three replicas.
+### Dienst- und Indexgrenzwerte für Azure Search
+Azure Search bietet verschiedene [Tarife](https://azure.microsoft.com/pricing/details/search/) mit unterschiedlichen [Grenzwerten und Kontingenten](search-limits-quotas-capacity.md). Diese Grenzwerte gelten auf Dienst-, Index- und Partitionsebene.
 
 
-### <a name="service-and-index-limits-in-azure-search"></a>Service and index limits in Azure Search
-There are a few different [pricing tiers](https://azure.microsoft.com/pricing/details/search/) in Azure Search, each of the tiers has different [limits and quotas](search-limits-quotas-capacity.md). Some of these limits are at the service-level, some are at the index-level, and some are at the partition-level.
-
-
-|                                  | Basic     | Standard1   | Standard2   | Standard3   | Standard3 HD  |
+| | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 |----------------------------------|-----------|-------------|-------------|-------------|---------------|
-| Maximum Replicas per Service     | 3         | 12          | 12          | 12          | 12            |
-| Maximum Partitions per Service   | 1         | 12          | 12          | 12          | 1             |
-| Maximum Search Units (Replicas*Partitions) per Service | 3         | 36          | 36          | 36          | 12            |
-| Maximum Documents per Service    | 1 million | 180 million | 720 million | 1.4 billion | 200 million   |
-| Maximum Storage per Service      | 2 GB      | 300 GB      | 1.2 TB      | 2.4 TB      | 200 GB        |
-| Maximum Documents per Partition  | 1 million | 15 million  | 60 million  | 120 million | 200 million   |
-| Maximum Storage per Partition    | 2 GB      | 25 GB       | 100 GB      | 200 GB      | 200 GB        |
-| Maximum Indexes per Service      | 5         | 50          | 200         | 200         | 1000          |
+| Maximale Anzahl von Replikaten pro Dienst | 3 | 12 | 12 | 12 | 12 |
+| Maximale Anzahl von Partitionen pro Dienst | 1 | 12 | 12 | 12 | 1 |
+| Maximale Anzahl von Sucheinheiten (Replikate x Partitionen) pro Dienst | 3 | 36 | 36 | 36 | 12 |
+| Maximale Anzahl von Dokumenten pro Dienst | 1 Mio. | 180 Mio. | 720 Mio. | 1,4 Mrd. | 200 Mio. |
+| Maximale Speicherkapazität pro Dienst | 2 GB | 300 GB | 1,2 TB | 2,4 TB | 200 GB |
+| Maximale Anzahl von Dokumenten pro Partition | 1 Mio. | 15 Mio. | 60 Mio. | 120 Mio. | 200 Mio. |
+| Maximale Speicherkapazität pro Partition | 2 GB | 25 GB | 100 GB | 200 GB | 200 GB |
+| Maximale Anzahl von Indizes pro Dienst | 5 | 50 | 200 | 200 | 1000 |
 
 
-#### <a name="s3-high-density"></a>S3 High Density
-In Azure Search’s S3 pricing tier, there is an option for the High Density (HD) mode designed specifically for multitenant scenarios. When in High Density mode, the S3 SKU has some different limits than the standard S3 configuration:
-* There can be up to 1000 indexes per service, instead of 200
-* There can be up to 200 GB of data per service, instead of 2.4 TB
-* There can be only 1 partition per service, instead of 12
+#### S3 High Density
+Der Azure Search-Tarif „S3“ bietet als Option einen HD-Modus (High Density), der speziell auf Szenarien mit mehreren Mandanten ausgelegt ist. Im HD-Modus gelten für die SKU „S3“ andere Grenzwerte als für die S3-Standardkonfiguration:
+* Anstatt 200 sind 1000 Indizes pro Dienst möglich.
+* Anstatt 200 GB ist eine Speicherkapazität von 2,4 TB pro Dienst möglich.
+* Anstatt einer Partition pro Dienst sind 12 möglich.
 
-The S3 HD tier is ideally suited for SaaS enabled applications which implement the index-per-tenant model described below.
-
-
-## <a name="considerations-for-multitenant-applications"></a>Considerations for multitenant applications
-Multitenant applications must effectively distribute resources among the tenants while preserving some level of privacy between the various tenants. There are a few considerations when designing the architecture for such an application:
-
-* _Tenant isolation:_ Application developers need to take appropriate measures to ensure that no tenants have unauthorized or unwanted access to the data of other tenants. Beyond the perspective of data privacy, tenant isolation strategies require effective management of shared resources and protection from noisy neighbors.
-* _Cloud resource cost:_ As with any other application, software solutions must remain cost competitive as a component of a multitenant application.
-* _Ease of Operations:_ When developing a multitenant architecture, the impact on the application's operations and complexity is an important consideration. Azure Search has a [99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* _Global footprint:_ Multitenant applications may need to effectively serve tenants which are distributed across the globe.
-* _Scalability:_ Application developers need to consider how they reconcile between maintaining a sufficiently low level of application complexity and designing the application to scale with number of tenants and the size of tenants' data and workload.
-
-Azure Search offers a few boundaries that can be used to isolate tenants’ data and workload.
-
-## <a name="modeling-multitenancy-with-azure-search"></a>Modeling multitenancy with Azure Search
-In the case of a multitenant scenario, the application developer consumes one or more search services and divide their tenants among services, indexes, or both. Azure Search has a few common patterns when modeling a multitenant scenario:
-
-1. _Index per tenant:_ Each tenant has its own index within a search service that is shared with other tenants.
-1. _Service per tenant:_ Each tenant has its own dedicated Azure Search service, offering highest level of data and workload separation.
-1. _Mix of both:_ Larger, more-active tenants are assigned dedicated services while smaller tenants are assigned individual indexes within shared services.
-
-## <a name="1.-index-per-tenant"></a>1. Index per tenant
-![A portrayal of the index-per-tenant model](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
-
-In an index-per-tenant model, multiple tenants occupy a single Azure Search service where each tenant has their own index.
-
-Tenants achieve data isolation because all search requests and document operations are issued at an index level in Azure Search. In the application layer, there is the need awareness to direct the various tenants’ traffic to the proper indexes while also managing resources at the service level across all tenants.
-
-A key attribute of the index-per-tenant model is the ability for the application developer to oversubscribe the capacity of a search service among the application’s tenants. If the tenants have an uneven distribution of workload, the optimal combination of tenants can be distributed across a search service’s indexes to accommodate a number of highly active, resource-intensive tenants while simultaneously serving a long tail of less active tenants. The trade-off is the inability of the model to handle situations where each tenant is concurrently highly active.
-
-The index-per-tenant model provides the basis for a variable cost model, where an entire Azure Search service is bought up-front and then subsequently filled with tenants. This allows for unused capacity to be designated for trials and free accounts.
-
-For applications with a global footprint, the index-per-tenant model may not be the most efficient. If an application's tenants are distributed across the globe, a separate service may be necessary for each region which may duplicate costs across each of them.
-
-Azure Search allows for the scale of both the individual indexes and the total number of indexes to grow. If an appropriate pricing tier is chosen, partitions and replicas can be added to the entire search service when an individual index within the service grows too large in terms of storage or traffic.
-
-If the total number of indexes grows too large for a single service, another service has to be provisioned to accommodate the new tenants. If indexes have to be moved between search services as new services are added, the data from the index has to be manually copied from one index to the other as Azure Search does not allow for an index to be moved.
+Der Tarif „S3 HD“ eignet sich ideal für SaaS-fähige Anwendungen, die das nachstehend beschriebene Index-pro-Mandant-Modell implementieren.
 
 
-## <a name="2.-service-per-tenant"></a>2. Service per tenant
-![A portrayal of the service-per-tenant model](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+## Aspekte bei mehrinstanzenfähigen Anwendungen
+Mehrinstanzenfähige Anwendungen müssen Ressourcen gleichmäßig den Mandanten zuteilen und für ein Maß an Datenschutz zwischen diesen sorgen. Beim Entwerfen der Architektur einer solchen Anwendung sind verschiedene Aspekte zu beachten:
 
-In a service-per-tenant architecture, each tenant has its own search service.
+* _Mandantenisolierung:_ Anwendungsentwickler müssen geeignete Maßnahmen ergreifen, um sicherzustellen, dass Mandanten keinen nicht autorisierten oder unerwünschten Zugriff auf die Daten anderer Mandanten haben. Abgesehen vom Datenschutz erfordern Strategien für die Isolierung von Mandanten eine effektive Verwaltung gemeinsam genutzter Ressourcen und Schutz vor „lauten“, in diesem Fall überaus aktiven, Nachbarn.
+* _Cloudressourcenkosten:_ Wie andere Anwendungen auch müssen Softwarelösungen als Teil einer mehrinstanzenfähigen Anwendung wettbewerbsfähig bleiben.
+* _Einfacher Betrieb:_ Bei der Entwicklung einer mehrinstanzenfähigen Architektur sind Betrieb und Komplexität der Anwendung ein wichtiger Aspekt. Azure Suche bietet eine [SLA für eine Verfügbarkeit von 99,9 %](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* _Globale Verteilung:_ Mehrinstanzenfähige Anwendungen müssen ggf. Anforderungen von Mandanten erfüllen, die weltweit verteilt sind.
+* _Skalierbarkeit:_ Anwendungsentwickler müssen berücksichtigen, wie ein Kompromiss erreicht wird zwischen der Beibehaltung eines ausreichend niedrigen Grads an Anwendungskomplexität und dem Entwurf der Anwendung für eine Skalierung entsprechend der Anzahl der Mandanten sowie deren Daten und Workloads.
 
-In this model, the application achieves the maximum level of isolation for its tenants. Each service has dedicated storage and throughput for handling search request as well as separate API keys.
+Azure Search bietet verschiedene Abgrenzungsmöglichkeiten, mit deren Hilfe die Daten und Workloads von Mandanten isoliert werden können.
 
-For applications where each tenant has a large footprint or the workload has little variability from tenant to tenant, the service-per-tenant model is an effective choice as resources are not shared across various tenants’ workloads.
+## Modellieren der Mehrinstanzenfähigkeit mit Azure Search
+Bei einem mehrinstanzenfähigen Szenario nutzt der Anwendungsentwickler einen oder mehrere Suchdienste und verteilt die Mandanten auf Dienste, Indizes oder beides. Azure Suche unterstützt beim Modellieren eines mehrinstanzenfähigen Szenarios mehrere Muster:
 
-A service per tenant model also offers the benefit of a predictable, fixed cost model. There is no up-front investment in an entire search service until there is a tenant to fill it, however the cost-per-tenant is higher than an index-per-tenant model.
+1. _Index pro Mandant:_ Jeder Mandant verfügt über einen eigenen Index in einem Suchdienst, der mit anderen Mandanten gemeinsam genutzt wird.
+1. _Dienst pro Mandant:_ Jeder Mandant hat einen eigenen dedizierten Azure Search-Dienst, was ein Höchstmaß an Trennung von Daten und Workloads ermöglicht.
+1. _Kombination beider Muster:_ Größeren, aktiveren Mandanten werden dedizierte Dienste zugewiesen, während kleineren Mandanten einzelne Indizes in gemeinsam genutzten Diensten zugeteilt werden.
 
-The service-per-tenant model is an efficient choice for applications with a global footprint. With geographically-distributed tenants, it is easy to have each tenant's service in the appropriate region.
+## 1\. Index pro Mandant
+![Eine Abbildung des Index-pro-Mandant-Modells](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
 
-The challenges in scaling this pattern arise when individual tenants outgrow their service. Azure Search does not currently support upgrading the pricing tier of a search service, so all data would have to be manually copied to a new service.
+Bei einem Index-pro-Mandant-Modell nutzen mehrere Mandanten einen einzelnen Azure Search-Dienst, wobei jeder Mandant einen eigenen Index hat.
 
-## <a name="3.-mixing-both-models"></a>3. Mixing both models
-Another pattern for modeling multitenancy is mixing both index-per-tenant and service-per-tenant strategies.
+Die Daten der Mandanten sind voneinander isoliert, da alle Suchanfragen und Dokumentvorgänge in Azure Search auf Indexebene erfolgen. Auf Anwendungsebene muss der Datenverkehr der verschiedenen Mandanten zu den ordnungsgemäßen Indizes geleitet werden, während auf Dienstebene Ressourcen für alle Mandanten verwaltet werden müssen.
 
-By mixing the two patterns, an application's largest tenants can occupy dedicated services while the long tail of less active, smaller tenants can occupy indexes in a shared service. This model ensures that the largest tenants have consistently high performance from the service while helping to protect the smaller tenants from any noisy neighbors.
+Ein wesentliches Merkmal des Index-pro-Mandant-Modells ist die Fähigkeit des Anwendungsentwicklers, die abonnierte Kapazität eines Suchdienst für die Mandanten der Anwendung zu überschreiten. Wenn bei den Mandanten die Workload ungleichmäßig verteilt ist, kann die optimale Kombination von Mandanten auf die Indizes eines Suchdiensts verteilt werden. Der Zweck ist es, eine Anzahl sehr aktiver Mandanten mit intensiver Ressourcennutzung und zugleich eine große Menge weniger aktiver Mandanten zu unterstützen. Der Nachteil ist die Unfähigkeit des Modells, mit Situationen klar zu kommen, bei denen alle Mandanten gleichzeitig sehr aktiv sind.
 
-However, implementing this strategy relies foresight in predicting which tenants will require a dedicated service versus an index in a shared service. Application complexity increases with the need to manage both of these multitenancy models.
+Der Index-pro-Mandant-Modell bildet die Grundlage eines variablen Kostenmodells, bei dem ein gesamter Azure Search-Dienst vorab gebucht und anschließend mit Mandanten aufgefüllt wird. Dies ermöglicht, dass freie Kapazität für Tests und kostenlose Konten zur Verfügung gestellt wird.
 
-## <a name="achieving-even-finer-granularity"></a>Achieving even finer granularity
-The above design patterns to model multitenant scenarios in Azure Search assume a uniform scope where each tenant is a whole instance of an application. However, applications can sometimes handle many smaller scopes.
+Für Anwendungen mit globaler Verteilung ist das Index-pro-Mandant-Modell u.U. nicht das effizienteste. Wenn die Mandanten einer Anwendung auf der ganzen Welt verteilt sind, ist ggf. ein separater Dienst für jede Region erforderlich, was möglicherweise zur Verdopplung der jeweiligen Kosten führen kann.
 
-If service-per-tenant and index-per-tenant models are not sufficiently small scopes, it is possible to model an index to achieve an even finer degree of granularity.
+Azure Search ermöglicht die Skalierung von sowohl einzelnen Indizes als auch der Gesamtanzahl von Indizes. Bei Wahl eines entsprechenden Tarifs können Partitionen und Replikate dem gesamte Suchdienst hinzugefügt werden, wenn ein einzelner Index im Dienst in Bezug auf Speicherung oder Datenverkehr zu groß geworden ist.
 
-To have a single index behave differently for different client endpoints, a field can be added to an index which designates a certain value for each possible client. Each time a client calls Azure Search to query or modify an index, the code from the client application specifies the appropriate value for that field using Azure Search's [filter](https://msdn.microsoft.com/library/azure/dn798921.aspx) capability at query time.
-
-This method can be used to achieve functionality of separate user accounts, separate permission levels, and even completely separate applications.
-
-## <a name="next-steps"></a>Next steps
-Azure Search is a compelling choice for many applications, [read more about the service's robust capabilities](http://aka.ms/whatisazsearch). When evaluating the various design patterns for multitenant applications, consider the [various pricing tiers](https://azure.microsoft.com/pricing/details/search/) and the respective [service limits](search-limits-quotas-capacity.md) to best tailor Azure Search to fit application workloads and architectures of all sizes.
-
-Any questions about Azure Search and multitenant scenarios can be directed to azuresearch_contact@microsoft.com.
-
+Wenn die Gesamtanzahl der Indizes für einen einzelnen Dienst zu groß wird, muss ein anderer Dienst bereitgestellt werden, um die neuen Mandanten zu unterstützen. Wenn Indizes zwischen Suchdiensten verschoben werden müssen, weil neue Dienste hinzugefügt werden, müssen die Daten aus dem Index manuell in einen anderen Index kopiert werden, da Azure Search das Verschieben eines Indexes nicht zulässt.
 
 
-<!--HONumber=Oct16_HO2-->
+## 2\. Dienst pro Mandant
+![Eine Abbildung des Dienst-pro-Mandant-Modells](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
 
+Bei einer Dienst-pro-Mandant-Architektur hat jeder Mandant einen eigenen Suchdienst.
 
+Bei diesem Modell erzielt die Anwendung den Maximalgrad an Isolierung für die Mandanten. Jeder Dienst erhält dedizierten Speicher und Durchsatz für die Bewältigung von Suchanfragen und getrennte API-Schlüssel.
+
+Für Anwendungen, bei denen Mandanten weltweit verteilt sind oder sich die Workload von Mandant zu Mandant nur geringfügig unterscheidet, ist das Dienst-pro-Mandant-Modell eine geeignete Wahl, da Ressourcen zur Bewältigung der Workloads der verschiedenen Mandanten nicht gemeinsam genutzt werden.
+
+Ein Dienst-pro-Mandant-Modell bietet außerdem den Vorteil eines vorhersagbaren, festen Kostenmodells. Es sind keine Vorabinvestitionen in einen gesamten Suchdienst erforderlich, der mit Mandanten gefüllt werden muss. Allerdings sind die Kosten pro Mandant höher als beim Index-pro-Mandant-Modell.
+
+Das Dienst-pro-Mandant-Modell eignet sich besonders für Anwendungen mit global verteilten Nutzern. Bei geografisch verteilten Mandanten ist es einfach, jedem Mandanten in der entsprechenden Region einen Dienst zur Verfügung zu stellen.
+
+Die Herausforderung bei der Skalierung dieses Musters entstehen, wenn einzelne Mandanten die Kapazitätsgrenzen ihres Diensts erreichen. Azure Search unterstützt derzeit keine Aktualisierung des Tarifs eines Suchdiensts, weshalb alle Daten manuell in einen neuen Dienst kopiert werden müssen.
+
+## 3\. Kombinieren beider Modelle
+Ein weiteres Muster für die Modellierung von Mehrinstanzenfähigkeit ist das Kombinieren des Index-pro-Mandant- und Dienst-pro-Mandant-Modells.
+
+Durch Kombinieren der beiden Modelle können die größten Mandanten einer Anwendung dedizierte Dienste in Anspruch nehmen, während dem großen Rest weniger aktiver, kleinerer Mandanten die Indizes in einem gemeinsam genutzten Dienst zur Verfügung stehen. Dieses Modell stellt sicher, dass der Dienst den größten Mandanten stets eine hohe Leistung bietet, während zugleich die kleineren Mandaten vor einer Beeinträchtigung durch diese meist sehr aktiven Mandaten geschützt werden.
+
+Allerdings erfordert das Umsetzen dieser Strategie Weitsicht bei der Vorhersage, welche Mandanten einen dedizierten und welche einen Index in einem gemeinsamen genutzt Dienst benötigen. Die Komplexität der Anwendung erhöht sich, da zwei mehrinstanzenfähige Modelle verwaltet werden müssen.
+
+## Erreichen einer feineren Granularität
+Die oben genannten Entwurfsmuster zum Modellieren mehrinstanzenfähiger Szenarien in Azure Search setzen einen einheitlichen Umfang voraus, bei dem jeder Mandant eine ganze Instanz einer Anwendung nutzt. Anwendungen müssen jedoch mitunter mit vielen kleineren Umfängen zurechtkommen.
+
+Wenn das Dienst-pro-Mandant- und Index-pro-Mandant-Modell nicht ausreichend kleine Umfänge darstellen, ist es möglich, einen Index zu modellieren, mit dem ein noch feinerer Grad an Granularität erreicht wird.
+
+Damit sich ein einzelner Index für verschiedene Clientendpunkte anders verhält, kann einem Index ein Feld hinzugefügt werden, dass jedem möglichen Client einen bestimmten Wert zuweist. Immer wenn ein Client Azure Search zum Abfragen oder Ändern eines Indexes aufruft, gibt der Code aus der Clientanwendung den entsprechenden Wert für dieses Feld mithilfe der [Filterfunktion](https://msdn.microsoft.com/library/azure/dn798921.aspx) von Azure Search zum Zeitpunkt der Abfrage an.
+
+Mithilfe dieser Methode lassen sich eine Unterstützung getrennter Benutzerkonten und Berechtigungsstufen sowie sogar vollständig getrennter Anwendungen erreichen.
+
+## Nächste Schritte
+Azure Search ist eine hervorragende Wahl für viele Clientanwendungen. [Erfahren Sie mehr über die leistungsfähigen Funktionen des Diensts](http://aka.ms/whatisazsearch). Berücksichtigen Sie beim Bewerten der verschiedenen Entwurfsmuster für mehrinstanzenfähigen Anwendung die [verschiedenen Tarife](https://azure.microsoft.com/pricing/details/search/) und zugehörigen [Dienstgrenzen](search-limits-quotas-capacity.md), um Azure Search perfekt an Anwendungsworkloads und Architekturen sämtlicher Größen anzupassen.
+
+Fragen zu Szenarien mit Azure Search und mehreren Mandanten können an azuresearch_contact@microsoft.com gerichtet werden.
+
+<!---HONumber=AcomDC_0921_2016-->

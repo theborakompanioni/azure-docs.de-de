@@ -1,14 +1,11 @@
-Resource|Default Limit|Maximum Limit
+Ressource|Standardlimit|Maximales Limit
 ---|---|---
-Resources per [resource group](../articles/resource-group-overview.md#resource-groups) (per resource type)|800|800
-Deployments per resource group|800|800
-Resources per deployment|800|800
-Management Locks (per unique scope)|20|20
-Number of Tags (per resource or resource group)|15|15
-Tag key length|512|512
-Tag value length|256|256
+Ressourcen pro [Ressourcengruppe](../articles/resource-group-overview.md#resource-groups) (pro Ressourcentyp)|800|800
+Bereitstellungen pro Ressourcengruppe|800|800
+Ressourcen pro Bereitstellung|800|800
+Managementsperren (pro eindeutigem Bereich)|20|20
+Anzahl Tags (pro Ressource oder Ressourcengruppe)|15|15
+Tagschlüssellänge|512|512
+Tagwertlänge|256|256
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0211_2016-->

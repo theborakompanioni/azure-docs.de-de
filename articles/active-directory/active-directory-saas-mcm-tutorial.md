@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory Integration with MCM | Microsoft Azure" 
-    description="Learn how to use MCM with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="Tutorial: Azure Active Directory-Integration mit MCM | Microsoft Azure" 
+    description="Erfahren Sie, wie Sie MCM mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,231 +14,227 @@
     ms.date="08/30/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-mcm"></a>Tutorial: Azure Active Directory integration with MCM
+#Tutorial: Azure Active Directory-Integration mit MCM
   
-The objective of this tutorial is to show you how to integrate MCM with Azure Active Directory (Azure AD).
+In diesem Tutorial erfahren Sie, wie Sie MCM in Azure Active Directory (Azure AD) integrieren.
 
-Integrating MCM with Azure AD provides you with the following benefits:
+Die Integration von MCM in Azure AD bietet folgende Vorteile:
 
-- You can control in Azure AD who has access to MCM
-- You can enable your users to automatically get signed-on to MCM (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+- Sie können in Azure AD steuern, wer Zugriff auf MCM haben soll.
+- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei MCM anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Prerequisites
+## Voraussetzungen
 
-To configure Azure AD integration with MCM, you need the following items:
+Um die Azure AD-Integration mit MCM konfigurieren zu können, benötigen Sie Folgendes:
 
-- A valid Azure subscription
-- A MCM single-sign on enabled subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Ein gültiges Azure-Abonnement
+- Ein SSO-fähiges MCM-Abonnement
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="scenario-description"></a>Scenario description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-The scenario outlined in this tutorial consists of two main building blocks:
+- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
-1. Adding MCM from the gallery
-2. Configuring and testing Azure AD single sign-on
+## Beschreibung des Szenarios
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
 
-## <a name="adding-mcm-from-the-gallery"></a>Adding MCM from the gallery
-To configure the integration of MCM into Azure AD, you need to add MCM from the gallery to your list of managed SaaS apps.
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-**To add MCM from the gallery, perform the following steps:**
+1. Hinzufügen von MCM über den Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+## Hinzufügen von MCM über den Katalog
+Um die Integration von MCM in Azure AD zu konfigurieren, müssen Sie MCM über den Katalog Ihrer Liste mit verwalteten SaaS-Apps hinzufügen.
+
+**Führen Sie die folgenden Schritte aus, um MCM über den Katalog hinzuzufügen:**
+
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-mcm-tutorial/tutorial_general_01.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Applications](./media/active-directory-saas-mcm-tutorial/tutorial_general_02.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-mcm-tutorial/tutorial_general_02.png "Anwendungen")
 
-4.  Click **Add** at the bottom of the page.
+4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-    ![Add application](./media/active-directory-saas-mcm-tutorial/tutorial_general_03.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-mcm-tutorial/tutorial_general_03.png "Anwendung hinzufügen")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Add an application from gallerry](./media/active-directory-saas-mcm-tutorial/tutorial_general_04.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-mcm-tutorial/tutorial_general_04.png "Anwendung aus dem Katalog hinzufügen")
 
-6.  In the **search box**, type **MCM**.
+6.  Geben Sie im **Suchfeld** den Suchbegriff **MCM** ein.
 
-    ![Application gallery](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_01.png "Application gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_01.png "Anwendungskatalog")
 
-7.  In the results pane, select **MCM**, and then click **Complete** to add the application.
+7.  Wählen Sie im Ergebnisbereich die Option **MCM** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
     ![MCM](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_001.png "MCM")
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with MCM based on a test user called "Britta Simon".
+##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Azure AD in MCM konfiguriert und getestet wird.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in MCM to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in MCM needs to be established.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in MCM als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in MCM muss eine Linkbeziehung eingerichtet werden.
 
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in MCM.
+Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen in Azure AD dem Benutzernamen in MCM zuweisen.
 
-To configure and test Azure AD single sign-on with MCM, you need to complete the following building blocks:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei MCM müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a MCM test user](#creating-a-mcm-test-user)** - to have a counterpart of Britta Simon in MCM that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines MCM-Testbenutzers](#creating-a-mcm-test-user)**, um in MCM eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden in Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+### Konfigurieren des einmaligen Anmeldens von Azure AD
   
-In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your MCM application.
+In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer MCM-Anwendung.
 
-**To configure Azure AD single sign-on with MCM, perform the following steps:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit MCM die folgenden Schritte aus:**
 
-1.  In the Azure classic portal, on the **MCM** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On** dialog.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **MCM** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Configure single sign-on](./media/active-directory-saas-mcm-tutorial/tutorial_general_05.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to MCM** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei MCM anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Microsoft Azure AD Single Sign-On](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_03.png "Microsoft Azure AD Single Sign-On")
+    ![Microsoft Azure AD – einmaliges Anmelden](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_03.png "Microsoft Azure AD – einmaliges Anmelden")
 
-3.  On the Configure App Settings dialog page, perform the following steps:
+3.  Führen Sie auf der Dialogfeldseite zum Konfigurieren der App-Einstellungen die folgenden Schritte aus:
 
-    ![Configure App URL](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_04.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_04.png "App-URL konfigurieren")
 
-    a. In the **Sign On URL** textbox, type: `https://myaba.co.uk/client-access/<company name>/saml.php`.
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL `https://myaba.co.uk/client-access/<company name>/saml.php` ein.
+	
+	b. Klicken Sie auf **Weiter**.
+
+4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für MCM** auf **Metadaten herunterladen**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_05.png "Einmaliges Anmelden konfigurieren")
+
+5. Wenden Sie sich an das Supportteam von MCM, um SSO für Ihre Anwendung konfigurieren zu lassen. Geben Sie die heruntergeladene Metadatendatei an das MCM-Team weiter, damit es SSO bei sich einrichten kann.
+
+6.  Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_06.png "Einmaliges Anmelden konfigurieren")
+
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_07.png "Einmaliges Anmelden konfigurieren")
+
+
+### Erstellen eines Azure AD-Testbenutzers
+
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
+
+![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_00.png)
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_01.png)
+
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
     
-    b. click **Next**
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_02.png)
 
-4.  On the **Configure single sign-on at MCM** page, click **Download metadata**, and then save the certificate file on your computer.
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_05.png "Configure Single Sign-On")
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_03.png)
 
-5. To get SSO configured for your application, contact your MCM support team. Attach the downloaded metadata file and share it with MCM team to set up SSO on their side.
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
-6.  In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_06.png "Configure Single Sign-On")
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
-7. On the **Single sign-on confirmation** page, click **Complete**.
+    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_07.png "Configure Single Sign-On")
+    c. Klicken Sie auf **Weiter**.
 
-
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-
-The objective of this section is to create a test user in the classic portal called Britta Simon.
-
-![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_00.png)
-
-**To create a test user in Azure AD, perform the following steps:**
-
-1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_01.png)
-
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-
-3. To display the list of users, in the menu on the top, click **Users**.
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
     
-    ![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_02.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_05.png)
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_03.png)
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_04.png)
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
 
-    a. As Type Of User, select New user in your organization.
+    e. Klicken Sie auf **Weiter**.
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
-
-    c. Click **Next**.
-
-6.  On the **User Profile** dialog page, perform the following steps:
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
     
-    ![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_05.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
-
-    b. In the **Last Name** textbox, type, **Simon**.
-
-    c. In the **Display Name** textbox, type **Britta Simon**.
-
-    d. In the **Role** list, select **User**.
-
-    e. Click **Next**.
-
-7. On the **Get temporary password** dialog page, click **create**.
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
     
-    ![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_06.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mcm-tutorial/create_aaduser_07.png)
 
-8. On the **Get temporary password** dialog page, perform the following steps:
-    
-    ![Creating an Azure AD test user](./media/active-directory-saas-mcm-tutorial/create_aaduser_07.png)
+    a. Notieren Sie den Wert von **Neues Kennwort**.
 
-    a. Write down the value of the **New Password**.
+    b. Klicken Sie auf **Fertig stellen**.
 
-    b. Click **Complete**.   
-
-###<a name="creating-a-mcm-test-user"></a>Creating a MCM test user
+###Erstellen eines MCM-Testbenutzers
   
-In this section, you create a user called Britta Simon in MCM. Please work with MCM support team to add the users in the MCM platform.
+In diesem Abschnitt erstellen Sie in MCM einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom MCM-Supportteam unterstützen.
 
->[AZURE.NOTE]You can use any other MCM user account creation tools or APIs provided by MCM to provision AAD user accounts.
+>[AZURE.NOTE]Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von MCM-Benutzerkonten oder mithilfe der von MCM bereitgestellten APIs erstellen.
 
 
-###<a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+###Zuweisen des Azure AD-Testbenutzers
   
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to MCM.
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem ihr Zugriff auf MCM gewährt wird.
+	
+![Benutzer zuweisen](./media/active-directory-saas-mcm-tutorial/assign_aaduser_00.png "Benutzer zuweisen")
+
+**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu MCM durchzuführen:**
+
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
     
-![Assign users](./media/active-directory-saas-mcm-tutorial/assign_aaduser_00.png "Assign users")
+	![Benutzer zuweisen](./media/active-directory-saas-mcm-tutorial/assign_aaduser_01.png "Benutzer zuweisen")
 
-**To assign Britta Simon to MCM, perform the following steps:**
-
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+2. Wählen Sie in der Anwendungsliste die Option **MCM** aus.
     
-    ![Assign users](./media/active-directory-saas-mcm-tutorial/assign_aaduser_01.png "Assign users")
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_08.png)
 
-2. In the applications list, select **MCM**.
+1. Klicken Sie im oberen Menü auf **Benutzer**.
     
-    ![Configure Single Sign-On](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_08.png)
+	![Benutzer zuweisen](./media/active-directory-saas-mcm-tutorial/assign_aaduser_02.png "Benutzer zuweisen")
 
-1. In the menu on the top, click **Users**.
+1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
+
+2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
     
-    ![Assign users](./media/active-directory-saas-mcm-tutorial/assign_aaduser_02.png "Assign users")
-
-1. In the Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-    
-    ![Assign users](./media/active-directory-saas-mcm-tutorial/assign_aaduser_03.png "Assign users")
+	![Benutzer zuweisen](./media/active-directory-saas-mcm-tutorial/assign_aaduser_03.png "Benutzer zuweisen")
 
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### Testen der einmaligen Anmeldung
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
  
-When you click the MCM tile in the Access Panel, you should get automatically signed-on to your MCM application.
+Wenn Sie im Zugriffsbereich auf die Kachel „MCM“ klicken, sollten Sie automatisch bei Ihrer MCM-Anwendung angemeldet werden.
 
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

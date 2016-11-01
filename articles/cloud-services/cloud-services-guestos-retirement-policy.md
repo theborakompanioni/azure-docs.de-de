@@ -1,9 +1,9 @@
 <properties 
-   pageTitle="Supportability and retirement policy guide for Azure Guest OS | Microsoft Azure" 
-   description="Provides information about what Microsoft will support as regards to the Azure Guest OS used by Cloud Services." 
+   pageTitle="Unterstützungs- und Deaktivierungsrichtlinien für Azure-Gastbetriebssysteme | Microsoft Azure" 
+   description="Bietet Informationen zu den Elementen, die Microsoft hinsichtlich des von Clouddiensten verwendeten Azure-Gastbetriebssystems unterstützt." 
    services="cloud-services" 
    documentationCenter="na" 
-   authors="raiye" 
+   authors="yuemlu" 
    manager="timlt" 
    editor=""/>
 
@@ -13,86 +13,81 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="10/24/2016"
-   ms.author="raiye"/>
+   ms.date="04/19/2016"
+   ms.author="yuemlu"/>
+
+# Unterstützungs- und Deaktivierungsrichtlinie für Azure-Gastbetriebssysteme
+Die Informationen auf dieser Seite beziehen sich auf das Azure-Gastbetriebssystem ([Gast-BS](cloud-services-guestos-update-matrix.md)) für Worker- und Webrollen für Clouddienste (PaaS). Sie gelten nicht für virtuelle Computer (IaaS).
+
+Microsoft verfügt über eine veröffentlichte [Unterstützungsrichtlinie für das Gastbetriebssystem](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq). Auf der vorliegenden Seite wird beschrieben, wie diese Richtlinie implementiert wird.
+
+Die Richtlinie lautet:
+
+1. Microsoft unterstützt **mindestens die beiden neuesten Gastbetriebssystemfamilien**. Wenn eine Familie deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere unterstützte Gastbetriebssystemfamilie zu aktualisieren.
+2. Microsoft unterstützt **mindestens die beiden neuesten Versionen der unterstützten Gastbetriebssystemfamilien**. 
+3. Microsoft unterstützt **mindestens die beiden neuesten Versionen des Azure SDK**. Wenn eine SDK-Version deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere Version zu aktualisieren. 
+
+Es werden möglicherweise mehr als zwei Familien oder Versionen gleichzeitig unterstützt. Offizielle Informationen zur Unterstützung von Gastbetriebssystemen finden Sie auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).
 
 
-# <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure Guest OS supportability and retirement policy
-The information on this page relates to the Azure Guest operating system ([Guest OS](cloud-services-guestos-update-matrix.md)) for Cloud Services worker and web roles (PaaS). It does not apply to Virtual Machines (IaaS). 
-
-Microsoft has a published [support policy for the Guest OS](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq). The page you are reading now describes how the policy is implemented.
-
-The policy is 
-
-1. Microsoft will support **at least the latest two families of the Guest OS**. When a family is retired, customers have 12 months from the official retirement date to update to a newer supported Guest OS family.
-2. Microsoft will support the **at least the latest two versions of the supported Guest OS families**. 
-3. Microsoft will support the at **least the latest two versions of the Azure SDK**. When a version of the SDK is retired, customers will have 12 months from the official retirement date to update to a newer version. 
-
-At times more than two families or releases may be supported. Official Guest OS support information will appear on the [Azure Guest OS Releases and SDK Compatibility Matrix](cloud-services-guestos-update-matrix.md).
+## Wann wird eine Gast-BS-Familie oder ein Gast-BS-Release deaktiviert? 
 
 
-## <a name="when-a-guest-os-family-or-version-is-retired"></a>When a Guest OS family or version is retired 
+Eine neue **Familie** eines Gastbetriebssystems wird einige Zeit nach Veröffentlichung der neuen offiziellen Version eines Windows Server-Betriebssystems eingeführt. Wenn eine neue Gastbetriebssystemfamilie eingeführt wird, deaktiviert Microsoft die älteste Gastbetriebssystemfamilie.
+
+Neue **Versionen** von Gastbetriebssystemen werden etwa jeden Monat eingeführt und enthalten die neuesten MSRC-Updates. Aufgrund dieser regelmäßigen monatlichen Updates wird eine Gastbetriebssystemversion normalerweise 60 Tage nach ihrer Veröffentlichung deaktiviert. Auf diese Weise sind mindestens zwei Versionen jeder Gastbetriebssystemfamilie zur Verwendung verfügbar.
+
+### Verfahren während der Deaktivierung einer Gastbetriebssystemfamilie 
 
 
-A new Guest OS **family** is introduced sometime after the release of a new official version of the Windows Server operating system. Whenever a new Guest OS family is introduced, Microsoft will retire the oldest Guest OS family. 
+Nachdem die Deaktivierung angekündigt wurde, steht den Kunden ein Übergangszeitraum von 12 Monaten zur Verfügung, bevor die ältere Familie offiziell aus dem Dienst entfernt wird. Diese Übergangszeit kann nach dem Ermessen von Microsoft verlängert werden. Updates werden auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md) veröffentlicht.
 
-New Guest OS **versions** are introduced about every month to incorporate the latest MSRC updates. Because of the regular monthly updates, a Guest OS version is normally disabled 60 days after its release. This keeps at least two Guest OS versions for each family available for use. 
+6 Monate nach Beginn des Übergangszeitraums beginnt ein abgestufter Deaktivierungsprozess. Während dieses Zeit geschieht Folgendes:
 
-### <a name="process-during-a-guest-os-family-retirement"></a>Process during a Guest OS family retirement 
+1. Microsoft benachrichtigt die Kunden über die Deaktivierung. 
+2. Die neuere Version des Azure SDK unterstützt die deaktivierte Gastbetriebssystemfamilie nicht.
+3. Neue und erneute Bereitstellungen von Clouddiensten sind in der deaktivierten Familie nicht zulässig.
 
-
-Once the retirement is announced, customers have a 12 month "transition" period before the older family is officially removed from service. This transition time may be extended at the discretion of Microsoft. Updates will be posted on the [Azure Guest OS Releases and SDK Compatibility Matrix](cloud-services-guestos-update-matrix.md).
-
-A gradual retirement process will begin 6 months into the transition period. During this time:
-
-1. Microsoft will notify customers of the retirement. 
-2. The newer version of the Azure SDK won’t support the retired Guest OS family.
-3. New deployments and redeployments of Cloud Services will not be allowed on the retired family
-
-Microsoft will continue to introduce new Guest OS version incorporating the latest MSRC updates until the last day of the transition period, known as the "expiration date". At that time, the any Cloud Services still running will be unsupported under the Azure SLA. Microsoft has the discretion to force upgrade, delete or stop those services after that date.
-
-
-
-### <a name="process-during-a-guest-os-version-retirement"></a>Process during a Guest OS Version retirement 
-If customers set their Guest OS to automatically update, they never have to worry about dealing with Guest OS versions. They will always be using the latest Guest OS version.
-
-Guest OS Versions are released every month. Because of the rate of regular releases, each version has a fixed lifespan.
-
-At 60 days into the lifespan a version is "*disabled*". "Disabled" means that the version is removed from the Azure classic portal. It also can no longer be set from the CSCFG configuration file. Existing deployments are left running, but new deployments and code and configuration updates to existing deployments will not be allowed. 
-
-At a later time, the Guest OS version "*expires*" and any installations still running that version are force upgraded and set to automatically update the Guest OS in the future. Expiration is done in batches so the period of time from disablement to expiration can vary. 
-
-These periods may be made longer at Microsoft's discretion to ease customer transitions. Any changes will be communicated on the [Azure Guest OS Releases and SDK Compatibility Matrix](cloud-services-guestos-update-matrix.md).
+Microsoft führt bis zum letzten Tag des Übergangszeitraums, dem so genannten "Ablaufdatum", weiterhin neue Gastbetriebsversionen einschließlich neuer MSRC-Updates ein. Gleichzeitig wird die Unterstützung für alle noch ausgeführten Clouddienste im Rahmen der Azure-SLA aufgehoben. Nach diesem Datum kann Microsoft nach eigenem Ermessen ein Upgrade für diese Dienste erzwingen oder diese Dienste löschen oder beenden.
 
 
 
-### <a name="notifications-during-retirement"></a>Notifications during retirement 
+### Verfahren während der Deaktivierung einer Gastbetriebssystemversion 
+Wenn Kunden ihr Gastbetriebssystem so eingerichtet haben, dass es automatisch aktualisiert wird, müssen sie sich keine Gedanken um Gastbetriebssystemversionen machen. Sie werden immer die neueste Version des Gastbetriebssystems verwenden.
 
-* **Family retirement** <br>Microsoft will use blog posts and Azure classic portal notification. Customers who are still using a retired Guest OS family will be notified through direct communication (email, portal messages, phone call) to assigned service administrators. All changes will be posted to this page and the RSS feed listed at the beginning of this page. 
+Gastbetriebssystemversionen werden jeden Monat veröffentlicht. Aufgrund der Häufigkeit der regulären Releases hat jede Version eine feste Lebensdauer.
+
+60 Tage nach Beginn der Lebensdauer wird eine Version "*deaktiviert*". „Deaktiviert“ bedeutet, dass die Version aus dem klassischen Azure-Portal entfernt wurde. Sie kann auch nicht mehr über die CSCFG-Konfigurationsdatei festgelegt werden. Vorhandene Bereitstellungen werden weiterhin ausgeführt, neue Bereitstellungen sowie Code- und Konfigurationsupdates für vorhandene Bereitstellungen sind jedoch nicht zulässig.
+
+Zu einem späteren Zeitpunkt wird die Gast-BS-Version "*ablaufen*", und für alle Installationen, die noch unter dieser Version ausgeführt werden, wird ein Upgrade erzwungen. Gleichzeitig wird für diese Installationen festgelegt, dass das Gast-BS in Zukunft automatisch aktualisiert wird. Der Ablauf erfolgt in Batches, sodass die Zeitspanne zwischen Deaktivierung und tatsächlichem Ablauf variieren kann.
+
+Diese Zeiträume können nach Ermessen von Microsoft verlängert werden, um den Kunden den Übergang zu erleichtern. Updates werden auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md) veröffentlicht.
 
 
-* **Version Retirement** <br>All changes will be posted to this page and the RSS feed listed at the beginning of this page, including the release, disabled and expiration dates. Services admins will receive emails if they have deployments running on a disabled Guest OS version or family. The timing of these emails can vary. Generally they are at least a month before disablement, though this timing is not an official SLA. 
+
+### Benachrichtigungen während der Deaktivierung 
+
+* **Deaktivierung der Familie** <br>Microsoft verwendet Blogbeiträge sowie Benachrichtigungen im klassischen Azure-Portal, um die Kunden zu informieren. Bei Kunden, die eine deaktivierte Gastbetriebssystemfamilie weiterhin verwenden, werden zugewiesene Dienstadministratoren auf direktem Weg benachrichtigt (E-Mail, Mitteilung im Portal, Telefonanruf). Alle Änderungen werden auf dieser Seite und im oben auf dieser Seite aufgeführten RSS-Feed veröffentlicht. 
 
 
-## <a name="frequently-asked-questions"></a>Frequently asked questions
+* **Deaktivierung der Version** <br>Alle Änderungen, einschließlich des Veröffentlichungs-, Deaktivierungs- und Ablaufdatums, werden auf dieser Seite und im oben auf dieser Seite aufgeführten RSS-Feed veröffentlicht. Dienstadministratoren erhalten E-Mails, wenn sie über Bereitstellungen verfügen, die unter einer deaktivierten Gastbetriebssystemversion oder -familie ausgeführt werden. Diese E-Mails können zu verschiedenen Zeitpunkten gesendet werden. Im Allgemeinen werden sie mindestens einen Monat vor der Deaktivierung gesendet, dies ist jedoch keine offizielle SLA.
 
-**How can I mitigate the impacts of migration?**
 
-You should use latest Guest OS family for designing your Cloud Services. 
+## Häufig gestellte Fragen
 
-1. Start planning your migration to a newer family early. 
-2. Set up temporary test deployments to test your Cloud Service running on the new family. 
-3. Set your Guest OS version to **Automatic** (osVersion=* in the [.cscfg](cloud-services-model-and-package.md#cscfg) file) so the migration to new Guest OS versions occurs automatically.
+**Wie kann ich die Auswirkungen einer Migration minimieren?**
 
-**What if my web application requires deeper integration with the OS?**
+Sie sollten die neueste Gastbetriebssystemfamilie verwenden, um Ihre Clouddienste zu konzipieren.
 
-If your web application architecture requires deeper dependency on the underlying operating system, use platform supported capabilities such as [startup tasks](cloud-services-startup-tasks.md) or other extensibility mechanisms which may exist in the future. Alternatively, you can also use [Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – Infrastructure as a Service), where you are responsible for maintaining the underlying operating system.
+1. Starten Sie die Planung der Migration zu einer neueren Familie frühzeitig. 
+2. Richten Sie temporäre Testbereitstellungen ein, um die Ausführung Ihres Clouddiensts unter der neuen Gastbetriebssystemfamilie zu testen. 
+3. Legen Sie die Gastbetriebssystemversion auf **Automatisch** fest („osVersion=*“ in der [CSCFG](cloud-services-model-and-package.md#cscfg)-Datei), sodass die Migration zu neuen Gastbetriebssystemversionen automatisch erfolgt.
+
+**Was geschieht, wenn meine Webanwendung eine tiefer greifende tiefere Integration in das Betriebssystem erfordert?**
+
+Wenn die Architektur Ihrer Webanwendung eine tiefer gehende Abhängigkeit vom zugrunde liegenden Betriebssystem erfordert, verwenden Sie von der Plattform unterstützte Funktionen wie z. B. [Startaufgaben](cloud-services-startup-tasks.md) oder andere, zukünftig verfügbare Mechanismen zur Erweiterbarkeit. Alternativ dazu können Sie auch [Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – Infrastructure-as-a-Service) verwenden, wo die Verwaltung des zugrunde liegenden Betriebssystems in Ihrem Verantwortungsbereich liegt.
  
-## <a name="next-steps"></a>Next steps
-Review the latest [Guest OS releases](cloud-services-guestos-update-matrix.md).
+## Nächste Schritte
+Überprüfen Sie die neuesten [Gastbetriebssystemreleases](cloud-services-guestos-update-matrix.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0427_2016-->

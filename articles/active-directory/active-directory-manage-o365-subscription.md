@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Manage the directory for your Office 365 subscription in Azure | Microsoft Azure"
-   description="Managing an Office 365 subscription directory using Azure Active Directory and the Azure classic portal"
+   pageTitle="Verwalten des Verzeichnisses für Ihr Office 365-Abonnement in Azure | Microsoft Azure"
+   description="Verwalten eines Office 365-Abonnementverzeichnisses mithilfe von Azure Active Directory und dem klassischen Azure-Portal"
    services="active-directory"
    documentationCenter=""
    authors="curtand"
@@ -16,54 +16,49 @@
    ms.date="08/23/2016"
    ms.author="curtand"/>
 
+# Verwalten des Verzeichnisses für Ihr Office 365-Abonnement in Azure
 
-# <a name="manage-the-directory-for-your-office-365-subscription-in-azure"></a>Manage the directory for your Office 365 subscription in Azure
+Dieser Artikel beschreibt die Verwaltung eines für ein Office 365-Abonnement erstellten Verzeichnisses mithilfe des klassischen Azure-Portals. Die Anmeldung beim klassischen Azure-Portal ist nur als Dienstadministrator oder Co-Administrator eines Azure-Abonnements möglich. Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie sich noch heute über diesen Link für eine [kostenlose 30-Tage-Testversion](https://azure.microsoft.com/trial/get-started-active-directory/) registrieren und Ihre erste Cloud-Lösung in weniger als 5 Minuten bereitstellen. Verwenden Sie das Geschäfts- oder Schulkonto, das Sie zum Anmelden an Office 365 nutzen.
 
-This article describes how to manage a directory that was created for an Office 365 subscription, using the Azure classic portal. You must be either the Service Administrator or a co-administrator of an Azure subscription to sign in to the Azure classic portal. If you don’t yet have an Azure subscription, you can sign up for a [free 30-day trial](https://azure.microsoft.com/trial/get-started-active-directory/) today and deploy your first cloud solution in under 5 minutes, using this link. Be sure to use the work or school account that you use to sign in to Office 365.
+Nach Abschluss des Azure-Abonnements können Sie sich beim klassischen Azure-Portal anmelden und auf Azure-Dienste zugreifen. Klicken Sie auf die Active Directory-Erweiterung, um das Verzeichnis zu verwalten, das auch zur Authentifizierung Ihrer Office 365-Benutzer verwendet wird.
 
-After you complete the Azure subscription, you can sign in to the Azure classic portal and access Azure services. Click the Active Directory extension to manage the same directory that authenticates your Office 365 users.
+Wenn Sie bereits über ein Azure-Abonnement verfügen, ist der Prozess zum Verwalten eines weiteren Verzeichnisses ebenfalls ganz einfach. Beispiel: Michael Smith verfügt über ein Office 365-Abonnement für „contoso.com“. Er besitzt außerdem ein Azure-Abonnement, für das er sich mit seinem Microsoft-Konto msmith@hotmail.com registriert hat. In diesem Fall verwaltet er zwei Verzeichnisse.
 
-If you do already have an Azure subscription, the process to manage an additional directory is also straightforward. For example, Michael Smith might have an Office 365 subscription for Contoso.com. He also has an Azure subscription that he signed up for by using his Microsoft account, msmith@hotmail.com. In this case, he manages two directories.
-
-  Subscription |  Office 365  |  Azure
+ Abonnement | Office 365 | Azure
   -------------- | ------------- | -------------------------------
-  Display name |  Contoso  |     Default Azure Active Directory (Azure AD) directory
-  Domain name  |  contoso.com  | msmithhotmail.onmicrosoft.com
+ Anzeigename | Contoso | Standardverzeichnis für Azure Active Directory (Azure AD)
+ Domänenname | contoso.com | msmithhotmail.onmicrosoft.com
 
-He wants to manage the user identities in the Contoso directory while he is signed in to Azure using his Microsoft account, so that he can enable Azure AD features such as multifactor authentication. The following diagram may help to illustrate the process.
+Er möchte die Benutzeridentitäten im Verzeichnis „Contoso“ verwalten, während er mit seinem Microsoft-Konto bei Azure angemeldet ist, damit er Azure AD-Funktionen wie die mehrstufige Authentifizierung aktivieren kann. Das folgende Diagramm veranschaulicht diesen Prozess.
 
-![Diagram to manage two independent directories](./media/active-directory-manage-o365-subscription/AAD_O365_03.png)
+![Diagramm zur Verwaltung von zwei unabhängigen Verzeichnissen](./media/active-directory-manage-o365-subscription/AAD_O365_03.png)
 
-In this case, the two directories are independent of each other.
+In diesem Fall sind die beiden Verzeichnisse unabhängig voneinander.
 
-## <a name="to-manage-two-independent-directories"></a>To manage two independent directories
-In order for Michael Smith to manage both directories while he is signed in to Azure as msmith@hotmail.com, he must complete the following steps:
+## Zwei unabhängige Verzeichnisse verwalten
+Damit Michael Smith beide Verzeichnisse verwalten kann, während er in Azure als msmith@hotmail.com angemeldet ist, muss er die folgenden Schritte ausführen:
 
 > [AZURE.NOTE]
-> These steps can be completed only when a user is signed in with a Microsoft account. If the user is signed in with a work or school account, the option to **Use existing directory** isn't available. A work or school account can be authenticated only by its home directory (that is, the directory where the work or school account is stored, and that the business or school owns).
+Diese Schritte können nur ausgeführt werden, wenn ein Benutzer mit einem Microsoft-Konto angemeldet ist. Ist der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet, steht die Option **Vorhandenes Verzeichnis verwenden** nicht zur Verfügung. Ein Geschäfts-oder Schulkonto kann nur anhand des entsprechenden Basisverzeichnisses authentifiziert werden (also des Verzeichnisses, in dem sich das Arbeits- oder Schulkonto befindet und dessen Besitzer das Unternehmen oder die Schule ist).
 
-1.  Sign in to the [Azure classic portal](https://manage.windowsazure.com) as msmith@hotmail.com.
-2.  Click **New** > **App services** > **Active Directory** > **Directory** > **Custom Create**.
-3.  Click Use existing directory and select the **I am ready to be signed out now** checkbox.
-4.  Sign in to the Azure classic portal as global admin of Contoso.onmicrosoft.com (for example, msmith@contoso.com).
-5.  When prompted to **Use the Contoso directory with Azure?**, click **Continue**.
-6.  Click **Sign out now**.
-7.  Sign in to the Azure classic portal as msmith@hotmail.com. The Contoso directory and the Default directory appear in the Active Directory extension.
+1.	Melden Sie sich als msmith@hotmail.com beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+2.	Klicken Sie auf **Neu** -> **App Services** -> **Active Directory** -> **Verzeichnis** -> **Benutzerdefiniert erstellen**.
+3.	Klicken Sie auf „Vorhandenes Verzeichnis verwenden“, und wählen Sie das Kontrollkästchen **Ich bin jetzt für die Abmeldung bereit**.
+4.	Melden Sie sich beim klassischen Azure-Portal als globaler Administrator von „Contoso.onmicrosoft.com“ (z.B. msmith@contoso.com) an.
+5.	Wenn Sie aufgefordert werden, **das Verzeichnis "Contoso" mit Azure zu verwenden**, klicken Sie auf **Weiter**.
+6.	Klicken Sie auf **Jetzt abmelden**.
+7.	Melden Sie sich als msmith@hotmail.com beim klassischen Azure-Portal an. Das Verzeichnis "Contoso" und das Standardverzeichnis werden in der Active Directory-Erweiterung angezeigt.
 
-After completing these steps, msmith@hotmail.com is a global administrator in the Contoso directory.
+Nach Abschluss dieser Schritte ist msmith@hotmail.com ein globaler Administrator im Verzeichnis "Contoso".
 
-## <a name="to-administer-resources-as-the-global-admin"></a>To administer resources as the global admin
-Now let’s suppose that Jane Doe needs administer websites and database resources that are associated with the Azure subscription for msmith@hotmail.com. Before she can do that, Michael Smith needs to complete these additional steps:
+## Verwalten von Ressourcen als globaler Administrator
+Nehmen wir nun an, dass Jane Doe Websites und Datenbankressourcen verwalten möchte, die dem Azure-Abonnement für msmith@hotmail.com zugeordnet sind. Bevor dies möglich ist, muss Michael Smith die folgenden zusätzlichen Schritte ausführen:
 
-1.  Sign in to the [Azure classic portal](https://manage.windowsazure.com) using the Service Administrator account for the Azure subscription (in this example, msmith@hotmail.com).
-2.  Transfer the subscription to the Contoso directory: click **Settings** > **Subscriptions** > select the subscription > **Edit Directory** > select **Contoso (Contoso.com)**. As part of the transfer, any work or school accounts that are co-administrators of the subscription are removed.
-3.  Add Jane Doe as co-administrator of the subscription: click **Settings** > **Administrators** > select the subscription > **Add** > type **JohnDoe@Contoso.com**.
+1.	Melden Sie sich über das Dienstadministratorkonto des Azure-Abonnements beim [klassischen Azure-Portal](https://manage.windowsazure.com) an (in diesem Beispiel msmith@hotmail.com).
+2.	Übertragen Sie das Abonnement in das Verzeichnis "Contoso": Klicken Sie auf **Einstellungen** > **Abonnements** > wählen Sie das Abonnement > **Verzeichnis bearbeiten** > wählen Sie **Contoso (Contoso.com)**. Alle Geschäfts- oder Schulkonten, die als Co-Administratoren des Abonnements fungieren, werden im Rahmen der Übertragung entfernt.
+3.	Fügen Sie Jane Doe dem Abonnement als Co-Administrator hinzu: Klicken Sie auf **Einstellungen** > **Administratoren**, und wählen Sie das Abonnement aus. Klicken Sie anschließend auf **Hinzufügen**, und geben Sie **JohnDoe@Contoso.com** ein.
 
-## <a name="next-steps"></a>Next steps
-For more information about the relationship between subscriptions and directories, see [How a subscription is associated with a directory](active-directory-how-subscriptions-associated-directory.md).
+## Nächste Schritte
+Weitere Informationen über die Beziehung zwischen Abonnements und Verzeichnissen finden Sie unter [Zuordnung zwischen einem Abonnement und einem Verzeichnis](active-directory-how-subscriptions-associated-directory.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

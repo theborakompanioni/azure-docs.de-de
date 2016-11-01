@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager and classic deployment | Microsoft Azure"
-   description="Describes the differences between the Resource Manager deployment model and the classic (or Service Management) deployment model."
+   pageTitle="Resource Manager- und klassische Bereitstellung | Microsoft Azure"
+   description="Beschreibt die Unterschiede zwischen dem Ressourcen-Manager-Bereitstellungsmodell und dem klassischen Bereitstellungsmodell (auch als ";Dienstverwaltungsmodell"; bekannt)."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,49 +16,48 @@
    ms.date="07/29/2016"
    ms.author="tomfitz"/>
 
+# Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 
-# <a name="azure-resource-manager-vs.-classic-deployment:-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources
+In diesem Thema erhalten Sie Informationen über das Azure Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sowie zum Status Ihrer Ressourcen. Zudem erfahren Sie, warum Ihre Ressourcen jeweils mit einem der beiden Modelle bereitgestellt wurden. Das Resource Manager-Bereitstellungsmodell weist einige wichtige Unterschiede zum klassischen Bereitstellungsmodell auf, und die beiden Modelle sind nicht vollständig miteinander kompatibel. Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung des Ressourcen-Managers für neue Ressourcen und, sofern möglich, die erneute Bereitstellung vorhandener Ressourcen über den Ressourcen-Manager.
 
-In this topic, you learn about Azure Resource Manager and classic deployment models, the state of your resources, and why your resources were deployed with one or the other. The Resource Manager deployment model contains important differences from the classic deployment model, and the two models are not completely compatible with each other. To simplify the deployment and management of resources, Microsoft recommends that you use Resource Manager for new resources, and, if possible, redeploy existing resources through Resource Manager.
+Falls der Resource Manager völlig neu für Sie ist, ist es ratsam, zuerst die Terminologiedefinitionen unter [Übersicht über Azure Resource Manager](resource-group-overview.md) durchzulesen.
 
-If you are new to Resource Manager, you may want to first review the terminology defined in the [Azure Resource Manager overview](resource-group-overview.md).
+## Verlauf der Bereitstellungsmodelle
 
-## <a name="history-of-the-deployment-models"></a>History of the deployment models
+In Azure war ursprünglich nur das klassische Bereitstellungsmodell verfügbar. In diesem Modell war jede Ressource unabhängig von den anderen vorhanden. Zusammengehörige Ressourcen konnten nicht gruppiert werden. Stattdessen mussten Sie manuell nachverfolgen, aus welchen Ressourcen die Lösung oder Anwendung bestand, und daran denken, sie mit einem koordinierten Ansatz zu verwalten. Zum Bereitstellen einer Lösung mussten Sie entweder jede Ressource einzeln über das klassische Portal erstellen oder ein Skript erstellen, mit dem alle Ressourcen in der richtigen Reihenfolge bereitgestellt wurden. Beim Löschen einer Lösung mussten Sie jede Ressource einzeln löschen. Es war nicht einfach möglich, Richtlinien für die Zugriffssteuerung für zusammengehörige Ressourcen anzuwenden und zu aktualisieren. Außerdem gab es keinen Weg, Tags auf Ressourcen anzuwenden, um diese zur Unterstützung der Überwachung Ihrer Ressourcen und der Abrechnungsverwaltung mit Begriffen zu versehen.
 
-Azure originally provided only the classic deployment model. In this model, each resource existed independently; there was no way to group related resources together. Instead, you had to manually track which resources made up your solution or application, and remember to manage them in a coordinated approach. To deploy a solution, you had to either create each resource individually through the classic portal or create a script that deployed all the resources in the correct order. To delete a solution, you had to delete each resource individually. You could not easily apply and update access control policies for related resources. Finally, you could not apply tags to resources to label them with terms that help you monitor your resources and manage billing.
+Im Jahr 2014 wurden Resource Manager und das Konzept der Ressourcengruppen von Azure eingeführt. Eine Ressourcengruppe ist ein Container für Ressourcen, die über einen gemeinsamen Lebenszyklus verfügen. Das Resource Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
 
-In 2014, Azure introduced Resource Manager, which added the concept of a resource group. A resource group is a container for resources that share a common lifecycle. The Resource Manager deployment model provides several benefits:
+- Sie müssen die Dienste für Ihre Lösung nicht mehr einzeln bearbeiten, sondern können sie als Gruppe bereitstellen, verwalten und überwachen.
+- Sie können die Lösung während ihres Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
+- Sie können die Zugriffssteuerung auf alle Ressourcen der Ressourcengruppe anwenden. Diese Richtlinien werden automatisch angewendet, wenn der Ressourcengruppe neue Ressourcen hinzugefügt werden.
+- Sie können Tags auf Ressourcen anwenden, um alle Ressourcen in Ihrem Abonnement logisch zu organisieren.
+- Sie können JavaScript Object Notation (JSON) verwenden, um die Infrastruktur für Ihre Lösung zu definieren. Die JSON-Datei wird als Resource Manager-Vorlage bezeichnet.
+- Sie können die Abhängigkeiten zwischen Ressourcen definieren, sodass diese in der richtigen Reihenfolge bereitgestellt werden.
 
-- You can deploy, manage, and monitor all the services for your solution as a group, rather than handling these services individually.
-- You can repeatedly deploy your solution throughout its lifecycle and have confidence your resources are deployed in a consistent state.
-- You can apply access control to all resources in your resource group, and those policies are automatically applied when new resources are added to the resource group.
-- You can apply tags to resources to logically organize all the resources in your subscription.
-- You can use JavaScript Object Notation (JSON) to define the infrastructure for your solution. The JSON file is known as a Resource Manager template.
-- You can define the dependencies between resources so they are deployed in the correct order.
+Nach Einführung des Ressourcen-Managers wurden alle Ressourcen nachträglich zu Standardressourcengruppen hinzugefügt. Wenn Sie jetzt eine Ressource über die klassische Bereitstellung erstellen, wird diese automatisch in einer standardmäßigen Ressourcengruppe für diesen Dienst erstellt, auch wenn Sie während der Bereitstellung diese Ressourcengruppe nicht angegeben haben. Jedoch bedeutet die bloße Tatsache, dass eine Ressource sich in einer Ressourcengruppe befindet, noch nicht, dass diese Ressource in das Ressourcen-Manager-Modell konvertiert wurde. Im nächsten Abschnitt wird beschrieben, wie die einzelnen Dienste die beiden Bereitstellungsmodelle behandeln.
 
-When Resource Manager was added, all resources were retroactively added to default resource groups. If you create a resource through classic deployment now, the resource is automatically created within a default resource group for that service, even though you did not specify that resource group at deployment. However, just existing within a resource group does not mean that the resource has been converted to the Resource Manager model. We'll look at how each service handles the two deployment models in the next section. 
+## Grundlagen der Unterstützung von Modellen 
 
-## <a name="understanding-support-for-the-models"></a>Understanding support for the models 
+Bei der Entscheidung, welches Bereitstellungsmodell Sie für Ihre Ressourcen verwenden, sollten drei Szenarien berücksichtigt werden:
 
-When deciding which deployment model to use for your resources, there are three scenarios to be aware of:
+1. Der Dienst unterstützt Resource Manager und stellt nur einen einzelnen Typ bereit.
+2. Der Dienst unterstützt Resource Manager, stellt aber zwei Typen bereit: einen für Resource Manager und einen für das klassische Modell. Dies gilt nur für virtuelle Computer, Speicherkonten und virtuelle Netzwerke.
+3. Der Dienst weist keine Unterstützung von Resource Manager auf.
 
-1. The service supports Resource Manager and provides only a single type.
-2. The service supports Resource Manager but provides two types - one for Resource Manager and one for classic. This scenario applies only to virtual machines, storage accounts, and virtual networks.
-3. The service does not support Resource Manager.
+Informationen zur Ermittlung, ob ein Dienst Resource Manager unterstützt, finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
 
-To discover whether or not a service supports Resource Manager, see [Resource Manager supported providers](resource-manager-supported-services.md).
+Wenn der gewünschte Dienst Resource Manager nicht unterstützt, müssen Sie weiterhin die klassische Bereitstellung verwenden.
 
-If the service you wish to use does not support Resource Manager, you must continue using classic deployment.
+Falls der Dienst Resource Manager unterstützt und **kein** virtueller Computer, Speicherkonto oder virtuelles Netzwerk ist, können Sie Resource Manager ohne Komplikationen nutzen.
 
-If the service supports Resource Manager and **is not** a virtual machine, storage account or virtual network, you can use Resource Manager without any complications.
+Für virtuelle Computer, Speicherkonten und virtuelle Netzwerke gilt: Wenn die Ressource über die klassische Bereitstellung erstellt wurde, müssen Sie diese weiterhin mit klassischen Vorgängen ausführen. Falls der virtuelle Computer, das Speicherkonto oder das virtuelle Netzwerk per Resource Manager-Bereitstellung erstellt wurde, müssen Sie weiterhin Resource Manager-Vorgänge verwenden. Diese Unterscheidung kann besonders verwirrend sein, wenn Ihr Abonnement eine Mischung aus Ressourcen enthält, die mit Resource Manager und mit der klassischen Bereitstellung erstellt wurden. Diese Ressourcenkombination kann zu unerwarteten Ergebnissen führen, da die Ressourcen nicht die gleichen Vorgänge unterstützen.
 
-For virtual machines, storage accounts, and virtual networks, if the resource was created through classic deployment, you must continue to operate on it through classic operations. If the virtual machine, storage account, or virtual network was created through Resource Manager deployment, you must continue using Resource Manager operations. This distinction can get confusing when your subscription contains a mix of resources created through Resource Manager and classic deployment. This combination of resources can create unexpected results because the resources do not support the same operations.
-
-In some cases, a Resource Manager command can retrieve information about a resource created through classic deployment, or can perform an administrative task such as moving a classic resource to another resource group. But, these cases should not give the impression that the type supports Resource Manager operations. For example, suppose you have a resource group that contains a virtual machine that was created with classic deployment. If you run the following Resource Manager PowerShell command:
+In einigen Fällen können Sie mithilfe eines Resource Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder eine administrative Aufgabe ausführen, z.B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Resource Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die einen mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computer umfasst. Bei Ausführung des folgenden Resource Manager-PowerShell-Befehls:
 
     Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 
-It returns the virtual machine:
+wird der virtuelle Computer zurückgegeben:
     
     Name              : ExampleClassicVM
     ResourceId        : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.ClassicCompute/virtualMachines/ExampleClassicVM
@@ -68,116 +67,112 @@ It returns the virtual machine:
     Location          : westus
     SubscriptionId    : {guid}
 
-However, the Resource Manager cmdlet **Get-AzureRmVM** only returns virtual machines deployed through Resource Manager. The following command does not return the virtual machine created through classic deployment.
+Das Resource Manager-Cmdlet **Get-AzureRmVM** gibt aber nur per Resource Manager bereitgestellte virtuelle Computer zurück. Mit dem folgenden Befehl wird der über das klassische Bereitstellungsmodell erstellte virtuelle Computer nicht zurückgegeben.
 
     Get-AzureRmVM -ResourceGroupName ExampleGroup
 
-There are some other important considerations when working with virtual machines.
+Bei der Arbeit mit virtuellen Computern sind auch noch andere wichtige Aspekte zu berücksichtigen.
 
-- Virtual machines deployed with the classic deployment model cannot be included in a virtual network deployed with Resource Manager.
-- Virtual machines deployed with the Resource Manager deployment model must be included in a virtual network.
-- Virtual machines deployed with the classic deployment model don't have to be included in a virtual network.
+- Virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können nicht in ein virtuelles Netzwerk eingebunden werden, das mit dem Ressourcen-Manager bereitgestellt wurde.
+- Virtuelle Computer, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden, müssen in ein virtuelles Netzwerk eingebunden werden.
+- Virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, müssen nicht in ein virtuelles Netzwerk eingebunden werden.
 
-To learn about connecting virtual networks from different deployment models, see [Connect virtual networks from different deployment models in the portal](./vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
+Informationen zum Verbinden virtueller Netzwerke aus verschiedenen Bereitstellungsmodellen finden Sie unter [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](./virtual-network/virtual-networks-arm-asm-s2s.md).
 
-Only resources created through Resource Manager support tags. You cannot apply tags to classic resources. For more information about using tags in Resource Manager, see [Using tags to organize your Azure resources](resource-group-using-tags.md).
+Nur Ressourcen, die mit dem Ressourcen-Manager erstellt wurden, unterstützen Tags. Sie können keine Tags auf klassische Ressourcen anwenden. Weitere Informationen zur Verwendung von Tags im Ressourcen-Manager finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).
 
-## <a name="resource-manager-characteristics"></a>Resource Manager characteristics
+## Merkmale des Ressourcen-Managers
 
-To help you understand the two models, let's review the characteristics of Resource Manager types:
+Zum besseren Verständnis der beiden Modelle sehen wir uns nun die Merkmale der Resource Manager-Typen an:
 
-- Created through the [Azure portal](https://portal.azure.com/).
+- Erstellt mit dem [Azure-Portal](https://portal.azure.com/).
 
-     ![Azure portal](./media/resource-manager-deployment-model/portal.png)
+     ![Azure-Portal](./media/resource-manager-deployment-model/portal.png)
 
-     For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
+     Für Compute-, Speicher- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Resource Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager**.
 
-     ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
+     ![Resource Manager-Bereitstellung](./media/resource-manager-deployment-model/select-resource-manager.png)
 
-- Created with the Resource Manager version of the Azure PowerShell cmdlets. These commands have the format *Verb-AzureRmNoun*.
+- Erstellt mit der Resource Manager-Version der Azure PowerShell-Cmdlets. Diese Befehle haben das Format *Verb-AzureRmNomen*, wie unten dargestellt.
 
         New-AzureRmResourceGroupDeployment
 
-- Created through the [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) for REST operations.
+- Erstellt mit der [Azure Resource Manager-REST-API](https://msdn.microsoft.com/library/azure/dn790568.aspx) für REST-Vorgänge.
 
-- Created through Azure CLI commands run in the **arm** mode.
+- Erstellt mit Befehlen der Azure-Befehlszeilenschnittstelle, die im Modus **arm** ausgeführt werden.
 
         azure config mode arm
         azure group deployment create 
 
-- The resource type does not include **(classic)** in the name. The following image shows the type as **Storage account**.
+- Der Name des Ressourcentyps enthält nicht das Wort **(klassisch)**. Die folgende Abbildung zeigt den Typ **Speicherkonto**.
 
-    ![web app](./media/resource-manager-deployment-model/resource-manager-type.png)
+    ![Web-App](./media/resource-manager-deployment-model/resource-manager-type.png)
 
-The application shown in the following diagram shows how resources deployed through Resource Manager are contained in a single resource group.
+Die in der folgenden Abbildung dargestellte Anwendung zeigt über den Ressourcen-Manager bereitgestellte Ressourcen in einer einfachen Ressourcengruppe.
 
-  ![Resource Manager architecture](./media/virtual-machines-azure-resource-manager-architecture/arm_arch3.png)
+  ![Resource Manager – Architektur](./media/virtual-machines-azure-resource-manager-architecture/arm_arch3.png)
 
-Additionally, there are relationships between the resources within the resource providers:
+Außerdem gibt es Beziehungen zwischen den Ressourcen innerhalb der Ressourcenanbieter:
 
-- A virtual machine depends on a specific storage account defined in the SRP to store its disks in blob storage (required).
-- A virtual machine references a specific NIC defined in the NRP (required) and an availability set defined in the CRP (optional).
-- A NIC references the virtual machine's assigned IP address (required), the subnet of the virtual network for the virtual machine (required), and to a Network Security Group (optional).
-- A subnet within a virtual network references a Network Security Group (optional).
-- A load balancer instance references the backend pool of IP addresses that include the NIC of a virtual machine (optional) and references a load balancer public or private IP address (optional).
+- Ein virtueller Computer hängt von einem bestimmten Speicherkonto ab, das im SRP definiert ist, um die Datenträger im Blobspeicher zu speichern (erforderlich).
+- Ein virtueller Computer verweist auf eine bestimmte NIC, die im NRP definiert ist (erforderlich), und eine Verfügbarkeitsgruppe, die im CRP definiert ist (optional).
+- Eine NIC verweist auf die dem virtuellen Computer zugewiesene IP-Adresse (erforderlich), das Subnetz des virtuellen Netzwerks für den virtuellen Computer (erforderlich) und eine Netzwerksicherheitsgruppe (optional).
+- Ein Subnetz innerhalb eines virtuellen Netzwerks verweist auf eine Netzwerksicherheitsgruppe (optional).
+- Eine Lastenausgleichsinstanz verweist auf den Back-End-Pool von IP-Adressen, die die NIC eines virtuellen Computers enthalten (optional) und auf eine öffentliche oder private IP-Adresse für den Lastenausgleich (optional).
 
-## <a name="classic-deployment-characteristics"></a>Classic deployment characteristics
+## Merkmale der klassischen Bereitstellung
 
-You may also know the classic deployment model as the Service Management model.
+Das klassische Bereitstellungsmodell ist Ihnen möglicherweise unter den Bezeichnungen "Service-Management-Modell" oder "Dienstverwaltungsmodell" bekannt.
 
-Resources created in the classic deployment model share the following characteristics:
+Ressourcen, die im klassischen Bereitstellungsmodell erstellt wurden, weisen folgende Merkmale auf:
 
-- Created through the [classic portal](https://manage.windowsazure.com)
+- Erstellt mit dem [klassischen Portal](https://manage.windowsazure.com).
 
-     ![Classic portal](./media/resource-manager-deployment-model/classic-portal.png)
+     ![Klassisches Portal](./media/resource-manager-deployment-model/classic-portal.png)
 
-     Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
+     Alternativ können Sie das Azure-Portal nutzen und eine **klassische** Bereitstellung (für Compute-, Speicher- und Netzwerkressourcen) festlegen.
 
-     ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
+     ![Klassische Bereitstellung](./media/resource-manager-deployment-model/select-classic.png)
 
-- Created through the Service Management version of the Azure PowerShell cmdlets. These command names have the format *Verb-AzureNoun*.
+- Erstellt mit der Dienstverwaltungsversion der Azure PowerShell-Cmdlets. Diese Befehlsnamen haben das Format *Verb-AzureNomen*, wie unten dargestellt.
 
         New-AzureVM 
 
-- Created through the [Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) for REST operations.
-- Created through Azure CLI commands run in **asm** mode.
+- Erstellt mit der [Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx) für REST-Vorgänge.
+- Erstellt mit Befehlen der Azure-Befehlszeilenschnittstelle, die im Modus **asm** ausgeführt werden.
 
         azure config mode asm
         azure vm create 
 
-- The resource type includes **(classic)** in the name. The following image shows the type as **Storage account (classic)**.
+- Der Name des Ressourcentyps enthält das Wort **(klassisch)**. Die folgende Abbildung zeigt den Typ **Speicherkonto (klassisch)**.
 
-    ![classic type](./media/resource-manager-deployment-model/classic-type.png)
+    ![Klassischer Typ](./media/resource-manager-deployment-model/classic-type.png)
 
-You can still use the Azure portal to manage resources that were created through classic deployment.
+Sie können weiterhin das Azure-Portal zur Verwaltung von Ressourcen verwenden, die über die klassische Bereitstellung erstellt wurden.
 
-In Azure Service Management, the compute, storage, or network resources for hosting virtual machines are provided by:
+In der Azure-Dienstverwaltung werden die Compute-, Speicher- oder Netzwerkressourcen für das Hosten von virtuellen Computern wie folgt bereitgestellt:
 
-- A required cloud service that acts as a container for hosting virtual machines (compute). Virtual machines are automatically provided with a network interface card (NIC) and an IP address assigned by Azure. Additionally, the cloud service contains an external load balancer instance, a public IP address, and default endpoints to allow remote desktop and remote PowerShell traffic for Windows-based virtual machines and Secure Shell (SSH) traffic for Linux-based virtual machines.
-- A required storage account that stores the VHDs for a virtual machine, including the operating system, temporary, and additional data disks (storage).
-- An optional virtual network that acts as an additional container, in which you can create a subnetted structure and designate the subnet on which the virtual machine is located (network).
+- Ein erforderlicher Clouddienst, der als Container für das Hosten virtueller Computer (Compute) fungiert. Virtuelle Computer werden automatisch mit einer Netzwerkschnittstellenkarte (Network Interface Card, NIC) bereitgestellt, und ihnen wird von Azure eine IP-Adresse zugewiesen. Darüber hinaus enthält der Clouddienst eine externe Lastenausgleichsinstanz, eine öffentliche IP-Adresse und Standardendpunkte, um Remotedesktop- und Remote-PowerShell-Datenverkehr für die Windows-basierten virtuellen Computer und Secure Shell-Datenverkehr (SSH) für Linux-basierte virtuelle Computer zu ermöglichen.
+- Ein erforderliches Speicherkonto, in dem die VHDs für einen virtuellen Computer gespeichert werden, einschließlich des Betriebssystems sowie temporärer und zusätzlicher Datenträger (Speicher).
+- Ein optionales virtuelles Netzwerk, das als zusätzlicher Container fungiert, in dem Sie eine Subnetzstruktur erstellen und das Subnetz benennen können, in dem sich der virtuelle Computer befindet (Netzwerk).
 
-Here are the components and their relationships for Azure Service Management.
+Im Folgenden sind die Komponenten und deren Beziehungen für die Azure-Dienstverwaltung dargestellt.
 
-  ![classic architecture](./media/virtual-machines-azure-resource-manager-architecture/arm_arch1.png)
+  ![Klassische Architektur](./media/virtual-machines-azure-resource-manager-architecture/arm_arch1.png)
 
-## <a name="migrating-from-classic-to-resource-manager"></a>Migrating from classic to Resource Manager
+## Migrieren von der klassischen Bereitstellung zu Resource Manager
 
-If you are ready to migrate your resources from classic deployment to Resource Manager deployment, see:
+Wenn Sie bereit zum Migrieren Ihrer Ressourcen von der klassischen Bereitstellung zur Resource Manager-Bereitstellung sind, helfen Ihnen die folgenden Informationen weiter:
 
-1. [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-2. [Platform supported migration of IaaS resources from Classic to Azure Resource Manager](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-3. [Migrate IaaS resources from classic to Azure Resource Manager by using Azure PowerShell](./virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)
-4. [Migrate IaaS resources from classic to Azure Resource Manager by using Azure CLI](./virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+1. [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+2. [Platform supported migration of IaaS resources from Classic to Azure Resource Manager (Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager)](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+3. [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell](./virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)
+4. [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle](./virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- To walkthrough the creation of template that defines a virtual machine, storage account, and virtual network, see [Resource Manager template walkthrough](resource-manager-template-walkthrough.md).
-- To learn about the structure of Resource Manager templates, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
-- To see the commands for deploying a template, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).
+- Eine exemplarische Vorgehensweise zum Erstellen einer Vorlage, mit der ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk definiert werden, finden Sie unter [Resource Manager-Vorlage – exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
+- Informationen zur Struktur von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
+- Die Befehle zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,108 +1,106 @@
 <properties
-    pageTitle="Flighting deployment (beta testing) in Azure App Service"
-    description="Learn how to flight new features in your app or beta test your updates in this end-to-end tutorial. It brings together App Service features like continuous publishing, slots, traffic routing, and Application Insights integration."
-    services="app-service\web"
-    documentationCenter=""
-    authors="cephalin"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Test-Flighting-Bereitstellung (Betatesting) in Azure App Service"
+	description="In diesem umfassenden Tutorial erfahren Sie, wie Sie Test-Flightings für neue Features in Ihrer App oder Betatests für Updates durchführen. Hierfür werden App Service-Funktionen wie kontinuierliche Veröffentlichung, Slots, Datenverkehrsrouting sowie die Integration von Application Insights miteinander kombiniert."
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="02/02/2016"
-    ms.author="cephalin"/>
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/02/2016"
+	ms.author="cephalin"/>
+# Test-Flighting-Bereitstellung (Betatesting) in Azure App Service
 
-# <a name="flighting-deployment-(beta-testing)-in-azure-app-service"></a>Flighting deployment (beta testing) in Azure App Service
+In diesem Tutorial erfahren Sie, wie Sie *Test-Flighting-Bereitstellungen* einrichten, indem Sie die verschiedenen Funktionen von [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) und [Azure Application Insights](/services/application-insights/) integrieren.
 
-This tutorial shows you how to do *flighting deployments* by integrating the various capabilities of [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) and [Azure Application Insights](/services/application-insights/). 
+*Test-Flighting* ist ein Bereitstellungsprozess, bei dem eine neue Funktion oder eine Änderung mit einer begrenzten Anzahl echter Kunden getestet wird, und ist ein wichtiger Test in einem Produktionsszenario. Der Prozess ist mit dem Betatesting verwandt und wird zuweilen auch als „kontrollierter Test-Flight“ bezeichnet. Viele große Unternehmen mit Webpräsenz nutzen diese Vorgehensweise, um Updates ihrer Apps im Rahmen ihrer [agilen Bereitstellung](https://en.wikipedia.org/wiki/Agile_software_development) so früh wie möglich zu überprüfen. Mit Azure App Service können Sie das Testen in der Produktionsumgebung in die kontinuierliche Veröffentlichung und Application Insights integrieren, um das gleiche DevOps-Szenario zu implementieren. Dieser Ansatz bietet folgende Vorteile:
 
-*Flighting* is a deployment process that validates a new feature or change with a limited number of real customers, and is a major testing in production scenario. It is akin to beta testing and is sometimes known as "controlled test flight". Many large enterprises with a web presence use this approach to get early validation on their app updates in their practice of [agile development](https://en.wikipedia.org/wiki/Agile_software_development). Azure App Service enables you to integrate test in production with continous publishing and Application Insights to implement the same DevOps scenario. Benefits of this approach include:
+- **Sie erhalten wertvolles Feedback, _bevor_ Updates für die Produktion freigegeben werden**. Es ist gut, wenn Sie direkt nach der Veröffentlichung Feedback bekommen – noch viel besser ist es aber, Feedback bereits vor der Veröffentlichung zu erhalten. Sie können Updates zu jedem Zeitpunkt im Produktlebenszyklus mit echtem Benutzerdatenverkehr und echtem Benutzerverhalten testen.
+- **Verbessern Sie die [kontinuierliche testgesteuerte Entwicklung (Continuous Test-Driven Development, CTDD)](https://en.wikipedia.org/wiki/Continuous_test-driven_development)**: Durch Integrieren des Testens in der Produktionsumgebung in die kontinuierliche Integration und Instrumentation mit Application Insights erfolgt die Überprüfung der Benutzer frühzeitig im Produktlebenszyklus und automatisch. So können Sie den Zeitaufwand für manuelle Testausführungen reduzieren.
+- **Optimieren Sie den Testworkflow**: Durch Automatisieren des Testens in der Produktionsumgebung mit Instrumentation einer kontinuierlichen Überwachung können Sie verschiedene Testziele in einem einzigen Prozess erreichen, wie z. B. [Integration](https://en.wikipedia.org/wiki/Integration_testing), [Regression](https://en.wikipedia.org/wiki/Regression_testing), [Nutzbarkeit](https://en.wikipedia.org/wiki/Usability_testing), Barrierefreiheit, Lokalisierung, [Leistung](https://en.wikipedia.org/wiki/Software_performance_testing), [Sicherheit](https://en.wikipedia.org/wiki/Security_testing) und [Akzeptanz](https://en.wikipedia.org/wiki/Acceptance_testing).
 
-- **Gain real feedback _before_ updates are released to production** - The only thing better than gaining feedback as soon as you release is gaining feedback before you release. You can test updates with real user traffic and behaviors as early as you desire in the product life cycle.
-- **Enhance [continuous test-driven development (CTDD)](https://en.wikipedia.org/wiki/Continuous_test-driven_development)** - By integrating test in production with continuous integration and instrumentation with Application Insights, user validation happens early and automatically in your product life cycle. This helps reduce time investments in manual test execution.
-- **Optimize test workflow** - By automating test in production with continuous monitoring instrumentation, you can potentially accomplish the goals of various kinds of tests in a single process, such as [integration](https://en.wikipedia.org/wiki/Integration_testing), [regression](https://en.wikipedia.org/wiki/Regression_testing), [usability](https://en.wikipedia.org/wiki/Usability_testing), accessibility, localization, [performance](https://en.wikipedia.org/wiki/Software_performance_testing), [security](https://en.wikipedia.org/wiki/Security_testing), and [acceptance](https://en.wikipedia.org/wiki/Acceptance_testing).
+Bei einer Test-Flighting-Bereitstellung geht es nicht nur um das Weiterleiten von Livedatenverkehr. Ziel einer solchen Bereitstellung ist es, so schnell wie möglich wichtige Einblicke zu erhalten, z. B. zu unerwarteten Fehlern, Leistungsabfällen oder Problemen mit der Benutzerfreundlichkeit. Denken Sie daran: Sie haben es mit echten Kunden zu tun. Stellen Sie also sicher, dass Sie Ihre Test-Flighting-Bereitstellung so einrichten, dass alle erforderlichen Daten erfasst werden, damit Sie eine fundierte Entscheidung zum nächsten Schritt treffen können. Dieses Tutorial zeigt, wie Sie Daten mithilfe von Application Insights erfassen, Sie können jedoch auch New Relic oder andere Technologien verwenden, die sich für Ihr Szenario eignen.
 
-A flighting deployment is not just about routing live traffic. In such a deployment you want to gain insight as quickly as possible, whether it be an unexpected bug, performance degradation, user experience issues. Remember, you are dealing with real customers. So to do it right, you must make sure that you have set up your flighting deployment to gather all the data you need in order to make an informed decision for your next step. This tutorial shows you how to collect data with Application Insights, but you can use New Relic or other technologies that suits your scenario. 
+## Aufgaben
 
-## <a name="what-you-will-do"></a>What you will do
+In diesem Tutorial lernen Sie, wie Sie folgende Szenarien kombinieren, um Ihre App Service-App in der Produktionsumgebung zu testen:
 
-In this tutorial, you will learn how to bring the following scenarios together to test your App Service app in production:
+- [Weiterleiten von Produktionsdatenverkehr](app-service-web-test-in-production-get-start.md) an Ihre Beta-App
+- [Instrumentieren Ihrer App](../application-insights/app-insights-web-track-usage.md), um hilfreiche Metriken abzurufen
+- Kontinuierliche Bereitstellung Ihrer Beta-App und Verfolgen von Livemetriken der App
+- Vergleichen von Metriken zwischen der Produktions-App und der Beta-App, um zu erfahren, welche Ergebnisse durch Codeänderungen erzielt werden
 
-- [Route production traffic](app-service-web-test-in-production-get-start.md) to your beta app
-- [Instrument your app](../application-insights/app-insights-web-track-usage.md) to obtain useful metrics
-- Continuously deploy your beta app and track live app metrics
-- Compare metrics between the production app and the beta app to see how code changes translate to results
+## Sie benötigen Folgendes
 
-## <a name="what-you-will-need"></a>What you will need
+-	Ein Azure-Konto
+-	Ein [GitHub](https://github.com/)-Konto
+- Visual Studio 2015 – Sie können die [Community-Edition](https://www.visualstudio.com/de-DE/products/visual-studio-express-vs.aspx) herunterladen
+-	Git-Shell (mit [GitHub für Windows](https://windows.github.com/) installiert) – Ermöglicht Ihnen, Git- und PowerShell-Befehle in derselben Sitzung auszuführen.
+-	Neueste [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi)-Version
+-	Grundlegende Kenntnisse der folgenden Komponenten:
+	-	Bereitstellung der [Azure-Ressourcen-Manager](../resource-group-overview.md)-Vorlage (siehe [Vorhersagbares Bereitstellen einer komplexen Anwendung in Azure](app-service-deploy-complex-application-predictably.md))
+	-	[Git](http://git-scm.com/documentation)
+	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
--   An Azure account
--   A [GitHub](https://github.com/) account
-- Visual Studio 2015 - you can download the [Community edition](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx).
--   Git Shell (installed with [GitHub for Windows](https://windows.github.com/)) - this enables you to run both the Git and PowerShell commands in the same session
--   Latest [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi) bits
--   Basic understanding of the following:
-    -   [Azure Resource Manager](../resource-group-overview.md) template deployment (see [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md))
-    -   [Git](http://git-scm.com/documentation)
-    -   [PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
-
-> [AZURE.NOTE] You need an Azure account to complete this tutorial:
-> + You can [open an Azure account for free](/pricing/free-trial/) - You get credits you can use to try out paid Azure services, and even after they're used up you can keep the account and use free Azure services, such as Web Apps.
-> + You can [activate Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/) - Your Visual Studio subscription gives you credits every month that you can use for paid Azure services.
+> [AZURE.NOTE] Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial durchführen zu können:
+> + Sie können ein [Azure-Konto kostenlos erstellen](/pricing/free-trial/): Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und kostenlose Azure-Dienste wie etwa Web-Apps nutzen, wenn das Guthaben aufgebraucht ist.
+> + Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/): Ihr Visual Studio-Abonnement schließt ein monatliches Guthaben ein, das Sie für kostenpflichtige Azure-Dienste nutzen können.
 >
-> If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-## <a name="set-up-your-production-web-app"></a>Set up your production web app
+## Einrichten der Produktions-Web-App
 
->[AZURE.NOTE] The script used in this tutorial will automatically configure continuous publishing from your GitHub repository. This requires that your GitHub credentials are already stored in Azure, otherwise the scripted deployment will fail when attempting to configure source control settings for the web apps.
+>[AZURE.NOTE] Das Skript in diesem Tutorial konfiguriert automatisch die kontinuierliche Veröffentlichung aus Ihrem GitHub-Repository. Dies erfordert, dass Ihre Anmeldeinformationen für GitHub bereits in Azure gespeichert sind. Andernfalls misslingt die skriptgesteuerte Bereitstellung, wenn versucht wird, Quellcodeverwaltungseinstellungen für die Web-Apps zu konfigurieren.
 >
->To store your GitHub credentials in Azure, create a web app in the [Azure Portal](https://portal.azure.com/) and [configure GitHub deployment](app-service-continuous-deployment.md#Step7). You only need to do this once.
+>Um Ihre GitHub-Anmeldeinformationen in Azure zu speichern, erstellen Sie eine Web-App im [Azure-Portal](https://portal.azure.com/) und [konfigurieren die GitHub-Bereitstellung](app-service-continuous-deployment.md#Step7). Dies ist nur einmalig erforderlich.
 
-In a typical DevOps scenario, you have an application that’s running live in Azure, and you want to make changes to it through continuous publishing. In this scenario, you will deploy to production a template that you have developed and tested.
+In einem typischen DevOps-Szenario verfügen Sie über eine Anwendung, die aktiv in Azure ausgeführt wird und an der Sie über die fortlaufende Veröffentlichung Änderungen vornehmen möchten. In diesem Szenario stellen Sie eine Vorlage in der Produktionsumgebung bereit, die Sie entwickelt und getestet haben.
 
-1.  Create your own fork of the [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) repository. For information on creating your fork, see [Fork a Repo](https://help.github.com/articles/fork-a-repo/). Once your fork is created, you can see it in your browser.
+1.	Erstellen Sie Ihre eigene Verzweigung des [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp)-Repositorys. Informationen zum Erstellen Ihrer Verzweigung finden Sie unter [Verzweigen eines Repositorys](https://help.github.com/articles/fork-a-repo/). Sobald die Verzweigung erstellt wurde, können Sie sie in Ihrem Browser einsehen.
 
-    ![](./media/app-service-agile-software-development/production-1-private-repo.png)
+	![](./media/app-service-agile-software-development/production-1-private-repo.png)
 
-2.  Open a Git Shell session. If you don't have Git Shell yet, install [GitHub for Windows](https://windows.github.com/) now.
-3.  Create a local clone of your fork by executing the following command:
+2.	Öffnen Sie eine Git-Shell-Sitzung. Wenn Sie noch nicht über Git-Shell verfügen, installieren Sie nun [GitHub für Windows](https://windows.github.com/).
+3.	Erstellen Sie einen lokalen Klon Ihrer Verzweigung, indem Sie den folgenden Befehl ausführen:
 
         git clone https://github.com/<your_fork>/ToDoApp.git
 
-4.  Once you have your local clone, navigate to *&lt;repository_root>*\ARMTemplates, and run the deploy.ps1 script with a unique suffix, as shown below:
+4.	Nachdem Sie den lokalen Klon erstellt haben, navigieren Sie zu *&lt;Repositorystammverzeichnis>*\\ARMTemplates, und führen Sie das Skript „deploy.ps1“ mit einem eindeutigen Suffix aus, wie im Folgenden gezeigt:
 
         .\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git -ResourceGroupSuffix <your_suffix>
 
-4.  When prompted, type in the desired username and password for database access. Remember your database credentials because you will need to specify them again when updating the resource group.
+4.	Geben Sie bei Aufforderung den gewünschten Benutzernamen und das Kennwort für den Datenbankzugriff ein. Merken Sie sich die Datenbankanmeldeinformationen, da Sie sie beim Aktualisieren der Ressourcengruppe angeben müssen.
 
-    You should see the provisioning progress of various Azure resources. When deployment completes, the script will launch the application in the browser and give you a friendly beep.
-    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.1-app-in-browser.png)
+	Der Fortschritt der Bereitstellung verschiedener Azure-Ressourcen sollte angezeigt werden. Sobald die Bereitstellung abgeschlossen ist, startet das Skript die Anwendung im Browser, und Sie hören einen Signalton. ![](./media/app-service-web-test-in-production-controlled-test-flight/00.1-app-in-browser.png)
 
-6.  Back in your Git Shell session, run:
+6.	Zurück in der Git-Shell-Sitzung führen Sie Folgendes aus:
 
         .\swap –Name ToDoApp<your_suffix>
 
-    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.2-swap-to-production.png)
+	![](./media/app-service-web-test-in-production-controlled-test-flight/00.2-swap-to-production.png)
 
-7.  When the script finishes, go back to browse to the frontend’s address (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/) to see the application running in production.
-5.  Log into the [Azure Portal](https://portal.azure.com/) and take a look at what’s created.
+7.	Wenn das Skript abgeschlossen ist, navigieren Sie zurück zur Adresse des Front-Ends (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/), um zu prüfen, ob die Anwendung in der Produktionsumgebung ausgeführt wird.
+5.	Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und sehen Sie sich an, was erstellt wurde.
 
-    You should be able to see two web apps in the same resource group, one with the `Api` suffix in the name. If you look at the resource group view, you will also see the SQL Database and server, the App Service plan, and the staging slots for the web apps. Browse through the different resources and compare them with *&lt;repository_root>*\ARMTemplates\ProdAndStage.json to see how they are configured in the template.
+	Sie sollten zwei Web-Apps in derselben Ressourcengruppe sehen, von denen eine das Suffix `Api` im Namen enthält. Wenn Sie die Ressourcengruppenansicht betrachten, sehen Sie auch SQL-Datenbank und -Server, den App Service-Plan und die Stagingslots für die Web-Apps. Navigieren Sie durch die verschiedenen Ressourcen, und vergleichen Sie diese mit *&lt;Repositorystammverzeichnis>\\ARMTemplates\\ProdAndStage.json*, um zu prüfen, wie sie in der Vorlage konfiguriert sind.
 
-    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.3-resource-group-view.png)
+	![](./media/app-service-web-test-in-production-controlled-test-flight/00.3-resource-group-view.png)
 
-You have set up the production app.  Now, let's imagine that you receive feedback that usability is poor for the app. So you decide to investigate. You're going to instrument your app to give you feedback.
+Sie haben die Produktions-App eingerichtet. Angenommen, Sie erhalten Rückmeldungen von Kunden, Ihre App sei nicht sehr benutzerfreundlich. Das möchten Sie untersuchen. Sie werden also Ihre App instrumentieren, damit diese Ihnen Feedback bietet.
 
-## <a name="investigate:-instrument-your-client-app-for-monitoring/metrics"></a>Investigate: Instrument your client app for monitoring/metrics
+## Untersuchen: Instrumentieren Ihrer Client-App für Überwachung/Metriken
 
-5. Open *&lt;repository_root>*\src\MultiChannelToDo.sln in Visual Studio.
-6. Restore all Nuget packages by right-clicking solution > **Manage NuGet Packages for Solution** > **Restore**.
-6. Right-click **MultiChannelToDo.Web** > **Add Application Insights Telemetry** > **Configure Settings** > Change resource group to ToDoApp*&lt;your_suffix>* > **Add Application Insights to Project**.
-7. In the Azure Portal, open the blade for the **MultiChannelToDo.Web** Application Insight resource. Then in the **Application health** part, click **Learn how to collect browser page load data** > copy code.
-7. Add the copied JS instrumentation code to *&lt;repository_root>*\src\MultiChannelToDo.Web\app\Index.cshtml, just before the closing `<heading>` tag. It should contain the unique instrumentation key of your Application Insight resource.
+5. Öffnen Sie *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo.sln in Visual Studio.
+6. Stellen Sie alle NuGet-Pakete wieder her, indem Sie mit der rechten Maustaste auf die Projektmappe > **NuGet-Pakete für Projektmappe verwalten** > **Wiederherstellen** klicken.
+6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo.Web** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp *&lt;Ihr\_Suffix>* “ > **Application Insights zu Projekt hinzufügen**.
+7. Öffnen Sie im Azure-Portal das Blatt für die Application Insight-Ressource **MultiChannelToDo.Web**. Klicken Sie dann im Detail **Anwendungsintegrität** auf **Erfahren Sie, wie Sie Daten zu Seitenladezeiten im Browser erfassen** > Code kopieren.
+7. Fügen Sie den kopierten JS-Instrumentationscode zu *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo.Web\\app\\Index.cshtml hinzu, direkt vor das schließende `<heading>`-Tag. Der Code sollte den eindeutigen Instrumentationsschlüssel Ihrer Application Insight-Ressource enthalten.
 
         <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -115,7 +113,7 @@ You have set up the production app.  Now, let's imagine that you receive feedbac
         appInsights.trackPageView();
         </script>
 
-11. Send custom events to Application Insights for mouse clicks by adding the following code to the bottom of body:
+11. Senden Sie benutzerdefinierte Ereignisse für Mausklicks an Application Insights, indem Sie am Ende des Textes folgenden Code einfügen:
 
         <script>
             $(document.body).find("*").click(function(event) {
@@ -124,63 +122,63 @@ You have set up the production app.  Now, let's imagine that you receive feedbac
             });
         </script>
 
-    This JavaScript snippet sends a custom event to Application Insights every time a user clicks anywhere in the web app.
+    Dieser JavaScript-Codeausschnitt sendet jedes Mal, wenn ein Benutzer irgendwo in der Web-App klickt, ein benutzerdefiniertes Ereignis an Application Insights.
 
-12. In Git Shell, commit and push your changes to your fork in GitHub. Then, wait for clients to refresh browser.
+12. Führen Sie für Ihre Änderungen in Git-Shell ein Commit aus, und pushen Sie die Änderungen in Ihre Verzweigung in GitHub. Warten Sie, bis die Browser auf den Clients aktualisiert werden.
 
         git add -A :/
         git commit -m "add AI configuration for client app"
         git push origin master
 
-6.  Swap the deployed app changes to production:
+6.	Fügen Sie die bereitgestellten Änderungen der App in die Produktionsumgebung ein:
 
         .\swap –Name ToDoApp<your_suffix>
 
-13. Browse to the Application Insights resource that you configured. Click Custom events.
+13. Navigieren Sie zu der von Ihnen konfigurierten Application Insights-Ressource. Klicken Sie auf „Benutzerdefinierte Ereignisse“.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/01-custom-events.png)
 
-    If you don't see metrics for custom events, wait a few minutes and click **Refresh**.
+    Wenn Sie keine Metriken für benutzerdefinierte Ereignisse sehen, warten Sie einige Minuten, und klicken Sie auf **Aktualisieren**.
 
-Suppose you see a chart like below:
+Sie sehen möglicherweise ein Diagramm ähnlich dem folgenden:
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/02-custom-events-chart-view.png)
 
-And the event grid below it:
+So könnte das Ereignisraster darunter aussehen:
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/03-custom-event-grid-view.png)
 
-According to your ToDoApp application code, the **BUTTON** event corresponds to the submit button, and the **INPUT** event corresponds to the textbox. So far, things make sense. However, it looks like there's a good amount of clicks and very few clicks on the to-do items (the **LI** events).
+Gemäß dem Code Ihrer ToDoApp-Anwendung gehört das **BUTTON**-Ereignis zur Schaltfläche zum Senden, und das **INPUT**-Ereignis gehört zum Textfeld. Soweit sieht alles ganz sinnvoll aus. Allerdings gibt es offenbar sehr viele Klicks, aber nur wenige Klicks auf Aufgaben (die **LI**-Ereignisse).
 
-Based on this, you form your hypothesis that some users are confused which part of the UI is clickable and it is because the cursor is styled for text selection when it hovers on the list items and their icons.
+Sie schließen daraus, dass einige Benutzer nicht genau wissen, auf welche Teile der Benutzeroberfläche sie klicken können, da der Mauszeiger wie ein Textauswahltool aussieht, wenn er auf Listenelemente und deren Symbole zeigt.
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/04-to-do-list-item-ui.png)
 
-This might be a contrived example. Nevertheless, you're going to make an improvement to your app, and then perform a flighting deployment to get usability feedback from live customers.
+Dieses Beispiel ist möglicherweise nicht sehr realitätsnah. Es ging nur darum, zu zeigen, dass Sie Ihre App verbessern und anschließend eine Test-Flighting-Bereitstellung durchführen, um von tatsächlichen Kunden live Feedback zur Nutzbarkeit zu erhalten.
 
-### <a name="instrument-your-server-app-for-monitoring/metrics"></a>Instrument your server app for monitoring/metrics
-This is a tangent since the scenario demonstrated in this tutorial only deals with the client app. However, for completeness you will set up the server-side app.
+### Instrumentieren Ihrer Server-App für Überwachung/Metriken
+Dies weicht ein wenig vom Thema ab, da es in dem hier vorgestellten Szenario nur um die Client-App geht. Der Vollständigkeit halber richten Sie jetzt jedoch auch die serverseitige App ein.
 
-6. Right-click **MultiChannelToDo** > **Add Application Insights Telemetry** > **Configure Settings** > Change resource group to ToDoApp*&lt;your_suffix>* > **Add Application Insights to Project**.
-12. In Git Shell, commit and push your changes to your fork in GitHub. Then, wait for clients to refresh browser.
+6. Klicken Sie mit der rechten Maustaste auf **MultiChannelToDo** > **Application Insights-Telemetrie hinzufügen** > **Einstellungen konfigurieren** > Ressourcengruppe ändern zu „ToDoApp *&lt;Ihr\_Suffix>* “ > **Application Insights zu Projekt hinzufügen**.
+12. Führen Sie für Ihre Änderungen in Git-Shell ein Commit aus, und pushen Sie die Änderungen in Ihre Verzweigung in GitHub. Warten Sie, bis die Browser auf den Clients aktualisiert werden.
 
         git add -A :/
         git commit -m "add AI configuration for server app"
         git push origin master
 
-6.  Swap the deployed app changes to production:
+6.	Fügen Sie die bereitgestellten Änderungen der App in die Produktionsumgebung ein:
 
         .\swap –Name ToDoApp<your_suffix>
 
-That's it!
+Das ist alles!
 
-## <a name="investigate:-add-slot-specific-tags-to-your-client-app-metrics"></a>Investigate: Add slot-specific tags to your client app metrics
+## Untersuchen: Hinzufügen von slotspezifischen Tags zu Ihren Client-App-Metriken
 
-In this section, you will configure the different deployment slots to send slot-specific telemetry to the same Application Insights resource. This way, you can compare telemetry data between traffic from different slots (deployment environments) to easily see the effect of your app changes. At the same time, you can separate the production traffic from the rest so you can continue to monitor your production app as needed.
+In diesem Abschnitt konfigurieren Sie die verschiedenen Bereitstellungsslots, um slotspezifische Telemetriedaten an die gleiche Application Insights-Ressource zu senden. Auf diese Weise können Sie Telemetriedaten aus verschiedenen Slots (Bereitstellungsumgebungen) vergleichen, um die Auswirkungen der Änderungen an Ihrer App leicht zu erkennen. Gleichzeitig können Sie den Produktionsdatenverkehr vom übrigen Datenverkehr trennen, sodass Sie Ihre Produktions-App nach Bedarf überwachen können.
 
-Since you're gathering data on client behavior, you will [add a telemetry initializer to your JavaScript code](../application-insights/app-insights-api-custom-events-metrics.md#js-initializer) in index.cshtml. If you want to test server-side performance, for example, you can also do similarly in your server code (see [Application Insights API for custom events and metrics](../application-insights/app-insights-api-custom-events-metrics.md).
+Da Sie Daten zum Clientverhalten erfassen, [fügen Sie Ihrem JavaScript-Code in index.cshtml einen Telemetrieinitialisierer hinzu](../application-insights/app-insights-api-custom-events-metrics.md#js-initializer). Wenn Sie beispielsweise die serverseitige Leistung testen möchten, können Sie im Servercode ähnlich vorgehen (siehe [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../application-insights/app-insights-api-custom-events-metrics.md)).
 
-1. First, add the code bewteen the two `//` comments below in the JavaScript block that you added to the `<heading>` tag earlier.
+1. Fügen Sie zuerst den Code zwischen die beiden `//`-Kommentare in den JavaScript-Block ein, den Sie zuvor zum `<heading>`-Tag hinzugefügt haben.
 
         window.appInsights = appInsights;
 
@@ -196,128 +194,128 @@ Since you're gathering data on client behavior, you will [add a telemetry initia
 
         appInsights.trackPageView();
 
-    This initializer code causes the `appInsights` object to add the a custom property called `Environment` to every piece of telemetry it sends.
+    Dieser Initialisierercode sorgt dafür, dass das `appInsights`-Objekt jedem gesendeten Telemetrieereignis eine benutzerdefinierte Eigenschaft namens `Environment` hinzufügt.
 
-2. Next, add this custom property as a [slot setting](web-sites-staged-publishing.md#AboutConfiguration) for your web app in Azure. To do this, run the following commands in your Git Shell session.
+2. Fügen Sie diese benutzerdefinierte Eigenschaft als [Sloteinstellung](web-sites-staged-publishing.md#AboutConfiguration) für Ihre Web-App in Azure hinzu. Zu diesem Zweck führen Sie den folgenden Befehl in der Git-Shell-Sitzung aus:
 
         $app = Get-AzureWebsite -Name todoapp<your_suffix> -Slot production
         $app.AppSettings.Add("environment", "Production")
         $app.SlotStickyAppSettingNames.Add("environment")
         $app | Set-AzureWebsite -Name todoapp<your_suffix> -Slot production
 
-    The Web.config in your project already defines the `environment` app setting. With this setting, when you test the app locally, your metrics will be tagged with `VS Debugger`. However, when you push your changes to Azure, Azure will find and use the `environment` app setting in the web app's configuration instead, and your metrics will be tagged with `Production`.
+    Die Web.config-Datei in Ihrem Projekt definiert die App-Einstellung für `environment` bereits. Wenn Sie mit dieser Einstellung die App lokal testen, werden die Metriken mit `VS Debugger` gekennzeichnet. Wenn Sie jedoch Ihre Änderungen per Push an Azure übertragen, findet und verwendet Azure stattdessen die App-Einstellung für `environment` in der Konfiguration der Web-App, und die Metriken werden mit `Production` gekennzeichnet.
 
-3. Commit and push your code changes to your fork on GitHub, and then wait for your users to use the new app (need to refresh the browser). It takes about 15 minutes for the new property to show up in your Application Insights `MultiChannelToDo.Web` resource.
+3. Führen Sie für Ihre Änderungen in Git-Shell ein Commit aus, pushen Sie die Änderungen in Ihre Verzweigung in GitHub, und warten Sie, bis Ihre Benutzer die neue App verwenden (der Browser muss aktualisiert werden). Es dauert etwa 15 Minuten, bis die neue Eigenschaft in Ihrer Application Insights `MultiChannelToDo.Web`-Ressource angezeigt wird.
 
         git add -A :/
         git commit -m "add environment property to AI events for client app"
         git push origin master
 
-4. Now, go to the **Custom events** blade again and filter the metrics on `Environment=Production`. You should now be able to see all the new custom events in the production slot with this filter.
+4. Wechseln Sie nun wieder zum Blatt **Benutzerdefinierte Ereignisse**, und filtern Sie die Metriken nach `Environment=Production`. Nun sollten Sie alle neuen benutzerdefinierten Ereignisse im Produktionsslot mit diesem Filter sehen.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/05-filter-on-production-environment.png)
 
-5. Click the **Favorites** button to save the current Metrics Explorer settings to something like **Custom events: Production**. You can easily switch between this view and a deployment slot view later.
+5. Klicken Sie auf die Schaltfläche **Favoriten**, um die aktuellen Metrik-Explorer-Einstellungen zu speichern, beispielsweise unter **Benutzerdefinierte Ereignisse: Produktion**. Sie können später ganz einfach zwischen dieser Ansicht und der Ansicht eines Bereitstellungsslots wechseln.
 
-    > [AZURE.TIP] For even more powerful analytics, consider [integrating your Application Insights resource with Power BI](../application-insights/app-insights-export-power-bi.md).
+    > [AZURE.TIP] Eine noch leistungsstärkere Analyse erhalten Sie durch [Integrieren der Application Insights-Ressource in Power BI](../application-insights/app-insights-export-power-bi.md).
 
-### <a name="add-slot-specific-tags-to-your-server-app-metrics"></a>Add slot-specific tags to your server app metrics
-Again, for completeness you will set up the server-side app. Unlike the client app which is instrumented in JavaScript, slot-specific tags for the server app is instrumented with .NET code.
+### Hinzufügen von slotspezifischen Tags zu Ihren Server-App-Metriken
+Der Vollständigkeit halber richten Sie jetzt auch die serverseitige App ein. Im Gegensatz zur Client-App, die in JavaScript instrumentiert wird, werden slotspezifische Tags für die Server-App mithilfe von .NET-Code instrumentiert.
 
-1. Open *&lt;repository_root>*\src\MultiChannelToDo\Global.asax.cs. Add the code block below, just before the closing namespace curly brace.
+1. Öffnen Sie *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo\\Global.asax.cs. Fügen Sie den unten stehenden Codeblock direkt vor der schließenden geschweiften Klammer des Namespace ein.
 
-        namespace MultiChannelToDo
-        {
-                ...
+		namespace MultiChannelToDo
+		{
+				...
 
-                // Begin new code
-            public class ConfigInitializer
-            : ITelemetryInitializer
-            {
-                void ITelemetryInitializer.Initialize(ITelemetry telemetry)
-                {
-                    telemetry.Context.Properties["Environment"] = System.Configuration.ConfigurationManager.AppSettings["environment"];
-                }
-            }
-                // End new code
-        }
+				// Begin new code
+		    public class ConfigInitializer
+		    : ITelemetryInitializer
+		    {
+		        void ITelemetryInitializer.Initialize(ITelemetry telemetry)
+		        {
+		            telemetry.Context.Properties["Environment"] = System.Configuration.ConfigurationManager.AppSettings["environment"];
+		        }
+		    }
+				// End new code
+		}
 
-2. Correct the name resolution errors by adding the `using` statements below to the beginning of the file:
+2. Korrigieren Sie Fehler bei der Namensauflösung, indem Sie am Anfang der Datei die unten stehenden `using`-Anweisungen einfügen:
 
-        using Microsoft.ApplicationInsights.Channel;
-        using Microsoft.ApplicationInsights.Extensibility;
+		using Microsoft.ApplicationInsights.Channel;
+		using Microsoft.ApplicationInsights.Extensibility;
 
-3. Add the code below to the beginning of the `Application_Start()` method:
+3. Fügen Sie unten stehenden Code am Anfang der `Application_Start()`-Methode ein:
 
-        TelemetryConfiguration.Active.TelemetryInitializers.Add(new ConfigInitializer());
+		TelemetryConfiguration.Active.TelemetryInitializers.Add(new ConfigInitializer());
 
-3. Commit and push your code changes to your fork on GitHub, and then wait for your users to use the new app (need to refresh the browser). It takes about 15 minutes for the new property to show up in your Application Insights `MultiChannelToDo` resource.
+3. Führen Sie für Ihre Änderungen in Git-Shell ein Commit aus, pushen Sie die Änderungen in Ihre Verzweigung in GitHub, und warten Sie, bis Ihre Benutzer die neue App verwenden (der Browser muss aktualisiert werden). Es dauert etwa 15 Minuten, bis die neue Eigenschaft in Ihrer Application Insights `MultiChannelToDo`-Ressource angezeigt wird.
 
         git add -A :/
         git commit -m "add environment property to AI events for server app"
         git push origin master
 
-## <a name="update:-set-up-your-beta-branch"></a>Update: Set up your beta branch
+## Update: Einrichten der Betaverzweigung
 
-2. Open *&lt;repository_root>*\ARMTemplates\ProdAndStagetest.json and find the `appsettings` resources (search for `"name": "appsettings"`). There are 4 of them, one for each slot. 
+2. Öffnen Sie *&lt;Repositorystammverzeichnis>*\\ARMTemplates\\ProdAndStagetest.json, und suchen Sie die `appsettings`-Ressourcen (suchen Sie nach `"name": "appsettings"`). Es gibt vier Ressourcen, eine für jeden Slot.
 
-2. For each `appsettings` resource, add an  `"environment": "[parameters('slotName')]"` app setting to the end of the `properties` array. Don't forget to end the previous line with a comma.
+2. Fügen Sie für jede `appsettings`-Ressource eine `"environment": "[parameters('slotName')]"`-App-Einstellung am Ende des `properties`-Arrays ein. Denken Sie daran, die vorherige Zeile mit einem Komma zu beenden.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/06-arm-app-setting-with-slot-name.png)
     
-    You have just added the `environment` app setting to all the slots in the template.
+    Sie haben gerade die `environment`-App-Einstellung zu allen Slots in der Vorlage hinzugefügt.
     
-2. In the same file, find the `slotconfignames` resources (search for `"name": "slotconfignames"`). There are 2 of them, one for each app.
+2. In der gleichen Datei befinden sich auch die `slotconfignames`-Ressourcen (suchen Sie nach `"name": "slotconfignames"`). Es gibt zwei Ressourcen, eine für jede App.
 
-2. For each `slotconfignames` resource, add `"environment"` to the end of the `appSettingNames` array. Don't forget to end the previous line with a comma.
+2. Fügen Sie für jede `slotconfignames`-Ressource `"environment"` am Ende des `appSettingNames`-Arrays ein. Denken Sie daran, die vorherige Zeile mit einem Komma zu beenden.
 
-    You have just made the `environment` app setting stick to its respective deployment slot for both apps.  
+    Sie haben gerade die `environment`-App-Einstellung für den jeweiligen Bereitstellungsslot für beide Apps festgelegt.
 
-3. In your Git Shell session, run the following commands with the same resource group suffix that you used before.
+3. Führen Sie in der Git-Shell-Sitzung folgende Befehle mit dem gleichen Ressourcengruppensuffix aus, das Sie zuvor verwendet haben.
 
         git checkout -b beta
         git push origin beta
         .\deploy.ps1 -RepoUrl https://github.com/<your_fork>/ToDoApp.git -ResourceGroupSuffix <your_suffix> -SlotName beta -Branch beta
 
-4. When prompted, specify the same SQL database credentials as before. Then, when asked to update the resource group, type `Y`, then `ENTER`.
+4. Geben Sie bei Aufforderung die gleichen Anmeldeinformationen für SQL-Datenbank ein wie zuvor. Wenn Sie gefragt werden, ob Sie die Ressourcengruppe aktualisieren möchten, geben Sie zuerst `Y` und dann `ENTER` ein.
 
-    Once the script finishes, all your resources in the original resource group are retained, but a new slot named "beta" is created in it with the same configuration as the "Staging" slot that was created in the beginning.
+    Wenn das Skript ausgeführt wurde, sind alle Ressourcen in der ursprünglichen Ressourcengruppe noch vorhanden, es wurde jedoch ein neuer Slot namens „beta“ in der Gruppe erstellt, der die gleiche Konfiguration aufweist, wie der zu Anfang erstellte „Staging“-Slot.
 
-    >[AZURE.NOTE] This method of creating different deployment environments is different from the method in [Agile software development with Azure App Service](app-service-agile-software-development.md). Here, you create deployment environments with deployment slots, where as there you create deployment environments with resource groups. Managing deployment environments with resource groups enables you to keep the production environment off-limits to developers, but it's not easy to do testing in production, which you can do easily with slots.
+    >[AZURE.NOTE] Diese Methode, bei der verschiedene Bereitstellungsumgebungen erstellt werden, unterscheidet sich von der Methode in [Agile Softwareentwicklung mit Azure App Service](app-service-agile-software-development.md). Hier erstellen Sie Bereitstellungsumgebungen mit Bereitstellungsslots, bei der anderen Methode erstellen Sie Bereitstellungsumgebungen mit Ressourcengruppen. Durch das Verwalten von Bereitstellungsumgebungen mit Ressourcengruppen können Sie die Produktionsumgebung für Entwickler sperren, das Testen in der Produktionsumgebung ist jedoch nicht so einfach wie mit Slots.
 
-If you wish, you can also create an alpha app by running
+Wenn Sie möchten, können Sie auch eine Alpha-App erstellen, indem Sie folgendes Skript ausführen:
 
     git checkout -b alpha
     git push origin alpha
     .\deploy.ps1 -RepoUrl https://github.com/<your_fork>/ToDoApp.git -ResourceGroupSuffix <your_suffix> -SlotName beta -Branch alpha
 
-For this tutorial, you will just keep using your beta app.
+Für den Zweck dieses Tutorials verwenden Sie weiterhin Ihre Beta-App.
 
-## <a name="update:-push-your-updates-to-the-beta-app"></a>Update: Push your updates to the beta app
+## Update: Übertragen der Updates in die Beta-App
 
-Back to your app that you want to improve.
+Nun zurück zu der App, die Sie verbessern möchten.
 
-1. Make sure you're now in your beta branch
+1. Stellen Sie sicher, dass Sie sich in der Betaverzweigung befinden.
 
         git checkout beta
 
-2. In *&lt;repository_root>*\src\MultiChannelToDo.Web\app\Index.cshtml, find the `<li>` tag and add the `style="cursor:pointer"` attribute, as shown below.
+2. Suchen Sie in *&lt;Repositorystammverzeichnis>*\\src\\MultiChannelToDo.Web\\app\\Index.cshtml das `<li>`-Tag, und fügen Sie das `style="cursor:pointer"`-Attribut hinzu, wie unten gezeigt.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/07-change-cursor-style-on-li.png)
 
-3. commit and push to Azure.
+3. Führen Sie für Ihre Änderungen ein Commit aus, und pushen Sie die Änderungen in Azure.
 
-4. Verify that the change is now reflected in the beta slot by navigating to http://todoapp*&lt;your_suffix>*-beta.azurewebsites.net/. If you don't see the change yet, refresh your browser to get the new javascript code.
+4. Überprüfen Sie, ob die Änderung im Betaslot reflektiert wird, indem Sie zu http://todoapp*&lt;your_suffix>*-beta.azurewebsites.net/ wechseln. Wenn die Änderung noch nicht angezeigt wird, aktualisieren Sie den Browser, um den neuen JavaScript-Code abzurufen.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/08-verify-change-in-beta-site.png)
 
-Now that you have your change running in the beta slot, you are ready to perform a flighting deployment.
+Nachdem die Änderung im Betaslot aktiviert wurde, können Sie eine Test-Flighting-Bereitstellung ausführen.
 
-## <a name="validate:-route-traffic-to-the-beta-app"></a>Validate: Route traffic to the beta app
+## Überprüfen: Weiterleiten des Datenverkehrs an die Beta-App
 
-In this section, you will route traffic to the beta app. For sake of clarity of demonstration, you're going to route a significant portion of the user traffic to it. In reality, the amount of traffic you want to route will depend on your specific situation. For example, if your site is at the scale of microsoft.com, then you may need less than one percent of your total traffic in order to gain useful data.
+In diesem Abschnitt leiten Sie Datenverkehr an die Beta-App weiter. Um das Prinzip zu verdeutlichen, werden Sie einen großen Teil des Benutzerdatenverkehrs an die App weiterleiten. In der Praxis richtet sich die Menge an Datenverkehr, die Sie weiterleiten, nach der jeweiligen Situation. Wenn Ihre Website sich in der Größenordnung von microsoft.com bewegt, genügt sicherlich weniger als ein Prozent des Gesamtdatenverkehrs, um belastbare Nutzungsdaten zu erhalten.
 
-1. In your Git Shell session, run the following commands to route half of the production traffic to the beta slot:
+1. Führen Sie in der Git-Shell-Sitzung folgende Befehle aus, um die Hälfte des Produktionsdatenverkehrs an den Betaslot weiterzuleiten:
 
         $siteName = "ToDoApp<your suffix>"
         $rule = New-Object Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.RampUpRule
@@ -326,61 +324,57 @@ In this section, you will route traffic to the beta app. For sake of clarity of 
         $rule.Name = "beta"
         Set-AzureWebsite $siteName -Slot Production -RoutingRules $rule
 
-  The `ReroutePercentage=50` property specifies that 50% of the production traffic will be routed to the beta app's URL (specified by the `ActionHostName` property).
+  Die `ReroutePercentage=50`-Eigenschaft gibt an, dass 50 % des Produktionsdatenverkehrs an die URL der Beta-App (festgelegt durch die `ActionHostName`-Eigenschaft) weitergeleitet wird.
 
-2. Now navigate to http://ToDoApp*&lt;your_suffix>*.azurewebsites.net. 50% of the traffic should now be redirected to the beta slot.
+2. Navigieren Sie jetzt zu http://ToDoApp*&lt;your_suffix>*.azurewebsites.net. 50 % des Datenverkehrs sollten jetzt an den Betaslot weitergeleitet werden.
 
-3. In your Application Insights resource, filter the metrics by environment="beta".
+3. Filtern Sie die Metriken in Ihrer Application Insights-Ressource nach der Umgebung „beta“.
 
-    > [AZURE.NOTE] If you save this filtered view as another favorite, then you can easily flip the metric explorer views between production and beta views.
+    > [AZURE.NOTE] Wenn Sie diese gefilterte Ansicht als Favorit speichern, können Sie im Metrik-Explorer schnell zwischen der Produktions- und der Betaansicht wechseln.
 
-Suppose in Application Insights you see something similar to the following:
+In Application Insights sehen Sie möglicherweise eine Anzeige wie die folgende:
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/09-test-beta-site-in-production.png)
 
-Not only is this showing that there are many more clicks on the `<li>` tags, but there seems to be a surge of clicks on `<li>` tags. You can then conclude that people have discovered the new `<li>` tags are clickable and are now clearing all their previously-completed tasks in the app.
+Dies zeigt nicht nur, dass es wesentlich mehr Klicks auf die `<li>`-Tags gibt, sondern auch einen erheblichen Anstieg von Klicks auf `<li>`-Tags. Daraus können Sie schließen, dass die Benutzer entdeckt haben, dass die neuen `<li>`-Tags angeklickt werden können, und nun ihre zuvor abgeschlossenen Aufgaben aus der App löschen.
 
-Based on the data of your flighting deployment, you decide that your new UI is ready for production.
+Basierend auf den Daten Ihrer Test-Flighting-Bereitstellung entscheiden Sie jetzt, dass Ihre neue Benutzeroberfläche produktionsbereit ist.
 
-## <a name="go-live:-move-your-new-code-into-production"></a>Go live: Move your new code into production
+## Live schalten: Verschieben des neuen Codes in die Produktionsumgebung
 
-You're now ready to move your update to production. What's great is that now you know that your update has already been validated _before_ it is pushed to production. So now you can confidently deploy it. Since you made an update to the AngularJS client app, you only validated the client-side code. If you were to make changes to the back-end Web API app, you could validate your changes similarly and easily.
+Nun können Sie Ihr Update in die Produktionsumgebung verschieben. Der große Vorteil bei diesem Ansatz ist: Sie wissen, dass Ihr Update überprüft wurde, _bevor_ Sie es in die Produktionsumgebung überführen. Sie können das Update also beruhigt bereitstellen. Da Sie die AngularJS-Client-App aktualisiert haben, haben Sie nur den clientseitigen Code geändert. Wenn Sie auch die Web-API-App im Back-End ändern müssen, können Sie Ihre Änderungen genauso einfach überprüfen.
 
-1. In Git Shell, remove the traffic routing rule by running the following command:
+1. Entfernen Sie in Git-Shell die Regel für die Datenverkehrsweiterleitung, indem Sie folgenden Befehl ausführen:
 
         Set-AzureWebsite $siteName -Slot Production -RoutingRules @()
 
-2. Run the Git commands:
+2. Führen Sie diese Git-Befehle aus:
 
         git checkout master
         git pull origin master
         git merge beta
         git push origin master
 
-2. Wait for a few minutes for the new code to be deployed to the staging slot, then launch http://ToDoApp*&lt;your_suffix>*-staging.azurewebsites.net to verify that the new update is warmed up in the staging slot. Remember that the your fork's master branch is linked to the staging slot of your app.
+2. Warten Sie einige Minuten, bis der neue Code im Stagingslot bereitgestellt wurde, und starten Sie dann http://ToDoApp*&lt;your_suffix>*-staging.azurewebsites.net, um zu überprüfen, ob das neue Update bereits im Stagingslot vorhanden ist. Denken Sie daran, dass der Masterzweig Ihrer Verzweigung mit dem Stagingslot Ihrer App verknüpft ist.
 
-3. Now, swap the staging slot into production
+3. Überführen Sie jetzt den Stagingslot in die Produktion:
 
         cd <ROOT>\ToDoApp\ARMTemplates
         .\swap.ps1 -Name todoapp<your_suffix>
 
-## <a name="summary"></a>Summary ##
+## Zusammenfassung ##
 
-Azure App Service makes it easy for small- to medium-sized businesses to test their customer-facing apps in production, something that has been traditionally done in big enterprises. Hopefully, this tutorial has given you the knowledge you need to bring together App Service and Application Insights to make possible flighting deployment, and even other test-in-production scenarios, in your DevOps world. 
+Mit Azure App Service können kleine und mittelgroße Unternehmen ihre kundenorientierten Apps ganz einfach in der Produktionsumgebung testen – eine Methode, die bisher nur in großen Unternehmen angewendet wurde. In diesem Tutorial haben Sie die notwendigen Informationen erhalten, um App Service und Application Insights zusammen für Test-Flighting-Bereitstellungen sowie in anderen DevOps-Szenarien zum Testen in der Produktionsumgebung einzusetzen.
 
-## <a name="more-resources"></a>More resources ##
+## Weitere Ressourcen ##
 
--   [Agile software development with Azure App Service](app-service-agile-software-development.md)
--   [Set up staging environments for web apps in Azure App Service](web-sites-staged-publishing.md)
--   [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md)
--   [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md)
--   [JSONLint - The JSON Validator](http://jsonlint.com/)
--   [Git Branching – Basic Branching and Merging](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
--   [Azure PowerShell](../powershell-install-configure.md)
--   [Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
+-   [Agile Softwareentwicklung mit Azure App Service](app-service-agile-software-development.md)
+-   [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](web-sites-staged-publishing.md)
+-	[Vorhersagbares Bereitstellen einer komplexen Anwendung in Azure](app-service-deploy-complex-application-predictably.md)
+-	[Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md)
+-	[JSONLint – The JSON Validator](http://jsonlint.com/)
+-	[Git Branching – Basic Branching and Merging](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+-	[Azure PowerShell](../powershell-install-configure.md)
+-	[Wiki zum Kudu-Projekt](https://github.com/projectkudu/kudu/wiki)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

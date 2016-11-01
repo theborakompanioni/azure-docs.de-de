@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a virtual network using an ARM template | Microsoft Azure"
-   description="Learn how to create a virtual network using an ARM template | Resource Manager."
+   pageTitle="Erstellen eines virtuellen Netzwerks mit einer ARM-Vorlage | Microsoft Azure"
+   description="Erfahren Sie, wie Sie ein virtuelles Netzwerk mit einer ARM-Vorlage erstellen | Ressourcen-Manager."
    services="virtual-network"
    documentationCenter=""
    authors="jimdial"
@@ -17,18 +17,17 @@
    ms.date="03/15/2016"
    ms.author="jdial"/>
 
-
-# <a name="create-a-virtual-network-by-using-an-arm-template"></a>Create a virtual network by using an ARM template
+# Erstellen eines virtuellen Netzwerks mit einer ARM-Vorlage
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This document covers creating a VNet by using the Resource Manager deployment model. You can also [create a virtual network in the classic deployment model](virtual-networks-create-vnet-classic-pportal.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wird. Sie haben auch die Möglichkeit, [ein virtuelles Netzwerks im klassischen Bereitstellungsmodell zu erstellen](virtual-networks-create-vnet-classic-pportal.md).
 
-You will learn how to download and modify and existing ARM template from GitHub, and deploy the template from GitHub, PowerShell, and the Azure CLI.
+Sie erfahren, wie Sie eine vorhandene ARM-Vorlage von GitHub herunterladen und ändern sowie die Vorlage aus GitHub, PowerShell und der Azure-Befehlszeilenschnittstelle bereitstellen.
 
-If you are simply deploying the ARM template directly from GitHub, without any changes, skip to [deploy a template from github](#deploy-the-arm-template-by-using-click-to-deploy).
+Wenn Sie die ARM-Vorlage, ohne sie zu ändern, einfach direkt aus GitHub bereitstellen, springen Sie zu [Bereitstellen einer Vorlage aus Github](#deploy-the-arm-template-by-using-click-to-deploy).
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -40,7 +39,4 @@ If you are simply deploying the ARM template directly from GitHub, without any c
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-template-click-include](../../includes/virtual-networks-create-vnet-arm-template-click-include.md)]
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

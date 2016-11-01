@@ -1,86 +1,81 @@
 <properties
-    pageTitle="Managing custom domain names in your Azure Active Directory preview | Microsoft Azure"
-    description="Management concepts and how-tos for managing a domain name in Azure Active Directory"
-    services="active-directory"
-    documentationCenter=""
-    authors="jeffsta"
-    manager="femila"
-    editor=""/>
+	pageTitle="Verwalten von benutzerdefinierten Domänennamen in der Azure Active Directory-Vorschau | Microsoft Azure"
+	description="Verwaltungskonzepte und Vorgehensweisen für die Verwaltung eines Domänennamens in Azure Active Directory"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeffsta"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="curtand;jeffsta"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand;jeffsta"/>
 
+# Verwalten von benutzerdefinierten Domänennamen in Ihrer Azure Active Directory-Vorschau
 
-# <a name="managing-custom-domain-names-in-your-azure-active-directory-preview"></a>Managing custom domain names in your Azure Active Directory preview
+Ein Domänenname ist ein wichtiger Bestandteil des Bezeichners für viele Verzeichnisressourcen: Er ist Teil eines Benutzernamens oder einer E-Mail-Adresse für einen Benutzer, Teil der Adresse für eine Gruppe und kann Teil des App-ID-URI für eine Anwendung sein. Eine Ressource in der Azure Active Directory-Vorschau (Azure AD) kann einen Domänennamen enthalten, für den bereits geprüft wurde, ob er zu dem Verzeichnis gehört, das die Ressource enthält. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Nur ein globaler Administrator kann Domänenverwaltungsaufgaben in Azure AD ausführen.
 
-A domain name is an important part of the identifier for many directory resources: it is part of a user name or email address for a user, part of the address for a group, and can be part of the app ID URI for an application. A resource in Azure Active Directory (Azure AD) preview can include a domain name that is already verified to be owned by the directory that contains the resource. [What's in the preview?](active-directory-preview-explainer.md) Only a global administrator can perform domain management tasks in Azure AD.
+## Festlegen des primären Domänennamens für Ihr Azure AD-Verzeichnis
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Set the primary domain name for your Azure AD directory
+Wenn Ihr Verzeichnis erstellt wird, ist der anfängliche Domänenname (beispielsweise „contoso.onmicrosoft.com“) auch der primäre Domänenname. Die primäre Domäne ist der standardmäßige Domänenname für einen neuen Benutzer, wenn Sie einen neuen Benutzer erstellen. Dies optimiert die Erstellung neuer Benutzer durch einen Administrator im Portal. So ändern Sie den primären Domänennamen
 
-When your directory is created, the initial domain name, such as ‘contoso.onmicrosoft.com,’ is also the primary domain name. The primary domain is the default domain name for a new user when you create a new user. This streamlines the process for an administrator to create new users in the portal. To change the primary domain name:
+1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
-2.  Select **More services**, enter **Azure Active Directory** in the text box, and then select **Enter**.
+    ![Öffnen der Benutzerverwaltung](./media/active-directory-domains-add-azure-portal/user-management.png)
 
-    ![Opening user management](./media/active-directory-domains-add-azure-portal/user-management.png)
+3. Wählen Sie auf dem Blatt ***Verzeichnisname*** die Option **Domänennamen** aus.
 
-3. On the ***directory-name*** blade, select **Domain names**.
+4. Wählen Sie auf dem Blatt ***Verzeichnisname* – Domänennamen** den Domänennamen aus, den Sie als primären Domänennamen festlegen möchten.
 
-4. On the ***directory-name* - Domain names** blade, select the domain name you would like to make the primary domain name.
+5.  Wählen Sie auf dem Blatt ***Domänenname*** (dem geöffneten Blatt mit Ihrem neuen Domänennamen im Titel) den Befehl **Als primär festlegen** aus. Bestätigen Sie Ihre Auswahl, wenn Sie dazu aufgefordert werden.
 
-5.  On the ***domainname*** blade (that is, the blade that opens that has your new domain name in the title), select the **Make primary** command. Confirm your choice when prompted.
+    ![Festlegen eines Domänennamens als primär](./media/active-directory-domains-manage-azure-portal/make-primary.png)
 
-    ![Make a domain name primary](./media/active-directory-domains-manage-azure-portal/make-primary.png)
+Sie können den primären Domänennamen für Ihr Verzeichnis in eine beliebige andere überprüfte benutzerdefinierte Domäne (keine Verbunddomäne) ändern. Durch Ändern der primären Domäne für Ihr Verzeichnis werden die Benutzernamen vorhandener Benutzer nicht geändert.
 
-You can change the primary domain name for your directory to be any verified custom domain that is not federated. Changing the primary domain for your directory will not change the user names for any existing users.
+## Hinzufügen von benutzerdefinierten Domänennamen zu Azure AD
 
-## <a name="add-custom-domain-names-to-your-azure-ad"></a>Add custom domain names to your Azure AD
+Sie können jedem Azure AD-Verzeichnis bis zu 900 benutzerdefinierte Domänennamen hinzufügen. Das Vorgehen zum [Hinzufügen eines weiteren benutzerdefinierten Domänennamens](active-directory-domains-add-azure-portal.md) entspricht dem den ersten benutzerdefinierten Domänennamen.
 
-You can add up to 900 custom domain names to each Azure AD directory. The process to [add an additional custom domain name](active-directory-domains-add-azure-portal.md) is the same for the first custom domain name.
+## Hinzufügen von Unterdomänen einer benutzerdefinierten Domäne
 
-## <a name="add-subdomains-of-a-custom-domain"></a>Add subdomains of a custom domain
+Wenn Sie Ihrem Verzeichnis einen Domänennamen der dritten Ebene wie beispielsweise „europe.contoso.com“ hinzufügen möchten, sollten Sie zuerst die Domäne zweiter Ebene, z. B. „contoso.com“, hinzufügen und überprüfen. Die Unterdomäne wird automatisch von Azure AD überprüft. Um anzuzeigen, ob die gerade hinzugefügte Unterdomäne überprüft wurde, aktualisieren Sie die Seite im Browser, auf der die Domänen aufgelistet sind.
 
-If you want to add a third-level domain name such as ‘europe.contoso.com’ to your directory, you should first add and verify the second-level domain, such as contoso.com. The subdomain will be automatically verified by Azure AD. To see that the subdomain that you just added has been verified, refresh the page in the browser that lists the domains.
+## Vorgehensweise beim Ändern der DNS-Registrierungsstelle für Ihren benutzerdefinierten Domänennamen
 
-## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>What to do if you change the DNS registrar for your custom domain name
+Wenn Sie die DNS-Registrierungsstelle für Ihren benutzerdefinierten Domänennamen ändern, können Sie diesen Namen weiterhin ohne Unterbrechung und ohne zusätzlichen Konfigurationsaufwand in Azure AD selbst verwenden. Wenn Sie Ihren benutzerdefinierten Domänennamen mit Office 365, Intune oder anderen Diensten verwenden, die benutzerdefinierte Domänennamen in Azure AD verwenden, lesen Sie in der Dokumentation zu diesen Diensten nach.
 
-If you change the DNS registrar for your custom domain name, you can continue to use your custom domain name with Azure AD itself without interruption and without additional configuration tasks. If you use your custom domain name with Office 365, Intune, or other services that rely on custom domain names in Azure AD, refer to the documentation for those services.
+## Löschen eines benutzerdefinierten Domänennamens
 
-## <a name="delete-a-custom-domain-name"></a>Delete a custom domain name
+Sie können einen benutzerdefinierten Domänennamen aus Azure AD löschen, wenn dieser von Ihrem Unternehmen nicht mehr verwendet wird oder wenn Sie den Domänennamen für eine andere Azure AD-Instanz verwenden möchten.
 
-You can delete a custom domain name from your Azure AD if your organization no longer uses that domain name, or if you need to use that domain name with another Azure AD.
+Um einen benutzerdefinierten Domänennamen zu löschen, müssen Sie zunächst sicherstellen, dass dieser Name von keinerlei Ressourcen in Ihrem Verzeichnis verwendet wird. In folgenden Fällen können Sie einen Domänennamen nicht aus Ihrem Verzeichnis löschen:
 
-To delete a custom domain name, you must first ensure that no resources in your directory rely on the domain name. You can't delete a domain name from your directory if:
+-   Ein Benutzer verwendet einen Benutzernamen, eine E-Mail-Adresse oder eine Proxyadresse mit dem Domänennamen.
 
--   Any user has a user name, email address, or proxy address that includes the domain name.
+-   Eine Gruppe verwendet eine E-Mail-Adresse oder Proxyadresse mit dem Domänennamen.
 
--   Any group has an email address or proxy address that includes the domain name.
+-   Eine Anwendung in Ihrem Azure AD-Verzeichnis besitzt eine App-ID-URI mit dem Domänennamen.
 
--   Any application in your Azure AD has an app ID URI that includes the domain name.
+Solche Ressourcen müssen Sie in Ihrem Azure AD-Verzeichnis ändern oder löschen, bevor Sie den benutzerdefinierten Domänennamen löschen können.
 
-You must change or delete any such resource in your Azure AD directory before you can delete the custom domain name.
+## Verwenden von PowerShell oder der Graph-API zum Verwalten von Domänennamen
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Use PowerShell or Graph API to manage domain names
+Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory können auch über Microsoft PowerShell oder programmgesteuert mit der Azure AD-Graph-API (in der öffentlichen Vorschau) durchgeführt werden.
 
-Most management tasks for domain names in Azure Active Directory can also be completed using Microsoft PowerShell, or programmatically using Azure AD Graph API (in public preview).
+-   [Verwenden von PowerShell zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 
--   [Using PowerShell to manage domain names in Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
+-   [Verwenden der Graph-API zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
--   [Using Graph API to manage domain names in Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+-   [Hinzufügen benutzerdefinierter Domänennamen](active-directory-domains-add-azure-portal.md)
 
--   [Add custom domain names](active-directory-domains-add-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

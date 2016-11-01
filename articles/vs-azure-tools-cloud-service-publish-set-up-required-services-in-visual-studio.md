@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Prepare to publish or deploy an Azure application from Visual Studio | Microsoft Azure"
-   description="Learn the procedures to set up cloud and storage account services and configure your Azure application."
+   pageTitle="Vorbereiten der Veröffentlichung und Bereitstellung einer Azure-Anwendung in Visual Studio | Microsoft Azure"
+   description="Lernen Sie die Verfahren zum Einrichten von Cloud- und Speicherkontodiensten und zum Konfigurieren Ihrer Azure-Anwendung kennen."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,148 +15,142 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio
 
-# <a name="prepare-to-publish-or-deploy-an-azure-application-from-visual-studio"></a>Prepare to Publish or Deploy an Azure Application from Visual Studio
+## Übersicht
 
-## <a name="overview"></a>Overview
+Bevor Sie ein Clouddienstprojekt veröffentlichen können, müssen Sie die folgenden Dienste einrichten:
 
-Before you can publish a cloud service project, you must set up the following services:
+- Einen **Clouddienst** zum Ausführen Ihrer Rollen in der Azure-Umgebung
 
-- A **cloud service** to run your roles in the Azure environment
+- Ein **Speicherkonto**, das Zugriff auf die Blob-, Warteschlangen- und Tabellendienste bereitstellt
 
-- A **storage account** that provides access to the Blob, Queue, and Table services.
+Befolgen Sie die folgenden Verfahren, um diese Dienste einzurichten und Ihre Anwendung zu konfigurieren.
 
-Use the following procedures to set up these services and configure your application
 
+## Erstellen eines Clouddiensts
 
-## <a name="create-a-cloud-service"></a>Create a cloud service
+Um einen Clouddienst in Azure zu veröffentlichen, müssen Sie zunächst einen Clouddienst erstellen, in dem Ihre Rollen in der Azure-Umgebung ausgeführt werden. Sie können einen Clouddienst im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) erstellen, wie weiter unten in diesem Artikel im Abschnitt **So erstellen Sie einen Clouddienst über das klassische Azure-Portal** beschrieben. Sie können auch mit dem Veröffentlichungs-Assistenten einen Clouddienst in Visual Studio erstellen.
 
-To publish a cloud service to Azure, you must first create a cloud service, which runs your roles in the Azure environment. You can create a cloud service in the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), as described in the section **To create a cloud service by using the Azure classic portal**, later in this topic. You can also create a cloud service in Visual Studio by using the publishing wizard.
+### So erstellen Sie einen Clouddienst in Visual Studio
 
-### <a name="to-create-a-cloud-service-by-using-visual-studio"></a>To create a cloud service by using Visual Studio
+1. Öffnen Sie das Kontextmenü für das Azure-Projekt, und klicken Sie auf **Veröffentlichen**.
 
-1. Open the shortcut menu for the Azure project, and choose **Publish**.
+    ![VST\_PublishMenu](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/vst-publish-menu.png)
 
-    ![VST_PublishMenu](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/vst-publish-menu.png)
+1. Wenn Sie nicht angemeldet sind, melden Sie sich mit Ihrem Benutzernamen und Kennwort für das Microsoft-Konto oder Organisationskonto an, das Ihrem Azure-Abonnement zugeordnet ist.
 
-1. If you haven't signed in, sign in with your username and password for the Microsoft account or organizational account that's associated with your Azure subscription.
+1. Klicken Sie auf die Schaltfläche **Weiter**, um zur Seite **Einstellungen** zu gelangen.
 
-1. Choose the **Next** button to advance to the **Settings** page.
+    ![Allgemeine Einstellungen des Veröffentlichungs-Assistenten](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/publish-settings-page.png)
 
-    ![Publishing Wizard Common Settings](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/publish-settings-page.png)
+1. Klicken Sie in der Liste **Clouddienste** auf **Neu erstellen**. Das Dialogfeld **Azure-Dienste erstellen** wird angezeigt.
 
-1. In the **Cloud Services** list, choose **Create New**. The **Create Azure Services** dialog appears.
+1. Geben Sie den Namen Ihres Clouddiensts ein. Der Name bildet einen Teil der URL des Diensts und muss daher eindeutig sein. Groß-/Kleinschreibung wird beim Namen nicht unterschieden.
 
-1. Enter the name of your cloud service. The name forms part of the URL for your service and therefore must be globally unique. The name is not case-sensitive.
+### So erstellen Sie einen Clouddienst über das klassische Azure-Portal
 
-### <a name="to-create-a-cloud-service-by-using-the-azure-classic-portal"></a>To create a cloud service by using the Azure classic portal
+1. Melden Sie sich auf der Microsoft-Website beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=253103) an.
 
-1. Sign in to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkId=253103) on the Microsoft website.
+1. (Optional) Um eine Liste der Clouddienste anzuzeigen, die Sie bereits erstellt haben, klicken Sie links auf der Seite auf "Clouddienste".
 
-1. (optional) To display a list of cloud services that you've already created, choose the Cloud Services link on the left side of the page.
+1. Klicken Sie links unten auf das **+**-Symbol, und wählen Sie dann im eingeblendeten Menü **Clouddienst** aus. Ein weiterer Bildschirm mit den beiden Optionen **Schnellerfassung** und **Benutzerdefiniert erstellen** wird angezeigt. Bei Auswahl von **Schnellerfassung** können Sie einen Clouddienst durch Angabe der URL und Region erstellen, in der dieser physisch gehostet wird. Bei Auswahl von **Benutzerdefiniert erstellen** können Sie einen Clouddienst sofort veröffentlichen, indem Sie eine Paketdatei (.cspkg), eine Konfigurationsdatei (.cscfg) und ein Zertifikat angeben. "Benutzerdefiniert erstellen" ist nicht erforderlich, wenn Sie beabsichtigen, Ihren Clouddienst mithilfe des Befehls **Veröffentlichen** in einem Azure-Projekt zu veröffentlichen. Der Befehl **Veröffentlichen** ist im Kontextmenü für ein Azure-Projekt verfügbar.
 
-1. Choose the **+** icon in the lower-left corner, and then choose **Cloud Service** on the menu that appears. Another screen with two options, **Quick Create** and **Custom Create**, appears. If you choose **Quick Create**, you can create a cloud service just by specifying its URL and the region where it will be physically hosted. If you choose **Custom Create**, you can immediately publish a cloud service by specifying a package (.cspkg file), a configuration (.cscfg) file, and a certificate. Custom Create isn’t required if you intend to publish your cloud service by using the **Publish** command in an Azure project. The **Publish** command is available on the shortcut menu for an Azure project.
+1. Wählen Sie **Schnellerfassung**, um den Clouddienst später mit Visual Studio zu veröffentlichen.
 
-1. Choose **Quick Create** to later publish your cloud service by using Visual Studio.
+1. Geben Sie einen Namen für Ihren Clouddienst an. Die vollständige URL wird neben dem Namen angezeigt.
 
-1. Specify a name for your cloud service.The complete URL appears next to the name.
+1. Wählen Sie in der Liste die Region, in der sich die meisten Ihrer Benutzer befinden.
 
-1. In the list, choose the region where most of your users are located.
+1. Klicken Sie am unteren Rand des Fensters auf den Link **Clouddienst erstellen**.
 
-1. At the bottom of the window, choose the **Create Cloud Service** link.
+## Erstellen Sie ein Speicherkonto.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+Ein Speicherkonto bietet Zugriff auf die Blob-, Warteschlangen- und Tabellendienste. Sie können ein Speicherkonto in Visual Studio oder im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=253103) erstellen.
 
-A storage account provides access to the Blob, Queue, and Table services. You can create a storage account by using Visual Studio or the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkId=253103).
+### So erstellen ein Speicherkonto mithilfe von Visual Studio
 
-### <a name="to-create-a-storage-account-by-using-visual-studio"></a>To create a storage account by using Visual Studio
+1. Öffnen Sie im **Projektmappen-Explorer** das Kontextmenü für den Knoten **Speicher**, und wählen Sie dann **Speicherkonto erstellen** aus.
 
-1. In **Solution Explorer**, open the shortcut menu for the **Storage** node, and then choose **Create Storage Account**.
+    ![Erstellen eines neuen Azure-Speicherkontos](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/IC744166.png)
 
-    ![Create a new Azure storage account](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/IC744166.png)
+1. Wählen Sie im Dialogfeld **Speicherkonto erstellen** die folgenden Informationen aus, oder geben Sie sie ein.
+    - Das Azure-Abonnement, dem Sie das Speicherkonto hinzufügen möchten
+    - Den Namen, den Sie für das neue Speicherkonto verwenden möchten
+    - Die Region oder Affinitätsgruppe (z. B. USA, Westen oder Ostasien)
+    - Den Typ der Replikation, den Sie für das Speicherkonto verwenden möchten, zum Beispiel "Georedundant"
 
-1. Select or enter the following information for the new storage account in the **Create Storage Account** dialog box.
-    - The Azure subscription to which you want to add the storage account.
-    - The name you want to use for the new storage account.
-    - The region or affinity group (such as West US or East Asia).
-    - The type of replication you want to use for the storage account, such as Geo-Redundant.
+1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. Das neue Speicherkonto wird im **Server-Explorer** in der Liste **Speicher** angezeigt.
 
-1. When you’re done, choose **Create**.The new storage account appears in the **Storage** list in **Server Explorer**.
+### So erstellen Sie ein Speicherkonto im klassischen Azure-Portal
 
-### <a name="to-create-a-storage-account-by-using-the-azure-classic-portal"></a>To create a storage account by using the Azure classic portal
+1. Melden Sie sich auf der Microsoft-Website beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=253103) an.
 
-1. Sign in to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkId=253103) on the Microsoft website.
+1. (Optional) Um Ihre Speicherkonten anzuzeigen, klicken Sie links auf der Seite auf den Link **Speicher**.
 
-1. (Optional) To view your storage accounts, choose the **Storage** link in the panel on the left side of the page.
+1. Klicken Sie links unten auf der Seite auf das **+**-Symbol.
 
-1. In the lower-left corner of the page, choose the **+** icon.
+1. Wählen Sie im angezeigten Menü erst **Speicher** und dann **Schnellerfassung** aus.
 
-1. In the menu that appears, choose **Storage**, and then choose **Quick Create**.
+1. Geben Sie dem Speicherkonto einen Namen, der zu einer eindeutigen URL führt.
 
-1. Give the storage account a name that will result in a unique url.
+1. Benennen Sie den Clouddienst. Die vollständige URL wird neben dem Namen angezeigt.
 
-1. Give your cloud service a name. The complete URL appears next to the name.
+1. Wählen Sie in der Liste der Regionen die Region, in der sich die meisten Ihrer Benutzer befinden.
 
-1. In the list of regions, choose a region where most of your users are located.
+1. Geben Sie an, ob Sie die Georeplikation aktivieren möchten. Wenn Sie die Georeplikation aktivieren, werden die Daten an mehreren physischen Standorten gespeichert, um die Möglichkeit des Verlusts zu verringern. Durch dieses Feature wird Speicher zwar teurer, aber Sie können die Kosten senken, indem Sie Geolocation aktivieren, wenn Sie das Speicherkonto erstellen, anstatt das Feature später hinzuzufügen. Weitere Informationen finden Sie unter [Georeplikation](http://go.microsoft.com/fwlink/?LinkId=253108).
 
-1. Specify whether you want to enable geo-replication. If you enable geo-replication, your data will be saved in multiple physical locations to reduce the chance of loss. This feature makes storage more expensive, but you can reduce the cost by enabling geo-location when you create the storage account instead of adding the feature later. For more information, see [Geo-replication](http://go.microsoft.com/fwlink/?LinkId=253108).
+1. Klicken Sie am unteren Rand des Fensters auf den Link **Speicherkonto erstellen**.
 
-1. At the bottom of the window, choose the **Create Storage Account** link.
+Nachdem Sie Ihr Speicherkonto erstellt haben, sehen Sie die URLs, über die Sie auf Ressourcen in jedem der Azure-Speicherdienste zugreifen können, und auch den primären und sekundären Zugriffsschlüssel für Ihr Konto. Sie verwenden diese Schlüssel, um an die Speicherdienste gerichtete Anforderungen zu authentifizieren.
 
-After you create your storage account, you will see the URLs that you can use to access resources in each of the Azure storage services, and also the primary and secondary access keys for your account. You use these keys to authenticate requests made against the storage services.
+>[AZURE.NOTE] Der sekundäre Zugriffsschlüssel bietet denselben Zugriff auf Ihr Speicherkonto wie der primäre Zugriffschlüssel und wird als Reserveschlüssel generiert, sollte die Sicherheit Ihres primären Zugriffsschlüssels gefährdet sein. Darüber hinaus wird empfohlen, dass Sie Ihre Zugriffsschlüssel regelmäßig neu generieren. Sie können die Einstellung einer Verbindungszeichenfolge so ändern, dass der sekundäre Schlüssel verwendet werden soll, während Sie den primären Schlüssel neu generieren. Anschließend können Sie die Einstellung so ändern, dass der neu erstellte primäre Schlüssel genutzt werden soll, während Sie den sekundären Schlüssel neu generieren.
 
->[AZURE.NOTE] The secondary access key provides the same access to your storage account as the primary access key and is generated as a backup should your primary access key be compromised. Additionally, it is recommended that you regenerate your access keys on a regular basis. You can modify a connection string setting to use the secondary key while you regenerate the primary key, then you can modify it to use the regenerated primary key while you regenerate the secondary key.
+## Konfigurieren Ihrer App für das Verwenden der vom Speicherkonto bereitgestellten Dienste
 
-## <a name="configure-your-app-to-use-services-provided-by-the-storage-account"></a>Configure your app to use services provided by the storage account
+Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden der Azure-Speicherdienste konfigurieren, die Sie erstellt haben. Zu diesem Zweck können Sie mehrere Dienstkonfigurationen für Ihr Azure-Projekt verwenden. Standardmäßig werden zwei im Ihrem Azure-Projekt erstellt. Mithilfe mehrerer Dienstkonfigurationen können Sie die gleiche Verbindungszeichenfolge in Ihrem Code verwenden, aber in jeder Dienstkonfiguration einen anderen Wert für eine Verbindungszeichenfolge angeben. Beispielsweise können Sie eine Dienstkonfiguration zum lokalen Ausführen und Debuggen Ihrer Anwendung mit dem Azure-Speicheremulator und eine andere Dienstkonfiguration zum Veröffentlichen Ihrer Anwendung in Azure nutzen. Weitere Informationen zu den Dienstkonfigurationen finden Sie unter [Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen](vs-azure-tools-multiple-services-project-configurations.md).
 
-You must configure any role that accesses storage services to use the Azure storage services that you have created. To do this, you can use multiple service configurations for your Azure project. By default, two are created in your Azure project. By using multiple service configurations, you can use the same connection string in your code, but have a different value for a connection string in each service configuration. For example, you can use one service configuration to run and debug your application locally using the Azure storage emulator and a different service configuration to publish your application to Azure. For more information about service configurations, see [Configuring Your Azure Project Using Multiple Service Configurations](vs-azure-tools-multiple-services-project-configurations.md).
+### So konfigurieren Sie Ihre Anwendung für die Nutzung der Dienste, die vom Speicherkonto bereitgestellt werden
 
-### <a name="to-configure-your-application-to-use-services-that-the-storage-account-provides"></a>To configure your application to use services that the storage account provides
+1. Öffnen Sie in Visual Studio Ihre Azure-Projektmappe. Öffnen Sie im Projektmappen-Explorer das Kontextmenü für jede Rolle in Ihrem Azure-Projekt, die auf die Speicherdienste zugreift, und wählen Sie **Eigenschaften** aus. Eine Seite mit dem Namen der Rolle wird im Visual Studio-Editor angezeigt. Die Seite zeigt die Felder für die Registerkarte **Konfiguration** an.
 
-1. In Visual Studio open your Azure solution. In Solution Explorer, open the shortcut menu for each role in your Azure project that accesses the storage services and choose **Properties**. A page with the name of the role is displayed in the Visual Studio editor. The page displays the fields for the **Configuration** tab.
+1. Wählen Sie auf den Eigenschaftenseiten der Rolle **Einstellungen** aus.
 
-1. In the property pages for the role, choose **Settings**.
+1. Wählen Sie in der Liste **Dienstkonfiguration** den Namen der Dienstkonfiguration aus, die Sie bearbeiten möchten. Wenn Sie alle Dienstkonfigurationen für diese Rolle ändern möchten, können Sie **Alle Konfigurationen** auswählen. Weitere Informationen zum Aktualisieren von Dienstkonfigurationen finden Sie im Abschnitt **Verwalten von Verbindungszeichenfolgen für Speicherkonten** im Thema [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
 
-1. In the **Service Configuration** list, choose the name of the service configuration that you want to edit. If you want to make changes to all of the service configurations for this role, you can choose **All Configurations**.  For more information about how to update service configurations, see the section **Manage Connection Strings for Storage Accounts** in the topic [Configure the Roles for an Azure Cloud Service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
+1. Um Einstellungen von Verbindungszeichenfolgen zu ändern, klicken Sie auf die Schaltfläche **...** neben der Einstellung. Das Dialogfeld **Verbindungszeichenfolge für den Speicher erstellen** wird angezeigt.
 
-1. To modify any connection string settings, choose the **…** button next to the setting. The **Create Storage Connection String** dialog box appears.
+1. Wählen Sie unter **Verbinden mit** die Option **Ihr Abonnement** aus.
 
-1. Under **Connect using**, choose the **Your subscription** option.
+1. Wählen Sie in der Liste **Abonnement** Ihr Abonnement aus. Wenn die Liste der Abonnements nicht das gewünschte Abonnement enthält, klicken Sie auf den Link **Veröffentlichungseinstellungen herunterladen**.
 
-1. In the **Subscription** list, choose your subscription. If the list of subscriptions doesn't include the one that you want, choose the **Download Publish Settings** link.
+1. Wählen Sie in der Liste **Kontoname** den Namen Ihres Speicherkontos aus. Azure Tools erhält Anmeldeinformationen für das Speicherkonto automatisch mithilfe der PUBLISHSETTINGS-Datei. Wenn Sie die Anmeldeinformationen für das Speicherkonto manuell angeben möchten, wählen Sie die Option **Manuell eingegebene Anmeldeinformationen** aus und fahren mit diesen Schritten fort. Sie erhalten Ihren Speicherkontonamen und Primärschlüssel über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885). Wenn Sie die Einstellungen für das Speicherkonto nicht manuell angeben möchten, klicken Sie auf **OK**, um das Dialogfeld zu schließen.
 
-1. In the **Account name** list, choose your storage account name. Azure Tools obtains storage account credentials automatically by using the .publishsettings file. To specify your storage account credentials manually, choose the **Manually entered credentials** option, and then continue with this procedure. You can get your storage account name and primary key from the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=213885). If you don’t want to specify your storage account settings manually, choose the **OK** button to close the dialog box.
+1. Klicken Sie auf den Link **Anmeldeinformationen für Speicherkonto eingeben**.
 
-1. Choose the **Enter storage account** credentials link.
+1. Geben Sie in das Feld **Kontoname** den Namen Ihres Azure-Speicherkontos ein.
 
-1. In the **Account name** box, enter the name of your storage account.
+    >[AZURE.NOTE] Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) an, und klicken Sie dann auf die Schaltfläche **Speicher**. Im Portal wird eine Liste der Speicherkonten angezeigt. Wenn Sie ein Konto auswählen, wird eine entsprechende Seite geöffnet. Sie können den Namen des Speicherkontos von dieser Seite kopieren. Wenn Sie eine frühere Version des klassischen Portals verwenden, wird der Name Ihres Speicherkontos in der Ansicht **Speicherkonten** angezeigt. Um diesen Namen zu kopieren, markieren Sie ihn im Fenster **Eigenschaften** dieser Ansicht und drücken dann STRG+C. Um den Namen in Visual Studio einzufügen, wählen Sie das Textfeld **Kontoname** aus und drücken dann STRG+V.
 
-    >[AZURE.NOTE] Log into the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), and then choose the **Storage** button. The portal shows a list of storage accounts. If you choose an account, a page for it opens. You can copy the name of the storage account from this page. If you are using a previous version of the classic portal, the name of your storage account appears in the **Storage Accounts** view. To copy this name, highlight it in the **Properties** window of this view, and then choose the Ctrl-C keys. To paste the name into Visual Studio, choose the **Account name** text box, and then choose the Ctrl+V keys.
+1. Geben Sie im Feld **Kontoschlüssel** den Primärschlüssel ein, oder kopieren Sie ihn aus dem [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885), und fügen Sie ihn dann ein. So kopieren Sie den Schlüssel
 
-1. In the **Account key** box, enter your primary key, or copy and paste it from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
-    To copy this key:
+    1. Klicken Sie unten auf der Seite für das entsprechende Speicherkonto auf die Schaltfläche **Schlüssel verwalten**.
 
-    1. At the bottom of the page for the appropriate storage account, choose the **Manage Keys** button.
+    1. Markieren Sie auf der Seite **Schlüsselzugriff verwalten** den Text des primären Zugriffsschlüssels, und drücken Sie dann STRG+C.
 
-    1. On the **Manage Keys Access** page, select the text of the primary access key, and then choose the Ctrl+C keys.
+    1. Fügen Sie in Azure Tools den Schlüssel in das Feld **Kontoschlüssel** ein.
 
-    1. In Azure Tools, paste the key into the **Account key** box.
+    1. Sie müssen eine der folgenden Optionen auswählen, um zu bestimmen, wie der Dienst auf das Speicherkonto zugreift:
+        - **HTTP verwenden**. Dies ist die Standardoption. Beispiel: `http://<account name>.blob.core.windows.net`.
+        - **HTTPS verwenden** (für eine sichere Verbindung). Beispiel: `https://<accountname>.blob.core.windows.net`.
+        - **Benutzerdefinierte Endpunkte angeben** (für jeden der drei Dienste). Sie können dann diese Endpunkte für den jeweiligen Dienst in das Feld eingeben.
 
-    1. You must select one of the following options to determine how the service will access the storage account:
-        - **Use HTTP**. This is the standard option. For example, `http://<account name>.blob.core.windows.net`.
-        - **Use HTTPS** for a secure connection. For example, `https://<accountname>.blob.core.windows.net`.
-        - **Specify custom endpoints** for each of the three services. You can then type these endpoints into the field for the specific service.
+        >[AZURE.NOTE] Wenn Sie benutzerdefinierte Endpunkte erstellen, können Sie eine komplexere Verbindungszeichenfolge erstellen. Wenn Sie dieses Zeichenfolgenformat verwenden, können Sie Speicherdienstendpunkte angeben, die einen benutzerdefinierten Domänennamen enthalten, den Sie für Ihr Speicherkonto mit dem Blobdienst registriert haben. Außerdem können Sie über eine SAS (Shared Access Signature) Zugriff auf ausschließlich Blobressourcen in einem einzelnen Container gewähren. Weitere Informationen zum Erstellen benutzerdefinierter Endpunkte finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
 
-        >[AZURE.NOTE] If you create custom endpoints, you can create a more complex connection string. When you use this string format, you can specify storage service endpoints that include a custom domain name that you have registered for your storage account with the Blob service. Also you can grant access only to blob resources in a single container through a shared access signature. For more information about how to create custom endpoints, see [Configure Azure Storage Connection Strings](storage-configure-connection-string.md).
+1. Um diese Änderungen an der Verbindungszeichenfolge zu speichern, klicken Sie auf die Speichern **OK** und dann auf der Symbolleiste auf die Schaltfläche **Speichern**. Nachdem Sie diese Änderungen gespeichert haben, erhalten Sie den Wert dieser Verbindungszeichenfolge in Ihrem Code mithilfe von [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx). Wenn Sie Ihre Anwendung in Azure veröffentlichen, wählen Sie die Dienstkonfiguration, die das Azure-Speicherkonto für die Verbindungszeichenfolge enthält. Nachdem die Anwendung veröffentlicht wurde, stellen Sie sicher, dass die Anwendung mit den Azure-Speicherdiensten wie erwartet funktioniert.
 
-1. To save these connection string changes, choose the **OK** button and then choose the **Save** button on the toolbar. After you save these changes, you can get the value of this connection string in your code by using [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx). When you publish your application to Azure, choose the service configuration that contains the Azure storage account for the connection string. After your application is published, verify that the application works as expected against the Azure storage services
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+Weitere Informationen zum Veröffentlichen von Anwendungen in Azure aus Visual Studio finden Sie unter [Veröffentlichen eines Clouddiensts mit den Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
 
-To learn more about publishing apps to Azure from Visual Studio, see [Publishing a Cloud Service using the Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

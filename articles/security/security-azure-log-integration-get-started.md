@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get started with Azure log integration | Microsoft Azure"
-   description="Learn how to install the Azure log integration service and integrate logs from Azure storage, Azure Audit Logs and Azure Security Center alerts."
+   pageTitle="Erste Schritte mit der Azure-Protokollintegration | Microsoft Azure"
+   description="Hier erfahren Sie, wie Sie den Azure-Protokollintegrationsdienst installieren und Protokolle aus Azure Storage sowie Azure-Überwachungsprotokolle und Azure Security Center-Warnungen integrieren."
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,131 +16,126 @@
    ms.date="08/24/2016"
    ms.author="TomSh"/>
 
+# Erste Schritte mit der Azure-Protokollintegration (Vorschau)
 
-# <a name="get-started-with-azure-log-integration-(preview)"></a>Get started with Azure log integration (Preview)
+Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) integrieren. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Ressourcen (ganz gleich ob lokal oder in der Cloud), sodass Sie Sicherheitsereignisse im Zusammenhang mit Ihren Anwendungen aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben können.
 
-Azure log integration enables you to integrate raw logs from your Azure resources into your on-premises Security Information and Event Management (SIEM) systems. This integration provides a unified dashboard for all your assets, on-premises or in the cloud, so that you can aggregate, correlate, analyze, and alert for security events associated with your applications.
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure Storage sowie Azure-Überwachungsprotokolle und Azure Security Center-Warnungen integrieren. Die Bearbeitung dieses Tutorials dauert ungefähr eine Stunde.
 
-This tutorial walks you through how to install Azure log integration and integrate logs from Azure storage, Azure Audit Logs, and Azure Security Center alerts. Estimated time to complete this tutorial is one hour.
+## Voraussetzungen
 
-## <a name="prerequisites"></a>Prerequisites
+Für dieses Tutorial benötigen Sie Folgendes:
 
-To complete this tutorial, you must have the following:
+- Einen Computer (lokal oder in der Cloud) zum Installieren des Azure-Protokollintegrationsdiensts. Auf diesem Computer müssen ein Windows-Betriebssystem (64 Bit) und .NET 4.5.1 installiert sein. Dieser Computer wird als **Azlog Integrator** bezeichnet.
+- Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
+- Aktivierte Azure-Diagnose für Ihre virtuellen Azure-Computer. Informationen zum Aktivieren der Diagnose für Cloud Services finden Sie unter [Aktivieren der Azure-Diagnose in Azure Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics.md). Informationen zum Aktivieren der Diagnose für einen virtuellen Azure-Computer unter Windows finden Sie unter [Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md).
+- Verbindung zwischen Azlog Integrator und Azure Storage sowie Authentifizierung und Autorisierung gegenüber dem Azure-Abonnement.
+- Für Azure-VM-Protokolle muss der SIEM-Agent (beispielsweise Splunk Universal Forwarder, HP ArcSight Windows Event Collector-Agent oder IBM QRadar WinCollect) auf dem Azlog Integrator installiert sein.
 
-- A machine (on-premises or in the cloud) to install the Azure log integration service. This machine must be running a 64-bit Windows OS with .Net 4.5.1 installed. This machine is called the **Azlog Integrator**.
-- Azure subscription. If you do not have one, you can sign up for a [free account](https://azure.microsoft.com/free/).
-- Azure Diagnostics enabled for your Azure virtual machines (VMs). To enable diagnostics for Cloud Services, see [Enabling Azure Diagnostics in Azure Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics.md). To enable diagnostics for an Azure VM running Windows, see [Use PowerShell to enable Azure Diagnostics in a Virtual Machine Running Windows](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md).
-- Connectivity from the Azlog Integrator to Azure storage and to authenticate and authorize to Azure subscription.
-- For Azure VM logs, the SIEM agent (for example, Splunk Universal Forwarder, HP ArcSight Windows Event Collector agent, or IBM QRadar WinCollect) must be installed on the Azlog Integrator.
+## Überlegungen zur Bereitstellung
 
-## <a name="deployment-considerations"></a>Deployment considerations
+Bei hohem Ereignisaufkommen können mehrere Instanzen des Azlog Integrators ausgeführt werden. Der Lastenausgleich der Azure-Diagnose-Speicherkonten für Windows *(WAD)* und die Anzahl von Abonnements, die für die Instanzen bereitgestellt werden, müssen auf Ihrer Kapazität basieren.
 
-You can run multiple instances of the Azlog Integrator if event volume is high. Load balancing of Azure Diagnostics storage accounts for Windows *(WAD)* and the number of subscriptions to provide to the instances should be based on your capacity.
+Auf einem Computer mit acht Prozessoren (Kernen) kann eine einzelne Azlog Integrator-Instanz pro Tag etwa 24 Millionen Ereignisse (rund eine Million pro Stunde) verarbeiten.
 
-On an 8-processor (core) machine, a single instance of Azlog Integrator can process about 24 million events per day (~1M/hour).
+Auf einem Computer mit vier Prozessoren (Kernen) kann eine einzelne Azlog Integrator-Instanz pro Tag etwa 1,5 Millionen Ereignisse (rund 62.500 pro Stunde) verarbeiten.
 
-On a 4-processor (core) machine, a single instance of Azlog Integrator can process about 1.5 million events per day (~62.5K/hour).
+## Installieren der Azure-Protokollintegration
 
-## <a name="install-azure-log-integration"></a>Install Azure log integration
+Laden Sie die [Azure-Protokollintegration](https://www.microsoft.com/download/details.aspx?id=53324) herunter.
 
-Download [Azure log integration](https://www.microsoft.com/download/details.aspx?id=53324).
+Der Dienst „Azure-Protokollintegration“ sammelt Telemetriedaten des Computers, auf dem er installiert ist. Folgende Telemetriedaten werden erfasst:
 
-The Azure log integration service collects telemetry data from the machine on which it is installed.  Telemetry data collected is:
+- Ausnahmen, die während der Ausführung der Azure-Protokollintegration auftreten
+- Metriken zu der Anzahl von verarbeiteten Abfragen und Ereignissen
+- Statistiken zur Verwendung von Azlog.exe-Befehlszeilenoptionen
 
-- Exceptions that occur during execution of Azure log integration
-- Metrics about the number of queries and events processed
-- Statistics about which Azlog.exe command line options are being used
+> [AZURE.NOTE] Sie können die Erfassung von Telemetriedaten ausschalten, indem Sie diese Option deaktivieren.
 
-> [AZURE.NOTE] You can turn off collection of telemetry data by unchecking this option.
+## Integrieren von Azure-VM-Protokollen aus Ihren Azure-Diagnose-Speicherkonten
 
-## <a name="integrate-azure-vm-logs-from-your-azure-diagnostics-storage-accounts"></a>Integrate Azure VM logs from your Azure Diagnostics storage accounts
+1. Überprüfen Sie die oben angegebenen Voraussetzungen, um sicherzustellen, dass Ihr WAD-Speicherkonto Protokolle erfasst, und fahren Sie dann mit der Azure-Protokollintegration fort. Führen Sie die folgenden Schritte nicht aus, wenn Ihr WAD-Speicherkonto keine Protokolle erfasst.
 
-1. Check the prerequisites listed above to ensure that your WAD storage account is collecting logs before continuing your Azure log integration. Do not perform the following steps if your WAD storage account is not collecting logs.
+2. Öffnen Sie die Eingabeaufforderung, und wechseln Sie mit **cd** zu **c:\\Programme\\Microsoft Azure Log Integration**.
 
-2. Open the command prompt and **cd** into **c:\Program Files\Microsoft Azure Log Integration**.
-
-3. Run the command
+3. Führen Sie den folgenden Befehl aus:
 
         azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>
 
-      Replace StorageAccountName with the name of the Azure storage account configured to receive diagnostics events from your VM.
+      Ersetzen Sie „StorageAccountName“ durch den Namen des Azure-Speicherkontos, das für den Empfang von Diagnoseereignissen Ihres virtuellen Computers konfiguriert ist.
 
         azlog source add azlogtest WAD azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==
 
-      If you would like the subscription id to show up in the event XML, append the subscription ID to the friendly name:
+      Soll in der Ereignis-XML die Abonnement-ID angezeigt werden, fügen Sie am Ende des Anzeigenamens die Abonnement-ID an:
 
         azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>
 
-4. Wait 30 - 60 minutes (it could take as long as an hour), then view the events that are pulled from the storage account. To view, open **Event Viewer > Windows Logs > Forwarded Events** on the Azlog Integrator.
+4. Warten Sie 30 bis 60 Minuten (kann bis zu einer Stunde dauern), und sehen Sie sich dann die aus dem Speicherkonto abgerufenen Ereignisse an. Öffnen Sie hierzu **Ereignisanzeige > Windows-Protokolle > Weitergeleitete Ereignisse** auf dem Azlog Integrator.
 
-5. Make sure that your standard SIEM connector installed on the machine is configured to pick events from the **Forwarded Events** folder and pipe them to your SIEM instance. Review the SIEM specific configuration to configure and see the logs integrating.
+5. Vergewissern Sie sich, dass der auf dem Computer installierte SIEM-Standardconnector so konfiguriert ist, dass er Ereignisse aus dem Ordner **Weitergeleitete Ereignisse** an Ihre SIEM-Instanz weiterreicht. Überprüfen Sie die SIEM-spezifische Konfiguration, um die zu integrierenden Protokolle zu konfigurieren und anzuzeigen.
 
-## <a name="what-if-data-is-not-showing-up-in-the-forwarded-events-folder?"></a>What if data is not showing up in the Forwarded Events folder?
+## Was, wenn im Ordner „Weitergeleitete Ereignisse“ keine Daten angezeigt werden?
 
-If after an hour data is not showing up in the **Forwarded Events** folder, then:
+Sollten im Ordner **Weitergeleitete Ereignisse** nach einer Stunde immer noch keine Daten angezeigt werden, gehen Sie wie folgt vor:
 
-1. Check the machine and confirm that it can access Azure. To test connectivity, try to open the [Azure portal](http://portal.azure.com) from the browser.
+1. Überprüfen Sie den Computer, und vergewissern Sie sich, dass er auf Azure zugreifen kann. Öffnen Sie zum Testen der Konnektivität das [Azure-Portal](http://portal.azure.com) über den Browser.
 
-2. Make sure the user account **azlog** has write permission on the folder **users\azlog**.
+2. Vergewissern Sie sich, dass das Benutzerkonto **azlog** über Schreibberechtigungen für den Ordner **Benutzer\\azlog** verfügt.
 
-3. Make sure the storage account added in the command **azlog source add** is listed when you run the command **azlog source list**.
-4. Go to **Event Viewer > Windows Logs > Application** to see if there are any errors reported from the Azure log integration.
+3. Vergewissern Sie sich, dass das Speicherkonto, das mithilfe des Befehls **azlog source add** hinzugefügt wurde, beim Ausführen des Befehls **azlog source list** aufgeführt wird.
+4. Überprüfen Sie unter **Ereignisanzeige > Windows-Protokolle > Anwendung**, ob von der Azure-Protokollintegration möglicherweise Fehler gemeldet wurden.
 
-If you still don’t see the events, then:
+Sollten die Ereignisse immer noch nicht angezeigt werden, führen Sie die folgenden Schritte aus:
 
-1. Download [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+1. Laden Sie den [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/) herunter.
 
-2. Connect to the storage account added in the command **azlog source add**.
+2. Stellen Sie eine Verbindung mit dem Speicherkonto her, das mithilfe des Befehls **azlog source add** hinzugefügt wurde.
 
-3. In Microsoft Azure Storage Explorer, browse to table **WADWindowsEventLogsTable** to see if there is any data. If not, then diagnostics in the VM is not configured correctly.
+3. Navigieren Sie im Microsoft Azure-Speicher-Explorer zur Tabelle **WADWindowsEventLogsTable**, und überprüfen Sie, ob die Tabelle Daten enthält. Falls nicht, ist die Diagnose auf dem virtuellen Computer nicht ordnungsgemäß konfiguriert.
 
-## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>Integrate Azure audit logs and Security Center alerts
+## Integrieren von Azure-Überwachungsprotokollen und Security Center-Warnungen
 
-1. Open the command prompt and **cd** into **c:\Program Files\Microsoft Azure Log Integration**.
+1. Öffnen Sie die Eingabeaufforderung, und wechseln Sie mit **cd** zu **c:\\Programme\\Microsoft Azure Log Integration**.
 
-2. Run the command
+2. Führen Sie den folgenden Befehl aus:
 
         azlog createazureid
 
-      This command prompts you for your Azure login. The command then creates an [Azure Active Directory Service Principal](../active-directory/active-directory-application-objects.md) in the Azure AD Tenants that host the Azure subscriptions in which the logged in user is an Administrator, a Co-Administrator, or an Owner. The command will fail if the logged in user is only a Guest user in the Azure AD Tenant. Authentication to Azure is done through Azure Active Directory (AD).  Creating a service principal for Azlog Integration creates the Azure AD identity that will be given access to read from Azure subscriptions.
+      Dabei werden Sie zur Angabe Ihrer Azure-Anmeldeinformationen aufgefordert. Anschließend wird in den Azure AD-Mandanten, die die Azure-Abonnements hosten, in denen der angemeldete Benutzer als Administrator, Co-Administrator oder Besitzer fungiert, ein [Azure Active Directory-Dienstprinzipal](../active-directory/active-directory-application-objects.md) erstellt. Handelt es sich bei dem angemeldeten Benutzer nur um einen Gastbenutzer des Azure AD-Mandanten, tritt bei dem Befehl ein Fehler auf. Die Authentifizierung gegenüber Azure wird über Azure Active Directory (AD) durchgeführt. Beim Erstellen eines Dienstprinzipals für die Azure-Protokollintegration wird die Azure AD-Identität erstellt, die Lesezugriff auf Azure-Abonnements erhält.
 
-3. Run the command
+3. Führen Sie den folgenden Befehl aus:
 
         azlog authorize <SubscriptionID>
 
-      This assigns reader access on the subscription to the service principal created in step 2. If you don’t specify a SubscriptionID, then it attempts to assign the service principal reader role to all subscriptions to which you have any access.
+      Dadurch wird dem in Schritt 2 erstellten Dienstprinzipal Lesezugriff auf das Abonnement zugewiesen. Ohne Angabe einer Abonnement-ID wird versucht, die Dienstprinzipal-Leserrolle für alle Abonnements zuzuweisen, auf die Sie Zugriff haben.
 
         azlog authorize 0ee9d577-9bc4-4a32-a4e8-c29981025328
 
-      > [AZURE.NOTE] You may see warnings if you run the **authorize** command immediately after the **createazureid** command. There is some latency between when the Azure AD account is created and when the account is available for use. If you wait about 10 seconds after running the **createazureid** command to run the **authorize** command, then you should not see these warnings.
+      > [AZURE.NOTE] Wenn Sie den Befehl **authorize** unmittelbar nach dem Befehl **createazureid** ausführen, werden unter Umständen Warnungen angezeigt. Nach der Erstellung des Azure AD-Kontos dauert es etwas, bis das Konto verwendungsbereit ist. Wenn Sie nach dem Ausführen des Befehls **createazureid** ca. zehn Sekunden warten, um den Befehl **authorize** auszuführen, sollten diese Warnungen nicht angezeigt werden.
 
-4. Check the following folders to confirm that the Audit log JSON files are there:
+4. Überprüfen Sie die folgenden Ordner, um sicherzustellen, dass die JSON-Dateien des Überwachungsprotokolls vorhanden sind:
 
-  - **c:\Users\azlog\AzureResourceManagerJson**
-  - **c:\Users\azlog\AzureResourceManagerJsonLD**
+  - **c:\\Users\\azlog\\AzureResourceManagerJson**
+  - **c:\\Users\\azlog\\AzureResourceManagerJsonLD**
 
-5. Check the following folders to confirm that Security Center alerts exist in them:
+5. Überprüfen Sie die folgenden Ordner, um sicherzustellen, dass darin bereits Security Center-Warnungen vorhanden sind:
 
-  - **c:\Users\azlog\ AzureSecurityCenterJson**
-  - **c:\Users\azlog\AzureSecurityCenterJsonLD**
+  - **c:\\Users\\azlog\\AzureSecurityCenterJson**
+  - **c:\\Users\\azlog\\AzureSecurityCenterJsonLD**
 
-6. Point the standard SIEM file forwarder connector to the appropriate folder to pipe the data to the SIEM instance. You may need some field mappings based on the SIEM product you are using.
+6. Verweisen Sie für den Standardconnector für die SIEM-Dateiweiterleitung auf den richtigen Ordner, um die Daten an die SIEM-Instanz zu übermitteln. Ja nach verwendetem SIEM-Produkt benötigen Sie unter Umständen einige Feldzuordnungen.
 
-If you have questions about Azure Log Integration, please send an email to [AzSIEMteam@microsoft.com] (mailto:AzSIEMteam@microsoft.com)
+Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-In this tutorial, you learned how to install Azure log integration and integrate logs from Azure storage. To learn more, see the following:
+In diesem Tutorial haben Sie gelernt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure Storage integrieren. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Microsoft Azure Log Integration for Azure logs (Preview)](https://www.microsoft.com/download/details.aspx?id=53324) – Download Center for details, system requirements, and install instructions on Azure log integration.
-- [Introduction to Azure log integration](security-azure-log-integration-overview.md) – This document introduces you to Azure log integration, its key capabilities, and how it works.
-- [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – This blog post shows you how to configure Azure log integration to work with partner solutions Splunk, HP ArcSight, and IBM QRadar.
-- [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) - This FAQ answers questions about Azure log integration.
-- [Integrating Security Center alerts with Azure log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md) – This document shows you how to sync Security Center alerts, along with virtual machine security events collected by Azure Diagnostics and Azure Audit Logs, with your log analytics or SIEM solution.
-- [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) – This blog post introduces you to Azure Audit Logs and other features that help you gain insights into the operations of your Azure resources.
+- [Microsoft Azure Log Integration for Azure logs (Preview)](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure-Protokoll-Integration für Azure-Protokolle (Vorschau)): Download Center für Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
+- [Introduction to Azure log integration](security-azure-log-integration-overview.md) (Einführung in die Azure-Protokollintegration): Dieses Dokument stellt die Azure-Protokollintegration, die wichtigsten Funktionen sowie die Funktionsweise vor.
+- [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
+- [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
+- [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration (Vorschau)](../security-center/security-center-integrating-alerts-with-log-integration.md): In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
+- [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Abläufe Ihrer Azure-Ressourcen verschaffen können.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

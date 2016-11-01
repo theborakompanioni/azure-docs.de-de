@@ -1,10 +1,10 @@
 <properties
 pageTitle="SendGrid | Microsoft Azure"
-description="Create Logic apps with Azure App service. SendGrid Connection Provider lets you send email and manage recipient lists."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Erstellen Sie Logik-Apps mit Azure App Service. Mit dem SendGrid-Verbindungsanbieter können Sie E-Mails senden und Empfängerlisten verwalten."
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,172 +17,168 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# Erste Schritte mit dem SendGrid-Connector
 
-# <a name="get-started-with-the-sendgrid-connector"></a>Get started with the SendGrid connector
+Mit dem SendGrid-Verbindungsanbieter können Sie E-Mails senden und Empfängerlisten verwalten.
 
-SendGrid Connection Provider lets you send email and manage recipient lists.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## Trigger und Aktionen
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+Der SendGrid-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
-The SendGrid connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+ Der SendGrid-Connector verfügt über die folgenden Aktionen: Es gibt keine Trigger.
 
- The SendGrid connector has the following actions available. There are no triggers.
+### SendGrid-Aktionen
+Sie können diese Aktionen ausführen:
 
-### <a name="sendgrid-actions"></a>SendGrid actions
-You can take these action(s):
-
-|Action|Description|
+|Aktion|Beschreibung|
 |--- | ---|
-|[SendEmail](connectors-create-api-sendgrid.md#sendemail)|Sends an email using SendGrid API (Limited to 10,000 recipients)|
-|[AddRecipientToList](connectors-create-api-sendgrid.md#addrecipienttolist)|Add an individual recipient to a recipient list|
+|[SendEmail](connectors-create-api-sendgrid.md#sendemail)|Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfänger).|
+|[AddRecipientToList](connectors-create-api-sendgrid.md#addrecipienttolist)|Fügt einer Empfängerliste einen einzelnen Empfänger hinzu.|
 
 
-## <a name="create-a-connection-to-sendgrid"></a>Create a connection to SendGrid
-To create Logic apps with SendGrid, you must first create a **connection** then provide the details for the following properties: 
+## Herstellen einer Verbindung mit SendGrid
+Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
-|Property| Required|Description|
+|Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|ApiKey|Yes|Provide Your SendGrid Api Key|
+|ApiKey|Ja|Angeben Ihres API-Schlüssels für SendGrid|
  
 
->[AZURE.INCLUDE [Steps to create a connection to SendGrid](../../includes/connectors-create-api-sendgrid.md)]
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit SendGrid](../../includes/connectors-create-api-sendgrid.md)]
 
->[AZURE.TIP] You can use this connection in other logic apps.
+>[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
-After you create the connection, you can use it to execute the actions and listen for the triggers described in this article.
+Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
-## <a name="reference-for-sendgrid"></a>Reference for SendGrid
-Applies to version: 1.0
+## Referenz für SendGrid
+Gilt für Version 1.0.
 
-## <a name="sendemail"></a>SendEmail
-Send email: Sends an email using SendGrid API (Limited to 10,000 recipients) 
+## SendEmail
+E-Mail senden: Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfänger).
 
-```POST: /api/mail.send.json``` 
+```POST: /api/mail.send.json```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|request| |yes|body|none|Email message to send|
+|request| |Ja|body|(Keine)|Zu sendende E-Mail-Nachricht|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|429|Too Many Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|429|Zu viele Anforderungen|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="addrecipienttolist"></a>AddRecipientToList
-Add recipient to list: Add an individual recipient to a recipient list 
+## AddRecipientToList
+Empfänger zu Liste hinzufügen: Fügt einer Empfängerliste einen einzelnen Empfänger hinzu.
 
-```POST: /v3/contactdb/lists/{listId}/recipients/{recipientId}``` 
+```POST: /v3/contactdb/lists/{listId}/recipients/{recipientId}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|listId|string|yes|path|none|Unique id of the recipient list|
-|recipientId|string|yes|path|none|Unique id of the recipient|
+|listId|string|Ja|path|(Keine)|Eindeutige ID der Empfängerliste|
+|recipientId|string|Ja|path|(Keine)|Eindeutige ID des Empfängers|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## Objektdefinitionen 
 
-### <a name="emailrequest"></a>EmailRequest
+### EmailRequest
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|from|string|Yes |
-|fromname|string|No |
-|to|string|Yes |
-|toname|string|No |
-|subject|string|Yes |
-|body|string|Yes |
-|ishtml|boolean|No |
-|cc|string|No |
-|ccname|string|No |
-|bcc|string|No |
-|bccname|string|No |
-|replyto|string|No |
-|date|string|No |
-|headers|string|No |
-|files|array|No |
-|filenames|array|No |
+|from|string|Ja |
+|fromname|string|Nein |
+|to|string|Ja |
+|toname|string|Nein |
+|subject|string|Ja |
+|body|string|Ja |
+|ishtml|Boolescher Wert|Nein |
+|cc|string|Nein |
+|ccname|string|Nein |
+|bcc|string|Nein |
+|bccname|string|Nein |
+|replyto|string|Nein |
+|date|string|Nein |
+|headers|string|Nein |
+|files|array|Nein |
+|filenames|array|Nein |
 
 
 
-### <a name="emailresponse"></a>EmailResponse
+### EmailResponse
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|message|string|No |
+|message|string|Nein |
 
 
 
-### <a name="recipientlists"></a>RecipientLists
+### RecipientLists
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|lists|array|No |
+|lists|array|Nein |
 
 
 
-### <a name="recipientlist"></a>RecipientList
+### RecipientList
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|name|string|No |
-|recipient_count|integer|No |
+|id|integer|Nein |
+|Name|string|Nein |
+|recipient\_count|integer|Nein |
 
 
 
-### <a name="recipients"></a>Recipients
+### Recipients
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|recipients|array|No |
+|recipients|array|Nein |
 
 
 
-### <a name="recipient"></a>Recipient
+### Recipient
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|email|string|No |
-|last_name|string|No |
-|first_name|string|No |
-|id|string|No |
+|email|string|Nein |
+|last\_name|string|Nein |
+|first\_name|string|Nein |
+|id|string|Nein |
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## Nächste Schritte
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,126 +1,119 @@
 <properties
-    pageTitle="How to create and deploy a cloud service | Microsoft Azure"
-    description="Learn how to create and deploy a cloud service using the Azure portal."
-    services="cloud-services"
-    documentationCenter=""
-    authors="Thraka"
-    manager="timlt"
-    editor=""/>
+	pageTitle="Erstellen und Bereitstellen eines Clouddiensts| Microsoft Azure"
+	description="Erfahren Sie, wie Sie einen Clouddienst über das Azure-Portal erstellen und bereitstellen."
+	services="cloud-services"
+	documentationCenter=""
+	authors="Thraka"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="cloud-services"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/11/2016"
-    ms.author="adegeo"/>
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/05/2016"
+	ms.author="adegeo"/>
 
 
 
 
-
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>How to create and deploy a cloud service
+# Erstellen und Bereitstellen eines Clouddiensts
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-create-deploy-portal.md)
-- [Azure classic portal](cloud-services-how-to-create-deploy.md)
+- [Azure-Portal](cloud-services-how-to-create-deploy-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-create-deploy.md)
 
-The Azure portal provides two ways for you to create and deploy a cloud service: *Quick Create* and *Custom Create*.
+Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.
 
-This article explains how to use the Quick Create method to create a new cloud service and then use **Upload** to upload and deploy a cloud service package in Azure. When you use this method, the Azure portal makes available convenient links for completing all requirements as you go. If you're ready to deploy your cloud service when you create it, you can do both at the same time using Custom Create.
+In diesem Thema wird erläutert, wie Sie die Schnellerfassungsmethode zum Erstellen eines neuen Clouddiensts und dann **Hochladen** verwenden, um ein Clouddienstpaket in Azure hochzuladen und bereitzustellen. Wenn Sie diese Methode verwenden, werden im Azure-Portal praktische Links zum Erfüllen aller Anforderungen zur Verfügung gestellt. Wenn Sie Ihren Cloud-Dienst bei der Erstellung auch bereitstellen möchten, können Sie beides mithilfe von Benutzerdefinierte Erstellung durchführen.
 
-> [AZURE.NOTE] If you plan to publish your cloud service from Visual Studio Team Services (VSTS), use Quick Create, and then set up VSTS publishing from the Azure Quickstart or the dashboard. For more information, see [Continuous Delivery to Azure by Using Visual Studio Team Services][TFSTutorialForCloudService], or see help for the **Quick Start** page.
+> [AZURE.NOTE] Wenn Sie Ihren Clouddienst aus Visual Studio Team Services (VSTS) veröffentlichen möchten, verwenden Sie die Schnellerstellung. Richten Sie die VSTS-Veröffentlichung dann über Azur-Schnellstart oder das Dashboard ein. Weitere Informationen finden Sie unter [Fortlaufende Bereitstellung für Azure mithilfe von Visual Studio Team Services][TFSTutorialForCloudService] oder in der Hilfe zur **Schnellstart**-Seite.
 
-## <a name="concepts"></a>Concepts
-Three components are required to deploy an application as a cloud service in Azure:
+## Konzepte
+Für die Bereitstellung einer Anwendung als Clouddienst in Azure sind drei Komponenten erforderlich:
 
-- **Service Definition**  
-  The cloud service definition file (.csdef) defines the service model, including the number of roles.
+- **Dienstdefinition:** Die Clouddienst-Definitionsdatei (.csdef) definiert das Dienstmodell einschließlich der Rollenanzahl.
 
-- **Service Configuration**  
-  The cloud service configuration file (.cscfg) provides configuration settings for the cloud service and individual roles, including the number of role instances.
+- **Dienstkonfiguration:** Die Clouddienst-Konfigurationsdatei (.cscfg) enthält Konfigurationseinstellungen für den Clouddienst sowie einzelne Rollen, darunter die Anzahl der Rolleninstanzen.
 
-- **Service Package**  
-  The service package (.cspkg) contains the application code and configurations and the service definition file.
+- **Dienstpaket:** Das Dienstpaket (.cspkg) enthält den Anwendungscode, die Konfigurationen und die Dienstdefinitionsdatei.
 
-You can learn more about these and how to create a package [here](cloud-services-model-and-package.md).
+Weitere Informationen zu diesen Komponenten sowie zum Erstellen eines Pakets finden Sie [hier](cloud-services-model-and-package.md).
 
-## <a name="prepare-your-app"></a>Prepare your app
-Before you can deploy a cloud service, you must create the cloud service package (.cspkg) from your application code and a cloud service configuration file (.cscfg). The Azure SDK provides tools for preparing these required deployment files. You can install the SDK from the [Azure Downloads](https://azure.microsoft.com/downloads/) page, in the language in which you prefer to develop your application code.
+## Vorbereiten Ihrer App
+Bevor Sie einen Clouddienst bereitstellen können, müssen Sie das Clouddienstpaket (CSPKG) aus dem Anwendungscode und eine Clouddienstkonfigurationsdatei (CSCFG) erstellen. Das Azure-SDK stellt Tools zum Vorbereiten dieser erforderlichen Bereitstellungsdateien bereit. Sie können das SDK auf der Seite [Azure-Downloads](https://azure.microsoft.com/downloads/) in der Sprache herunterladen, in der Sie den Anwendungscode entwickeln möchten.
 
-Three cloud service features require special configurations before you export a service package:
+Drei Clouddienstfunktionen benötigen vor dem Export eines Dienstpakets spezielle Konfigurationen:
 
-- If you want to deploy a cloud service that uses Secure Sockets Layer (SSL) for data encryption, [configure your application](cloud-services-configure-ssl-certificate-portal.md#modify) for SSL.
+- Wenn Sie einen Clouddienst bereitstellen möchten, der Secure Sockets Layer (SSL) für die Datenverschlüsselung verwendet, [konfigurieren Sie die Anwendung für SSL](cloud-services-configure-ssl-certificate-portal.md#modify).
 
-- If you want to configure Remote Desktop connections to role instances, [configure the roles](cloud-services-role-enable-remote-desktop.md) for Remote Desktop. This can only be done in the classic portal.
+- Wenn Sie Remotedesktopverbindungen zu Rolleninstanzen konfigurieren möchten, [konfigurieren Sie die Rollen](cloud-services-role-enable-remote-desktop.md) für Remotedesktop. Dies kann nur im klassischen Portal durchgeführt werden.
 
-- If you want to configure verbose monitoring for your cloud service, enable Azure Diagnostics for the cloud service. *Minimal monitoring* (the default monitoring level) uses performance counters gathered from the host operating systems for role instances (virtual machines). *Verbose monitoring* gathers additional metrics based on performance data within the role instances to enable closer analysis of issues that occur during application processing. To find out how to enable Azure Diagnostics, see [Enabling diagnostics in Azure](cloud-services-dotnet-diagnostics.md).
+- Wenn Sie die ausführliche Überwachung für den Clouddienst konfigurieren möchten, aktivieren Sie für den Clouddienst die Azure-Diagnose. *Minimale Überwachung* (die Standardüberwachungsstufe) verwendet Leistungsindikatoren, die aus den Hostbetriebssystemen für Rolleninstanzen (virtuelle Computer) erfasst wurden. Bei der *ausführlichen Überwachung* werden zusätzliche Kennzahlen basierend auf Leistungsdaten innerhalb der Rolleninstanzen erfasst, um eine genauere Analyse von Problemen zu ermöglichen, die während der Anwendungsverarbeitung auftreten. Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in Azure](cloud-services-dotnet-diagnostics.md).
 
-To create a cloud service with deployments of web roles or worker roles, you must [create the service package](cloud-services-model-and-package.md#servicepackagecspkg).
+Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#servicepackagecspkg), um einen Clouddienst mit Bereitstellungen von Webrollen oder Workerrollen zu erstellen.
 
-## <a name="before-you-begin"></a>Before you begin
+## Voraussetzungen
 
-- If you haven't installed the Azure SDK, click **Install Azure SDK** to open the [Azure Downloads page](https://azure.microsoft.com/downloads/), and then download the SDK for the language in which you prefer to develop your code. (You'll have an opportunity to do this later.)
+- Falls Sie das Azure-SDK noch nicht installiert haben, klicken Sie auf **Azure-SDK installieren**, um die [Azure-Downloadseite](https://azure.microsoft.com/downloads/) zu öffnen. Laden Sie dann das SDK für die Sprache herunter, in der Sie den Code entwickeln möchten. (Dazu haben Sie auch später noch die Möglichkeit.)
 
-- If any role instances require a certificate, create the certificates. Cloud services require a .pfx file with a private key. [You can upload the certificates to Azure]() as you create and deploy the cloud service.
+- Falls Rolleninstanzen ein Zertifikat erfordern, erstellen Sie die Zertifikate. Clouddienste erfordern eine PFX-Datei mit einem privaten Schlüssel. Sie können die [Zertifikate zu Azure hochladen](), wenn Sie den Clouddienst erstellen und bereitstellen.
 
-- If you plan to deploy the cloud service to an affinity group, create the affinity group. You can use an affinity group to deploy your cloud service and other Azure services to the same location in a region. You can create the affinity group in the **Networks** area of the Azure classic portal, on the **Affinity Groups** page.
+- Wenn Sie den Clouddienst für eine Affinitätsgruppe bereitstellen möchten, erstellen Sie die Affinitätsgruppe. Sie können eine Affinitätsgruppe verwenden, um den Clouddienst und andere Azure-Dienste für den gleichen Standort in einer Region bereitzustellen. Sie können die Affinitätsgruppe im Bereich **Netzwerke** des klassischen Azure-Portals auf der Seite **Affinitätsgruppen** erstellen.
 
 
-## <a name="create-and-deploy"></a>Create and deploy
+## Erstellen und Bereitstellen
 
-1. Log in to the [Azure portal](https://portal.azure.com/).
-2. Click **New > Virtual Machines**, and then scroll down to and click **Cloud Service**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie auf **Neu > Virtuelle Computer**, scrollen Sie nach unten zu **Clouddienst**, und klicken Sie auf diese Option.
 
-    ![Publish your cloud service](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 
-3. At the bottom of the information page that displays, click **Create**. 
-4. In the new **Cloud Service** blade, enter a value for the **DNS name**.
-5. Create a new **Resource Group** or select an existing one.
-6. Select a **Location**.
-7. Click **Package**. This will open the **Upload a package** blade. Fill in the required fields.  
+3. Klicken Sie unten auf der angezeigten Informationsseite auf **Erstellen**.
+4. Geben Sie auf dem neuen Blatt **Clouddienst** einen Wert für **DNS-Name** ein.
+5. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+6. Wählen Sie einen **Speicherort** aus.
+7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus.
 
-     If any of your roles contain a single instance, ensure **Deploy even if one or more roles contain a single instance** is selected.
+     Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
 
-8. Make sure that **Start deployment** is selected.
-9. Click **OK** which will close the **Upload a package** blade.
-10. If you do not have any certificates to add, click **Create**.
+8. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
+9. Klicken Sie auf **OK**, um das Blatt **Paket hochladen** zu schließen.
+10. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen**.
 
-    ![Publish your cloud service](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
-## <a name="upload-a-certificate"></a>Upload a certificate
+## Hochladen eines Zertifikats
 
-If your deployment package was [configured to use certificates](cloud-services-configure-ssl-certificate-portal.md#modify), you can upload the certificate now.
+Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert](cloud-services-configure-ssl-certificate-portal.md#modify) wurde, können Sie das Zertifikat jetzt hochladen.
 
-1. Select **Certificates**, and on the **Add certificates** blade, select the SSL certificate .pfx file, and then provide the **Password** for the certificate,
-2. Click **Attach certificate**, and then click **OK** on the **Add certificates** blade.
-3. Click **Create** on the **Cloud Service** blade. When the deployment has reached the **Ready** status, you can proceed to the next steps.
+1. Wählen Sie **Zertifikate**. Wählen Sie auf dem Blatt **Zertifikate hinzufügen** die PFX-Datei mit dem SSL-Zertifikat aus, und geben Sie das **Kennwort** für das Zertifikat ein.
+2. Klicken Sie auf **Zertifikat anfügen** und anschließend auf dem Blatt **Zertifikate hinzufügen** auf **OK**.
+3. Klicken Sie auf dem Blatt **Clouddienst** auf **Erstellen**. Wenn sich die Bereitstellung im Status **Ready** befindet, können Sie mit den nächsten Schritten fortfahren.
 
-    ![Publish your cloud service](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 
-## <a name="verify-your-deployment-completed-successfully"></a>Verify your deployment completed successfully
+## Überprüfen, ob Ihre Bereitstellung erfolgreich abgeschlossen wurde
 
-1. Click the cloud service instance.
+1. Klicken Sie auf die Instanz des Clouddiensts.
 
-    The status should show that the service is **Running**.
+	Der Status sollte anzeigen, dass der Dienst **Ausgeführt** wird.
 
-2. Under **Essentials**, click the **Site URL** to open your cloud service in a web browser.
+2. Klicken Sie unter **Essentials** auf die **Website-URL**, um den Clouddienst in einem Webbrowser zu öffnen.
 
-    ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
+    ![CloudServices\_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
 
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-* [General configuration of your cloud service](cloud-services-how-to-configure-portal.md).
-* Configure a [custom domain name](cloud-services-custom-domain-name-portal.md).
-* [Manage your cloud service](cloud-services-how-to-manage-portal.md).
-* Configure [ssl certificates](cloud-services-configure-ssl-certificate-portal.md).
+* [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
+* [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
+* [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
+* Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

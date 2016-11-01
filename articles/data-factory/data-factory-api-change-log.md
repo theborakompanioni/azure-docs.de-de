@@ -1,160 +1,159 @@
 <properties 
-    pageTitle="Data Factory - .NET API Change Log | Microsoft Azure" 
-    description="Describes breaking changes, feature additions, bug fixes etc... in a specific version of .NET API for the Azure Data Factory." 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="spelluru" 
-    manager="jhubbard" 
-    editor="monicar"/>
+	pageTitle="Data Factory – .NET API-Änderungsprotokoll | Microsoft Azure" 
+	description="Beschreibt Änderungen, hinzugefügte Features und Fehlerbehebungen usw. in einer bestimmten Version der .NET-API für Azure Data Factory." 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
 <tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/21/2016" 
-    ms.author="spelluru"/>
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/21/2016" 
+	ms.author="spelluru"/>
+
+# Azure Data Factory – .NET-API-Änderungsprotokoll 
+Dieser Artikel enthält Informationen zu Änderungen am Azure Data Factory SDK einer bestimmten Version. [Hier](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) finden Sie das neueste NuGet-Paket für Azure Data Factory.
+
+## Version 4.11.0
+Hinzugefügte Features:
+
+- Die folgenden verknüpften Diensttypen wurden hinzugefügt:
+	- [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
+	- [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
+	- [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
+- Die folgenden Dataset-Typen wurden hinzugefügt:
+	- [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
+	- [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
+- Die folgenden Typen von Kopierquellen wurden hinzugefügt:
+	- [MongoDbSource](https://msdn.microsoft.com/de-DE/library/mt765123.aspx)
+
+## Version 4.10.0
+- Die folgenden optionalen Eigenschaften wurden zu TextFormat hinzugefügt:
+	- [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
+	- [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
+	- [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
+- Die folgenden verknüpften Diensttypen wurden hinzugefügt:
+	- [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
+	- [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
+- Die folgenden Dataset-Typen wurden hinzugefügt:
+	- [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
+- Die folgenden Typen von Kopierquellen wurden hinzugefügt:
+	- [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
+- Hinzufügen der Eigenschaft [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) zu AzureMLBatchExecutionActivity
+	- Ermöglicht das Übergeben mehrerer Webdiensteingaben an ein Azure Machine Learning-Experiment
 
 
-# <a name="azure-data-factory---.net-api-change-log"></a>Azure Data Factory - .NET API change log 
-This article provides information about changes to Azure Data Factory SDK in a specific version. You can find the latest NuGet package for Azure Data Factory [here](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) 
+## Version 4.9.1
 
-## <a name="version-4.11.0"></a>Version 4.11.0
-Feature Additions:
+### Fehlerbehebung
 
-- The following linked service types have been added:
-    - [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
-    - [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
-    - [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
-- The following dataset types have been added: 
-    - [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
-    - [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
-- The following copy source types have been added:
-    - [MongoDbSource](https://msdn.microsoft.com/en-US/library/mt765123.aspx)
+- Ausmusterung der WebApi-basierten Authentifizierung für [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)
 
-## <a name="version-4.10.0"></a>Version 4.10.0
-- The following optional properties have been added to TextFormat:
-    - [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
-    - [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
-    - [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
-- The following linked service types have been added:
-    - [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
-    - [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
-- The following dataset types have been added:
-    - [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
-- The following copy source types have been added:
-    - [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
-- Add [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) property to AzureMLBatchExecutionActivity 
-    - Enable passing multiple web service inputs to an Azure Machine Learning experiment
+## Version 4.9.0
+
+### Hinzugefügte Features
+
+- Hinzufügen der Eigenschaften [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) und [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) zu „CopyActivity“ Ausführliche Informationen zu diesem Feature finden Sie unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy).
 
 
-## <a name="version-4.9.1"></a>Version 4.9.1
+### Fehlerbehebung
 
-### <a name="bug-fix"></a>Bug fix
+- Führen Sie eine Überladung der [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx)-Methode hinzu, die eine [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx)-Instanz akzeptiert.
+- Markieren Sie [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) und [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) in „CopySink“ als optional.
 
-- Deprecate WebApi-based authentication for [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx).
+## Version 4.8.0
 
-## <a name="version-4.9.0"></a>Version 4.9.0
+### Hinzugefügte Features
+- Dem Kopieraktivitätstyp wurden die folgenden optionalen Eigenschaften hinzugefügt, um die Optimierung der Kopierleistung zu ermöglichen:
+	- [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
+	- [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
 
-### <a name="feature-additions"></a>Feature Additions
+## Version 4.7.0
 
-- Add [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) and [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) properties to CopyActivity. See [Staged copy](data-factory-copy-activity-performance.md#staged-copy) for details on the feature.
+### Hinzugefügte Features
+* Ein neuer StorageFormat-Typ vom Typ [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) wurde hinzugefügt, um Dateien im einspaltig optimierten Zeilenformat (ORC) zu kopieren.
+* Hinzufügen von [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx)- und PolyBaseSettings-Eigenschaften zu „SqlDWSink“.
+    * Ermöglicht die Verwendung von PolyBase zum Kopieren von Daten in SQL Data Warehouse.
 
+## Version 4.6.1
 
-### <a name="bug-fix"></a>Bug fix
+### Fehlerbehebungen
+* Repariert die HTTP-Anforderung zum Auflisten von Aktivitätsfenstern.
+    * Entfernt den Ressourcengruppennamen und den Data Factory-Namen von der Anforderungsnutzlast.
 
-- Introduce an overload of [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) method, which takes an [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) instance.
-- Mark [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) and [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) as optional in CopySink.
+## Version 4.6.0
 
-## <a name="version-4.8.0"></a>Version 4.8.0
+### Hinzugefügte Features
 
-### <a name="feature-additions"></a>Feature Additions
-- The following optional properties have been added to Copy activity type to enable tuning of copy performance:
-    - [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
-    - [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
+- Die folgenden Eigenschaften wurden zu [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx) hinzugefügt:
+	- [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
+	- [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
+	- [Datasets](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
+- Die folgenden Eigenschaften wurden zu [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) hinzugefügt:
+	- [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
+- Ein neuer [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx)-Typ vom Typ [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) wurde hinzugefügt, um Datasets zu definieren, deren Daten im JSON-Format vorliegen.
 
-## <a name="version-4.7.0"></a>Version 4.7.0
+## Version 4.5.0
 
-### <a name="feature-additions"></a>Feature Additions
-* Added new StorageFormat type [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) type to copy files in optimized row columnar (ORC) format.
-* Add [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) and PolyBaseSettings properties to SqlDWSink.
-    * Enables the use of PolyBase to copy data into SQL Data Warehouse.
-
-## <a name="version-4.6.1"></a>Version 4.6.1
-
-### <a name="bug-fixes"></a>Bug Fixes
-* Fixes HTTP request for listing activity windows.
-    * Removes the resource group name and the data factory name from the request payload.
-
-## <a name="version-4.6.0"></a>Version 4.6.0
-
-### <a name="feature-additions"></a>Feature Additions
-
-- The following properties have been added to [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx):
-    - [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
-    - [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
-    - [Datasets](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-- The following properties have been added to [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx):
-    - [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-- Added new [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) type [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) type to define datasets whose data is in JSON format. 
-
-## <a name="version-4.5.0"></a>Version 4.5.0
-
-### <a name="feature-additions"></a>Feature Additions
-* Added [list operations for activity window](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx).
-    * Added methods to retrieve activity windows with filters based on the entity types (that is, data factories, datasets, pipelines, and activities).
-* The following linked service types have been added: 
+### Hinzugefügte Features
+* [Listenvorgänge für Aktivitätsfenster](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx) wurden hinzugefügt.
+    * Methoden zum Abrufen von Aktivitätsfenstern mit auf den Entitätstypen basierenden Filtern wurden hinzugefügt (d.h. Data Factorys, Datasets, Pipelines und Aktivitäten).
+* Die folgenden verknüpften Diensttypen wurden hinzugefügt:
     * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx), [WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
-* The following dataset types have been added: 
+* Die folgenden Dataset-Typen wurden hinzugefügt:
     * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
-* The following copy source types have been added:  
+* Die folgenden Typen von Kopierquellen wurden hinzugefügt:
     * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
-## <a name="version-4.4.0"></a>Version 4.4.0
+## Version 4.4.0
 
-### <a name="feature-additions"></a>Feature additions
+### Hinzugefügte Features
 
-- The following linked service type has been added as data sources and sinks for copy activities:
-    - [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). See [Azure Storage SAS Linked Service](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) for conceptual information and examples. 
+- Der folgende Typ für verknüpfte Dienste wurde als Datenquellen und Senken für Kopieraktivitäten hinzugefügt:
+	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Grundlegende Informationen und Beispiele finden Sie unter [Mit Azure Storage SAS verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service).
 
-## <a name="version-4.3.0"></a>Version 4.3.0
+## Version 4.3.0
 
-### <a name="feature-additions"></a>Feature additions
+### Hinzugefügte Features
 
-- The following linked service types haven been added as data sources for copy activities:
-    - [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). See [Move data from HDFS using Data Factory](data-factory-hdfs-connector.md) for conceptual information and examples. 
-    - [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). See [Move data From ODBC data stores using Azure Data Factory](data-factory-odbc-connector.md) for conceptual information and examples. 
+- Die folgenden Typen für verknüpfte Dienste wurden als Datenquellen und Senken für Kopieraktivitäten hinzugefügt:
+	- [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Grundlegende Informationen und Beispiele finden Sie unter [Verschieben von Daten aus einem lokalen HDFS mithilfe von Azure Data Factory](data-factory-hdfs-connector.md).
+	- [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Grundlegende Informationen und Beispiele finden Sie unter [Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory](data-factory-odbc-connector.md).
 
-## <a name="version-4.2.0"></a>Version 4.2.0
+## Version 4.2.0
 
-### <a name="feature-additions"></a>Feature additions
+### Hinzugefügte Features
 
-- The following new activity type has been added: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). For details about the activity, see [Updating Azure ML models using the Update Resource Activity](data-factory-azure-ml-batch-execution-activity.md#updating-azure-ml-models-using-the-update-resource-activity).
-- A new optional property [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) has been added to the [AzureMLLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx). 
-- [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) and [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) properties have been added to the [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) class. 
-- Allow configuration of the timeouts for client calls to the Data Factory service. 
+- Der folgende neue Aktivitätstyp wurde hinzugefügt: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Einzelheiten zu dieser Aktivität finden Sie unter [Aktualisieren von Azure ML-Modellen mithilfe der Ressourcenaktualisierungsaktivität](data-factory-azure-ml-batch-execution-activity.md#updating-azure-ml-models-using-the-update-resource-activity).
+- Die neue optionale Eigenschaft [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) wurde der Klasse [AzureMLLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx) hinzugefügt.
+- Die Eigenschaften [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) und [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) wurden der Klasse [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) hinzugefügt.
+- Erlauben Sie die Konfiguration von Timeouts bei Clientaufrufen für den Data Factory-Dienst.
 
 
-## <a name="version-4.1.0"></a>Version 4.1.0
+## Version 4.1.0
 
-### <a name="feature-additions"></a>Feature additions
-* The following linked service types have been added: 
+### Hinzugefügte Features
+* Die folgenden verknüpften Diensttypen wurden hinzugefügt:
     * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
     * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
-* The following activity types have been added: 
+* Die folgenden Aktivitätstypen wurden hinzugefügt:
     * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
-* The following dataset types have been added: 
+* Die folgenden Dataset-Typen wurden hinzugefügt:
     * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
-* The following source and sink types for Copy Activity have been added:
+* Die folgenden Quellen- und Senkentypen wurden für die Kopieraktivität hinzugefügt:
     * [AzureDataLakeStoreSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
     * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 
-## <a name="version-4.0.1"></a>Version 4.0.1
+## Version 4.0.1
 
-### <a name="breaking-changes"></a>Breaking changes
-The following classes have been renamed. The new names were the original names of classes before 4.0.0 release. 
+### Wichtige Änderungen
+Die folgenden Klassen wurden umbenannt. Die neuen Namen entsprechen den ursprünglichen Namen der Klassen vor Version 4.0.0.
  
 Name in 4.0.0 | Name in 4.0.1
 :------------ | :------------ 
@@ -166,15 +165,15 @@ RelationalDataset | [RelationalTableDataset](https://msdn.microsoft.com/library/
 SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx)
 
 
-## <a name="version-4.0.0"></a>Version 4.0.0
+## Version 4.0.0
 
-### <a name="breaking-changes"></a>Breaking changes
+### Wichtige Änderungen
 
 
 
-- The Following classes/interfaces have been renamed.
+- Die folgenden Klassen/Schnittstellen wurden umbenannt.
 
-| Old name | New name |
+| Alter Name | Neuer Name |
 | :-------- | :-------- |
 | ITableOperations | [IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |  
 | Table | [Dataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) | 
@@ -187,28 +186,25 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 | CreateOrUpdateWithRawJsonContentParameters | [DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) | 
     
 
-- The **List** methods return paged results now. If the response contains a non-empty **NextLink** property, the client application needs to continue fetching the next page until all pages are returned.  Here is an example: 
+- Die **List-**-Methoden geben jetzt ausgelagerte Ergebnisse zurück. Wenn die Antwort eine nicht leere **NextLink**-Eigenschaft enthält, muss die Clientanwendung das Abrufen der nächsten Seite fortsetzen, bis alle Seiten zurückgegeben wurden. Beispiel:
 
-        PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
-        var pipelines = new List<Pipeline>(response.Pipelines);
-    
-        string nextLink = response.NextLink;
-        while (string.IsNullOrEmpty(response.NextLink))
-        {
-            PipelineListResponse nextResponse = client.Pipelines.ListNext(nextLink);
-            pipelines.AddRange(nextResponse.Pipelines);
-    
-            nextLink = nextResponse.NextLink;
-        }
-    
-- **List** pipeline API returns only the summary of a pipeline instead of full details. For instance, activities in a pipeline summary only contain name and type.
+		PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
+	    var pipelines = new List<Pipeline>(response.Pipelines);
+	
+	    string nextLink = response.NextLink;
+	    while (string.IsNullOrEmpty(response.NextLink))
+	    {
+	        PipelineListResponse nextResponse = client.Pipelines.ListNext(nextLink);
+	        pipelines.AddRange(nextResponse.Pipelines);
+	
+	        nextLink = nextResponse.NextLink;
+	    }
+	
+- Die **List**-Pipeline-API gibt nur die Zusammenfassung einer Pipeline anstatt alle Details zurück. Beispielsweise enthalten Aktivitäten in einer Pipelinezusammenfassung nur Name und Typ.
 
-### <a name="feature-additions"></a>Feature additions
-- The [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) class supports two new properties, **SliceIdentifierColumnName** and **SqlWriterCleanupScript**, to support idempotent copy to Azure SQL Data Warehouse. See the [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) article, specifically, the [Mechanism 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1) and [Mechanism 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2) sections, for details about these properties.
+### Hinzugefügte Features
+- Die [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx)-Klasse unterstützt die beiden neuen Eigenschaften **SliceIdentifierColumnName** und **SqlWriterCleanupScript** zur Unterstützung einer idempotenten Kopie in Azure SQL Data Warehouse. Im Artikel [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) finden Sie insbesondere in den Abschnitten [Mechanismus 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1) und [Mechanismus 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2) weitere Informationen zu diesen Eigenschaften.
 
-- We now support running stored procedure against Azure SQL Database and Azure SQL Data Warehouse sources as part of the Copy Activity. The [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) and [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) classes have the following properties: **SqlReaderStoredProcedureName** and **StoredProcedureParameters**. See the [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) and [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) articles on Azure.com for details about these properties.  
+- Wir unterstützen jetzt im Rahmen der Kopieraktivität das Ausführen einer gespeicherten Prozedur für Azure SQL-Datenbank- und Azure SQL Data Warehouse-Datenquellen. Die Klassen [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) und [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) verfügen über die folgenden Eigenschaften: **SqlReaderStoredProcedureName** und **StoredProcedureParameters**. In den Artikeln [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#sqlsource) und [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) auf Azure.com finden Sie ausführliche Informationen zu diesen Eigenschaften.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

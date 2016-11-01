@@ -1,17 +1,14 @@
-Here's how to use the **Service Bus - When a message is received in a queue** trigger to initiate a logic app workflow when a new item is sent to a Service Bus queue.  
+Hier erfahren Sie, wie Sie mithilfe des Triggers **Service Bus - When a message is received in a queue** (Service Bus – Wenn bei einer Warteschlange eine Nachricht eingeht) einen Logik-App-Workflow initiieren, wenn ein neues Element an eine Service Bus-Warteschlange gesendet wird.
 
->[AZURE.NOTE]You will be prompted to sign in with your Service Bus connection string if you have not already created a connection to Service Bus.  
+>[AZURE.NOTE] Sie werden aufgefordert, sich mit der Service Bus-Verbindungszeichenfolge anzumelden, wenn Sie noch keine Verbindung mit Service Bus erstellt haben.
 
-1. In the search box on the logic apps designer, enter **service bus**. Then select the **Service Bus - When a message is received in a queue** trigger.  
-![Service Bus trigger image 1](./media/connectors-create-api-servicebus/trigger-1.png)   
-- The **When a message is received in a queue** dialog box is displayed.  
-![Service Bus trigger image 2](./media/connectors-create-api-servicebus/trigger-2.png)   
-- Enter the name of the Service Bus queue you would like the trigger to monitor.   
-![Service Bus trigger image 3](./media/connectors-create-api-servicebus/trigger-3.png)   
+1. Geben Sie in das Suchfeld des Designers für Logik-Apps die Zeichenfolge **service bus** ein. Wählen Sie dann den Trigger **Service Bus - When a message is received in a queue** (Service Bus – Wenn bei einer Warteschlange eine Nachricht eingeht) aus.  
+![Service Bus-Trigger – Abbildung 1](./media/connectors-create-api-servicebus/trigger-1.png)   
+- Das Dialogfeld **When a message is received in a queue** (Wenn bei einer Warteschlange eine Nachricht eingeht) wird angezeigt.  
+![Service Bus-Trigger – Abbildung 2](./media/connectors-create-api-servicebus/trigger-2.png)   
+- Geben Sie den Namen der Service Bus-Warteschlange ein, die der Trigger überwachen soll.   
+![Service Bus-Trigger – Abbildung 3](./media/connectors-create-api-servicebus/trigger-3.png)   
 
-At this point, your logic app has been configured with a trigger. When a new item is received in the queue you selected, the trigger will begin a run of the other triggers and actions in the workflow.    
+Ihre Logik-App ist nun mit einem Trigger konfiguriert. Wenn bei der ausgewählten Warteschlange ein neues Element eingeht, startet der Trigger die anderen Trigger und Aktionen des Workflows.    
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

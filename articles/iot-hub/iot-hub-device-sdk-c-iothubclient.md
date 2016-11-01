@@ -1,11 +1,11 @@
 <properties
-    pageTitle="Azure IoT device SDK for C - IoTHubClient | Microsoft Azure"
-    description="Learn more about using the IoTHubClient library in the Azure IoT device SDK for C"
-    services="iot-hub"
-    documentationCenter=""
-    authors="olivierbloch"
-    manager="timlt"
-    editor=""/>
+	pageTitle="Azure IoT-Geräte-SDK für C – IoTHubClient | Microsoft Azure"
+	description="Zusätzliche Informationen zur IoTHubClient-Bibliothek im Azure IoT-Geräte-SDK für C"
+	services="iot-hub"
+	documentationCenter=""
+	authors="olivierbloch"
+	manager="timlt"
+	editor=""/>
 
 <tags
      ms.service="iot-hub"
@@ -16,48 +16,47 @@
      ms.date="09/06/2016"
      ms.author="obloch"/>
 
+# Microsoft Azure IoT-Geräte-SDK für C – weitere Informationen zu IoTHubClient
 
-# <a name="microsoft-azure-iot-device-sdk-for-c-–-more-about-iothubclient"></a>Microsoft Azure IoT device SDK for C – more about IoTHubClient
+Im [ersten Artikel](iot-hub-device-sdk-c-intro.md) dieser Serie wurde das **Microsoft Azure IoT-Geräte-SDK für C** vorgestellt. Wie in diesem Artikel beschrieben wurde, gibt es zwei Architekturebenen im SDK. Basis ist die **IoTHubClient**-Bibliothek, die die direkte Kommunikation mit IoT Hub verwaltet. Zudem gibt es die Bibliothek des **Serialisierungsprogramms**, die darauf aufbaut, um Serialisierungsdienste bereitzustellen. In diesem Artikel stellen wir weitere Details zur **IoTHubClient**-Bibliothek zur Verfügung.
 
-The [first article](iot-hub-device-sdk-c-intro.md) in this series introduced the **Microsoft Azure IoT device SDK for C**. That article explained that there are two architectural layers in SDK. At the base is the **IoTHubClient** library which directly manages communication with IoT Hub. There's also the **serializer** library that builds on top of that to provide serialization services. In this article we'll provide additional detail on the **IoTHubClient** library.
+Im vorherigen Artikel wurde beschrieben, wie Sie die **IoTHubClient**-Bibliothek verwenden können, um Ereignisse an IoT Hub zu senden und Nachrichten zu empfangen. In diesem Artikel erklären wir Ihnen, wie Sie präziser bestimmen können, *wann* Sie Daten senden und empfangen. Dazu stellen wir Ihnen die **Low-Level-APIs** vor. Wir erläutern zudem, wie Sie Eigenschaften mithilfe der Eigenschaftsverarbeitungsfunktionen in der **IoTHubClient**-Bibliothek an Ereignisse anfügen (und sie von Nachrichten abrufen) können. Außerdem erfahren Sie mehr über die verschiedenen Methoden zum Verarbeiten von Nachrichten vom IoT Hub.
 
-The previous article described how to use the **IoTHubClient** library to send events to IoT Hub and receive messages. This article extends that discussion by explaining how to more precisely manage *when* you send and receive data, introducing you to the **lower-level APIs**. We'll also explain how to attach properties to events (and retrieve them from messages) using the property handling features in the **IoTHubClient** library. Finally, we'll provide additional explanation of different ways to handle messages received from IoT Hub.
+Am Ende dieses Artikels werden verschiedene Themen besprochen, u.a. weitere Informationen zu Geräteanmeldeinformationen und zum Ändern des Verhaltens von **IoTHubClient** über Konfigurationsoptionen.
 
-The article concludes by covering a couple of miscellaneous topics, including more about device credentials and how to change the behavior of the **IoTHubClient** through configuration options.
+Zur Erläuterung dieser Themen verwenden wir die **IoTHubClient**-SDK-Beispiele. Sehen Sie sich für weitere Informationen die **iothub\_client\_sample\_http**- und **iothub\_client\_sample\_amqp**-Anwendungen an, die im Azure IoT-Geräte-SDK für C enthalten sind. Alles nachfolgend Beschriebene wird in diesen Beispielen veranschaulicht.
 
-We'll use the **IoTHubClient** SDK samples to explain these topics. If you want to follow along, see the **iothub\_client\_sample\_http** and **iothub\_client\_sample\_amqp** applications that are included in the Azure IoT device SDK for C. Everything described in the following sections is demonstrated in these samples.
+Das **Azure IoT-Geräte-SDK für C** finden Sie im GitHub-Repository mit [Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) und ausführliche Informationen zur API in der [C-API-Referenz](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html).
 
-You can find the **Azure IoT device SDK for C** in the [Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) GitHub repository and view details of the API in the [C API reference](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html).
+## Die Low-Level-APIs
 
-## <a name="the-lower-level-apis"></a>The lower-level APIs
-
-The previous article described the basic operation of the **IotHubClient** within the context of the **iothub\_client\_sample\_amqp** application. For example, it explained how to initialize the library using this code.
+Im vorherigen Artikel haben wir die grundlegende Funktionsweise des **IotHubClient** im Kontext der **iothub\_client\_sample\_amqp**-Anwendung beschrieben. So wurde beispielsweise erklärt, wie die Bibliothek mit dem folgenden Code initialisiert wurde.
 
 ```
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
-It also described how to send events using this function call.
+Zudem haben wir erklärt, wie Ereignisse mit dem folgenden Funktionsaufruf gesendet wurden.
 
 ```
 IoTHubClient_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message);
 ```
 
-The article also described how to receive messages by registering a callback function.
+Im Artikel wurde außerdem beschrieben, wie Sie Nachrichten durch Registrieren einer Rückruffunktion empfangen können.
 
 ```
 int receiveContext = 0;
 IoTHubClient_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext);
 ```
 
-The article also showed how to free resources using code such as the following.
+Der Artikel hat auch gezeigt, wie Sie mithilfe von Code Ressourcen wie die Folgenden freigeben.
 
 ```
 IoTHubClient_Destroy(iotHubClientHandle);
 ```
 
-However there are companion functions to each of these APIs:
+Für jede dieser APIs gibt es jedoch Begleitfunktionen:
 
 -   IoTHubClient\_LL\_CreateFromConnectionString
 
@@ -68,19 +67,19 @@ However there are companion functions to each of these APIs:
 -   IoTHubClient\_LL\_Destroy
 
 
-These functions all include “LL” in the API name. Other than that, the parameters of each of these functions are identical to their non-LL counterparts. However, the behavior of these functions is different in one important way.
+Der API-Name all dieser Funktionen beinhaltet die Zeichenfolge "LL". Abgesehen davon sind die Parameter für alle diese Funktionen mit ihren Nicht-LL-Gegenstücken identisch. Das Verhalten dieser Funktionen unterscheidet sich jedoch in einem wichtigen Punkt.
 
-When you call **IoTHubClient\_CreateFromConnectionString**, the underlying libraries create a new thread that runs in the background. This thread sends events to, and receives messages from, IoT Hub. No such thread is created when working with the "LL" APIs. The creation of the background thread is a convenience to the developer. You don’t have to worry about explicitly sending events and receiving messages from IoT Hub -- it happens automatically in the background. In contrast, the "LL" APIs give you explicit control over communication with IoT Hub, if you need it.
+Beim Aufruf von **IoTHubClient\_CreateFromConnectionString** erstellen die zugrunde liegenden Bibliotheken einen neuen Thread, der im Hintergrund ausgeführt wird. Dieser Thread sendet Ereignisse an den IoT Hub und empfängt Nachrichten vom IoT Hub. Bei der Arbeit mit den "LL"-APIs wird kein solcher Thread erstellt. Die Erstellung des Hintergrundthreads stellt eine Vereinfachung für den Entwickler dar. Sie müssen sich nicht darum kümmern, dass Ereignisse explizit an den IoT Hub gesendet und Nachrichten vom IoT Hub empfangen werden; dies erfolgt automatisch im Hintergrund. Im Gegensatz dazu bieten die „LL“-APIs Ihnen bei Bedarf eine explizite Kontrolle über die Kommunikation mit dem IoT Hub.
 
-To understand this better, let’s look at an example:
+Sehen Sie sich zur Veranschaulichung das folgende Beispiel an:
 
-When you call **IoTHubClient\_SendEventAsync**, what you're actually doing is putting the event in a buffer. The background thread created when you call **IoTHubClient\_CreateFromConnectionString** continually monitors this buffer and sends any data that it contains to IoT Hub. This happens in the background at the same time that the main thread is performing other work.
+Beim Aufruf von **IoTHubClient\_SendEventAsync** wird im Grunde das Ereignis in einem Puffer platziert. Der beim Aufrufen von **IoTHubClient\_CreateFromConnectionString** erstellte Hintergrundthread überwacht diesen Puffer kontinuierlich und sendet alle darin enthaltenen Daten an IoT Hub. Dies geschieht im Hintergrund, während der Hauptthread gleichzeitig andere Aufgaben durchführt.
 
-Similarly, when you register a callback function for messages using **IoTHubClient\_SetMessageCallback**, you're instructing the SDK to have the background thread invoke the callback function when a message is received, independent of the main thread.
+Gleichermaßen gilt: Beim Registrieren einer Rückruffunktion für Nachrichten mit **IoTHubClient\_SetMessageCallback** rufen Sie das SDK auf, damit der Hintergrundthread die Rückruffunktion aufruft, wenn eine Nachricht empfangen wird – und das unabhängig vom Hauptthread.
 
-The "LL" APIs don’t create a background thread. Instead, a new API must be called to explicitly send and receive data from IoT Hub. This is demonstrated in the following example.
+Die "LL"-APIs erstellen keinen Hintergrundthread. Stattdessen muss eine neue API aufgerufen werden, um explizit Daten zu senden und vom IoT Hub zu empfangen. Dies wird im folgenden Beispiel veranschaulicht.
 
-The **iothub\_client\_sample\_http** application that’s included in the SDK demonstrates the lower-level APIs. In that sample, we send events to IoT Hub with code such as the following:
+Die **iothub\_client\_sample\_http**-Anwendung, die im SDK enthalten ist, zeigt die Low-Level-APIs. In diesem Beispiel werden Ereignisse mit Code wie dem Folgenden an den IoT Hub gesendet:
 
 ```
 EVENT_INSTANCE message;
@@ -90,7 +89,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-The first three lines create the message, and the last line sends the event. However, as mentioned previously, "sending" the event means that the data is simply placed in a buffer. Nothing is transmitted on the network when we call **IoTHubClient\_LL\_SendEventAsync**. In order to actually ingress the data to IoT Hub, you must call **IoTHubClient\_LL\_DoWork**, as in this example:
+Die ersten drei Zeilen erstellen die Nachricht, und die letzte Zeile sendet das Ereignis. Wie oben bereits erwähnt, werden die Daten beim Senden eines Ereignisses jedoch einfach in einem Puffer platziert. Beim Aufrufen von **IoTHubClient\_LL\_SendEventAsync** findet keine Übertragung über das Netzwerk statt. Um die Daten tatsächlich an den IoT Hub zu übergeben, müssen Sie **IoTHubClient\_LL\_DoWork** wie im folgenden Beispiel gezeigt aufrufen:
 
 ```
 while (1)
@@ -100,13 +99,13 @@ while (1)
 }
 ```
 
-This code (from the **iothub\_client\_sample\_http** application) repeatedly calls **IoTHubClient\_LL\_DoWork**. Each time **IoTHubClient\_LL\_DoWork** is called, it sends some events from the buffer to IoT Hub and it retrieves a queued message being sent to the device. The latter case means that if we registered a callback function for messages, then the callback is invoked (assuming any messages are queued up). We would have registered such a callback function with code such as the following:
+Dieser Code (aus der **iothub\_client\_sample\_http**-Anwendung) ruft wiederholt **IoTHubClient\_LL\_DoWork** auf. Bei jedem Aufruf von **IoTHubClient\_LL\_DoWork** werden einige Ereignisse aus dem Puffer an den IoT Hub gesendet. Zudem wird eine an das Gerät gesendete Nachricht in der Warteschlange abgerufen. Letzteres bedeutet, dass der Rückruf aufgerufen wird (vorausgesetzt, dass sich eine Nachricht in der Warteschlange befindet), wenn eine Rückruffunktion für Nachrichten registriert wurde. Wir würden eine solche Rückruffunktion mit einem Code ähnlich dem Folgenden registrieren:
 
 ```
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
-The reason that **IoTHubClient\_LL\_DoWork** is often called in a loop is that each time it’s called, it sends *some* buffered events to IoT Hub and retrieves *the next* message queued up for the device. Each call isn’t guaranteed to send all buffered events or to retrieve all queued messages. If you want to send all events in the buffer and then continue on with other processing you can replace this loop with code such as the following:
+**IoTHubClient\_LL\_DoWork** wird oftmals in einer Schleife aufgerufen, da bei jedem Aufruf *einige* gepufferte Ereignisse an den IoT Hub gesendet werden und *die nächste* Nachricht in der Warteschlange für das Gerät abgerufen wird. Der Aufruf ist keine Garantie dafür, dass alle gepufferten Ereignisse gesendet oder alle Nachrichten in der Warteschlange abgerufen werden. Wenn Sie alle Ereignisse im Puffer senden und dann mit der Verarbeitung fortfahren möchten, können Sie diese Schleife durch Code wie den Folgenden ersetzen:
 
 ```
 IOTHUB_CLIENT_STATUS status;
@@ -118,17 +117,17 @@ while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLI
 }
 ```
 
-This code calls **IoTHubClient\_LL\_DoWork** until all events in the buffer have been sent to IoT Hub. Note this does not also imply that all queued messages have been received. Part of the reason for this is that checking for "all" messages isn’t as deterministic an action. What happens if you retrieve "all" of the messages, but then another one is sent to the device immediately after? A better way to deal with that is with a programmed timeout. For example, the message callback function could reset a timer every time it’s invoked. You can then write logic to continue processing if, for example, no messages have been received in the last *X* seconds.
+Dieser Code ruft **IoTHubClient\_LL\_DoWork** auf, bis alle Ereignisse im Puffer an den IoT Hub gesendet wurden. Achtung: Das bedeutet nicht, dass alle Nachrichten in der Warteschlange empfangen wurden. Das liegt zum Teil daran, dass die Überprüfung auf „alle“ Nachrichten keine allzu deterministische Aktion ist. Was würde geschehen, wenn Sie „alle“ Nachrichten abrufen und dann eine weitere direkt danach an das Gerät gesendet wird? Eine bessere Möglichkeit für dieses Problem ist ein programmierter Timeout. Die Nachrichtenrückruffunktion könnte beispielsweise jedes Mal einen Timer zurücksetzen, wenn sie aufgerufen wird. Anschließend schreiben Sie die Logik, um die Verarbeitung fortzusetzen, wenn z. B. in den letzten *x* Sekunden keine Nachrichten empfangen wurden.
 
-When you’re finished ingressing events and receiving messages, be sure to call the corresponding function to clean up resources.
+Stellen Sie nach Abschluss der Übergabe von Ereignissen und des Empfangs von Nachrichten sicher, dass Sie die entsprechende Funktion aufrufen, um die Ressourcen zu bereinigen.
 
 ```
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-Basically there’s only one set of APIs to send and receive data with a background thread and another set of APIs that does the same thing without the background thread. A lot of developers may prefer the non-LL APIs, but the lower-level APIs are useful when the developer wants explicit control over network transmissions. For example, some devices collect data over time and only ingress events at specified intervals (for example, once an hour or once a day). The lower-level APIs give you the ability to explicitly control when you send and receive data from IoT Hub. Others will simply prefer the simplicity that the lower-level APIs provide. Everything happens on the main thread rather than some work happening in the background.
+Es gibt im Grunde nur einen Satz von APIs zum Senden und Empfangen von Daten mit einem Hintergrundthread und einen weiteren Satz von APIs, die die gleiche Aufgabe ohne den Hintergrundthread ausführen. Viele Entwickler bevorzugen die Nicht-LL-APIs, aber die Low-Level-APIs sind nützlich, wenn der Entwickler explizite Kontrolle über die Netzwerkübertragungen haben möchte. Einige Geräte erfassen z. B. Daten kontinuierlich und übergeben Ereignisse nur in angegebenen Intervallen (z. B. einmal pro Stunde oder einmal pro Tag). Die Low-Level-APIs geben Ihnen die Möglichkeit, explizit zu steuern, wann Sie Daten an den IoT Hub senden und vom IoT Hub empfangen. Andere bevorzugen die Einfachheit der Low-Level-APIs. Alle Arbeiten finden auf dem Hauptthread statt anstatt im Hintergrund.
 
-Whichever model you choose, be sure to be consistent in which APIs you use. If you start by calling **IoTHubClient\_LL\_CreateFromConnectionString**, be sure you only use the corresponding lower-level APIs for any follow-up work:
+Unabhängig davon, für welches Modell Sie sich entscheiden, sollten Sie bei der Wahl der APIs stets konsistent sein. Wenn Sie als Erstes **IoTHubClient\_LL\_CreateFromConnectionString** aufrufen, verwenden Sie für weitere Arbeiten unbedingt nur die entsprechenden Low-Level-APIs:
 
 -   IoTHubClient\_LL\_SendEventAsync
 
@@ -138,13 +137,13 @@ Whichever model you choose, be sure to be consistent in which APIs you use. If y
 
 -   IoTHubClient\_LL\_DoWork
 
-The opposite is true as well. If you start with **IoTHubClient\_CreateFromConnectionString**, then use the non-LL APIs for any additional processing.
+Das Gleiche gilt auch für den umgekehrten Fall: Wenn Sie mit **IoTHubClient\_CreateFromConnectionString** beginnen, dann verwenden Sie für jede weitere Verarbeitung die Nicht-LL-APIs.
 
-In the Azure IoT device SDK for C, see the **iothub\_client\_sample\_http** application for a complete example of the lower-level APIs. The **iothub\_client\_sample\_amqp** application can be referenced for a full example of the non-LL APIs.
+Die **iothub\_client\_sample\_http**-Anwendung im Azure IoT-Geräte-SDK für C bietet ein vollständiges Beispiel für die Low-Level-APIs. Ein vollständiges Beispiel für Nicht-LL-APIs finden Sie unter der **iothub\_client\_sample\_amqp**-Anwendung.
 
-## <a name="property-handling"></a>Property handling
+## Verarbeitung von Eigenschaften
 
-So far when we've described sending data, we've been referring to the body of the message. For example, consider this code:
+Bei der bisherigen Beschreibung des Sendevorgangs von Daten haben wir uns auf den Hauptteil, sprich den Text, der Nachricht bezogen. Betrachten Sie z. B. diesen Code:
 
 ```
 EVENT_INSTANCE message;
@@ -153,7 +152,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-This example sends a message to IoT Hub with the text "Hello World." However, IoT Hub also allows properties to be attached to each message. Properties are name/value pairs that can be attached to the message. For example, we can modify the previous code to attach a property to the message:
+In diesem Beispiel wird eine Nachricht mit dem Text "Hello World" an den IoT Hub gesendet. Der IoT Hub ermöglicht jedoch auch, dass Eigenschaften an jede Nachricht angefügt werden. Eigenschaften sind Name-Wert-Paare, die an die Nachricht angefügt werden können. Wir können beispielsweise den vorherigen Code ändern, um eine Eigenschaft an die Nachricht anzufügen:
 
 ```
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -161,11 +160,11 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-We start by calling **IoTHubMessage\_Properties** and passing it the handle of our message. What we get back is a **MAP\_HANDLE** reference that enables us to start adding properties. The latter is accomplished by calling **Map\_AddOrUpdate**, which takes a reference to a MAP\_HANDLE, the property name, and the property value. With this API we can add as many properties as we like.
+Zunächst wird **IoTHubMessage\_Properties** aufgerufen, an die die Verarbeitung der Nachricht übertragen wird. Wir erhalten einen **MAP\_HANDLE**-Verweis, der es uns ermöglicht, Eigenschaften hinzuzufügen. Letzteres wird durch Aufruf von **Map\_AddOrUpdate** erzielt, das einen Verweis auf ein MAP\_HANDLE, den Eigenschaftennamen und den Eigenschaftswert akzeptiert. Mit dieser API können wir so viele Eigenschaften wie gewünscht hinzufügen.
 
-When the event is read from **Event Hub**, the receiver can enumerate the properties and retrieve their corresponding values. For example, in .NET this would be accomplished by accessing the [Properties collection on the EventData object](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx).
+Wenn das Ereignis vom **Event Hub** gelesen wird, kann der Empfänger die Eigenschaften auflisten und die entsprechenden Werte abrufen. In .NET würde dies z. B. durch den Zugriff auf die [Properties-Auflistung des EventData-Objekts](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx) durchgeführt werden.
 
-In the previous example, we’re attaching properties to an event that we send to IoT Hub. Properties can also be attached to messages received from IoT Hub. If we want to retrieve properties from a message, we can use code such as the following in our message callback function:
+Im vorherigen Beispiel werden Eigenschaften an ein Ereignis angefügt, das an den IoT Hub gesendet wird. Eigenschaften können jedoch auch an Nachrichten angefügt werden, die vom IoT Hub empfangen wurden. Wenn Eigenschaften aus einer Nachricht abgerufen werden sollen, können wir Code wie den Folgenden in der Nachrichtenrückruffunktion verwenden:
 
 ```
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -197,54 +196,54 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-The call to **IoTHubMessage\_Properties** returns the **MAP\_HANDLE** reference. We then pass that reference to **Map\_GetInternals** to obtain a reference to an array of the name/value pairs (as well as a count of the properties). At that point it's a simple matter of enumerating the properties to get to the values we want.
+Durch den Aufruf von **IoTHubMessage\_Properties** wird der **MAP\_HANDLE**-Verweis zurückgegeben. Diesen Verweis übergeben wir dann an **Map\_GetInternals**, um einen Verweis auf ein Array von Name-Wert-Paaren (sowie die Anzahl der Eigenschaften) zu erhalten. An dieser Stelle geht es nur darum, die Eigenschaften aufzulisten, um die gewünschten Werte zu erhalten.
 
-You don't have to use properties in your application. However, if you need to set them on events or retrieve them from messages, the **IoTHubClient** library makes it easy.
+Sie müssen keine Eigenschaften in der Anwendung verwenden. Wenn Sie sie jedoch für Ereignisse festlegen oder aus Nachrichten abrufen müssen, wird dies durch die **IoTHubClient**-Bibliothek vereinfacht.
 
-## <a name="message-handling"></a>Message handling
+## Behandlung von Nachrichten
 
-As stated previously, when messages arrive from IoT Hub the **IoTHubClient** library responds by invoking a registered callback function. There is a return parameter of this function that deserves some additional explanation. Here’s an excerpt of the callback function in the **iothub\_client\_sample\_http** sample application:
+Wie bereits erwähnt reagiert die **IoTHubClient**-Bibliothek auf den Empfang von Nachrichten vom IoT Hub durch den Aufruf einer registrierten Rückruffunktion. Es gibt einen Rückgabeparameter dieser Funktion, der einer zusätzlichen Erläuterung bedarf. Hier ist ein Auszug der Rückruffunktion in der **iothub\_client\_sample\_http**-Beispielanwendung:
 
 ```
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
-    . . .
+	. . .
     return IOTHUBMESSAGE_ACCEPTED;
 }
 ```
 
-Note that the return type is **IOTHUBMESSAGE\_DISPOSITION\_RESULT** and in this particular case we return **IOTHUBMESSAGE\_ACCEPTED**. There are other values we can return from this function that change how the **IoTHubClient** library reacts to the message callback. Here are the options.
+Beachten Sie, dass der Rückgabetyp **IOTHUBMESSAGE\_DISPOSITION\_RESULT** ist und dass in diesem speziellen Fall **IOTHUBMESSAGE\_ACCEPTED** zurückgegeben wird. Mit dieser Funktion können wir auch andere Werte zurückgeben, die Auswirkungen darauf haben, wie die **IoTHubClient**-Bibliothek auf den Nachrichtenrückruf reagiert. Im Nachfolgenden finden Sie die verfügbaren Optionen:
 
--   **IOTHUBMESSAGE\_ACCEPTED** – The message has been processed successfully. The **IoTHubClient** library will not invoke the callback function again with the same message.
+-   **IOTHUBMESSAGE\_ACCEPTED**: Die Nachricht wurde erfolgreich verarbeitet. Die **IoTHubClient**-Bibliothek ruft die Rückruffunktion nicht erneut mit der gleichen Nachricht auf.
 
--   **IOTHUBMESSAGE\_REJECTED** – The message was not processed and there is no desire to do so in the future. The **IoTHubClient** library should not invoke the callback function again with the same message.
+-   **IOTHUBMESSAGE\_REJECTED**: Die Nachricht wurde nicht verarbeitet und soll auch in Zukunft nicht verarbeitet werden. Die **IoTHubClient**-Bibliothek soll die Rückruffunktion nicht erneut mit der gleichen Nachricht aufrufen.
 
--   **IOTHUBMESSAGE\_ABANDONED** – The message was not processed successfully, but the **IoTHubClient** library should invoke the callback function again with the same message.
+-   **IOTHUBMESSAGE\_ABANDONED**: Die Nachricht wurde nicht erfolgreich verarbeitet, die **IoTHubClient**-Bibliothek soll die Rückruffunktion jedoch erneut mit der gleichen Nachricht aufrufen.
 
-For the first two return codes, the **IoTHubClient** library sends a message to IoT Hub indicating that the message should be deleted from the device queue and not delivered again. The net effect is the same (the message is deleted from the device queue), but whether the message was accepted or rejected is still recorded.  Recording this distinction is useful to senders of the message who can listen for feedback and find out if a device has accepted or rejected a particular message.
+Bei den ersten beiden Rückgabecodes sendet die **IoTHubClient**-Bibliothek eine Nachricht an den IoT Hub und gibt an, dass die Nachricht aus der Warteschlange des Geräts gelöscht und nicht erneut übermittelt werden soll. Das Endergebnis ist dasselbe (die Nachricht wird aus der Warteschlange des Geräts gelöscht), aber darüber hinaus wird weiterhin aufgezeichnet, ob die Nachricht akzeptiert oder abgelehnt wurde. Die Aufzeichnung dieses Unterschieds ist nützlich für Absender der Nachricht, die damit Feedback abrufen und herausfinden können, ob ein Gerät eine bestimmte Nachricht akzeptiert oder abgelehnt hat.
 
-In the last case a message is also sent to IoT Hub, but it indicates that the message should be redelivered. Typically you’ll abandon a message if you encounter some error but want to try to process the message again. In contrast, rejecting a message is appropriate when you encounter an unrecoverable error (or if you simply decide you don’t want to process the message).
+Im zweiten Fall wird eine Nachricht auch an den IoT Hub gesendet, in der jedoch darauf hingewiesen wird, dass die Nachricht erneut zugestellt werden soll. In der Regel verwerfen Sie eine Nachricht, wenn ein Fehler auftritt, Sie die Verarbeitung der Nachricht jedoch erneut versuchen möchten. Im Gegensatz dazu ist eine Ablehnung der Nachricht angemessen, wenn ein nicht behebbarer Fehler auftritt (oder wenn Sie einfach entscheiden, dass Sie die Nachricht nicht verarbeiten möchten).
 
-In any case, be aware of the different return codes so that you can elicit the behavior you want from the **IoTHubClient** library.
+Beachten Sie auf jeden Fall die unterschiedlichen Rückgabecodes, damit Sie das gewünschte Verhalten der **IoTHubClient**-Bibliothek auslösen können.
 
-## <a name="alternate-device-credentials"></a>Alternate device credentials
+## Alternative Geräteanmeldeinformationen
 
-As explained previously, the first thing to do when working with the **IoTHubClient** library is to obtain a **IOTHUB\_CLIENT\_HANDLE** with a call such as the following:
+Wie zuvor erläutert, müssen Sie bei der Arbeit mit der **IoTHubClient**-Bibliothek als Erstes ein **IOTHUB\_CLIENT\_HANDLE** durch einen Aufruf wie den Folgenden abrufen:
 
 ```
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
-The arguments to **IoTHubClient\_CreateFromConnectionString** are the connection string of our device and a parameter that indicates the protocol we use to communicate with IoT Hub. The connection string has a format that appears as follows:
+Bei den Argumenten von **IoTHubClient\_CreateFromConnectionString** handelt es sich um die Verbindungszeichenfolge des Geräts und einen Parameter, der das Protokoll angibt, das für die Kommunikation mit dem IoT Hub verwenden wird. Die Verbindungszeichenfolge hat ein Format, das folgendermaßen aussieht:
 
 ```
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-There are four pieces of information in this string: IoT Hub name, IoT Hub suffix, device ID, and shared access key. You obtain the fully qualified domain name (FQDN) of an IoT hub when you create your IoT hub instance in the Azure portal — this gives you the IoT hub name (the first part of the FQDN) and the IoT hub suffix (the rest of the FQDN). You get the Device ID and the Shared Access Key when you register your device with IoT Hub (as described in the [previous article](iot-hub-device-sdk-c-intro.md)).
+Diese Zeichenfolge enthält vier Arten von Informationen: IoT Hub-Name, IoT Hub-Suffix, Geräte-ID und den gemeinsamen Zugriffsschlüssel. Beim Erstellen der IoT Hub-Instanz im Azure-Portal rufen Sie den vollqualifizierten Domänennamen (FQDN) eines IoT Hubs ab: Damit erhalten Sie zugleich den IoT Hub-Namen (der erste Teil des FQDNs) und das IoT Hub-Suffix (der Rest des FQDNs). Die Geräte-ID und den gemeinsamen Zugriffsschlüssel erhalten Sie, wenn Sie das Gerät beim IoT Hub registrieren (wie im [vorherigen Artikel](iot-hub-device-sdk-c-intro.md) beschrieben).
 
-**IoTHubClient\_CreateFromConnectionString** gives you one way to initialize the library. If you prefer, you can create a new **IOTHUB\_CLIENT\_HANDLE** by using these individual parameters rather than the connection string. This is achieved with the following code:
+**IoTHubClient\_CreateFromConnectionString** bietet eine Möglichkeit, die Bibliothek zu initialisieren. Sie können auch ein neues **IOTHUB\_CLIENT\_HANDLE** mithilfe der einzelnen Parameter anstelle der Verbindungszeichenfolge erstellen. Verwenden Sie dafür den folgenden Code:
 
 ```
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
@@ -256,43 +255,45 @@ iotHubClientConfig.protocol = HTTP_Protocol;
 IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientConfig);
 ```
 
-This accomplishes the same thing as **IoTHubClient\_CreateFromConnectionString**.
+Dies hat den gleichen Zweck wie **IoTHubClient\_CreateFromConnectionString**.
 
-It may seem obvious that you would want to use **IoTHubClient\_CreateFromConnectionString** rather than this more verbose method of initialization. Keep in mind, however, that when you register a device in IoT Hub what you get is a device ID and device key (not a connection string). The **Device Manager** SDK tool introduced in the [previous article](iot-hub-device-sdk-c-intro.md) uses libraries in the **Azure IoT service SDK** to create the connection string from the device ID, device key, and IoT Hub host name. So calling **IoTHubClient\_LL\_Create** may be preferable because it saves you the step of generating a connection string. Use whichever method is convenient.
+Es scheint naheliegend, dass Sie **IoTHubClient\_CreateFromConnectionString** anstelle dieser ausführlichen Initialisierungsmethode verwenden wollen. Bedenken Sie jedoch, dass wir beim Registrieren eines Geräts im IoT Hub eine Geräte-ID und einen Geräteschlüssel (keine Verbindungszeichenfolge) erhalten. Das **Geräte-Manager**-SDK-Tool, das im [vorherigen Artikel](iot-hub-device-sdk-c-intro.md) vorgestellt wurde, verwendet Bibliotheken aus dem **Azure IoT-Dienst-SDK**, um die Verbindungszeichenfolge aus der Geräte-ID, dem Geräteschlüssel und dem IoT Hub-Hostnamen zu erstellen. Daher scheint der Aufruf von **IoTHubClient\_LL\_Create** die bessere Lösung zu sein, da Sie keine Verbindungszeichenfolge generieren müssen. Verwenden Sie die zweckmäßige Methode.
 
-## <a name="configuration-options"></a>Configuration options
+## Konfigurationsoptionen
 
-So far everything described about the way the **IoTHubClient** library works reflects its default behavior. However, there are a few options that you can set to change how the library works. This is accomplished by leveraging the **IoTHubClient\_LL\_SetOption** API. Consider this example:
+Die bislang beschriebene Funktionsweise der **IoTHubClient**-Bibliothek stellt das Standardverhalten dar. Sie können jedoch einige Optionen festlegen, um die Funktionsweise der Bibliothek zu ändern. Nutzen Sie dazu die **IoTHubClient\_LL\_SetOption**-API. Betrachten Sie dieses Beispiel:
 
 ```
 unsigned int timeout = 30000;
 IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 ```
 
-There are a couple of options that are commonly used:
+Es gibt eine Reihe von Optionen, die häufig verwendet werden:
 
--   **SetBatching** (bool) – If **true**, then data sent to IoT Hub is sent in batches. If **false**, then messages are sent individually. The default is **false**. Note that the **SetBatching** option only applies to the HTTP protocol and not to the AMQP or MQTT protocols.
+-   **SetBatching** (boolesch): Bei **true** werden an den IoT Hub gesendete Daten in Batches gesendet. Bei **false** werden Nachrichten einzeln gesendet. Die Standardeinstellung ist **false**. Beachten Sie, dass die Option **SetBatching** nur für das HTTP-Protokoll und nicht für die Protokolle AMQP und MQTT gilt.
 
--   **Timeout** (unsigned int) – This value is represented in milliseconds. If sending an HTTP request or receiving a response takes longer than this time, then the connection times out.
+-   **Timeout** (ganze Zahl ohne Vorzeichen): Dieser Wert wird in Millisekunden dargestellt. Wenn das Senden einer HTTP-Anforderung oder der Empfang einer Antwort länger dauert, kommt es zu einem Timeout der Verbindung.
 
-The batching option is important. By default, the library ingresses events individually (a single event is whatever you pass to **IoTHubClient\_LL\_SendEventAsync**). If the batching option is **true**, the library collects as many events as it can from the buffer (up to the maximum message size that IoT Hub will accept).  The event batch is sent to IoT Hub in a single HTTP call (the individual events are bundled into a JSON array). Enabling batching typically results in big performance gains since you’re reducing network round-trips. It also significantly reduces bandwidth since you are sending one set of HTTP headers with an event batch rather than a set of headers for each individual event. Unless you have a specific reason to do otherwise, typically you’ll want to enable batching.
+Die Batchverarbeitung ist eine wichtige Option. Standardmäßig übergibt die Bibliothek Eingangsereignisse einzeln (alles, was Sie an **IoTHubClient\_LL\_SendEventAsync** übergeben, ist ein einzelnes Ereignis). Aber wenn die Batchverarbeitungsoption auf **true** festgelegt ist, erfasst die Bibliothek so viele Ereignisse wie möglich aus dem Puffer (bis zur maximalen Nachrichtengröße, die der IoT Hub akzeptiert). Der Ereignisbatch wird in einem einzigen HTTP-Aufruf an IoT Hub gesendet (die einzelnen Ereignisse werden in einem JSON-Array zusammengefasst). Mit der Batchverarbeitung erzielen Sie in der Regel große Leistungsgewinne, da Sie die Netzwerkroundtrips reduzieren. Zugleich wird die Bandbreite deutlich reduziert, da Sie einen Satz von HTTP-Headern mit einem Ereignisbatch senden, anstatt einen Satz von Headern für jedes einzelne Ereignis zu senden. In der Regel sollten Sie die Batchverarbeitung einsetzen, sofern kein bestimmter Grund dagegen spricht.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-This article describes in detail the behavior of the **IoTHubClient** library found in the **Azure IoT device SDK for C**. With this information, you should have a good understanding of the capabilities of the **IoTHubClient** library. The [next article](iot-hub-device-sdk-c-serializer.md) provides similar detail on the **serializer** library.
+In diesem Artikel wird das Verhalten der **IoTHubClient**-Bibliothek im **Azure IoT-Geräte-SDK für C** ausführlich beschrieben. Diese Informationen sollten Ihnen eine umfassende Übersicht über die Funktionen der **IoTHubClient**-Bibliothek bieten. Im [nächsten Artikel](iot-hub-device-sdk-c-serializer.md) stellen wir ähnliche Details zur Bibliothek des **Serialisierungsprogramms** vor.
 
-To learn more about developing for IoT Hub, see the [IoT Hub SDKs][lnk-sdks].
+Weitere Informationen zum Entwickeln für IoT Hub finden Sie im Artikel zu den [IoT Hub SDKs][lnk-sdks].
 
-To further explore the capabilities of IoT Hub, see:
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-- [Simulating a device with the Gateway SDK][lnk-gateway]
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+- [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
 
-[lnk-sdks]: iot-hub-devguide-sdks.md
+[lnk-sdks]: iot-hub-sdks-summary.md
 
+[lnk-design]: iot-hub-guidance.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

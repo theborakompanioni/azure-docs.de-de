@@ -1,13 +1,10 @@
-The Azure Backup service has two types of vaults - the Backup vault and the Recovery Services vault. The Backup vault came first. Then the Recovery Services vault came along to support the expanded Resource Manager deployments. Microsoft recommends using Resource Manager deployments unless you specifically require a Classic deployment.
+Der Azure Backup-Dienst umfasst zwei Arten von Tresoren: den Backup-Tresor und den Recovery Services-Tresor. Der Backup-Tresor wurde zuerst eingeführt. Anschließend folgte der Recovery Services-Tresor als Unterstützung für die erweiterten Resource Manager-Bereitstellungen. Microsoft empfiehlt die Verwendung von Resource Manager-Bereitstellungen, sofern nicht eine besondere Anforderung für die Nutzung der klassischen Bereitstellung besteht.
 
-| **Deployment** | **Portal** | **Vault** |
+| **Bereitstellung** | **Portal** | **Tresor** |
 |-----------|------|-----|
-|Classic|[Classic](https://manage.windowsazure.com)|Backup|
-|Resource Manager|[Azure](https://portal.azure.com)|Recovery Services|
+|Klassisch|[Klassisch](https://manage.windowsazure.com)|Sicherung|
+|Ressourcen-Manager|[Azure](https://portal.azure.com)|Recovery Services|
 
-> [AZURE.NOTE] Backup vaults cannot protect Resource Manager-deployed solutions. However, you can use a Recovery Services vault to protect classically-deployed servers and VMs.  
+> [AZURE.NOTE] Mit Resource Manager bereitgestellte Lösungen können nicht mit einem Sicherungstresor geschützt werden. Sie können einen Recovery Services-Tresor jedoch zum Schützen von Servern und virtuellen Computern verwenden, die mit dem klassischen Modell bereitgestellt wurden.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

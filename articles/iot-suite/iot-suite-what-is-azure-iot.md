@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure solutions for Internet of Things | Microsoft Azure"
- description="A overview of IoT on Azure including a sample solution architecture and how it relates to Azure IoT Suite, and preconfigured solutions"
+ pageTitle="Azure-Lösungen für das Internet der Dinge | Microsoft Azure"
+ description="Eine Übersicht über IoT in Azure einschließlich einer beispielhaften Lösungsarchitektur und Informationen zu deren Beziehung zu Azure IoT Suite und vorkonfigurierten Lösungen."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -17,23 +17,22 @@
  ms.date="08/09/2016"
  ms.author="dobett"/>
 
-
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
-## <a name="azure-iot-suite"></a>Azure IoT Suite
+## Azure IoT Suite
 
-The Microsoft Azure IoT Suite is an enterprise-grade solution that enables you to get started quickly through a set of extensible preconfigured solutions that address common IoT scenarios, such as [remote monitoring][lnk-preconfigured-solutions] and [predictive maintenance][lnk-predictive-maintenance]. These solutions are implementations of the IoT solution architecture outlined in this article.
+Microsoft Azure IoT Suite ist eine Lösung für Unternehmen, mit der Sie schnell mithilfe eines Satzes von erweiterbaren, vorkonfigurierten Lösungen starten können, die für gängige IoT-Szenarios ausgelegt sind, z. B. [Remoteüberwachung][lnk-preconfigured-solutions] und [vorhersagbarer Wartungsbedarf][lnk-predictive-maintenance]. Diese Lösungen sind Implementierungen der in diesem Artikel beschriebenen IoT-Lösungsarchitektur.
 
-The preconfigured solutions are complete, working, end-to-end solutions that include simulated devices to get you started, preconfigured Azure services such as [Azure IoT Hub][], [Azure Event Hubs][], [Azure Stream Analytics][], [Azure Machine Learning][], and [Azure storage][], and solution specific management consoles. The preconfigured solutions contain proven, production-ready code that you can customize and extend to implement your own specific IoT scenarios.
+Die vorkonfigurierten Lösungen sind vollständige, funktionsfähige und umfassende Lösungen, die für die ersten Schritte simulierte Geräte, vorkonfigurierte Azure-Dienste wie [Azure IoT Hub][], [Azure Event Hubs][], [Azure Stream Analytics][], [Azure Machine Learning][], [Azure Storage][] und lösungsspezifische Verwaltungskonsolen enthalten. Die vorkonfigurierten Lösungen enthalten bewährten, einsatzbereiten Code, den Sie anpassen und erweitern können, um Ihre eigenen spezifischen IoT-Szenarios zu implementieren.
 
-You may also be interested in the [Azure IoT Hub][] service that many of the preconfigured solutions use. [Azure IoT Hub][] provides the secure and reliable bi-directional communications between devices and the cloud used in the preconfigured solution architecture.
+Möglicherweise ist auch der [Azure IoT Hub][]-Dienst für Sie interessant, der von vielen der vorkonfigurierten Lösungen verwendet wird. [Azure IoT Hub][] ermöglicht die sichere und zuverlässige bidirektionale Kommunikation zwischen Geräten und der Cloud, die in der vorkonfigurierten Lösungsarchitektur verwendet werden.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Explore these resources to continue learning about IoT Suite and the preconfigured solutions:
+Sehen Sie sich die folgenden Ressourcen an, um mehr über IoT-Suite und die vorkonfigurierten Lösungen zu erfahren:
 
-- [What is Azure IoT Suite?][lnk-whatissuite]
-- [What are the Azure IoT Suite preconfigured solutions?][lnk-whatarepreconfigured]
+- [Was ist Azure IoT Suite?][lnk-whatissuite]
+- [Was sind vorkonfigurierte Azure IoT Suite-Lösungen?][lnk-whatarepreconfigured]
 
 [lnk-whatissuite]: iot-suite-overview.md
 [lnk-whatarepreconfigured]: iot-suite-what-are-preconfigured-solutions.md
@@ -46,7 +45,4 @@ Explore these resources to continue learning about IoT Suite and the preconfigur
 [Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

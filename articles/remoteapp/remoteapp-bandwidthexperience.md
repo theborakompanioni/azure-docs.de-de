@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Azure RemoteApp - how do network bandwidth and quality of experience work together? | Microsoft Azure"
-    description="Learn how network bandwidth in Azure RemoteApp can impact your user's quality of experience."
-    services="remoteapp"
-    documentationCenter="" 
-    authors="lizap" 
-    manager="mbaldwin" />
+    pageTitle="Azure RemoteApp – wie wirken die Netzwerkbandbreite und die Qualität der Benutzerfreundlichkeit zusammen? | Microsoft Azure"
+	description="Erfahren Sie, wie die Netzwerkbandbreite in Azure RemoteApp die Qualität der Benutzerfreundlichkeit beeinflussen kann."
+	services="remoteapp"
+	documentationCenter="" 
+	authors="lizap" 
+	manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -15,31 +15,27 @@
     ms.date="08/15/2016" 
     ms.author="elizapo" />
 
-
-# <a name="azure-remoteapp---how-do-network-bandwidth-and-quality-of-experience-work-together?"></a>Azure RemoteApp - how do network bandwidth and quality of experience work together?
+# Azure RemoteApp – wie wirken die Netzwerkbandbreite und die Qualität der Benutzerfreundlichkeit zusammen?
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
-When you are looking at the [overall network bandwidth](remoteapp-bandwidth.md) required for Azure RemoteApp, keep in mind the following factors - these are all part of a dynamic system that impacts the overall user experience. 
+Wenn Sie die [gesamte Netzwerkbandbreite](remoteapp-bandwidth.md) betrachten, die für Azure RemoteApp erforderlich ist, bedenken Sie die folgenden Faktoren – sie sind alle Teil eines dynamischen Systems, das die gesamte Benutzerfreundlichkeit beeinflusst.
 
-- **Available network bandwidth and current network conditions** - A set of parameters (loss, latency, jitter) on the same network at a given time can impact the application streaming experience, meaning a lowered overall user experience. The bandwidth available in your network is a function of congestion, random loss, latency because all these parameters affect the congestion control mechanism, which in turn controls the transmission speed to avoid collisions.  For example, a lossy network or network with high latency will make the user experience bad even on a network with 1000 MB bandwidth. The loss and latency vary based on the number of users that are on the same network and what those users are doing (for example, watching videos, downloading or uploading large files, printing).
-- **Usage scenario** - The experience depends on what the users are doing as individuals and as a group on the same network. For example, reading one slide requires only a single frame to be updated; if the user skims and scrolls over the content of a text document, they need a higher number of frames to be updated per second. The communication back and forth to the server in this scenario will eventually consume more network bandwidth. Also consider an extreme example: multiple users are watching high-definition videos (like 4K resolution), holding HD conference calls, playing 3D video games, or working on CAD systems. All of these can make even a really high bandwidth network practically unusable.
-- **Screen resolution and the number of screens** - More network bandwidth is required to full update bigger screens than smaller screens. The underlying technology does a pretty good job of encoding and transmitting only the regions of the screens that have been updated, but once in a while, the whole screen needs to be updated. When the user has a higher resolution screen (for example 4K resolution), that update requires more network bandwidth than a screen with lower resolution (like 1024x768px). This same logic applies if you use more than one screen for redirection. Bandwidth needs to increase with the number of screens.
-- **Clipboard and device redirection** - This is a not very obvious issue, but in many cases if a user stores a large chunk of data to the clipboard, it takes a bit of time for that information to transfer from the Remote Desktop client to the server. The downstream experience can be impacted by the experience of sending the clipboard content upstream. The same applies for device redirection - if a scanner or web cam produces a lot of data that needs to be sent upstream to the server, or a printer needs to receive a large document, or local storage needs to be available to an app running in the cloud to copy a large file, users might notice dropped frames or temporarily "frozen" video because the data needed for the device redirection is increasing the network bandwidth needs. 
+- **Verfügbare Netzwerkbandbreite und die aktuellen Netzwerkbedingungen**: Eine Reihe von Parametern (Verlust, Latenzzeit und Jitter) im gleichen Netzwerk zu einem bestimmten Zeitpunkt kann das Streaming der Anwendung beeinträchtigen, d.h. die Benutzerfreundlichkeit insgesamt reduzieren. Die im Netzwerk verfügbare Bandbreite ist von Überlastung, zufälligem Verlust und Latenzzeit abhängig, da alle diese Parameter den Überlastungskontrollmechanismus beeinflussen, was sich wiederum auf die Übertragungsrate zur Vermeidung von Kollisionen auswirkt. Beispielsweise sorgt ein verlustreiches Netzwerk oder ein Netzwerk mit hoher Latenz sogar dann für eine schlechte Benutzerfreundlichkeit, wenn seine Bandbreite 1.000 MB beträgt. Verlust und Latenz variieren je nach Anzahl der Benutzer im gleichen Netzwerk und deren Aktivitäten (z. B. Videos ansehen, große Dateien herunter- oder hochladen, drucken).
+- **Verwendungsszenario**: Die Benutzerfreundlichkeit hängt davon ab, was die Benutzer individuell und als Gruppe im gleichen Netzwerk ausführen. Zum Lesen einer Folie muss z. B. nur ein einzelner Frame aktualisiert werden. Wenn der Benutzer den Inhalt eines Textdokuments überfliegt und scrollt, muss eine höhere Anzahl von Frames pro Sekunde aktualisiert werden. In diesem Szenario beansprucht die bidirektionale Kommunikation mit dem Server schließlich mehr Netzwerkbandbreite. Außerdem sollten Sie ein extremes Beispiel berücksichtigen: Mehrere Benutzer betrachten HD-Videos (z. B. in 4K-Auflösung), halten HD-Telefonkonferenzen ab, spielen 3D-Videospiele oder arbeiten mit CAD-Systemen. Alle diese zusammen können auch eine sehr hohe Netzwerkbandbreite praktisch unbrauchbar machen.
+- **Bildschirmauflösung und die Anzahl der Bildschirme**: Um größere Bildschirme vollständig zu aktualisieren, ist mehr Netzwerkbandbreite erforderlich als bei kleineren Bildschirmen. Die zu Grunde liegende Technologie leistet hervorragende Arbeit dabei, nur die Bereiche der Bildschirme zu verschlüsseln und zu übertragen, die aktualisiert wurden, doch von Zeit zu Zeit muss der gesamte Bildschirm aktualisiert werden. Wenn der Benutzer über einen Bildschirm mit höherer Auflösung (z. B. 4 K) verfügt, erfordert die Aktualisierung mehr Netzwerkbandbreite als ein Bildschirm mit niedrigerer Auflösung (z. B. 1024x768px). Die gleiche Logik gilt, wenn Sie mehr als einen Bildschirm für die Umleitung verwenden. Die Bandbreite muss mit der Anzahl der Bildschirme zunehmen.
+- **Zwischenablage und Geräteumleitung**: Dies ist kein so offensichtliches Problem, aber wenn ein Benutzer eine große Datenmenge in der Zwischenablage speichert, dauert es in vielen Fällen eine gewisse Zeit, diese Informationen aus dem Remotedesktop-Client an den Server zu übertragen. Während die Benutzerfreundlichkeit beim Herunterstreamen gut ist, kann sie beim Hochstreamen des Zwischenablageninhalts beeinträchtigt werden. Das Gleiche gilt auch für die Geräteumleitung – wenn ein Scanner oder eine Webcam eine große Datenmenge erzeugt, die an den Server hochgestreamt werden muss, oder ein Drucker ein großes Dokument empfangen muss, oder lokaler Speicher für eine in der Cloud ausgeführte App verfügbar sein muss, damit sie eine große Datei kopieren kann, könnten Benutzer feststellen, dass Frames ausgelassen werden oder das Video vorübergehend „eingefroren“ wird, da die für die Geräteumleitung erforderlichen Daten die Anforderungen an die Netzwerkbandbreite heraufsetzen.
 
-When you evaluate your network bandwidth needs, make sure to consider all of these factors working as a system.
+Betrachten Sie alle diese Faktoren beim Auswerten des Netzwerkbandbreiten-Bedarfs unbedingt als zusammenwirkendes System.
 
-Now, go back to the [main network bandwidth article](remoteapp-bandwidth.md), or move on to testing your [network bandwidth](remoteapp-bandwidthtests.md).
+Kehren Sie nun zum [Hauptartikel über die Netzwerkbandbreite zurück](remoteapp-bandwidth.md), oder fahren Sie mit dem Testen Ihrer [Netzwerkbandbreite](remoteapp-bandwidthtests.md) fort.
 
-## <a name="learn-more"></a>Learn more
-- [Estimate Azure RemoteApp network bandwidth usage](remoteapp-bandwidth.md)
+## Weitere Informationen
+- [Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp](remoteapp-bandwidth.md)
 
-- [Azure RemoteApp - testing your network bandwidth usage with some common scenarios](remoteapp-bandwidthtests.md)
+- [Azure RemoteApp – Testen Ihrer Netzwerkbandbreiten-Nutzung mit einigen häufigen Szenarios](remoteapp-bandwidthtests.md)
 
-- [Azure RemoteApp network bandwidth - general guidelines (if you can't test your own)](remoteapp-bandwidthguidelines.md)
+- [Azure RemoteApp-Netzwerkbandbreite – allgemeine Richtlinien (wenn Sie keine eigenen erstellen können)](remoteapp-bandwidthguidelines.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

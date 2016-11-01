@@ -1,206 +1,201 @@
 <properties
-    pageTitle="Azure CDN Advanced HTTP Reports | Microsoft Azure"
-    description="Advanced HTTP reports in Microsoft Azure CDN. These reports provide detailed information on CDN activity."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="Erweiterte HTTP-Berichte in Azure CDN | Microsoft Azure"
+	description="Erweiterte HTTP-Berichte in Microsoft Azure CDN. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität."
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/28/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2016"
+	ms.author="casoper"/>
 
+# Erweiterte HTTP-Berichte in Microsoft Azure CDN
 
-# <a name="advanced-http-reports-in-microsoft-azure-cdn"></a>Advanced HTTP reports in Microsoft Azure CDN
+## Übersicht
 
-## <a name="overview"></a>Overview
-
-This document explains advanced HTTP reporting in Microsoft Azure CDN. These reports provide detailed information on CDN activity.
+In diesem Dokument werden die erweiterten HTTP-Berichte in Microsoft Azure CDN erläutert. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität.
 
 [AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="accessing-advanced-http-reports"></a>Accessing advanced HTTP reports
+## Aufrufen erweiterter HTTP-Berichte
 
-1. From the CDN profile blade, click the **Manage** button.
+1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten**.
 
-    ![CDN profile blade manage button](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+	![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
 
-    The CDN management portal opens.
+	Das CDN-Verwaltungsportal wird geöffnet.
 
-2. Hover over the **Analytics** tab, then hover over the **Advanced HTTP Reports** flyout.  Click on **HTTP Large Platform**.
+2. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Erweiterte HTTP-Berichte**. Klicken Sie auf **Große HTTP-Plattform**.
 
-    ![CDN management portal - Advanced Reports menu](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
+	![CDN-Verwaltungsportal – Menü „Erweiterte Berichte“](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
 
-    Report options are displayed.
+	Berichtsoptionen werden angezeigt.
 
-## <a name="geography-reports-(map-based)"></a>Geography Reports (Map-Based)
+## Geografische Berichte (kartenbasiert)
 
-There are five reports that take advantage of a map to indicate the regions from which your content is being requested. These reports are World Map, United States Map, Canada Map, Europe Map, and Asia Pacific Map.
+Fünf Berichte stehen zur Verfügung, in denen mithilfe einer Karte die Regionen angegeben werden, aus denen Ihre Inhalte angefordert werden. Diese Berichte heißen „Weltkarte“, „Karte der USA“, „Karte von Kanada“, „Europakarte“ und „Asien-Pazifik-Karte“.
 
-Each map-based report ranks geographic entities (i.e., countries, states, and provinces) according to the percentage of hits that originated from that region. Additionally, a map is provided to help you visualize the locations from which your content is being requested. It is able to do so by color-coding each region according to the amount of demand experienced in that region. Lighter shaded regions indicate lower demand for your content, while darker regions indicate higher levels of demand for your content.
+Jeder kartenbasierte Bericht klassifiziert geografische Einheiten (z. B. Länder, Bundesländer und Provinzen) gemäß dem Prozentsatz der Treffer, die aus der jeweiligen Region stammen. Darüber hinaus werden anhand einer Karte die Orte visuell dargestellt, aus denen Ihre Inhalte angefordert werden. Dabei werden die einzelnen Regionen entsprechend der Nachfrage in der jeweiligen Region farbkodiert. Hellere Regionen weisen auf eine niedrigere Nachfrage nach Ihren Inhalten hin, dunklere Regionen auf eine höhere Nachfrage.
 
-Detailed traffic and bandwidth information for each region is provided directly below the map. This allows you to view the total number of hits, the percentage of hits, the total amount of data transferred (in gigabytes), and the percentage of data transferred for each region. View a description for each of these metrics. Finally, when you hover over a region (i.e., country, state, or province), the name and the percentage of hits that occurred in the region will be displayed as a tooltip.
+Ausführliche Informationen zu Datenverkehr und Bandbreite für die einzelnen Regionen werden direkt unterhalb der Karte bereitgestellt. Dadurch können Sie für jede Region die Gesamtanzahl von Treffern, den Prozentsatz der Treffer, die Gesamtmenge der übertragenen Daten (in GB) sowie den Prozentsatz der übertragenen Daten anzeigen. Zeigen Sie eine Beschreibung für die einzelnen Metriken an. Wenn Sie auf eine Region (d. h. ein Land, ein Bundesland oder eine Provinz) zeigen, werden der Name und der Prozentsatz der Treffer in dieser Region als QuickInfo angezeigt.
 
-A brief description is provided below for each type of map-based geography report.
+Nachfolgend finden Sie eine kurze Beschreibung der einzelnen kartenbasierten geografischen Berichte:
 
-Report Name | Description
+Berichtsname | Beschreibung
 ------------|------------
-World Map | This report allows you to view the worldwide demand for your CDN content. Each country is color-coded on the world map to indicate the percentage of hits that originated from that region.
-United States Map | This report allows you to view the demand for your CDN content in the United States. Each state is color-coded on this map to indicate the percentage of hits that originated from that region.
-Canada Map | This report allows you to view the demand for your CDN content in Canada. Each province is color-coded on this map to indicate the percentage of hits that originated from that region.
-Europe Map | This report allows you to view the demand for your CDN content in Europe. Each country is color-coded on this map to indicate the percentage of hits that originated from that region.
-Asia Pacific Map | This report allows you to view the demand for your CDN content in Asia. Each country is color-coded on this map to indicate the percentage of hits that originated from that region.
+Weltkarte | Mit diesem Bericht können Sie die weltweite Nachfrage nach Ihren CDN-Inhalten anzeigen. Auf der Weltkarte ist jedes Land farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben.
+Karte der USA | Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in den USA anzeigen. Auf dieser Karte ist jeder Bundesstaat farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben.
+Karte von Kanada | Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in Kanada anzeigen. Auf dieser Karte ist jede Provinz farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben.
+Europakarte | Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in Europa anzeigen. Auf dieser Karte ist jedes Land farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben.
+Asien-Pazifik-Karte | Mit diesem Bericht können Sie die Nachfrage nach Ihren CDN-Inhalten in Asien anzeigen. Auf dieser Karte ist jedes Land farbkodiert, um den Prozentsatz der Treffer aus der jeweiligen Region anzugeben.
 
-## <a name="geography-reports-(bar-charts)"></a>Geography Reports (Bar Charts)
+## Geografische Berichte (Balkendiagramme)
 
-There are two additional reports that provide statistical information according to geography, which are Top Cities and Top Countries. These reports rank cities and countries, respectively, according to the number of hits that originated from those regions. Upon generating this type of report, a bar chart will indicate the top 10 cities or countries that requested content over a specific platform. This bar chart allows you to quickly assess the regions that generate the highest number of requests for your content.
+Es gibt zwei weitere Berichte mit statistischen Informationen nach Geografie: „Führende Städte“ und „Führende Länder“. In diesem Berichten sind jeweils Städte und Länder gemäß der Anzahl von Treffern aus den jeweiligen Regionen klassifiziert. Bei diesem Berichtstyp werden in einem Balkendiagramm die zehn führenden Städte oder Länder angegeben, die Inhalte über eine bestimmte Plattform angefordert haben. Mit diesem Balkendiagramm können Sie schnell die Regionen ermitteln, die die höchste Anzahl von Anforderungen für Ihre Inhalte generieren.
 
-The left-hand side of the graph (y-axis) indicates how many hits occurred in the specified region. Directly below the graph (x-axis), you will find a label for each of the top 10 regions.
+Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer in der angegebenen Region auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung für jede der zehn führenden Regionen.
 
-### <a name="using-the-bar-charts"></a>Using the bar charts
+### Verwenden der Balkendiagramme
 
-* If you hover over a bar, the name and the total number of hits that occurred in the region will be displayed as a tooltip.
-* The tooltip for the Top Cities report identifies a city by its name, state/province, and country abbreviation.
-* If the city or region (i.e., state/province) from which a request originated could not be determined, then it will indicate that they are unknown. If the country is unknown, then two question marks (i.e., ??) will be displayed.
-* A report may include metrics for "Europe" or the "Asia/Pacific Region." Those items are not meant to provide statistical information on all IP addresses in those regions. Rather, they only apply to requests that originate from IP addresses that are spread out over Europe or Asia/Pacific instead of to a specific city or country.
+* Wenn Sie auf einen Balken zeigen, werden der Name und die Gesamtanzahl von Treffern in dieser Region als QuickInfo angezeigt.
+* Die QuickInfo für den Bericht „Führende Städte“ bestimmt eine Stadt nach Name, Bundesland/Provinz und Landesabkürzung.
+* Falls die Stadt oder die Region (d. h. das Bundesland/die Provinz), aus der eine Anforderung stammt, nicht ermittelt werden konnte, wird sie als unbekannt angegeben. Wenn das Land unbekannt ist, werden zwei Fragezeichen („??“) angezeigt.
+* Ein Bericht kann Metriken für Europa oder die Asien-Pazifik-Region beinhalten. Mit diesen Elementen sollen keine statistischen Informationen zu allen IP-Adressen in diesen Regionen angegeben werden. Vielmehr gelten sie nur für Anforderungen, die von IP-Adressen in Europa oder der Asien-Pazifik-Region und nicht von IP-Adressen in einem bestimmten Ort oder Land stammen.
 
-The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred for the top 250 regions. View a description for each of these metrics.
+Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die Gesamtanzahl von Treffern, den Prozentsatz der Treffer, die übertragene Datenmenge (in GB) sowie den Prozentsatz der übertragenen Daten für die 250 führenden Regionen. Zeigen Sie eine Beschreibung für die einzelnen Metriken an.
 
-A brief description is provided for both types of reports below.
+Nachfolgend finden Sie eine kurze Beschreibung der beiden Berichtstypen:
 
-Report Name | Description
+Berichtsname | Beschreibung
 ------------|------------
-Top Cities | This report ranks cities according to the number of hits that originated from that region.
-Top Countries | This report ranks countries according to the number of hits that originated from that region.
+Führende Städte | In diesem Bericht werden Städte entsprechend der Anzahl von Treffern aus dieser Region klassifiziert.
+Führende Länder | In diesem Bericht werden Länder entsprechend der Anzahl von Treffern aus dieser Region klassifiziert.
 
-## <a name="daily-summary"></a>Daily Summary
+## Tägliche Zusammenfassung
 
-The Daily Summary report allows you to view the total number of hits and data transferred over a particular platform on a daily basis. This information can be used to quickly discern CDN activity patterns. For example, this report can help you detect which days experienced higher or lower than expected traffic.
+Mit dem Bericht „Tägliche Zusammenfassung“ können Sie auf täglicher Basis die Gesamtanzahl von Treffern und über eine bestimmte Plattform übertragene Daten anzeigen. Anhand dieser Informationen werden bestimmte CDN-Aktivitätsmuster schnell erkannt. Mithilfe dieses Berichts können Sie beispielsweise ermitteln, an welchen Tagen der Datenverkehr höher oder niedriger als erwartet ausgefallen ist.
 
-Upon generating this type of report, a bar chart will provide a visual indication as to the amount of platform-specific demand experienced on a daily basis over the time period covered by the report. It will do so by displaying a bar for each day in the report. For example, selecting the time period called "Last Week" will generate a bar chart with seven bars. Each bar will indicate the total number of hits experienced on that day.
+Bei diesem Berichtstyp wird anhand eines Balkendiagramms der tägliche Umfang der plattformspezifischen Nachfrage in dem vom Bericht abgedeckten Zeitraum visuell dargestellt. Dazu werden im Bericht für die einzelnen Tage Balken angezeigt. Bei Auswahl des Zeitraums „Letzte Woche“ wird beispielsweise ein Balkendiagramm mit sieben Balken erstellt. Jeder Balken zeigt jeweils die Gesamtanzahl von Treffern an dem entsprechenden Tag an.
 
-The left-hand side of the graph (y-axis) indicates how many hits occurred on the specified date. Directly below the graph (x-axis), you will find a label that indicates the date (Format: YYYY-MM-DD) for each day included in the report.
+Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer am angegebenen Datum auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung, die das Datum (Format: JJJJ-MM-TT) für jeden im Bericht enthaltenen Tag angibt.
 
-> [AZURE.TIP] If you hover over a bar, the total number of hits that occurred on that date will be displayed as a tooltip.
+> [AZURE.TIP] Wenn Sie auf einen Balken zeigen, wird die Gesamtanzahl von Treffern an diesem Datum als QuickInfo angezeigt.
 
-The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits and the amount of data transferred (in gigabytes) for each day covered by the report.
+Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die Gesamtanzahl von Treffern und die Menge der übertragenen Daten (in GB) für alle vom Bericht abgedeckten Tage.
 
-## <a name="by-hour"></a>By Hour
+## Nach Stunde
 
-The By Hour report allows you to view the total number of hits and data transferred over a particular platform on an hourly basis. This information can be used to quickly discern CDN activity patterns. For example, this report can help you detect the time periods during the day that experience higher or lower than expected traffic.
+Mit dem Bericht „Nach Stunde“ können Sie die Gesamtanzahl von Treffern und über eine bestimmte Plattform übertragene Daten auf Stundenbasis anzeigen. Anhand dieser Informationen werden bestimmte CDN-Aktivitätsmuster schnell erkannt. Mithilfe dieses Berichts können Sie beispielsweise die Zeiträume während des Tages ermitteln, in denen der Datenverkehr höher oder niedriger als erwartet ausfällt.
 
-Upon generating this type of report, a bar chart will provide a visual indication as to the amount of platform-specific demand experienced on an hourly basis over the time period covered by the report. It will do so by displaying a bar for each hour covered by the report. For example, selecting a 24 hour time period will generate a bar chart with twenty four bars. Each bar will indicate the total number of hits experienced during that hour.
+Bei diesem Berichtstyp wird anhand eines Balkendiagramms der Umfang der plattformspezifischen Nachfrage pro Stunde in dem vom Bericht abgedeckten Zeitraum visuell dargestellt. Dazu werden für die einzelnen im Bericht abgedeckten Stunden Balken angezeigt. Bei Auswahl eines 24-Stunden-Zeitraums wird beispielsweise ein Balkendiagramm mit 24 Balken erstellt. Jeder Balken zeigt jeweils die Gesamtanzahl von Treffern während der entsprechenden Stunde an.
 
-The left-hand side of the graph (y-axis) indicates how many hits occurred on the specified hour. Directly below the graph (x-axis), you will find a label that indicates the date/time (Format: YYYY-MM-DD hh:mm) for each hour included in the report. Time is reported using 24 hour format and it is specified using the UTC/GMT time zone.
+Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer in der angegebenen Stunde auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung, die das Datum und die Uhrzeit (Format: JJJJ-MM-TT hh:mm) für jede im Bericht enthaltene Stunde angibt. Die Zeit wird im 24-Stunden-Format (Zeitzone: UTC/GMT) angegeben.
 
-> [AZURE.TIP] If you hover over a bar, the total number of hits that occurred during that hour will be displayed as a tooltip.
+> [AZURE.TIP] Wenn Sie auf einen Balken zeigen, wird die Gesamtanzahl von Treffern in dieser Stunde als QuickInfo angezeigt.
 
-The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits and the amount of data transferred (in gigabytes) for each hour covered by the report.
+Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die Gesamtanzahl von Treffern und die Menge der übertragenen Daten (in GB) für alle vom Bericht abgedeckten Stunden.
 
-## <a name="by-file"></a>By File
+## Nach Datei
 
-The By File report allows you to view the amount of demand and the traffic incurred over a particular platform for the most requested assets. Upon generating this type of report, a bar chart will be generated on the top 10 most requested assets over the specified time period.
+Mit dem Bericht „Nach Datei“ können Sie den Umfang der Nachfrage und den über eine bestimmte Plattform übertragenen Datenverkehr für die am häufigsten angeforderten Assets anzeigen. Bei diesem Berichtstyp wird ein Balkendiagramm für die zehn Assets erstellt, die im angegebenen Zeitraum am häufigsten angefordert wurden.
 
-> [AZURE.NOTE] For the purposes of this report, edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for the total number of hits associated with an asset regardless of the CDN or edge CNAME URL used to request it.
+> [AZURE.NOTE] Für diesen Bericht werden Edge-CNAME-URLs in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für die Gesamtanzahl von Treffern für ein Asset ermittelt.
 
-The left-hand side of the graph (y-axis) indicates the number of requests for each asset over the specified time period. Directly below the graph (x-axis), you will find a label that indicates the file name for each of the top 10 requested assets.
+Die linke Seite des Graphen (y-Achse) gibt die Anzahl von Anforderungen für jedes Asset im angegebenen Zeitraum an. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung mit dem Dateinamen für die zehn Assets, die am häufigsten angefordert wurden.
 
-The data that was used to generate the bar chart can be viewed below it. There you will find the following information for each of the top 250 requested assets: relative path, the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred.
+Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die folgenden Informationen für die 250 Assets, die am häufigsten angefordert wurden: relativer Pfad, Gesamtanzahl von Treffern, Prozentsatz der Treffer, übertragene Datenmenge (in GB) und Prozentsatz der übertragenen Daten.
 
-## <a name="by-file-detail"></a>By File Detail
+## Nach Dateidetails
 
-The By File Detail report allows you to view the amount of demand and the traffic incurred over a particular platform for a specific asset. At the very top of this report is the File Details For option. This option provides a list of your most requested assets on the selected platform. In order to generate a By File Detail report, you will need to select the desired asset from the File Details For option. After which, a bar chart will indicate the amount of daily demand that it generated over the specified time period.
+Mit dem Bericht „Nach Dateidetails“ können Sie den Umfang der Nachfrage und den über eine bestimmte Plattform übertragenen Datenverkehr für ein bestimmtes Asset anzeigen. Ganz oben im Bericht befindet sich die Option „Dateidetails für“. Mit dieser Option wird eine Liste der am häufigsten angeforderten Assets für die ausgewählte Plattform angezeigt. Um den Bericht „Nach Dateidetail“ zu erstellen, wählen Sie das gewünschte Asset über die Option „Dateidetails für“ aus. Anschließend wird mithilfe eines Balkendiagramms der Umfang der täglichen Nachfrage angegeben, die im Laufe des angegebenen Zeitraums entstand.
 
-The left-hand side of the graph (y-axis) indicates the total number of requests that an asset experienced on a particular day. Directly below the graph (x-axis), you will find a label that indicates the date (Format: YYYY-MM-DD) for which CDN demand for the asset was reported.
+Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für ein Asset an einem bestimmten Tag an. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung mit dem Datum (Format: JJJJ-MM-TT), für das die CDN-Nachfrage für das Asset gemeldet wurde.
 
-The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits and the amount of data transferred (in gigabytes) for each day covered by the report.
+Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die Gesamtanzahl von Treffern und die Menge der übertragenen Daten (in GB) für alle vom Bericht abgedeckten Tage.
 
-## <a name="by-file-type"></a>By File Type
+## Nach Dateityp
 
-The By File Type report allows you to view the amount of demand and the traffic incurred by file type. Upon generating this type of report, a donut chart will indicate the percentage of hits generated by the top 10 file types.
+Im Bericht „Nach Dateityp“ können Sie den Umfang der Nachfrage und den Datenverkehr nach Dateityp anzeigen. Bei diesem Berichtstyp wird anhand eines Ringdiagramms der Prozentsatz der Treffer angegeben, die von den zehn führenden Dateitypen generiert wurden.
 
-> [AZURE.TIP] If you hover over a slice in the donut chart, the Internet media type of that file type will be displayed as a tooltip.
+> [AZURE.TIP] Wenn Sie auf ein Segment im Ringdiagramm zeigen, wird der Internetmedientyp des Dateityps als QuickInfo angezeigt.
 
-The data that was used to generate the donut chart can be viewed below it. There you will find the file name extension/Internet media type, the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred for each of the top 250 file types.
+Die dem Ringdiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die Dateinamenerweiterung/den Internetmedientyp, die Gesamtanzahl von Treffern, den Prozentsatz der Treffer, die übertragene Datenmenge (in GB) sowie den Prozentsatz der übertragenen Daten für jeden der 250 führenden Dateitypen.
 
-## <a name="by-directory"></a>By Directory
+## Nach Verzeichnis
 
-The By Directory report allows you to view the amount of demand and the traffic incurred over a particular platform for content from a specific directory. Upon generating this type of report, a bar chart will indicate the total number of hits generated by content in the top 10 directories.
+Mit dem Bericht „Nach Verzeichnis“ können Sie den Umfang der Nachfrage und den über eine bestimmte Plattform übertragenen Datenverkehr für Inhalte aus einem bestimmten Verzeichnis anzeigen. Bei diesem Berichtstyp wird anhand eines Balkendiagramms die Gesamtanzahl von Treffern angegeben, die von den Inhalten in den zehn führenden Verzeichnissen generiert wurden.
 
-### <a name="using-the-bar-chart"></a>Using the bar chart
+### Verwenden des Balkendiagramms
 
-* Hover over a bar to view the relative path to the corresponding directory.
-* Content stored in a subfolder of a directory does not count when calculating demand by directory. This calculation relies solely on the number of requests generated for content stored in the actual directory.
-* For the purposes of this report, edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for all statistics associated with an asset regardless of the CDN or edge CNAME URL used to request it.
+* Zeigen Sie auf einen Balken, um den relativen Pfad zum entsprechenden Verzeichnis anzuzeigen.
+* In einem Unterordner eines Verzeichnisses gespeicherte Inhalte werden beim Berechnen der Nachfrage nach Verzeichnis nicht berücksichtigt. Diese Berechnung basiert ausschließlich auf der Anzahl von Anforderungen, die für die im entsprechenden Verzeichnis gespeicherten Inhalte generiert wurden.
+* Für diesen Bericht werden Edge-CNAME-URLs in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für alle Statistiken für ein Asset ermittelt.
 
-The left-hand side of the graph (y-axis) indicates the total number of requests for the content stored in your top 10 directories. Each bar on the chart represents a directory. Use the color-coding scheme to match up a bar to a directory listed in the Top 250 Full Directories section.
+Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für die in den zehn führenden Verzeichnissen gespeicherten Inhalte an. Jeder Balken im Diagramm stellt ein Verzeichnis dar. Weisen Sie mithilfe von Farbkodierungen einen Balken einem Verzeichnis zu, das im Abschnitt „250 führende vollständige Verzeichnisse“ aufgeführt ist.
 
-The data that was used to generate the bar chart can be viewed below it. There you will find the following information for each of the top 250 directories: relative path, the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred.
+Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort sehen Sie die folgenden Informationen für die 250 führenden Verzeichnisse: relativer Pfad, Gesamtanzahl von Treffern, Prozentsatz der Treffer, übertragene Datenmenge (in GB) und Prozentsatz der übertragenen Daten.
 
-## <a name="by-browser"></a>By Browser
+## Nach Browser
 
-The By Browser report allows you to view which browsers were used to request content. Upon generating this type of report, a pie chart will indicate the percentage of requests handled by the top 10 browsers.
+Mit dem Bericht „Nach Browser“ können Sie anzeigen, welche Browser zum Anfordern von Inhalten verwendet wurden. Bei diesem Berichtstyp wird anhand eines Kreisdiagramms der Prozentsatz der Anforderungen angegeben, die von den zehn führenden Browsern verarbeitet wurden.
 
-### <a name="using-the-pie-chart"></a>Using the pie chart
+### Verwenden des Kreisdiagramms
 
-* Hover over a slice in the pie chart to view a browser's name and version.
-* For the purposes of this report, each unique browser/version combination is considered a different browser.
-* The slice called "Other" indicates the percentage of requests handled by all other browsers and versions.
+* Zeigen Sie auf ein Segment im Kreisdiagramm, um den Namen und die Version eines Browsers anzuzeigen.
+* Für diesen Bericht werden die verschiedenen Kombinationen aus Browser und Version jeweils als unterschiedliche Browser betrachtet.
+* Das Segment „Andere“ gibt den Prozentsatz der Anforderungen an, die von allen anderen Browsern und Versionen verarbeitet wurden.
 
-The data that was used to generate the pie chart can be viewed below it. There you will find the browser type/version number, the total number of hits and the percentage of hits for each of the top 250 browsers.
+Die dem Kreisdiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie den Browsertyp/die Versionsnummer, die Gesamtanzahl von Treffern und den Prozentsatz der Treffer für jeden der 250 führenden Browser.
 
-## <a name="by-referrer"></a>By Referrer
+## Nach Verweis
 
-The By Referrer report allows you to view the top referrers to content on the selected platform. A referrer indicates the hostname from which a request was generated. Upon generating this type of report, a bar chart will indicate the amount of demand (i.e., hits) generated by the top 10 referrers.
+Mit dem Bericht „Nach Verweis“ können Sie die führenden Verweise auf Inhalte für die ausgewählte Plattform anzeigen. Ein Verweis gibt den Hostnamen an, von dem eine Anforderung generiert wurde. Bei diesem Berichtstyp wird anhand eines Balkendiagramms der Umfang der Nachfrage (d. h. die Treffer) angegeben, die von den zehn führenden Verweisen generiert wurden.
 
-The left-hand side of the graph (y-axis) indicates the total number of requests that an asset experienced for each referrer. Each bar on the chart represents a referrer. Use the color-coding scheme to match up a bar to a referrer listed in the Top 250 Referrer section.
+Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für ein Asset für jeden Verweis an. Jeder Balken im Diagramm stellt einen Verweis dar. Weisen Sie mithilfe von Farbkodierungen einen Balken einem Verweis zu, der im Abschnitt „250 führende Verweise“ aufgeführt ist.
 
-The data that was used to generate the bar chart can be viewed below it. There you will find the URL, the total number of hits, and the percentage of hits generated from each of the top 250 referrers.
+Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die URL, die Gesamtanzahl von Treffern und den Prozentsatz der Treffer, die von jedem der 250 führenden Verweise generiert wurden.
 
-## <a name="by-download"></a>By Download
+## Nach Download
 
-The By Download report allows you to analyze download patterns for your most requested content. The top of the report contains a bar chart that compares attempted downloads with completed downloads for the top 10 requested assets. Each bar is color-coded according to whether it is an attempted download (blue) or a completed download (green).
+Mit dem Bericht „Nach Download“ können Sie Downloadmuster für die am häufigsten angeforderten Inhalte analysieren. Ein Balkendiagramm oben im Bericht vergleicht für die zehn am häufigsten abgerufenen Assets die versuchten Downloads mit den abgeschlossenen Downloads. Jeder Balken ist farbkodiert: Versuchte Downloads sind blau und abgeschlossene Downloads sind grün gekennzeichnet.
 
-> [AZURE.NOTE] For the purposes of this report, edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for all statistics associated with an asset regardless of the CDN or edge CNAME URL used to request it.
+> [AZURE.NOTE] Für diesen Bericht werden Edge-CNAME-URLs in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für alle Statistiken für ein Asset ermittelt.
 
-The left-hand side of the graph (y-axis) indicates the file name for each of the top 10 requested assets. Directly below the graph (x-axis), you will find labels that indicate the total number of attempted/completed downloads.
+Die linke Seite des Graphen (y-Achse) gibt den Dateinamen für jedes der zehn am häufigsten abgerufenen Assets an. Direkt unterhalb des Graphen (x-Achse) befinden sich Bezeichnungen mit der Gesamtanzahl von versuchten/abgeschlossenen Downloads.
 
-Directly below the bar chart, the following information will be listed for the top 250 requested assets: relative path (including file name), the number of times that it was downloaded to completion, the number of times that it was requested, and the percentage of requests that resulted in a complete download.
+Direkt unterhalb des Balkendiagramms werden die folgenden Informationen für die 250 Assets aufgeführt, die am häufigsten angefordert wurden: relativer Pfad (einschließlich Dateiname), Anzahl von abgeschlossenen Downloads, Anzahl von Anforderungen und Prozentsatz der Anforderungen, die zu abgeschlossenen Downloads führten.
 
-> [AZURE.TIP] Our CDN is not informed by an HTTP client (i.e. browser) when an asset has been completely downloaded. As a result, we have to calculate whether an asset has been completely downloaded according to status codes and byte-range requests. The first thing we look for when making this calculation is whether the request results in a 200 OK status code. If so, then we look at byte-range requests to ensure that they cover the entire asset. Finally, we compare the amount of data transferred to the size of the requested asset. If the data transferred is equal to or greater than the file size and the byte-range requests are appropriate for that asset, then the hit will be counted as a complete download.
+> [AZURE.TIP] Unser CDN wird nicht von einem HTTP-Client (d. h. Browser) informiert, wenn ein Asset vollständig heruntergeladen wurde. Daher muss anhand von Statuscodes und Bytebereichsanfragen ermittelt werden, ob ein Asset vollständig heruntergeladen wurde. Dabei wird zunächst überprüft, ob die Anforderung den Statuscode „200 OK“ aufweist. Wenn dies der Fall ist, wird mithilfe von Bytebereichsanfragen sichergestellt, dass das gesamte Asset abgedeckt ist. Abschließend wird die übertragene Datenmenge mit der Größe des angeforderten Assets verglichen. Wenn die übertragene Datenmenge größer oder gleich der Dateigröße ist und die Bytebereichsanfragen dem Asset entsprechen, wird der Treffer als vollständiger Download gezählt.
 >
->Due to the interpretive nature of this report, you should keep in mind the following points that may alter the consistency and accuracy of this report.
+>Berücksichtigen Sie aufgrund des Interpretationsspielraums bei diesem Bericht die folgenden Punkte, die sich auf Konsistenz und Genauigkeit des Berichts auswirken können:
 >
->* Traffic patterns cannot be accurately predicted when user-agents behave differently. This may produce completed download results that are greater than 100%.
->* Assets that take advantage of HTTP Progressive Download may not be accurately represented by this report. This is due to users seeking to different positions in a video.
+>* Datenverkehrsmuster können bei abweichendem Verhalten der Benutzer-Agents nicht präzise vorhergesagt werden. Dadurch können für abgeschlossene Downloads Ergebnisse von über 100 Prozent erzielt werden
+>* Assets, die den progressiven Download über HTTP nutzen, können von diesem Bericht unter Umständen nicht exakt dargestellt werden. Das liegt daran, dass Benutzer verschiedene Stellen in einem Video suchen.
 
-## <a name="by-404-errors"></a>By 404 Errors
+## Nach 404-Fehlern
 
-The By 404 Errors report allows you to identify the type of content that generates the most number of 404 Not Found status codes. The top of the report contains a bar chart for the top 10 assets for which a 404 Not Found status code was returned. This bar chart compares the total number of requests with requests that resulted in a 404 Not Found status code for those assets. Each bar is color-coded. A yellow bar is used to indicate that the request resulted in a 404 Not Found status code. A red bar is used to indicate the total number of requests for the asset.
+Im Bericht „Nach 404-Fehlern“ können Sie den Inhaltstyp anzeigen, der am häufigsten den Statuscode „404 Nicht gefunden“ generiert. Oben im Bericht ist ein Balkendiagramm für die zehn führenden Assets enthalten, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde. In diesem Balkendiagramm wird die Gesamtanzahl von Anforderungen mit den Anforderungen verglichen, die zum Statuscode „404 Nicht gefunden“ für diese Assets führten. Jeder Balken ist farbkodiert. Mit einem gelben Balken wird angegeben, dass für eine Anforderung der Statuscode „404 Nicht gefunden“ zurückgegeben wurde. Ein roter Balken gibt die Gesamtanzahl von Anforderungen für das Asset an.
 
-> [AZURE.NOTE] For the purposes of this report, note the following:
+> [AZURE.NOTE] Beachten Sie bei diesem Bericht Folgendes:
 >
->* A hit represents any request for an asset regardless of status code.
->* Edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for all statistics associated with an asset regardless of the CDN or edge CNAME URL used to request it.
+>* Ein Treffer stellt alle Anforderungen eines Assets unabhängig vom Statuscode dar.
+>* Edge-CNAME-URLs werden in ihre entsprechenden CDN-URLs konvertiert. Dadurch wird unabhängig von der für die Anforderung verwendeten CDN- oder Edge-CNAME-URL ein präziser Wert für alle Statistiken für ein Asset ermittelt.
 
-The left-hand side of the graph (y-axis) indicates the file name for each of the top 10 requested assets that resulted in a 404 Not Found status code. Directly below the graph (x-axis), you will find labels that indicate the total number of requests and the number of requests that resulted in a 404 Not Found status code.
+Die linke Seite des Graphen (y-Achse) gibt den Dateinamen für jedes der zehn am häufigsten abgerufenen Assets an, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde. Direkt unterhalb des Graphen (x-Achse) befinden sich Bezeichnungen mit der Gesamtanzahl von Anforderungen und der Anzahl von Anforderungen, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde.
 
-Directly below the bar chart, the following information will be listed for the top 250 requested assets: relative path (including file name), the number of requests that resulted in a 404 Not Found status code, the total number of times that the asset was requested, and the percentage of requests that resulted in a 404 Not Found status code.
+Direkt unterhalb des Balkendiagramms werden die folgenden Informationen für die 250 Assets aufgeführt, die am häufigsten angefordert wurden: relativer Pfad (einschließlich Dateiname), Anzahl von Anforderungen mit dem Statuscode „404 Nicht gefunden“, die Gesamtanzahl von Anforderungen für ein Asset und der Prozentsatz der Anforderungen, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde.
 
-## <a name="see-also"></a>See also
-* [Azure CDN Overview](cdn-overview.md)
-* [Real-time stats in Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Overriding default HTTP behavior using the rules engine](cdn-rules-engine.md)
-* [Analyze Edge Performance](cdn-edge-performance.md)
+## Weitere Informationen
+* [Übersicht über das Azure CDN](cdn-overview.md)
+* [Echtzeitstatistiken in Microsoft Azure CDN](cdn-real-time-stats.md)
+* [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
+* [Analysieren der Edgeleistung](cdn-edge-performance.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

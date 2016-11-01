@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Restore from a backup of your StorSimple Virtual Array"
-   description="Learn more about how to restore a backup of your StorSimple Virtual Array."
+   pageTitle="Wiederherstellen aus einer Sicherung des StorSimple Virtual Array"
+   description="Erfahren Sie mehr dazu, wie Sie eine Sicherung des StorSimple Virtual Array wiederherstellen."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,129 +16,124 @@
    ms.date="06/07/2016"
    ms.author="alkohli"/>
 
+# Wiederherstellen aus einer Sicherung des StorSimple Virtual Array
 
-# <a name="restore-from-a-backup-of-your-storsimple-virtual-array"></a>Restore from a backup of your StorSimple Virtual Array
+## Übersicht 
 
-## <a name="overview"></a>Overview 
-
-This article applies to Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device or StorSimple virtual device) running March 2016 general availability (GA) release or later. This article describes step-by-step how to restore from a backup set of your shares or volumes on your StorSimple Virtual Array. The article also details how the item-level recovery works on your StorSimple Virtual Array that is configured as a file server.
-
-
-## <a name="restore-shares-from-a-backup-set"></a>Restore shares from a backup set
+Dieser Artikel bezieht sich auf das Microsoft Azure StorSimple Virtual Array (auch als „lokales virtuelles StorSimple-Gerät“ oder „virtuelles StorSimple-Gerät“ bezeichnet) mit der Version vom März 2016 (allgemeine Verfügbarkeit) oder höher. In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie die Wiederherstellung aus einem Sicherungssatz Ihrer Freigaben oder Volumes auf dem StorSimple Virtual Array durchführen. Im Artikel wird auch ausführlich beschrieben, wie die Wiederherstellung auf Elementebene auf Ihrem StorSimple Virtual Array funktioniert, wenn dies als Dateiserver konfiguriert ist.
 
 
-**Before you try to restore shares, ensure that you have sufficient space on the device to complete this operation.** To restore from a backup, in the [Azure classic portal](https://manage.windowsazure.com/), perform the following steps.
-
-#### <a name="to-restore-a-share"></a>To restore a share
-
-1.  Browse to the **Backup Catalog**. Filter by appropriate device and time range to search for your backups. Click the check icon ![](./media/storsimple-ova-restore/image1.png) to execute the query.
+## Wiederherstellen von Freigaben aus einem Sicherungssatz
 
 
-1.  In the list of backup sets displayed, click and select a specific backup. Expand the backup to see the various shares under it. Click and select a share that you want to restore.
+**Bevor Sie versuchen, die Freigaben wiederherzustellen, sollten Sie sich vergewissern, dass auf dem Gerät ausreichend Speicherplatz zum Durchführen dieses Vorgangs vorhanden ist.** Führen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) die folgenden Schritte aus, um die Wiederherstellung aus einer Sicherung durchzuführen.
 
-2.  At the bottom of the page, click **Restore as new**.
+#### So führen Sie die Wiederherstellung von einer Freigabe durch
 
-3.  This will initiate the **Restore as new share** wizard. On the **Specify name and location** page:
-
-
-    1.  Verify the source device name. This should be the device that contains the share you want to restore. The device selection is grayed out. To select a different source device, you will need to exit the wizard and reselect the backup set again.
-
-    2.  Provide a share name. The share name must contain 3 to 127 characters.
-
-    3.  Review the size, type, and permissions associated with the share that you are trying to restore. You will be able to modify the share properties via Windows Explorer after the restore is complete.
-
-    4.  Click the check icon ![](./media/storsimple-ova-restore/image1.png).
-
-        ![](./media/storsimple-ova-restore/image9.png)
-
-1.  After the restore job is complete, the restore will start and you will see another notification. To monitor the progress of restore, click **View job**. This will take you to the **Jobs** page.
-
-2.  You can track the progress of the restore job. When the restore is 100% complete, navigate back to the **Shares** page on your device.
-
-3.  You can now view the new restored share in the list of shares on your device. Note that restore is done to the same type of the share. A tiered share is restored as tiered and a locally pinned share as a locally pinned share.
-
-You have now completed the device configuration and learned how to backup or restore a share. 
+1.  Navigieren Sie zum **Sicherungskatalog**. Filtern Sie nach dem entsprechenden Geräte- und Uhrzeitbereich, um nach Ihren Sicherungen zu suchen. Klicken Sie auf das Häkchensymbol ![](./media/storsimple-ova-restore/image1.png), um die Abfrage durchzuführen.
 
 
-## <a name="restore-volumes-from-a-backup-set"></a>Restore volumes from a backup set
+1.  Klicken Sie in der angezeigten Liste mit den Sicherungssätzen auf eine Sicherung, um sie auszuwählen. Erweitern Sie die Sicherung, um die darunter angeordneten Freigaben anzuzeigen. Klicken Sie auf eine Freigabe, um sie für die Wiederherstellung auszuwählen.
+
+2.  Klicken Sie unten auf der Seite auf **Als neu wiederherstellen**.
+
+3.  Der Assistent **Als neue Freigabe wiederherstellen** wird gestartet. Gehen Sie auf der Seite **Namen und Speicherort angeben** folgendermaßen vor:
 
 
-To restore from a backup, in the Azure classic portal, perform the following steps. The restore operation restores the backup to a new volume on the same virtual device; you cannot restore to a different device.
+	1.  Überprüfen Sie den Namen des Quellgeräts. Dies sollte das Gerät mit der wiederherzustellenden Freigabe sein. Die Geräteauswahl ist deaktiviert. Um ein anderes Quellgerät auszuwählen, müssen Sie den Assistenten beenden und den Sicherungssatz erneut auswählen.
 
-#### <a name="to-restore-a-volume"></a>To restore a volume
+	2.  Geben Sie einen Freigabenamen an. Der Freigabename kann 3 bis 127 Zeichen lang sein.
 
-1.  Browse to the **Backup Catalog**. Filter by appropriate device and time range to search for your backups. Click the check icon ![](./media/storsimple-ova-restore/image1.png) to execute the query.
+	3.  Überprüfen Sie Größe, Typ und Berechtigungen der Freigabe, die Sie wiederherstellen möchten. Sie können die Freigabeeigenschaften mit dem Windows-Explorer ändern, nachdem die Wiederherstellung abgeschlossen ist.
 
-2.  In the list of backup sets displayed, click and select a specific backup. Expand the backup to see the various volumes under it. Select the volume you want to restore. 
+	4.  Klicken Sie auf das Häkchensymbol ![](./media/storsimple-ova-restore/image1.png).
 
-5.  At the bottom of the page, click **Restore as new**. The **Restore as new volume** wizard will start.
+		![](./media/storsimple-ova-restore/image9.png)
 
-1.  On the **Specify name and location** page:
+1.  Nachdem der Wiederherstellungsauftrag abgeschlossen ist, wird die Wiederherstellung gestartet, und es wird eine weitere Benachrichtigung angezeigt. Klicken Sie auf **Auftrag anzeigen**, um den Fortschritt der Wiederherstellung zu überwachen. Sie gelangen auf die Seite **Aufträge**.
+
+2.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Wenn die Wiederherstellung 100% erreicht hat, navigieren Sie zurück zur Seite **Freigaben** auf Ihrem Gerät.
+
+3.  Sie können nun die neu wiederhergestellte Freigabe in der Liste mit den Freigaben auf Ihrem Gerät anzeigen. Beachten Sie, dass bei der Wiederherstellung derselbe Freigabentyp verwendet wird. Eine mehrstufige Freigabe wird auch mehrstufig wiederhergestellt, und eine lokale Freigabe wird als lokale Freigabe wiederhergestellt.
+
+Sie haben die Gerätekonfiguration nun abgeschlossen und gelernt, wie Sie eine Freigabe sichern und wiederherstellen.
 
 
-    1.  Verify the source device name. This should be the device that contains the volume that you want to restore. The device selection is unavailable. To select a different source device, you will need to exit the wizard and reselect the backup set again.
+## Wiederherstellen von Volumes aus einem Sicherungssatz
 
-    2.  Provide a volume name for the volume being restored as new. The volume name must contain 3 to 127 characters.
 
-    3.  Click the arrow icon.
+Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiederherstellung aus einer Sicherung durchzuführen. Beim Wiederherstellungsvorgang wird die Sicherung auf einem neuen Volume desselben virtuellen Geräts wiederhergestellt. Die Wiederherstellung auf einem anderen Gerät ist nicht möglich.
 
-        ![](./media/storsimple-ova-restore/image12.png)
+#### So stellen Sie ein Volume wieder her
 
-1.  On the **Specify hosts that can use this volume** page, select the appropriate ACRs from the dropdown list.
+1.  Navigieren Sie zum **Sicherungskatalog**. Filtern Sie nach dem entsprechenden Geräte- und Uhrzeitbereich, um nach Ihren Sicherungen zu suchen. Klicken Sie auf das Häkchensymbol ![](./media/storsimple-ova-restore/image1.png), um die Abfrage durchzuführen.
 
-    ![](./media/storsimple-ova-restore/image13.png)
+2.  Klicken Sie in der angezeigten Liste mit den Sicherungssätzen auf eine Sicherung, um sie auszuwählen. Erweitern Sie die Sicherung, um die darunter angeordneten Volumes anzuzeigen. Wählen Sie das Volume aus, das Sie wiederherstellen möchten.
 
-1.  Click the check icon ![](./media/storsimple-ova-restore/image1.png). This will initiate a restore job and you will see the following notification that the job is in progress.
+5.  Klicken Sie unten auf der Seite auf **Als neu wiederherstellen**. Der Assistent **Als neues Volume wiederherstellen** wird gestartet.
 
-2.  After the restore job is complete, the restore will start and you will see another notification. To monitor the progress of restore, click **View job**. This will take you to the **Jobs** page.
+1.  Gehen Sie auf der Seite **Namen und Speicherort angeben** folgendermaßen vor:
 
-3.  You can track the progress of the restore job. Navigate back to the **Volumes** page on your device.
 
-4.  You can now view the new restored volume in the list of volumes on your device. Note that restore is done to the same type of volume. A tiered volume is restored as tiered and a locally pinned volume is restored as a locally pinned volume.
+	1.  Überprüfen Sie den Namen des Quellgeräts. Dies sollte das Gerät mit dem wiederherzustellenden Volume sein. Die Geräteauswahl ist nicht verfügbar. Um ein anderes Quellgerät auszuwählen, müssen Sie den Assistenten beenden und den Sicherungssatz erneut auswählen.
 
-5.  Once the volume appears online on the list of volumes, the volume is available for use.  On the iSCSI initiator host, refresh the list of targets in iSCSI initiator properties window.  A new target which contains the restored volume name should appear as 'inactive' under the status column.
+	2.  Geben Sie einen Volumenamen für das Volume ein, das als neues Volume wiederhergestellt wird. Der Volumename kann 3 bis 127 Zeichen lang sein.
 
-6.  Select the target and click **Connect**.   After the initiator is connected to the target, the status should change to **Connected**. 
+	3.  Klicken Sie auf das Pfeilsymbol.
 
-7.  In the **Disk Management** window, the mounted volumes will appear as shown in the following illustration. Right-click the discovered volume (click the disk name), and then click **Online**.
+		![](./media/storsimple-ova-restore/image12.png)
 
-> [AZURE.IMPORTANT] When trying to restore a volume or a share from a backup set, if the restore job fails, a target volume or share may still be created in the portal. It is important that you delete this target volume or share in the portal to minimize any  future issues arising from this element.
+1.  Wählen Sie auf der Seite **Hosts angeben, die dieses Volume verwenden können** in der Dropdownliste die passenden ACRs aus.
 
-## <a name="item-level-recovery-(ilr)"></a>Item-level recovery (ILR)
+	![](./media/storsimple-ova-restore/image13.png)
 
-This release introduces the item-level recovery (ILR) on a StorSimple virtual device configured as a file server. The feature allows you to do granular recovery of files and folders from a cloud backup of all the shares on the StorSimple device. Users can retrieve deleted files from recent backups using a self-service model.
+1.  Klicken Sie auf das Häkchensymbol ![](./media/storsimple-ova-restore/image1.png). Es wird ein Wiederherstellungsauftrag initiiert, und es wird die folgende Benachrichtigung mit dem Hinweis angezeigt, dass der Auftrag ausgeführt wird.
 
-Every share has a *.backups* folder that contains the most recent backups. The user can navigate to the desired backup, copy relevant files and folders from the backup and restore them. This eliminates calls to administrators for restoring files from backups.
+2.  Nachdem der Wiederherstellungsauftrag abgeschlossen ist, wird die Wiederherstellung gestartet, und es wird eine weitere Benachrichtigung angezeigt. Klicken Sie auf **Auftrag anzeigen**, um den Fortschritt der Wiederherstellung zu überwachen. Sie gelangen auf die Seite **Aufträge**.
 
-1.  When performing the ILR, you can view the backups through Windows Explorer. Click the specific share that you want to look at the backup for. You will see a *.backups* folder created under the share that stores all the backups. Expand the *.backups* folder to view the backups. The folder will then show the exploded view of the entire backup hierarchy. This view is created on-demand and usually takes only a couple of seconds to create.
+3.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Navigieren Sie zurück zur Seite **Volumes** auf Ihrem Gerät.
 
-    The last 5 backups are displayed in this way and can be used to perform an item-level recovery. The 5 recent backups include both the default scheduled and the manual backups.
+4.  Sie können nun das neu wiederhergestellte Volume in der Liste mit den Volumes auf Ihrem Gerät anzeigen. Beachten Sie, dass bei der Wiederherstellung derselbe Volumetyp verwendet wird. Ein mehrstufiges Volume wird auch als mehrstufiges Volume wiederhergestellt, und ein lokales Volume bleibt ein lokales Volume.
 
-    
-    -   **Scheduled backups** named as &lt;Device name&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC.
+5.  Sobald das Volume in der Liste der Volumes online angezeigt wird, ist das Volume für die Verwendung verfügbar. Aktualisieren Sie auf dem iSCSI-Initiatorhost die Liste der Ziele im Fenster mit den iSCSI-Initiatoreigenschaften. Ein neues Ziel, das den Namen des wiederhergestellten Volumes enthält, sollte in der Statusspalte als „inaktiv“ angezeigt werden.
 
-    -   **Manual backups** named as Ad-hoc-YYYYMMDD-HHMMSS-UTC.
-    
-        ![](./media/storsimple-ova-restore/image14.png)
+6.  Wählen Sie das Ziel aus, und klicken Sie auf **Verbinden**. Wenn der Initiator mit dem Ziel verbunden ist, sollte sich der Status in **Verbunden** ändern.
 
-1.  Identify the backup containing the most recent version of the deleted file. Though the folder name contains a UTC timestamp in each of the above cases, the time at which the folder was created is the actual device time when the backup started. Use the folder timestamp to locate and identify the backups.
+7.  Im Fenster **Datenträgerverwaltung** werden die bereitgestellten Volumes wie in der folgenden Abbildung dargestellt angezeigt. Klicken Sie mit der rechten Maustaste auf das ermittelte Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Online**.
 
-2.  Locate the folder or the file that you want to restore in the backup that you identified in the previous step. Note you can only view the files or folders that you have permissions for. If you are not able to access certain files or folders, you will need to contact a share administrator who can use Windows Explorer to edit the share permissions and give you access to the specific file or folder. It is a recommended best practice that the share administrator be a user group instead of a single user.
+> [AZURE.IMPORTANT] Wenn Sie versuchen, ein Volume oder eine Freigabe aus einer Sicherung wiederherzustellen, und der Wiederherstellungsauftrag fehlschlägt, wird möglicherweise dennoch ein Zielvolume bzw. eine -freigabe im Portal erstellt. Es ist wichtig, dass Sie dieses Zielvolume bzw. die -freigabe im Portal löschen, um zukünftige Probleme mit diesem Element zu minimieren.
 
-3.  Copy the file or the folder to the appropriate share on your StorSimple file server.
+## Wiederherstellung auf Elementebene
 
-![video_icon](./media/storsimple-ova-restore/video_icon.png) **Video available**
+Mit dieser Version wird die Wiederherstellung auf Elementebene (Item-Level Recovery, ILR) auf einem virtuellen StorSimple-Gerät eingeführt, das als Dateiserver konfiguriert ist. Mit diesem Feature können Sie die Dateien und Ordner einer Cloudsicherung für alle Freigaben des StorSimple-Geräts präzise wiederherstellen. Benutzer können gelöschte Dateien aus kürzlich erfolgten Sicherungen per Self-Service wiederherstellen.
 
-Watch the video to see how you can create shares, back up shares, and restore data on a StorSimple Virtual Array.
+Jede Freigabe verfügt über einen Ordner *.backups*, der die letzten Sicherungen enthält. Der Benutzer kann zur gewünschten Sicherung navigieren, relevante Dateien und Ordner aus der Sicherung kopieren und diese dann wiederherstellen. Es ist dann nicht mehr erforderlich, sich wegen der Wiederherstellung von Dateien aus Sicherungen an den Administrator zu wenden.
+
+1.  Wenn Sie die Wiederherstellung auf Elementebene durchführen, können Sie die Sicherungen per Windows-Explorer anzeigen. Klicken Sie auf die jeweilige Freigabe, für die Sie sich die Sicherungen ansehen möchten. Sie sehen den Ordner *.backups*, der in der Freigabe erstellt wurde und alle Sicherungen enthält. Erweitern Sie den Ordner *.backups*, um die Sicherungen anzuzeigen. Im Ordner wird dann die Explosionsansicht der gesamten Sicherungshierarchie angezeigt. Diese Ansicht wird bei Bedarf erstellt, was normalerweise nur wenige Sekunden dauert.
+
+	Auf diese Weise werden die letzten fünf Sicherungen angezeigt und können zur Wiederherstellung auf Elementebene verwendet werden. Zu den fünf letzten Sicherungen gehören sowohl die standardmäßig geplanten als auch die manuellen Sicherungen.
+
+	
+	-   **Geplante Sicherungen** weisen die Bezeichnung „&lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC“ auf.
+
+	-   **Manuelle Sicherungen** weisen die Bezeichnung „Ad-hoc-YYYYMMDD-HHMMSS-UTC“ auf.
+	
+		![](./media/storsimple-ova-restore/image14.png)
+
+1.  Identifizieren Sie die Sicherung mit der letzten Version der gelöschten Datei. Der Ordnername enthält zwar in allen obigen Fällen einen UTC-Zeitstempel, aber der Zeitpunkt der Ordnererstellung ist die eigentliche Geräteuhrzeit, zu der die Sicherung gestartet wurde. Verwenden Sie den Ordnerzeitstempel, um die Sicherungen zu finden und zu identifizieren.
+
+2.  Suchen Sie nach dem Ordner oder der Datei, den bzw. die Sie in der im vorherigen Schritt identifizierten Sicherung wiederherstellen möchten. Beachten Sie, dass Sie nur die Dateien oder Ordner anzeigen können, für die Sie Berechtigungen besitzen. Wenn Sie nicht auf bestimmte Dateien oder Ordner zugreifen können, müssen Sie sich an einen Freigabeadministrator wenden. Der Administrator kann Windows-Explorer verwenden, um die Freigabeberechtigungen zu bearbeiten und Ihnen den Zugriff auf die Datei oder den Ordner zu gewähren. Es ist eine empfohlene bewährte Methode, dass es sich beim Freigabeadministrator um eine Benutzergruppe handelt, nicht um einen einzelnen Benutzer.
+
+3.  Kopieren Sie die Datei bzw. den Ordner auf die entsprechende Freigabe auf dem StorSimple-Dateiserver.
+
+![video\_icon](./media/storsimple-ova-restore/video_icon.png) **Video verfügbar**
+
+In diesem Video wird gezeigt, wie Sie Freigaben erstellen, Freigaben sichern und Daten auf einem StorSimple Virtual Array wiederherstellen.
 
 > [AZURE.VIDEO use-the-storsimple-virtual-array]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Learn more about how to [administer your StorSimple Virtual Array using the local web UI](storsimple-ova-web-ui-admin.md).
+Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokalen Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

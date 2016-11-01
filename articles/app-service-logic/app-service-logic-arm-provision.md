@@ -1,62 +1,61 @@
 <properties 
-    pageTitle="Create a Logic App using Azure Resource Manager templates in Azure App Service | Microsoft Azure" 
-    description="Use an Azure Resource Manager template to deploy an empty Logic App for defining workflows." 
-    services="logic-apps" 
-    documentationCenter="" 
-    authors="MSFTMan" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Erstellen einer Logik-App mit Azure-Ressourcen-Manager-Vorlagen in Azure App Service | Microsoft Azure" 
+	description="Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine leere Logik-App zum Definieren von Workflows bereitzustellen." 
+	services="logic-apps" 
+	documentationCenter="" 
+	authors="MSFTMan" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/25/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/25/2016" 
+	ms.author="deonhe"/>
 
+# Erstellen einer Logik-App mithilfe einer Vorlage
 
-# <a name="create-a-logic-app-using-a-template"></a>Create a Logic App using a template
+Erstellen Sie mit einer Azure-Ressourcen-Manager-Vorlage eine leere Logik-App, die zum Definieren von Workflows verwendet werden kann. Sie können definieren, welche Ressourcen bereitgestellt werden, und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Use an Azure Resource Manager template to create an empty logic app that can be used to define workflows. You can define which resources are deployed and how to define parameters that are specified when the deployment is executed. You can use this template for your own deployments, or customize it to meet your requirements.
+Weitere Informationen zu den Eigenschaften der Logik-App finden Sie unter [API für die Workflowverwaltung einer Logik-App](https://msdn.microsoft.com/library/azure/mt643788.aspx).
 
-For more details on the Logic app properties, see [Logic App Workflow Management API](https://msdn.microsoft.com/library/azure/mt643788.aspx). 
+Beispiele für die Definition selbst finden Sie unter [Schreiben von Logik-App-Definitionen](app-service-logic-author-definitions.md).
 
-For examples of the definition itself, see [Author Logic App definitions](app-service-logic-author-definitions.md). 
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
 
-For more information about creating templates, see [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md).
+Die vollständige Vorlage finden Sie unter [Logik-App-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
 
-For the complete template, see [Logic App template](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
+## Was Sie bereitstellen
 
-## <a name="what-you-will-deploy"></a>What you will deploy
+Mit dieser Vorlage stellen Sie eine Logik-App bereit.
 
-With this template, you deploy a logic app.
+Wählen Sie die folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
-To run the deployment automatically, select the following button:  
+[![Bereitstellen in Azure](media/app-service-logic-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-[![Deploy to Azure](media/app-service-logic-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
-
-## <a name="parameters"></a>Parameters
+## Parameter
 
 [AZURE.INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
 
-### <a name="testuri"></a>testUri
+### testUri
 
      "testUri": {
         "type": "string",
-        "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
+        "defaultValue": "http://azure.microsoft.com/status/feed/"
       }
     
-## <a name="resources-to-deploy"></a>Resources to deploy
+## Bereitzustellende Ressourcen
 
-### <a name="logic-app"></a>Logic app
+### Logik-App
 
-Creates the logic app.
+Erstellt die Logik-App.
 
-The templates uses a parameter value for the logic app name. It sets the location of the logic app to the same location as the resource group. 
+Die Vorlage erstellt einen Parameterwert für den Namen der Logik-App. Sie legt den Speicherort der Logik-App auf den Speicherort für die Ressourcengruppe fest.
 
-This particular definition runs once an hour, and pings the location specified in the **testUri** parameter. 
+Diese spezifische Definition wird einmal pro Stunde ausgeführt und pingt den im Parameter **testUri** angegebenen Speicherort.
 
     {
       "type": "Microsoft.Logic/workflows",
@@ -102,23 +101,19 @@ This particular definition runs once an hour, and pings the location specified i
     }
 
 
-## <a name="commands-to-run-deployment"></a>Commands to run deployment
+## Befehle zum Ausführen der Bereitstellung
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### <a name="powershell"></a>PowerShell
+### PowerShell
 
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
-### <a name="azure-cli"></a>Azure CLI
+### Azure-Befehlszeilenschnittstelle
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
 
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,6 +1,6 @@
 <properties
- pageTitle="Get started with Azure Scheduler in Azure portal | Microsoft Azure"
- description="Get started with Azure Scheduler in Azure portal"
+ pageTitle="Erste Schritte mit Azure Scheduler im Azure-Portal | Microsoft Azure"
+ description="Erste Schritte mit Azure Scheduler im Azure-Portal"
  services="scheduler"
  documentationCenter=".NET"
  authors="derek1ee"
@@ -15,145 +15,144 @@
  ms.date="08/10/2016"
  ms.author="deli"/>
 
+# Erste Schritte mit Azure Scheduler im Azure-Portal
 
-# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Get started with Azure Scheduler in Azure portal
+Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tutorial erfahren Sie, wie ein Auftrag erstellt wird. Außerdem erhalten Sie Informationen zu den Überwachungs- und Verwaltungsfunktionen von Scheduler.
 
-It's easy to create scheduled jobs in Azure Scheduler. In this tutorial, you'll learn how to create a job. You'll also learn Scheduler's monitoring and management capabilities.
+## Erstellen eines Auftrags
 
-## <a name="create-a-job"></a>Create a job
+1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1.  Sign in to [Azure portal](https://portal.azure.com/).  
-
-2.  Click **+New** > type _Scheduler_ in the search box >  select **Scheduler** in results > click **Create**.
+2.  Klicken Sie auf **+ Neu** > geben Sie im Suchfeld _Scheduler_ ein > wählen Sie in den Ergebnissen **Scheduler** > klicken Sie auf **Erstellen**.
 
      ![][marketplace-create]
 
-3.  Let’s create a job that simply hits http://www.microsoft.com/ with a GET request. In the **Scheduler Job** screen, enter the following information:
+3.  In diesem Beispiel erstellen wir einen einfachen Auftrag mit einer GET-Anforderung für „http://www.microsoft.com/“. Geben Sie auf dem Bildschirm **Scheduler-Auftrag** die folgenden Informationen ein:
 
-    1.  **Name:** `getmicrosoft`  
+    1.  **Name:** `getmicrosoft`
 
-    2.  **Subscription:** Your Azure subscription   
+    2.  **Abonnement:** Ihr Azure-Abonnement
 
-    3.  **Job Collection:** Select an existing job collection, or click **Create New** > enter a name.
+    3.  **Auftragssammlung:** Wählen Sie eine vorhandene Auftragssammlung aus, oder klicken Sie auf **Neu erstellen**, und geben Sie einen Namen ein.
 
-4.  Next, in **Action Settings**, define the following values:
+4.  Definieren Sie dann unter **Aktionseinstellungen** die folgenden Werte:
 
-    1.  **Action Type:** ` HTTP`  
+    1.  **Aktionstyp:** ` HTTP`
 
-    2.  **Method:** `GET`  
+    2.  **Methode:** `GET`
 
-    3.  **URL:** ` http://www.microsoft.com`  
+    3.  **URL:** ` http://www.microsoft.com`
 
       ![][action-settings]
 
-5.  Finally, let's define a schedule. The job could be defined as a one-time job, but let’s pick a recurrence schedule:
+5.  Jetzt definieren wir einen Zeitplan. Der Auftrag kann natürlich auch als einmaliger Auftrag definiert werden, in diesem Beispiel verwenden wir aber einen Wiederholungszeitplan.
 
-    1. **Recurrence**: `Recurring`
+    1. **Wiederholung**: `Recurring`
 
-    2. **Start**: Today's date
+    2. **Start**: Heutiges Datum
 
-    3. **Recur every**: `12 Hours`
+    3. **Wiederholen alle:** `12 Hours`
 
-    4. **End by**: Two days from today's date  
+    4. **Endet am**: Zwei Tage nach dem heutigen Datum
 
       ![][recurrence-schedule]
 
-6.  Click **Create**
+6.  Klicken Sie auf **Erstellen**.
 
-## <a name="manage-and-monitor-jobs"></a>Manage and monitor jobs
+## Verwalten und Überwachen Aufträgen
 
-Once a job is created, it appears in the main Azure dashboard. Click the job and a new window opens with the following tabs:
+Sobald ein Auftrag erstellt wurde, wird er im Azure-Hauptdashboard angezeigt. Wenn Sie auf den Auftrag klicken, wird ein neues Fenster mit folgenden Registerkarten angezeigt:
 
-1.  Properties  
+1.  Eigenschaften
 
-2.  Action Settings  
+2.  Aktionseinstellungen
 
-3.  Schedule  
+3.  Zeitplan
 
-4.  History
+4.  Verlauf
 
-5.  Users
+5.  Benutzer
 
     ![][job-overview]
 
-### <a name="properties"></a>Properties
+### Eigenschaften
 
-These read-only properties describe the management metadata for the Scheduler job.
+Diese schreibgeschützte Eigenschaften beschreiben die Metadaten für den Scheduler-Auftrag.
 
    ![][job-properties]
 
 
-### <a name="action-settings"></a>Action settings
+### Aktionseinstellungen
 
-Clicking on a job in the **Jobs** screen allows you to configure that job. This lets you configure advanced settings, if you didn't configure them in the quick-create wizard.
+Wenn Sie auf dem Bildschirm **Aufträge** auf einen Auftrag klicken, können Sie diesen konfigurieren. Hier können Sie erweiterte Einstellungen konfigurieren, wenn Sie diese nicht bereits im Schnellerstellungs-Assistenten konfiguriert haben.
 
-For all action types, you may change the retry policy and the error action.
+Sie können die Wiederholungsrichtlinie und die Fehleraktion für alle Aktionstypen ändern.
 
-For HTTP and HTTPS job action types, you may change the method to any allowed HTTP verb. You may also add, delete, or change the headers and basic authentication information.
+Bei HTTP- und HTTPS Auftragsaktionstypen können Sie für die Methode ein beliebiges zulässiges HTTP-Verb festlegen. Darüber hinaus können Sie die Header sowie grundlegende Authentifizierungsinformationen hinzufügen, löschen oder ändern.
 
-For storage queue action types, you may change the storage account, queue name, SAS token, and body.
+Bei Speicherwarteschlangen-Aktionstypen können Sie das Speicherkonto, den Warteschlangennamen, das SAS-Token und den Text ändern.
 
-For service bus action types, you may change the namespace, topic/queue path, authentication settings, transport type, message properties, and message body.
+Für Service Bus-Aktionstypen können Sie den Namespace, den Thema-/Warteschlangenpfad, die Authentifizierungseinstellungen, den Transporttyp, die Nachrichteneigenschaften und den Nachrichtentext ändern.
 
    ![][job-action-settings]
 
-### <a name="schedule"></a>Schedule
+### Schedule
 
-This lets you reconfigure the schedule, if you'd like to change the schedule you created in the quick-create wizard.
+Damit können Sie den Zeitplan neu konfigurieren, wenn Sie den im Schnellerstellungs-Assistenten erstellten Zeitplan ändern möchten.
 
-This is an opportunity to build [complex schedules and advanced recurrence in your job](scheduler-advanced-complexity.md)
+Dies ist eine Möglichkeit zum Erstellen [komplexer Zeitpläne und erweiterter Serien in Ihrem Auftrag](scheduler-advanced-complexity.md).
 
-You may change the start date and time, recurrence schedule, and the end date and time (if the job is recurring.)
+Sie können die Startzeit (Datum und Uhrzeit), den Wiederholungszeitplan und die Endzeit (Datum und Uhrzeit) ändern (sofern es sich um einen wiederkehrenden Auftrag handelt).
 
    ![][job-schedule]
 
 
-### <a name="history"></a>History
+### Verlauf
 
-The **History** tab displays selected metrics for every job execution in the system for the selected job. These metrics provide real-time values regarding the health of your Scheduler:
+Die Registerkarte **Verlauf** zeigt ausgewählte Metriken für jede Auftragsausführung im System für den ausgewählten Auftrag an. Diese Metriken liefern Echtzeitwerte zum Status von Scheduler:
 
-1.  Status  
+1.  Status
 
-2.  Details  
+2.  Details
 
-3.  Retry attempts
+3.  Wiederholungsversuche
 
-4.  Occurrence: 1st, 2nd, 3rd, etc.
+4.  Vorkommen: 1., 2., 3. usw.
 
-5.  Start time of execution  
+5.  Startzeit der Ausführung
 
-6.  End time of execution
+6.  Endzeit der Ausführung
 
    ![][job-history]
 
-You can click on a run to view its **History Details**, including the whole response for every execution. This dialog box also allows you to copy the response to the clipboard.
+Klicken Sie auf eine Ausführung, um die **Verlaufsdetails** anzuzeigen, einschließlich der vollständigen Antwort für jede Ausführung. In diesem Dialogfeld können Sie auch die Antwort in die Zwischenablage kopieren.
 
    ![][job-history-details]
 
-### <a name="users"></a>Users
+### Benutzer
 
-Azure Role-Based Access Control (RBAC) enables fine-grained access management for Azure Scheduler. To learn how to use the Users tab, refer to [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md)
+Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).
 
 
-## <a name="see-also"></a>See also
+## Siehe auch
 
- [What is Scheduler?](scheduler-intro.md)
+ [Was ist Azure Scheduler?](scheduler-intro.md)
 
- [Scheduler concepts, terminology, and entity hierarchy](scheduler-concepts-terms.md)
+ [Scheduler-Konzepte, -Terminologie und -Entitätshierarchie](scheduler-concepts-terms.md)
 
- [Plans and billing in Azure Scheduler](scheduler-plans-billing.md)
+ [Pläne und Abrechnung in Azure Scheduler](scheduler-plans-billing.md)
 
- [How to build complex schedules and advanced recurrence with Azure Scheduler](scheduler-advanced-complexity.md)
+ [Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler](scheduler-advanced-complexity.md)
 
- [Scheduler REST API reference](https://msdn.microsoft.com/library/mt629143)
+ [Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
 
- [Scheduler PowerShell cmdlets reference](scheduler-powershell-reference.md)
+ [Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
 
- [Scheduler high-availability and reliability](scheduler-high-availability-reliability.md)
+ [Scheduler – hohe Verfügbarkeit und Zuverlässigkeit](scheduler-high-availability-reliability.md)
 
- [Scheduler limits, defaults, and error codes](scheduler-limits-defaults-errors.md)
+ [Einschränkungen, Standardwerte und Fehlercodes für Scheduler](scheduler-limits-defaults-errors.md)
 
- [Scheduler outbound authentication](scheduler-outbound-authentication.md)
+ [Ausgehende Authentifizierung von Scheduler](scheduler-outbound-authentication.md)
 
 
 [marketplace-create]: ./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png
@@ -183,8 +182,4 @@ Azure Role-Based Access Control (RBAC) enables fine-grained access management fo
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

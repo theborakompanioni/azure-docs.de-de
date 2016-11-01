@@ -1,8 +1,8 @@
 <properties 
-    pageTitle="How do you redirect USB devices in Azure RemoteApp? | Microsoft Azure" 
-    description="Learn how to use redirection for USB devices in Azure RemoteApp." 
+    pageTitle="Wie werden USB-Geräte in Azure RemoteApp umgeleitet? | Microsoft Azure" 
+    description="Erfahren Sie, wie USB-Geräte in Azure RemoteApp umgeleitet werden." 
     services="remoteapp" 
-    documentationCenter="" 
+	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -17,74 +17,67 @@
 
 
 
-
-# <a name="how-do-you-redirect-usb-devices-in-azure-remoteapp?"></a>How do you redirect USB devices in Azure RemoteApp?
+# Wie werden USB-Geräte in Azure RemoteApp umgeleitet?
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
-Device redirection lets users use the USB devices attached to their computer or tablet with the apps in Azure RemoteApp. For example, if you shared Skype through Azure RemoteApp, your users need to be able to use their device cameras.
+Die Geräteumleitung ermöglicht Benutzern das Verwenden der an ihren Computer oder ihr Tablet angeschlossenen USB-Geräte mit den Apps in Azure RemoteApp. Wenn Sie z. B. Skype über Azure RemoteApp freigegeben haben, müssen die Benutzer ihre Gerätekameras verwenden können.
 
-Before you go further, make sure you read the USB redirection information in [Using redirection in Azure RemoteApp](remoteapp-redirection.md). However the recommended  nusbdevicestoredirect:s:* won't work for USB web cameras and may not work for some USB printers or USB multifunctional devices. By design and for security reasons, the Azure RemoteApp administrator has to enable redirection either by device class GUID or by device instance ID before your users can use those devices.
+Bevor Sie fortfahren, lesen Sie zunächst die Informationen zur USB-Umleitung unter [Verwenden von Umleitungen in Azure RemoteApp](remoteapp-redirection.md). Der empfohlene Befehl „nusbdevicestoredirect:s:*“ funktioniert jedoch nicht bei USB-Webcams und möglicherweise auch nicht bei einigen USB-Druckern oder -Multifunktionsgeräten. Es ist vorgesehen, dass der Azure RemoteApp-Administrator aus Sicherheitsgründen die Umleitung entweder über die Geräteklassen-GUID oder Geräte-Instanz-ID aktivieren muss, ehe die Benutzer diese Geräte nutzen können.
 
-Although this article talks about web camera redirection, you can use a similar approach to redirect USB printers and other USB multifunctional devices that are not redirected by the **nusbdevicestoredirect:s:*** command.
+Obwohl in diesem Artikel von der Umleitung von Webcams die Rede ist, können Sie einen ähnlichen Ansatz befolgen, um USB-Drucker und andere -Multifunktionsgeräte umzuleiten, die nicht mit dem Befehl **nusbdevicestoredirect:s:*** umgeleitet werden.
 
-## <a name="redirection-options-for-usb-devices"></a>Redirection options for USB devices
-Azure RemoteApp uses very similar mechanisms for redirecting USB devices as the ones available for Remote Desktop Services. The underlying technology lets you choose the correct redirection method for a given device, to get the best of both high-level and RemoteFX USB device redirection using the **usbdevicestoredirect:s:** command. There are four elements to this command:
+## Umleitungsoptionen für USB-Geräte
+Azure RemoteApp verwendet sehr ähnliche Mechanismen zum Umleiten von USB-Geräten wie diejenigen, die für Remotedesktopdienste verfügbar sind. Die zugrunde liegende Technologie ermöglicht das Auswählen der ordnungsgemäßen Umleitungsmethode für ein bestimmtes Gerät, um mit dem Befehl **usbdevicestoredirect:s:** optimale Ergebnisse sowohl bei der allgemeinen als auch der RemoteFX-USB-Geräteumleitung zu erzielen. Dieser Befehl hat vier Elemente:
 
-| Processing order | Parameter           | Description                                                                                                                |
+| Verarbeitungsreihenfolge | Parameter | Beschreibung |
 |------------------|---------------------|----------------------------------------------------------------------------------------------------------------------------|
-| 1                | *                   | Selects all devices that aren't picked up by high-level redirection. Note: By design, * doesn't work for USB web cameras.  |
-|                  | {Device class GUID} | Selects all devices that match the specified device setup class.                                                           |
-|                  | USB\InstanceID      | Selects a USB device specified for the given instance ID.                                                                  |
-| 2                | -USB\Instance ID    | Removes the redirection settings for the specified device.                                                                 |
+| 1 | * | Wählt alle Geräte aus, die von der allgemeinen Umleitung nicht ausgewählt werden. Hinweis: Standardmäßig funktioniert „*“ nicht für USB-Webcams. |
+| | {Geräteklassen-GUID} | Wählt alle Geräte aus, die der angegebenen Gerätesetupklasse entsprechen. |
+| | USB\\Instanz-ID | Wählt ein USB-Gerät aus, das für die jeweilige Instanz-ID angegeben ist. |
+| 2 | -USB\\Instanz-ID | Entfernt die Umleitungseinstellungen für das angegebene Gerät. |
 
-## <a name="redirecting-a-usb-device-by-using-the-device-class-guid"></a>Redirecting a USB device by using the device class GUID
-There are two ways to find the device class GUID that can be used for redirection. 
+## Umleiten von USB-Geräten mithilfe der Geräteklassen-GUID
+Es gibt zwei Möglichkeiten, die Geräteklassen-GUID zu finden, die für die Umleitung verwendet werden kann.
 
-The first option is to use the [System-Defined Device Setup Classes Available to Vendors](https://msdn.microsoft.com/library/windows/hardware/ff553426.aspx). Pick the class that most closely matches the device attached to the local computer. For digital cameras this could be an Imaging Device class or Video Capture Device class. You'll need to do some experimentation with the device classes to find the correct class GUID that works with the locally attached USB device (in our case the web camera).
+Die erste Möglichkeit sind die vom [System definierten Gerätesetupklassen, die für Anbieter verfügbar sind](https://msdn.microsoft.com/library/windows/hardware/ff553426.aspx). Wählen Sie die Klasse, die am ehesten dem Gerät entspricht, das am lokalen Computer angeschlossen ist. Für Digitalkameras kann dies eine Bildverarbeitungs- oder Videoaufnahme-Geräteklasse sein. Sie müssen ein wenig mit den Geräteklassen experimentieren, um die ordnungsgemäße Klassen-GUID zu finden, die für das lokal angeschlossene USB-Gerät (in unserem Fall die Webcam) funktioniert.
 
-A better way, or the second option, is to follow these steps to find the specific device class GUID:
+Eine bessere Möglichkeit bzw. die zweite Option ist, die folgenden Schritte zu befolgen, um die spezifische Geräteklassen-GUID zu finden:
 
-1. Open the Device Manager, locate the device that will be redirected and right-click it, and then open the properties.
-![Open the Device Manager](./media/remoteapp-usbredir/ra-devicemanager.png)
-2. On the **Details** tab, choose the property **Class Guid**. The value which appears is the Class GUID for that type of device.
-![Camera properties](./media/remoteapp-usbredir/ra-classguid.png)
-3. Use the Class Guid value to redirect devices that match it.
+1. Öffnen Sie den Geräte-Manager, und suchen Sie das Gerät, das umgeleitet werden soll. Klicken Sie mit der rechten Maustaste darauf, und öffnen Sie dann die Eigenschaften. ![Öffnen des Geräte-Managers](./media/remoteapp-usbredir/ra-devicemanager.png)
+2. Wählen Sie auf der Registerkarte **Details** die Eigenschaft **Klassen-GUID**. Der angezeigte Wert ist die Klassen-GUID für diesen Gerätetyp. ![Kameraeigenschaften](./media/remoteapp-usbredir/ra-classguid.png)
+3. Verwenden Sie den Wert der Klassen-GUID, um entsprechende Geräte umzuleiten.
 
-For example:
+Beispiel:
 
-        Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s:<Class Guid value>"
 
-You can combine multiple device redirections in the same cmdlet. For example: to redirect local storage and a USB web camera, cmdlet looks like this:
+Sie können mehrere Geräteumleitungen in einem Cmdlet zusammenfassen. Beispiel: Zum Umleiten von lokalem Speicher und einer USB-Webcam sieht das Cmdlet folgendermaßen aus:
 
-        Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:<Class Guid value>"
 
-When you set device redirection by class GUID all devices that match that class GUID in the specified collection are redirected. For example, if there are multiple computers on the local network that have the same USB web cameras, you can run a single cmdlet to redirect all of the web cameras.
+Wenn Sie die Geräteumleitung anhand der Klassen-GUID festlegen, werden alle Geräte umgeleitet, die der Klassen-GUID in der angegebenen Sammlung entsprechen. Wenn es beispielsweise mehrere Computer im lokalen Netzwerk gibt, die die gleiche USB-Webcam haben, können Sie mithilfe eines einzelnen Cmdlets alle Webcams umleiten.
 
-## <a name="redirecting-a-usb-device-by-using-the-device-instance-id"></a>Redirecting a USB device by using the device instance ID
+## Umleiten eines USB-Geräts mithilfe der Geräteinstanz-ID
 
-If you want more fine-grained control and want to control redirection per device, you can use the **USB\InstanceID** redirection parameter.
+Wenn Sie eine präzisere Kontrolle wünschen und die Umleitung gerätebezogen steuern möchten, können Sie den Umleitungsparameter **USB\\InstanceID** verwenden.
 
-The hardest part of this method is finding the USB device instance ID. You'll need access to the computer and the specific USB device. Then follow these steps:
+Der schwierigste Teil dieser Methode ist das Ermitteln der USB-Geräteinstanz-ID. Sie benötigen Zugriff auf den Computer und das jeweilige USB-Gerät. Führen Sie dann die folgenden Schritte durch:
 
-1. Enable the device redirection in Remote Desktop Session as described in [How can I use my devices and resources in a Remote Desktop session?](http://windows.microsoft.com/en-us/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session)
-2. Open a Remote Desktop Connection and click **Show Options**.
-3. Click **Save as** to save the current connection settings to an RDP file.  
-    ![Save the settings as an RDP file](./media/remoteapp-usbredir/ra-saveasrdp.png)
-4. Choose a file name and a location, for example “MyConnection.rdp” and “This PC\Documents”, and save the file.
-5. Open the MyConnection.rdp file using a text editor and find the instance ID of the device you want to redirect.
+1. Aktivieren Sie die Umleitung in der Remotedesktopsitzung wie unter [Wie kann ich meine Geräte und Ressourcen in einer Remotedesktopsitzung verwenden?](http://windows.microsoft.com/de-DE/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session) beschrieben.
+2. Öffnen Sie eine Remotedesktopverbindung, und klicken Sie auf **Optionen anzeigen**.
+3. Klicken Sie auf **Speichern unter**, um die aktuellen Verbindungseinstellungen in einer RDP-Datei zu speichern. ![Speichern der Einstellungen als RDP-Datei](./media/remoteapp-usbredir/ra-saveasrdp.png)
+4. Wählen Sie einen Dateinamen und Speicherort aus, z. B. „MeineVerbindung.rdp“ und „Dieser PC\\Dokumente“, und speichern Sie die Datei.
+5. Öffnen Sie die Datei „MeineVerbindung.rdp“ in einem Text-Editor, und suchen Sie die Instanz-ID des Geräts, das Sie umleiten möchten.
 
-Now, use the instance ID in the following cmdlet:
+Verwenden Sie anschließend die Instanz-ID im folgenden Cmdlet:
 
-    Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s: USB\<Device InstanceID value>"
+	Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s: USB<Device InstanceID value>"
 
 
 
-### <a name="help-us-help-you"></a>Help us help you 
-Did you know that in addition to rating this article and making comments down below, you can make changes to the article itself? Something missing? Something wrong? Did I write something that's just confusing? Scroll up and click **Edit on GitHub** to make changes - those will come to us for review, and then, once we sign off on them, you'll see your changes and improvements right here.
+### Helfen Sie uns, Ihnen zu helfen 
+Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

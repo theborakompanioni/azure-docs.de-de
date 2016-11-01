@@ -1,32 +1,29 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>To install Maintenance mode updates via Windows PowerShell for StorSimple
+#### So installieren Sie Wartungsmodus-Updates über Windows PowerShell für StorSimple
 
-1. If you haven't done so already, access the device serial console and select option 1, **Log in with full access**. 
+1. Wenn Sie dies noch nicht getan haben, greifen Sie auf die serielle Konsole des Geräts zu, und wählen Sie Option 1, d. h. die **Anmeldung mti Vollzugriff**. 
 
-2. Type the password. The default password is **Password1**.
+2. Geben Sie das Kennwort ein. Das Standardkennwort lautet **Password1**.
 
-3. At the command prompt, type:
+3. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
-     `Get-HcsUpdateAvailability` 
+     `Get-HcsUpdateAvailability`
     
-4. You will be notified if updates are available and whether the updates are disruptive or non-disruptive. To apply disruptive updates, you need to put the device into Maintenance mode. See [Step 2: Enter Maintenance mode](storsimple-update-device.md#step2) for instructions.
+4. Sie werden benachrichtigt, wenn Updates verfügbar sind und ob diese Updates mit oder ohne Unterbrechungen installiert werden können. Um Updates anzuwenden, durch die der Betrieb unterbrochen wird, müssen Sie das Gerät in den Wartungsmodus versetzen. Anweisungen dazu finden Sie unter [Schritt 2: Wechseln in den Wartungsmodus](storsimple-update-device.md#step2).
 
-5. When your device is in Maintenance mode, at the command prompt, type: `Start-HcsUpdate`
+5. Wenn sich Ihr Gerät im Wartungsmodus befindet, geben Sie an der Eingabeaufforderung folgenden Befehl ein: `Start-HcsUpdate`.
 
-6. You will be prompted for confirmation. After you confirm the updates, they will be installed on the controller that you are currently accessing. After the updates are installed, the controller will restart. 
+6. Sie werden aufgefordert, diesen Schritt zu bestätigen. Nachdem Sie die Updates bestätigt haben, werden sie auf dem Controller installiert, auf den Sie gerade zugreifen. Nachdem die Updates installiert wurden, wird der Controller neu gestartet.
 
-7. Monitor the status of updates. Type:
+7. Überwachen Sie den Status der Aktualisierungen. Geben Sie Folgendes ein:
 
-    `Get-HcsUpdateStatus`
-    
-    If the `RunInProgress` is `True`, the update is still in progress. If `RunInProgress` is `False`, it indicates that the update has completed.  
+	`Get-HcsUpdateStatus`
+	
+	Wenn `RunInProgress` `True` lautet, ist das Update noch nicht abgeschlossen. Wenn `RunInProgress``False` lautet, ist das Update abgeschlossen.
 
-7. When the update is installed on the current controller and it has restarted, connect to the other controller and perform steps 1 through 6.
+7. Wurde der aktuelle Controller nach der Installation der Aktualisierung neu gestartet, stellen Sie eine Verbindung zu dem anderen Controller her und führen Sie die Schritte 1 bis 6 durch.
 
-8. After both controllers are updated, exit Maintenance mode. See [Step 4: Exit Maintenance mode](storsimple-update-device.md#step4) for instructions.
+8. Nachdem beide Controller aktualisiert wurden, beenden Sie den Wartungsmodus. Anweisungen dazu finden Sie unter [Schritt 4: Beenden des Wartungsmodus](storsimple-update-device.md#step4).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

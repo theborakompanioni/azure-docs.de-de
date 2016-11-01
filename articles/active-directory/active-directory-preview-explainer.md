@@ -1,48 +1,43 @@
 <properties
-    pageTitle="Azure Active Directory preview explainer | Microsoft Azure"
-    description="A topic that explains the differences between Azure Active Directory in the classic portal and the Azure Active Directory preview in the Azure portal."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Erläuterungen zur Azure Active Directory-Vorschau | Microsoft Azure"
+	description="Ein Thema, in dem die Unterschiede zwischen Azure Active Directory im klassischen Portal und der Azure Active Directory-Vorschau im Azure-Portal erläutert werden."
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
 
+# Vorschau der Azure Active Directory-Verwaltungsoberfläche im Azure-Portal
 
-# <a name="preview-of-the-azure-active-directory-management-experience-in-the-azure-portal"></a>Preview of the Azure Active Directory management experience in the Azure portal
-
-The Azure Active Directory (Azure AD) management experience is in preview in the Azure portal. You can try it out by signing in to [the Azure portal](https://portal.azure.com) as a global administrator of your directory. Then, select Azure Active Directory in the services list if it is visible, or select **More services** to view the list of all services. You do not need an Azure subscription to use the Azure AD management experience in the Azure portal.
+Die Azure Active Directory-Verwaltungsoberfläche (Azure AD) im Azure-Portal befindet sich in der Vorschau. Sie können dieses Feature ausprobieren, indem Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator Ihres Verzeichnisses anmelden. Wählen Sie anschließend in der Liste der Dienste „Azure Active Directory“ aus, oder wählen Sie **Weitere Dienste** aus, um eine Liste aller Dienste anzuzeigen. Sie benötigen kein Azure-Abonnement, um die Azure AD-Verwaltungsoberfläche im Azure-Portal zu verwenden.
 
 
-## <a name="capabilities-of-the-preview-experience"></a>Capabilities of the preview experience
+## Funktionen der Vorschauoberfläche
 
-The preview experience enables you to manage many directory resources such as users, groups, and applications, as well as directory settings, in the Azure portal. We are improving this experience to include all the capabilities that exist in the Azure AD management experience in the [Azure classic portal](https://manage.windowsazure.com). Until then, there are some directory management tasks that you must still complete in the classic portal.
+Die Vorschauoberfläche ermöglicht Ihnen das Verwalten vieler Verzeichnisressourcen im Azure-Portal, darunter beispielsweise Benutzer, Gruppen und Anwendungen sowie Verzeichniseinstellungen. Wir arbeiten an der Verbesserung dieser Oberfläche, um alle Funktionen der Azure AD-Verwaltungsoberfläche im [klassischen Azure-Portal](https://manage.windowsazure.com) bereitzustellen. Bis dies erreicht ist, müssen einige der Aufgaben im Rahmen der Verzeichnisverwaltung weiterhin im klassischen Portal ausgeführt werden.
 
-## <a name="manage-the-same-azure-ad-tenants"></a>Manage the same Azure AD tenants
+## Verwaltung derselben Azure AD-Mandanten
 
-The preview experience reads and writes to the same Azure Active Directory tenant as the classic portal, and the Office 365 Admin center. Changes made in any of these portals are reflected in all of the others.
+Die Vorschauoberfläche führt Lese- und Schreibvorgänge für denselben Azure Active Directory-Mandanten durch wie das klassische Portal und das Office 365 Admin Center. Änderungen, die in einem dieser Portale durchgeführt werden, werden auch in allen anderen Portalen widergespiegelt.
 
-## <a name="use-the-same-authorization-logic"></a>Use the same authorization logic
+## Verwendung derselben Autorisierungslogik
 
-The preview experience uses the same authorization logic as existing Active Directory clients. Users are authorized to make changes to directory resources based on their directory role, such as global administrator, user administrator, password administrator. Having a role on Azure resources or an Azure subscription does not authorize a user to manage directory resources. For more information Azure AD management roles, see [Assigning administrator roles in Azure Active Directory](active-directory-assign-admin-roles.md). 
+Die Vorschauoberfläche verwendet dieselbe Autorisierungslogik wie die vorhandenen Active Directory-Clients. Benutzer sind basierend auf ihrer Verzeichnisrolle – z.B. globaler Administrator, Benutzeradministrator, Kennwortadministrator – dazu autorisiert, Änderungen an Verzeichnisressourcen durchzuführen. Eine Rolle für Azure-Ressourcen oder ein Azure-Abonnement autorisieren einen Benutzer nicht, Verzeichnisressourcen zu verwalten. Weitere Informationen zu Azure AD-Verwaltungsrollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles.md).
 
-The preview experience is optimized for global administrators. If you use the preview experience while signed in as a user that is not a global administrator, you may have a degraded experience. For example, you might be able to select a button that lets you begin a task that you can't complete in the directory. We are improving this experience soon.
+Die Vorschauoberfläche ist für globale Administratoren optimiert. Wenn Sie die Vorschauoberfläche verwenden, während Sie als ein Benutzer angemeldet sind, der nicht als globaler Administrator konfiguriert ist, ist das Benutzererlebnis möglicherweise beeinträchtigt. Zum Beispiel können Sie möglicherweise auf eine Schaltfläche zum Starten einer Aufgabe klicken, die Sie nicht im Verzeichnis ausführen können. Dieses Verhalten wird bald verbessert.
  
-## <a name="tell-us-what-you-think"></a>Tell us what you think
+## Sagen Sie uns Ihre Meinung
 
-You can provide feedback on the preview experience in the admin portal section of the [Azure AD feedback forum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&filter=alltypes&sort=lastpostdesc).
+Sie können uns im Verwaltungsportalbereich des [Azure AD-Feedbackforums](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&filter=alltypes&sort=lastpostdesc) Feedback zur Vorschauoberfläche geben.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

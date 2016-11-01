@@ -1,96 +1,92 @@
 <properties 
-    pageTitle="Analytics - the powerful search tool of Application Insights | Microsoft Azure" 
-    description="Overview of Analytics, the powerful diagnostic search tool of Application Insights. " 
-    services="application-insights" 
+	pageTitle="Analytics, das leistungsfähige Suchtool von Application Insights | Microsoft Azure" 
+	description="Übersicht über Analytics, das leistungsfähige Diagnosesuchtool von Application Insights. " 
+	services="application-insights" 
     documentationCenter=""
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/26/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/25/2016" 
+	ms.author="awills"/>
 
 
+# Analytics in Application Insights
 
-# <a name="analytics-in-application-insights"></a>Analytics in Application Insights
 
+[Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-[Analytics](app-insights-analytics.md) is the powerful search feature of [Application Insights](app-insights-overview.md). These pages describe the Analytics query lanquage. 
+* **[Sehen Sie sich das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 
-* **[Watch the introductory video](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
-* **[Test drive Analytics on our simulated data](https://analytics.applicationinsights.io/demo)** if your app isn't sending data to Application Insights yet.
-
-## <a name="queries-in-analytics"></a>Queries in Analytics
+## Abfragen in Analytics
  
-A typical query is a *source* table followed by a series of *operators* separated by `|`. 
+Eine typische Abfrage ist eine *Quelltabelle*, gefolgt von einer Reihe von *Operatoren*, die durch `|` getrennt sind.
 
-For example, let's find out what time of day the citizens of Hyderabad try our web app. And while we're there, let's see what result codes are returned to their HTTP requests. 
+Finden wir also heraus, zu welcher Tageszeit die Einwohner von Hyderabad unsere Web-App testen. Und während wir damit beschäftigt sind, sehen wir, welche Ergebniscodes an ihre HTTP-Anfragen zurückgegeben werden.
 
 ```AIQL
 
     requests      // Table of events that log HTTP requests.
-  	| where timestamp > ago(7d) and client_City == "Hyderabad"
-  	| summarize clients = dcount(client_IP) 
+    | where timestamp > ago(7d) and client_City == "Hyderabad"
+    | summarize clients = dcount(client_IP) 
       by tod_UTC=bin(timestamp % 1d, 1h), resultCode
-  	| extend local_hour = (tod_UTC + 5h + 30min) % 24h + datetime("2001-01-01") 
+    | extend local_hour = (tod_UTC + 5h + 30min) % 24h + datetime("2001-01-01") 
 ```
 
-We count distinct client IP addresses, grouping them by the hour of the day over the past 7 days. 
+Wir zählen verschiedene Client-IP-Adressen der letzten 7 Tage auf und gruppieren sie nach Uhrzeit.
 
-Let's display the results with the bar chart presentation, choosing to stack the results from different response codes:
+Wir zeigen die Ergebnisse mit der Balkendiagramm-Präsentation und listen die Ergebnisse von verschiedenen Antwortcodes auf.
 
-![Choose bar chart, x and y axes, then segmentation](./media/app-insights-analytics/020.png)
+![Wählen Sie das Balkendiagramm, die X-Achsen und Y-Achsen, dann die Segmentierung](./media/app-insights-analytics/020.png)
 
-Looks like our app is most popular at lunchtime and bed-time in Hyderabad. (And we should investigate those 500 codes.)
+Anscheinend ist unserer App zur Mittagszeit und zur Schlafenszeit in Hyderabad am beliebtesten. (Und wir sollten wir diese 500 Codes untersuchen.)
 
 
-There are also powerful statistical operations:
+Es gibt auch leistungsstarke statistische Vorgänge:
 
 ![](./media/app-insights-analytics/025.png)
 
 
-The language has many attractive features:
+Die Sprache verfügt über viele attraktive Features:
 
-* [Filter](app-insights-analytics-reference.md#where-operator) your raw app telemetry by any fields, including your custom properties and metrics.
-* [Join](app-insights-analytics-reference.md#join-operator) multiple tables – correlate requests with page views, dependency calls, exceptions and log traces.
-* Powerful statistical [aggregations](app-insights-analytics-reference.md#aggregations).
-* Just as powerful as SQL, but much easier for complex queries: instead of nesting statements, you pipe the data from one elementary operation to the next.
-* Immediate and powerful visualizations.
-
-
+* [Filtern](app-insights-analytics-reference.md#where-operator) der Rohdaten Ihrer App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
+* [Verbinden](app-insights-analytics-reference.md#join-operator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
+* Leistungsstarke statistische [Aggregationen](app-insights-analytics-reference.md#aggregations).
+* Genauso leistungsstark wie SQL, aber viel einfacher für komplexe Abfragen: anstelle der Schachtelung von Anweisungen übergeben Sie die Daten aus einem elementaren Vorgang an den nächsten.
+* Sofortige und leistungsfähige Visualisierungen.
 
 
 
 
 
-## <a name="connect-to-your-application-insights-data"></a>Connect to your Application Insights data
 
 
-Open Analytics from your app's [overview blade](app-insights-dashboards.md) in Application Insights: 
-
-![Open portal.azure.com, open your Application Insights resource, and click Analytics.](./media/app-insights-analytics/001.png)
+## Verbinden mit Ihren Application Insights-Daten
 
 
-## <a name="limits"></a>Limits
+Öffnen Sie Analytics über das [Blatt „Übersicht“](app-insights-dashboards.md) Ihrer App in Application Insights:
 
-At present, query results are limited to just over a week of past data.
+![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics/001.png)
+
+
+## Grenzen
+
+Derzeit sind Abfrageergebnisse auf eine Woche alte Daten beschränkt.
 
 
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
 
-* We recommend you start with the [language tour](app-insights-analytics-tour.md).
+* Es wird empfohlen, mit der [Einführung in die Abfragesprache](app-insights-analytics-tour.md) zu beginnen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

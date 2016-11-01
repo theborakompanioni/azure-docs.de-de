@@ -1,83 +1,76 @@
 <properties
-    pageTitle="Create SharePoint server farms | Microsoft Azure"
-    description="Quickly create a new SharePoint 2013 or SharePoint 2016 farm in Azure."
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="JoeDavies-MSFT"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Erstellen von SharePoint-Serverfarmen | Microsoft Azure"
+	description="Erstellen Sie schnell eine neue SharePoint 2013- oder SharePoint 2016-Farm in Azure."
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="JoeDavies-MSFT"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="josephd"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/08/2016"
+	ms.author="josephd"/>
 
+# Erstellen von SharePoint-Serverfarmen
 
-# <a name="create-sharepoint-server-farms"></a>Create SharePoint server farms
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Modell.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic model.
+## SharePoint 2013-Farmen
 
-## <a name="sharepoint-2013-farms"></a>SharePoint 2013 farms
+Mit dem Marketplace im Microsoft Azure-Portal können Sie schnell eine vorkonfigurierte SharePoint Server 2013-Farm erstellen. Damit können Sie viel Zeit sparen, wenn Sie eine grundlegende oder hochverfügbare SharePoint-Farm für eine Dev/Test-Umgebung benötigen oder wenn Sie SharePoint Server 2013 als Zusammenarbeitslösung für Ihre Organisation bewerten möchten.
 
-With the Microsoft Azure portal marketplace, you can quickly create pre-configured SharePoint Server 2013 farms. This can save you a lot of time when you need a basic or high-availability SharePoint farm for a dev/test environment or if you are evaluating SharePoint Server 2013 as a collaboration solution for your organization.
+> [AZURE.NOTE] Das Element **SharePoint-Serverfarm** wurde aus dem Azure Marketplace des Azure-Portals entfernt. Es wurde durch die Elemente **SharePoint 2013 nicht hoch verfügbare Farm** und **SharePoint 2013 hoch verfügbare Farm** ersetzt.
 
-> [AZURE.NOTE] The **SharePoint Server Farm** item in the Azure Marketplace of the Azure portal has been removed. It has been replaced with the **SharePoint 2013 non-HA Farm** and **SharePoint 2013 HA Farm** items.
+Die grundlegende SharePoint-Farm besteht aus drei virtuellen Computern mit der folgenden Konfiguration:
 
-The basic SharePoint farm consists of three virtual machines in this configuration.
+![SharePoint-Farm](./media/virtual-machines-windows-sharepoint-farm/Non-HAFarm.png)
 
-![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/Non-HAFarm.png)
+Sie können diese Farmkonfiguration für eine vereinfachte Einrichtung für die SharePoint-App-Entwicklung oder für eine erste Bewertung von SharePoint 2013 verwenden.
 
-You can use this farm configuration for a simplified setup for SharePoint app development or your first-time evaluation of SharePoint 2013.
+So erstellen Sie die grundlegende SharePoint-Farm (mit drei Servern):
 
-To create the basic (three-server) SharePoint farm:
+1. Klicken Sie [hier](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/).
+2. Klicken Sie auf **Bereitstellen**.
+3. Klicken Sie im Bereich **SharePoint 2013 nicht hoch verfügbare Farm** auf **Erstellen**.
+4. Geben Sie die Einstellungen für die Schritte des Bereichs **SharePoint 2013 nicht hoch verfügbare Farm erstellen** ein, und klicken Sie dann auf **Erstellen**.
 
-1. Click [here](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/).
-2. Click **Deploy**.
-3. On the **SharePoint 2013 non-HA Farm** pane, click **Create**.
-4. Specify settings on the steps of the **Create SharePoint 2013 non-HA Farm** pane, and then click **Create**.
+Die hochverfügbare SharePoint-Farm besteht aus neun virtuellen Computern mit der folgenden Konfiguration:
 
-The high-availability SharePoint farm consists of nine virtual machines in this configuration.
+![SharePoint-Farm](./media/virtual-machines-windows-sharepoint-farm/HAFarm.png)
 
-![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/HAFarm.png)
+Sie können diese Farmkonfiguration verwenden, um höhere Clientlasten, Hochverfügbarkeit eines externen SharePoint-Standorts sowie SQL Server Always On-Verfügbarkeitsgruppen für eine SharePoint-Farm zu testen. Außerdem können Sie diese Konfiguration für die SharePoint-App-Entwicklung in einer Hochverfügbarkeitsumgebung nutzen.
 
-You can use this farm configuration to test higher client loads, high availability of the external SharePoint site, and SQL Server AlwaysOn Availability Groups for a SharePoint farm. You can also use this configuration for SharePoint app development in a high-availability environment.
+So erstellen Sie die hoch verfügbare SharePoint-Farm (neun Server):
 
-To create the high-availability (nine-server) SharePoint farm:
+1. Klicken Sie [hier](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/).
+2. Klicken Sie auf **Bereitstellen**.
+3. Klicken Sie im Bereich **SharePoint 2013 hoch verfügbare Farm** auf **Erstellen**.
+4. Geben Sie die Einstellungen für die sieben Schritte des Bereichs **SharePoint 2013 hoch verfügbare Farm erstellen** ein, und klicken Sie dann auf **Erstellen**.
 
-1. Click [here](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/).
-2. Click **Deploy**.
-3. On the **SharePoint 2013 HA Farm** pane, click **Create**.
-4. Specify settings on the seven steps of the **Create SharePoint 2013 HA Farm** pane, and then click **Create**.
+> [AZURE.NOTE] Die **nicht hoch verfügbare SharePoint 2013-Farm** bzw. die **hoch verfügbare SharePoint 2013-Farm** kann nicht mit einer kostenlosen Azure-Testversion erstellt werden.
 
-> [AZURE.NOTE] You cannot create the **SharePoint 2013 non-HA Farm** or **SharePoint 2013 HA Farm** with an Azure Free Trial.
+Das Azure-Portal erstellt beide Farmen in einem virtuellen Cloudnetzwerk mit einer über das Internet zugänglichen Webpräsenz. Es gibt keine Standort-zu-Standort-VPN- oder ExpressRoute-Verbindung mit Ihrem Unternehmensnetzwerk.
 
-The Azure portal creates both of these farms in a cloud-only virtual network with an Internet-facing web presence. There is no site-to-site VPN or ExpressRoute connection back to your organization network.
+## SharePoint 2016-Farmen
 
-> [AZURE.NOTE] When you create the basic or high-availability SharePoint farms using the Azure portal, you cannot specify an existing resource group. To work around this limitation, create these farms with Azure PowerShell. For more information, see [Create SharePoint 2013 dev/test farms with Azure PowerShell](https://technet.microsoft.com/library/mt743093.aspx#powershell).
+[In diesem Artikel](https://technet.microsoft.com/library/mt723354.aspx) finden Sie Anweisungen zum Erstellen der folgenden SharePoint 2016-Einzelserverfarm.
 
-## <a name="sharepoint-2016-farms"></a>SharePoint 2016 farms
+![SharePoint-Farm](./media/virtual-machines-windows-sharepoint-farm/SP2016Farm.png)
 
-See [this article](https://technet.microsoft.com/library/mt723354.aspx) for the instructions to build the following single-server SharePoint Server 2016 farm.
+## Verwalten der SharePoint-Farmen
 
-![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/SP2016Farm.png)
+Sie können die Server dieser Farmen über Remotedesktopverbindungen verwalten. Weitere Informationen finden Sie unter [Anmelden beim virtuellen Computer](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine).
 
-## <a name="managing-the-sharepoint-farms"></a>Managing the SharePoint farms
+Auf der SharePoint-Website für die Zentraladministration können Sie eigene Websites, SharePoint-Anwendungen und andere Funktionen konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von SharePoint](http://technet.microsoft.com/library/ee836142.aspx).
 
-You can administer the servers of these farms through Remote Desktop connections. For more information, see [Log on to the virtual machine](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine).
+## Nächste Schritte
 
-From the Central Administration SharePoint site, you can configure My sites, SharePoint applications, and other functionality. For more information, see [Configure SharePoint](http://technet.microsoft.com/library/ee836142.aspx).
+- Lernen Sie weitere Konfigurationen von [SharePoint](https://technet.microsoft.com/library/dn635309.aspx) in Azure-Infrastrukturdiensten kennen.
 
-## <a name="next-steps"></a>Next steps
-
-- Discover additional [SharePoint configurations](https://technet.microsoft.com/library/dn635309.aspx) in Azure infrastructure services.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to resize a Linux VM | Microsoft Azure"
-   description="How to scale up or scale down a Linux virtual machine, by changing the VM size."
+   pageTitle="Ändern der Größe eines virtuellen Linux-Computers| Microsoft Azure"
+   description="So skalieren Sie einen virtuellen Linux-Computer zentral hoch oder herunter, indem Sie die VM-Größe ändern."
    services="virtual-machines-linux"
    documentationCenter="na"
    authors="mikewasson"
@@ -18,29 +18,28 @@
    ms.author="mikewasson"/>
 
 
+# So ändern Sie die Größe eines virtuellen Linux-Computers
 
-# <a name="how-to-resize-a-linux-vm"></a>How to resize a Linux VM
+## Übersicht 
 
-## <a name="overview"></a>Overview 
+Nachdem Sie einen virtuellen Computer (virtual machine; VM) bereitstellen, können Sie den virtuellen Computer zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Dies ist möglicherweise der Fall, falls die neue Größe auf dem Hardwarecluster nicht verfügbar ist, auf dem die VM gehostet wird.
 
-After you provision a virtual machine (VM), you can scale the VM up or down by changing the [VM size][vm-sizes]. In some cases, you must deallocate the VM first. This can happen if the new size is not available on the hardware cluster that is hosting the VM.
+In diesem Artikel wird beschrieben, wie Sie die Größe eines virtuellen Linux-Computers mithilfe der [Azure-Befehlszeilenschnittstelle][azure-cli] ändern.
 
-This article shows how to resize a Linux VM using the [Azure CLI][azure-cli].
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Bereitstellungsmodell.
 
 
-## <a name="resize-a-linux-vm"></a>Resize a Linux VM 
+## Ändern der Größe eines virtuellen Linux-Computers 
 
-To resize a VM, perform the following steps.
+Führen Sie zum Ändern der Größe eines virtuellen Computers die folgenden Schritte aus.
 
-1. Run the following CLI command. This command lists the VM sizes that are available on the hardware cluster where the VM is hosted.
+1. Führen Sie den folgenden CLI-Befehl aus. Der Befehl listet die VM-Größen auf, die auf dem Hardwarecluster verfügbar sind, auf dem die VM gehostet wird.
 
     ```
     azure vm sizes -g <resource-group> --vm-name <vm-name>
     ```
 
-2. If the desired size is listed, run the following command to resize the VM.
+2. Führen Sie den folgenden Befehl aus, um die Größe der VM zu ändern, sofern die gewünschte Größe aufgelistet ist.
 
     ```
     azure vm set -g <resource-group> --vm-size <new-vm-size> -n <vm-name>  
@@ -48,11 +47,11 @@ To resize a VM, perform the following steps.
         https://<storage-account-name>.blob.core.windows.net/ 
     ```
 
-    The VM will restart during this process. After the restart, your existing OS and data disks will be remapped. Anything on the temporary disk will be lost.
+    Der virtuelle Computer wird während dieses Vorgangs neu gestartet. Nach dem Neustart werden Ihr vorhandenes Betriebssystem und die Datenträger neu zugeordnet. Alle Daten auf dem temporären Datenträger gehen verloren.
 
-    Use the `--enable-boot-diagnostics` option enables [boot diagnostics][boot-diagnostics], to log any errors related to startup.
+    Verwenden Sie die Option `--enable-boot-diagnostics` um es der [Startdiagnose][boot-diagnostics] zu ermöglichen, alle Fehler zu protokollieren, die mit dem Startvorgang verbunden sind.
 
-3. Otherwise, if the desired size is not listed, run the following commands to deallocate the VM, resize it, and then restart the VM.
+3. Führen Sie die folgenden Befehle aus, falls die gewünschte Größe nicht aufgelistet ist. Damit heben Sie die Zuordnung der VM auf, ändern ihre Größe und starten sie neu.
 
     ```
     azure vm deallocate -g <resource-group> <vm-name>
@@ -62,20 +61,17 @@ To resize a VM, perform the following steps.
     azure vm start -g <resource-group> <vm-name>
     ```
 
-   > [AZURE.WARNING] Deallocating the VM also releases any dynamic IP addresses assigned to the VM. The OS and data disks are not affected.
+   > [AZURE.WARNING] Die Aufhebung der Zuordnung der VM gibt auch jegliche dynamische IP-Adressen frei, die der VM zugewiesen sind. Das Betriebssystem und die Datenträger sind nicht betroffen.
    
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-For additional scalability, run multiple VM instances and scale out. For more information, see [Automatically scale Linux machines in a Virtual Machine Scale Set][scale-set]. 
+Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe][scale-set].
 
 <!-- links -->
    
 [azure-cli]: ../xplat-cli-install.md
-[boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
-[scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
+[boot-diagnostics]: https://azure.microsoft.com/de-DE/blog/boot-diagnostics-for-virtual-machines-v2/
+[scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md
 [vm-sizes]: virtual-machines-linux-sizes.md
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

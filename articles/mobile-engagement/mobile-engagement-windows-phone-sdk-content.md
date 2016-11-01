@@ -1,45 +1,40 @@
 <properties 
-    pageTitle="Windows Phone Silverlight SDK content" 
-    description="Learn about the contents of the Windows Phone Silverlight SDK for Azure Mobile Engagement"                     
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo" 
-    manager="dwrede"
-    editor="" />
+	pageTitle="Windows Phone Silverlight SDK-Inhalt" 
+	description="Erfahren Sie mehr über den Inhalt des Windows Phone Silverlight SDK für Azure Mobile Engagement" 					
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="dwrede"
+	editor="" />
 
 <tags 
-    ms.service="mobile-engagement" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="mobile-windows-phone"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/19/2016" 
-    ms.author="piyushjo" />
-    
+	ms.service="mobile-engagement" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/19/2016" 
+	ms.author="piyushjo" />
+	
+#Windows Phone Silverlight SDK-Inhalt
 
-#<a name="windows-phone-silverlight-sdk-content"></a>Windows Phone Silverlight SDK content
+In diesem Dokument wird aufgelistet und beschrieben, was durch das SDK in der Anwendung bereitgestellt wird.
 
-This document lists and describes the content deployed by the SDK in your application.
+##Der Ordner `/Resources` 
 
-##<a name="the-`/resources`-folder"></a>The `/Resources` folder 
+Dieser Ordner enthält alle von Mobile Engagement benötigten Ressourcen. Sie können diese auch an Ihre App anpassen.
 
-This folder contains all the resources that Mobile Engagement needs. You can also customize them to fit your app.
+- `EngagementIconNotification.png` : Das Markensymbol, das auf der linken Seite einer Benachrichtigung angezeigt wird. Ersetzen Sie dieses Symbol durch Ihr eigenes Markensymbol.
 
-- `EngagementIconNotification.png` : The brand icon displayed at the left of a notification, replace this one by your brand icon.
-
-- `EngagementIconOk.png` : The "Ok" icon of the reach pages ApplicationBar.
+- `EngagementIconOk.png` : Das Symbol „Ok“ des ApplicationBar-Objekts auf den Reichweitenseiten.
  
-- `EngagementIconCancel.png` : The "Cancel" icon of the reach pages ApplicationBar.
+- `EngagementIconCancel.png` : Das Symbol „Abbrechen“ des ApplicationBar-Objekts auf den Reichweitenseiten.
  
-- `EngagementIconCloseLight.png` : The "Close" icon of the Mobile Engagement's reach notification for the Windows Phone light theme.
+- `EngagementIconCloseLight.png` : Das Symbol „Schließen“ der Reichweitenbenachrichtigung von Mobile Engagement für Windows Phone, helles Design.
  
-- `EngagementIconCloseDark.png` : The "Close" icon of the Mobile Engagement's reach notification for the Windows Phone dark theme.
+- `EngagementIconCloseDark.png` : Das Symbol „Schließen“ der Reichweitenbenachrichtigung von Engagement für Windows Phone, dunkles Design.
 
-- `EngagementConfiguration.xml` : The Mobile Engagement's configuration file, this is where you can customize Engagement settings (Engagement connection string, report crashes etc).
+- `EngagementConfiguration.xml` : Die Konfigurationsdatei von Mobile Engagement, hier können Sie Engagement-Einstellungen (Engagement-Verbindungszeichenfolge, Absturzberichte...) anpassen.
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

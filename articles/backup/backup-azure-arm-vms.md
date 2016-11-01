@@ -1,86 +1,80 @@
 <properties
-    pageTitle="Back up Azure VMs to a Recovery Services vault | Microsoft Azure"
-    description="Discover, register, and back up Azure virtual machines to a recovery services vault with these procedures for Azure virtual machine backup."
-    services="backup"
-    documentationCenter=""
-    authors="markgalioto"
-    manager="cfreeman"
-    editor=""
-    keywords="virtual machine backup; back up virtual machine; backup and disaster recovery; arm vm backup"/>
+	pageTitle="Sichern von virtuellen Azure-Computern in einem Recovery Services-Tresor | Microsoft Azure"
+	description="Ermitteln, registrieren und sichern Sie Ihre virtuellen Azure-Computer mithilfe dieser Verfahren für das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor."
+	services="backup"
+	documentationCenter=""
+	authors="markgalioto"
+	manager="cfreeman"
+	editor=""
+	keywords="Sicherung virtueller Computer; Sichern virtueller Computer; Sicherung und Notfallwiederherstellung; ARM-VM-Sicherung"/>
 
 <tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/29/2016"
-    ms.author="trinadhk; jimpark; markgal;"/>
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/29/2016"
+	ms.author="trinadhk; jimpark; markgal;"/>
 
 
-
-# <a name="back-up-azure-vms-to-a-recovery-services-vault"></a>Back up Azure VMs to a Recovery Services vault
+# Sichern von virtuellen Azure-Computern in einem Recovery Services-Tresor
 
 > [AZURE.SELECTOR]
-- [Back up VMs to Recovery Services vault](backup-azure-arm-vms.md)
-- [Back up VMs to Backup vault](backup-azure-vms.md)
+- [Sichern virtueller Azure Resource Manager-Computer (ARM)](backup-azure-arm-vms.md)
+- [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)
 
-This article provides the procedure for backing up Azure VMs (both Resource Manager-deployed and Classic-deployed) to a Recovery Services vault. The majority of work for backing up VMs goes into the preparation. Before you can back up or protect a VM, you must complete the [prerequisites](backup-azure-arm-vms-prepare.md) to prepare your environment for protecting your VMs. Once you have completed the prerequisites, then you can initiate the back up operation to take snapshots of your VM.
+Dieser Artikel beschreibt das Verfahren zum Sichern virtueller (mit Resource Manager oder dem klassischen Modell bereitgestellten) Azure-Computer in einem Recovery Services-Tresor. Der größte Teil des Arbeitsaufwands zum Sichern virtueller Computer entfällt auf die Vorbereitung. Bevor Sie einen virtuellen Computer sichern oder schützen können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) zum Vorbereiten der Umgebung auf den Schutz Ihrer VMs schaffen. Wenn Sie die Voraussetzungen geschaffen haben, können Sie den Sicherungsvorgang starten, um Momentaufnahmen Ihres virtuellen Computers zu erstellen.
 
->[AZURE.NOTE] Azure has two deployment models for creating and working with resources: [Resource Manager and Classic](../resource-manager-deployment-model.md). You can protect Resource Manager-deployed VMs and Classic VMs with Recovery Services vaults. See [Back up Azure virtual machines](backup-azure-vms.md) for details on working with Classic deployment model VMs.
+>[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Sie können mit Resource Manager bereitgestellte und klassische virtuelle Computer mit Recovery Services-Tresoren schützen. Unter [Sichern von virtuellen Azure-Computern](backup-azure-vms.md) finden Sie ausführliche Informationen zum Arbeiten mit VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
 
-For additional information, see the articles on [planning your VM backup infrastructure in Azure](backup-azure-vms-introduction.md) and [Azure virtual machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
+Weitere Informationen finden Sie in den Artikeln [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](backup-azure-vms-introduction.md) und [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
-## <a name="triggering-the-back-up-job"></a>Triggering the back up job
+## Auslösen des Sicherungsauftrags
 
-The back up policy associated with the Recovery Services vault, defines how often and when the backup operation runs. By default, the first scheduled backup is the initial backup. Until the initial backup occurs, the Last Backup Status on the **Backup Jobs** blade shows as **Warning(initial backup pending)**.
+Die Sicherungsrichtlinie des Recovery Services-Tresors definiert, wie oft und wann der Sicherungsvorgang ausgeführt wird. Standardmäßig ist die erste geplante Sicherung die Anfangssicherung. Bis zur Durchführung der ersten Sicherung wird der Status der letzten Sicherung auf dem Blatt **Sicherungsaufträge** als **Warnung (anfängliche Sicherung steht aus)** angezeigt.
 
-![Backup pending](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
+![Sicherung ausstehend](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
-Unless your initial backup is due to begin very soon, it is recommended that you run **Back up Now**. The following procedure starts from the vault dashboard. This procedure serves for running the initial backup job after you have completed all prerequisites. If the initial backup job has already been run, this procedure is not available. The associated backup policy determines the next backup job.  
+Falls die erste Sicherung nicht ohnehin in Kürze ausgeführt wird, empfiehlt es sich, **Jetzt sichern** auszuführen. Das folgende Verfahren startet das Tresordashboard. Dieses Verfahren dient zur Ausführung des ersten Sicherungsauftrags, nachdem Sie alle erforderlichen Voraussetzungen geschaffen haben. Wenn der erste Sicherungsauftrag bereits ausgeführt wurde, ist dieses Verfahren nicht verfügbar. Die zugeordnete Sicherungsrichtlinie bestimmt den nächsten Sicherungsauftrag.
 
-To run the initial backup job:
+So führen Sie den ersten Sicherungsauftrag aus:
 
-1. On the vault dashboard, on the **Backup** tile, click **Azure Virtual Machines**. <br/>
-    ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. Klicken Sie im Tresordashboard auf der Kachel **Sicherung** auf **Virtuelle Azure-Computer**. <br/> ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
 
-    The **Backup Items** blade opens.
+    Das Blatt **Sicherungselemente** wird geöffnet.
 
-2. On the **Backup Items** blade, right-click the vault you want to back up, and click **Backup now**.
+2. Klicken Sie auf dem Blatt **Sicherungselemente** mit der rechten Maustaste auf den Tresor, den Sie sichern möchten, und klicken Sie dann auf **Jetzt sichern**.
 
-    ![Settings icon](./media/backup-azure-vms-first-look-arm/back-up-now.png)
+    ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/back-up-now.png)
 
-    The Backup job is triggered. <br/>
+    Der Sicherungsauftrag wird ausgelöst. <br/>
 
-    ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
+    ![Sicherungsauftrag ausgelöst](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
 
-3. To view that your initial backup has completed, on the vault dashboard, on the **Backup Jobs** tile, click **Azure virtual machines**.
+3. Klicken Sie im Tresordashboard auf der Kachel **Sicherungsaufträge** auf **Virtuelle Azure-Computer**, um zu prüfen, ob die erste Sicherung abgeschlossen wurde.
 
-    ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
+    ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
 
-    The Backup Jobs blade opens.
+    Das Blatt „Sicherungsaufträge“ wird geöffnet.
 
-4. In the **Backup jobs** blade, you can see the status of all jobs.
+4. Im Blatt **Sicherungsaufträge** wird der Status aller Aufträge angezeigt.
 
-    ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
+    ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
 
-    >[AZURE.NOTE] As a part of the backup operation, the Azure Backup service issues a command to the backup extension in each virtual machine to flush all writes and take a consistent snapshot.
+    >[AZURE.NOTE] Als Teil des Sicherungsvorgangs gibt der Azure Backup-Dienst einen Befehl an die Sicherungserweiterung auf jedem virtuellen Computer aus, damit alle Schreibvorgänge geleert werden und eine konsistente Momentaufnahme erstellt wird.
 
-    When the backup job is finished, the status is *Completed*.
-
-
-## <a name="troubleshooting-errors"></a>Troubleshooting errors
-If you run into issues while backing up your virtual machine, please see the [VM troubleshooting article](backup-azure-vms-troubleshoot.md) for help.
-
-## <a name="next-steps"></a>Next steps
-
-Now that you have protected your VM, check out the following articles for additional management tasks  you can do with your VMs, and how to restore VMs.
-
-- [Manage and monitor your virtual machines](backup-azure-manage-vms.md)
-- [Restore virtual machines](backup-azure-arm-restore-vms.md)
+    Wenn der Sicherungsauftrag abgeschlossen ist, lautet der Status *Abgeschlossen*.
 
 
+## Problembehandlung
+Wenn beim Sichern des virtuellen Computers Probleme auftreten, finden Sie Hilfe im Artikel [Problembehandlung bei der Sicherung virtueller Azure-Computer](backup-azure-vms-troubleshoot.md).
 
-<!--HONumber=Oct16_HO2-->
+## Nächste Schritte
 
+Da Sie nun Ihren virtuellen Computer geschützt haben, informieren Sie sich in den folgenden Artikeln über weitere Verwaltungsaufgaben, die Sie für Ihre VMs ausführen können, und wie Sie VMs wiederherstellen können.
 
+- [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
+- [Wiederherstellen virtueller Computer](backup-azure-arm-restore-vms.md)
+
+<!---HONumber=AcomDC_0803_2016-->

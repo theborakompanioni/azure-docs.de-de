@@ -1,6 +1,6 @@
 <properties
-        pageTitle="Reset Linux VM password and SSH key from the CLI | Microsoft Azure"
-        description="How to use the VMAccess extension from the Azure Command-Line Interface (CLI) to reset a Linux VM password or SSH key, fix the SSH configuration, and check disk consistency"
+        pageTitle="Zurücksetzen des Kennworts und des SSH-Schlüssels für einen virtuellen Linux-Computer über die Befehlszeilenschnittstelle | Microsoft Azure"
+        description="Informationen zum Verwenden der VMAccess-Erweiterung über die Azure-Befehlszeilenschnittstelle (CLI) zum Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, zum Beheben von SSH-Konfigurationsproblemen und zum Überprüfen der Datenträgerkonsistenz"
         services="virtual-machines-linux"
         documentationCenter=""
         authors="cynthn"
@@ -17,44 +17,43 @@
         ms.date="06/14/2016"
         ms.author="cynthn"/>
 
-
-# <a name="how-to-reset-a-linux-vm-password-or-ssh-key,-fix-the-ssh-configuration,-and-check-disk-consistency-using-the-vmaccess-extension"></a>How to reset a Linux VM password or SSH key, fix the SSH configuration, and check disk consistency using the VMAccess extension
-
-
-If you can't connect to a Linux virtual machine on Azure because of a forgotten password, an incorrect Secure Shell (SSH) key, or a problem with the SSH configuration, use the VMAccessForLinux extension with the Azure CLI to reset the password or SSH key, fix the SSH configuration, and check disk consistency. 
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Learn how to [perform these steps using the Resource Manager model](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
-
-With the Azure CLI, you use the **azure vm extension set** command from your command-line interface (Bash, Terminal, Command prompt) to access commands. Run **azure help vm extension set** for detailed extension usage.
-
-With the Azure CLI, you can do the following tasks:
-
-+ [Reset the password](#pwresetcli)
-+ [Reset the SSH key](#sshkeyresetcli)
-+ [Reset the password and the SSH key](#resetbothcli)
-+ [Create a new sudo user account](#createnewsudocli)
-+ [Reset the SSH configuration](#sshconfigresetcli)
-+ [Delete a user](#deletecli)
-+ [Display the status of the VMAccess extension](#statuscli)
-+ [Check consistency of added disks](#checkdisk)
-+ [Repair added disks on your Linux VM](#repairdisk)
+# Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, Beheben von SSH-Konfigurationsproblemen und Überprüfen der Datenträgerkonsistenz mithilfe der VMAccess-Erweiterung
 
 
-## <a name="prerequisites"></a>Prerequisites
+Wenn Sie aufgrund eines vergessenen Kennworts, eines falschen SSH-Schlüssels (Secure Shell) oder eines Problems bei der SSH-Konfiguration keine Verbindung mit einem virtuellen Linux-Computer herstellen können, haben Sie die Möglichkeit, das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen. Verwenden Sie dazu die VMAccessForLinux-Erweiterung mit der Azure-Befehlszeilenschnittstelle.
 
-You will need to do the following:
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
 
-- You will need to [install the Azure CLI](../xplat-cli-install.md) and [connect to your subscription](../xplat-cli-connect.md) to use Azure resources associated with your account.
-- Set the correct mode for the classic deployment model by typing the following at the command prompt:
+Mit der Azure-Befehlszeilenschnittstelle verwenden Sie den Befehl **azure vm extension set** in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung), um auf Befehle zuzugreifen. Informationen zur Nutzung der Erweiterung erhalten Sie durch Ausführen von **azure help vm extension set**.
+
+Mit der Azure-CLI können Sie die folgenden Aufgaben ausführen:
+
++ [Zurücksetzen des Kennworts](#pwresetcli)
++ [Zurücksetzen des SSH-Schlüssels](#sshkeyresetcli)
++ [Zurücksetzen des Kennworts und des SSH-Schlüssels](#resetbothcli)
++ [Erstellen eines neuen Benutzerkontos in sudo](#createnewsudocli)
++ [Zurücksetzen der SSH-Konfiguration](#sshconfigresetcli)
++ [Löschen eines Benutzers](#deletecli)
++ [Anzeigen des Status der VMAccess-Erweiterung](#statuscli)
++ [Überprüfen der Konsistenz von hinzugefügten Datenträgern](#checkdisk)
++ [Reparieren von hinzugefügten Datenträgern auf Ihrer Linux-VM](#repairdisk)
+
+
+## Voraussetzungen
+
+Sie müssen die folgenden Schritte ausführen:
+
+- Sie müssen [die Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md) und [eine Verbindung mit Ihrem Abonnement herstellen](../xplat-cli-connect.md), um die mit Ihrem Konto verknüpften Azure-Ressourcen zu verwenden.
+- Legen Sie den richtigen Modus für das klassische Bereitstellungsmodell fest, indem Sie an der Eingabeaufforderung Folgendes eingeben:
         
         azure config mode asm
         
-- Have a new password or set of SSH keys, if you want to reset either one. You don't need these if you want to reset the SSH configuration.
+- Stellen Sie ein neues Kennwort oder neue SSH-Schlüssel bereit, wenn Sie diese zurücksetzen möchten. Dies ist nicht erforderlich, wenn Sie die SSH-Konfiguration zurücksetzen möchten.
 
 
-## <a name="<a-name="pwresetcli"></a>reset-the-password"></a><a name="pwresetcli"></a>Reset the password
+## <a name="pwresetcli"></a>Zurücksetzen des Kennworts
 
-1. Create a file named PrivateConf.json with these lines. Replace the brackets and the &#60;placeholder&#62; values with your own information.
+1. Erstellen Sie eine Datei namens „PrivateConf.json“ mit diesen Zeilen. Ersetzen Sie die Klammern und &#60;Platzhalterwerte&#62; durch Ihre eigenen Informationen.
 
         {
         "username":"<currentusername>",
@@ -62,26 +61,26 @@ You will need to do the following:
         "expiration":"<2016-01-01>"
         }
 
-2. Run this command, substituting the name of your virtual machine for &#60;vm-name&#62;.
+2. Führen Sie diesen Befehl aus, und ersetzen Sie dabei &#60;vm-name&#62; durch den Namen des virtuellen Computers.
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* –-private-config-path PrivateConf.json
 
-## <a name="<a-name="sshkeyresetcli"></a>reset-the-ssh-key"></a><a name="sshkeyresetcli"></a>Reset the SSH key
+## <a name="sshkeyresetcli"></a>Zurücksetzen des SSH-Schlüssels
 
-1. Create a file named PrivateConf.json with these contents. Replace the brackets and the &#60;placeholder&#62; values with your own information.
+1. Erstellen Sie eine Datei namens „PrivateConf.json“ mit diesen Inhalten. Ersetzen Sie die Klammern und &#60;Platzhalterwerte&#62; durch Ihre eigenen Informationen.
 
         {
         "username":"<currentusername>",
         "ssh_key":"<contentofsshkey>"
         }
 
-2. Run this command, substituting the name of your virtual machine for &#60;vm-name&#62;.
+2. Führen Sie diesen Befehl aus, und ersetzen Sie dabei &#60;vm-name&#62; durch den Namen des virtuellen Computers.
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
-## <a name="<a-name="resetbothcli"></a>reset-both-the-password-and-the-ssh-key"></a><a name="resetbothcli"></a>Reset both the password and the SSH key
+## <a name="resetbothcli"></a>Zurücksetzen des Kennworts und des SSH-Schlüssels
 
-1. Create a file named PrivateConf.json with these contents. Replace the brackets and the &#60;placeholder&#62; values with your own information.
+1. Erstellen Sie eine Datei namens „PrivateConf.json“ mit diesen Inhalten. Ersetzen Sie die Klammern und &#60;Platzhalterwerte&#62; durch Ihre eigenen Informationen.
 
         {
         "username":"<currentusername>",
@@ -89,97 +88,93 @@ You will need to do the following:
         "password":"<newpassword>"
         }
 
-2. Run this command, substituting the name of your virtual machine for &#60;vm-name&#62;.
+2. Führen Sie diesen Befehl aus, und ersetzen Sie dabei &#60;vm-name&#62; durch den Namen des virtuellen Computers.
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
-## <a name="<a-name="createnewsudocli"></a>create-a-new-sudo-user-account"></a><a name="createnewsudocli"></a>Create a new sudo user account
+## <a name="createnewsudocli"></a>Erstellen eines neuen Benutzerkontos in sudo
 
-If you forget your user name, you can use VMAccess to create a new one with the sudo authority. In this case, the existing user name and password will not be modified.
+Wenn Sie Ihren Benutzernamen vergessen haben, können Sie mit VMAccess einen neuen mit Berechtigung für sudo erstellen. Der vorhandene Benutzername und das Kennwort werden in diesem Fall nicht geändert.
 
-To create a new sudo user with password access, use the script in [Reset the password](#pwresetcli) and specify the new user name.
+Um einen neuen sudo-Benutzer mit Kennwortzugriff zu erstellen, verwenden Sie das Skript in [Zurücksetzen des Kennworts](#pwresetcli) und geben den neuen Benutzernamen an.
 
-To create a new sudo user with SSH key access, use the script in [Reset the SSH key](#sshkeyresetcli) and specify the new user name.
+Um einen neuen sudo-Benutzer mit SSH-Schlüsselzugriff zu erstellen, verwenden Sie das Skript in [Zurücksetzen des SSH-Schlüssels](#sshkeyresetcli) und geben den neuen Benutzernamen an.
 
-You can also use [Reset the password and the SSH key](#resetbothcli) to create a new user with both password and SSH key access.
+Sie können auch [Zurücksetzen des Kennworts und des SSH-Schlüssels](#resetbothcli) verwenden, um einen neuen Benutzer mit Kennwort- und SSH-Schlüsselzugriff zu erstellen.
 
-## <a name="<a-name="sshconfigresetcli"></a>reset-the-ssh-configuration"></a><a name="sshconfigresetcli"></a>Reset the SSH configuration
+## <a name="sshconfigresetcli"></a>Zurücksetzen der SSH-Konfiguration
 
-If the SSH configuration is in an undesired state, you might also lose access to the VM. You can use the VMAccess extension to reset the configuration to its default state. To do so, you just need to set the “reset_ssh” key to “True”. The extension will restart the SSH server, open the SSH port on your VM, and reset the SSH configuration to default values. The user account (name, password or SSH keys) will not be changed.
+Wenn sich die SSH-Konfiguration in einen unerwünschten Zustand befindet, verlieren Sie möglicherweise auch den Zugriff auf den virtuellen Computer. Mit der VMAccess-Erweiterung können Sie die Konfiguration auf den Standardzustand zurücksetzen. Hierzu legen Sie einfach nur den Schlüssel "reset\_ssh" auf "True" fest. Die Erweiterung startet den SSH-Server neu, öffnet den SSH-Port auf Ihrem virtuellen Computer und setzt die SSH-Konfiguration auf die Standardeinstellungen zurück. Das Benutzerkonto (Name, Kennwort oder SSH-Schlüssel) wird nicht geändert.
 
-> [AZURE.NOTE] The SSH configuration file that gets reset is located at /etc/ssh/sshd_config.
+> [AZURE.NOTE] Die SSH-Konfigurationsdatei befindet sich unter "/etc/ssh/sshd\_config".
 
-1. Create a file named PrivateConf.json with this content.
+1. Erstellen Sie eine Datei namens „PrivateConf.json“ mit diesem Inhalt.
 
         {
         "reset_ssh":"True"
         }
 
-2. Run this command, substituting the name of your virtual machine for &#60;vm-name&#62;. 
+2. Führen Sie diesen Befehl aus, und ersetzen Sie dabei &#60;vm-name&#62; durch den Namen des virtuellen Computers.
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
-## <a name="<a-name="deletecli"></a>delete-a-user"></a><a name="deletecli"></a>Delete a user
+## <a name="deletecli"></a>Löschen eines Benutzers
 
-If you want to delete a user account without logging into to the VM directly, you can use this script.
+Wenn Sie ein Benutzerkonto löschen möchten, ohne sich direkt auf dem virtuellen Computer anzumelden, können Sie dieses Skript verwenden.
 
-1. Create a file named PrivateConf.json with this content, substituting the user name to remove for &#60;usernametoremove&#62;. 
+1. Erstellen Sie eine Datei namens „PrivateConf.json“ mit diesem Inhalt, und ersetzen Sie &#60;usernametoremove&#62; durch den Benutzernamen, den Sie entfernen möchten.
 
         {
         "remove_user":"<usernametoremove>"
         }
 
-2. Run this command, substituting the name of your virtual machine for &#60;vm-name&#62;. 
+2. Führen Sie diesen Befehl aus, und ersetzen Sie dabei &#60;vm-name&#62; durch den Namen des virtuellen Computers.
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
-## <a name="<a-name="statuscli"></a>display-the-status-of-the-vmaccess-extension"></a><a name="statuscli"></a>Display the status of the VMAccess extension
+## <a name="statuscli"></a>Anzeigen des Status der VMAccess-Erweiterung
 
-To display the status of the VMAccess extension, run this command.
+Führen Sie zum Anzeigen des Status der VMAccess-Erweiterung diesen Befehl aus.
 
         azure vm extension get
 
-## <a name="<a-name='checkdisk'<</a>check-consistency-of-added-disks"></a><a name='checkdisk'<</a>Check consistency of added disks
+## <a name='checkdisk'<</a>Überprüfen der Konsistenz von hinzugefügten Datenträgern
 
-To run fsck on all disks in your Linux virtual machine, you will need to do the following:
+Gehen Sie wie folgt vor, um fsck auf allen Datenträgern Ihrer virtuellen Linux-Maschine auszuführen:
 
-1. Create a file named PublicConf.json with this content. Check Disk takes a boolean for whether to check disks attached to your virtual machine or not. 
+1. Erstellen Sie eine Datei namens „PublicConf.json“ mit diesem Inhalt. Die Datenträgerüberprüfung ermittelt anhand eines booleschen Werts, ob an die virtuelle Maschine angefügte Datenträger überprüft werden sollen.
 
         {   
         "check_disk": "true"
         }
 
-2. Run this command to execute, substituting the name of your virtual machine for &#60;vm-name&#62;.
+2. Führen Sie diesen Befehl aus, und ersetzen Sie dabei &#60;vm-name&#62; durch den Namen des virtuellen Computers.
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json 
 
-## <a name="<a-name='repairdisk'></a>repair-disks"></a><a name='repairdisk'></a>Repair disks 
+## <a name='repairdisk'></a>Reparieren von Datenträgern 
 
-To repair disks that are not mounting or have mount configuration errors, use the VMAccess extension to reset the mount configuration on your Linux virtual machine. Substituting the name of your disk for &#60;yourdisk&#62;.
+Verwenden Sie zum Reparieren von Datenträgern, die nicht bereitgestellt werden können oder für die Fehler bei der Bereitstellungskonfiguration angezeigt werden, die VMAccess-Erweiterung, um die Bereitstellungskonfiguration Ihres virtuellen Linux-Computers zurückzusetzen. Ersetzen Sie &#60;yourdisk&#62; durch den Namen Ihres Datenträgers.
 
-1. Create a file named PublicConf.json with this content. 
+1. Erstellen Sie eine Datei namens „PublicConf.json“ mit diesem Inhalt.
 
         {
         "repair_disk":"true",
         "disk_name":"<yourdisk>"
         }
 
-2. Run this command to execute, substituting the name of your virtual machine for &#60;vm-name&#62;.
+2. Führen Sie diesen Befehl aus, und ersetzen Sie dabei &#60;vm-name&#62; durch den Namen des virtuellen Computers.
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json
 
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-* If you want to use Azure PowerShell cmdlets or Azure Resource Manager templates to reset the password or SSH key, fix the SSH configuration, and check disk consistency, see the [VMAccess extension documentation on GitHub](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess). 
+* Wenn Sie Azure PowerShell-Cmdlets oder Azure Resource Manager-Vorlagen verwenden möchten, um das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen, lesen Sie die [Dokumentation zur VMAccess-Erweiterung auf GitHub](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
 
-* You can also use the [Azure portal](https://portal.azure.com) to reset the password or SSH key of a Linux VM deployed in the classic deployment model. You can't currently use the portal do to this for a Linux VM deployed in the Resource Manager deployment model.
+* Sie können auch das [Azure-Portal](https://portal.azure.com) nutzen, um das Kennwort oder den SSH-Schlüssel eines virtuellen Linux-Computers zurückzusetzen, der im klassischen Bereitstellungsmodell bereitgestellt wurde. Derzeit können Sie das Portal nicht verwenden, um dies für einen virtuellen Linux-Computer durchzuführen, der im Resource Manager-Bereitstellungsmodell bereitgestellt wurde.
 
-* See [About virtual machine extensions and features](virtual-machines-linux-extensions-features.md) for more about using VM extensions for Azure virtual machines.
+* Weitere Informationen zur Verwendung von VM-Erweiterungen für virtuelle Azure-Computer finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer](virtual-machines-linux-extensions-features.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

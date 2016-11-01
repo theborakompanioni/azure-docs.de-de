@@ -1,7 +1,5 @@
-> [AZURE.TIP] **Manage Azure Blob Storage resources with Microsoft Azure Storage Explorer**
+> [AZURE.TIP] **Verwalten von Azure-Blobspeicherressourcen mit Microsoft Azure-Speicher-Explorer**
 > 
-> Microsoft Azure Storage Explorer enables you to [manage Azure Blob Storage resources](../articles/vs-azure-tools-storage-explorer-blobs.md), including the ability to visually create, read, update, and delete blob containers and blobs, as well as manage access to your blobs containers and blobs.
+> Microsoft Azure-Speicher-Explorer ermöglicht das [Verwalten von Azure Blob Storage-Ressourcen](../articles/vs-azure-tools-storage-explorer-blobs.md). Sie können Blobcontainer und Blobs visuell erstellen, lesen, aktualisieren und löschen sowie den Zugriff auf Ihre Blobcontainer und Blobs verwalten.
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

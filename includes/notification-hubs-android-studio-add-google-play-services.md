@@ -1,33 +1,26 @@
-1. Open the Android SDK Manager by clicking the icon on the toolbar of Android Studio or by clicking **Tools** -> **Android** -> **SDK Manager** on the menu. Locate the target version of the Android SDK that is used in your project , open it by clicking **Show Package Details**, and choose **Google APIs**, if it is not already installed.
+1. Öffnen Sie Android SDK Manager, indem Sie in der Symbolleiste auf das Symbol von Android Studio klicken oder indem Sie im Menü auf **Tools** -> **Android** -> **SDK Manager** klicken. Suchen Sie die Zielversion des Android SDK, das in diesem Projekt verwendet wird, öffnen Sie es durch Klicken auf **Paketdetails anzeigen**, und wählen Sie **Google APIs**, falls es noch nicht installiert ist.
 
-2. Click the **SDK Tools** tab. If you haven't already installed Google Play Service, click **Google Play Services** as shown below. Then click **Apply** to install. 
+2. Klicken Sie auf die Registerkarte **SDK-Tools**. Wenn Sie Google Play Services noch nicht installiert haben, klicken Sie, wie unten dargestellt, auf **Google Play Services**. Klicken Sie dann auf **Übernehmen**, um die Installation auszuführen.
  
-    Note the SDK path, for use in a later step. 
+	Notieren Sie den SDK-Pfad, den Sie in einem späteren Schritt angeben müssen.
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+   	![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
 
 
-3. Open the **build.gradle** file in the app directory.
+3. Öffnen Sie die Datei **build.gradle** im App-Verzeichnis.
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
+	![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
 
-4. Add this line under *dependencies*: 
+4. Fügen Sie diese Zeile unter *dependencies* hinzu:
 
-        compile 'com.google.android.gms:play-services-gcm:9.2.0'
+   		compile 'com.google.android.gms:play-services-gcm:9.2.0'
 
-5. Click the **Sync Project with Gradle Files** icon in the tool bar.
+5. Klicken Sie auf der Symbolleiste auf das Symbol **Sync Project with Gradle Files**.
 
-6. Open **AndroidManifest.xml** and add this tag to the *application* tag.
+6. Öffnen Sie die Datei **AndroidManifest.xml**, und fügen Sie dem *application* -Tag das folgende Tag hinzu.
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
  
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

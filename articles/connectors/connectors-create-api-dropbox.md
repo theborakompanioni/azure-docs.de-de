@@ -1,10 +1,10 @@
 <properties
 pageTitle="Dropbox | Microsoft Azure"
-description="Create Logic apps with Azure App service. Connect to Dropbox to manage your files. You can perform various actions such as upload, update, get, and delete files in Dropbox."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit Dropbox her, um Dateien zu verwalten. Sie können verschiedene Aktionen ausführen und beispielsweise Dateien hochladen, aktualisieren, abrufen und in Dropbox löschen."
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,430 +17,428 @@ ms.workload="integration"
 ms.date="07/15/2016"
 ms.author="deonhe"/>
 
+# Erste Schritte mit dem Dropbox-Connector
 
-# <a name="get-started-with-the-dropbox-connector"></a>Get started with the Dropbox connector
+Stellen Sie eine Verbindung mit Dropbox her, um Dateien zu verwalten. Sie können verschiedene Aktionen ausführen und beispielsweise Dateien hochladen, aktualisieren, abrufen und in Dropbox löschen.
 
-Connect to Dropbox to manage your files. You can perform various actions such as upload, update, get, and delete files in Dropbox.
+Wenn Sie einen [Connector](./apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a Logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## Herstellen einer Verbindung mit Dropbox
 
-## <a name="connect-to-dropbox"></a>Connect to Dropbox
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine Verbindung mit Dropbox herstellen möchten, müssen Sie zunächst eine entsprechende *Verbindung* erstellen. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen an, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Im Falle des Dropbox-Beispiels benötigen Sie also die Anmeldeinformationen für Ihr Dropbox-Konto, um die Verbindung mit Dropbox zu erstellen. [Weitere Informationen zu Verbindungen]()
 
-Before your logic app can access any service, you first need to create a *connection* to the service. A connection provides connectivity between a logic app and another service. For example, in order to connect to Dropbox, you first need a Dropbox *connection*. To create a connection, you would need to provide the credentials you normally use to access the service you wish to connect to. So, in the Dropbox example, you would need the credentials to your Dropbox account in order to create the connection to Dropbox. [Learn more about connections]()
+### Erstellen einer Verbindung mit Dropbox
 
-### <a name="create-a-connection-to-dropbox"></a>Create a connection to Dropbox
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Dropbox](../../includes/connectors-create-api-dropbox.md)]
 
->[AZURE.INCLUDE [Steps to create a connection to Dropbox](../../includes/connectors-create-api-dropbox.md)]
+## Verwenden eines Dropbox-Triggers
 
-## <a name="use-a-dropbox-trigger"></a>Use a Dropbox trigger
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+In diesem Beispiel verwenden wir den Trigger **When a file is created** (Wenn eine Datei erstellt wird). Wenn dieser Trigger aktiviert wird, rufen wir die Dropbox-Aktion **Get file content using path** (Dateiinhalt anhand des Pfads abrufen) auf.
 
-In this example, we will use the **When a file is created** trigger. When this trigger occurs, we will call the **Get file content using path** Dropbox action. 
-
-1. Enter *dropbox* in the search box on the Logic Apps designer, then select the **Dropbox - When a file is created** trigger.      
+1. Geben Sie im Suchfeld des Logic Apps-Designers die Zeichenfolge *Dropbox* ein, und wählen Sie anschließend den Trigger **Dropbox - When a file is created** (Dropbox – Wenn eine Datei erstellt wird) aus.      
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)  
   
-2. Select the folder in which you want to track file creation. Select ... (identified in the red box) and browse to the folder you wish to select for the trigger's input.  
+2. Wählen Sie den Ordner aus, in dem Sie die Dateierstellung nachverfolgen möchten. Wählen Sie „...“ (rot markiert) aus, und navigieren Sie zum gewünschten Ordner für die Triggereingabe.  
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
 
-## <a name="use-a-dropbox-action"></a>Use a Dropbox action
+## Verwenden einer Dropbox-Aktion
 
-An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-Now that the trigger has been added, follow these steps to add an action that will get the new file's content.
+Führen Sie nach dem Hinzufügen des Triggers die folgenden Schritte aus, um eine Aktion hinzuzufügen, die den Inhalt der neuen Datei abruft.
 
-1. Select **+ New Step** to add the action you would like to take when a new file is created.  
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion hinzuzufügen, die ausgeführt werden soll, wenn eine neue Datei erstellt wird.  
+
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
 
-2. Select **Add an action**. This opens the search box where you can search for any action you would like to take.  
+2. Wählen Sie **Aktion hinzufügen** aus. Daraufhin öffnet sich das Suchfeld, in dem Sie nach der gewünschten Aktion suchen können.  
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
 
-3. Enter *dropbox* to search for actions related to Dropbox.  
+3. Geben Sie *dropbox* ein, um nach Dropbox-spezifischen Aktionen zu suchen.
 
-4. Select **Dropbox - Get file content using path** as the action to take when a new file is created in the selected Dropbox folder. The action control block opens. You will be prompted to authorize your logic app to access your Dropbox account if you have not done so previously.  
+4. Wählen Sie **Dropbox - Get file content using path** (Dropbox – Dateiinhalt anhand des Pfads abrufen) als Aktion aus, die ausgeführt werden soll, wenn im ausgewählten Dropbox-Ordner eine neue Datei erstellt wird. Die Aktionskontrollblock wird geöffnet. Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr Dropbox-Konto zu autorisieren, sofern Sie diesen Schritt noch nicht ausgeführt haben.  
+ 
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)  
 
-5. Select ... (located at the right side of the **File Path** control) and browse to the file path you would like to use. Or, use the **file path** token to speed up your logic app creation.  
+5. Wählen Sie „...“ (rechts neben dem Steuerelement **Dateipfad**) aus, und navigieren Sie zum gewünschten Dateipfad. Alternativ können Sie das Token **Dateipfad** verwenden, um die Erstellung Ihrer Logik-App zu beschleunigen.  
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
 
-6. Save your work and create a new file in Dropbox to activate your workflow.  
+6. Speichern Sie Ihre Arbeit, und erstellen Sie in Dropbox eine neue Datei, um den Workflow zu aktivieren.
 
-## <a name="technical-details"></a>Technical details
+## Technische Details
 
-Here are the details about the triggers, actions and responses that this connection supports:
+Im Anschluss finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
 
-## <a name="dropbox-triggers"></a>Dropbox triggers
+## Dropbox-Trigger
 
-The Dropbox connector has the following trigger(s):  
+Der Dropbox-Connector verfügt über folgende Trigger:
 
-|Trigger | Description|
+|Trigger | Beschreibung|
 |--- | ---|
-|[When a file is created](connectors-create-api-dropbox.md#when-a-file-is-created)|This operation triggers a flow when a new file is created in a folder.|
-|[When a file is modified](connectors-create-api-dropbox.md#when-a-file-is-modified)|This operation triggers a flow when a file is modified in a folder.|
+|[Wenn eine Datei erstellt wird](connectors-create-api-dropbox.md#when-a-file-is-created)|Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine neue Datei erstellt wird.|
+|[Wenn eine Datei geändert wird](connectors-create-api-dropbox.md#when-a-file-is-modified)|Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine Datei geändert wird.|
 
-## <a name="dropbox-actions"></a>Dropbox actions
+## Dropbox-Aktionen
 
-The Dropbox connector has the following actions:
+Der Dropbox-Connector verfügt über folgende Aktionen:
 
-|Action|Description|
+|Aktion|Beschreibung|
 |--- | ---|
-|[Get file metadata](connectors-create-api-dropbox.md#get-file-metadata)|This operation gets the metadata for a file.|
-|[Update file](connectors-create-api-dropbox.md#update-file)|This operation updates a file.|
-|[Delete file](connectors-create-api-dropbox.md#delete-file)|This operation deletes a file.|
-|[Get file metadata using path](connectors-create-api-dropbox.md#get-file-metadata-using-path)|This operation gets the metadata of a file using the path.|
-|[Get file content using path](connectors-create-api-dropbox.md#get-file-content-using-path)|This operation gets the content of a file using the path.|
-|[Get file content](connectors-create-api-dropbox.md#get-file-content)|This operation gets the content of a file.|
-|[Create file](connectors-create-api-dropbox.md#create-file)|This operation creates a file.|
-|[Copy file](connectors-create-api-dropbox.md#copy-file)|This operation copies a file to Dropbox.|
-|[List files in folder](connectors-create-api-dropbox.md#list-files-in-folder)|This operation gets the list of files and subfolders in a folder.|
-|[List files in root folder](connectors-create-api-dropbox.md#list-files-in-root-folder)|This operation gets the list of files and subfolders in the root folder.|
-|[Extract archive to folder](connectors-create-api-dropbox.md#extract-archive-to-folder)|This operation extracts an archive file into a folder (example: .zip).|
+|[Dateimetadaten abrufen](connectors-create-api-dropbox.md#get-file-metadata)|Dieser Vorgang ruft die Metadaten für eine Datei ab.|
+|[Datei aktualisieren](connectors-create-api-dropbox.md#update-file)|Dieser Vorgang aktualisiert eine Datei.|
+|[Datei löschen](connectors-create-api-dropbox.md#delete-file)|Dieser Vorgang löscht eine Datei.|
+|[Dateimetadaten anhand des Pfads abrufen](connectors-create-api-dropbox.md#get-file-metadata-using-path)|Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.|
+|[Dateiinhalt anhand des Pfads abrufen](connectors-create-api-dropbox.md#get-file-content-using-path)|Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.|
+|[Dateiinhalte abrufen](connectors-create-api-dropbox.md#get-file-content)|Dieser Vorgang ruft den Inhalt einer Datei ab.|
+|[Datei erstellen](connectors-create-api-dropbox.md#create-file)|Dieser Vorgang erstellt eine Datei.|
+|[Datei kopieren](connectors-create-api-dropbox.md#copy-file)|Dieser Vorgang kopiert eine Datei in Dropbox.|
+|[Dateien im Ordner aufführen](connectors-create-api-dropbox.md#list-files-in-folder)|Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.|
+|[Dateien im Stammordner aufführen](connectors-create-api-dropbox.md#list-files-in-root-folder)|Dieser Vorgang ruft die Liste mit den im Stammordner enthaltenen Dateien und Unterordnern ab.|
+|[Archiv in Ordner extrahieren](connectors-create-api-dropbox.md#extract-archive-to-folder)|Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.|
 
-### <a name="action-details"></a>Action details
+### Aktionsdetails
 
-Here are the details for the actions and triggers for this connector, along with their responses:
+Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten:
 
 
-### <a name="get-file-metadata"></a>Get file metadata
-This operation gets the metadata for a file. 
+### Dateimetadaten abrufen
+Dieser Vorgang ruft die Metadaten für eine Datei ab.
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|File|Datei auswählen|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="update-file"></a>Update file
-This operation updates a file. 
+### Datei aktualisieren
+Dieser Vorgang aktualisiert eine Datei.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|id*|File|Select a file|
-|body*|File content|Content of the file|
+|id*|File|Datei auswählen|
+|body*|Dateiinhalte|Inhalt der Datei|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="delete-file"></a>Delete file
-This operation deletes a file. 
+### Datei löschen
+Dieser Vorgang löscht eine Datei.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|File|Datei auswählen|
 
-An * indicates that a property is required
-
-
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-### <a name="get-file-metadata-using-path"></a>Get file metadata using path
-This operation gets the metadata of a file using the path. 
 
 
-|Property Name| Display Name|Description|
+### Dateimetadaten anhand des Pfads abrufen
+Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.
+
+
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|path*|File path|Select a file|
+|path*|Dateipfad|Datei auswählen|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="get-file-content-using-path"></a>Get file content using path
-This operation gets the content of a file using the path. 
+### Dateiinhalt anhand des Pfads abrufen
+Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|path*|File path|Select a file|
+|path*|Dateipfad|Datei auswählen|
 
-An * indicates that a property is required
-
-
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-### <a name="get-file-content"></a>Get file content
-This operation gets the content of a file. 
 
 
-|Property Name| Display Name|Description|
+### Dateiinhalte abrufen
+Dieser Vorgang ruft den Inhalt einer Datei ab.
+
+
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|File|Datei auswählen|
 
-An * indicates that a property is required
-
-
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-### <a name="create-file"></a>Create file
-This operation creates a file. 
 
 
-|Property Name| Display Name|Description|
+### Datei erstellen
+Dieser Vorgang erstellt eine Datei.
+
+
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|folderPath*|Folder path|Select a folder|
-|name*|File name|Name of the file|
-|body*|File content|Content of the file|
+|folderPath*|Ordnerpfad|Ordner auswählen|
+|name*|Dateiname|Name der Datei|
+|body*|Dateiinhalte|Inhalt der Datei|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="copy-file"></a>Copy file
-This operation copies a file to Dropbox. 
+### Datei kopieren
+Dieser Vorgang kopiert eine Datei in Dropbox.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|source*|Source url|Url to source file|
-|destination*|Destination file path|Destination file path, including target filename|
-|overwrite|Overwrite?|Overwrites the destination file if set to 'true'|
+|source*|Quell-URL|URL zur Quelldatei|
+|destination*|Zieldateipfad|Zieldateipfad einschließlich Zieldateiname|
+|overwrite|Überschreiben?|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="when-a-file-is-created"></a>When a file is created
-This operation triggers a flow when a new file is created in a folder. 
+### Wenn eine Datei erstellt wird
+Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine neue Datei erstellt wird.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|folderId*|Folder|Select a folder|
+|folderId*|Ordner|Ordner auswählen|
 
-An * indicates that a property is required
-
-
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-### <a name="when-a-file-is-modified"></a>When a file is modified
-This operation triggers a flow when a file is modified in a folder. 
 
 
-|Property Name| Display Name|Description|
+### Wenn eine Datei geändert wird
+Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine Datei geändert wird.
+
+
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|folderId*|Folder|Select a folder|
+|folderId*|Ordner|Ordner auswählen|
 
-An * indicates that a property is required
-
-
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-### <a name="list-files-in-folder"></a>List files in folder
-This operation gets the list of files and subfolders in a folder. 
 
 
-|Property Name| Display Name|Description|
+### Dateien im Ordner aufführen
+Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.
+
+
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|id*|Folder|Select a folder|
+|id*|Ordner|Ordner auswählen|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="list-files-in-root-folder"></a>List files in root folder
-This operation gets the list of files and subfolders in the root folder. 
+### Dateien im Stammordner aufführen
+Dieser Vorgang ruft die Liste mit den im Stammordner enthaltenen Dateien und Unterordnern ab.
 
 
-There are no parameters for this call
+Es gibt keine Parameter für diesen Aufruf
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="extract-archive-to-folder"></a>Extract archive to folder
-This operation extracts an archive file into a folder (example: .zip). 
+### Archiv in Ordner extrahieren
+Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.
 
 
-|Property Name| Display Name|Description|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|source*|Source archive file path|Path to the archive file|
-|destination*|Destination folder path|Path to extract the archive contents|
-|overwrite|Overwrite?|Overwrites the destination files if set to 'true'|
+|source*|Quellarchiv-Dateipfad|Pfad zur Archivdatei|
+|destination*|Zielordnerpfad|Pfad, an dem der Archivinhalt extrahiert werden soll|
+|overwrite|Überschreiben?|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
 
-An * indicates that a property is required
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
 
-#### <a name="output-details"></a>Output Details
+#### Ausgabedetails
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
 |Path|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
 
 
-## <a name="http-responses"></a>HTTP responses
+## HTTP-Antworten
 
-The actions and triggers above can return one or more of the following HTTP status codes: 
+Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
 
-| Name | Description |
+| Name | Beschreibung |
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occurred.|
-|default|Operation Failed.|
+|202|Zulässig|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
-## <a name="next-steps"></a>Next steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## Nächste Schritte
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

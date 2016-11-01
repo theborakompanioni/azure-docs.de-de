@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure IoT Hub scaling | Microsoft Azure"
- description="Describes how to scale Azure IoT Hub."
+ pageTitle="Skalieren von Azure IoT Hub | Microsoft Azure"
+ description="Beschreibt das Skalieren von Azure IoT Hub."
  services="iot-hub"
  documentationCenter=""
  authors="fsautomata"
@@ -16,56 +16,61 @@
  ms.date="09/19/2016"
  ms.author="elioda"/>
 
+# Skalieren von IoT Hub
 
-# <a name="scaling-iot-hub"></a>Scaling IoT Hub
+Azure IoT Hub kann bis zu einer Million gleichzeitig verbundener Geräte unterstützen. Weitere Informationen finden Sie unter [IoT Hub – Preise][lnk-pricing]. Jede IoT Hub-Einheit lässt eine bestimmte Anzahl von täglichen Nachrichten zu.
 
-Azure IoT Hub can support up to a million simultaneously connected devices. For more information, see [IoT Hub pricing][lnk-pricing]. Each IoT Hub unit allows a certain number of daily messages.
+Um Ihre Lösung richtig skalieren zu können, sollten Sie sich nach dem jeweiligen IoT Hub-Anwendungsfall richten. Achten Sie besonders auf den erforderlichen Spitzendurchsatz für die folgenden Kategorien von Vorgängen:
 
-To properly scale your solution, consider your particular use of IoT Hub. In particular, consider the required peak throughput for the following categories of operations:
+* D2C-Nachrichten
+* C2D-Nachrichten
+* Identitätsregistrierungsvorgänge
 
-* Device-to-cloud messages
-* Cloud-to-device messages
-* Identity registry operations
+Sehen Sie sich zusätzlich zu diesen Durchsatzinformationen auch [IoT Hub-Kontingente und -Drosselungen][] an und entwerfen Sie Ihre Lösung entsprechend.
 
-In addition to this throughput information, see [IoT Hub quotas and throttles][] and design your solution accordingly.
+## D2C- und C2D-Nachrichtendurchsatz
 
-## <a name="device-to-cloud-and-cloud-to-device-message-throughput"></a>Device-to-cloud and cloud-to-device message throughput
+Die beste Methode zum Skalieren einer IoT Hub-Lösung ist die Auswertung des Datenverkehrs pro Einheit.
 
-The best way to size an IoT Hub solution is to evaluate the traffic on a per-unit basis.
+D2C-Nachrichten basieren auf diesen Richtlinien für den anhaltenden Durchsatz:
 
-Device-to-cloud messages follow these sustained throughput guidelines.
-
-| Tier | Sustained throughput | Sustained send rate |
+| Tarif | Anhaltender Durchsatz | Anhaltende Senderate |
 | ---- | -------------------- | ------------------- |
-| S1 | Up to 1111 KB/minute per unit<br/>(1.5 GB/day/unit) | Average of 278 messages/minute per unit<br/>(400,000 messages/day per unit) |
-| S2 | Up to 16 MB/minute per unit<br/>(22.8 GB/day/unit) | Average of 4167 messages/minute per unit<br/>(6 million messages/day per unit) |
-| S3 | Up to 814 MB/minute per unit<br/>(1144.4 GB/day/unit) | Average of 208,333 messages/minute per unit<br/>(300 million messages/day per unit) |
+| S1 | Bis zu 1111 KB/Minute pro Einheit<br/>(1,5 GB/Tag/Einheit) | Durchschnittlich 278 Nachrichten/Minute pro Einheit<br/>(400.000 Nachrichten/Tag pro Einheit) |
+| S2 | Bis zu 16 MB/Minute pro Einheit<br/>(22,8 GB/Tag/Einheit) | Durchschnittlich 4167 Nachrichten/Minute pro Einheit<br/>(6 Millionen Nachrichten/Tag pro Einheit) |
+| S3 | Bis zu 814 MB/Minute pro Einheit<br/>(1.144,4 GB/Tag/Einheit) | Durchschnittlich 208.333 Nachrichten/Minute pro Einheit<br/>(300 Millionen Nachrichten/Tag pro Einheit) |
 
-## <a name="identity-registry-operation-throughput"></a>Identity registry operation throughput
+## Durchsatz von Identitätsregistrierungsvorgängen
 
-IoT Hub identity registry operations are not supposed to be runtime operations, as they are mostly related to device provisioning.
+IoT Hub-Identitätsregistrierungsvorgänge sollten keine Laufzeitvorgänge sein, da sie sich größtenteils auf die Gerätebereitstellung beziehen.
 
-For specific burst performance numbers, see [IoT Hub quotas and throttles][].
+Genaue Zahlen zur Burst-Leistung finden Sie unter [IoT Hub-Kontingente und -Drosselungen][].
 
-## <a name="sharding"></a>Sharding
+## Sharding (Horizontales Partitionieren)
 
-While a single IoT hub can scale to millions of devices, sometimes your solution requires specific performance characteristics that a single IoT hub cannot guarantee. In that case, it is recommended that you partition your devices into multiple IoT hubs. Multiple IoT hubs smooth traffic bursts and obtain the required throughput or operation rates that are required.
+Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werden, aber es kann sein, dass Ihre Lösung bestimmte Leistungsmerkmale benötigt, die von einer einzelnen IoT Hub-Einheit nicht gewährleistet werden können. In diesem Fall wird empfohlen, Ihre Geräte auf mehrere IoT Hubs zu partitionieren. Mehrere IoT Hubs glätten Datenverkehrsbursts und erzielen den erforderlichen Durchsatz oder die erforderlichen Vorgangsraten.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To further explore the capabilities of IoT Hub, see:
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-- [Developer guide][lnk-devguide]
-- [Simulating a device with the Gateway SDK][lnk-gateway]
+- [Entwicklerhandbuch][lnk-devguide]
+- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+- [Verwalten von IoT Hubs über das Azure-Portal][lnk-portal]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
+[IoT Hub-Kontingente und -Drosselungen]: iot-hub-devguide.md#throttling
 
+[lnk-design]: iot-hub-guidance.md
+[lnk-mqtt]: iot-hub-mqtt-support.md
+[lnk-devices]: iot-hub-tested-configurations.md
+[lnk-protocols]: iot-hub-protocol-gateway.md
+[lnk-compare]: iot-hub-compare-event-hubs.md
+[lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

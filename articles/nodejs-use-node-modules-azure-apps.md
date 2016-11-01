@@ -1,96 +1,80 @@
-<properties
-    pageTitle="Working with Node.js Modules"
-    description="Learn how to work with Node.js modules when using Azure App Service or Cloud Services."
-    services=""
-    documentationCenter="nodejs"
-    authors="rmcmurray"
-    manager="wpickett"
-    editor=""/>
+<properties pageTitle="Arbeiten mit Node.js-Modulen" description="Erfahren Sie, wie Sie mit Node.js-Modulen im Zusammenhang mit Azure App Service oder Cloud Services arbeiten." services="" documentationCenter="nodejs" authors="rmcmurray" manager="wpickett" editor=""/>
 
-<tags
-    ms.service="multiple"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="nodejs"
-    ms.topic="article"
-    ms.date="08/11/2016"
-    ms.author="robmcm"/>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="08/11/2016" ms.author="robmcm"/>
 
 
 
-# <a name="using-node.js-modules-with-azure-applications"></a>Using Node.js Modules with Azure applications
 
-This document provides guidance on using Node.js modules with applications hosted on Azure. It provides guidance on ensuring that your application uses a specific version of module as well as using native modules with Azure.
 
-If you are already familiar with using Node.js modules, **package.json** and **npm-shrinkwrap.json** files, the following is a quick summary of what is discussed in this article:
+# Verwenden von Node.js-Modulen mit Azure-Anwendungen
 
-* Azure App Service understands **package.json** and **npm-shrinkwrap.json** files and can install modules based on entries in these files.
-* Azure Cloud Services expect all modules to be installed on the development environment, and the **node\_modules** directory to be included as part of the deployment package. It is possible to enable support for installing modules using **package.json** or **npm-shrinkwrap.json** files on Cloud Services, however this requires customization of the default scripts used by Cloud Service projects. For an example of how to accomplish this, see [Azure Startup task to run npm install to avoid deploying node modules](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown)
+Dieses Dokument bietet Anweisungen zur Verwendung von Node.js-Modulen mit Anwendungen, die auf Azure gehostet werden. Sie erfahren, wie Sie sicherstellen können, dass eine Anwendung eine bestimmte Version eines Moduls sowie systemeigene Module von Azure verwendet.
 
-> [AZURE.NOTE] Azure Virtual Machines are not discussed in this article, as the deployment experience in a VM will be dependent on the operating system hosted by the Virtual Machine.
+Wenn Sie sich bereits mit Node.js-Modulen, **package.json**- und **npm-shrinkwrap.json**-Dateien auskennen, ist folgender Artikel eine kurze Zusammenfassung der in diesem Artikel diskutierten Inhalte:
 
-##<a name="node.js-modules"></a>Node.js Modules
+* Azure App Service versteht **package.json**- und **npm-shrinkwrap.json**-Dateien und kann Module basierend auf den Einträgen in diesen Dateien installieren.
+* Azure Cloud Services erfordern, dass alle Module auf der Entwicklungsumgebung installiert sind und das Verzeichnis **node\_modules** als Teil des Bereitstellungspakets enthalten ist. Sie können die Unterstützung für die Installation von Modulen mithilfe der Dateien **package.json** oder **npm-shrinkwrap.json** auf Azure Cloud Services aktivieren, dies erfordert jedoch die Anpassung der Standardskripts, die von Clouddienstprojekten verwendet werden. Ein Beispiel dafür finden Sie unter [Azure Startup task to run npm install to avoid deploying node modules](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) (Azure-Startaufgabe zum Ausführen von npm install, um keine Node.js-Module bereitstellen zu müssen, in englischer Sprache)
 
-Modules are loadable JavaScript packages that provide specific functionality for your application. A module is usually installed using the **npm** command-line tool, however some (such as the http module) are provided as part of the core Node.js package.
+> [AZURE.NOTE] Azure Virtual Machines werden in diesem Artikel nicht behandelt, da die Bereitstellung auf einem virtuellen Computer vom Betriebssystem abhängig ist, das von dem virtuellen Computer gehostet wird.
 
-When modules are installed, they are stored in the **node\_modules** directory at the root of your application directory structure. Each module within the **node\_modules** directory maintains its own **node\_modules** directory that contains any modules that it depends on, and this repeats again for every module all the way down the dependency chain. This allows each module installed to have its own version requirements for the modules it depends on, however it can result in quite a large directory structure.
+##Node.js-Module
 
-When deploying the **node\_modules** directory as part of your application, it will increase the size of the deployment compared to using a **package.json** or **npm-shrinkwrap.json** file; however, it does guarantee that the version of the modules used in production are the same as those used in development.
+Module sind ladbare JavaScript-Pakete, die bestimmte Funktionen für die Anwendung bieten. Ein Modul wird normalerweise über das Befehlszeilentool **npm** installiert. Einige Module (wie das http-Modul) werden jedoch als Teil des Node.js-Pakets bereitgestellt.
 
-###<a name="native-modules"></a>Native Modules
+Wenn Module installiert werden, werden diese im Verzeichnis **node\_modules** im Stamm der Anwendungsverzeichnisstruktur gespeichert. Jedes Modul im Verzeichnis **node\_modules** behält sein eigenes **node\_modules**-Verzeichnis, das alle Module enthält, von denen es abhängt. Dies wiederholt sich für jedes Modul auf der Abhängigkeitskette. Dadurch kann jedes installierte Modul seine eigenen Versionsanforderungen für die Module haben, von denen es abhängt. Dies kann jedoch zu einer sehr großen Verzeichnisstruktur führen.
 
-While most modules are simply plain-text JavaScript files, some modules are platform-specific binary images. These modules are compiled at install time, usually by using Python and node-gyp. Since Azure Cloud Services rely on the **node\_modules** folder being deployed as part of the application, any native module included as part of the installed modules should work in a cloud service as long as it was installed and compiled on a Windows development system.
+Wenn das Verzeichnis **node\_modules** als Teil der Anwendung bereitgestellt wird, vergrößert dies die Bereitstellung im Vergleich zur Verwendung einer Datei **package.json** oder **npm-shrinkwrap.json**. Dies garantiert jedoch, dass die Version der in der Produktion verwendeten Module identisch mit derjenigen in der Entwicklung ist.
 
-Azure App Service does not support all native modules and might fail at compiling those with very specific prerequisites. While some popular modules like MongoDB have optional native dependencies and work just fine without them, two workarounds proved successful with almost all native modules available today:
+###Systemeigene Module
 
-* Run **npm install** on a Windows machine that has all the native module's prerequisites installed. Then, deploy the created **node\_modules** folder as part of the application to Azure App Service.
-* Azure App Service can be configured to execute custom bash or shell scripts during deployment, giving you the opportunity to execute custom commands and precisely configure the way **npm install** is being run. For a video showing how to do this, see [Custom Website Deployment Scripts with Kudu].
+Auch wenn die meisten Module einfache Nur-Text-JavaScript-Dateien sind, gibt es auch Module, die plattformspezifische Binärimages sind. Diese Module werden bei der Installation gebildet, was normalerweise mit Python und node-gyp erfolgt. Da Azure Cloud Services auf den Ordner **node\_modules** angewiesen sind, der als Teil der Anwendung bereitgestellt wird, sollte ein systemeigenes Modul, das als Teil der installierten Module enthalten ist, in einem Clouddienst funktionieren, solange dieser auf einem Windows-Entwicklungssystem erstellt wurde.
 
-###<a name="using-a-package.json-file"></a>Using a package.json file
+Azure App Service unterstützt nicht alle systemeigenen Module, sodass eine Kompilierung dieser Module unter sehr spezifischen Voraussetzungen möglicherweise fehlschlägt. Während einige beliebte Module wie MongoDB optionale systemeigene Abhängigkeiten besitzen, aber problemlos ohne diese funktionieren, erwiesen sich zwei Problemumgehungen als sehr erfolgreich mit fast allen zurzeit verfügbaren systemeigenen Modulen:
 
-The **package.json** file is a way to specify the top level dependencies your application requires so that the hosting platform can install the dependencies, rather than requiring you to include the **node\_packages** folder as part of the deployment. After the application has been deployed, the **npm install** command is used to parse the **package.json** file and install all the dependencies listed.
+* Führen Sie **npm install** auf einem Windows-Computer aus, auf dem alle Voraussetzungen für das jeweilige systemeigene Modul installiert sind. Stellen Sie anschließend den erstellten Ordner **node\_modules** als Teil der Anwendung in Azure App Service bereit.
+* Azure App Service kann für die Ausführung benutzerdefinierter Bash- oder Shell-Skripts während der Bereitstellung konfiguriert werden. So haben Sie die Möglichkeit, benutzerdefinierte Befehle auszuführen und exakt zu konfigurieren, wie **npm install** ausgeführt wird. Ein Video mit der entsprechenden Vorgehensweise finden Sie unter [Benutzerdefinierte Website-Bereitstellungsskripts mit Kudu].
 
-During development, you can use the **--save**, **--save-dev**, or **--save-optional** parameters when installing modules to add an entry for the module to your **package.json** file automatically. For more information, see [npm-install](https://docs.npmjs.com/cli/install).
+###Verwenden einer package.json-Datei
 
-One potential problem with the **package.json** file is that it only specifies the version for top level dependencies. Each module installed may or may not specify the version of the modules it depends on, and so it is possible that you may end up with a different dependency chain than the one used in development.
+Mit der Datei **package.json** können Sie die von der Anwendung benötigten Abhängigkeiten auf oberster Ebene angeben, sodass die Hostingplattform die Abhängigkeiten installieren kann. Somit muss der Ordner **node\_packages** nicht als Teil der Bereitstellung enthalten sein. Nachdem die Anwendung bereitgestellt wurde, wird der Befehl **npm install** verwendet, um die Datei **package.json** zu analysieren und alle aufgelisteten Abhängigkeiten zu installieren.
+
+Während der Entwicklung können Sie bei der Installation von Modulen die Parameter **--save**, **--save-dev** oder **--save-optional** verwenden, um automatisch einen Eintrag für das Modul zur Datei**package.json** hinzuzufügen. Weitere Informationen hierzu finden Sie unter [npm-install](https://docs.npmjs.com/cli/install).
+
+Ein potenzielles Problem bei der Datei **package.json** ist, dass nur die Version für die Abhängigkeiten auf oberster Ebene angegeben wird. Manche installierten Module geben die Version der Module an, von denen sie abhängen, andere nicht. Somit ist es möglich, dass Sie eine andere Abhängigkeitskette erhalten als die in der Entwicklung verwendete.
 
 > [AZURE.NOTE]
-> When deploying to Azure App Service, if your <b>package.json</b> file references a native module you will see an error similar to the following when publishing the application using Git:
+Falls die Datei <b>package.json</b> auf ein systemeigenes Modul verweist, wird Ihnen bei der Bereitstellung auf Azure App Service ein Fehler ähnlich dem folgenden angezeigt, wenn die Anwendung mithilfe von Git veröffentlicht wird:
 
->       npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
+>		npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
 
->       npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
+>		npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
 
 
-###<a name="using-a-npm-shrinkwrap.json-file"></a>Using a npm-shrinkwrap.json file
+###Verwenden einer npm-shrinkwrap.json-Datei
 
-The **npm-shrinkwrap.json** file is an attempt to address the module versioning limitations of the **package.json** file. While the **package.json** file only includes versions for the top level modules, the **npm-shrinkwrap.json** file contains the version requirements for the full module dependency chain.
+Die Datei **npm-shrinkwrap.json** ist ein Versuch, die Modulversionsbegrenzungen der Datei **package.json** zu umgehen. Während die Datei **package.json** nur Versionen der Module auf oberster Ebene enthält, enthält die Datei **npm-shrinkwrap.json** die Versionsanforderungen für die vollständige Modulabhängigkeitskette.
 
-When your application is ready for production, you can lock-down version requirements and create an **npm-shrinkwrap.json** file by using the **npm shrinkwrap** command. This will use the versions currently installed in the **node\_modules** folder, and record these to the **npm-shrinkwrap.json** file. After the application has been deployed to the hosting environment, the **npm install** command is used to parse the **npm-shrinkwrap.json** file and install all the dependencies listed. For more information, see [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
+Wenn die Anwendung für die Produktion bereit ist, können Sie die Versionsanforderungen sperren und eine Datei **npm-shrinkwrap.json** über den Befehl **npm shrinkwrap** erstellen. Diese verwendet die derzeit im Ordner **node\_modules** installierten Versionen, und speichert sie in der Datei **npm-shrinkwrap.json**. Nachdem die Anwendung zur Hostingumgebung bereitgestellt wurde, wird der Befehl **npm install** verwendet, um die Datei **npm-shrinkwrap.json** zu analysieren und alle aufgelisteten Abhängigkeiten zu installieren. Weitere Informationen finden Sie unter [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
 
 > [AZURE.NOTE]
->When deploying to Azure App Service, if your <b>npm-shrinkwrap.json</b> file references a native module you will see an error similar to the following when publishing the application using Git:
+Falls die Datei <b>npm-shrinkwrap.json</b> auf ein systemeigenes Modul verweist, wird Ihnen bei der Bereitstellung auf Azure App Service ein Fehler ähnlich dem folgenden angezeigt, wenn die Anwendung mithilfe von Git veröffentlicht wird:
 
->       npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
+>		npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
 
->       npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
+>		npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
 
 
-##<a name="next-steps"></a>Next Steps
+##Nächste Schritte
 
-Now that you understand how to use Node.js modules with Azure, learn how to [specify the Node.js version], [build and deploy a Node.js web app], and [How to use the Azure Command-Line Interface for Mac and Linux].
+Nachdem Sie wissen, wie Sie Node.js-Module mit Azure verwenden, erfahren Sie nun, wie Sie [die Node.js-Version angeben], [eine Node.js-Web-App erstellen und bereitstellen] und [die Azure-Befehlszeilenschnittstelle für Mac und Linux verwenden].
 
-For more information, see the [Node.js Developer Center](/develop/nodejs/).
+Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/).
 
-[specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
-[How to use the Azure Command-Line Interface for Mac and Linux]: xplat-cli-install.md
-[build and deploy a Node.js web app]: web-sites-nodejs-develop-deploy-mac.md
+[die Node.js-Version angeben]: nodejs-specify-node-version-azure-apps.md
+[die Azure-Befehlszeilenschnittstelle für Mac und Linux verwenden]: xplat-cli-install.md
+[eine Node.js-Web-App erstellen und bereitstellen]: web-sites-nodejs-develop-deploy-mac.md
 [Node.js Web Application with Storage on MongoDB (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
 [Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
-[Custom Website Deployment Scripts with Kudu]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
+[Benutzerdefinierte Website-Bereitstellungsskripts mit Kudu]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

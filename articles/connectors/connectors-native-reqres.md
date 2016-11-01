@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Use request and response actions | Microsoft Azure"
-    description="Overview of the request and response trigger and action in an Azure logic app"
-    services=""
-    documentationCenter=""
-    authors="jeffhollan"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="Verwenden von Anforderungs- und Antwortaktionen | Microsoft Azure"
+	description="Übersicht über den Anforderungs- und Antworttrigger und die Anforderungs- und Antwortaktion in einer Azure-Logik-App"
+	services=""
+	documentationCenter=""
+	authors="jeffhollan"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,105 +17,100 @@
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
+# Erste Schritte mit den Anforderungs- und Antwortkomponenten
 
-# <a name="get-started-with-the-request-and-response-components"></a>Get started with the request and response components
+Mit den Anforderungs- und Antwortkomponenten in einer Logik-App können Sie in Echtzeit auf Ereignisse reagieren.
 
-With the request and response components in a logic app, you can respond in real time to events.
+Dazu zählen z. B.:
 
-For example, you can:
+- Reagieren Sie auf eine HTTP-Anforderung mit Daten aus einer lokalen Datenbank über eine Logik-App.
+- Lösen Sie eine Logik-App über ein externes Webhook-Ereignis aus.
+- Rufen Sie innerhalb einer Logik-App eine andere Logik-App mit einer Anforderungs- und Antwortaktion auf.
 
-- Respond to an HTTP request with data from an on-premises database through a logic app.
-- Trigger a logic app from an external webhook event.
-- Call a logic app with a request and response action from within another logic app.
+Wenn Sie Anforderungs- und Antwortaktionen in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-To get started using the request and response actions in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## Verwenden des HTTP-Anforderungstriggers
 
-## <a name="use-the-http-request-trigger"></a>Use the HTTP Request trigger
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md).
 
-A trigger is an event that can be used to start the workflow that is defined in a logic app. [Learn more about triggers](connectors-overview.md).
+Im Anschluss finden Sie eine Beispielsequenz für die Einrichtung einer HTTP-Anforderung im Logik-App-Designer.
 
-Here’s an example sequence of how to set up an HTTP request in the Logic App Designer.
+1. Fügen Sie in Ihrer Logik-App den Trigger **Request - When an HTTP request is received** (Anforderung – wenn eine HTTP-Anforderung empfangen wird) hinzu. Geben Sie ggf. (mit einem Tool wie [JSONSchema.net](http://jsonschema.net)) ein JSON-Schema für den Anforderungstext an. Dadurch kann der Designer Token für Eigenschaften in der HTTP-Anforderung generieren.
+2. Fügen Sie eine weitere Aktion hinzu, um die Logik-App speichern zu können.
+3. Nach dem Speichern der Logik-App können Sie die URL der HTTP-Anforderung über die Anforderungskarte ermitteln.
+4. Ein (mit einem Tool wie [Postman](https://www.getpostman.com/)) an die URL gerichteter HTTP-POST-Vorgang löst die Logik-App aus.
 
-1. Add the trigger **Request - When an HTTP request is received** in your logic app. You can optionally provide a JSON schema (by using a tool like [JSONSchema.net](http://jsonschema.net)) for the request body. This allows the designer to generate tokens for properties in the HTTP request.
-2. Add another action so that you can save the logic app.
-3. After saving the logic app, you can get the HTTP request URL from the request card.
-4. An HTTP POST (you can use a tool like [Postman](https://www.getpostman.com/)) to the URL triggers the logic app.
+>[AZURE.NOTE] Wenn Sie keine Antwortaktion definieren, wird umgehend eine `202 ACCEPTED`-Antwort an den Aufrufer zurückgegeben. Mithilfe der Antwortaktion können Sie die Antwort anpassen.
 
->[AZURE.NOTE] If you don't define a response action, a `202 ACCEPTED` response is immediately returned to the caller. You can use the response action to customize a response.
+![Antworttrigger](./media/connectors-native-reqres/using-trigger.png)
 
-![Response trigger](./media/connectors-native-reqres/using-trigger.png)
+## Verwenden der HTTP-Antwortaktion
 
-## <a name="use-the-http-response-action"></a>Use the HTTP Response action
+Die HTTP-Antwortaktion ist nur gültig, wenn sie in einem durch eine HTTP-Anforderung ausgelösten Workflow verwendet wird. Wenn Sie keine Antwortaktion definieren, wird umgehend eine `202 ACCEPTED`-Antwort an den Aufrufer zurückgegeben. Sie können in jedem Schritt innerhalb des Workflows eine Antwortaktion hinzufügen. Die Logik-App wartet bei der eingehenden Anforderung nur eine Minute auf eine Antwort. Falls nach einer Minute noch keine Antwort vom Workflow gesendet wurde (und die Definition eine Antwortaktion enthält), wird `504 GATEWAY TIMEOUT` an den Aufrufer zurückgegeben.
 
-The HTTP Response action is only valid when you use it in a workflow that is triggered by an HTTP request. If you don't define a response action, a `202 ACCEPTED` response is immediately returned to the caller.  You can add a response action at any step within the workflow. The logic app only keeps the incoming request open for one minute for a response.  After one minute, if no response was sent from the workflow (and a response action exists in the definition), a `504 GATEWAY TIMEOUT` is returned to the caller.
+Gehen Sie zum Hinzufügen einer HTTP-Antwortaktion wie folgt vor:
 
-Here's how to add an HTTP Response action:
+1. Wählen Sie die Schaltfläche **Neuer Schritt** aus.
+2. Wählen Sie **Aktion hinzufügen** aus.
+3. Geben Sie im Aktionssuchfeld die Zeichenfolge **response** ein, um die Antwortaktion anzuzeigen.
 
-1. Select the **New Step** button.
-2. Choose **Add an action**.
-3. In the action search box, type **response** to list the Response action.
+	![Auswählen der Antwortaktion](./media/connectors-native-reqres/using-action-1.png)
 
-    ![Select the response action](./media/connectors-native-reqres/using-action-1.png)
+4. Geben Sie alle Parameter an, die Sie ggf. für die HTTP-Antwortnachricht benötigen.
 
-4. Add in any parameters that are required for the HTTP response message.
+	![Ausführen der Antwortaktion](./media/connectors-native-reqres/using-action-2.png)
 
-    ![Complete the response action](./media/connectors-native-reqres/using-action-2.png)
+5. Klicken Sie zum Speichern links oben auf die Symbolleiste. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
 
-5. Click the upper-left corner of the toolbar to save, and your logic app will both save and publish (activate).
+## Anforderungstrigger
 
-## <a name="request-trigger"></a>Request trigger
+Hier finden Sie Details zu dem Trigger, den dieser Connector unterstützt. Ein einzelner Anforderungstrigger steht zur Verfügung.
 
-Here are the details for the trigger that this connector supports. There is a single request trigger.
-
-|Trigger|Description|
+|Trigger|Beschreibung|
 |---|---|
-|Request|Occurs when an HTTP request is received|
+|Request|Wird ausgeführt, wenn eine HTTP-Anforderung empfangen wird.|
 
-## <a name="response-action"></a>Response action
+## Antwortaktion
 
-Here are the details for the action that this connector supports. There is a single response action that can only be used when it is accompanied by a request trigger.
+Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Eine einzelne Antwortaktion steht zur Verfügung, und sie muss mit einem Anforderungstrigger kombiniert werden.
 
-|Action|Description|
+|Aktion|Beschreibung|
 |---|---|
-|Response|Returns a response to the correlated HTTP request|
+|Antwort|Gibt eine Antwort an die korrelierte HTTP-Anforderung zurück.|
 
-### <a name="trigger-and-action-details"></a>Trigger and action details
+### Trigger- und Aktionsdetails
 
-The following tables describe the input fields for the trigger and action, and the corresponding output details.
+Die folgenden Tabellen beschreiben die Eingabefelder für die Trigger und Aktionen sowie die entsprechenden Ausgabedetails.
 
-#### <a name="request-trigger"></a>Request trigger
-The following is an input field for the trigger from an incoming HTTP request.
+#### Anforderungstrigger
+Das Folgende ist ein Eingabefeld für den Trigger aus einer eingehenden HTTP-Anforderung.
 
-|Display name|Property name|Description|
+|Anzeigename|Eigenschaftenname|Beschreibung|
 |---|---|---|
-|JSON Schema|schema|The JSON schema of the HTTP request body|
+|JSON-Schema|schema|Das JSON-Schema für den HTTP-Anforderungstext.|
 <br>
 
-**Output details**
+**Ausgabedetails**
 
-The following are output details for the request.
+Im Folgenden werden die Ausgabedetails für die Anforderung angegeben.
 
-|Property name|Data type|Description|
+|Eigenschaftenname|Datentyp|Beschreibung|
 |---|---|---|
-|Headers|object|Request headers|
-|Body|object|Request object|
+|Headers|Objekt|Anforderungsheader|
+|Body|Objekt|Anforderungsobjekt|
 
-#### <a name="response-action"></a>Response action
+#### Antwortaktion
 
-The following are input fields for the HTTP Response action. A * means that it is a required field.
+Im Folgenden werden die Eingabefelder für die HTTP-Antwortaktion angegeben. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-|Display name|Property name|Description|
+|Anzeigename|Eigenschaftenname|Beschreibung|
 |---|---|---|
-|Status Code*|statusCode|The HTTP status code|
-|Headers|headers|A JSON object of any response headers to include|
-|Body|body|The response body|
+|Statuscode*|statusCode|Der HTTP-Statuscode.|
+|Header|headers|Ein JSON-Objekt für alle einzubeziehenden Antwortheader.|
+|Body|body|Der Antworttext.|
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

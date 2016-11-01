@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get started with Azure Batch PowerShell | Microsoft Azure"
-   description="Get a quick introduction to the Azure PowerShell cmdlets you can use to manage the Azure Batch service"
+   pageTitle="Erste Schritte mit Azure Batch PowerShell | Microsoft Azure"
+   description="Schnelle Einführung in die Azure PowerShell-Cmdlets zum Verwalten des Azure Batch-Diensts"
    services="batch"
    documentationCenter=""
    authors="dlepow"
@@ -16,45 +16,44 @@
    ms.date="07/28/2016"
    ms.author="danlep"/>
 
+# Erste Schritte mit Azure Batch-PowerShell-Cmdlets
+Mit den Azure Batch-PowerShell-Cmdlets können Sie viele Aufgaben durchführen, für die Sie die Batch-APIs, das Azure-Portal und die Azure Befehlszeilenschnittstelle (CLI) verwenden, und Skripts dafür erstellen. Dies ist eine kurze Einführung in die Cmdlets, mit denen Sie Ihre Batch-Konten verwalten und Batch-Ressourcen wie Pools, Aufträge und Aufgaben verwenden. Dieser Artikel basiert auf Cmdlets in Azure PowerShell Version 1.6.0.
 
-# <a name="get-started-with-azure-batch-powershell-cmdlets"></a>Get started with Azure Batch PowerShell cmdlets
-With the Azure Batch PowerShell cmdlets, you can perform and script many of the same tasks you carry out with the Batch APIs, the Azure portal, and the Azure Command-Line Interface (CLI). This is a quick introduction to the cmdlets you can use to manage your Batch accounts and work with your Batch resources such as pools, jobs, and tasks. This article is based on cmdlets in Azure PowerShell version 1.6.0.
-
-For a complete list of Batch cmdlets and detailed cmdlet syntax, see the [Azure Batch cmdlet reference](https://msdn.microsoft.com/library/azure/mt125957.aspx). 
+Eine vollständige Liste mit Batch-Cmdlets und deren ausführliche Cmdlet-Syntax finden Sie in der Referenz zu [Azure Batch Cmdlets](https://msdn.microsoft.com/library/azure/mt125957.aspx) (Azure Batch-Cmdlets).
 
 
-## <a name="prerequisites"></a>Prerequisites
+## Voraussetzungen
 
-* **Azure PowerShell** - See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for instructions to download and install Azure PowerShell. 
+* **Azure PowerShell**: Eine Anleitung zum Herunterladen und Installieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
    
-    * Because the Azure Batch cmdlets ship in the Azure Resource Manager module, you'll need to run the **Login-AzureRmAccount** cmdlet to connect to your subscription. 
+    * Da die Azure Batch-Cmdlets Teil des Azure-Ressourcen-Manager-Moduls sind, müssen Sie das Cmdlet **Login-AzureRmAccount** ausführen, um eine Verbindung mit Ihrem Abonnement herzustellen.
     
-    * We recommend that you update your Azure PowerShell frequently to take advantage of service updates and enhancements. 
+    * Wir empfehlen, dass Sie Azure PowerShell regelmäßig aktualisieren, damit Sie von den Dienstupdates und Verbesserungen profitieren.
     
-* **Register with the Batch provider namespace (one-time operation)** - Before working with your Batch accounts, you have to register with the Batch provider namespace. This operation only needs to be performed once per subscription. Run the following cmdlet:
+* **Registrieren beim Batch-Anbieternamespace (einmalig)**: Bevor Sie mit Batch-Konten arbeiten können, müssen Sie sich beim Batch-Anbieternamespace registrieren. Dieser Vorgang muss nur einmal pro Abonnement ausgeführt werden. Führen Sie das folgende Cmdlet aus:
 
         Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch
 
 
-## <a name="manage-batch-accounts-and-keys"></a>Manage Batch accounts and keys
+## Verwalten von Batch-Konten und Schlüsseln
 
-### <a name="create-a-batch-account"></a>Create a Batch account
+### Erstellen eines Batch-Kontos
 
-**New-AzureRmBatchAccount** creates a new Batch account in a specified resource group. If you don't already have a resource group, create one by running the [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx) cmdlet, specifying one of the Azure regions in the **Location** parameter, such as "Central US". For example:
+**New-AzureRmBatchAccount** erstellt ein neues Batch-Konto in einer angegebenen Ressourcengruppe. Wenn Sie noch keine Ressourcengruppe erstellt haben, erstellen Sie sie durch Ausführen des Cmdlets [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx). Geben Sie dabei eine der Azure-Regionen im **Location**-Parameter an, z. B. „Central US“. Zum Beispiel:
 
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
 
-Then, create a new Batch account account in the resource group, specifying a name for the account in <*account_name*> and the location and name of your resource group. Creating the Batch account can take some time to complete. For example:
+Erstellen Sie anschließend ein neues Batch-Konto in der Ressourcengruppe, und geben Sie einen Namen für das Konto in <*account\_name*> und den Speicherort und Namen der Ressourcengruppe an. Die Erstellung des Batch-Kontos kann einige Zeit dauern. Zum Beispiel:
 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
 
-> [AZURE.NOTE] The Batch account name must be unique to the Azure region for the resource group, contain between 3 and 24 characters, and use lowercase letters and numbers only.
+> [AZURE.NOTE] Der Batch-Kontoname muss in der Azure-Region für die Ressourcengruppe eindeutig sein, zwischen 3 und 24 Zeichen umfassen und darf nur Kleinbuchstaben und Zahlen enthalten.
 
-### <a name="get-account-access-keys"></a>Get account access keys
-**Get-AzureRmBatchAccountKeys** shows the access keys associated with an Azure Batch account. For example, run the following to get the primary and secondary keys of the account you created.
+### Abrufen von Kontozugriffsschlüsseln
+**Get-AzureRmBatchAccountKeys** zeigt die Zugriffsschlüssel an, die einem Azure Batch-Konto zugeordnet sind. Führen Sie beispielsweise Folgendes aus, um den primären und sekundären Schlüssel des Kontos abzurufen, das Sie erstellt haben.
 
     $Account = Get-AzureRmBatchAccountKeys –AccountName <accountname>
 
@@ -63,68 +62,68 @@ Then, create a new Batch account account in the resource group, specifying a nam
     $Account.SecondaryAccountKey
 
 
-### <a name="generate-a-new-access-key"></a>Generate a new access key
-**New-AzureRmBatchAccountKey** generates a new primary or secondary account key for an Azure Batch account. For example, to generate a new primary key for your Batch account, type:
+### Generieren eines neuen Zugriffsschlüssels
+**New-AzureRmBatchAccountKey** generiert einen neuen primären oder sekundären Kontoschlüssel für ein Azure Batch-Konto. Geben Sie zum Generieren eines neuen primären Schlüssels für Ihr Batch-Konto z. B. Folgendes ein:
 
 
     New-AzureRmBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 
-> [AZURE.NOTE] To generate a new secondary key, specify "Secondary" for the **KeyType** parameter. You have to regenerate the primary and secondary keys separately.
+> [AZURE.NOTE] Um einen neuen sekundären Schlüssel zu generieren, geben Sie "Secondary" für den **KeyType**-Parameter ein. Sie müssen den primären und sekundären Schlüssel separat neu generieren.
 
-### <a name="delete-a-batch-account"></a>Delete a Batch account
-**Remove-AzureRmBatchAccount** deletes a Batch account. For example:
+### Löschen eines Batch-Kontos
+**Remove-AzureRmBatchAccount** löscht ein Batch-Konto. Zum Beispiel:
 
 
     Remove-AzureRmBatchAccount -AccountName <account_name>
 
-When prompted, confirm you want to remove the account. Account removal can take some time to complete.
+Bestätigen Sie bei der entsprechenden Aufforderung, dass Sie das Konto entfernen möchten. Das Entfernen des Kontos kann einige Zeit in Anspruch nehmen.
 
-## <a name="create-a-batchaccountcontext-object"></a>Create a BatchAccountContext object
+## Erstellen eines BatchAccountContext-Objekts
 
-To authenticate using the Batch PowerShell cmdlets when you create and manage Batch pools, jobs, tasks, and other resources, first create a BatchAccountContext object to store your account name and keys:
+Zum Authentifizieren mithilfe von Batch PowerShell-Cmdlets beim Erstellen und Verwalten von Batch-Pools, Aufträgen, Aufgaben und anderen Ressourcen müssen Sie zuerst ein BatchAccountContext-Objekt erstellen. Mit diesem Objekt werden Ihr Kontoname und die Schlüssel gespeichert:
 
     $context = Get-AzureRmBatchAccountKeys -AccountName <account_name>
 
-You pass the BatchAccountContext object into cmdlets that use the **BatchContext** parameter.
+Übergeben Sie das BatchAccountContext-Objekt in Cmdlets, die den Parameter **BatchContext** verwenden.
 
-> [AZURE.NOTE] By default, the account's primary key is used for authentication, but you can explicitly select the key to use by changing your BatchAccountContext object’s **KeyInUse** property: `$context.KeyInUse = "Secondary"`.
+> [AZURE.NOTE] Standardmäßig wird der primäre Schlüssel des Kontos für die Authentifizierung verwendet. Sie können jedoch ausdrücklich den zu verwendenden Schlüssel auswählen, indem Sie die **KeyInUse**-Eigenschaft des BatchAccountContext-Objekts ändern: `$context.KeyInUse = "Secondary"`.
 
 
 
-## <a name="create-and-modify-batch-resources"></a>Create and modify Batch resources
-Use cmdlets such as **New-AzureBatchPool**, **New-AzureBatchJob**, and **New-AzureBatchTask** to create resources under a Batch account. There are corresponding **Get-** and **Set-** cmdlets to update the properties of existing resources, and  **Remove-** cmdlets to remove resources under a Batch account. 
+## Erstellen und Ändern von Batch-Ressourcen
+Verwenden Sie Cmdlets wie **New-AzureBatchPool**, **New-AzureBatchJob** und **New-AzureBatchTask**, um unter einem Batch-Konto Ressourcen zu erstellen. Die entsprechenden Cmdlets **Get-** und **Set-** zum Aktualisieren der Eigenschaften vorhandener Ressourcen sind vorhanden sowie Cmdlets vom Typ **Remove-**, um unter einem Batch-Konto Ressourcen zu entfernen.
 
-When using many of these cmdlets, in addition to passing a BatchContext object, you need to create or pass objects that contain detailed resource settings, as shown in the following example. See the detailed help for each cmdlet for additional examples.
+Bei der Verwendung von vielen dieser Cmdlets müssen Sie zusätzlich zum Übergeben eines BatchContext-Objekts auch Objekte erstellen oder übergeben, die ausführliche Ressourceneinstellungen enthalten. Dies wird im folgenden Beispiel veranschaulicht. In der detaillierten Hilfe für die einzelnen Cmdlets finden Sie weitere Beispiele.
 
-### <a name="create-a-batch-pool"></a>Create a Batch pool
+### Batch-Pool erstellen
 
-When creating or updating a Batch pool, you select a cloud service configuration or a virtual machine configuration for the operating system on the compute nodes (see [Batch feature overview](batch-api-basics.md#pool)). Your choice determines whether your compute nodes are imaged with one of the [Azure Guest OS releases](../cloud-services/cloud-services-guestos-update-matrix.md#releases) or with one of the supported Linux or Windows VM images in the Azure Marketplace. 
+Beim Erstellen oder Aktualisieren eines Batch-Pools wählen Sie eine Clouddienstkonfiguration oder die Konfiguration eines virtuellen Computers für das Betriebssystem auf den Computeknoten (siehe [Übersicht über Azure Batch-Features](batch-api-basics.md#pool)). Anhand Ihrer Auswahl wird bestimmt, ob die Computeknoten ein Image mit einer [Azure-Gastbetriebssystemversion](../cloud-services/cloud-services-guestos-update-matrix.md#releases) oder mit einem der unterstützten Linux- oder Windows VM-Images im Azure Marketplace erhalten.
 
-When you run **New-AzureBatchPool**, pass the operating system settings in a PSCloudServiceConfiguration or PSVirtualMachineConfiguration object. For example, the following cmdlet creates a new Batch pool with size Small compute nodes in the cloud service configuration, imaged with the latest operating system version of family 3 (Windows Server 2012). Here, the **CloudServiceConfiguration** parameter specifies the *$configuration* variable as the PSCloudServiceConfiguration object. The **BatchContext** parameter specifies a previously defined variable *$context* as the BatchAccountContext object.
+Übergeben Sie beim Ausführen von **New-AzureBatchPool** die Betriebssystemeinstellungen in einem PSCloudServiceConfiguration- oder PSVirtualMachineConfiguration-Objekt. Mit dem folgenden Cmdlet wird beispielsweise ein neuer Batch-Pool mit Computeknoten der Größe „Small“ (Klein) in der Clouddienstkonfiguration erstellt, und es wird ein Image der aktuellen Betriebssystemversion der Familie 3 (Windows Server 2012) verwendet. Hier gibt der Parameter **CloudServiceConfiguration** die Variable *$configuration* als PSCloudServiceConfiguration-Objekt an. Mit dem Parameter **BatchContext** wird eine zuvor definierte Variable *$context* als BatchAccountContext-Objekt angegeben.
 
 
     $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(3,"*")
     
     New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 
-The target number of compute nodes in the new pool is determined by an autoscaling formula. In this case, the formula is simply **$TargetDedicated=4**, indicating the number of compute nodes in the pool is 4 at most. 
+Die Zielanzahl von Computeknoten im neuen Pool wird mit einer Formel für die automatische Skalierung bestimmt. In diesem Fall lautet die Formel einfach **$TargetDedicated=4** und gibt an, dass die Anzahl von Computeknoten im Pool maximal „4“ beträgt.
 
-## <a name="query-for-pools,-jobs,-tasks,-and-other-details"></a>Query for pools, jobs, tasks, and other details
+## Abfragen von Pools, Aufträgen, Aufgaben und weiteren Details
 
-Use cmdlets such as **Get-AzureBatchPool**, **Get-AzureBatchJob**, and **Get-AzureBatchTask** to query for entities created under a Batch account.
+Verwenden Sie Cmdlets wie **Get-AzureBatchPool**, **Get-AzureBatchJob** und **Get-AzureBatchTask** zum Abfragen von Entitäten, die in einem Batch-Konto erstellt wurden.
 
 
-### <a name="query-for-data"></a>Query for data
+### Abfragen von Daten
 
-As an example, use **Get-AzureBatchPools** to find your pools. By default this queries for all pools under your account, assuming you already stored the BatchAccountContext object in *$context*:
+Verwenden Sie beispielsweise **Get-AzureBatchPools** zum Suchen Ihrer Pools. Damit werden standardmäßig alle Pools unter Ihrem Konto abgefragt, sofern Sie das BatchAccountContext-Objekt bereits in *$context* gespeichert haben:
 
 
     Get-AzureBatchPool -BatchContext $context
 
-### <a name="use-an-odata-filter"></a>Use an OData filter
+### Verwenden eines OData-Filters
 
-You can supply an OData filter using the **Filter** parameter to find only the objects you’re interested in. For example, you can find all pools with ids starting with “myPool”:
+Mit dem **Filter**-Parameter können Sie einen OData-Filter angeben, um nur bestimmte gewünschte Objekte zu suchen. Sie können beispielsweise alle Pools suchen, deren IDs mit "myPool" beginnen:
 
 
     $filter = "startswith(id,'myPool')"
@@ -132,44 +131,40 @@ You can supply an OData filter using the **Filter** parameter to find only the o
     Get-AzureBatchPool -Filter $filter -BatchContext $context
 
 
-This method is not as flexible as using “Where-Object” in a local pipeline. However, the query gets sent to the Batch service directly so that all filtering happens on the server side, saving Internet bandwidth.
+Diese Methode ist nicht so flexibel wie die Verwendung von "Where-Object" in einer lokalen Pipeline. Die Abfrage wird jedoch direkt an den Batch-Dienst gesendet, sodass die gesamte Filterung auf dem Server erfolgt, was Internetbandbreite einspart.
 
-### <a name="use-the-id-parameter"></a>Use the Id parameter
+### Verwenden des Id-Parameters
 
-An alternative to an OData filter is to use the **Id** parameter. To query for a specific pool with id "myPool":
+Eine Alternative zu einem OData-Filter stellt die Verwendung des **Id**-Parameters dar. So führen Sie eine Abfrage für einen bestimmten Pool mit der ID "myPool" aus:
 
 
     Get-AzureBatchPool -Id "myPool" -BatchContext $context
 
 
-The **Id** parameter supports only full-id search, not wildcards or OData-style filters.
+Der **Id**-Parameter unterstützt ausschließlich die Suche nach der vollständigen ID, jedoch keine Platzhalter oder Filter im OData-Format.
 
 
 
-### <a name="use-the-maxcount-parameter"></a>Use the MaxCount parameter
+### Verwenden des MaxCount-Parameters
 
-By default, each cmdlet returns a maximum of 1000 objects. If you reach this limit, either refine your filter to bring back fewer objects, or explicitly set a maximum using the **MaxCount** parameter. For example:
+Jedes Cmdlet gibt standardmäßig bis zu 1.000 Objekte zurück. Wenn dieser Grenzwert erreicht ist, können Sie entweder den Filter weiter eingrenzen, sodass weniger Objekte zurückgegeben werden, oder mit dem **MaxCount**-Parameter explizit einen maximalen Wert festlegen. Beispiel:
 
 
     Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 
-To remove the upper bound, set **MaxCount** to 0 or less.
+Setzen Sie den **MaxCount**-Parameter auf 0 oder eine negative Zahl, um die Obergrenze zu entfernen.
 
-### <a name="use-the-pipeline"></a>Use the pipeline
+### Verwenden der Pipeline
 
-Batch cmdlets can leverage the PowerShell pipeline to send data between cmdlets. This has the same effect as specifying a parameter but makes listing multiple entities easier. For example, the following finds all tasks under your account:
+Batch-Cmdlets können die PowerShell-Pipeline zum Senden von Daten zwischen Cmdlets nutzen. Dies hat dieselbe Auswirkung wie die Angabe eines Parameters, vereinfacht jedoch das Auflisten mehrerer Entitäten. Der folgende Befehl findet z. B. alle Aufgaben unter Ihrem Konto:
 
 
     Get-AzureBatchJob -BatchContext $context | Get-AzureBatchTask -BatchContext $context
 
 
-## <a name="next-steps"></a>Next steps
-* For detailed cmdlet syntax and examples, see [Azure Batch cmdlet reference](https://msdn.microsoft.com/library/azure/mt125957.aspx).
+## Nächste Schritte
+* Die ausführliche Cmdlet-Syntax sowie Beispiele finden Sie in der [Referenz zu Azure Batch-Cmdlets](https://msdn.microsoft.com/library/azure/mt125957.aspx).
 
-* See [Query the Batch service efficiently](batch-efficient-list-queries.md) for more about reducing the number of items and the type of information that is returned for queries to Batch. 
+* Unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) finden Sie weitere Informationen dazu, wie Sie die Anzahl der Elemente sowie die Art der Informationen verringern, die bei Abfragen an Batch zurückgegeben werden.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

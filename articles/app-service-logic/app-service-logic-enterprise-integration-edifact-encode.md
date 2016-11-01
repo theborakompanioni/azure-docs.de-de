@@ -1,96 +1,92 @@
 <properties 
-    pageTitle="Learn about Enterprise Integration Pack Encode EDIFACT Message Connctor | Microsoft Azure App Service | Microsoft Azure" 
-    description="Learn how to use partners with the Enterprise Integration Pack and Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="padmavc" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Informationen zum Enterprise Integration Pack-Connector zur Codierung von EDIFACT-Nachrichten | Microsoft Azure App Service | Microsoft Azure" 
+	description="Erfahren Sie, wie Sie Partner mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="padmavc" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="padmavc"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/15/2016" 
+	ms.author="padmavc"/>
 
+# Erste Schritte mit der Codierung von EDIFACT-Nachrichten
 
-# <a name="get-started-with-encode-edifact-message"></a>Get started with Encode EDIFACT Message
+Überprüfung von EDI- und partnerspezifischen Eigenschaften
 
-Validates EDI and partner-specific properties 
+## Erstellen der Verbindung
 
-## <a name="create-the-connection"></a>Create the connection
+### Voraussetzungen
 
-### <a name="prerequisites"></a>Prerequisites
+* Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 
-* An Azure account; you can create a [free account](https://azure.microsoft.com/free)
+* Für die Verwendung des Connectors zur Codierung von EDIFACT-Nachrichten ist ein Integrationskonto erforderlich. Hier finden Sie Details zum Erstellen eines [Integrationskontos](./app-service-logic-enterprise-integration-create-integration-account.md), zu [Partnern](./app-service-logic-enterprise-integration-partners.md) und zur [EDIFACT-Vereinbarung](./app-service-logic-enterprise-integration-edifact.md).
 
-* An Integration Account is required to use Encode EDIFACT message connector. See details on how to create an [Integration Account](./app-service-logic-enterprise-integration-create-integration-account.md), [partners](./app-service-logic-enterprise-integration-partners.md) and [EDIFACT agreement](./app-service-logic-enterprise-integration-edifact.md)
+### Stellen Sie mithilfe der folgenden Schritte eine Verbindung mit der Decodierung von EDIFACT-Nachrichten her:
 
-### <a name="connect-to-decode-edifact-message-using-the-following-steps:"></a>Connect to Decode EDIFACT Message using the following steps:
+1. Ein Beispiel finden Sie unter [Erstellen einer Logik-App](./app-service-logic-create-a-logic-app.md).
 
-1. [Create a Logic App](./app-service-logic-create-a-logic-app.md) provides an example.
+2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten, wie beispielsweise einen Anforderungstrigger. Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu. Wählen Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie dann „EDIFACT“ in das Suchfeld ein. Wählen Sie entweder „Encode EDIFACT Message by agreement name“ (EDIFACT-Nachricht nach Vereinbarungsname codieren) oder „EDIFACT message by identities“ (EDIFACT-Nachricht nach Identitäten codieren) aus.
 
-2. This connector does not have any triggers. Use other triggers to start the Logic App, such as a Request trigger.  In the Logic App designer, add a trigger and add an action.  Select Show Microsoft managed APIs in the drop-down list and then enter "EDIFACT" in the search box.  Select either Encode EDIFACT Message by agreement name or Encode to EDIFACT message by identities.
+	![Suchen nach EDIFACT](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage1.png)
 
-    ![search EDIFACT](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage1.png)  
+3. Wenn Sie zuvor noch keine Verbindungen mit dem Integrationskonto hergestellt haben, werden Sie aufgefordert, die Details der Verbindung anzugeben.
 
-3. If you haven’t previously created any connections to Integration Account, you are prompted for the connection details
+	![Herstellen einer Integrationskontoverbindung](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage1.png)
 
-    ![create integration account connection](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage1.png)  
+4. Geben Sie die Details des Integrationskontos ein. Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
 
-4. Enter the Integration account details.  Properties with an asterisk are required
+	| Eigenschaft | Details |
+	| -------- | ------- |
+	| Verbindungsname* | Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
+	| Integrationskonto* | Geben Sie den Namen des Integrationskontos ein. Ihr Integrationskonto und Ihre Logik-App müssen sich am gleichen Azure-Standort befinden. 
 
-  	| Property | Details |
-  	| -------- | ------- |
-  	| Connection Name * | Enter any name for your connection |
-  	| Integration Account * | Enter the Integration Account name. Be sure your Integration Account and Logic app are in the same Azure location 
+	Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
 
-    Once complete, your connection details look similar to the following
+	![Integrationskontoverbindung](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage2.png)
+	
+5. Klicken Sie auf **Erstellen**.
+	
+6. Beachten Sie, dass die Verbindung erstellt wurde.
 
-    ![integration account connection](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage2.png)
-    
-5. Select **Create**
-    
-6. Notice the connection has been created
+	![Verbindungsdetails des Integrationskontos](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage4.png)
+	
+#### Encode EDIFACT Message by agreement name (EDIFACT-Nachricht nach Vereinbarungsname codieren)
 
-    ![integration account connection details](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage4.png)
-    
-#### <a name="encode-edifact-message-by-agreement-name"></a>Encode EDIFACT Message by agreement name
+7.	Geben Sie den EDIFACT-Vereinbarungsnamen und die zu codierende XML-Nachricht an.
 
-7.  Provide EDIFACT agreement name and xml message to encode.
+	![Pflichtfelder ausfüllen](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage6.png)
+	
+#### Encode EDIFACT Message by identities (EDIFACT-Nachricht nach Identitäten codieren)
 
-    ![provide mandatory fields](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage6.png)
-    
-#### <a name="encode-edifact-message-by-identities"></a>Encode EDIFACT Message by identities
+7. Geben Sie die Senderqualifizierer und -bezeichner und Empfängerqualifizierer und -bezeichner wie in der EDIFACT-Vereinbarung konfiguriert an. Wählen Sie die zu codierende XML-Nachricht aus.
 
-7. Provide sender identifier, sender qualifier, receiver identifier, and receiver qualifier as configured in the EDIFACT agreement.  Select xml message to encode
+	![Pflichtfelder ausfüllen](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage7.png)
+	
+## Die EDIFACT-Codierung führt die folgenden Schritte aus:
 
-    ![provide mandatory fields](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactencodeimage7.png)
-    
-## <a name="edifact-encode-does-following"></a>EDIFACT Encode does following
+* Auflösen der Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner
+* Serialisieren des EDI-Austauschs, Konvertieren von XML-codierten Nachrichten in EDI-Transaktionssätze im Austausch
+* Anwenden von Transaktionssatz-Header und Nachspannsegmenten
+* Generieren einer Austauschkontrollnummer, einer Gruppenkontrollnummer und einer Transaktionssatz-Kontrollnummer für jeden ausgehenden Austausch
+* Ersetzen von Trennzeichen in den Nutzlastdaten
+* Überprüfen von EDI- und partnerspezifischen Eigenschaften
+	* Schemaüberprüfung der Transaktionssatz-Datenelemente in Bezug auf das Nachrichtenschema
+	* EDI-Überprüfung für Transaktionssatz-Datenelemente
+	* Erweiterte Überprüfung für Transaktionssatz-Datenelemente
+* Generieren eines XML-Dokuments für jeden Transaktionssatz
+* Generieren einer technischen Bestätigung (Kontrollbestätigung) und/oder einer Funktionsbestätigung (sofern konfiguriert)
+	* Als technische Bestätigung kennzeichnet die Kontrollbestätigung den Empfang eines Austauschvorgangs.
+	* Als Funktionsbestätigung dient die Kontrollbestätigung dazu, die Annahme oder Ablehnung des empfangenen Austauschs, der Gruppe oder der Nachricht mit einer Liste von Fehlern oder nicht unterstützter Funktionen anzugeben.
 
-* Resolve the agreement by matching the sender qualifier & identifier and receiver qualifier and identifier
-* Serializes the EDI interchange, converting XML-encoded messages into EDI transaction sets in the interchange.
-* Applies transaction set header and trailer segments
-* Generates an interchange control number, a group control number, and a transaction set control number for each outgoing interchange
-* Replaces separators in the payload data
-* Validates EDI and partner-specific properties
-    * Schema validation of the transaction-set data elements against the message schema.
-    * EDI validation performed on transaction-set data elements.
-    * Extended validation performed on transaction-set data elements
-* Generates an XML document for each transaction set.
-* Requests a Technical and/or Functional acknowledgment (if configured).
-    * As a technical acknowledgment, the CONTRL message indicates receipt of an interchange.
-    * As a functional acknowledgment, the CONTRL message indicates acceptance or rejection of the received interchange, group, or message, with a list of errors or unsupported functionality
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+[Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-[Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack") 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

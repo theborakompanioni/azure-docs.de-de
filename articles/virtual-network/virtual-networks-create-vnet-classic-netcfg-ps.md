@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a virtual network using a network configuration file in the Azure portal | Microsoft Azure"
-   description="Learn how to create a virtual network using a network configuration file in the Azure portal."
+   pageTitle="Erstellen eines virtuellen Netzwerks mithilfe einer Netzwerk-Konfigurationsdatei im Azure-Portal | Microsoft Azure"
+   description="Erfahren Sie, wie ein virtuelles Netzwerk mithilfe einer Netzwerk-Konfigurationsdatei im Azure-Portal erstellt wird."
    services="virtual-network"
    documentationCenter=""
    authors="jimdial"
@@ -17,23 +17,16 @@
    ms.date="03/15/2016"
    ms.author="jdial"/>
 
-
-# <a name="create-a-virtual-network-(classic)-by-using-powershell"></a>Create a virtual network (classic) by using PowerShell
+# Erstellen eines virtuellen Netzwerks (klassisch) über PowerShell
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This document covers creating a VNet by using the classic deployment model. You can also [create a virtual network in the Resource Manager deployment model](virtual-networks-create-vnet-arm-ps.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem klassischen Bereitstellungsmodell erstellt wird. Sie haben auch die Möglichkeit, [ein virtuelles Netzwerks im Ressourcen-Manager-Bereitstellungsmodell zu erstellen](virtual-networks-create-vnet-arm-ps.md).
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-classic-netcfg-ps-include](../../includes/virtual-networks-create-vnet-classic-netcfg-ps-include.md)]
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

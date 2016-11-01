@@ -1,6 +1,6 @@
 <properties
-    pageTitle="How to Deploy the Access Panel Extension for Internet Explorer using Group Policy | Microsoft Azure"
-    description="How to use group policy to deploy the Internet Explorer add-on for the My Apps portal."
+    pageTitle="How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache) | Microsoft Azure"
+    description="So stellen Sie das Internet Explorer-Add-On für das Portal „Meine Apps“ mithilfe von Gruppenrichtlinien bereit"
     services="active-directory"
     documentationCenter=""
     authors="MarkusVi"
@@ -12,179 +12,173 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="10/31/2016"
+    ms.date="08/16/2016"
     ms.author="markvi"/>
 
+#How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache)
 
-#<a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>How to Deploy the Access Panel Extension for Internet Explorer using Group Policy
+In diesem Tutorial wird erläutert, wie Sie mithilfe von Gruppenrichtlinien die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer installieren. Diese Erweiterung ist für Benutzer von Internet Explorer erforderlich, die sich bei Apps anmelden müssen, die mit der [kennwortbasierten einmaligen Anmeldung](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) konfiguriert wurden.
 
-This tutorial shows how to use group policy to remotely install the Access Panel extension for Internet Explorer on your users' machines. This extension is required for Internet Explorer users who need to sign into apps that are configured using [password-based single sign-on](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+Administratoren wird empfohlen, die Bereitstellung dieser Erweiterung zu automatisieren. Andernfalls müssen Benutzer die Erweiterung selbst herunterladen und installieren. Diese Vorgehensweise ist jedoch fehleranfällig; zudem sind Administratorberechtigungen erforderlich. In diesem Tutorial wird eine Methode zum Automatisieren von Softwarebereitstellungen mithilfe von Gruppenrichtlinien erläutert. [Weitere Informationen zu Gruppenrichtlinien](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
-It is recommended that admins automate the deployment of this extension. Otherwise, users will have to download and install the extension themselves, which is prone to user error and requires administrator permissions. This tutorial covers one method of automating software deployments by using group policy. [Learn more about group policy.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
+Die Zugriffsbereichserweiterung ist auch für [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) und [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998) verfügbar. Für diese Browser sind keine Administratorberechtigungen erforderlich.
 
-The Access Panel extension is also available for [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) and [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), neither of which require administrator permissions to install.
+##Voraussetzungen
 
-##<a name="prerequisites"></a>Prerequisites
+- Sie haben [Active Directory-Domänendienste](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) eingerichtet und die Computer Ihrer Benutzer Ihrer Domäne hinzugefügt.
+- Zum Bearbeiten von Gruppenrichtlinienobjekten benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer. [Weitere Informationen.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-- You have set up [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), and you have joined your users' machines to your domain.
-- You must have the "Edit settings" permission in order to edit Group Policy Objects (GPOs). By default, members of the following security groups have this permission: Domain Administrators, Enterprise Administrators, and Group Policy Creator Owners. [Learn more.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+##Schritt 1: Erstellen des Verteilungspunkts
 
-##<a name="step-1-create-the-distribution-point"></a>Step 1: Create the Distribution Point
+Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ablegen, auf den von allen Computern aus zugegriffen werden kann, auf denen Sie die Erweiterung per Remotezugriff installieren möchten. Gehen Sie dazu folgendermaßen vor:
 
-First, you must place the installer package on a network location that can be accessed from all of the machines that you wish to remotely install the extension on. To do this, follow these steps:
+1. Melden Sie sich beim Server als Administrator an.
 
-1. Log on to the server as an administrator
+2. Wechseln Sie im Fenster **Server-Manager** zu **Dateien und Speicherdienste**.
 
-2. In the **Server Manager** window, go to **Files and Storage Services**.
+	![Dateien und Speicherdienste öffnen](./media/active-directory-saas-ie-group-policy/files-services.png)
 
-    ![Open Files and Storage Services](./media/active-directory-saas-ie-group-policy/files-services.png)
+3. Klicken Sie auf die Registerkarte **Freigaben**. Klicken Sie auf **Aufgaben** > **Neue Freigabe...**.
 
-3. Go to the **Shares** tab. Then click on **Tasks** > **New Share...**
+	![Dateien und Speicherdienste öffnen](./media/active-directory-saas-ie-group-policy/shares.png)
 
-    ![Open Files and Storage Services](./media/active-directory-saas-ie-group-policy/shares.png)
+4. Schließen Sie den **Assistenten für neue Freigaben**, und legen Sie Berechtigungen fest, um sicherzustellen, dass von den Computern Ihrer Benutzer aus darauf zugegriffen werden kann. [Weitere Informationen zu Freigaben](https://technet.microsoft.com/library/cc753175.aspx)
 
-4. Complete the **New Share Wizard** and set permissions to ensure that it can be accessed from your users' machines. [Learn more about shares.](https://technet.microsoft.com/library/cc753175.aspx)
+5. Laden Sie das folgende Microsoft Windows Installer-Paket (MSI-Datei) herunter: [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi).
 
-5. Download the following Microsoft Windows Installer package (.msi file): [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
+6. Kopieren Sie das Installationspaket an den gewünschten Speicherort auf der Freigabe.
 
-6. Copy the installer package to a desired location on the share.
+	![Kopieren Sie die MSI-Datei auf Ihre Freigabe.](./media/active-directory-saas-ie-group-policy/copy-package.png)
 
-    ![Copy the .msi file to your the share.](./media/active-directory-saas-ie-group-policy/copy-package.png)
+8. Stellen Sie sicher, dass von den Clientcomputern aus auf das Installationspaket auf der Freigabe zugegriffen werden kann.
 
-8. Verify that your client machines are able to access the installer package from the share. 
+##Schritt 2: Erstellen des Gruppenrichtlinienobjekts
 
-##<a name="step-2-create-the-group-policy-object"></a>Step 2: Create the Group Policy Object
+1. Melden Sie sich bei dem Server mit den Active Directory-Domänendiensten (Active Directory Domain Services, AD DS) an.
 
-1. Log on to the server that hosts your Active Directory Domain Services (AD DS) installation.
+2. Navigieren Sie im Server-Manager zu **Extras** > **Gruppenrichtlinienverwaltung**.
 
-2. In the Server Manager, go to **Tools** > **Group Policy Management**.
+	![Klicken Sie auf „Extras“ > „Gruppenrichtlinienverwaltung“.](./media/active-directory-saas-ie-group-policy/tools-gpm.png)
 
-    ![Go to Tools > Group Policy Managment](./media/active-directory-saas-ie-group-policy/tools-gpm.png)
+3. Zeigen Sie im linken Bereich des Fensters **Gruppenrichtlinienverwaltung** die Hierarchie Ihrer Organisationseinheiten (OE) an, und legen Sie fest, in welchem Umfang die Gruppenrichtlinie angewendet werden soll. Sie können beispielsweise eine kleine Organisationseinheit auswählen, die einigen wenigen Benutzern zu Testzwecken bereitgestellt wird, oder eine Organisationseinheit der obersten Ebene festlegen, die im gesamten Unternehmen bereitgestellt wird.
 
-3. In the left pane of the **Group Policy Management** window, view your Organizational Unit (OU) hierarchy and determine at which scope you would like to apply the group policy. For instance, you may decide to pick a small OU to deploy to a few users for testing, or you may pick a top-level OU to deploy to your entire organization.
+	> [AZURE.NOTE] Wenn Sie Organisationseinheiten erstellen oder bearbeiten möchten, wechseln Sie zurück zum Server-Manager, und rufen Sie **Extras** > **Active Directory-Benutzer und -Computer** auf.
 
-    > [AZURE.NOTE] If you would like to create or edit your Organization Units (OUs), switch back to the Server Manager and go to **Tools** > **Active Directory Users and Computers**.
+4. Nachdem Sie eine Organisationseinheit ausgewählt haben, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Gruppenrichtlinienobjekt hier erstellen und verknüpfen...**.
 
-4. Once you have selected an OU, right-click on it and select **Create a GPO in this domain, and Link it here...**
+	![Neues Gruppenrichtlinienobjekt erstellen](./media/active-directory-saas-ie-group-policy/create-gpo.png)
 
-    ![Create a new GPO](./media/active-directory-saas-ie-group-policy/create-gpo.png)
+5. Geben Sie in der Eingabeaufforderung **Neues Gruppenrichtlinienobjekt** einen Namen für das neue Gruppenrichtlinienobjekt ein.
 
-5. In the **New GPO** prompt, type in a name for the new Group Policy Object.
+	![Neues Gruppenrichtlinienobjekt benennen](./media/active-directory-saas-ie-group-policy/name-gpo.png)
 
-    ![Name the new GPO](./media/active-directory-saas-ie-group-policy/name-gpo.png)
+6. Klicken Sie mit der rechten Maustaste auf das Gruppenrichtlinienobjekt, das Sie gerade erstellt haben, und wählen Sie **Bearbeiten**.
 
-6. Right-click on the Group Policy Object that you just created, and select **Edit**.
+	![Neues Gruppenrichtlinienobjekt bearbeiten](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
-    ![Edit the new GPO](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
+##Schritt 3: Zuweisen des Installationspakets
 
-##<a name="step-3-assign-the-installation-package"></a>Step 3: Assign the Installation Package
+1. Legen Sie fest, ob Sie die Erweiterung basierend auf der **Computerkonfiguration** oder basierend auf der **Benutzerkonfiguration** bereitstellen möchten. Bei Verwendung der [Computerkonfiguration](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx) wird die Erweiterung auf dem Computer installiert, und zwar unabhängig davon, welche Benutzer sich bei ihm anmelden. Im Gegensatz dazu wird bei Verwendung von [Benutzerkonfiguration](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx) die Erweiterung für die Benutzer installiert, und zwar unabhängig davon, bei welchem Computer sie sich anmelden.
 
-1. Determine whether you would like to deploy the extension based on **Computer Configuration** or **User Configuration**. When using [computer configuration](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), the extension will be installed on the computer regardless of which users log on to it. On the other hand, with [user configuration](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), users will have the extension installed for them regardless of which computers they log on to.
+2. Folgen Sie abhängig vom gewählten Konfigurationstyp im linken Bereich des Fensters **Gruppenrichtlinienverwaltungs-Editor** einem der folgenden Ordnerpfade:
+	- `Computer Configuration/Policies/Software Settings/`
+	- `User Configuration/Policies/Software Settings/`
 
-2. In the left pane of the **Group Policy Management Editor** window, go to either of the following folder paths, depending on which type of configuration you chose:
-    - `Computer Configuration/Policies/Software Settings/`
-    - `User Configuration/Policies/Software Settings/`
+3. Klicken Sie mit der rechten Maustaste auf **Softwareinstallation**, und wählen Sie dann **Neu** > **Paket...**.
 
-3. Right-click on **Software installation**, then select **New** > **Package...**
+	![Neues Paket für die Softwareinstallation erstellen](./media/active-directory-saas-ie-group-policy/new-package.png)
 
-    ![Create a new software installation package](./media/active-directory-saas-ie-group-policy/new-package.png)
+4. Klicken Sie auf den freigegebenen Ordner mit dem Installationspaket aus [Schritt 1: Erstellen des Verteilungspunkts](#step-1-create-the-distribution-point), markieren Sie die MSI-Datei, und klicken Sie auf **Öffnen**.
 
-4. Go to the shared folder that contains the installer package from [Step 1: Create the Distribution Point](#step-1-create-the-distribution-point), select the .msi file, and click **Open**.
+	> [AZURE.IMPORTANT] Wenn sich die Freigabe auf demselben Server befindet, vergewissern Sie sich, dass Sie nicht über den lokalen Dateipfad, sondern über den Netzwerkdateipfad auf die MSI-Datei zugreifen.
 
-    > [AZURE.IMPORTANT] If the share is located on this same server, verify that you are accessing the .msi through the network file path, rather than the local file path.
+	![Wählen Sie das Installationspaket im freigegebenen Ordner.](./media/active-directory-saas-ie-group-policy/select-package.png)
 
-    ![Select the installation package from the shared folder.](./media/active-directory-saas-ie-group-policy/select-package.png)
+5. Wählen Sie in der Eingabeaufforderung **Software bereitstellen** als Bereitstellungsmethode die Option **Zugewiesen**. Klicken Sie dann auf **OK**.
 
-5. In the **Deploy Software** prompt, select **Assigned** for your deployment method. Then click **OK**.
+	![Wählen Sie „Zugewiesen“, und klicken Sie dann auf „OK“.](./media/active-directory-saas-ie-group-policy/deployment-method.png)
 
-    ![Select Assigned, then click OK.](./media/active-directory-saas-ie-group-policy/deployment-method.png)
+Die Erweiterung wird nun für die ausgewählte Organisationseinheit bereitgestellt. [Weitere Informationen zur Gruppenrichtlinien-Softwareinstallation](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-The extension is now deployed to the OU that you selected. [Learn more about Group Policy Software Installation.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
+##Schritt 4: Automatisches Aktivieren der Erweiterung für Internet Explorer 
 
-##<a name="step-4-autoenable-the-extension-for-internet-explorer"></a>Step 4: Auto-Enable the Extension for Internet Explorer 
+Zusätzlich zur Ausführung des Installationsprogramms muss jede Erweiterung für Internet Explorer vor ihrer Verwendung explizit aktiviert werden. Gehen Sie folgendermaßen vor, um die Zugriffsbereichserweiterung mithilfe von Gruppenrichtlinien zu aktivieren:
 
-In addition to running the installer, every extension for Internet Explorer must be explicitly enabled before it can be used. Follow the steps below to enable the Access Panel Extension using group policy:
+1. Navigieren Sie abhängig vom Konfigurationstyp, den Sie in [Schritt 3: Zuweisen des Installationspakets](#step-3-assign-the-installation-package) gewählt haben, im linken Bereich des Fensters **Gruppenrichtlinienverwaltungs-Editor** zu einem der folgenden Speicherorte:
+	- `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
+	- `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
 
-1. In the **Group Policy Management Editor** window, go to either of the following paths, depending on which type of configuration you chose in [Step 3: Assign the Installation Package](#step-3-assign-the-installation-package):
-    - `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
-    - `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
+2. Klicken Sie mit der rechten Maustaste auf **Add-On-Liste**, und wählen Sie **Bearbeiten**. ![Bearbeiten Sie die Add-On-Liste.](./media/active-directory-saas-ie-group-policy/edit-add-on-list.png)
 
-2. Right-click on **Add-on List**, and select **Edit**.
-    ![Edit Add-on List.](./media/active-directory-saas-ie-group-policy/edit-add-on-list.png)
+3. Wählen Sie im Fenster **Add-On-Liste** die Option **Aktiviert**. Klicken Sie unter dem Abschnitt **Optionen** auf **Anzeigen...**.
 
-3. In the **Add-on List** window, select **Enabled**. Then, under the **Options** section, click **Show...**.
+	![Klicken Sie auf „Aktivieren“ und anschließend auf „Anzeigen...“.](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
 
-    ![Click Enable, then click Show...](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
+4. Führen Sie im Fenster **Inhalt anzeigen** die folgenden Schritte aus:
 
-4. In the **Show Contents** window, perform the following steps:
+	1. Kopieren Sie für die erste Spalte (Feld **Wertname**) die folgende Klassen-ID: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
 
-    1. For the first column (the **Value Name** field), copy and paste the following Class ID: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+	2. Geben Sie für die zweite Spalte (Feld **Wert**) den folgenden Wert ein: `1`
 
-    2. For the second column (the **Value** field), type in the following value: `1`
+	3. Klicken Sie auf **OK**, um das Fenster **Inhalt anzeigen** zu schließen.
 
-    3. Click **OK** to close the **Show Contents** window.
+	![Füllen Sie die Werte wie oben angegeben aus.](./media/active-directory-saas-ie-group-policy/show-contents.png)
 
-    ![Fill out the values as specified above.](./media/active-directory-saas-ie-group-policy/show-contents.png)
+5. Klicken Sie auf **OK**, um die Änderungen zu übernehmen, und schließen Sie das Fenster **Add-On-Liste**.
 
-5. Click **OK** to apply your changes and close the **Add-on List** window.
+Die Erweiterung sollte jetzt für die Computer in der ausgewählten Organisationseinheit aktiviert sein. [Erfahren Sie mehr über die Verwendung von Gruppenrichtlinien zum Aktivieren oder Deaktivieren von Add-Ons für Internet Explorer.](https://technet.microsoft.com/library/dn454941.aspx)
 
-The extension should now be enabled for the machines in the selected OU. [Learn more about using group policy to enable or disable Internet Explorer add-ons.](https://technet.microsoft.com/library/dn454941.aspx)
+##Schritt 5 (optional): Deaktivieren der Frage nach der Kennwortspeicherung
 
-##<a name="step-5-optional-disable-remember-password-prompt"></a>Step 5 (Optional): Disable "Remember Password" Prompt
-
-When users sign-in to websites using the Access Panel Extension, Internet Explorer may show the following prompt asking "Would you like to store your password?"
+Wenn sich Benutzer unter Verwendung der Zugriffsbereichserweiterung bei Websites anmelden, kann Internet Explorer fragen, ob der Benutzer sein Kennwort speichern möchte.
 
 ![](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
 
-If you wish to prevent your users from seeing this prompt, then follow the steps below to prevent auto-complete from remembering passwords:
+Falls diese Frage nicht angezeigt werden soll, führen Sie die folgenden Schritte aus, um das Speichern von Kennwörtern durch AutoVervollständigen zu unterbinden:
 
-1. In the **Group Policy Management Editor** window, go to the path listed below. Note that this configuration setting is only available under **User Configuration**.
-    - `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
+1. Navigieren Sie im **Gruppenrichtlinienverwaltungs-Editor** zum unten angegebenen Pfad. Beachten Sie, dass diese Konfigurationseinstellung nur unter **Benutzerkonfiguration** verfügbar ist.
+	- `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
 
-2. Find the setting named **Turn on the auto-complete feature for user names and passwords on forms**.
+2. Suchen Sie die Einstellung **AutoVervollständigen für Benutzernamen und Kennwörter in Formularen aktivieren**.
 
-    > [AZURE.NOTE] Previous versions of Active Directory may list this setting with the name **Do not allow auto-complete to save passwords**. The configuration for that setting differs from the setting described in this tutorial.
+	> [AZURE.NOTE] In älteren Versionen von Active Directory heißt diese Einstellung unter Umständen noch **Kennwörter in AutoVervollständigen können nicht gespeichert werden**. Die Konfiguration für diese Einstellung unterscheidet sich von der in diesem Tutorial beschriebenen Einstellung.
 
-    ![Remember to look for this under User Settings.](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
+	![Diese finden Sie in den Benutzereinstellungen.](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
 
-3. Right click on the above setting, and select **Edit**.
+3. Klicken Sie mit der rechten Maustaste auf die oben genannte Einstellung, und wählen Sie **Bearbeiten** aus.
 
-4. In the window titled **Turn on the auto-complete feature for user names and passwords on forms**, select **Disabled**.
+4. Wählen Sie im Fenster **AutoVervollständigen für Benutzernamen und Kennwörter in Formularen aktivieren** die Option **Deaktiviert** aus.
 
-    ![Select Disable](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
+	![Wählen Sie „Deaktivieren“ aus.](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
 
-5. Click **OK** to apply these changes and close the window.
+5. Klicken Sie auf **OK**, um die Änderungen zu übernehmen und das Fenster zu schließen.
 
-Users will no longer be able to store their credentials or use auto-complete to access previously stored credentials. However, this policy does allow users to continue to use auto-complete for other types of form fields, such as search fields.
+Daraufhin können Benutzer ihre Anmeldeinformationen nicht mehr speichern oder mithilfe von AutoVervollständigen auf zuvor gespeicherte Anmeldeinformationen zugreifen. Für andere Arten von Formularfeldern (etwa Suchfelder) kann AutoVervollständigen dagegen weiter verwendet werden.
 
-> [AZURE.WARNING] If this policy is enabled after users have chosen to store some credentials, this policy will *not* clear the credentials that have already been stored.
+> [AZURE.WARNING] Wenn diese Richtlinie aktiviert wird, nachdem Benutzer bereits Anmeldeinformationen gespeichert haben, werden diese *nicht* gelöscht.
 
-##<a name="step-6-testing-the-deployment"></a>Step 6: Testing the Deployment
+##Schritt 6: Testen der Bereitstellung
 
-Follow the steps below to verify if the extension deployment was successful:
+Gehen Sie folgendermaßen vor, um zu überprüfen, ob die Erweiterungsbereitstellung erfolgreich war:
 
-1. If you deployed using **Computer Configuration**, sign into a client machine that belongs to the OU that you selected in [Step 2: Create the Group Policy Object](#step-2-create-the-group-policy-object). If you deployed using **User Configuration**, make sure to sign in as a user who belongs to that OU.
+1. Wenn Sie für die Bereitstellung die Option **Computerkonfiguration** verwendet haben, melden Sie sich bei einem Clientcomputer an, der zu der in [Schritt 2: Erstellen des Gruppenrichtlinienobjekts](#step-2-create-the-group-policy-object) ausgewählten Organisationseinheit gehört. Falls die Bereitstellung mit **Benutzerkonfiguration** erfolgt ist, melden Sie sich als Benutzer an, der zu dieser Organisationseinheit gehört.
 
-2. It may take a couple sign ins for the group policy changes to fully update with this machine. To force the update, open a **Command Prompt** window and run the following command: `gpupdate /force`
+2. Möglicherweise werden die Gruppenrichtlinienänderungen auf dem Computer erst durch mehrmaliges Anmelden vollständig aktualisiert. Öffnen Sie zum Erzwingen der Aktualisierung ein Fenster für die **Eingabeaufforderung**, und führen Sie den folgenden Befehl aus: `gpupdate /force`
 
-3. You will need to restart the machine for the installation to take place. Bootup may take significantly more time than usual while the extension installs.
+3. Der Computer muss neu gestartet werden, damit die Installation ausgeführt werden kann. Das Starten kann während der Installation der Erweiterung erheblich länger dauern als gewöhnlich.
 
-4. After restarting, open **Internet Explorer**. On the upper-right corner of the window, click on **Tools** (the gear icon), and then select **Manage add-ons**.
+4. Öffnen Sie nach dem Neustart **Internet Explorer**. Klicken Sie in der oberen rechten Ecke des Fensters auf **Extras** (das Zahnradsymbol), und wählen Sie dann **Add-Ons verwalten**.
 
-    ![Go to Tools > Manage Add-Ons](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
+	![Klicken Sie auf „Extras“ > „Add-Ons verwalten“.](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
 
-5. In the **Manage Add-ons** window, verify that the **Access Panel Extension** has been installed and that its **Status** has been set to **Enabled**.
+5. Überprüfen Sie im Fenster **Add-Ons verwalten**, ob die **Zugriffsbereichserweiterung** installiert und ihr **Status** auf **Aktiviert** festgelegt wurde.
 
-    ![Verify that the Access Panel Extension is installed and enabled.](./media/active-directory-saas-ie-group-policy/verify-install.png)
+	![Stellen Sie sicher, dass die Zugriffsbereichserweiterung installiert und aktiviert wurde.](./media/active-directory-saas-ie-group-policy/verify-install.png)
 
-## <a name="related-articles"></a>Related Articles
+## Verwandte Artikel
 
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-- [Application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md)
-- [Troubleshooting the Access Panel Extension for Internet Explorer](active-directory-saas-ie-troubleshooting.md)
+- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+- [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md)
+- [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

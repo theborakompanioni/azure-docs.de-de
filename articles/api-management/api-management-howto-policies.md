@@ -1,147 +1,146 @@
 <properties 
-    pageTitle="Policies in Azure API Management | Microsoft Azure" 
-    description="Learn how to create, edit, and configure policies in API Management." 
-    services="api-management" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Richtlinien in Azure API Management | Microsoft Azure" 
+	description="Erfahren Sie, wie Sie Richtlinien in API Management erstellen, bearbeiten und konfigurieren." 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="api-management" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/25/2016" 
-    ms.author="sdanie"/>
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/09/2016" 
+	ms.author="sdanie"/>
 
 
+#Richtlinien in Azure API Management
 
-#<a name="policies-in-azure-api-management"></a>Policies in Azure API Management
+Richtlinien sind ein umfassendes Werkzeug in Azure API Management, mit dem Anbieter das Verhalten der API über eine Konfiguration verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind z. B. Formatumwandlungen von XML nach JSON und Aufrufbeschränkungen, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Viele weitere Richtlinien sind vorkonfiguriert verfügbar.
 
-In Azure API Management, policies are a powerful capability of the system that allow the publisher to change the behavior of the API through configuration. Policies are a collection of Statements that are executed sequentially on the request or response of an API. Popular Statements include format conversion from XML to JSON and call rate limiting to restrict the amount of incoming calls from a developer. Many more policies are available out of the box.
+In der [Richtlinienreferenz][] finden Sie eine komplette Liste der Richtlinienanweisungen und deren Einstellungen.
 
-See the [Policy Reference][] for a full list of policy statements and their settings.
+Richtlinien werden im Gateway, das sich zwischen API-Consumer und der verwalteten API befindet, angewendet. Das Gateway empfängt alle Anfragen und leitet diese normalerweise unverändert an die zugrunde liegende API weiter. Richtlinien können jedoch Änderungen an der eingehenden Anfrage und an der ausgehenden Antwort vornehmen.
 
-Policies are applied inside the gateway which sits between the API consumer and the managed API. The gateway receives all requests and usually forwards them unaltered to the underlying API. However a policy can apply changes to both the inbound request and outbound response.
+Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung][] und [Variable festlegen][], basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien][] und [Richtlinienausdrücke][].
 
-Policy expressions can be used as attribute values or text values in any of the API Management policies, unless the policy specifies otherwise. Some policies such as the [Control flow][] and [Set variable][] policies are based on policy expressions. For more information, see [Advanced policies][] and [Policy expressions][].
+## <a name="scopes"> </a>Konfigurieren von Richtlinien
+Richtlinien können entweder global oder im Geltungsbereich eines [Produkts][], einer [API][] oder einer [Operation][] konfiguriert werden. Um Richtlinien zu konfigurieren, navigieren Sie im Herausgeberportal zum Richtlinien-Editor.
 
-## <a name="<a-name="scopes">-</a>how-to-configure-policies"></a><a name="scopes"> </a>How to configure policies
-Policies can be configured globally or at the scope of a [Product][], [API][] or [Operation][]. To configure a policy, navigate to the Policies editor in the publisher portal.
+![Menü "Richtlinien"][policies-menu]
 
-![Policies menu][policies-menu]
+Der Richtlinien-Editor umfasst drei Hauptabschnitte: den Geltungsbereich der Richtlinie (oben), die Richtliniendefinition zum Bearbeiten der Richtlinie (links) und die Liste der Anweisungen (rechts):
 
-The policies editor consists of three main sections: the policy scope (top), the policy definition where policies are edited (left) and the statements list (right):
+![Richtlinien-Editor][policies-editor]
 
-![Policies editor][policies-editor]
+Um eine Richtlinie zu konfigurieren, müssen Sie zunächst deren gewünschten Geltungsbereich auswählen. Im folgenden Screenshot wird das Produkt **Starter** ausgewählt. Das rechteckige Symbol neben dem Richtliniennamen gibt an, dass eine Richtlinie bereits auf dieser Ebene angewendet wird.
 
-To begin configuring a policy you must first select the scope at which the policy should apply. In the screenshot below the **Starter** product is selected. Note that the square symbol next to the policy name indicates that a policy is already applied at this level.
+![Umfang][policies-scope]
 
-![Scope][policies-scope]
+Da bereits eine Richtlinie angewendet wurde, wird die Konfiguration in der Definitionsansicht angezeigt.
 
-Since a policy has already been applied, the configuration is shown in the definition view.
+![Konfigurieren][policies-configure]
 
-![Configure][policies-configure]
+Die Richtlinie wird zunächst schreibgeschützt angezeigt. Klicken Sie auf die Aktion **Richtlinie bearbeiten**, um die Definition zu bearbeiten.
 
-The policy is displayed read-only at first. In order to edit the definition click the **Configure Policy** action.
+![Bearbeiten][policies-edit]
 
-![Edit][policies-edit]
+Die Richtliniendefinition ist ein einfaches XML-Dokument, das eine Sequenz eingehender und ausgehender Anweisungen beschreibt. Das XML-Dokument kann direkt im Definitionsfenster bearbeitet werden. Auf der rechten Seite sehen Sie eine Liste mit Anweisungen, und die für den aktuellen Geltungsbereich anwendbaren Anweisungen sind aktiviert und hervorgehoben, wie Sie am Beispiel der Anweisung **Limit Call Rate** im obigen Screenshot sehen können.
 
-The policy definition is a simple XML document that describes a sequence of inbound and outbound statements. The XML can be edited directly in the definition window. A list of statements is provided to the right and statements applicable to the current scope are enabled and highlighted; as demonstrated by the **Limit Call Rate** statement in the screenshot above.
+Wenn Sie auf eine aktivierte Anweisung klicken, wird der entsprechende XML-Ausschnitt an der Cursorposition in der Definitionsansicht eingefügt.
 
-Clicking an enabled statement will add the appropriate XML at the location of the cursor in the definition view. 
+>[AZURE.NOTE] Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen Sie sicher, dass Sie sich im richtigen Bereich für diese Richtlinie befinden. Für jede Richtlinienanweisung sind bestimmte Bereiche und Richtlinienabschnitte vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie in der [Richtlinienreferenz][] im Abschnitt **Verwendung** für die jeweilige Richtlinie.
 
->[AZURE.NOTE] If the policy that you want to add is not enabled, ensure that you are in the correct scope for that policy. Each policy statement is designed for use in certain scopes and policy sections. To review the policy sections and scopes for a policy, check the **Usage** section for that policy in the [Policy Reference][].
+In der [Richtlinienreferenz][] finden Sie eine komplette Liste der Richtlinienanweisungen und deren Einstellungen.
 
-A full list of policy statements and their settings are available in the [Policy Reference][].
+Um eine neue Anweisung zur Einschränkung eingehender Anfragen auf bestimmte IP-Adressen zu erstellen, platzieren Sie den Cursor innerhalb des `inbound`-XML-Elements, und klicken Sie auf die Anweisung **Restrict caller IPs**.
 
-For example, to add a new statement to restrict incoming requests to specified IP addresses, place the cursor just inside the content of the `inbound` XML element and click the **Restrict caller IPs** statement.
+![Einschränkungsrichtlinien][policies-restrict]
 
-![Restriction policies][policies-restrict]
+Daraufhin wird ein XML-Ausschnitt in das `inbound`-Element eingefügt, der Anweisungen zur Konfiguration der Anweisung enthält.
 
-This will add an XML snippet to the `inbound` element that provides guidance on how to configure the statement.
+	<ip-filter action="allow | forbid">
+		<address>address</address>
+		<address-range from="address" to="address"/>
+	</ip-filter>
 
-    <ip-filter action="allow | forbid">
-        <address>address</address>
-        <address-range from="address" to="address"/>
-    </ip-filter>
+Ändern Sie den XML-Ausschnitt wie folgt, um nur eingehende Anfragen von der IP-Adresse 1.2.3.4 zu erlauben:
 
-To limit inbound requests and accept only those from an IP address of 1.2.3.4 modify the XML as follows:
+	<ip-filter action="allow">
+		<address>1.2.3.4</address>
+	</ip-filter>
 
-    <ip-filter action="allow">
-        <address>1.2.3.4</address>
-    </ip-filter>
+![Speichern][policies-save]
 
-![Save][policies-save]
+Konfigurieren Sie die Anweisungen für die Richtlinie, und klicken Sie auf **Speichern**. Daraufhin werden die Änderungen sofort an das API Management-Gateway weitergeleitet.
 
-When complete configuring the statements for the policy, click **Save** and the changes will be propagated to the API Management gateway immediately.
+##<a name="sections"> </a>Grundlegendes zur Richtlinienkonfiguration
 
-##<a name="<a-name="sections">-</a>understanding-policy-configuration"></a><a name="sections"> </a>Understanding policy configuration
+Richtlinien sind Serien von Anweisungen, die in der Reihenfolge für Anfrage und Antwort ausgeführt werden. Die Konfiguration ist entsprechend in `inbound`-, `backend`-, `outbound`- und `on-error`-Abschnitte unterteilt. Ein Beispiel hierfür sehen Sie in der folgenden Konfiguration.
 
-A policy is a series of statements that execute in order for a request and a response. The configuration is divided appropriately into `inbound`, `backend`, `outbound`, and `on-error` sections as shown in the following configuration.
+	<policies>
+	  <inbound>
+	    <!-- statements to be applied to the request go here -->
+	  </inbound>
+	  <backend>
+	    <!-- statements to be applied before the request is forwarded to 
+	         the backend service go here -->
+	  </backend>
+	  <outbound>
+	    <!-- statements to be applied to the response go here -->
+	  </outbound>
+	  <on-error>
+	    <!-- statements to be applied if there is an error condition go here -->
+	  </on-error>
+	</policies> 
 
-    <policies>
-      <inbound>
-        <!-- statements to be applied to the request go here -->
-      </inbound>
-      <backend>
-        <!-- statements to be applied before the request is forwarded to 
-             the backend service go here -->
-      </backend>
-      <outbound>
-        <!-- statements to be applied to the response go here -->
-      </outbound>
-      <on-error>
-        <!-- statements to be applied if there is an error condition go here -->
-      </on-error>
-    </policies> 
+Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](https://msdn.microsoft.com/library/azure/mt629506.aspx) (in englischer Sprache).
 
-If there is an error during the processing of a request, any remaining steps in the `inbound`, `backend`, or `outbound` sections are skipped and execution jumps to the statements in the `on-error` section. By placing policy statements in the `on-error` section you can review the error by using the `context.LastError` property, inspect and customize the error response using the `set-body` policy, and configure what happens if an error occurs. There are error codes for built-in steps and for errors that may occur during the processing of policy statements. For more information, see [Error handling in API Management policies](https://msdn.microsoft.com/library/azure/mt629506.aspx).
+Da Richtlinien auf unterschiedlichen Ebenen angegeben werden können (global, Produkt, API und Operation), können Sie in der Konfiguration die Reihenfolge angeben, in der die Anweisungen der Definition mit Bezug zur übergeordneten Richtlinie ausgeführt werden sollen.
 
-Since policies can be specified at different levels (global, product, api and operation) the configuration provides a way for you to specify the order in which the policy definition's statements execute with respect to the parent policy. 
+Richtlinienbereiche werden in der folgenden Reihenfolge ausgewertet.
 
-Policy scopes are evaluated in the following order.
+1. Globaler Bereich
+2. Produktbereich
+3. API-Bereich
+4. Vorgangsbereich
 
-1. Global scope
-2. Product scope
-3. API scope
-4. Operation scope
+Die Anweisungen in diesen Bereichen werden entsprechend der Platzierung des `base`-Elements ausgewertet, sofern es vorhanden ist.
 
-The statements within them are evaluated according to the placement of the `base` element, if it is present.
+Wenn Sie z. B. eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das Basiselement.
 
-For example, if you have a policy at the global level and a policy configured for an API, then whenever that particular API is used both policies will be applied. API Management allows for deterministic ordering of combined policy statements via the base element. 
+	<policies>
+    	<inbound>
+        	<cross-domain />
+        	<base />
+        	<find-and-replace from="xyz" to="abc" />
+    	</inbound>
+	</policies>
 
-    <policies>
-        <inbound>
-            <cross-domain />
-            <base />
-            <find-and-replace from="xyz" to="abc" />
-        </inbound>
-    </policies>
+In der obigen Beispiel-Richtliniendefinition wird die `cross-domain`-Anweisung vor allen übergeordneten Richtlinien ausgeführt, auf die wiederum die `find-and-replace`-Richtlinie folgt.
 
-In the example policy definition above, the `cross-domain` statement would execute before any higher policies which would in turn, be followed by the `find-and-replace` policy.
+Wenn in einer Richtlinienanweisung dieselbe Richtlinie zweimal angezeigt wird, wird die zuletzt ausgewertete Richtlinie angewendet. Auf diese Weise können Sie Richtlinien außer Kraft setzen, die in einem übergeordneten Bereich definiert sind. Um die Richtlinien im aktuellen Bereich im Richtlinien-Editor anzuzeigen, klicken Sie auf **Recalculate effective policy for selected scope**.
 
-If the same policy appears twice in the policy statement, the most recently evaluated policy is applied. You can use this to override policies that are defined at a higher scope. To see the policies in the current scope in the policy editor, click **Recalculate effective policy for selected scope**.
+Beachten Sie, dass eine globale Richtlinie über keine übergeordnete Richtlinie verfügt und dass daher die Verwendung des `<base>`-Elements in der Richtlinie keinerlei Auswirkung hat.
 
-Note that global policy has no parent policy and using the `<base>` element in it has no effect. 
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
-
-Check out following video on policy expressions.
+Sehen Sie sich das folgende Video zu Richtlinienausdrücken an.
 
 > [AZURE.VIDEO policy-expressions-in-azure-api-management]
 
-[Policy Reference]: api-management-policy-reference.md
-[Product]: api-management-howto-add-products.md
-[API]: api-management-howto-add-products.md#add-apis 
+[Richtlinienreferenz]: api-management-policy-reference.md
+[Produkts]: api-management-howto-add-products.md
+[API]: api-management-howto-add-products.md#add-apis
 [Operation]: api-management-howto-add-operations.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Erweiterte Richtlinien]: https://msdn.microsoft.com/library/azure/dn894085.aspx
+[Ablaufsteuerung]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
+[Variable festlegen]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
+[Richtlinienausdrücke]: https://msdn.microsoft.com/library/azure/dn910913.aspx
 
 [policies-menu]: ./media/api-management-howto-policies/api-management-policies-menu.png
 [policies-editor]: ./media/api-management-howto-policies/api-management-policies-editor.png
@@ -151,8 +150,4 @@ Check out following video on policy expressions.
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

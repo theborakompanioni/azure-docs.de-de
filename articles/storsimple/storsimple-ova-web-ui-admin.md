@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array web UI administration | Microsoft Azure"
-   description="Describes how to perform basic device administration tasks through the StorSimple Virtual Array web UI."
+   pageTitle="Verwaltung des StorSimple Virtual Array über die Web-UI | Microsoft Azure"
+   description="Beschreibt die grundlegenden Verwaltungsaufgaben über die Web-UI des StorSimple Virtual Array."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,125 +15,120 @@
    ms.date="04/07/2016"
    ms.author="alkohli" />
 
+# Verwaltung des StorSimple Virtual Array mithilfe der Web-UI
 
-# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Use the Web UI to administer your StorSimple Virtual Array
+![Setup-Prozessablauf](./media/storsimple-ova-web-ui-admin/manage4.png)
 
-![setup process flow](./media/storsimple-ova-web-ui-admin/manage4.png)
+## Übersicht
 
-## <a name="overview"></a>Overview
+Die Tutorials in diesem Artikel beziehen sich auf Microsoft Azure StorSimple Virtual Array (auch als „lokales virtuelles StorSimple-Gerät“ bezeichnet) mit der Version vom März 2016 (allgemeine Verfügbarkeit). Dieser Artikel beschreibt einige der komplexen Workflows und Verwaltungsaufgaben, die auf dem StorSimple Virtual Array durchgeführt werden können. Sie können das StorSimple Virtual Array über die Benutzeroberfläche des StorSimple Manager-Diensts (als „Portal-UI“ bezeichnet) und über die lokale Web-UI für das Gerät verwalten. Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe der Web-UI ausgeführt werden können.
 
-The tutorials in this article apply to the Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device) running March 2016 general availability (GA) release. This article describes some of the complex workflows and management tasks that can be performed on the StorSimple Virtual Array. You can manage the StorSimple Virtual Array using the StorSimple Manager service UI (referred to as the portal UI) and the local web UI for the device. This article focuses on the tasks that you can perform using the web UI.
+Dieser Artikel enthält folgende Lernprogramme:
 
-This article includes the following tutorials:
+- Abrufen des Verschlüsselungsschlüssels für Dienstdaten
+- Beheben von Setup-Fehlern für die Web-UI
+- Generieren eines Protokollpakets
+- Herunterfahren oder Neustarten des Geräts
 
-- Get the service data encryption key
-- Troubleshoot web UI setup errors
-- Generate a log package
-- Shut down or restart your device
+## Abrufen des Verschlüsselungsschlüssels für Dienstdaten
 
-## <a name="get-the-service-data-encryption-key"></a>Get the service data encryption key
+Wenn Sie das erste Gerät beim StorSimple Manager-Dienst registrieren, wird ein Verschlüsselungsschlüssel für Dienstdaten generiert. Dieser Schlüssel ist dann zusammen mit dem Dienstregistrierungsschlüssel zum Registrieren weiterer Geräte beim StorSimple Manager-Dienst erforderlich.
 
-A service data encryption key is generated when you register your first device with the StorSimple Manager service. This key is then required with the service registration key to register additional devices with the StorSimple Manager service.
+Wenn Sie Ihren Verschlüsselungsschlüssel für Dienstdaten verlegt haben und ihn abrufen müssen, führen Sie die folgenden Schritte auf der lokalen Web-UI des bei Ihrem Dienst registrierten Geräts aus.
 
-If you have misplaced your service data encryption key and need to retrieve it, perform the following steps in the local web UI of the device registered with your service.
+#### So rufen Sie den Verschlüsselungsschlüssel für Dienstdaten ab
 
-#### <a name="to-get-the-service-data-encryption-key"></a>To get the service data encryption key
-
-1. Connect to the local web UI. Go to **Configuration** > **Cloud Settings**.
+1. Stellen Sie eine Verbindung mit der lokalen Web-UI. Wechseln Sie zu **Konfiguration** > **Cloudeinstellungen**.
   
 
-2. At the bottom of the page, click **Get service data encryption key**. A key will appear. Copy and save this key.
-    
-    ![get service data encryption key 1](./media/storsimple-ova-web-ui-admin/image27.png)
+2. Klicken Sie unten auf der Seite auf **Dienstdaten-Verschlüsselungsschlüssel abrufen**. Ein Schlüssel wird angezeigt. Kopieren und speichern Sie diesen Schlüssel.
+  	
+	![Verschlüsselungsschlüssel 1 für Dienstdaten abrufen](./media/storsimple-ova-web-ui-admin/image27.png)
    
 
 
-## <a name="troubleshoot-web-ui-setup-errors"></a>Troubleshoot web UI setup errors
+## Beheben von Setup-Fehlern für die Web-UI
 
-In some instances when you configure the device through the local web UI, you might run into errors. To diagnose and troubleshoot such errors, you can run the diagnostics tests.
+In einigen Fällen können bei der Konfiguration des Geräts über die lokale Web-UI Fehler auftreten. Zum Diagnostizieren und Beheben solcher Fehler können Sie die Diagnosetests ausführen.
 
-#### <a name="to-run-the-diagnostic-tests"></a>To run the diagnostic tests
+#### So führen Sie die Diagnosetests aus
 
-1. In the local web UI, go to **Troubleshooting** > **Diagnostic tests**.
+1. Wechseln Sie auf der lokalen Web-UI zu **Problembehandlung** > **Diagnosetests**.
 
-    ![run diagnostics 1](./media/storsimple-ova-web-ui-admin/image29.png)
+    ![Diagnose 1 ausführen](./media/storsimple-ova-web-ui-admin/image29.png)
 
-2. At the bottom of the page, click **Run Diagnostic Tests**. This will initiate tests to diagnose any possible issues with your network, device, web proxy, time, or cloud settings. You will be notified that the device is running tests.
+2. Klicken Sie unten auf der Seite auf **Diagnosetests ausführen**. Dadurch werden Tests initiiert, um mögliche Probleme mit Ihren Netzwerk-, Geräte-, Webproxy-, Zeit- oder Cloudeinstellungen zu diagnostizieren. Sie werden benachrichtigt, dass auf dem Gerät Tests ausgeführt werden.
 
-3. After the tests have completed, the results will be displayed. The following example shows the results of diagnostic tests. Note that the web proxy settings were not configured on this device, and therefore, the web proxy test was not run. All the other tests for network settings, DNS server, and time settings were successful.
+3. Nach Abschluss der Tests werden die Ergebnisse angezeigt. Das folgende Beispiel zeigt die Ergebnisse von Diagnosetests. Beachten Sie, dass die Webproxyeinstellungen auf diesem Gerät nicht konfiguriert wurden und daher der Webproxytest nicht ausgeführt wurde. Alle anderen Tests für Netzwerkeinstellungen, DNS-Server und Uhrzeiteinstellungen wurden erfolgreich ausgeführt.
 
-    ![run diagnostics 2](./media/storsimple-ova-web-ui-admin/image30.png)
+    ![Diagnose 2 ausführen](./media/storsimple-ova-web-ui-admin/image30.png)
 
-## <a name="generate-a-log-package"></a>Generate a log package
+## Generieren eines Protokollpakets
 
-A log package is comprised of all the relevant logs that can assist Microsoft Support with troubleshooting any device issues. In this release, a log package can be generated via the local web UI.
+Ein Protokollpaket enthält alle relevanten Protokolle, die das Microsoft Support-Team bei der Behandlung von Geräteproblemen unterstützen können. In dieser Version kann ein Protokollpaket über die lokale Web-UI generiert werden.
 
-#### <a name="to-generate-the-log-package"></a>To generate the log package
+#### So generieren Sie das Protokollpaket
 
-1. In the local web UI, go to **Troubleshooting** > **System logs**.
+1. Wechseln Sie auf der lokalen Web-UI zu **Problembehandlung** > **Systemprotokolle**.
 
-    ![generate log package 1](./media/storsimple-ova-web-ui-admin/image31.png)
+    ![Protokollpaket 1 generieren](./media/storsimple-ova-web-ui-admin/image31.png)
 
-2. At the bottom of the page, click **Create log package**. A package of the system logs will be created. This will take a couple of minutes.
+2. Klicken Sie unten auf der Seite auf **Protokollpaket erstellen**. Ein Paket mit dem Systemprotokollen wird erstellt. Dies dauert einige Minuten.
 
-    ![generate log package 2](./media/storsimple-ova-web-ui-admin/image32.png)
+    ![Protokollpaket 2 generieren](./media/storsimple-ova-web-ui-admin/image32.png)
 
-    You will be notified after the package is successfully created, and the page will be updated to indicate the time and date when the package was created.
+    Sie werden benachrichtigt, nachdem das Paket erfolgreich erstellt wurde. Die Seite wird aktualisiert und gibt dann die Uhrzeit und das Datum der Paketerstellung an.
 
-    ![generate log package 3](./media/storsimple-ova-web-ui-admin/image33.png)
+    ![Protokollpaket 3 generieren](./media/storsimple-ova-web-ui-admin/image33.png)
 
-3. Click **Download log package**. A zipped package will be downloaded on your system.
+3. Klicken Sie auf **Protokollpaket herunterladen**. Ein ZIP-Paket wird auf Ihr System heruntergeladen.
 
-    ![generate log package 4](./media/storsimple-ova-web-ui-admin/image34.png)
+    ![Protokollpaket 4 generieren](./media/storsimple-ova-web-ui-admin/image34.png)
 
-4. You can unzip the downloaded log package and view the system log files.
+4. Entpacken Sie das heruntergeladene Protokollpaket, um die Systemprotokolldateien anzuzeigen.
 
-## <a name="shut-down-and-restart-your-device"></a>Shut down and restart your device
+## Herunterfahren und Neustarten des Geräts
 
-You can shut down or restart your virtual device using the local web UI. We recommend that before you restart, take the volumes or shares offline on the host and then the device. This will minimize any possibility of data corruption. 
+Sie können Ihr virtuelles Gerät über die lokale Web-UI herunterfahren oder neu starten. Wir empfehlen, die Volumes oder Freigaben vor dem Neustart auf dem Host und dann auf dem Gerät offline zu nehmen. So wird das Risiko einer Datenbeschädigung minimiert.
 
-#### <a name="to-shut-down-your-virtual-device"></a>To shut down your virtual device
+#### So fahren Sie das virtuelle Gerät herunter
 
-1. In the local web UI, go to **Maintenance** > **Power settings**.
+1. Wechseln Sie auf der lokalen Web-UI zu **Wartung** > **Energieeinstellungen**.
 
-2. At the bottom of the page, click **Shutdown**.
+2. Klicken Sie unten auf der Seite auf **Herunterfahren**.
 
-    ![device shutdown 1](./media/storsimple-ova-web-ui-admin/image36.png)
+    ![Herunterfahren des Geräts 1](./media/storsimple-ova-web-ui-admin/image36.png)
 
-3. A warning will appear stating that a shutdown of the device will interrupt any IO that were in progress, resulting in a downtime. Click the check icon ![check icon](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Eine Warnung wird angezeigt, die besagt, dass durch ein Herunterfahren des Geräts alle ausgeführten IOs unterbrochen werden und ein Ausfall verursacht wird. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-ova-web-ui-admin/image3.png).
 
-    ![device shutdown warning](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![Warnung vor Herunterfahren des Geräts](./media/storsimple-ova-web-ui-admin/image37.png)
 
-    You will be notified that the shutdown has been initiated.
+    Sie werden benachrichtigt, dass das Herunterfahren initiiert wurde.
 
-    ![device shutdown started](./media/storsimple-ova-web-ui-admin/image38.png)
+    ![Herunterfahren des Geräts gestartet](./media/storsimple-ova-web-ui-admin/image38.png)
 
-    The device will now shut down. If you want to start your device, you will need to do that through the Hyper-V Manager.
+    Das Gerät wird jetzt heruntergefahren. Wenn Sie Ihr Gerät starten möchten, müssen Sie dies über den Hyper-V-Manager erledigen.
 
-#### <a name="to-restart-your-virtual-device"></a>To restart your virtual device
+#### So starten Sie das virtuelle Gerät neu
 
-1. In the local web UI, go to **Maintenance** > **Power settings**.
+1. Wechseln Sie auf der lokalen Web-UI zu **Wartung** > **Energieeinstellungen**.
 
-2. At the bottom of the page, click **Restart**.
+2. Klicken Sie unten auf der Seite auf **Neu starten**.
 
-    ![device restart](./media/storsimple-ova-web-ui-admin/image36.png)
+    ![Geräteneustart](./media/storsimple-ova-web-ui-admin/image36.png)
 
-3. A warning will appear stating that restarting the device will interrupt any IOs that were in progress, resulting in a downtime. Click the check icon ![check icon](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Eine Warnung wird angezeigt, die besagt, dass durch einen Neustart des Geräts alle ausgeführten IOs unterbrochen werden und ein Ausfall verursacht wird. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-ova-web-ui-admin/image3.png).
 
-    ![restart warning](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![Warnung vor Neustart](./media/storsimple-ova-web-ui-admin/image37.png)
 
-    You will be notified that the restart has been initiated.
+    Sie werden benachrichtigt, dass der Neustart initiiert wurde.
 
-    ![restart initiated](./media/storsimple-ova-web-ui-admin/image39.png)
+    ![Neustart initiiert](./media/storsimple-ova-web-ui-admin/image39.png)
 
-    While the restart is in progress, you will lose the connection to the UI. You can monitor the restart by refreshing the UI periodically. Alternatively, you can monitor the device restart status through the Hyper-V Manager.
+    Während des Neustarts wird die Verbindung mit der Benutzeroberfläche getrennt. Sie können den Neustart durch Aktualisieren der Benutzeroberfläche in regelmäßigen Abständen überwachen. Überwachen Sie den Neustartstatus des Geräts alternativ über den Hyper-V-Manager.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Learn how to [use the StorSimple Manager service to manage your device](storsimple-manager-service-administration.md).
+Erfahren Sie, wie Sie den [StorSimple Manager-Dienst zum Verwalten Ihres Geräts verwenden](storsimple-manager-service-administration.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

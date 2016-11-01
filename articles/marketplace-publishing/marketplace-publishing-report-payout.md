@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Understand the Azure Marketplace payout reporting | Microsoft Azure"
-   description="Learn how to review and ingest the Azure Marketplace payout report."
+   pageTitle="Grundlegendes zu Azure Marketplace-Auszahlungsberichten | Microsoft Azure"
+   description="Informationen zum Überprüfen und Erfassen des Azure Marketplace-Auszahlungsberichts."
    services="marketplace-publishing"
    documentationCenter="na"
    authors="v-jeana"
@@ -16,97 +16,95 @@
    ms.date="09/19/2016"
    ms.author="v-jeana; hascipio; v-dabosl"/>
 
+# Grundlegendes zu Azure Marketplace-Auszahlungsberichten
 
-# <a name="understand-your-azure-marketplace-payout-reports"></a>Understand your Azure Marketplace payout reports
+## Öffnen und Anzeigen von Auszahlungsberichten
 
-## <a name="access-and-view-your-payout-reports"></a>Access and view your payout reports
+Während des Übergangs zum Dev Center können einige Ihrer Auszahlungsberichte ggf. im Dev Center unter https://dev.windows.com/de-DE zu finden sein, während andere ggf. weiter im Veröffentlichungsportal unter https://publish.windowsazure.com zu finden sind.
 
-While we transition to Dev Center some of your payout reports may be available in the Dev Center at https://dev.windows.com/en-us while others may still be found in Publishing Portal at https://publish.windowsazure.com.
-
-Payout reporting will now be available in **Dev Center** for any Marketplace offerings that are associated with modern payouts; this currently includes:
+Auszahlungsberichte stehen jetzt im **Dev Center** für alle Marketplace-Angebote zur Verfügung, denen moderne Auszahlungsmethoden zugeordnet sind. Hierzu gehören zurzeit Folgende:
 - VMs
-- B+C offers
-- Data and Dev Services offered under EA
+- B+C-Angebote
+- Im Rahmen eines EA angebotene Daten- und Entwicklerdienste
 
-Payout reporting will still be in **Publishing Portal** for:
-- Data and Dev Services offered under Web Direct (which still uses the legacy payout system).
+Für folgende Angebote stehen die Auszahlungsberichte weiterhin im **Veröffentlichungsportal** bereit:
+- Im Rahmen von Web Direct angebotene Daten- und Entwicklerdienste (hierfür wird weiter das ältere Auszahlungssystem verwendet).
 
-Reports are available 45 days after the close of the quarter and are calculated after any refunds.
+Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich etwaiger Rückerstattungen berechnet.
 
-### <a name="access-payout-reports-in-dev-center"></a>Access payout reports in Dev Center
+### Zugriff auf Auszahlungsberichte im Dev Center
 
-1. Navigate to Dev Center at https://dev.windows.com/en-us.
-2. Click **Dashboard**.
+1. Navigieren Sie zum Dev Center unter https://dev.windows.com/de-DE.
+2. Klicken Sie auf **Dashboard**.
 
     ![LandingPageDashboardHighlight][1]
 
-3. Click **Payout Summary**.
+3. Klicken Sie auf **Auszahlungszusammenfassung**.
 
     ![DashboardPayoutSummary][2]
 
 
-## <a name="view-your-payout-reports-in-dev-center"></a>View your payout reports in Dev Center
+## Anzeigen von Auszahlungsberichten im Dev Center
 
-The payout report for each quarter records all transactions that occurred within that quarter.
+Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-- The Reserved amount indicates any payments that are accruing outside of the upcoming payment cycle (e.g. this amount will move to upcoming payment the following month).  This amount will typically be $0 (unless a customer pays well in advance).
-- Click on the Upcoming payment or Most recent payment **View details** links to see a note about those payouts.
-- Click on **Payment Statements** to view the details under proceeds by app/product.
-- Click on the **View** link to see individual statements.
+- Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben). Dieser Betrag beläuft sich zumeist auf 0 $, (es sei denn, ein Kunde zahlt weit im Voraus).
+- Klicken Sie in den Bereichen „Anstehende Zahlungen“ oder „Letzte Zahlung“ auf den Link **Details anzeigen**, um einen Hinweis zu diesen Auszahlungen anzuzeigen.
+- Klicken Sie auf **Zahlungsaufstellungen**, um die Details unter „Einnahmen“ nach App oder Produkt anzuzeigen.
+- Klicken Sie auf den Link **Anzeigen**, um einzelne Aufstellungen anzuzeigen.
 
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
 
-- Use the **Proceeds Breakdown** filter at the bottom of the individual statement to view multiple apps/products if they exist.
+- Verwenden Sie den Filter **Aufschlüsselung der Erlöse** unten in einer Aufstellung, um mehrere Apps/Produkte anzuzeigen, sofern vorhanden.
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
 
 
-## <a name="view-your-payout-reports-in-publishing-portal"></a>View your payout reports in Publishing Portal
-The payout report for each quarter records all transactions that occurred within that quarter.
+## Anzeigen von Auszahlungsberichten im Veröffentlichungsportal
+Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-1. Navigate to the publishing portal at https://publish.windowsazure.com.
-2. From the **Publishers** section, click **Payout Reports**.
-3. Click the drop-down to display all available quarterly payout reports.
+1. Navigieren Sie zum Veröffentlichungsportal (https://publish.windowsazure.com).
+2. Klicken Sie im Abschnitt **Herausgeber** auf **Auszahlungsberichte**.
+3. Klicken Sie auf die Dropdownliste, um alle verfügbaren vierteljährlichen Auszahlungsberichte anzuzeigen.
 
     ![accessingpayoutreport][5]
 
 
-### <a name="read-your-payout-reports"></a>Read your payout reports
+### Lesen von Auszahlungsberichten
 
-The payout report for each quarter records all transactions that occurred within that quarter.
+Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-- If you are looking for ledger entries that relate to a particular quarter, select the payout report for that quarter from the drop-down. For example, if you are interested in ledger entries for April to June 2015, select that date range from the drop-down.
-- If you are looking for details of payouts that relate to a particular quarter, select the payout report for the subsequent quarter. For example, if you are interested in the payouts for April to June 2015, these amounts will appear in the subsequent payout report for July to September 2015.
-![readingpayoutreport][6]
+- Wenn Sie nach Posten für ein bestimmtes Quartal suchen möchten, wählen Sie in der Dropdownliste den Auszahlungsbericht für das betreffende Quartal aus. Wenn Sie sich also beispielsweise für Posten zwischen April und Juni 2015 interessieren, wählen Sie in der Dropdownliste den entsprechenden Datumsbereich aus.
+- Wenn Sie nach Details zu Auszahlungen für ein bestimmtes Quartal suchen, wählen Sie den Auszahlungsbericht für das Folgequartal aus. Wenn Sie sich also etwa für die Auszahlungen von April bis Juni 2015 interessieren, finden Sie die entsprechenden Beträge im Auszahlungsbericht für Juli bis September 2015. ![readingpayoutreport][6]
 
-- The financial summary panel shows balances, credits, and debits by category.
-- Ledger entries show individual transactions.
+- Der Bereich mit der Finanzübersicht zeigt Salden sowie Soll und Haben nach Kategorie.
+- Posten zeigen einzelne Transaktionen.
 
-## <a name="definitions"></a>Definitions
+## Definitionen
 
-**Financial summary panel:**
+**Bereich mit der Finanzübersicht:**
 
 ![financialdefinitions][7]
 
-**Ledger entries:**
+**Kontoeinträge:**
 
 ![ledgerdefinitions][8]
 
-## <a name="payout-questions"></a>Payout questions
+## Fragen zur Auszahlung
 
-If you have a question related to your payouts, contact our support team.
+Wenden Sie sich bei Fragen zu Ihren Auszahlungen an unser Supportteam.
 
 ![payoutquestions][9]
 
-1. Navigate to the support pages.
-2. Select **Payouts**.
-3. Select **Payout related inquiries**.
-4. Click **Start request**.
+1. Navigieren Sie zu den Supportseiten.
+2. Wählen Sie **Auszahlungen** aus.
+3. Wählen Sie **Auf Auszahlungen bezogene Anfragen** aus.
+4. Klicken auf **Anforderung starten**.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-For other support queries, please log an issue at <https://portal.azure.com>.
+Erstellen Sie bei anderen Problemen eine Supportanfrage unter <https://portal.azure.com>.
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png
 [2]: ./media/marketplace-publishing-report-payout/Dashboard-PayoutSummary.png
@@ -118,8 +116,4 @@ For other support queries, please log an issue at <https://portal.azure.com>.
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

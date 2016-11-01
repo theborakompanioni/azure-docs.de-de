@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Application Gateway WebSocket support | Microsoft Azure"
-   description="This page provides an overview of the Application Gateway WebSocket support."
+   pageTitle="WebSocket-Unterstützung von Application Gateway | Microsoft Azure"
+   description="Diese Seite enthält eine Übersicht über die WebSocket-Unterstützung von Application Gateway."
    documentationCenter="na"
    services="application-gateway"
    authors="amsriva"
@@ -15,19 +15,18 @@
    ms.date="09/16/2016"
    ms.author="amsriva"/>
 
+# WebSocket-Unterstützung von Application Gateway
 
-# <a name="application-gateway-websocket-support"></a>Application Gateway WebSocket support
+Das in [RFC6455](https://tools.ietf.org/html/rfc6455) standardisierte WebSocket-Protokoll ermöglicht die Vollduplexkommunikation zwischen Server und Client über eine lange TCP-Verbindung. Dieses Feature ermöglicht wiederum mehr Interaktivität bei der Kommunikation zwischen Webserver und Client, da die Kommunikation auch ohne die bei HTTP-basierten Implementierungen erforderlichen Abfragen bidirektional sein kann. Im Vergleich zu HTTP zeichnen sich WebSockets durch einen geringen Mehraufwand aus. Außerdem können sie die gleiche TCP-Verbindung für mehrere Anforderungen/Antworten verwenden, was eine effizientere Ressourcennutzung zur Folge hat. WebSocket-Protokolle sind für die Nutzung der herkömmlichen HTTP-Ports 80 und 443 konzipiert.
 
-WebSocket protocol standardized in [RFC6455](https://tools.ietf.org/html/rfc6455) enables a full duplex communication between server and client over a long running TCP connection. This feature allows for a more interactive communication between web server and client, which can be bidirectional without the need for polling as required in HTTP-based implementations.  WebSocket have low overhead unlike HTTP and can reuse the same TCP connection for multiple request/responses resulting in a more efficient utilization of resources. WebSocket protocols are designed to work over traditional HTTP ports of 80 and 443.
+WebSocket wird von Application Gateway nativ für alle Gatewaygrößen unterstützt. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. WebSocket-Datenverkehr kann mit einem standardmäßigen HTTP-Listener an den Ports 80 und 443 empfangen werden. Der empfangene WebSocket-Datenverkehr wird dann unter Verwendung des entsprechenden Back-End-Pools (gemäß Angabe in Anwendungsgatewayregeln) an den WebSocket-fähigen Back-End-Server weitergeleitet.
 
-Application Gateway provides native support for WebSocket across all gateway sizes. There is no user-configurable setting to selectively enable or disable WebSocket support. You can continue using a standard HTTPListener on port 80/443 to receive WebSocket traffic. WebSocket traffic is then directed to the WebSocket enabled backend server using the appropriate backend pool as specified in application gateway rules.
-
-The backend server must respond to application gateway probes, which are described in [health probe overview](application-gateway-probe-overview.md) section. Application gateway health probes are HTTP/HTTPS only, this implies that every backend server must respond to HTTP probes for application gateway to route WebSocket traffic to the server.
+Der Back-End-Server muss auf Anwendungsgatewaytests reagieren. Diese werden im Abschnitt [Systemüberwachung des Application Gateways – Übersicht](application-gateway-probe-overview.md) erläutert. Anwendungsgateway-Integritätstests sind rein HTTP-/HTTPS-basiert. Das bedeutet, dass jeder Back-End-Server auf HTTP-Tests reagieren muss, damit WebSocket-Datenverkehr vom Anwendungsgateway an den Server weitergeleitet werden kann.
 
 
-## <a name="listener-configuration-element"></a>Listener configuration element
+## Listenerkonfigurationselement
 
-Existing HTTPListener can be used to support WebSocket. Following is a snippet of HttpListeners element from a sample template file. You would need both HTTP and HTTPS listeners to support WebSocket and secure WebSocket traffic. Similarly you can use the [portal](application-gateway-create-gateway-portal.md) or [PowerShell](application-gateway-create-gateway-arm.md) to create an application gateway with listeners on port 80/443 to support WebSocket traffic.
+Zur Unterstützung von WebSocket kann ein vorhandener HTTP-Listener verwendet werden. Im Anschluss sehen Sie einen Codeausschnitt des HttpListeners-Elements aus einer Beispielvorlagendatei. Zur Unterstützung von WebSocket-Datenverkehr benötigen Sie sowohl den HTTP- als auch den HTTPS-Listener. Analog dazu können Sie über das [Portal](application-gateway-create-gateway-portal.md) oder mithilfe von [PowerShell](application-gateway-create-gateway-arm.md) ein Anwendungsgateway mit Listenern für die Ports 80 und 443 erstellen, um WebSocket-Datenverkehr zu unterstützen.
 
 
     "httpListeners": [
@@ -60,47 +59,47 @@ Existing HTTPListener can be used to support WebSocket. Following is a snippet o
                 }
             ],
 
-## <a name="backendaddresspool,-backendhttpsetting,-and-routing-rule-configuration"></a>BackendAddressPool, BackendHttpSetting, and Routing rule configuration
+## Konfigurieren von „backendAddressPool“, „backendHttpSetting“ und Routingregel
 
-BackendAddressPool should be used to define a backend pool with WebSocket enabled servers. BackendHttpSetting should be defined with backend port 80/443 only. Properties for cookie-based affinity and requestTimeouts are not relevant to WebSocket traffic. There is no change required in routing rule. Routing rule 'Basic' should continue to be used to tie the appropriate listener to the corresponding backend address pool. 
+„backendAddressPool“ dient zum Definieren eines Back-End-Pools mit WebSocket-fähigen Servern. „backendHttpSetting“ sollte nur mit den Back-End-Ports 80 und 443 definiert werden. Eigenschaften für cookiebasierte Affinität und Anforderungstimeouts sind für WebSocket-Datenverkehr nicht relevant. Für die Routingregel ist keine Änderung erforderlich. Verwenden Sie weiterhin die Basisroutingregel, um den geeigneten Listener mit dem entsprechenden Back-End-Adresspool zu verknüpfen.
 
-    "requestRoutingRules": [{
-        "name": "<ruleName1>",
-        "properties": {
-            "RuleType": "Basic",
-            "httpListener": {
-                "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpsListener')]"
-            },
-            "backendAddressPool": {
-                "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
-            },
-            "backendHttpSettings": {
-                "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-            }
-        }
+	"requestRoutingRules": [{
+		"name": "<ruleName1>",
+		"properties": {
+			"RuleType": "Basic",
+			"httpListener": {
+				"id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpsListener')]"
+			},
+			"backendAddressPool": {
+				"id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
+			},
+			"backendHttpSettings": {
+				"id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+			}
+		}
 
-    }, {
-        "name": "<ruleName2>",
-        "properties": {
-            "RuleType": "Basic",
-            "httpListener": {
-                "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpListener')]"
-            },
-            "backendAddressPool": {
-                "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
-            },
-            "backendHttpSettings": {
-                "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-            }
+	}, {
+		"name": "<ruleName2>",
+		"properties": {
+			"RuleType": "Basic",
+			"httpListener": {
+				"id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpListener')]"
+			},
+			"backendAddressPool": {
+				"id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
+			},
+			"backendHttpSettings": {
+				"id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+			}
 
-        }
-    }]
+		}
+	}]
 
-## <a name="websocket-enabled-backend"></a>WebSocket enabled backend
+## WebSocket-fähiges Back-End
 
-Your backend must have a HTTP/HTTPS web server running on the configured port (usually 80/443) for WebSocket to work. This requirement is because WebSocket protocol requires the initial handshake to be HTTP with Upgrade to WebSocket protocol as a header field.
+WebSocket kann nur verwendet werden, wenn das Back-End über einen HTTP-/HTTPS-Webserver verfügt, der an dem konfigurierten Port (üblicherweise 80/443) ausgeführt wird. Dies ist erforderlich, da der anfängliche Handshake des WebSocket-Protokolls HTTP-basiert sein und über ein Headerfeld verfügen muss, das ein Upgrade auf das WebSocket-Protokoll angibt.
 
-    GET /chat HTTP/1.1
+	GET /chat HTTP/1.1
     Host: server.example.com
     Upgrade: websocket
     Connection: Upgrade
@@ -109,14 +108,10 @@ Your backend must have a HTTP/HTTPS web server running on the configured port (u
     Sec-WebSocket-Protocol: chat, superchat
     Sec-WebSocket-Version: 13
 
-Another reason for this is that application gateway backend health probe supports HTTP/HTTPS protocols only. If the backend server does not respond to HTTP/HTTPS probes, it would be taken out of backend pool and no requests including WebSocket requests, would reach this backend.
+Ein weiterer Grund: Der Back-End-Integritätstest des Anwendungsgateways unterstützt nur das HTTP-/HTTPS-Protokoll. Wenn der Back-End-Server nicht auf HTTP-/HTTPS-Tests reagiert, wird er aus dem Back-End-Pool entfernt, wodurch das Back-End für keine Anforderungen mehr erreichbar ist. Das gilt auch für WebSocket-Anforderungen.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-After learning about WebSocket support, go to [create an application gateway](application-gateway-create-gateway.md) to get started with a WebSocket enabled web application.
+Informieren Sie sich im Anschluss an die WebSocket-Unterstützung unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway.md) über die ersten Schritte mit einer WebSocket-fähigen Webanwendung.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

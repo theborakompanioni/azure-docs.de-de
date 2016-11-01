@@ -1,45 +1,37 @@
 <properties 
-    pageTitle="Sample data in Azure blob containers, SQL Server, and Hive tables | Microsoft Azure" 
-    description="How to explore data stored in various Azure enviromnents." 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="bradsev" 
-    manager="jhubbard" 
-    editor="cgronlun" />
+	pageTitle="Entnehmen von Datenstichproben in Azure-Blobcontainern, SQL Server und Hive-Tabellen | Microsoft Azure" 
+	description="Informationen zum Durchsuchen von Daten, die in verschiedenen Azure-Umgebungen gespeichert sind." 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="bradsev" 
+	manager="jhubbard" 
+	editor="cgronlun" />
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/19/2016" 
-    ms.author="fashah;garye;bradsev" /> 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/19/2016" 
+	ms.author="fashah;garye;bradsev" />
 
+#<a name="heading"></a>Entnehmen von Datenstichproben in Azure-Blobcontainern, SQL Server und Hive-Tabellen
 
-#<a name="<a-name="heading"></a>sample-data-in-azure-blob-containers,-sql-server,-and-hive-tables"></a><a name="heading"></a>Sample data in Azure blob containers, SQL Server, and Hive tables
+Dieses Dokument enthält Links zu Themen, die das Entnehmen von Stichproben aus Daten beschreiben, die an einem von drei verschiedenen Azure-Speicherorten gespeichert sind:
 
-This document links to topics that covers how to sample data that is stored in one of three different Azure locations:
+- **Azure Blob-Containerdaten**: Stichproben werden durch programmgesteuertes Herunterladen entnommen, um dann anschließend mit Python-Code Stichproben zu erstellen.
+- **SQL Server-Daten**: Stichproben werden mithilfe von SQL und der Python-Programmiersprache erstellt.
+- **Hive-Tabellendaten**: Stichproben werden mit Hive-Abfragen erstellt.
 
-- **Azure blob container data** is sampled by downloading it programmatically and then sampling it with sample Python code.
-- **SQL Server data** is sampled using both SQL and the Python Programming Language. 
-- **Hive table data** is sampled using Hive queries.
-
-The **menu** below links to the topics that describe how to sample data from each of these Azure storage environments. 
+Das nachstehende **Menü** enthält Links zu Themen, die das Entnehmen von Datenstichproben aus diesen Azure-Speicherumgebungen beschreiben.
 
 [AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
-This sampling task is a step in the [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## <a name="why-sample-data?"></a>Why sample data?
+## Warum Datenstichproben entnehmen?
 
-If the dataset you plan to analyze is large, it is usually a good idea to down-sample the data to reduce it to a smaller but representative and more manageable size. This facilitates data understanding, exploration, and feature engineering. Its role in the Cortana Analytics Process is to enable fast prototyping of the data processing functions and machine learning models.
+Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Cortana-Analyseprozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Modelle für das maschinelle Lernen zu erstellen.
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

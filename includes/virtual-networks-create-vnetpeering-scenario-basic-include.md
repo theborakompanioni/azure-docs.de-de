@@ -1,11 +1,9 @@
-## <a name="peering-vnets-in-the-same-subscription"></a>Peering VNets in the same subscription
+## Erstellen des Peerings von VNets in demselben Abonnement
 
-In this scenario you will create a peering between two VNets named **VNet1** and **VNet2** belonging to the same subscription. 
+In diesem Szenario erstellen Sie ein Peering zwischen zwei VNets mit den Namen **VNet1** und **VNet2**, die demselben Abonnement angehören.
 
-![Basic scenario](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
+![Einfaches Szenario](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
 
-VNet peering will allow full connectivity between the entire address space of peered virtual networks.    
+VNet-Peering ermöglicht die vollständige Konnektivität für den gesamten Adressraum von per Peering verknüpften virtuellen Netzwerken.
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

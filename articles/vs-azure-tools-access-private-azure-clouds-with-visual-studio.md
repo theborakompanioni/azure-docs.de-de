@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Accessing private Azure clouds with Visual Studio | Microsoft Azure"
-   description="Learn how to access private cloud resources by using Visual Studio."
+   pageTitle="Zugreifen auf private Azure-Clouds mit Visual Studio | Microsoft Azure"
+   description="Erfahren Sie, wie Sie mithilfe von Visual Studio auf private Cloudressourcen zugreifen."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,38 +15,32 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Zugreifen auf private Azure-Clouds mit Visual Studio
 
-# <a name="accessing-private-azure-clouds-with-visual-studio"></a>Accessing private Azure clouds with Visual Studio
+##Übersicht
 
-##<a name="overview"></a>Overview
+Visual Studio unterstützt standardmäßig REST-Endpunkte der öffentlichen Azure-Cloud. Dies kann jedoch ein Problem sein, wenn Sie Visual Studio mit einer privaten Azure-Cloud verwenden. Sie können Zertifikate verwenden, um Visual Studio für den Zugriff auf REST-Endpunkte der privaten Azure-Cloud zu konfigurieren. Sie erhalten diese Zertifikate über Ihre Datei mit den Azure-Veröffentlichungseinstellungen.
 
-By default, Visual Studio supports public Azure cloud REST endpoints. This can be a problem, though, if you're using Visual Studio with a private Azure cloud. You can use certificates to configure Visual Studio to access private Azure cloud REST endpoints. You can get these certificates through your Azure publish settings file.
+## So greifen Sie auf eine private Azure-Cloud in Visual Studio zu
 
-## <a name="to-access-a-private-azure-cloud-in-visual-studio"></a>To access a private Azure cloud in Visual Studio
+1. Laden Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) für die private Cloud die Datei mit den Veröffentlichungseinstellungen herunter, oder wenden Sie sich an Ihren Administrator, um eine Datei mit Veröffentlichungseinstellungen zu erhalten. Für die öffentliche Version von Azure ist dies der Link zum Herunterladen: [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/). (Die herunterzuladende Datei muss die Erweiterung ".publishsettings" aufweisen.)
 
-1. In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885) for the private cloud, download your publish settings file, or contact your administrator for a publish settings file. On the public version of Azure, the link to download this is [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/). (The file you download should have a .publishsettings extension.)
+1. Wählen Sie in Visual Studio im **Server-Explorer** den Knoten **Azure** und dann im Kontextmenü den Befehl **Abonnements verwalten** aus.
 
-1. In **Server Explorer** in Visual Studio, choose the **Azure** node and, on the shortcut menu, choose the **Manage Subscriptions** command.
+    ![Befehl „Abonnements verwalten“](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
 
-    ![Manage subscriptions command](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
+1. Klicken Sie im Dialogfeld **Microsoft Azure-Abonnements verwalten** auf die Registerkarte **Zertifikate** und dann auf die Schaltfläche **Importieren**.
 
-1. In the **Manage Microsoft Azure Subscriptions** dialog box, choose the **Certificates** tab, and then choose the **Import** button.
+    ![Importieren von Azure-Zertifikaten](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790779.png)
 
-    ![Importing Azure certificates](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790779.png)
+1. Navigieren Sie im Dialogfeld **Microsoft Azure-Abonnements importieren** zum Ordner, in dem Sie die Datei mit den Veröffentlichungseinstellungen gespeichert haben, und klicken Sie dann auf die Schaltfläche **Importieren**. Daraufhin werden die Zertifikate in der Datei mit den Veröffentlichungseinstellungen in Visual Studio importiert. Sie sollten jetzt in der Lage sein, mit privaten Cloudressourcen zu interagieren.
 
-1. In the **Import Microsoft Azure Subscriptions** dialog box, browse to the folder where you saved the publish settings file and choose the file, then choose the **Import** button. This imports the certificates in the publish settings file into Visual Studio. You should now be able to interact with your private cloud resources.
+    ![Importieren von Veröffentlichungseinstellungen](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790780.png)
 
-    ![Importing publish settings](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790780.png)
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+[Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-[Publishing to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)
+[How to: Download and Import Publish Settings and Subscription Information](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx) (Gewusst wie: Herunterladen und Importieren von Veröffentlichungseinstellungen und Abonnementinformationen)
 
-[How to: Download and Import Publish Settings and Subscription Information](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

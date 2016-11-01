@@ -1,43 +1,38 @@
 <properties
-    pageTitle="Azure Mobile Engagement Web SDK Release notes | Microsoft Azure"
-    description="The latest updates and procedures for Web SDK for Azure Mobile Engagement"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+	pageTitle="Versionshinweise zum Web SDK für Azure Mobile Engagement | Microsoft Azure"
+	description="Neueste Updates und Verfahren für das Web SDK für Azure Mobile Engagement"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="web"
-    ms.devlang="js"
-    ms.topic="article"
-    ms.date="06/07/2016"
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="web"
+	ms.devlang="js"
+	ms.topic="article"
+	ms.date="06/07/2016"
+	ms.author="piyushjo" />
 
 
+#Versionshinweise zum Web SDK für Azure Mobile Engagement
 
-#<a name="azure-mobile-engagement-web-sdk-release-notes"></a>Azure Mobile Engagement Web SDK release notes
+##Version 2.0.1 (10.06.2016)
 
-##<a name="release-2.0.1-(6/10/2016)"></a>Release 2.0.1 (6/10/2016)
+-   Das SDK in Internet Explorer 8 und Internet Explorer 9 wurde deaktiviert.
+-   Erkennung des Webbrowsers Opera korrigiert.
 
--   Disabled the SDK in Internet Explorer 8 and Internet Explorer 9.
--   Fixed Opera web browser detection.
+##Version 2.0.0 (07.06.2016)
 
-##<a name="release-2.0.0-(6/7/2016)"></a>Release 2.0.0 (6/7/2016)
+-   Azure Mobile Engagement wurde veröffentlicht.
+-   Wurde aktualisiert, sodass die `appId`-Konfiguration durch die Konfiguration einer Verbindungszeichenfolge ersetzt wird.
+-   APIs zum Aktivieren und Deaktivieren des Agents wurden hinzugefügt.
+-   Die Sicherheit wurde verbessert.
+-   Wurde aktualisiert, sodass native JSON-APIs in Browsern verwendet werden.
+-   Die API, die Nachrichten zwischen Geräten sendet und empfängt, wurde entfernt.
+-   Rückrufe entfernt, die im Zusammenhang mit der veralteten XMPP-Verbindung stehen.
+-   Die Unterstützung für das Reach-Feature wurde entfernt.
 
--   Released Azure Mobile Engagement.
--   Updated so that the `appId` configuration is replaced by a connection string configuration.
--   Added APIs to enable and disable the agent.
--   Made security improvements.
--   Updated to use native JSON APIs from browsers.
--   Removed the API that sends and receives messages between devices.
--   Removed callbacks related to the deprecated XMPP connection.
--   Removed support for the Reach feature.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

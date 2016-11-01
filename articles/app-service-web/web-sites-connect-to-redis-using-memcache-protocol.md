@@ -1,186 +1,185 @@
 <properties
-    pageTitle="Connect a web app in Azure App Service to Redis Cache via the Memcache protocol | Microsoft Azure"
-    description="Connect a web app in Azure App service to Redis Cache using the Memcache protocol"
-    services="app-service\web"
-    documentationCenter="php"
-    authors="SyntaxC4"
-    manager="wpickett"
-    editor="riande"/>
+	pageTitle="Verbinden einer Web-App in Azure App Service mit Redis-Cache über das Memcache-Protokoll | Microsoft Azure"
+	description="Verbinden Sie eine Web-App in Azure App Service mit Redis-Cache über das Memcache-Protokoll."
+	services="app-service\web"
+	documentationCenter="php"
+	authors="SyntaxC4"
+	manager="wpickett"
+	editor="riande"/>
 
 <tags
-    ms.service="app-service-web"
-    ms.devlang="php"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="windows"
-    ms.workload="na"
-    ms.date="02/29/2016"
-    ms.author="cfowler"/>
+	ms.service="app-service-web"
+	ms.devlang="php"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="windows"
+	ms.workload="na"
+	ms.date="02/29/2016"
+	ms.author="cfowler"/>
+
+# Verbinden einer Web-App in Azure App Service mit Redis-Cache über das Memcache-Protokoll
+
+In diesem Artikel erfahren Sie, wie Sie eine WordPress-Web-App in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) mithilfe des [Memcache][13]-Protokolls mit [Azure Redis Cache][12] verbinden. Wenn Sie über eine vorhandene Web-App verfügen, die einen Memcached-Server für die Zwischenspeicherung im Arbeitsspeicher verwendet, können Sie diese in Azure App Service migrieren und die Erstanbieter-Lösung für die Zwischenspeicherung in Microsoft Azure mit nur wenigen oder gar keinen Änderungen am Anwendungscode nutzen. Darüber hinaus können Sie Ihre vorhandenen Memcache-Erfahrungen nutzen, um hochgradig skalierbare, verteilte Apps in Azure App Service mit Azure Redis Cache für die Zwischenspeicherung im Arbeitsspeicher zu erstellen und dabei gängige Anwendungsframeworks wie .NET, PHP, Node.js, Java und Python zu verwenden.
+
+App Service-Web-Apps ermöglichen dieses Anwendungsszenario mit dem Web-App-Memcache-Shim, einem lokalen Memcache-Server, der als Memcache-Proxy für die Aufrufe zur Zwischenspeicherung von Azure Redis Cache fungiert. Dadurch kann jede App, die mithilfe des Memcache-Protokolls kommuniziert, Daten mit Redis-Cache zwischenspeichern. Der Memcache-Shim arbeitet auf Protokollebene, damit er von Anwendungen oder Anwendungsframeworks verwendet werden kann, sofern diese mit dem Memcache-Protokoll kommunizieren.
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
+## Voraussetzungen
+
+Der Web-Apps-Memcache-Shim kann mit jeder Anwendung verwendet werden, sofern diese über das Memcache-Protokoll kommuniziert. In diesem speziellen Beispiel ist die Referenzanwendung eine skalierbare WordPress-Website, die aus dem Azure Marketplace bereitgestellt werden kann.
+
+Führen Sie die Schritte in den folgenden Artikeln aus:
+
+* [Bereitstellen einer Instanz des Azure Redis Cache Service][0]
+* [Bereitstellen einer skalierbaren WordPress-Website in Azure][1]
+
+Nachdem Sie die skalierbare WordPress-Website und eine Redis-Cache-Instanz bereitgestellt haben, können Sie damit fortfahren, den Memcache-Shim in Azure App Service-Web-Apps zu aktivieren.
+
+## Aktivieren des Web-Apps-Memcache-Shims
+
+Zum Konfigurieren des Memcache-Shims müssen Sie drei Anwendungseinstellungen erstellen. Dies kann auf unterschiedliche Weise erfolgen: im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715), im [klassischen Portal][3], mithilfe von [Azure PowerShell-Cmdlets][5] oder über die [Azure-Befehlszeilenschnittstelle][5]. In diesem Artikel verwende ich das [Azure-Portal][4] zum Festlegen der Anwendungseinstellungen. Die folgenden Werte können vom Blatt **Einstellungen** Ihrer Redis Cache-Instanz abgerufen werden.
+
+![Azure Redis Cache – Blatt "Einstellungen"](./media/web-sites-connect-to-redis-using-memcache-protocol/1-azure-redis-cache-settings.png)
+
+### Hinzufügen der Anwendungseinstellung REDIS\_HOST
+
+Die erste Anwendungseinstellung, die Sie erstellen müssen, ist die Anwendungseinstellung **REDIS\_HOST**. Diese Einstellung legt das Ziel fest, an das der Shim Cacheinformationen weiterleitet. Der erforderliche Wert für die Anwendungseinstellung REDIS\_HOST kann auf dem Blatt **Eigenschaften** Ihrer Redis Cache-Instanz abgerufen werden.
+
+![Azure Redis Cache – Hostname](./media/web-sites-connect-to-redis-using-memcache-protocol/2-azure-redis-cache-hostname.png)
+
+Legen Sie den Schlüssel der Anwendungseinstellung auf **REDIS\_HOST** und den Wert der Einstellung auf den Hostnamen der Redis Cache-Instanz fest.
+
+![Web-App – Anwendungseinstellung "REDIS\_HOST"](./media/web-sites-connect-to-redis-using-memcache-protocol/3-azure-website-appsettings-redis-host.png)
+
+### Hinzufügen der Anwendungseinstellung REDIS\_KEY
+
+Die zweite Anwendungseinstellung, die Sie erstellen müssen, ist die Anwendungseinstellung **REDIS\_KEY**. Diese Einstellung stellt das Authentifizierungstoken für den sicheren Zugriff auf die Redis-Cache-Instanz bereit. Der erforderliche Wert für die App-Einstellung REDIS\_KEY kann auf dem Blatt **Zugriffsschlüssel** Ihrer Redis Cache-Instanz abgerufen werden.
+
+![Azure Redis Cache – Primärschlüssel](./media/web-sites-connect-to-redis-using-memcache-protocol/4-azure-redis-cache-primarykey.png)
+
+Legen Sie den Schlüssel der Anwendungseinstellung auf **REDIS\_KEY** und den Wert der Einstellung auf den Primärschlüssel der Redis Cache-Instanz fest.
+
+![Azure-Website – Anwendungseinstellung "REDIS\_KEY"](./media/web-sites-connect-to-redis-using-memcache-protocol/5-azure-website-appsettings-redis-primarykey.png)
+
+### Hinzufügen der Anwendungseinstellung MEMCACHESHIM\_REDIS\_ENABLE
+
+Die letzte App-Einstellung wird verwendet, um den Memcache-Shim in Web-Apps zu aktivieren. Dieser verwendet REDIS\_HOST und REDIS\_KEY, um eine Verbindung mit dem Azure Redis Cache herzustellen und die Cacheaufrufe weiterzuleiten. Legen Sie den Schlüssel der Anwendungseinstellung auf **MEMCACHESHIM\_REDIS\_ENABLE** und den Wert auf **true** fest.
+
+![Web-App – Anwendungseinstellung "MEMCACHESHIM\_REDIS\_ENABLE"](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
+
+Wenn Sie die drei Anwendungseinstellungen hinzugefügt haben, klicken Sie auf **Speichern**.
+
+## Aktivieren der Memcache-Erweiterung für PHP
+
+Damit die Anwendung über das Memcache-Protokoll kommunizieren kann, muss die Memcache-Erweiterung für PHP (Sprachen-Framework für Ihre WordPress-Website) installiert werden.
+
+### Herunterladen der php\_memcache-Erweiterung
+
+Navigieren Sie zu [PECL][6]. Klicken Sie unter der Kategorie für das Zwischenspeichern auf [memcache][7]. Klicken Sie in der Spalte mit den Downloads auf den DLL-Link.
+
+![PHP-PECL-Website](./media/web-sites-connect-to-redis-using-memcache-protocol/7-php-pecl-website.png)
+
+Laden Sie das Ziel des x86-Links zum Non-Thread Safe (NTS) für Ihre in Web-Apps aktivierte Version von PHP herunter. (Die Standardeinstellung ist PHP 5.4)
+
+![PHP-PECL-Website – Memcache-Paket](./media/web-sites-connect-to-redis-using-memcache-protocol/8-php-pecl-memcache-package.png)
+
+### Aktivieren der php\_memcache-Erweiterung
+
+Extrahieren Sie die Datei **php\_memcache.dll** nach dem Herunterladen, und laden Sie sie in das Verzeichnis **d:\\home\\site\\wwwroot\\bin\\ext\** hoch. Nachdem die Datei „php\_memcache.dll“ in die Web-App hochgeladen wurde, muss die Erweiterung für die PHP-Laufzeit aktiviert werden. Öffnen Sie zum Aktivieren der Memcache-Erweiterung im Azure-Portal das Blatt **Anwendungseinstellungen** für die Web-App, und fügen Sie eine neue Anwendungseinstellung mit dem Schlüssel **PHP\_EXTENSIONS** und dem Wert **bin\\ext\\php\_memcache.dll** hinzu.
 
 
-# <a name="connect-a-web-app-in-azure-app-service-to-redis-cache-via-the-memcache-protocol"></a>Connect a web app in Azure App Service to Redis Cache via the Memcache protocol
+> [AZURE.NOTE] Wenn die Web-App mehrere PHP-Erweiterungen laden muss, sollte der Wert von PHP\_EXTENSIONS eine durch Kommas getrennte Liste von relativen Pfaden zu DLL-Dateien sein.
 
-In this article, you'll learn how to connect a WordPress web app in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) to [Azure Redis Cache][12] using the [Memcache][13] protocol. If you have an existing web app that uses a Memcached server for in-memory caching, You can migrate it to Azure App Service and use the first-party caching solution in Microsoft Azure with little or no change to your application code. Furthermore, you can use your existing Memcache expertise to create highly scalable, distributed apps in Azure App Service with Azure Redis Cache for in-memory caching, while using popular application frameworks such as .NET, PHP, Node.js, Java, and Python.  
+![Web-App – Anwendungseinstellung "PHP\_EXTENSIONS"](./media/web-sites-connect-to-redis-using-memcache-protocol/9-azure-website-appsettings-php-extensions.png)
 
-App Service Web Apps enables this application scenario with the Web Apps Memcache shim, which is a local Memcached server that acts as a Memcache proxy for caching calls to Azure Redis Cache. This enables any app that communicates using the Memcache protocol to cache data with Redis Cache. This Memcache shim works at the protocol level, so it can be used by any application or application framework as long as it communicates using the Memcache protocol.
+Klicken Sie, wenn Sie fertig sind, auf **Speichern**.
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
+## Installieren des Memcache-WordPress-Plug-Ins
 
-## <a name="prerequisites"></a>Prerequisites
+> [AZURE.NOTE] Sie können das [Memcached Object-Plug-In](https://wordpress.org/plugins/memcached/) auch von „WordPress.org“ herunterladen.
 
-The Web Apps Memcache shim can be used with any application provided it communicates using the Memcache protocol. For this particular example, the reference application is a Scalable WordPress site which can be provisioned from the Azure Marketplace.
+Klicken Sie auf der Seite mit den WordPress-Plug-Ins auf die Schaltfläche **Neues hinzufügen**.
 
-Follow the steps outlined in these articles:
+![WordPress – Plug-In-Seite](./media/web-sites-connect-to-redis-using-memcache-protocol/10-wordpress-plugin.png)
 
-* [Provision an instance of the Azure Redis Cache Service][0]
-* [Deploy a Scalable WordPress site in Azure][1]
+Geben Sie im Suchfeld **memcached** ein, und drücken Sie die **Eingabetaste**.
 
-Once you have the Scalable WordPress site deployed and a Redis Cache instance provisioned you will be ready to proceed with enabling the Memcache shim in Azure App Service Web Apps.
+![WordPress – neues Plug-In hinzufügen](./media/web-sites-connect-to-redis-using-memcache-protocol/11-wordpress-add-new-plugin.png)
 
-## <a name="enable-the-web-apps-memcache-shim"></a>Enable the Web Apps Memcache shim
+Suchen Sie in der Liste nach **Memcached Object Cache**, und klicken Sie dann auf **Jetzt installieren**.
 
-In order to configure Memcache shim, you must create three app settings. This can be done using a variety of methods including the [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715), the [classic portal][3], the [Azure PowerShell Cmdlets][5] or the [Azure Command-Line Interface][5]. For the purposes of this post, I’m going to use the [Azure Portal][4] to set the app settings. The following values can be retrieved from **Settings** blade of your Redis Cache instance.
+![WordPress – Memcache-Plug-In installieren](./media/web-sites-connect-to-redis-using-memcache-protocol/12-wordpress-install-memcache-plugin.png)
 
-![Azure Redis Cache Settings Blade](./media/web-sites-connect-to-redis-using-memcache-protocol/1-azure-redis-cache-settings.png)
+### Aktivieren des Memcache WordPress-Plug-Ins
 
-### <a name="add-redis_host-app-setting"></a>Add REDIS_HOST app setting
+>[AZURE.NOTE] Befolgen Sie die Anweisungen in diesem Blog unter [How to enable a Site Extension in Web Apps][8], um Visual Studio Team Services zu installieren.
 
-The first app setting you need to create is the **REDIS\_HOST** app setting. This setting sets the destination to which the shim forwards the cache information. The value required for the REDIS_HOST app setting can be retrieved from the **Properties** blade of your Redis Cache instance.
-
-![Azure Redis Cache Host Name](./media/web-sites-connect-to-redis-using-memcache-protocol/2-azure-redis-cache-hostname.png)
-
-Set the key of the app setting to **REDIS\_HOST** and the value of the app setting to the **hostname** of the Redis Cache instance.
-
-![Web App AppSetting REDIS_HOST](./media/web-sites-connect-to-redis-using-memcache-protocol/3-azure-website-appsettings-redis-host.png)
-
-### <a name="add-redis_key-app-setting"></a>Add REDIS_KEY app setting
-
-The second app setting you need to create is the **REDIS\_KEY** app setting. This setting provides the authentication token required to securely access the Redis Cache instance. You can retrieve the value required for the REDIS_KEY app setting from the **Access keys** blade of the Redis Cache instance.
-
-![Azure Redis Cache Primary Key](./media/web-sites-connect-to-redis-using-memcache-protocol/4-azure-redis-cache-primarykey.png)
-
-Set the key of the app setting to **REDIS\_KEY** and the value of the app setting to the **Primary Key** of the Redis Cache instance.
-
-![Azure Website AppSetting REDIS_KEY](./media/web-sites-connect-to-redis-using-memcache-protocol/5-azure-website-appsettings-redis-primarykey.png)
-
-### <a name="add-memcacheshim_redis_enable-app-setting"></a>Add MEMCACHESHIM_REDIS_ENABLE app setting
-
-The last app setting is used to enable the Memcache Shim in Web Apps, which uses the REDIS_HOST and REDIS_KEY to connect to the Azure Redis Cache and forward the cache calls. Set the key of the app setting to **MEMCACHESHIM\_REDIS\_ENABLE** and the value to **true**.
-
-![Web App AppSetting MEMCACHESHIM_REDIS_ENABLE](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
-
-Once you are done adding the three (3) app settings, click **Save**.
-
-## <a name="enable-memcache-extension-for-php"></a>Enable Memcache extension for PHP
-
-In order for the application to speak the Memcache protocol, it's necessary to install the Memcache extension to PHP--the language framework for your WordPress site.
-
-### <a name="download-the-php_memcache-extension"></a>Download the php_memcache Extension
-
-Browse to [PECL][6]. Under the caching category, click [memcache][7]. Under the downloads column click the DLL link.
-
-![PHP PECL Website](./media/web-sites-connect-to-redis-using-memcache-protocol/7-php-pecl-website.png)
-
-Download the Non-Thread Safe (NTS) x86 link for the version of PHP enabled in Web Apps. (Default is PHP 5.4)
-
-![PHP PECL Website Memcache Package](./media/web-sites-connect-to-redis-using-memcache-protocol/8-php-pecl-memcache-package.png)
-
-### <a name="enable-the-php_memcache-extension"></a>Enable the php_memcache extension
-
-After you download the file, unzip and upload the **php\_memcache.dll** into the **d:\\home\\site\\wwwroot\\bin\\ext\\** directory. After the php_memcache.dll is uploaded into the web app, you need to enable the extension to the PHP Runtime. To enable the Memcache extension in the Azure Portal, open the **Application Settings** blade for the web app, then add a new app setting with the key of **PHP\_EXTENSIONS** and the value **bin\\ext\\php_memcache.dll**.
-
-
-> [AZURE.NOTE] If the web app needs to load multiple PHP extensions, the value of PHP_EXTENSIONS should be a comma delimited list of relative paths to DLL files.
-
-![Web App AppSetting PHP_EXTENSIONS](./media/web-sites-connect-to-redis-using-memcache-protocol/9-azure-website-appsettings-php-extensions.png)
-
-Once finished, click **Save**.
-
-## <a name="install-memcache-wordpress-plugin"></a>Install Memcache WordPress plugin
-
-> [AZURE.NOTE] You can also download the [Memcached Object Cache Plugin](https://wordpress.org/plugins/memcached/) from WordPress.org.
-
-On the WordPress plugins page, click **Add New**.
-
-![WordPress Plugin Page](./media/web-sites-connect-to-redis-using-memcache-protocol/10-wordpress-plugin.png)
-
-In the search box, type **memcached** and press **Enter**.
-
-![WordPress Add New Plugin](./media/web-sites-connect-to-redis-using-memcache-protocol/11-wordpress-add-new-plugin.png)
-
-Find **Memcached Object Cache** in the list, then click **Install Now**.
-
-![WordPress Install Memcache Plugin](./media/web-sites-connect-to-redis-using-memcache-protocol/12-wordpress-install-memcache-plugin.png)
-
-### <a name="enable-the-memcache-wordpress-plugin"></a>Enable the Memcache WordPress plugin
-
->[AZURE.NOTE] Follow the instructions in this blog on [How to enable a Site Extension in Web Apps][8] to install Visual Studio Team Services.
-
-In the `wp-config.php` file, add the following code above the stop editing comment near the end of the file.
+Fügen Sie in der Datei `wp-config.php` den folgenden Code über dem Kommentar zum Ende des Bearbeitungsbereichs nahe dem Ende der Datei ein.
 
 ```php
 $memcached_servers = array(
-    'default' => array('localhost:' . getenv("MEMCACHESHIM_PORT"))
+	'default' => array('localhost:' . getenv("MEMCACHESHIM_PORT"))
 );
 ```
 
-Once this code has been pasted, monaco will automatically save the document.
+Wenn dieser Code eingefügt wurde, speichert Monaco das Dokument automatisch.
 
-The next step is to enable the object-cache plugin. This is done by dragging and dropping **object-cache.php** from **wp-content/plugins/memcached** folder to the **wp-content** folder to enable the Memcache Object Cache functionality.
+Im nächsten Schritt wird das Object-Cache-Plug-In aktiviert. Dazu wird die Datei **object-cache.php** per Drag & Drop aus dem Ordner **wp-content/plugins/memcached** in den Ordner **wp-content** kopiert, um die Funktionen des Memcached Object Cache zu aktivieren.
 
-![Locate the memcache object-cache.php plugin](./media/web-sites-connect-to-redis-using-memcache-protocol/13-locate-memcache-object-cache-plugin.png)
+![Memcache-Plug-In "object-cache.php" suchen](./media/web-sites-connect-to-redis-using-memcache-protocol/13-locate-memcache-object-cache-plugin.png)
 
-Now that the **object-cache.php** file is in the **wp-content** folder, the Memcached Object Cache is now enabled.
+Wenn sich die Datei **object-cache.php** im Ordner **wp-content** befindet, ist der Memcached Object Cache aktiviert.
 
-![Enable the memcache object-cache.php plugin](./media/web-sites-connect-to-redis-using-memcache-protocol/14-enable-memcache-object-cache-plugin.png)
+![Memcache-Plug-In "object-cache.php" aktivieren](./media/web-sites-connect-to-redis-using-memcache-protocol/14-enable-memcache-object-cache-plugin.png)
 
-## <a name="verify-the-memcache-object-cache-plugin-is-functioning"></a>Verify the Memcache Object Cache plugin is functioning
+## Überprüfen der Funktion des Memcached Object Cache-Plug-Ins
 
-All of the steps to enable the Web Apps Memcache shim are now complete. The only thing left is to verify that the data is populating your Redis Cache instance.
+Alle Schritte zum Aktivieren des Web-Apps-Memcache-Shims sind damit abgeschlossen. Der letzte Schritt besteht darin, sicherzustellen, dass Ihre Redis-Cache-Instanz mit Daten aufgefüllt wird.
 
-### <a name="enable-the-non-ssl-port-support-in-azure-redis-cache"></a>Enable the non-SSL port support in Azure Redis Cache
+### Aktivieren der Nicht-SSL-Port-Unterstützung in Azure Redis Cache
 
->[AZURE.NOTE] At the time of writing this article, the Redis CLI does not support SSL connectivity, thus the following steps are necessary.
+>[AZURE.NOTE] Zum Zeitpunkt der Erstellung dieses Artikels unterstützt die Redis-Befehlszeilenschnittstelle keine SSL-Verbindungen, daher sind die folgenden Schritte erforderlich.
 
-In the Azure Portal, browse to the Redis Cache instance that you created for this web app. Once the cache's blade is open, click the **Settings** icon.
+Navigieren Sie im Azure-Portal zur Redis-Cache-Instanz, die Sie für diese Web-App erstellt haben. Wenn das Blatt des Caches angezeigt wird, klicken Sie auf das Symbol **Einstellungen**.
 
-![Azure Redis Cache Settings Button](./media/web-sites-connect-to-redis-using-memcache-protocol/15-azure-redis-cache-settings-button.png)
+![Azure Redis Cache – Schaltfläche "Einstellungen"](./media/web-sites-connect-to-redis-using-memcache-protocol/15-azure-redis-cache-settings-button.png)
 
-Select **Access Ports** from the list.
+Wählen Sie aus der Liste **Access Ports** aus.
 
-![Azure Redis Cache Access Port](./media/web-sites-connect-to-redis-using-memcache-protocol/16-azure-redis-cache-access-port.png)
+![Azure Redis Cache – Portzugriff](./media/web-sites-connect-to-redis-using-memcache-protocol/16-azure-redis-cache-access-port.png)
 
-Click **No** for **Allow access only via SSL**.
+Klicken Sie unter **Allow access only via SSL** auf **Nein**.
 
-![Azure Redis Cache Access Port SSL Only](./media/web-sites-connect-to-redis-using-memcache-protocol/17-azure-redis-cache-access-port-ssl-only.png)
+![Azure Redis Cache – Portzugriff (nur SSL)](./media/web-sites-connect-to-redis-using-memcache-protocol/17-azure-redis-cache-access-port-ssl-only.png)
 
-You will see that the NON-SSL port is now set. Click **Save**.
+Es wird angezeigt, dass der Nicht-SSL-Port nun geöffnet ist. Klicken Sie auf **Speichern**.
 
-![Azure Redis Cache Redis Access Portal Non-SSL](./media/web-sites-connect-to-redis-using-memcache-protocol/18-azure-redis-cache-access-port-non-ssl.png)
+![Azure Redis Cache – Redis-Zugriffsportal (kein SSL)](./media/web-sites-connect-to-redis-using-memcache-protocol/18-azure-redis-cache-access-port-non-ssl.png)
 
-### <a name="connect-to-azure-redis-cache-from-redis-cli"></a>Connect to Azure Redis Cache from redis-cli
+### Herstellen einer Verbindung mit dem Azure Redis Cache von Redis-CLI
 
->[AZURE.NOTE] This step assumes that redis is installed locally on your development machine. [Install Redis locally using these instructions][9].
+>[AZURE.NOTE] Dieser Schritt setzt voraus, dass Redis lokal auf dem Entwicklungscomputer installiert ist. [Installieren Sie Redis lokal mithilfe dieser Anweisungen][9].
 
-Open your command-line console of choice and type the following command:
+Öffnen Sie die Befehlszeilenkonsole Ihrer Wahl, und geben Sie den folgenden Befehl ein:
 
 ```shell
 redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –p 6379
 ```
 
-Replace the **&lt;hostname-for-redis-cache&gt;** with the actual xxxxx.redis.cache.windows.net hostname and the **&lt;primary-key-for-redis-cache&gt;** with the access key for the cache, then press **Enter**. Once the CLI has connected to the Redis Cache instance, issue any redis command. In the screenshot below, I’ve chosen to list the keys.
+Ersetzen Sie **&lt;hostname-for-redis-cache&gt;** durch den tatsächlichen Hostnamen „xxxxx.redis.cache.windows.net“ und **&lt;primary-key-for-redis-cache&gt;** durch den Zugriffsschlüssel für den Cache, und drücken Sie dann die **EINGABETASTE**. Sobald die CLI eine Verbindung mit der Redis-Cache-Instanz hergestellt hat, übermitteln Sie einen beliebigen Redis-Befehl. Im Screenshot unten liste ich die Schlüssel auf.
 
-![Connect to Azure Redis Cache from Redis CLI in Terminal](./media/web-sites-connect-to-redis-using-memcache-protocol/19-redis-cli-terminal.png)
+![Herstellen einer Verbindung mit Azure Redis Cache über die Redis-Befehlszeilenschnittstelle in Terminal](./media/web-sites-connect-to-redis-using-memcache-protocol/19-redis-cli-terminal.png)
 
-The call to list the keys should return a value. If not, try navigating to the web app and trying again.
+Der Aufruf zum Auflisten der Schlüssel sollte einen Wert zurückgeben. Wenn dies nicht der Fall ist, navigieren Sie zur Web-App, und versuchen Sie es erneut.
 
-## <a name="conclusion"></a>Conclusion
+## Zusammenfassung
 
-Congratulations! The WordPress app now has a centralized in-memory cache to aid in increasing throughput. Remember, the Web Apps Memcache Shim can be used with any Memcache client regardless of programming language or application framework. To provide feedback or to ask questions about the Web Apps Memcache shim, post to [MSDN Forums][10] or [Stackoverflow][11].
+Glückwunsch! Die WordPress-App verfügt jetzt über einen zentralen Cache im Arbeitsspeicher zur Unterstützung eines erhöhten Durchsatzes. Beachten Sie, dass der Web-Apps-Memcache-Shim mit jedem Memcache-Client verwendet werden kann, unabhängig von der Programmiersprache oder dem Anwendungsframework. Feedback oder Fragen zum Web-Apps-Memcache-Shim können Sie in den [MSDN-Foren][10] oder bei [Stackoverflow][11] veröffentlichen.
 
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+>[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-## <a name="what's-changed"></a>What's changed
-* For a guide to the change from Websites to App Service see: [Azure App Service and its impact on existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
+## Änderungen
+* Hinweise zur Änderung von Websites zu App Service finden Sie unter: [Azure App Service und seine Auswirkungen auf vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 
 [0]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache
@@ -198,8 +197,4 @@ Congratulations! The WordPress app now has a centralized in-memory cache to aid 
 [12]: /services/cache/
 [13]: http://memcached.org
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0302_2016-->

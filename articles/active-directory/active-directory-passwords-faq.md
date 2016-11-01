@@ -1,214 +1,209 @@
 <properties
-    pageTitle="FAQ: Azure AD Password Management | Microsoft Azure"
-    description="Frequently asked questions (FAQ) about password management in Azure AD, including password reset, registration, reports, and writeback to on-premises Active Directory ."
-    services="active-directory"
-    documentationCenter=""
-    authors="asteen"
-    manager="femila"
-    editor="curtand"/>
+	pageTitle="FAQ: Azure AD-Kennwortverwaltung | Microsoft Azure"
+	description="Häufig gestellte Fragen (FAQ) zur Kennwortverwaltung in Azure AD, einschließlich Kennwortzurücksetzung, Registrierung, Berichten und Rückschreibung in das lokale Active Directory."
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/12/2016"
-    ms.author="asteen"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
+	ms.author="asteen"/>
+
+# Häufig gestellte Fragen zur Kennwortverwaltung
+
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+
+Im Folgenden werden einige häufig gestellte Fragen rund um die Kennwortverwaltung aufgeführt.
+
+Wenn Sie eine Frage haben, die Sie nicht beantworten können, oder zu einem bestimmten Problem Hilfe benötigen, können Sie hier weiterlesen und nachsehen, ob wir das Thema bereits behandelt haben. Falls dies nicht der Fall sein sollte: Stellen Sie gerne jede Frage, die hier in den [Azure AD-Foren](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD) noch nicht aufgeführt ist, und wir melden uns so bald wie möglich.
+
+Diese FAQ sind in folgende Abschnitte unterteilt:
+
+- [**Fragen zum Registrieren für die Kennwortzurücksetzung**](#password-reset-registration)
+- [**Fragen zum Zurücksetzen des Kennworts**](#password-reset)
+- [**Fragen zu Kennwortverwaltungsberichten**](#password-management-reports)
+- [**Fragen zur Kennwortrückschreibung**](#password-writeback)
+
+## Registrieren für die Kennwortzurücksetzung
+ - **F: Können meine Benutzer ihre eigenen Daten zur Kennwortzurücksetzung registrieren?**
+
+ > **A:** Ja, solange die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Registrierungsportal für die Kennwortzurücksetzung unter http://aka.ms/ssprsetup öffnen und ihre Authentifizierungsinformationen registrieren, die beim Zurücksetzen des Kennworts verwendet werden. Benutzer können sich auch registrieren, indem sie in den Zugriffsbereich unter http://myapps.microsoft.com wechseln und auf die Profilregisterkarte und dann auf die Option "Für die Kennwortzurücksetzung registrieren" klicken. Weitere Informationen zur Konfiguration Ihrer Benutzer für die Kennwortzurücksetzung finden Sie unter "So konfigurieren Sie Benutzer für das Zurücksetzen von Kennwörtern".
+
+ - **F: Kann ich im Namen meiner Benutzer Daten zur Kennwortzurücksetzung definieren?**
+
+ > **A:** Ja, dies ist über DirSync oder PowerShell bzw. über das [Azure-Verwaltungsportal](https://manage.windowsazure.com) oder das Office-Verwaltungsportal möglich. Weitere Informationen zu diesem Feature finden Sie im Blogbeitrag "Improved Privacy for Azure AD MFA and Password Reset Phone Numbers" (in englischer Sprache) und unter "Verwendung von Daten für die Kennwortzurücksetzung".
+
+ - **F: Kann ich Daten für Sicherheitsfragen vom lokalen Standort aus synchronisieren?**
+
+ > **A:** Nein, das ist zurzeit noch nicht möglich, aber wir ziehen es in Betracht.
+
+ - **F: Können meine Benutzer Daten so registrieren, dass anderen Benutzern diese Daten nicht angezeigt werden?**
+
+ > **A:** Ja. Wenn Benutzer Daten über das Registrierungsportal für die Kennwortzurücksetzung registrieren, werden diese in privaten Authentifizierungsfeldern gespeichert, die nur für globale Administratoren und den Benutzer selbst sichtbar sind. Weitere Informationen zu diesem Feature finden Sie im Blogbeitrag "Improved Privacy for Azure AD MFA and Password Reset Phone Numbers" (in englischer Sprache) und unter "Verwendung von Daten für die Kennwortzurücksetzung".
+
+ - **F: Müssen meine Benutzer registriert werden, damit sie das Zurücksetzen von Kennwörtern verwenden können?**
+
+ > **A:** Nein, wenn Sie genügend Authentifizierungsinformationen in ihrem Auftrag definieren, müssen Benutzer sich nicht registrieren. Das Zurücksetzen des Kennworts funktioniert, solange Sie in den entsprechenden Feldern im Verzeichnis ordnungsgemäß formatierte Daten gespeichert haben. Weitere Informationen finden Sie unter "Verwendung von Daten für die Kennwortzurücksetzung".
+
+ - **F: Kann ich die Felder "Telefon für Authentifizierung", "E-Mail-Adresse zur Authentifizierung" oder "Alternatives Telefon für Authentifizierung" im Namen meiner Benutzer synchronisieren oder festlegen?**
+
+ > **A:** Derzeit nicht, aber wir ziehen diese Möglichkeit in Betracht.
+
+ - **F: Wie erkennt das Registrierungsportal, welche Optionen meinen Benutzern angezeigt werden sollen?**
+
+ > **A:** Das Portal Registrierungsportal für die Kennwortzurücksetzung zeigt nur die Optionen an, die Sie auf der Registerkarte „Konfigurieren“ Ihres Verzeichnisses im Abschnitt zur Kennwortzurücksetzungsrichtlinie für Ihre Benutzer aktiviert haben. Wenn Sie also z. B. die Sicherheitsfragen nicht aktivieren, können Benutzer sich für diese Option nicht registrieren.
+
+ - **F: Wann gilt ein Benutzer als registriert?**
+
+ > **A:** Ein Benutzer gilt als registriert, wenn für ihn mindestens N Authentifizierungsinformationen definiert wurden, wobei N die Anzahl erforderlicher Authentifizierungsmethoden bezeichnet, die Sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) festgelegt haben. Weitere Informationen hierzu finden Sie unter "Anpassen der Richtlinie zum Zurücksetzen des Benutzerkennworts".
 
 
-# <a name="password-management-frequently-asked-questions"></a>Password Management Frequently Asked Questions
+## Zurücksetzen des Kennworts
 
-> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+ - **F: Wie lange muss ich warten, bis eine E-Mail, eine SMS oder ein Anruf von der Kennwortzurücksetzung eintrifft?**
 
-The following are some frequently asked questions for all things related to password management.
+ > **A:** E-Mail, SMS-Nachrichten und Telefonanrufe sollten in weniger als 1 Minute, normalerweise innerhalb von 5-20 Sekunden eingehen. Wenn Sie in diesem Zeitraum keine Benachrichtigung erhalten, überprüfen Sie den Junk-Ordner, stellen Sie sicher, dass die Nummer / E-Mail-Adresse richtig ist und dass die Authentifizierungsdaten im Verzeichnis richtig formatiert sind. Weitere Informationen zur Formatierung von Telefonnummern und E-Mail-Adressen für die Kennwortzurücksetzung finden Sie unter "Verwendung von Daten für die Kennwortzurücksetzung".
 
-If you find yourself with a question that you don't know the answer to, or are looking for help with a particular problem you are facing, you can read on below to see if we've covered it already.  If we haven't already, don't worry! Feel free to ask any question you have that's not covered here on the [Azure AD Forums](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD) and we'll get back to you as soon as we can.
+ - **F: Welche Sprachen werden von der Kennwortzurücksetzung unterstützt?**
 
-This FAQ is split into the following sections:
+ > **A:** Die Benutzeroberfläche der Kennwortzurücksetzung, die SMS-Nachrichten und die Sprachanrufe wurden in dieselben 40 Sprachen lokalisiert, die in Office 365 unterstützt werden. Diese sind: Arabisch, Bulgarisch, vereinfachtes Chinesisch, traditionelles Chinesisch, Kroatisch, Tschechisch, Dänisch, Niederländisch, Englisch, Estnisch, Finnisch, Französisch, Deutsch, Griechisch, Hebräisch, Hindi, Ungarisch, Indonesisch, Italienisch, Japanisch, Kasachisch, Koreanisch, Lettisch, Litauisch, Malaiisch (Malaysia), Norwegisch (Bokmål), Polnisch, Portugiesisch (Brasilien), Portugiesisch (Portugal), Rumänisch, Russisch, Serbisch (Lateinisch), Slowakisch, Slowenisch, Spanisch, Schwedisch, Thai, Türkisch, Ukrainisch und Vietnamesisch.
 
-- [**Questions about Password Reset Registration**](#password-reset-registration)
-- [**Questions about Password Reset**](#password-reset)
-- [**Questions about Password Management Reports**](#password-management-reports)
-- [**Questions about Password Writeback**](#password-writeback)
+ - **F: Welche Teile der Oberfläche zum Zurücksetzen von Kennwörtern werden angepasst, wenn ich organisationsspezifisches Branding auf der Registerkarte "Konfigurieren" für mein Verzeichnis festlege?**
 
-## <a name="password-reset-registration"></a>Password reset registration
- - **Q:  Can my users register their own password reset data?**
-
- > **A:** Yes, as long as password reset is enabled and they are licensed, they can go to the Password Reset Registration portal at http://aka.ms/ssprsetup to register their authentication information to be used with password reset. Users can also register by going to the access panel at http://myapps.microsoft.com, clicking the profile tab, and clicking the Register for Password Reset option. Learn more about how to get your users configured for password reset by reading How to get users configured for password reset.
-
- - **Q:  Can I define password reset data on behalf of my users?**
-
- > **A:** Yes, you can do so with DirSync or PowerShell, or through the [Azure Management Portal](https://manage.windowsazure.com) or Office Admin portal. Learn more about this feature on the blog post Improved Privacy for Azure AD MFA and Password Reset Phone Numbers and by reading Learn how data is used by password reset.
-
- - **Q:  Can I synchronize data for security questions from on premises?**
-
- > **A:** No, this is not possible today, but we are considering it.
-
- - **Q:  Can my users register data in such a way that other users cannot see this data?**
-
- > **A:** Yes, when users register data using the Password Reset Registration Portal it gets saved into private authentication fields that are only visible by Global Administrators and the user himself. Learn more about this feature on the blog post Improved Privacy for Azure AD MFA and Password Reset Phone Numbers and by reading Learn how data is used by password reset.
-
- - **Q:  Do my users have to be registered before they can use password reset?**
-
- > **A:** No, if you define enough authentication information on their behalf, users will not have to register. Password reset will work just fine as long as you have properly formatted data stored in the appropriate fields in the directory. Learn more about by reading Learn how data is used by password reset.
-
- - **Q:  Can I synchronize or set the Authentication Phone, Authentication Email or Alternate Authentication Phone fields on behalf of my users?**
-
- > **A:** Not currently, but we are considering enabling this capability.
-
- - **Q:  How does the registration portal know which options to show my users?**
-
- > **A:** The password reset registration portal only shows the options that you have enabled for your users under the User Password Reset Policy section of your directory’s Configure tab. This means that if you do not enable, say, security questions, then users will not be able to register for that option.
-
- - **Q:  When is a user considered registered?**
-
- > **A:** A user is considered registered when he or she has at least N pieces of authentication info defined, where N is the Number of Authentication Methods Required that you have set in the [Azure Management Portal](https://manage.windowsazure.com). To learn more, see Customizing User Password Reset Policy.
-
-
-## <a name="password-reset"></a>Password reset
-
- - **Q:  How long should I wait to receive an email, SMS, or phone call from password reset?**
-
- > **A:** Email, SMS messages, and phone calls should arrive in under 1 minute, with the normal case being 5-20 seconds. If you do not receive the notification in this timeframe, check your junk folder, that the number / email being contacted is the one you expect, and that the authentication data in the directory is correctly formatted. To learn more about formatting phone numbers and email addresses for use with password reset see Learn how data is used by password reset.
-
- - **Q:  What languages are supported by password reset?**
-
- > **A:** The password reset UI, SMS messages, and voice calls are localized in the same 40 languages that are supported in Office 365. Those are: Arabic, Bulgarian, Chinese Simplified, Chinese Traditional, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Kazakh, Korean, Latvian, Lithuanian, Malay (Malaysia), Norwegian (Bokmål), Polish, Portuguese (Brazil), Portuguese (Portugal), Romanian, Russian, Serbian (Latin), Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, and Vietnamese.
-
- - **Q:  What parts of the password reset experience get branded when I set organizational branding in my directory’s configure tab?**
-
- > **A:** The password reset portal will show your organizational logo and will also allow you to configure the Contact your administrator link to point to a custom email or URL. Any email that gets sent by password reset will include your organization’s logo, colors (in this case red), name in the body of the email, and customized from name. See an example with all the branded elements below. To learn more, read Customizing Password Reset Look and Feel.
+ > **A:** Das Portal für die Kennwortzurücksetzung zeigt das Logo Ihrer Organisation und erlaubt Ihnen zudem, den Link „Wenden Sie sich an Ihren Administrator“ so zu konfigurieren, dass er auf eine benutzerdefinierte E-Mail-Adresse oder eine URL verweist. E-Mails, die von der Kennwortzurücksetzung gesendet werden, enthalten das Logo, die Farben (in diesem Fall rot) sowie den Namen Ihrer Organisation im Nachrichtentext der E-Mail. Zudem weisen sie einen angepassten "Von"-Namen auf. Unten sehen Sie ein Beispiel mit allen organisationsspezifisch angepassten Elementen. Weitere Informationen finden Sie unter "Anpassen des Aussehens und Verhaltens der Kennwortzurücksetzung".
 
   ![][001]
 
- - **Q:  How can I educate my users about where to go to reset their passwords?**
+ - **F: Wie informiere ich meine Benutzer, wo sie ihre Kennwörter zurücksetzen können?**
 
- > **A:** You can send your users to https://passwordreset.microsoftonline.com directly, or you can instruct them to click on the Can’t access your account link found on any School or Work ID sign in screen. You can feel free to publish these links (or create URL redirects to them) in any place that is easily accessible to your users.
+ > **A:** Sie können Ihre Benutzer direkt an https://passwordreset.microsoftonline.com weiterleiten, oder Sie können sie auffordern, auf den Link „Sie können nicht auf Ihr Konto zugreifen“ zu klicken, der auf jedem Anmeldebildschirm für eine Schul- oder Geschäfts-ID angezeigt wird. Sie können diese Links an jeder Stelle veröffentlichen (oder URL-Umleitungen darauf erstellen), die für die Benutzer leicht zugänglich ist.
 
- - **Q:  Can I use this page from a mobile device?**
+ - **F: Kann ich diese Seite von einem mobilen Gerät aus verwenden?**
 
- > **A:** Yes, this page works on mobile devices.
+ > **A:** Ja, diese Seite funktioniert auf mobilen Geräten.
 
- - **Q:  Do you support unlocking local active directory accounts when users reset their passwords?**
+ - **F: Wird das Entsperren lokaler Active Directory-Konten unterstützt, wenn Benutzer ihre Kennwörter zurücksetzen?**
 
- > **A:** Yes, when a user resets his or her password and Password Writeback has been deployed with all versions of Azure AD Connect, or versions of Azure AD Sync 1.0.0485.0222 or later, then that user’s account will be automatically unlocked when that user resets his or her password.
+ > **A:** Ja, wenn ein Benutzer sein Kennwort zurücksetzt und das Kennwortrückschreiben in allen Versionen von Azure AD Connect oder in den Versionen Azure AD Sync 1.0.0485.0222 oder höher bereitgestellt wurde, wird das Konto des Benutzers automatisch entsperrt, sobald der Benutzer sein Kennwort zurücksetzt.
 
- - **Q:  How can I integrate password reset directly into my user’s desktop sign-in experience?**
+ - **F: Wie kann ich die Kennwortzurücksetzung direkt in die Anmeldeoberfläche auf den Desktops meiner Benutzer integrieren?**
 
- > **A:** This is not possible today. However, if you absolutely need this capability and are an Azure AD Premium customer, you can install Microsoft Identity Manager at no additional cost and deploy the on-premises password reset solution found therein to solve this requirement.
+ > **A:** Dies ist zurzeit noch nicht möglich. Wenn Sie diese Funktion jedoch unbedingt benötigen und ein Azure AD Premium-Kunde sind, können Sie Microsoft Identity Manager ohne zusätzliche Kosten installieren und die darin enthaltene lokale Lösung zur Kennwortzurücksetzung bereitstellen, um diese Anforderung zu erfüllen.
 
- - **Q:  Can I set different security questions for different locales?**
+ - **F: Kann ich für verschiedene Gebietsschemas unterschiedliche Sicherheitsfragen festlegen?**
 
- > **A:** No, this is not possible today, but we are considering it.
+ > **A:** Nein, das ist zurzeit noch nicht möglich, aber wir ziehen es in Betracht.
 
- - **Q:  How many questions can we configure for the Security Questions authentication option?**
+ - **F: Wie viele Fragen können wir für die Authentifizierungsoption mit Sicherheitsfragen konfigurieren?**
 
- > **A:** You can configure up to 20 custom security questions in the [Azure Management Portal](https://manage.windowsazure.com).
+ > **A:** Sie können bis zu 20 benutzerdefinierte Sicherheitsfragen im [Azure-Verwaltungsportal](https://manage.windowsazure.com) konfigurieren.
 
- - **Q:  How long may security questions be?**
+ - **F: Wie lang dürfen die Sicherheitsfragen sein?**
 
- > **A:** Security questions may be between 3 and 200 characters long.
+ > **A:** Sicherheitsfragen können zwischen 3 und 200 Zeichen lang sein.
 
- - **Q:  How long may answers to security questions be?**
+ - **F: Wie lang dürfen die Antworten auf Sicherheitsfragen sein?**
 
- > **A:** Answers may be 3 to 40 characters long.
+ > **A:** Antworten dürfen 3 bis 40 Zeichen lang sein.
 
- - **Q:  Are duplicate answers to security questions rejected?**
+ - **F: Werden doppelte Antworten auf Sicherheitsfragen abgelehnt?**
 
- > **A:** Yes, we reject duplicate answers to security questions.
+ > **A:** Ja, doppelte Antworten auf Sicherheitsfragen werden abgelehnt.
 
- - **Q:  May a user register more than one of the same security question?**
+ - **F: Kann ein Benutzer sich für dieselbe Sicherheitsfrage mehrmals registrieren?**
 
- > **A:** No, once a user registers a particular question, he or she may not register for that question a second time.
+ > **A:** Nein, sobald ein Benutzer sich für eine bestimmte Frage registriert, kann er sich kein zweites Mal für dieselbe Frage registrieren.
 
- - **Q:  Is it possible to set a minimum limit of security questions for registration and reset?**
+ - **F: Ist es möglich, eine Mindestanzahl von Sicherheitsfragen für die Registrierung und Zurücksetzung festzulegen?**
 
- > **A:** Yes, one limit can be set for registration and another for reset. 3-5 security questions may be required for registration and 3-5 may be required for reset.
+ > **A:** Ja, es kann ein Grenzwert für die Registrierung und ein anderer für die Zurücksetzung festgelegt werden. Drei bis fünf Fragen können für die Registrierung und drei bis fünf Fragen für die Zurücksetzung verlangt werden.
 
- - **Q:  If a user has registered more than the maximum number of questions required to reset, how are security questions selected during reset?**
+ - **F: Wie werden die Sicherheitsfragen während der Zurücksetzung ausgewählt, wenn ein Benutzer mehr als die maximale Anzahl von Fragen registriert, die für die Zurücksetzung erforderlich sind?**
 
- > **A:** N security questions are selected at random out of the total number of questions a user has registered for, where N is the minimum number of questions required for password reset. For example, if a user has 5 security questions registered, but only 3 are required to reset, 3 of those 5 will be selected randomly and presented to the user at the time of reset. If the user gets the answers to the questions wrong, the selection process re-occurs to prevent question hammering.
+ > **A:** Aus der Gesamtzahl von Fragen, für die sich ein Benutzer registriert hat, werden N Sicherheitsfragen nach dem Zufallsprinzip ausgewählt, wobei N für die minimale Anzahl von Fragen steht, die für das Zurücksetzen von Kennwörtern erforderlich ist. Wenn für einen Benutzer beispielsweise fünf Sicherheitsfragen registriert wurden, aber nur drei für das Zurücksetzen erforderlich sind, werden aus diesen fünf nach dem Zufallsprinzip drei ausgewählt und dem Benutzer zum Zeitpunkt der Zurücksetzung angezeigt. Wenn der Benutzer die Fragen falsch beantwortet, wird der Auswahlvorgang erneut durchgeführt, um eine wiederholte Fragestellung zu verhindern.
 
- - **Q:  Do you prevent users from attempting password reset many times in a short time period?**
+ - **F: Werden Benutzer daran gehindert, Kennwörter innerhalb kurzer Zeit mehrmals zurückzusetzen?**
 
- > **A:** Yes, there are several security features built into password reset. Users may only try 5 password reset attempts within an hour before being locked out for 24 hours. Users may only try to validate a phone number 5 times within an hour before being locked out for 24 hours. Users may only try a single authentication method 5 times within an hour before being locked out for 24 hours.
+ > **A:** Ja, es wurden verschiedene Sicherheitsfunktionen in die Kennwortzurücksetzung integriert. Benutzer dürfen innerhalb einer Stunde nur fünfmal versuchen, das Kennwort zurückzusetzen, bevor sie für 24 Stunden gesperrt werden. Benutzer dürfen innerhalb einer Stunde nur fünfmal versuchen, eine Telefonnummer zu validieren, bevor sie für 24 Stunden gesperrt werden. Benutzer dürfen innerhalb einer Stunde nur fünfmal versuchen, die einmalige Anmeldung durchzuführen, bevor sie für 24 Stunden gesperrt werden.
 
- - **Q:  For how long are the email and SMS one-time passcode valid?**
+ - **F: Wie lange ist die Einmalkennung per E-Mail und SMS gültig?**
 
- > **A:** The session lifetime for password reset is 105 minutes. This means that from the beginning of the password reset operation, the user has 105 minutes to reset his or her password. The email and SMS one-time passcode are invalid after this time period expires.
+ > **A:** Die Sitzungsdauer für das Zurücksetzen von Kennwörtern beträgt 105 Minuten. Dies bedeutet, dass der Benutzer vom Beginn des Vorgangs zur Kennwortzurücksetzung 105 Minuten Zeit hat, um das Kennwort zurückzusetzen. Die E-Mail- und SMS-Einmalkennungen sind nach Ablauf dieses Zeitraums ungültig.
 
 
-## <a name="password-management-reports"></a>Password Management reports
+## Berichte zur Kennwortverwaltung
 
- - **Q:  How long does it take for data to show up on the password management reports?**
+ - **F: Wie lange dauert es, bis Daten in den Berichten zur Kennwortverwaltung angezeigt werden?**
 
- > **A:** Data should appear on the password management reports within 5-10 minutes. It some instances it may take up to an hour to appear.
+ > **A:** Daten sollten innerhalb von 5 bis 10 Minuten in den Berichten zur Kennwortverwaltung angezeigt werden. In manchen Fällen kann es bis zu einer Stunde dauern.
 
- - **Q:  How can I filter the password management reports?**
+ - **F: Wie kann ich die Berichte zur Kennwortverwaltung filtern?**
 
- > **A:** You can filter the password management reports by clicking the small magnifying glass to the extreme right of the column labels, towards the top of the report (see screenshot). If you want to do richer filtering, you can download the report to excel and create a pivot table.
+ > **A:** Sie können die Berichte zur Kennwortverwaltung filtern, indem Sie auf die kleine Lupe ganz rechts neben den Spaltenbeschriftungen am Anfang des Berichts klicken (siehe Screenshot). Wenn Sie umfangreichere Filterfunktionen benötigen, können Sie den Bericht in Excel exportieren und eine Pivottabelle erstellen.
 
   ![][002]
 
- - **Q: What is the maximum number of events are stored in the password management reports?**
+ - **F: Wie hoch ist die maximale Anzahl der Ereignisse, die in den Kennwortverwaltungsberichten gespeichert werden?**
 
- > **A:** Up to 1,000 password reset or password reset registration events are stored in the password management reports.  We are working to expand this number to include more events.
+ > **A**: Bis zu 1.000 Kennwortzurücksetzungsereignisse oder Ereignisse bezüglich des Registrierens für die Kennwortzurücksetzung werden in den Kennwortverwaltungsberichten gespeichert. Eine Erweiterung dieser Anzahl der Ereignisse ist in Arbeit.
 
- - **Q:  How far back do the password management reports go?**
+ - **F: Wie weit reichen die Berichte zur Kennwortverwaltung zurück?**
 
- > **A:** The password management reports show operations occurring within the last 30 days. We are currently investigating how to make this a longer time period. For now, if you need to archive this data, you can download the reports periodically and save them in a separate location.
+ > **A:** Die Berichte zur Kennwortverwaltung zeigen Vorgänge der letzten 30 Tage an. Wir untersuchen gerade, wie wir diesen Zeitraum verlängern können. Wenn Sie diese Daten archivieren möchten, können Sie die Berichte in regelmäßigen Abständen herunterladen und an einem anderen Speicherort speichern.
 
- - **Q:  Is there a maximum number of rows that can appear on the password management reports?**
+ - **F: Gibt es eine maximale Anzahl von Zeilen, die in den Berichten zur Kennwortverwaltung angezeigt werden können?**
 
- > **A:** Yes, a maximum of 1,000 rows may appear on either of the Password Management reports, whether they are being shown in the UI or being downloaded. We are currently investigating how to increase this limit.
+ > **A:** Ja, jeder der Berichte zur Kennwortverwaltung kann maximal 1.000 Zeilen umfassen, unabhängig davon, ob sie auf der Benutzeroberfläche angezeigt oder heruntergeladen werden. Wir untersuchen gerade, wie dieser Grenzwert erhöht werden kann.
 
- - **Q:  Is there an API to access the password reset or registration reporting data?**
+ - **F: Gibt es eine API, um auf die Daten der Kennwortzurücksetzung oder des Registrierens für die Kennwortzurücksetzung zuzugreifen?**
 
- > **A:** Yes, please see the following documentation to learn how you can access the password reset reporting data stream.  [Learn how to access password reset reporting events programmatically](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+ > **A**: Ja, in der folgenden Dokumentation finden Sie Angaben dazu, wie der Zugriff auf den Berichtdatenstrom über die Kennwortzurücksetzung möglich ist. [Azure AD-Berichte und -Ereignisse (Vorschau)](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
 
-## <a name="password-writeback"></a>Password Writeback
- - **Q:  How does Password Writeback work behind the scenes?**
+## Rückschreiben von Kennwörtern
+ - **F: Wie funktioniert das Rückschreiben von Kennwörtern im Detail?**
 
- > **A:** See [How Password Writeback works](active-directory-passwords-learn-more.md#how-password-writeback-works) for a detailed explanation of what happens when you enable Password Writeback, as well as how data flows through the system back into your on-premises environment. See [Password Writeback security model](active-directory-passwords-learn-more.md#password-writeback-security-model) in How Password Writeback works to learn how we ensure Password Writeback is a highly secure service.
+ > **A:** Unter [Funktionsweise der Kennwortrückschreibung](active-directory-passwords-learn-more.md#how-password-writeback-works) finden Sie eine detaillierte Erläuterung der Vorgänge bei einer Kennwortrückschreibung sowie zum Datenfluss durch das System zurück in die lokale Umgebung. Unter [Sicherheitsmodell für die Kennwortrückschreibung](active-directory-passwords-learn-more.md#password-writeback-security-model) im Artikel „Weitere Informationen zur Kennwortverwaltung“ erfahren Sie, wie wir sicherstellen, dass die Kennwortrückschreibung ein sehr sicherer Dienst ist.
 
- - **Q:  How long does Password Writeback take to work?  Is there a synchronization delay like with password hash sync?**
+ - **F: Wie lange dauert es, bis das Rückschreiben von Kennwörtern funktioniert? Gibt es eine Synchronisierungsverzögerung wie bei der Kennworthashsynchronisierung?**
 
- > **A:** Password Writeback is instant. It is a synchronous pipeline that works fundamentally differently than password hash synchronization. Password Writeback allows users to get realtime feedback about the success of their password reset or change operation. The average time for a successful writeback of a password is under 500 ms.
+ > **A:** Die Kennwortrückschreibung findet sofort statt. Sie ist eine synchrone Pipeline, die grundlegend anders funktioniert als die Kennworthashsynchronisierung. Durch die Kennwortrückschreibung erhalten Benutzer in Echtzeit Feedback über den Erfolg der Kennwortzurücksetzung oder -änderung. Die durchschnittliche Zeit für das erfolgreiche Rückschreiben eines Kennworts liegt bei unter 500 ms.
 
- - **Q:  What types of accounts does Password Writeback work for?**
+ - **F: Für welche Arten von Konten funktioniert das Rückschreiben von Kennwörtern?**
 
- > **A:** Password Writeback works for Federated and Password Hash Sync’d users.
+ > **A:** Das Rückschreiben von Kennwörtern funktioniert für Benutzer mit Verbundauthentifizierung und mit Kennworthashsynchronisierung.
 
- - **Q:  Does Password Writeback enforce my domain’s password policies?**
+ - **F: Werden die Kennwortrichtlinien meiner Domäne durch die Kennwortrückschreibung durchgesetzt?**
 
- > **A:** Yes, Password Writeback enforces password age, history, complexity, filters and any other restriction you may put in place on passwords in your local domain.
+ > **A:** Ja, die Kennwortrückschreibung setzt das Kennwortalter, den Verlauf, die Komplexität, Filter und alle anderen Einschränkungen durch, die Sie in Ihrer lokalen Domäne für Kennwörter festlegen können.
 
- - **Q:  Is Password Writeback secure?  How can I be sure I won’t get hacked?**
+ - **Q: Ist die Kennwortrückschreibung sicher? Wie kann ich sicher sein, dass ich nicht gehackt werde?**
 
- > **A:** Yes, Password Writeback is extremely secure. To read more about the 4 layers of security implemented by the Password Writeback service, check out the [Password Writeback security model](active-directory-passwords-learn-more.md#password-writeback-security-model) in How Password Writeback works.
-
-
+ > **A:** Ja, die Kennwortrückschreibung ist extrem sicher. Weitere Informationen zu den vier Sicherheitsstufen, die durch den Dienst zur Kennwortrückschreibung implementiert werden, finden Sie unter [Sicherheitsmodell für das Rückschreiben von Kennwörtern](active-directory-passwords-learn-more.md#password-writeback-security-model) im Artikel „Weitere Informationen zur Kennwortverwaltung“.
 
 
-## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
-Below are links to all of the Azure AD Password Reset documentation pages:
 
-* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
-* [**How it works**](active-directory-passwords-how-it-works.md) - learn about the six different components of the service and what each does
-* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
-* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
-* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
-* [**Get insights**](active-directory-passwords-get-insights.md) - learn about our integrated reporting capabilities
-* [**Troubleshooting**](active-directory-passwords-troubleshoot.md) - learn how to quickly troubleshoot problems with the service
-* [**Learn more**](active-directory-passwords-learn-more.md) - go deep into the technical details of how the service works
+
+## Links zur Dokumentation für die Kennwortzurücksetzung
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+* [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
+* [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
+* [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
+* [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.
+* [**Einblicke erhalten**](active-directory-passwords-get-insights.md) – Erfahren Sie mehr über unsere integrierten Berichtsfunktionen.
+* [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
+* [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
 
 
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

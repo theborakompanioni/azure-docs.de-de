@@ -1,53 +1,52 @@
 <properties 
-    pageTitle="collectd: perf stats for Java on Unix in Application Insights" 
-    description="Extended monitoring of your Java website with the CollectD plug-in for Application Insights" 
-    services="application-insights" 
+	pageTitle="collectd: Leistungsstatistiken für Java unter Unix in Application Insights" 
+	description="Erweiterte Überwachung Ihrer Java-Website mit dem CollectD-Plug-In für Application Insights" 
+	services="application-insights" 
     documentationCenter="java"
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/24/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2016" 
+	ms.author="awills"/>
  
+# collectd: Unix-Leistungsmetriken in Application Insights
 
-# <a name="collectd:-unix-performance-metrics-in-application-insights"></a>collectd: Unix performance metrics in Application Insights
+*Application Insights befindet sich in der Vorschau.*
 
-*Application Insights is in Preview.*
+Um Leistungsmetriken für Unix-Systeme in [Application Insights](app-insights-overview.md) zu untersuchen, installieren Sie [collectd](http://collectd.org/) zusammen mit dem entsprechenden Application Insights-Plug-In. Diese Open Source-Lösung sammelt verschiedene System- und Netzwerkstatistiken.
 
-To explore Unix system performance metrics in [Application Insights](app-insights-overview.md), install [collectd](http://collectd.org/), together with its Application Insights plug-in. This open-source solution gathers various system and network statistics.
+collectd wird üblicherweise verwendet, wenn Sie [Ihren Java-Webdienst bereits mit Application Insights instrumentiert haben][java]. Die Lösung liefert weitere Daten, auf deren Grundlage Sie die Leistung Ihrer Anwendung verbessern oder Probleme diagnostizieren können.
 
-Typically you'll use collectd if you have already [instrumented your Java web service with Application Insights][java]. It gives you more data to help you to enhance your app's performance or diagnose problems. 
+![Beispieldiagramme](./media/app-insights-java-collectd/sample.png)
 
-![Sample charts](./media/app-insights-java-collectd/sample.png)
+## Abrufen des Instrumentationsschlüssels
 
-## <a name="get-your-instrumentation-key"></a>Get your instrumentation key
+Öffnen Sie im [Microsoft Azure-Portal](https://portal.azure.com) die Ressource [Application Insights](app-insights-overview.md), in der die Daten angezeigt werden sollen. (Oder [erstellen Sie eine neue Ressource](app-insights-create-new-resource.md).)
 
-In the [Microsoft Azure portal](https://portal.azure.com), open the [Application Insights](app-insights-overview.md) resource where you want the data to appear. (Or [create a new resource](app-insights-create-new-resource.md).)
+Kopieren Sie den Instrumentationsschlüssel, der die Ressource identifiziert.
 
-Take a copy of the instrumentation key, which identifies the resource.
-
-![Browse all, open your resource, and then in the Essentials drop-down, select, and copy the Instrumentation Key](./media/app-insights-java-collectd/02-props.png)
-
+![Durchsuchen Sie alle Ressourcen, öffnen Sie Ihre Ressource, wählen Sie in der Dropdownliste „Essentials“ den Instrumentationsschlüssel aus, und kopieren Sie ihn.](./media/app-insights-java-collectd/02-props.png)
 
 
-## <a name="install-collectd-and-the-plug-in"></a>Install collectd and the plug-in
 
-On your Unix server machines:
+## Installieren von collectd und des Plug-Ins
 
-1. Install [collectd](http://collectd.org/) version 5.4.0 or later.
-2. Download the [Application Insights collectd writer plugin](https://aka.ms/aijavasdk). Note the version number.
-3. Copy the plugin JAR into `/usr/share/collectd/java`.
-3. Edit `/etc/collectd/collectd.conf`:
- * Ensure that [the Java plugin](https://collectd.org/wiki/index.php/Plugin:Java) is enabled.
- * Update the JVMArg for the java.class.path to include the following JAR. Update the version number to match the one you downloaded:
+Auf Unix-Servercomputern:
+
+1. Installieren Sie [collectd](http://collectd.org/), Version 5.4.0 oder höher.
+2. Laden Sie das [collectd-Writer-Plug-In für Application Insights](https://aka.ms/aijavasdk) herunter. Beachten Sie die Versionsnummer.
+3. Kopieren Sie die Plug-In-JAR in `/usr/share/collectd/java`.
+3. Bearbeiten Sie `/etc/collectd/collectd.conf`:
+ * Stellen Sie sicher, dass [das Java-Plug-In](https://collectd.org/wiki/index.php/Plugin:Java) aktiviert ist.
+ * Aktualisieren Sie den JVMArg-Wert für "java.class.path", sodass die folgende JAR-Datei enthalten ist. Aktualisieren Sie die Versionsnummer, sodass sie mit der übereinstimmt, die Sie heruntergeladen haben:
   * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
- * Add this snippet, using the Instrumentation Key from your resource:
+ * Fügen Sie diesen Codeausschnitt mit dem Instrumentationsschlüssel der Ressource hinzu:
 
 ```
 
@@ -57,7 +56,7 @@ On your Unix server machines:
      </Plugin>
 ```
 
-Here's part of a sample configuration file:
+Er ist Teil der Beispielkonfigurationsdatei:
 
     ...
     # collectd plugins
@@ -85,47 +84,47 @@ Here's part of a sample configuration file:
       # Other plugin configurations ...
       ...
     </Plugin>
-.   ...
+. ...
 
-Configure other [collectd plugins](https://collectd.org/wiki/index.php/Table_of_Plugins), which can collect various data from different sources.
+Konfigurieren Sie andere [collectd-Plug-Ins](https://collectd.org/wiki/index.php/Table_of_Plugins), die verschiedenste Daten aus unterschiedlichen Quellen sammeln können.
 
-Restart collectd according to its [manual](https://collectd.org/wiki/index.php/First_steps).
+Starten Sie collectd gemäß dem [Handbuch](https://collectd.org/wiki/index.php/First_steps) neu.
 
-## <a name="view-the-data-in-application-insights"></a>View the data in Application Insights
+## Anzeigen der Daten in Application Insights
 
-In your Application Insights resource, open [Metrics Explorer and add charts][metrics], selecting the metrics you want to see from the Custom category.
+Öffnen Sie in der Application Insights-Ressource den [Metrik-Explorer, und fügen Sie Diagramme hinzu][metrics], indem Sie die Metriken auswählen, die aus der benutzerdefinierten Kategorie angezeigt werden sollen.
 
 ![](./media/app-insights-java-collectd/result.png)
 
-By default, the metrics are aggregated across all host machines from which the metrics were collected. To view the metrics per host, in the Chart details blade, turn on Grouping and then choose to group by CollectD-Host.
+Standardmäßig werden die Metriken für alle Hostcomputer aggregiert, von denen die Metriken gesammelt wurden. Aktivieren Sie zum Anzeigen der Metriken pro Host auf dem Blatt mit Diagrammdetails "Gruppierung", und wählen Sie dann aus, dass nach "CollectD-Host" gruppiert werden soll.
 
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>To exclude upload of specific statistics
+## So schließen Sie den Upload bestimmter Statistiken aus
 
-By default, the Application Insights plugin sends all the data collected by all the enabled collectd 'read' plugins. 
+Standardmäßig sendet das Application Insights-Plug-In alle Daten, die von allen aktivierten collectd-Lese-Plug-Ins gesammelt wurden.
 
-To exclude data from specific plugins or data sources:
+So schließen Sie Daten von bestimmten Plug-Ins oder Datenquellen aus:
 
-* Edit the configuration file. 
-* In `<Plugin ApplicationInsightsWriter>`, add directive lines like this:
+* Bearbeiten Sie die Konfigurationsdatei.
+* Fügen Sie in `<Plugin ApplicationInsightsWriter>` folgende Direktivenzeilen hinzu:
 
-Directive | Effect
+Direktive | Effekt
 ---|---
-`Exclude disk` | Exclude all data collected by the `disk` plugin
-`Exclude disk:read,write` | Exclude the sources named `read` and `write` from the `disk` plugin.
+`Exclude disk` | Schließen Sie alle vom `disk`-Plug-In gesammelten Daten aus.
+`Exclude disk:read,write` | Schließen Sie die Quellen mit den Namen `read` und `write` aus dem `disk`-Plug-In aus.
 
-Separate directives with a newline.
+Trennen Sie Direktiven mit einem Zeilenumbruch.
 
 
-## <a name="problems?"></a>Problems?
+## Probleme?
 
-*I don't see data in the portal*
+*Daten werden im Portal nicht angezeigt.*
 
-* Open [Search][diagnostic] to see if the raw events have arrived. Sometimes they take longer to appear in metrics explorer.
-* You might need to [set firewall exceptions for outgoing data](app-insights-ip-addresses.md)
-* Enable tracing in the Application Insights plugin. Add this line within `<Plugin ApplicationInsightsWriter>`:
+* Öffnen Sie [Search][diagnostic], um zu überprüfen, ob die Rohereignisse angekommen sind. Manchmal dauert es länger, bis sie im Metrik-Explorer angezeigt werden.
+* Gegebenenfalls müssen Sie [Firewallausnahmen für ausgehende Daten festlegen](app-insights-ip-addresses.md).
+* Aktivieren Sie die Ablaufverfolgung im Application Insights-Plug-In. Fügen Sie diese Zeile in `<Plugin ApplicationInsightsWriter>` hinzu:
  *  `SDKLogger true`
-* Open a terminal and start collectd in verbose mode, to see any issues it is reporting:
+* Öffnen Sie ein Terminal, und starten Sie collectd im ausführlichen Modus, um alle gemeldeten Probleme anzuzeigen:
  * `sudo collectd -f`
 
 
@@ -145,8 +144,4 @@ Separate directives with a newline.
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

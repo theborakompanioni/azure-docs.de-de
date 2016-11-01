@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Import to SQL Database from a BACPAC file using SqlPackage"
-   description="Microsoft Azure SQL Database, database migration, import database, import BACPAC file, sqlpackage"
+   pageTitle="Importieren aus einer BACPAC-Datei in SQL-Datenbank per SqlPackage"
+   description="Microsoft Azure SQL-Datenbank, Datenbankmigration, Datenbank importieren, BACPAC-Datei importieren, sqlpackage"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,54 +16,49 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
-
-# <a name="import-to-sql-database-from-a-bacpac-file-using-sqlpackage"></a>Import to SQL Database from a BACPAC file using SqlPackage
+# Importieren aus einer BACPAC-Datei in SQL-Datenbank per SqlPackage
 
 > [AZURE.SELECTOR]
 - [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 - [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
-- [Azure portal](sql-database-import.md)
+- [Azure-Portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-This article shows how to import to SQL database from a [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file using the [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) command-line utility. This utility ships with the latest versions of [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) and [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), or you can download the latest version of [SqlPackage](https://www.microsoft.com/en-us/download/details.aspx?id=53876) directly from the Microsoft download center.
+Dieser Artikel zeigt, wie Sie aus einer [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)-Datei mithilfe des [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx)-Befehlszeilen-Hilfsprogramms für die Eingabeaufforderung in die SQL-Datenbank importieren. Dieses Dienstprogramm wird mit den neuesten Versionen von [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) und [SQL Server Data Tools für Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) ausgeliefert. Alternativ dazu können Sie die neueste Version von [SqlPackage](https://www.microsoft.com/de-DE/download/details.aspx?id=53876) direkt aus dem Microsoft Download Center herunterladen.
 
 
-> [AZURE.NOTE] The following steps assume that you have already provisioned a SQL Database server, have the connection information on hand, and have verified that your source database is compatible.
+> [AZURE.NOTE] Die folgenden Schritten setzen voraus, dass Sie bereits einen SQL-Datenbankserver bereitgestellt haben, Ihnen die Verbindungsinformationen vorliegen und Sie die Kompatibilität der Quelldatenbank überprüft haben.
 
-## <a name="import-from-a-bacpac-file-into-azure-sql-database-using-sqlpackage"></a>Import from a BACPAC file into Azure SQL Database using SqlPackage
+## Importieren aus einer BACPAC-Datei in Azure SQL-Datenbank per SqlPackage
 
-Use the following steps to use the [SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) command-line utility to import a compatible SQL Server database (or Azure SQL database) from a BACPAC file.
+Führen Sie die folgenden Schritte aus, um das Befehlszeilen-Hilfsprogramm [SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) zum Importieren einer kompatiblen SQL Server-Datenbank (oder Azure SQL-Datenbank) aus einer BACPAC-Datei zu verwenden.
 
-> [AZURE.NOTE] The following steps assume that you have already provisioned an Azure SQL Database server and have the connection information on hand.
+> [AZURE.NOTE] Die folgenden Schritten setzen voraus, dass Sie bereits einen Azure SQL-Datenbank-Server bereitgestellt haben und Ihnen die Verbindungsinformationen vorliegen.
 
-1. Open a command prompt and change a directory containing the sqlpackage.exe command-line utility - this utility ships with both Visual Studio and SQL Server.
-2. Execute the following sqlpackage.exe command with the following arguments for your environment:
+1. Öffnen Sie ein Eingabeaufforderungsfenster, und wechseln Sie in ein Verzeichnis mit dem Befehlszeilen-Hilfsprogramm „sqlpackage.exe“. Dieses Hilfsprogramm ist im Lieferumfang von Visual Studio und SQL Server enthalten.
+2. Führen Sie den folgenden sqlpackage.exe-Befehl mit den unten angegebenen Argumenten für Ihre Umgebung aus:
 
-    `sqlpackage.exe /Action:Import /tsn:< server_name > /tdn:< database_name > /tu:< user_name > /tp:< password > /sf:< source_file >`
+	`sqlpackage.exe /Action:Import /tsn:< server_name > /tdn:< database_name > /tu:< user_name > /tp:< password > /sf:< source_file >`
 
-  	| Argument  | Description  |
-  	|---|---|
-  	| < server_name >  | target server name  |
-  	| < database_name >  | target database name  |
-  	| < user_name >  | the user name in the target server |
-  	| < password >  | the user's password  |
-  	| < source_file >  | the file name and location for the BACPAC file being imported  |
+	| Argument | Beschreibung |
+	|---|---|
+	| < Servername > | Zielservername |
+	| < Datenbankname > | Zieldatenbankname |
+	| < Benutzername > | Benutzername auf dem Zielserver |
+	| < Kennwort > | Kennwort des Benutzers |
+	| < Quelldatei > | Dateiname und Speicherort für die zu importierende BACPAC-Datei |
 
-    ![Export a data-tier application from the Tasks menu](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
+	![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-- [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
-- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
+- [SQL-Datenbank V12](sql-database-v12-whats-new.md)
+- [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,62 +1,61 @@
 <properties
-    pageTitle="Managing Role-Based Access Control with the REST API"
-    description="Managing role-based access control with the REST API"
-    services="active-directory"
-    documentationCenter="na"
-    authors="kgremban"
-    manager="femila"
-    editor=""/>
+	pageTitle="Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API"
+	description="Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API"
+	services="active-directory"
+	documentationCenter="na"
+	authors="kgremban"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="rest-api"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="active-directory"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="rest-api"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
-
-# <a name="managing-role-based-access-control-with-the-rest-api"></a>Managing Role-Based Access Control with the REST API
+# Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
 
 > [AZURE.SELECTOR]
 - [PowerShell](role-based-access-control-manage-access-powershell.md)
-- [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-- [REST API](role-based-access-control-manage-access-rest.md)
+- [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
+- [REST-API](role-based-access-control-manage-access-rest.md)
 
-Role-Based Access Control (RBAC) in the Azure Portal and Azure Resource Manager API helps you manage access to your subscription and resources at a fine-grained level. With this feature, you can grant access for Active Directory users, groups, or service principals by assigning some roles to them at a particular scope.
+Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und der Azure Resource Manager-API können Sie den Zugriff auf Ihr Abonnement und Ihre Ressourcen differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
 
-## <a name="list-all-role-assignments"></a>List all role assignments
+## Auflisten aller Rollenzuweisungen
 
-Lists all the role assignments at the specified scope and subscopes.
+Listet alle Rollenzuweisungen mit dem angegebenen Bereich und den zugehörigen Unterbereichen auf.
 
-To list role assignments, you must have access to `Microsoft.Authorization/roleAssignments/read` operation at the scope. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Zum Auflisten von Rollenzuweisungen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### Request
 
-Use the **GET** method with the following URI:
+Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
 
-Within the URI, make the following substitutions to customize your request:
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-1. Replace *{scope}* with the scope for which you wish to list the role assignments. The following examples show how to specify the scope for different levels:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{api-version}* with 2015-07-01.
+2. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-3. Replace *{filter}* with the condition that you wish to apply to filter the role assignment list:
+3. Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollenzuweisungen anwenden möchten:
 
-  - List role assignments for only the specified scope, not including the role assignments at subscopes: `atScope()`    
-  - List role assignments for a specific user, group, or application: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
-  - List role assignments for a specific user, including ones inherited from groups | `assignedTo('{objectId of user}')`
+  - Auflisten der Rollenzuweisungen nur für den angegebenen Bereich, ohne die Rollenzuweisungen der Unterbereiche: `atScope()`
+  - Auflisten der Rollenzuweisungen für spezielle Benutzer, Gruppen oder Anwendungen: `principalId%20eq%20'{objectId of user, group, or service principal}'`
+  - Auflisten der Rollenzuweisungen für spezielle Benutzer, einschließlich von Gruppen geerbter: `assignedTo('{objectId of user}')`
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 200
+Statuscode: 200
 
 ```
 {
@@ -81,33 +80,33 @@ Status code: 200
 
 ```
 
-## <a name="get-information-about-a-role-assignment"></a>Get information about a role assignment
+## Abrufen von Informationen zu einer Rollenzuweisung
 
-Gets information about a single role assignment specified by the role assignment identifier.
+Dient zum Abrufen von Informationen zu einer einzelnen Rollenzuweisung, die über den Bezeichner der Rollenzuweisung angegeben wird.
 
-To get information about a role assignment, you must have access to `Microsoft.Authorization/roleAssignments/read` operation. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Um Informationen zu einer Rollenzuweisung zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### Request
 
-Use the **GET** method with the following URI:
+Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-1. Replace *{scope}* with the scope for which you wish to list the role assignments. The following examples show how to specify the scope for different levels:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-assignment-id}* with the GUID identifier of the role assignment.
+2. Ersetzen Sie *{role-assignment-id}* durch den GUID-Bezeichner der Rollenzuweisung.
 
-3. Replace *{api-version}* with 2015-07-01.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 200
+Statuscode: 200
 
 ```
 {
@@ -127,31 +126,31 @@ Status code: 200
 
 ```
 
-## <a name="create-a-role-assignment"></a>Create a Role Assignment
+## Erstellen einer Rollenzuweisung
 
-Create a role assignment at the specified scope for the specified principal granting the specified role.
+Dient zum Erstellen einer Rollenzuweisung im angegebenen Bereich für den angegebenen Prinzipal mit Gewährung der angegebenen Rolle.
 
-To create a role assignment, you must have access to `Microsoft.Authorization/roleAssignments/write` operation. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Zum Erstellen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### Request
 
-Use the **PUT** method with the following URI:
+Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-1. Replace *{scope}* with the scope at which you wish to create the role assignments. When you create a role assignment at a parent scope, all child scopes inherit the same role assignment. The following examples show how to specify the scope for different levels:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Wenn Sie eine Rollenzuweisung für einen übergeordneten Bereich erstellen, erben alle untergeordneten Bereiche die gleiche Rollenzuweisung. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1   
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-assignment-id}* with a new GUID, which becomes the GUID identifier of the new role assignment.
+2. Ersetzen Sie *{role-assignment-id}* durch eine neue GUID, die zum GUID-Bezeichner der neuen Rollenzuweisung wird.
 
-3. Replace *{api-version}* with 2015-07-01.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-For the request body, provide the values in the following format:
+Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 ```
 {
@@ -163,14 +162,14 @@ For the request body, provide the values in the following format:
 
 ```
 
-| Element Name     | Required | Type   | Description |
+| Elementname | Erforderlich | Typ | Beschreibung |
 |------------------|----------|--------|-------------|
-| roleDefinitionId | Yes      | String | The identifier of the role. The format of the identifier is: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId      | Yes      | String | objectId of the Azure AD principal (user, group, or service principal) to which the role is assigned. |
+| roleDefinitionId | Ja | String | Der Bezeichner der Rolle. Das Format des Bezeichners ist: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId | Ja | String | objectId des Azure AD-Prinzipals (Benutzer-, Gruppen- oder Dienstprinzipal), dem die Rolle zugewiesen ist. |
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 201
+Statuscode: 201
 
 ```
 {
@@ -190,33 +189,33 @@ Status code: 201
 
 ```
 
-## <a name="delete-a-role-assignment"></a>Delete a Role Assignment
+## Löschen einer Rollenzuweisung
 
-Delete a role assignment at the specified scope.
+Dient zum Löschen einer Rollenzuweisung im angegebenen Bereich.
 
-To delete a role assignment, you must have access to the `Microsoft.Authorization/roleAssignments/delete` operation. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Zum Löschen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/delete`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### Request
 
-Use the **DELETE** method with the following URI:
+Verwenden Sie die **DELETE**-Methode mit dem folgenden URI:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-1. Replace *{scope}* with the scope at which you wish to create the role assignments. The following examples show how to specify the scope for different levels:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-assignment-id}* with the role assignment id GUID.
+2. Ersetzen Sie *{role-assignment-id}* durch die GUID der Rollenzuweisungs-ID.
 
-3. Replace *{api-version}* with 2015-07-01.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 200
+Statuscode: 200
 
 ```
 {
@@ -236,121 +235,36 @@ Status code: 200
 
 ```
 
-## <a name="list-all-roles"></a>List all Roles
+## Auflisten aller Rollen
 
-Lists all the roles that are available for assignment at the specified scope.
+Dient zum Auflisten aller Rollen, die für die Zuweisung im angegebenen Bereich verfügbar sind.
 
-To list roles, you must have access to `Microsoft.Authorization/roleDefinitions/read` operation at the scope. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Zum Auflisten von Rollen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### Request
 
-Use the **GET** method with the following URI:
+Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
 
-Within the URI, make the following substitutions to customize your request:
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-1. Replace *{scope}* with the scope for which you wish to list the roles. The following examples show how to specify the scope for different levels:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{api-version}* with 2015-07-01.
+2. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-3. Replace *{filter}* with the condition that you wish to apply to filter the list of roles:
+3. Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollen anwenden möchten:
 
-  - List roles available for assignment at the specified scope and any of its child scopes: `atScopeAndBelow()`
-  - Search for a role using exact display name: `roleName%20eq%20'{role-display-name}'`. Use the URL encoded form of the exact display name of the role. For instance, `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+  - Dient zum Auflisten der Rollen, die im angegebenen Bereich und in allen untergeordneten Bereichen verfügbar sind: `atScopeAndBelow()`
+  - Suchen nach einer Rolle mit dem genauen Anzeigenamen: `roleName%20eq%20'{role-display-name}'`. Verwenden Sie die URL-codierte Form des genauen Anzeigenamens der Rolle. Beispiel: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 200
-
-```
-{
-  "value": [
-    {
-      "properties": {
-        "roleName": "Virtual Machine Contributor",
-        "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
-        "assignableScopes": [
-          "/"
-        ],
-        "permissions": [
-          {
-            "actions": [
-              "Microsoft.Authorization/*/read",
-              "Microsoft.Compute/availabilitySets/*",
-              "Microsoft.Compute/locations/*",
-              "Microsoft.Compute/virtualMachines/*",
-              "Microsoft.Compute/virtualMachineScaleSets/*",
-              "Microsoft.Insights/alertRules/*",
-              "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
-              "Microsoft.Network/loadBalancers/read",
-              "Microsoft.Network/locations/*",
-              "Microsoft.Network/networkInterfaces/*",
-              "Microsoft.Network/networkSecurityGroups/join/action",
-              "Microsoft.Network/networkSecurityGroups/read",
-              "Microsoft.Network/publicIPAddresses/join/action",
-              "Microsoft.Network/publicIPAddresses/read",
-              "Microsoft.Network/virtualNetworks/read",
-              "Microsoft.Network/virtualNetworks/subnets/join/action",
-              "Microsoft.Resources/deployments/*",
-              "Microsoft.Resources/subscriptions/resourceGroups/read",
-              "Microsoft.Storage/storageAccounts/listKeys/action",
-              "Microsoft.Storage/storageAccounts/read",
-              "Microsoft.Support/*"
-            ],
-            "notActions": []
-          }
-        ],
-        "createdOn": "2015-06-02T00:18:27.3542698Z",
-        "updatedOn": "2015-12-08T03:16:55.6170255Z",
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
-      "type": "Microsoft.Authorization/roleDefinitions",
-      "name": "9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
-    }
-  ],
-  "nextLink": null
-}
-
-```
-
-## <a name="get-information-about-a-role"></a>Get information about a Role
-
-Gets information about a single role specified by the role definition identifier. To get information about a single role using its display name, see [List all roles](role-based-access-control-manage-access-rest.md#list-all-roles).
-
-To get information about a role, you must have access to `Microsoft.Authorization/roleDefinitions/read` operation. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
-
-### <a name="request"></a>Request
-
-Use the **GET** method with the following URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
-
-Within the URI, make the following substitutions to customize your request:
-
-1. Replace *{scope}* with the scope for which you wish to list the role assignments. The following examples show how to specify the scope for different levels:
-
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-
-2. Replace *{role-definition-id}* with the GUID identifier of the role definition.
-
-3. Replace *{api-version}* with 2015-07-01.
-
-### <a name="response"></a>Response
-
-Status code: 200
+Statuscode: 200
 
 ```
 {
@@ -409,30 +323,115 @@ Status code: 200
 
 ```
 
-## <a name="create-a-custom-role"></a>Create a Custom Role
-Create a custom role.
+## Abrufen von Informationen zu einer Rolle
 
-To create a custom role, you must have access to `Microsoft.Authorization/roleDefinitions/write` operation on all the `AssignableScopes`. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Dient zum Abrufen von Informationen zu einer bestimmten Rolle, die mit dem Bezeichner der Rollendefinition angegeben wird. Informationen zum Abrufen von Informationen zu einer einzelnen Rolle über den Anzeigenamen finden Sie unter [Auflisten aller Rollen](role-based-access-control-manage-access-rest.md#list-all-roles).
 
-### <a name="request"></a>Request
+Um Informationen zu einer Rolle zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read`. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-Use the **PUT** method with the following URI:
+### Request
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+Verwenden Sie die **GET**-Methode mit dem folgenden URI:
 
-Within the URI, make the following substitutions to customize your request:
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-1. Replace *{scope}* with the first *AssignableScope* of the custom role. The following examples show how to specify the scope for different levels.
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-2. Replace *{role-definition-id}* with a new GUID, which becomes the GUID identifier of the new custom role.
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-3. Replace *{api-version}* with 2015-07-01.
+2. Ersetzen Sie *{role-definition-id}* durch den GUID-Bezeichner der Rollendefinition.
 
-For the request body, provide the values in the following format:
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
+
+### Antwort
+
+Statuscode: 200
+
+```
+{
+  "value": [
+    {
+      "properties": {
+        "roleName": "Virtual Machine Contributor",
+        "type": "BuiltInRole",
+        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "assignableScopes": [
+          "/"
+        ],
+        "permissions": [
+          {
+            "actions": [
+              "Microsoft.Authorization/*/read",
+              "Microsoft.Compute/availabilitySets/*",
+              "Microsoft.Compute/locations/*",
+              "Microsoft.Compute/virtualMachines/*",
+              "Microsoft.Compute/virtualMachineScaleSets/*",
+              "Microsoft.Insights/alertRules/*",
+              "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+              "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+              "Microsoft.Network/loadBalancers/inboundNatPools/join/action",
+              "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
+              "Microsoft.Network/loadBalancers/read",
+              "Microsoft.Network/locations/*",
+              "Microsoft.Network/networkInterfaces/*",
+              "Microsoft.Network/networkSecurityGroups/join/action",
+              "Microsoft.Network/networkSecurityGroups/read",
+              "Microsoft.Network/publicIPAddresses/join/action",
+              "Microsoft.Network/publicIPAddresses/read",
+              "Microsoft.Network/virtualNetworks/read",
+              "Microsoft.Network/virtualNetworks/subnets/join/action",
+              "Microsoft.Resources/deployments/*",
+              "Microsoft.Resources/subscriptions/resourceGroups/read",
+              "Microsoft.Storage/storageAccounts/listKeys/action",
+              "Microsoft.Storage/storageAccounts/read",
+              "Microsoft.Support/*"
+            ],
+            "notActions": []
+          }
+        ],
+        "createdOn": "2015-06-02T00:18:27.3542698Z",
+        "updatedOn": "2015-12-08T03:16:55.6170255Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
+      "type": "Microsoft.Authorization/roleDefinitions",
+      "name": "9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+    }
+  ],
+  "nextLink": null
+}
+
+```
+
+## Erstellen einer benutzerdefinierten Rolle
+Dient zum Erstellen einer benutzerdefinierten Rolle.
+
+Um eine benutzerdefinierte Rolle zu erstellen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
+
+### Request
+
+Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
+
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
+
+1. Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
+
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
+
+2. Ersetzen Sie *{role-definition-id}* durch eine neue GUID, die zum GUID-Bezeichner der neuen benutzerdefinierten Rolle wird.
+
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
+
+Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 ```
 {
@@ -465,19 +464,19 @@ For the request body, provide the values in the following format:
 
 ```
 
-| Element Name | Required | Type | Description |
+| Elementname | Erforderlich | Typ | Beschreibung |
 |--------------|----------|------|-------------|
-| name         | Yes | String   | GUID identifier of the custom role.    |
-| properties.roleName               | Yes | String   | Display name of the custom role. Maximum size 128 characters.                        |
-| properties.description            | No  | String   | Description of the custom role. Maximum size 1024 characters.                                               |
-| properties.type                   | Yes | String   | Set to "CustomRole."                                         |
-| properties.permissions.actions    | Yes | String[] | An array of action strings specifying the operations granted by the custom role.             |
-| properties.permissions.notActions | No  | String[] | An array of action strings specifying the operations to exclude from the operations granted by the custom role. |
-| properties.assignableScopes       | Yes | String[] | An array of scopes in which the custom role can be used.   |
+| Name | Ja | String | GUID-Bezeichner der benutzerdefinierten Rolle |
+| properties.roleName | Ja | String | Anzeigename der benutzerdefinierten Rolle. Maximale Größe von 128 Zeichen. |
+| properties.description | Nein | String | Beschreibung der benutzerdefinierten Rolle. Maximale Größe von 1024 Zeichen. |
+| properties.type | Ja | String | Legen Sie dies auf „CustomRole“ fest. |
+| properties.permissions.actions | Ja | String | Ein Array mit Aktionszeichenfolgen, mit denen die Vorgänge angegeben werden, auf die die benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.permissions.notActions | Nein | String | Ein Array mit Aktionszeichenfolgen, die die Vorgänge angeben, die von den Vorgängen ausgeschlossen werden, auf die die benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.assignableScopes | Ja | String | Ein Array von Bereichen, in denen die benutzerdefinierte Rolle verwendet werden kann. |
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 201
+Statuscode: 201
 
 ```
 {
@@ -516,31 +515,31 @@ Status code: 201
 
 ```
 
-## <a name="update-a-custom-role"></a>Update a Custom Role
+## Aktualisieren einer benutzerdefinierten Rolle
 
-Modify a custom role.
+Dient zum Ändern einer benutzerdefinierten Rolle.
 
-To modify a custom role, you must have access to `Microsoft.Authorization/roleDefinitions/write` operation on all the `AssignableScopes`. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Um eine benutzerdefinierte Rolle zu ändern, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### Request
 
-Use the **PUT** method with the following URI:
+Verwenden Sie die **PUT**-Methode mit dem folgenden URI:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-1. Replace *{scope}* with the first *AssignableScope* of the custom role. The following examples show how to specify the scope for different levels:
+1. Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-definition-id}* with the GUID identifier of the custom role.
+2. Ersetzen Sie *{role-definition-id}* durch den GUID-Bezeichner der benutzerdefinierten Rolle.
 
-3. Replace *{api-version}* with 2015-07-01.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-For the request body, provide the values in the following format:
+Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 ```
 {
@@ -573,19 +572,19 @@ For the request body, provide the values in the following format:
 
 ```
 
-| Element Name | Required | Type | Description |
+| Elementname | Erforderlich | Typ | Beschreibung |
 |--------------|----------|------|-------------|
-| name         | Yes      | String | GUID identifier of the custom role. |
-| properties.roleName | Yes | String | Display name of the updated custom role. |
-| properties.description | No | String | Description of the updated custom role. |
-| properties.type | Yes | String | Set to "CustomRole." |
-| properties.permissions.actions | Yes | String[] | An array of action strings specifying the operations to which the updated custom role grants access. |
-| properties.permissions.notActions | No | String[] | An array of action strings specifying the operations to exclude from the operations which the updated custom role grants. |
-| properties.assignableScopes | Yes | String[] | An array of scopes in which the updated custom role can be used. |
+| Name | Ja | String | GUID-Bezeichner der benutzerdefinierten Rolle |
+| properties.roleName | Ja | String | Anzeigename der aktualisierten benutzerdefinierten Rolle |
+| properties.description | Nein | String | Beschreibung der aktualisierten benutzerdefinierten Rolle |
+| properties.type | Ja | String | Legen Sie dies auf „CustomRole“ fest. |
+| properties.permissions.actions | Ja | String | Ein Array mit Aktionszeichenfolgen, mit denen die Vorgänge angegeben werden, auf die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.permissions.notActions | Nein | String | Ein Array mit Aktionszeichenfolgen zum Angeben der Vorgänge, die von den Vorgängen ausgeschlossen werden, auf die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.assignableScopes | Ja | String | Ein Array von Bereichen, in denen die aktualisierte benutzerdefinierte Rolle verwendet werden kann. |
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 201
+Statuscode: 201
 
 ```
 {
@@ -624,33 +623,33 @@ Status code: 201
 
 ```
 
-## <a name="delete-a-custom-role"></a>Delete a Custom Role
+## Löschen einer benutzerdefinierten Rolle
 
-Delete a custom role.
+Dient zum Löschen einer benutzerdefinierten Rolle.
 
-To delete a custom role, you must have access to `Microsoft.Authorization/roleDefinitions/delete` operation on all the `AssignableScopes`. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+Um eine benutzerdefinierte Rolle zu löschen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/delete` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### Request
 
-Use the **DELETE** method with the following URI:
+Verwenden Sie die **DELETE**-Methode mit dem folgenden URI:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
-1. Replace *{scope}* with the scope at which you wish to delete the role definition. The following examples show how to specify the scope for different levels:
+1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollendefinition löschen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - Abonnement: /subscriptions/{subscription-id}
+  - Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-definition-id}* with the GUID role definition id of the custom role.
+2. Ersetzen Sie *{role-definition-id}* durch die GUID-Rollendefinitions-ID der benutzerdefinierten Rolle.
 
-3. Replace *{api-version}* with 2015-07-01.
+3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-### <a name="response"></a>Response
+### Antwort
 
-Status code: 200
+Statuscode: 200
 
 ```
 {
@@ -692,8 +691,4 @@ Status code: 200
 
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

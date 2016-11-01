@@ -1,90 +1,84 @@
 <properties
-    pageTitle="Using Azure CDN with CORS | Microsoft Azure"
-    description="Learn how to use the Azure Content Delivery Network (CDN) to with Cross-Origin Resource Sharing (CORS)."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="Verwenden von Azure CDN mit CORS | Microsoft Azure"
+	description="Erfahren Sie, wie Sie das Azure Content Delivery Network (CDN), mit Cross-Origin Resource Sharing (Ressourcenfreigabe zwischen verschiedenen Ursprüngen; CORS) verwendet wird."
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2016"
+	ms.author="casoper"/>
     
+# Verwendung von Azure CDN mit CORS     
 
-# <a name="using-azure-cdn-with-cors"></a>Using Azure CDN with CORS     
+## Was ist CORS?
 
-## <a name="what-is-cors?"></a>What is CORS?
-
-CORS (Cross Origin Resource Sharing) is an HTTP feature that enables a web application running under one domain to access resources in another domain. In order to reduce the possibility of cross-site scripting attacks, all modern web browsers implement a security restriction known as [same-origin policy](http://www.w3.org/Security/wiki/Same_Origin_Policy).  This prevents a web page from calling APIs in a different domain.  CORS provides a secure way to allow one domain (the origin domain) to call APIs in another domain.
+CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Alle modernen Webbrowser eine Sicherheitseinschränkung, die als [Same Origin Policy](http://www.w3.org/Security/wiki/Same_Origin_Policy) bekannt ist, um die Möglichkeiten für Cross-Site Scripting-Angriffe zu verringern. Dies hindert eine Website daran, APIs in einer anderen Domäne aufzurufen. CORS bietet eine sichere Methode, um einer Domäne (der Ursprungsdomäne) den Aufruf von APIs in einer anderen Domäne zu erlauben.
  
-## <a name="how-it-works"></a>How it works
-1.  The browser sends the OPTIONS request with an **Origin** HTTP header. The value of this header is the domain that served the parent page. When a page from https://www.contoso.com attempts to access a user's data in the fabrikam.com domain, the following request header would be sent to fabrikam.com: 
+## So funktioniert's
+1.	Der Browser sendet die OPTIONS-Anforderung mit einem **Ursprung**-HTTP-Header. Der Wert dieses Headers ist die Domäne, die der übergeordnete Seite dient. Wenn eine Seite aus https://www.contoso.com versucht, auf die Benutzerdaten in der fabrikam.com-Domäne zuzugreifen, würde der folgende Anforderungsheader an fabrikam.com gesendet:
     
     `Origin: https://www.contoso.com`
  
-2.  The server may respond with the following:
-    - An **Access-Control-Allow-Origin** header in its response indicating which origin sites are allowed. For example:
+2.	Der Server reagiert möglicherweise mit Folgendem:
+    - Ein **Access-Control-Allow-Origin**-Header in der Antwort gibt an, welche Ursprungswebsites zulässig sind. Beispiel:
         
         `Access-Control-Allow-Origin: https://www.contoso.com`
         
-    - An error page if the server does not allow the cross-origin request
-    - An **Access-Control-Allow-Origin** header with a wildcard that allows all domains:
+    - Eine Fehlerseite wird angezeigt, wenn der Server die Anforderungen zwischen verschiedenen Ursprüngen nicht zulässt.
+    - Ein **Access-Control-Allow-Origin**-Header mit einem Platzhalter, der alle Domänen ermöglicht:
         
         `Access-Control-Allow-Origin: *`
  
-For complex HTTP requests, there's a "preflight" request done first to determine whether it has permission before sending the entire request.
+Für komplexe HTTP-Anforderungen besteht eine „Preflight“-Anforderung, die als erstes ausgeführt wird, um festzustellen, ob sie berichtigt ist, bevor die gesamte Anforderung gesendet wird.
  
-## <a name="wildcard-or-single-origin-scenarios"></a>Wildcard or single origin scenarios
+## Platzhalter oder Szenarien mit nur einem Ursprung
 
-CORS on Azure CDN will work automatically with no additional configuration when the **Access-Control-Allow-Origin** header is set to wildcard (*) or a single origin.  The CDN will cache the first response and subsequent requests will use the same header.
+CORS für Azure CDN funktioniert automatisch ohne zusätzliche Konfiguration, wenn der **Access-Control-Allow-Origin**-Header auf Platzhalter (*) oder einen einzelnen Ursprung festgelegt ist. Das CDN speichert die erste Antwort zwischen und nachfolgende Anforderungen verwenden den gleichen Header.
  
-If requests have already been made to the CDN prior to CORS being set on the your origin, you will need to purge content on your endpoint content to reload the content with the **Access-Control-Allow-Origin** header.
+Wenn Anforderungen schon an CDN, gesendet wurden, bevor CORS auf den Ursprung konfiguriert wurde, müssen Sie den Inhalt im Inhalt Ihres Endgeräts entfernen, um den Inhalt mit dem **Access-Control-Allow-Origin**-Header erneut zu laden.
  
-## <a name="multiple-origin-scenarios"></a>Multiple origin scenarios
+## Szenarien mit mehreren Ursprüngen
 
-If you need to allow a specific list of origins to be allowed for CORS, things get a little more complicated. The problem occurs when the CDN caches the **Access-Control-Allow-Origin** header for the first CORS origin.  When a different CORS origin makes a subsequent request, the CDN will served the cached **Access-Control-Allow-Origin** header, which won't match.  There are several ways to correct this.
+Wenn Sie eine bestimmte Liste von Ursprüngen für CORS zulassen müssen, wird es etwas komplizierter. Das Problem tritt auf, wenn CDN den **Access-Control-Allow-Origin**-Header für den ersten CORS-Ursprung zwischenspeichert. Wenn ein anderer CORS-Ursprung eine nachfolgende Anforderung erstellt, stellt das CDN den zwischengespeicherten **Access-Control-Allow-Origin**-Header bereit, der jedoch abweicht. Es gibt mehrere Möglichkeiten, dies zu korrigieren:
  
-### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium from Verizon
+### Azure CDN Premium von Verizon
 
-The best way to enable this is to use **Azure CDN Premium from Verizon**, which exposes some advanced functionality. 
+Die beste Möglichkeit ist die Verwendung von **Azure CDN Premium von Verizon**, wodurch erweiterte Funktionen geboten werden.
  
-You'll need to [create a rule](cdn-rules-engine.md) to check the **Origin** header on the request.  If it's a valid origin, your rule will set the **Access-Control-Allow-Origin** header with the origin provided in the request.  If the origin specified in the **Origin** header is not allowed, your rule should omit the **Access-Control-Allow-Origin** header which will cause the browser to reject the request. 
+Sie müssen [eine Regel erstellen](cdn-rules-engine.md), um den **Ursprungsheader** in der Anforderung zu überprüfen. Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin**-Header mit dem in der Anforderung bereitgestellten Ursprung fest. Wenn der im **Ursprungsheader** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Brower dazu bringt, die Anforderung abzulehnen.
  
-There are two ways to do this with the rules engine.  In both cases, the **Access-Control-Allow-Origin** header from the file's origin server is completely ignored, the CDN's rules engine completely manages the allowed CORS origins.
+Es gibt zwei Möglichkeiten, dies mit dem Regelmodul zu tun. In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und das CDN-Regelmodul verwaltet komplett die zulässigen CORS-Ursprünge.
 
-#### <a name="one-regular-expression-with-all-valid-origins"></a>One regular expression with all valid origins
+#### Ein regulärer Ausdruck mit allen gültigen Ursprüngen
  
-In this case, you'll create a regular expression that includes all of the origins you want to allow: 
+In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enthält, die Sie zulassen möchten:
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+	https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
  
-> [AZURE.TIP] **Azure CDN from Verizon** uses [Perl Compatible Regular Expressions](http://pcre.org/) as its engine for regular expressions.  You can use a tool like [Regular Expressions 101](https://regex101.com/) to validate your regular expression.  Note that the "/" character is valid in regular expressions and doesn't need to be escaped, however, escaping that character is considered a best practice and is expected by some regex validators.
+> [AZURE.TIP] **Azure CDN von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Modul für reguläre Ausdrücke. Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen. Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
 
-If the regular expression matches, your rule will replace the **Access-Control-Allow-Origin** header (if any) from the origin with the origin that sent the request.  You can also add additional CORS headers, such as **Access-Control-Allow-Methods**.
+Wenn der reguläre Ausdruck übereinstimmt, ersetzt Ihre Regel den **Access-Control-Allow-Origin**-Header (sofern vorhanden) des Ursprungs mit dem des Ursprungs, der die Anforderung gesendet hat. Sie können zusätzliche CORS-Header hinzufügen, wie z.B. **Access-Control-Allow-Methods**.
 
-![Rules example with regular expression](./media/cdn-cors/cdn-cors-regex.png)
+![Beispiel für Regeln mit regulären Ausdruck](./media/cdn-cors/cdn-cors-regex.png)
  
-#### <a name="request-header-rule-for-each-origin."></a>Request header rule for each origin.
+#### Anforderungsheader-Regel für jeden Ursprung
 
-Rather than regular expressions, you can instead create a separate rule for each origin you wish to allow using the **Request Header Wildcard** [match condition](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1). As with the regular expression method, the rules engine alone sets the CORS headers. 
+Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jeden Ursprung erstellen, den sie zulassen wollen. Verwenden Sie dazu die **Übereinstimmungsbedingung** des [Request Header-Platzhalters](cdn-rules-engine-details.md#match-conditions). Wie bei der Methode des regulären Ausdrucks legt das Regelmodul allein die CORS-Header fest.
   
-![Rules example without regular expression](./media/cdn-cors/cdn-cors-no-regex.png)
+![Beispiel für Regeln ohne regulären Ausdruck](./media/cdn-cors/cdn-cors-no-regex.png)
 
-> [AZURE.TIP] In the example above, the use of the wildcard character * tells the rules engine to match both HTTP and HTTPS.
+> [AZURE.TIP] Im obigen Beispiel weist die Verwendung des Platzhalterzeichens „*“ das Regelmodul an, sowohl HTTP als auch HTTPS abzugleichen.
  
-### <a name="azure-cdn-standard"></a>Azure CDN Standard
+### Azure CDN-Standard
 
-On Azure CDN Standard profiles, the only mechanism to allow for multiple origins without the use of the wildcard origin is to use [query string caching](cdn-query-string.md).  You need to enable query string setting for the CDN endpoint and then use a unique query string for requests from each allowed domain. Doing this will result in the CDN caching a separate object for each unique query string. This approach is not ideal, however, as it will result in multiple copies of the same file cached on the CDN.  
+Auf Azure CDN-Standardprofilen ist der einzige Mechanismus, um mehrere Ursprünge ohne Verwendung des Platzhalterursprungs zuzulassen, die Verwendung der [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md). Sie müssen Abfragezeichenfolgen für den CDN-Endpunkt aktivieren und anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von jeder zulässigen Domäne verwenden. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

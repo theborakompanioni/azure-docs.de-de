@@ -1,10 +1,10 @@
 <properties
 pageTitle="Wunderlist | Microsoft Azure"
-description="Create Logic apps with Azure App service. Wunderlist provide a todo list and task manager to help people get their stuff done.  Whether you’re sharing a grocery list with a loved one, working on a project, or planning a vacation, Wunderlist makes it easy to capture, share, and complete your to¬dos. Wunderlist instantly syncs between your phone, tablet and computer, so you can access all your tasks from anywhere."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Erstellen Sie Logik-Apps mit Azure App Service. Wunderlist ist gleichzeitig eine Aufgabenliste und ein Aufgabenmanager und erleichtert es Menschen, ihren Alltag zu meistern. Ob Sie eine Einkaufsliste mit Ihrem Partner teilen, an einem Projekt arbeiten oder Ihren Urlaub planen – Wunderlist hilft Ihnen dabei, Ihre Aufgaben zu notieren, sie zu teilen und zu erledigen. Dabei übernimmt Wunderlist die Synchronisierung zwischen Telefon, Tablet und Computer – die Aufgaben sind auf allen Geräten sofort zur Hand."
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,889 +17,885 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# Erste Schritte mit dem Wunderlist-Connector
 
-# <a name="get-started-with-the-wunderlist-connector"></a>Get started with the Wunderlist connector
+Wunderlist ist gleichzeitig eine Aufgabenliste und ein Aufgabenmanager und erleichtert es Menschen, ihren Alltag zu meistern. Ob Sie eine Einkaufsliste mit Ihrem Partner teilen, an einem Projekt arbeiten oder Ihren Urlaub planen – Wunderlist hilft Ihnen dabei, Ihre Aufgaben zu notieren, sie zu teilen und zu erledigen. Dabei übernimmt Wunderlist die Synchronisierung zwischen Telefon, Tablet und Computer – die Aufgaben sind auf allen Geräten sofort zur Hand.
 
-Wunderlist provide a todo list and task manager to help people get their stuff done.  Whether you’re sharing a grocery list with a loved one, working on a project, or planning a vacation, Wunderlist makes it easy to capture, share, and complete your to¬dos. Wunderlist instantly syncs between your phone, tablet and computer, so you can access all your tasks from anywhere.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## Trigger und Aktionen
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+Der Wunderlist-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
-The Wunderlist connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+ Der Wunderlist-Connector verfügt über die folgenden Aktionen und/oder Trigger:
 
- The Wunderlist connector has the following action(s) and/or trigger(s) available:
+### Wunderlist-Aktionen
+Sie können diese Aktionen ausführen:
 
-### <a name="wunderlist-actions"></a>Wunderlist actions
-You can take these action(s):
-
-|Action|Description|
+|Aktion|Beschreibung|
 |--- | ---|
-|[RetrieveLists](connectors-create-api-wunderlist.md#retrievelists)|Retrieve the lists associated with your account.|
-|[CreateList](connectors-create-api-wunderlist.md#createlist)|Create a list.|
-|[ListTasks](connectors-create-api-wunderlist.md#listtasks)|Retrieve tasks from a specific list.|
-|[CreateTask](connectors-create-api-wunderlist.md#createtask)|Create a task|
-|[ListSubTasks](connectors-create-api-wunderlist.md#listsubtasks)|Retrieve subtasks from a specific list or from a specific task.|
-|[CreateSubTask](connectors-create-api-wunderlist.md#createsubtask)|Create a subtask within a specific task|
-|[ListNotes](connectors-create-api-wunderlist.md#listnotes)|Retrieve notes for a specific list or a specific task.|
-|[CreateNote](connectors-create-api-wunderlist.md#createnote)|Add a note to a specific task|
-|[ListComments](connectors-create-api-wunderlist.md#listcomments)|Retrieve task comments for a specific list or a specific task.|
-|[CreateComment](connectors-create-api-wunderlist.md#createcomment)|Add a comment to a specific task|
-|[RetrieveReminders](connectors-create-api-wunderlist.md#retrievereminders)|Retrieve reminders for a specific list or a specific task.|
-|[CreateReminder](connectors-create-api-wunderlist.md#createreminder)|Set a reminder.|
-|[RetrieveFiles](connectors-create-api-wunderlist.md#retrievefiles)|Retrieve files for a specific list or a specific task.|
-|[GetList](connectors-create-api-wunderlist.md#getlist)|Retrieves a specific list|
-|[DeleteList](connectors-create-api-wunderlist.md#deletelist)|Deletes a list|
-|[UpdateList](connectors-create-api-wunderlist.md#updatelist)|Update a specific list|
-|[GetTask](connectors-create-api-wunderlist.md#gettask)|Retrieves a specific task|
-|[UpdateTask](connectors-create-api-wunderlist.md#updatetask)|Updates a specific task|
-|[DeleteTask](connectors-create-api-wunderlist.md#deletetask)|Deletes a specific task|
-|[GetSubTask](connectors-create-api-wunderlist.md#getsubtask)|Retrieves a specific subtask|
-|[UpdateSubTask](connectors-create-api-wunderlist.md#updatesubtask)|Updates a specific subtask|
-|[DeleteSubTask](connectors-create-api-wunderlist.md#deletesubtask)|Deletes a specific subtask|
-|[GetNote](connectors-create-api-wunderlist.md#getnote)|Retrieve a specific note|
-|[UpdateNote](connectors-create-api-wunderlist.md#updatenote)|Update a specific note|
-|[DeleteNote](connectors-create-api-wunderlist.md#deletenote)|Delete a specific note|
-|[GetComment](connectors-create-api-wunderlist.md#getcomment)|Retrieve a specific task comment|
-|[UpdateReminder](connectors-create-api-wunderlist.md#updatereminder)|Update a specific reminder|
-|[DeleteReminder](connectors-create-api-wunderlist.md#deletereminder)|Delete a specific reminder|
-### <a name="wunderlist-triggers"></a>Wunderlist triggers
-You can listen for these event(s):
+|[RetrieveLists](connectors-create-api-wunderlist.md#retrievelists)|Ruft die Ihrem Konto zugeordneten Listen ab.|
+|[CreateList](connectors-create-api-wunderlist.md#createlist)|Erstellt eine Liste.|
+|[ListTasks](connectors-create-api-wunderlist.md#listtasks)|Ruft Aufgaben aus einer bestimmten Liste ab.|
+|[CreateTask](connectors-create-api-wunderlist.md#createtask)|Erstellt eine Aufgabe.|
+|[ListSubTasks](connectors-create-api-wunderlist.md#listsubtasks)|Ruft Teilaufgaben aus einer bestimmten Liste oder einer bestimmten Aufgabe ab.|
+|[CreateSubTask](connectors-create-api-wunderlist.md#createsubtask)|Erstellt eine Teilaufgabe innerhalb einer bestimmten Aufgabe.|
+|[ListNotes](connectors-create-api-wunderlist.md#listnotes)|Ruft Notizen für eine bestimmte Liste oder eine bestimmte Aufgabe ab.|
+|[CreateNote](connectors-create-api-wunderlist.md#createnote)|Fügt einer bestimmten Aufgabe eine Notiz hinzu.|
+|[ListComments](connectors-create-api-wunderlist.md#listcomments)|Ruft Aufgabenkommentare für eine bestimmte Liste oder eine bestimmte Aufgabe ab.|
+|[CreateComment](connectors-create-api-wunderlist.md#createcomment)|Fügt einer bestimmten Aufgabe einen Kommentar hinzu.|
+|[RetrieveReminders](connectors-create-api-wunderlist.md#retrievereminders)|Ruft Erinnerungen für eine bestimmte Liste oder eine bestimmte Aufgabe ab.|
+|[CreateReminder](connectors-create-api-wunderlist.md#createreminder)|Legt eine Erinnerung fest.|
+|[RetrieveFiles](connectors-create-api-wunderlist.md#retrievefiles)|Ruft Dateien für eine bestimmte Liste oder eine bestimmte Aufgabe ab.|
+|[GetList](connectors-create-api-wunderlist.md#getlist)|Ruft eine bestimmte Liste ab.|
+|[DeleteList](connectors-create-api-wunderlist.md#deletelist)|Löscht eine Liste.|
+|[UpdateList](connectors-create-api-wunderlist.md#updatelist)|Aktualisiert eine bestimmte Liste.|
+|[GetTask](connectors-create-api-wunderlist.md#gettask)|Ruft eine bestimmte Aufgabe ab.|
+|[UpdateTask](connectors-create-api-wunderlist.md#updatetask)|Aktualisiert eine bestimmte Aufgabe.|
+|[DeleteTask](connectors-create-api-wunderlist.md#deletetask)|Löscht eine bestimmte Aufgabe.|
+|[GetSubTask](connectors-create-api-wunderlist.md#getsubtask)|Ruft eine bestimmte Teilaufgabe ab.|
+|[UpdateSubTask](connectors-create-api-wunderlist.md#updatesubtask)|Aktualisiert eine bestimmte Teilaufgabe.|
+|[DeleteSubTask](connectors-create-api-wunderlist.md#deletesubtask)|Löscht eine bestimmte Teilaufgabe.|
+|[GetNote](connectors-create-api-wunderlist.md#getnote)|Ruft eine bestimmte Notiz ab.|
+|[UpdateNote](connectors-create-api-wunderlist.md#updatenote)|Aktualisiert eine bestimmte Notiz.|
+|[DeleteNote](connectors-create-api-wunderlist.md#deletenote)|Löscht eine bestimmte Notiz.|
+|[GetComment](connectors-create-api-wunderlist.md#getcomment)|Ruft einen bestimmten Aufgabenkommentar ab.|
+|[UpdateReminder](connectors-create-api-wunderlist.md#updatereminder)|Aktualisiert eine bestimmte Erinnerung.|
+|[DeleteReminder](connectors-create-api-wunderlist.md#deletereminder)|Löscht eine bestimmte Erinnerung.|
+### Wunderlist-Trigger
+Sie können auf diese Ereignisse lauschen:
 
-|Trigger | Description|
+|Trigger | Beschreibung|
 |--- | ---|
-|When a task is due|Triggers a new flow when a task in the list is due|
-|When a new task is created|Triggers a new flow when a new task is created in the list|
-|When a reminder occurs|Triggers a new flow when a reminder occurs|
+|Wenn eine Aufgabe fällig ist|Löst einen neuen Workflow aus, sobald eine Aufgabe in der Liste fällig ist.|
+|Wenn eine neue Aufgabe erstellt wird|Löst einen neuen Workflow aus, sobald eine neue Aufgabe in der Liste erstellt wird.|
+|Wenn eine Erinnerung auftritt|Löst einen neuen Workflow aus, sobald eine Erinnerung auftritt.|
 
 
-## <a name="create-a-connection-to-wunderlist"></a>Create a connection to Wunderlist
-To create Logic apps with Wunderlist, you must first create a **connection** then provide the details for the following properties: 
+## Herstellen einer Verbindung mit Wunderlist
+Um Logik-Apps mit Wunderlist zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
-|Property| Required|Description|
+|Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Yes|Provide Wunderlist Credentials|
-After you create the connection, you can use it to execute the actions and listen for the triggers described in this article. 
+|Token|Ja|Angeben der Anmeldeinformationen für Wunderlist|
+Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
 
->[AZURE.INCLUDE [Steps to create a connection to Wunderlist](../../includes/connectors-create-api-wunderlist.md)] 
+>[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit Wunderlist](../../includes/connectors-create-api-wunderlist.md)]
 
 
->[AZURE.TIP] You can use this connection in other logic apps.
+>[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
 
-## <a name="reference-for-wunderlist"></a>Reference for Wunderlist
-Applies to version: 1.0
+## Referenz für Wunderlist
+Gilt für Version 1.0.
 
-## <a name="triggertaskdue"></a>TriggerTaskDue
-When a task is due: Triggers a new flow when a task in the list is due 
+## TriggerTaskDue
+Wenn eine Aufgabe fällig ist: Löst einen neuen Workflow aus, sobald eine Aufgabe in der Liste fällig ist.
 
-```GET: /trigger/tasksdue``` 
+```GET: /trigger/tasksdue```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
+|200|Vorgang erfolgreich|
 
 
-## <a name="triggertasknew"></a>TriggerTaskNew
-When a new task is created: Triggers a new flow when a new task is created in the list 
+## TriggerTaskNew
+Wenn eine neue Aufgabe erstellt wird: Löst einen neuen Workflow aus, sobald eine neue Aufgabe in der Liste erstellt wird.
 
-```GET: /trigger/tasksnew``` 
+```GET: /trigger/tasksnew```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
+|200|Vorgang erfolgreich|
 
 
-## <a name="triggerreminder"></a>TriggerReminder
-When a reminder occurs: Triggers a new flow when a reminder occurs 
+## TriggerReminder
+Wenn eine Erinnerung auftritt: Löst einen neuen Workflow aus, sobald eine Erinnerung auftritt.
 
-```GET: /trigger/reminders``` 
+```GET: /trigger/reminders```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|task\_id|integer|no|query|(Keine)|ID der Aufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
+|200|Vorgang erfolgreich|
 
 
-## <a name="retrievelists"></a>RetrieveLists
-Get lists: Retrieve the lists associated with your account. 
+## RetrieveLists
+Listen abrufen: Ruft die Ihrem Konto zugeordneten Listen ab.
 
-```GET: /lists``` 
+```GET: /lists```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|400|Ungültige Anforderung|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="createlist"></a>CreateList
-Create a list: Create a list. 
+## CreateList
+Liste erstellen: Erstellt eine Liste.
 
-```POST: /lists``` 
+```POST: /lists```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New list to be created|
+|post| |Ja|body|(Keine)|Neu zu erstellende Liste|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
-## <a name="listtasks"></a>ListTasks
-Get tasks: Retrieve tasks from a specific list. 
+## ListTasks
+Aufgaben abrufen: Ruft Aufgaben aus einer bestimmten Liste ab.
 
-```GET: /tasks``` 
+```GET: /tasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|completed|boolean|no|query|none|Completed|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|completed|Boolescher Wert|no|query|(Keine)|Abgeschlossen|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|400|Ungültige Anforderung|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="createtask"></a>CreateTask
-Create a task: Create a task 
+## CreateTask
+Aufgabe erstellen: Erstellt eine Aufgabe.
 
-```POST: /tasks``` 
+```POST: /tasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New task to be created|
+|post| |Ja|body|(Keine)|Neu zu erstellende Aufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|201|Created|
+|201|Erstellt|
 
 
-## <a name="listsubtasks"></a>ListSubTasks
-Get subtasks: Retrieve subtasks from a specific list or from a specific task. 
+## ListSubTasks
+Teilaufgaben abrufen: Ruft Teilaufgaben aus einer bestimmten Liste oder einer bestimmten Aufgabe ab.
 
-```GET: /subtasks``` 
+```GET: /subtasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
-|completed|boolean|no|query|none|Completed|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|task\_id|integer|no|query|(Keine)|ID der Aufgabe|
+|abgeschlossen|Boolescher Wert|no|query|(Keine)|Abgeschlossen|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|400|Ungültige Anforderung|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="createsubtask"></a>CreateSubTask
-Create a subtask: Create a subtask within a specific task 
+## CreateSubTask
+Teilaufgabe erstellen: Erstellt eine Teilaufgabe innerhalb einer bestimmten Aufgabe.
 
-```POST: /subtasks``` 
+```POST: /subtasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New subtask to be created|
+|post| |Ja|body|(Keine)|Neu zu erstellende Teilaufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|201|Created|
+|201|Erstellt|
 
 
-## <a name="listnotes"></a>ListNotes
-Get notes: Retrieve notes for a specific list or a specific task. 
+## ListNotes
+Notizen abrufen: Ruft Notizen für eine bestimmte Liste oder eine bestimmte Aufgabe ab.
 
-```GET: /notes``` 
+```GET: /notes```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|task\_id|integer|no|query|(Keine)|ID der Aufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|400|Ungültige Anforderung|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="createnote"></a>CreateNote
-Create a note: Add a note to a specific task 
+## CreateNote
+Notiz erstellen: Fügt einer bestimmten Aufgabe eine Notiz hinzu.
 
-```POST: /notes``` 
+```POST: /notes```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New note to be created|
+|post| |Ja|body|(Keine)|Neu zu erstellende Notiz|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|201|Created|
+|201|Erstellt|
 
 
-## <a name="listcomments"></a>ListComments
-Get task comments: Retrieve task comments for a specific list or a specific task. 
+## ListComments
+Aufgabenkommentare abrufen: Ruft Aufgabenkommentare für eine bestimmte Liste oder eine bestimmte Aufgabe ab.
 
-```GET: /task_comments``` 
+```GET: /task_comments```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|task\_id|integer|no|query|(Keine)|ID der Aufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|400|Ungültige Anforderung|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="createcomment"></a>CreateComment
-Add a comment to a task: Add a comment to a specific task 
+## CreateComment
+Kommentar zu einer Aufgabe hinzufügen: Fügt einer bestimmten Aufgabe einen Kommentar hinzu.
 
-```POST: /task_comments``` 
+```POST: /task_comments```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New task comment to be created|
+|post| |Ja|body|(Keine)|Neu zu erstellender Aufgabenkommentar|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|201|Created|
+|201|Erstellt|
 
 
-## <a name="retrievereminders"></a>RetrieveReminders
-Get reminders: Retrieve reminders for a specific list or a specific task. 
+## RetrieveReminders
+Erinnerungen abrufen: Ruft Erinnerungen für eine bestimmte Liste oder eine bestimmte Aufgabe ab.
 
-```GET: /reminders``` 
+```GET: /reminders```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|task\_id|integer|no|query|(Keine)|ID der Aufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|400|Ungültige Anforderung|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="createreminder"></a>CreateReminder
-Set a reminder: Set a reminder. 
+## CreateReminder
+Erinnerung festlegen: Legt eine Erinnerung fest.
 
-```POST: /reminders``` 
+```POST: /reminders```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New reminder to be created|
+|post| |Ja|body|(Keine)|Neu zu erstellende Erinnerung|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
-## <a name="retrievefiles"></a>RetrieveFiles
-Get files: Retrieve files for a specific list or a specific task. 
+## RetrieveFiles
+Dateien abrufen: Ruft Dateien für eine bestimmte Liste oder eine bestimmte Aufgabe ab.
 
-```GET: /files``` 
+```GET: /files```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|task\_id|integer|no|query|(Keine)|ID der Aufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|Vorgang erfolgreich|
+|400|Ungültige Anforderung|
+|500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
+|default|Fehler beim Vorgang.|
 
 
-## <a name="getlist"></a>GetList
-Get list: Retrieves a specific list 
+## GetList
+Liste abrufen: Ruft eine bestimmte Liste ab.
 
-```GET: /lists/{id}``` 
+```GET: /lists/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|id|string|yes|path|none|List ID|
+|id|string|Ja|path|(Keine)|ID der Liste|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
-|---|---|
-|200|OK|
-
-
-## <a name="deletelist"></a>DeleteList
-Delete list: Deletes a list 
-
-```DELETE: /lists/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|integer|yes|path|none|List ID|
-|revision|integer|yes|query|none|Revision|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="updatelist"></a>UpdateList
-Update a list: Update a specific list 
-
-```PATCH: /lists/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|integer|yes|path|none|List ID|
-|post| |yes|body|none|List details|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="gettask"></a>GetTask
-Get task: Retrieves a specific task 
+## DeleteList
+Liste löschen: Löscht eine Liste.
 
-```GET: /tasks/{id}``` 
+```DELETE: /lists/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|id|integer|yes|path|none|Task ID|
+|id|integer|Ja|path|(Keine)|ID der Liste|
+|revision|integer|Ja|query|(Keine)|Version|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
+|---|---|
+|204|Kein Inhalt|
+
+
+## UpdateList
+Liste aktualisieren: Aktualisiert eine bestimmte Liste.
+
+```PATCH: /lists/{id}```
+
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| ---|---|---|---|---|---|
+|id|integer|Ja|path|(Keine)|ID der Liste|
+|post| |Ja|body|(Keine)|Listendetails|
+
+#### Antwort
+
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="updatetask"></a>UpdateTask
-Update a task: Updates a specific task 
+## GetTask
+Aufgabe abrufen: Ruft eine bestimmte Aufgabe ab.
 
-```PATCH: /tasks/{id}``` 
+```GET: /tasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|id|integer|yes|path|none|Task ID|
-|post| |yes|body|none|Task details|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|id|integer|Ja|path|(Keine)|ID der Aufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="deletetask"></a>DeleteTask
-Delete task: Deletes a specific task 
+## UpdateTask
+Aufgabe aktualisieren: Aktualisiert eine bestimmte Aufgabe.
 
-```DELETE: /tasks/{id}``` 
+```PATCH: /tasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|id|integer|yes|path|none|Task ID|
-|revision|integer|yes|query|none|Revision|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|id|integer|Ja|path|(Keine)|ID der Aufgabe|
+|post| |Ja|body|(Keine)|Aufgabendetails|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="getsubtask"></a>GetSubTask
-Get subtask: Retrieves a specific subtask 
-
-```GET: /subtasks/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|string|yes|path|none|Subtask ID|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="updatesubtask"></a>UpdateSubTask
-Update a subtask: Updates a specific subtask 
+## DeleteTask
+Aufgabe löschen: Löscht eine bestimmte Aufgabe.
 
-```PATCH: /subtasks/{id}``` 
+```DELETE: /tasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Subtask ID|
-|post| |yes|body|none|Subtask details|
+|list\_id|integer|Ja|query|(Keine)|ID der Liste|
+|id|integer|Ja|path|(Keine)|ID der Aufgabe|
+|revision|integer|Ja|query|(Keine)|Version|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
+|---|---|
+|204|Kein Inhalt|
+
+
+## GetSubTask
+Teilaufgabe abrufen: Ruft eine bestimmte Teilaufgabe ab.
+
+```GET: /subtasks/{id}```
+
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| ---|---|---|---|---|---|
+|id|string|Ja|path|(Keine)|ID der Teilaufgabe|
+
+#### Antwort
+
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="deletesubtask"></a>DeleteSubTask
-Delete a subtask: Deletes a specific subtask 
+## UpdateSubTask
+Teilaufgabe aktualisieren: Aktualisiert eine bestimmte Teilaufgabe.
 
-```DELETE: /subtasks/{id}``` 
+```PATCH: /subtasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Subtask ID|
-|revision|integer|yes|query|none|Revision|
+|id|integer|Ja|path|(Keine)|ID der Teilaufgabe|
+|post| |Ja|body|(Keine)|Details der Teilaufgabe|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="getnote"></a>GetNote
-Get a note: Retrieve a specific note 
-
-```GET: /notes/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|string|yes|path|none|Note ID|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="updatenote"></a>UpdateNote
-Update a note: Update a specific note 
+## DeleteSubTask
+Teilaufgabe löschen: Löscht eine bestimmte Teilaufgabe.
 
-```PATCH: /notes/{id}``` 
+```DELETE: /subtasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Note ID|
-|post| |yes|body|none|Note details|
+|id|integer|Ja|path|(Keine)|ID der Teilaufgabe|
+|revision|integer|Ja|query|(Keine)|Version|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
+|---|---|
+|204|Kein Inhalt|
+
+
+## GetNote
+Notiz abrufen: Ruft eine bestimmte Notiz ab.
+
+```GET: /notes/{id}```
+
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| ---|---|---|---|---|---|
+|id|string|Ja|path|(Keine)|ID der Notiz|
+
+#### Antwort
+
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="deletenote"></a>DeleteNote
-Delete a note: Delete a specific note 
+## UpdateNote
+Notiz aktualisieren: Aktualisiert eine bestimmte Notiz.
 
-```DELETE: /notes/{id}``` 
+```PATCH: /notes/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Note ID|
-|revision|integer|yes|query|none|Revision|
+|id|integer|Ja|path|(Keine)|ID der Notiz|
+|post| |Ja|body|(Keine)|Details der Notiz|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="getcomment"></a>GetComment
-Get task comment: Retrieve a specific task comment 
-
-```GET: /task_comments/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|string|yes|path|none|Comment ID|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="updatereminder"></a>UpdateReminder
-Update a reminder: Update a specific reminder 
+## DeleteNote
+Notiz löschen: Löscht eine bestimmte Notiz.
 
-```PATCH: /reminders/{id}``` 
+```DELETE: /notes/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Reminder ID|
-|post| |yes|body|none|Reminder details|
+|id|integer|Ja|path|(Keine)|ID der Notiz|
+|revision|integer|Ja|query|(Keine)|Version|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
+|---|---|
+|204|Kein Inhalt|
+
+
+## GetComment
+Aufgabenkommentar abrufen: Ruft einen bestimmten Aufgabenkommentar ab.
+
+```GET: /task_comments/{id}```
+
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| ---|---|---|---|---|---|
+|id|string|Ja|path|(Keine)|ID des Kommentars|
+
+#### Antwort
+
+|Name|Beschreibung|
 |---|---|
 |200|OK|
 
 
-## <a name="deletereminder"></a>DeleteReminder
-Delete a reminder: Delete a specific reminder 
+## UpdateReminder
+Erinnerung aktualisieren: Aktualisiert eine bestimmte Erinnerung.
 
-```DELETE: /reminders/{id}``` 
+```PATCH: /reminders/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|ID of the reminder.|
-|revision|integer|yes|query|none|Revision|
+|id|integer|Ja|path|(Keine)|ID der Erinnerung|
+|post| |Ja|body|(Keine)|Details der Erinnerung|
 
-#### <a name="response"></a>Response
+#### Antwort
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
-|204|No Content|
+|200|OK|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## DeleteReminder
+Erinnerung löschen: Löscht eine bestimmte Erinnerung.
 
-### <a name="list"></a>List
+```DELETE: /reminders/{id}```
+
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
+| ---|---|---|---|---|---|
+|id|integer|Ja|path|(Keine)|ID der Erinnerung|
+|revision|integer|Ja|query|(Keine)|Version|
+
+#### Antwort
+
+|Name|Beschreibung|
+|---|---|
+|204|Kein Inhalt|
 
 
-| Property Name | Data Type | Required |
+## Objektdefinitionen 
+
+### List
+
+
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|created_at|string|No |
-|title|string|No |
-|list_type|string|No |
-|type|string|No |
-|revision|integer|No |
+|id|integer|Nein |
+|created\_at|string|Nein |
+|title|string|Nein |
+|list\_type|string|Nein |
+|Typ|string|Nein |
+|revision|integer|Nein |
 
 
 
-### <a name="createdlist"></a>CreatedList
+### CreatedList
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|created_at|string|No |
-|title|string|No |
-|revision|integer|No |
-|type|string|No |
+|id|integer|Nein |
+|created\_at|string|Nein |
+|title|string|Nein |
+|revision|integer|Nein |
+|Typ|string|Nein |
 
 
 
-### <a name="task"></a>Task
+### Task
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|assignee_id|integer|No |
-|assigner_id|integer|No |
-|created_at|string|No |
-|created_by_id|integer|No |
-|due_date|string|No |
-|list_id|integer|No |
-|revision|integer|No |
-|starred|boolean|No |
-|title|string|No |
+|id|integer|Nein |
+|assignee\_id|integer|Nein |
+|assigner\_id|integer|Nein |
+|created\_at|string|Nein |
+|created\_by\_id|integer|Nein |
+|due\_date|string|Nein |
+|list\_id|integer|Nein |
+|revision|integer|Nein |
+|starred|Boolescher Wert|Nein |
+|title|string|Nein |
 
 
 
-### <a name="subtask"></a>Subtask
+### Subtask
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|task_id|integer|No |
-|created_at|string|No |
-|created_by_id|integer|No |
-|revision|string|No |
-|title|string|No |
+|id|integer|Nein |
+|task\_id|integer|Nein |
+|created\_at|string|Nein |
+|created\_by\_id|integer|Nein |
+|revision|string|Nein |
+|title|string|Nein |
 
 
 
-### <a name="note"></a>Note
+### Note
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|task_id|integer|No |
-|content|string|No |
-|created_at|string|No |
-|updated_at|string|No |
-|revision|integer|No |
+|id|integer|Nein |
+|task\_id|integer|Nein |
+|Inhalt|string|Nein |
+|created\_at|string|Nein |
+|updated\_at|string|Nein |
+|revision|integer|Nein |
 
 
 
-### <a name="comment"></a>Comment
+### Kommentar
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|task_id|integer|No |
-|revision|integer|No |
-|text|string|No |
-|type|string|No |
-|created_at|string|No |
+|id|integer|Nein |
+|task\_id|integer|Nein |
+|revision|integer|Nein |
+|Text|string|Nein |
+|Typ|string|Nein |
+|created\_at|string|Nein |
 
 
 
-### <a name="reminder"></a>Reminder
+### Reminder
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|date|string|No |
-|task_id|integer|No |
-|revision|integer|No |
-|type|string|No |
-|created_at|string|No |
-|updated_at|string|No |
+|id|integer|Nein |
+|date|string|Nein |
+|task\_id|integer|Nein |
+|revision|integer|Nein |
+|Typ|string|Nein |
+|created\_at|string|Nein |
+|updated\_at|string|Nein |
 
 
 
-### <a name="createdreminder"></a>CreatedReminder
+### CreatedReminder
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|date|string|No |
-|task_id|integer|No |
-|revision|integer|No |
-|created_at|string|No |
-|updated_at|string|No |
+|id|integer|Nein |
+|date|string|Nein |
+|task\_id|integer|Nein |
+|revision|integer|Nein |
+|created\_at|string|Nein |
+|updated\_at|string|Nein |
 
 
 
-### <a name="file"></a>File
+### File
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|id|integer|No |
-|url|string|No |
-|task_id|integer|No |
-|list_id|integer|No |
-|user_id|integer|No |
-|file_name|string|No |
-|content_type|string|No |
-|file_size|integer|No |
-|local_created_at|string|No |
-|created_at|string|No |
-|updated_at|string|No |
-|type|string|No |
-|revision|integer|No |
+|id|integer|Nein |
+|url|string|Nein |
+|task\_id|integer|Nein |
+|list\_id|integer|Nein |
+|user\_id|integer|Nein |
+|file\_name|string|Nein |
+|content\_type|string|Nein |
+|file\_size|integer|Nein |
+|local\_created\_at|string|Nein |
+|created\_at|string|Nein |
+|updated\_at|string|Nein |
+|Typ|string|Nein |
+|revision|integer|Nein |
 
 
 
-### <a name="newtask"></a>NewTask
+### NewTask
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|list_id|integer|Yes |
-|title|string|Yes |
-|assignee_id|integer|No |
-|completed|boolean|No |
-|recurrence_type|string|No |
-|recurrence_count|integer|No |
-|due_date|string|No |
-|starred|boolean|No |
+|list\_id|integer|Ja |
+|title|string|Ja |
+|assignee\_id|integer|Nein |
+|abgeschlossen|Boolescher Wert|Nein |
+|recurrence\_type|string|Nein |
+|recurrence\_count|integer|Nein |
+|due\_date|string|Nein |
+|starred|Boolescher Wert|Nein |
 
 
 
-### <a name="newlist"></a>NewList
+### NewList
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|title|string|Yes |
+|title|string|Ja |
 
 
 
-### <a name="newsubtask"></a>NewSubtask
+### NewSubtask
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|title|string|Yes |
-|completed|boolean|No |
+|list\_id|integer|Ja |
+|task\_id|integer|Ja |
+|title|string|Ja |
+|abgeschlossen|Boolescher Wert|Nein |
 
 
 
-### <a name="newnote"></a>NewNote
+### NewNote
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|content|string|Yes |
+|list\_id|integer|Ja |
+|task\_id|integer|Ja |
+|Inhalt|string|Ja |
 
 
 
-### <a name="newcomment"></a>NewComment
+### NewComment
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|text|string|Yes |
+|list\_id|integer|Ja |
+|task\_id|integer|Ja |
+|Text|string|Ja |
 
 
 
-### <a name="newreminder"></a>NewReminder
+### NewReminder
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|date|string|Yes |
+|list\_id|integer|Ja |
+|task\_id|integer|Ja |
+|date|string|Ja |
 
 
 
-### <a name="updatetask"></a>UpdateTask
+### UpdateTask
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|revision|integer|No |
-|title|string|No |
-|assignee_id|integer|No |
-|completed|boolean|No |
-|recurrence_type|string|No |
-|recurrence_count|integer|No |
-|due_date|string|No |
-|starred|boolean|No |
+|revision|integer|Nein |
+|title|string|Nein |
+|assignee\_id|integer|Nein |
+|abgeschlossen|Boolescher Wert|Nein |
+|recurrence\_type|string|Nein |
+|recurrence\_count|integer|Nein |
+|due\_date|string|Nein |
+|starred|Boolescher Wert|Nein |
 
 
 
-### <a name="updatelist"></a>UpdateList
+### UpdateList
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|revision|integer|No |
-|title|string|No |
+|revision|integer|Nein |
+|title|string|Nein |
 
 
 
-### <a name="updatesubtask"></a>UpdateSubtask
+### UpdateSubtask
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|revision|integer|No |
-|title|string|No |
-|completed|boolean|No |
+|revision|integer|Nein |
+|title|string|Nein |
+|abgeschlossen|Boolescher Wert|Nein |
 
 
 
-### <a name="updatenote"></a>UpdateNote
+### UpdateNote
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|revision|integer|No |
-|content|string|No |
+|revision|integer|Nein |
+|Inhalt|string|Nein |
 
 
 
-### <a name="updatereminder"></a>UpdateReminder
+### UpdateReminder
 
 
-| Property Name | Data Type | Required |
+| Eigenschaftenname | Datentyp | Erforderlich |
 |---|---|---|
-|date|string|No |
-|revision|integer|No |
+|date|string|Nein |
+|revision|integer|Nein |
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## Nächste Schritte
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

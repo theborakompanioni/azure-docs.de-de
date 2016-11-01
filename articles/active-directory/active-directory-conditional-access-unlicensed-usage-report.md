@@ -1,56 +1,49 @@
 <properties
-    pageTitle="Unlicensed Usage Report | Microsoft Azure"
-    description="The unlicensed usage report helps you identify unlicensed users that are using paid Azure AD features."
-    services="active-directory"
-    documentationCenter=""
-    authors="MarkusVi"
-    manager="femila"
-    editor=""/>
+	pageTitle="Bericht zu nicht lizenzierter Nutzung | Microsoft Azure"
+	description="Der Bericht zu nicht lizenzierter Nutzung hilft Ihnen dabei, nicht lizenzierte Benutzer zu finden, die kostenpflichtige Azure AD-Funktionen nutzen."
+	services="active-directory"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/20/2016"
-    ms.author="markvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/25/2016"
+	ms.author="markvi"/>
 
+# Bericht zu nicht lizenzierter Nutzung
 
-# <a name="unlicensed-usage-report"></a>Unlicensed usage report
+Der Bericht zu nicht lizenzierter Nutzung hilft Ihnen dabei, nicht lizenzierte Benutzer zu finden, die kostenpflichtige Azure AD-Funktionen nutzen. Somit können Sie Ihre gekauften Lizenzen besser nutzen und leichter ermitteln, wann Sie weitere Lizenzen benötigen.
 
-The unlicensed usage report helps you identify unlicensed users that are using paid Azure AD features. This allows you to make better use of licenses that you have purchased and to identify you know when you may need additional licenses. 
+Der Bericht zeigt, welche kostenpflichtigen Funktionen in den letzten 30 Tagen aktiv genutzt wurden.
 
-The report shows active usage of the paid features in the last 30 days. 
-
-## <a name="report-structure"></a>Report structure
+## Berichtsstruktur
  
-| Column name          |    Description |
+| Spaltenname |	Beschreibung |
 | :--                  | :--         |
-| Unlicensed User      |    Name of the user |
-| Feature              | The feature name. For example: conditional access |
-| Application Accessed | The name of the application that is being accessed with the feature. For example: Office 365 SharePoint Online |
+| Nicht lizenzierter Benutzer |	Name des Benutzers |
+| Funktion | Name des Features. Beispiel: Bedingter Zugriff |
+| Genutzte Anwendung | Der Name der Anwendung, auf die mit der Funktion zugegriffen wird. Beispiel: Office 365 SharePoint Online |
 
  
-> [AZURE.NOTE] If a user account has been deleted the ‘Unlicensed User’ column will be populated with an ID, like 1003000090D8B285
+> [AZURE.NOTE] Wenn ein Benutzerkonto gelöscht wurde, wird eine ID wie z. B. 1003000090D8B285 in der Spalte „Nicht lizenzierte Benutzer“ angezeigt.
 
 
-## <a name="conditional-access-feature"></a>Conditional access feature
+## Feature für den bedingten Zugriff
 
-Unlicensed users will be flagged when they access a service that has conditional access policy applied if they do not have an Azure AD Premium license. 
+Nicht lizenzierte Benutzer werden beim Zugriff auf einen Dienst, auf den eine Richtlinie für den bedingten Zugriff angewendet wird, gekennzeichnet, wenn sie nicht über eine Azure AD Premium-Lizenz verfügen.
 
-This applies to MFA / Location policies as well as device polices that use Intune.
+Dies gilt für MFA-/Standortrichtlinien sowie Geräterichtlinien, die Intune verwenden.
  
 
-## <a name="see-also"></a>See also
+## Weitere Informationen
 
-- [Using Conditional Access with Office 365 and other Azure Active Directory connected apps](active-directory-conditional-access.md)
-- [Getting started with conditional access to Azure AD](active-directory-conditional-access-azuread-connected-apps.md) 
+- [Verwenden von bedingtem Zugriff mit Office 365 und anderen verbundenen Azure Active Directory-Apps](active-directory-conditional-access.md)
+- [Erste Schritte mit bedingtem Zugriff auf Azure AD](active-directory-conditional-access-azuread-connected-apps.md)
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Site Recovery limits table"
-   description="Describes system limits for Site Recovery."
+   pageTitle="Tabelle zu Beschränkungen für Site Recovery"
+   description="Beschreibung der Systembegrenzung für Site Recovery."
    services="site recovery"
    documentationCenter="NA"
    authors="csilauraa"
@@ -16,21 +16,16 @@
    ms.author="lauraa" />
 
 
+Für Azure Site Recovery gelten die folgenden Beschränkungen.
 
-The following limits apply to Azure Site Recovery:
 
-
-|LIMIT IDENTIFIER|DEFAULT LIMIT|
+|BEZEICHNUNG|STANDARDLIMIT|
 |---|---|---|---|
-|Number of vaults per subscription|25|
-|Number of servers per Azure vault|250|
-|Number of protection groups per Azure vault|No limit|
-|Number of recovery plans per Azure vault|No limit|
-|Number of servers per protection group|No limit|
-|Number of servers per recovery plan|50|
+|Anzahl der Tresore pro Abonnement|25|
+|Anzahl der Server pro Azure-Tresor|250|
+|Anzahl der Schutzgruppen pro Azure-Tresor|Keine Begrenzung|
+|Anzahl der Wiederherstellungspläne pro Azure-Tresor|Keine Begrenzung|
+|Anzahl der Server pro Schutzgruppe|Keine Begrenzung|
+|Anzahl der Server pro Wiederherstellungsplan|50|
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

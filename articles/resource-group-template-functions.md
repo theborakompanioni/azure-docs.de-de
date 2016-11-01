@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager Template Functions | Microsoft Azure"
-   description="Describes the functions to use in an Azure Resource Manager template to retrieve values, work with strings and numerics, and retrieve deployment information."
+   pageTitle="Vorlagenfunktionen im Ressourcen-Manager | Microsoft Azure"
+   description="Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,18 +16,17 @@
    ms.date="09/12/2016"
    ms.author="tomfitz"/>
 
+# Vorlagenfunktionen im Azure-Ressourcen-Manager
 
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager template functions
+In diesem Thema werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können.
 
-This topic describes all the functions you can use in an Azure Resource Manager template.
+Bei Vorlagenfunktionen und ihren Parametern wird Groß-und Kleinschreibung nicht unterschieden. Der Ressourcen-Manager löst beispielsweise **variables('var1')** und **VARIABLES('VAR1')** identisch auf. Bei der Auswertung wird die Groß-/Kleinschreibung beibehalten, sofern diese nicht ausdrücklich durch die Funktion geändert wird (z.B. mit „toUpper“ oder „toLower“). Für spezielle Ressourcentypen gelten möglicherweise Vorgaben zur Schreibweise ungeachtet der Auswertungsweise von Funktionen.
 
-Template functions and their parameters are case-insensitive. For example, Resource Manager resolves **variables('var1')** and **VARIABLES('VAR1')** as the same. When evaluated, unless the function expressly modifies case (such as toUpper or toLower), the function preserves the case. Certain resource types may have case requirements irrespective of how functions are evaluated.
+## Numerische Funktionen
 
-## <a name="numeric-functions"></a>Numeric functions
+Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit ganzen Zahlen bereit:
 
-Resource Manager provides the following functions for working with integers:
-
-- [add](#add)
+- [Hinzufügen](#add)
 - [copyIndex](#copyindex)
 - [div](#div)
 - [int](#int)
@@ -37,18 +36,18 @@ Resource Manager provides the following functions for working with integers:
 
 
 <a id="add" />
-### <a name="add"></a>add
+### Hinzufügen
 
 **add(operand1, operand2)**
 
-Returns the sum of the two provided integers.
+Gibt die Summe der beiden angegebenen ganzen Zahlen zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | First integer to add.
-| operand2                           |   Yes    | Second integer to add.
+| operand1 | Ja | Erste ganze Zahl, die hinzugefügt werden soll.
+| operand2 | Ja | Zweite ganze Zahl, die hinzugefügt werden soll.
 
-The following example adds two parameters.
+Im folgenden Beispiel werden zwei Parameter hinzugefügt.
 
     "parameters": {
       "first": {
@@ -73,19 +72,19 @@ The following example adds two parameters.
     }
 
 <a id="copyindex" />
-### <a name="copyindex"></a>copyIndex
+### copyIndex
 
 **copyIndex(offset)**
 
-Returns the current index of an iteration loop. 
+Gibt den aktuellen Index einer Iterationsschleife zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| offset                           |   No    | The amount to add to current iteration value.
+| offset | Nein | Der Betrag, der dem aktuellen Iterationswert hinzugefügt werden soll.
 
-This function is always used with a **copy** object. For a complete description of how you use **copyIndex**, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
+Diese Funktion wird immer mit einem **copy**-Objekt verwendet. Eine vollständige Beschreibung der Nutzung von **copyIndex** finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-The following example shows a copy loop and the index value included in the name. 
+Das folgende Beispiel enthält eine Kopierschleife und den Indexwert im Namen.
 
     "resources": [ 
       { 
@@ -101,18 +100,18 @@ The following example shows a copy loop and the index value included in the name
 
 
 <a id="div" />
-### <a name="div"></a>div
+### div
 
 **div(operand1, operand2)**
 
-Returns the integer division of the two provided integers.
+Gibt die Ganzzahldivision der beiden angegebenen ganzen Zahlen zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | Integer being divided.
-| operand2                           |   Yes    | Integer that is used to divide. Cannot be 0.
+| operand1 | Ja | Die ganze Zahl, die dividiert wird.
+| operand2 | Ja | Die ganze Zahl, die zum Dividieren verwendet wird. Diese Zahl darf nicht 0 sein.
 
-The following example divides one parameter by another parameter.
+Im folgenden Beispiel wird ein Parameter durch einen anderen Parameter dividiert.
 
     "parameters": {
       "first": {
@@ -137,17 +136,17 @@ The following example divides one parameter by another parameter.
     }
 
 <a id="int" />
-### <a name="int"></a>int
+### int
 
 **int(valueToConvert)**
 
-Converts the specified value to Integer.
+Konvertiert den angegebenen Wert in eine ganze Zahl (Integer).
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| valueToConvert                     |   Yes    | The value to convert to Integer. The type of value can only be String or Integer.
+| valueToConvert | Ja | Der Wert, der in eine ganze Zahl konvertiert werden soll. Der Wert kann nur den Typ „String“ oder „Integer“ haben.
 
-The following example converts the user-provided parameter value to Integer.
+Im folgenden Beispiel wird der vom Benutzer angegebene Parameterwert in eine ganze Zahl konvertiert.
 
     "parameters": {
         "appId": { "type": "string" }
@@ -158,18 +157,18 @@ The following example converts the user-provided parameter value to Integer.
 
 
 <a id="mod" />
-### <a name="mod"></a>mod
+### mod
 
 **mod(operand1, operand2)**
 
-Returns the remainder of the integer division using the two provided integers.
+Gibt den Rest der Ganzzahldivision mit den beiden angegebenen ganzen Zahlen zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | Integer being divided.
-| operand2                           |   Yes    | Integer that is used to divide, has to be different from 0.
+| operand1 | Ja | Die ganze Zahl, die dividiert wird.
+| operand2 | Ja | Die ganze Zahl, die zum Dividieren verwendet wird. Sie darf nicht 0 sein.
 
-The following example returns the remainder of dividing one parameter by another parameter.
+Im folgenden Beispiel wird der Restbetrag der Division von einem Parameter durch einen anderen Parameter zurückgegeben.
 
     "parameters": {
       "first": {
@@ -194,18 +193,18 @@ The following example returns the remainder of dividing one parameter by another
     }
 
 <a id="mul" />
-### <a name="mul"></a>mul
+### mul
 
 **mul(operand1, operand2)**
 
-Returns the multiplication of the two provided integers.
+Gibt die Multiplikation der beiden angegebenen ganzen Zahlen zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | First integer to multiply.
-| operand2                           |   Yes    | Second integer to multiply.
+| operand1 | Ja | Erste ganze Zahl, die multipliziert wird.
+| operand2 | Ja | Zweite ganze Zahl, die multipliziert wird.
 
-The following example multiplies one parameter by another parameter.
+Im folgenden Beispiel wird ein Parameter mit einem anderen Parameter multipliziert.
 
     "parameters": {
       "first": {
@@ -230,18 +229,18 @@ The following example multiplies one parameter by another parameter.
     }
 
 <a id="sub" />
-### <a name="sub"></a>sub
+### sub
 
 **sub(operand1, operand2)**
 
-Returns the subtraction of the two provided integers.
+Gibt die Differenz der beiden angegebenen ganzen Zahlen zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | Integer that is subtracted from.
-| operand2                           |   Yes    | Integer that is subtracted.
+| operand1 | Ja | Ganze Zahl, von der subtrahiert wird.
+| operand2 | Ja | Ganze Zahl, die subtrahiert wird.
 
-The following example subtracts one parameter from another parameter.
+Im folgenden Beispiel wird ein Parameter von einem anderen Parameter subtrahiert.
 
     "parameters": {
       "first": {
@@ -265,13 +264,13 @@ The following example subtracts one parameter from another parameter.
       }
     }
 
-## <a name="string-functions"></a>String functions
+## Zeichenfolgenfunktionen
 
-Resource Manager provides the following functions for working with strings:
+Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zeichenfolgen bereit:
 
 - [base64](#base64)
 - [concat](#concat)
-- [length](#lengthstring)
+- [Länge](#lengthstring)
 - [padLeft](#padleft)
 - [replace](#replace)
 - [skip](#skipstring)
@@ -287,17 +286,17 @@ Resource Manager provides the following functions for working with strings:
 
 
 <a id="base64" />
-### <a name="base64"></a>base64
+### base64
 
-**base64 (inputString)**
+**base64 (InputString)**
 
-Returns the base64 representation of the input string.
+Rückkehr zur base64-Darstellung der Eingabezeichenfolge.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| inputString                        |   Yes    | The string value to return as a base64 representation.
+| inputString | Ja | Der Zeichenfolgewert, der als base64-Darstellung zurückgegeben wird.
 
-The following example shows how to use the base64 function.
+Das folgende Beispiel zeigt die Funktionsweise der base64-Funktion.
 
     "variables": {
       "usernameAndPassword": "[concat('parameters('username'), ':', parameters('password'))]",
@@ -305,20 +304,20 @@ The following example shows how to use the base64 function.
     }
 
 <a id="concat" />
-### <a name="concat---string"></a>concat - string
+### concat – Zeichenfolge
 
 **concat (string1, string2, string3, ...)**
 
-Combines multiple string values and returns the concatenated string. 
+Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| string1                        |   Yes    | A string value to concatenate.
-| additional strings             |   No     | String values to concatenate.
+| string1 | Ja | Ein Zeichenfolgenwert, der verkettet werden soll.
+| Weitere Zeichenfolgen | Nein | Zeichenfolgenwerte, die verkettet werden sollen.
 
-This function can take any number of arguments, and can accept either strings or arrays for the parameters. For an example of concatenating arrays, see [concat - array](#concatarray).
+Diese Funktion akzeptiert eine beliebige Anzahl von Argumenten und Zeichenfolgen oder Arrays für die Parameter. Ein Beispiel für die Verkettung von Arrays finden Sie unter [concat – Array](#concatarray).
 
-The following example shows how to combine multiple string values to return a concatenated string.
+Das folgende Beispiel zeigt, wie mehrere Zeichenfolgenwerte kombiniert werden, um eine verkettete Zeichenfolge zu erhalten.
 
     "outputs": {
         "siteUri": {
@@ -329,19 +328,19 @@ The following example shows how to combine multiple string values to return a co
 
 
 <a id="lengthstring" />
-### <a name="length---string"></a>length - string
+### length – Zeichenfolge
 
 **length(string)**
 
-Returns the number of characters in a string.
+Gibt die Anzahl von Zeichen in einer Zeichenfolge zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| string                        |   Yes    | The string value to use for getting the number of characters.
+| string | Ja | Der Zeichenfolgenwert, der zum Abrufen der Anzahl von Zeichen verwendet werden soll.
 
-For an example of using length with an array, see [length - array](#length).
+Ein Beispiel für die Verwendung von „length“ mit einem Array finden Sie unter [length – Array](#length).
 
-The following example returns the number of characters in a string. 
+Im folgenden Beispiel wird die Anzahl von Zeichen in einer Zeichenfolge zurückgegeben.
 
     "parameters": {
         "appName": { "type": "string" }
@@ -352,19 +351,19 @@ The following example returns the number of characters in a string.
         
 
 <a id="padleft" />
-### <a name="padleft"></a>padLeft
+### padLeft
 
 **padLeft(valueToPad, totalLength, paddingCharacter)**
 
-Returns a right-aligned string by adding characters to the left until reaching the total specified length.
+Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen hinzugefügt werden, bis die angegebene Gesamtlänge erreicht ist.
   
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| valueToPad                         |   Yes    | The string or int to right-align.
-| totalLength                        |   Yes    | The total number of characters in the returned string.
-| paddingCharacter                   |   No     | The character to use for left-padding until the total length is reached. The default value is a space.
+| valueToPad | Ja | Die Zeichenfolge oder Ganzzahl, die rechtsbündig ausgerichtet werden soll.
+| totalLength | Ja | Die Gesamtzahl der Zeichen in der zurückgegebenen Zeichenfolge.
+| paddingCharacter | Nein | Das Zeichen, das für das Auffüllen auf der linken Seite verwendet werden soll, bis die Gesamtlänge erreicht ist. Der Standardwert ist ein Leerzeichen.
 
-The following example shows how to pad the user-provided parameter value by adding the zero character until the string reaches 10 characters. If the original parameter value is longer than 10 characters, no characters are added.
+Im folgenden Beispiel wird veranschaulicht, wie Sie den vom Benutzer angegebenen Parameterwert auffüllen, indem Sie das Nullzeichen hinzufügen, bis die Zeichenfolge zehn Zeichen lang ist. Wenn der ursprüngliche Parameterwert länger als zehn Zeichen ist, werden keine Zeichen hinzugefügt.
 
     "parameters": {
         "appName": { "type": "string" }
@@ -374,19 +373,19 @@ The following example shows how to pad the user-provided parameter value by addi
     }
 
 <a id="replace" />
-### <a name="replace"></a>replace
+### replace
 
 **replace(originalString, oldCharacter, newCharacter)**
 
-Returns a new string with all instances of one character in the specified string replaced by another character.
+Gibt eine neue Zeichenfolge zurück, in der alle Instanzen eines Zeichens in der angegebenen Zeichenfolge durch ein anderes Zeichen ersetzt wurden.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| originalString                     |   Yes    | The string that has all instances of one character replaced by another character.
-| oldCharacter                       |   Yes    | The character to be removed from the original string.
-| newCharacter                       |   Yes    | The character to add in place of the removed character.
+| originalString | Ja | Die Zeichenfolge, für die alle Instanzen eines Zeichens durch ein anderes Zeichen ersetzt werden sollen.
+| oldCharacter | Ja | Das Zeichen, das aus der ursprünglichen Zeichenfolge entfernt werden soll.
+| newCharacter | Ja | Das Zeichen, das für das entfernte Zeichen eingefügt werden soll.
 
-The following example shows how to remove all dashes from the user-provided string.
+Im folgenden Beispiel wird veranschaulicht, wie Sie alle Bindestriche aus einer vom Benutzer angegebenen Zeichenfolge entfernen.
 
     "parameters": {
         "identifier": { "type": "string" }
@@ -396,19 +395,19 @@ The following example shows how to remove all dashes from the user-provided stri
     }
 
 <a id="skipstring" />
-### <a name="skip---string"></a>skip - string
+### skip – Zeichenfolge
 **skip(originalValue, numberToSkip)**
 
-Returns a string with all the characters after the specified number in the string.
+Gibt eine Zeichenfolge mit allen Zeichen nach der angegebenen Anzahl von Stellen in der Zeichenfolge zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The string to use for skipping.
-| numberToSkip                       |   Yes    | The number of characters to skip. If this value is 0 or less, all the characters in the string are returned. If it is larger than the length of the string, an empty string is returned. 
+| originalValue | Ja | Die Zeichenfolge, die für das Überspringen verwendet werden soll.
+| numberToSkip | Ja | Die Anzahl von zu überspringenden Zeichen. Wenn dieser Wert 0 oder kleiner ist, werden alle Zeichen der Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge der Zeichenfolge, wird eine leere Zeichenfolge zurückgegeben. 
 
-For an example of using skip with an array, see [skip - array](#skip).
+Ein Beispiel für die Verwendung von „skip“ mit einem Array finden Sie unter [skip – Array](#skip).
 
-The following example skips the specified number of characters in the string.
+Im folgenden Beispiel wird die angegebene Anzahl von Zeichen in der Zeichenfolge übersprungen.
 
     "parameters": {
       "first": {
@@ -435,20 +434,20 @@ The following example skips the specified number of characters in the string.
 
 
 <a id="split" />
-### <a name="split"></a>split
+### split
 
 **split(inputString, delimiterString)**
 
 **split(inputString, delimiterArray)**
 
-Returns an array of strings that contains the substrings of the input string that are delimited by the specified delimiters.
+Gibt ein Array mit Zeichenfolgen zurück, das die Teilzeichenfolgen der Eingabezeichenfolge getrennt durch die angegebenen Trennzeichen enthält.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| inputString                        |   Yes    | The string to split.
-| delimiter                          |   Yes    | The delimiter to use, can be a single string or an array of strings.
+| inputString | Ja | Die zu teilende Zeichenfolge.
+| Trennzeichen | Ja | Das verwendete Trennzeichen. Kann eine einzelne Zeichenfolge oder ein Array von Zeichenfolgen sein.
 
-The following example splits the input string with a comma.
+Im folgenden Beispiel wird die Eingabezeichenfolge durch ein Komma unterteilt.
 
     "parameters": {
         "inputString": { "type": "string" }
@@ -457,7 +456,7 @@ The following example splits the input string with a comma.
         "stringPieces": "[split(parameters('inputString'), ',')]"
     }
 
-The next example splits the input string with either a comma or a semi-colon.
+Im nächsten Beispiel wird die Eingabezeichenfolge mit einem Komma oder Semikolon getrennt.
 
     "variables": {
       "stringToSplit": "test1,test2;test3",
@@ -472,17 +471,17 @@ The next example splits the input string with either a comma or a semi-colon.
     }
 
 <a id="string" />
-### <a name="string"></a>string
+### string
 
 **string(valueToConvert)**
 
-Converts the specified value to a string.
+Konvertiert den angegebenen Wert in eine Zeichenfolge.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| valueToConvert                     |   Yes    | The value to convert to string. Any type of value can be converted, including objects and arrays.
+| valueToConvert | Ja | Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays.
 
-The following example converts the user-provided parameter values to strings.
+Im folgenden Beispiel werden die vom Benutzer angegebenen Parameterwerte in Zeichenfolgen konvertiert.
 
     "parameters": {
       "jsonObject": {
@@ -508,19 +507,19 @@ The following example converts the user-provided parameter values to strings.
     }
 
 <a id="substring" />
-### <a name="substring"></a>substring
+### substring
 
 **substring(stringToParse, startIndex, length)**
 
-Returns a substring that starts at the specified character position and contains the specified number of characters.
+Gibt eine Teilzeichenfolge zurück, die an der angegebenen Zeichenposition beginnt und die angegebene Anzahl von Zeichen enthält.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| stringToParse                     |   Yes    | The original string from which the substring is extracted.
-| startIndex                         | No      | The zero-based starting character position for the substring.
-| length                             | No      | The number of characters for the substring.
+| stringToParse | Ja | Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird.
+| startIndex | Nein | Die nullbasierte Anfangsposition für die Teilzeichenfolge.
+| Länge | Nein | Die Anzahl der Zeichen der Teilzeichenfolge.
 
-The following example extracts the first three characters from a parameter.
+Im folgenden Beispiel werden die ersten drei Zeichen aus einem Parameter extrahiert.
 
     "parameters": {
         "inputString": { "type": "string" }
@@ -530,19 +529,19 @@ The following example extracts the first three characters from a parameter.
     }
 
 <a id="takestring" />
-### <a name="take---string"></a>take - string
+### take – Zeichenfolge
 **take(originalValue, numberToTake)**
 
-Returns a string with the specified number of characters from the start of the string.
+Gibt eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der Zeichenfolge zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The string to take the characters from.
-| numberToTake                       |   Yes    | The number of characters to take. If this value is 0 or less, an empty string is returned. If it is larger than the length of the given string, all the characters in the string are returned.
+| originalValue | Ja | Die Zeichenfolge, aus der die Zeichen entnommen werden.
+| numberToTake | Ja | Die Anzahl von zu entnehmenden Zeichen. Ist dieser Wert 0 oder kleiner, wird eine leere Zeichenfolge zurückgegeben. Wenn er größer als die Länge der jeweiligen Zeichenfolge ist, werden alle Zeichen der Zeichenfolge zurückgegeben.
 
-For an example of using take with an array, see [take - array](#take).
+Ein Beispiel für die Verwendung mit einem Array finden Sie unter [take – Array](#take).
 
-The following example takes the specified number of characters from the string.
+Im folgenden Beispiel wird die angegebene Anzahl von Zeichen aus der Zeichenfolge entnommen.
 
     "parameters": {
       "first": {
@@ -568,17 +567,17 @@ The following example takes the specified number of characters from the string.
     }
 
 <a id="tolower" />
-### <a name="tolower"></a>toLower
+### toLower
 
 **toLower(stringToChange)**
 
-Converts the specified string to lower case.
+Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| stringToChange                     |   Yes    | The string to convert to lower case.
+| stringToChange | Ja | Die Zeichenfolge, die in Kleinbuchstaben konvertiert werden soll.
 
-The following example converts the user-provided parameter value to lower case.
+Im folgenden Beispiel wird der vom Benutzer angegebene Parameterwert in Kleinbuchstaben konvertiert.
 
     "parameters": {
         "appName": { "type": "string" }
@@ -588,17 +587,17 @@ The following example converts the user-provided parameter value to lower case.
     }
 
 <a id="toupper" />
-### <a name="toupper"></a>toUpper
+### toUpper
 
 **toUpper(stringToChange)**
 
-Converts the specified string to upper case.
+Konvertiert die angegebene Zeichenfolge in Großbuchstaben.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| stringToChange                     |   Yes    | The string to convert to upper case.
+| stringToChange | Ja | Die Zeichenfolge, die in Großbuchstaben konvertiert werden soll.
 
-The following example converts the user-provided parameter value to upper case.
+Im folgenden Beispiel wird der vom Benutzer angegebene Parameterwert in Großbuchstaben konvertiert.
 
     "parameters": {
         "appName": { "type": "string" }
@@ -608,17 +607,17 @@ The following example converts the user-provided parameter value to upper case.
     }
 
 <a id="trim" />
-### <a name="trim"></a>trim
+### trim
 
 **trim (stringToTrim)**
 
-Removes all leading and trailing white-space characters from the specified string.
+Entfernt alle führenden und nachgestellten Leerzeichen aus der angegebenen Zeichenfolge.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| stringToTrim                       |   Yes    | The string to trim.
+| stringToTrim | Ja | Die zu kürzende Zeichenfolgen.
 
-The following example trims the white-space characters from the user-provided parameter value.
+Im folgenden Beispiel werden die Leerzeichen aus dem vom Benutzer bereitgestellten Parameterwert entfernt.
 
     "parameters": {
         "appName": { "type": "string" }
@@ -628,38 +627,38 @@ The following example trims the white-space characters from the user-provided pa
     }
 
 <a id="uniquestring" />
-### <a name="uniquestring"></a>uniqueString
+### uniqueString
 
 **uniqueString (baseString, ...)**
 
-Creates a deterministic hash string based on the values provided as parameters. 
+Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministische Hashzeichenfolge.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| baseString      |   Yes    | The string used in the hash function to create a unique string.
-| additional parameters as needed    | No       | You can add as many strings as needed to create the value that specifies the level of uniqueness.
+| baseString | Ja | Die Zeichenfolge, die in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen.
+| Zusätzliche Parameter nach Bedarf. | Nein | Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt.
 
-This function is helpful when you need to create a unique name for a resource. You provide parameter values that limit the scope of uniqueness for the result. You can specify whether the name is unique down to subscription, resource group, or deployment. 
+Diese Funktion ist hilfreich, wenn Sie einen eindeutigen Namen für eine Ressource erstellen müssen. Sie geben Parameterwerte an, die den Eindeutigkeitsbereich für das Ergebnis einschränken. Sie können angeben, ob der Name bis hinunter zum Abonnement, zur Ressourcengruppe oder zur Bereitstellung eindeutig ist.
 
-The returned value is not a random string, but rather the result of a hash function. The returned value is 13 characters long. It is not globally unique. You may want to combine the value with a prefix from your naming convention to create a name that is meaningful. The following example shows the format of the returned value. Of course, the actual value will vary by the provided parameters.
+Der zurückgegebene Wert ist keine zufällige Zeichenfolge, sondern das Ergebnis einer Hashfunktion. Der zurückgegebene Wert ist 13 Zeichen lang. Er ist nicht global eindeutig. Es empfiehlt sich, den Wert mit einem Präfix aus Ihrer Benennungskonvention zu kombinieren, um einen aussagekräftigen Namen zu erstellen. Im folgenden Beispiel wird das Format des zurückgegebenen Werts veranschaulicht. Der tatsächliche Werte variiert natürlich je nach den angegebenen Parametern.
 
     tcvhiyu5h2o5o
 
-The following examples show how to use uniqueString to create a unique value for commonly used levels.
+Die folgenden Beispiele zeigen, wie Sie mithilfe von uniqueString einen eindeutigen Wert für häufig verwendete Ebenen erstellen können.
 
-Unique scoped to subscription
+Eindeutige Zuordnung zum Abonnement
 
     "[uniqueString(subscription().subscriptionId)]"
 
-Unique scoped to resource group
+Eindeutige Zuordnung zur Ressourcengruppe
 
     "[uniqueString(resourceGroup().id)]"
 
-Unique scoped to deployment for a resource group
+Eindeutige Zuordnung zur Bereitstellung für eine Ressourcengruppe
 
     "[uniqueString(resourceGroup().id, deployment().name)]"
     
-The following example shows how to create a unique name for a storage account based on your resource group (inside this resource group the name is not unique if constructed the same way).
+Das folgende Beispiel zeigt, wie Sie auf der Grundlage Ihrer Ressourcengruppe einen eindeutigen Namen für ein Speicherkonto erstellen. (Innerhalb dieser Ressourcengruppe ist der Name nicht eindeutig, wenn er auf die gleiche Weise konstruiert wird.)
 
     "resources": [{ 
         "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]", 
@@ -669,49 +668,49 @@ The following example shows how to create a unique name for a storage account ba
 
 
 <a id="uri" />
-### <a name="uri"></a>uri
+### uri
 
 **uri (baseUri, relativeUri)**
 
-Creates an absolute URI by combining the baseUri and the relativeUri string.
+Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-Zeichenfolge.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| baseUri                            |   Yes    | The base uri string.
-| relativeUri                        |   Yes    | The relative uri string to add to the base uri string.
+| baseUri | Ja | Die Zeichenfolge mit dem Basis-URI.
+| relativeUri | Ja | Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll.
 
-The value for the **baseUri** parameter can include a specific file, but only the base path is used when constructing the URI. For example, passing **http://contoso.com/resources/azuredeploy.json** as the baseUri parameter results in a base URI of **http://contoso.com/resources/**.
+Der Wert für den **baseUri**-Parameter kann eine bestimmte Datei enthalten, beim Erstellen des URI wird jedoch nur der Basispfad verwendet. Beispielsweise führt das Übergeben von **http://contoso.com/resources/azuredeploy.json** als baseUri-Parameter zu einem Basis-URI von **http://contoso.com/resources/**.
 
-The following example shows how to construct a link to a nested template based on the value of the parent template.
+Im folgenden Beispiel wird veranschaulicht, wie basierend auf dem Wert der übergeordneten Vorlage eine Verknüpfung zu einer geschachtelten Vorlage erstellt wird.
 
     "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 
-## <a name="array-functions"></a>Array functions
+## Arrayfunktionen
 
-Resource Manager provides several functions for working with array values.
+Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Arraywerten bereit:
 
 - [concat](#concatarray)
-- [length](#length)
+- [Länge](#length)
 - [skip](#skip)
 - [take](#take)
 
-To get an array of string values delimited by a value, see [split](#split).
+Informationen zu einem Array mit Zeichenfolgenwerten, die durch einen Wert getrennt sind, finden Sie unter [split](#split).
 
 <a id="concatarray" />
-### <a name="concat---array"></a>concat - array
+### concat – Array
 
 **concat (array1, array2, array3, ...)**
 
-Combines multiple arrays and returns the concatenated array. 
+Kombiniert mehrere Arrays und gibt das verkettete Array zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| array1                        |   Yes    | An array to concatenate.
-| additional arrays             |   No     | Arrays to concatenate.
+| array1 | Ja | Ein Array, das verkettet werden soll.
+| Weitere Arrays | Nein | Arrays, die verkettet werden sollen.
 
-This function can take any number of arguments, and can accept either strings or arrays for the parameters. For an example of concatenating string values, see [concat - string](#concat).
+Diese Funktion akzeptiert eine beliebige Anzahl von Argumenten und Zeichenfolgen oder Arrays für die Parameter. Ein Beispiel für das Verketten von Zeichenfolgenwerten finden Sie unter [concat – Zeichenfolge](#concat).
 
-The following example shows how to combine two arrays.
+Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 
     "parameters": {
         "firstarray": {
@@ -727,41 +726,41 @@ The following example shows how to combine two arrays.
         
 
 <a id="length" />
-### <a name="length---array"></a>length - array
+### length – Array
 
 **length(array)**
 
-Returns the number of elements in an array.
+Gibt die Anzahl der Elemente in einem Array zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| array                        |   Yes    | The array to use for getting the number of elements.
+| array | Ja | Das Array, mit dem die Anzahl von Elementen abgerufen wird.
 
-You can use this function with an array to specify the number of iterations when creating resources. In the following example, the parameter **siteNames** would refer to an array of names to use when creating the web sites.
+Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von Ressourcen die Anzahl der Iterationen anzugeben. Im folgenden Beispiel bezieht sich der Parameter **siteNames** auf ein Array von Namen, die bei der Erstellung der Websites verwendet werden.
 
     "copy": {
         "name": "websitescopy",
         "count": "[length(parameters('siteNames'))]"
     }
 
-For more information about using this function with an array, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md). 
+Weitere Informationen zur Verwendung dieser Funktion mit einem Array finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-For an example of using length with a string value, see [length - string](#lengthstring).
+Ein Beispiel für die Verwendung von „length“ mit einem Zeichenfolgenwert finden Sie unter [length – Zeichenfolge](#lengthstring).
 
 <a id="skip" />
-### <a name="skip---array"></a>skip - array
+### skip – Array
 **skip(originalValue, numberToSkip)**
 
-Returns an array with all the elements after the specified number in the array.
+Gibt ein Array mit allen Elementen nach der angegebenen Anzahl im Array zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The array to use for skipping.
-| numberToSkip                       |   Yes    | The number of elements to skip. If this value is 0 or less, all the elements in the array are returned. If it is larger than the length of the array, an empty array is returned. 
+| originalValue | Ja | Das Array, das für das Überspringen verwendet werden soll.
+| numberToSkip | Ja | Die Anzahl von zu überspringenden Elementen. Wenn dieser Wert 0 oder kleiner ist, werden alle Elemente im Array zurückgegeben. Wenn er größer als die Länge des Arrays ist, wird ein leeres Array zurückgegeben. 
 
-For an example of using skip with a string, see [skip - string](#skipstring).
+Ein Beispiel für die Verwendung von „skip“ mit einer Zeichenfolge finden Sie unter [skip – Zeichenfolge](#skipstring).
 
-The following example skips the specified number of elements in the array.
+Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array übersprungen.
 
     "parameters": {
       "first": {
@@ -788,19 +787,19 @@ The following example skips the specified number of elements in the array.
     }
 
 <a id="take" />
-### <a name="take---array"></a>take - array
+### take – Array
 **take(originalValue, numberToTake)**
 
-Returns an array with the specified number of elements from the start of the array.
+Gibt ein Array mit der angegebenen Anzahl von Elementen ab dem Anfang des Arrays zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The array to take the elements from.
-| numberToTake                       |   Yes    | The number of elements to take. If this value is 0 or less, an empty array is returned. If it is larger than the length of the given array, all the elements in the array are returned.
+| originalValue | Ja | Das Array, aus dem die Elemente entnommen werden sollen.
+| numberToTake | Ja | Die Anzahl von zu entnehmenden Elementen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays, werden alle Elemente des Arrays zurückgegeben.
 
-For an example of using take with a string, see [take - string](#takestring).
+Ein Beispiel für die Verwendung von „take“ mit einer Zeichenfolge finden Sie unter [take – Zeichenfolge](#takestring).
 
-The following example takes the specified number of elements from the array.
+Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array verwendet.
 
     "parameters": {
       "first": {
@@ -826,26 +825,26 @@ The following example takes the specified number of elements from the array.
       }
     }
 
-## <a name="deployment-value-functions"></a>Deployment value functions
+## Funktionen für Bereitstellungswerte
 
-Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
+Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten aus Vorlagenabschnitten sowie von bereitstellungsbezogenen Werten bereit:
 
 - [deployment](#deployment)
 - [parameters](#parameters)
-- [variables](#variables)
+- [Variablen](#variables)
 
-To get values from resources, resource groups, or subscriptions, see [Resource functions](#resource-functions).
+Informationen zum Abrufen von Werten aus Ressourcen, Ressourcengruppen oder Abonnements finden Sie unter [Ressourcenfunktionen](#resource-functions).
 
 <a id="deployment" />
-### <a name="deployment"></a>deployment
+### deployment
 
 **deployment()**
 
-Returns information about the current deployment operation.
+Gibt Informationen zum aktuellen Bereitstellungsvorgang zurück.
 
-This function returns the object that is passed during deployment. The properties in the returned object differ based on whether the deployment object is passed as a link or as an in-line object. 
+Diese Funktion gibt das Objekt zurück, das während der Bereitstellung übergeben wird. Die Eigenschaften im zurückgegebenen Objekt hängen davon ab, ob das Bereitstellungsobjekt als Link oder als Inlineobjekt übergeben wird.
 
-When the deployment object is passed in-line, such as when using the **-TemplateFile** parameter in Azure PowerShell to point to a local file, the returned object has the following format:
+Wenn das Bereitstellungsobjekt als Inlineobjekt übergeben wird, z.B. bei Verwendung des **-TemplateFile**-Parameters in Azure PowerShell zum Verweisen auf eine lokale Datei, hat das zurückgegebene Objekt das folgende Format:
 
     {
         "name": "",
@@ -865,7 +864,7 @@ When the deployment object is passed in-line, such as when using the **-Template
         }
     }
 
-When the object is passed as a link, such as when using the **-TemplateUri** parameter to point to a remote object, the object is returned in the following format. 
+Wenn das Objekt als Link übergeben wird, z. B. bei Verwendung des **-TemplateUri**-Parameters zum Verweisen auf ein Remoteobjekt, hat das zurückgegebene Objekt folgendes Format:
 
     {
         "name": "",
@@ -887,24 +886,24 @@ When the object is passed as a link, such as when using the **-TemplateUri** par
         }
     }
 
-The following example shows how to use deployment() to link to another template based on the URI of the parent template.
+Im folgenden Beispiel wird veranschaulicht, wie die Bereitstellung() verwendet wird, um zu einer anderen Vorlage basierend auf dem URI der übergeordneten Vorlage eine Verknüpfung erstellt wird.
 
     "variables": {  
         "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
     }  
 
 <a id="parameters" />
-### <a name="parameters"></a>parameters
+### parameters
 
-**parameters (parameterName)**
+**Parameter (parameterName)**
 
-Returns a parameter value. The specified parameter name must be defined in the parameters section of the template.
+Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parameterabschnitt der Vorlage definiert werden.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| parameterName                      |   Yes    | The name of the parameter to return.
+| parameterName | Ja | Der Name des zurückzugebenden Parameter.
 
-The following example shows a simplified use of the parameters function.
+Die folgenden Beispiele zeigen eine vereinfachte Nutzungsweise der Parameterfunktion.
 
     "parameters": { 
       "siteName": {
@@ -921,17 +920,17 @@ The following example shows a simplified use of the parameters function.
     ]
 
 <a id="variables" />
-### <a name="variables"></a>variables
+### Variablen
 
-**variables (variableName)**
+**Variablen (variableName)**
 
-Returns the value of variable. The specified variable name must be defined in the variables section of the template.
+Gibt den Wert der Variablen zurück. Der angegebene Variablenname muss im Variablenabschnitt der Vorlage definiert werden.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| variable Name                      |   Yes    | The name of the variable to return.
+| Variablenname | Ja | Der Name der zurückzugebenden Variable.
 
-The following example uses a variable value.
+Im folgenden Beispiel wird ein Variablenwert verwendet.
 
     "variables": {
       "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
@@ -944,45 +943,44 @@ The following example uses a variable value.
       }
     ],
 
-## <a name="resource-functions"></a>Resource functions
+## Ressourcen-Funktionen
 
-Resource Manager provides the following functions for getting resource values:
+Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten bereit:
 
-- [listKeys and list{Value}](#listkeys)
+- [listKeys und list{Value}](#listkeys)
 - [providers](#providers)
-- [reference](#reference)
-- [resourceGroup](#resourcegroup)
-- [resourceId](#resourceid)
-- [subscription](#subscription)
+- [Referenz](#reference)
+- [Ressourcengruppe](#resourcegroup)
+- [Ressourcen-ID](#resourceid)
+- [Abonnement](#subscription)
 
-To get values from parameters, variables, or the current deployment, see [Deployment value functions](#deployment-value-functions).
+Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuellen Bereitstellung finden Sie unter [Funktionen für Bereitstellungswerte](#deployment-value-functions).
 
-<a id="listkeys" />
-<a id="list" />
-### <a name="listkeys-and-list{value}"></a>listKeys and list{Value}
+<a id="listkeys" /> <a id="list" />
+### listKeys und list{Value}
 
-**listKeys (resourceName or resourceIdentifier, apiVersion)**
+**listKeys (resourceName oder resourceIdentifier, [apiVersion])**
 
-**list{Value} (resourceName or resourceIdentifier, apiVersion)**
+**list{Value} (resourceName oder resourceIdentifier, apiVersion)**
 
-Returns the values for any resource type that supports the list operation. The most common usage is **listKeys**. 
+Gibt die Werte für einen beliebigen Ressourcentyp zurück, der den list-Vorgang unterstützt. Am häufigsten wird **listKeys** verwendet.
   
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| resourceName or resourceIdentifier |   Yes    | Unique identifier for the resource.
-| apiVersion                         |   Yes    | API version of resource runtime state.
+| resourceName oder resourceIdentifier | Ja | Eindeutiger Bezeichner für die Ressource.
+| apiVersion | Ja | API-Version eines Ressourcen-Laufzeitstatus.
 
-Any operation that starts with **list** can be used a function in your template. The available operations include not only **listKeys**, but also operations like **list**, **listAdminKeys**, and **listStatus**. To determine which resource types have a list operation, use the following PowerShell command.
+Jeder Vorgang, der mit **list** beginnt, kann als Funktion in der Vorlage verwendet werden. Zu den verfügbaren Vorgängen gehört nicht nur **listKeys**, sondern auch Vorgänge wie **list**, **listAdminKeys**, und **listStatus**. Um zu bestimmen, welche Ressourcentypen einen list-Vorgang aufweisen, verwenden Sie den folgenden PowerShell-Befehl.
 
     Get-AzureRmProviderOperation -OperationSearchString *  | where {$_.Operation -like "*list*"} | FT Operation
 
-Or, retrieve the list with Azure CLI. The following example retrieves all the operations for **apiapps**, and uses the JSON utility [jq](http://stedolan.github.io/jq/download/) to filter only the list operations.
+Stattdessen können Sie die Liste auch über die Azure-Befehlszeilenschnittstelle abrufen. Das folgende Beispiel ruft alle Vorgänge für **apiapps** ab und verwendet das JSON-Hilfsprogramm [jq](http://stedolan.github.io/jq/download/), um nur die list-Vorgänge zu filtern.
 
-    azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains(\"list\"))"
+    azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains("list"))"
 
-The resourceId can be specified by using the [resourceId function](#resourceid) or by using the format **{providerNamespace}/{resourceType}/{resourceName}**.
+Die Ressourcen-ID kann mithilfe der [Ressourcen-ID-Funktion](./#resourceid) oder mithilfe des Formats **{providerNamespace}/{resourceType}/{resourceName}** angegeben werden.
 
-The following example shows how to return the primary and secondary keys from a storage account in the outputs section.
+Das folgende Beispiel zeigt, wie die Primär- und Sekundärschlüssel von einem Speicherkonto im Abschnitt „outputs“ zurückgegeben werden können:
 
     "outputs": { 
       "listKeysOutput": { 
@@ -991,7 +989,7 @@ The following example shows how to return the primary and secondary keys from a 
       } 
     } 
 
-The returned object from listKeys has the following format:
+Das zurückgegebene Objekt von „listKeys“ hat das folgende Format:
 
     {
       "keys": [
@@ -1009,18 +1007,18 @@ The returned object from listKeys has the following format:
     }
 
 <a id="providers" />
-### <a name="providers"></a>providers
+### providers
 
 **providers (providerNamespace, [resourceType])**
 
-Returns information about a resource provider and its supported resource types. If you do not provide a resource type, the function returns all the supported types for the resource provider.
+Gibt Informationen zu einem Ressourcenanbieter und den von ihm unterstützten Ressourcentypen zurück. Wenn Sie keinen Ressourcentyp angeben, gibt die Funktion alle unterstützten Typen für den Ressourcenanbieter zurück.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| providerNamespace                  |   Yes    | Namespace of the provider
-| resourceType                       |   No     | The type of resource within the specified namespace.
+| providerNamespace | Ja | Namespace des Anbieters
+| resourceType | Nein | Der Ressourcentyp innerhalb des angegebenen Namespace.
 
-Each supported type is returned in the following format. Array ordering is not guaranteed.
+Jeder unterstützte Typ wird im unten angegebenen Format zurückgegeben. Die Arraysortierung ist dabei nicht garantiert.
 
     {
         "resourceType": "",
@@ -1028,77 +1026,77 @@ Each supported type is returned in the following format. Array ordering is not g
         "apiVersions": [ ]
     }
 
-The following example shows how to use the provider function:
+Das folgende Beispiel zeigt die Nutzungsweise der Anbieterfunktion:
 
     "outputs": {
-        "exampleOutput": {
-            "value": "[providers('Microsoft.Storage', 'storageAccounts')]",
-            "type" : "object"
-        }
+	    "exampleOutput": {
+		    "value": "[providers('Microsoft.Storage', 'storageAccounts')]",
+		    "type" : "object"
+	    }
     }
 
 <a id="reference" />
-### <a name="reference"></a>reference
+### Referenz
 
-**reference (resourceName or resourceIdentifier, [apiVersion])**
+**reference (resourceName oder resourceIdentifier, [apiVersion])**
 
-Returns an object representing another resource's runtime state.
+Gibt ein Objekt zurück, das den Laufzeitstatus einer anderen Ressource darstellt.
 
-| Parameter                          | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :--------------------------------: | :------: | :----------
-| resourceName or resourceIdentifier |   Yes    | Name or unique identifier of a resource.
-| apiVersion                         |   No     | API version of the specified resource. Include this parameter when the resource is not provisioned within same template.
+| resourceName oder resourceIdentifier | Ja | Name oder eindeutiger Bezeichner einer Ressource
+| apiVersion | Nein | API-Version der angegebenen Ressource. Schließen Sie diesen Parameter ein, wenn die Ressource nicht innerhalb der gleichen Vorlage bereitgestellt wird.
 
-The **reference** function derives its value from a runtime state, and therefore cannot be used in the variables section. It can be used in outputs section of a template.
+Die **Referenz**-Funktion leitet ihren Wert von einem Laufzeitstatus ab und kann somit nicht im Variablen-Abschnitt verwendet werden. Sie kann in Ausgabeabschnitten einer Vorlage verwendet werden.
 
-By using the reference function, you implicitly declare that one resource depends on another resource if the referenced resource is provisioned within same template. You do not need to also use the **dependsOn** property. The function is not evaluated until the referenced resource has completed deployment.
+Mithilfe der Referenzfunktion können Sie implizit deklarieren, dass eine Ressource von einer anderen abhängt, wenn die referenzierte Ressource innerhalb der gleichen Vorlage zur Verfügung gestellt wird. Sie müssen nicht zusätzlich die Eigenschaft **dependsOn** verwenden. Die Funktion wird nicht ausgewertet, bis die Ressource, auf die verwiesen wird, die Bereitstellung abgeschlossen hat.
 
-The following example references a storage account that is deployed in the same template.
-
-    "outputs": {
-        "NewStorage": {
-            "value": "[reference(parameters('storageAccountName'))]",
-            "type" : "object"
-        }
-    }
-
-The following example references a storage account that is not deployed in this template, but exists within the same resource group as the resources being deployed.
+Im folgenden Beispiel wird auf ein Speicherkonto verwiesen, das in der gleichen Vorlage bereitgestellt wird.
 
     "outputs": {
-        "ExistingStorage": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
-            "type" : "object"
-        }
-    }
+		"NewStorage": {
+			"value": "[reference(parameters('storageAccountName'))]",
+			"type" : "object"
+		}
+	}
 
-You can retrieve a particular value from the returned object, such as the blob endpoint URI, as shown in the following example.
-
-    "outputs": {
-        "BlobUri": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
-            "type" : "string"
-        }
-    }
-
-The following example references a storage account in a different resource group.
+Im folgenden Beispiel wird auf ein Speicherkonto verwiesen, das nicht in dieser Vorlage bereitgestellt wird, aber innerhalb der gleichen Ressourcengruppe wie die bereitgestellten Ressourcen enthalten ist.
 
     "outputs": {
-        "BlobUri": {
-            "value": "[reference(resourceId(parameters('relatedGroup'), 'Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
-            "type" : "string"
-        }
-    }
+		"ExistingStorage": {
+			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
+			"type" : "object"
+		}
+	}
 
-The properties on the object returned from the **reference** function vary by resource type. To see the property names and values for a resource type, create a simple template that returns the object in the **outputs** section. If you have an existing resource of that type, your template just returns the object without deploying any new resources. If you do not have an existing resource of that type, your template deploys only that type and returns the object. Then, add those properties to other templates that need to dynamically retrieve the values during deployment. 
+Sie können wie im folgenden Beispiel über das zurückgegebene Objekt, beispielsweise den Blob-Endpunkt-URI, einen bestimmten Wert abrufen:
+
+    "outputs": {
+		"BlobUri": {
+			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+			"type" : "string"
+		}
+	}
+
+Im folgenden Beispiel wird auf ein Speicherkonto in einer anderen Ressourcengruppe verwiesen:
+
+    "outputs": {
+		"BlobUri": {
+			"value": "[reference(resourceId(parameters('relatedGroup'), 'Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+			"type" : "string"
+		}
+	}
+
+Die Eigenschaften für das Objekt, die von der **reference**-Funktion zurückgegeben werden, variieren je nach Ressourcentyp. Um die Eigenschaftennamen und Werte für einen Ressourcentyp anzuzeigen, erstellen Sie eine einfache Vorlage, die das Objekt im Abschnitt **outputs** zurückgibt. Wenn Sie über eine Ressource dieses Typs verfügen, gibt Ihre Vorlage lediglich das Objekt zurück, ohne neue Ressourcen bereitzustellen. Wenn Sie nicht über eine vorhandene Ressource dieses Typs verfügen, stellt Ihre Vorlage nur diesen Typ bereit und gibt das Objekt zurück. Fügen Sie anschließend diese Eigenschaften anderen Vorlagen hinzu, die während der Bereitstellung die Werte dynamisch abrufen müssen.
 
 <a id="resourcegroup" />
-### <a name="resourcegroup"></a>resourceGroup
+### Ressourcengruppe
 
 **resourceGroup()**
 
-Returns an object that represents the current resource group. 
+Gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt.
 
-The returned object is in the following format:
+Das zurückgegebene Objekt hat das folgende Format:
 
     {
       "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
@@ -1111,7 +1109,7 @@ The returned object is in the following format:
       }
     }
 
-The following example uses the resource group location to assign the location for a web site.
+Das folgende Beispiel nutzt den Speicherort der Ressourcengruppe, um einer Website den Speicherort zuzuweisen.
 
     "resources": [
        {
@@ -1124,30 +1122,30 @@ The following example uses the resource group location to assign the location fo
     ]
 
 <a id="resourceid" />
-### <a name="resourceid"></a>resourceId
+### Ressourcen-ID
 
 **resourceId ([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
 
-Returns the unique identifier of a resource. 
+Gibt den eindeutigen Bezeichner einer Ressource zurück.
       
-| Parameter         | Required | Description
+| Parameter | Erforderlich | Beschreibung
 | :---------------: | :------: | :----------
-| subscriptionId    |   No     | Default value is the current subscription. Specify this value when you need to retrieve a resource in another subscription.
-| resourceGroupName |   No     | Default value is current resource group. Specify this value when you need to retrieve a resource in another resource group.
-| resourceType      |   Yes    | Type of resource including resource provider namespace.
-| resourceName1     |   Yes    | Name of resource.
-| resourceName2     |   No     | Next resource name segment if resource is nested.
+| subscriptionId | Nein | Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten.
+| ResourceGroupName | Nein | Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressourcengruppe abrufen möchten.
+| resourceType | Ja | Ressourcentyp einschließlich Namespace von Ressourcenanbieter.
+| resourceName1 | Ja | Name der Ressource.
+| resourceName2 | Nein | Nächstes Ressourcen-Namensegment, wenn die Ressource geschachtelt ist.
 
-You use this function when the resource name is ambiguous or not provisioned within the same template. The identifier is returned in the following format:
+Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Vorlage zur Verfügung gestellt wird. Der Bezeichner wird im folgenden Format zurückgeben:
 
     /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/{resourceProviderNamespace}/{resourceType}/{resourceName}
 
-The following example shows how to retrieve the resource ids for a web site and a database. The web site exists in a resource group named **myWebsitesGroup** and the database exists in the current resource group for this template.
+Das folgende Beispiel zeigt, wie die Ressourcen-IDs für eine Website und eine Datenbank abgerufen werden können. Die Website besteht in einer Ressourcengruppe namens **myWebsitesGroup** und die Datenbank in der aktuellen Ressourcengruppe für diese Vorlage.
 
     [resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
     [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]
     
-Often, you need to use this function when using a storage account or virtual network in an alternate resource group. The storage account or virtual network may be used across multiple resource groups; therefore, you do not want to delete them when deleting a single resource group. The following example shows how a resource from an external resource group can easily be used:
+Sie müssen diese Funktion oft nutzen, wenn Sie ein Speicherkonto oder einen virtuellen Computer in einer alternativen Ressourcengruppe verwenden. Das Speicherkonto oder der virtuelle Computer können über mehrere Ressourcengruppen hinweg genutzt werden. Daher sollten Sie diese beim Löschvorgang für eine einzelne Ressourcengruppe nicht löschen. Das folgende Beispiel zeigt, wie eine Ressource einer externen Ressourcengruppe leicht genutzt werden kann:
 
     {
       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -1191,11 +1189,11 @@ Often, you need to use this function when using a storage account or virtual net
     }
 
 <a id="subscription" />
-### <a name="subscription"></a>subscription
+### subscription
 
 **subscription()**
 
-Returns details about the subscription in the following format.
+Gibt Details über das Abonnement im folgenden Format zurück:
 
     {
         "id": "/subscriptions/#####",
@@ -1203,7 +1201,7 @@ Returns details about the subscription in the following format.
         "tenantId": "#####"
     }
 
-The following example shows the subscription function called in the outputs section. 
+Das folgende Beispiel zeigt ein Abrufen der subscription-Funktion im Abschnitt „outputs“.
 
     "outputs": { 
       "exampleOutput": { 
@@ -1213,15 +1211,10 @@ The following example shows the subscription function called in the outputs sect
     } 
 
 
-## <a name="next-steps"></a>Next Steps
-- For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
-- To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)
-- To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
-- To see how to deploy the template you have created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)
+## Nächste Schritte
+- Eine Beschreibung der Abschnitte in einer Azure-Ressourcen-Manager-Vorlage finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
+- Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](resource-group-linked-templates.md).
+- Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
+- Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

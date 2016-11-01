@@ -1,64 +1,60 @@
 <properties
-    pageTitle="Resource Groups Guidelines | Microsoft Azure"
-    description="Learn about the key design and implementation guidelines for deploying Resource Groups in Azure infrastructure services."
-    documentationCenter=""
-    services="virtual-machines-windows"
-    authors="iainfoulds"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Richtlinien für Ressourcengruppen | Microsoft Azure"
+	description="Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung von Ressourcengruppen in Azure-Infrastrukturdiensten."
+	documentationCenter=""
+	services="virtual-machines-windows"
+	authors="iainfoulds"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/08/2016"
-    ms.author="iainfou"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2016"
+	ms.author="iainfou"/>
+
+# Richtlinien für Azure-Ressourcengruppen
+
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
+
+In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung logisch aufbauen und alle Komponenten in Ressourcengruppen zusammenfassen.
 
 
-# <a name="azure-resource-group-guidelines"></a>Azure resource group guidelines
+## Implementierungsrichtlinien für Ressourcengruppen
 
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)] 
+Entscheidungen:
 
-This article focuses on understanding how to logically build out your environment and group all the components in Resource Groups.
+- Werden Sie Ressourcengruppen anhand der zentralen Infrastrukturkomponenten oder für eine vollständige Anwendungsbereitstellung aufbauen?
+- Müssen Sie den Zugriff auf Ressourcengruppen mithilfe der rollenbasierten Zugriffssteuerung beschränken?
 
+Aufgaben:
 
-## <a name="implementation-guidelines-for-resource-groups"></a>Implementation guidelines for Resource Groups
-
-Decisions:
-
-- Are you going to build out Resource Groups by the core infrastructure components, or by complete application deployment?
-- Do you need to restrict access to Resource Groups using Role-Based Access Controls?
-
-Tasks:
-
-- Define what core infrastructure components and dedicated Resource Groups you need.
-- Review how to implement Resource Manager templates for consistent, reproducible deployments.
-- Define what user access roles you need for controlling access to Resource Groups.
-- Create the set of Resource Groups using your naming convention. You can use Azure PowerShell or the portal.
+- Legen Sie fest, welche zentralen Infrastrukturkomponenten und dedizierten Ressourcengruppen Sie benötigen.
+- Prüfen Sie, wie Resource Manager-Vorlagen für konsistente, reproduzierbare Bereitstellungen implementiert werden können.
+- Legen Sie fest, welche Benutzerzugriffsrollen Sie zur Steuerung des Zugriffs auf Ressourcengruppen benötigen.
+- Erstellen Sie den Satz von Ressourcengruppen anhand Ihrer Benennungskonvention. Sie können Azure PowerShell oder das Portal verwenden.
 
 
-## <a name="resource-groups"></a>Resource Groups
+## Ressourcengruppen
 
-In Azure, you logically group related resources such as storage accounts, virtual networks, and virtual machines (VMs) to deploy, manage, and maintain them as a single entity. This approach makes it easier to deploy applications while keeping all the related resources together from a management perspective, or to grant others access to that group of resources. For a more comprehensive understanding of Resource Groups, read the [Azure Resource Manager overview](../resource-group-overview.md).
+In Azure fassen Sie zusammengehörige Ressourcen wie Speicherkonten, virtuelle Netzwerke und virtuelle Computer (VMs) logisch zusammen, um sie als eine Einheit bereitzustellen, zu verwalten und zu warten. Auf diese Weise können Sie Anwendungen leichter bereitstellen und gleichzeitig alle zugehörigen Ressourcen verwaltungstechnisch zusammenhalten oder anderen Benutzern Zugriff auf die Ressourcengruppe gewähren. Ausführlichere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
-A key feature to Resource Groups is ability to build out your environment using templates. A template is simply a JSON file that declares the storage, networking, and compute resources. You can also define any related custom scripts or configurations to apply. By using these templates, you create consistent, reproducible deployments for your applications. This approach makes it easy to build out an environment in development and then use that same template to create a production deployment, or vice versa. For a better understanding using templates, read [the template walkthrough](../resource-manager-template-walkthrough.md) that guides you through each step of the building out a template.
+Ein wichtiges Feature von Ressourcengruppen ist die Möglichkeit, zum Erstellen Ihrer Umgebung mithilfe von Vorlagen. Eine Vorlage ist eine JSON-Datei, in der die Speicher-, Netzwerk- und Computeressourcen deklariert werden. Sie können auch zugehörige benutzerdefinierte Skripts oder anzuwendende Konfigurationen definieren. Mithilfe dieser Vorlagen können Sie konsistente, reproduzierbare Bereitstellungen für Ihre Anwendungen erstellen. Dieser Ansatz erleichtert die Erstellung einer Umgebung für die Entwicklung und die anschließende Verwendung derselben Vorlage für die Erstellung einer Produktionsbereitstellung (oder umgekehrt). Um die Verwendung von Vorlagen besser zu verstehen, können Sie die [exemplarische Vorgehensweise zu Vorlagen](../resource-manager-template-walkthrough.md) lesen, die Sie schrittweise durch die Erstellung einer Vorlage führt.
 
-There are two different approaches you can take when designing your environment with Resource Groups:
+Sie können beim Entwerfen Ihrer Umgebung mit Ressourcengruppen zwischen zwei verschiedenen Ansätzen wählen:
 
-- Resource Groups for each application deployment that combines the storage accounts, virtual networks, and subnets, VMs, load balancers, etc.
-- Centralized Resource Groups that contain your core virtual networking and subnets or storage accounts. Your applications are then in their own Resource Groups that only contain VMs, load balancers, network interfaces, etc.
+- Ressourcengruppen für jede Anwendungsbereitstellung, die Speicherkonten, virtuelle Netzwerke und Subnetze, virtuelle Computer, Load Balancer usw. kombinieren.
+- Zentralisierte Ressourcengruppen, die Ihre wesentlichen virtuellen Netzwerke und Subnetze bzw. Speicherkonten enthalten. Ihre Anwendungen befinden sich dann in eigenen Ressourcengruppen, die nur virtuelle Computer, Load Balancer, Netzwerkschnittstellen usw. enthalten.
 
-As you scale out, creating centralized Resource Groups for your virtual networking and subnets makes it easier to build cross-premises network connections for hybrid connectivity options. The alternative approach is for each application to have their own virtual network that requires configuration and maintenance.  [Role-Based Access Controls](../active-directory/role-based-access-control-what-is.md) provide a granular way to control access to Resource Groups. For production applications, you can control the users that may access those resources, or for the core infrastructure resources you can limit only infrastructure engineers to work with them. Your application owners only have access to the application components within their Resource Group and not the core Azure infrastructure of your environment. As you design your environment, consider the users that require access to the resources and design your Resource Groups accordingly. 
-
-
-## <a name="next-steps"></a>Next steps
-
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)] 
+Wenn Sie Ihre Umgebung horizontal hochskalieren möchten, vereinfachen zentralisierte Ressourcengruppen für Ihre virtuellen Netzwerke und Subnetze die Erstellung von standortübergreifenden Netzwerkverbindungen für hybride Verbindungsoptionen. Der alternative Ansatz für jede Anwendung ist das Arbeiten mit einem eigenen virtuellen Netzwerk, das konfiguriert und gewartet werden muss. [Rollenbasierte Zugriffssteuerungen](../active-directory/role-based-access-control-what-is.md) bieten eine differenzierte Möglichkeit, den Zugriff auf Ressourcengruppen zu steuern. Bei Produktionsanwendungen können Sie steuern, welche Benutzer auf diese Ressourcen zugreifen dürfen. Für die zentralen Infrastrukturressourcen können Sie festlegen, dass ausschließlich Infrastrukturtechniker mit Infrastrukturressourcen arbeiten dürfen. Ihre Anwendungsbesitzer haben nur Zugriff auf die Anwendungskomponenten innerhalb ihrer Ressourcengruppe, nicht aber auf die zentrale Azure-Infrastruktur Ihrer Umgebung. Berücksichtigen Sie beim Entwerfen Ihrer Umgebung die Benutzer, die auf die Ressourcen zugreifen müssen, und entwerfen Sie Ihre Ressourcengruppen entsprechend.
 
 
-<!--HONumber=Oct16_HO2-->
+## Nächste Schritte
 
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
+<!---HONumber=AcomDC_0914_2016-->

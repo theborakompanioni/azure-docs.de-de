@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Connect a device using C on Linux | Microsoft Azure"
-   description="Describes how to connect a device to the Azure IoT Suite preconfigured remote monitoring solution using an application written in C running on Linux."
+   pageTitle="Anschließen eines Geräts mit C unter Linux | Microsoft Azure"
+   description="Es wird beschrieben, wie Sie ein Gerät mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite verbinden, indem Sie eine in C geschriebene Anwendung unter Linux ausführen."
    services=""
    suite="iot-suite"
    documentationCenter="na"
@@ -14,47 +14,46 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/05/2016"
+   ms.date="07/14/2016"
    ms.author="dobett"/>
 
 
-
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-(linux)"></a>Connect your device to the remote monitoring preconfigured solution (Linux)
+# Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Linux)
 
 [AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## <a name="build-and-run-a-sample-c-client-linux"></a>Build and run a sample C client Linux
+## Erstellen und Ausführen eines in C geschriebenen Beispielclients für Linux
 
-The following procedures show you how to create a client application, written in C and built and run on Ubuntu Linux, that communicates with the remote monitoring preconfigured solution. To complete these steps, you need a device running Ubuntu version 15.04 or 15.10. Before proceeding, install the prerequisite packages on your Ubuntu device using the following command:
+Die folgenden Schritte veranschaulichen die Erstellung einer einfachen Clientanwendung, die in C geschrieben und unter Ubuntu Linux erstellt und ausgeführt wird. Diese kommuniziert mit der vorkonfigurierten Lösung für die Remoteüberwachung. Für diese Schritte benötigen Sie ein Gerät mit der Ubuntu-Version 15.04 oder 15.10. Ehe Sie fortfahren, installieren Sie die erforderlichen Pakete mit dem folgenden Befehl auf Ihrem Ubuntu-Gerät:
 
 ```
 sudo apt-get install cmake gcc g++
 ```
 
-## <a name="install-the-client-libraries-on-your-device"></a>Install the client libraries on your device
+## Installieren der Clientbibliotheken auf dem Gerät
 
-The Azure IoT Hub client libraries are available as a package you can install on your Ubuntu device using the **apt-get** command. Complete the following steps to install the package that contains the IoT Hub client library and header files on your Ubuntu machine:
+Die Clientbibliotheken für Azure IoT Hub stehen als ein Paket bereit, das Sie mit dem Befehl **apt-Get** auf Ihrem Ubuntu-Gerät installieren können. Führen Sie die folgenden Schritte aus, um das Paket zu installieren, das die IoT Hub-Clientbibliotheks- und Headerdateien auf Ihrem Ubuntu-Computer enthält:
 
-1. Add the AzureIoT repository to the machine:
+1. Fügen Sie das Repository „AzureIoT“ dem Computer hinzu:
 
     ```
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
     sudo apt-get update
     ```
 
-2. Install the azure-iot-sdk-c-dev package
+2. Installieren Sie das Paket „azure-iot-sdk-c-dev“:
 
     ```
     sudo apt-get install -y azure-iot-sdk-c-dev
     ```
 
-## <a name="add-code-to-specify-the-behavior-of-the-device"></a>Add code to specify the behavior of the device
+## Hinzufügen von Code, um das Verhalten des Geräts anzugeben
 
-On your Ubuntu machine, create a folder called **remote\_monitoring**. In the **remote\_monitoring** folder create the four files **main.c**, **remote\_monitoring.c**, **remote\_monitoring.h**, and **CMakeLists.txt**.
+Erstellen Sie auf Ihrem Ubuntu-Computer den Ordner **Remote\_monitoring**. Erstellen Sie im Ordner **remote\_monitoring** diese vier Dateien: **main.c**, **remote\_monitoring.c**, **remote\_monitoring.h** und **CMakeLists.txt**.
 
-The IoT Hub serializer client libraries use a model to specify the format of messages the device sends to IoT Hub and the commands it receives from IoT Hub.
+Die Clientbibliotheken des IoT Hub-Serialisierungsprogramms verwenden ein Modell, das sowohl das Format der Nachrichten angibt, die das Gerät an IoT Hub sendet, als auch die Befehle von IoT Hub, auf die das Gerät reagiert.
 
-1. In a text editor, open the **remote\_monitoring.c** file. Add the following `#include` statements:
+1. Öffnen Sie in einem Text-Editor die Datei **remote\_monitoring.c**. Fügen Sie die folgenden `#include`-Anweisungen ein:
 
     ```
     #include "iothubtransportamqp.h"
@@ -66,7 +65,7 @@ The IoT Hub serializer client libraries use a model to specify the format of mes
     #include "azure_c_shared_utility/platform.h"
     ```
 
-2. Add the following variable declarations after the `#include` statements. Replace the placeholder values [Device Id] and [Device Key] with values for your device from the remote monitoring solution dashboard. Use the IoT Hub Hostname from the dashboard to replace [IoTHub Name]. For example, if your IoT Hub Hostname is **contoso.azure-devices.net**, replace [IoTHub Name] with **contoso**:
+2. Fügen Sie die folgenden Variablendeklarationen nach den `#include`-Anweisungen hinzu. Ersetzen Sie die Platzhalterwerte [Device Id] und [Device Key] durch die Gerätewerte aus dem Dashboard der Remoteüberwachungslösung. Verwenden Sie den IoT Hub-Hostnamen aus dem Dashboard, um [IoTHub Name] zu ersetzen. Beispiel: Wenn der IoT Hub-Hostname **contoso.azure-devices.net** lautet, ersetzen Sie [IoTHub Name] durch **contoso**:
 
     ```
     static const char* deviceId = "[Device Id]";
@@ -75,7 +74,7 @@ The IoT Hub serializer client libraries use a model to specify the format of mes
     static const char* hubSuffix = "azure-devices.net";
     ```
 
-3. Add the following code to define the model that enables the device to communicate with IoT Hub. This model specifies that the device sends temperature, external temperature, humidity, and a device id as telemetry. The device also sends metadata about the device to IoT Hub, including a list of commands that the device supports. This device responds to the commands **SetTemperature** and **SetHumidity**:
+3. Fügen Sie den folgenden Code hinzu, um das Modell zu definieren, das dem Gerät die Kommunikation mit IoT Hub ermöglicht. Dieses Modell gibt an, dass das Gerät die Daten „Temperatur“, „externe Temperatur“, „Luftfeuchtigkeit“ und eine Geräte-ID als Telemetriedaten sendet. Das Gerät sendet auch Metadaten über sich selbst an IoT Hub, einschließlich einer Liste von unterstützten Befehlen. Das Gerät reagiert auf die Befehle **SetTemperature** und **SetHumidity**:
 
     ```
     // Define the Model
@@ -114,11 +113,11 @@ The IoT Hub serializer client libraries use a model to specify the format of mes
     END_NAMESPACE(Contoso);
     ```
 
-### <a name="add-code-to-implement-the-behavior-of-the-device"></a>Add code to implement the behavior of the device
+### Hinzufügen von Code, um das Verhalten des Geräts zu implementieren
 
-Add the functions to execute when the device receives a command from the hub, and the code to send simulated telemetry to the hub.
+Wenn das Gerät einen Befehl aus dem Hub empfängt, fügen Sie auszuführende Funktionen und den Code hinzu, um simulierte Telemetriedaten an den Hub zu senden.
 
-1. Add the following functions that execute when the device receives the **SetTemperature** and **SetHumidity** commands defined in the model:
+1. Fügen Sie die folgenden Funktionen hinzu, die ausgeführt werden, wenn das Gerät die im Modell definierten Befehle **SetTemperature** und **SetHumidity** empfängt:
 
     ```
     EXECUTE_COMMAND_RESULT SetTemperature(Thermostat* thermostat, int temperature)
@@ -136,7 +135,7 @@ Add the functions to execute when the device receives a command from the hub, an
     }
     ```
 
-2. Add the following function that sends a message to IoT Hub:
+2. Fügen Sie die folgende Funktion hinzu, die eine Nachricht an IoT Hub sendet:
 
     ```
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -163,7 +162,7 @@ Add the functions to execute when the device receives a command from the hub, an
     }
     ```
 
-3. Add the following function that hooks up the serialization library in the SDK:
+3. Fügen Sie die folgende Funktion hinzu, die die SDK-Serialisierungsbibliothek einbindet:
 
     ```
     static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -201,7 +200,7 @@ Add the functions to execute when the device receives a command from the hub, an
     }
     ```
 
-4. Add the following function to connect to IoT Hub, send and receive messages, and disconnect from the hub. Notice how the device sends metadata about itself, including the commands it supports, to IoT Hub when it connects. This metadata enables the solution to update the status of the device to **Running** on the dashboard:
+4. Fügen Sie die folgende Funktion hinzu, um eine Verbindung mit IoT Hub einzugehen, Nachrichten zu versenden und zu empfangen und sich vom Hub zu trennen. Beachten Sie, dass das Gerät direkt nach dem Herstellen der Verbindung Metadaten über sich selbst an IoT Hub sendet, z.B. die Befehle, die es unterstützt. Dadurch kann die Projektmappe den Status des Geräts auf dem Dashboard in **Wird ausgeführt** ändern:
 
     ```
     void remote_monitoring_run(void)
@@ -327,7 +326,7 @@ Add the functions to execute when the device receives a command from the hub, an
     }
     ```
     
-    For reference, here is a sample **DeviceInfo** message sent to IoT Hub at startup:
+    Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **DeviceInfo**-Nachricht, die beim Start an IoT Hub gesendet wird:
 
     ```
     {
@@ -346,13 +345,13 @@ Add the functions to execute when the device receives a command from the hub, an
     }
     ```
     
-    For reference, here is a sample **Telemetry** message sent to IoT Hub:
+    Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **Telemetrie**-Nachricht, die an IoT Hub gesendet wird:
 
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
     ```
     
-    For reference, here is a sample **Command** received from IoT Hub:
+    Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, der von IoT Hub empfangen wird:
     
     ```
     {
@@ -363,15 +362,15 @@ Add the functions to execute when the device receives a command from the hub, an
     }
     ```
 
-### <a name="add-code-to-invoke-the-remote_monitoring_run-function"></a>Add code to invoke the remote_monitoring_run function
+### Hinzufügen von Code zum Aufrufen der Funktion „remote\_monitoring\_run“
 
-In a text editor, open the **remote_monitoring.h** file. Add the following code:
+Öffnen Sie in einem Text-Editor die Datei **remote\_monitoring.h**. Fügen Sie den folgenden Code hinzu:
 
 ```
 void remote_monitoring_run(void);
 ```
 
-In a text editor, open the **main.c** file. Add the following code:
+Öffnen Sie in einem Text-Editor die Datei **main.c**. Fügen Sie den folgenden Code hinzu:
 
 ```
 #include "remote_monitoring.h"
@@ -384,13 +383,13 @@ int main(void)
 }
 ```
 
-## <a name="use-cmake-to-build-the-client-application"></a>Use CMake to build the client application
+## Erstellen der Clientanwendung mit CMake
 
-The following steps describe how to use *CMake* to build your client application.
+Die folgenden Schritte beschreiben, wie Sie *CMake* verwenden, um Ihre Clientanwendung zu erstellen.
 
-1. In a text editor, open the **CMakeLists.txt** file in the **remote_monitoring** folder.
+1. Öffnen Sie in einem Text-Editor die Datei **CMakeLists.txt** im Ordner **remote\_monitoring**.
 
-2. Add the following instructions to define how to build your client application:
+2. Fügen Sie die folgenden Anweisungen hinzu, um zu definieren, wie Sie Ihre Clientanwendung erstellen:
 
     ```
     cmake_minimum_required(VERSION 2.8.11)
@@ -423,7 +422,7 @@ The following steps describe how to use *CMake* to build your client application
     )
     ```
 
-3. In the **remote_monitoring** folder, create a folder to store the *make* files that CMake generates and then run the **cmake** and **make** commands as follows:
+3. Erstellen Sie im Ordner **remote\_monitoring** einen Ordner zum Speichern der *make*-Dateien, die CMake generiert, und führen Sie dann die Befehle **cmake** und **make** wie folgt aus:
 
     ```
     mkdir cmake
@@ -432,7 +431,7 @@ The following steps describe how to use *CMake* to build your client application
     make
     ```
 
-4. Run the client application and send telemetry to IoT Hub:
+4. Führen Sie die Clientanwendung aus, und senden Sie die Telemetriedaten an IoT Hub:
 
     ```
     ./sample_app
@@ -440,9 +439,4 @@ The following steps describe how to use *CMake* to build your client application
 
 [AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

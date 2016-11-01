@@ -1,58 +1,56 @@
 <properties
-    pageTitle="Azure Resource Manager Policy | Microsoft Azure"
-    description="Describes how to use Azure Resource Manager Policy to prevent violations at different scopes like subscription, resource groups or individual resources."
-    services="azure-resource-manager"
-    documentationCenter="na"
-    authors="ravbhatnagar"
-    manager="ryjones"
-    editor="tysonn"/>
+	pageTitle="Azure-Ressourcen-Manager-Richtlinien | Microsoft Azure"
+	description="Beschreibt die Verwendung von Azure-Ressourcen-Manager-Richtlinien, um Verstöße in unterschiedlichen Gültigkeitsbereichen wie Abonnements, Ressourcengruppen oder einzelnen Ressourcen zu verhindern."
+	services="azure-resource-manager"
+	documentationCenter="na"
+	authors="ravbhatnagar"
+	manager="ryjones"
+	editor="tysonn"/>
 
 <tags
-    ms.service="azure-resource-manager"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="07/12/2016"
-    ms.author="gauravbh;tomfitz"/>
+	ms.service="azure-resource-manager"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="07/12/2016"
+	ms.author="gauravbh;tomfitz"/>
 
+# Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung
 
-# <a name="use-policy-to-manage-resources-and-control-access"></a>Use Policy to manage resources and control access
+Sie können nun den Azure-Ressourcen-Manager zum Steuern des Zugriffs über benutzerdefinierte Richtlinien verwenden. Mithilfe von Richtlinien können Sie Benutzer in Ihrer Organisation hindern, gegen Konventionen zu verstoßen, die für das Verwalten der Ressourcen Ihrer Organisation gelten.
 
-Azure Resource Manager now allows you to control access through custom policies. With policies, you can prevent users in your organization from breaking conventions that are needed to manage your organization's resources. 
+Sie erstellen Richtliniendefinitionen, die die Aktionen oder Ressourcen beschreiben, die spezifisch verweigert werden. Sie weisen diese Richtliniendefinitionen dem gewünschten Ziel zu, z. B. einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource.
 
-You create policy definitions that describe the actions or resources that are specifically denied. You assign those policy definitions at the desired scope, such as the subscription, resource group, or an individual resource. 
+In diesem Artikel wird die grundlegende Struktur der Richtliniendefinitionssprache erläutert, mit der Sie Richtlinien erstellen. Anschließend wird beschrieben, wie Sie diese Richtlinien auf verschiedene Ziele anwenden. Zum Schluss finden Sie einige Beispiele dafür, wie Sie dies auch über die REST-API erreichen können.
 
-In this article, we will explain the basic structure of the policy definition language that you can use to create policies. Then we will describe how you can apply these policies at different scopes and finally we will show some examples of how you can achieve this through REST API.
+## Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
 
-## <a name="how-is-it-different-from-rbac?"></a>How is it different from RBAC?
+Es gibt einige wichtige Unterschiede zwischen Richtlinien und rollenbasierter Zugriffssteuerung. Als Erstes müssen Sie jedoch verstehen, dass Richtlinien und RBAC zusammenarbeiten. Um Richtlinien verwenden zu können, muss der Benutzer über die RBAC authentifiziert werden. Im Gegensatz zur RBAC stellen Richtlinien ein Standardsystem für das Zulassen und explizite Verweigern dar.
 
-There are a few key differences between policy and role-based access control, but the first thing to understand is that policies and RBAC work together. To be able to use policy, the user must be authenticated through RBAC. Unlike RBAC, policy is a default allow and explicit deny system. 
+Die RBAC konzentriert sich auf die Aktionen, die ein **Benutzer** in verschiedenen Bereichen ausführen darf. Beispiel: Ein bestimmter Benutzer wird der Rolle „Mitwirkender“ für eine Ressourcengruppe in einem bestimmten Bereich hinzugefügt, sodass der Benutzer Änderungen an der Ressourcengruppe vornehmen darf.
 
-RBAC focuses on the actions a **user** can perform at different scopes. For example, a particular user is added to the contributor role for a resource group at the desired scope, so the user can make changes to that resource group. 
+Richtlinien konzentrieren sich auf Aktionen für **Ressourcen** in verschiedenen Bereichen. Beispielsweise können Sie über Richtlinien die Arten von Ressourcen steuern, die bereitgestellt werden können, oder die Standorte beschränken, an denen die Ressourcen bereitgestellt werden können.
 
-Policy focuses on **resource** actions at various scopes. For example, through policies, you can control the types of resources that can be provisioned or restrict the locations in which the resources can be provisioned.
+## Häufige Szenarios
 
-## <a name="common-scenarios"></a>Common Scenarios
+Ein allgemeines Szenario ist der Bedarf an Tags auf Abteilungsebene zum Zweck der verbrauchsbasierten Kostenzuteilung. Eine Organisation könnte beispielsweise Vorgänge nur zulassen, wenn die richtige Kostenstelle zugeordnet ist, andernfalls soll die Anfrage abgelehnt werden. Dadurch ist es möglich, die Abrechnung für die durchgeführten Vorgänge mit der richtigen Kostenstelle durchzuführen.
 
-One common scenario is to require departmental tags for chargeback purpose. An organization might want to allow operations only when the appropriate cost center is associated; otherwise, they will deny the request.
-This would help them charge the appropriate cost center for the operations performed.
+In einem weiteren gängigen Szenario möchte die Organisation die Standorte steuern, an denen Ressourcen erstellt werden. Oder sie möchte möglicherweise den Zugriff auf Ressourcen steuern, indem nur bestimmte Arten von Ressourcen bereitgestellt werden dürfen.
 
-Another common scenario is that the organization might want to control the locations where resources are created. Or they might want to control access to the resources by allowing only certain types of resources to be provisioned.
+Auf ähnliche Weise kann eine Organisation den Dienstkatalog steuern oder die gewünschten Benennungskonventionen für Ressourcen erzwingen.
 
-Similarly, an organization can control the service catalog or enforce the desired naming conventions for the resources.
+Mithilfe von Richtlinien können diese Szenarios so einfach wie unten beschrieben umgesetzt werden.
 
-Using policies, these scenarios can easily be achieved as described below.
+## Struktur von Richtliniendefinitionen
 
-## <a name="policy-definition-structure"></a>Policy Definition structure
+Richtliniendefinitionen werden mit JSON erstellt. Sie enthalten eine oder mehrere Bedingungen/logische Operatoren, die Aktionen und deren Auswirkungen definieren und damit festlegen, was geschieht, wenn die Bedingungen erfüllt sind. Das Schema wird unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) veröffentlicht.
 
-Policy definition is created using JSON. It consists of one or more conditions/logical operators which define the actions and an effect which tells what happens when the conditions are fulfilled. The schema is published at [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json). 
+Grundsätzlich enthält eine Richtlinie Folgendes:
 
-Basically, a policy contains the following:
+**Bedingung/logische Operatoren**: eine Reihe von Bedingungen, die über einen Satz von logischen Operatoren beeinflusst werden.
 
-**Condition/Logical operators:** It contains a set of conditions which can be manipulated through a set of logical operators.
-
-**Effect:** This describes what the effect will be when the condition is satisfied – either deny or audit. An audit effect will emit a warning event service log. For example, an administrator can create a policy which causes an audit if anyone creates a large VM, then review the logs later.
+**Effekt**: beschreibt die Auswirkungen, wenn die Bedingung erfüllt ist – verweigern oder überwachen. Ein Überwachungseffekt gibt ein Warnereignis im Dienstprotokoll aus. Administratoren können z. B. eine Richtlinie erstellen, die eine Überwachung verursacht, wenn jemand einen großen virtuellen Computer erstellt, und dann später die Protokolle überprüfen.
 
     {
       "if" : {
@@ -63,104 +61,104 @@ Basically, a policy contains the following:
       }
     }
     
-## <a name="policy-evaluation"></a>Policy Evaluation
+## Richtlinienauswertung
 
-Policy will be evaluated when resource creation or template deployment happens using HTTP PUT. In case of template deployment, policy will be evaluated during the creation of each resource in the template. 
+Richtlinien werden ausgewertet, wenn die Erstellung von Ressourcen oder die Bereitstellung von Vorlagen mit HTTP PUT erfolgt. Bei der Bereitstellung von Vorlagen werden Richtlinien ausgewertet, wenn die einzelnen Ressourcen in einer Vorlage erstellt werden.
 
-> [AZURE.NOTE] Currently, policy does not evaluate resource types that do not support tags, kind, and location, such as the Microsoft.Resources/deployments resource type. This support will be added at a future time. To avoid backward compatibility issues, you should explicitly specify type when authoring policies. For example, a tag policy that does not specify types will be applied for all types. In that case, a template deployment may fail in the future if there is a nested resource that don't support tag, and the deployment resource type has been added to policy evaluation. 
+> [AZURE.NOTE] Die Richtlinie wertet derzeit keine Ressourcentypen aus, die „tags“, „kind“ und „location“ nicht unterstützen, wie etwa der Ressourcentyp „Microsoft.Resources/deployments“. Diese Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt. Um Probleme mit der Abwärtskompatibilität zu vermeiden, sollten Sie beim Erstellen von Richtlinien den Typ explizit angeben. Beispiel: Eine Richtlinie für Tags, in der keine Typen angegeben sind, wird auf alle Typen angewendet. In diesem Fall kann eine Vorlagenbereitstellung in der Zukunft fehlschlagen, wenn eine geschachtelte Ressource vorhanden ist, die „Tag“ nicht unterstützt, und der Ressourcentyp der Bereitstellung der Richtlinienauswertung hinzugefügt wurde.
 
-## <a name="logical-operators"></a>Logical Operators
+## Logische Operatoren
 
-The supported logical operators along with the syntax are listed below:
+Die unterstützten logischen Operatoren sind zusammen mit der Syntax nachfolgend aufgeführt:
 
-| Operator Name     | Syntax         |
+| Name des Operators | Syntax |
 | :------------- | :------------- |
-| Not            | "not" : {&lt;condition  or operator &gt;}             |
-| And           | "allOf" : [ {&lt;condition  or operator &gt;},{&lt;condition  or operator &gt;}] |
-| Or                         | "anyOf" : [ {&lt;condition  or operator &gt;},{&lt;condition  or operator &gt;}] |
+| Not | "not" : {&lt;Bedingung oder Operator &gt;} |
+| Und | "allOf" : [ {&lt;Bedingung oder Operator &gt;},{&lt;Bedingung oder Operator &gt;}] |
+| Oder | "anyOf" : [ {&lt;Bedingung oder Operator &gt;},{&lt;Bedingung oder Operator &gt;}] |
 
-Resource Manager enables you to specify complex logic in your policy through nested operators. For example, you can deny resource creation in a particular location for a specified resource type. An example of nested operators is shown below.
+Mit dem Ressourcen-Manager können Sie über geschachtelte Operatoren eine komplexe Logik in Ihrer Richtlinie angeben. Sie können z. B. das Erstellen von Ressourcen an einem bestimmten Speicherort für einen angegebenen Ressourcentyp verweigern. Ein Beispiel für geschachtelte Operatoren ist unten dargestellt.
 
-## <a name="conditions"></a>Conditions
+## Bedingungen
 
-A condition evaluates whether a **field** or **source** meets certain criteria. The supported condition names and syntax are listed below:
+Eine Bedingung prüft, ob ein **Feld** oder eine **Quelle** bestimmte Kriterien erfüllt. Die Namen unterstützter Bedingungen sind zusammen mit der Syntax nachstehend aufgeführt:
 
-| Condition Name | Syntax                |
+| Name der Bedingung | Syntax |
 | :------------- | :------------- |
-| Equals             | "equals" : "&lt;value&gt;"               |
-| Like                  | "like" : "&lt;value&gt;"                   |
-| Contains          | "contains" : "&lt;value&gt;"|
-| In                        | "in" : [ "&lt;value1&gt;","&lt;value2&gt;" ]|
-| ContainsKey    | "containsKey" : "&lt;keyName&gt;" |
-| Exists     | "exists" : "&lt;bool&gt;" |
+| Equals | "equals" : "&lt;Wert&gt;" |
+| Like | "like" : "&lt;Wert&gt;" |
+| Contains | "contains" : "&lt;Wert&gt;"|
+| Geben Sie in | "in" : [ "&lt;Wert1&gt;","&lt;Wert2&gt;" ]|
+| ContainsKey | "containsKey" : "&lt;Schlüsselname&gt;" |
+| Exists | "exists" : "&lt;bool&gt;" |
 
-### <a name="fields"></a>Fields
+### Felder
 
-Conditions are formed through the use of fields and sources. A field represents properties in the resource request payload that is used to describe the state of the resource. A source represents characteristics of the request itself. 
+Bedingungen werden mithilfe von Feldern und Quellen gebildet. Ein Feld stellt Eigenschaften in der Anforderungsnutzlast einer Ressource dar, mit der der Zustand der Ressource beschrieben wird. Eine Quelle stellt Merkmale der Anforderung selbst dar.
 
-The following fields and sources are supported:
+Die folgenden Felder und Quellen werden unterstützt:
 
-Fields: **name**, **kind**, **type**, **location**, **tags**, **tags.***, and **property alias**. 
+Felder: **name**, **kind**, **type**, **location**, **tags**, **tags.*** und **property alias**.
 
-### <a name="property-aliases"></a>Property aliases 
-Property alias is a name that can be used in a policy definition to access the resource type specific properties, such as settings, and skus. It works across all API versions where the property exists. Aliases can be retrieved by using the REST API shown below (Powershell support will be added in the future):
+### Eigenschaftenaliase 
+„property alias“ ist ein Name, der in einer Richtliniendefinition für den Zugriff auf die für einen Ressourcentyp spezifischen Eigenschaften (z. B. Einstellungen und SKUs) verwendet werden kann. Er kann in allen API-Versionen verwendet werden, in denen die Eigenschaft vorhanden ist. Aliase können mithilfe der folgenden REST-API abgerufen werden (die PowerShell-Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt):
 
     GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
-    
-The definition of an alias is shown below. As you can see, an alias defines paths in different API versions, even when there is a property name change. 
+	
+Die Definition eines Alias ist im Folgenden dargestellt. Wie Sie sehen können, definiert ein Alias Pfade in verschiedenen API-Versionen, auch wenn sich der Name einer Eigenschaft ändert.
 
-    "aliases": [
-        {
-          "name": "Microsoft.Storage/storageAccounts/sku.name",
-          "paths": [
-            {
-              "path": "properties.accountType",
-              "apiVersions": [
-                "2015-06-15",
-                "2015-05-01-preview"
-              ]
-            },
-            {
-              "path": "sku.name",
-              "apiVersions": [
-                "2016-01-01"
-              ]
-            }
-          ]
-        }
-    ]
+	"aliases": [
+	    {
+	      "name": "Microsoft.Storage/storageAccounts/sku.name",
+	      "paths": [
+	        {
+	          "path": "properties.accountType",
+	          "apiVersions": [
+	            "2015-06-15",
+	            "2015-05-01-preview"
+	          ]
+	        },
+	        {
+	          "path": "sku.name",
+	          "apiVersions": [
+	            "2016-01-01"
+	          ]
+	        }
+	      ]
+	    }
+	]
 
-Currently, the supported aliases are:
+Derzeit werden die folgenden Aliase unterstützt:
 
-| Alias name | Description |
+| Aliasname | Beschreibung |
 | ---------- | ----------- |
-| {resourceType}/sku.name | Supported resource types are: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Web/serverFarms,<br /> Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft.CDN/profiles |
-| {resourceType}/sku.family | Supported resource type is Microsoft.Cache/Redis |
-| {resourceType}/sku.capacity | Supported resource type is Microsoft.Cache/Redis |
-| Microsoft.Compute/virtualMachines/imagePublisher |  |
-| Microsoft.Compute/virtualMachines/imageOffer  |  |
-| Microsoft.Compute/virtualMachines/imageSku  |  |
-| Microsoft.Compute/virtualMachines/imageVersion  |  |
-| Microsoft.Cache/Redis/enableNonSslPort |  |
-| Microsoft.Cache/Redis/shardCount |  |
-| Microsoft.SQL/servers/version |  |
-| Microsoft.SQL/servers/databases/requestedServiceObjectiveId |  |
-| Microsoft.SQL/servers/databases/requestedServiceObjectiveName |  |
-| Microsoft.SQL/servers/databases/edition |  |
-| Microsoft.SQL/servers/databases/elasticPoolName |  |
-| Microsoft.SQL/servers/elasticPools/dtu |  |
-| Microsoft.SQL/servers/elasticPools/edition |  |
+| {resourceType}/sku.name | Unterstützte Ressourcentypen: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Web/serverFarms,<br /> Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft.CDN/profiles |
+| {resourceType}/sku.family | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
+| {resourceType}/sku.capacity | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
+| Microsoft.Compute/virtualMachines/imagePublisher | |
+| Microsoft.Compute/virtualMachines/imageOffer | |
+| Microsoft.Compute/virtualMachines/imageSku | |
+| Microsoft.Compute/virtualMachines/imageVersion | |
+| Microsoft.Cache/Redis/enableNonSslPort | |
+| Microsoft.Cache/Redis/shardCount | |
+| Microsoft.SQL/servers/version | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveId | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveName | |
+| Microsoft.SQL/servers/databases/edition | |
+| Microsoft.SQL/servers/databases/elasticPoolName | |
+| Microsoft.SQL/servers/elasticPools/dtu | |
+| Microsoft.SQL/servers/elasticPools/edition | |
 
-Currently, policy only works on PUT requests. 
+Derzeit gilt die Richtlinie nur bei PUT-Anforderungen.
 
-## <a name="effect"></a>Effect
-Policy supports three types of effect - **deny**, **audit**, and **append**. 
+## Effekt
+Die Richtlinie unterstützt drei Arten von Auswirkungen: **deny**, **audit** und **append**.
 
-- Deny generates an event in the audit log and fails the request
-- Audit generates an event in audit log but does not fail the request
-- Append adds the defined set of fields to the request 
+- Mit „deny“ wird ein Ereignis im Überwachungsprotokoll generiert, und die Anforderung schlägt fehl.
+- Mit „audit“ wird ein Ereignis im Überwachungsprotokoll generiert, aber die Anforderung schlägt nicht fehl.
+- Mit „append“ wird der Anforderung der definierte Satz von Feldern hinzugefügt.
 
-For **append**, you must provide the details as shown below:
+Für **append** müssen Sie die unten dargestellten Details angeben:
 
     ....
     "effect": "append",
@@ -171,15 +169,15 @@ For **append**, you must provide the details as shown below:
       }
     ]
 
-The value can be either a string or a JSON format object. 
+Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
-## <a name="policy-definition-examples"></a>Policy Definition Examples
+## Beispiele für Richtliniendefinitionen
 
-Now let's take a look at how we will define the policy to achieve the scenarios listed above.
+Im Folgenden erfahren Sie, wie Sie die Richtlinie für die oben genannten Szenarios definieren.
 
-### <a name="chargeback:-require-departmental-tags"></a>Chargeback: Require departmental tags
+### Verbrauchsbasierte Kostenzuteilung: Anfordern von Abteilungstags
 
-The below policy denies all requests which don’t have a tag containing "costCenter" key.
+Die Richtlinie unten verweigert alle Anforderungen, die kein Tag mit dem Schlüssel "costCenter" enthalten.
 
     {
       "if": {
@@ -193,55 +191,55 @@ The below policy denies all requests which don’t have a tag containing "costCe
       }
     }
 
-The below policy appends costCenter tag with a predefined value if no tags are present. 
+Die Richtlinie unten fügt ein costCenter-Tag mit einem vordefinierten Wert an, wenn keine Tags vorhanden sind.
 
-    {
-      "if": {
-        "field": "tags",
-        "exists": "false"
-      },
-      "then": {
-        "effect": "append",
-        "details": [
-          {
-            "field": "tags",
-            "value": {"costCenter":"myDepartment" }
-          }
-        ]
-      }
-    }
-    
-The below policy appends costCenter tag with a predefined value if other tags are present. 
+	{
+	  "if": {
+	    "field": "tags",
+	    "exists": "false"
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags",
+	        "value": {"costCenter":"myDepartment" }
+	      }
+	    ]
+	  }
+	}
+	
+Die Richtlinie unten fügt ein costCenter-Tag mit einem vordefinierten Wert an, wenn andere Tags vorhanden sind.
 
-    {
-      "if": {
-        "allOf": [
-          {
-            "field": "tags",
-            "exists": "true"
-          },
-          {
-            "field": "tags.costCenter",
-            "exists": "false"
-          }
-        ]
-    
-      },
-      "then": {
-        "effect": "append",
-        "details": [
-          {
-            "field": "tags.costCenter",
-            "value": "myDepartment"
-          }
-        ]
-      }
-    }
+	{
+	  "if": {
+	    "allOf": [
+	      {
+	        "field": "tags",
+	        "exists": "true"
+	      },
+	      {
+	        "field": "tags.costCenter",
+	        "exists": "false"
+	      }
+	    ]
+	
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags.costCenter",
+	        "value": "myDepartment"
+	      }
+	    ]
+	  }
+	}
 
 
-### <a name="geo-compliance:-ensure-resource-locations"></a>Geo Compliance: Ensure resource locations
+### Geografische Compliance: Erzwingen von Ressourcenpfaden
 
-The below example shows a policy which will deny all requests where location is not North Europe or West Europe.
+Das folgende Beispiel zeigt eine Richtlinie, die alle Anfragen ablehnt, deren Standort nicht Nordeuropa oder Westeuropa ist.
 
     {
       "if" : {
@@ -255,9 +253,9 @@ The below example shows a policy which will deny all requests where location is 
       }
     }
 
-### <a name="service-curation:-select-the-service-catalog"></a>Service Curation: Select the service catalog
+### Dienstverwaltung: Auswählen des Dienstkatalogs
 
-The below example shows the use of source. It shows that actions only on the services of type Microsoft.Resources/\*, Microsoft.Compute/\*, Microsoft.Storage/\*, Microsoft.Network/\* are allowed. Anything else will be denied.
+Das folgende Beispiel veranschaulicht die Verwendung der Quelle. Es zeigt, dass Aktionen nur für Dienste des Typs "Microsoft.Resources/\*", "Microsoft.Compute/\*", "Microsoft.Storage/\*" und "Microsoft.Network/\*" zulässig sind. Alle anderen Anforderungen werden verweigert.
 
     {
       "if" : {
@@ -287,9 +285,9 @@ The below example shows the use of source. It shows that actions only on the ser
       }
     }
 
-### <a name="use-approved-skus"></a>Use Approved SKUs
+### Verwenden von genehmigten SKUs
 
-The below example shows the use of property alias to restrict SKUs. In the example below, only Standard_LRS and Standard_GRS is approved to use for storage accounts.
+Im folgenden Beispiel wird die Verwendung von „property alias“ zum Einschränken von SKUs veranschaulicht. In diesem Beispiel sind nur „Standard\_LRS“ und „Standard\_GRS“ zur Verwendung für Speicherkonten genehmigt.
 
     {
       "if": {
@@ -316,9 +314,9 @@ The below example shows the use of property alias to restrict SKUs. In the examp
     }
     
 
-### <a name="naming-convention"></a>Naming Convention
+### Benennungskonvention
 
-The below example shows the use of wildcard which is supported by the condition "like". The condition states that if the name does match the mentioned pattern (namePrefix\*nameSuffix) then deny the request.
+Das folgende Beispiel veranschaulicht die Verwendung von Platzhalterzeichen, die von der Bedingung "like" unterstützt werden. Die Bedingung gibt an, dass die Anforderung verweigert wird, wenn der Name nicht mit dem angegebenen Muster (Namenspräfix*Namenssuffix) übereinstimmt.
 
     {
       "if" : {
@@ -332,9 +330,9 @@ The below example shows the use of wildcard which is supported by the condition 
       }
     }
     
-### <a name="tag-requirement-just-for-storage-resources"></a>Tag requirement just for Storage resources
+### Taganforderung nur für Speicherressourcen
 
-The below example shows how to nest logical operators to require an application tag for only Storage resources.
+Das folgende Beispiel zeigt, wie logische Operatoren so verschachtelt werden, dass ein Anwendungstag nur für Speicherressourcen benötigt wird.
 
     {
         "if": {
@@ -356,23 +354,23 @@ The below example shows how to nest logical operators to require an application 
         }
     }
 
-## <a name="policy-assignment"></a>Policy Assignment
+## Richtlinienzuweisung
 
-Policies can be applied at different scopes like subscription, resource groups and individual resources. Policies are inherited by all child resources. So if a policy is applied to a resource group, it will be applicable to all the resources in that resource group.
+Richtlinien können auf verschiedene Gültigkeitsbereiche wie Abonnements, Ressourcengruppen und einzelne Ressourcen angewendet werden. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe.
 
-## <a name="creating-a-policy"></a>Creating a Policy
+## Erstellen einer Richtlinie
 
-This section provides detail on how a policy can be created using REST API.
+Dieser Abschnitt enthält Informationen zum Erstellen einer Richtlinie mithilfe der REST-API.
 
-### <a name="create-policy-definition-with-rest-api"></a>Create Policy Definition with REST API
+### Erstellen der Richtliniendefinition mit der REST-API
 
-You can create a policy with the [REST API for Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx). The REST API enables you to create and delete policy definitions, and get information about existing definitions.
+Sie können eine Richtlinie mit der REST-API erstellen, wie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache) beschrieben. Die REST-API ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen und zu löschen sowie Informationen zu vorhandenen Definitionen abzurufen.
 
-To create a new policy, run:
+So erstellen Sie eine neue Richtlinie
 
     PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 
-With a request body similar to the following:
+Der Anforderungstext sollte dem folgenden ähneln:
 
     {
       "properties":{
@@ -394,39 +392,38 @@ With a request body similar to the following:
     }
 
 
-The policy-definition can be defined as one of the examples shown above.
-For api-version use *2016-04-01*. For examples and more details, see [REST API for Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx).
+Die Richtliniendefinition kann als eines der oben aufgeführten Beispiele definiert werden. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*. Weitere Beispiele und Informationen finden Sie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache).
 
-### <a name="create-policy-definition-using-powershell"></a>Create Policy Definition using PowerShell
+### Erstellen der Richtliniendefinition mit der PowerShell
 
-You can create a new policy definition using the New-AzureRmPolicyDefinition cmdlet as shown below. The below examples creates a policy for allowing resources only in North Europe and West Europe.
+Sie können eine neue Richtliniendefinition mithilfe des Cmdlets "New-AzureRmPolicyDefinition" erstellen, wie unten gezeigt. Das unten angeführte Beispiel erstellt eine Richtlinie, um Ressourcen nur in Nordeuropa und Westeuropa zuzulassen.
 
-    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{  
+    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{	
       "if" : {
         "not" : {
           "field" : "location",
           "in" : ["northeurope" , "westeurope"]
-        }
+    	}
       },
       "then" : {
         "effect" : "deny"
       }
-    }'          
+    }'    		
 
-The output of execution is stored in $policy object, and can used later during policy assignment. For the policy parameter, the path to a .json file containing the policy can also be provided instead of specifying the policy inline as shown below.
+Die Ausgabe der Ausführung wird im $policy-Objekt gespeichert und kann später während der Richtlinienzuweisung verwendet werden. Als Richtlinienparameter kann auch der Pfad zu einer JSON-Datei, die die Richtlinie enthält, angegeben werden, anstatt die Richtlinie inline anzugeben, wie unten gezeigt.
 
-    New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain    regions" -Policy "path-to-policy-json-on-disk"
+    New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain 	regions" -Policy "path-to-policy-json-on-disk"
 
-### <a name="create-policy-definition-using-azure-cli"></a>Create Policy Definition using Azure CLI
+### Erstellen der Richtliniendefinition mit der Azure-CLI
 
-You can create a new policy definition using the azure CLI with the policy definition command as shown below. The below examples creates a policy for allowing resources only in North Europe and West Europe.
+Sie können eine neue Richtliniendefinition mithilfe der Azure-CLI über den entsprechenden Befehl erstellen (siehe unten). Das unten angeführte Beispiel erstellt eine Richtlinie, um Ressourcen nur in Nordeuropa und Westeuropa zuzulassen.
 
-    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{   
+    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{	
       "if" : {
         "not" : {
           "field" : "location",
           "in" : ["northeurope" , "westeurope"]
-        }
+    	}
       },
       "then" : {
         "effect" : "deny"
@@ -434,25 +431,24 @@ You can create a new policy definition using the azure CLI with the policy defin
     }'    
     
 
-It is possible to specify the path to a .json file containing the policy instead of specifying the policy inline as shown below.
+Sie können auch den Pfad zu einer JSON-Datei angeben, die die Richtlinie enthält, anstatt die Richtlinie, wie unten gezeigt, inline anzugeben.
 
     azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy "path-to-policy-json-on-disk"
 
 
-## <a name="applying-a-policy"></a>Applying a Policy
+## Anwenden einer Richtlinie
 
-### <a name="policy-assignment-with-rest-api"></a>Policy Assignment with REST API
+### Zuweisen von Richtlinien mit der REST-API
 
-You can apply the policy definition at the desired scope through the [REST API for policy assignments](https://msdn.microsoft.com/library/azure/mt588466.aspx).
-The REST API enables you to create and delete policy assignments, and get information about existing assignments.
+Sie können die Richtliniendefinition mithilfe von [Policy Assignments](https://msdn.microsoft.com/library/azure/mt588466.aspx) (Richtlinienzuweisungen, in englischer Sprache) auf den gewünschten Bereich anwenden. Die REST-API ermöglicht es Ihnen, Richtlinienzuweisungen zu erstellen und zu löschen sowie Informationen zu vorhandenen Zuweisungen abzurufen.
 
-To create a new policy assignment, run:
+Führen Sie zum Erstellen einer neuen Richtlinienzuweisung Folgendes aus:
 
     PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 
-The {policy-assignment} is the name of the policy assignment. For api-version use *2016-04-01*. 
+"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*.
 
-With a request body similar to the following:
+Der Anforderungstext sollte dem folgenden ähneln:
 
     {
       "properties":{
@@ -463,68 +459,64 @@ With a request body similar to the following:
       "name":"VMPolicyAssignment"
     }
 
-For examples and more details, see [REST API for Policy Assignments](https://msdn.microsoft.com/library/azure/mt588466.aspx).
+Weitere Beispiele und Informationen finden Sie unter [Policy Assignments](https://msdn.microsoft.com/library/azure/mt588466.aspx) (Richtlinienzuweisungen, in englischer Sprache).
 
-### <a name="policy-assignment-using-powershell"></a>Policy Assignment using PowerShell
+### Zuweisen von Richtlinien mit der PowerShell
 
-You can apply the policy created above through PowerShell to the desired scope by using the New-AzureRmPolicyAssignment cmdlet as shown below:
+Sie können die oben erstellte Richtlinie mithilfe der PowerShell für den gewünschten Bereich erstellen, indem Sie das Cmdlet "New-AzureRmPolicyAssignment" verwenden, wie unten gezeigt:
 
     New-AzureRmPolicyAssignment -Name regionPolicyAssignment -PolicyDefinition $policy -Scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
         
-Here $policy is the policy object that was returned as a result of executing the New-AzureRmPolicyDefinition cmdlet as shown above. The scope here is the name of the resource group you specify.
+Hierbei ist "$policy" das Richtlinienobjekt, das als Ergebnis der Ausführung des Cmdlets "New-AzureRmPolicyDefinition" zurückgegeben wurde, wie oben gezeigt. Der Bereich ist in diesem Fall der Name der von Ihnen angegebenen Ressourcengruppe.
 
-If you want to remove the above policy assignment, you can do it as follows:
+Wenn Sie die oben genannte Richtlinienzuweisung entfernen möchten, können Sie hierzu wie folgt vorgehen:
 
     Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
 
-You can get, change or remove policy definitions through Get-AzureRmPolicyDefinition, Set-AzureRmPolicyDefinition and Remove-AzureRmPolicyDefinition cmdlets respectively.
+Sie können Richtliniendefinitionen mithilfe der Cmdlets "Get-AzureRmPolicyDefinition", "Set-AzureRmPolicyDefinition" bzw. "Remove-AzureRmPolicyDefinition" abrufen, ändern oder entfernen.
 
-Similarly, you can get, change or remove policy assignments through the Get-AzureRmPolicyAssignment, Set-AzureRmPolicyAssignment and Remove-AzureRmPolicyAssignment cmdlets respectively.
+Ähnlich können Sie Richtlinienzuweisungen mithilfe der Cmdlets "Get-AzureRmPolicyAssignment", "Set-AzureRmPolicyAssignment" bzw. "Remove-AzureRmPolicyAssignment" abrufen, ändern oder entfernen.
 
-### <a name="policy-assignment-using-azure-cli"></a>Policy Assignment using Azure CLI
+### Zuweisen von Richtlinien mit der Azure-CLI
 
-You can apply the policy created above through Azure CLI to the desired scope by using the policy assignment command as shown below:
+Sie können die oben erstellte Richtlinie mithilfe der Azure-CLI für den gewünschten Bereich erstellen, indem Sie den Befehl zur Richtlinienzuweisung verwenden, wie unten gezeigt:
 
     azure policy assignment create --name regionPolicyAssignment --policy-definition-id /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/<policy-name> --scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
         
-The scope here is the name of the resource group you specify. If the value of the parameter policy-definition-id is unknown, it is possible to obtain it through the Azure CLI as shown below: 
+Der Bereich ist in diesem Fall der Name der von Ihnen angegebenen Ressourcengruppe. Wenn der Wert des Parameters „policy-definition-id“ unbekannt ist, können Sie ihn über die Azure-CLI abrufen, wie unten gezeigt:
 
     azure policy definition show <policy-name>
 
-If you want to remove the above policy assignment, you can do it as follows:
+Wenn Sie die oben genannte Richtlinienzuweisung entfernen möchten, können Sie hierzu wie folgt vorgehen:
 
-    azure policy assignment delete --name regionPolicyAssignment --scope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+    azure policy assignment remove --name regionPolicyAssignment --ccope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
 
-You can get, change or remove policy definitions through policy definition show, set and delete commands respectively.
+Über die Befehle „show“, „set“ und „delete“ können Sie Richtliniendefinitionen abrufen, ändern oder entfernen.
 
-Similarly, you can get, change or remove policy assignments through the policy assignment show and delete commands respectively.
+Auf ähnliche Weise können Sie über die Befehle „show“ und „delete“ Richtlinienzuweisungen abrufen, ändern und entfernen.
 
-##<a name="policy-audit-events"></a>Policy Audit Events
+##Richtlinie zur Überwachung von Ereignissen
 
-After you have applied your policy, you will begin to see policy-related events. You can either go to portal, use PowerShell or the Azure CLI to get this data. 
+Nachdem Sie die Richtlinie angewendet haben, werden Sie richtlinienbezogene Ereignisse sehen können. Sie können entweder das Portal, PowerShell oder die Azure-CLI verwenden, um diese Daten abzurufen.
 
-### <a name="policy-audit-events-using-powershell"></a>Policy Audit Events using PowerShell
+### Überwachen von Ereignissen bei Richtlinien mithilfe von PowerShell
 
-To view all events that related to deny effect, you can use the following PowerShell command. 
+Zum Anzeigen aller Ereignisse, die mit dem Verweigerungseffekt in Verbindung stehen, können Sie den folgenden PowerShell-Befehl verwenden.
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/deny/action"} 
 
-To view all events related to audit effect, you can use the following command. 
+Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung stehen, können Sie den folgenden Befehl verwenden.
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
 
-### <a name="policy-audit-events-using-azure-cli"></a>Policy Audit Events using Azure CLI
+### Überwachen von Ereignissen bei Richtlinien mithilfe der Azure-CLI
 
-To view all events from a resource group that related to deny effect, you can use the following CLI command. 
+Zum Anzeigen aller Ereignisse in einer Ressourcengruppe, die mit dem Verweigerungseffekt in Verbindung stehen, können Sie den folgenden CLI-Befehl verwenden.
 
-    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == \"Microsoft.Authorization/policies/deny/action\")"
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/deny/action")"
 
-To view all events related to audit effect, you can use the following CLI command. 
+Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung stehen, können Sie den folgenden CLI-Befehl verwenden.
 
-    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == \"Microsoft.Authorization/policies/audit/action\")"
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/audit/action")"
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

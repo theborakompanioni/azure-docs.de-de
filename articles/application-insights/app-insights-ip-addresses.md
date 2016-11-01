@@ -1,57 +1,56 @@
 <properties 
-    pageTitle="IP addresses used by Application Insights | Microsoft Azure"
-    description="Server firewall exceptions required by Application Insights" 
-    services="application-insights"
+	pageTitle="Von Application Insights verwendete IP-Adressen | Microsoft Azure"
+	description="Für Application Insights erforderliche Serverfirewallausnahmen" 
+	services="application-insights"
     documentationCenter=".net"
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/24/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2016" 
+	ms.author="awills"/>
  
+# Von Application Insights verwendete IP-Adressen
 
-# <a name="ip-addresses-used-by-application-insights"></a>IP addresses used by Application Insights
+Der Dienst [Visual Studio Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
 
-The [Visual Studio Application Insights](app-insights-overview.md) service uses a number of IP addresses. You might need to know these addresses if the app that you are monitoring is hosted behind a firewall.
-
-> [AZURE.NOTE] Although these addresses are static, it's possible that we will need to change them from time to time.
+> [AZURE.NOTE] Diese Adressen sind zwar statisch, müssen jedoch unter Umständen gelegentlich geändert werden.
 
 
-## <a name="outgoing-ports"></a>Outgoing ports
+## Ausgehende Ports
 
-You need to open some outgoing ports in your server's firewall to allow the Application Insights SDK and/or Status Monitor to send data to the portal:
+In der Serverfirewall müssen einige ausgehende Ports geöffnet werden, damit das Application Insights-SDK und/oder der Statusmonitor Daten an das Portal senden kann:
 
-|Purpose|URL|IP|Ports
+|Zweck|URL|IP|Ports
 |---|---|---|---
-| Telemetry|dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com| 40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221|443
+| Telemetrie|dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com| 40\.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221|443
 |LiveStream|rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |variable|443
 
 
 
-+ Status Monitor Configuration - needed only when making changes:
- -  `management.core.windows.net:443` 
- -  `management.azure.com:443`
- -  `login.windows.net:443`
- -  `login.microsoftonline.com:443`
- -  `secure.aadcdn.microsoftonline-p.com:443`
- -  `auth.gfx.ms:443`
- -  `login.live.com:443`
-+ Status Monitor Installation:
- +  `packages.nuget.org:443`
++ Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen werden:
+ -	`management.core.windows.net:443`
+ -	`management.azure.com:443`
+ -	`login.windows.net:443`
+ -	`login.microsoftonline.com:443`
+ -	`secure.aadcdn.microsoftonline-p.com:443`
+ -	`auth.gfx.ms:443`
+ -	`login.live.com:443`
++ Statusmonitorinstallation:
+ +	`packages.nuget.org:443`
 
-This list may change from time to time.
+Diese Liste kann sich von Zeit zu Zeit ändern.
 
-## <a name="availability-tests"></a>Availability tests
+## Verfügbarkeitstests
 
-This is the list of addresses from which [availability web tests](app-insights-monitor-web-app-availability.md) are run. If you want to run web tests on your app, but your web server is restricted to serving specific clients, then you will have to permit incoming traffic from our availability test servers.
+Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
 
-Open ports 80 (http) and 443 (https) for incoming traffic from these addresses:
+Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen:
 
 ```
 
@@ -105,8 +104,6 @@ Open ports 80 (http) and 443 (https) for incoming traffic from these addresses:
 207.46.98.159
 207.46.98.160
 207.46.98.162
-207.46.98.169
-207.46.98.170
 207.46.98.171
 207.46.98.172
 213.199.178.54
@@ -139,8 +136,6 @@ Open ports 80 (http) and 443 (https) for incoming traffic from these addresses:
 65.55.244.44
 65.55.244.46
 65.55.244.47
-65.55.82.77
-65.55.82.78
 65.55.82.81
 65.55.82.84
 65.55.82.85
@@ -163,8 +158,6 @@ Open ports 80 (http) and 443 (https) for incoming traffic from these addresses:
 94.245.72.45
 94.245.72.46
 94.245.72.49
-94.245.72.52
-94.245.72.53
 94.245.78.40
 94.245.78.41
 94.245.78.42
@@ -174,17 +167,16 @@ Open ports 80 (http) and 443 (https) for incoming traffic from these addresses:
 94.245.82.37
 94.245.82.38
 
-
 ```  
 
-## <a name="data-access-api"></a>Data access API
+## Datenzugriffs-API
 
 
 
 |URI|IP|Ports
 |---|---|---
-|api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io|13.82.26.252<br/>40.76.213.73|80,443
-|dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com|13.82.24.149<br/>40.114.82.10|80,443
+|api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io|13\.82.26.252<br/>40.76.213.73|80, 443
+|dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com|13\.82.24.149<br/>40.114.82.10|80, 443
 
 
 
@@ -192,8 +184,4 @@ Open ports 80 (http) and 443 (https) for incoming traffic from these addresses:
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

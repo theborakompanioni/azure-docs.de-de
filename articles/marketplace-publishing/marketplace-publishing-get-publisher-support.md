@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Accessing publisher support for the Azure Marketplace | Microsoft Azure"
-   description="How to access and submit publisher support requests for the Azure Marketplace"
+   pageTitle="Zugreifen auf die Publisher-Unterstützung für den Azure Marketplace | Microsoft Azure"
+   description="Vorgehensweise beim Zugreifen auf und Senden von Publisher-Supportanfragen für den Azure Marketplace"
    services="marketplace-publishing"
    documentationCenter="na"
    authors="v-jeana"
@@ -17,76 +17,75 @@
    ms.author="v-jeana; hascipio"/>
 
 
+# Zugreifen auf die Publisher-Unterstützung für den Azure Marketplace
 
-# <a name="accessing-publisher-support-for-the-azure-marketplace"></a>Accessing publisher support for the Azure Marketplace
+Microsoft bietet Support für eine Vielzahl von Produkten und Diensten. Um eine hilfreiche und zeitnahe Antwort zu erhalten, muss Ihre Anfrage natürlich das richtige Support-Team erreichen. Die folgenden Szenarien sollen Ihnen dabei helfen, Ihre Anfrage an das richtige Team zu richten.
 
-Microsoft provides support for a wide variety of products and services. Ensuring that your query finds the right support team is important to ensure an appropriate and timely response. Please consider the following scenarios, which should help you route your query to the appropriate team:
+- Wenn Sie Azure Marketplace-Publisher sind und sich Ihr virtueller Computer noch in der Entwicklung befindet, sollten Sie sich mit den Teams von Microsoft Onboarding oder Compute in Verbindung setzen.
 
-- If you are a publisher in the Azure Marketplace and are still developing your VM, you should engage with your Microsoft onboarding or compute teams.
+- Wenn Sie als Marketplace-Publisher eine Frage von einem Kunden erhalten haben, bitten Sie ihn darum, über die Supportlinks unter https://portal.azure.com/ Unterstützung anzufordern.
 
-- If you are a publisher in the Marketplace and have a question from a customer, please tell your customer to request support via the support links at https://portal.azure.com/.
+- Wenn Sie ein Publisher im Marketplace sind und eine Frage im Zusammenhang mit Ihrer App oder Ihrem Dienst haben, lesen Sie unten weiter.
 
-- If you are a publisher in the Marketplace and have a question relating to your app or service, continue reading below.
+In diesem Artikel wird Folgendes gezeigt:
 
-This article will show you how to:
+- Anmelden bei Ihrem Azure-Konto
+- Navigieren zu den Supportseiten für Publisher
+- Auswählen von Problemtyp und -kategorie
+- Anfordern von Support
+- Angeben von Kontaktinformationen
+- Beschreiben des Problems
 
-- Sign in to your Microsoft account.
-- Navigate to the publisher support pages.
-- Select the problem type and category.
-- Request support.
-- Provide contact information.
-- Describe the problem.
+## 1\. Anmelden bei Ihrem Azure-Konto
 
-## <a name="1.-sign-in-to-your-microsoft-account"></a>1. Sign in to your Microsoft account
+Navigieren Sie zu https://publish.windowsazure.com/, und melden Sie sich mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
 
-Navigate to https://publish.windowsazure.com/ and sign in with your Microsoft account credentials.
+  ![Anmeldebildschirm][1]
 
-  ![Sign-in screen][1]
+## 2\. Navigieren zu den Supportseiten für Publisher
 
-## <a name="2.-navigate-to-the-publisher-support-pages"></a>2. Navigate to the publisher support pages
+Wählen Sie rechts oben im Menü die Option **Support erhalten** aus.
 
-From the upper-right menu, select **Get Support**.
+  ![Support][2]
 
-  ![Get support][2]
+## 3\. Auswählen von Problemtyp und -kategorie
 
-## <a name="3.-select-the-problem-type-and-category"></a>3. Select the problem type and category
+![Problemtyp und -kategorie][3]
 
-![Problem type & category][3]
+Verfügbare Problemtypen:
 
-Available problem types are as follows:
-
-  - **Account Management**
-  - **Reports and Insights**
-  - **VM Image Certification**
-  - **Managing Customers**
-  - **Managing Offers**
-  - **Payouts**
+  - **Kontenverwaltung**
+  - **Berichte und Insights**
+  - **VM-Imagezertifizierung**
+  - **Kundenverwaltung**
+  - **Angebotsverwaltung**
+  - **Auszahlungen**
   - **Developer Center**
-  - **Other**
+  - **Andere**
 
-## <a name="4.-request-support"></a>4. Request support
+## 4\. Anfordern von Support
 
-After you select the problem type and category, click the **Start request** button.
+Klicken Sie nach dem Auswählen von Problemtyp und -kategorie auf die Schaltfläche **Anforderung starten**.
 
-![Start support][4]
+![Support starten][4]
 
-## <a name="5.-provide-contact-information-and-describe-the-problem"></a>5. Provide contact information and describe the problem
+## 5\. Bereitstellen von Kontaktinformationen und Beschreiben des Problems
 
-Describe the problem as fully as you can, and provide any files (screenshots, network traces, etc.) that may be helpful in solving your issue.
+Beschreiben Sie das Problem möglichst umfassend, und stellen Sie ggf. Dateien wie Screenshots, Netzwerkablaufverfolgungen und Ähnliches zur Verfügung, die bei der Lösung hilfreich sein können.
 
-![Describe problem][5]
+![Problem beschreiben][5]
 
-## <a name="6.-submission-confirmation"></a>6. Submission confirmation
+## 6\. Übermittlungsbestätigung
 
-Once you have submitted your issue, we will acknowledge receipt within 24 hours and assign your issue a priority and severity. Our dedicated team of support engineers will assist with its resolution according to our Service Level Agreement response times.
+Nach der Übermittlung Ihres Problems bestätigen wir den Erhalt innerhalb von 24 Stunden und weisen ihm eine Priorität und einen Schweregrad zu. Unser engagiertes Team von Supporttechnikern unterstützt Sie gemäß der in unserer Vereinbarung zum Servicelevel festgelegten Antwortzeiten bei der Lösung des Problems.
 
-![Confirmation][6]
-+ If you need to talk to us about your issue, use the confirmation number in all correspondence.
-+ You can view progress on your issue at any time.
+![Bestätigung][6]
++ Geben Sie in jeder problembezogenen Korrespondenz die Bestätigungsnummer an.
++ Sie können den Status Ihres Problems jederzeit einsehen.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn how to resolve specific support issues, see [Troubleshooting common issues on the Azure Marketplace](marketplace-publishing-support-common-issues.md).
+Informationen zur Lösung bestimmter Supportprobleme finden Sie unter [Beheben von häufig auftretenden Problemen mit dem Azure Marketplace für Herausgeber](marketplace-publishing-support-common-issues.md).
 
 [1]: ./media/marketplace-publishing-get-publisher-support/step1.png
 [2]: ./media/marketplace-publishing-get-publisher-support/step2.png
@@ -95,8 +94,4 @@ To learn how to resolve specific support issues, see [Troubleshooting common iss
 [5]: ./media/marketplace-publishing-get-publisher-support/step5.png
 [6]: ./media/marketplace-publishing-get-publisher-support/step6.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

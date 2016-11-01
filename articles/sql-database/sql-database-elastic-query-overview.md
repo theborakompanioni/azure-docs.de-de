@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure SQL Database elastic database query overview | Microsoft Azure"
-    description="Overview of the elastic query feature"    
+    pageTitle="Übersicht über elastische Datenbankabfragen in Azure SQL-Datenbank | Microsoft Azure"
+    description="Übersicht über das Abfragefeature für elastische Datenbanken"    
     services="sql-database"
     documentationCenter=""  
     manager="jhubbard"
@@ -15,153 +15,149 @@
     ms.date="04/27/2016"
     ms.author="torsteng" />
 
+# Übersicht über elastische Datenbankenabfragen in Azure SQL-Datenbank (Vorschau)
 
-# <a name="azure-sql-database-elastic-database-query-overview-(preview)"></a>Azure SQL Database elastic database query overview (preview)
+Mithilfe des Features „Elastische Datenbankabfrage“ (in der Vorschauphase) können Sie eine Transact-SQL-Abfrage ausführen, die mehrere Datenbanken in Azure SQL-Datenbank (SQLDB) umfasst. Es ermöglicht das Ausführen datenbankübergreifender Abfragen für den Zugriff auf Remotetabellen und das Verbinden von Microsoft- und Drittanbietertools (Excel, PowerBI, Tableau usw.), um Datenebenen mit mehreren Datenbanken abzufragen. Mit dieser Funktion können Sie Abfragen horizontal auf große Datenebenen in SQL-Datenbanken skalieren und die Abfrageergebnisse in Berichten für Business Intelligence (BI) darstellen.
 
-The elastic database query feature (in preview) enables you to run a Transact-SQL query that spans multiple databases in Azure SQL Database (SQLDB). It allows you to perform cross-database queries to access remote tables, and to connect Microsoft and third party tools (Excel, PowerBI, Tableau, etc.) to query across data tiers with multiple databases. Using this feature, you can scale out queries to large data tiers in SQL Database and visualize the results in business intelligence (BI) reports.
+## Dokumentation
 
-## <a name="documentation"></a>Documentation
-
-* [Get started with cross-database queries](sql-database-elastic-query-getting-started-vertical.md)
-* [Report across scaled-out cloud databases](sql-database-elastic-query-getting-started.md)
-* [Query across sharded cloud databases (horizontally partitioned)](sql-database-elastic-query-horizontal-partitioning.md)
-* [Query across cloud databases with different schemas (vertically partitioned)](sql-database-elastic-query-vertical-partitioning.md)
+* [Erste Schritte mit datenbankübergreifenden Abfragen](sql-database-elastic-query-getting-started-vertical.md)
+* [Erstellen von Berichten über horizontal hochskalierte Clouddatenbanken hinweg](sql-database-elastic-query-getting-started.md)
+* [Ausführen von Abfragen über horizontal partitionierte Clouddatenbanken (Sharddatenbanken) hinweg](sql-database-elastic-query-horizontal-partitioning.md)
+* [Ausführen von Abfragen über vertikal partitionierte Clouddatenbanken (mit unterschiedlichen Schemata) hinweg](sql-database-elastic-query-vertical-partitioning.md)
 * [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)
 
 
-## <a name="why-use-elastic-queries?"></a>Why use elastic queries?
+## Gründe für die Verwendung elastischer Abfragen
 
-**Azure SQL Database**
+**Azure SQL-Datenbank**
 
-Query across Azure SQL databases completely in T-SQL. This allows for read-only querying of remote databases. This provides an option for current on-premises SQL Server customers to migrate applications using three- and four-part names or linked server to SQL DB.
+Die Abfrage über Azure SQL-Datenbanken hinweg erfolgt vollständig in T-SQL. Dadurch wird ein schreibgeschütztes Abfragen von Remotedatenbanken ermöglicht. Dies bietet derzeitigen Kunden von lokalem SQL Server eine Option zum Migrieren von Anwendungen unter Verwendung von Namen mit drei oder vier Teilen oder eines Verbindungsservers zu SQLDB.
 
-**Available on standard tier** Elastic query is supported on the Standard performance tier in addition to the Premium performance tier. See the section on Preview Limitations below on performance limitations for lower performance tiers.
+**Im Standard-Tarif verfügbar** Elastische Abfragen werden zusätzlich zum Premium-Tarif auch im Standard-Tarif unterstützt. Informationen zu Leistungseinschränkungen bei niedrigeren Tarifen finden Sie nachstehend im Abschnitt „Einschränkungen der Vorschau“.
 
-**Push to remote databases**
+**Übertragen an Remotedatenbanken per Push**
 
-Elastic queries can now push SQL parameters to the remote databases for execution.
+Elastische Abfragen können nun SQL-Parameter zur Ausführung an die Remotedatenbank übertragen.
 
-**Stored procedure execution**
+**Ausführen gespeicherter Prozeduren**
 
-Execute remote stored procedure calls or remote functions using [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714).
+Führen Sie remote gespeicherte Prozeduraufrufe oder Remotefunktionen mithilfe von [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) durch.
 
-**Flexibility**
+**Flexibilität**
 
-External tables with elastic query can now refer to remote tables with a different schema or table name.
+Externe Tabellen mit elastischer Abfrage können jetzt auf Remotetabellen mit einem anderen Schema- oder Tabellennamen verweisen.
 
-## <a name="elastic-database-query-scenarios"></a>Elastic database query scenarios
+## Szenarios mit elastischen Datenbankabfragen
 
-The goal is to facilitate querying scenarios where multiple databases contribute rows into a single overall result. The query can either be composed by the user or application directly, or indirectly through tools that are connected to the database. This is especially useful when creating reports, using commercial BI or data integration tools—or any application that cannot be changed. With an elastic query, you can query across several databases using the familiar SQL Server connectivity experience in tools such as Excel, PowerBI, Tableau, or Cognos.
-An elastic query allows easy access to an entire collection of databases through queries issued by SQL Server Management Studio or Visual Studio, and facilitates cross-database querying from Entity Framework or other ORM environments. Figure 1 shows a scenario where an existing cloud application (which uses the [elastic database client library](sql-database-elastic-database-client-library.md)) builds on a scaled-out data tier, and an elastic query is used for cross-database reporting.
+Ziel ist es, Berichterstellungsszenarien zu vereinfachen, in denen mehrere Datenbanken Zeilen zu einem einzelnen Gesamtergebnis beitragen. Die Abfrage kann entweder vom Benutzer oder durch die Anwendung direkt oder indirekt über Tools erstellt werden, die mit der Datenbank verbunden sind. Dies ist besonders hilfreich beim Erstellen von Berichten mit kommerziellen BI- oder Datenintegrationstools bzw. allen Anwendungen, die nicht geändert werden können. Mithilfe einer elastischen Abfrage können Sie mehrere Datenbanken unter Verwendung der gewohnten SQL Server-Verbindungsumgebung in Tools wie Excel, Power BI, Tableau oder Cognos abfragen. Außerdem ermöglicht eine elastische Abfrage den einfachen Zugriff auf eine ganze Sammlung von Datenbanken, die von SQL Server Management Studio oder Visual Studio ausgegeben werden, und sie vereinfacht datenbankübergreifende Abfragen aus Entity Framework oder anderen ORM-Umgebungen. Abbildung 1 zeigt ein Szenario, in dem eine vorhandene Cloudanwendung (die die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) verwendet) auf einer horizontal skalierten Datenebene aufbaut und eine elastische Abfrage für datenbankübergreifende Berichte verwendet wird.
 
-**Figure 1** Elastic database query used on scaled-out data tier
+**Abbildung 1** Elastische Datenbankabfrage auf horizontal hochskalierter Datenebene
 
-![Elastic database query used on scaled-out data tier][1]
+![Abfrage für elastische Datenbanken in der horizontal skalierten Datenebene][1]
 
-Customer scenarios for elastic query are characterized by the following topologies:
+Kundenszenarien für elastische Abfragen zeichnen sich durch die folgenden Topologien aus:
 
-* **Vertical partitioning – Cross-database queries** (Topology 1): The data is partitioned vertically between a number of databases in a data tier. Typically, different sets of tables reside on different databases. That means that the schema is different on different databases. For instance, all tables for inventory are on one database while all accounting-related tables are on a second database. Common use cases with this topology require one to query across or to compile reports across tables in several databases.
-* **Horizontal Partitioning – Sharding** (Topology 2): Data is partitioned horizontally to distribute rows across a scaled out data tier. With this approach, the schema is identical on all participating databases. This approach is also called “sharding”. Sharding can be performed and managed using (1) the elastic database tools libraries or (2) self-sharding. An elastic query is used to query or compile reports across many shards.
+* **Vertikale Partitionierung – Datenbankübergreifende Abfragen** (Topologie 1): Die Daten sind zwischen mehreren Datenbanken auf einer Datenebene vertikal partitioniert. In der Regel befinden sich verschiedene Sätze von Tabellen in verschiedenen Datenbanken. Das bedeutet, dass das Schema bei verschiedenen Datenbanken unterschiedlich ist. Beispielsweise befinden sich alle bestandsbezogenen Tabellen in einer Datenbank, während alle Buchhaltungstabellen in einer zweiten Datenbank enthalten sind. Gängige Anwendungsfälle mit dieser Topologie erfordern zum Erstellen von Berichten das Abfragen von Tabellen in mehreren Datenbanken.
+* **Horizontale Partitionierung – Sharding** (Topologie 2): Daten werden horizontal partitioniert, um Zeilen auf einer horizontal hochskalierten Datenebene zu verteilen. Bei diesem Ansatz ist das Schema für alle teilnehmenden Datenbanken identisch. Dieser Ansatz wird auch „Sharding“ genannt. Sharding kann (1.) mithilfe der Bibliothek für elastische Datenbanktools oder (2.) eines eigenständigen Shardings ausgeführt und verwaltet werden. Eine elastische Abfrage dient zum viele Shards übergreifenden Abfragen oder Erstellen von Berichten.
 
-> [AZURE.NOTE] Elastic database query works best for occasional reporting scenarios where most of the processing can be performed on the data tier. For heavy reporting workloads or data warehousing scenarios with more complex queries, also consider using [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
+> [AZURE.NOTE] Die flexible Datenbankabfrage funktioniert am besten bei gelegentlichen Reporting-Szenarien, bei denen der Großteil der Verarbeitung auf der Datenebene ausgeführt werden kann. Bei hohen Reporting-Arbeitslasten oder Data Warehousing-Szenarien mit komplexeren Abfragen, sollten Sie auch die Verwendung von [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) in Betracht ziehen.
 
 
-## <a name="elastic-database-query-topologies"></a>Elastic Database query topologies
+## Topologien für elastische Datenbankabfragen
 
-### <a name="topology-1:-vertical-partitioning-–-cross-database-queries"></a>Topology 1: Vertical partitioning – cross-database queries
+### Topologie 1: Vertikale Partitionierung – Datenbankübergreifende Abfragen
 
-To begin coding, see [Getting started with cross-database query (vertical partitioning)](sql-database-elastic-query-getting-started-vertical.md).
+Lesen Sie zum Einstieg in die Programmierung [Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung)](sql-database-elastic-query-getting-started-vertical.md).
 
-An elastic query can be used to make data located in a SQLDB database available to other SQLDB databases. This allows queries from one database to refer to tables in any other remote SQLDB database. The first step is to define an external data source for each remote database. The external data source is defined in the local database from which you want to gain access to tables located on the remote database. No changes are necessary on the remote database. For typical vertical partitioning scenarios where different databases have different schemas, elastic queries can be used to implement common use cases such as access to reference data and cross-database querying.
+Eine elastische Abfrage kann verwendet werden, um Daten in einer SQLDB-Datenbank anderen SQLDB-Datenbanken zur Verfügung zu stellen. Dadurch können Abfragen aus einer Datenbank auf Tabellen in einer beliebigen anderen SQLDB-Remotedatenbank verweisen. Der erste Schritt ist das Definieren einer externen Datenquelle für jede Remotedatenbank. Die externe Datenquelle wird in der lokalen Datenbank definiert, aus der Sie auf Tabellen zugreifen möchten, die sich in der Remotedatenbank befinden. Es sind keine Änderungen an der Remotedatenbank erforderlich. Für normale vertikale Partitionierungsszenarien, in denen verschiedene Datenbanken unterschiedliche Schemas haben, können elastische Abfragen verwendet werden, um gängige Anwendungsfälle zu implementieren, z. B. den Zugriff auf Verweisdaten und datenbankübergreifende Abfragen.
 
-**Reference data**: Topology 1 is used for reference data management. In the figure below, two tables (T1 and T2) with reference data are kept on a dedicated database. Using an elastic query, you can now access tables T1 and T2 remotely from other databases, as shown in the figure. Use topology 1 if reference tables are small or remote queries into reference table have selective predicates.
+**Verweisdaten**: Topologie 1 wird zur Verwaltung von Verweisdaten verwendet. In der folgenden Abbildung sind die beiden Tabellen mit Verweisdaten (T1 und T2) in einer dedizierten Datenbank gespeichert. Über eine elastische Abfrage können Sie nun aus anderen Datenbanken remote auf die Tabellen T1 und T2 zugreifen (siehe die Abbildung). Wählen Sie Topologie 1, wenn Verweistabellen klein sind oder Remoteabfragen von Verweistabellen selektive Prädikate haben.
 
-**Figure 2** Vertical partitioning - Using elastic query to query reference data
+**Abbildung 2** Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen von Verweisdaten
 
-![Vertical partitioning - Using elastic query to query reference data][3]
+![Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen von Verweisdaten][3]
 
-**Cross-database querying**: Elastic queries enable use cases that require querying across several SQLDB databases. Figure 3 shows four different databases: CRM, Inventory, HR and Products. Queries performed in one of the databases also need access to one or all the other databases. Using an elastic query, you can configure your database for this case by running a few simple DDL statements on each of the four databases. After this one-time configuration, access to a remote table is as simple as referring to a local table from your T-SQL queries or from your BI tools. This approach is recommended if the remote queries do not return large results.
+**Datenbankübergreifende Abfragen**: Elastische Abfragen ermöglichen Anwendungsfälle, die das Abfragen mehrerer SQLDB-Datenbanken erfordern. Abbildung 3 zeigt vier Datenbanken: CRM, Inventory, HR und Products. Abfragen, die auf eine der Datenbanken angewendet werden, benötigen außerdem Zugriff auf eine oder alle anderen Datenbanken. Bei Verwenden einer elastischen Abfrage können Sie Ihre Datenbank für diesen Fall konfigurieren, indem Sie einige einfache DDL-Anweisungen auf jede der vier Datenbanken anwenden. Nach dieser einmaligen Konfiguration ist der Zugriff auf eine Remotetabelle so einfach wie das Verweisen auf eine lokale Tabelle in Ihren T-SQL-Abfragen oder in Ihren BI-Tools. Dieser Ansatz wird empfohlen, wenn von den Remoteabfragen keine umfangreichen Ergebnisse zurückgegeben werden.
 
-**Figure 3** Vertical partitioning - Using elastic query to query across various databases
+**Abbildung 3** Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen verschiedener Datenbanken
 
-![Vertical partitioning - Using elastic query to query across various databases][4]
+![Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen verschiedener Datenbanken][4]
 
-### <a name="topology-2:-horizontal-partitioning-–-sharding"></a>Topology 2: Horizontal partitioning – sharding
+### Topologie 2: Horizontale Partitionierung – Sharding
 
-Using elastic query to perform reporting tasks over a sharded, i.e., horizontally partitioned, data tier requires an [elastic database shard map](sql-database-elastic-scale-shard-map-management.md) to represent the databases of the data tier . Typically, only a single shard map is used in this scenario and a dedicated database with elastic query capabilities serves as the entry point for reporting queries. Only this dedicated database needs access to the shard map. Figure 4 illustrates this topology and its configuration with the elastic query database and shard map. The databases in the data tier can be of any Azure SQL Database version or edition. For more information about the elastic database client library and creating shard maps, see [Shard map management](sql-database-elastic-scale-shard-map-management.md).
+Das Verwenden einer elastischen Abfrage für Berichtsaufgaben auf einer Datenebene mit Sharding, d.h. horizontaler Partitionierung, erfordert, dass die Datenbanken der Datenebene durch eine [Shardzuordung für elastische Datenbanken](sql-database-elastic-scale-shard-map-management.md) dargestellt werden. Normalerweise wird nur eine Shardzuordnung in diesem Szenario verwendet, und eine dedizierte Datenbank mit elastischen Abfragefunktionen dient als Einstiegspunkt für Berichtsabfragen. Nur diese dedizierte Datenbank benötigt Zugriff auf die Shardzuordnung. Abbildung 4 zeigt diese Topologie und ihre Konfiguration mit der elastischen Abfragedatenbank und Shardzuordung. Die Datenbanken der Datenebene können eine beliebige Version oder Edition von Azure SQL-Datenbank haben. Weitere Informationen zur Clientbibliothek für elastische Datenbanken und zum Erstellen von Shardzuordungen finden Sie unter [Verwaltung von Shardzuordungen](sql-database-elastic-scale-shard-map-management.md).
 
-**Figure 4** Horizontal partitioning - Using elastic query for reporting over sharded data tiers
+**Abbildung 4** Horizontale Partitionierung – Verwenden einer elastischen Abfrage von Datenebenen mit Sharding für die Berichterstellung
 
-![Horizontal partitioning - Using elastic query for reporting over sharded data tiers][5]
+![Horizontale Partitionierung – Verwenden einer elastischen Abfrage von Datenebenen mit Sharding für die Berichterstellung][5]
 
-> [AZURE.NOTE] The dedicated elastic database query database must be a SQL DB v12 database. There are no restrictions on the shards themselves.
+> [AZURE.NOTE] Die dedizierte Abfragedatenbank für elastische Datenbanken muss eine SQLDB-V12-Datenbank sein. Es gibt keine Einschränkungen für die Shards selbst.
 
-To begin coding, see [Getting started with elastic database query for horizontal partitioning (sharding)](sql-database-elastic-query-getting-started.md).
+Lesen Sie zum Einstieg in die Programmierung [Erste Schritte mit elastischen Datenbankabfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
 
-## <a name="implementing-elastic-database-queries"></a>Implementing elastic database queries
+## Implementieren elastischer Datenbankabfragen
 
-The steps to implement elastic query for the vertical and horizontal partitioning scenarios are discussed in the following sections. They also refer to more detailed documentation for the different partitioning scenarios.
+In den folgenden Abschnitten werden die Schritte zum Implementieren einer elastischen Abfrage für die vertikalen und horizontalen Partitionierungsszenarien erläutert. Zudem finden Sie Verweise auf detaillierte Dokumentation zu den verschiedenen Partitionierungsszenarien.
 
-### <a name="vertical-partitioning---cross-database-queries"></a>Vertical partitioning - cross-database queries
+### Vertikale Partitionierung – datenbankübergreifende Abfragen
 
-The following steps configure elastic database queries for vertical partitioning scenarios that require access to a table located on remote SQLDB databases with the same schema:
+Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen für Szenarien mit vertikaler Partitionierung, die Zugriff auf eine Tabelle in einer SQLDB-Remotedatenbank mit demselben Schema benötigen:
 
 *    [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
 *    [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
 *    [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource of type **RDBMS**
 *    [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
 
-After running the DDL statements, you can access the remote table “mytable” as though it were a local table. Azure SQL Database automatically opens a connection to the remote database, processes your request on the remote database, and returns the results.
-More information on the steps required for the vertical partitioning scenario can be found in [elastic query for vertical partitioning](sql-database-elastic-query-vertical-partitioning.md).  
+Nach Ausführen der DDL-Anweisungen können Sie auf die Remotetabelle „mytable“ wie auf eine lokale Tabelle zugreifen. Azure SQL-Datenbank öffnet automatisch eine Verbindung mit der Remotedatenbank, verarbeitet Ihre Anforderung an die Remotedatenbank und gibt die Ergebnisse zurück. Weitere Informationen zu den Schritten, die für das vertikale Partitionierungsszenario erforderlich sind, finden Sie unter [Elastische Abfrage für die vertikale Partitionierung](sql-database-elastic-query-vertical-partitioning.md).
 
-### <a name="horizontal-partitioning---sharding"></a>Horizontal partitioning - sharding
+### Horizontale Partitionierung (Sharding)
 
-The following steps configure elastic database queries for horizontal partitioning scenarios that require access to a set of table that are located on (typically) several remote SQLDB databases:
+Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen für horizontale Partitionierungsszenarien, die Zugriff auf eine Gruppe von Tabelle in (üblicherweise) mehreren SQLDB-Remotedatenbanken benötigen:
 
 *    [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
 *    [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-*    Create a [shard map](sql-database-elastic-scale-shard-map-management.md) representing your data tier using the elastic database client library.   
-*    [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource of type **SHARD_MAP_MANAGER**
+*    Erstellen Sie eine [Shardzuordnung](sql-database-elastic-scale-shard-map-management.md), die Ihre Datenebene darstellt, mithilfe der Clientbibliothek für elastische Datenbanken.
+*    [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource of type **SHARD\_MAP\_MANAGER**
 *    [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
 
-Once you have performed these steps, you can access the horizontally partitioned table “mytable” as though it were a local table. Azure SQL Database automatically opens multiple parallel connections to the remote databases where the tables are physically stored, processes the requests on the remote databases, and returns the results.
-More information on the steps required for the horizontal partitioning scenario can be found in [elastic query for horizontal partitioning](sql-database-elastic-query-horizontal-partitioning.md).
+Nachdem Sie diese Schritte ausgeführt haben können Sie auf die horizontal partitionierte Tabelle „mytable“ wie auf eine lokale Tabelle zugreifen. Azure SQL-Datenbank öffnet automatisch mehrere parallele Verbindungen mit den Remotedatenbanken, in denen die Tabellen physisch gespeichert sind, verarbeitet die Anforderungen an die Remotedatenbanken und gibt die Ergebnisse zurück. Weitere Informationen zu den Schritten, die für das Szenario der horizontalen Partitionierung erforderlich sind, finden Sie unter [Elastische Abfrage für die horizontale Partitionierung](sql-database-elastic-query-horizontal-partitioning.md).
 
-## <a name="t-sql-querying"></a>T-SQL querying
-Once you have defined your external data sources and your external tables, you can use regular SQL Server connection strings to connect to the databases where you defined your external tables. You can then run T-SQL statements over your external tables on that connection with the limitations outlined below. You can find more information and examples of T-SQL queries in the documentation topics for [horizontal partitioning](sql-database-elastic-query-horizontal-partitioning.md) and [vertical partitioning](sql-database-elastic-query-vertical-partitioning.md).
+## T-SQL-Abfragen
+Sobald Sie Ihre externen Datenquellen und externen Tabellen definiert haben, können Sie herkömmliche SQL Server-Verbindungszeichenfolgen zum Verbinden mit den Datenbanken verwenden, in denen Sie Ihre externen Tabellen definiert haben. Sie können dann bei den nachstehend beschriebenen Einschränkungen über diese Verbindung T-SQL-Anweisungen auf Ihre externen Tabellen anwenden. Weitere Informationen und Beispiele für T-SQL-Abfragen finden Sie in der Dokumentation in den Themen zur [horizontalen Partitionierung](sql-database-elastic-query-horizontal-partitioning.md) und [vertikalen Partitionierung](sql-database-elastic-query-vertical-partitioning.md).
 
-## <a name="connectivity-for-tools"></a>Connectivity for tools
-You can use regular SQL Server connection strings to connect your applications and BI or data integration tools to databases that have external tables. Make sure that SQL Server is supported as a data source for your tool. Once connected, refer to the elastic query database and the external tables in that database just like you would do with any other SQL Server database that you connect to with your tool.
+## Konnektivität für Tools
+Sie können herkömmliche SQL Server-Verbindungszeichenfolgen zum Verbinden Ihrer Anwendungen bzw. BI- oder Datenintegrationstools mit Datenbanken verwenden, die externe Tabellen enthalten. Stellen Sie sicher, dass SQL Server als Datenquelle für das Tool unterstützt wird. Nach dem Herstellen der Verbindung können Sie auf die elastische Abfragedatenbank und externen Tabellen wie auf jede andere SQL Server-Datenbank zugreifen, mit der Sie sich über Ihr Tool verbinden.
 
-> [AZURE.IMPORTANT] Authentication using Azure Active Directory with elastic queries is not currently supported.
+> [AZURE.IMPORTANT] Die Authentifizierung mithilfe von Azure Active Directory mit elastischen Abfragen wird derzeit nicht unterstützt.
 
-## <a name="cost"></a>Cost
+## Kosten
 
-Elastic query is included into the cost of Azure SQL Database databases. Note that topologies where your remote databases are in a different data center than the elastic query endpoint are supported, but data egress from remote databases are charged regular [Azure rates](https://azure.microsoft.com/pricing/details/data-transfers/).
+Elastische Abfragen sind in den Kosten für Azure SQL-Datenbanken enthalten. Beachten Sie, dass Topologien, bei denen sich Ihre Remotedatenbanken in einem anderen Rechenzentrum als der Endpunkt der elastischen Abfrage befinden, unterstützt werden. Der Datenausgang aus Remotedatenbanken wird jedoch zu den üblichen [Azure-Gebühren](https://azure.microsoft.com/pricing/details/data-transfers/) in Rechnung gestellt.
 
-## <a name="preview-limitations"></a>Preview limitations
-* Running your first elastic query can take up to a few minutes on the Standard performance tier. This time is necessary to load the elastic query functionality; loading performance improves with higher performance tiers.
-* Scripting of external data sources or external tables from SSMS or SSDT is not yet supported.
-* Import/Export for SQL DB does not yet support external data sources and external tables. If you need to use Import/Export, drop these objects before exporting and then re-create them after importing.
-* Elastic database query currently only supports read-only access to external tables. You can, however, use full T-SQL functionality on the database where the external table is defined. This can be useful to, e.g., persist temporary results using, e.g., SELECT <column_list> INTO <local_table>, or to define stored procedures on the elastic query database which refer to external tables.
-* Except for nvarchar(max), LOB types are not supported in external table definitions. As a workaround, you can create a view on the remote database that casts the LOB type into nvarchar(max), define your external table over the view instead of the base table and then cast it back into the original LOB type in your queries.
-* Column statistics over external tables are currently not supported. Tables statistics are supported, but need to be created manually.
+## Einschränkungen der Vorschau
+* Beim Standard-Tarif kann das Ausführen Ihrer ersten elastischen Abfrage einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt. Je höher der Tarif, desto besser die Ladeleistung.
+* Das Erstellen von Skripts für externe Datenquellen oder externe Tabellen in SSMS oder SSDT wird noch nicht unterstützt.
+* Import/Export für SQLDB unterstützt noch keine externen Datenquellen und externen Tabellen. Wenn Sie Import/Export verwenden müssen, löschen Sie diese Objekte vor dem Exportieren, und erstellen Sie sie nach dem Importieren neu.
+* Elastische Datenbankabfragen unterstützen derzeit nur den schreibgeschützten Zugriff auf externe Tabellen. Sie können jedoch die vollständige T-SQL-Funktionalität für die Datenbank nutzen, in der die externe Tabelle definiert ist. Dies kann beispielsweise hilfreich sein, um temporäre Ergebnisse z.B. mithilfe von „SELECT <column\_list> INTO <local\_table>“ dauerhaft zu speichern oder um gespeicherte Prozeduren für die elastische Abfragedatenbank zu definieren, die auf externe Tabellen verweisen.
+* Mit Ausnahme von „nvarchar(max)“ werden LOB-Typen in externen Tabellendefinitionen nicht unterstützt. Um dieses Problem zu umgehen, können Sie eine Sicht für die Remotedatenbank erstellen, die den LOB-Typ in „nvarchar(max)“ umwandelt, ihre externe Tabelle für die Sicht anstatt für die Basistabelle definieren und sie in Ihren Abfragen in den ursprünglichen LOB-Typ rückumwandeln.
+* Spaltenstatistiken werden für externe Tabellen derzeit nicht unterstützt. Tabellenstatistiken werden unterstützt, müssen aber manuell erstellt werden.
 
-## <a name="feedback"></a>Feedback
-Please share feedback on your experience with elastic queries with us on Disqus below, the MSDN forums, or on Stackoverflow. We are interested in all kinds of feedback about the service (defects, rough edges, feature gaps).
+## Feedback
+Geben Sie uns bitte unten im Disqus-Kommentar, in den MSDN-Foren oder auf StackOverflow Feedback zu Ihrer Erfahrung mit elastischen Datenbankabfragen. Für uns sind alle Arten von Feedback zum Dienst (Fehler, Designprobleme und fehlende Features) interessant.
 
-## <a name="more-information"></a>More information
+## Weitere Informationen
 
-You can find more information on the cross-database querying and vertical partitioning scenarios in the following documents:
+Weitere Informationen zu datenbankübergreifenden Abfragen und vertikalen Partitionierungsszenarien finden Sie in den folgenden Dokumenten:
 
-* [Cross-database querying and vertical partitioning overview](sql-database-elastic-query-vertical-partitioning.md)
-* Try our step-by-step tutorial to have a full working example running in minutes: [Getting started with cross-database query (vertical partitioning)](sql-database-elastic-query-getting-started-vertical.md).
+* [Datenbankübergreifende Abfragen und die vertikale Partitionierung (Übersicht)](sql-database-elastic-query-vertical-partitioning.md)
+* Führen Sie unser Schritt-für-Schritt-Tutorial aus, um innerhalb von Minuten über ein umfassendes Arbeitsbeispiel zu verfügen: [Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung)](sql-database-elastic-query-getting-started-vertical.md).
 
 
-More information on horizontal partitioning and sharding scenarios is available here:
+Weitere Informationen zu horizontalen Partitionierungs- und Shardingszenarien finden Sie hier:
 
-* [Horizontal partitioning and sharding overview](sql-database-elastic-query-horizontal-partitioning.md)
-* Try our step-by-step tutorial to have a full working example running in minutes: [Getting started with elastic database query for horizontal partitioning (sharding)](sql-database-elastic-query-getting-started.md).
+* [Horizontale Partitionierung und Sharding – Übersicht](sql-database-elastic-query-horizontal-partitioning.md)
+* Führen Sie unser Schritt-für-Schritt-Tutorial aus, um innerhalb von Minuten über ein umfassendes Arbeitsbeispiel zu verfügen: [Erste Schritte mit elastischen Datenbankabfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -175,8 +171,4 @@ More information on horizontal partitioning and sharding scenarios is available 
 
 <!--anchors-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

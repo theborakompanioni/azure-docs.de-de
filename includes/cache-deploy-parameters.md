@@ -1,7 +1,7 @@
 
-### <a name="cacheskuname"></a>cacheSKUName
+### cacheSKUName
 
-The pricing tier of the new Azure Redis Cache.
+Der Tarif des neuen Azure Redis Cache.
 
     "cacheSKUName": {
       "type": "string",
@@ -15,12 +15,11 @@ The pricing tier of the new Azure Redis Cache.
       }
     },
 
-The template defines the values that are permitted for this parameter (Basic or Standard), and assigns a default value (Basic) if no value is specified. Basic provides a single node with multiple sizes available up to 53 GB.
-Standard provides two-node Primary/Replica with multiple sizes available up to 53 GB and 99.9% SLA.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Basic oder Standard), und weist einen Standardwert (Basic) zu, wenn kein Wert angegeben wird. "Basic" bietet einen einzelnen Knoten mit mehreren Größen bis zu 53 GB. "Standard" bietet zwei Knoten, Primär/Replikat, mit mehreren Größen bis zu 53 GB und 99,9% SLA.
 
-### <a name="cacheskufamily"></a>cacheSKUFamily
+### cacheSKUFamily
 
-The family for the sku.
+Die SKU-Familie.
 
     "cacheSKUFamily": {
       "type": "string",
@@ -34,9 +33,9 @@ The family for the sku.
     },
 
 
-### <a name="cacheskucapacity"></a>cacheSKUCapacity
+### cacheSKUCapacity
 
-The size of the new Azure Redis Cache instance. 
+Die Größe der neuen Azure Redis Cache-Instanz.
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -56,10 +55,5 @@ The size of the new Azure Redis Cache instance.
     }
 
 
-The template defines the values that are permitted for this parameter (0, 1, 2, 3, 4, 5 or 6), and assigns a default value (1) if no value is specified. Those numbers correspond to following cache sizes: 0 = 250 MB, 1 = 1 GB, 2 = 2.5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
-
-
-
-<!--HONumber=Oct16_HO2-->
-
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (0, 1, 2, 3, 4, 5 oder 6), und weist einen Standardwert (1) zu, wenn kein Wert angegeben wird. Diese Zahlen entsprechen den folgenden Cachegrößen: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
 

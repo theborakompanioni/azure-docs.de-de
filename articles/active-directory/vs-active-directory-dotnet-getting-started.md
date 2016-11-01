@@ -1,78 +1,80 @@
 <properties 
-    pageTitle="Get Started with Azure Active Directory and Visual Studio connected services (MVC projects) | Microsoft Azure" 
-    description="How to get started using Azure Active Directory in MVC projects after connecting to or creating an Azure AD using Visual Studio connected services" 
-    services="active-directory" 
-    documentationCenter="" 
-    authors="TomArcher" 
-    manager="douge" 
-    editor=""/>
+	pageTitle="Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC-Projekte) | Microsoft Azure" 
+	description="Erfahren Sie etwas über die ersten Schritte mit Azure Active Directory in MVC-Projekten nach dem Herstellen einer Verbindung oder dem Erstellen eines Azure AD mithilfe von verbundenen Visual Studio-Diensten." 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="TomArcher" 
+	manager="douge" 
+	editor=""/>
   
 <tags 
-    ms.service="active-directory" 
-    ms.workload="web" 
-    ms.tgt_pltfrm="vs-getting-started" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="tarcher"/>
+	ms.service="active-directory" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vs-getting-started" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/15/2016" 
+	ms.author="tarcher"/>
 
-
-# <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-(mvc-projects)"></a>Getting Started with Azure Active Directory and Visual Studio connected services (MVC Projects)
+# Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC-Projekte)
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-active-directory-dotnet-getting-started.md)
-> - [What Happened](vs-active-directory-dotnet-what-happened.md)
+> - [Erste Schritte](vs-active-directory-dotnet-getting-started.md)
+> - [Was ist passiert?](vs-active-directory-dotnet-what-happened.md)
  
-##<a name="requiring-authentication-to-access-controllers"></a>Requiring authentication to access controllers 
+##Erfordern von Authentifizierung für den Zugriff auf Controller 
 
-All controllers in your project were adorned with the **Authorize** attribute. This attribute will require the user to be authenticated before accessing these controllers. To allow the controller to be accessed anonymously, remove this attribute from the controller. If you want to set the permissions at a more granular level, apply the attribute to each method that requires authorization instead of applying it to the controller class.
+Alle Controller in Ihrem Projekt wurden mit dem Attribut **Authorize** versehen. Dieses Attribut erfordert, dass der Benutzer vor dem Zugriff auf diese Controller authentifiziert werden muss. Wenn Sie anonymen Zugriff auf diesen Controller erlauben möchten, entfernen Sie dieses Attribut vom Controller. Wenn Sie die Berechtigungen präziser festlegen möchten, wenden Sie das Attribut auf jede Methode an, die Autorisierung erfordert, anstatt es auf die Controllerklasse anzuwenden.
  
-##<a name="adding-signin-/-signout-controls"></a>Adding SignIn / SignOut Controls 
+##Hinzufügen von SignIn-/SignOut-Steuerelementen 
 
-To add a the SignIn/SignOut controls to your view, you can use the **_LoginPartial.cshtml** partial view to add the functionality to one of your views. Here is an example of the functionality added to the standard **_Layout.cshtml** view. (Note the last element in the div with class navbar-collapse):
+Wenn Sie Ihrer Ansicht SignIn-/SignOut-Steuerelemente hinzufügen möchten, können Sie die Teilansicht **\_LoginPartial.cshtml** zum Hinzufügen der Funktion zu einer Ihrer Ansichten verwenden. Das folgende Beispiel zeigt die Funktion, die der Standardansicht **\_Layout.cshtml** hinzugefügt wurde. (Beachten Sie das letzte Element in div mit der Klasse navbar-collapse):
 
 <pre>
-    &lt;!DOCTYPE html&gt; 
-     &lt;html&gt; 
-     &lt;head&gt; 
-         &lt;meta charset="utf-8" /&gt; 
-        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; 
-        &lt;title&gt;@ViewBag.Title - My ASP.NET Application&lt;/title&gt; 
-        @Styles.Render("~/Content/css") @Scripts.Render("~/bundles/modernizr") &lt;/head&gt; 
-    &lt;body&gt; 
-        &lt;div class="navbar navbar-inverse navbar-fixed-top"&gt; 
-            &lt;div class="container"&gt; 
-                &lt;div class="navbar-header"&gt; 
-                    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt; 
-                        &lt;span class="icon-bar"&gt;&lt;/span&gt; 
-                        &lt;span class="icon-bar"&gt;&lt;/span&gt; 
-                        &lt;span class="icon-bar"&gt;&lt;/span&gt; 
-                    &lt;/button&gt; 
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) &lt;/div&gt; 
-                &lt;div class="navbar-collapse collapse"&gt; 
-                    &lt;ul class="nav navbar-nav"&gt; 
-                        &lt;li&gt;@Html.ActionLink("Home", "Index", "Home")&lt;/li&gt; 
-                        &lt;li&gt;@Html.ActionLink("About", "About", "Home")&lt;/li&gt; 
-                        &lt;li&gt;@Html.ActionLink("Contact", "Contact", "Home")&lt;/li&gt; 
-                    &lt;/ul&gt; 
+    &lt;!DOCTYPE html> 
+     &lt;html> 
+     &lt;head> 
+         &lt;meta charset="utf-8" /> 
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        &lt;title>@ViewBag.Title - My ASP.NET Application&lt;/title> 
+        @Styles.Render("~/Content/css") 
+        @Scripts.Render("~/bundles/modernizr") 
+    &lt;/head> 
+    &lt;body> 
+        &lt;div class="navbar navbar-inverse navbar-fixed-top"> 
+            &lt;div class="container"> 
+                &lt;div class="navbar-header"> 
+                    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+                        &lt;span class="icon-bar">&lt;/span> 
+                        &lt;span class="icon-bar">&lt;/span> 
+                        &lt;span class="icon-bar">&lt;/span> 
+                    &lt;/button> 
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) 
+                &lt;/div> 
+                &lt;div class="navbar-collapse collapse"> 
+                    &lt;ul class="nav navbar-nav"> 
+                        &lt;li>@Html.ActionLink("Home", "Index", "Home")&lt;/li> 
+                        &lt;li>@Html.ActionLink("About", "About", "Home")&lt;/li> 
+                        &lt;li>@Html.ActionLink("Contact", "Contact", "Home")&lt;/li> 
+                    &lt;/ul> 
                     <span style="background-color:yellow">@Html.Partial("_LoginPartial")</span> 
-                &lt;/div&gt; 
-            &lt;/div&gt; 
-        &lt;/div&gt; 
-        &lt;div class="container body-content"&gt; 
-            @RenderBody() &lt;hr /&gt; 
-            &lt;footer&gt; 
-                &lt;p&gt;&amp;copy; @DateTime.Now.Year - My ASP.NET Application&lt;/p&gt; 
-            &lt;/footer&gt; 
-        &lt;/div&gt; 
-        @Scripts.Render("~/bundles/jquery") @Scripts.Render("~/bundles/bootstrap") @RenderSection("scripts", required: false) &lt;/body&gt; 
-    &lt;/html&gt;
+                &lt;/div> 
+            &lt;/div> 
+        &lt;/div> 
+        &lt;div class="container body-content"> 
+            @RenderBody() 
+            &lt;hr /> 
+            &lt;footer> 
+                &lt;p>&amp;copy; @DateTime.Now.Year - My ASP.NET Application&lt;/p> 
+            &lt;/footer> 
+        &lt;/div> 
+        @Scripts.Render("~/bundles/jquery") 
+        @Scripts.Render("~/bundles/bootstrap") 
+        @RenderSection("scripts", required: false) 
+    &lt;/body> 
+    &lt;/html>
 </pre>
 
-[Learn more about Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 
+[Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

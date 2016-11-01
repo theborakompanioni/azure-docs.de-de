@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure SQL Database Advisor" 
-   description="The Azure SQL Database Advisor provides recommendations for your existing SQL Databases that can improve current query performance." 
+   pageTitle="Azure SQL-Datenbankratgeber" 
+   description="Der Azure SQL-Datenbankratgeber stellt Empfehlungen für Ihre vorhandenen SQL-Datenbanken bereit, die die aktuelle Abfrageleistung verbessern können." 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -13,75 +13,67 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="09/30/2016"
+   ms.date="06/23/2016"
    ms.author="sstein"/>
 
-
-# <a name="sql-database-advisor"></a>SQL Database Advisor
+# SQL-Datenbankratgeber
 
 > [AZURE.SELECTOR]
-- [SQL Database Advisor Overview](sql-database-advisor.md)
+- [SQL-Datenbankratgeber – Übersicht](sql-database-advisor.md)
 - [Portal](sql-database-advisor-portal.md)
 
-Azure SQL Database learns and adapts with your application and provides customized recommendations enabling you to maximize the performance of your SQL databases. The SQL Database Advisor provides recommendations for creating and dropping indexes, parameterizing queries, and fixing schema issues. The advisor assesses performance by analyzing your SQL database's usage history. The recommendations that are best suited for running your database’s typical workload are recommended. 
+Azure SQL-Datenbank stellt Empfehlungen zum Erstellen und Löschen von Indizes, zum Parametrisieren von Abfragen und zum Beheben von Schemaproblemen bereit. Der SQL-Datenbankratgeber bewertet die Leistung durch eine Analyse des Nutzungsverlaufs Ihrer SQL-Datenbank. Die Empfehlungen, die sich am besten für die Ausführung der typischen Workload Ihrer Datenbank eignen, werden angezeigt.
 
-The following recommendations are available for V12 servers (recommendations are not available for V11 servers). Currently you can set the create and drop index recommendations to be applied automatically, see [Automatic index management](sql-database-advisor-portal.md#enable-automatic-index-management) for details.
+Die folgenden Empfehlungen sind für V12-Server verfügbar. (Für V11-Server stehen keine Empfehlungen zur Verfügung.) Derzeit können Sie festlegen, dass die Empfehlungen zum Erstellen und Löschen von Indizes automatisch angewendet werden. Informationen hierzu finden Sie unter [Automatische Indexverwaltung](sql-database-advisor-portal.md#enable-automatic-index-management).
 
-## <a name="create-index-recommendations"></a>Create Index recommendations 
+## Empfehlungen zum Erstellen eines Index 
 
-**Create Index** recommendations appear when the SQL Database service detects a missing index that if created, can benefit your databases workload (non-clustered indexes only).
+Empfehlungen zum **Erstellen eines Index** werden angezeigt, wenn der SQL-Datenbankdienst erkennt, dass ein Index fehlt, von dem die Workload Ihrer Datenbanken profitieren könnte (nur nicht gruppierte Indizes).
 
-## <a name="drop-index-recommendations"></a>Drop Index recommendations
+## Empfehlungen zum Löschen eines Index
 
-**Drop Index** recommendations appear when the SQL Database service detects duplicate indexes (currently in preview and applies to duplicate indexes only).
+Empfehlungen zum **Löschen eines Index** werden angezeigt, wenn der SQL-Datenbankdienst doppelt vorhandene Indizes erkennt (derzeit in der Vorschau, gilt nur für doppelt vorhandene Indizes).
 
-## <a name="parameterize-queries-recommendations"></a>Parameterize queries recommendations
+## Empfehlungen zum Parametrisieren von Abfragen
 
-**Parameterize queries** recommendations appear when you have one or more queries that are constantly being recompiled but end up with the same query execution plan. This condition opens up an opportunity to apply forced parameterization, which will allow query plans to be cached and reused in the future improving performance and reducing resource usage. 
+Empfehlungen zum **Parametrisieren von Abfragen** werden angezeigt, wenn der SQL-Datenbankdienst erkennt, dass eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer derselbe Abfrageausführungsplan daraus hervorgeht. Dadurch ergibt sich die Möglichkeit zum Anwenden einer erzwungenen Parametrisierung, sodass Abfragepläne für eine verbesserte Leistung und eine geringere Ressourcennutzung zwischengespeichert und wiederverwendet werden.
 
-Every query issued against SQL Server initially needs to be compiled to generate an execution plan. Each generated plan is added to the plan cache and subsequent executions of the same query can reuse this plan from the cache, eliminating the need for additional compilation. 
+Jede an SQL Server gerichtete Abfrage muss zunächst kompiliert werden, um einen Ausführungsplan zu erstellen, der zum Ausführen der Abfrage verwendet wird. Alle generierten Pläne werden dem Plancache hinzugefügt, und bei erneuter Ausführung derselben Abfrage kann dieser Plan aus dem Cache wiederverwendet werden. Dadurch wird eine erneute Kompilierung überflüssig.
 
-Applications that send queries, which include non-parameterized values, can lead to a performance overhead, where for every such query with different parameter values the execution plan is compiled again. In many cases the same queries with different parameter values generate the same execution plans, but these plans are still separately added to the plan cache. Recompiling execution plans use database resources, increase the query duration time and overflow the plan cache causing plans to be evicted from the cache. This behavior of SQL Server can be altered by setting the forced parameterization option on the database. 
+Anwendungen, die Abfragen mit nicht parametrisierten Werten enthalten, können den nötigen Leistungsaufwand erhöhen, weil für jede dieser Abfragen mit unterschiedlichen Parameterwerten jeweils ein neuer Ausführungsplan kompiliert werden muss. In vielen Fällen werden für die gleichen Abfragen mit unterschiedlichen Parameterwerten die gleichen Ausführungspläne generiert, aber diese Pläne werden alle separat dem Plancache hinzugefügt. Diese erneuten Kompilierungsvorgänge nutzen Datenbankressourcen, erhöhen die Abfragedauer und überfluten den Plancache, wodurch Pläne aus dem Cache verdrängt werden. Sie können das entsprechende Verhalten von SQL Server ändern, indem Sie für die Datenbank die Option für erzwungene Parametrisierung festlegen.
 
-To help you estimate the impact of this recommendation, you are provided with a comparison between the actual CPU usage and the projected CPU usage (as if the recommendation was applied). In addition to CPU savings, your query duration decreases for the time spent in compilation. There will also be much less overhead on plan cache, allowing majority of the plans to stay in cache and be reused. You can apply this recommendation quickly and easily by clicking on the **Apply** command. 
+Damit Sie die Auswirkungen dieser Empfehlung besser abschätzen können, wird Ihnen ein Vergleich zwischen der tatsächlichen CPU-Auslastung und der prognostizierten CPU-Auslastung nach Anwendung der Empfehlung angezeigt. Neben der geringeren CPU-Auslastung profitieren Sie auch von einer Verkürzung der Abfragedauer um die Zeit, die normalerweise für die Kompilierung benötigt würde. Außerdem wird auch der Plancache deutlich weniger beansprucht, sodass die meisten Pläne im Cache bleiben und wiederverwendet werden können. Sie können diese Empfehlung schnell und einfach umsetzen, indem Sie auf den Befehl „Anwenden“ klicken.
 
-Once you apply this recommendation, it will enable forced parameterization within minutes on your database and it starts the monitoring process which approximately lasts for 24 hours. After this period, you will be able to see the validation report that shows CPU usage of your database 24 hours before and after the recommendation has been applied. SQL Database Advisor has a safety mechanism that automatically reverts the applied recommendation in case a performance regression has been detected.
+Nach dem Anwenden dieser Empfehlung wird die erzwungene Parametrisierung innerhalb weniger Minuten für Ihre Datenbank aktiviert. Anschließend startet ein Überwachungsprozess, der ungefähr 24 Stunden läuft. Wenn dieser Zeitraum verstrichen ist, können Sie einen Überprüfungsbericht anzeigen. Dieser enthält Daten zur CPU-Auslastung für die 24 Stunden vor und nach dem Anwenden der Empfehlung. Der SQL-Datenbankratgeber verfügt über einen Sicherheitsmechanismus, der die angewendete Empfehlung wieder zurücknimmt, falls eine Leistungsregression beobachtet wird.
 
-## <a name="fix-schema-issues-recommendations"></a>Fix schema issues recommendations
+## Empfehlungen zum Beheben von Schemaproblemen
 
-**Fix schema issues** recommendations appear when the SQL Database service notices an anomaly in the number of schema-related SQL errors happening on your Azure SQL Database. This recommendation typically appears when your database encounters multiple schema-related errors (invalid column name, invalid object name, etc.) within an hour.
+Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Azure SQL-Datenbank auftreten. Diese Empfehlung tritt in der Regel auf, wenn Ihre Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler erkennt (ungültiger Spaltenname, ungültiger Objektname usw.).
 
-“Schema issues” are a class of syntax errors in SQL Server that happen when the definition of the SQL query and the definition of the database schema are not aligned. For example, one of the columns expected by the query may be missing in the target table, or vice versa. 
+Bei Schemaproblemen handelt es sich um eine Klasse von Syntaxproblemen in SQL Server, die auftreten, wenn die Definition einer SQL-Abfrage nicht auf die Definition des Datenbankschemas abgestimmt ist (z.B. weil eine der von der Abfrage erwarteten Spalten in der Zieltabelle fehlt oder umgekehrt).
 
-“Fix schema issue” recommendation appears when Azure SQL Database service notices an anomaly in the number of schema-related SQL errors happening on your Azure SQL Database. The following table shows the errors that are related to schema issues:
+Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Azure SQL-Datenbank auftreten. In der folgenden Tabelle sind Fehler mit Bezug zu Schemaproblemen aufgeführt:
 
-|SQL Error Code|Message|
+|SQL-Fehlercode|Message|
 |--------------|-------|
-|201|Procedure or function '*' expects parameter '*', which was not supplied.|
-|207|Invalid column name '*'.|
-|208|Invalid object name '*'. |
-|213|Column name or number of supplied values does not match table definition. |
-|2812|Could not find stored procedure '*'. |
-|8144|Procedure or function * has too many arguments specified. |
+|201|Die *'*'*-Prozedur oder -Funktion erwartet den '*'-Parameter, der nicht bereitgestellt wurde.|
+|207|Ungültiger Spaltenname '*'.|
+|208|Ungültiger Objektname '*'. |
+|213|Der Spaltenname oder die Anzahl der bereitgestellten Werte entspricht nicht der Tabellendefinition. |
+|2812|Die gespeicherte Prozedur '*' wurde nicht gefunden. |
+|8144|Für die '*'-Prozedur oder -Funktion wurden zu viele Argumente angegeben. |
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Monitor your recommendations and continue to apply them to refine performance. Database workloads are dynamic and change continuously. SQL Database advisor continues to monitor and provide recommendations that can potentially improve your database's performance. 
+Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Der SQL-Datenbankratgeber setzt die Überwachung fort und bietet Empfehlungen, durch die die Leistung Ihrer Datenbank erhöht werden kann.
 
- - See [SQL Database Advisor in the Azure portal](sql-database-advisor-portal.md) for steps on how to use SQL Database Advisor in the Azure portal.
- - See [Query Performance Insights](sql-database-query-performance.md) to learn about and view the performance impact of your top queries.
+ - Unter [SQL-Datenbankratgeber im Azure-Portal](sql-database-advisor-portal.md) finden Sie Schritte zum Verwenden des SQL-Datenbankratgebers im Azure-Portal.
+ - Unter [Query Performance Insight](sql-database-query-performance.md) erfahren Sie, wie Sie die Auswirkungen Ihrer wichtigsten Abfragen auf die Leistung untersuchen können.
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-- [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 - [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-- [Role-based access control](../active-directory/role-based-access-control-configure.md)
+- [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md)
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Logic Apps Examples and Scenarios | Microsoft Azure"
-   description="See common Logic apps examples and learn how to implement common scenarios"
+   pageTitle="Beispiele und Szenarios für Logik-Apps | Microsoft Azure"
+   description="Hier finden Sie Informationen zu häufig verwendeten Logik-Apps und zum Implementieren verschiedener Szenarios."
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -13,74 +13,70 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="10/18/2016"
+   ms.date="08/11/2016"
    ms.author="jehollan"/>
 
+# Beispiele und häufige Szenarios für Logik-Apps
 
-# <a name="logic-apps-examples-and-common-scenarios"></a>Logic Apps Examples and Common Scenarios
+In diesem Artikel werden häufige Szenarios und Beispiele für die Verwendung von Logik-Apps zum Automatisieren von Geschäftsprozessen erläutert.
 
-This document details common scenarios and examples to help you to understand some of the ways you can use Logic apps to automate business processes. 
+## Benutzerdefinierte Trigger und Aktionen
 
-## <a name="custom-triggers-and-actions"></a>Custom Triggers and Actions
+Sie können eine Logik-App auf verschiedene Weise über eine andere App auslösen. Hier sehen Sie ein paar allgemeine Beispiele:
 
-There are several ways you can trigger a Logic app from another app. Here's a few common examples:
+- [Erstellen eines benutzerdefinierten Triggers oder einer benutzerdefinierten Aktion](app-service-logic-create-api-app.md)
+- [Aktionen mit langer Ausführungszeit](app-service-logic-create-api-app.md)
+- [HTTP-Anforderungstrigger (POST)](app-service-logic-http-endpoint.md)
+- [Webhooktrigger und -aktionen](app-service-logic-create-api-app.md)
+- [Abfragetrigger](app-service-logic-create-api-app.md)
 
-- [Creating a custom trigger or action](app-service-logic-create-api-app.md)
-- [Long-running actions](app-service-logic-create-api-app.md)
-- [HTTP request trigger (POST)](app-service-logic-http-endpoint.md)
-- [Webhook triggers and actions](app-service-logic-create-api-app.md)
-- [Polling triggers](app-service-logic-create-api-app.md)
+### Szenarios
 
-### <a name="scenarios"></a>Scenarios
+- [Anfordern synchroner Antworten](app-service-logic-http-endpoint.md)
+- [Anfordern von Antworten mit SMS](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
-- [Request synchronous response](app-service-logic-http-endpoint.md)
-- [Request Response with SMS](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+## Fehlerbehandlung und Protokollierung
 
-## <a name="error-handling-and-logging"></a>Error handling and logging
+- [Ausnahme- und Fehlerbehandlung](app-service-logic-exception-handling.md)
+- [Konfigurieren von Azure-Warnungen und Diagnose](app-service-logic-monitor-your-logic-apps.md)
 
-- [Exception and error handling](app-service-logic-exception-handling.md)
-- [Configure Azure Alerts and diagnostics](app-service-logic-monitor-your-logic-apps.md)
+### Szenarios
 
-### <a name="scenarios"></a>Scenarios
+- [Anwendungsfall: Fehler- und Ausnahmebehandlung](app-service-logic-scenario-error-and-exception-handling.md)
 
-- [Use Case: Error and exception handling](app-service-logic-scenario-error-and-exception-handling.md)
+## Bereitstellen und Verwalten
 
-## <a name="deploying-and-managing"></a>Deploying and managing
+- [Erstellen einer automatisierten Bereitstellung](app-service-logic-create-deploy-template.md)
+- [Erstellen und Bereitstellen von Logik-Apps von Visual Studio aus](app-service-logic-deploy-from-vs.md)
+- [Überwachen von Logik-Apps](app-service-logic-monitor-your-logic-apps.md)
 
-- [Create an automated deployment](app-service-logic-create-deploy-template.md)
-- [Build and deploy logic apps from Visual Studio](app-service-logic-deploy-from-vs.md)
-- [Monitor logic apps](app-service-logic-monitor-your-logic-apps.md)
+## Inhaltstypen, Konvertierungen und Transformationen
 
-## <a name="content-types,-conversions,-and-transformations"></a>Content types, conversions, and transformations
+Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logic Apps enthält viele Funktionen zum Konvertieren von und Arbeiten mit unterschiedlichen Inhaltstypen. Darüber hinaus versucht das Modul, möglichst alle Inhaltstypen während des Workflows als Datenflüsse beizubehalten.
 
-The Logic Apps [workflow definition language](http://aka.ms/logicappsdocs) contains many functions to allow you to convert and work with different content types.  In addition the engine will do all it can to preserve content-types as data flows through the workflow.
+- [Behandeln von Inhaltstypen](app-service-logic-content-type.md) wie „application/json“, „application/xml“ und „plain/text“
+- [Erstellen von Logik-App-Definitionen](app-service-logic-author-definitions.md)
+- [Workflow Definition Language Reference (Referenz zur Definitionssprache für Workflows)](http://aka.ms/logicappsdocs)
 
-- [Handling of content-types](app-service-logic-content-type.md) like application/json, application/xml, and plain/text
-- [Authoring workflow definitions](app-service-logic-author-definitions.md)
-- [Workflow definition language reference](http://aka.ms/logicappsdocs)
-
-## <a name="batches-and-looping"></a>Batches and looping
+## Batches und Schleifen
 
 - [SplitOn](app-service-logic-loops-and-scopes.md)
 - [ForEach](app-service-logic-loops-and-scopes.md)
 - [Until](app-service-logic-loops-and-scopes.md)
 
-## <a name="integrating-with-azure-functions"></a>Integrating with Azure Functions
+## Integration von Azure Functions
 
-- [Azure Functions integration](app-service-logic-azure-functions.md)
+- [Integrieren von Azure Functions](app-service-logic-azure-functions.md)
 
-### <a name="scenarios"></a>Scenarios
+### Szenarios
 
-- [Azure Function as a Service Bus trigger](app-service-logic-scenario-function-sb-trigger.md)
+- [Azure Function as a Service Bus Trigger (Azure-Funktion als Service Bus-Trigger)](app-service-logic-scenario-function-sb-trigger.md)
 
-## <a name="http,-rest,-and-soap"></a>HTTP, REST, and SOAP
+## HTTP, REST und SOAP
 
- - [Calling SOAP](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
-
-
-We will keep adding examples and scenarios to this document. Use the comments section below to let us know what examples or scenarios you'd like to see here.
+ - [Calling SOAP (Aufrufen von SOAP)](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 
-<!--HONumber=Oct16_HO2-->
+Wir werden diesem Artikel weitere Beispiele und Szenarios hinzufügen. Im Bereich „Kommentare“ unten können Sie uns Wünsche zu Beispielen oder Szenarios mitteilen.
 
-
+<!---HONumber=AcomDC_0817_2016-->

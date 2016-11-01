@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Classic Endpoints in Resource Manager Overview | Microsoft Azure"
-   description="Understand how endpoints from the Classic deployment model are now implemented in Resource Manager using Network Security Groups and ACL rules"
+   pageTitle="Klassische Endpunkte in Resource Manager – Übersicht | Microsoft Azure"
+   description="Hier wird erklärt, wie Endpunkte aus dem klassischen Bereitstellungsmodell für Resource Manager implementiert werden. Zu diesem Zweck werden Netzwerksicherheitsgruppen und ACL-Regeln verwendet."
    services="virtual-machines-linux"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,19 +16,15 @@
    ms.date="08/09/2016"
    ms.author="iainfou"/>
 
-
-# <a name="classic-endpoints-in-resource-manager"></a>Classic Endpoints in Resource Manager
+# Klassische Endpunkte in Resource Manager
 [AZURE.INCLUDE [virtual-machines-common-endpoints-in-resource-manager](../../includes/virtual-machines-common-endpoints-in-resource-manager.md)]
 
-## <a name="next-steps"></a>Next steps
-You can read more detailed information on the technologies discussed here, along with quick-start guides for using Network Security Groups, in the following articles:
+## Nächste Schritte
+In den folgenden Artikeln finden Sie ausführlichere Informationen zu den hier erörterten Technologien sowie Schnellstartanleitungen zum Verwenden von Netzwerksicherheitsgruppen:
 
-- [Quick-start - Create a Network Security Group and ACL rules using the Azure CLI](virtual-machines-linux-nsg-quickstart.md)  
-- [Azure Resource Manager overview](../resource-group-overview.md)  
-- [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)  
-- [Azure Resource Manager Overview for Load Balancers](../load-balancer/load-balancer-arm.md) 
+- [Schnellstart: Erstellen von Netzwerksicherheitsgruppen und ACL-Regeln mit der Azure-CLI](virtual-machines-linux-nsg-quickstart.md)
+- [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
+- [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
+- [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

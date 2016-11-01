@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Troubleshoot common Azure deployment errors | Microsoft Azure"
-   description="Describes how to resolve common errors when you deploy resources to Azure using Azure Resource Manager."
+   pageTitle="Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft Azure"
+   description="Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager."
    services="azure-resource-manager"
    documentationCenter=""
    tags="top-support-issue"
    authors="tfitzmac"
    manager="timlt"
    editor="tysonn"
-   keywords="deployment error, azure deployment, deploy to azure"/>
+   keywords="Bereitstellungsfehler, Azure-Bereitstellung, in Azure bereitstellen."/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -18,47 +18,46 @@
    ms.date="07/14/2016"
    ms.author="tomfitz"/>
 
+# Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
-# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Troubleshoot common Azure deployment errors with Azure Resource Manager
+In diesem Thema wird beschrieben, wie Sie einige gängige Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Falls Sie weitere Einzelheiten zum Bereitstellungsproblem benötigen, lesen Sie zunächst [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md). Kehren Sie anschließend zu diesem Artikel zurück, um Unterstützung beim Beheben des Fehlers zu erhalten.
 
-This topic describes how you can resolve some common Azure deployment errors you may encounter. If you need more information about what went wrong with your deployment, first see [View deployment operations](resource-manager-troubleshoot-deployments-portal.md) and then come back to this article for help with resolving the error.
+## Ungültige Vorlage oder Ressource
 
-## <a name="invalid-template-or-resource"></a>Invalid template or resource
-
-When deploying a template, you may receive:
+Beim Bereitstellen einer Vorlage wird unter Umständen Folgendes angezeigt:
 
     Code=InvalidTemplate 
     Message=Deployment template validation failed
 
-If you receive an error stating that either the template or a property on a resource is invalid, you may have a syntax error in your template. This error is easy to make because template expressions can be intricate. For example, the following name assignment for a storage account contains one set of brackets, three functions, three sets of parentheses, one set of single quotes, and one property:
+Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, dass die Vorlage oder eine Eigenschaft für eine Ressource ungültig ist, enthält Ihre Vorlage möglicherweise einen Syntaxfehler. Solche Fehler können sehr leicht passieren, da Vorlagenausdrücke recht kompliziert sein können. Beispielsweise enthält die folgenden Namenszuweisung für ein Speicherkonto Klammern, drei Funktionen, drei Sätze mit Klammern, einen Satz mit einfachen Anführungszeichen und eine Eigenschaft:
 
     "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 
-If you do not provide all of the matching syntax, the template will produce a value that is very different than your intention.
+Wenn Sie nicht die entsprechende Syntax bereitstellen, wird die Vorlage einen Wert erstellen, der sich von Ihrer Absicht stark unterscheidet.
 
-When you receive this type of error, carefully review the expression syntax. Consider using a JSON editor like [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) or [Visual Studio Code](resource-manager-vs-code.md) which can warn you about syntax errors. 
+Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (etwa [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) oder [Visual Studio Code](resource-manager-vs-code.md)).
 
-## <a name="incorrect-segment-lengths"></a>Incorrect segment lengths
+## Falsche Segmentlängen
 
-Another invalid template error occurs when the resource name is not in the correct format.
+Ein weiterer Fehler vom Typ „Ungültige Vorlage“ tritt auf, wenn der Ressourcenname nicht im richtigen Format vorliegt.
 
     Code=InvalidTemplate
     Message=Deployment template validation failed: 'The template resource {resource-name}' 
     for type {resource-type} has incorrect segment lengths.
 
-A root level resource must one less segment in the name than in the resource type. Each segment is differentiated by a slash. In the following example, the type has 2 segments and the name has 1 segment, so it is a **valid name**.
+Eine Ressource auf der Stammebene muss im Namen ein Segment weniger haben als im Ressourcentyp. Die einzelnen Segmente sind jeweils durch einen Schrägstrich getrennt. Im folgenden Beispiel besitzt der Typ zwei Segmente und Name ein Segment, sodass es sich hier um einen **gültigen Namen** handelt.
 
     {
       "type": "Microsoft.Web/serverfarms",
       "name": "myHostingPlanName",
 
-But the next example is **not a valid name** because it has the same number of segments as the type.
+Im nächsten Beispiel liegt dagegen **kein gültiger Name** vor, da er die gleiche Anzahl von Segmenten besitzt wie der Typ.
 
     {
       "type": "Microsoft.Web/serverfarms",
       "name": "appPlan/myHostingPlanName",
 
-For child resources, the type and name must have the same number of segments. This makes sense because the full name and type for the child includes the parent name and type, so the full name still has one less segment than the full type. 
+Bei untergeordneten Ressourcen müssen Typ und Name die gleiche Anzahl von Segmenten besitzen. Das ist plausibel, da der vollständige Name und Typ des untergeordneten Elements den Namen und Typ des übergeordneten Elements enthält, sodass der vollständige Name weiterhin ein Segment kürzer ist als der vollständige Typ.
 
     "resources": [
         {
@@ -70,27 +69,27 @@ For child resources, the type and name must have the same number of segments. Th
                     "type": "secrets",
                     "name": "appPassword",
 
-Getting the segments right can be particularly tricky with Resource Manager types that are applied across resource providers. For example, applying a resource lock to a web site requires a type with 4 segments. Therefore, the name is 3 segments:
+Die korrekte Verwendung der Segmente kann insbesondere bei Resource Manager-Typen problematisch sein, die ressourcenanbieterübergreifend angewendet werden. Wenn Sie beispielsweise eine Website mit einer Ressourcensperre belegen möchten, benötigen Sie einen Typ mit vier Segmenten. Folglich umfasst der Name drei Segmente:
 
     {
         "type": "Microsoft.Web/sites/providers/locks",
         "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
 
-## <a name="resource-name-already-taken-or-is-already-used-by-another-resource"></a>Resource name already taken or is already used by another resource
+## Bereits vorhandener oder bereits von einer anderen Ressource verwendeter Ressourcenname
 
-For some resources, most notably storage accounts, database servers, and web sites, you must provide a name for the resource that is unique across all of Azure. If you do not provide a unique name, you may receive an error like:
+Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websites, müssen Sie einen im gesamten Azure-Dienst eindeutigen Namen für die Ressource angeben. Wenn Sie keinen eindeutigen Namen angeben, tritt unter Umständen ein Fehler wie der folgende auf:
 
     Code=StorageAccountAlreadyTaken 
     Message=The storage account named mystorage is already taken.
 
-You can create a unique name by concatenating your naming convention with the result of the [uniqueString](resource-group-template-functions.md#uniquestring) function.
+Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions.md#uniquestring)-Funktion verketten.
 
     "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]",
     "type": "Microsoft.Storage/storageAccounts",
 
-## <a name="cannot-find-resource-during-deployment"></a>Cannot find resource during deployment
+## Die Ressource kann während der Bereitstellung nicht gefunden werden
 
-Resource Manager optimizes deployment by creating resources in parallel, when possible. If one resource must be deployed after another resource, you need to use the **dependsOn** element in your template to create a dependency on the other resource. For example, when deploying a web app, the App Service plan must exist. If you have not specified that the web app is dependent on the App Service plan, Resource Manager will create both resources at the same time. You will receive an error stating that the App Service plan resource cannot be found, because it does not exist yet when attempting to set a property on the web app. You can prevent this error by setting the dependency in the web app.
+Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzeitig Ressourcen erstellt werden. Wenn eine Ressource nach einer anderen Ressource bereitgestellt werden muss, müssen Sie das **dependsOn**-Element in der Vorlage verwenden, um eine Abhängigkeitsbeziehung mit der anderen Ressource herzustellen. Beim Bereitstellen einer Web-App muss z. B. der App Service-Plan vorhanden sein. Wenn Sie nicht angegeben haben, dass die Web-App vom App Service-Plan abhängig ist, erstellt Resource Manager beide Ressourcen zur gleichen Zeit. Wenn Sie versuchen, eine Eigenschaft für die Web-App festzulegen, erhalten Sie eine Fehlermeldung, dass die App Service-Planressource nicht gefunden werden kann, da sie noch nicht vorhanden ist. Sie können diesen Fehler verhindern, indem Sie die Abhängigkeit in der Web-App festlegen.
 
     {
       "apiVersion": "2015-08-01",
@@ -102,83 +101,82 @@ Resource Manager optimizes deployment by creating resources in parallel, when po
       ...
     }
 
-## <a name="could-not-find-member-'copy'-on-object"></a>Could not find member 'copy' on object
+## Member „copy“ wurde für das Objekt nicht gefunden.
 
-You encounter this error when you have applied the **copy** element to a part of the template that does not support this element. You can only apply the copy element to a resource type. You cannot apply copy to a property within a resource type. For example, you apply copy to a virtual machine, but you cannot apply it to the OS disks for a virtual machine. In some cases, you can convert a child resource to a parent resource to create a copy loop. For more information about using copy, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
+Dieser Fehler tritt auf, wenn Sie das Element **copy** auf einen Teil der Vorlage angewendet haben, der dieses Element nicht unterstützt. Sie können das copy-Element nur auf einen Ressourcentyp anwenden. Sie können „copy“ nicht auf eine Eigenschaft in einem Ressourcentyp anwenden. Beispiel: Sie wenden „copy“ auf einen virtuellen Computer an, können das Element aber nicht auf die Betriebssystem-Datenträger für einen virtuellen Computer anwenden. In einigen Fällen können Sie eine untergeordnete Ressource in eine übergeordnete Ressource umwandeln, um eine Kopierschleife zu erstellen. Weitere Informationen zur Verwendung von „copy“ finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md).
 
-## <a name="sku-not-available"></a>SKU not available
+## SKU nicht verfügbar
 
-When deploying a resource (typically a virtual machine), you may receive the following error code and error message:
+Beim Bereitstellen einer Ressource (in der Regel ein virtueller Computer) werden möglicherweise der folgende Fehlercode und die folgende Fehlermeldung angezeigt:
 
     Code: SkuNotAvailable
     Message: The requested tier for resource '<resource>' is currently not available in location '<location>' for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
 
-You receive this error when the resource SKU you have selected (such as VM size) is not available for the location you have selected. You have two options to resolve this issue:
+Sie erhalten diesen Fehler, wenn die ausgewählte Ressourcen-SKU (z.B. die Größe des virtuellen Computers) für den ausgewählten Standort nicht verfügbar ist. Sie haben zwei Optionen, dieses Problem zu beheben:
 
-1.  Log into portal and begin adding a new resource through the UI. As you set the values, you will see the available SKUs for that resource.
+1.	Melden Sie sich beim Portal an, und beginnen Sie mit dem Hinzufügen einer neuen Ressource über die UI. Beim Festlegen der Werte werden die verfügbaren SKUs für die Ressource angezeigt.
 
-    ![available skus](./media/resource-manager-common-deployment-errors/view-sku.png)
+    ![Verfügbare SKUs](./media/resource-manager-common-deployment-errors/view-sku.png)
 
-2.  If you are unable to find a suitable SKU in that region or an alternative region that meets your business needs, please reach out to [Azure Support](https://portal.azure.com/#create/Microsoft.Support).
+2.	Wenn Sie keine geeignete SKU in dieser Region oder einer anderen Region finden, die Ihre Geschäftsanforderungen erfüllt, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support).
 
 
-## <a name="no-registered-provider-found"></a>No registered provider found
+## Kein registrierter Anbieter gefunden
 
-When deploying resource, you may receive the following error code and message:
+Beim Bereitstellen von Ressourcen werden möglicherweise der folgende Fehlercode und die folgende Fehlermeldung angezeigt:
 
     Code: NoRegisteredProviderFound
     Message: No registered resource provider found for location '<location>' and API version '<api-version>' for type '<resource-type>'.
 
-You receive this error for one of three reasons:
+Für diesen Fehler gibt es drei Gründe:
 
-1. Location not supported for the resource type
-2. API version not supported for the resource type
-3. The resource provider has not been registered for your subscription
+1. Der Standort wird für den Ressourcentyp nicht unterstützt.
+2. Die API-Version wird für den Ressourcentyp nicht unterstützt.
+3. Der Ressourcenanbieter wurde für Ihr Abonnement nicht registriert.
 
-The error message should give you suggestions for the supported locations and API versions. You can change your template to one of the suggested values. Most providers are registered automatically by the Azure portal or the command-line interface you are using, but not all. If you have not used a particular resource provider before, you may need to register that provider. You can discover more about resource providers with the following commands.
+Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie zuvor noch keinen bestimmten Ressourcenanbieter verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren. Mit den folgenden Befehlen können Sie weitere Informationen zu Ressourcenanbietern anzeigen.
 
-### <a name="powershell"></a>PowerShell
+### PowerShell
 
-To see your registration status, use **Get-AzureRmResourceProvider**.
+Verwenden Sie zum Anzeigen des Registrierungsstatus **Get-AzureRmResourceProvider**.
 
     Get-AzureRmResourceProvider -ListAvailable
 
-To register a provider, use **Register-AzureRmResourceProvider** and provide the name of the resource provider you wish to register.
+Verwenden Sie **Register-AzureRmResourceProvider**, um einen Anbieter zu registrieren, und geben Sie den Namen des zu registrierenden Ressourcenanbieters an.
 
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
-To get the supported locations for a particular type of resource, use:
+Verwenden Sie zum Abrufen der unterstützten Standorte für einen bestimmten Ressourcentyp Folgendes:
 
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 
-To get the supported API versions for a particular type of resource, use:
+Verwenden Sie zum Abrufen der unterstützten API-Versionen für einen bestimmten Ressourcentyp Folgendes:
 
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 
-### <a name="azure-cli"></a>Azure CLI
+### Azure-Befehlszeilenschnittstelle
 
-To see whether the provider is registered, use the `azure provider list` command.
+Mit dem Befehl `azure provider list` können Sie ermitteln, ob der Anbieter registriert ist.
 
     azure provider list
 
-To register a resource provider, use the `azure provider register` command, and specify the *namespace* to register.
+Verwenden Sie den Befehl `azure provider register`, um einen Ressourcenanbieter zu registrieren, und geben Sie den zu registrierenden *Namespace* an.
 
     azure provider register Microsoft.Cdn
 
-To see the supported locations and API versions for a resource provider, use:
+Verwenden Sie zum Anzeigen der unterstützten Standorte und API-Versionen für einen Ressourcenanbieter Folgendes:
 
     azure provider show -n Microsoft.Compute --json > compute.json
 
-## <a name="quota-exceeded"></a>Quota exceeded
+## Das Kontingent wurde überschritten
 
-You might have issues when deployment exceeds a quota, which could be per resource group, subscriptions, accounts, and other scopes. For example, your subscription may be configured to limit the number of cores for a region. If you attempt to deploy a virtual machine with more cores than the permitted amount, you will receive an error stating the quota has been exceeded.
-For complete quota information, see [Azure subscription and service limits, quotas, and constraints](azure-subscription-service-limits.md).
+Probleme können auftreten, wenn eine Bereitstellung ein Kontingent überschreitet (etwa für eine Ressourcengruppe, ein Abonnement, ein Konto oder Ähnliches). Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr Kernen als der zulässigen Anzahl bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde. Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](azure-subscription-service-limits.md).
 
-To examine your subscription's quotas for cores, you can use the `azure vm list-usage` command in the Azure CLI. The following example illustrates that the core quota for a free trial account is 4:
+Mit dem Befehl `azure vm list-usage` können Sie über die Azure-Befehlszeilenschnittstelle die Kernkontingente Ihres eigenen Abonnements untersuchen. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
 
     azure vm list-usage
 
-Which returns:
+Ausgabe des Befehls:
 
     info:    Executing command vm list-usage
     Location: westus
@@ -187,17 +185,17 @@ Which returns:
     data:    Cores  Count  0             4
     info:    vm list-usage command OK
 
-If you were to try to deploy a template that creates more than 4 cores into the West US region on the above subscription, you would get a deployment error that might look something like this (either in the portal or by investigating the deployment logs):
+Wenn Sie versuchen, eine Vorlage bereitzustellen, die mehr als vier Kerne in der Region "Westen der USA" des oben aufgeführten Abonnements erstellt, wird eine Bereitstellungs-Fehlermeldung angezeigt, die etwa wie folgt aussieht (im Portal oder durch die Untersuchung der Bereitstellungsprotokolle):
 
     statusCode:Conflict
     serviceRequestId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     statusMessage:{"error":{"code":"OperationNotAllowed","message":"Operation results in exceeding quota limits of Core. Maximum allowed: 4, Current in use: 4, Additional requested: 2."}}
 
-Or in PowerShell, you can use the **Get-AzureRmVMUsage** cmdlet.
+In PowerShell können Sie alternativ das Cmdlet **Get-AzureRmVMUsage** verwenden.
 
     Get-AzureRmVMUsage
 
-Which returns:
+Ausgabe des Befehls:
 
     ...
     CurrentValue : 0
@@ -209,62 +207,58 @@ Which returns:
     Unit         : null
     ...
 
-In these cases, you should go to the portal and file a support issue to raise your quota for the region into which you want to deploy.
+In diesen Fällen sollten Sie zum Portal navigieren und ein Supportproblem einreichen, um Ihr Kontingent für die Region, in der Sie diese bereitstellen möchten, zu erhöhen.
 
-> [AZURE.NOTE] Remember that for resource groups, the quota is for each individual region, not for the entire subscription. If you need to deploy 30 cores in West US, you have to ask for 30 Resource Manager cores in West US. If you need to deploy 30 cores in any of the regions to which you have access, you should ask for 30 resource Manager cores in all regions.
+> [AZURE.NOTE] Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in allen Regionen, auf die Sie Zugriff haben, bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne in allen Regionen anfordern.
 
 
-## <a name="authorization-failed"></a>Authorization failed
+## Fehler bei der Autorisierung
 
-You may receive an error during deployment because the account or service principal attempting to deploy the resources does not have access to perform those actions. Azure Active Directory enables you or your administrator to control which identities can access what resources with a great degree of precision. For example, if your account is assigned to the Reader role, it will not be able to create new resources. In that case, you should see an error message indicating that authorization failed.
+Möglicherweise wird während der Bereitstellung ein Fehler angezeigt, da das Konto oder ein Dienstprinzipal, der versucht die Ressourcen bereitzustellen, keinen Zugriff zum Ausführen dieser Aktionen hat. Mit Azure Active Directory können Sie oder Ihr Administrator sehr genau kontrollieren, welche Identitäten auf welche Ressourcen Zugriff haben. Wenn Ihr Konto der Leserrolle zugewiesen ist, kann es beispielsweise keine neuen Ressourcen erstellen. In diesem Fall wird eine Fehlermeldung angezeigt, die darauf hinweist, dass die Autorisierung fehlgeschlagen ist.
 
-For more information about role-based access control, see [Azure Role-Based Access Control](./active-directory/role-based-access-control-configure.md).
+Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure Active Directory-Ressourcen](./active-directory/role-based-access-control-configure.md).
 
-In addition to role-based access control, your deployment actions may be limited by policies on the subscription. Through policies, the administrator can enforce conventions on all resources deployed in the subscription. For example, an administrator can require that a particular tag value be provided for a resource type. If you have not fulfilled the policy requirements, you will receive an error during deployment. For more information about policies, see [Use Policy to manage resources and control access](resource-manager-policy.md).
+Neben rollenbasierter Zugriffssteuerung können Ihre Bereitstellungsaktionen auch durch Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
-## <a name="troubleshooting-virtual-machines"></a>Troubleshooting virtual machines
+## Problembehandlung bei virtuellen Computern
 
-| Error | Articles |
+| Error | Artikel |
 | -------- | ----------- |
-| Custom script extension errors | [Windows VM extension failures](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />or<br />[Linux VM extension failures](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
-| OS image provisioning errors | [New Windows VM errors](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />or<br />[New Linux VM errors](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md ) |
-| Allocation failures | [Windows VM allocation failures](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />or<br />[Linux VM allocation failures](./virtual-machines/virtual-machines-linux-allocation-failure.md) |
-| Secure Shell (SSH) errors when attempting to connect | [Secure Shell connections to Linux VM](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
-| Errors connecting to application running on VM | [Application running on Windows VM](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />or<br />[Application running on a Linux VM](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
-| Remote Desktop connection errors | [Remote Desktop connections to Windows VM](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) |
-| Connection errors resolved by re-deploying | [Redeploy Virtual Machine to new Azure node](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) |
-| Cloud service errors | [Cloud service deployment problems](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
+| Fehler der benutzerdefinierten Skripterweiterung | [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />oder<br />[Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
+| Fehler bei der Bereitstellung des Betriebssystemimage | [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />oder<br />[Behandeln von Resource Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) |
+| Fehler bei der Zuordnung | [Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Windows-Computern in Azure](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />oder<br />[Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Linux-Computern in Azure](./virtual-machines/virtual-machines-linux-allocation-failure.md) |
+| Secure Shell (SSH)-Fehler beim Herstellen einer Verbindung | [Problembehandlung für SSH-Verbindungen (Secure Shell) mit einem Linux-basierten virtuellen Azure-Computer](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
+| Fehler beim Herstellen einer Verbindung mit einer Anwendung, die auf einem virtuellen Computer ausgeführt wird | [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Windows)](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />oder<br />[Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Linux)](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
+| Fehler bei Remotedesktopverbindungen | [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) |
+| Verbindungsfehler, die durch eine erneute Bereitstellung behoben werden | [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) |
+| Clouddienstfehler | [Behandeln von Problemen mit der Clouddienstbereitstellung](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
 
-## <a name="troubleshooting-other-services"></a>Troubleshooting other services
+## Problembehandlung bei anderen Diensten
 
-The following table is not a complete list of troubleshooting topics for Azure. Instead, it focuses on issues related to deploying or configuring resources. If you need help troubleshooting run-time issues with a resource, see the documentation for that Azure service.
+Die folgende Tabelle ist keine vollständige Liste der Problembehandlung für Azure. Stattdessen konzentriert sie sich auf Probleme im Zusammenhang mit der Bereitstellung oder Konfiguration von Ressourcen. Wenn Sie Hilfe bei der Problembehandlung von Laufzeitproblemen mit einer Ressource benötigen, lesen Sie die Informationen in der Dokumentation für den jeweiligen Azure-Dienst.
 
-| Service | Article |
+| Dienst | Artikel |
 | -------- | -------- |
-| Automation | [Troubleshooting tips for common errors in Azure Automation](./automation/automation-troubleshooting-automation-errors.md) |
-| Azure Stack | [Microsoft Azure Stack troubleshooting](./azure-stack/azure-stack-troubleshooting.md) |
-| Azure Stack | [Web Apps and Azure Stack](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md ) |
-| Data Factory | [Troubleshoot Data Factory issues](./data-factory/data-factory-troubleshoot.md) |
-| Service Fabric | [Troubleshoot common issues when you deploy services on Azure Service Fabric](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
-| Site Recovery | [Monitor and troubleshoot protection for virtual machines and physical servers](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
-| Storage | [Monitor, diagnose, and troubleshoot Microsoft Azure Storage](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
-| StorSimple | [Troubleshoot StorSimple device deployment issues](./storsimple/storsimple-troubleshoot-deployment.md) |
-| SQL Database | [Troubleshoot connection issues to Azure SQL Database](./sql-database/sql-database-troubleshoot-common-connection-issues.md) |
-| SQL Data Warehouse | [Troubleshooting Azure SQL Data Warehouse](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) |
+| Automation | [Tipps zur Problembehandlung für häufige Fehler in Azure Automation](./automation/automation-troubleshooting-automation-errors.md) |
+| Azure Stack | [Microsoft Azure Stack troubleshooting (Problembehandlung für Microsoft Azure Stack)](./azure-stack/azure-stack-troubleshooting.md) |
+| Azure Stack | [Web Apps and Azure Stack (Web-Apps und Azure Stack)](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) |
+| Data Factory | [Problembehandlung bei Data Factory](./data-factory/data-factory-troubleshoot.md) |
+| Service Fabric | [Häufig auftretende Probleme und Problembehandlung beim Bereitstellen von Diensten in Azure Service Fabric](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
+| Site Recovery | [Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
+| Speicher | [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
+| StorSimple | [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](./storsimple/storsimple-troubleshoot-deployment.md) |
+| SQL-Datenbank | [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](./sql-database/sql-database-troubleshoot-common-connection-issues.md) |
+| SQL Data Warehouse | [Problembehandlung bei Azure SQL Data Warehouse](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) |
 
-## <a name="understand-when-a-deployment-is-ready"></a>Understand when a deployment is ready
+## Verstehen, wann eine Bereitstellung bereit ist
 
-Azure Resource Manager reports success on a deployment when all providers return from deployment successfully. However, that this does not necessarily mean that your resource group is "active and ready for your users". For example, a deployment may need to download upgrades, wait on non-template resources, or install complex scripts or some other executable activity that Azure does not know about because it is not an activity that a provider is tracking. In these cases, it can be some time before your resources are ready for real-world use. As a result, you should expect that the deployment status succeeds some time before your deployment can be used.
+Azure Resource Manager meldet eine erfolgreiche Bereitstellung, wenn alle Anbieter erfolgreich von der Bereitstellung zurückgegeben werden. Dies bedeutet jedoch nicht zwangsläufig, dass Ihre Ressourcengruppe aktiv ist und für Benutzer bereitsteht. Zum Beispiel muss eine Bereitstellung Upgrades herunterladen, auf andere Ressourcen ohne Vorlagen warten oder komplexe Skripte oder andere ausführbare Aktivitäten installieren, die Azure nicht kennt, da es sich um keine Aktivität handelt, die ein Anbieter überwacht. In diesen Fällen kann einige Zeit vergehen, bis Ihre Ressourcen tatsächlich nutzungsbereit sind. Daher sollten Sie davon ausgehen, dass der Bereitstellungsstatus einige Zeit bevor Ihre Bereitstellung genutzt werden kann, erfolgreich ist.
 
-You can prevent Azure from reporting deployment success, however, by creating a custom script for your custom template -- using the [CustomScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) for example -- that knows how to monitor the entire deployment for system-wide readiness and returns successfully only when users can interact with the entire deployment. If you want to ensure that your extension is the last to run, use the **dependsOn** property in your template.
+Sie können jedoch Azure daran hindern, einen erfolgreichen Bereitstellungsstatus zu melden, indem Sie ein benutzerdefiniertes Skript für Ihre benutzerdefinierte Vorlage erstellen -- beispielsweise mithilfe der [CustomerScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) -- das weiß, wie die gesamte Bereitstellung für eine systemweite Einsatzbereitschaft zu überwachen ist und nur erfolgreich zurückkehrt, wenn Benutzer mit der gesamten Bereitstellung interagieren können. Wenn Sie sicherstellen möchten, dass Ihre Erweiterung die letzte ist, die ausgeführt wird, verwenden Sie die **dependsOn**-Eigenschaft in Ihrer Vorlage.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- To learn about auditing actions, see [Audit operations with Resource Manager](resource-group-audit.md).
-- To learn about actions to determine the errors during deployment, see [View deployment operations](resource-manager-troubleshoot-deployments-portal.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

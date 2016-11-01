@@ -1,17 +1,15 @@
 
 
-1. Log in to the [Firebase console](https://firebase.google.com/console/). Create a new Firebase project if you don't already have one.
-2. After your project is created click **Add Firebase to your Android app** and follow the instructions provided.
+1. Melden Sie sich an der [Firebase-Konsole](https://firebase.google.com/console/) an. Erstellen Sie ein neues Firebase-Projekt, falls Sie noch keins besitzen.
+2. Klicken Sie nach der Erstellung des Projekts auf **Add Firebase to your Android app** (Firebase der Android-App hinzufügen), und führen Sie die angegebenen Schritte aus.
 
-    ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
+	![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
 
-3. In the Firebase Console, click the cog for your project and then click **Project Settings**.
+3. Klicken Sie in der Firebase-Konsole auf das Zahnrad für Ihr Projekt und dann auf **Projekteinstellungen**.
 
-    ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
+	![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
 
-4. Click the **Cloud Messaging** tab in your project settings and copy the value of the **Server key** and **Sender ID**.  These values will be used later to configure the notification hub Access Policy and your notification handler in the app.
+4. Klicken Sie in den Projekteinstellungen auf die Registerkarte **Cloud Messaging**, und kopieren Sie den Wert unter **Serverschlüssel** und **Absender-ID**. Sie verwenden diese Werte später, um die Notification Hub-Zugriffsrichtlinie und Ihren Benachrichtigungshandler in der App zu konfigurieren.
   
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

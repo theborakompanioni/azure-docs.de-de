@@ -1,6 +1,6 @@
 <properties
- pageTitle="What is Azure Scheduler? | Microsoft Azure"
- description="Azure Scheduler allows you to declaratively describe actions to run in the cloud. It then schedules and runs those actions automatically."
+ pageTitle="Was ist Azure Scheduler? | Microsoft Azure"
+ description="Mit Azure Scheduler können Sie Aktionen, die in der Cloud ausgeführt werden sollen, deklarativ beschreiben. Anschließend werden diese Aktionen automatisch geplant und ausgeführt."
  services="scheduler"
  documentationCenter=".NET"
  authors="derek1ee"
@@ -15,44 +15,39 @@
  ms.date="08/18/2016"
  ms.author="deli"/>
 
+# Was ist Azure Scheduler?
 
-# <a name="what-is-azure-scheduler?"></a>What is Azure Scheduler?
+Mit Azure Scheduler können Sie Aktionen, die in der Cloud ausgeführt werden sollen, deklarativ beschreiben. Anschließend werden diese Aktionen automatisch geplant und ausgeführt. Mit Scheduler erfolgt dies über das [Azure-Portal](scheduler-get-started-portal.md), über Code, über die [REST-API](https://msdn.microsoft.com/library/mt629143.aspx) oder über Azure PowerShell.
 
-Azure Scheduler allows you to declaratively describe actions to run in the cloud. It then schedules and runs those actions automatically.  Scheduler does this by using [the Azure portal](scheduler-get-started-portal.md), code, [REST API](https://msdn.microsoft.com/library/mt629143.aspx), or Azure PowerShell.
+Scheduler erstellt, pflegt und startet geplante Arbeit. Scheduler kann weder Workloads hosten noch Code ausführen. Der Dienst _ruft_ nur Code auf, der an anderer Stelle gehostet wird, z. B. in Azure, lokal oder bei einem anderen Anbieter. Der Aufruf erfolgt per HTTP, HTTPS, Speicherwarteschlange, Service Bus-Warteschlange oder Service Bus-Thema.
 
-Scheduler creates, maintains, and invokes scheduled work.  Scheduler does not host any workloads or run any code. It only _invokes_ code hosted elsewhere—in Azure, on-premises, or with another provider. It invokes via HTTP, HTTPS, a storage queue, a service bus queue, or a service bus topic.
+Scheduler plant [Aufträge](scheduler-concepts-terms.md), protokolliert einen Verlauf der Auftragsausführungsergebnisse, die überprüft werden können, und plant deterministisch und zuverlässig auszuführende Workloads. Azure WebJobs (Teil des Web-Apps-Features im Azure App Service) und andere Planungsfunktionen von Azure verwenden Scheduler im Hintergrund. Mit der [Scheduler-REST-API](https://msdn.microsoft.com/library/mt629143.aspx) wird die Kommunikation für diese Aktionen verwaltet. Auf diese Weise unterstützt Scheduler mühelos [komplexe Zeitpläne und Wiederholungszeitpläne](scheduler-advanced-complexity.md).
 
-Scheduler schedules [jobs](scheduler-concepts-terms.md), keeps a history of job execution results that one can review, and deterministically and reliably schedules workloads to be run. Azure WebJobs (part of the Web Apps feature in Azure App Service) and other Azure scheduling capabilities use Scheduler in the background. The [Scheduler REST API](https://msdn.microsoft.com/library/mt629143.aspx) helps manage the communication for these actions. As such, Scheduler supports [complex schedules and advanced recurrence](scheduler-advanced-complexity.md) easily.
+Mehrere Szenarios bieten sich für die Verwendung von Scheduler an. Beispiel:
 
-There are several scenarios that lend themselves to the usage of Scheduler. For example:
++ _Periodische Anwendungsaktionen_: Erfassen von Daten von Twitter in regelmäßigen Abständen in einem Feed.
++ _Tägliche Wartung_: Tägliche Bereinigung von Protokollen, das Durchführen von Sicherungen und anderen Wartungsaufgaben. Ein Administrator möchte eine Datenbank z. B. für die nächsten neun Monate täglich um 1:00 Uhr sichern.
 
-+ _Recurring application actions:_ Periodically gathering data from Twitter into a feed.
-+ _Daily maintenance:_ Daily pruning of logs, performing backups, and other maintenance tasks. For example, an administrator may choose to back up the database at 1:00 A.M. every day for the next nine months.
+Mit Scheduler können Sie [Auftragssammlungen](scheduler-concepts-terms.md) programmgesteuert, mithilfe von Skripts und im Portal erstellen, aktualisieren, löschen, anzeigen und verwalten.
 
-Scheduler allows you to create, update, delete, view, and manage jobs and [job collections](scheduler-concepts-terms.md) programmatically, by using scripts, and in the portal.
+## Siehe auch
 
-## <a name="see-also"></a>See also
+ [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
 
- [Azure Scheduler concepts, terminology, and entity hierarchy](scheduler-concepts-terms.md)
+ [Erste Schritte mit dem Scheduler im Azure-Portal](scheduler-get-started-portal.md)
 
- [Get started using Scheduler in the Azure portal](scheduler-get-started-portal.md)
+ [Pläne und Abrechnung in Azure Scheduler](scheduler-plans-billing.md)
 
- [Plans and billing in Azure Scheduler](scheduler-plans-billing.md)
+ [Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler](scheduler-advanced-complexity.md)
 
- [How to build complex schedules and advanced recurrence with Azure Scheduler](scheduler-advanced-complexity.md)
+ [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
 
- [Azure Scheduler REST API reference](https://msdn.microsoft.com/library/mt629143)
+ [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
 
- [Azure Scheduler PowerShell cmdlets reference](scheduler-powershell-reference.md)
+ [Hochverfügbarkeit und Zuverlässigkeit von Azure Scheduler](scheduler-high-availability-reliability.md)
 
- [Azure Scheduler high-availability and reliability](scheduler-high-availability-reliability.md)
+ [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
 
- [Azure Scheduler limits, defaults, and error codes](scheduler-limits-defaults-errors.md)
+ [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
- [Azure Scheduler outbound authentication](scheduler-outbound-authentication.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

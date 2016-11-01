@@ -1,69 +1,67 @@
 <properties 
-    pageTitle="Azure Mobile Engagement implementation for Gaming App"
-    description="Gaming app scenario to implement Azure Mobile Engagement" 
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="Azure Mobile Engagement-Implementierung für Spiele-App"
+	description="Spiele-App-Szenario zum Implementieren von Azure Mobile Engagement" 
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="mobile-engagement"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.workload="mobile" 
-    ms.date="08/19/2016"
-    ms.author="piyushjo"/>
+	ms.service="mobile-engagement"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.workload="mobile" 
+	ms.date="08/19/2016"
+	ms.author="piyushjo"/>
 
+#Implementieren von Mobile Engagement mit Spiele-App
 
-#<a name="implement-mobile-engagement-with-gaming-app"></a>Implement Mobile Engagement with Gaming App
+## Übersicht
 
-## <a name="overview"></a>Overview
+Ein Gaming-Startup hat eine neue Rollenspiel-/Strategiespiel-App rund ums Angeln veröffentlicht. Das Spiel ist seit sechs Monate erhältlich. Das Spiel ist ein großer Erfolg und wurde Millionen Mal heruntergeladen. Die Beibehaltungsdauer ist im Vergleich zu anderen Spiele-Apps von Startups sehr hoch. Bei der vierteljährlichem Besprechung vereinbarten die Beteiligten, dass der durchschnittliche Umsatz pro Benutzer (ARPU) erhöht werden müsse. Premium-Pakete im Spiel sind als Sonderangebote verfügbar. Mit diesen Spielpaketen können Benutzer die Darstellung und Leistung ihrer Angelschnüre und Köder oder ihrer Ausrüstung im Spiel aktualisieren. Die Verkaufszahlen für Pakete sind jedoch sehr niedrig. Daher entscheiden sie sich dafür, zuerst die Kundenzufriedenheit mit einem Analysetool zu analysieren und dann ein Engagementprogramm mit erweiterter Segmentierung zu entwickeln, um die Verkaufszahlen zu erhöhen.
 
-A gaming start-up has launched a new fishing based role-play/strategy game app. The game has been up and running for 6 months. This game is a huge success, and it has millions of downloads and the retention is very high compared to other start-up game apps. At the quarterly review meeting, stakeholders agree they need to increase average revenue per user (ARPU). Premium in-game packages are available as special offers. These game packs allow users to upgrade the appearance and performance of their fishing lines and lures or tackles in the game. However, package sales are very low. So they decide first to analyze the customer experience with an analytics tool, and then to develop an engagement program to increase sales using advanced segmentation.
+Auf der Grundlage des [Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices](mobile-engagement-getting-started-best-practices.md) entwickeln sie eine Engagementstrategie.
 
-Based on the [Azure Mobile Engagement - Getting Started Guide with Best practices](mobile-engagement-getting-started-best-practices.md) they build an engagement strategy.
+##Ziele und KPIs
 
-##<a name="objectives-and-kpis"></a>Objectives and KPIs
+Die wichtigsten Beteiligten für das Spiel treffen sich. Alle vereinbaren ein Hauptziel: die Steigerung der Umsatzzahlen für Premium-Pakete um 15 %. Sie erstellen Business Key Performance Indicators (KPIs), um dieses Ziel zu messen und voranzutreiben.
 
-Key stakeholders for the game meet. All agree on one main objective - to increase premium package sales by 15%. They create Business Key Performance Indicators (KPIs) to measure and drive this objective
+* Auf welchem Level des Spiels werden diese Pakete gekauft?
+* Wie hoch ist der Umsatz pro Benutzer, pro Sitzung, pro Woche und pro Monat?
+* Was sind die bevorzugten Kauftypen?
 
-* On which level of the game are these packages purchased?
-* What is the revenue per user, per session, per week, and per month?
-* What are the favorite purchase types?
+In Teil 1 des [Leitfadens mit ersten Schritten](mobile-engagement-getting-started-best-practices.md) wird erläutert, wie Sie Ziele und KPIs definieren.
 
-Part 1 of the [Getting Started Guide](mobile-engagement-getting-started-best-practices.md) explains how to define the objectives and KPIs. 
+Nachdem die Business-KPIs definiert wurden, kann der Mobile-Produktmanager Engagement-KPIs aufstellen, um neue Benutzertrends und die Beibehaltung zu bestimmen.
 
-With the Business KPIs now defined, the Mobile Product Manager creates Engagement KPIs to determine new user trends and retention.
+* Überwachen von Beibehaltung und Nutzung in den folgenden Intervallen: täglich, alle zwei Tage, wöchentlich, monatlich und alle drei Monate
+* Anzahl aktiver Benutzer
+* Die Appbewertung im Store
 
-* Monitor retention and use across the following intervals: daily, every 2 days, weekly, monthly and every 3 months
-* Active user counts
-* The app rating in the store
+Basierend auf Empfehlungen vom IT-Team, wurden die folgenden technischen KPIs hinzugefügt, um die folgenden Fragen zu beantworten:
 
-Based on recommendations from the IT team, the following technical KPIs were added to answer the following questions:
+* Wie sieht mein Benutzerpfad aus (welche Seite wird besucht, wie viel Zeit verbringen Benutzer auf dieser Seite)?
+* Anzahl der Abstürze oder Fehler pro Sitzung
+* Welche Betriebssystemversionen verwenden meine Benutzer?
+* Was ist die durchschnittliche Bildschirmgröße meiner Benutzer?
+* Wie verbinden sich meine Benutzer mit dem Internet?
 
-* What is my user path (which page is visited, how much time users spend on it)
-* Number of crashes or bugs encountered per session
-* What OS versions are my users running?
-* What is the average size of screen for my users?
-* What kind of internet connectivity do my users have?
+Der Mobile-Produktmanager gibt für jeden KPI die benötigten Daten sowie den Speicherort der Daten im Playbook an.
 
-For each KPI the Mobile Product Manager specifies the data she needs and where it is located in her playbook.
+## Engagementprogramm und -integration
 
-## <a name="engagement-program-and-integration"></a>Engagement program and integration
+Vor dem Erstellen eines erweiterten Engagementprogramms, sollte der verantwortliche Mobile-Projektleiter genau verstehen, wie und wann die Produkte von den Benutzern genutzt werden.
 
-Before building an advanced engagement program, the Mobile Project Director in charge of the project should have a deep understanding of how and when products are consumed by the users.
+Nach drei Monaten hat der Mobile-Projektleiter genügend Daten zur Verbesserung der App-internen Pushbenachrichtigungsumsätze erfasst. Die folgenden Daten wurden erfasst:
 
-After 3 months, the Mobile Project Director has collected enough data to enhance his in-app push notification sales. He learns that:
+* Der erste Kauf erfolgt in der Regel auf Level 14. In 90 % der Fälle werden neue legendäre Waffen für 3 US-Dollar gekauft.
+* In 80 % der Fälle verwenden Benutzer, die einen Kauf getätigt haben, das Produkt weiterhin und tätigen auch weitere Einkäufe.
+* Benutzer, die Level 20 abgeschlossen haben, beginnen mehr als 10 US-Dollar pro Woche auszugeben.
+* Benutzer neigen dazu Premium-Pakete auf Level 16, 24 und 32 zu kaufen.
 
-* The first purchase generally happens at the level 14. For 90% of those cases, the purchase is new legendary weapons for $3.
-* In 80 % of those cases, users who have made a purchase, continue with the product and make more purchases.
-* Users who have passed the level 20, start to spend more than $10/week.
-* Users tend to buy premium packages at level 16, 24 and 32.
-
-Thanks to this analysis the Mobile Project Director decides to create specific push notification sequences to increase in app sales. He creates three push sequences which he calls: Welcome program, Sales Program, and Inactive Program. For more information refer to the [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)
-    ![][1]
+Dank dieser Analyse beschließt der Mobile-Projektleiter, bestimmte Pushbenachrichtigungssequenzen zu erstellen, um App-interne Käufe zu erhöhen. Er erstellt drei Pushsequenzen, die er folgendermaßen nennt: Welcome Program, Sales Program und Inactive Program. Weitere Informationen finden Sie in den [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks) ![][1].
 
 <!--Image references-->
 
@@ -71,8 +69,4 @@ Thanks to this analysis the Mobile Project Director decides to create specific p
 
 <!--Link references-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,77 +1,72 @@
 <properties
-    pageTitle="Set password expiration policies in Azure Active Directory | Microsoft Azure"
-    description="Learn how to check expiration policies and change user password expiration either singly or in bulk for Azure Active directory passwords"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Festlegen von Kennwortablaufrichtlinien in Azure Active Directory | Microsoft Azure"
+	description="Erfahren Sie, wie Sie Ablaufrichtlinien überprüfen und für einzelne oder mehrere Azure Active Directory-Kennwörter ablaufen ändern, wie sie ablaufen."
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/04/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
+	ms.author="curtand"/>
 
 
+# Festlegen von Kennwortablaufrichtlinien in Azure Active Directory
 
-# <a name="set-password-expiration-policies-in-azure-active-directory"></a>Set password expiration policies in Azure Active Directory
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 
-> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+Als globaler Administrator für einen Microsoft-Clouddienst können Sie mit dem Microsoft Azure Active Directory-Modul für Windows PowerShell festlegen, dass Benutzerkennwörter nicht ablaufen. Sie können auch Windows PowerShell-Cmdlets verwenden, um die Konfiguration zu entfernen, die angibt, dass Kennwörter nicht ablaufen, oder um anzuzeigen, welche Benutzerkennwörter nicht ablaufen. Dieser Artikel bietet Hilfe für Clouddienste wie Microsoft Intune und Office 365, die auf Microsoft Azure Active Directory als Identitäts- und Verzeichnisdienste zurückgreifen.
 
-As a global administrator for a Microsoft cloud service, you can use the Microsoft Azure Active Directory Module for Windows PowerShell to set up user passwords not to expire. You can also use Windows PowerShell cmdlets to remove the never-expires configuration, or to see which user passwords are set up not to expire. This article provides help for cloud services, such as Microsoft Intune and Office 365, which rely on Microsoft Azure Active Directory for identity and directory services.
+  > [AZURE.NOTE] Nur Kennwörter für Benutzerkonten, die nicht über die Verzeichnissynchronisierung synchronisiert werden, kann so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen über die Verzeichnissynchronisierung finden Sie in der Liste der Themen unter [Fahrplan zur Verzeichnissynchronisierung](https://msdn.microsoft.com/library/azure/hh967642.aspx).
 
-  > [AZURE.NOTE] Only passwords for user accounts that are not synchronized through directory synchronization can be configured not to expire. For more information about directory synchronization, see the list of topics in [Directory synchronization roadmap](https://msdn.microsoft.com/library/azure/hh967642.aspx).
+Damit Sie Windows PowerShell-Cmdlets verwenden können, müssen Sie sie zunächst installieren.
 
-To use Windows PowerShell cmdlets, you first must install them.
+## Was möchten Sie tun?
 
-## <a name="what-do-you-want-to-do?"></a>What do you want to do?
+- [Überprüfen der Ablaufrichtlinie für ein Kennwort](#how-to-check-expiration-policy-for-a-password)
 
-- [How to check expiration policy for a password](#how-to-check-expiration-policy-for-a-password)
+- [Festlegen, dass ein Kennwort abläuft](#set-a-password-to-expire)
 
-- [Set a password to expire](#set-a-password-to-expire)
+- [Festlegen, dass ein Kennwort nicht abläuft](#set-a-password-to-never-expire)
 
-- [Set a password so that it will not expire](#set-a-password-to-never-expire)
+## Überprüfen der Ablaufrichtlinie für ein Kennwort
 
-## <a name="how-to-check-expiration-policy-for-a-password"></a>How to check expiration policy for a password
+1.  Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 
-1.  Connect to Windows PowerShell using your company administrator credentials.
+2.  Führen Sie einen der folgenden Schritte aus:
 
-2.  Do one of the following:
+	- Um festzustellen, ob für das Kennwort eines bestimmten Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN, z. B. aprilr@contoso.onmicrosoft.com) oder der Benutzer-ID des zu überprüfenden Benutzers aus: `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
 
-    - To see whether a single user’s password is set to never expire, run the following cmdlet by using the user principal name (UPN) (for example, aprilr@contoso.onmicrosoft.com) or the user ID of the user you want to check: `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+	- Um die Einstellung "Kennwort läuft nie ab" für alle Benutzer anzuzeigen, führen Sie das folgende Cmdlet aus: `Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
-    - To see the "Password never expires" setting for all users, run the following cmdlet: `Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
+## Festlegen, dass ein Kennwort abläuft
 
-## <a name="set-a-password-to-expire"></a>Set a password to expire
+1.  Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 
-1.  Connect to Windows PowerShell using your company administrator credentials.
+2.  Führen Sie einen der folgenden Schritte aus:
 
-2.  Do one of the following:
+	- Um für das Kennwort eines Benutzers festzulegen, dass es abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
 
-    - To set the password of one user so that the password will expire, run the following cmdlet by using the user principal name (UPN) or the user ID of the user: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
+	- Um für die Kennwörter aller Benutzer in der Organisation festzulegen, dass sie ablaufen, verwenden Sie das folgende Cmdlet: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
 
-    - To set the passwords of all users in the organization so that they will expire, use the following cmdlet: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
+## Festlegen, dass ein Kennwort nicht abläuft
 
-## <a name="set-a-password-to-never-expire"></a>Set a password to never expire
+1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 
-1. Connect to Windows PowerShell using your company administrator credentials.
+2.  Führen Sie einen der folgenden Schritte aus:
 
-2.  Do one of the following:
+	- Um für das Kennwort eines Benutzers festzulegen, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
 
-    - To set the password of one user to never expire, run the following cmdlet by using the user principal name (UPN) or the user ID of the user: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
+	- Um für die Kennwörter aller Benutzer in einer Organisation festzulegen, dass sie nie ablaufen, führen Sie das folgende Cmdlet aus: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
-    - To set the passwords of all the users in an organization to never expire, run the following cmdlet: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 
-* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

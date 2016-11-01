@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Listing your application in the Azure Active Directory application gallery"
-   description="How to list an application that supports single sign-on in the Azure Active Directory gallery | Microsoft Azure"
+   pageTitle="Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten"
+   description="Auflisten einer Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-Katalog | Microsoft Azure"
    services="active-directory"
    documentationCenter="dev-center-name"
-   authors="bryanla"
+   authors="msmbaldwin"
    manager="mbaldwin"
    editor=""/>
 
@@ -17,89 +17,84 @@
    ms.author="mbaldwin"/>
 
 
+# Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten
 
-# <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Listing your application in the Azure Active Directory application gallery
+Eine Anwendung, die einmaliges Anmelden mit Azure Active Directory unterstützt, kann nur im [Azure AD-Katalog](https://azure.microsoft.com/marketplace/active-directory/all/) aufgelistet werden, wenn sie einen der folgenden Integrationsmodi implementiert:
 
-To list an application that supports single sign-on with Azure Active Directory in the [Azure AD gallery](https://azure.microsoft.com/marketplace/active-directory/all/), the application first needs to implement one of the following integration modes:
+* **OpenID Connect**: Direkte Integration in Azure AD unter Verwendung von OpenID Connect für die Authentifizierung und der Azure AD-Zustimmungs-API für die Konfiguration. Wenn Sie gerade erst mit der Integration beginnen und Ihre Anwendung SAML nicht unterstützt, ist dies der empfohlene Modus.
 
-* **OpenID Connect** - Direct integration with Azure AD using OpenID Connect for authentication and the Azure AD consent API for configuration. If you are just starting an integration and your application does not support SAML, then this is the recommend mode.
+* **SAML**: In Ihrer Anwendung können bereits Identitätsanbieter von Drittanbietern mithilfe des SAML-Protokolls konfiguriert werden.
 
-* **SAML** – Your application already has the ability to configure third-party identity providers using the SAML protocol.
+Für die Auflistung bestehen je nach Modus folgende Anforderungen:
 
-Listing requirements for each mode are below.
+##Integration mithilfe von OpenID Connect
 
-##<a name="openid-connect-integration"></a>OpenID Connect Integration
+Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für Entwickler](active-directory-authentication-scenarios.md). Stellen Sie die nachfolgend beschriebenen Informationen zusammen, und senden Sie sie an waadpartners@microsoft.com.
 
-To integrate your application with Azure AD, following the [developer instructions](active-directory-authentication-scenarios.md). Then complete the questions below and send to waadpartners@microsoft.com.
+* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.
 
-* Provide credentials for a test tenant or account with your application that can be used by the Azure AD team to test the integration.  
+* Geben Sie uns Anweisungen, wie sich das Azure AD-Team anmelden und eine Instanz von Azure AD unter Verwendung des [Azure AD Consent Framework](active-directory-integrating-applications.md#overview-of-the-consent-framework) mit Ihrer Anwendung verbinden kann.
 
-* Provide instructions on how the Azure AD team can sign in and connect an instance of Azure AD to your application using the [Azure AD consent framework](active-directory-integrating-applications.md#overview-of-the-consent-framework). 
+* Stellen Sie alle weiteren notwendigen Anweisungen bereit, damit das Azure AD-Team das einmalige Anmelden mit Ihrer Anwendung testen kann.
 
-* Provide any further instructions required for the Azure AD team to test single sign-on with your application. 
+* Stellen Sie folgende Informationen bereit:
 
-* Provide the info below:
-
-> Company Name:
+> Name des Unternehmens:
 > 
-> Company Website:
+> Website des Unternehmens:
 > 
-> Application Name:
+> Anwendungsname:
 > 
-> Application Description (256 character limit):
+> Anwendungsbeschreibung (max. 256 Zeichen):
 > 
-> Application Website (informational):
+> Website der Anwendung (informativ):
 > 
-> Application Technical Support Website or Contact Info:
+> Technische Support-Website für die Anwendung oder Kontaktinformationen:
 > 
-> Client ID of the application, as shown in the application details at https://manage.windowsazure.com:
+> Client-ID der Anwendung, wie in den Anwendungsdetails auf https://manage.windowsazure.com gezeigt:
 > 
-> Application Sign-Up URL where customers go to sign up for and /or purchase the application:
+> Anmelde-URL, unter der sich die Kunden anmelden und/oder die Anwendung erwerben:
 > 
-> Choose up to three categories for your application to be listed under (for available categories see the Azure Active Directory Marketplace):
+> Wählen Sie bis zu drei Kategorien aus, unter denen Ihre Anwendung aufgelistet wird (verfügbare Kategorien finden Sie im Azure Active Directory Marketplace):
 > 
-> Attach Application Small Icon (PNG file, 45px by 45px, solid background color):
+> Kleines Anwendungssymbol einfügen (PNG-Datei, 45 px mal 45 px, Volltonfarbe für den Hintergrund):
 > 
-> Attach Application Large Icon (PNG file, 215px by 215px, solid background color):
+> Großes Anwendungssymbol einfügen (PNG-Datei, 215 px mal 215 px, Volltonfarbe für den Hintergrund):
 > 
-> Attach Application Logo (PNG file, 150px by 122px, transparent background color):
+> Logo einfügen (PNG-Datei, 150 px mal 122 px, transparente Hintergrundfarbe):
 
-##<a name="saml-integration"></a>SAML Integration
+##Integration mithilfe von SAML
 
-Any app that supports SAML 2.0 can be integrated directly with an Azure AD tenant using [these instructions to add a custom application](active-directory-saas-custom-apps.md). Once you have tested that your application integration works with Azure AD, send the following information to <waadpartners@microsoft.com>.
+Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Dazu befolgen Sie [diese Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](active-directory-saas-custom-apps.md). Wenn Sie die Anwendungsintegration in Azure AD erfolgreich getestet haben, senden Sie die folgenden Informationen an <waadpartners@microsoft.com>.
 
-* Provide credentials for a test tenant or account with your application that can be used by the Azure AD team to test the integration.  
+* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.
 
-* Provide the SAML Sign-On URL, Issuer URL (entity ID), and Reply URL (assertion consumer service) values for your application, as described [here](active-directory-saas-custom-apps.md). If you typically provide these values as part of a SAML metadata file, then please send that as well.
+* Geben Sie die URL für einmaliges Anmelden mit SAML, die Aussteller-URL (Entitäts-ID) und die Antwort-URL (Assertion Consumer Service) für Ihre Anwendung an, wie [hier](active-directory-saas-custom-apps.md) beschrieben. Wenn Sie diese Werte in der Regel als Teil einer SAML-Metadatendatei zur Verfügung stellen, senden Sie uns diese ebenfalls.
 
-* Provide a brief description of how to configure Azure AD as an identity provider in your application using SAML 2.0. If your application supports configuring Azure AD as an identity provider through a self-service administrative portal, then please ensure the credentials provided above include the ability to set this up.
+* Beschreiben Sie kurz, wie Azure AD als Identitätsanbieter in ihrer Anwendung mithilfe von SAML 2.0 konfiguriert wird. Wenn Ihre Anwendung die Konfiguration von Azure AD als Identitätsanbieter über ein Self-Service-Verwaltungsportal unterstützt, stellen Sie sicher, dass dies mit den oben angegebenen Anmeldeinformation eingerichtet werden kann.
 
-* Provide the info below:
+* Stellen Sie folgende Informationen bereit:
 
-> Company Name:
+> Name des Unternehmens:
 > 
-> Company Website:
+> Website des Unternehmens:
 > 
-> Application Name:
+> Anwendungsname:
 > 
-> Application Description (256 character limit):
+> Anwendungsbeschreibung (max. 256 Zeichen):
 > 
-> Application Website (informational):
+> Website der Anwendung (informativ):
 > 
-> Application Technical Support Website or Contact Info:
+> Technische Support-Website für die Anwendung oder Kontaktinformationen:
 > 
-> Application Sign-Up URL where customers go to sign up for and /or purchase the application:
+> Anmelde-URL, unter der sich die Kunden anmelden und/oder die Anwendung erwerben:
 > 
-> Choose up to three categories for your application to be listed under (for available categories see the [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/))):
+> Wählen Sie bis zu drei Kategorien aus, unter denen Ihre Anwendung aufgelistet wird (verfügbare Kategorien finden Sie im [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)):
 > 
-> Attach Application Small Icon (PNG file, 45px by 45px, solid background color):
+> Kleines Anwendungssymbol einfügen (PNG-Datei, 45 px mal 45 px, Volltonfarbe für den Hintergrund):
 > 
-> Attach Application Large Icon (PNG file, 215px by 215px, solid background color):
+> Großes Anwendungssymbol einfügen (PNG-Datei, 215 px mal 215 px, Volltonfarbe für den Hintergrund):
 > 
-> Attach Application Logo (PNG file, 150px by 122px, transparent background color):
+> Logo einfügen (PNG-Datei, 150 px mal 122 px, transparente Hintergrundfarbe):
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

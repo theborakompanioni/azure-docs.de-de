@@ -1,32 +1,27 @@
-There are two types of storage accounts:
+Zwei Typen von Speicherkonten stehen zur Verfügung:
 
-### <a name="general-purpose-storage-accounts"></a>General-purpose Storage Accounts
+### Allgemeine Speicherkonten
 
-A general-purpose storage account gives you access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks under a single account. This type of storage account has two performance tiers:
+Ein allgemeines Speicherkonto bietet Ihnen Zugriff auf Azure Storage-Dienste wie Tabellen, Warteschlangen, Dateien, Blobs und Datenträger von virtuellen Azure-Computern in einem einzigen Konto. Diese Art von Speicherkonto umfasst zwei Leistungsstufen:
 
-- A standard storage performance tier which allows you to store Tables, Queues, Files, Blobs and Azure virtual machine disks.
-- A premium storage performance tier which currently only supports Azure virtual machine disks. See [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) for an in-depth overview of Premium storage.
+- Storage Standard ermöglicht Ihnen das Speichern von Tabellen, Warteschlangen, Dateien, Blobs und Datenträgern von virtuellen Azure-Computern.
+- Storage Premium unterstützt derzeit nur Datenträger von virtuellen Azure-Computern. Eine ausführliche Übersicht über Azure Premium Storage finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
-### <a name="blob-storage-accounts"></a>Blob Storage Accounts
+### BLOB-Speicherkonten
 
-A Blob storage account is a specialized storage account for storing your unstructured data as blobs (objects) in Azure Storage. Blob storage accounts are similar to your existing general-purpose storage accounts and share all the great durability, availability, scalability, and performance features that you use today including 100% API consistency for block blobs and append blobs. For applications requiring only block or append blob storage, we recommend using Blob storage accounts.
+BLOB-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind mit Ihren bereits vorhandenen allgemeinen Speicherkonten vergleichbar und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten.
 
-> [AZURE.NOTE] Blob storage accounts support only block and append blobs, and not page blobs.
+> [AZURE.NOTE] BLOB-Speicherkonten unterstützen nur Block- und Anfügeblobs, keine Seitenblobs.
 
-Blob storage accounts expose the **Access Tier** attribute which can be specified during account creation and modified later as needed. There are two types of access tiers that can be specified based on your data access pattern:
+BLOB-Speicherkonten verfügen über das Attribut **Zugriffsstufe**, das bei der Kontoerstellung festgelegt und später bei Bedarf geändert werden kann. Es gibt zwei Arten von Zugriffsstufen, die auf Grundlage Ihres Datenzugriffsmusters festgelegt werden können:
 
-- A **Hot** access tier which indicates that the objects in the storage account will be more frequently accessed. This allows you to store data at a lower access cost.
-- A **Cool** access tier which indicates that the objects in the storage account will be less frequently accessed. This allows you to store data at a lower data storage cost.
+- Die Zugriffsstufe **Hot**, wenn auf die Objekte im Speicherkonto häufig zugegriffen wird. Dabei fallen bei der Datenspeicherung geringere Zugriffskosten an.
+- Die Zugriffsstufe **Cool**, wenn auf die Objekte im Speicherkonto weniger häufig zugegriffen wird. Dabei fallen bei der Datenspeicherung geringere Speicherkosten an.
 
-If there is a change in the usage pattern of your data, you can also switch between these access tiers at any time. Changing the access tier may result in additional charges. Please see [Pricing and billing for Blob storage accounts](../articles/storage/storage-blob-storage-tiers.md#pricing-and-billing) for more details.
+Bei einer Änderung des Nutzungsmusters der Daten können Sie jederzeit zwischen den beiden Zugriffstarifen wechseln. Die Änderung des Zugriffstarifs kann mit zusätzlichen Kosten verbunden sein. Weitere Informationen dazu finden Sie unter [Preise und Abrechnung für BLOB-Speicherkonten](../articles/storage/storage-blob-storage-tiers.md#pricing-and-billing).
 
-For more details on Blob storage accounts, see [Azure Blob Storage: Cool and Hot tiers](../articles/storage/storage-blob-storage-tiers.md).
+Weitere Informationen zu BLOB-Speicherkonten finden Sie unter [Azure-Blobspeicher: Tarife für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data)](../articles/storage/storage-blob-storage-tiers.md).
 
-Before you can create a storage account, you must have an Azure subscription, which is a plan that gives you access to a variety of Azure services. You can get started with Azure with a [free account](https://azure.microsoft.com/pricing/free-trial/). Once you decide to purchase a subscription plan, you can choose from a variety of [purchase options](https://azure.microsoft.com/pricing/purchase-options/). If you’re an [MSDN subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), you get free monthly credits that you can use with Azure services, including Azure Storage. See [Azure Storage Pricing ](https://azure.microsoft.com/pricing/details/storage/) for information on volume pricing.
+Um ein Speicherkonto erstellen zu können, müssen Sie über ein Azure-Abonnement verfügen. Dies ist ein Plan, der Ihnen Zugriff auf eine Vielzahl von Azure-Diensten verschafft. Sie können die Verwendung von Azure mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) beginnen. Wenn Sie sich entscheiden, einen Abonnementplan zu kaufen, können Sie zwischen einer Vielzahl von [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) auswählen. [MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) erhalten ein monatliches Gratis-Guthaben für Azure-Dienste, inklusive Azure-Speicher. Informationen zu Volumenpreisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-To learn how to create a storage account, see [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) for more details. You can create up to 100 uniquely named storage accounts with a single subscription. See [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) for details about storage account limits.
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+Informationen zum Erstellen eines Standardspeicherkontos finden Sie unter [Erstellen Sie ein Speicherkonto](../articles/storage/storage-create-storage-account.md#create-a-storage-account). Sie können bis zu 100 eindeutig benannte Speicherkonten unter einem einzigen Abonnement erstellen. Weitere Informationen zu den Begrenzungen von Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/storage-scalability-targets.md).

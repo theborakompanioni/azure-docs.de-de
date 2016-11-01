@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Create a record set and records for a DNS Zone using the Azure portal | Microsoft Azure"
-   description="How to create host records for Azure DNS and create record sets and records using the Azure portal"
+   pageTitle="Erstellen eines Ressourceneintragssatzes und von Einträgen für eine DNS-Zone mit dem Azure-Portal | Microsoft Azure"
+   description="Erstellen von Hosteinträgen für Azure DNS und Erstellen von Ressourceneintragssätzen und Einträgen mit dem Azure-Portal"
    services="dns"
    documentationCenter="na"
-   authors="sdwheeler"
+   authors="cherylmc"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
@@ -15,58 +15,53 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="08/16/2016"
-   ms.author="sewhee"/>
+   ms.author="cherylmc"/>
 
 
 
-
-# <a name="create-dns-record-sets-and-records-by-using-the-azure-portal"></a>Create DNS record sets and records by using the Azure portal
+# Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](dns-getstarted-create-recordset-portal.md)
+- [Azure-Portal](dns-getstarted-create-recordset-portal.md)
 - [PowerShell](dns-getstarted-create-recordset.md)
-- [Azure CLI](dns-getstarted-create-recordset-cli.md)
+- [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
 
 
-This article walks you through the process of creating records and records sets by using the Azure portal. After you create your DNS zone, you add the DNS records for your domain. To do this, you first need to understand DNS records and record sets.
+Dieser Artikel beschreibt das Erstellen von Einträgen und Eintragssätzen mit dem Azure-Portal. Nach dem Erstellen der DNS-Zone fügen Sie die DNS-Ressourceneinträge für Ihre Domäne hinzu. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
 
 [AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
 
-## <a name="create-a-record-set-and-record"></a>Create a record set and record
+## Erstellen eines Ressourceneintragssatzes und eines Ressourceneintrags
 
-The following example walks you through the process of creating a record set and record by using the Azure portal. We'll use the DNS "A" record type.
+Im folgenden Beispiel wird die Erstellung eines Ressourceneintragssatzes und von Einträgen mit dem Azure-Portal schrittweise erläutert. Wir verwenden den DNS-Eintragstyp „A“.
 
-1. Sign in to the portal.
+1. Melden Sie sich beim Portal an.
 
-2. Go to the **DNS zone** blade in which you want to create a record set.
+2. Gehen Sie zum Blatt der **DNS-Zone**, in der Sie einen Ressourceneintragssatz erstellen möchten.
 
-3. At the top of the **DNS zone** blade, select **Record set** to open the **Add record set** blade.
+3. Wählen Sie oben auf dem Blatt **DNS-Zone** **Ressourceneintragssatz**, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
 
-    ![New record set](./media/dns-getstarted-create-recordset-portal/newrecordset500.png)
+	![Neuer Ressourceneintragssatz](./media/dns-getstarted-create-recordset-portal/newrecordset500.png)
 
-4. On the **Add record set** blade, name your record set. For example, you could name your record set "**www**".
+4. Benennen Sie auf dem Blatt **Ressourceneintragssatz hinzufügen** Ihren Ressourceneintragssatz. Sie können dem Ressourceneintragssatz z.B. den Namen „**www**“ geben.
 
-    ![Add record set](./media/dns-getstarted-create-recordset-portal/addrecordset500.png)
+	![Hinzufügen eines Ressourceneintragssatzes](./media/dns-getstarted-create-recordset-portal/addrecordset500.png)
 
-5. Select the type of record you want to create. For example, select **A**.
+5. Wählen Sie den gewünschten Eintragstyp. Wählen Sie z.B. **A**.
 
-6. Set the **TTL**. The default time to live in the portal is one hour.
+6. Legen Sie die **Gültigkeitsdauer** fest. Die Gültigkeitsdauer im Portal beträgt standardmäßig eine Stunde.
 
-7. Add the IP addresses, one IP address per line. When you use the suggested record set name and record type described earlier, you add the IPv4 IP addresses to the **A** record for the www record set.
+7. Fügen Sie die IP-Adressen hinzu, eine IP-Adresse pro Zeile. Wenn Sie den oben vorgeschlagenen Ressourceneintragssatz-Namen und Eintragstyp wählen, wird die IPv4-IP-Adresse dem **A**-Eintrag für den „www“-Ressourceneintragssatz hinzugefügt.
 
-8. After you finish adding IP addresses, select **OK** at the bottom of the blade. The DNS record set will be created.
-
-
-## <a name="next-steps"></a>Next steps
-
-To manage your record set and records, see [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md).
-
-For more information about Azure DNS, see the [Azure DNS overview](dns-overview.md).
+8. Nachdem Sie die IP-Adressen hinzugefügt haben, wählen Sie **OK** am unteren Rand des Blatts. Der DNS-Ressourceneintragssatz wird erstellt.
 
 
+## Nächste Schritte
 
-<!--HONumber=Oct16_HO2-->
+Informationen zur Verwaltung Ihrer Ressourceneintragssätze und Einträge finden Sie unter [So erstellen und verwalten Sie DNS-Einträge und Ressourceneintragssätze mit dem Azure-Portal](dns-operations-recordsets-portal.md).
 
+Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,120 +1,113 @@
 <properties 
-    pageTitle="Application Map in Application Insights | Microsoft Azure" 
-    description="A visual presentation of the dependencies between app components, labeled with KPIs and alerts." 
-    services="application-insights" 
+	pageTitle="Anwendungszuordnung in Application Insights | Microsoft Azure" 
+	description="Eine visuelle Darstellung der Abhängigkeiten zwischen App-Komponenten mit KPIs und Warnungen." 
+	services="application-insights" 
     documentationCenter=""
-    authors="SoubhagyaDash" 
-    manager="douge"/>
+	authors="SoubhagyaDash" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="06/15/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/15/2016" 
+	ms.author="awills"/>
  
+# Anwendungszuordnung in Application Insights
 
-# <a name="application-map-in-application-insights"></a>Application Map in Application Insights
+Bei der Anwendungszuordnung in [Visual Studio Application Insights](app-insights-overview.md) handelt es sich um ein visuelles Layout der Abhängigkeitsbeziehungen Ihrer Anwendungskomponenten. Jede Komponente zeigt KPIs wie etwa Last, Leistung, Fehler und Warnungen, damit Sie Komponenten ermitteln können, die Leistungsprobleme oder Fehler verursachen. Sie können für jede Komponente ausführlichere Diagnoseinformationen anzeigen. Die Daten können aus Application Insights und (sofern Ihre App Azure-Dienste verwendet) aus der Azure-Diagnose stammen – wie etwa Empfehlungen des SQL-Datenbank-Ratgebers.
 
-In [Visual Studio Application Insights](app-insights-overview.md), Application Map is a visual layout of the dependency relationships of your application components. Each component shows KPIs such as load, performance, failures, and alerts, to help you discover any component causing a performance issue or failure. You can click through from any component to more detailed diagnostics, both from Application Insights, and - if your app uses Azure services - Azure diagnostics, such as the SQL Database Advisor recommendations.
+Wie bei anderen Diagrammen können Sie eine Anwendungszuordnung an das Azure-Dashboard anheften und alle ihre Funktionen nutzen.
 
-Like other charts, you can pin an application map to the Azure dashboard, where it is fully functional. 
+## Öffnen der Anwendungszuordnung
 
-## <a name="open-the-application-map"></a>Open the application map
+Öffnen Sie die Zuordnung auf dem Blatt „Übersicht“ für Ihre Anwendung:
 
-Open the map from the overview blade for your application:
+![App-Zuordnung öffnen](./media/app-insights-app-map/01.png)
 
-![open app map](./media/app-insights-app-map/01.png)
+![App-Zuordnung](./media/app-insights-app-map/02.png)
 
-![app map](./media/app-insights-app-map/02.png)
+Die Zuordnung zeigt Folgendes:
 
-The map shows:
+* Verfügbarkeitstests
+* Clientseitige Komponente (mit dem JavaScript SDK überwacht)
+* Serverseitige Komponente
+* Abhängigkeiten von den Client- und Serverkomponenten
 
-* Availability tests
-* Client side component (monitored with the JavaScript SDK)
-* Server side component
-* Dependencies of the client and server components
+Sie können Abhängigkeitslinkgruppen erweitern oder reduzieren:
 
-You can expand and collapse dependency link groups:
-
-![collapse](./media/app-insights-app-map/03.png)
+![Reduzieren](./media/app-insights-app-map/03.png)
  
-If you have a large number of dependencies of one type (SQL, HTTP etc.), they may appear grouped. 
+Wenn zahlreiche Abhängigkeiten eines Typs (SQL, HTTP usw.) vorhanden sind, werden sie unter Umständen gruppiert angezeigt.
 
 
-![grouped dependencies](./media/app-insights-app-map/03-2.png)
- 
- 
-## <a name="spot-problems"></a>Spot problems
-
-Each node has relevant performance indicators, such as the load, performance and failure rates for that component. 
-
-Warning icons highlight possible problems. An orange warning means there are failures in requests, page views or dependency calls. Red means a failure rate above 5%.
-
-
-![failure icons](./media/app-insights-app-map/04.png)
-
- 
-Active alerts also show up: 
-
-
-![active alerts](./media/app-insights-app-map/05.png)
- 
-If you use SQL Azure, there's an icon that shows when there are recommendations on how you can improve performance. 
-
-
-![Azure recommendation](./media/app-insights-app-map/06.png)
-
-Click any icon to get more details:
-
-
-![azure recommendation](./media/app-insights-app-map/07.png)
+![Gruppierte Abhängigkeiten](./media/app-insights-app-map/03-2.png)
  
  
-## <a name="diagnostic-click-through"></a>Diagnostic click through
+## Erkennen von Problemen
 
-Each of the nodes on the map offers targeted click through for diagnostics. The options vary depending on the type of the node.
+Jeder Knoten verfügt über relevante Leistungsindikatoren wie Last, Leistung und Fehlerraten für die jeweilige Komponente.
 
-![server options](./media/app-insights-app-map/09.png)
-
- 
-For components that are hosted in Azure, the options include direct links to them.
+Warnsymbole weisen auf mögliche Probleme hin. Eine orangefarbene Warnung bedeutet, dass Fehler bei Anforderungen, Seitenaufrufen oder Abhängigkeitsaufrufen vorliegen. Rot gibt eine Fehlerquote von über 5 Prozent an.
 
 
-## <a name="filters-and-time-range"></a>Filters and time range
-
-By default, the map summarizes all the data available for the chosen time range. But you can filter it to include only specific operation names or dependencies.
-
-* Operation name: This includes both page views and server side request types. With this option, the map shows the KPI on the server/client side node for the selected operations only. It shows the dependencies called in the context of those specific operations.
-* Dependency base name: This includes the AJAX browser side dependencies and server side dependencies. If you report custom dependency telemetry with the TrackDependency API, they will also show here. You can select the dependencies to show on the map. Please note that at this time, this will not filter the server side requests, or the client side page views.
-
-
-![Set filters](./media/app-insights-app-map/11.png)
+![Fehlersymbole](./media/app-insights-app-map/04.png)
 
  
+Aktive Warnungen werden ebenfalls angezeigt:
+
+
+![Aktive Warnungen](./media/app-insights-app-map/05.png)
  
-## <a name="save-filters"></a>Save filters
-
-To save the filters you have applied, pin the filtered view onto a [dashboard](app-insights-dashboards.md).
+Bei der Verwendung von SQL Azure wird mithilfe eines Symbols darauf hingewiesen, dass Empfehlungen zur Leistungssteigerung vorhanden sind.
 
 
-![Pin to dashboard](./media/app-insights-app-map/12.png)
+![Azure-Empfehlung](./media/app-insights-app-map/06.png)
+
+Klicken Sie auf ein beliebiges Symbol, um weitere Details anzuzeigen:
+
+
+![Azure-Empfehlung](./media/app-insights-app-map/07.png)
+ 
+ 
+## Anzeigen detaillierter Diagnoseinformationen
+
+Für alle Knoten in der Zuordnung können detaillierte Diagnoseinformationen angezeigt werden. Die Optionen variieren abhängig vom Knotentyp.
+
+![Serveroptionen](./media/app-insights-app-map/09.png)
+
+ 
+Für in Azure gehostete Komponenten beinhalten die Optionen direkte Links zu den Komponenten.
+
+
+## Filter und Zeitraum
+
+In der Zuordnung werden standardmäßig alle Daten zusammengefasst, die für den ausgewählten Zeitraum zur Verfügung stehen. Sie können sie jedoch nach bestimmten Vorgangsnamen oder Abhängigkeiten filtern.
+
+* Vorgangsname: Dazu gehören Seitenaufrufe und serverseitige Anforderungen. Mit dieser Option zeigt die Zuordnung den KPI auf dem server-/clientseitigen Knoten nur für die ausgewählten Vorgänge an. Die im Kontext dieser spezifischen Vorgänge aufgerufenen Abhängigkeiten werden angezeigt.
+* Basisname der Abhängigkeit: Dazu zählen die browserseitigen AJAX-Abhängigkeiten und die serverseitigen Abhängigkeiten. Wenn Sie benutzerdefinierte Abhängigkeitstelemetriedaten mit der TrackDependency-API erfassen, werden diese hier ebenfalls angezeigt. Sie können die Abhängigkeiten auswählen, die in der Zuordnung angezeigt werden sollen. Beachten Sie, dass zu diesem Zeitpunkt die serverseitigen Anforderungen oder die clientseitigen Seitenaufrufe nicht gefiltert werden.
+
+
+![Filter festlegen](./media/app-insights-app-map/11.png)
+
+ 
+ 
+## Speichern von Filtern
+
+Heften Sie zum Speichern der angewendeten Filter die gefilterte Ansicht an ein [Dashboard](app-insights-dashboards.md) an.
+
+
+![An das Dashboard anheften](./media/app-insights-app-map/12.png)
  
 
 
-## <a name="feedback"></a>Feedback
+## Feedback
 
-Please [provide feedback through the portal feedback option](app-insights-get-dev-support.md).
-
-
-![MapLink-1 image](./media/app-insights-app-map/13.png)
+[Senden Sie über die Feedbackoption im Portal Feedback](app-insights-get-dev-support.md).
 
 
+![MapLink-1 (Abbildung)](./media/app-insights-app-map/13.png)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

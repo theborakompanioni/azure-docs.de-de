@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Authoring templates with Linux VM extensions | Microsoft Azure"
-   description="Learn about authoring Azure Resource Manager templates with extensions for Linux VMs"
+   pageTitle="Erstellen von Vorlagen mit Linux-VM-Erweiterungen | Microsoft Azure"
+   description="Hier finden Sie Informationen zum Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Linux-Computer."
    services="virtual-machines-linux"
    documentationCenter=""
    authors="kundanap"
@@ -17,39 +17,34 @@
    ms.date="03/29/2016"
    ms.author="kundanap"/>
 
-
-# <a name="authoring-azure-resource-manager-templates-with-linux-vm-extensions"></a>Authoring Azure Resource Manager templates with Linux VM extensions
+# Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen
 
 [AZURE.INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
-From Azure CLI, run the following commnad:
+Führen Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl aus:
 
       Azure VM extension list
 
-This command returns the publisher name, extension name and version as following:
+Dieser Befehl gibt den Herausgebernamen, den Erweiterungsnamen und die Version zurück:
 
       Publisher                   : Microsoft.Azure.Extensions  
       ExtensionName               : DockerExtension
       Version                     : 1.0
 
-These three properties map to "publisher", "type", and "typeHandlerVersion" respectively in the above template snippet.
+Diese drei Eigenschaften sind im oben dargestellten Vorlagenausschnitt „publisher“, „type“ und „typeHandlerVersion“ zugeordnet.
 
->[AZURE.NOTE]It's always recommended to use the latest extension version to get the most updated functionality.
+>[AZURE.NOTE]Es empfiehlt sich, die aktuelle Erweiterungsversion zu verwenden, um die neuesten Funktionen zu erhalten.
 
-## <a name="identifying-the-schema-for-the-extension-configuration-parameters"></a>Identifying the schema for the extension configuration parameters
+## Identifizieren des Schemas für die Erweiterungskonfigurationsparameter
 
-The next step with authoring an extension template is to identify the format for providing configuration parameters. Each extension supports its own set of parameters.
+Im nächsten Schritt zur Erstellung einer Erweiterungsvorlage wird das Format für die Bereitstellung von Konfigurationsparametern festgelegt. Jede Erweiterung unterstützt einen eigenen Satz von Parametern.
 
-To look at sample configurations for Linux extensions, click the documentation for see [Linux eExtensions samples](virtual-machines-linux-extensions-configuration-samples.md).
+Beispielkonfigurationen für Linux-Erweiterungen finden Sie unter [Beispiele für Linux-Erweiterungen](virtual-machines-linux-extensions-configuration-samples.md).
 
-Please refer to the following to get a fully complete template with VM Extensions.
+Eine vollständige Vorlage mit VM-Erweiterungen finden Sie hier:
 
-[Custom script extension on a Linux VM](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
+[Benutzerdefinierte Skripterweiterung auf einem virtuellen Linux-Computer](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-After authoring the template, you can deploy it using the Azure CLI.
+Die erstellte Vorlage können Sie anschließend über die Azure-Befehlszeilenschnittstelle bereitstellen.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

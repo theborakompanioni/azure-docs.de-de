@@ -1,70 +1,69 @@
 <properties 
-    pageTitle="Using elastic database client library with Dapper | Microsoft Azure" 
-    description="Using elastic database client library with Dapper." 
-    services="sql-database" 
-    documentationCenter="" 
-    manager="jhubbard" 
-    authors="torsteng"/>
+	pageTitle="Verwenden der Clientbibliothek für elastische Datenbanken mit Dapper | Microsoft Azure " 
+	description="Verwenden der Clientbibliothek für elastische Datenbanken." 
+	services="sql-database" 
+	documentationCenter="" 
+	manager="jhubbard" 
+	authors="torsteng"/>
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="05/27/2016" 
-    ms.author="torsteng"/>
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/27/2016" 
+	ms.author="torsteng"/>
 
+# Verwenden der Clientbibliothek für elastische Datenbanken 
 
-# <a name="using-elastic-database-client-library-with-dapper"></a>Using elastic database client library with Dapper 
+Dieses Dokument ist für Entwickler bestimmt, die Anwendungen mithilfe von Dapper erstellen, aber auch [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md) nutzen möchten, um Anwendungen zu erstellen, die zum horizontalen Hochskalieren ihrer Datenebene Sharding implementieren. Dieses Dokument veranschaulicht, welche Änderungen in Dapper-basierten Anwendungen erforderlich sind, um Tools für elastische Datenbanken zu integrieren. Wir konzentrieren uns darauf, die Shardverwaltung für elastische Datenbanken und das datenabhängige Routing in Dapper zu integrieren.
 
-This document is for developers that rely on Dapper to build applications, but also want to embrace [elastic database tooling](sql-database-elastic-scale-introduction.md) to create applications that implement sharding to scale-out their data tier.  This document illustrates the changes in Dapper-based applications that are necessary to integrate with elastic database tools. Our focus is on composing the elastic database shard management and data dependent routing with Dapper. 
-
-**Sample Code**: [Elastic database tools for Azure SQL Database - Dapper integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Beispielcode**: [Elastic DB Tools for Azure SQL - Dapper Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f) (in englischer Sprache).
  
-Integrating **Dapper** and **DapperExtensions** with the elastic database client library for Azure SQL Database is easy. Your applications can use data dependent routing by changing the creation and opening of new [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objects to use the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) call from the [client library](http://msdn.microsoft.com/library/azure/dn765902.aspx). This limits changes in your application to only where new connections are created and opened. 
+Die Integration von **Dapper** und **DapperExtensions** in die Clientbibliothek für elastische Datenbanken für die Azure SQL-Datenbank ist einfach. Für Ihre Anwendungen können Sie das datenabhängige Routing von Elastic Scale verwenden, indem Sie die Erstellung und das Öffnen neuer [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)-Objekte so modifizieren, dass der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx)-Aufruf aus der [Clientbibliothek](http://msdn.microsoft.com/library/azure/dn765902.aspx) verwendet wird. Dadurch werden die Änderungen in der Anwendung auf Situationen beschränkt, in denen neue Verbindungen erstellt und geöffnet werden.
 
-## <a name="dapper-overview"></a>Dapper overview
-**Dapper** is an object-relational mapper. It maps .NET objects from your application to a relational database (and vice versa). The first part of the sample code illustrates how you can integrate the elastic database client library with Dapper-based applications. The second part of the sample code illustrates how to integrate when using both Dapper and DapperExtensions.  
+## Übersicht über Dapper
+**Dapper** ist ein objektrelationaler Mapper. Er ordnet .NET-Objekte aus Ihrer Anwendung einer relationalen Datenbank (und umgekehrt) zu. Der erste Teil des Beispielcodes veranschaulicht, wie Sie die Clientbibliothek für elastische Datenbanken in Dapper-basierte Anwendungen integrieren können. Im zweiten Teil des Beispielcodes erfahren Sie dann, wie die Integration verläuft, wenn Sie sowohl Dapper als auch DapperExtensions verwenden.
 
-The mapper functionality in Dapper provides extension methods on database connections that simplify submitting T-SQL statements for execution or querying the database. For instance, Dapper makes it easy to map between your .NET objects and the parameters of SQL statements for **Execute** calls, or to consume the results of your SQL queries into .NET objects using **Query** calls from Dapper. 
+Die Mapper-Funktion in Dapper stellt Erweiterungsmethoden für Datenbankverbindungen bereit, die die Übermittlung von T-SQL-Anweisungen zur Ausführung oder Abfrage der Datenbank vereinfacht. Dapper erleichtert z. B. die Zuordnung zwischen .NET-Objekten und den SQL-Anweisungsparametern für **Execute**-Aufrufe. Außerdem können Sie **Query**-Aufrufe in Dapper verwenden, um die Ergebnisse Ihrer SQL-Abfragen in .NET-Objekte zu übernehmen.
 
-When using DapperExtensions, you no longer need to provide the SQL statements. Extensions methods such as **GetList** or **Insert** over the database connection create the SQL statements behind the scenes.
+Bei Verwendung von DapperExtensions müssen keine SQL-Anweisungen mehr angegeben werden. Durch die Übermittlung von Erweiterungsmethoden wie **GetList** oder **Insert** über die Datenbankverbindung werden SQL-Anweisungen im Hintergrund erstellt.
  
-Another benefit of Dapper and also DapperExtensions is that the application controls the creation of the database connection. This helps interact with the elastic database client library which brokers database connections based on the mapping of shardlets to databases.
+Ein weiterer Vorteil von Dapper und DapperExtensions besteht darin, dass die Anwendung die Herstellung der Datenbankverbindung steuert. Dies erleichtert die Interaktion mit der Clientbibliothek für elastische Datenbanken, die Datenbankverbindungen basierend auf der Zuordnung von Shardlets und Datenbanken vermittelt.
 
-To get the Dapper assemblies, see [Dapper dot net](http://www.nuget.org/packages/Dapper/). For the Dapper extensions, see [DapperExtensions](http://www.nuget.org/packages/DapperExtensions).
+Wie Sie die Dapper-Assemblys erhalten, erfahren Sie unter [Dapper .NET](http://www.nuget.org/packages/Dapper/). Informationen zu Dapper-Erweiterungen finden Sie unter [DapperExtensions](http://www.nuget.org/packages/DapperExtensions).
 
-## <a name="a-quick-look-at-the-elastic-database-client-library"></a>A quick Look at the elastic database client library
+## Ein kurzer Blick auf die Clientbibliothek für elastische Datenbanken
 
-With the elastic database client library, you define partitions of your application data called *shardlets* , map them to databases, and identify them by *sharding keys*. You can have as many databases as you need and distribute your shardlets across these databases. The mapping of sharding key values to the databases is stored by a shard map provided by the library’s APIs. This capability is called **shard map management**. The shard map also serves as the broker of database connections for requests that carry a sharding key. This capability is referred to as **data dependent routing**.
+Mit der Clientbibliothek für elastische Datenbanken definieren Sie Partitionen Ihrer Anwendungsdaten, sogenannte *Shardlets*, ordnen sie Datenbanken zu und identifizieren sie nach *Sharding-Schlüsseln*. Sie können über beliebig viele Datenbanken verfügen und die Shardlets auf diese Datenbanken verteilen. Die Zuordnung der Sharding-Schlüsselwerte zu den Datenbanken wird in einer Shard-Zuordnung gespeichert, die durch die Bibliothek-APIs bereitgestellt wird. Diese Funktion wird als **Shard-Zuordnungsverwaltung** bezeichnet. Die Shard-Zuordnung fungiert auch als Broker von Datenbankverbindungen für Anforderungen, die einen Sharding-Schlüssel enthalten. Diese Funktion wird als **datenabhängiges Routing** bezeichnet.
 
-![Shard maps and data dependent routing][1]
+![Shard-Zuordnungen und datenabhängiges Routing][1]
 
-The shard map manager protects users from inconsistent views into shardlet data that can occur when concurrent shardlet management operations are happening on the databases. To do so, the shard maps broker the database connections for an application built with the library. When shard management operations could impact the shardlet, this allows the shard map functionality to automatically kill a database connection. 
+Der Shard-Zuordnungs-Manager schützt den Benutzer vor inkonsistenten Einblicken in Shardlet-Daten, die auftreten können, wenn gleichzeitige Shardlet-Verwaltungsvorgänge für die Datenbanken ausgeführt werden. Dazu fungieren die Shard-Zuordnungen als Broker der Datenbankverbindungen für eine mit der Bibliothek erstellte Anwendung. Wenn sich Shard-Verwaltungsvorgänge auf das Shardlet auswirken, kann es passieren, dass Datenbankverbindungen durch die Shard Map-Funktionalität automatisch beendet werden.
 
-Instead of using the traditional way to create connections for Dapper, we need to use the [OpenConnectionForKey method](http://msdn.microsoft.com/library/azure/dn824099.aspx). This ensures that all the validation takes place and connections are managed properly when any data moves between shards.
+Anstatt Dapper-Verbindungen auf die herkömmliche Weise zu erstellen, müssen wir die [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn824099.aspx)-Methode verwenden. Dadurch wird sichergestellt, dass alle Überprüfungen stattfinden und Verbindungen bei Datenverschiebungen zwischen Shards ordnungsgemäß verwaltet werden.
 
-### <a name="requirements-for-dapper-integration"></a>Requirements for Dapper integration
+### Anforderungen an die Dapper-Integration
 
-When working with both the elastic database client library and the Dapper APIs, we want to retain the following properties:
+Bei gleichzeitiger Verwendung der Clientbibliothek für elastische Datenbanken und der Dapper-APIs sollten die folgenden Eigenschaften beibehalten werden:
 
-* **Scaleout**: We want to add or remove databases from the data tier of the sharded application as necessary for the capacity demands of the application. 
+* **Horizontale Skalierung**: Das Hinzufügen oder Entfernen von Datenbanken zu bzw. aus der Datenbankebene der partitionierten Anwendung entsprechend den Kapazitätsanforderungen der Anwendung. 
 
--    **Consistency**: Since our application is scaled out using sharding, we need to perform data dependent routing. We want to use the Data dependent routing capabilities of the library to do so. In particular, we want to retain the validation and consistency guarantees provided by connections that are brokered through the shard map manager in order to avoid corruption or wrong query results. This ensures that connections to a given shardlet are rejected or stopped if (for instance) the shardlet is currently moved to a different shard using Split/Merge APIs.
+-    **Konsistenz:** Da unsere Anwendung mithilfe von Sharding horizontal skaliert wird, müssen wir datenabhängiges Routing verwenden. Wir verwenden zu diesem Zweck das datenabhängige Routing der Bibliothek. Vor allem möchten wir die Überprüfungs- und Konsistenzzusicherungen der Verbindungen beibehalten, die über den Shard-Zuordnungs-Manager vermittelt werden. Dies hilft uns, Datenverfälschung oder falsche Abfrageergebnisse zu vermeiden. Dadurch wird sichergestellt, dass Verbindungen mit einem bestimmten Shardlet zurückgewiesen oder unterbrochen werden, wenn das Shardlet z. B. gerade mithilfe von Split/Merge-APIs auf einen anderen Shard verschoben wird.
 
--    **Object Mapping**: We want to retain the convenience of the mappings provided by Dapper to translate between classes in the application and the underlying database structures. 
+-    **Objekt-Zuordnung:** Wir möchten die programmierfreundlichen Dapper-Zuordnungen beibehalten, um Code zwischen Klassen in der Anwendung und den zugrunde liegenden Datenbankstrukturen zu übersetzen.
 
-The following section provides guidance for these requirements for applications based on **Dapper** and **DapperExtensions**.
+Der folgende Abschnitt enthält eine Anleitung, wie Sie diese Anforderungen für Anwendungen auf Grundlage von **Dapper** und **DapperExtensions** erfüllen.
 
-## <a name="technical-guidance"></a>Technical Guidance
-### <a name="data-dependent-routing-with-dapper"></a>Data dependent routing with Dapper 
+## Technische Anleitung
+### Datenabhängiges Routing mit Dapper 
 
-With Dapper, the application is typically responsible for creating and opening the connections to the underlying database. Given a type T by the application, Dapper returns query results as .NET collections of type T. Dapper performs the mapping from the T-SQL result rows to the objects of type T. Similarly, Dapper maps .NET objects into SQL values or parameters for data manipulation language (DML) statements. Dapper offers this functionality via extension methods on the regular [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) object from the ADO .NET SQL Client libraries. The SQL connection returned by the Elastic Scale APIs for DDR are also regular [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objects. This allows us to directly use Dapper extensions over the type returned by the client library’s DDR API, as it is also a simple SQL Client connection.
+Bei Dapper ist die Anwendung normalerweise dafür verantwortlich, die Verbindungen mit der zugrunde liegenden Datenbank zu erstellen und zu öffnen. Wenn von der Anwendung ein T-Typ angegeben wird, gibt Dapper Abfrageergebnisse als .NET-Auflistungen des T-Typs zurück. Dapper ordnet die T-SQL-Ergebniszeilen Objekten des T-Typs zu. Bei DML (Data Manipulation Language)-Anweisungen geht Dapper ähnlich vor, indem er .NET-Objekte den SQL-Werten oder -Parametern zuordnet. Dapper stellt diese Funktionalität über Erweiterungsmethoden des herkömmlichen [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)-Objekts aus den ADO .NET SQL-Clientbibliotheken bereit. Die von den Elastic Scale-APIs für DDR zurückgegebene SQL-Verbindung entspricht ebenfalls einem herkömmlichen [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)-Objekt. Dadurch können wir Dapper- Erweiterungen direkt über den von der DDR-API der Clientbibliothek zurückgegebenen Typ verwenden, da es sich ebenfalls um eine einfache SQL-Clientverbindung handelt.
 
-These observations make it straightforward to use connections brokered by the elastic database client library for Dapper.
+Diese Beobachtungen erleichtern die Verwendung von Verbindungen, die von der Clientbibliothek für elastische Datenbanken für Dapper vermittelt werden.
 
-This code example (from the accompanying sample) illustrates the approach where the sharding key is provided by the application to the library to broker the connection to the right shard.   
+Dieses Codebeispiel (aus dem zugehörigen Beispiel) veranschaulicht eine Vorgehensweise, bei der der Shardingschlüssel der Bibliothek von der Anwendung bereitgestellt wird, um die Verbindung an den richtigen Shard zu vermitteln.
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1, 
@@ -79,15 +78,15 @@ This code example (from the accompanying sample) illustrates the approach where 
                         );
     }
 
-The call to the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) API replaces the default creation and opening of a SQL Client connection. The [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) call takes the arguments that are required for data dependent routing: 
+Der Aufruf der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx)-API ersetzt das standardmäßige Erstellen und Öffnen einer SQL-Clientverbindung. Der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx)-Aufruf akzeptiert die Argumente, die für das datenabhängige Routing erforderlich sind:
 
--    The shard map to access the data dependent routing interfaces
--    The sharding key to identify the shardlet
--    The credentials (user name and password) to connect to the shard
+-    Die Shard Map für den Zugriff auf Schnittstellen für das datenabhängige Routing
+-    Der Shardingschlüssel zum Identifizieren des Shardlets
+-    Die Anmeldeinformationen (Benutzername und Kennwort) für die Verbindung mit dem Shard
 
-The shard map object creates a connection to the shard that holds the shardlet for the given sharding key. The elastic database client APIs also tag the connection to implement its consistency guarantees. Since the call to [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) returns a regular SQL Client connection object, the subsequent call to the **Execute** extension method from Dapper follows the standard Dapper practice.
+Das Shard Map-Objekt erstellt eine Verbindung mit dem Shard, der das Shardlet für den jeweiligen Shardingschlüssel enthält. Die Verbindung wird von den Client-APIs für elastische Datenbanken außerdem markiert, um die Konsistenzzusicherungen zu implementieren. Da der Aufruf von [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) ein normales SQL-Clientverbindungsobjekt zurückgibt, folgt der nachfolgende Aufruf der **Execute**-Erweiterungsmethode von Dapper der üblichen Verfahrensweise in Dapper.
 
-Queries work very much the same way – you first open the connection using [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) from the client API. Then you use the regular Dapper extension methods to map the results of your SQL query into .NET objects:
+Abfragen funktionieren ganz ähnlich. Sie öffnen zuerst die Verbindung mit [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) aus der Client-API. Anschließend verwenden Sie die regulären Dapper-Erweiterungsmethoden, um den .NET-Objekten die Ergebnisse Ihrer SQL-Abfrage zuzuordnen:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1, 
@@ -107,13 +106,13 @@ Queries work very much the same way – you first open the connection using [Ope
             }
     }
 
-Note that the **using** block with the DDR connection scopes all database operations within the block to the one shard where tenantId1 is kept. The query only returns blogs stored on the current shard, but not the ones stored on any other shards. 
+Der **using**-Block mit der DDR-Verbindung ordnet alle Datenbankvorgänge innerhalb des Blocks dem Shard zu, in dem tenantId1 gespeichert ist. Die Abfrage gibt nur die im aktuellen Shard gespeicherten Blogs, aber nicht die in anderen Shards gespeicherten Blogs zurück.
 
-## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Data dependent routing with Dapper and DapperExtensions
+## Datenabhängiges Routing mit Dapper und DapperExtensions
 
-Dapper comes with an ecosystem of additional extensions that can provide further convenience and abstraction from the database when developing database applications. DapperExtensions is an example. 
+Dapper wird mit einem ganzen Ökosystem zusätzlicher Erweiterungen bereitgestellt, die eine komfortablere und von der Datenbank abstrahierte Entwicklung von Datenbankanwendungen ermöglichen. DapperExtensions ist ein Beispiel dafür.
 
-Using DapperExtensions in your application does not change how database connections are created and managed. It is still the application’s responsibility to open connections, and regular SQL Client connection objects are expected by the extension methods. We can rely on the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) as outlined above. As the following code samples show, the only change is that we do no longer have to write the T-SQL statements:
+Die Verwendung von DapperExtensions in der Anwendung ändert nichts daran, wie Datenbankverbindungen erstellt und verwaltet werden. Es liegt immer noch in der Verantwortung der Anwendung, Verbindungen zu öffnen, und die Erweiterungsmethoden erwarten reguläre SQL-Clientverbindungsobjekte. Wie oben beschrieben, können wir den [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) verwenden. Wie die folgenden Codebeispiele zeigen, besteht die einzige Änderung darin, dass keine T-SQL-Anweisungen mehr geschrieben werden müssen:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2, 
@@ -124,7 +123,7 @@ Using DapperExtensions in your application does not change how database connecti
            sqlconn.Insert(blog);
     }
 
-And here is the code sample for the query: 
+Im Folgenden finden Sie das Codebeispiel für die Abfrage:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2, 
@@ -140,11 +139,11 @@ And here is the code sample for the query:
            }
     }
 
-### <a name="handling-transient-faults"></a>Handling transient faults
+### Behandeln vorübergehender Fehler
 
-The Microsoft Patterns & Practices team published the [Transient Fault Handling Application Block](http://msdn.microsoft.com/library/hh680934.aspx) to help application developers mitigate common transient fault conditions encountered when running in the cloud. For more information, see [Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block](http://msdn.microsoft.com/library/dn440719.aspx).
+Das Microsoft Patterns & Practices-Team hat den [Transient Fault Handling Application Block](http://msdn.microsoft.com/library/hh680934.aspx) veröffentlicht, um Anwendungsentwicklern zu ermöglichen, häufig bei der Ausführung in der Cloud auftretende vorübergehende Fehler zu verringern. Weitere Informationen finden Sie unter [Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block](http://msdn.microsoft.com/library/dn440719.aspx) (Hartnäckigkeit, das Geheimnis aller Erfolge: Verwenden des Anwendungsblocks für die Behandlung vorübergehender Fehler, in englischer Sprache).
 
-The code sample relies on the transient fault library to protect against transient faults. 
+Zum Schutz vor vorübergehenden Fehlern verwendet das Codebeispiel die entsprechende TFH (Transient Fault Handling)-Bibliothek.
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
@@ -156,18 +155,18 @@ The code sample relies on the transient fault library to protect against transie
           }
     });
 
-**SqlDatabaseUtils.SqlRetryPolicy** in the code above is defined as a **SqlDatabaseTransientErrorDetectionStrategy** with a retry count of 10, and 5 seconds wait time between retries. If you are using transactions, make sure that your retry scope goes back to the beginning of the transaction in the case of a transient fault.
+Im Code oben ist **SqlDatabaseUtils.SqlRetryPolicy** als **SqlDatabaseTransientErrorDetectionStrategy** mit 10 Wiederholungen und einer Wartezeit von 5 Sekunden zwischen den Wiederholungen definiert. Bei Verwendung von Transaktionen sollten Sie sicherstellen, dass Ihr Wiederholungsbereich im Fall eines vorübergehenden Fehlers an den Anfang der Transaktion zurückkehrt.
 
-## <a name="limitations"></a>Limitations
+## Einschränkungen
 
-The approaches outlined in this document entail a couple of limitations:
+Für die in diesem Dokument beschriebenen Vorgehensweisen gelten einige Einschränkungen:
 
-* The sample code for this document does not demonstrate how to manage schema across shards.
-* Given a request, we assume that all its database processing is contained within a single shard as identified by the sharding key provided by the request. However, this assumption does not always hold, for example, when it is not possible to make a sharding key available. To address this, the elastic database client library includes the [MultiShardQuery class](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). The class implements a connection abstraction for querying over several shards. Using MultiShardQuery in combination with Dapper is beyond the scope of this document.
+* Im Beispielcode dieses Dokuments wird nicht auf die die shardübergreifende Schemaverwaltung eingegangen.
+* Bei einer Anforderung wird davon ausgegangen, dass die damit verbundene Datenbankverarbeitung innerhalb eines einzelnen Shards erfolgt, der durch den in der Anforderung angegebenen Shardingschlüssel identifiziert wird. Diese Annahme trifft jedoch nicht immer zu, z. B. wenn kein Shardingschlüssel verfügbar gemacht werden kann. Um dieses Problem zu beheben, enthält die Clientbibliothek für elastische Datenbanken die [MultiShardQuery](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx)-Klasse. Die Klasse implementiert eine Verbindungsabstraktion für Abfragen über mehrere Shards. Die Verwendung von MultiShardQuery in Kombination mit Dapper geht über den Rahmen dieses Dokuments hinaus.
 
-## <a name="conclusion"></a>Conclusion
+## Zusammenfassung
 
-Applications using Dapper and DapperExtensions can easily benefit from elastic database tools for Azure SQL Database. Through the steps outlined in this document, those applications can use the tool's capability for data dependent routing by changing the creation and opening of new [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objects to use the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) call of the elastic database client library. This limits the application changes required to those places where new connections are created and opened. 
+Anwendungen, die Dapper und DapperExtensions verwenden, können auch leicht von den Tools für elastische Datenbanken für Azure SQL-Datenbank profitieren. Mithilfe der in diesem Dokument beschriebenen Schritte können diese Anwendungen die Funktion des Tools für das datenabhängige Routing verwenden, indem sie die Erstellung und das Öffnen neuer [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)-Objekte dahingehend ändern, dass der [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx)-Aufruf der Clientbibliothek für elastische Datenbanken verwendet wird. Dies beschränkt Änderungen in Anwendungen auf Situationen, in denen neue Verbindungen erstellt und geöffnet werden.
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -175,7 +174,4 @@ Applications using Dapper and DapperExtensions can easily benefit from elastic d
 [1]: ./media/sql-database-elastic-scale-working-with-dapper/dapperimage1.png
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

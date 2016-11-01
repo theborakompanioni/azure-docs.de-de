@@ -1,305 +1,300 @@
 <properties
-    pageTitle="How to Use the Engagement API on Android"
-    description="Latest Android SDK - How to Use the Engagement API on Android"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+	pageTitle="Verwenden der Engagement-API unter Android"
+	description="Neuestes Android SDK – Verwenden der Engagement-API unter Android"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-android"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/25/2016"
-    ms.author="piyushjo;ricksal" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/25/2016"
+	ms.author="piyushjo;ricksal" />
 
+#Verwenden der Engagement-API unter Android
 
-#<a name="how-to-use-the-engagement-api-on-android"></a>How to Use the Engagement API on Android
+Dieses Dokument ergänzt das Dokument [Erweiterte Berichterstellungsoptionen für Android für Azure Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
 
-This document is an add-on to the document [Advanced Reporting options for Android Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). It provides in depth details about how to use the Engagement API to report your application statistics.
+Bedenken Sie, dass die einfachste Methode darin besteht, dass Ihre `Activity`-Unterklassen von der entsprechenden `EngagementActivity`-Klasse erben, wenn Engagement lediglich die Sitzungen, Aktivitäten, Abstürze und technischen Informationen Ihrer Anwendung melden soll.
 
-Keep in mind that if you only want Engagement to report your application's sessions, activities, crashes and technical information, then the simplest way is to make all your `Activity` sub-classes inherit from the corresponding `EngagementActivity` class.
+Wenn Sie darüber hinaus noch mehr Meldungen wünschen, z. B. wenn Sie anwendungsspezifische Ereignisse, Fehler und Aufträge melden möchten, oder wenn die Aktivitäten Ihrer Anwendung anders als in den `EngagementActivity`-Klassen implementiert gemeldet werden sollen, dann müssen Sie die Engagement-API verwenden.
 
-If you want to do more, for example if you need to report application specific events, errors and jobs, or if you have to report your application's activities in a different way than the one implemented in the `EngagementActivity` classes, then you need to use the Engagement API.
+Die Engagement-API wird von der `EngagementAgent`-Klasse zur Verfügung gestellt. Eine Instanz dieser Klasse kann durch Aufruf der `EngagementAgent.getInstance(Context)` statischen Methode abgerufen werden (beachten Sie, dass das zurückgegebene `EngagementAgent`-Objekt ein Singleton-Objekt ist).
 
-The Engagement API is provided by the `EngagementAgent` class. An instance of this class can be retrieved by calling the `EngagementAgent.getInstance(Context)` static method (note that the `EngagementAgent` object returned is a singleton).
+##Engagement-Konzepte
 
-##<a name="engagement-concepts"></a>Engagement concepts
+In den folgenden Abschnitten werden die [Mobile Engagement-Konzepte](mobile-engagement-concepts.md) für die Android-Plattform genauer dargestellt.
 
-The following parts refine the common [Mobile Engagement Concepts](mobile-engagement-concepts.md), for the Android platform.
+### `Session` und `Activity`
 
-### <a name="`session`-and-`activity`"></a>`Session` and `Activity`
+Wenn sich der Benutzer zwischen zwei *Aktivitäten* mehr als zwei Sekunden im Leerlauf befindet, dann wird diese Folge von *Aktivitäten* in zwei einzelne *Sitzungen* unterteilt. Diese paar Sekunden werden als „Sitzungszeitlimit“ bezeichnet.
 
-If the user stays more than a few seconds idle between two *activities*, then his sequence of *activities* is split in two distinct *sessions*. These few seconds are called the "session timeout".
+Eine *Aktivität* ist üblicherweise mit einem Bildschirm einer Anwendung verknüpft, d. h. die *Aktivität* startet, wenn der Bildschirm angezeigt wird und endet, wenn der Bildschirm geschlossen wird. Dies ist der Fall, wenn das Engagement-SDK über die `EngagementActivity`-Klassen integriert wird.
 
-An *activity* is usually associated with one screen of the application, that is to say the *activity* starts when the screen is displayed and stops when the screen is closed: this is the case when the Engagement SDK is integrated by using the `EngagementActivity` classes.
+Aber *Aktivitäten* können auch manuell mithilfe der Engagement-API gesteuert werden. Auf diese Weise kann ein vorhandener Bildschirm in mehrere Unterabschnitte geteilt werden, um mehr Details über die Verwendung des Bildschirms zu erhalten (um beispielsweise zu erfahren, wie häufig und wie lange Dialoge in diesem Bildschirm verwendet werden).
 
-But *activities* can also be controlled manually by using the Engagement API. This allows to split a given screen in several sub parts to get more details about the usage of this screen (for example to known how often and how long dialogs are used inside this screen).
+##Berichterstellung für Aktivitäten
 
-##<a name="reporting-activities"></a>Reporting Activities
+> [AZURE.IMPORTANT] Wenn Sie die `EngagementActivity`-Klasse und ihre Varianten, wie unter „Integrieren von Engagement unter Android“ beschrieben, verwenden, müssen Sie die Aktivitäten nicht gemäß der Beschreibung in diesem Abschnitt melden.
 
-> [AZURE.IMPORTANT] You don't need to report activities like described in this section if you are using the `EngagementActivity` class and its variants as explained in the How to Integrate Engagement on Android document.
+### Benutzer startet eine neue Aktivität
 
-### <a name="user-starts-a-new-activity"></a>User starts a new Activity
+			EngagementAgent.getInstance(this).startActivity(this, "MyUserActivity", null);
+			// Passing the current activity is required for Reach to display in-app notifications, passing null will postpone such announcements and polls.
 
-            EngagementAgent.getInstance(this).startActivity(this, "MyUserActivity", null);
-            // Passing the current activity is required for Reach to display in-app notifications, passing null will postpone such announcements and polls.
+Sie müssen jedes Mal `startActivity()` aufrufen, wenn sich die Benutzeraktivität ändert. Der erste Aufruf dieser Funktion startet eine neue Benutzersitzung.
 
-You need to call `startActivity()` each time the user activity changes. The first call to this function starts a new user session.
+Der beste Ort zum Aufrufen dieser Funktion ist die `onResume`-Rückruffunktion der einzelnen Aktivitäten.
 
-The best place to call this function is on each activity `onResume` callback.
+### Der Benutzer beendet seine aktuelle Aktivität
 
-### <a name="user-ends-his-current-activity"></a>User ends his current Activity
+			EngagementAgent.getInstance(this).endActivity();
 
-            EngagementAgent.getInstance(this).endActivity();
+Sie müssen `endActivity()` mindestens einmal aufrufen, wenn der Benutzer seine letzte Aktivität beendet. Dadurch wird das Engagement-SDK darüber informiert, dass sich der Benutzer derzeit im Leerlauf befindet und die Benutzersitzung geschlossen werden muss, sobald das Sitzungszeitlimit abläuft (wenn Ihr Aufruf `startActivity()` von vor dem Sitzungszeitlimit abläuft, wird die Sitzung einfach fortgesetzt).
 
-You need to call `endActivity()` at least once when the user finishes his last activity. This informs the Engagement SDK that the user is currently idle, and that the user session need to be closed once the session timeout will expire (if you call `startActivity()` before the session timeout expires, the session is simply resumed).
+Der beste Ort zum Aufrufen dieser Funktion ist die `onPause`-Rückruffunktion der einzelnen Aktivitäten.
 
-The best place to call this function is on each activity `onPause` callback.
+##Berichterstellung für Ereignisse
 
-##<a name="reporting-events"></a>Reporting Events
+### Sitzungsereignisse
 
-### <a name="session-events"></a>Session events
+Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutzers während seiner Sitzung zu melden.
 
-Session events are usually used to report the actions performed by a user during his session.
+**Beispiel ohne zusätzliche Daten:**
 
-**Example without extra data:**
+			public MyActivity extends EngagementActivity {
+			   [...]
+			   @Override
+			   public boolean onPrepareOptionsMenu(Menu menu) {
+			      getEngagementAgent().sendSessionEvent("menu_shown", null);
+			   }
+			   [...]
+			}
 
-            public MyActivity extends EngagementActivity {
-               [...]
-               @Override
-               public boolean onPrepareOptionsMenu(Menu menu) {
-                  getEngagementAgent().sendSessionEvent("menu_shown", null);
-               }
-               [...]
-            }
+**Beispiel mit zusätzlichen Daten:**
 
-**Example with extra data:**
+			public MyActivity extends EngagementActivity {
+			  [...]
+			  @Override
+			  public boolean onMenuItemSelected(int featureId, MenuItem item) {
+			    Bundle extras = new Bundle();
+			    extras.putInt("id", item.getItemId());
+			    getEngagementAgent().sendSessionEvent("menu_selected", extras);
+			  }
+			  [...]
+			}
 
-            public MyActivity extends EngagementActivity {
-              [...]
-              @Override
-              public boolean onMenuItemSelected(int featureId, MenuItem item) {
-                Bundle extras = new Bundle();
-                extras.putInt("id", item.getItemId());
-                getEngagementAgent().sendSessionEvent("menu_selected", extras);
-              }
-              [...]
-            }
+### Eigenständige Ereignisse
 
-### <a name="standalone-events"></a>Standalone Events
+Im Gegensatz zu Sitzungsereignissen können eigenständige Ereignisse außerhalb eines Sitzungskontextes auftreten.
 
-Contrary to session events, standalone events can occur outside of the context of a session.
+**Beispiel:**
 
-**Example:**
+Angenommen, Sie möchten Ereignisse melden, die beim Auslösen eines Übertragungsempfängers auftreten:
 
-Suppose you want to report events occurring when a broadcast receiver is triggered:
+			/** Triggered by Intent.ACTION_BATTERY_LOW */
+			public BatteryLowReceiver extends BroadcastReceiver {
+			  [...]
+			  @Override
+			  public void onReceive(Context context, Intent intent) {
+			    EngagementAgent.getInstance(context).sendEvent("battery_low", null);
+			  }
+			  [...]
+			}
 
-            /** Triggered by Intent.ACTION_BATTERY_LOW */
-            public BatteryLowReceiver extends BroadcastReceiver {
-              [...]
-              @Override
-              public void onReceive(Context context, Intent intent) {
-                EngagementAgent.getInstance(context).sendEvent("battery_low", null);
-              }
-              [...]
-            }
+##Melden von Fehlern
 
-##<a name="reporting-errors"></a>Reporting Errors
+### Sitzungsfehler
 
-### <a name="session-errors"></a>Session errors
+Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirkungen auf den Benutzer während seiner Sitzung haben.
 
-Session errors are usually used to report the errors impacting the user during his session.
+**Beispiel:**
 
-**Example:**
+			/** The user has entered invalid data in a form */
+			public MyActivity extends EngagementActivity {
+			  [...]
+			  public void onMyFormSubmitted(MyForm form) {
+			    [...]
+			    /* The user has entered an invalid email address */
+			    getEngagementAgent().sendSessionError("sign_up_email", null);
+			    [...]
+			  }
+			  [...]
+			}
 
-            /** The user has entered invalid data in a form */
-            public MyActivity extends EngagementActivity {
-              [...]
-              public void onMyFormSubmitted(MyForm form) {
-                [...]
-                /* The user has entered an invalid email address */
-                getEngagementAgent().sendSessionError("sign_up_email", null);
-                [...]
-              }
-              [...]
-            }
+### Eigenständige Fehler
 
-### <a name="standalone-errors"></a>Standalone errors
+Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kontexts einer Sitzung auftreten.
 
-Contrary to session errors, standalone errors can occur outside of the context of a session.
+**Beispiel:**
 
-**Example:**
+Das folgende Beispiel veranschaulicht die Meldung eines Fehlers, sobald auf dem Mobiltelefon nicht ausreichend Arbeitsspeicher zur Verfügung steht, während Ihr Anwendungsprozess aktiv ist.
 
-The following example shows how to report an error whenever the memory becomes low on the phone while your application process is running.
+			public MyApplication extends EngagementApplication {
 
-            public MyApplication extends EngagementApplication {
+			  @Override
+			  protected void onApplicationProcessLowMemory() {
+			    EngagementAgent.getInstance(this).sendError("low_memory", null);
+			  }
+			}
 
-              @Override
-              protected void onApplicationProcessLowMemory() {
-                EngagementAgent.getInstance(this).sendError("low_memory", null);
-              }
-            }
+##Berichterstellung für Aufträge
 
-##<a name="reporting-jobs"></a>Reporting Jobs
+### Beispiel
 
-### <a name="example"></a>Example
+Angenommen, Sie möchten die Dauer des Anmeldevorgangs melden:
 
-Suppose you want to report the duration of your login process:
+			[...]
+			public void signIn(Context context, ...) {
 
-            [...]
-            public void signIn(Context context, ...) {
+			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
+			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
-              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
-              EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
+			  /* Report sign in job has started */
+			  engagementAgent.startJob("sign_in", null);
 
-              /* Report sign in job has started */
-              engagementAgent.startJob("sign_in", null);
+			  [... sign in ...]
 
-              [... sign in ...]
+			  /* Report sign in job is now ended */
+			  engagementAgent.endJob("sign_in");
+			}
+			[...]
 
-              /* Report sign in job is now ended */
-              engagementAgent.endJob("sign_in");
-            }
-            [...]
+### Berichterstellung zu Fehlern während eines Auftrags
 
-### <a name="report-errors-during-a-job"></a>Report Errors during a Job
+Fehler können mit einem ausgeführten Auftrag in Zusammenhang stehen anstatt mit der aktuellen Benutzersitzung.
 
-Errors can be related to a running job instead of being related to the current user session.
+**Beispiel:**
 
-**Example:**
-
-Suppose you want to report an error during you login process:
+Angenommen, Sie möchten einen Fehler während des Anmeldeprozesses melden:
 
 [...] public void signIn(Context context, ...) {
 
-              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
-              EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
+			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
+			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
-              /* Report sign in job has been started */
-              engagementAgent.startJob("sign_in", null);
+			  /* Report sign in job has been started */
+			  engagementAgent.startJob("sign_in", null);
 
-              /* Try to sign in */
-              while(true)
-                try {
-                  trySignin();
-                  break;
-                }
-                catch(Exception e) {
-                  /* Report the error to Engagement */
-                  engagementAgent.sendJobError("sign_in_error", "sign_in", null);
+			  /* Try to sign in */
+			  while(true)
+			    try {
+			      trySignin();
+			      break;
+			    }
+			    catch(Exception e) {
+			      /* Report the error to Engagement */
+			      engagementAgent.sendJobError("sign_in_error", "sign_in", null);
 
-                  /* Retry after a moment */
-                  sleep(2000);
-                }
-              [...]
-              /* Report sign in job is now ended */
-              engagementAgent.endJob("sign_in");
-            }
-            [...]
+			      /* Retry after a moment */
+			      sleep(2000);
+			    }
+			  [...]
+			  /* Report sign in job is now ended */
+			  engagementAgent.endJob("sign_in");
+			}
+			[...]
 
-### <a name="reporting-events-during-a-job"></a>Reporting Events during a job
+### Melden von Ereignissen während eines Auftrags
 
-Events can be related to a running job instead of being related to the current user session.
+Ereignisse können statt mit der aktuellen Benutzersitzung in Zusammenhang mit einem ausgeführten Auftrag stehen.
 
-**Example:**
+**Beispiel:**
 
-Suppose we have a social network, and we use a job to report the total time during which the user is connected to the server. The user can stay connected in background even when he's using another application or when the phone is sleeping, so there is no session.
+Angenommen, wir verfügen über ein soziales Netzwerk und verwenden einen Auftrag, um die Zeit insgesamt zu melden, die der Benutzer mit dem Server verbunden ist. Der Benutzer kann im Hintergrund mit dem Server verbunden bleiben, auch wenn er eine andere Anwendung verwendet oder sich das Mobiltelefon im Ruhemodus befindet und somit keine Sitzung besteht.
 
-The user can receive messages from his friends, this is a job event.
+Der Benutzer kann Nachrichten von Freunden empfangen, hierbei handelt es sich um ein Auftragsereignis.
 
-            [...]
-            public void signin(Context context, ...) {
-              [...Sign in code...]
-              EngagementAgent.getInstance(context).startJob("connection", null);
-            }
-            [...]
-            public void signout(Context context) {
-              [...Sign out code...]
-              EngagementAgent.getInstance(context).endJob("connection");
-            }
-            [...]
-            public void onMessageReceived(Context context) {
-              [...Notify in status bar...]
-              EngagementAgent.getInstance(context).sendJobEvent("message_received", "connection", null);
-            }
-            [...]
+			[...]
+			public void signin(Context context, ...) {
+			  [...Sign in code...]
+			  EngagementAgent.getInstance(context).startJob("connection", null);
+			}
+			[...]
+			public void signout(Context context) {
+			  [...Sign out code...]
+			  EngagementAgent.getInstance(context).endJob("connection");
+			}
+			[...]
+			public void onMessageReceived(Context context) {
+			  [...Notify in status bar...]
+			  EngagementAgent.getInstance(context).sendJobEvent("message_received", "connection", null);
+			}
+			[...]
 
-##<a name="extra-parameters"></a>Extra parameters
+##Zusätzliche Parameter
 
-Arbitrary data can be attached to events, errors, activities and jobs.
+Ereignissen, Fehlern, Aktivitäten und Aufträgen können beliebige Daten zugeordnet werden.
 
-This data can be structured, it uses Android's Bundle class (actually, it works like extra parameters in Android Intents). Note that a Bundle can contain arrays or another Bundle instances.
+Diese Daten können strukturiert werden. Sie verwenden die „Bundle“-Klasse von Android (sie funktionieren in Android-Vorhaben eigentlich wie zusätzliche Parameter). Beachten Sie, dass ein Bündel Arrays oder andere Bündelinstanzen enthalten kann.
 
-> [AZURE.IMPORTANT] If you put in parcelable or serializable parameters, make sure their `toString()` method is implemented to return a human-readable string. Serializable classes that contain non transient fields that are not serializable will make Android crash when you will call `bundle.putSerializable("key",value);`
+> [AZURE.IMPORTANT] Wenn Sie verpackbare oder serialisierbare Parameter einfügen, stellen Sie sicher, dass ihre `toString()`-Methode implementiert ist, damit eine lesbare Zeichenfolge zurückgegeben wird. Serialisierbare Klassen, die nicht flüchtige Felder enthalten, die nicht serialisiert werden können, führen zu einem Absturz von Android, wenn Sie `bundle.putSerializable("key",value);` aufrufen.
 
-> [AZURE.WARNING] Sparse arrays in extra parameters are not supported, that is, it won't be serialized as an array. You should convert them into standard arrays before using it in extra parameters.
+> [AZURE.WARNING] Spärliche Arrays in zusätzlichen Parametern werden nicht unterstützt, d. h. sie werden nicht als Array serialisiert. Sie sollten sie in Standardarrays konvertieren, bevor sie in zusätzlichen Parametern verwendet werden.
 
-### <a name="example"></a>Example
+### Beispiel
 
-            Bundle extras = new Bundle();
-            extras.putString("video_id", 123);
-            extras.putString("ref_click", "http://foobar.com/blog");
-            EngagementAgent.getInstance(context).sendEvent("video_clicked", extras);
+			Bundle extras = new Bundle();
+			extras.putString("video_id", 123);
+			extras.putString("ref_click", "http://foobar.com/blog");
+			EngagementAgent.getInstance(context).sendEvent("video_clicked", extras);
 
-### <a name="limits"></a>Limits
+### Grenzen
 
-#### <a name="keys"></a>Keys
+#### Schlüssel
 
-Each key in the `Bundle` must match the following regular expression:
-
-`^[a-zA-Z][a-zA-Z_0-9]*`
-
-It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
-
-#### <a name="size"></a>Size
-
-Extras are limited to **1024** characters per call (once encoded in JSON by the Engagement service).
-
-In the previous example, the JSON sent to the server is 58 characters long:
-
-            {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
-
-##<a name="reporting-application-information"></a>Reporting Application Information
-
-You can manually report tracking information (or any other application specific information) using the `sendAppInfo()` function.
-
-Note that these information can be sent incrementally: only the latest value for a given key will be kept for a given device.
-
-Like event extras, the Bundle class is used to abstract application information, note that arrays or sub-bundles will be treated as flat strings (using JSON serialization).
-
-### <a name="example"></a>Example
-
-Here is a code sample to send user gender and birthdate:
-
-            Bundle appInfo = new Bundle();
-            appInfo.putString("status", "premium");
-            appInfo.putString("expiration", "2016-12-07"); // December 7th 2016
-            EngagementAgent.getInstance(context).sendAppInfo(appInfo);
-
-### <a name="limits"></a>Limits
-
-#### <a name="keys"></a>Keys
-
-Each key in the `Bundle` must match the following regular expression:
+Jeder Schlüssel in `Bundle` muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
-It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
+Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben, gefolgt von Buchstaben, Ziffern oder Unterstrichen (\_) beginnen müssen.
 
-#### <a name="size"></a>Size
+#### Größe
 
-Application information are limited to **1024** characters per call (once encoded in JSON by the Engagement service).
+Extras sind auf **1024** Zeichen pro Aufruf begrenzt (nach der JSON-Codierung durch den Engagement-Dienst).
 
-In the previous example, the JSON sent to the server is 44 characters long:
+Im vorherigen Beispiel enthält die an den Server gesendete JSON 58 Zeichen:
 
-            {"expiration":"2016-12-07","status":"premium"}
+			{"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
+##Informationen zur Berichterstellung
 
+Sie können Berichte zur Nachverfolgung (oder zu anderen anwendungsspezifischen Informationen) mithilfe der `sendAppInfo()`-Funktion manuell erstellen.
 
-<!--HONumber=Oct16_HO2-->
+Beachten Sie, dass diese Informationen inkrementell gesendet werden können: Nur der letzte Wert für einen bestimmten Schlüssel wird für ein bestimmtes Gerät gespeichert.
 
+Wie bei Ereigniszusätzen wird die „Bundle“-Klasse zum Abstrahieren von Anwendungsinformationen verwendet. Beachten Sie, dass Arrays oder Teilbündel als einfache Zeichenfolgen behandelt werden (mithilfe der JSON-Serialisierung).
 
+### Beispiel
+
+Hier folgt ein Codebeispiel zum Senden von Geschlecht und Geburtstag des Benutzers:
+
+			Bundle appInfo = new Bundle();
+			appInfo.putString("status", "premium");
+			appInfo.putString("expiration", "2016-12-07"); // December 7th 2016
+			EngagementAgent.getInstance(context).sendAppInfo(appInfo);
+
+### Grenzen
+
+#### Schlüssel
+
+Jeder Schlüssel in `Bundle` muss mit dem folgenden regulären Ausdruck übereinstimmen:
+
+`^[a-zA-Z][a-zA-Z_0-9]*`
+
+Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben, gefolgt von Buchstaben, Ziffern oder Unterstrichen (\_) beginnen müssen.
+
+#### Größe
+
+Anwendungsinformationen sind auf **1024** Zeichen pro Aufruf begrenzt (nach der JSON-Codierung durch den Engagement-Dienst).
+
+Im vorherigen Beispiel enthält die an den Server gesendete JSON 44 Zeichen:
+
+			{"expiration":"2016-12-07","status":"premium"}
+
+<!---HONumber=AcomDC_0727_2016-->

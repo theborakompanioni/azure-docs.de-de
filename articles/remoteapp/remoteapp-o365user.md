@@ -1,11 +1,11 @@
 
 <properties 
-    pageTitle="How to use Azure RemoteApp with Office 365 user accounts | Microsoft Azure"
-    description="Learn how to use Azure RemoteApp with my Office 365 user accounts"
-    services="remoteapp"
-    documentationCenter="" 
-    authors="piotrci" 
-    manager="mbaldwin" />
+    pageTitle="Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten | Microsoft Azure"
+	description="Informationen zum Verwenden von Azure RemoteApp mit meinen Office 365-Benutzerkonten"
+	services="remoteapp"
+	documentationCenter="" 
+	authors="piotrci" 
+	manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -18,45 +18,35 @@
 
 
 
-
-# <a name="how-to-use-azure-remoteapp-with-office-365-user-accounts"></a>How to use Azure RemoteApp with Office 365 user accounts
+# Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
-If you have an Office 365 subscription you have an Azure Active Directory that stores your user names and passwords used to access Office 365 services. For example, when your users activate Office 365 ProPlus they authenticate against Azure AD to check for licenses. Most customers would like to use the same directory with Azure RemoteApp.
+Wenn Sie über ein Office 365-Abonnement verfügen, haben Sie ein Azure Active Directory, in dem Ihre Benutzernamen und Kennwörter für den Zugriff auf Office 365-Dienste gespeichert werden. Wenn Ihre Benutzer z. B. Office 365 ProPlus aktivieren, authentifizieren sie sich bei Azure AD, um das Vorhandensein von Lizenzen zu überprüfen. Die meisten Kunden möchten das gleiche Verzeichnis mit Azure RemoteApp verwenden.
 
-If you are deploying Azure RemoteApp you are most likely using an Azure subscription that is associated with a different Azure AD. In order to use your Office 365 directory, you will need to move the Azure subscription into that directory.
+Bei der Bereitstellung von Azure RemoteApp verwenden Sie wahrscheinlich ein Azure-Abonnement, das mit einem anderen Azure AD verknüpft ist. Um Ihr Office 365-Verzeichnis verwenden zu können, müssen Sie das Azure-Abonnement in das betreffende Verzeichnis verschieben.
 
-For info on how to deploy Office 365 client applications, see [How to use your Office 365 subscription with Azure RemoteApp](remoteapp-officesubscription.md).
+Informationen zum Bereitstellen von Office 365-Clientanwendungen finden Sie unter [Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp](remoteapp-officesubscription.md).
  
-## <a name="phase-1:-register-your-free-office-365-azure-active-directory-subscription"></a>Phase 1: Register your free Office 365 Azure Active Directory subscription
-If you are using the Azure classic portal, use the steps in [Register your free Azure Active Directory subscription](https://technet.microsoft.com/library/dn832618.aspx) to get administrative access to your Azure AD via the Azure Management Portal. As the result of this process you should be able to log into the Azure portal and see your directory there – at this point you won’t see much more since the full Azure subscription you are using with Azure RemoteApp is in a different directory.
+## Phase 1: Registrieren Sie Ihr kostenloses Abonnement für Office 365 Azure Active Directory.
+Wenn Sie das klassische Azure-Portal verwenden, gehen Sie anhand der Schritte unter [Registrieren Ihres kostenlosen Azure Active Directory-Abonnements](https://technet.microsoft.com/library/dn832618.aspx) vor, um Administratorzugriff auf Ihr Azure AD über das Azure-Verwaltungsportal zu erhalten. Als Ergebnis dieses Prozesses sollten Sie sich beim Azure-Portal anmelden können und dort Ihr Verzeichnis sehen – an diesem Punkt wird nicht viel mehr angezeigt, da sich das vollständige Azure-Abonnement, das Sie mit Azure RemoteApp verwenden, in einem anderen Verzeichnis befindet.
 
-Remember the name and password of the administrator account you created in this step – they will be needed in Phase 2.
+Merken Sie sich den Namen und das Kennwort des Administratorkontos, das Sie in diesem Schritt erstellt haben – sie werden in Phase 2 benötigt.
 
-If you are using the Azure portal, check out [How to register and activate a free Azure Active Directory using Office 365 portal](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/).
+Wenn Sie das Azure-Portal verwenden, lesen Sie [How to register and activate a free Azure Active Directory using Office 365 portal](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/) (Registrieren und Aktivieren eines kostenlosen Azure Active Directory mit dem Office 365-Portal).
 
-## <a name="phase-2:-change-the-azure-ad-associated-with-your-azure-subscription."></a>Phase 2: Change the Azure AD associated with your Azure subscription.
-We are going to change your Azure subscription from its current directory into the Office 365 directory we worked with in Phase 1.
+## Phase 2: Ändern Sie das Azure AD, das mit Ihrem Azure-Abonnement verknüpft ist.
+Wir werden Ihr Azure-Abonnement von ihrem aktuellen Verzeichnis in das Office 365-Verzeichnis ändern, mit dem wir in Phase 1 gearbeitet haben.
 
-Follow the instructions described in [Change the Azure Active Directory tenant in Azure RemoteApp](remoteapp-changetenant.md). Pay particular attention to the following steps:
+Befolgen Sie die Anweisungen in [Ändern des Azure Active Directory-Mandanten in Azure RemoteApp](remoteapp-changetenant.md). Achten Sie besonders auf die folgenden Schritte:
 
-- Step #1: If you have deployed Azure RemoteApp (ARA) in this subscription, make sure you remove all Azure AD user accounts from any ARA collections first, before trying anything else. Alternatively, you can consider deleting any existing collections.
-- Step #2: This is a critical step. You need to use a Microsoft account (e.g. @outlook.com) as a Service Administrator on the subscription; this is because we cannot have any user accounts from the existing Azure AD attached to the subscription – if we do, we won’t be able to move it to a different Azure AD.
-- Step #4: When adding an existing directory, the system will ask you to sign in with the administrator account for that directory. Make sure to use the administrator account from Phase 1.
-- Step #5: Change the parent directory of the subscription to your Office 365 directory. The end result should be that under Settings -> Subscriptions your subscription lists the Office 365 directory. 
-![Change the parent directory of the subscription](./media/remoteapp-o365user/settings.png)
+- Schritt 1: Wenn Sie Azure RemoteApp (ARA) in diesem Abonnement bereitgestellt haben, stellen Sie sicher, dass Sie zuerst alle Azure AD-Benutzerkonten aus allen ARA-Sammlungen entfernen, bevor Sie versuchen, etwas anderes zu tun. Alternativ können Sie erwägen, alle vorhandenen Sammlungen zu löschen.
+- Schritt 2: Dies ist ein wichtiger Schritt. Sie müssen ein Microsoft-Konto (z.B. @outlook.com) als Dienstadministrator des Abonnements verwenden, weil keine Benutzerkonten aus dem vorhandenen Azure AD dem Abonnement angefügt sein dürfen – andernfalls können wir es nicht in ein anderes Azure AD verschieben.
+- Schritt 4: Wenn Sie ein vorhandenes Verzeichnis hinzufügen, fordert das System Sie auf, sich mit dem Administratorkonto für dieses Verzeichnis anzumelden. Stellen Sie sicher, dass Sie das Administratorkonto aus Phase 1 verwenden.
+- Schritt 5: Ändern Sie das übergeordnete Verzeichnis des Abonnements in Ihr Office 365-Verzeichnis. Das Endergebnis sollte sein, dass Ihr Abonnement unter „Einstellungen > Abonnements“ das Office 365-Verzeichnis auflistet. ![Ändern des übergeordneten Verzeichnisses des Abonnements](./media/remoteapp-o365user/settings.png)
  
 
-At this point your Azure RemoteApp subscription is associated with your Office 365 Azure AD; you can use the existing Office 365 user accounts with Azure RemoteApp!
+An diesem Punkt ist Ihr Azure RemoteApp-Abonnement Ihrem Office 365 Azure AD zugeordnet. Sie können die vorhandenen Office 365-Benutzerkonten mit Azure RemoteApp verwenden!
 
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

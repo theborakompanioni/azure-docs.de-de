@@ -1,93 +1,91 @@
 <properties
-    pageTitle="Create a Machine Learning workspace | Microsoft Azure"
-    description="How to create a workspace for Azure Machine Learning Studio"
-    services="machine-learning"
-    documentationCenter=""
-    authors="garyericson"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="Erstellen eines Machine Learning-Arbeitsbereichs | Microsoft Azure"
+	description="Erstellen eines Arbeitsbereichs für Azure Machine Learning Studio"
+	services="machine-learning"
+	documentationCenter=""
+	authors="garyericson"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/16/2016"
-    ms.author="garye;bradsev;ahgyger"/>
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/16/2016"
+	ms.author="garye;bradsev;ahgyger"/>
 
 
+# Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs
 
-# <a name="create-and-share-an-azure-machine-learning-workspace"></a>Create and share an Azure Machine Learning workspace
-
-This menu links to topics that describe how to set up the various data science environments used by the Cortana Analytics Process (CAPS).
+Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen, die vom Cortana-Analyseprozess (CAP) verwendet werden, beschrieben wird.
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-To use Azure Machine Learning Studio, you need to have a Machine Learning workspace. This workspace contains the tools you need to create, manage, and publish experiments.
+Um Azure Machine Learning Studio verwenden zu können, benötigen Sie einen Machine Learning-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
-## <a name="to-create-a-workspace"></a>To create a workspace
+## Erstellen eines Arbeitsbereichs
 
-1. Sign-in to the [Microsoft Azure classic portal].
+1. Melden Sie sich beim [klassischen Microsoft Azure-Portal] an.
 
-> [AZURE.NOTE] To sign-in, you need to be an Azure subscription administrator. Being the owner of a Machine Learning workspace will not give you access to the [Microsoft Azure classic portal]. See [Privileges of Azure subscription administrator and workspace owner](#subscriptionvsworkspace) for more details.
+> [AZURE.NOTE] Hierfür müssen Sie ein Azure-Abonnementadministrator sein. Als Besitzer eines Machine Learning-Arbeitsbereichs haben Sie keinen Zugriff auf das [klassische Microsoft Azure-Portal]. Weitere Details finden Sie unter [Berechtigungen von Azure-Abonnementadministratoren und Besitzern von Arbeitsbereichen](#subscriptionvsworkspace).
 
-2. In the Microsoft Azure services panel, click **MACHINE LEARNING**.
+2. Klicken Sie im Microsoft Azure-Dienstbereich auf **MACHINE LEARNING**.
 
-    ![Machine Learning service][1]
+    ![Machine Learning-Dienst][1]
 
-3. Click **+NEW** at the bottom of the window.
-4. Click **DATA SERVICES**, then **MACHINE LEARNING**, then **QUICK CREATE**.
+3. Klicken Sie im unteren Seitenbereich auf **+NEU**.
+4. Klicken Sie auf **DATA SERVICES**, dann **COMPUTERLERNEN**, dann **SCHNELLERFASSUNG**.
 
-    ![Quick Create of new workspace][3]
+	![Schnellerfassung eines neuen Arbeitsbereichs][3]
 
-5. Enter a **WORKSPACE NAME** for your workspace.
-6. Specify the Azure **LOCATION**, then enter an existing Azure **STORAGE ACCOUNT** or select **Create a new storage account** to create a new one.
-7. Click **CREATE AN ML WORKSPACE**.
+5. Geben Sie einen **ARBEITSBEREICHSNAMEN** für den Arbeitsbereich ein.
+6. Geben Sie den Azure-**SPEICHERORT** ein und geben Sie dann ein vorhandenes Azure-**SPEICHERKONTO** an, oder wählen Sie **Neues Speicherkonto erstellen** aus, um ein neues zu erstellen.
+7. Klicken Sie auf **ML-ARBEITSBEREICH ERSTELLEN**.
 
-After your Machine Learning workspace is created, you will see it listed on the **machine learning** page.
+Nach dem Erstellen Ihres Machine Learning-Arbeitsbereichs wird dieser auf der Seite **Machine Learning** angezeigt.
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>Sharing an Azure Machine Learning workspace
+## Freigeben eines Azure Machine Learning-Arbeitsbereichs
 
-Once a Machine Learning workspace is created, you can invite users to your workspace and share access to your workspace and all of its experiments. We support two roles of users:
+Sobald ein Machine Learning-Arbeitsbereich erstellt wurde, können Sie Benutzer zu Ihrem Arbeitsbereich einladen sowie den Zugriff auf Ihren Arbeitsbereich und alle zugehörigen Experimenten freigeben. Wir unterstützen zwei Rollen von Benutzern:
 
-- **User** - A workspace user can create, open, modify and delete datasets, experiments and web services in the workspace.
-- **Owner** - An owner can invite, remove, and list users with access to the workspace, in addition to what a user can do. He/she also have access to Notebooks.
+- **Benutzer**: Ein Arbeitsbereichsbenutzer kann Datasets, Experimente und Webdienste im Arbeitsbereich erstellen, öffnen, ändern und löschen.
+- **Besitzer**: Ein Besitzer kann (zusätzlich zu den Möglichkeiten eines Benutzers) Benutzer mit Zugriff auf den Arbeitsbereich einladen, entfernen und auflisten. Besitzer haben auch Zugriff auf Notebooks.
 
-### <a name="to-share-a-workspace"></a>To share a workspace
-1. Sign-in to [Machine Learning Studio]
-2. In the Machine Learning Studio panel, click **SETTINGS**
-3. Click **USERS**
-4. Click **INVITE MORE USERS**
+### So geben Sie einen Arbeitsbereich frei
+1. Melden Sie sich bei [Machine Learning Studio] an.
+2. Klicken Sie im Bereich „Machine Learning Studio“ auf **SETTINGS**.
+3. Klicken Sie auf **USERS**.
+4. Klicken Sie auf **INVITE MORE USERS**.
 
-    ![Invite more users][4]
+    ![Weitere Benutzer einladen][4]
 
-5. Enter one or more email address. The user just need a valid Microsoft account (e.g., name@outlook.com) or an organizational account (from Azure Active Directory).
-6. Click the check button.
+5. Geben Sie eine oder mehrere E-Mail-Adressen ein. Der Benutzer benötigt lediglich ein gültiges Microsoft-Konto (z. B. name@outlook.com) oder ein Unternehmenskonto (aus Azure Active Directory).
+6. Klicken Sie dann auf das Häkchen.
 
-Each user you added will receive an email with instruction to log-in to the shared workspace.
+Jeder hinzugefügte Benutzer empfängt eine E-Mail mit Anweisungen zum Anmelden beim freigegebenen Arbeitsbereich.
 
-For information about managing your workspace, see [Manage an Azure Machine Learning workspace].
-If you encounter a problem creating your workspace, see [Troubleshooting guide: Create and connect to an Machine Learning workspace].
+Informationen zum Verwalten des Arbeitsbereichs finden Sie unter [Verwalten eines Azure Machine Learning-Arbeitsbereichs]. Sollte ein Problem beim Erstellen des Arbeitsbereichs auftreten, finden Sie weitere Informationen unter [Handbuch zur Problembehandlung: Erstellen und Verbinden eines Machine Learning-Arbeitsbereichs].
 
-## <a name="<a-name="subscriptionvsworkspace"></a>privileges-of-azure-subscription-administrator-and-of-workspace-owner"></a><a name="subscriptionvsworkspace"></a>Privileges of Azure subscription administrator and of workspace owner
+## <a name="subscriptionvsworkspace"></a>Berechtigungen von Azure-Abonnementadministratoren und Besitzern von Arbeitsbereichen
 
-Below is a table clarifying the difference between an Azure subscription administrator and a workspace owner.
+Es folgt eine Tabelle zur Verdeutlichung der Unterschiede zwischen einem Azure-Abonnementadministrator und Besitzer eines Arbeitsbereichs.
 
-| Actions                   | Azure subscription administrator | Workspace owner  |
-| --------------            |:------------------------:| :----------------:|
-| Access [Microsoft Azure classic portal]| Yes         | No                |
-| Create a new workspace                 | Yes         | No                |
-| Delete a workspace                     | Yes         | No                |
-| Add endpoint to a web service          | Yes         | No                |
-| Delete endpoint from a web service     | Yes         | No                |
-| Change concurrency for a web service   | Yes         | No                |
-| Access [Machine Learning Studio]       | No *        | Yes               |
+| Actions | Azure-Abonnementadministrator | Besitzer des Arbeitsbereichs |
+| --------------			|:------------------------:| :----------------:|
+| Zugriff auf das [klassische Microsoft Azure-Portal]| Ja | Nein |
+| Erstellen eines neuen Arbeitsbereichs | Ja | Nein |
+| Löschen eines Arbeitsbereichs | Ja | Nein |
+| Hinzufügen eines Endpunkts für einen Webdienst | Ja | Nein |
+| Löschen eines Endpunkts aus einen Webdienst | Ja | Nein |
+| Ändern der Parallelität für einen Webdienst | Ja | Nein |
+| Zugriff auf [Machine Learning Studio] | Nein * | Ja |
 
 
-> [AZURE.NOTE] * An Azure subscription administrator is automatically added to the the workspace he/she creates as workspace Owner. However, simply being an Azure subscription administrator doesn't grant him/her access to any workspace under that subscription.
+> [AZURE.NOTE] * Ein Azure-Abonnementadministrator wird automatisch dem Arbeitsbereich hinzugefügt, den er als Arbeitsbereichsbesitzer erstellt. Azure-Abonnementadministrator zu sein allein gewährt ihm jedoch noch keinen Zugriff auf einen Arbeitsbereich unter dem Abonnement.
 
 <!-- ![List of Machine Learning workspaces][2] -->
 
@@ -102,13 +100,10 @@ Below is a table clarifying the difference between an Azure subscription adminis
 
 
 <!--Link references-->
-[Manage an Azure Machine Learning workspace]: machine-learning-manage-workspace.md
-[Troubleshooting guide: Create and connect to an Machine Learning workspace]: machine-learning-troubleshooting-creating-ml-workspace.md
-[Machine Learning Studio]: https://studio.azureml.net/  
-[Microsoft Azure classic portal]: https://manage.windowsazure.com/
+[Verwalten eines Azure Machine Learning-Arbeitsbereichs]: machine-learning-manage-workspace.md
+[Handbuch zur Problembehandlung: Erstellen und Verbinden eines Machine Learning-Arbeitsbereichs]: machine-learning-troubleshooting-creating-ml-workspace.md
+[Machine Learning Studio]: https://studio.azureml.net/
+[klassische Microsoft Azure-Portal]: https://manage.windowsazure.com/
+[klassischen Microsoft Azure-Portal]: https://manage.windowsazure.com/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

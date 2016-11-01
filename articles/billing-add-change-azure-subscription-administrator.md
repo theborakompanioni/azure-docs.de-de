@@ -1,128 +1,121 @@
 <properties
-    pageTitle="How to add or change Azure administrator roles | Microsoft Azure"
-    description="Describes how to add or change Azure Co-Administrator, Service Administrator and Account Administrator"
-    services=""
-    documentationCenter=""
-    authors="genlin"
-    manager="mbaldwin"
-    editor=""
-    tags="billing"/>
+	pageTitle="Hinzufügen oder Ändern von Azure-Administratorrollen | Microsoft Azure"
+	description="Informationen zum Hinzufügen oder Ändern des Co-Administrators, Dienstadministrators und Kontoadministrators in Azure"
+	services=""
+	documentationCenter=""
+	authors="genlin"
+	manager="msmbaldwin"
+	editor=""
+	tags="billing"/>
 
 <tags
-    ms.service="billing"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/17/2016"
-    ms.author="genli"/>
+	ms.service="billing"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/17/2016"
+	ms.author="genli"/>
 
+# Hinzufügen oder Ändern von Azure-Administratorrollen
 
-# <a name="how-to-add-or-change-azure-administrator-roles"></a>How to add or change Azure administrator roles
+In Microsoft Azure stehen drei verschiedene Administratorrollen zur Verfügung:
 
-There are three kinds of administrator roles in Microsoft Azure:
-
-| Administrative role   | Limit  | Description
+| Administratorrolle | Begrenzung | Beschreibung
 | ------------- | ------------- |---------------|
-|Account Administrator (AA)  | 1 per Azure account  |This is the person who signed up for or bought Azure subscriptions, and is authorized to access the [Account Center](https://account.windowsazure.com/Home/Index) and perform various management tasks. These include being able to create subscriptions, cancel subscriptions, change the billing for a subscription, and change the Service Administrator.
-| Service Administrator (SA) | 1 per Azure subscription  |This role is authorized to manage services in the [Azure portal](https://portal.azure.com). By default, for a new subscription, the Account Administrator is also the Service Administrator.|
-|Co-administrator (CA) in the [Azure classic portal](https://manage.windowsazure.com)|200 per subscription| This role has the same access privileges as the Service Administrator, but can’t change the association of subscriptions to Azure directories. |
+|Kontoadministrator (AA) | 1 pro Azure-Konto |Dies ist die Person, die sich für Azure-Abonnements angemeldet oder diese erworben hat und die für den Zugriff auf das [Kontocenter](https://account.windowsazure.com/Home/Index) und zum Ausführen verschiedener Verwaltungsaufgaben berechtigt ist. Dazu gehört z. B. die Möglichkeit zum Erstellen von Abonnements, Kündigen von Abonnements, Ändern der Abrechnung für ein Abonnement und Ändern des Dienstadministrators.
+| Dienstadministrator (SA) | 1 pro Azure-Abonnement |Diese Rolle ist zum Verwalten von Diensten im [Azure-Portal](https://portal.azure.com) berechtigt. Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator.|
+|Co-Administrator (CA) im [klassischen Azure-Portal](https://manage.windowsazure.com)|200 pro Abonnement| Diese Rolle verfügt über die gleichen Zugriffsrechte wie der Dienstadministrator, kann jedoch die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern. |
 
-> [AZURE.NOTE] Azure Active Directory Role-based Access Control (RBAC) allows users to be added to multiple roles. For more information, see [Azure Active Directory Role-based Access Control](./active-directory/role-based-access-control-configure.md).
+> [AZURE.NOTE] Die rollenbasierte Zugriffssteuerung in Azure Active Directory (RBAC, Role-based Access Control) ermöglicht es, Benutzer mehreren Rollen hinzuzufügen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](./active-directory/role-based-access-control-configure.md).
 
-> [AZURE.NOTE] If you need more help at any point in this article, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
+> [AZURE.NOTE] Wenn Sie bei irgendeinem Verfahren in diesem Artikel weitere Hilfe benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-## <a name="how-to-add-an-admin-for-a-subscription"></a>How to add an admin for a subscription
+## Hinzufügen eines Administrators für ein Abonnement
 
-**Azure portal**
+**Azure-Portal**
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
 
-2. On the Hub menu, select **Subscription** > *the subscription that you want the admin to access*.
+2. Wählen Sie im Hub-Menü die Option **Abonnement** und anschließend *das Abonnement aus, auf das der Administrator zugreifen soll*.
 
-    ![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
+	![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 
-3. In the subscription blade, select **Settings**> **Users**.
+3. Wählen Sie auf dem Blatt „Abonnement“ die Optionen **Einstellungen** > **Benutzer** aus.
 
-    ![newsettings](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
-4. In the Users blade, select **Add**>**Select a role** > **Owner**.
+	![newsettings](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
+4. Wählen Sie auf dem Blatt „Benutzer“ die Optionen **Hinzufügen** > **Rolle auswählen** > **Besitzer** aus.
 
-    ![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
+	![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
 
-    **Note**
-    - The owner role has same access privileges as co-administrator. This role does not have access privilege to the [Azure Account Center](https://account.windowsazure.com/subscriptions).
-    - The owners you added through the [Azure portal](https://portal.azure.com) cannot manage services in the [Azure classic portal](https://manage.windowsazure.com).  
+	**Hinweis**
+	- Die Besitzerrolle verfügt über die gleichen Zugriffsrechte wie der Co-Administrator. Diese Rolle verfügt nicht über Zugriffsrechte für das [Azure-Kontocenter](https://account.windowsazure.com/subscriptions).
+	- Die Besitzer, die Sie über das [Azure-Portal](https://portal.azure.com) hinzugefügt haben, können im [klassischen Azure-Portal](https://manage.windowsazure.com) keine Dienste verwalten.
 
-5. Type the email address of the user you want to add as owner, click the user, and then click **Select**.
+5. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten, klicken Sie auf den Benutzer, und klicken Sie dann auf **Auswählen**.
 
-    ![newadduser](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
+	![newadduser](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
 
-**Azure classic portal**
+**Klassisches Azure-Portal**
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com/).
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an.
 
-2. In the navigation pane, select **Settings**> **Administrators**> **Add**. </br>
+2. Wählen Sie im Navigationsbereich die Option **Einstellungen** > **Administratoren** > **Hinzufügen** aus. </br>
 
-    ![addcodmin](./media/billing-add-change-azure-subscription-administrator/addcoadmin.png)
+	![addcodmin](./media/billing-add-change-azure-subscription-administrator/addcoadmin.png)
 
-3. Type the email address of the person you want to add as Co-administrator and then select the subscription that you want the Co-administrator to access.</br>
+3. Geben Sie die E-Mail-Adresse der Person ein, die Sie als Co-Administrator hinzufügen möchten, und wählen Sie dann das Abonnement aus, auf das der Co-Administrator zugreifen soll.</br>
 
-    ![addcoadmin2](./media/billing-add-change-azure-subscription-administrator/addcoadmin2.png)</br>
+	![addcoadmin2](./media/billing-add-change-azure-subscription-administrator/addcoadmin2.png)</br>
 
-The following email address can be added as a Co-Administrator:
+Die folgende E-Mail-Adresse kann als Co-Administrator hinzugefügt werden:
 
-* **Microsoft Account** (formerly Windows Live ID) </br>
- You can use a Microsoft Account to sign in to all consumer-oriented Microsoft products and cloud services, such as Outlook (Hotmail), Skype (MSN), OneDrive, Windows Phone, and Xbox LIVE.
-* **Organizational account**</br>
- An organizational account is an account that is created under Azure Active Directory. The organizational account address resembles the following: user@&lt;your domain&gt;.onmicrosoft.com
+* **Microsoft-Konto** (früher Windows Live ID) </br> Sie können ein Microsoft-Konto verwenden, um sich bei allen verbraucherorientierten Microsoft-Produkten und Clouddiensten anzumelden, z. B. Outlook (Hotmail), Skype (MSN), OneDrive, Windows Phone und Xbox LIVE.
+* **Organisationskonto**</br> Ein Organisationskonto ist ein Konto, das unter Azure Active Directory erstellt wird. Die Adresse eines Organisationskontos ähnelt der folgenden Adresse: Benutzer@&lt;Ihre\_Domäne&gt;.onmicrosoft.com
 
-### <a name="limitations-and-restrictions"></a>Limitations and restrictions
+### Begrenzungen und Einschränkungen
 
- * Each subscription is associated with an Azure AD directory (also known as the Default Directory). To find the Default Directory the subscription is associated with, go to the [Azure classic portal](https://manage.windowsazure.com/), select **Settings** > **Subscriptions**. Check the subscription ID to find the Default Directory.
+ * Jedes Azure-Abonnement ist einem Azure AD-Verzeichnis zugeordnet (das auch als Standardverzeichnis bezeichnet wird). Um das Standardverzeichnis zu finden, dem das Abonnement zugeordnet ist, wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) die Optionen **Einstellungen** > **Abonnements** aus. Überprüfen Sie dort die Abonnement-ID, und suchen Sie dann das Standardverzeichnis.
 
- * If you are logged in with a Microsoft Account, you can only add other Microsoft Accounts or users within the Default Directory as Co-Administrator.
+ * Wenn Sie mit einem Microsoft-Konto angemeldet sind, können Sie nur andere Microsoft-Konten oder Benutzer innerhalb des Standardverzeichnisses als Co-Administrator hinzufügen.
 
- * If you are logged in with an organizational account, you can add other organizational accounts in your organization as Co-Administrator. For example, abby@contoso.com can add bob@contoso.com as Service Administrator or Co-Administrator, but cannot add john@notcontoso.com unless john@noncontoso.com is the user in Default Directory. Users logged in with organizational accounts can continue to add Microsoft Account users as Service Administrator or Co-Administrator.
+ * Wenn Sie mit einem Organisationskonto angemeldet sind, können Sie andere Organisationskonten in Ihrer Organisation als Co-Administrator hinzufügen. Beispielsweise kann abby@contoso.com das Konto bob@contoso.com als Dienstadministrator oder Co-Administrator hinzufügen, aber nicht john@notcontoso.com, es sei denn, john@noncontoso.com ist Benutzer im Standardverzeichnis. Mit einem Organisationskonto angemeldete Benutzer können Benutzer mit Microsoft-Konten weiterhin als Dienstadministrator oder Co-Administrator hinzufügen.
 
- * Now that it is possible to log into Azure with an organizational account, here are the changes to Service Administrator and Co-administrator account requirements:
+ * Nachdem es jetzt möglich ist, sich bei Azure mit einem Organisationskonto anzumelden, ändern sich die folgenden Kontoanforderungen für Dienstadministratoren und Co-Administratoren:
 
-    Login Method| Add Microsoft Account or users within Default Directory as CA or SA?  |Add organizational account in the same organization as CA or SA? |Add organizational account in different organization as CA or SA?
-    ------------- | ------------- |---------------|---------------
-    Microsoft Account |Yes|No|No
-    Organizational Account|Yes|Yes|No
+	Anmeldemethode| Microsoft-Konto oder Benutzer im Standardverzeichnis als Co-Administrator oder Dienstadministrator hinzufügen? |Organisationskonto in der gleichen Organisation als Co-Administrator oder Dienstadministrator hinzufügen? |Organisationskonto in einer anderen Organisation als Co-Administrator oder Dienstadministrator hinzufügen?
+	------------- | ------------- |---------------|---------------
+	Microsoft Account |Ja|Nein|Nein
+	Organisationskonto|Ja|Ja|Nein
 
-## <a name="how-to-change-service-administrator-for-a-subscription"></a>How to change Service Administrator for a subscription
+## Ändern des Dienstadministrators für ein Abonnement
 
-Only the Account Administrator can change the Service Administrator for a subscription.
+Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern.
 
-1. Log on into [Azure Account Center](https://account.windowsazure.com/subscriptions) by using the Account Administrator.
+1. Melden Sie sich als Kontoadministrator beim [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) an.
 
-2. Select the subscription you want to change.
+2. Wählen Sie das Abonnement aus, das Sie ändern möchten.
 
-3. On the right side, click **Edit subscription** details. </br>
+3. Klicken Sie auf der rechten Seite auf **Abonnementdetails bearbeiten**. </br>
 
-    ![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
+	![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
 
-4. In the **SERVICE ADMINISTRATOR** box, enter the email address of the new Service Administrator. </br>
+4. Geben Sie im Feld **DIENSTADMINISTRATOR** die E-Mail-Adresse des neuen Dienstadministrators ein. </br>
 
-    ![changeSA](./media/billing-add-change-azure-subscription-administrator/changeSA.png)
+	![changeSA](./media/billing-add-change-azure-subscription-administrator/changeSA.png)
 
-## <a name="how-to-change-the-account-administrator"></a>How to change the Account Administrator
+## Ändern des Kontoadministrators
 
-To transfer ownership of the Azure account to another account, see [Transferring Ownership of an Azure subscription](billing-subscription-transfer.md).
+Informationen zum Übertragen des Besitzes des Azure-Kontos auf ein anderes Konto finden Sie unter [Übertragen eines Azure-Abonnements](billing-subscription-transfer.md).
 
-## <a name="next-steps"></a>Next Steps
+## Nächste Schritte
 
-* To learn more about how resource access is controlled in Microsoft Azure, see [Understanding resource access in Azure](./active-directory/active-directory-understanding-resource-access.md)
+* Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](./active-directory/active-directory-understanding-resource-access.md)
 
-* For more information on how Azure Active Directory relates to your Azure subscription, see [How Azure subscriptions are associated with Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md)
+* Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md)
 
-* For more information on how Azure Active Directory relates to your Azure subscription, see [Assigning administrator roles in Azure Active Directory](./active-directory/active-directory-assign-admin-roles.md)
+* Weitere Informationen zu Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](./active-directory/active-directory-assign-admin-roles.md).
 
-> [AZURE.NOTE] If you still have further questions, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
+> [AZURE.NOTE] Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

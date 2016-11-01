@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Custom test scenarios | Microsoft Azure"
-   description="How to harden your services against graceful and ungraceful failures."
+   pageTitle="Benutzerdefinierte Testszenarien | Microsoft Azure"
+   description="Informationen zum Absichern Ihrer Dienste bei ordnungsgemäßen und nicht ordnungsgemäßen Ausfällen."
    services="service-fabric"
    documentationCenter=".net"
    authors="anmolah"
@@ -16,19 +16,18 @@
    ms.date="05/17/2016"
    ms.author="anmola"/>
 
+# Simulieren von Ausfällen während der Bearbeitung von Dienstworkloads
 
-# <a name="simulate-failures-during-service-workloads"></a>Simulate failures during service workloads
+Dank der in Azure Service Fabric enthaltenen Testability-Szenarien müssen sich Entwickler keine Sorgen über den Umgang mit einzelnen Fehlern machen. Es gibt aber Szenarien, bei denen unter Umständen eine explizite Überlappung von Clientworkload und Fehlern erforderlich ist. Mit dem Überlappen von Clientworkload und Fehlern wird sichergestellt, dass der Dienst wirklich eine Aktion ausführt, wenn ein Fehler auftritt. Aufgrund des hohen Kontrollgrads, den die Testability bietet, ist dies an präzisen Punkten der Workloadausführung möglich. Diese Auslösung von Fehlern bei unterschiedlichen Zuständen in der Anwendung kann zur Ermittlung von Fehlern und einer Verbesserung der Qualität führen.
 
-The testability scenarios in Azure Service Fabric enable developers to not worry about dealing with individual faults. There are scenarios, however, where an explicit interleaving of client workload and failures might be needed. The interleaving of client workload and faults ensures that the service is actually performing some action when failure happens. Given the level of control that testability provides, these could be at precise points of the workload execution. This induction of faults at different states in the application can find bugs and improve quality.
+## Benutzerdefiniertes Beispielszenario
+Mit diesem Test wird ein Szenario veranschaulicht, bei dem eine Überlappung der Geschäftsworkload mit [ordnungsgemäßen und nicht ordnungsgemäßen Fehlern](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions) erfolgt. Die Fehler sollten in der Mitte von Dienstvorgängen oder bei der Berechnung der besten Ergebnisse ausgelöst werden.
 
-## <a name="sample-custom-scenario"></a>Sample custom scenario
-This test shows a scenario that interleaves the business workload with [graceful and ungraceful failures](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). The faults should be induced in the middle of service operations or compute for best results.
-
-Let's walk through an example of a service that exposes four workloads: A, B, C, and D. Each corresponds to a set of workflows and could be compute, storage, or a mix. For the sake of simplicity, we will abstract out the workloads in our example. The different faults executed in this example are:
-  + RestartNode: Ungraceful fault to simulate a machine restart.
-  + RestartDeployedCodePackage: Ungraceful fault to simulate service host process crashes.
-  + RemoveReplica: Graceful fault to simulate replica removal.
-  + MovePrimary: Graceful fault to simulate replica moves triggered by the Service Fabric load balancer.
+Wir gehen hier ein Beispiel für einen Dienst durch, der die vier Workloads A, B, C und D verfügbar macht. Jede Workload entspricht einer Gruppe von Workflows, und es kann sich dabei um eine Berechnung, Speicherung oder Mischung handeln. Der Einfachheit halber werden die Workloads im Beispiel abstrahiert. Die folgenden unterschiedlichen Ausfälle werden die in diesem Beispiel ausgeführt:
+  + RestartNode: Ein nicht ordnungsgemäßer Ausfall zur Simulation eines Neustarts des Computers.
+  + RestartDeployedCodePackage: Ein nicht ordnungsgemäßer Ausfall zur Simulation von Abstürzen des Diensthostprozesses.
+  + RemoveReplica: Ein ordnungsgemäßer Ausfall zur Simulation des Entfernens eines Replikats.
+  + MovePrimary: Ein ordnungsgemäßer Ausfall zur Simulation von Replikatverschiebungen, die durch Service Fabric Load Balancer ausgelöst werden.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
@@ -156,8 +155,4 @@ class Test
 }
 ```
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0518_2016-->

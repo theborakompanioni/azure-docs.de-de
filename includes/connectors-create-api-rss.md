@@ -1,19 +1,13 @@
-### <a name="prerequisites"></a>Prerequisites
+### Voraussetzungen
 
-- An [RSS](https://wikipedia.org/wiki/RSS) account  
-
-
-Before you can use your RSS account in a Logic app, you must authorize the Logic app to connect to your RSS account.Fortunately, you can do this easily from within your Logic app on the Azure Portal.  
-
-Here are the steps to authorize your Logic app to connect to your RSS account:  
-1. To create a connection to RSS, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *RSS* in the search box. Select the trigger or action you'll like to use:  
-![RSS connection creation step](./media/connectors-create-api-rss/rss-1.png)  
-2. Select **Create connection** :  
-![RSS connection creation step](./media/connectors-create-api-rss/rss-2.png)  
-3. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
- ![RSS connection creation step](./media/connectors-create-api-rss/rss-3.png)  
+- Ein [RSS](https://wikipedia.org/wiki/RSS)-Konto  
 
 
-<!--HONumber=Oct16_HO2-->
+Bevor Sie Ihr RSS-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für die Verbindung mit Ihrem RSS-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.
 
+Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem RSS-Konto:
+1. Um eine Verbindung mit RSS herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *RSS* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die gewünschte Aktion aus: ![Schritt zur Erstellung der RSS-Verbindung](./media/connectors-create-api-rss/rss-1.png)  
+2. Wählen Sie **Verbindung erstellen**: ![Schritt zur Erstellung der RSS-Verbindung](./media/connectors-create-api-rss/rss-2.png)  
+3. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können: ![Schritt zur Erstellung der RSS-Verbindung](./media/connectors-create-api-rss/rss-3.png)  
 
+<!---HONumber=AcomDC_0525_2016-->

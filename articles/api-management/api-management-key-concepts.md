@@ -1,103 +1,102 @@
 <properties 
-    pageTitle="API Management key concepts" 
-    description="Learn about APIs, products, roles, groups, and other API Management key concepts." 
-    services="api-management" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="API Management-Schlüsselkonzepte" 
+	description="Erfahren Sie mehr über APIs, Produkte, Rollen, Gruppen und andere API Management-Schlüsselkonzepte." 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="api-management" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="hero-article" 
-    ms.date="10/25/2016" 
-    ms.author="sdanie"/>
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="hero-article" 
+	ms.date="08/09/2016" 
+	ms.author="sdanie"/>
 
+#Was ist API Management?
 
-#<a name="what-is-api-management?"></a>What is API Management?
+API Management unterstützt Organisationen beim Veröffentlichen von APIs für externe, Partner- und interne Entwickler, um das volle Potenzial von Daten und Diensten nutzen zu können. Unternehmen sind weltweit dabei, ihren Betrieb als digitale Plattform zu erweitern, neue Kanäle zu erschließen, neue Kunden zu finden und die Bindung zu existierenden Kunden zu vertiefen. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, Geschäftserkenntnissen, Analyse, Sicherheit und Schutz.
 
-API Management helps organizations publish APIs to external, partner and internal developers to unlock the potential of their data and services. Businesses everywhere are looking to extend their operations as a digital platform, creating new channels, finding new customers and driving deeper engagement with existing ones. API Management provides the core competencies to ensure a successful API program through developer engagement, business insights, analytics, security and protection.
-
-Watch the following video for an overview of Azure API Management and learn how to use API Management to add many features to your API, including access control, rate limiting, monitoring, event logging, and response caching, with minimal work on your part.
+Im folgenden Video erhalten Sie eine Übersicht über Azure API Management und erfahren, wie Sie API Management ohne größeren Aufwand zum Hinzufügen vieler Features zu Ihrer API verwenden, z.B. Zugriffssteuerung, Ratenbegrenzung, Überwachung, Ereignisprotokollierung und Zwischenspeicherung von Antworten.
 
 > [AZURE.VIDEO azure-api-management-overview]
 
-To use API Management, administrators create APIs. Each API consists of one or more operations, and each API can be added to one or more products. To use an API, developers subscribe to a product that contains that API, and then they can call the API's operation, subject to any usage policies that may be in effect.
+Administratoren erstellen APIs, um API Management zu nutzen. Jede API besteht aus einer oder mehreren Operationen, und jede API kann zu einem oder mehreren Produkten hinzugefügt werden. Um eine API zu nutzen, abonnieren Entwickler ein Produkt, das diese API enthält. Anschließend können sie die Operationen der API aufrufen und unterliegen dabei allen geltenden Nutzungsrichtlinien.
 
-This topic provides an overview of API Management key concepts.
+Dieses Thema behandelt einige Schlüsselkonzepte von API Management.
 
->[AZURE.NOTE] For more information, see the [Cloud-based API Management: Harnessing the Power of APIs](http://j.mp/ms-apim-whitepaper) PDF whitepaper. This introductory whitepaper on API Management by CITO Research covers: 
+>[AZURE.NOTE] Weitere Informationen finden Sie im Whitepaper [Cloud-based API Management: Harnessing the Power of APIs](http://j.mp/ms-apim-whitepaper) (PDF, in englischer Sprache). In diesem Whitepaper zu API Management von CITO Research werden folgende Themen behandelt:
 >
-> - Common API requirements and challenges
->     - Decoupling APIs and presenting facades
->     - Getting developers up and running quickly
->     - Securing access
->     - Analytics and metrics
-> - Gaining control and insight with an API Management platform
-> - Using cloud vs on-premise solutions
+> - Allgemeine API-Anforderungen und -Herausforderungen
+>     - Entkoppeln von APIs und Präsentieren von Fassaden
+>     - Schnelle Einrichtung und Inbetriebnahme durch Entwickler
+>     - Sichern des Zugriffs
+>     - Analysen und Metriken
+> - Kontrolle und Einblick mit einer API Management-Plattform
+> - Verwenden von Cloudlösungen im Vergleich zu lokalen Lösungen
 > - Azure API Management
 
-## <a name="<a-name="apis">-</a>apis-and-operations"></a><a name="apis"> </a>APIs and operations
+## <a name="apis"> </a>APIs und Operationen
 
-APIs are the foundation of an API Management service instance. Each API represents  a set of operations available to developers. Each API contains a reference to the back-end service that implements the API, and its operations map to the operations implemented by the back-end service. Operations in API Management are highly configurable, with control over URL mapping, query and path parameters, request and response content, and operation response caching. Rate limit, quotas, and IP restriction policies can also be implemented at the API or individual operation level.
+APIs sind die Grundlage einer API Management-Dienstinstanz. Jede API stellt Entwicklern einen Satz von Operationen zur Verfügung. Jede API enthält einen Verweis auf den Back-End-Dienst, der die API implementiert, und die Operationen der API sind den Operationen des Back-End-Diensts zugeordnet. Für Operationen in API Management ist eine umfangreiche Konfiguration möglich. Sie können die URL-Zuordnung, Abfrage- und Pfadparameter, Anforderungs- und Antwortinhalte sowie das Zwischenspeichern von Operationsantworten steuern. Durchsatzgrenzen, Kontingente und IP-Einschränkungen können ebenfalls auf API-Ebene oder für einzelne Operationen konfiguriert werden.
 
-For more information, see [How to create APIs][] and [How to add operations to an API][].
+Weitere Informationen finden Sie unter [Erstellen von APIs][] und [Hinzufügen von Operationen zu einer API][].
 
 
-## <a name="<a-name="products">-</a>-products"></a><a name="products"> </a> Products
+## <a name="products"> </a>Produkte
 
-Products are how APIs are surfaced to developers. Products in API Management have one or more APIs, and are configured with a title, description, and terms of use. Products can be **Open** or **Protected**. Protected products must be subscribed to before they can be used, while open products can be used without a subscription. When a product is ready for use by developers it can be published. Once it is published, it can be viewed (and in the case of protected products subscribed to) by developers. Subscription approval is configured at the product level and can either require administrator approval, or be auto-approved.
+APIs werden in Form von Produkten an Entwickler bereitgestellt. Produkte in API Management enthalten eine oder mehrere APIs und werden mit einem Titel, einer Beschreibung und Nutzungsbedingungen konfiguriert. Produkte können **Offen** oder **Geschützt** sein. Geschützte Produkte müssen abonniert werden, bevor Sie verwendet werden können, während offene Produkte ohne Abonnement genutzt werden können. Wenn ein Produkt bereit für die Nutzung durch Entwickler ist, kann es veröffentlicht werden. Nach der Veröffentlichung kann das Produkt (bei geschützten Produkten nach dem Abonnieren) durch die Entwickler angezeigt werden. Die Genehmigung von Abonnements wird auf der Produktebene konfiguriert. Abonnements können entweder eine Genehmigung eines Administrators erfordern oder automatisch genehmigt werden.
 
-Groups are used to manage the visibility of products to developers. Products grant visibility to groups, and developers can view and subscribe to the products that are visible to the groups in which they belong. 
+Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind.
 
-For more information, see [How to create and publish a product][] and the following video.
+Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Produkts][] und im folgenden Video.
 
 > [AZURE.VIDEO using-products]
 
-## <a name="<a-name="groups">-</a>-groups"></a><a name="groups"> </a> Groups
+## <a name="groups"> </a>Gruppen
 
-Groups are used to manage the visibility of products to developers. API Management has the following immutable system groups.
+Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. API Management umfasst die folgenden unveränderlichen Systemgruppen.
 
--   **Administrators** - Azure subscription administrators are members of this group. Administrators manage API Management service instances, creating the APIs, operations, and products that are used by developers.
--   **Developers** - Authenticated developer portal users fall into this group. Developers are the customers that build applications using your APIs. Developers are granted access to the developer portal and build applications that call the operations of an API.
--   **Guests** - Unauthenticated developer portal users, such as prospective customers visiting the developer portal of an API Management instance fall into this group. They can be granted certain read-only access, such as the ability to view APIs but not call them.
+-	**Administratoren** – Azure-Abonnementadministratoren sind Mitglieder dieser Gruppe. Administratoren verwalten API Management-Dienstinstanzen und erstellen die APIs, Operationen und Produkte, die von den Entwicklern verwendet werden.
+-	**Entwickler** – Zu dieser Gruppe gehören authentifizierte Benutzer des Entwicklerportals Entwickler sind die Kunden, die Anwendungen unter Verwendung Ihrer APIs erstellen. Entwickler erhalten Zugriff zum Entwicklerportal und erstellen Anwendungen, die die Operationen einer API aufrufen.
+-	**Gäste** – Nicht authentifizierte Benutzer wie z. B. potenzielle Kunden, die das Entwicklerportal einer API Management-Instanz besuchen, fallen in diese Gruppe. Sie können diesen Benutzern schreibgeschützten Zugriff gewähren, z. B. um die APIs anzuzeigen, jedoch nicht aufrufen zu können.
 
-In addition to these system groups, administrators can create custom groups or [leverage external groups in associated Azure Active Directory tenants](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group). Custom and external groups can be used alongside system groups in giving developers visibility and access to API products. For example, you could create one custom group for developers affiliated with a specific partner organization and allow them access to the APIs from a product containing relevant APIs only. A user can be a member of more than one group.
+Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte Gruppen erstellen oder [externe Gruppen in zugeordneten Azure Active Directory-Mandanten verwenden](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group). Benutzerdefinierte und externe Gruppen können gemeinsam mit Systemgruppen verwendet werden, um API-Produkte für Entwickler sichtbar zu machen und ihnen den Zugriff auf die API-Produkte zu ermöglichen. Beispielsweise können Sie eine benutzerdefinierte Gruppe für Entwickler eines spezifischen Partnerunternehmens erstellen und diesen Entwicklern Zugriff auf die APIs über ein Produkt erteilen, das nur die relevanten APIs enthält. Ein Benutzer kann Mitglied von mehreren Gruppen sein.
 
-For more information, see  [How to create and use groups][].
+Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][].
 
-## <a name="<a-name="developers">-</a>-developers"></a><a name="developers"> </a> Developers
+## <a name="developers"> </a> Entwickler
 
-Developers represent the user accounts in an API Management service instance. Developers can be created or invited to join by administrators, or they can sign up from the [Developer portal][]. Each developer is a member of one or more groups, and can be subscribe to the products that grant visibility to those groups.
+Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportal][] anmelden. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
 
-When developers subscribe to a product they are granted the primary and secondary key for the product. This key is used when making calls into the product's APIs.
+Wenn Entwickler ein Produkt abonnieren, erhalten Sie den primären und den sekundären Schlüssel für das Produkt. Diese Schlüssel kommen bei den Aufrufen an die APIs des Produkts zum Einsatz.
 
-For more information, see [How to create or invite developers][] and [How to associate groups with developers][].
+Weitere Informationen finden Sie unter [Erstellen und Einladen von Entwicklern][] und [Zuordnen von Entwicklern zu Gruppen][].
 
-## <a name="<a-name="policies">-</a>-policies"></a><a name="policies"> </a> Policies
+## <a name="policies"> </a> Richtlinien
 
-Policies are a powerful capability of API Management that allow the publisher to change the behavior of the API through configuration. Policies are a collection of statements that are executed sequentially on the request or response of an API. Popular statements include format conversion from XML to JSON and call rate limiting to restrict the amount of incoming calls from a developer, and many other policies are available.
+Richtlinien sind ein umfassendes Werkzeug in API Management, mit dem Anbieter das Verhalten der API in Form von Konfigurationen verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind z. B. Formatumwandlungen von XML nach JSON und Durchsatzgrenzen, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Viele weitere Richtlinien sind verfügbar.
 
-Policy expressions can be used as attribute values or text values in any of the API Management policies, unless the policy specifies otherwise. Some policies such as the [Control flow](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) and [Set variable](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable) policies are based on policy expressions. For more information, see [Advanced policies](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies), [Policy expressions](https://msdn.microsoft.com/library/azure/dn910913.aspx), and watch the following video.
+Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) und [Variable festlegen](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies), [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx) und im folgenden Video.
 
 > [AZURE.VIDEO policy-expressions-in-azure-api-management]
 
-For a complete list of API Management policies, see [Policy reference][]. For more information on using and configuring policies, see [API Management policies][]. For a tutorial on creating a product with rate limit and quota policies, see [How create and configure advanced product settings][]. For a demo, see the following video.
+Eine vollständige Liste der Richtlinien für API Management finden Sie unter [Gruppenrichtlinienreferenz][]. Weitere Informationen zur Verwendung und Konfiguration von Richtlinien finden Sie unter [Richtlinien für API Management][]. Ein Lernprogramm zum Erstellen eines Produkts mit Richtlinien für Durchsatzgrenzen und Kontingente finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen][]. Das folgende Video enthält eine Veranschaulichung.
 
 > [AZURE.VIDEO rate-limits-and-quotas]
 
-## <a name="<a-name="developer-portal">-</a>-developer-portal"></a><a name="developer-portal"> </a> Developer portal
+## <a name="developer-portal"> </a> Entwicklerportal
 
-The developer portal is where developers can learn about your APIs, view and call operations, and subscribe to products. Prospective customers can visit the developer portal, view APIs and operations, and sign up. The URL for your developer portal is located on the dashboard in the Azure Classic Portal for your API Management service instance.
+Im Entwicklerportal können Entwickler auf Ihre APIs zugreifen, Operationen anzeigen und aufrufen und Produkte abonnieren. Potenzielle Kunden können das Entwicklerportal besuchen, APIs und Operationen anzeigen und sich anmelden. Sie finden die URL Ihres Entwicklerportals im Dashboard des klassischen Azure-Portals für Ihre API Management-Dienstinstanz.
 
-You can customize the look and feel of your developer portal by adding custom content, customizing styles, and adding your branding.
+Sie können das Erscheinungsbild Ihres Entwicklerportals konfigurieren, indem Sie eigene Inhalte hinzufügen, Stilregeln anpassen und Ihr Markenbild einfügen.
 
-## <a name="api-management-and-the-api-economy"></a>API Management and the API economy
+## API Management und API-Ökonomie
 
-To learn more about API Management, watch the following presentation from the Microsoft Ignite 2015 conference.
+Weitere Informationen zu API Management erhalten Sie, indem Sie sich die folgende Präsentation von der Konferenz Microsoft Ignite 2015 ansehen.
 
 > [AZURE.VIDEO microsoft-ignite-2015-azure-api-management-and-the-api-economy]
 
@@ -106,25 +105,21 @@ To learn more about API Management, watch the following presentation from the Mi
 [Groups]: #groups
 [Developers]: #developers
 [Policies]: #policies
-[Developer portal]: #developer-portal
+[Entwicklerportal]: #developer-portal
 
-[How to create APIs]: api-management-howto-create-apis.md
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to create and publish a product]: api-management-howto-add-products.md
-[How to create and use groups]: api-management-howto-create-groups.md
-[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
-[How create and configure advanced product settings]: api-management-howto-product-with-rules.md
-[How to create or invite developers]: api-management-howto-create-or-invite-developers.md
-[Policy reference]: api-management-policy-reference.md
-[API Management policies]: api-management-howto-policies.md
+[Erstellen von APIs]: api-management-howto-create-apis.md
+[Hinzufügen von Operationen zu einer API]: api-management-howto-add-operations.md
+[Erstellen und Veröffentlichen eines Produkts]: api-management-howto-add-products.md
+[Erstellen und Verwenden von Gruppen]: api-management-howto-create-groups.md
+[Zuordnen von Entwicklern zu Gruppen]: api-management-howto-create-groups.md#associate-group-developer
+[Erstellen und Konfigurieren erweiterter Produkteinstellungen]: api-management-howto-product-with-rules.md
+[Erstellen und Einladen von Entwicklern]: api-management-howto-create-or-invite-developers.md
+[Gruppenrichtlinienreferenz]: api-management-policy-reference.md
+[Richtlinien für API Management]: api-management-howto-policies.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

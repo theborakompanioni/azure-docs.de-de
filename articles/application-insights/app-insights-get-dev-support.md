@@ -1,51 +1,50 @@
 <properties 
-    pageTitle="How to get technical support from Application Insights development team | Microsoft Azure" 
-    description="When you have a case that requires special support from Application Insights development team, this is how you can submit the details to get support." 
-    services="application-insights" 
+	pageTitle="Anfordern von technischem Support vom Application Insights-Entwicklungsteam | Microsoft Azure" 
+	description="Wenn Sie einen Fall haben, der die besondere Unterstützung durch das Application Insights-Entwicklungsteam erfordert, erfahren Sie hier, wie Sie die Details übermitteln können, um Support zu erhalten." 
+	services="application-insights" 
     documentationCenter=""
-    authors="alexbulankou" 
-    manager="douge"/>
+	authors="alexbulankou" 
+	manager="douge"/>
  
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="06/01/2016" 
-    ms.author="albulank"/>
-    
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/01/2016" 
+	ms.author="albulank"/>
+	
+# Anfordern von technischem Support vom Application Insights-Entwicklungsteam
+	
+Wenn Sie bei der Nutzung von [Visual Studio Application Insights](app-insights-overview.md) technische Probleme haben sollten, finden Sie hier Optionen, wie Sie Hilfe erhalten können:
 
-# <a name="how-to-get-technical-support-from-application-insights-development-team"></a>How to get technical support from Application Insights development team
-    
-When you have a technical issue with [Visual Studio Application Insights](app-insights-overview.md), here are your options for getting help:
+## 1\. Die Dokumente überprüfen
 
-## <a name="1.-check-the-documents"></a>1. Check the documents
+* Fehlen Daten? Überprüfen Sie Folgendes: [Stichprobennahme](app-insights-sampling.md), [Kontingente und Drosselung](app-insights-pricing.md).
+* Problembehandlung: [ASP.NET](app-insights-troubleshoot-faq.md) | [Java](app-insights-java-troubleshoot.md)
 
-* Missing data? Check: [sampling](app-insights-sampling.md), [quotas and throttling](app-insights-pricing.md).
-* Troubleshooting: [ASP.NET](app-insights-troubleshoot-faq.md) | [Java](app-insights-java-troubleshoot.md)
+## 2\. Die Foren durchsuchen
 
-## <a name="2.-search-the-forums"></a>2. Search the forums
-
-* [MSDN forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+* [MSDN-Forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 
-## <a name="3.-azure-support-plan?"></a>3. Azure Support Plan?
+## 3\. Azure-Supportplan?
 
-There are situations where you would like developers to investigate your specific case. 
+Es gibt Situationen, in denen Sie möchten, dass sich Entwickler Ihren speziellen Fall ansehen.
 
-If you have a [support plan with Microsoft Azure](https://azure.microsoft.com/support/plans/) you can [open a support ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Wenn Sie einen [Supportplan für Microsoft Azure](https://azure.microsoft.com/support/plans/) haben, können Sie [ein Supportticket öffnen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="4.-contact-the-application-insights-team"></a>4. Contact the Application Insights team
+## 4\. Das Application Insights-Team kontaktieren
 
-If you don't have a support plan, our development team is happy to offer best effort support to Application Insights customers as we prepare for the General Availability milestone. We are introducing **a new support option**: You can describe your case to us by submitting a feedback form on Azure portal and have a developer on the Application Insights team contact you back to help resolve your issue.
+Wenn Sie keinen Supportplan haben, wird sich unser Supportteam nach besten Kräften bemühen, für Application Insights-Kunden Support zu leisten, während wir uns auf den Meilenstein „Allgemeine Verfügbarkeit“ (General Availability, GA) vorbereiten. Wir bieten eine **neue Supportoption**: Sie können uns Ihren Fall beschreiben, indem Sie uns im Azure-Portal ein Feedbackformular senden, woraufhin sich ein Entwickler aus dem Application Insights-Team bei Ihnen meldet, um Ihnen bei der Lösung Ihres Problems zu helfen.
 
 
-1. In the [Application Insights portal](https://portal.azure.com), click the smiley face at the top right corner:  
+1. Klicken Sie im [Application Insights-Portal](https://portal.azure.com) rechts oben auf das Smileysymbol:  
 
-    ![Feedback button](./media/app-insights-get-dev-support/01.png)   
+    ![Schaltfläche „Feedback“](./media/app-insights-get-dev-support/01.png)
 
-2. In the comment box please make sure to specify **AppInsights** as the first line and then include the following information:   
+2. Geben Sie im Kommentarfeld **AppInsights** in die erste Zeile ein, und fügen Sie dann die folgenden Informationen hinzu:
 
     ```
 
@@ -56,18 +55,12 @@ If you don't have a support plan, our development team is happy to offer best ef
 
     ```   
 
-    ![Feedback dialog](./media/app-insights-get-dev-support/02.png)   
+    ![Dialogfeld „Feedback“](./media/app-insights-get-dev-support/02.png)
 
-3. Check "Yes, it is ok to email you". 
+3. Aktivieren Sie „Ja, Sie dürfen mich bezüglich meines Feedbacks per E-Mail kontaktieren“.
 
-    ![Submit section](./media/app-insights-get-dev-support/03.png)  
+    ![Abschnitt „Senden“](./media/app-insights-get-dev-support/03.png)
 
-An engineer on the Application Insights team will get in touch with you soon. As we are providing this service on best effort basis, no formal SLA can be given at this point.
+Ein Entwickler aus dem Application Insights-Team wird sich bei Ihnen melden. Da wir diesen Service nach besten Kräften bieten, gilt derzeit keine formelle SLA.
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

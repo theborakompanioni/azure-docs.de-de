@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Diagnosing logic apps failures | Microsoft Azure"
-   description="Common approaches to understanding where logic apps are failing"
+   pageTitle="Diagnostizieren von Fehlern bei Logik-Apps | Microsoft Azure"
+   description="Gängige Ansätze zur Ermittlung von Fehlern bei Logik-Apps"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -13,68 +13,67 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="10/18/2016"
+   ms.date="05/18/2016"
    ms.author="jehollan"/>
 
+# Diagnostizieren von Fehlern bei Logik-Apps
 
-# <a name="diagnosing-logic-app-failures"></a>Diagnosing logic app failures
+Wenn beim Logik-Apps-Feature von Azure App Service Fehler oder Probleme auftreten, gibt es einige Möglichkeiten, herauszufinden, wodurch die Fehler bzw. Probleme entstehen.
 
-If you experience issues or failures with the Logic Apps feature of Azure App Service, a few approaches can help you better understand where the failures are coming from.  
+## Tools des Azure-Portals
 
-## <a name="azure-portal-tools"></a>Azure portal tools
+Das Azure-Portal enthält viele Tools zum Diagnostizieren der einzelnen Schritte jeder Logik-App.
 
-The Azure portal provides many tools to diagnose each logic app at each step.
+### Triggerverlauf
 
-### <a name="trigger-history"></a>Trigger history
+Jede Logik-App verfügt über mindestens einen Trigger. Wenn Sie feststellen, dass Apps keine Ereignisse auslösen, sollten Sie als Erstes im Triggerverlauf nach weiteren Informationen suchen. Sie können vom Hauptblatt der Logik-App auf den Triggerverlauf zugreifen:
 
-Each logic app has at least one trigger. If you notice that apps aren't firing, the first place to look for additional information is the trigger history. You can access the trigger history on the logic app main blade.
+![Ermitteln des Triggerverlaufs][1]
 
-![Locating the trigger history][1]
+Damit werden alle Auslöseversuche Ihrer App aufgelistet. Sie können auf die einzelnen Auslöseversuche klicken, um die nächste Detailebene anzuzeigen (insbesondere alle Eingaben und Ausgaben, die von einem Auslöseversuch generiert wurden). Falls Sie fehlerhafte Trigger bemerken, klicken Sie auf den Auslöseversuch und sehen sich den Link **Outputs** genauer an. So erhalten Sie weitere Informationen zu den Fehlermeldungen, die ggf. generiert wurden (z.B. ungültige FTP-Anmeldeinformationen).
 
-This lists all of the trigger attempts that your logic app has made. You can click each trigger attempt to get the next level of detail (specifically, any inputs or outputs that the trigger attempt generated). If you see any failed triggers, click the trigger attempt and drill into the **Outputs** link to see any error messages that might have been generated (for example, for invalid FTP credentials).
+Es können verschiedene Status angezeigt werden:
 
-The different statuses you might see are:
+* **Übersprungen**. Der Trigger hat eine Abfrage zum Abruf von Daten an den Endpunkt gesendet und die Antwort erhalten, dass keine Daten verfügbar sind.
+* **Erfolgreich**. Der Trigger hat die Antwort erhalten, dass Daten verfügbar sind. Diese Antwort kann von einem manuellen Trigger, Wiederholungstrigger oder einem Abfragetrigger stammen. Die Antwort umfasst wahrscheinlich auch den Zusatz **Fired**. Dies ist aber nicht der Fall, wenn eine Bedingung oder ein SplitOn-Befehl in der Codeansicht nicht erfüllt wurde.
+* **Fehler**. Ein Fehler wurde generiert.
 
-* **Skipped**. It polled the endpoint to check for data and received a response that no data was available.
-* **Succeeded**. The trigger received a response that data was available. This could be from a manual trigger, a recurrence trigger, or a polling trigger. This likely will be accompanied with a status of **Fired**, but it might not if you have a condition or SplitOn command in code view that wasn't satisfied.
-* **Failed**. An error was generated.
+#### Manuelles Starten eines Triggers
 
-#### <a name="starting-a-trigger-manually"></a>Starting a trigger manually
+Wenn die Logik-App sofort nach einem verfügbaren Trigger suchen soll (ohne auf die nächste Wiederholung zu warten), können Sie auf dem Hauptblatt auf **Trigger auswählen** klicken, um den Vorgang zu erzwingen. Wenn Sie beispielsweise mit einem Dropbox-Trigger auf diesen Link klicken, fragt der Workflow Dropbox sofort nach neuen Dateien ab.
 
-If you want the logic app to check for an available trigger immediately (without waiting for the next recurrence), you can click **Select Trigger** on the main blade to force a check. For example, clicking this link with a Dropbox trigger will cause the workflow to immediately poll Dropbox for new files.
+### Ausführungsverlauf
 
-### <a name="run-history"></a>Run history
+Der ausgelöste Trigger führt zu einer Ausführung. Sie können vom Hauptblatt aus auf eine Vielzahl Informationen zur Ausführung zugreifen, die Ihnen dabei helfen herauszufinden, was während des Workflows passiert.
 
-Every trigger that is fired results in a run. You can access run information from the main blade, which contains a lot of information that can be helpful in understanding what happened during the workflow.
+![Ermitteln des Ausführungsverlaufs][2]
 
-![Locating the run history][2]
+Eine Ausführung zeigt einen der folgenden Status an:
 
-A run displays one of the following statuses:
+* **Erfolgreich**. Alle Aktionen wurden erfolgreich ausgeführt bzw., wenn ein Fehler aufgetreten ist, wurde dieser von einer Aktion später im Workflow behoben. Anders gesagt: Der Fehler wurde von einer Aktion behoben, die zur Ausführung nach einer fehlerhaften Aktion eingerichtet wurde.
+* **Fehler**. Bei mindestens einer Aktion ist ein Fehler aufgetreten, der nicht von einer Aktion später im Workflow behoben wurde.
+* **Abgebrochen**. Der Workflow wurde ausgeführt, hat dann aber eine Abbruchanforderung erhalten.
+* **Running** (Wird ausgeführt): Der Workflow wird derzeit ausgeführt. Dies kann bei Workflows passieren, die gedrosselt werden, oder aufgrund des aktuellen App Service-Plans. Details finden Sie unter den Aktionsbeschränkungen auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/app-service/plans/). Eine Diagnose (die Diagramme unterhalb des Ausführungsverlaufs) kann auch Informationen zu auftretenden Drosselungsereignissen bieten.
 
-* **Succeeded**. All actions succeeded, or, if there was a failure, it was handled by an action that occurred later in the workflow. That is, it was handled by an action that was set to run after a failed action.
-* **Failed**. At least one action had a failure that was not handled by an action later in the workflow.
-* **Cancelled**. The workflow was running but received a cancel request.
-* **Running**. The workflow is currently running. This may occur for workflows that are being throttled, or because of the current App Service plan. Please see action limits on the [pricing page](https://azure.microsoft.com/pricing/details/app-service/plans/) for details. Configuring diagnostics (the charts listed below the run history) also can provide information about any throttle events that are occurring.
+Im Ausführungsverlauf können Sie weitere Details anzeigen.
 
-When you are looking at a run history, you can drill in for more details.  
+#### Triggerausgaben
 
-#### <a name="trigger-outputs"></a>Trigger outputs
+Triggerausgaben zeigen die Daten an, die vom Trigger empfangen wurden. Damit können Sie ermitteln, ob alle Eigenschaften erwartungsgemäß zurückgegeben werden.
 
-Trigger outputs show the data that was received from the trigger. This can help you determine whether all properties returned as expected.
+>[AZURE.NOTE] Es kann hilfreich sein zu wissen, wie das Logik-Apps-Feature [unterschiedliche Inhaltstypen behandelt](app-service-logic-content-type.md), wenn Sie unbekannte Inhalte sehen.
 
->[AZURE.NOTE] It might be helpful to understand how the Logic Apps feature [handles different content types](app-service-logic-content-type.md) if you see any content that you don't understand.
+![Beispiele für Triggerausgaben][3]
 
-![Trigger output examples][3]
+#### Eingaben und Ausgaben von Aktionen
 
-#### <a name="action-inputs-and-outputs"></a>Action inputs and outputs
+Sie können einen Drilldown in die Eingaben und Ausgaben durchführen, die von einer Aktion empfangen wurden. Dies ist nützlich für das Verständnis der Größe und Form der Ausgaben und zur Anzeige aller Fehlermeldungen, die ggf. generiert wurden.
 
-You can drill into the inputs and outputs that an action received. This is useful for understanding the size and shape of the outputs, as well as to see any error messages that may have been generated.
+![Eingaben und Ausgaben von Aktionen][4]
 
-![Action inputs and outputs][4]
+## Debuggen der Workflowlaufzeit
 
-## <a name="debugging-workflow-runtime"></a>Debugging workflow runtime
-
-In addition to monitoring the inputs, outputs, and triggers of a run, it could be useful to add some steps within a workflow to help with debugging. [RequestBin](http://requestb.in) is a powerful tool that you can add as a step in a workflow. By using RequestBin, you can set up an HTTP request inspector to determine the exact size, shape, and format of an HTTP request. You can create a new RequestBin and paste the URL in a logic app HTTP POST action along with body content you want to test (for example, an expression or another step output). After you run the logic app, you can refresh your RequestBin to see how the request was formed as it was generated from the Logic Apps engine.
+Zusätzlich zum Überwachen der Eingaben, Ausgaben und Trigger einer Ausführung kann es hilfreich sein, zur Unterstützung des Debuggens einige Schritte in einem Workflow hinzuzufügen. [RequestBin](http://requestb.in) ist ein leistungsfähiges Tool, das Sie als Schritt in einem Workflow hinzufügen können. Mit RequestBin können Sie einen HTTP-Anforderungsinspektor einrichten, um die Größe, die Form und das Format einer HTTP-Anforderung zu bestimmen. Sie können ein neues RequestBin-Element erstellen und die URL in eine HTTP POST-Aktion für eine Logik-App einfügen – mit dem Textinhalt, den Sie testen möchten (z.B. ein Ausdruck oder andere Schrittausgabe). Nach dem Ausführen der Logik-App können Sie das RequestBin-Element aktualisieren, um anzuzeigen, wie die Anforderung beim Generieren durch das Logik-Apps-Modul gebildet wurde.
 
 
 
@@ -85,8 +84,4 @@ In addition to monitoring the inputs, outputs, and triggers of a run, it could b
 [3]: ./media/app-service-logic-diagnosing-failures/triggerOutputsLink.PNG
 [4]: ./media/app-service-logic-diagnosing-failures/ActionOutputs.PNG
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

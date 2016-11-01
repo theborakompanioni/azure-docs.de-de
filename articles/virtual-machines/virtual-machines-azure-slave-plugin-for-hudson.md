@@ -1,234 +1,233 @@
 <properties
-    pageTitle="How to use the Azure slave plug-in with Hudson Continuous Integration | Microsoft Azure"
-    description="Describes how to use the Azure slave plug-in with Hudson Continuous Integration."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="rmcmurray"
-    manager="wpickett"
-    editor="" />
+	pageTitle="Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration | Microsoft Azure"
+	description="Beschreibt das Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration."
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="" />
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-multiple"
-    ms.devlang="java"
-    ms.topic="article"
-    ms.date="09/20/2016"
-    ms.author="robmcm"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-multiple"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="09/20/2016"
+	ms.author="robmcm"/>
 
+# Verwenden des Azure Slave-Plug-Ins mit Hudson Continuous Integration
 
-# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>How to use the Azure slave plug-in with Hudson Continuous Integration
+Das Azure Slave-Plug-In für Hudson ermöglicht Ihnen das Bereitstellen untergeordneter Knoten in Azure beim Ausführen von verteilten Builds.
 
-The Azure slave plug-in for Hudson enables you to provision slave nodes on Azure when running distributed builds.
+## Installieren des Azure Slave-Plug-Ins
 
-## <a name="install-the-azure-slave-plug-in"></a>Install the Azure Slave plug-in
+1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 
-1. In the Hudson dashboard, click **Manage Hudson**.
+1. Klicken Sie unter **Manage Hudson** auf **Manage Plugins**.
 
-1. In the **Manage Hudson** page, click on **Manage Plugins**.
+1. Klicken Sie auf die Registerkarte **Available**.
 
-1. Click the **Available** tab.
+1. Klicken Sie auf **Search**, und geben Sie **Azure** ein, um relevante Plug-Ins aufzulisten.
 
-1. Click **Search** and type **Azure** to limit the list to relevant plug-ins.
+	Wenn Sie einen Bildlauf durch die Liste der verfügbaren Plug-Ins durchführen möchten, finden Sie das Azure Slave-Plug-In im Abschnitt **Cluster Management and Distributed Build** auf der Registerkarte **Others**.
 
-    If you opt to scroll through the list of available plug-ins, you will find the Azure slave plug-in under the **Cluster Management and Distributed Build** section in the **Others** tab.
+1. Aktivieren Sie das Kontrollkästchen **Azure Slave Plugin**.
 
-1. Select the checkbox for **Azure Slave Plugin**.
+1. Klicken Sie auf **Installieren**.
 
-1. Click **Install**.
+1. Starten Sie Hudson neu.
 
-1. Restart Hudson.
+Da das Plug-In jetzt installiert ist, wären die nächsten Schritte das Konfigurieren des Plug-Ins mit Ihrem Azure-Abonnementprofil und das Erstellen einer Vorlage, die verwendet wird, um den virtuellen Computer für den untergeordneten Knoten zu erstellen.
 
-Now that the plug-in is installed, the next steps would be to configure the plug-in with your Azure subscription profile and to create a template that will be used in creating the VM for the slave node.
+## Konfigurieren des Azure Slave-Plug-Ins mit Ihrem Abonnementprofil
 
-## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Configure the Azure Slave plug-in with your subscription profile
+Ein Abonnementprofil, das als Veröffentlichungseinstellungen bezeichnet wird, ist eine XML-Datei, die sichere Anmeldeinformationen und einige zusätzliche Informationen enthält, die Sie für die Arbeit mit Azure in Ihrer Entwicklungsumgebung benötigen. Um das Azure Slave-Plug-In zu konfigurieren, benötigen Sie Folgendes:
 
-A subscription profile, also referred to as publish settings, is an XML file that contains secure credentials and some additional information you'll need to work with Azure in your development environment. To configure the Azure slave plug-in, you need:
+* Ihre Abonnement-ID
+* Ein Verwaltungszertifikat für Ihr Abonnement
 
-* Your subscription id
-* A management certificate for your subscription
+Sie finden dies in Ihrem [Abonnementprofil]. Es folgt ein Beispiel für ein Abonnementprofil.
 
-These can be found in your [subscription profile]. Below is an example of a subscription profile.
+	<?xml version="1.0" encoding="utf-8"?>
 
-    <?xml version="1.0" encoding="utf-8"?>
+		<PublishData>
 
-        <PublishData>
+  		<PublishProfile SchemaVersion="2.0" PublishMethod="AzureServiceManagementAPI">
 
-        <PublishProfile SchemaVersion="2.0" PublishMethod="AzureServiceManagementAPI">
+    	<Subscription
 
-        <Subscription
+      		ServiceManagementUrl="https://management.core.windows.net"
 
-            ServiceManagementUrl="https://management.core.windows.net"
+      		Id="<Subscription ID>"
 
-            Id="<Subscription ID>"
+      		Name="Pay-As-You-Go"
+			ManagementCertificate="<Management certificate value>" />
 
-            Name="Pay-As-You-Go"
-            ManagementCertificate="<Management certificate value>" />
+  		</PublishProfile>
 
-        </PublishProfile>
+	</PublishData>
 
-    </PublishData>
+Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azure Slave-Plug-In zu konfigurieren.
 
-Once you have your subscription profile, follow these steps to configure the Azure slave plug-in.
+1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 
-1. In the Hudson dashboard, click **Manage Hudson**.
+1. Klicken Sie auf **Configure System**.
 
-1. Click **Configure System**.
+1. Führen Sie einen Bildlauf nach unten bis zum Abschnitt **Cloud** durch.
 
-1. Scroll down the page to find the **Cloud** section.
+1. Klicken Sie auf **Add new cloud > Microsoft Azure**.
 
-1. Click **Add new cloud > Microsoft Azure**.
+    ![neue Cloud hinzufügen][add new cloud]
 
-    ![add new cloud][add new cloud]
+    Dadurch werden die Felder angezeigt, in denen Sie Ihre Abonnementdetails eingeben müssen.
 
-    This will show the fields where you need to enter your subscription details.
+    ![Profil konfigurieren][configure profile]
 
-    ![configure profile][configure profile]
+1. Kopieren Sie die Abonnement-ID und das Verwaltungszertifikat aus Ihrem Abonnementprofil, und fügen Sie diese in die entsprechenden Felder ein.
 
-1. Copy the subscription id and management certificate from your subscription profile and paste them in the appropriate fields.
+    Beim Kopieren der Abonnement-ID und des Verwaltungszertifikats schließen Sie **nicht** die Anführungszeichen ein, die die Werte einschließen.
 
-    When copying the subscription id and management certificate, **do not** include the quotes that enclose the values.
+1. Klicken Sie auf **Verify Configuration**.
 
-1. Click on **Verify configuration**.
+1. Wenn die Konfiguration erfolgreich überprüft wurde, klicken Sie auf **Speichern**.
 
-1. When the configuration is verified successfully, click **Save**.
+## Einrichten einer Vorlage für virtuelle Computer für das Azure Slave-Plug-In
 
-## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Set up a virtual machine template for the Azure Slave plug-in
+Eine Vorlage für virtuelle Computer definiert die Parameter, die das Plug-In zum Erstellen eines untergeordneten Knotens in Azure verwendet. In den folgenden Schritten erstellen Sie eine Vorlage für einen virtuellen Ubuntu-Computer.
 
-A virtual machine template defines the parameters the plug-in will use to create a slave node on Azure. In the following steps we'll be creating template for an Ubuntu VM.
+1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 
-1. In the Hudson dashboard, click **Manage Hudson**.
+1. Klicken Sie auf **Configure System**.
 
-1. Click on **Configure System**.
+1. Führen Sie einen Bildlauf nach unten bis zum Abschnitt **Cloud** durch.
 
-1. Scroll down the page to find the **Cloud** section.
+1. Suchen Sie im Abschnitt **Cloud** nach **Add Azure Virtual Machine Template**, und klicken Sie auf die **Hinzufügen**-Schaltfläche.
 
-1. Within the **Cloud** section, find **Add Azure Virtual Machine Template** and click the **Add** button.
+    ![VM-Vorlage hinzufügen][add vm template]
 
-    ![add vm template][add vm template]
+1. Geben Sie einen Clouddienstnamen im Feld **Name** ein. Bezieht sich der von Ihnen angegebene Name auf einen vorhandenen Clouddienst, wird der virtuelle Computer in diesem Dienst bereitgestellt. Andernfalls erstellt Azure einen neuen.
 
-1. Specify a cloud service name in the **Name** field. If the name you specify refers to an existing cloud service, the VM will be provisioned in that service. Otherwise, Azure will create a new one.
+1. Geben Sie in das Feld **Beschreibung** Text ein, der die Vorlage beschreibt, die Sie erstellen. Diese Informationen dienen nur der Dokumentation und werden nicht bei einer VM-Bereitstellung verwendet.
 
-1. In the **Description** field, enter text that describes the template you are creating. This information is only for documentary purposes and is not used in provisioning a VM.
+1. Geben Sie im Feld **Bezeichnungen** **linux** ein. Diese Bezeichnung wird verwendet, um die Vorlage zu identifizieren, die Sie erstellen, und wird anschließend als Verweise auf die Vorlage beim Erstellen eines Hudson-Auftrags verwendet.
 
-1. In the **Labels** field, enter **linux**. This label is used to identify the template you are creating and is subsequently used to reference the template when creating a Hudson job.
+1. Wählen Sie eine Region aus, in der der virtuelle Computer erstellt wird.
 
-1. Select a region where the VM will be created.
+1. Wählen Sie die passende Größe des virtuellen Computers aus.
 
-1. Select the appropriate VM size.
+1. Geben Sie ein Speicherkonto an, in dem der virtuelle Computer erstellt wird. Stellen Sie sicher, dass es sich in der gleichen Region wie der Clouddienst befindet, den Sie verwenden möchten. Wenn Sie neuen Speicher erstellen möchten, können Sie dieses Feld leer lassen.
 
-1. Specify a storage account where the VM will be created. Make sure that it is in the same region as the cloud service you'll be using. If you want new storage to be created, you can leave this field blank.
+1. Die Aufbewahrungszeit gibt die Anzahl der Minuten an, bevor Hudson einen Slave im Leerlauf löscht. Behalten Sie hier den Standardwert 60 bei.
 
-1. Retention time specifies the number of minutes before Hudson deletes an idle slave. Leave this at the default value of 60.
+1. Wählen Sie unter **Usage** die entsprechende Bedingung für die Verwendung dieses untergeordneten Knotens aus. Wählen Sie vorerst **Utilize this node as much as possible** aus.
 
-1. In **Usage**, select the appropriate condition when this slave node will be used. For now, select **Utilize this node as much as possible**.
+    Zu diesem Zeitpunkt sieht das Formular in etwa so aus:
 
-    At this point, your form would look somewhat similar to this:
+    ![Vorlagenkonfiguration][template config]
 
-    ![template config][template config]
+1. Unter **Image Family or Id** müssen Sie angeben, welches Systemabbild auf Ihrem virtuellen Computer installiert wird. Sie können aus einer Liste von Imagefamilien auswählen oder ein benutzerdefiniertes Image angeben.
 
-1. In **Image Family or Id** you have to specify what system image will be installed on your VM. You can either select from a list of image families or specify a custom image.
+    Wenn Sie aus einer Liste von Imagefamilien auswählen möchten, geben Sie das erste Zeichen (Groß-/Kleinschreibung beachten) des Namens der Imagefamilie ein. Wenn Sie z. B. **U** eingeben, erhalten Sie eine Liste der Ubuntu Server-Familien. Wenn Sie aus der Liste auswählen, verwendet Jenkins die neueste Version des Systemimages aus dieser Familie bei die VM-Bereitstellung.
 
-    If you want to select from a list of image families, enter the first character (case-sensitive) of the image family name. For instance, typing **U** will bring up a list of Ubuntu Server families. Once you select from the list, Jenkins will use the latest version of that system image from that family when provisioning your VM.
+    ![BS-Familienliste][OS family list]
 
-    ![OS family list][OS family list]
+    Wenn Sie stattdessen ein vorhandenes benutzerdefiniertes Image verwenden möchten, geben Sie den Namen dieses benutzerdefinierten Images ein. Benutzerdefiniertes Imagenamen werden nicht in einer Liste angezeigt, daher müssen Sie sicherstellen, dass der Name richtig eingegeben wurde.
 
-    If you have a custom image that you want to use instead, enter the name of that custom image. Custom image names are not shown in a list so you have to ensure that the name is entered correctly.    
+    Geben Sie für dieses Lernprogramm **U** ein, um eine Liste mit Ubuntu-Images anzuzeigen, und wählen Sie **Ubuntu Server 14.04 LTS** aus.
 
-    For this tutorial, type **U** to bring up a list of Ubuntu images and select **Ubuntu Server 14.04 LTS**.
+1. Wählen Sie für **Launch method** die Option **SSH** aus.
 
-1. For **Launch method**, select **SSH**.
+1. Kopieren Sie das folgende Skript, und fügen Sie es in das Feld **Init script** ein.
 
-1. Copy the script below and paste in the **Init script** field.
+		# Install Java
 
-        # Install Java
+		sudo apt-get -y update
 
-        sudo apt-get -y update
+		sudo apt-get install -y openjdk-7-jdk
 
-        sudo apt-get install -y openjdk-7-jdk
+		sudo apt-get -y update --fix-missing
 
-        sudo apt-get -y update --fix-missing
+		sudo apt-get install -y openjdk-7-jdk
 
-        sudo apt-get install -y openjdk-7-jdk
+		# Install git
 
-        # Install git
+		sudo apt-get install -y git
 
-        sudo apt-get install -y git
+		#Install ant
 
-        #Install ant
+		sudo apt-get install -y ant
 
-        sudo apt-get install -y ant
+		sudo apt-get -y update --fix-missing
 
-        sudo apt-get -y update --fix-missing
+		sudo apt-get install -y ant
 
-        sudo apt-get install -y ant
+    Das **Initialisierungsskript** wird ausgeführt, nachdem der virtuelle Computer erstellt wurde. In diesem Beispiel installiert das Skript Java, git und ant.
 
-    The **Init script** will be executed after the VM is created. In this example, the script installs Java, git, and ant.
+1. Geben Sie in die Felder **Benutzername** und **Kennwort** Ihre bevorzugten Werte für das Administratorkonto ein, das auf Ihrem virtuellen Computer erstellt werden soll.
 
-1. In the **Username** and **Password** fields, enter your preferred values for the administrator account that will be created on your VM.
+1. Klicken Sie auf **Verify Template**, um zu überprüfen, ob die angegebenen Parameter gültig sind.
 
-1. Click on **Verify Template** to check if the parameters you specified are valid.
+1. Klicken Sie auf **Speichern**.
 
-1. Click on **Save**.
+## Erstellen eines Hudson-Auftrags, der auf einem untergeordneten Knoten in Azure ausgeführt wird
 
-## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>Create a Hudson job that runs on a slave node on Azure
+In diesem Abschnitt erstellen Sie eine Hudson-Aufgabe, die auf einen untergeordneten Knoten in Azure ausgeführt wird.
 
-In this section, you'll be creating a Hudson task that will run on a slave node on Azure.
+1. Klicken Sie im Hudson-Dashboard auf **New Job**.
 
-1. In the Hudson dashboard, click **New Job**.
+1. Geben Sie einen Namen für den Auftrag ein, den Sie erstellen.
 
-1. Enter a name for the job you are creating.
+1. Wählen Sie für den Auftragstyp **Build a free-style software job** aus.
 
-1. For the job type, select **Build a free-style software job**.
+1. Klicken Sie auf **OK**.
 
-1. Click **OK**.
+1. Wählen Sie auf der Konfigurationsseite des Auftrags **Restrict where this project can be run** aus.
 
-1. In the job configuration page, select **Restrict where this project can be run**.
+1. Wählen Sie **Node and label menu** und dann **linux** aus (Sie haben diese Bezeichnung beim Erstellen der virtuellen Computervorlage im vorherigen Abschnitt angegeben).
 
-1. Select **Node and label menu** and select **linux** (we specified this label when creating the virtual machine template in the previous section).
+1. Klicken Sie im Abschnitt **Build** auf **Add build step**, und wählen Sie **Execute shell** aus.
 
-1. In the **Build** section, click **Add build step** and select **Execute shell**.
+1. Bearbeiten Sie das folgende Skript, und ersetzen Sie **(Ihr GitHub-Kontoname)**, **(Name Ihres Projekts)** und **(Projektverzeichnis)** durch entsprechende Werte, und fügen Sie das bearbeitete Skript im angezeigten Textbereich ein.
 
-1. Edit the following script, replacing **{your github account name}**, **{your project name}**, and **{your project directory}** with appropriate values, and paste the edited script in the text area that appears.
+		# Clone from git repo
 
-        # Clone from git repo
+		currentDir="$PWD"
 
-        currentDir="$PWD"
+		if [ -e {your project directory} ]; then
 
-        if [ -e {your project directory} ]; then
+  			cd {your project directory}
 
-            cd {your project directory}
+  			git pull origin master
 
-            git pull origin master
+		else
 
-        else
+  			git clone https://github.com/{your github account name}/{your project name}.git
 
-            git clone https://github.com/{your github account name}/{your project name}.git
+		fi
 
-        fi
+		# change directory to project
 
-        # change directory to project
+		cd $currentDir/{your project directory}
 
-        cd $currentDir/{your project directory}
+		#Execute build task
 
-        #Execute build task
+		ant
 
-        ant
+1. Klicken Sie auf **Speichern**.
 
-1. Click on **Save**.
+1. Suchen Sie im Hudson-Dashboard den soeben erstellten Auftrag, und klicken Sie auf das **Schedule a build**-Symbol.
 
-1. In the Hudson dashboard, find the job you just created and click on the **Schedule a build** icon.
+Hudson erstellt dann einen untergeordneten Knoten mithilfe der im vorherigen Abschnitt erstellten Vorlage und führt das Skript aus, das Sie im Buildschritt für diese Aufgabe angegeben haben.
 
-Hudson will then create a slave node using the template created in the previous section and execute the script you specified in the build step for this task.
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next Steps
-
-For more information about using Azure with Java, see the [Azure Java Developer Center].
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[subscription profile]: http://go.microsoft.com/fwlink/?LinkID=396395
+[Abonnementprofil]: http://go.microsoft.com/fwlink/?LinkID=396395
 
 <!-- IMG List -->
 
@@ -238,9 +237,4 @@ For more information about using Azure with Java, see the [Azure Java Developer 
 [template config]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-templateconfig1-withdata.png
 [OS family list]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-oslist.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

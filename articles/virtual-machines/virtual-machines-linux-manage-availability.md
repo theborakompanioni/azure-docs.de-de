@@ -1,39 +1,34 @@
 <properties
-    pageTitle="Manage the availability of Linux VMs | Microsoft Azure"
-    description="Learn how to use multiple virtual machines to ensure high availability for your Linux application in Azure"
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor="tysonn"
-    tags="azure-resource-manager,azure-service-management"/>
+	pageTitle="Verwalten der Verfügbarkeit von Linux-VMs| Microsoft Azure"
+	description="Erfahren Sie, wie Sie mehrere virtuelle Computer verwenden, um eine hohe Verfügbarkeit für Ihre Linux-Anwendung in Azure sicherzustellen."
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="cynthn"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="05/25/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/25/2016"
+	ms.author="cynthn"/>
 
+# Verwalten der Verfügbarkeit virtueller Computer
 
-# <a name="manage-the-availability-of-virtual-machines"></a>Manage the availability of virtual machines
-
-Learn ways to set up and manage multiple virtual machines to ensure high availability for your Linux application in Azure. You can also [manage the availability of Windows virtual machines](virtual-machines-windows-manage-availability.md).
+Erfahren Sie, wie Sie mehrere virtuelle Computer einrichten und verwalten können, um eine hohe Verfügbarkeit für Ihre Linux-Anwendung in Azure sicherzustellen. Sie können auch die [Verfügbarkeit der virtuellen Windows-Computer verwalten](virtual-machines-windows-manage-availability.md).
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-For instructions on creating an availability set using CLI in the Resource Manager deployment model, see [azure availset: commands to manage your availability sets](../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets).
+Informationen zum Erstellen einer Verfügbarkeitsgruppe im Resource Manager-Bereitstellungsmodell mithilfe der Befehlszeilenschnittstelle finden Sie unter [azure availset: Befehle zum Verwalten der Verfügbarkeitsgruppen](../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets).
 
 [AZURE.INCLUDE [virtual-machines-common-manage-availability](../../includes/virtual-machines-common-manage-availability.md)]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn more about load balancing your virtual machines, see [Load Balancing virtual machines](virtual-machines-linux-load-balance.md).
+Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich für virtuelle Computer](virtual-machines-linux-load-balance.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

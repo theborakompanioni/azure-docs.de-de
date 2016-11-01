@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Operating Query Store in Azure SQL Database"
-   description="Learn how to operate the Query Store in Azure SQL Database"
+   pageTitle="Verwenden des Abfragespeichers in Azure SQL-Datenbank"
+   description="Erfahren Sie, wie Sie den Abfragespeicher in Azure SQL-Datenbank verwenden."
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -17,51 +17,46 @@
    ms.date="08/16/2016"
    ms.author="carlrab"/>
 
+# Verwenden des Abfragespeichers in Azure SQL-Datenbank 
 
-# <a name="operating-the-query-store-in-azure-sql-database"></a>Operating the Query Store in Azure SQL Database 
+Der Abfragespeicher in Azure ist eine vollständig verwaltete Datenbankfunktion, mit der fortlaufend ausführliche Verlaufsinformationen zu allen Abfragen gesammelt und dargestellt werden. Sie können sich den Abfragespeicher in etwa wie den Flugdatenschreiber eines Flugzeugs vorstellen, mit dem die Problembehandlung der Abfrageleistung sowohl für Cloudkunden als auch für lokale Kunden erheblich vereinfacht wird. In diesem Artikel werden spezielle Aspekte der Abfragespeichernutzung in Azure beschrieben. Mit diesen vorab erfassten Abfragedaten können Sie Leistungsprobleme schnell diagnostizieren und lösen und haben mehr Zeit, sich auf das Geschäft zu konzentrieren.
 
-Query Store in Azure is a fully managed database feature that continuously collects and presents detailed historic information about all queries. You can think about Query Store as similar to an airplane's flight data recorder that significantly simplifies query performance troubleshooting both for cloud and on-premises customers. This article explains specific aspects of operating Query Store in Azure. Using this pre-collected query data, you can quickly diagnose and resolve performance problems and thus spend more time focusing on their business. 
+Der Abfragespeicher ist in Azure SQL-Datenbank seit November 2015 [global verfügbar](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/). Der Abfragespeicher ist die Grundlage für die Leistungsanalyse und Optimierungsfunktionen, z.B. [SQL Database Advisor and Performance Dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/) (SQL-Datenbank-Ratgeber und Leistungsdashboard). Zum Zeitpunkt der Veröffentlichung dieses Artikels wird der Abfragespeicher in mehr als 200.000 Benutzerdatenbanken in Azure ausgeführt und sammelt seit mehreren Monaten ununterbrochen Informationen zu Abfragen.
 
-Query Store has been [globally available](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) in Azure SQL Database since November, 2015. Query Store is the foundation for performance analysis and tuning features, such as [SQL Database Advisor and Performance Dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). At the moment of publishing this article, Query Store is running in more than 200,000 user databases in Azure, collecting query-related information for several months, without interruption.
+> [AZURE.IMPORTANT] Microsoft führt gerade die Aktivierung des Abfragespeichers für alle Azure SQL-Datenbanken durch (vorhandene und neue Datenbanken).
 
-> [AZURE.IMPORTANT] Microsoft is in the process of activating Query Store for all Azure SQL databases (existing and new). 
+## Optimale Konfiguration des Abfragespeichers
 
-## <a name="optimal-query-store-configuration"></a>Optimal Query Store Configuration
+Dieser Abschnitt beschreibt die optimalen Standardeinstellungen der Konfiguration, mit denen der zuverlässige Betrieb des Abfragespeichers und der abhängigen Features sichergestellt wird, z.B. [SQL-Datenbank-Ratgeber und Leistungsdashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Die Standardkonfiguration ist für die fortlaufende Datensammlung optimiert. Dies bedeutet, dass möglichst wenig Zeit im Status OFF bzw. READ\_ONLY verbracht wird.
 
-This section describes optimal configuration defaults that are designed to ensure reliable operation of the Query Store and dependent features, such as [SQL Database Advisor and Performance Dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Default configuration is optimized for continuous data collection, that is minimal time spent in OFF/READ_ONLY states.
-
-| Configuration | Description | Default | Comment |
+| Konfiguration | Beschreibung | Standard | Kommentar |
 | ------------- | ----------- | ------- | ------- |
-| MAX_STORAGE_SIZE_MB | Specifies the limit for the data space that Query Store can take inside z customer database | 100 | Enforced for new databases |
-| INTERVAL_LENGTH_MINUTES | Defines size of time window during which collected runtime statistics for query plans are aggregated and persisted. Every active query plan has at most one row for a period of time defined with this configuration | 60   | Enforced for new databases |
-| STALE_QUERY_THRESHOLD_DAYS | Time-based cleanup policy that controls the retention period of persisted runtime statistics and inactive queries | 30 | Enforced for new databases and databases with previous default (367) |
-| SIZE_BASED_CLEANUP_MODE | Specifies whether automatic data cleanup takes place when Query Store data size approaches the limit | AUTO | Enforced for all databases |
-| QUERY_CAPTURE_MODE | Specifies whether all queries or only a subset of queries are tracked | AUTO | Enforced for all databases |
-| FLUSH_INTERVAL_SECONDS | Specifies maximum period during which captured runtime statistics are kept in memory, before flushing to disk | 900 | Enforced for new databases |
+| MAX\_STORAGE\_SIZE\_MB | Gibt das Limit für den Datenspeicherplatz an, den der Abfragespeicher in der Kundendatenbank belegt. | 100 | Für neue Datenbanken erzwungen |
+| INTERVAL\_LENGTH\_MINUTES | Definiert die Größe des Zeitfensters, in dem gesammelte Laufzeitstatistiken für Abfragepläne aggregiert und dauerhaft gespeichert werden. Jeder aktive Abfrageplan verfügt über maximal eine Zeile für einen mit dieser Konfiguration definierten Zeitraum. | 60 | Für neue Datenbanken erzwungen |
+| STALE\_QUERY\_THRESHOLD\_DAYS | Zeitbasierte Bereinigungsrichtlinie, mit der der Aufbewahrungszeitraum für dauerhaft gespeicherte Laufzeitstatistiken und inaktive Abfragen gesteuert wird. | 30 | Für neue Datenbanken und Datenbanken mit vorheriger Standardeinstellung erzwungen (367) |
+| SIZE\_BASED\_CLEANUP\_MODE | Gibt an, ob die automatische Datenbereinigung durchgeführt wird, wenn der Datenumfang des Abfragespeichers sich dem Grenzwert nähert. | AUTO | Für alle Datenbanken erzwungen |
+| QUERY\_CAPTURE\_MODE | Gibt an, ob die Gesamtmenge aller Abfragen oder nur eine Teilmenge der Abfragen nachverfolgt wird. | AUTO | Für alle Datenbanken erzwungen |
+| FLUSH\_INTERVAL\_SECONDS | Gibt an, wie lange gesammelte Laufzeitstatistiken maximal im Arbeitsspeicher aufbewahrt werden, bevor eine Leerung auf einen Datenträger erfolgt. | 900 | Für neue Datenbanken erzwungen |
 ||||||
 
-> [AZURE.IMPORTANT] These defaults are automatically applied in the final stage of Query Store activation in all Azure SQL databases (see preceding important note). After this light up, Azure SQL Database won’t be changing configuration values set by customers, unless they negatively impact primary workload or reliable operations of the Query Store.
+> [AZURE.IMPORTANT] Diese Standardeinstellungen werden in der letzten Phase der Abfragespeicheraktivierung automatisch auf alle Azure SQL-Datenbanken angewendet (siehe wichtigen Hinweis oben). Nach diesem Optimierungsschritt werden die von Kunden festgelegten Konfigurationswerte für Azure SQL-Datenbank nicht mehr geändert, es sei denn, sie wirken sich negativ auf die primäre Workload oder den zuverlässigen Betrieb des Abfragespeichers aus.
 
-If you want to stay with your custom settings, use [ALTER DATABASE with Query Store options](https://msdn.microsoft.com/library/bb522682.aspx) to revert configuration to the previous state. Check out [Best Practices with the Query Store](https://msdn.microsoft.com/library/mt604821.aspx) in order to learn how top chose optimal configuration parameters.
+Wenn Sie weiterhin Ihre benutzerdefinierten Einstellungen nutzen möchten, helfen Ihnen die Informationen unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx) weiter, um die Konfiguration wieder in den vorherigen Zustand zu versetzen. Lesen Sie den Artikel [Bewährte Methoden für den Abfragespeicher](https://msdn.microsoft.com/library/mt604821.aspx), um zu erfahren, wie Sie die optimalen Konfigurationsparameter auswählen.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-[SQL Database Performance Insight](sql-database-performance.md)
+[Einblicke in die SQL-Datenbankleistung](sql-database-performance.md)
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-For more information check out the following articles:
+Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
+- [A flight data recorder for your database (Ein Flugdatenschreiber für Ihre Datenbank)](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
 
-- [Monitoring Performance By Using the Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Überwachen der Leistung mit dem Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 
-- [Query Store Usage Scenarios](https://msdn.microsoft.com/library/mt614796.aspx)
+- [Query Store Usage Scenarios (Verwendungsszenarien für den Abfragespeicher)](https://msdn.microsoft.com/library/mt614796.aspx)
 
-- [Monitoring Performance By Using the Query Store](https://msdn.microsoft.com/library/dn817826.aspx) 
+- [Überwachen der Leistung mit dem Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

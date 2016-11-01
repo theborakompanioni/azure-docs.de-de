@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager Architecture | Microsoft Azure"
-   description="An architectural overview of Service Fabric Cluster Resource Manager."
+   pageTitle="Architektur des Ressourcen-Managers | Microsoft Azure"
+   description="Übersicht über die Architektur des Clusterressourcen-Managers von Service Fabric"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,32 +16,27 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
+# Übersicht über die Architektur des Clusterressourcen-Managers
+Um die Ressourcen in Ihrem Cluster zu verwalten, benötigt der Clusterressourcen-Manager von Service Fabric verschiedene Informationen. Er muss wissen, welche Dienste derzeit vorhanden sind und wie viele Ressourcen diese Dienste aktuell (oder standardmäßig) belegen. Eine weitere Information ist die tatsächliche Kapazität der Knoten im Cluster und somit die Anzahl der verfügbaren Ressourcen, sowohl im Cluster als Ganzes und als auch auf einem bestimmten Knoten. Die Ressourcennutzung eines bestimmten Diensts kann sich mit der Zeit ändern, und Dienste benötigen meist mehr als nur eine Ressource. Bei vielen Diensten können sowohl echte physische Ressourcen (z.B. die Nutzung von Arbeitsspeicher und Datenträgern) als auch logische Metriken (z.B. WorkQueueDepth oder TotalRequests) erfasst und als Metriken angezeigt werden, wobei die Erfassung logischer Metriken tatsächlich gängiger ist. Sowohl logische als auch physische Metriken können für eine Vielzahl verschiedener Arten von Diensten oder nur für eine Reihe von Diensten verwendet werden.
 
-# <a name="cluster-resource-manager-architecture-overview"></a>Cluster resource manager architecture overview
-In order to manage the resources in your cluster, the Service Fabric Cluster Resource Manager must have several pieces of information. It has to know which services currently exist and the current (or default) amount of resources that those services are consuming. It has to know the actual capacity of the nodes in the cluster, and thus the amount of resources available both in the cluster as a whole and remaining on a particular node. The resource consumption of a given service can change over time, as well as the fact that services, in reality, usually care about more than one resource. Across many different services there may be both real physical resources being measured and reported as metrics like memory and disk consumption, as well as (and actually more commonly) logical metrics - things like "WorkQueueDepth" or "TotalRequests". Both logical and physical metrics may be used across many different types of services or maybe specific to only a couple services.
+## Weitere Überlegungen
+Gelegentlich sind die Besitzer und Betreiber des Clusters nicht auch die Ersteller der Dienste. Möglich ist auch, dass es sich um dieselben Personen mit unterschiedlichen Rollen handelt. Wenn Sie Ihren Dienst z.B. entwickeln, verfügen Sie über Informationen zu den Ressourcenanforderungen und zur idealen Bereitstellung der Komponenten. Wenn Sie jedoch für Incidents auf einer Live-Website für diesen Dienst in der Produktion verantwortlich sind, haben Sie andere Aufgaben, für die Sie andere Tools benötigen. Darüber hinaus sind weder der Cluster noch die Dienste selbst statisch konfiguriert: die Anzahl von Knoten im Cluster kann erhöht oder verringert werden, Knoten verschiedener Größen können hinzukommen oder entfernt werden, und Dienste können eine andere Ressourcenzuteilung erhalten oder erstellt und entfernt werden. Upgrades oder andere Verwaltungsvorgänge können im Cluster erfolgen, und natürlich können Komponenten jederzeit ausfallen.
 
-## <a name="other-considerations"></a>Other considerations
-The owners and operators of the cluster are occasionally different from the service authors, or at a minimum are the same people wearing different hats; for example when developing your service you know a few things about what it requires in terms of resources and how the different components should ideally be deployed, but as the person handling a live-site incident for that service in production you have a different job to do, and require different tools. In addition, neither the cluster nor the services themselves are a statically configured: the number of nodes in the cluster can grow and shrink, nodes of different sizes can come and go, and services can be created, removed, and change their desired resource allocations on the fly. Upgrades or other management operations can roll through the cluster, and of course things can fail at any time.
+## Komponenten und Datenfluss des Clusterressourcen-Managers
+Der Clusterressourcen-Manager benötigt eine Vielzahl von Informationen zum Cluster sowie zu den Anforderungen der einzelnen Dienste und zustandslosen Instanzen bzw. zustandsbehafteten Replikate, aus denen sich der Cluster zusammensetzt. Um dies zu erreichen, werden einerseits Agents des Clusterressourcen-Managers auf einzelnen Knoten ausgeführt, um Informationen zur lokalen Ressourcennutzung zusammenzutragen, sowie andererseits ein zentraler, fehlertoleranter Clusterressourcen-Manager-Dienst, der alle Informationen zu den Diensten und zum Cluster sammelt und basierend auf seiner aktuellen Konfiguration reagiert. Die Fehlertoleranz des Clusterressourcen-Manager-Diensts (und aller anderen Systemdienste) wird über denselben Mechanismus erreicht, der auch für Ihre Dienste verwendet wird: Der Zustand eines Diensts wird auf einen Quorumdatenträger mit einer bestimmten Anzahl von Replikaten innerhalb des Clusters repliziert (üblicherweise 7).
 
-## <a name="cluster-resource-manager-components-and-data-flow"></a>Cluster resource manager components and data flow
-The Cluster Resource Manager will have to know many things about the overall cluster, as well as the requirements of individual services and the stateless instances or stateful replicas that make it up. To accomplish this, we have agents of the Cluster Resource Manager that run on individual nodes in order to aggregate local resource consumption information, and a centralized, fault-tolerant Cluster Resource Manager service that aggregates all of the information about the services and the cluster and reacts based on its current configuration. The fault tolerance for the Cluster Resource Manager service (and all other system services) is achieved via exactly the same mechanisms that we use for your services, namely replication of the service’s state to quorums of some number of replicas in the cluster (usually 7).
+![Resource Balancer-Architektur][Image1]
 
-![Resource Balancer Architecture][Image1]
+Werfen Sie als Beispiel einen Blick auf das obige Diagramm. Zur Laufzeit können viele verschiedene Änderungen auftreten. Beispielsweise können Änderungen an der Menge der Ressourcen vorkommen, die Dienste nutzen, Dienstausfälle können passieren, einige Knoten können dem Cluster hinzugefügt oder daraus entfernt werden usw. Alle Änderungen auf einem bestimmten Knoten werden gesammelt und regelmäßig an den zentralen Clusterressourcen-Manager-Dienst (1,2) gesendet, wo sie aggregiert, analysiert und gespeichert werden. Mit einem Intervall von einigen wenigen Sekunden untersucht dieser Dienst alle Änderungen und ermittelt, ob Aktionen erforderlich sind (3). Er könnte z. B. feststellen, dass Knoten dem Cluster hinzugefügt wurden und leer sind und entscheiden, einige Dienste auf diese Knoten zu verschieben. Er könnte aber auch bemerken, dass ein bestimmter Knoten überlastet ist oder dass bestimmte Dienste ausgefallen sind (oder gelöscht wurden), und Ressourcen auf anderen Knoten freigeben.
 
-Let’s take a look at this diagram above as an example. During runtime there are a whole bunch of changes which could happen: For example, let’s say there are some changes in the amount of resources services consume, some service failures, some nodes join and leave the cluster, etc. All the changes on a specific node are aggregated and periodically sent to the Cluster Resource Manager service (1,2) where they are aggregated again, analyzed, and stored. Every few seconds that service looks at all of the changes, and determines if there are any actions necessary (3). For example, it could notice that nodes have been added to the cluster and are empty, and decide to move some services to those nodes. It could also notice that a particular node is overloaded, or that certain services have failed (or been deleted), freeing up resources on other nodes.
+Betrachten Sie das folgende Diagramm, und sehen Sie sich an, was als Nächstes geschieht. Nehmen wir an, der Clusterressourcen-Manager ermittelt, dass Änderungen erforderlich sind. Er koordiniert sich mit anderen Systemdiensten (insbesondere dem Failover-Manager), um die erforderlichen Änderungen vorzunehmen. Anschließend werden die Änderungsanforderungen an die entsprechenden Knoten gesendet (4). In diesem Fall nehmen wir an, dass der Ressourcen-Manager bemerkt hat, dass Knoten 5 überlastet war, und daher entschieden hat, Dienst B von N5 auf N4 zu verschieben. Am Ende der Neukonfiguration (5) sieht der Cluster folgendermaßen aus:
 
-Let’s take a look at the following diagram and see what happens next. Let’s say that the Cluster Resource Manager determines that changes are necessary. It coordinates with other system services (in particular the Failover Manager) to make the necessary changes. Then the change requests are sent to the appropriate nodes (4). In this case, we presume that the Resource Manager noticed that Node 5 was overloaded, and so decided to move service B from N5 to N4. At the end of the reconfiguration (5), the cluster looks like this:
+![Resource Balancer-Architektur][Image2]
 
-![Resource Balancer Architecture][Image2]
+## Nächste Schritte
+- Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
 
-## <a name="next-steps"></a>Next steps
-- The Cluster Resource Manager has a lot of options for describing the cluster. To find out more about them check out this article on [describing a Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md)
+[Image1]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
+[Image2]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png
 
-[Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
-[Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

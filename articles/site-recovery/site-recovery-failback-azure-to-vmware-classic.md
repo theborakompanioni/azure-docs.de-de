@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Fail back VMware virtual machines and physical servers to the on-premises site | Microsoft Azure"
-   description="Learn about failing back to the on-premises site after failover of VMware VMs and physical servers to Azure." 
+   pageTitle="Failback von virtuellen VMware-Computern und physischen Servern zum lokalen Standort | Microsoft Azure"
+   description="Hier erfahren Sie, wie nach einem Failover von VMware-VMs und physischen Servern zu Azure ein Failback zum lokalen Standort ausgeführt wird." 
    services="site-recovery" 
    documentationCenter="" 
    authors="ruturaj" 
@@ -16,200 +16,192 @@
    ms.date="08/22/2016"
    ms.author="ruturajd"/>
 
-
-# <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>Fail back VMware virtual machines and physical servers to the on-premises site
+# Failback von virtuellen VMware-Computern und physischen Servern zum lokalen Standort
 
 > [AZURE.SELECTOR]
-- [Azure Portal](site-recovery-failback-azure-to-vmware.md)
-- [Azure Classic Portal](site-recovery-failback-azure-to-vmware-classic.md)
-- [Azure Classic Portal (Legacy)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
+- [Azure-Portal](site-recovery-failback-azure-to-vmware.md)
+- [Klassisches Azure-Portal](site-recovery-failback-azure-to-vmware-classic.md)
+- [Klassisches Azure-Portal (Vorgängerversion)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
 
 
 
-This articles describes how to fail back Azure virtual machines from Azure to the on-premises site. Follow the instructions in this article when you're ready to fail back your VMware virtual machines or Windows/Linux physical servers after they've failed over from the on-premises site to Azure using this [tutorial](site-recovery-vmware-to-azure-classic.md).
+In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback zum lokalen Standort durchführen. Befolgen Sie die Anweisungen in diesem Artikel, wenn Sie bereit sind, Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort auf Azure (beschrieben in diesem [Tutorial](site-recovery-vmware-to-azure-classic.md)) wieder per Failback auf den lokalen Standort zurückzuführen.
 
 
 
-## <a name="overview"></a>Overview
+## Übersicht
 
-This diagram shows the failback architecture for this scenario.
+Dieses Diagramm zeigt Aufbau und Ablauf des Failbacks in diesem Szenario.
 
-Use this architecture when the process server is on-premises and you are using an ExpressRoute.
+Verwenden Sie diese Architektur, wenn der Prozessserver lokal angeordnet ist und Sie eine ExpressRoute-Verbindung verwenden.
 
 ![](./media/site-recovery-failback-azure-to-vmware-classic/architecture.png)
 
-Use this architecture when the process server is on Azure and you have either a VPN or an ExpressRoute connection.
+Verwenden Sie diese Architektur, wenn der Prozessserver in Azure angeordnet ist und wenn Sie entweder ein VPN oder eine ExpressRoute-Verbindung verwenden.
 
-![](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
-To see the complete list of ports and the failback architechture diagram refer to the image below
+Eine vollständige Liste der Ports und das Failbackarchitekturdiagramm sehen Sie in der folgenden Abbildung.
 
 ![](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
 
-Here’s how failback works:
+Das Failback funktioniert wie folgt:
 
-- After you’ve failed over to Azure, you fail back to your on-premises site in a few stages:
-    - **Stage 1**: You reprotect the Azure VMs so that they start replicating back to VMware VMs running in your on-premises site. Enabling reprotection moves the VM into a failback protection group that was created automatically when you originally created the failover protection group. If you added your failover protection group to a recovery plan then the failback protection group was also automatically added to the plan.  During reprotect you specify how to plan to fail back.
-    - **Stage 2**: After your Azure VMs are replicating to your on-premises site, you run a fail over to fail back from Azure.
-    - **Stage 3**: After your data has failed back, you reprotect the on-premises VMs that you failed back to, so that they start replicating to Azure.
+- Nach einem Failover zu Azure erfolgt die Rückführung zum lokalen Standort per Failback in mehreren Phasen:
+	- **Phase 1**: Sie schützen die virtuellen Azure-Computer erneut, damit diese zurück auf die virtuellen VMware-Computer am lokalen Standort repliziert werden. Beim erneuten Aktivieren des Schutzes wird der virtuelle Computer (Virtual Machine, VM) in eine Failback-Schutzgruppe verschoben, die beim ursprünglichen Erstellen der Failover-Schutzgruppe automatisch erstellt wurde. Wenn Sie Ihre Failover-Schutzgruppe einem Wiederherstellungsplan hinzugefügt haben, wurde auch die Failback-Schutzgruppe automatisch diesem Plan hinzugefügt. Beim Ausführen des erneuten Schutzes legen Sie die Planung für das Failback fest.
+	- **Phase 2**: Nach der Replikation Ihrer virtuellen Azure-Computer auf den lokalen Standort führen Sie ein Failover aus, um das Failback von Azure durchzuführen.
+	- **Phase 3**: Nachdem Ihre Daten per Failback zurückgeführt wurden, schützen Sie die lokalen virtuellen Computer, auf die Sie das Failback durchgeführt haben, erneut, damit diese mit der Replikation nach Azure beginnen.
 
 > [AZURE.VIDEO enhanced-vmware-to-azure-failback]
 
 
-### <a name="failback-to-the-original-or-alternate-location"></a>Failback to the original or alternate location
+### Failback zum ursprünglichen oder zu einem anderen Standort
 
-If you failed over a VMware VM you can fail back to the same source VM if it still exists on-premises. In this scenario only the delta changes will be failed back. Note that:
+Wenn Sie ein Failover für einen virtuellen VMware-Computer durchgeführt haben, können Sie das Failback zur gleichen Quell-VM ausführen, sofern sie lokal noch vorhanden ist. In diesem Szenario werden beim Failback nur die geänderten Daten (Deltaänderungen) zurückgeführt. Beachten Sie Folgendes:
 
-- If you failed over physical servers then failback is always to a new VMware VM.
-    - Before failing back a Physical machine note that
-    - Physical machine protected will come back as a Virtual machine when failed over back from Azure to VMware
-    - Ensure that you discover atleast one Master Target sever along with the necessary ESX/ESXi hosts to which you need to failback.
-- If you fail back to the original VM the following is required:
-    - If the VM is managed by a vCenter server then the Master Target's ESX host should have access to the VMs datastore.
-    - If the VM is on an ESX host but is not managed by vCenter then the hard disk of the VM must be in a datastore accessible by the MT's host.
-    - If your VM is on an ESX host and doesn't use vCenter then you should complete discovery of the ESX host of the MT before you reprotect. This applies if you're failing back physical servers too.
-    - Another option (if the on-premises VM exists) is to delete it before you do a failback. Then failback will then create a new VM on the same host as the master target ESX host.
-    
-- When you failback to an alternate location the data will be recovered to the same datastore and the same ESX host as that used by the on-premises master target server. 
-
-
-## <a name="prerequisites"></a>Prerequisites
-
-- You'll need a VMware environment in order to fail back VMware VMs and physical servers. Failing back to a physical server isn’t supported.
-- In order to fail back you should have created an Azure network when you initially set up protection. Failback needs a VPN or ExpressRoute connection from the Azure network in which the Azure VMs are located to the on-premises site.
-- If the VMs you want to fail back to are managed by a vCenter server you'll need to make sure you have the required permissions for discovery of VMs on vCenter servers. [Read more](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access).
-- If snapshots are present on a VM then reprotection will fail. You can delete the snapshots or the disks. 
-- Before you fail back you’ll need to create a number of components:
-    - **Create a process server in Azure**. This is an Azure VM that you’ll need to create and keep running during failback. You can delete the machine after failback is complete.
-    - **Create a master target server**: The master target server sends and receives failback data. The management server you created on-premises has a master target server installed by default. However, depending on the volume of failed back traffic you might need to create a separate master target server for failback.
-    - if you want to create an additional master target server running on Linux, you’ll need to set up the Linux VM before you install the master target server, as described below.
-- Configuration server is required on-premises when you do a failback. During failback, the virtual machine must exist in the Configuration server database, failing which failback wont be successful. Hence ensure that you take regular scheduled backup of your server. In case of a disaster, you will need to restore it with the same IP address so that failback will work.
-
-## <a name="set-up-the-process-server-in-azure"></a>Set up the process server in Azure
-
-You need to install a process server in Azure so that the Azure VMs can send the data back to on-premises master target server. 
-
-1.  In the Site Recovery portal >  **Configuration Servers** select to add a new process server.
-
-    ![](./media/site-recovery-failback-azure-to-vmware-classic/ps1.png)
-
-2.  Specify a process server name, and enter a name and password you'll use to connect to the Azure VM as an administrator. In **Configuration Server** select the on-premises management server, and specify the Azure network in which the process server should be deployed. This should be the network in which the Azure VMs are located. Specify a unique IP address from the select subnet and begin deployment.
-
-    ![](./media/site-recovery-failback-azure-to-vmware-classic/ps2.png)
-
-    A job to deploy the process server will be triggered
-
-    ![](./media/site-recovery-failback-azure-to-vmware-classic/ps3.png)
-
-    After the process server is deployed in Azure you can log onto it using the credentials you specified. The first time you log in the process server dialog will run. Type in the IP address of the on-premises management server and its passphrase. Leave the default port 443 setting. You can also leave the default 9443 port for data replication unless you specifically modified this setting when you set up the on-premises management server. 
-
-    >[AZURE.NOTE] The server won't be visible under **VM properties**. It's only visible under the **Servers** tab in the management server to which it's been registered. It can take about 10-15 mins for the process server to appear.
+- Wenn Sie ein Failover für physische Server durchgeführt haben, erfolgt das Failback immer zu einem neuen virtuellen VMware-Computer.
+	- Beachten Sie vor dem Ausführen eines Failbacks an einem physischen Computer, dass
+	- der geschützte physische Computer beim Failover zurück von Azure zu VMware als virtueller Computer zurückkehrt
+	- Sie sicherstellen, dass Sie mindestens einen Masterzielserver zusammen mit den erforderlichen ESX/ESXi-Hosts ermitteln, zu denen Sie ein Failback ausführen müssen.
+- Wenn Sie ein Failback zum ursprünglichen virtuellen Computer durchführen, ist Folgendes erforderlich:
+	- Wenn der virtuelle Computer von einem vCenter-Server verwaltet wird, muss der ESX-Host des Masterziels Zugriff auf den Datenspeicher des virtuellen Computers haben.
+	- Wenn sich der virtuelle Computer auf einem ESX-Host befindet, aber nicht von vCenter verwaltet wird, muss sich die Festplatte des virtuellen Computers in einem Datenspeicher befinden, auf den der Host des Masterziels Zugriff hat.
+	- Wenn sich Ihr virtueller Computer auf einem ESX-Host befindet und nicht vCenter verwendet, müssen Sie für den ESX-Host des Masterziels eine Ermittlung ausführen, bevor Sie den erneuten Schutz ausführen. Dasselbe gilt auch bei einem Failback für physische Server.
+	- Als weitere Option können Sie den lokalen virtuellen Computer (sofern er noch vorhanden ist) vor dem Ausführen des Failbacks löschen. Beim Failback wird dann ein neuer virtueller Computer auf dem gleichen Host erstellt, der als Masterziel-ESX-Host fungiert.
+	
+- Wenn Sie das Failback zu einem anderen Speicherort durchführen, werden die Daten in dem gleichen Datenspeicher und in dem gleichen ESX-Host wiederhergestellt, der vom lokalen Masterzielserver verwendet wird.
 
 
-## <a name="set-up-the-master-target-server-on-premises"></a>Set up the master target server on-premises
+## Voraussetzungen
 
-The master target server receives the failback data. A master target server is automatically installed on the on-premises management server but if you're failing back a lot of data you might need to set up an additional master target server. Do this as follows:
+- Sie benötigen eine VMware-Umgebung, um ein Failback für virtuelle VMware-Computer und physische Server durchführen zu können. Ein Failback auf einen physischen Server wird nicht unterstützt.
+- Ein Failback ist nur möglich, wenn Sie beim ursprünglichen Einrichten des Schutzes ein Azure-Netzwerk erstellt haben. Für das Failback wird eine VPN-Verbindung oder eine ExpressRoute-Verbindung von dem Azure-Netzwerk, in dem sich die virtuellen Azure-Computer befinden, mit ihrem lokalen Standort benötigt.
+- Wenn die virtuellen Computer, für die Sie das Failback ausführen möchten, von einem vCenter-Server verwaltet werden, müssen Sie sicherstellen, dass auf den vCenter-Servern die erforderlichen Berechtigungen für die Ermittlung von virtuellen Computern (VMs) vorhanden sind. [Weitere Informationen](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
+- Wenn auf einem virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Ausführen des erneuten Schutzes ein Fehler auf. Sie können die Momentaufnahmen oder die Datenträger löschen.
+- Vor dem Ausführen des Failbacks müssen Sie einige Komponenten erstellen.
+	- **Erstellen Sie einen Prozessserver in Azure**. Dies ist ein virtueller Azure-Computer, den Sie erstellen und während des Failbacks fortlaufend ausführen müssen. Sie können diesen virtuellen Computer nach Abschluss des Failbacks löschen.
+	- **Erstellen Sie einen Masterzielserver**: Der Masterzielserver sendet und empfängt Failbackdaten. Auf dem von Ihnen lokal erstellten Verwaltungsserver ist standardmäßig ein Masterzielserver installiert. Je nach Datenverkehrsvolumen beim Failback müssen Sie jedoch u. U. einen separaten Masterzielserver für das Failback erstellen.
+	- Wenn Sie einen zusätzlichen Masterzielserver erstellen möchten, der unter Linux ausgeführt wird, müssen Sie vor dem Installieren des Masterzielservers die Linux-VM einrichten. Eine Beschreibung hierzu finden Sie weiter unten.
+- Der Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein, andernfalls ist das Failback nicht erfolgreich. Daher stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Servers ausführen. Im Notfall müssen Sie ihn mit der gleichen IP-Adresse wiederherstellen, damit das Failback funktioniert.
 
->[AZURE.NOTE] If you want to install a master target server on Linux, follow the instructions in the next procedure.
+## Einrichten des Prozessservers in Azure
 
-1. If you're installing the master target server on Windows, open the Quick Start page from the VM on which you're installing the master target server, and download the installation file for the Azure Site Recovery Unified Setup wizard.
-2. Run setup and in **Before you begin** select **Add additional process servers to scale out deployment**.
-3. Complete the wizard in the same way you did when you [set up the management server](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server). On the **Configuration Server Details** page, specify the IP address of this master target server, and a passphrase to access the VM.
+Sie müssen einen Prozessserver in Azure installieren, damit die virtuellen Azure-Computer die Daten zurück an einem lokalen Masterzielserver senden können.
 
-### <a name="set-up-a-linux-vm-as-the-master-target-server"></a>Set up a Linux VM as the master target server
-To set up the management server running the master target server as a Linux VM you'll need to install the Cent)S 6.6 minimal operating system, retrieve the SCSI IDs for each SCSI hard disk, install some additional packages, and apply some custom changes.
+1.  Wählen Sie im Site Recovery-Portal unter **Konfigurationsserver** die Option zum Hinzufügen eines neuen Prozessservers aus.
 
-#### <a name="install-centos-6.6"></a>Install CentOS 6.6
+	![](./media/site-recovery-failback-azure-to-vmware-classic/ps1.png)
 
-1.  Install the CentOS 6.6 minimal operating system on the management server VM. Keep the ISO in a DVD drive and boot the system. Skip the media testing, select US English at the language, select **Basic Storage Devices**, check that the hard drive doesn’t have any important data and click **Yes**, discard any data. Enter the host name of the management server and select the server network adapter.  In the **Editing System** dialog select** Connect automatically** and add a static IP address, network, and DNS settings. Specify a time zone, and a root password to access the management server. 
-2.  When you asked the type of installation you’d like select **Create Custom Layout** as the partition. After you click **Next** select **Free** and click Create. Create **/**,  **/var/crash** and **/home partitions** with **FS Type:** **ext4**. Create the swap partion as **FS Type: swap**.
-3.  If pre-existing devices are found a warning message will appear. Click **Format** to format the drive with the partition settings. Click **Write change to disk** to apply the partition changes.
-4.  Select **Install boot loader** > **Next** to install the boot loader on the root partition.
-5.  When installation is complete click **Reboot**.
+2.  Geben Sie einen Prozessservernamen sowie einen Namen und ein Kennwort an, um eine Verbindung mit dem virtuellen Azure-Computer als Administrator herzustellen. Wählen Sie in **Konfigurationsserver** den lokalen Verwaltungsserver aus, und geben Sie das Azure-Netzwerk an, in dem der Prozessserver bereitgestellt werden soll. Dies muss das Netzwerk sein, in dem sich die virtuellen Azure-Computer befinden. Geben Sie eine eindeutige IP-Adresse aus dem ausgewählten Subnetz an, und starten Sie die Bereitstellung.
 
+	![](./media/site-recovery-failback-azure-to-vmware-classic/ps2.png)
 
-#### <a name="retrieve-the-scsi-ids"></a>Retrieve the SCSI IDs
+	Es wird ein Auftrag zum Bereitstellen des Prozessservers ausgelöst.
 
-1. After installation retrieve the SCSI IDs for each SCSI hard disk in the VM. To do this shut down the management server VM, in the VM properties in VMware right-click the VM entry > **Edit Settings** > **Options**.
-2. Select **Advanced** > **General item** and click **Configuration Parameters**. This option will be de-active when the machine is running. To make it active the machine must be shut down.
-3. If the row **disk.EnableUUID** exists make sure the value is set to **True** (case sensitive). If it already is you can cancel and test the SCSI command inside a guest operating system after it’s booted. 
-4.  If the row doesn’t existing click **Add Row** – and add it with the **True** value. Don’t use double-quotes.
+	![](./media/site-recovery-failback-azure-to-vmware-classic/ps3.png)
 
-#### <a name="install-additional-packages"></a>Install additional packages
+	Nachdem der Prozessserver in Azure bereitgestellt wurde, können Sie sich mit den angegebenen Anmeldeinformationen dort anmelden. Bei der ersten Anmeldung wird ein Prozessserver-Dialogfeld angezeigt. Geben Sie die IP-Adresse des lokalen Verwaltungsservers und die zugehörige Passphrase ein. Belassen Sie die Standardeinstellung für den Port bei „443“. Sie können auch den Standardport 9443 für die Datenreplikation beibehalten, sofern Sie diese Einstellung beim Einrichten des lokalen Verwaltungsservers nicht bewusst geändert haben.
 
-You’ll need to download and install some additional packages. 
-
-1.  Make sure the master target server is connected to the internet.
-2.  Run this command to download and install 15 packages from the CentOS repository: **# yum install –y xfsprogs perl lsscsi rsync wget kexec-tools**.
-3.  If the source machines you’re protecting are running Linux wit Reiser or XFS file system for the root or boot device, then you should download and install additional packages as follows:
-
-    - # <a name="cd-/usr/local"></a>cd /usr/local
-    - # <a name="wget-[http://elrepo.org/linux/elrepo/el6/x86_64/rpms/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/rpms/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm)"></a>wget [http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm)
-    - # <a name="wget-[http://elrepo.org/linux/elrepo/el6/x86_64/rpms/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/rpms/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm)"></a>wget [http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm)
-    - # <a name="rpm-–ivh-kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm-reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm"></a>rpm –ivh kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm
-    - # <a name="wget-[http://mirror.centos.org/centos/6.6/os/x86_64/packages/xfsprogs-3.1.1-16.el6.x86_65.rpm](http://mirror.centos.org/centos/6.6/os/x86_64/packages/xfsprogs-3.1.1-16.el6.x86_65.rpm)"></a>wget [http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_65.rpm](http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_65.rpm)
-    - # <a name="rpm-–ivh-xfsprogs-3.1.1-16.el6.x86_64.rpm"></a>rpm –ivh xfsprogs-3.1.1-16.el6.x86_64.rpm
-
-#### <a name="apply-custom-changes"></a>Apply custom changes
-
-Do the following to apply custom changes after you’ve complete the post-installation steps and installed the packages:
-
-1.  Copy the RHEL 6-64 Unified Agent binary to the VM. Run this command to untar the binary: **tar –zxvf <file name>**
-2.  Run this command to give permissions: **# chmod 755 ./ApplyCustomChanges.sh**
-3.  Run the script: **# ./ApplyCustomChanges.sh**. You should only run the script once. Reboot the server after the script runs successfully.
+	>[AZURE.NOTE] Der Server wird nicht unter **VM-Eigenschaften** angezeigt. Er wird nur auf der Registerkarte **Server** des Verwaltungsservers angezeigt, bei dem er registriert wurde. Es kann etwa 10–15 Minuten dauern, bis der Prozessserver angezeigt wird.
 
 
-## <a name="run-the-failback"></a>Run the failback
+## Einrichten des lokalen Masterzielservers
 
-### <a name="reprotect-the-azure-vms"></a>Reprotect the Azure VMs
+Der Masterzielserver empfängt die Failbackdaten. Auf dem lokalen Verwaltungsserver wird automatisch ein Masterzielserver installiert. Wenn Sie jedoch große Datenmengen per Failback zurückführen, müssen Sie möglicherweise einen zusätzlichen Masterzielserver einrichten. Gehen Sie hierzu wie folgt vor:
 
-1.  In the Site Recovery  portal > **Machines** tab select the VM that's been failed over and click **Re-Protect**.
-2.  In **Master Target Server** and **Process Server** select the on-premises master target server, and the Azure VM process server.
-3.  Select the account you configured for connecting to the VM.
-4.  Select the failback version of the protection group. For example if the VM is protected in PG1 then you'll need to select PG1_Failback.
-5.  If you want to recover to an alternate location, select the retention drive and datastore configured for the master target server. When you fail back to the on-premises site the VMware VMs in the failback protection plan will use the same datastore as the master target server. If you want to recover the replica Azure VM to the same on-premises VM then the on-premises VM should already be in the same datastore as the master target server. If there's no VM on-premises a new one will be created during reprotection.
+>[AZURE.NOTE] Wenn Sie einen Masterzielserver unter Linux installieren möchten, befolgen Sie die Anweisungen im nächsten Abschnitt.
 
-    ![](./media/site-recovery-failback-azure-to-vmware-classic/failback1.png)
+1. Wenn Sie den Masterzielserver unter Windows installieren, öffnen Sie auf dem virtuellen Computer, auf dem Sie den Masterzielserver installieren, die Seite „Schnellstart“. Laden Sie anschließend die Installationsdatei für den Azure Site Recovery-Assistenten für einheitliches Setup herunter.
+2. Führen Sie das Setup aus, und wählen Sie in **Vorbereitung** die Option **Weitere Prozessserver zum horizontalen Hochskalieren der Bereitstellung hinzufügen** aus.
+3. Beenden Sie den Assistenten genauso wie beim [Einrichten des Verwaltungsservers](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server). Geben Sie auf der Seite **Konfigurationsserverdetails** die IP-Adresse dieses Masterzielservers sowie eine Passphrase für den Zugriff auf den virtuellen Computer an.
 
-6.  After you click **OK** to begin reprotection a job begins to replicate the VM from Azure to the on-premises site. You can track the progress on the **Jobs** tab.
+### Einrichten eines virtuellen Linux-Computers als Masterzielserver
+Um den Verwaltungsserver einzurichten, auf dem der Masterzielserver als virtueller Linux-Computer ausgeführt wird, müssen Sie das Minimalbetriebssystem CentOS 6.6 installieren, die SCSI-IDs für jede SCSI-Festplatte abrufen, einige zusätzliche Pakete installieren und einige benutzerdefinierte Änderungen vornehmen.
 
-    ![](./media/site-recovery-failback-azure-to-vmware-classic/failback2.png)
+#### Installieren von CentOS 6.6
 
-### <a name="run-a-failover-to-the-on-premises-site"></a>Run a failover to the on-premises site
-
-After reprotection the VM is moved to the failback version of its protection group and is automatically added to the recovery plan you used for the failover to Azure if there is one.
-
-1.  In the **Recovery Plans** page select the recovery plan containing the failback group and click **Failover** > **Unplanned Failover**.
-2.  In **Confirm Failover** verify the failover direction (to Azure) and select the recovery point you want to use for the failover (latest). If you enabled **Multi-VM** when you configured replication properties you can recover to the latest app or crash-consistent recovery point. Click the check mark to start the failover.
-3.  During failover Site Recovery will shut down the Azure VMs. After you check that failback has completed as expected you can you can check that the Azure VMs have been shut down as expected.
-
-### <a name="reprotect-the-on-premises-site"></a>Reprotect the  on-premises site
-
-After failback completes your data will be back on the on-premises site, but won’t be protected. To start replicating to Azure again do the following:
-
-1.  In the Site Recovery portal > **Machines** tab select the VMs that have failed back and click **Re-Protect**. 
-2.  After you verify that replication to Azure is working as expected, in Azure you can delete the Azure VMs (currently not running) that were failed back.
+1.	Installieren Sie das Minimalbetriebssystem CentOS 6.6 auf der Verwaltungsserver-VM. Behalten Sie das ISO-Image im DVD-Laufwerk, und starten Sie das System. Überspringen Sie den Medientest, wählen Sie als Sprache US-Englisch aus, wählen Sie **Basic Storage Devices** aus, vergewissern Sie sich, dass sich auf der Festplatte keine wichtigen Daten befinden, und klicken Sie auf **Yes**, wodurch alle Daten gelöscht werden. Geben Sie den Hostnamen des Verwaltungsservers ein, und wählen Sie die Netzwerkkarte des Servers aus. Wählen Sie im Dialogfeld **Editing System** die Option **Connect automatically** aus, und fügen Sie eine statische IP-Adresse, ein Netzwerk und DNS-Einstellungen hinzu. Geben Sie eine Zeitzone und ein Stammkennwort zum Zugriff auf den Verwaltungsserver ein.
+2.	Wenn Sie nach dem gewünschten Installationstyp gefragt werden, wählen Sie für die Partition **Create Custom Layout** aus. Klicken Sie anschließend auf **Next**, wählen Sie **Free** aus, und klicken Sie auf „Create“. Erstellen Sie die Partitionen **/**, **/var/crash** und **/home** mit **FS Type:** **ext4**. Erstellen Sie die Partition „swap“ als **FS Type: swap**.
+3.	Wenn bereits vorhandene Geräte gefunden werden, wird eine Warnung angezeigt. Klicken Sie auf **Format**, um das Laufwerk mit den Partitionseinstellungen zu formatieren. Klicken Sie auf **Write change to disk**, um die Partitionsänderungen zu übernehmen.
+4.	Wählen Sie **Install boot loader** > **Next**, um das Startladeprogramm auf der Stammpartition zu installieren.
+5.	Klicken Sie nach Abschluss der Installation auf **Reboot**.
 
 
-### <a name="common-issues-in-failback"></a>Common Issues in failback
+#### Abrufen der SCSI-IDs
 
-1. If you perform Read-Only User vCenter discovery and protect virtual machines, it succeeds and failover works. At the time of Reprotect, it will fail since the datastores cannot be discovered. As a symptom you will not see the datastores listed while re-protecting. To resolve this, you can update the vCenter credential with appropriate account that has permissions and retry the job. [Read more](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
-2. When you failback a Linux VM and run it on-prem, you will see that the Network Manager package is uninstalled from the machine. This is because when the VM is recovered in Azure, the Network Manager package is removed.
-3. When a VM is configured with Static IP address and is failed over to Azure, the IP address is acquired via DHCP. When you fail over back to On-prem, the VM continues to use DHCP to acquire the IP address. You will need to manually login into the machine and set the IP address back to Static address if required.
-4. If you are using either ESXi 5.5 free edition or vSphere 6 Hypervisor free edition, failover would succeed, but failback will not succeed. You will ned to upgrade to either Evaluation License to enable failback.
+1. Rufen Sie nach der Installation die SCSI-IDs für alle SCSI-Festplatten im virtuellen Computer ab. Fahren Sie zu diesem Zweck die Verwaltungsserver-VM herunter, klicken Sie in VMware in den VM-Eigenschaften mit der rechten Maustaste auf den VM-Eintrag, und klicken Sie anschließend auf **Einstellungen bearbeiten** > **Optionen**.
+2. Wählen Sie **Advanced** > **General item** aus, und klicken Sie auf **Configuration Parameters**. Diese Option ist deaktiviert, wenn der virtuelle Computer ausgeführt wird. Um sie zu aktivieren, muss der virtuelle Computer heruntergefahren werden.
+3. Wenn die Zeile **disk.EnableUUID** vorhanden ist, sollten Sie sicherstellen, dass der Wert auf **TRUE** festgelegt ist (Groß-/Kleinschreibung wird beachtet). Wenn dies der Fall ist, können Sie den Vorgang abbrechen und den SCSI-Befehl in einem Gastbetriebssystem testen, nachdem es hochgefahren wurde.
+4.	Wenn die Zeile nicht vorhanden ist, klicken Sie auf **Zeile hinzufügen**, und fügen Sie sie mit dem Wert **TRUE** hinzu. Verwenden Sie keine doppelten Anführungszeichen.
 
-## <a name="failing-back-with-expressroute"></a>Failing back with ExpressRoute
+#### Installieren von zusätzlichen Paketen
 
-You can fail back over a VPN connection or Azure ExpressRoute. If you want to use ExpressRoute note the following:
+Sie müssen einige zusätzliche Pakete herunterladen und installieren.
 
-- ExpressRoute should be set up on the Azure virtual network to which source machines fail over, and in which Azure VMs are located after the failover occurs.
-- Data is replicated to an Azure storage account on a public endpoint. You should set up public peering in ExpressRoute with the target data center for Site Recovery replication to use ExpressRoute.
+1.	Stellen Sie sicher, dass der Masterzielserver mit dem Internet verbunden ist.
+2.	Führen Sie den folgenden Befehl aus, um 15 Pakete aus dem CentOS-Repository herunterzuladen und zu installieren: **# yum install –y xfsprogs perl lsscsi rsync wget kexec-tools**.
+3.	Wenn Linux auf den zu schützenden Quellcomputern mit dem Dateisystem Reiser oder XFS für das Stamm- oder Startgerät ausgeführt wird, müssen Sie die diese zusätzlichen Pakete wie folgt herunterladen und installieren:
+
+	- # cd /usr/local
+	- # wget [http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm)
+	- # wget [http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm)
+	- # rpm –ivh kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm
+	- # wget [http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_65.rpm](http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_65.rpm)
+	- # rpm –ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+
+#### Anwenden von benutzerdefinierten Änderungen
+
+Nachdem Sie die nach der Installation nötigen Schritte ausgeführt und die Pakete installiert haben, führen Sie folgende benutzerdefinierte Änderungen aus:
+
+1.	Kopieren Sie die Binärdatei „RHEL 6-64 Unified Agent“ auf den virtuellen Computer. Führen Sie für die Binärdatei den folgenden Untar-Befehl aus: **tar -zxvf <Dateiname>**
+2.	Führen Sie den folgenden Befehl aus, um Berechtigungen zu erteilen: **# chmod 755 ./ApplyCustomChanges.sh**
+3.	Führen Sie das folgende Skript aus: **# ./ApplyCustomChanges.sh**. Das Skript darf nur einmal ausgeführt werden. Starten Sie den Server neu, nachdem das Skript erfolgreich ausgeführt wurde.
 
 
+## Ausführen des Failbacks
+
+### Erneutes Schützen der virtuellen Azure-Computer
+
+1.	Wählen Sie im Site Recovery-Portal auf der Registerkarte **Computer** den virtuellen Computer aus, für den das Failover durchgeführt wurde, und klicken Sie auf **Erneut schützen**.
+2.	Wählen Sie bei **Masterzielserver** und **Prozessserver** den lokalen Masterzielserver und den Azure-VM-Prozessserver aus.
+3.	Wählen Sie das Konto aus, das Sie für die Verbindung mit dem virtuellen Computer konfiguriert haben.
+4.	Wählen Sie die Failbackversion der Schutzgruppe aus. Beispiel: Wenn der virtuelle Computer in der Schutzgruppe „PG\_1“ geschützt ist, müssen Sie „PG1\_Failback“ auswählen.
+5.	Wenn die Wiederherstellung an einem anderen Speicherort erfolgen soll, wählen Sie das Aufbewahrungslaufwerk und den Datenspeicher aus, wie sie für den Masterzielserver konfiguriert wurden. Beim Ausführen des Failbacks zum lokalen Standort verwenden die virtuellen VMware-Computer im Failback-Schutzplan den gleichen Datenspeicher wie der Masterzielserver. Wenn Sie den virtuellen Azure-Replikatcomputer auf dem gleichen lokalen virtuellen Computer wiederherstellen möchten, muss sich der lokale virtuelle Computer bereits im selben Datenspeicher befinden wie der Masterzielserver. Wenn lokal kein virtueller Computer vorhanden ist, wird er beim Ausführen des erneuten Schutzes erstellt.
+
+	![](./media/site-recovery-failback-azure-to-vmware-classic/failback1.png)
+
+6.	Nachdem Sie auf **OK** geklickt haben, um den erneuten Schutz zu starten, beginnt ein Auftrag mit der Replikation des virtuellen Computers von Azure am lokalen Standort. Sie können den Fortschritt auf der Registerkarte **Aufträge** nachverfolgen.
+
+	![](./media/site-recovery-failback-azure-to-vmware-classic/failback2.png)
+
+### Ausführen eines Failovers zum lokalen Standort
+
+Nach dem Ausführen des erneuten Schutzes wird der virtuelle Computer zur Failbackversion seiner Schutzgruppe verschoben und automatisch dem Wiederherstellungsplan hinzugefügt, den Sie für das Failover zu Azure genutzt haben (sofern ein solcher vorhanden ist).
+
+1.	Wählen Sie auf der Seite **Wiederherstellungspläne** den Wiederherstellungsplan aus, der die Failbackgruppe enthält, und klicken Sie auf **Failover** > **Ungeplantes Failover**.
+2.	Überprüfen Sie unter **Failover bestätigen** die Failoverrichtung (zu Azure), und wählen Sie den Wiederherstellungspunkt aus, der für das Failover verwendet werden soll (den aktuellsten). Wenn Sie beim Konfigurieren der Replikationseigenschaften **Multi-VM** aktiviert haben, können Sie zum letzten anwendungs- oder absturzkonsistenten Wiederherstellungspunkt wiederherstellen. Klicken Sie auf das Häkchen, um das Failover zu starten.
+3.	Während des Failovers fährt Site Recovery die virtuellen Azure-Computer herunter. Vergewissern Sie sich, dass das Failback wie erwartet abgeschlossen wurde, und überprüfen Sie anschließend, ob die virtuellen Azure-Computer wie erwartet heruntergefahren wurden.
+
+### Erneutes Schützen des lokalen Standorts
+
+Nach Abschluss des Failbacks befinden sich Ihre Daten wieder am lokalen Standort, aber sie sind nicht geschützt. Führen Sie daher folgende Schritte aus, um die Replikation zu Azure erneut zu starten:
+
+1.	Wählen Sie im Site Recovery-Portal auf der Registerkarte **Computer** die virtuellen Computer aus, für die das Failback durchgeführt wurde, und klicken Sie auf **Erneut schützen**.
+2.	Vergewissern Sie sich, dass die Replikation zu Azure erwartungsgemäß funktioniert. Wenn dies der Fall ist, können Sie die (derzeit nicht ausgeführten) virtuellen Azure-Computer löschen, für die das Failback ausgeführt wurde.
 
 
+### Häufige Probleme beim Failback
 
+1. Wenn Sie die vCenter-Ermittlung schreibgeschützter Benutzer ausführen und virtuelle Computer schützen, funktioniert das Failover. Zum Zeitpunkt des erneuten Schützens schlägt dies fehl, da die Datenspeicher nicht ermittelt werden können. Symptom dafür ist, dass Sie die Datenspeicher beim erneuten Schützen nicht sehen. Zum Beheben dieses Problems können Sie die vCenter-Anmeldeinformationen mit einem entsprechenden Konto aktualisieren, das die Berechtigungen besitzt, und den Auftrag wiederholen. [Weitere Informationen](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
+2. Beim Failback einer Linux-VM und ihrer lokalen Ausführung sehen Sie, dass das Netzwerk-Manager-Paket auf dem Computer deinstalliert wird. Dies liegt daran, dass beim Wiederherstellen des virtuellen Computers in Azure das Netzwerk-Manager-Paket entfernt wird.
+3. Wenn ein virtueller Computer mit statischer IP-Adresse konfiguriert ist und ein Failover zu Azure ausgeführt wird, wird die IP-Adresse über DHCP abgerufen. Nach dem Failover zurück zum lokalen Standort verwendet der virtuelle Computer weiterhin DHCP zum Abrufen der IP-Adresse. Sie müssen sich manuell bei dem Computer anmelden und die IP-Adresse auf die statische Adresse zurücksetzen, falls erforderlich.
+4. Wenn Sie die kostenlose Edition ESXi 5.5 oder die kostenlose Edition vSphere 6 Hypervisor verwenden, wäre das Failover erfolgreich, das Failback jedoch nicht. Sie müssen auf die Evaluierungslizenzen aktualisieren, um das Failback zu aktivieren.
 
-<!--HONumber=Oct16_HO2-->
+## Ausführen eines Failbacks mit ExpressRoute
 
+Ein Failback kann über eine VPN-Verbindung oder über Azure ExpressRoute ausgeführt werden. Wenn Sie ExpressRoute verwenden möchten, beachten Sie Folgendes:
 
+- ExpressRoute muss in dem virtuellen Azure-Netzwerk eingerichtet werden, zu dem das Failover der Quellcomputer durchgeführt wird und in dem sich die virtuellen Azure-Computer nach dem Failover befinden.
+- Die Daten werden zu einem Azure-Speicherkonto auf einem öffentlichen Endpunkt repliziert. Sie müssen ein öffentliches Peering in ExpressRoute einrichten, bei dem das Zieldatencenter für die Site Recovery-Replikation ExpressRoute verwendet.
+
+<!---HONumber=AcomDC_0824_2016-->

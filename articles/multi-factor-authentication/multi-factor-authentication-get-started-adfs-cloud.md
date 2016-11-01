@@ -1,106 +1,96 @@
 <properties
-    pageTitle="Securing cloud resources with Azure Multi-Factor Authentication and AD FS"
-    description="This is the Azure Multi-Factor authentication page that describes how to get started with Azure MFA and AD FS in the cloud."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtland"/>
+	pageTitle="Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS"
+	description="Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS in der Cloud beschrieben."
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtland"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
+
+# Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
+
+Wenn Ihre Organisation über einen Verbund mit Azure Active Directory verfügt und Ressourcen vorhanden sind, auf die von Azure AD zugegriffen wird, können Sie Multi-Factor Authentication oder Active Directory Federation Services zum Sichern dieser Ressourcen verwenden. Führen Sie die Verfahren unten aus, um Azure Active Directory-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten zu sichern.
+
+## So sichern Sie Azure AD-Ressourcen mit AD FS
 
 
-# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Securing cloud resources with Azure Multi-Factor Authentication and AD FS
 
-If your organization is federated with Azure Active Directory and you have resources that are accessed by Azure AD, you can use Azure Multi-Factor Authentication or Active Directory Federation Services to secure these resources. Use the procedures below to secure Azure Active Directory resources with either Azure Multi-Factor Authentication or Active Directory Federation Services.
-
-## <a name="to-secure-azure-ad-resources-using-ad-fs-do-the-following:"></a>To secure Azure AD resources using AD FS do the following:
-
-
-
-1. Use the steps outlined in [turn-on multi-factor authentication](active-directory/multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users) for users to enable an account.
-2. Use the following procedure to setup a claims rule:
+1. Führen Sie die unter [Aktivieren von Multi-Factor Authentication](active-directory/multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users) beschriebenen Schritte für Benutzer aus, um ein Konto zu aktivieren.
+2. Gehen Sie wie folgt vor, um eine Anspruchsregel einzurichten:
 
 ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
 
--   Start the AD FS Management console.
--   Navigate to Relying Party Trusts and right-click on the Relying Party Trust. Select Edit Claim Rules…
--   Click Add Rule…
--   From the drop down, select Send Claims Using a Custom Rule and click Next.
--   Enter a name for the claim rule.
--   Under Custom rule: add the following:
+- 	Öffnen Sie die AD FS-Verwaltungskonsole.
+- 	Navigieren Sie zu "Vertrauensstellungen der vertrauenden Seite", und klicken Sie mit der rechten Maustaste auf "Vertrauensstellungen der vertrauenden Seite". Wählen Sie "Anspruchsregeln bearbeiten" aus.
+- 	Klicken Sie auf "Regel hinzufügen".
+- 	Wählen Sie in der Dropdownliste "Ansprüche per benutzerdefinierter Regel senden" aus, und klicken Sie auf "Weiter".
+- 	Geben Sie einen Namen für die Anspruchsregel ein.
+- 	Fügen Sie Folgendes unter "Benutzerdefinierte Regel" hinzu:
 
 
-        => issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
+		=> issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
 
-    Corresponding claim:
+	Entsprechender Anspruch:
 
-        <saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
-        <saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
-        </saml:Attribute>
-- Click OK. Click Finish. Close the AD FS Management console.
+		<saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
+		<saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
+		</saml:Attribute>
+- Klicken Sie auf OK. Klicken Sie auf Fertig stellen. Schließen Sie die AD FS-Verwaltungskonsole.
 
-Users then can complete signing in using the on-premises method (such as smartcard).
+Benutzer können dann die Anmeldung mithilfe der lokalen Methode (z. B. Smartcard) abschließen.
 
-## <a name="trusted-ips-for-federated-users"></a>Trusted IPs for federated users
-Trusted IPs allow administrators to by-pass multi-factor authentication for specific IP address or for federated users that have requests originating from within their own intranet. The following sections will describe how to configure Azure Multi-Factor Authentication Trusted IPs with federated users and by-pass multi-factor authentication, when a request originates from within a federated users intranet.  This is achieved by configuring AD FS to use a pass through or filter an incoming claim template with the Inside Corporate Network claim type.  This example uses Office 365 for our Relying Party Trusts.
+## Vertrauenswürdige IPs für Partnerbenutzer
+Mit vertrauenswürdigen IPs können Administratoren die Multi-Factor Authentication für bestimmte IP-Adressen oder Partnerbenutzer umgehen, deren Anfragen aus dem eigenen Intranet stammen. In den folgenden Abschnitten wird beschrieben, wie Sie vertrauenswürdige IPs für die Azure Multi-Factor Authentication mit Partnerbenutzern konfigurieren und die Multi-Factor Authentication umgehen, wenn eine Anforderung aus dem Intranet eines Partnerbenutzers stammt. Hierzu wird für AD FS die Verwendung eines Passthrough-Elements oder für die Filterung einer Vorlage für einen eingehenden Anspruch mit dem Anspruchstyp „Innerhalb des Unternehmensnetzwerks“ konfiguriert. In diesem Beispiel wird Office 365 für die Vertrauensstellungen der vertrauenden Seite verwendet.
 
-### <a name="configure-the-ad-fs-claims-rules"></a>Configure the AD FS claims rules
+### Konfigurieren der AD FS-Anspruchsregeln
 
-The first thing we need to do is to configure the AD FS claims. We will be creating two claims rules, one for the Inside the Corporate Network claim type and an additional one for keeping our users signed in.
+Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Wir werden zwei Anspruchsregeln erstellen: eine für den Anspruchstyp "Innerhalb des Unternehmensnetzwerks" und eine weitere zur Aufrechterhaltung der Anmeldung von Benutzern.
 
-1. Open AD FS Management.
-2. On the left, select Relying Party Trusts.
-3. In the middle, right-click on Microsoft Office 365 Identity Platform and select **Edit Claim Rules…**
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
-4. On Issuance Transform Rules click **Add Rule.**
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
-5. On the Add Transform Claim Rule Wizard, select Pass Through or Filter an Incoming Claim from the drop down and click Next.
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
-6. In the box next to Claim rule name, give your rule a name. For example: InsideCorpNet.
-7. From the drop-down, next to Incoming claim type, select Inside Corporate Network.
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
-8. Click Finish.
-9. On Issuance Transform Rules click **Add Rule**.
-10. On the Add Transform Claim Rule Wizard, select Send Claims Using a Custom Rule from the drop down and click Next.
-11. In the box under Claim rule name: enter Keep Users Signed In.
-12. In the Custom rule box enter:
+1. Öffnen Sie die AD FS-Verwaltung.
+2. Wählen Sie auf der linken Seite die Option für Vertrauensstellungen für vertrauende Seiten.
+3. Klicken Sie in der Mitte mit der rechten Maustaste auf die Microsoft Office 365 Identity Platform, und wählen Sie **Anspruchsregeln bearbeiten**. ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
+4. Klicken Sie unter "Ausstellungstransformationsregeln" auf **Regel hinzufügen**. ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
+5. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln im Dropdownmenü die Option "Passthrough oder eingehenden Anspruch filtern", und klicken Sie auf "Weiter". ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
+6. Geben Sie der Regel im Feld neben „Anspruchsregelname“ einen Namen. Beispiel: InsideCorpNet.
+7. Wählen Sie in der Dropdownliste neben "Eingehender Anspruchstyp" die Option "Innerhalb des Unternehmensnetzwerks". ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
+8. Klicken Sie auf Fertig stellen.
+9. Klicken Sie unter "Ausstellungstransformationsregeln" auf **Regel hinzufügen**.
+10. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln in der Dropdownliste die Option „Ansprüche mit benutzerdefinierter Regel senden“, und klicken Sie auf „Weiter“.
+11. Geben Sie im Feld unter „Anspruchsregelname:“ den Text „Benutzeranmeldung aufrechterhalten“ ein.
+12. Geben Sie in das Feld für benutzerdefinierte Regeln Folgendes ein:
 
-        c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
-            => issue(claim = c);
+		c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
+			=> issue(claim = c);
 ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
-13. Click **Finish**.
-14. Click **Apply**.
-15. Click **Ok**.
-16. Close AD FS Management.
+13. Klicken Sie auf **Fertig stellen**.
+14. Klicken Sie auf **Anwenden**.
+15. Klicken Sie auf **OK**.
+16. Schließen Sie die AD FS-Verwaltung.
 
 
 
-### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Configure Azure Multi-Factor Authentication Trusted IPs with Federated Users
-Now that the claims are in place, we cane configure trusted ips.
+### Konfigurieren vertrauenswürdiger IPs der Azure Multi-Factor Authentication mit Partnerbenutzern
+Da die Ansprüche jetzt vorhanden sind, können wir vertrauenswürdige IPs konfigurieren.
 
-1. Sign-in to the Azure Management Portal.
-2. On the left, click Active Directory.
-3. Under, Directory click on the directory you wish to setup Trusted IPs on.
-4. On the Directory you have selected, click Configure.
-5. In the multi-factor authentication section, click Manage service settings.
-6. On the Service Settings page, under Trusted IPs, select **For requests from federated users originating from my intranet.**
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
-7. Click save.
-8. Once the updates have been applied, click close.
-
-
-That’s it! At this point, federated Office 365 users should only have to use MFA when a claim originates from outside the corporate intranet.
+1. Melden Sie sich am Azure-Verwaltungsportal an.
+2. Klicken Sie im linken Bereich auf "Active Directory".
+3. Klicken Sie unter „Verzeichnis“ auf das Verzeichnis, für das Sie vertrauenswürdige IPs einrichten möchten.
+4. Klicken Sie im ausgewählten Verzeichnis auf "Konfigurieren".
+5. Klicken Sie im Abschnitt "Multi-Factor Authentication" auf "Diensteinstellungen verwalten".
+6. Wählen Sie auf der Seite "Diensteinstellungen" unter "Vertrauenswürdige IPs" die Option **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**. ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
+7. Klicken Sie auf "Speichern".
+8. Sobald die Updates angewendet wurden, klicken Sie auf "Schließen".
 
 
+Fertig! An diesem Punkt sollten Office 365-Partnerbenutzer nur MFA verwenden müssen, wenn ein Anspruch von außerhalb des Unternehmensintranets stammt.
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

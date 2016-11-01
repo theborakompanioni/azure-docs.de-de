@@ -1,8 +1,8 @@
 
 
 <properties
-   pageTitle="Health monitoring overview for Azure Application Gateway | Microsoft Azure"
-   description="Learn about the monitoring capabilities in Azure Application Gateway"
+   pageTitle="Übersicht über die Systemüberwachung für Azure Application Gateway | Microsoft Azure"
+   description="Weitere Informationen zu den Überwachungsfunktionen in Azure Application Gateway"
    services="application-gateway"
    documentationCenter="na"
    authors="georgewallace"
@@ -19,62 +19,53 @@
    ms.date="08/29/2016"
    ms.author="gwallace" />
 
+# Systemüberwachung des Application Gateways – Übersicht
 
-# <a name="application-gateway-health-monitoring-overview"></a>Application Gateway health monitoring overview
+Azure Application Gateway überwacht standardmäßig die Integrität aller Ressourcen in seinem Back-End-Pool und entfernt automatisch alle als fehlerhaft geltenden Ressourcen aus dem Pool. Application Gateway überwacht die fehlerhaften Instanzen weiterhin und fügt sie dem fehlerfreien Back-End-Pool hinzu, sobald sie verfügbar sind und auf Zustandsüberprüfungen reagieren.
 
-Azure Application Gateway by default monitors the health of all resources in its back-end pool and automatically removes any resource considered unhealthy from the pool. Application Gateway continues to monitor the unhealthy instances and adds them back to the healthy back-end pool once they become available and respond to health probes.
+![Beispiel für einen Application Gateway-Test][1]
 
-![application gateway probe example][1]
+Zusätzlich zur Nutzung der standardmäßigen Überwachung der Integritätsüberprüfung können Sie die Integritätsüberprüfung auch an die Anforderungen Ihrer Anwendung anpassen. In diesem Artikel werden sowohl standardmäßige als auch benutzerdefinierte Integritätstests behandelt.
 
-In addition to using default health probe monitoring, you can also customize the health probe to suit your application's requirements. In this article, both default and custom health probes are covered.
+## Standardmäßige Integritätsüberprüfung
 
-## <a name="default-health-probe"></a>Default health probe
+Ein Anwendungsgateway konfiguriert automatisch eine standardmäßige Integritätsüberprüfung, wenn Sie keine benutzerdefinierte Überprüfungskonfiguration einrichten. Das Verhalten der Überwachung funktioniert durch das Erstellen einer HTTP-Anforderung an die für den Back-End-Pool konfigurierten IP-Adressen.
 
-An application gateway automatically configures a default health probe when you don't set up any custom probe configuration. The monitoring behavior works by making an HTTP request to the IP addresses configured for the back-end pool.
+Beispiel: Sie konfigurieren Ihr Application Gateway für die Verwendung der Back-End-Server A, B und C zum Empfang von HTTP-Netzwerkdatenverkehr an Port 80. Die standardmäßige Integritätsüberwachung testet die drei Server alle 30 Sekunden auf eine fehlerfreie HTTP-Antwort. Eine fehlerfreie HTTP-Antwort weist einen [Statuscode](https://msdn.microsoft.com/library/aa287675.aspx) zwischen 200 und 399 auf.
 
-For example: You configure your application gateway to use back-end servers A, B, and C to receive HTTP network traffic on port 80. The default health monitoring tests the three servers every 30 seconds for a healthy HTTP response. A healthy HTTP response has a [status code](https://msdn.microsoft.com/library/aa287675.aspx) between 200 and 399.
+Wenn die Standardüberprüfung für Server A fehlschlägt, entfernt das Application Gateway sie aus dem Back-End-Pool, und der Netzwerkdatenverkehr an diesen Server wird angehalten. Die Standardüberprüfung führt weiterhin alle 30 Sekunden eine Überprüfung für Server A aus. Wenn Server A erfolgreich auf eine Anforderung einer standardmäßigen Integritätsüberprüfung antwortet, wird er dem Back-End-Pool wieder als fehlerfrei hinzugefügt, und der Datenverkehr an den Server startet erneut.
 
-If the default probe check fails for server A, the application gateway removes it from its back-end pool, and network traffic stops flowing to this server. The default probe still continues to check for server A every 30 seconds. When server A responds successfully to one request from a default health probe, it is added back as healthy to the back-end pool, and traffic starts flowing to the server again.
+### Einstellungen für die standardmäßige Integritätsüberprüfung
 
-### <a name="default-health-probe-settings"></a>Default health probe settings
-
-|Probe property | Value | Description|
+|Überprüfungseigenschaft | Wert | Beschreibung|
 |---|---|---|
-| Probe URL| http://127.0.0.1:\<port\>/ | URL path |
-| Interval | 30 | Probe interval in seconds |
-| Time-out  | 30 | Probe time-out in seconds |
-| Unhealthy threshold | 3 | Probe retry count. The back-end server is marked down after the consecutive probe failure count reaches the unhealthy threshold. |
+| Überprüfungs-URL| http://127.0.0.1:\<Port>/ | URL-Pfad |
+| Intervall | 30 | Überprüfungsintervall in Sekunden |
+| Zeitüberschreitung | 30 | Zeitüberschreitung der Überprüfung in Sekunden |
+| Fehlerhafter Schwellenwert | 3 | Anzahl der Wiederholungsversuche der Überprüfung Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
 
-The default probe looks only at http://127.0.0.1:\<port\> to determine health status. If you need to configure the health probe to go to a custom URL or modify any other settings, you must use custom probes as described in the following steps.
+Der Standardtest untersucht nur http://127.0.0.1:\<port>, um den Integritätsstatus zu bestimmen. Wenn Sie die Integritätsüberprüfung für eine benutzerdefinierte URL konfigurieren oder andere Einstellungen ändern möchten, müssen Sie benutzerdefinierte Überprüfungen wie in den folgenden Schritten beschrieben verwenden.
 
-## <a name="custom-health-probe"></a>Custom health probe
+## Benutzerdefinierte Integritätsüberprüfung
 
-Custom probes allow you to have a more granular control over the health monitoring. When using custom probes, you can configure the probe interval, the URL and path to test, and how many failed responses to accept before marking the back-end pool instance as unhealthy.
+Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle über die Überwachung des Systemzustands. Bei Verwendung von benutzerdefinierten Überprüfungen können Sie das Überprüfungsintervall, die URL und den zu überprüfenden Pfad konfigurieren und festlegen, wie viele fehlerhafte Antworten akzeptiert werden, bevor die Back-End-Pool-Instanz als fehlerhaft gekennzeichnet wird.
 
-### <a name="custom-health-probe-settings"></a>Custom health probe settings
+### Einstellungen für die benutzerdefinierte Integritätsüberprüfung
 
-The following table provides definitions for the properties of a custom health probe.
-
-|Probe property| Description|
+|Überprüfungseigenschaft| Beschreibung|
 |---|---|
-| Name | Name of the probe. This name is used to refer to the probe in back-end HTTP settings. |
-| Protocol | Protocol used to send the probe. The probe will use the protocol defined in the back-end HTTP settings |
-| Host |  Host name to send the probe. Applicable only when multi-site is configured on Application Gateway, otherwise use '127.0.0.1'. This is different from VM host name. |
-| Path | Relative path of the probe. The valid path starts from '/'. |
-| Interval | Probe interval in seconds. This is the time interval between two consecutive probes.|
-| Time-out | Probe time-out in seconds. The probe is marked as failed if a valid response is not received within this time-out period. |
-| Unhealthy threshold | Probe retry count. The back-end server is marked down after the consecutive probe failure count reaches the unhealthy threshold. |
+| Name | Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
+| Protocol | Das zum Senden der Überprüfung verwendete Protokoll. HTTP und HTTPS sind gültige Protokolle. |
+| Host | Hostname zum Senden der Überprüfung |
+| Pfad | Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. Die Überprüfung wird an „<Protokoll>://<Host>:<Port><Pfad>“ gesendet. |
+| Intervall | Überprüfungsintervall in Sekunden Dies ist das Zeitintervall zwischen zwei aufeinanderfolgenden Überprüfungen.|
+| Zeitüberschreitung | Zeitüberschreitung der Überprüfung in Sekunden. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. |
+| Fehlerhafter Schwellenwert | Anzahl der Wiederholungsversuche der Überprüfung Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
 
-> [AZURE.IMPORTANT] If Application Gateway is configured for a single site, by default the Host name should be specified as '127.0.0.1', unless otherwise configured in custom probe.
-For reference a custom probe is sent to \<protocol\>://\<host\>:\<port\>\<path\>.
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
-
-After learning about Application Gateway health monitoring, you can configure a [custom health probe](application-gateway-create-probe-portal.md) in the Azure portal or a [custom health probe](application-gateway-create-probe-ps.md) using PowerShell and the Azure Resource Manager deployment model.
+Nachdem Sie sich mit der Systemüberwachung von Application Gateway vertraut gemacht haben, können Sie einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-portal.md) im Azure-Portal oder einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-ps.md) mit PowerShell und dem Azure Resource Manager-Bereitstellungsmodell konfigurieren.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

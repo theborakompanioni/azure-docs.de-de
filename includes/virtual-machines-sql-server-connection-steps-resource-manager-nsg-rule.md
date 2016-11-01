@@ -1,38 +1,35 @@
-### <a name="configure-a-network-security-group-inbound-rule-for-the-vm"></a>Configure a Network Security Group inbound rule for the VM
+### Konfigurieren einer eingehenden Netzwerksicherheitsgruppen-Regel für den virtuellen Computer
 
-If you want to be able to connect to SQL Server over the internet, you have to configure an inbound rule on the Network Security Group for the port that your SQL Server instance is listening. By default, this is TCP port 1433.
+Wenn Sie eine Verbindung mit SQL Server über das Internet herstellen möchten, müssen Sie für die Netzwerksicherheitsgruppe eine eingehende Regel für den Port konfigurieren, auf dem Ihre SQL Server-Instanz lauscht. Standardmäßig ist dies TCP-Port 1433.
 
-1. In the portal, select **Virtual machines**, and then select your SQL Server VM.
+1. Wählen Sie im Portal **Virtuelle Computer**, und wählen Sie dann die SQL Server-VM aus.
 
-3. Then select the **Nework interfaces**.
+3. Wählen Sie dann die **Netzwerkschnittstellen** aus.
 
-    ![network interface](./media/virtual-machines-sql-server-connection-steps/rm-network-interface.png)
+	![Netzwerkschnittstelle](./media/virtual-machines-sql-server-connection-steps/rm-network-interface.png)
 
-4. Then select the Network Interface for your VM.
+4. Wählen Sie die Netzwerkschnittstelle für Ihren virtuellen Computer aus.
 
-4. Click the **Network security group** link.
+4. Klicken Sie auf den Link **Netzwerksicherheitsgruppe**.
 
-    ![network interface](./media/virtual-machines-sql-server-connection-steps/rm-network-security-group.png)
+	![Netzwerkschnittstelle](./media/virtual-machines-sql-server-connection-steps/rm-network-security-group.png)
 
-6. In the properties of the Network Security Group, expand **Inbound security rules**.
+6. Erweitern Sie in den Eigenschaften der Netzwerksicherheitsgruppe die Option **Eingehende Sicherheitsregeln**.
 
-5. Click the **Add** button.
+5. Klicken Sie auf die Schaltfläche **Hinzufügen**.
 
-6. Provide a **Name** of "SQLServerPublicTraffic".
+6. Geben Sie unter **Name** den Namen „SQLServerPublicTraffic“ an.
 
-7. Change **Protocol** to **TCP**.
+7. Ändern Sie **Protokoll** in **TCP**.
 
-8. Specify a **Destination port range** of 1433 (or the port that your SQL Server Instance is listening on).
+8. Geben Sie einen **Zielportbereich** von 1433 an (oder den Port, auf dem die SQL Server-Instanz lauscht).
 
-9. Verify that **Action** is set to **Allow**. The security rule dialog should look similar to the following screenshot.
+9. Stellen Sie sicher, dass **Aktion** auf **Zulassen** festgelegt ist. Das Dialogfeld mit den Sicherheitsregeln sollte in etwa dem folgenden Screenshot entsprechen.
 
-    ![network security rule](./media/virtual-machines-sql-server-connection-steps/rm-network-security-rule.png)
+	![Netzwerksicherheitsregel](./media/virtual-machines-sql-server-connection-steps/rm-network-security-rule.png)
 
-9. Click **OK** to save the rule for your VM.
+9. Klicken Sie auf **OK**, um die Regel für den virtuellen Computer zu speichern.
 
->[AZURE.NOTE] It is possible to have a second Network Security Group associated with your subnet (this is separate from the network security group on the VM). This is not done for you by default; however, if you created a network security group on your subnet, you must open port 1433 on both the subnet's and the VM's Network Security Group. 
+>[AZURE.NOTE] Es ist möglich, dem Subnetz eine zweite Netzwerksicherheitsgruppe zuzuordnen (dies erfolgt getrennt von der Netzwerksicherheitsgruppe auf dem virtuellen Computer). Dies wird nicht standardmäßig eingerichtet. Wenn Sie eine Netzwerksicherheitsgruppe im Subnetz erstellt haben, müssen Sie Port 1433 in beiden Netzwerksicherheitsgruppen öffnen – sowohl im Subnetz als auch auf dem virtuellen Computer.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

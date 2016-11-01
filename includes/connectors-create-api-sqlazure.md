@@ -1,48 +1,46 @@
-### <a name="prerequisites"></a>Prerequisites
-- An Azure account; you can create a [free account](https://azure.microsoft.com/free)
-- An [Azure SQL Database](../articles/sql-database/sql-database-get-started.md) with its connection information, including the server name, database name, and username/password. This information is included in the SQL Database connection string:
+### Voraussetzungen
+- Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- Eine [Azure SQL-Datenbank](../articles/sql-database/sql-database-get-started.md) mit zugehörigen Verbindungsinformationen, einschließlich Servername, Datenbankname und Benutzername/Kennwort. Diese Informationen sind in der Verbindungszeichenfolge der SQL-Datenbank enthalten:
   
-    Server=tcp:*yoursqlservername*.database.windows.net,1433;Initial Catalog=*yourqldbname*;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+	Server=tcp:*IhrSQLServerName*.database.windows.net,1433;Initial Catalog=*IhrSQLDBName*;Persist Security Info=False;User ID={Ihr\_Benutzername};Password={Ihr\_Kennwort};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
-    Read more about [Azure SQL Databases](https://azure.microsoft.com/services/sql-database).
+	Erfahren Sie mehr über [Azure SQL-Datenbanken](https://azure.microsoft.com/services/sql-database).
 
-> [AZURE.NOTE] When you create an Azure SQL Database, you can also create the sample databases included with SQL. 
+> [AZURE.NOTE] Wenn Sie eine Azure SQL-Datenbank erstellen, können Sie auch die in SQL enthaltenen Beispieldatenbanken erstellen.
 
 
 
-Before using your Azure SQL Database in a logic app, connect to your SQL Database. You can do this easily within your logic app on the Azure portal.  
+Stellen Sie eine Verbindung mit der SQL-Datenbank her, bevor Sie die Azure SQL-Datenbank in einer Logik-App verwenden. Sie können dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.
 
-Connect to your Azure SQL Database using the following steps:  
+Stellen Sie die Verbindung mit Ihrer Azure SQL-Datenbank mit den folgenden Schritten her:
 
-1. Create a logic app. In the Logic Apps designer, add a trigger, and then add an action. Select **Show Microsoft managed APIs** in the drop down list, and then enter "sql" in the search box. Select one of the actions:  
+1. Erstellen Sie eine Logik-App. Fügen Sie im Designer für Logik-Apps einen Trigger hinzu, und fügen Sie dann eine Aktion hinzu. Wählen Sie in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann „SQL“ in das Suchfeld ein. Wählen Sie eine der Aktionen aus:
 
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/sql-actions.png)
+	![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/sql-actions.png)
 
-2. If you haven't previously created any connections to SQL Database, you are prompted for the connection details:  
+2. Wenn Sie zuvor noch keine Verbindungen mit der SQL-Datenbank hergestellt haben, werden Sie aufgefordert, die Details der Verbindung anzugeben:
 
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/connection-details.png) 
+	![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/connection-details.png)
 
-3. Enter the SQL Database details. Properties with an asterisk are required.
+3. Geben Sie die SQL-Datenbank-Details ein. Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
 
-    | Property | Details |
+	| Eigenschaft | Details |
 |---|---|
-| Connect via Gateway | Leave this unchecked. This is used when connecting to an on-premises SQL Server. |
-| Connection Name * | Enter any name for your connection. | 
-| SQL Server Name * | Enter the server name; which is something like *servername.database.windows.net*. The server name is displayed in the SQL Database properties in the Azure portal, and also displayed in the connection string. | 
-| SQL Database Name * | Enter the name you gave your SQL Database. This is listed in the SQL Database properties in the connection string: Initial Catalog=*yoursqldbname*. | 
-| Username * | Enter the username you created when the SQL Database was created. This is listed in the SQL Database properties in the Azure portal. | 
-| Password * | Enter the password you created when the SQL Database was created. | 
+| Connect via Gateway (Verbinden über Gateway) | Lassen Sie dieses Kontrollkästchen deaktiviert. Diese Option wird bei der Verbindungsherstellung mit einer lokalen SQL Server-Instanz verwendet. |
+| Verbindungsname* | Geben Sie einen beliebigen Namen für Ihre Verbindung ein. | 
+| SQL Server-Name* | Geben Sie den Servernamen ein. Dieser sieht in etwa wie folgt aus: *servername.database.windows.net*. Der Servername wird sowohl im Azure-Portal als auch in der Verbindungszeichenfolge in den SQL-Datenbankeigenschaften angezeigt. | 
+| SQL-Datenbankname* | Geben Sie den Namen Ihrer SQL-Datenbank ein. Dieser wird in den SQL-Datenbankeigenschaften in der Verbindungszeichenfolge aufgeführt: Initial Catalog=*IhrSQLDBName*. | 
+| Benutzername* | Geben Sie den Benutzernamen ein, den Sie beim Erstellen der SQL-Datenbank erstellt haben. Dieser wird im Azure-Portal in den SQL-Datenbankeigenschaften aufgeführt. | 
+| Kennwort* | Geben Sie das Kennwort ein, das Sie beim Erstellen der SQL-Datenbank erstellt haben. | 
 
-    These credentials are used to authorize your logic app to connect, and access your SQL data. Once complete, your connection details look similar to the following:  
+	Mit diesen Anmeldeinformationen kann Ihre Logik-App eine Verbindung herstellen und auf Ihre SQL-Daten zugreifen. Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
 
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/sample-connection.png) 
+	![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/sample-connection.png)
 
-4. Select **Create**. 
+4. Klicken Sie auf **Erstellen**.
 
-5. Notice the connection has been created. Now, proceed with the other steps in your logic app: 
+5. Beachten Sie, dass die Verbindung erstellt wurde. Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort:
 
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/table.png)
+	![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/table.png)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

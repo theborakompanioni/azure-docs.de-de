@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager template for a secret in a key vault | Microsoft Azure"
-   description="Shows the Resource Manager schema for deploying key vault secrets through a template."
+   pageTitle="Ressourcen-Manager-Vorlage für einen geheimen Schlüssel in einem Schlüsseltresor | Microsoft Azure"
+   description="Zeigt das Ressourcen-Manager-Schema für die Bereitstellung geheimer Schlüssel in einem Schlüsseltresor über eine Vorlage."
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,14 +16,13 @@
    ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
+# Vorlagenschema für einen geheimen Schlüssel in einem Schlüsseltresor
 
-# <a name="key-vault-secret-template-schema"></a>Key vault secret template schema
+Erstellt einen geheimen Schlüssel, der in einem Schlüsseltresor gespeichert wird. Dieser Ressourcentyp wird häufig als untergeordnete Ressource des [Schlüsseltresors](resource-manager-template-keyvault.md) bereitgestellt.
 
-Creates a secret that is stored in a key vault. This resource type is frequently deployed as a child resource of [key vault](resource-manager-template-keyvault.md).
+## Schemaformat
 
-## <a name="schema-format"></a>Schema format
-
-To create a key vault secret, add the following schema to your template. The secret can be defined as either a child resource of a key vault or as top-level resource. You can define it as a child resource when the key vault is deployed in the same template. You will need to define the secret as a top-level resource when the key vault is not deployed in the same template, or when you need to create multiple secrets by looping on the resource type. 
+Fügen Sie zum Erstellen eines geheimen Schlüssels im Schlüsseltresor das folgende Schema in der Vorlage hinzu. Der geheime Schlüssel kann als untergeordnete Ressource eines Schlüsseltresors oder als Ressource der obersten Ebene definiert werden. Sie können ihn als untergeordnete Ressource definieren, wenn der Schlüsseltresor in der gleichen Vorlage bereitgestellt wird. Sie müssen den geheimen Schlüssel als Ressource der obersten Ebene definieren, wenn der Schlüsseltresor nicht in der gleichen Vorlage bereitgestellt wird oder wenn Sie durch Schleifenbildung des Ressourcentyps mehrere geheime Schlüssel erstellen.
 
     {
         "type": enum,
@@ -35,29 +34,29 @@ To create a key vault secret, add the following schema to your template. The sec
         "dependsOn": [ array values ]
     }
 
-## <a name="values"></a>Values
+## Werte
 
-The following tables describe the values you need to set in the schema.
+In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
 
-| Name | Value |
+| Name | Wert |
 | ---- | ---- | 
-| type | Enum<br />Required<br />**secrets** (when deployed as a child resource of key vault) or<br /> **Microsoft.KeyVault/vaults/secrets** (when deployed as a top-level resource)<br /><br />The resource type to create. |
-| apiVersion | Enum<br />Required<br />**2015-06-01** or **2014-12-19-preview**<br /><br />The API version to use for creating the resource. | 
-| name | String<br />Required<br />A single word when deployed as a child resource of a key vault, or in the format **{key-vault-name}/{secret-name}** when deployed as a top-level resource to be added to an existing key vault.<br /><br />The name of the secret to create. |
-| properties | Object<br />Required<br />[properties object](#properties)<br /><br />An object that specifies the value of the secret to create. |
-| dependsOn | Array<br />Optional<br />A comma-separated list of a resource names or resource unique identifiers.<br /><br />The collection of resources this link depends on. If the key vault for the secret is deployed in the same template, include the name of the key vault in this element to ensure it is deployed first. |
+| type | Enum<br />Erforderlich<br />**secrets** (wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt) oder<br /> **Microsoft.KeyVault/vaults/secrets** (wenn als Ressource der obersten Ebene bereitgestellt)<br /><br />Der zu erstellende Ressourcentyp. |
+| "apiVersion": | Enum<br />Erforderlich<br />**2015-06-01** oder **2014-12-19-preview**<br /><br />Die API-Version zum Erstellen der Ressource. | 
+| name | String<br />Erforderlich<br />Ein einzelnes Wort, wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt, oder im Format **{Schlüsseltresorname}/{Name des geheimen Schlüssels}**, wenn als Ressource der obersten Ebene zum Hinzufügen zu einem vorhandenen Schlüsseltresor bereitgestellt.<br /><br />Der Name des zu erstellenden geheimen Schlüssels. |
+| Eigenschaften | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das den Wert des zu erstellenden geheimen Schlüssels angibt. |
+| dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste mit Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Sammlung von Ressourcen, von denen dieser Link abhängt. Wenn der Schlüsseltresor für den geheimen Schlüssel in der gleichen Vorlage bereitgestellt wird, fügen Sie den Namen des Schlüsseltresors in diesem Element ein, um sicherzustellen, dass der Tresor zuerst bereitgestellt wird. |
 
 <a id="properties" />
-### <a name="properties-object"></a>properties object
+### properties-Objekt
 
-| Name | Value |
+| Name | Wert |
 | ---- | ---- | 
-| value | String<br />Required<br /><br />The secret value to store in the key vault. When passing in a value for this property, use a parameter of type **securestring**.  |
+| value | String<br />Erforderlich<br /><br />Der im Schlüsseltresor zu speichernde Wert des geheimen Schlüssels. Wenn Sie einen Wert für diese Eigenschaft übergeben, verwenden Sie einen Parameter des Typs **securestring**. |
 
-    
-## <a name="examples"></a>Examples
+	
+## Beispiele
 
-The first example deploys a secret as a child resource of a key vault.
+Im ersten Beispiel wird ein geheimer Schlüssel als untergeordnete Ressource eines Schlüsseltresors bereitgestellt.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -183,7 +182,7 @@ The first example deploys a secret as a child resource of a key vault.
         }]
     }
 
-The second example deploys the secret as a top-level resource that is stored in an existing key vault.
+Im zweiten Beispiel wird der geheime Schlüssel als Ressource der obersten Ebene bereitgestellt, die in einem vorhandenen Schlüsseltresor gespeichert wird.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -223,15 +222,9 @@ The second example deploys the secret as a top-level resource that is stored in 
     }
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- For general information about key vaults, see [Get started with Azure Key Vault](./key-vault/key-vault-get-started.md).
-- For an example of referencing a key vault secret when deploying templates, see [Pass secure values during deployment](resource-manager-keyvault-parameter.md).
+- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](./key-vault/key-vault-get-started.md).
+- Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

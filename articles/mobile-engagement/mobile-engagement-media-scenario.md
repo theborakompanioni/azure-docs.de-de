@@ -1,100 +1,98 @@
 <properties 
-    pageTitle="Azure Mobile Engagement implementation for Media App"
-    description="Media app scenario to implement Azure Mobile Engagement" 
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="Azure Mobile Engagement-Implementierung für Medien-App"
+	description="Medien-App-Szenario zum Implementieren von Azure Mobile Engagement" 
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="mobile-engagement"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.workload="mobile" 
-    ms.date="08/19/2016"
-    ms.author="piyushjo"/>
+	ms.service="mobile-engagement"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.workload="mobile" 
+	ms.date="08/19/2016"
+	ms.author="piyushjo"/>
 
+#Implementieren von Mobile Engagement per Medien-App
 
-#<a name="implement-mobile-engagement-with-media-app"></a>Implement Mobile Engagement with Media App
+## Übersicht
 
-## <a name="overview"></a>Overview
+Peter ist Manager für mobile Projekte bei einem großen Medienunternehmen. Er hat vor Kurzem eine neue App eingeführt, die über sehr hohe Downloadzahlen verfügt. Er hat seine Ziele in Bezug auf die Downloadzahlen erreicht, aber der Return On Investment (ROI) pro Benutzer erfüllt seine Anforderungen nicht.
 
-John is a mobile project manager for a big media company. He recently launched a new app that has a very high download count. He has hit his goals for download but, still his Return On Investment(ROI) per user does not meet his requirements. 
+Peter hat bereits herausgefunden, warum der ROI zu niedrig ist. Benutzer beenden die Nutzung der App häufig nach nur zwei Wochen und kehren dann nie mehr zurück. Er möchte erreichen, dass die App länger genutzt wird.
 
-John has already identified why his ROI is too low. Users frequently stop using his app after only 2 weeks and most of them never come back. He wants to increase the retention of his app.
+Nach einigen anfänglichen Tests hat Peter herausgefunden, dass die Benutzer seine App eher weiterverwenden, wenn er sich mit ihnen über Pushbenachrichtigungen vernetzt. Auch Benutzer, die inaktiv waren, kehren häufig zur App zurück, wenn er entsprechende Benachrichtigungen sendet. Peter trifft die Entscheidung, in eine Art Engagement-Programm für seine App zu investieren, bei dem eine erweiterte Zielgruppenansprache mit Pushbenachrichtigungen verwendet wird.
 
-After some initial testing, he has learned when he engages his users with push notifications, they tend to continue using his app. Also users that were inactive will often return to the app depending on notifications he sends them. John decides to invest in some kind of Engagement Program for his app which uses advanced targeting with push notifications.
+Peter hat vor Kurzem die Informationen unter [Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices](mobile-engagement-getting-started-best-practices.md) gelesen und möchte die Empfehlungen des Leitfadens implementieren.
 
-John has recently read the [Azure Mobile Engagement - Getting Started Guide with Best practices](mobile-engagement-getting-started-best-practices.md) and has decided to implement the recommendations from the guide.
+##Ziele und KPIs
 
-##<a name="objectives-and-kpis"></a>Objectives and KPIs
+Es findet ein Treffen der wichtigsten Personen statt, die an der App von Peter beteiligt sind. Der Umsatz wird über Anzeigen generiert, die Benutzern beim Konsumieren der Medien angezeigt werden. Indem Peter die pro Benutzer konsumierten Inhalte erhöht, steigert er den Umsatz. Es wird ein Hauptziel vereinbart: Erhöhung des Umsatzes mit Anzeigen um 25 %. Es werden Business Key Performance Indicators (KPIs) erstellt, um dieses Ziel zu messen und voranzutreiben.
 
-Key stakeholders for John's app meet. Business is generated from ads as users consume his media. By increasing content consumed per user, John increases his revenues. All agree on one main objective: To increase sales from ads by 25%. They create Business Key Performance Indicators (KPIs) to measure and drive this objective
+* Anzahl von Anzeigen, auf die pro Benutzer geklickt wird
+* Anzahl der besuchten Artikelseiten (pro Benutzer/pro Sitzung/pro Woche/pro Monat…)
+* Bevorzugte Kategorien
 
-* Number of ads clicked per user
-* How many article pages visited (per user/ per session/ per week / per month…)
-* What are favorite categories
+Basierend auf der Besprechung mit den wichtigsten Beteiligten hat Peter seine Business-KPIs definiert. Er hält sich dabei an Teil 1 von [Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices](mobile-engagement-getting-started-best-practices.md).
 
-Based on John's meeting with key stakeholders he has defined his Business KPIs. He follows Part 1 of the [Azure Mobile Engagement - Getting Started Guide with Best practices](mobile-engagement-getting-started-best-practices.md). 
+Anschließend erstellt er die folgenden Engagement-KPIs, um sicherzustellen, dass die Ziele erreicht werden:
 
-Next, he creates the following Engagement KPIs to ensure that objectives are reached:
+* Überwachung der Nutzungsdauer für die folgenden Intervalle: täglich, wöchentlich, alle zwei Wochen und einmal im Monat.
+* Anzahl der aktiven Benutzer
+* App-Bewertung in App Stores
 
-* Monitor retention across the following intervals: daily, weekly, bi-weekly and monthly.
-* Active users counts
-* The app rating in the app stores
+Basierend auf Empfehlungen vom IT-Team wurden die folgenden technischen KPIs hinzugefügt, um die folgenden Fragen zu beantworten:
 
-Based on recommendations from the IT team, the following Technical KPIs were added to answer the following questions:
+* Wie sieht mein Benutzerpfad aus (welche Seite wird besucht, wie viel Zeit verbringen Benutzer auf dieser Seite)?
+* Anzahl der Abstürze oder Fehler pro Sitzung?
+* Welche Betriebssystemversionen nutzen meine Benutzer?
+* Was ist die durchschnittliche Bildschirmgröße meiner Benutzer?
+* Welche Internetverbindungen verwenden meine Benutzer?
 
-* What is my user path (which page is visited, how many time users spend on it)
-* Number of crashes or bugs encountered per session?
-* What OS versions are my users running?
-* What is the average size of screen for my users?
-* What kind of internet connections do my users have?
+Für jeden KPI klassifiziert er die erforderlichen Daten und zeichnet sie am richtigen Ort in seinem Playbook auf.
 
-For each KPI, he classifies the data required and he records it in the proper location of his playbook.
+## Engagement-Programm und -Integration
 
-## <a name="engagement-program-and-integration"></a>Engagement program and integration
+Nachdem Peter die Definition der KPIs abgeschlossen hat, beginnt er mit der Phase der Engagement-Strategie, indem er vier Engagement-Programme und die damit verbundenen Ziele definiert: ![][1]
 
-Now that John has finished defining his KPIs, he starts his Engagement strategy phase by defining 4 engagement programs and their objectives:     ![][1]
+Anschließend steigt Peter noch tiefer ein und gibt die Details für die Pushbenachrichtigungen der einzelnen Programme an. Pushbenachrichtigungen werden anhand von fünf Elementen definiert:
 
-Then John goes deeper by detailing push notifications for each program. Push notification are defined by five elements:
+1. Ziel: Was ist das Ziel der Benachrichtigung?
+2. Wie wird das Ziel erreicht?
+3. Zielperson: Wer erhält die Benachrichtigung?
+4. Inhalt: Welcher Text und welches Format werden für die Benachrichtigung verwendet (In-App/außerhalb der App)
+5. Zeitpunkt: Was ist der beste Zeitpunkt zum Senden der Pushbenachrichtigung?
 
-1. Objective: what is the objective of the notification
-2. How the objective will be reached
-3. Target: who will receive the notification?
-4. Content: What is the wording and the format of the notification (In App/Out of App)
-5. When: what is the best moment to send this push notification
+	![][2]
 
-    ![][2]
+Weitere Informationen finden Sie in den [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks).
 
-For more information refer to the [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks).
+Gemäß Teil 2 des Whitepapers verwendet Peter den Zielabschnitt, um festzulegen, welche Daten er erfassen muss. Er schreibt seinen Markierungsplan gemeinsam mit dem IT-Team, um die Lösung zu implementieren. Nach einer Woche mit Implementierungsarbeit und Tests der Benutzerakzeptanz kann Peter seine Programme endlich starten.
 
-According to the part 2 of the white paper John uses target section to define what data he has to collect and writes his Tag Plan jointly with IT team to implement the solution. After 1 week of implementation and user acceptance testing, John can finally launch his programs.
+##Programmergebnisse
 
-##<a name="program-results"></a>Program Results
+Vier Monate später sieht sich Peter die Leistung der Programme an. Für das Willkommensprogramm und das wöchentliche Programm wurden die Ziele erreicht. Die Anzahl der Benutzer mit nur einer Sitzung hat abgenommen, es werden mehr Funktionen der App genutzt, und die Anzahl der Verbindungen pro Woche hat sich verdoppelt.
 
-4 months later, John reviews performances of programs. The Welcome Program and the Weekly Program are meeting his goals. The number of user with only one session decreases, more features of the app are being used and the number of connections per week has doubled.
+Das **Programm zur Inaktivität** hilft Peter dabei, die Neigungen der Benutzer besser zu verstehen. Anscheinend kehren 15 % der inaktiven Benutzer zur App zurück. Die meisten von ihnen bleiben aber nicht länger als einen Monat aktiv. Peter schwebt eine potenzielle Optimierung dieser Sequenz durch zusätzliche Benachrichtigungen und eine Erweiterung der Inhaltsauswahl vor.
 
-The **Inactive Program** is helping John understand user tendencies. It appears that 15% of the inactive users come back to the app. However most of them don’t stay active more than 1 month. John foresees a potential optimization of this sequence with additional notifications and expanding his content choices.
+Das **Programm für die Ermittlung** funktioniert nicht gut. Das Cross-Selling wird gesteigert, aber nicht so stark, dass die Ziele erreicht werden. Peter findet heraus, dass er nicht über genügend Daten verfügt, um die Zielgruppenansprache relevant zu gestalten und geeignete Inhalte vorzuschlagen. Er stoppt sein Programm und konzentriert sich auf das Senden von „Editorial-Pushbenachrichtigungen“ mit Azure Mobile Engagement. Seine Journalisten verfügen bereits über eine CMS-Lösung zum Senden von Pushbenachrichtigungen und möchten sie beibehalten.
 
-The **Discover Program** doesn’t work well. It increases cross selling but not enough to reach his objectives. John identifies that he doesn’t have enough data to make relevant targeting and propose appropriate content. He stops this program and focuses on sending “editorial push notifications” with Azure Mobile Engagement. His journalists already have a CMS solution to send push notifications and they don’t want to change.
+Peter entscheidet sich für den Einsatz der Reach-API. Hierbei handelt es sich um eine HTTP-REST-API, die die Verwaltung von Reach-Kampagnen ohne Verwendung der AZME-Webschnittstelle ermöglicht. Bei diesem Ansatz kann Peter die benötigten Daten erfassen, und seine Journalisten können die CMS-Lösung weiterverwenden.
 
-John decides to use the Reach API which is an HTTP REST API that allows managing Reach campaigns without having to use AZME Web interface. With this approach John can collect the data he needs and allow his writers to keep using the CMS solution.
+Um sicherzustellen, dass dieses Feature richtig funktioniert, bittet Peter das IT-Team, besonders auf die folgenden Punkte zu achten:
 
-To ensure that feature works correctly, John asks IT team to be vigilant on the following points:
+1. **Betriebssysteme**: Da alle Betriebssysteme eigene Regeln zum Verwalten von Pushbenachrichtigungen haben, entscheidet sich Peter dafür, alle Fälle aufzulisten und zu überprüfen, ob sie von den APIs verarbeitet werden können. Beispiel: Beim Android-Pushsystem sind große Bilder zulässig, was für iOS nicht der Fall ist.
 
-1. **Operation Systems** : They all have their own rules to administrate push notifications, so John decides to list all cases and checks if the APIs handle it.
-E.g : Android push system allows big picture which is not the case with iOS.
+2. **Zeitrahmen**: Peter wünscht sich eine API, mit der der Zeitrahmen festgelegt und das Ende von Kampagnen angegeben werden kann. Er möchte verhindern, dass Benutzer durch zu viele Benachrichtigungen gestört werden.
 
-2. **Time frame**: John wants an API, which set the time frame and set an end to campaigns. He wants to preserve users from any disruptive notification bombing.
+3. **Kategorien**: Das Marketingteam bereitet die Vorlage für die einzelnen Benachrichtigungsarten vor. Peter bittet das IT-Team, in der API Kategorien festzulegen.
 
-3. **Categories**: Marketing team prepares template for each type of alerting. John asks IT team to set categories inside the API.
+Nach einigen Tests ist Peter zufrieden. Dank dieser API können die Journalisten weiterhin Pushbenachrichtigungen per CMS senden, und mit Azure Mobile Engagement werden alle Verhaltensdaten gesammelt.
 
-After some tests John is satisfied. Thanks to this API, journalists can still send push notifications with their CMS and Azure Mobile Engagement collects all behavioral data for them
-
-After these 4 first months, results reflect a good overall performance and gives confidence for John and his board, ROI per user increases per 15% and mobile sales represent 17.5 % of total sales, an increase of 7.5% in only four months.
+Nach diesen ersten vier Monaten spiegeln die Ergebnisse eine gute Gesamtleistung wider und geben Peter und seinen Chefs Sicherheit. Der ROI pro Benutzer hat sich um 15 % erhöht, und der mobile Umsatz macht 17,5 % des Gesamtumsatzes aus. Dies ist eine Steigerung von 7,5 % innerhalb von vier Monaten.
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-media-scenario/engagement-strategy.png
@@ -103,8 +101,4 @@ After these 4 first months, results reflect a good overall performance and gives
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

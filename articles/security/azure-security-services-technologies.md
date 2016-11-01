@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Services and Technologies | Microsoft Azure"
-   description="The article provides a curated list of Azure Security services and technologies."
+   pageTitle="Sicherheitsdienste und -technologien in Azure | Microsoft Azure"
+   description="Der Artikel enthält eine Aufstellung von Sicherheitsdiensten und -technologien in Azure."
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,63 +16,58 @@
    ms.date="08/09/2016"
    ms.author="yurid"/>
 
+# Sicherheitsdienste und -technologien in Azure
 
-# <a name="azure-security-services-and-technologies"></a>Azure Security Services and Technologies
-
-In our discussions with current and future Azure customers, we’re often asked “do you have a list of all the security related services and technologies that Azure has to offer?”
+In unseren Diskussionen mit bestehenden und zukünftigen Azure-Kunden werden wir häufig gefragt: „Haben Sie eine Liste aller sicherheitsbezogenen Dienste und Technologien, die Azure zu bieten hat?“
  
-We understand that when you’re evaluating your cloud service provider technical options, it’s helpful to have such a list available that you can use to dig down deeper when the time is right for you.
+Wir wissen, dass es für Sie bei der Bewertung der technischen Optionen Ihres Clouddienstanbieters hilfreich ist, auf eine solche Liste zurückgreifen zu können, die Ihnen bei Bedarf fundierte Informationen liefert.
 
-The following is our initial effort at providing a list. Over time, this list will change and grow, just as Azure does. The list is categorized, and the list of categories will also grow over time. Make sure to check this page on a regular basis to stay up-to-date on our security-related services and technologies. 
+Im Folgenden sehen Sie den Beginn unserer Bestrebungen, eine Liste zusammenzustellen. Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wachsen. Die Liste ist kategorisiert, und die Liste der Kategorien wird auch mit der Zeit wachsen. Besuchen Sie diese Seite regelmäßig, um stets über den neuesten Stand unserer Sicherheitsdienste und -technologien informiert zu sein.
 
-## <a name="azure-security---general"></a>Azure Security - General
+## Azure-Sicherheit – allgemein
 - [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/)
-- [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/)
-- [Azure Disk Encryption](azure-security-disk-encryption.md)
+- [Azure-Schlüsseltresor](https://azure.microsoft.com/documentation/services/key-vault/)
+- [Azure-Datenträgerverschlüsselung](azure-security-disk-encryption.md)
 - [Log Analytics](../log-analytics/log-analytics-overview.md)
-- [Azure Dev/Test Labs](https://azure.microsoft.com/documentation/services/devtest-lab/)
+- [Dokumentation zu Azure Dev/Test Lab](https://azure.microsoft.com/documentation/services/devtest-lab/)
 
-## <a name="azure-storage-security"></a>Azure Storage Security
+## Azure Storage-Sicherheit
 - [Azure Storage Service Encryption](../storage/storage-service-encryption.md)
-- [StorSimple Encrypted Hybrid Storage](https://azure.microsoft.com/documentation/services/storsimple/)
-- [Azure Client-Side Encryption](../storage/storage-client-side-encryption.md)
-- [Azure Storage Shared Access Signatures](../storage/storage-dotnet-shared-access-signature-part-1.md)
-- [Azure Storage Account Keys](../storage/storage-create-storage-account.md)
-- [Azure File Shares with SMB 3.0 Encryption](../storage/storage-dotnet-how-to-use-files.md)
-- [Azure Storage Analytics](https://msdn.microsoft.com/library/hh343270.aspx)
+- [Verschlüsselte Hybridspeicherung mit StorSimple](https://azure.microsoft.com/documentation/services/storsimple/)
+- [Clientseitige Verschlüsselung in Azure](../storage/storage-client-side-encryption.md)
+- [Azure Storage – Shared Access-Signaturen](../storage/storage-dotnet-shared-access-signature-part-1.md)
+- [Azure-Speicherkontenschlüssel](../storage/storage-create-storage-account.md)
+- [Azure-Dateifreigaben mit SMB 3.0-Verschlüsselung](../storage/storage-dotnet-how-to-use-files.md)
+- [Azure-Speicheranalyse](https://msdn.microsoft.com/library/hh343270.aspx)
 
-## <a name="azure-database-security"></a>Azure Database Security
-- [Azure SQL Firewall](../sql-database/sql-database-firewall-configure.md)
-- [Azure SQL Cell Level Encryption](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)
-- [Azure SQL Connection Encryption](../sql-database/sql-database-security-guidelines.md)
-- [Azure SQL Authentication](../sql-database/sql-database-security-guidelines.md)
-- [Azure SQL Always Encryption](https://msdn.microsoft.com/library/mt163865.aspx)
-- [Azure SQL Column Level Encryption](https://msdn.microsoft.com/library/ms179331.aspx)
-- [Azure SQL Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096.aspx)
-- [Azure SQL Database Auditing](../sql-database/sql-database-auditing-get-started.md)
+## Azure-Datenbanksicherheit
+- [Azure SQL – Firewall](../sql-database/sql-database-firewall-configure.md)
+- [Azure SQL – Verschlüsselung auf Zellebene](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)
+- [Azure SQL – Verbindungsverschlüsselung](../sql-database/sql-database-security-guidelines.md)
+- [Azure SQL – Authentifizierung](../sql-database/sql-database-security-guidelines.md)
+- [Azure SQL – Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
+- [Azure SQL – Verschlüsseln einer Datenspalte](https://msdn.microsoft.com/library/ms179331.aspx)
+- [Azure SQL – transparente Datenverschlüsselung](https://msdn.microsoft.com/library/dn948096.aspx)
+- [Azure SQL – Datenbanküberwachung](../sql-database/sql-database-auditing-get-started.md)
 
-## <a name="azure-identity-and-access-management"></a>Azure Identity and Access Management
-- [Azure Role Based Access Control](../active-directory/role-based-access-control-configure.md)
+## Identitäts- und Zugriffsverwaltung in Azure
+- [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
 - [Azure Active Directory](../active-directory/active-directory-whatis.md)
 - [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-- [Azure Active Directory Domain Services](https://azure.microsoft.com/documentation/services/active-directory-ds/)
+- [Azure Active Directory-Domänendienste](https://azure.microsoft.com/documentation/services/active-directory-ds/)
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
-## <a name="backup-and-disaster-recovery"></a>Backup and Disaster Recovery
+## Sicherung und Notfallwiederherstellung
 - [Azure Backup](https://azure.microsoft.com/documentation/services/backup/)
 - [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery/)
 
-## <a name="azure-networking"></a>Azure Networking
-- [Network Security Groups](../virtual-network/virtual-networks-nsg.md)
+## Azure-Netzwerke
+- [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md)
 - [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 - [Azure Application Gateway](../application-gateway/application-gateway-introduction.md)
-- [Azure Load Balancer](../load-balancer/load-balancer-overview.md)
+- [Azure-Lastenausgleich](../load-balancer/load-balancer-overview.md)
 - [Azure ExpressRoute](../expressroute/expressroute-introduction.md)
 - [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-- [Azure Application Proxy](../active-directory/active-directory-application-proxy-enable.md)
+- [Azure Anwendungsproxy](../active-directory/active-directory-application-proxy-enable.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

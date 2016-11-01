@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Overview of security in Data Lake Store | Microsoft Azure"
-   description="Understand how Azure Data Lake Store is a more secure big data store"
+   pageTitle="Übersicht über die Sicherheit in Data Lake-Speicher | Microsoft Azure"
+   description="Es wird beschrieben, warum Azure Data Lake Store ein Big-Data-Speicher mit erhöhter Sicherheit ist."
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
@@ -16,116 +16,111 @@
    ms.date="08/02/2016"
    ms.author="nitinme"/>
 
+# Sicherheit im Azure Data Lake-Speicher
 
-# <a name="security-in-azure-data-lake-store"></a>Security in Azure Data Lake Store
+Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Store ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Store beschrieben, z.B.:
 
-Many enterprises are taking advantage of big data analytics for business insights to help them make smart decisions. An organization might have a complex and regulated environment, with an increasing number of diverse users. It is vital for an enterprise to make sure that critical business data is stored more securely, with the correct level of access granted to individual users. Azure Data Lake Store is designed to help meet these security requirements. In this article, learn about the security capabilities of Data Lake Store, including:
+* Authentifizierung
+* Autorisierung
+* Netzwerkisolation
+* Datenschutz
+* Überwachung
 
-* Authentication
-* Authorization
-* Network isolation
-* Data protection
-* Auditing
+## Authentifizierung und Identitätsverwaltung
 
-## <a name="authentication-and-identity-management"></a>Authentication and identity management
+Die Authentifizierung ist der Prozess, bei dem die Identität des Benutzers überprüft wird, wenn der Benutzer mit Data Lake Store oder einem anderen Dienst interagiert, für den eine Verbindung mit Data Lake Store hergestellt wird. Für die Identitätsverwaltung und Authentifizierung nutzt Data Lake Store [Azure Active Directory](../active-directory/active-directory-whatis.md). Hierbei handelt es sich um eine umfassende Cloud-Lösung für die Identitäts- und Zugriffsverwaltung, mit der die Verwaltung von Benutzern und Gruppen vereinfacht wird.
 
-Authentication is the process by which a user's identity is verified when the user interacts with Data Lake Store or with any service that connects to Data Lake Store. For identity management and authentication, Data Lake Store uses [Azure Active Directory](../active-directory/active-directory-whatis.md), a comprehensive identity and access management cloud solution that simplifies the management of users and groups.
+Jedes Azure-Abonnement kann mit einer Instanz von Azure Active Directory verknüpft werden. Nur Benutzer- und Dienstidentitäten, die in Ihrem Azure Active Directory-Dienst definiert sind, können auf Ihr Data Lake Store-Konto zugreifen. Hierfür werden das Azure-Portal, Befehlszeilentools oder Clientanwendungen verwendet, die von Ihrer Organisation mit dem Azure Data Lake Store SDK erstellt werden. Die Nutzung von Azure Active Directory als zentrales Verfahren für die Zugriffssteuerung hat die folgenden wichtigen Vorteile:
 
-Each Azure subscription can be associated with an instance of Azure Active Directory. Only users and service identities that are defined in your Azure Active Directory service can access your Data Lake Store account, by using the Azure portal, command-line tools, or through client applications your organization builds by using the Azure Data Lake Store SDK. Key advantages of using Azure Active Directory as a centralized access control mechanism are:
+* Vereinfachte Verwaltung des Identitätslebenszyklus: Die Identität eines Benutzers oder Diensts (Dienstprinzipalidentität) kann schnell erstellt und widerrufen werden, indem das Konto im Verzeichnis einfach gelöscht oder deaktiviert wird.
 
-* Simplified identity lifecycle management. The identity of a user or a service (a service principal identity) can be quickly created and quickly revoked by simply deleting or disabling the account in the directory.
+* Multi-Factor Authentication: Per [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) wird eine zusätzliche Sicherheitsebene für die Benutzeranmeldung und für Transaktionen geschaffen.
 
-* Multi-factor authentication. [Multi-factor authentication](../multi-factor-authentication/multi-factor-authentication.md) provides an additional layer of security for user sign-ins and transactions.
+* Authentifizierung von jedem Client über ein geöffnetes Standardprotokoll, z.B. OAuth oder OpenID.
 
-* Authentication from any client through a standard open protocol, such as OAuth or OpenID.
+* Verbund mit Unternehmensverzeichnisdiensten und Cloudidentitätsanbietern.
 
-* Federation with enterprise directory services and cloud identity providers.
+## Autorisierung und Zugriffssteuerung
 
-## <a name="authorization-and-access-control"></a>Authorization and access control
+Nachdem ein Benutzer per Azure Active Directory authentifiziert wurde, damit der Benutzer auf Azure Data Lake Store zugreifen kann, werden von der Autorisierung die Zugriffsberechtigungen für Data Lake Store gesteuert. Data Lake Store trennt die Autorisierung von konto- und datenbezogenen Aktivitäten auf folgende Weise:
 
-After Azure Active Directory authenticates a user so that the user can access Azure Data Lake Store, authorization controls access permissions for Data Lake Store. Data Lake Store separates authorization for account-related and data-related activities in the following manner:
-
-* [Role-based access control](../active-directory/role-based-access-control-what-is.md) (RBAC) provided by Azure for account management
-* POSIX ACL for accessing data in the store
+* [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung
+* POSIX-ACL für den Zugriff auf die Daten im Store
 
 
-### <a name="rbac-for-account-management"></a>RBAC for account management
+### RBAC für die Kontoverwaltung
 
-Four basic roles are defined for Data Lake Store by default. The roles permit different operations on a Data Lake Store account via the Azure portal, PowerShell cmdlets, and REST APIs. The Owner and Contributor roles can perform a variety of administration functions on the account. You can assign the Reader role to users who only interact with data.
+Für Data Lake Store werden standardmäßig vier grundlegende Rollen definiert. Diese Rollen ermöglichen unterschiedliche Vorgänge für ein Data Lake Store-Konto über das Azure-Portal, PowerShell-Cmdlets und REST-APIs. Mit den Rollen „Besitzer“ und „Mitwirkender“ können verschiedene Verwaltungsfunktionen für das Konto durchgeführt werden. Sie können die Rolle „Leser“ Benutzern zuweisen, die nur mit Daten interagieren.
 
-![RBAC roles](./media/data-lake-store-security-overview/rbac-roles.png "RBAC roles")
+![RBAC-Rollen](./media/data-lake-store-security-overview/rbac-roles.png "RBAC-Rollen")
 
-Note that although roles are assigned for account management, some roles affect access to data. You need to use ACLs to control access to operations that a user can perform on the file system. The following table shows a summary of management rights and data access rights for the default roles.
+Beachten Sie Folgendes: Obwohl Rollen für die Kontoverwaltung zugewiesen werden, wirken sich einige Rollen auf den Datenzugriff aus. Sie müssen ACLs verwenden, um den Zugriff auf Vorgänge zu steuern, die ein Benutzer im Dateisystem durchführen kann. Die folgende Tabelle enthält eine Zusammenfassung der Verwaltungsrechte und Datenzugriffsrechte für die Standardrollen.
 
-| Roles                    | Management rights               | Data access rights | Explanation |
+| Roles | Verwaltungsrechte | Datenzugriffsrechte | Erklärung |
 | ------------------------ | ------------------------------- | ------------------ | ----------- |
-| No role assigned         | None                            | Governed by ACL    | The user cannot use the Azure portal or Azure PowerShell cmdlets to browse Data Lake Store. The user can use command-line tools only.
-| Owner  | All  | All  | The Owner role is a superuser. This role can manage everything and has full access to data.
-| Reader   | Read-only  | Governed by ACL    | The Reader role can view everything regarding account management, such as which user is assigned to which role. The Reader role can't make any changes.   |
-| Contributor              | All except add and remove roles | Governed by ACL    | The Contributor role can manage some aspects of an account, such as deployments and creating and managing alerts. The Contributor role cannot add or remove roles.
-| User Access Administrator | Add and remove roles            | Governed by ACL    | The User Access Administrator role can manage user access to accounts. |
+| Keine Rolle zugewiesen | Keine | Per ACL gesteuert | Der Benutzer kann nicht das Azure-Portal oder die Azure PowerShell-Cmdlets verwenden, um in Data Lake Store zu navigieren. Der Benutzer kann nur die Befehlszeilentools verwenden.
+| Besitzer | Alle | Alle | Die Rolle „Besitzer“ ist ein Superuser. Mit dieser Rolle können alle Bereiche verwaltet werden, und es besteht Vollzugriff auf die Daten.
+| Leser | Schreibgeschützt | Per ACL gesteuert | Mit der Rolle „Leser“ können alle Daten zur Kontoverwaltung angezeigt werden, z.B. welcher Benutzer welcher Rolle zugewiesen ist. Änderungen können mit der Rolle „Leser“ aber nicht vorgenommen werden. |
+| Mitwirkender | Alle Rechte mit Ausnahme de Hinzufügens und Entfernens von Rollen | Per ACL gesteuert | Mit der Rolle „Mitwirkender“ können einige Aspekte eines Kontos verwaltet werden, z.B. Bereitstellungen und die Erstellung und Verwaltung von Warnungen. Das Hinzufügen oder Entfernen von Rollen ist mit der Rolle „Mitwirkender“ nicht möglich.
+| Benutzerzugriffsadministrator | Rollen hinzufügen und entfernen | Per ACL gesteuert | Mit der Rolle „Benutzerzugriffsadministrator“ können Sie den Benutzerzugriff auf Konten verwalten. |
 
-For instructions, see [Assign users or security groups to Data Lake Store accounts](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts).
+Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen zu Data Lake Store-Konten](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts).
 
-### <a name="using-acls-for-operations-on-file-systems"></a>Using ACLs for operations on file systems
+### Verwenden von ACLs für Vorgänge in Dateisystemen
 
-Data Lake Store is a hierarchical file system like Hadoop Distributed File System (HDFS), and it supports [POSIX ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). It controls read (r), write (w), and execute (x) permissions to resources for the Owner role, for the Owners group, and for other users and groups. In the Data Lake Store Public Preview (the current release), ACLs are enabled on the root folder, on subfolders, and on individual files. The ACLs that you apply to the root folder also apply to all child folders and files.
+Data Lake Store ist ein hierarchisches Dateisystem, wie beispielsweise Hadoop Distributed File System (HDFS), und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es steuert die Berechtigungen Lesen, Schreiben und Ausführen (read (r), write (w) und execute (x)) für Ressourcen für die Rolle „Besitzer“, für die Gruppe „Besitzer“ und für andere Benutzer und Gruppen. In der öffentlichen Vorschauversion von Data Lake Store (aktuelle Version) werden ACLs im Stammordner, in Unterordnern und in einzelnen Dateien aktiviert. Die ACLs, die Sie auf den Stammordner anwenden, gelten auch für alle untergeordneten Ordner und Dateien.
 
-We recommend that you define ACLs for multiple users by using [security groups](../active-directory/active-directory-accessmanagement-manage-groups.md). Add users to a security group, and then assign the ACLs for a file or folder to that security group. This is useful when you want to provide custom access, because you are limited to adding a maximum of nine entries for custom access. For more information about how to better secure data stored in Data Lake Store by using Azure Active Directory security groups, see [Assign users or security group as ACLs to the Azure Data Lake Store file system](data-lake-store-secure-data.md#filepermissions).
+Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/active-directory-accessmanagement-manage-groups.md) ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie benutzerdefinierten Zugriff gewähren möchten, da Sie hierfür nur maximal neun Einträge hinzufügen können. Weitere Informationen dazu, wie Sie in Data Lake Store gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
-![List standard and custom access](./media/data-lake-store-security-overview/adl.acl.2.png "List standard and custom access")
+![Standardzugriff und benutzerdefinierten Zugriff auflisten](./media/data-lake-store-security-overview/adl.acl.2.png "Standardzugriff und benutzerdefinierten Zugriff auflisten")
 
-## <a name="network-isolation"></a>Network isolation
+## Netzwerkisolation
 
-Use Data Lake Store to help control access to your data store at the network level. You can establish firewalls and define an IP address range for your trusted clients. With an IP address range, only clients that have an IP address within the defined range can connect to Data Lake Store.
+Verwenden Sie Data Lake Store, damit Sie den Zugriff auf Ihren Datenspeicher auf Netzwerkebene besser steuern können. Sie können Firewalls einrichten und einen IP-Adressbereich für Ihre vertrauenswürdigen Clients definieren. Mit einem IP-Adressbereich können nur Clients, die über eine IP-Adresse innerhalb des definierten Bereichs verfügen, eine Verbindung mit Data Lake Store herstellen.
 
-![Firewall settings and IP access](./media/data-lake-store-security-overview/firewall-ip-access.png "Firewall settings and IP address")
+![Firewalleinstellungen und IP-Zugriff](./media/data-lake-store-security-overview/firewall-ip-access.png "Firewalleinstellungen und IP-Adresse")
 
-## <a name="data-protection"></a>Data protection
+## Datenschutz
 
-Organizations want to ensure that their business-critical data is secure throughout its lifecycle. For data in transit, Data Lake Store uses the industry-standard Transport Layer Security (TLS) protocol to secure data that moves between a client and Data Lake Store.
+Organisationen möchten sicherstellen, dass ihre unternehmenskritischen Daten über den gesamten Lebenszyklus hinweg geschützt sind. Für Daten im Übertragungszustand verwendet Data Lake Store das branchenübliche TLS-Protokoll (Transport Layer Security), um Daten zu schützen, die zwischen einem Client und Data Lake Store verschoben werden.
 
-Data protection for data at rest will be available in future releases.
+Zukünftige Versionen werden auch über den Schutz von ruhenden Daten verfügen.
 
-## <a name="auditing-and-diagnostic-logs"></a>Auditing and diagnostic logs
+## Überwachungs- und Diagnoseprotokolle
 
-You can use auditing or diagnostic logs, depending on whether you are looking for logs for management-related activities or data-related activities.
+Sie können Überwachungs- oder Diagnoseprotokolle verwenden. Dies richtet sich jeweils danach, ob Sie Protokolle für verwaltungsbezogene Aktivitäten oder datenbezogene Aktivitäten benötigen.
 
-*  Management-related activities use Azure Resource Manager APIs and are surfaced in the Azure portal via audit logs.
-*  Data-related activities use WebHDFS REST APIs and are surfaced in the Azure portal via diagnostic logs.
+*  Für verwaltungsbezogene Aktivitäten werden Azure Resource Manager-APIs verwendet. Sie tauchen im Azure-Portal in Form von Überwachungsprotokollen auf.
+*  Für datenbezogene Aktivitäten werden die WebHDFS-REST-APIs verwendet. Sie tauchen im Azure-Portal in Form von Diagnoseprotokollen auf.
 
-### <a name="auditing-logs"></a>Auditing logs
+### Überwachungsprotokolle
 
-To comply with regulations, an organization might require adequate audit trails if it needs to dig into specific incidents. Data Lake Store has built-in monitoring and auditing, and it logs all account management activities.
+Zur Einhaltung von Vorschriften benötigt eine Organisation unter Umständen geeignete Überwachungspfade, falls bestimmte Vorfälle genauer untersucht werden müssen. Data Lake Store verfügt über integrierte Überwachungsfunktionen, und alle Aktivitäten der Kontoverwaltung werden protokolliert.
 
-For account management audit trails, view and choose the columns that you want to log. You also can export audit logs to Azure Storage.
+Zeigen Sie für Überwachungspfade der Kontoverwaltung die Spalten an, die Sie protokollieren möchten, und wählen Sie sie aus. Sie können die Überwachungsprotokolle auch in Azure Storage exportieren.
 
-![Audit logs](./media/data-lake-store-security-overview/audit-logs.png "Audit logs")
+![Überwachungsprotokolle](./media/data-lake-store-security-overview/audit-logs.png "Überwachungsprotokolle")
 
-### <a name="diagnostic-logs"></a>Diagnostic logs
+### Diagnoseprotokolle
 
-You can set data access audit trails in the Azure portal (in Diagnostic Settings) and create an Azure Blob storage account where the logs are stored.
+Sie können Datenzugriff-Überwachungspfade im Azure-Portal (in den Diagnoseeinstellungen) festlegen und ein Azure-Blobspeicherkonto erstellen, unter dem die Protokolle gespeichert werden.
 
-![Diagnostic logs](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnostic logs")
+![Diagnoseprotokolle](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnoseprotokolle")
 
-After you configure diagnostic settings, you can view the logs on the **Diagnostic Logs** tab.
+Nachdem Sie die Diagnoseeinstellungen konfiguriert haben, können Sie die Protokolle auf der Registerkarte **Diagnoseprotokolle** anzeigen.
 
-For more information on working with diagnostic logs with Azure Data Lake Store, see [Access diagnostic logs for Data Lake Store](data-lake-store-diagnostic-logs.md).
+Weitere Informationen zum Arbeiten mit Diagnoseprotokollen in Azure Data Lake Store finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md).
 
-## <a name="summary"></a>Summary
+## Zusammenfassung
 
-Enterprise customers demand a data analytics cloud platform that is secure and easy to use. Azure Data Lake Store is designed to help address these requirements through identity management and authentication via Azure Active Directory integration, ACL-based authorization, network isolation, data encryption in transit and at rest (coming in the future), and auditing.
+Unternehmenskunden wünschen sich eine Cloudplattform für die Datenanalyse, die sicher und einfach zu verwenden ist. Azure Data Lake Store wurde für die bessere Erfüllung dieser Anforderungen per Identitätsverwaltung und Authentifizierung mithilfe der Azure Active Directory-Integration, ACL-basierter Autorisierung, Netzwerkisolation, Verschlüsselung von Daten während der Übertragung und im ruhenden Zustand (in zukünftigen Versionen verfügbar) sowie Überwachung konzipiert.
 
-If you want to see new features in Data Lake Store, send us your feedback in the [Data Lake Store UserVoice forum](https://feedback.azure.com/forums/327234-data-lake).
+Wenn Sie neue Features für Data Lake Store wünschen, können Sie uns Ihr Feedback im [UserVoice-Forum zu Data Lake Store](https://feedback.azure.com/forums/327234-data-lake) senden.
 
-## <a name="see-also"></a>See also
+## Siehe auch
 
-- [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-- [Get started with Data Lake Store](data-lake-store-get-started-portal.md)
-- [Secure data in Data Lake Store](data-lake-store-secure-data.md)
+- [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
+- [Erste Schritte mit Data Lake Store](data-lake-store-get-started-portal.md)
+- [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

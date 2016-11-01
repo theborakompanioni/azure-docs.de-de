@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Install .NET on a Cloud Service Role | Microsoft Azure"
-   description="This article describes how to manually install .NET framework on Cloud Service Web and Worker Roles"
+   pageTitle="Installieren von .NET in einer Clouddienstrolle | Microsoft Azure"
+   description="Dieser Artikel beschreibt die manuelle Installation eines .NET Frameworks in Clouddienstweb- und Workerrollen."
    services="cloud-services"
    documentationCenter=".net"
    authors="thraka"
@@ -16,38 +16,37 @@
    ms.date="08/10/2016"
    ms.author="adegeo"/>
 
+# Installieren von .NET in einer Clouddienstrolle 
 
-# <a name="install-.net-on-a-cloud-service-role"></a>Install .NET on a Cloud Service Role 
+Dieser Artikel beschreibt die Installation eines .NET Frameworks auf Clouddienst-Web- und Workerrollen. Über diese Schritte können Sie .NET 4.6.1 für die Azure-Gastbetriebssystemfamilie 4 installieren. Neueste Informationen zu Gast-BS-Versionen finden Sie unter [Azure Gast-BS-Versionen und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).
 
-This article describes how to install .NET framework on Cloud Service Web and Worker Roles. You can use these steps to install .NET 4.6.1 on the Azure Guest OS Family 4. For the latest information on Guest OS releases see [Azure Guest OS Releases and SDK Compatibility Matrix](cloud-services-guestos-update-matrix.md).
+Die Installation von .NET auf ihren Web- und Workerrollen schließt die Erfassung des .NET Installationspakets als Teil Ihres Cloudprojekts und außerdem das Starten des Installationsprogramms als Teil der Startaufgaben der Rolle ein.
 
-The  process of installing .NET on your web and worker roles involves including the .NET installer package as part of your Cloud Project and launching the installer as part of the role's startup tasks.  
+## Das Installationsprogramm für .NET zu Ihrem Projekt hinzufügen
+- Laden Sie das Webinstallationsprogramm für das .NET Framework herunter, das Sie installieren möchten
+	- [Webinstallationsprogramm für .NET 4.6.1](http://go.microsoft.com/fwlink/?LinkId=671729)
+- Für eine Webrolle
+  1. Klicken Sie im **Projektmappen-Explorer** unter **Rollen** im Clouddienstprojekt mit der rechten Maustaste auf Ihre Rolle, und wählen Sie **Hinzufügen > Neuer Ordner** aus. Erstellen Sie einen Ordner mit dem Namen *bin*.
+  2. Klicken Sie mit der rechten Maustaste auf den Ordner **bin**, und wählen Sie **Hinzufügen > Vorhandenes Element** aus. Wählen Sie das Installationsprogramm für .NET aus und fügen Sie es dem Ordner "Bin" hinzu.
+- Für eine Workerrolle
+  1. Klicken Sie mit der rechten Maustaste auf Ihre Rolle, und wählen Sie **Hinzufügen > Vorhandenes Element** aus. Wählen Sie das Installationsprogramm für .NET aus und fügen Sie zur Rolle hinzu.
 
-## <a name="add-the-.net-installer-to-your-project"></a>Add the .NET installer to your project
-- Download the the web installer for the .NET framework you want to install
-    - [.NET 4.6.1 Web Installer](http://go.microsoft.com/fwlink/?LinkId=671729)
-- For a Web Role
-  1. In **Solution Explorer**, under In **Roles** in the cloud service project right click on your role and select **Add>New Folder**. Create a folder named *bin*
-  2. Right click on the **bin** folder and select **Add>Existing Item**. Select the .NET installer and add it to the bin folder.
-- For a Worker Role
-  1. Right click on your role and select **Add>Existing Item**. Select the .NET installer and add it to the role. 
+Dateien, die auf diese Weise dem Inhaltsordner "Rolle" hinzugefügt werden, werden automatisch dem Clouddienstpaket hinzugefügt und an einem einheitlichen Ort auf dem virtuellen Computer bereitgestellt. Wiederholen Sie diesen Vorgang für alle Web- und Workerrollen in Ihrem Clouddienst, sodass alle Rollen über eine Kopie des Installationsprogramms verfügen.
 
-Files added this way to the Role Content Folder will automatically be added to the cloud service package and deployed to a consistent location on the virtual machine. Repeat this process for all web and worker roles in your Cloud Service so all roles have a copy of the installer.
+> [AZURE.NOTE] Installieren Sie .NET 4.6.1 für Ihre Clouddienstrolle, selbst wenn Ihre Anwendung .NET 4.6 verwendet. Das Azure-Gastbetriebssystem enthält die Updates [3098779](https://support.microsoft.com/kb/3098779) und [3097997](https://support.microsoft.com/kb/3097997). Die Installation von .NET 4.6 zusätzlich zu diesen Updates kann zu Problemen bei der Ausführung Ihrer .NET-Anwendungen führen, weshalb Sie direkt .NET 4.6.1 anstelle von .NET 4.6 installieren sollten. Weitere Informationen finden Sie unter [KB 3118750](https://support.microsoft.com/kb/3118750).
 
-> [AZURE.NOTE] You should install .NET 4.6.1 on your Cloud Service role even if your application targets .NET 4.6. The Azure Guest OS includes updates [3098779](https://support.microsoft.com/kb/3098779) and [3097997](https://support.microsoft.com/kb/3097997). Installing .NET 4.6 on top of these updates may cause issues when running your .NET applications, so you should directly install .NET 4.6.1 instead of .NET 4.6. For more information, see [KB 3118750](https://support.microsoft.com/kb/3118750).
+![Inhalte der Rolle mit Installer-Dateien][1]
 
-![Role Contents with installer files][1]
+## Definieren von Startaufgaben für Ihre Rollen
+Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Die Installation von .NET Framework als Teil der Startaufgabe stellt sicher, dass das Framework installiert ist, bevor Ihr Anwendungscode ausgeführt wird. Weitere Informationen zu Startaufgaben finden Sie unter: [Startaufgaben in Azure ausführen](cloud-services-startup-tasks.md).
 
-## <a name="define-startup-tasks-for-your-roles"></a>Define startup tasks for your roles
-Startup tasks allow you to perform operations before a role starts. Installing the .NET Framework as part of the startup task will ensure that the framework is installed before any of your application code is run. For more information on startup tasks see: [Run Startup Tasks in Azure](cloud-services-startup-tasks.md). 
-
-1. Add the following to the *ServiceDefinition.csdef* file under the **WebRole** or **WorkerRole** node for all roles:
-    
-    ```xml
-    <LocalResources>
+1. Fügen Sie zur Datei *ServiceDefinition.csdef* unter den Knoten **Webrolle** oder **Workerrolle** für alle Rollen Folgendes hinzu:
+	
+	```xml
+	<LocalResources>
       <LocalStorage name="NETFXInstall" sizeInMB="1024" cleanOnRoleRecycle="false" />
     </LocalResources>    
-    <Startup>
+	<Startup>
       <Task commandLine="install.cmd" executionContext="elevated" taskType="simple">
         <Environment>
           <Variable name="PathToNETFXInstall">
@@ -59,110 +58,110 @@ Startup tasks allow you to perform operations before a role starts. Installing t
         </Environment>
       </Task>
     </Startup>
-    ```
+	```
 
-    The above configuration will run the console command *install.cmd* with administrator privileges so it can install the .NET framework. The configuration also creates a LocalStorage with the name *NETFXInstall*. The startup script will set the temp folder to use this local storage resource so that the .NET framework installer will be downloaded and installed from this resource. It is important to set the size of this resource to at least 1024MB to ensure the framework will install correctly. For more information about startup tasks see: [Common Cloud Service startup tasks](cloud-services-startup-tasks-common.md) 
+	Die oben genannte Konfiguration führt den Konsolenbefehl *install.cmd* mit Administratorrechten aus, damit dieser das .NET Framework installieren kann. Über die Konfiguration wird auch ein LocalStorage mit dem Namen *NETFXInstall* erstellt. Das Startskript stellt das temporäre Verzeichnis so ein, dass diese lokale Speicherressource genutzt wird, damit das Installationsprogramm für .NET-Framework von dieser Ressource heruntergeladen und installiert wird. Es ist wichtig, die Größe dieser Ressource auf mindestens 1.024 MB einzustellen, damit das Framework ordnungsgemäß installiert werden kann. Weitere Informationen zu Startaufgaben finden Sie unter [Allgemeine Startaufgaben für Clouddienste](cloud-services-startup-tasks-common.md).
 
-2. Create a file **install.cmd** and add it to all roles by right click on the role and selecting **Add>Existing Item...**. So all roles should now have the .NET installer file as well as the install.cmd file.
-    
-    ![Role Contents with all files][2]
+2. Erstellen Sie die Datei **install.cmd** und fügen Sie sie allen Rollen hinzu, indem Sie einen Rechtsklick auf die Rolle machen und **Hinzufügen > Vorhandenes Element...** auswählen. Nun sollten alle Rollen über die .NET Installerdateien sowie die Datei install.cmd verfügen.
+	
+	![Inhalte der Rolle mit allen Dateien][2]
 
-    > [AZURE.NOTE] Use a simple text editor like notepad to create this file. If you use Visual Studio to create a text file and then rename it to '.cmd' the file may still contain a UTF-8 Byte Order Mark and running the first line of the script will result in an error. If you were to use Visual Studio to create the file leave add a REM (Remark) to the first line of the file so that it is ignored when run. 
+	> [AZURE.NOTE] Verwenden Sie einen einfachen Texteditor wie Notepad, um diese Datei zu erstellen. Wenn Sie Visual Studio verwenden, um eine Textdatei erstellen und diese dann in ".cmd" umbenennen, enthält die Datei möglicherweise weiterhin eine UTF-8-Bytereihenfolge-Markierung und das Ausführen der ersten Zeile des Skripts führt zu einem Fehler. Verwenden Sie Visual Studio, um die Datei zu erstellen, fügen Sie eine REM (Anmerkung) zur ersten Zeile der Datei hinzu, damit diese bei der Ausführung ignoriert wird.
 
-3. Add the following script to the **install.cmd** file:
+3. Fügen Sie das folgende Skript aus der **install.cmd**-Datei hinzu:
 
-    ```
-    REM Set the value of netfx to install appropriate .NET Framework. 
-    REM ***** To install .NET 4.5.2 set the variable netfx to "NDP452" *****
-    REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
-    REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
-    REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
-    set netfx="NDP461"
-    
-    REM ***** Set script start timestamp *****
-    set timehour=%time:~0,2%
-    set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%
-    set "log=install.cmd started %timestamp%."
-    
-    REM ***** Exit script if running in Emulator *****
-    if %ComputeEmulatorRunning%=="true" goto exit
-    
-    REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
-    set TMP=%PathToNETFXInstall%
-    set TEMP=%PathToNETFXInstall%
-    
-    REM ***** Setup .NET filenames and registry keys *****
-    if %netfx%=="NDP462" goto NDP462
-    if %netfx%=="NDP461" goto NDP461
-    if %netfx%=="NDP46" goto NDP46
-        set "netfxinstallfile=NDP452-KB2901954-Web.exe"
-        set netfxregkey="0x5cbf5"
-        goto logtimestamp
-    
-    :NDP46
-    set "netfxinstallfile=NDP46-KB3045560-Web.exe"
-    set netfxregkey="0x6004f"
-    goto logtimestamp
-    
-    :NDP461
-    set "netfxinstallfile=NDP461-KB3102438-Web.exe"
-    set netfxregkey="0x6040e"
-    goto logtimestamp
-    
-    :NDP462
-    set "netfxinstallfile=NDP462-KB3151802-Web.exe"
-    set netfxregkey="0x60632"
-    
-    :logtimestamp
-    REM ***** Setup LogFile with timestamp *****
-    md "%PathToNETFXInstall%\log"
-    set startuptasklog="%PathToNETFXInstall%log\startuptasklog-%timestamp%.txt"
-    set netfxinstallerlog="%PathToNETFXInstall%log\NetFXInstallerLog-%timestamp%"
-    echo %log% >> %startuptasklog%
-    echo Logfile generated at: %startuptasklog% >> %startuptasklog%
-    echo TMP set to: %TMP% >> %startuptasklog%
-    echo TEMP set to: %TEMP% >> %startuptasklog%
-    
-    REM ***** Check if .NET is installed *****
-    echo Checking if .NET (%netfx%) is installed >> %startuptasklog%
-    set /A netfxregkeydecimal=%netfxregkey%
-    set foundkey=0
-    FOR /F "usebackq skip=2 tokens=1,2*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Release 2^>nul`) do @set /A foundkey=%%C
-    echo Minimum required key: %netfxregkeydecimal% -- found key: %foundkey% >> %startuptasklog%
-    if %foundkey% GEQ %netfxregkeydecimal% goto installed
-    
-    REM ***** Installing .NET *****
-    echo Installing .NET with commandline: start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog%  /chainingpackage "CloudService Startup Task" >> %startuptasklog%
-    start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog% /chainingpackage "CloudService Startup Task" >> %startuptasklog% 2>>&1
-    if %ERRORLEVEL%== 0 goto installed
-        echo .NET installer exited with code %ERRORLEVEL% >> %startuptasklog%   
-        if %ERRORLEVEL%== 3010 goto restart
-        if %ERRORLEVEL%== 1641 goto restart
-        echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
-    
-    :restart
-    echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
-    EXIT /B %ERRORLEVEL%
-    
-    :installed
-    echo .NET (%netfx%) is installed >> %startuptasklog%
-    
-    :end
-    echo install.cmd completed: %date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2% >> %startuptasklog%
-    
-    :exit
-    EXIT /B 0
-    ```
-        
-    The install script checks whether the specified .NET framework version is already installed on the machine by querying the registry. If the .NET version is not installed then the .Net Web Installer is launched. To help troubleshoot with any issues the script will log all activity to a file named *startuptasklog-(currentdatetime).txt* stored in *InstallLogs* local storage.
+	```
+	REM Set the value of netfx to install appropriate .NET Framework. 
+	REM ***** To install .NET 4.5.2 set the variable netfx to "NDP452" *****
+	REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
+	REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
+	REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
+	set netfx="NDP462"
+	
+	REM ***** Set script start timestamp *****
+	set timehour=%time:~0,2%
+	set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%
+	set "log=install.cmd started %timestamp%."
+	
+	REM ***** Exit script if running in Emulator *****
+	if %ComputeEmulatorRunning%=="true" goto exit
+	
+	REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
+	set TMP=%PathToNETFXInstall%
+	set TEMP=%PathToNETFXInstall%
+	
+	REM ***** Setup .NET filenames and registry keys *****
+	if %netfx%=="NDP462" goto NDP462
+	if %netfx%=="NDP461" goto NDP461
+	if %netfx%=="NDP46" goto NDP46
+	    set "netfxinstallfile=NDP452-KB2901954-Web.exe"
+	    set netfxregkey="0x5cbf5"
+	    goto logtimestamp
+	
+	:NDP46
+	set "netfxinstallfile=NDP46-KB3045560-Web.exe"
+	set netfxregkey="0x6004f"
+	goto logtimestamp
+	
+	:NDP461
+	set "netfxinstallfile=NDP461-KB3102438-Web.exe"
+	set netfxregkey="0x6040e"
+	goto logtimestamp
+	
+	:NDP462
+	set "netfxinstallfile=NDP462-KB3151802-Web.exe"
+	set netfxregkey="0x60632"
+	
+	:logtimestamp
+	REM ***** Setup LogFile with timestamp *****
+	md "%PathToNETFXInstall%\log"
+	set startuptasklog="%PathToNETFXInstall%log\startuptasklog-%timestamp%.txt"
+	set netfxinstallerlog="%PathToNETFXInstall%log\NetFXInstallerLog-%timestamp%"
+	echo %log% >> %startuptasklog%
+	echo Logfile generated at: %startuptasklog% >> %startuptasklog%
+	echo TMP set to: %TMP% >> %startuptasklog%
+	echo TEMP set to: %TEMP% >> %startuptasklog%
+	
+	REM ***** Check if .NET is installed *****
+	echo Checking if .NET (%netfx%) is installed >> %startuptasklog%
+	set /A netfxregkeydecimal=%netfxregkey%
+	set foundkey=0
+	FOR /F "usebackq skip=2 tokens=1,2*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Release 2^>nul`) do @set /A foundkey=%%C
+	echo Minimum required key: %netfxregkeydecimal% -- found key: %foundkey% >> %startuptasklog%
+	if %foundkey% GEQ %netfxregkeydecimal% goto installed
+	
+	REM ***** Installing .NET *****
+	echo Installing .NET with commandline: start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog%  /chainingpackage "CloudService Startup Task" >> %startuptasklog%
+	start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog% /chainingpackage "CloudService Startup Task" >> %startuptasklog% 2>>&1
+	if %ERRORLEVEL%== 0 goto installed
+		echo .NET installer exited with code %ERRORLEVEL% >> %startuptasklog%	
+		if %ERRORLEVEL%== 3010 goto restart
+		if %ERRORLEVEL%== 1641 goto restart
+		echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
+	
+	:restart
+	echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
+	EXIT /B %ERRORLEVEL%
+	
+	:installed
+	echo .NET (%netfx%) is installed >> %startuptasklog%
+	
+	:end
+	echo install.cmd completed: %date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2% >> %startuptasklog%
+	
+	:exit
+	EXIT /B 0
+	```
+		
+	Das Installationsskript überprüft, ob die angegebene .NET-Framework-Version bereits auf dem Computer installiert ist, indem die Registrierungsdatenbank abgefragt wird. Wenn die .NET-Version nicht installiert ist, wird das .NET-Webinstallationsprogramm gestartet. Zur Unterstützung bei der Problembehandlung protokolliert das Skript alle Aktivitäten in einer Datei mit dem Namen *startuptasklog-(currentdatetime).txt*, die unter *InstallLogs* im lokalen Speicher abgelegt ist.
 
-    > [AZURE.NOTE] The script still shows you how to install .NET 4.5.2 or .NET 4.6 for continuity. There is no need to install .NET 4.5.2 manually as it is already available on Azure Guest OS. Instead of installing .NET 4.6 you should directly install .NET 4.6.1 due to [KB 3118750](https://support.microsoft.com/kb/3118750).
+	> [AZURE.NOTE] Das Skript zeigt aus Gründen der Kontinuität immer noch die Installation von .NET 4.5.2 oder .NET 4.6. Es ist nicht erforderlich, .NET 4.5.2 manuell zu installieren, da es bereits für das Azure-Gastbetriebssystem verfügbar ist. Anstatt .NET 4.6 zu installieren, sollten Sie gemäß [KB 3118750](https://support.microsoft.com/kb/3118750) .NET 4.6.1 installieren.
       
 
-## <a name="configure-diagnostics-to-transfer-the-startup-task-logs-to-blob-storage"></a>Configure diagnostics to transfer the startup task logs to blob storage 
-To simplify troubleshooting any install issues you can configure Azure Diagnostics to transfer any log files generated by the startup script or the .NET installer to blob storage. With this approach you can view the logs by simply downloading the log files from blob storage rather than having to remote desktop into the role.
+## Konfigurieren der Diagnose zur Übertragung der Startaufgabenprotokolle in Blobspeicher 
+Zur Vereinfachung der Problembehandlung können Sie die Azure-Diagnose so konfigurieren, dass alle Protokolldateien, die durch das Startskript oder Installationsprogramm für .NET erstellt wurden, in Blobspeicher übertragen werden. Bei diesem Ansatz können Sie die Protokolle anzeigen, indem Sie einfach die Protokolldateien aus dem Blobspeicher herunterladen, anstatt sich per Remotedesktop mit der Rolle anzumelden.
 
-To configure diagnostics open the *diagnostics.wadcfgx* and add the following under the **Directories** node: 
+Öffnen Sie zur Konfiguration der Diagnose *diagnostics.wadcfgx* und fügen Sie Folgendes unter dem Knoten **Verzeichnisse** hinzu:
 
 ```xml 
 <DataSources>
@@ -172,20 +171,20 @@ To configure diagnostics open the *diagnostics.wadcfgx* and add the following un
 </DataSources>
 ```
 
-This will configure azure diagnostics to transfer all files in the *log* directory under the *NETFXInstall* resource to the diagnostics storage account in the *netfx-install* blob container.
+Dadurch wird Azure-Diagnose zur Übertragung aller Dateien im Verzeichnis *log* unter der Ressource *NETFXInstall* in das Diagnose-Speicherkonto des Blobcontainers *netfx-install* konfiguriert.
 
-## <a name="deploying-your-service"></a>Deploying your service 
-When you deploy your service the startup tasks will run and install the .NET framework if it is not already installed. Your roles will be in the busy state while the framework is installing and may even restart if the framework install requires it. 
+## Ihren Dienst bereitstellen 
+Wenn Sie Ihren Dienst bereitstellen, wird die Startaufgabe ausgeführt und das .NET Framework installiert, sofern es nicht bereits installiert ist. Ihre Rollen befinden sich im Status "Beschäftigt", während das Framework installiert wird und werden möglicherweise sogar neu gestartet, wenn die Framework-Installation dies erforderlich macht.
 
-## <a name="additional-resources"></a>Additional Resources
+## Zusätzliche Ressourcen
 
-- [Installing the .NET Framework][]
-- [How to: Determine Which .NET Framework Versions Are Installed][]
-- [Troubleshooting .NET Framework Installations][]
+- [Installation des .NET Frameworks][]
+- [Gewusst wie: Feststellen, welche Versionen von .NET Framework installiert sind][]
+- [Problembehandlung bei .NET Framework-Installationen][]
 
-[How to: Determine Which .NET Framework Versions Are Installed]: https://msdn.microsoft.com/library/hh925568.aspx
-[Installing the .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
-[Troubleshooting .NET Framework Installations]: https://msdn.microsoft.com/library/hh925569.aspx
+[Gewusst wie: Feststellen, welche Versionen von .NET Framework installiert sind]: https://msdn.microsoft.com/library/hh925568.aspx
+[Installation des .NET Frameworks]: https://msdn.microsoft.com/library/5a4x27ek.aspx
+[Problembehandlung bei .NET Framework-Installationen]: https://msdn.microsoft.com/library/hh925569.aspx
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
@@ -193,8 +192,4 @@ When you deploy your service the startup tasks will run and install the .NET fra
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,11 +1,9 @@
-| Mobile & Native Apps | Web Apps & Web APIs | Integrate Directly with Protocols |
+| Mobile und systemeigene Apps | Web-Apps und Web-APIs | Direktes Integrieren mit Protokollen |
 | ----------------------- | ------------------------------- | --------------------- |
-| [Add Sign Up & Sign In to an iOS App](active-directory-b2c-devquickstarts-ios.md) | [Add Sign Up & Sign In to a .NET MVC App](active-directory-b2c-devquickstarts-web-dotnet.md) | [Register an Application](active-directory-b2c-app-registration.md) |
-| [Add Sign Up & Sign In to a Windows Desktop App](active-directory-b2c-devquickstarts-native-dotnet.md) | [Use a Sign Up/Sign In Policy in a .NET MVC App](active-directory-b2c-devquickstarts-web-dotnet-susi.md) | [Mobile Apps with OAuth 2.0](active-directory-b2c-reference-oauth-code.md) |
-|  | [Secure a .NET Web API](active-directory-b2c-devquickstarts-api-dotnet.md) | [Web Apps with OpenID Connect](active-directory-b2c-reference-oidc.md) |
-|  | [Call a Web API from a .NET Web App](active-directory-b2c-devquickstarts-web-api-dotnet.md) |  |
-| | [Add Sign Up & Sign In to a ASP.NET Core app](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) | |
+| [Hinzufügen der Registrierung und Anmeldung zu einer iOS-App](active-directory-b2c-devquickstarts-ios.md) | [Hinzufügen der Registrierung und Anmeldung zu einer .NET-MVC-App](active-directory-b2c-devquickstarts-web-dotnet.md) | [Registrieren einer Anwendung](active-directory-b2c-app-registration.md) |
+| [Hinzufügen der Registrierung und Anmeldung zu einer Windows-Desktop-App](active-directory-b2c-devquickstarts-native-dotnet.md) | [Azure AD B2C-Vorschau: Registrierung und Anmeldung in einer ASP.NET-Web-App](active-directory-b2c-devquickstarts-web-dotnet-susi.md) | [Mobile Apps mit OAuth 2.0](active-directory-b2c-reference-oauth-code.md) |
+| | [Schützen einer .NET-Web-API](active-directory-b2c-devquickstarts-api-dotnet.md) | [Web-Apps mit OpenID Connect](active-directory-b2c-reference-oidc.md) |
+| | [Aufrufen einer Web-API aus einer .NET-Web-App](active-directory-b2c-devquickstarts-web-api-dotnet.md) | |
+| | [Hinzufügen der Registrierung und Anmeldung zu einer ASP.NET Core-App](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) | |
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

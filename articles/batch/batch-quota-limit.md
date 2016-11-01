@@ -1,105 +1,104 @@
 <properties
-    pageTitle="Batch service quotas and limits | Microsoft Azure"
-    description="Learn about default Azure Batch quotas, limits, and constraints, and how to request quota increases"
-    services="batch"
-    documentationCenter=""
-    authors="mmacy"
-    manager="timlt"
-    editor=""/>
+	pageTitle="Batch-Dienst – Kontingente und Limits | Microsoft Azure"
+	description="Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen."
+	services="batch"
+	documentationCenter=""
+	authors="mmacy"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="batch"
-    ms.workload="big-compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/10/2016"
-    ms.author="marsma"/>
+	ms.service="batch"
+	ms.workload="big-compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/10/2016"
+	ms.author="marsma"/>
 
+# Kontingente und Limits für den Azure Batch-Dienst
 
-# <a name="quotas-and-limits-for-the-azure-batch-service"></a>Quotas and limits for the Azure Batch service
+Ebenso wie bei anderen Azure-Diensten gelten bei bestimmten Ressourcen in Verbindung mit dem Batch-Dienst Limits. Viele dieser Limits sind Standardkontingente, die von Azure auf Abonnement- oder Kontoebene angewendet werden. In diesem Artikel werden diese Standardwerte erläutert, und Sie erfahren, wie Sie Kontingenterhöhungen anfordern können.
 
-As with other Azure services, there are limits on certain resources associated with the Batch service. Many of these limits are default quotas applied by Azure at the subscription or account level. This article discusses those defaults, and how you can request quota increases.
+Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglicherweise ein oder mehrere Kontingente über den Standardwert erhöhen. Wenn Sie ein Kontingent erhöhen möchten, können Sie kostenlos eine [Anfrage an den Onlinekundensupport](#increase-a-quota) richten.
 
-If you plan to run production workloads in Batch, you may need to increase one or more of the quotas above the default. If you want to raise a quota, you can open an online [customer support request](#increase-a-quota) at no charge.
+>[AZURE.NOTE] Bei einem Kontingent handelt es sich um ein Kreditlimit und keine Kapazitätsgarantie. Wenn Sie einen umfangreichen Kapazitätsbedarf haben, wenden Sie sich an den Azure-Support.
 
->[AZURE.NOTE] A quota is a credit limit, not a capacity guarantee. If you have large-scale capacity needs, please contact Azure support.
-
-## <a name="subscription-quotas"></a>Subscription quotas
-**Resource**|**Default Limit**|**Maximum Limit**
+## Abonnementkontingente
+**Ressource**|**Standardlimit**|**Maximales Limit**
 ---|---|---
-Batch accounts per region per subscription | 1 | 50
+Batch-Konten pro Region und Abonnement | 1 | 50
 
-## <a name="batch-account-quotas"></a>Batch account quotas
+## Batch-Kontokontingente
 [AZURE.INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-## <a name="other-limits"></a>Other limits
-**Resource**|**Maximum Limit**
+## Andere Limits
+**Ressource**|**Maximales Limit**
 ---|---
-[Concurrent tasks](batch-parallel-node-tasks.md) per compute node | 4 x number of node cores
-[Applications](batch-application-packages.md) per Batch account        | 20
-Application packages per application  | 40
-Application package size (each)       | Approx. 195GB<sup>1</sup>
+[Gleichzeitige Aufgaben](batch-parallel-node-tasks.md) pro Computeknoten | 4 x Anzahl der Kerne des Knotens
+[Anwendungen](batch-application-packages.md) pro Batch-Konto | 20
+Anwendungspakete pro Anwendung. | 40
+Anwendungspaketgröße (jeweils) | Ca. 195 GB<sup>1</sup>
 
-<sup>1</sup> Azure Storage limit for maximum block blob size
+<sup>1</sup> Azure Storage-Limit für die maximale Blockblobgröße
 
-## <a name="view-batch-quotas"></a>View Batch quotas
+## Anzeigen von Batch-Kontingenten
 
-View your Batch account quotas in the [Azure portal][portal].
+Sie können die Kontingente Ihres Batch-Kontos im [Azure-Portal][portal] anzeigen.
 
-1. Select **Batch accounts** in the portal, then select the Batch account you're interested in.
+1. Wählen Sie **Batch-Konten** im Portal, und wählen Sie dann das Batch-Konto, das Sie interessiert.
 
-2. Select **Properties** on the Batch account's menu blade
+2. Wählen Sie **Eigenschaften** im Menüblatt des Batch-Kontos.
 
-3. The Properties blade displays the **quotas** currently applied to the Batch account
+3. Auf dem Blatt „Eigenschaften“ werden die **Kontingente** angezeigt, die derzeit für das Batch-Konto gelten.
 
-    ![Batch account quotas][account_quotas]
+	![Batch-Kontokontingente][account_quotas]
 
-## <a name="increase-a-quota"></a>Increase a quota
+## Erhöhen eines Kontingents
 
-Follow the steps below to request a quota increase using the [Azure portal][portal].
+Führen Sie die unten stehenden Schritte aus, um über das [Azure-Portal][portal] eine Kontingenterhöhung anzufordern.
 
-1. Select the **Help + support** tile on your portal dashboard, or the question mark (**?**) in the upper-right corner of the portal.
+1. Wählen Sie auf Ihrem Portaldashboard die Kachel **Hilfe und Support** oder das Fragezeichen (**?**) in der oberen rechten Ecke des Portals.
 
-2. Select **New support request** > **Basics**.
+2. Wählen Sie **Neue Supportanfrage** > **Grundlagen** aus.
 
-3. On the **Basics** blade:
+3. Gehen Sie auf dem Blatt **Grundlagen** folgendermaßen vor:
 
-    a. **Issue Type** > **Quota**
+	a. **Problemtyp** > **Kontingent**
 
-    b. Select your subscription.
+	b. Wählen Sie Ihr Abonnement aus.
 
-    c. **Quota type** > **Batch**
+	c. **Kontingenttyp** > **Batch**
 
-    d. **Support plan** > **Quota support - Included**
+	d. **Supportplan** > **Kontingentsupport - inbegriffen**
 
-    Click **Next**.
+	Klicken Sie auf **Weiter**.
 
-4. On the **Problem** blade:
+4. Gehen Sie auf dem Blatt **Problem** folgendermaßen vor:
 
-    a. Select a **Severity** according to your [business impact][support_sev].
+	a. Wählen Sie einen **Schweregrad** gemäß der [geschäftlichen Auswirkung][support_sev] aus.
 
-    b. In **Details**, specify each quota you want to change, the Batch account name, and the new limit.
+	b. Geben Sie unter **Details** jedes Kontingent an, das Sie ändern möchten, sowie den Batch-Kontonamen und das neue Limit.
 
-    Click **Next**.
+	Klicken Sie auf **Weiter**.
 
-5. On the **Contact information** blade:
+5. Gehen Sie auf dem Blatt **Kontaktinformationen** folgendermaßen vor:
 
-    a. Select a **Preferred contact method**.
+	a. Wählen Sie eine **bevorzugte Kontaktmethode** aus.
 
-    b. Verify and enter the required contact details.
+	b. Überprüfen Sie die erforderlichen Kontaktdetails, und geben Sie sie ein.
 
-    Click **Create** to submit the support request.
+	Klicken Sie auf **Erstellen**, um die Supportanfrage zu übermitteln.
 
-Once you've submitted your support request, Azure support will contact you. Note that completing the request can take up to 2 business days.
+Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support mit Ihnen in Verbindung setzen. Beachten Sie, dass die Bearbeitung der Anfrage bis zu zwei Werktage in Anspruch nehmen kann.
 
-## <a name="related-topics"></a>Related topics
+## Verwandte Themen
 
-* [Create an Azure Batch account using the Azure portal](batch-account-create-portal.md)
+* [Erstellen und Verwalten eines Azure Batch-Kontos im Azure-Portal](batch-account-create-portal.md)
 
-* [Azure Batch feature overview](batch-api-basics.md)
+* [Übersicht über Azure Batch-Features](batch-api-basics.md)
 
-* [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md)
+* [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
@@ -107,8 +106,4 @@ Once you've submitted your support request, Azure support will contact you. Note
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,32 +1,29 @@
-**Virtual machine disks: per account limits**
+**Datenträger virtueller Computer: Einschränkungen pro Konto**
 
-Resource|Default Limit
+Ressource|Standardlimit
 ---|---
-Total disk capacity per account|35 TB
-Total snapshot capacity per account|10 TB
-Max bandwidth per account (ingress + egress<sup>1</sup>)|<=50 Gbps
+Datenträgerkapazität insgesamt pro Konto|35 TB
+Kapazität für Momentaufnahmen insgesamt pro Konto|10 TB
+Max. Bandbreite pro Konto (Ein- und Ausgang<sup>1</sup>)|<= 50 GBit/s
 
-<sup>1</sup>*Ingress* refers to all data (requests) being sent to a storage account. *Egress* refers to all data (responses) being received from a storage account.
+<sup>1</sup>*Eingang* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
 
-**Virtual machine disks: per disk limits**
+**Datenträger virtueller Computer: Einschränkungen pro Datenträger**
 
-Premium Storage Disk Type | P10 | P20 | P30
+Datenträgertyp des Premium-Speichers | P10 | P20 | P30
 ---|---|---|---
-Disk size | 128 GiB | 512 GiB | 1024 GiB (1 TB)
-Max IOPS per disk | 500 | 2300 | 5000
-Max throughput per disk | 100 MB per second | 150 MB per second | 200 MB per second
-Max number of disks per storage account | 280 | 70 | 35
+Datenträgergröße | 128 GB | 512 GB | 1\.024 GiB (1 TB)
+Max. IOPS pro Datenträger | 500 | 2\.300 | 5\.000
+Max. Durchsatz pro Datenträger | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde
+Maximale Anzahl von Datenträgern pro Speicherkonto | 280 | 70 | 35
 
-**Virtual machine disks: per VM limits**
+**Datenträger virtueller Computer: Einschränkungen pro virtuellem Computer**
 
-Resource|Default Limit
+Ressource|Standardlimit
 ---|---
-Max IOPS Per VM|80,000 IOPS with GS5 VM<sup>1</sup>
-Max throughput per VM|2,000 MB/s with GS5 VM<sup>1</sup>
+Max. IOPS pro virtuellem Computer|80\.000 IOPS mit GS5-VM<sup>1</sup>
+Max. Durchsatz pro virtuellem Computer|2\.000 MB/s mit GS5-VM<sup>1</sup>
 
-<sup>1</sup>Refer to [VM Size](../articles/virtual-machines/virtual-machines-linux-sizes.md) for limits on other VM sizes. 
+<sup>1</sup>Informationen zu Grenzwerten bei virtuellen Computern anderer Größen finden Sie unter [VM-Größe](../articles/virtual-machines/virtual-machines-linux-sizes.md).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

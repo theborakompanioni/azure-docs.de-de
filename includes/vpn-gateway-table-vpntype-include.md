@@ -1,27 +1,25 @@
-#### <a name="vpn-type---resource-manager-deployment-model"></a>VPN type - Resource Manager deployment model
+#### VPN-Typ – Resource Manager-Bereitstellungsmodell
 
-|      | **RouteBased**    | **PolicyBased** |
+| | **RouteBased** | **PolicyBased** |
 |-----------------------------------|-------------|------------------|
-| **Site-to-Site**                  | Supported   | Supported        |
-| **VNet-to-VNet**                  | Supported   | Not Supported    |
-| **Multi-Site**                    | Supported   | Not Supported    |
-| **S2S and ExpressRoute coexist**  | Supported   | Not Supported    |
-| **Point-to-Site**                 | Supported   | Not Supported    |
-| **Classic to Resource Manager**   | Supported   | Not Supported    |
+| **Standort-zu-Standort** | Unterstützt | Unterstützt |
+| **VNet-zu-VNet** | Unterstützt | Nicht unterstützt |
+| **Multi-Site** | Unterstützt | Nicht unterstützt |
+| **Gemeinsame Verwendung von S2S und ExpressRoute** | Unterstützt | Nicht unterstützt |
+| **Punkt-zu-Standort** | Unterstützt | Nicht unterstützt |
+| **Von klassisch zum Ressourcen-Manager** | Unterstützt | Nicht unterstützt |
 
 
-#### <a name="vpn-type---classic-deployment-model"></a>VPN type - classic deployment model
+#### VPN-Typ – klassisches Bereitstellungsmodell
 
 
-|       | **Dynamic**        | **Static**   |
+| | **Dynamisch** | **Statisch** |
 |---------------------------------------------|--------------|--------------|
-| **Site-to-Site**                            | Supported    | Supported      |
-| **VNet-to-VNet**                            | Supported    | Not Supported  |
-| **Multi-Site**                              | Supported    | Not Supported  |
-| **S2S and ExpressRoute coexist**            | Supported    | Not Supported  |
-| **Point-to-Site**                           | Supported    | Not Supported  |
-| **Classic to Resource Manager**             | Supported    | Not Supported  |
+| **Standort-zu-Standort** | Unterstützt | Unterstützt |
+| **VNet-zu-VNet** | Unterstützt | Nicht unterstützt |
+| **Multi-Site** | Unterstützt | Nicht unterstützt |
+| **Gemeinsame Verwendung von S2S und ExpressRoute** | Unterstützt | Nicht unterstützt |
+| **Punkt-zu-Standort** | Unterstützt | Nicht unterstützt |
+| **Von klassisch zum Ressourcen-Manager** | Unterstützt | Nicht unterstützt |
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

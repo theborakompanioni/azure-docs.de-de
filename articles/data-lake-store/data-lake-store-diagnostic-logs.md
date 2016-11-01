@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Viewing diagnostic logs for Azure Data Lake Store | Microsoft Azure" 
-   description="Understand how to setup and access diagnostic logs for Azure Data Lake Store " 
+   pageTitle="Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store | Microsoft Azure" 
+   description="Grundlegendes zum Einrichten von Diagnoseprotokollen und Zugriff darauf für Azure Data Lake Store " 
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
@@ -13,189 +13,183 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/05/2016"
+   ms.date="07/19/2016"
    ms.author="nitinme"/>
 
+# Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
 
-# <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Accessing diagnostic logs for Azure Data Lake Store
+Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Data Lake Store-Konto aktivieren, und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
 
-Learn about how to enable diagnostic logging for your Data Lake Store account and how to view the logs collected for your account.
+Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Store-Konten zum Erfassen von Datenzugriffs-Überwachungspfaden aktivieren, die Informationen wie die Liste der Benutzer, die auf die Daten zugreifen, die Häufigkeit des Zugriffs auf die Daten, die Größe der im Konto gespeicherten Datenmenge usw. liefern.
 
-Organizations can enable diagnostic logging for their Azure Data Lake Store account to collect data access audit trails that provides information such as list of users accessing the data, how frequently the data is accessed, how much data is stored in the account, etc.
+## Voraussetzungen
 
-## <a name="prerequisites"></a>Prerequisites
+- **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus.
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
+## Aktivieren der Diagnoseprotokollierung für Ihr Data Lake Store-Konto
 
-- **Azure Data Lake Store account**. Follow the instructions at [Get started with Azure Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md).
+1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com) an.
 
-## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Enable diagnostic logging for your Data Lake Store account
+2. Öffnen Sie Ihr Data Lake Store-Konto, und klicken Sie auf Ihrem Data Lake Store-Kontoblatt auf **Einstellungen** und dann auf **Diagnoseeinstellungen**.
 
-1. Sign on to the new [Azure Portal](https://portal.azure.com).
+3. Nehmen Sie auf dem Blatt **Diagnose**die folgenden Änderungen vor, um die Diagnoseprotokollierung zu konfigurieren.
 
-2. Open your Data Lake Store account, and from your Data Lake Store account blade, click **Settings**, and then click **Diagnostic Settings**.
+	![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
 
-3. In the **Diagnostic** blade, make the following changes to configure diagnostic logging.
+	* Legen Sie **Status** auf **Ein** fest, um die Diagnoseprotokollierung zu aktivieren.
+	* Sie können die Daten auf zwei verschiedene Arten speichern/verarbeiten.
+		* Wählen Sie die Option **Nach Event Hub Exportieren**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
+		* Wählen Sie die Option **Nach Speicherkonto exportieren**, um Protokolle in einem Azure Storage-Konto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten, die zu einem späteren Zeitpunkt der Batchverarbeitung unterzogen werden sollen. Bei Auswahl dieser Option müssen Sie ein Azure Storage-Konto zum Speichern der Protokolle bereitstellen.
+	* Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
+	* Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen.
+	* Klicken Sie auf **Speichern**.
 
-    ![Enable diagnostic logging](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Enable diagnostic logs")
+Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokolle auf der Registerkarte **Diagnoseprotokolle** verfolgen.
 
-    * Set **Status** to **On** to enable diagnostic logging.
-    * You can choose to store/process the data in two different ways.
-        * Select the option to **Export to Event Hub** to stream log data to an Azure Event Hub. Most likely you will use this option if you have a downstream processing pipeline to analyze incoming logs at real time. If you select this option, you must provide the details for the Azure Event Hub you want to use.
-        * Select the option to **Export to Storage Account** to store logs to an Azure Storage account. You use this option if you want to archive the data that will be batch-processed at a later date. If you select this option you must provide an Azure Storage account to save the logs to.
-    * Specify whether you want to get audit logs or request logs or both.
-    * Specify the number of days for which the data must be retained.
-    * Click **Save**.
+## Anzeigen der Diagnoseprotokolle für Ihr Data Lake Store-Konto
 
-Once you have enabled diagnostic settings, you can watch the logs in the **Diagnostic Logs** tab.
+Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Store-Kontos anzuzeigen:
 
-## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>View diagnostic logs for your Data Lake Store account
+* Über die Ansicht „Einstellungen“ des Data Lake Store-Kontos
+* Über das Azure Storage-Konto, in dem die Daten gespeichert sind
 
-There are two ways to view the log data for your Data Lake Store account.
+### Verwenden der Data Lake Store-Ansicht „Einstellungen“
 
-* From the Data Lake Store account settings view
-* From the Azure Storage account where the data is stored
+1. Klicken Sie in Ihrem Data Lake Store-Konto auf dem Blatt **Einstellungen** auf **Diagnoseprotokolle**.
 
-### <a name="using-the-data-lake-store-settings-view"></a>Using the Data Lake Store Settings view
+	![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Anzeigen der Diagnoseprotokolle")
 
-1. From your Data Lake Store account **Settings** blade, click **Diagnostic Logs**.
+2. Auf dem Blatt **Diagnoseprotokolle** sollten die Protokolle nach **Überwachungsprotokollen** und **Anforderungsprotokollen** kategorisiert sein.
+	* Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Store-Konto.
+	* Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge, die auf dem Data Lake Store-Konto ausgeführt werden. Ein einzelner API-Hochladeaufruf in Anforderungsprotokollen könnte möglicherweise in den Überwachungsprotokollen in mehreren „Anfügen“-Vorgängen resultieren.
 
-    ![View diagnostic logging](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "View diagnostic logs") 
+3. Klicken Sie für jeden Protokolleintrag auf den Link **Herunterladen**, um die Protokolle herunterzuladen.
 
-2. In the **Diagnostic Logs** blade, you should see the logs categorized by **Audit Logs** and **Request Logs**.
-    * Request logs capture every API request made on the Data Lake Store account.
-    * Audit Logs are similar to request Logs but provide a much more detailed breakdown of the operations being performed on the Data Lake Store account. For example, a single upload API call in request logs might result in multiple "Append" operations in the audit logs.
+### Im Azure Storage-Konto, das die Protokolldaten enthält
 
-3. Click the **Download** link against each log entry to download the logs.
+1. Öffnen Sie das Azure Storage-Kontoblatt, das zur Protokollierung dem Data Lake Store zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blobdienst** werden zwei Container aufgelistet.
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>From the Azure Storage account that contains log data
+	![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen der Diagnoseprotokolle")
 
-1. Open the Azure Storage account blade associated with Data Lake Store for logging, and then click Blobs. The **Blob service** blade lists two containers.
+	* Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
+	* Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
 
-    ![View diagnostic logging](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "View diagnostic logs")
+2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert.
 
-    * The container **insights-logs-audit** contains the audit logs.
-    * The container **insights-logs-requests** contains the request logs.
+	![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen der Diagnoseprotokolle")
 
-2. Within these containers, the logs are stored under the following structure.
+	Der vollständige Pfad zu einem Überwachungsprotokoll könnte z.B. folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
 
-    ![View diagnostic logging](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "View diagnostic logs")
+	Entsprechend könnte der vollständige Pfad zu einem Anforderungsprotokoll folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
-    As an example, the complete path to an audit log could be `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+## Grundlegendes zur Struktur der Protokolldaten
 
-    Similary, the complete path to a request log could be `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In diesem Abschnitt betrachten wir die Struktur von JSON für Anforderungs- und Überwachungsprotokolle.
 
-## <a name="understand-the-structure-of-the-log-data"></a>Understand the structure of the log data
+### Anforderungsprotokolle
 
-The audit and request logs are in a JSON format. In this section, we look at the structure of JSON for request and audit logs.
+Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records**, das ein Array mit Protokollobjekten enthält.
 
-### <a name="request-logs"></a>Request logs
+	{
+	"records": 
+	  [		
+		. . . .
+		,
+		{
+			 "time": "2016-07-07T21:02:53.456Z",
+			 "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
+			 "category": "Requests",
+			 "operationName": "GETCustomerIngressEgress",
+			 "resultType": "200",
+			 "callerIpAddress": "::ffff:1.1.1.1",
+			 "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+			 "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+			 "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
+		}
+		,
+		. . . .
+	  ]
+	}
 
-Here's a sample entry in the JSON-formatted request log. Each blob has one root object called **records** that contains an array of log objects.
+#### Anforderungsprotokollschema
 
-    {
-    "records": 
-      [     
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
-             "category": "Requests",
-             "operationName": "GETCustomerIngressEgress",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
-        }
-        ,
-        . . . .
-      ]
-    }
-
-#### <a name="request-log-schema"></a>Request log schema
-
-| Name            | Type   | Description                                                                    |
+| Name | Typ | Beschreibung |
 |-----------------|--------|--------------------------------------------------------------------------------|
-| time            | String | The timestamp (in UTC) of the log                                              |
-| resourceId      | String | The ID of the resource that operation took place on                            |
-| category        | String | The log category. For example, **Requests**.                                   |
-| operationName   | String | Name of the operation that is logged. For example, getfilestatus.              |
-| resultType      | String | The status of the operation, For example, 200.                                 |
-| callerIpAddress | String | The IP address of the client making the request                                |
-| correlationId   | String | The id of the log that can used to group together a set of related log entries |
-| identity        | Object | The identity that generated the log                                            |
-| properties      | JSON   | See below for details                                                          |
+| in | String | Der Zeitstempel (UTC) des Protokolls. |
+| Ressourcen-ID | String | Die ID der Ressource, auf der der Vorgang stattfand. |
+| category | String | Die Protokollkategorie. Beispiel: **Anforderungen**. |
+| operationName | String | Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType | String | Der Status des Vorgangs, beispielsweise 200. |
+| callerIpAddress | String | Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
+| correlationId | String | Die ID des Protokolls, die verwendet werden kann, um einen Satz verbundener Protokolleinträge zu gruppieren. |
+| Identität | Objekt | Die Identität, die das Protokoll erstellt hat. |
+| Eigenschaften | JSON | Weitere Informationen siehe unten. |
 
-#### <a name="request-log-properties-schema"></a>Request log properties schema
+#### Eigenschaftenschema des Anforderungsprotokolls
 
-| Name                 | Type   | Description                                               |
+| Name | Typ | Beschreibung |
 |----------------------|--------|-----------------------------------------------------------|
-| HttpMethod           | String | The HTTP Method used for the operation. For example, GET. |
-| Path                 | String | The path the operation was performed on                   |
-| RequestContentLength | int    | The content length of the HTTP request                    |
-| ClientRequestId      | String | The Id that uniquely identifies this request              |
-| StartTime            | String | The time at which the server received the request         |
-| EndTime              | String | The time at which the server sent a response              |
+| HttpMethod | String | Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
+| Pfad | String | Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| RequestContentLength | int | Die Inhaltslänge der HTTP-Anforderung. |
+| ClientRequestId | String | Die ID, die diese Anforderung eindeutig identifiziert. |
+| StartTime | String | Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
+| EndTime | String | Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
-### <a name="audit-logs"></a>Audit logs
+### Überwachungsprotokolle
 
-Here's a sample entry in the JSON-formatted audit log. Each blob has one root object called **records** that contains an array of log objects
+Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jeder Blob hat ein Stammobjekt namens **records**, das ein Array von Protokollobjekten enthält.
 
-    {
-    "records": 
-      [     
-        . . . .
-        ,
-        {
-             "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
-             "category": "Audit",
-             "operationName": "SeOpenStream",
-             "resultType": "0",
-             "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
-             "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
-        }
-        ,
-        . . . .
-      ]
-    }
+	{
+	"records": 
+	  [		
+		. . . .
+		,
+		{
+			 "time": "2016-07-08T19:08:59.359Z",
+			 "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
+			 "category": "Audit",
+			 "operationName": "SeOpenStream",
+			 "resultType": "0",
+			 "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
+			 "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
+			 "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
+		}
+		,
+		. . . .
+	  ]
+	}
 
-#### <a name="audit-log-schema"></a>Audit log schema
+#### Überwachungsprotokollschema
 
-| Name            | Type   | Description                                                                    |
+| Name | Typ | Beschreibung |
 |-----------------|--------|--------------------------------------------------------------------------------|
-| time            | String | The timestamp (in UTC) of the log                                              |
-| resourceId      | String | The ID of the resource that operation took place on                            |
-| category        | String | The log category. For example, **Audit**.                                      |
-| operationName   | String | Name of the operation that is logged. For example, getfilestatus.              |
-| resultType      | String | The status of the operation, For example, 200.                                 |
-| correlationId   | String | The id of the log that can used to group together a set of related log entries |
-| identity        | Object | The identity that generated the log                                            |
-| properties      | JSON   | See below for details                                                          |
+| in | String | Der Zeitstempel (UTC) des Protokolls. |
+| Ressourcen-ID | String | Die ID der Ressource, auf der der Vorgang stattfand. |
+| category | String | Die Protokollkategorie. Beispiel: **Überwachung**. |
+| operationName | String | Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType | String | Der Status des Vorgangs, beispielsweise 200. |
+| correlationId | String | Die ID des Protokolls, die verwendet werden kann, um einen Satz verbundener Protokolleinträge zu gruppieren. |
+| Identität | Objekt | Die Identität, die das Protokoll erstellt hat. |
+| Eigenschaften | JSON | Weitere Informationen siehe unten. |
 
-#### <a name="audit-log-properties-schema"></a>Audit log properties schema
+#### Eigenschaftenschema des Überwachungsprotokolls
 
-| Name       | Type   | Description                              |
+| Name | Typ | Beschreibung |
 |------------|--------|------------------------------------------|
-| StreamName | String | The path the operation was performed on  |
+| StreamName | String | Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
 
-## <a name="samples-to-process-the-log-data"></a>Samples to process the log data
+## Beispiele für die Verarbeitung der Protokolldaten
 
-Azure Data Lake Store provides a sample on how to process and analyze the log data. You can find the sample at [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
-
-
-## <a name="see-also"></a>See also
-
-- [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-- [Secure data in Data Lake Store](data-lake-store-secure-data.md)
+Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel hier: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
 
 
+## Siehe auch
 
+- [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
+- [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

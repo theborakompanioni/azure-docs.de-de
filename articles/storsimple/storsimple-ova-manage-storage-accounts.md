@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Manage your StorSimple storage account | Microsoft Azure"
-   description="Explains how you can use the StorSimple Manager Configure page to add, edit, delete, or rotate the security keys for a storage account associated with the StorSimple Virtual Array."
+   pageTitle="Verwalten Ihres StorSimple-Speicherkontos | Microsoft Azure"
+   description="Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple Manager-Diensts zum Hinzufügen, Bearbeiten oder Löschen von Speicherkonten verwenden und wie Sie die Sicherheitsschlüssel für ein Speicherkonto rotieren, das dem StorSimple Virtual Array zugeordnet ist."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -12,102 +12,95 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/29/2016"
+   ms.date="04/18/2016"
    ms.author="alkohli" />
 
+# Verwenden des StorSimple Manager-Diensts zum Verwalten von Speicherkonten für das StorSimple Virtual Array
 
-# <a name="use-the-storsimple-manager-service-to-manage-storage-accounts-for-storsimple-virtual-array"></a>Use the StorSimple Manager service to manage storage accounts for StorSimple Virtual Array
+## Übersicht
 
-## <a name="overview"></a>Overview
+Auf der Seite **Konfigurieren** werden die globalen Dienstparameter angezeigt, die im StorSimple Manager-Dienst erstellt werden können. Diese Parameter können für alle mit dem Dienst verbundenen Geräte angewendet werden und umfassen Folgendes:
 
-The **Configure** page presents the global service parameters that can be created in the StorSimple Manager service. These parameters can be applied to all the devices connected to the service, and include:
+- Speicherkonten 
+- Zugriffssteuerungsdatensätze 
 
-- Storage accounts 
-- Access control records 
+In diesem Tutorial wird erläutert, wie Sie die Seite **Konfigurieren** zum Hinzufügen, Bearbeiten oder Löschen von Speicherkonten für Ihr StorSimple Virtual Array verwenden. Die Informationen in diesem Tutorial gelten nur für das StorSimple Virtual Array mit der GA-Version der Software aus dem März 2016.
 
-This tutorial explains how you can use the **Configure** page to add, edit, or delete storage accounts for your StorSimple Virtual Array. The information in this tutorial only applies to the StorSimple Virtual Array running March 2016 GA release software.
+ ![Konfigurieren, Seite](./media/storsimple-ova-manage-storage-accounts/configure_service_page.png)
 
- ![Configure page](./media/storsimple-ova-manage-storage-accounts/configure_service_page.png)  
+Speicherkonten enthalten die Anmeldeinformationen, die das Gerät für den Zugriff auf das Speicherkonto mit dem Clouddienstanbieter nutzt. Für Microsoft Azure-Speicherkonten sind dies die Anmeldeinformationen, wie z. B. Kontoname und primärer Zugriffsschlüssel.
 
-Storage accounts contain the credentials that the device uses to access your storage account with your cloud service provider. For Microsoft Azure storage accounts, these are credentials such as the account name and the primary access key. 
+Auf der Seite **Konfigurieren** werden alle Speicherkonten, die für das Abrechnungsabonnement erstellt werden, in einem Tabellenformat mit den folgenden Informationen angezeigt:
 
-On the **Configure** page, all storage accounts that are created for the billing subscription are displayed in a tabular format containing the following information:
+- **Name** – der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
+- **SSL enabled** – zeigt an, ob SSL aktiviert ist und die Kommunikation zwischen Gerät und Cloud über einen sicheren Kanal verläuft.
 
-- **Name** – The unique name assigned to the account when it was created.
-- **SSL enabled** – Whether the SSL is enabled and device-to-cloud communication is over the secure channel.
+Im Folgenden werden die häufigsten auf der Seite **Konfigurieren** ausgeführten Aufgaben im Zusammenhang mit Speicherkonten aufgeführt:
 
-The most common tasks related to storage accounts that can be performed on the **Configure** page are:
-
-- Add a storage account 
-- Edit a storage account 
-- Delete a storage account 
+- Hinzufügen von Speicherkonten 
+- Bearbeiten eines Speicherkontos 
+- Löschen eines Speicherkontos 
 
 
-## <a name="types-of-storage-accounts"></a>Types of storage accounts
+## Speicherkontentypen
 
-There are three types of storage accounts that can be used with your StorSimple device.
+Es gibt drei Typen von Speicherkonten, die mit dem StorSimple-Gerät verwendet werden können.
 
-- **Auto-generated storage accounts** – As the name suggests, this type of storage account is automatically generated when the service is first created. To learn more about how this storage account is created, see [Create a new service](storsimple-ova-manage-service.md#create-a-service). 
-- **Storage accounts in the service subscription** – These are the Azure storage accounts that are associated with the same subscription as that of the service. To learn more about how these storage accounts are created, see [About Azure Storage Accounts](../storage/storage-create-storage-account.md). 
-- **Storage accounts outside of the service subscription** – These are the Azure storage accounts that are not associated with your service and likely existed before the service was created.
+- **Auto-generated storage accounts** – diese Art von Speicherkonto wird bei der ersten Erstellung des Dienstes automatisch generiert. Weitere Informationen zum Erstellen dieses Speicherkontos finden Sie unter [Erstellen eines neuen Diensts](storsimple-ova-manage-service.md#create-a-service). 
+- **Storage accounts in the service subscription** – Azure-Speicherkonten, die demselben Abonnement zugeordnet sind wie der Dienst . Weitere Informationen zur Erstellung dieser Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md). 
+- **Storage accounts outside of the service subscription** – Azure-Speicherkonten, die nicht mit dem Dienst verknüpft sind und wahrscheinlich schon vorhanden waren, bevor der Dienst erstellt wurde.
 
-Each StorSimple Virtual Array creates a container (with a prefix hcs) in the associated storage account. This container has all the cloud data for your device. Do not delete this container by accessing it through the Azure Storage service as this action will result in data loss.
+## Hinzufügen von Speicherkonten
 
-## <a name="add-a-storage-account"></a>Add a storage account
+Sie können ein Speicherkonto zu Ihrer Konfiguration für den StorSimple Manager-Dienst hinzufügen, indem Sie einen eindeutigen Anzeigenamen und Anmeldeinformationen für den Zugriff angeben, die mit dem Speicherkonto verknüpft sind. Sie haben außerdem die Möglichkeit, den SSL-Modus (Secure Sockets Layer) zu aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen dem Gerät und der Cloud zu erstellen.
 
-You can add a storage account to your StorSimple Manager service configuration by providing a unique friendly name and access credentials that are linked to the storage account. You also have the option of enabling the secure sockets layer (SSL) mode to create a secure channel for network communication between your device and the cloud.
+Sie können mehrere Konten für einen Clouddienstanbieter erstellen. Während das Speicherkonto gespeichert wird, versucht der Dienst mit dem Clouddienstanbieter zu kommunizieren. Die Anmelde- und Zugriffsinformationen, die Sie bereitgestellt haben, werden zu diesem Zeitpunkt authentifiziert. Ein Speicherkonto wird nur erstellt, wenn die Authentifizierung erfolgreich war. Wenn die Authentifizierung fehlschlägt, wird eine entsprechende Fehlermeldung angezeigt.
 
-You can create multiple accounts for a given cloud service provider. While the storage account is being saved, the service attempts to communicate with your cloud service provider. The credentials and the access material that you supplied will be authenticated at this time. A storage account is created only if the authentication succeeds. If the authentication fails, then an appropriate error message will be displayed.
+Resource Manager-Speicherkonten, die im Azure-Portal wurden, werden auch für StorSimple unterstützt. Die Resource Manager-Speicherkonten werden in der Dropdownliste nicht zur Auswahl angezeigt. Nur die im klassischen Azure-Portal erstellten Speicherkonten werden aufgeführt. Resource Manager-Speicherkonten müssen über das Verfahren zum Hinzufügen eines Speicherkontos hinzugefügt werden, wie unten beschrieben.
 
-Resource Manager storage accounts created in Azure portal are also supported with StorSimple. The Resource Manager storage accounts will not show up in the drop-down list for selection, only the storage accounts created in the Azure classic portal will be displayed. Resource Manager storage accounts will need to be added using the procedure to add a storage account as described below.
-
-The procedure for adding an Azure classic storage account is detailed below.
+Das Verfahren zum Hinzufügen eines klassischen Azure-Speicherkontos wird im Folgenden beschrieben.
 
 [AZURE.INCLUDE [add-a-storage-account](../../includes/storsimple-ova-configure-new-storage-account.md)]
 
-## <a name="edit-a-storage-account"></a>Edit a storage account
+## Bearbeiten eines Speicherkontos
 
-You can edit a storage account used by your device. If you edit a storage account that is currently in use, the fields available to modify are the access key and the SSL mode for the storage account. You can supply the new storage access key or modify the **Enable SSL mode** selection and save the updated settings.
+Sie können ein Speicherkonto bearbeiten, das von Ihrem Gerät verwendet wird. Wenn Sie ein derzeit verwendetes Speicherkonto bearbeiten, sind nur die Felder mit dem Zugriffsschlüssel und mit dem SSL-Modus für das Speicherkonto änderbar. Sie können einen neuen Speicherzugriffsschlüssel angeben oder die Auswahl für **SSL-Modus aktivieren** ändern und die aktualisierten Einstellungen speichern.
 
-#### <a name="to-edit-a-storage-account"></a>To edit a storage account
+#### So bearbeiten Sie ein Speicherkonto
 
-1. On the service landing page, select your service, double-click the service name, and then click **Configure**.
+1. Wählen Sie auf der Startseite des Diensts Ihren Dienst aus, doppelklicken Sie auf den Namen und klicken Sie dann auf **Konfigurieren**.
 
-2. Click **Add/Edit Storage Accounts**.
+2. Klicken Sie auf **Speicherkonten hinzufügen/bearbeiten**.
 
-3. In the **Add/Edit Storage Accounts** dialog box:
+3. Gehen Sie im Dialogfeld **Speicherkonten hinzufügen/bearbeiten** folgendermaßen vor:
 
-  1. In the drop-down list of **Storage Accounts**, choose an existing account that you would like to modify. 
-  2. If necessary, you can modify the **Enable SSL Mode** selection.
-  3. You can choose to regenerate your storage account access keys. For more information, see [Regenerate the storage account keys](storage-create-storage-account.md#manage-your-storage-access-keys). Supply the new storage account key. For an Azure storage account, this is the primary access key. 
-  4. Click the check icon ![check icon](./media/storsimple-ova-manage-storage-accounts/checkicon.png) to save the settings. The settings will be updated on the **Configure** page. 
-  5. At the bottom of the page, click **Save** to save the newly updated settings. 
+  1. Wählen Sie in der Dropdownliste **Speicherkonten** ein vorhandenes Konto aus, das Sie ändern möchten.
+  2. Ändern Sie ggf. die Auswahl für **SSL-Modus aktivieren**.
+  3. Falls gewünscht, können Sie auch die Speicherkonto-Zugriffsschlüssel neu generieren. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherkontoschlüsseln](storage-create-storage-account.md#manage-your-storage-access-keys). Geben Sie den neuen Speicherkonto-Zugriffsschlüssel an. Für ein Azure-Speicherkonto ist dies der primäre Zugriffsschlüssel 
+  4. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-ova-manage-storage-accounts/checkicon.png) zum Speichern der Einstellungen. Die Einstellungen werden auf der Seite **Konfigurieren** aktualisiert. 
+  5. Klicken Sie unten auf der Seite auf **Speichern**, um die gerade geänderten Einstellungen zu speichern. 
 
-     ![Edit a storage account](./media/storsimple-ova-manage-storage-accounts/modifyexistingstorageaccount.png)
+     ![Bearbeiten eines Speicherkontos](./media/storsimple-ova-manage-storage-accounts/modifyexistingstorageaccount.png)
   
-## <a name="delete-a-storage-account"></a>Delete a storage account
+## Löschen eines Speicherkontos
 
-> [AZURE.IMPORTANT] You can delete a storage account only if it is not in use. If a storage account is in use, you will be notified.
+> [AZURE.IMPORTANT] Sie können nur ein nicht verwendetes Speicherkonto löschen. Wenn ein Speicherkonto verwendet wird, werden Sie benachrichtigt.
 
-#### <a name="to-delete-a-storage-account"></a>To delete a storage account
+#### So löschen Sie ein Speicherkonto
 
-1. On the StorSimple Manager service landing page, select your service, double-click the service name, and then click **Configure**.
+1. Wählen Sie auf der Startseite des StorSimple-Manager-Diensts Ihren Dienst aus, doppelklicken Sie auf den Namen, und klicken Sie dann auf **Konfigurieren**.
 
-2. In the tabular list of storage accounts, hover over the account that you wish to delete.
+2. Zeigen Sie in der tabellarischen Liste der Speicherkonten auf das Konto, das Sie löschen möchten.
 
-3. A delete icon (**x**) will appear in the extreme right column for that storage account. Click the **x** icon to delete the credentials.
+3. Ein Löschsymbol (**x**) wird in der äußersten rechten Spalte für das Speicherkonto angezeigt. Klicken Sie auf das Symbol **x**, um die Anmeldeinformationen zu löschen.
 
-4. When prompted for confirmation, click **Yes** to continue with the deletion. The tabular listing will be updated to reflect the changes.
+4. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um den Löschvorgang fortzusetzen. Die tabellarische Auflistung wird den Änderungen entsprechend aktualisiert.
 
-5. At the bottom of the page, click **Save** to save the newly updated settings.
-
-
-## <a name="next-steps"></a>Next steps
-
-- Learn how to [administer your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+5. Klicken Sie unten auf der Seite auf **Speichern**, um die gerade geänderten Einstellungen zu speichern.
 
 
+## Nächste Schritte
 
-<!--HONumber=Oct16_HO2-->
+- Erfahren Sie, wie Sie [Ihr StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
 
-
+<!---HONumber=AcomDC_0504_2016-->

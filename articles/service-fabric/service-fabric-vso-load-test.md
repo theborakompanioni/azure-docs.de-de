@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Load test your application by using Visual Studio Team Services | Microsoft Azure"
-    description="Learn how to stress test your Azure Service Fabric applications by using Visual Studio Team Services."
+    pageTitle="Durchführen von Auslastungstests für Anwendungen mithilfe von Visual Studio Team Services | Microsoft Azure"
+    description="Erfahren Sie, wie Sie mithilfe von Visual Studio Team Services Belastungstests für Ihre Azure Service Fabric-Anwendungen durchführen können."
     services="service-fabric"
     documentationCenter="na"
     authors="cawams"
@@ -16,120 +16,119 @@
     ms.date="07/29/2016"
     ms.author="cawa" />
 
+# Durchführen von Auslastungstests für Anwendungen mithilfe von Visual Studio Team Services
 
-# <a name="load-test-your-application-by-using-visual-studio-team-services"></a>Load test your application by using Visual Studio Team Services
+In diesem Artikel wird erläutert, wie Sie die Microsoft Visual Studio-Funktionen für Auslastungstests verwenden, um Belastungstests für eine Anwendung durchzuführen. Es wird ein Azure Service Fabric-Back-End für zustandsbehaftete Dienste und ein Web-Front-End für zustandslose Dienste verwendet. Bei der hier verwendeten Beispielanwendung handelt es sich um einen Standortsimulator für Flugzeuge. Sie geben Flugzeugkennung, Abflugzeit und Flugziel an. Das Back-End der Anwendung verarbeitet die Anforderungen, und das Front-End zeigt auf einer Karte das Flugzeug an, das die Kriterien erfüllt.
 
-This article shows how to use Microsoft Visual Studio load test features to stress test an application. It uses an Azure Service Fabric stateful service back end and a stateless service web front end. The example application used here is an airplane location simulator. You provide an airplane ID, departure time, and destination. The application’s back end processes the requests, and the front end displays on a map the airplane that matches the criteria.
+Im folgenden Diagramm ist die Service Fabric-Anwendung dargestellt, die Sie testen werden.
 
-The following diagram illustrates the Service Fabric application that you'll be testing.
+![Diagramm zur Beispielanwendung für die Anzeige des Flugzeugstandorts][0]
 
-![Diagram of the example airplane location application][0]
+## Voraussetzungen
+Bevor Sie beginnen, müssen Sie folgende Schritte ausführen:
 
-## <a name="prerequisites"></a>Prerequisites
-Before getting started, you need to do the following:
+- Richten Sie ein Visual Studio Team Services-Konto ein. Unter [Visual Studio Team Services](https://www.visualstudio.com) können Sie ein kostenloses Konto erhalten.
+- Laden Sie Visual Studio 2013 oder Visual Studio 2015 herunter, und installieren Sie die Software. In diesem Artikel wird Visual Studio 2015 Enterprise verwendet, Visual Studio 2013 und andere Editionen funktionieren jedoch genauso.
+- Stellen Sie Ihre Anwendung in einer Stagingumgebung bereit. Informationen hierzu finden Sie unter [Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio](service-fabric-publish-app-remote-cluster.md).
+- Machen Sie sich mit dem Verwendungsmuster Ihrer Anwendung vertraut. Diese Informationen werden zur Simulation des Auslastungsmusters verwendet.
+- Machen Sie sich mit dem Ziel des Auslastungstests vertraut. So können Sie die Ergebnisse des Auslastungstests analysieren und richtig interpretieren.
 
-- Get a Visual Studio Team Services account. You can get one for free at [Visual Studio Team Services](https://www.visualstudio.com).
-- Get and install Visual Studio 2013 or Visual Studio 2015. This article uses Visual Studio 2015 Enterprise edition, but Visual Studio 2013 and other editions should work similarly.
-- Deploy your application to a staging environment. See [How to deploy applications to a remote cluster using Visual Studio](service-fabric-publish-app-remote-cluster.md) for information about this.
-- Understand your application’s usage pattern. This information is used to simulate the load pattern.
-- Understand the goal for your load testing. This helps you interpret and analyze the load test results.
+## Erstellen und Ausführen des Webleistungs- und Auslastungstestprojekts
 
-## <a name="create-and-run-the-web-performance-and-load-test-project"></a>Create and run the Web Performance and Load Test project
+### Erstellen eines Webleistungs- und Auslastungstestprojekts
 
-### <a name="create-a-web-performance-and-load-test-project"></a>Create a Web Performance and Load Test project
+1. Öffnen Sie Visual Studio 2015. Wählen Sie in der Menüleiste die Optionen **Datei** > **Neu** > **Projekt**, um das Dialogfeld **Neues Projekt** zu öffnen.
 
-1. Open Visual Studio 2015. Choose **File** > **New** > **Project** on the menu bar to open the **New Project** dialog box.
+2. Erweitern Sie den Knoten **Visual C#**, und wählen Sie **Test** > **Testprojekt für Webleistung und Auslastung**. Benennen Sie das Projekt, und klicken Sie dann auf die Schaltfläche **OK**.
 
-2. Expand the **Visual C#** node and choose **Test** > **Web Performance and Load Test project**. Give the project a name and then choose the **OK** button.
+    ![Screenshot des Dialogfelds „Neues Projekt“][1]
 
-    ![Screen shot of the New Project dialog box][1]
+    Das neue Webleistungs- und Auslastungstestprojekt sollte nun im Projektmappen-Explorer angezeigt werden
 
-    You should see a new Web Performance and Load Test project in Solution Explorer.
+    ![Screenshot des Projektmappen-Explorers mit dem neuen Projekt][2]
 
-    ![Screen shot of Solution Explorer showing the new project][2]
+### Aufzeichnen eines Webleistungstests
 
-### <a name="record-a-web-performance-test"></a>Record a web performance test
+1. Öffnen Sie das WEBTEST-Projekt.
 
-1. Open the .webtest project.
+2. Wählen Sie das Symbol **Aufzeichnung hinzufügen**, um eine Aufzeichnung in Ihrem Browser zu starten.
 
-2. Choose the **Add Recording** icon to start a recording session in your browser.
+    ![Screenshot des Symbols „Aufzeichnung hinzufügen“ in einem Browser][3]
 
-    ![Screen shot of the Add Recording icon in a browser][3]
+    ![Screenshot der Schaltfläche „Aufzeichnen“ in einem Browser][4]
 
-    ![Screen shot of the Record button in a browser][4]
+3. Navigieren Sie zur Service Fabric-Anwendung. Der Aufzeichnungsbereich sollte die Webanforderungen anzeigen.
 
-3. Browse to the Service Fabric application. The recording panel should show the web requests.
+    ![Screenshot der Webanfragen im Aufzeichnungsbereich][5]
 
-    ![Screen shot of web requests in the recording panel][5]
+4. Führen Sie eine Reihe von Aktionen aus, die wahrscheinlich auch von Ihren Benutzern ausgeführt werden. Diese Aktionen werden als Muster zum Generieren der Auslastung verwendet.
 
-4. Perform a sequence of actions that you expect the users to perform. These actions are used as a pattern to generate the load.
+5. Wenn Sie fertig sind, klicken Sie auf **Beenden**, um die Aufzeichnung zu beenden.
 
-5. When you're done, choose the **Stop** button to stop recording.
+    ![Screenshot der Schaltfläche „Beenden“][6]
 
-    ![Screen shot of the Stop button][6]
+    Das WEBTEST-Projekt in Visual Studio sollte nun eine Reihe von Anforderungen aufgezeichnet haben. Dynamische Parameter werden automatisch ersetzt. An dieser Stelle können Sie zusätzliche, wiederholte Abhängigkeitsanforderungen löschen, die nicht zu Ihrem Testszenario gehören.
 
-    The .webtest project in Visual Studio should have captured a series of requests. Dynamic parameters are replaced automatically. At this point, you can delete any extra, repeated dependency requests that are not part of your test scenario.
+6. Speichern Sie das Projekt, und wählen Sie dann den Befehl **Test ausführen**, um den Webleistungstest lokal auszuführen und sicherzustellen, dass alles ordnungsgemäß funktioniert.
 
-6. Save the project and then choose the **Run Test** command to run the web performance test locally and make sure everything works correctly.
+    ![Screenshot des Befehls „Test ausführen“][7]
 
-    ![Screen shot of the Run Test command][7]
+### Parametrisieren des Webleistungstests
 
-### <a name="parameterize-the-web-performance-test"></a>Parameterize the web performance test
+Sie können den Webleistungstest parametrisieren, indem Sie ihn in einen codierten Webleistungstest konvertieren und den Code anschließend bearbeiten. Alternativ dazu können Sie den Webleistungstest an eine Datenliste binden, sodass der Test die Daten durchläuft. Ausführliche Informationen dazu, wie Sie einen Webleistungstest in einen codierten Test konvertieren, finden Sie unter [Generieren und Ausführen eines codierten Webleistungstests](https://msdn.microsoft.com/library/ms182552.aspx). Informationen dazu, wie Sie Daten an einen Webleistungstest binden, finden Sie unter [Hinzufügen einer Datenquelle für einen Webleistungstest](https://msdn.microsoft.com/library/ms243142.aspx).
 
-You can parameterize the web performance test by converting it to a coded web performance test and then editing the code. As an alternative, you can bind the web performance test to a data list so that the test iterates through the data. See [Generate and run a coded web performance test](https://msdn.microsoft.com/library/ms182552.aspx) for details about how to convert the web performance test to a coded test. See [Add a data source to a web performance test](https://msdn.microsoft.com/library/ms243142.aspx) for information about how to bind data to a web performance test.
+Für das vorliegende Beispiel konvertieren wir den Webleistungstest in einen codierten Test, sodass Sie die Flugzeugkennung durch eine generierte GUID ersetzen und weitere Fluganforderungen für verschiedene Standorte hinzufügen können.
 
-For this example, we'll convert the web performance test to a coded test so you can replace the airplane ID with a generated GUID and add more requests to send flights to different locations.
+### Erstellen eines Auslastungstestprojekts
 
-### <a name="create-a-load-test-project"></a>Create a load test project
+Ein Auslastungstestprojekt besteht aus mindestens einem Szenario, das durch einen Webleistungstest und einen Komponententest beschrieben wird, sowie aus zusätzlichen festgelegten Einstellungen für den Auslastungstest. Die folgenden Schritte zeigen, wie Sie ein Auslastungstestprojekt erstellen:
 
-A load test project is composed of one or more scenarios described by the web performance test and unit test, along with additional specified load test settings. The following steps show how to create a load test project:
+1. Wählen Sie im Kontextmenü Ihres Webleistungs- und Auslastungstestprojekts die Optionen **Hinzufügen** > **Auslastungstest**. Klicken Sie im **Auslastungstest**-Assistenten auf die Schaltfläche **Weiter**, um die Testeinstellungen zu konfigurieren.
 
-1. On the shortcut menu of your Web Performance and Load Test project, choose **Add** > **Load Test**. In the **Load Test** wizard, choose the **Next** button to configure the test settings.
+2. Wählen Sie im Abschnitt **Auslastungsmuster** aus, ob Sie mit einer konstanten Benutzerauslastung oder einer schrittweise Auslastung testen möchten. Letztere beginnt mit wenigen Benutzern und erhöht die Anzahl der Benutzer im Lauf der Zeit.
 
-2. In the **Load Pattern** section, choose whether you want a constant user load or a step load, which starts with a few users and increases the users over time.
+    Wenn Sie die Benutzerauslastung einigermaßen sicher einschätzen können und die Leistung Ihres aktuellen Systems testen möchten, wählen Sie **Konstante Auslastung**. Wenn Sie dagegen herausfinden möchten, ob das System unter verschiedenen Auslastungen eine konsistente Leistung erbringt, wählen Sie **Schrittweise Auslastung**.
 
-    If you have a good estimate of the amount of user load and want to see how the current system performs, choose **Constant Load**. If your goal is to learn whether the system performs consistently under various loads, choose **Step Load**.
+3. Klicken Sie im Abschnitt **Testmischung** auf die Schaltfläche **Hinzufügen**, und wählen Sie den Test aus, den Sie in den Auslastungstest einschließen möchten. Sie können die Spalte **Verteilung** verwenden, um den Prozentsatz der Testläufe insgesamt für jeden Test anzugeben.
 
-3. In the **Test Mix** section, choose the **Add** button and then select the test that you want to include in the load test. You can use the **Distribution** column to specify the percentage of total tests run for each test.
+4. Geben Sie im Abschnitt **Testlaufeinstellungen** die Dauer des Auslastungstests an.
 
-4. In the **Run Settings** section, specify the load test duration.
+    >[AZURE.NOTE] Die Option **Testiterationen** ist nur verfügbar, wenn Sie einen Auslastungstest lokal über Visual Studio ausführen.
 
-    >[AZURE.NOTE] The **Test Iterations** option is available only when you run a load test locally using Visual Studio.
+5. Geben Sie im Abschnitt **Speicherort** der **Testlaufeinstellungen** das Verzeichnis an, in dem Auslastungstestanforderungen generiert werden. Der Assistent fordert Sie möglicherweise auf, sich bei Ihrem Team Services-Konto anzumelden. Melden Sie sich an, und wählen Sie dann einen geografischen Standort aus. Wenn Sie fertig sind, klicken Sie auf die Schaltfläche **Fertig stellen**.
 
-5. In the **Location** section of **Run Settings**, specify the location where load test requests are generated. The wizard may prompt you to log in to your Team Services account. Log in and then choose a geographic location. When you're done, choose the **Finish** button.
+6. Nachdem der Auslastungstest erstellt wurde, öffnen Sie das LOADTEST-Projekt, und wählen Sie die aktuelle Testlaufeinstellung aus, beispielsweise **Testlaufeinstellungen** > **Testlaufeinstellungen1 [Aktiv]**. Dadurch werden die Testlaufeinstellungen im Fenster **Eigenschaften** geöffnet.
 
-6. After the load test is created, open the .loadtest project and choose the current run setting, such as **Run Settings** > **Run Settings1 [Active]**. This opens the run settings in the **Properties** window.
+7. Im Abschnitt **Ergebnisse** des Fensters **Testlaufeinstellungen** sollte die Einstellung **Speicher für Details der zeitlichen Steuerung** den Standardwert **Keine** aufweisen. Ändern Sie diesen Wert in **Alle einzelnen Details**, um weitere Informationen zum Ergebnis des Auslastungstests zu erhalten. Informationen zum Herstellen einer Verbindung mit Visual Studio Team Services und zum Ausführen eines Auslastungstests finden Sie unter [Auslastungstests](https://www.visualstudio.com/load-testing.aspx).
 
-7. In the **Results** section of the **Run Settings** properties window, the **Timing Details Storage** setting should have **None** as its default value. Change this value to **All Individual Details** to get more information on the load test results. See [Load Testing](https://www.visualstudio.com/load-testing.aspx) for more information on how to connect to Visual Studio Team Services and run a load test.
+### Ausführen von Auslastungstests mit Visual Studio Team Services
 
-### <a name="run-the-load-test-by-using-visual-studio-team-services"></a>Run the load test by using Visual Studio Team Services
+Wählen Sie den Befehl **Auslastungstest ausführen**, um den Testlauf zu starten.
 
-Choose the **Run Load Test** command to start the test run.
+![Screenshot des Befehls „Auslastungstest ausführen“][8]
 
-![Screen shot of the Run Load Test command][8]
+## Anzeigen und Analysieren von Auslastungstestergebnissen
 
-## <a name="view-and-analyze-the-load-test-results"></a>View and analyze the load test results
+Während der Auslastungstest ausgeführt wird, werden Informationen zur Leistung in einem Diagramm dargestellt. Es sollte ein Diagramm ähnlich dem folgenden angezeigt werden.
 
-As the load test progresses, the performance information is graphed. You should see something similar to the following graph.
+![Screenshot des Leistungsdiagramms für Ergebnisse von Auslastungstests][9]
 
-![Screen shot of performance graph for load test results][9]
+1. Klicken Sie auf den Link **Bericht herunterladen** im oberen Bereich der Seite. Nachdem der Bericht heruntergeladen wurde, klicken Sie auf die Schaltfläche **Bericht anzeigen**.
 
-1. Choose the **Download report** link near the top of the page. After the report is downloaded, choose the **View report** button.
+    Auf der Registerkarte **Diagramm** können Sie Diagramme für verschiedene Leistungsindikatoren sehen. Auf der Registerkarte **Zusammenfassung** werden die Gesamtergebnisse des Tests angezeigt. Auf der Registerkarte **Tabellen** wird die Gesamtzahl an erfolgreichen und fehlerhaften Auslastungstests angezeigt.
 
-    On the **Graph** tab you can see graphs for various performance counters. On the **Summary** tab, the overall test results appear. The **Tables** tab shows the total number of passed and failed load tests.
+2. Klicken Sie auf die Links ///unter den Zahlen in den Spalten **Test** > **Fehler** sowie **Fehler** > **Anzahl**, um Details zu den Fehlern anzuzeigen.
 
-2. Choose the number links on the **Test** > **Failed** and the **Errors** > **Count** columns to see error details.
+    Auf der Registerkarte **Detail** werden Informationen zu den virtuellen Benutzern und dem Testszenario für fehlerhafte Anforderungen angezeigt. Diese Daten können hilfreich sein, wenn der Auslastungstest mehrere Szenarien umfasst.
 
-    The **Detail** tab shows virtual user and test scenario information for failed requests. This data can be useful if the load test includes multiple scenarios.
+Informationen zum Anzeigen der Ergebnisse von Auslastungstests finden Sie unter [Load testing](https://www.visualstudio.com/load-testing.aspx).
 
-See [Analyzing Load Test Results in the Graphs View of the Load Test Analyzer](https://www.visualstudio.com/load-testing.aspx) for more information on viewing load test results.
+## Automatisieren des Auslastungstests
 
-## <a name="automate-your-load-test"></a>Automate your load test
+Visual Studio Team Services-Auslastungstests stellen APIs bereit, die Sie in einem Team Services-Konto beim Verwalten von Auslastungstests und Analysieren von Ergebnissen unterstützen. Weitere Informationen finden Sie unter [Cloud Load Testing Rest APIs](http://blogs.msdn.com/b/visualstudioalm/archive/2014/11/03/cloud-load-testing-rest-apis-are-here.aspx).
 
-Visual Studio Team Services Load Test provides APIs to help you manage load tests and analyze results in a Team Services account. See [Cloud Load Testing Rest APIs](http://blogs.msdn.com/b/visualstudioalm/archive/2014/11/03/cloud-load-testing-rest-apis-are-here.aspx) for more information.
-
-## <a name="next-steps"></a>Next steps
-- [Monitoring and diagnosing services in a local machine development setup](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+## Nächste Schritte
+- [Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [0]: ./media/service-fabric-vso-load-test/OverviewDiagram.png
 [1]: ./media/service-fabric-vso-load-test/NewProjectDialog.png
@@ -142,8 +141,4 @@ Visual Studio Team Services Load Test provides APIs to help you manage load test
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

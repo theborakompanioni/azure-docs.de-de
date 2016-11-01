@@ -1,55 +1,50 @@
 <properties
-    pageTitle="Create multiple virtual machines | Microsoft Azure"
-    description="Options for creating multiple virtual machines on Windows"
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="gbowerman"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Erstellen mehrerer virtueller Computer | Microsoft Azure"
+	description="Optionen für das Erstellen mehrerer virtueller Computer unter Windows"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="gbowerman"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="05/02/2016"
-    ms.author="guybo"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/02/2016"
+	ms.author="guybo"/>
 
+# Erstellen mehrerer virtueller Azure-Computer
 
-# <a name="create-multiple-azure-virtual-machines"></a>Create multiple Azure virtual machines
+In vielen Szenarios müssen Sie eine große Anzahl ähnlicher virtueller Computer erstellen. Beispiele hierfür sind High Performance Computing (HPC), umfangreiche Datenanalysen, skalierbare und häufig zustandslose Server auf mittlerer Ebene oder Back-End-Server (z.B. Webserver) und verteilte Datenbanken.
 
-There are many scenarios where you need to create a large number of similar virtual machines (VMs). Some examples include high-performance computing (HPC), large-scale data analysis, scalable and often stateless middle-tier or backend servers (such as webservers), and distributed databases.
+In diesem Artikel werden die verfügbaren Optionen zum Erstellen mehrerer virtueller Computer in Azure beschrieben. Diese Optionen gehen über die einfachen Fälle hinaus, bei denen Sie mehrere virtuelle Computer manuell erstellen. Wenn Sie eine größere Anzahl virtueller Computer erstellen müssen, lassen sich die normalerweise durchgeführten Vorgänge nicht so gut skalieren, wie dies bei der Erstellung einer Handvoll virtueller Computer der Fall ist.
 
-This article discusses the available options to create multiple VMs in Azure. These options go beyond the simple cases where you manually create a series of VMs. To create many VMs, the processes that you typically use don't scale well if you need to create more than a handful of VMs.
+Eine Möglichkeit zum Erstellen vieler ähnlicher virtueller Computer besteht in der Verwendung des Azure Resource Manager-Konstrukts der _Ressourcenschleifen_.
 
-One way to create many similar VMs is to use the Azure Resource Manager construct of _resource loops_.
+## Ressourcenschleifen
 
-## <a name="resource-loops"></a>Resource loops
+Ressourcenschleifen sind eine syntaktische Kurzform in Azure Resource Manager-Vorlagen. Mit Ressourcenschleifen lässt sich eine Gruppe ähnlich konfigurierter Ressourcen in einer Schleife erstellen. Sie können mit Ressourcenschleifen mehrere Speicherkonten, Netzwerkschnittstellen oder virtuelle Computer erstellen. Weitere Informationen zu Ressourcenschleifen finden Sie unter [Create VMs in Availability Sets using Resource Loops](https://azure.microsoft.com/documentation/templates/201-vm-copy-index-loops/) (Erstellen von virtuellen Computern in Verfügbarkeitsgruppen mithilfe von Ressourcenschleifen).
 
-Resource loops are a syntactical shorthand in Azure Resource Manager templates. Resource loops can create a set of similarly configured resources in a loop. You can use resource loops to create multiple storage accounts, network interfaces, or virtual machines. For more information about resource loops, refer to [Create VMs in availability sets using resource loops](https://azure.microsoft.com/documentation/templates/201-vm-copy-index-loops/).
+## Herausforderungen bei der Skalierung
 
-## <a name="challenges-of-scale"></a>Challenges of scale
+Obwohl Ressourcenschleifen die Erstellung einer umfangreichen Cloudinfrastruktur einfacher gestalten und präzisere Vorlagen liefern, bleiben bestimmte Probleme bestehen. Beim Erstellen von 100 virtuellen Computern mit einer Ressourcenschleife müssen Sie z.B. die Netzwerkschnittstellenkarten (NICs) mit den entsprechenden virtuellen Computern und Speicherkonten korrelieren. Da sich die Anzahl der virtuellen Computer wahrscheinlich von der Anzahl der Speicherkonten unterscheidet, unterscheiden sich auch die Größen der Ressourcenschleifen. Dies sind lösbare Probleme, aber die Komplexität nimmt mit zunehmender Größe erheblich zu.
 
-Although resource loops make it easier to build out a cloud infrastructure at scale and produce more concise templates, certain challenges remain. For example, if you use a resource loop to create 100 virtual machines, you need to correlate network interface controllers (NICs) with corresponding VMs and storage accounts. Because the number of VMs is likely to be different from the number of storage accounts, you'll have to deal with different resource loop sizes, too. These are solvable problems, but the complexity increases significantly with scale.
+Eine weitere Herausforderung entsteht, wenn Sie eine Infrastruktur mit elastischer Skalierung benötigen, beispielsweise eine Infrastruktur mit automatischer Skalierung, bei der die Anzahl der virtuellen Computer als Reaktion auf die Workload automatisch erhöht oder verringert wird. Virtuelle Computer bieten keinen integrierten Mechanismus zum Variieren der Anzahl (horizontales Hoch- und Herunterskalieren). Wenn Sie durch das Entfernen von virtuellen Computern horizontal herunterskalieren, ist die Sicherstellung einer hohen Verfügbarkeit durch die gleichmäßige Verteilung der virtuellen Computer über Update- und Fehlerdomänen nur schwer zu gewährleisten.
 
-Another challenge occurs when you need an infrastructure that scales elastically. For example, you might want an autoscale infrastructure that automatically increases or decreases the number of VMs in response to workload. VMs don't provide an integrated mechanism to vary in number (scale out and scale in). If you scale in by removing VMs, it's difficult to guarantee high availability by making sure that VMs are balanced across update and fault domains.
+Bei Verwendung einer Ressourcenschleife gehen schließlich mehrere Aufrufe zum Erstellen von Ressourcen an das zugrunde liegende Fabric. Wenn mit mehreren Aufrufen ähnliche Ressourcen erstellt werden, besteht in Azure die implizite Möglichkeit, diesen Entwurf zu verbessern und die Zuverlässigkeit und Leistung bei der Bereitstellung zu optimieren. Hier werden _VM-Skalierungsgruppen_ relevant.
 
-Finally, when you use a resource loop, multiple calls to create resources go to the underlying fabric. When multiple calls create similar resources, Azure has an implicit opportunity to improve upon this design and optimize deployment reliability and performance. This is where _virtual machine scale sets_ come in.
+## VM-Skalierungsgruppen
 
-## <a name="virtual-machine-scale-sets"></a>Virtual machine scale sets
+VM-Skalierungsgruppen sind eine Azure Cloud Services-Ressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Wenn alle virtuellen Computer identisch konfiguriert sind, lassen sich VM-Skalierungsgruppen einfach horizontal herunter- und hochskalieren. Dazu ändern Sie einfach die Anzahl der virtuellen Computer in der Gruppe. Zudem können Sie VM-Skalierungsgruppen basierend auf den Anforderungen der Workload für die automatische Skalierung konfigurieren.
 
-Virtual machine scale sets are an Azure Cloud Services resource to deploy and manage a set of identical VMs. With all VMs configured the same, VM scale sets are easy to scale in and scale out. You simply change the number of VMs in the set. You can also configure VM scale sets to autoscale based on the demands of the workload.
+Bei Anwendungen, für die Computeressourcen horizontal herunter- und hochskaliert werden müssen, werden Skalierungsoperationen implizit über Fehler- und Updatedomänen ausgeglichen.
 
-For applications that need to scale compute resources out and in, scale operations are implicitly balanced across fault and update domains.
+Statt der Korrelation mehrerer Ressourcen wie z.B. Netzwerkschnittstellenkarten und virtueller Computer verfügt eine VM-Skalierungsgruppe über Eigenschaften für Netzwerk, Speicher, virtuelle Computer und Erweiterungen, die zentral konfiguriert werden können.
 
-Instead of correlating multiple resources such as NICs and VMs, a VM scale set has network, storage, virtual machine, and extension properties that you can configure centrally.
+Eine Einführung in VM-Skalierungsgruppen finden Sie auf der [Produktseite für Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/). Ausführlichere Informationen finden Sie in der [Dokumentation zu Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/).
 
-For an introduction to VM scale sets, refer to the [Virtual machine scale sets product page](https://azure.microsoft.com/services/virtual-machine-scale-sets/). For more detailed information, go to the [Virtual machines scale sets documentation](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0518_2016-->

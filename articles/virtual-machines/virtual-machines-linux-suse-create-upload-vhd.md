@@ -1,216 +1,211 @@
 <properties
-    pageTitle="Create and upload a SUSE Linux VHD in Azure"
-    description="Learn to create and upload an Azure virtual hard disk (VHD) that contains a SUSE Linux operating system."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="szarkos"
-    manager="timlt"
-    editor="tysonn"
-    tags="azure-resource-manager,azure-service-management"/>
+	pageTitle="Erstellen und Hochladen einer SUSE-Linux-VHD in Azure"
+	description="Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein SUSE-Linux-Betriebssystem enthält."
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="szarkos"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/24/2016"
-    ms.author="szark"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2016"
+	ms.author="szark"/>
 
-
-# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Prepare a SLES or openSUSE virtual machine for Azure
+# Vorbereiten eines virtuellen SLES- oder openSUSE-Computers für Azure
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Prerequisites ##
+## Voraussetzungen ##
 
-This article assumes that you have already installed a SUSE or openSUSE Linux operating system to a virtual hard disk. Multiple tools exist to create .vhd files, for example a virtualization solution such as Hyper-V. For instructions, see [Install the Hyper-V Role and Configure a Virtual Machine](http://technet.microsoft.com/library/hh846766.aspx).
+In diesem Artikel wird davon ausgegangen, dass Sie bereits ein SUSE- oder openSUSE-Linux-Betriebssystem auf einer virtuellen Festplatte installiert haben. Sie können VHD-Dateien mit unterschiedlichen Tools erstellen, beispielsweise mit einer Virtualisierungslösung wie Hyper-V. Anweisungen hierzu finden Sie unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](http://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="sles-/-opensuse-installation-notes"></a>SLES / openSUSE installation notes
+### Installationshinweise zu SLES/openSUSE
 
-- Please see also [General Linux Installation Notes](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes) for more tips on preparing Linux for Azure.
+- Beachten Sie auch die [allgemeinen Installationshinweise für Linux](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes). Dort erhalten Sie weitere Tipps zur Vorbereitung von Linux für Azure.
 
-- The VHDX format is not supported in Azure, only **fixed VHD**.  You can convert the disk to VHD format using Hyper-V Manager or the convert-vhd cmdlet.
+- Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit dem Hyper-V-Manager oder dem convert-vhd-Cmdlet in das VHD-Format konvertieren.
 
-- When installing the Linux system it is recommended that you use standard partitions rather than LVM (often the default for many installations). This will avoid LVM name conflicts with cloned VMs, particularly if an OS disk ever needs to be attached to another VM for troubleshooting. [LVM](virtual-machines-linux-configure-lvm.md) or [RAID](virtual-machines-linux-configure-raid.md) may be used on data disks if preferred.
+- Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. [LVM](virtual-machines-linux-configure-lvm.md) oder [RAID](virtual-machines-linux-configure-raid.md) können bei Bedarf auf Datenträgern verwendet werden.
 
-- Do not configure a swap partition on the OS disk. The Linux agent can be configured to create a swap file on the temporary resource disk.  More information about this can be found in the steps below.
+- Konfigurieren Sie keine SWAP-Partition auf einem Betriebssystemdatenträger. Der Linux-Agent kann konfiguriert werden, eine Auslagerungsdatei auf dem temporären Ressourcendatenträger zu erstellen. Weitere Informationen dazu finden Sie in den folgenden Schritten.
 
-- All of the VHDs must have sizes that are multiples of 1 MB.
-
-
-## <a name="use-suse-studio"></a>Use SUSE Studio
-[SUSE Studio](http://www.susestudio.com) can easily create and manage your SLES and openSUSE images for Azure and Hyper-V. This is the recommended approach for customizing your own SLES and openSUSE images.
-
-As an alternative to building your own VHD, SUSE also publishes BYOS (Bring Your Own Subscription) images for SLES at [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007).
+- Alle virtuellen Festplatten müssen eine Größe aufweisen, die ein Vielfaches von 1 MB ist.
 
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Prepare SUSE Linux Enterprise Server 11 SP4 ##
+## Verwenden von SUSE Studio
+Mit [SUSE Studio](http://www.susestudio.com) können Sie Ihre SLES- und openSUSE-Images für Azure und Hyper-V auf einfache Weise erstellen und verwalten. Diese Vorgehensweise wird zum Anpassen Ihrer eigenen SLES- und openSUSE-Images empfohlen.
 
-1. In the center pane of Hyper-V Manager, select the virtual machine.
+Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007) auch BYOS-Images (Bring Your Own Subscription) für SLES.
 
-2. Click **Connect** to open the window for the virtual machine.
 
-3. Register your SUSE Linux Enterprise system to allow it to download updates and install packages.
+## Vorbereiten von SUSE Linux Enterprise Server 11 SP4 ##
 
-4. Update the system with the latest patches:
+1. Wählen Sie den virtuellen Computer im mittleren Fensterbereich des Hyper-V-Managers.
 
-        # sudo zypper update
+2. Klicken Sie auf **Verbinden**, um das Fenster für den virtuellen Computer zu öffnen.
 
-5. Install the Azure Linux Agent from the SLES repository:
+3. Registrieren Sie Ihr SUSE Linux Enterprise-System, um das Herunterladen von Updates und das Installieren von Paketen zu ermöglichen.
 
-        # sudo zypper install WALinuxAgent
+4. Aktualisieren Sie das System mit den neuesten Patches:
 
-6. Check if waagent is set to "on" in chkconfig, and if not, enable it for autostart:
+		# sudo zypper update
+
+5. Installieren Sie den Azure Linux Agent aus dem SLES-Repository:
+
+		# sudo zypper install WALinuxAgent
+
+6. Prüfen Sie, ob waagent in "chkconfig" aktiviert ist. Ist dies nicht der Fall, legen Sie den Autostart fest:
                
-        # sudo chkconfig waagent on
+		# sudo chkconfig waagent on
 
-7. Check if waagent service is running, and if not, start it: 
+7. Überprüfen Sie, ob der waagent-Dienst ausgeführt wird. Ist dies nicht der Fall, starten Sie ihn:
 
-        # sudo service waagent start
+		# sudo service waagent start
                 
-8. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this open "/boot/grub/menu.lst" in a text editor and ensure that the default kernel includes the following parameters:
+8. Modifizieren Sie die Boot-Zeile des Kernels in Ihrer Grub-Konfiguration, um zusätzliche Kernel-Parameter für Azure einzubinden. Öffnen Sie dafür „/boot/grub/menu.lst“ in einem Text-Editor. Stellen Sie sicher, dass der Standardkernel die folgenden Parameter enthält:
 
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+		console=ttyS0 earlyprintk=ttyS0 rootdelay=300
 
-    This will ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues.
+	Dadurch wird sichergestellt, dass alle Konsolennachrichten zum ersten seriellen Port gesendet werden. Dieser kann Azure bei der Behebung von Fehlern unterstützen.
 
-9. Confirm that /boot/grub/menu.lst and /etc/fstab both reference the disk using its UUID (by-uuid) instead of the disk ID (by-id). 
+9. Vergewissern Sie sich, dass "/boot/grub/menu.lst" und "/etc/fstab" mit der UUID (by-uuid) auf den Datenträger verweisen und nicht mit der Datenträger-ID (by-id).
 
-    Get disk UUID
-    
-        # ls /dev/disk/by-uuid/
+	Abrufen der Datenträger-UUID
+	
+		# ls /dev/disk/by-uuid/
 
-    If /dev/disk/by-id/ is used, update both /boot/grub/menu.lst and /etc/fstab with the proper by-uuid value
+	Bei Verwendung von "/dev/disk/by-id/" aktualisieren Sie "/boot/grub/menu.lst" und "/etc/fstab" mit dem ordnungsgemäßen "by-uuid"-Wert.
 
-    Before change
-    
-        root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1
+	Vor der Änderung
+	
+		root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1
 
-    After change
-    
-        root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+	Nach der Änderung
+	
+		root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-10. Modify udev rules to avoid generating static rules for the Ethernet interface(s). These rules can cause problems when cloning a virtual machine in Microsoft Azure or Hyper-V:
+10. Ändern Sie die udev-Regeln, um eine Generierung statischer Regeln für die Ethernet-Schnittstelle(n) zu vermeiden. Diese Regeln können beim Klonen eines virtuellen Computers unter Microsoft Azure oder Hyper-V zu Problemen führen:
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+		# sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+		# sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-11. It is recommended to edit the file "/etc/sysconfig/network/dhcp" and change the `DHCLIENT_SET_HOSTNAME` parameter to the following:
+11.	Es wird empfohlen, die Datei "/etc/sysconfig/network/dhcp" zu bearbeiten und den Parameter `DHCLIENT_SET_HOSTNAME` wie folgt zu ändern:
 
-        DHCLIENT_SET_HOSTNAME="no"
+		DHCLIENT_SET_HOSTNAME="no"
 
-12. In "/etc/sudoers", comment out or remove the following lines if they exist:
+12.	Kommentieren Sie in „/etc/sudoers“ die folgenden Zeilen aus, sofern sie vorhanden sind, oder entfernen Sie sie:
 
-        Defaults targetpw   # ask for the password of the target user i.e. root
-        ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+		Defaults targetpw   # ask for the password of the target user i.e. root
+		ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
 
-13. Ensure that the SSH server is installed and configured to start at boot time.  This is usually the default.
+13.	Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt. Dies ist für gewöhnlich die Standardeinstellung.
 
-14. Do not create swap space on the OS disk.
+14.	Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
 
-    The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure. Note that the local resource disk is a *temporary* disk, and might be emptied when the VM is deprovisioned. After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
+	Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Modifizieren Sie nach dem Installieren des Azure Linux Agent (siehe vorheriger Schritt) die folgenden Parameter in /etc/waagent.conf entsprechend:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+		ResourceDisk.Format=y
+		ResourceDisk.Filesystem=ext4
+		ResourceDisk.MountPoint=/mnt/resource
+		ResourceDisk.EnableSwap=y
+		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-15. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+15.	Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
 
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+		# sudo waagent -force -deprovision
+		# export HISTSIZE=0
+		# logout
 
-16. Click **Action -> Shut Down** in Hyper-V Manager. Your Linux VHD is now ready to be uploaded to Azure.
+16. Klicken Sie im Hyper-V-Manager auf **Aktion -> Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
 
 ----------
 
-## <a name="prepare-opensuse-13.1+"></a>Prepare openSUSE 13.1+ ##
+## Vorbereiten von openSUSE 13.1+ ##
 
-1. In the center pane of Hyper-V Manager, select the virtual machine.
+1. Wählen Sie den virtuellen Computer im mittleren Fensterbereich des Hyper-V-Managers.
 
-2. Click **Connect** to open the window for the virtual machine.
+2. Klicken Sie auf **Verbinden**, um das Fenster für den virtuellen Computer zu öffnen.
 
-3. On the shell, run the command '`zypper lr`'. If this command returns output similar to the following, then the repositories are configured as expected--no adjustments are necessary (note that version numbers may vary):
+3. Führen Sie in der Shell den Befehl "`zypper lr`" aus. Wenn dieser Befehl den folgenden ähnelnde Ausgaben zurückgibt, sind Repositorys erwartungsgemäß konfiguriert, und es sind keine Anpassungen erforderlich (Versionsnummern können abweichen):
 
-        # | Alias                 | Name                  | Enabled | Refresh
-        --+-----------------------+-----------------------+---------+--------
-        1 | Cloud:Tools_13.1      | Cloud:Tools_13.1      | Yes     | Yes
-        2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
-        3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
+		# | Alias                 | Name                  | Enabled | Refresh
+		--+-----------------------+-----------------------+---------+--------
+		1 | Cloud:Tools_13.1      | Cloud:Tools_13.1      | Yes     | Yes
+		2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
+		3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
 
-    If the command returns "No repositories defined..." then use the following commands to add these repos:
+	Wenn der Befehl „No repositories defined...“ zurückgibt, verwenden Sie die folgenden Befehle zum Hinzufügen dieser Repositorys:
 
-        # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
-        # sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
-        # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
+		# sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
+		# sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
+		# sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
 
-    You can then verify the repositories have been added by running the command '`zypper lr`' again. In case one of the relevant update repositories is not enabled, enable it with following command:
+	Sie können dann überprüfen, ob die Repositorys hinzugefügt wurden, indem Sie den Befehl "`zypper lr`" erneut ausführen. Falls eines der relevanten Update-Repositorys nicht aktiviert ist, können Sie es mit dem folgenden Befehl aktivieren:
 
-        # sudo zypper mr -e [NUMBER OF REPOSITORY]
-
-
-4. Update the kernel to the latest available version:
-
-        # sudo zypper up kernel-default
-
-    Or to update the system with all the latest patches:
-
-        # sudo zypper update
-
-5.  Install the Azure Linux Agent.
-
-        # sudo zypper install WALinuxAgent
-
-6.  Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this, open "/boot/grub/menu.lst" in a text editor and ensure that the default kernel includes the following parameters:
-
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-
-    This will ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues. In addition, remove the following parameters from the kernel boot line if they exist:
-
-        libata.atapi_enabled=0 reserve=0x1f0,0x8
-
-7.  It is recommended to edit the file "/etc/sysconfig/network/dhcp" and change the `DHCLIENT_SET_HOSTNAME` parameter to the following:
-
-        DHCLIENT_SET_HOSTNAME="no"
-
-8.  **Important:** In "/etc/sudoers", comment out or remove the following lines if they exist:
-
-        Defaults targetpw   # ask for the password of the target user i.e. root
-        ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-
-9.  Ensure that the SSH server is installed and configured to start at boot time.  This is usually the default.
-
-10. Do not create swap space on the OS disk.
-
-    The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure. Note that the local resource disk is a *temporary* disk, and might be emptied when the VM is deprovisioned. After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
-
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-
-11. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
-
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
-
-12. Ensure the Azure Linux Agent runs at startup:
-
-        # sudo systemctl enable waagent.service
-
-13. Click **Action -> Shut Down** in Hyper-V Manager. Your Linux VHD is now ready to be uploaded to Azure.
-
-## <a name="next-steps"></a>Next steps
-You're now ready to use your SUSE Linux virtual hard disk to create new virtual machines in Azure. If this is the first time that you're uploading the .vhd file to Azure, see steps 2 and 3 in [Creating and uploading a virtual hard disk that contains the Linux operating system](virtual-machines-linux-classic-create-upload-vhd.md).
+		# sudo zypper mr -e [NUMBER OF REPOSITORY]
 
 
+4. Aktualisieren Sie den Kernel auf die neueste verfügbare Version:
 
-<!--HONumber=Oct16_HO2-->
+		# sudo zypper up kernel-default
 
+	Oder aktualisieren Sie das System mit allen neuen Patches:
 
+		# sudo zypper update
+
+5.	Installieren des Azure Linux Agent:
+
+		# sudo zypper install WALinuxAgent
+
+6.	Modifizieren Sie die Boot-Zeile des Kernels in Ihrer Grub-Konfiguration, um zusätzliche Kernel-Parameter für Azure einzubinden. Öffnen Sie dafür "/boot/grub/menu.lst" in einem Text-Editor. Stellen Sie sicher, dass der Standardkernel die folgenden Parameter enthält:
+
+		console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+
+	Dadurch wird sichergestellt, dass alle Konsolennachrichten zum ersten seriellen Port gesendet werden. Dieser kann Azure bei der Behebung von Fehlern unterstützen. Entfernen Sie außerdem die folgenden Parameter aus der Kernel-Boot-Zeile, sofern diese vorhanden sind:
+
+		libata.atapi_enabled=0 reserve=0x1f0,0x8
+
+7.	Es wird empfohlen, die Datei "/etc/sysconfig/network/dhcp" zu bearbeiten und den Parameter `DHCLIENT_SET_HOSTNAME` wie folgt zu ändern:
+
+		DHCLIENT_SET_HOSTNAME="no"
+
+8.	**Wichtig:** Kommentieren Sie in "/etc/sudoers" die folgenden Zeilen aus, oder entfernen Sie sie, sofern vorhanden:
+
+		Defaults targetpw   # ask for the password of the target user i.e. root
+		ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+
+9.	Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt. Dies ist für gewöhnlich die Standardeinstellung.
+
+10.	Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
+
+	Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Modifizieren Sie nach dem Installieren des Azure Linux Agent (siehe vorheriger Schritt) die folgenden Parameter in /etc/waagent.conf entsprechend:
+
+		ResourceDisk.Format=y
+		ResourceDisk.Filesystem=ext4
+		ResourceDisk.MountPoint=/mnt/resource
+		ResourceDisk.EnableSwap=y
+		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+
+11.	Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
+
+		# sudo waagent -force -deprovision
+		# export HISTSIZE=0
+		# logout
+
+12. Stellen Sie sicher, dass der Azure Linux Agent beim Start ausgeführt wird:
+
+		# sudo systemctl enable waagent.service
+
+13. Klicken Sie im Hyper-V-Manager auf **Aktion -> Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
+
+## Nächste Schritte
+Sie können jetzt mit Ihrer SUSE-Linux-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md) aus.
+
+<!---HONumber=AcomDC_0831_2016-->

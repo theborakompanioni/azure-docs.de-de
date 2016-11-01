@@ -1,15 +1,11 @@
-## <a name="service-chaining---transit-through-peered-vnet"></a>Service Chaining - Transit through peered VNet
+## Dienstverkettung – Transit über verknüpftes VNet
 
-Although the use of system routes facilitates traffic automatically for your deployment, there are cases in which you want to control the routing of packets through a virtual appliance.
-In this scenario, there are two VNets in a subscription, HubVNet and VNet1 as described in the diagram below. You deploy Network Virtual Appliance(NVA) in VNet HubVNet. After establishing VNet peering between HubVNet and VNet1, you can set up User Defined Routes and specify the next hop to NVA in the HubVNet.
+Obwohl durch die Verwendung von Systemrouten der Datenverkehr für Ihre Bereitstellung automatisch ermöglicht wird, gibt es Fälle, in denen Sie das Routing von Paketen über ein virtuelles Gerät steuern möchten. Bei diesem Szenario sind in einem Abonnement zwei VNets enthalten, und zwar HubVNet und VNet1. Dies ist unten im Diagramm beschrieben. Sie stellen das virtuelle Netzwerkgerät (Network Virtual Appliance, NVA) im VNet „HubVNet“ bereit. Nach dem Einrichten des VNet-Peerings zwischen HubVNet und VNet1 können Sie benutzerdefinierte Routen einrichten und den nächsten Hop zum virtuellen Netzwerkgerät in HubVNet angeben.
 
-![NVA Transit](./media/virtual-networks-create-vnetpeering-scenario-transit-include/figure01.PNG)
+![Transitvorgang für das virtuelle Netzwerkgerät](./media/virtual-networks-create-vnetpeering-scenario-transit-include/figure01.PNG)
 
-> [AZURE.NOTE] For the simplicity, assume all VNets here are in the same subscription. But it also works for cross-subscription scenario.
+> [AZURE.NOTE] Der Einfachheit halber wird hier angenommen, dass sich alle VNets in demselben Abonnement befinden. Der Ansatz funktioniert aber auch für das abonnementübergreifende Szenario.
 
-The key property to enable Transit routing is the "Allow Forwarded Traffic" parameter. This allows accepting and sending traffic from/to the NVA in the peered VNet.  
+Die wichtigste Eigenschaft für das Transitrouting ist der Parameter „Allow Forwarded Traffic“ (Weitergeleiteten Datenverkehr zulassen). Er ermöglicht das Akzeptieren und Senden von Datenverkehr vom virtuellen und an das virtuelle Netzwerkgerät im verknüpften VNet.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

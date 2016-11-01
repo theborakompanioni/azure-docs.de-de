@@ -1,64 +1,59 @@
 <properties
-    pageTitle="Controlling Azure CDN caching behavior of requests with query strings | Microsoft Azure"
-    description="Azure CDN query string caching controls how files are to be cached when they contain query strings."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="Steuern des Azure CDN-Zwischenspeicherverhaltens von Anforderungen mit Abfragezeichenfolgen | Microsoft Azure"
+	description="Das Zwischenspeichern von Azure CDN-Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn diese Abfragezeichenfolgen enthalten."
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/28/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2016"
+	ms.author="casoper"/>
 
-
-#<a name="controlling-caching-behavior-of-cdn-requests-with-query-strings"></a>Controlling caching behavior of CDN requests with query strings
+#Steuern des Zwischenspeicherverhaltens von CDN-Anforderungen mit Abfragezeichenfolgen
 
 > [AZURE.SELECTOR]
 - [Standard](cdn-query-string.md)
-- [Azure CDN Premium from Verizon](cdn-query-string-premium.md)
+- [Azure CDN Premium von Verizon](cdn-query-string-premium.md)
 
-##<a name="overview"></a>Overview
+##Übersicht
 
-Query string caching controls how files are to be cached when they contain query strings.
+Das Zwischenspeichern von Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn sie Abfragezeichenfolgen enthalten.
 
-> [AZURE.IMPORTANT] The Standard and Premium CDN products provide the same query string caching functionality, but the user interface differs.  This document describes the interface for **Azure CDN Standard from Akamai** and **Azure CDN Standard from Verizon**.  For query string caching with **Azure CDN Premium from Verizon**, see [Controlling caching behavior of CDN requests with query strings - Premium](cdn-query-string-premium.md).
+> [AZURE.IMPORTANT] Die CDN-Produkte „Standard“ und „Premium“ bieten die gleiche Funktionalität zum Zwischenspeichern von Abfragezeichenfolgen, jedoch mit einer anderen Benutzeroberfläche. Dieses Dokument beschreibt die Benutzeroberfläche für **Azure CDN Standard von Akamai** und **Azure CDN Standard von Verizon**. Informationen zum Zwischenspeichern von Abfragezeichenfolgen mit **Azure CDN Premium von Verizon** finden Sie unter [Steuern des Zwischenspeicherverhaltens von CDN-Anforderungen mit Abfragezeichenfolgen – Premium](cdn-query-string-premium.md).
 
-Three modes are available:
+Die folgenden drei Modi sind verfügbar:
 
-- **Ignore query strings**:  This is the default mode.  The CDN edge node will pass the query string from the requestor to the origin on the first request and cache the asset.  All subsequent requests for that asset that are served from the edge node will ignore the query string until the cached asset expires.
-- **Bypass caching for URL with query strings**:  In this mode, requests with query strings are not cached at the CDN edge node.  The edge node retrieves the asset directly from the origin and passes it to the requestor with each request.
-- **Cache every unique URL**:  This mode treats each request with a query string as a unique asset with its own cache.  For example, the response from the origin for a request for *foo.ashx?q=bar* would be cached at the edge node and returned for subsequent caches with that same query string.  A request for *foo.ashx?q=somethingelse* would be cached as a separate asset with its own time to live.
+- **Abfragezeichenfolgen ignorieren**: Dies ist der Standardmodus. Der CDN-Edgeknoten übergibt die Abfragezeichenfolge bei der ersten Anforderung vom Anforderer an den Ursprung und speichert das Objekt im Cache. Alle nachfolgenden Anforderungen dieses Objekts, die vom Edgeknoten verarbeitet werden, ignorieren die Abfragezeichenfolge bis zum Ablauf des zwischengespeicherten Objekts.
+- **Cachingumgehung für URLs mit Abfragezeichenfolgen**: In diesem Modus werden Anforderungen mit Abfragezeichenfolgen nicht auf dem CDN-Edgeknoten zwischengespeichert. Der Edgeknoten ruft das Objekt direkt vom Ursprung ab und übergibt es bei jeder Anforderung an den Anforderer.
+- **Cache für eindeutige URL**: In diesem Modus wird jede Anforderung mit einer Abfragezeichenfolge als eindeutiges Objekt mit eigenem Cache behandelt. So wird z. B. die Antwort vom Ursprung für eine Anforderung für *foo.ashx?q=bar* auf dem Edgeknoten zwischengespeichert und für nachfolgende Caches mit der gleichen Abfragezeichenfolge zurückgegeben. Eine Anforderung für *foo.ashx?q=etwasanderes* wird als separates Asset mit eigener Lebensdauer zwischengespeichert.
 
-##<a name="changing-query-string-caching-settings-for-standard-cdn-profiles"></a>Changing query string caching settings for standard CDN profiles
+##Ändern der Einstellungen für das Zwischenspeichern von Abfragezeichenfolgen für CDN-Standardprofile
 
-1. From the CDN profile blade, click the CDN endpoint you wish to manage.
+1. Klicken Sie auf dem Blatt „CDN-Profil“ auf den CDN-Endpunkt, den Sie verwalten möchten.
 
-    ![CDN profile blade endpoints](./media/cdn-query-string/cdn-endpoints.png)
+	![Blade-Endpunkte für CDN-Profile](./media/cdn-query-string/cdn-endpoints.png)
 
-    The CDN endpoint blade opens.
+	Das Blatt „CDN-Endpunkt“ öffnet sich.
 
-2. Click the **Configure** button.
+2. Klicken Sie auf die Schaltfläche **Konfigurieren**.
 
-    ![CDN profile blade manage button](./media/cdn-query-string/cdn-config-btn.png)
+	![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-query-string/cdn-config-btn.png)
 
-    The CDN Configuration blade opens.
+	Es wird das Blatt „CDN-Konfiguration“ geöffnet.
 
-3. Select a setting from the **Query string caching behavior** dropdown.
+3. Wählen Sie eine Einstellung aus der Dropdown-Liste **Verhalten beim Zwischenspeichern von Abfragezeichenfolgen**.
 
-    ![CDN query string caching options](./media/cdn-query-string/cdn-query-string.png)
+	![Zwischenspeicherungsoptionen für CDN-Abfragezeichenfolgen](./media/cdn-query-string/cdn-query-string.png)
 
-4. After making your selection, click the **Save** button.
+4. Treffen Sie Ihre Auswahl, und klicken Sie auf **Speichern**.
 
-> [AZURE.IMPORTANT] The settings changes may not be immediately visible, as it takes time for the registration to propagate through the CDN.  For <b>Azure CDN from Akamai</b> profiles, propagation will usually complete within one minute.  For <b>Azure CDN from Verizon</b> profiles, propagation will usually complete within 90 minutes, but in some cases can take longer.
+> [AZURE.IMPORTANT] Diese Einstellungsänderungen sind vielleicht nicht sofort sichtbar, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. Bei <b>Azure CDN von Akamai</b>-Profilen ist die Weitergabe in der Regel innerhalb einer Minute abgeschlossen. Bei <b>Azure CDN von Verizon</b>-Profilen ist die Weitergabe in der Regel in 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

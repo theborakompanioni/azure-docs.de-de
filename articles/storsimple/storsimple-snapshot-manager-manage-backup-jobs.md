@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager backup jobs | Microsoft Azure"
-   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to view and manage scheduled, currently running, and completed backup jobs."
+   pageTitle="StorSimple Snapshot Manager-Sicherungsaufträge | Microsoft Azure"
+   description="Beschreibt, wie das MMC-Snap-in von StorSimple Snapshot Manager zum Anzeigen und Verwalten von geplanten, aktuell ausgeführten und abgeschlossenen Sicherungsaufträge verwendet wird."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -16,101 +16,100 @@
    ms.author="v-sharos" />
 
 
+# Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen
 
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Use StorSimple Snapshot Manager to view and manage backup jobs
+## Übersicht
 
-## <a name="overview"></a>Overview
+Der **Aufträge**-Knoten im Fenster **Bereich** zeigt Sicherungsaufträge in den Phasen **Geplant**, **Letzte 24 Stunden** und **Wird ausgeführt**, die Sie interaktiv oder durch eine konfigurierte Richtlinie initiiert haben.
 
-The **Jobs** node in the **Scope** pane shows the **Scheduled**, **Last 24 hours**, and **Running** backup tasks that you initiated interactively or by a configured policy. 
+In diesem Lernprogramm wird erklärt, wie Sie den **Aufträge**-Knoten verwenden können, um Informationen über geplante, aktuelle und aktuell ausgeführte Sicherungsaufträge anzuzeigen. (Die Liste der Aufträge und die entsprechenden Informationen werden im Bereich **Ergebnisse** angezeigt.) Darüber hinaus können Sie mit der rechten Maustaste auf einen aufgelisteten Auftrag klicken, sodass ein Kontextmenü mit verfügbaren Aktionen erscheint.
 
-This tutorial explains how you can use the **Jobs** node to display information about scheduled, recent, and currently running backup jobs. (The list of jobs and corresponding information appears in the **Results** pane.) Additionally, you can right-click a listed job and see a context menu that lists available actions.
+## Anzeigen geplanter Aufträge
 
-## <a name="view-scheduled-jobs"></a>View scheduled jobs
+Verwenden Sie das folgende Verfahren, um geplante Sicherungsaufträge anzuzeigen.
 
-Use the following procedure to view scheduled backup jobs.
+#### So zeigen Sie geplante Aufträge an:
 
-#### <a name="to-view-scheduled-jobs"></a>To view scheduled jobs
+1. Klicken Sie auf das Desktopsymbol, um StorSimple Snapshot Manager zu starten. 
 
-1. Click the desktop icon to start StorSimple Snapshot Manager. 
+2. Erweitern Sie im Fenster **Bereich** den **Aufträge**-Knoten, und klicken Sie auf **Geplant**. Die folgenden Informationen werden im **Ergebnisbereich** angezeigt:
 
-2. In the **Scope** pane, expand the **Jobs** node, and click **Scheduled**. The following information appears in the **Results** pane:
+    - **Name** – der Name der geplanten Momentaufnahme
 
-    - **Name** – the name of the scheduled snapshot
+    - **Nächste Ausführung** – das Datum und die Uhrzeit der nächsten geplanten Momentaufnahme
 
-    - **Next Run** – the date and time of the next scheduled snapshot
+    - **Letzte Ausführung** – das Datum und die Uhrzeit der letzten geplanten Momentaufnahme
 
-    - **Last Run** – the date and time of the most recent scheduled snapshot
-
-    >[AZURE.NOTE] For one-time only snapshots, the **Next Run** and **Last Run** will be the same. 
+    >[AZURE.NOTE] Bei einmaligen Momentaufnahmen sind die Informationen **Nächste Ausführung** und **Letzte Ausführung** identisch.
  
-    ![Scheduled backup jobs](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
+    ![Geplante Sicherungsaufträge](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png)
  
-3. To perform additional actions on a specific job, right-click the job name in the **Results** pane and select from the menu options.
+3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse**, und wählen Sie aus den Menüoptionen.
 
-## <a name="view-recent-jobs"></a>View recent jobs
+## Anzeigen kürzlich ausgeführter Aufträge
 
-Use the following procedure to view backup and restore jobs that were completed in the last 24 hours.
+Verwenden Sie das folgende Verfahren zum Anzeigen von Sicherungs- und Wiederherstellungsaufträgen, die in den letzten 24 Stunden abgeschlossen wurden.
 
-#### <a name="to-view-recent-jobs"></a>To view recent jobs
+#### So zeigen Sie kürzlich ausgeführte Aufträge an:
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. Klicken Sie auf das Desktopsymbol, um StorSimple Snapshot Manager zu starten.
 
-2. In the **Scope** pane, expand the **Jobs** node, and click **Last 24 hours**. The **Results** pane shows backup jobs for the last 24 hours (to a maximum of 64 jobs). The following information appears in the **Results** pane, depending on the **View** options you specify:
+2. Erweitern Sie im Fenster **Bereich** den **Aufträge**-Knoten, und klicken Sie auf **Letzte 24 Stunden**. Der Bereich **Ergebnisse** zeigt Sicherungsaufträge für die letzten 24 Stunden an (bis maximal 64 Aufträge). Die folgenden Informationen erscheinen im Bereich **Ergebnisse**, abhängig von den unter **Ansicht** angegebenen Optionen:
 
-    - **Name** – the name of the scheduled snapshot.
+    - **Name** – der Name der geplanten Momentaufnahme.
  
-    - **Started** – the date and time when the snapshot began.
+    - **Gestartet** – das Datum und die Startzeit der Momentaufnahme.
 
-    - **Stopped** – the date and time when the snapshot finished or was terminated.
+    - **Beendet** – das Datum und die Uhrzeit, zu der die Momentaufnahme abgeschlossen oder beendet wurde.
 
-    - **Elapsed** – the amount of time between the **Started** and **Stopped** times.
+    - **Verstrichen** – die Zeitspanne zwischen den Zeiten **Gestartet** und **Beendet**.
 
-    - **Status** – the state of the recently completed job. **Success** indicates that the backup was created successfully. **Failed** indicates that the job did not run successfully.
+    - **Status** – der Status des zuletzt abgeschlossenen Auftrags. **Erfolgreich** gibt an, dass die Sicherung erfolgreich erstellt wurde. **Fehlgeschlagen** gibt an, dass der Auftrag nicht erfolgreich ausgeführt wurde.
 
-    - **Information** – the reason for the failure.
+    - **Informationen** – die Ursache für den Fehler.
 
-    - **Bytes processed (MB)** – the amount of data from the volume group that was processed (in MBs). 
+    - **Verarbeitete Bytes (MB)** – die Menge der Daten aus der Volumegruppe, die (in MB) verarbeitet wurde.
 
-    ![Jobs that ran in the last 24 hours](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
+    ![Aufträge, die in den letzten 24 Stunden ausgeführt wurden](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png)
 
-3. To perform additional actions on a specific job, right-click the job name in the **Results** pane and select from the menu options.
+3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse**, und wählen Sie aus den Menüoptionen.
 
-    ![Delete a job](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png) 
+    ![Löschen eines Auftrags](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
      
-## <a name="view-currently-running-jobs"></a>View currently running jobs
+## Anzeigen aktuell ausgeführter Aufträge
 
-Use the following procedure to view jobs that are currently running.
+Verwenden Sie das folgende Verfahren zum Anzeigen von Aufträgen, die derzeit ausgeführt werden.
 
-#### <a name="to-view-currently-running-jobs"></a>To view currently running jobs
+#### So zeigen Sie aktuell ausgeführte Aufträge an:
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. Klicken Sie auf das Desktopsymbol, um StorSimple Snapshot Manager zu starten.
 
-2. In the **Scope** pane, expand the **Jobs** node, and click **Running**. Depending on the **View** options you specify, the following information appears in the **Results** pane: 
+2. Erweitern Sie im Fenster **Bereich** den **Aufträge**-Knoten, und klicken Sie auf **Ausgeführt**. Abhängig von den unter **Ansicht** angegebenen Optionen erscheinen die folgenden Informationen im Bereich **Ergebnisse**:
 
-    - **Name** – the name of the scheduled snapshot.
+    - **Name** – der Name der geplanten Momentaufnahme.
 
-    - **Started** – the date and time when the snapshot began.
+    - **Gestartet** – das Datum und die Startzeit der Momentaufnahme.
 
-    - **Checkpoint** – the current action of the backup.
+    - **Prüfpunkt** – die aktuelle Sicherungsaktion.
 
-    - **Status** – the percentage of completion.
+    - **Status** – der Prozentsatz der Fertigstellung.
     
-    - **Elapsed** – the amount of time that has passed since the backup began. 
+    - **Verstrichene** – die Zeitspanne, die seit dem Start der Sicherung vergangen ist.
 
-    - **Average throughput (MB)** – ratio of total bytes of data processed to that of total time taken for processing (MBs).
+    - **Durchschnittlicher Durchsatz (MB)** – Verhältnis der gesamten verarbeiteten Datenbytes zur gesamten Verarbeitungszeit (in MB).
 
-    - **Bytes processed (MB)** – total bytes of data processed (in MBs).
+    - **Verarbeitete Bytes (MB)** – gesamte verarbeitete Datenbytes (in MB).
 
-    - **Bytes written (MB)** – total bytes of data written (in MBs). It includes the data as well as the metadata and hence is typically greater than the Bytes Processed.
+    - **Geschriebene Bytes (MB)** – gesamte geschriebene Datenbytes (in MB). Dieser Wert umfasst die Daten sowie die Metadaten und ist daher normalerweise größer als der Wert von „Verarbeitete Bytes (MB)“.
 
-    ![Jobs currently running](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
+    ![Aufträge, die derzeit ausgeführt werden](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
 
-3. To perform additional actions on a specific job, right-click the job name in the **Results** pane and select from the menu options.
+3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse**, und wählen Sie aus den Menüoptionen.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
-- Learn how to [use StorSimple Snapshot Manager to manage the backup catalog](storsimple-snapshot-manager-manage-backup-catalog.md).
+- Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
+- Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten des Sicherungkatalogs](storsimple-snapshot-manager-manage-backup-catalog.md).
 
 
 
@@ -131,9 +130,4 @@ Use the following procedure to view jobs that are currently running.
 
  
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0511_2016-->

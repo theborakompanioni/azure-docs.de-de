@@ -1,25 +1,23 @@
-**To create a new CDN profile**
+**So erstellen Sie ein neues CDN-Profil**
 
-1. In the [Azure Portal](https://portal.azure.com), in the upper left, click **New**.  In the **New** blade, select **Media + CDN**, then **CDN**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) oben links auf **Neu**. Wählen Sie auf dem Blatt **Neu** erst **Medien + CDN** und dann **CDN** aus.
 
-    The new CDN profile blade appears.
+    Das Blatt für das neue CDN-Profil wird angezeigt.
 
-    ![New CDN Profile](./media/cdn-create-profile/new-cdn-profile-include.png)
+    ![Neues CDN-Profil](./media/cdn-create-profile/new-cdn-profile-include.png)
 
-2. Enter a name for your CDN profile.
+2. Geben Sie einen Namen für das CDN-Profil ein.
 
-3. Select a **Location**.  This is the Azure location where your CDN profile information will be stored.  It has no impact on CDN endpoint locations.
+3. Wählen Sie einen **Speicherort** aus. Dies ist der Azure-Speicherort, an dem Ihre CDN-Profilinformationen gespeichert werden. Dies hat keine Auswirkung auf die Speicherorte von CDN-Endpunkten.
 
-4. Select or create a **Resource Group**.  For more information on Resource Groups, see [Azure Resource Manager overview](resource-group-overview.md#resource-groups).
+4. Wählen Sie eine **Ressourcengruppe** aus, oder erstellen Sie eine. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md#resource-groups).
 
-5. Select a **Pricing tier**.  See the [CDN Overview](cdn-overview.md#azure-cdn-features) for a comparison of pricing tiers.
+5. Wählen Sie einen **Tarif** aus. Einen Vergleich der Tarife finden Sie unter [Übersicht über CDN](cdn-overview.md#azure-cdn-features).
     
-    ![CDN pricing tier selection](./media/cdn-create-profile/cdn-choose-sku-include.png)
+    ![Auswahl des CDN-Tarifs](./media/cdn-create-profile/cdn-choose-sku-include.png)
 
-6. Select the **Subscription** for this CDN profile.
+6. Wählen Sie das **Abonnement** für dieses CDN-Profil aus.
 
-7. Click the **Create** button to create the new profile. 
+7. Klicken Sie auf die Schaltfläche **Erstellen**, um das neue Profil zu erstellen.
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

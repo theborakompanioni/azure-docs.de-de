@@ -1,234 +1,226 @@
 <properties
-    pageTitle="Get started with Azure Active Directory Identity Protection and Microsoft Graph | Microsoft Azure"
-    description="Provides an introduction to query Microsoft Graph for a list of risk events and associated information from Azure Active Directory."
-    services="active-directory"
-    keywords="azure active directory identity protection, risk event, vulnerability, security policy, Microsoft Graph"
-    documentationCenter=""
-    authors="MarkusVi"
-    manager="femila"
-    editor=""/>
+	pageTitle="Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph | Microsoft Azure"
+	description="Hier erhalten Sie eine Einführung in die Abfrage einer Liste mit Risikoereignissen und zugehöriger Informationen in Microsoft Graph aus Azure Active Directory."
+	services="active-directory"
+	keywords="Azure Active Directory Identity Protection, Risikoereignis, Sicherheitsrisiko, Sicherheitsrichtlinie, Microsoft Graph"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/22/2016"
-    ms.author="markvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="markvi"/>
 
+# Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph
 
-# <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Get started with Azure Active Directory Identity Protection and Microsoft Graph
+Microsoft Graph ist der einheitliche API-Endpunkt von Microsoft und stellt die [Azure Active Directory Identity Protection](active-directory-identityprotection.md)-APIs zur Verfügung. Mit der ersten API, **identityRiskEvents**, können Sie in Microsoft Graph eine Liste von [Risikoereignissen](active-directory-identityprotection-risk-events-types.md) und zugehörige Informationen abfragen. In diesem Artikel erhalten Sie eine kurze Einführung in das Abfragen dieser API. Eine ausführliche Einführung, die vollständige Dokumentation und Informationen zum Zugriff auf Graph-Explorer finden Sie auf der Website zu [Microsoft Graph](https://graph.microsoft.io/).
 
-Microsoft Graph is Microsoft’s unified API endpoint and the home of [Azure Active Directory Identity Protection’s](active-directory-identityprotection.md) APIs. Our first API, **identityRiskEvents**, allows you to query Microsoft Graph for a list of [risk events](active-directory-identityprotection-risk-events-types.md) and associated information. This article gets you started querying this API. For an in depth introduction, full documentation, and access to the Graph Explorer, see the [Microsoft Graph site](https://graph.microsoft.io/).
+Zum Zugreifen auf die Identity Protection-Daten über Microsoft Graph werden drei Schritte ausgeführt:
 
-There are three steps to accessing Identity Protection data through Microsoft Graph:
+1. Fügen Sie eine Anwendung mit einem geheimen Clientschlüssel hinzu.
 
-1. Add an application with a client secret. 
+2. Authentifizieren Sie sich mit diesem geheimen Schlüssel und einigen anderen Informationen bei Microsoft Graph. Sie erhalten ein Authentifizierungstoken.
 
-2. Use this secret and a few other pieces of information to authenticate to Microsoft Graph, where you receive an authentication token. 
+3. Verwenden Sie dieses Token, um Anforderungen an den API-Endpunkt zu senden und Identity Protection-Daten zu erhalten.
 
-3. Use this token to make requests to the API endpoint and get Identity Protection data back.
+Bevor Sie beginnen, benötigen Sie Folgendes:
 
-Before you get started, you’ll need:
+- Administratorrechte, um die Anwendung in Azure AD erstellen zu können
+- Den Namen der Domäne Ihres Mandanten (z.B. „contoso.onmicrosoft.com“)
 
-- Administrator privileges to create the application in Azure AD
-- The name of your tenant's domain (for example, contoso.onmicrosoft.com)
 
 
+## Hinzufügen einer Anwendung mit einem geheimen Clientschlüssel
 
-## <a name="add-an-application-with-a-client-secret"></a>Add an application with a client secret
 
+1. Sie müssen sich beim klassischen Azure-Portal als Administrator [anmelden](https://manage.windowsazure.com).
 
-1. [Sign in](https://manage.windowsazure.com) to your Azure classic portal as an administrator. 
+1. Klicken Sie im linken Navigationsbereich auf **Active Directory**.
 
-1. On on the left navigation pane, click **Active Directory**. 
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_01.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_01.png)
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+3. Klicken Sie im Menü oben auf **Anwendungen**.
 
-3. In the menu on the top, click **Applications**.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_02.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_02.png)
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-4. Click **Add** at the bottom of the page.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_03.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_03.png)
+5. Klicken Sie im Dialogfeld **Was möchten Sie gerne tun?** auf **Eine von meinem Unternehmen entwickelte Anwendung hinzufügen**.
 
-5. On the **What do you want to do** dialog, click **Add an application my organization is developing**.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_04.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_04.png)
 
+5. Führen Sie im Dialogfeld **Geben Sie uns Informationen zu Ihrer Anwendung.** die folgenden Schritte aus:
 
-5. On the **Tell us about your application** dialog, perform the following steps:
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_05.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_05.png)
+	a. Geben Sie im Textfeld **Name** einen Namen für Ihre Anwendung ein (z.B. „AADIP-Risikoereignis-API-Anwendung“).
 
-    a. In the **Name** textbox, type a name for your application (e.g.: AADIP Risk Event API Application).
+	b. Wählen Sie als **Typ** die Option **Webanwendung und/oder Web-API**.
 
-    b. As **Type**, select **Web Application And / Or Web API**.
+	c. Klicken Sie auf **Weiter**.
 
-    c. Click **Next**.
 
+5. Führen Sie im Dialogfeld **App-Eigenschaften** folgende Schritte aus:
 
-5. On the **App properties** dialog, perform the following steps:
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_06.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_06.png)
+	a. Geben Sie im Textfeld **Anmelde-URL** die URL `http://localhost` ein.
 
-    a. In the **Sign-On URL** textbox, type `http://localhost`.
+	b. Geben Sie im Textfeld **App-ID-URI** den URI `http://localhost` ein.
 
-    b. In the **App ID URI** textbox, type `http://localhost`.
+	c. Klicken Sie auf **Fertig stellen**.
 
-    c. Click **Complete**.
 
+Sie können Ihre Anwendung nun konfigurieren.
 
-Your can now configure your application.
+![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_07.png)
 
-![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_07.png)
 
 
+## Gewähren Ihrer Anwendung die Berechtigung zum Verwenden der API
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Grant your application permission to use the API
 
+1. Klicken Sie auf der Anwendungsseite im Menü oben auf **Konfigurieren**.
 
-1. On your application's page, in the menu on the top, click **Configure**. 
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_08.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_08.png)
+2. Klicken Sie im Abschnitt **Berechtigungen für andere Anwendungen** auf **Anwendung hinzufügen**.
 
-2. In the **permissions to other applications** section, click **Add application**.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_09.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_09.png)
 
+2. Führen Sie im Dialogfeld **Berechtigungen für andere Anwendungen** die folgenden Schritte aus:
 
-2. On the **permissions to other applications** dialog, perform the following steps:
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_10.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_10.png)
+	a. Wählen Sie **Microsoft Graph**.
 
-    a. Select **Microsoft Graph**.
+	b. Klicken Sie auf **Fertig stellen**.
 
-    b. Click **Complete**.
 
+1. Klicken Sie auf **Anwendungsberechtigungen: {0}**, und wählen Sie dann **Read all identity risk event information** (Alle Identitätsrisikoereignis-Informationen lesen).
 
-1. Click **Application Permissions: 0**, and then select **Read all identity risk event information**.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_11.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_11.png)
+1. Klicken Sie unten auf der Seite auf **Speichern**.
 
-1. Click **Save** at the bottom of the page.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
 
+## Abrufen eines Zugriffsschlüssels
 
-## <a name="get-an-access-key"></a>Get an access key
+1. Wählen Sie auf der Anwendungsseite im Abschnitt **Schlüssel** als Dauer „1 Jahr“ aus.
 
-1. On your application's page, in the **keys** section, select 1 year as duration.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_13.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_13.png)
+1. Klicken Sie unten auf der Seite auf **Speichern**.
 
-1. Click **Save** at the bottom of the page.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
+1. Kopieren Sie im Abschnitt „Schlüssel“ den Wert des neu erstellten Schlüssels, und legen Sie ihn an einem sicheren Speicherort ab.
 
-1. in the keys section, copy the value of your newly created key, and then paste it into a safe location.
+	![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_14.png)
 
-    ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_14.png)
+	> [AZURE.NOTE] Wenn Sie den Schlüssel verlieren, müssen Sie diesen Abschnitt erneut aufrufen und einen neuen Schlüssel erstellen. Geben Sie den Schlüssel nicht weiter: Jeder, der diesen Schlüssel kennt, kann auf Ihre Daten zugreifen.
 
-    > [AZURE.NOTE] If you lose this key, you will have to return to this section and create a new key. Keep this key a secret: anyone who has it can access your data.
 
+1. Kopieren Sie im Abschnitt **Eigenschaften** die **Client-ID**, und legen Sie ihn an einem sicheren Speicherort ab.
 
-1. In the **properties** section, copy the **Client ID**, and then paste it into a safe location. 
 
+## Authentifizieren bei Microsoft Graph und Abfragen der Identitätsrisikoereignis-API
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Authenticate to Microsoft Graph and query the Identity Risk Events API
+Sie sollten jetzt über Folgendes verfügen:
 
-At this point, you should have:
+- Die oben kopierte Client-ID
 
-- The client ID you copied above
+- Den oben kopierten Schlüssel
 
-- The key you copied above
+- Den Namen der Domäne Ihres Mandanten
 
-- The name of your tenant's domain
 
+Senden Sie für die Authentifizierung eine POST-Anforderung an `https://login.microsoft.com`. Fügen Sie die folgenden Parameter in den Anforderungstext ein:
 
-To authenticate, send a post request to `https://login.microsoft.com` with the following parameters in the body:
-
-- grant_type: “**client_credentials**”
+- grant\_type: “**client\_credentials**”
 
 - resource: “**https://graph.microsoft.com**”
 
-- client_id: <your client ID>
+- client\_id: <Ihre Client-ID>
 
-- client_secret: <your key>
-
-
-> [AZURE.NOTE] You need to provide values for the **client_id** and the **client_secret** parameter.
-
-If successful, this returns an authentication token.  
-To call the API, create a header with the following parameter:
-
-    `Authorization`=”<token_type> <access_token>"
+- client\_secret: <Ihr Schlüssel>
 
 
-When authenticating, you can find the token type and access token in the returned token.
+> [AZURE.NOTE] Für die Parameter **client\_id** und **client\_secret** müssen Werte angegeben werden.
 
-Send this header as a request to the following API URL: `https://graph.microsoft.com/beta/identityRiskEvents`
+Ist die Anforderung erfolgreich, wird ein Authentifizierungstoken zurückgegeben. Erstellen Sie zum Aufrufen der API einen Header mit dem folgenden Parameter:
 
-The response, if successful, is a collection of identity risk events and associated data in the OData JSON format, which can be parsed and handled as see fit.
-
-Here’s sample code for authenticating and calling the API using Powershell.  
-Just add your client ID, key, and tenant domain.
-
-    $ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
-    $ClientSecret   = "<your client secret here>"    # Should be a ~44 character string; insert your info here
-    $tenantdomain   = "<your tenant domain here>"    # For example, contoso.onmicrosoft.com
-
-    $loginURL       = "https://login.microsoft.com"
-    $resource       = "https://graph.microsoft.com"
-
-    $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
-    $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
-
-    Write-Output $oauth
-
-    if ($oauth.access_token -ne $null) {
-        $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-
-        $url = "https://graph.microsoft.com/beta/identityRiskEvents"
-        Write-Output $url
-
-        $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-
-        foreach ($event in ($myReport.Content | ConvertFrom-Json).value) {
-            Write-Output $event
-        }
-
-    } else {
-        Write-Host "ERROR: No Access Token"
-    } 
+	`Authorization`=”<token_type> <access_token>"
 
 
-## <a name="next-steps"></a>Next steps
+Bei der Authentifizierung können Sie den Tokentyp und das Zugriffstoken anhand des zurückgegebenen Tokens ermitteln.
 
-Congratulations, you just made your first call to Microsoft Graph!  
-Now you can query identity risk events and use the data however you see fit.
+Senden Sie diesen Header als Anforderung an die folgende API-URL: `https://graph.microsoft.com/beta/identityRiskEvents`
 
-To learn more about Microsoft Graph and how to build applications using the Graph API, check out the [documentation](https://graph.microsoft.io/docs) and much more on the [Microsoft Graph site](https://graph.microsoft.io/). Also, make sure to bookmark the [Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) page that lists all of the Identity Protection APIs available in Graph. As we add new ways to work with Identity Protection via API, you’ll see them on that page.
+Ist die Anforderung erfolgreich, wird als Antwort eine Sammlung der Identitätsrisikoereignisse und zugehöriger Daten im OData-JSON-Format zurückgegeben. Die Antwort kann nach Bedarf analysiert und verarbeitet werden.
+
+Hier sehen Sie Beispielcode für das Authentifizieren und Aufrufen der API mit PowerShell. Fügen Sie einfach Ihre Client-ID, den Schlüssel und die Mandantendomäne hinzu.
+
+	$ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
+	$ClientSecret   = "<your client secret here>"    # Should be a ~44 character string; insert your info here
+	$tenantdomain   = "<your tenant domain here>"    # For example, contoso.onmicrosoft.com
+
+	$loginURL       = "https://login.microsoft.com"
+	$resource       = "https://graph.microsoft.com"
+
+	$body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
+	$oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
+
+	Write-Output $oauth
+
+	if ($oauth.access_token -ne $null) {
+    	$headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
+
+    	$url = "https://graph.microsoft.com/beta/identityRiskEvents"
+    	Write-Output $url
+
+    	$myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
+
+    	foreach ($event in ($myReport.Content | ConvertFrom-Json).value) {
+        	Write-Output $event
+    	}
+
+	} else {
+    	Write-Host "ERROR: No Access Token"
+	} 
 
 
-## <a name="additional-resources"></a>Additional resources
+## Nächste Schritte
+
+Herzlichen Glückwunsch, Sie haben gerade Ihren ersten Aufruf an Microsoft Graph ausgeführt. Sie können nun Identitätsrisikoereignisse abfragen und die Daten nach Bedarf verwenden.
+
+Weitere Informationen zu Microsoft Graph und zum Erstellen von Anwendungen mithilfe der Graph-API finden Sie in der [Dokumentation](https://graph.microsoft.io/docs) sowie auf der Website zu [Microsoft Graph](https://graph.microsoft.io/). Erstellen Sie außerdem ein Lesezeichen für die Seite [Azure AD Identity Protection-API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root). Dort werden alle in Graph verfügbaren Identity Protection-APIs aufgeführt. Wenn neue Methoden für die Verwendung von Identity Protection über APIs hinzugefügt werden, werden sie auf dieser Seite angezeigt.
+
+
+## Zusätzliche Ressourcen
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-- [Types of risk events detected by Azure Active Directory Identity Protection](active-directory-identityprotection-risk-events-types.md)
+- [Arten von Risikoereignissen, die von Azure Active Directory Identity Protection erkannt werden](active-directory-identityprotection-risk-events-types.md)
 
 - [Microsoft Graph](https://graph.microsoft.io/)
 
-- [Overview of Microsoft Graph](https://graph.microsoft.io/docs)
+- [Übersicht über Microsoft Graph](https://graph.microsoft.io/docs)
 
 - [Azure AD Identity Protection Service Root](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

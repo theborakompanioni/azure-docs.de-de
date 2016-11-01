@@ -1,172 +1,167 @@
 <properties
-    pageTitle="DocumentDB Document Explorer, to view JSON | Microsoft Azure"
-    description="Learn about the DocumentDB Document Explorer, an Azure Portal tool to view JSON, edit, create, and upload JSON documents with DocumentDB, a NoSQL document database."
-    keywords="view json"
-    services="documentdb"
-    authors="kirillg"
-    manager="jhubbard"
-    editor="monicar"
-    documentationCenter=""/>
+	pageTitle="DocumentDB-Dokument-Explorer, JSON-Anzeige | Microsoft Azure"
+	description="Sie erhalten Informationen zum DocumentDB-Dokument-Explorer, einem Tool im Azure-Portal zum Anzeigen von JSON-Code und Bearbeiten, Erstellen und Hochladen von JSON-Dokumenten mit DocumentDB (NoSQL-Dokumentdatenbank)."
+    keywords="JSON-Anzeige"
+	services="documentdb"
+	authors="AndrewHoh"
+	manager="jhubbard"
+	editor="monicar"
+	documentationCenter=""/>
 
 <tags
-    ms.service="documentdb"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/30/2016"
-    ms.author="kirillg"/>
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/30/2016"
+	ms.author="anhoh"/>
 
+# Anzeigen, Bearbeiten, Erstellen und Hochladen von JSON-Dokumenten mithilfe von DocumentDB-Dokument-Explorer
 
-# <a name="view,-edit,-create,-and-upload-json-documents-using-documentdb-document-explorer"></a>View, edit, create, and upload JSON documents using DocumentDB Document Explorer
+Dieser Artikel enthält eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)-Dokument-Explorer, ein Tool im Azure-Portal zum Anzeigen, Bearbeiten, Erstellen, Hochladen und Filtern von JSON-Dokumenten mit DocumentDB.
 
-This article provides an overview of the [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) Document Explorer, an Azure portal tool that enables you to view, edit, create, upload, and filter JSON documents with DocumentDB. 
+Beachten Sie, dass der Dokument-Explorer für DocumentDB-Konten mit Protokollunterstützung für MongoDB nicht aktiviert ist. Diese Seite wird aktualisiert, wenn dieses Feature aktiviert wurde.
 
-Note that Document Explorer is not enabled on DocumentDB accounts with protocol support for MongoDB. This page will be updated when this feature is enabled.
+## Starten von Dokument-Explorer
 
-## <a name="launch-document-explorer"></a>Launch Document Explorer
+1. Klicken Sie im Azure-Portal in der Navigationsleiste auf **DocumentDB (NoSQL)**. Wenn **DocumentDB (NoSQL)** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**.
 
-1. In the Azure portal, in the Jumpbar, click **DocumentDB (NoSQL)**. If **DocumentDB (NoSQL)** is not visible, click **More Services** and then click **DocumentDB (NoSQL)**.
-
-2. In the resource menu, click **Document Explorer**. 
+2. Klicken Sie im Ressourcenmenü auf **Dokument-Explorer**.
  
-    ![Screenshot of the Document Explorer command](./media/documentdb-view-JSON-document-explorer/documentexplorercommand.png)
+	![Screenshot des Dokument-Explorer-Befehls](./media/documentdb-view-json-document-explorer/documentexplorercommand.png)
 
-    In the **Document Explorer** blade, the **Databases** and **Collections** drop-down lists are pre-populated depending on the context in which you launched Document Explorer. 
+    Die Dropdownlisten **Datenbanken** und **Sammlungen** auf dem Blatt **Dokument-Explorer** werden auf der Grundlage des Kontexts, in dem Sie den Dokument-Explorer starten, automatisch aufgefüllt.
 
-## <a name="create-a-document"></a>Create a document
+## Erstellen eines Dokuments
 
-1. [Launch Document Explorer](#launch-document-explorer).
+1. [Starten Sie den Dokument-Explorer](#launch-document-explorer).
 
-2. In the **Document Explorer** blade, click **Create Document**. 
+2. Klicken Sie auf dem Blatt **Dokument-Explorer** auf **Dokument erstellen**.
 
-    A minimal JSON snippet is provided in the **Document** blade.
+    Auf dem Blatt **Dokument** wird ein kurzer JSON-Codeausschnitt bereitgestellt.
 
-    ![Screenshot of Document Explorer create document experience, where you can view JSON and edit JSON](./media/documentdb-view-JSON-document-explorer/createdocument.png)
+	![Screenshot des Dokument-Explorers – Erstellen der Dokumentumgebung, in der Sie JSON-Code anzeigen und bearbeiten können](./media/documentdb-view-json-document-explorer/createdocument.png)
 
-2. In the **Document** blade, type or paste in the content of the JSON document you wish to create, and then click **Save** to commit your document to the database and collection specified in the **Document Explorer** blade.
+2. Geben bzw. fügen Sie auf dem Blatt **Dokument** den Inhalt des JSON-Dokuments ein, das Sie erstellen möchten. Klicken Sie anschließend auf **Speichern**, um Ihr Dokument per Commit an die Datenbank und die Sammlung zu übergeben, die auf dem Blatt **Dokument-Explorer** angegeben sind.
 
-    ![Screenshot of Document Explorer save command](./media/documentdb-view-JSON-document-explorer/savedocument1.png)
+	![Screenshot des Dokument-Explorers – Befehl "Speichern"](./media/documentdb-view-json-document-explorer/savedocument1.png)
 
-    > [AZURE.NOTE] If you do not provide an "id" property, then Document Explorer automatically adds an id property and generates a GUID as the id value.
+	> [AZURE.NOTE] Wenn Sie keine "id"-Eigenschaft angegebn, fügt Dokument-Explorer automatisch eine id-Eigenschaft hinzu und generiert eine GUID als id-Wert.
 
-    If you already have data from JSON files, MongoDB, SQL Server, CSV files, Azure Table storage, Amazon DynamoDB, HBase, or from other DocumentDB collections, you can use DocumentDB's [data migration tool](documentdb-import-data.md) to quickly import your data.
+    Wenn Sie bereits über Daten aus JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeichern, Amazon DynamoDB, HBase oder anderen DocumentDB-Sammlungen verfügen, können Sie das [Datenmigrationstool](documentdb-import-data.md) von DocumentDB verwenden, um Ihre Daten schnell zu importieren.
 
-## <a name="edit-a-document"></a>Edit a document
+## Bearbeiten eines Dokuments
 
-1. [Launch Document Explorer](#launch-document-explorer).
+1. [Starten Sie den Dokument-Explorer](#launch-document-explorer).
 
-2. To edit an existing document, select it in the **Document Explorer** blade, edit the document in the **Document** blade, and then click **Save**.
+2. Wenn Sie ein vorhandenes Dokument bearbeiten möchten, wählen Sie es auf dem Blatt **Dokument-Explorer** aus, bearbeiten Sie es auf dem Blatt **Dokument**, und klicken Sie anschließend auf **Speichern**.
 
-    ![Screenshot of Document Explorer edit document functionality used to view JSON](./media/documentdb-view-JSON-document-explorer/editdocument.png)
+    ![Screenshot des Dokument-Explorers – Funktion zum Bearbeiten von Dokumenten für JSON-Anzeige](./media/documentdb-view-json-document-explorer/editdocument.png)
 
-    If you're editing a document and decide that you want to discard the current set of edits, simply click **Discard** in the **Document** blade, confirm the discard action, and the previous state of the document is reloaded.
+    Wenn Sie ein Dokument bearbeiten und die Änderungen verwerfen möchten, klicken Sie auf dem Blatt **Dokument** einfach auf den Befehl **Verwerfen**, und bestätigen Sie den Vorgang. Dadurch wird wieder die vorherige Version des Dokuments geladen.
 
-    ![Screenshot of Document Explorer discard command](./media/documentdb-view-JSON-document-explorer/discardedit.png)
+    ![Screenshot des Dokument-Explorers – Befehl "Verwerfen"](./media/documentdb-view-json-document-explorer/discardedit.png)
 
-## <a name="delete-a-document"></a>Delete a document
+## Löschen eines Dokuments
 
-1. [Launch Document Explorer](#launch-document-explorer).
+1. [Starten Sie den Dokument-Explorer](#launch-document-explorer).
 
-2. Select the document in **Document Explorer**, click **Delete**, and then confirm the delete. After confirming, the document is immediately removed from the Document Explorer list.
+2. Wählen Sie das Dokument im **Dokument-Explorer** aus, klicken Sie auf **Löschen** ,und bestätigen Sie anschließend den Löschvorgang. Nach der Bestätigung wird das Dokument sofort aus der Liste im Dokument-Explorer entfernt.
 
-    ![Screenshot of Document Explorer delete command](./media/documentdb-view-JSON-document-explorer/deletedocument.png)
+	![Screenshot des Dokument-Explorers – Befehl "Löschen"](./media/documentdb-view-json-document-explorer/deletedocument.png)
 
-## <a name="work-with-json-documents"></a>Work with JSON documents
+## Verwenden von JSON-Dokumenten
 
-Document Explorer validates that any new or edited document contains valid JSON.  You can even view JSON errors by hovering over the incorrect section to get details about the validation error.
+Der Dokument-Explorer überprüft, ob alle neuen oder bearbeiteten Dokumente gültigen JSON-Code enthalten. Sie können zum Anzeigen von JSON-Fehlern sogar mit der Maus auf den falschen Bereich zeigen, um Details zum Validierungsfehler abzurufen.
 
-![Screenshot of Document Explorer with invalid JSON highlighting](./media/documentdb-view-JSON-document-explorer/invalidjson1.png)
+![Screenshot des Dokument-Explorers – Hervorhebung von ungültigem JSON-Code](./media/documentdb-view-json-document-explorer/invalidjson1.png)
 
-Additionally, Document Explorer prevents you from saving a document with invalid JSON content.
+Dokument-Explorer verhindert auch das Speichern eines Dokuments mit ungültigem JSON.
 
-![Screenshot of Document Explorer with invalid JSON save error](./media/documentdb-view-JSON-document-explorer/invalidjson2.png)
+![Screenshot des Dokument-Explorers – Ungültiger JSON-Code, Speicherfehler](./media/documentdb-view-json-document-explorer/invalidjson2.png)
 
-Finally, Document Explorer allows you to easily view the system properties of the currently loaded document by clicking the **Properties** command.
+Mit dem Dokument-Explorer können Sie ganz einfach die Systemeigenschaften des aktuell geladenen Dokuments anzeigen, indem Sie auf Befehl **Eigenschaften** klicken.
 
-![Screenshot of Document Explorer document properties view](./media/documentdb-view-JSON-document-explorer/documentproperties.png)
+![Screenshot des Dokument-Explorers – Ansicht der Dokumenteigenschaften](./media/documentdb-view-json-document-explorer/documentproperties.png)
 
-> [AZURE.NOTE] The timestamp (_ts) property is internally represented as epoch time, but Document Explorer displays the value in a human readable GMT format.
+> [AZURE.NOTE] Die Zeitstempeleigenschaft (\_ts) wird intern als Epochenzeit dargestellt, im Dokument-Explorer wird der Wert jedoch in einem vom Menschen lesbaren GMT-Format angezeigt.
 
-## <a name="filter-documents"></a>Filter documents
-Document Explorer supports a number of navigation options and advanced settings.
+## Filtern von Dokumenten
+Der Dokument-Explorer unterstützt eine Reihe an Navigationsoptionen und erweiterten Einstellungen.
 
-By default, Document Explorer loads up to the first 100 documents in the selected collection, by their created date from earliest to latest.  You can load additional documents (in batches of 100) by selecting the **Load more** option at the bottom of the Document Explorer blade. You can choose which documents to load through the **Filter** command.
+Standardmäßig lädt der Dokument-Explorer die ersten 100 Dokumente in die ausgewählte Sammlung, sortiert nach Erstellungsdatum, vom ältesten bis zum neuesten. Sie können weitere Dokumente (in Batches von je 100) laden, indem Sie die Option **Mehr laden** am unteren Rand des Dokument-Explorer-Blatts wählen. Mithilfe des Befehls **Filter** können Sie wählen, welche Dokumente geladen werden sollen.
 
-1. [Launch Document Explorer](#launch-document-explorer).
+1. [Starten Sie den Dokument-Explorer](#launch-document-explorer).
 
-2. At the top of the **Document Explorer** blade, click **Filter**.  
+2. Klicken Sie am oberen Rand des Blatts **Dokument-Explorer** auf **Filter**.
 
-    ![Screenshot of Document Explorer Filter Settings](./media/documentdb-view-JSON-document-explorer/documentexplorerfiltersettings.png)
+    ![Screenshot des Dokument-Explorers – Filtereinstellungen](./media/documentdb-view-json-document-explorer/documentexplorerfiltersettings.png)
   
-3.  The filter settings appear below the command bar. In the filter settings, provide a WHERE clause and/or an ORDER BY clause, and then click **Filter**.
+3.  Die Filtereinstellungen werden unterhalb der Befehlsleiste angezeigt. Geben Sie in den Filtereinstellungen eine WHERE-Klausel bzw. eine ORDER BY-Klausel an, und klicken Sie dann auf **Filter**.
 
-    ![Screenshot of Document Explorer Settings blade](./media/documentdb-view-JSON-document-explorer/documentexplorerfiltersettings2.png)
+	![Screenshot des Dokument-Explorers – Blatt „Einstellungen“](./media/documentdb-view-json-document-explorer/documentexplorerfiltersettings2.png)
 
-    Document Explorer automatically refreshes the results with documents matching the filter query. Read more about the DocumentDB SQL grammar in the [SQL query and SQL syntax](documentdb-sql-query.md) article or print a copy of the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md).
+	Dokument-Explorer aktualisiert die Ergebnisse automatisch mit Dokumenten, die für die Filterabfrage eine Übereinstimmung ergeben. Weitere Informationen zur DocumentDB-SQL-Grammatik finden Sie im Artikel [SQL-Abfrage und SQL-Syntax in DocumentDB](documentdb-sql-query.md). Alternativ können Sie sich auch den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) ausdrucken.
 
-    The **Database** and **Collection** drop-down list boxes can be used to easily change the collection from which documents are currently being viewed without having to close and re-launch Document Explorer.  
+    Mit den Dropdownlistenfeldern **Datenbank** und **Sammlung** können Sie die Sammlung, aus der aktuell Dokumente angezeigt werden, ganz einfach ändern, ohne den Dokument-Explorer schließen und neu starten zu müssen.
 
-    Document Explorer also supports filtering the currently loaded set of documents by their id property.  Simply type in the Documents Filter by id box.
+    Dokument-Explorer unterstützt auch das Filtern des aktuell geladenen Dokumentensets nach der id-Eigenschaft. Geben Sie sie einfach in das Feld „Dokumente nach id filtern“ ein.
 
-    ![Screenshot of Document Explorer with filter highlighted](./media/documentdb-view-JSON-document-explorer/documentexplorerfilter.png)
+	![Screenshot der Dokument-Explorers mit hervorgehobenem Filter](./media/documentdb-view-json-document-explorer/documentexplorerfilter.png)
 
-    The results in the Document Explorer list are filtered based on your supplied criteria.
+	Die Ergebnisse in der Dokument-Explorer-Liste werden nun nach den angegebenen Kriterien gefiltert.
 
-    ![Screenshot of Document Explorer with filtered results](./media/documentdb-view-JSON-document-explorer/documentexplorerfilterresults.png)
+	![Screenshot der Dokument-Explorers mit gefilterten Ergebnissen](./media/documentdb-view-json-document-explorer/documentexplorerfilterresults.png)
 
-    > [AZURE.IMPORTANT] The Document Explorer filter functionality only filters from the ***currently*** loaded set of documents and does not perform a query against the currently selected collection.
+	> [AZURE.IMPORTANT] Die Filterfunktion des Dokument-Explorers filtert nur aus dem ***aktuell*** geladenen Dokumentensatz und führt keine Abfrage für die aktuell ausgewählte Sammlung aus.
 
-4. To refresh the list of documents loaded by Document Explorer, click **Refresh** at the top of the blade.
+4. Klicken Sie zum Aktualisieren der vom Dokument-Explorer geladenen Dokumentenliste im oberen Bereich des Blatts auf **Aktualisieren**.
 
-    ![Screenshot of Document Explorer refresh command](./media/documentdb-view-JSON-document-explorer/documentexplorerrefresh.png)
+	![Screenshot des Dokument-Explorers – Befehl "Aktualisieren"](./media/documentdb-view-json-document-explorer/documentexplorerrefresh.png)
 
-## <a name="bulk-add-documents"></a>Bulk add documents
+## Massenhinzufügen von Dokumenten
 
-Document Explorer supports bulk ingestion of one or more existing JSON documents, up to 100 JSON files per upload operation.  
+Dokument-Explorer unterstützt die Sammelerfassung von einem oder mehreren JSON-Dokumenten. Pro Uploadvorgang sind bis zu 100 JSON-Dateien zulässig.
 
-1. [Launch Document Explorer](#launch-document-explorer).
+1. [Starten Sie den Dokument-Explorer](#launch-document-explorer).
 
-2. To start the upload process, click **Upload Document**.
+2. Klicken Sie zum Starten des Uploadvorgangs auf **Dokument hochladen**.
 
-    ![Screenshot of Document Explorer bulk ingestion functionality](./media/documentdb-view-JSON-document-explorer/uploaddocument1.png)
+	![Screenshot des Dokument-Explorers – Sammelerfassungsfunktion](./media/documentdb-view-json-document-explorer/uploaddocument1.png)
 
-    The **Upload Document** blade opens. 
+    Das Blatt **Dokument hochladen** wird geöffnet.
 
-2. Click the browse button to open a file explorer window, select one or more JSON documents to upload, and then click **Open**.
+2. Klicken Sie auf die Schaltfläche „Durchsuchen“, um ein Datei-Explorer-Fenster zu öffnen, wählen Sie die JSON-Dokumente aus, die hochgeladen werden sollen, und klicken Sie dann auf **Öffnen**.
 
-    ![Screenshot of Document Explorer bulk ingestion process](./media/documentdb-view-JSON-document-explorer/uploaddocument2.png)
+	![Screenshot des Dokument-Explorers – Sammelerfassungsprozess](./media/documentdb-view-json-document-explorer/uploaddocument2.png)
 
-    > [AZURE.NOTE] Document Explorer currently supports up to 100 JSON documents per individual upload operation.
+	> [AZURE.NOTE] Dokument-Explorer unterstützt derzeit bis zu 100 JSON-Dokumente pro einzelnen Hochladevorgang.
 
-3. Once you're satisfied with your selection, click the **Upload** button.  The documents are automatically added to the Document Explorer grid and the upload results are displayed as the operation progresses. Import failures are reported for individual files.
+3. Sobald Sie mit der Auswahl fertig sind, klicken Sie auf die Schaltfläche **Hochladen**. Die Dokumente werden automatisch zum Dokument-Explorer-Raster hinzugefügt, und die Hochladeergebnisse werden angezeigt, während der Prozess weiterläuft. Importfehler werden für einzelne Dateien gemeldet.
 
-    ![Screenshot of Document Explorer bulk ingestion results](./media/documentdb-view-JSON-document-explorer/uploaddocument3.png)
+	![Screenshot des Dokument-Explorers – Sammelerfassungsergebnisse](./media/documentdb-view-json-document-explorer/uploaddocument3.png)
 
-4. Once the operation is complete, you can select up to another 100 documents to upload.
+4. Sobald der Vorgang abgeschlossen ist, können Sie bis zu 100 weitere Dokumente auswählen, die Sie hochladen möchten.
 
-## <a name="work-with-json-documents-outside-the-portal"></a>Work with JSON documents outside the portal
+## Verwenden von JSON-Dokumenten außerhalb des Portals
 
-The Document Explorer in the Azure portal is just one way to work with documents in DocumentDB. You can also work with documents using the [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) or the [client SDKs](documentdb-sdk-dotnet.md). For example code, see the [.NET SDK document examples](documentdb-dotnet-samples.md#document-examples) and the [Node.js SDK document examples](documentdb-nodejs-samples.md#document-examples).
+Der Dokument-Explorer im Azure-Portal ist nur eine Möglichkeit zur Verwendung von Dokumenten in DocumentDB. Für die Arbeit mit Dokumenten können Sie auch die [REST-API](https://msdn.microsoft.com/library/azure/mt489082.aspx) oder die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Beispielcode finden Sie unter [.NET SDK-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples) sowie unter [Node.js SDK-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples).
 
-If you need to import or migrate files from another source (JSON files, MongoDB, SQL Server, CSV files, Azure Table storage, Amazon DynamoDB, or HBase), you can use the DocumentDB [data migration tool](documentdb-import-data.md) to quickly import your data to DocumentDB.
+Wenn Sie Dateien aus einer anderen Quelle (JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeicher, Amazon DynamoDB oder HBase) importieren oder migrieren müssen, können Sie das DocumentDB-[Datenmigrationstool](documentdb-import-data.md) nutzen, um Ihre Daten schnell in DocumentDB zu importieren.
 
-## <a name="troubleshoot"></a>Troubleshoot
+## Problembehandlung
 
-**Symptom**: Document Explorer returns **No documents found**.
+**Symptom**: Dokument-Explorer gibt **Keine Dokumente gefunden** zurück.
 
-**Solution**: Ensure that you have selected the correct subscription, database and collection in which the documents were inserted. Also, check to ensure that you are operating within your throughput quotas. If you are operating at your maximum throughput level and getting throttled, lower application usage to operate under the maximum throughput quota for the collection.
+**Lösung**: Stellen Sie sicher, dass Sie das richtige Abonnement sowie die richtige Datenbank und Sammlung, wo die Dokumente eingefügt wurden, ausgewählt haben. Überprüfen Sie außerdem, ob Sie innerhalb Ihrer Durchsatzkontingente arbeiten. Wenn Sie bei maximalem Durchsatz arbeiten und gedrosselt werden, senken Sie die Anwendungsnutzung, um unterhalb des Maximaldurchsatzes für die Sammlung zu arbeiten.
 
-**Explanation**: The portal is an application like any other, making calls to your DocumentDB database and collection. If your requests are currently being throttled due to calls being made from a separate application, the portal may also be throttled, causing resources not to appear in the portal. To resolve the issue, address the cause of the high throughput usage, and then refresh the portal blade. Information on how to measure and lower throughput usage can be found in the [Throughput](documentdb-performance-tips.md#throughput) section of the [Performance tips](documentdb-performance-tips.md) article.
+**Erklärung**: Das Portal ist eine Anwendung wie jede andere, die Aufrufe an Ihre DocumentDB-Datenbank und Sammlung richtet. Wenn Ihre Anfragen derzeit aufgrund von Aufrufen von einer separaten Anwendung gedrosselt sind, kann das Portal auch gedrosselt werden, sodass Ressourcen nicht im Portal angezeigt werden. Um das Problem zu lösen, beheben Sie die Ursache für den hohen Durchsatz, und aktualisieren Sie dann das Portalblatt. Informationen zum Messen und Senken der Durchsatznutzung finden Sie im Abschnitt [Durchsatz](documentdb-performance-tips.md#throughput) des Artikels [Leistungstipps](documentdb-performance-tips.md).
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn more about the DocumentDB SQL grammar supported in Document Explorer, see the [SQL query and SQL syntax](documentdb-sql-query.md) article or print out the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md).
+Weitere Informationen zur im Dokument-Explorer unterstützten DocumentDB-SQL-Grammatik finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md). Alternativ können Sie sich auch den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) ausdrucken.
 
-The [Learning path](https://azure.microsoft.com/documentation/learning-paths/documentdb/) is also a useful resource to guide you as you learn more about DocumentDB. 
+Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist ebenfalls eine hilfreiche Ressource, um mehr über DocumentDB zu erfahren.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

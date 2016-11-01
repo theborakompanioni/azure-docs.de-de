@@ -1,67 +1,66 @@
 <properties
-    pageTitle="Add push notifications to your Xamarin.iOS app with Azure App Service"
-    description="Learn how to use Azure App Service to send push notifications to your Xamarin.iOS app"
-    services="app-service\mobile"
-    documentationCenter="xamarin"
-    authors="adrianhall"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin iOS-App mit Azure App Service"
+	description="Erfahren Sie, wie Azure App Service zum Senden von Pushbenachrichtigungen an Ihre Xamarin iOS-App verwendet wird."
+	services="app-service\mobile"
+	documentationCenter="xamarin"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-xamarin-ios"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/19/2016"
+	ms.author="wesmc"/>
 
-
-# <a name="add-push-notifications-to-your-xamarin.ios-app"></a>Add push notifications to your Xamarin.iOS App
+# Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin iOS-App
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-##<a name="overview"></a>Overview
+##Übersicht
 
-This tutorial is based on the [Xamarin.iOS quickstart](app-service-mobile-xamarin-ios-get-started.md) tutorial, which you must complete first. You will add push notifications to the Xamarin.iOS quick start project so that every time a record is inserted, a push notification is sent. If you do not use the downloaded quick start server project, you must add the push notification extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Dieses Tutorial baut auf dem [Xamarin iOS-Schnellstart-Tutorial](app-service-mobile-xamarin-ios-get-started.md) auf, das Sie zuerst absolvieren müssen. Sie fügen dem „Xamarin iOS-Schnellstartprojekt“ Pushbenachrichtigungen hinzu, damit jedes Mal, wenn ein Datensatz eingefügt wird, eine Pushbenachrichtigung gesendet wird. Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Pushbenachrichtigungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) (in englischer Sprache).
 
-##<a name="prerequisites"></a>Prerequisites
+##Voraussetzungen
 
-* Complete the [Xamarin.iOS quickstart](app-service-mobile-xamarin-ios-get-started.md) tutorial.
+* Durchlaufen Sie das [Xamarin.iOS-Schnellstart-Tutorial](app-service-mobile-xamarin-ios-get-started.md).
 
-* A physical iOS device. Push notifications are not supported by the iOS simulator.
+* Ein physisches iOS-Gerät. Pushbenachrichtigungen werden vom iOS-Simulator nicht unterstützt.
 
-##<a name="register-the-app-for-push-notifications-on-apple's-developer-portal"></a>Register the app for push notifications on Apple's developer portal
+##Registrieren der App für Pushbenachrichtigungen im Apple-Entwicklerportal
 
-[AZURE.INCLUDE [Notification Hubs Xamarin Enable Apple Push Notifications](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Notification Hubs Xamarin – Aktivieren von Apple-Pushbenachrichtigungen](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
 
-##<a name="configure-your-mobile-app-to-send-push-notifications"></a>Configure your Mobile App to send push notifications
+##Konfigurieren Ihrer mobilen App für das Senden von Pushbenachrichtigungen
 
-To configure your app to send notifications, create a new hub and configure it for the platform notification services that you will use.
+Um Ihre App für das Senden von Benachrichtigungen zu konfigurieren, erstellen Sie einen neuen Hub, und konfigurieren Sie ihn für die Plattformbenachrichtigungsdienste, die Sie verwenden.
 
-1. In the [Azure portal](https://portal.azure.com/), click **Browse** > **Mobile Apps** > your Mobile App > **Settings** > **Mobile** > **Push** > **Notification Hub** > **+ Notification Hub**, and provide a name and namespace for a new notification hub, and then click the **OK** button.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen** > **Mobile Apps** > **Ihre mobile App** > **Einstellungen** > **Push** > **Benachrichtigungs-Hub** > **+Benachrichtigungs-Hub**, geben Sie einen Namen und einen Namespace für einen neuen Benachrichtigungs-Hub ein, und klicken Sie dann auf die Schaltfläche **OK**.
 
-    ![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-configure-notification-hub.png)
+	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-configure-notification-hub.png)
 
-2. In the Create Notification Hub blade, click **Create**.
+2. Klicken Sie auf dem Blatt „Benachrichtigungs-Hub“ auf **Erstellen**.
 
-3. Click **Push** > **Apple (APNS)** > **Upload Certificate**. Upload the .p12 push certificate file you exported earlier.  Make sure to select **Sandbox** if you created a development push certificate for development and testing.  Otherwise, choose **Production**.
+3. Klicken Sie auf **Push** > **Apple (APNS)** > **Zertifikat hochladen**. Laden Sie die P12-Pushzertifikatsdatei hoch, die Sie zuvor exportiert haben. Stellen Sie sicher, dass **Sandkasten** ausgewählt ist, wenn Sie ein Pushzertifikat für Entwicklung und Tests erstellt haben. Wählen Sie andernfalls **Produktion**.
 
-    ![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
+	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
 
-Your service is now configured to work with push notifications on iOS.
+Ihr Dienst ist jetzt so konfiguriert, dass er mit Pushbenachrichtigungen unter iOS arbeitet.
 
-##<a name="update-the-server-project-to-send-push-notifications"></a>Update the server project to send push notifications
+##Aktualisieren des Serverprojekts zum Senden von Pushbenachrichtigungen
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-##<a name="configure-your-xamarin.ios-project"></a>Configure your Xamarin.iOS project
+##Konfigurieren des Xamarin.iOS-Projekts
 
 [AZURE.INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-##<a name="add-push-notifications-to-your-app"></a>Add push notifications to your app
+##Hinzufügen von Pushbenachrichtigungen zur App
 
-1. In **QSTodoService**, add the following property so that **AppDelegate** can acquire the mobile client:
+1. Fügen Sie in **QSTodoService** die folgende Eigenschaft hinzu, damit **AppDelegate** den mobilen Client abrufen kann:
 
             public MobileServiceClient GetClient {
             get
@@ -74,12 +73,12 @@ Your service is now configured to work with push notifications on iOS.
             }
         }
 
-1. Add the following `using` statement to the top of the **AppDelegate.cs** file.
+1. Fügen Sie am Anfang der Datei **AppDelegate.cs** die folgende `using`-Anweisung hinzu.
 
-        using Microsoft.WindowsAzure.MobileServices;
-        using Newtonsoft.Json.Linq;
+		using Microsoft.WindowsAzure.MobileServices;
+		using Newtonsoft.Json.Linq;
 
-2. In **AppDelegate**, override the **FinishedLaunching** event:
+2. Überschreiben Sie in **AppDelegate** das Ereignis **FinishedLaunching**:
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -96,16 +95,16 @@ Your service is now configured to work with push notifications on iOS.
             return true;
         }
 
-3. In the same file, override the **RegisteredForRemoteNotifications** event. In this code you are registering for a simple template notification that will be sent across all supported platforms by the server.
+3. Setzen Sie in derselben Datei das Ereignis **RegisteredForRemoteNotifications** außer Kraft: In diesem Code registrieren Sie sich für eine einfache Vorlagenbenachrichtigung, die vom Server an alle unterstützten Plattformen gesendet wird.
 
-    For more information on templates with Notification Hubs, see [Templates](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+	Weitere Informationen zu Vorlagen mit Notification Hubs finden Sie unter [Vorlagen](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
             MobileServiceClient client = QSTodoService.DefaultService.GetClient;
 
-            const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(messageParam)\"}}";
+            const string templateBodyAPNS = "{"aps":{"alert":"$(messageParam)"}}";
 
             JObject templates = new JObject();
             templates["genericMessage"] = new JObject
@@ -119,7 +118,7 @@ Your service is now configured to work with push notifications on iOS.
         }
 
 
-4. Then, override the **DidReceivedRemoteNotification** event:
+4. Setzen Sie anschließend das Ereignis **DidReceivedRemoteNotification** außer Kraft:
 
         public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
@@ -137,31 +136,24 @@ Your service is now configured to work with push notifications on iOS.
             }
         }
 
-Your app is now updated to support push notifications.
+Ihre App kann Pushbenachrichtigungen nun unterstützen.
 
-## <a name="<a-name="test"></a>test-push-notifications-in-your-app"></a><a name="test"></a>Test push notifications in your app
+## <a name="test"></a>Testen von Pushbenachrichtigungen in der App
 
-1. Press the **Run** button to build the project and start the app in an iOS capable device, then click **OK** to accept push notifications.
+1. Klicken Sie auf die Schaltfläche **Ausführen**, um das Projekt zu erstellen. Starten Sie die App auf einem iOS-fähigen Gerät, und klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
 
-    > [AZURE.NOTE] You must explicitly accept push notifications from your app. This request only occurs the first time that the app runs.
+	> [AZURE.NOTE] Sie müssen Pushbenachrichtigungen von Ihrer App ausdrücklich akzeptieren. Diese Anforderung tritt nur beim ersten Lauf der App auf.
 
-2. In the app, type a task, and then click the plus (**+**) icon.
+2. Geben Sie in der App eine Aufgabe ein, und klicken Sie dann auf das Pluszeichen (**+**).
 
-3. Verify that a notification is received, then click **OK** to dismiss the notification.
+3. Stellen Sie sicher, dass Sie eine Benachrichtigung erhalten haben, und klicken Sie dann auf **OK**, um diese zu schließen.
 
-4. Repeat step 2 and immediately close the app, then verify that a notification is shown.
+4. Wiederholen Sie Schritt 2, schließen Sie die App unverzüglich, und überprüfen Sie dann, ob eine Benachrichtigung angezeigt wird.
 
-You have successfully completed this tutorial.
+Sie haben dieses Lernprogramm erfolgreich abgeschlossen.
 
 <!-- Images. -->
 
 <!-- URLs. -->
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

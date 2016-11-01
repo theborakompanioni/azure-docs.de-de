@@ -1,6 +1,6 @@
 <properties
-  pageTitle="Load Balancer custom probes and monitoring health status | Microsoft Azure"
-  description="Learn how to use custom probes for Azure Load Balancer to monitor instances behind Load Balancer"
+  pageTitle="Benutzerdefinierte Load Balancer-Tests und Überwachen des Integritätsstatus | Microsoft Azure"
+  description="Erfahren Sie, wie Sie mit benutzerdefinierten Tests für Azure Load Balancer Instanzen hinter einem Load Balancer überwachen."
   services="load-balancer"
   documentationCenter="na"
   authors="sdwheeler"
@@ -17,82 +17,77 @@
   ms.date="08/25/2016"
   ms.author="sewhee" />
 
+# Load Balancer-Tests
 
-# <a name="load-balancer-probes"></a>Load Balancer probes
+Azure Load Balancer bietet die Möglichkeit, die Integrität der Serverinstanzen mithilfe von Tests zu überwachen. Wenn ein Test nicht reagiert, beendet der Load Balancer das Senden neuer Verbindungen an die fehlerhafte Instanz. Die vorhandenen Verbindungen sind nicht betroffen, und neue Verbindungen werden an fehlerfreie Instanzen gesendet.
 
-Azure Load Balancer offers the capability to monitor the health of server instances by using probes. When a probe fails to respond, Load Balancer stops sending new connections to the unhealthy instance. The existing connections are not affected, and new connections are sent to healthy instances.
+Clouddienstrollen (Workerrollen und Webrollen) verwenden einen Gast-Agent für die Testüberwachung. Wenn Sie virtuelle Computer hinter einem Load Balancer verwenden, muss ein benutzerdefinierter TCP- oder HTTP-Test konfiguriert werden.
 
-Cloud service roles (worker roles and web roles) use a guest agent for probe monitoring. TCP or HTTP custom probes must be configured when you use virtual machines behind Load Balancer.
+## Grundlegendes zu Anzahl und Timeout von Tests
 
-## <a name="understand-probe-count-and-timeout"></a>Understand probe count and timeout
+Das Verhalten von Tests hängt von folgenden Faktoren ab:
 
-Probe behavior depends on:
+- Anzahl der erfolgreichen Tests, bei der eine Instanz als „In Betrieb“ bezeichnet werden kann.
+- Anzahl der fehlerhaften Tests, bei der eine Instanz als „Ausgefallen“ bezeichnet wird.
 
-- The number of successful probes that allow an instance to be labeled as up.
-- The number of failed probes that cause an instance to be labeled as down.
+Das Timeout geteilt durch den Wert der Testhäufigkeit entspricht „SuccessFailCount“. Dieser Wert gibt an, ob eine Instanz als „In Betrieb“ oder als „Ausgefallen“ bezeichnet wird. Im Azure-Portal wird das Timeout auf das Doppelte des Werts für die Häufigkeit festgelegt.
 
-The timeout divided by the probe frequency value is equal to SuccessFailCount which determines whether an instance is assumed to be up or down. In the Azure portal, the timeout is set to two times the value of the frequency.
-
-The probe configuration of all load-balanced instances for an endpoint (that is, a load-balanced set) must be the same. This means you cannot have a different probe configuration for each role instance or virtual machine in the same hosted service for a particular endpoint combination. For example, each instance must have identical local ports and timeouts.
-
-
->[AZURE.IMPORTANT] A Load Balancer probe uses the IP address 168.63.129.16. This public IP address facilitates communication to internal platform resources for the bring-your-own-IP Azure Virtual Network scenario. The virtual public IP address 168.63.129.16 is used in all regions and will not change. We recommend that you allow this IP address in any local firewall policies. It should not be considered a security risk because only the internal Azure platform can source a message from that address. If you do not do this, there will be unexpected behavior in a variety of scenarios like configuring the same IP address range of 168.63.129.16 and having duplicated IP addresses.
-
-## <a name="learn-about-the-types-of-probes"></a>Learn about the types of probes
-
-### <a name="guest-agent-probe"></a>Guest agent probe
-
-This probe is available for Azure Cloud Services only. Load Balancer utilizes the guest agent inside the virtual machine, and then listens and responds with an HTTP 200 OK response only when the instance is in the Ready state (that is, not in another state such as Busy, Recycling, or Stopping).
-
-For more information, see [Configuring the service definition file (csdef) for health probes](https://msdn.microsoft.com/library/azure/jj151530.asp) or [Get started creating an Internet-facing load balancer for cloud services](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
-
-### <a name="what-makes-a-guest-agent-probe-mark-an-instance-as-unhealthy?"></a>What makes a guest agent probe mark an instance as unhealthy?
-
-If the guest agent fails to respond with HTTP 200 OK, the Load Balancer marks the instance as unresponsive and stops sending traffic to that instance. Load Balancer continues to ping the instance. If the guest agent responds with an HTTP 200, Load Balancer sends traffic to that instance again.
-
-When you use a web role, the website code typically runs in w3wp.exe, which is not monitored by the Azure fabric or guest agent. This means that failures in w3wp.exe (for example, HTTP 500 responses) will not be reported to the guest agent, and Load Balancer will not take that instance out of rotation.
-
-### <a name="http-custom-probe"></a>HTTP custom probe
-
-The custom HTTP Load Balancer probe overrides the default guest agent probe, which means that you can create your own custom logic to determine the health of the role instance. Load Balancer probes your endpoint every 15 seconds, by default. The instance is considered to be in the Load Balancer rotation if it responds with an HTTP 200 within the timeout period (31 seconds by default).
-
-This can be useful if you want to implement your own logic to remove instances from Load Balancer rotation. For example, you could decide to remove an instance if it is above 90% CPU and returns a non-200 status. If you have web roles that use w3wp.exe, this also means you get automatic monitoring of your website, because failures in your website code will return a non-200 status to the Load Balancer probe.
-
->[AZURE.NOTE] The HTTP custom probe supports relative paths and HTTP protocol only. HTTPS is not supported.
-
-### <a name="what-makes-an-http-custom-probe-mark-an-instance-as-unhealthy?"></a>What makes an HTTP custom probe mark an instance as unhealthy?
-
-- The HTTP application returns an HTTP response code other than 200 (for example, 403, 404, or 500). This is a positive acknowledgment that the application instance should be taken out of service right away.
-
-. The HTTP server does not respond at all after the timeout period. Depending on the timeout value that is set, this might mean that multiple probe requests go unanswered before the probe gets marked as not running (that is, before SuccessFailCount probes are sent).
--   The server closes the connection via a TCP reset.
-
-### <a name="tcp-custom-probe"></a>TCP custom probe
-
-TCP probes initiate a connection by performing a three-way handshake with the defined port.
-
-### <a name="what-makes-a-tcp-custom-probe-mark-an-instance-as-unhealthy?"></a>What makes a TCP custom probe mark an instance as unhealthy?
-
-- The TCP server does not respond at all after the timeout period. When the probe is marked as not running depends on the number of failed probe requests that were configured to go unanswered before marking the probe as not running.
-- The probe receives a TCP reset from the role instance.
-
-For more information about configuring an HTTP health probe or a TCP probe, see [Get started creating an Internet-facing load balancer in Resource Manager using PowerShell](load-balancer-get-started-internet-arm-ps.md#create-lb-rules-nat-rules-a-probe-and-a-load-balancer).
-
-## <a name="add-healthy-instances-back-into-load-balancer-rotation"></a>Add healthy instances back into Load Balancer rotation
-
-TCP and HTTP probes are considered healthy and mark the role instance as healthy when:
-
-- Load Balancer gets a positive probe the first time the VM boots.
-- The number SuccessFailCount (described earlier) defines the value of successful probes that are required to mark the role instance as healthy. If a role instance was removed, the number of successful, successive probes must equal or exceed the value of SuccessFailCount to mark the role instance as running.
-
->[AZURE.NOTE] If the health of a role instance is fluctuating, Load Balancer waits longer before putting the role instance back in the healthy state. This is done via policy to protect the user and the infrastructure.
-
-## <a name="use-log-analytics-for-load-balancer"></a>Use log analytics for Load Balancer
-
-You can use [log analytics for Load Balancer](load-balancer-monitor-log.md) to check on the probe health status and probe count. Logging can be used with Power BI or Azure Operational Insights to provide statistics about Load Balancer health status.
+Die Konfiguration von Tests muss für alle Instanzen mit Lastenausgleich für einen Endpunkt (mit anderen Worten: eine Gruppe mit Lastenausgleich) identisch sein. Das heißt, dass Sie nicht für jede Rolleninstanz oder VM im selben gehosteten Dienst für eine bestimmte Endpunktkombination eine unterschiedliche Testkonfiguration wählen können. Beispielsweise muss jede Instanz identische lokale Ports und Timeouts aufweisen.
 
 
+>[AZURE.IMPORTANT] Ein Load Balancer-Test verwendet die IP-Adresse 168.63.129.16. Diese öffentliche IP-Adresse ermöglicht die Kommunikation mit internen Plattformressourcen für das Azure Virtual Network-Szenario mit eigener IP-Adresse. Die virtuelle öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen verwendet und nicht geändert. Es wird empfohlen, dass Sie diese IP-Adresse in lokalen Firewallrichtlinien zulassen. Dies dürfte kein Sicherheitsrisiko darstellen, da nur die interne Azure-Plattform eine Nachricht von dieser Adresse senden kann. Andernfalls ist in einer Vielzahl von Szenarien ein unerwartetes Verhalten die Folge, wie z. B. beim Konfigurieren desselben IP-Adressbereichs von 168.63.129.16 mit duplizierten IP-Adressen.
 
-<!--HONumber=Oct16_HO2-->
+## Weitere Informationen über die Testtypen
 
+### Gast-Agent-Test
 
+Dieser Test ist nur für Azure Cloud Services verfügbar. Load Balancer nutzt den Gast-Agent auf dem virtuellen Computer. Dann lauscht und antwortet er nur mit einer HTTP-OK-Antwort 200, wenn die Instanz bereit ist (also nicht gerade beschäftigt oder angehalten ist oder recycelt wird).
+
+Weitere Informationen finden Sie unter [Konfigurieren der Dienstdefinitionsdatei (CSDEF) für Integritätstests](https://msdn.microsoft.com/library/azure/jj151530.asp) und [Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff für Clouddienste](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
+
+### Was kann einen Gast-Agent-Test veranlassen, eine Instanz als fehlerhaft zu markieren?
+
+Wenn der Gast-Agent nicht mit dem HTTP-OK-Code 200 antwortet, kennzeichnet der Load Balancer die Instanz als nicht reagierend und sendet keinen Datenverkehr mehr an diese Instanz. Der Load Balancer pingt die Instanz weiterhin. Wenn der Gast-Agent mit dem HTTP-Code 200 antwortet, sendet der Load Balancer wieder Datenverkehr an diese Instanz.
+
+Wenn Sie eine Webrolle verwenden, wird der Websitecode in der Regel in „w3wp.exe“ ausgeführt. Dieses Programm wird nicht von der Azure-Fabric oder vom Gast-Agent überwacht. Das bedeutet, dass Fehler in „w3wp.exe“ (z. B. HTTP 500-Antworten) nicht an den Gast-Agent gemeldet werden und dass der Load Balancer diese Instanz nicht aus der Rotation entfernt.
+
+### Benutzerdefinierter HTTP-Test
+
+Der benutzerdefinierte HTTP-Load Balancer-Test erhält Vorrang vor dem Standard-Gast-Agent-Test, sodass Sie Ihre eigene Logik zum Bestimmen der Integrität der Rolleninstanz erstellen können. Der Load Balancer testet Ihren Endpunkt standardmäßig alle 15 Sekunden. Die Instanz wird in die Load Balancer-Rotation einbezogen, wenn sie innerhalb des Zeitlimits (standardmäßig 31 Sekunden) mit HTTP 200 reagiert.
+
+Dies kann für die Implementierung Ihrer eigenen Logik zum Entfernen von Instanzen aus der Load Balancer-Rotation nützlich sein. Sie könnten z. B. eine Instanz entfernen, wenn sie über 90 % CPU beansprucht und einen anderen Status als 200 zurückgibt. Wenn Ihre Webrollen „w3wp.exe“ verwenden, bedeutet dies auch eine automatische Überwachung der Website, da Fehler im Websitecode einen Nicht-200-Status an den Load Balancer-Test zurückgeben.
+
+>[AZURE.NOTE] Der benutzerdefinierte HTTP-Test unterstützt nur relative Pfade und das HTTP-Protokoll. HTTPS wird nicht unterstützt.
+
+### Was kann einen benutzerdefinierten HTTP-Test veranlassen, eine Instanz als fehlerhaft zu markieren?
+
+- Die HTTP-Anwendung gibt einen anderen HTTP-Antwortcode als 200 zurück (z. B. 403, 404 oder 500). Hierbei handelt es sich um eine positive Bestätigung, dass die Anwendungsinstanz sofort außer Betrieb genommen werden sollte.
+
+. Der HTTP-Server reagiert nach dem Timeoutzeitraum nicht mehr. Je nach dem festgelegten Timeoutwert kann dies bedeuten, dass mehrere Testanforderungen unbeantwortet bleiben, bevor der Test als nicht ausgeführt markiert wird (d. h. bevor SuccessFailCount-Tests gesendet werden).
+- 	Der Server schließt die Verbindung durch „TCP Reset“.
+
+### Benutzerdefinierter TCP-Test
+
+TCP-Tests leiten eine Verbindung über einen Drei-Wege-Handshake mit dem definierten Port ein.
+
+### Was kann einen benutzerdefinierten TCP-Test veranlassen, eine Instanz als fehlerhaft zu markieren?
+
+- Der TCP-Server reagiert nach dem Timeoutzeitraum nicht mehr. Wann der Test als nicht ausgeführt markiert wird, hängt von der Anzahl fehlerhafter Testanforderungen ab, die unbeantwortet bleiben können, bevor der Test als nicht ausgeführt gilt.
+- Der Test empfängt ein TCP Reset von der Rolleninstanz.
+
+Weitere Informationen zum Konfigurieren eines HTTP-Integritätstests oder eines TCP-Tests finden Sie unter [Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff in Resource Manager unter Verwendung von PowerShell](load-balancer-get-started-internet-arm-ps.md#create-lb-rules-nat-rules-a-probe-and-a-load-balancer).
+
+## Erneutes Hinzufügen fehlerfreier Instanzen zur Load Balancer-Rotation
+
+TCP- und HTTP-Tests werden als fehlerfrei eingestuft und markieren die Rolleninstanz als fehlerfrei, wenn:
+
+- Beim ersten Start der VM erhält der Load Balancer einen positiven Test.
+- Der Wert von „SuccessFailCount“ (oben beschrieben) definiert die Anzahl erfolgreicher Tests, die erforderlich sind, um die Rolleninstanz als fehlerfrei zu markieren. Wenn eine Rolleninstanz entfernt wurde, muss die Anzahl der erfolgreichen, aufeinanderfolgenden Tests gleich oder größer sein als der Wert von SuccessFailCount, damit die Rolleninstanz als aktiv markiert wird.
+
+>[AZURE.NOTE] Wenn die Integrität einer Rolleninstanz schwankt, wartet der Load Balancer länger, ehe die Rolleninstanz wieder in den fehlerfreien Zustand versetzt wird. Dies erfolgt zum Schutz der Benutzer und Infrastruktur über die Richtlinie.
+
+## Verwenden der Protokollanalyse für den Load Balancer
+
+Mit der [Protokollanalyse für den Load Balancer](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Load Balancers bereitzustellen.
+
+<!---HONumber=AcomDC_0921_2016-->

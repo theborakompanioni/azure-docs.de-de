@@ -1,35 +1,24 @@
- (backup vaults<properties
-   pageTitle="Azure Backup limits table"
-   description="Describes system limits for Azure Backup."
+<properties
+   pageTitle="Tabelle zu Beschränkungen für Azure Backup"
+   description="Beschreibung der Systembegrenzung für Azure Backup."
    services="backup"
    documentationCenter="NA"
    authors="Jim-Parker"
    manager="jwhit"
    editor="" />
-<tags
-   ms.service="backup"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="10/05/2015"
-   ms.author="trinadhk";"jimpark"; "aashishr" />
+<tags  ms.service="backup" ms.devlang="NA" ms.topic="article" ms.tgt_pltfrm="NA" ms.workload="TBD" ms.date="10/05/2015" ms.author="trinadhk";"jimpark"; "aashishr" />
 
 
-The following limits apply to Azure Backup.
+Für Azure Backup gelten die folgenden Beschränkungen.
 
-| Limit Identifier | Default Limit |
+| Bezeichnung | Standardlimit |
 |---|---|
-|Number of servers/machines that can be registered against each vault|50 for Windows Server/Client/SCDPM <br/> 200 for IaaS VMs|
-|Size of a data source for data stored in Azure vault storage|54400 GB max<sup>1</sup>|
-|Number of backup vaults that can be created in each Azure subscription|25(Backup vaults) <br/> 25 Recovery Services vault per region|
-|Number of times backup can be scheduled per day|3 per day for Windows Server/Client <br/> 2 per day for SCDPM <br/> Once a day for IaaS VMs|
-|Data disks attached to an Azure virtual machine for backup|16|
+|Anzahl der Server/Computer, die für jeden Tresor registriert werden können|50 für Windows Server/Windows Client/SCDPM <br/> 200 für virtuelle IaaS-Computer|
+|Größe einer Datenquelle für im Azure-Tresorspeicher gespeicherten Daten|Max. 54.400 GB<sup>1</sup>|
+|Anzahl der Sicherungstresore, die in einem Azure-Abonnement erstellt werden können|25|
+|Häufigkeit der geplanten Sicherungen pro Tag|3 Sicherungen pro Tag für Windows Server und Windows Client <br/> 2 Sicherungen pro Tag für SCDPM <br/> Eine Sicherung pro Tag für virtuelle IaaS-Computer|
+|Datenträger, die für die Sicherung an einen virtuellen Azure-Computer angeschlossen sind|16|
 
-- <sup>1</sup>The 54400 GB limit does not apply to IaaS VM backup.
+- <sup>1</sup>Die Beschränkung von 54.400 GB gilt nicht für IaaS-VM-Sicherungen.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

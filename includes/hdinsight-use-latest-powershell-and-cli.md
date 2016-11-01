@@ -1,10 +1,5 @@
-> [AZURE.IMPORTANT] Support for managing HDInsight resources using Azure Service Manager (ASM) through Azure PowerShell and the Azure CLI is __deprecated__, and will be removed by January 1, 2017. The steps in this document use the new Azure PowerShell cmdlets and Azure CLI commands that work with Azure Resource Manager (ARM).
+> [AZURE.IMPORTANT] Die Unterstützung zum Verwalten von HDInsight-Ressourcen mithilfe von Azure Service Manager (ASM) über Azure PowerShell und Azure-Befehlszeilenschnittstelle ist __veraltet__ und wird zum 1. Januar 2017 eingestellt. Für die Schritte in diesem Dokument werden die neuen Azure PowerShell-Cmdlets und Azure-CLI-Befehle verwendet, die mit Azure Resource Manager (ARM) genutzt werden können.
 >
-> Please follow the steps in the [Install and Configure Azure CLI](../articles/xplat-cli-install.md) and [Install and Configure Azure PowerShell](../articles/powershell-install-configure.md)  to install the latest version of Azure PowerShell and the Azure CLI. If you have existing scripts that need to be modified to use the new cmdlets or new CLI commands, see [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md) for more information.
-
-
-
-
-<!--HONumber=Oct16_HO2-->
+> Bitte führen Sie die Schritte in den Dokumenten [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) und [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md) aus, um die aktuelle Version von Azure PowerShell und Azure-Befehlszeilenschnittstelle zu installieren. Wenn Sie über Skripts verfügen, die für die Verwendung der neuen Cmdlets oder CLI-Befehle geändert werden müssen, finden Sie unter [Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md) weitere Informationen.
 
 

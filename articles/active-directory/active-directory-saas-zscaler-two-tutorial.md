@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory Integration with Zscaler Two | Microsoft Azure" 
-    description="Learn how to use Zscaler Two with Azure Active Directory to enable single sign-on, automated provisioning, and more!." 
+    pageTitle="Tutorial: Azure Active Directory-Integration mit ZScaler Two | Microsoft Azure" 
+    description="Hier erfahren Sie, wie Sie ZScaler Two mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,199 +14,191 @@
     ms.date="08/16/2016" 
     ms.author="jeedes" />
 
+#Tutorial: Azure Active Directory-Integration mit Zscaler Two
 
-#<a name="tutorial:-azure-active-directory-integration-with-zscaler-two"></a>Tutorial: Azure Active Directory Integration with Zscaler Two
+In diesem Tutorial wird die Integration von Azure und Zscaler Two erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-The objective of this tutorial is to show the integration of Azure and ZScaler Two.  
-The scenario outlined in this tutorial assumes that you already have the following items:
-
--   A valid Azure subscription
--   A ZScaler Two single sign-on enabled subscription
+-   Ein gültiges Azure-Abonnement
+-   Ein Zscaler Two-Abonnement, für das einmaliges Anmelden aktiviert ist
   
-After completing this tutorial, the Azure AD users you have assigned to ZScaler Two will be able to single sign into the application at your ZScaler Two company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)
+Nach Abschluss dieses Tutorials können sich die Zscaler Two zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Zscaler Two-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können Sie die [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) nutzen.
   
-The scenario outlined in this tutorial consists of the following building blocks:
+Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
-1.  Enabling the application integration for ZScaler Two
-2.  Configuring single sign-on
-3.  Configuring proxy settings
-4.  Configuring user provisioning
-5.  Assigning users
+1.  Aktivieren der Anwendungsintegration für Zscaler Two
+2.  Konfigurieren der einmaligen Anmeldung
+3.  Konfigurieren von Proxyeinstellungen
+4.  Konfigurieren der Benutzerbereitstellung
+5.  Zuweisen von Benutzern
 
-![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800199.png "Configure Single Sign-On")
+![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zscaler-two-tutorial/IC800199.png "Einmaliges Anmelden konfigurieren")
 
-##<a name="enabling-the-application-integration-for-zscaler-two"></a>Enabling the application integration for ZScaler Two
+##Aktivieren der Anwendungsintegration für Zscaler Two
   
-The objective of this section is to outline how to enable the application integration for ZScaler Two.
+In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Zscaler Two aktivieren.
 
-###<a name="to-enable-the-application-integration-for-zscaler-two,-perform-the-following-steps:"></a>To enable the application integration for ZScaler Two, perform the following steps:
+###So aktivieren Sie die Anwendungsintegration für Zscaler Two:
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-zscaler-two-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Applications](./media/active-directory-saas-zscaler-two-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-zscaler-two-tutorial/IC700994.png "Anwendungen")
 
-4.  Click **Add** at the bottom of the page.
+4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-    ![Add application](./media/active-directory-saas-zscaler-two-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-zscaler-two-tutorial/IC749321.png "Anwendung hinzufügen")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Add an application from gallerry](./media/active-directory-saas-zscaler-two-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-zscaler-two-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
-6.  In the **search box**, type **ZScaler Two**.
+6.  Geben Sie im **Suchfeld** das Wort **Zscaler Two** ein.
 
-    ![Application Gallery](./media/active-directory-saas-zscaler-two-tutorial/IC800200.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-zscaler-two-tutorial/IC800200.png "Anwendungskatalog")
 
-7.  In the results pane, select **ZScaler Two**, and then click **Complete** to add the application.
+7.  Wählen Sie im Ergebnisbereich **Zscaler Two** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-    ![ZScaler Two](./media/active-directory-saas-zscaler-two-tutorial/IC800201.png "ZScaler Two")
+    ![Zscaler Two](./media/active-directory-saas-zscaler-two-tutorial/IC800201.png "Zscaler Two")
 
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##Konfigurieren der einmaligen Anmeldung
   
-The objective of this section is to outline how to enable users to authenticate to ZScaler Two with their account in Azure AD using federation based on the SAML protocol.  
-As part of this procedure, you are required to upload a base-64 encoded certificate to your ZScaler Two tenant.  
-If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Zscaler Two zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei in Ihren Zscaler Two-Mandanten hochladen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache) weitere Informationen.
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  In the Azure classic portal, on the **ZScaler Two** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ZScaler Two** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800202.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zscaler-two-tutorial/IC800202.png "Einmaliges Anmelden konfigurieren")
 
-2.  On the **How would you like users to sign on to ZScaler Two** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Zscaler Two anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800203.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zscaler-two-tutorial/IC800203.png "Einmaliges Anmelden konfigurieren")
 
-3.  On the **Configure App URL** page, in the **ZScaler Two Sign On URL** textbox, type the URL used by your users to sign-on to your ZScaler Two application, and then click **Next**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Zscaler Two-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Zscaler Two verwenden, und klicken Sie dann auf **Weiter**.
 
-    ![Configure App URL](./media/active-directory-saas-zscaler-two-tutorial/IC800204.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-zscaler-two-tutorial/IC800204.png "App-URL konfigurieren")
 
-    >[AZURE.NOTE] You can get the actual value for your environment from your ZScaler Two support team if you need it.
+    >[AZURE.NOTE] Sie erhalten bei Bedarf den tatsächlichen Wert für Ihre Umgebung von Ihrem Zscaler Two-Supportteam.
 
-4.  On the **Configure single sign-on at ZScaler Two** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
+4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Zscaler Two** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800205.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zscaler-two-tutorial/IC800205.png "Einmaliges Anmelden konfigurieren")
 
-5.  In a different web browser window, log into your ZScaler Two company site as an administrator.
+5.  Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler Two-Unternehmenswebsite als Administrator an.
 
-6.  In the menu on the top, click **Administration**.
+6.  Klicken Sie oben im Menü auf **Verwaltung**.
 
-    ![Administration](./media/active-directory-saas-zscaler-two-tutorial/IC800206.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-zscaler-two-tutorial/IC800206.png "Verwaltung")
 
-7.  Under **Manage Administrators & Roles**, click **Manage Users & Authentication**.
+7.  Klicken Sie unter **Administratoren & Rollen verwalten ** auf **Benutzer & Authentifizierung verwalten**.
 
-    ![Manage Users & Authentication](./media/active-directory-saas-zscaler-two-tutorial/IC800207.png "Manage Users & Authentication")
+    ![Benutzer & Authentifizierung verwalten](./media/active-directory-saas-zscaler-two-tutorial/IC800207.png "Benutzer & Authentifizierung verwalten")
 
-8.  In the **Choose Authentication Options for your Organization** section, perform the following steps:
+8.  Führen Sie im Abschnitt **Auswählen von Authentifizierungsoptionen für Ihre Organisation** die folgenden Schritte aus:
 
-    ![Authentication](./media/active-directory-saas-zscaler-two-tutorial/IC800208.png "Authentication")
+    ![Authentifizierung](./media/active-directory-saas-zscaler-two-tutorial/IC800208.png "Authentifizierung")
 
-    1.  Select **Authenticate using SAML Single Sign-On**.
-    2.  Click **Configure SAML Single Sign-On Parameters**.
+    1.  Wählen Sie **Authentifizeren mit der einmaligen Anmeldung für SAML**.
+    2.  Klicken Sie auf **Einzelne Parameter der einmaligen Anmeldung für SAML konfigurieren**.
 
-9.  On the **Configure SAML Single Sign-On Parameters** dialog page, perform the following steps, and then click **Done**:
+9.  Führen Sie auf der Dialogfeldseite **Einzelne Parameter der einmaligen Anmeldung für SAML konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Fertig stellen**.
 
-    ![Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800209.png "Single Sign-On")
+    ![Einmaliges Anmelden](./media/active-directory-saas-zscaler-two-tutorial/IC800209.png "Einmaliges Anmelden")
 
-    1.  In the Azure classic portal, on the **Configure single sign-on at ZScaler Two** dialog page, copy the **Authentication Request URL** value, and then paste it into the **URL of the SAML Portal to which users are sent for authentication** textbox.
-    2.  In the **Attribute containing Login Name** textbox, type **NameID**.
-    3.  To upload your downloaded certificate, click **Zscaler pem**.
-    4.  Select **Enable SAML Auto-Provisioning**.
+    1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für ZScaler Two** den Wert der **Authentifizierungsanforderungs-URL**, und fügen Sie ihn in das Textfeld **URL des SAML-Portals, an das Benutzer zur Authentifizierung weitergeleitet werden** ein.
+    2.  Geben Sie im Textfeld **Attribut mit Anmeldenamen** die **NameID** ein.
+    3.  Klicken Sie auf **Zscaler pem**, um das heruntergeladene Zertifikat hochzuladen.
+    4.  Wählen Sie **Automatische SAML-Bereitstellung aktivieren**.
 
-10. On the **Configure User Authentication** dialog page, perform the following steps:
+10. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
 
-    ![Administration](./media/active-directory-saas-zscaler-two-tutorial/IC800210.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-zscaler-two-tutorial/IC800210.png "Verwaltung")
 
-    1.  Click **Save**.
-    2.  Click **Activate Now**.
+    1.  Klicken Sie auf **Speichern**.
+    2.  Klicken Sie auf **Jetzt aktivieren**.
 
-11. In the Azure classic portal, on the **Configure single sign-on at ZScaler Two** dialog page, select the single sign-on configuration confirmation, and then click **Complete**.
+11. Bestätigen Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für ZScaler Two** die Konfiguration für das einmalige Anmelden, und klicken Sie dann auf **Abschließen**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800211.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zscaler-two-tutorial/IC800211.png "Einmaliges Anmelden konfigurieren")
 
-##<a name="configuring-proxy-settings"></a>Configuring proxy settings
+##Konfigurieren von Proxyeinstellungen
 
-###<a name="to-configure-the-proxy-settings-in-internet-explorer"></a>To configure the proxy settings in Internet Explorer
+###So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
 
-1.  Start **Internet Explorer**.
+1.  Starten Sie **Internet Explorer**.
 
-2.  Select **Internet options** from the **Tools** menu to open the **Internet Options** dialog.
+2.  Wählen Sie im Menü **Tools** **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.
 
-    ![Internet Options](./media/active-directory-saas-zscaler-two-tutorial/IC769492.png "Internet Options")
+    !["Internetoptionen",](./media/active-directory-saas-zscaler-two-tutorial/IC769492.png ""Internetoptionen",")
 
-3.  Click the **Connections** tab.
+3.  Klicken Sie auf die Registerkarte **Verbindungen**.
 
-    ![Connections](./media/active-directory-saas-zscaler-two-tutorial/IC769493.png "Connections")
+    ![Verbindungen](./media/active-directory-saas-zscaler-two-tutorial/IC769493.png "Verbindungen")
 
-4.  Click **LAN settings** to open the **LAN Settings** dialog.
+4.  Klicken Sie zum Öffnen des Dialogfelds **LAN-Einstellungen** auf **LAN-Einstellungen**.
 
-5.  In the Proxy server section, perform the following steps:
+5.  Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:
 
-    ![Proxy server](./media/active-directory-saas-zscaler-two-tutorial/IC769494.png "Proxy server")
+    ![Proxyserver](./media/active-directory-saas-zscaler-two-tutorial/IC769494.png "Proxyserver")
 
-    1.  Select Use a proxy server for your LAN.
-    2.  In the Address textbox, type **gateway.zscalerone.net**.
-    3.  In the Port textbox, type **80**.
-    4.  Select **Bypass proxy server for local addresses**.
-    5.  Click **OK** to close the **Local Area Network (LAN) Settings** dialog.
+    1.  Wählen Sie "Proxyserver für LAN verwenden" aus.
+    2.  Geben Sie in das Textfeld „Adresse“ **gateway.zscalerone.net** ein.
+    3.  Geben Sie im Textfeld „Port“ **80** ein.
+    4.  Wählen Sie **Proxyserver für lokale Adressen umgehen**.
+    5.  Klicken Sie zum Schließen des Dialogfelds **Local Area Network (LAN) Settings** auf **OK**.
 
-6.  Click **OK** to close the **Internet Options** dialog.
+6.  Klicken Sie zum Schließen des Dialogfelds **Internetoptionen** auf **OK**.
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##Konfigurieren der Benutzerbereitstellung
   
-In order to enable Azure AD users to log into ZScaler Two, they must be provisioned to ZScaler Two.  
-In the case of ZScaler Two, provisioning is a manual task.
+Damit sich Azure AD-Benutzer bei ZScaler Two anmelden können, müssen sie in ZScaler Two bereitgestellt werden. Im Fall von ZScaler Two ist die Bereitstellung eine manuelle Aufgabe.
 
-###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+###So konfigurieren Sie die Benutzerbereitstellung
 
-1.  Log in to your **Zscaler** tenant.
+1.  Melden Sie sich bei Ihrem **Zscaler**-Mandanten an.
 
-2.  Click **Administration**.
+2.  Klicken Sie auf **Verwaltung**.
 
-    ![Administration](./media/active-directory-saas-zscaler-two-tutorial/IC781035.png "Administration")
+    ![Verwaltung](./media/active-directory-saas-zscaler-two-tutorial/IC781035.png "Verwaltung")
 
-3.  Click **User Management**.
+3.  Klicken Sie auf **Benutzerverwaltung**.
 
-    ![Add](./media/active-directory-saas-zscaler-two-tutorial/IC781037.png "Add")
+    ![Hinzufügen](./media/active-directory-saas-zscaler-two-tutorial/IC781037.png "Hinzufügen")
 
-4.  In the **Users** tab, click **Add**.
+4.  Klicken Sie in der Registerkarte **Benutzer** auf **Hinzufügen**.
 
-    ![Add](./media/active-directory-saas-zscaler-two-tutorial/IC781037.png "Add")
+    ![Hinzufügen](./media/active-directory-saas-zscaler-two-tutorial/IC781037.png "Hinzufügen")
 
-5.  In the Add User section, perform the following steps:
+5.  Führen Sie im Abschnitt "Benutzer hinzufügen" die folgenden Schritte aus:
 
-    ![Add User](./media/active-directory-saas-zscaler-two-tutorial/IC781038.png "Add User")
+    ![Benutzer hinzufügen](./media/active-directory-saas-zscaler-two-tutorial/IC781038.png "Benutzer hinzufügen")
 
-    1.  Type the **UserID**, **User Display Name**, **Password**, **Confirm Password**, and then select **Groups** and the **Department** of a valid AAD account you want to provision.
-    2.  Click **Save**.
+    1.  Geben Sie die **Benutzer-ID**, den **Benutzeranzeigenamen**, das **Kennwort** und **Kennwort bestätigen** ein, und wählen Sie dann **Gruppen** und die **Abteilung** eines gültigen AAD-Kontos, das Sie bereitstellen möchten.
+    2.  Klicken Sie auf **Speichern**.
 
->[AZURE.NOTE] You can use any other ZScaler Two user account creation tools or APIs provided by ZScaler Two to provision AAD user accounts.
+>[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von ZScaler Two-Benutzerkonten oder mithilfe der von ZScaler Two bereitgestellten APIs erstellen.
 
-##<a name="assigning-users"></a>Assigning users
+##Zuweisen von Benutzern
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-###<a name="to-assign-users-to-zscaler-two,-perform-the-following-steps:"></a>To assign users to ZScaler Two, perform the following steps:
+###So weisen Sie ZScaler Two Benutzer zu:
 
-1.  In the Azure classic portal, create a test account.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  On the **ZScaler Two** application integration page, click **Assign users**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **ZScaler Two** auf **Benutzer zuweisen**.
 
-    ![Assign Users](./media/active-directory-saas-zscaler-two-tutorial/IC800212.png "Assign Users")
+    ![Benutzer zuweisen](./media/active-directory-saas-zscaler-two-tutorial/IC800212.png "Benutzer zuweisen")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
 
-    ![Yes](./media/active-directory-saas-zscaler-two-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-zscaler-two-tutorial/IC767830.png "Ja")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

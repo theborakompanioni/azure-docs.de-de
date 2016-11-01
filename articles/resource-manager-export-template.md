@@ -1,122 +1,160 @@
 <properties
-    pageTitle="Export Azure Resource Manager template | Microsoft Azure"
-    description="Use Azure Resource Manage to export a template from an existing resource group."
-    services="azure-resource-manager"
-    documentationCenter=""
-    authors="tfitzmac"
-    manager="timlt"
-    editor="tysonn"/>
+	pageTitle="Exportieren einer Azure Resource Manager-Vorlage | Microsoft Azure"
+	description="Verwenden Sie Azure Resource Manager zum Exportieren einer Vorlage aus einer vorhandenen Ressourcengruppe."
+	services="azure-resource-manager"
+	documentationCenter=""
+	authors="tfitzmac"
+	manager="timlt"
+	editor="tysonn"/>
 
 <tags
-    ms.service="azure-resource-manager"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/03/2016"
-    ms.author="tomfitz"/>
+	ms.service="azure-resource-manager"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/03/2016"
+	ms.author="tomfitz"/>
 
+# Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen
 
-# <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Export an Azure Resource Manager template from existing resources
+Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren.
 
-Resource Manager enables you to export a Resource Manager template from existing resources in your subscription. You can use that generated template to learn about the template syntax or to automate the redeployment of your solution as needed.
+Es ist wichtig zu beachten, dass es zwei Möglichkeiten zum Exportieren einer Vorlage gibt:
 
-It is important to note that there are two different ways to export a template:
+- Sie können die Vorlage exportieren, die Sie für eine Bereitstellung verwendet haben. Die exportierte Vorlage enthält alle Parameter und Variablen so, wie sie in der Originalvorlage angezeigt wurden. Dieser Ansatz ist hilfreich, wenn Sie Ressourcen über das Portal bereitgestellt haben. Nun wird beschrieben, wie Sie die Vorlage zum Erstellen dieser Ressourcen zusammenstellen.
+- Sie können eine Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe darstellt. Die exportierte Vorlage basiert nicht auf einer Vorlage, die Sie für die Bereitstellung verwendet haben. Stattdessen wird eine Vorlage erstellt, bei der es sich um eine Momentaufnahme der Ressourcengruppe handelt. Die exportierte Vorlage verfügt über viele hartcodierte Werte und vermutlich nicht über so viele Parameter, wie Sie sonst definieren. Dieser Ansatz ist hilfreich, wenn Sie die Ressourcengruppe über das Portal oder mit Skripts geändert haben. Nun müssen Sie die Ressourcengruppe als Vorlage erfassen.
 
-- You can export the actual template that you used for a deployment. The exported template includes all the parameters and variables exactly as they appeared in the original template. This approach is helpful when you have deployed resources through the portal. Now, you want to see how to construct the template to create those resources.
-- You can export a template that represents the current state of the resource group. The exported template is not based on any template that you used for deployment. Instead, it creates a template that is a snapshot of the resource group. The exported template has many hard-coded values and probably not as many parameters as you would typically define. This approach is useful when you have modified the resource group through the portal or scripts. Now, you need to capture the resource group as a template.
+In diesem Thema werden beide Ansätze beschrieben. Im Artikel [Anpassen einer exportierten Azure Resource Manager-Vorlage](resource-manager-customize-template.md) wird gezeigt, wie Sie eine Vorlage, die Sie aus dem aktuellen Zustand der Ressourcengruppe generiert haben, nützlicher für die erneute Bereitstellung Ihrer Lösung gestalten.
 
-This topic shows both approaches. In the [Customize an exported Azure Resource Manager template](resource-manager-customize-template.md) article, you see how to take a template you generated from the current state of the resource group and make it more useful for redeploying your solution.
+In diesem Tutorial melden Sie sich beim Azure-Portal an, erstellen ein Speicherkonto und exportieren die Vorlage für dieses Speicherkonto. Außerdem fügen Sie ein virtuelles Netzwerk hinzu, um die Ressourcengruppe zu ändern. Und schließlich exportieren Sie eine neue Vorlage, die den aktuellen Zustand darstellt. In diesem Artikel geht es zwar hauptsächlich um eine vereinfachte Infrastruktur, die beschriebenen Schritte können aber auch zum Exportieren einer Vorlage für eine kompliziertere Lösung verwendet werden.
 
-In this tutorial, you sign in to the Azure portal, create a storage account, and export the template for that storage account. You add a virtual network to modify the resource group. Finally, you export a new template that represents its current state. Although this article focuses on a simplified infrastructure, you could use these same steps to export a template for a more complicated solution.
+## Erstellen Sie ein Speicherkonto.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Folgendes aus: **Neu** > **Daten und Speicher** > **Speicherkonto**.
 
-1. In the [Azure portal](https://portal.azure.com), select **New** > **Data + Storage** > **Storage account**.
+      ![Speicher erstellen](./media/resource-manager-export-template/create-storage.png)
 
-      ![create storage](./media/resource-manager-export-template/create-storage.png)
+2. Erstellen Sie ein Speicherkonto mit dem Namen **storage**, gefolgt von Ihren Initialen und dem Datum. Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Falls der ursprünglich gewählte Name bereits verwendet wird, versuchen Sie es mit einer Abwandlung. Verwenden Sie als Ressourcengruppe **ExportGroup**. Sie können für die anderen Eigenschaften die Standardwerte verwenden. Klicken Sie auf **Erstellen**.
 
-2. Create a storage account with the name **storage**, your initials, and the date. The storage account name must be unique across Azure. If you initially try a name that's already in use, try a variation. For resource group, use **ExportGroup**. You can use the default values for the other properties. Select **Create**.
+      ![Werte für Speicher angeben](./media/resource-manager-export-template/provide-storage-values.png)
 
-      ![provide values for storage](./media/resource-manager-export-template/provide-storage-values.png)
+Nach Abschluss der Bereitstellung enthält das Abonnement das Speicherkonto.
 
-After the deployment finishes, your subscription contains the storage account.
+## Exportieren der Vorlage aus dem Bereitstellungsverlauf
 
-## <a name="export-the-template-from-deployment-history"></a>Export the template from deployment history
+1. Navigieren Sie zum Blatt „Ressourcengruppe“ für die neue Ressourcengruppe. Beachten Sie, dass auf dem Blatt das Ergebnis der letzten Bereitstellung angezeigt wird. Wählen Sie diesen Link aus.
 
-1. Go to the resource group blade for your new resource group. Notice that the blade shows the result of the last deployment. Select this link.
+      ![Blatt „Ressourcengruppe“](./media/resource-manager-export-template/resource-group-blade.png)
 
-      ![resource group blade](./media/resource-manager-export-template/resource-group-blade.png)
+2. Der Verlauf der Bereitstellungen für die Gruppe wird angezeigt. In Ihrem Fall ist auf dem Blatt wahrscheinlich nur eine Bereitstellung aufgeführt. Wählen Sie diese Bereitstellung aus.
 
-2. You see a history of deployments for the group. In your case, the blade probably lists only one deployment. Select this deployment.
+     ![Letzte Bereitstellung](./media/resource-manager-export-template/last-deployment.png)
 
-     ![last deployment](./media/resource-manager-export-template/last-deployment.png)
+3. Auf dem Blatt wird eine Zusammenfassung der Bereitstellung angezeigt. Die Zusammenfassung enthält den Status der Bereitstellung und die dazugehörigen Vorgänge sowie die Werte, die Sie für die Parameter angegeben haben. Wählen Sie **Vorlage anzeigen**, um die Vorlage anzuzeigen, die Sie für die Bereitstellung verwendet haben.
 
-3. The blade displays a summary of the deployment. The summary includes the status of the deployment and its operations and the values that you provided for parameters. To see the template that you used for the deployment, select **View template**.
+     ![Zusammenfassung der Bereitstellungen anzeigen](./media/resource-manager-export-template/deployment-summary.png)
 
-     ![view deployment summary](./media/resource-manager-export-template/deployment-summary.png)
+4. Resource Manager ruft die folgenden sechs Dateien ab:
 
-4. Resource Manager retrieves the following six files for you:
+   1. **Vorlage**: Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
+   2. **Parameter**: Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie bei der ersten Bereitstellung angegeben haben. Diese Werte können aber geändert werden, wenn Sie die Vorlage erneut bereitstellen.
+   3. **CLI**: Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage verwenden können.
+   4. **PowerShell**: Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
+   5. **.NET**: Eine .NET-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
+   6. **Ruby**: Eine Ruby-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
 
-   1. **Template** - The template that defines the infrastructure for your solution. When you created the storage account through the portal, Resource Manager used a template to deploy it and saved that template for future reference.
-   2. **Parameters** - A parameter file that you can use to pass in values during deployment. It contains the values that you provided during the first deployment, but you can change any of these values when you redeploy the template.
-   3. **CLI** - An Azure command-line-interface (CLI) script file that you can use to deploy the template.
-   4. **PowerShell** - An Azure PowerShell script file that you can use to deploy the template.
-   5. **.NET** - A .NET class that you can use to deploy the template.
-   6. **Ruby** - A Ruby class that you can use to deploy the template.
+     Die Dateien sind über die Links im Blatt verfügbar. Standardmäßig wird die Vorlage auf dem Blatt angezeigt.
 
-     The files are available through links across the blade. By default, the blade displays the template.
+       ![Vorlage anzeigen](./media/resource-manager-export-template/view-template.png)
 
-       ![view template](./media/resource-manager-export-template/view-template.png)
+     Wir sehen uns die Vorlage nun genauer an. Die Vorlage sollte in etwa wie folgt aussehen:
 
-     Let's pay particular attention to the template. Your template should look similar to:
-
-        {     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",     "contentVersion": "1.0.0.0",     "parameters": {       "name": {         "type": "String"       },       "accountType": {         "type": "String"       },       "location": {         "type": "String"       },       "encryptionEnabled": {         "defaultValue": false,         "type": "Bool"       }     },     "resources": [       {         "type": "Microsoft.Storage/storageAccounts",         "sku": {           "name": "[parameters('accountType')]"         },         "kind": "Storage",         "name": "[parameters('name')]",         "apiVersion": "2016-01-01",         "location": "[parameters('location')]",         "properties": {           "encryption": {             "services": {               "blob": {                 "enabled": "[parameters('encryptionEnabled')]"               }             },             "keySource": "Microsoft.Storage"           }         }       }     ]   }
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "name": {
+              "type": "String"
+            },
+            "accountType": {
+              "type": "String"
+            },
+            "location": {
+              "type": "String"
+            },
+            "encryptionEnabled": {
+              "defaultValue": false,
+              "type": "Bool"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                "name": "[parameters('accountType')]"
+              },
+              "kind": "Storage",
+              "name": "[parameters('name')]",
+              "apiVersion": "2016-01-01",
+              "location": "[parameters('location')]",
+              "properties": {
+                "encryption": {
+                  "services": {
+                    "blob": {
+                      "enabled": "[parameters('encryptionEnabled')]"
+                    }
+                  },
+                  "keySource": "Microsoft.Storage"
+                }
+              }
+            }
+          ]
+        }
  
-This template is the actual template used to create your storage account. Notice it contains parameters that enable you to deploy different types of storage accounts. To learn more about the structure of a template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md). For the complete list of the functions you can use in a template, see [Azure Resource Manager template functions](resource-group-template-functions.md).
+Dies ist die Vorlage, die zum Erstellen Ihres Speicherkontos verwendet wurde. Beachten Sie, dass sie Parameter enthält, mit denen Sie unterschiedliche Arten von Speicherkonten bereitstellen können. Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md). Unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md) finden Sie eine vollständige Liste mit den Funktionen, die Sie in einer Vorlage verwenden können.
 
 
-## <a name="add-a-virtual-network"></a>Add a virtual network
+## Hinzufügen eines virtuellen Netzwerks
 
-The template that you downloaded in the previous section represented the infrastructure for that original deployment. However, it will not account for any changes you make after the deployment.
-To illustrate this issue, let's modify the resource group by adding a virtual network through the portal.
+Die Vorlage, die Sie im vorherigen Abschnitt heruntergeladen haben, stellt die Infrastruktur für die ursprüngliche Bereitstellung dar. Es werden aber keine Änderungen berücksichtigt, die Sie nach der Bereitstellung vornehmen. Um dieses Problem zu veranschaulichen, ändern wir die Ressourcengruppe, indem wir über das Portal ein virtuelles Netzwerk hinzufügen.
 
-1. In the resource group blade, select **Add**.
+1. Wählen Sie auf dem Blatt „Ressourcengruppe“ die Option **Hinzufügen**.
 
-      ![add resource](./media/resource-manager-export-template/add-resource.png)
+      ![Ressource hinzufügen](./media/resource-manager-export-template/add-resource.png)
 
-2. Select **Virtual network** from the available resources.
+2. Wählen Sie **Virtuelles Netzwerk** aus den verfügbaren Ressourcen aus.
 
-      ![select virtual network](./media/resource-manager-export-template/select-vnet.png)
+      ![Virtuelles Netzwerk auswählen](./media/resource-manager-export-template/select-vnet.png)
 
-2. Name your virtual network **VNET**, and use the default values for the other properties. Select **Create**.
+2. Geben Sie dem virtuellen Netzwerk den Namen **VNET**, und übernehmen Sie für die anderen Eigenschaften die Standardwerte. Klicken Sie auf **Erstellen**.
 
-      ![set alert](./media/resource-manager-export-template/create-vnet.png)
+      ![Warnung festlegen](./media/resource-manager-export-template/create-vnet.png)
 
-3. After the virtual network has successfully deployed to your resource group, look again at the deployment history. You now see two deployments. If you do not see the second deployment, you may need to close your resource group blade and reopen it. Select the more recent deployment.
+3. Sehen Sie sich den Bereitstellungsverlauf erneut an, nachdem das virtuelle Netzwerk erfolgreich für die Ressourcengruppe bereitgestellt wurde. Zwei Bereitstellungen werden angezeigt. Falls die zweite Bereitstellung nicht angezeigt wird, müssen Sie das Blatt „Ressourcengruppe“ ggf. schließen und erneut öffnen. Wählen Sie die neuere Bereitstellung aus.
 
-      ![deployment history](./media/resource-manager-export-template/deployment-history.png)
+      ![Bereitstellungsverlauf](./media/resource-manager-export-template/deployment-history.png)
 
-4. Look at the template for that deployment. Notice that it defines only the changes that you have made to add the virtual network.
+4. Sehen Sie sich die Vorlage für diese Bereitstellung an. Beachten Sie, dass damit nur die Änderungen definiert werden, die Sie für das Hinzufügen des virtuellen Netzwerks vorgenommen haben.
 
-It is generally a best practice to work with a template that deploys all the infrastructure for your solution in a single operation. This approach is more reliable than remembering many different templates to deploy.
+In der Regel besteht die bewährte Methode darin, eine Vorlage zu verwenden, mit der die gesamte Infrastruktur für Ihre Lösung mit einem Vorgang bereitgestellt wird. Dieser Ansatz ist zuverlässiger als eine Vorgehensweise, bei der die Bereitstellung vieler unterschiedlicher Vorlagen bedacht werden muss.
 
 
-## <a name="export-the-template-from-resource-group"></a>Export the template from resource group
+## Exportieren der Vorlage aus der Ressourcengruppe
 
-Although each deployment shows only the changes that you have made to your resource group, at any time you can export a template to show the attributes of your entire resource group.  
+Auch wenn für jede Bereitstellung nur die Änderungen angezeigt werden, die Sie an der Ressourcengruppe vorgenommen haben, können Sie jederzeit eine Vorlage exportieren, um die Attribute der gesamten Ressourcengruppe anzuzeigen.
 
-> [AZURE.NOTE] You cannot export a template for a resource group that has more than 200 resources.
+> [AZURE.NOTE] Sie können keine Vorlage für eine Ressourcengruppe mit mehr als 200 Ressourcen exportieren.
 
-1. To view the template for a resource group, select **Automation script**.
+1. Wählen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe die Option **Automatisierungsskript**.
 
-      ![export resource group](./media/resource-manager-export-template/export-resource-group.png)
+      ![Ressourcengruppe exportieren](./media/resource-manager-export-template/export-resource-group.png)
 
-     Not all resource types support the export template function. If your resource group only contains the storage account and virtual network shown in this article, you will not see an error. However, if you have created other resource types, you may see an error stating that there is a problem with the export. You learn how to handle those issues in the [Fix export issues](#fix-export-issues) section.
+     Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Wenn die Ressourcengruppe wie in diesem Artikel gezeigt nur das Speicherkonto und das virtuelle Netzwerk enthält, wird kein Fehler angezeigt. Falls Sie andere Ressourcentypen erstellt haben, wird aber unter Umständen ein Fehler mit dem Hinweis angezeigt, dass ein Problem mit dem Export besteht. Informationen zum Umgang mit diesen Problemen finden Sie im Abschnitt [Beheben von Exportproblemen](#fix-export-issues).
 
       
 
-2. You again see the six files that you can use to redeploy the solution, but this time the template is a little different. This template has only two parameters: one for the storage account name, and one for the virtual network name.
+2. Es werden wieder die sechs Dateien angezeigt, die Sie zum erneuten Bereitstellen der Lösung verwenden können. Dieses Mal sieht die Vorlage allerdings etwas anders aus. Diese Vorlage verfügt nur über zwei Parameter: einen für den Speicherkontonamen und einen für den Namen des virtuellen Netzwerks.
 
         "parameters": {
           "virtualNetworks_VNET_name": {
@@ -129,7 +167,7 @@ Although each deployment shows only the changes that you have made to your resou
           }
         },
 
-     Resource Manager did not retrieve the templates that you used during deployment. Instead, it generated a new template that's based on the current configuration of the resources. For example, the template sets the storage account location and replication value to:
+     Resource Manager hat die Vorlagen, die Sie während der Bereitstellung verwendet haben, nicht abgerufen. Stattdessen wurde basierend auf der aktuellen Konfiguration der Ressourcen eine neue Vorlage generiert. Der Standort des Speicherkontos und der Replikationswert werden von der Vorlage beispielsweise wie folgt festgelegt:
 
         "location": "northeurope",
         "tags": {},
@@ -137,31 +175,31 @@ Although each deployment shows only the changes that you have made to your resou
             "accountType": "Standard_RAGRS"
         },
 
-3. Download the template so that you can work on it locally.
+3. Laden Sie die Vorlage herunter, um sie lokal verwenden zu können.
 
-      ![download template](./media/resource-manager-export-template/download-template.png)
+      ![Vorlage herunterladen](./media/resource-manager-export-template/download-template.png)
 
-4. Find the .zip file that you downloaded and extract the contents. You can use this downloaded template to redeploy your infrastructure.
+4. Suchen Sie nach der ZIP-Datei, die Sie heruntergeladen haben, und extrahieren Sie den Inhalt. Mit dieser heruntergeladenen Vorlage können Sie die Infrastruktur erneut bereitstellen.
 
-## <a name="fix-export-issues"></a>Fix export issues
+## Beheben von Exportproblemen
 
-Not all resource types support the export template function. Resource Manager specifically does not export some resource types to prevent exposing sensitive data. For example, if you have a connection string in your site config, you probably do not want it explicitly displayed in an exported template. You can get around this issue by manually adding the missing resources back into your template.
+Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Vom Resource Manager werden einige bestimmte Ressourcentypen nicht exportiert, um die Offenlegung vertraulicher Daten zu verhindern. Wenn Sie in Ihrer Websitekonfiguration beispielsweise über eine Verbindungszeichenfolge verfügen, möchten Sie vermutlich nicht, dass sie in einer exportierten Vorlage explizit angezeigt wird. Sie können dieses Problem beheben, indem Sie die fehlenden Ressourcen der Vorlage manuell erneut hinzufügen.
 
-> [AZURE.NOTE] You only encounter export issues when exporting from a resource group rather than from your deployment history. If your last deployment accurately represents the current state of the resource group, you should export the template from the deployment history rather than from the resource group. Only export from a resource group when you have made changes to the resource group that are not defined in a single template.
+> [AZURE.NOTE] Exportprobleme treten nur dann auf, wenn Sie aus einer Ressourcengruppe exportieren, anstatt aus Ihrem Bereitstellungsverlauf. Falls die letzte Bereitstellung genau den aktuellen Status der Ressourcengruppe widerspiegelt, sollten Sie die Vorlage nicht aus der Ressourcengruppe, sondern aus dem Bereitstellungsverlauf exportieren. Führen Sie den Export aus einer Ressourcengruppe nur dann durch, wenn Sie Änderungen an der Ressourcengruppe vorgenommen haben, die in einer einzelnen Vorlage nicht definiert sind.
 
-For example, if you export a template for a resource group that contains a web app, SQL Database, and a connection string in the site config, you will see the following message.
+Wenn Sie beispielsweise eine Vorlage für eine Ressourcengruppe exportieren, die eine Web-App, SQL-Datenbank und eine Verbindungszeichenfolge in der Websitekonfiguration enthält, wird die folgende Meldung angezeigt:
 
 ![show error](./media/resource-manager-export-template/show-error.png)
 
-Selecting the message shows you exactly which resource types were not exported. 
+Wenn Sie die Meldung auswählen, wird genau angezeigt, welche Ressourcentypen nicht exportiert wurden.
      
 ![show error](./media/resource-manager-export-template/show-error-details.png)
 
-This topic shows the following common fixes. To implement these resources, you need to add parameters to template. For more information, see [Customize and redeploy exported template](resource-manager-customize-template.md).
+In diesem Thema werden die folgenden häufigen Fixes beschrieben. Zum Implementieren dieser Ressourcen müssen Sie der Vorlage Parameter hinzufügen. Weitere Informationen finden Sie unter [Anpassen und erneutes Bereitstellen der exportierten Vorlage](resource-manager-customize-template.md).
 
-### <a name="connection-string"></a>Connection string
+### Verbindungszeichenfolge
 
-In the web sites resource, add a definition for the connection string to the database:
+Fügen Sie in der Websiteressource eine Definition für die Verbindungszeichenfolge der Datenbank hinzu:
 
 ```
 {
@@ -186,9 +224,9 @@ In the web sites resource, add a definition for the connection string to the dat
 }
 ```    
 
-### <a name="web-site-extension"></a>Web site extension
+### Websiteerweiterung
 
-In the web site resource, add a definition for the code to install:
+Fügen Sie in der Websiteressource eine Definition für den zu installierenden Code hinzu:
 
 ```
 {
@@ -216,13 +254,13 @@ In the web site resource, add a definition for the code to install:
 }
 ```
 
-### <a name="virtual-machine-extension"></a>Virtual machine extension
+### VM-Erweiterung
 
-For examples of virtual machine extensions, see [Azure Windows VM Extension Configuration Samples](./virtual-machines/virtual-machines-windows-extensions-configuration-samples.md).
+Beispiele für VM-Erweiterungen finden Sie unter [Konfigurationsbeispiele für Windows-VM-Erweiterungen in Azure](./virtual-machines/virtual-machines-windows-extensions-configuration-samples.md).
 
-### <a name="virtual-network-gateway"></a>Virtual network gateway
+### Gateway des virtuellen Netzwerks
 
-Add a virtual network gateway resource type.
+Fügen Sie einen Ressourcentyp für das Gateway des virtuellen Netzwerks hinzu.
 
 ```
 {
@@ -256,9 +294,9 @@ Add a virtual network gateway resource type.
 },
 ```
 
-### <a name="local-network-gateway"></a>Local network gateway
+### Lokales Netzwerkgateway
 
-Add a local network gateway resource type.
+Fügen Sie einen Ressourcentyp für das lokale Netzwerkgateway hinzu.
 
 ```
 {
@@ -274,9 +312,9 @@ Add a local network gateway resource type.
 }
 ```
 
-### <a name="connection"></a>Connection
+### Verbindung
 
-Add a connection resource type.
+Fügen Sie einen Ressourcentyp für die Verbindung hinzu.
 
 ```
 {
@@ -299,16 +337,12 @@ Add a connection resource type.
 ```
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Congratulations! You have learned how to export a template from resources that you created in the portal.
+Glückwunsch! Sie haben gelernt, wie Sie eine Vorlage aus Ressourcen exportieren, die Sie im Portal erstellt haben.
 
-- In the second part of this tutorial, you customize the template that you downloaded by adding more parameters and redeploy it through a script. See [Customize and redeploy exported template](resource-manager-customize-template.md).
-- To see how to export a template through PowerShell, see [Using Azure PowerShell with Azure Resource Manager](powershell-azure-resource-manager.md).
-- To see how to export a template through Azure CLI, see [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](xplat-cli-azure-resource-manager.md).
+- Im zweiten Teil dieses Tutorials passen Sie die heruntergeladene Vorlage an, indem Sie weitere Parameter hinzufügen und die erneute Bereitstellung per Skript durchführen. Weitere Informationen finden Sie unter [Anpassen und erneutes Bereitstellen der exportierten Vorlage](resource-manager-customize-template.md).
+- Informationen zum Exportieren einer Vorlage mithilfe von PowerShell finden Sie unter [Verwenden von Windows PowerShell mit Azure Resource Manager](powershell-azure-resource-manager.md).
+- Informationen zum Exportieren einer Vorlage mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

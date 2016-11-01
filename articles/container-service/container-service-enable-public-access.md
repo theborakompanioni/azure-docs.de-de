@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Enable Public Access to an ACS app | Microsoft Azure"
-   description="How to enable public access to an Azure Container Service."
+   pageTitle="Ermöglichen des öffentlichen Zugriffs auf eine ACS-App | Microsoft Azure"
+   description="Es wird beschrieben, wie Sie den öffentlichen Zugriff auf einen Azure Container Service ermöglichen."
    services="container-service"
    documentationCenter=""
    authors="Thraka"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
+   keywords="Docker, Container, Microservices, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -16,87 +16,83 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="08/26/2016"
-   ms.author="timlt"/>
+   ms.author="adegeo"/>
 
+# Ermöglichen des öffentlichen Zugriffs auf eine Azure Container Service-Anwendung
 
-# <a name="enable-public-access-to-an-azure-container-service-application"></a>Enable public access to an Azure Container Service application
+Alle DC/OS-Container im [Pool mit den öffentlichen Agents](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) von ACS werden automatisch für das Internet verfügbar gemacht. Standardmäßig sind die Ports **80**, **443** und **8080** geöffnet, und alle (öffentlichen) Container, die über diese Ports lauschen, sind zugänglich. In diesem Artikel wird beschrieben, wie Sie mehr Ports für Ihre Anwendungen im Azure Container Service öffnen.
 
-Any DC/OS container in the ACS [public agent pool](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) is automatically exposed to the internet. By default, ports **80**, **443**, **8080** are opened, and any (public) container listening on those ports are accessible. This article shows you how to open more ports for your applications in Azure Container Service.
+## Öffnen eines Ports (Portal) 
 
-## <a name="open-a-port-(portal)"></a>Open a port (portal) 
+Zunächst müssen wir den gewünschten Port öffnen.
 
-First, we need to open the port we want.
+1. Melden Sie sich beim Portal an.
+2. Suchen Sie nach der Ressourcengruppe, in der Sie den Azure Container Service bereitgestellt haben.
+3. Wählen Sie das Agent-Lastenausgleichsmodul aus (der Name hat in der Regel das Format **XXXX-agent-lb-XXXX**).
 
-1. Log in to the portal.
-2. Find the resource group that you deployed the Azure Container Service to.
-3. Select the agent load balancer (which is named similar to **XXXX-agent-lb-XXXX**).
+    ![Azure Container Service-Lastenausgleich](media/container-service-dcos-agents/agent-load-balancer.png)
 
-    ![Azure container service load balancer](media/container-service-dcos-agents/agent-load-balancer.png)
+4. Klicken Sie auf **Tests** und dann auf **Hinzufügen**.
 
-4. Click **Probes** and then **Add**.
+    ![Azure Container Service-Lastenausgleich – Tests](media/container-service-dcos-agents/add-probe.png)
 
-    ![Azure container service load balancer probes](media/container-service-dcos-agents/add-probe.png)
+5. Füllen Sie das Testformular aus, und klicken Sie auf **OK**.
 
-5. Fill out the probe form and click **OK**.
-
-  	| Field | Description |
-  	| ----- | ----------- |
-  	| Name  | A descriptive name of the probe. |
-  	| Port  | The port of the container to test. |
-  	| Path  | (When in HTTP mode) The relative website path to probe. HTTPS not supported. |
-  	| Interval | The amount of time between probe attempts, in seconds. |
-  	| Unhealthy threshold | Number of consecutive probe attempts before considering the container unhealthy. | 
+    | Feld | Beschreibung |
+    | ----- | ----------- |
+    | Name | Ein beschreibender Name des Tests. |
+    | Port | Der Port des zu testenden Containers. |
+    | Pfad | (Im HTTP-Modus) Der relative Websitepfad zum Test. HTTPS wird nicht unterstützt. |
+    | Intervall | Der Zeitraum zwischen Testversuchen in Sekunden. |
+    | Fehlerhafter Schwellenwert | Anzahl von aufeinander folgenden Testversuchen, bevor der Container als fehlerhaft angesehen wird. | 
     
 
-6. Back at the properties of the agent load balancer, click **Load balancing rules** and then **Add**.
+6. Wechseln Sie zurück zu den Eigenschaften des Agent-Lastenausgleichs, und klicken Sie auf **Lastenausgleichsregeln** und dann auf **Hinzufügen**.
 
-    ![Azure container service load balancer rules](media/container-service-dcos-agents/add-balancer-rule.png)
+    ![Azure Container Service-Lastenausgleich – Regeln](media/container-service-dcos-agents/add-balancer-rule.png)
 
-7. Fill out the load balancer form and click **OK**.
+7. Füllen Sie das Formular für den Lastenausgleich aus, und klicken Sie auf **OK**.
 
-  	| Field | Description |
-  	| ----- | ----------- |
-  	| Name  | A descriptive name of the load balancer. |
-  	| Port  | The public incoming port. |
-  	| Backend port | The internal-public port of the container to route traffic to. |
-  	| Backend pool | The containers in this pool will be the target for this load balancer. |
-  	| Probe | The probe used to determine if a target in the **Backend pool** is healthy. |
-  	| Session persistence | Determines how traffic from a client should be handled for the duration of the session.<br><br>**None**: Successive requests from the same client can be handled by any container.<br>**Client IP**: Successive requests from the same client IP are handled by the same container.<br>**Client IP and protocol**: Successive requests from the same client IP and protocol combination are handled by the same container. |
-  	| Idle timeout | (TCP only) In minutes, the time to keep a TCP/HTTP client open without relying on *keep-alive* messages. |
+    | Feld | Beschreibung |
+    | ----- | ----------- |
+    | Name | Ein beschreibender Name für den Lastenausgleich. |
+    | Port | Der öffentliche Port für eingehenden Datenverkehr. |
+    | Back-End-Port | Der interne öffentliche Port des Containers, an den Datenverkehr geleitet wird. |
+    | Back-End-Pool | Die Container in diesem Pool sind das Ziel für diesen Lastenausgleich. |
+    | Test | Der Test für die Ermittlung, ob ein Ziel im **Back-End-Pool** fehlerfrei ist. |
+    | Sitzungspersistenz | Bestimmt, wie Datenverkehr von einem Client für die Dauer der Sitzung behandelt werden soll.<br><br>**Keine**: Aufeinander folgende Anforderungen von demselben Client können von jedem Container verarbeitet werden.<br>**Client-IP**: Aufeinander folgende Anforderungen von derselben Client-IP werden von demselben Container verarbeitet.<br>**Client-IP und Protokoll**: Aufeinander folgende Anforderungen von derselben Kombination aus Client-IP und Protokoll werden von demselben Container verarbeitet. |
+    | Leerlauftimeout | (Nur TCP) Der Zeitraum zur Beibehaltung des geöffneten Zustands eines TCP/HTTP-Clients in Minuten, ohne dass *Keep-Alive*-Nachrichten verwendet werden. |
 
-## <a name="add-a-security-rule-(portal)"></a>Add a security rule (portal)
+## Hinzufügen einer Sicherheitsregel (Portal)
 
-Next, we need to add a security rule that routes traffic from our opened port through the firewall.
+Als Nächstes müssen wir eine Sicherheitsregel hinzufügen, mit der Datenverkehr von unserem geöffneten Port über die Firewall geleitet wird.
 
-1. Log in to the portal.
-2. Find the resource group that you deployed the Azure Container Service to.
-3. Select the **public** agent network security group (which is named similar to **XXXX-agent-public-nsg-XXXX**).
+1. Melden Sie sich beim Portal an.
+2. Suchen Sie nach der Ressourcengruppe, in der Sie den Azure Container Service bereitgestellt haben.
+3. Wählen Sie **öffentliche** Agent-Netzwerksicherheitsgruppe (der Name hat in der Regel das Format **XXXX-agent-public-nsg-XXXX**).
 
-    ![Azure container service network security group](media/container-service-dcos-agents/agent-nsg.png)
+    ![Azure Container Service-Netzwerksicherheitsgruppe](media/container-service-dcos-agents/agent-nsg.png)
 
-4. Select **Inbound security rules** and then **Add**.
+4. Wählen Sie **Eingangssicherheitsregeln** und dann **Hinzufügen**.
 
-    ![Azure container service network security group rules](media/container-service-dcos-agents/add-firewall-rule.png)
+    ![Azure Container Service-Netzwerksicherheitsgruppe – Regeln](media/container-service-dcos-agents/add-firewall-rule.png)
 
-5. Fill out the firewall rule to allow your public port and click **OK**.
+5. Füllen Sie die Firewallregel aus, um den öffentlichen Port zuzulassen, und klicken Sie auf **OK**.
 
-  	| Field | Description |
-  	| ----- | ----------- |
-  	| Name  | A descriptive name of the firewall rule. |
-  	| Priority | Priority rank for the rule. The lower the number the higher the priority. |
-  	| Source | Restrict the incoming IP address range to be allowed or denied by this rule. Use **Any** to not specify a restriction. |
-  	| Service | Select a set of predefined services this security rule is for. Otherwise use **Custom** to create your own. |
-  	| Protocol | Restrict traffic based on **TCP** or **UDP**. Use **Any** to not specify a restriction. |
-  	| Port range | When **Service** is **Custom**, specifies the range of ports that this rule affects. You can use a single port, such as **80**, or a range like **1024-1500**. |
-  	| Action | Allow or deny traffic that meets the criteria. |
+    | Feld | Beschreibung |
+    | ----- | ----------- |
+    | Name | Ein beschreibender Name der Firewallregel. |
+    | Priority | Prioritätsrang für die Regel. Je niedriger die Nummer ist, desto höher ist die Priorität. |
+    | Quelle | Schränkt den IP-Adressbereich für eingehenden Datenverkehr ein, der mit dieser Regel zugelassen oder abgelehnt wird. Verwenden Sie **Alle**, um keine Einschränkung anzugeben. |
+    | Dienst | Wählen Sie einen Satz mit vordefinierten Diensten aus, für die diese Sicherheitsregel gilt. Verwenden Sie andernfalls **Benutzerdefiniert**, um einen eigenen Satz zu erstellen. |
+    | Protokoll | Schränkt den Datenverkehr basierend auf **TCP** oder **UDP** ein. Verwenden Sie die Option **Alle**, um keine Einschränkung anzugeben. |
+    | Portbereich | Wenn **Dienst** auf **Benutzerdefiniert** festgelegt ist, wird hiermit der Portbereich angegeben, auf den sich diese Regel auswirkt. Sie können einen einzelnen Port, z.B. **80**, oder einen Bereich wie **1024 - 1500** verwenden. |
+    | Aktion | Dient zum Zulassen oder Verweigern von Datenverkehr, der die Kriterien erfüllt. |
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Learn about the difference between [public and private DC/OS agents](container-service-dcos-agents.md).
+Informieren Sie sich über den Unterschied zwischen [öffentlichen und privaten DC/OS-Agents](container-service-dcos-agents.md).
 
-Read more information about [managing your DC/OS containers](container-service-mesos-marathon-ui.md).
+Erhalten Sie weitere Informationen zum [Verwalten Ihrer DC/OS-Container](container-service-mesos-marathon-ui.md).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

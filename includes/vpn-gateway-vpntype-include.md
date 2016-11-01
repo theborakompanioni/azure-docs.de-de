@@ -1,11 +1,9 @@
-- **PolicyBased:** PolicyBased VPNs were previously called static routing gateways in the classic deployment model. Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies configured with the combinations of address prefixes between your on-premises network and the Azure VNet. The policy (or traffic selector) is usually defined as an access list in the VPN device configuration. The value for a PolicyBased VPN type is *PolicyBased*. When using a PolicyBased VPN, keep in mind the following limitations:
+- **PolicyBased:** PolicyBased-VPNs wurden im klassischen Bereitstellungsmodell bisher als Gateways mit statischem Routing bezeichnet. Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils per Kombination aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure-VNet konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) wird in der Regel als Zugriffsliste in der VPN-Gerätekonfiguration definiert. Der Wert für einen PolicyBased-VPN-Typ lautet *PolicyBased*. Wenn Sie ein PolicyBased-VPN verwenden, beachten Sie die folgenden Einschränkungen:
 
-    - PolicyBased VPNs can **only** be used on the Basic gateway SKU. This VPN type is not compatible with other gateway SKUs.
-    - You can have only 1 tunnel when using a PolicyBased VPN.
-    - You can only use PolicyBased VPNs for S2S connections, and only for certain configurations. Most VPN Gateway configurations require a RouteBased VPN.
+	- PolicyBased-VPNs können **nur** in der Basic-Gateway-SKU verwendet werden. Dieser VPN-Typ ist nicht mit anderen Gateway-SKUs kompatibel.
+	- Bei Verwendung eines PolicyBased-VPNs können Sie nur einen einzigen Tunnel verwenden.
+	- Für S2S-Verbindungen können Sie nur PolicyBased-VPNs verwenden, und auch dies nur bei bestimmten Konfigurationen. Die meisten VPN-Gatewaykonfigurationen erfordern ein RouteBased-VPN.
 
-- **RouteBased**: RouteBased VPNs were previously called dynamic routing gateways in the classic deployment model. RouteBased VPNs use "routes" in the IP forwarding or routing table to direct packets into their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy (or traffic selector) for RouteBased VPNs are configured as any-to-any (or wild cards). The value for a RouteBased VPN type is *RouteBased*.
+- **RouteBased**: RouteBased-VPNs wurden im klassischen Bereitstellungsmodell bisher als Gateways mit dynamischem Routing bezeichnet. Bei RouteBased-VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungstabelle oder -Routingtabelle an die entsprechenden Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie (bzw. der Datenverkehrsselektor) für RouteBased-VPNs wird im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert. Der Wert für einen RouteBased-VPN-Typ lautet *RouteBased*.
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Testing your solution template offer for the Marketplace | Microsoft Azure"
-   description="Understand how to test your solution template offer for the Azure Marketplace."
+   pageTitle="Testen Ihres Angebots einer Lösungsvorlage für Marketplace | Microsoft Azure"
+   description="Grundlegendes zum Testen Ihres Angebots einer Lösungsvorlage für Azure Marketplace."
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
-   manager="hascipio"
+   manager=""
    editor=""/>
 
 <tags
@@ -16,32 +16,27 @@
    ms.date="12/04/2015"
    ms.author="hascipio; v-divte" />
 
+# Testen Ihres Angebots einer Lösungsvorlage in der Stagingumgebung
+In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitgestellt, in dem Sie es testen und seine Funktionalität vor der Veröffentlichung überprüfen können. Das Angebot wird in der Stagingumgebung genau wie bei einem Kunden angezeigt, der sie bereitgestellt hat. Ihr Angebot muss für die Freigabe in der Stagingumgebung zertifiziert sein.
 
-# <a name="test-your-solution-template-offer-in-staging"></a>Test your solution template offer in staging
-Staging means deploying your offer in a private "sandbox" where you can test and verify its functionality before pushing it to production. The offer appears in staging just as it would to a customer who has deployed it. Your offer must be certified to be pushed to staging.
+Sobald das Angebot in der Stagingphase ist, können Sie es im [Azure-Portal](https://portal.azure.com/) anzeigen und testen.
 
-After the offer is staged, you can view and test the offer in the [Azure Portal](https://portal.azure.com/).
+Führen Sie die folgenden Schritte aus, um Ihr Angebot in der Stagingumgebung freizugeben und im [Azure-Portal](https://portal.azure.com/) zu testen.
 
-Follow the steps below to push your offer to staging and test it in the [Azure Portal](https://portal.azure.com/):
+1.	Wählen Sie [Veröffentlichungsportal](https://publish.windowsazure.com) > Registerkarte **Lösungsvorlagen** > Ihr Angebot > **Veröffentlichen** > **Für Stagingumgebung freigeben**.
+2.	Geben Sie die Liste der Azure-Abonnements an, mit denen Sie eine Vorschau Ihres Angebots anzeigen und es testen möchten.
+3.	Melden Sie sich mit der Abonnement-ID aus dem vorherigen Schritt beim Azure-Vorschauportal an.
+4.	Testen Sie Ihr Angebot im Azure-Vorschauportal auf die folgenden genannten Punkte:
+  -	Vergewissern Sie sich, dass Marketinginhalte im Azure Marketplace korrekt angezeigt werden.
+  -	End-to-End-Bereitstellung der Topologie.
+  -	Führen Sie Leistungs- und Belastungstests durch.
+  -	Stellen Sie sicher, dass Ihre Topologie den bewährten Methoden entspricht.
 
-1.  Go to the [Publishing Portal](https://publish.windowsazure.com) > **Solution Templates** tab > your offer > **Publish** > **Push to Staging**.
-2.  Provide the list of Azure subscriptions that you will use to preview and test your offer.
-3.  Sign in to the Azure preview portal by using the subscription ID that you used in the previous step.
-4.  Carry out at least one round of testing in the Azure preview portal on the points mentioned below:
-  - Make sure that marketing content shows up correctly in the Azure Marketplace.
-  - End-to-end deployment of the topology.
-  - Perform performance testing and stress testing.
-  - Ensure that your topology adheres to the best practices.
+## Nächste Schritte
+Wenn Sie mit den Ergebnissen zufrieden sind, können Sie mit der letzten Phase beim Veröffentlichen Ihres Angebots fortfahren – **Schritt 4**: [Bereitstellen Ihres Angebots im Marketplace](marketplace-publishing-push-to-production.md). Nehmen Sie andernfalls Änderungen an Ihrem Angebot vor, und fordern Sie die Zertifizierung erneut an.
 
-## <a name="next-steps"></a>Next steps
-If you are satisfied with the results, then you can proceed to the final offer publishing phase, **Step 4**:  [Deploying your offer to the Marketplace](marketplace-publishing-push-to-production.md). Otherwise, make changes in your offer and request certification again.
+> [AZURE.NOTE]Für Änderungen an Marketinginhalten ist keine Zertifizierung erforderlich.
 
-> [AZURE.NOTE] For marketing content changes, certification is not required.
+Einen Leitfaden für alle Herausgeberaufgaben finden Sie unter [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md).
 
-See [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md) for a guide to all publisher tasks.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1210_2015-->

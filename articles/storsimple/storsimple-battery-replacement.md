@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Replace the battery on a StorSimple device | Microsoft Azure"
-   description="Describes how to remove, replace, and maintain the backup battery module on your StorSimple device."
+   pageTitle="Austauschen von Akkus bei StorSimple-Geräten | Microsoft Azure"
+   description="Beschreibt das Entfernen, Ersetzen und Warten des Notfallakkus auf dem StorSimple-Gerät."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,109 +15,104 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
+# Ersetzen des Notfallakkus auf dem StorSimple-Gerät
 
-# <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Replace the backup battery module on your StorSimple device
+## Übersicht
 
-## <a name="overview"></a>Overview
+Die Stromversorgungs- und Kühleinheit (PCM) im primären Gehäuse des Microsoft Azure StorSimple-Geräts verfügt über einen zusätzlichen Akku. Dieser Akku stellt die Stromversorgung bereit, damit das StorSimple-Gerät Daten speichern kann, wenn ein Stromausfall im primären Gehäuse auftritt. Dieser Akku wird als *Notfallakku* bezeichnet. Der Notfallakku ist nur für das primäre Gehäuse Ihres StorSimple-Geräts vorhanden (das EBOD-Gehäuse enthält keinen Notfallakku).
 
-The primary enclosure Power and Cooling Module (PCM) on your Microsoft Azure StorSimple device has an additional battery pack. This pack provides power so that the StorSimple device can save data if there is loss of AC power to the primary enclosure. This battery pack is referred to as the *backup battery module*. The backup battery module exists only for the primary enclosure in your StorSimple device (the EBOD enclosure does not contain a backup battery module). 
+In diesem Tutorial werden folgende Punkte erläutert:
 
-This tutorial explains how to:
+- Entfernen des Notfallakkus
+- Installieren eines neuen Notfallakkus
+- Warten des Notfallakkus
 
-- Remove the backup battery module 
-- Install a new backup battery module
-- Maintain the backup battery module
+>[AZURE.IMPORTANT] Vor dem Entfernen und Austauschen eines Notfallakkus überprüfen Sie die Sicherheitsinformationen in der [Einführung in den Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
->[AZURE.IMPORTANT] Before removing and replacing a backup battery module, review the safety information in the [Introduction to StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+## Entfernen des Notfallakkus
 
-## <a name="remove-the-backup-battery-module"></a>Remove the backup battery module
+Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Komponente. Vor der Installation im PCM sollten Sie den Notfallakku in seiner ursprünglichen Verpackung aufbewahren. Führen Sie die folgenden Schritte aus, um den Notfallakku zu entfernen.
 
-The backup battery module for your StorSimple device is a field-replaceable unit. Before it is installed in the PCM, the battery module should be stored in its original packaging. Perform the following steps to remove the backup battery.
+#### So entfernen Sie den Notfallakku
 
-#### <a name="to-remove-the-backup-battery-module"></a>To remove the backup battery module
+1. Navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**. Überprüfen Sie den Status des Akkus unter **Gemeinsam genutzte Komponenten**.
 
-1. In the Azure classic portal, go to **Devices** > **Maintenance** > **Hardware Status**. Under **Shared Components**, look at the status of the battery.
+2. Stellen Sie fest, in welchem PCM der Akkufehler aufgetreten ist. Abbildung 1 zeigt die Rückseite des StorSimple-Geräts.
 
-2. Identify the PCM in which the battery has failed. Figure 1 shows the back of the StorSimple device.
+    ![Rückwand des Geräts – Primäre Gehäusemodule](./media/storsimple-battery-replacement/IC740994.png)
 
-    ![Backplane Of Device Primary Enclosure Modules](./media/storsimple-battery-replacement/IC740994.png)
+    **Abbildung 1:** Rückseite des Hauptgeräts mit PCM und Controllermodulen
 
-    **Figure 1** Back of primary device showing PCM and controller modules
+    |Bezeichnung|Beschreibung|
+    |:----|:----------|
+    |1|PCM 0|
+    |2|PCM 1|
+    |3|Controller 0|
+    |4|Controller 1|
 
-  	|Label|Description|
-  	|:----|:----------|
-  	|1|PCM 0|
-  	|2|PCM 1|
-  	|3|Controller 0|
-  	|4|Controller 1|
+    Wie unter Nummer 3 in Abbildung 2 dargestellt, sollte die Überwachungs-LED an PCM 0, die für einen **Akkufehler** steht, leuchten.
 
-    As shown by number 3 in the Figure 2, the monitoring indicator LED on PCM 0 that corresponds to **Battery Fault** should be lit.
+    ![Rückwand des Geräts – PCM-Überwachungs-LEDs](./media/storsimple-battery-replacement/IC740992.png)
 
-    ![Backplane Of Device PCM Monitoring Indicator LEDs](./media/storsimple-battery-replacement/IC740992.png)
+    **Abbildung 2:** Rückseite des PCM mit Überwachungs-LEDs
 
-    **Figure 2** Back of PCM showing the monitoring indicator LEDs
+    |Bezeichnung|Beschreibung|
+    |:---|:-----------|
+    |1|Stromausfall (Wechselstrom)|
+    |2|Lüfterausfall|
+    |3|Batterieausfall|
+    |4|PCM OK|
+    |5|Stromausfall (Gleichstrom)|
+    |6|Akku fehlerfrei|
 
-  	|Label|Description|
-  	|:---|:-----------|
-  	|1|AC power failure|
-  	|2|Fan failure|
-  	|3|Battery fault|
-  	|4|PCM OK|
-  	|5|DC power failure|
-  	|6|Battery healthy|
+3. Um das PCM mit dem fehlerhaften Akku zu entfernen, führen Sie die Schritte unter [Entfernen eines PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm) aus.
 
-3. To remove the PCM with a failed battery, follow the steps in [Remove a PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm).
+4. Heben Sie bei entferntem PCM das Akkumodul nach oben, und drehen Sie den Griff, wie in der folgenden Abbildung dargestellt, um den Akku zu entfernen.
 
-4. With the PCM removed, lift and rotate the battery module handle upward as indicated in the following figure, and pull it up to remove the battery.
+    ![Entfernen des Akkus aus dem PCM](./media/storsimple-battery-replacement/IC741019.png)
 
-    ![Removing Battery From PCM](./media/storsimple-battery-replacement/IC741019.png)
+    **Abbildung 3:** Entfernen des Akkus aus dem PCM
 
-    **Figure 3** Removing the battery from the PCM
+5. Platzieren Sie das Modul in der Verpackung der vor Ort austauschbaren Einheit.
 
-5. Place the module in the field-replaceable unit packaging.
+6. Geben Sie die defekte Einheit zur ordnungsgemäßen Wartung und Verarbeitung an Microsoft zurück.
 
-6. Return the defective unit to Microsoft for proper servicing and handling.
+## Installieren eines neuen Notfallakkus
 
-## <a name="install-a-new-backup-battery-module"></a>Install a new backup battery module
+Führen Sie die folgenden Schritte aus, um den Notfallakku im PCM im primären Gehäuse des StorSimple-Geräts zu installieren.
 
-Perform the following steps to install the replacement battery module in the PCM in the primary enclosure of your StorSimple device.
+#### So installieren Sie den Notfallakku
 
-#### <a name="to-install-the-battery-module"></a>To install the battery module
+1. Setzen Sie den Notfallakku in der richtigen Ausrichtung im PCM ein.
 
-1. Place the backup battery module in the proper orientation in the PCM.
+2. Drücken Sie den Notfallakku am Griff so weit, bis er auf der Verbindung sitzt.
 
-2. Press down the battery module handle all the way to seat the connector.
+3. Ersetzen Sie das PCM im primären Gehäuse anhand der Richtlinien unter [Ersetzen einer Stromversorgungs- und Kühleinheit im StorSimple-Gerät](storsimple-power-cooling-module-replacement.md).
 
-3. Replace the PCM in the primary enclosure by following the guidelines in [Replace a Power and Cooling Module on your StorSimple device](storsimple-power-cooling-module-replacement.md).
+4. Navigieren Sie nach dem Austausch des Moduls im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**. Überprüfen Sie den Status des Akkus, um sicherzustellen, dass er richtig eingesetzt wurde. Ein grüner Status gibt an, dass der Akku fehlerfrei ist.
 
-4. After the replacement is complete, go to **Devices** > **Maintenance** > **Hardware Status** in the Azure classic portal. Verify the status of the battery to make sure that the installation was successful. A green status indicates that the battery is healthy.
+## Warten des Notfallakkus
 
-## <a name="maintain-the-backup-battery-module"></a>Maintain the backup battery module
+Im StorSimple-Gerät sorgt der Notfallakku für die Stromzufuhr des Controllers bei einem Stromausfall. Dadurch kann das StorSimple-Gerät vor dem kontrollierten Herunterfahren wichtige Daten speichern. Mit zwei vollständig geladenen Akkus in den PCMs kann das System zwei aufeinanderfolgende Stromausfälle verkraften.
 
-In your StorSimple device, the backup battery module provides power to the controller during a power loss event. It allows the StorSimple device to save critical data prior to shutting down in a controlled manner. With two fully charged batteries in the PCMs, the system can handle two consecutive loss events.
+Auf der Seite **Wartung** unter **Hardwarestatus** wird im klassischen Azure-Portal angezeigt, ob der Akku fehlerhaft ist oder ob seine Lebensdauer sich dem Ende zuneigt. Der Akkustatus wird durch +++**Akku in PCM 0** oder **Akku in PCM 1** unter **Gemeinsam genutzte Komponenten** angezeigt. Auf dieser Seite wird der Status **HERUNTERGESTUFT** angezeigt, wenn sich die Lebensdauer dem Ende zuneigt, und **FEHLGESCHLAGEN** zum Ende der Lebensdauer.
 
-In the Azure classic portal, the **Hardware Status** on the **Maintenance** page indicates whether the battery is malfunctioning or the end-of-life is approaching. The battery status is indicated by **Battery in PCM 0** or **Battery in PCM 1** under **Shared Components**. This page will show a **DEGRADED** state for end-of-life approaching, and **FAILED** for end-of-life reached. 
-
->[AZURE.NOTE] The battery can report **FAILED** when it simply needs to be charged.
+>[AZURE.NOTE] Der Akku meldet möglicherweise **FEHLGESCHLAGEN**, wenn er lediglich aufgeladen werden muss.
  
-If the **DEGRADED** state appears, we recommend the following course of action:
+Wenn der Status **HERUNTERGESTUFT** angezeigt wird, empfehlen wir die folgende Vorgehensweise:
 
-- The system may have experienced a recent power loss or the batteries may be undergoing periodic maintenance. Observe the system for 12 hours before proceeding.
+- Im System ist möglicherweise kürzlich ein Stromausfall aufgetreten, oder die Akkus werden derzeit eventuell einer Routinewartung unterzogen. Beobachten Sie das System für 12 Stunden, bevor Sie fortfahren.
 
-    - If the state is still **DEGRADED** after 12 hours of continuous connection to AC power with the controllers and PCMs running, then the battery needs to be replaced. Please [contact Microsoft Support](storsimple-contact-microsoft-support.md) for a replacement backup battery module.
+    - Wenn der Status nach 12 Stunden ununterbrochener Stromversorgung bei aktivem Controller und PCMs immer noch **HERUNTERGESTUFT** ist, muss der Akku ausgetauscht werden. Wenden Sie sich zum Erhalt eines neuen Notfallakkus an [den Microsoft Support](storsimple-contact-microsoft-support.md).
 
-    - If the state becomes OK after 12 hours, the battery is operational, and it only needed a maintenance charge.
+    - Wenn der Status nach 12 Stunden "OK" lautet, ist der Akku betriebsbereit, und es war nur ein Wartungsladezyklus erforderlich.
 
-- If there has not been an associated loss of AC power and the PCM is turned on and connected to AC power, the battery needs to be replaced. [Contact Microsoft Support](storsimple-contact-microsoft-support.md) to order a replacement backup battery module.
+- Wenn kein Stromausfall stattgefunden hat, das PCM eingeschaltet und mit dem Stromnetz verbunden ist, muss der Akku ausgetauscht werden. Wenden Sie sich zum Erhalt eines neuen Notfallakkus an [den Microsoft Support](storsimple-contact-microsoft-support.md).
 
->[AZURE.IMPORTANT] Dispose of the failed battery according to national and regional regulations. 
+>[AZURE.IMPORTANT] Entsorgen Sie den defekten Akku den geltenden Vorschriften Ihres Landes entsprechend.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Learn more about [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

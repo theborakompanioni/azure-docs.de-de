@@ -1,30 +1,27 @@
 <!--author=alkohli last changed: 9/16/15-->
 
-#### <a name="to-cable-for-power"></a>To cable for power
+#### So verkabeln Sie das Gerät für die Stromversorgung
 
-1. Make sure that the power switches on each of the Power and Cooling Modules (PCMs) are in the OFF position.
+1. Stellen Sie sicher, dass sich die Netzschalter aller Stromversorgungs- und Kühleinheiten (Power and Cooling Modules, PCMs) in Position OFF befinden.
 
-2. Connect the power cords to each of the PCMs in the primary enclosure.
+2. Schließen Sie an jedes PCM im primären Gehäuse ein Netzkabel an.
 
-3. Attach the power cords to the rack power distribution units (PDUs) as shown in the following image. Make sure that the two PCMs use separate power sources.
+3. Schließen Sie die Netzkabel an die Rack-PDUs an, wie in der folgenden Abbildung dargestellt. Stellen Sie sicher, dass die beiden PCMs separate Stromquellen verwenden.
 
-    >[AZURE.IMPORTANT] To ensure high availability for your system, we recommend that you strictly adhere to the power cabling scheme shown in the following diagram. 
+    >[AZURE.IMPORTANT]Damit eine hohe Verfügbarkeit des Systems sichergestellt ist, empfiehlt es sich dringend, sich strikt an das im folgenden Diagramm dargestellte Stromverkabelungsschema zu halten.
 
-    ![Cable your 2U device for power](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
+    ![Stromverkabelung des 2 HE-Geräts](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
 
-    **Power cabling on an 8100 device**
+    **Stromverkabelung eines 8100-Geräts**
 
-    |Label|Description|
+    |Bezeichnung|Beschreibung|
     |:----|:----------|
-    |1|PCM 0|
-    |2|Controller 1|
-    |3|Controller 0|
-    |4|PCM 1|
+    |1|PCM 0|
+    |2|Controller 1|
+    |3|Controller 0|
+    |4|PCM 1|
     |5|PDUs|
 
-4. To turn on the system, flip the power switches on both PCMs to the ON position.
+4. Schalten Sie das System ein, indem Sie die Netzschalter beider PCMs in die Position ON bringen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

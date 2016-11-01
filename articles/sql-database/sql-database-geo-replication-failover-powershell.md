@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Initiate a planned or unplanned failover for Azure SQL Database with PowerShell | Microsoft Azure" 
-    description="Initiate a planned or unplanned failover for Azure SQL Database using PowerShell" 
+    pageTitle="Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell | Microsoft Azure" 
+    description="Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -16,63 +16,62 @@
     ms.date="08/29/2016"
     ms.author="sstein"/>
 
-
-# <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-powershell"></a>Initiate a planned or unplanned failover for Azure SQL Database with PowerShell
+# Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell
 
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-geo-replication-failover-portal.md)
+- [Azure-Portal](sql-database-geo-replication-failover-portal.md)
 - [PowerShell](sql-database-geo-replication-failover-powershell.md)
 - [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
-This article shows you how to Initiate a planned or unplanned failover for SQL Database with PowerShell. To configure Geo-Replication, see [Configure Geo-Replication for Azure SQL Database](sql-database-geo-replication-powershell.md).
+Dieser Artikel erläutert das Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell. Informationen zum Konfigurieren der Georeplikation finden Sie unter [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-powershell.md).
 
 
 
-## <a name="initiate-a-planned-failover"></a>Initiate a planned failover
+## Initiieren eines geplanten Failovers
 
-Use the **Set-AzureRmSqlDatabaseSecondary** cmdlet with the **-Failover** parameter to promote a secondary database to become the new primary database, demoting the existing primary to become a secondary. This functionality is designed for a planned failover, such as during disaster recovery drills, and requires that the primary database be available.
+Mit dem Cmdlet **Set-AzureRmSqlDatabaseSecondary** und dem **-Failover**-Parameter können Sie eine sekundäre Datenbank zur neuen primären Datenbank heraufstufen und die vorhandene primäre Datenbank zu einer sekundären Datenbank herabstufen. Diese Funktionalität ist auf ein geplantes Failover ausgelegt, z. B. bei Notfallwiederherstellungsverfahren, und erfordert, dass die primäre Datenbank verfügbar ist.
 
-The command performs the following workflow:
+Der Befehl hat den folgenden Workflow:
 
-1. Temporarily switch replication to synchronous mode. This will cause all outstanding transactions to be flushed to the secondary.
+1. Für die Replikation wird vorübergehend in den synchronen Modus gewechselt. Dadurch werden alle ausstehenden Transaktionen in die sekundäre Datenbank übertragen.
 
-2. Switch the roles of the two databases in the Geo-Replication partnership.  
+2. Vertauschen Sie die Rollen der beiden Datenbanken in der Georeplikationspartnerschaft.
 
-This sequence guarantees that the two databases are synchronized before the roles switch and therefore no data loss will occur. There is a short period during which both databases are unavailable (on the order of 0 to 25 seconds) while the roles are switched. The entire operation should take less than a minute to complete under normal circumstances. For more information, see [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx).
-
-
+Durch diese Sequenz wird sichergestellt, dass die beiden Datenbanken vor dem Rollenwechsel synchronisiert werden, damit keine Daten verloren gehen. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. Weitere Informationen finden Sie unter [Set- AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx).
 
 
-This cmdlet will return when the process of switching the secondary database to primary is completed.
 
-The following command switches the roles of the database named "mydb” on the server "srv2” under the resource group "rg2” to primary. The original primary to which "db2” was connected to will switch to secondary after the two databases are fully synchronized.
+
+Dieses Cmdlet wird zurückgegeben, wenn der Wechsel von der sekundären zur primären Datenbank abgeschlossen ist.
+
+Mit dem folgenden Befehl werden die Rollen der „mydb“-Datenbank auf dem Server „srv2“ in der Ressourcengruppe „rg2“ mit der primären Datenbank getauscht. Die ursprüngliche primäre Datenbank, mit der „db2“ verbunden war, wird nach der vollständigen Synchronisierung der beiden Datenbanken zur sekundären Datenbank.
 
     $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary -Failover
 
 
-> [AZURE.NOTE] In rare cases it is possible that the operation cannot complete and may appear unresponsive. In this case the user can call the force failover command (unplanned failover) and accept data loss.
+> [AZURE.NOTE] In seltenen Fällen ist es möglich, dass der Vorgang nicht abgeschlossen werden kann und nicht mehr zu reagieren scheint. In diesem Fall kann der Benutzer den Befehl zum Erzwingen des Failovers (ungeplantes Failover) aufrufen und den Datenverlust akzeptieren.
 
 
-## <a name="initiate-an-unplanned-failover-from-the-primary-database-to-the-secondary-database"></a>Initiate an unplanned failover from the primary database to the secondary database
+## Auslösen eines ungeplanten Failovers von der primären Datenbank zur sekundären Datenbank
 
 
-You can use the **Set-AzureRmSqlDatabaseSecondary** cmdlet with **–Failover** and **-AllowDataLoss** parameters to promote a secondary database to become the new primary database in an unplanned fashion, forcing the demotion of the existing primary to become a secondary at a time when the primary database is no longer available.
+Mit dem Cmdlet **Set-AzureRmSqlDatabaseSecondary** mit den Parametern **-Failover** und **-AllowDataLoss** können Sie eine sekundäre Datenbank auf ungeplante Weise zur neuen primären Datenbank heraufstufen und das Herabstufen der vorhandenen primären Datenbank zu einer sekundären Datenbank erzwingen, sobald die primäre Datenbank nicht mehr verfügbar ist.
 
-This functionality is designed for disaster recovery when restoring availability of the database is critical and some data loss is acceptable. When forced failover is invoked, the specified secondary database immediately becomes the primary database and begins accepting write transactions. As soon as the original primary database is able to reconnect with this new primary database after the forced failover operation, an incremental backup is taken on the original primary database and the old primary database is made into a secondary database for the new primary database; subsequently, it is merely a replica of the new primary.
+Diese Funktion dient zur Notfallwiederherstellung, wenn das Wiederherstellen der Verfügbarkeit der Datenbank überaus wichtig und ein gewisser Datenverlust akzeptabel ist. Beim Auslösen eines erzwungenen Failovers wird die angegebene sekundäre Datenbank sofort zur primären Datenbank und beginnt mit dem Akzeptieren von Schreibtransaktionen. Sobald sich die ursprüngliche primäre Datenbank wieder mit dieser neuen primären Datenbank verbinden kann, wird eine inkrementelle Sicherung der ursprünglichen Datenbank erstellt. Die alte primäre Datenbank wird zu einer sekundären Datenbank der neuen primären Datenbank. Anschließend ist sie lediglich ein Replikat der neuen primären Datenbank.
 
-But because Point In Time Restore is not supported on secondary databases, if you wish to recovery data committed to the old primary database which had not been replicated to the new primary database, you should engage CSS to restore a database to the known log backup.
+Da die Point-in-Time-Wiederherstellung jedoch nicht auf sekundären Datenbanken unterstützt wird, müssen Sie zum Wiederherstellen von Daten aus der alten primären Datenbank, die nicht in der neuen primären Datenbank repliziert wurden, CSS erfassen, um eine Datenbank in der bekannten Protokollsicherung wiederherstellen.
 
-> [AZURE.NOTE] If the command is issued when the both primary and secondary are online the old primary will become the new secondary immediately without data synchronization. If the primary is committing transactions when the command is issued some data loss may occur.
-
-
-If the primary database has multiple secondaries the command will partially succeed. The secondary on which the command was executed will become primary. The old primary however will remain primary, i.e. the two primaries will end up in inconsistent state and connected by a suspended replication link. The user will have to manually repair this configuration using a “remove secondary” API on either of these primary databases.
+> [AZURE.NOTE] Falls der Befehl aufgerufen wird, wenn die primäre und sekundäre Datenbank online sind, wird die alte primäre Datenbank sofort zur neuen sekundären Datenbank, ohne dass eine Datensynchronisierung stattfindet. Wenn die primäre Datenbank bei Ausgabe des Befehls gerade Commits für Transaktionen ausführt, können einige Daten verloren gehen.
 
 
-The following command switches the roles of the database named "mydb” to primary when the primary is unavailable. The original primary to which "mydb” was connected to will switch to secondary after it is back online. At that point the synchronization may result in data loss.
+Falls die primäre Datenbank mehrere sekundäre Instanzen hat, wird der Befehl teilweise erfolgreich ausgeführt. Die sekundäre Datenbank, auf der der Befehl ausgeführt wurde, wird zur primären Datenbank. Die alten primären Datenbanken bleiben jedoch primäre Datenbanken. Die beiden primären Datenbanken befinden sich dadurch in einem inkonsistenten Zustand und sind über eine ausgesetzte Replizierungsverknüpfung miteinander verbunden. Der Benutzer muss diese Konfiguration mit einer „remove secondary“-API auf einer dieser primären Datenbanken manuell reparieren.
+
+
+Mit dem folgenden Befehl tauschen Sie die Rollen der „mydb“-Datenbank, wenn die primäre Datenbank nicht verfügbar ist. Die ursprüngliche primäre Datenbank, mit der „mydb“ verbunden war, wird zur sekundären Datenbank, sobald sie wieder online ist. Zu diesem Zeitpunkt kann bei der Synchronisierung Datenverlust entstehen.
 
     $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
@@ -80,17 +79,13 @@ The following command switches the roles of the database named "mydb” to prima
 
 
 
-## <a name="next-steps"></a>Next steps   
+## Nächste Schritte   
 
-- After failover, ensure the authentication requirements for your server and database are configured on the new primary. For details, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
-- To learn recovering after a disaster using Active Geo-Replication, including pre and post recovery steps and performing a disaster recovery drill, see [Disaster Recovery Drills](sql-database-disaster-recovery.md)
-- For a Sasha Nosov blog post about Active Geo-Replication, see [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- For information about designing cloud applications to use Active Geo-Replication, see [Designing cloud applications for business continuity using Geo-Replication](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- For information about using Active Geo-Replication with elastic database pools, see [Elastic Pool disaster recovery strategies](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
-- For an overview of business continurity, see [Business Continuity Overview](sql-database-business-continuity.md)
+- Stellen Sie nach dem Failover sicher, dass die Authentifizierungsanforderungen für Ihren Server und Ihre Datenbank auf der neuen primären konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
+- Informationen zur Wiederherstellung nach einem Ausfall mithilfe der aktiven Georeplikation, einschließlich der vor und nach der Wiederherstellung erforderlichen Schritte und der Ausführung eines Notfallwiederherstellungsverfahrens, finden Sie unter [Notfallwiederherstellungsverfahren](sql-database-disaster-recovery.md).
+- Den Blogpost von Sasha Nosov über die aktive Georeplikation finden Sie unter [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick).
+- Informationen zum Vorbereiten von Cloudanwendungen für die aktive Georeplikation finden Sie unter [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+- Informationen zur Verwendung der aktiven Georeplikation mit elastischen Datenbankpools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+- Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

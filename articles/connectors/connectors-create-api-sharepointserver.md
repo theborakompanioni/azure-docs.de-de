@@ -1,6 +1,6 @@
 <properties
-pageTitle="Use the SharePoint Online Connector in your Logic Apps | Microsoft Azure"
-description="Get started using the Azure App Service SharePoint Online Connector  in your Logic apps."
+pageTitle="Verwenden des SharePoint Online-Connectors in Ihren Logik-Apps | Microsoft Azure"
+description="Erste Schritte mit dem SharePoint Online-Connector für Azure App Service in Ihren Logik-Apps."
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,488 +17,483 @@ ms.workload="na"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# Erste Schritte mit dem SharePoint Online-Connector 
 
-# <a name="get-started-with-the-sharepoint-online-connector"></a>Get started with the SharePoint Online Connector 
+Der SharePoint-Connector bietet eine Methode zum Arbeiten mit Listen in SharePoint.
 
-The SharePoint Connector provides an way to work with Lists on SharePoint.
-
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
 
-To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-## <a name="let's-talk-about-triggers-and-actions"></a>Let's talk about triggers and actions
+## Trigger und Aktionen
 
-The SharePoint Connector  can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+Der SharePoint-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
-The SharePoint Connector  has the following action(s) and/or trigger(s) available:
+Der SharePoint-Connector verfügt über die folgenden Aktionen und/oder Trigger:
 
-### <a name="sharepoint-actions"></a>SharePoint actions
-You can take these action(s):
+### SharePoint-Aktionen
+Sie können diese Aktionen ausführen:
 
-|Action|Description|
+|Aktion|Beschreibung|
 |--- | ---|
-|GetFileMetadata|Used for getting a file metadata on Document Library|
-|UpdateFile|Used for updating a file on Document Library|
-|DeleteFile|Used for deleting a file on Document Library|
-|GetFileMetadataByPath|Used for getting a file metadata on Document Library|
-|GetFileContentByPath|Used for getting a file on Document Library|
-|GetFileContent|Used for getting a file on Document Library|
-|CreateFile|Used for uploading a file on Document Library|
-|CopyFile|Used for copying a file on Document Library|
-|ExtractFolderV2|Used for extracting a folder on Document Library|
-|PostItem|Creates a new item in a SharePoint list|
-|GetItem|Retrieves a single item from a SharePoint list|
-|DeleteItem|Deletes an item from a SharePoint list|
-|PatchItem|Updates an item in a SharePoint list|
-### <a name="sharepoint-triggers"></a>SharePoint triggers
-You can listen for these event(s):
+|GetFileMetadata|Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek|
+|UpdateFile|Dient zum Aktualisieren einer Datei in der Dokumentbibliothek|
+|DeleteFile|Dient zum Löschen einer Datei aus der Dokumentbibliothek|
+|GetFileMetadataByPath|Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek|
+|GetFileContentByPath|Dient zum Abrufen einer Datei aus der Dokumentbibliothek|
+|GetFileContent|Dient zum Abrufen einer Datei aus der Dokumentbibliothek|
+|CreateFile|Dient zum Hochladen einer Datei in die Dokumentbibliothek|
+|CopyFile|Dient zum Kopieren einer Datei in der Dokumentbibliothek|
+|ExtractFolderV2|Dient zum Extrahieren eines Ordners in der Dokumentbibliothek|
+|PostItem|Erstellt ein neues Element in einer SharePoint-Liste|
+|GetItem|Ruft ein einzelnes Element aus einer SharePoint-Liste ab|
+|DeleteItem|Löscht ein Element aus einer SharePoint-Liste|
+|PatchItem|Aktualisiert ein Element in einer SharePoint-Liste|
+### SharePoint-Trigger
+Sie können auf diese Ereignisse lauschen:
 
-|Trigger | Description|
+|Trigger | Beschreibung|
 |--- | ---|
-|OnNewFile|Triggers a flow when a new file is created in a SharePoint folder|
-|OnUpdatedFile|Triggers a flow when a file is modified in a SharePoint folder|
-|GetOnNewItems|When a new item is created in a SharePoint list|
-|GetOnUpdatedItems|When an existing item is modified in a SharePoint list|
+|OnNewFile|Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine neue Datei erstellt wird|
+|OnUpdatedFile|Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine Datei geändert wird|
+|GetOnNewItems|Wenn ein neues Element in einer SharePoint-Liste erstellt wird|
+|GetOnUpdatedItems|Wenn ein vorhandenes Element in einer SharePoint-Liste geändert wird|
 
 
-## <a name="create-a-connection-to-sharepoint"></a>Create a connection to SharePoint
-To use the SharePoint Connector , you first create a **connection** then provide the details for these properties: 
+## Herstellen einer Verbindung mit SharePoint
+Erstellen Sie zum Verwenden des SharePoint-Connectors zunächst eine **Verbindung**, und geben Sie anschließend die Details für die folgenden Eigenschaften an:
 
-|Property| Required|Description|
+|Eigenschaft| Erforderlich|Beschreibung|
 | ---|---|---|
-|Token|Yes|Provide SharePoint Credentials|
+|Token|Ja|Bereitstellen von SharePoint-Anmeldeinformationen|
 
-In order to connect to **SharePoint Online**, you need to provide your identity (username and password, smart card credentials, etc.) to SharePoint Online. Once you've been authenticated, you can proceed to use the SharePoint Online Connector  in your logic app. 
+Um eine Verbindung mit **SharePoint Online** herzustellen, müssen Sie Ihre Identität (Benutzername und Kennwort, Smartcard-Anmeldeinformationen usw.) für SharePoint Online bereitstellen. Nachdem Sie authentifiziert wurden, können Sie den SharePoint Online-Connector in Ihrer Logik-App verwenden.
 
-While on the designer of your logic app, follow these steps to sign into SharePoint to create the connection **connection** for use in your logic app:
+Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei SharePoint anzumelden und die **Verbindung** für Ihre Logik-App zu erstellen:
 
-1. Enter SharePoint in the search box and wait for the search to return all entries with SharePoint in the name:   
-![Configure SharePoint][1]  
-2. Select **SharePoint Online - When a file is created**   
-3. Select **Sign in to SharePoint Online**:   
-![Configure SharePoint][2]    
-4. Provide your SharePoint credentials to sign in to authenticate with SharePoint   
-![Configure SharePoint][3]     
-5. After the authentication completes you'll be redirected to your logic app to complete it by configuring SharePoint's **When a file is created** dialog.          
-![Configure SharePoint][4]  
-6. You can then add other triggers and actions that you need to complete your logic app.   
-7. Save your work by selecting **Save** on the menu bar above.  
+1. Geben Sie „SharePoint“ in das Suchfeld ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgegeben hat: ![SharePoint konfigurieren][1]
+2. Wählen Sie **SharePoint Online - When a file is created** (SharePoint Online – Wenn eine Datei erstellt wird) aus.
+3. Wählen Sie **Sign in to SharePoint Online** (Bei SharePoint Online anmelden) aus: ![SharePoint konfigurieren][2]
+4. Geben Sie Ihre SharePoint-Anmeldeinformationen ein, um sich bei SharePoint zu authentifizieren. ![SharePoint konfigurieren][3]
+5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **When a file is created** (Wenn eine Datei erstellt wird). ![SharePoint konfigurieren][4]
+6. Sie können dann weitere Trigger und Aktionen hinzufügen, die Sie benötigen, um Ihre Logik-App abzuschließen.
+7. Wählen Sie auf der oberen Menüleiste die Option **Speichern** aus, um Ihre Arbeit zu speichern.
 
 
-## <a name="sharepoint-rest-api-reference"></a>SharePoint REST API reference
-#### <a name="this-documentation-is-for-version:-1.0"></a>This documentation is for version: 1.0
+## REST-API-Referenz für SharePoint
+#### Diese Dokumentation gilt für Version 1.0.
 
 
-### <a name="used-for-getting-a-file-metadata-on-document-library"></a>Used for getting a file metadata on Document Library
-**```GET: /datasets/{dataset}/files/{id}```** 
+### Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek
+**```GET: /datasets/{dataset}/files/{id}```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|id|string|yes|path|none|Unique identifier of the file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-updating-a-file-on-document-library"></a>Used for updating a file on Document Library
-**```PUT: /datasets/{dataset}/files/{id}```** 
+### Dient zum Aktualisieren einer Datei in der Dokumentbibliothek
+**```PUT: /datasets/{dataset}/files/{id}```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|id|string|yes|path|none|Unique identifier of the file|
-|body| |yes|body|none|The Content of the file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
+|body| |Ja|body|(Keine)|Der Inhalt der Datei|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-deleting-a-file-on-document-library"></a>Used for deleting a file on Document Library
-**```DELETE: /datasets/{dataset}/files/{id}```** 
+### Dient zum Löschen einer Datei aus der Dokumentbibliothek
+**```DELETE: /datasets/{dataset}/files/{id}```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|id|string|yes|path|none|Unique identifier of the file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-getting-a-file-metadata-on-document-library"></a>Used for getting a file metadata on Document Library
-**```GET: /datasets/{dataset}/GetFileByPath```** 
+### Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek
+**```GET: /datasets/{dataset}/GetFileByPath```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|path|string|yes|query|none|Path of the file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|path|string|Ja|query|(Keine)|Pfad der Datei|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-getting-a-file-on-document-library"></a>Used for getting a file on Document Library
-**```GET: /datasets/{dataset}/GetFileContentByPath```** 
+### Dient zum Abrufen einer Datei aus der Dokumentbibliothek
+**```GET: /datasets/{dataset}/GetFileContentByPath```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|path|string|yes|query|none|Path of the file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|path|string|Ja|query|(Keine)|Pfad der Datei|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-getting-a-file-on-document-library"></a>Used for getting a file on Document Library
-**```GET: /datasets/{dataset}/files/{id}/content```** 
+### Dient zum Abrufen einer Datei aus der Dokumentbibliothek
+**```GET: /datasets/{dataset}/files/{id}/content```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|id|string|yes|path|none|Unique identifier of the file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-uploading-a-file-on-document-library"></a>Used for uploading a file on Document Library
-**```POST: /datasets/{dataset}/files```** 
+### Dient zum Hochladen einer Datei in die Dokumentbibliothek
+**```POST: /datasets/{dataset}/files```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|folderPath|string|yes|query|none|The path to the folder|
-|name|string|yes|query|none|Name of the file|
-|body| |yes|body|none|The Content of the file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|folderPath|string|Ja|query|(Keine)|Der Pfad zum Ordner|
+|Name|string|Ja|query|(Keine)|Name der Datei|
+|body| |Ja|body|(Keine)|Der Inhalt der Datei|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-copying-a-file-on-document-library"></a>Used for copying a file on Document Library
-**```POST: /datasets/{dataset}/copyFile```** 
+### Dient zum Kopieren einer Datei in der Dokumentbibliothek
+**```POST: /datasets/{dataset}/copyFile```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|source|string|yes|query|none|Path to the source file|
-|destination|string|yes|query|none|Path to the destination file|
-|overwrite|boolean|no|query|false|Whether or not to overwrite an existing file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|source|string|Ja|query|(Keine)|Pfad zur Quelldatei|
+|destination|string|Ja|query|(Keine)|Pfad zur Zieldatei|
+|overwrite|Boolescher Wert|no|query|false|Soll die vorhandene Datei überschrieben werden oder nicht?|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="triggers-a-flow-when-a-new-file-is-created-in-a-sharepoint-folder"></a>Triggers a flow when a new file is created in a SharePoint folder
-**```GET: /datasets/{dataset}/triggers/onnewfile```** 
+### Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine neue Datei erstellt wird
+**```GET: /datasets/{dataset}/triggers/onnewfile```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint site url|
-|folderId|string|yes|query|none|Unique identifier of the folder in SharePoint|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL|
+|folderId|string|Ja|query|(Keine)|Eindeutiger Bezeichner des Ordners in SharePoint|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="triggers-a-flow-when-a-file-is-modified-in-a-sharepoint-folder"></a>Triggers a flow when a file is modified in a SharePoint folder
-**```GET: /datasets/{dataset}/triggers/onupdatedfile```** 
+### Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine Datei geändert wird
+**```GET: /datasets/{dataset}/triggers/onupdatedfile```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint site url|
-|folderId|string|yes|query|none|Unique identifier of the folder in SharePoint|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL|
+|folderId|string|Ja|query|(Keine)|Eindeutiger Bezeichner des Ordners in SharePoint|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="used-for-extracting-a-folder-on-document-library"></a>Used for extracting a folder on Document Library
-**```POST: /datasets/{dataset}/extractFolderV2```** 
+### Dient zum Extrahieren eines Ordners in der Dokumentbibliothek
+**```POST: /datasets/{dataset}/extractFolderV2```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
-|source|string|yes|query|none|Path to the source file|
-|destination|string|yes|query|none|Path to the destination folder|
-|overwrite|boolean|no|query|false|Whether or not to overwrite an existing file|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
+|source|string|Ja|query|(Keine)|Pfad zur Quelldatei|
+|destination|string|Ja|query|(Keine)|Pfad zum Zielordner|
+|overwrite|Boolescher Wert|no|query|false|Soll die vorhandene Datei überschrieben werden oder nicht?|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="when-a-new-item-is-created-in-a-sharepoint-list"></a>When a new item is created in a SharePoint list
-**```GET: /datasets/{dataset}/tables/{table}/onnewitems```** 
+### Wenn ein neues Element in einer SharePoint-Liste erstellt wird
+**```GET: /datasets/{dataset}/tables/{table}/onnewitems```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
-|table|string|yes|path|none|SharePoint list name|
-|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
-|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
-|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
-|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
+|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="when-an-existing-item-is-modified-in-a-sharepoint-list"></a>When an existing item is modified in a SharePoint list
-**```GET: /datasets/{dataset}/tables/{table}/onupdateditems```** 
+### Wenn ein vorhandenes Element in einer SharePoint-Liste geändert wird
+**```GET: /datasets/{dataset}/tables/{table}/onupdateditems```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
-|table|string|yes|path|none|SharePoint list name|
-|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
-|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
-|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
-|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
+|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="creates-a-new-item-in-a-sharepoint-list"></a>Creates a new item in a SharePoint list
-**```POST: /datasets/{dataset}/tables/{table}/items```** 
+### Erstellt ein neues Element in einer SharePoint-Liste
+**```POST: /datasets/{dataset}/tables/{table}/items```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
-|table|string|yes|path|none|SharePoint list name|
-|item| |yes|body|none|Item to create|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|item| |Ja|body|(Keine)|Zu erstellendes Element|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="retrieves-a-single-item-from-a-sharepoint-list"></a>Retrieves a single item from a SharePoint list
-**```GET: /datasets/{dataset}/tables/{table}/items/{id}```** 
+### Ruft ein einzelnes Element aus einer SharePoint-Liste ab
+**```GET: /datasets/{dataset}/tables/{table}/items/{id}```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
-|table|string|yes|path|none|SharePoint list name|
-|id|integer|yes|path|none|Unique identifier of item to be retrieved|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des abzurufenden Elements|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="deletes-an-item-from-a-sharepoint-list"></a>Deletes an item from a SharePoint list
-**```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```** 
+### Löscht ein Element aus einer SharePoint-Liste
+**```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
-|table|string|yes|path|none|SharePoint list name|
-|id|integer|yes|path|none|Unique identifier of item to be deleted|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des zu löschenden Elements|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-### <a name="updates-an-item-in-a-sharepoint-list"></a>Updates an item in a SharePoint list
-**```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```** 
+### Aktualisiert ein Element in einer SharePoint-Liste
+**```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```**
 
 
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
 | ---|---|---|---|---|---|
-|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
-|table|string|yes|path|none|SharePoint list name|
-|id|integer|yes|path|none|Unique identifier of item to be updated|
-|item| |yes|body|none|Item with changed properties|
+|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|Ja|path|(Keine)|Name der SharePoint-Liste|
+|id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des zu aktualisierenden Elements|
+|item| |Ja|body|(Keine)|Element mit geänderten Eigenschaften|
 
 
-### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
+### Im Folgenden sind die möglichen Antworten aufgeführt:
 
-|Name|Description|
+|Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 ------
 
 
 
-## <a name="object-definition(s):"></a>Object definition(s): 
+## Objektdefinitionen: 
 
  **DataSetsMetadata**:
 
-Required properties for DataSetsMetadata:
+Erforderliche Eigenschaften für DataSetsMetadata:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
-|tabular|not defined|
-|blob|not defined|
+|tabular|nicht definiert|
+|Blob|nicht definiert|
 
 
 
  **TabularDataSetsMetadata**:
 
-Required properties for TabularDataSetsMetadata:
+Erforderliche Eigenschaften für TabularDataSetsMetadata:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |source|string|
 |displayName|string|
@@ -510,16 +505,16 @@ None of the properties are required.
 
  **BlobDataSetsMetadata**:
 
-Required properties for BlobDataSetsMetadata:
+Erforderliche Eigenschaften für BlobDataSetsMetadata:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |source|string|
 |displayName|string|
@@ -529,25 +524,25 @@ None of the properties are required.
 
  **BlobMetadata**:
 
-Required properties for BlobMetadata:
+Erforderliche Eigenschaften für BlobMetadata:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
-|Id|string|
+|ID|string|
 |Name|string|
 |DisplayName|string|
-|Path|string|
+|Pfad|string|
 |LastModified|string|
-|Size|integer|
+|Größe|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|Boolescher Wert|
 |ETag|string|
 |FileLocator|string|
 
@@ -555,52 +550,52 @@ None of the properties are required.
 
  **Object**:
 
-Required properties for Object:
+Erforderliche Eigenschaften für „Object“:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 
 
 
  **TableMetadata**:
 
-Required properties for TableMetadata:
+Erforderliche Eigenschaften für TableMetadata:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |name|string|
 |title|string|
 |x-ms-permission|string|
-|schema|not defined|
+|schema|nicht definiert|
 
 
 
  **DataSetsList**:
 
-Required properties for DataSetsList:
+Erforderliche Eigenschaften für DataSetsList:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |value|array|
 
@@ -608,34 +603,34 @@ None of the properties are required.
 
  **DataSet**:
 
-Required properties for DataSet:
+Erforderliche Eigenschaften für DataSet:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |Name|string|
 |DisplayName|string|
 
 
 
- **Table**:
+ **Tabelle**:
 
-Required properties for Table:
-
-
-None of the properties are required. 
+Erforderliche Eigenschaften für „Table“:
 
 
-**All properties**: 
+Keine der Eigenschaften ist erforderlich.
 
 
-| Name | Data Type |
+**Alle Eigenschaften**:
+
+
+| Name | Datentyp |
 |---|---|
 |Name|string|
 |DisplayName|string|
@@ -644,16 +639,16 @@ None of the properties are required.
 
  **Item**:
 
-Required properties for Item:
+Erforderliche Eigenschaften für „Item“:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |ItemInternalId|string|
 
@@ -661,16 +656,16 @@ None of the properties are required.
 
  **ItemsList**:
 
-Required properties for ItemsList:
+Erforderliche Eigenschaften für ItemsList:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |value|array|
 
@@ -678,31 +673,27 @@ None of the properties are required.
 
  **TablesList**:
 
-Required properties for TablesList:
+Erforderliche Eigenschaften für TablesList:
 
 
-None of the properties are required. 
+Keine der Eigenschaften ist erforderlich.
 
 
-**All properties**: 
+**Alle Eigenschaften**:
 
 
-| Name | Data Type |
+| Name | Datentyp |
 |---|---|
 |value|array|
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)  
+## Nächste Schritte
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-[1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png  
-[2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png 
+[1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png
+[2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png
 [3]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig3.png
 [4]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

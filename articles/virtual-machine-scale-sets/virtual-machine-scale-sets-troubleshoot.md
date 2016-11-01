@@ -1,84 +1,78 @@
 <properties
-    pageTitle="Troubleshoot autoscale with Virtual Machine Scale Sets | Microsoft Azure"
-    description="Troubleshoot autoscale with Virtual Machine Scale Sets. Understand typical problems encountered and how to resolve them."
-    services="virtual-machine-scale-sets"
-    documentationCenter=""
-    authors="gbowerman"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Problembehandlung bei der automatischen Skalierung von VM-Skalierungsgruppen | Microsoft Azure"
+	description="Beheben Sie Probleme bei der automatischen Skalierung von VM-Skalierungsgruppen. Sie erhalten grundlegende Informationen zu typischen Problemen sowie zu ihrer Behebung."
+	services="virtual-machine-scale-sets"
+	documentationCenter=""
+	authors="gbowerman"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machine-scale-sets"
-    ms.workload="na"
-    ms.tgt_pltfrm="windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="03/28/2016"
-    ms.author="guybo"/>
+	ms.service="virtual-machine-scale-sets"
+	ms.workload="na"
+	ms.tgt_pltfrm="windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/28/2016"
+	ms.author="guybo"/>
     
+# Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
 
-# <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Troubleshooting autoscale with Virtual Machine Scale Sets
+**Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
 
-**Problem** – you’ve created an autoscaling infrastructure in Azure Resource Manager using VM Scale Sets –  for example by deploying a template like this: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale  – you have your scale rules defined and it works great, except that no matter how much load you put on the VMs, it won’t autoscale.
+## Schritte zur Problembehandlung
 
-## <a name="troubleshooting-steps"></a>Troubleshooting steps
+Folgende Punkte sollten berücksichtigt werden:
 
-Some things to consider include:
+- Über wie viele Kerne verfügt jeder virtuelle Computer, und laden Sie jeden Kern? Das oben genannte Beispiel einer Azure-Schnellstartvorlage enthält das Skript „do\_work.php“, das einen einzelnen Kern lädt. Wenn Sie einen größeren virtuellen Computer als Standard\_A1 verwenden, müssten Sie diese Last mehrmals ausführen. Überprüfen Sie die Anzahl der Kerne Ihrer virtuellen Computer. Lesen Sie dazu die Informationen unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md).
 
-- How many cores does each VM have, and are you loading each core?
- The example Azure Quickstart template above has a do_work.php script, which loads a single core. If you’re using a VM bigger than Standard_A1 then you’d need to run this load multiple times. Check how many cores your VMs by reviewing [Sizes for Windows virtual machines in Azure](../virtual-machines/virtual-machines-windows-sizes.md)
+- Wie viele virtuelle Computer sind in der VM-Skalierungsgruppe enthalten? Wird auf jedem virtuellen Computer eine Last ausgeführt?
 
-- How many VMs in the VM Scale Set, are you doing work on each one?
+    Das horizontale Hochskalieren erfolgt nur, wenn die durchschnittliche CPU auf **allen** virtuellen Computer in einer Skalierungsgruppe den Schwellenwert in dem Zeitintervall überschreitet, das in den Regeln für die automatische Skalierung festgelegt ist.
 
-    A scale out event will only take place when the average CPU across **all** the VMs in a scale set exceeds the threshold value, over the time internal defined in the autoscale rules.
+- Haben Sie Skalierungsereignisse verpasst?
 
-- Did you miss any scale events?
+    Überprüfen Sie die Überwachungsprotokolle im Azure-Portal auf Skalierungsereignisse. Vielleicht wurde ein Vorgang zum zentralen Hochskalieren oder zum zentralen Herunterskalieren übersehen. Sie können nach „Scale“ (Skalierung) filtern.
 
-    Check the audit logs in the Azure portal for scale events. Maybe there was a scale up and a scale down which was missed. You can filter by “Scale”..
+	![Überwachungsprotokolle][audit]
 
-    ![Audit Logs][audit]
+- Liegen die Schwellenwerte für das horizontale Herunterskalieren und das horizontale Hochskalieren weit genug auseinander?
 
-- Are your scale-in and scale-out thresholds sufficiently different?
+    Angenommen, Sie legen eine Regel mit folgenden Bedingungen fest: Wenn die durchschnittliche CPU-Auslastung mindestens fünf Minuten lang bei über 50 Prozent liegt, wird horizontal hochskaliert, bei einer durchschnittlichen CPU-Auslastung unter 50 Prozent wird horizontal herunterskaliert. Dies würde zu einem Fluktuationsproblem führen, wenn sich die CPU-Nutzung in der Nähe dieses Schwellenwerts bewegt, und die Gruppe würde durch die Skalierungsaktionen fortwährend vergrößert und verkleinert. Aus diesem Grund versucht der Dienst für die automatische Skalierung die Fluktuation zu verhindern, was dazu führen kann, dass keine Skalierung stattfindet. Stellen Sie daher sicher, dass die Schwellenwerte für das horizontale Hochskalieren und das horizontale Herunterskalieren weit genug auseinander liegen, um einen gewissen Skalierungsspielraum zu erhalten.
 
-    Suppose you set a rule to scale out when average CPU is greater than 50% over 5 minutes, and to scale in when average CPU is less than 50%. This would cause a “flapping” problem when CPU usage is close to this threshold, with scale actions constantly increasing and decreasing the size of the set. Because of this, the autoscale service tries to prevent “flapping”, which can manifest as not scaling. Therefore make sure your scale-out and scale-in thresholds are sufficiently different to allow some space in between scaling.
+- Haben Sie Ihre eigene JSON-Vorlage geschrieben?
 
-- Did you write your own JSON template?
+    Fehler können ganz leicht passieren. Beginnen Sie daher mit einer Vorlage wie der obigen, die sich bewährt hat, und nehmen Sie nach und nach kleine Änderungen vor. Die Vorlage muss ein Speicherkonto für die Diagnoseerweiterung, die Skalierungsgruppe und die Microsoft.Insights-Ressource korrelieren und korrekt auf den Namen der Leistungsdatenmetriken verweisen, der sich bei Windows und Linux unterscheidet.
 
-    It is easy to make mistakes, so start with a template like the one above which is proven to work, and make small incremental changes. The template needs to correlate a Diagnostics extension storage account, the scale set, and the Microsoft.Insights resource, and correctly reference the performance data metric name, which differs between Windows and Linux.
+- Können Sie manuell horizontal herunter- und hochskalieren?
 
-- Can you manually scale in or out?
+    Versuchen Sie, die VM-Skalierungsgruppenressource mit einer anderen Kapazitätseinstellung erneut bereitzustellen, um die Anzahl der virtuellen Computer manuell zu ändern. Hier finden Sie eine Beispielvorlage dafür: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing. Sie müssen die Vorlage ggf. bearbeiten, damit sie die gleiche Computergröße wie die Skalierungsgruppe verwendet. Wenn Sie die Anzahl der virtuellen Computer manuell ändern können, wissen Sie, dass das Problem nur im Zusammenhang mit der automatischen Skalierung besteht.
 
-    Try redeploying the VM Scale Set resource with a different “capacity” setting to change the number of VMs manually. An example template to do this is here: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – you may need to edit the template to make sure it has the same machine size as your Scale Set is using. If you can successfully change the number of VMs manually, then you know the problem is isolated to autoscale.
+- Überprüfen Sie im [Azure-Ressourcen-Explorer](https://resources.azure.com/) Ihre Angabe für „Microsoft.Compute/virtualMachineScaleSet“ sowie die Microsoft.Insights-Ressourcen.
 
-- Check your Microsoft.Compute/virtualMachineScaleSet, and Microsoft.Insights resources in the [Azure Resource Explorer](https://resources.azure.com/) 
+    Dies ist ein unverzichtbares Tool für die Problembehandlung, das Aufschluss über den Zustand Ihrer Azure Resource Manager-Ressourcen gibt. Klicken Sie auf Ihr Abonnement, und sehen Sie sich die Ressourcengruppe an, für die Sie die Problembehandlung ausführen. Sehen Sie unter dem Compute-Ressourcenanbieter die von Ihnen erstellte VM-Skalierungsgruppe an, und überprüfen Sie die Instanzansicht, in der der Zustand einer Bereitstellung angezeigt wird. Überprüfen Sie außerdem die Instanzansicht der virtuellen Computer in der VM-Skalierungsgruppe. Wechseln Sie anschließend zum Microsoft.Insights-Ressourcenanbieter, und überprüfen Sie die Regeln für die automatische Skalierung auf ihre Richtigkeit.
 
-    This is an indispensable troubleshooting tool which shows you the state of your Azure Resource Manager resources. Click on your subscription and look at the Resource Group you are troubleshooting. Under the Compute resource provider look at the VM Scale Set you created and check the Instance View, which shows you the state of a deployment. Also check the instance view of VMs in the VM Scale Set. Then go into the Microsoft.Insights resource provider and check the autoscale rules look good.
-
-- Is the Diagnostic extension working and emitting performance data?
+- Funktioniert die Diagnoseerweiterung, und gibt sie Leistungsdaten aus?
  
-    Autoscale in Azure Resource Manager works by means of a VM extension called the Diagnostics Extension (divided into Linux Diagnostics extension and Windows). It emits performance data to a storage account you define in the template. This data is then aggregated by the Azure Insights service.
+    Die automatische Skalierung im Azure Resource Manager wird mithilfe der VM-Erweiterung „Diagnoseerweiterung“ (unterteilt in die Linux- und die Windows-Diagnoseerweiterung) ausgeführt. Sie gibt Leistungsdaten an ein Speicherkonto aus, das Sie in der Vorlage definieren. Diese Daten werden dann vom Azure Insights-Dienst aggregiert.
 
-    If the Insights service can’t read data from the VMs, it is supposed to send you an email – for example if the VMs were down, so check your email (the one you specified when creating the Azure account).
+    Wenn der Insights-Dienst Daten aus den virtuellen Computern nicht lesen kann (etwa bei einem Ausfall der virtuellen Computer), sollten Sie eine E-Mail erhalten. Überprüfen Sie daher Ihren Posteingang (für die E-Mail-Adresse, die Sie beim Erstellen des Azure-Kontos angegeben haben).
 
-    You can also go and look at the data yourself. Look at the Azure storage account using a cloud explorer. For example using the [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2), log in and pick the Azure subscription you’re using, and the Diagnostics storage account name referenced in the Diagnostics extension definition in your deployment template..
+    Sie können sich die Daten auch selbst ansehen. Sehen Sie sich das Azure-Speicherkonto in einem Cloud-Explorer an. Beispiel: Verwenden Sie den [Cloud-Explorer von Visual Studio](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2), melden Sie sich an, und wählen Sie das verwendete Azure-Abonnement sowie den Namen des Diagnosespeicherkontos aus, auf den in der Diagnoseerweiterungsdefinition in Ihrer Bereitstellungsvorlage verwiesen wird.
 
-    ![Cloud Explorer][explorer]
+	![Cloud-Explorer][explorer]
 
-    Here you will see a bunch of tables where the data from each VM is being stored. Taking Linux and the CPU metric as an example, look at the most recent rows. The Visual Studio cloud explorer supports a query language so you can run a query like “Timestamp gt datetime’2016-02-02T21:20:00Z’” to make sure you get the most recent events (assume time is in UTC). Does the data you see in there correspond to the scale rules you set up? In the example below, the CPU for machine 20 started increasing to 100% over the last 5 minutes..
+    Hier sehen Sie eine Reihe von Tabellen, in denen die Daten der einzelnen virtuellen Computer gespeichert werden. Sehen Sie sich beispielsweise die aktuellen Zeilen mit Linux- und CPU-Metriken an. Der Cloud-Explorer von Visual Studio unterstützt eine Abfragesprache. Sie können daher eine Abfrage wie etwa „Timestamp gt datetime’2016-02-02T21:20:00Z’“ ausführen, um sicherzustellen, dass die aktuellen Ereignisse abgerufen werden (hier wird davon ausgegangen, dass die Zeitzone UTC verwendet wird). Entsprechen die dort angezeigten Daten den von Ihnen eingerichteten Skalierungsregeln? Im folgenden Beispiel ist die CPU-Auslastung für Computer 20 in den letzten fünf Minuten auf 100 Prozent gestiegen.
 
-    ![Storage Tables][tables]
+	![Speichertabellen][tables]
 
-    If the data is not there, then it implies the problem is with the diagnostic extension running in the VMs. If the data is there, it implies there is either a problem with your scale rules, or with the Insights service. Check [Azure Status](https://azure.microsoft.com/status/).
+    Wenn keine Daten vorhanden sind, impliziert dies, dass ein Problem mit der Diagnoseerweiterung auf den virtuellen Computern vorliegt. Sind Daten vorhanden, weist dies darauf hin, dass entweder ein Problem mit den Skalierungsregeln oder mit dem Insights-Dienst vorliegt. Überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/).
 
-    Once you’ve been through these steps, you could try the forums on [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp), or [Stack overflow](http://stackoverflow.com/questions/tagged/azure), or log a support call. Be prepared to share the template and a view of the performance data.
+    Nachdem Sie diese Schritte ausgeführt haben, können Sie Informationen in den Foren auf [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp) oder [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) suchen oder an den Support wenden. Stellen Sie bei Aufforderung die Vorlage und eine Ansicht der Leistungsdaten bereit.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
 [tables]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0427_2016-->

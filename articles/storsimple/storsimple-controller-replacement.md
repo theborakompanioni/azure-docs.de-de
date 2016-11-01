@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Replace a StorSimple device controller | Microsoft Azure"
-   description="Explains how to remove and replace one or both controller modules on your StorSimple device."
+   pageTitle="Austauschen von StorSimple-Gerätecontrollern | Microsoft Azure"
+   description="In diesem Thema wird erläutert, wie Sie ein oder beide Controllermodule in einem StorSimple-Gerät austauschen oder entfernen."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,260 +15,255 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
+# Ersetzen des Controllermoduls auf dem StorSimple-Gerät
 
-# <a name="replace-a-controller-module-on-your-storsimple-device"></a>Replace a controller module on your StorSimple device
+## Übersicht
 
-## <a name="overview"></a>Overview
+In diesem Tutorial wird erläutert, wie Sie ein oder beide Controllermodule in einem StorSimple-Gerät austauschen oder entfernen. Darüber hinaus wird die zugrunde liegende Logik für die Austauschszenarios bei Einzel- oder Dualcontrollern erläutert.
 
-This tutorial explains how to remove and replace one or both controller modules in a StorSimple device. It also discusses the underlying logic for the single and dual controller replacement scenarios.
-
->[AZURE.NOTE] Prior to performing a controller replacement, we recommend that you always update your controller firmware to the latest version.
+>[AZURE.NOTE] Vor der Durchführung des Controlleraustauschs empfehlen wir, die Controllerfirmware auf die neueste Version zu aktualisieren.
 >
->To prevent damage to your StorSimple device, do not eject the controller until the LEDs are showing as one of the following:
+>Um Schäden an Ihrem StorSimple-Gerät zu verhindern, werfen Sie den Controller nicht aus, bis die LEDs einen der folgenden Status anzeigen:
 >
->- All lights are OFF.
->- LED 3, ![Green check icon](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png), and ![Red cross icon](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) are flashing, and LED 0 and LED 7 are **ON**.
+>- Alle Leuchten sind AUS.
+>- LED 3, ![Grünes Häkchen (Symbol)](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png) und ![Rotes Kreuz (Symbol)](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) blinken, und LED 0 sowie LED 7 sind **EIN**.
 
-The following table shows the supported controller replacement scenarios.
+In der folgenden Tabelle werden die unterstützten Controlleraustauschszenarios dargestellt.
 
-|Case|Replacement scenario|Applicable procedure|
+|Fall|Austauschszenario|Anwendbare Verfahren|
 |:---|:-------------------|:-------------------|
-|1|One controller is in a failed state, the other controller is healthy and active.|[Single controller replacement](#replace-a-single-controller), which describes the [logic behind a single controller replacement](#single-controller-replacement-logic), as well as the [replacement steps](#single-controller-replacement-steps).|
-|2|Both the controllers have failed and require replacement. The chassis, disks, and.disk enclosure are healthy.|[Dual controller replacement](#replace-both-controllers), which describes the [logic behind a dual controller replacement](#dual-controller-replacement-logic), as well as the [replacement steps](#dual-controller-replacement-steps). |
-|3|Controllers from the same device or from different devices are swapped. The chassis, disks, and disk enclosures are healthy.|A slot mismatch alert message will appear.|
-|4|One controller is missing and the other controller fails.|[Dual controller replacement](#replace-both-controllers), which describes the [logic behind a dual controller replacement](#dual-controller-replacement-logic), as well as the [replacement steps](#dual-controller-replacement-steps).|
-|5|One or both controllers have failed. You cannot access the device through the serial console or Windows PowerShell remoting.|[Contact Microsoft Support](storsimple-contact-microsoft-support.md) for a manual controller replacement procedure.|
-|6|The controllers have a different build version, which may be due to:<ul><li>Controllers have a different software version.</li><li>Controllers have a different firmware version.</li></ul>|If the controller software versions are different, the replacement logic detects that and updates the software version on the replacement controller.<br><br>If the controller firmware versions are different and the old firmware version is **not** automatically upgradeable, an alert message will appear in the Azure classic portal. You should scan for updates and install the firmware updates.</br></br>If the controller firmware versions are different and the old firmware version is automatically upgradeable, the controller replacement logic will detect this, and after the controller starts, the firmware will be automatically updated.|
+|1|Ein Domänencontroller ist in einem fehlerhaften Zustand, der andere Controller funktioniert fehlerfrei und ist aktiv.|[Austauschen eines einzelnen Controllers](#replace-a-single-controller). Es werden sowohl die [Logik hinter dem Austauschen eines einzelnen Controllers](#single-controller-replacement-logic) als auch die [Schritte für den Austausch](#single-controller-replacement-steps) beschrieben.|
+|2|Beide Controller sind fehlerhaft und müssen ausgetauscht werden. Das Gehäuse, die Laufwerke und Laufwerkgehäuse sind fehlerfrei.|[Austauschen zweier Controller](#replace-both-controllers). Es werden sowohl die [Logik hinter dem Austauschen zweier Controller](#dual-controller-replacement-logic) als auch die [Schritte für den Austausch](#dual-controller-replacement-steps) beschrieben. |
+|3|Die Controller aus dem gleichen Gerät oder aus verschiedenen Geräten werden ausgetauscht. Das Gehäuse, die Laufwerke und die Laufwerkgehäuse sind fehlerfrei.|Es wird eine Warnung bezüglich des falschen Steckplatzes angezeigt.|
+|4|Ein Domänencontroller ist nicht vorhanden, und der andere Controller ist fehlerhaft.|[Austauschen zweier Controller](#replace-both-controllers). Es werden sowohl die [Logik hinter dem Austauschen zweier Controller](#dual-controller-replacement-logic) als auch die [Schritte für den Austausch](#dual-controller-replacement-steps) beschrieben.|
+|5|Ein oder beide Domänencontroller sind ausgefallen. Auf das Gerät kann nicht über die serielle Konsole oder Windows PowerShell-Remoteverbindung zugegriffen werden.|[Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md), um Anweisungen zum manuellen Controlleraustausch zu erhalten.|
+|6|Die Controller haben unterschiedliche Buildversionen. Dies kann folgende Ursachen haben:<ul><li>Controller haben eine unterschiedliche Softwareversion.</li><li>Controller haben eine unterschiedliche Firmwareversion.</li></ul>|Wenn sich die Controller-Softwareversionen unterscheiden, erkennt dies die Austauschlogik und aktualisiert die Software auf dem Ersatzcontroller.<br><br>Wenn sich die Controller-Firmwareversionen unterscheiden und die alte Firmwareversion **nicht** automatisch aktualisiert werden kann, wird eine Warnung im klassischen Azure-Portal angezeigt. Sie sollten nach Updates suchen und die Firmwareupdates installieren.</br></br>Wenn sich die Controller-Firmwareversionen unterscheiden und die alte Firmwareversion automatisch aktualisiert werden kann, erkennt dies die Ersatzcontrollerlogik, und nach dem Start des Controllers wird die Firmware automatisch aktualisiert.|
 
-You need to remove a controller module if it has failed. One or both the controller modules can fail, which can result in a single controller replacement or dual controller replacement. For replacement procedures and the logic behind them, see the following:
+Sie müssen ein Controllermodul entfernen, wenn es einen Fehler verursacht hat. Ein oder beide Controllermodule können Fehler aufweisen. Dies kann den Austausch eines einzelnen oder beider Controller zur Folge haben. Beschreibungen der Austauschvorgehensweisen und der jeweils zugehörigen Logik finden Sie in den folgenden Abschnitten:
 
-- [Replace a single controller](#replace-a-single-controller)
-- [Replace both controllers](#replace-both-controllers)
-- [Remove a controller](#remove-a-controller)
-- [Insert a controller](#insert-a-controller)
-- [Identify the active controller on your device](#identify-the-active-controller-on-your-device)
+- [Austauschen eines einzelnen Controllers](#replace-a-single-controller)
+- [Austauschen beider Controller](#replace-both-controllers)
+- [Entfernen eines Controllers](#remove-a-controller)
+- [Einsetzen eines Controllers](#insert-a-controller)
+- [Identifizieren des aktiven Controllers im Gerät](#identify-the-active-controller-on-your-device)
 
->[AZURE.IMPORTANT] Before removing and replacing a controller, review the safety information in [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+>[AZURE.IMPORTANT] Überprüfen Sie vor dem Entfernen und Austauschen eines Controllers die Sicherheitsinformationen unter [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-## <a name="replace-a-single-controller"></a>Replace a single controller
+## Austauschen eines einzelnen Controllers
 
-When one of the two controllers on the Microsoft Azure StorSimple device has failed, is malfunctioning, or is missing, you need to replace a single controller. 
+Wenn einer der beiden Controller auf dem Microsoft Azure StorSimple-Gerät fehlerhaft ist, nicht funktioniert oder fehlt, müssen Sie einen einzelnen Controller ersetzen.
 
-### <a name="single-controller-replacement-logic"></a>Single controller replacement logic
+### Logik beim Austauschen eines einzelnen Controllers
 
-In a single controller replacement, you should first remove the failed controller. (The remaining controller in the device is the active controller.) When you insert the replacement controller, the following actions occur:
+Beim Austausch eines einzelnen Controllers sollten Sie zuerst den fehlgeschlagenen Controller entfernen. (Der verbleibende Controller im Gerät ist der aktive Controller.) Wenn Sie den Ersatzcontroller einsetzen, werden folgende Aktionen ausgeführt:
 
-1. The replacement controller immediately starts communicating with the StorSimple device.
+1. Der Ersatzcontroller beginnt sofort mit der Kommunikation mit dem StorSimple-Gerät.
 
-2. A snapshot of the virtual hard disk (VHD) for the active controller is copied on the replacement controller.
+2. Eine Momentaufnahme der virtuellen Festplatte (VHD) für den aktiven Controller wird auf den Ersatzcontroller kopiert.
 
-3. The snapshot is modified so that when the replacement controller starts from this VHD, it will be recognized as a standby controller.
+3. Die Momentaufnahme wird so angepasst, dass der Ersatzcontroller beim Starten von dieser VHD als Standbycontroller erkannt wird.
 
-4. When the modifications are complete, the replacement controller will start as the standby controller.
+4. Wenn die Änderungen abgeschlossen sind, startet der Ersatzcontroller als Standbycontroller.
 
-5. When both the controllers are running, the cluster comes online.
+5. Wenn beide Controller ausgeführt werden, wird der Cluster online geschaltet.
 
-### <a name="single-controller-replacement-steps"></a>Single controller replacement steps
+### Schritte zum Austauschen eines einzelnen Controllers
 
-Complete the following steps if one of the controllers in your Microsoft Azure StorSimple device fails. (The other controller must be active and running. If both controllers fail or malfunction, go to [dual controller replacement steps](#dual-controller-replacement-steps).)
+Führen Sie folgende Schritte aus, wenn einer der Controller in Ihrem Microsoft Azure StorSimple-Gerät einen Fehler verursacht. (Der andere Controller muss aktiv sein und ausgeführt werden. Wenn beide Controller ausfallen oder Fehlfunktionen aufweisen, führen Sie die [Schritte zum Austauschen zweier Controller](#dual-controller-replacement-steps) aus.)
 
->[AZURE.NOTE] It can take 30 – 45 minutes for the controller to restart and completely recover from the single controller replacement procedure. The total time for the entire procedure, including attaching the cables, is approximately 2 hours.
+>[AZURE.NOTE] Der Neustart des Controllers bis zum vollständigen Abschluss des Austauschverfahrens kann 30 bis 45 Minuten dauern. Die Zeit für die gesamte Prozedur beträgt einschließlich der Installation der Kabel ungefähr 2 Stunden.
 
-#### <a name="to-remove-a-single-failed-controller-module"></a>To remove a single failed controller module
+#### So entfernen Sie ein einzelnes fehlerhaftes Controllermodul
 
-1. In the Azure classic portal, go to the StorSimple Manager service, click the **Devices** tab, and then click the name of the device that you want to monitor.
+1. Wechseln Sie im klassischen Azure-Portal zum StorSimple Manager-Dienst, und klicken Sie auf die Registerkarte **Geräte** und dann auf den Namen des Geräts, das Sie überwachen möchten.
 
-2. Go to **Maintenance > Hardware Status**. The status of either Controller 0 or Controller 1 should be red, which indicates a failure.
+2. Wechseln Sie zu **Wartung > Hardwarestatus**. Der Status von Controller 0 oder von Controller 1 wird rot dargestellt. Dies zeigt einen Fehler an.
 
-    >[AZURE.NOTE] The failed controller in a single controller replacement is always a standby controller.
+    >[AZURE.NOTE] Der fehlerhafte Controller beim Austausch eines einzelnen Controllers ist immer der Standbycontroller.
 
-3. Use Figure 1 and the following table to locate the failed controller module.  
+3. Verwenden Sie Abbildung 1 und die folgende Tabelle zum Feststellen des fehlerhaften Controllermoduls.
 
-    ![Backplane of device primary enclosure modules](./media/storsimple-controller-replacement/IC740994.png)
+    ![Rückwand des Geräts – Module für primäre Gehäuse](./media/storsimple-controller-replacement/IC740994.png)
 
-    **Figure 1** Back of StorSimple device
+    **Abbildung 1:** Rückseite des StorSimple-Geräts
 
-  	|Label|Description|
-  	|:----|:----------|
-  	|1|PCM 0|
-  	|2|PCM 1|
-  	|3|Controller 0|
-  	|4|Controller 1|
+    |Bezeichnung|Beschreibung|
+    |:----|:----------|
+    |1|PCM 0|
+    |2|PCM 1|
+    |3|Controller 0|
+    |4|Controller 1|
 
-4. On the failed controller, remove all the connected network cables from the data ports. If you are using an 8600 model, also remove the SAS cables that connect the controller to the EBOD controller.
+4. Entfernen Sie alle verbundenen Netzwerkkabel von den Datenanschlüssen am fehlerhaften Controller. Wenn Sie ein 8600-Modell verwenden, entfernen Sie auch die SAS-Kabel, die den Controller mit dem EBOD-Controller verbinden.
 
-5. Follow the steps in [remove a controller](#remove-a-controller) to remove the failed controller. 
+5. Führen Sie die Schritte unter [Entfernen eines Controllers](#remove-a-controller) aus, um den fehlerhaften Controller zu entfernen.
 
-6. Install the factory replacement in the same slot from which the failed controller was removed. This triggers the single controller replacement logic. For more information, see [single controller replacement logic](#single-controller-replacement-logic).
+6. Installieren Sie das Ersatzteil im selben Steckplatz, aus dem der fehlerhafte Controller entfernt wurde. Dadurch wird die Logik zum Austauschen eines einzelnen Controllers ausgelöst. Weitere Informationen finden Sie unter [Logik beim Austauschen eines einzelnen Controllers](#single-controller-replacement-logic).
 
-7. While the single controller replacement logic progresses in the background, reconnect the cables. Take care to connect all the cables exactly the same way that they were connected before the replacement.
+7. Während die Logik zum Austauschen einzelner Controller im Hintergrund ausgeführt wird, schließen Sie die Kabel wieder an. Achten Sie darauf, alle Kabel genau auf die gleiche Weise zu verbinden wie vor dem Austausch.
 
-8. After the controller restarts, check the **Controller status** and the **Cluster status** in the Azure classic portal to verify that the controller is back to a healthy state and is in standby mode.
+8. Überprüfen Sie nach dem Neustart des Controllers den **Controllerstatus** und den **Clusterstatus** im klassischen Azure-Portal. Stellen Sie sicher, dass sich der Controller wieder in einwandfreiem Zustand und im Standbymodus befindet.
 
->[AZURE.NOTE] If you are monitoring the device through the serial console, you may see multiple restarts while the controller is recovering from the replacement procedure. When the serial console menu is presented, then you know that the replacement is complete. If the menu does not appear within two hours of starting the controller replacement, please [contact Microsoft Support](storsimple-contact-microsoft-support.md).
+>[AZURE.NOTE] Wenn Sie das Gerät über die serielle Konsole überwachen, können mehrere Neustarts durchgeführt werden, während der Controller aus dem Austauschverfahren wiederhergestellt wird. Wenn das Menü der seriellen Konsole angezeigt wird, wissen Sie, dass der Austausch abgeschlossen ist. Wenn das Menü nicht innerhalb von zwei Stunden nach Beginn des Controlleraustauschs angezeigt wird, [wenden Sie sich an den Microsoft Support Service](storsimple-contact-microsoft-support.md).
 
-## <a name="replace-both-controllers"></a>Replace both controllers
+## Austauschen beider Controller
 
-When both controllers on the Microsoft Azure StorSimple device have failed, are malfunctioning, or are missing, you need to replace both controllers. 
+Wenn beide Controller auf dem Microsoft Azure StorSimple-Gerät fehlerhaft sind, nicht funktionieren oder fehlen, müssen Sie beide Controller ersetzen.
 
-### <a name="dual-controller-replacement-logic"></a>Dual controller replacement logic
+### Logik beim Austauschen zweier Controller
 
-In a dual controller replacement, you first remove both failed controllers and then insert replacements. When the two replacement controllers are inserted, the following actions occur:
+Beim Austausch zweier Controller entfernen Sie zuerst beide fehlerhaften Controller und ersetzen diese dann. Wenn die zwei Ersatzcontroller eingesetzt wurden, werden die folgenden Aktionen ausgeführt:
 
-1. The replacement controller in slot 0 checks the following:
+1. Der Ersatzcontroller in Steckplatz 0 überprüft Folgendes:
  
-   1. Is it using current versions of the firmware and software?
+   1. Wird die aktuelle Version von Firmware und Software verwendet?
 
-   2. Is it a part of the cluster?
+   2. Ist er Teil des Clusters?
 
-   3. Is the peer controller running and is it clustered?
-                            
-    If none of these conditions are true, the controller looks for the latest daily backup (located in the **nonDOMstorage** on drive S). The controller copies the latest snapshot of the VHD from the backup.
+   3. Wird der Peercontroller ausgeführt, und befindet er sich in einem Cluster?
+							
+    Wenn keine dieser Bedingungen erfüllt ist, sucht der Controller nach der letzten täglichen Sicherung (auf Laufwerk S: unter **nonDOMstorage**). Der Controller kopiert die aktuellste Momentaufnahme der virtuellen Festplatte aus der Sicherung.
 
-2. The controller in slot 0 uses the snapshot to image itself.
+2. Der Controller in Steckplatz 0 verwendet die Momentaufnahme für ein eigenes Image.
 
-3. Meanwhile, the controller in slot 1 waits for controller 0 to complete the imaging and start.
+3. In der Zwischenzeit wartet der Controller in Steckplatz 1 darauf, dass Controller 0 die Imageerstellung abschließt und startet.
 
-4. After controller 0 starts, controller 1 detects the cluster created by controller 0, which triggers the single controller replacement logic. For more information, see [single controller replacement logic](#single-controller-replacement-logic).
+4. Nach dem Start von Controller 0 erkennt Controller 1 den von Controller 0 erstellten Cluster, wodurch die Logik zum Austausch eines einzelnen Controllers ausgelöst wird. Weitere Informationen finden Sie unter [Logik beim Austauschen eines einzelnen Controllers](#single-controller-replacement-logic).
 
-5. Afterwards, both controllers will be running and the cluster will come online.
+5. Anschließend werden beide Controller ausgeführt, und der Cluster wird online geschaltet.
 
->[AZURE.IMPORTANT] Following a dual controller replacement, after the StorSimple device is configured, it is essential that you take a manual backup of the device. Daily device configuration backups are not triggered until after 24 hours have elapsed. Work with [Microsoft Support](storsimple-contact-microsoft-support.md) to make a manual backup of your device.
+>[AZURE.IMPORTANT] Nach dem Austausch von zwei Controllern ist es sehr wichtig, dass Sie eine manuelle Sicherung des Geräts erstellen, sobald das StorSimple-Gerät konfiguriert wurde. Tägliche Gerätekonfigurationssicherungen werden erst nach 24 Stunden ausgelöst. Wenden Sie sich an den [Microsoft Support](storsimple-contact-microsoft-support.md), um eine manuelle Sicherung Ihres Geräts vorzunehmen.
 
-### <a name="dual-controller-replacement-steps"></a>Dual controller replacement steps
+### Schritte beim Austauschen zweier Controller
 
-This workflow is required when both of the controllers in your Microsoft Azure StorSimple device have failed. This could happen in a datacenter in which the cooling system stops working, and as a result, both the controllers fail within a short period of time. Depending on whether the StorSimple device is turned off or on, and whether you are using an 8600 or an 8100 model, a different set of steps is required.
+Dieser Workflow ist erforderlich, wenn beide Controller in Ihrem Microsoft Azure StorSimple-Gerät fehlerhaft sind. Dies könnte in einem Rechenzentrum passieren, in dem das Kühlsystem nicht mehr funktioniert, sodass innerhalb kurzer Zeit beide Controller fehlschlagen. Je nachdem, ob das StorSimple-Gerät ein- oder ausgeschaltet ist und ob Modell 8600 oder Modell 8100 verwendet wird, sind unterschiedliche Schritte erforderlich.
 
->[AZURE.IMPORTANT] It can take 45 minutes to 1 hour for the controller to restart and completely recover from a dual controller replacement procedure. The total time for the entire procedure, including attaching the cables, is approximately 2.5 hours.
+>[AZURE.IMPORTANT] Der Neustart des Controllers bis zum vollständigen Abschluss des Austauschverfahrens für zwei Controller kann 45 Minuten bis 1 Stunde dauern. Die Zeit für die gesamte Prozedur beträgt einschließlich der Installation der Kabel ungefähr 2,5 Stunden.
 
-#### <a name="to-replace-both-controller-modules"></a>To replace both controller modules
+#### So tauschen Sie beide Controllermodule aus
 
-1. If the device is turned off, skip this step and proceed to the next step. If the device is turned on, turn off the device.
-                                        
-    1. If you are using an 8600 model, turn off the primary enclosure first, and then turn off the EBOD enclosure.
+1. Wenn das Gerät ausgeschaltet ist, überspringen Sie diesen Schritt und fahren mit dem nächsten Schritt fort. Wenn das Gerät eingeschaltet ist, schalten Sie es aus.
+										
+    1. Bei Verwendung eines Modells 8600 deaktivieren Sie zunächst das primäre Gehäuse und dann das EBOD-Gehäuse.
 
-    2. Wait until the device has shut down completely. All the LEDs in the back of the device will be off.
+    2. Warten Sie, bis das Gerät vollständig heruntergefahren wurde. Alle LEDs an der Rückseite des Geräts sind deaktiviert.
 
-2. Remove all the network cables that are connected to the data ports. If you are using an 8600 model, also remove the SAS cables that connect the primary enclosure to the EBOD enclosure.
+2. Entfernen Sie alle Netzwerkkabel, die mit den Datenanschlüssen verbunden sind. Wenn Sie ein Modell 8600 verwenden, entfernen Sie auch die SAS-Kabel, die das primäre Gehäuse mit dem EBOD-Gehäuse verbinden.
 
-3. Remove both controllers from the StorSimple device. For more information, see [remove a controller](#remove-a-controller).
+3. Entfernen Sie beide Controller aus dem StorSimple-Gerät. Weitere Informationen finden Sie unter [Entfernen eines Controllers](#remove-a-controller).
 
-4. Insert the factory replacement for Controller 0 first, and then insert Controller 1. For more information, see [insert a controller](#insert-a-controller). This triggers the dual controller replacement logic. For more information, see [dual controller replacement logic](#dual-controller-replacement-logic).
+4. Tauschen Sie zuerst Controller 0 aus, und setzen Sie dann Controller 1 ein. Weitere Informationen finden Sie unter [Einsetzen eines Controllers](#insert-a-controller). Dadurch wird die Logik zum Austauschen zweier Controller ausgelöst. Weitere Informationen finden Sie unter [Logik beim Austauschen zweier Controller](#dual-controller-replacement-logic).
 
-5. While the controller replacement logic progresses in the background, reconnect the cables. Take care to connect all the cables exactly the same way that they were connected before the replacement. See the detailed instructions for your model in the Cable your device section of [install your StorSimple 8100 device](storsimple-8100-hardware-installation.md) or [install your StorSimple 8600 device](storsimple-8600-hardware-installation.md).
+5. Während die Logik zum Austauschen im Hintergrund ausgeführt wird, schließen Sie die Kabel wieder an. Achten Sie darauf, alle Kabel genau auf die gleiche Weise zu verbinden wie vor dem Austausch. Ausführliche Anleitungen für Ihr Modell finden Sie im Abschnitt zur Geräteverkabelung unter [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md) oder [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
 
-6. Turn on the StorSimple device. If you are using an 8600 model:
+6. Schalten Sie das StorSimple-Geräte ein. Wenn Sie ein Modell 8600 verwenden:
 
-    1. Make sure that the EBOD enclosure is turned on first.
+    1. Stellen Sie sicher, dass das EBOD-Gehäuse zuerst eingeschaltet wird.
 
-    2. Wait until the EBOD enclosure is running.
+    2. Warten Sie, bis das EBOD-Gehäuse ausgeführt wird.
 
-    3. Turn on the primary enclosure.
+    3. Schalten Sie das primäre Gehäuse ein.
 
-    4. After the first controller restarts and is in a healthy state, the system will be running.
+    4. Nachdem der erste Controller neu gestartet wurde und sich in einem ordnungsgemäßen Zustand befindet, wird das System ausgeführt.
 
-    >[AZURE.NOTE] If you are monitoring the device through the serial console, you may see multiple restarts while the controller is recovering from the replacement procedure. When the serial console menu appears, then you know that the replacement is complete. If the menu does not appear within 2.5 hours of starting the controller replacement, please [contact Microsoft Support](storsimple-contact-microsoft-support.md).
+    >[AZURE.NOTE] Wenn Sie das Gerät über die serielle Konsole überwachen, können mehrere Neustarts durchgeführt werden, während der Controller aus dem Austauschverfahren wiederhergestellt wird. Wenn das Menü der seriellen Konsole angezeigt wird, wissen Sie, dass der Austausch abgeschlossen ist. Wenn das Menü nicht innerhalb von 2,5 Stunden nach Beginn des Controlleraustauschs angezeigt wird, [wenden Sie sich an den Microsoft Support Service](storsimple-contact-microsoft-support.md).
 
-## <a name="remove-a-controller"></a>Remove a controller
+## Entfernen eines Controllers
 
-Use the following procedure to remove a faulty controller module from your StorSimple device.
+Verwenden Sie das folgende Verfahren, um ein fehlerhaftes Controllermodul aus Ihrem StorSimple-Gerät zu entfernen.
 
->[AZURE.NOTE] The following illustrations are for controller 0. For controller 1, these would be reversed.
+>[AZURE.NOTE] Die folgenden Abbildungen gelten für Controller 0. Für Controller 1 werden diese Schritte in umgekehrter Reihenfolge ausgeführt.
 
-#### <a name="to-remove-a-controller-module"></a>To remove a controller module
+#### So entfernen Sie ein Controllermodul
 
-1. Grasp the module latch between your thumb and forefinger.
+1. Greifen Sie den Modulriegel mit Daumen und Zeigefinger.
 
-2. Gently squeeze your thumb and forefinger together to release the controller latch.
+2. Drücken Sie Daumen und Zeigefinger vorsichtig zusammen, um den Controllerriegel zu lösen.
 
-    ![Releasing controller latch](./media/storsimple-controller-replacement/IC741047.png)
+    ![Lösen des Controllerriegels](./media/storsimple-controller-replacement/IC741047.png)
 
-    **Figure 2** Releasing controller latch
+    **Abbildung 2:** Lösen des Controllerriegels
 
-2. Use the latch as a handle to slide the controller out of the chassis.
+2. Verwenden Sie den Riegel als Griff, um den Controller aus dem Gehäuse zu ziehen.
 
-    ![Sliding controller out of chassis](./media/storsimple-controller-replacement/IC741048.png)
+    ![Ausführen des Controllers aus dem Gehäuse](./media/storsimple-controller-replacement/IC741048.png)
 
-    **Figure 3** Sliding the controller out of the chassis
+    **Abbildung 3:** Entfernen des Controllers aus dem Gehäuse
 
-## <a name="insert-a-controller"></a>Insert a controller
+## Einsetzen eines Controllers
 
-Use the following procedure to install a factory-supplied controller module after you remove a faulty module from your StorSimple device.
+Gehen Sie folgendermaßen vor, um ein neues Controllermodul zu installieren, nachdem Sie ein fehlerhaftes Modul aus Ihrem StorSimple-Gerät entfernt haben.
 
-#### <a name="to-install-a-controller-module"></a>To install a controller module
+#### So installieren Sie ein Controllermodul
 
-1. Check to see if there is any damage to the interface connectors. Do not install the module if any of the connector pins are damaged or bent.
+1. Überprüfen Sie, ob Schäden an den Schnittstellenanschlüssen vorliegen. Installieren Sie das Modul nicht, wenn einer der Stecker beschädigt oder verbogen ist.
 
-2. Slide the controller module into the chassis while the latch is fully released. 
+2. Schieben Sie das Controllermodul in das Gehäuse, während der Riegel vollständig geöffnet ist.
 
-    ![Sliding controller into chassis](./media/storsimple-controller-replacement/IC741053.png)
+    ![Einsetzen des Controllers in das Gehäuse](./media/storsimple-controller-replacement/IC741053.png)
 
-    **Figure 4** Sliding controller into the chassis
+    **Abbildung 4:** Einsetzen des Controllers in das Gehäuse
 
-3. With the controller module inserted, begin closing the latch while continuing to push the controller module into the chassis. The latch will engage to guide the controller into place.
+3. Beginnen Sie bei eingesetztem Controllermodul mit dem Schließen des Riegels, und schieben Sie das Controllermodul weiter in das Gehäuse. Der Riegel führt den Controller in die richtige Position.
 
-    ![Closing controller latch](./media/storsimple-controller-replacement/IC741054.png)
+    ![Schließen des Controllerriegels](./media/storsimple-controller-replacement/IC741054.png)
 
-    **Figure 5** Closing the controller latch
+    **Abbildung 5:** Schließen des Controllerriegels
 
-4. You're done when the latch snaps into place. The **OK** LED should now be on.  
+4. Wenn der Riegel einrastet, ist der Vorgang abgeschlossen. Die LED **OK** sollte jetzt leuchten.
 
-    >[AZURE.NOTE] It can take up to 5 minutes for the controller and the LED to activate.
+    >[AZURE.NOTE] Es kann bis zu 5 Minuten dauern, bis Controller und LED aktiviert werden.
 
-5. To verify that the replacement is successful, in the Azure classic portal, go to **Devices** > **Maintenance** > **Hardware Status**, and make sure that both controller 0 and controller 1 are healthy (status is green).
+5. Um sicherzustellen, dass der Austausch erfolgreich war, navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**, und stellen Sie sicher, dass Controller 0 und Controller 1 fehlerfrei sind (Status wird grün angezeigt).
 
-## <a name="identify-the-active-controller-on-your-device"></a>Identify the active controller on your device
+## Identifizieren des aktiven Controllers im Gerät
 
-There are many situations, such as first-time device registration or controller replacement, that require you to locate the active controller on a StorSimple device. The active controller processes all the disk firmware and networking operations. You can use any of the following methods to identify the active controller:
+Es gibt viele Situationen, wie beispielsweise die erstmalige Registrierung des Geräts oder der Austausch eines Controllers, in denen es erforderlich ist, den aktiven Controller auf einem StorSimple-Gerät festzustellen. Der aktive Controller verarbeitet alle Datenträgerfirmware- und Netzwerkvorgänge. Zum Identifizieren des aktiven Controllers können Sie eine der folgenden Methoden verwenden:
 
-- [Use the Azure classic portal to identify the active controller](#use-the-azure-classic-portal-to-identify-the-active-controller)
+- [Verwenden des klassischen Azure-Portals zum Identifizieren des aktiven Controllers](#use-the-azure-classic-portal-to-identify-the-active-controller)
 
-- [Use Windows PowerShell for StorSimple to identify the active controller](#use-windows-powershell-for-storsimple-to-identify-the-active-controller)
+- [Verwenden von Windows PowerShell für StorSimple zum Identifizieren des aktiven Controllers](#use-windows-powershell-for-storsimple-to-identify-the-active-controller)
 
-- [Check the physical device to identify the active controller](#check-the-physical-device-to-identify-the-active-controller)
+- [Überprüfen des physischen Geräts zum Identifizieren des aktiven Controllers](#check-the-physical-device-to-identify-the-active-controller)
 
-Each of these procedures is described next.
+Jedes dieser Verfahren wird im Folgenden beschrieben.
 
-### <a name="use-the-azure-classic-portal-to-identify-the-active-controller"></a>Use the Azure classic portal to identify the active controller
+### Verwenden des klassischen Azure-Portals zum Identifizieren des aktiven Controllers
 
-In the Azure classic portal, navigate to **Devices** > **Maintenance**, and scroll to the **Controllers** section. Here you can verify which controller is active.
+Navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung**, und scrollen Sie zum Abschnitt **Controller**. Hier können Sie überprüfen, welcher Domänencontroller aktiv ist.
 
-![Identify active controller in Azure classic portal](./media/storsimple-controller-replacement/IC752072.png)
+![Identifizieren des aktiven Controllers im klassischen Azure-Portal](./media/storsimple-controller-replacement/IC752072.png)
 
-**Figure 6** Azure classic portal showing the active controller
+**Abbildung 6** Der aktive Controller wird im klassischen Azure-Portal angezeigt.
 
-### <a name="use-windows-powershell-for-storsimple-to-identify-the-active-controller"></a>Use Windows PowerShell for StorSimple to identify the active controller
+### Verwenden von Windows PowerShell für StorSimple zum Identifizieren des aktiven Controllers
 
-When you access your device through the serial console, a banner message is presented. The banner message contains basic device information such as the model, name, installed software version, and status of the controller you are accessing. The following image shows an example of a banner message:
+Wenn Sie auf Ihr Gerät über die serielle Konsole zugreifen, wird ein Meldungsbanner angezeigt. Das Meldungsbanner enthält die grundlegenden Informationen, wie z. B. Modell, Name, installierte Softwareversion und Status des Controllers, auf den Sie zugreifen. Die folgende Abbildung zeigt ein Beispiel für ein Meldungsbanner:
 
-![Serial banner message](./media/storsimple-controller-replacement/IC741098.png)
+![Meldungsbanner in der seriellen Konsole](./media/storsimple-controller-replacement/IC741098.png)
 
-**Figure 7** Banner message showing controller 0 as Active
+**Abbildung 7:** Meldungsbanner mit aktivem Controller 0
 
-You can use the banner message to determine whether the controller you are connected to is active or passive.
+Über das Meldungsbanner können Sie feststellen, ob der verbundene Controller aktiv oder passiv ist.
 
-### <a name="check-the-physical-device-to-identify-the-active-controller"></a>Check the physical device to identify the active controller
+### Überprüfen des physischen Geräts zum Identifizieren des aktiven Controllers
 
-To identify the active controller on your device, locate the blue LED above the DATA 5 port on the back of the primary enclosure.
+Suchen Sie zum Identifizieren des aktiven Controllers in Ihrem Gerät die blaue LED oberhalb des DATA 5-Anschlusses auf der Rückseite des primären Gehäuses.
 
-If this LED is blinking, the controller is active and the other controller is in standby mode. Use the following diagram and table as an aid.
+Wenn diese LED blinkt, ist der Controller aktiv, und der andere Controller befindet sich im Standbymodus. Verwenden Sie das folgende Diagramm und die Tabelle als Hilfsmittel.
 
-![Device primary enclosure backplane with dataports](./media/storsimple-controller-replacement/IC741055.png)
+![Gehäuserückwand des primären Geräts mit Datenanschlüssen](./media/storsimple-controller-replacement/IC741055.png)
 
-**Figure 8** Back of primary enclosure with data ports and monitoring LEDs
+**Abbildung 8:** Rückseite des primären Gehäuses mit Datenanschlüssen und Überwachungs-LEDs
 
-|Label|Description|
+|Bezeichnung|Beschreibung|
 |:----|:----------|
-|1-6|DATA 0 – 5 network ports|
-|7|Blue LED|
+|1-6|Netzwerkanschlüsse DATA 0-5|
+|7|Blaue LED|
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Learn more about [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

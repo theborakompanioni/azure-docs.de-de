@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Optimizing your Azure code in Visual Studio | Microsoft Azure"
-   description="Learn about how Azure code optimization tools in Visual Studio help make your code more robust and better-performing."
+   pageTitle="Optimieren des Azure-Codes in Visual Studio | Microsoft Azure"
+   description="Erfahren Sie, wie Sie Azure-Tools zur Codeoptimierung in Visual Studio nutzen können, um Ihren Code robuster und leistungsstärker zu machen."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,58 +15,57 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Optimieren des Azure-Codes
 
-# <a name="optimizing-your-azure-code"></a>Optimizing Your Azure Code
+Wenn Sie Apps programmieren, für die Microsoft Azure verwendet wird, sollten Sie einige Hinweise zur Codeerstellung beachten. So vermeiden Sie Probleme mit der Skalierbarkeit, dem Verhalten und der Leistung von Apps in einer Cloudumgebung. Microsoft stellt ein Azure-Tool für die Codeanalyse bereit, mit dem mehrere dieser häufig auftretenden Probleme erkannt und behoben werden können. Sie können das Tool in Visual Studio über NuGet herunterladen.
 
-When you’re programming apps that use Microsoft Azure, there are some coding practices you should follow to help avoid problems with app scalability, behavior and performance in a cloud environment. Microsoft provides an Azure Code Analysis tool that recognizes and identifies several of these commonly-encountered issues and helps you resolve them. You can download the tool in Visual Studio via NuGet.
+## Regeln für die Azure-Codeanalyse
 
-## <a name="azure-code-analysis-rules"></a>Azure Code Analysis rules
+Im Azure-Tool für die Codeanalyse werden die folgenden Regeln verwendet, um den Azure-Code automatisch zu kennzeichnen, wenn bekannte Probleme erkannt werden, die sich auf die Leistung auswirken. Erkannte Probleme werden als Warnungen oder Compilerfehler angezeigt. Codefehlerbehebungen oder Vorschläge zur Lösung der Warnung oder des Fehlers werden häufig durch das Glühbirnen-Symbol angegeben.
 
-The Azure Code Analysis tool uses the following rules to automatically flag your Azure code when it finds known performance-impacting issues. Detected issues appear as a warnings or compiler errors. Code fixes or suggestions to resolve the warning or error are often provided through a light bulb icon.
+## Vermeiden der Verwendung des standardmäßigen Sitzungszustandsmodus (In Bearbeitung)
 
-## <a name="avoid-using-default-(in-process)-session-state-mode"></a>Avoid using default (in-process) session state mode
-
-### <a name="id"></a>ID
+### ID
 
 AP0000
 
-### <a name="description"></a>Description
+### Beschreibung
 
-If you use the default (in-process) session state mode for cloud applications, you can lose session state.
+Wenn Sie den standardmäßigen Sitzungszustandsmodus (In Bearbeitung) für Cloudanwendungen verwenden, können Sie den Sitzungszustand verlieren.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-By default, the session state mode specified in the web.config file is in-process. Also, if no entry specified in the configuration file, the Session State mode defaults to in-process. The in-process mode stores session state in memory on the web server. When an instance is restarted or a new instance is used for load balancing or failover support, the session state stored in memory on the web server isn’t saved. This situation prevents the application from being scalable on the cloud.
+Standardmäßig lautet der in der Datei „web.config“ angegebene Sitzungszustandsmodus „In Bearbeitung“. Außerdem wird der Sitzungszustandsmodus automatisch auf „In Bearbeitung“ festgelegt, wenn in der Konfigurationsdatei kein Eintrag angegeben ist. Im Modus „In Bearbeitung“ werden Sitzungszustände im Arbeitsspeicher auf dem Webserver gespeichert. Wenn eine Instanz neu gestartet wird oder eine neue Instanz für den Lastenausgleich oder die Failoverunterstützung verwendet wird, wird der im Arbeitsspeicher auf dem Webserver befindliche Sitzungszustand nicht gespeichert. Diese Situation verhindert, dass die Anwendung in der Cloud skalierbar ist.
 
-ASP.NET session state supports several different storage options for session state data: InProc, StateServer, SQLServer, Custom, and Off. It’s recommended that you use Custom mode to host data on an external Session State store, such as [Azure Session State provider for Redis](http://go.microsoft.com/fwlink/?LinkId=401521).
+Der ASP.NET-Sitzungszustand unterstützt mehrere unterschiedliche Speicheroptionen für Sitzungszustandsdaten: „InProc“, „StateServer“, „SQLServer“, „Custom“ und „Off“. Es wird empfohlen, den benutzerdefinierten Modus (Custom) zum Hosten von Daten in einem externen Sitzungszustandsspeicher zu verwenden, z. B. [Azure-Sitzungszustandsanbieter für Redis](http://go.microsoft.com/fwlink/?LinkId=401521).
 
-### <a name="solution"></a>Solution
+### Lösung
 
-One recommended solution is to store session state on a managed cache service. Learn how to use [Azure Session State provider for Redis](http://go.microsoft.com/fwlink/?LinkId=401521) to store your session state. You can also store session state in other places to ensure your application is scalable on the cloud. To learn more about alternative solutions please read [Session State Modes](https://msdn.microsoft.com/library/ms178586).
+Eine empfohlene Lösung ist das Speichern des Sitzungszustands unter einem Managed Cache Service. Informieren Sie sich, wie Sie [Azure-Sitzungszustandsanbieter für Redis](http://go.microsoft.com/fwlink/?LinkId=401521) zum Speichern des Sitzungszustands verwenden. Sie können den Sitzungszustand auch an anderen Orten speichern, um sicherzustellen, dass die Anwendung in der Cloud skalierbar ist. Weitere Informationen zu alternativen Lösungen finden Sie unter [Sitzungszustandsmodi](https://msdn.microsoft.com/library/ms178586).
 
-## <a name="run-method-should-not-be-async"></a>Run method should not be async
+## Run-Methode sollte nicht asynchron sein
 
-### <a name="id"></a>ID
+### ID
 
 AP1000
 
-### <a name="description"></a>Description
+### Beschreibung
 
-Create asynchronous methods (such as [await](https://msdn.microsoft.com/library/hh156528.aspx)) outside of the [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method and then call the async methods from [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx). Declaring the [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method as async causes the worker role to enter a restart loop.
+Erstellen Sie asynchrone Methoden (z. B. [await](https://msdn.microsoft.com/library/hh156528.aspx)) außerhalb der [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode, und rufen Sie dann die asynchronen Methoden aus [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) auf. Wenn Sie die [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode als asynchron deklarieren, wird die Workerrolle in eine Neustartschleife versetzt.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-Calling async methods inside the [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method causes the cloud service runtime to recycle the worker role. When a worker role starts, all program execution takes place inside the [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method. Exiting the [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method causes the worker role to restart. When the worker role runtime hits the async method, it dispatches all operations after the async method and then returns. This causes the worker role to exit from the [[[[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method and restart. In the next iteration of execution, the worker role hits the async method again and restarts, causing the worker role to recycle again as well.
+Wenn Sie asynchrone Methoden in der [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode aufrufen, recycelt die Clouddienst-Runtime die Workerrolle. Wenn eine Workerrolle gestartet wird, wird die gesamte Programmausführung innerhalb der [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode durchgeführt. Das Beenden der [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode bewirkt, dass die Workerrolle neu gestartet wird. Wenn die Workerrollen-Runtime auf die asynchrone Methode trifft, werden alle Vorgänge nach der asynchronen Methode abgearbeitet, und dann wird zum Anfang zurückgekehrt. Dies bewirkt, dass die Workerrolle für die [[[[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode beendet und neu gestartet wird. Beim nächsten Durchlauf der Ausführung trifft die Workerrolle erneut auf die asynchrone Methode und wird neu gestartet, sodass auch die Workerrolle erneut recycelt wird.
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Place all async operations outside of the [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method. Then, call the refactored async method from inside the [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method, such as RunAsync().wait. The Azure Code Analysis tool can help you fix this issue.
+Ordnen Sie alle asynchronen Vorgänge außerhalb der [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode an. Rufen Sie anschließend die umgestaltete asynchrone Methode aus der [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode auf, z. B. „RunAsync().wait“. Das Azure-Tool für die Codeanalyse ist hilfreich, um dieses Problem zu beheben.
 
-The following code snippet demonstrates the code fix for this issue:
+Der folgende Codeausschnitt veranschaulicht die Codefehlerbehebung für dieses Problem:
 
 ```
 public override void Run()
@@ -96,25 +95,25 @@ public async Task RunAsync()
 }
 ```
 
-## <a name="use-service-bus-shared-access-signature-authentication"></a>Use Service Bus Shared Access Signature authentication
+## Verwenden der Authentifizierung „Service Bus Shared Access Signature“
 
-### <a name="id"></a>ID
+### ID
 
 AP2000
 
-### <a name="description"></a>Description
+### Beschreibung
 
-Use Shared Access Signature (SAS) for authentication. Access Control Service (ACS) is being deprecated for service bus authentication.
+Verwenden Sie Shared Access Signature (SAS) für die Authentifizierung. Access Control Service (ACS) gilt für die Service Bus-Authentifizierung als veraltet.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-For enhanced security, Azure Active Directory is replacing ACS authentication with SAS authentication. See [Azure Active Directory is the future of ACS](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx) for information on the transition plan.
+Aus Sicherheitsgründen wird die ACS-Authentifizierung für Azure Active Directory durch die SAS-Authentifizierung ersetzt. Informationen zum Übergangsplan finden Sie unter [Azure Active Directory ist die Zukunft von ACS](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx) (in englischer Sprache).
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Use SAS authentication in your apps. The following example shows how to use an existing SAS token to access a service bus namespace or entity.
+Verwenden Sie die SAS-Authentifizierung in Ihren Apps. Das folgende Beispiel zeigt, wie Sie ein vorhandenes SAS-Token zum Zugreifen auf einen Service Bus-Namespace oder eine Entität verwenden.
 
 ```
 MessagingFactory listenMF = MessagingFactory.Create(endpoints, new StaticSASTokenProvider(subscriptionToken));
@@ -122,41 +121,41 @@ SubscriptionClient sc = listenMF.CreateSubscriptionClient(topicPath, subscriptio
 BrokeredMessage receivedMessage = sc.Receive();
 ```
 
-See the following topics for more information.
+Weitere Informationen finden Sie in den folgenden Themen.
 
-- For an overview, see [Shared Access Signature Authentication with Service Bus](https://msdn.microsoft.com/library/dn170477.aspx)
+- Eine Übersicht hierzu finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus](https://msdn.microsoft.com/library/dn170477.aspx).
 
-- [How to use Shared Access Signature Authentication with Service Bus](https://msdn.microsoft.com/library/dn205161.aspx)
+- [Verwenden von SAS-Authentifizierung (Shared Access Signature) mit Service Bus](https://msdn.microsoft.com/library/dn205161.aspx)
 
-- For a sample project, see [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c)
+- Ein Beispielprojekt finden Sie unter [Verwenden der SAS-Authentifizierung (Shared Access Signature) mit Service Bus-Abonnements](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c).
 
-## <a name="consider-using-onmessage-method-to-avoid-"receive-loop""></a>Consider using OnMessage method to avoid "receive loop"
+## Erwägen der Verwendung der OnMessage-Methode zum Vermeiden einer „Empfangsschleife“
 
-### <a name="id"></a>ID
+### ID
 
 AP2002
 
-### <a name="description"></a>Description
+### Beschreibung
 
-To avoid going into a "receive loop," calling the **OnMessage** method is a better solution for receiving messages than calling the **Receive** method. However, if you must use the **Receive** method, and you specify a non-default server wait time, make sure the server wait time is more than one minute.
+Um das Auftreten einer „Empfangsschleife“ zu vermeiden, ist das Aufrufen der **OnMessage**-Methode eine bessere Lösung für das Empfangen von Nachrichten als das Aufrufen der **Receive**-Methode. Wenn Sie die **Receive**-Methode verwenden müssen und nicht die Standardeinstellung für die Serverwartezeit festlegen, sollten Sie sicherstellen, dass die Serverwartezeit mehr als eine Minute beträgt.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-When calling **OnMessage**, the client starts an internal message pump that constantly polls the queue or subscription. This message pump contains an infinite loop that issues a call to receive messages. If the call times out, it issues a new call. The timeout interval is determined by the value of the [OperationTimeout](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx) property of the [MessagingFactory](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactory.aspx)that’s being used.
+Beim Aufrufen von **OnMessage** startet der Client einen internen Nachrichtensystemvorgang, bei dem die Warteschlange bzw. das Abonnement ständig abgefragt werden. Dieses Nachrichtensystem enthält eine Endlosschleife, die einen Aufruf zum Empfangen von Nachrichten ausgibt. Wenn die Zeitüberschreitung für den Aufruf erreicht ist, wird ein neuer Aufruf ausgegeben. Das Timeoutintervall wird vom Wert der [OperationTimeout](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx)-Eigenschaft des verwendeten [MessagingFactory](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactory.aspx)-Elements bestimmt.
 
-The advantage of using **OnMessage** compared to **Receive** is that users don’t have to manually poll for messages, handle exceptions, process multiple messages in parallel, and complete the messages.
+Der Vorteil der Verwendung von **OnMessage** gegenüber **Receive** besteht darin, dass Benutzer nicht folgende Schritte ausführen müssen: manuelles Abfragen von Nachrichten, Behandeln von Ausnahmen, paralleles Verarbeiten mehrerer Nachrichten und Abschließen der Nachrichten.
 
-If you call **Receive** without using its default value, be sure the *ServerWaitTime* value is more than one minute. Setting *ServerWaitTime* to more than one minute prevents the server from timing out before the message is fully received.
+Wenn Sie **Receive** ohne Verwendung des Standardwerts aufrufen, sollten Sie sicherstellen, dass der Wert *ServerWaitTime* mehr als eine Minute beträgt. Mit dem Festlegen von *ServerWaitTime* auf mehr als eine Minute wird verhindert, dass für den Server eine Zeitüberschreitung auftritt, bevor die Nachricht vollständig empfangen wurde.
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Please see the following code examples for recommended usages. For more details, see [QueueClient.OnMessage Method (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.onmessage.aspx)and [QueueClient.Receive Method (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.receive.aspx).
+Die empfohlene Verwendung wird in den folgenden Codebeispielen veranschaulicht. Weitere Informationen finden Sie unter [QueueClient.OnMessage Method (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.onmessage.aspx) und [QueueClient.Receive Method (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.receive.aspx).
 
-To improve the performance of the Azure messaging infrastructure, see the design pattern [Asynchronous Messaging Primer](https://msdn.microsoft.com/library/dn589781.aspx).
+Sehen Sie sich die Informationen zum Entwurfsmuster unter [Einführung in asynchrone Nachrichten](https://msdn.microsoft.com/library/dn589781.aspx) an, um die Leistung der Azure-Messaginginfrastruktur zu verbessern.
 
-The following is an example of using **OnMessage** to receive messages.
+Im Folgenden finden Sie ein Beispiel für die Verwendung von **OnMessage** zum Empfangen von Nachrichten.
 
 ```
 void ReceiveMessages()
@@ -177,7 +176,7 @@ void ReceiveMessages()
     Console.ReadKey();
 ```
 
-The following is an example of using **Receive** with the default server wait time.
+Im Folgenden finden Sie ein Beispiel für die Verwendung von **Receive** mit der standardmäßigen Serverwartezeit.
 
 ```
 string connectionString =  
@@ -210,7 +209,7 @@ while (true)
    }
 ```
 
-The following is an example of using **Receive** with a non-default server wait time.
+Im Folgenden finden Sie ein Beispiel für die Verwendung von **Receive** mit einer nicht standardmäßigen Serverwartezeit.
 
 ```
 while (true)  
@@ -238,47 +237,47 @@ while (true)
    }
 }
 ```
-## <a name="consider-using-asynchronous-service-bus-methods"></a>Consider using asynchronous Service Bus methods
+## Verwenden asynchroner Service Bus-Methoden
 
-### <a name="id"></a>ID
+### ID
 
 AP2003
 
-### <a name="description"></a>Description
+### Beschreibung
 
-Use asynchronous Service Bus methods to improve performance with brokered messaging.
+Verwenden Sie asynchrone Service Bus-Methoden zur Verbesserung der Leistung beim Brokermessaging.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-Using asynchronous methods enables application program concurrency because executing each call doesn’t block the main thread. When using Service Bus messaging methods, performing an operation (send, receive, delete, etc.) takes time. This time includes the processing of the operation by the Service Bus service in addition to the latency of the request and the reply. To increase the number of operations per time, operations must execute concurrently. For more information please refer to [Best Practices for Performance Improvements Using Service Bus Brokered Messaging](https://msdn.microsoft.com/library/azure/hh528527.aspx).
+Die Verwendung asynchroner Methoden ermöglicht die Parallelität von Anwendungsprogrammen, da die Ausführung der einzelnen Aufrufe keine Blockierung des Hauptthreads bewirkt. Beim Verwenden von Service Bus-Messagingmethoden nimmt das Durchführen eines Vorgangs (Senden, Empfangen, Löschen usw.) Zeit in Anspruch. Dieser Zeitraum umfasst die Verarbeitung des Vorgangs durch den Service Bus-Dienst sowie die Latenz der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen. Weitere Informationen finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](https://msdn.microsoft.com/library/azure/hh528527.aspx).
 
-### <a name="solution"></a>Solution
+### Lösung
 
-See [QueueClient Class (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.aspx) for information about how to use the recommended asynchronous method.
+Informationen zur Verwendung der empfohlenen asynchronen Methode finden Sie unter [QueueClient-Klasse (Microsoft.ServiceBus.Messaging)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.aspx).
 
-To improve the performance of the Azure messaging infrastructure, see the design pattern [Asynchronous Messaging Primer](https://msdn.microsoft.com/library/dn589781.aspx).
+Sehen Sie sich die Informationen zum Entwurfsmuster unter [Einführung in asynchrone Nachrichten](https://msdn.microsoft.com/library/dn589781.aspx) an, um die Leistung der Azure-Messaginginfrastruktur zu verbessern.
 
-## <a name="consider-partitioning-service-bus-queues-and-topics"></a>Consider partitioning Service Bus queues and topics
+## Partitionieren von Service Bus-Warteschlangen und -Themen
 
-### <a name="id"></a>ID
+### ID
 
 AP2004
 
-### <a name="description"></a>Description
+### Beschreibung
 
-Partition Service Bus queues and topics for better performance with Service Bus messaging.
+Partitionieren Sie Service Bus-Warteschlangen und -Themen, um eine bessere Leistung in Verbindung mit dem Service Bus-Messaging zu erzielen.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-Partitioning Service Bus queues and topics increases performance throughput and service availability because the overall throughput of a partitioned queue or topic is no longer limited by the performance of a single message broker or messaging store. In addition, a temporary outage of a messaging store doesn’t make a partitioned queue or topic unavailable. For more information, see [Partitioning Messaging Entities](https://msdn.microsoft.com/library/azure/dn520246.aspx).
+Die Partitionierung von Service Bus-Warteschlangen und -Themen führt zu einer Erhöhung von Leistungsdurchsatz und Dienstverfügbarkeit, da der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist. Weitere Informationen finden Sie unter [Partitionieren von Nachrichtenentitäten](https://msdn.microsoft.com/library/azure/dn520246.aspx).
 
-### <a name="solution"></a>Solution
+### Lösung
 
-The following code snippet shows how to partition messaging entities.
+Der folgende Codeausschnitt veranschaulicht die Partitionierung von Nachrichtenentitäten.
 
 ```
 // Create partitioned topic.
@@ -288,31 +287,31 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-For more information, see [Partitioned Service Bus Queues and Topics | Microsoft Azure Blog](https://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/) and check out the [Microsoft Azure Service Bus Partitioned Queue](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f) sample.
+Weitere Informationen finden Sie unter [Partitionierte Service Bus-Warteschlangen und -Themen | Microsoft Azure-Blog](https://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/). Sehen Sie sich außerdem das Beispiel [Microsoft Azure Service Bus – Partitionierte Warteschlange](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f) an.
 
-## <a name="do-not-set-sharedaccessstarttime"></a>Do not set SharedAccessStartTime
+## Vermeiden des Festlegens von SharedAccessStartTime
 
-### <a name="id"></a>ID
+### ID
 
 AP3001
 
-### <a name="description"></a>Description
+### Beschreibung
 
-You should avoid using SharedAccessStartTimeset to the current time to immediately start the Shared Access policy. You only need to set this property if you want to start the Shared Access policy at a later time.
+Sie sollten das Verwenden von SharedAccessStartTimeset zum Angeben der aktuellen Zeit vermeiden, um die Shared Access-Richtlinie sofort zu starten. Sie müssen diese Eigenschaft nur festlegen, wenn Sie die Shared Access-Richtlinie zu einem späteren Zeitpunkt starten möchten.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-Clock synchronization causes a slight time difference among datacenters. For example, you would logically think setting the start time of a storage SAS policy as the current time by using DateTime.Now or a similar method will cause the SAS policy to take effect immediately. However, the slight time differences between datacenters can cause problems with this since some datacenter times might be slightly later than the start time, while others ahead of it. As a result, the SAS policy can expire quickly (or even immediately) if the policy lifetime is set too short.
+Die Uhrsynchronisierung verursacht einen leichten Zeitunterschied zwischen Rechenzentren. Es erscheint beispielsweise logisch, dass das Festlegen der Startzeit einer SAS-Speicherrichtlinie auf die aktuelle Uhrzeit per „DateTime.Now“ oder mit einer ähnlichen Methode dazu führt, dass die SAS-Richtlinie sofort wirksam wird. Die leichten Zeitunterschiede zwischen Rechenzentren können hierbei aber zu Problemen führen, da einige Rechenzentrumzeiten etwas zurückhinken, während andere bereits leicht voraus sind. Daher läuft die SAS-Richtlinie unter Umständen schnell ab (oder sogar sofort), wenn die Lebensdauer der Richtlinie zu kurz ist.
 
-For more guidance on using Shared Access Signature on Azure storage, see [Introducing Table SAS (Shared Access Signature), Queue SAS and update to Blob SAS - Microsoft Azure Storage Team Blog - Site Home - MSDN Blogs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx).
+Eine ausführliche Anleitung zur Verwendung von Shared Access Signature für Azure-Speicher finden Sie unter [Einführung in Tabellen-SAS (Shared Access Signature), Warteschlangen-SAS und Blob-SAS-Update – Microsoft Azure Storage-Teamblog – Homepage der Website – MSDN-Blogs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) (in englischer Sprache).
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Remove the statement that sets the start time of the shared access policy. The Azure Code Analysis tool provides a fix for this issue. For more information on security management, please see the design pattern [Valet Key Pattern](https://msdn.microsoft.com/library/dn568102.aspx).
+Entfernen Sie die Anweisung, mit der die Startzeit der Shared Access-Richtlinie festgelegt wird. Das Codeanalysetool von Azure enthält eine Lösung für dieses Problem. Weitere Informationen zur Sicherheitsverwaltung finden Sie unter dem Entwurfsmuster [Valet-Schlüsselmuster](https://msdn.microsoft.com/library/dn568102.aspx).
 
-The following code snippet demonstrates the code fix for this issue.
+Der folgende Codeausschnitt veranschaulicht die Codefehlerbehebung für dieses Problem:
 
 ```
 // The shared access policy provides  
@@ -327,29 +326,29 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 });
 ```
 
-## <a name="shared-access-policy-expiry-time-must-be-more-than-five-minutes"></a>Shared Access Policy expiry time must be more than five minutes
+## Ablaufzeit der SAS-Richtlinie muss mehr als fünf Minuten betragen
 
-### <a name="id"></a>ID
+### ID
 
 AP3002
 
-### <a name="description"></a>Description
+### Beschreibung
 
-There can be as much as a five minute difference in clocks among datacenters at different locations due to a condition known as "clock skew." To prevent the SAS policy token from expiring earlier than planned, set the expiry time to be more than five minutes.
+Für Uhren zwischen Rechenzentren an verschiedenen Standorten können aufgrund einer Bedingung, die als Uhrabweichung (Clock Skew) bezeichnet wird, bis zu fünf Minuten Unterschied herrschen. Um zu verhindern, dass das SAS-Richtlinientoken früher als geplant abläuft, sollten Sie die Ablaufzeit auf mehr als fünf Minuten festlegen.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-Datacenters at different locations around the world synchronize by a clock signal. Because it takes time for clock signal to travel to different locations, there can be a time variance between datacenters at different geographical locations although everything is supposedly synchronized. This time difference can affect the Shared Access policy start time and expiration interval. Therefore, to ensure Shared Access policy takes effect immediately, don’t specify the start time. In addition, make sure the expiration time is more than 5 minutes to prevent early timeout.
+Die Rechenzentren an verschiedenen Standorten weltweit werden mithilfe eines Uhrsignals synchronisiert. Da es einige Zeit dauert, bis das Uhrsignal die unterschiedlichen Standorte erreicht hat, kann es zu einer Zeitvarianz zwischen Rechenzentren an den einzelnen geografischen Orten kommen, obwohl scheinbar alles synchronisiert ist. Der Zeitunterschied kann sich auf die Startzeit und das Ablaufintervall der Shared Access-Richtlinie auswirken. Geben Sie daher die Startzeit nicht an, um sicherzustellen, dass die Shared Access-Richtlinie sofort wirksam wird. Stellen Sie außerdem sicher, dass die Ablaufzeit mehr als fünf Minuten lang ist, um eine frühe Zeitüberschreitung zu verhindern.
 
-For more information about using Shared Access Signature on Azure storage, see [Introducing Table SAS (Shared Access Signature), Queue SAS and update to Blob SAS - Microsoft Azure Storage Team Blog - Site Home - MSDN Blogs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx).
+Weitere Informationen zur Verwendung von Shared Access Signature für Azure-Speicher finden Sie unter [Einführung in Tabellen-SAS (Shared Access Signature), Warteschlangen-SAS und Blob-SAS-Update – Microsoft Azure Storage-Teamblog – Homepage der Website – MSDN-Blogs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) (in englischer Sprache).
 
-### <a name="solution"></a>Solution
+### Lösung
 
-For more information on security management, see the design pattern [Valet Key Pattern](https://msdn.microsoft.com/library/dn568102.aspx).
+Weitere Informationen zur Sicherheitsverwaltung finden Sie unter dem Entwurfsmuster [Valet-Schlüsselmuster](https://msdn.microsoft.com/library/dn568102.aspx).
 
-The following is an example of not specifying a Shared Access policy start time.
+Im folgenden Beispiel wird keine Startzeit für die Shared Access-Richtlinie angegeben.
 
 ```
 // The shared access policy provides  
@@ -364,7 +363,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 });
 ```
 
-The following is an example of specifying a Shared Access policy start time with a policy expiration duration greater than five minutes.
+Im folgenden Beispiel wird die Startzeit für eine Shared Access-Richtlinie mit einer Richtlinienablaufdauer angegeben, die größer als fünf Minuten ist.
 
 ```
 // The shared access policy provides  
@@ -380,39 +379,39 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 });
 ```
 
-For more information, see [Create and Use a Shared Access Signature](https://msdn.microsoft.com/library/azure/jj721951.aspx).
+Weitere Informationen finden Sie unter [Erstellen und Verwenden einer SAS (Shared Access Signature)](https://msdn.microsoft.com/library/azure/jj721951.aspx).
 
-## <a name="use-cloudconfigurationmanager"></a>Use CloudConfigurationManager
+## Verwenden von CloudConfigurationManager
 
-### <a name="id"></a>ID
+### ID
 
 AP4000
 
-### <a name="description"></a>Description
+### Beschreibung
 
-Using the [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) class for projects such as Azure Website and Azure mobile services won't introduce runtime issues. As a best practice, however, it's a good idea to use Cloud[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) as a unified way of managing configurations for all Azure Cloud applications.
+Durch die Verwendung der [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx)-Klasse für Projekte, z. B. Azure Website und Azure Mobile Services, ergeben sich keine Laufzeitprobleme. Es ist jedoch eine bewährte Methode, Cloud[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) als einheitliches Verfahren zum Verwalten von Konfigurationen für alle Azure-Cloudanwendungen zu verwenden.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-CloudConfigurationManager reads the configuration file appropriate to the application environment.
+CloudConfigurationManager liest die für die Anwendungsumgebung passende Konfigurationsdatei.
 
 [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx)
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Refactor your code to use the [CloudConfigurationManager Class](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx). A code fix for this issue is provided by the Azure Code Analysis tool.
+Gestalten Sie Ihren Code so um, dass die [CloudConfigurationManager-Klasse](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx) verwendet wird. Eine Codebehebung für dieses Problem ist mit dem Codeanalysetool von Azure möglich.
 
-The following code snippet demonstrates the code fix for this issue. Replace
+Der folgende Codeausschnitt veranschaulicht die Codefehlerbehebung für dieses Problem: Ersetzen von
 
 `var settings = ConfigurationManager.AppSettings["mySettings"];`
 
-with
+durch
 
 `var settings = CloudConfigurationManager.GetSetting("mySettings");`
 
-Here's an example of how to store the configuration setting in a App.config or Web.config file. Add the settings to the appSettings section of the configuration file. The following is the Web.config file for the previous code example.
+Hier ist ein Beispiel dafür angegeben, wie Sie die Konfigurationseinstellung in einer App.config- oder Web.config-Datei speichern. Fügen Sie die Einstellungen dem appSettings-Abschnitt der Konfigurationsdatei hinzu. Unten ist die Datei „Web.config“ zum vorherigen Codebeispiel angegeben.
 
 ```
 <appSettings>
@@ -424,88 +423,88 @@ Here's an example of how to store the configuration setting in a App.config or W
   </appSettings>  
 ```
 
-## <a name="avoid-using-hard-coded-connection-strings"></a>Avoid using hard-coded connection strings
+## Vermeiden der Verwendung von hartcodierten Verbindungszeichenfolgen
 
-### <a name="id"></a>ID
+### ID
 
 AP4001
 
-### <a name="description"></a>Description
+### Beschreibung
 
-If you use hard-coded connection strings and you need to update them later, you’ll have to make changes to your source code and recompile the application. However, if you store your connection strings in a configuration file, you can change them later by simply updating the configuration file.
+Wenn Sie hartcodierte Verbindungszeichenfolgen verwenden und diese später aktualisieren möchten, müssen Sie Änderungen an Ihrem Quellcode vornehmen und die Anwendung neu kompilieren. Falls Sie Ihre Verbindungszeichenfolgen in einer Konfigurationsdatei speichern, können Sie diese später aber ändern, indem Sie einfach die Konfigurationsdatei aktualisieren.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-Hard-coding connection strings is a bad practice because it introduces problems when connection strings need to be changed quickly. In addition, if the project needs to be checked in to source control, hard-coded connection strings introduce security vulnerabilities since the strings can be viewed in the source code.
+Das Hartcodieren von Verbindungszeichenfolgen ist keine bewährte Methode, da dies zu Problemen führt, wenn Verbindungszeichenfolgen schnell geändert werden müssen. Wenn das Projekt in die Quellcodeverwaltung eingecheckt sein muss, führen hartcodierte Verbindungszeichenfolgen außerdem zu Schwachstellen in Bezug auf die Sicherheit, da die Zeichenfolgen im Quellcode angezeigt werden können.
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Store connection strings in the configuration files or Azure environments.
+Speichern Sie Verbindungszeichenfolgen in den Konfigurationsdateien oder in Azure-Umgebungen.
 
-- For standalone applications, use app.config to store connection string settings.
+- Verwenden Sie für eigenständige Anwendungen die Datei „app.config“, um die Einstellungen für die Verbindungszeichenfolge zu speichern.
 
-- For IIS-hosted web applications, use web.config to store connection strings.
+- Verwenden Sie für IIS-gehostete Webanwendungen die Datei „web.config“ zum Speichern der Verbindungszeichenfolgen.
 
-- For ASP.NET vNext applications, use configuration.json to store connection strings.
+- Verwenden Sie für ASP.NET vNext-Anwendungen die Datei „configuration.json“ zum Speichern der Verbindungszeichenfolgen.
 
-For information on using configurations files such as web.config or app.config, see [ASP.NET Web Configuration Guidelines](https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx). For information on how Azure environment variables work, see [Azure Web Sites: How Application Strings and Connection Strings Work](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/). For information on storing connection string in source control, see [avoid putting sensitive information such as connection strings in files that are stored in source code repository](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control).
+Informationen zur Verwendung von Konfigurationsdateien wie „web.config“ oder „app.config“ finden Sie unter [ASP.NET-Webkonfigurationsrichtlinien](https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx). Weitere Informationen zur Funktionsweise von Azure-Umgebungsvariablen finden Sie unter [Azure-Websites: Funktionsweise von Anwendungs- und Verbindungszeichenfolgen](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/). Informationen zum Speichern der Verbindungszeichenfolge in der Quellcodeverwaltung finden Sie unter [Vermeiden des Einfügens von vertraulichen Informationen (z. B. Verbindungszeichenfolgen) in Dateien, die im Quellcode-Repository gespeichert werden](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control).
 
-## <a name="use-diagnostics-configuration-file"></a>Use diagnostics configuration file
+## Verwenden der Konfigurationsdatei für die Diagnose
 
-### <a name="id"></a>ID
+### ID
 
 AP5000
 
-### <a name="description"></a>Description
+### Beschreibung
 
-Instead of configuring diagnostics settings in your code such as by using the Microsoft.WindowsAzure.Diagnostics programming API, you should configure diagnostics settings in the diagnostics.wadcfg file. (Or, diagnostics.wadcfgx if you use Azure SDK 2.5). By doing this, you can change diagnostics settings without having to recompile your code.
+Anstatt Diagnoseeinstellungen in Ihrem Code zu konfigurieren, z. B. mithilfe der Microsoft.WindowsAzure.Diagnostics-Programmier-API, sollten Sie die Diagnoseeinstellungen in der Datei „diagnostics.wadcfg“ konfigurieren. (Oder in „diagnostics.wadcfgx“, wenn Sie Azure SDK 2.5 verwenden.) Auf diese Weise können Sie Diagnoseeinstellungen ändern, ohne den Code neu kompilieren zu müssen.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-Before Azure SDK 2.5 (which uses Azure diagnostics 1.3), Azure Diagnostics (WAD) could be configured by using several different methods: adding it to the configuration blob in storage, by using imperative code, declarative configuration, or the default configuration. However, the preferred way to configure diagnostics is to use an XML configuration file (diagnostics.wadcfg or diagnositcs.wadcfgx for SDK 2.5 and later) in the application project. In this approach, the diagnostics.wadcfg file completely defines the configuration and can be updated and redeployed at will. Mixing the use of the diagnostics.wadcfg configuration file with the programmatic methods of setting configurations by using the [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx)or [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx)classes can lead to confusion. See [Initialize or Change Azure Diagnostics Configuration](https://msdn.microsoft.com/library/azure/hh411537.aspx) for more information.
+Vor der Veröffentlichung von Azure SDK 2.5 (mit Verwendung von Azure Diagnostics 1.3) konnte Azure Diagnostics (WAD) mit mehreren unterschiedlichen Methoden konfiguriert werden: durch das Hinzufügen zum Konfigurations-Blob im Speicher, per imperativem Code, per deklarativer Konfiguration oder über die Standardkonfiguration. Allerdings ist die bevorzugte Methode zum Konfigurieren der Diagnose die Verwendung einer XML-Konfigurationsdatei („diagnostics.wadcfg“ oder „diagnositcs.wadcfgx“ für SDK 2.5 und höher) im Anwendungsprojekt. Bei diesem Ansatz wird die Konfiguration vollständig über die Datei „diagnostics.wadcfg“ definiert und kann je nach Bedarf aktualisiert und neu bereitgestellt werden. Das Mischen der Konfigurationsdatei „diagnostics.wadcfg“ mit den programmgesteuerten Methoden der Konfigurationsfestlegung mit den Klassen [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx) oder [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx) kann zu Verwirrung führen. Weitere Informationen finden Sie unter [Initialisieren oder Ändern der Azure-Diagnosekonfiguration](https://msdn.microsoft.com/library/azure/hh411537.aspx).
 
-Beginning with WAD 1.3 (included with Azure SDK 2.5), it’s no longer possible to use code to configure diagnostics. As a result, you can only provide the configuration when applying or updating the diagnostics extension.
+Ab WAD 1.3 (Teil von Azure SDK 2.5) ist es nicht mehr möglich, Code zum Konfigurieren der Diagnose zu verwenden. Sie können die Konfiguration daher nur angeben, wenn Sie die Diagnoseerweiterung anwenden oder aktualisieren.
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Use the diagnostics configuration designer to move diagnostic settings to the diagnostics configuration file (diagnositcs.wadcfg or diagnositcs.wadcfgx for SDK 2.5 and later). It’s also recommended that you install [Azure SDK 2.5](http://go.microsoft.com/fwlink/?LinkId=513188) and use the latest diagnostics feature.
+Verwenden Sie den Designer für die Diagnosekonfiguration, um die Diagnoseeinstellungen in die Diagnosekonfigurationsdatei zu verschieben („diagnositcs.wadcfg“ oder „diagnositcs.wadcfgx“ für SDK 2.5 und höher). Es wird empfohlen, [Azure SDK 2.5](http://go.microsoft.com/fwlink/?LinkId=513188) zu installieren und die aktuelle Diagnosefunktion zu verwenden.
 
-1. On the shortcut menu for the role that you want to configure, choose Properties, and then choose the Configuration tab.
+1. Wählen Sie im Kontextmenü für die Rolle, die Sie konfigurieren möchten, die Option „Eigenschaften“ und dann die Registerkarte „Konfiguration“.
 
-1. In the **Diagnostics** section, make sure that the **Enable Diagnostics** check box is selected.
+1. Stellen Sie im Abschnitt **Diagnose** sicher, dass das Kontrollkästchen **Diagnose aktivieren** aktiviert ist.
 
-1. Choose the **Configure** button.
+1. Wählen Sie die Schaltfläche **Konfigurieren**.
 
-  ![Accessing the Enable Diagnostics option](./media/vs-azure-tools-optimizing-azure-code-in-visual-studio/IC796660.png)
+  ![Zugreifen auf die Option „Diagnose aktivieren“](./media/vs-azure-tools-optimizing-azure-code-in-visual-studio/IC796660.png)
 
-  See [Configuring Diagnostics for Azure Cloud Services and Virtual Machines](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) for more information.
+  Weitere Informationen finden Sie unter [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
 
-## <a name="avoid-declaring-dbcontext-objects-as-static"></a>Avoid declaring DbContext objects as static
+## Vermeiden der Deklaration von DbContext-Objekten als „statisch“
 
-### <a name="id"></a>ID
+### ID
 
 AP6000
 
-### <a name="description"></a>Description
+### Beschreibung
 
-To save memory, avoid declaring DBContext objects as static.
+Vermeiden Sie die Deklaration von DBContext-Objekten als „statisch“, um Arbeitsspeicher zu sparen.
 
-Please share your ideas and feedback at [Azure Code Analysis feedback](http://go.microsoft.com/fwlink/?LinkId=403771).
+Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771) gern mitteilen.
 
-### <a name="reason"></a>Reason
+### Grund
 
-DBContext objects hold the query results from each call. Static DBContext objects are not disposed until the application domain is unloaded. Therefore, a static DBContext object can consume large amounts of memory.
+DBContext-Objekte enthalten die Abfrageergebnisse für jeden Aufruf. Statische DBContext-Objekte werden erst verworfen, wenn die Anwendungsdomäne entladen wird. Aus diesem Grund kann ein statisches DBContext-Objekt große Mengen an Arbeitsspeicher belegen.
 
-### <a name="solution"></a>Solution
+### Lösung
 
-Declare DBContext as a local variable or non-static instance field, use it for a task, and then let it be disposed of after use.
+Deklarieren Sie DBContext als lokale Variable oder nicht statisches Instanzenfeld, verwenden Sie es für eine Aufgabe, und lassen Sie es dann zu, dass es nach der Verwendung verworfen wird.
 
-The following example MVC controller class shows how to use the DBContext object.
+Im folgenden Beispiel wird anhand der MVC-Controller-Klasse veranschaulicht, wie das DBContext-Objekt verwendet wird.
 
 ```
 public class BlogsController : Controller
@@ -529,12 +528,8 @@ public class BlogsController : Controller
     }
 ```
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn more about optimzing and troubleshooting Azure apps, see [Troubleshoot a web app in Azure App Service using Visual Studio](./app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md).
+Weitere Informationen zur Optimierung und Problembehandlung von Azure-Apps finden Sie unter [Problembehandlung von Web-Apps in Azure App Service in Visual Studio](./app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

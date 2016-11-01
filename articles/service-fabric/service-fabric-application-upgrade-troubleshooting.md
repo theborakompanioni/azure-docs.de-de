@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Troubleshooting application upgrades | Microsoft Azure"
-   description="This article covers some common issues around upgrading a Service Fabric application and how to resolve them."
+   pageTitle="Problembehandlung bei Anwendungsupgrades | Microsoft Azure"
+   description="In diesem Artikel werden einige bekannte Probleme beim Upgrade einer Service Fabric-Anwendung und ihre Behebung behandelt."
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -16,34 +16,33 @@
    ms.date="09/14/2016"
    ms.author="subramar"/>
 
+# Problembehandlung bei Anwendungsupgrades
 
-# <a name="troubleshoot-application-upgrades"></a>Troubleshoot application upgrades
+In diesem Artikel werden einige bekannte Probleme beim Upgrade einer Azure Service Fabric-Anwendung und ihre Behebung behandelt.
 
-This article covers some of the common issues around upgrading an Azure Service Fabric application and how to resolve them.
+## Problembehandlung bei einem fehlgeschlagenen Anwendungsupgrade
 
-## <a name="troubleshoot-a-failed-application-upgrade"></a>Troubleshoot a failed application upgrade
+Wenn ein Upgrade fehlschlägt, enthält die Ausgabe des Befehls **Get-ServiceFabricApplicationUpgrade** zusätzliche Informationen zum Debuggen des Fehlers. Die folgende Liste gibt an, wie die zusätzlichen Informationen verwendet werden können:
 
-When an upgrade fails, the output of the **Get-ServiceFabricApplicationUpgrade** command contains additional information for debugging the failure.  The following list specifies how the additional information can be used:
+1. Identifizieren des Fehlertyps
+2. Identifizieren der Fehlerursache
+3. Isolieren fehlerhafter Komponenten zur weiteren Untersuchung
 
-1. Identify the failure type.
-2. Identify the failure reason.
-3. Isolate one or more failing components for further investigation.
+Diese Informationen sind verfügbar, sobald Service Fabric einen Fehler erkennt, unabhängig davon, ob die **FailureAction** darin besteht, das Upgrade per Rollback rückgängig zu machen oder anzuhalten.
 
-This information is available when Service Fabric detects the failure regardless of whether the **FailureAction** is to roll back or suspend the upgrade.
+### Identifizieren des Fehlertyps
 
-### <a name="identify-the-failure-type"></a>Identify the failure type
+In der Ausgabe von **Get-ServiceFabricApplicationUpgrade** gibt **FailureTimestampUtc** den Zeitstempel (in UTC) an, bei dem ein Upgradefehler von Service Fabric erkannt und die **FailureAction** ausgelöst wurde. **FailureReason** gibt eine der drei potenziellen allgemeinen Ursachen des Fehlers an:
 
-In the output of **Get-ServiceFabricApplicationUpgrade**, **FailureTimestampUtc** identifies the timestamp (in UTC) at which an upgrade failure was detected by Service Fabric and **FailureAction** was triggered. **FailureReason** identifies one of three potential high-level causes of the failure:
+1. **UpgradeDomainTimeout**: Gibt an, dass der Abschluss einer bestimmten Upgradedomäne zu lange dauerte und dass "UpgradeDomainTimeout" abgelaufen ist.
+2. **OverallUpgradeTimeout**: Gibt an, dass das gesamte Upgrade zu lange dauerte und dass "UpgradeTimeout" abgelaufen ist.
+3. HealthCheck: Gibt an, dass die Anwendung nach dem Upgrade einer Updatedomäne entsprechend den angegebenen Integritätsrichtlinien fehlerhaft ist und dass **HealthCheckRetryTimeout** abgelaufen ist.
 
-1. UpgradeDomainTimeout - Indicates that a particular upgrade domain took too long to complete and **UpgradeDomainTimeout** expired.
-2. OverallUpgradeTimeout - Indicates that the overall upgrade took too long to complete and **UpgradeTimeout** expired.
-3. HealthCheck - Indicates that after upgrading an update domain, the application remained unhealthy according to the specified health policies and **HealthCheckRetryTimeout** expired.
+Diese Einträge werden in der Ausgabe nur angezeigt, wenn das Upgrade fehlschlägt und ein Rollback ausgeführt wird. Weitere Informationen werden je nach Art des Fehlers angezeigt.
 
-These entries only show up in the output when the upgrade fails and starts rolling back. Further information is displayed depending on the type of the failure.
+### Untersuchen von Timeouts bei Upgrades
 
-### <a name="investigate-upgrade-timeouts"></a>Investigate upgrade timeouts
-
-Upgrade timeout failures are most commonly caused by service availability issues. The output following this paragraph is typical of upgrades where service replicas or instances fail to start in the new code version. The **UpgradeDomainProgressAtFailure** field captures a snapshot of any pending upgrade work at the time of failure.
+Timeoutfehler bei Upgrades sind am häufigsten auf Probleme mit der Dienstverfügbarkeit zurückzuführen. Die Ausgabe im Anschluss an diesen Absatz ist typisch für Upgrades, bei denen beim Starten von Dienstreplikaten oder -instanzen in der neuen Codeversion Fehler auftreten. Im Feld **UpgradeDomainProgressAtFailure** wird eine Momentaufnahme der ausstehenden Upgradevorgänge zum Zeitpunkt des Fehlers erfasst.
 
 ~~~
 PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -79,17 +78,17 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ~~~
 
-In this example, the upgrade failed at upgrade domain *MYUD1* and two partitions (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* and *4b43f4d8-b26b-424e-9307-7a7a62e79750*) were stuck. The partitions were stuck because the runtime was unable to place primary replicas (*WaitForPrimaryPlacement*) on target nodes *Node1* and *Node4*.
+Bei diesem Beispiel ist das Upgrade bei der Upgradedomäne *MYUD1* fehlgeschlagen, und die beiden Partitionen (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* und *4b43f4d8-b26b-424e-9307-7a7a62e79750*) sind hängen geblieben. Die Partitionen sind hängen geblieben, da die Laufzeit die primären Replikate (*WaitForPrimaryPlacement*) nicht auf den Zielknoten *Node1* und *Node4* platzieren konnte.
 
-The **Get-ServiceFabricNode** command can be used to verify that these two nodes are in upgrade domain *MYUD1*. The *UpgradePhase* says *PostUpgradeSafetyCheck*, which means that these safety checks are occurring after all nodes in the upgrade domain have finished upgrading. All this information points to a potential issue with the new version of the application code. The most common issues are service errors in the open or promotion to primary code paths.
+Mit dem Befehl **Get-ServiceFabricNode** kann überprüft werden, ob sich diese beiden Knoten in der Upgradedomäne *MYUD1* befinden. *UpgradePhase* gibt *PostUpgradeSafetyCheck* aus, was bedeutet, dass diese Sicherheitsprüfungen nach dem Aktualisieren aller Knoten in der Upgradedomäne stattfinden. Alle diese Informationen lassen auf ein mögliches Problem mit der neuen Version des Anwendungscodes schließen. Die häufigsten Probleme sind Dienstfehler im Vordergrund oder bei der Heraufstufung auf primäre Codepfade.
 
-An *UpgradePhase* of *PreUpgradeSafetyCheck* means there were issues preparing the upgrade domain before it was performed. The most common issues in this case are service errors in the close or demotion from primary code paths.
+*PreUpgradeSafetyCheck* als *UpgradePhase* bedeutet, dass vor der Durchführung des Upgrades Probleme bei der Vorbereitung der Upgradedomäne aufgetreten sind. In diesem Fall sind die häufigsten Probleme Fehler im Hintergrund oder bei der Herabstufung von primären Codepfaden.
 
-The current **UpgradeState** is *RollingBackCompleted*, so the original upgrade must have been performed with a rollback **FailureAction**, which automatically rolled back the upgrade upon failure. If the original upgrade was performed with a manual **FailureAction**, then the upgrade would instead be in a suspended state to allow live debugging of the application.
+Der aktuelle **UpgradeState** ist *RollingBackCompleted*, d. h., das ursprüngliche Upgrade muss mit dem Wert "Rollback" für **FailureAction** durchgeführt worden sein, sodass nach dem Fehlschlagen automatisch ein Rollback des Upgrades ausgeführt wurde. Wenn das ursprüngliche Upgrade mit dem Wert „Manual“ für **FailureAction** durchgeführt worden wäre, befände sich das Upgrade stattdessen in einem angehaltenen Zustand, um das Livedebuggen der Anwendung zuzulassen.
 
-### <a name="investigate-health-check-failures"></a>Investigate health check failures
+### Untersuchen von Fehlern bei der Integritätsprüfung
 
-Health check failures can be triggered by various issues that can happen after all nodes in an upgrade domain finish upgrading and passing all safety checks. The output following this paragraph is typical of an upgrade failure due to failed health checks. The **UnhealthyEvaluations** field captures a snapshot of health checks that failed at the time of the upgrade according to the specified [health policy](service-fabric-health-introduction.md).
+Fehler bei der Integritätsprüfung können durch eine Vielzahl von Problemen ausgelöst werden, die auftreten können, nachdem alle Knoten in einer Upgradedomäne aktualisiert und alle Sicherheitsprüfungen erfolgreich durchgeführt wurden. Die Ausgabe im Anschluss an diesen Absatz ist typisch für einen Upgradefehler aufgrund fehlerhafter Integritätsprüfungen. Im Feld **UnhealthyEvaluations** wird entsprechend der angegebenen [Integritätsrichtlinie](service-fabric-health-introduction.md) eine Momentaufnahme aller fehlgeschlagenen Integritätsprüfungen zum Zeitpunkt des Upgradefehlers erfasst.
 
 ~~~
 PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -143,23 +142,23 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ~~~
 
-Investigating health check failures first requires an understanding of the Service Fabric health model. But even without such an in-depth understanding, we can see that two services are unhealthy: *fabric:/DemoApp/Svc3* and *fabric:/DemoApp/Svc2*, along with the error health reports ("InjectedFault" in this case). In this example, two out of four services are unhealthy, which is below the default target of 0% unhealthy (*MaxPercentUnhealthyServices*).
+Die Untersuchung von Fehlern bei der Integritätsprüfung erfordert zunächst ein umfassendes Verständnis des Service Fabric-Integritätsmodells. Aber auch ohne dieses Verständnis können wir sehen, dass zwei Dienste fehlerhaft sind: *fabric:/DemoApp/Svc3* und *fabric:/DemoApp/Svc2* zusammen mit dem Fehlerintegritätsbericht (in diesem Fall „InjectedFault“). In diesem Beispiel sind zwei von vier Diensten fehlerhaft. Dies liegt unter dem Standardziel von 0 % fehlerhafte Dienste (*MaxPercentUnhealthyServices*).
 
-The upgrade was suspended upon failing by specifying a **FailureAction** of manual when starting the upgrade. This mode allows us to investigate the live system in the failed state before taking any further action.
+Das Upgrade wurde nach dem Fehlschlagen angehalten, indem die **FailureAction** „Manual“ beim Starten des Upgrades angegeben wurde. Dieser Modus ermöglicht uns, das Livesystem im fehlerhaften Zustand zu untersuchen, bevor eine weitere Aktion erfolgt.
 
-### <a name="recover-from-a-suspended-upgrade"></a>Recover from a suspended upgrade
+### Wiederherstellen eines angehaltenen Upgrades
 
-With a rollback **FailureAction**, there is no recovery needed since the upgrade automatically rolls back upon failing. With a manual **FailureAction**, there are several recovery options:
+Wenn als **FailureAction** „Rollback“ angegeben ist, ist keine Wiederherstellung erforderlich, da nach dem Fehler automatisch ein Rollback für das Upgrade ausgeführt wird. Wenn als **FailureAction** "Manual" angegeben ist, gibt es mehrere Möglichkeiten zur Wiederherstellung:
 
-1. Manually trigger a rollback
-2. Proceed through the remainder of the upgrade manually
-3. Resume the monitored upgrade
+1. Manuelles Auslösen eines Rollbacks
+2. Manuelles Durchlaufen des restlichen Upgrades
+3. Fortsetzen des überwachten Upgrades
 
-The **Start-ServiceFabricApplicationRollback** command can be used at any time to start rolling back the application. Once the command returns successfully, the rollback request has been registered in the system and starts shortly thereafter.
+Der Befehl **Start ServiceFabricApplicationRollback** kann jederzeit verwendet werden, um einen Rollback für die Anwendung auszuführen. Wenn der Befehl erfolgreich zurückgegeben wird, wurde die Rollbackanforderung im System registriert und wird bald darauf gestartet.
 
-The **Resume-ServiceFabricApplicationUpgrade** command can be used to proceed through the remainder of the upgrade manually, one upgrade domain at a time. In this mode, only safety checks are performed by the system. No more health checks are performed. This command can only be used when the *UpgradeState* shows *RollingForwardPending*, which means that the current upgrade domain has finished upgrading but the next one has not started (pending).
+Mit dem Befehl **Resume-ServiceFabricApplicationUpgrade** kann das restliche Upgrade manuell fortgesetzt werden. Dabei werden die einzelnen Upgradedomänen nacheinander durchlaufen. In diesem Modus werden vom System nur Sicherheitsprüfungen durchgeführt. Weitere Integritätsprüfungen erfolgen nicht. Dieser Befehl kann nur verwendet werden, wenn *UpgradeState* den Wert *RollingForwardPending* aufweist, was bedeutet, dass das Upgrade der aktuellen Upgradedomäne abgeschlossen ist, die nächste Upgradedomäne jedoch noch nicht gestartet wurde (ausstehend ist).
 
-The **Update-ServiceFabricApplicationUpgrade** command can be used to resume the monitored upgrade with both safety and health checks being performed.
+Der Befehl **Update-ServiceFabricApplicationUpgrade** kann zum Fortsetzen des überwachten Upgrades mit Sicherheits- und Integritätsprüfungen verwendet werden.
 
 ~~~
 PS D:\temp> Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
@@ -183,59 +182,55 @@ ServiceTypeHealthPolicyMap              :
 PS D:\temp>
 ~~~
 
-The upgrade continues from the upgrade domain where it was last suspended and use the same upgrade parameters and health policies as before. If needed, any of the upgrade parameters and health policies shown in the preceding output can be changed in the same command when the upgrade resumes. In this example, the upgrade was resumed in Monitored mode, with the parameters and the health policies unchanged.
+Das Upgrade wird ab der Upgradedomäne fortgesetzt, in der es zuletzt angehalten wurde. Dabei werden die gleichen Upgradeparameter und Integritätsrichtlinien wie zuvor verwendet. Bei Bedarf können beim Fortsetzen des Upgrades alle in der vorstehenden Ausgabe angegebenen Upgradeparameter und Integritätsrichtlinien im gleichen Befehl geändert werden. In diesem Beispiel wurde das Upgrade im überwachten Modus mit unveränderten Parametern und Integritätsrichtlinien fortgesetzt.
 
-## <a name="further-troubleshooting"></a>Further troubleshooting
+## Weitere Problembehandlungen
 
-### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric is not following the specified health policies
+### Service Fabric befolgt nicht die angegebenen Integritätsrichtlinien
 
-Possible Cause 1:
+Mögliche Ursache 1:
 
-Service Fabric translates all percentages into actual numbers of entities (for example, replicas, partitions, and services) for health evaluation and always rounds up to whole entities. For example, if the maximum _MaxPercentUnhealthyReplicasPerPartition_ is 21% and there are five replicas, then Service Fabric allows up to two unhealthy replicas (that is,`Math.Ceiling (5\*0.21)). Thus, health policies should be set accordingly.
+Service Fabric übersetzt für die Integritätsevaluierung alle Prozentsätze in die tatsächliche Anzahl der Entitäten (z. B. Replikate, Partitionen und Dienste) und rundet immer auf ganze Zahlen auf. Wenn für _MaxPercentUnhealthyReplicasPerPartition_ beispielsweise maximal 21 % angegeben wurde und fünf Replikate vorhanden sind, lässt Service Fabric zwei fehlerhafte Replikate zu (d. h. Math.Ceiling [5x0,21]). Integritätsrichtlinien müssen also entsprechend festgelegt werden.
 
-Possible Cause 2:
+Mögliche Ursache 2:
 
-Health policies are specified in terms of percentages of total services and not specific service instances. For example, before an upgrade, if an application has four service instances A, B, C, and D, where service D is unhealthy but with little impact to the application. We want to ignore the known unhealthy service D during upgrade and set the parameter *MaxPercentUnhealthyServices* to be 25%, assuming only A, B, and C need to be healthy.
+Integritätsrichtlinien werden als Prozentsätze aller Dienste und nicht für bestimmte Dienstinstanzen angegeben. Angenommen, vor einem Upgrade umfasst eine Anwendung beispielsweise die vier Dienstinstanzen A, B, C und D, wobei Dienst D fehlerhaft ist, jedoch mit nur geringen Auswirkungen auf die Anwendung. Der bekanntermaßen fehlerhafte Dienst D soll beim Upgrade ignoriert werden. Also legen wir den Parameter *MaxPercentUnhealthyServices* auf 25 % fest und setzen voraus, dass nur A, B und C fehlerfrei sein müssen.
 
-However, during the upgrade, D may become healthy while C becomes unhealthy. The upgrade would still succeed because only 25% of the services are unhealthy. However, it might result in unanticipated errors due to C being unexpectedly unhealthy instead of D. In this situation, D should be modeled as a different service type from A, B, and C. Since health policies are specified per service type, different unhealthy percentage thresholds can be applied to different services. 
+Allerdings kann während des Upgrades D fehlerfrei und C fehlerhaft werden. Das Upgrade wäre immer noch erfolgreich, da nur 25 % der Dienste fehlerhaft sind. Allerdings kann es zu unerwarteten Fehlern kommen, wenn C anstatt D unerwartet fehlerhaft ist. In diesem Fall sollte D als ein Diensttyp modelliert werden, der sich von A, B und C unterscheidet. Da Integritätsrichtlinien auf den Diensttyp bezogen angegeben sind, können für verschiedene Dienste unterschiedliche Schwellenwerte (in %) für „Fehlerhaft“ gelten.
 
-### <a name="i-did-not-specify-a-health-policy-for-application-upgrade,-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>I did not specify a health policy for application upgrade, but the upgrade still fails for some time-outs that I never specified
+### Ich habe keine Integritätsrichtlinie für das Anwendungsupgrade angegeben, beim Upgrade treten jedoch Fehler aufgrund einiger Timeouts auf, die ich nie angegeben habe
 
-When health policies aren't provided to the upgrade request, they are taken from the *ApplicationManifest.xml* of the current application version. For example, if you're upgrading Application X from version 1.0 to version 2.0, application health policies specified for in version 1.0 are used. If a different health policy should be used for the upgrade, then the policy needs to be specified as part of the application upgrade API call. The policies specified as part of the API call only apply during the upgrade. Once the upgrade is complete, the policies specified in the *ApplicationManifest.xml* are used.
+Wenn der Upgradeanforderung keine Integritätsrichtlinien bereitgestellt werden, werden diese aus der Datei *ApplicationManifest.xml* der aktuellen Anwendungsversion übernommen. Wenn Sie beispielsweise Anwendung X von Version 1.0 auf Version 2.0 aktualisieren, werden die für Anwendung X in Version 1.0 angegebenen Richtlinien zur Anwendungsintegrität verwendet. Wenn für das Upgrade eine andere Integritätsrichtlinie verwendet werden soll, muss die Richtlinie als Teil des API-Aufrufs für das Anwendungsupgrade angegeben werden. Die Richtlinien, die als Teil des API-Aufrufs angegeben werden, gelten nur für die Dauer des Upgrades. Nach Abschluss des Upgrades werden wieder die in der Datei *ApplicationManifest.xml* angegebenen Richtlinien verwendet.
 
-### <a name="incorrect-time-outs-are-specified"></a>Incorrect time-outs are specified
+### Es werden falsche Timeouts angegeben
 
-You may have wondered about what happens when time-outs are set inconsistently. For example, you may have an *UpgradeTimeout* that's less than the *UpgradeDomainTimeout*. The answer is that an error is returned. Errors are returned if the *UpgradeDomainTimeout* is less than the sum of *HealthCheckWaitDuration* and *HealthCheckRetryTimeout*, or if *UpgradeDomainTimeout* is less than the sum of *HealthCheckWaitDuration* and *HealthCheckStableDuration*.
+Sie haben sich vielleicht gefragt, was passiert, wenn Timeouts uneinheitlich festgelegt sind. Angenommen, Sie haben ein *UpgradeTimeout*, das kleiner als *UpgradeDomainTimeout* ist. Die Antwort ist einfach: Es wird ein Fehler zurückgegeben. In den folgenden Fällen werden Fehler zurückgegeben: *UpgradeDomainTimeout* ist kleiner als die Summe von *HealthCheckWaitDuration* und *HealthCheckRetryTimeout*, oder *UpgradeDomainTimeout* ist kleiner als die Summe von *HealthCheckWaitDuration* und *HealthCheckStableDuration*.
 
-### <a name="my-upgrades-are-taking-too-long"></a>My upgrades are taking too long
+### Die Upgrades dauern zu lange
 
-The time for an upgrade to complete depends on the health checks and time-outs specified. Health checks and time-outs depend on how long it takes to copy, deploy, and stabilize the application. Being too aggressive with time-outs might mean more failed upgrades, so we recommend starting conservatively with longer time-outs.
+Die Dauer eines Upgrades hängt von den angegebenen Integritätsprüfungen und Timeouts ab. Integritätsprüfungen und Timeouts hängen davon ab, wie lange es dauert, die Anwendung zu kopieren, bereitzustellen und zu stabilisieren. Wenn Timeouts zu kurz angesetzt werden, führt dies möglicherweise zu einer größeren Zahl fehlerhafter Upgrades. Daher empfiehlt sich eine konservative Vorgehensweise mit längeren Timeouts.
 
-Here's a quick refresher on how the time-outs interact with the upgrade times:
+Eine kurze Erinnerung dazu, wie Timeouts und Upgradezeiten interagieren:
 
-Upgrades for an upgrade domain cannot complete faster than *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+Upgrades für eine Upgradedomäne können nicht schneller abgeschlossen werden als *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
 
-Upgrade failure cannot occur faster than *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+Fehler beim Upgrade können nicht schneller auftreten als *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
 
-The upgrade time for an upgrade domain is limited by *UpgradeDomainTimeout*.  If *HealthCheckRetryTimeout* and *HealthCheckStableDuration* are both non-zero and the health of the application keeps switching back and forth, then the upgrade eventually times out on *UpgradeDomainTimeout*. *UpgradeDomainTimeout* starts counting down once the upgrade for the current upgrade domain begins.
+Die Upgradezeit für eine Upgradedomäne wird durch *UpgradeDomainTimeout* begrenzt. Wenn *HealthCheckRetryTimeout* und *HealthCheckStableDuration* ungleich null sind und die Integrität der Anwendung hin und her wechselt, wird für das Upgrade schließlich das Timeout bei *UpgradeDomainTimeout* überschritten. *UpgradeDomainTimeout* zählt rückwärts ab dem Moment, an dem das Upgrade für die aktuelle Upgradedomäne gestartet wird.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) walks you through an application upgrade using Visual Studio.
+Unter [Upgrade Ihrer Anwendung mit Visual Studio](service-fabric-application-upgrade-tutorial.md) werden Sie schrittweise durch ein Anwendungsupgrade mithilfe von Visual Studio geführt.
 
-[Upgrading your Application Using Powershell](service-fabric-application-upgrade-tutorial-powershell.md) walks you through an application upgrade using PowerShell.
+Unter [Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.
 
-Control how your application upgrades by using [Upgrade Parameters](service-fabric-application-upgrade-parameters.md).
+Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](service-fabric-application-upgrade-parameters.md).
 
-Make your application upgrades compatible by learning how to use [Data Serialization](service-fabric-application-upgrade-data-serialization.md).
+Machen Sie Ihre Anwendungsupgrades kompatibel, indem Sie sich mit der [Datenserialisierung](service-fabric-application-upgrade-data-serialization.md) vertraut machen.
 
-Learn how to use advanced functionality while upgrading your application by referring to [Advanced Topics](service-fabric-application-upgrade-advanced.md).
+Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upgrade-advanced.md) darüber, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen.
 
-Fix common problems in application upgrades by referring to the steps in [Troubleshooting Application Upgrades](service-fabric-application-upgrade-troubleshooting.md).
+Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

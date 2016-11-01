@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Get pre-approved through the Microsoft Azure Certified program | Microsoft Azure"
-   description="Learn about the Microsoft Azure Certified partner program and how to get to sell your virtual machine image, solution template, developer service, or data service on the Azure Marketplace"
+   pageTitle="Anfordern einer Vorabgenehmigung für das Microsoft Azure Certified-Programm | Microsoft Azure"
+   description="Hier erfahren Sie mehr über das Microsoft Azure Certified-Partnerprogramm und wie Sie das Image Ihres virtuellen Computers, die Lösungsvorlage, den Entwicklerdienst oder den Datendienst im Azure Marketplace verkaufen können."
    services="marketplace-publishing"
    documentationCenter="na"
    authors="HannibalSII"
-   manager="hascipio"
+   manager=" "
    editor=""
    tags=""/>
 
@@ -17,32 +17,27 @@
    ms.date="07/21/2016"
    ms.author="anishk;hascipio"/>
 
+# Anfordern einer Vorabgenehmigung für das Microsoft Azure Certified-Programm
 
-# <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Get pre-approved via the Microsoft Azure Certified program
+In diesem Artikel erfahren Sie, wie Sie die Microsoft Azure-Zertifizierung erhalten. Eine ausführliche Übersicht über das Microsoft Azure Certified-Programm und dessen Vorteile finden Sie unter [http://azure.com/certified](http://azure.com/certified).
 
-This article provides instructions on how to become Microsoft Azure Certified. For a detailed overview of the Microsoft Azure Certified program and its benefits, visit [http://azure.com/certified](http://azure.com/certified).
+> [AZURE.NOTE] Die Azure-Zertifizierung ist nur relevant, wenn Sie beabsichtigen, einen virtuellen Computer, eine Lösungsvorlage und Entwicklerdienste für den Azure Marketplace zu erstellen. Wenn Sie keines dieser Artefakte erstellen, können Sie diesen Schritt überspringen und mit [Microsoft-Verkäuferkonto: Erstellung und Registrierung](marketplace-publishing-accounts-creation-registration.md) fortfahren.
 
-> [AZURE.NOTE] The Azure certification is applicable only if you are going to create a virtual machine, a solution template, and developer services for the Azure Marketplace. If you are not creating any of these artifacts, please skip this step and move forward to [Microsoft seller account: creation and registration](marketplace-publishing-accounts-creation-registration.md).
+## Erste Schritte
+1. Der erste Schritt auf dem Weg zur Zertifizierung Ihrer Anwendung oder Ihres Diensts und der Integration in den Azure Marketplace besteht im Ausfüllen des Anwendungsformulars auf der Webseite [Microsoft Azure Certified](https://azure.microsoft.com/marketplace/partner-program/).
 
-## <a name="getting-started"></a>Getting started
-1. The first step on the path to getting your application or service certified and onboarded to the Azure Marketplace is to fill out the application form on the [Microsoft Azure Certified](https://azure.microsoft.com/marketplace/partner-program/) webpage.
+2. Wenn Sie die grundlegenden Kriterien erfüllen, bitten wir Sie um einige weitere Angaben zu Ihrem Unternehmen und zu der Anwendung oder dem Dienst, die bzw. den Sie zertifizieren möchten. Wenn wir über alle erforderlichen Angaben verfügen, prüfen wir Ihre Anwendung, um sicherzustellen, dass sie für den Azure Marketplace geeignet ist. Nach der Freigabe Ihrer Anwendung arbeiten wir mit Ihnen gemeinsam an der Integration Ihrer Lösung in den Azure Marketplace.
 
-2. If you meet the basic eligibility criteria, we will ask you to share some more details about your business and the application or service that you want to certify. When we have all the details from you, we will review your application to ensure that it’s a good fit for the Azure Marketplace. If your application is approved, we will start working with you to onboard your solution to the Azure Marketplace.
+3. Wenn Sie mit einem Partner Account Manager oder einem DX Partner Manager zusammenarbeiten, bitten Sie diesen, Sie für das Azure Certified-Programm zu nominieren. Oder besuchen Sie die Webseite [Microsoft Azure Certified](http://azure.com/certified), klicken Sie auf **Informationen anfordern**, und füllen Sie das Anwendungsformular aus.
 
-3. If you are working with a Partner Account Manager or a DX Partner Manager, please ask them to nominate you for the Azure Certified program. Or go to the [Microsoft Azure Certified](http://azure.com/certified) webpage, click **Request Information**, and fill in the application form.
+**Verkäuferländer**
 
-**"Sell-from" countries**
+> [AZURE.WARNING] Um Ihre Dienste im Microsoft Azure Marketplace verkaufen zu können, muss die registrierte Organisation in einem der genehmigten Verkäuferländer ansässig sein. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Die Länderliste wird in Kürze erweitert, prüfen Sie sie also regelmäßig. Die vollständige Liste finden Sie in Abschnitt 1b der [Teilnahmerichtlinien für den Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
 
-> [AZURE.WARNING] In order to sell your services on the Microsoft Azure Marketplace, your registered entity needs to be from one of the approved “sell-from” countries. This restriction is for payout and taxation reasons. We are actively looking to expand this list of countries in the near future, so stay tuned. For the complete list, see section 1b of the [Azure Marketplace participation policies](http://go.microsoft.com/fwlink/?LinkID=526833).
+## Nächster Schritt
+Nach Erhalt der Vorabgenehmigung für das Microsoft Azure Certified-Programm können Sie mit dem Schritt [Microsoft-Verkäuferkonto: Erstellung und Registrierung](marketplace-publishing-accounts-creation-registration.md) fortfahren.
 
-## <a name="next-step"></a>Next step
-Once you have received pre-approval from the Microsoft Azure Certified program, you can proceed to [Microsoft seller account: creation and registration](marketplace-publishing-accounts-creation-registration.md).
+## Weitere Informationen
+- [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-## <a name="see-also"></a>See also
-- [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

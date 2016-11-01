@@ -1,21 +1,18 @@
-### <a name="to-add-address-space"></a>To add address space
+### So fügen Sie Adressraum hinzu
 
-1. To add additional address space, click **All settings** to open the **Settings** blade. 
+1. Klicken Sie zum Hinzufügen von zusätzlichem Adressraum auf **Alle Einstellungen**, um das Blatt **Einstellungen** zu öffnen. 
 
-2. On the **Settings** blade, click **Address space** to open the Address space blade. Add the additional address space in this blade, and then click **Save** at the top of the blade.
+2. Klicken Sie auf dem Blatt **Einstellungen** auf **Adressraum**, um das Blatt „Adressraum“ zu öffnen. Fügen Sie den zusätzlichen Adressraum auf diesem Blatt hinzu, und klicken Sie dann oben auf dem Blatt auf **Speichern**.
 
-    ![Add address space](./media/vpn-gateway-additional-address-space-include/address400.png)
+	![Hinzufügen eines Adressraums](./media/vpn-gateway-additional-address-space-include/address400.png)
 
-### <a name="to-add-subnets"></a>To add subnets 
+### So fügen Sie Subnetze hinzu 
 
-1. To add additional subnets to your address spaces, in the **Settings** blade, click **Subnets** to open the **Subnets** blade. 
+1. Klicken Sie zum Hinzufügen zusätzlicher Subnetze zu den Adressräumen auf dem Blatt **Einstellungen** auf **Subnetze**, um das Blatt **Subnetze** zu öffnen. 
 
-2. In the Subnets blade, click **Add** to open the **Add subnet** blade. Name your new subnet and specify the address range, and then click **OK** at the bottom of the blade. Once a subnet has been created, you can use the subnets blade to view all of your subnets for a VNet.
-
-
-    ![Subnet settings](./media/vpn-gateway-additional-address-space-include/addsubnet250.png)       
+2. Klicken Sie auf dem Blatt „Subnetze“ auf **Hinzufügen**, um das Blatt **Subnetz hinzufügen** zu öffnen. Geben Sie dem neuen Subnetz einen Namen, geben Sie den Adressbereich an, und klicken Sie unten auf dem Blatt auf **OK**. Nach dem Erstellen eines Subnetzes können Sie auf dem Blatt „Subnetze“ alle Subnetze für ein VNet anzeigen.
 
 
-<!--HONumber=Oct16_HO2-->
+	![Subnetzeinstellungen](./media/vpn-gateway-additional-address-space-include/addsubnet250.png)
 
-
+<!-----HONumber=AcomDC_0406_2016-->

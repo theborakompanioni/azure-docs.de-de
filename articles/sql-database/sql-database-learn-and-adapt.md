@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Learns and Adapts"
-   description="Learn how SQL Database learns and adapts"
+   pageTitle="Azure SQL-Datenbank – Lernen und Anpassungen"
+   description="Erfahren Sie, wie SQL-Datenbank lernt und sich anpasst."
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -14,55 +14,49 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="10/13/2016"
+   ms.date="07/19/2016"
    ms.author="carlrab"/>
 
+# Azure SQL-Datenbank – Lernen und Anpassungen
 
-# <a name="azure-sql-database-learns-&amp;-adapts"></a>Azure SQL Database Learns &amp; Adapts
 
+## Wie Azure SQL-Datenbank gemäß Ihrer Anwendung wächst, lernt und sich anpasst
 
-## <a name="how-azure-sql-database-learns,-adapts,-and-grows-with-your-application"></a>How Azure SQL Database learns, adapts, and grows with your application
-
-Azure SQL Database manages billions of transactions and millions of databases per day. And one of its key features is that SQL Database is always learning and adapting with your app. That way you can dynamically maximize performance, reliability, and data security&mdash;with little effort on your part.
+Azure SQL-Datenbank verwaltet Milliarden von Transaktionen und Millionen von Datenbanken pro Tag. Und eines der Hauptfeatures ist, dass SQL-Datenbank sich stets an Ihrer App orientiert, dementsprechend lernt und sich anpasst. So können Sie dynamisch und mit wenig Aufwand ihrerseits Leistung, Zuverlässigkeit und Datensicherheit maximieren.
 
 ![learn-and-adapt](./media/sql-database-learn-and-adapt/sql-database-learn-and-adapt.png)
 
-## <a name="threat-detection-and-alerts"></a>Threat detection and alerts  
-With threat and anomaly detection, SQL Database has built-in behavioral analysis, real-time alerts, a configurable threat policy, an audit log, and intelligent ways to detect and fix unusual patterns.
+## Bedrohungserkennung und Warnungen  
+Mit der Bedrohungs- und Anomalienerkennung bietet SQL-Datenbank integrierte Verhaltensanalyse, Warnungen in Echtzeit, eine konfigurierbare Bedrohungsrichtlinie, ein Überwachungsprotokoll und intelligente Methoden zum Erkennen und Klären ungewöhnlicher Situationen.
 
-[Read the documentation](sql-database-threat-detection-get-started.md)
+[Dokumentation lesen](sql-database-threat-detection-get-started.md)
 
-## <a name="automatic-tuning"></a>Automatic tuning
-SQL Database is equipped to make your app run at its best performance. By continuously learning your app’s patterns, adaptively self-tuning its performance, and automatically refining without you doing anything&mdash;because we know you don’t want to anyway.
+## Automatische Optimierung
+SQL-Datenbank ist so ausgestattet, dass Ihre App mit bester Leistung ausgeführt wird. Durch fortlaufendes Lernen des Verhaltensmusters Ihrer App, adaptive Selbstoptimierung der Leistung und automatische Verfeinerung, ohne dass Sie eingreifen müssen – denn wir wissen, dass Sie dies sowieso nicht möchten.
 
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787566)
+[Dokumentation lesen](http://go.microsoft.com/fwlink/?LinkID=787566)
 
-## <a name="insights-when-you-need-them"></a>Insights when you need them
-SQL Database is able to track each query and its duration, frequency, and resource utilization. Based on this telemetry, automatic algorithms optimally tune your databases exactly to your queries. Additionally, SQL Database provides insights to help minimize time tuning queries and troubleshooting performance issues. That means you gain direct insight into resource consumption, top performing queries, and the ability to drill down for more details.
+## Einblicke, wenn Sie sie benötigen
+SQL-Datenbank kann jede Abfrage und ihre Dauer, Häufigkeit und Ressourcenverwendung nachverfolgen. Basierend auf diesen Telemetriedaten optimieren automatische Algorithmen Ihre Datenbanken genau gemäß Ihrer Abfragen. Darüber hinaus bietet SQL-Datenbank Ihnen Einblicke, die Sie beim Minimieren des Zeitaufwands zum Optimieren von Abfragen und zur Behandlung von Leistungsproblemen unterstützen. Das bedeutet, Sie erhalten direkten Einblick in Ressourcenverbrauch sowie meistgenutzte Abfragen und haben die Möglichkeit, einen Drilldown nach weiteren Details auszuführen.
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787567)
+[Dokumentation lesen](http://go.microsoft.com/fwlink/?LinkID=787567)
 
-## <a name="no-administration-required"></a>No administration required
-SQL Database provides the automatic administration and data protection your app needs so you can go back to doing what you do best&mdash;coding. You automatically get back-ups, disaster recovery failover, infrastructure maintenance, security and software patches, and feature updates. You’ll not only save money and time as SQL Database works behind the scenes, but you’ll also never have to worry about that dreaded app downtime.
+## Keine Verwaltung erforderlich
+SQL-Datenbank bietet automatisch Verwaltung und Datenschutz, die Ihre App benötigt, damit Sie sich wieder auf das konzentrieren können, was Sie am besten beherrschen – Codieren. Sie erhalten automatisch Sicherungskopien, Notfallwiederherstellungs-Failover, Wartung der Infrastruktur, Sicherheits- und Softwarepatches sowie Featureupdates. Sie sparen nicht nur Zeit und Geld, da SQL-Datenbank im Hintergrund arbeitet, sondern müssen sich auch nie um die gefürchtete App-Ausfallzeit sorgen.
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787568)
+[Dokumentation lesen](http://go.microsoft.com/fwlink/?LinkID=787568)
 
-Go to the homepage to see what else SQL Database has to offer.
-[Check it out](https://azure.microsoft.com/services/sql-database/) 
+Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Get a [free Azure subscription](https://azure.microsoft.com/get-started/) and [create your first Azure SQL Database](sql-database-get-started.md).
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
+Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
  
-Review the [technical overview of SQL Database](sql-database-technical-overview.md).
+Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

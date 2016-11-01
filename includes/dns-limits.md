@@ -1,13 +1,10 @@
 
-| Resource  | Default limit 
+| Ressource | Standardlimit 
 --- | ---
-| Zones per subscription | 100 <sup>1</sup>
-| Record sets per zone| 5000 <sup>1</sup>
-| Records per record set| 20
+| Zonen pro Abonnement | 100 <sup>1</sup>
+| Datensätze pro Zone| 5000 <sup>1</sup>
+| Datensätze pro Datensatzgruppe| 20
 
-<sup>1</sup> Contact Azure Support in case you need to increase these limits.
+<sup>1</sup> Wenden Sie sich an den Azure-Support, falls Sie diese Limits erhöhen müssen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

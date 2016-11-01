@@ -1,268 +1,261 @@
 <properties
-   pageTitle="Azure Backup FAQ | Microsoft Azure"
-   description="Answers to frequently asked questions about the backup service, backup agent, backup and retention, recovery, security and other common questions about backup and disaster recovery."
+   pageTitle="Häufig gestellte Fragen zu Azure Backup | Microsoft Azure"
+   description="Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Dienst, zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Sicherung und Notfallwiederherstellung."
    services="backup"
    documentationCenter=""
    authors="markgalioto"
    manager="jwhit"
    editor=""
-   keywords="backup and disaster recovery; backup service"/>
+   keywords="Sicherung und Notfallwiederherstellung; Backup-Dienst"/>
 
 <tags
    ms.service="backup"
    ms.workload="storage-backup-recovery"
-     ms.tgt_pltfrm="na"
-     ms.devlang="na"
-     ms.topic="get-started-article"
-     ms.date="08/29/2016"
-     ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="get-started-article"
+	 ms.date="08/29/2016"
+	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
 
-
-# <a name="azure-backup-service--faq"></a>Azure Backup service- FAQ
+# Azure Backup-Dienst – FAQ
 
 > [AZURE.SELECTOR]
-- [Backup FAQ for Classic mode](backup-azure-backup-faq.md)
-- [Backup FAQ for Resource Manager mode](backup-azure-backup-ibiza-faq.md)
+- [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
+- [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
 
-This article is a list of commonly asked questions (and the respective answers) about the Azure Backup service. Our community replies quickly, and if a question is asked often, we add it to this article. The answers to questions typically provide reference or support information. You can ask questions about Azure Backup in the Disqus section of this article or a related article. You can also post questions about the Azure Backup service in the [discussion forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazugehörigen Antworten) zum Azure Backup-Dienst. In unserer Community erhalten Sie schnell eine Antwort, und wenn eine Frage häufig gestellt wird, fügen wir sie diesem Artikel hinzu. Die Antworten auf Fragen enthalten in der Regel Referenz- bzw. Supportinformationen. Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) stellen.
 
 
-## <a name="what-is-the-list-of-supported-operating-systems-from-which-i-can-back-up-to-azure-using-azure-backup?-<br/>"></a>What is the list of supported operating systems from which I can back up to Azure using Azure Backup? <br/>
-Azure Backup supports the following list of operating systems for file-folder backup, application backup using Azure Backup Server and SCDPM. 
+## Welche Betriebssysteme werden für die Sicherung in Azure mithilfe von Azure Backup unterstützt? <br/>
+Azure Backup unterstützt die folgenden Betriebssysteme für die Sicherung von Dateien/Ordnern und die Anwendungssicherung mithilfe von Azure Backup Server und SCDPM.
 
-| Operating System        | Platform           | SKU  |
+| Betriebssystem | Plattform | SKU |
 | :------------- |-------------| :-----|
-| Windows 8 and latest SPs      | 64 bit | Enterprise, Pro |
-| Windows 7 and latest SPs      | 64 bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
-| Windows 8.1 and latest SPs | 64 bit      |    Enterprise, Pro |
-| Windows 10      | 64 bit | Enterprise, Pro, Home |
-|Windows Server 2012 R2 and latest SPs| 64 bit| Standard, Datacenter, Foundation|
-|Windows Server 2012 and latest SPs|    64 bit| Datacenter, Foundation, Standard|
-|Windows Storage Server 2012 R2 and latest SPs  |64 bit|    Standard, Workgroup|
-|Windows Storage Server 2012 and latest SPs |64 bit |Standard, Workgroup
-|Windows Server 2012 R2 and latest SPs  |64 bit|    Essential|
-|Windows Server 2008 R2 SP1 |64 bit|    Standard, Enterprise, Datacenter, Foundation|
-|Windows Server 2008 SP2    |64 bit|    Standard, Enterprise, Datacenter, Foundation|
+| Windows 8 und die neuesten SPs | 64-Bit | Enterprise, Pro |
+| Windows 7 und die neuesten SPs | 64-Bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
+| Windows 8.1 und die neuesten SPs | 64-Bit | Enterprise, Pro |
+| Windows 10 | 64-Bit | Enterprise, Pro, Home |
+|Windows Server 2012 R2 und die neuesten SPs|	64-Bit|	Standard, Datacenter, Foundation|
+|Windows Server 2012 und die neuesten SPs|	64-Bit|	Datacenter, Foundation, Standard|
+|Windows Storage Server 2012 R2 und die neuesten SPs |64-Bit|	Standard, Workgroup|
+|Windows Storage Server 2012 und neuesten SPs |64-Bit |Standard, Workgroup
+|Windows Server 2012 R2 und die neuesten SPs |64-Bit|	Essential|
+|Windows Server 2008 R2 SP1 |64-Bit|	Standard, Enterprise, Datacenter, Foundation|
+|Windows Server 2008 SP2 |64-Bit|	Standard, Enterprise, Datacenter, Foundation|
 
-For Azure VM backup,
+Für Azure-VM-Sicherung,
 
-- **Linux**: Azure Backup supports  [a list of distributions that are endorsed by Azure](../virtual-machines/virtual-machines-linux-endorsed-distros.md) except Core OS Linux.  Other Bring-Your-Own-Linux distributions also might work as long as the VM agent is available on the virtual machine and support for Python exists.
-- **Windows Server**:  Versions older than Windows Server 2008 R2 are not supported.
+- **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md). Ausnahme: CoreOS Linux. Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
+- **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
 
-## <a name="where-can-i-download-the-latest-azure-backup-agent?-<br/>"></a>Where can I download the latest Azure Backup agent? <br/>
-You can download the latest agent for backing up Windows Server, System Center DPM, or Windows client, from  [here](http://aka.ms/azurebackup_agent). If you want to back up a virtual machine, use the VM Agent (which automatically installs the proper extension). The VM Agent is already present on virtual machines created from the Azure gallery.
+## Wo kann ich den neuesten Azure Backup-Agent herunterladen? <br/>
+Sie können den aktuellen Agent zum Sichern von Windows Server, System Center DPM oder des Windows-Clients [hier](http://aka.ms/azurebackup_agent) herunterladen. Verwenden Sie zum Sichern eines virtuellen Computers den VM-Agent (installiert automatisch die richtige Erweiterung). Der VM-Agent ist auf virtuellen Computern, die über den Azure-Katalog erstellt werden, bereits vorhanden.
 
-## <a name="which-version-of-scdpm-server-is-supported?-<br/>"></a>Which version of SCDPM server is supported? <br/>
-We recommend that you install the [latest](http://aka.ms/azurebackup_agent) Azure Backup agent on the latest update rollup of SCDPM (UR11 as of August 2016)
+## Welche SCDPM-Serverversion wird unterstützt? <br/>
+Wir empfehlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent aus dem aktuellen Updaterollup von SCDPM (UR11; Stand: August 2016) zu installieren.
 
-## <a name="when-configuring-the-azure-backup-agent,-i-am-prompted-to-enter-the-vault-credentials.-do-vault-credentials-expire?"></a>When configuring the Azure Backup agent, I am prompted to enter the vault credentials. Do vault credentials expire?
-Yes, the vault credentials expire after 48 hours. If the file expires, log in to the Azure portal and download the vault credentials files from your vault. 
+## Beim Konfigurieren des Azure Backup-Agents werde ich aufgefordert, die Tresoranmeldedaten einzugeben. Laufen die Tresoranmeldeinformationen ab?
+Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abläuft, melden Sie sich beim Azure-Portal an, und laden Sie die Dateien mit den Tresoranmeldedaten aus Ihrem Tresor herunter.
 
-## <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription?-<br/>"></a>Is there any limit on the number of vaults that can be created in each Azure subscription? <br/>
-Yes. As of September 2016, you can create 25 backup vaults per subscription. You can create upto 25 Recovery Services vaults per each supported region of Azure backup per subscription. If you need more vaults, then create a new subscription.
+## Gibt es eine Beschränkung hinsichtlich der Anzahl von Tresoren, die in einem Azure-Abonnement erstellt werden können? <br/>
+Ja. Sie können pro Abonnement für Sicherungstresor und Recovery Services-Tresor jeweils 25 Tresore erstellen (Stand: August 2016). Erstellen Sie ein neues Abonnement, wenn Sie weitere Tresore benötigen.
 
-## <a name="are-there-any-limits-on-the-number-of-servers/machines-that-can-be-registered-against-each-vault?-<br/>"></a>Are there any limits on the number of servers/machines that can be registered against each vault? <br/>
-Yes, you can register up to 50 machines per vault. For Azure IaaS virtual machines, limit is 200 VMs per vault. If you need to register more machines, create a new vault.
+## Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können? <br/>
+Ja. Sie können bis zu 50 Computer pro Tresor registrieren. Bei virtuellen Azure-IaaS-Computern liegt die Beschränkung bei 200 VMs pro Tresor. Wenn Sie weitere Computer registrieren müssen, erstellen Sie einen neuen Tresor.
 
-## <a name="how-do-i-register-my-server-to-another-datacenter?<br/>"></a>How do I register my server to another datacenter?<br/>
-Backup data is sent to the datacenter of the vault to which it is registered. The easiest way to change the datacenter is to uninstall the agent and reinstall the agent and register to a new vault that belongs to desired datacenter.
+## Wie registriere ich meinen Server bei einem anderen Datencenter?<br/>
+Die Sicherungsdaten werden an das Datencenter des Tresors gesendet, bei dem dieser registriert ist. Die einfachste Methode zum Ändern des Datencenters besteht darin, den Agent zu deinstallieren und neu zu installieren und den Server bei einem neuen Tresor zu registrieren, der zum gewünschten Datencenter gehört.
 
-## <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azure?<br/>"></a>What happens if I rename a Windows server that is backing up data to Azure?<br/>
-When you rename a server, all currently configured backups are stopped.
-You need to register the new name of the server with the Backup vault. When you create a new registration, the first backup operation is a full backup, and not an incremental backup. If you need to recover data that was previously backed up to the vault with the old server name, you can recover that data using the [**Another server**](backup-azure-restore-windows-server.md#recover-to-an-alternate-machine) option in the **Recover Data** wizard.
+## Was geschieht, wenn ich einen Windows-Server umbenenne, der Daten in Azure sichert?<br/>
+Wenn Sie einen Server umbenennen, werden alle derzeit konfigurierten Sicherungen angehalten. Sie müssen den neuen Namen des Servers beim Backup-Tresor registrieren. Wenn Sie eine neue Registrierung erstellen, ist der erste Sicherungsvorgang eine vollständige Sicherung und keine inkrementelle Sicherung. Falls Sie Daten wiederherstellen müssen, die bisher unter dem alten Servernamen im Tresor gesichert waren, können Sie hierfür im Assistenten **Daten wiederherstellen** die Option [**Anderer Server**](backup-azure-restore-windows-server.md#recover-to-an-alternate-machine) nutzen.
 
-## <a name="what-types-of-drives-can-i-backup-files-and-folders-from?-<br/>"></a>What types of drives can I backup files and folders from? <br/>
-The following set of drives/volumes can't get backup:
+## Von welchen Laufwerkstypen kann ich Dateien und Ordner sichern? <br/>
+Die folgenden Laufwerke/Volumes können nicht gesichert werden:
 
-- Removable Media: The drive must report as a fixed to be used a backup item source.
-- Read-only Volumes: The volume must be writable for the volume shadow copy service (VSS) to function.
-- Offline Volumes: The volume must be online for VSS to function.
-- Network share: The volume must be local to the server to be backed up using online backup.
-- Bitlocker protected volumes: The volume must be unlocked before the backup can occur.
-- File System Identification: NTFS is the only file system supported for this version of the online backup service.
+- Wechselmedien: Das Laufwerk muss als feststehendes Laufwerk gelten, um als Quelle für Backup-Elemente verwendet zu werden.
+- Schreibgeschützte Volumes: Das Volume muss beschreibbar sein, damit der Volumeschattenkopie-Dienst funktioniert.
+- Offlinevolumes: Das Volume muss online sein, damit der VSS funktioniert.
+- Netzwerkfreigabe: Das Volume muss sich lokal auf dem Server befinden, um mit der Onlinesicherung gesichert zu werden.
+- Mit BitLocker geschützte Volumes: Das Volume muss entsperrt werden, bevor die Sicherung durchgeführt werden kann.
+- Dateisystemidentifizierung: Für diese Version des Onlinesicherungsdiensts wird ausschließlich NTFS unterstützt.
 
-## <a name="what-file-and-folder-types-can-i-back-up-from-my-server?<br/>"></a>What file and folder types can I back up from my server?<br/>
-The following types are supported:
+## Welche Datei- und Ordnertypen können von meinem Server gesichert werden?<br/>
+Die folgenden Typen werden unterstützt:
 
-- Encrypted
-- Compressed
-- Sparse
-- Compressed + Sparse
-- Hard Links: Not supported, skipped
-- Reparse Point: Not supported, skipped
-- Encrypted + Compressed: Not supported, skipped
-- Encrypted + Sparse: Not supported, skipped
-- Compressed Stream: Not supported, skipped
-- Sparse Stream: Not supported, skipped
+- Verschlüsselt
+- Komprimiert
+- Platzsparend
+- Komprimiert und geringe Dichte
+- Feste Links: Nicht unterstützt, werden übersprungen
+- Analysepunkt: Nicht unterstützt, wird übersprungen
+- Verschlüsselt und komprimiert: Nicht unterstützt, wird übersprungen
+- Verschlüsselt und geringe Dichte: Nicht unterstützt, wird übersprungen
+- Komprimierter Stream: Nicht unterstützt, wird übersprungen
+- Stream mit geringer Dichte: Nicht unterstützt, wird übersprungen
 
-## <a name="what's-the-minimum-size-requirement-for-the-cache-folder?-<br/>"></a>What's the minimum size requirement for the cache folder? <br/>
-The size of the cache folder determines the amount of data that you are backing up. Your cache folder should be 5% of the space required for data storage.
+## Welche Mindestgröße gilt für den Cacheordner? <br/>
+Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern. Der Cacheordner sollte 5% des Speicherplatzes umfassen, der für die Datenspeicherung erforderlich ist.
 
-## <a name="if-my-organization-has-one-vault,-how-can-i-isolate-one-server's-data-from-another-server-when-restoring-data?<br/>"></a>If my organization has one vault, how can I isolate one server's data from another server when restoring data?<br/>
-All servers that are registered to the same vault can recover the data backed up by other servers *that use the same passphrase*. If you have servers whose backup data you want to isolate from other servers in your organization, use a designated passphrase for those servers. For example, human resources servers could use one encryption passphrase, accounting servers another, and storage servers a third.
+## Wie kann ich bei der Wiederherstellung von Daten die Daten eines Servers von einem anderen Server isolieren, wenn meine Organisation über einen Tresor verfügt?<br/>
+Alle für denselben Tresor registrierten Server können die Daten wiederherstellen, die von anderen Servern *mit derselben Passphrase* gesichert wurden. Wenn Sie Server verwenden, deren Sicherungsdaten Sie von anderen Servern Ihrer Organisation isolieren möchten, sollten Sie für diese Server eine speziell dafür vorgesehene Passphrase nutzen. So können Sie beispielsweise für die Server der Personalabteilung, für die Server der Buchhaltung und für die Speicherserver jeweils eine eigene Verschlüsselungspassphrase verwenden.
 
-## <a name="can-i-“migrate”-my-backup-data-or-vault-between-subscriptions?-<br/>"></a>Can I “migrate” my backup data or vault between subscriptions? <br/>
-No. The vault is created at a subscription level and cannot be reassigned to another subscription once it’s created.
+## Kann ich meine Sicherungsdaten oder meinen Sicherungstresor zwischen Abonnements „migrieren“? <br/>
+Nein. Der Tresor wird auf einer Abonnementebene erstellt und kann nach seiner Erstellung keinem anderen Abonnement zugewiesen werden.
 
-## <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication?-<br/>"></a>Does the Azure Backup Agent work on a server that uses Windows Server 2012 deduplication? <br/>
-Yes. The agent service converts the deduplicated data to normal data when it prepares the backup operation. It then optimizes the data for backup, encrypts the data, and then sends the encrypted data to the online backup service.
+## Funktioniert der Azure Backup-Agent auf einem Server, der die Deduplizierung von Windows Server 2012 verwendet? <br/>
+Ja. Der Agent-Dienst konvertiert die deduplizierten Daten bei der Vorbereitung des Sicherungsvorgangs in normale Daten. Anschließend optimiert er die Daten für die Sicherung, verschlüsselt sie und sendet die verschlüsselten Daten an den Onlinesicherungsdienst.
 
-## <a name="if-i-cancel-a-backup-job-once-it-has-started,-is-the-transferred-backup-data-deleted?-<br/>"></a>If I cancel a backup job once it has started, is the transferred backup data deleted? <br/>
-No. The backup vault stores the backed-up data that had been transferred up to the point of the cancellation. Azure Backup uses a checkpoint mechanism to occasionally add checkpoints to the backup data during the backup. Because there are checkpoints in the backup data, the next backup process can validate the integrity of the files. The next backup triggered would be incremental over the data that had been backed up previously. An incremental backup provides better utilization of bandwidth, so that you do not need to transfer the same data repeatedly.
+## Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche? <br/>
+Nein. Der Sicherungstresor speichert die gesicherten Daten, die bis zum Zeitpunkt des Abbruchs übertragen wurden. Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen. Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen. Die nächste ausgelöste Sicherung ist eine inkrementelle Sicherung, die auf dem vorherigen Sicherungsvorgang aufbaut. Eine inkrementelle Sicherung sorgt für eine bessere Nutzung der Bandbreite, da nicht mehrfach die gleichen Daten übertragen werden müssen.
 
-In case of Azure VM backup, once the job is canceled, transferred data is ignored and fresh backup transfers incremental data from previously successful backup job. 
+Im Fall einer Azure-VM-Sicherung werden übertragene Daten nach dem Abbruch des Auftrags ignoriert, und bei einer neuen Sicherung werden inkrementelle Daten aus dem vorherigen erfolgreichen Sicherungsauftrag übertragen.
 
-## <a name="why-am-i-seeing-the-warning-"azure-backups-have-not-been-configured-for-this-server"-even-though-i-had-scheduled-regular-backups-previously?-<br/>"></a>Why am I seeing the warning "Azure Backups have not been configured for this server" even though I had scheduled regular backups previously? <br/>
-This warning occurs when the backup schedule settings stored on the local server are not the same as the settings stored in the backup vault. When either the server or the settings have been recovered to a known good state, the backup schedules can lose synchronization. If you receive this warning, [reconfigure the backup policy](backup-azure-manage-windows-server.md) and then **Run Back Up Now** to resynchronize the local server with Azure.
+## Warum wird eine Warnung mit dem Hinweis angezeigt, dass für diesen Server keine Azure-Sicherungen konfiguriert wurden, obwohl ich zuvor regelmäßige Sicherungen geplant habe? <br/>
+Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherungszeitplaneinstellungen nicht den Einstellungen im Sicherungstresor entsprechen. Wenn für den Server oder die Einstellungen ein als funktionierend bekannter Zustand wiederhergestellt wurde, ist unter Umständen die Synchronisierung der Sicherungszeitpläne verloren gegangen. Wenn Sie diese Warnung erhalten, sollten Sie die [Sicherungsrichtlinie neu konfigurieren](backup-azure-manage-windows-server.md) und dann **Sicherung jetzt ausführen** verwenden, um den lokalen Server wieder mit Azure zu synchronisieren.
 
-## <a name="what-firewall-rules-should-be-configured-for-azure-backup?-<br/>"></a>What firewall rules should be configured for Azure Backup? <br/>
-For seamless protection of on-premises-to-Azure and workload-to-Azure data, it is recommended that you allow your firewall to communicate with the following URLs:
+## Welche Firewallregeln sollten für Azure Backup konfiguriert werden? <br/>
+Zur Erzielung eines nahtlosen Schutzes der Daten vom Typ „lokal zu Azure“ und „Workload zu Azure“ wird empfohlen, für die Firewall die Kommunikation mit den folgenden URLs zuzulassen:
 
 - www.msftncsi.com
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+- *.Microsoft.com
+- *.WindowsAzure.com
+- *.microsoftonline.com
+- *.windows.net
 
-##<a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension?-<br/>"></a>Can I install the Azure Backup agent on an Azure VM already backed by the Azure Backup service using the VM extension? <br/>
-Absolutely. Azure Backup provides VM-level backup for Azure VMs using the VM extension. You can install the Azure Backup agent on a Guest Windows OS to protect files and folders on that guest OS.
+##Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, die mithilfe der VM-Erweiterung bereits vom Azure Backup-Dienst gesichert wurde? <br/>
+Absolut. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit der VM-Erweiterung. Sie können den Azure Backup-Agent auf einem Windows-Gastbetriebssystem installieren, um Dateien und Ordner auf dem Gastbetriebssystem zu schützen.
 
-## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm?-<br/>"></a>Can I install the Azure Backup agent on an Azure VM to back up files and folders present on temporary storage provided by the Azure VM? <br/>
-You can install the Azure Backup agent on the Guest Windows OS and back up files and folders to temporary storage. However, please note that backups fail once temporary storage data is wiped out. Also, if the temporary storage data has been deleted, you can only restore to non-volatile storage.
+## Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, um Dateien und Ordner in temporärem Speicher zu schützen, der von der Azure-VM bereitgestellt wird? <br/>
+Sie können den Azure Backup-Agent auf dem Windows-Gastbetriebssystem installieren und Dateien und Ordner im temporären Speicher sichern. Beachten Sie aber, dass die Sicherungen nicht erfolgreich durchgeführt werden, nachdem die temporären Speicherdaten entfernt wurden. Wenn die temporären Speicherdaten gelöscht wurden, ist außerdem nur die Wiederherstellung in einem nicht volatilen Speicher möglich.
 
-## <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders.-can-i-now-install-scdpm-to-work-with-azure-backup-agent-to-protect-on-premises-application/vm-workloads-to-azure?-<br/>"></a>I have installed Azure Backup agent to protect my files and folders. Can I now install SCDPM to work with Azure Backup agent to protect on-premises application/VM workloads to Azure? <br/>
-To use Azure Backup with SCDPM, it is advised to install SCDPM first and only then to install Azure Backup agent. This ensures seamless integration of the Azure Backup agent with SCDPM and allows protecting files/folders, application-workloads and VMs to Azure, directly from the management console of SCDPM. Installing SCDPM after installing Azure Backup agent for purposes mentioned above is not advised or supported.
+## Ich habe zum Schutz meiner Dateien und Ordner den Azure Backup-Agent installiert. Kann ich jetzt SCDPM installieren und zusammen mit dem Azure Backup-Agent verwenden, um lokale Anwendungen/VM-Workloads mit Azure zu schützen? <br/>
+Wenn Sie Azure Backup zusammen mit SCDPM verwenden möchten, empfiehlt es sich, zuerst SCDPM und erst danach den Azure Backup-Agent zu installieren. Dadurch wird die nahtlose Integration von Azure Backup-Agent und SCDPM sichergestellt und der Schutz von Dateien/Ordnern, Anwendungsworkloads und VMs mit Azure direkt über die Verwaltungskonsole von SCDPM ermöglicht. Installieren Sie SCDPM für die oben genannten Zwecke nicht nach dem Azure Backup-Agent. Dies wird weder empfohlen noch unterstützt.
 
-## <a name="what-is-the-length-of-file-path-that-can-be-specified-as-part-of-azure-backup-policy-using-azure-backup-agent?-<br/>"></a>What is the length of file path that can be specified as part of Azure Backup policy using Azure Backup agent? <br/>  
-Azure Backup agent relies on NTFS. The [filepath length specification is limited by Windows API](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). In case of backing up files with file path length greater than the ones specified by Windows API, customers can choose to backup the parent folder or the disk drive of backup files.  
+## Wie lang darf der Dateipfad sein, der im Rahmen der Azure Backup-Richtlinie mit dem Azure Backup-Agent angegeben werden kann? <br/>  
+Der Azure Backup-Agent basiert auf NTFS. Die [Angabe der Dateipfadlänge ist durch die Windows-API beschränkt](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Wenn die Dateipfade von gesicherten Dateien länger als die Vorgabe der Windows-API sind, können Kunden auch den übergeordneten Ordner oder den Datenträger mit den Sicherungsdateien für die Sicherung angeben.
 
-## <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent?-<br>"></a>What characters are allowed in file path of Azure Backup policy using Azure Backup agent? <br>  
- Azure Backup agent relies on NTFS. It enables [NTFS supported characters](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) as part of file specification.  
+## Welche Zeichen sind im Dateipfad der Azure Backup-Richtlinie mit dem Azure Backup-Agent zulässig? <br>  
+ Der Azure Backup-Agent basiert auf NTFS. Für die Angabe der Datei können [von NTFS unterstützte Zeichen](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) verwendet werden.
 
-## <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-(bmr)-backup-for-a-physical-server?-<br/>"></a>Can I use Azure Backup Server to create a Bare Metal Recovery (BMR) backup for a physical server? <br/>
-Yes.
+## Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen? <br/>
+Ja.
 
-## <a name="can-i-configure-the-backup-service-to-send-mail-if-a-backup-job-fails?-<br/>"></a>Can I configure the Backup service to send mail if a backup job fails? <br/>
-Yes, the Backup service has several event-based alerts that can be used with a PowerShell script. For a full description, see [Alert notifications](backup-azure-manage-vms.md#alert-notifications)
+## Kann ich den Backup-Dienst so konfigurieren, dass eine E-Mail gesendet wird, wenn bei einem Sicherungsauftrag ein Fehler auftritt? <br/>
+Ja. Der Backup-Dienst verfügt über mehrere ereignisbasierte Warnungen, die mit einem PowerShell-Skript verwendet werden können. Eine vollständige Beschreibung finden Sie unter [Warnungsbenachrichtigungen](backup-azure-manage-vms.md#alert-notifications).
 
-## <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up?-<br/>"></a>Is there a limit on the size of each data source being backed up? <br/>
-While at vault level there is no limit on the amount of data you can backup, Azure Backup does impose a restriction(for all practical purposes, these limits are very high) on maximum size of data source. As of August 2015, the maximum size data source for the supported operating systems is:
+## Gibt es eine Größenbeschränkung für die einzelnen Datenquellen, die gesichert werden? <br/>
+Obwohl die Datenmenge, die Sie sichern können, auf Tresorebene nicht beschränkt ist, gilt in Azure Backup eine Beschränkung für die maximale Größe der Datenquelle (diese Grenzwerte sind aus praktischen Gründen sehr hoch). Ab August 2015 beträgt die maximale Größe der Datenquelle für die unterstützten Betriebssysteme:
 
-|S.No | Operating system |  Maximum size of data source |
+|Nr. |	Betriebssystem |	Maximale Größe der Datenquelle |
 | :-------------: |:-------------| :-----|
-|1| Windows Server 2012 or above| 54400 GB|
-|2| Windows 8 or above| 54400 GB|
-|3| Windows Server 2008, Windows Server 2008 R2 | 1700 GB|
-|4| Windows 7 | 1700 GB|
+|1| Windows Server 2012 oder höher| 54\.400 GB|
+|2| Windows 8 oder höher| 54\.400 GB|
+|3| Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB|
+|4| Windows 7 | 1\.700 GB|
 
-The following table explains how each data source size is determined.
+In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengrößen bestimmt werden.
 
-|   Datasource  |   Details |
+|	Datenquelle |	Details |
 | :-------------: |:-------------|
-|Volume |The amount of data being backed up from single volume of a server or client machine|
-|Hyper-V virtual machine | Sum of data of all the VHDs of the virtual machine being backed up|
-|Microsoft SQL Server database | Size of single SQL database size being backed up |
-|Microsoft SharePoint |Sum of the content and configuration databases within a SharePoint farm being backed up|
-|Microsoft Exchange |Sum of all Exchange databases in an Exchange server being backed up|
-|BMR/System State |Each individual copy of BMR or system state of the machine being backed up|
+|Volume |Die Datenmenge, die von einem Volume eines Server- oder Clientcomputers gesichert wird|
+|Virtueller Hyper-V-Computer | Summe der Daten aller virtuellen Festplatten des zu sichernden virtuellen Computers|
+|Microsoft SQL Server-Datenbank | Größe einer einzelnen zu sichernden SQL-Datenbank |
+|Microsoft SharePoint |Summe der Inhalts- und Konfigurationsdatenbanken in einer zu sichernden SharePoint-Farm|
+|Microsoft Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers|
+|BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers|
 
-## <a name="are-there-limits-on-the-number-of-times-a-backup-job-can-be-scheduled-per-day?<br/>"></a>Are there limits on the number of times a backup job can be scheduled per day?<br/>
-Yes, you can run backup jobs on Windows Server or Windows client up to three times/day. You can run backup jobs on System Center DPM up to twice a day. You can run a backup job for IaaS VMs once a day.
+## Gibt es eine Begrenzung dafür, wie häufig ein Sicherungsauftrag pro Tag geplant werden kann?<br/>
+Ja. Sie können Sicherungsaufträge unter Windows Server oder auf einem Windows-Client bis zu dreimal pro Tag ausführen. Für System Center DPM können Sie Sicherungsaufträge bis zu zweimal pro Tag ausführen. Für IaaS-VMs können Sie einen Sicherungsauftrag einmal pro Tag ausführen.
 
-## <a name="is-there-a-difference-between-the-scheduling-policy-for-dpm-and-windows-server-(i.e.-on-windows-server-without-dpm)?-<br/>"></a>Is there a difference between the scheduling policy for DPM and Windows Server (i.e. on Windows Server without DPM)? <br/>
-Yes. Using DPM, you can specify daily, weekly, monthly, and yearly schedules. Windows Server (without DPM) allows you to specify only daily and weekly schedules.
+## Gibt es einen Unterschied zwischen der Planungsrichtlinie für DPM und Windows Server (also unter Windows Server ohne DPM)? <br/>
+Ja. Mit DPM können Sie tägliche, wöchentliche, monatliche und jährliche Zeitpläne angeben. Für Windows Server (ohne DPM) können Sie nur tägliche und wöchentliche Zeitpläne angeben.
 
-## <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-server/client-(i.e.-on-windows-server-without-dpm)?<br/>"></a>Is there a difference between the retention policy for DPM and Windows Server/client (i.e. on Windows Server without DPM)?<br/>
-No, both DPM and Windows Server/client have daily, weekly, monthly, and yearly retention policies.
+## Gibt es einen Unterschied zwischen der Aufbewahrungsrichtlinie für DPM und Windows Server bzw. Windows-Client (also unter Windows Server ohne DPM)?<br/>
+Nein. Sowohl für DPM als auch für Windows Server bzw. Windows-Clients gelten tägliche, wöchentliche, monatliche und jährliche Aufbewahrungsrichtlinien.
 
-## <a name="can-i-configure-my-retention-policies-selectively-–-i.e.-configure-weekly-and-daily-but-not-yearly-and-monthly?<br/>"></a>Can I configure my retention policies selectively – i.e. configure weekly and daily but not yearly and monthly?<br/>
-Yes, the Azure Backup retention structure allows you to have full flexibility in defining the retention policy as per your requirements.
+## Kann ich meine Aufbewahrungsrichtlinien selektiv konfigurieren – d.h. wöchentlich und täglich, jedoch nicht jährlich und monatlich?<br/>
+Ja, durch die Struktur der Azure Backup-Aufbewahrungsrichtlinie können Sie die Aufbewahrungsrichtlinie entsprechend Ihren Anforderungen flexibel definieren.
 
-## <a name="can-i-“schedule-a-backup”-at-6pm-and-specify-“retention-policies”-at-a-different-time?<br/>"></a>Can I “schedule a backup” at 6pm and specify “retention policies” at a different time?<br/>
-No. Retention policies can only be applied on backup points. In the following image, the retention policy is specified for backups taken at 12am and 6pm. <br/>
+## Kann ich eine Sicherung um 18:00 Uhr planen und Aufbewahrungsrichtlinien für einen anderen Zeitpunkt festlegen?<br/>
+Nein. Aufbewahrungsrichtlinien können nur bei den Sicherungspunkten angewendet werden. In der folgenden Abbildung ist die Aufbewahrungsrichtlinie für Sicherungen angegeben, die um 24:00 und 18:00 Uhr erstellt werden. <br/>
 
-![Schedule Backup and Retention](./media/backup-azure-backup-faq/Schedule.png)
-<br/>
+![Planen von Sicherung und Aufbewahrung](./media/backup-azure-backup-faq/Schedule.png) <br/>
 
-## <a name="is-an-incremental-copy-transferred-for-the-retention-policies-scheduled?-<br/>"></a>Is an incremental copy transferred for the retention policies scheduled? <br/>
-No, the incremental copy is sent based on the time mentioned in the backup schedule page. The points that can be retained are determined based on the retention policy.
+## Wird für die geplanten Aufbewahrungsrichtlinien eine inkrementelle Kopie übertragen? <br/>
+Nein, die inkrementelle Kopie wird dem Zeitpunkt entsprechend gesendet, der auf der Seite für den Sicherungszeitplan angegeben ist. Die Punkte, die aufbewahrt werden können, werden gemäß der Aufbewahrungsrichtlinie ermittelt.
 
-## <a name="if-a-backup-is-retained-for-a-long-duration,-does-it-take-more-time-to-recover-an-older-data-point?-<br/>"></a>If a backup is retained for a long duration, does it take more time to recover an older data point? <br/>
- No – the time to recover the oldest or the newest point is the same. Each recovery point behaves like a full point.
+## Dauert die Wiederherstellung eines älteren Datenpunkts länger, wenn eine Sicherung lange Zeit aufbewahrt wird? <br/>
+ Nein. Die Dauer zum Wiederherstellen des ältesten oder neuesten Punkts ist gleich. Jeder Wiederherstellungspunkt verhält sich wie ein vollständiger Punkt.
 
-## <a name="if-each-recovery-point-is-like-a-full-point,-does-it-impact-the-total-billable-backup-storage?<br/>"></a>If each recovery point is like a full point, does it impact the total billable backup storage?<br/>
-Typical long-term retention point products store backup data as full points. The full points are storage *inefficient* but are easier and faster to restore. Incremental copies are storage *efficient* but require you to restore a chain of data, which impacts your recovery time. Azure Backup storage architecture gives you the best of both worlds by optimally storing data for fast restores and incurring low storage costs. This data storage approach ensures that your ingress and egress bandwidth is used efficiently. Both the amount of data storage and the time needed to recover the data, is kept to a minimum. Learn more on how [incremental backups](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/) save are efficient. 
+## Wenn jeder Wiederherstellungspunkt sich wie ein vollständiger Punkt verhält, wie wirkt sich dies auf den gesamten abrechenbaren Sicherungsspeicher aus?<br/>
+Bei typischen Produkten für die langfristige Aufbewahrung werden Sicherungsdaten als vollständige Punkte gespeichert. Die vollständigen Punkte sind im Hinblick auf den Speicher *ineffizient*, aber einfacher und schneller wiederherzustellen. Inkrementelle Kopien sind speicher*effizient*. Allerdings müssen Sie eine Datenkette wiederherstellen, was sich auf die Wiederherstellungszeit auswirkt. Die Speicherarchitektur von Azure Backup bietet Ihnen die Vorteile beider Ansätze, indem die Daten optimal zur schnellen Wiederherstellung und zu geringen Speicherkosten gespeichert werden. Mit diesem Ansatz der Datenspeicherung wird sichergestellt, dass die Eingangs- und Ausgangsbandbreite effizient genutzt wird. So werden sowohl der Umfang der Datenspeicherung als auch die benötigte Zeit für die Wiederherstellung der Daten möglichst gering gehalten. Erfahren Sie mehr über die Effizienz von [inkrementellen Sicherungen](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
 
-## <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created?<br/>"></a>Is there a limit on the number of recovery points that can be created?<br/>
-No. We have eliminated limits on recovery points. You can create as many recovery points as you desire.
+## Gibt es eine Beschränkung für die Anzahl von Wiederherstellungspunkten, die erstellt werden können?<br/>
+Nein. Wir haben eine Beschränkung für Wiederherstellungspunkte ausgeschlossen. Sie können so viele Wiederherstellungspunkte wie gewünscht erstellen.
 
-## <a name="why-is-the-amount-of-data-transferred-in-backup-not-equal-to-the-amount-of-data-i-backed-up?<br/>"></a>Why is the amount of data transferred in backup not equal to the amount of data I backed up?<br/>
- All the data that is backed up from Azure Backup Agent or SCDPM or Azure Backup Server, is compressed and encrypted before being transferred. Once the compression and encryption is applied, the data in the backup vault is 30-40% smaller.
+## Warum entspricht die Menge der in der Sicherung übertragenen Daten nicht der Menge der gesicherten Daten?<br/>
+ Alle Daten, die vom Azure Backup-Agent, von SCDPM oder Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Sicherungstresor 30 bis 40% kleiner.
 
-## <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-service?<br/>"></a>Is there a way to adjust the amount of bandwidth used by the Backup service?<br/>
- Yes, use the **Change Properties** option in the Backup Agent to adjust bandwidth. Adjust the amount of bandwidth and the times when you use that bandwidth. See [Network Throttling](../backup-configure-vault.md#enable-network-throttling), for more information.
+## Gibt es eine Möglichkeit, die vom Backup-Dienst genutzte Bandbreite anzupassen?<br/>
+ Ja. Verwenden Sie die Option **Eigenschaften ändern** im Backup-Agent, um die Bandbreite anzupassen. Passen Sie die Bandbreitenmenge und die Zeiten an, zu denen Sie die Bandbreite nutzen. Weitere Informationen finden Sie unter [Netzwerkdrosselung](../backup-configure-vault.md#enable-network-throttling).
 
-## <a name="my-internet-bandwidth-is-limited-for-the-amount-of-data-i-need-to-back-up.-is-there-a-way-i-can-move-data-to-a-certain-location-with-a-large-network-pipe-and-push-that-data-into-azure?-<br/>"></a>My internet bandwidth is limited for the amount of data I need to back up. Is there a way I can move data to a certain location with a large network pipe and push that data into Azure? <br/>
-You can back up data into Azure via the standard online backup process, or you can use the Azure Import/Export service to transfer data to blob storage in Azure. There are no additional ways of getting backup date into Azure storage. For information on how to use the Azure Import/Export service with Azure Backup, please see the [Offline Backup workflow](backup-azure-backup-import-export.md) article.
+## Meine Internetbandbreite ist im Hinblick auf die zu sichernden Daten begrenzt. Gibt es eine Möglichkeit, die Daten an einen bestimmten Speicherort mit einer großen Netzwerk-Pipe zu verschieben und diese Daten dann in Azure zu übertragen? <br/>
+Sie können Daten in Azure mit dem standardmäßigen Prozess für die Onlinesicherung sichern, oder Sie können den Azure-Import/Export-Dienst verwenden, um Daten an den Blobspeicher in Azure zu übertragen. Es gibt keine weiteren Möglichkeiten, um Sicherungsdaten in den Azure-Speicher zu verschieben. Informationen zur Verwendung des Azure-Import/Export-Diensts mit Azure Backup finden Sie im Artikel [Workflow zur Offlinesicherung](backup-azure-backup-import-export.md).
 
-## <a name="how-many-recoveries-can-i-perform-on-the-data-that-is-backed-up-to-azure?<br/>"></a>How many recoveries can I perform on the data that is backed up to Azure?<br/>
-There is no limit on the number of recoveries from Azure Backup.
+## Wie viele Wiederherstellungen kann ich für die Daten ausführen, die auf Azure gesichert werden?<br/>
+Es gibt keine Beschränkung für die Anzahl der Wiederherstellungen aus Azure Backup.
 
-## <a name="do-i-have-to-pay-for-the-egress-traffic-from-azure-data-center-during-recoveries?<br/>"></a>Do I have to pay for the egress traffic from Azure data center during recoveries?<br/>
- No. Your recoveries are free and you are not charged for the egress traffic.
+## Muss ich bei Wiederherstellungen für ausgehenden Datenverkehr aus dem Azure-Rechenzentrum bezahlen?<br/>
+ Nein. Ihre Wiederherstellungen sind kostenlos, und der ausgehende Datenverkehr wird nicht in Rechnung gestellt.
 
-## <a name="is-the-data-sent-to-azure-encrypted?-<br/>"></a>Is the data sent to Azure encrypted? <br/>
-Yes. Data is encrypted on the on-premises server/client/SCDPM machine using AES256 and the data is sent over a secure HTTPS link.
+## Werden die Daten verschlüsselt an Azure gesendet? <br/>
+Ja. Daten werden auf dem lokalen Server-/Client-/SCDPM-Computer mit AES256 verschlüsselt, und die Daten werden über eine sichere HTTPS-Verbindung gesendet.
 
-## <a name="is-the-backup-data-on-azure-encrypted-as-well?<br/>"></a>Is the backup data on Azure encrypted as well?<br/>
- Yes. The data sent to Azure remains encrypted (at rest). Microsoft does not decrypt the backup data at any point. For Azure VM backup, Azure Backup relies on encryption of the virtual machine i.e. if your VM is encrypted using Azure Disk Encryption or some other encryption technology, Azure Backup uses that encryption to secure your data. 
+## Werden die Sicherungsdaten auf Azure ebenfalls verschlüsselt?<br/>
+ Ja. Die an Azure gesendeten Daten bleiben verschlüsselt (im Ruhezustand). Die Sicherungsdaten werden zu keinem Zeitpunkt von Microsoft entschlüsselt. Für eine Azure-VM-Sicherung nutzt Azure Backup die Verschlüsselung des virtuellen Computers. Wenn Ihre VM z.B. mit Azure Disk Encryption oder einer anderen Verschlüsselungstechnologie verschlüsselt wird, schützt Azure Backup Ihre Daten mit dieser Verschlüsselung.
 
-## <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data?-<br/>"></a>What is the minimum length of encryption key used to encrypt backup data? <br/>
- The encryption key should be at least 16 characters.
+## Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein? <br/>
+ Der Verschlüsselungsschlüssel sollte mindestens 16 Zeichen lang sein.
 
-## <a name="what-happens-if-i-misplace-the-encryption-key?-can-i-recover-the-data-(or)-can-microsoft-recover-the-data?-<br/>"></a>What happens if I misplace the encryption key? Can I recover the data (or) can Microsoft recover the data? <br/>
-The key used to encrypt the backup data is present only on the customer premises. Microsoft does not maintain a copy in Azure and does not have any access to the key. If the customer misplaces the key, Microsoft cannot recover the backup data.
+## Was geschieht, wenn ich den Schlüssel verlege? Kann ich die Daten wiederherstellen, oder kann Microsoft die Daten wiederherstellen? <br/>
+Der Schlüssel zum Verschlüsseln der Sicherungsdaten ist nur am Standort des Kunden vorhanden. Microsoft behält keine Kopie in Azure und hat keinen Zugriff auf den Schlüssel. Wenn der Kunde den Schlüssel verlegt, kann Microsoft die gesicherten Daten nicht wiederherstellen.
 
-## <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agent?<br/>"></a>How do I change the cache location specified for the Azure Backup agent?<br/>
- Go sequentially through the bullet list below to change the cache location.
-- Stop the Backup engine by executing the following command in an elevated command prompt:
+## Wie kann ich den Cachespeicherort für den Azure Backup-Agent ändern?<br/>
+ Gehen Sie nacheinander die folgende Aufzählung durch, um den Cachespeicherort zu ändern.
+- Beenden Sie das Backup-Modul, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
 
   ```PS C:\> Net stop obengine```
 
-- Do not move the files. Instead, copy the cache space folder to a different drive with sufficient space. The original cache space can be removed after confirming the backups are working with the new cache space.
+- Verschieben Sie die Dateien nicht. Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz. Der ursprüngliche Cachespeicher kann entfernt werden, nachdem bestätigt wurde, dass die Sicherungen mit dem neuen Cachespeicher funktionieren.
 
-- Update the following registry entries with the path to the new cache space folder.<br/>
+- Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.<br/>
 
-|Registry path | Registry Key | Value |
+|Registrierungspfad | Registrierungsschlüssel | Wert |
 | ------ | ------- | ------|
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | *New cache folder location* |
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | *New cache folder location* |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | *Neuer Speicherort des Cacheordners* |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | *Neuer Speicherort des Cacheordners* |
 
-- Restart the Backup engine by executing the following command in an elevated command prompt:
+- Starten Sie das Backup-Modul neu, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
 
   ```PS C:\> Net start obengine```
 
-  Once the backup creation is successfully completed in the new cache location, you can remove the original cache folder.
+  Nachdem die Erstellung der Sicherung am neuen Cachespeicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
 
-## <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expected?<br/>"></a>Where can I put the cache-folder for the Azure Backup Agent to work as expected?<br/>
-The following locations for the cache-folder are not recommended:
+## Wo kann ich den Cacheordner platzieren, damit der Azure Backup-Agent erwartungsgemäß funktioniert?<br/>
+Folgende Speicherorte werden für den Cacheordner nicht empfohlen:
 
-- Network share or Removable Media: The cache-folder must be local to the server that needs backing up using online backup. Network locations or removable media like USB drives are not supported.
-- Offline Volumes: The cache-folder must be online for expected backup using Azure Backup Agent.
+- Netzwerkfreigabe oder Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, die mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt.
+- Offlinevolumes: Der Cacheordner muss für die erwartete Sicherung über den Azure Backup-Agent online sein.
 
-## <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supported?<br/>"></a>Are there any attributes of the cache-folder that are not supported?<br/>
- The following attributes or their combinations are not supported for the cache-folder:
+## Gibt es Cacheordnerattribute, die nicht unterstützt werden?<br/>
+ Die folgenden Attribute oder Kombinationen dieser Attribute werden für den Cacheordner nicht unterstützt:
 
-- Encrypted
-- De-duplicated
-- Compressed
-- Sparse
-- Reparse-Point
+- Verschlüsselt
+- Dedupliziert
+- Komprimiert
+- Mit geringer Dichte
+- Analysepunkt
 
-It is recommended that neither the cache-folder nor the metadata VHD has the attributes above for expected functioning of the Azure Backup agent.
+Damit der Azure Backup-Agent erwartungsgemäß funktioniert, dürfen weder der Cacheordner noch die Metadaten-VHD die oben angegebenen Attribute besitzen.
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

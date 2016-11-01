@@ -1,102 +1,99 @@
 <properties 
-    pageTitle="Error During Authentication Detection" 
-    description="The active directory connection wizard detected an incompatible authentication type" 
-    services="active-directory" 
-    documentationCenter="" 
-    authors="TomArcher" 
-    manager="douge" 
-    editor=""/>
+	pageTitle="Fehler während der Authentifizierungserkennung" 
+	description="Der Verbindungs-Assistent für Active Directory hat einen inkompatiblen Authentifizierungstyp erkannt." 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="TomArcher" 
+	manager="douge" 
+	editor=""/>
   
 <tags 
-    ms.service="active-directory" 
-    ms.workload="web" 
-    ms.tgt_pltfrm="vs-getting-started" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="tarcher"/>
+	ms.service="active-directory" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vs-getting-started" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/15/2016" 
+	ms.author="tarcher"/>
 
+# Fehler während der Authentifizierungserkennung
 
-# <a name="error-during-authentication-detection"></a>Error During Authentication Detection
+Beim Erkennen des vorherigen Authentifizierungscodes hat der Assistent einen nicht kompatiblen Authentifizierungstyp erkannt.
 
-While detecting previous authentication code, the wizard detected an incompatible authentication type.   
+##Was wird überprüft?
 
-##<a name="what-is-being-checked?"></a>What is being checked?
+**Hinweis:** Um vorherigen Authentifizierungscode in einem Projekt ordnungsgemäß erkennen zu können, muss das Projekt erstellt werden. Wenn dieser Fehler auftritt und in Ihrem Projekt kein vorheriger Authentifizierungscode enthalten ist, erstellen Sie Ihr Projekt neu, und versuchen Sie es nochmals.
 
-**Note:** In order to correctly detect previous authentication code in a project, the project must be built.  If you encountered this error and you don't have a previous authentication code in your project, rebuild and try again.
+###Projekttypen
 
-###<a name="project-types"></a>Project Types
+Der Assistent überprüft, welche Art von Projekt Sie entwickeln, um die richtige Authentifizierungslogik in das Projekt einzufügen. Wenn ein Controller im Projekt von `ApiController` abgeleitet wird, gilt das Projekt als WebAPI-Projekt. Wenn alle Controller im Projekt von `MVC.Controller` abgeleitet werden, gilt das Projekt als MVC-Projekt. Alles andere wird vom Assistenten nicht unterstützt. WebForms-Projekte werden derzeit nicht unterstützt.
 
-The wizard checks which type of project you’re developing so it can inject the right authentication logic into the project.  If there is any controller that derives from `ApiController` in the project, the project will be considered a WebAPI project.  If there are only controllers that derive from `MVC.Controller` in the project, the project will be considered an MVC project.  Anything else is not supported by the wizard.  WebForms projects are not currently supported.
+###Kompatibler Authentifizierungscode
 
-###<a name="compatible-authentication-code"></a>Compatible Authentication Code
+Der Assistent überprüft auch Authentifizierungseinstellungen, die zuvor mit dem Assistenten konfiguriert wurden oder mit dem Assistenten kompatibel sind. Wenn alle Einstellungen vorhanden sind, gilt dies als eintrittsinvarianter Fall, und der Assistent wird geöffnet und zeigt die Einstellungen an. Wenn nur einige der Einstellungen vorhanden sind, wird es als Fehlerfall betrachtet.
 
-The wizard also checks for authentication settings that have been previously configured with the wizard or are compatible with the wizard.  If all of the settings are present, it is considered a re-entrant case and the wizard will open and display the settings.  If only some of the settings are present, it is considered an error case.
+In einem MVC-Projekt überprüft der Assistent die folgenden Einstellungen, die aus der vorherigen Verwendung des Assistenten resultieren:
 
-In an MVC project, the wizard checks for any of the following settings, which result from previous use of the wizard:
+	<add key="ida:ClientId" value="" />
+	<add key="ida:Tenant" value="" />
+	<add key="ida:AADInstance" value="" />
+	<add key="ida:PostLogoutRedirectUri" value="" />
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:AADInstance" value="" />
-    <add key="ida:PostLogoutRedirectUri" value="" />
+Außerdem überprüft der Assistent die folgenden Einstellungen in einem Web-API-Projekt, die aus der vorherigen Verwendung des Assistenten resultieren:
 
-In addition, the wizard checks for any of the following settings in a Web API project, which result from previous use of the wizard:
+	<add key="ida:ClientId" value="" />
+	<add key="ida:Tenant" value="" />
+	<add key="ida:Audience" value="" />
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:Audience" value="" />
+###Nicht kompatibler Authentifizierungscode
 
-###<a name="incompatible-authentication-code"></a>Incompatible Authentication Code
+Der Assistent versucht schließlich, Versionen von Authentifizierungscode zu erkennen, die mit früheren Versionen von Visual Studio konfiguriert wurden. Wenn Sie diesen Fehler erhalten, ist ein nicht kompatibler Authentifizierungstyp in Ihrem Projekt vorhanden. Der Assistent erkennt die folgenden Authentifizierungstypen aus früheren Versionen von Visual Studio:
 
-Finally, the wizard attempts to detect versions of authentication code that have been configured with previous versions of Visual Studio. If you received this error, it means your project contains an incompatible authentication type. The wizard detects the following types of authentication from previous versions of Visual Studio:
-
-* Windows Authentication 
-* Individual User Accounts 
-* Organizational Accounts 
+* Windows-Authentifizierung
+* Einzelne Benutzerkonten
+* Organisationskonten
  
 
-To detect Windows Authentication in an MVC project, the wizard looks for the `authentication` element from your **web.config** file.
+Zum Erkennen der Windows-Authentifizierung in einem MVC-Projekt sucht der Assistent nach dem `authentication`-Element aus Ihrer Datei **web.config**.
 
 <pre>
-    &lt;configuration&gt;
-        &lt;system.web&gt;
-            <span style="background-color: yellow">&lt;authentication mode="Windows" /&gt;</span>
-        &lt;/system.web&gt;
-    &lt;/configuration&gt;
+	&lt;configuration>
+	    &lt;system.web>
+	        <span style="background-color: yellow">&lt;authentication mode="Windows" /></span>
+	    &lt;/system.web>
+	&lt;/configuration>
 </pre>
 
-To detect Windows Authentication in a Web API project, the wizard looks for the `IISExpressWindowsAuthentication` element from your project's **.csproj** file:
+Zum Erkennen der Windows-Authentifizierung in einem Web-API-Projekt sucht der Assistent nach dem `IISExpressWindowsAuthentication`-Element aus der **CSPROJ**-Datei Ihres Projekts:
 
 <pre>
-    &lt;Project&gt;
-        &lt;PropertyGroup&gt;
-            <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication&gt;enabled&lt;/IISExpressWindowsAuthentication&gt;</span>
-        &lt;/PropertyGroup> &lt;/Project&gt;
+	&lt;Project>
+	    &lt;PropertyGroup>
+	        <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication>enabled&lt;/IISExpressWindowsAuthentication></span>
+	    &lt;/PropertyGroup>
+	&lt;/Project>
 </pre>
 
-To detect Individual User Accounts authentication, the wizard looks for the package element from your **Packages.config** file.
+Zum Erkennen der Authentifizierung einzelner Benutzerkonten sucht der Assistent nach dem Paketelement aus Ihrer Datei **Packages.config**.
 
 <pre>
-    &lt;packages&gt;
-        <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /&gt;</span>
-    &lt;/packages&gt;
+	&lt;packages>
+	    <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+	&lt;/packages>
 </pre>
 
-To detect an old form of Organizational Account authentication, the wizard looks for the following element from **web.config**:
+Zum Erkennen der alten Form von Organisationskontoauthentifizierung sucht der Assistent nach dem folgenden Element aus der Datei **web.config**:
 
 <pre>
-    &lt;configuration&gt;
-        &lt;appSettings&gt;
-            <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /&gt;</span>
-        &lt;/appSettings&gt;
-    &lt;/configuration&gt;
+	&lt;configuration>
+	    &lt;appSettings>
+	        <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /></span>
+	    &lt;/appSettings>
+	&lt;/configuration>
 </pre>
 
-To change the authentication type, remove the incompatible authentication type and run the wizard again.
+Wenn Sie den Authentifizierungstyp ändern möchten, entfernen Sie den inkompatiblen Authentifizierungstyp, und führen Sie den Assistenten dann erneut aus.
 
-For more information, see [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md).
+Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

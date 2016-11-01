@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Create a record set and records for a DNS zone using PowerShell | Microsoft Azure"
-   description="How to create host records for Azure DNS.Setting up record sets and records using PowerShell"
+   pageTitle="Erstellen eines Ressourceneintragssatzes und von Einträgen für eine DNS-Zone mithilfe von PowerShell | Microsoft Azure"
+   description="Erstellen von Hosteinträgen für Azure DNS. Einrichten von Datensatzgruppen und Einträgen mithilfe von PowerShell"
    services="dns"
    documentationCenter="na"
-   authors="sdwheeler"
+   authors="cherylmc"
    manager="carmonm"
    editor=""/>
 
@@ -14,140 +14,135 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="08/16/2016"
-   ms.author="sewhee"/>
+   ms.author="cherylmc"/>
 
 
 
-
-# <a name="create-dns-record-sets-and-records-by-using-powershell"></a>Create DNS record sets and records by using PowerShell
+# Erstellen von DNS-Ressourceneintragssätzen und Ressourceneinträgen mit PowerShell
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](dns-getstarted-create-recordset-portal.md)
+- [Azure-Portal](dns-getstarted-create-recordset-portal.md)
 - [PowerShell](dns-getstarted-create-recordset.md)
-- [Azure CLI](dns-getstarted-create-recordset-cli.md)
+- [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
 
-This article walks you through the process of creating records and records sets by using Windows PowerShell. After creating your DNS zone, you add the DNS records for your domain. To do this, you first need to understand DNS records and record sets.
+Dieser Artikel beschreibt das Erstellen von Ressourceneinträgen und Ressourceneintragssätzen mit Windows PowerShell. Nach dem Erstellen der DNS-Zone fügen Sie die DNS-Ressourceneinträge für Ihre Domäne hinzu. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
 
 [AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## <a name="verify-that-you-have-the-latest-version-of-powershell"></a>Verify that you have the latest version of PowerShell
+## Stellen Sie sicher, dass Sie über die neueste Version von PowerShell verfügen.
 
-Verify that you have installed the latest version of the Azure Resource Manager PowerShell cmdlets. See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for more information about installing the PowerShell cmdlets.
+Stellen Sie sicher, dass Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager installiert haben. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-## <a name="create-a-record-set-and-record"></a>Create a record set and record
+## Erstellen eines Ressourceneintragssatzes und eines Ressourceneintrags
 
-This section describes how to create a record set and record.
-
-
-### <a name="1.-connect-to-your-subscription"></a>1. Connect to your subscription
-
-Open your PowerShell console and connect to your account. Use the following sample to help you connect:
-
-    Login-AzureRmAccount
-
-Check the subscriptions for the account.
-
-    Get-AzureRmSubscription
-
-Specify the subscription that you want to use.
-
-    Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-
-For more information about working with PowerShell, see [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md).
+In diesem Abschnitt wird beschrieben, wie Sie einen Ressourceneintragssatz sowie einen Ressourceneintrag erstellen.
 
 
-### <a name="2.-create-a-record-set"></a>2. Create a record set
+### 1\. Verbinden mit Ihrem Abonnement
 
-You create record sets by using the `New-AzureRmDnsRecordSet` cmdlet. When creating a record set, you need to specify the record set name, the zone, the time to live (TTL), and the record type.
+Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
-To create a record set in the apex of the zone (in this case, "contoso.com"), use the record name "@", including the quotation marks. This is a common DNS convention.
+	Login-AzureRmAccount
 
-The following example creates a record set with the relative name "www" in the DNS Zone "contoso.com". The fully-qualified name of the record set is "www.contoso.com". The record type is "A", and the TTL is 60 seconds. After completing this step, you will have an empty "www" record set that is assigned to the variable *$rs*.
+Überprüfen Sie die Abonnements für das Konto.
 
-    $rs = New-AzureRmDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
+	Get-AzureRmSubscription
 
-#### <a name="if-a-record-set-already-exists"></a>If a record set already exists
+Geben Sie das Abonnement an, das Sie verwenden möchten.
 
-If a record set already exists, the command fails unless the *-Overwrite* switch is used. The *-Overwrite* option triggers a confirmation prompt, which can be suppressed by using the *-Force* switch.
+	Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-
-    $rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 -ZoneName contoso.com -ResouceGroupName MyAzureResouceGroup [-Tag $tags] [-Overwrite] [-Force]
-
-
-In this example, you specify the zone by using the zone name and resource group name. Alternatively, you can specify a zone object, as returned by `Get-AzureRmDnsZone` or `New-AzureRmDnsZone`.
-
-    $zone = Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
-    $rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 –Zone $zone [-Tag $tags] [-Overwrite] [-Force]
-
-`New-AzureRmDnsRecordSet` returns a local object that represents the record set that was created in Azure DNS.
-
-### <a name="3.-add-a-record"></a>3. Add a record
-
-To use the newly created "www" record set, you need to add records to it. You can add IPv4 *A* records to the "www" record set by using the following example. This example relies on the variable *$rs* that you set in the previous step.
-
-Adding records to a record set by using `Add-AzureRmDnsRecordConfig` is an offline operation. Only the local variable *$rs* is updated.
+Weitere Informationen zur Arbeit mit PowerShell finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
 
-    Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
-    Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
+### 2\. Erstellen einer Datensatzgruppe
 
-### <a name="4.-commit-the-changes"></a>4. Commit the changes
+Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzureRmDnsRecordSet`. Beim Erstellen eines Ressourceneintragssatzes müssen Sie den Namen des Ressourceneintragssatzes, die Zone, die Gültigkeitsdauer (TTL) und den Ressourceneintragstyp angeben.
 
-Commit the changes to the record set. Use `Set-AzureRmDnsRecordSet` to upload the changes to the record set to Azure DNS.
+Zum Erstellen eines Ressourceneintragssatzes auf oberster Ebene der Zone (in diesem Fall „contoso.com“) verwenden Sie den Ressourceneintragsnamen „@“, einschließlich der Anführungszeichen. Dies ist eine allgemeine DNS-Konvention.
 
-    Set-AzureRmDnsRecordSet -RecordSet $rs
+Im folgenden Beispiel wird ein Ressourceneintragssatz mit dem relativen Namen „www“ in der DNS-Zone „contoso.com“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Ressourceneintragstyp ist „A“, und die Gültigkeitsdauer beträgt 60 Sekunden. Wenn Sie diesen Schritt ausgeführt haben, verfügen Sie über einen leeren Ressourceneintragssatz „www“, der der Variablen *$rs* zugewiesen ist.
 
-### <a name="5.-retrieve-the-record-set"></a>5. Retrieve the record set
+	$rs = New-AzureRmDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
 
-You can retrieve the record set from Azure DNS by using `Get-AzureRmDnsRecordSet` as shown in the following example.
+#### Wenn ein Ressourceneintragssatz bereits vorhanden ist
 
-
-    Get-AzureRmDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
+Wenn ein Ressourceneintragssatz bereits vorhanden ist, schlägt der Befehl fehl, es sei denn, der Switch *-Overwrite* wird verwendet. Die Option *-Overwrite* löst eine Bestätigungsaufforderung aus, die mit dem Switch *-Force* unterdrückt werden kann.
 
 
-    Name              : www
-    ZoneName          : contoso.com
-    ResourceGroupName : MyAzureResourceGroup
-    Ttl               : 3600
-    Etag              : 68e78da2-4d74-413e-8c3d-331ca48246d9
-    RecordType        : A
-    Records           : {134.170.185.46, 134.170.188.221}
-    Tags              : {}
+	$rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 -ZoneName contoso.com -ResouceGroupName MyAzureResouceGroup [-Tag $tags] [-Overwrite] [-Force]
 
 
-You can also use the nslookup tool or other DNS tools to query the new record set.
+In diesem Beispiel geben Sie die Zone mithilfe des Zonennamens und des Ressourcengruppennamens an. Alternativ können Sie ein Zonenobjekt angeben, wie es von `Get-AzureRmDnsZone` oder `New-AzureRmDnsZone` zurückgegeben wird.
 
-If you have not yet delegated the domain to the Azure DNS name servers, you need to explicitly specify the name, server, and address for your zone.
+	$zone = Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
+	$rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 –Zone $zone [-Tag $tags] [-Overwrite] [-Force]
 
+Mit `New-AzureRmDnsRecordSet` wird ein lokales Objekt zurückgegeben, das den in Azure DNS erstellten Ressourceneintragssatz darstellt.
 
-    nslookup www.contoso.com ns1-01.azure-dns.com
+### 3\. Hinzufügen eines Eintrags
 
-    Server: ns1-01.azure-dns.com
-    Address:  208.76.47.1
+Damit Sie den neu erstellten Ressourceneintragssatz „www“ verwenden können, müssen Sie Einträge hinzufügen. Mit dem folgenden Beispiel können Sie dem Ressourceneintragssatz „www“ IPv4-*A*-Einträge hinzufügen. In diesem Beispiel wird die Variable *$rs* verwendet, die Sie im vorherigen Schritt festgelegt haben.
 
-    Name:    www.contoso.com
-    Addresses:  134.170.185.46
-                134.170.188.221
-
-## <a name="create-a-record-set-of-each-type-with-a-single-record"></a>Create a record set of each type with a single record
+Das Hinzufügen von Einträgen zu einem Ressourceneintragssatz mithilfe von `Add-AzureRmDnsRecordConfig` ist ein Offlinevorgang. Nur die lokale Variable *$rs* wird aktualisiert.
 
 
-The following examples show how to create a record set of each record type. Each record set contains a single record.
+	Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
+	Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
+
+### 4\. Übergeben der Änderungen
+
+Übergeben Sie die Änderungen an den Ressourceneintragssatz. Verwenden Sie `Set-AzureRmDnsRecordSet`, um Änderungen am Ressourceneintragssatz in Azure DNS hochzuladen.
+
+	Set-AzureRmDnsRecordSet -RecordSet $rs
+
+### 5\. Abrufen des Ressourceneintragssatzes
+
+Sie können den Ressourceneintragssatz mit `Get-AzureRmDnsRecordSet` aus Azure DNS abrufen, wie das folgende Beispiel veranschaulicht.
+
+
+	Get-AzureRmDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
+
+
+	Name              : www
+	ZoneName          : contoso.com
+	ResourceGroupName : MyAzureResourceGroup
+	Ttl               : 3600
+	Etag              : 68e78da2-4d74-413e-8c3d-331ca48246d9
+	RecordType        : A
+	Records           : {134.170.185.46, 134.170.188.221}
+	Tags              : {}
+
+
+Sie können auch nslookup oder andere DNS-Tools verwenden, um den neuen Ressourceneintragssatz abzufragen.
+
+Wenn Sie die Domäne noch nicht an die Azure DNS-Namenserver delegiert haben, müssen Sie Name, Server und Adresse für Ihre Zone explizit angeben.
+
+
+	nslookup www.contoso.com ns1-01.azure-dns.com
+
+	Server: ns1-01.azure-dns.com
+	Address:  208.76.47.1
+
+	Name:    www.contoso.com
+	Addresses:  134.170.185.46
+    	        134.170.188.221
+
+## Erstellen eines Ressourceneintragssatzes jedes Typs mit einem einzelnen Eintrag
+
+
+Die folgenden Beispiele zeigen, wie Sie einen Eintragssatz jedes Eintragstyps erstellen. Jeder Eintragssatz enthält einen einzelnen Eintrag.
 
 [AZURE.INCLUDE [dns-add-record-ps-include](../../includes/dns-add-record-ps-include.md)]
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-[How to manage DNS zones using PowerShell](dns-operations-dnszones.md)
+[Verwalten von DNS-Zonen mithilfe der PowerShell](dns-operations-dnszones.md)
 
-[Manage DNS records and record sets by using PowerShell](dns-operations-recordsets.md)
+[Verwalten von DNS-Einträgen und DNS-Ressourceneintragssätzen mit PowerShell](dns-operations-recordsets.md)
 
-[Automate Azure operations with .NET SDK](dns-sdk.md)
+[Automatisieren von Azure-Vorgängen mit dem .NET SDK](dns-sdk.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

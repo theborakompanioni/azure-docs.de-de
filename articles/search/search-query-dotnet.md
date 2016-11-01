@@ -1,8 +1,7 @@
 <properties
-    pageTitle="Query your Azure Search Index using the .NET SDK | Microsoft Azure | Hosted cloud search service"
-    description="Build a search query in Azure search and use search parameters to filter and sort search results."
+    pageTitle="Abfragen des Azure Search-Indexes mit dem .NET SDK | Microsoft Azure | Gehosteter Cloudsuchdienst"
+    description="Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie Suchparameter zum Filtern und Sortieren von Suchergebnissen."
     services="search"
-    manager="jhubbard"
     documentationCenter=""
     authors="brjohnstmsft"
 />
@@ -16,38 +15,37 @@
     ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
-
-# <a name="query-your-azure-search-index-using-the-.net-sdk"></a>Query your Azure Search index using the .NET SDK
+# Abfragen des Azure Search-Index mit dem .NET SDK
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
+- [Übersicht](search-query-overview.md)
 - [Portal](search-explorer.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
 
-This article will show you how to query an index using the [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx).
+Dieser Artikel beschreibt, wie Sie einen Index mithilfe des [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) abfragen.
 
-Before beginning this walkthrough, you should already have [created an Azure Search index](search-what-is-an-index.md) and [populated it with data](search-what-is-data-import.md).
+[Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md) und [füllen Sie ihn mit Daten](search-what-is-data-import.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen.
 
-Note that all sample code in this article is written in C#. You can find the full source code [on GitHub](http://aka.ms/search-dotnet-howto).
+Beachten Sie, dass der gesamte Beispielcode in diesem Artikel in C# geschrieben wurde. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto).
 
-## <a name="i.-identify-your-azure-search-service's-query-api-key"></a>I. Identify your Azure Search service's query api-key
-Now that you have created an Azure Search index, you are almost ready to issue queries using the .NET SDK. First, you will need to obtain one of the query api-keys that was generated for the search service you provisioned. The .NET SDK will send this api-key on every request to your service. Having a valid key establishes trust, on a per request basis, between the application sending the request and the service that handles it.
+## I. Identifizieren des Abfrage-API-Schlüssel Ihres Azure Search-Diensts
+Nach der Erstellung eines Azure Search-Index sind Sie nun fast bereit, Abfragen mit dem .NET SDK auszugeben. Zunächst müssen Sie aber einen der Abfrage-API-Schlüssel abrufen, die für den bereitgestellten Suchdienst generiert wurden. Das .NET SDK sendet diesen API-Schlüssel für jede Anforderung an Ihren Dienst. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-1. To find your service's api-keys you must log into the [Azure Portal](https://portal.azure.com/)
-2. Go to your Azure Search service's blade
-3. Click on the "Keys" icon
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu suchen.
+2. Wechseln Sie zum Blatt Ihres Azure Search-Diensts.
+3. Klicken Sie auf das Schlüsselsymbol.
 
-Your service will have *admin keys* and *query keys*.
+Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 
-  - Your primary and secondary *admin keys* grant full rights to all operations, including the ability to manage the service, create and delete indexes, indexers, and data sources. There are two keys so that you can continue to use the secondary key if you decide to regenerate the primary key, and vice-versa.
-  - Your *query keys* grant read-only access to indexes and documents, and are typically distributed to client applications that issue search requests.
+  - Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
+  - Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
 
-For the purposes of querying an index, you can use one of your query keys. Your admin keys can also be used for queries, but you should use a query key in your application code as this better follows the [Principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+Zum Abfragen eines Indexes können Sie einen der Abfrageschlüssel verwenden. Admin-Schlüssel können auch für Abfragen verwendet werden, Sie sollten jedoch einen Abfrageschlüssel in Ihrem Anwendungscode verwenden, da dies dem [Prinzip der geringsten Rechte](https://en.wikipedia.org/wiki/Principle_of_least_privilege) besser entspricht.
 
-## <a name="ii.-create-an-instance-of-the-searchindexclient-class"></a>II. Create an instance of the SearchIndexClient class
-To issue queries with the Azure Search .NET SDK, you will need to create an instance of the `SearchIndexClient` class. This class has several constructors. The one you want takes your search service name, index name, and a `SearchCredentials` object as parameters. `SearchCredentials` wraps your api-key.
+## II. Erstellen einer Instanz der SearchIndexClient-Klasse
+Damit Sie Abfragen mit dem Azure Search .NET SDK ausgeben können, müssen Sie eine Instanz der Klasse `SearchIndexClient` erstellen. Diese Klasse verfügt über mehrere Konstruktoren. Für den gewünschten Konstruktor werden der Name Ihres Suchdiensts, der Indexname und ein `SearchCredentials`-Objekt als Parameter verwendet. `SearchCredentials` umfasst Ihren API-Schlüssel.
 
-The code below creates a new `SearchIndexClient` for the "hotels" index (created in [Create an Azure Search index using the .NET SDK](search-create-index-dotnet.md)) using values for the search service name and api-key that are stored in the application's config file (`app.config` or `web.config`):
+Der folgende Code erstellt ein neues `SearchIndexClient`-Element für den Index „hotels“ (der in [Erstellen eines Azure Search-Indexes mit dem .NET SDK](search-create-index-dotnet.md) erstellt wurde). Dazu werden Werte für den Suchdienstnamen und den API-Schlüssel verwendet, die in der Konfigurationsdatei der Anwendung gespeichert sind (`app.config` oder `web.config`):
 
 ```csharp
 string searchServiceName = ConfigurationManager.AppSettings["SearchServiceName"];
@@ -56,19 +54,19 @@ string queryApiKey = ConfigurationManager.AppSettings["SearchServiceQueryApiKey"
 SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
 ```
 
-`SearchIndexClient` has a `Documents` property. This property provides all the methods you need to query Azure Search indexes.
+`SearchIndexClient` verfügt über eine `Documents`-Eigenschaft. Diese Eigenschaft stellt alle Methoden bereit, die Sie benötigen, um Azure Search-Indizes abzufragen.
 
-## <a name="iii.-query-your-index"></a>III. Query your index
-Searching with the .NET SDK is as simple as calling the `Documents.Search` method on your `SearchIndexClient`. This method takes a few parameters, including the search text, along with a `SearchParameters` object that can be used to further refine the query.
+## III. Abfragen Ihres Index
+Die Suche mit dem .NET SDK erfolgt ganz einfach durch Aufrufen der `Documents.Search`-Methode für `SearchIndexClient`. Diese Methode verwendet einige Parameter, einschließlich des Suchtexts, zusammen mit einem `SearchParameters`-Objekt, mit dem die Abfrage weiter verfeinert werden kann.
 
-#### <a name="types-of-queries"></a>Types of Queries
-The two main [query types](search-query-overview.md#types-of-queries) you will use are `search` and `filter`. A `search` query searches for one or more terms in all _searchable_ fields in your index. A `filter` query evaluates a boolean expression over all _filterable_ fields in an index.
+#### Abfragetypen
+Die zwei wichtigsten [Abfragetypen](search-query-overview.md#types-of-queries), die Sie verwenden werden, sind `search` und `filter`. Eine `search`-Abfrage sucht nach einem oder mehreren Begriffen in allen _durchsuchbaren_ Feldern in Ihrem Index. Eine `filter`-Abfrage wertet einen booleschen Ausdruck für alle _filterbaren_ Felder in einem Index aus.
 
-Both searches and filters are performed using the `Documents.Search` method. A search query can be passed in the `searchText` parameter, while a filter expression can be passed in the `Filter` property of the `SearchParameters` class. To filter without searching, just pass `"*"` for the `searchText` parameter. To search without filtering, just leave the `Filter` property unset, or do not pass in a `SearchParameters` instance at all.
+Suchen und Filtern erfolgt mithilfe der `Documents.Search`-Methode. Eine Suchabfrage kann im Parameter `searchText` und ein Filterausdruck kann in der Eigenschaft `Filter` der Klasse `SearchParameters` übergeben werden. Um ohne Suche zu filtern, übergeben Sie einfach `"*"` für den Parameter `searchText`. Wenn Sie ohne Filter suchen möchten, legen Sie die Eigenschaft `Filter` nicht fest, oder übergeben Sie einfach keine `SearchParameters`-Instanz.
 
-#### <a name="example-queries"></a>Example Queries
+#### Beispielabfragen
 
-The following sample code shows a few different ways to query the "hotels" index defined in [Create an Azure Search index using the .NET SDK](search-create-index-dotnet.md#DefineIndex). Note that the documents returned with the search results are instances of the `Hotel` class, which was defined in [Data Import in Azure Search using the .NET SDK](search-import-data-dotnet.md#HotelClass). The sample code makes use of a `WriteDocuments` method to output the search results to the console. This method is described in the next section.
+Der folgende Beispielcode zeigt verschiedene Methoden zum Abfragen des Index „hotel“, der unter [Erstellen eines Azure Search-Indexes mit dem .NET SDK](search-create-index-dotnet.md#DefineIndex) definiert wurde. Beachten Sie, dass die in den Suchergebnissen zurückgegebenen Dokumente Instanzen der Klasse `Hotel` sind, die unter [Importieren von Daten in Azure Search mit dem .NET SDK](search-import-data-dotnet.md#HotelClass) definiert wurde. Der Beispielcode nutzt eine `WriteDocuments`-Methode, um die Suchergebnisse auf der Konsole auszugeben. Diese Methode wird im nächsten Abschnitt beschrieben.
 
 ```csharp
 SearchParameters parameters;
@@ -124,8 +122,8 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## <a name="iv.-handle-search-results"></a>IV. Handle search results
-The `Documents.Search` method returns a `DocumentSearchResult` object that contains the results of the query. The example in the previous section used a method called `WriteDocuments` to output the search results to the console:
+## IV. Verarbeiten von Suchergebnissen
+Die Methode `Documents.Search` gibt ein `DocumentSearchResult`-Objekt zurück, das die Ergebnisse der Abfrage enthält. Das Beispiel im vorherigen Abschnitt verwendet eine Methode namens `WriteDocuments`, um die Suchergebnisse auf der Konsole auszugeben:
 
 ```csharp
 private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -139,7 +137,7 @@ private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
 }
 ```
 
-Here is what the results look like for the queries in the previous section, assuming the "hotels" index is populated with the sample data in [Data Import in Azure Search using the .NET SDK](search-import-data-dotnet.md):
+Hier ist dargestellt, wie die Ergebnisse für die Abfragen im vorherigen Abschnitt aussehen. Dabei wird davon ausgegangen, dass der Index „hotels“ mit den Beispieldaten unter [Importieren von Daten in Azure Search mit dem .NET SDK](search-import-data-dotnet.md) gefüllt wird:
 
 ```
 Search the entire index for the term 'budget' and return only the hotelName field:
@@ -162,10 +160,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 ```
 
-The sample code above uses the console to output search results. You will likewise need to display search results in your own application. See [this sample on GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) for an example of how to render search results in an ASP.NET MVC-based web application.
+Der obige Beispielcode verwendet die Konsole zum Ausgeben von Suchergebnissen. Sie müssen ebenso Suchergebnisse in Ihrer eigenen Anwendung anzeigen. Ein Beispiel zum Rendern von Suchergebnissen in einer ASP.NET MVC-basierten Webanwendung finden Sie [hier auf GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

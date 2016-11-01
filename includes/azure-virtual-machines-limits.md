@@ -1,13 +1,10 @@
-Resource|Default Limit|Maximum Limit
+Ressource|Standardlimit|Maximales Limit
 ---|---|---
-[Virtual machines](../articles/virtual-machines/virtual-machines-linux-about.md) per cloud service<sup>1</sup>|50|50
-Input endpoints per cloud service<sup>2</sup>|150|150
+[Virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-about.md) pro Clouddienst<sup>1</sup>|50|50
+Eingabeendpunkte pro Clouddienst<sup>2</sup>|150|150
 
-<sup>1</sup>Virtual machines created in Service Management (instead of Resource Manager) are automatically stored in a cloud service. You can add more virtual machines to that cloud service for load balancing and availability. See  [How to Connect Virtual Machines with a Virtual Network or Cloud Service](../articles/virtual-machines/virtual-machines-linux-classic-connect-vms.md).
+<sup>1</sup>Die in der Dienstverwaltung (und nicht im Ressourcen-Manager) erstellten virtuellen Computer werden automatisch in einem Clouddienst gespeichert. Für den Lastenausgleich und die Verfügbarkeit können Sie diesem Clouddienst weitere virtuelle Computer hinzufügen. Siehe [Verbinden virtueller Computer mit einem virtuellen Netzwerk oder einem Clouddienst](../articles/virtual-machines/virtual-machines-linux-classic-connect-vms.md).
 
-<sup>2</sup>Input endpoints allow communications to a virtual machine from outside the virtual machine's cloud service. Virtual machines in the same cloud service or virtual network can automatically communicate with each other. See [How to Set Up Endpoints to a Virtual Machine](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md). 
+<sup>2</sup>Eingabeendpunkte ermöglichen die Kommunikation mit einem virtuellen Computer von außerhalb des Clouddiensts des virtuellen Computers. Virtuelle Computer im gleichen Clouddienst oder virtuellen Netzwerk können automatisch miteinander kommunizieren. Siehe [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0323_2016-->

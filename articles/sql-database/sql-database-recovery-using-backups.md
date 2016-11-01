@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Cloud business continuity - Restore a deleted database - SQL Database | Microsoft Azure"
-   description="Learn about Point-in-Time Restore, that enables you to roll back an Azure SQL Database to a previous point in time (up to 35 days)."
+   pageTitle="Geschäftskontinuität in der Cloud – Wiederherstellen einer gelöschten Datenbank – SQL-Datenbank | Microsoft Azure"
+   description="Hier finden Sie Informationen zur Point-in-Time-Wiederherstellung, mit der Sie ein Rollback für eine Azure SQL-Datenbank durchführen können (bis zu 35 Tage)."
    services="sql-database"
    documentationCenter=""
    authors="stevestein"
@@ -16,115 +16,110 @@
    ms.date="08/01/2016"
    ms.author="sstein"/>
 
+# Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 
-# <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Recover an Azure SQL database using automated database backups
+SQL-Datenbank bietet drei Optionen für die Datenbankwiederherstellung mit [automatisierten SQL-Datenbanksicherungen](sql-database-automated-backups.md). Während der [Aufbewahrungsdauer](sql-database-service-tiers.md) können Sie eine Datenbank aus vom Dienst initiierten Sicherungen wiederherstellen. Diese Wiederherstellung kann erfolgen als:
 
-SQL Database provides three options for database recovery using [SQL Database automated backups](sql-database-automated-backups.md). You can restore a database from the service-initiated backups during their [retention period](sql-database-service-tiers.md) to:
+- Eine neue Datenbank auf dem gleichen logischen Server, die auf den Zustand zu einem angegebenen Zeitpunkt innerhalb der Aufbewahrungsdauer wiederhergestellt wird.
+- Eine Datenbank auf dem gleichen Server, die auf den Zustand zum Zeitpunkt des Löschens einer gelöschten Datenbank wiederhergestellt wird.
+- Eine neue Datenbank auf einem beliebigen logischen Server in einer beliebigen Region, die auf den Zustand der neuesten täglichen Sicherung im georeplizierten Blobspeicher (RA-GRS) wiederhergestellt wird.
 
-- A new database on the same logical server recovered to a specified point in time within the retention period. 
-- A database on the same logical server recovered to the deletion time for a deleted database.
-- A new database on any logical server in any region recovered to the most recent daily backups in geo-replicated blob storage (RA-GRS).
+Sie können die [automatisierten SQL-Datenbanksicherungen](sql-database-automated-backups.md) auch verwenden, um auf einem beliebigen logischen Server in einer beliebigen Region eine [Datenbankkopie](sql-database-copy.md) zu erstellen, die im Hinblick auf Transaktionen mit der aktuellen SQL-Datenbank konsistent ist. Sie können die Datenbankkopie [in eine BACPAC-Datei exportieren](sql-database-export.md), um eine transaktional konsistente Kopie der Datenbank für die langfristige Archivierung über die für Sie gültige Aufbewahrungsdauer hinaus zu erhalten oder um eine Kopie der Datenbank an eine lokale Instanz oder eine Azure VM-Instanz von SQL Server zu übertragen.
 
-You can also use [SQL Database automated backups](sql-database-automated-backups.md) to create a [database copy](sql-database-copy.md) on any logical server in any region that is transactionally consistent with the current SQL Database. You can use database copy and [export to a BACPAC](sql-database-export.md) to archive a transactionally consistent copy of a database for long-term storage beyond your retention period, or to transfer a copy of your database to an on-premises or Azure VM instance of SQL Server.
+## Wiederherstellungszeit
 
-## <a name="recovery-time"></a>Recovery time
-
-The recovery time to restore a database using automated database backups is impacted by a number of factors: 
- - The size of the database
- - The performance level of the database
- - The number of transaction logs involved
- - The amount of activity that needs to be replayed to recover to the restore point
- - The network bandwidth if the restore is to a different region 
- - The number of concurrent restore requests being processed in the target region. 
+Die Zeit, die zum Wiederherstellen einer Datenbank mit automatisierten Sicherungen benötigt wird, hängt von verschiedenen Faktoren ab. Dies sind:
+ - Größe der Datenbank
+ - Leistungsstufe der Datenbank
+ - Anzahl der beteiligten Transaktionsprotokolle
+ - Menge der erneut auszuführenden Aktivitäten, um den Wiederherstellungspunkt wiederherzustellen
+ - Netzwerkbandbreite, sofern die Wiederherstellung in einer anderen Region erfolgt
+ - Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die aktuell in der Zielregion verarbeitet werden
  
- For a very large and/or active database the restore may take several hours. If there is prolonged outage in a region, it is possible that there will be large numbers of Geo-Restore requests being processed by other regions. If there are a large number of requests this may increase the recovery time for databases in that region. The majority of database restores complete within 12 hours.
+ Bei einer sehr großen und/oder sehr aktiven Datenbank kann die Wiederherstellung mehrere Stunden dauern. Wenn es sich um einen längeren Ausfall in einer Region handelt, müssen möglicherweise andere Regionen eine große Anzahl von Geowiederherstellungsanforderungen verarbeiten. Wenn eine große Anzahl von Anforderungen vorliegt, kann dies die Wiederherstellungszeit für Datenbanken in dieser Region erhöhen. Der Großteil der Datenbankwiederherstellungen erfolgt innerhalb von 12 Stunden.
 
- There is no built-in functionality to do bulk restore. The [Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) script is an example of one way of accomplishing this task.
+ Es gibt keine integrierte Funktion für Massenwiederherstellungen. Das Skript [Azure SQL-Datenbank: Vollständige Serverwiederherstellung](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) ist ein Beispiel für eine Möglichkeit, diese Aufgabe auszuführen.
 
-> [AZURE.IMPORTANT] To recover using automated backups, you must be a member of the SQL Server Contributor role in the subscription or be the subscription owner. You can recover using the Azure portal, PowerShell or the REST API. You cannot use Transact-SQL. 
+> [AZURE.IMPORTANT] Um eine Wiederherstellung mithilfe von automatisierten Sicherungen durchzuführen, müssen Sie Mitglied der Rolle „SQL Server-Mitwirkender“ im Abonnement oder Besitzer des Abonnements sein. Sie können das Azure-Portal, PowerShell oder die REST-API zur Wiederherstellung verwenden. Die Nutzung von Transact-SQL ist nicht möglich.
 
-## <a name="point-in-time-restore"></a>Point-In-Time Restore
+## Point-in-Time-Wiederherstellung
 
-Point-In-Time Restore allows you to restore an existing database as a new database to an earlier point in time on the same logical server using [SQL Database automated backups](sql-database-automated-backups.md). You cannot overwrite the existing database. You can restore to an earlier point in time using the [Azure portal](sql-database-point-in-time-restore-portal.md), [PowerShell](sql-database-point-in-time-restore-powershell.md) or the [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx).
-
-> [AZURE.SELECTOR]
-- [Point-In-Time Restore: Azure portal](sql-database-point-in-time-restore-portal.md)
-- [Point-In-Time Restore: PowerShell](sql-database-point-in-time-restore-powershell.md)
-
-The database can be restored to any performance level or elastic pool. You need to ensure you have a sufficient DTU quota on the logical server or elastic pool. Keep in mind that the restore creates a new database and that the service tier and performance level of the restored database may be different than the current state of the live database. Once complete, the restored database is a normal fully accessible online database charged at normal rates based on its service tier and performance level. You do not incur charges until the database restore is complete.
-
-You generally restore a database to an earler point for recovery purposes. When doing so, you can treat the restored database as a replacement for the original database or use it to retrieve data from and then update the original database. 
-
-- ***Database replacement:*** If the restored database is intended as a replacement for the original database, you should verify the performance level and/or service tier are appropriate and scale the database if necessary. You can rename the original database and then give the restored database the original name using the ALTER DATABASE command in T-SQL. 
-- ***Data recovery:*** If you plan to retrieve data from the restored database to recover from a user or application error, you will separately need to write and execute whatever data recovery scripts you need to extract data from the restored database to the original database. Although the restore operation may take a long time to complete, the restoring database will be visible in the database list throughout. If you delete the database during the restore, it will cancel the operation and you will not be charged for the database that did not complete the restore. 
-
-For detailed information about using Point-in-Time Restore to recover from user and application errors, see [Point-in-Time Restore](sql-database-recovery-using-backups.md#point-in-time-restore)
-
-## <a name="deleted-database-restore"></a>Deleted database restore
-
-Deleted database restore allows you to restore a deleted database to the deletion time for a deleted database on the same logical server using [SQL Database automated backups](sql-database-automated-backups.md). 
-
-> [AZURE.IMPORTANT] If you delete an Azure SQL Database server instance, all of its databases are also deleted and cannot be recovered. There is no support for restoring a deleted server at this time.
-
-You can use the same or a new database name for the restored database. You can use the [Azure portal](sql-database-restore-deleted-database-portal.md), [PowerShell](sql-database-restore-deleted-database-powershell.md) or the [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx). 
+Mit der Point-in-Time-Wiederherstellung können Sie mithilfe [automatisierter SQL-Datenbanksicherungen](sql-database-automated-backups.md) auf dem gleichen logischen Server eine vorhandene Datenbank als neue Datenbank mit einem früheren Datenbankzustand wiederherstellen. Sie können die vorhandene Datenbank nicht überschreiben. Die Wiederherstellung eines früheren Zustands kann im [Azure-Portal](sql-database-point-in-time-restore-portal.md), mit [PowerShell](sql-database-point-in-time-restore-powershell.md) oder mit der [REST-API](https://msdn.microsoft.com/library/azure/mt163685.aspx) durchgeführt werden.
 
 > [AZURE.SELECTOR]
-- [Deleted database restore: Azure portal](sql-database-restore-deleted-database-portal.md)
-- [Deleted database restore: PowerShell](sql-database-restore-deleted-database-powershell.md)
+- [Point-in-Time-Wiederherstellung: im Azure-Portal](sql-database-point-in-time-restore-portal.md)
+- [Point-in-Time-Wiederherstellung: mit PowerShell](sql-database-point-in-time-restore-powershell.md)
 
-## <a name="geo-restore"></a>Geo-Restore
+Die Datenbank kann für eine beliebige Leistungsstufe und einen beliebigen elastischen Pool wiederhergestellt werden. Sie müssen über ein ausreichend großes DTU-Kontingent (Database Throughput Unit) auf dem logischen Server oder im elastischen Pool verfügen. Denken Sie daran, dass bei der Wiederherstellung eine neue Datenbank erstellt wird, deren Tarif- und Leistungsstufe sich unter Umständen vom aktuellen Zustand der Livedatenbank unterscheidet. Nach Abschluss des Vorgangs verfügen Sie über eine wiederhergestellte, uneingeschränkt zugängliche Onlinedatenbank, für die reguläre Kosten anfallen (abhängig von Tarif- und Leistungsstufe). Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
 
-Geo-Restore allows you to restore a SQL database on any server in any Azure region from the most recent geo-replicated [automated daily backup](sql-database-automated-backups.md). Geo-Restore uses a geo-redundant backup as its source and can be used to recover a database even if the database or datacenter is inaccessible due to an outage. You can use the [Azure portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md), or the [REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) 
+Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank entweder als Ersatz für die ursprüngliche Datenbank verwenden oder Daten daraus abrufen und die ursprüngliche Datenbank damit aktualisieren.
+
+- ***Ersetzung der Datenbank:*** Wenn die wiederhergestellte Datenbank als Ersatz für die ursprüngliche Datenbank fungieren soll, vergewissern Sie sich, dass Leistungs- und Tarifebene angemessen sind, und skalieren Sie die Datenbank bei Bedarf entsprechend. Sie können die ursprüngliche Datenbank umbenennen und dann die wiederhergestellte Datenbank mit dem Namen der ursprünglichen Datenbank versehen. Verwenden Sie hierzu den Befehl „ALTER DATABASE“ in T-SQL.
+- ***Wiederherstellung der Daten:*** Wenn Sie Daten aus der wiederhergestellten Datenbank abrufen möchten, um einen Benutzer- oder Anwendungsfehler zu korrigieren, müssen Sie die entsprechende Datenwiederherstellungsskripts separat schreiben und ausführen, um die Daten aus der wiederhergestellten Datenbank zu extrahieren und sie in der ursprünglichen Datenbank wiederherzustellen. Der Wiederherstellungsvorgang kann zwar eine ganze Weile dauern, die wiederherstellende Datenbank wird jedoch während der gesamten Zeit in der Datenbankliste angezeigt. Wenn Sie diese Datenbank während der Wiederherstellung löschen, wird der Vorgang abgebrochen, und es fallen keine Kosten für die Datenbank an, die die Wiederherstellung nicht abgeschlossen hat.
+
+Ausführliche Informationen zum Verwenden von Point-in-Time-Wiederherstellungen zur Behebung von Benutzer- und Anwendungsfehlern finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+## Wiederherstellen einer gelöschten Datenbank
+
+Mit dem Verfahren zum Wiederherstellen einer gelöschten Datenbank können Sie eine gelöschte Datenbank mithilfe der [automatisierten SQL-Datenbanksicherung](sql-database-automated-backups.md) in dem Zustand wiederherstellen, den sie zum Zeitpunkt des Löschens hatte. Die Wiederherstellung erfolgt dabei auf dem gleichen logischen Server.
+
+> [AZURE.IMPORTANT] Wenn Sie eine Azure SQL-Datenbankserverinstanz löschen, werden auch alle dazugehörigen Datenbanken gelöscht und können nicht wiederhergestellt werden. Derzeit wird das Wiederherstellen gelöschter Server nicht unterstützt.
+
+Für die wiederhergestellte Datenbank können Sie den gleichen oder einen neuen Namen verwenden. Sie können dazu das [Azure-Portal](sql-database-restore-deleted-database-portal.md), [PowerShell](sql-database-restore-deleted-database-powershell.md) oder [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
 
 > [AZURE.SELECTOR]
-- [Geo-Restore: Azure portal](sql-database-geo-restore-portal.md)
-- [Geo-Restore: PowerShell](sql-database-geo-restore-powershell.md)
+- [Wiederherstellen einer gelöschten Datenbank: im Azure-Portal](sql-database-restore-deleted-database-portal.md)
+- [Wiederherstellen einer gelöschten Datenbank: mit PowerShell](sql-database-restore-deleted-database-powershell.md)
 
-Geo-Restore is the default recovery option when your database is unavailable because of an incident in the region where the database is hosted. If a large scale incident in a region results in unavailability of your database application, you can use Geo-Restore to restore a database from the most recent backup to a server in any other region. All backups are geo-replicated and can have a delay between when the backup is taken and geo-replicated to the Azure blob in a different region. This delay can be up to an hour so in the event of a disaster there can be up to 1 hour data loss, i.e., RPO of up to 1 hour. The following shows restore of the database from the last daily backup.
+## Geowiederherstellung
 
-![geo-restore](./media/sql-database-geo-restore/geo-restore-2.png)
+Mit der Geowiederherstellung können Sie eine SQL-Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region aus der letzten georeplizierten [automatisierten täglichen Sicherung](sql-database-automated-backups.md) wiederherstellen. Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist. Sie können dazu das [Azure-Portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md) oder [REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
 
-For detailed information about using Geo-Restore to recover from an outage, see [Recover from an outage](sql-database-disaster-recovery.md)
+> [AZURE.SELECTOR]
+- [Geowiederherstellung: im Azure-Portal](sql-database-geo-restore-portal.md)
+- [Geowiederherstellung: mit PowerShell](sql-database-geo-restore-powershell.md)
 
-> [AZURE.IMPORTANT] While Geo-Restore is available with all service tiers, it is the most basic of the disaster recovery solutions available in SQL Database with the longest RPO and Estimate Recovery Time (ERT). For Basic databases with maximum size of 2 GB Geo-Restore provides a reasonable DR solution with an ERT of 12 hours. For larger Standard or Premium databases, if significantly shorter recovery times are desired, or to reduce the likelihood of data loss you should consider using Active Geo-Replication. Active Geo-Replication offers a much lower RPO and ERT as it only requires you initiate a failover to a continuously replicated secondary. For details, see [Active Geo-Replication](sql-database-geo-replication-overview.md).
+Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Incidents in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung durch einen umfangreichen Incident in einer Region nicht mehr verfügbar ist, können Sie die Geowiederherstellung einsetzen, um eine Datenbank aus der letzten Sicherung auf einem Server in einer beliebigen anderen Region wiederherzustellen. Alle Sicherungen sind georepliziert, und es kann eine Verzögerung zwischen der Sicherungserstellung und der Georeplikation auf dem Azure-Blob in einer anderen Region auftreten. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten, was einem RPO-Wert von bis zu einer Stunde entspricht. Das folgende Beispiel zeigt die Wiederherstellung der Datenbank aus der letzten täglichen Sicherung.
 
-## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programmatically performing recovery using automated backups
+![Geowiederherstellung](./media/sql-database-geo-restore/geo-restore-2.png)
 
-As discussed above, in addiition to the Azure portal, database recovery can be performed programmically using Azure PowerShell and the REST API. The tables below describe the set of commands available.
+Ausführliche Informationen zum Verwenden der Geowiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
-### <a name="powershell"></a>PowerShell
+> [AZURE.IMPORTANT] Auch wenn die Geowiederherstellung in allen Dienstebenen verfügbar ist, ist sie die elementarste Notfallwiederherstellungslösung, die in der SQL-Datenbank verfügbar ist. Sie weist die längste RPO und die längste geschätzte Wiederherstellungszeit (ERT) auf. Für Basic-Datenbanken mit einer maximalen Größe von 2 GB bietet die Geowiederherstellung eine angemessene Notfallwiederherstellungslösung mit einer ERT von 12 Stunden. Wenn bei größeren Standard- oder Premium-Datenbanken erheblich kürzere Wiederherstellungszeiten gewünscht werden, oder wenn Sie die Wahrscheinlichkeit eines Datenverlusts reduzieren möchten, sollten sie die aktive Georeplikation in Erwägung ziehen. Die aktive Georeplikation bietet eine niedrigere RPO und ERT, da sie nur das Initiieren eines Failovers auf eine kontinuierlich replizierte sekundäre Datenbank erfordert. Weitere Informationen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
-|Cmdlet|Description|
+## Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen
+
+Wie bereits zuvor erwähnt, kann die Datenbankwiederherstellung nicht nur über das Azure-Portal, sondern auch programmgesteuert mit Azure PowerShell und mit der REST-API ausgeführt werden. In den folgenden Tabellen werden die verfügbaren Befehle beschrieben.
+
+### PowerShell
+
+|Cmdlet|Beschreibung|
 |------|-----------|
-|[Get-AzureRmSqlDatabase](https://msdn.microsoft.com/en-us/library/azure/mt603648.aspx)|Gets one or more databases.|
-|[Get-AzureRMSqlDeletedDatabaseBackup](https://msdn.microsoft.com/en-us/library/azure/mt693387.aspx)|Gets a deleted database that you can restore.|
-|[Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx)|Gets a geo-redundant backup of a database.|
-|[Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx)|Restores a SQL database.|
+|[Get-AzureRmSqlDatabase](https://msdn.microsoft.com/de-DE/library/azure/mt603648.aspx)|Ruft mindestens eine Datenbank ab.|
+|[Get-AzureRMSqlDeletedDatabaseBackup](https://msdn.microsoft.com/de-DE/library/azure/mt693387.aspx)|Ruft eine gelöschte Datenbank ab, die Sie wiederherstellen können.|
+|[Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx)|Ruft eine georedundante Sicherung einer Datenbank ab.|
+|[Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx)|Stellt eine SQL-Datenbank wieder her.|
 ||||
 
-### <a name="rest-api"></a>REST API
+### REST-API
 
-|API|Description|
+|API|Beschreibung|
 |---|-----------|
-|[REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Restores a database|
-|[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|Returns the status during a restore operation|
+|[REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Stellt eine Datenbank wieder her.|
+|[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|Ruft den Status während eines Wiederherstellungsvorgangs ab.|
 ||||
 
 
 
-## <a name="summary"></a>Summary
+## Zusammenfassung
 
-Automatic backups protect your databases from user and application errors, accidental database deletion, and prolonged outages. This zero-cost zero-admin solution is available with all SQL databases. 
+Automatische Sicherungen schützen Ihre Datenbanken vor Benutzer- und Anwendungsfehlern, versehentlichen Datenbanklöschungen und längeren Ausfällen. Diese kostenlose, verwaltungsfreie Lösung steht für alle SQL-Datenbanken zur Verfügung.
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
-- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
-- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
-- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md)
+- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

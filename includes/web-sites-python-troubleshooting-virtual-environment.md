@@ -1,27 +1,24 @@
-The deployment script will skip creation of the virtual environment on Azure if it detects that a compatible virtual environment already exists.  This can speed up deployment considerably.  Packages that are already installed will be skipped by pip.
+Das Bereitstellungsskript überspringt die Erstellung der virtuellen Umgebung auf Azure, wenn es erkennt, dass bereits eine kompatible virtuelle Umgebung vorhanden ist. Dadurch können Sie die Bereitstellung erheblich beschleunigen. Pakete, die bereits installiert sind, werden von Pip übersprungen.
 
-In certain situations, you may want to force delete that virtual environment.  You'll want to do this if you decide to include a virtual environment as part of your repository.  You may also want to do this if you need to get rid of certain packages, or test changes to requirements.txt.
+In bestimmten Situationen müssen Sie eventuell das Löschen dieser virtuellen Umgebung erzwingen. Sie sollten dies tun, wenn eine virtuelle Umgebung als Teil des Repositorys enthalten soll. Sie sollten dies auch tun, wenn Sie bestimmte Pakete entfernen möchten oder Änderungen an requirements.txt testen müssen.
 
-There are a few options to manage the existing virtual environment on Azure:
+Es gibt mehrere Möglichkeiten, die vorhandene virtuelle Umgebung auf Azure zu verwalten:
 
-### <a name="option-1:-use-ftp"></a>Option 1: Use FTP
+### Option 1: Verwenden von FTP
 
-With an FTP client, connect to the server and you'll be able to delete the env folder.  Note that some FTP clients (such as web browsers) may be read-only and won't allow you to delete folders, so you'll want to make sure to use an FTP client with that capability.  The FTP host name and user are displayed in your web app's blade on the [Azure Portal](https://portal.azure.com).
+Stellen Sie mit einem FTP-Client eine Verbindung mit dem Server her, sodass Sie den Ordner "env" löschen können. Beachten Sie, dass einige FTP-Clients (z. B. Webbrowser) möglicherweise nur Lesezugriff haben und das Löschen von Ordnern nicht erlauben, daher sollten Sie sicherstellen, dass Sie einen FTP-Client mit dieser Funktion verwenden. Der FTP-Hostname und Benutzer werden auf dem Blatt Ihrer Web-App im [Azure-Portal](https://portal.azure.com) angezeigt.
 
-### <a name="option-2:-toggle-runtime"></a>Option 2: Toggle runtime
+### Option 2: Ein-/Ausschalten von Runtime
 
-Here's an alternative that takes advantage of the fact that the deployment script will delete the env folder when it doesn't match the desired version of Python.  This will effectively delete the existing environment, and create a new one.
+Hier ist eine Alternative, welche die Tatsache nutzt, dass das Bereitstellungsskript den env-Ordner löscht, wenn die gewünschte Version von Python nicht übereinstimmt. Dadurch wird effektiv die vorhandene Umgebung gelöscht und eine neue erstellt.
 
-1. Switch to a different version of Python (via runtime.txt or the **Application Settings** blade in the Azure Portal)
-1. git push some changes (ignore any pip install errors if any)
-1. Switch back to initial version of Python
-1. git push some changes again
+1. Wechseln Sie zu einer anderen Version von Python (über "runtime.txt" oder das Blatt **Anwendungseinstellungen** im Azure-Portal)
+1. Übertragen Sie einige Änderungen durch Git-Push (mögliche pip-Installationsfehler ignorieren, falls vorhanden)
+1. Wechseln Sie zurück zur ersten Version von Python
+1. Übertragen Sie erneut einige Änderungen durch Git-Push
 
-### <a name="option-3:-customize-deployment-script"></a>Option 3: Customize deployment script
+### Option 3: Anpassen des Bereitstellungsskripts
 
-If you've customized the deployment script, you can change the code in deploy.cmd to force it to delete the env folder.
+Wenn Sie das Bereitstellungsskript angepasst haben, können Sie den Code in "deploy.cmd" ändern, um das Löschen des Ordners "env" zu erzwingen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1125_2015-->

@@ -1,18 +1,16 @@
-Let's add a trigger.
+Fügen wir jetzt einen Trigger hinzu.
 
-1. Enter *sftp* in the search box on the logic apps designer then select the **SFTP - When a file is added or modified**  trigger   
-![SFTP trigger image 1](./media/connectors-create-api-sftp/trigger-1.png)  
-- The **When a file is added or modified** control opens up  
-![SFTP trigger image 2](./media/connectors-create-api-sftp/trigger-2.png)  
-- Select the **...** located on the right side of the control. This opens the folder picker control  
-![SFTP trigger image 3](./media/connectors-create-api-sftp/action-1.png)  
-- Select the **SFTP** to select the root folder as the folder to monitor for new or modified files. Notice the root folder is now displayed in the **Folder** control.  
-![SFTP trigger image 4](./media/connectors-create-api-sftp/action-2.png)   
+1. Geben Sie im Suchfeld des Designers für Logik-Apps die Zeichenfolge *SFTP* ein, und wählen Sie anschließend den Trigger **SFTP - Wenn eine Datei hinzugefügt oder geändert wird** aus.  
+![SFTP-Trigger – Abbildung 1](./media/connectors-create-api-sftp/trigger-1.png)  
+- Das Steuerelement **Wenn eine Datei hinzugefügt oder geändert wird** wird geöffnet.  
+![SFTP-Trigger – Abbildung 2](./media/connectors-create-api-sftp/trigger-2.png)  
+- Wählen Sie rechts im Steuerelement die drei Punkte (**...**) aus. Die Ordnerauswahl wird geöffnet.  
+![SFTP-Trigger – Abbildung 3](./media/connectors-create-api-sftp/action-1.png)  
+- Wählen Sie **SFTP** aus, um den Stammordner als den Ordner auszuwählen, der auf neue oder geänderte Dateien überwacht werden soll. Beachten Sie, dass der Stammordner nun im Steuerelement **Ordner** angezeigt wird.  
+![SFTP-Trigger – Abbildung 4](./media/connectors-create-api-sftp/action-2.png)  
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow when a file is either modified or created in the specific SFTP folder. 
+Sie haben jetzt Ihre Logik-App mit einem Trigger konfiguriert, der eine Ausführung der anderen Trigger und Aktionen im Workflow startet, wenn im angegebenen SFTP-Ordner eine Datei geändert oder erstellt wird.
 
->[AZURE.NOTE]For a logic app to be functional, it must contain at least one trigger and one action. Follow the steps in the next section to add an action.  
+>[AZURE.NOTE]Damit eine Logik-App funktionsfähig ist, muss sie mindestens einen Trigger und eine Aktion enthalten. Führen Sie die Schritte im nächsten Abschnitt aus, um eine Aktion hinzuzufügen.
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

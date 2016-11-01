@@ -1,236 +1,235 @@
 <properties 
-    pageTitle="How to use the API Inspector to trace calls in Azure API Management" 
-    description="Learn how to trace calls using the API Inspector in Azure API Management." 
-    services="api-management" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management" 
+	description="Erfahren Sie, wie Sie den Ablauf von Aufrufen mit dem API-Inspektor in Azure API Management verfolgen können." 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="api-management" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/25/2016" 
-    ms.author="sdanie"/>
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2016" 
+	ms.author="sdanie"/>
+
+# Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management
+
+API Management stellt einen API-Inspektor bereit, der Sie bei Debugging und Problembehandlung Ihrer APIs unterstützt. Der API-Inspektor kann programmgesteuert eingesetzt oder direkt aus dem Entwicklerportal aufgerufen werden.
+
+Zusätzlich zur Ablaufverfolgung von Vorgängen verfolgt der API-Inspektor auch Auswertungen von [Richtlinienausdrücken](https://msdn.microsoft.com/library/azure/dn910913.aspx). Eine Demonstration finden Sie in der [Cloud Cover-Episode 177 zu weiteren API Management-Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 21:00 durch).
+
+Hier finden Sie eine schrittweise Anleitung für die Nutzung des API-Inspektors.
+
+>[AZURE.NOTE] Nachverfolgungen mit dem API-Inspektor werden nur für Anforderungen generiert und verfügbar gemacht, die Abonnementschlüssel enthalten, die zum [Administratorkonto](api-management-howto-create-groups.md) gehören.
+
+## <a name="trace-call"> </a> Verwenden des API-Inspektors zum Verfolgen von Aufrufen
+
+Um den API-Inspektor zu verwenden, fügen Sie Ihrem Operationsaufruf einen **ocp-apim-trace: true**-Anforderungsheader hinzu. Anschließend können Sie die Ablaufverfolgung über die im **ocp-apim-trace-location**-Antwortheader angegebenen URL herunterladen und analysieren. Dies kann programmgesteuert in Ihren Anwendungen ausgeführt oder direkt aus dem Entwicklerportal aufgerufen werden.
+
+In diesem Lernprogramm wird gezeigt, wie Sie mit dem API-Inspektor Vorgänge mithilfe der Basic Calculator-API verfolgen, die im Erste-Schritte-Lernprogramm zum [Verwalten Ihrer ersten API](api-management-get-started.md) konfiguriert wird. Falls Sie dieses Lernprogramm nicht abgeschlossen haben, dauert es nur wenige Minuten, die Basic Calculator-API zu importieren. Sie können jedoch auch eine andere API Ihrer Wahl verwenden, z. B. die Echo API. Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Die Echo-API gibt einfach alle Eingaben zurück. Sie können diese API mit beliebigen HTTP-Verben aufrufen. Der Rückgabewert enthält wieder Ihre Eingaben.
 
 
-# <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>How to use the API Inspector to trace calls in Azure API Management
 
-API Management provides an API Inspector tool to help you with debugging and troubleshooting your APIs. The API Inspector can be used programmatically and can also be used directly from the developer portal. 
+Klicken Sie zunächst im klassischen Azure-Portal für Ihren API Management-Dienst auf **Entwicklerportal**. Operationen können direkt aus dem Entwicklerportal aufgerufen werden. Dies ist ein einfacher Weg, um die Operationen einer API anzuzeigen und zu testen.
 
-In addition to tracing operations, API Inspector also traces [policy expression](https://msdn.microsoft.com/library/azure/dn910913.aspx) evaluations. For a demonstration, see [Cloud Cover Episode 177: More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) and fast-forward to 21:00.
+>Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie im Abschnitt zum [Erstellen einer API Management-Dienstinstanz][] im Lernprogramm [Erste Schritte mit Azure API Management][] weitere Informationen.
 
-This guide provides a walk-through of using API Inspector.
+![Entwicklerportal für API Management][api-management-developer-portal-menu]
 
->[AZURE.NOTE] API Inspector traces are only generated and made available for requests containing subscription keys that belong to the [administrator](api-management-howto-create-groups.md) account.
+Klicken Sie im oberen Menü auf **APIs** und anschließend auf **Basic Calculator**.
 
-## <a name="<a-name="trace-call">-</a>-use-api-inspector-to-trace-a-call"></a><a name="trace-call"> </a> Use API Inspector to trace a call
+![Echo-API][api-management-api]
 
-To use API Inspector, add an **ocp-apim-trace: true** request header to your operation call, and then download and inspect the trace using the URL indicated by the **ocp-apim-trace-location** response header. This can be done programatically, and can also be done directly from the developer portal.
+Klicken Sie auf **Testen**, um die Operation **Add two integers** aufzurufen.
 
-This tutorial shows how to use the API Inspector to trace operations using the Basic Calculator API that is configured in the [Manage your first API](api-management-get-started.md) getting started tutorial. If you haven't completed that tutorial it only takes a few moments to import the Basic Calculator API, or you can use another API of your choosing such as the Echo API. Each API Management service instance comes pre-configured with an Echo API that can be used to experiment with and learn about API Management. The Echo API returns back whatever input is sent to it. To use it, you can invoke any HTTP verb, and the return value will simply be what you sent. 
+![Ausprobieren][api-management-open-console]
 
+Behalten Sie die standardmäßigen Parameterwerte bei, und wählen Sie den Abonnementschlüssel in der Dropdownliste **Abonnementschlüssel** aus.
 
-
-To get started, click **developer portal** in the Azure Classic Portal for your API Management service. Operations can be called directly from the developer portal which provides a convenient way to view and test the operations of an API.
-
->If you haven't yet created an API Management service instance, see [Create an API Management service instance][] in the [Get started with Azure API Management][] tutorial.
-
-![API Management developer portal][api-management-developer-portal-menu]
-
-Click **APIs** from the top menu, and then click **Basic Calculator**.
-
-![Echo API][api-management-api]
-
-Click **Try it** to try the **Add two integers** operation.
-
-![Try it][api-management-open-console]
-
-Keep the default parameter values, and select the subscription key for the product you want to use from the **subscription-key** drop-down.
-
-By default in the developer portal the **Ocp-Apim-Trace** header is already set to **true**. This header configures whether or not a trace is generated.
+Im Entwicklerportal ist der Header **Ocp-Apim-Trace** standardmäßig bereits auf **true** festgelegt. Dieser Header bestimmt, ob eine Ablaufverfolgung generiert wird.
 
 ![Send][api-management-http-get]
 
-Click **Send** to invoke the operation.
+Klicken Sie auf **Senden**, um den Vorgang aufzurufen.
 
 ![Send][api-management-send-results]
 
-In the response headers will be an **ocp-apim-trace-location** with a value similar to the following example.
+Die Antwortheader enthalten ein **ocp-apim-trace-location** mit einem ähnlichen Wert wie im folgenden Beispiel.
 
-    ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
+	ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 
-The trace can be downloaded from the specified location and reviewed as demonstrated in the next step.
+Sie können die Ablaufverfolgung vom angegebenen Speicherort herunterladen und wie im folgenden Schritt gezeigt analysieren.
 
-## <a name="<a-name="inspect-trace">-</a>inspect-the-trace"></a><a name="inspect-trace"> </a>Inspect the trace
+## <a name="inspect-trace"> </a>Analysieren der Ablaufverfolgung
 
-To review the values in the trace, download the trace file from the **ocp-apim-trace-location** URL. It is a text file in JSON format, and contains entries similar to the following example.
+Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location**-URL herunter, um die Werte in der Ablaufverfolgung zu überprüfen. Es handelt sich um eine Textdatei im JSON-Format, die Werte ähnlich des folgenden Beispiels enthält.
 
-    {
-        "traceId": "abcd8ea63d134c1fabe6371566c7cbea",
-        "traceEntries": {
-            "inbound": [
-                {
-                    "source": "handler",
-                    "timestamp": "2015-06-23T19:51:35.2998610Z",
-                    "elapsed": "00:00:00.0725926",
-                    "data": {
-                        "request": {
-                            "method": "GET",
-                            "url": "https://contoso5.azure-api.net/calc/add?a=51&b=49",
-                            "headers": [
-                                {
-                                    "name": "Ocp-Apim-Subscription-Key",
-                                    "value": "5d7c41af64a44a68a2ea46580d271a59"
-                                },
-                                {
-                                    "name": "Connection",
-                                    "value": "Keep-Alive"
-                                },
-                                {
-                                    "name": "Host",
-                                    "value": "contoso5.azure-api.net"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "source": "mapper",
-                    "timestamp": "2015-06-23T19:51:35.2998610Z",
-                    "elapsed": "00:00:00.0726213",
-                    "data": {
-                        "configuration": {
-                            "api": {
-                                "from": "/calc",
-                                "to": {
-                                    "scheme": "http",
-                                    "host": "calcapi.cloudapp.net",
-                                    "port": 80,
-                                    "path": "/api",
-                                    "queryString": "",
-                                    "query": {},
-                                    "isDefaultPort": true
-                                }
-                            },
-                            "operation": {
-                                "method": "GET",
-                                "uriTemplate": "/add?a={a}&b={b}"
-                            },
-                            "user": {
-                                "id": 1,
-                                "groups": [
-                                    "Administrators",
-                                    "Developers"
-                                ]
-                            },
-                            "product": {
-                                "id": 1
-                            }
-                        }
-                    }
-                },
-                {
-                    "source": "handler",
-                    "timestamp": "2015-06-23T19:51:35.2998610Z",
-                    "elapsed": "00:00:00.0727522",
-                    "data": {
-                        "message": "Request is being forwarded to the backend service.",
-                        "request": {
-                            "method": "GET",
-                            "url": "http://calcapi.cloudapp.net/api/add?a=51&b=49",
-                            "headers": [
-                                {
-                                    "name": "Ocp-Apim-Subscription-Key",
-                                    "value": "5d7c41af64a44a68a2ea46580d271a59"
-                                },
-                                {
-                                    "name": "X-Forwarded-For",
-                                    "value": "33.52.215.35"
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "outbound": [
-                {
-                    "source": "handler",
-                    "timestamp": "2015-06-23T19:51:35.4256650Z",
-                    "elapsed": "00:00:00.1960601",
-                    "data": {
-                        "response": {
-                            "status": {
-                                "code": 200,
-                                "reason": "OK"
-                            },
-                            "headers": [
-                                {
-                                    "name": "Pragma",
-                                    "value": "no-cache"
-                                },
-                                {
-                                    "name": "Content-Length",
-                                    "value": "124"
-                                },
-                                {
-                                    "name": "Cache-Control",
-                                    "value": "no-cache"
-                                },
-                                {
-                                    "name": "Content-Type",
-                                    "value": "application/xml; charset=utf-8"
-                                },
-                                {
-                                    "name": "Date",
-                                    "value": "Tue, 23 Jun 2015 19:51:35 GMT"
-                                },
-                                {
-                                    "name": "Expires",
-                                    "value": "-1"
-                                },
-                                {
-                                    "name": "Server",
-                                    "value": "Microsoft-IIS/8.5"
-                                },
-                                {
-                                    "name": "X-AspNet-Version",
-                                    "value": "4.0.30319"
-                                },
-                                {
-                                    "name": "X-Powered-By",
-                                    "value": "ASP.NET"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "source": "handler",
-                    "timestamp": "2015-06-23T19:51:35.4256650Z",
-                    "elapsed": "00:00:00.1961112",
-                    "data": {
-                        "message": "Response headers have been sent to the caller. Starting to stream the response body."
-                    }
-                },
-                {
-                    "source": "handler",
-                    "timestamp": "2015-06-23T19:51:35.4256650Z",
-                    "elapsed": "00:00:00.1963155",
-                    "data": {
-                        "message": "Response body streaming to the caller is complete."
-                    }
-                }
-            ]
-        }
-    }
+	{
+	    "traceId": "abcd8ea63d134c1fabe6371566c7cbea",
+	    "traceEntries": {
+	        "inbound": [
+	            {
+	                "source": "handler",
+	                "timestamp": "2015-06-23T19:51:35.2998610Z",
+	                "elapsed": "00:00:00.0725926",
+	                "data": {
+	                    "request": {
+	                        "method": "GET",
+	                        "url": "https://contoso5.azure-api.net/calc/add?a=51&b=49",
+	                        "headers": [
+	                            {
+	                                "name": "Ocp-Apim-Subscription-Key",
+	                                "value": "5d7c41af64a44a68a2ea46580d271a59"
+	                            },
+	                            {
+	                                "name": "Connection",
+	                                "value": "Keep-Alive"
+	                            },
+	                            {
+	                                "name": "Host",
+	                                "value": "contoso5.azure-api.net"
+	                            }
+	                        ]
+	                    }
+	                }
+	            },
+	            {
+	                "source": "mapper",
+	                "timestamp": "2015-06-23T19:51:35.2998610Z",
+	                "elapsed": "00:00:00.0726213",
+	                "data": {
+	                    "configuration": {
+	                        "api": {
+	                            "from": "/calc",
+	                            "to": {
+	                                "scheme": "http",
+	                                "host": "calcapi.cloudapp.net",
+	                                "port": 80,
+	                                "path": "/api",
+	                                "queryString": "",
+	                                "query": {},
+	                                "isDefaultPort": true
+	                            }
+	                        },
+	                        "operation": {
+	                            "method": "GET",
+	                            "uriTemplate": "/add?a={a}&b={b}"
+	                        },
+	                        "user": {
+	                            "id": 1,
+	                            "groups": [
+	                                "Administrators",
+	                                "Developers"
+	                            ]
+	                        },
+	                        "product": {
+	                            "id": 1
+	                        }
+	                    }
+	                }
+	            },
+	            {
+	                "source": "handler",
+	                "timestamp": "2015-06-23T19:51:35.2998610Z",
+	                "elapsed": "00:00:00.0727522",
+	                "data": {
+	                    "message": "Request is being forwarded to the backend service.",
+	                    "request": {
+	                        "method": "GET",
+	                        "url": "http://calcapi.cloudapp.net/api/add?a=51&b=49",
+	                        "headers": [
+	                            {
+	                                "name": "Ocp-Apim-Subscription-Key",
+	                                "value": "5d7c41af64a44a68a2ea46580d271a59"
+	                            },
+	                            {
+	                                "name": "X-Forwarded-For",
+	                                "value": "33.52.215.35"
+	                            }
+	                        ]
+	                    }
+	                }
+	            }
+	        ],
+	        "outbound": [
+	            {
+	                "source": "handler",
+	                "timestamp": "2015-06-23T19:51:35.4256650Z",
+	                "elapsed": "00:00:00.1960601",
+	                "data": {
+	                    "response": {
+	                        "status": {
+	                            "code": 200,
+	                            "reason": "OK"
+	                        },
+	                        "headers": [
+	                            {
+	                                "name": "Pragma",
+	                                "value": "no-cache"
+	                            },
+	                            {
+	                                "name": "Content-Length",
+	                                "value": "124"
+	                            },
+	                            {
+	                                "name": "Cache-Control",
+	                                "value": "no-cache"
+	                            },
+	                            {
+	                                "name": "Content-Type",
+	                                "value": "application/xml; charset=utf-8"
+	                            },
+	                            {
+	                                "name": "Date",
+	                                "value": "Tue, 23 Jun 2015 19:51:35 GMT"
+	                            },
+	                            {
+	                                "name": "Expires",
+	                                "value": "-1"
+	                            },
+	                            {
+	                                "name": "Server",
+	                                "value": "Microsoft-IIS/8.5"
+	                            },
+	                            {
+	                                "name": "X-AspNet-Version",
+	                                "value": "4.0.30319"
+	                            },
+	                            {
+	                                "name": "X-Powered-By",
+	                                "value": "ASP.NET"
+	                            }
+	                        ]
+	                    }
+	                }
+	            },
+	            {
+	                "source": "handler",
+	                "timestamp": "2015-06-23T19:51:35.4256650Z",
+	                "elapsed": "00:00:00.1961112",
+	                "data": {
+	                    "message": "Response headers have been sent to the caller. Starting to stream the response body."
+	                }
+	            },
+	            {
+	                "source": "handler",
+	                "timestamp": "2015-06-23T19:51:35.4256650Z",
+	                "elapsed": "00:00:00.1963155",
+	                "data": {
+	                    "message": "Response body streaming to the caller is complete."
+	                }
+	            }
+	        ]
+	    }
+	}
 
-## <a name="<a-name="next-steps">-</a>next-steps"></a><a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>Nächste Schritte
 
--   Watch a demo of tracing policy expressions in [Cloud Cover Episode 177: More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Fast-forward to 21:00 to see the demo.
+-	Eine Demonstration zu Richtlinienausdrücken für die Ablaufverfolgung finden Sie in der [Cloud Cover-Episode 177 zu weiteren API Management-Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Führen Sie einen schnellen Vorlauf bis 21:00 durch, um die Demo anzuzeigen.
 
 >[AZURE.VIDEO episode-177-more-api-management-features-with-vlad-vinogradsky]
 
@@ -242,8 +241,8 @@ To review the values in the trace, download the trace file from the **ocp-apim-t
 [Responses]: api-management-howto-add-operations.md#responses
 [How create and publish a product]: api-management-howto-add-products.md
 
-[Get started with Azure API Management]: api-management-get-started.md
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Erste Schritte mit Azure API Management]: api-management-get-started.md
+[Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 [Azure Classic Portal]: https://manage.windowsazure.com/
 
 
@@ -260,7 +259,4 @@ To review the values in the trace, download the trace file from the **ocp-apim-t
 
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

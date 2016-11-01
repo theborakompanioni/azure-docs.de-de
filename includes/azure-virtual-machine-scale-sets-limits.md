@@ -1,9 +1,6 @@
-Resource|Maximum Limit
+Ressource|Maximales Limit
 ---|---
-Maximum number of VMs in a scale set|100
-Maximum number of scale sets in a region|200
+Maximale Anzahl von virtuellen Computern in einer Skalierungsgruppe|100
+Maximale Anzahl von Skalierungsgruppen in einer Region|200
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

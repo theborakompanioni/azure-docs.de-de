@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure RemoteApp best practices | Microsoft Azure"
-    description="Best practices for configuring and using Azure RemoteApp."
+    pageTitle="Bewährte Methoden für Azure RemoteApp | Microsoft Azure"
+    description="Bewährte Methoden zum Konfigurieren und Verwenden von Azure RemoteApp"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -15,40 +15,35 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
-
-# <a name="best-practices-for-configuring-and-using-azure-remoteapp"></a>Best practices for configuring and using Azure RemoteApp
+# Bewährte Methoden zum Konfigurieren und Verwenden von Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
 
-The following information can help you configure and use Azure RemoteApp productively.
+Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiven Verwendung von Azure RemoteApp behilflich sein.
 
-## <a name="connectivity"></a>Connectivity
-
-
-- Always use the latest client version. Using older clients might result in connectivity issues and other degraded experiences. Enabling automatic application updates for your device will ensure that the latest client is always installed.
-- Always use the most stable and reliable internet connection available to you.  
-- Use only supported proxy connections for optimal connectivity performance.  The SOCKS proxy is not supported.
-
-## <a name="applications"></a>Applications
+## Konnektivität
 
 
-- Save and close RemoteApp applications when you are done with the application. Not closing the application might result in data loss.
-- Validate custom applications before using them in Azure RemoteApp. This includes ensuring they work on a multi-session platform and don’t consume unnecessary resources such as memory and CPU that might starve another user in the same collection. For information, download and review the [Application Compatibility Best Practices for Remote Desktop Services](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf).
+- Verwenden Sie immer die neueste Clientversion. Bei Verwendung älterer Clients können Verbindungsprobleme und andere Beeinträchtigungen auftreten. Durch das Aktivieren automatischer Anwendungsupdates für Ihr Gerät ist sichergestellt, dass immer der neueste Client installiert ist.
+- Verwenden Sie immer die stabilste und zuverlässigste Internetverbindung.
+- Verwenden Sie nur unterstützte Proxy-Verbindungen für eine optimale Verbindungsqualität. Der SOCKS-Proxy wird nicht unterstützt.
 
-## <a name="configuration-and-management"></a>Configuration and management
-
-
-- Keep your template images up to date, installing software updates and other critical fixes as needed. This ensures that as Azure RemoteApp auto-scales to meet your capacity, each instance is patched.  
-- Make sure your Active Directory Federation Services (AD FS) deployment is secure and reliable. Otherwise client authentications might fail, preventing users from accessing Azure RemoteApp.
-- Configure template images with installed applications, roles, or features such that they are stateless. They should not rely on any instances of the virtual machines in a RemoteApp service being in a persistent state.
-    - Store all user data in user profiles or other storage locations external to the service, such as on-premises file shares or OneDrive.
-    - Store shared data in storage locations external to the service, such as on-premises file shares or OneDrive.
-    - Configure any system-wide settings in the template image rather than on individual virtual machines in a service.
-    - Disable automatic software updates for published applications - instead apply them manually to the template image and test them before you deploy  from the template.
+## Anwendungen
 
 
+- Speichern und schließen Sie RemoteApp-Anwendungen, wenn Sie die Anwendung nicht mehr benötigen. Eine nicht geschlossene Anwendung kann zu Datenverlusten führen.
+- Überprüfen Sie benutzerdefinierte Anwendungen, bevor Sie diese in Azure RemoteApp verwenden. Stellen Sie dabei auch sicher, dass sie auf einer Multisession-Plattform funktionieren, keine unnötigen Ressourcen (Speicher und CPU) belegen und dadurch möglicherweise einen anderen Benutzer derselben Sammlung blockieren. Informationen hierzu finden Sie im Whitepaper [Application Compatibility Best Practices for Remote Desktop Services](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf), das Sie herunterladen können.
 
-<!--HONumber=Oct16_HO2-->
+## Konfiguration und Verwaltung
 
 
+- Halten Sie die Vorlagenimages auf dem neuesten Stand, und installieren Sie nach Bedarf Softwareupdates und andere wichtige Hotfixes und Patches. Dadurch ist gewährleistet, dass bei der automatischen Anpassung von Azure RemoteApp an Ihre Kapazität jede Instanz gepatcht wird.
+- Sorgen Sie für eine sichere und zuverlässige Bereitstellung von Active Directory Federation Services (AD FS). Sonst treten bei Clientauthentifizierungen möglicherweise Fehler auf, und die Benutzer können nicht auf Azure RemoteApp zugreifen.
+- Achten Sie beim Konfigurieren von Vorlagenimages mit installierten Anwendungen, Rollen oder Features darauf, dass sie keinen Status aufweisen. Sie sollten sich nicht auf eine Instanz der virtuellen Computer in einem RemoteApp-Dienst, der sich in einem permanenten Status befindet, stützen.
+	- Speichern Sie alle Benutzerdaten in Benutzerprofilen oder an anderen externen Speicherorten (außerhalb des Diensts), wie z. B. in lokalen Dateifreigaben oder auf OneDrive.
+	- Speichern Sie freigegebene Daten an externen Speicherorten (außerhalb des Diensts), wie z. B. in lokalen Dateifreigaben oder auf OneDrive.
+	- Konfigurieren Sie systemweite Einstellungen im Vorlagenimage und nicht auf einzelnen virtuellen Computern in einem Dienst.
+	- Deaktivieren Sie automatische Softwareupdates für veröffentlichte Anwendungen – wenden Sie Updates stattdessen manuell auf das Vorlagenimage an, und testen Sie sie, bevor Sie sie über die Vorlage bereitstellen.
+
+<!---HONumber=AcomDC_0921_2016-->

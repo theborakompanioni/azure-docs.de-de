@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Contact Microsoft Support | Microsoft Azure"
-   description="Learn how to create a support request and start a support session on your StorSimple device."
+   pageTitle="Microsoft-Support kontaktieren | Microsoft Azure"
+   description="Hier erfahren Sie, wie Sie eine Supportanfrage erstellen und eine Supportsitzung auf Ihrem StorSimple-Gerät initiieren."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,96 +15,91 @@
    ms.date="09/21/2016"
    ms.author="alkohli" />
 
+# Microsoft-Support kontaktieren
 
-# <a name="contact-microsoft-support"></a>Contact Microsoft Support
+Wenn Probleme mit Ihrer Microsoft Azure StorSimple-Lösung auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In einer Onlinesitzung mit dem Supporttechniker müssen Sie darüber hinaus eine Supportsitzung auf Ihrem StorSimple-Gerät starten. In diesem Artikel wird Folgendes beschrieben:
 
-If you encounter any issues with your Microsoft Azure StorSimple solution, you can create a service request for technical support. In an online session with your support engineer, you may also need to start a support session on your StorSimple device. This article walks you through:
+- Erstellen einer Supportanfrage
+- Starten einer Supportsitzung in der Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts
 
-- How to create a support request.
-- How to start a support session in the Windows PowerShell interface of your StorSimple device.
+Lesen Sie die [Support-SLAs und Informationen für die StorSimple 8000-Serie](https://msdn.microsoft.com/library/mt433077.aspx), bevor Sie eine Supportanfrage erstellen.
 
-Review the [StorSimple 8000 Series Support SLAs and information](https://msdn.microsoft.com/library/mt433077.aspx) before you create a Support request.
+## Erstellen einer Supportanfrage
 
-## <a name="create-a-support-request"></a>Create a support request
+Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
 
-Perform the following steps to create a support request:
+#### So erstellen Sie eine Supportanfrage
 
-#### <a name="to-create-a-support-request"></a>To create a support request
+1. Klicken Sie oben rechts im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf den Kontonamen, und klicken Sie dann auf **Microsoft-Support kontaktieren**.
 
-1. In the [Azure classic portal](https://manage.windowsazure.com/), in the upper right corner, click your account name and then click **Contact Microsoft Support**.
+	![Kontaktieren des Supports von MS über das Verwaltungsportal](./media/storsimple-contact-microsoft-support/Ibiza1.png)
 
-    ![Contact MS Support via ManagementPortal](./media/storsimple-contact-microsoft-support/Ibiza1.png)
+2. Sie werden zum neuen Azure-Portal (portal.azure.com) weitergeleitet. Klicken Sie auf die Kachel **Neue Supportanfrage**.
 
-2. You will be redirected to the new Azure portal (portal.azure.com). Click the **New support request** tile.
+	![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-contact-microsoft-support/Ibiza2.png)
 
-    ![Contact MS Support via new portal](./media/storsimple-contact-microsoft-support/Ibiza2.png)
+    Auf der rechten Seite des Bildschirms wird die **Neue Supportanfrage** angezeigt.
 
-    On the right side of the screen, the **New support request** pane appears. 
+	![Neue Supportanfrage (Bereich)](./media/storsimple-contact-microsoft-support/Ibiza3a.png)
 
-    ![New support request pane](./media/storsimple-contact-microsoft-support/Ibiza3a.png)
+3. Führen Sie im Dialogfeld **Grundlagen** Folgendes aus:
+	1. Wählen Sie aus der Dropdownliste **Problemtyp** den Eintrag **Technisch** aus.
+	2. Wählen Sie aus der Dropdownliste ein **Abonnement** aus.
+	3. Wählen Sie aus der Dropdownliste **Dienst** den Eintrag **StorSimple** aus.
+	4. Wählen Sie aus der Dropdownliste einen **Supportplan** aus. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
 
-3. In the **Basics** dialog box, complete the following:                                
-    1. From the **Issue type** drop-down list , select **Technical**.
-    2. Select a **Subscription** from the drop-down list.
-    3. From the **Service** drop-down list, select **StorSimple**. 
-    4. Select a **Support plan** from the drop-down list. You need a paid support plan to enable Technical Support.
+4. Klicken Sie auf **Next**. Das Dialogfeld **Problem** wird angezeigt.
 
-4. Click **Next**. The **Problem** dialog box appears.
+	![Neue Supportanfrage (Bereich)](./media/storsimple-contact-microsoft-support/Ibiza5a.png)
 
-    ![New support request pane](./media/storsimple-contact-microsoft-support/Ibiza5a.png) 
+5. Führen Sie im Dialogfeld **Problem** Folgendes aus:
 
-5. In the **Problem** dialog box, complete the following:
+    1.  Wählen Sie aus der Dropdownliste einen **Schweregrad** aus.
+    2.  Wählen Sie aus der Dropdownliste einen **Problemtyp** aus.
+    3.  Wählen Sie aus der Dropdownliste eine **Kategorie** aus.
+    4.  Beschreiben Sie Ihr Problem im Feld **Details**.
+    5.  Geben Sie im Feld **Zeitraum** das Datum, die Uhrzeit und die Zeitzone an, die dem letzten Auftreten von Ihrem Problem entsprechen.
+    6.  Klicken Sie unter **Dateiupload** auf das Ordnersymbol, um Ihr Supportpaket zu suchen.
+    7.  Aktivieren Sie das Kontrollkästchen **Diagnoseinformationen freigeben**.
 
-    1.  Select a **Severity** level from the drop-down list.
-    2.  Select a **Problem type** from the drop-down list.
-    3.  Select a **Category** from the drop-down list. 
-    4.  In the **Details** box, briefly describe your issue.
-    5.  In the **Time frame** box, indicate the date, time, and time zone that corresponds to the most recent occurrence of your issue.
-    6.  Under **File upload**, click the folder icon to browse to your support package.
-    7.  Select the **Share diagnostic information** check box.
+6. Klicken Sie auf **Next**. Das Dialogfeld **Kontaktinformationen** wird angezeigt.
 
-6. Click **Next**. The **Contact information** dialog box appears.
+	![Neue Supportanfrage (Bereich)](./media/storsimple-contact-microsoft-support/Ibiza6a.png)
 
-    ![New support request pane](./media/storsimple-contact-microsoft-support/Ibiza6a.png) 
+7. Geben Sie Ihre Kontaktinformationen ein, und wählen Sie eine Kontaktmethode (Telefon oder E-Mail) aus.
 
-7. Enter your contact information and select a contact method (phone or email). 
+8. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern**.
 
-8. Select the **Save contact changes for future support requests** check box.
+9. Klicken Sie auf **Erstellen**.
 
-9. Click **Create**.
+Nach dem Übermitteln Ihrer Anfrage setzt sich baldmöglichst ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
 
-After you have submitted your request, a Support engineer will contact you as soon as possible to proceed with your request.
+## Starten einer Supportsitzung in Windows PowerShell für StorSimple
 
-## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Start a support session in Windows PowerShell for StorSimple
+Um Probleme zu beheben, die auf Ihrem StorSimple-Gerät unter Umständen auftreten, müssen Sie sich mit dem Supportteam von Microsoft in Verbindung setzen. Der Microsoft-Support muss sich möglicherweise über eine Supportsitzung bei Ihrem Gerät anmelden.
 
-To troubleshoot any issues that you might experience with the StorSimple device, you will need to engage with the Microsoft Support team. Microsoft Support may need to use a support session to log on to your device. 
+Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 
-Perform the following steps to start a support session:
+#### So starten Sie eine Supportsitzung
 
-#### <a name="to-start-a-support-session"></a>To start a support session
+1. Greifen Sie auf das Gerät direkt über die serielle Konsole oder von einem Remotecomputer über eine Telnet-Sitzung zu. Führen Sie hierzu die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console) aus.
 
-1. Access the device directly by using the serial console or through a telnet session from a remote computer. To do this, follow the steps in [Use PuTTY to connect to the device serial console](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console).
+2. Drücken Sie in der Sitzung, die geöffnet wird, die **EINGABETASTE**, um eine Eingabeaufforderung zu öffnen.
 
-2. In the session that opens, press the **Enter** key to get a command prompt.
+3. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die **Anmeldung mit Vollzugriff**.
 
-3. In the serial console menu, select option 1, **Log in with full access**.
+4. Geben Sie an der Eingabeaufforderung das folgende Kennwort ein:
 
-4. At the prompt, type the following password: 
+	`Password1`
 
-    `Password1`
+5. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein:
 
-5. At the prompt, type the following command:
+	`Enable-HcsSupportAccess`
 
-    `Enable-HcsSupportAccess`
+6. Eine verschlüsselte Zeichenfolge wird angezeigt. Kopieren Sie diese Zeichenfolge in einen Text-Editor wie beispielsweise Notepad.
 
-6. An encrypted string will be presented to you. Copy this string into a text editor such as Notepad.
+7. Speichern Sie diese Zeichenfolge, und senden Sie sie in einer E-Mail-Nachricht an den Microsoft-Support.
 
-7. Save this string and send it in an email message to Microsoft Support. 
+> [AZURE.IMPORTANT] Sie können den Supportzugriff deaktivieren, indem Sie `Disable-HcsSupportAccess` deaktivieren. Das StorSimple-Gerät versucht acht Stunden nach dem Initiieren der Sitzung ebenfalls, den Supportzugriff zu deaktivieren. Es wird empfohlen, die Anmeldeinformationen für das StorSimple-Gerät nach dem Initiieren einer Supportsitzung zu ändern.
 
-> [AZURE.IMPORTANT] You can disable support access by running `Disable-HcsSupportAccess`. The StorSimple device will also attempt to disable support access 8 hours after the session was initiated. It is a best practice to change your StorSimple device credentials after initiating a support session.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,94 +1,49 @@
 <properties
-    pageTitle="Azure Government documentation | Microsoft Azure"
-    description="This provides a comparision of features and guidance on developing applications for Azure Government"
-    services="Azure-Government"
-    cloud="gov" 
-    documentationCenter=""
-    authors="ryansoc"
-    manager="zakramer"
-    editor=""/>
+	pageTitle="Dokumentation zu Azure Government | Microsoft Azure"
+	description="Dies bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government"
+	services="Azure-Government"
+	cloud="gov" 
+	documentationCenter=""
+	authors="ryansoc"
+	manager="zakramer"
+	editor=""/>
 
 <tags
-    ms.service="multiple"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="azure-government"
-    ms.date="09/30/2016"
-    ms.author="ryansoc"/>
+	ms.service="multiple"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="azure-government"
+	ms.date="08/25/2016"
+	ms.author="ryansoc"/>
 
 
+#  Azure Government-Daten und -Speicher
 
-#  <a name="azure-government-data-and-storage"></a>Azure Government Data and Storage
+##  Speicher
 
-##  <a name="azure-storage"></a>Azure Storage
+Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Government für Azure Storage:
 
-For details on this service and how to use it, see [Azure Storage public documentation](https://azure.microsoft.com/documentation/services/storage/).
-
-### <a name="variations"></a>Variations
-
-The URLs for storage accounts in Azure Government are different:
-
-Service Type|Azure Public|Azure Government
----|---|---
-Blob Storage|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net
-Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
-Table Storage|*.table.core.windows.net| *.table.core.usgovcloudapi.net
-
->[AZURE.NOTE] All of your scripts and code needs to account for the appropriate endpoints.  See [Configure Azure Storage Connection Strings](../storage-configure-connection-string.md#creating-a-connection-string-to-the-explicit-storage-endpoint). 
-
-For more information on APIs see the <a href="https://msdn.microsoft.com/en-us/library/azure/mt616540.aspx"> Cloud Storage Account Constructor</a>.
-
-The endpoint suffix to use in these overloads is core.usgovcloudapi.net 
-
-### <a name="considerations"></a>Considerations
-
-The following information identifies the Azure Government boundary for Azure Storage:
-
-| Regulated/controlled data permitted | Regulated/controlled data not permitted |
+| Regulierte/kontrollierte Daten zulässig | Regulierte/kontrollierte Daten nicht zulässig |
 |--------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Data entered, stored, and processed within an Azure Storage product can contain export controlled data. Static authenticators, such as passwords and smartcard PINs for access to Azure platform components. Private keys of certificates used to manage Azure platform components. Other security information/secrets, such as certificates, encryption keys, master keys, and storage keys stored in Azure services. | Azure Storage metadata is not permitted to contain export controlled data. This metadata includes all configuration data entered when creating and maintaining your storage product.  Do not enter Regulated/controlled data into the following fields:  Resource groups, Deployment names, Resource names, Resource tags  
+| Daten, die in einem Azure Storage-Produkt eingegeben, gespeichert und verarbeitet werden, können Exportbestimmungen unterliegende Daten enthalten. Statische Authentifikatoren wie Kennwörter und Smartcard-PINs für den Zugriff auf Komponenten der Azure-Plattform. Private Schlüssel von Zertifikaten, die für die Verwaltung von Komponenten der Azure-Plattform verwendet werden. Andere Sicherheitsinformationen/geheime Schlüssel, wie etwa Zertifikate, Verschlüsselungsschlüssel, Hauptschlüssel und Speicherschlüssel, die in Azure-Diensten gespeichert sind. | Azure Storage-Metadaten dürfen keine den Exportbestimmungen unterliegenden Daten enthalten. Zu diesen Metadaten gehören alle Konfigurationsdaten, die beim Erstellen und Verwalten des Speicherprodukts eingegeben werden. Geben Sie keine regulierten/kontrollierten Daten in die folgenden Felder ein: Ressourcengruppen, Deployment names (Bereitstellungsnamen), Ressourcennamen, Resourcentags.  
 
-##  <a name="premium-storage"></a>Premium Storage
+Weitere Informationen finden Sie in der <a href=https://azure.microsoft.com/documentation/services/storage/>öffentlichen Azure Storage-Dokumentation</a>.
 
-For details on this service and how to use it, see [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../storage/storage-premium-storage.md).
+Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 
-###  <a name="variations"></a>Variations
+##  SQL-Datenbank
 
-Premium Storage is generally available in the USGov Virginia. This includes DS-series Virtual Machines. 
+Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Government für Azure Storage:
 
-### <a name="considerations"></a>Considerations
-
-The same storage data considerations listed above apply to premium storage accounts. 
-
-##  <a name="sql-database"></a>SQL Database
-
-Refer to the<a href="https://msdn.microsoft.com/en-us/library/bb510589.aspx"> Microsoft Security Center for SQL Database Engine </a> and [Azure SQL Database Public Documentation](https://azure.microsoft.com/documentation/services/sql-database/) for additional guidance on metadata visibility configuration, and protection best practices.
-
-### <a name="variations"></a>Variations
-
-SQL V12 Database is generally available in Azure Government.
-
-The Address for SQL Azure Servers in Azure Government is different:
-
-Service Type|Azure Public|Azure Government
----|---|---
-SQL Database|*.database.windows.net|*.database.usgovcloudapi.net
-
-### <a name="considerations"></a>Considerations
-
-The following information identifies the Azure Government boundary for Azure Storage:
-
-| Regulated/controlled data permitted | Regulated/controlled data not permitted |
+| Regulierte/kontrollierte Daten zulässig | Regulierte/kontrollierte Daten nicht zulässig |
 |--------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| All data stored and processed in Microsoft Azure SQL can contain Azure Government-regulated data. You must use database tools for data transfer of Azure Government-regulated data. | Azure SQL metadata is not permitted to contain export controlled data. This metadata includes all configuration data entered when creating and maintaining your storage product.  Do not enter regulated/controlled data into the following fields: Database name, Subscription name, Resource groups, Server name, Server admin login, Deployment names, Resource names, Resource tags
+| Alle in Microsoft Azure SQL gespeicherte und verarbeitete Daten können durch Azure Government regulierte Daten enthalten. Sie müssen Datenbanktools für die Übertragung von durch Azure Government regulierte Daten verwenden. | Azure SQL-Metadaten dürfen keine den Exportbestimmungen unterliegenden Daten enthalten. Zu diesen Metadaten gehören alle Konfigurationsdaten, die beim Erstellen und Verwalten des Speicherprodukts eingegeben werden. Geben Sie keine regulierten/kontrollierten Daten in die folgenden Felder ein: Datenbankname, Abonnementname, Ressourcengruppen, Servername, Serveradministratoranmeldung, Deployment names (Bereitstellungsnamen), Ressourcennamen, Ressourcentags.
 
-##  <a name="next-steps"></a>Next Steps
+SQL-Datenbank V11 ist allgemein in Azure Government verfügbar.
 
-For supplemental information and updates subscribe to the <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government Blog. </a>
+Zusätzliche Anleitungen zur Konfiguration der Metadatensichtbarkeit und bewährte Methoden für den Schutz finden Sie unter <a href="https://msdn.microsoft.com/de-DE/library/bb510589.aspx">Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank</a> und in der <a href="https://azure.microsoft.com/documentation/services/sql-database/">öffentlichen Dokumentation zu Azure SQL-Datenbank</a>.
 
+Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

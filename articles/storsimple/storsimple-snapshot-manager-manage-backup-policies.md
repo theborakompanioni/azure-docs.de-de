@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager backup policies | Microsoft Azure"
-   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to create and manage the backup policies that control scheduled backups."
+   pageTitle="StorSimple Snapshot Manager-Sicherungsrichtlinien | Microsoft Azure"
+   description="Beschreibt, wie das StorSimple Snapshot Manager-MMC-Snap-in zum Erstellen und Verwalten von Sicherungsrichtlinien verwendet wird, die geplante Sicherungen steuern."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,114 +15,109 @@
    ms.date="05/12/2016"
    ms.author="v-sharos" />
 
+# Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Sicherungsrichtlinien
 
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Use StorSimple Snapshot Manager to create and manage backup policies
+## Übersicht
 
-## <a name="overview"></a>Overview
+Eine Sicherungsrichtlinie erstellt einen Zeitplan für die Sicherung von Volumedaten lokal oder in der Cloud. Wenn Sie eine Sicherungsrichtlinie erstellen, können Sie auch eine Aufbewahrungsrichtlinie angeben. (Sie können bis zu 64 Momentaufnahmen beibehalten.) Weitere Informationen über Sicherungsrichtlinien finden Sie unter [Sicherungstypen](storsimple-what-is-snapshot-manager.md#backup-type) im Artikel [StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung](storsimple-overview.md).
 
-A backup policy creates a schedule for backing up volume data locally or in the cloud. When you create a backup policy, you can also specify a retention policy. (You can retain a maximum of 64 snapshots.) For more information about backup policies, see [Backup types](storsimple-what-is-snapshot-manager.md#backup-type) in [StorSimple 8000 series: a hybrid cloud solution](storsimple-overview.md).
+In diesem Tutorial werden folgende Punkte erläutert:
 
-This tutorial explains how to:
+- Erstellen einer Sicherungsrichtlinie 
+- Bearbeiten einer Sicherungsrichtlinie 
+- Löschen einer Sicherungsrichtlinie 
 
-- Create a backup policy 
-- Edit a backup policy 
-- Delete a backup policy 
+## Erstellen einer Sicherungsrichtlinie
 
-## <a name="create-a-backup-policy"></a>Create a backup policy
+Verwenden Sie das folgende Verfahren, um eine neue Sicherungsrichtlinie zu erstellen.
 
-Use the following procedure to create a new backup policy.
+#### So erstellen Sie eine Sicherungsrichtlinie
 
-#### <a name="to-create-a-backup-policy"></a>To create a backup policy
+1. Klicken Sie auf das Desktopsymbol, um StorSimple Snapshot Manager zu starten.
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. Klicken Sie im Fenster **Bereich** mit der rechten Maustaste auf **Sicherungsrichtlinien**, und klicken Sie dann auf **Sicherungsrichtlinie erstellen**.
 
-2. In the **Scope** pane, right-click **Backup Policies**, and click **Create Backup Policy**.
+    ![Erstellen einer Sicherungsrichtlinie](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
-    ![Create a backup policy](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
+    Das Dialogfeld **Richtlinie erstellen** wird angezeigt.
 
-    The **Create a Policy** dialog box appears. 
+    ![Erstellen einer Richtlinie – Registerkarte "Allgemein"](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
 
-    ![Create a Policy - General tab](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
+3. Vervollständigen Sie auf der Registerkarte **Allgemein** die folgenden Informationen:
 
-3. On the **General** tab, complete the following information:
+   1. Geben Sie im Textfeld **Name** einen Namen für die Richtlinie ein.
 
-   1. In the **Name** text box, type a name for the policy.
+   2. Geben Sie im Textfeld **Volumegruppe** den Namen der Volumegruppe ein, die der Richtlinie zugeordnet ist.
 
-   2. In the **Volume group** text box, type the name of the volume group associated with the policy.
+   3. Wählen Sie entweder **lokale Momentaufnahme** oder **cloudbasierte Momentaufnahme**.
 
-   3. Select either **Local Snapshot** or **Cloud Snapshot**.
+   4. Wählen Sie die Anzahl der Momentaufnahmen, die beibehalten werden sollen. Wenn Sie die Option **Alle** auswählen, werden 64 Momentaufnahmen (die maximale Anzahl) beibehalten.
 
-   4. Select the number of snapshots to retain. If you select **All**, 64 snapshots will be retained (the maximum). 
+4. Klicken Sie auf die Registerkarte **Zeitplan**.
 
-4. Click the **Schedule** tab.
+    ![Erstellen einer Richtlinie – Registerkarte "Zeitplan"](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
 
-    ![Create a Policy - Schedule tab](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
+5. Vervollständigen Sie auf der Registerkarte **Zeitplan** die folgenden Informationen:
 
-5. On the **Schedule** tab, complete the following information: 
+   1. Klicken Sie auf das Kontrollkästchen **Aktivieren**, um die nächste Sicherung zu planen.
 
-   1. Click the **Enable** check box to schedule the next backup.
+   2. Wählen Sie unter **Einstellungen** **Einmalig**, **Täglich**, **Wöchentlich** oder **Monatlich** aus.
 
-   2. Under **Settings**, select **One time**, **Daily**, **Weekly**, or **Monthly**. 
+   3. Klicken Sie im Textfeld **Start** auf das Kalendersymbol, und wählen Sie ein Startdatum.
 
-   3. In the **Start** text box, click the calendar icon and select a start date.
+   4. Unter **Erweiterte Einstellungen** können Sie optional Wiederholungszeitpläne und ein Enddatum festlegen.
 
-   4. Under **Advanced Settings**, you can set optional repeat schedules and an end date.
+   5. Klicken Sie auf **OK**.
 
-   5. Click **OK**.
+Nachdem Sie eine Sicherungsrichtlinie erstellt haben, werden die folgenden Informationen im Bereich **Ergebnisse** angezeigt:
 
-After you create a backup policy, the following information appears in the **Results** pane:
+- **Name** – der Name der Sicherungsrichtlinie.
 
-- **Name** – the name of backup policy.
+- **Typ** – lokale oder cloudbasierte Momentaufnahme.
 
-- **Type** – local snapshot or cloud snapshot.
+- **Volumegruppe** – die der Richtlinie zugeordnete Volumegruppe.
 
-- **Volume Group** – the volume group associated with the policy.
+- **Aufbewahrung** – die Anzahl der beibehaltenen Momentaufnahmen, maximal 64.
 
-- **Retention** – the number of snapshots retained; the maximum is 64.
+- **Erstellt** – das Datum, an dem diese Richtlinie erstellt wurde.
 
-- **Created** – the date that this policy was created.
+- **Aktiviert** – ob die Richtlinie derzeit angewendet wird: **True** gibt an, dass sie aktiviert ist, **False** gibt an, dass sie nicht aktiviert ist.
 
-- **Enabled** – whether the policy is currently in effect: **True** indicates that it is in effect; **False** indicates that it is not in effect. 
+## Bearbeiten einer Sicherungsrichtlinie
 
-## <a name="edit-a-backup-policy"></a>Edit a backup policy
+Verwenden Sie das folgende Verfahren, um eine vorhandene Sicherungsrichtlinie bearbeiten.
 
-Use the following procedure to edit an existing backup policy.
+#### So bearbeiten Sie eine Sicherungsrichtlinie
 
-#### <a name="to-edit-a-backup-policy"></a>To edit a backup policy
+1. Klicken Sie auf das Desktopsymbol, um StorSimple Snapshot Manager zu starten. 
 
-1. Click the desktop icon to start StorSimple Snapshot Manager. 
+2. Klicken Sie im Fenster **Bereich** auf den Knoten **Sicherungsrichtlinien**. Alle Sicherungsrichtlinien werden im Bereich **Ergebnisse** angezeigt.
 
-2. In the **Scope** pane, click the **Backup Policies** node. All the backup policies appear in the **Results** pane. 
+3. Klicken Sie mit der rechten Maustaste auf die Richtlinie, die Sie bearbeiten möchten, und klicken Sie dann auf **Bearbeiten**.
 
-3. Right-click the policy that you want to edit, and then click **Edit**. 
+    ![Bearbeiten einer Sicherungsrichtlinie](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
 
-    ![Edit a backup policy](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png) 
+4. Wenn das Fenster **Erstellen einer Richtlinie** angezeigt wird, geben Sie Ihre Änderungen ein, und klicken Sie dann auf **OK**.
 
-4. When the **Create a Policy** window appears, enter your changes, and then click **OK**. 
+## Löschen einer Sicherungsrichtlinie
 
-## <a name="delete-a-backup-policy"></a>Delete a backup policy
+Verwenden Sie das folgende Verfahren, um eine Sicherungsrichtlinie zu löschen.
 
-Use the following procedure to delete a backup policy.
+#### So löschen Sie eine Sicherungsrichtlinie
 
-#### <a name="to-delete-a-backup-policy"></a>To delete a backup policy
+1. Klicken Sie auf das Desktopsymbol, um StorSimple Snapshot Manager zu starten. 
 
-1. Click the desktop icon to start StorSimple Snapshot Manager. 
+2. Klicken Sie im Fenster **Bereich** auf den Knoten **Sicherungsrichtlinien**. Alle Sicherungsrichtlinien werden im Bereich **Ergebnisse** angezeigt.
 
-2. In the **Scope** pane, click the **Backup Policies** node. All the backup policies appear in the **Results** pane. 
+3. Klicken Sie mit der rechten Maustaste auf die Sicherungsrichtlinie, die Sie löschen möchten, und klicken Sie dann auf **Löschen**.
 
-3. Right-click the backup policy that you want to delete, and then click **Delete**.
+4. Wenn die Bestätigungsmeldung angezeigt wird, klicken Sie auf **Ja**.
 
-4. When the confirmation message appears, click **Yes**.
+    ![Bestätigung der gelöschten Sicherungsrichtlinie](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
-    ![Delete backup policy confirmation](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+- Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
+- Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen](storsimple-snapshot-manager-manage-backup-jobs.md).
 
-- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
-- Learn how to [use StorSimple Snapshot Manager to view and manage backup jobs](storsimple-snapshot-manager-manage-backup-jobs.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0518_2016-->

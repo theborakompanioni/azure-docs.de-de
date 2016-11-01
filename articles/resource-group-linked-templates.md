@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linked templates with Resource Manager | Microsoft Azure"
-   description="Describes how to use linked templates in an Azure Resource Manager template to create a modular template solution. Shows how to pass parameters values, specify a parameter file, and dynamically created URLs."
+   pageTitle="Verknüpfte Vorlagen mit Resource Manager | Microsoft Azure"
+   description="Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,16 +16,15 @@
    ms.date="09/02/2016"
    ms.author="tomfitz"/>
 
+# Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager
 
-# <a name="using-linked-templates-with-azure-resource-manager"></a>Using linked templates with Azure Resource Manager
+Aus einer Azure Resource Manager-Vorlage heraus können Sie einen Link zu einer anderen Vorlage herstellen, sodass Sie die Bereitstellung in eine Reihe von ausgewählten und zweckgebundenen Vorlagen zerlegen können. Wie das Zerlegen einer Anwendung in mehrere Codeklassen bietet diese Zerlegung Vorteile in Bezug auf Tests, Wiederverwendung und Lesbarkeit.
 
-From within one Azure Resource Manager template, you can link to another template, which enables you to decompose your deployment into a set of targeted, purpose-specific templates. As with decomposing an application into several code classes, decomposition provides benefits in terms of testing, reuse, and readability.  
+Sie können Parameter aus einer Hauptvorlage an eine verknüpfte Vorlage übergeben, und diese Parameter können direkt Parametern oder Variablen zugeordnet werden, die von der aufrufenden Vorlage verfügbar gemacht werden. Die verknüpfte Vorlage kann auch eine Ausgabevariable zurück an die Quellvorlage übergeben, wodurch ein bidirektionaler Datenaustausch zwischen Vorlagen ermöglicht wird.
 
-You can pass parameters from a main template to a linked template, and those parameters can directly map to parameters or variables exposed by the calling template. The linked template can also pass an output variable back to the source template, enabling a two-way data exchange between templates.
+## Verknüpfen mit einer Vorlage
 
-## <a name="linking-to-a-template"></a>Linking to a template
-
-You create a link between two templates by adding a deployment resource within the main template that points to the linked template. You set the **templateLink** property to the URI of the linked template. You can provide parameter values for the linked template either by specifying the values directly in your template or by linking to a parameter file. The following example uses the **parameters** property to specify a parameter value directly.
+Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitstellungsressource innerhalb der Hauptvorlage, die auf die verknüpfte Vorlage verweist. Sie legen die **templateLink**-Eigenschaft für den URI der verknüpften Vorlage fest. Für die verknüpfte Vorlage können Sie Parameterwerte angeben, indem Sie die Werte entweder direkt in der Vorlage oder per Verknüpfung mit einer Parameterdatei angeben. Im folgenden Beispiel wird die **parameters**-Eigenschaft verwendet, um direkt einen Parameterwert anzugeben.
 
     "resources": [ 
       { 
@@ -45,16 +44,16 @@ You create a link between two templates by adding a deployment resource within t
       } 
     ] 
 
-The Resource Manager service must be able to access the linked template. You cannot specify a local file or a file that is only available on your local network for the linked template. You can only provide a URI value that includes either **http** or **https**. One option is to place your linked template in a storage account, and use the URI for that item, such as shown in the following example.
+Der Resource Manager-Dienst muss auf die verknüpfte Vorlage zugreifen können. Sie können keine lokale Datei und keine Datei, die nur in Ihrem lokalen Netzwerk verfügbar ist, für die verknüpfte Vorlage angeben. Sie müssen einen URI-Wert bereitstellen, der entweder **http** oder **https** enthält. Eine Option besteht darin, Ihre verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden, wie im folgenden Beispiel gezeigt.
 
     "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
         "contentVersion": "1.0.0.0",
     }
 
-Although the linked template must be externally available, it does not need to be generally available to the public. You can add your template to a private storage account that is accessible to only the storage account owner. Then, you create a shared access signature (SAS) token to enable access during deployment. You add that SAS token to the URI for the linked template. For steps on setting up a template in a storage account and generating a SAS token, see [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy.md) or [Deploy resources with Resource Manager templates and Azure CLI](resource-group-template-deploy-cli.md). 
+Obwohl die verknüpfte Vorlage extern verfügbar sein muss, muss sie der Öffentlichkeit nicht allgemein zur Verfügung stehen. Sie können Ihre Vorlage einem privaten Speicherkonto hinzufügen, auf das nur der Speicherkontobesitzer Zugriff hat. Anschließend erstellen Sie ein SAS-Token (Shared Access Signature), um den Zugriff während der Bereitstellung zu ermöglichen. Sie fügen dieses SAS-Token dem URI für die verknüpfte Vorlage hinzu. Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit dem Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlage und Azure-CLI](resource-group-template-deploy-cli.md).
 
-The following example shows a parent template that links to another template. The linked template is accessed with a SAS token that is passed in as a parameter.
+Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer anderen Vorlage verknüpft ist. Der Zugriff auf die verknüpfte Vorlage erfolgt mithilfe eines SAS-Tokens, das als Parameter übergeben wird.
 
     "parameters": {
         "sasToken": { "type": "securestring" }
@@ -74,11 +73,11 @@ The following example shows a parent template that links to another template. Th
         }
     ],
 
-Even though the token is passed in as a secure string, the URI of the linked template, including the SAS token, is logged in the deployment operations for that resource group. To limit exposure, set an expiration for the token.
+Obwohl das Token als sichere Zeichenfolge übergeben wird, wird der URI der verknüpften Vorlage samt SAS-Token in den Bereitstellungsvorgängen für diese Ressourcengruppe protokolliert. Legen Sie ein Ablaufdatum für das Token fest, um den Zugriff zu beschränken.
 
-## <a name="linking-to-a-parameter-file"></a>Linking to a parameter file
+## Verknüpfen mit einer Parameterdatei
 
-The next example uses the **parametersLink** property to link to a parameter file.
+Im nächsten Beispiel wird die **parametersLink**-Eigenschaft genutzt, um eine Verknüpfung mit einer Parameterdatei herzustellen.
 
     "resources": [ 
       { 
@@ -99,13 +98,13 @@ The next example uses the **parametersLink** property to link to a parameter fil
       } 
     ] 
 
-The URI value for the linked parameter file cannot be a local file, and must include either **http** or **https**. The parameter file can also be limited to access through a SAS token.
+Der URI-Wert für die verknüpfte Parameterdatei darf keine lokale Datei sein und muss entweder **http** oder **https** enthalten. Für die Parameterdatei kann auch die Einschränkung gelten, dass der Zugriff nur mithilfe eines SAS-Tokens möglich ist.
 
-## <a name="using-variables-to-link-templates"></a>Using variables to link templates
+## Verwenden von Variablen für das Verknüpfen von Vorlagen
 
-The previous examples showed hard-coded URL values for the template links. This approach might work for a simple template but it does not work well when working with a large set of modular templates. Instead, you can create a static variable that stores a base URL for the main template and then dynamically create URLs for the linked templates from that base URL. The benefit of this approach is you can easily move or fork the template because you only need to change the static variable in the main template. The main template passes the correct URIs throughout the decomposed template.
+Die vorherigen Beispiele zeigen hartcodierte URL-Werte für die Vorlagenlinks. Dieser Ansatz funktioniert u. U. für eine einfache Vorlage, aber er funktioniert nicht gut bei der Arbeit mit einer großen Anzahl von modularen Vorlagen. Stattdessen können Sie eine statische Variable erstellen, die eine Basis-URL für die Hauptvorlage speichert, und dann aus dieser Basis-URL dynamisch URLs für die verknüpften Vorlagen erstellen. Der Vorteil dieses Ansatzes besteht darin, dass Sie die Vorlage problemlos verschieben oder verzweigen können, da Sie nur die statische Variable in der Hauptvorlage ändern müssen. Die Hauptvorlage übergibt die richtigen URIs an die zerlegten Vorlagen.
 
-The following example shows how to use a base URL to create two URLs for linked templates (**sharedTemplateUrl** and **vmTemplate**). 
+Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei URLs für verknüpfte Vorlagen (**sharedTemplateUrl** und **vmTemplate**) zu erstellen.
 
     "variables": {
         "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
@@ -126,17 +125,17 @@ The following example shows how to use a base URL to create two URLs for linked 
         }
     }
 
-You can also use [deployment()](resource-group-template-functions.md#deployment) to get the base URL for the current template, and use that to get the URL for other templates in the same location. This approach is useful if your template location changes (maybe due to versioning) or you want to avoid hard coding URLs in the template file. 
+Sie können auch [Bereitstellung()](resource-group-template-functions.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Diese Vorgehensweise ist hilfreich, wenn sich der Speicherort der Vorlage ändert (möglicherweise aufgrund einer Versionsverwaltung) oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei fest programmieren zu müssen.
 
     "variables": {
         "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
     }
 
-## <a name="conditionally-linking-to-templates"></a>Conditionally linking to templates
+## Bedingtes Verknüpfen mit Vorlagen
 
-You can link to different templates by passing in a parameter value that is used to construct the URI of the linked template. This approach works well when you need to specify during deployment which linked template to use. For example, you can specify one template to use for an existing storage account, and another template to use for a new storage account.
+Sie können eine Verknüpfung mit verschiedenen Vorlagen erstellen, indem Sie einen Parameterwert übergeben, der zum Erstellen des URIs der verknüpften Vorlage verwendet wird. Dieser Ansatz eignet sich gut, wenn Sie während der Bereitstellung angeben müssen, welche verknüpfte Vorlage verwendet werden soll. Geben Sie beispielsweise eine Vorlage an, die für ein vorhandenes Speicherkonto verwendet werden soll, und geben Sie eine andere Vorlage an, die für ein neues Speicherkonto verwendet werden soll.
 
-The following example shows a parameter for a storage account name, and a parameter to specify whether the storage account is new or existing.
+Im folgenden Beispiel sehen Sie einen Parameter für einen Speicherkontonamen und einen Parameter, der angibt, ob das Speicherkonto neu oder bereits vorhanden ist.
 
     "parameters": {
         "storageAccountName": {
@@ -151,13 +150,13 @@ The following example shows a parameter for a storage account name, and a parame
         }
     },
 
-You create a variable for the template URI that includes the value of the new or existing parameter.
+Sie erstellen eine Variable für den Vorlagen-URI mit dem Wert des neuen oder vorhandenen Parameters.
 
     "variables": {
         "templatelink": "[concat('https://raw.githubusercontent.com/exampleuser/templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
     },
 
-You provide that variable value for the deployment resource.
+Sie geben diesen Variablenwert für die Bereitstellungsressource an.
 
     "resources": [
         {
@@ -179,9 +178,9 @@ You provide that variable value for the deployment resource.
         }
     ],
 
-The URI resolves to a template named either **existingStorageAccount.json** or **newStorageAccount.json**. Create templates for those URIs.
+Der URI wird in eine Vorlage aufgelöst, die entweder den Namen **existingStorageAccount.json** oder **newStorageAccount.json** hat. Erstellen Sie Vorlagen für diese URIs.
 
-The following example shows the **existingStorageAccount.json** template.
+Das folgende Beispiel zeigt die Vorlage **existingStorageAccount.json**:
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -201,7 +200,7 @@ The following example shows the **existingStorageAccount.json** template.
       }
     }
 
-The next example shows the **newStorageAccount.json** template. Notice that like the existing storage account template the storage account object is returned in the outputs. The master template works with either linked template.
+Das nächste Beispiel zeigt die Vorlage **newStorageAccount.json**. Beachten Sie, dass das Speicherkontoobjekt wie die Vorlage für das vorhandene Speicherkonto in den Ausgaben zurückgegeben wird. Die Mastervorlage kann mit beiden verknüpften Vorlagen verwendet werden.
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -233,11 +232,11 @@ The next example shows the **newStorageAccount.json** template. Notice that like
       }
     }
 
-## <a name="complete-example"></a>Complete example
+## Vollständiges Beispiel
 
-The following example templates show a simplified arrangement of linked templates to illustrate several of the concepts in this article. It assumes the templates have been added to the same container in a storage account with public access turned off. The linked template passes a value back to the main template in the **outputs** section.
+Die folgenden Beispielvorlagen zeigen eine vereinfachte Anordnung verknüpfter Vorlagen zum Erläutern verschiedener Konzepte in diesem Artikel. Es wird davon ausgegangen, dass die Vorlagen demselben Container in einem Speicherkonto mit aktiviertem öffentlichen Zugriff hinzugefügt wurden. Im Abschnitt **outputs** übergibt die verknüpfte Vorlage einen Wert zurück an die Hauptvorlage.
 
-The **parent.json** file consists of:
+Die Datei **parent.json** besteht aus Folgendem:
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -267,42 +266,38 @@ The **parent.json** file consists of:
       }
     }
 
-The **helloworld.json** file consists of:
+Die Datei **helloworld.json** besteht aus Folgendem:
 
     {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {},
-      "variables": {},
-      "resources": [],
-      "outputs": {
-        "result": {
-            "value": "Hello World",
-            "type" : "string"
-        }
-      }
+	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	  "contentVersion": "1.0.0.0",
+	  "parameters": {},
+	  "variables": {},
+	  "resources": [],
+	  "outputs": {
+		"result": {
+			"value": "Hello World",
+			"type" : "string"
+		}
+	  }
     }
     
-In PowerShell, you get a token for the container and deploy the templates with:
+In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit:
 
     Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
     $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
     New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ("https://storagecontosotemplates.blob.core.windows.net/templates/parent.json" + $token) -containerSasToken $token
 
-In Azure CLI, you get a token for the container and deploy the templates with the following code. Currently, you must provide a name for the deployment when using a template URI that includes a SAS token.  
+An der Azure-Befehlszeilenschnittstelle (CLI) rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit. Derzeit müssen Sie einen Namen für die Bereitstellung angeben, wenn Sie eine URI-Vorlage nutzen, die ein SAS-Token enthält.
 
     expiretime=$(date -I'minutes' --date "+30 minutes")  
     azure storage container sas create --container templates --permissions r --expiry $expiretime --json | jq ".sas" -r
     azure group deployment create -g ExampleGroup --template-uri "https://storagecontosotemplates.blob.core.windows.net/templates/parent.json?{token}" -n tokendeploy  
 
-You are prompted to provide the SAS token as a parameter. You need to preface the token with **?**.
+Sie werden aufgefordert, das SAS-Token als Parameter anzugeben. Sie müssen dem Token **?** voranstellen.
 
-## <a name="next-steps"></a>Next steps
-- To learn about the defining the deployment order for your resources, see [Defining dependencies in Azure Resource Manager templates](resource-group-define-dependencies.md)
-- To learn how to define one resource but create many instances of it, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
+## Nächste Schritte
+- Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
+- Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

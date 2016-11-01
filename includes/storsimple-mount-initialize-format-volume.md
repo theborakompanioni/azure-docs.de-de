@@ -1,41 +1,38 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-mount,-initialize,-and-format-a-volume"></a>To mount, initialize, and format a volume
+#### So stellen Sie ein Volume bereit und initialisieren und formatieren dieses
 
-1. Start the Microsoft iSCSI initiator.
+1. Starten Sie den Microsoft iSCSI-Initiator.
 
-2. In the **iSCSI Initiator Properties** window, on the **Discovery** tab, click **Discover Portal**.
+2. Klicken Sie im Fenster **Eigenschaften des iSCSI-Initiators** auf der Registerkarte **Erkennung** auf **Portal ermitteln**.
 
-3. In the **Discover Target Portal** dialog box, supply the IP address of your iSCSI-enabled network interface, and then click **OK**. 
+3. Geben Sie im Dialogfeld **Zielportal ermitteln** die IP-Adresse Ihrer iSCSI-aktivierten Netzwerkschnittstelle an, und klicken Sie dann auf **OK**.
 
-4. In the **iSCSI Initiator Properties** window, on the **Targets** tab, locate the **Discovered targets**. The device status should appear as **Inactive**.
+4. Suchen Sie auf der Registerkarte **Ziele** des Fensters **Eigenschaften des iSCSI-Initiators** nach **Ermittelte Ziele**. Als Gerätestatus sollte **Inaktiv** angezeigt werden.
 
-5. Select the target device and then click **Connect**. After the device is connected, the status should change to **Connected**. (For more information about using the Microsoft iSCSI initiator, see [Installing and Configuring Microsoft iSCSI Initiator][1]).
+5. Wählen Sie das Zielgerät aus, und klicken Sie dann auf **Verbinden**. Nachdem das Gerät verbunden ist, sollte sich der Status in **Verbunden** ändern. (Weitere Informationen zum Verwenden des Microsoft iSCSI-Initiators finden Sie unter [Installieren und Konfigurieren des Microsoft iSCSI-Initiators][1]).
 
-6. On your Windows host, press the Windows Logo key + X, and then click **Run**. 
+6. Drücken Sie auf Ihrem Windows-Host die Windows-Logo-Taste+X, und klicken Sie dann auf **Ausführen**.
 
-7. In the **Run** dialog box, type **Diskmgmt.msc**. Click **OK**, and the **Disk Management** dialog box will appear. The right pane will show the volumes on your host.
+7. Geben Sie im Dialogfeld **Ausführen** die Angabe **Diskmgmt.msc** ein. Klicken Sie auf **OK**. Das Dialogfeld **Datenträgerverwaltung** wird angezeigt. Im rechten Bereich werden die Volumes auf Ihrem Host angezeigt.
 
-8. In the **Disk Management** window, the mounted volumes will appear as shown in the following illustration. Right-click the discovered volume (click the disk name), and then click **Online**.
+8. Im Fenster **Datenträgerverwaltung** werden die bereitgestellten Volumes wie in der folgenden Abbildung dargestellt angezeigt. Klicken Sie mit der rechten Maustaste auf das ermittelte Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Online**.
 
-     ![Initialize format volume](./media/storsimple-mount-initialize-format-volume/HCS_InitializeFormatVolume-include.png) 
+     ![Initialisieren und Formatieren von Volumes](./media/storsimple-mount-initialize-format-volume/HCS_InitializeFormatVolume-include.png)
 
-9. Right-click the volume (click the disk name) again, and then click **Initialize**.
+9. Klicken Sie erneut mit der rechten Maustaste auf das Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Initialisieren**.
 
-10. To format a simple volume, perform the following steps:
-  1. Select the volume, right-click it (click the right area), and click **New Simple Volume**.
-  2. In the New Simple Volume wizard, specify the volume size and drive letter and configure the volume as an NTFS file system.
-  3. Specify a 64 KB allocation unit size. This allocation unit size works well with the deduplication algorithms used in the StorSimple solution.
-  4. Perform a quick format.
+10. Führen Sie die folgenden Schritte aus, um ein einfaches Volume zu formatieren.
+  1. Wählen Sie das Volume aus, klicken Sie mit der rechten Maustaste darauf (klicken Sie im rechten Bereich), und klicken Sie dann auf **Neues einfaches Volume**.
+  2. Geben Sie im Assistenten für neue einfache Volumes die Volumegröße und den Laufwerkbuchstaben an, und konfigurieren Sie das Volume dann als Dateisystemtyp "NTFS".
+  3. Geben Sie 64 KB als Zuordnungseinheitsgröße an. Diese Zuordnungseinheitsgröße eignet sich gut für die Deduplikationsalgorithmen, die in der StorSimple-Lösung verwendet werden.
+  4. Führen Sie eine Schnellformatierung durch.
 
-![Video available](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Video available**
+![Video verfügbar](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Video verfügbar**
 
-To watch a video that demonstrates how to mount, initialize, and format a StorSimple volume, click [here](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
+Sie können sich [hier](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/) ein Video anschauen, in dem das Bereitstellen, Initialisieren und Formatieren eines StorSimple-Volumes demonstriert wird.
 
 <!--Link references-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0128_2016-->

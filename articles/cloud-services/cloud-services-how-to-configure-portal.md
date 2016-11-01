@@ -1,117 +1,113 @@
 <properties 
-    pageTitle="How to configure a cloud service (portal) | Microsoft Azure" 
-    description="Learn how to configure cloud services in Azure. Learn to update the cloud service configuration and configure remote access to role instances. These examples use the Azure portal." 
-    services="cloud-services" 
-    documentationCenter="" 
-    authors="Thraka" 
-    manager="timlt" 
-    editor=""/>
+	pageTitle="Konfigurieren eines Clouddiensts (Portal) | Microsoft Azure" 
+	description="Hier erfahren Sie, wie Sie Clouddienste in Azure konfigurieren. Hier erfahren Sie, wie Sie die Konfiguration für Clouddienste aktualisieren und Remotezugriff auf Rolleninstanzen konfigurieren. In diesen Beispielen wird das Azure-Portal verwendet." 
+	services="cloud-services" 
+	documentationCenter="" 
+	authors="Thraka" 
+	manager="timlt" 
+	editor=""/>
 
 <tags 
-    ms.service="cloud-services" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/11/2016"
-    ms.author="adegeo"/>
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/27/2016"
+	ms.author="adegeo"/>
 
-
-# <a name="how-to-configure-cloud-services"></a>How to Configure Cloud Services
+# Konfigurieren von Clouddiensten
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-configure-portal.md)
-- [Azure classic portal](cloud-services-how-to-configure.md)
+- [Azure-Portal](cloud-services-how-to-configure-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-configure.md)
 
-You can configure the most commonly used settings for a cloud service in the Azure portal. Or, if you like to update your configuration files directly, download a service configuration file to update, and then upload the updated file and update the cloud service with the configuration changes. Either way, the configuration updates are pushed out to all role instances.
+Im Azure-Portal können Sie die am häufigsten für einen Clouddienst verwendeten Einstellungen konfigurieren. Wenn Sie die Konfigurationsdateien jedoch direkt aktualisieren möchten, laden Sie eine zu aktualisierende Konfigurationsdatei herunter, laden Sie anschließend die aktualisierte Datei hoch, und aktualisieren Sie den Clouddienst mit den Konfigurationsänderungen. In beiden Fällen wird die aktualisierte Konfiguration an alle Rolleninstanzen übermittelt.
 
-You can also manage the instances of your cloud service roles, or remote desktop into them.
+Sie können die Instanzen Ihrer Clouddienstrollen außerdem verwalten oder eine Remotedesktopverbindung mit ihnen herstellen.
 
-Azure can only ensure 99.95 percent service availability during the configuration updates if you have at least two role instances for every role. That enables one virtual machine to process client requests while the other is being updated. For more information, see [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
+Während der Konfigurationsupdates kann Azure nur dann eine Dienstverfügbarkeit von 99,95 Prozent sicherstellen, wenn Sie mindestens zwei Rolleninstanzen für jede Rolle haben. In diesem Fall kann ein virtueller Computer Clientanforderungen verarbeiten, während der andere aktualisiert wird. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
-## <a name="change-a-cloud-service"></a>Change a cloud service
+## Ändern eines Clouddiensts
 
-After opening the [Azure portal](https://portal.azure.com/), navigate to your cloud service. From here you manage many aspects of it. 
+Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu Ihrem Clouddienst. Von hier aus können Sie zahlreiche Aspekte des Clouddiensts verwalten.
 
-![Settings Page](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-The **Settings** or **All settings** links will open up the **Settings** blade where you can change the **Properties**, change the **Configuration**, manage the **Certificates**, setup **Alert rules**, and manage the **Users** who have access to this cloud service.
+Über die Links **Einstellungen** oder **Alle Einstellungen** wird das Blatt **Einstellungen** geöffnet. Hier können Sie die **Eigenschaften** und die **Konfiguration** ändern, **Zertifikate** verwalten, **Warnungsregeln** einrichten und die **Benutzer** verwalten, die Zugriff auf diesen Clouddienst haben.
 
-![Azure cloud service settings blade](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
+![Blatt mit Einstellungen für den Azure-Clouddienst](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
 >[AZURE.NOTE]
->The operating system used for the cloud service cannot be changed using the **Azure portal**, you can only change this setting through the [Azure classic portal](http://manage.windowsazure.com/). This is detailed [here](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file).
+Das für den Clouddienst verwendete Betriebssystem kann nicht über das **Azure-Portal** geändert werden. Diese Einstellung können Sie nur über das [klassische Azure-Portal](http://manage.windowsazure.com/) ändern. Weitere Informationen finden Sie [hier](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file).
 
-## <a name="monitoring"></a>Monitoring
+## Überwachung
 
-You can add alerts to your cloud service. Click **Settings** > **Alert Rules** > **Add alert**. 
+Sie können Ihrem Clouddienst Warnungen hinzufügen. Klicken Sie auf **Einstellungen** > **Warnungsregeln** > **Warnung hinzufügen**.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-From here you can setup an alert. With the **Mertic** drop down box, you can setup an alert for the following types of data.
+In dieser Ansicht können Sie eine Warnung einrichten. Über das Dropdownfeld **Metrik** können Sie eine Warnung für die folgenden Datentypen einrichten:
 
-- Disk read
-- Disk write
-- Network in
-- Network out
-- CPU percentage 
+- Datenträgerlesevorgänge
+- Datenträgerschreibvorgänge
+- Eingehender Netzwerkverkehr
+- Ausgehender Netzwerkverkehr
+- CPU-Prozentsatz
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
-### <a name="configure-monitoring-from-a-metric-tile"></a>Configure monitoring from a metric tile
+### Konfigurieren der Überwachung über eine Metrikkachel
 
-Instead of using **Settings** > **Alert Rules**, you can click on one of the metric tiles in the **Monitoring** section of the **Cloud service** blade.
+Statt die Ansicht **Einstellungen** > **Warnungsregeln** zu verwenden, können Sie auch auf eine der Metrikkacheln im Abschnitt **Überwachung** des Blatts **Clouddienst** klicken.
 
-![Cloud Service Monitoring](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
+![Clouddienstüberwachung](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
-From here you can customize the chart used with the tile, or add an alert rule.
-
-
-## <a name="reboot,-reimage,-or-remote-desktop"></a>Reboot, reimage, or remote desktop
-
-At this time you cannot configure remote desktop using the **Azure portal**. However, you can set it up through the [Azure classic portal](cloud-services-role-enable-remote-desktop.md), [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md), or through [Visual Studio](../vs-azure-tools-remote-desktop-roles.md). 
-
-First, click on the cloud service instance.
-
-![Cloud Service Instance](./media/cloud-services-how-to-configure-portal/cs-instance.png)
-
-From the blade that opens uou can initiate a remote desktop connection, remotely reboot the instance, or remotely reimage (start with a fresh image) the instance.
-
-![Cloud Service Instance Buttons](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
+Von hier aus können Sie das in der Kachel verwendete Diagramm anpassen oder eine Warnungsregel hinzufügen.
 
 
+## Neustart, Reimaging oder Remotedesktop
 
-## <a name="reconfigure-your-.cscfg"></a>Reconfigure your .cscfg
+Momentan ist eine Konfiguration von Remotedesktop mit dem **Azure-Portal** nicht möglich. Sie können die Konfiguration stattdessen jedoch über das [klassische Azure-Portal](cloud-services-role-enable-remote-desktop.md), mithilfe von [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) oder [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) durchführen.
 
-You may need to reconfigure you cloud service through the [service config (cscfg)](cloud-services-model-and-package.md#cscfg) file. First you need to download your .cscfg file, modify it, then upload it.
+Klicken Sie zunächst auf die Instanz des Clouddiensts.
 
-1. Click on the **Settings** icon or the **All settings** link to open up the **Settings** blade.
+![Clouddienstinstanz](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 
-    ![Settings Page](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+Auf dem so geöffneten Blatt können Sie eine Remotedesktopverbindung starten, die Instanz remote neu starten oder remote ein Reimaging der Instanz durchführen (mit einem neuen Image starten).
 
-2. Click on the **Configuration** item.
+![Schaltflächen für die Clouddienstinstanz](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
 
-    ![Configuration Blade](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 
-3. Click on the **Download** button.
 
-    ![Download](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+## Neukonfigurieren der .cscfg-Datei
 
-4. After you update the service configuration file, upload and apply the configuration updates:
+Sie müssen Ihren Clouddienst möglicherweise über die Datei mit der [Dienstkonfiguration](cloud-services-model-and-package.md#cscfg) (.cscfg) neu konfigurieren. Dazu müssen Sie Ihre .cscfg-Datei herunterladen, sie bearbeiten und wieder hochladen.
 
-    ![Upload](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png) 
+1. Klicken Sie auf das Symbol **Einstellungen** oder den Link **Alle Einstellungen**, um das Blatt **Einstellungen** zu öffnen.
+
+    ![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+
+2. Klicken Sie auf das Element **Konfiguration**.
+
+    ![Blatt „Konfiguration“](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
+
+3. Klicken Sie auf die Schaltfläche **Herunterladen**.
+
+    ![Herunterladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+
+4. Laden Sie nach dem Update der Dienstkonfigurationsdatei die Konfigurationsupdates hoch, und wenden Sie sie an:
+
+    ![Hochladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
     
-5. Select the .cscfg file and click **OK**.
+5. Wählen Sie die CSCFG-Datei aus, und klicken Sie auf **OK**.
 
-            
-## <a name="next-steps"></a>Next steps
+			
+## Nächste Schritte
 
-* Learn how to [deploy a cloud service](cloud-services-how-to-create-deploy-portal.md).
-* Configure a [custom domain name](cloud-services-custom-domain-name-portal.md).
-* [Manage your cloud service](cloud-services-how-to-manage-portal.md).
-* Configure [ssl certificates](cloud-services-configure-ssl-certificate-portal.md).
+* Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
+* [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
+* [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
+* Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

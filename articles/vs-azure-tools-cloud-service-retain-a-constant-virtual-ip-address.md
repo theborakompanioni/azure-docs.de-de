@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to retain a constant virtual IP address for a cloud service | Microsoft Azure"
-   description="Learn how to ensure that the virtual IP address (VIP) of your Azure cloud service doesn't change."
+   pageTitle="Beibehalten einer konstanten virtuellen IP-Adresse für einen Clouddienst | Microsoft Azure"
+   description="Erfahren Sie, wie Sie sicherstellen können, dass die virtuelle IP-Adresse (VIP) Ihres Azure-Clouddiensts beibehalten wird."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,39 +15,34 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Beibehalten einer konstanten virtuellen IP-Adresse für einen Clouddienst
 
-# <a name="how-to-retain-a-constant-virtual-ip-address-for-a-cloud-service"></a>How to retain a constant virtual IP address for a cloud service
+Wenn Sie einen in Azure gehosteten Clouddienst aktualisieren, müssen Sie möglicherweise sicherstellen, dass die virtuelle IP-Adresse (VIP) des Diensts unverändert bleibt. Viele Domänenverwaltungsdienste nutzen DNS (Domain Name System) für die Registrierung der Domänennamen. DNS funktioniert nur, wenn die VIP unverändert bleibt. Mithilfe des **Veröffentlichungs-Assistenten** in Azure Tools können Sie sicherstellen, dass die VIP Ihres Clouddiensts beibehalten wird, wenn Sie den Dienst aktualisieren. Weitere Informationen zur Verwendung der DNS-Domänenverwaltung für Clouddienste finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](./cloud-services/cloud-services-custom-domain-name.md).
 
-When you update a cloud service that's hosted in Azure, you might need to ensure that the virtual IP address (VIP) of the service doesn't change. Many domain management services use the Domain Name System (DNS) for registering domain names. DNS works only if the VIP remains the same. You can use the **Publish Wizard** in Azure Tools to ensure that the VIP of your cloud service doesn’t change when you update it. For more information about how to use DNS domain management for cloud services, see [Configuring a custom domain name for an Azure cloud service](./cloud-services/cloud-services-custom-domain-name.md).
+## Veröffentlichen eines Clouddiensts, ohne die VIP zu ändern
 
-## <a name="publishing-a-cloud-service-without-changing-its-vip"></a>Publishing a cloud service without changing its VIP
+Die VIP eines Clouddiensts wird zugeordnet, wenn der Clouddienst erstmalig in einer bestimmten Umgebung in Azure bereitgestellt wird (z. B. in der Produktionsumgebung). Die VIP ändert sich nur, wenn Sie die Bereitstellung explizit löschen, oder wenn sie durch den Bereitstellungsaktualisierungsvorgang implizit gelöscht wird. Wenn Sie die VIP beibehalten möchten, dürfen Sie die Bereitstellung nicht löschen. Außerdem müssen Sie sicherstellen, dass Visual Studio die Bereitstellung nicht automatisch löscht. Dieses Verhalten kann gesteuert werden, indem Sie im **Veröffentlichungs-Assistenten** die entsprechenden Bereitstellungseinstellungen festlegen. Dieser Assistent unterstützt verschiedene Bereitstellungsoptionen. Sie können eine neue Bereitstellung oder eine Updatebereitstellung angeben, wobei die Aktualisierung inkrementell oder gleichzeitig erfolgen kann. Bei beiden Arten von Updatebereitstellungen wird die VIP beibehalten. Eine Definition dieser Bereitstellungstypen finden Sie unter [Assistent zum Veröffentlichen der Azure-Anwendung](vs-azure-tools-publish-azure-application-wizard.md). Darüber hinaus können Sie festlegen, ob die vorherige Bereitstellung eines Clouddiensts gelöscht wird, wenn ein Fehler auftritt. Die VIP wird möglicherweise unerwartet geändert, wenn diese Option nicht ordnungsgemäß angezeigt wird.
 
-The VIP of a cloud service is allocated when you first deploy it to Azure in a particular environment, such as the Production environment. The VIP doesn’t change unless you delete the deployment explicitly or it is implicitly deleted by the deployment update process. To retain the VIP, you must not delete your deployment, and you must also make sure that Visual Studio doesn’t delete your deployment automatically. You can control the behavior by specifying deployment settings in the **Publish Wizard**, which supports several deployment options. You can specify a fresh deployment or an update deployment, which can be incremental or simultaneous, and both kinds of update deployments retain the VIP. For definitions of these different types of deployment, see [Publish Azure Application Wizard](vs-azure-tools-publish-azure-application-wizard.md).  In addition, you can control whether the previous deployment of a cloud service is deleted if an error occurs. The VIP might unexpectedly change if you don't set that option correctly.
+### Aktualisieren eines Clouddiensts, ohne die VIP zu ändern
 
-### <a name="to-update-a-cloud-service-without-changing-its-vip"></a>To update a cloud service without changing its VIP
+1. Wenn Sie Ihren Clouddienst mindestens einmal bereitgestellt haben, öffnen Sie das Kontextmenü für den Knoten Ihres Azure-Projekts und wählen **Veröffentlichen**. Der Assistent **Azure-Anwendung veröffentlichen** wird geöffnet.
 
-1. After you deploy your cloud service at least once, open the shortcut menu for the node for your Azure project, and then choose **Publish**. The **Publish Azure Application** wizard appears.
+1. Wählen Sie in der Liste der Abonnements das Abonnement aus, für das die Bereitstellung erfolgen soll, und klicken Sie dann auf **Weiter**. Die Seite **Einstellungen** des Assistenten wird geöffnet.
 
-1. In the list of subscriptions, choose the one to which you want to deploy, and then choose the **Next** button. The **Settings** page of the wizard appears.
+1. Überprüfen Sie auf der Registerkarte **Allgemeine Einstellungen**, ob der Name des Clouddiensts, für den die Bereitstellung durchgeführt wird, sowie die Angaben für **Umgebung**, **Buildkonfiguration** und **Dienstkonfiguration** richtig sind.
 
-1. On the **Common Settings** tab, verify that the name of the cloud service to which you’re deploying, the **Environment**, the **Build Configuration**, and the **Service Configuration** are all correct.
+1. Überprüfen Sie auf der Registerkarte **Erweiterte Einstellungen**, ob das richtige Speicherkonto und die richtige Bereitstellungsbezeichnung angegeben sind. Auf dieser Registerkarte muss zudem sichergestellt werden, dass das Kontrollkästchen **Bereitstellung bei Fehler löschen** deaktiviert und das Kontrollkästchen **Bereitstellungsaktualisierung** aktiviert ist. Durch Aktivierung des Kontrollkästchens **Bereitstellungsaktualisierung** wird sichergestellt, dass die Bereitstellung nicht gelöscht und die VIP beibehalten wird, wenn Sie die Anwendung erneut veröffentlichen. Durch Deaktivierung von **Bereitstellung bei Fehler löschen** stellen Sie sicher, dass die VIP beibehalten wird, wenn während der Bereitstellung ein Fehler auftritt.
 
-1. On the **Advanced Settings** tab, verify that the storage account and the deployment label are correct, that the **Delete deployment on failure** check box is cleared, and that the **Deployment** update check box is selected. By selecting the **Deployment** update check box, you ensure that your deployment won't be deleted and your VIP won't be lost when you republish your application. By clearing the **Delete deployment on failure check box**, you ensure that your VIP won't be lost if an error occurs during deployment.
+1. Um festzulegen, wie die Rollen aktualisiert werden sollen, klicken Sie neben dem Feld **Bereitstellungsaktualisierung** auf den Link **Einstellungen** und wählen im Dialogfeld **Bereitstellungsaktualisierungs-Einstellungen** die Option für inkrementelle oder gleichzeitige Updates. Bei Auswahl des inkrementellen Updates werden die Instanzen nacheinander aktualisiert. Die Verfügbarkeit der Anwendung wird also nicht unterbrochen. Wenn Sie ein gleichzeitiges Update festlegen, werden alle Instanzen gleichzeitig aktualisiert. Gleichzeitige Updates sind schneller, der Dienst ist während der Aktualisierung jedoch möglicherweise nicht verfügbar.
 
-1. To further specify how you want the roles to be updated, choose the  **Settings** link next to the **Deployment update** box, and then choose either the incremental update or simultaneous update option in the **Deployment update** settings dialog box. If you choose incremental update, each instance is updated one after another, so that the application is always available. If you choose simultaneous update, all instances are updated at the same time. Simultaneous updating is faster, but your service might not be available during the update process.
+1. Wenn Sie die Einstellungen wie gewünscht festgelegt haben, klicken Sie auf **Weiter**.
 
-1. When you’re satisfied with your settings, choose the **Next** button.
+1. Überprüfen Sie auf der Seite **Zusammenfassung** des Assistenten Ihre Einstellungen, und klicken Sie anschließend auf **Veröffentlichen**.
 
-1. On the **Summary** page of the wizard, verify your settings, and then choose the **Publish** button.
+  >[AZURE.WARNING] Wenn bei der Bereitstellung ein Fehler auftritt, sollten Sie die Ursache ermitteln und die Bereitstellung umgehend wiederholen. Dadurch wird verhindert, dass der Clouddienst als beschädigt angezeigt wird.
 
-  >[AZURE.WARNING] If the deployment fails, you should address why it failed and redeploy promptly, to avoid leaving your cloud service in a corrupted state.
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+Weitere Informationen zur Veröffentlichung in Azure über Visual Studio finden Sie unter [Assistent zum Veröffentlichen der Azure-Anwendung](vs-azure-tools-publish-azure-application-wizard.md).
 
-To learn about publishing to Azure from Visual Studio, see [Publish Azure application wizard](vs-azure-tools-publish-azure-application-wizard.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

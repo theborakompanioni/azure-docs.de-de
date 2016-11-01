@@ -1,6 +1,6 @@
 <properties
- pageTitle="Securing your Internet of Things from the ground up | Microsoft Azure"
- description="This article describes the built-in security features of the Microsoft Azure IoT Suite"
+ pageTitle="Schützen des Internets der Dinge von Anfang an | Microsoft Azure"
+ description="In diesem Artikel werden die integrierten Sicherheitsfeatures der Microsoft Azure IoT Suite beschrieben."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -17,31 +17,26 @@
  ms.date="08/16/2016"
  ms.author="yurid"/>
 
-
 [AZURE.INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-To learn more about securing your IoT solution, see:
+Weitere Informationen zum Schützen Ihrer IoT-Lösung finden Sie hier:
 
-- [IoT Security Best Practices][lnk-security-best-practices]
-- [IoT Security Architecture][lnk-security-architecture]
-- [Secure your IoT deployment][lnk-security-deployment]
+- [Internet der Dinge – bewährte Methoden für die Sicherheit][lnk-security-best-practices]
+- [Internet der Dinge – Sicherheitsarchitektur][lnk-security-architecture]
+- [Schützen Ihrer IoT-Bereitstellung][lnk-security-deployment]
 
 [lnk-security-best-practices]: iot-security-best-practices.md
 [lnk-security-architecture]: iot-security-architecture.md
 [lnk-security-deployment]: iot-suite-security-deployment.md
 
-You can also explore some of the other features and capabilities of the IoT Suite preconfigured solutions:
+Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
 
-- [Predictive maintenance preconfigured solution overview][lnk-predictive-overview]
-- [Frequently asked questions for IoT Suite][lnk-faq]
+- [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf][lnk-predictive-overview]
+- [Häufig gestellte Fragen zu IoT Suite][lnk-faq]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-faq]: iot-suite-faq.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

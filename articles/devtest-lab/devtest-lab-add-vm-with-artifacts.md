@@ -1,149 +1,141 @@
 <properties
-    pageTitle="Add a VM with artifacts to a lab in Azure DevTest Labs | Microsoft Azure"
-    description="Learn how to add a VM with artifacts in Azure DevTest Labs"
-    services="devtest-lab,virtual-machines"
-    documentationCenter="na"
-    authors="tomarcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="Hinzufügen einer VM mit Artefakten zu einem Lab in Azure DevTest Labs | Microsoft Azure"
+	description="Erfahren Sie, wie Sie eine VM mit Artefakten in Azure DevTest Labs hinzufügen."
+	services="devtest-lab,virtual-machines"
+	documentationCenter="na"
+	authors="tomarcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="devtest-lab"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/30/2016"
-    ms.author="tarcher"/>
+	ms.service="devtest-lab"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/30/2016"
+	ms.author="tarcher"/>
 
-
-# <a name="add-a-vm-with-artifacts-to-a-lab-in-azure-devtest-labs"></a>Add a VM with artifacts to a lab in Azure DevTest Labs
+# Hinzufügen einer VM mit Artefakten zu einem Lab in Azure DevTest Labs
 
 > [AZURE.VIDEO how-to-create-vms-with-artifacts-in-a-devtest-lab]
 
-You create a VM in a lab from a *base* that is either a [custom image](./devtest-lab-create-template.md), [formula](./devtest-lab-manage-formulas.md), or [Marketplace image](./devtest-lab-configure-marketplace-images.md).
+Sie erstellen einen virtuellen Computer in einem Lab aus einer *Basis*, bei der es sich entweder um ein [benutzerdefiniertes Image](./devtest-lab-create-template.md), eine [Formel](./devtest-lab-manage-formulas.md) oder ein [Marketplace-Image](./devtest-lab-configure-marketplace-images.md) handelt.
 
-DevTest Labs *artifacts* let you specify *actions* that are performed when the VM is created. 
+Mit DevTest Labs-*Artefakten* können Sie *Aktionen* angeben, die ausgeführt werden, wenn der virtuelle Computer erstellt wird.
 
-Artifact actions can perform procedures such as running Windows PowerShell scripts, running Bash commands, and installing software. 
+Artefaktaktionen können Prozeduren ausführen, z.B. die Ausführung von Windows PowerShell-Skripts und Bash-Befehlen und eine Softwareinstallation.
 
-Artifact *parameters* let you customize the artifact for your particular scenario.
+Mit *Parametern* für Artefakte können Sie das Artefakt für ein bestimmtes Szenario anpassen.
 
-This article shows you how to create a VM in your lab with artifacts.
+In diesem Artikel wird die Erstellung eines virtuellen Computers in Ihrem Lab mithilfe von Artefakten veranschaulicht.
 
-## <a name="add-a-vm-with-artifacts"></a>Add a VM with artifacts
+## Hinzufügen einer VM mit Artefakten
 
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Select **More Services**, and then select **DevTest Labs** from the list.
+1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
-1. From the list of labs, select the lab in which you want to create the VM.  
+1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie den neuen virtuellen Computer (VM, Virtual Machine) erstellen möchten.
 
-1. On the lab's **Overview** blade, select **+ Virtual Machine**.  
-    ![Add VM button](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
+1. Wählen Sie auf dem Blatt **Übersicht** die Option **+ Virtueller Computer**. ![Schaltfläche zum Hinzufügen eines virtuellen Computers](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
 
-1. On the **Choose a base** blade, select a base for the VM.
+1. Wählen Sie auf dem Blatt **Basisdesign auswählen** eine Basis für den virtuellen Computer aus.
 
-1. On the **Virtual machine** blade, enter a name for the new virtual machine in the **Virtual machine name** text box.
+1. Geben Sie auf dem Blatt **Virtueller Computer** im Textfeld **Name des virtuellen Computers** einen Namen für den neuen virtuellen Computer ein.
 
-    ![Lab VM blade](./media/devtest-lab-add-vm-with-artifacts/devtestlab-lab-vm-blade.png)
+	![Blatt „Lab-VM“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-lab-vm-blade.png)
 
-1. Enter a **User Name** that will be granted administrator privileges on the virtual machine.  
+1. Geben Sie einen **Benutzernamen** ein, dem Administratorrechte auf dem virtuellen Computer erteilt werden.
 
-1. If you want to use a password stored in your *secret store*, select **Use secrets from my secret store**, and specify a key value that corresponds to your secret (password). Otherwise, simply enter a password in the text field labeled **Type a value**.
+1. Wenn Sie ein Kennwort verwenden möchten, das in Ihrem *geheimen Speicher* hinterlegt ist, wählen Sie **Geheime Schlüssel aus meinem geheimen Speicher verwenden**, und geben Sie einen Schlüsselwert an, der ihrem geheimen Schlüssel (Kennwort) entspricht. Andernfalls geben Sie einfach im Textfeld **Geben Sie einen Wert ein** ein Kennwort ein.
  
-1. Select **Virtual machine size** and select one of the predefined items that specify the processor cores, RAM size, and the hard drive size of the VM to create.
+1. Wählen Sie **Größe des virtuellen Computers**, und wählen Sie eines der vordefinierten Elemente aus, die die Prozessorkerne, die RAM-Größe und die Größe der Festplatte für den zu erstellenden virtuellen Computer angeben.
 
-1. Select **Virtual network** and select the desired virtual network.
+1. Wählen Sie **Virtuelles Netzwerk**, und wählen Sie das gewünschte virtuelle Netzwerk aus.
 
-1. Select **Subnet** and select subnet.
+1. Wählen Sie **Subnetz**, und wählen Sie das Subnetz aus.
 
-1. If the lab policy is set to allow public IP addresses for the selected subnet, specify whether you want the IP address to be public by selecting either **Yes** or **No**. Otherwise, this option is disabled and selected as **No**. 
+1. Wenn die Labrichtlinie öffentliche IP-Adressen für das ausgewählte Subnetz zulässt, geben Sie durch Auswahl von **Ja** oder **Nein** an, ob die IP-Adresse öffentlich sein soll. Andernfalls ist diese Option deaktiviert und als **Nein** festgelegt.
 
-1. Select **Artifacts** and - from the list of artifacts - select and configure the artifacts that you want to add to the base image. 
-**Note:** If you're new to DevTest Labs or configuring artifacts, skip to the [Add an existing artifact to a VM](#add-an-existing-artifact-to-a-vm) section, and then return here when finished.
+1. Wählen Sie **Artefakte**, und wählen Sie aus der Liste der Artefakte die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. **Hinweis:** Wenn Sie noch nicht mit DevTest Labs oder dem Konfigurieren von Artefakten vertraut sind, fahren Sie mit dem Abschnitt [Hinzufügen eines vorhandenen Artefakts zu einer VM](#add-an-existing-artifact-to-a-vm) fort, und kehren Sie dann hierher zurück.
 
-1. If you want to view or copy the Azure Resource Manager template, skip to the [Save Azure Resource Manager template](#save-arm-template) section, and return here when finished.
+1. Wenn Sie die Azure Resource Manager-Vorlage anzeigen oder kopieren möchten, fahren Sie mit dem Abschnitt [Speichern der Azure Resource Manager-Vorlage](#save-arm-template) fort, und kehren Sie anschließend hierher zurück.
 
-1. Select **Create** to add the specified VM to the lab.
+1. Wählen Sie **Erstellen**, um den angegebene virtuellen Computer dem Lab hinzuzufügen.
 
-1. The lab blade displays the status of the VM's creation; first as **Creating**, then as **Running** after the VM has been started.
+1. Auf dem Blatt für das Lab wird der Status der VM-Erstellung angezeigt: erst als **Erstellung**, dann als **Wird ausgeführt**, nachdem die VM gestartet wurde.
 
-1. Go to the [Next Steps](#next-steps) section. 
+1. Gehen Sie zum Abschnitt [Nächste Schritte](#next-steps).
 
-## <a name="add-an-existing-artifact-to-a-vm"></a>Add an existing artifact to a VM
+## Hinzufügen eines vorhandenen Artefakts zu einer VM
 
-While creating a VM, you can add existing artifacts. Each lab includes artifacts from the Public DevTest Labs Artifact Repository as well as artifacts that you've created and added to your own Artifact Repository.
-To discover how to create artifacts, see the article, [Learn how to author your own artifacts for use with DevTest Labs](devtest-lab-artifact-author.md).
+Beim Erstellen eines virtuellen Computers können Sie vorhandene Artefakte hinzufügen. Jedes Lab enthält Artefakte aus dem öffentlichen DevTest Labs-Artefaktrepository, sowie Artefakte, die Sie erstellt und Ihrem eigenen Artefaktrepository hinzugefügt haben. Informationen zum Erstellen von Artefakten finden Sie im Artikel [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM](devtest-lab-artifact-author.md).
 
-1. On the **Virtual machine** blade, select **Artifacts**. 
+1. Klicken Sie auf dem Blatt **Virtueller Computer** auf **Artefakte**.
 
-1. On the **Add artifacts** blade, select the desired artifact.  
+1. Wählen Sie auf dem Blatt **Artefakte hinzufügen** das gewünschte Artefakt aus.
 
-    ![Add Artifacts blade](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifact-blade.png)
+	![Blatt „Artefakte hinzufügen“](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifact-blade.png)
 
-1. Enter the required parameter values and any optional parameters that you need.  
+1. Geben Sie die erforderlichen Parameterwerte und alle optionalen Parameter ein, die Sie benötigen.
 
-1. Select **Add** to add the artifact and return to the **Add Artifacts** blade.
+1. Wählen Sie **Hinzufügen**, um das Artefakt hinzuzufügen, und kehren Sie zum Blatt **Artefakte hinzufügen** zurück.
 
-1. Continue adding artifacts as needed for your VM.
+1. Fügen Sie weiterhin nach Bedarf für Ihren virtuellen Computer Artefakte hinzu.
 
-1. Once you've added your artifacts, you can [change the order in which the artifacts are run](#change-the-order-in-which-artifacts-are-run). You can also go back to [view or modify an artifact](#view-or-modify-an-artifact).
+1. Sobald Sie Ihre Artefakte hinzugefügt haben, können Sie [die Reihenfolge ändern, in der die Artefakte ausgeführt werden](#change-the-order-in-which-artifacts-are-run). Sie können auch zum [Anzeigen oder Ändern eines Artefakts](#view-or-modify-an-artifact) zurückgehen.
 
-## <a name="change-the-order-in-which-artifacts-are-run"></a>Change the order in which artifacts are run
+## Ändern der Reihenfolge, in der Artefakte ausgeführt werden
 
-By default, the actions of the artifacts are executed in the order in which they are added to the VM. The following steps illustrate how to change the order in which the artifacts are run.
+Standardmäßig werden die Aktionen der Artefakte in der Reihenfolge ausgeführt, in der sie der VM hinzugefügt wurden. Die folgenden Schritte veranschaulichen, wie Sie die Reihenfolge ändern, in der die Artefakte ausgeführt werden.
 
-1. At the top of the **Add Artifacts** blade, select the link indicating the number of artifacts that have been added to the VM.
+1. Wählen Sie oben auf dem Blatt **Artefakte hinzufügen** den Link, der die Anzahl der Artefakte angibt, die dem virtuellen Computer hinzugefügt wurden.
 
-    ![Number of artifacts added to VM](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+    ![Anzahl der Artefakte, die dem virtuellen Computer hinzugefügt wurden](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 
-1. To specify the order in which the artifacts are run, drag and drop the artifacts into the desired order. **Note:** If you have having trouble dragging the artifact, make sure that you are dragging from the left side of the artifact. 
+1. Um die Reihenfolge für die Ausführung der Artefakte anzugeben, ziehen Sie die Artefakte in die gewünschte Reihenfolge. **Hinweis:** Wenn beim Ziehen eines Artefakts Probleme auftreten, stellen Sie sicher, dass Sie von der linken Seite des Artefakts aus ziehen.
 
-1. Select **OK** when done.  
+1. Wählen Sie nach Abschluss des Vorgangs **OK**.
 
-## <a name="view-or-modify-an-artifact"></a>View or modify an artifact
+## Anzeigen oder Ändern eines Artefakts
 
-The following steps illustrate how to view or modify the parameters of an artifact:
+Die folgenden Schritte veranschaulichen das Anzeigen oder Ändern der Parameter eines Artefakts:
 
-1. At the top of the **Add Artifacts** blade, select the link indicating the number of artifacts that have been added to the VM.
+1. Wählen Sie oben auf dem Blatt **Artefakte hinzufügen** den Link, der die Anzahl der Artefakte angibt, die dem virtuellen Computer hinzugefügt wurden.
 
-    ![Number of artifacts added to VM](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+    ![Anzahl der Artefakte, die dem virtuellen Computer hinzugefügt wurden](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 
-1. On the **Selected Artifacts** blade, select the artifact that you want to view or edit.  
+1. Wählen Sie auf dem Blatt **Ausgewählte Artefakte** das Artefakt aus, das Sie anzeigen oder bearbeiten möchten.
 
-1. On the **Add Artifact** blade, make any needed changes, and select **OK** to close the **Add Artifact** blade.
+1. Nehmen Sie auf dem Blatt **Artefakt hinzufügen** die erforderlichen Änderungen vor, und wählen Sie **OK**, um das Blatt **Artefakt hinzufügen** zu schließen.
 
-1. Select **OK** to close the **Selected Artifacts** blade.
+1. Wählen Sie **OK**, um das Blatt **Ausgewählte Artefakte** zu schließen.
 
-## <a name="save-azure-resource-manager-template"></a>Save Azure Resource Manager template
+## Speichern der Azure Resource Manager-Vorlage
 
-An Azure Resource Manager template provides a declarative way to define a repeatable deployment. The following steps explain how to save the Azure Resource Manager template for the VM being created.
-Once saved, you can use the Azure Resource Manager template to [deploy new VMs with Azure PowerShell](../resource-group-overview.md#template-deployment).
+Eine Azure Resource Manager-Vorlage bietet eine deklarative Möglichkeit zum Definieren einer wiederholbaren Bereitstellung. Die folgenden Schritte erläutern, wie die Azure Resource Manager-Vorlage für den zu erstellenden virtuellen Computer gespeichert wird. Nach dem Speichern können Sie die Azure Resource Manager-Vorlage zum [Bereitstellen neuer virtueller Computer mit Azure PowerShell](../resource-group-overview.md#template-deployment) nutzen.
 
-1. On the **Virtual machine** blade, select **View ARM Template**.
+1. Klicken Sie auf dem Blatt **Virtual machine** (Virtueller Computer) auf **View ARM Template** (ARM-Vorlage anzeigen).
 
-1. On the **View Azure Resource Manager Template blade**, select the template text.
+1. Markieren Sie auf dem Blatt **View Azure Resource Manager Template** (Azure Resource Manager-Vorlage anzeigen) den Text der Vorlage.
 
-1. Copy the selected text to the clipboard.
+1. Kopieren Sie den markierten Text in die Zwischenablage.
 
-1. Select **OK** to close the **View Azure Resource Manager Template blade**.
+1. Wählen Sie **OK**, um das Blatt **Azure Resource Manager-Vorlage anzeigen** zu schließen.
 
-1. Open a text editor.
+1. Öffnen Sie einen Text-Editor.
 
-1. Paste in the template text from the clipboard.
+1. Fügen Sie den Text der Vorlage aus der Zwischenablage ein.
 
-1. Save the file for later use.
+1. Speichern Sie die Datei für eine spätere Verwendung.
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-- Once the VM has been created, you can connect to the VM by selecting **Connect** on the VM's blade.
-- Learn how to [create custom artifacts for your DevTest Labs VM](devtest-lab-artifact-author.md).
-- Explore the [DevTest Labs ARM QuickStart template gallery](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)
+- Nach der Erstellung des virtuellen Computers können Sie **Verbinden** auf dem Blatt des virtuellen Computers wählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
+- Informieren Sie sich über das [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
+- Erkunden Sie den [DevTest Labs-ARM-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Manage your StorSimple backup policies | Microsoft Azure"
-   description="Explains how you can use the StorSimple Manager service to create and manage manual backups, backup schedules, and backup retention."
+   pageTitle="Verwalten von StorSimple-Sicherungsrichtlinien | Microsoft Azure"
+   description="Beschreibt, wie Sie den StorSimple Manager-Dienst zum Erstellen und Verwalten von manuellen Sicherungen, Sicherungszeitplänen und zur Sicherungsaufbewahrung verwenden können."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,84 +15,79 @@
    ms.date="05/10/2016"
    ms.author="v-sharos"/>
 
-
-# <a name="use-the-storsimple-manager-service-to-manage-backup-policies"></a>Use the StorSimple Manager service to manage backup policies
+# Verwalten von Sicherungsrichtlinien mithilfe des StorSimple Manager-Diensts
 
 [AZURE.INCLUDE [storsimple-version-selector-manage-backup-policies](../../includes/storsimple-version-selector-manage-backup-policies.md)]
 
-## <a name="overview"></a>Overview
+## Übersicht
 
-This tutorial explains how to use the StorSimple Manager service **Backup Policies** page to control backup processes and backup retention for your StorSimple volumes. It also describes how to complete a manual backup.
+In diesem Tutorial wird erläutert, wie Sie die Seite **Sicherungsrichtlinien** des StorSimple-Manager-Dienstes verwenden, um Sicherungsprozesse und die Sicherungsaufbewahrung für Ihre StorSimple-Volumes zu steuern. Außerdem wird beschrieben, wie eine manuelle Sicherung durchgeführt wird.
 
-The **Backup Policies** page allows you to manage backup policies and schedule local and cloud snapshots. (Backup policies are used to configure backup schedules and backup retention for a collection of volumes.) Backup policies enable you to take a snapshot of multiple volumes simultaneously. This means that the backups created by a backup policy will be crash-consistent copies. This page lists the backup policies, their types, the associated volumes, the number of backups retained, and the option to enable these policies.
+Über die Seite **Sicherungsrichtlinien** können Sie Sicherungsrichtlinien verwalten und lokale sowie Cloudmomentaufnahmen zeitlich planen. (Sicherungsrichtlinien werden zum Konfigurieren von Sicherungszeitplänen und der Sicherungsaufbewahrung für eine Sammlung von Volumes verwendet.) Mithilfe von Sicherungsrichtlinien können Sie eine Momentaufnahme mehrerer Volumes gleichzeitig erstellen. Dies bedeutet, dass es sich bei durch Sicherungsrichtlinien erstellten Sicherungen um ausfallsichere Kopien handelt. Auf dieser Seite werden alle Sicherungsrichtlinien, ihre Typen, die zugehörigen Volumes, die Anzahl der aufbewahrten Sicherungen und die Option zum Aktivieren dieser Richtlinien aufgeführt.
 
-The **Backup Policies** page also allows you to filter the existing backup policies by one or more of the following fields:
+Auf der Seite **Sicherungsrichtlinien** können Sie außerdem die vorhandenen Sicherungsrichtlinien anhand von einem oder mehreren der folgenden Felder filtern:
 
-- **Policy name** – The name associated with the policy. The different types of policies include:
+- **Richtlinienname** – Der der Richtlinie zugeordnete Name. Die folgenden verschiedenen Richtlinientypen sind verfügbar:
 
-   - Scheduled policies, which are explicitly created by the user.
-   - Automatic policies, which are created when the default backup for this volume option was enabled at the time of volume creation. These policies are named as VolumeName_Default where Volume name refers to the name of the StorSimple volume configured by the user in the Azure classic portal. The automatic policies result in daily cloud snapshots beginning at 22:30 device time.
-   - Imported policies, which were originally created in the StorSimple Snapshot Manager. These have a tag that describes the StorSimple Snapshot Manager host that the policies were imported from.
+   - Geplante Richtlinien, die explizit vom Benutzer erstellt werden.
+   - Automatische Richtlinien, die erstellt werden, wenn die Option "Standardsicherung für dieses Volume" zum Zeitpunkt der Volumeerstellung aktiviert war Diese Richtlinien tragen den Namen "VolumeName\_Default". Dabei bezieht sich "VolumeName" auf den Namen des StorSimple-Volumes, das vom Benutzer im klassischen Azure-Portal konfiguriert wird. Die automatischen Richtlinien bewirken tägliche Cloudmomentaufnahmen, die um 22:30 Uhr Gerätezeit beginnen.
+   - Importierte Richtlinien, die ursprünglich im StorSimple-Momentaufnahme-Manager erstellt wurden. Diese weisen ein Tag auf, das den StorSimple-Momentaufnahme-Manager-Host beschreibt, von dem die Richtlinien importiert wurden.
 
-- **Volumes** – The volumes associated with the policy. All the volumes associated with a backup policy are grouped together when backups are created.
+- **Volumes** – Die Volumes, die der Richtlinie zugeordnet sind. Alle Volumes, die einer Sicherungsrichtlinie zugeordnet sind, werden beim Erstellen von Sicherungen gruppiert.
 
-- **Last successful backup** – The date and time of the last successful backup that was taken with this policy.
+- **Letzte erfolgreiche Sicherung** – Das Datum und die Uhrzeit der letzten erfolgreichen Sicherung, die mit dieser Richtlinie erstellt wurde.
 
-- **Next backup** – The date and time of the next scheduled backup that will be initiated by this policy.
+- **Nächste Sicherung** – Das Datum und die Uhrzeit der nächsten geplanten Sicherung, die von dieser Richtlinie initiiert wird.
 
-- **Schedules** – The number of schedules associated with the backup policy.
+- **Zeitpläne** – Die Anzahl der Zeitpläne, die der Sicherungsrichtlinie zugeordnet sind.
 
-The frequently used operations that you can perform from this page are:
+Auf dieser Seite können die folgenden allgemeinen Vorgänge ausgeführt werden:
 
-- Add a backup policy 
-- Add or modify a schedule 
-- Delete a backup policy 
-- Take a manual backup 
-- Create a custom backup policy with multiple volumes and schedules 
+- Hinzufügen einer Sicherungsrichtlinie 
+- Hinzufügen oder Ändern eines Zeitplans 
+- Löschen einer Sicherungsrichtlinie 
+- Erstellen einer manuellen Sicherung 
+- Erstellen einer benutzerdefinierten Sicherungsrichtlinie mit mehreren Volumes und Zeitplänen 
 
-## <a name="add-a-backup-policy"></a>Add a backup policy
+## Hinzufügen einer Sicherungsrichtlinie
 
-Add a backup policy to automatically schedule your backups. Perform the following steps in the Azure classic portal to add a backup policy for your StorSimple device. After you add the policy, you can define a schedule (see [Add or modify a schedule](#add-or-modify-a-schedule)).
+Fügen Sie eine Sicherungsrichtlinie zum automatischen Planen Ihrer Sicherungen hinzu. Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um eine Sicherungsrichtlinie für Ihr StorSimple-Gerät hinzuzufügen. Nachdem Sie die Richtlinie hinzugefügt haben, können Sie einen Zeitplan definieren (siehe [Hinzufügen oder Ändern eines Zeitplans](#add-or-modify-a-schedule).
 
 [AZURE.INCLUDE [storsimple-add-backup-policy](../../includes/storsimple-add-backup-policy.md)]
 
-![Video available](./media/storsimple-manage-backup-policies/Video_icon.png) **Video available**
+![Video verfügbar](./media/storsimple-manage-backup-policies/Video_icon.png) **Video verfügbar**
 
-To watch a video that demonstrates how to create a local or cloud backup policy, click [here](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/).
+Sie können sich [hier](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/) ein Video anschauen, in dem das Erstellen einer lokalen Sicherungsrichtlinie oder einer Sicherungsrichtlinie in der Cloud demonstriert wird.
 
 
-## <a name="add-or-modify-a-schedule"></a>Add or modify a schedule
+## Hinzufügen oder Ändern eines Zeitplans
 
-You can add or modify a schedule that is attached to an existing backup policy on your StorSimple device. Perform the following steps in the Azure classic portal to add or modify a schedule.
+Sie können einen Zeitplan hinzufügen oder ändern, der an eine vorhandene Sicherungsrichtlinie auf Ihrem StorSimple-Gerät angefügt wird. Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um einen Zeitplan hinzuzufügen oder zu ändern:
 
 [AZURE.INCLUDE [storsimple-add-modify-backup-schedule](../../includes/storsimple-add-modify-backup-schedule.md)]
 
-## <a name="delete-a-backup-policy"></a>Delete a backup policy
+## Löschen einer Sicherungsrichtlinie
 
-Perform the following steps in the Azure classic portal to delete a backup policy on your StorSimple device.
+Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um eine Sicherungsrichtlinie für Ihr StorSimple-Gerät zu löschen.
 
 [AZURE.INCLUDE [storsimple-delete-backup-policy](../../includes/storsimple-delete-backup-policy.md)]
 
 
-## <a name="take-a-manual-backup"></a>Take a manual backup
+## Erstellen einer manuellen Sicherung
 
-Perform the following steps in the Azure classic portal to create an on-demand (manual) backup for a single volume.
+Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um bei Bedarf eine (manuelle) Sicherung für ein einzelnes Volume zu erstellen.
 
 [AZURE.INCLUDE [storsimple-create-manual-backup](../../includes/storsimple-create-manual-backup.md)]
 
-## <a name="create-a-custom-backup-policy-with-multiple-volumes-and-schedules"></a>Create a custom backup policy with multiple volumes and schedules
+## Erstellen einer benutzerdefinierten Sicherungsrichtlinie mit mehreren Volumes und Zeitplänen
 
-Perform the following steps in the Azure classic portal to create a custom backup policy that has multiple volumes and schedules.
+Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um eine benutzerdefinierte Sicherungsrichtlinie mit mehreren Volumes und Zeitplänen zu erstellen.
 
 [AZURE.INCLUDE [storsimple-create-custom-backup-policy](../../includes/storsimple-create-custom-backup-policy.md)]
 
 
-## <a name="next-steps"></a>Next steps
+## Nächste Schritte
 
-Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0511_2016-->

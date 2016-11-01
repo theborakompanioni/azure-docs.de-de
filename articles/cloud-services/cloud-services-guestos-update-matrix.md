@@ -1,9 +1,9 @@
 <properties 
-   pageTitle="Learn about the latest Azure Guest OS Releases | Microsoft Azure" 
-   description="The latest release news and SDK compatibility for Azure Cloud Services Guest OS." 
+   pageTitle="Erfahren Sie mehr über die neuesten Azure-Gastbetriebssystemversionen | Microsoft Azure" 
+   description="Die neueste Releaseneuigkeiten und SDK-Kompatibilität für das Azure Cloud Services-Gastbetriebssystem." 
    services="cloud-services" 
    documentationCenter="na" 
-   authors="raiye" 
+   authors="yuemlu" 
    manager="timlt" 
    editor=""/>
 
@@ -13,204 +13,200 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="10/18/2016"
+   ms.date="07/13/2016"
    ms.author="raiye"/>
 
+# Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
+Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem deaktiviert wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
 
-# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS releases and SDK compatibility matrix
-Provides you with up-to-date information about the latest Azure Guest OS releases for Cloud Services. This information will help you plan your upgrade path before a Guest OS is disabled. If you configure your roles to use *automatic* Guest OS updates as described in [Azure Guest OS Update Settings][], it is not vital that you read this page.
-
-> [AZURE.IMPORTANT] This page applies to Cloud Services web and worker roles, which run on top of a Guest OS. It does **not apply** to IaaS Virtual Machines. 
+> [AZURE.IMPORTANT] Diese Seite bezieht sich auf die Cloud Services-Web- und Workerrollen, die zusätzlich zu einem Gastbetriebssystem ausgeführt werden. Sie **gilt nicht** für IaaS Virtual Machines.
 
 <!-- -->
 
-> [AZURE.TIP] Subscribe to the [Guest OS Update RSS Feed][rss] to receive the most timely notification on all Guest OS changes.
+> [AZURE.TIP] Abonnieren Sie den [RSS-Feed zu Gastbetriebssystemupdates][rss], um immer sofort über alle Gastbetriebssystemänderungen benachrichtigt zu werden.
 
-Unsure about what the Guest OS is or how the Guest OS releases work? Read [this](#how-it-works) section.
+Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
-## <a name="news-updates"></a>News updates
-###### <a name="**september-13-2016**"></a>**September 13 2016**
-September Guest OS rollout is starting September 13 2016, and projected to be released on October 13 2016.
+## Neuigkeiten
+###### **13. September 2016**
+Die Bereitstellung des Gastbetriebssystems September begann am 13. September 2016 und soll voraussichtlich am 13. Oktober 2016 freigegeben werden.
 
-###### <a name="**august-9-2016**"></a>**August 9 2016**
-August Guest OS rollout is starting August 9 2016, and projected to be released on September 8 2016. 
+###### **9. August 2016**
+Das Rollout des August-Gastbetriebssystems beginnt am 9. August 2016. Die Veröffentlichung ist für den 8. September 2016 geplant.
 
-###### <a name="**july-13-2016**"></a>**July 13 2016**
-July Guest OS rollout is starting July 13 2016, and projected to be released on August 12 2016. 
+###### **13. Juli 2016**
+Das Rollout der Juliversion des Gastbetriebssystems beginnt am 13. Juli 2016. Die Veröffentlichung ist für den 12. August 2016 geplant.
 
-###### <a name="**june-15-2016**"></a>**June 15 2016**
-June Guest OS rollout is starting June 15 2016, and projected to be released on July 14 2016. 
+###### **15. Juni 2016**
+Das Rollout der Juniversion des Gastbestriebssystems beginnt am 15. Juni 2016. Die Veröffentlichung ist für den 14. Juli 2016 geplant.
 
-###### <a name="**may-17-2016**"></a>**May 17 2016**
-May Guest OS rollout is starting May 17 2016, and projected to be released on June 10 2016. 
+###### **17. Mai 2016**
+Der Rollout des Gastbetriebssystems für Mai begann am 17. Mai 2016, und es soll voraussichtlich am 10. Juni 2016 herausgegeben werden.
 
-###### <a name="**april-18-2016**"></a>**April 18 2016**
-April Guest OS rollout is starting April 18 2016, and projected to be released on May 12 2016. 
+###### **18. April 2016**
+Der Rollout des Gastbetriebssystems für April beginnt am 18. April 2016 und sollte voraussichtlich am 12. Mai 2016 freigegeben werden.
 
-###### <a name="**march-14-2016**"></a>**March 14 2016**
-March Guest OS rollout is starting March 14 2016, and projected to be released on April 8 2016. 
+###### **14. März 2016**
+Der Rollout des Gast-BS März beginnt am 14. März 2016 und sollte voraussichtlich am 8. April 2016 freigegeben werden.
 
-###### <a name="**february-22-2016**"></a>**February 22 2016**
-February Guest OS rollout is starting February 22 2016, and projected to be released on March 9 2016.
+###### **22. Februar 2016**
+Die Bereitstellung des Gastbetriebssystems Februar beginnt am 22. Februar 2016 und soll voraussichtlich am 9. März 2016 freigegeben werden.
 
-###### <a name="**january-18-2016**"></a>**January 18 2016**
-January Guest OS rollout is starting January 18 2016, and projected to be released on February 12 2016.
+###### **18. Januar 2016**
+Die Bereitstellung des Gast-BS Januar beginnt am 18. Januar 2016 und soll voraussichtlich am 12. Februar 2016 freigegeben werden.
 
-###### <a name="**january-4-2016**"></a>**January 4 2016**
-November 201511-02 Guest OS was released on January 4, 2016 for deployment. This OS version is not set as the default OS for automatic update, so the provisioning time of Guest OS deployment to November 201511-02 OS version would be slightly longer. 
+###### **4. Januar 2016**
+Das Gastbetriebssystem November 201511-02 wurde am 4. Januar 2016 für die Bereitstellung veröffentlicht. Diese Version des Betriebssystems wurde nicht als Standardbetriebssystem für automatische Updates festgelegt. Daher nimmt die Bereitstellung des Gastbetriebssystems für die Version November 201511-02 etwas mehr Zeit in Anspruch.
 
-## <a name="releases"></a>Releases
+## Releases
 
-## <a name="family-4-releases"></a>Family 4 releases
+## Releases von Familie 4
 **Windows Server 2012 R2**
 
-Supports .NET 4.0, 4.5, 4.5.1, 4.5.2
+Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
->[AZURE.NOTE] Dates with a * are subject to change
+>[AZURE.NOTE] Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
 
-| Configuration String           | Release date    | Disable date  | Expired date |
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | ------------------------------ | --------------- | ------------- | ---- |
-| WA-GUEST-OS-4.36_201609-01     | Oct 13 2016     | Post 4.38     | TBD |
-| WA-GUEST-OS-4.35_201608-01     | Sept 13 2016    | Post 4.37     | TBD |
-| WA-GUEST-OS-4.34_201607-01     | Aug 8 2016      | Post 4.36     | TBD |
-| WA-GUEST-OS-4.33_201606-01     | July 13 2016    | Oct 13 2016   | TBD |
-| WA-GUEST-OS-4.32_201605-01     | June 10 2016    | Sept 8 2016   | TBD |
-| WA-GUEST-OS-4.31_201604-01     | May 2 2016      | Aug 13 2016   | TBD |
-| WA-GUEST-OS-4.30_201603-01     | April 7 2016    | July 10 2016  | TBD |
-| WA-GUEST-OS-4.29_201602-02     | March 12 2016   | June 2 2016   | TBD |
-| WA-GUEST-OS-4.28_201601-01     | Feb 12 2016     | May 7 2016    | TBD | 
-| WA-GUEST-OS-4.27_201512-01     | Jan 12 2016     | April 12 2016 | TBD |
-| ~~WA-GUEST-OS-4.26_201511-02~~ | Jan 4 2016      | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-4.26_201511-01~~ | Dec 10 2015     | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-4.25_201510-01~~ | Nov 6 2015      | Feb 12 2016   | TBD |
-| ~~WA-GUEST-OS-4.24_201509-01~~ | Oct 1 2015      | Jan 10 2016   | TBD |
-| ~~WA-GUEST-OS-4.23_201508-02~~ | Sep 9 2015      | Dec 6 2015    | TBD |
-| ~~WA-GUEST-OS-4.22_201507-02~~ | Aug 7 2015      | Nov 1 2015    | TBD |
-| ~~WA-GUEST-OS-4.21_201506-01~~ | July 9 2015     | Oct 9 2015    | TBD |
-| ~~WA-GUEST-OS-4.20_201505-02~~ | June 12 2015    | Sep 7 2015    | TBD |
-| ~~WA-GUEST-OS-4.19_201504-01~~ | April 17 2015   | Aug 9 2015    | TBD |
+| WA-GUEST-OS-4.36\_201609-01 | 13\. Oktober 2016 | Nach 4.38 | TBD |
+| WA-GUEST-OS-4.35\_201608-01 | 13\. September 2016 | Post 4.37 | TBD |
+| WA-GUEST-OS-4.34\_201607-01 | 8\. August 2016 | Post 4.36 | Noch nicht festgelegt |
+| WA-GUEST-OS-4.33\_201606-01 | 13\. Juli 2016 | 13\. Oktober 2016 | TBD |
+| WA-GUEST-OS-4.32\_201605-01 | 10\. Juni 2016 | 8\. September 2016 | TBD |
+| WA-GUEST-OS-4.31\_201604-01 | 2\. Mai 2016 | 13\. August 2016 | TBD |
+| WA-GUEST-OS-4.30\_201603-01 | 7\. April 2016 | 10\. Juli 2016 | TBD |
+| WA-GUEST-OS-4.29\_201602-02 | 12\. März 2016 | 2\. Juni 2016 | TBD |
+| WA-GUEST-OS-4.28\_201601-01 | 12\. Februar 2016 | 7\. Mai 2016 | TBD | 
+| WA-GUEST-OS-4.27\_201512-01 | 12\. Januar 2016 | 12\. April 2016 | TBD |
+| ~~WA-GUEST-OS-4.26\_201511-02~~ | 4\. Januar 2016 | 12\. März 2016 | TBD |
+| ~~WA-GUEST-OS-4.26\_201511-01~~ | 10\. Dezember 2015 | 12\. März 2016 | TBD |
+| ~~WA-GUEST-OS-4.25\_201510-01~~ | 6\. November 2015 | 12\. Februar 2016 | TBD |
+| ~~WA-GUEST-OS-4.24\_201509-01~~ | 1\. Oktober 2015 | 10\. Januar 2016 | TBD |
+| ~~WA-GUEST-OS-4.23\_201508-02~~ | 9\. September 2015 | 6\. Dezember 2015 | TBD |
+| ~~WA-GUEST-OS-4.22\_201507-02~~ | 7\. August 2015 | 1\. November 2015 | TBD |
+| ~~WA-GUEST-OS-4.21\_201506-01~~ | 9\. Juli 2015 | 9\. Oktober 2015 | TBD |
+| ~~WA-GUEST-OS-4.20\_201505-02~~ | 12\. Juni 2015 | 7\. September 2015 | TBD |
+| ~~WA-GUEST-OS-4.19\_201504-01~~ | 17\. April 2015 | 9\. August 2015 | TBD |
 
-## <a name="family-3-releases"></a>Family 3 releases
+## Releases von Familie 3
 
 **Windows Server 2012**
 
-Supports .NET 4.0, 4.5, 4.5.1, 4.5.2
+Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
->[AZURE.NOTE] Dates with a * are subject to change
+>[AZURE.NOTE] Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
 
-| Configuration String           | Release date   | Disable date  | Expired date |
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | ------------------------------ | -------------- | ------------- | --- |
-| WA-GUEST-OS-3.43_201609-01     | Oct 13 2016    | Post 3.45     | TBD |
-| WA-GUEST-OS-3.42_201608-01     | Sept 13 2016   | Post 3.44     | TBD |
-| WA-GUEST-OS-3.41_201607-01     | Aug 8 2016     | Post 3.43     | TBD |
-| WA-GUEST-OS-3.40_201606-01     | July 13 2016   | Oct 13 2016   | TBD |
-| WA-GUEST-OS-3.39_201605-01     | June 10 2016   | Sept 8 2016   | TBD |
-| WA-GUEST-OS-3.38_201604-01     | May 2 2016     | Aug 13 2016   | TBD |
-| WA-GUEST-OS-3.37_201603-01     | April 7 2016   | July 10 2016  | TBD |
-| WA-GUEST-OS-3.36_201602-02     | March 12 2016  | June 2 2016   | TBD |
-| WA-GUEST-OS-3.35_201601-01     | Feb 12 2016    | May 7 2016    | TBD |
-| WA-GUEST-OS-3.34_201512-01     | Jan 12 2016    | April 12 2016 | TBD |
-| ~~WA-GUEST-OS-3.33_201511-02~~ | Jan 4 2016     | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-3.33_201511-01~~ | Dec 10 2015    | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-3.32_201510-01~~ | Nov 6 2015     | Feb 12 2016   | TBD |
-| ~~WA-GUEST-OS-3.31_201509-01~~ | Oct 1 2015     | Jan 10 2016   | TBD |
-| ~~WA-GUEST-OS-3.30_201508-02~~ | Sep 9 2015     | Dec 6 2015    | TBD |
-| ~~WA-GUEST-OS-3.29_201507-02~~ | Aug 7 2015     | Nov 1 2015    | TBD |
-| ~~WA-GUEST-OS-3.28_201506-01~~ | July 9 2015    | Oct 9 2015    | TBD |
-| ~~WA-GUEST-OS-3.27_201505-02~~ | June 12 2015   | Sep 7 2015    | TBD |
-| ~~WA-GUEST-OS-3.26_201504-01~~ | April 17 2015  | Aug 9 2015    | TBD |
+| WA-GUEST-OS-3.43\_201609-01 | 13\. Oktober 2016 | Nach 3.45 | TBD |
+| WA-GUEST-OS-3.42\_201608-01 | 13\. September 2016 | Post 3.44 | TBD |
+| WA-GUEST-OS-3.41\_201607-01 | 8\. August 2016 | Post 3.43 | TBD |
+| WA-GUEST-OS-3.40\_201606-01 | 13\. Juli 2016 | 13\. Oktober 2016 | TBD |
+| WA-GUEST-OS-3.39\_201605-01 | 10\. Juni 2016 | 8\. September 2016 | TBD |
+| WA-GUEST-OS-3.38\_201604-01 | 2\. Mai 2016 | 13\. August 2016 | TBD |
+| WA-GUEST-OS-3.37\_201603-01 | 7\. April 2016 | 10\. Juli 2016 | TBD |
+| WA-GUEST-OS-3.36\_201602-02 | 12\. März 2016 | 2\. Juni 2016 | TBD |
+| WA-GUEST-OS-3.35\_201601-01 | 12\. Februar 2016 | 7\. Mai 2016 | TBD |
+| WA-GUEST-OS-3.34\_201512-01 | 12\. Januar 2016 | 12\. April 2016 | TBD |
+| ~~WA-GUEST-OS-3.33\_201511-02~~ | 4\. Januar 2016 | 12\. März 2016 | TBD |
+| ~~WA-GUEST-OS-3.33\_201511-01~~ | 10\. Dezember 2015 | 12\. März 2016 | TBD |
+| ~~WA-GUEST-OS-3.32\_201510-01~~ | 6\. November 2015 | 12\. Februar 2016 | TBD |
+| ~~WA-GUEST-OS-3.31\_201509-01~~ | 1\. Oktober 2015 | 10\. Januar 2016 | TBD |
+| ~~WA-GUEST-OS-3.30\_201508-02~~ | 9\. September 2015 | 6\. Dezember 2015 | TBD |
+| ~~WA-GUEST-OS-3.29\_201507-02~~ | 7\. August 2015 | 1\. November 2015 | TBD |
+| ~~WA-GUEST-OS-3.28\_201506-01~~ | 9\. Juli 2015 | 9\. Oktober 2015 | TBD |
+| ~~WA-GUEST-OS-3.27\_201505-02~~ | 12\. Juni 2015 | 7\. September 2015 | TBD |
+| ~~WA-GUEST-OS-3.26\_201504-01~~ | 17\. April 2015 | 9\. August 2015 | TBD |
 
 
-## <a name="family-2-releases"></a>Family 2 releases
+## Releases von Familie 2
 
 **Windows Server 2008 R2 SP1**
 
-Supports .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
+Unterstützt .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
->[AZURE.NOTE] Dates with a * are subject to change
+>[AZURE.NOTE] Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
 
-| Configuration String           | Release date  | Disable date  | Expired date |
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | ------------------------------ | ------------- | ------------  | --- |
-| WA-GUEST-OS-2.55_201609-01     | Oct 13 2016   | Post 2.57     | TBD |
-| WA-GUEST-OS-2.54_201608-01     | Sept 13 2016  | Post 2.56     | TBD |
-| WA-GUEST-OS-2.53_201607-01     | Aug 8 2016    | Post 2.55     | TBD |
-| WA-GUEST-OS-2.52_201606-01     | July 13 2016  | Oct 13 2016   | TBD |
-| WA-GUEST-OS-2.51_201605-01     | June 10 2016  | Sept 8 2016   | TBD |
-| WA-GUEST-OS-2.50_201604-01     | May 2 2016    | Aug 13 2016   | TBD |
-| WA-GUEST-OS-2.49_201603-01     | April 7 2016  | July 10 2016  | TBD |
-| WA-GUEST-OS-2.48_201602-02     | March 12 2016 | June 2 2016   | TBD |
-| WA-GUEST-OS-2.47_201601-01     | Feb 12 2016   | May 7 2016    | TBD |
-| WA-GUEST-OS-2.46_201512-01     | Jan 12 2016   | April 12 2016 | TBD |
-| ~~WA-GUEST-OS-2.45_201511-02~~ | Jan 4 2016    | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-2.45_201511-01~~ | Dec 10 2015   | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-2.44_201510-01~~ | Nov 6 2015    | Feb 12 2016   | TBD |
-| ~~WA-GUEST-OS-2.43_201509-01~~ | Oct 1 2015    | Jan 10 2016   | TBD |
-| ~~WA-GUEST-OS-2.42_201508-02~~ | Sep 9 2015    | Dec 6 2015    | TBD |
-| ~~WA-GUEST-OS-2.41_201507-02~~ | Aug 7 2015    | Nov 1 2015    | TBD |
-| ~~WA-GUEST-OS-2.40_201506-01~~ | July 9 2015   | Oct 9 2015    | TBD |
-| ~~WA-GUEST-OS-2.39_201505-02~~ | June 12 2015  | Sep 7 2015    | TBD |
-| ~~WA-GUEST-OS-2.38_201504-01~~ | April 17 2015 | Aug 9 2015    | TBD |
+| WA-GUEST-OS-2.55\_201609-01 | 13\. Oktober 2016 | Nach 2.57 | TBD |
+| WA-GUEST-OS-2.54\_201608-01 | 13\. September 2016 | Post 2.56 | TBD |
+| WA-GUEST-OS-2.53\_201607-01 | 8\. August 2016 | Post 2.55 | TBD |
+| WA-GUEST-OS-2.52\_201606-01 | 13\. Juli 2016 | 13\. Oktober 2016 | TBD |
+| WA-GUEST-OS-2.51\_201605-01 | 10\. Juni 2016 | 8\. September 2016 | TBD |
+| WA-GUEST-OS-2.50\_201604-01 | 2\. Mai 2016 | 13\. August 2016 | TBD |
+| WA-GUEST-OS-2.49\_201603-01 | 7\. April 2016 | 10\. Juli 2016 | TBD |
+| WA-GUEST-OS-2.48\_201602-02 | 12\. März 2016 | 2\. Juni 2016 | TBD |
+| WA-GUEST-OS-2.47\_201601-01 | 12\. Februar 2016 | 7\. Mai 2016 | TBD |
+| WA-GUEST-OS-2.46\_201512-01 | 12\. Januar 2016 | 12\. April 2016 | TBD |
+| ~~WA-GUEST-OS-2.45\_201511-02~~ | 4\. Januar 2016 | 12\. März 2016 | TBD |
+| ~~WA-GUEST-OS-2.45\_201511-01~~ | 10\. Dezember 2015 | 12\. März 2016 | TBD |
+| ~~WA-GUEST-OS-2.44\_201510-01~~ | 6\. November 2015 | 12\. Februar 2016 | TBD |
+| ~~WA-GUEST-OS-2.43\_201509-01~~ | 1\. Oktober 2015 | 10\. Januar 2016 | TBD |
+| ~~WA-GUEST-OS-2.42\_201508-02~~ | 9\. September 2015 | 6\. Dezember 2015 | TBD |
+| ~~WA-GUEST-OS-2.41\_201507-02~~ | 7\. August 2015 | 1\. November 2015 | TBD |
+| ~~WA-GUEST-OS-2.40\_201506-01~~ | 9\. Juli 2015 | 9\. Oktober 2015 | TBD |
+| ~~WA-GUEST-OS-2.39\_201505-02~~ | 12\. Juni 2015 | 7\. September 2015 | TBD |
+| ~~WA-GUEST-OS-2.38\_201504-01~~ | 17\. April 2015 | 9\. August 2015 | TBD |
 
-## <a name="msrc-patch-updates"></a>MSRC patch updates
-The list of patches that are included with each monthly Guest OS release is available [here][patches].
+## MSRC-Patch-Updates
+Die Liste der Patches, die in den einzelnen monatlichen Gastbetriebssystemreleases enthalten sind, steht [hier][patches] zur Verfügung.
 
-## <a name="sdk-support"></a>SDK support
+## SDK-Unterstützung
 
-Even though the [retirement policy for the Azure SDK][retire policy sdk] indicates that only versions above 2.2 are supported, specific Guest OS families allow you to use earlier versions. You should always use the latest supported SDK. 
+Obwohl die [Deaktivierungsrichtlinie für das Azure SDK][retire policy sdk] angibt, dass nur Versionen ab 2.2 unterstützt werden, können bei bestimmten Gastbetriebssystem-Familien frühere Versionen verwendet werden. Sie sollten immer das neueste unterstützte SDK verwenden.
 
-| Guest OS Family | Compatible SDK Versions |
+| Gastbetriebssystemfamilie | Kompatible SDK-Versionen |
 | --------------- | ----------------------- |
-| 4               | Version 2.1+ |
-| 3               | Version 1.8+ |
-| 2               | Version 1.3+ |
-| 1               | Version 1.0+ |
+| 4 | Version 2.1+ |
+| 3 | Version 1.8+ |
+| 2 | Version 1.3+ |
+| 1 | Version 1.0+ |
 
-## <a name="guest-os-release-information"></a>Guest OS Release Information
-There are three dates that are important to Guest OS releases: **release** date, **disabled** date, and **expiration** date. A Guest OS is considered available when it is in the Portal and can be selected as the target Guest OS. When a Guest OS hits the **disabled** date it is removed from Azure. However, any Cloud Service targetting that Guest OS will still operate as normal. 
+## Informationen zu den Gastbetriebssystemreleases
+Es gibt drei Datumsangaben, die für Gastbetriebssystem-Releases wichtig sind: **Freigabedatum**, **Deaktivierungsdatum** und **Ablaufdatum**. Ein Gast-BS wird als verfügbar betrachtet, wenn es im Portal verfügbar ist und als Zielgastbetriebssystem ausgewählt werden kann. Wenn das **Deaktivierungsdatum** für ein Gastbetriebssystem erreicht wird, wird es aus Azure entfernt. Jedoch funktioniert jeder Clouddienst, der auf dieses Gast-BS abzielt, wie gewohnt.
 
-The window between the **disabled** date and the **expiration** date provide you with a buffer to easily transition from one Guest OS to one newer. If you're using *automatic* as your Guest OS, you'll always be on the latest version and you don't have to worry about it expiring. 
+Das Fenster zwischen dem **Deaktivierungsdatum** und dem **Ablaufdatum** bietet Ihnen einen Puffer, um problemlos von einem Gastbetriebssystem zu einem neueren zu wechseln. Wenn Sie für Ihr Gastbetriebssystem *automatisch* festgelegt haben, verwenden Sie immer die neueste Version. In diesem Fall müssen Sie sich keine Gedanken über das Ablaufdatum machen.
 
-When the **expiration** date passes and any Cloud Service still using that Guest OS will be stopped, deleted, or forced to upgrade. You can read more about the retirement policy [here][retirepolicy].
+Wenn das **Ablaufdatum** überschritten ist und das Gastbetriebssystem weiterhin von einem Clouddienst verwendet wird, wird das Gastbetriebssystem angehalten oder gelöscht bzw. ein Upgrade erzwungen. Erfahren Sie [hier][retirepolicy] mehr über die Deaktivierungsrichtlinie.
 
-## <a name="guest-os-family-version-explanation"></a>Guest OS Family-Version Explanation
-The Guest OS families are based on released versions of Microsoft Windows Server. The Guest OS is the underlying operating system that Azure Cloud Services run on. Each Guest OS has a family, version and release number. 
+## Erläuterung zu den Versionen der Gast-BS-Familie
+Die Gastbetriebssystemfamilien basieren auf veröffentlichten Versionen von Microsoft Windows Server. Das Gastbetriebssystem ist das zugrunde liegende Betriebssystem, auf dem Azure Cloud Services ausgeführt werden. Jedes Gastbetriebssystem verfügt über eine Familien-, eine Versions- und eine Releasenummer.
 
-- **Guest OS family**  
-A Windows Server operating system release that a Guest OS is based on. For example, *family 3* is based on Windows Server 2012.
+- Die **Gastbetriebssystem-Familie** entspricht einem Windows Server-Betriebssystemrelease, auf dem ein Gastbetriebssystem basiert. Die *Familie 3* basiert beispielsweise auf Windows Server 2012.
 
-- **Guest OS version**  
-Specific to a Guest OS family image plus relevant [Microsoft Security Response Center (MSRC)][msrc] patches that are available at the date the new Guest OS version is produced. Not all patches may be included. 
+- Eine **Gastbetriebssystem-Version** besteht aus dem Image der Gastbetriebssystem-Familie sowie relevanten [Microsoft Security Response Center][msrc]-Patches (MSRC), die zum Zeitpunkt der Herstellung der neuen Gastbetriebssystem-Version verfügbar sind. Möglicherweise sind nicht alle Patches enthalten.
 
-    Numbers start at 0 and increment by 1 each time a new set of updates is added. Trailing zeros are only shown if important. That is, version 2.10 is a different, much later version than version 2.1.
+    Die Zahlen beginnen bei 0 und werden jedes Mal, wenn ein neuer Satz von Updates hinzugefügt wird, um 1 erhöht. Nachfolgende Nullen werden nur angezeigt, wenn sie von Bedeutung sind. Version 2.10 ist beispielsweise eine andere, viel höhere Version als Version 2.1.
 
-- **Guest OS release**  
-A rerelease of a Guest OS version. A rerelease occurs if Microsoft finds issues during testing; requiring changes. The latest release always supersedes any previous releases, public or not. The Azure classic portal will only allow users to pick the latest release for a given version. Deployments running on a previous release are usually not force upgraded depending on the severity of the bug. 
+- Ein **Gastbetriebssystem-Release** bezeichnet eine Neuveröffentlichung einer Gastbetriebssystem-Version. Eine Neuveröffentlichung kommt vor, wenn Microsoft beim Testen Probleme feststellt, die Änderungen erfordern. Das neueste Release ersetzt immer alle vorherigen Releases, unabhängig davon, ob diese veröffentlicht wurden oder nicht. Das klassischen Azure-Portal lässt Benutzer nur das neueste Release für eine bestimmte Version auswählen. Bereitstellungen, die auf einem früheren Release ausgeführt werden, werden normalerweise nicht zwangsweise aktualisiert. Dies ist abhängig vom Schweregrad des Fehlers.
 
-In the example below, 2 is the family, 12 is the version and "rel2" is the release.
+Im folgenden Beispiel steht 2 für die Familie, 12 für die Version, und "rel2" für das Release.
 
-**Guest OS release** - 2.12 rel2
+**Gastbetriebssystemrelease** – 2.12 rel2
 
-**Configuration string for this release** - WA-GUEST-OS-2.12_201208-02
+**Konfigurationszeichenfolge für dieses Release** - WA-GUEST-OS-2.12\_201208-02
 
-The configuration string for a Guest OS has this same information embedded in it, along with a date showing which MSRC patches were considered for that release. In this example, MSRC patches produced for Windows Server 2008 R2 up to and including August 2012 were considered for inclusion. Only patches specifically applying to that version of Windows Server are included. For example, if an MSRC patch applies to Microsoft Office, it will not be included because that product is not part of the Windows Server base image. 
+In der Konfigurationszeichenfolge für ein Gastbetriebssystem sind dieselben Informationen eingebettet sowie ein Datum, das zeigt, welche MSRC-Patches in diesem Release berücksichtigt wurden. In diesem Beispiel wurden MSRC-Patches für Windows Server 2008 R2 bis einschließlich August 2012 integriert. Es werden nur Patches einbezogen, die ausdrücklich für diese Version von Windows Server gelten. Wenn beispielsweise ein MSRC-Patch für Microsoft Office gilt, wird er nicht berücksichtigt, da dieses Produkt kein Bestandteil des Windows Server-Basisimage ist.
 
-## <a name="guest-os-system-update-process"></a>Guest OS System Update Process
-This page includes information on upcoming Guest OS Releases. Customers have indicated that they want to know when a release occurs because their cloud service roles will reboot if they are set to "Automatic" update. Guest OS releases typically occur at least 5 days after the MSRC update release that occurs on the second Tuesday of every month. New releases include all the relevant MSRC patches for each Guest OS family. 
+## Updateprozess des Gastbetriebssystems
+Diese Seite enthält Informationen zu anstehenden Gastbetriebssystemreleases. Kunden haben uns mitgeteilt, dass sie wissen möchten, wann ein Release stattfindet, da ihre Clouddienstrollen neu gestartet werden, wenn sie auf "Automatisches Update" festgelegt sind. Gastbetriebssystemreleases werden in der Regel mindestens 5 Tage nach dem MSRC-Updaterelease veröffentlicht, das am zweiten Dienstag jedes Monats auftritt. Neue Releases enthalten alle relevanten MSRC-Patches für jede Gastbetriebssystemfamilie.
 
-Microsoft Azure is constantly releasing updates. The Guest OS is only one such update in the pipeline. A release can be affected by a number of factors too numerous to list here. In addition, Azure runs on literally hundreds of thousands of machines. This means that it's impossible to give an exact date and time when your role(s) will reboot. We will update the [Guest OS Update RSS Feed][rss] with the latest information we have, but consider that time an approximate window. We are aware that this is problematic for customers and working on a plan to limit or time reboots. 
+Für Microsoft Azure werden ständig Updates veröffentlicht. Das Gastbetriebssystem ist nur ein solches Update in der Pipeline. Ein Release kann durch eine Reihe von Faktoren beeinflusst werden, die zu zahlreich sind, um hier aufgeführt zu werden. Darüber hinaus wird Azure auf Hunderttausenden von Computern ausgeführt. Daher ist es unmöglich, ein genaues Datum und eine Uhrzeit anzugeben, zu der Ihre Rollen neu gestartet werden. Wir aktualisieren den [RSS-Feed zu Gastbetriebssystemupdates][rss] mit den neuesten Informationen, wir uns vorliegen. Dabei handelt es sich jedoch um ungefähre Zeitfenster. Uns ist bekannt, dass dies für Kunden problematisch ist, und arbeiten an einem Plan zur Begrenzung oder zeitlichen Planung von Neustarts.
 
-When a new release of the Guest OS is published, it can take time to fully propagate across Azure. As services are updated to the new Guest OS, they are rebooted honoring update domains. Services set to use "Automatic" updates will get a release first. After the update, you’ll see the new Guest OS version listed for your service in the Azure classic portal. Rereleases may occur during this period. Some versions may be deployed over longer periods of time and automatic upgrade reboots may not occur for many weeks after the official release date. Once a Guest OS is available, you can then explicitly choose that version from the portal or in your configuration file. 
+Wenn eine neue Version des Gastbetriebssystems veröffentlicht wird, kann die vollständige Verteilung über Azure einige Zeit in Anspruch nehmen. Während Dienste auf das neue Gastbetriebssystem aktualisiert werden, werden sie den Updatedomänen entsprechend neu gestartet. Dienste, für die automatische Updates festgelegt wurden, erhalten zuerst ein Release. Nach dem Update wird die neue Gastbetriebssystemversion für Ihren Dienst im klassischen Azure-Portal aufgeführt. Erneute Releases können während dieses Zeitraums auftreten. Einige Versionen können über einen längeren Zeitraum bereitgestellt werden, und es finden möglicherweise für viele Wochen nach dem offiziellen Veröffentlichungsdatum keine automatischen Upgradeneustarts statt. Sobald ein Gastbetriebssystem verfügbar ist, können Sie diese Version explizit im Portal oder in der Konfigurationsdatei auswählen.
 
-For a great deal of valuable information on restarts and pointers to more information technical details of Guest and Host OS updates, see the MSDN blog post titled [Role Instance Restarts Due to OS Upgrades][restarts].
+Viele wertvolle Informationen zu Neustarts und Verweise auf weitere technische Informationen zu Gast- und Hostbetriebssystemupdates finden Sie im MSDN-Blogbeitrag [Role Instance Restarts Due to OS Upgrades][restarts].
 
-If you manually update your Guest OS, please read the [Guest OS retirement policy][retirepolicy].
+Wenn Sie Ihr Gastbetriebssystem manuell aktualisieren, lesen Sie bitte die [Deaktivierungsrichtlinie für Gastbetriebssysteme][retirepolicy].
 
 
-## <a name="guest-os-supportability-and-retirement-policy"></a>Guest OS Supportability and Retirement Policy
-The Guest OS supportability and retirement policy is explained [here][retirepolicy].
+## Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme
+Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird [hier][retirepolicy] erläutert.
 
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
-[Azure Guest OS Update Settings]: cloud-services-how-to-configure.md
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Updateeinstellungen für Azure-Gast-BS]: cloud-services-how-to-configure.md
 [rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
@@ -230,8 +226,4 @@ The Guest OS supportability and retirement policy is explained [here][retirepoli
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

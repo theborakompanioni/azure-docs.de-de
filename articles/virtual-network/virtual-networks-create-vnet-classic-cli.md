@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a virtual network using Azure CLI | Microsoft Azure"
-   description="Learn how to create a virtual network using Azure CLI in ARM | Resource Manager."
+   pageTitle="Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle | Microsoft Azure"
+   description="Erfahren Sie, wie Sie ein virtuelles Netzwerk über die Azure-Befehlszeilenschnittstelle in ARM erstellen | Ressourcen-Manager."
    services="virtual-network"
    documentationCenter=""
    authors="jimdial"
@@ -17,20 +17,16 @@
    ms.date="03/15/2016"
    ms.author="jdial"/>
 
-
-# <a name="create-a-virtual-network-(classic)-by-using-the-azure-cli"></a>Create a virtual network (classic) by using the Azure CLI
+# Erstellen eines virtuellen Netzwerks (klassisch) über die Azure-Befehlszeilenschnittstelle
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This document covers creating a VNet by using the classic deployment model. You can also [create a virtual network in the Resource Manager deployment model by using the Azure CLI](virtual-networks-create-vnet-arm-cli.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem klassischen Bereitstellungsmodell erstellt wird. Sie haben auch die Möglichkeit, [ein virtuelles Netzwerk im Bereitstellungsmodell für den Ressourcen-Manager durch Verwenden der Azure-Befehlszeilenschnittstelle zu erstellen](virtual-networks-create-vnet-arm-cli.md).
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-classic-cli-include](../../includes/virtual-networks-create-vnet-classic-cli-include.md)]
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

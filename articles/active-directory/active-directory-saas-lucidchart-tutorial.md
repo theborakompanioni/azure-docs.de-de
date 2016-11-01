@@ -1,139 +1,128 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Lucidchart | Microsoft Azure" 
-    description="Learn how to use Lucidchart with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="Tutorial: Azure Active Directory-Integration mit Lucidchart | Microsoft Azure" 
+    description="Erfahren Sie, wie Sie Lucidchart mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="femila"/>
+	manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-lucidchart"></a>Tutorial: Azure Active Directory integration with Lucidchart
+#Tutorial: Azure Active Directory-Integration mit Lucidchart
   
-The objective of this tutorial is to show the integration of Azure and Lucidchart.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+In diesem Tutorial wird die Integration von Azure und Lucidchart erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
--   A valid Azure subscription
--   A Lucidchart single sign-on enabled subscription
+-   Ein gültiges Azure-Abonnement
+-   Ein Lucidchart-Software-Abonnement, für das das einmalige Anmelden aktiviert ist.
   
-After completing this tutorial, the Azure AD users you have assigned to Lucidchart will be able to single sign into the application at your Lucidchart company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+Nach Abschluss dieses Lernprogramms können sich die Azure AD-Benutzer, die Sie Lucidchart zugewiesen haben, mittels einmaliger Anmeldung auf Ihrer Lucidchart-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie auch die [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) nutzen.
   
-The scenario outlined in this tutorial consists of the following building blocks:
+Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
-1.  Enabling the application integration for Lucidchart
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  Aktivieren der Anwendungsintegration für Lucidchart
+2.  Konfigurieren der einmaligen Anmeldung
+3.  Konfigurieren der Benutzerbereitstellung
+4.  Zuweisen von Benutzern
 
-![Scenario](./media/active-directory-saas-lucidchart-tutorial/IC791183.png "Scenario")
-##<a name="enabling-the-application-integration-for-lucidchart"></a>Enabling the application integration for Lucidchart
+![Szenario](./media/active-directory-saas-lucidchart-tutorial/IC791183.png "Szenario")
+##Aktivieren der Anwendungsintegration für Lucidchart
   
-The objective of this section is to outline how to enable the application integration for Lucidchart.
+In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Lucidchart aktivieren.
 
-###<a name="to-enable-the-application-integration-for-lucidchart,-perform-the-following-steps:"></a>To enable the application integration for Lucidchart, perform the following steps:
+###So aktivieren Sie die Anwendungsintegration für Lucidchart
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-lucidchart-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Applications](./media/active-directory-saas-lucidchart-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-lucidchart-tutorial/IC700994.png "Anwendungen")
 
-4.  Click **Add** at the bottom of the page.
+4.  Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-    ![Add application](./media/active-directory-saas-lucidchart-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-lucidchart-tutorial/IC749321.png "Anwendung hinzufügen")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Add an application from gallerry](./media/active-directory-saas-lucidchart-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-lucidchart-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
-6.  In the **search box**, type **Lucidchart**.
+6.  Geben Sie im **Suchfeld** das Wort **Lucidchart** ein.
 
-    ![Application Gallery](./media/active-directory-saas-lucidchart-tutorial/IC791184.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-lucidchart-tutorial/IC791184.png "Anwendungskatalog")
 
-7.  In the results pane, select **Lucidchart**, and then click **Complete** to add the application.
+7.  Wählen Sie im Ergebnisbereich **Lucidchart** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
     ![Lucidchart](./media/active-directory-saas-lucidchart-tutorial/IC791185.png "Lucidchart")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##Konfigurieren der einmaligen Anmeldung
   
-The objective of this section is to outline how to enable users to authenticate to Lucidchart with their account in Azure AD using federation based on the SAML protocol.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Lucidchart zu authentifizieren.
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  In the Azure classic portal, on the **Lucidchart** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Lucidchart** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791186.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lucidchart-tutorial/IC791186.png "Einmaliges Anmelden konfigurieren")
 
-2.  On the **How would you like users to sign on to Lucidchart** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Lucidchart anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791187.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lucidchart-tutorial/IC791187.png "Einmaliges Anmelden konfigurieren")
 
-3.  On the **Configure App URL** page, in the **Lucidchart Sign On URL** textbox, type the URL used by your users to sign on to your Lucidchart application (e.g.: "*https://chart2.office.lucidchart.com/saml/sso/azure*"), and then click **Next**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Lucidchart-Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Lucidchart-Anwendung verwendete URL ein (z.B. „*https://chart2.office.lucidchart.com/saml/sso/azure*"), und klicken Sie dann auf **Weiter**.
 
-    ![Configure App URL](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "App-URL konfigurieren")
 
-4.  On the **Configure single sign-on at Lucidchart** page, to download your metadata, click **Download metadata**, and then save the data file locally on your computer.
+4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Lucidchart** auf **Metadaten herunterladen**, und speichern Sie die Datendatei lokal auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791189.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lucidchart-tutorial/IC791189.png "Einmaliges Anmelden konfigurieren")
 
-5.  In a different web browser window, log into your Lucidchart company site as an administrator.
+5.  Melden Sie sich in einem anderen Webbrowserfenster bei der Lucidchart-Unternehmenswebsite als Administrator an.
 
-6.  In the menu on the top, click **Team**.
+6.  Klicken Sie im oberen Menü auf **Team**.
 
     ![Team](./media/active-directory-saas-lucidchart-tutorial/IC791190.png "Team")
 
-7.  Click **Application \> Manage SAML**.
+7.  Klicken Sie auf **Anwendung > SAML verwalten**.
 
-    ![Manage SAML](./media/active-directory-saas-lucidchart-tutorial/IC791191.png "Manage SAML")
+    ![SAML verwalten](./media/active-directory-saas-lucidchart-tutorial/IC791191.png "SAML verwalten")
 
-8.  On the **SAML Authentication Settings** dialog page, perform the following steps:
+8.  Führen Sie auf der Dialogseite **SAML-Authentifizierungseinstellungen** die folgenden Schritte aus:
 
-    1.  Select **Enable SAML Authentication**, and then click **Optional**.
-        ![SAML Authentication Settings](./media/active-directory-saas-lucidchart-tutorial/IC791192.png "SAML Authentication Settings")
-    2.  In the **Domain** textbox, type your domain, and then click **Change Certificate**.
-        ![Change Certificate](./media/active-directory-saas-lucidchart-tutorial/IC791193.png "Change Certificate")
-    3.  Open your downloaded metadata file, copy the content, and then paste it into the **Upload Metadata** textbox.
-        ![Upload Metadata](./media/active-directory-saas-lucidchart-tutorial/IC791194.png "Upload Metadata")
-    4.  Select **Automatically Add new user to the team**, and then click **Save changes**.
-        ![Save Changes](./media/active-directory-saas-lucidchart-tutorial/IC791195.png "Save Changes")
+    1.  Wählen Sie **SAML-Authentifizierung aktivieren**, und klicken Sie dann auf **Optional**. ![SAML-Authentifizierungseinstellungen](./media/active-directory-saas-lucidchart-tutorial/IC791192.png "SAML-Authentifizierungseinstellungen")
+    2.  Geben Sie im Textfeld **Domäne** Ihre Domäne ein, und klicken Sie auf **Zertifikat ändern**. ![Zertifikat ändern](./media/active-directory-saas-lucidchart-tutorial/IC791193.png "Zertifikat ändern")
+    3.  Öffnen Sie die heruntergeladene Metadatendatei, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Metadaten hochladen** ein. ![Metadaten hochladen](./media/active-directory-saas-lucidchart-tutorial/IC791194.png "Metadaten hochladen")
+    4.  Wählen Sie **Automatisch neue Benutzer zum Team hinzufügen**, und klicken Sie auf **Änderungen speichern**. ![Änderungen speichern](./media/active-directory-saas-lucidchart-tutorial/IC791195.png "Änderungen speichern")
 
-9.  Select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+9.  Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791196.png "Configure Single Sign-On")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lucidchart-tutorial/IC791196.png "Einmaliges Anmelden konfigurieren")
+##Konfigurieren der Benutzerbereitstellung
   
-There is no action item for you to configure user provisioning to Lucidchart.  
-When an assigned user tries to log into Lucidchart using the access panel, Lucidchart checks whether the user exists.  
-If there is no user account available yet, it is automatically created by Lucidchart.
-##<a name="assigning-users"></a>Assigning users
+Für das Konfigurieren der Benutzerbereitstellung in Lucidchart steht kein Aktionselement zur Verfügung. Wenn sich ein zugewiesener Benutzer über den Zugriffsbereich bei Lucidchart anmelden möchte, überprüft Lucidchart, ob der Benutzer vorhanden ist. Ist noch kein Benutzerkonto verfügbar, wird es von Lucidchart automatisch erstellt.
+##Zuweisen von Benutzern
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-###<a name="to-assign-users-to-lucidchart,-perform-the-following-steps:"></a>To assign users to Lucidchart, perform the following steps:
+###So weisen Sie Lucidchart Benutzer zu:
 
-1.  In the Azure classic portal, create a test account.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  On the **Lucidchart **application integration page, click **Assign users**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **Lucidchart** auf **Benutzer zuweisen**.
 
-    ![Assign Users](./media/active-directory-saas-lucidchart-tutorial/IC791197.png "Assign Users")
+    ![Benutzer zuweisen](./media/active-directory-saas-lucidchart-tutorial/IC791197.png "Benutzer zuweisen")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
 
-    ![Yes](./media/active-directory-saas-lucidchart-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-lucidchart-tutorial/IC767830.png "Ja")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

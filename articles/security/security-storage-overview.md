@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Storage Security Overview | Microsoft Azure"
-   description=" Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers. This article provides an overview of the core Azure security features that can be used with Azure Storage. "
+   pageTitle="Azure Storage-Sicherheitsübersicht | Microsoft Azure"
+   description=" Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen. Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. "
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,94 +16,89 @@
    ms.date="09/16/2016"
    ms.author="terrylan"/>
 
+# Übersicht über die Sicherheit von Azure Storage
 
-# <a name="azure-storage-security-overview"></a>Azure storage security overview
+Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Zuverlässigkeit, Verfügbarkeit und Skalierbarkeit bietet, um die Anforderungen Ihrer Kunden zu erfüllen. Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen:
 
-Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers. Azure Storage provides a comprehensive set of security capabilities:
+- Das Speicherkonto kann mit rollenbasierter Zugriffssteuerung und Azure Active Directory geschützt werden.
+- Daten können während der Übertragung zwischen einer Anwendung und Azure mit clientseitiger Verschlüsselung, HTTPS oder SMB 3.0 geschützt werden.
+- Es kann festgelegt werden, dass Daten automatisch mit Storage Service Encryption verschlüsselt werden, wenn sie in Azure Storage geschrieben werden.
+- Betriebssystemdatenträger und sonstige Datenträger, die von virtuellen Computern verwendet werden, können mit Azure Disk Encryption verschlüsselt werden.
+- Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit Shared Access Signatures erteilt werden.
+- Die Authentifizierungsmethode, die ein Benutzer verwendet, wenn er auf den Speicher zugreift, kann mithilfe der Speicheranalyse nachvollzogen werden.
 
-- The storage account can be secured using Role-Based Access Control and Azure Active Directory.
-- Data can be secured in transit between an application and Azure by using Client-Side Encryption, HTTPS, or SMB 3.0.
-- Data can be set to be automatically encrypted when written to Azure Storage using Storage Service Encryption.
-- OS and Data disks used by virtual machines can be set to be encrypted using Azure Disk Encryption.
-- Delegated access to the data objects in Azure Storage can be granted using Shared Access Signatures.
-- The authentication method used by someone when they access storage can be tracked using Storage analytics.
+Eine ausführlichere Betrachtung der Sicherheit in Azure Storage finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/storage-security-guide.md). Dieser Leitfaden liefert ausführliche Informationen zu den Sicherheitsfeatures von Azure Storage. Hierzu zählen etwa Speicherkontoschlüssel, die Verschlüsselung von Daten während der Übertragung und im Ruhezustand sowie die Speicheranalyse.
 
-For a more detailed look at security in Azure Storage, see the [Azure Storage security guide](../storage/storage-security-guide.md). This guide provides a deep dive into the security features of Azure Storage such as storage account keys, data encryption in transit and at rest, and storage analytics.
+Dieser Artikel bietet eine Übersicht über die Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. Es sind jeweils Links zu Artikeln mit weiteren Informationen zu jedem Feature angegeben.
 
-This article provides an overview of Azure security features that can be used with Azure Storage. Links are provided to articles that give details of each feature so you can learn more.
+Hier sind die wichtigsten Features aufgeführt, die in diesem Artikel behandelt werden:
 
-Here are the core features to be covered in this article:
+- Rollenbasierte Access Control
+- Delegierter Zugriff auf Speicherobjekte
+- Verschlüsselung während der Übertragung
+- Verschlüsselung ruhender Daten/Storage Service Encryption
+- Azure-Datenträgerverschlüsselung
+- Azure-Schlüsseltresor
 
-- Role-Based Access Control
-- Delegated access to storage objects
-- Encryption in transit
-- Encryption at rest/Storage Service Encryption
-- Azure Disk Encryption
-- Azure Key Vault
+## Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 
-## <a name="role-based-access-control-(rbac)"></a>Role-Based Access Control (RBAC)
+Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](../active-directory/role-based-access-built-in-roles.md) (etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen.
 
-You can secure your storage account with Role-Based Access Control (RBAC). Restricting access based on the [need to know](https://en.wikipedia.org/wiki/Need_to_know) and [least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) security principles is imperative for organizations that want to enforce security policies for data access. These access rights are granted by assigning the appropriate RBAC role to groups and applications at a certain scope. You can use [built-in RBAC roles](../active-directory/role-based-access-built-in-roles.md), such as Storage Account Contributor, to assign privileges to users.
+Weitere Informationen:
 
-Learn more:
+- [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md)
 
-- [Azure Active Directory Role-based Access Control](../active-directory/role-based-access-control-configure.md)
+## Delegierter Zugriff auf Speicherobjekte
 
-## <a name="delegated-access-to-storage-objects"></a>Delegated access to storage objects
+Shared Access Signatures (SAS) bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben. Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Für den Zugriff auf Speicherressourcen mit der SAS braucht der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode zu übergeben.
 
-A shared access signature (SAS) provides delegated access to resources in your storage account. The SAS means that you can grant a client limited permissions to objects in your storage account for a specified period of time and with a specified set of permissions. You can grant these limited permissions without having to share your account access keys. The SAS is a URI that encompasses in its query parameters all the information necessary for authenticated access to a storage resource. To access storage resources with the SAS, the client only needs to pass in the SAS to the appropriate constructor or method.
+Weitere Informationen:
 
-Learn more:
+- [Grundlagen zum SAS-Modell](../storage/storage-dotnet-shared-access-signature-part-1.md)
+- [Erstellen und Verwenden einer SAS mit Blob Storage](../storage/storage-dotnet-shared-access-signature-part-2.md)
 
-- [Understanding the SAS model](../storage/storage-dotnet-shared-access-signature-part-1.md)
-- [Create and use a SAS with Blob storage](../storage/storage-dotnet-shared-access-signature-part-2.md)
+## Verschlüsselung während der Übertragung
+Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie die Daten sichern mit:
 
-## <a name="encryption-in-transit"></a>Encryption in transit
-Encryption in transit is a mechanism of protecting data when it is transmitted across networks. With Azure Storage you can secure data using:
+- [Verschlüsselung auf Transportebene](../storage/storage-security-guide.md#encryption-in-transit) (etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
+- [Wire-Verschlüsselung](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
+- [Clientseitiger Verschlüsselung](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
-- [Transport-level encryption](../storage/storage-security-guide.md#encryption-in-transit), such as HTTPS when you transfer data into or out of Azure Storage.
-- [Wire encryption](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), such as SMB 3.0 encryption for Azure File Shares.
-- [Client-side encryption](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage), to encrypt the data before it is transferred into storage and to decrypt the data after it is transferred out of storage.
+Weitere Informationen zur clientseitigen Verschlüsselung finden Sie hier:
 
-Learn more about client-side encryption:
+- [Clientseitige Verschlüsselung für Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
+- [Cloud security controls series: Encrypting Data in Transit (Cloudsicherheit steuert Serie: Verschlüsseln von Daten bei der Übertragung)](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
-- [Client-Side Encryption for Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-- [Cloud security controls series: Encrypting Data in Transit](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+## Verschlüsselung ruhender Daten
 
-## <a name="encryption-at-rest"></a>Encryption at rest
+Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
 
-For many organizations, [data encryption at rest](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) is a mandatory step towards data privacy, compliance, and data sovereignty. There are three Azure features that provide encryption of data that is “at rest”:
+- Mit [Storage Service Encryption](../storage/storage-security-guide.md#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
+- Die [clientseitige Verschlüsselung](../storage/storage-security-guide.md#client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
+- Mit [Azure Disk Encryption](../storage/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
 
-- [Storage Service Encryption](../storage/storage-security-guide.md#encryption-at-rest) allows you to request that the storage service automatically encrypt data when writing it to Azure Storage.
-- [Client-side Encryption](../storage/storage-security-guide.md#client-side-encryption) also provides the feature of encryption at rest.
-- [Azure Disk Encryption](../storage/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) allows you to encrypt the OS disks and data disks used by an IaaS virtual machine.
+Weitere Informationen zu Storage Service Encryption finden Sie hier:
 
-Learn more about Storage Service Encryption:
+- [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) ist für [Azure-Blobspeicher](https://azure.microsoft.com/services/storage/blobs/) verfügbar. Ausführliche Informationen zu anderen Arten von Azure-Speicher finden Sie unter [Datei](https://azure.microsoft.com/services/storage/files/), [Datenträger (Storage Premium)](https://azure.microsoft.com/services/storage/premium-storage/), [Tabelle](https://azure.microsoft.com/services/storage/tables/) und [Warteschlange](https://azure.microsoft.com/services/storage/queues/).
+- [Azure Storage Service Encryption für ruhende Daten](../storage/storage-service-encryption.md)
 
-- [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) is available for [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/). For details on other Azure storage types, see [File](https://azure.microsoft.com/services/storage/files/), [Disk (Premium Storage)](https://azure.microsoft.com/services/storage/premium-storage/), [Table](https://azure.microsoft.com/services/storage/tables/), and [Queue](https://azure.microsoft.com/services/storage/queues/).
-- [Azure Storage Service Encryption for Data at Rest](../storage/storage-service-encryption.md)
+## Azure-Datenträgerverschlüsselung
 
-## <a name="azure-disk-encryption"></a>Azure Disk Encryption
+Mithilfe von Azure Disk Encryption für virtuelle Computer können Sie die Sicherheits- und Complianceanforderungen Ihrer Organisation erfüllen, indem Sie die Datenträger Ihrer virtuellen Computer (Startdatenträger und allgemeine Datenträger) mit Schlüsseln und Richtlinien verschlüsseln, die Sie über den [Azure-Schlüsseltresor](https://azure.microsoft.com/services/key-vault/) steuern.
 
-Azure Disk Encryption for virtual machines (VMs) helps you address organizational security and compliance requirements by encrypting your VM disks (including boot and data disks) with keys and policies you control in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Datenträgerverschlüsselung für VMs funktioniert für Linux- und Windows-Betriebssysteme. Es wird auch Key Vault verwendet, um Ihnen das Schützen, Verwalten und Überwachen der Nutzung Ihrer Datenträgerverschlüsselungs-Schlüssel zu erleichtern. Alle Daten auf den Datenträgern Ihrer virtuellen Computer werden im Ruhezustand mithilfe von Verschlüsselungstechnologien des Industriestandards in Ihren Azure Storage-Konten verschlüsselt. Die Disk Encryption-Lösung für Windows basiert auf der [Microsoft BitLocker-Laufwerkverschlüsselung](https://technet.microsoft.com/library/cc732774.aspx), die Linux-Lösung auf [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
-Disk Encryption for VMs works for Linux and Windows operating systems. It also uses Key Vault to help you safeguard, manage, and audit use of your disk encryption keys. All the data in your VM disks is encrypted at rest by using industry-standard encryption technology in your Azure Storage accounts. The Disk Encryption solution for Windows is based on [Microsoft BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx), and the Linux solution is based on [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
+Weitere Informationen:
 
-Learn more:
+- [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines (Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-- [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+## Azure-Schlüsseltresor
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+Azure Disk Encryption verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), um Sie bei der Steuerung und Verwaltung von Datenträger-Verschlüsselungsschlüsseln und geheimen Schlüsseln in Ihrem Schlüsseltresor-Abonnement zu unterstützen. Dabei wird gleichzeitig sichergestellt, dass alle ruhenden Daten auf den Laufwerken der virtuellen Computer in Ihrer Azure Storage-Instanz verschlüsselt sind. Es empfiehlt sich, die Verwendung von Schlüsseln und Richtlinien mithilfe des Azure-Schlüsseltresors zu überwachen.
 
-Azure Disk Encryption uses [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to help you control and manage disk encryption keys and secrets in your key vault subscription, while ensuring that all data in the virtual machine disks are encrypted at rest in your Azure Storage. You should use Key Vault to audit keys and policy usage.
+Weitere Informationen:
 
-Learn more:
+- [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-whatis.md)
+- [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md)
 
-- [What is Azure Key Vault?](../key-vault/key-vault-whatis.md)
-- [Get started with Azure Key Vault](../key-vault/key-vault-get-started.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

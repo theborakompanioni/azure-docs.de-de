@@ -1,291 +1,283 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Kiteworks | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and Kiteworks."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="Tutorial: Azure Active Directory-Integration mit Kiteworks | Microsoft Azure"
+	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Kiteworks konfigurieren."
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/20/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/05/2016"
+	ms.author="jeedes"/>
 
 
-
-# <a name="tutorial:-azure-active-directory-integration-with-kiteworks"></a>Tutorial: Azure Active Directory integration with Kiteworks
-
-
-The objective of this tutorial is to show you how to integrate Kiteworks with Azure Active Directory (Azure AD).  
-Integrating Kiteworks with Azure AD provides you with the following benefits: 
-
-- You can control in Azure AD who has access to Kiteworks 
-- You can enable your users to automatically get signed-on to Kiteworks (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure Active Directory 
-
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
-
-## <a name="prerequisites"></a>Prerequisites 
-
-To configure Azure AD integration with Kiteworks, you need the following items:
-
-- An Azure AD subscription
-- A Kiteworks single-sign on enabled subscription
+# Tutorial: Azure Active Directory-Integration mit Kiteworks
 
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+Dieses Tutorial soll Ihnen zeigen, wie Sie Kiteworks in Azure Active Directory (Azure AD) integrieren können. Die Integration von Kiteworks in Azure AD bietet die folgenden Vorteile:
+
+- Sie können in Azure AD steuern, wer Zugriff auf Kiteworks hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Kiteworks anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – in Azure Active Directory.
+
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+
+## Voraussetzungen 
+
+Um die Azure AD-Integration mit Kiteworks konfigurieren zu können, benötigen Sie Folgendes:
+
+- Ein Azure AD-Abonnement
+- Ein Kiteworks-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
+
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
+
+- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
  
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
+## Beschreibung des Szenarios
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Adding Kiteworks from the gallery 
-2. Configuring and testing Azure AD single sign-on
+1. Hinzufügen von Kiteworks aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 
-## <a name="adding-kiteworks-from-the-gallery"></a>Adding Kiteworks from the gallery
-To configure the integration of Kiteworks into Azure AD, you need to add Kiteworks from the gallery to your list of managed SaaS apps.
+## Hinzufügen von Kiteworks aus dem Katalog
+Zum Konfigurieren der Integration von Kiteworks in Azure AD müssen Sie Kiteworks aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**To add Kiteworks from the gallery, perform the following steps:**
+**Um Kiteworks aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
-    ![Active Directory][1]
+	![Active Directory][1]
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Applications][2]
+	![Anwendungen][2]
 
-4. Click **Add** at the bottom of the page.
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
  
-    ![Applications][3]
+	![Anwendungen][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Applications][4]
+	![Anwendungen][4]
 
-6. In the search box, type **Kiteworks**.
+6. Geben Sie im Suchfeld als Suchbegriff **Kiteworks** ein.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_01.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_01.png)
 
-7. In the results pane, select **Kiteworks**, and then click **Complete** to add the application.
+7. Wählen Sie im Ergebnisbereich **Kiteworks** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_02.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Kiteworks based on a test user called "Britta Simon".
+##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Kiteworks konfiguriert und getestet werden kann.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Kiteworks to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Kiteworks needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Kiteworks.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Kiteworks als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Kiteworks muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert für den **Benutzernamen** in Kiteworks zuweisen.
  
-To configure and test Azure AD single sign-on with Kiteworks, you need to complete the following building blocks:
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Kiteworks müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a Kiteworks test user](#creating-a-kiteworks-test-user)** - to have a counterpart of Britta Simon in Kiteworks that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Erstellen eines Kiteworks-Testbenutzers](#creating-a-kiteworks-test-user)**, um eine Entsprechung von Britta Simon in Kiteworks zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Konfigurieren des einmaligen Anmeldens von Azure AD
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Kiteworks application. As part of this procedure, you are required to create a base-64 encoded certificate file. If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Kiteworks-Anwendung zu konfigurieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache) weitere Informationen.
 
-To configure single sign-on for Kiteworks, you need a registered domain. If you don't have a registered domain yet, contact your Kiteworks support team.  
-
-
-
-**To configure Azure AD single sign-on with Kiteworks, perform the following steps:**
-
-1. In the Azure classic portal, on the **Kiteworks** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
-
-    ![Configure Single Sign-On][6] 
-
-2. On the **How would you like users to sign on to Kiteworks** page, select **Azure AD Single Sign-On**, and then click **Next**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_03.png) 
-
-3. On the **Configure App Settings** dialog page, perform the following steps:.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_04.png) 
+Zum Konfigurieren des einmaligen Anmeldens für Kiteworks benötigen Sie eine registrierte Domäne. Wenn Sie noch keine registrierte Domäne besitzen, wenden Sie sich an das Supportteam von Kiteworks.
 
 
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Kiteworks application (e.g.: *https://fabrikam.kiteworks.com/*).
 
-    b. Click **Next**.
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kiteworks die folgenden Schritte aus:**
+
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Kiteworks** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+
+	![Einmaliges Anmelden konfigurieren][6]
+
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Kiteworks anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_03.png)
+
+3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_04.png)
+
+
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der Kiteworks-Anwendung verwenden (z.B. *https://fabrikam.kiteworks.com/*).
+
+    b. Klicken Sie auf **Weiter**.
  
  
-4. On the **Configure single sign-on at Kiteworks** page, perform the following steps:
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Kiteworks** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_05.png) 
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_05.png)
 
-    a. Click **Download certificate**, and then save the file on your computer.
+    a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
-    b. Click **Next**.
-
-
-1. Sign on to your Kiteworks company site as an administrator.
-
-1. In the toolbar on the top, click **Settings**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_06.png) 
+    b. Klicken Sie auf **Weiter**.
 
 
-1. In the **Authentication and Authorization** section, click **SSO Setup**. 
+1. Melden Sie sich bei der Kiteworks-Unternehmenswebsite als Administrator an.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_07.png) 
+1. Klicken Sie oben auf der Symbolleiste auf **Einstellungen**.
 
-
-1. On the SSO Setup page, perform the following steps:
-
-    ![Configure Single Sign-On](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_09.png) 
-
-    a. Select **Authenticate via SSO**.
-
-    b. Select **Initiate AuthnRequest**.
-
-    c. In the Azure classic portal, on the **Configure single sign-on at Kiteworks** dialog page, copy the **Entity ID** value, and then paste it into the **IDP Entity ID** textbox. 
-
-    d. In the Azure classic portal, on the **Configure single sign-on at Kiteworks** dialog page, copy the **Single Sign-On Service URL** value, and then paste it into the **Single Sign-On Service URL** textbox.
-
-    e. In the Azure classic portal, on the **Configure single sign-on at Kiteworks** dialog page, copy the **Single Sign-Out Service URL** value, and then paste it into the **Single Logout Service URL** textbox.
-
-    f. Open your downloaded certificate in Notepad, copy the content, and then paste it into the **RSA Public Key Certificate** textbox. 
-
-    g. Click **Save**.
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**. 
+1. Klicken Sie im Abschnitt **Authentifizierung und Autorisierung** auf **SSO-Einrichtung**.
 
-    ![Azure AD Single Sign-On][10]
-
-7. On the **Single sign-on confirmation** page, click **Complete**.  
-
-    ![Azure AD Single Sign-On][11]
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_07.png)
 
 
+1. Führen Sie auf der Seite für die SSO-Einrichtung die folgenden Schritte aus:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_09.png)
+
+    a. Wählen Sie **Authentifizieren über SSO**.
+
+    b. Wählen Sie **AuthnRequest initiieren**.
+
+    c. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Kiteworks** den Wert der **Entitäts-ID**, und fügen Sie ihn in das Textfeld **IDP-Entitäts-ID** ein.
+
+    d. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Kiteworks** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **Dienst-URL für einmaliges Anmelden** ein.
+
+    e. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Kiteworks** den Wert für **Dienst-URL für einmaliges Abmelden**, und fügen Sie ihn in das Textfeld **Dienst-URL für einmaliges Abmelden** ein.
+
+    f. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Textfeld **RSA-Zertifikat für den öffentlichen Schlüssel** ein.
+
+    g. Klicken Sie auf **Speichern**.
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
+6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
-![Create Azure AD User][20]
+	![Azure AD – einmaliges Anmelden][10]
 
-**To create a test user in Azure AD, perform the following steps:**
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+	![Azure AD – einmaliges Anmelden][11]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_09.png)  
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. To display the list of users, in the menu on the top, click **Users**.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_03.png) 
+### Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
+
+![Azure AD-Benutzer erstellen][20]
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_09.png)
+
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
+3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_03.png)
  
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_04.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps: 
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_05.png)  
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
 
-    c. Click **Next**.
+    c. Klicken Sie auf **Weiter**.
 
-6.  On the **User Profile** dialog page, perform the following steps: 
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_06.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_06.png)
  
-    a. In the **First Name** textbox, type **Britta**.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
 
-    d. In the **Role** list, select **User**.
-    e. Click **Next**.
+    d. Wählen Sie in der Liste **Rolle** die Rolle **Benutzer** aus. e. Klicken Sie auf **Weiter**.
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_07.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_07.png)
  
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_08.png) 
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-kiteworks-tutorial/create_aaduser_08.png)
   
-    a. Write down the value of the **New Password**.
+    a. Notieren Sie den Wert von **Neues Kennwort**.
 
-    b. Click **Complete**.   
+    b. Klicken Sie auf **Fertig stellen**.
 
   
  
-### <a name="creating-a-kiteworks-test-user"></a>Creating a Kiteworks test user
+### Erstellen einen Kiteworks-Testbenutzers
 
-The objective of this section is to create a user called Britta Simon in Kiteworks.
-Kiteworks supports just-in-time provisioning, which is by default enabled.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Kiteworks. Kiteworks unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-There is no action item for you in this section.
-A new user will be created during an attempt to access Kitewors if it doesn't exist yet.
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Kiteworks ein neuer Benutzer erstellt.
 
-> [AZURE.NOTE] If you need to create an user manually, you need to contact the Kiteworks support team.
+> [AZURE.NOTE] Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem Supportteam von Kiteworks in Verbindung.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### Zuweisen des Azure AD-Testbenutzers
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Kiteworks.
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf Kiteworks erhält.
 
-![Assign User][200] 
+![Benutzer zuweisen][200]
 
-**To assign Britta Simon to Kiteworks, perform the following steps:**
+**Um Britta Simon Kiteworks zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der Verzeichnisansicht im oberen Menü auf **Anwendungen**.
 
-    ![Assign User][201] 
+	![Benutzer zuweisen][201]
 
-2. In the applications list, select **Kiteworks**.
+2. Wählen Sie in der Anwendungsliste **Kiteworks** aus.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_50.png) 
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kiteworks-tutorial/tutorial_kiteworks_50.png)
 
-1. In the menu on the top, click **Users**.
+1. Klicken Sie im oberen Menü auf **Benutzer**.
 
-    ![Assign User][203] 
+	![Benutzer zuweisen][203]
 
-1. In the Users list, select **Britta Simon**.
+1. Wählen Sie in der Benutzerliste den Eintrag **Britta Simon** aus.
 
-2. In the toolbar on the bottom, click **Assign**.
+2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
 
-    ![Assign User][205]
+	![Benutzer zuweisen][205]
 
 
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+### Testen der einmaligen Anmeldung
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the Kiteworks tile in the Access Panel, you should get automatically signed-on to your Kiteworks application.
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Wenn Sie im Zugriffsbereich auf die Kachel „Kiteworks“ klicken, sollten Sie automatisch bei Ihrer Kiteworks-Anwendung angemeldet werden.
 
 
-## <a name="additional-resources"></a>Additional Resources
+## Zusätzliche Ressourcen
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -306,14 +298,4 @@ When you click the Kiteworks tile in the Access Panel, you should get automatica
 [204]: ./media/active-directory-saas-kiteworks-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kiteworks-tutorial/tutorial_general_205.png
 
-
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

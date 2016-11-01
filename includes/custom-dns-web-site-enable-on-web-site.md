@@ -1,28 +1,25 @@
-After the records for your domain name have propagated, you must associate them with your Web App. Use the following steps to enable the domain names using your web browser.
+Nachdem die Datensätze für Ihren Domänennamen weitergegeben wurden, müssen Sie sie Ihrer Web-App zuweisen. Verwenden Sie die folgenden Schritte, um die Domänennamen mit dem Webbrowser zu aktivieren.
 
-> [AZURE.NOTE] It can take some time for TXT records created in the previous steps to propagate through the DNS system. You cannot add the domain name of to your web app until the TXT record has propagated. If you are using an A record, you cannot add the A record domain name to your web app until the TXT record created in the previous step has propagated.
+> [AZURE.NOTE] Es kann einige Zeit dauern, bis die TXT-Einträge, die in den vorherigen Schritten erstellt wurden, über das DNS-System weitergegeben werden. Sie können den Domänennamen Ihrer Web-App erst hinzufügen, nachdem der TXT-Eintrag weitergegeben wurde. Wenn Sie einen A-Eintrag verwenden, können Sie den Domänennamen des A-Eintrags erst dann der Web-App hinzufügen, wenn der im vorherigen Schritt erstellte TXT-Eintrag weitergegeben wurde.
 >
-> You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the TXT record is available.
+> Mithilfe eines Diensts wie <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> können Sie überprüfen, ob der TXT-Eintrag verfügbar ist.
 
-1. In your browser, open the [Azure Portal](https://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in Ihrem Browser.
 
-2. In the **Web Apps** tab, click the name of your web app, and then select **Custom domains**
+2. Klicken Sie auf der Registerkarte **Web-Apps** auf den Namen der Web-App, und wählen Sie **Benutzerdefinierte Domänen** aus.
 
-    ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
+	![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 
-3. In the **Custom domains** blade, click **Add hostname**.
-    
-4. Use the **Hostname** text boxes to enter the domain names to associate with this web app.
+3. Klicken Sie auf dem Blatt **Benutzerdefinierte Domänen** auf **Hostnamen hinzufügen**.
+	
+4. Verwenden Sie die Textfelder **Hostname**, um die Domänennamen einzugeben, die dieser Web-App zugeordnet werden sollen.
 
-    ![](./media/custom-dns-web-site/add-custom-domain.png)
+	![](./media/custom-dns-web-site/add-custom-domain.png)
 
-6.  Click **Validate**.
+6.  Klicken Sie auf **Überprüfen**.
 
-7.  Upon clicking **Validate** Azure will kick off Domain Verification workflow. This will check for Domain ownership as well as Hostname availability and report success or detailed error with prescriptive guidence on how to fix the error.    
+7.  Nach dem Klicken auf **Überprüfen** startet Azure den Workflow zur Domänenüberprüfung. Dieser Workflow überprüft den Domänenbesitz sowie die Verfügbarkeit des Hostnamens und meldet die erfolgreiche Durchführung oder erstellt einen detaillierten Fehlerbericht mit Empfehlungen, wie der Fehler behoben werden kann.
 
-At this point, you should be able to enter the custom domain name in your browser and see that it successfully takes you to your web app.
+Jetzt sollten Sie den benutzerdefinierten Domänennamen in Ihren Browser eingeben können und und auf diese Weise erfolgreich zu Ihrer Web-App gelangen.
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

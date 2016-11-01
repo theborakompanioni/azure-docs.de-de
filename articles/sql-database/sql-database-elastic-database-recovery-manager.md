@@ -1,154 +1,153 @@
 <properties 
-    pageTitle="Using Recovery Manager to fix shard map problems | Microsoft Azure" 
-    description="Use the RecoveryManager class to solve problems with shard maps" 
-    services="sql-database" 
-    documentationCenter=""  
-    manager="jhubbard"
-    authors="ddove"/>
+	pageTitle="Verwenden von Recovery Manager zum Beheben von Shardzuordnungsproblemen | Microsoft Azure" 
+	description="Verwenden der RecoveryManager-Klasse zum Beheben von Problemen mit Shardzuordnungen" 
+	services="sql-database" 
+	documentationCenter=""  
+	manager="jhubbard"
+	authors="ddove"/>
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="05/05/2016" 
-    ms.author="ddove"/>
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/05/2016" 
+	ms.author="ddove"/>
+
+# Verwenden der RecoveryManager-Klasse zur Behebung von Problemen mit der Shard-Zuordnung
+
+Die [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx)-Klasse bietet ADO.NET-Anwendungen die Möglichkeit, Inkonsistenzen zwischen der globalen Shardzuordnung (GSM) und der lokalen Shardzuordnung (LSM) in einer horizontal partitionierten Datenbank leicht zu erkennen und zu beheben.
+
+Die GSM und die LSM verfolgen die Zuordnung der einzelnen Datenbanken in einer horizontal partitionierten Umgebung. Gelegentlich tritt eine Unterbrechung zwischen GSM und LSM auf. In diesem Fall verwenden Sie die RecoveryManager-Klasse zum Erkennen und Reparieren der Unterbrechung.
+
+Die RecoveryManager-Klasse ist Teil der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md).
 
 
-# <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Using the RecoveryManager class to fix shard map problems
-
-The [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) class provides ADO.Net applications the ability to easily  detect and correct any inconsistencies between the global shard map (GSM) and the local shard map (LSM) in a sharded database enviroment. 
-
-The GSM and LSM track the mapping of each database in a sharded environment. Occasionally, a break occurs between the GSM and the LSM. In that case, use the RecoveryManager class to detect and repair the break.
-
-The RecoveryManager class is part of the [Elastic Database client library](sql-database-elastic-database-client-library.md). 
+![Shardzuordnung][1]
 
 
-![Shard map][1]
+Begriffsdefinitionen finden Sie unter [Tools für elastische Datenbanken – Glossar](sql-database-elastic-scale-glossary.md). Eine Erläuterung dazu, wie der **ShardMapManager** zum Verwalten von Daten in einer Shardlösung eingesetzt wird, finden Sie unter [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md).
 
 
-For term definitions, see [Elastic Database tools glossary](sql-database-elastic-scale-glossary.md). To understand how the **ShardMapManager** is used to manage data in a sharded solution, see [Shard map management](sql-database-elastic-scale-shard-map-management.md).
+## Gründe für die Verwendung von Recovery Manager
 
+In einer Umgebung mit Sharddatenbanken gibt es einen Mandanten pro Datenbank und viele Datenbanken pro Server. Es können auch viele Server in der Umgebung vorhanden sein. Jede Datenbank muss in der Shardzuordnung zugeordnet werden, sodass Aufrufe an den richtigen Server und die richtige Datenbank weitergeleitet werden können. Datenbanken werden anhand eines **Shardingschlüssels** nachverfolgt, und jedem Shard wird ein **Bereich von Schlüsselwerten** zugewiesen. Beispielsweise kann ein Shardingschlüssel die Kundennamen "D" bis "F" darstellen. Die Zuordnung aller Shards (d. h. Datenbanken) und ihre Zuordnungsbereiche sind in der **globalen Shardzuordnung** (Global Shard Map, GSM) enthalten. Jede Datenbank enthält außerdem eine Zuordnung der auf dem Shard enthaltenen Bereiche, die als **lokale Shardzuordnung** (Local Shard Map, LSM) bezeichnet wird. Wenn eine App eine Verbindung mit einem Shard herstellt, wird die Zuordnung für den schnellen Abruf mit der App zwischengespeichert. Die LSM dient zum Überprüfen zwischengespeicherter Daten.
 
-## <a name="why-use-the-recovery-manager?"></a>Why use the recovery manager?
+Die GSM und die LSM können aus den folgenden Gründen nicht mehr synchron sein:
 
-In a sharded database environment, there is one tenant per database, and many databases per server. There can also be many servers in the environment. Each database is mapped in the shard map, so calls can be routed to the correct server and database. Databases are tracked according to a **sharding key**, and each shard is assigned a **range of key values**. For example, a sharding key may represent the customer names from "D" to "F." The mapping of all shards (aka databases) and their mapping ranges are contained in the **global shard map (GSM)**. Each database also contains a map of the ranges contained on the shard—this is known as the **local shard map (LSM)**. When an app connects to a shard, the mapping is cached with the app for quick retrieval. The LSM is used to validate cached data. 
+1. Ein Shard, dessen Bereich anscheinend nicht länger genutzt wird, wurde gelöscht, oder ein Shard wurde umbenannt. Das Löschen eines Shards führt zu einer **verwaisten Shardzuordnung**. Eine umbenannte Datenbank kann auf ähnliche Weise zu einer verwaisten Shardzuordnung führen. Abhängig davon, was geändert werden soll, muss der Shard möglicherweise entfernt oder der Shardspeicherort aktualisiert werden. Weitere Informationen zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer Datenbank zu einem früheren Zeitpunkt, einer gelöschten Datenbank oder eines Rechenzentrums nach einem Ausfall](sql-database-troubleshoot-backup-and-restore.md).
+2. Ein Geofailoverereignis tritt ein. Um fortzufahren, müssen der Servername und der Datenbankname des Shardzuordnungs-Managers in der Anwendung und anschließend noch die Shardzuordnungsdetails für sämtliche Shards in einer Shardzuordnung aktualisiert werden. Bei einem Geofailover sollte eine solche Wiederherstellungslogik innerhalb des Failoverworkflows automatisiert werden. Die Automatisierung von Wiederherstellungsaktionen gewährleistet eine reibungslose Verwaltbarkeit für geofähige Datenbanken und vermeidet manuelle, von Personen durchzuführende Aktionen.
+3. Entweder ein Shard oder die ShardMapManager-Datenbank wird auf einen früheren Zeitpunkt wiederhergestellt.
 
-The GSM and LSM may become out of sync for the following reasons:
+Weitere Informationen zu den Azure SQL-Datenbanktools für elastische Datenbanken und zur Georeplikation und Wiederherstellung finden Sie in folgenden Artikeln:
 
-1. The deletion of a shard whose range is believed to no longer be in use, or renaming of a shard. Deleting a shard results in an **orphaned shard mapping**. Similary, a renamed database can cause an orphaned shard mapping. Depending on the intent of the change, the shard may need to be removed or the shard location needs to be updated. To recover a deleted database, see [Restore a database to a previous point in time, restore a deleted database, or recover from a data center outage](sql-database-troubleshoot-backup-and-restore.md).
-2. A geo-failover event occurs. To continue, one must update the server name, and database name of shard map manager in the application and then update the shard mapping details for any and all shards in a shard map. In case of a geo-failover, such recovery logic should be automated within the failover workflow. Automating recovery actions enables a frictionless manageability for geo-enabled databases and avoids manual human actions.
-3. Either a shard or the ShardMapManager database is restored to an earlier point-in time.
+* [Übersicht: Geschäftskontinuität für die Cloud und Notfallwiederherstellung für Datenbanken mit SQL-Datenbank](sql-database-business-continuity.md)
+* [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md)
+* [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md)
 
-For more information about Azure SQL Database Elastic Database tools, Geo-Replication and Restore, please see the following: 
+## Abrufen von RecoveryManager aus einem ShardMapManager 
 
-* [Overview: Cloud business continuity and database disaster recovery with SQL Database](sql-database-business-continuity.md) 
-* [Get started with elastic database tools](sql-database-elastic-scale-get-started.md)  
-* [ShardMap Management](sql-database-elastic-scale-shard-map-management.md)
+Der erste Schritt ist die Erstellung eine RecoveryManager-Instanz. Die [GetRecoveryManager-Methode](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) gibt den Recovery Manager für die aktuelle [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)-Instanz zurück. Zur Behebung von Inkonsistenzen in der Shardzuordnung müssen Sie zuerst den RecoveryManager für die jeweilige Shardzuordnung abrufen.
 
-## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Retrieving RecoveryManager from a ShardMapManager 
-
-The first step is to create a RecoveryManager instance. The [GetRecoveryManager method](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) returns the recovery manager for the current [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) instance. In order to address any inconsistencies in the shard map, you must first retrieve the RecoveryManager for the particular shard map. 
-
-    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
+	ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
              ShardMapManagerLoadPolicy.Lazy);
              RecoveryManager rm = smm.GetRecoveryManager(); 
 
-In this example, the RecoveryManager is initialized from the ShardMapManager. The ShardMapManager containing a ShardMap is also already initialized. 
+In diesem Beispiel wird der RecoveryManager vom ShardMapManager aus initialisiert. Der ShardMapManager, der eine ShardMap enthält, ist ebenfalls bereits initialisiert.
 
-Since this application code manipulates the shard map itself, the credentials used in the factory method (in the above example, smmConnectionString) should be credentials that have read-write permissions on the GSM database referenced by the connection string. These credentials are typically different from credentials used to open connections for data-dependent routing. For more information, see [Using credentials in the elastic database client](sql-database-elastic-scale-manage-credentials.md).
+Da dieser Anwendungscode die Shardzuordnung selbst verändert, sollten die in der Factorymethode verwendeten Anmeldeinformationen (im obigen Beispiel „smmConnectionString“) nur schreibgeschützte Berechtigungen für die GSM-Datenbank besitzen, auf die durch die Verbindungszeichenfolge verwiesen wird. Diese Anmeldeinformationen unterscheiden sich in der Regel von Anmeldeinformationen, die für das Öffnen von Verbindungen zum datenabhängigen Routing verwendet werden. Weitere Informationen hierzu finden Sie unter [Verwalten von Anmeldeinformationen in der Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-manage-credentials.md).
 
-## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Removing a shard from the ShardMap after a shard is deleted
+## Entfernen eines gelöschten Shards aus der ShardMap
 
-The [DetachShard method](https://msdn.microsoft.com/library/azure/dn842083.aspx) detaches the given shard from the shard map and deletes mappings associated with the shard.  
+Die [DetachShard-Methode](https://msdn.microsoft.com/library/azure/dn842083.aspx) trennt den angegebenen Shard aus der Shardzuordnung und löscht die Zuordnungen, die dem Shard zugeordnet sind.
 
-* The location parameter is the shard location, specifically server name and database name, of the shard being detached. 
-* The shardMapName parameter is the shard map name. This is only required when multiple shard maps are managed by the same shard map manager. Optional. 
+* Der location-Parameter ist der Speicherort des Shards, der getrennt wird, insbesondere dessen Servername und Datenbankname.
+* Der shardMapName-Parameter ist der Shardzuordnungsname. Dieser ist nur erforderlich, wenn mehrere Shardzuordnungen von demselben Shardzuordnungs-Manager verwaltet werden. Optional.
 
-**Important**:  Use this technique only if you are certain that the range for the updated mapping is empty. The methods above do not check data for the range being moved, so it is best to include checks in your code.
+**Wichtig:** Verwenden Sie dieses Verfahren nur, wenn Sie sicher sind, dass der Bereich für die aktualisierte Zuordnung leer ist. Durch die oben genannten Methoden werden keine Daten für den verschobenen Bereich überprüft. Deshalb empfiehlt es sich, Prüfroutinen im Code zu implementieren.
 
-This example removes shards from the shard map. 
+Dieses Beispiel entfernt die Shards aus der Shardzuordnung.
 
-    rm.DetachShard(s.Location, customerMap); 
+	rm.DetachShard(s.Location, customerMap); 
 
-The map the shard location in the GSM  prior to the deletion of the shard. Because the shard was deleted, it is assumed this was intentional, and the sharding key range is no longer in use. If this is not the case, you can execute point-in time restore. to recover the shard from an earlier point-in-time. (In that case, review the section below to detect shard inconsistencies.) To recover, see [Restore a database to a previous point in time, restore a deleted database, or recover from a data center outage](sql-database-troubleshoot-backup-and-restore.md).
+Die Zuordnung des Shardspeicherorts in der GSM vor dem Löschen des Shards. Da der Shard gelöscht wurde, wird davon ausgegangen, dass dies absichtlich geschehen ist und der Shardingschlüsselbereich nicht mehr verwendet wird. Wenn dies nicht der Fall ist, können Sie eine Point-in-Time-Wiederherstellung durchführen, um den Shard aus einem früheren Zeitpunkt wiederherzustellen. (Lesen Sie in diesem Fall den folgenden Abschnitt, um Shardinkonsistenzen zu ermitteln.) Weitere Informationen zur Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank zu einem früheren Zeitpunkt, einer gelöschten Datenbank oder eines Rechenzentrums nach einem Ausfall](sql-database-troubleshoot-backup-and-restore.md).
 
-Since it is assumed the database deletion was intentional, the final administrative cleanup action is to delete the entry to the shard in the shard map manager. This prevents the application from inadvertently writing information to a range which is not expected.
+Da davon ausgegangen wird, dass die Datenbank absichtlich gelöscht wurde, besteht die letzte administrative Bereinigungsaktion darin, den Eintrag für den Shard im Shardzuordnungs-Manager zu löschen. Dies verhindert, dass die Anwendung versehentlich Informationen in einen unerwarteten Bereich schreibt.
 
-## <a name="to-detect-mapping-differences"></a>To detect mapping differences 
+## So erkennen Sie Zuordnungsunterschiede 
 
-The [DetectMappingDifferences method](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) selects and returns one of the shard maps (either local or global) as the source of truth and reconciles mappings on both shard maps (GSM and LSM).
+Die [DetectMappingDifferences-Methode](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) wählt eine der Shardzuordnungen (entweder lokal oder global) aus, gibt sie als gültige Quelle zurück und stimmt Zuordnungen in beiden Shardzuordnungen (GSM und LSM) darauf ab.
 
-    rm.DetectMappingDifferences(location, shardMapName);
+	rm.DetectMappingDifferences(location, shardMapName);
 
-* The *location* specifies the server name and database name. 
-* The *shardMapName* parameter is the shard map name. This is only required if multiple shard maps are managed by the same shard map manager. Optional. 
+* Der *Speicherort* gibt den Servernamen und den Datenbanknamen an.
+* Der *shardMapName*-Parameter ist der Shardzuordnungsname. Dieser ist nur erforderlich, wenn mehrere Shardzuordnungen von demselben Shardzuordnungs-Manager verwaltet werden. Optional.
 
-## <a name="to-resolve-mapping-differences"></a>To resolve mapping differences
+## So lösen Sie Zuordnungsunterschiede auf
 
-The [ResolveMappingDifferences method](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) selects one of the shard maps (either local or global) as the source of truth and reconciles mappings on both shard maps (GSM and LSM).
+Die [ResolveMappingDifferences-Methode](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) wählt eine der Shardzuordnungen (entweder lokal oder global) als gültige Quelle aus und stimmt Zuordnungen in beiden Shardzuordnungen (GSM und LSM) darauf ab.
 
-    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
+	ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    
-* The *RecoveryToken* parameter enumerates the differences in the mappings between the GSM and the LSM for the specific shard. 
+* Der *RecoveryToken*-Parameter listet die Unterschiede in den Zuordnungen zwischen GSM und LSM für den jeweiligen Shard auf.
 
-* The [MappingDifferenceResolution enumeration](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) is used to indicate the method for resolving the difference between the shard mappings. 
-* **MappingDifferenceResolution.KeepShardMapping** is recommended in the event that the LSM contains the accurate mapping and therefore the mapping in the shard should be used. This is typically the case in the event of a failover: the shard now resides on a new server. Since the shard must first be removed from the GSM (using the RecoveryManager.DetachShard method), a mapping no longer exists on the GSM. Therefore, the the LSM must be used to re-establish the shard mapping.
+* Mit der [MappingDifferenceResolution-Enumeration](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) wird die Methode angegeben, die zum Beheben des Unterschieds zwischen den Shardzuordnungen verwendet werden soll.
+* **MappingDifferenceResolution.KeepShardMapping** wird für den Fall empfohlen, dass die LSM die genaue Zuordnung enthält und daher die Zuordnung im Shard verwendet werden soll. Dies ist normalerweise bei einem Failover der Fall: Der Shard befindet sich jetzt auf einem neuen Server. Da der Shard zuerst (über die RecoveryManager.DetachShard-Methode) aus der GSM entfernt werden muss, ist auf der GSM keine Zuordnung mehr vorhanden. Aus diesem Grund muss die LSM verwendet werden, um die Shardzuordnung wiederherzustellen.
 
-## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Attach a shard to the ShardMap after a shard is restored 
+## Anfügen eines Shards an die ShardMap nach dem Wiederherstellen eines Shards 
 
-The [AttachShard method](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) attaches the given shard to the shard map. It then detects any shard map inconsistencies and updates the mappings to match the shard at the point of the shard restoration. It is assumed that the database is also renamed to reflect the original database name (prior to when the shard was restored), since the point-in time restoration defaults to a new database appended with the timestamp. 
+Die [AttachShard-Methode](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) fügt den angegebenen Shard an die Shardzuordnung an. Anschließend erkennt es eventuelle Inkonsistenzen in der Shardzuordnung und aktualisiert die Zuordnungen so, dass sie dem Shard zum Zeitpunkt der Wiederherstellung entsprechen. Es wird davon ausgegangen, dass die Datenbank auf den ursprünglichen Datenbanknamen (vor der Wiederherstellung des Shards) umbenannt wird, da die Point-in-Time-Wiederherstellung standardmäßig eine neue Datenbank mit angefügtem Zeitstempel verwendet.
 
-    rm.AttachShard(location, shardMapName) 
+	rm.AttachShard(location, shardMapName) 
 
-* The *location* parameter is the server name and database name, of the shard being attached. 
+* Der *location*-Parameter entspricht dem Servernamen und dem Datenbanknamen des angefügten Shards.
 
-* The *shardMapName* parameter is the shard map name. This is only required when multiple shard maps are managed by the same shard map manager. Optional. 
+* Der *shardMapName*-Parameter ist der Shardzuordnungsname. Dieser ist nur erforderlich, wenn mehrere Shardzuordnungen von demselben Shardzuordnungs-Manager verwaltet werden. Optional.
 
-This example adds a shard to the shard map which has been recently restored from an earlier point-in time. Since the shard (namely the mapping for the shard in the LSM) has been restored, it is potentially inconsistent with the shard entry in the GSM. Outside of this example code, the shard was restored and renamed to the original name of the database. Since it was restored, it is assumed the mapping in the LSM is the trusted mapping. 
+In diesem Beispiel wird der Shardzuordnung ein Shard hinzugefügt, der vor kurzem von einem früheren Zeitpunkt wiederhergestellt wurde. Da der Shard (d. h. die Zuordnung für den Shard in der LSM) wiederhergestellt wurde, ist er möglicherweise inkonsistent mit dem Shardeintrag in der GSM. Außerhalb dieses Beispielcodes wurde der Shard wiederhergestellt und auf den ursprünglichen Namen der Datenbank umbenannt. Da er wiederhergestellt wurde, wird davon ausgegangen, dass die Zuordnung in der LSM die vertrauenswürdige Zuordnung ist.
 
-    rm.AttachShard(s.Location, customerMap); 
-    var gs = rm.DetectMappingDifferences(s.Location); 
-      foreach (RecoveryToken g in gs) 
-       { 
-       rm.ResolveMappingDifferences(g, MappingDifferenceResolution.KeepShardMapping); 
-       } 
+	rm.AttachShard(s.Location, customerMap); 
+	var gs = rm.DetectMappingDifferences(s.Location); 
+	  foreach (RecoveryToken g in gs) 
+	   { 
+	   rm.ResolveMappingDifferences(g, MappingDifferenceResolution.KeepShardMapping); 
+	   } 
 
-## <a name="updating-shard-locations-after-a-geo-failover-(restore)-of-the-shards"></a>Updating shard locations after a geo-failover (restore) of the shards
+## Aktualisieren von Shardspeicherorten nach einem Geofailover (Wiederherstellung) der Shards
 
-In the event of a geo-failover, the secondary database is made write accessible and becomes the new primary database. The name of the server, and potentially the database (depending on your configuration), may be different from the original primary. Therefore the mapping entries for the shard in the GSM and LSM must be fixed. Similarly, if the database is restored to a different name or location, or to an earlier point in time, this might cause inconsistencies in the shard maps. The Shard Map Manager handles the distribution of open connections to the correct database. Distribution is based on the data in the shard map and the value of the sharding key that is the target of the application’s request. After a geo-failover, this information must be updated with the accurate server name, database name and shard mapping of the recovered database. 
+Bei einem Geofailover wird die sekundäre Datenbank für den Schreibzugriff freigegeben und als neue primäre Datenbank festgelegt. Der Name des Servers und möglicherweise der der Datenbank (je nach Konfiguration) können von den ursprünglichen primären Namen abweichen. Daher müssen die Zuordnungseinträge für den Shard in der GSM und in der LSM korrigiert werden. Wenn die Datenbank auf einen anderen Namen oder Speicherort oder auf einen früheren Zeitpunkt wiederhergestellt wird, kann dies ebenso zu Inkonsistenzen in den Shardzuordnungen führen. Der Shardzuordnungs-Manager verarbeitet die Verteilung der geöffneten Verbindungen an die richtige Datenbank. Die Verteilung basiert auf den Daten in der Shardzuordnung und auf dem Wert des Shardingschlüssels, an den die Anwendungsanforderung gerichtet ist. Nach einem Geofailover müssen diese Informationen auf den richtigen Servernamen, den richtigen Datenbanknamen und die richtige Shardzuordnung der wiederhergestellten Datenbank aktualisiert werden.
 
-## <a name="best-practices"></a>Best practices
+## Bewährte Methoden
 
-Geo-failover and recovery are operations typically managed by a cloud administrator of the application intentionally utilizing one of Azure SQL Databases business continuity features. Business continuity planning requires processes, procedures, and measures to ensure that business operations can continue without interruption. The methods available as part of the RecoveryManager class should be used within this work flow to ensure the GSM and LSM are kept up-to-date based on the recovery action taken. There are 5 basic steps to properly ensuring the GSM and LSM reflect the accurate information after a failover event. The application code to execute these steps can be integrated into existing tools and workflow. 
+Geofailover und -wiederherstellung sind Vorgänge, die in der Regel von einem Cloudadministrator der Anwendung verwaltet werden, der bewusst eine der Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank einsetzt. Die Planung der Geschäftskontinuität erfordert Prozesse, Verfahren und Maßnahmen, um zu gewährleisten, dass der Geschäftsbetrieb ohne Unterbrechung fortgesetzt werden kann. Die in der RecoveryManager-Klasse verfügbaren Methoden sollten in diesem Workflow verwendet werden, um sicherzustellen, dass die GSM und die LSM basierend auf der durchgeführten Wiederherstellungsaktion auf dem neuesten Stand gehalten werden. Es gibt fünf grundlegende Schritte, um ordnungsgemäß sicherzustellen, dass die GSM und die LSM nach einem Failoverereignis die genauen Informationen enthalten. Der Anwendungscode zum Ausführen dieser Schritte kann in vorhandene Tools und Workflows integriert werden.
 
-1. Retrieve the RecoveryManager from the ShardMapManager. 
-2. Detach the old shard from the shard map.
-3. Attach the new shard to the shard map, including the new shard location.
-4. Detect inconsistencies in the mapping between the GSM and LSM. 
-5. Resolve differences between the GSM and the LSM, trusting the LSM. 
+1. Rufen Sie den RecoveryManager aus dem ShardMapManager ab.
+2. Trennen Sie den alten Shard von der Shardzuordnung.
+3. Fügen Sie den neuen Shard an die Shardzuordnung an, einschließlich des neuen Shardspeicherorts.
+4. Ermitteln Sie Inkonsistenzen in der Zuordnung zwischen GSM und LSM.
+5. Lösen Sie Unterschiede zwischen der GSM und der LSM auf, indem Sie die LSM als vertrauenswürdig einstufen.
 
-This example performs the following steps:
-1. Removes shards from the Shard Map which reflect shard locations prior to the failover event.
-2. Attaches shards to the Shard Map reflecting the new shard locations (the parameter "Configuration.SecondaryServer" is the new server name but the same database name).
-3. Retrieves the recovery tokens by detecting mapping differences between the GSM and the LSM for each shard. 
-4. Resolves the inconsistencies by trusting the mapping from the LSM of each shard. 
+In diesem Beispiel werden die folgenden Schritte ausgeführt:
+1. Entfernen von Shards aus der Shardzuordnung, die Shardspeicherorte von vor dem Failover angeben.
+2. Anfügen von Shards an die Shardzuordnung, die die neuen Shardspeicherorte angeben. (Der Parameter „Configuration.SecondaryServer“ ist der neue Servername, aber derselbe Datenbankname.)
+3. Abrufen der Wiederherstellungstoken durch das Erkennen von Zuordnungsunterschieden zwischen der GSM und der LSM für die einzelnen Shards.
+4. Auflösen der Inkonsistenzen durch Verwenden der LSM-Zuordnung als vertrauenswürdige Zuordnung für die einzelnen Shards.
 
-    var shards = smm.GetShards();  foreach (shard s in shards)  {   if (s.Location.Server == Configuration.PrimaryServer)       {        ShardLocation slNew = new ShardLocation(Configuration.SecondaryServer, s.Location.Database); 
-        
-          rm.DetachShard(s.Location); 
-        
-          rm.AttachShard(slNew); 
-        
-          var gs = rm.DetectMappingDifferences(slNew); 
-    
-          foreach (RecoveryToken g in gs) 
-            { 
-               rm.ResolveMappingDifferences(g, MappingDifferenceResolution.KeepShardMapping); 
-            } 
-        } 
-    } 
+	var shards = smm.GetShards(); foreach (shard s in shards) { if (s.Location.Server == Configuration.PrimaryServer) { ShardLocation slNew = new ShardLocation(Configuration.SecondaryServer, s.Location.Database);
+		
+		  rm.DetachShard(s.Location); 
+		
+		  rm.AttachShard(slNew); 
+		
+		  var gs = rm.DetectMappingDifferences(slNew); 
+	
+		  foreach (RecoveryToken g in gs) 
+			{ 
+			   rm.ResolveMappingDifferences(g, MappingDifferenceResolution.KeepShardMapping); 
+			} 
+		} 
+	}
 
 
 
@@ -159,8 +158,4 @@ This example performs the following steps:
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

@@ -1,264 +1,259 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Novatus | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and 10,000ft Plans."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="Tutorial: Azure Active Directory-Integration mit Novatus | Microsoft Azure"
+	description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und 10,000ft Plans konfigurieren."
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2016"
+	ms.author="jeedes"/>
 
 
+# Tutorial: Azure Active Directory-Integration mit 10,000ft Plans
 
-# <a name="tutorial:-azure-active-directory-integration-with-10,000ft-plans"></a>Tutorial: Azure Active Directory integration with 10,000ft Plans
+Dieses Tutorial soll Ihnen zeigen, wie Sie 10,000ft Plans in Azure Active Directory (Azure AD) integrieren können. Die Integration von 10,000ft Plans in Azure AD bietet die folgenden Vorteile:
 
-The objective of this tutorial is to show you how to integrate 10,000ft Plans with Azure Active Directory (Azure AD).  
-Integrating 10,000ft Plans with Azure AD provides you with the following benefits:
+- Sie können in Azure AD steuern, wer Zugriff auf 10,000ft Plans hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei 10,000ft Plans anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-- You can control in Azure AD who has access to 10,000ft Plans
-- You can enable your users to automatically get signed-on to 10,000ft Plans (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## Voraussetzungen
 
-## <a name="prerequisites"></a>Prerequisites
+Um die Integration von 10,000ft Plans in Azure AD konfigurieren zu können, benötigen Sie Folgendes:
 
-To configure Azure AD integration with 10,000ft Plans, you need the following items:
-
-- An Azure AD subscription
-- A 10,000ft Plans single-sign on enabled subscription
+- Ein Azure AD-Abonnement
+- Ein 10,000ft Plans-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
-
-
-## <a name="scenario-description"></a>Scenario description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
-
-1. Adding 10,000ft Plans from the gallery
-2. Configuring and testing Azure AD single sign-on
+- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 
-## <a name="adding-10,000ft-plans-from-the-gallery"></a>Adding 10,000ft Plans from the gallery
-To configure the integration of 10,000ft Plans into Azure AD, you need to add 10,000ft Plans from the gallery to your list of managed SaaS apps.
+## Beschreibung des Szenarios
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-**To add 10,000ft Plans from the gallery, perform the following steps:**
+1. Hinzufügen von 10,000ft Plans aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+
+## Hinzufügen von 10,000ft Plans aus dem Katalog
+Zum Konfigurieren der Integration von 10,000ft Plans in Azure AD müssen Sie 10,000ft Plans aus dem Katalog zu Ihrer Liste der verwalteten SaaS-Apps hinzufügen.
+
+**Um 10,000ft Plans aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
     ![Active Directory][1]
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Applications][2]
+	![Anwendungen][2]
 
-4. Click **Add** at the bottom of the page.
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
 
-    ![Applications][3]
+	![Anwendungen][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Applications][4]
+	![Anwendungen][4]
 
-6. In the search box, type **10,000ft Plans**.
+6. Geben Sie im Suchfeld als Suchbegriff **10,000ft Plans** ein.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_01.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_01.png)
 
-7. In the results pane, select **10,000ft Plans**, and then click **Complete** to add the application.
+7. Wählen Sie im Ergebnisbereich **10,000ft Plans** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_02.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_02.png)
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with 10,000ft Plans based on a test user called "Britta Simon".
+##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in 10,000ft Plans konfiguriert und getestet werden kann.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in 10,000ft Plans to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in 10,000ft Plans needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in 10,000ft Plans.
+Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, wer in 10,000ft Plans das Pendant zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 10,000ft Plans muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in 10,000ft Plans zuweisen.
 
-To configure and test Azure AD single sign-on with 10,000ft Plans, you need to complete the following building blocks:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD in 10,000ft Plans müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a 10,000ft Plans test user](#creating-a-10000ft-plans-test-user)** - to have a counterpart of Britta Simon in Certify that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines 10,000ft Plans-Testbenutzers](#creating-a-10000ft-plans-test-user)**, um eine Entsprechung von Britta Simon in 10,000ft Plans zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+### Konfigurieren des einmaligen Anmeldens von Azure AD
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your 10,000ft Plans application.
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer 10,000ft Plans-Anwendung zu konfigurieren.
 
 
 
-**To configure Azure AD single sign-on with 10,000ft Plans, perform the following steps:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in 10,000ft Plans die folgenden Schritte aus:**
 
-1. In the Azure classic portal, on the **10,000ft Plans** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **10,000ft Plans** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-    ![Configure Single Sign-On][6] 
+	![Einmaliges Anmelden konfigurieren][6]
 
-2. On the **How would you like users to sign on to 10,000ft Plans** page, select **Azure AD Single Sign-On**, and then click **Next**.
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei 10,000ft Plans anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_03.png) 
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_03.png)
 
-3. On the **Configure App Settings** dialog page, perform the following steps and then click **Next**:
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
 
-    ![Configure Single Sign-On](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_04.png) 
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_04.png)
 
 
-    a. In the **Sign On URL** textbox, type `https://app.10000ft.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL `https://app.10000ft.com` ein.
 
-    b. In the **Identifier** textbox, type `https://app.10000ft.com/saml/metadata`.
+	b. Geben Sie im Textfeld **Bezeichner** den Wert `https://app.10000ft.com/saml/metadata` ein.
 
-    > [AZURE.NOTE] The value for **Identifier** is different if you have a custom domain. If you need assistance, contact your [10,000ft Plans support team](mailto:support@10000ft.com).  
+	> [AZURE.NOTE] Der Wert für **Bezeichner** lautet anders, wenn Sie über eine benutzerdefinierte Domäne verfügen. Wenn Sie Hilfe benötigen, wenden Sie sich an Ihr [10,000ft Plans-Supportteam](mailto:support@10000ft.com).
 
-    c. Click **Next**
+	c. Klicken Sie auf **Weiter**.
 
 
-4. On the **Configure single sign-on at 10,000ft Plans** page, perform the following steps and then click **Next**:
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für 10,000ft Plans** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
 
-    ![Configure Single Sign-On](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_05.png) 
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_05.png)
 
-    a. Click **Download certificate**, and then save the file on your computer.
+    a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
-    b. Click **Next**.
+    b. Klicken Sie auf **Next**.
 
 
-5. To get SSO configured for your application, contact your [10,000ft Plans support team](mailto:support@10000ft.com), attach the downloaded certificate and provide them with the Issuer URL, the SAML SSO URL and the Sign Out URL.
+5. Um das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich an das [Supportteam von 10,000ft Plans](mailto:support@10000ft.com), und fügen Sie das heruntergeladene Zertifikat an. Geben Sie außerdem die Aussteller-URL, die SAML-SSO-URL und die Abmelde-URL an.
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
-    ![Azure AD Single Sign-On][10]
+	![Azure AD – einmaliges Anmelden][10]
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
 
-    ![Azure AD Single Sign-On][11]
+	![Azure AD – einmaliges Anmelden][11]
 
 
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
+### Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
 
-![Create Azure AD User][20]
+![Azure AD-Benutzer erstellen][20]
 
-**To create a SECURE DELIVER test user in Azure AD, perform the following steps:**
+**Um einen SECURE DELIVER-Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_09.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. To display the list of users, in the menu on the top, click **Users**.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_03.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_03.png)
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_04.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_05.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b. Geben Sie in das Textfeld **Benutzername** den Text **BrittaSimon** ein.
 
-    c. Click **Next**.
+    c. Klicken Sie auf **Weiter**.
 
-6.  On the **User Profile** dialog page, perform the following steps:
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_06.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
 
-    d. In the **Role** list, select **User**.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
 
-    e. Click **Next**.
+    e. Klicken Sie auf **Weiter**.
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_07.png) 
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_07.png)
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_08.png) 
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_08.png)
 
-    a. Write down the value of the **New Password**.
+    a. Notieren Sie den Wert von **Neues Kennwort**.
 
-    b. Click **Complete**.   
+    b. Klicken Sie auf **Fertig stellen**.
 
 
-### <a name="creating-a-10,000ft-plans-test-user"></a>Creating a 10,000ft Plans test user
+### Erstellen eines 10,000ft Plans-Testbenutzers
 
-The objective of this section is to create a user called Britta Simon in 10,000ft Plans. 10,000ft Plans supports just-in-time provisioning, which is by default enabled.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in 10,000ft Plans. 10,000ft Plans unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-There is no action item for you in this section. A new user will be created during an attempt to access 10,000ft Plans if it doesn't exist yet. 
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf 10,000ft Plans ein neuer Benutzer erstellt.
 
-> [AZURE.NOTE] If you need to create an user manually, you need to contact the Certify support team.
+> [AZURE.NOTE] Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem Supportteam von Certify in Verbindung.
 
 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### Zuweisen des Azure AD-Testbenutzers
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to 10,000ft Plans.
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf 10,000ft Plans erhält.
 
-![Assign User][200] 
+![Benutzer zuweisen][200]
 
-**To assign Britta Simon to 10,000ft Plans, perform the following steps:**
+**Um Britta Simon zu 10,000ft Plans zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen**.
 
-    ![Assign User][201] 
+	![Benutzer zuweisen][201]
 
-2. In the applications list, select **10,000ft Plans**.
+2. Wählen Sie in der Anwendungsliste **10,000ft Plans** aus.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_50.png) 
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10000ftplans_50.png)
 
-1. In the menu on the top, click **Users**.
+1. Klicken Sie im oberen Menü auf **Benutzer**.
 
-    ![Assign User][203] 
+	![Benutzer zuweisen][203]
 
-1. In the Users list, select **Britta Simon**.
+1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-2. In the toolbar on the bottom, click **Assign**.
+2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
 
-    ![Assign User][205]
+	![Benutzer zuweisen][205]
 
 
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### Testen der einmaligen Anmeldung
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the 10,000ft Plans tile in the Access Panel, you should get automatically signed-on to your 10,000ft Plans application.
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Wenn Sie im Zugriffsbereich auf die Kachel „10,000ft Plans“ klicken, sollten Sie automatisch bei Ihrer 10,000ft Plans-Anwendung angemeldet werden.
 
 
-## <a name="additional-resources"></a>Additional resources
+## Zusätzliche Ressourcen
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -279,8 +274,4 @@ When you click the 10,000ft Plans tile in the Access Panel, you should get autom
 [204]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->
