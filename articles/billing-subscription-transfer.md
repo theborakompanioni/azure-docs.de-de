@@ -53,9 +53,9 @@ Sie können dies jetzt problemlos für Abonnements mit nutzungsbasierter Bezahlu
 
 6.  Der Empfänger klickt auf den Link und folgt den Anweisungen. Außerdem gibt er seine Zahlungsinformationen ein.
 
-    ![Erste Webseite zur Abonnementübertragung](./media/billing-subscription-transfer/image4.png)
+    ![Erste Webseite zur Abonnementübertragung](./media/billing-subscription-transfer/image4.PNG)
 
-    ![Zweite Webseite zur Abonnementübertragung](./media/billing-subscription-transfer/image5.png)
+    ![Zweite Webseite zur Abonnementübertragung](./media/billing-subscription-transfer/image5.PNG)
 
 7. Erfolg! Das Abonnement ist jetzt übertragen.
 
@@ -135,6 +135,6 @@ Sie können dies jetzt problemlos für Abonnements mit nutzungsbasierter Bezahlu
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
