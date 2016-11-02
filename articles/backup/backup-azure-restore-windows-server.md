@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Wiederherstellen von Daten auf einem Windows-Server oder -Client von Azure unter Verwendung des Resource Manager-Bereitstellungsmodells | Microsoft Azure"
-   description="Erfahren Sie, wie Daten auf einem Windows Server- oder Windows-Clientcomputer wiederhergestellt werden."
+   pageTitle="Restore data to a Windows Server or Windows Client from Azure using the Resource Manager deployment model | Microsoft Azure"
+   description="Learn how to restore from a Windows Server or Windows Client."
    services="backup"
    documentationCenter=""
    authors="saurabhsensharma"
@@ -10,111 +10,116 @@
 <tags
    ms.service="backup"
    ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="article"
-	 ms.date="08/02/2016"
-	 ms.author="trinadhk; jimpark; markgal;"/>
+     ms.tgt_pltfrm="na"
+     ms.devlang="na"
+     ms.topic="article"
+     ms.date="11/01/2016"
+     ms.author="trinadhk; jimpark; markgal;"/>
 
-# Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
+
+# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Restore files to a Windows server or Windows client machine using Resource Manager deployment model
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](backup-azure-restore-windows-server.md)
-- [Klassisches Portal](backup-azure-restore-windows-server-classic.md)
+- [Azure portal](backup-azure-restore-windows-server.md)
+- [Classic portal](backup-azure-restore-windows-server-classic.md)
 
-In diesem Artikel werden die erforderlichen Schritte für zwei Arten von Wiederherstellungsvorgängen erläutert:
+This article covers the steps required to perform two types of restore operations:
 
-- Wiederherstellen von Daten auf dem gleichen Computer, auf dem die Sicherungen erstellt wurden
-- Wiederherstellen von Daten auf einem beliebigen anderen Computer
+- Restore data to the same machine from which the backups were taken.
+- Restore data to any other machine.
 
-In beiden Fällen werden die Daten aus dem Azure Recovery Services-Tresor abgerufen.
+In both cases, the data is retrieved from the Azure Recovery Services vault.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
 
-## Wiederherstellen von Daten auf demselben Computer
-Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer wiederherstellen möchten (auf dem die Sicherung erstellt wurde), können Sie die folgenden Schritte zum Wiederherstellen der Daten ausführen.
+## <a name="recover-data-to-the-same-machine"></a>Recover data to the same machine
+If you accidentally deleted a file and wish to restore it to the same machine (from which the backup is taken), the following steps will help you recover the data.
 
-1. Öffnen Sie das Snap-In **Microsoft Azure Backup**.
-2. Klicken Sie auf **Daten wiederherstellen**, um den Workflow zu initiieren.
+1. Open the **Microsoft Azure Backup** snap in.
+2. Click **Recover Data** to initiate the workflow.
 
-    ![Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/recover.png)
+    ![Recover Data](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Wählen Sie die Option **Dieser Server (*NameIhresComputers*)**, wenn Sie die gesicherte Datei auf demselben Computer wiederherstellen möchten.
+3. Select the **This server (*yourmachinename*)** option to restore the backed up file on the same machine.
 
-    ![Auf demselben Computer](./media/backup-azure-restore-windows-server/samemachine.png)
+    ![Same machine](./media/backup-azure-restore-windows-server/samemachine.png)
 
-4. Sie können entscheiden, ob Sie **Dateien durchsuchen** oder **Dateien suchen** möchten.
+4. Choose to **Browse for files** or **Search for files**.
 
-    Behalten Sie die Standardoption bei, wenn Sie beabsichtigen, eine oder mehrere Dateien wiederherzustellen, deren Pfad bekannt ist. Wenn Sie die Ordnerstruktur nicht genau kennen und nach einer Datei suchen möchten, wählen Sie die Option **Dateien suchen**. In diesem Abschnitt verwenden wir die Standardoption.
+    Leave the default option if you plan to restore one or more files whose path is known. If you are not sure about the folder structure but would like to search for a file, pick the **Search for files** option. For the purpose of this section, we will proceed with the default option.
 
-    ![Dateien durchsuchen](./media/backup-azure-restore-windows-server/browseandsearch.png)
+    ![Browse files](./media/backup-azure-restore-windows-server/browseandsearch.png)
 
-5. Wählen Sie das Volume aus, von dem Sie die Datei wiederherstellen möchten.
+5. Select the volume from which you wish to restore the file.
 
-    Sie können den Zustand eines beliebigen Zeitpunkts wiederherstellen. Datumsangaben, die im Kalendersteuerelement **fett** dargestellt werden, geben die Verfügbarkeit eines Wiederherstellungspunkts an. Nachdem Sie ein Datum ausgewählt haben, können Sie basierend auf Ihrem Sicherungszeitplan (und dem Erfolg eines Sicherungsvorgangs) einen Zeitpunkt in der Dropdownliste **Zeit** auswählen.
+    You can restore from any point in time. Dates which appear in **bold** in the calendar control indicate the availability of a restore point. Once a date is selected, based on your backup schedule (and the success of a backup operation), you can select a point in time from the **Time** drop down.
 
-    ![Volume und Datum](./media/backup-azure-restore-windows-server/volanddate.png)
+    ![Volume and Date](./media/backup-azure-restore-windows-server/volanddate.png)
 
-6. Wählen Sie die Elemente, die wiederhergestellt werden sollen. Sie können eine Mehrfachauswahl von Ordnern/Dateien treffen, die Sie wiederherstellen möchten.
+6. Select the items to recover. You can multi-select folders/files you wish to restore.
 
-    ![Auswählen von Dateien](./media/backup-azure-restore-windows-server/selectfiles.png)
+    ![Select files](./media/backup-azure-restore-windows-server/selectfiles.png)
 
-7. Geben Sie die Wiederherstellungsparameter an.
+7. Specify the recovery parameters.
 
-    ![Wiederherstellungsoptionen](./media/backup-azure-restore-windows-server/recoveroptions.png)
+    ![Recovery options](./media/backup-azure-restore-windows-server/recoveroptions.png)
 
-  - Sie können eine Wiederherstellung am ursprünglichen Speicherort (bei der die Datei oder der Ordner überschrieben wird) oder an einem anderen Speicherort auf demselben Computer durchführen.
-  - Wenn die Datei oder der Ordner für die Wiederherstellung bereits am Zielspeicherort vorhanden ist, können Sie Kopien erstellen (zwei Versionen derselben Datei), die Dateien im Zielverzeichnis überschreiben oder die Wiederherstellung der Dateien überspringen, die am Zielspeicherort vorhanden sind.
-  - Es wird dringend empfohlen, die Standardoption beizubehalten und die ACLs für die wiederherzustellenden Dateien ebenfalls wiederherzustellen.
+  - You have an option of restoring to the original location (in which the file/folder would be overwritten) or to another location in the same machine.
+  - If the file/folder you wish to restore exists in the target location, you can create copies (two versions of the same file), overwrite the files in the target location, or skip the recovery of the files which exist in the target.
+  - It is highly recommended that you leave the default option of restoring the ACLs on the files which are being recovered.
 
-8. Sobald Sie diese Eingaben bereitgestellt haben, klicken Sie auf **Weiter**. Der Wiederherstellungsworkflow, bei dem die Dateien auf diesem Computer wiederhergestellt werden, wird gestartet.
+8. Once these inputs are provided, click **Next**. The recovery workflow, which restores the files to this machine, will begin.
 
-## Wiederherstellen auf einem anderen Computer
-Wenn der gesamte Server verloren geht, können Sie Daten aus Azure Backup dennoch auf einem anderen Computer wiederherstellen. Der Workflow wird in den folgenden Schritten beschrieben.
+## <a name="recover-to-an-alternate-machine"></a>Recover to an alternate machine
+If your entire server is lost, you can still recover data from Azure Backup to a different machine. The following steps illustrate the workflow.  
 
-In diesen Schritten wird folgende Terminologie verwendet:
+The terminology used in these steps includes:
 
-- *Quellcomputer* – Der ursprüngliche Computer, von dem die Sicherung erstellt wurde und der zurzeit nicht verfügbar ist.
-- *Zielcomputer* – Der Computer, auf dem die Daten wiederhergestellt werden.
-- *Beispieltresor* – Der Recovery Services-Tresor, bei dem der *Quellcomputer* und der *Zielcomputer* registriert sind. <br/>
+- *Source machine* – The original machine from which the backup was taken and which is currently unavailable.
+- *Target machine* – The machine to which the data is being recovered.
+- *Sample vault* – The Recovery Services vault to which the *Source machine* and *Target machine* are registered. <br/>
 
-> [AZURE.NOTE] Sicherungen von einem Computer können nicht auf einem Computer wiederhergestellt werden, auf dem eine frühere Version des Betriebssystems ausgeführt wird. Wenn beispielsweise Sicherungen auf einem Windows 7-Computer erstellt werden, können diese auf einem Computer unter Windows 8 oder höher wiederhergestellt werden. Umgekehrt ist dies jedoch nicht möglich.
+> [AZURE.NOTE] Backups taken from a machine cannot be restored on a machine which is running an earlier version of the operating system. For example, if backups are taken from a Windows 7 machine, it can be restored on a Windows 8 or above machine. However the vice-versa does not hold true.
 
-1. Öffnen Sie das Snap-In **Microsoft Azure Backup** auf dem *Zielcomputer*.
-2. Stellen Sie sicher, dass der *Zielcomputer* und der *Quellcomputer* bei dem gleichen Recovery Services-Tresor registriert sind.
-3. Klicken Sie auf **Daten wiederherstellen**, um den Workflow zu initiieren.
+1. Open the **Microsoft Azure Backup** snap in on the *Target machine*.
+2. Ensure that the *Target machine* and the *Source machine* are registered to the same Recovery Services vault.
+3. Click **Recover Data** to initiate the workflow.
 
-    ![Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/recover.png)
+    ![Recover Data](./media/backup-azure-restore-windows-server/recover.png)
 
-4. Wählen Sie **Anderer Server**
+4. Select **Another server**
 
-    ![Anderer Server](./media/backup-azure-restore-windows-server/anotherserver.png)
+    ![Another Server](./media/backup-azure-restore-windows-server/anotherserver.png)
 
-5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor* entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor entspricht.
+5. Provide the vault credential file that corresponds to the *Sample vault*. If the vault credential file is invalid (or expired) download a new vault credential file from the *Sample vault* in the Azure portal. Once the vault credential file is provided, the Recovery Services vault against the vault credential file is displayed.
 
-6. Wählen Sie den *Quellcomputer* aus der Liste der angezeigten Computer aus.
+6. Select the *Source machine* from the list of displayed machines.
 
-    ![Liste der Computer](./media/backup-azure-restore-windows-server/machinelist.png)
+    ![List of machines](./media/backup-azure-restore-windows-server/machinelist.png)
 
-7. Wählen Sie entweder die Option **Dateien suchen** oder **Dateien durchsuchen**. In diesem Abschnitt verwenden wir die Option **Dateien suchen**.
+7. Select either the **Search for files** or **Browse for files** option. For the purpose of this section, we will use the **Search for files** option.
 
-    ![Suchen,](./media/backup-azure-restore-windows-server/search.png)
+    ![Search](./media/backup-azure-restore-windows-server/search.png)
 
-8. Wählen Sie im nächsten Bildschirm das Volume und das Datum aus. Suchen Sie nach den Ordner-/Dateinamen, die Sie wiederherstellen möchten.
+8. Select the volume and date in the next screen. Search for the folder/file name you want to restore.
 
-    ![Elemente suchen](./media/backup-azure-restore-windows-server/searchitems.png)
+    ![Search items](./media/backup-azure-restore-windows-server/searchitems.png)
 
-9. Wählen Sie den Speicherort aus, an dem die Dateien wiederhergestellt werden sollen.
+9. Select the location where the files need to be restored.
 
-    ![Wiederherstellungsspeicherort](./media/backup-azure-restore-windows-server/restorelocation.png)
+    ![Restore location](./media/backup-azure-restore-windows-server/restorelocation.png)
 
-10. Geben Sie die Verschlüsselungspassphrase an, die während der Registrierung des *Quellcomputers* beim *Beispieltresor* bereitgestellt wurde.
+10. Provide the encryption passphrase that was provided during *Source machine’s* registration to *Sample vault*.
 
-    ![Verschlüsselung](./media/backup-azure-restore-windows-server/encryption.png)
+    ![Encryption](./media/backup-azure-restore-windows-server/encryption.png)
 
-11. Klicken Sie nach dem Bereitstellen der Eingabe auf **Wiederherstellen**. Die Wiederherstellung der gesicherten Dateien am angegebenen Ziel wird ausgelöst.
+11. Once the input is provided, click **Recover**, which triggers the restore of the backed up files to the destination provided.
 
-## Nächste Schritte
-- Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).
+## <a name="next-steps"></a>Next steps
+- Now that you've recovered your files and folders, you can [manage your backups](backup-azure-manage-windows-server.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

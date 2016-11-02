@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Aktivieren der Überwachung für SQL-Datenbanken in Azure Security Center | Microsoft Azure"
-   description="In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Aktivieren der Überwachung für SQL-Datenbanken“ umsetzen."
+   pageTitle="Enable auditing on SQL databases in Azure Security Center | Microsoft Azure"
+   description="This document shows you how to implement the Azure Security Center recommendation **Enable auditing on SQL databases**."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,48 +13,56 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/29/2016"
+   ms.date="11/01/2016"
    ms.author="terrylan"/>
 
-# Aktivieren der Überwachung von SQL-Datenbanken in Azure Security Center
 
-Azure Security Center empfiehlt Ihnen, die Überwachung für alle SQL-Datenbanken zu aktivieren, sofern noch nicht erfolgt. Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
+# <a name="enable-auditing-on-sql-databases-in-azure-security-center"></a>Enable auditing on SQL databases in Azure Security Center
 
-Nachdem Sie die Überwachung aktiviert haben, können Sie Einstellungen für die Bedrohungserkennung und E-Mails zum Empfangen von Sicherheitswarnungen konfigurieren. Die Bedrohungserkennung erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Dadurch können Sie potenzielle Bedrohungen erkennen und darauf reagieren, sobald sie auftreten.
+Azure Security Center will recommend that you turn on auditing for all SQL databases if auditing is not already enabled. Auditing can help you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations.
 
-Diese Empfehlung gilt für nur den Azure SQL-Dienst und nicht für auf Ihren virtuellen Computern ausgeführtes SQL Server.
+Once you’ve turned on auditing you can configure Threat Detection settings and emails to receive security alerts. Threat Detection detects anomalous database activities indicating potential security threats to the database. This enables you to detect and respond to potential threats as they occur.
 
-> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+This recommendation applies to the Azure SQL service only; doesn't include SQL running on your virtual machines.
 
-## Implementieren der Empfehlung
+> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
 
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Überwachung für SQL-Datenbanken aktivieren** aus. Daraufhin wird das Blatt **Überwachung für SQL-Datenbanken aktivieren** geöffnet. ![Überwachung für SQL-Datenbanken aktivieren][1]
+## <a name="implement-the-recommendation"></a>Implement the recommendation
 
-2. Wählen Sie eine SQL-Datenbank aus, für die die Überwachung aktiviert werden soll. Daraufhin wird das Blatt **Überwachung und Bedrohungserkennung** geöffnet. ![Überwachung und Bedrohungserkennung][2]
-3. Wählen Sie auf dem Blatt **Überwachung und Bedrohungserkennung** unter **Überwachung** die Option **EIN** aus. ![Überwachung und Bedrohungserkennung aktivieren][3]
+1. In the **Recommendations** blade, select **Enable Auditing on SQL databases**.  This opens the **Enable Auditing on SQL databases** blade.
+![Enable auditing on SQL databases][1]
+
+2. Select a SQL database to enable auditing on. This opens the **Auditing & Threat detection** blade.
+![Auditing and threat detection][2]
+3. On the **Auditing & Threat detection** blade, select **ON** under **Auditing**.
+![Turn on auditing and threat detection][3]
 
 
-5. Führen Sie die Schritte in [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](../sql-database/sql-database-threat-detection-get-started.md) aus, um die Bedrohungserkennung zu aktivieren und zu konfigurieren und die Liste der E-Mail-Empfänger einzurichten, die bei Erkennung ungewöhnlicher Aktivitäten Sicherheitswarnungen erhalten.
+5. Follow the steps in [Get started with SQL Database Threat Detection](../sql-database/sql-database-threat-detection-get-started.md) to turn on and configure Threat Detection and to configure the list of emails that will receive security alerts upon detection of anomalous activities.
 
-## Weitere Informationen
+## <a name="see-also"></a>See also
 
-In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Aktivieren der Überwachung für SQL-Datenbanken“ umsetzen. Weitere Informationen zum Schützen Ihrer SQL-Datenbank finden Sie unter:
+This article showed you how to implement the Security Center recommendation "Enable auditing on SQL databases." To learn more about securing your SQL database, see the following:
 
-- [Sichern der SQL-Datenbank](../sql-database/sql-database-security.md)
+- [Securing your SQL Database](../sql-database/sql-database-security.md)
 
-Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+To learn more about Security Center, see the following:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
-- [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
-- [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Get the latest Azure security news and information.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-databases/enable-auditing-on-sql-databases.png
-[2]: ./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection.png
+[2]:./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection.png
 [3]: ./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection-blade.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

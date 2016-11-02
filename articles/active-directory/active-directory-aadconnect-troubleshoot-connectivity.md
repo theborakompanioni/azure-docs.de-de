@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="11/01/2016"
     ms.author="billmath"/>
 
 
@@ -167,13 +167,13 @@ Die Authentifizierung war erfolgreich. Es konnten keine Unternehmensinformatione
 ### <a name="retrievedomains"></a>RetrieveDomains
 Die Authentifizierung war erfolgreich. Es konnten keine Domäneninformationen aus Azure AD abgerufen werden.
 
-## <a name="troubleshooting-steps-for-previous-releases."></a>Schritte zur Problembehandlung für frühere Versionen.
+## <a name="troubleshooting-steps-for-previous-releases"></a>Schritte zur Problembehandlung für frühere Versionen.
 Ab Build 1.1.105.0 (veröffentlicht im Februar 2016) wurde der Anmelde-Assistent eingestellt. Dieser Abschnitt und die Konfiguration sind eigentlich nicht mehr erforderlich, werden aber als Referenz beibehalten.
 
 Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfiguriert werden. Verwenden Sie dazu [**netsh**](active-directory-aadconnect-prerequisites.md#connectivity)zu finden.  
 ![netsh](./media/active-directory-aadconnect-troubleshoot-connectivity/netsh.png)
 
-### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Der Anmelde-Assistent wurde nicht richtig konfiguriert
+### <a name="the-signin-assistant-has-not-been-correctly-configured"></a>Der Anmelde-Assistent wurde nicht richtig konfiguriert
 Dieser Fehler tritt auf, wenn der Anmelde-Assistent den Proxy nicht erreichen kann oder der Proxy die Anfrage nicht zulässt.
 ![nonetsh](./media/active-directory-aadconnect-troubleshoot-connectivity/nonetsh.png)
 
