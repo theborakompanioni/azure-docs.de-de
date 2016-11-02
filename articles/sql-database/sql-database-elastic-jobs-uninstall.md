@@ -1,72 +1,67 @@
 <properties 
-    pageTitle="How to uninstall elastic database jobs tool" 
-    description="How to uninstall the elastic database jobs tool" 
-    services="sql-database" 
-    documentationCenter="" 
-    manager="jhubbard" 
-    authors="ddove" 
-    editor=""/>
+	pageTitle="So deinstallieren Sie das Tool für elastische Datenbankaufträge" 
+	description="So deinstallieren Sie das Tool für elastische Datenbankaufträge" 
+	services="sql-database" 
+	documentationCenter="" 
+	manager="jhubbard" 
+	authors="ddove" 
+	editor=""/>
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/24/2016" 
-    ms.author="ddove"/>
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/27/2016" 
+	ms.author="ddove"/>
 
+#Deinstallieren von Komponenten der Aufträge für die elastische Datenbank
+Komponenten der **Aufträge für die elastische Datenbank** können wahlweise mithilfe des Portals oder von PowerShell deinstalliert werden.
 
-#<a name="uninstall-elastic-database-jobs-components"></a>Uninstall Elastic Database jobs components
-**Elastic Database jobs** components can be uninstalled using either the Portal or PowerShell.
+##Deinstallieren von Komponenten der Aufträge für die elastische Datenbank mithilfe des Azure-Portals
 
-##<a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Uninstall Elastic Database jobs components using the Azure portal
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
+2. Navigieren Sie zu dem Abonnement, das die Komponenten der **Aufträge für die elastische Datenbank** enthält, also dem Abonnement, in dem die Komponenten der Aufträge für die elastische Datenbank installiert wurden.
+3. Klicken Sie auf **Durchsuchen** und dann auf **Ressourcengruppen**.
+4. Wählen Sie die Ressourcengruppe mit dem Namen "\_\_ElasticDatabaseJob".
+5. Löschen Sie die Ressourcengruppe.
 
-1. Open the [Azure portal](https://portal.azure.com/).
-2. Navigate to the subscription that contains **Elastic Database jobs** components, namely the subscription in which Elastic Database jobs components were installed.
-3. Click **Browse** and click **Resource groups**.
-4. Select the resource group named "__ElasticDatabaseJob".
-5. Delete the resource group.
+##Deinstallieren von Komponenten der Aufträge für die elastische Datenbank mithilfe von PowerShell
 
-##<a name="uninstall-elastic-database-jobs-components-using-powershell"></a>Uninstall  Elastic Database jobs components using PowerShell
+1.	Öffnen Sie ein Microsoft Azure PowerShell-Befehlsfenster, und navigieren Sie zum Unterverzeichnis „tools“ im Ordner „Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x“: Geben Sie **cd tools** ein.
 
-1.  Launch a Microsoft Azure PowerShell command window and navigate to the tools sub-directory under the Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x folder: Type **cd tools**.
+		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+2.	Führen Sie das PowerShell-Skript „.\\UninstallElasticDatabaseJobs.ps1“ aus.
 
-2.  Execute the .\UninstallElasticDatabaseJobs.ps1 PowerShell script.
+		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\UninstallElasticDatabaseJobs.ps1
+		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\UninstallElasticDatabaseJobs.ps1
 
-        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\UninstallElasticDatabaseJobs.ps1
-        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\UninstallElasticDatabaseJobs.ps1
+Oder führen Sie alternativ einfach das folgende Skript aus, unter der Voraussetzung, dass bei der Installation der Komponenten die Standardwerte übernommen wurden:
 
-Or simply, execute the following script, assuming default values where used on installation of the components:
+		$ResourceGroupName = "__ElasticDatabaseJob"
+		Switch-AzureMode AzureResourceManager
+		
+		$resourceGroup = Get-AzureResourceGroup -Name $ResourceGroupName
+		if(!$resourceGroup)
+		{
+		    Write-Host "The Azure Resource Group: $ResourceGroupName has already been deleted.  Elastic database job components are uninstalled."
+		    return
+		}
+		
+		Write-Host "Removing the Azure Resource Group: $ResourceGroupName.  This may take a few minutes.”
+		Remove-AzureResourceGroup -Name $ResourceGroupName -Force
+		Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
 
-        $ResourceGroupName = "__ElasticDatabaseJob"
-        Switch-AzureMode AzureResourceManager
-        
-        $resourceGroup = Get-AzureResourceGroup -Name $ResourceGroupName
-        if(!$resourceGroup)
-        {
-            Write-Host "The Azure Resource Group: $ResourceGroupName has already been deleted.  Elastic database job components are uninstalled."
-            return
-        }
-        
-        Write-Host "Removing the Azure Resource Group: $ResourceGroupName.  This may take a few minutes.”
-        Remove-AzureResourceGroup -Name $ResourceGroupName -Force
-        Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
+## Nächste Schritte
 
-## <a name="next-steps"></a>Next steps
+Informationen zur erneuten Installation von Aufträgen für die elastische Datenbank finden Sie unter [Installieren des Diensts für Aufträge für die elastische Datenbank](sql-database-elastic-jobs-service-installation.md).
 
-To re-install Elastic Database jobs, see [Installing the Elastic Database job service](sql-database-elastic-jobs-service-installation.md)
-
-For an overview of Elastic Database jobs, see [Elastic Database jobs overview](sql-database-elastic-jobs-overview.md).
+Weitere Informationen zu Aufträgen für die elastische Datenbank finden Sie unter [Übersicht über Aufträge für die elastische Datenbank](sql-database-elastic-jobs-overview.md).
 
 <!--Image references-->
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

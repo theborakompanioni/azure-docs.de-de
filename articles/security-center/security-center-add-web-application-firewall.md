@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Add a web application firewall in Azure Security Center | Microsoft Azure"
-   description="This document shows you how to implement the Azure Security Center recommendations **Add a web application firewall** and **Finalize application protection**."
+   pageTitle="Hinzufügen einer Web Application Firewall in Azure Security Center | Microsoft Azure"
+   description="In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen **Web Application Firewall hinzufügen** und **Finalize application protection** (Anwendungsschutz abschließen) implementieren."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,73 +13,62 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/01/2016"
+   ms.date="07/29/2016"
    ms.author="terrylan"/>
 
+# Hinzufügen einer Web Application Firewall in Azure Security Center
 
-# <a name="add-a-web-application-firewall-in-azure-security-center"></a>Add a web application firewall in Azure Security Center
+In Azure Security Center wird unter Umständen empfohlen, dass Sie zum Schutz Ihrer Webanwendungen eine Web Application Firewall (WAF) von einem Microsoft-Partner hinzufügen. In diesem Dokument sehen wir uns ein Beispiel zu dieser Vorgehensweise an.
 
-Azure Security Center may recommend that you add a web application firewall (WAF) from a Microsoft partner in order to secure your web applications. This document walks you through an example of how to do this.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
-> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
+## Implementieren der Empfehlung
 
-## <a name="implement-the-recommendation"></a>Implement the recommendation
+1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Webanwendung mit Web Application Firewall sichern**. ![Sichere Webanwendung][1]
 
-1. In the **Recommendations** blade, select **Secure web application using web application firewall**.
-![Secure web Application][1]
+2. Wählen Sie auf dem Blatt **Webanwendungen mit Web Application Firewall sichern** eine Webanwendung aus. Das Blatt **Web Application Firewall hinzufügen** wird geöffnet. ![Web Application Firewall hinzufügen][2]
+3. Sie können eine vorhandene Web Application Firewall verwenden oder eine neue erstellen. In diesem Beispiel sind keine vorhandenen WAFs verfügbar, daher erstellen wir eine neue WAF.
 
-2. In the **Secure your web applications using web application firewall** blade, select a web application. The **Add a Web Application Firewall** blade opens.
-![Add a web application firewall][2]
-3. You can choose to use an existing web application firewall if available or you can create a new one. In this example there are no existing WAFs available so we'll create a new WAF.
+4. Wählen Sie zum Erstellen einer neuen WAF eine Lösung aus der Liste der angezeigten Partner aus. In diesem Beispiel wählen wir **Barracuda Web Application Firewall** aus.
+5. Auf dem dann geöffneten Blatt **Barracuda Web Application Firewall** werden Informationen zu dieser Partnerlösung angezeigt. Klicken Sie auf dem Informationsblatt auf **Erstellen**. ![Blatt mit Firewallinformationen][3]
 
-4. To create a new WAF, select a solution from the list of integrated partners. In this example we will select **Barracuda Web Application Firewall**.
-5. The **Barracuda Web Application Firewall** blade opens providing you information about the partner solution. Select **Create** in the information blade.
-![Firewall information blade][3]
+6. Das Blatt **New Web Application Firewall** wird geöffnet, auf dem Sie Schritte zur **VM-Konfiguration** ausführen und **WAF-Informationen** bereitstellen können. Wählen Sie **VM-Konfiguration** aus.
 
-6. The **New Web Application Firewall** blade opens, where you can perform **VM Configuration** steps and provide **WAF Information**. Select **VM Configuration**.
+7. Auf dem Blatt **VM-Konfiguration** können Sie Informationen eingeben, die erforderlich sind, um den virtuellen Computer einzurichten, auf dem die WAF ausgeführt wird. ![Konfiguration des virtuellen Computers][4]
+8. Kehren Sie zum Blatt **New Web Application Firewall** zurück, und wählen Sie **WAF-Informationen**. Auf dem Blatt **WAF-Informationen** können Sie die WAF selbst konfigurieren. In Schritt 7 können Sie den virtuellen Computer konfigurieren, auf dem die WAF ausgeführt wird, und in Schritt 8 können Sie die WAF selbst bereitstellen.
 
-7. In the **VM Configuration** blade you enter information required to spin up the virtual machine that will run the WAF.
-![VM configuration][4]
-8. Return to the **New Web Application Firewall** blade and select **WAF Information**. In the **WAF Information** blade you configure the WAF itself. Step 7 allows you to configure the virtual machine on which the WAF will run and step 8 enables you to provision the WAF itself.
+## Finalize application protection (Anwendungsschutz abschließen)
 
-## <a name="finalize-application-protection"></a>Finalize application protection
+1. Kehren Sie zum Blatt **Empfehlungen** zurück. Ein neuer Eintrag wurde generiert, nachdem Sie die WAF erstellt haben: **Finalize application protection** (Anwendungsschutz abschließen). Aufgrund dieses Eintrags wissen Sie, dass Sie den Prozess der eigentlichen „Verdrahtung“ der WAF in Azure Virtual Network abschließen müssen, damit die Anwendung geschützt werden kann. ![Finalize application protection (Anwendungsschutz abschließen)][5]
 
-1. Return to the **Recommendations** blade. A new entry was generated after you created the WAF, called **Finalize application protection**. This entry lets you know that you need to complete the process of actually wiring up the WAF within the Azure Virtual Network so that it can protect the application.
-![Finalize application protection][5]
+2. Wählen Sie **Finalize application protection** (Anwendungsschutz abschließen). Ein neues Blatt wird geöffnet. Sie sehen, dass eine Webanwendung vorhanden ist, für die der Datenverkehr umgeleitet muss.
+3. Wählen Sie die Webanwendung aus. Es wird ein Blatt geöffnet, in dem Sie Schritte zum Abschließen des Web Application Firewall-Setups ausführen können. Führen Sie die Schritte aus, und wählen Sie dann **Datenverkehr einschränken** aus. Security Center führt die Verdrahtung dann für Sie durch. ![Datenverkehr einschränken][6]
 
-2. Select **Finalize application protection**. A new blade opens. You can see that there is a web application that needs to have its traffic rerouted.
-3. Select the web application. A blade opens that gives you steps for finalizing the web application firewall setup. Complete the steps, and then select **Restrict traffic**. Security Center will then do the wiring-up for you.
-![Restrict traffic][6]
+> [AZURE.NOTE] Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. WAF-Geräte (erstellt mit dem Ressourcen-Manager-Bereitstellungsmodell) müssen in einem separaten virtuellen Netzwerk bereitgestellt werden. WAF-Geräte (erstellt mit dem klassischen Bereitstellungsmodell) sind auf die Verwendung einer Netzwerksicherheitsgruppe beschränkt. Diese Unterstützung wird in Zukunft auf eine vollständig angepasste Bereitstellung eines WAF-Geräts (klassisch) erweitert. Erfahren Sie mehr über das [klassische und das Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) für Azure-Ressourcen.
 
-> [AZURE.NOTE] You can protect multiple web applications in Security Center by adding these applications to your existing WAF deployments. WAF appliances (created using the Resource Manager deployment model) need to be deployed to a separate virtual network. WAF appliances (created using the classic deployment model) are restricted to using a network security group. This support will be extended to a fully customized deployment of a WAF appliance (classic) in the future. Learn more about the [classic and Resource Manager deployment models](../azure-classic-rm.md) for Azure resources.
+Die Protokolle dieser WAF sind nun vollständig integriert. Security Center kann automatisch beginnen, die Protokolle zu sammeln und zu analysieren, damit Sie wichtige Sicherheitswarnungen erhalten können.
 
-The logs from that WAF are now fully integrated. Security Center can start automatically gathering and analyzing the logs so that it can surface important security alerts to you.
+## Weitere Informationen
 
-## <a name="see-also"></a>See also
+In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Web Application Firewall hinzufügen“ implementieren. Weitere Informationen zum Konfigurieren einer Web Application Firewall finden Sie im folgenden Artikel:
 
-This document showed you how to implement the Security Center recommendation "Add a web application." To learn more about configuring a web application firewall, see the following:
+- [Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
 
-- [Configuring a Web Application Firewall (WAF) for App Service Environment](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
+Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-To learn more about Security Center, see the following:
-
-- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
-- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+- [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-add-web-application-firewall/secure-web-application.png
-[2]:./media/security-center-add-web-application-firewall/add-a-waf.png
+[2]: ./media/security-center-add-web-application-firewall/add-a-waf.png
 [3]: ./media/security-center-add-web-application-firewall/info-blade.png
 [4]: ./media/security-center-add-web-application-firewall/select-vm-config.png
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->
