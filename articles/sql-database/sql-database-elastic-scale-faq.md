@@ -1,59 +1,64 @@
 <properties 
-	pageTitle="FAQ zur elastischen Skalierung von Azure SQL | Microsoft Azure" 
-	description="Häufig gestellte Fragen zur Elastic Scale-Funktion der Azure SQL-Datenbank." 
-	services="sql-database" 
-	documentationCenter="" 
-	manager="jhubbard" 
-	authors="ddove" 
-	editor=""/>
+    pageTitle="Azure SQL Elastic Scale FAQ | Microsoft Azure" 
+    description="Frequently Asked Questions about Azure SQL Database Elastic Scale." 
+    services="sql-database" 
+    documentationCenter="" 
+    manager="jhubbard" 
+    authors="ddove" 
+    editor=""/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/03/2016" 
-	ms.author="ddove"/>
+    ms.service="sql-database" 
+    ms.workload="sql-database" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/24/2016" 
+    ms.author="ddove"/>
 
-# Tools für elastische Datenbanken – Häufig gestellte Fragen 
 
-#### Wie wird der Shardingschlüssel für die Schemainformationen mit Daten aufgefüllt, wenn eine Einzelinstanz pro Shard und kein Shardingschlüssel verwendet wird?
+# <a name="elastic-database-tools-faq"></a>Elastic database tools FAQ 
 
-Das Schemainformationenobjekt wird zum Aufteilen von Zusammenführungsszenarien verwendet. Wenn eine Anwendung prinzipiell eine Einzelinstanz darstellt, ist das Split-Merge-Tool nicht erforderlich. Daher besteht auch keine Notwendigkeit, das Schemainformationenobjekt mit Daten aufzufüllen.
+#### <a name="if-i-have-a-singletenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>If I have a single-tenant per shard and no sharding key, how do I populate the sharding key for the schema info?
 
-#### Ich habe eine Datenbank bereitgestellt und verfüge bereits über einen Shard-Zuordnungs-Manager. Wie registriere ich diese neue Datenbank als Shard?
+The schema info object is only used to split merge scenarios. If an application is inherently single-tenant, then it does not require the Split Merge tool and thus there is no need to populate the schema info object.
 
-Weitere Informationen finden Sie unter **[Hinzufügen eines Shard zu einer Anwendung mithilfe der Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-add-a-shard.md)**.
+#### <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>I’ve provisioned a database and I already have a Shard Map Manager, how do I register this new database as a shard?
 
-#### Was kosten Tools für elastische Datenbanken?
+Please see **[Adding a shard to an application using the elastic database client library](sql-database-elastic-scale-add-a-shard.md)**. 
 
-Für die Verwendung der Clientbibliothek für elastische Datenbanken fallen keine Kosten an. Es entstehen nur Kosten für die Azure SQL-Datenbanken, die Sie für Shards verwenden, und für den Shard-Zuordnungs-Manager sowie für die Web-/Workerrollen, die für das Split-Merge-Tool bereitgestellt werden.
+#### <a name="how-much-do-elastic-database-tools-cost"></a>How much do elastic database tools cost?
 
-#### Warum funktionieren meine Anmeldeinformationen nicht, wenn ich einen Shard von einem anderen Server hinzufüge?
-Verwenden Sie keine Anmeldeinformationen im Format "Benutzer-ID=benutzername@servername", sondern einfach "Benutzer-ID = benutzername". Stellen Sie außerdem sicher, dass die Anmeldung "benutzername" über Berechtigungen für den Shard verfügt.
+Using the elastic database client library does not incur any costs. Costs accrue only for the Azure SQL databases that you use for shards and the Shard Map Manager, as well as the web/worker roles you provision for the Split Merge tool.
 
-#### Muss ich bei jedem Starten meiner Anwendung einen Shard-Zuordnungs-Manager erstellen und Shards mit Daten auffüllen?
+#### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Why are my credentials not working when I add a shard from a different server?
+Do not use credentials in the form of “User ID=username@servername”, instead simply use “User ID = username”.  Also, be sure that the “username” login has permissions on the shard.
 
-Nein. Das Erstellen eines Shard-Zuordnungs-Managers (Beispiel: **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) ist ein einmaliger Vorgang. Ihre Anwendung sollte den Aufruf **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** beim Start der Anwendung verwenden. Pro Anwendungsdomäne sollte nur ein solcher Aufruf erfolgen.
+#### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Do I need to create a Shard Map Manager and populate shards every time I start my applications?
 
-#### Ich habe Fragen zur Verwendung von Tools für elastische Datenbanken. Wie erhalte ich Antworten? 
+No—the creation of the Shard Map Manager (for example, **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) is a one-time operation.  Your application should use the call **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** at application start-up time.  There should only one such call per application domain.
 
-Wenden Sie sich bitte im [Azure SQL-Datenbankforum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) an uns.
+#### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>I have questions about using elastic database tools, how do I get them answered? 
 
-#### Wenn ich eine Datenbankverbindung mithilfe eines Shardingschlüssels abrufe, kann ich weiterhin Daten für andere Shardingschlüssel auf dem gleichen Shard abfragen. Ist dies beabsichtigt?
+Please reach out to us on the [Azure SQL Database forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
 
-Die APIs für elastische Skalierung stellen Ihnen eine Verbindung mit der richtigen Datenbank für Ihren Shardingschlüssel zur Verfügung, jedoch keine Filterung von Shardingschlüsseln. Fügen Sie Ihrer Abfrage bei Bedarf **WHERE**-Klauseln hinzu, um den Bereich für den bereitgestellten Shardingschlüssel einzuschränken.
+#### <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard-is-this-by-design"></a>When I get a database connection using a sharding key, I can still query data for other sharding keys on the same shard.  Is this by design?
 
-#### Kann ich eine andere Azure-Datenbankedition für jeden Shard in meiner Shardsammlung verwenden?
+The Elastic Scale APIs give you a connection to the correct database for your sharding key, but do not provide sharding key filtering.  Add **WHERE** clauses to your query to restrict the scope to the provided sharding key, if necessary.
 
-Ja, das ist möglich. Ein Shard ist eine einzelne Datenbank, daher kann ein Shard z. B. eine Premium-Edition verwenden, ein anderer eine Standard-Edition. Außerdem kann die Edition eines Shards während der Lebensdauer eines Shards mehrmals horizontal oder vertikal skaliert werden.
+#### <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Can I use a different Azure Database edition for each shard in my shard set?
 
-#### Stellt das Split-Merge-Tool eine Datenbank während eines Aufteilungs- oder Zusammenführungsvorgangs bereit bzw. löscht sie? 
+Yes, a shard is an individual database, and thus one shard could be a Premium edition while another be a Standard edition. Further, the edition of a shard can scale up or down multiple times during the lifetime of the shard.
 
-Nein. Bei **split**-Vorgängen muss die Zieldatenbank mit dem entsprechenden Schema vorhanden und beim Shard-Zuordnungs-Manager registriert sein. Für **merge**-Vorgänge müssen Sie den Shard aus dem Shard-Zuordnungs-Manager löschen und dann die Datenbank löschen.
+#### <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Does the Split Merge tool provision (or delete) a database during a split or merge operation? 
+
+No. For **split** operations, the target database must exist with the appropriate schema and be registered with the Shard Map Manager.  For **merge** operations, you must delete the shard from the shard map manager and then delete the database.
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+
