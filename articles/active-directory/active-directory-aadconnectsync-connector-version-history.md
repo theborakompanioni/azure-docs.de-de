@@ -14,9 +14,10 @@
    ms.tgt_pltfrm="na"
    ms.workload="identity"
    ms.date="08/17/2016"
-   ms.author="andkjell"/>
+   ms.author="billmath"/>
 
-# Connector – Versionsveröffentlichungsverlauf
+
+# <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
 Die Connectors für Forefront Identity Manager (FIM) und Microsoft Identity Manager (MIM) werden regelmäßig aktualisiert.
 
 >[AZURE.NOTE]
@@ -33,10 +34,11 @@ Verwandte Links:
 - [PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md) – Referenzdokumentation
 - [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
 
-## 1\.1.117.0
+## <a name="1.1.117.0"></a>1.1.117.0
 Veröffentlicht März 2016
 
-**Neuer Connector** Erste Version des [generischen SQL-Connectors](active-directory-aadconnectsync-connector-genericsql.md)
+**Neuer Connector**  
+Erste Version des [Generischer SQL-Connector](active-directory-aadconnectsync-connector-genericsql.md)
 
 **Neue Features:**
 
@@ -61,7 +63,7 @@ Veröffentlicht März 2016
     - Ein Export, der einer Gruppe Elemente sowohl hinzufügte als auch aus ihr entfernte, exportierte nur die hinzugefügten Elemente.
     - Ist ein Notes-Dokument ungültig (weil FALSE für das Attribut „isValid“ festgelegt ist), kann der Connector keine Verbindung herstellen.
 
-## Ältere Versionen
+## <a name="older-releases"></a>Ältere Versionen
 Vor März 2016 wurden die Connectors als Support-Themen veröffentlicht.
 
 **Generisches LDAP**
@@ -85,13 +87,17 @@ Vor März 2016 wurden die Connectors als Support-Themen veröffentlicht.
 - [KB3096533](https://support.microsoft.com/kb/3096533) -1.0.0597, September 2015
 - [KB3044895](https://support.microsoft.com/kb/3044895) -1.0.0549, 2015 März
 - [KB2977286](https://support.microsoft.com/kb/2977286) -5.3.0712, August 2014
-- [KB2932635](https://support.microsoft.com/kb/2932635) -5.3.1003, Februar 2014
+- [KB2932635](https://support.microsoft.com/kb/2932635) -5.3.1003, Februar 2014  
 - [KB2899874](https://support.microsoft.com/kb/2899874) -5.3.0721, Oktober 2013
 - [KB2875551](https://support.microsoft.com/kb/2875551) -5.3.0534, August 2013
 
-## Nächste Schritte
-Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

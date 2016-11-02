@@ -16,11 +16,12 @@ ms.workload="big-data"
 ms.date="09/27/2016"
 ms.author="larryfr"/>
 
-#Verwenden einer benutzerdefinierten Java-Funktion in HDInsight
+
+#<a name="use-a-java-udf-with-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion in HDInsight
 
 Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird aber eine allgemeinere Sprache benötigt. Hive ermöglicht Ihnen die Erstellung benutzerdefinierter Funktionen (User Defined Functions, UDF) mithilfe einer Vielzahl von Programmiersprachen. In diesem Dokument erfahren Sie, wie Sie eine Java-UDF in Hive verwenden.
 
-## Anforderungen
+## <a name="requirements"></a>Anforderungen
 
 * Ein Azure-Abonnement
 
@@ -36,7 +37,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
 
     > [AZURE.IMPORTANT] Wenn Sie einen Linux-basierten HDInsight-Server verwenden, aber die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen des CR-Zeichens mithilfe von Hilfsprogrammen für den HDInsight-Cluster.
 
-## Erstellen Sie einer Beispiel-UDF
+## <a name="create-an-example-udf"></a>Erstellen Sie einer Beispiel-UDF
 
 1. Geben Sie an der Befehlszeile Folgendes an, um ein neues Maven-Projekt zu erstellen:
 
@@ -44,7 +45,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
 
     > [AZURE.NOTE] Wenn Sie PowerShell verwenden, müssen Sie die Parameter in Anführungszeichen setzen. Beispiel: `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
 
-    Dadurch wird ein neues Verzeichnis namens __exampleudf__ erstellt, welches das Maven-Projekt enthält.
+    Dadurch wird ein neues Verzeichnis namens __exampleudf__erstellt, welches das Maven-Projekt enthält.
 
 2. Nachdem das Projekt erstellt wurde, löschen Sie das Verzeichnis __exampleudf/src/test__, das als Teil des Projekts erstellt wurde. Es wird in diesem Beispiel nicht verwendet.
 
@@ -65,7 +66,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
             </dependency>
         </dependencies>
 
-    Diese Einträge geben die Version von Hadoop und Hive an, die in HDInsight 3.3- und 3.4-Clustern enthalten sind. Informationen zu den in HDInsight enthaltenen Versionen von Hadoop und Hive finden Sie im Dokument zu den [Versionen von HDInsight-Komponenten](hdinsight-component-versioning.md).
+    Diese Einträge geben die Version von Hadoop und Hive an, die in HDInsight 3.3- und 3.4-Clustern enthalten sind. Informationen zu den in HDInsight enthaltenen Versionen von Hadoop und Hive finden Sie im Dokument zu den [Versionen von HDInsight-Komponenten](hdinsight-component-versioning.md) .
 
     Fügen Sie am Ende der Datei den Abschnitt `<build>` der Zeile `</project>` hinzu. Dieser Abschnitt sollte Folgendes enthalten:
 
@@ -152,13 +153,13 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
 
     Dadurch wird eine UDF implementiert, die einen Zeichenfolgenwert verwendet und die Zeichenfolge in Kleinbuchstaben zurückgibt.
 
-## Erstellen und Installieren der UDF
+## <a name="build-and-install-the-udf"></a>Erstellen und Installieren der UDF
 
 1. Führen Sie den folgenden Befehl aus, um die UDF zu kompilieren und zu packen:
 
         mvn compile package
 
-    Dadurch wird die UDF in __exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar__ erstellt und gepackt.
+    Dadurch wird die UDF in __exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar__erstellt und gepackt.
 
 2. Kopieren Sie die Datei mit dem Befehl `scp` in den HDInsight-Cluster.
 
@@ -166,7 +167,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
 
     Ersetzen Sie __myuser__ durch das SSH-Benutzerkonto für den Cluster. Ersetzen Sie __mycluster__ durch den Namen des Clusters. Wenn Sie ein Kennwort zum Schützen des SSH-Kontos verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um die Datei mit dem privaten Schlüssel anzugeben.
 
-3. Stellen Sie mithilfe von SSH eine Verbindung zum Cluster her.
+3. Stellen Sie mithilfe von SSH eine Verbindung zum Cluster her. 
 
         ssh myuser@mycluster-ssh.azurehdinsight.net
 
@@ -180,7 +181,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
 
         hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
 
-## Verwenden der UDF in Hive
+## <a name="use-the-udf-from-hive"></a>Verwenden der UDF in Hive
 
 1. Verwenden Sie den folgenden Befehl, um den Beeline-Client in der SSH-Sitzung zu starten.
 
@@ -214,10 +215,14 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
         | android  |
         +----------+--+
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Andere Möglichkeiten zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md).
 
 Weitere Informationen zu benutzerdefinierten Hive-Funktionen finden Sie im Abschnitt [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Hive-Operatoren und benutzerdefinierte Funktionen) des Hive-Wikis unter apache.org.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

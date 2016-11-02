@@ -16,15 +16,16 @@
    ms.date="08/18/2016"
    ms.author="aglick"/>
 
-#Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen
+
+#<a name="high-availability-for-applications-built-on-microsoft-azure"></a>Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen
 
 Eine hoch verfügbare Anwendung gleicht Schwankungen bei Verfügbarkeit und Last sowie vorübergehende Ausfälle in den abhängigen Diensten und Hardwarekomponenten aus. Die Anwendung funktioniert hinsichtlich der Benutzerzufriedenheit und Systemreaktion weiterhin auf einem akzeptablen Niveau, wie dies durch Geschäftsanforderungen oder Vereinbarungen zum Servicelevel (SLAs) für die Anwendung definiert ist.
 
-##Funktionen von Azure für hohe Verfügbarkeit
+##<a name="azure-high-availability-features"></a>Funktionen von Azure für hohe Verfügbarkeit
 
 Azure weist viele integrierte Plattformfunktionen auf, die hoch verfügbare Anwendungen unterstützen. In diesem Abschnitt werden einige dieser wichtigen Funktionen beschrieben. Eine umfassendere Analyse der Plattform finden Sie unter [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md).
 
-###Fabric Controller
+###<a name="fabric-controller"></a>Fabric Controller
 
 Mit dem Azure Fabric Controller wird der Zustand der Azure-Computeinstanzen bereitgestellt und überwacht. Der Fabric Controller überprüft den Status der Hardware und Software für die Host- und Gastcomputerinstanzen. Wenn ein Fehler erkannt wird, werden SLAs durch automatisches Verschieben der VM-Instanzen erzwungen. Das Konzept von Fehler- und Upgradedomänen unterstützt Compute-SLAs zusätzlich.
 
@@ -36,7 +37,7 @@ Im folgenden Diagramm sind gemeinsam genutzte Azure-Ressourcen dargestellt, die 
 
 Upgradedomänen ähneln Fehlerdomänen in der Funktionsweise, unterstützen aber Upgrades statt Fehler. Eine Upgradedomäne ist eine logische Einheit der Instanzentrennung, die festlegt, welche Instanzen in einem bestimmten Dienst zu einem bestimmten Zeitpunkt aktualisiert werden. Für Ihre gehostete Dienstbereitstellung sind standardmäßig fünf Upgradedomänen definiert. Sie können diesen Wert jedoch in der Dienstdefinitionsdatei ändern. Angenommen, Sie nutzen acht Instanzen Ihrer Webrolle. Es gibt zwei Instanzen in drei Upgradedomänen sowie zwei Instanzen in einer Upgradedomäne. Azure definiert die Updatesequenz, aber die Basis ist die Anzahl von Upgradedomänen. Weitere Informationen zu Upgradedomänen finden Sie unter [Aktualisieren eines Clouddiensts](../cloud-services/cloud-services-update-azure-service.md).
 
-###Funktionen in anderen Diensten
+###<a name="features-in-other-services"></a>Funktionen in anderen Diensten
 
 Zusätzlich zu den Plattformfunktionen, die eine hohe Computeverfügbarkeit unterstützen, bettet Azure Hochverfügbarkeitsfunktionen in die anderen Dienste ein. Beispielsweise werden drei Replikate aller Blob-, Tabellen- und Warteschlangendaten von Azure Storage gespeichert. Zudem gibt es die Option der Georeplikation, um Sicherungen von Blobs und Tabellen in einer sekundären Region zu speichern. Das Azure Content Delivery Network ermöglicht die Zwischenspeicherung von Blobs auf der ganzen Welt, um sowohl Redundanz und Skalierbarkeit sicherzustellen. In Azure SQL-Datenbank werden auch mehrere Replikate gespeichert.
 
@@ -45,12 +46,12 @@ Zusätzlich zu den Artikeln der Reihe [Technischer Leitfaden zur Resilienz in Az
 Obwohl Azure mehrere Funktionen zur Unterstützung einer hohen Verfügbarkeit bereitstellt, ist es wichtig, die Grenzen dieser Funktionen zu kennen:
 
 - Azure garantiert, dass Ihre Rollen verfügbar sind und ausgeführt werden, hat jedoch keine Kenntnis darüber, ob Ihre Anwendung ausgeführt wird oder überlastet ist.
-- Für Azure SQL-Datenbank werden Daten synchron innerhalb der Region repliziert. Sie können die aktive Georeplikation auswählen, bei der bis zu vier zusätzliche Datenbankkopien in derselben Region (oder verschiedenen Regionen) zulässig sind. Diese Datenbankreplikate sind keine Point-in-Time-Sicherungen. SQL-Datenbanken verfügen über Funktionen für Point-in-Time-Sicherungen. Weitere Informationen zu Funktionen für Point-in-Time-Sicherungen von SQL-Datenbanken finden Sie unter [Azure SQL Database Point in Time Restore](https://azure.microsoft.com/blog/azure-sql-database-point-in-time-restore/) (Azure SQL-Datenbank – Point-in-Time-Wiederherstellung).
+- Für Azure SQL-Datenbank werden Daten synchron innerhalb der Region repliziert. Sie können die aktive Georeplikation auswählen, bei der bis zu vier zusätzliche Datenbankkopien in derselben Region (oder verschiedenen Regionen) zulässig sind. Diese Datenbankreplikate sind keine Point-in-Time-Sicherungen. SQL-Datenbanken verfügen über Funktionen für Point-in-Time-Sicherungen. Weitere Informationen zu Funktionen für Point-in-Time-Sicherungen von SQL-Datenbanken finden Sie unter [Azure SQL Database Point in Time Restore](https://azure.microsoft.com/blog/azure-sql-database-point-in-time-restore/)(Azure SQL-Datenbank – Point-in-Time-Wiederherstellung).
 - Für Azure Storage werden Tabellen- und Blobdaten standardmäßig in eine andere Region repliziert. Sie können auf die Replikate jedoch erst zugreifen, nachdem Microsoft ein Failover zum alternativen Standort durchgeführt hat. Ein Regionsfailover findet nur im Fall einer längeren regionsweiten Dienstunterbrechung statt, und es gibt keine SLA für die Dauer eines geografischen Failovers. Beachten Sie auch, dass sich jegliche Datenbeschädigungen schnell auf die Replikate ausbreiten.
 
 Daher müssen Sie die Plattformverfügbarkeitsfunktionen durch anwendungsspezifische Verfügbarkeitsfunktionen ergänzen. Zu den anwendungsspezifischen Verfügbarkeitsfunktionen gehören Blobmomentaufnahmen, um Point-in-Time-Sicherungen von Blobdaten zu erstellen.
 
-###Verfügbarkeitsgruppen für virtuelle Azure-Computer
+###<a name="availability-sets-for-azure-virtual-machines"></a>Verfügbarkeitsgruppen für virtuelle Azure-Computer
 
 Im Großteil dieses Artikels geht es um Clouddienste, die ein PaaS-Modell (Platform as a Service) verwenden. Es gibt aber auch bestimmte Verfügbarkeitsfunktionen für virtuelle Azure-Computer, die ein IaaS-Modell (Infrastructure as a Service) verwenden. Um eine hohe Verfügbarkeit für virtuelle Computer zu erzielen, müssen Sie Verfügbarkeitsgruppen verwenden. Eine Verfügbarkeitsgruppe stellt eine ähnliche Funktion für Fehler- und Upgradedomänen bereit. Innerhalb einer Verfügbarkeitsgruppe positioniert Azure die virtuellen Computer so, dass ermittelte Hardwarefehler und Wartungsaktivitäten nicht dazu führen, dass alle Computer in dieser Gruppe ausfallen. Verfügbarkeitsgruppen sind erforderlich, um die Azure-SLA für die Verfügbarkeit von virtuellen Computern zu erreichen.
 
@@ -60,11 +61,11 @@ Das folgende Diagramm zeigt eine Darstellung von zwei Verfügbarkeitsgruppen, di
 
 >[AZURE.NOTE] Im vorherigen Diagramm ist SQL Server installiert und wird auf virtuellen Computern ausgeführt. Dies unterscheidet sich von Azure SQL-Datenbank, wo eine Datenbank als verwalteter Dienst bereitgestellt wird.
 
-##Anwendungsstrategien für hohe Verfügbarkeit
+##<a name="application-strategies-for-high-availability"></a>Anwendungsstrategien für hohe Verfügbarkeit
 
 Die meisten Anwendungsstrategien für hohe Verfügbarkeit umfassen entweder Redundanz oder die Entfernung von festen Abhängigkeiten zwischen Anwendungskomponenten. Der Anwendungsentwurf sollte Fehlertoleranz während zeitweiliger Ausfälle von Azure oder Drittanbieterdiensten unterstützen. In den folgenden Abschnitten werden Anwendungsmuster zum Erhöhen der Verfügbarkeit Ihrer Clouddienste beschrieben.
 
-###Asynchrone Kommunikation und permanente Warteschlangen
+###<a name="asynchronous-communication-and-durable-queues"></a>Asynchrone Kommunikation und permanente Warteschlangen
 
 Betrachten wir die asynchrone Kommunikation zwischen lose gekoppelten Diensten zum Erhöhen der Verfügbarkeit in Azure-Anwendungen. In diesem Muster werden Nachrichten zur späteren Verarbeitung entweder an Speicherwarteschlangen oder an Azure Service Bus-Warteschlangen geschrieben. Wenn Sie die Nachricht an die Warteschlange schreiben, wird die Steuerung sofort an den Absender der Nachricht zurückgegeben. Die Nachrichtenverarbeitung, die üblicherweise als Workerrolle implementiert ist, erfolgt auf einer anderen Anwendungsebene. Wenn die Workerrolle ausfällt, werden die Nachrichten in der Warteschlange gesammelt, bis der Verarbeitungsdienst wiederhergestellt wird. Solange die Warteschlange verfügbar ist, gibt es keine direkte Abhängigkeit zwischen dem Absender im Front-End und dem Nachrichtenprozessor. Dadurch sind keine synchronen Dienstaufrufe erforderlich, die in verteilten Anwendungen einen Durchsatzengpass darstellen können.
 
@@ -72,9 +73,9 @@ Eine Variante dieses Verfahrens verwendet Azure Storage (Blobs, Tabellen, Wartes
 
 In beiden Szenarien verhindern die asynchrone Kommunikation und der temporäre Speicher, dass ein ausgefallener Back-End-Dienst zu einem Ausfall der gesamten Anwendung führt. Warteschlangen dienen als logisches Zwischenelement. Weitere Informationen zur Auswahl des richtigen Warteschlangendiensts finden Sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
 
-###Fehlererkennung und Wiederholungslogik
+###<a name="fault-detection-and-retry-logic"></a>Fehlererkennung und Wiederholungslogik
 
-Ein wichtiger Punkt beim Entwerfen von hoch verfügbaren Anwendungen ist die Verwendung einer Wiederholungslogik im Code, um einen vorübergehend ausgefallenen Dienst richtig behandeln zu können. Der vom Microsoft Patterns and Practices-Team entwickelte [Transient Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx) (Anwendungsblock zur Behandlung vorübergehender Fehler) unterstützt Anwendungsentwickler bei diesem Prozess. Der Begriff „vorübergehend“ bezeichnet einen Zustand, der nur für einen relativ kurzen Zeitraum anhält. Im Rahmen dieses Artikels ist die Behandlung von vorübergehenden Fehlern Teil der Entwicklung einer hoch verfügbaren Anwendung. Bei vorübergehenden Zuständen kann es sich beispielsweise um zeitweilige Netzwerkfehler und unterbrochene Datenbankverbindungen handeln.
+Ein wichtiger Punkt beim Entwerfen von hoch verfügbaren Anwendungen ist die Verwendung einer Wiederholungslogik im Code, um einen vorübergehend ausgefallenen Dienst richtig behandeln zu können. Der vom Microsoft Patterns and Practices-Team entwickelte [Transient Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx)(Anwendungsblock zur Behandlung vorübergehender Fehler) unterstützt Anwendungsentwickler bei diesem Prozess. Der Begriff „vorübergehend“ bezeichnet einen Zustand, der nur für einen relativ kurzen Zeitraum anhält. Im Rahmen dieses Artikels ist die Behandlung von vorübergehenden Fehlern Teil der Entwicklung einer hoch verfügbaren Anwendung. Bei vorübergehenden Zuständen kann es sich beispielsweise um zeitweilige Netzwerkfehler und unterbrochene Datenbankverbindungen handeln.
 
 Der Anwendungsblock zur Behandlung vorübergehender Fehler ist eine vereinfachte Möglichkeit, mit der Sie Fehler in Ihrem Code ordnungsgemäß behandeln können. Sie können hiermit die Verfügbarkeit Ihrer Anwendungen verbessern, indem Sie eine stabile Logik zur Behandlung vorübergehender Fehler hinzufügen. In den meisten Fällen verarbeitet die Wiederholungslogik die kurze Unterbrechung und verbindet Sender und Empfänger nach einem oder mehreren fehlgeschlagenen Versuchen erneut. Anwendungsbenutzer bemerken einen erfolgreichen Wiederholungsversuch üblicherweise nicht.
 
@@ -89,7 +90,7 @@ Die allgemeine Strategie für Ihren Code lautet wie folgt:
 
 Testen Sie die Wiederholungslogik mit simulierten Fehlern, um sicherzustellen, dass Wiederholungen bei aufeinanderfolgenden Vorgängen keine unvorhergesehenen langen Verzögerungen verursachen. Führen Sie diesen Vorgang aus, bevor Sie sich entscheiden, die Aufgabe insgesamt als fehlerhaft zu kennzeichnen.
 
-###Verweisdatenmuster für hohe Verfügbarkeit
+###<a name="reference-data-pattern-for-high-availability"></a>Verweisdatenmuster für hohe Verfügbarkeit
 
 Verweisdaten sind die schreibgeschützten Daten einer Anwendung. Diese Daten stellen den Geschäftskontext bereit, innerhalb dessen die Anwendung während eines Geschäftsvorgangs Transaktionsdaten generiert. Transaktionsdaten sind eine Point-in-Time-Funktion der Verweisdaten. Daher richtet sich die Integrität dieser Daten nach der Momentaufnahme der Verweisdaten zum Zeitpunkt der Transaktion. Diese Definition ist zwar etwas allgemein gehalten, reicht aber für den Zweck dieses Artikels aus.
 
@@ -103,7 +104,7 @@ Um die Verfügbarkeit zu erhöhen, sollten Sie Rollen auch einen Satz Verweisdat
 
 Eine Überlegung für dieses Muster ist die Bereitstellungs- und Startgeschwindigkeit für Ihre Rollen. Wenn Sie große Mengen an Verweisdaten beim Start bereitstellen oder herunterladen, kann dies die für das Starten neuer Bereitstellungen oder Rolleninstanzen erforderliche Zeitspanne erhöhen. Dieser Nachteil kann jedoch akzeptabel sein, wenn Sie dafür die Autonomie erhalten, dass die Verweisdaten für jede Rolle sofort verfügbar sind und Sie sich nicht auf externe Speicherdienste verlassen müssen.
 
-###Transaktionsdatenmuster für hohe Verfügbarkeit
+###<a name="transactional-data-pattern-for-high-availability"></a>Transaktionsdatenmuster für hohe Verfügbarkeit
 
 Transaktionsdaten sind die Daten, die von einer Anwendung in einem Geschäftskontext generiert werden. Transaktionsdaten sind eine Kombination aus den Geschäftsprozessen, die von der Anwendung implementiert werden, und den Verweisdaten, die diese Prozesse unterstützen. Beispiele für Transaktionsdaten sind Bestellungen, erweiterte Versandmitteilungen, Rechnungen und CRM-Verkaufschancen. Die auf diese Weise generierten Transaktionsdaten werden zu Buchführungszwecken oder zur weiteren Verarbeitung an externe Systeme übermittelt.
 
@@ -135,12 +136,16 @@ Beachten Sie, dass das vorherige Diagramm nur eine Implementierung dieses entkop
  * Beim endgültigen Ziel kann es sich um Azure Storage oder einen anderen Datenbankanbieter handeln.
  * Azure Cache kann auf der Webschicht verwendet werden, um die unmittelbaren Anforderungen an eine Zwischenspeicherung nach der Transaktion zu erfüllen.
 
-###Skalierbarkeitsmuster
+###<a name="scalability-patterns"></a>Skalierbarkeitsmuster
 
 Es ist wichtig zu beachten, dass sich die Skalierbarkeit des Clouddiensts direkt auf die Verfügbarkeit auswirkt. Wenn Ihr Dienst aufgrund einer erhöhten Last nicht mehr reagiert, haben die Benutzer den Eindruck, dass die Anwendung ausgefallen ist. Befolgen Sie die bewährten Methoden für die Skalierbarkeit, basierend auf der erwarteten Anwendungslast und Ihren zukünftigen Erwartungen. Eine sehr hohe Verfügbarkeit erfordert eine Vielzahl von Überlegungen, z.B. die Verwendung einzelner oder mehrerer Speicherkonten, die gemeinsame Nutzung über mehrere Datenbanken hinweg sowie Strategien für die Zwischenspeicherung. Detaillierte Einblicke in diese Muster finden Sie unter [Best Practices for the Design of Large-Scale Services on Azure Cloud Services](https://azure.microsoft.com/blog/best-practices-for-designing-large-scale-services-on-windows-azure/) (Bewährte Methoden für den Entwurf umfangreicher Dienste in Azure Cloud Services).
 
-##Nächste Schritte
+##<a name="next-steps"></a>Nächste Schritte
 
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-high-availability-azure-applications.md). Der nächste Artikel dieser Reihe ist [Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-azure-applications.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

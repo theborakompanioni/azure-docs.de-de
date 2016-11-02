@@ -1,37 +1,38 @@
 <properties 
     pageTitle="Service Bus und Python mit AMQP 1.0 | Microsoft Azure"
     description="Verwenden von Service Bus aus Python mit AMQP"
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
     editor="" /> 
 <tags 
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/10/2016"
+    ms.date="09/29/2016"
     ms.author="sethm" />
 
-# Verwenden von Service Bus aus Python mit AMQP 1.0
+
+# <a name="using-service-bus-from-python-with-amqp-1.0"></a>Verwenden von Service Bus aus Python mit AMQP 1.0
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 Proton-Python ist eine Python-Sprachbindung an Proton-C. Dies bedeutet, dass Proton-Python als Wrapper für ein Modul implementiert wird, das in C implementiert wurde.
 
-## Herunterladen der Proton-Clientbibliothek
+## <a name="download-the-proton-client-library"></a>Herunterladen der Proton-Clientbibliothek
 
 Sie können Proton-C und die dazugehörigen Bindungen (einschließlich Python) unter [http://qpid.apache.org/download.html](http://qpid.apache.org/download.html) herunterladen. Der Download erfolgt in Quellcodeform. Folgen Sie zum Erstellen des Codes den Anweisungen, die im heruntergeladenen Paket enthalten sind.
 
 Beachten Sie, dass zum Zeitpunkt der Erstellung dieses Dokuments die SSL-Unterstützung in Proton-C nur für Linux-Betriebssysteme verfügbar ist. Da Azure Service Bus die Verwendung von SSL erfordert, können Proton-C (und die Sprachbindungen) derzeit nur zum Zugreifen auf Service Bus von Linux verwendet werden. Wir arbeiten daran, Proton-C mit SSL unter Windows zu ermöglichen. Achten Sie also auf Updates hierzu.
 
-## Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus Python
+## <a name="working-with-service-bus-queues,-topics,-and-subscriptions-from-python"></a>Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus Python
 
 Der folgende Code veranschaulicht, wie Sie Nachrichten aus einer Service Bus-Messagingentität senden und empfangen.
 
-### Senden von Nachrichten mithilfe von Proton-Python
+### <a name="send-messages-using-proton-python"></a>Senden von Nachrichten mithilfe von Proton-Python
 
 Der folgende Code veranschaulicht, wie Sie eine Nachricht an eine Service Bus-Messagingentität senden.
 
@@ -45,7 +46,7 @@ messenger.put(message)
 messenger.send()
 ```
 
-### Empfangen von Nachrichten mit Proton-Python
+### <a name="receive-messages-using-proton-python"></a>Empfangen von Nachrichten mit Proton-Python
 
 Der folgende Code veranschaulicht, wie Sie eine Nachricht von einer Service Bus-Messagingentität empfangen.
 
@@ -62,11 +63,11 @@ if messenger.incoming:
 messenger.stop()
 ```
 
-## Messaging zwischen .NET und Proton-Python
+## <a name="messaging-between-.net-and-proton-python"></a>Messaging zwischen .NET und Proton-Python
 
-### Anwendungseigenschaften
+### <a name="application-properties"></a>Anwendungseigenschaften
 
-#### Proton-Python an Service Bus .NET-APIs
+#### <a name="proton-python-to-service-bus-.net-apis"></a>Proton-Python an Service Bus .NET-APIs
 
 Für Proton-Python-Nachrichten werden Anwendungseigenschaften der folgenden Typen unterstützt: **int**, **long**, **float**, **uuid**, **bool**, **string**. Der folgende Python-Code veranschaulicht, wie Sie Eigenschaften für eine Nachricht festlegen, indem Sie diese Eigenschaftentypen verwenden.
 
@@ -78,7 +79,7 @@ message.properties[u"TestFloat"] = 1.5
 message.properties[u"TestGuid"] = uuid.uuid1()    
 ```
 
-In der Service Bus .NET-API werden die Anwendungseigenschaften von Nachrichten in der Sammlung **Properties** von [BrokeredMessage][] vorgehalten. Der folgende Code veranschaulicht, wie die Anwendungseigenschaften einer Nachricht gelesen werden, die von einem Python-Client empfangen wird.
+In der Service Bus-.NET-API werden die Anwendungseigenschaften von Nachrichten in der Sammlung **Properties** von [BrokeredMessage][] vorgehalten. Der folgende Code veranschaulicht, wie die Anwendungseigenschaften einer Nachricht gelesen werden, die von einem Python-Client empfangen wird.
 
 ```
 if (message.Properties.Keys.Count > 0)
@@ -96,16 +97,16 @@ In der folgende Tabelle sind die Python-Eigenschaftentypen den .NET-Eigenschafte
 
 | Python-Eigenschaftentyp | .NET-Eigenschaftentyp |
 |----------------------|--------------------|
-| int | int |
-| float | double |
-| lang | int64 |
-| uuid | GUID |
-| bool | bool |
-| string | string |
+| int                  | int                |
+| float                | double             |
+| lang                 | int64              |
+| uuid                 | GUID               |
+| bool                 | bool               |
+| string               | string             |
 
-#### Service Bus .NET-APIs an Proton-Python
+#### <a name="service-bus-.net-apis-to-proton-python"></a>Service Bus .NET-APIs an Proton-Python
 
-Der Typ [BrokeredMessage][] unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][]-Objekt festlegen, indem Sie diese Eigenschaftentypen verwenden.
+Der [BrokeredMessage][]-Typ unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][]-Objekt festlegen, indem Sie diese Eigenschaftstypen verwenden.
 
 ```
 message.Properties["TestByte"] = (byte)128;
@@ -140,71 +141,72 @@ if message.properties != None:
 
 In der folgende Tabelle sind die .NET-Eigenschaftentypen den Python-Eigenschaftentypen zugeordnet.
 
-| .NET-Eigenschaftstyp | Python-Eigenschaftentyp | Hinweise |
+| .NET-Eigenschaftstyp | Python-Eigenschaftentyp | Hinweise                                                                                                                                                               |
 |--------------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | int | - |
-| sbyte | int | - |
-| char | char | Proton-Python-Klasse |
-| short | int | - |
-| ushort | int | - |
-| int | int | - |
-| uint | int | - |
-| long | int | - |
-| ulong | long | Proton-Python-Klasse |
-| float | float | - |
-| double | float | - |
-| decimal | String | „decimal“ wird für Proton derzeit nicht unterstützt. |
-| bool | bool | - |
-| Guid | uuid | Proton-Python-Klasse |
-| string | string | - |
-| DateTime | timestamp | Proton-Python-Klasse |
-| DateTimeOffset | DescribedType | DateTimeOffset.UtcTicks ist AMQP-Typ zugeordnet:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
-| TimeSpan | DescribedType | Timespan.Ticks ist AMQP-Typ zugeordnet:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> |
-| Uri | DescribedType | Uri.AbsoluteUri ist AMQP-Typ zugeordnet:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
+| Byte               | int                  | -                                                                                                                                                                     |
+| sbyte              | int                  | -                                                                                                                                                                     |
+| char               | char                 | Proton-Python-Klasse                                                                                                                                                 |
+| short              | int                  | -                                                                                                                                                                     |
+| ushort             | int                  | -                                                                                                                                                                     |
+| int                | int                  | -                                                                                                                                                                     |
+| uint               | int                  | -                                                                                                                                                                     |
+| lang               | int                  | -                                                                                                                                                                     |
+| ulong              | lang                 | Proton-Python-Klasse                                                                                                                                                 |
+| float              | float                | -                                                                                                                                                                     |
+| double             | float                | -                                                                                                                                                                     |
+| Decimal            | String               | „decimal“ wird für Proton derzeit nicht unterstützt.                                                                                                                     |
+| bool               | bool                 | -                                                                                                                                                                     |
+| Guid               | uuid                 | Proton-Python-Klasse                                                                                                                                                 |
+| string             | string               | -                                                                                                                                                                     |
+| DateTime           | timestamp            | Proton-Python-Klasse                                                                                                                                                 |
+| Datetimeoffset     | DescribedType        | DateTimeOffset.UtcTicks ist AMQP-Typ zugeordnet:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan           | DescribedType        | Timespan.Ticks ist AMQP-Typ zugeordnet:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>                        |
+| Uri                | DescribedType        | Uri.AbsoluteUri ist AMQP-Typ zugeordnet:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>                               |
 
-### Standardeigenschaften
+### <a name="standard-properties"></a>Standardeigenschaften
 
 Die folgenden Tabellen enthalten die Zuordnung zwischen den Proton-Python-Standardnachrichteneigenschaften und den [BrokeredMessage][]-Standardnachrichteneigenschaften.
 
-#### Proton-Python an Service Bus .NET-APIs
+#### <a name="proton-python-to-service-bus-.net-apis"></a>Proton-Python an Service Bus .NET-APIs
 
-| Proton-Python | Service Bus .NET | Hinweise |
+| Proton-Python        | Service Bus .NET         | Hinweise                                                     |
 |----------------------|--------------------------|-----------------------------------------------------------|
-| durable | – | Service Bus unterstützt nur dauerhafte Nachrichten. |
-| priority | – | Service Bus unterstützt nur eine Nachrichtenpriorität. |
-| Ttl | Message.TimeToLive | Konvertierung, Proton-Python-TTL-Wert wird in Millisekunden definiert. |
-| first\_acquirer | n/a | - |
-| delivery\_count | n/a | - |
-| Id | Message.MessageID | - |
-| user\_id | n/a | - |
-| address | Message.To | - |
-| subject | Message.Label | - |
-| reply\_to | Message.ReplyTo | - |
-| correlation\_id | Message.CorrelationID | - |
-| content\_type | Message.ContentType | - |
-| content\_encoding | n/a | - |
-| expiry\_time | n/a | - |
-| creation\_time | n/a | - |
-| group\_id | Message.SessionId | - |
-| group\_sequence | n/a | - |
-| reply\_to\_group\_id | Message.ReplyToSessionId | - |
-| format | n/a | - |
+| durable              | –                      | Service Bus unterstützt nur dauerhafte Nachrichten.               |
+| priority             | –                      | Service Bus unterstützt nur eine Nachrichtenpriorität.      |
+| Ttl                  | Message.TimeToLive       | Konvertierung, Proton-Python-TTL-Wert wird in Millisekunden definiert. |
+| first\_acquirer      | –                      | -                                                           |
+| delivery\_count      | –                      | -                                                           |
+| ID                   | Message.MessageID        | -                                                           |
+| user\_id             | –                      | -                                                           |
+| address              | Message.To               | -                                                           |
+| subject              | Message.Label            | -                                                           |
+| reply\_to            | Message.ReplyTo          | -                                                           |
+| correlation\_id      | Message.CorrelationID    | -                                                           |
+| content\_type        | Message.ContentType      | -                                                           |
+| content\_encoding    | –                      | -                                                           |
+| expiry\_time         | –                      | -                                                           |
+| creation\_time       | –                      | -                                                           |
+| group\_id            | Message.SessionId        | -                                                           |
+| group\_sequence      | –                      | -                                                           |
+| reply\_to\_group\_id | Message.ReplyToSessionId | -                                                           |
+| format               | –                      | -                                                           |
 
-| Service Bus .NET | Proton | Hinweise |
+| Service Bus .NET        | Proton                       | Hinweise                                                     |
 |-------------------------|------------------------------|-----------------------------------------------------------|
-| ContentType | Message.content\_type | - |
-| CorrelationId | Message.correlation\_id | - |
-| EnqueuedTimeUtc | n/a | - |
-| Label | Message.subject | - |
-| MessageId | Message.id | - |
-| ReplyTo | Message.reply\_to | - |
-| ReplyToSessionId | Message.reply\_to\_group\_id | - |
-| ScheduledEnqueueTimeUtc | n/a | - |
-| SessionId | Message.group\_id | - |
-| TimeToLive | Message.ttl | Konvertierung, Proton-Python-TTL-Wert wird in Millisekunden definiert. |
-| To | Message.address | - |
+| ContentType             | Message.content\_type        | -                                                           |
+| CorrelationId           | Message.correlation\_id      | -                                                           |
+| EnqueuedTimeUtc         | –                          | -                                                           |
+| Bezeichnung                   | Message.subject              | -                                                           |
+| MessageId               | Message.id                   | -                                                           |
+| ReplyTo                 | Message.reply\_to            | -                                                           |
+| ReplyToSessionId        | Message.reply\_to\_group\_id | -                                                           |
+| ScheduledEnqueueTimeUtc | –                          | -                                                           |
+| SessionId               | Message.group\_id            | -                                                           |
+| TimeToLive              | Message.ttl                  | Konvertierung, Proton-Python-TTL-Wert wird in Millisekunden definiert. |
+| To
+                      | Message.address              | -                                                           |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
@@ -216,4 +218,8 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

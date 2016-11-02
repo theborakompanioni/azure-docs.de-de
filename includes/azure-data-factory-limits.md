@@ -1,10 +1,10 @@
-Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden.
+Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden. 
 
 **Ressource** | **Standardlimit** | **Maximales Limit**
 -------- | ------------- | -------------
 Data Factorys in einem Azure-Abonnement | 50 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 Pipelines innerhalb einer Data Factory | 2500 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-Datasets innerhalb einer Data Factory | 5\.000 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+Datasets innerhalb einer Data Factory | 5.000 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 Gleichzeitige Slices pro Dataset | 10 | 10
 Bytes pro Objekt für Pipelineobjekte <sup>1</sup> | 200 KB | 2000 KB
 Bytes pro Objekt für Datasetobjekte und Objekte für verknüpfte Dienste <sup>1</sup> | 100 KB | 2000 KB
@@ -25,8 +25,13 @@ Intervall zwischen Wiederholungsversuchen | 1 Sekunde | 1 Sekunde
 Timeoutwert für Wiederholungsversuche | 1 Sekunde | 1 Sekunde
 
 
-### Limits für Webdienstaufrufe
+### <a name="web-service-call-limits"></a>Limits für Webdienstaufrufe
 
-Azure Resource Manager weist Grenzwerte für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits von Azure Resource Manager](../azure-subscription-service-limits.md#resource-group-limits) ausführen.
+Azure Resource Manager weist Grenzwerte für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits von Azure Resource Manager](../azure-subscription-service-limits.md#resource-group-limits)ausführen. 
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

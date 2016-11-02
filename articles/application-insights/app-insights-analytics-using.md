@@ -1,30 +1,31 @@
 <properties 
-	pageTitle="Verwenden von Analytics, dem leistungsfähigen Suchtool von Application Insights | Microsoft Azure" 
-	description="Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights " 
-	services="application-insights" 
+    pageTitle="Verwenden von Analytics, dem leistungsfähigen Suchtool von Application Insights | Microsoft Azure" 
+    description="Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights " 
+    services="application-insights" 
     documentationCenter=""
-	authors="danhadari" 
-	manager="douge"/>
+    authors="danhadari" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/06/2016" 
-	ms.author="danha"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/03/2016" 
+    ms.author="danha"/>
 
 
-# Verwenden von Analytics in Application Insights
+
+# <a name="using-analytics-in-application-insights"></a>Verwenden von Analytics in Application Insights
 
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-* **[Sehen Sie sich das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Sehen Sie sich das Einführungsvideo an.](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 
-## Öffnen von Analytics
+## <a name="open-analytics"></a>Öffnen von Analytics
 
 Klicken Sie auf der Startseite Ihrer App in Application Insights auf Analytics.
 
@@ -34,17 +35,17 @@ Das Inlinetutorial bietet Ihnen Anregungen, wozu Sie Analytics verwenden können
 
 Eine [ausführlichere Einführung finden Sie hier](app-insights-analytics-tour.md).
 
-## Abfragen der Telemetrie
+## <a name="query-your-telemetry"></a>Abfragen der Telemetrie
 
-### Schreiben Sie eine Abfrage.
+### <a name="write-a-query"></a>Schreiben Sie eine Abfrage.
 
 ![Schemaanzeige](./media/app-insights-analytics-using/150.png)
 
-Beginnen Sie mit den Namen der Tabellen auf der linken Seite (oder mit den Operatoren [range](app-insights-analytics-reference.md#range-operator) oder [union](app-insights-analytics-reference.md#union-operator)). Verwenden Sie `|`, um eine Pipeline von [Operatoren](app-insights-analytics-reference.md#queries-and-operators) zu erstellen. IntelliSense schlägt Ihnen die Operatoren und einige der Ausdruckselemente vor, die Sie verwenden können.
+Beginnen Sie mit den Namen der Tabellen auf der linken Seite (oder mit den Operatoren [range](app-insights-analytics-reference.md#range-operator) oder [union](app-insights-analytics-reference.md#union-operator)). Verwenden Sie `|` , um eine Pipeline von [Operatoren](app-insights-analytics-reference.md#queries-and-operators)zu erstellen. IntelliSense schlägt Ihnen die Operatoren und einige der Ausdruckselemente vor, die Sie verwenden können.
 
 Weitere Informationen finden Sie in der [Einführung in Analytics in Application Insights](app-insights-analytics-tour.md) sowie in der [Sprachreferenz](app-insights-analytics-reference.md).
 
-### Ausführen einer Abfrage
+### <a name="run-a-query"></a>Ausführen einer Abfrage
 
 ![Ausführen einer Abfrage](./media/app-insights-analytics-using/130.png)
 
@@ -53,7 +54,7 @@ Weitere Informationen finden Sie in der [Einführung in Analytics in Application
 3. Klicken Sie auf „Los“, um die Abfrage auszuführen.
 4. Verwenden Sie keine Leerzeilen in Ihrer Abfrage. Mehrere separate Abfragen können auf einer Abfrageregisterkarte durch Leerzeilen getrennt werden. Nur das Element mit dem Cursor wird ausgeführt.
 
-### Speichern einer Abfrage
+### <a name="save-a-query"></a>Speichern einer Abfrage
 
 ![Speichern einer Abfrage](./media/app-insights-analytics-using/140.png)
 
@@ -62,7 +63,7 @@ Weitere Informationen finden Sie in der [Einführung in Analytics in Application
 3. Neue Abfragedatei erstellen
 
 
-## Details
+## <a name="see-the-details"></a>Details
 
 Erweitern Sie in den Ergebnissen eine beliebige Zeile, um eine umfassende Liste mit Eigenschaften anzuzeigen. Eigenschaften, bei denen es sich um einen strukturierten Wert handelt, können nochmals erweitert werden. Beispiele wären etwa benutzerdefinierte Dimensionen oder die Stapellisten in einer Ausnahme.
 
@@ -70,11 +71,11 @@ Erweitern Sie in den Ergebnissen eine beliebige Zeile, um eine umfassende Liste 
 
  
 
-## Anordnen der Ergebnisse
+## <a name="arrange-the-results"></a>Anordnen der Ergebnisse
 
 Die zurückgegebenen Abfrageergebnisse können sortiert, gefiltert, umgebrochen und gruppiert werden.
 
-> [AZURE.NOTE] Beim Sortieren, Gruppieren und Filtern im Browser wird Ihre Abfrage nicht erneut ausgeführt. Hierbei werden lediglich die Ergebnisse Ihrer letzten Abfrage neu angeordnet.
+> [AZURE.NOTE] Beim Sortieren, Gruppieren und Filtern im Browser wird Ihre Abfrage nicht erneut ausgeführt. Hierbei werden lediglich die Ergebnisse Ihrer letzten Abfrage neu angeordnet. 
 > 
 > Wenn diese Aufgaben auf dem Server ausgeführt werden sollen, bevor die Ergebnisse zurückgegeben werden, verwenden Sie in Ihrer Abfrage die Operatoren [sort](app-insights-analytics-reference.md#sort-operator), [summarize](app-insights-analytics-reference.md#summarize-operator) und [where](app-insights-analytics-reference.md#where-operator).
 
@@ -82,7 +83,7 @@ Wählen Sie die anzuzeigenden Spalten aus, ordnen Sie Spaltenüberschriften durc
 
 ![Anordnen von Spalten](./media/app-insights-analytics-using/030.png)
 
-### Sortieren und Filtern von Elementen
+### <a name="sort-and-filter-items"></a>Sortieren und Filtern von Elementen
 
 Sortieren Sie Ihre Ergebnisse durch Klicken auf eine Spaltenüberschrift. Klicken Sie erneut, um die Sortierung umzukehren. Wenn Sie ein drittes Mal klicken, erhalten Sie wieder die ursprüngliche, von der Abfrage zurückgegebene Reihenfolge.
 
@@ -92,7 +93,7 @@ Sortieren Sie Ihre Ergebnisse durch Klicken auf eine Spaltenüberschrift. Klicke
 
 
 
-### Gruppieren von Elementen
+### <a name="group-items"></a>Gruppieren von Elementen
 
 Wenn Sie nach mehreren Spalten sortieren möchten, verwenden Sie eine Gruppierung. Aktivieren Sie dazu zunächst die Funktion, und ziehen Sie dann Spaltenüberschriften in den Bereich über der Tabelle.
 
@@ -100,20 +101,20 @@ Wenn Sie nach mehreren Spalten sortieren möchten, verwenden Sie eine Gruppierun
 
 
 
-### Werden nicht alle Ergebnisse angezeigt?
+### <a name="missing-some-results?"></a>Werden nicht alle Ergebnisse angezeigt?
 
-Die Anzahl von Ergebniszeilen, die vom Portal zurückgegeben werden können, ist auf ungefähr 10.000 Zeilen beschränkt. Bei einer Überschreitung des Grenzwerts wird eine Warnung angezeigt. In diesem Fall werden beim Sortieren der Ergebnisse in der Tabelle nicht immer alle ersten oder letzten Ergebnisse angezeigt.
+Die Anzahl von Ergebniszeilen, die vom Portal zurückgegeben werden können, ist auf ungefähr 10.000 Zeilen beschränkt. Bei einer Überschreitung des Grenzwerts wird eine Warnung angezeigt. In diesem Fall werden beim Sortieren der Ergebnisse in der Tabelle nicht immer alle ersten oder letzten Ergebnisse angezeigt. 
 
 Daher empfiehlt es sich, eine Überschreitung des Grenzwerts zu vermeiden. Verwenden beispielsweise folgende Operatoren:
 
 * [where timestamp > ago(3d)](app-insights-analytics-reference.md#where-operator)
-* [top 100 by timestamp](app-insights-analytics-reference.md#top-operator)
+* [top 100 by timestamp](app-insights-analytics-reference.md#top-operator) 
 * [take 100](app-insights-analytics-reference.md#take-operator)
-* [summarize](app-insights-analytics-reference.md#summarize-operator)
+* [summarize ](app-insights-analytics-reference.md#summarize-operator) 
 
 
 
-## Diagramme
+## <a name="diagrams"></a>Diagramme
 
 Wählen Sie den gewünschten Diagrammtyp:
 
@@ -123,22 +124,22 @@ Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie di
 
 Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-reference.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
 
-## An das Dashboard anheften
+## <a name="pin-to-dashboard"></a>An Dashboard anheften
 
-Sie können ein Diagramm oder eine Tabelle an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Unter Umständen müssen Sie [das Tarifpaket für Ihre App aktualisieren](app-insights-pricing.md), um diese Funktion zu aktivieren.)
+Sie können ein Diagramm oder eine Tabelle an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Unter Umständen müssen Sie [das Tarifpaket für Ihre App aktualisieren](app-insights-pricing.md) , um diese Funktion zu aktivieren.) 
 
 ![Auf Stecknadel klicken](./media/app-insights-analytics-using/pin-01.png)
 
-Wenn Sie ein Dashboard zum Überwachen der Leistung oder Nutzung Ihrer Webdienste erstellen, können Sie so zusätzlich zu den anderen Metriken komplexe Analysen hinzufügen.
+Wenn Sie ein Dashboard zum Überwachen der Leistung oder Nutzung Ihrer Webdienste erstellen, können Sie so zusätzlich zu den anderen Metriken komplexe Analysen hinzufügen. 
 
 Wenn eine Tabelle maximal vier Spalten enthält, können Sie sie an das Dashboard anheften. Nur die ersten sieben Zeilen werden angezeigt.
 
 
-#### Dashboard-Aktualisierung
+#### <a name="dashboard-refresh"></a>Dashboard-Aktualisierung
 
 Das an das Dashboard angeheftete Diagramm wird automatisch aktualisiert, indem Sie die Abfrage etwa jede halbe Stunde erneut ausführen.
 
-#### Automatische Vereinfachungen
+#### <a name="automatic-simplifications"></a>Automatische Vereinfachungen
 
 In manchen Fällen werden auf ein Diagramm bestimmte Vereinfachungen angewendet, wenn Sie es an ein Dashboard anheften.
 
@@ -159,11 +160,11 @@ Wenn Sie sie an ein Dashboard anheften, sieht das folgendermaßen aus:
 
 
 
-## Exportieren in Excel
+## <a name="export-to-excel"></a>Exportieren in Excel
 
 Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterladen. Klicken Sie auf **Nach Excel exportieren**.
 
-## Exportieren nach Power BI
+## <a name="export-to-power-bi"></a>Exportieren nach Power BI
 
 1. Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Nach Power BI exportieren**.
 
@@ -173,7 +174,7 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 3. Kopieren Sie das M-Sprachskript in den erweiterten Abfrage-Editor von Power BI Desktop.
  * Öffnen Sie die exportierte Datei.
- * Wählen Sie in Power BI Desktop **Daten abrufen > leere Abfrage > Erweiterter Editor** aus, und fügen Sie das M-Sprachskript ein.
+ * Wählen Sie in Power BI Desktop **Daten abrufen &gt; leere Abfrage &gt; Erweiterter Editor** aus, und fügen Sie das M-Sprachskript ein.
 
     ![](./media/app-insights-analytics-using/250.png)
 
@@ -183,7 +184,11 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 
 
-
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -7,6 +7,7 @@
     manager="carmonm"
     editor=""
     tags="azure-resource-manager"
+    keywords="IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT"
 />
 <tags
     ms.service="load-balancer"
@@ -18,16 +19,17 @@
     ms.author="sewhee"
 />
 
-# Erstellen eines Load Balancers mit Internetzugriff über IPv6 in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle
+
+# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-the-azure-cli"></a>Erstellen eines Load Balancers mit Internetzugriff über IPv6 in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle
 
 > [AZURE.SELECTOR]
-- [PowerShell](load-balancer-IPv6-internet-ps.md)
-- [Azure-Befehlszeilenschnittstelle](load-balancer-IPv6-internet-cli.md)
-- [Vorlage](load-balancer-IPv6-internet-template.md)
+- [PowerShell](./load-balancer-ipv6-internet-ps.md)
+- [Azure-Befehlszeilenschnittstelle](./load-balancer-ipv6-internet-cli.md)
+- [Vorlage](./load-balancer-ipv6-internet-template.md)
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für hohe Verfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
-## Beispielszenario für die Bereitstellung
+## <a name="example-deployment-scenario"></a>Beispielszenario für die Bereitstellung
 
 Das folgende Diagramm veranschaulicht die Lösung mit Lastenausgleich, die mithilfe der in diesem Artikel beschriebenen Beispielvorlage bereitgestellt wird.
 
@@ -41,7 +43,7 @@ In diesem Szenario erstellen Sie die folgenden Azure-Ressourcen:
 - eine Verfügbarkeitsgruppe, die die zwei virtuellen Computer enthält
 - zwei Lastenausgleichsregeln, um die öffentlichen virtuellen IP-Adressen den privaten Endpunkten zuzuordnen
 
-## Bereitstellen der Lösung mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="deploying-the-solution-using-the-azure-cli"></a>Bereitstellen der Lösung mithilfe der Azure-Befehlszeilenschnittstelle
 
 Die folgenden Schritte zeigen, wie Sie einen internen Load Balancer mit Internetzugriff mit dem Azure Resource Manager und CLI erstellen. Mit dem Azure Resource Manager werden die einzelnen Teilressourcen erstellt sowie individuell konfiguriert und dann zusammengeführt, um eine Ressource zu erstellen.
 
@@ -55,7 +57,7 @@ Zum Bereitstellen eines Load Balancers erstellen und konfigurieren Sie die folge
 
 Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Managers für Load Balancer](load-balancer-arm.md).
 
-## Einrichten der CLI-Umgebung zur Verwendung von Azure Resource Manager
+## <a name="set-up-your-cli-environment-to-use-azure-resource-manager"></a>Einrichten der CLI-Umgebung zur Verwendung von Azure Resource Manager
 
 In diesem Beispiel führen wir die CLI-Tools in einem PowerShell-Befehlsfenster aus. Wir verwenden nicht die Azure PowerShell-Cmdlets, sondern die PowerShell-Skriptfunktionen, um Lesbarkeit und Wiederverwendung zu verbessern.
 
@@ -95,7 +97,7 @@ In diesem Beispiel führen wir die CLI-Tools in einem PowerShell-Befehlsfenster 
         $lbName = "myIPv4IPv6Lb"
         ```
 
-## Erstellen einer Ressourcengruppe, eines Load Balancers, eines virtuellen Netzwerks und der Subnetze
+## <a name="create-a-resource-group,-a-load-balancer,-a-virtual-network,-and-subnets"></a>Erstellen einer Ressourcengruppe, eines Load Balancers, eines virtuellen Netzwerks und der Subnetze
 
 1. Erstellen einer Ressourcengruppe
 
@@ -114,7 +116,7 @@ In diesem Beispiel führen wir die CLI-Tools in einem PowerShell-Befehlsfenster 
         $subnet1 = azure network vnet subnet create --resource-group $rgname --name $subnet1Name --address-prefix $subnet1Prefix --vnet-name $vnetName
         $subnet2 = azure network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
 
-## Erstellen öffentlicher IP-Adressen für den Front-End-Pool
+## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Erstellen öffentlicher IP-Adressen für den Front-End-Pool
 
 1. Richten Sie die PowerShell-Variablen ein.
 
@@ -126,9 +128,10 @@ In diesem Beispiel führen wir die CLI-Tools in einem PowerShell-Befehlsfenster 
         $publicipV4 = azure network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --ip-version IPv4 --allocation-method Dynamic --domain-name-label $dnsLabel
         $publicipV6 = azure network public-ip create --resource-group $rgname --name $publicIpv6Name --location $location --ip-version IPv6 --allocation-method Dynamic --domain-name-label $dnsLabel
 
-    >[AZURE.IMPORTANT] Der Load Balancer verwendet die Domänenbezeichnung der öffentlichen IP-Adresse als seinen vollqualifizierten Domänennamen (FQDN). Dies ist eine Abkehr von der klassischen Bereitstellung, bei der der Clouddienstname als FQDN des Load Balancers verwendet wird. In diesem Beispiel lautet der FQDN *contoso09152016.southcentralus.cloudapp.azure.com*.
+    >[AZURE.IMPORTANT] Der Load Balancer verwendet die Domänenbezeichnung der öffentlichen IP-Adresse als seinen vollqualifizierten Domänennamen (FQDN). Dies ist eine Abkehr von der klassischen Bereitstellung, bei der der Clouddienstname als FQDN des Load Balancers verwendet wird.
+    >In diesem Beispiel lautet der FQDN *contoso09152016.southcentralus.cloudapp.azure.com*.
 
-## Erstellen von Front-End- und Back-End-Pools
+## <a name="create-front-end-and-back-end-pools"></a>Erstellen von Front-End- und Back-End-Pools
 
 Im folgenden Beispiel wird der Front-End-IP-Adresspool erstellt, der den eingehenden Netzwerkdatenverkehr für den Load Balancer empfängt. Außerdem wird der Back-End-IP-Pool erstellt, an den der Front-End-Pool den einem Lastenausgleich unterzogenen Netzwerkdatenverkehr sendet.
 
@@ -146,7 +149,7 @@ Im folgenden Beispiel wird der Front-End-IP-Adresspool erstellt, der den eingehe
         $backendAddressPoolV4 = azure network lb address-pool create --resource-group $rgname --name $backendAddressPoolV4Name --lb-name $lbName
         $backendAddressPoolV6 = azure network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
 
-## Erstellen des Tests, der NAT-Regeln und der LB-Regeln
+## <a name="create-the-probe,-nat-rules,-and-lb-rules"></a>Erstellen des Tests, der NAT-Regeln und der LB-Regeln
 
 In diesem Beispiel werden die folgenden Elemente erstellt:
 
@@ -226,7 +229,7 @@ In diesem Beispiel werden die folgenden Elemente erstellt:
         info:    network lb show
 
 
-## Erstellen von NICs
+## <a name="create-nics"></a>Erstellen von NICs
 
 Erstellen Sie NICs, und ordnen Sie diese NAT-Regeln, Load Balancer-Regeln und Tests zu.
 
@@ -249,7 +252,7 @@ Erstellen Sie NICs, und ordnen Sie diese NAT-Regeln, Load Balancer-Regeln und Te
         $nic2 = azure network nic create --name $nic2Name --resource-group $rgname --location $location --subnet-id $subnet1Id --lb-address-pool-ids $backendAddressPoolV4Id --lb-inbound-nat-rule-ids $natRule1V4Id
         $nic2IPv6 = azure network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic2Name
 
-## Erstellen der Back-End-VM-Ressourcen und Anfügen der NICs
+## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Erstellen der Back-End-VM-Ressourcen und Anfügen der NICs
 
 Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich müssen die VMs zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zum Erstellen von VMs finden Sie unter [Erstellen einer Azure-VM mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
 
@@ -269,7 +272,7 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
         $vmUserName = "vmUser"
         $mySecurePassword = "PlainTextPassword*1"
 
-    >[AZURE.WARNING] Dieses Beispiel verwendet den Benutzernamen und das Kennwort für die VMs in Klartext. Bei Anmeldeinformationen in Klartext müssen Sie entsprechend vorsichtig vorgehen. Eine sicherere Methode zur Handhabung der Anmeldeinformationen in PowerShell finden Sie in den Informationen zum Cmdlet [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx).
+    >[AZURE.WARNING] Dieses Beispiel verwendet den Benutzernamen und das Kennwort für die VMs in Klartext. Bei Anmeldeinformationen in Klartext müssen Sie entsprechend vorsichtig vorgehen. Eine sicherere Methode zur Handhabung der Anmeldeinformationen in PowerShell finden Sie in den Informationen zum Cmdlet [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) .
 
 2. Erstellen Sie das Speicherkonto und die Verfügbarkeitsgruppe.
 
@@ -287,7 +290,7 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
 
         $vm2 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm2Name --nic-id $nic2Id --os-disk-vhd $osDisk2Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn  --storage-account-name $storageAccountName --disable-bginfo-extension
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 [Erste Schritte zum Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-cli.md)
 
@@ -295,4 +298,8 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

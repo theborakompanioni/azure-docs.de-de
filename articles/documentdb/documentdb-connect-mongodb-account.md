@@ -1,65 +1,66 @@
 <properties 
-	pageTitle="Herstellen einer Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie eine Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB herstellen (jetzt als Vorschau verfügbar). Stellen Sie mithilfe der MongoDB-Verbindungszeichenfolge eine Verbindung her." 
-	keywords="MongoDB-Verbindungszeichenfolge"
-	services="documentdb" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="" 
-	documentationCenter=""/>
+    pageTitle="Herstellen einer Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB | Microsoft Azure" 
+    description="Erfahren Sie, wie Sie eine Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB herstellen (jetzt als Vorschau verfügbar). Stellen Sie mithilfe der MongoDB-Verbindungszeichenfolge eine Verbindung her." 
+    keywords="MongoDB-Verbindungszeichenfolge"
+    services="documentdb" 
+    authors="AndrewHoh" 
+    manager="jhubbard" 
+    editor="" 
+    documentationCenter=""/>
 
 <tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/23/2016" 
-	ms.author="mimig"/>
+    ms.service="documentdb" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/23/2016" 
+    ms.author="anhoh"/>
 
-# Herstellen einer Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
 
-Erfahren Sie, wie Sie mithilfe des standardmäßigen URI-Formats für MongoDB-Verbindungszeichenfolgen eine Verbindung mit einem Azure DocumentDB-Konto mit Protokollunterstützung für MongoDB herstellen.
+# <a name="how-to-connect-to-a-documentdb-account-with-protocol-support-for-mongodb"></a>Herstellen einer Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
 
-## Abrufen der Informationen zur Verbindungszeichenfolge für das Konto
+Erfahren Sie, wie Sie mithilfe des standardmäßigen URI-Formats für MongoDB-Verbindungszeichenfolgen eine Verbindung mit einem Azure DocumentDB-Konto mit Protokollunterstützung für MongoDB herstellen.  
 
-1. Melden Sie sich in einem neuen Fenster beim [Azure-Portal](https://portal.azure.com) an.
+## <a name="get-the-account's-connection-string-information"></a>Abrufen der Informationen zur Verbindungszeichenfolge für das Konto
+
+1. Melden Sie sich in einem neuen Fenster beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf der **linken Navigationsleiste** des Blatts „Konto“ auf **Verbindungszeichenfolge**. Zum Blatt **Konto** gelangen Sie, indem Sie auf der Navigationsleiste auf **More Services** (Weitere Dienste) > **DocumentDB (NoSQL)** klicken und anschließend das DocumentDB-Konto mit Protokollunterstützung für MongoDB auswählen.
 
-	![Screenshot des Blatts „Alle Einstellungen“](./media/documentdb-connect-mongodb-account/SettingsBlade.png)
+    ![Screenshot des Blatts „Alle Einstellungen“](./media/documentdb-connect-mongodb-account/SettingsBlade.png)
 
 3. Das Blatt **Informationen zur Verbindungszeichenfolge** wird geöffnet. Es enthält alle erforderlichen Informationen, um mithilfe eines Treibers für MongoDB eine Verbindung mit dem Konto herzustellen, einschließlich einer vorab erstellten Verbindungszeichenfolge.
 
-	![Screenshot des Blatts „Verbindungszeichenfolge“](./media/documentdb-connect-mongodb-account/ConnectionStringBlade.png)
+    ![Screenshot des Blatts „Verbindungszeichenfolge“](./media/documentdb-connect-mongodb-account/ConnectionStringBlade.png)
 
-## Anforderungen an die Verbindungszeichenfolge
+## <a name="connection-string-requirements"></a>Anforderungen an die Verbindungszeichenfolge
 
-Beachten Sie, dass DocumentDB das standardmäßige URI-Format für MongoDB-Verbindungszeichenfolgen unterstützt. Es gelten jedoch einige besondere Anforderungen: DocumentDB-Konten erfordern eine Authentifizierung und eine sichere Kommunikation über SSL. Folglich sieht das Format der Verbindungszeichenfolge wie folgt aus:
+Beachten Sie, dass DocumentDB das standardmäßige URI-Format für MongoDB-Verbindungszeichenfolgen unterstützt. Es gelten jedoch einige besondere Anforderungen: DocumentDB-Konten erfordern eine Authentifizierung und eine sichere Kommunikation über SSL.  Folglich sieht das Format der Verbindungszeichenfolge wie folgt aus:
 
-	mongodb://username:password@host:port/[database]?ssl=true
+    mongodb://username:password@host:port/[database]?ssl=true
 
 Die Werte dieser Zeichenfolge sind auf dem oben gezeigten Blatt „Verbindungszeichenfolge“ verfügbar.
 
 - Benutzername (erforderlich)
-	- Name des DocumentDB-Kontos
+    - Name des DocumentDB-Kontos
 - Kennwort (erforderlich)
-	- Kennwort des DocumentDB-Kontos
+    - Kennwort des DocumentDB-Kontos
 - Host (erforderlich)
-	- FQDN des DocumentDB-Kontos
+    - FQDN des DocumentDB-Kontos
 - Port (erforderlich)
-	- 10250
+    - 10250
 - Datenbank (optional)
-	- Die Standarddatenbank, die von der Verbindung verwendet wird
+    - Die Standarddatenbank, die von der Verbindung verwendet wird
 - ssl=true (erforderlich)
 
-Betrachten Sie beispielsweise das Konto in den Informationen zur Verbindungszeichenfolge weiter oben. Eine gültige Verbindungszeichenfolge ist:
-	
-	mongodb://contoso123:<password@contoso123.documents.azure.com:10250/mydatabase?ssl=true
+Betrachten Sie beispielsweise das Konto in den Informationen zur Verbindungszeichenfolge weiter oben.  Eine gültige Verbindungszeichenfolge ist:
+    
+    mongodb://contoso123:<password@contoso123.documents.azure.com:10250/mydatabase?ssl=true
 
-## Herstellen einer Verbindung mit dem C#-Treiber für MongoDB
-Wie bereits erwähnt, erfordern alle DocumentDB-Konten eine Authentifizierung und eine sichere Kommunikation über SSL. Während das URI-Format der MongoDB-Verbindungszeichenfolge einen Abfragezeichenfolgen-Parameter „ssl=true“ unterstützt, erfordert die Verwendung eines MongoDB C#-Treibers das MongoClientSettings-Objekt beim Erstellen eines MongoClient. Der folgende Codeausschnitt veranschaulicht anhand der obigen Kontoinformationen, wie die Verbindung mit dem Konto hergestellt und die Datenbank „Tasks“ verwendet wird.
+## <a name="connecting-with-the-c#-driver-for-mongodb"></a>Herstellen einer Verbindung mit dem C#-Treiber für MongoDB
+Wie bereits erwähnt, erfordern alle DocumentDB-Konten eine Authentifizierung und eine sichere Kommunikation über SSL. Während das URI-Format der MongoDB-Verbindungszeichenfolge einen Abfragezeichenfolgen-Parameter „ssl=true“ unterstützt, erfordert die Verwendung eines MongoDB C#-Treibers das MongoClientSettings-Objekt beim Erstellen eines MongoClient.  Der folgende Codeausschnitt veranschaulicht anhand der obigen Kontoinformationen, wie die Verbindung mit dem Konto hergestellt und die Datenbank „Tasks“ verwendet wird.
 
-	        MongoClientSettings settings = new MongoClientSettings();
+            MongoClientSettings settings = new MongoClientSettings();
             settings.Server = new MongoServerAddress("contoso123.documents.azure.com", 10250);
             settings.UseSsl = true;
             settings.SslSettings = new SslSettings();
@@ -74,9 +75,9 @@ Wie bereits erwähnt, erfordern alle DocumentDB-Konten eine Authentifizierung un
             };
             MongoClient client = new MongoClient(settings);
             var database = client.GetDatabase("Tasks",);
-	
+    
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 
 - Erfahren Sie, wie Sie [MongoChef](documentdb-mongodb-mongochef.md) mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verwenden.
@@ -84,4 +85,8 @@ Wie bereits erwähnt, erfordern alle DocumentDB-Konten eine Authentifizierung un
 
  
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

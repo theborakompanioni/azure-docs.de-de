@@ -1,30 +1,31 @@
 <properties 
-	pageTitle="Referenz in Analytics in Application Insights | Microsoft Azure" 
-	description="Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights. " 
-	services="application-insights" 
+    pageTitle="Referenz in Analytics in Application Insights | Microsoft Azure" 
+    description="Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights. " 
+    services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/09/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/19/2016" 
+    ms.author="awills"/>
 
-# Referenz für Analytics
+
+# <a name="reference-for-analytics"></a>Referenz für Analytics
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
 > [AZURE.NOTE] [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo), wenn Ihre App noch keine Daten an Application Insights sendet.
 
-## Index
+## <a name="index"></a>Index
 
 
-**„let“ und „set“** [let](#let-clause) | [set](#set-clause)
+**Let** [let](#let-clause)
 
 
 **Abfragen und Operatoren** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
@@ -43,9 +44,9 @@
 
 
 
-## „let“ und „set“
+## <a name="let"></a>Let
 
-### let-Klausel
+### <a name="let-clause"></a>let-Klausel
 
 **Tabellarisches let – Benennen einer Tabelle**
 
@@ -79,7 +80,7 @@ Eine let-Klausel bindet einen [Namen](#names) an ein tabellarisches Ergebnis, ei
     let name = (parameterName : type [, ...]) { scalar_expression }; query
 
 * *type:* `bool`, `int`, `long`, `double`, `string`, `timespan`, `datetime`, `guid`, [`dynamic`](#dynamic-type)
-* *plain\_query:* Eine Abfrage ohne vorangestellte let-Klausel.
+* *plain_query:* Eine Abfrage ohne vorangestellte let-Klausel.
 
 **Beispiele**
 
@@ -91,39 +92,15 @@ Selbstverknüpfung:
 
     let Recent = events | where timestamp > ago(7d);
     Recent | where name contains "session_started" 
-    | project start = timestamp, session_id
-    | join (Recent 
+  	| project start = timestamp, session_id
+  	| join (Recent 
         | where name contains "session_ended" 
         | project stop = timestamp, session_id)
       on session_id
-    | extend duration = stop - start 
-
-### set-Klausel
-
-Mit der set-Klausel wird eine Option für die Dauer der Abfrage festgelegt. Mit Abfrageoptionen wird gesteuert, wie eine Abfrage ausgeführt wird und wie Ergebnisse zurückgegeben werden. Es kann sich um boolesche Flags handeln (standardmäßig deaktiviert), oder sie können einen Ganzzahlwert aufweisen. Eine Abfrage kann keine, eine oder mehrere set-Anweisungen enthalten. set-Anweisungen wirken sich nur auf die Tabellenausdruck-Anweisungen aus, die in der Programmreihenfolge darauf folgen.
-
-    set OptionName [= OptionValue] ; query
+  	| extend duration = stop - start 
 
 
-|Name | Auswirkung bei Festlegung auf „true“
-|---|---
-|querytrace| Erhöht den von einer Abfrage generierten Grad der Debugablaufverfolgungen. 
-|noexecute| Deaktiviert die eigentliche Ausführung der Abfrage (nur die Phase der Abfragenplanung wird ausgeführt). 
-|perftrace| Ermöglicht die Ablaufverfolgung der Leistung. 
-|notruncation| Deaktiviert das Abschneiden von Resultsets. 
-|truncationmaxsize| Beschränkt die Größe von Abfrageergebnisdaten (in Byte). 
-|truncationmaxrecords| Beschränkt die Anzahl von Abfrageergebnis-Datensätzen. 
-|nostreaming |Deaktiviert das Streaming von Resultsets. 
-
-**Beispiel**
-
-```
-
-    set querytrace;
-    requests | take 100
-```
-
-## Abfragen und Operatoren
+## <a name="queries-and-operators"></a>Abfragen und Operatoren
 
 Eine Abfrage in Ihrer Telemetrie besteht aus einen Verweis auf einen Quelldatenstrom, gefolgt von einer Pipeline von Filtern. Zum Beispiel:
 
@@ -135,11 +112,11 @@ requests // The request table starts this pipeline.
 | count 
 ```
     
-Jeder Filter mit einem senkrechten Strich (`|`) als Präfix ist eine Instanz eines *Operators* mit einigen Parametern. Die Eingabe des Operators ist die Tabelle, die das Ergebnis der vorhergehenden Pipeline ist. In den meisten Fällen sind alle Parameter [skalare Ausdrücke](#scalars) über die Spalten der Eingabe hinweg. In einigen Fällen sind die Parameter die Namen von Eingabespalten, und in einigen Fällen ist der Parameter eine zweite Tabelle. Das Ergebnis einer Abfrage ist immer eine Tabelle, auch wenn sie nur eine Spalte und eine Zeile enthält.
+Jeder Filter mit einem senkrechten Strich ( `|` ) als Präfix ist eine Instanz eines *Operators*mit einigen Parametern. Die Eingabe des Operators ist die Tabelle, die das Ergebnis der vorhergehenden Pipeline ist. In den meisten Fällen sind alle Parameter [skalare Ausdrücke](#scalars) über die Spalten der Eingabe hinweg. In einigen Fällen sind die Parameter die Namen von Eingabespalten, und in einigen Fällen ist der Parameter eine zweite Tabelle. Das Ergebnis einer Abfrage ist immer eine Tabelle, auch wenn sie nur eine Spalte und eine Zeile enthält.
 
 Abfragen können einzelne Zeilenumbrüche enthalten, aber sie werden mit einer Leerzeile beendet. Unter Umständen enthalten sie Kommentare zwischen `//` und dem Ende der Zeile.
 
-Eine Abfrage kann eine oder mehrere [let-Klauseln](#let-clause) als Präfix aufweisen, mit denen Skalare, Tabellen oder Funktionen definiert werden, die in der Abfrage verwendet werden können.
+Eine Abfrage kann eine oder mehrere [let-Klauseln](#let-clause)als Präfix aufweisen, mit denen Skalare, Tabellen oder Funktionen definiert werden, die in der Abfrage verwendet werden können.
 
 ```AIQL
 
@@ -154,9 +131,9 @@ Eine Abfrage kann eine oder mehrere [let-Klauseln](#let-clause) als Präfix aufw
 > `T` wird in den folgenden Abfragebeispielen verwendet, um die vorhergehende Pipeline oder Quelltabelle anzugeben.
 > 
 
-### count-Operator
+### <a name="count-operator"></a>count-Operator
 
-Der `count`-Operator gibt die Anzahl von Datensätzen (Zeilen) in der Eingabe-Datensatzgruppe an.
+Der `count` -Operator gibt die Anzahl von Datensätzen (Zeilen) in der Eingabe-Datensatzgruppe an.
 
 **Syntax**
 
@@ -164,11 +141,11 @@ Der `count`-Operator gibt die Anzahl von Datensätzen (Zeilen) in der Eingabe-Da
 
 **Argumente**
 
-* *T:* Die tabellarischen Daten, deren Datensätze gezählt werden.
+* *T:*Die tabellarischen Daten, deren Datensätze gezählt werden.
 
 **Rückgabe**
 
-Diese Funktion gibt eine Tabelle mit einem einzelnen Datensatz und einer Spalte vom Typ `long` zurück. Der Wert der einzigen Zelle ist die Anzahl von Datensätzen in *T*.
+Diese Funktion gibt eine Tabelle mit einem einzelnen Datensatz und einer Spalte vom Typ `long`zurück. Der Wert der einzigen Zelle ist die Anzahl von Datensätzen in *T*. 
 
 **Beispiel**
 
@@ -176,7 +153,7 @@ Diese Funktion gibt eine Tabelle mit einem einzelnen Datensatz und einer Spalte 
 requests | count
 ```
 
-### evaluate-Operator
+### <a name="evaluate-operator"></a>evaluate-Operator
 
 `evaluate` ist ein Erweiterungsmechanismus, mit dem spezielle Algorithmen an Abfragen angefügt werden können.
 
@@ -184,11 +161,11 @@ requests | count
 
 [evaluate autocluster](#evaluate-autocluster) | [evaluate basket](#evaluate-basket) | [evaluate diffpatterns](#evaluate-diffpatterns) | [evaluate extractcolumns](#evaluate-extractcolumns)
 
-#### evaluate autocluster
+#### <a name="evaluate-autocluster"></a>evaluate autocluster
 
      T | evaluate autocluster()
 
-Mit AutoCluster werden häufige Muster von diskreten Attributen (Dimensionen) in den Daten ermittelt, und die Ergebnisse der ursprünglichen Abfrage (ob mit 100 oder 100.000 Zeilen) werden auf eine kleine Anzahl von Mustern reduziert. AutoCluster wurde als Hilfe beim Analysieren von Fehlern (z.B. Ausnahmen, Abstürze) entwickelt, kann aber für jedes gefilterte Dataset verwendet werden.
+Mit AutoCluster werden häufige Muster von diskreten Attributen (Dimensionen) in den Daten ermittelt, und die Ergebnisse der ursprünglichen Abfrage (ob mit 100 oder 100.000 Zeilen) werden auf eine kleine Anzahl von Mustern reduziert. AutoCluster wurde als Hilfe beim Analysieren von Fehlern (z.B. Ausnahmen, Abstürze) entwickelt, kann aber für jedes gefilterte Dataset verwendet werden. 
 
 **Syntax**
 
@@ -196,26 +173,26 @@ Mit AutoCluster werden häufige Muster von diskreten Attributen (Dimensionen) in
 
 **Rückgabe**
 
-AutoCluster gibt eine (in der Regel kleine) Gruppe von Mustern zurück, in der Teile der Daten mit gemeinsamen Werten über mehrere diskrete Attribute hinweg erfasst werden. Jede Zeile in den Ergebnissen steht für ein Muster.
+AutoCluster gibt eine (in der Regel kleine) Gruppe von Mustern zurück, in der Teile der Daten mit gemeinsamen Werten über mehrere diskrete Attribute hinweg erfasst werden. Jede Zeile in den Ergebnissen steht für ein Muster. 
 
-Die ersten beiden Spalten enthalten die Anzahl und den Prozentsatz der Zeilen aus der ursprünglichen Abfrage, die mit dem Muster erfasst wurden. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder „*“ (variable Werte).
+Die ersten beiden Spalten enthalten die Anzahl und den Prozentsatz der Zeilen aus der ursprünglichen Abfrage, die mit dem Muster erfasst wurden. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder „*“ (variable Werte). 
 
 Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich überlappen und decken normalerweise nicht alle ursprünglichen Zeilen ab. Einige Zeilen fallen ggf. nicht in eines der Muster.
 
 **Tipps**
 
 * Verwenden Sie `where` und `project` im Pipe-Eingangselement, um die Daten auf den Teil zu reduzieren, der für Sie interessant ist.
-* Wenn Sie eine interessante Zeile finden, können Sie dafür einen Drilldown durchführen, indem Sie die jeweiligen Werte dem `where`-Filter hinzufügen.
+* Wenn Sie eine interessante Zeile finden, können Sie dafür einen Drilldown durchführen, indem Sie die jeweiligen Werte dem `where` -Filter hinzufügen.
 
 **Argumente (alle optional)**
 
-* `output=all | values | minimal`
+* `output=all | values | minimal` 
 
-    Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt.
+    Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt. 
 
  * `all` – Alle Spalten der Eingabe werden ausgegeben.
  * `values` – Filtert alle Spalten heraus, die in den Ergebnissen nur „*“ enthalten.
- * `minimal` – Filtert auch Spalten heraus, die für alle Zeilen in der ursprünglichen Abfrage identisch sind.
+ * `minimal` – Filtert auch Spalten heraus, die für alle Zeilen in der ursprünglichen Abfrage identisch sind. 
 
 
 * `min_percent=`*double* (Standardwert: 1)
@@ -225,33 +202,33 @@ Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich ü
     Beispiel: `T | evaluate autocluster("min_percent=5.5")`
 
 
-* `num_seeds=` *int* (Standardwert: 25)
+* `num_seeds=` *int* (Standardwert: 25) 
 
-    Die Anzahl von Startwerten bestimmt die Anzahl von anfänglichen lokalen Suchpunkten des Algorithmus. Je nach der Struktur der Daten erhöht sich beim Erhöhen der Anzahl von Startwerten in einigen Fällen die Anzahl (bzw. Qualität) von Ergebnissen, da ein größerer Suchbereich vorhanden ist. Gleichzeitig verlangsamen sich die Abfragen. Das Argument „num\_seeds“ verfügt in beiden Richtungen über abnehmende Ergebnisse. Eine Verringerung unter den Wert 5 führt daher nur zu vernachlässigbaren Leistungssteigerungen, und bei einer Erhöhung auf über 50 werden nur selten weitere Muster generiert.
+    Die Anzahl von Startwerten bestimmt die Anzahl von anfänglichen lokalen Suchpunkten des Algorithmus. Je nach der Struktur der Daten erhöht sich beim Erhöhen der Anzahl von Startwerten in einigen Fällen die Anzahl (bzw. Qualität) von Ergebnissen, da ein größerer Suchbereich vorhanden ist. Gleichzeitig verlangsamen sich die Abfragen. Das Argument „num_seeds“ verfügt in beiden Richtungen über abnehmende Ergebnisse. Eine Verringerung unter den Wert 5 führt daher nur zu vernachlässigbaren Leistungssteigerungen, und bei einer Erhöhung auf über 50 werden nur selten weitere Muster generiert.
 
     Beispiel: `T | evaluate autocluster("num_seeds=50")`
 
 
 * `size_weight=` *0<double<1*+ (Standardwert: 0,5)
 
-    Hiermit erhalten Sie Kontrolle über die Balance zwischen der „generischen“ (hohe Abdeckung) und „informativen“ (viele gemeinsame Werte) Vorgehensweise. Wenn Sie „size\_weight“ erhöhen, wird die Anzahl von Mustern normalerweise reduziert, und jedes Muster deckt einen größeren Prozentsatz ab. Wenn Sie „size\_weight“ verringern, werden normalerweise mehr spezifische Muster mit mehr gemeinsamen Werten und einer geringeren prozentualen Abdeckung produziert. Die Formel im Hintergrund ist ein gewichteter geometrischer Mittelwert zwischen der normalisierten generischen Punktzahl und der informativen Punktzahl mit „size\_weight“ und „1-size\_weight“ als Gewichtungen.
+    Hiermit erhalten Sie Kontrolle über die Balance zwischen der „generischen“ (hohe Abdeckung) und „informativen“ (viele gemeinsame Werte) Vorgehensweise. Wenn Sie „size_weight“ erhöhen, wird die Anzahl von Mustern normalerweise reduziert, und jedes Muster deckt einen größeren Prozentsatz ab. Wenn Sie „size_weight“ verringern, werden normalerweise mehr spezifische Muster mit mehr gemeinsamen Werten und einer geringeren prozentualen Abdeckung produziert. Die Formel im Hintergrund ist ein gewichteter geometrischer Mittelwert zwischen der normalisierten generischen Punktzahl und der informativen Punktzahl mit „size_weight“ und „1-size_weight“ als Gewichtungen. 
 
     Beispiel: `T | evaluate autocluster("size_weight=0.8")`
 
 
-* `weight_column=` *column\_name*
+* `weight_column=` *column_name*
 
     Berücksichtigt jede Zeile der Eingabe gemäß der angegebenen Gewichtung (jede Zeile hat standardmäßig eine Gewichtung von „1“). Die übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
 
-    Beispiel: `T | evaluate autocluster("weight_column=sample_Count")`
+    Beispiel: `T | evaluate autocluster("weight_column=sample_Count")` 
 
 
 
-#### evaluate basket
+#### <a name="evaluate-basket"></a>evaluate basket
 
      T | evaluate basket()
 
-Mit „Basket“ werden alle häufigen Muster diskreter Attribute (Dimensionen) in den Daten ermittelt und alle häufigen Muster zurückgegeben, die den Häufigkeitsschwellenwert in der ursprünglichen Abfrage überschritten haben. Mit Basket ist sichergestellt, dass alle häufigen Muster in den Daten gefunden werden, aber es ist nicht sichergestellt, dass eine polynomische Laufzeit vorhanden ist. Die Laufzeit der Abfrage liegt linear in der Anzahl von Zeilen vor, aber in einigen Fällen auch exponentiell in der Anzahl von Spalten (Dimensionen). Basket basiert auf dem Apriori-Algorithmus, der ursprünglich für das Data Mining per Basket-Analyse entwickelt wurde.
+Mit „Basket“ werden alle häufigen Muster diskreter Attribute (Dimensionen) in den Daten ermittelt und alle häufigen Muster zurückgegeben, die den Häufigkeitsschwellenwert in der ursprünglichen Abfrage überschritten haben. Mit Basket ist sichergestellt, dass alle häufigen Muster in den Daten gefunden werden, aber es ist nicht sichergestellt, dass eine polynomische Laufzeit vorhanden ist. Die Laufzeit der Abfrage liegt linear in der Anzahl von Zeilen vor, aber in einigen Fällen auch exponentiell in der Anzahl von Spalten (Dimensionen). Basket basiert auf dem Apriori-Algorithmus, der ursprünglich für das Data Mining per Basket-Analyse entwickelt wurde. 
 
 **Rückgabe**
 
@@ -260,18 +237,18 @@ Alle Muster, die in mehr als einem angegebenen Bruchteil (Standardwert: 0,05) de
 **Argumente (alle optional)**
 
 
-* `threshold=` *0,015<double<1* (Standardwert: 0,05)
+* `threshold=` *0,015<double<1* (Standardwert: 0,05) 
 
     Legt das minimale Verhältnis der Zeilen fest, das als häufig angesehen werden soll (Muster mit einem geringeren Verhältnis werden nicht zurückgegeben).
 
     Beispiel: `T | evaluate basket("threshold=0.02")`
 
 
-* `weight_column=` *column\_name*
+* `weight_column=` *column_name*
 
     Berücksichtigt jede Zeile der Eingabe gemäß der angegebenen Gewichtung (jede Zeile hat standardmäßig eine Gewichtung von „1“). Die übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
 
-    Beispiel: T | evaluate basket("weight\_column=sample\_Count")
+    Beispiel: T | evaluate basket("weight_column=sample_Count")
 
 
 * `max_dims=` *1<int* (Standardwert: 5)
@@ -279,7 +256,7 @@ Alle Muster, die in mehr als einem angegebenen Bruchteil (Standardwert: 0,05) de
     Legt die maximale Anzahl von nicht korrelierten Dimensionen pro Basket fest – standardmäßig begrenzt, um die Abfragelaufzeit zu verringern.
 
 
-* `output=minimize` | `all`
+* `output=minimize` | `all` 
 
     Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt.
 
@@ -289,11 +266,11 @@ Alle Muster, die in mehr als einem angegebenen Bruchteil (Standardwert: 0,05) de
 
 
 
-#### evaluate diffpatterns
+#### <a name="evaluate-diffpatterns"></a>evaluate diffpatterns
 
      requests | evaluate diffpatterns("split=success")
 
-Mit Diffpatterns werden zwei Datasets mit der gleichen Struktur verglichen und Muster mit diskreten Attributen (Dimensionen) ermittelt, die die Unterschiede zwischen den beiden Datasets ausmachen. Diffpatterns wurde als Hilfe bei der Analyse von Fehlern entwickelt (z.B. per Vergleich von Fehlern mit Nicht-Fehlern in einem bestimmten Zeitraum). Es ist damit ggf. aber auch möglich, Unterschiede zwischen zwei beliebigen Datasets mit derselben Struktur zu ermitteln.
+Mit Diffpatterns werden zwei Datasets mit der gleichen Struktur verglichen und Muster mit diskreten Attributen (Dimensionen) ermittelt, die die Unterschiede zwischen den beiden Datasets ausmachen. Diffpatterns wurde als Hilfe bei der Analyse von Fehlern entwickelt (z.B. per Vergleich von Fehlern mit Nicht-Fehlern in einem bestimmten Zeitraum). Es ist damit ggf. aber auch möglich, Unterschiede zwischen zwei beliebigen Datasets mit derselben Struktur zu ermitteln. 
 
 **Syntax**
 
@@ -303,7 +280,7 @@ Mit Diffpatterns werden zwei Datasets mit der gleichen Struktur verglichen und M
 
 Diffpatterns gibt eine (normalerweise kleine) Gruppe von Mustern zurück, in denen unterschiedliche Teile der Daten in den beiden Datasets erfasst werden (also ein Muster, bei dem ein größerer Prozentsatz der Zeilen im ersten Dataset und ein geringerer Prozentsatz der Zeilen im zweiten Dataset erfasst wird). Jede Zeile in den Ergebnissen steht für ein Muster.
 
-Die ersten vier Spalten enthalten die Anzahl und den Prozentsatz von Spalten der ursprünglichen Abfrage, die vom Muster in jedem Dataset erfasst werden. Die fünfte Spalte enthält die Differenz (in absoluten Prozentpunkten) zwischen den beiden Datasets. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder „*“ (variable Werte).
+Die ersten vier Spalten enthalten die Anzahl und den Prozentsatz von Spalten der ursprünglichen Abfrage, die vom Muster in jedem Dataset erfasst werden. Die fünfte Spalte enthält die Differenz (in absoluten Prozentpunkten) zwischen den beiden Datasets. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder „*“ (variable Werte). 
 
 Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich überlappen und decken normalerweise nicht alle ursprünglichen Zeilen ab. Einige Zeilen fallen ggf. nicht in eines der Muster.
 
@@ -319,7 +296,8 @@ Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich ü
 
     Die Spalte muss genau zwei Werte haben. Erstellen Sie diese Spalte bei Bedarf:
 
-    `requests | extend fault = toint(resultCode) >= 500` <br/> `| evaluate diffpatterns("split=fault")`
+    `requests | extend fault = toint(resultCode) >= 500` <br/>
+    `| evaluate diffpatterns("split=fault")`
 
 * `target=` *string*
 
@@ -327,7 +305,7 @@ Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich ü
 
     `requests | evaluate diffpatterns("split=success", "target=false")`
 
-* `threshold=` *0,015<double<1* (Standardwert: 0,05)
+* `threshold=` *0,015<double<1* (Standardwert: 0,05) 
 
     Legt die minimale Musterdifferenz (Verhältnis) zwischen den beiden Datasets fest.
 
@@ -335,12 +313,12 @@ Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich ü
 
 * `output=minimize | all`
 
-    Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt.
+    Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt. 
 
  * `minimize` – Filtert alle Spalten heraus, die in den Ergebnissen nur „*“ enthalten.
  * `all` – Alle Spalten der Eingabe werden ausgegeben.
 
-* `weight_column=` *column\_name*
+* `weight_column=` *column_name*
 
     Berücksichtigt jede Zeile in der Eingabe gemäß dem angegebenen Gewicht (standardmäßig verfügt jede Spalte über eine Gewichtung von „1“). Eine übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
 
@@ -351,59 +329,60 @@ Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich ü
 
 
 
-#### evaluate extractcolumns
+#### <a name="evaluate-extractcolumns"></a>evaluate extractcolumns
 
      exceptions | take 1000 | evaluate extractcolumns("details=json") 
 
 Extractcolumns wird verwendet, um eine Tabelle mit mehreren einfachen Spalten zu füllen, die basierend auf dem Typ dynamisch aus strukturierten (bzw. halbstrukturierten) Spalten extrahiert werden. Derzeit werden nur JSON-Spalten unterstützt (sowohl dynamische als auch Zeichenfolgenserialisierung).
 
 
-* `max_columns=` *int* (Standardwert: 10)
+* `max_columns=` *int* (Standardwert: 10) 
 
-    Die Anzahl von neu hinzugefügten Spalten ist dynamisch und kann sehr hoch sein (Anzahl von einzelnen Schlüsseln in allen JSON-Datensätzen), sodass wir sie beschränken müssen. Die neuen Spalten werden in absteigender Reihenfolge basierend auf ihrer Häufigkeit sortiert, und bis zu „max\_columns“ (Zahlenwert) werden der Tabelle hinzugefügt.
+    Die Anzahl von neu hinzugefügten Spalten ist dynamisch und kann sehr hoch sein (Anzahl von einzelnen Schlüsseln in allen JSON-Datensätzen), sodass wir sie beschränken müssen. Die neuen Spalten werden in absteigender Reihenfolge basierend auf ihrer Häufigkeit sortiert, und bis zu „max_columns“ (Zahlenwert) werden der Tabelle hinzugefügt.
 
     `T | evaluate extractcolumns("json_column_name=json", "max_columns=30")`
 
 
-* `min_percent=`*double* (Standardwert: 10,0)
+* `min_percent=` *double* (Standardwert: 10,0) 
 
-    Eine weitere Möglichkeit zum Beschränken neuer Spalten, indem Spalten ignoriert werden, deren Häufigkeit unter „min\_percent“ liegt.
+    Eine weitere Möglichkeit zum Beschränken neuer Spalten, indem Spalten ignoriert werden, deren Häufigkeit unter „min_percent“ liegt.
 
     `T | evaluate extractcolumns("json_column_name=json", "min_percent=60")`
 
 
-* `add_prefix=` *bool* (Standardwert: true)
+* `add_prefix=` *bool* (Standardwert: true) 
 
     Bei „true“ wird der Name der komplexen Spalte den extrahierten Spaltennamen als Präfix hinzugefügt.
 
 
-* `prefix_delimiter=` *string* (Standardwert: "\_")
+* `prefix_delimiter=` *string* (Standardwert: „_“) 
 
-    Wenn „add\_prefix=true“ gilt, definiert dieser Parameter das Trennzeichen, das verwendet wird, um die Namen der neuen Spalten zu verketten.
+    Wenn „add_prefix=true“ gilt, definiert dieser Parameter das Trennzeichen, das verwendet wird, um die Namen der neuen Spalten zu verketten.
 
-    `T | evaluate extractcolumns("json_column_name=json",` <br/> `"add_prefix=true", "prefix_delimiter=@")`
+    `T | evaluate extractcolumns("json_column_name=json",` <br/>
+    `"add_prefix=true", "prefix_delimiter=@")`
 
 
-* `keep_original=` *bool* (Standardwert: false)
+* `keep_original=` *bool* (Standardwert: false) 
 
     Bei „true“ werden die ursprünglichen Spalten (JSON) in der Ausgabetabelle beibehalten.
 
 
-* `output=query | table`
+* `output=query | table` 
 
-    Das Format der Ergebnisse.
+    Das Format der Ergebnisse. 
 
  * `table` – Die Ausgabe entspricht der empfangenen Tabelle abzüglich der angegebenen Eingabespalten und zuzüglich der neuen Spalten, die aus den Eingabespalten extrahiert wurden.
- * `query` – Die Ausgabe ist eine Zeichenfolge, die für die Abfrage steht, die Sie zum Abrufen des Ergebnisses als Tabelle durchführen.
+ * `query` – Die Ausgabe ist eine Zeichenfolge, die für die Abfrage steht, die Sie zum Abrufen des Ergebnisses als Tabelle durchführen. 
 
 
 
 
-### extend-Operator
+### <a name="extend-operator"></a>extend-Operator
 
      T | extend duration = stopTime - startTime
 
-Fügen Sie eine oder mehrere berechnete Spalten an eine Tabelle an.
+Fügen Sie eine oder mehrere berechnete Spalten an eine Tabelle an. 
 
 
 **Syntax**
@@ -413,7 +392,7 @@ Fügen Sie eine oder mehrere berechnete Spalten an eine Tabelle an.
 **Argumente**
 
 * *T:* Die Eingabetabelle.
-* *ColumnName:* Der Name einer hinzuzufügenden Spalte. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *ColumnName:* Der Name einer hinzuzufügenden Spalte. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
 * *Expression:* Eine Berechnung über die vorhandenen Spalten hinweg.
 
 **Rückgabe**
@@ -422,8 +401,8 @@ Eine Kopie der Eingabetabelle mit den angegebenen zusätzlichen Spalten.
 
 **Tipps**
 
-* Verwenden Sie stattdessen [`project`](#project-operator), wenn Sie auch einige Spalten löschen oder umbenennen möchten.
-* Verwenden Sie nicht einfach `extend`, um einen kürzeren Namen zur Verwendung in einem langen Ausdruck zu erhalten. `...| extend x = anonymous_user_id_from_client | ... func(x) ...`
+* Verwenden Sie stattdessen [`project`](#project-operator) , wenn Sie auch einige Spalten löschen oder umbenennen möchten.
+* Verwenden Sie nicht einfach `extend` , um einen kürzeren Namen zur Verwendung in einem langen Ausdruck zu erhalten. `...| extend x = anonymous_user_id_from_client | ... func(x) ...` 
 
     Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
 
@@ -436,7 +415,7 @@ traces
 ```
 
 
-### join-Operator
+### <a name="join-operator"></a>join-Operator
 
     Table1 | join (Table2) on CommonColumn
 
@@ -445,7 +424,7 @@ Führt die Zeilen zweier Tabellen anhand von übereinstimmenden Werten der angeg
 
 **Syntax**
 
-    Table1 | join [kind=Kind] \(Table2) on CommonColumn [, ...]
+    Table1 | join [kind=Kind] (Table2) on CommonColumn [, ...]
 
 **Argumente**
 
@@ -459,11 +438,11 @@ Führt die Zeilen zweier Tabellen anhand von übereinstimmenden Werten der angeg
 Eine Tabelle mit:
 
 * Einer Spalte für jede Spalte in jeder der beiden Tabellen, einschließlich der übereinstimmenden Schlüssel. Die Spalten der rechten Seite werden bei Namenskonflikten automatisch umbenannt.
-* Einer Zeile für jede Übereinstimmung zwischen den Eingabetabellen. Eine Übereinstimmung ist eine ausgewählte Zeile in einer Tabelle, die in allen `on`-Feldern denselben Wert wie eine Zeile in der anderen Tabelle aufweist.
+* Einer Zeile für jede Übereinstimmung zwischen den Eingabetabellen. Eine Übereinstimmung ist eine ausgewählte Zeile in einer Tabelle, die in allen `on` -Feldern denselben Wert wie eine Zeile in der anderen Tabelle aufweist. 
 
 * `Kind` – nicht angegeben
 
-    Nur eine Zeile der linken Seite wird für jeden Wert des `on`-Schlüssels abgeglichen. Die Ausgabe enthält eine Zeile für jede Übereinstimmung dieser Zeile mit Zeilen der rechten Seite.
+    Nur eine Zeile der linken Seite wird für jeden Wert des `on` -Schlüssels abgeglichen. Die Ausgabe enthält eine Zeile für jede Übereinstimmung dieser Zeile mit Zeilen der rechten Seite.
 
 * `Kind=inner`
  
@@ -475,7 +454,7 @@ Eine Tabelle mit:
 
 * `kind=leftanti`
 
-     Gibt alle Datensätze von der linken Seite zurück, für die keine Übereinstimmungen auf der rechten Seite vorhanden sind. Die Ergebnistabelle enthält nur die Spalten von der linken Seite.
+     Gibt alle Datensätze von der linken Seite zurück, für die keine Übereinstimmungen auf der rechten Seite vorhanden sind. Die Ergebnistabelle enthält nur die Spalten von der linken Seite. 
  
 Wenn mehrere Zeilen mit denselben Werten für diese Felder vorhanden sind, erhalten Sie Zeilen für alle Kombinationen.
 
@@ -483,35 +462,35 @@ Wenn mehrere Zeilen mit denselben Werten für diese Felder vorhanden sind, erhal
 
 Für eine optimale Leistung:
 
-* Verwenden Sie `where` und `project`, um die Anzahl von Zeilen und Spalten in den Eingabetabellen vor der Verknüpfung (`join`) zu reduzieren.
+* Verwenden Sie `where` und `project`, um die Anzahl von Zeilen und Spalten in den Eingabetabellen vor der Verknüpfung (`join`) zu reduzieren. 
 * Wenn eine Tabelle immer kleiner als die andere ist, verwenden Sie diese als die linke (weitergeleitete) Seite der Verknüpfung.
 * Die Spalten für die Verknüpfungsübereinstimmung müssen den gleichen Namen haben. Verwenden Sie ggf. den project-Operator, um eine Spalte in einer der Tabellen umzubenennen.
 
 **Beispiel**
 
-Abrufen erweiterter Aktivitäten aus einem Protokoll, in dem einige Einträge den Start und das Ende einer Aktivität markieren
+Abrufen erweiterter Aktivitäten aus einem Protokoll, in dem einige Einträge den Start und das Ende einer Aktivität markieren 
 
 ```AIQL
     let Events = MyLogTable | where type=="Event" ;
     Events
-    | where Name == "Start"
-    | project Name, City, ActivityId, StartTime=timestamp
-    | join (Events
+  	| where Name == "Start"
+  	| project Name, City, ActivityId, StartTime=timestamp
+  	| join (Events
            | where Name == "Stop"
            | project StopTime=timestamp, ActivityId)
         on ActivityId
-    | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+  	| project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
 
 ```
 
 
-### limit-Operator
+### <a name="limit-operator"></a>limit-Operator
 
      T | limit 5
 
 Gibt höchstens die angegebene Anzahl von Zeilen aus der Eingabetabelle zurück. Es gibt keine Garantie dafür, welche Datensätze zurückgegeben werden. (Verwenden Sie [`top`](#top-operator), um bestimmte Datensätze zurückzugeben.)
 
-**Alias** `take`
+**Alias::** `take`
 
 **Syntax**
 
@@ -522,17 +501,17 @@ Gibt höchstens die angegebene Anzahl von Zeilen aus der Eingabetabelle zurück.
 
 `Take` ist eine einfache und effiziente Möglichkeit, ein Beispiel für die Ergebnisse anzuzeigen, wenn Sie interaktiv arbeiten. Denken Sie daran, dass es keine Garantie dafür gibt, dass bestimmte Zeilen erzeugt bzw. in einer bestimmten Reihenfolge erzeugt werden.
 
-Für die Anzahl von Zeilen, die an den Client zurückgegeben werden, besteht auch dann eine implizite Begrenzung, wenn Sie `take` nicht verwenden. Um diese Begrenzung aufzuheben, verwenden Sie die Clientanforderungsoption `notruncation`.
+Für die Anzahl von Zeilen, die an den Client zurückgegeben werden, besteht auch dann eine implizite Begrenzung, wenn Sie `take`nicht verwenden. Um diese Begrenzung aufzuheben, verwenden Sie die Clientanforderungsoption `notruncation` .
 
 
 
-### mvexpand-Operator
+### <a name="mvexpand-operator"></a>mvexpand-Operator
 
     T | mvexpand listColumn 
 
-Erweitert eine Liste aus einer Zelle mit dynamischer Typisierung (JSON) erweitert, sodass jeder Eintrag eine separate Zeile enthält. Alle anderen Zellen in einer erweiterten Zeile sind dupliziert.
+Erweitert eine Liste aus einer Zelle mit dynamischer Typisierung (JSON) erweitert, sodass jeder Eintrag eine separate Zeile enthält. Alle anderen Zellen in einer erweiterten Zeile sind dupliziert. 
 
-(Siehe auch [`summarize makelist`](#summarize-operator), wobei die gegenteilige Funktion durchgeführt wird.)
+(Siehe auch [`summarize makelist`](#summarize-operator) , wobei die gegenteilige Funktion durchgeführt wird.)
 
 **Beispiel**
 
@@ -564,7 +543,7 @@ Das Ergebnis lautet:
 
 **Argumente**
 
-* *ColumnName:* Im Ergebnis werden Arrays in der benannten Spalte auf mehrere Zeilen erweitert.
+* *ColumnName:* Im Ergebnis werden Arrays in der benannten Spalte auf mehrere Zeilen erweitert. 
 * *ArrayExpression:* Ein Ausdruck, der ein Array zurückgibt. Bei Verwendung dieses Formulars wird eine neue Spalte hinzugefügt, und die vorhandene wird beibehalten.
 * *Name:* Ein Name für die neue Spalte.
 * *Typename:* Wandelt den erweiterten Ausdruck in einen bestimmten Typ um.
@@ -579,19 +558,19 @@ Die erweiterte Spalte ist immer dynamisch typisiert. Verwenden Sie eine Umwandlu
 Zwei Erweiterungsmodi für Eigenschaftenbehälter werden unterstützt:
 
 * `bagexpansion=bag`: Eigenschaftenbehälter werden zu Eigenschaftenbehältern mit einem einzelnen Eintrag erweitert. Dies ist die Standarderweiterung.
-* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit den beiden Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z.B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftsnamen).
+* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit den beiden Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z. B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftsnamen). 
 
 **Beispiele**
 
 
     exceptions | take 1 
-    | mvexpand details[0]
+  	| mvexpand details[0]
 
 Teilt einen Ausnahmedatensatz für jedes Element im Feld „Details“ in Zeilen auf.
 
 
 
-### parse-Operator
+### <a name="parse-operator"></a>parse-Operator
 
     T | parse "I got 2 socks for my birthday when I was 63 years old" 
     with * "got" counter:long " " present "for" * "was" year:long *
@@ -614,21 +593,21 @@ Extrahiert Werte aus einer Zeichenfolge. Kann einfache oder reguläre Ausdrücke
 **Argumente**
 
 * `T`: Die Eingabetabelle.
-* `kind`:
+* `kind`: 
  * `simple` (Standard): Die `Match`-Zeichenfolgen sind unverschlüsselte Zeichenfolgen.
- * `relaxed`: Wenn der Text nicht als der Typ einer Spalte analysiert wird, wird die Spalte auf NULL festgelegt und die Analyse fortgesetzt.
+ * `relaxed`: Wenn der Text nicht als der Typ einer Spalte analysiert wird, wird die Spalte auf NULL festgelegt und die Analyse fortgesetzt. 
  * `regex`: Die `Match`-Zeichenfolgen sind reguläre Ausdrücke.
 * `Text`: Eine Spalte oder ein anderer Ausdruck, die/der als Zeichenfolge ausgewertet wird oder in eine Zeichenfolge konvertiert werden kann.
 * *Übereinstimmung:* Gleichen Sie den nächsten Teil der Zeichenfolge auf Übereinstimmungen ab, und verwerfen Sie sie.
 * *Spalte:* Weisen Sie den nächsten Teil der Zeichenfolge dieser Spalte zu. Die Spalte wird erstellt, wenn sie nicht vorhanden ist.
-* *Typ:* Analysieren Sie den nächsten Teil der Zeichenfolge als den angegebenen Typ. Beispiele: int, date, double.
+* *Typ:* Analysieren Sie den nächsten Teil der Zeichenfolge als den angegebenen Typ. Beispiele: int, date, double. 
 
 
 **Rückgabe**
 
 Die Eingabetabelle, erweitert gemäß der Liste der Spalten.
 
-Die Elemente in der `with`-Klausel werden wiederum mit dem Quelltext abgeglichen. Jedes Element entnimmt ein Segment des Quelltexts:
+Die Elemente in der `with` -Klausel werden wiederum mit dem Quelltext abgeglichen. Jedes Element entnimmt ein Segment des Quelltexts: 
 
 * Eine Literalzeichenfolge oder ein regulärer Ausdruck verschiebt den entsprechenden Cursor um die Länge der Übereinstimmung.
 * Bei der Analyse eines regulären Ausdrucks kann ein regulärer Ausdruck den Minimierungsoperator „?“ verwenden, um so schnell wie möglich zur folgenden Übereinstimmung zu wechseln.
@@ -689,9 +668,9 @@ Wenn die Eingabe eine ordnungsgemäße Übereinstimmung für jede typisierte Spa
 ```
 
 
-x | Geschenk | Jahr
+x  | Geschenk | Jahr
 ---|---|---
-1 | socks (Socken) | 63
+1 |  socks (Socken) | 63
 
 
 *Regulärer Ausdruck:*
@@ -709,7 +688,7 @@ range x from 1 to 1 step 1
        "lockTime=" lock
        ",.*?releaseTime=" release 
        ",.*?previousLockTime=" previous:date 
-       ".*\)"
+       ".*\\)"
 | project-away x, s
 ```
 
@@ -717,11 +696,11 @@ Ressource | Slice | Sperre | Freigabe | Vorherige
 ---|---|---|---|---
 Scheduler | 16 | 02/17/2016 08:41:00 (17.02.2016) | 02/17/2016 08:41 (17.02.2016) | 2016-02-17T08:40:00Z
 
-### project-Operator
+### <a name="project-operator"></a>project-Operator
 
     T | project cost=price*quantity, price
 
-Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sollen, und fügen Sie neue berechnete Spalten ein. Die Reihenfolge der Spalten im Ergebnis wird durch die Reihenfolge der Argumente festgelegt. Nur die in den Argumenten angegebenen Spalten sind im Ergebnis enthalten: alle anderen Spalten in der Eingabe werden gelöscht. (Siehe auch `extend`.)
+Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sollen, und fügen Sie neue berechnete Spalten ein. Die Reihenfolge der Spalten im Ergebnis wird durch die Reihenfolge der Argumente festgelegt. Nur die in den Argumenten angegebenen Spalten sind im Ergebnis enthalten: alle anderen Spalten in der Eingabe werden gelöscht.  (Siehe auch `extend`.)
 
 
 **Syntax**
@@ -731,8 +710,8 @@ Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sol
 **Argumente**
 
 * *T:* Die Eingabetabelle.
-* *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist.
+* *ColumnName:* Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck*vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist. 
 
     Das Zurückgeben einer neuen berechneten Spalte mit dem gleichen Namen wie eine vorhandene Spalte der Eingabe ist zulässig.
 
@@ -742,7 +721,7 @@ Eine Tabelle, deren Spalten als Argumente benannt sind, und die ebenso viele Zei
 
 **Beispiel**
 
-Das folgende Beispiel zeigt mehrere Arten von Manipulationen, die mithilfe des `project`-Operators durchgeführt werden können. Die Eingabetabelle `T` umfasst drei Spalten vom Typ `int`: `A`, `B` und `C`.
+Das folgende Beispiel zeigt mehrere Arten von Manipulationen, die mithilfe des `project` -Operators durchgeführt werden können. Die Eingabetabelle `T` umfasst drei Spalten vom Typ `int`: `A`, `B` und `C`. 
 
 ```AIQL
 T
@@ -754,17 +733,17 @@ T
     ['where'] = client_City // rename, using a keyword as a column name
 ```
 
-### project-away-Operator
+### <a name="project-away-operator"></a>project-away-Operator
 
     T | project-away column1, column2, ...
 
 Schließt bestimmte Spalten aus. Das Ergebnis enthält alle Eingabespalten mit Ausnahme der angegebenen Spalten.
 
-### range-Operator
+### <a name="range-operator"></a>range-Operator
 
     range LastWeek from ago(7d) to now() step 1d
 
-Erzeugt eine einspaltige Tabelle mit Werten. Beachten Sie, dass keine Pipeline-Eingabe vorhanden ist.
+Erzeugt eine einspaltige Tabelle mit Werten. Beachten Sie, dass keine Pipeline-Eingabe vorhanden ist. 
 
 |LastWeek|
 |---|
@@ -784,15 +763,15 @@ Erzeugt eine einspaltige Tabelle mit Werten. Beachten Sie, dass keine Pipeline-E
 * *ColumnName:* Der Name der einzelnen Spalte in der Ausgabetabelle.
 * *Start:* Der kleinste Wert in der Ausgabe.
 * *Stop:* Der höchste in der Ausgabe generierte Wert (oder eine Grenze für den höchsten Wert, wenn *step* diesen Wert überschreitet).
-* *Step:* Die Differenz zwischen zwei aufeinanderfolgenden Werten.
+* *Step:* Die Differenz zwischen zwei aufeinanderfolgenden Werten. 
 
-Die Argumente müssen numerische Werte, Datums- oder TimeSpan-Werte sein. Sie können nicht auf die Spalten einer Tabelle verweisen. (Wenn Sie den Bereich basierend auf einer Eingabetabelle berechnen möchten, verwenden Sie die [range*-Funktion*](#range), ggf. mit dem [mvexpand-Operator](#mvexpand-operator).)
+Die Argumente müssen numerische Werte, Datums- oder TimeSpan-Werte sein. Sie können nicht auf die Spalten einer Tabelle verweisen. (Wenn Sie den Bereich basierend auf einer Eingabetabelle berechnen möchten, verwenden Sie die [range*-Funktion*](#range), ggf. mit dem [mvexpand-Operator](#mvexpand-operator).) 
 
 **Rückgabe**
 
 Eine Tabelle mit einer einzelnen Spalte namens *ColumnName*, deren Werte *Start*, *Start* + *Step* usw. bis einschließlich *Stop* lauten.
 
-**Beispiel**
+**Beispiel**  
 
 ```AIQL
 range Steps from 1 to 8 step 3
@@ -806,7 +785,7 @@ Eine Tabelle mit einer einzelnen Spalte namens `Steps` vom Typ `long`, deren Wer
 
 Eine Tabelle von Mitternacht der vergangenen sieben Tage. Die bin (floor)-Funktion reduziert jede Zeit auf den Anfang des Tages.
 
-**Beispiel**
+**Beispiel**  
 
 ```AIQL
 range timestamp from ago(4h) to now() step 1m
@@ -819,9 +798,9 @@ range timestamp from ago(4h) to now() step 1m
 | render timechart  
 ```
 
-Zeigt, wie mit dem `range`-Operator eine kleine Ad-hoc-Dimensionstabelle erstellt werden kann, mit der anschließend Nullen eingefügt werden, wenn die Quelldaten keine Werte aufweisen.
+Zeigt, wie mit dem `range` -Operator eine kleine Ad-hoc-Dimensionstabelle erstellt werden kann, mit der anschließend Nullen eingefügt werden, wenn die Quelldaten keine Werte aufweisen.
 
-### reduce-Operator
+### <a name="reduce-operator"></a>reduce-Operator
 
     exceptions | reduce by outerMessage
 
@@ -837,32 +816,32 @@ Versucht, ähnliche Datensätze zu gruppieren. Der Operator gibt für jede Grupp
 **Argumente**
 
 * *ColumnName:* Die zu untersuchende Spalte. Sie muss vom Typ „Zeichenfolge“ sein.
-* *Threshold:* Ein Wert im Bereich {0..1}. Der Standardwert ist 0,001. Bei großen Eingaben sollte der Schwellenwert klein sein.
+* *Threshold:* Ein Wert im Bereich {0..1}. Der Standardwert ist 0,001. Bei großen Eingaben sollte der Schwellenwert klein sein. 
 
 **Rückgabe**
 
 Zwei Spalten: `Pattern` und `Count`. In vielen Fällen ist das Muster ein vollständiger Wert aus der Spalte. In einigen Fällen kann es allgemeine Begriffe identifizieren und die Variablenteile durch „*“ ersetzen.
 
-Das Ergebnis von `reduce by city` kann z.B. Folgendes enthalten:
+Das Ergebnis von `reduce by city` kann z.B. Folgendes enthalten: 
 
 |Muster | Count |
 |---|---|
 | San * | 5182 |
 | Saint * | 2846 |
 | Moskau | 3726 |
-| * -auf- * | 2730 |
+| \* -auf- \* | 2730 |
 | Paris | 27163 |
 
 
-### render-Anweisung
+### <a name="render-directive"></a>render-Anweisung
 
     T | render [ table | timechart  | barchart | piechart ]
 
 „Render“ weist die Darstellungsschicht an, wie die Tabelle angezeigt werden soll. Es sollte das letzte Element der Pipe sein. Es ist eine praktische Alternative zum Verwenden der Steuerelemente in der Anzeige, und Sie können eine Abfrage mit einer bestimmten Präsentationsmethode speichern.
 
-### restrict-Klausel 
+### <a name="restrict-clause"></a>restrict-Klausel 
 
-Gibt die Tabellennamen an, die für die folgenden Operatoren zur Verfügung stehen. Beispiel:
+Gibt die Tabellennamen an, die für die folgenden Operatoren zur Verfügung stehen. Zum Beispiel:
 
     let e1 = requests | project name, client_City;
     let e2 =  requests | project name, success;
@@ -870,13 +849,13 @@ Gibt die Tabellennamen an, die für die folgenden Operatoren zur Verfügung steh
     restrict access to (e1, e2);
     union * |  take 10 
 
-### sort-Operator 
+### <a name="sort-operator"></a>sort-Operator 
 
     T | sort by country asc, price desc
 
 Sortiert die Zeilen der Eingabetabelle in Reihenfolge nach einer oder mehreren Spalten.
 
-**Alias** `order`
+**Alias::** `order`
 
 **Syntax**
 
@@ -886,7 +865,7 @@ Sortiert die Zeilen der Eingabetabelle in Reihenfolge nach einer oder mehreren S
 
 * *T:* Die zu sortierende Tabelleneingabe.
 * *Column:* Spalte von *T*, nach der sortiert werden soll. Der Typ der Werte muss „Numerisch“, „Datum“, „Uhrzeit“ oder „Zeichenfolge“ sein.
-* `asc`: Sortierung in aufsteigender Reihenfolge. Die Standardeinstellung ist `desc`, also absteigend.
+* `asc` : Sortierung in aufsteigender Reihenfolge. Die Standardeinstellung ist `desc`, also absteigend.
 
 **Beispiel**
 
@@ -895,14 +874,14 @@ Traces
 | where ActivityId == "479671d99b7b"
 | sort by Timestamp asc
 ```
-Alle Zeilen in der Tabelle „Traces“ mit einer bestimmten Aktivitäts-ID (`ActivityId`), sortiert nach ihrem Zeitstempel.
+Alle Zeilen in der Tabelle „Traces“ mit einer bestimmten Aktivitäts-ID ( `ActivityId`), sortiert nach ihrem Zeitstempel.
 
-### summarize-Operator
+### <a name="summarize-operator"></a>summarize-Operator
 
 Erzeugt eine Tabelle, die den Inhalt der Eingabetabelle aggregiert.
  
     requests
-	| summarize count(), avg(duration), makeset(client_City) 
+  	| summarize count(), avg(duration), makeset(client_City) 
       by client_CountryOrRegion
 
 Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städten in jedem Land zeigt. Die Ausgabe enthält eine Zeile für jedes unterschiedliche Land. Die Ausgabespalten zeigen die Anzahl, durchschnittliche Dauer, Städte und das Land. Alle anderen Eingabespalten werden ignoriert.
@@ -910,7 +889,7 @@ Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städ
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0]\[10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 
 **Syntax**
@@ -922,21 +901,21 @@ Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0]\[10,0, 
 
 **Argumente**
 
-* *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Aggregation:* Ein Aufruf einer Aggregationsfunktion, z.B. `count()` oder `avg()`, mit Spaltennamen als Argumente. Siehe [Aggregationen](#aggregations).
-* *GroupExpression:* Ein spaltenübergreifender Ausdruck, mit dem ein Satz von unterschiedlichen Werten bereitgestellt wird. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument.
+* *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Aggregation:* Ein Aufruf einer Aggregationsfunktion, z. B. `count()` oder `avg()`, mit Spaltennamen als Argumente. Siehe [Aggregationen](#aggregations).
+* *GroupExpression:* Ein spaltenübergreifender Ausdruck, mit dem ein Satz von unterschiedlichen Werten bereitgestellt wird. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument. 
 
 Wenn Sie einen numerischen Ausdruck oder Zeitausdruck ohne `bin()` bereitstellen, wendet Analytics ihn automatisch mit einem Intervall von `1h` für Uhrzeiten oder von `1.0` für Zahlen an.
 
-Wenn Sie kein *GroupExpression*-Element angeben, wird die gesamte Tabelle in einer einzelnen Ausgabezeile zusammengefasst.
+Wenn Sie kein *GroupExpression* -Element angeben, wird die gesamte Tabelle in einer einzelnen Ausgabezeile zusammengefasst.
 
 
 
 **Rückgabe**
 
-Die Eingabezeilen sind in Gruppen mit denselben Werten der `by`-Ausdrücke angeordnet. Anschließend werden die angegebenen Aggregationsfunktionen über jede Gruppe berechnet, dabei wird eine Zeile für jede Gruppe erzeugt. Das Ergebnis enthält die `by`-Spalten und auch mindestens eine Spalte für jedes berechnete Aggregat. (Einige Aggregationsfunktionen geben mehrere Spalten zurück.)
+Die Eingabezeilen sind in Gruppen mit denselben Werten der `by` -Ausdrücke angeordnet. Anschließend werden die angegebenen Aggregationsfunktionen über jede Gruppe berechnet, dabei wird eine Zeile für jede Gruppe erzeugt. Das Ergebnis enthält die `by` -Spalten und auch mindestens eine Spalte für jedes berechnete Aggregat. (Einige Aggregationsfunktionen geben mehrere Spalten zurück.)
 
-Das Ergebnis umfasst genauso viele Zeilen, wie unterschiedliche Kombinationen von `by`-Werten vorhanden sind. Wenn Sie Zusammenfassungen über Bereiche von numerischen Werten erstellen möchten, verwenden Sie `bin()`, um Bereiche auf diskrete Werte zu reduzieren.
+Das Ergebnis umfasst genauso viele Zeilen, wie unterschiedliche Kombinationen von `by` -Werten vorhanden sind. Wenn Sie Zusammenfassungen über Bereiche von numerischen Werten erstellen möchten, verwenden Sie `bin()` , um Bereiche auf diskrete Werte zu reduzieren.
 
 **Hinweis**
 
@@ -944,12 +923,12 @@ Auch wenn Sie beliebige Ausdrücke für die Aggregation und Gruppierung von Ausd
 
 
 
-### take-Operator
+### <a name="take-operator"></a>take-Operator
 
 Alias von [limit](#limit-operator)
 
 
-### top-Operator
+### <a name="top-operator"></a>top-Operator
 
     T | top 5 by Name desc nulls first
 
@@ -963,22 +942,22 @@ Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 **Argumente**
 
 * *NumberOfRows:* Die zurückzugebende Zeilenanzahl von *T*.
-* *Sort\_expression:* Ein Ausdruck, nach dem die Zeilen sortiert werden. Dies ist in der Regel nur ein Spaltenname. Sie können mehrere „Sort\_expression“-Angaben machen.
+* *Sort_expression:* Ein Ausdruck, nach dem die Zeilen sortiert werden. Dies ist in der Regel nur ein Spaltenname. Sie können mehrere „Sort_expression“-Angaben machen.
 * Unter Umständen wird `asc` oder `desc` (Standard) angezeigt, um zu steuern, ob die tatsächliche Auswahl vom „unteren“ oder „oberen“ Ende des Bereichs erfolgt.
-* `nulls first` oder `nulls last` steuert, wo Nullwerte zurückgegeben werden. `First` ist die Standardeinstellung für `asc`, und `last` ist die Standardeinstellung für `desc`.
+* `nulls first` oder `nulls last` steuert, wo Nullwerte angezeigt werden. `First` ist der Standardwert für `asc`, `last` ist der Standardwert für `desc`.
 
 
 **Tipps**
 
-`top 5 by name` entspricht oberflächlich betrachtet `sort by name | take 5`. Allerdings ist die Ausführung schneller, und es werden immer sortierte Ergebnisse zurückgegeben. Dies ist bei `take` nicht garantiert.
+`top 5 by name` entspricht oberflächlich betrachtet `sort by name | take 5`. Allerdings ist die Ausführung schneller, und es werden immer sortierte Ergebnisse zurückgegeben; dies ist mit `take` nicht garantiert.
 
-### top-nested operator
+### <a name="top-nested-operator"></a>top-nested operator
 
     requests 
-    | top-nested 5 of name by count()  
+  	| top-nested 5 of name by count()  
     , top-nested 3 of performanceBucket by count() 
     , top-nested 3 of client_CountryOrRegion by count()
-    | render barchart 
+  	| render barchart 
 
 Erzeugt die hierarchische Ergebnisse, wobei jede Ebene einen Drilldown der vorherigen Ebene darstellt. Dies ist nützlich für die Beantwortung von Fragen wie „Was sind die Top 5-Anfragen, welches sind für jede von diesen die 3 besten Leistungsbuckets und aus welchen 3 Ländern stammen die meisten Anforderungen für diese?“.
 
@@ -989,15 +968,15 @@ Erzeugt die hierarchische Ergebnisse, wobei jede Ebene einen Drilldown der vorhe
 **Argumente**
 
 * N:int: Anzahl der Zeilen für die Rückgabe oder die Übergabe an die nächste Ebene. In einer Abfrage mit drei Ebenen mit N = 5, 3 und 3 ist die Gesamtanzahl der Zeilen 45.
-* COLUMN: eine Spalte zum Gruppieren für die Aggregation.
-* AGGREGATION: Eine [Aggregationsfunktion](#aggregations), die auf jede Gruppe von Zeilen angewendet werden soll. Die Ergebnisse dieser Aggregationen bestimmt die obersten Gruppen für die Anzeige.
+* COLUMN: eine Spalte zum Gruppieren für die Aggregation. 
+* AGGREGATION: Eine [Aggregationsfunktion](#aggregations) , die auf jede Gruppe von Zeilen angewendet werden soll. Die Ergebnisse dieser Aggregationen bestimmt die obersten Gruppen für die Anzeige.
 
 
-### union-Operator
+### <a name="union-operator"></a>union-Operator
 
      Table1 | union Table2, Table3
 
-Verwendet mindestens zwei Tabellen und gibt die Zeilen aller Tabellen zurück.
+Verwendet mindestens zwei Tabellen und gibt die Zeilen aller Tabellen zurück. 
 
 **Syntax**
 
@@ -1008,12 +987,12 @@ Verwendet mindestens zwei Tabellen und gibt die Zeilen aller Tabellen zurück.
 **Argumente**
 
 * *Table1*, *Table2* ...
- *  Der Name einer Tabelle, z.B. `requests`, oder eine in einer [let-Klausel](#let-clause) definierte Tabelle.
+ *  Der Name einer Tabelle, z. B. `requests`, oder eine in einer [let-Klausel](#let-clause) definierte Tabelle; oder
  *  Ein Abfrageausdruck, z.B. `(requests | where success=="True")`.
  *  Ein Satz von Tabellen, die mit einem Platzhalterzeichen angegeben sind. `e*` bildet z.B. die Vereinigung aller Tabellen, die in den vorhergehenden let-Klauseln definiert wurden und deren Name mit „e“ beginnt, zusammen mit der Tabelle der Ausnahmen.
-* `kind`:
- * `inner`: Das Ergebnis enthält die Teilmenge der Spalten, die in allen Eingabetabellen vorkommen.
- * `outer`: Das Ergebnis enthält alle Spalten, die in einer der Eingaben vorkommen. Zellen, die nicht durch eine Eingabezeile definiert wurden, werden auf `null` festgelegt.
+* `kind`: 
+ * `inner` : Das Ergebnis enthält die Teilmenge der Spalten, die in allen Eingabetabellen vorkommen.
+ * `outer` : Das Ergebnis enthält alle Spalten, die in einer der Eingaben vorkommen. Zellen, die nicht durch eine Eingabezeile definiert wurden, werden auf `null`festgelegt.
 * `withsource=`*ColumnName:* Wenn diese Einstellung festgelegt ist, enthält die Ausgabe eine Spalte namens *ColumnName*, deren Wert angibt, aus welchen Quelltabellen die einzelnen Zeilen stammen.
 
 **Rückgabe**
@@ -1051,13 +1030,13 @@ exceptions
 
 Mit dieser effizienteren Version wird dasselbe Ergebnis erzielt. Jede Tabelle wird vor dem Erstellen der Union gefiltert.
 
-### where-Operator
+### <a name="where-operator"></a>where-Operator
 
      requests | where resultCode==200
 
 Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
-**Alias** `filter`
+**Alias::** `filter`
 
 **Syntax**
 
@@ -1065,8 +1044,8 @@ Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
 **Argumente**
 
-* *T*: Die tabellarische Eingabe, deren Datensätze gefiltert werden sollen.
-* *Predicate*: Ein `boolean`-[Ausdruck](#boolean) über die Spalten von *T*. Er wird für jede Zeile in *T* ausgewertet.
+* *T* : Die tabellarische Eingabe, deren Datensätze gefiltert werden sollen.
+* *Predicate*: Ein `boolean`-[-Ausdruck](#boolean) über die Spalten von *T*. Er wird für jede Zeile in *T* ausgewertet.
 
 **Rückgabe**
 
@@ -1076,7 +1055,7 @@ Zeilen in *T*, für die *Predicate* auf `true` festgelegt ist.
 
 So erzielen Sie die optimale Leistung:
 
-* **Verwenden Sie einfache Vergleiche** zwischen Spaltennamen und Konstanten. („Konstant“ bedeutet konstant innerhalb der Tabelle, d.h. `now()` und `ago()` sind ebenso in Ordnung wie skalare Werte, die mithilfe einer [`let`-Klausel](#let-clause) zugewiesen werden.)
+* **Verwenden Sie einfache Vergleiche** zwischen dem Spaltennamen und Konstanten. („Konstant“ bedeutet konstant innerhalb der Tabelle, d. h. `now()` und `ago()` sind ebenso in Ordnung wie skalare Werte, die mithilfe einer [`let`-Klausel](#let-clause) zugewiesen werden.)
 
     Beispielsweise wird `where Timestamp >= ago(1d)` gegenüber `where floor(Timestamp, 1d) == ago(1d)` bevorzugt.
 
@@ -1092,12 +1071,12 @@ traces
     and ActivityId == SubActivityIt 
 ```
 
-Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen.
+Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen. 
 
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
 
-### where-in-Operator
+### <a name="where-in-operator"></a>where-in-Operator
 
     requests | where resultCode !in (200, 201)
 
@@ -1115,24 +1094,24 @@ Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, 
 
 Verwenden Sie `in`, um nur Zeilen einzubeziehen, in denen `col` einem der `expr1...`-Ausdrücke entspricht.
 
-Verwenden Sie `!in`, um nur Zeilen einzubeziehen, in denen `col` keinem der `expr1...`-Ausdrücke entspricht.
+Verwenden Sie `!in`, um nur Zeilen einzubeziehen, in denen `col` keinem der `expr1...`-Ausdrücke entspricht.  
 
 
-## Aggregationen
+## <a name="aggregations"></a>Aggregationen
 
 Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [summarize-Vorgang](#summarize-operator) erstellt werden. In dieser Abfrage ist z.B. dcount() eine Aggregatfunktion:
 
     requests | summarize dcount(name) by success
 
-### beliebig 
+### <a name="any"></a>beliebig 
 
     any(Expression)
 
 Wählt eine Zeile der Gruppe nach dem Zufallsprinzip aus, und gibt den Wert des angegebenen Ausdrucks zurück.
 
-Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten.
+Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten. 
 
-**Beispiel**
+**Beispiel**  
 
 ```
 
@@ -1142,15 +1121,16 @@ traces
 | top 10 by count_level desc 
 ```
 
-<a name="argmin"></a> <a name="argmax"></a>
-### argmin, argmax
+<a name="argmin"></a>
+<a name="argmax"></a>
+### <a name="argmin,-argmax"></a>argmin, argmax
 
     argmin(ExprToMinimize, * | ExprToReturn  [ , ... ] )
     argmax(ExprToMaximize, * | ExprToReturn  [ , ... ] ) 
 
 Findet eine Zeile in der Gruppe, die *ExprToMaximize* minimiert/maximiert, und gibt den Wert von *ExprToReturn* zurück (oder `*`, um die gesamte Zeile zurückzugeben).
 
-**Tipp**: Die durchlaufenen Spalten werden automatisch umbenannt. Um sicherzustellen, dass Sie die richtigen Namen verwenden, überprüfen Sie die Ergebnisse mit `take 5`, bevor Sie die Ergebnisse an einen anderen Operator weiterreichen.
+**Tipp**: Die durchlaufenen Spalten werden automatisch umbenannt. Um sicherzustellen, dass Sie die richtigen Namen verwenden, überprüfen Sie die Ergebnisse mit `take 5` , bevor Sie die Ergebnisse an einen anderen Operator weiterreichen.
 
 **Beispiele**
 
@@ -1166,7 +1146,7 @@ Zeigen Sie alle Details der längsten Anforderung, nicht nur den Zeitstempel:
 Suchen Sie den niedrigsten Wert jeder Metrik, zusammen mit dem Zeitstempel und anderen Daten:
 
     metrics 
-    | summarize minValue=argmin(value, *) 
+  	| summarize minValue=argmin(value, *) 
       by name
 
 
@@ -1174,19 +1154,19 @@ Suchen Sie den niedrigsten Wert jeder Metrik, zusammen mit dem Zeitstempel und a
  
 
 
-### avg
+### <a name="avg"></a>avg
 
     avg(Expression)
 
 Berechnet den Durchschnitt von *Expression* in der Gruppe.
 
-### buildschema
+### <a name="buildschema"></a>buildschema
 
     buildschema(DynamicExpression)
 
-Gibt das minimale Schema zurück, das alle Werte von *DynamicExpression* zulässt.
+Gibt das minimale Schema zurück, das alle Werte von *DynamicExpression*zulässt. 
 
-Der Parameterspaltentyp sollte `dynamic` lauten (Array oder ein Eigenschaftenbehälter).
+Der Parameterspaltentyp sollte `dynamic` lauten (Array oder ein Eigenschaftenbehälter). 
 
 **Beispiel**
 
@@ -1242,18 +1222,18 @@ Das Schema weist auf Folgendes hin:
 * Das Stammobjekt ist ein Container mit den vier Eigenschaften x, y, z und t.
 * Die Eigenschaft „x“ kann entweder den Typ „int“ oder „string“ haben.
 * Bei der Eigenschaft „y“ kann es sich entweder um den Typ „double“ handeln oder um einen anderen Container mit einer Eigenschaft namens „w“ vom Typ „string“.
-* Das ``indexer``-Schlüsselwort gibt an, dass „z“ und „t“ Arrays sind.
+* Das ``indexer`` -Schlüsselwort gibt an, dass „z“ und „t“ Arrays sind.
 * Jedes Element im Array „z“ ist entweder eine ganze Zahl oder eine Zeichenfolge (string).
 * „t“ ist ein Array von Zeichenfolgen.
 * Jede Eigenschaft ist implizit optional, und jedes Array kann leer sein.
 
-##### Schemamodell
+##### <a name="schema-model"></a>Schemamodell
 
 Die Syntax des zurückgegebenen Schemas lautet folgendermaßen:
 
     Container ::= '{' Named-type* '}';
     Named-type ::= (name | '"`indexer`"') ':' Type;
-	Type ::= Primitive-type | Union-type | Container;
+    Type ::= Primitive-type | Union-type | Container;
     Union-type ::= '[' Type* ']';
     Primitive-type ::= "int" | "string" | ...;
 
@@ -1268,17 +1248,17 @@ Sie entsprechen einer Teilmenge der TypeScript-Typanmerkungen, die als dynamisch
     }
 
 
-### count
+### <a name="count"></a>count
 
     count([ Predicate ])
 
-Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet wird. Wenn *Predicate* nicht angegeben ist, wird die Gesamtzahl von Datensätzen in der Gruppe zurückgegeben.
+Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet wird. Wenn *Predicate* nicht angegeben ist, wird die Gesamtzahl von Datensätzen in der Gruppe zurückgegeben. 
 
 **Leistungstipp**: Verwenden Sie `summarize count(filter)` anstelle von `where filter | summarize count()`.
 
 > [AZURE.NOTE] Vermeiden Sie count() zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade eine [Stichprobe](app-insights-sampling.md) erstellt wird, ist die Anzahl von Datenpunkten in Application Insights geringer als die Anzahl von tatsächlichen Ereignissen. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
 
-### countif
+### <a name="countif"></a>countif
 
     countif(Predicate)
 
@@ -1288,7 +1268,7 @@ Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet 
 
 > [AZURE.NOTE] Verwenden Sie „countif()“ nicht zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Sampling](app-insights-sampling.md) durchgeführt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl von tatsächlichen Ereignissen. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
 
-### dcount
+### <a name="dcount"></a>dcount
 
     dcount( Expression [ ,  Accuracy ])
 
@@ -1303,13 +1283,13 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 **Beispiel**
 
     pageViews 
-    | summarize cities=dcount(client_City) 
+  	| summarize cities=dcount(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-reference/dcount.png)
 
 
-### dcountif
+### <a name="dcountif"></a>dcountif
 
     dcountif( Expression, Predicate [ ,  Accuracy ])
 
@@ -1324,38 +1304,38 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 **Beispiel**
 
     pageViews 
-    | summarize cities=dcountif(client_City, client_City startswith "St") 
+  	| summarize cities=dcountif(client_City, client_City startswith "St") 
       by client_CountryOrRegion
 
 
-### makelist
+### <a name="makelist"></a>makelist
 
     makelist(Expr [ ,  MaxListSize ] )
 
-Gibt ein `dynamic`-Array (JSON) aller Werte von *Expr* in der Gruppe zurück.
+Gibt ein `dynamic` -Array (JSON) aller Werte von *Expr* in der Gruppe zurück. 
 
 * *MaxListSize* ist eine optionale Ganzzahlbegrenzung für die maximale Anzahl von zurückgegebenen Elementen (Standardwert: *128*).
 
-### makeset
+### <a name="makeset"></a>makeset
 
     makeset(Expression [ , MaxSetSize ] )
 
-Gibt ein `dynamic`-Array (JSON) des Satzes eindeutiger Werte zurück, die *Expr* in der Gruppe annimmt. (Tipp: Verwenden Sie zum Zählen der unterschiedlichen Werte [`dcount`](#dcount).)
+Gibt ein `dynamic` -Array (JSON) des Satzes eindeutiger Werte zurück, die *Expr* in der Gruppe annimmt. (Tipp: Verwenden Sie zum Zählen der unterschiedlichen Werte [`dcount`](#dcount).)
   
 *  *MaxSetSize* ist eine optionale Ganzzahlbegrenzung für die maximale Anzahl von zurückgegebenen Elementen (Standardwert: *128*).
 
 **Beispiel**
 
     pageViews 
-    | summarize cities=makeset(client_City) 
+  	| summarize cities=makeset(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-reference/makeset.png)
 
-Siehe auch den [`mvexpand`-Operator](#mvexpand-operator) für die umgekehrte Funktion.
+Siehe auch den [`mvexpand` -Operator](#mvexpand-operator) für die umgekehrte Funktion.
 
 
-### max, min
+### <a name="max,-min"></a>max, min
 
     max(Expr)
 
@@ -1365,11 +1345,14 @@ Berechnet das Maximum von *Expr*.
 
 Berechnet das Minimum von *Expr*.
 
-**Tipp:** Hiermit erhalten Sie ausschließlich die Mindest- oder Maximalwerte, z.B. den höchsten oder niedrigsten Preis. Wenn Sie jedoch andere Spalten in der Zeile abrufen möchten, z.B. den Namen des Lieferanten mit dem niedrigsten Preis, verwenden Sie [argmin oder argmax](#argmin-argmax).
+**Tipp:** Hiermit erhalten Sie ausschließlich die Mindest- oder Maximalwerte, z. B. den höchsten oder niedrigsten Preis. Wenn Sie jedoch andere Spalten in der Zeile abrufen möchten, z. B. den Namen des Lieferanten mit dem niedrigsten Preis, verwenden Sie [argmin oder argmax](#argmin-argmax).
 
 
-<a name="percentile"></a> <a name="percentiles"></a> <a name="percentilew"></a> <a name="percentilesw"></a>
-### percentile, percentiles, percentilew, percentilesw
+<a name="percentile"></a>
+<a name="percentiles"></a>
+<a name="percentilew"></a>
+<a name="percentilesw"></a>
+### <a name="percentile,-percentiles,-percentilew,-percentilesw"></a>percentile, percentiles, percentilew, percentilesw
 
     percentile(Expression, Percentile)
 
@@ -1381,7 +1364,7 @@ Gibt eine Schätzung für *Expression* des angegebenen Perzentils in der Gruppe 
 
     percentilew(Expression, WeightExpression, Percentile)
 
-Gewichtetes Perzentil. Verwenden Sie dieses für vorab aggregierte Daten. `WeightExpression` ist eine Ganzzahl, die angibt, wie viele ursprüngliche Zeilen von jeder aggregierten Zeile dargestellt werden.
+Gewichtetes Perzentil. Verwenden Sie dieses für vorab aggregierte Daten.  `WeightExpression` ist eine Ganzzahl, die angibt, wie viele ursprüngliche Zeilen von jeder aggregierten Zeile dargestellt werden.
 
     percentilesw(Expression, WeightExpression, Percentile1, [, Percentile2 ...])
 
@@ -1390,10 +1373,10 @@ Wie `percentilew()`, berechnet aber eine Anzahl von Perzentilwerten.
 **Beispiele**
 
 
-Der Wert von `duration`, der größer als 95% und kleiner als 5% des Stichprobensatzes ist, berechnet für jeden Anforderungsnamen:
+Der Wert von `duration` , der größer als 95% und kleiner als 5% des Stichprobensatzes ist, berechnet für jeden Anforderungsnamen:
 
     request 
-    | summarize percentile(duration, 95)
+  	| summarize percentile(duration, 95)
       by name
 
 Lassen Sie „by...“ aus, um den Wert für die gesamte Tabelle zu berechnen.
@@ -1402,26 +1385,26 @@ Berechnen Sie gleichzeitig mehrere Perzentile für andere Anforderungsnamen:
 
     
     requests 
-    | summarize 
+  	| summarize 
         percentiles(duration, 5, 20, 50, 80, 95) 
       by name
 
 ![](./media/app-insights-analytics-reference/percentiles.png)
 
-Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
+Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
 
 Berechnen Sie mehrere Statistiken:
 
     requests 
-    | summarize 
+  	| summarize 
         count(), 
         avg(Duration),
         percentiles(Duration, 5, 50, 95)
       by name
 
-#### Gewichtete Perzentile
+#### <a name="weighted-percentiles"></a>Gewichtete Perzentile
 
-Verwenden Sie die Funktionen für gewichtete Perzentile in Fällen, in denen die Daten vorab aggregiert wurden.
+Verwenden Sie die Funktionen für gewichtete Perzentile in Fällen, in denen die Daten vorab aggregiert wurden. 
 
 Angenommen, Ihre App führt mehrere Tausend Vorgänge pro Sekunde aus, und Sie möchten die Latenzzeit dieser Vorgänge wissen. Eine einfache Lösung wäre es, eine Application Insights-Anforderung oder ein benutzerdefiniertes Ereignis für jeden Vorgang zu generieren. Das würde zu viel Datenverkehr führen, obwohl dieser durch adaptives Sampling reduziert würde. Wenn Sie jedoch eine bessere Lösung implementieren möchten, schreiben Sie Code in Ihre App, mit dem die Daten vor dem Senden an Application Insights aggregiert werden. Die aggregierte Zusammenfassung wird in regelmäßigen Abständen gesendet, sodass die Datenrate auf wenige Punkte pro Minute reduziert wird.
 
@@ -1431,7 +1414,7 @@ Ihr Code verwendet einen Datenstrom von Latenzmessungen in Millisekunden. Zum Be
 
 Es werden die Messungen in den folgenden Containern gezählt: `{ 10, 20, 30, 40, 50, 100 }`
 
-In regelmäßigen Abständen wird eine Serie von TrackEvent-Aufrufen ausgeführt – einer pro Bucket, mit benutzerdefinierten Messungen in jedem Aufruf:
+In regelmäßigen Abständen wird eine Serie von TrackEvent-Aufrufen ausgeführt – einer pro Bucket, mit benutzerdefinierten Messungen in jedem Aufruf: 
 
     foreach (var latency in bins.Keys)
     { telemetry.TrackEvent("latency", null, 
@@ -1451,64 +1434,66 @@ Um ein exaktes Bild der ursprünglichen Verteilung der Ereignislatenzen zu erhal
 
     customEvents | summarize percentilesw(latency, opCount, 20, 50, 80)
 
-Die Ergebnisse sind die gleichen, als hätten wir einfache `percentiles`-Elemente im ursprünglichen Messungssatz verwendet.
+Die Ergebnisse sind die gleichen, als hätten wir einfache `percentiles` -Elemente im ursprünglichen Messungssatz verwendet.
 
 > [AZURE.NOTE] Gewichtete Perzentile gelten nicht für [Stichprobendaten](app-insights-sampling.md), bei denen jede erfasste Zeile eine zufällige Stichprobe der ursprünglichen Zeilen darstellt, und keinen Container. Die einfachen Perzentilfunktionen eignen sich für Stichprobendaten.
 
-#### Schätzungsfehler in Perzentilen
+#### <a name="estimation-error-in-percentiles"></a>Schätzungsfehler in Perzentilen
 
-Das Perzentilaggregat stellt einen ungefähren Wert mithilfe von [T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf) bereit.
+Das Perzentilaggregat stellt einen ungefähren Wert mithilfe von [T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf)bereit. 
 
-Einige wichtige Punkte:
+Einige wichtige Punkte: 
 
-* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt.
+* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt. 
 * Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Perzentil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
 
-### stdev
+### <a name="stdev"></a>stdev
 
      stdev(Expr)
 
 Gibt die Standardabweichung von *Expr* für die Gruppe zurück.
 
-### variance
+### <a name="variance"></a>variance
 
     variance(Expr)
 
 Gibt die Varianz von *Expr* für die Gruppe zurück.
 
-### sum
+### <a name="sum"></a>sum
 
     sum(Expr)
 
-Gibt die Summe von *Expr* für die Gruppe zurück.
+Gibt die Summe von *Expr* für die Gruppe zurück.                      
 
 
-## Skalare
+## <a name="scalars"></a>Skalare
 
-[Typumwandlungen](#casts) | [Vergleiche](#scalar-comparisons) <br/> [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull) | [toscalar](#toscalar)
+[Umwandlungen](#casts) | [Vergleiche](#scalar-comparisons)
+<br/>
+[gettype](#gettype) | [hash](#hash) | [iff](#iff) |  [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull) | [toscalar](#toscalar)
 
 Die unterstützten Typen sind:
 
-| Typ | Weitere(r) Name(n) | Entsprechender .NET-Typ |
+| Typ      | Weitere(r) Name(n)   | Entsprechender .NET-Typ |
 | --------- | -------------------- | -------------------- |
-| `bool` | `boolean` | `System.Boolean` |
-| `datetime`| `date` | `System.DateTime` |
-| `dynamic` | | `System.Object` |
-| `guid` | `uuid`, `uniqueid` | `System.Guid` |
-| `int` | | `System.Int32` |
-| `long` | | `System.Int64` |
-| `double` | `real` | `System.Double` |
-| `string` | | `System.String` |
-| `timespan`| `time` | `System.TimeSpan` |
+| `bool`    | `boolean`            | `System.Boolean`     |
+| `datetime`| `date`               | `System.DateTime`    |
+| `dynamic` |                      | `System.Object`      |
+| `guid`    | `uuid`, `uniqueid`   | `System.Guid`        |
+| `int`     |                      | `System.Int32`       |
+| `long`    |                      | `System.Int64`       |
+| `double`  | `real`               | `System.Double`      |
+| `string`  |                      | `System.String`      |
+| `timespan`| `time`               | `System.TimeSpan`    |
 
-### Typumwandlungen
+### <a name="casts"></a>Typumwandlungen
 
 Sie können einen Typ in einen anderen umwandeln. Wenn die Konvertierung sinnvoll ist, wird sie im Allgemeinen auch funktionieren:
 
     todouble(10), todouble("10.6")
     toint(10.6) == 11
     floor(10.6) == 10
-	toint("200")
+    toint("200")
     todatetime("2016-04-28 13:02")
     totimespan("1.5d"), totimespan("1.12:00:00")
     toguid("00000000-0000-0000-0000-000000000000")
@@ -1520,7 +1505,7 @@ Sie können einen Typ in einen anderen umwandeln. Wenn die Konvertierung sinnvol
     iff(notnull(todouble(customDimensions.myValue)),
        ..., ...)
 
-### Skalare Vergleiche
+### <a name="scalar-comparisons"></a>Skalare Vergleiche
 
 ||
 ---|---
@@ -1536,7 +1521,7 @@ Sie können einen Typ in einen anderen umwandeln. Wenn die Konvertierung sinnvol
 
 
 
-### gettype
+### <a name="gettype"></a>gettype
 
 **Rückgabe**
 
@@ -1560,7 +1545,7 @@ Eine Zeichenfolge, die den zugrunde liegenden Speichertyp des einzigen Arguments
 `gettype(parsejson(''))` |`"null"`
 `gettype(1.2)==real` | `true`
 
-### hash
+### <a name="hash"></a>hash
 
 **Syntax**
 
@@ -1568,8 +1553,8 @@ Eine Zeichenfolge, die den zugrunde liegenden Speichertyp des einzigen Arguments
 
 **Argumente**
 
-* *source:* Der Quellskalar, mit dem der Hash berechnet wird.
-* *mod:* Der Modulowert, der auf das Hashergebnis angewendet werden soll.
+* *source:*Der Quellskalar, mit dem der Hash berechnet wird.
+* *mod:*Der Modulowert, der auf das Hashergebnis angewendet werden soll.
 
 **Rückgabe**
 
@@ -1582,7 +1567,7 @@ hash("World")                   // 1846988464401551951
 hash("World", 100)              // 51 (1846988464401551951 % 100)
 hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
-### iff
+### <a name="iff"></a>iff
 
 Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder den Wert des zweiten oder den Wert des dritten Arguments zurück, und zwar abhängig davon, ob das Prädikat `true` oder `false` lautet. Die zweiten und dritten Argumente müssen vom gleichen Typ sein.
 
@@ -1593,8 +1578,8 @@ Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder
 
 **Argumente**
 
-* *predicate:* Ein Ausdruck, der als `boolean`-Wert ausgewertet wird.
-* *ifTrue:* Ein Ausdruck, der ausgewertet und dessen Wert von der Funktion zurückgegeben wird, wenn *predicate* als `true` ausgewertet wird.
+* *predicate*: Ein Ausdruck, der als `boolean`-Wert ausgewertet wird.
+* *ifTrue*: Ein Ausdruck, der ausgewertet und dessen Wert von der Funktion zurückgegeben wird, wenn *predicate* als `true` ausgewertet wird.
 * *ifFalse:* Ein Ausdruck, der ausgewertet und dessen Wert von der Funktion zurückgegeben wird, wenn *predicate* als `false` ausgewertet wird.
 
 **Rückgabe**
@@ -1607,8 +1592,10 @@ Diese Funktion gibt den Wert von *ifTrue* zurück, wenn *predicate* als `true` a
 iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ```
 
-<a name="isnull"/></a> <a name="isnotnull"/></a> <a name="notnull"/></a>
-### isnull, isnotnull, notnull
+<a name="isnull"/></a>
+<a name="isnotnull"/></a>
+<a name="notnull"/></a>
+### <a name="isnull,-isnotnull,-notnull"></a>isnull, isnotnull, notnull
 
     isnull(parsejson("")) == true
 
@@ -1635,7 +1622,7 @@ True oder False, je nachdem, ob ist der Wert null oder nicht null ist.
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 **Beispiel**
@@ -1646,7 +1633,7 @@ Beachten Sie, dass es andere Möglichkeiten gibt, diesen Effekt zu erreichen:
 
     T | summarize count(PossiblyNull)
 
-### toscalar
+### <a name="toscalar"></a>toscalar
 
 Wertet eine Abfrage oder einen Ausdruck aus und gibt das Ergebnis als einzelnen Wert zurück. Diese Funktion eignet sich für die gestaffelte Berechnungen; z.B. um die Gesamtanzahl von Ereignissen zu berechnen und diese dann als Basislinie zu verwenden.
 
@@ -1668,60 +1655,61 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
         | where floor(timestamp, 1d) == floor(ago(5d),1d) | count);
     // List the counts relative to that baseline:
     requests | summarize daycount = count() by floor(timestamp, 1d)  
-    | extend relative = daycount - baseline
+  	| extend relative = daycount - baseline
 ```
 
 
 
 
-### Boolesche Literale
+### <a name="boolean-literals"></a>Boolesche Literale
 
-	true == 1
+    true == 1
     false == 0
     gettype(true) == "int8"
     typeof(bool) == typeof(int8)
 
-### Boolesche Operatoren
+### <a name="boolean-operators"></a>Boolesche Operatoren
 
-	and 
+    and 
     or 
 
     
 
-## Zahlen
+## <a name="numbers"></a>Zahlen
 
-[abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) |[log](#log) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+[abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) |[log](#log) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) 
+| [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
-### Numerische Literale
+### <a name="numeric-literals"></a>Numerische Literale
 
 |||
 |---|---
 |`42`|`long`
 |`42.0`|`real`
 
-### Arithmetische Operatoren
+### <a name="arithmetic-operators"></a>Arithmetische Operatoren
 
 || |
 |---|-------------|
-| + | Hinzufügen |
-| - | Subtrahieren |
-| * | Multiplizieren |
-| / | Dividieren |
-| % | Modulo |
+| + | Hinzufügen         |
+| - | Subtrahieren    |
+| * | Multiplizieren    |
+| / | Dividieren      |
+| % | Modulo      |
 ||
-| `<` | Kleiner 
-| `<=` | Kleiner gleich 
-| `>` | Größer 
-|`>=` | Größer gleich 
-| `<>` | Ungleich 
-| `!=` | Ungleich
+|`<` |Kleiner
+|`<=`|Kleiner oder gleich
+|`>` |Größer
+|`>=`|Größer oder gleich
+|`<>`|Not Equals
+|`!=`|Not Equals 
 
 
-### abs
+### <a name="abs"></a>abs
 
 **Syntax**
 
-	abs(x)
+    abs(x)
 
 **Argumente**
 
@@ -1732,9 +1720,9 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
     iff(x>0, x, -x)
 
 <a name="bin"></a><a name="floor"></a>
-### bin, floor
+### <a name="bin,-floor"></a>bin, floor
 
-Rundet Werte auf eine ganze Zahl ab, die ein Vielfaches der angegebenen bin-Größe ist. Wird häufig in der [`summarize by`](#summarize-operator)-Abfrage verwendet. Wenn Sie über einen verstreuten Satz von Werten verfügen, werden sie zu einem kleineren Satz bestimmter Werte gruppiert.
+Rundet Werte auf eine ganze Zahl ab, die ein Vielfaches der angegebenen bin-Größe ist. Wird häufig in der [`summarize by`](#summarize-operator) -Abfrage verwendet. Wenn Sie über einen verstreuten Satz von Werten verfügen, werden sie zu einem kleineren Satz bestimmter Werte gruppiert.
 
 Alias: `floor`
 
@@ -1745,22 +1733,22 @@ Alias: `floor`
 
 **Argumente**
 
-* *value:* Eine Zahl, ein Datum oder ein Zeitraum.
-* *roundTo:* Die bin-Größe. Eine Zahl, ein Datum oder ein Zeitraum zum Teilen des Werts (*value*).
+* *value:* Eine Zahl, ein Datum oder ein Zeitraum. 
+* *roundTo:* Die bin-Größe. Eine Zahl, ein Datum oder ein Zeitraum zum Teilen des Werts ( *value*). 
 
 **Rückgabe**
 
-Das nächste Vielfache von *roundTo* unter dem Wert (*value*).
+Das nächste Vielfache von *roundTo* unter dem Wert (*value*).  
  
     (toint((value/roundTo)-0.5)) * roundTo
 
 **Beispiele**
 
-Ausdruck | Ergebnis
+Expression | Ergebnis
 ---|---
 `bin(4.5, 1)` | `4.0`
 `bin(time(16d), 7d)` | `14d`
-`bin(datetime(1953-04-15 22:25:07), 1d)`| `datetime(1953-04-15)`
+`bin(datetime(1953-04-15 22:25:07), 1d)`|  `datetime(1953-04-15)`
 
 
 Der folgende Ausdruck berechnet ein Histogramm der Dauer mit einer Bucketgröße von 1 Sekunde:
@@ -1770,18 +1758,18 @@ Der folgende Ausdruck berechnet ein Histogramm der Dauer mit einer Bucketgröße
     T | summarize Hits=count() by bin(Duration, 1s)
 ```
 
-### exp
+### <a name="exp"></a>exp
 
     exp(v)   // e raised to the power v
     exp2(v)  // 2 raised to the power v
     exp10(v) // 10 raised to the power v
 
 
-### floor
+### <a name="floor"></a>floor
 
 Ein Alias für [`bin()`](#bin).
 
-### Gamma
+### <a name="gamma"></a>Gamma
 
 Die [Gammafunktion](https://en.wikipedia.org/wiki/Gamma_function)
 
@@ -1798,7 +1786,7 @@ Bei positiven ganzen Zahlen gilt: `gamma(x) == (x-1)!`, z.B. `gamma(5) == 4 * 3 
 Siehe auch [Loggamma](#loggamma).
 
 
-### log
+### <a name="log"></a>log
 
     log(v)    // Natural logarithm of v
     log2(v)   // Logarithm base 2 of v
@@ -1807,7 +1795,7 @@ Siehe auch [Loggamma](#loggamma).
 
 `v` sollte eine reelle Zahl > 0 sein. Andernfalls wird Null zurückgegeben.
 
-### Loggamma
+### <a name="loggamma"></a>Loggamma
 
 
 Der natürliche Logarithmus des absoluten Werts der [Gammafunktion](#gamma)
@@ -1821,19 +1809,19 @@ Der natürliche Logarithmus des absoluten Werts der [Gammafunktion](#gamma)
 * *x:* Eine reelle Zahl
 
 
-### rand
+### <a name="rand"></a>rand
 
 Ein Zufallszahlengenerator.
 
-* `rand()`: Eine reelle Zahl zwischen 0,0 und 1,0.
-* `rand(n)`: Eine ganze Zahl zwischen 0 und n-1.
+* `rand()` : Eine reelle Zahl zwischen 0,0 und 1,0.
+* `rand(n)` : Eine ganze Zahl zwischen 0 und n-1.
 
 
 
 
-### sqrt
+### <a name="sqrt"></a>sqrt
 
-Die Quadratwurzelfunktion.
+Die Quadratwurzelfunktion.  
 
 **Syntax**
 
@@ -1845,13 +1833,13 @@ Die Quadratwurzelfunktion.
 
 **Rückgabe**
 
-* Eine positive Zahl, sodass Folgendes gilt: `sqrt(x) * sqrt(x) == x`.
-* `null`, wenn das Argument negativ ist oder nicht in einen `real`-Wert konvertiert werden kann.
+* Eine positive Zahl, sodass Folgendes gilt: `sqrt(x) * sqrt(x) == x`
+* `null`, wenn das Argument negativ ist oder nicht in einen `real`-Wert konvertiert werden kann. 
 
 
 
 
-### toint
+### <a name="toint"></a>toint
 
     toint(100)        // cast from long
     toint(20.7) == 21 // nearest int from double
@@ -1860,7 +1848,7 @@ Die Quadratwurzelfunktion.
     toint(a[0])       // cast from dynamic
     toint(b.c)        // cast from dynamic
 
-### tolong
+### <a name="tolong"></a>tolong
 
     tolong(20.7) == 21 // conversion from double
     tolong(20.4) == 20 // conversion from double
@@ -1869,7 +1857,7 @@ Die Quadratwurzelfunktion.
     tolong(b.c)        // cast from dynamic
 
 
-### todouble
+### <a name="todouble"></a>todouble
 
     todouble(20) == 20.0 // conversion from long or int
     todouble(" 12.34 ")  // parse string
@@ -1878,12 +1866,12 @@ Die Quadratwurzelfunktion.
 
 
 
-## Datum und Uhrzeit
+## <a name="date-and-time"></a>Datum und Uhrzeit
 
 
-[ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)| [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
+[ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) |  [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)|  [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-### Datum und Uhrzeit – Literale
+### <a name="date-and-time-literals"></a>Datum und Uhrzeit – Literale
 
 |||
 ---|---
@@ -1905,9 +1893,9 @@ Die Quadratwurzelfunktion.
 `time("2")`| 2 Tage
 `time("0.12:34:56.7")`|`0d+12h+34m+56.7s`
 
-### Datum und Uhrzeit – Ausdrücke
+### <a name="date-and-time-expressions"></a>Datum und Uhrzeit – Ausdrücke
 
-Ausdruck |Ergebnis
+Expression |Ergebnis
 ---|---
 `datetime("2015-01-02") - datetime("2015-01-01")`| `1d`
 `datetime("2015-01-01") + 1d`| `datetime("2015-01-02")`
@@ -1927,9 +1915,9 @@ Ausdruck |Ergebnis
 
 
 
-### ago
+### <a name="ago"></a>ago
 
-Subtrahiert den angegebenen Zeitraum von der aktuellen UTC-Uhrzeit. Wie `now()` kann diese Funktion mehrmals in einer Anweisung verwendet werden, und die UTC-Uhrzeit, auf die verwiesen wird, ist für alle Instanziierungen identisch.
+Subtrahiert den angegebenen Zeitraum von der aktuellen UTC-Uhrzeit. Wie `now()`kann diese Funktion mehrmals in einer Anweisung verwendet werden, und die UTC-Uhrzeit, auf die verwiesen wird, ist für alle Instanziierungen identisch.
 
 **Syntax**
 
@@ -1937,7 +1925,7 @@ Subtrahiert den angegebenen Zeitraum von der aktuellen UTC-Uhrzeit. Wie `now()` 
 
 **Argumente**
 
-* *a\_timespan:* Intervall, das von der aktuellen UTC-Uhrzeit (`now()`) subtrahiert werden soll.
+* *a_timespan:* Intervall, das von der aktuellen UTC-Uhrzeit (`now()`) subtrahiert werden soll.
 
 **Rückgabe**
 
@@ -1952,7 +1940,7 @@ Alle Zeilen mit einem Zeitstempel der letzten Stunde:
     T | where timestamp > ago(1h)
 ```
 
-### datepart
+### <a name="datepart"></a>datepart
 
     datepart("Day", datetime(2015-12-14)) == 14
 
@@ -1972,7 +1960,7 @@ Extrahiert einen bestimmten Abschnitt eines Datums als ganze Zahl.
 Long-Wert, der den angegebenen Abschnitt darstellt.
 
 
-### dayofmonth
+### <a name="dayofmonth"></a>dayofmonth
 
     dayofmonth(datetime("2016-05-15")) == 15 
 
@@ -1987,7 +1975,7 @@ Die Ordinalzahl des Tags im Monat.
 * `a_date`: Ein `datetime`-Wert.
 
 
-### dayofweek
+### <a name="dayofweek"></a>dayofweek
 
     dayofweek(datetime("2015-12-14")) == 1d  // Monday
 
@@ -2003,7 +1991,7 @@ Die Anzahl von Tagen (als ganze Zahl) seit dem vorherigen Sonntag als `timespan`
 
 **Rückgabe**
 
-Die Dauer (als `timespan`-Wert) seit Mitternacht zu Beginn des vorhergehenden Sonntags, abgerundet auf die Anzahl von Tagen als ganze Zahl.
+Die Dauer (als `timespan` -Wert) seit Mitternacht zu Beginn des vorhergehenden Sonntags, abgerundet auf die Anzahl von Tagen als ganze Zahl.
 
 **Beispiele**
 
@@ -2012,7 +2000,7 @@ dayofweek(1947-11-29 10:00:05)  // time(6.00:00:00), indicating Saturday
 dayofweek(1970-05-11)           // time(1.00:00:00), indicating Monday
 ```
 
-### dayofyear
+### <a name="dayofyear"></a>dayofyear
 
     dayofyear(datetime("2016-05-31")) == 152 
     dayofyear(datetime("2016-01-01")) == 1 
@@ -2028,7 +2016,7 @@ Die Ordinalzahl des Tags im Jahr.
 * `a_date`: Ein `datetime`-Wert.
 
 <a name="endofday"></a><a name="endofweek"></a><a name="endofmonth"></a><a name="endofyear"></a>
-### endofday, endofweek, endofmonth, endofyear
+### <a name="endofday,-endofweek,-endofmonth,-endofyear"></a>endofday, endofweek, endofmonth, endofyear
 
     dt = datetime("2016-05-23 12:34")
 
@@ -2038,7 +2026,7 @@ Die Ordinalzahl des Tags im Jahr.
     endofyear(dt) == 2016-12-31T23:59:59.999 
 
 
-### getmonth
+### <a name="getmonth"></a>getmonth
 
 Rufen Sie die Monatsnummer (1-12) aus einem datetime-Wert ab.
 
@@ -2048,7 +2036,7 @@ Rufen Sie die Monatsnummer (1-12) aus einem datetime-Wert ab.
 
     --> month == 10
 
-### getyear
+### <a name="getyear"></a>getyear
 
 Rufen Sie das Jahr aus einem datetime-Wert ab.
 
@@ -2058,7 +2046,7 @@ Rufen Sie das Jahr aus einem datetime-Wert ab.
 
     --> year == 2015
 
-### now
+### <a name="now"></a>now
 
     now()
     now(-2d)
@@ -2088,7 +2076,7 @@ T | where ... | extend Elapsed=now() - timestamp
 ```
 
 <a name="startofday"></a><a name="startofweek"></a><a name="startofmonth"></a><a name="startofyear"></a>
-### startofday, startofweek, startofmonth, startofyear
+### <a name="startofday,-startofweek,-startofmonth,-startofyear"></a>startofday, startofweek, startofmonth, startofyear
 
     date=datetime("2016-05-23 12:34:56")
 
@@ -2099,7 +2087,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 
 
-### todatetime
+### <a name="todatetime"></a>todatetime
 
 Alias: `datetime()`
 
@@ -2117,7 +2105,7 @@ Alias: `datetime()`
          ..., ...)
 
 
-### totimespan
+### <a name="totimespan"></a>totimespan
 
 Alias: `timespan()`
 
@@ -2125,7 +2113,7 @@ Alias: `timespan()`
     totimespan("21h")
     totimespan(request.duration)
 
-### weekofyear
+### <a name="weekofyear"></a>weekofyear
 
     weekofyear(datetime("2016-05-14")) == 21
     weekofyear(datetime("2016-01-03")) == 1
@@ -2134,28 +2122,28 @@ Alias: `timespan()`
 Das ganzzahlige Ergebnis stellt die Wochennummer nach ISO-8601-Standard dar. Der erste Tag einer Woche ist Sonntag, und die erste Woche des Jahres ist die Woche, in die der erste Donnerstag des Jahres fällt. (Die letzten Tage eines Jahres können daher einige Tage der 1. Woche des Folgejahres enthalten, und die ersten Tage können einige Tage der Woche 52 oder 53 des vorherigen Jahres enthalten.)
 
 
-## String
+## <a name="string"></a>String
 
-[countof](#countof) | [extract](#extract) | [extractjson](#extractjson) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
+[countof](#countof) | [extract](#extract) | [extractjson](#extractjson)  | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
 
 
-### Zeichenfolgenliterale
+### <a name="string-literals"></a>Zeichenfolgenliterale
 
 Die Regeln sind mit JavaScript identisch.
 
-Zeichenfolgen können entweder in einfachen oder doppelten Anführungszeichen eingeschlossen sein.
+Zeichenfolgen können entweder in einfachen oder doppelten Anführungszeichen eingeschlossen sein. 
 
-Es wird ein umgekehrter Schrägstrich (``) verwendet, um Zeichen wie z.B. `\t` (Tabstopp), `\n` (Zeilenvorschub) und Instanzen des einschließenden Anführungszeichens mit einem Escapezeichen zu versehen.
+Es wird ein umgekehrter Schrägstrich (`\`) verwendet, um Zeichen wie z.B. `\t` (Tabstopp), `\n` (Zeilenvorschub) und Instanzen des einschließenden Anführungszeichens mit einem Escapezeichen zu versehen.
 
 * `'this is a "string" literal in single \' quotes'`
-* `"this is a 'string' literal in double " quotes"`
+* `"this is a 'string' literal in double \" quotes"`
 * `@"C:\backslash\not\escaped\with @ prefix"`
 
-### Verborgene Zeichenfolgenliterale
+### <a name="obfuscated-string-literals"></a>Verborgene Zeichenfolgenliterale
 
 Verborgene Zeichenfolgenliterale sind Zeichenfolgen, die Analytics bei der Ausgabe der Zeichenfolge ausblendet (etwa bei der Ablaufverfolgung). Bei diesem Vorgang werden alle verborgenen Zeichen durch ein Startzeichen (`*`) ersetzt.
 
-Stellen Sie zum Erstellen eines verborgenen Zeichenfolgenliterals `h` oder „H“ voran. Beispiel:
+Stellen Sie zum Erstellen eines verborgenen Zeichenfolgenliterals `h` oder „H“ voran. Zum Beispiel:
 
 ```
 h'hello'
@@ -2163,14 +2151,14 @@ h@'world'
 h"hello"
 ```
 
-### Zeichenfolgenvergleiche
+### <a name="string-comparisons"></a>Zeichenfolgenvergleiche
 
-Operator|Beschreibung|Groß-/Kleinschreibung|Beispiel für „True“
+Operators|Beschreibung|Groß-/Kleinschreibung|Beispiel für „True“
 ---|---|---|---
 `==`|Equals |Ja| `"aBc" == "aBc"`
-`<>` `!=`|Ungleich|Ja| `"abc" <> "ABC"`
+`<>` `!=`|Not Equals|Ja| `"abc" <> "ABC"`
 `=~`|Equals |Nein| `"abc" =~ "ABC"`
-`!~`|Ungleich |Nein| `"aBc" !~ "xyz"`
+`!~`|Not Equals |Nein| `"aBc" !~ "xyz"`
 `has`|Rechte Seite (RS) ist ein ganzer Begriff innerhalb der linken Seite (LS)|Nein| `"North America" has "america"`
 `!has`|RS ist kein vollständiger Begriff innerhalb der LS|Nein|`"North America" !has "amer"` 
 `hasprefix`|RS ist ein Präfix eines Begriffs in LS|Nein|`"North America" hasprefix "ame"`
@@ -2192,13 +2180,13 @@ Operator|Beschreibung|Groß-/Kleinschreibung|Beispiel für „True“
 Verwenden Sie `has` oder `in`, wenn Sie auf das Vorhandensein eines vollständigen lexikalischen Begriffs hin testen, d.h. ein Symbol oder ein alphanumerisches Wort, begrenzt durch nicht alphanumerische Zeichen oder den Anfang oder das Ende des Felds. `has` ist schneller als `contains`, `startswith` oder `endswith`. Die erste dieser Abfragen wird schneller ausgeführt:
 
     EventLog | where continent has "North" | count;
-	EventLog | where continent contains "nor" | count
+    EventLog | where continent contains "nor" | count
 
 
 
 
 
-### countof
+### <a name="countof"></a>countof
 
     countof("The cat sat on the mat", "at") == 3
     countof("The cat sat on the mat", @"\b.at\b", "regex") == 3
@@ -2213,7 +2201,7 @@ Zählt die Vorkommnisse einer Teilzeichenfolge in einer Zeichenfolge. Einfache Z
 
 * *text:* Eine Zeichenfolge.
 * *search:* Die einfache Zeichenfolge oder der reguläre Ausdruck, die bzw. der in *text* abgeglichen werden soll.
-* *kind:* `"normal"|"regex"` Standardwert: `normal`.
+* *kind:* `"normal"|"regex"` Standardwert: `normal`. 
 
 **Rückgabe**
 
@@ -2233,7 +2221,7 @@ Angabe, wie oft die Suchzeichenfolge im Container abgeglichen werden kann. Einfa
 
 
 
-### extract
+### <a name="extract"></a>extract
 
     extract("x=([0-9.]+)", 1, "hello x=45.6|wo") == "45.6"
 
@@ -2247,14 +2235,14 @@ Ruft eine Übereinstimmung für einen [regulären Ausdruck](#regular-expressions
 
 * *regex:* Ein [regulärer Ausdruck](#regular-expressions).
 * *captureGroup:* Eine positive `int`-Konstante, die die zu extrahierende Erfassungsgruppe angibt. 0 steht für die vollständige Übereinstimmung, 1 für den mit der ersten „("Klammer")“ übereinstimmenden Wert im regulären Ausdruck, 2 oder höher für nachfolgende Klammern.
-* *text:* Ein zu suchender `string`-Wert.
-* *typeLiteral:* Ein optionales Typliteral (z.B. `typeof(long)`). Die extrahierte Teilzeichenfolge wird, sofern angegeben, in diesen Typ konvertiert.
+* *text:* Ein `string` -Wert.
+* *typeLiteral:* Ein optionales Typliteral (z. B. `typeof(long)`). Die extrahierte Teilzeichenfolge wird, sofern angegeben, in diesen Typ konvertiert. 
 
 **Rückgabe**
 
 Wenn mit *regex* eine Übereinstimmung in *text* gefunden wird: die mit der angegebenen Erfassungsgruppe *captureGroup* abgeglichene Teilzeichenfolge, optional konvertiert in *typeLiteral*.
 
-Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehler auftritt: `null`.
+Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehler auftritt: `null`. 
 
 **Beispiele**
 
@@ -2272,12 +2260,15 @@ Dieses Beispiel entspricht `substring(Text, 2, 4)`:
 extract("^.{2,2}(.{4,4})", 1, Text)
 ```
 
-<a name="notempty"></a> <a name="isnotempty"></a> <a name="isempty"></a>
-### isempty, isnotempty, notempty
+<a name="notempty"></a>
+<a name="isnotempty"></a>
+<a name="isempty"></a>
+### <a name="isempty,-isnotempty,-notempty"></a>isempty, isnotempty, notempty
 
     isempty("") == true
 
-„True“, wenn das Argument eine leere Zeichenfolge oder null ist. Siehe auch [isnull](#isnull).
+„True“, wenn das Argument eine leere Zeichenfolge oder null ist.
+Siehe auch [isnull](#isnull).
 
 
 **Syntax**
@@ -2299,7 +2290,7 @@ Gibt an, ob das Argument eine leere Zeichenfolge oder isnull ist.
 | "" | true
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 
@@ -2311,7 +2302,7 @@ Gibt an, ob das Argument eine leere Zeichenfolge oder isnull ist.
 
 
 
-### replace
+### <a name="replace"></a>replace
 
 Ersetzen Sie alle regex-Übereinstimmungen mit einer anderen Zeichenfolge.
 
@@ -2321,7 +2312,7 @@ Ersetzen Sie alle regex-Übereinstimmungen mit einer anderen Zeichenfolge.
 
 **Argumente**
 
-* *regex:* Der [reguläre Ausdruck](https://github.com/google/re2/wiki/Syntax) zum Durchsuchen von *text*. Er kann Erfassungsgruppen in „('Klammern')“ enthalten.
+* *regex:* Der [reguläre Ausdruck](https://github.com/google/re2/wiki/Syntax) zum Durchsuchen von *text*. Er kann Erfassungsgruppen in „('Klammern')“ enthalten. 
 * *rewrite:* Der reguläre Ersetzungsausdruck für jede Übereinstimmung, die mit *matchingRegex* erzielt wurde. Verwenden Sie `\0`, um auf die gesamte Übereinstimmung zu verweisen: `\1` für die erste Erfassungsgruppe, `\2` usw. für nachfolgende Erfassungsgruppen.
 * *text:* Eine Zeichenfolge.
 
@@ -2341,18 +2332,18 @@ range x from 1 to 5 step 1
 
 Bietet die folgenden Ergebnisse:
 
-| x | str | replaced|
+| x    | str | replaced|
 |---|---|---|
-| 1 | Nummer lautet 1.000000 | Nummer lautete 1.000000|
-| 2 | Nummer lautet 2.000000 | Nummer lautete 2.000000|
-| 3 | Nummer lautet 3.000000 | Nummer lautete 3.000000|
-| 4 | Nummer lautet 4.000000 | Nummer lautete 4.000000|
-| 5 | Nummer lautet 5.000000 | Nummer lautete 5.000000|
+| 1    | Nummer lautet 1.000000  | Nummer lautete 1.000000|
+| 2    | Nummer lautet 2.000000  | Nummer lautete 2.000000|
+| 3    | Nummer lautet 3.000000  | Nummer lautete 3.000000|
+| 4    | Nummer lautet 4.000000  | Nummer lautete 4.000000|
+| 5    | Nummer lautet 5.000000  | Nummer lautete 5.000000|
  
 
 
 
-### split
+### <a name="split"></a>split
 
     split("aaa_bbb_ccc", "_") == ["aaa","bbb","ccc"]
 
@@ -2364,9 +2355,9 @@ Teilt eine angegebene Zeichenfolge gemäß einem angegebenen Trennzeichen, und g
 
 **Argumente**
 
-* *source:* Die Quellzeichenfolge, die dem angegebenen Trennzeichen entsprechend geteilt wird.
-* *delimiter:* Das Trennzeichen, das zum Teilen der Quellzeichenfolge verwendet wird.
-* *requestedIndex:* Ein optionaler nullbasierter Index (`int`). Sofern angegeben, enthält das zurückgegebene Zeichenfolgenarray die angeforderte Teilzeichenfolge, sofern vorhanden.
+* *source:*Die Quellzeichenfolge, die dem angegebenen Trennzeichen entsprechend geteilt wird.
+* *delimiter:*Das Trennzeichen, das zum Teilen der Quellzeichenfolge verwendet wird.
+* *requestedIndex*: Ein optionaler nullbasierter Index (`int`). Sofern angegeben, enthält das zurückgegebene Zeichenfolgenarray die angeforderte Teilzeichenfolge, sofern vorhanden. 
 
 **Rückgabe**
 
@@ -2385,19 +2376,19 @@ split("aabbcc", "bb")         // ["aa","cc"]
 
 
 
-### strcat
+### <a name="strcat"></a>strcat
 
     strcat("hello", " ", "world")
 
 Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
 
-### strlen
+### <a name="strlen"></a>strlen
 
     strlen("hello") == 5
 
 Länge einer Zeichenfolge.
 
-### substring
+### <a name="substring"></a>substring
 
     substring("abcdefg", 1, 2) == "bc"
 
@@ -2411,7 +2402,7 @@ Extrahiert eine Teilzeichenfolge aus einer angegebenen Quellzeichenfolge, beginn
 
 * *source:* Die Quellzeichenfolge, aus der die Teilzeichenfolge entnommen wird.
 * *startingIndex:* Die nullbasierte Position des Anfangszeichens der angeforderten Teilzeichenfolge.
-* *length:* Ein optionaler Parameter, der zur Angabe der angeforderten Anzahl von Zeichen in der Teilzeichenfolge verwendet werden kann.
+* *length:* Ein optionaler Parameter, der zur Angabe der angeforderten Anzahl von Zeichen in der Teilzeichenfolge verwendet werden kann. 
 
 **Rückgabe**
 
@@ -2425,13 +2416,13 @@ substring("123456", 2, 2)     // 34
 substring("ABCD", 0, 2)       // AB
 ```
 
-### tolower
+### <a name="tolower"></a>tolower
 
     tolower("HELLO") == "hello"
 
 Konvertiert eine Zeichenfolge in Kleinbuchstaben.
 
-### toupper
+### <a name="toupper"></a>toupper
 
     toupper("hello") == "HELLO"
 
@@ -2439,14 +2430,16 @@ Konvertiert eine Zeichenfolge in Großbuchstaben.
 
 
 
-### GUIDs
+### <a name="guids"></a>GUIDs
 
     guid(00000000-1111-2222-3333-055567f333de)
 
 
-## Arrays, Objekte und Dynamik
+## <a name="arrays,-objects-and-dynamic"></a>Arrays, Objekte und Dynamik
 
-[Literale](#dynamic-literals) | [Typumwandlung](#casting-dynamic-objects) | [Operatoren](#operators) | [let-Klauseln](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic) | [zip](#zip)
+[Literale](#dynamic-literals) | [Umwandlung](#casting-dynamic-objects) | [Operatoren](#operators) | [let-Klauseln](#dynamic-objects-in-let-clauses)
+<br/>
+[arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic) | [zip](#zip)
 
 
 Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der Wert in `details` ist ein Array.
@@ -2456,7 +2449,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **Indizierung:** Arrays und Objekte werden wie in JavaScript indiziert:
 
     exceptions | take 1
-    | extend 
+  	| extend 
         line = details[0].parsedStack[0].line,
         stackdepth = arraylength(details[0].parsedStack)
 
@@ -2465,11 +2458,11 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **Typumwandlung:** In einigen Fällen ist es erforderlich, ein Element umzuwandeln, das Sie aus einem Objekt extrahieren, da der Typ variieren kann. `summarize...to` benötigt beispielsweise einen bestimmten Typ:
 
     exceptions 
-    | summarize count() 
+  	| summarize count() 
       by toint(details[0].parsedStack[0].line)
 
     exceptions 
-    | summarize count() 
+  	| summarize count() 
       by tostring(details[0].parsedStack[0].assembly)
 
 **Literale:** Um ein explizites Array oder ein Eigenschaftenbehälterobjekt zu erstellen, schreiben Sie es als JSON-Zeichenfolge mit Typumwandlung:
@@ -2480,7 +2473,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **mvexpand:** Verwenden Sie „mvexpand“, um die Eigenschaften eines Objekts in separate Zeilen aufzuteilen:
 
     exceptions | take 1 
-    | mvexpand details[0].parsedStack[0]
+  	| mvexpand details[0].parsedStack[0]
 
 
 ![](./media/app-insights-analytics-reference/410.png)
@@ -2489,8 +2482,8 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **treepath:** Zum Auffinden aller Pfade in einem komplexen Objekt:
 
     exceptions | take 1 | project timestamp, details 
-    | extend path = treepath(details) 
-    | mvexpand path
+  	| extend path = treepath(details) 
+  	| mvexpand path
 
 
 ![](./media/app-insights-analytics-reference/420.png)
@@ -2526,14 +2519,14 @@ Beachten Sie, dass mit `indexer` markiert wird, an welcher Stelle Sie einen nume
 
 
 
-### Array- und Objektliterale
+### <a name="array-and-object-literals"></a>Array- und Objektliterale
 
 Verwenden Sie `parsejson` zum Erstellen eines dynamischen Literals (Alias: `todynamic`) mit einem JSON-Zeichenfolgenargument:
 
-* `parsejson('[43, 21, 65]')`: ein Array mit Zahlen
-* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`
-* `parsejson('21')`: ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
-* `parsejson('"21"')`: ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
+* `parsejson('[43, 21, 65]')` : ein Array mit Zahlen
+* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
+* `parsejson('21')` : ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
+* `parsejson('"21"')` : ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
 
 Beachten Sie, dass bei JSON, im Gegensatz zu JavaScript, die Verwendung doppelter Anführungszeichen (`"`) um Zeichenfolgen unbedingt erforderlich ist. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
 
@@ -2547,22 +2540,22 @@ T
 ```
 
 
-### Dynamische Objektfunktionen
+### <a name="dynamic-object-functions"></a>Dynamische Objektfunktionen
 
 |||
 |---|---|
-| *value* `in` *array*| TRUE, wenn ein Element von *array* vorhanden ist, das *value* entspricht.<br/>`where City in ('London', 'Paris', 'Rome')`
-| *value* `!in` *array*| TRUE, wenn kein Element von *array* vorhanden ist, das *value* entspricht.
+| *value* `in` *array*| TRUE, wenn ein Element von *array* vorhanden ist, das *value* entspricht<br/>`where City in ('London', 'Paris', 'Rome')`
+| *value* `!in` *array*| TRUE, wenn kein Element von *array* vorhanden ist, das *value* entspricht
 |[`arraylength(`array`)`](#arraylength)| Null, wenn es sich nicht um ein Array handelt.
 |[`extractjson(`path,object`)`](#extractjson)|Verwendet den Pfad zum Navigieren in das Objekt.
-|[`parsejson(`source`)`](#parsejson)| Wandelt eine JSON-Zeichenfolge in ein dynamisches Objekt um.
+|[`parsejson(`source::`)`](#parsejson)| Wandelt eine JSON-Zeichenfolge in ein dynamisches Objekt um.
 |[`range(`from,to,step`)`](#range)| Ein Array von Werten
 |[`mvexpand` listColumn](#mvexpand-operator) | Repliziert eine Zeile für jeden Wert in einer Liste in eine angegebene Zelle.
 |[`summarize buildschema(`column`)`](#buildschema) |Leitet das Typschema aus dem Spalteninhalt ab.
 |[`summarize makelist(`column`)` ](#makelist)| Reduziert die Zeilengruppen und setzt die Werte der Spalte in ein Array.
 |[`summarize makeset(`column`)`](#makeset) | Reduziert die Zeilengruppen und setzt die Werte der Spalte in ein Array ohne Duplizierung.
 
-### Dynamische Objekte in let-Klauseln
+### <a name="dynamic-objects-in-let-clauses"></a>Dynamische Objekte in let-Klauseln
 
 
 [let-Klauseln](#let-clause) speichern dynamische Werte als Zeichenfolgen, sodass diese beiden Klauseln gleichwertig sind. Beide benötigen vor der Verwendung `parsejson` (oder `todynamic`):
@@ -2575,7 +2568,7 @@ T
 
 
 
-### arraylength
+### <a name="arraylength"></a>arraylength
 
 Die Anzahl der Elemente in einem dynamischen Array.
 
@@ -2604,7 +2597,7 @@ arraylength(parsejson('21')) == null
 
 
 
-### extractjson
+### <a name="extractjson"></a>extractjson
 
     extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 
@@ -2615,8 +2608,8 @@ Rufen Sie ein angegebenes Element aus einem JSON-Text mit einem Pfadausdruck ab.
 
 ```
 
-    string extractjson(jsonPath, dataSource)​​ 
-    resulttype extractjson(jsonPath, dataSource, typeof(resulttype))​​
+    string extractjson(jsonPath, dataSource) 
+    resulttype extractjson(jsonPath, dataSource, typeof(resulttype))
 ```
 
 
@@ -2638,12 +2631,12 @@ Die [Klammer]-Notation und die Punktnotation sind gleichwertig:
 
 **Leistungstipps**
 
-* Wenden Sie vor der Verwendung von `extractjson()` where-Klauseln an.
-* Erwägen Sie stattdessen den Abgleich mit einem regulären Ausdruck mit [extract](#extract). Dies kann sehr viel schneller ausgeführt werden und ist effektiv, wenn die JSON aus einer Vorlage erstellt wird.
-* Verwenden Sie `parsejson()`, wenn Sie mehr als einen Wert aus dem JSON-Code extrahieren müssen.
+* Wenden Sie vor der Verwendung von `extractjson()`
+* Erwägen Sie stattdessen den Abgleich mit einem regulären Ausdruck mit [extract](#extract) . Dies kann sehr viel schneller ausgeführt werden und ist effektiv, wenn die JSON aus einer Vorlage erstellt wird.
+* Verwenden Sie `parsejson()` , wenn Sie mehr als einen Wert aus dem JSON-Code extrahieren müssen.
 * Ziehen Sie es in Betracht, die JSON zum Zeitpunkt der Erfassung zu analysieren, indem Sie den Typ der Spalte als dynamisch deklarieren.
 
-### JSON Path-Ausdrücke
+### <a name="json-path-expressions"></a>JSON Path-Ausdrücke
 
 |||
 |---|---|
@@ -2657,7 +2650,7 @@ Die [Klammer]-Notation und die Punktnotation sind gleichwertig:
 
 
 
-### parsejson
+### <a name="parsejson"></a>parsejson
 
 Interpretiert `string` als [JSON-Wert](http://json.org/) und gibt den Wert als `dynamic` zurück. Dies ist der Nutzung von `extractjson()` vorzuziehen, wenn Sie mehrere Elemente eines zusammengesetzten JSON-Objekts extrahieren müssen.
 
@@ -2671,17 +2664,17 @@ Interpretiert `string` als [JSON-Wert](http://json.org/) und gibt den Wert als `
 
 **Rückgabe**
 
-Ein Objekt vom Typ `dynamic`, angegeben durch *json*.
+Ein Objekt vom Typ `dynamic` , angegeben durch *json*.
 
 **Beispiel**
 
-Für das folgende Beispiel gilt: Wenn `context_custom_metrics` ein `string`-Element ist, das wie folgt aussieht:
+Für das folgende Beispiel gilt: Wenn `context_custom_metrics` ein `string`-Element ist, das wie folgt aussieht: 
 
 ```
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-dann ruft das folgende Fragment zunächst den Wert des `duration`-Slots im Objekt und daraus zwei Slots ab: `duration.value` und `duration.min` (bzw. `118.0` und `110.0`).
+dann ruft das folgende Fragment zunächst den Wert des `duration`-Slots im Objekt und daraus zwei Slots ab: `duration.value` und  `duration.min` (bzw. `118.0` und `110.0`).
 
 ```AIQL
 T
@@ -2692,7 +2685,7 @@ T
 
 
 
-### range
+### <a name="range"></a>range
 
 Die `range()`-Funktion (nicht zu verwechseln mit dem `range`-Operator) erzeugt ein dynamisches Array mit einer Reihe gleichmäßig verteilter Werte.
 
@@ -2702,13 +2695,13 @@ Die `range()`-Funktion (nicht zu verwechseln mit dem `range`-Operator) erzeugt e
 
 **Argumente**
 
-* *start:* Der Wert des ersten Elements im resultierenden Array.
+* *start:* Der Wert des ersten Elements im resultierenden Array. 
 * *stop:* Der Wert des letzten Elements im resultierenden Array oder der kleinste Wert, der größer ist als das letzte Element im resultierenden Array und in einem ganzzahligen Vielfachen von *step* von *start* enthalten ist.
 * *step:* Die Differenz zwischen zwei aufeinanderfolgenden Elementen des Arrays.
 
 **Beispiele**
 
-Das folgende Beispiel gibt `[1, 4, 7]` zurück:
+Das folgende Beispiel gibt `[1, 4, 7]`zurück:
 
 ```AIQL
 range(1, 8, 3)
@@ -2721,17 +2714,17 @@ Das folgende Beispiel gibt ein Array mit allen Tagen im Jahr 2015 zurück:
     range(datetime(2015-01-01), datetime(2015-12-31), 1d)
 ```
 
-### todynamic
+### <a name="todynamic"></a>todynamic
 
     todynamic('{"a":"a1", "b":["b1", "b2"]}')
 
 Konvertiert eine Zeichenfolge in einen dynamischen Wert.
 
-### treepath
+### <a name="treepath"></a>treepath
 
     treepath(dynamic_object)
 
-Listet alle Path-Ausdrücke auf, die Verzweigungen in einem dynamischen Objekt identifizieren.
+Listet alle Path-Ausdrücke auf, die Verzweigungen in einem dynamischen Objekt identifizieren. 
 
 **Rückgabe**
 
@@ -2748,7 +2741,7 @@ Ein Array von Path-Ausdrücken.
 
 Beachten Sie, dass „[0]“ auf das Vorhandensein eines Arrays hinweist, aber nicht den von einem bestimmten Pfad verwendeten Index angibt.
 
-### zip
+### <a name="zip"></a>zip
 
     zip(list1, list2, ...)
 
@@ -2766,9 +2759,9 @@ Kombiniert eine Gruppe von Listen in einer Tupelliste.
     => [ [1,2], [3,4], [5,null] ]
 
 
-### Namen
+### <a name="names"></a>Namen
 
-Namen können bis zu 1024 Zeichen lang sein. Die Groß-/Kleinschreibung wird beachtet, und sie können Buchstaben, Ziffern und Unterstriche (`_`) enthalten.
+Namen können bis zu 1024 Zeichen lang sein. Die Groß-/Kleinschreibung wird beachtet, und sie können Buchstaben, Ziffern und Unterstriche (`_`) enthalten. 
 
 Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubeziehen oder ein Schlüsselwort als Name zu verwenden. Beispiel:
 
@@ -2783,12 +2776,18 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 |||
 |---|---|
-|['path\\file\\n'x''] | Verwenden Sie \\ für Zeichen als Escapezeichen.|
-|["d-e.=/f#\\n"] | |
-|[@'path\\file'] | Keine Escapezeichen – \\ ist literal.|
-|[@"\\now & then"] | |
+|['path\\file\n\'x\''] | Verwenden Sie \ für Zeichen als Escapezeichen.|
+|["d-e.=/f#\n"] | |
+|[@'path\file'] | Keine Escapezeichen – \ ist literal.|
+|[@"\now & then\"] | |
 |[where] | Verwenden eines Programmiersprachenschlüsselworts als Name|
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

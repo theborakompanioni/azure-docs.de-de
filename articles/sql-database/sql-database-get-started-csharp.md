@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Ausprobieren von SQL-Datenbank: Erstellen einer SQL-Datenbank mit C# | Microsoft Azure"
-	description="Probieren Sie SQL-Datenbank für das Entwickeln von SQL- und C#-Apps aus, und erstellen Sie eine Azure SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET."
-	keywords="Ausprobieren von SQL, SQL C#"   
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Ausprobieren von SQL-Datenbank: Erstellen einer SQL-Datenbank mit C# | Microsoft Azure"
+    description="Probieren Sie SQL-Datenbank für das Entwickeln von SQL- und C#-Apps aus, und erstellen Sie eine Azure SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET."
+    keywords="Ausprobieren von SQL, SQL C#"   
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
    ms.service="sql-database"
@@ -14,10 +14,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="csharp"
    ms.workload="data-management"
-   ms.date="09/14/2016"
+   ms.date="10/04/2016"
    ms.author="sstein"/>
 
-# Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
+
+# <a name="try-sql-database:-use-c#-to-create-a-sql-database-with-the-sql-database-library-for-.net"></a>Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
 
 
 > [AZURE.SELECTOR]
@@ -25,42 +26,43 @@
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Azure SQL-Datenbankbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) erstellen. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen von Pools für elastische Datenbanken finden Sie unter [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-csharp.md).
+Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Microsoft Azure SQL-Verwaltungsbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) verwenden. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen von Pools für elastische Datenbanken finden Sie unter [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-csharp.md).
 
-Die Azure SQL-Datenbankbibliothek für .NET bietet eine [Azure-Ressourcen-Manager](../resource-group-overview.md)-basierte API, die die [Ressourcen-Manager-basierte REST-API für die SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
+Die Azure SQL-Datenbank-Verwaltungsbibliothek für .NET bietet eine [Azure Resource Manager](../resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für die SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
 
-
-> [AZURE.NOTE] Die SQL-Datenbankbibliothek für .NET befindet sich derzeit in der Vorschauphase.
-
+>[AZURE.NOTE] Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../resource-group-overview.md) unterstützt. Daher wird empfohlen, stets die aktuelle **Azure SQL-Datenbank-Verwaltungsbibliothek für .NET zu verwenden ([Dokumentationen](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Die älteren [auf dem klassischen Bereitstellungsmodell basierenden Bibliotheken](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) werden nur zum Zweck der Abwärtskompatibilität unterstützt. Daher wird die Verwendung der neueren Resource Manager-basierten Bibliotheken empfohlen.
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, klicken Sie lediglich oben auf dieser Seite auf den Link **KOSTENLOSES KONTO**. Lesen Sie anschließend diesen Artikel zu Ende.
-- Visual Studio. Eine kostenlose Version von Visual Studio finden Sie auf der Seite [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs).
+- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, klicken Sie lediglich oben auf dieser Seite auf **KOSTENLOSES KONTO**. Lesen Sie anschließend diesen Artikel zu Ende.
+- Visual Studio. Eine kostenlose Version von Visual Studio finden Sie auf der Seite [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) .
+
+>[AZURE.NOTE] In diesem Artikel wird eine neue, leere SQL-Datenbank erstellt. Ändern Sie die *CreateOrUpdateDatabase(...)*-Methode im folgenden Beispiel, um Datenbanken zu kopieren, Datenbanken zu skalieren, eine Datenbank in einem Pool zu erstellen usw. Weitere Informationen finden Sie unter den Klassen [DatabaseCreateMode](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databasecreatemode.aspx) und [DatabaseProperties](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databaseproperties.aspx).
 
 
-## Erstellen einer Konsolen-App und Installieren der erforderlichen Bibliotheken
+
+## <a name="create-a-console-app-and-install-the-required-libraries"></a>Erstellen einer Konsolen-App und Installieren der erforderlichen Bibliotheken
 
 1. Starten Sie Visual Studio.
-2. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
-3. Erstellen Sie eine **Konsolenanwendung** mit C#, und nennen Sie sie *SqlDbConsoleApp*.
+2. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
+3. Erstellen Sie eine **Konsolenanwendung** mit C#, und nennen Sie sie *SqlDbConsoleApp*
 
 
 Laden Sie zum Erstellen einer SQL-Datenbank mit C# die erforderlichen Verwaltungsbibliotheken (mithilfe der [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console)):
 
 1. Klicken Sie auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
-2. Geben Sie `Install-Package Microsoft.Azure.Management.Sql –Pre` ein, um die [Microsoft Azure SQL-Verwaltungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) zu installieren.
-3. Geben Sie `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` ein, um die [Microsoft Azure Resource Manager-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager) zu installieren.
-4. Geben Sie `Install-Package Microsoft.Azure.Common.Authentication –Pre` ein, um die [Microsoft Azure-Bibliothek für die allgemeine Authentifizierung](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication) zu installieren.
+2. Geben Sie `Install-Package Microsoft.Azure.Management.Sql –Pre` ein, um die aktuelle [Microsoft Azure SQL-Verwaltungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) zu installieren.
+3. Geben Sie `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` ein, um die [Microsoft Azure Resource Manager-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)zu installieren.
+4. Geben Sie `Install-Package Microsoft.Azure.Common.Authentication –Pre` ein, um die [Microsoft Azure-Bibliothek für die allgemeine Authentifizierung](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)zu installieren. 
 
 
 
 > [AZURE.NOTE] Bei den Beispielen in diesem Artikel wird eine synchrone Form der einzelnen API-Anforderungen und -Blöcke bis zur Beendigung des REST-Aufrufs für den zugrunde liegenden Dienst verwendet. Es stehen asynchrone Methoden zur Verfügung.
 
 
-## Erstellen eines SQL-Datenbankservers, einer Firewallregel und einer SQL-Datenbank – C#-Beispiel
+## <a name="create-a-sql-database-server,-firewall-rule,-and-sql-database---c#-example"></a>Erstellen eines SQL-Datenbankservers, einer Firewallregel und einer SQL-Datenbank – C#-Beispiel
 
-Im folgenden Beispiel werden diese Komponenten erstellt: Ressourcengruppe, Server, Firewallregel und eine SQL-Datenbank. Informationen zum Abrufen der `_subscriptionId, _tenantId, _applicationId, and _applicationSecret`-Variablen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen](#create-a-service-principal-to-access-resources).
+Im folgenden Beispiel werden diese Komponenten erstellt: Ressourcengruppe, Server, Firewallregel und eine SQL-Datenbank. Informationen zum Abrufen der Variablen `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen](#create-a-service-principal-to-access-resources).
 
 Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisieren Sie `{variables}` mit Ihren App-Werten (ohne `{}`).
 
@@ -222,7 +224,7 @@ Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisi
 
 
 
-## Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen
+## <a name="create-a-service-principal-to-access-resources"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen
 
 Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung und der Dienstprinzipal erstellt, den wir zum Authentifizieren der C#-App benötigen. Das Skript gibt Werte aus, die für das vorhergehende C#-Beispiel erforderlich sind. Ausführliche Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../resource-group-authenticate-service-principal.md).
 
@@ -267,12 +269,12 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, bietet sich die folgenden Artikel an:
 
 - [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
 
-## Weitere Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
 - [SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Datenbankklasse](https://msdn.microsoft.com/library/azure/microsoft.azure.management.sql.models.database.aspx)
@@ -291,4 +293,8 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

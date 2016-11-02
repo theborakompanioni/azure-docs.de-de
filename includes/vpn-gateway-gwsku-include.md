@@ -6,4 +6,13 @@ Für VPN-Gateways können die folgenden SKUs verwendet werden:
 - Standard
 - HighPerformance
 
-<!---HONumber=AcomDC_0928_2016-->
+Berücksichtigen Sie bei der Auswahl einer SKU die folgenden Einschränkungen:
+
+- Wenn Sie einen richtlinienbasierten VPN-Typ verwenden möchten, müssen Sie die Basic-Gateway-SKU verwenden. Richtlinienbasierte VPNs (früher als statisches Routing bezeichnet) werden in anderen SKUs nicht unterstützt.
+- BGP wird in der Basic-SKU nicht unterstützt.
+- Die gemeinsame Verwendung von VPN Gateway und ExpressRoute wird in der Basic-SKU nicht unterstützt.
+
+
+<!--HONumber=Oct16_HO2-->
+
+

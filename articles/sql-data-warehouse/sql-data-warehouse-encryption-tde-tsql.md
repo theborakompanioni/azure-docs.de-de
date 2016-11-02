@@ -13,10 +13,11 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="09/24/2016"
-   ms.author="rortloff;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="rortloff;barbkess"/>
 
-# Erste Schritte mit Transparent Data Encryption (TDE)
+
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Erste Schritte mit Transparent Data Encryption (TDE)
 
 
 > [AZURE.SELECTOR]
@@ -25,11 +26,11 @@
 - [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
 - [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-## Erforderliche Berechtigungen
+## <a name="required-permssions"></a>Erforderliche Berechtigungen
 
 Sie müssen Administrator oder ein Mitglied der Rolle „dbmanager“ sein, um Transparent Data Encryption (TDE) zu aktivieren.
 
-## Aktivieren der Verschlüsselung
+## <a name="enabling-encryption"></a>Aktivieren der Verschlüsselung
 
 Führen Sie die folgenden Schritte aus, um TDE für ein SQL Data Warehouse zu aktivieren:
 
@@ -40,7 +41,7 @@ Führen Sie die folgenden Schritte aus, um TDE für ein SQL Data Warehouse zu ak
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
-## Deaktivieren der Verschlüsselung
+## <a name="disabling-encryption"></a>Deaktivieren der Verschlüsselung
 
 Führen Sie die folgenden Schritte aus, um TDE für ein SQL Data Warehouse zu deaktivieren:
 
@@ -53,7 +54,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 
 > [AZURE.NOTE] Ein angehaltenes SQL Data Warehouse muss vor dem Ändern der TDE-Einstellungen fortgesetzt werden.
 
-## Überprüfen der Verschlüsselung
+## <a name="verifying-encryption"></a>Überprüfen der Verschlüsselung
 
 Führen Sie die folgenden Schritte aus, um den Verschlüsselungsstatus für ein SQL Data Warehouse zu überprüfen:
 
@@ -62,27 +63,31 @@ Führen Sie die folgenden Schritte aus, um den Verschlüsselungsstatus für ein 
 
 ```sql
 SELECT
-	[name],
-	[is_encrypted]
+    [name],
+    [is_encrypted]
 FROM
-	sys.databases;
+    sys.databases;
 ```
 
 Das Ergebnis ```1``` steht für eine verschlüsselte Datenbank, und mit ```0``` wird eine nicht verschlüsselte Datenbank angegeben.
 
-## Verschlüsselung-DMVs  
+## <a name="encryption-dmvs"></a>Verschlüsselung-DMVs  
 
-- [sys.databases][]
-- [sys.dm\_pdw\_nodes\_database\_encryption\_keys][]
+- [sys.databases][] 
+- [sys.dm_pdw_nodes_database_encryption_keys][]
 
 
 <!--Anchors-->
-[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx
-[sys.dm\_pdw\_nodes\_database\_encryption\_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[Transparente Datenverschlüsselung (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx  
+[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx  
 
 <!--Image references-->
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

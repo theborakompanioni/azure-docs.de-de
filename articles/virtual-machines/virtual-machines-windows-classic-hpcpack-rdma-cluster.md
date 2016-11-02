@@ -16,27 +16,28 @@ ms.service="virtual-machines-windows"
  ms.date="09/20/2016"
  ms.author="danlep"/>
 
-# Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen
+
+# <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen
 
 Richten Sie in Azure einen Windows RDMA-Cluster mit [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) und [Instanzen der H-Serie oder der rechenintensiven A-Serie](virtual-machines-windows-a8-a9-a10-a11-specs.md) ein, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Wenn Sie RDMA-fähige, Windows Server-basierte Knoten in einem HPC Pack-Cluster einrichten, wird die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendes Netzwerk mit niedriger Latenz und hohem Durchsatz abgewickelt.
 
 Weitere Informationen zum Ausführen von MPI-Workloads auf virtuellen Linux-Computern, die auf das Azure RDMA-Netzwerk zugreifen, finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
 
-## Optionen für die Bereitstellung von HPC Pack-Clustern
-Microsoft HPC Pack ist ein kostenloses Tool zum Erstellen von HPC-Clustern (lokal oder in Azure) für die Ausführung Windows- oder Linux-basierter HPC-Anwendungen. HPC Pack enthält eine Laufzeitumgebung für die Microsoft-Implementierung von Message Passing Interface für Windows (MS-MPI). Bei Verwendung mit RDMA-fähigen Instanzen unter einem unterstützten Windows Server-Betriebssystem stellt HPC Pack eine effiziente Option für die Ausführung von Windows-MPI-Anwendungen dar, die auf das Azure RDMA-Netzwerk zugreifen.
+## <a name="hpc-pack-cluster-deployment-options"></a>Optionen für die Bereitstellung von HPC Pack-Clustern
+Microsoft HPC Pack ist ein kostenloses Tool zum Erstellen von HPC-Clustern (lokal oder in Azure) für die Ausführung Windows- oder Linux-basierter HPC-Anwendungen. HPC Pack enthält eine Laufzeitumgebung für die Microsoft-Implementierung von Message Passing Interface für Windows (MS-MPI). Bei Verwendung mit RDMA-fähigen Instanzen unter einem unterstützten Windows Server-Betriebssystem stellt HPC Pack eine effiziente Option für die Ausführung von Windows-MPI-Anwendungen dar, die auf das Azure RDMA-Netzwerk zugreifen. 
 
-Dieser Artikel enthält zwei Szenarien und Links zu detaillierten Anleitungen zur Einrichtung eines Windows-RDMA-Clusters mit Microsoft HPC Pack.
+Dieser Artikel enthält zwei Szenarien und Links zu detaillierten Anleitungen zur Einrichtung eines Windows-RDMA-Clusters mit Microsoft HPC Pack. 
 
 * Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
 
 * Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
 
-Informationen zu den allgemeinen Voraussetzungen für die Verwendung rechenintensiver Instanzen mit Windows finden Sie unter [Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie](virtual-machines-windows-a8-a9-a10-a11-specs.md).
+Informationen zu den allgemeinen Voraussetzungen für die Verwendung rechenintensiver Instanzen mit Windows finden Sie unter [Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie](virtual-machines-windows-a8-a9-a10-a11-specs.md) .
 
 
 
-## Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
+## <a name="scenario-1.-deploy-compute-intensive-worker-role-instances-(paas)"></a>Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
 
 Fügen Sie aus einem vorhandenen HPC Pack-Cluster zusätzliche Computeressourcen in Azure-Workerrolleninstanzen (Azure-Knoten) hinzu, die in einem Clouddienst (PaaS) ausgeführt werden. Diese Funktion wird auch als "Burst auf Azure" mit HPC Pack bezeichnet und unterstützt verschiedene Größen für die Workerrolleninstanzen. Geben Sie beim Hinzufügen der Azure-Knoten einfach eine der RDMA-fähigen Größen an.
 
@@ -46,11 +47,11 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
 
 ![Burst auf Azure][burst]
 
-### Schritte
+### <a name="steps"></a>Schritte
 
 4. **Bereitstellen und Konfigurieren eines HPC Pack 2012 R2-Hauptknotens**
 
-    Laden Sie das neueste HPC Pack-Installationspaket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922) herunter. Voraussetzungen und Anleitungen für die Vorbereitung der Azure-Burstbereitstellung finden Sie im [Handbuch mit ersten Schritten für HPC Pack](https://technet.microsoft.com/library/jj884144.aspx) und unter [Burst to Azure with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (Burst auf Azure mit Microsoft HPC Pack).
+    Laden Sie das neueste HPC Pack-Installationspaket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922)herunter. Voraussetzungen und Anleitungen für die Vorbereitung der Azure-Burstbereitstellung finden Sie im [Handbuch mit ersten Schritten für HPC Pack](https://technet.microsoft.com/library/jj884144.aspx) und unter [Burst to Azure with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx) (Burst auf Azure mit Microsoft HPC Pack).
 
 5. **Konfigurieren eines Verwaltungszertifikats im Azure-Abonnement**
 
@@ -90,7 +91,7 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
 
 
 
-## Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
+## <a name="scenario-2.-deploy-compute-nodes-in-compute-intensive-vms-(iaas)"></a>Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
 
 In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clusterserverknoten auf virtuellen Computern bereit, die zu einer Active Directory-Domäne in einem virtuellen Azure-Netzwerk gehören. HPC Pack bietet eine Reihe von [Bereitstellungsoptionen für virtuelle Azure-Computer](virtual-machines-linux-hpcpack-cluster-options.md). Hierzu zählen unter anderem automatisierte Bereitstellungsskripts und Azure-Schnellstartvorlagen. In den unten aufgeführten Überlegungen und Schritten wird beispielsweise mithilfe des [HPC Pack-IaaS-Bereitstellungsskripts](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md) der Großteil dieses Prozesses automatisiert.
 
@@ -98,27 +99,27 @@ In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clusterserverknoten 
 
 
 
-### Schritte
+### <a name="steps"></a>Schritte
 
 1. **Erstellen eines Clusterhauptknotens und von Computeknoten-VMs durch Ausführen des IaaS-Bereitstellungsskripts von HPC Pack auf einem Clientcomputer**
 
-    Laden Sie das HPC Pack-Paket mit dem IaaS-Bereitstellungsskript aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922) herunter.
+    Laden Sie das HPC Pack-Paket mit dem IaaS-Bereitstellungsskript aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922)herunter.
 
-    Erstellen Sie zur Vorbereitung des Clientcomputers die Skriptkonfigurationsdatei, und führen Sie das Skript aus. Weitere Informationen finden Sie unter [Erstellen eines HPC-Clusters mit dem IaaS-Bereitstellungsskript von HPC Pack](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
+    Erstellen Sie zur Vorbereitung des Clientcomputers die Skriptkonfigurationsdatei, und führen Sie das Skript aus. Weitere Informationen finden Sie unter [Erstellen eines HPC-Clusters mit dem IaaS-Bereitstellungsskript von HPC Pack](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md). 
     
     Berücksichtigen Sie beim Bereitstellen RDMA-fähiger Computeknoten außerdem die folgenden Aspekte:
     
-    * **Virtuelles Netzwerk**: Geben Sie ein neues virtuelles Netzwerk in einer Region an, in der die gewünschte RDMA-fähige Instanzgröße verfügbar ist.
+    * **Virtuelles Netzwerk** : Geben Sie ein neues virtuelles Netzwerk in einer Region an, in der die gewünschte RDMA-fähige Instanzgröße verfügbar ist.
 
-    * **Windows Server-Betriebssystem**: Geben Sie zur Unterstützung von RDMA-Verbindungen für die virtuellen Computer des Computeknotens ein Windows Server 2012 R2- oder Windows Server 2012-basiertes Betriebssystem an.
+    * **Windows Server-Betriebssystem** : Geben Sie zur Unterstützung von RDMA-Verbindungen für die virtuellen Computer des Computeknotens ein Windows Server 2012 R2- oder Windows Server 2012-basiertes Betriebssystem an.
 
-    * **Clouddienste**: Es empfiehlt sich, den Hauptknoten in einem Clouddienst und die Computeknoten in einem anderen Clouddienst bereitzustellen.
+    * **Clouddienste** : Es empfiehlt sich, den Hauptknoten in einem Clouddienst und die Computeknoten in einem anderen Clouddienst bereitzustellen.
 
-    * **Hauptknotengröße**: In diesem Szenario sollte für den Hauptknoten mindestens die Größe A4 (sehr groß) verwendet werden.
+    * **Hauptknotengröße** : In diesem Szenario sollte für den Hauptknoten mindestens die Größe A4 (sehr groß) verwendet werden.
 
-    * **HpcVmDrivers-Erweiterung**: Das Bereitstellungsskript installiert den Azure-VM-Agent und die HpcVmDrivers-Erweiterung automatisch bei der Bereitstellung von Computeknoten der Größe A8 oder A9 mit einem Windows Server-Betriebssystem. Mit HpcVmDrivers werden auf den Computeknoten-VMs Treiber installiert, damit eine Verbindung mit dem RDMA-Netzwerk hergestellt werden kann.
+    * **HpcVmDrivers-Erweiterung** : Das Bereitstellungsskript installiert den Azure-VM-Agent und die HpcVmDrivers-Erweiterung automatisch bei der Bereitstellung von Computeknoten der Größe A8 oder A9 mit einem Windows Server-Betriebssystem. Mit HpcVmDrivers werden auf den Computeknoten-VMs Treiber installiert, damit eine Verbindung mit dem RDMA-Netzwerk hergestellt werden kann.
 
-    * **Clusternetzwerkkonfiguration**: Das Bereitstellungsskript richtet den HPC Pack-Cluster automatisch in Topologie 5 (alle Knoten im Unternehmensnetzwerk) ein. Diese Topologie ist für alle HPC Pack-Clusterbereitstellungen auf virtuellen Computern erforderlich. Ändern Sie die Topologie des Clusternetzwerks später nicht.
+    * **Clusternetzwerkkonfiguration** : Das Bereitstellungsskript richtet den HPC Pack-Cluster automatisch in Topologie 5 (alle Knoten im Unternehmensnetzwerk) ein. Diese Topologie ist für alle HPC Pack-Clusterbereitstellungen auf virtuellen Computern erforderlich. Ändern Sie die Topologie des Clusternetzwerks später nicht.
 
 2. **Onlineschalten der Computeknoten zum Ausführen von Aufträgen**
 
@@ -134,13 +135,13 @@ In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clusterserverknoten 
 
 
 
-## Ausführen von MPI-Anwendungen im Cluster
+## <a name="run-mpi-applications-on-the-cluster"></a>Ausführen von MPI-Anwendungen im Cluster
 
-### Beispiel: Ausführen von "mpipingpong" auf einem HPC Pack-Cluster
+### <a name="example:-run-mpipingpong-on-an-hpc-pack-cluster"></a>Beispiel: Ausführen von "mpipingpong" auf einem HPC Pack-Cluster
 
-Führen Sie zum Überprüfen einer HPC Pack-Bereitstellung der RDMA-fähigen Instanzen den HPC Pack-Befehl **mpipingpong** im Cluster aus. Mit **mpipingpong** werden wiederholt Datenpakete zwischen Knotenpaaren übermittelt, um Latenz- und Durchsatzwerte sowie Statistiken für das RDMA-fähige Anwendungsnetzwerk zu berechnen. Dieses Beispiel zeigt ein typisches Muster für die Ausführung eines MPI-Auftrags (in diesem Fall **mpipingpong**) mit dem Clusterbefehl **mpiexec**.
+Führen Sie zum Überprüfen einer HPC Pack-Bereitstellung der RDMA-fähigen Instanzen den HPC Pack-Befehl **mpipingpong** im Cluster aus. **mpipingpong** werden wiederholt Datenpakete zwischen Knotenpaaren gesendet, um Latenz- und Durchsatzwerte sowie Statistiken für das RDMA-fähige Anwendungsnetzwerk zu berechnen. Dieses Beispiel zeigt ein typisches Muster für die Ausführung eines MPI-Auftrags (in diesem Fall **mpipingpong**) mit dem Clusterbefehl **mpiexec**.
 
-In diesem Beispiel wird davon ausgegangen, dass Sie Azure-Knoten in einer „Burst-auf-Azure“-Konfiguration hinzugefügt haben ([Szenario 1](#scenario-1.-deploy-compute-intensive-worker-role-instances-(PaaS)) in diesem Artikel). Wenn Sie HPC Pack auf einem Cluster von Azure-VMs bereitgestellt haben, müssen Sie die Befehlssyntax ändern, um eine andere Knotengruppe anzugeben, und zusätzliche Umgebungsvariablen festlegen, um Netzwerkdatenverkehr an das RDMA-Netzwerk weiterzuleiten.
+In diesem Beispiel wird angenommen, dass Sie Azure Knoten in einer „Burst-auf-Azure“-Konfiguration hinzugefügt haben ([Szenario 1](#scenario-1.-deploy-compute-intensive-worker-role-instances-(PaaS) in this article)). Wenn Sie HPC Pack auf einem Cluster von Azure-VMs bereitgestellt haben, müssen Sie die Befehlssyntax ändern, um eine andere Knotengruppe anzugeben, und zusätzliche Umgebungsvariablen festlegen, um Netzwerkdatenverkehr an das RDMA-Netzwerk weiterzuleiten.
 
 
 So führen Sie "mpipingpong" auf dem Cluster aus
@@ -195,7 +196,7 @@ So führen Sie "mpipingpong" auf dem Cluster aus
   ![Pingpong-Durchsatz][pingpong2]
 
 
-### Überlegungen zu MPI-Anwendungen
+### <a name="mpi-application-considerations"></a>Überlegungen zu MPI-Anwendungen
 
 
 Im Anschluss finden Sie Aspekte, die beim Ausführen von MPI-Anwendungen mit HPC Pack in Azure berücksichtigt werden müssen. Einige gelten nur für Bereitstellungen von Azure-Knoten (Workerrolleninstanzen, die in einer "Burst-auf-Azure"-Konfiguration hinzugefügt wurden).
@@ -213,11 +214,11 @@ Im Anschluss finden Sie Aspekte, die beim Ausführen von MPI-Anwendungen mit HPC
 
 * Zum Ausführen von MPI-Anwendungen auf Azure-Instanzen registrieren Sie jede MPI-Anwendung bei der Windows-Firewall auf den Instanzen, indem Sie den Befehl **hpcfwutil** ausführen. Dadurch kann die MPI-Kommunikation über einen Port erfolgen, der von der Firewall dynamisch zugewiesen wird.
 
-    >[AZURE.NOTE] Für Burst-auf-Azure-Bereitstellungen können Sie auch einen Befehl für eine Firewallausnahme konfigurieren, der automatisch auf allen neuen Azure-Knoten ausgeführt wird, die dem Cluster hinzugefügt werden. Nachdem Sie den Befehl **hpcfwutil** ausgeführt und sichergestellt haben, dass Ihre Anwendung funktioniert, fügen Sie den Befehl einem Startskript für die Azure-Knoten hinzu. Weitere Informationen finden Sie unter [Use a Startup Script for Azure Nodes](https://technet.microsoft.com/library/jj899632.aspx) (Verwenden eines Startskripts für Azure-Knoten).
+    >[AZURE.NOTE] Für Burst-auf-Azure-Bereitstellungen können Sie auch einen Befehl für eine Firewallausnahme konfigurieren, der automatisch auf allen neuen Azure-Knoten ausgeführt wird, die dem Cluster hinzugefügt werden. Nachdem Sie den Befehl **hpcfwutil** ausgeführt und sichergestellt haben, dass Ihre Anwendung funktioniert, fügen Sie den Befehl einem Startskript für die Azure-Knoten hinzu. Weitere Informationen finden Sie unter [Verwenden eines Startskripts für Azure-Knoten](https://technet.microsoft.com/library/jj899632.aspx).
 
 
 
-* HPC Pack verwendet die Clusterumgebungsvariable CCP\_MPI\_NETMASK, um einen Bereich zulässiger Adressen für die MPI-Kommunikation anzugeben. Seit HPC Pack 2012 R2 wirkt sich die Clusterumgebungsvariable CCP\_MPI\_NETMASK nur auf die MPI-Kommunikation zwischen Clustercomputeknoten aus, die zu einer Domäne gehören (entweder lokal oder in Azure-VMs). Die Variable wird von Knoten ignoriert, die einer Burst-auf-Azure-Konfiguration hinzugefügt werden.
+* HPC Pack verwendet die Clusterumgebungsvariable CCP_MPI_NETMASK, um einen Bereich zulässiger Adressen für die MPI-Kommunikation anzugeben. Seit HPC Pack 2012 R2 wirkt sich die Clusterumgebungsvariable CCP_MPI_NETMASK nur auf die MPI-Kommunikation zwischen Clustercomputeknoten aus, die zu einer Domäne gehören (entweder lokal oder in Azure-VMs). Die Variable wird von Knoten ignoriert, die einer Burst-auf-Azure-Konfiguration hinzugefügt werden.
 
 
 * MPI-Aufträge können nicht auf Azure-Instanzen ausgeführt werden, die in verschiedenen Clouddiensten bereitgestellt wurden (z. B. in Burst-auf-Azure-Bereitstellungen mit unterschiedlichen Knotenvorlagen oder auf Azure-VM-Computeknoten, die in mehreren Clouddiensten bereitgestellt wurden). Wenn Sie über mehrere Azure-Knotenbereitstellungen verfügen, die mit unterschiedlichen Knotenvorlagen gestartet werden, darf der MPI-Auftrag nur auf einem Satz von Azure-Knoten ausgeführt werden.
@@ -226,16 +227,19 @@ Im Anschluss finden Sie Aspekte, die beim Ausführen von MPI-Anwendungen mit HPC
 * Wenn Sie Azure-Knoten zum Cluster hinzufügen und online schalten, versucht der HPC-Auftragsplanungsdienst sofort, Aufträge auf den Knoten zu starten. Wenn nur ein Teil Ihrer Workload in Azure ausgeführt werden kann, stellen Sie sicher, dass Sie Auftragsvorlagen aktualisieren oder erstellen, um exakt zu definieren, welche Auftragstypen auf Azure ausgeführt werden können. Um beispielsweise sicherzustellen, dass mit einer Auftragsvorlage übermittelte Aufträge nur auf Azure-Knoten ausgeführt werden, fügen Sie der Auftragsvorlage die Knotengruppeneigenschaft hinzu, und wählen Sie "AzureNodes" als den erforderlichen Wert aus. Wenn Sie benutzerdefinierte Gruppen für die Azure-Knoten erstellen, verwenden Sie das HPC PowerShell-Cmdlet Add-HpcGroup.
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 * Verwenden Sie bei der Entwicklung als Alternative zur Verwendung von HPC Pack den Azure Batch-Dienst, um MPI-Anwendung in verwalteten Pools von Computeknoten in Azure auszuführen. Entsprechende Informationen finden Sie unter [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](../batch/batch-mpi.md).
 
 * Weitere Informationen zum Ausführen von Linux MPI-Anwendungen, die auf das Azure RDMA-Netzwerk zugreifen, finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
 <!--Image references-->
-[burst]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/burst.png
-[iaas]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/iaas.png
+[Burst]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/burst.png
+[IaaS]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/iaas.png
 [pingpong1]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong2.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

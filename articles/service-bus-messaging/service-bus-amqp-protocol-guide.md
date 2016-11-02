@@ -1,14 +1,14 @@
 <properties 
     pageTitle="AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Microsoft Azure" 
     description="Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs." 
-    services="service-bus-messaging,service-bus,event-hubs" 
+    services="service-bus,event-hubs" 
     documentationCenter=".net" 
     authors="clemensv" 
     manager="timlt" 
     editor=""/>
 
 <tags
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
@@ -16,13 +16,14 @@
     ms.date="07/01/2016"
     ms.author="clemensv;jotaub;hillaryc;sethm"/>
 
-# AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
+
+# <a name="amqp-1.0-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
 Das Advanced Message Queueing Protocol 1.0 ist ein standardisiertes Framing- und Übertragungsprotokoll für das asynchrone, sichere und zuverlässige Übertragen von Nachrichten zwischen zwei Parteien. Es ist das primäre Protokoll von Azure Service Bus Messaging und Azure Event Hubs. Beide Dienste unterstützen auch HTTPS. Das proprietäre SBMP-Protokoll, das ebenfalls unterstützt wird, wird zugunsten von AMQP nach und nach abgeschafft.
 
 AMQP 1.0 ist das Ergebnis einer breiten Zusammenarbeit, bei der Anbieter von Middleware, z.B. Microsoft und Red Hat, mit vielen Nutzern von Messaging-Middleware, z.B. JP Morgan Chase als Vertreter der Finanzdienstleistungsbranche, kooperiert haben. Das Forum für die technische Standardisierung für das AMQP-Protokoll und Erweiterungsspezifikationen ist OASIS, das als internationaler Standard formell anerkannt ist (ISO/IEC 19494).
 
-## Ziele
+## <a name="goals"></a>Ziele
 
 In diesem Artikel sind die Kernkonzepte der AMQP 1.0-Messagingspezifikation und einige im Entwurfsstadium befindliche Erweiterungsspezifikationen zusammengefasst, die derzeit vom technischen Komitee für OASIS AMQP abschließend festgelegt werden. Außerdem wird beschrieben, wie diese Spezifikationen von Azure Service Bus implementiert und genutzt werden.
 
@@ -30,11 +31,11 @@ Das Ziel besteht darin, dass alle Entwickler, die einen vorhandenen AMQP 1.0-Cli
 
 In gängige allgemeine AMQP 1.0-Stapel, wie Apache Proton oder AMQP.NET Lite, sind alle wichtigen AMQP 1.0-Gesten bereits implementiert. Diese grundlegenden Gesten werden manchmal von einer übergeordneten API umschlossen. Bei Apache Proton sind dies sogar zwei, nämlich die imperative Messenger-API und die reaktive Reactor-API.
 
-In der folgenden Beschreibung wird davon ausgegangen, dass die Verwaltung von AMQP-Verbindungen, -Sitzungen und -Links und die Behandlung von Frameübertragungen und der Flusssteuerung vom jeweiligen Stapel übernommen wird (z.B. Apache Proton-C) und von Anwendungsentwicklern nur sehr wenig oder gar keine Aufmerksamkeit benötigt wird. Wir setzen auf abstrakte Weise das Vorhandensein einiger API-Grundlagen voraus, z.B. die Verbindungsherstellung und die Erstellung von *sender*- und *receiver*-Abstraktionsobjekten, die dann jeweils über `send()`- und `receive()`-Vorgänge verfügen.
+In der folgenden Beschreibung wird davon ausgegangen, dass die Verwaltung von AMQP-Verbindungen, -Sitzungen und -Links und die Behandlung von Frameübertragungen und der Flusssteuerung vom jeweiligen Stapel übernommen wird (z.B. Apache Proton-C) und von Anwendungsentwicklern nur sehr wenig oder gar keine Aufmerksamkeit benötigt wird. Wir setzen auf abstrakte Weise das Vorhandensein einiger API-Grundlagen voraus – etwa die Verbindungsherstellung und die Erstellung von *sender*- und *receiver*-Abstraktionsobjekten, die dann jeweils über `send()`- bzw. über `receive()`-Vorgänge verfügen.
 
 Beim Beschreiben von erweiterten Funktionen von Azure Service Bus, z.B. Durchsuchen von Nachrichten oder Verwalten von Sitzungen, werden nicht nur AMQP-Begriffe verwendet, sondern zusätzlich zu dieser vorausgesetzten API-Abstraktion wird auch eine mehrstufige Pseudoimplementierung genutzt.
 
-## Was ist AMQP?
+## <a name="what-is-amqp?"></a>Was ist AMQP?
 
 AMQP ist ein Framing- und Übertragungsprotokoll. „Framing“ bedeutet, dass eine Struktur für binäre Datenströme bereitgestellt wird, die in beide Richtungen einer Netzwerkverbindung fließen. Die Struktur ermöglicht, dass einzelne Datenblöcke – Frames – zwischen den verbundenen Parteien ausgetauscht werden. Mit den Übertragungsfunktionen wird sichergestellt, dass beide kommunizierenden Parteien ein gemeinsames Verständnis entwickeln können, wann Frames übertragen und Übertragungen als abgeschlossen angesehen werden sollen.
 
@@ -44,13 +45,13 @@ Das Protokoll kann für die symmetrische Peer-to-Peer-Kommunikation verwendet we
 
 Das AMQP 1.0-Protokoll ist auf Erweiterbarkeit ausgelegt, damit die Funktionen durch weitere Spezifikationen ausgebaut werden können. Dies wird in den drei Erweiterungsspezifikationen deutlich, die in diesem Dokument beschrieben werden. Für die Kommunikation über die vorhandene HTTPS/WebSockets-Infrastruktur, bei der die Konfiguration der nativen AMQP-TCP-Ports schwierig sein kann, wird mit einer bindenden Spezifikation definiert, wie AMQP auf WebSockets verteilt werden kann. Für die Interaktion mit der Messaginginfrastruktur nach dem Schema „Anforderung/Antwort“ für Verwaltungszwecke oder zur Bereitstellung erweiterter Funktionen sind in der AMQP-Verwaltungsspezifikation die erforderlichen Grundlagen für die Interaktion definiert. Für die Verbundautorisierungsmodell-Integration definiert die anspruchsbasierte AMQP-Sicherheitsspezifikation, wie Sie Autorisierungstoken, die Links zugeordnet sind, zuordnen und erneuern.
 
-## Grundlegende AMQP-Szenarien
+## <a name="basic-amqp-scenarios"></a>Grundlegende AMQP-Szenarien
 
 In diesem Abschnitt wird die grundlegende Nutzung von AMQP 1.0 mit Azure Service Bus beschrieben. Dies umfasst das Erstellen von Verbindungen, Sitzungen und Links und das Übertragen von Nachrichten an und von Service Bus-Entitäten wie Warteschlangen, Themen und Abonnements.
 
-Die beste Quelle für Informationen zur Funktionsweise von AMQP ist die AMQP 1.0-Spezifikation. Sie wurde aber als genaue Anleitung für die Implementierung und nicht als Leitfaden zum Protokoll geschrieben. In diesem Abschnitt geht es um die Einführung in die Terminologie, die benötigt wird, um die Nutzung von AMQP 1.0 durch Service Bus zu beschreiben. Eine umfassendere Einführung in AMQP und eine ausführlichere Beschreibung von AMQP 1.0 erhalten Sie in diesem [Videokurs][].
+Die beste Quelle für Informationen zur Funktionsweise von AMQP ist die AMQP 1.0-Spezifikation. Sie wurde aber als genaue Anleitung für die Implementierung und nicht als Leitfaden zum Protokoll geschrieben. In diesem Abschnitt geht es um die Einführung in die Terminologie, die benötigt wird, um die Nutzung von AMQP 1.0 durch Service Bus zu beschreiben. Eine umfassendere Einführung in AMQP und eine ausführlichere Beschreibung von AMQP 1.0 erhalten Sie in [diesem Videokurs][].
 
-### Verbindungen und Sitzungen
+### <a name="connections-and-sessions"></a>Verbindungen und Sitzungen
 
 ![][1]
 
@@ -62,7 +63,7 @@ Für Azure Service Bus ist jederzeit die Verwendung von TLS erforderlich. Es wer
 
 Nach dem Einrichten der Verbindung und von TLS bietet Service Bus zwei SASL-Mechanismusoptionen an:
 
--   SASL PLAIN wird häufig zum Übergeben von Benutzername- und Kennwort-Anmeldeinformationen an einen Server verwendet. Service Bus verfügt nicht über Konten, sondern über benannte [SAS-Regeln](service-bus-shared-access-signature-authentication.md), mit denen Rechte gewährt werden und die einem Schlüssel zugeordnet sind. Der Name einer Regel wird als Benutzername und der Schlüssel (Base64-codierter Text) wird als Kennwort verwendet. Die Rechte, die der ausgewählten Regel zugeordnet sind, regeln die für die Verbindung zulässigen Vorgänge.
+-   SASL PLAIN wird häufig zum Übergeben von Benutzername- und Kennwort-Anmeldeinformationen an einen Server verwendet. Service Bus verfügt nicht über Konten, sondern über benannte [SAS-Regeln](service-bus-shared-access-signature-authentication.md), die Rechte gewähren und einem Schlüssel zugeordnet sind. Der Name einer Regel wird als Benutzername und der Schlüssel (Base64-codierter Text) wird als Kennwort verwendet. Die Rechte, die der ausgewählten Regel zugeordnet sind, regeln die für die Verbindung zulässigen Vorgänge.
 
 -   SASL ANONYMOUS wird zum Umgehen der SASL-Autorisierung verwendet, wenn der Client das Modell „Anspruchsbasierte Sicherheit“ (Claims-Based Security, CBS) verwenden möchte. Dieses Modell wird weiter unten beschrieben. Mit dieser Option kann eine Clientverbindung für kurze Zeit anonym eingerichtet werden. Während dieses Zeitraums kann der Client nur mit dem CBS-Endpunkt interagieren, und der CBS-Handshake muss abgeschlossen sein.
 
@@ -70,15 +71,15 @@ Nachdem die Transportverbindung hergestellt wurde, deklarieren die Container jew
 
 Ebenso wird deklariert, wie viele gleichzeitige Kanäle unterstützt werden. Ein Kanal ist ein unidirektionaler, ausgehender, virtueller Übertragungspfad zusätzlich zur Verbindung. Eine Sitzung nutzt jeweils einen Kanal aus miteinander verbundenen Containern, um einen bidirektionalen Kommunikationspfad zu bilden.
 
-Sitzungen verfügen über ein fensterbasiertes Flusssteuerungsmodell. Wenn eine Sitzung erstellt wird, deklariert jede Partei, wie viele Frames im Empfängerfenster akzeptiert werden können. Wenn die Parteien Frames austauschen, wird das Fenster mit Frames gefüllt. Die Übertragungen werden beendet, wenn das Fenster voll ist, bis es zurückgesetzt oder mit der *flow-Performative* erweitert wird (*Performative* ist der AMQP-Begriff für Gesten auf Protokollebene, die zwischen zwei Parteien ausgetauscht werden).
+Sitzungen verfügen über ein fensterbasiertes Flusssteuerungsmodell. Wenn eine Sitzung erstellt wird, deklariert jede Partei, wie viele Frames im Empfängerfenster akzeptiert werden können. Wenn die Parteien Frames austauschen, wird das Fenster mit übertragenen Frames gefüllt. Wenn das Fenster voll ist, werden die Übertragungen beendet, bis es zurückgesetzt oder mit der *flow-Performative* erweitert wird. (*Performative* ist der AMQP-Begriff für Gesten auf Protokollebene, die zwischen zwei Parteien ausgetauscht werden.)
 
 Dieses fensterbasierte Modell entspricht im Wesentlichen dem TCP-Konzept der fensterbasierten Flusssteuerung, aber auf Sitzungsebene innerhalb des Sockets. Das Konzept des Protokolls, mehrere gleichzeitige Sitzungen zuzulassen, hat den Zweck, dass Datenverkehr mit hoher Priorität gedrosselten normalen Verkehr überholen kann – wie auf der linken Spur auf der Autobahn.
 
-In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus-Standardhubs und Event Hubs. Für Service Bus Premium sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Linkebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
+In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus-Standardhubs und Event Hubs. Für Service Bus Premium sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
 
 Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende Verbindung getrennt wird, müssen Verbindungen, TLS-Tunnel, SASL-Autorisierungskontext und Sitzungen wiederhergestellt werden.
 
-### Links
+### <a name="links"></a>Links
 
 ![][2]
 
@@ -90,23 +91,23 @@ Der Container, der die Verknüpfung initiiert hat, bittet den anderen Container,
 
 Verknüpfungen werden benannt und Knoten zugeordnet. Wie am Anfang erwähnt, sind Knoten die kommunizierenden Entitäten in einem Container.
 
-In Azure Service Bus entspricht ein Knoten direkt einer Warteschlange, einem Thema, einem Abonnement oder einer Unterwarteschlange für unzustellbare Nachrichten, die einer Warteschlange oder einem Abonnement zugeordnet ist. Der in AMQP verwendete Knotenname ist daher der relative Name der Entität im Service Bus-Namespace. Wenn eine Warteschlange den Namen **myqueue** hat, ist dies gleichzeitig ihr AMQP-Knotenname. Ein Themenabonnement basiert auf der HTTP-API-Konvention, indem es in der Ressourcensammlung „subscriptions“ angeordnet wird. Daher verfügt das Abonnement **sub** oder das Thema **mytopic** über den AMQP-Knotennamen **mytopic/subscriptions/sub**.
+In Azure Service Bus entspricht ein Knoten direkt einer Warteschlange, einem Thema, einem Abonnement oder einer Unterwarteschlange für unzustellbare Nachrichten, die einer Warteschlange oder einem Abonnement zugeordnet ist. Der in AMQP verwendete Knotenname ist daher der relative Name der Entität im Service Bus-Namespace. Wenn eine Warteschlange den Namen **myqueue** hat, ist dies gleichzeitig ihr AMQP-Knotenname. Ein Themenabonnement folgt der HTTP-API-Konvention, indem es in einer Ressourcensammlung vom Typ „subscriptions“ angeordnet wird. Daher verfügt das Abonnement **sub** oder das Thema **mytopic** über den AMQP-Knotennamen **mytopic/subscriptions/sub**.
 
 Der verbindende Client ist auch zum Verwenden eines lokalen Knotennamens zum Erstellen von Verknüpfungen erforderlich. Service Bus schreibt diese Knotennamen nicht vor und interpretiert sie auch nicht. AMQP 1.0-Clientstapel verwenden im Allgemeinen ein Schema, um sicherzustellen, dass diese flüchtigen Knotennamen im Bereich des Clients eindeutig sind.
 
-### Übertragungen
+### <a name="transfers"></a>Übertragungen
 
 ![][3]
 
-Nachdem eine Verknüpfung eingerichtet wurde, können Nachrichten über die Verknüpfung übertragen werden. In AMQP wird eine Übertragung mit einer expliziten Protokollgeste (der Performative *transfer*) übertragen, mit der eine Nachricht über eine Verknüpfung vom Absender zum Empfänger befördert wird. Eine Übertragung ist abgeschlossen, wenn eine „Übereinkunft“ (settled) erzielt wurde. Dies bedeutet, dass sich beide Parteien auf das Ergebnis der Übertragung geeinigt haben.
+Nachdem eine Verknüpfung eingerichtet wurde, können Nachrichten über die Verknüpfung übertragen werden. In AMQP wird eine Übertragung mit einer expliziten Protokollgeste (der *transfer*-Performative) ausgeführt, durch die eine Nachricht über eine Verknüpfung vom Absender zum Empfänger befördert wird. Eine Übertragung ist abgeschlossen, wenn eine „Übereinkunft“ (settled) erzielt wurde. Dies bedeutet, dass sich beide Parteien auf das Ergebnis der Übertragung geeinigt haben.
 
 Im einfachsten Fall kann sich der Absender für das Senden von Nachrichten im Zustand vor der „Übereinkunft“ (pre-settled) entscheiden. Dies bedeutet, dass der Client am Ergebnis nicht interessiert ist und der Empfänger kein Feedback zum Ergebnis des Vorgangs liefert. Dieser Modus wird von Azure Service Bus auf AMQP-Protokollebene unterstützt, aber nicht in den Client-APIs verfügbar gemacht.
 
-Der Normalfall ist, dass Nachrichten ohne Übereinkunft gesendet werden und der Empfänger mit der Performative *disposition* die Annahme oder Ablehnung angibt. Eine Ablehnung liegt vor, wenn der Empfänger die Nachricht aus einem bestimmten Grund nicht akzeptieren kann. Die Ablehnungsnachricht enthält Informationen zum Grund, und die Fehlerstruktur wird von AMQP definiert. Wenn Nachrichten aufgrund von internen Fehlern in Azure Service Bus abgelehnt werden, gibt der Dienst zusätzliche Informationen innerhalb dieser Struktur zurück. Diese Informationen können zum Bereitstellen von Diagnosehinweisen verwendet werden, um Mitarbeiter zu unterstützen, wenn Sie Supportanfragen erstellen. Weiter unten erhalten Sie weitere Informationen zu Fehlern.
+Im Normalfall werden Nachrichten ohne Übereinkunft gesendet, und der Empfänger gibt mithilfe der *disposition*-Performative an, ob sie akzeptiert oder abgelehnt wurden. Eine Ablehnung liegt vor, wenn der Empfänger die Nachricht aus einem bestimmten Grund nicht akzeptieren kann. Die Ablehnungsnachricht enthält Informationen zum Grund, und die Fehlerstruktur wird von AMQP definiert. Wenn Nachrichten aufgrund von internen Fehlern in Azure Service Bus abgelehnt werden, gibt der Dienst zusätzliche Informationen innerhalb dieser Struktur zurück. Diese Informationen können zum Bereitstellen von Diagnosehinweisen verwendet werden, um Mitarbeiter zu unterstützen, wenn Sie Supportanfragen erstellen. Weiter unten erhalten Sie weitere Informationen zu Fehlern.
 
-Eine spezielle Form der Ablehnung ist der Status *Freigegeben* (released). Hiermit wird angegeben, dass der Empfänger keine technischen Einwände gegen die Übertragung erhebt, aber auch kein Interesse an der Erzielung einer Übereinkunft über die Übertragung hat. Ein Beispiel für diesen Fall ist: Eine Nachricht wird an einen Service Bus-Client zugestellt, und der Client entscheidet sich für das „Verwerfen“ der Nachricht, weil er die sich aus der Nachricht ergebenden Verarbeitungsschritte nicht ausführen kann, während die Nachrichtenzustellung selbst keinen Fehler aufweist. Eine Variante dieses Zustands ist der Zustand *Geändert* (modified), in dem Änderungen an der Nachricht zulässig sind, wenn sie freigegeben wird. Dieser Status wird von Service Bus derzeit nicht verwendet.
+Eine Sonderform der Ablehnung ist der Status *released* (Freigegeben). Dieser gibt an, dass der Empfänger keine technischen Einwände gegen die Übertragung erhebt, aber auch kein Interesse an der Erzielung einer Übereinkunft über die Übertragung hat. Ein Beispiel für diesen Fall ist: Eine Nachricht wird an einen Service Bus-Client zugestellt, und der Client entscheidet sich für das „Verwerfen“ der Nachricht, weil er die sich aus der Nachricht ergebenden Verarbeitungsschritte nicht ausführen kann, während die Nachrichtenzustellung selbst keinen Fehler aufweist. Eine Variante dieses Zustands ist der Zustand *modified* (Geändert), in dem Änderungen an der Nachricht zulässig sind, wenn sie freigegeben wird. Dieser Status wird von Service Bus derzeit nicht verwendet.
 
-Die AMQP 1.0-Spezifikation definiert einen weiteren Dispositionsstatus, und zwar *Empfangen* (received), der speziell zur Unterstützung der Verknüpfungswiederherstellung dient. Die Verknüpfungswiederherstellung ermöglicht die Wiederherstellung des Zustands einer Verknüpfung und aller Zustellungen einer neuen Verbindung und Sitzung, wenn die vorherige Verbindung und Sitzung getrennt wurden.
+Die AMQP 1.0-Spezifikation definiert außerdem den Dispositionszustand *received* (Empfangen), der speziell zur Unterstützung der Verknüpfungswiederherstellung dient. Die Verknüpfungswiederherstellung ermöglicht die Wiederherstellung des Zustands einer Verknüpfung und aller Zustellungen einer neuen Verbindung und Sitzung, wenn die vorherige Verbindung und Sitzung getrennt wurden.
 
 Azure Service Bus unterstützt die Verknüpfungswiederherstellung nicht. Wenn die Verbindung des Clients mit Service Bus getrennt wird und noch eine ungeklärte Nachrichtenübertragung aussteht, geht diese Nachrichtenübertragung verloren. Der Client muss die Verbindung dann erneut herstellen, die Verknüpfung neu einrichten und versuchen, die Übertragung noch einmal durchzuführen.
 
@@ -114,7 +115,7 @@ Azure Service Bus und Event Hubs unterstützen daher Übertragungen der Art „A
 
 Um das mögliche doppelte Senden zu kompensieren, unterstützt Azure Service Bus die Duplikaterkennung als optionales Feature für Warteschlangen und Themen. Bei der Duplikaterkennung werden die Nachrichten-IDs aller eingehenden Nachrichten während eines benutzerdefinierten Zeitfensters aufgezeichnet und im Hintergrund alle Nachrichten verworfen, die in diesem Zeitfenster mit den gleichen Nachrichten-IDs gesendet werden.
 
-### Flusssteuerung
+### <a name="flow-control"></a>Flusssteuerung
 
 ![][4]
 
@@ -122,13 +123,13 @@ Zusätzlich zum Modell der Flusssteuerung auf Sitzungsebene, das bereits erwähn
 
 Für eine Verknüpfung können Übertragungen nur durchgeführt werden, wenn der Absender über genügend „Link Credit“ (Verknüpfungsguthaben) verfügt. Das Verknüpfungsguthaben ist ein Indikator, der vom Empfänger mit der *flow*-Performative für den Bereich einer Verknüpfung festgelegt wird. Wenn dem Absender ein Verknüpfungsguthaben zugewiesen wird, versucht er, dieses Guthaben durch das Zustellen von Nachrichten aufzubrauchen. Mit jeder Nachrichtenzustellung wird das verbleibende Verknüpfungsguthaben um den Wert 1 verringert. Wenn das Verknüpfungsguthaben aufgebraucht ist, werden die Zustellungen beendet.
 
-Falls Service Bus die Empfängerrolle innehat, stattet die Anwendung den Absender sofort mit ausreichend Verknüpfungsguthaben aus, damit sofort Nachrichten gesendet werden können. Beim Verwenden des Verknüpfungsguthabens sendet Service Bus gelegentlich eine *flow*-Performative an den Absender, um den Stand des Verknüpfungsguthabens zu aktualisieren.
+Falls Service Bus die Empfängerrolle innehat, stattet die Anwendung den Absender sofort mit ausreichend Verknüpfungsguthaben aus, damit sofort Nachrichten gesendet werden können. Bei Verwendung des Verknüpfungsguthabens sendet Service Bus gelegentlich eine *flow*-Performative an den Absender, um den Stand des Verknüpfungsguthabens zu aktualisieren.
 
 In der Absenderrolle sendet Service Bus aktiv Nachrichten, um das vorhandene Verknüpfungsguthaben aufzubrauchen.
 
-Der Aufruf von „receive“ auf der API-Ebene wird in eine *flow*-Performative übersetzt, die vom Client an Service Bus gesendet wird. Service Bus nutzt dieses Guthaben, indem die erste verfügbare nicht gesperrte Nachricht aus der Warteschlange gesperrt und übertragen wird. Falls keine Nachricht für die Zustellung verfügbar ist, bleibt das ausstehende Guthaben von Verknüpfungen mit der jeweiligen Entität in der Eingangsreihenfolge aufgezeichnet, und Nachrichten werden gesperrt und übertragen, sobald sie verfügbar sind, um ausstehendes Guthaben zu verbrauchen.
+Der Aufruf von „receive“ auf der API-Ebene wird in eine *flow*-Performative übersetzt, die vom Client an Service Bus gesendet wird. Service Bus nutzt dieses Guthaben, indem die erste verfügbare, nicht gesperrte Nachricht aus der Warteschlange gesperrt und übertragen wird. Falls keine Nachricht für die Zustellung verfügbar ist, bleibt das ausstehende Guthaben von Verknüpfungen mit der jeweiligen Entität in der Eingangsreihenfolge aufgezeichnet, und Nachrichten werden gesperrt und übertragen, sobald sie verfügbar sind, um ausstehendes Guthaben zu verbrauchen.
 
-Die Sperre der Nachricht wird aufgehoben, wenn für die Übertragung einer der Endzustände *accepted*, *rejected* oder *released* (Akzeptiert, Abgelehnt oder Freigegeben) erreicht wird. Die Nachricht wird aus Service Bus entfernt, wenn der Endzustand *accepted* erreicht wird. Sie verbleibt in Service Bus und wird an den nächsten Empfänger zugestellt, wenn die Übertragung einen der anderen Zustände erreicht. Service Bus verschiebt die Nachricht automatisch in die Warteschlange der Entität für unzustellbare Nachrichten, wenn die maximal zulässige Zustellungsanzahl der Entität erreicht wird, weil wiederholt Ablehnungen oder Freigaben aufgetreten sind.
+Die Sperre der Nachricht wird aufgehoben, wenn für die Übertragung einer der Endzustände *accepted*, *rejected* oder *released* (Akzeptiert, Abgelehnt oder Freigegeben) erreicht wird. Die Nachricht wird aus Service Bus entfernt, wenn der Endzustand *accepted* (Akzeptiert) lautet wird. Sie verbleibt in Service Bus und wird an den nächsten Empfänger zugestellt, wenn die Übertragung einen der anderen Zustände erreicht. Service Bus verschiebt die Nachricht automatisch in die Warteschlange der Entität für unzustellbare Nachrichten, wenn die maximal zulässige Zustellungsanzahl der Entität erreicht wird, weil wiederholt Ablehnungen oder Freigaben aufgetreten sind.
 
 Für die offiziellen Service Bus-APIs wird eine Option dieser Art derzeit zwar nicht direkt verfügbar gemacht, aber ein AMQP-Protokollclient auf einer unteren Ebene kann das Verknüpfungsguthaben-Modell wie folgt nutzen: Umwandeln der „Pull“-Interaktion mit Ausgabe von einer Guthabeneinheit pro Empfangsanforderung in ein „Push“-Modell, indem eine sehr große Zahl von Verknüpfungsguthaben ausgestellt wird und Nachrichten dann ohne weitere Interaktion empfangen werden, wenn sie verfügbar sind. Dieser Pushvorgang wird von den Eigenschafteneinstellungen [MessagingFactory.PrefetchCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.prefetchcount.aspx) und [MessageReceiver.PrefetchCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.prefetchcount.aspx) unterstützt. Wenn sie nicht null sind, nutzt der AMQP-Client sie als Verknüpfungsguthaben.
 
@@ -138,118 +139,118 @@ Als Zusammenfassung enthalten die folgenden Abschnitte eine schematische Übersi
 
 Die Pfeile zeigen die Performativenflussrichtung an.
 
-#### Erstellen eines Nachrichtenempfängers
+#### <a name="create-message-receiver"></a>Erstellen eines Nachrichtenempfängers
 
-| Client- | Service Bus |
-|---------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------	|
-| --> attach(<br/>name={Verknüpfungsname},<br/>handle={numerischer Handle},<br/>role=**receiver**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>) | Client wird Entität als Empfänger zugeordnet |
-| Service Bus antwortet und ordnet sein Ende der Verknüpfung zu | <-- attach(<br/>name={Verknüpfungsname},<br/>handle={numerischer Handle},<br/>role=**sender**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>) |
+| Client-                                                                                                                                                | SERVICE BUS                                                                                                                                   |
+|---------------------------------------------------------------------------------------------------------------------------------------------------    |--------------------------------------------------------------------------------------------------------------------------------------------   |
+| --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>)         | Client wird Entität als Empfänger zugeordnet                                                                                                         |
+| Service Bus antwortet und ordnet sein Ende der Verknüpfung zu                                                                                                     | <-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>)       |
 
-#### Erstellen des Nachrichtenabsenders
+#### <a name="create-message-sender"></a>Erstellen des Nachrichtenabsenders
 
-| Client- | Service Bus |
-|------------------------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------	|
-| --> attach(<br/>name={Verknüpfungsname},<br/>handle={numerischer Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) | Keine Aktion |
-| Keine Aktion | <-- attach(<br/>name={Verknüpfungsname},<br/>handle={numerischer Handle},<br/>role=**receiver**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) |
+| Client-                                                                                                            | SERVICE BUS                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------ |--------------------------------------------------------------------------------------------------------------------   |
+| --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>)   | Keine Aktion                                                                                                                     |
+| Keine Aktion                                                                                                                 | <-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>)     |
 
-#### Erstellen des Nachrichtenabsenders (Fehler)
+#### <a name="create-message-sender-(error)"></a>Erstellen des Nachrichtenabsenders (Fehler)
 
-| Client- | Service Bus |
-|------------------------------------------------------------------------------------------------------------------	|---------------------------------------------------------------------	|
-| --> attach(<br/>name={Verknüpfungsname},<br/>handle={numerischer Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) | Keine Aktion |
-| Keine Aktion | <-- attach(<br/>name={Verknüpfungsname},<br/>handle={numerischer Handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numerischer Handle},<br/>closed=**true**,<br/>error={Fehlerinformationen}<br/>) |
+| Client-                                                                                                            | SERVICE BUS                                                           |
+|------------------------------------------------------------------------------------------------------------------ |---------------------------------------------------------------------  |
+| --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>)   | Keine Aktion                                                                     |
+| Keine Aktion                                                                                                                 | <-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numerisches Handle},<br/>closed=**true**,<br/>error={Fehlerinformationen}<br/>)  |
 
-#### Schließen des Nachrichtenabsenders/-empfängers
+#### <a name="close-message-receiver/sender"></a>Schließen des Nachrichtenabsenders/-empfängers
 
-| Client- | Service Bus |
-|-------------------------------------------------	|-------------------------------------------------	|
-| --> detach(<br/>handle={numerischer Handle},<br/>closed=**true**<br/>) | Keine Aktion |
-| Keine Aktion | <-- detach(<br/>handle={numerischer Handle},<br/>closed=**true**<br/>) |
+| Client-                                            | SERVICE BUS                                       |
+|-------------------------------------------------  |-------------------------------------------------  |
+| --> detach(<br/>handle={numerisches Handle},<br/>closed=**true**<br/>)    | Keine Aktion                                                 |
+| Keine Aktion                                                 | <-- detach(<br/>handle={numerisches Handle},<br/>closed=**true**<br/>)    |
 
-#### Senden (Erfolg)
+#### <a name="send-(success)"></a>Senden (Erfolg)
 
-| Client- | Service Bus |
-|------------------------------------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------------------	|
-| --> transfer(<br/>delivery-id={numerischer Handle},<br/>delivery-tag={binärer Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) | Keine Aktion |
-| Keine Aktion | <-- disposition(<br/>role=receiver,<br/>first={Übermittlungs-ID},<br/>last={Übermittlungs-ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
+| Client-                                                                                                                        | SERVICE BUS                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------ |------------------------------------------------------------------------------------------------------ |
+| --> transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)   | Keine Aktion                                                                                                     |
+| Keine Aktion                                                                                                                             | <-- disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)   |
 
-#### Senden (Fehler)
+#### <a name="send-(error)"></a>Senden (Fehler)
 
-| Client | Service Bus |
-|------------------------------------------------------------------------------------------------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------	|
-| --> transfer(<br/>delivery-id={numerischer Handle},<br/>delivery-tag={binärer Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) | Keine Aktion |
-| Keine Aktion | <-- disposition(<br/>role=receiver,<br/>first={Übermittlungs-ID},<br/>last={Übermittlungs-ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={Fehlerinformationen}<br/>)<br/>) |
+| Client                                                                                                                        | SERVICE BUS                                                                                                                   |
+|------------------------------------------------------------------------------------------------------------------------------ |-----------------------------------------------------------------------------------------------------------------------------  |
+| --> transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)   | Keine Aktion                                                                                                                             |
+| Keine Aktion                                                                                                                             | <-- disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={Fehlerinformationen}<br/>)<br/>)     |
 
-#### Empfangen
+#### <a name="receive"></a>Empfangen
 
-| Client- | Service Bus |
-|------------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------------------------------------------	|
-| --> flow(<br/>link-credit=1<br/>) | Keine Aktion |
-| Keine Aktion | < transfer(<br/>delivery-id={numerischer Handle},<br/>delivery-tag={binärer Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
-| --> disposition(<br/>role=**receiver**,<br/>first={Übermittlungs-ID},<br/>last={Übermittlungs-ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) | Keine Aktion |
+| Client-                                                                                                | SERVICE BUS                                                                                                                   |
+|------------------------------------------------------------------------------------------------------ |------------------------------------------------------------------------------------------------------------------------------ |
+| --> flow(<br/>link-credit=1<br/>)                                                                                 | Keine Aktion                                                                                                                             |
+| Keine Aktion                                                                                                     | < transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)     |
+| --> disposition(<br/>role=**receiver**,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**accepted**<br/>)   | Keine Aktion                                                                                                                             |
 
-#### Empfangen mehrerer Nachrichten
+#### <a name="multi-message-receive"></a>Empfangen mehrerer Nachrichten
 
-| Client- | Service Bus |
-|--------------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------	|
-| --> flow(<br/>link-credit=3<br/>) | Keine Aktion |
-| Keine Aktion | < transfer(<br/>delivery-id={numerischer Handle},<br/>delivery-tag={binärer Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
-| Keine Aktion | < transfer(<br/>delivery-id={numerischer Handle+1},<br/>delivery-tag={binärer Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
-| Keine Aktion | < transfer(<br/>delivery-id={numerischer Handle+2},<br/>delivery-tag={binärer Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
-| --> disposition(<br/>role=receiver,<br/>first={Übermittlungs-ID},<br/>last={Übermittlungs-ID+2},<br/>settled=**true**,<br/>state=**accepted**<br/>) | Keine Aktion |
+| Client-                                                                                                    | SERVICE BUS                                                                                                                       |
+|--------------------------------------------------------------------------------------------------------   |--------------------------------------------------------------------------------------------------------------------------------   |
+| --> flow(<br/>link-credit=3<br/>)                                                                                 | Keine Aktion                                                                                                                                 |
+| Keine Aktion                                                                                                         | < transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)     |
+| Keine Aktion                                                                                                         | < transfer(<br/>delivery-id={numerisches Handle+1},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)   |
+| Keine Aktion                                                                                                         | < transfer(<br/>delivery-id={numerisches Handle+2},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>)   |
+| --> disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID+2},<br/>settled=**true**,<br/>state=**accepted**<br/>)     | Keine Aktion                                                                                                                                 |
 
-### Meldungen
+### <a name="messages"></a>Meldungen
 
 In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-Standardnachrichtenabschnitten von Service Bus verwendet werden und wie sie den offiziellen Service Bus-APIs zugeordnet werden.
 
-#### Header
+#### <a name="header"></a>Header
 
-| Feldname | Verwendung | API-Name |
-|----------------	|-------------------------------	|---------------	|
-| durable | - | - | 
-| priority | - | - | 
-| ttl | Gültigkeitsdauer (Time To Live, TTL) für diese Nachricht | [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) | 
-| first-acquirer | - | - | 
-| delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
+| Feldname        | Verwendung                             | API-Name          |
+|----------------   |-------------------------------    |---------------    |
+| durable           | -                                 | -                 |
+| priority          | -                                 | -                 |
+| ttl               | Gültigkeitsdauer für diese Meldung     | [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)     |
+| first-acquirer    | -                                 | -                 |
+| delivery-count    | -                                 | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx)   |
 
-#### Eigenschaften
+#### <a name="properties"></a>Eigenschaften
 
-| Feldname | Verwendung | API-Name |
-|----------------------	|---------------------------------------------------------------------------------------------------------------------------------	|--------------------------------------------	|
-| message-id | Anwendungsdefinierte Freiform-ID für diese Nachricht. Wird für die Duplikaterkennung verwendet. | [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) |
-| user-id | Anwendungsdefinierte Benutzer-ID, von Service Bus nicht interpretiert. | Nicht über die Service Bus-API zugänglich. |
-| to | Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. | [To](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.to.aspx) |
-| subject | Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. | [Bezeichnung](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) |
-| reply-to | Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. | [ReplyTo](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.replyto.aspx) |
-| correlation-id | Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert. | [CorrelationId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.correlationid.aspx) |
-| Inhaltstyp | Anwendungsdefinierter Inhaltstypindikator für den Haupttext, von Service Bus nicht interpretiert. | [ContentType](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) |
-| content-encoding | Anwendungsdefinierter Inhaltscodierungsindikator für den Haupttext, von Service Bus nicht interpretiert. | Nicht über die Service Bus-API zugänglich. |
-| absolute-expiry-time | Deklariert, zu welchem absolutem Zeitpunkt die Nachricht abläuft. Bei Eingabe ignoriert (Header-TTL wird beachtet), autoritativ bei Ausgabe. | [ExpiresAtUtc](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.expiresatutc.aspx) |
-| creation-time | Deklariert, zu welchem Zeitpunkt die Nachricht erstellt wurde. Wird von Service Bus nicht verwendet. | Nicht über die Service Bus-API zugänglich. |
-| group-id | Anwendungsdefinierte ID für eine verwandte Nachrichtengruppe. Wird für Service Bus-Sitzungen verwendet. | [SessionId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.sessionid.aspx) |
-| group-sequence | Indikator, der die relative Sequenznummer der Nachricht in einer Sitzung angibt. Wird von Service Bus ignoriert. | Nicht über die Service Bus-API zugänglich. |
-| reply-to-group-id | - | [ReplyToSessionId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.replytosessionid.aspx) |
+| Feldname            | Verwendung                                                                                                                             | API-Name                                      |
+|---------------------- |---------------------------------------------------------------------------------------------------------------------------------  |--------------------------------------------   |
+| message-id            | Anwendungsdefinierte Freiform-ID für diese Nachricht. Wird für die Duplikaterkennung verwendet.                                         | [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx)                                   |
+| user-id               | Anwendungsdefinierte Benutzer-ID, von Service Bus nicht interpretiert.                                                              | Nicht über die Service Bus-API zugänglich.   |
+| to                    | Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert.                                                       | [To](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.to.aspx)                                             |
+| subject               | Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert.                                                   | [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)                                       |
+| reply-to              | Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert.                                                         | [ReplyTo](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.replyto.aspx)                                       |
+| correlation-id        | Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert.                                                       | [CorrelationId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.correlationid.aspx)                               |
+| Inhaltstyp          | Anwendungsdefinierter Inhaltstypindikator für den Haupttext, von Service Bus nicht interpretiert.                                          | [ContentType](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx)                                   |
+| content-encoding      | Anwendungsdefinierter Inhaltscodierungsindikator für den Haupttext, von Service Bus nicht interpretiert.                                      | Nicht über die Service Bus-API zugänglich.   |
+| absolute-expiry-time  | Deklariert, zu welchem absolutem Zeitpunkt die Nachricht abläuft. Bei Eingabe ignoriert (Header-TTL wird beachtet), autoritativ bei Ausgabe.   | [ExpiresAtUtc](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.expiresatutc.aspx)                                 |
+| creation-time         | Deklariert, zu welchem Zeitpunkt die Nachricht erstellt wurde. Wird von Service Bus nicht verwendet.                                                           | Nicht über die Service Bus-API zugänglich.   |
+| group-id              | Anwendungsdefinierte ID für eine verwandte Nachrichtengruppe. Wird für Service Bus-Sitzungen verwendet.                                      | [SessionId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.sessionid.aspx)                                   |
+| group-sequence        | Indikator, der die relative Sequenznummer der Nachricht in einer Sitzung angibt. Wird von Service Bus ignoriert.                         | Nicht über die Service Bus-API zugänglich.   |
+| reply-to-group-id     | -                                                                                                                                 | [ReplyToSessionId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.replytosessionid.aspx)                             |
 
-## Erweiterte Service Bus-Funktionen
+## <a name="advanced-service-bus-capabilities"></a>Erweiterte Service Bus-Funktionen
 
 In diesem Abschnitt werden die erweiterten Funktionen von Azure Service Bus behandelt. Sie basieren auf Erweiterungsentwürfen für AMQP, die derzeit vom OASIS Technical Committee für AMQP entwickelt werden. Azure Service Bus implementiert den aktuellen Status dieser Entwürfe und übernimmt die Änderungen, die eingeführt werden, wenn diese Entwürfe den Standardstatus erreichen.
 
 > [AZURE.NOTE] Erweiterte Service Bus Messaging-Vorgänge werden über ein Muster vom Typ „Anforderung/Antwort“ unterstützt. Details zu diesen Vorgängen finden Sie im Dokument [AMQP 1.0 in Service Bus: request/response-based operations](https://msdn.microsoft.com/library/azure/mt727956.aspx) (AMQP 1.0 in Service Bus: Auf „Anforderung/Antwort“ basierende Vorgänge).
 
-### AMQP-Verwaltung
+### <a name="amqp-management"></a>AMQP-Verwaltung
 
-Die AMQP-Verwaltungsspezifikation ist der erste der hier beschriebenen Erweiterungsentwürfe. Diese Spezifikation definiert eine Gruppe von Protokollgesten, die dem AMQP-Protokoll übergeordnet sind und Verwaltungsinteraktionen mit der Verwaltungsinfrastruktur über AMQP zulassen. Die Spezifikation definiert generische Vorgänge, z.B. *Erstellen*, *Lesen*, *Aktualisieren* und *Löschen*, um Entitäten in einer Messaginginfrastruktur und eine Gruppe von Abfragevorgängen zu verwalten.
+Die AMQP-Verwaltungsspezifikation ist der erste der hier beschriebenen Erweiterungsentwürfe. Diese Spezifikation definiert eine Gruppe von Protokollgesten, die dem AMQP-Protokoll übergeordnet sind und Verwaltungsinteraktionen mit der Verwaltungsinfrastruktur über AMQP zulassen. Die Spezifikation definiert generische Vorgänge wie *Erstellen*, *Lesen*, *Aktualisieren* und *Löschen*, um Entitäten in einer Messaginginfrastruktur und eine Gruppe von Abfragevorgängen zu verwalten.
 
 Für all diese Gesten ist eine Anforderung/Antwort-Interaktion zwischen dem Client und der Messaginginfrastruktur erforderlich. Daher definiert die Spezifikation, wie dieses Interaktionsmuster zusätzlich zu AMQP modelliert wird: Der Client stellt eine Verbindung mit der Messaginginfrastruktur her, initiiert eine Sitzung und erstellt dann ein Verknüpfungspaar. Für die eine Verknüpfung fungiert der Client als Absender, und für die andere als Empfänger. Auf diese Weise wird ein Verknüpfungspaar erstellt, das als bidirektionaler Kanal dienen kann.
 
-| Logischer Vorgang | Client- | Service Bus |
+| Logischer Vorgang            | Client-                      | Service Bus                 |
 |------------------------------|-----------------------------|-----------------------------|
-| Anforderung/Antwort-Pfad erstellen | --> attach(<br/>name={*Verknüpfungsname*},<br/>handle={*numerischer Handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |Keine Aktion |
-|Anforderung/Antwort-Pfad erstellen |Keine Aktion | <-- attach(<br/>name={*Verknüpfungsname*},<br/>handle={*numerischer Handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
-|Anforderung/Antwort-Pfad erstellen | --> attach(<br/>name={*Verknüpfungsname*},<br/>handle={*numerischer Handle*},<br/>role=**receiver**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>) | |Keine Aktion
-|Anforderung/Antwort-Pfad erstellen |Keine Aktion | <-- attach(<br/>name={*Verknüpfungsname*},<br/>handle={*numerischer Handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>) |
+| Anforderung/Antwort-Pfad erstellen | --> attach(<br/>name={*Name der Verknüpfung*},<br/>handle={*numerisches Handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>)                            |Keine Aktion                             |
+|Anforderung/Antwort-Pfad erstellen                              |Keine Aktion                             | \<-- attach(<br/>name={*Name der Verknüpfung*},<br/>handle={*numerisches Handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>)                            |
+|Anforderung/Antwort-Pfad erstellen                              | --> attach(<br/>name={*Name der Verknüpfung*},<br/>handle={*numerisches Handle*},<br/>role=**receiver**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>)                            |                             |Keine Aktion
+|Anforderung/Antwort-Pfad erstellen                              |Keine Aktion                             | \<-- attach(<br/>name={*Name der Verknüpfung*},<br/>handle={*numerisches Handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>)                            |
 
-Wenn dieses Verknüpfungspaar vorhanden ist, ist die Anforderung/Antwort-Implementierung einfach: Eine Anforderungsnachricht wird an eine Entität in der Messaginginfrastruktur gesendet, die dieses Muster versteht. In dieser Anforderungsnachricht wird das Feld *reply-to* im Abschnitt *properties* auf die ID *target* für die Verknüpfung festgelegt, für die die Antwort übermittelt wird. Die behandelnde Entität verarbeitet die Anforderung und übermittelt die Antwort dann über die Verknüpfung, deren ID *target* mit der angegebenen ID *reply-to* übereinstimmt.
+Wenn dieses Verknüpfungspaar vorhanden ist, ist die Anforderung/Antwort-Implementierung einfach: Eine Anforderungsnachricht wird an eine Entität in der Messaginginfrastruktur gesendet, die dieses Muster versteht. In dieser Anforderungsnachricht wird das Feld *reply-to* im Abschnitt *properties* auf die Ziel-ID (*target*) für die Verknüpfung festgelegt, für die die Antwort übermittelt wird. Die behandelnde Entität verarbeitet die Anforderung und übermittelt die Antwort dann über die Verknüpfung, deren ID vom Typ *target* mit der angegebenen ID vom Typ *reply-to* übereinstimmt.
 
 Für dieses Muster ist es natürlich erforderlich, dass der Clientcontainer und die vom Client generierte ID für das Antwortziel für alle Clients eindeutig sind und aus Sicherheitsgründen schwer vorauszusagen sind.
 
@@ -257,7 +258,7 @@ Der Austausch von Nachrichten für das Verwaltungsprotokoll und alle anderen Pro
 
 Azure Service Bus implementiert derzeit keine Kernfunktionen der Verwaltungsspezifikation. Das von der Verwaltungsspezifikation definierte Anforderung/Antwort-Muster stellt aber die Grundlage für die anspruchsbasierte Sicherheitsfunktion und fast alle erweiterten Funktionen dar, die wir in den folgenden Abschnitten beschreiben.
 
-### Anspruchsbasierte Autorisierung
+### <a name="claims-based-authorization"></a>Anspruchsbasierte Autorisierung
 
 Der Entwurf der AMQP-Spezifikation für die anspruchsbasierte Autorisierung (Claims-Based Authorization Specification, CBS) baut auf dem Anforderung/Antwort-Muster der Verwaltungsspezifikation auf und beschreibt ein generalisiertes Modell für die Verwendung von Verbundsicherheitstoken mit AMQP.
 
@@ -273,45 +274,45 @@ Die von Azure Service Bus implementierte AMQP-CBS-Spezifikation ermöglicht für
 
 CBS definiert einen virtuellen Verwaltungsknoten mit dem Namen *$cbs*, der von der Messaginginfrastruktur bereitgestellt wird. Der Verwaltungsknoten akzeptiert Knoten im Namen aller anderen Knoten in der Messaginginfrastruktur.
 
-Die Protokollgeste ist ein Anforderung/Antwort-Austausch, der von der Verwaltungsspezifikation definiert wird. Dies bedeutet, dass der Client ein Verknüpfungspaar für den Knoten *$cbs* einrichtet und dann eine Anforderung an die ausgehende Verknüpfung übergibt. Anschließend wartet er auf die Antwort über die eingehende Verknüpfung.
+Die Protokollgeste ist ein Anforderung/Antwort-Austausch, der von der Verwaltungsspezifikation definiert wird. Das bedeutet, dass der Client ein Verknüpfungspaar für den Knoten *$cbs* einrichtet und dann eine Anforderung an die ausgehende Verknüpfung übergibt. Anschließend wartet er auf die Antwort über die eingehende Verknüpfung.
 
 Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 
-| Schlüssel | Optional | Werttyp | Wertinhalt |
+| Schlüssel        | Optional | Werttyp | Wertinhalt                             |
 |------------|----------|------------|--------------------------------------------|
-| Vorgang | Nein | string | **put-token** |
-| Typ | Nein | string | Der Typ des abgelegten Tokens. |
-| Name | Nein | string | Die Zielgruppe, für die das Token gilt. |
-| expiration | Ja | timestamp | Der Ablaufzeitpunkt des Tokens. |
+| Vorgang  | Nein       | string     | **put-token**                                |
+| type       | Nein       | string     | Der Typ des abgelegten Tokens.            |
+| Name       | Nein       | string     | Die Zielgruppe, für die das Token gilt. |
+| expiration | Ja      | timestamp  | Der Ablaufzeitpunkt des Tokens.              |
 
-Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Mit der *type*-Eigenschaft wird der Tokentyp identifiziert:
+Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
 
-| Tokentyp | Tokenbeschreibung | Texttyp | Hinweise |
+| Tokentyp                      | Tokenbeschreibung      | Texttyp           | Hinweise                                                    |
 |---------------------------------|------------------------|---------------------|----------------------------------------------------------|
-| amqp:jwt | JSON Web Token (JWT) | AMQP-Wert (Zeichenfolge) | Noch nicht verfügbar. |
-| amqp:swt | Einfaches Webtoken (Simple Web Token, SWT) | AMQP-Wert (Zeichenfolge) | Wird nur für von AAD/ACS ausgestellte SWTs unterstützt. |
-| servicebus.windows.net:sastoken | Service Bus-SAS-Token | AMQP-Wert (Zeichenfolge) | - |
+| amqp:jwt                        | JSON Web Token (JWT)   | AMQP-Wert (Zeichenfolge) | Noch nicht verfügbar.  |
+| amqp:swt                        | Einfaches Webtoken (Simple Web Token, SWT) | AMQP-Wert (Zeichenfolge) | Wird nur für von AAD/ACS ausgestellte SWTs unterstützt.          |
+| servicebus.windows.net:sastoken | Service Bus-SAS-Token  | AMQP-Wert (Zeichenfolge) | -                                                        |
 
-Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Abhören“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Von AAD/ACS ausgestellte SWTs enthalten diese Rechte als Ansprüche. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das mit *put-token* einer Entität zugeordnete Token ermöglicht es dem verbundenen Client, über die Tokenrechte mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des *Absenders* übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des *Empfängers* wird das Recht „Abhören“ benötigt.
+Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Abhören“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Von AAD/ACS ausgestellte SWTs enthalten diese Rechte als Ansprüche. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das Token, das einer Entität mithilfe von *put-token* zugeordnet wurde, ermöglicht es dem verbundenen Client, gemäß den Tokenrechten mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des Absenders (*sender*) übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des Empfängers (*receiver*) wird das Recht „Lauschen“ benötigt.
 
-Die Antwortnachricht weist die folgenden *application-properties*-Werte auf:
+Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte:
 
-| Schlüssel | Optional | Werttyp | Wertinhalt |
+| Schlüssel                | Optional | Werttyp | Wertinhalt                    |
 |--------------------|----------|------------|-----------------------------------|
-| status-code | Nein | int | HTTP-Antwortcode **[RFC2616]** |
-| status-description | Ja | string | Beschreibung des Status |
+| status-code        | Nein       | int        | HTTP-Antwortcode **[RFC2616]** |
+| status-description | Ja      | string     | Beschreibung des Status        |
 
-Der Client kann *put-token* mehrfach und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Dies bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
+Der Client kann *put-token* wiederholt und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Dies bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
 
 Für die derzeitige Service Bus-Implementierung ist CBS nur zusammen mit der SASL-Methode „ANONYMOUS“ zulässig. Vor dem SASL-Handshake muss immer eine SSL/TLS-Verbindung vorhanden sein.
 
 Der ANONYMOUS-Mechanismus muss vom gewählten AMQP 1.0-Client also unterstützt werden. Anonymer Zugriff bedeutet, dass der erste Verbindungshandshake, einschließlich der Erstellung der ersten Sitzung, durchgeführt wird, ohne dass Service Bus weiß, von wem die Verbindung erstellt wird.
 
-Nachdem die Verbindung und die Sitzung eingerichtet wurden, sind das Zuordnen der Verknüpfungen zum Knoten *$cbs* und das Senden der *put-token*-Anforderung die einzigen zulässigen Vorgänge. Ein gültiges Token muss mithilfe einer *put-token*-Anforderung für einen Entitätsknoten innerhalb von 20 Sekunden nach der Verbindungsherstellung erfolgreich festgelegt werden. Andernfalls wird die Verbindung von Service Bus einseitig verworfen.
+Nachdem die Verbindung und die Sitzung eingerichtet wurden, sind das Zuordnen der Verknüpfungen zum Knoten *$cbs* und das Senden der *put-token*-Anforderung die einzigen zulässigen Vorgänge. Nach der Verbindungsherstellung muss innerhalb von 20 Sekunden mithilfe einer *put-token*-Anforderung erfolgreich ein gültiges Token für einen Entitätsknoten festgelegt werden. Andernfalls wird die Verbindung von Service Bus einseitig verworfen.
 
-Der Client ist anschließend dafür zuständig, den Tokenablauf nachzuverfolgen. Wenn ein Token abläuft, verwirft Service Bus sofort alle Verknüpfungen der Verbindung mit der jeweiligen Entität. Um dies zu verhindern, kann der Client das Token für den Knoten jederzeit durch ein neues Token ersetzen, indem er den virtuellen Verwaltungsknoten *$cbs* mit der gleichen *put-token*-Geste verwendet. Dabei wird der Nutzlast-Datenverkehr anderer Verknüpfungen nicht beeinträchtigt.
+Der Client ist anschließend dafür zuständig, den Tokenablauf nachzuverfolgen. Wenn ein Token abläuft, verwirft Service Bus sofort alle Verknüpfungen der Verbindung mit der jeweiligen Entität. Um dies zu verhindern, kann der Client das Token für den Knoten jederzeit durch ein neues Token ersetzen, indem er den virtuellen Verwaltungsknoten *$cbs* mit der gleichen *put-token*-Geste verwendet. Der Nutzlast-Datenverkehr anderer Verknüpfungen wird dadurch nicht beeinträchtigt.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 
@@ -319,7 +320,7 @@ Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 - [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]
 - [AMQP in Service Bus für Windows Server]
 
-[Videokurs]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
+[Dieser Videokurs]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp/amqp1.png
 [2]: ./media/service-bus-amqp/amqp2.png
 [3]: ./media/service-bus-amqp/amqp3.png
@@ -329,4 +330,7 @@ Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

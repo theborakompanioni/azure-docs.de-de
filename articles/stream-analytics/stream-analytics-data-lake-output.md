@@ -1,47 +1,48 @@
 <properties
-	pageTitle="Stream Analytics Data Lake-Speicherausgabe | Microsoft Azure"
-	description="Konfigurieren der Authentifizierung und Autorisierung eines Azure Data Lake-Speichers in einem Stream Analytics-Auftrag"
-	keywords=""
-	services="stream-analytics"
-	documentationCenter=""
-	authors="jeffstokes72"
-	manager="jhubbard"
-	editor="cgronlun"
+    pageTitle="Stream Analytics Data Lake-Speicherausgabe | Microsoft Azure"
+    description="Konfigurieren der Authentifizierung und Autorisierung eines Azure Data Lake-Speichers in einem Stream Analytics-Auftrag"
+    keywords=""
+    services="stream-analytics"
+    documentationCenter=""
+    authors="jeffstokes72"
+    manager="jhubbard"
+    editor="cgronlun"
 />
 
 <tags
-	ms.service="stream-analytics"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="09/26/2016"
-	ms.author="jeffstok"
+    ms.service="stream-analytics"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="big-data"
+    ms.date="09/26/2016"
+    ms.author="jeffstok"
 />
 
-# Stream Analytics Data Lake-Speicherausgabe
+
+# <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics Data Lake-Speicherausgabe
 
 Stream Analytics-Aufträge unterstützen mehrere Ausgabemethoden, darunter auch [Azure Data Lake-Speicher](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake-Speicher ist ein unternehmensweites riesiges Repository für Big Data-Analyseworkloads. Data Lake-Speicher ermöglicht es Ihnen, Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen zu speichern.
 
-## Autorisieren eines Data Lake-Speicherkontos
+## <a name="authorize-a-data-lake-store-account"></a>Autorisieren eines Data Lake-Speicherkontos
 
 1.  Wenn Data Lake-Speicher als Ausgabe im Azure-Verwaltungsportal ausgewählt ist, werden Sie aufgefordert, die Verwendung Ihres vorhandenen Data Lake-Speichers zu autorisieren oder über das klassische Azure-Portal Zugriff auf die Data Lake-Speicher-Vorschau anzufordern.
 
-    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)
+    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)  
 
 2.  Falls Sie bereits Zugriff auf Data Lake-Speicher haben, klicken Sie auf „Jetzt autorisieren“, und für einen kurzen Moment wird eine Seite mit „Umleitung an die Autorisierung...“ angezeigt. Diese Seite wird automatisch geschlossen, und Ihnen wird die Seite zum Konfigurieren der Data Lake-Speicherausgabe angezeigt.
 
-Falls Sie sich nicht für die Data Lake Store-Vorschau angemeldet haben, können Sie dem Link „Jetzt registrieren“ folgen, um die Anfrage zu schicken. Oder Sie folgen den Anweisungen für [erste Schritte](../data-lake-store/data-lake-store-get-started-portal.md).
+Falls Sie sich nicht für die Data Lake Store Preview angemeldet haben, können Sie dem Link „Jetzt registrieren“ folgen, um die Anfrage zu schicken. Oder Sie folgen den Anweisungen für [erste Schritte](../data-lake-store/data-lake-store-get-started-portal.md).
 
-## Konfigurieren der Data Lake-Speicherausgabeeigenschaften
+## <a name="configure-the-data-lake-store-output-properties"></a>Konfigurieren der Data Lake-Speicherausgabeeigenschaften
 
 Sobald Sie das Data Lake-Speicherkonto authentifiziert haben, können Sie die Eigenschaften für die Data Lake-Speicherausgabe konfigurieren. Die folgende Tabelle enthält eine Liste von Eigenschaftennamen und deren Beschreibung zum Konfigurieren der Data Lake-Speicherausgabe.
 
 <table>
 <tbody>
 <tr>
-<td><B>EIGENSCHAFTENNAME</B></td>
-<td><B>BESCHREIBUNG</B></td>
+<td><B>Eigenschaftenname</B></td>
+<td><B>Beschreibung</B></td>
 </tr>
 <tr>
 <td>Ausgabealias</td>
@@ -82,7 +83,7 @@ Sobald Sie das Data Lake-Speicherkonto authentifiziert haben, können Sie die Ei
 </tbody>
 </table>
 
-## Erneuern der Data Lake-Speicherautorisierung
+## <a name="renew-data-lake-store-authorization"></a>Erneuern der Data Lake-Speicherautorisierung
 
 Derzeit besteht die Einschränkung, dass das Authentifizierungstoken alle 90 Tage manuell für sämtliche Aufträge mit der Data Lake-Speicherausgabe aktualisiert werden muss. Darüber hinaus muss Ihr Data Lake-Speicherkonto erneut authentifiziert werden, wenn Sie Ihr Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert haben. Ein Symptom dieses Problems ist, dass es keine Auftragsausgabe gibt, und ein Fehler in den Vorgangsprotokollen auftritt, der die erforderliche Neuautorisierung anzeigt.
 
@@ -90,4 +91,8 @@ Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln 
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

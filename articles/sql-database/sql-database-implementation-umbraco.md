@@ -16,11 +16,12 @@
    ms.date="09/22/2016"
    ms.author="carlrab"/>
 
-# Umbraco verwendet Azure SQL-Datenbank, um Dienste für Tausende von Mandanten in der Cloud schnell bereitzustellen und zu skalieren
+
+# <a name="umbraco-uses-azure-sql-database-to-quickly-provision-and-scale-services-for-thousands-of-tenants-in-the-cloud"></a>Umbraco verwendet Azure SQL-Datenbank, um Dienste für Tausende von Mandanten in der Cloud schnell bereitzustellen und zu skalieren
 
 ![Umbraco-Logo](./media/sql-database-implementation-umbraco/umbracologo.png)
 
-Umbraco ist ein beliebtes Open Source-CMS (Content Management System), das jede Workload unterstützt, von kleinen Kampagnen- oder Werbewebsites bis hin zu komplexen Anwendungen für Fortune 500-Unternehmen und globale Medienwebsites.
+Umbraco ist ein beliebtes Open Source-CMS (Content Management System), das jede Workload unterstützt, von kleinen Kampagnen- oder Werbewebsites bis hin zu komplexen Anwendungen für Fortune 500-Unternehmen und globale Medienwebsites. 
 
 > „Wir haben eine sehr große Community aus Entwicklern, die das System verwenden. In unseren Foren tauschen sich mehr als 100.000 Entwickler aus, und mehr als 350.000 Live-Websites werden von Umbraco unterstützt.“
 
@@ -37,11 +38,11 @@ UaaS ermöglicht SaaS-Kunden die Verwendung der CMS-Funktionen von Umbraco, die 
 
 Abbildung 1. Bereitstellungslebenszyklus für Umbraco-as-a-Service (UaaS)
  
-##Elastische Azure-Pools und Automatisierung vereinfachen Bereitstellungen
+##<a name="azure-elastic-pools-and-automation-simplify-deployments"></a>Elastische Azure-Pools und Automatisierung vereinfachen Bereitstellungen
 
 Mit Azure SQL-Datenbank und weiteren Azure-Diensten können Umbraco-Kunden ihre Umgebungen selbst bereitstellen, und Umbraco kann Datenbanken im Rahmen eines intuitiven Workflows problemlos überwachen und verwalten:
 
-1.	Bereitstellung
+1.  Bereitstellung
 
     Umbraco hält eine Kapazität von 200 verfügbaren, vorab bereitgestellten Datenbanken aus elastischen Pools bereit. Wenn sich ein neuer Kunde für UaaS registriert, stellt Umbraco diesem Kunden nahezu in Echtzeit eine neue CMS-Umgebung bereit, indem dem Kunden eine Datenbank aus dem Verfügbarkeitspool zugewiesen wird.
 
@@ -49,7 +50,7 @@ Mit Azure SQL-Datenbank und weiteren Azure-Diensten können Umbraco-Kunden ihre 
 
     Die Implementierung wird mithilfe von C#-Verwaltungsbibliotheken und Azure Service Bus-Warteschlangen vollständig automatisiert.
 
-2.	Nutzung
+2.  Nutzung
 
     Kunden verwenden bis zu drei Umgebungen (Produktion, Staging und/oder Entwicklung), die jeweils über eine eigene Datenbank verfügen. Die Kundendatenbanken befinden sich in elastischen Datenbankpools, sodass Umbraco eine effiziente Skalierung sicherstellen kann, ohne Ressourcen überdimensionieren zu müssen.
 
@@ -61,11 +62,11 @@ Mit Azure SQL-Datenbank und weiteren Azure-Diensten können Umbraco-Kunden ihre 
 
     Azure SQL-Datenbank verwendet DTUs (Database Transaction Units, Datenbanktransaktionseinheiten), um die relative Leistung darzustellen, die für tatsächliche Datenbanktransaktionen erforderlich ist. Bei den UaaS-Kunden arbeiten die Datenbanken in der Regel mit etwa 10 DTUs, aber jede Datenbank ist elastisch und kann bei Bedarf skaliert werden. Auf diese Weise kann UaaS sicherstellen, dass Kunden jederzeit über die notwendigen Ressourcen verfügen, auch in Zeiten höchster Auslastung. Vor einiger Zeit fand beispielsweise an einem Sonntagabend ein großes Sportereignis statt, während dessen ein UaaS-Kunde Spitzenwerte von bis zu 100 DTUs pro Datenbank feststellte. Dank der elastischen Azure-Pools kann Umbraco solche hohen Anforderungen ohne Leistungseinbußen erfüllen.
 
-3.	Überwachung
+3.  Überwachung
 
     Umbraco überwacht die Datenbankaktivität mithilfe von Dashboards im Azure-Portal sowie mit benutzerdefinierten E-Mail-Benachrichtigungen.
 
-4.	Notfallwiederherstellung
+4.  Notfallwiederherstellung
 
     Azure bietet zwei Optionen für die Notfallwiederherstellung: die aktive Georeplikation und die Geowiederherstellung. Welche Option ein Unternehmen auswählt, richtet sich nach den jeweiligen [Zielen hinsichtlich der Geschäftskontinuität](sql-database-business-continuity.md).
 
@@ -73,11 +74,11 @@ Mit Azure SQL-Datenbank und weiteren Azure-Diensten können Umbraco-Kunden ihre 
 
     Umbraco benötigt keine Georeplikation, nutzt jedoch die Azure-Geowiederherstellung, um Ausfallzeiten zu minimieren. Die Geowiederherstellung basiert auf Datenbanksicherungen in georedundantem Azure-Speicher. So können Benutzer nach einem Ausfall einer primären Region eine Wiederherstellung aus einer Sicherungskopie durchführen.
 
-5.	Aufheben der Bereitstellung
+5.  Aufheben der Bereitstellung
 
     Wenn eine Projektumgebung gelöscht wird, werden während der Bereinigung der Azure Service Bus-Warteschlange alle zugehörigen Datenbanken (Entwicklungs-, Staging- oder Livedatenbanken) entfernt. Dieser automatische Prozess stellt die nicht verwendeten Datenbanken im elastischen Verfügbarkeitspool von Umbraco wieder her und macht sie für eine zukünftige Bereitstellung verfügbar. Gleichzeitig wird für eine maximale Nutzung gesorgt.
 
-##Problemlose Skalierung von UaaS dank elastischer Pools
+##<a name="elastic-pools-allow-uaas-to-scale-with-ease"></a>Problemlose Skalierung von UaaS dank elastischer Pools
 
 Durch Nutzung von elastischen Azure-Datenbankpools kann Umbraco die Leistung für seine Kunden ohne Über- oder Unterdimensionierung von Ressourcen optimieren. Umbraco verfügt zurzeit über fast 3.000 Datenbanken in 19 elastischen Datenbankpools und kann diese bei Bedarf problemlos skalieren, um die Anforderungen der 325.000 Bestandskunden oder neuer Kunden zu erfüllen, die ein CMS in der Cloud bereitstellen möchten.
 
@@ -89,7 +90,7 @@ Wenn ein Kunde die zweite oder dritte Umgebung nicht mehr benötigt, kann er die
 
 Abbildung 3. UaaS-Bereitstellungsarchitektur in Microsoft Azure
 
-##Vom Rechenzentrum in die Cloud
+##<a name="the-path-from-datacenter-to-cloud"></a>Vom Rechenzentrum in die Cloud
 
 Als die Entwickler bei Umbraco beschlossen, auf ein SaaS-Modell umzusteigen, wussten sie bereits, dass sie eine kostengünstige und skalierbare Möglichkeit benötigen würden, um den Dienst auszubauen.
 
@@ -105,11 +106,11 @@ Darüber hinaus wollte das Umbraco-Entwicklungsteam eine Lösung, mit der so vie
 
 Um alle Kriterien zu erfüllen, suchte Umbraco nach einem Cloudpartner mit folgenden Qualifikationen:
 
--	Ausreichende Kapazität und Zuverlässigkeit
--	Unterstützung für Microsoft-Entwicklungstools, um die Umbraco-Entwickler nicht zu zwingen, ihre Entwicklungsumgebung komplett neu zu erfinden
--	Präsenz in allen geografischen Märkten, in denen UaaS angeboten wird (Unternehmen müssen sicherstellen, dass sie schnell auf ihre Daten zugreifen können und dass ihre Daten an einem Ort gespeichert sind, der die regionalen gesetzlichen Vorschriften erfüllt)
+-   Ausreichende Kapazität und Zuverlässigkeit
+-   Unterstützung für Microsoft-Entwicklungstools, um die Umbraco-Entwickler nicht zu zwingen, ihre Entwicklungsumgebung komplett neu zu erfinden
+-   Präsenz in allen geografischen Märkten, in denen UaaS angeboten wird (Unternehmen müssen sicherstellen, dass sie schnell auf ihre Daten zugreifen können und dass ihre Daten an einem Ort gespeichert sind, der die regionalen gesetzlichen Vorschriften erfüllt)
 
-##Darum wählte Umbraco Azure für UaaS
+##<a name="why-umbraco-chose-azure-for-uaas"></a>Darum wählte Umbraco Azure für UaaS
 
 Morten Christensen sagt: „Nachdem wir alle Optionen erwogen hatten, haben wir uns für Azure entschieden, da es all unsere Kriterien erfüllte – es lässt sich einfach verwalten und skalieren und bietet vertraute Tools und Kosteneffizienz. Wir richten die Umgebungen auf virtuellen Azure-Computern ein. Jede Umgebung verfügt über eine eigene Azure SQL-Datenbankinstanz, und alle Instanzen befinden sich in elastischen Datenbankpools. Durch Trennung der Datenbanken für Entwicklungs-, Staging- und Liveumgebungen können wir unseren Kunden eine stabile Leistung in Abstimmung mit der Skalierung bieten – ein großer Gewinn!“
 
@@ -119,24 +120,29 @@ Morten ist auch mit den Skalierungsfunktionen von Azure höchst zufrieden. „El
 
 Mikkel Madsen fasst zusammen: „Wir haben uns den leistungsstarken Azure-Algorithmus zunutze gemacht, der ein häufiges SaaS-Szenario (Onboarding eines Kunden in Echtzeit und ganz an den Bedarf des Kunden angepasst) mit unserem Anwendungsmuster verknüpft (Vorabbereitstellung von Datenbanken, sowohl für Entwicklungs- als auch für Liveumgebungen). All dies baut auf der zugrunde liegende Technologie auf (Azure Service Bus-Warteschlangen zusammen mit Azure SQL-Datenbank).“
 
-##Dank Azure übertrifft UaaS die Erwartungen der Kunden
+##<a name="with-azure,-uaas-is-exceeding-customer-expectations"></a>Dank Azure übertrifft UaaS die Erwartungen der Kunden
 
 Seitdem Umbraco sich für Azure als Cloudpartner entschieden hat, konnte das Unternehmen seinen UaaS-Kunden eine optimierte Leistung für ihre Content-Management-Systeme bieten – und zwar ohne die hohen Investitionen in IT-Ressourcen, die bei einer selbst gehosteten Lösung notwendig gewesen wären. Morten formuliert es so: „Wir schätzen die bequeme Entwicklung und die Skalierbarkeit, die Azure uns bietet. Und unsere Kunden sind ganz begeistert von der Funktionsvielfalt und Zuverlässigkeit. Insgesamt war es ein großer Gewinn für uns!“
  
-## Weitere Informationen
+## <a name="more-information"></a>Weitere Informationen
 
 - Weitere Informationen zu elastischen Azure-Datenbankpools finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
 - Weitere Informationen zu Azure Service Bus finden Sie unter [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
 
-- Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).
+- Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute). 
 
-- Weitere Informationen zu virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke](https://azure.microsoft.com/documentation/services/virtual-network/).
+- Weitere Informationen zu virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke](https://azure.microsoft.com/documentation/services/virtual-network/).    
 
-- Weiter Informationen zur Sicherung und Wiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).
+- Weiter Informationen zur Sicherung und Wiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).  
 
-- Weitere Informationen zur Überwachung von Pools finden Sie unter [Überwachen von Pools](sql-database-elastic-pool-manage-portal.md).
+- Weitere Informationen zur Überwachung von Pools finden Sie unter [Überwachen von Pools](sql-database-elastic-pool-manage-portal.md). 
 
 - Weitere Informationen zu Umbraco-as-a-Service finden Sie unter [Umbraco](https://umbraco.com/cloud).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

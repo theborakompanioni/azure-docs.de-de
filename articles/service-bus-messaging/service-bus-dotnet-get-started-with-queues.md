@@ -1,14 +1,14 @@
 <properties
     pageTitle="Erste Schritte mit Service Bus-Warteschlangen | Microsoft Azure"
     description="Gewusst wie: Erstellen einer C#-Konsolenanwendung für Service Bus-Messaging"
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter=".net"
     authors="jtaubensee"
     manager="timlt"
     editor=""/>
 
 <tags
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.devlang="tbd"
     ms.topic="hero-article"
     ms.tgt_pltfrm="dotnet"
@@ -16,11 +16,12 @@
     ms.date="08/23/2016"
     ms.author="jotaub;sethm"/>
 
-# Erste Schritte mit Service Bus-Warteschlangen
+
+# <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
 
 [AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-## Ziele
+## <a name="what-will-be-accomplished"></a>Ziele
 
 In diesem Tutorial werden folgende Kenntnisse vermittelt:
 
@@ -32,7 +33,7 @@ In diesem Tutorial werden folgende Kenntnisse vermittelt:
 
 4. Erstellen einer Konsolenanwendung zum Empfangen von Nachrichten
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 1. [Visual Studio 2013 oder Visual Studio 2015](http://www.visualstudio.com). Für die Beispiele in diesem Tutorial wird Visual Studio 2015 verwendet.
 
@@ -40,27 +41,27 @@ In diesem Tutorial werden folgende Kenntnisse vermittelt:
 
 [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## 1\. Erstellen eines Namespace mithilfe des Azure-Portals
+## <a name="1.-create-a-namespace-using-the-azure-portal"></a>1. Erstellen eines Namespace mithilfe des Azure-Portals
 
 Falls Sie bereits einen Service Bus-Namespace erstellt haben, fahren Sie mit dem Abschnitt [Erstellen einer Warteschlange mithilfe des Azure-Portals](#2-create-a-queue-using-the-azure-portal) fort.
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## 2\. Erstellen einer Warteschlange mithilfe des Azure-Portals
+## <a name="2.-create-a-queue-using-the-azure-portal"></a>2. Erstellen einer Warteschlange mithilfe des Azure-Portals
 
 Falls Sie bereits eine Service Bus-Warteschlange erstellt haben, fahren Sie mit dem Abschnitt [Senden von Nachrichten an die Warteschlange](#3-send-messages-to-the-queue) fort.
 
 [AZURE.INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## 3\. Senden von Nachrichten an die Warteschlange
+## <a name="3.-send-messages-to-the-queue"></a>3. Senden von Nachrichten an die Warteschlange
 
 Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe von Visual Studio eine C#-Konsolenanwendung.
 
-### Erstellen einer Konsolenanwendung
+### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
 1. Starten Sie Visual Studio, und erstellen Sie eine neue Konsolenanwendung.
 
-### Hinzufügen des NuGet-Pakets "Service Bus"
+### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 
@@ -68,7 +69,7 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
 
     ![Auswählen eines NuGet-Pakets][nuget-pkg]
 
-### Schreiben von Code zum Senden einer Nachricht an die Warteschlange
+### <a name="write-some-code-to-send-a-message-to-the-queue"></a>Schreiben von Code zum Senden einer Nachricht an die Warteschlange
 
 1. Fügen Sie am Anfang der Datei „Program.cs“ die folgende using-Anweisung hinzu:
 
@@ -111,11 +112,11 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
     }
     ```
   
-3. Führen Sie das Programm aus, und überprüfen Sie das Azure-Portal. Klicken Sie auf dem Übersichtsblatt des Namespaces auf den Namen Ihrer Warteschlange. Unter **Anzahl aktiver Nachrichten** sollte nun der Wert „1“ angezeigt werden.
+3. Führen Sie das Programm aus, und überprüfen Sie das Azure-Portal. Klicken Sie auf dem Übersichtsblatt**** des Namespaces auf den Namen Ihrer Warteschlange. Unter **Anzahl aktiver Nachrichten** sollte nun der Wert „1“ angezeigt werden.
     
       ![Nachrichtenanzahl][queue-message]
     
-## 4\. Empfangen von Nachrichten aus der Warteschlange
+## <a name="4.-receive-messages-from-the-queue"></a>4. Empfangen von Nachrichten aus der Warteschlange
 
 1. Erstellen Sie eine neue Konsolenanwendung, und fügen Sie ähnlich wie bei der vorherigen Sendeanwendung einen Verweis auf das NuGet-Paket „Service Bus“ hinzu.
 
@@ -125,7 +126,7 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
     using Microsoft.ServiceBus.Messaging;
     ```
   
-3. Fügen Sie der `Main`-Methode den folgenden Code hinzu, und legen Sie die **connectionString**-Variable als Verbindungszeichenfolge fest, die Sie beim Erstellen des Namespace abgerufen haben. Legen Sie außerdem **queueName** auf den Warteschlangennamen fest, den Sie beim Erstellen der Warteschlange verwendet haben.
+3. Fügen Sie der `Main`-Methode den folgenden Code hinzu, und legen Sie die **connectionString**-Variable auf die Verbindungszeichenfolge fest, die Sie beim Erstellen des Namespace abgerufen haben. Legen Sie außerdem **queueName** auf den Warteschlangennamen fest, den Sie beim Erstellen der Warteschlange verwendet haben.
 
     ```
     var connectionString = "";
@@ -142,7 +143,7 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
     Console.ReadLine();
     ```
 
-	Die Datei „Program.cs“ sollte nun wie folgt aussehen:
+    Die Datei „Program.cs“ sollte nun wie folgt aussehen:
 
     ```
     using System;
@@ -177,7 +178,7 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
   
 Glückwunsch! Sie haben eine Warteschlange erstellt, eine Nachricht gesendet und eine Nachricht empfangen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure-Samples/azure-servicebus-messaging-samples) an, die einige erweiterte Features von Azure Service Bus Messaging veranschaulichen.
 
@@ -192,4 +193,7 @@ Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure-S
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
-<!---HONumber=AcomDC_1005_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

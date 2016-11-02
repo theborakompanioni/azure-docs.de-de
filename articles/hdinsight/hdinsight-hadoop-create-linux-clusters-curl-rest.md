@@ -1,25 +1,26 @@
 <properties
-   	pageTitle="Bereitstellen von Hadoop-, HBase- oder Storm-Clustern unter Linux in HDInsight mit cURL und der Azure-REST-API | Microsoft Azure"
-   	description="Erfahren Sie, wie Sie Linux-basierte HDInsight-Cluster mit cURL, Azure-Ressourcen-Manager-Vorlagen und der Azure-REST-API erstellen. Sie können den Cluster-Typ (Hadoop, HBase oder Storm) angeben oder Skripts verwenden, um benutzerdefinierte Komponenten zu installieren."
-   	services="hdinsight"
-   	documentationCenter=""
-   	authors="Blackmist"
-   	manager="jhubbard"
-   	editor="cgronlun"
-	tags="azure-portal"/>
+    pageTitle="Bereitstellen von Hadoop-, HBase- oder Storm-Clustern unter Linux in HDInsight mit cURL und der Azure-REST-API | Microsoft Azure"
+    description="Erfahren Sie, wie Sie Linux-basierte HDInsight-Cluster mit cURL, Azure-Ressourcen-Manager-Vorlagen und der Azure-REST-API erstellen. Sie können den Cluster-Typ (Hadoop, HBase oder Storm) angeben oder Skripts verwenden, um benutzerdefinierte Komponenten zu installieren."
+    services="hdinsight"
+    documentationCenter=""
+    authors="Blackmist"
+    manager="jhubbard"
+    editor="cgronlun"
+    tags="azure-portal"/>
 
 <tags
-   	ms.service="hdinsight"
-   	ms.devlang="na"
-   	ms.topic="article"
-   	ms.tgt_pltfrm="na"
-   	ms.workload="big-data"
-   	ms.date="07/27/2016"
-   	ms.author="larryfr"/>
+    ms.service="hdinsight"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="big-data"
+    ms.date="10/11/2016"
+    ms.author="larryfr"/>
 
-#Erstellen von Linux-basierten Clustern in HDInsight mithilfe von cURL und der Azure-REST-API
 
-[AZURE.INCLUDE [Auswahl](../../includes/hdinsight-selector-create-clusters.md)]
+#<a name="create-linux-based-clusters-in-hdinsight-using-curl-and-the-azure-rest-api"></a>Erstellen von Linux-basierten Clustern in HDInsight mithilfe von cURL und der Azure-REST-API
+
+[AZURE.INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
 Mit der Azure-REST-API können Sie Verwaltungsvorgänge für Dienste durchführen, die auf der Azure-Plattform gehostet werden. Beispielsweise können Sie neue Ressourcen wie etwa Linux-basierte HDInsight-Cluster erstellen. In diesem Dokument erfahren Sie, wie Sie Azure-Ressourcen-Manager-Vorlagen erstellen, um einen HDInsight-Cluster sowie den zugehörigen Speicher zu konfigurieren. Sie erfahren auch, wie Sie anschließend die Vorlage mithilfe von cURL in der Azure-REST-API bereitstellen, um einen neuen HDInsight-Cluster zu erstellen.
 
@@ -27,7 +28,7 @@ Mit der Azure-REST-API können Sie Verwaltungsvorgänge für Dienste durchführe
 >
 > Weitere Informationen zu Knotengrößen und damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-##Voraussetzungen
+##<a name="prerequisites"></a>Voraussetzungen
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -40,7 +41,7 @@ Mit der Azure-REST-API können Sie Verwaltungsvorgänge für Dienste durchführe
 
 - __cURL__. Dieses Hilfsprogramm ist über Ihr Paketverwaltungssystem verfügbar oder kann hier heruntergeladen werden: [http://curl.haxx.se/](http://curl.haxx.se/).
 
-    > [AZURE.NOTE] Wenn Sie PowerShell zum Ausführen der Befehle in diesem Dokument verwenden, müssen Sie zuerst den `curl`-Alias entfernen, der standardmäßig erstellt wird. Wenn Sie den `curl`-Befehl von einer PowerShell-Eingabeaufforderung ausführen, verwendet dieser Alias das PowerShell-Cmdlet "Invoke-WebRequest" anstelle von cURL und gibt für viele der in diesem Dokument angegebenen Befehle Fehler zurück.
+    > [AZURE.NOTE] Wenn Sie PowerShell zum Ausführen der Befehle in diesem Dokument verwenden, müssen Sie zuerst den `curl`-Alias entfernen, der standardmäßig erstellt wird. Wenn Sie den `curl` -Befehl von einer PowerShell-Eingabeaufforderung ausführen, verwendet dieser Alias das PowerShell-Cmdlet "Invoke-WebRequest" anstelle von cURL und gibt für viele der in diesem Dokument angegebenen Befehle Fehler zurück.
     > 
     > Um diesen Alias zu entfernen, verwenden Sie folgenden Befehl in der PowerShell-Eingabeaufforderung:
     >
@@ -48,9 +49,13 @@ Mit der Azure-REST-API können Sie Verwaltungsvorgänge für Dienste durchführe
     >
     > Nachdem der Alias entfernt wurde, können Sie die auf Ihrem System installierte cURL-Version verwenden.
 
-##Erstellen einer Vorlage
+### <a name="access-control-requirements"></a>Voraussetzungen für die Zugriffssteuerung
 
-Bei Azure-Ressourcen-Manager-Vorlagen handelt es sich um JSON-Dokumente, mit denen eine __Ressourcengruppe__ und alle darin enthaltenen Ressourcen (z. B. HDInsight) beschrieben werden. Dieser vorlagenbasierte Ansatz ermöglicht Ihnen das Definieren aller für HDInsight benötigten Ressourcen in einer einzigen Vorlage sowie das Verwalten von Änderungen an der gesamten Gruppe durch __Bereitstellungen__, mit denen Änderungen an der Gruppe vorgenommen werden.
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+
+##<a name="create-a-template"></a>Erstellen einer Vorlage
+
+Bei Azure-Ressourcenverwaltungsvorlagen handelt es sich um JSON-Dokumente, mit denen eine __Ressourcengruppe__ und alle darin enthaltenen Ressourcen (z.B. HDInsight) beschrieben werden. Dieser vorlagenbasierte Ansatz ermöglicht Ihnen das Definieren aller für HDInsight benötigten Ressourcen in einer einzigen Vorlage sowie das Verwalten von Änderungen an der gesamten Gruppe durch __Bereitstellungen__, mit denen Änderungen an der Gruppe vorgenommen werden.
 
 Vorlagen werden üblicherweise in zwei Teilen bereitgestellt: die Vorlage selbst und eine Parameterdatei, die Sie mit Werten auffüllen, die speziell für Ihre Konfiguration gelten. Beispiel: Clustername, Administratorname und -kennwort. Wenn Sie die REST-API direkt verwenden, müssen Sie diese Werte in eine Datei kombinieren. Das Format dieses JSON-Dokuments sieht folgendermaßen aus:
 
@@ -260,19 +265,19 @@ Folgendes ist beispielsweise eine Kombination aus den Vorlagen- und Parameterdat
 
 Dieses Beispiel wird in den Schritten im vorliegenden Dokument verwendet. Sie müssen den Platzhalter _values_ im Abschnitt __Parameters__ am Ende des Dokuments durch die Werte ersetzen, die Sie für Ihren Cluster verwenden möchten.
 
-##Anmelden bei Ihrem Azure-Abonnement
+##<a name="login-to-your-azure-subscription"></a>Anmelden bei Ihrem Azure-Abonnement
 
 Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md) dokumentiert sind, und stellen Sie über die `azure login`-Methode eine Verbindung mit Ihrem Abonnement her.
 
-##Erstellen eines Dienstprinzipals
+##<a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-> [AZURE.NOTE] Diese Schritte stellen eine verkürzte Version der Informationen im Abschnitt _Authentifizieren des Dienstprinzipals mit einem Kennwort – Azure-Befehlszeilenschnittstelle_ des Dokuments [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](../resource-group-authenticate-service-principal.md#authenticate-service-principal-with-password---azure-cli). Mit diesen Schritten erstellen Sie einen neuen Dienstprinzipal, der zum Authentifizieren der REST-API-Anforderungen für das Erstellen von Azure-Ressourcen wie einem HDInsight-Cluster verwendet werden kann.
+> [AZURE.NOTE] Diese Schritte stellen eine verkürzte Version der Informationen im Abschnitt _Authentifizieren des Dienstprinzipals mit einem Kennwort – Azure-Befehlszeilenschnittstelle_ des Dokuments [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](../resource-group-authenticate-service-principal.md#authenticate-service-principal-with-password---azure-cli) . Mit diesen Schritten erstellen Sie einen neuen Dienstprinzipal, der zum Authentifizieren der REST-API-Anforderungen für das Erstellen von Azure-Ressourcen wie einem HDInsight-Cluster verwendet werden kann.
 
 1. Verwenden Sie an einer Befehlszeile oder in einem Terminal oder einer Shell den folgenden Befehl, um Ihre Azure-Abonnements aufzulisten.
 
         azure account list
         
-    Wählen Sie in der Liste das Abonnement aus, das Sie verwenden möchten, und notieren Sie sich den Wert in der Spalte __ID__. Dies ist die __Abonnement-ID__, die in den meisten Schritten in diesem Dokument verwendet wird.
+    Wählen Sie in der Liste das Abonnement aus, das Sie verwenden möchten, und notieren Sie sich den Wert in der Spalte __ID__ . Dies ist die __Abonnement-ID__ , die in den meisten Schritten in diesem Dokument verwendet wird.
 
 2. Erstellen Sie eine neue Anwendung in Azure Active Directory.
 
@@ -290,7 +295,7 @@ Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem A
         ...
         info:    ad app create command OK
     
-3. Erstellen Sie einen Dienstprinzipal mit der zuvor zurückgegebenen __AppId__.
+3. Erstellen Sie einen Dienstprinzipal mit der zuvor zurückgegebenen __AppId__ .
 
         azure ad sp create 4fd39843-c338-417d-b549-a545f584a745
         
@@ -311,7 +316,7 @@ Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem A
         
     Nach Abschluss dieses Befehls hat der Dienstprinzipal Besitzerzugriff auf die angegebene Abonnement-ID.
 
-##Abrufen eines Authentifizierungstokens
+##<a name="get-an-authentication-token"></a>Abrufen eines Authentifizierungstokens
 
 1. Versuchen Sie, mit dem folgenden Verfahren die __Mandanten-ID__ für Ihr Abonnement zu ermitteln.
 
@@ -342,11 +347,11 @@ Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem A
         --data-urlencode "client_secret=password" \
         --data-urlencode "resource=https://management.azure.com/"
     
-    Ersetzen Sie __TenantID__, __AppID__ und __Kennwort__ mit den Werten, die abgerufen oder zuvor verwendet wurden.
+    Ersetzen Sie __TenantID__, __AppID__ und __Kennwort__ durch die Werte, die abgerufen oder zuvor verwendet wurden.
 
     Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text ein JSON-Dokument enthält.
 
-    Das von dieser Anforderung zurückgegebene JSON-Dokument enthält ein Element namens __access\_token__. Der Wert dieses Elements ist das Zugriffstoken, das zur Authentifizierung der in den nächsten Abschnitten dieses Dokuments verwendeten Anforderungen erforderlich ist.
+    Das von dieser Anforderung zurückgegebene JSON-Dokument enthält ein Element namens __access_token__. Der Wert dieses Elements ist das Zugriffstoken, das zur Authentifizierung der in den nächsten Abschnitten dieses Dokuments verwendeten Anforderungen erforderlich ist.
     
         {
             "token_type":"Bearer",
@@ -356,13 +361,13 @@ Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem A
             "resource":"https://management.azure.com/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWoNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI2Ny8iLCJpYXQiOjE0NjM0MDYwOTQsIm5iZiI6MTQ2MzQwNjA5NCwiZXhwIjoxNDYzNDA5OTk5LCJhcHBpZCI6IjBlYzcyMzM0LTZkMDMtNDhmYi04OWU1LTU2NTJiODBiZDliYiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJzdWIiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ2ZXIiOiIxLjAifQ.nJVERbeDHLGHn7ZsbVGBJyHOu2PYhG5dji6F63gu8XN2Cvol3J1HO1uB4H3nCSt9DTu_jMHqAur_NNyobgNM21GojbEZAvd0I9NY0UDumBEvDZfMKneqp7a_cgAU7IYRcTPneSxbD6wo-8gIgfN9KDql98b0uEzixIVIWra2Q1bUUYETYqyaJNdS4RUmlJKNNpENllAyHQLv7hXnap1IuzP-f5CNIbbj9UgXxLiOtW5JhUAwWLZ3-WMhNRpUO2SIB7W7tQ0AbjXw3aUYr7el066J51z5tC1AK9UC-mD_fO_HUP6ZmPzu5gLA6DxkIIYP3grPnRVoUDltHQvwgONDOw"
         }
 
-##Erstellen einer Ressourcengruppe
+##<a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Gehen Sie wie folgt vor, um eine neue Ressourcengruppe zu erstellen. Sie müssen zuerst die Gruppe erstellen, bevor Sie die einzelnen Ressourcen, wie z. B. den HDInsight-Cluster, erstellen können.
+Gehen Sie wie folgt vor, um eine neue Ressourcengruppe zu erstellen. Sie müssen zuerst die Gruppe erstellen, bevor Sie die einzelnen Ressourcen, wie z. B. den HDInsight-Cluster, erstellen können. 
 
 * Ersetzen Sie __SubscriptionID__ durch die Abonnement-ID, die Sie während der Erstellung des Dienstprinzipals erhalten haben.
 * Ersetzen Sie __AccessToken__ durch das Zugriffstoken, das Sie im vorherigen Schritt erhalten haben.
-* Ersetzen Sie __DataCenterLocation__ durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden".
+* Ersetzen Sie __DataCenterLocation__ durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden". 
 * Ersetzen Sie __ResourceGroupName__ durch den Namen, den Sie für diese Gruppe verwenden möchten.
 
 ```
@@ -376,11 +381,11 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 
 Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text ein JSON-Dokument mit Informationen zur Gruppe enthält. Das `"provisioningState"`-Element enthält den Wert `"Succeeded"`.
 
-##Erstellen einer Bereitstellung
+##<a name="create-a-deployment"></a>Erstellen einer Bereitstellung
 
 Gehen Sie wie folgt vor, um die Clusterkonfiguration (Vorlage und Parameterwerte) in der Ressourcengruppe bereitzustellen.
 
-* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte.
+* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte. 
 * Ersetzen Sie __ResourceGroupName__ durch den Namen der Ressourcengruppe, die Sie im vorherigen Abschnitt erstellt haben.
 * Ersetzen Sie __DeploymentName__ durch den Namen, den Sie für diese Bereitstellung verwenden möchten.
 
@@ -399,11 +404,11 @@ Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text 
 
 > [AZURE.IMPORTANT] Beachten Sie, dass die Bereitstellung zu diesem Zeitpunkt übermittelt, aber noch nicht abgeschlossen wurde. Es kann mehrere Minuten dauern (in der Regel etwa 15), bis die Bereitstellung abgeschlossen ist.
 
-##Überprüfen des Bereitstellungsstatus
+##<a name="check-the-status-of-a-deployment"></a>Überprüfen des Bereitstellungsstatus
 
 Gehen Sie wie folgt vor, um den Status der Bereitstellung zu prüfen.
 
-* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte.
+* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte. 
 * Ersetzen Sie __ResourceGroupName__ durch den Namen der Ressourcengruppe, die Sie im vorherigen Abschnitt erstellt haben.
 
 ```
@@ -414,25 +419,29 @@ curl -X "GET" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 
 Damit wird ein JSON-Dokument mit Informationen zum Bereitstellungsvorgang zurückgegeben. Das `"provisioningState"`-Element enthält den Status der Bereitstellung; wenn dieses Element den Wert `"Succeeded"` enthält, wurde die Bereitstellung erfolgreich abgeschlossen. Jetzt kann Ihr Cluster verwendet werden.
 
-##Nächste Schritte
+##<a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die folgenden Informationen, um zu erfahren, wie Sie mit Ihrem Cluster arbeiten.
+Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die folgenden Informationen, um zu erfahren, wie Sie mit Ihrem Cluster arbeiten. 
 
-###Hadoop-Cluster
+###<a name="hadoop-clusters"></a>Hadoop-Cluster
 
 * [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
 
-###HBase-Cluster
+###<a name="hbase-clusters"></a>HBase-Cluster
 
 * [Erste Schritte mit HBase in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md)
 * [Entwickeln von Java-Anwendungen für HBase in HDInsight](hdinsight-hbase-build-java-maven-linux.md)
 
-###Storm-Cluster
+###<a name="storm-clusters"></a>Storm-Cluster
 
 * [Entwickeln von Java-Topologien für Storm in HDInsight](hdinsight-storm-develop-java-topology.md)
 * [Verwenden von Python-Komponenten in Storm in HDInsight](hdinsight-storm-develop-python-topology.md)
 * [Bereitstellen und Überwachen von Topologien mit Storm in HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -16,7 +16,8 @@
    ms.date="09/25/2016"
    ms.author="msfussell"/>
 
-# Vorschau: Bereitstellen eines Containers in Service Fabric
+
+# <a name="preview:-deploy-a-container-to-service-fabric"></a>Vorschau: Bereitstellen eines Containers in Service Fabric
 
 >[AZURE.NOTE] Dieses Feature befindet sich für Linux in der Vorschauphase und ist für Windows Server derzeit nicht verfügbar. Die Vorschauphase für Windows Server beginnt mit der nächsten Version von Service Fabric nach Windows Server 2016 GA, und das Feature wird in der darauffolgenden Version unterstützt.
 
@@ -31,16 +32,16 @@ Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung vo
 
 Wir sehen uns nacheinander die Funktionen an, die beim Verpacken eines in einem Container enthaltenen Diensts für Ihre Anwendung verwendet werden.
 
-## Packen eines Containers
+## <a name="packaging-a-container"></a>Packen eines Containers
 
 Beim Packen eines Containers können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit dem neuen Projekt-Assistenten für Sie erstellt.
 
-## Verwenden von Visual Studio zum Packen einer vorhandenen ausführbaren Datei
+## <a name="using-visual-studio-to-package-an-existing-executable"></a>Verwenden von Visual Studio zum Packen einer vorhandenen ausführbaren Datei
 
->[AZURE.NOTE] In einer zukünftigen Version des SDK mit den Visual Studio-Tools können Sie einer Anwendung einen Container auf ähnliche Weise hinzufügen, wie Sie dies bereits von einer ausführbaren Gastanwendung kennen. Weitere Informationen finden Sie im Thema [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md). Derzeit müssen Sie das Packen wie unten beschrieben manuell durchführen.
+>[AZURE.NOTE] In einer zukünftigen Version des SDK mit den Visual Studio-Tools können Sie einer Anwendung einen Container auf ähnliche Weise hinzufügen, wie Sie dies bereits von einer ausführbaren Gastanwendung kennen. Weitere Informationen finden Sie im Thema [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md) . Derzeit müssen Sie das Packen wie unten beschrieben manuell durchführen.
 
 <a id="manually"></a>
-## Manuelles Packen und Bereitstellen von Containern
+## <a name="manually-packaging-and-deploying-container"></a>Manuelles Packen und Bereitstellen von Containern
 Der Vorgang zum manuellen Packen eines Diensts in einem Container basiert auf folgenden Schritten:
 
 1. Veröffentlichen des Containers in Ihrem Repository
@@ -48,8 +49,8 @@ Der Vorgang zum manuellen Packen eines Diensts in einem Container basiert auf fo
 3. Bearbeiten der Dienstmanifestdatei
 4. Bearbeiten der Anwendungsmanifestdatei
 
-## Bereitstellung und Aktivierung des Containerimage
-Im Service Fabric-[Anwendungsmodell](service-fabric-application-model.md) stellt ein Container einen Anwendungshost dar, in dem mehrere Dienstreplikate angeordnet werden. Fügen Sie den Namen des Containerimage im Dienstmanifest in ein `ContainerHost`-Element ein, um einen Container bereitzustellen und zu aktivieren.
+## <a name="container-image-deployment-and-activation."></a>Bereitstellung und Aktivierung des Containerimage
+Im Service Fabric- [Anwendungsmodell](service-fabric-application-model.md)stellt ein Container einen Anwendungshost dar, in dem mehrere Dienstreplikate angeordnet werden. Fügen Sie den Namen des Containerimage im Dienstmanifest in ein `ContainerHost` -Element ein, um einen Container bereitzustellen und zu aktivieren.
 
 Fügen Sie im Dienstmanifest ein `ContainerHost`-Element für den Einstiegspunkt hinzu, und legen Sie `ImageName` als Name für das Containerrepository und Image fest. Der folgende Teil eines Manifests zeigt ein Beispiel für die Bereitstellung eines Containers mit dem Namen *myimage:v1* aus einem Repository mit dem Namen *myrepo*.
 
@@ -62,16 +63,16 @@ Fügen Sie im Dienstmanifest ein `ContainerHost`-Element für den Einstiegspunkt
         </EntryPoint>
     </CodePackage>
 
-Sie können für das Containerimage Eingabebefehle angeben, indem Sie das optionale `Commands`-Element mit einer per Komma getrennten Gruppe von Befehlen für die Ausführung im Container angeben.
+Sie können für das Containerimage Eingabebefehle angeben, indem Sie das optionale `Commands` -Element mit einer per Komma getrennten Gruppe von Befehlen für die Ausführung im Container angeben. 
 
-## Ressourcenkontrolle
+## <a name="resource-governance"></a>Ressourcenkontrolle
 Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen beschränkt werden, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, können Ressourcenbegrenzungen für ein Dienstcodepaket deklariert werden. Ressourcenbegrenzungen können für Folgendes festgelegt werden:
 
 - Arbeitsspeicher
 - MemorySwap
 - CpuShares (relative CPU-Gewichtung)
-- MemoryReservationInMB
-- BlkioWeight (relative BlockIO-Gewichtung)
+- MemoryReservationInMB  
+- BlkioWeight (relative BlockIO-Gewichtung) 
 
 >[AZURE.NOTE] In einer zukünftigen Version wird die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten möglich sein, z.B. IOPS, Bit/s (Lesen/Schreiben) und andere.
 
@@ -85,8 +86,8 @@ Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen
     </ServiceManifestImport>
 
 
-## Repositoryauthentifizierung
-Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinformationen für das Containerrepository angeben. Die Anmeldeinformationen, die im *Anwendungs*manifest enthalten sind, werden zum Angeben der Anmeldeinformationen oder des SSH-Schlüssels zum Herunterladen des Containerimage aus dem Imagerepository verwendet. Das folgende Beispiel enthält ein Konto mit dem Namen *TestUser* und dem Kennwort als Klartext. Dies ist **nicht** zu empfehlen.
+## <a name="repository-authentication"></a>Repositoryauthentifizierung
+Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinformationen für das Containerrepository angeben. Die Anmeldeinformationen, die im *Anwendungs* manifest enthalten sind, werden zum Angeben der Anmeldeinformationen oder des SSH-Schlüssels zum Herunterladen des Containerimage aus dem Imagerepository verwendet.  Das folgende Beispiel enthält ein Konto mit dem Namen *TestUser* und dem Kennwort als Klartext. Dies ist **nicht** zu empfehlen.
 
 
     <ServiceManifestImport>
@@ -115,8 +116,8 @@ Im folgenden Beispiel wird ein Konto mit dem Namen *TestUser* verwendet, dessen 
         </Policies>
     </ServiceManifestImport>
 
-## Containerport zum Hosten der Portzuordnung
-Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, indem Sie im Anwendungsmanifest ein `PortBinding`-Element angeben. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet.
+## <a name="container-port-to-host-port-mapping"></a>Containerport zum Hosten der Portzuordnung
+Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, indem Sie im Anwendungsmanifest ein `PortBinding` -Element angeben. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet.
 
 
     <ServiceManifestImport>
@@ -129,10 +130,10 @@ Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, in
     </ServiceManifestImport>
 
 
-## Container-zu-Container-Ermittlung und -Kommunikation
+## <a name="container-to-container-discovery-and-communication"></a>Container-zu-Container-Ermittlung und -Kommunikation
 Mit der `PortBinding`-Richtlinie können Sie einen Containerport einem `Endpoint` im Dienstmanifest zuordnen. Dies wird im folgenden Beispiel veranschaulicht. Für den Endpunkt `Endpoint1` kann ein fester Port angegeben werden, z.B. Port 80, oder es kann auch kein Port angegeben werden. In diesem Fall wird für Sie ein zufälliger Port aus dem Anwendungsportbereich der Cluster ausgewählt.
 
-Für Gastcontainer ermöglicht diese Angabe eines `Endpoint`-Elements im Dienstmanifest Service Fabric das automatische Veröffentlichen des Endpunkts für den Naming Service, sodass andere im Cluster ausgeführte Dienste den Container über die REST-Abfragen zum Auflösen von Diensten ermitteln können.
+Für Gastcontainer ermöglicht diese Angabe eines `Endpoint` -Elements im Dienstmanifest Service Fabric das automatische Veröffentlichen des Endpunkts für den Naming Service, sodass andere im Cluster ausgeführte Dienste den Container über die REST-Abfragen zum Auflösen von Diensten ermitteln können. 
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
@@ -143,12 +144,12 @@ Für Gastcontainer ermöglicht diese Angabe eines `Endpoint`-Elements im Dienstm
         </Policies>
     </ServiceManifestImport>
 
-Durch die Registrierung mit dem Naming Service können Sie im Code für Ihre Container per [Reverseproxy](service-fabric-reverseproxy.md) leicht eine Kommunikation von Container zu Container einrichten. Sie müssen lediglich den HTTP-Lauschport für den Reverseproxy und die Namen der Dienste angeben, mit denen Sie kommunizieren möchten, indem Sie sie als Umgebungsvariablen festlegen. Die Vorgehensweise ist im nächsten Abschnitt beschrieben.
+Durch die Registrierung mit dem Naming Service können Sie im Code für Ihre Container per [Reverseproxy](service-fabric-reverseproxy.md)leicht eine Kommunikation von Container zu Container einrichten. Sie müssen lediglich den HTTP-Lauschport für den Reverseproxy und die Namen der Dienste angeben, mit denen Sie kommunizieren möchten, indem Sie sie als Umgebungsvariablen festlegen. Die Vorgehensweise ist im nächsten Abschnitt beschrieben.  
 
-## Konfigurieren und Festlegen von Umgebungsvariablen
+## <a name="configure-and-set-environment-variables"></a>Konfigurieren und Festlegen von Umgebungsvariablen
 Umgebungsvariablen können für jedes Codepaket im Dienstmanifest für im Container bereitgestellte Dienste oder als Prozesse/ausführbare Gastanwendungsdateien angegeben werden. Diese Werte von Umgebungsvariablen können im Anwendungsmanifest spezifisch überschrieben oder während der Bereitstellung als Anwendungsparameter angegeben werden.
 
-Der folgende XML-Codeausschnitt eines Dienstmanifests enthält ein Beispiel für die Angabe von Umgebungsvariablen für ein Codepaket.
+Der folgende XML-Codeausschnitt eines Dienstmanifests enthält ein Beispiel für die Angabe von Umgebungsvariablen für ein Codepaket. 
 
     <ServiceManifest Name="FrontendServicePackage" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <Description>a guest executable service in a container</Description>
@@ -179,9 +180,9 @@ Diese Umgebungsvariablen können auf Anwendungsmanifestebene überschrieben werd
         </EnvironmentOverrides>
     </ServiceManifestImport>
 
-Im obigen Beispiel haben wir einen expliziten Wert für die Umgebungsvariable `HttpGateway` (19000) angegeben, und der Wert für den Parameter `BackendServiceName` wird über den Anwendungsparameter `[BackendSvc]` festgelegt. Dies ermöglicht Ihnen das Angeben des Werts für den `BackendServiceName`-Wert während der Anwendungsbereitstellung, und Sie müssen keinen festen Wert im Manifest verwenden.
+Im obigen Beispiel haben wir einen expliziten Wert für die Umgebungsvariable `HttpGateway` (19000) angegeben, und der Wert für den Parameter `BackendServiceName` wird über den Anwendungsparameter `[BackendSvc]` festgelegt. Dies ermöglicht Ihnen das Angeben des Werts für den `BackendServiceName`-Wert während der Anwendungsbereitstellung, und Sie müssen keinen festen Wert im Manifest verwenden. 
 
-## Vollständige Beispiele für Anwendungs- und Dienstmanifest
+## <a name="complete-examples-for-application-and-service-manifest"></a>Vollständige Beispiele für Anwendungs- und Dienstmanifest
 Hier ist ein Beispiel für ein Anwendungsmanifest angegeben, in dem die Containerfunktionen enthalten sind:
 
 
@@ -236,4 +237,8 @@ Hier ist ein Beispiel für ein Dienstmanifest (aus dem vorherigen Anwendungsmani
         </Resources>
     </ServiceManifest>
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,7 +1,11 @@
-| | **Klassische Bereitstellung** | **Resource Manager-Bereitstellung** |
-|----------------------------------------|--------------|------------------------|
-| **Klassisches Portal** | [Artikel](../articles/vpn-gateway/vpn-gateway-point-to-site-create.md) | Nicht unterstützt |
-| **Azure-Portal** | Unterstützt | Nicht unterstützt |
-| **PowerShell** | Unterstützt | [Artikel](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)|
+|**Bereitstellungsmodell/Methode**|**Azure-Portal**| **Klassisches Portal** | **PowerShell**|
+|-------------------------------------|-----------------|---------------------|---------------|
+|**Klassisch** |  [Artikel](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)| [Artikel](../articles/vpn-gateway/point-to-site-create.md)  | Unterstützt |
+|**Ressourcen-Manager** |Nicht unterstützt| Nicht unterstützt   | [Artikel](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)  |
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

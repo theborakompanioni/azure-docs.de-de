@@ -1,27 +1,32 @@
 <properties
-	pageTitle="Azure AD Connect-Synchronisierung: Funktionsreferenz | Microsoft Azure"
-	description="Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung."
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect-Synchronisierung: Funktionsreferenz | Microsoft Azure"
+    description="Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung."
+    services="active-directory"
+    documentationCenter=""
+    authors="andkjell"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2016"
-	ms.author="andkjell;markvi"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/23/2016"
+    ms.author="andkjell;markvi"/>
 
 
-# Azure AD Connect-Synchronisierung: Funktionsreferenz
 
-In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern. Die Syntax der Funktionen wird im folgenden Format ausgedrückt: `<output type> FunctionName(<input type> <position name>, ..)`
+# <a name="azure-ad-connect-sync:-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 
-Wenn eine Funktion überladen ist und mehrere Syntaxen akzeptiert, werden alle gültigen Syntaxen aufgeführt. Die Funktionen sind stark typisiert und überprüfen, ob der übergebene Typ dem dokumentierten Typ entspricht. Stimmt der Typ nicht überein, tritt ein Fehler auf.
+In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
+Die Syntax der Funktionen wird im folgenden Format ausgedrückt:   
+`<output type> FunctionName(<input type> <position name>, ..)`
+
+Wenn eine Funktion überladen ist und mehrere Syntaxen akzeptiert, werden alle gültigen Syntaxen aufgeführt.  
+Die Funktionen sind stark typisiert und überprüfen, ob der übergebene Typ dem dokumentierten Typ entspricht.  
+Stimmt der Typ nicht überein, tritt ein Fehler auf.
 
 Die Typen werden mit der folgenden Syntax ausgedrückt:
 
@@ -39,9 +44,9 @@ Die Typen werden mit der folgenden Syntax ausgedrückt:
 - **var** – eine Variante (fast) jedes anderen Typs
 - **void** – gibt keinen Wert zurück
 
-Funktionen mit dem Typ **mvbin**, **mvstr** und **mvref** können nur für mehrwertige Attribute verwendet werden. Funktionen mit **bin**, **str** und **ref** können sowohl für einwertige als auch für mehrwertige Attribute verwendet werden.
+Funktionen mit den Typen **mvbin**, **mvstr** und **mvref** können nur für mehrwertige Attribute verwendet werden. Funktionen mit **bin**, **str** und **ref** können sowohl für einwertige als auch für mehrwertige Attribute verwendet werden.
 
-## Funktionsreferenz
+## <a name="functions-reference"></a>Funktionsreferenz
 
 Liste der Funktionen | | | | |  
 --------- | --------- | --------- | --------- | --------- | ---------
@@ -64,7 +69,7 @@ Liste der Funktionen | | | | |
 [Contains](#contains) | [Count](#count) | [Element](#item) | [ItemOrNull](#itemornull)
 [Join](#join) | [RemoveDuplicates](#removeduplicates) | [Split](#split) |
 **Programmablauf** |  
-[Fehler](#error) | [IIF](#iif) | [Switch](#switch)
+[Fehler](#error) | [IIF](#iif)  | [Switch](#switch)
 **Text** |  
 [GUID](#guid) | [InStr](#instr) | [InStrRev](#instrrev) | [LCase](#lcase)
 [Left](#left) | [Len](#len) | [LTrim](#ltrim) | [Mid](#mid)
@@ -73,77 +78,101 @@ Liste der Funktionen | | | | |
 [UCase](#ucase) | [Word](#word)
 
 ----------
-### BitAnd
+### <a name="bitand"></a>BitAnd
 
-**Beschreibung:** Die BitAnd-Funktion legt angegebene Bits auf einen Wert fest.
+**Beschreibung:**  
+ Die BitAnd-Funktion legt angegebene Bits auf einen Wert fest.
 
-**Syntax:** `num BitAnd(num value1, num value2)`
+**Syntax:**  
+`num BitAnd(num value1, num value2)`
 
 - value1, value2: Numerische Werte, die mit AND verknüpft werden sollen
 
-**Hinweise:** Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf Folgendes fest:
+**Hinweise:**  
+ Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf Folgendes fest:
 
-- 0 – wenn ein oder beide entsprechenden Bits in *Mask* und *Flag* 0 sind.
+- 0 – wenn eines oder beide der entsprechenden Bits in *mask* und *flag* den Wert „0“ besitzt bzw. besitzen.
 - 1 – wenn beide entsprechenden Bits 1 sind.
 
 Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechenden Bits beider Parameter 1 sind.
 
-**Beispiel:** `BitAnd(&HF, &HF7)` Gibt 7 zurück, da durch die Verknüpfung mit AND die Hexadezimalwerte „F“ und „F7“ zu diesem Wert ausgewertet werden.
+**Beispiel:**  
+`BitAnd(&HF, &HF7)`  
+ Gibt 7 zurück, da durch die Verknüpfung mit AND die Hexadezimalwerte „F“ und „F7“ zu diesem Wert ausgewertet werden.
 
 ----------
-### BitOr
+### <a name="bitor"></a>BitOr
 
-**Beschreibung:** Die BitOr-Funktion legt angegebene Bits auf einen Wert fest.
+**Beschreibung:**  
+ Die BitOr-Funktion legt angegebene Bits auf einen Wert fest.
 
-**Syntax:** `num BitOr(num value1, num value2)`
+**Syntax:**  
+`num BitOr(num value1, num value2)`
 
 - value1, value2: Numerische Werte, die mit OR verknüpft werden sollen.
 
-**Hinweise:** Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf 1 fest, wenn mindestens eins der entsprechenden Bits in „mask“ und „flag“ 1 ist, und auf 0, wenn beide entsprechenden Bits 0 sind. Anders gesagt gibt sie in allen Fällen 1 zurück, außer wenn die entsprechenden Bits der beiden Parameter 0 sind.
+**Hinweise:**  
+ Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf 1 fest, wenn mindestens eins der entsprechenden Bits in „mask“ und „flag“ 1 ist, und auf 0, wenn beide entsprechenden Bits 0 sind. Anders gesagt gibt sie in allen Fällen 1 zurück, außer wenn die entsprechenden Bits der beiden Parameter 0 sind.
 
 ----------
-### CBool
+### <a name="cbool"></a>CBool
 
-**Beschreibung:** Die CBool-Funktion gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert.
+**Beschreibung:**  
+ Die CBool-Funktion gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert.
 
-**Syntax:** `bool CBool(exp Expression)`
+**Syntax:**  
+`bool CBool(exp Expression)`
 
-**Hinweise:** Wenn die Auswertung des Ausdrucks einen Wert ungleich 0 ergibt, gibt CBool „True“ zurück. Andernfalls wird „False“ zurückgegeben.
+**Hinweise:**  
+Wenn die Auswertung des Ausdrucks einen Wert ungleich Null ergibt, gibt CBool „True“ zurück. Andernfalls wird „False“ zurückgegeben.
 
-**Beispiel:** `CBool([attrib1] = [attrib2])`
+**Beispiel:**  
+`CBool([attrib1] = [attrib2])`  
 
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 
 ----------
-### CDate
+### <a name="cdate"></a>CDate
 
-**Beschreibung:** Die CDate-Funktion gibt einen UTC-DateTime-Wert aus einer Zeichenfolge zurück. "DateTime" ist kein synchronisierungsspezifischer Attributtyp, wird jedoch von einigen Funktionen verwendet.
+**Beschreibung:**  
+ Die CDate-Funktion gibt einen UTC-DateTime-Wert aus einer Zeichenfolge zurück. "DateTime" ist kein synchronisierungsspezifischer Attributtyp, wird jedoch von einigen Funktionen verwendet.
 
-**Syntax:** `dt CDate(str value)`
+**Syntax:**  
+`dt CDate(str value)`
 
 - value: Eine Zeichenfolge mit Datum, Uhrzeit und optional einer Zeitzone.
 
-**Hinweise:** Die zurückgegebene Zeichenfolge ist immer ein UTC-Wert.
+**Hinweise:**  
+ Die zurückgegebene Zeichenfolge ist immer ein UTC-Wert.
 
-**Beispiel:** `CDate([employeeStartTime])` Gibt einen DateTime-Wert auf Basis der Anfangszeit des Mitarbeiters zurück.
+**Beispiel:**  
+`CDate([employeeStartTime])`  
+ Gibt einen DateTime-Wert auf Basis der Anfangszeit des Mitarbeiters zurück.
 
-`CDate("2013-01-10 4:00 PM -8")` Gibt einen DateTime-Wert zurück, der „2013-01-11 12:00 AM“ darstellt.
+`CDate("2013-01-10 4:00 PM -8")`  
+ Gibt einen DateTime-Wert zurück, der „2013-01-11 12:00 AM“ darstellt.
 
 ----------
-### CGuid
+### <a name="cguid"></a>CGuid
 
-**Beschreibung:** Die CGuid-Funktion konvertiert die Zeichenfolgendarstellung einer GUID in ihre binäre Darstellung.
+**Beschreibung:**  
+ Die CGuid-Funktion konvertiert die Zeichenfolgendarstellung einer GUID in ihre binäre Darstellung.
 
-**Syntax:** `bin CGuid(str GUID)`
+**Syntax:**  
+`bin CGuid(str GUID)`
 
 - Eine in diesem Muster formatierte Zeichenfolge: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx oder {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 ----------
-### Contains
+### <a name="contains"></a>Contains
 
-**Beschreibung:** Die Contains-Funktion sucht in einem mehrwertigen Attribut nach einer Zeichenfolge.
+**Beschreibung:**  
+ Die Contains-Funktion sucht in einem mehrwertigen Attribut nach einer Zeichenfolge.
 
-**Syntax:** `num Contains (mvstring attribute, str search)` (mit Berücksichtigung der Groß-/Kleinschreibung) `num Contains (mvstring attribute, str search, enum Casetype)` `num Contains (mvref attribute, str search)` (mit Berücksichtigung der Groß-/Kleinschreibung)
+**Syntax:**  
+`num Contains (mvstring attribute, str search)` (mit Berücksichtigung der Groß-/Kleinschreibung)  
+`num Contains (mvstring attribute, str search, enum Casetype)`  
+`num Contains (mvref attribute, str search)` (mit Berücksichtigung der Groß-/Kleinschreibung)
 
 - attribute: Das zu durchsuchende mehrwertige Attribut.
 - search: Die im Attribut zu suchende Zeichenfolge.
@@ -151,97 +180,137 @@ Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 
 Gibt den Index in dem mehrwertigen Attribut zurück, in dem die Zeichenfolge gefunden wurde. Wenn die Zeichenfolge nicht gefunden wird, wird 0 zurückgegeben.
 
-**Hinweise:** Bei mehrwertigen Zeichenfolgenattributen werden in den Werten Teilzeichenfolgen gefunden. Für Verweisattribute muss die Suchzeichenfolge genau mit dem Wert übereinstimmen, der als Übereinstimmung betrachtet wird.
+**Hinweise:**  
+ Bei mehrwertigen Zeichenfolgenattributen werden in den Werten Teilzeichenfolgen gefunden.  
+Für Verweisattribute muss die Suchzeichenfolge genau mit dem Wert übereinstimmen, der als Übereinstimmung betrachtet wird.
 
-**Beispiel:** `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))` Wenn das proxyAddresses-Attribut eine primäre E-Mail-Adresse besitzt (angegeben durch „SMTP:“ [in Großbuchstaben]), wird das proxyAddresses-Attribut zurückgegeben. Andernfalls wird ein Fehler zurückgegeben.
+**Beispiel:**  
+`IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
+Wenn das proxyAddresses-Attribut eine primäre E-Mail-Adresse besitzt (angegeben durch „SMTP:“ [in Großbuchstaben]), wird das proxyAddresses-Attribut zurückgegeben. Andernfalls wird ein Fehler zurückgegeben.
 
 ----------
-### ConvertFromBase64
+### <a name="convertfrombase64"></a>ConvertFromBase64
 
-**Beschreibung:** Die ConvertFromBase64-Funktion konvertiert den angegebenen Base64-codierten Wert in eine reguläre Zeichenfolge.
+**Beschreibung:**  
+ Die ConvertFromBase64-Funktion konvertiert den angegebenen Base64-codierten Wert in eine reguläre Zeichenfolge.
 
-**Syntax:** `str ConvertFromBase64(str source)` – setzt Unicode-Codierung voraus `str ConvertFromBase64(str source, enum Encoding)`
+**Syntax:**  
+`str ConvertFromBase64(str source)` – setzt Unicode-Codierung voraus  
+`str ConvertFromBase64(str source, enum Encoding)`
 
-- source: Base64-codierte Zeichenfolge
+- source: Base64-codierte Zeichenfolge  
 - Codierung: Unicode, ASCII, UTF8.
 
-**Beispiel:** `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")` `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
+**Beispiel**  
+`ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
+`ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
 Beide Beispiele geben "*Hello world!*" zurück.
 
 ----------
-### ConvertFromUTF8Hex
+### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 
-**Beschreibung:** Die ConvertFromUTF8Hex-Funktion konvertiert den angegebenen UTF8-Hex-codierten Wert in eine Zeichenfolge.
+**Beschreibung:**  
+ Die ConvertFromUTF8Hex-Funktion konvertiert den angegebenen UTF8-Hex-codierten Wert in eine Zeichenfolge.
 
-**Syntax:** `str ConvertFromUTF8Hex(str source)`
+**Syntax:**  
+`str ConvertFromUTF8Hex(str source)`
 
 - source: UTF8-2-Byte-codierte Zeichenfolge
 
-**Hinweise:** Der Unterschied zwischen dieser Funktion und „ConvertFromBase64(,UTF8)“ besteht darin, dass das Ergebnis vom DN-Attribut verwertet werden kann. Dieses Format wird von Azure Active Directory als DN verwendet.
+**Hinweise:**  
+Der Unterschied zwischen dieser Funktion und „ConvertFromBase64([],UTF8)“ besteht darin, dass das Ergebnis vom DN-Attribut verwertet werden kann.  
+Dieses Format wird von Azure Active Directory als DN verwendet.
 
-**Beispiel:** `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")` Gibt *Hello world!* zurück.
-
-----------
-### ConvertToBase64
-
-**Beschreibung:** Die ConvertToBase64-Funktion konvertiert eine Zeichenfolge in eine Unicode-Base64-Zeichenfolge. Konvertiert den Wert eines Arrays von ganzen Zahlen in die entsprechende mit Base64-Ziffern codierte Zeichenfolgendarstellung.
-
-**Syntax:** `str ConvertToBase64(str source)`
-
-**Beispiel:** `ConvertToBase64("Hello world!")` Gibt „SABlAGwAbABvACAAdwBvAHIAbABkACEA“ zurück.
+**Beispiel:**  
+`ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
+Gibt*Hello world!*zurück.
 
 ----------
-### ConvertToUTF8Hex
+### <a name="converttobase64"></a>ConvertToBase64
 
-**Beschreibung:** Die ConvertToUTF8Hex-Funktion konvertiert eine Zeichenfolge in einen hexadezimal-codierten UTF8-Wert.
+**Beschreibung:**  
+ Die ConvertToBase64-Funktion konvertiert eine Zeichenfolge in eine Unicode-Base64-Zeichenfolge.  
+Konvertiert den Wert eines Arrays von ganzen Zahlen in die entsprechende mit Base64-Ziffern codierte Zeichenfolgendarstellung.
 
-**Syntax:** `str ConvertToUTF8Hex(str source)`
+**Syntax:**  
+`str ConvertToBase64(str source)`
 
-**Hinweise:** Das Ausgabeformat dieser Funktion wird von Azure Active Directory als DN-Attributformat verwendet.
-
-**Beispiel:** `ConvertToUTF8Hex("Hello world!")` Gibt „48656C6C6F20776F726C6421“ zurück.
-
-----------
-### Count
-
-**Beschreibung:** Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
-
-**Syntax:** `num Count(mvstr attribute)`
+**Beispiel:**  
+`ConvertToBase64("Hello world!")`  
+ Gibt „SABlAGwAbABvACAAdwBvAHIAbABkACEA“ zurück.
 
 ----------
-### CNum
+### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 
-**Beschreibung:** Die CNum-Funktion nimmt eine Zeichenfolge entgegen und gibt einen numerischen Datentyp zurück.
+**Beschreibung:**  
+ Die ConvertToUTF8Hex-Funktion konvertiert eine Zeichenfolge in einen hexadezimal-codierten UTF8-Wert.
 
-**Syntax:** `num CNum(str value)`
+**Syntax:**  
+`str ConvertToUTF8Hex(str source)`
+
+**Hinweise:**  
+ Das Ausgabeformat dieser Funktion wird von Azure Active Directory als DN-Attributformat verwendet.
+
+**Beispiel:**  
+`ConvertToUTF8Hex("Hello world!")`  
+ Gibt „48656C6C6F20776F726C6421“ zurück.
 
 ----------
-### CRef
+### <a name="count"></a>Count
 
-**Beschreibung:** Konvertiert eine Zeichenfolge in ein Verweisattribut.
+**Beschreibung:**  
+ Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
 
-**Syntax:** `ref CRef(str value)`
-
-**Beispiel:** `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
+**Syntax:**  
+`num Count(mvstr attribute)`
 
 ----------
-### CStr
+### <a name="cnum"></a>CNum
 
-**Beschreibung:** Die CStr-Funktion konvertiert in einen Zeichenfolgendatentyp.
+**Beschreibung:**  
+ Die CNum-Funktion nimmt eine Zeichenfolge entgegen und gibt einen numerischen Datentyp zurück.
 
-**Syntax:** `str CStr(num value)` `str CStr(ref value)` `str CStr(bool value)`
+**Syntax:**  
+`num CNum(str value)`
+
+----------
+### <a name="cref"></a>CRef
+
+**Beschreibung:**  
+ Konvertiert eine Zeichenfolge in ein Verweisattribut.
+
+**Syntax:**  
+`ref CRef(str value)`
+
+**Beispiel:**  
+`CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
+
+----------
+### <a name="cstr"></a>CStr
+
+**Beschreibung:**  
+ Die CStr-Funktion konvertiert in einen Zeichenfolgendatentyp.
+
+**Syntax:**  
+`str CStr(num value)`  
+`str CStr(ref value)`  
+`str CStr(bool value)`  
 
 - value: Kann ein numerischer Wert, ein Verweisattribut oder ein boolescher Wert sein.
 
-**Beispiel:** `CStr([dn])` Könnte „cn=Joe,dc=contoso,dc=com“ zurückgeben.
+**Beispiel:**  
+`CStr([dn])`  
+ Könnte „cn=Joe,dc=contoso,dc=com“ zurückgeben.
 
 ----------
-### DateAdd
+### <a name="dateadd"></a>DateAdd
 
-**Beschreibung:** Gibt einen Datumswert zurück, der ein Datum enthält, zu dem ein angegebenes Zeitintervall addiert wurde.
+**Beschreibung:**  
+ Gibt einen Datumswert zurück, der ein Datum enthält, zu dem ein angegebenes Zeitintervall addiert wurde.
 
-**Syntax:** `dt DateAdd(str interval, num value, dt date)`
+**Syntax:**  
+`dt DateAdd(str interval, num value, dt date)`
 
 - interval: Zeichenfolgenausdruck, der das Zeitintervall angibt, das hinzugefügt werden soll. Die Zeichenfolge muss einen der folgenden Werte aufweisen:
  - yyyy: Jahr
@@ -257,289 +326,396 @@ Beide Beispiele geben "*Hello world!*" zurück.
 - value: Die Anzahl der Einheiten, die Sie hinzufügen möchten. Der Wert kann positiv (für Datumsangaben in der Zukunft) oder negativ (für Datumsangaben in der Vergangenheit) sein.
 - date: DateTime-Wert, der das Datum darstellt, dem das Intervall hinzugefügt wird.
 
-**Beispiel:** `DateAdd("m", 3, CDate("2001-01-01"))` Addiert drei Monate und gibt einen DateTime-Wert zurück, der „2001-04-01“ darstellt.
+**Beispiel:**  
+`DateAdd("m", 3, CDate("2001-01-01"))`  
+ Addiert drei Monate und gibt einen DateTime-Wert zurück, der „2001-04-01“ darstellt.
 
 ----------
-### DateFromNum
+### <a name="datefromnum"></a>DateFromNum
 
-**Beschreibung:** Die DateFromNum-Funktion konvertiert einen Wert im AD-Datumsformat in einen DateTime-Typ.
+**Beschreibung:**  
+ Die DateFromNum-Funktion konvertiert einen Wert im AD-Datumsformat in einen DateTime-Typ.
 
-**Syntax:** `dt DateFromNum(num value)`
+**Syntax:**  
+`dt DateFromNum(num value)`
 
-**Beispiel:** `DateFromNum([lastLogonTimestamp])` `DateFromNum(129699324000000000)` Gibt einen DateTime-Wert zurück, der „2012-01-01 23:00:00“ darstellt.
+**Beispiel:**  
+`DateFromNum([lastLogonTimestamp])`  
+`DateFromNum(129699324000000000)`  
+ Gibt einen DateTime-Wert zurück, der „2012-01-01 23:00:00“ darstellt.
 
 ----------
-### DNComponent
+### <a name="dncomponent"></a>DNComponent
 
-**Beschreibung:** Die DNComponent-Funktion gibt den Wert einer angegebenen DN-Komponente von links beginnend zurück.
+**Beschreibung:**  
+ Die DNComponent-Funktion gibt den Wert einer angegebenen DN-Komponente von links beginnend zurück.
 
-**Syntax:** `str DNComponent(ref dn, num ComponentNumber)`
+**Syntax:**  
+`str DNComponent(ref dn, num ComponentNumber)`
 
 - dn: Das zu interpretierende Verweisattribut
 - ComponentNumber: Die Komponente im zurückzugebenden DN
 
-**Beispiel:** `DNComponent([dn],1)` Falls der DN „cn=Joe,ou=…“ lautet, wird „Joe“ zurückgegeben.
+**Beispiel:**  
+`DNComponent([dn],1)`  
+ Falls der DN „cn=Joe,ou=…“ lautet, wird „Joe“ zurückgegeben.
 
 ----------
-### DNComponentRev
+### <a name="dncomponentrev"></a>DNComponentRev
 
-**Beschreibung:** Die DNComponentRev-Funktion gibt den Wert einer angegebenen DN-Komponente von rechts beginnend (also vom Ende her) zurück.
+**Beschreibung:**  
+ Die DNComponentRev-Funktion gibt den Wert einer angegebenen DN-Komponente von rechts beginnend (also vom Ende her) zurück.
 
-**Syntax:** `str DNComponentRev(ref dn, num ComponentNumber)` `str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
+**Syntax:**  
+`str DNComponentRev(ref dn, num ComponentNumber)`  
+`str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
 
 - dn: Das zu interpretierende Verweisattribut
 - ComponentNumber: Die Komponente im zurückzugebenden DN
 - Options: DC – alle Komponenten mit „dc=“ ignorieren.
 
-**Beispiel:** Falls der DN „cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com“ lautet, geben `DNComponentRev([dn],3)` und `DNComponentRev([dn],1,"DC")` „US“ zurück.
+**Beispiel:**  
+Falls der DN „cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com“ lautet, geben beide  
+`DNComponentRev([dn],3)`  
+`DNComponentRev([dn],1,"DC")`  
+ „US“ zurück.
 
 ----------
-### Error
+### <a name="error"></a>Fehler
 
-**Beschreibung:** Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzugeben.
+**Beschreibung:**  
+ Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzugeben.
 
-**Syntax:** `void Error(str ErrorMessage)`
+**Syntax:**  
+`void Error(str ErrorMessage)`
 
-**Beispiel:** `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))` Wenn das accountName-Attribut nicht vorhanden ist, wird ein Fehler für das Objekt ausgegeben.
-
-----------
-### EscapeDNComponent
-
-**Beschreibung:** Die EscapeDNComponent-Funktion versieht eine Komponente eines DN mit Escapezeichen, sodass sie im LDAP dargestellt werden kann.
-
-**Syntax:** `str EscapeDNComponent(str value)`
-
-**Beispiel:** `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)` Stellt sicher, dass das Objekt in einem LDAP-Verzeichnis erstellt werden kann, auch wenn das displayName-Attribut Zeichen enthält, die in LDAP mit Escapezeichen versehen werden müssen.
+**Beispiel:**  
+`IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
+ Wenn das accountName-Attribut nicht vorhanden ist, wird ein Fehler für das Objekt ausgegeben.
 
 ----------
-### FormatDateTime
+### <a name="escapedncomponent"></a>EscapeDNComponent
 
-**Beschreibung:** Die FormatDateTime-Funktion wird verwendet, um einen DateTime-Wert in eine Zeichenfolge in einem angegebenen Format zu formatieren.
+**Beschreibung:**  
+ Die EscapeDNComponent-Funktion versieht eine Komponente eines DN mit Escapezeichen, sodass sie im LDAP dargestellt werden kann.
 
-**Syntax:** `str FormatDateTime(dt value, str format)`
+**Syntax:**  
+`str EscapeDNComponent(str value)`
 
-- value: Ein Wert im DateTime-Format
+**Beispiel:**  
+`EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
+ Stellt sicher, dass das Objekt in einem LDAP-Verzeichnis erstellt werden kann, auch wenn das displayName-Attribut Zeichen enthält, die in LDAP mit Escapezeichen versehen werden müssen.
+
+----------
+### <a name="formatdatetime"></a>FormatDateTime
+
+**Beschreibung:**  
+ Die FormatDateTime-Funktion wird verwendet, um einen DateTime-Wert in eine Zeichenfolge in einem angegebenen Format zu formatieren.
+
+**Syntax:**  
+`str FormatDateTime(dt value, str format)`
+
+- value: Ein Wert im DateTime-Format 
 - format: Eine Zeichenfolge, die das Format darstellt, in das konvertiert werden soll.
 
-**Hinweise:** Die möglichen Werte für das Format finden Sie hier: [Benutzerdefinierte Datums-/Zeitformate (Format-Funktion)](http://msdn2.microsoft.com/library/73ctwf33(VS.90).aspx)
+**Hinweise:**  
+Die möglichen Werte für das Format finden Sie unter [Benutzerdefinierte Datums-/Zeitformate (Format-Funktion)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx).
 
-**Beispiel:**
+**Beispiel:**  
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")` Ergibt „2007-12-25“.
+`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
+ Ergibt „2007-12-25“.
 
-`FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")` Kann „20140905081453.0Z“ ergeben.
-
-----------
-### GUID
-
-**Beschreibung:** Die GUID-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
-
-**Syntax:** `str GUID()`
+`FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
+ Kann „20140905081453.0Z“ ergeben.
 
 ----------
-### IIF
+### <a name="guid"></a>GUID
 
-**Beschreibung:** Die IIF-Funktion gibt basierend auf einer angegebenen Bedingung einen Wert aus einem Satz möglicher Werte zurück.
+**Beschreibung:**  
+ Die GUID-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
 
-**Syntax:** `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
+**Syntax:**  
+`str GUID()`
+
+----------
+### <a name="iif"></a>IIF
+
+**Beschreibung:**  
+ Die IIF-Funktion gibt basierend auf einer angegebenen Bedingung einen Wert aus einem Satz möglicher Werte zurück.
+
+**Syntax:**  
+`var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 - condition: Ein beliebiger Wert oder Ausdruck, der als True oder False ausgewertet werden kann.
 - valueIfTrue: Der zurückgegebene Wert, wenn die Bedingung als True ausgewertet wird.
 - valueIfFalse: Der zurückgegebene Wert, wenn die Bedingung als False ausgewertet wird.
 
-**Beispiel:** `IIF([employeeType]="Intern","t-" & [alias],[alias])` Gibt bei Praktikanten den Alias eines Benutzers mit einem vorangestellten „t-“ zurück. Andernfalls wird der unveränderte Alias des Benutzers zurückgegeben.
+**Beispiel:**  
+`IIF([employeeType]="Intern","t-" & [alias],[alias])`  
+ Gibt bei Praktikanten den Alias eines Benutzers mit einem vorangestellten „t-“ zurück. Andernfalls wird der unveränderte Alias des Benutzers zurückgegeben.
 
 ----------
-### InStr
+### <a name="instr"></a>InStr
 
-**Beschreibung:** Die InStr-Funktion sucht nach dem ersten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
+**Beschreibung:**  
+ Die InStr-Funktion sucht nach dem ersten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
 
-**Syntax:**
+**Syntax:**  
 
-`num InStr(str stringcheck, str stringmatch)` `num InStr(str stringcheck, str stringmatch, num start)` `num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch)`  
+`num InStr(str stringcheck, str stringmatch, num start)`  
+`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
 
 - stringcheck: Zu durchsuchende Zeichenfolge
 - stringmatch: Zu findende Zeichenfolge
 - start: Startposition zum Finden der Teilzeichenfolge
 - compare: VbTextCompare oder VbBinaryCompare
 
-**Hinweise:** Gibt die Position zurück, an der die Teilzeichenfolge gefunden wurde (oder 0, wenn sie nicht gefunden wurde).
+**Hinweise:**  
+ Gibt die Position zurück, an der die Teilzeichenfolge gefunden wurde (oder 0, wenn sie nicht gefunden wurde).
 
-**Beispiel:** `InStr("The quick brown fox","quick")` Wird als 5 ausgewertet.
+**Beispiel:**  
+`InStr("The quick brown fox","quick")`  
+ Wird als 5 ausgewertet.
 
-`InStr("repEated","e",3,vbBinaryCompare)` Wird als 7 ausgewertet.
+`InStr("repEated","e",3,vbBinaryCompare)`  
+ Wird als 7 ausgewertet.
 
 ----------
-### InStrRev
+### <a name="instrrev"></a>InStrRev
 
-**Beschreibung:** Die InStrRev-Funktion sucht nach dem letzten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
+**Beschreibung:**  
+ Die InStrRev-Funktion sucht nach dem letzten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
 
-**Syntax:** `num InstrRev(str stringcheck, str stringmatch)` `num InstrRev(str stringcheck, str stringmatch, num start)` `num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
+**Syntax:**  
+`num InstrRev(str stringcheck, str stringmatch)`  
+`num InstrRev(str stringcheck, str stringmatch, num start)`  
+`num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
 
 - stringcheck: Zu durchsuchende Zeichenfolge
 - stringmatch: Zu findende Zeichenfolge
 - start: Startposition zum Finden der Teilzeichenfolge
 - compare: VbTextCompare oder VbBinaryCompare
 
-**Hinweise:** Gibt die Position zurück, an der die Teilzeichenfolge gefunden wurde (oder 0, wenn sie nicht gefunden wurde).
+**Hinweise:**  
+ Gibt die Position zurück, an der die Teilzeichenfolge gefunden wurde (oder 0, wenn sie nicht gefunden wurde).
 
-**Beispiel:** `InStrRev("abbcdbbbef","bb")` Gibt 7 zurück.
+**Beispiel:**  
+`InStrRev("abbcdbbbef","bb")`  
+ Gibt 7 zurück.
 
 ----------
-### IsBitSet
+### <a name="isbitset"></a>IsBitSet
 
-**Beschreibung:** Die IsBitSet-Funktion testet, ob ein Bit festgelegt ist.
+**Beschreibung:**  
+ Die IsBitSet-Funktion testet, ob ein Bit festgelegt ist.
 
-**Syntax:** `bool IsBitSet(num value, num flag)`
+**Syntax:**  
+`bool IsBitSet(num value, num flag)`
 
 - value: Ein numerischer Wert, der ausgewertet wird. flag: Ein numerischer Wert, der das Bit angibt, das ausgewertet werden soll.
 
-**Beispiel:** `IsBitSet(&HF,4)` Gibt „True“ zurück, da Bit 4 auf den Hexadezimalwert „F“ festgelegt ist.
+**Beispiel:**  
+`IsBitSet(&HF,4)`  
+ Gibt „True“ zurück, da Bit 4 auf den Hexadezimalwert „F“ festgelegt ist.
 
 ----------
-### IsDate
+### <a name="isdate"></a>IsDate
 
-**Beschreibung:** Die IsDate-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als DateTime-Typ ausgewertet werden kann.
+**Beschreibung:**  
+ Die IsDate-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als DateTime-Typ ausgewertet werden kann.
 
-**Syntax:** `bool IsDate(var Expression)`
+**Syntax:**  
+`bool IsDate(var Expression)`
 
-**Hinweise:** Wird verwendet, um zu bestimmen, ob „CDate()“ erfolgreich sein kann.
-
-----------
-### IsEmpty
-
-**Beschreibung:** Die IsEmpty-Funktion wird als „True“ ausgewertet, wenn das Attribut in CS oder MV vorhanden ist, jedoch zu einer leeren Zeichenfolge ausgewertet wird.
-
-**Syntax:** `bool IsEmpty(var Expression)`
+**Hinweise:**  
+ Wird verwendet, um zu bestimmen, ob „CDate()“ erfolgreich sein kann.
 
 ----------
-### IsGuid
+### <a name="isempty"></a>IsEmpty
 
-**Beschreibung:** Die IsGuid-Funktion wird als „True“ ausgewertet, wenn die Zeichenfolge in eine GUID konvertiert werden kann.
+**Beschreibung:**  
+ Die IsEmpty-Funktion wird als „True“ ausgewertet, wenn das Attribut in CS oder MV vorhanden ist, jedoch zu einer leeren Zeichenfolge ausgewertet wird.
 
-**Syntax:** `bool IsGuid(str GUID)`
+**Syntax:**  
+`bool IsEmpty(var Expression)`
 
-**Hinweise:** Eine GUID ist als eine Zeichenfolge definiert, die einem der folgenden Muster entspricht: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx oder {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+----------
+### <a name="isguid"></a>IsGuid
+
+**Beschreibung:**  
+ Die IsGuid-Funktion wird als „True“ ausgewertet, wenn die Zeichenfolge in eine GUID konvertiert werden kann.
+
+**Syntax:**  
+`bool IsGuid(str GUID)`
+
+**Hinweise:**  
+ Eine GUID ist als eine Zeichenfolge definiert, die einem der folgenden Muster entspricht: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx oder {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 Wird verwendet, um zu bestimmen, ob „CGuid()“ erfolgreich sein kann.
 
-**Beispiel:** `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)` Wenn „StrAttribute“ ein GUID-Format hat, wird die binäre Darstellung zurückgegeben. Andernfalls wird ein Nullwert zurückgegeben.
+**Beispiel:**  
+`IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
+Wenn „StrAttribute“ ein GUID-Format besitzt, wird die binäre Darstellung zurückgegeben. Andernfalls wird ein Nullwert zurückgegeben.
 
 ----------
-### IsNull
+### <a name="isnull"></a>IsNull
 
-**Beschreibung:** Die IsNull-Funktion gibt „True“ zurück, wenn die Auswertung des Ausdrucks einen Nullwert ergibt.
+**Beschreibung:**  
+ Die IsNull-Funktion gibt „True“ zurück, wenn die Auswertung des Ausdrucks einen Nullwert ergibt.
 
-**Syntax:** `bool IsNull(var Expression)`
+**Syntax:**  
+`bool IsNull(var Expression)`
 
-**Hinweise:** Für ein Attribut wird ein Nullwert durch die Abwesenheit des Attributs ausgedrückt.
+**Hinweise:**  
+ Für ein Attribut wird ein Nullwert durch die Abwesenheit des Attributs ausgedrückt.
 
-**Beispiel:** `IsNull([displayName])` Gibt „True“ zurück, wenn das Attribut nicht in CS oder MV vorhanden ist.
-
-----------
-### IsNullOrEmpty
-
-**Beschreibung:** Die IsNullOrEmpty-Funktion gibt „True“ zurück, wenn der Ausdruck einem Nullwert oder einer leeren Zeichenfolge entspricht.
-
-**Syntax:** `bool IsNullOrEmpty(var Expression)`
-
-**Hinweise:** Wird für ein Attribut als „True“ ausgewertet, wenn das Attribut nicht vorhanden oder zwar vorhanden, aber eine leere Zeichenfolge ist. Die Umkehrung dieser Funktion heißt "IsPresent".
-
-**Beispiel:** `IsNullOrEmpty([displayName])` Gibt „True“ zurück, wenn das Attribut in CS oder MV nicht vorhanden oder eine leere Zeichenfolge ist.
+**Beispiel:**  
+`IsNull([displayName])`  
+ Gibt „True“ zurück, wenn das Attribut nicht in CS oder MV vorhanden ist.
 
 ----------
-### IsNumeric
+### <a name="isnullorempty"></a>IsNullOrEmpty
 
-**Beschreibung:** Die IsNumeric-Funktion gibt einen booleschen Wert zurück, der angibt, ob ein Ausdruck als Zahlentyp ausgewertet werden kann.
+**Beschreibung:**  
+ Die IsNullOrEmpty-Funktion gibt „True“ zurück, wenn der Ausdruck einem Nullwert oder einer leeren Zeichenfolge entspricht.
 
-**Syntax:** `bool IsNumeric(var Expression)`
+**Syntax:**  
+`bool IsNullOrEmpty(var Expression)`
 
-**Hinweise:** Wird verwendet, um zu bestimmen, ob „CNum()“ erfolgreich zum Analysieren des Ausdrucks verwendet werden kann.
+**Hinweise:**  
+ Wird für ein Attribut als „True“ ausgewertet, wenn das Attribut nicht vorhanden oder zwar vorhanden, aber eine leere Zeichenfolge ist.  
+Die Umkehrung dieser Funktion heißt "IsPresent".
 
-----------
-### IsString
-
-**Beschreibung:** Die IsString-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als Zeichenfolgentyp ausgewertet werden kann.
-
-**Syntax:** `bool IsString(var expression)`
-
-**Hinweise:** Wird verwendet, um zu bestimmen, ob „CStr()“ erfolgreich zum Analysieren des Ausdrucks verwendet werden kann.
-
-----------
-### IsPresent
-
-**Beschreibung:** Die IsPresent-Funktion gibt „True“ zurück, wenn der Ausdruck zu einer Zeichenfolge ausgewertet wird, die kein Nullwert und nicht leer ist.
-
-**Syntax:** `bool IsPresent(var expression)`
-
-**Hinweise:** Die umgekehrte Funktion heißt „IsNullOrEmpty“.
-
-**Beispiel:** `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
+**Beispiel:**  
+`IsNullOrEmpty([displayName])`  
+ Gibt „True“ zurück, wenn das Attribut in CS oder MV nicht vorhanden oder eine leere Zeichenfolge ist.
 
 ----------
-### Item
+### <a name="isnumeric"></a>IsNumeric
 
-**Beschreibung:** Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
+**Beschreibung:**  
+ Die IsNumeric-Funktion gibt einen booleschen Wert zurück, der angibt, ob ein Ausdruck als Zahlentyp ausgewertet werden kann.
 
-**Syntax:** `var Item(mvstr attribute, num index)`
+**Syntax:**  
+`bool IsNumeric(var Expression)`
+
+**Hinweise:**  
+ Wird verwendet, um zu bestimmen, ob „CNum()“ erfolgreich zum Analysieren des Ausdrucks verwendet werden kann.
+
+----------
+### <a name="isstring"></a>IsString
+
+**Beschreibung:**  
+ Die IsString-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als Zeichenfolgentyp ausgewertet werden kann.
+
+**Syntax:**  
+`bool IsString(var expression)`
+
+**Hinweise:**  
+ Wird verwendet, um zu bestimmen, ob „CStr()“ erfolgreich zum Analysieren des Ausdrucks verwendet werden kann.
+
+----------
+### <a name="ispresent"></a>IsPresent
+
+**Beschreibung:**  
+ Die IsPresent-Funktion gibt „True“ zurück, wenn der Ausdruck zu einer Zeichenfolge ausgewertet wird, die kein Nullwert und nicht leer ist.
+
+**Syntax:**  
+`bool IsPresent(var expression)`
+
+**Hinweise:**  
+ Die umgekehrte Funktion heißt „IsNullOrEmpty“.
+
+**Beispiel:**  
+`Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
+
+----------
+### <a name="item"></a>Element
+
+**Beschreibung:**  
+ Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
+
+**Syntax:**  
+`var Item(mvstr attribute, num index)`
 
 - attribute: Mehrwertiges Attribut
 - index: Index für ein Element in der mehrwertigen Zeichenfolge
 
-**Hinweise:** Die Item-Funktion lässt sich mit der Contains-Funktion kombinieren, da letztere den Index für ein Element im mehrwertigen Attribut zurückgibt.
+**Hinweise:**  
+ Die Item-Funktion lässt sich mit der Contains-Funktion kombinieren, da letztere den Index für ein Element im mehrwertigen Attribut zurückgibt.
 
 Gibt einen Fehler aus, wenn der Index außerhalb des gültigen Bereichs liegt.
 
-**Beispiel:** `Mid(Item([proxyAddress],Contains([proxyAddress], "SMTP:")),6)` Gibt die primäre E-Mail-Adresse zurück.
+**Beispiel:**  
+`Mid(Item([proxyAddress],Contains([proxyAddress], "SMTP:")),6)`  
+ Gibt die primäre E-Mail-Adresse zurück.
 
 ----------
-### ItemOrNull
+### <a name="itemornull"></a>ItemOrNull
 
-**Beschreibung:** Die ItemOrNull-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge/einem mehrwertigen Attribut zurück.
+**Beschreibung:**  
+ Die ItemOrNull-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge/einem mehrwertigen Attribut zurück.
 
-**Syntax:** `var ItemOrNull(mvstr attribute, num index)`
+**Syntax:**  
+`var ItemOrNull(mvstr attribute, num index)`
 
 - attribute: Mehrwertiges Attribut
 - index: Index für ein Element in der mehrwertigen Zeichenfolge
 
-**Hinweise:** Die ItemOrNull-Funktion lässt sich mit der Contains-Funktion kombinieren, da letztere den Index für ein Element im mehrwertigen Attribut zurückgibt.
+**Hinweise:**  
+ Die ItemOrNull-Funktion lässt sich mit der Contains-Funktion kombinieren, da letztere den Index für ein Element im mehrwertigen Attribut zurückgibt.
 
 Liegt der Index außerhalb des gültigen Bereichs, wird ein Nullwert zurückgegeben.
 
 ----------
-### Join
+### <a name="join"></a>Join
 
-**Beschreibung:** Die Join-Funktion akzeptiert eine Zeichenfolge mit mehreren Werten und gibt eine einwertige Zeichenfolge zurück, zwischen deren einzelnen Elementen das angegebene Trennzeichen eingefügt ist.
+**Beschreibung:**  
+ Die Join-Funktion akzeptiert eine Zeichenfolge mit mehreren Werten und gibt eine einwertige Zeichenfolge zurück, zwischen deren einzelnen Elementen das angegebene Trennzeichen eingefügt ist.
 
-**Syntax:** `str Join(mvstr attribute)` `str Join(mvstr attribute, str Delimiter)`
+**Syntax:**  
+`str Join(mvstr attribute)`  
+`str Join(mvstr attribute, str Delimiter)`
 
 - attribute: Mehrwertiges Attribut mit Zeichenfolgen, die verknüpft werden sollen.
 - delimiter: Eine beliebige Zeichenfolge, die die Teilzeichenfolgen in der zurückgegebenen Zeichenfolge trennt. Wenn nicht angegeben, wird das Leerzeichen (" ") verwendet. Wenn "delimiter" eine Zeichenfolge der Länge 0 ("") oder "Nothing" ist, werden alle Elemente in der Liste ohne Trennzeichen verkettet.
 
-**Hinweise:** Zwischen den Funktionen „Join“ und „Split“ besteht Parität. Die Funktion "Join" nimmt ein Array von Zeichenfolgen entgegen, verknüpft sie mit einer Trennzeichenfolge und gibt eine einzige Zeichenfolge zurück. Die Funktion "Split" nimmt eine Zeichenfolge entgegen, trennt sie mit dem Trennzeichen und gibt ein Array von Zeichenfolgen zurück. Ein wichtiger Unterschied ist jedoch, dass "Join" Zeichenfolgen mit einer beliebigen Trennzeichenfolge verketten kann, "Split" aber nur Zeichenfolgen mit einem einzigen Trennzeichen trennen kann.
+**Hinweise:**  
+ Zwischen den Funktionen „Join“ und „Split“ besteht Parität. Die Funktion "Join" nimmt ein Array von Zeichenfolgen entgegen, verknüpft sie mit einer Trennzeichenfolge und gibt eine einzige Zeichenfolge zurück. Die Funktion "Split" nimmt eine Zeichenfolge entgegen, trennt sie mit dem Trennzeichen und gibt ein Array von Zeichenfolgen zurück. Ein wichtiger Unterschied ist jedoch, dass "Join" Zeichenfolgen mit einer beliebigen Trennzeichenfolge verketten kann, "Split" aber nur Zeichenfolgen mit einem einzigen Trennzeichen trennen kann.
 
-**Beispiel:** `Join([proxyAddresses],",")` Kann beispielsweise Folgendes zurückgeben: SMTP:john.doe@contoso.com,smtp:jd@contoso.com
-
-----------
-### LCase
-
-**Beschreibung:** Die LCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Kleinbuchstaben.
-
-**Syntax:** `str LCase(str value)`
-
-**Beispiel:** `LCase("TeSt")` Gibt „test“ zurück.
+**Beispiel:**  
+`Join([proxyAddresses],",")`  
+Kann Folgendes zurückgeben: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
 
 ----------
-### Left
+### <a name="lcase"></a>LCase
 
-**Beschreibung:** Die Left-Funktion gibt eine angegebene Anzahl von Zeichen von der linken Seite einer Zeichenfolge zurück.
+**Beschreibung:**  
+ Die LCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Kleinbuchstaben.
 
-**Syntax:** `str Left(str string, num NumChars)`
+**Syntax:**  
+`str LCase(str value)`
+
+**Beispiel:**  
+`LCase("TeSt")`  
+ Gibt „test“ zurück.
+
+----------
+### <a name="left"></a>Left
+
+**Beschreibung:**  
+ Die Left-Funktion gibt eine angegebene Anzahl von Zeichen von der linken Seite einer Zeichenfolge zurück.
+
+**Syntax:**  
+`str Left(str string, num NumChars)`
 
 - string: Zeichenfolge, aus der Zeichen zurückgegeben werden
 - numChars: Diese Zahl gibt die Anzahl der Zeichen an, die vom Anfang der Zeichenfolge (links) zurückgeben werden
 
-**Hinweise:** Eine Zeichenfolge, die die ersten durch „numChars“ angegebenen Zeichen in der Zeichenfolge enthält:
+**Hinweise:**  
+ Eine Zeichenfolge, die die ersten durch „numChars“ angegebenen Zeichen in der Zeichenfolge enthält:
 
 - Wenn "numChars" = 0, wird eine leere Zeichenfolge zurückgegeben.
 - Wenn "numChars" < 0, wird die Eingabezeichenfolge zurückgegeben.
@@ -547,38 +723,52 @@ Liegt der Index außerhalb des gültigen Bereichs, wird ein Nullwert zurückgege
 
 Wenn die Zeichenfolge weniger Zeichen enthält als in „numChars“ angegeben, wird eine identische Zeichenfolge (also eine Zeichenfolge, die alle in Parameter 1 enthaltenen Zeichen enthält) zurückgegeben.
 
-**Beispiel:** `Left("John Doe", 3)` Gibt „Joh“ zurück.
+**Beispiel:**  
+`Left("John Doe", 3)`  
+ Gibt „Joh“ zurück.
 
 ----------
-### Len
+### <a name="len"></a>Len
 
-**Beschreibung:** Die Len-Funktion gibt die Anzahl von Zeichen in einer Zeichenfolge zurück.
+**Beschreibung:**  
+ Die Len-Funktion gibt die Anzahl von Zeichen in einer Zeichenfolge zurück.
 
-**Syntax:** `num Len(str value)`
+**Syntax:**  
+`num Len(str value)`
 
-**Beispiel:** `Len("John Doe")` Gibt „8“ zurück.
-
-----------
-### LTrim
-
-**Beschreibung:** Die LTrim-Funktion entfernt führende Leerzeichen aus einer Zeichenfolge.
-
-**Syntax:** `str LTrim(str value)`
-
-**Beispiel:** `LTrim(" Test ")` Gibt „Test “ zurück.
+**Beispiel:**  
+`Len("John Doe")`  
+ Gibt „8“ zurück.
 
 ----------
-### Mid
+### <a name="ltrim"></a>LTrim
 
-**Beschreibung:** Die Mid-Funktion gibt eine bestimmte Anzahl von Zeichen ab einer bestimmten Position in einer Zeichenfolge zurück.
+**Beschreibung:**  
+ Die LTrim-Funktion entfernt führende Leerzeichen aus einer Zeichenfolge.
 
-**Syntax:** `str Mid(str string, num start, num NumChars)`
+**Syntax:**  
+`str LTrim(str value)`
+
+**Beispiel:**  
+`LTrim(" Test ")`  
+ Gibt „Test “ zurück.
+
+----------
+### <a name="mid"></a>Mid
+
+**Beschreibung:**  
+ Die Mid-Funktion gibt eine bestimmte Anzahl von Zeichen ab einer bestimmten Position in einer Zeichenfolge zurück.
+
+**Syntax:**  
+`str Mid(str string, num start, num NumChars)`
 
 - string: Zeichenfolge, aus der Zeichen zurückgegeben werden
 - start: Eine Zahl zur Angabe der Ausgangsposition in der Zeichenfolge, ab der Zeichen zurückgegeben werden
 - numChars: Eine Zahl zur Angabe der Zeichen, die ab der Position in der Zeichenfolge zurückgegeben werden
 
-**Hinweise:** Gibt die durch „numChars“ angegebene Anzahl von Zeichen ab der Ausgangsposition in der Zeichenfolge zurück. Eine Zeichenfolge, die "numChars" Zeichen ab der Ausgangsposition in der Zeichenfolge enthält:
+**Hinweise:**  
+ Gibt die durch „numChars“ angegebene Anzahl von Zeichen ab der Ausgangsposition in der Zeichenfolge zurück.  
+Eine Zeichenfolge, die "numChars" Zeichen ab der Ausgangsposition in der Zeichenfolge enthält:
 
 - Wenn "numChars" = 0, wird eine leere Zeichenfolge zurückgegeben.
 - Wenn "numChars" < 0, wird die Eingabezeichenfolge zurückgegeben.
@@ -588,32 +778,43 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in „numChars“ angegeben, 
 
 Wenn in der Zeichenfolge nicht so viele Zeichen ab der Ausgangsposition enthalten sind wie durch „numChars“ angegeben, werden so viele Zeichen wie möglich zurückgegeben.
 
-**Beispiel:** `Mid("John Doe", 3, 5)` Gibt „hn Do“ zurück.
+**Beispiel:**  
+`Mid("John Doe", 3, 5)`  
+ Gibt „hn Do“ zurück.
 
-`Mid("John Doe", 6, 999)` Gibt „Doe“ zurück.
-
-----------
-### Now
-
-**Beschreibung:** Die Now-Funktion gibt einen DateTime-Wert zurück, der das aktuelle Datum und die aktuelle Uhrzeit gemäß Systemdatum und -uhrzeit Ihres Computers angibt.
-
-**Syntax:** `dt Now()`
+`Mid("John Doe", 6, 999)`  
+ Gibt „Doe“ zurück.
 
 ----------
-### NumFromDate
+### <a name="now"></a>Now
 
-**Beschreibung:** Die NumFromDate-Funktion gibt ein Datum im AD-Datumsformat zurück.
+**Beschreibung:**  
+ Die Now-Funktion gibt einen DateTime-Wert zurück, der das aktuelle Datum und die aktuelle Uhrzeit gemäß Systemdatum und -uhrzeit Ihres Computers angibt.
 
-**Syntax:** `num NumFromDate(dt value)`
-
-**Beispiel:** `NumFromDate(CDate("2012-01-01 23:00:00"))` Gibt „129699324000000000“ zurück.
+**Syntax:**  
+`dt Now()`
 
 ----------
-### PadLeft
+### <a name="numfromdate"></a>NumFromDate
 
-**Beschreibung:** Die PadLeft-Funktion füllt eine Zeichenfolge nach links bis zu einer bestimmten Länge mit einem bestimmten Auffüllzeichen auf.
+**Beschreibung:**  
+ Die NumFromDate-Funktion gibt ein Datum im AD-Datumsformat zurück.
 
-**Syntax:** `str PadLeft(str string, num length, str padCharacter)`
+**Syntax:**  
+`num NumFromDate(dt value)`
+
+**Beispiel:**  
+`NumFromDate(CDate("2012-01-01 23:00:00"))`  
+ Gibt „129699324000000000“ zurück.
+
+----------
+### <a name="padleft"></a>PadLeft
+
+**Beschreibung:**  
+ Die PadLeft-Funktion füllt eine Zeichenfolge nach links bis zu einer bestimmten Länge mit einem bestimmten Auffüllzeichen auf.
+
+**Syntax:**  
+`str PadLeft(str string, num length, str padCharacter)`
 
 - string: Die aufzufüllende Zeichenfolge.
 - length: Eine ganze Zahl, die die gewünschte Länge der Zeichenfolge angibt.
@@ -628,14 +829,18 @@ Wenn in der Zeichenfolge nicht so viele Zeichen ab der Ausgangsposition enthalte
 - Wenn die Länge der Zeichenfolge kleiner als "length" ist, wird eine neue Zeichenfolge in gewünschter Länge zurückgegeben, die die mit "padCharacter" aufgefüllte Zeichenfolge enthält.
 - Wenn die Zeichenfolge einen Nullwert aufweist, gibt die Funktion eine leere Zeichenfolge zurück.
 
-**Beispiel:** `PadLeft("User", 10, "0")` Gibt „000000User“ zurück.
+**Beispiel:**  
+`PadLeft("User", 10, "0")`  
+ Gibt „000000User“ zurück.
 
 ----------
-### PadRight
+### <a name="padright"></a>PadRight
 
-**Beschreibung:** Die PadRight-Funktion füllt eine Zeichenfolge nach rechts bis zu einer bestimmten Länge mit einem bestimmten Auffüllzeichen auf.
+**Beschreibung:**  
+ Die PadRight-Funktion füllt eine Zeichenfolge nach rechts bis zu einer bestimmten Länge mit einem bestimmten Auffüllzeichen auf.
 
-**Syntax:** `str PadRight(str string, num length, str padCharacter)`
+**Syntax:**  
+`str PadRight(str string, num length, str padCharacter)`
 
 - string: Die aufzufüllende Zeichenfolge.
 - length: Eine ganze Zahl, die die gewünschte Länge der Zeichenfolge angibt.
@@ -650,69 +855,91 @@ Wenn in der Zeichenfolge nicht so viele Zeichen ab der Ausgangsposition enthalte
 - Wenn die Länge der Zeichenfolge kleiner als "length" ist, wird eine neue Zeichenfolge in gewünschter Länge zurückgegeben, die die mit "padCharacter" aufgefüllte Zeichenfolge enthält.
 - Wenn die Zeichenfolge einen Nullwert aufweist, gibt die Funktion eine leere Zeichenfolge zurück.
 
-**Beispiel:** `PadRight("User", 10, "0")` Gibt „User000000“ zurück.
+**Beispiel:**  
+`PadRight("User", 10, "0")`  
+ Gibt „User000000“ zurück.
 
 ----------
-### PCase
+### <a name="pcase"></a>PCase
 
-**Beschreibung:** Die PCase-Funktion konvertiert das erste Zeichen jedes durch Leerzeichen getrennten Worts in einer Zeichenfolge in einen Großbuchstaben und alle anderen Zeichen in Kleinbuchstaben.
+**Beschreibung:**  
+ Die PCase-Funktion konvertiert das erste Zeichen jedes durch Leerzeichen getrennten Worts in einer Zeichenfolge in einen Großbuchstaben und alle anderen Zeichen in Kleinbuchstaben.
 
-**Syntax:** `String PCase(string)`
+**Syntax:**  
+`String PCase(string)`
 
 **Hinweise:**
 
 - Mit dieser Funktion können vollständig aus Großbuchstaben bestehende Wörter (etwa Akronyme) nicht in Wörter mit korrekter Groß-/Kleinschreibung umgewandelt werden.
 
-**Beispiel:** `PCase("TEsT")` Gibt „Test“ zurück.
+**Beispiel:**  
+`PCase("TEsT")`  
+ Gibt „test“ zurück.
 
-`PCase(LCase("TEST"))` Gibt „Test“ zurück.
+`PCase(LCase("TEST"))`  
+ Gibt „Test“ zurück.
 
 ----------
-### RandomNum
+### <a name="randomnum"></a>RandomNum
 
-**Beschreibung:** Die RandomNum-Funktion gibt eine Zufallszahl innerhalb eines bestimmten Intervalls zurück.
+**Beschreibung:**  
+ Die RandomNum-Funktion gibt eine Zufallszahl innerhalb eines bestimmten Intervalls zurück.
 
-**Syntax:** `num RandomNum(num start, num end)`
+**Syntax:**  
+`num RandomNum(num start, num end)`
 
 - start: Eine Zahl, die die untere Grenze des zu generierenden Zufallswerts angibt
 - end: Eine Zahl, die die obere Grenze des zu generierenden Zufallswerts angibt
 
-**Beispiel:** `Random(100,999)` Kann „734“ zurückgeben.
+**Beispiel:**  
+`Random(100,999)`  
+ Kann „734“ zurückgeben.
 
 ----------
-### RemoveDuplicates
+### <a name="removeduplicates"></a>RemoveDuplicates
 
-**Beschreibung:** Die RemoveDuplicates-Funktion stellt sicher, dass in einer übergebenen mehrwertigen Zeichenfolge jeder Wert eindeutig ist.
+**Beschreibung:**  
+ Die RemoveDuplicates-Funktion stellt sicher, dass in einer übergebenen mehrwertigen Zeichenfolge jeder Wert eindeutig ist.
 
-**Syntax:** `mvstr RemoveDuplicates(mvstr attribute)`
+**Syntax:**  
+`mvstr RemoveDuplicates(mvstr attribute)`
 
-**Beispiel:** `RemoveDuplicates([proxyAddresses])` Gibt ein bereinigtes proxyAddress-Attribut zurück, aus dem alle doppelten Werte entfernt wurden.
+**Beispiel:**  
+`RemoveDuplicates([proxyAddresses])`  
+ Gibt ein bereinigtes proxyAddress-Attribut zurück, aus dem alle doppelten Werte entfernt wurden.
 
 ----------
-### Replace
+### <a name="replace"></a>Replace
 
-**Beschreibung:** Die Replace-Funktion ersetzt alle Vorkommen einer Zeichenfolge durch eine andere Zeichenfolge.
+**Beschreibung:**  
+ Die Replace-Funktion ersetzt alle Vorkommen einer Zeichenfolge durch eine andere Zeichenfolge.
 
-**Syntax:** `str Replace(str string, str OldValue, str NewValue)`
+**Syntax:**  
+`str Replace(str string, str OldValue, str NewValue)`
 
 - string: Eine Zeichenfolge, in der Werte ersetzt werden sollen
 - OldValue: Die Zeichenfolge, die gesucht und ersetzt werden soll
 - NewValue: Die Zeichenfolge, die die gesuchte Zeichenfolge ersetzen soll
 
-**Hinweise:** Die Funktion erkennt die folgenden speziellen Moniker:
+**Hinweise:**  
+ Die Funktion erkennt die folgenden speziellen Moniker:
 
-- \\n – neue Zeile
-- \\r – Wagenrücklauf
-- \\t – Tabulator
+- \n – neue Zeile
+- \r – Wagenrücklauf
+- \t – Tabulator
 
-**Beispiel:** `Replace([address],"\r\n",", ")` Ersetzt CRLF durch ein Komma und ein Leerzeichen, was etwa wie folgt aussehen kann: „One Microsoft Way, Redmond, WA, USA“.
+**Beispiel:**  
+`Replace([address],"\r\n",", ")`  
+ Ersetzt CRLF durch ein Komma und ein Leerzeichen, was etwa wie folgt aussehen kann: „One Microsoft Way, Redmond, WA, USA“.
 
 ----------
-### ReplaceChars
+### <a name="replacechars"></a>ReplaceChars
 
-**Beschreibung:** Die ReplaceChars-Funktion ersetzt alle Vorkommen von Zeichen, die in der ReplacePattern-Zeichenfolge gefunden werden.
+**Beschreibung:**  
+ Die ReplaceChars-Funktion ersetzt alle Vorkommen von Zeichen, die in der ReplacePattern-Zeichenfolge gefunden werden.
 
-**Syntax:** `str ReplaceChars(str string, str ReplacePattern)`
+**Syntax:**  
+`str ReplaceChars(str string, str ReplacePattern)`
 
 - string: Eine Zeichenfolge, in der Zeichen ersetzt werden sollen
 - ReplacePattern: Eine Zeichenfolge, die ein Wörterbuch mit zu ersetzenden Zeichen enthält
@@ -730,23 +957,29 @@ Das Format lautet "{source1}:{target1},{source2}:{target2},{sourceN},{targetN}",
 - Die reservierten Zeichen "," (Komma) und ":" (Doppelpunkt) können mit dieser Funktion nicht ersetzt werden.
 - Leerzeichen und andere Whitespaces in der Zeichenfolge "ReplacePattern" werden ignoriert.
 
-**Beispiel:** `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
+**Beispiel:**  
+`%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
-`ReplaceChars("Räksmörgås",%ReplaceString%)` Gibt „Raksmorgas“ zurück.
+`ReplaceChars("Räksmörgås",%ReplaceString%)`  
+ Gibt „Raksmorgas“ zurück.
 
-`ReplaceChars("O’Neil",%ReplaceString%)` Gibt „ONeil“ zurück. (Der Apostroph wird entfernt.)
+`ReplaceChars("O’Neil",%ReplaceString%)`  
+Gibt „ONeil“ zurück. (Der Apostroph wird entfernt.)
 
 ----------
-### Right
+### <a name="right"></a>Right
 
-**Beschreibung:** Die Right-Funktion gibt eine bestimmte Anzahl von Zeichen von der rechten Seite einer Zeichenfolge (also vom Ende her) zurück.
+**Beschreibung:**  
+ Die Right-Funktion gibt eine bestimmte Anzahl von Zeichen von der rechten Seite einer Zeichenfolge (also vom Ende her) zurück.
 
-**Syntax:** `str Right(str string, num NumChars)`
+**Syntax:**  
+`str Right(str string, num NumChars)`
 
 - string: Zeichenfolge, aus der Zeichen zurückgegeben werden
 - numChars: Diese Zahl gibt die Anzahl der Zeichen an, die vom Ende der Zeichenfolge (rechts) zurückgeben werden
 
-**Hinweise:** Die durch „numChars“ angegebene Anzahl von Zeichen wird ab der letzten Position der Zeichenfolge zurückgegeben.
+**Hinweise:**  
+ Die durch „numChars“ angegebene Anzahl von Zeichen wird ab der letzten Position der Zeichenfolge zurückgegeben.
 
 Eine Zeichenfolge, die die letzten "numChars" Zeichen in der Zeichenfolge enthält:
 
@@ -756,55 +989,73 @@ Eine Zeichenfolge, die die letzten "numChars" Zeichen in der Zeichenfolge enthä
 
 Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird eine identische Zeichenfolge zurückgegeben.
 
-**Beispiel:** `Right("John Doe", 3)` Gibt „Doe“ zurück.
+**Beispiel:**  
+`Right("John Doe", 3)`  
+ Gibt „Doe“ zurück.
 
 ----------
-### RTrim
+### <a name="rtrim"></a>RTrim
 
-**Beschreibung:** Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
+**Beschreibung:**  
+ Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
 
-**Syntax:** `str RTrim(str value)`
+**Syntax:**  
+`str RTrim(str value)`
 
-**Beispiel:** `RTrim(" Test ")` Gibt „ Test“ zurück.
+**Beispiel:**  
+`RTrim(" Test ")`  
+ Gibt „ Test“ zurück.
 
 ----------
-### Split
+### <a name="split"></a>Split
 
-**Beschreibung:** Die Split-Funktion nimmt eine durch Trennzeichen getrennte Zeichenfolge entgegen und wandelt sie in eine mehrwertige Zeichenfolge um.
+**Beschreibung:**  
+ Die Split-Funktion nimmt eine durch Trennzeichen getrennte Zeichenfolge entgegen und wandelt sie in eine mehrwertige Zeichenfolge um.
 
-**Syntax:** `mvstr Split(str value, str delimiter)` `mvstr Split(str value, str delimiter, num limit)`
+**Syntax:**  
+`mvstr Split(str value, str delimiter)`  
+`mvstr Split(str value, str delimiter, num limit)`
 
 - value: Die Zeichenfolge mit Trennzeichen
 - delimiter: Einzelnes Zeichen, das als Trennzeichen verwendet werden soll
 - limit: Maximale Anzahl von Werten, die zurückgegeben werden kann
 
-**Beispiel:** `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")` Gibt eine mehrwertige Zeichenfolge mit zwei Elementen zurück, die für das proxyAddress-Attribut nützlich sind.
+**Beispiel:**  
+`Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
+ Gibt eine mehrwertige Zeichenfolge mit zwei Elementen zurück, die für das proxyAddress-Attribut nützlich sind.
 
 ----------
-### StringFromGuid
+### <a name="stringfromguid"></a>StringFromGuid
 
-**Beschreibung:** Die StringFromGuid-Funktion nimmt eine binäre GUID entgegen und konvertiert sie in eine Zeichenfolge.
+**Beschreibung:**  
+ Die StringFromGuid-Funktion nimmt eine binäre GUID entgegen und konvertiert sie in eine Zeichenfolge.
 
-**Syntax:** `str StringFromGuid(bin GUID)`
-
-----------
-### StringFromSid
-
-**Beschreibung:** Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Sicherheits-ID in eine Zeichenfolge.
-
-**Syntax:** `str StringFromSid(bin ObjectSID)`
+**Syntax:**  
+`str StringFromGuid(bin GUID)`
 
 ----------
-### Switch
+### <a name="stringfromsid"></a>StringFromSid
 
-**Beschreibung:** Mit der Switch-Funktion wird ein einzelner Wert auf der Grundlage ausgewerteter Bedingungen zurückgegeben.
+**Beschreibung:**  
+ Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Sicherheits-ID in eine Zeichenfolge.
 
-**Syntax:** `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
+**Syntax:**  
+`str StringFromSid(bin ObjectSID)`  
+
+----------
+### <a name="switch"></a>Switch
+
+**Beschreibung:**  
+ Mit der Switch-Funktion wird ein einzelner Wert auf der Grundlage ausgewerteter Bedingungen zurückgegeben.
+
+**Syntax:**  
+`var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
 - expr: Variantenausdruck, den Sie auswerten möchten
 - value: Wert, der zurückgegeben werden soll, wenn der entsprechende Ausdruck True ergibt
 
-**Hinweise:** Die Argumentliste der Switch-Funktion setzt sich aus Ausdrucks- und Wertpaaren zusammen. Die Ausdrücke werden von links nach rechts ausgewertet, und der Wert, der mit dem ersten als True ausgewerteten Ausdruck verknüpft ist, wird zurückgegeben. Wenn die Teile nicht richtig paarweise angegeben werden, tritt ein Laufzeitfehler auf.
+**Hinweise:**  
+ Die Argumentliste der Switch-Funktion setzt sich aus Ausdrucks- und Wertpaaren zusammen. Die Ausdrücke werden von links nach rechts ausgewertet, und der Wert, der mit dem ersten als True ausgewerteten Ausdruck verknüpft ist, wird zurückgegeben. Wenn die Teile nicht richtig paarweise angegeben werden, tritt ein Laufzeitfehler auf.
 
 Wenn z. B. "expr1" True ist, gibt "Switch" "value1" zurück. Wenn "expr-1" False, aber "expr-2" True ist, gibt "Switch" "value-2" zurück usw.
 
@@ -817,54 +1068,75 @@ Switch gibt nichts zurück, wenn:
 
 „value“ kann auch die Error-Funktion sein. In diesem Fall würde dann eine benutzerdefinierte Zeichenfolge zurückgegeben.
 
-**Beispiel:** `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))` Gibt die Sprache zurück, die in einigen Großstädten gesprochen wird. Andernfalls wird ein Fehler zurückgegeben.
+**Beispiel:**  
+`Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
+Gibt die Sprache zurück, die in einigen Großstädten gesprochen wird. Andernfalls wird ein Fehler zurückgegeben.
 
 ----------
-### Trim
+### <a name="trim"></a>Trim
 
-**Beschreibung:** Die Trim-Funktion entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge.
+**Beschreibung:**  
+ Die Trim-Funktion entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge.
 
-**Syntax:** `str Trim(str value)`
+**Syntax:**  
+`str Trim(str value)`  
 
-**Beispiel:** `Trim(" Test ")` Gibt „Test“ zurück.
+**Beispiel:**  
+`Trim(" Test ")`  
+ Gibt „test“ zurück.
 
-`Trim([proxyAddresses])` Entfernt führende und nachfolgende Leerzeichen für jeden Wert im proxyAddress-Attribut.
-
-----------
-### UCase
-
-**Beschreibung:** Die UCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Großbuchstaben.
-
-**Syntax:** `str UCase(str string)`
-
-**Beispiel:** `UCase("TeSt")` Gibt „Test“ zurück.
+`Trim([proxyAddresses])`  
+ Entfernt führende und nachfolgende Leerzeichen für jeden Wert im proxyAddress-Attribut.
 
 ----------
-### Word
+### <a name="ucase"></a>UCase
 
-**Beschreibung:** Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.
+**Beschreibung:**  
+ Die UCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Großbuchstaben.
 
-**Syntax:** `str Word(str string, num WordNumber, str delimiters)`
+**Syntax:**  
+`str UCase(str string)`
+
+**Beispiel:**  
+`UCase("TeSt")`  
+ Gibt „test“ zurück.
+
+----------
+### <a name="word"></a>Word
+
+**Beschreibung:**  
+ Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.
+
+**Syntax:**  
+`str Word(str string, num WordNumber, str delimiters)`
 
 - string: Zeichenfolge, aus der ein Wort zurückgegeben wird
 - WordNumber: Eine Zahl, die die Nummer des zurückzugebenden Worts angibt
 - delimiters: Eine Zeichenfolge, die das/die Trennzeichen angibt, das/die verwendet werden soll(en), um Wörter zu identifizieren
 
-**Hinweise:** Alle Folgen von Zeichen in einer Zeichenfolge, die durch eines der in „delimiters“ enthaltenen Zeichen getrennt werden, werden als Wörter behandelt:
+**Hinweise:**  
+ Alle Folgen von Zeichen in einer Zeichenfolge, die durch eines der in „delimiters“ enthaltenen Zeichen getrennt werden, werden als Wörter behandelt:
 
 - Wenn "WordNumber" < 1, wird eine leere Zeichenfolge zurückgegeben
 - Wenn "string" einen Nullwert hat, wird eine leere Zeichenfolge zurückgegeben
 
 Falls „string“ weniger Wörter enthält als für „WordNumber“ angegeben, wird eine leere Zeichenfolge zurückgegeben. Dies gilt auch, wenn „string“ keine durch Trennzeichen identifizierten Wörter enthält.
 
-**Beispiel:** `Word("The quick brown fox",3," ")` Gibt „brown“ zurück.
+**Beispiel:**  
+`Word("The quick brown fox",3," ")`  
+ Gibt „brown“ zurück.
 
-`Word("This,string!has&many separators",3,",!&#")` Gibt „has“ zurück.
+`Word("This,string!has&many separators",3,",!&#")`  
+ Gibt „has“ zurück.
 
-## Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

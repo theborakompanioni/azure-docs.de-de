@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub | Microsoft Azure"
-	description="In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure IoT Hub und Java Cloud-zu-Gerät-Nachrichten senden."
-	services="iot-hub"
-	documentationCenter="nodejs"
-	authors="dominicbetts"
-	manager="timlt"
-	editor=""/>
+    pageTitle="Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub | Microsoft Azure"
+    description="In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure IoT Hub und Java Cloud-zu-Gerät-Nachrichten senden."
+    services="iot-hub"
+    documentationCenter="nodejs"
+    authors="dominicbetts"
+    manager="timlt"
+    editor=""/>
 
 <tags
      ms.service="iot-hub"
@@ -16,42 +16,43 @@
      ms.date="09/23/2016"
      ms.author="dobett"/>
 
-# Tutorial: Senden von C2D-Nachrichten mithilfe von IoT Hub und „Node.js“
+
+# <a name="tutorial:-how-to-send-cloud-to-device-messages-with-iot-hub-and-node.js"></a>Tutorial: Senden von C2D-Nachrichten mithilfe von IoT Hub und „Node.js“
 
 [AZURE.INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## Einführung
+## <a name="introduction"></a>Einführung
 
 Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einem Anwendungs-Back-End ermöglicht. Im Lernprogramm [Erste Schritte mit IoT Hub] erfahren Sie, wie ein IoT Hub erstellt, eine Geräteidentität im Hub bereitgestellt und ein simuliertes Gerät programmiert wird, das Gerät-zu-Cloud-Nachrichten sendet.
 
-Dieses Tutorial baut auf [Erste Schritte mit IoT Hub] auf. Es beschreibt Folgendes:
+Dieses Tutorial baut auf [Erste Schritte mit IoT Hub]auf. Es beschreibt Folgendes:
 
 - Senden von C2D-Nachrichten aus Ihrem Anwendungs-Cloud-Back-End an ein einzelnes Gerät über IoT Hub.
 - Empfangen von C2D-Nachrichten auf einem Gerät.
 - Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Anwendungs-Cloud-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
 
-Weitere Informationen zu Cloud-zu-Gerät-Nachrichten finden Sie im [Entwicklungsleitfaden für IoT Hub][IoT Hub Developer Guide - C2D].
+Weitere Informationen zu Cloud-zu-Gerät-Nachrichten finden Sie im [Entwicklerhandbuch für IoT Hub][Entwicklerhandbuch für IoT Hub - C2D].
 
 Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolenanwendungen aus:
 
-* **SimulatedDevice**, eine abgewandelte Version der in [Erste Schritte mit IoT Hub] erstellten App, die eine Verbindung mit IoT Hub herstellt und Cloud-zu-Gerät-Nachrichten empfängt.
+* **SimulatedDevice**, eine abgewandelte Version der in [Erste Schritte mit IoT Hub]erstellten App, die eine Verbindung mit IoT Hub herstellt und Cloud-zu-Gerät-Nachrichten empfängt.
 * **SendCloudToDeviceMessage**, die über IoT Hub eine C2D-Nachricht an das simulierte Gerät sendet und dann die zugehörige Übermittlungsbestätigung empfängt.
 
 > [AZURE.NOTE] IoT Hub bietet durch Azure IoT-Geräte-SDKs Unterstützung für zahlreiche Geräteplattformen und Sprachen (u.a. C, Java und JavaScript). Im [Azure IoT Developer Center] finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit dem Code in diesem Tutorial sowie allgemeine Informationen zum Verbinden mit Azure IoT Hub.
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Für dieses Lernprogramm benötigen Sie Folgendes:
 
-+ Node.js Version 0.12.x oder höher. <br/> Unter [Prepare your development environment][lnk-dev-setup] \(Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
++ Node.js, Version 0.10.x oder höher.
 
-+ Ein aktives Azure-Konto. (Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].)
++ Ein aktives Azure-Konto. (Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Azure – Kostenlose Testversion][lnk-free-trial].)
 
-## Empfangen von Nachrichten auf dem simulierten Gerät
+## <a name="receive-messages-on-the-simulated-device"></a>Empfangen von Nachrichten auf dem simulierten Gerät
 
 In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Erste Schritte mit IoT Hub] erstellt haben, um C2D-Nachrichten von IoT Hub zu empfangen.
 
 1. Öffnen Sie die Datei „SimulatedDevice.js“ mit einem Text-Editor.
 
-2. Ändern Sie die **connectCallback**-Funktion, sodass sie von IoT Hub gesendete Nachrichten verarbeitet. In diesem Beispiel ruft das Gerät immer die **complete**-Funktion auf, um IoT Hub mitzuteilen, dass sie die Nachricht verarbeitet hat. Die neue Version der **connectCallback**-Funktion sieht folgendermaßen aus:
+2. Ändern Sie die **connectCallback** -Funktion, sodass sie von IoT Hub gesendete Nachrichten verarbeitet. In diesem Beispiel ruft das Gerät immer die **complete** -Funktion auf, um IoT Hub mitzuteilen, dass sie die Nachricht verarbeitet hat. Die neue Version der **connectCallback** -Funktion sieht folgendermaßen aus:
 
     ```
     var connectCallback = function (err) {
@@ -75,11 +76,11 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Ers
     };
     ```
 
-    > [AZURE.NOTE] Wenn Sie anstelle von AMQP den HTTP/1-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der AMQP- und HTTP/1-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklungsleitfaden für IoT Hub][IoT Hub Developer Guide - C2D].
+    > [AZURE.NOTE] Wenn Sie anstelle von AMQP oder MQTT den HTTP/1-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der AMQP-, MQTT- und HTTP/1-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklerhandbuch für IoT Hub][Entwicklerhandbuch für IoT Hub - C2D].
 
-## Senden einer C2D-Nachricht
+## <a name="send-a-cloud-to-device-message"></a>Senden einer C2D-Nachricht
 
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Sie benötigen die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben. Sie benötigen auch die Verbindungszeichenfolge für den IoT Hub, die Sie im [Azure-Portal] finden.
+In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Sie benötigen die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben. Sie benötigen auch die Verbindungszeichenfolge für den IoT Hub, die Sie im [Azure-Portal]finden.
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **sendcloudtodevicemessage**. Erstellen Sie im Ordner **sendcloudtodevicemessage** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl eingeben. Übernehmen Sie alle Standardeinstellungen:
 
@@ -93,7 +94,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
     npm install azure-iothub --save
     ```
 
-3. Mithilfe eines Texteditors erstellen Sie eine neue Datei **SendCloudToDeviceMessage.js** im Ordner **sendcloudtodevicemessage**.
+3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SendCloudToDeviceMessage.js** im Ordner **sendcloudtodevicemessage**.
 
 4. Fügen Sie am Anfang der Datei **SendCloudToDeviceMessage.js** die folgenden `require`-Anweisungen hinzu:
 
@@ -153,9 +154,9 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
     });
     ```
 
-7. Speichern und schließen Sie die Datei **SendCloudToDeviceMessage.js**.
+7. Speichern und schließen Sie die Datei **SendCloudToDeviceMessage.js** .
 
-## Ausführen der Anwendungen
+## <a name="run-the-applications"></a>Ausführen der Anwendungen
 
 Sie können nun die Anwendungen ausführen.
 
@@ -175,11 +176,11 @@ Sie können nun die Anwendungen ausführen.
 
     ![Ausführen der App zum Senden des C2D-Befehls][img-send-command]
 
-    > [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
+    > [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler]beschrieben.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden.
+In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden. 
 
 Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite].
 
@@ -187,13 +188,13 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-node-node-c2d/receivec2d.png
-[img-send-command]: media/iot-hub-node-node-c2d/sendc2d.png
+[img-send-command]:  media/iot-hub-node-node-c2d/sendc2d.png
 
 <!-- Links -->
 
 [Erste Schritte mit IoT Hub]: iot-hub-node-node-getstarted.md
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
-[IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
+[Entwicklerhandbuch für IoT Hub - C2D]: iot-hub-devguide-messaging.md
+[Entwicklungsleitfaden für IoT Hub]: iot-hub-devguide.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
@@ -201,4 +202,7 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [Azure-Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+
