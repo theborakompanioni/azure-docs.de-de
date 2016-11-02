@@ -16,10 +16,11 @@
    ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
-# Herstellen einer Verbindung mit einem sicheren Cluster ohne AAD
-Wenn ein Client eine Verbindung mit einem Service Fabric-Clusterknoten herstellt, kann mit der Zertifikatssicherheit der Client authentifiziert und sichere Kommunikation eingerichtet werden. Mit dieser Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster zugreifen, Anwendungen bereitstellen und Verwaltungsaufgaben ausführen können. Zertifikatssicherheit muss zuvor beim Erstellen des Clusters auf dem Cluster aktiviert worden sein. Zum Schutz des Clusters müssen mindestens zwei Zertifikate verwendet werden: eines für den Cluster- und Serverzugriff und ein zweites für den Clientzugriff. Wir empfehlen zudem, dass Sie zusätzliche sekundäre Zertifikate und Clientzugriffszertifikate nutzen. Weitere Informationen zu Clustersicherheitsszenarien finden Sie unter [Schützen von Service Fabric-Clustern](service-fabric-cluster-security.md).
 
-Um die Kommunikation zwischen einem Client und einem Clusterknoten mit Zertifikatssicherheit zu schützen, müssen Sie zuerst das Clientzertifikat beziehen und installieren. Das Zertifikat kann im persönlichen Speicher (My) auf dem lokalen Computer oder im persönlichen Speicher des aktuellen Benutzers installiert werden. Sie benötigen außerdem den Fingerabdruck des Serverzertifikats, damit der Cluster vom Client authentifiziert werden kann.
+# <a name="connect-to-a-secure-cluster-without-aad"></a>Herstellen einer Verbindung mit einem sicheren Cluster ohne AAD
+Wenn ein Client eine Verbindung mit einem Service Fabric-Clusterknoten herstellt, kann mit der Zertifikatssicherheit der Client authentifiziert und sichere Kommunikation eingerichtet werden. Mit dieser Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster zugreifen, Anwendungen bereitstellen und Verwaltungsaufgaben ausführen können.  Zertifikatssicherheit muss zuvor beim Erstellen des Clusters auf dem Cluster aktiviert worden sein.  Zum Schutz des Clusters müssen mindestens zwei Zertifikate verwendet werden: eines für den Cluster- und Serverzugriff und ein zweites für den Clientzugriff.  Wir empfehlen zudem, dass Sie zusätzliche sekundäre Zertifikate und Clientzugriffszertifikate nutzen.  Weitere Informationen zu Clustersicherheitsszenarien finden Sie unter [Schützen von Service Fabric-Clustern](service-fabric-cluster-security.md).
+
+Um die Kommunikation zwischen einem Client und einem Clusterknoten mit Zertifikatssicherheit zu schützen, müssen Sie zuerst das Clientzertifikat beziehen und installieren. Das Zertifikat kann im persönlichen Speicher (My) auf dem lokalen Computer oder im persönlichen Speicher des aktuellen Benutzers installiert werden.  Sie benötigen außerdem den Fingerabdruck des Serverzertifikats, damit der Cluster vom Client authentifiziert werden kann.
 
 
 Führen Sie das folgende PowerShell-Cmdlet aus, um das Clientzertifikat auf dem Computer einzurichten, auf dem Sie auf den Cluster zugreifen.
@@ -37,20 +38,20 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
 -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
 ```
-<a id="connectsecureclustercli"></a>
-## Herstellen einer Verbindung mit einem sicheren Cluster mit der Azure-CLI ohne AAD
+<a id="connectsecureclustercli"></a> 
+## <a name="connect-to-a-secure-cluster-using-azure-cli-without-aad"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit der Azure-CLI ohne AAD
 
-Mit den folgenden Befehlen der Azure-Befehlszeilenschnittstelle können Sie eine Verbindung mit einem sicheren Cluster herstellen. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
+Mit den folgenden Befehlen der Azure-Befehlszeilenschnittstelle können Sie eine Verbindung mit einem sicheren Cluster herstellen. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen. 
  
-Falls Ihr Zertifikat über Zertifizierungsstellen (Certificate Authorities, CAs) verfügt, müssen Sie den Parameter `--ca-cert-path` hinzufügen, wie im folgenden Beispiel zu sehen:
+Falls Ihr Zertifikat über Zertifizierungsstellen (Certificate Authorities, CAs) verfügt, müssen Sie den Parameter `--ca-cert-path` hinzufügen, wie im folgenden Beispiel zu sehen: 
 
 ```
  azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
 ```
-Mehrere Zertifizierungsstellen können als kommagetrennte Liste angegeben werden.
+Mehrere Zertifizierungsstellen können als kommagetrennte Liste angegeben werden. 
 
  
-Falls der allgemeine Name im Zertifikat nicht dem Verbindungsendpunkt entspricht, können Sie die Überprüfung mithilfe des Parameters `--strict-ssl-false` umgehen.
+Falls der allgemeine Name im Zertifikat nicht dem Verbindungsendpunkt entspricht, können Sie die Überprüfung mithilfe des Parameters `--strict-ssl-false` umgehen. 
 
 ```
 azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 --strict-ssl-false 
@@ -68,10 +69,10 @@ Verwenden Sie zum Herstellen einer Verbindung mit einem Cluster, der durch ein s
 azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false --reject-unauthorized-false
 ```
 
-Nach dem Herstellen der Verbindung können Sie durch Ausführen anderer Befehle über die Befehlszeilenschnittstelle mit dem Cluster interagieren.
+Nach dem Herstellen der Verbindung können Sie durch Ausführen anderer Befehle über die Befehlszeilenschnittstelle mit dem Cluster interagieren. 
 
 <a id="connectsecurecluster"></a>
-## Herstellen einer Verbindung mit einem sicheren Cluster mit PowerShell ohne AAD
+## <a name="connect-to-a-secure-cluster-using-powershell-without-aad"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit PowerShell ohne AAD
 
 Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem sicheren Cluster herzustellen. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
 
@@ -83,7 +84,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-*ServerCertThumbprint* ist der Fingerabdruck des Serverzertifikats, das auf den Clusterknoten installiert ist. *FindValue* ist der Fingerabdruck des Clientzertifikats des Administrators. Beim Auffüllen der Parameter sieht der Befehl wie im folgenden Beispiel aus:
+*ServerCertThumbprint* ist der Fingerabdruck des Serverzertifikats, das auf den Clusterknoten installiert ist. *FindValue* ist der Fingerabdruck des Clientzertifikats des Administrators.
+Beim Auffüllen der Parameter sieht der Befehl wie im folgenden Beispiel aus: 
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
@@ -96,7 +98,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
 
 
 
-## Herstellen einer Verbindung mit einem sicheren Cluster mit den FabricClient-APIs
+## <a name="connect-to-a-secure-cluster-using-the-fabricclient-apis"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit den FabricClient-APIs
 
 Weitere Informationen zu FabricClient-APIs finden Sie unter [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx). Die Knoten im Cluster müssen über gültige Zertifikate verfügen, deren allgemeiner Name oder DNS-Name im SAN in der [RemoteCommonNames](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)-Eigenschaft angezeigt wird, die auf [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) festgelegt ist. Durch dieses Verfahren wird die gegenseitige Authentifizierung zwischen dem Client und dem Clusterknoten ermöglicht.
 
@@ -145,11 +147,15 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 ```
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 - [Service Fabric-Cluster-Upgradeprozess und Erwartungen](service-fabric-cluster-upgrade.md)
 - [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 - [Einführung in das Service Fabric-Integritätsmodell](service-fabric-health-introduction.md)
 - [Anwendungssicherheit und RunAs](service-fabric-application-runas-security.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

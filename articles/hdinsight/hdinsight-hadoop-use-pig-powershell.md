@@ -6,7 +6,7 @@
    authors="Blackmist"
    manager="jhubbard"
    editor="cgronlun"
-	tags="azure-portal"/>
+    tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -14,18 +14,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/25/2016"
+   ms.date="10/11/2016"
    ms.author="larryfr"/>
 
-#Ausführen von Pig-Aufträgen mit PowerShell
 
-[AZURE.INCLUDE [Pig-Selektor](../../includes/hdinsight-selector-use-pig.md)]
+#<a name="run-pig-jobs-using-powershell"></a>Ausführen von Pig-Aufträgen mit PowerShell
+
+[AZURE.INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
 Dieses Dokument enthält ein Beispiel zur Verwendung von Azure PowerShell zum Übermitteln von Pig-Aufträgen an einen Hadoop-Cluster in HDInsight. Mithilfe von Pig können Sie MapReduce-Aufträge in einer Sprache (Pig Latin) verfassen, die Datentransformationen anstelle von Map- und Reduce-Funktionen modelliert.
 
 > [AZURE.NOTE] Dieses Dokument bietet keine detaillierten Beschreibungen zu den in diesem Beispiel verwendeten Pig Latin-Anweisungen. Informationen zu den in diesem Beispiel verwendeten Pig Latin-Anweisungen finden Sie unter [Verwenden von Pig Latin mit Hadoop in HDInsight](hdinsight-use-pig.md).
 
-##<a id="prereq"></a>Voraussetzungen
+##<a name="<a-id="prereq"></a>prerequisites"></a><a id="prereq"></a>Voraussetzungen
 
 Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
@@ -35,7 +36,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
-##<a id="powershell"></a>Ausführen von Pig-Aufträgen mit PowerShell
+##<a name="<a-id="powershell"></a>run-pig-jobs-using-powershell"></a><a id="powershell"></a>Ausführen von Pig-Aufträgen mit PowerShell
 
 Azure PowerShell stellt *Cmdlets* bereit, mit denen Sie Pig-Aufträge in HDInsight remote ausführen können. Intern wird dies mithilfe von REST-Aufrufen an [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (früher Templeton) im HDInsight-Cluster realisiert.
 
@@ -45,9 +46,9 @@ Die folgenden Cmdlets werden zum Ausführen der Pig-Aufträge in einem HDInsight
 
 * **New-AzureRmHDInsightPigJobDefinition**: erstellt mithilfe der angegebenen Pig Latin-Anweisungen eine neue *Auftragsdefinition*
 
-* **Start-AzureRmHDInsightJob**: sendet die Auftragsdefinition an HDInsight, startet den Auftrag und gibt ein *Auftrags*-Objekt zurück, mit dem der Status des Auftrags geprüft werden kann
+* **Start-AzureRmHDInsightJob**: sendet die Auftragsdefinition an HDInsight, startet den Auftrag und gibt ein *Auftrags* -Objekt zurück, mit dem der Status des Auftrags geprüft werden kann
 
-* **Wait-AzureRmHDInsightJob**: verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
+* **Wait-AzureRmHDInsightJob**: verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
 
 * **Get-AzureRmHDInsightJobOutput**: wird zum Abrufen der Ausgabe des Auftrags verwendet
 
@@ -111,9 +112,9 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
             -DefaultStorageAccountKey $storageAccountKey `
             -HttpCredential $creds
 
-2. Öffnen Sie eine neue Windows PowerShell-Eingabeaufforderung. Navigieren Sie zum Speicherort der Datei **pigjob.ps1**, und verwenden Sie folgenden Befehl zum Ausführen des Skripts:
+2. Öffnen Sie eine neue Windows PowerShell-Eingabeaufforderung. Navigieren Sie zum Speicherort der Datei **pigjob.ps1** , und verwenden Sie folgenden Befehl zum Ausführen des Skripts:
 
-		.\pigjob.ps1
+        .\pigjob.ps1
         
     Sie werden zunächst dazu aufgefordert, sich bei Ihrem Azure-Abonnement anzumelden. Außerdem werden Sie aufgefordert, den HTTPS-/Administratorkontonamen und das Kennwort für den HDInsight-Cluster bereitzustellen.
 
@@ -129,12 +130,12 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
         (ERROR,6)
         (FATAL,2)
 
-##<a id="troubleshooting"></a>Problembehandlung
+##<a name="<a-id="troubleshooting"></a>troubleshooting"></a><a id="troubleshooting"></a>Problembehandlung
 
 Wenn nach Abschluss des Auftrags keine Informationen zurückgegeben werden, ist während der Verarbeitung möglicherweise ein Fehler aufgetreten. Um Fehlerinformationen für diesen Auftrag anzuzeigen, fügen Sie folgenden Befehl am Ende der Datei **pigjob.ps1** hinzu. Anschließend speichern Sie die Datei und führen sie erneut aus.
 
-	# Print the output of the Pig job.
-	Write-Host "Display the standard error output ..." -ForegroundColor Green
+    # Print the output of the Pig job.
+    Write-Host "Display the standard error output ..." -ForegroundColor Green
     Get-AzureRmHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
@@ -146,11 +147,11 @@ Wenn nach Abschluss des Auftrags keine Informationen zurückgegeben werden, ist 
 
 Dadurch werden die beim Ausführen des Auftrags an STDERR auf dem Server geschriebenen Informationen zurückgegeben, die möglicherweise hilfreich sind, um festzustellen, warum der Auftrag fehlgeschlagen ist.
 
-##<a id="summary"></a>Zusammenfassung
+##<a name="<a-id="summary"></a>summary"></a><a id="summary"></a>Zusammenfassung
 
 Wie Sie sehen können, bietet Azure PowerShell eine einfache Möglichkeit, um Pig-Aufträge auf einem HDInsight-Cluster auszuführen, den Auftragsstatus zu überwachen und die Ausgabe abzurufen.
 
-##<a id="nextsteps"></a>Nächste Schritte
+##<a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>Nächste Schritte
 
 Allgemeine Informationen zu Pig in HDInsight:
 
@@ -162,4 +163,8 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

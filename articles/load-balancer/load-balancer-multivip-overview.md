@@ -17,7 +17,8 @@
    ms.author="chkuhtz"
 />
 
-# Mehrere VIPs für Azure Load Balancer
+
+# <a name="multiple-vips-for-azure-load-balancer"></a>Mehrere VIPs für Azure Load Balancer
 
 Mit Azure Load Balancer können Sie für Dienste an mehreren Ports, mehreren IP-Adressen oder beidem einen Lastenausgleich vornehmen. Sie können öffentliche und interne Load Balancer-Definitionen verwenden, um einen Lastenausgleich für Datenflüsse innerhalb einer VM-Gruppe durchzuführen.
 
@@ -29,9 +30,9 @@ Die folgende Tabelle enthält einige Beispielkonfigurationen des Front-Ends:
 
 | VIP | IP-Adresse | protocol | port |
 |-----|------------|----------|------|
-|1|65\.52.0.1|TCP|80|
-|2|65\.52.0.1|TCP|_8080_|
-|3|65\.52.0.1|_UDP_|80|
+|1|65.52.0.1|TCP|80|
+|2|65.52.0.1|TCP|_8080_|
+|3|65.52.0.1|_UDP_|80|
 |4|_65.52.0.2_|TCP|80|
 
 Die Tabelle enthält vier verschiedene Front-Ends. Die Front-Ends 1, 2 und 3 sind eine einzelne VIP mit mehreren Regeln. Die gleiche IP-Adresse wird verwendet, aber der Port oder das Protokoll ist für jedes Front-End anders. Die Front-Ends 1 und 4 sind ein Beispiel für mehrere VIPs, wobei das gleiche Front-End-Protokoll und der gleiche Port für mehrere VIPs verwendet werden.
@@ -45,7 +46,7 @@ Mit Azure Load Balancer können Sie beide Regeltypen in einer Load Balancer-Konf
 
 Wir untersuchen diese Szenarien näher und beginnen mit dem Standardverhalten.
 
-## Regeltyp 1: Keine Wiederverwendung von Back-End-Ports
+## <a name="rule-type-#1:-no-backend-port-reuse"></a>Regeltyp 1: Keine Wiederverwendung von Back-End-Ports
 
 ![Abbildung zur Verwendung mehrerer VIPs](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
@@ -53,7 +54,7 @@ In diesem Szenario werden die Front-End-VIPs wie folgt konfiguriert:
 
 | VIP | IP-Adresse | protocol | port |
 |-----|------------|----------|------|
-|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65\.52.0.1|TCP|80|
+|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65.52.0.1|TCP|80|
 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2|*65.52.0.2*|TCP|80|
 
 Die DIP ist das Ziel des eingehenden Datenflusses. Im Back-End-Pool macht jede VM den gewünschten Dienst an einem eindeutigen Port einer DIP verfügbar. Dieser Dienst ist dem Front-End über eine Regeldefinition zugeordnet.
@@ -62,21 +63,21 @@ Wir definieren zwei Regeln:
 
 | Regel | Front-End-Zuordnung | Im Back-End-Pool |
 |------|--------------|-----------------|
-| 1 | ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 | ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 | ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  DIP2:80 |
+| 2 | ![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  DIP2:81 |
 
 Die vollständige Zuordnung in Azure Load Balancer sieht jetzt wie folgt aus:
 
 | Regel | VIP-IP-Adresse | protocol | port | Ziel | port |
 |------|----------------|----------|------|-----|------|
-|![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65\.52.0.1|TCP|80|DIP-IP-Adresse|80|
-|![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2|65\.52.0.2|TCP|80|DIP-IP-Adresse|81|
+|![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65.52.0.1|TCP|80|DIP-IP-Adresse|80|
+|![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2|65.52.0.2|TCP|80|DIP-IP-Adresse|81|
 
 Jede Regel muss einen Datenfluss mit einer eindeutigen Kombination aus IP-Zieladresse und Zielport erzeugen. Durch die Änderung des Zielports für den Datenfluss können mehrere Regeln Datenflüsse an die gleiche DIP an unterschiedlichen Ports übermitteln.
 
 Integritätstests werden immer an die DIP einer VM weitergeleitet. Sie müssen sicherstellen, dass der Test den Zustand der VM widerspiegelt.
 
-## Regeltyp 2: Wiederverwendung von Back-End-Ports mit Floating IP
+## <a name="rule-type-#2:-backend-port-reuse-by-using-floating-ip"></a>Regeltyp 2: Wiederverwendung von Back-End-Ports mit Floating IP
 
 Azure Load Balancer bietet die Flexibilität, den Front-End-Port unabhängig vom verwendeten Regeltyp für mehrere VIPs wiederzuverwenden. Darüber hinaus ist es in einigen Anwendungsszenarien eine Priorität bzw. eine Anforderung, den gleichen Port für mehrere Anwendungsinstanzen auf einer einzelnen VM im Back-End-Pool zu verwenden. Gängige Beispiele für die Portwiederverwendung sind das Clustering für hohe Verfügbarkeit, virtuelle Netzwerkgeräte und die Bereitstellung mehrerer TLS-Endpunkte ohne erneute Verschlüsselung.
 
@@ -102,34 +103,38 @@ Gehen wir von der gleichen Front-End-Konfiguration wie im vorherigen Szenario au
 
 | VIP | IP-Adresse | protocol | port |
 |-----|------------|----------|------|
-|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65\.52.0.1|TCP|80|
+|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65.52.0.1|TCP|80|
 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2|*65.52.0.2*|TCP|80|
 
 Wir definieren zwei Regeln:
 
 | Regel | Front-End-Zuordnung | Im Back-End-Pool |
 |------|--------------|-----------------|
-| 1 | ![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 (in VM1 und VM2) |
-| 2 | ![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 (in VM1 und VM2) |
+| 1 | ![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 (in VM1 und VM2) |
+| 2 | ![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 | ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 (in VM1 und VM2) |
 
 Die folgende Tabelle veranschaulicht die vollständige Zuordnung im Load Balancer:
 
 | Regel | VIP-IP-Adresse | protocol | port | Ziel | port |
 |------|----------------|----------|------|-------------|------|
-|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65\.52.0.1|TCP|80|wie VIP (65.52.0.1)|wie VIP (80)|
-|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2|65\.52.0.2|TCP|80|wie VIP (65.52.0.2)|wie VIP (80)|
+|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1|65.52.0.1|TCP|80|wie VIP (65.52.0.1)|wie VIP (80)|
+|![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2|65.52.0.2|TCP|80|wie VIP (65.52.0.2)|wie VIP (80)|
 
 Das Ziel des eingehenden Datenflusses ist die VIP-Adresse der Loopback-Schnittstelle der VM. Jede Regel muss einen Datenfluss mit einer eindeutigen Kombination aus IP-Zieladresse und Zielport erzeugen. Durch die Änderung der IP-Zieladresse für den Datenfluss ist die Portwiederverwendung auf der gleichen VM möglich. Ihr Dienst wird für den Load Balancer verfügbar gemacht, indem er an die VIP-IP-Adresse und den Port der jeweiligen Loopback-Schnittstelle gebunden wird.
 
 Beachten Sie, dass in diesem Beispiel der Zielport nicht geändert wird. Obwohl dies ein Floating IP-Szenario ist, unterstützt Azure Load Balancer auch das Definieren einer Regel, um den Back-End-Zielport zu ändern, damit er sich vom Front-End-Zielport unterscheidet.
 
-Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigurationsmuster. Ein Beispiel, das derzeit verfügbar ist, ist die [Konfiguration von SQL AlwaysOn mit mehreren Listenern](../virtual-machines/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md). Mit der Zeit werden weitere dieser Szenarien dokumentiert.
+Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigurationsmuster. Ein Beispiel, das derzeit verfügbar ist, ist die [Konfiguration von SQL AlwaysOn mit mehreren Listenern](../virtual-machines/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) . Mit der Zeit werden weitere dieser Szenarien dokumentiert.
 
-## Einschränkungen
+## <a name="limitations"></a>Einschränkungen
 
 * Konfigurationen mit mehreren VIPs werden nur für IaaS-VMs unterstützt.
 * Bei der Floating IP-Regel muss die Anwendung die DIP für ausgehende Datenflüsse verwenden. Wenn Ihre Anwendung an die VIP-Adresse gebunden ist, die an der Loopback-Schnittstelle im Gastbetriebssystem konfiguriert ist, ist SNAT nicht verfügbar, um den ausgehenden Datenfluss umzuschreiben, und der Datenfluss schlägt fehl.
-* Öffentliche IP-Adressen haben Auswirkungen auf die Abrechnung. Weitere Informationen finden Sie unter [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/).
-* Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-subscription-service-limits.md#networking-limits).
+* Öffentliche IP-Adressen haben Auswirkungen auf die Abrechnung. Weitere Informationen finden Sie unter [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/)
+* Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-subscription-service-limits.md#networking-limits) .
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

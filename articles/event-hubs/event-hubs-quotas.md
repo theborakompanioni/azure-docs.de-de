@@ -15,10 +15,14 @@
     ms.date="09/27/2016"
     ms.author="sethm" />
 
-# Event Hubs-Kontingente
+
+# <a name="event-hubs-quotas"></a>Event Hubs-Kontingente
 
 In diesem Abschnitt werden die grundlegenden Kontingente und Einschränkungen in Microsoft Azure Event Hubs beschrieben.
 
-[AZURE.INCLUDE [service-bus-quotas-table](../../includes/event-hubs-limits.md)]
+[AZURE.INCLUDE [service-bus-quotas-table](../../includes/event-hubs-limits.md)] 
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

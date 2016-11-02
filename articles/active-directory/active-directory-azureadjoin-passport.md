@@ -1,27 +1,28 @@
 <properties
-	pageTitle="Authentifizieren von Identitäten ohne Kennwörter über Microsoft Passport | Microsoft Azure"
-	description="Bietet eine Übersicht über Microsoft Passport und weiterführende Informationen zum Bereitstellen von Microsoft Passport."
-	services="active-directory"
-	documentationCenter=""
-	authors="femila"
-	manager="swadhwa"
-	editor=""
-	tags="azure-classic-portal"/>
+    pageTitle="Authentifizieren von Identitäten ohne Kennwörter über Microsoft Passport | Microsoft Azure"
+    description="Bietet eine Übersicht über Microsoft Passport und weiterführende Informationen zum Bereitstellen von Microsoft Passport."
+    services="active-directory"
+    documentationCenter=""
+    authors="femila"
+    manager="swadhwa"
+    editor=""
+    tags="azure-classic-portal"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="femila"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/27/2016"
+    ms.author="femila"/>
 
-# Authentifizieren von Identitäten ohne Kennwörter über Microsoft Passport
+
+# <a name="authenticating-identities-without-passwords-through-microsoft-passport"></a>Authentifizieren von Identitäten ohne Kennwörter über Microsoft Passport
 
 Die aktuellen Methoden der Authentifizierung mit Kennwörtern allein sind nicht ausreichend, um Benutzer zu schützen. Benutzer verwenden gleiche Kennwörter wiederholt und vergessen sie. Kennwörter können missbraucht werden, sind anfällig für Phishing, für Sicherheitslücken und sie sind leicht zu erraten. Sie sind außerdem schwer zu merken und anfällig für Angriffe wie "[Pass-the-Hash](https://technet.microsoft.com/dn785092.aspx)".
 
-## Informationen zu Microsoft Passport
+## <a name="about-microsoft-passport"></a>Informationen zu Microsoft Passport
 Microsoft Passport ist ein Authentifizierungsansatz für Unternehmen und Endkunden, der auf privaten/öffentlichen Schlüsseln oder Zertifikaten basiert und weit über den Gebrauch von Kennwörtern hinausgeht. Bei dieser Form der Authentifizierung werden Schlüsselpaar-Anmeldeinformationen verwendet, die Kennwörter ersetzen können und Verstößen, Diebstahl und Phishing gegenüber resistent sind.
 
  Mit Microsoft Passport können Benutzer sich bei einem Microsoft-Konto, einem Windows Server Active Directory-Konto, einem Microsoft Azure Active Directory-Konto (Azure AD) oder einem Nicht-Microsoft-Dienst authentifizieren, der die FIDO-Authentifizierung (Fast IDentity Online) unterstützt. Nach einer anfänglichen Überprüfung in zwei Schritten während der Microsoft Passport-Registrierung wird Microsoft Passport auf dem Gerät des Benutzers eingerichtet, und der Benutzer legt eine Geste fest, entweder Windows Hello oder eine PIN. Der Benutzer gibt die Geste zum Überprüfen der Identität an. Windows verwendet dann Microsoft Passport zum Authentifizieren des Benutzers und hilft ihm dabei, auf geschützte Ressourcen und Dienste zuzugreifen.
@@ -30,7 +31,7 @@ Der private Schlüssel wird ausschließlich über eine „Benutzergeste“ verf�
 
 Der öffentliche Schlüssel wird mit Azure Active Directory und Windows Server Active Directory (für lokale Bereitstellungen) registriert. Die Identitätsanbieter überprüfen den Benutzer, indem sie den öffentlichen Schlüssel des Benutzers dem privaten Schlüssel zuordnen, und bieten Anmeldeinformationen über ein Einmalkennwort, PhoneFactor oder einen anderen Benachrichtigungsmechanismus.
 
-## Gründe für den Einsatz von Microsoft Passport in Unternehmen
+## <a name="why-enterprises-should-adopt-microsoft-passport"></a>Gründe für den Einsatz von Microsoft Passport in Unternehmen
 
 Durch Aktivieren von Microsoft Passport können Unternehmen ihre Ressourcen mithilfe folgender Funktionen noch besser sichern:
 
@@ -40,14 +41,14 @@ Durch Aktivieren von Microsoft Passport können Unternehmen ihre Ressourcen mith
 
 * Konfigurieren von Microsoft Passport zur Unterstützung Smartcard-ähnlicher Szenarien durch die Verwendung einer zertifikatbasierten Vertrauensstellung.
 
-## Funktionsweise von Microsoft Passport
+## <a name="how-microsoft-passport-works"></a>Funktionsweise von Microsoft Passport
 1. Schlüssel werden durch das TPM oder durch Software auf der Hardware generiert. Viele Geräte verfügen über einen vordefinierten TPM-Chip (Trusted Platform Module), der die Hardware durch die Integration kryptografischer Schlüssel in Geräten sichert. TPM 1.2 oder TPM 2.0 generiert Schlüssel oder Zertifikate, die über die generierten Schlüssel erstellt werden.
 
 2. Das TPM bestätigt diese hardwaregebundenen Schlüssel.
 
 3. Durch eine einzige Entsperrungsgeste wird das Gerät entsperrt. Diese Geste ermöglicht den Zugriff auf mehrere Ressourcen, wenn das Gerät in eine Domäne eingebunden oder mit Azure AD verknüpft ist.
 
-## Funktionsweise des Microsoft Passport-Lebenszyklus
+## <a name="how-the-microsoft-passport-lifecycle-works"></a>Funktionsweise des Microsoft Passport-Lebenszyklus
 
 ![Microsoft Passport-Lebenszyklus](./media/active-directory-azureadjoin/active-directory-azureadjoin-microsoft-passport.png)
 
@@ -61,19 +62,19 @@ Das obige Diagramm veranschaulicht das private/öffentliche Schlüsselpaar und d
 
 5. Der Identitätsanbieter überprüft dann das Authentifizierungstoken und stellt es aus, damit der Benutzer und das Gerät auf geschützte Ressourcen zugreifen können. Identitätsanbieter können plattformübergreifende Apps schreiben oder die Browserunterstützung (über JavaScript-/Webcrypto-APIs) nutzen, um Microsoft Passport-Anmeldeinformationen für ihre Benutzer zu erstellen und zu verwenden.
 
-## Bereitstellungsanforderungen für Microsoft Passport
-### Auf Unternehmensebene
+## <a name="the-deployment-requirements-for-microsoft-passport"></a>Bereitstellungsanforderungen für Microsoft Passport
+### <a name="at-the-enterprise-level"></a>Auf Unternehmensebene
 
 * Das Unternehmen verfügt über ein Azure-Abonnement.
 
-### Auf Benutzerebene
+### <a name="at-the-user-level"></a>Auf Benutzerebene
 
 * Auf dem Computer des Benutzers wird Windows 10 Professional oder Enterprise ausgeführt.
 
 Ausführliche Anweisungen zur Bereitstellung finden Sie unter [Microsoft Passport für die Arbeit in der Organisation aktivieren](active-directory-azureadjoin-passport-deployment.md).
 
 
-## Zusätzliche Informationen
+## <a name="additional-information"></a>Zusätzliche Informationen
 
 * [Windows 10 für Unternehmen: Möglichkeiten der geschäftlichen Nutzung von Geräten](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
@@ -81,4 +82,8 @@ Ausführliche Anweisungen zur Bereitstellung finden Sie unter [Microsoft Passpor
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

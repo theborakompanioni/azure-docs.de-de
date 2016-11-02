@@ -17,7 +17,8 @@
    ms.date="09/13/2016"
    ms.author="kundanap"/>
 
-# Konfigurationsbeispiele für Linux-VM-Erweiterungen
+
+# <a name="linux-vm-extension-configuration-samples"></a>Konfigurationsbeispiele für Linux-VM-Erweiterungen
 
 > [AZURE.SELECTOR]
 - [PowerShell – Vorlage](virtual-machines-windows-extensions-configuration-samples.md)
@@ -27,13 +28,13 @@
 
 Dieser Artikel enthält Beispielkonfigurationen der Azure-VM-Erweiterungen für virtuelle Linux-Computer.
 
-Weitere Informationen zu diesen Erweiterungen finden Sie unter [Azure-VM-Erweiterungen](virtual-machines-windows-extensions-features.md).
+Weitere Informationen zu diesen Erweiterungen finden Sie unter [Azure-VM-Erweiterungen](virtual-machines-windows-extensions-features.md)
 
-Weitere Informationen zum Erstellen von Erweiterungsvorlagen finden Sie unter [Erstellen von Erweiterungsvorlagen](virtual-machines-windows-extensions-authoring-templates.md).
+Weitere Informationen zum Erstellen von Erweiterungsvorlagen finden Sie unter [Erstellen von Erweiterungsvorlagen](virtual-machines-windows-extensions-authoring-templates.md)
 
 Dieser Artikel führt die erwarteten Konfigurationswerte für einige der Linux-Erweiterungen auf.
 
-## Ausschnitt einer Beispielvorlage für VM-Erweiterungen.
+## <a name="sample-template-snippet-for-vm-extensions."></a>Ausschnitt einer Beispielvorlage für VM-Erweiterungen.
 Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweiterungen gezeigt:
 
       {
@@ -54,7 +55,7 @@ Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweit
       }
       }
 
-## Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit VM-Skalierungsgruppen.
+## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets."></a>Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit VM-Skalierungsgruppen.
 
           {
            "type":"Microsoft.Compute/virtualMachineScaleSets",
@@ -80,7 +81,7 @@ Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweit
 
 Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Linux-VM-Erweiterungen aufgeführt.
 
-### CloudLink SecureVM-Agent
+### <a name="cloudlink-securevm-agent"></a>CloudLink SecureVM-Agent
           {
             "publisher": "CloudLinkEMC.SecureVM",
             "type": "CloudLinkSecureVMLinuxAgent",
@@ -90,7 +91,7 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Linux-VM-Erwe
             }
           }
 
-### CustomScript-Erweiterung für Linux.
+### <a name="customscript-extension-for-linux."></a>CustomScript-Erweiterung für Linux.
     {
         "publisher": " Microsoft.Azure.Extensions",
         "type": "CustomScript",
@@ -105,7 +106,7 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Linux-VM-Erwe
     }
 
 
-### Datadog-Agent
+### <a name="datadog-agent"></a>Datadog-Agent
         {
           "publisher": "Datadog.Agent",
           "type": "DatadogLinuxAgent",
@@ -115,7 +116,7 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Linux-VM-Erwe
           }
         }
 
-### Chef-Agent
+### <a name="chef-agent"></a>Chef-Agent
         {
           "publisher": "Chef.Bootstrap.WindowsAzure",
           "type": "CentosChefClient|LinuxChefClient",
@@ -127,8 +128,8 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Linux-VM-Erwe
           }
         }
 
-### VM-Zugriffserweiterung (Zurücksetzen des Kennworts)
-Das aktualisierte Schema finden Sie in der [VMAccessForLinux-Dokumentation](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
+### <a name="vm-access-extension-(password-reset)"></a>VM-Zugriffserweiterung (Zurücksetzen des Kennworts)
+Das aktualisierte Schema finden Sie in der [VMAccessForLinux-Dokumentation](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
         {
           "publisher": "Microsoft.OSTCExtensions",
@@ -143,7 +144,7 @@ Das aktualisierte Schema finden Sie in der [VMAccessForLinux-Dokumentation](http
           }
         }
 
-### Betriebssystempatching
+### <a name="os-patching"></a>Betriebssystempatching
 Das aktualisierte Schema finden Sie in der [OSPatching-Dokumentation](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)
 
         {
@@ -168,7 +169,7 @@ Das aktualisierte Schema finden Sie in der [OSPatching-Dokumentation](https://gi
         }
         }
 
-### Docker-Erweiterung
+### <a name="docker-extension"></a>Docker-Erweiterung
 Das aktualisierte Schema finden Sie in der [Docker Extension-Dokumentation](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)
 
         {
@@ -217,4 +218,8 @@ Dies ist eine vollständige VM-Vorlage zum Erstellen eines virtuellen Linux-Comp
 
 [Benutzerdefinierte Skriptserweiterung auf einem virtuellen Linux-Computer](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

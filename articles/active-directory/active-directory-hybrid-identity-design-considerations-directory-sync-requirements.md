@@ -1,25 +1,26 @@
 <properties
-	pageTitle="Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Ermitteln der Anforderungen in Bezug auf die Verzeichnissynchronisierung | Microsoft Azure"
-	description="Identifizieren Sie, welche Anforderungen für die Synchronisierung aller Benutzer zwischen lokalen Speicherorten und Cloudspeicherorten für das Unternehmen gelten."
-	documentationCenter=""
-	services="active-directory"
-	authors="billmath"
-	manager="femila"
-	editor=""/>
+    pageTitle="Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Ermitteln der Anforderungen in Bezug auf die Verzeichnissynchronisierung | Microsoft Azure"
+    description="Identifizieren Sie, welche Anforderungen für die Synchronisierung aller Benutzer zwischen lokalen Speicherorten und Cloudspeicherorten für das Unternehmen gelten."
+    documentationCenter=""
+    services="active-directory"
+    authors="billmath"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/08/2016"
-	ms.author="billmath"/>
+    ms.date="08/08/2016"
+    ms.author="billmath"/>
 
-# Ermitteln der Anforderungen an die Verzeichnissynchronisierung
-Bei der Synchronisierung geht es um das Bereitstellen einer Identität für Benutzer in der Cloud, und zwar basierend auf ihrer lokalen Identität. Benutzer müssen unabhängig davon, ob sie das synchronisierte Konto für die Authentifizierung oder die Verbundauthentifizierung verwenden, über eine Identität in der Cloud verfügen. Diese Identität muss regelmäßig verwaltet und aktualisiert werden. Die Updates können viele Formen annehmen – von der Änderung des Titels bis zur Änderung des Kennworts.
 
-Beginnen Sie, indem Sie für das Unternehmen die lokale Identitätslösung und die Benutzeranforderungen auswerten. Diese Auswertung ist wichtig, um die technischen Anforderungen dafür zu definieren, wie Benutzeridentitäten in der Cloud erstellt und verwaltet werden. Für die Mehrzahl der Unternehmen wird Active Directory lokal verwendet und dient als lokales Verzeichnis, über das Benutzer synchronisiert werden. Dies ist aber nicht immer der Fall.
+# <a name="determine-directory-synchronization-requirements"></a>Ermitteln der Anforderungen an die Verzeichnissynchronisierung
+Bei der Synchronisierung geht es um das Bereitstellen einer Identität für Benutzer in der Cloud, und zwar basierend auf ihrer lokalen Identität. Benutzer müssen unabhängig davon, ob sie das synchronisierte Konto für die Authentifizierung oder die Verbundauthentifizierung verwenden, über eine Identität in der Cloud verfügen.  Diese Identität muss regelmäßig verwaltet und aktualisiert werden.  Die Updates können viele Formen annehmen – von der Änderung des Titels bis zur Änderung des Kennworts.  
+
+Beginnen Sie, indem Sie für das Unternehmen die lokale Identitätslösung und die Benutzeranforderungen auswerten. Diese Auswertung ist wichtig, um die technischen Anforderungen dafür zu definieren, wie Benutzeridentitäten in der Cloud erstellt und verwaltet werden.  Für die Mehrzahl der Unternehmen wird Active Directory lokal verwendet und dient als lokales Verzeichnis, über das Benutzer synchronisiert werden. Dies ist aber nicht immer der Fall.  
 
 Beantworten Sie die folgenden Fragen:
 
@@ -34,12 +35,12 @@ Beantworten Sie die folgenden Fragen:
   - Wenn ja: Ist für Ihre Benutzer ein virtuelles Verzeichnis bzw. eine Integration der Identitäten vorhanden?
 - Sind lokal noch weitere Verzeichnisse vorhanden, die synchronisiert werden sollen (z. B. LDAP-Verzeichnis, HR-Datenbank usw.)?
   - Sollen GALSync-Vorgänge durchgeführt werden?
-  - Welchen aktuellen Stand haben UPNs in Ihrem Unternehmen?
+  - Welchen aktuellen Stand haben UPNs in Ihrem Unternehmen? 
   - Verwenden Sie ein anderes Verzeichnis, das für die Authentifizierung der Benutzer eingesetzt wird?
   - Wird in Ihrem Unternehmen Microsoft Exchange verwendet?
     - Ist eine Hybrid-Exchange-Bereitstellung geplant?
 
-Nachdem Sie nun eine Vorstellung von Ihren Synchronisierungsanforderungen gewonnen haben, müssen Sie bestimmen, welches Tool sich am besten zur Erfüllung dieser Anforderungen eignet. Microsoft bietet verschiedene Tools zur Integration und Synchronisierung von Verzeichnissen. Weitere Informationen finden Sie unter [Hybrid Identity directory integration tools comparison](active-directory-hybrid-identity-design-considerations-tools-comparison.md) (Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten).
+Nachdem Sie nun eine Vorstellung von Ihren Synchronisierungsanforderungen gewonnen haben, müssen Sie bestimmen, welches Tool sich am besten zur Erfüllung dieser Anforderungen eignet.  Microsoft bietet verschiedene Tools zur Integration und Synchronisierung von Verzeichnissen.  Weitere Informationen finden Sie unter [Hybrid Identity directory integration tools comparison](active-directory-hybrid-identity-design-considerations-tools-comparison.md) (Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten). 
    
 Nachdem Sie nun Erkenntnisse zu Ihren Synchronisierungsanforderungen und dem richtigen Tool für ihr Unternehmen gewonnen haben, müssen Sie die Anwendungen auswerten, von denen diese Verzeichnisdienste verwendet werden. Diese Auswertung ist wichtig, um die technischen Anforderungen zum Integrieren dieser Anwendungen in die Cloud zu definieren. Beantworten Sie die folgenden Fragen:
 
@@ -60,12 +61,16 @@ Außerdem müssen Sie die Sicherheitsanforderungen und Einschränkungen der Verz
 - Kann der Synchronisierungsserver auf alle Gesamtstrukturen zugreifen, wenn bei Ihnen mehrere Gesamtstrukturen an der Synchronisierung beteiligt sind?
  
 >[AZURE.NOTE]
-Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Bestimmen der Anforderungen an Reaktionen auf Vorfälle](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) sind die verfügbaren Optionen beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
+Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. [Bestimmen der Anforderungen an Reaktionen auf Vorfälle](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) sind die verfügbaren Optionen beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Ermitteln der Anforderungen für die Multi-Factor Authentication](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,42 +1,43 @@
 <properties 
-	pageTitle="Media Encoder Premium Workflow-Formate und -Codecs | Microsoft Azure" 
-	description="Dieses Thema bietet eine Übersicht über Media Encoder Premium Workflow-Formate und -Codecs" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="juliako" 
-	manager="erik43" 
-	editor=""/>
+    pageTitle="Media Encoder Premium Workflow-Formate und -Codecs | Microsoft Azure" 
+    description="Dieses Thema bietet eine Übersicht über Media Encoder Premium Workflow-Formate und -Codecs" 
+    services="media-services" 
+    documentationCenter="" 
+    authors="juliako" 
+    manager="erik43" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/26/2016"    
-	ms.author="juliako;anilmur"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/26/2016"    
+    ms.author="juliako;anilmur"/>
 
-#Media Encoder Premium Workflow-Formate und -Codecs
+
+#<a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow-Formate und -Codecs
 
 
 >[AZURE.NOTE]Fragen zu Encoder Premium senden Sie per E-Mail an „mepd at Microsoft.com“.
 >
->Der in diesem Thema beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar.
+>Der in diesem Thema beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar. 
 
-Dieses Dokument enthält eine Liste von Eingabe- und Ausgabedateiformaten sowie Codecs, die von der öffentlichen Vorschauversion des **Medienencoder-Premium-Workflow**-Encoders unterstützt werden.
+Dieses Dokument enthält eine Liste von Eingabe- und Ausgabedateiformaten sowie Codecs, die von der öffentlichen Vorschauversion des **Medienencoder-Premium-Workflow** -Encoders unterstützt werden.
 
 [Media Encoder Premium Workflow-Eingabeformate und -Codecs](#input_formats)
 
 [Media Encoder Premium Workflow-Ausgabeformate und -Codecs](#output_formats)
 
-**Medienencoder-Premium-Workflow** unterstützt Untertitel, wie in [diesem](#closed_captioning) Abschnitt beschrieben.
+**Medienencoder-Premium-Workflow** unterstützt Untertitel, wie in [diesem](#closed_captioning) Abschnitt beschrieben. 
 
 
-##<a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
+##<a name="<a-id="input_formats"></a>media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
 
 Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Medienprozessor als Eingabe unterstützt.
 
-###Eingabecontainer/Dateiformate
+###<a name="input-container/file-formats"></a>Eingabecontainer/Dateiformate
 
 - Adobe® Flash® F4V
 - MXF/SMPTE 377M
@@ -47,7 +48,7 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 - Windows Media/ASF
 - AVI (unkomprimiert, 8-Bit/10-Bit)
 
-###Codecs für Videoeingang
+###<a name="input-video-codecs"></a>Codecs für Videoeingang
 
 - AVC 8-Bit/10-Bit, bis zu 4:2:2, einschließlich AVCIntra
 - Avid DNxHD (in MXF)
@@ -57,7 +58,7 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 - MPEG-1
 - Windows Media Video/VC-1
 
-###Codecs für Audioeingang
+###<a name="input-audio-codecs"></a>Codecs für Audioeingang
 
 - AES (SMPTE 331M und 302M, AES3-2003)
 - Dolby® E
@@ -68,11 +69,11 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 - Windows Media Audio
 - WAV/PCM
  
-##<a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
+##<a name="<a-id="output_format"></a>media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
 
 Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als Ausgabe für diesen Medienprozessor unterstützt werden.
 
-###Ausgabecontainer/Dateiformate
+###<a name="output-container/file-formats"></a>Ausgabecontainer/Dateiformate
 
 - Adobe® Flash® F4V
 - MXF (OP1a, XDCAM und AS02)
@@ -82,10 +83,10 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 - Windows Media/ASF
 - AVI (unkomprimiert, 8-Bit/10-Bit)
 - Smooth Streaming-Dateiformat (PIFF 1.3)
-- MPEG-TS
+- MPEG-TS 
 
 
-###Codecs für Videoausgang
+###<a name="output-video-codecs"></a>Codecs für Videoausgang
 
 - AVC (H.264; 8-Bit; bis High Profile, Level 5.2; 4K Ultra HD; AVC Intra)
 - Avid DNxHD (in MXF)
@@ -95,7 +96,7 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 - Windows Media Video/VC-1
 - Erstellung von JPEG-Miniaturansichten
 
-###Codecs für Audioausgabe
+###<a name="output-audio-codecs"></a>Codecs für Audioausgabe
 
 - AES (SMPTE 331M und 302M, AES3-2003)
 - Dolby® Digital (AC3)
@@ -105,7 +106,7 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 - MP3 (MPEG-1 Audio Layer 3)
 - Windows Media Audio
 
-##<a id="closed_captioning"></a>Unterstützung für Untertitel
+##<a name="<a-id="closed_captioning"></a>support-for-closed-captioning"></a><a id="closed_captioning"></a>Unterstützung für Untertitel
 
 Bei der Erfassung unterstützt **Medienencoder-Premium-Workflow** Folgendes:
 
@@ -125,17 +126,21 @@ Bei der Ausgabe sind die folgenden Optionen verfügbar:
 
 Hinweis: Nicht alle der oben genannten Ausgabeformate werden zur Übermittlung per Streaming in Azure Media Services unterstützt.
 
-##Bekannte Probleme
+##<a name="known-issues"></a>Bekannte Probleme
 
-Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjekt trotzdem eine leere TTML-Datei.
+Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjekt trotzdem eine leere TTML-Datei. 
 
 
-##Media Services-Lernpfade
+##<a name="media-services-learning-paths"></a>Media Services-Lernpfade
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Feedback geben
+##<a name="provide-feedback"></a>Feedback geben
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

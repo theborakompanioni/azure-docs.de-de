@@ -1,29 +1,30 @@
 <properties 
     pageTitle="Service Bus und Java mit AMQP 1.0 | Microsoft Azure"
     description="Verwenden von Service Bus aus Java mit AMQP"
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
     editor="" /> 
 <tags 
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/06/2016"
+    ms.date="09/29/2016"
     ms.author="sethm" />
 
-# Verwenden von Service Bus aus Java mit AMQP 1.0
+
+# <a name="use-service-bus-from-java-with-amqp-1.0"></a>Verwenden von Service Bus aus Java mit AMQP 1.0
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 Der Java Message Service (JMS) ist eine Standard-API für das Arbeiten mit nachrichtenbasierter Middleware auf der Java-Plattform. Microsoft Azure Service Bus wurde mit der auf AMQP 1.0 basierenden JMS-Clientbibliothek getestet, die im Rahmen des Apache Qpid-Projekts entwickelt wurde. Diese Bibliothek unterstützt die vollständige JMS 1.1-API und kann mit jedem mit AMQP 1.0 kompatiblen Messagingdienst verwendet werden. Dieses Szenario wird auch in [Service Bus für Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) (lokaler Service Bus) unterstützt. Weitere Informationen finden Sie unter [AMQP in Service Bus für Windows Server][].
 
-## Herunterladen der Apache Qpid AMQP 1.0 JMS-Clientbibliothek
+## <a name="download-the-apache-qpid-amqp-1.0-jms-client-library"></a>Herunterladen der Apache Qpid AMQP 1.0 JMS-Clientbibliothek
 
-Informationen zum Herunterladen der neuesten Version der Apache Qpid JMS AMQP 1.0-Clientbibliothek finden Sie unter: [http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html).
+Informationen zum Herunterladen der neuesten Version der Apache Qpid JMS AMQP 1.0-Clientbibliothek finden Sie unter [http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html).
 
 Folgende vier JAR-Dateien müssen aus dem Apache Qpid JMS AMQP 1.0-Verteilungsarchiv zu dem Java-KLASSENPFAD hinzugefügt werden, wenn JMS-Anwendungen mit Service Bus erstellt und ausgeführt werden:
 
@@ -35,9 +36,9 @@ Folgende vier JAR-Dateien müssen aus dem Apache Qpid JMS AMQP 1.0-Verteilungsar
 
 -   qpid-amqp-1-0-common-[version].jar
 
-## Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus JMS
+## <a name="work-with-service-bus-queues,-topics,-and-subscriptions-from-jms"></a>Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus JMS
 
-### JNDI (Java Naming and Directory Interface; Java Benennungs- und Verzeichnisschnittstelle)
+### <a name="java-naming-and-directory-interface-(jndi)"></a>JNDI (Java Naming and Directory Interface; Java Benennungs- und Verzeichnisschnittstelle)
 
 JMS verwendet die Java Naming and Directory Interface (JNDI), um eine Trennung zwischen logischen und physischen Namen umzusetzen. Zwei Typen von JMS-Objekten werden mit JNDI aufgelöst: **ConnectionFactory** und **Destination**. JNDI verwendet ein Anbietermodell, das Sie mit verschiedenen Verzeichnisdiensten verbinden können, um Namensauflösungsfunktionen zu implementieren. Die Apache Qpid JMS AMQP 1.0-Bibliothek enthält einen einfachen dateibasierten JNDI-Anbieter, der mithilfe einer Textdatei konfiguriert wird.
 
@@ -57,7 +58,7 @@ topic.TOPIC = topic1
 queue.QUEUE = queue1
 ```
 
-#### Konfigurieren der Verbindungsfactory
+#### <a name="configure-the-connection-factory"></a>Konfigurieren der Verbindungsfactory
 
 Der Eintrag zum Definieren einer **ConnectionFactory** in der Qpid Properties-Datei für den JNDI-Anbieter hat das folgende Format:
 
@@ -67,10 +68,10 @@ connectionfactory.[jndi_name] = [ConnectionURL]
 
 `[jndi\_name]` und `[ConnectionURL]` haben die folgende Bedeutung:
 
-| Name | Bedeutung | | | | |
+| Name            | Bedeutung                                                                                                                                    |   |   |   |   |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|---|
-| `[jndi\_name]` | Der logische Name der Verbindungsfactory. Dieser Name wird in der Java-Anwendung mithilfe der JNDI-Methode `IntialContext.lookup()` aufgelöst. | | | | |
-| `[ConnectionURL]` | Diese URL liefert der JMS-Bibliothek die vom AMQP-Broker benötigten Informationen. | | | | |
+| `[jndi\_name]`    | Der logische Name der Verbindungsfactory. Dieser Name wird in der Java-Anwendung mithilfe der JNDI-Methode `IntialContext.lookup()` aufgelöst. |   |   |   |   |
+| `[ConnectionURL]` | Diese URL liefert der JMS-Bibliothek die vom AMQP-Broker benötigten Informationen.                                                      |   |   |   |   |
 
 Das Format der Verbindungs-URL ist wie folgt:
 
@@ -80,28 +81,28 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 
 `[namespace]`, `[username]` und `[password]` haben die folgende Bedeutung:
 
-| Name | Bedeutung | | | | |
+| Name          | Bedeutung                                                                        |   |   |   |   |
 |---------------|--------------------------------------------------------------------------------|---|---|---|---|
-| `[namespace]` | Der Service Bus-Namespace, der aus dem [Azure-Portal][] abgerufen wird. | | | | |
-| `[username]` | Der Service Bus-Ausstellername, der aus dem [Azure-Portal][] abgerufen wird. | | | | |
-| `[password]` | Die URL-codierte Form des Service Bus-Ausstellerschlüssels, der aus dem [Azure-Portal][] abgerufen wird. | | | | |
+| `[namespace]` | Der Service Bus-Namespace, der aus dem [Azure-Portal][] abgerufen wird.                      |   |   |   |   |
+| `[username]`  | Der Service Bus-SAS-Schlüsselname, der aus dem [Azure-Portal][] abgerufen wird.                    |   |   |   |   |
+| `[password]`  | Die URL-codierte Form des Service Bus-SAS-Schlüssels, der aus dem [Azure-Portal][] abgerufen wird. |   |   |   |   |
 
-> [AZURE.NOTE] Sie müssen das Kennwort manuell als URL codieren. Ein nützliches URL-Codierungshilfsprogramm ist unter [http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) verfügbar.
+> [AZURE.NOTE] Sie müssen das Kennwort manuell als URL codieren. Ein nützliches URL-Codierungshilfsprogramm ist unter [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) verfügbar.
 
 Angenommen, die aus dem Azure-Portal abgerufenen Informationen lauten wie folgt:
 
-| Namespace: | test.servicebus.windows.net |
+| Namespace:   | test.servicebus.windows.net                  |
 |--------------|----------------------------------------------|
-| Ausstellername: | owner |
-| Ausstellerschlüssel: | abcdefg |
+| Ausstellername: | RootManageSharedAccessKey                                        |
+| Ausstellerschlüssel:  | abcdefg |
 
 Mit der folgenden Konfigurationszeichenfolge können Sie in diesem Fall ein **ConnectionFactory**-Objekt mit dem Namen `SBCONNECTIONFACTORY` definieren:
 
 ```
-connectionfactory.SBCONNECTIONFACTORY = amqps://owner:abcdefg@test.servicebus.windows.net
+connectionfactory.SBCONNECTIONFACTORY = amqps://RootManageSharedAccessKey:abcdefg@test.servicebus.windows.net
 ```
 
-#### Konfigurieren von Zielen
+#### <a name="configure-destinations"></a>Konfigurieren von Zielen
 
 Der Eintrag zum Definieren eines Ziels in der "Properties"-Datei von Qpid für den JNDI-Anbieter hat das folgende Format:
 
@@ -112,10 +113,10 @@ topic.[jndi_name] = [physical_name]
 
 `[jndi\_name]` und `[physical\_name]` haben die folgende Bedeutung:
 
-| Name | Bedeutung |
+| Name              | Bedeutung                                                                                                                                  |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `[jndi\_name]` | Der logische Name des Ziels. Dieser Name wird in der Java-Anwendung mithilfe der JNDI-Methode `IntialContext.lookup()` aufgelöst. |
-| `[physical\name]` | Der Name der Service Bus-Entität, mit der die Anwendung Nachrichten austauscht. |
+| `[jndi\_name]`    | Der logische Name des Ziels. Dieser Name wird in der Java-Anwendung mithilfe der JNDI-Methode `IntialContext.lookup()` aufgelöst. |
+| `[physical\name]` | Der Name der Service Bus-Entität, mit der die Anwendung Nachrichten austauscht.                                                  |
 
 Beachten Sie Folgendes:
 
@@ -130,7 +131,7 @@ Zum Definieren eines logischen JMS-Ziels namens "TOPIC", das dem Service Bus-The
 topic.TOPIC = topic1
 ```
 
-### Senden von Nachrichten mithilfe von JMS
+### <a name="send-messages-using-jms"></a>Senden von Nachrichten mithilfe von JMS
 
 Der folgende Code veranschaulicht, wie Sie eine Nachricht an ein Service Bus-Thema senden. Es wird davon ausgegangen, dass `SBCONNECTIONFACTORY` und `TOPIC`, wie im vorherigen Abschnitt beschrieben, in der Konfigurationsdatei **servicebus.properties** definiert sind.
 
@@ -151,9 +152,9 @@ TextMessage message = session.createTextMessage("This is a text string");
 producer.send(message);
 ```
 
-### Empfangen von Nachrichten mithilfe von JMS
+### <a name="receive-messages-using-jms"></a>Empfangen von Nachrichten mithilfe von JMS
 
-Der folgende Code veranschaulicht, wie Sie eine Nachricht aus einem Service Bus-Themenabonnement empfangen. Es wird davon ausgegangen, dass `SBCONNECTIONFACTORY` und TOPIC, wie im vorherigen Abschnitt beschrieben, in der Konfigurationsdatei **servicebus.properties** definiert sind. Außerdem wird vorausgesetzt, dass der Abonnementname `subscription1` lautet.
+Der folgende Code veranschaulicht,`how` wie Sie eine Nachricht aus einem Service Bus-Themenabonnement empfangen. Es wird davon ausgegangen, dass `SBCONNECTIONFACTORY` und TOPIC, wie im vorherigen Abschnitt beschrieben, in der Konfigurationsdatei **servicebus.properties** definiert sind. Außerdem wird vorausgesetzt, dass der Abonnementname `subscription1` lautet.
 
 ```
 Hashtable<String, String> env = new Hashtable<String, String>(); 
@@ -172,27 +173,27 @@ connection.start();
 Message message = messageConsumer.receive();
 ```
 
-### Leitlinien für das Erstellen stabiler Anwendungen
+### <a name="guidelines-for-building-robust-applications"></a>Leitlinien für das Erstellen stabiler Anwendungen
 
 Die JMS-Spezifikation definiert, wie der Ausnahmevertrag der API-Methoden und Anwendungscode geschrieben werden muss, um solche Ausnahmen zu behandeln. Hier sind einige andere Punkte, die in Bezug auf die Behandlung von Ausnahmen zu berücksichtigen sind:
 
--   Registrieren Sie einen **ExceptionListener** mit der JMS-Verbindung mithilfe von **connection.setExceptionListener**. Dadurch kann ein Client asynchron über ein Problem benachrichtigt werden. Diese Benachrichtigung ist besonders wichtig für Verbindungen, die nur Nachrichten nutzen, da sie ansonsten keine andere Möglichkeit haben zu erfahren, dass ihre Verbindung ausgefallen ist. Der **ExceptionListener** wird aufgerufen, wenn es ein Problem mit der zugrunde liegenden AMQP-Verbindung, Sitzung oder dem Link gibt. In diesem Fall muss die Anwendung die Objekte **JMS Connection**, **Session**, **MessageProducer** und **MessageConsumer** von Grund auf neu erstellen.
+-   Registrieren Sie ein **ExceptionListener**-Element mit der JMS-Verbindung mithilfe von **connection.setExceptionListener**. Dadurch kann ein Client asynchron über ein Problem benachrichtigt werden. Diese Benachrichtigung ist besonders wichtig für Verbindungen, die nur Nachrichten nutzen, da sie ansonsten keine andere Möglichkeit haben zu erfahren, dass ihre Verbindung ausgefallen ist. Das **ExceptionListener**-Element wird aufgerufen, wenn es ein Problem mit der zugrunde liegenden AMQP-Verbindung, Sitzung oder dem Link gibt. In diesem Fall muss die Anwendung die Objekte **JMS Connection**, **Session**, **MessageProducer** und **MessageConsumer** von Grund auf neu erstellen.
 
--   Um dafür zu sorgen, dass eine Nachricht vom einem **MessageProducer** erfolgreich an eine Service Bus-Entität gesendet wurde, stellen Sie sicher, dass die Anwendung mit festgelegter Systemeigenschaft **sync\_publish** konfiguriert wurde. Starten Sie dazu das Programm mit der Java VM-Option **-Dqpid.sync\_publish=true**, die Sie beim Starten der Anwendung über die Befehlszeile festlegen. Durch Festlegen dieser Option wird die Bibliothek so konfiguriert, dass keine Rückgabe aus dem Sendeaufruf erfolgt, bis die Bestätigung empfangen wird, dass die Nachricht von Service Bus akzeptiert wurde. Wenn ein Problem während des Sendevorgangs auftritt, wird eine **JMSException** ausgelöst. Es gibt zwei mögliche Ursachen:
-	1. Wenn das Problem vorliegt, weil Service Bus die bestimmte gesendete Nachricht zurückweist, wird eine **MessageRejectedException**-Ausnahme ausgelöst. Dieser Fehler ist entweder vorübergehend oder beruht auf einem Problem mit der Nachricht. Die empfohlene Vorgehensweise ist, den Vorgang mit einer Backofflogik zu wiederholen. Wenn das Problem weiterhin besteht, sollte die Nachricht mit einem lokal protokollierten Fehler verworfen werden. In dieser Situation besteht keine Notwendigkeit zum erneuten Erstellen der Objekte **JMS Connection**, **Session** oder **MessageProducer**.
-	2. Wenn das Problem dadurch verursacht wird, dass Service Bus den AMQP-Link schließt, wird eine **InvalidDestinationException**-Ausnahme ausgelöst. Der Grund kann ein vorübergehendes Problem oder das Löschen der Nachrichtenentität sein. In beiden Fällen müssen die Objekte **JMS Connection**, **Session** und **MessageProducer** neu erstellt werden. Wenn die Fehlerbedingung vorübergehend war, wird dieser Vorgang schließlich erfolgreich sein. Wenn die Entität gelöscht wurde, ist der Fehler permanent.
+-   Um dafür zu sorgen, dass eine Nachricht vom einem **MessageProducer**-Element erfolgreich an eine Service Bus-Entität gesendet wurde, stellen Sie sicher, dass die Anwendung mit festgelegter Systemeigenschaft **qpid.sync\_publish** konfiguriert wurde. Starten Sie dazu das Programm mit der Java VM-Option **-Dqpid.sync\_publish=true**, die Sie beim Starten der Anwendung über die Befehlszeile festlegen. Durch Festlegen dieser Option wird die Bibliothek so konfiguriert, dass keine Rückgabe aus dem Sendeaufruf erfolgt, bis die Bestätigung empfangen wird, dass die Nachricht von Service Bus akzeptiert wurde. Wenn ein Problem während des Sendevorgangs auftritt, wird **JMSException** ausgelöst. Es gibt zwei mögliche Ursachen: 
+    1. Wenn das Problem vorliegt, weil Service Bus die bestimmte gesendete Nachricht zurückweist, wird eine **MessageRejectedException**-Ausnahme ausgelöst. Dieser Fehler ist entweder vorübergehend oder beruht auf einem Problem mit der Nachricht. Die empfohlene Vorgehensweise ist, den Vorgang mit einer Backofflogik zu wiederholen. Wenn das Problem weiterhin besteht, sollte die Nachricht mit einem lokal protokollierten Fehler verworfen werden. In dieser Situation besteht keine Notwendigkeit zum erneuten Erstellen der Objekte **JMS Connection**, **Session** oder **MessageProducer**. 
+    2. Wenn das Problem dadurch verursacht wird, dass Service Bus den AMQP-Link schließt, wird eine **InvalidDestinationException**-Ausnahme ausgelöst. Der Grund kann ein vorübergehendes Problem oder das Löschen der Nachrichtenentität sein. In beiden Fällen müssen die Objekte **JMS Connection**, **Session** und **MessageProducer** neu erstellt werden. Wenn die Fehlerbedingung vorübergehend war, wird dieser Vorgang schließlich erfolgreich sein. Wenn die Entität gelöscht wurde, ist der Fehler permanent.
 
-## Übertragen von Nachrichten zwischen .NET und JMS
+## <a name="messaging-between-.net-and-jms"></a>Übertragen von Nachrichten zwischen .NET und JMS
 
-### Nachrichtentext
+### <a name="message-bodies"></a>Nachrichtentext
 
 JMS definiert fünf verschiedene Nachrichtentypen: **BytesMessage**, **MapMessage**, **ObjectMessage**, **StreamMessage** und **TextMessage**. Die .NET-API von Service Bus hat mit [BrokeredMessage][] nur einen Nachrichtentyp.
 
-#### JMS zur .NET-API von Service Bus
+#### <a name="jms-to-service-bus-.net-api"></a>JMS zur .NET-API von Service Bus
 
-Die folgenden Abschnitte zeigen, wie Nachrichten der einzelnen JMS-Nachrichtentypen in .NET genutzt werden. Ein Beispiel für **ObjectMessage** wurde noch nicht hinzugefügt, da der Text einer **ObjectMessage** ein serialisierbares Objekt in der Programmiersprache Java enthält, das eine .NET-Anwendung nicht interpretieren kann.
+Die folgenden Abschnitte zeigen, wie Nachrichten der einzelnen JMS-Nachrichtentypen in .NET genutzt werden. Ein Beispiel für **ObjectMessage** wurde noch nicht hinzugefügt, da der Text eines **ObjectMessage**-Elements ein serialisierbares Objekt in der Programmiersprache Java enthält, das eine .NET-Anwendung nicht interpretieren kann.
 
-##### BytesMessage
+##### <a name="bytesmessage"></a>BytesMessage
 
 Der folgende Code zeigt, wie der Text eines **BytesMessage**-Objekts mithilfe der .NET-APIs von Service Bus genutzt werden kann.
 
@@ -210,7 +211,7 @@ for (int i = 0; i < stream.Length; i++)
 }
 ```
 
-##### MapMessage
+##### <a name="mapmessage"></a>MapMessage
 
 Der folgende Code zeigt, wie der Text eines **MapMessage**-Objekts mithilfe der .NET-APIs von Service Bus genutzt werden kann. Dieser Code durchläuft die Elemente der Zuordnung und zeigt den Namen und Wert der einzelnen Elemente an.
 
@@ -227,7 +228,7 @@ foreach (String mapItemName in dictionary.Keys)
 }
 ```
 
-##### StreamMessage
+##### <a name="streammessage"></a>StreamMessage
 
 Der folgende Code zeigt, wie der Text eines **StreamMessage**-Objekts mithilfe der .NET-APIs von Service Bus genutzt werden kann. Dieser Code listet alle Elemente im Datenstrom mit ihrem Typ auf.
 
@@ -240,7 +241,7 @@ foreach (Object item in list)
 }
 ```
 
-##### TextMessage
+##### <a name="textmessage"></a>TextMessage
 
 Der folgende Code zeigt, wie der Text eines **TextMessage**-Objekts mithilfe der .NET-APIs von Service Bus genutzt werden kann. Dieser Code zeigt die Textzeichenfolge, die im Text der Nachricht enthalten ist.
 
@@ -248,11 +249,11 @@ Der folgende Code zeigt, wie der Text eines **TextMessage**-Objekts mithilfe der
 Console.WriteLine("Text: " + message.GetBody<String>());
 ```
 
-#### .NET-API von Service Bus zu JMS
+#### <a name="service-bus-.net-apis-to-jms"></a>.NET-API von Service Bus zu JMS
 
-Die folgenden Abschnitte zeigen, wie eine .NET-Anwendung eine Nachricht erstellen kann, die in JMS in den einzelnen JMS-Nachrichtentypen empfangen wird. Ein Beispiel für **ObjectMessage** wurde noch nicht hinzugefügt, da der Text einer **ObjectMessage** ein serialisierbares Objekt in der Programmiersprache Java enthält, das eine .NET-Anwendung nicht interpretieren kann.
+Die folgenden Abschnitte zeigen, wie eine .NET-Anwendung eine Nachricht erstellen kann, die in JMS in den einzelnen JMS-Nachrichtentypen empfangen wird. Ein Beispiel für **ObjectMessage** wurde noch nicht hinzugefügt, da der Text eines **ObjectMessage**-Elements ein serialisierbares Objekt in der Programmiersprache Java enthält, das eine .NET-Anwendung nicht interpretieren kann.
 
-##### BytesMessage
+##### <a name="bytesmessage"></a>BytesMessage
 
 Der folgende Code zeigt, wie Sie in .NET ein [BrokeredMessage][]-Objekt erstellen, das von einem JMS-Client als **BytesMessage** empfangen wird.
 
@@ -261,7 +262,7 @@ byte[] bytes = { 33, 12, 45, 33, 12, 45, 33, 12, 45, 33, 12, 45 };
 message = new BrokeredMessage(bytes);
 ```
 
-##### StreamMessage
+##### <a name="streammessage"></a>StreamMessage
 
 Der folgende Code zeigt, wie Sie in .NET ein [BrokeredMessage][]-Objekt erstellen, das von einem JMS-Client als **StreamMessage** empfangen wird.
 
@@ -274,17 +275,17 @@ list.Add((double)3.14159);
 message = new BrokeredMessage(list);
 ```
 
-##### TextMessage
+##### <a name="textmessage"></a>TextMessage
 
-Der folgende Code zeigt, wie der Text einer **TextMessage**mithilfe der .NET-API von Service Bus genutzt werden kann. Dieser Code zeigt die Textzeichenfolge, die im Text der Nachricht enthalten ist.
+Der folgende Code zeigt, wie der Text eines **TextMessage**-Elements mithilfe der .NET-API von Service Bus genutzt werden kann. Dieser Code zeigt die Textzeichenfolge, die im Text der Nachricht enthalten ist.
 
 ```
 message = new BrokeredMessage("this is a text string");
 ```
 
-### Anwendungseigenschaften
+### <a name="application-properties"></a>Anwendungseigenschaften
 
-####JMS zu .NET-APIs von Service Bus
+####<a name="jms-to-service-bus-.net-apis"></a>JMS zu .NET-APIs von Service Bus
 
 JMS-Nachrichten unterstützen Anwendungseigenschaften der folgenden Typen: **boolean**, **byte**, **short**, **int**, **long**, **float**, **double** und **String**. Der folgende Java-Code veranschaulicht, wie Sie Eigenschaften für eine Nachricht festlegen, indem Sie diese Eigenschaftstypen verwenden.
 
@@ -315,14 +316,14 @@ Die folgende Tabelle zeigt, wie die JMS-Eigenschaftstypen den .NET-Eigenschaftst
 
 | JMS-Eigenschaftstyp | .NET-Eigenschaftentyp |
 |-------------------|--------------------|
-| Byte | sbyte |
-| Integer | int |
-| Float | float |
-| Doppelt | double |
-| Boolean | bool |
-| String | string |
+| Byte              | sbyte              |
+| Integer           | int                |
+| Float             | float              |
+| Doppelt            | double             |
+| Boolean           | bool               |
+| String            | string             |
 
-Der [BrokeredMessage][]-Typ unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][]-Objekt festlegen, indem Sie diese Eigenschaftstypen verwenden.
+Der [BrokeredMessage][]-Typ unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][]-Objekt festlegen, indem Sie diese Eigenschaftstypen verwenden:
 
 ```
 message.Properties["TestByte"] = (byte)128;
@@ -360,68 +361,69 @@ while (propertyNames.hasMoreElements())
 
 Die folgende Tabelle zeigt, wie die .NET-Eigenschaftstypen den JMS-Eigenschaftstypen zugeordnet sind.
 
-| .NET-Eigenschaftstyp | JMS-Eigenschaftstyp | Hinweise |
+| .NET-Eigenschaftstyp | JMS-Eigenschaftstyp | Hinweise                                                                                                                                                               |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | UnsignedByte | - | 
-| sbyte | Byte | - | 
-| char | Character | - | 
-| short | Short | - | 
-| ushort | UnsignedShort | - | 
-| int | Integer | - | 
-| uint | UnsignedInteger | - | 
-| long | Long | - | 
-| ulong | UnsignedLong | - | 
-| float | Float | - | 
-| double | Double | - | 
-| decimal | BigDecimal | - | 
-| bool | Boolean | - | 
-| Guid | UUID | - | 
-| string | String | - | 
-| DateTime | Date | - | 
-| DateTimeOffset | DescribedType | DateTimeOffset.UtcTicks zugeordnet zum AMQP-Typ:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> | 
-| TimeSpan | DescribedType | Timespan.Ticks zugeordnet zum AMQP-Typ:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> | 
-| Uri | DescribedType | Uri.AbsoluteUri zugeordnet zum AMQP-Typ:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
+| Byte               | UnsignedByte      | -                                                                                                                                                                      |
+| sbyte              | Byte              | -                                                                                                                                                                     |
+| char               | Character         | -                                                                                                                                                                     |
+| short              | Schnellstart             | -                                                                                                                                                                     |
+| ushort             | UnsignedShort     | -                                                                                                                                                                     |
+| int                | Integer           | -                                                                                                                                                                     |
+| uint               | UnsignedInteger   | -                                                                                                                                                                     |
+| lang               | Long              | -                                                                                                                                                                     |
+| ulong              | UnsignedLong      | -                                                                                                                                                                     |
+| float              | Float             | -                                                                                                                                                                     |
+| double             | Doppelt            | -                                                                                                                                                                     |
+| Decimal            | BigDecimal        | -                                                                                                                                                                     |
+| bool               | Boolean           | -                                                                                                                                                                     |
+| Guid               | UUID              | -                                                                                                                                                                     |
+| string             | String            | -                                                                                                                                                                     |
+| DateTime           | Datum              | -                                                                                                                                                                     |
+| Datetimeoffset     | DescribedType     | „DateTimeOffset.UtcTicks“ ist AMQP-Typ zugeordnet:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan           | DescribedType     | „Timespan.Ticks“ ist AMQP-Typ zugeordnet:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>                        |
+| Uri                | DescribedType     | „Uri.AbsoluteUri“ ist AMQP-Typ zugeordnet:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>                               |
 
-### Standardheader
+### <a name="standard-headers"></a>Standardheader
 
 Die folgenden Tabellen zeigen, wie die JMS-Standardheader und [BrokeredMessage][]-Standardeigenschaften mithilfe von AMQP 1.0 zugeordnet werden.
 
-#### JMS zu .NET-APIs von Service Bus
+#### <a name="jms-to-service-bus-.net-apis"></a>JMS zu .NET-APIs von Service Bus
 
-| JMS | Service Bus .NET | Hinweise |
+| JMS              | Service Bus .NET               | Hinweise                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| JMSCorrelationID | Message.CorrelationID | - | 
-| JMSDeliveryMode | Derzeit nicht verfügbar | Service Bus unterstützt nur dauerhafte Nachrichten. z. B. DeliveryMode.PERSISTENT, unabhängig davon, was angegeben wird. | 
-| JMSDestination | Message.To | - | 
-| JMSExpiration | Message. TimeToLive | Conversion | 
-| JMSMessageID | Message.MessageID | Standardmäßig wird die JMSMessageID in binärer Form in der AMQP-Nachricht codiert. Beim Empfang einer binären Nachrichten-ID wird die .NET-Clientbibliothek basierend auf den Unicode-Werten der Bytes in eine Zeichenfolgendarstellung konvertiert. Damit die JMS-Bibliothek Zeichenfolgennachrichten-IDs verwendet, fügen Sie die Zeichenfolge "binary-messageid=false" an die Abfrageparameter von "JNDI ConnectionURL" an. Beispiel: “amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false”. | 
-| JMSPriority | Derzeit nicht verfügbar. | Service Bus unterstützt keine Nachrichtenpriorität. | 
-| JMSRedelivered | Derzeit nicht verfügbar | - | 
-| JMSReplyTo | Message. ReplyTo | - | 
-| JMSTimestamp | Message.EnqueuedTimeUtc | Conversion | 
-| JMSType | Message.Properties[“jms-type”] | - |
+| JMSCorrelationID | Message.CorrelationID          | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| JMSDeliveryMode  | Derzeit nicht verfügbar        | Service Bus unterstützt nur dauerhafte Nachrichten, etwa „DeliveryMode.PERSISTENT“, unabhängig davon, was angegeben wird.                                                                                                                                                                                                                                                                                                                                                         |
+| JMSDestination   | Message.To                     | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| JMSExpiration    | Message. TimeToLive            | Konvertierung                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| JMSMessageID     | Message.MessageID              | Standardmäßig wird „JMSMessageID“ in der AMQP-Nachricht im Binärformat codiert. Beim Empfang einer binären Nachrichten-ID wird die .NET-Clientbibliothek basierend auf den Unicode-Werten der Bytes in eine Zeichenfolgendarstellung konvertiert. Damit die JMS-Bibliothek Zeichenfolgennachrichten-IDs verwendet, fügen Sie die Zeichenfolge "binary-messageid=false" an die Abfrageparameter von "JNDI ConnectionURL" an.  Beispiel: “amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false”. |
+| JMSPriority      | Derzeit nicht verfügbar        | Service Bus unterstützt keine Nachrichtenpriorität.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| JMSRedelivered   | Derzeit nicht verfügbar        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| JMSReplyTo       | Message. ReplyTo               | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| JMSTimestamp     | Message.EnqueuedTimeUtc        | Konvertierung                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| JMSType          | Message.Properties[“jms-type”] | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
-#### .NET-API von Service Bus zu JMS
+#### <a name="service-bus-.net-apis-to-jms"></a>.NET-API von Service Bus zu JMS
 
-| Service Bus .NET | JMS | Hinweise |
+| Service Bus .NET        | JMS              | Hinweise                   |
 |-------------------------|------------------|-------------------------|
-| ContentType | - | Derzeit nicht verfügbar | 
-| CorrelationId | JMSCorrelationID | - | 
-| EnqueuedTimeUtc | JMSTimestamp | Conversion | 
-| Label | – | Derzeit nicht verfügbar | 
-| MessageId | JMSMessageID | - | 
-| ReplyTo | JMSReplyTo | - | 
-| ReplyToSessionId | – | Derzeit nicht verfügbar | 
-| ScheduledEnqueueTimeUtc | – | Derzeit nicht verfügbar | 
-| SessionId | – | Derzeit nicht verfügbar | 
-| TimeToLive | JMSExpiration | Conversion | 
-| To | JMSDestination | - |
+| ContentType             | -                  | Derzeit nicht verfügbar |
+| CorrelationId           | JMSCorrelationID | -                         |
+| EnqueuedTimeUtc         | JMSTimestamp     | Konvertierung              |
+| Bezeichnung                   | –              | Derzeit nicht verfügbar |
+| MessageId               | JMSMessageID     | -                         |
+| ReplyTo                 | JMSReplyTo       | -                         |
+| ReplyToSessionId        | –              | Derzeit nicht verfügbar |
+| ScheduledEnqueueTimeUtc | –              | Derzeit nicht verfügbar |
+| SessionId               | –              | Derzeit nicht verfügbar |
+| TimeToLive              | JMSExpiration    | Konvertierung              |
+| To
+                      | JMSDestination   | -                         |
 
-## Nicht unterstützte Funktionen und Einschränkungen
+## <a name="unsupported-features-and-restrictions"></a>Nicht unterstützte Funktionen und Einschränkungen
 
 Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden Einschränkungen:
 
--   Pro Sitzung ist nur ein **MessageConsumer** oder **MessageProducer** erlaubt. Falls Sie mehrere **MessageProducer**- oder **MessageConsumer**-Objekte in einer Anwendung benötigen, müssen Sie für diese jeweils eine Sitzung erstellen.
+-   Pro Sitzung ist nur ein **MessageProducer**- oder **MessageConsumer**-Objekt erlaubt. Falls Sie mehrere **MessageProducer**- oder **MessageConsumer**-Objekte in einer Anwendung benötigen, müssen Sie für diese jeweils eine Sitzung erstellen.
 
 -   Flüchtige Themenabonnements werden momentan nicht unterstützt.
 
@@ -433,7 +435,7 @@ Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden E
 
 -   Verteilte Transaktionen werden nicht unterstützt.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
@@ -446,4 +448,8 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

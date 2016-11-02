@@ -1,39 +1,40 @@
 <properties 
-	pageTitle="Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps" 
-	description="Erweiterte Überwachung Ihrer Java-Website mit Application Insights" 
-	services="application-insights" 
+    pageTitle="Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps" 
+    description="Erweiterte Überwachung Ihrer Java-Website mit Application Insights" 
+    services="application-insights" 
     documentationCenter="java"
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/24/2016" 
+    ms.author="awills"/>
  
-# Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps
+
+# <a name="monitor-dependencies,-exceptions-and-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps
 
 *Application Insights befindet sich in der Vorschau.*
 
 Wenn Sie [Ihre Java-Web-App mit Application Insights instrumentiert haben][java], können Sie den Java-Agent ohne Codeänderungen verwenden, um detailliertere Informationen zu erhalten:
 
 
-* **Abhängigkeiten**: Daten über Aufrufe der Anwendung an andere Komponenten, einschließlich:
+* **Abhängigkeiten** : Daten über Aufrufe der Anwendung an andere Komponenten, einschließlich:
  * **REST-Aufrufe** über „HttpClient“, „OkHttp“ und „RestTemplate“ (Spring).
- * **Redis**-Aufrufe über den Jedis-Client. Wenn der Aufruf länger als zehn Sekunden dauert, ruft der Agent auch die Argumente des Aufrufs ab.
- * **[JDBC-Aufrufe](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB oder Apache Derby DB. Aufrufe von "executeBatch" werden unterstützt. Für MySQL und PostgreSQL gilt: Wenn der Aufruf länger als zehn Sekunden dauert, wird der Abfrageplan gemeldet.
-* **Abgefangene Ausnahmen**: Daten zu Ausnahmen, die vom Code verarbeitet werden.
-* **Methodenausführungszeit**: Daten über die Zeit, die zum Ausführen bestimmter Methoden benötigt wird.
+ * **Redis** -Aufrufe über den Jedis-Client. Wenn der Aufruf länger als zehn Sekunden dauert, ruft der Agent auch die Argumente des Aufrufs ab.
+ * **[JDBC-Aufrufe:](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB oder Apache Derby DB. Aufrufe von "executeBatch" werden unterstützt. Für MySQL und PostgreSQL gilt: Wenn der Aufruf länger als zehn Sekunden dauert, wird der Abfrageplan gemeldet. 
+* **Abgefangene Ausnahmen** : Daten zu Ausnahmen, die vom Code verarbeitet werden.
+* **Methodenausführungszeit** : Daten über die Zeit, die zum Ausführen bestimmter Methoden benötigt wird.
 
 Um den Java-Agent zu verwenden, installieren Sie ihn auf Ihrem Server. Ihre Web-Apps müssen mit dem [Application Insights-Java-SDK][java] instrumentiert werden.
 
-## Installieren des Application Insights-Agents für Java
+## <a name="install-the-application-insights-agent-for-java"></a>Installieren des Application Insights-Agents für Java
 
-1. Laden Sie auf dem Computer, auf dem Ihr Java-Server ausgeführt wird, [den Agent herunter](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html).
+1. Laden Sie auf dem Computer, auf dem Ihr Java-Server ausgeführt wird, [den Agent herunter](https://aka.ms/aijavasdk).
 2. Bearbeiten Sie das Startskript des Anwendungsservers, und fügen Sie die folgende JVM hinzu:
 
     `javaagent:`*Vollständiger Pfad der JAR-Datei des Agents*
@@ -45,11 +46,11 @@ Um den Java-Agent zu verwenden, installieren Sie ihn auf Ihrem Server. Ihre Web-
 
 3. Starten Sie den Anwendungsserver neu.
 
-## Konfigurieren des Agents
+## <a name="configure-the-agent"></a>Konfigurieren des Agents
 
-Erstellen Sie eine Datei mit dem Namen `AI-Agent.xml`, und speichern Sie sie im selben Ordner wie die JAR-Datei des Agents.
+Erstellen Sie eine Datei mit dem Namen `AI-Agent.xml` , und speichern Sie sie im selben Ordner wie die JAR-Datei des Agents.
 
-Legen Sie den Inhalt der XML-Datei fest. Bearbeiten Sie das folgende Beispiel, um Features Ihrer Wahl aufzunehmen oder nicht.
+Legen Sie den Inhalt der XML-Datei fest. Bearbeiten Sie das folgende Beispiel, um Features Ihrer Wahl aufzunehmen oder nicht. 
 
 ```XML
 
@@ -92,17 +93,17 @@ Sie müssen für einzelne Methoden die Berichtausnahmen und Methodenzeiten aktiv
 
 `reportExecutionTime` ist standardmäßig „true“, `reportCaughtExceptions` ist standardmäßig „false“.
 
-## Anzeigen der Daten
+## <a name="view-the-data"></a>Anzeigen der Daten
 
-In der Application Insights-Ressource werden aggregierte Remoteabhängigkeiten und Methodenausführungszeiten [auf der Kachel „Leistung“][metrics] angezeigt.
+In der Application Insights-Ressource werden aggregierte Remoteabhängigkeiten und Methodenausführungszeiten [auf der Kachel „Leistung“][metrics] angezeigt. 
 
-Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberichte zu suchen, öffnen Sie die [Suche][diagnostic].
+Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberichte zu suchen, öffnen Sie die [Suche][diagnostic]. 
 
 [Diagnostizieren von Problemen mit Abhängigkeiten – weitere Informationen](app-insights-dependencies.md#diagnosis).
 
 
 
-## Fragen? Probleme?
+## <a name="questions?-problems?"></a>Fragen? Probleme?
 
 * Sie sehen keine Daten? [Festlegen von Firewallausnahmen](app-insights-ip-addresses.md)
 * [Problembehandlung für Java](app-insights-java-troubleshoot.md)
@@ -123,4 +124,8 @@ Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberi
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

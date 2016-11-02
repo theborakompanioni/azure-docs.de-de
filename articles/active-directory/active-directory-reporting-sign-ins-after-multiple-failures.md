@@ -1,22 +1,23 @@
 <properties
-	pageTitle="Anmeldungen nach mehreren Fehlern"
-	description="Ein Bericht, der die Benutzer ausweist, die sich nach mehreren aufeinander folgenden misslungenen Anmeldeversuchen erfolgreich angemeldet haben."
-	services="active-directory"
-	documentationCenter=""
-	authors="SSalahAhmed"
-	manager="femila"
-	editor=""/>
+    pageTitle="Anmeldungen nach mehreren Fehlern"
+    description="Ein Bericht, der die Benutzer ausweist, die sich nach mehreren aufeinander folgenden misslungenen Anmeldeversuchen erfolgreich angemeldet haben."
+    services="active-directory"
+    documentationCenter=""
+    authors="SSalahAhmed"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/04/2016"
-	ms.author="saah;kenhoff"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="03/04/2016"
+    ms.author="saah;kenhoff"/>
 
-# Anmeldungen nach mehreren Fehlern
+
+# <a name="sign-ins-after-multiple-failures"></a>Anmeldungen nach mehreren Fehlern
 Dieser Bericht weist die Benutzer aus, die sich nach mehreren aufeinander folgenden misslungenen Anmeldeversuchen erfolgreich angemeldet haben. Mögliche Ursachen:
 
 - Der Benutzer hat sein Kennwort vergessen</li><li>Der Benutzer ist Opfer eines erfolgreichen Brute-Force-Angriffs, bei dem das Kennwort erraten wurde.
@@ -28,4 +29,8 @@ Die Ergebnisse aus diesem Bericht zeigen Ihnen die Anzahl der aufeinander folgen
 
 ![Anmeldungen nach mehreren Fehlern](./media/active-directory-reporting-sign-ins-after-multiple-failures/signInsAfterMultipleFailures.PNG)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

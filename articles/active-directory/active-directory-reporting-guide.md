@@ -13,11 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/27/2016"
+   ms.date="09/30/2016"
    ms.author="femila"/>
 
 
-# Anleitung für Azure Active Directory-Berichte
+
+# <a name="azure-active-directory-reporting-guide"></a>Anleitung für Azure Active Directory-Berichte
+
+> [AZURE.SELECTOR]
+- [Azure-Portal](active-directory-reporting-azure-portal.md)
+- [Klassisches Azure-Portal](active-directory-reporting-guide.md)
 
  - [Azure Active Directory-Berichterstellung – Vorschau](active-directory-reporting-azure-portal.md)
  - [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md)
@@ -29,4 +34,8 @@
  - [Azure Active Directory-Berichtsereignis „Unbekannter Akteur“](active-directory-reporting-unknown-actor.md)
  - [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

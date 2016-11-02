@@ -6,7 +6,7 @@
    authors="Blackmist"
    manager="jhubbard"
    editor="cgronlun"
-	tags="azure-portal"/>
+    tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -14,18 +14,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/27/2016"
+   ms.date="10/11/2016"
    ms.author="larryfr"/>
 
-#Entwickeln von Python-Streamingprogrammen für HDInsight
+
+#<a name="develop-python-streaming-programs-for-hdinsight"></a>Entwickeln von Python-Streamingprogrammen für HDInsight
 
 Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können. In diesem Dokument erfahren Sie, wie Sie mit Python MapReduce-Vorgänge ausführen.
 
 > [AZURE.NOTE] Während der Python-Code in diesem Dokument mit einem Windows-basierten HDInsight-Cluster verwendet werden kann, gelten die Schritte in diesem Dokument speziell für Linux-basierte Cluster.
 
-Dieser Artikel basiert auf Informationen und Beispielen, die von Michael Noll unter [Writing an Hadoop MapReduce Program in Python](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/) (in englischer Sprache) veröffentlicht wurden.
+Dieser Artikel basiert auf Informationen und Beispielen, die von Michael Noll unter [Writing an Hadoop MapReduce Program in Python](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/)(in englischer Sprache) veröffentlicht wurden.
 
-##Voraussetzungen
+##<a name="prerequisites"></a>Voraussetzungen
 
 Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
@@ -37,7 +38,7 @@ Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Fol
 
 * Für Windows-Clients: PuTTY und PSCP Diese Dienstprogramme stehen über die <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY-Downloadseite</a> zur Verfügung.
 
-##Wortzählung
+##<a name="word-count"></a>Wortzählung
 
 In diesem Beispiel implementieren Sie eine einfache Wortanzahlermittlung mithilfe einer Mapper- und Reducer-Funktion. Die Mapper-Funktion teilt Sätze in einzelne Wörter auf und die Reducer-Funktion aggregiert die Wörter und Zähler, um die Ausgabe zu erzeugen.
 
@@ -45,13 +46,13 @@ Im folgenden Flußdiagramm ist dargestellt, was in den Mapper- und Reducer-Funkt
 
 ![Abbildung von MapReduce](./media/hdinsight-hadoop-streaming-python/HDI.WordCountDiagram.png)
 
-##Gründe für Python
+##<a name="why-python?"></a>Gründe für Python
 
 Python ist eine allgemeine Programmiersprache, mit der Sie Konzepte in weniger Codezeilen als in vielen anderen Sprachen ausdrücken können. Sie wurde kürzlich bei Datenwissenschaftlern als Prototyping-Sprache beliebt, da sie durch ihre interpretierende Art, dynamische Typisierung und elegante Syntax für die schnelle Anwendungsentwicklung geeignet ist.
 
 Python wird auf allen HDInsight-Clustern installiert.
 
-##Streaming-MapReduce
+##<a name="streaming-mapreduce"></a>Streaming-MapReduce
 
 Mit Hadoop können Sie eine Datei angeben, die die von einem Auftrag verwendete Logik für den Mapper und Reducer enthält. Bestimmte Anforderungen an die Logik für Mapper und Reducer:
 
@@ -63,13 +64,13 @@ Mit Hadoop können Sie eine Datei angeben, die die von einem Auftrag verwendete 
 
 Python kann diese Anforderungen einfach mithilfe des Moduls **sys** zum Lesen von STDIN und mithilfe des Moduls **print** für die Ausgabe an STDOUT behandeln. Der Rest besteht einfach aus der Formatierung der Daten mit einem Tabulatorzeichen (`\t`) zwischen Schlüssel und Wert.
 
-##Erstellen von Mapper und Reducer
+##<a name="create-the-mapper-and-reducer"></a>Erstellen von Mapper und Reducer
 
 Mapper und Reducer sind reine Textdateien, in diesem Fall **mapper.py** und **reducer.py**, daher ist eindeutig, welche Datei wofür zuständig ist. Sie können diese mit einem Editor Ihrer Wahl erstellen.
 
-###Mapper.py
+###<a name="mapper.py"></a>Mapper.py
 
-Erstellen Sie eine neue Datei namens **mapper.py**, und verwenden Sie den folgenden Inhalt für die Datei.
+Erstellen Sie eine neue Datei namens **mapper.py** , und verwenden Sie den folgenden Inhalt für die Datei.
 
     #!/usr/bin/env python
 
@@ -97,9 +98,9 @@ Erstellen Sie eine neue Datei namens **mapper.py**, und verwenden Sie den folgen
 
 Nehmen Sie sich einen Moment Zeit, um den Code zu lesen und seine Funktionsweise zu verstehen.
 
-###Reducer.py
+###<a name="reducer.py"></a>reducer.py
 
-Erstellen Sie eine neue Datei namens **mapper.py**, und verwenden Sie den folgenden Inhalt für die Datei:
+Erstellen Sie eine neue Datei namens **mapper.py** , und verwenden Sie den folgenden Inhalt für die Datei:
 
     #!/usr/bin/env python
 
@@ -136,25 +137,25 @@ Erstellen Sie eine neue Datei namens **mapper.py**, und verwenden Sie den folgen
     if __name__ == "__main__":
         main()
 
-##Hochladen der Dateien
+##<a name="upload-the-files"></a>Hochladen der Dateien
 
 Sowohl **mapper.py** als auch **reducer.py** müssen sich auf dem Stammknoten des Clusters befinden, bevor sie ausgeführt werden können. Am einfachsten können sie mit **scp** (**pscp**, wenn Sie einen Windows-Client verwenden) hochgeladen werden.
 
-Verwenden Sie den folgenden Befehl auf dem Client im gleichen Verzeichnis, in dem sich auch **mapper.py** und **reducer.py** befinden. Ersetzen Sie **Benutzernamen** durch einen SSH-Benutzer und den **Clusternamen** durch den Namen des Clusters.
+Verwenden Sie den folgenden Befehl auf dem Client im gleichen Verzeichnis, in dem sich auch **mapper.py** und **reducer.py** befinden. Ersetzen Sie den **Benutzernamen** durch einen SSH-Benutzer und den **Clusternamen** durch den Namen des Clusters.
 
-	scp mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:
+    scp mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:
 
 Dadurch werden die Dateien aus dem lokalen System auf den Stammknoten kopiert.
 
 > [AZURE.NOTE] Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` und den Pfad zum privaten Schlüssel, z. B. `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`, angeben.
 
-##Ausführen von MapReduce
+##<a name="run-mapreduce"></a>Ausführen von MapReduce
 
 1. Herstellen einer Verbindung zum Cluster mithilfe von SSH:
 
-		ssh username@clustername-ssh.azurehdinsight.net
+        ssh username@clustername-ssh.azurehdinsight.net
 
-	> [AZURE.NOTE] Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` und den Pfad zum privaten Schlüssel, z. B. `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`, angeben.
+    > [AZURE.NOTE] Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` und den Pfad zum privaten Schlüssel, z. B. `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`, angeben.
 
 2. (Optional) Falls Sie einen Text-Editor verwendet haben, der beim Erstellen der Dateien „mapper.py“ und „reducer.py“ CRLF als Zeilenende verwendet, oder nicht wissen, welches Zeilenende Ihr Editor einsetzt, konvertieren Sie CRLF-Vorkommen in „mapper.py“ und „reducer.py“ mithilfe der folgenden Befehle in LF.
 
@@ -163,48 +164,48 @@ Dadurch werden die Dateien aus dem lokalen System auf den Stammknoten kopiert.
 
 2. Verwenden Sie zum Starten des MapReduce-Auftrags den folgenden Befehl.
 
-		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasbs:///example/data/gutenberg/davinci.txt -output wasbs:///example/wordcountout
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasbs:///example/data/gutenberg/davinci.txt -output wasbs:///example/wordcountout
 
-	Dieser Befehl besteht aus den folgenden Komponenten:
+    Dieser Befehl besteht aus den folgenden Komponenten:
 
-	* **hadoop-streaming.jar**: Wird verwendet, wenn Streaming-MapReduce-Vorgänge ausgeführt werden. Es verbindet Hadoop mit dem von Ihnen bereitgestellten externen MapReduce-Code.
+    * **hadoop-streaming.jar**: Wird verwendet, wenn Streaming-MapReduce-Vorgänge ausgeführt werden. Es verbindet Hadoop mit dem von Ihnen bereitgestellten externen MapReduce-Code.
 
-	* **-files**: Teilt Hadoop mit, dass die angegebenen Dateien für diesen MapReduce-Auftrag erforderlich sind und auf alle Arbeitsknoten kopiert werden müssen
+    * **-files**: Teilt Hadoop mit, dass die angegebenen Dateien für diesen MapReduce-Auftrag erforderlich sind und auf alle Arbeitsknoten kopiert werden müssen
 
-	* **-mapper**: Teilt Hadoop mit, welche Datei als Mapper verwendet werden soll.
+    * **-mapper**: Teilt Hadoop mit, welche Datei als Mapper verwendet werden soll.
 
-	* **-reducer**: Teilt Hadoop mit, welche Datei als Reducer verwendet werden soll.
+    * **-reducer**: Teilt Hadoop mit, welche Datei als Reducer verwendet werden soll.
 
-	* **-input**: Die Eingabedatei, deren Wörter gezählt werden sollen.
+    * **-input**: Die Eingabedatei, deren Wörter gezählt werden sollen.
 
-	* **-output**: Das Verzeichnis, in das die Ausgabe geschrieben wird.
+    * **-output**: Das Verzeichnis, in das die Ausgabe geschrieben wird.
 
-		> [AZURE.NOTE] Dieses Verzeichnis wird durch den Auftrag erstellt.
+        > [AZURE.NOTE] Dieses Verzeichnis wird durch den Auftrag erstellt.
 
-Beim Start des Auftrags sollten eine Reihe von **INFO**-Anweisungen angezeigt werden. Abschließend werden die Vorgänge **map** und **reduce** als Prozentsätze angezeigt.
+Beim Start des Auftrags sollte eine Reihe von **INFO**-Anweisungen angezeigt werden. Abschließend werden die Vorgänge **map** und **reduce** als Prozentsätze angezeigt.
 
-	15/02/05 19:01:04 INFO mapreduce.Job:  map 0% reduce 0%
-	15/02/05 19:01:16 INFO mapreduce.Job:  map 100% reduce 0%
-	15/02/05 19:01:27 INFO mapreduce.Job:  map 100% reduce 100%
+    15/02/05 19:01:04 INFO mapreduce.Job:  map 0% reduce 0%
+    15/02/05 19:01:16 INFO mapreduce.Job:  map 100% reduce 0%
+    15/02/05 19:01:27 INFO mapreduce.Job:  map 100% reduce 100%
 
 Zuletzt erhalten Sie Statusinformationen zum Auftrag, wenn dieser abgeschlossen ist.
 
-##Anzeigen der Ausgabe
+##<a name="view-the-output"></a>Anzeigen der Ausgabe
 
 Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Anzeigen der Ausgabe:
 
-	hdfs dfs -text /example/wordcountout/part-00000
+    hdfs dfs -text /example/wordcountout/part-00000
 
 Dabei sollte eine Liste angezeigt werden, die die Wörter und die Häufigkeit ihres Auftretens enthält. Nachfolgend sehen Sie ein Beispiel für die Ausgabedaten:
 
-	wrenching       1
-	wretched        6
-	wriggling       1
-	wrinkled,       1
-	wrinkles        2
-	wrinkling       2
+    wrenching       1
+    wretched        6
+    wriggling       1
+    wrinkled,       1
+    wrinkles        2
+    wrinkling       2
 
-##Nächste Schritte
+##<a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie erfahren haben, wie Sie Streaming-MapReduce-Aufträge mit HDInsight verwenden, können Sie mithilfe der nachfolgenden Links andere Möglichkeiten für die Arbeit mit Azure HDInsight untersuchen.
 
@@ -212,4 +213,8 @@ Nachdem Sie erfahren haben, wie Sie Streaming-MapReduce-Aufträge mit HDInsight 
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

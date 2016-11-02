@@ -16,7 +16,8 @@
    ms.date="09/21/2016"
    ms.author="lakshmir;barbkess;sonyama"/>
 
-# Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Portal)
+
+# <a name="restore-an-azure-sql-data-warehouse-(portal)"></a>Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Portal)
 
 > [AZURE.SELECTOR]
 - [Übersicht][]
@@ -26,16 +27,16 @@
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz über das Azure-Portal wiederherstellen.
 
-## Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
-**Überprüfen Sie Ihre DTU-Kapazität.** Jedes SQL Data Warehouse wird von einer SQL Server-Instanz gehostet (z.B. myserver.database.windows.net), die über ein Standard-DTU-Kontingent verfügt. Bevor Sie ein SQL Data Warehouse wiederherstellen können, überprüfen Sie, ob Ihre SQL Server-Instanz über genügend verbleibendes DTU-Kontingent für die Datenbank-Wiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse][].
+**Überprüfen Sie Ihre DTU-Kapazität.** Jedes SQL Data Warehouse wird von einer SQL Server-Instanz gehostet (z.B. myserver.database.windows.net), die über ein Standard-DTU-Kontingent verfügt.  Bevor Sie ein SQL Data Warehouse wiederherstellen können, überprüfen Sie, ob Ihre SQL Server-Instanz über genügend verbleibendes DTU-Kontingent für die Datenbank-Wiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung][].
 
 
-## Wiederherstellen einer aktiven oder angehaltenen Datenbank
+## <a name="restore-an-active-or-paused-database"></a>Wiederherstellen einer aktiven oder angehaltenen Datenbank
 
 So stellen Sie eine Datenbank wieder her:
 
-1. Melden Sie sich beim [Azure-Portal][] an.
+1. Melden Sie sich beim [Azure-Portal][]
 2. Wählen Sie auf der linken Bildschirmseite **Durchsuchen** und dann **SQL Server** aus.
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
@@ -47,27 +48,27 @@ So stellen Sie eine Datenbank wieder her:
 4. Suchen Sie die SQL Data Warehouse-Instanz, mit der Sie die Wiederherstellung durchführen möchten, und wählen Sie sie aus.
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
-5. Klicken Sie oben auf dem Data Warehouse-Blatt auf **Wiederherstellen**.
+5. Klicken Sie oben auf dem Data Warehouse-Blatt auf **Wiederherstellen**
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-select-restore-from-active.png)
 
-6. Geben Sie einen neuen **Datenbanknamen** an.
-7. Wählen Sie den letzten **Wiederherstellungspunkt** aus.
-    1. Stellen Sie sicher, dass Sie den letzten Wiederherstellungspunkt auswählen. Da Wiederherstellungspunkte in UTC angezeigt werden, ist manchmal die gezeigte Standardoption nicht der letzte Wiederherstellungspunkt.
+6. Geben Sie einen neuen **Datenbanknamen**
+7. Wählen Sie den letzten **Wiederherstellungspunkt**
+    1. Stellen Sie sicher, dass Sie den letzten Wiederherstellungspunkt auswählen.  Da Wiederherstellungspunkte in UTC angezeigt werden, ist manchmal die gezeigte Standardoption nicht der letzte Wiederherstellungspunkt.
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-restore-blade-from-active.png)
 
-8. Klicken Sie auf **OK**.
-9. Der Datenbank-Wiederherstellungsvorgang wird gestartet und kann mithilfe von **BENACHRICHTIGUNGEN** überwacht werden.
+8. Klicken Sie auf **OK**
+9. Der Datenbank-Wiederherstellungsvorgang wird gestartet und kann mithilfe von **BENACHRICHTIGUNGEN**
 
 >[AZURE.NOTE] Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung][].
 
 
-## Wiederherstellen einer gelöschten Datenbank
+## <a name="restore-a-deleted-database"></a>Wiederherstellen einer gelöschten Datenbank
 
 So stellen Sie eine gelöschte Datenbank wieder her
 
-1. Melden Sie sich beim [Azure-Portal][] an.
+1. Melden Sie sich beim [Azure-Portal][]
 2. Wählen Sie auf der linken Bildschirmseite **Durchsuchen** und dann **SQL Server** aus.
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
@@ -77,7 +78,7 @@ So stellen Sie eine gelöschte Datenbank wieder her
     ![](./media/sql-data-warehouse-restore-database-portal/02-select-server.png)
 
 4. Führen Sie auf dem Serverblatt einen Bildlauf nach unten zum Abschnitt mit den Vorgängen aus.
-5. Klicken Sie auf die Kachel **Gelöschte Datenbanken**.
+5. Klicken Sie auf die Kachel **Gelöschte Datenbanken** .
     
     ![](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dws.png)
 
@@ -85,16 +86,16 @@ So stellen Sie eine gelöschte Datenbank wieder her
     
     ![](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dw.png)
 
-7. Geben Sie einen neuen **Datenbanknamen** an.
+7. Geben Sie einen neuen **Datenbanknamen**
     
     ![](./media/sql-data-warehouse-restore-database-portal/02-restore-blade-from-deleted.png)
     
-8. Klicken Sie auf **OK**.
-9. Der Datenbank-Wiederherstellungsvorgang wird gestartet und kann mithilfe von **BENACHRICHTIGUNGEN** überwacht werden.
+8. Klicken Sie auf **OK**
+9. Der Datenbank-Wiederherstellungsvorgang wird gestartet und kann mithilfe von **BENACHRICHTIGUNGEN**
 
->[AZURE.NOTE] Informationen zum Konfigurieren der Datenbank nach Abschluss der Wiederherstellung finden Sie unter [Konfigurieren der Datenbank nach der Wiederherstellung][].
+>[AZURE.NOTE] Informationen zum Konfigurieren der Datenbank nach Abschluss der Wiederherstellung finden Sie unter [Konfigurieren der Datenbank nach der Wiederherstellung][]. 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-Editionen finden Sie in der [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität][].
 
 <!--Image references-->
@@ -106,7 +107,7 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
 [REST]: ./sql-data-warehouse-restore-database-rest-api.md
 [Konfigurieren der Datenbank nach der Wiederherstellung]: ./sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
+[Anfordern einer DTU-Kontingentänderung]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 
 <!--MSDN references-->
 
@@ -115,4 +116,8 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 <!--Other Web references-->
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

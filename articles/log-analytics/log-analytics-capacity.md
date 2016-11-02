@@ -1,29 +1,30 @@
 <properties
-	pageTitle="Kapazitätsverwaltungslösung in Log Analytics | Microsoft Azure"
-	description="Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen dabei, die Kapazität der von System Center Virtual Machine Manager verwalteten Hyper-V-Server besser zu verstehen."
-	services="log-analytics"
-	documentationCenter=""
-	authors="bandersmsft"
-	manager="jwhit"
-	editor=""/>
+    pageTitle="Kapazitätsverwaltungslösung in Log Analytics | Microsoft Azure"
+    description="Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen dabei, die Kapazität der Hyper-V-Server, die vom System Center Virtual Machine Manager verwaltet werden, besser zu verstehen."
+    services="log-analytics"
+    documentationCenter=""
+    authors="bandersmsft"
+    manager="jwhit"
+    editor=""/>
 
 <tags
-	ms.service="log-analytics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/11/2016"
-	ms.author="banders"/>
+    ms.service="log-analytics"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/10/2016"
+    ms.author="banders"/>
 
-# Kapazitätsverwaltungslösung in Log Analytics
+
+# <a name="capacity-management-solution-in-log-analytics"></a>Kapazitätsverwaltungslösung in Log Analytics
 
 
 Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen dabei, die Kapazität der Hyper-V-Server, die von System Center Virtual Machine Manager verwaltet werden, besser zu verstehen. Diese Lösung erfordert System Center Operations Manager und System Center Virtual Machine Manager. Die Kapazitätsplanung ist nicht verfügbar, wenn Sie nur direkt verbundene Agents verwenden. Sie installieren die Lösung, um den Operations Manager-Agent zu aktualisieren. Die Lösung liest die Leistungsindikatoren auf dem überwachten Server und sendet Nutzungsdaten zur Verarbeitung an den OMS-Dienst in der Cloud. Auf die Nutzungsdaten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mit der Zeit entstehen Verwendungsmuster, und die Kapazität wird anhand des aktuellen Verbrauchs prognostiziert.
 
 Beispielsweise kann anhand einer Prognose ermittelt werden, wann zusätzliche Prozessorkerne oder zusätzlicher Arbeitsspeicher für einen einzelnen Server benötigt wird. In diesem Beispiel kann die Prognose darauf hinweisen, dass der Server in 30 Tagen zusätzlichen Arbeitsspeicher benötigen wird. Damit können Sie ein Speicherupgrade für das nächste Wartungsfenster des Servers planen, das zum Beispiel einmal alle zwei Wochen ansteht.
 
->[AZURE.NOTE] Die Kapazitätsverwaltungslösung kann keinen Arbeitsbereichen hinzugefügt werden. Kunden, die die Kapazitätsverwaltungslösung installiert haben, können die Lösung weiterhin verwenden.
+>[AZURE.NOTE] Die Kapazitätsverwaltungslösung kann keinen Arbeitsbereichen hinzugefügt werden. Kunden, die die Kapazitätsverwaltungslösung installiert haben, können die Lösung weiterhin verwenden.  
 
 Die Kapazitätsplanungslösung wird zurzeit aktualisiert, um die folgenden Kundenanforderungen zu erfüllen:
 
@@ -41,26 +42,35 @@ Vorteile der neuen Kapazitätslösung:
 - Einblicke in die Nutzung auf VM-Ebene
 
 
-## Installieren und Konfigurieren der Lösung
+## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 - Operations Manager ist für die Kapazitätsverwaltungslösung erforderlich.
 - Virtual Machine Manager ist für die Kapazitätsverwaltungslösung erforderlich.
 - Operations Manager-Verbindung mit Virtual Machine Manager (VMM) ist erforderlich. Zusätzliche Informationen zum Verbinden der Systeme finden Sie unter [Verbinden von VMM mit Operations Manager](http://technet.microsoft.com/library/hh882396.aspx).
 - Operations Manager muss mit Log Analytics verbunden sein.
-- Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Verfahrens Ihrem OMS-Arbeitsbereich die Kapazitätsverwaltungslösung hinzu. Es ist keine weitere Konfiguration erforderlich.
+- Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Verfahrens Ihrem OMS-Arbeitsbereich die Kapazitätsverwaltungslösung hinzu.  Es ist keine weitere Konfiguration erforderlich.
 
 
-## Details zur Datensammlung für die Kapazitätsverwaltung
+## <a name="capacity-management-data-collection-details"></a>Details zur Datensammlung für die Kapazitätsverwaltung
+
+Die Kapazitätsverwaltung sammelt Leistungsdaten, Metadaten und Statusdaten mit den Agents, die Sie aktiviert haben.
 
 Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, wie Daten für die Kapazitätsverwaltung erfasst werden.
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 |---|---|---|---|---|---|---|
-|Windows|![Nein](./media/log-analytics-capacity/oms-bullet-red.png)|![Ja](./media/log-analytics-capacity/oms-bullet-green.png)|![Nein](./media/log-analytics-capacity/oms-bullet-red.png)| ![Ja](./media/log-analytics-capacity/oms-bullet-green.png)|![Ja](./media/log-analytics-capacity/oms-bullet-green.png)| Stündlich|
+|Windows|![Nein](./media/log-analytics-capacity/oms-bullet-red.png)|![Ja](./media/log-analytics-capacity/oms-bullet-green.png)|![Nein](./media/log-analytics-capacity/oms-bullet-red.png)|            ![Ja](./media/log-analytics-capacity/oms-bullet-green.png)|![Ja](./media/log-analytics-capacity/oms-bullet-green.png)| Stündlich|
 
+Die folgende Tabelle zeigt Beispiele für Datentypen, die von der Kapazitätsverwaltung erfasst werden:
 
-## Kapazitätsverwaltungsseite
+|**Datentyp**|**Felder**|
+|---|---|
+|Metadaten|BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime|
+|Leistung|ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded|
+|Zustand|StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified|
+
+## <a name="capacity-management-page"></a>Kapazitätsverwaltungsseite
 
 
  Nach der Installation der Kapazitätsverwaltungslösung können Sie die Kapazität der überwachten Server in OMS über die Kachel **Kapazitätsplanung** auf der Seite **Übersicht** anzeigen.
@@ -72,16 +82,16 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, w
 - *Virtual machine count*: Zeigt die Anzahl der Tage, die für die Kapazität virtueller Computer verbleiben.
 - *Compute*: Zeigt Prozessorkerne und verfügbaren Speicher.
 - *Storage*: Zeigt den Speicherplatz und die durchschnittliche Latenz der Datenträger.
-- *Search:* Daten-Explorer, in dem Sie Daten im OMS-System suchen können.
+- *Search:*Daten-Explorer, in dem Sie Daten im OMS-System suchen können.
 
 ![Abbildung des Dashboards "Capacity Management"](./media/log-analytics-capacity/oms-capacity02.png)
 
 
-### So zeigen Sie eine Kapazitätsseite an
+### <a name="to-view-a-capacity-page"></a>So zeigen Sie eine Kapazitätsseite an
 
-- Klicken Sie auf der Seite **Overview** auf **Capacity Management** und dann auf **Compute** oder **Storage**.
+- Klicken Sie auf der Seite **Übersicht** auf **Kapazitätsverwaltung** und dann auf **Compute** oder **Storage**.
 
-## Seite "Compute"
+## <a name="compute-page"></a>Seite "Compute"
 
 Im Dashboard **Compute** in Microsoft Azure OMS können Sie Kapazitätsdaten zur Auslastung, projizierte Tage von Kapazität und die Effizienz Ihrer Infrastruktur anzeigen. Im Bereich **Utilization** können Sie die CPU-Kern- und Arbeitsspeicherauslastung der Hosts der virtuellen Computer anzeigen. Mithilfe des Projektionstools können Sie schätzen, wie viel Kapazität in einem bestimmten Zeitraum verfügbar sein wird. Im Bereich **Efficiency** können Sie feststellen, wie effizient die Hosts Ihrer virtuellen Computer sind. Sie können Informationen zu verknüpften Elementen anzeigen, indem Sie darauf klicken.
 
@@ -124,16 +134,16 @@ Mithilfe des Projektionstools können Sie historische Trends für die Ressourcen
 - *Idle Host*: Verwendung von weniger als 10 % der CPU-Leistung und 10 % des Arbeitsspeichers im angegebenen Zeitraum.
 - *Overutilized Host*: Verwendung von mehr als 90 % der CPU-Leistung und 90 % des Arbeitsspeichers im angegebenen Zeitraum.
 
-### Arbeiten mit Elementen auf der Seite "Compute"
+### <a name="to-work-with-items-on-the-compute-page"></a>Arbeiten mit Elementen auf der Seite "Compute"
 
-1. Im Dashboard **Compute** können Sie im Bereich **Utilization** die Kapazitätsinformationen zu den verwendeten CPU-Kernen und zum verwendeten Arbeitsspeicher anzeigen.
+1. Im Dashboard **Compute** können Sie im Bereich **Nutzung** die Kapazitätsinformationen zu den verwendeten CPU-Kernen und zum verwendeten Arbeitsspeicher anzeigen.
 2. Klicken Sie auf ein Element, um es auf der Seite **Search** zu öffnen und detaillierte Informationen dazu anzuzeigen.
 3. Verschieben Sie im **Projektionstool** den Datumsschieberegler, um eine Projektion für die Kapazität anzuzeigen, die an dem von Ihnen gewählten Datum verwendet werden wird.
 4. Im Bereich **Efficiency** können Sie Kapazitätseffizienzinformationen zu virtuellen Computern und Hosts für virtuelle Computer anzeigen.
 
-## Seite "Direct Attached Storage"
+## <a name="direct-attached-storage-page"></a>Seite "Direct Attached Storage"
 
-Mithilfe des Dashboards **Direct Attached Storage** (Direkt angeschlossener Speicher) in OMS können Sie Kapazitätsinformationen zur Speicherplatzauslastung, Datenträgerleistung und zu den projizierten Tagen der Datenträgerkapazität anzeigen. Im Bereich **Utilization** können Sie die Speicherplatzbelegung der Hosts Ihrer virtuellen Computer anzeigen. Im Bereich **Disk Performance** können Sie den Datenträgerdurchsatz und die Latenz der Hosts Ihrer virtuellen Computer anzeigen. Sie können außerdem mit dem Projektionstool abschätzen, wie viel Kapazität für einen bestimmten Zeitraum voraussichtlich verfügbar sein wird. Sie können Informationen zu verknüpften Elementen anzeigen, indem Sie darauf klicken.
+Mithilfe des Dashboards **Direct Attached Storage** in OMS können Sie Kapazitätsinformationen zur Speicherplatzauslastung, Datenträgerleistung und zu den projizierten Tagen der Datenträgerkapazität anzeigen. Im Bereich **Utilization** können Sie die Speicherplatzbelegung der Hosts Ihrer virtuellen Computer anzeigen. Im Bereich **Disk Performance** können Sie den Datenträgerdurchsatz und die Latenz der Hosts Ihrer virtuellen Computer anzeigen. Sie können außerdem mit dem Projektionstool abschätzen, wie viel Kapazität für einen bestimmten Zeitraum voraussichtlich verfügbar sein wird. Sie können Informationen zu verknüpften Elementen anzeigen, indem Sie darauf klicken.
 
 Sie können aus diesen Kapazitätsinformationen eine Excel-Arbeitsmappe für die folgenden Kategorien generieren:
 
@@ -159,16 +169,20 @@ Mithilfe von OMS können Sie den Verlauf des Nutzungstrends Ihres Speicherplatze
 
 Mithilfe des Projektionstools können Sie historische Trends für die Speicherplatzauslastung anzeigen. Die Projektionsfunktion ermöglicht Ihnen außerdem die Vorhersage, wann nicht mehr genügend Speicherplatz vorhanden sein wird. Dies hilft Ihnen bei der Planung von ausreichender Kapazität, sodass Sie wissen, wann Sie zusätzliche Speicherkapazität erwerben müssen.
 
-### Arbeiten mit Elementen auf der Seite "Direct Attached Storage"
+### <a name="to-work-with-items-on-the-direct-attached-storage-page"></a>Arbeiten mit Elementen auf der Seite "Direct Attached Storage"
 
-1. Im Dashboard **Direct Attached Storage** können Sie im Bereich **Utilization** die Informationen zur Datenträgerauslastung anzeigen.
+1. Im Dashboard **Direct Attached Storage** können Sie im Bereich **Nutzung** Informationen zur Datenträgerauslastung anzeigen.
 2. Klicken Sie auf ein verknüpftes Element, um es auf der Seite **Search** zu öffnen und detaillierte Informationen dazu anzuzeigen.
 3. lm Bereich **Disk Performance** können Sie den Datenträgerdurchsatz und Informationen zur Latenz anzeigen.
-4. Verschieben Sie im **Projektionstool** den Datumsschieberegler, um eine Projektion für die Kapazität anzuzeigen, die an dem von Ihnen gewählten Datum verwendet werden wird.
+4. Verschieben Sie im **Projektionstool**den Datumsschieberegler, um eine Projektion für die Kapazität anzuzeigen, die an dem von Ihnen gewählten Datum verwendet werden wird.
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-- Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md), um ausführliche Daten zur Kapazitätsverwaltung anzuzeigen.
+- Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md) , um ausführliche Daten zur Kapazitätsverwaltung anzuzeigen.
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

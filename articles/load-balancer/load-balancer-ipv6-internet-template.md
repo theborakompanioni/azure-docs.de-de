@@ -7,6 +7,7 @@
     manager="carmonm"
     editor=""
     tags="azure-resource-manager"
+    keywords="IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT"
 />
 <tags
     ms.service="load-balancer"
@@ -18,16 +19,17 @@
     ms.author="sewhee"
 />
 
-# Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
+
+# <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 
 > [AZURE.SELECTOR]
-- [PowerShell](load-balancer-ipv6-internet-ps.md)
-- [Azure-Befehlszeilenschnittstelle](load-balancer-ipv6-internet-cli.md)
-- [Vorlage](load-balancer-ipv6-internet-template.md)
+- [PowerShell](./load-balancer-ipv6-internet-ps.md)
+- [Azure-Befehlszeilenschnittstelle](./load-balancer-ipv6-internet-cli.md)
+- [Vorlage](./load-balancer-ipv6-internet-template.md)
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für hohe Verfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
-## Beispielszenario für die Bereitstellung
+## <a name="example-deployment-scenario"></a>Beispielszenario für die Bereitstellung
 
 Das folgende Diagramm veranschaulicht die Lösung mit Lastenausgleich, die mithilfe der in diesem Artikel beschriebenen Beispielvorlage bereitgestellt wird.
 
@@ -41,9 +43,9 @@ In diesem Szenario erstellen Sie die folgenden Azure-Ressourcen:
 - eine Verfügbarkeitsgruppe, die die zwei virtuellen Computer enthält
 - zwei virtuelle Computer (VMs)
 
-## Bereitstellen der Vorlage mit dem Azure-Portal
+## <a name="deploying-the-template-using-the-azure-portal"></a>Bereitstellen der Vorlage mit dem Azure-Portal
 
-In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) veröffentlicht wurde. Sie können die Vorlage aus dem Katalog herunterladen oder die Bereitstellung in Azure direkt über den Katalog ausführen. In diesem Artikel wird davon ausgegangen, dass Sie die Vorlage auf den lokalen Computer heruntergeladen haben.
+In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) veröffentlicht wurde. Sie können die Vorlage aus dem Katalog herunterladen oder die Bereitstellung in Azure direkt über den Katalog ausführen. In diesem Artikel wird davon ausgegangen, dass Sie die Vorlage auf den lokalen Computer heruntergeladen haben.
 
 1. Öffnen Sie das Azure-Portal, und melden Sie sich mit einem Konto an, das über Berechtigungen zum Erstellen von virtuellen Computern und Netzwerkressourcen in einem Azure-Abonnement verfügt. Wenn Sie keine vorhandenen Ressourcen verwenden, benötigt das Konto darüber hinaus die Berechtigung zum Erstellen einer Ressourcengruppe und eines Speicherkontos.
 
@@ -65,7 +67,7 @@ In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnell
 
     ![LB-IPv6-Portal – Schritt 5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Klicken Sie auf „Parameter bearbeiten“. Geben Sie auf dem Blatt „Parameter“ die Werte gemäß der Anleitung im Abschnitt mit Vorlagenparametern an, und klicken Sie auf „Speichern“, um das Blatt „Parameter“ zu schließen. Wählen Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ Ihr Abonnement und eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine. Wenn Sie eine Ressourcengruppe erstellen, wählen Sie einen Ort für die Ressourcengruppe aus. Klicken Sie anschließend auf **Rechtliche Bedingungen**, klicken Sie dann für die rechtlichen Bedingungen auf **Kaufen**. Azure beginnt mit der Bereitstellung der Ressourcen. Es dauert einige Minuten, alle Ressourcen bereitzustellen.
+6. Klicken Sie auf „Parameter bearbeiten“. Geben Sie auf dem Blatt „Parameter“ die Werte gemäß der Anleitung im Abschnitt mit Vorlagenparametern an, und klicken Sie auf „Speichern“, um das Blatt „Parameter“ zu schließen. Wählen Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ Ihr Abonnement und eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine. Wenn Sie eine Ressourcengruppe erstellen, wählen Sie einen Ort für die Ressourcengruppe aus. Klicken Sie anschließend auf **Rechtliche Bedingungen** und dann für die rechtlichen Bedingungen auf **Kaufen**. Azure beginnt mit der Bereitstellung der Ressourcen. Es dauert einige Minuten, alle Ressourcen bereitzustellen.
 
     ![LB-IPv6-Portal – Schritt 6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
@@ -85,7 +87,7 @@ In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnell
 
     ![LB-IPv6-Portal – Schritt 9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
-## Überprüfen der Konnektivität
+## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
 
 Wenn die Vorlage erfolgreich bereitgestellt wurde, können Sie die Konnektivität überprüfen, indem Sie die folgenden Aufgaben ausführen:
 
@@ -97,7 +99,7 @@ Wenn die Vorlage erfolgreich bereitgestellt wurde, können Sie die Konnektivitä
 >[AZURE.NOTE]
 ICMP ist für IPv4 und IPv6 im Azure-Netzwerk blockiert. Folglich schlagen ICMP-Tools wie „ping“ immer fehl. Verwenden Sie zum Testen der Konnektivität eine TCP-Alternative wie „TCPing“ oder das PowerShell-Cmdlet „Test-NetConnection“. Beachten Sie, dass die in der Abbildung dargestellten IP-Adressen Beispiele für Werte sind, die Ihnen möglicherweise angezeigt werden. Da die IPv6-Adressen dynamisch zugewiesen werden, sind die Adressen, die Sie erhalten, anders und können je nach Region variieren. Darüber hinaus ist es üblich, dass die öffentlichen IPv6-Adressen des Load Balancers mit einem anderen Präfix beginnen als die privaten IPv6-Adressen im Back-End-Pool.
 
-## Vorlagenparameter und -variablen
+## <a name="template-parameters-and-variables"></a>Vorlagenparameter und -variablen
 
 Eine Azure Resource Manager-Vorlage enthält mehrere Variablen und Parameter, die Sie an Ihre Bedürfnisse anpassen können. Variablen werden für feste Werte verwendet, die ein Benutzer nicht ändern soll. Parameter werden für Werte verwendet, die ein Benutzer angeben soll, wenn die Vorlage bereitgestellt wird. Die Beispielvorlage ist für das in diesem Artikel beschriebene Szenario konfiguriert. Sie können sie an die Bedürfnisse Ihrer Umgebung anpassen.
 
@@ -128,4 +130,8 @@ Die in diesem Artikel verwendete Beispielvorlage enthält die folgenden Variable
 
 Die restlichen Variablen in der Vorlage enthalten abgeleitete Werte, die zugewiesen werden, wenn Azure die Ressourcen erstellt. Ändern Sie diese Variablen nicht.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

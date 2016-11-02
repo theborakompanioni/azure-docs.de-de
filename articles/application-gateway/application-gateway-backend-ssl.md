@@ -9,15 +9,16 @@
 <tags
    ms.service="application-gateway"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="09/26/2016"
    ms.author="amsriva"/>
 
-# Aktivieren der SSL-Richtlinie und von End-to-End-SSL in Application Gateway
 
-## Übersicht
+# <a name="enabling-ssl-policy-and-end-to-end-ssl-on-application-gateway"></a>Aktivieren der SSL-Richtlinie und von End-to-End-SSL in Application Gateway
+
+## <a name="overview"></a>Übersicht
 
 Application Gateway unterstützt die SSL-Beendigung am Gateway, wonach der Datenverkehr in der Regel unverschlüsselt zu den Back-End-Servern gelangt. So können Webserver vom kostspieligen Verschlüsselungs-/Entschlüsselungsaufwand befreit werden. Für einige Kunden ist die unverschlüsselte Kommunikation mit den Back-End-Servern jedoch keine akzeptable Option. Der Grund hierfür können Sicherheits-/Kompatibilitätsanforderungen sein, oder die Anwendung akzeptiert möglicherweise nur sichere Verbindungen. Für solche Anwendungen unterstützt Application Gateway jetzt die End-to-End-SSL-Verschlüsselung.
 
@@ -27,22 +28,26 @@ Bei der Konfiguration mit dem End-to-End-SSL-Kommunikationsmodus beendet Applica
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
-In diesem Beispiel können Anforderungen für https://contoso.com über HTTP an ContosoServerPool geroutet werden, und https://fabrikam.com wird mit End-to-End-SSL über HTTPS an FabrikamServerPool geroutet.
+In diesem Beispiel können Anforderungen für „https://contoso.com“ über HTTP an „ContosoServerPool“ geroutet werden, und „https://fabrikam.com“ wird mit End-to-End-SSL über HTTPS an „FabrikamServerPool“ geroutet.
 
-## End-to-End-SSL und Whitelists von Zertifikaten
+## <a name="end-to-end-ssl-and-white-listing-of-certificates"></a>End-to-End-SSL und Whitelists von Zertifikaten
 
 Application Gateway kommuniziert nur mit bekannten Back-End-Instanzen, deren Zertifikat sich auf der Whitelist des Anwendungsgateways befindet. Um die Whitelistfunktion für Zertifikate zu aktivieren, müssen Sie den öffentlichen Schlüssel der Back-End-Serverzertifikate auf das Anwendungsgateway hochladen. Anschließend sind nur Verbindungen mit bekannten und auf der Whitelist befindlichen Back-Ends zulässig, und die übrigen führen zu einem Gatewayfehler. Selbstsignierte Zertifikate dienen nur zu Testzwecken und werden für Produktionsworkloads nicht empfohlen. Solche Zertifikate müssen sich ebenfalls, wie oben beschrieben, auf der Whitelist des Anwendungsgateways befinden, damit sie verwendet werden können.
 
-## Application Gateway-SSL-Richtlinie
+## <a name="application-gateway-ssl-policy"></a>Application Gateway-SSL-Richtlinie
 
 Application Gateway unterstützt auch vom Benutzer konfigurierbare SSL-Aushandlungsrichtlinien, die Kunden eine detailliertere Steuerung der SSL-Verbindungen auf dem Anwendungsgateway ermöglichen.
 
 1. SSL 2.0 und 3.0 sind für alle Anwendungsgateways zwangsweise deaktiviert. Sie sind in keiner Weise konfigurierbar.
-2. Die SSL-Richtliniendefinition gibt Ihnen die Möglichkeit, die folgenden drei Protokolle beliebig zu deaktivieren: TLSv1_0, TLSv1_1, TLSv1\_2.
-3. Wenn keine SSL-Richtlinie definiert ist, sind alle drei (TLSv1_0, TLSv1_1, TLSv1\_2) aktiviert.
+2. Die SSL-Richtliniendefinition gibt Ihnen die Möglichkeit, die folgenden drei Protokolle beliebig zu deaktivieren: TLSv1_0, TLSv1_1, TLSv1_2.
+3. Wenn keine SSL-Richtlinie definiert ist, sind alle drei (TLSv1_0, TLSv1_1, TLSv1_2) aktiviert.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich über End-to-End-SSL und SSL-Richtlinien informiert haben, finden Sie weitere Informationen zum Erstellen eines Anwendungsgateways mit der Möglichkeit zum Senden von verschlüsseltem Datenverkehr an das Back-End unter [Aktivieren von End-to-End-SSL auf Application Gateway](application-gateway-end-to-end-ssl-powershell.md).
+Nachdem Sie sich über End-to-End-SSL und SSL-Richtlinien informiert haben, finden Sie weitere Informationen zum Erstellen eines Anwendungsgateways mit der Möglichkeit zum Senden von verschlüsseltem Datenverkehr an das Back-End unter [Aktivieren von End-to-End-SSL auf Application Gateway](application-gateway-end-to-end-ssl-powershell.md) .
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

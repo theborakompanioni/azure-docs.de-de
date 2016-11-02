@@ -1,53 +1,54 @@
 <properties
-	pageTitle="Verwenden von Azure-Speicher in Windows Store-Apps | Microsoft Azure"
-	description="Erfahren Sie, wie Sie eine Windows Store-App erstellen, die Blob, Queue, Table oder File Storage von Azure verwendet."
-	services="storage"
-	documentationCenter=""
-	authors="tamram"
-	manager="carmonm"
-	editor="tysonn"/>
+    pageTitle="Verwenden von Azure-Speicher in Windows Store-Apps | Microsoft Azure"
+    description="Erfahren Sie, wie Sie eine Windows Store-App erstellen, die Blob, Queue, Table oder File Storage von Azure verwendet."
+    services="storage"
+    documentationCenter=""
+    authors="tamram"
+    manager="carmonm"
+    editor="tysonn"/>
 
 <tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="mobile-windows-store"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="09/07/2016"
-	ms.author="micurd;tamram"/>
-	
-# Verwenden von Azure Storage in Windows Store-Apps
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="mobile-windows-store"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="10/18/2016"
+    ms.author="tamram"/>
+    
 
-## Übersicht
+# <a name="how-to-use-azure-storage-in-windows-store-apps"></a>Verwenden von Azure Storage in Windows Store-Apps
+
+## <a name="overview"></a>Übersicht
 
 Dieser Leitfaden zeigt die ersten Schritte der Entwicklung einer Windows Store-App, die Azure Storage nutzt.
 
-## Herunterladen erforderlicher Tools
+## <a name="download-required-tools"></a>Herunterladen erforderlicher Tools
 
-- [Visual Studio](https://www.visualstudio.com/de-DE/visual-studio-homepage-vs.aspx) vereinfacht das Erstellen, Debuggen, Lokalisieren, Packen und Bereitstellen von Windows Store-Apps. Visual Studio 2012 oder höher wird vorausgesetzt.
+- [Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) vereinfacht das Erstellen, Debuggen, Lokalisieren, Packen und Bereitstellen von Windows Store-Apps. Visual Studio 2012 oder höher wird vorausgesetzt.
 - Die [Azure Storage-Clientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage) stellt eine Windows-Runtime-Klassenbibliothek für die Arbeit mit Azure Storage bereit.
-- Die [WCF Data Services-Tools für Windows Store-Apps](http://www.microsoft.com/download/details.aspx?id=30714) erweitern die Nutzung von „Dienstverweis hinzufügen“ durch clientseitige OData-Unterstützung für Windows Store-Apps in Visual Studio.
+- [WCF Data Services-Tools für Windows Store-Apps](http://www.microsoft.com/download/details.aspx?id=30714) erweitern die Nutzung von „Dienstverweis hinzufügen“ durch clientseitige OData-Unterstützung für Windows Store-Apps in Visual Studio.
 
-## Entwickeln von Apps
+## <a name="develop-apps"></a>Entwickeln von Apps
 
-### Vorbereitung
+### <a name="getting-ready"></a>Vorbereitung
 
 Erstellen Sie ein neues Windows Store-App-Projekt in Visual Studio 2012 oder neuer:
 
 ![store-apps-storage-vs-project][store-apps-storage-vs-project]
 
-Fügen Sie dann einen Verweis zur Azure Storage-Clientbibliothek hinzu, indem Sie mit der rechten Maustaste auf **Verweise** klicken und dann **Verweis hinzufügen** auswählen. Wechseln Sie anschließend zur Speicherclientbibliothek für Windows-Runtime, die Sie heruntergeladen haben:
+Fügen Sie als Nächstes einen Verweis auf die Azure Storage-Clientbibliothek hinzu, indem Sie mit der rechten Maustaste auf **Verweise** klicken und dann **Verweis hinzufügen** auswählen. Wechseln Sie anschließend zur Speicherclientbibliothek für Windows-Runtime, die Sie heruntergeladen haben:
 
 ![store-apps-storage-choose-library][store-apps-storage-choose-library]
 
-### Verwenden der Bibliothek mit den Blob- und Warteschlangendiensten
+### <a name="using-the-library-with-the-blob-and-queue-services"></a>Verwenden der Bibliothek mit den Blob- und Warteschlangendiensten
 
-An diesem Punkt ist Ihre App bereit zum Aufruf der Blob- und Warteschlangendienste von Azure. Fügen Sie die folgenden **using**-Anweisungen hinzu, sodass direkt auf Azure Storage-Typen verwiesen werden kann:
+An diesem Punkt ist Ihre App bereit zum Aufruf der Blob- und Warteschlangendienste von Azure. Fügen Sie die folgenden **using** -Anweisungen hinzu, sodass direkt auf Azure Storage-Typen verwiesen werden kann:
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
 
-Fügen der Seite dann eine Schaltfläche hinzu. Fügen Sie dem **Click**-Ereignis den folgenden Code hinzu, und ändern Sie die Ereignishandlermethode mit dem [async-Schlüsselwort](http://msdn.microsoft.com/library/vstudio/hh156513.aspx):
+Fügen der Seite dann eine Schaltfläche hinzu. Fügen Sie dem **Click** -Ereignis den folgenden Code hinzu, und ändern Sie die Ereignishandlermethode mit dem [async-Schlüsselwort](http://msdn.microsoft.com/library/vstudio/hh156513.aspx):
 
     var credentials = new StorageCredentials(accountName, accountKey);
     var account = new CloudStorageAccount(credentials, true);
@@ -59,7 +60,7 @@ Dieser Code setzt voraus, dass Sie die zwei Zeichenfolgenvariablen *accountName*
 
 Erstellen Sie die Anwendung, und führen Sie sie aus. Beim Klicken auf die Schaltfläche wird überprüft, ob ein Container namens *container1* in Ihrem Konto vorhanden ist. Andernfalls wird er erstellt.
 
-### Verwenden der Bibliothek mit dem Tabellenspeicherdienst
+### <a name="using-the-library-with-the-table-service"></a>Verwenden der Bibliothek mit dem Tabellenspeicherdienst
 
 Die Typen, die für die Kommunikation mit dem Azure-Tabellenspeicherdienst verwendet werden, hängen von WCF Data Services für die Windows Store-Apps-Bibliothek ab. Fügen Sie dann mithilfe der Paket-Manager-Konsole einen Verweis zu den erforderlichen WCF-Bibliotheken hinzu:
 
@@ -71,7 +72,7 @@ Verweisen Sie Package Manager mithilfe des folgenden Befehls auf den Speicherort
 
 Dieser Befehl fügt dem Projekt automatisch alle erforderlichen Verweise hinzu. Falls Sie die Paket-Manager-Konsole nicht verwenden möchten, können Sie auch den NuGet-Ordner von WCF Data Services auf dem lokalen Computer zur Liste der Paketquellen hinzufügen. Fügen Sie dann den Verweis über die im Thema zum [Verwalten von NuGet-Paketen mithilfe des Dialogs](http://docs.nuget.org/docs/start-here/Managing-NuGet-Packages-Using-The-Dialog) beschriebene Oberfläche hinzu.
 
-Wenn Sie auf das NuGet-Paket von WCF Data Services verwiesen haben, ändern Sie den Code im **Click**-Ereignis der Schaltfläche:
+Wenn Sie auf das NuGet-Paket von WCF Data Services verwiesen haben, ändern Sie den Code im **Click** -Ereignis der Schaltfläche:
 
     var credentials = new StorageCredentials(accountName, accountKey);
     var account = new CloudStorageAccount(credentials, true);
@@ -89,4 +90,8 @@ Sie können auch einen Verweis zu „Microsoft.WindowsAzure.Storage.Table.dll“
 [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

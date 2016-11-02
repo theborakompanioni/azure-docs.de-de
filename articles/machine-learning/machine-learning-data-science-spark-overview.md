@@ -1,38 +1,39 @@
 <properties
-	pageTitle="Übersicht über Data Science mit Spark in Azure HDInsight | Microsoft Azure"
-	description="Das Spark MLlib-Toolkit bringt wesentliche Machine Learning-Modellierungsfunktionen in die verteilte HDInsight-Umgebung ein."
-	services="machine-learning"
-	documentationCenter=""
-	authors="bradsev"
-	manager="jhubbard"
-	editor="cgronlun"  />
+    pageTitle="Übersicht über Data Science mit Spark in Azure HDInsight | Microsoft Azure"
+    description="Das Spark MLlib-Toolkit bringt wesentliche Machine Learning-Modellierungsfunktionen in die verteilte HDInsight-Umgebung ein."
+    services="machine-learning"
+    documentationCenter=""
+    authors="bradsev"
+    manager="jhubbard"
+    editor="cgronlun"  />
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="deguhath;bradsev;gokuma" />
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/07/2016"
+    ms.author="deguhath;bradsev;gokuma" />
 
-# Übersicht über Data Science mit Spark in Azure HDInsight
+
+# <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Übersicht über Data Science mit Spark in Azure HDInsight
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-Diese Suite von Themen zeigt, wie mit HDInsight Spark allgemeine Data Science-Aufgaben wie Datenerfassung, Featureentwicklung, Modellierung und Modellauswertung durchgeführt werden können. Die verwendeten Daten sind eine Stichprobe des Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013. Die erstellten Modelle umfassen logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen. In den Themen wird auch gezeigt, wie diese Modelle in Azure Blob Storage (WASB) gespeichert werden und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Fortgeschrittenere Themen behandeln das Trainieren von Modellen mithilfe übergreifender Validierung und Hyper-Parameter-Sweeping. In diesem Übersichtsthema wird außerdem beschrieben, wie Sie einen Spark-Cluster einrichten, den Sie zum Ausführen der Schritte in den drei bereitgestellten exemplarischen Vorgehensweisen benötigen.
+Diese Sammlung von Themen zeigt, wie mit HDInsight Spark allgemeine Data Science-Aufgaben wie Datenerfassung, Featureentwicklung, Modellierung und Modellauswertung durchgeführt werden können. Die verwendeten Daten sind eine Stichprobe des Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013. Die erstellten Modelle umfassen logistische und lineare Regression, Random Forests und Gradient-Boosted-Strukturen. In den Themen wird auch gezeigt, wie diese Modelle in Azure Blob Storage (WASB) gespeichert werden und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Fortgeschrittenere Themen behandeln das Trainieren von Modellen mithilfe von Kreuzvalidierung und Hyper-Parameter-Sweeping. In diesem Übersichtsthema wird außerdem beschrieben, wie Sie den Spark-Cluster einrichten, den Sie zum Ausführen der Schritte in den drei bereitgestellten exemplarischen Vorgehensweisen benötigen. 
 
-[Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Das Spark-Verarbeitungsmodul ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen bei Machine Learning und für Graphberechnungen. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Machine Learning-Bibliothek von Spark, die Modellierungsfunktionen in diese verteilte Umgebung einbringt.
+[Spark](http://spark.apache.org/) ist ein Open-Source-Framework für die Parallelverarbeitung, das die In-Memory-Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Das Spark-Verarbeitungsmodul ist auf Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen ausgelegt. Dank seiner verteilten In-Memory-Datenverarbeitungsfunktionen eignet sich Spark besonders für iterative Algorithmen bei Machine Learning und für Graphberechnungen. [MLlib](http://spark.apache.org/mllib/) ist die skalierbare Machine Learning-Bibliothek von Spark, die Modellierungsfunktionen in diese verteilte Umgebung einbringt. 
 
-[HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) ist das in Azure gehostete Angebot für Open-Source-Spark. Darüber hinaus unterstützt der Spark-Cluster **Jupyter-PySpark-Notebooks**. Außerdem kann er interaktive Spark-SQL-Abfragen zum Transformieren, Filtern und Visualisieren von in Azure-Blobs (WASB) gespeicherten Daten ausführen. PySpark ist die Python-API für Spark. Die Codeausschnitte, die die Lösungen bereitstellen und die relevanten Plots zum Visualisieren der Daten zeigen, werden in Jupyter-Notebooks in den Spark-Clustern ausgeführt. Die Modellierungsschritte in diesen Themen enthalten auch Code zum Trainieren, Evaluieren, Speichern und Nutzen jedes Modelltyps.
+[HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) ist das in Azure gehostete Angebot für Open-Source-Spark. Darüber hinaus unterstützt der Spark-Cluster **Jupyter-PySpark-Notebooks**. Außerdem kann er interaktive Spark-SQL-Abfragen zum Transformieren, Filtern und Visualisieren von in Azure-Blobs (WASB) gespeicherten Daten ausführen. PySpark ist die Python-API für Spark. Die Codeausschnitte, die die Lösungen bereitstellen und die relevanten Plots zum Visualisieren der Daten zeigen, werden in Jupyter-Notebooks in den Spark-Clustern ausgeführt. Die Modellierungsschritte in diesen Themen enthalten auch Code zum Trainieren, Evaluieren, Speichern und Nutzen jedes Modelltyps. 
 
-Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen sich auf HDInsight 3.4 Spark 1.6. Der hier und in den Notebooks zu findende Code ist jedoch generisch und sollte auf jedem Spark-Cluster funktionieren. Clustereinrichtung und Verwaltungsschritte weichen möglicherweise geringfügig von dem ab, was hier gezeigt wird, wenn Sie nicht HDInsight Spark verwenden.
+Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen sich auf HDInsight 3.4 Spark 1.6. Der hier und in den Notebooks zu findende Code ist jedoch generisch und sollte auf jedem Spark-Cluster funktionieren. Wenn Sie HDInsight Spark nicht verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was hier gezeigt wird.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-1\. Bevor Sie mit diesen Themen beginnen, müssen Sie über ein Azure-Abonnement verfügen. Wenn Sie noch keins besitzen, lesen Sie den Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (Gewusst wie: Erhalten einer Azure-Testversion zum Testen von Hadoop in HDInsight).
+1. Sie benötigen ein Azure-Abonnement. Wenn Sie noch keins besitzen, lesen Sie den Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(Gewusst wie: Erhalten einer Azure-Testversion zum Testen von Hadoop in HDInsight).
 
-2\. Sie benötigen einen HDInsight 3.4 Spark 1.6-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erstellen eines solchen Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Clustertyp und Version werden im Menü **Clustertyp auswählen** angegeben.
+2. Sie benötigen einen HDInsight 3.4 Spark 1.6-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erstellen eines solchen Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Clustertyp und Version werden im Menü **Clustertyp auswählen** angegeben. 
 
 
 ![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
@@ -46,108 +47,110 @@ Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen 
 >[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-## Die NYC-2013-Taxidaten
+## <a name="the-nyc-2013-taxi-data"></a>Die NYC-2013-Taxidaten
 
-Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit mehr als 173 Millionen einzelnen Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
+Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (ca. 48 GB unkomprimiert) mit mehr als 173 Mio. einzelnen Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
-1. Die CSV-Dateien "trip\_data" enthalten Fahrtendetails, z. B. die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
+1. Die CSV-Dateien des Typs „trip_data“ enthalten Fahrtendetails, z. B. die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
 
-		medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
+        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 
-2. Die CSV-Dateien "trip\_fare" enthalten Details zu den Kosten für jede Fahrt, beispielsweise Zahlungsart, Fahrpreis, Zuschläge und Steuern, Trinkgelder und Mautgebühren sowie den entrichteten Gesamtbetrag. Es folgen einige Beispieleinträge:
+2. Die CSV-Dateien "trip_fare" enthalten Details zu den Kosten für jede Fahrt, beispielsweise Zahlungsart, Fahrpreis, Zuschläge und Steuern, Trinkgelder und Mautgebühren sowie den entrichteten Gesamtbetrag. Es folgen einige Beispieleinträge:
 
-		medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
-
-
-Der eindeutige Schlüssel für die Zusammenführung von "trip\_data" und "trip\_fare" besteht aus den Feldern: "medallion", "hack\_licence" und "pickup\_datetime".
+        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
+        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
 
-Wir haben eine Stichprobe von 0,1 % dieser Dateien entnommen und diese in einem einzelnen Dataset verknüpft, das für diese exemplarische Vorgehensweise als Eingabedataset verwendet wird. Der eindeutige Schlüssel für die Zusammenführung von "trip\_data" und "trip\_fare" besteht aus den Feldern: "medallion", "hack\_licence" und "pickup\_datetime". Jeder Datensatz des Datasets enthält die folgenden Attribute, die eine NYC-Taxifahrt darstellen:
+Wir haben eine Stichprobe von 0,1 % dieser Dateien entnommen und diese CSV-Dateien der Typen „trip\_data“ und „trip\_fare“ in einem einzelnen Dataset verknüpft, das für diese exemplarische Vorgehensweise als Eingabedataset verwendet wird. Der eindeutige Schlüssel für die Zusammenführung von „trip\_data“ und „trip\_fare“ besteht aus den Feldern: „medallion“, „hack\_licence“ und „pickup\_datetime“. Jeder Datensatz des Datasets enthält die folgenden Attribute, die eine NYC-Taxifahrt darstellen:
 
 
 |Feld| Kurzbeschreibung
 |------|---------------------------------
 | medallion |Anonymisierte Taxi-Medallion (eindeutige Taxi-ID)
-| hack\_license |	Anonymisierte Hackney Carriage-Lizenznummer
-| vendor\_id |	Taxiunternehmer-ID
-| rate\_code | NYC-Taxitarif
-| store\_and\_fwd\_flag | Speicherungs- und Weiterleitungsflag
-| pickup\_datetime |	Datum und Uhrzeit der Fahrtgastaufnahme
-| dropoff\_datetime | Datum und Uhrzeit des Fahrtgastabsetzens
-| pickup\_hour |	Stunde der Aufnahme
-| pickup\_week |	Kalenderwoche der Aufnahme
-| weekday |	Wochentag (Bereich 1 bis 7)
-| passenger\_count |	Anzahl der Fahrgäste bei einer Taxifahrt
-| trip\_time\_in\_secs | Fahrtzeit in Sekunden
-| trip\_distance | Zurückgelegte Fahrstrecke in Meilen
-| pickup\_longitude | Längengrad der Aufnahme
-| pickup\_latitude |	Breitengrad der Aufnahme
-| dropoff\_longitude | Längengrad des Absetzens
-| dropoff\_latitude | Breitengrad des Absetzens
-| direct\_distance |	Direkte Entfernung zwischen Start- und Zielort
-| payment\_type | Zahlungsart (bar, Kreditkarte usw.)
-| fare\_amount | Fahrpreis in
+| hack_license |    Anonymisierte Hackney Carriage-Lizenznummer
+| vendor_id |   Taxiunternehmer-ID
+| rate_code | NYC-Taxitarif
+| store_and_fwd_flag | Speicherungs- und Weiterleitungsflag
+| pickup_datetime | Datum und Uhrzeit der Aufnahme
+| dropoff_datetime | Datum und Uhrzeit des Fahrtgastabsetzens
+| pickup_hour | Stunde der Aufnahme
+| pickup_week | Kalenderwoche der Aufnahme
+| weekday | Wochentag (Bereich 1 bis 7)
+| passenger_count | Anzahl der Fahrgäste bei einer Taxifahrt
+| trip_time_in_secs | Fahrtzeit in Sekunden
+| trip_distance | Zurückgelegte Fahrstrecke in Meilen
+| pickup_longitude | Längengrad der Aufnahme
+| pickup_latitude | Breitengrad der Aufnahme
+| dropoff_longitude | Längengrad des Absetzens
+| dropoff_latitude | Breitengrad des Absetzens
+| direct_distance | Direkte Entfernung zwischen Start- und Zielort
+| payment_type | Zahlungsart (bar, Kreditkarte usw.)
+| fare_amount | Fahrpreis in
 | surcharge | Zuschlag
-| mta\_tax |	MTA-Steuer
-| tip\_amount | Trinkgeldbetrag
-| tolls\_amount | Mautgebührenbetrag
-| total\_amount | Gesamtbetrag
+| mta_tax | MTA-Steuer
+| tip_amount | Trinkgeldbetrag
+| tolls_amount | Mautgebührenbetrag
+| total_amount | Gesamtbetrag
 | tipped | Trinkgeld gezahlt (0/1 für „Nein“ oder „Ja“)
-| tip\_class | Trinkgeldklasse (0: 0 $, 1: 0-5 $, 2: 6 bis 10 $, 3: 11 bis 20 $, 4: > 20$)
+| tip_class | Trinkgeldklasse (0: 0 $, 1: 0-5 $, 2: 6 bis 10 $, 3: 11 bis 20 $, 4: > 20$)
 
 
-## Ausführen von Code über ein Jupyter-Notebook auf dem Spark-Cluster 
+## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Ausführen von Code über ein Jupyter-Notebook auf dem Spark-Cluster 
 
-Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihren Spark-Cluster auf dem Dashboard, und klicken Sie darauf, um zur Verwaltungsseite für Ihren Cluster zu gelangen. Klicken Sie dann auf **Cluster-Dashboards** > **Jupyter-Notebook**, um das dem Spark-Cluster zugeordnete Notebook zu öffnen.
+Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihren Spark-Cluster auf dem Dashboard, und klicken Sie darauf, um zur Verwaltungsseite für Ihren Cluster zu gelangen. Klicken Sie dann auf **Cluster-Dashboards** -> **Jupyter-Notebook**, um das dem Spark-Cluster zugeordnete Notebook zu öffnen.
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-Sie können auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter-Notebooks zuzugreifen. Ersetzen Sie einfach das Element „CLUSTERNAME“ in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
+Sie können auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter Notebooks zuzugreifen. Ersetzen Sie das Element CLUSTERNAME in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
-Wählen Sie „PySpark“ aus, um ein Verzeichnis mit einigen Beispielen für vorkonfigurierte Notebooks anzuzeigen, die die PySpark-API verwenden. Die Notebooks mit den Codebeispielen für diese Suite von Spark-Themen finden Sie bei [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
+Wählen Sie „PySpark“ aus, um ein Verzeichnis mit einigen Beispielen für vorkonfigurierte Notebooks anzuzeigen, die die PySpark-API verwenden. Die Notebooks mit den Codebeispielen für diese Suite von Spark-Themen finden Sie auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark).
 
 
-Sie können die Notebooks direkt von Github auf den Jupyter-Notebook-Server in Ihrem Spark-Cluster hochladen. Klicken Sie auf der Homepage Ihres Jupyter im rechten Teil des Bildschirms auf die Schaltfläche **Hochladen**. Ein Datei-Explorer wird geöffnet. Hier können Sie die GitHub-URL (Rohdateninhalt) des Notebooks einfügen und auf **Öffnen** klicken. Die PySpark-Notebooks finden Sie unter den folgenden URLs:
+Sie können die Notebooks direkt von Github auf den Jupyter-Notebook-Server in Ihrem Spark-Cluster hochladen. Klicken Sie auf der Startseite Ihres Jupyter im rechten Teil des Bildschirms auf die Schaltfläche **Hochladen**. Ein Datei-Explorer wird geöffnet. Hier können Sie die GitHub-URL (Rohdateninhalt) des Notebooks einfügen und auf **Öffnen**klicken. Die PySpark-Notebooks finden Sie unter den folgenden URLs:
 
-1.	[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)
-2.	[pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)
-3.	[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)
+1.  [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)
+2.  [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)
+3.  [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)
 
-Sie sehen den Dateinamen in der Jupyter-Dateiliste, wieder mit einer Schaltfläche **Hochladen**. Klicken Sie auf diese Schaltfläche **Hochladen**. Sie haben nun das Notebook importiert. Wiederholen Sie diese Schritte, um die folgenden Notebooks dieser exemplarischen Vorgehensweise hochzuladen.
+Sie sehen den Dateinamen in der Jupyter-Dateiliste, wieder mit einer Schaltfläche **Hochladen**. Klicken Sie auf diese Schaltfläche **Hochladen** . Sie haben nun das Notebook importiert. Wiederholen Sie diese Schritte, um die anderen Notebooks dieser exemplarischen Vorgehensweise hochzuladen.
 
-> [AZURE.TIP] Sie können mit der rechten Maustaste auf die Links unten in Ihrem Browser klicken und **Link kopieren** auswählen, um die GitHub-URL für den unformatierten Inhalt abzurufen, die Sie in das Dialogfeld des Jupyter-Datei-Explorers zum Hochladen einfügen können.
+> [AZURE.TIP] Sie können in Ihrem Browser mit der rechten Maustaste auf die Links klicken und **Link kopieren** auswählen, um die GitHub-URL für unformatierten Inhalt abzurufen. Sie können diese URL in das Dialogfeld „Hochladen“ im Datei-Explorer von Jupyter einfügen.
 
 Sie können jetzt:
 
-- Auf das Notebook klicken, um den Code zu sehen
-- Jede Zelle über **UMSCHALT+EINGABE-Taste** ausführen
-- Das gesamte Notebook ausführen, indem Sie auf **Cell** > **Run** klicken
-- Die automatische Visualisierung von Abfragen verwenden
+- Den Code anzeigen, indem Sie auf das Notebook klicken.
+- Jede Zelle durch Drücken von **UMSCHALT+EINGABETASTE** ausführen.
+- Das gesamte Notebook ausführen, indem Sie auf **Cell** -> **Run** klicken.
+- Die automatische Visualisierung von Abfragen verwenden.
 
 > [AZURE.TIP] Der PySpark-Kernel visualisiert automatisch die Ausgabe der SQL-Abfragen (HiveQL). Sie haben die Möglichkeit, verschiedene Arten von Visualisierungen auszuwählen (Tabelle, Kreis, Linie, Fläche oder Balken), indem Sie im Notebook die Menüschaltflächen unter **Typ** verwenden:
 
 ![ROC-Kurve der logistischen Regression für die allgemeine Methode](./media/machine-learning-data-science-spark-overview/pyspark-jupyter-autovisualization.png)
 
-## Wie geht es weiter?
+## <a name="what's-next?"></a>Wie geht es weiter?
 
-Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks hochgeladen haben, können Sie nun die Themen für diese drei PySpark-Notebooks durcharbeiten. Darin erfahren Sie, wie Sie Ihre Daten durchsuchen sowie Modelle erstellen und verwenden. Das Notebook zum erweiterten Durchsuchen von Daten und Modellieren dringt tiefer in übergreifende Validierung, Hyper-Parameter-Sweeping und Auswertung von Modellen ein.
+Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks hochgeladen haben, können Sie nun die Themen für diese drei PySpark-Notebooks durcharbeiten. Darin erfahren Sie, wie Sie Ihre Daten durchsuchen sowie Modelle erstellen und nutzen. Das Notebook zum erweiterten Durchsuchen von Daten und Modellieren zeigt, wie Sie die Kreuzvalidierung, das Hyper-Parameter-Sweeping und die Auswertung von Modellen einbeziehen können. 
 
-**Durchsuchen von Daten und Modellieren mit Spark:** Durchsuchen Sie das Dataset, und erstellen Sie die hier zu bewertenden und evaluierenden Machine Learning-Modelle. Arbeiten Sie dazu das Thema [Erstellen von binären Klassifizierungs- und Regressionsmodellen für Daten mit dem Spark MLib-Toolkit](machine-learning-data-science-spark-data-exploration-modeling.md) durch.
+**Durchsuchen von Daten und Modellieren mit Spark:** Durchsuchen Sie das Dataset, und erstellen und bewerten Sie die Machine Learning-Modelle. Arbeiten Sie dazu das Thema [Erstellen von binären Klassifizierungs- und Regressionsmodellen für Daten mit dem Spark MLib-Toolkit](machine-learning-data-science-spark-data-exploration-modeling.md) durch.
 
 **Modellnutzung:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
 
-**Übergreifende Validierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
+**Kreuzvalidierung und Hyperparameter-Sweeping:**Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

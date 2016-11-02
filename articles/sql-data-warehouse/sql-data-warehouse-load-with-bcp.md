@@ -3,7 +3,7 @@
    description="Erfahren Sie, was bcp ist und wie es in Data Warehouse-Szenarios verwendet wird."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="lodipalm"
+   authors="twounder"
    manager="barbkess"
    editor=""/>
 
@@ -13,21 +13,23 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="mausher;barbkess"/>
 
 
-# Laden von Daten mit bcp
+
+# <a name="load-data-with-bcp"></a>Laden von Daten mit BCP
 
 > [AZURE.SELECTOR]
-- [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-- [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
+- [Redgate](sql-data-warehouse-load-with-redgate.md)  
+- [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)  
+- [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)  
 - [BCP](sql-data-warehouse-load-with-bcp.md)
 
 
 **[bcp][]** ist ein Befehlszeilen-Dienstprogramm zum Massenladen, das es Ihnen ermöglicht, Daten zwischen SQL Server, Datendateien und SQL Data Warehouse zu kopieren. Verwenden sie bcp zum Importieren großer Mengen an neuen Zeilen in SQL Data Warehouse-Tabellen oder zum Exportieren von Daten aus SQL Server-Tabellen in Datendateien. bcp erfordert außer bei Verwendung mit der queryout-Option keine Kenntnisse von Transact-SQL.
 
-bcp bietet eine schnelle und einfache Möglichkeit, um kleinere DataSets in und aus einer SQL Data Warehouse-Datenbank zu verschieben. Die genaue Empfehlung für die mit bcp zu ladende/extrahierte Datenmenge hängt von der Netzwerkverbindung mit dem Azure-Rechenzentrum ab. Im Allgemeinen können Dimensionstabellen geladen und mit bcp fertig extrahiert werden. bcp wird jedoch zum Laden oder Extrahieren großer Datenmengen nicht empfohlen. Polybase ist das Tool, das zum Laden und Extrahieren großer Datenvolumen empfohlen wird, da es die Massively Parallel Processing-Architektur von SQL Data Warehouse besser nutzt.
+bcp bietet eine schnelle und einfache Möglichkeit, um kleinere DataSets in und aus einer SQL Data Warehouse-Datenbank zu verschieben. Die genaue Empfehlung für die mit bcp zu ladende/extrahierte Datenmenge hängt von der Netzwerkverbindung mit dem Azure-Rechenzentrum ab.  Im Allgemeinen können Dimensionstabellen geladen und mit bcp fertig extrahiert werden. bcp wird jedoch zum Laden oder Extrahieren großer Datenmengen nicht empfohlen.  Polybase ist das Tool, das zum Laden und Extrahieren großer Datenvolumen empfohlen wird, da es die Massively Parallel Processing-Architektur von SQL Data Warehouse besser nutzt.
 
 Mit bcp haben Sie folgende Möglichkeiten:
 
@@ -41,7 +43,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 >[AZURE.VIDEO loading-data-into-azure-sql-data-warehouse-with-bcp]
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
@@ -49,13 +51,13 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 - Eine Installation des bcp-Befehlszeilenprogramms
 - Eine Installation des SQLCMD-Befehlszeilenprogramms
 
->[AZURE.NOTE] Sie können die Dienstprogramme bcp und sqlcmd im [Microsoft Download Center][] herunterladen.
+>[AZURE.NOTE] Sie können die Dienstprogramme bcp und sqlcmd im [Microsoft Download Center][]herunterladen.
 
-## Importieren von Daten in SQL Data Warehouse
+## <a name="import-data-into-sql-data-warehouse"></a>Importieren von Daten in SQL Data Warehouse
 
 In diesem Lernprogramm erstellen Sie eine Tabelle in Azure SQL Data Warehouse und importieren Daten in die Tabelle.
 
-### Schritt 1: Erstellen einer Tabelle in Azure SQL Data Warehouse
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>Schritt 1: Erstellen einer Tabelle in Azure SQL Data Warehouse
 
 Verwenden Sie sqlcmd von einer Befehlszeile aus zum Ausführen der folgenden Abfrage, um eine Tabelle für Ihre Instanz zu erstellen:
 
@@ -77,9 +79,9 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 >[AZURE.NOTE] In der [Übersicht über Tabellen][] und unter [CREATE TABLE][] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
 
-### Schritt 2: Erstellen einer Quelldatendatei
+### <a name="step-2-create-a-source-data-file"></a>Schritt 2: Erstellen einer Quelldatendatei
 
-Öffnen Sie Editor, kopieren Sie die folgenden Datenzeilen in eine neue Textdatei, und speichern Sie diese Datei im lokalen temporären Verzeichnis C:\\Temp\\DimDate2.txt.
+Öffnen Sie Editor, kopieren Sie die folgenden Datenzeilen in eine neue Textdatei, und speichern Sie diese Datei im lokalen temporären Verzeichnis C:\Temp\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -98,7 +100,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 > [AZURE.NOTE] Es ist wichtig, daran zu denken, dass bcp.exe die UTF-8-Codierung nicht unterstützt. Verwenden Sie ASCII-Dateien oder UTF-16-codierte Dateien, wenn Sie bcp.exe verwenden.
 
-### Schritt 3: Herstellen einer Verbindung und Importieren von Daten
+### <a name="step-3-connect-and-import-the-data"></a>Schritt 3: Herstellen einer Verbindung und Importieren von Daten
 Sie können mit bcp eine Verbindung herstellen und die Daten mit dem folgenden Befehl importieren (ersetzen Sie die Werte nach Bedarf):
 
 ```sql
@@ -128,7 +130,7 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-### Schritt 4: Erstellen von Statistiken für die neu geladenen Daten
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Schritt 4: Erstellen von Statistiken für die neu geladenen Daten
 
 Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie im Thema [Statistiken][] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
 
@@ -142,10 +144,10 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-## Exportieren von Daten aus SQL Data Warehouse
-In diesem Lernprogramm erstellen Sie eine Datendatei aus einer Tabelle in SQL Data Warehouse. Wir werden die oben erstellten Daten in eine neue Datendatei namens "DimDate2\_export.txt" exportieren.
+## <a name="export-data-from-sql-data-warehouse"></a>Exportieren von Daten aus SQL Data Warehouse
+In diesem Lernprogramm erstellen Sie eine Datendatei aus einer Tabelle in SQL Data Warehouse. Wir werden die oben erstellten Daten in eine neue Datendatei namens "DimDate2_export.txt" exportieren.
 
-### Schritt 1: Exportieren der Daten
+### <a name="step-1-export-the-data"></a>Schritt 1: Exportieren der Daten
 
 Sie können mit dem Dienstprogramm bcp eine Verbindung herstellen und die Daten mit dem folgenden Befehl exportieren (ersetzen Sie die Werte nach Bedarf):
 
@@ -171,8 +173,9 @@ Sie können überprüfen, ob die Daten ordnungsgemäß exportiert wurden, indem 
 
 >[AZURE.NOTE] Aufgrund der Struktur verteilter Systeme unterscheidet sich die Reihenfolge der Daten in den SQL Data Warehouse-Datenbanken möglicherweise. Eine andere Möglichkeit ist die Verwendung der Funktion **queryout** von bcp, um einen Auszug der Abfrage zu schreiben, und nicht die gesamte Tabelle zu exportieren.
 
-## Nächste Schritte
-Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][]. Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für SQL Data Warehouse][].
+## <a name="next-steps"></a>Nächste Schritte
+Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für SQL Data Warehouse][].
 
 <!--Image references-->
 
@@ -180,7 +183,7 @@ Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Wa
 
 [Laden von Daten in SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
 [Entwicklungsübersicht für SQL Data Warehouse]: ./sql-data-warehouse-overview-develop.md
-[Übersicht über Tabellen]: ./sql-data-warehouse-tables-overview.md
+[Tabellenübersicht]: ./sql-data-warehouse-tables-overview.md
 [Statistiken]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
@@ -190,4 +193,8 @@ Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Wa
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

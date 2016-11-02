@@ -17,13 +17,14 @@
   ms.date="09/09/2016"
   ms.author="cjiang"/>
 
-# Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
+
+# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
 
 [AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## Sammeln von Überwachungsprotokollen
+## <a name="collect-audit-logs"></a>Sammeln von Überwachungsprotokollen
 
 Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise.
 
@@ -35,7 +36,7 @@ Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den 
 
 [AZURE.INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y**: Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
+**Y** : Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
 
 **Uploadfehler:**
 
@@ -55,9 +56,9 @@ Laden Sie zur Behebung dieser Fehler die ursprüngliche (lokal verfügbare) virt
 
 **Lösung:**
 
-Löschen Sie zur Behebung dieser Fehler das aktuelle Image aus dem Portal, und [erfassen Sie es auf der Grundlage der aktuellen VHDs erneut](virtual-machines-linux-capture-image.md). Verwenden Sie dabei die gleiche Einstellung (generalisiert/spezialisiert), die auch für das Betriebssystem verwendet wird.
+Löschen Sie zur Behebung dieser Fehler das aktuelle Image über das Portal, und [erfassen Sie es auf der Grundlage der aktuellen VHDs erneut](virtual-machines-linux-capture-image.md). Verwenden Sie dabei die gleiche Einstellung (generalisiert/spezialisiert), die auch für das Betriebssystem verwendet wird.
 
-## Problem: benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
+## <a name="issue:-custom/-gallery/-marketplace-image;-allocation-failure"></a>Problem: Benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
 Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Computer an einen Cluster gesendet wird, der entweder nicht über genügend Speicherplatz verfügt oder die angeforderte VM-Größe nicht unterstützt.
 
 **Ursache 1:** Der Cluster unterstützt nicht die angeforderte Größe des virtuellen Computers.
@@ -66,7 +67,8 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
 
 - Wiederholen Sie die Anforderung mit einer geringeren Größe des virtuellen Computers.
 - Wenn die Größe des angeforderten virtuellen Computers nicht geändert werden kann:
-  - Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe. Klicken Sie auf **Ressourcengruppen** > *Ihre Ressourcengruppe* > **Ressourcen** > *Ihre Verfügbarkeitsgruppe* > **Virtuelle Computer** > *Ihr virtueller Computer* > **Beenden**.
+  - Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe.
+  Klicken Sie auf **Ressourcengruppen** > *Ihre Ressourcengruppe* > **Ressourcen** > *Ihre Verfügbarkeitsgruppe* > **Virtuelle Computer** > *Ihr virtueller Computer* > **Beenden**.
   - Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
   - Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
 
@@ -79,7 +81,11 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   - Erstellen Sie einen neuen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).
   - Fügen Sie den neuen virtuellen Computer zum gleichen virtuellen Netzwerk hinzu.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Wenn beim Starten eines beendeten virtuellen Linux-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Linux-Computers Probleme in Azure auftreten, finden Sie Informationen unter [Problembehandlung von Resource Manager-Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure](virtual-machines-linux-restart-resize-error-troubleshooting.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

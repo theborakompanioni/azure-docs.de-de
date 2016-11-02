@@ -7,22 +7,24 @@ authors="hermanndms"
 manager="timlt" 
 editor="" 
 tags="azure-resource-manager" 
-  keywords=""/>
-<tags  
+  keywords=""/> 
+<tags 
   ms.service="virtual-machines-linux" 
   ms.devlang="na" 
   ms.topic="article" 
   ms.tgt_pltfrm="vm-linux" 
   ms.workload="infrastructure-services" 
   ms.date="09/15/2016" 
-  ms.author="hermannd"/>
+  ms.author="hermannd"/> 
 
 
-# Bereitstellen von S/4 HANA oder BW/4 HANA unter Microsoft Azure 
 
-In diesem Artikel wird beschrieben, wie Sie S/4 HANA unter Microsoft Azure über die SAP Cloud Appliance Library 3.0 bereitstellen. In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Das Bereitstellen von anderen SAP HANA-basierten Lösungen wie BW/4 HANA funktioniert in Bezug auf den Prozess genauso. Sie müssen lediglich eine andere Lösung auswählen.
+# <a name="deploying-s/4-hana-or-bw/4-hana-on-microsoft-azure"></a>Bereitstellen von S/4 HANA oder BW/4 HANA unter Microsoft Azure 
 
-[Hier](https://cal.sap.com/) können Sie mit der Nutzung der SAP Cloud Appliance Library (SAP CAL) beginnen. Es gibt auch einen Blog von SAP zur neuen [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
+In diesem Artikel wird beschrieben, wie Sie S/4 HANA unter Microsoft Azure über die SAP Cloud Appliance Library 3.0 bereitstellen.
+In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Das Bereitstellen von anderen SAP HANA-basierten Lösungen wie BW/4 HANA funktioniert in Bezug auf den Prozess genauso. Sie müssen lediglich eine andere Lösung auswählen.
+
+[Hier](https://cal.sap.com/)können Sie mit der Nutzung der SAP Cloud Appliance Library (SAP CAL) beginnen. Es gibt auch einen Blog von SAP zur neuen [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 
 In den folgenden Screenshots ist Schritt für Schritt dargestellt, wie Sie S/4 HANA unter Microsoft Azure bereitstellen. Der Prozess funktioniert für andere Lösungen wie BW/4 HANA genauso.
@@ -30,7 +32,8 @@ In den folgenden Screenshots ist Schritt für Schritt dargestellt, wie Sie S/4 H
 
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic-1b.jpg)
 
-Die erste Abbildung zeigt alle HANA-basierten SAP CAL-Lösungen, die unter Microsoft Azure verfügbar sind. Als Beispiel wurde die „lokale SAP S/4 HANA-Edition“ (Lösung unten im Screenshot) für den Prozessdurchlauf ausgewählt.
+Die erste Abbildung zeigt alle HANA-basierten SAP CAL-Lösungen, die unter Microsoft Azure verfügbar sind.
+Als Beispiel wurde die „lokale SAP S/4 HANA-Edition“ (Lösung unten im Screenshot) für den Prozessdurchlauf ausgewählt.
 
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic-2.jpg)
 
@@ -46,7 +49,8 @@ Im neuen Azure-Portal befindet sich das Element „Abonnements“ auf der linken
 
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic7b.jpg)
 
-Durch die Auswahl eines Abonnements und der anschließenden Auswahl von „Verwaltungszertifikate“ wird veranschaulicht, dass für das neue Azure Resource Manager-Modell ein neues Konzept mit „Dienstprinzipalen“ verwendet wird. SAP CAL ist für dieses neue Modell noch nicht angepasst worden, sodass es weiterhin erforderlich ist, dass das „klassische“ Modell und das frühere Azure-Portal mit Verwaltungszertifikaten funktioniert.
+Durch die Auswahl eines Abonnements und der anschließenden Auswahl von „Verwaltungszertifikate“ wird veranschaulicht, dass für das neue Azure Resource Manager-Modell ein neues Konzept mit „Dienstprinzipalen“ verwendet wird.
+SAP CAL ist für dieses neue Modell noch nicht angepasst worden, sodass es weiterhin erforderlich ist, dass das „klassische“ Modell und das frühere Azure-Portal mit Verwaltungszertifikaten funktioniert.
 
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic4b.jpg)
 
@@ -66,7 +70,8 @@ Sobald das Zertifikat hochgeladen wurde, kann die Verbindung zwischen SAP CAL un
 
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic10.jpg)
 
-Nach dem Einrichten eines Kontos muss eine Lösung ausgewählt werden, die bereitgestellt werden soll, und eine Instanz muss erstellt werden. Im einfachen Modus ist dies nicht schwierig. Geben Sie einen Instanznamen ein, wählen Sie eine Azure-Region aus, und definieren Sie das Masterkennwort für die Lösung.
+Nach dem Einrichten eines Kontos muss eine Lösung ausgewählt werden, die bereitgestellt werden soll, und eine Instanz muss erstellt werden.
+Im einfachen Modus ist dies nicht schwierig. Geben Sie einen Instanznamen ein, wählen Sie eine Azure-Region aus, und definieren Sie das Masterkennwort für die Lösung.
 
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic11.jpg)
 
@@ -88,4 +93,15 @@ Nun ist es möglich, für die Lösung über die Schaltfläche „Verbinden“ im
 
 Eine weitere Option ist die Anmeldung an der Windows-Client-VM und beispielsweise das Starten der vorkonfigurierten SAP GUI.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -17,7 +17,8 @@
    ms.author="subramar"/>
 
 
-# Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
+
+# <a name="using-the-azure-cli-to-interact-with-a-service-fabric-cluster"></a>Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
 
 Sie können die Azure-Befehlszeilenschnittstelle unter Linux verwenden, um von einem Linux-Computer aus mit einem Service Fabric-Cluster zu interagieren.
 
@@ -31,7 +32,7 @@ Laden Sie zunächst die neueste Version der Befehlszeilenschnittstelle aus dem G
  azure servicefabric
 ```
 
-Bei jedem unterstützten Befehl können Sie den Namen des Befehls eingeben, um die Hilfe für den jeweiligen Befehl aufzurufen. Für die Befehle wird die automatische Vervollständigung unterstützt. Mit dem folgenden Befehl erhalten Sie beispielsweise Hilfe zu allen Anwendungsbefehlen:
+Bei jedem unterstützten Befehl können Sie den Namen des Befehls eingeben, um die Hilfe für den jeweiligen Befehl aufzurufen. Für die Befehle wird die automatische Vervollständigung unterstützt. Mit dem folgenden Befehl erhalten Sie beispielsweise Hilfe zu allen Anwendungsbefehlen: 
 
 ```sh
  azure servicefabric application 
@@ -77,13 +78,13 @@ Ersetzen Sie das PublicIPorFQDN-Tag durch die tatsächliche IP-Adresse oder den 
  azure servicefabric cluster connect --connection-endpoint http://localhost:19080 --client-connection-endpoint PublicIPorFQDN:19000
 ```
 
-Für die Interaktion mit Ihrem Linux-basierten Service Fabric-Cluster, den Sie über das Azure-Portal erstellt haben, können Sie PowerShell oder die Befehlszeilenschnittstelle verwenden.
+Für die Interaktion mit Ihrem Linux-basierten Service Fabric-Cluster, den Sie über das Azure-Portal erstellt haben, können Sie PowerShell oder die Befehlszeilenschnittstelle verwenden. 
 
 **Vorsicht:** Da diese Cluster nicht sicher sind, setzen Sie Ihre One-Box unter Umständen einem Risiko aus, wenn Sie die öffentliche IP-Adresse dem Clustermanifest hinzufügen.
 
 
 
-## Herstellen einer Verbindung mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="using-the-azure-cli-to-connect-to-a-service-fabric-cluster"></a>Herstellen einer Verbindung mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
 
 Mit den folgenden Befehlen der Azure-Befehlszeilenschnittstelle können Sie eine Verbindung mit einem sicheren Cluster herstellen. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
 
@@ -91,28 +92,28 @@ Mit den folgenden Befehlen der Azure-Befehlszeilenschnittstelle können Sie eine
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert
 ```
  
-Falls Ihr Zertifikat über Zertifizierungsstellen (Certificate Authorities, CAs) verfügt, müssen Sie den Parameter „--ca-cert-path“ hinzufügen, wie im folgenden Beispiel zu sehen:
+Falls Ihr Zertifikat über Zertifizierungsstellen (Certificate Authorities, CAs) verfügt, müssen Sie den Parameter „--ca-cert-path“ hinzufügen, wie im folgenden Beispiel zu sehen: 
 
 ```
  azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
 ```
 Mehrere Zertifizierungsstellen können als kommagetrennte Liste angegeben werden.
  
-Falls der allgemeine Name im Zertifikat nicht dem Verbindungsendpunkt entspricht, können Sie die Überprüfung mithilfe des Parameters `--strict-ssl` umgehen, wie im folgenden Befehl zu sehen:
+Falls der allgemeine Name im Zertifikat nicht dem Verbindungsendpunkt entspricht, können Sie die Überprüfung mithilfe des Parameters `--strict-ssl` umgehen, wie im folgenden Befehl zu sehen: 
 
 ```
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl false 
 ```
  
-Wenn Sie die Überprüfung der Zertifizierungsstelle überspringen möchten, können Sie den Parameter „--reject-unauthorized“ hinzufügen, wie im folgenden Befehl zu sehen:
+Wenn Sie die Überprüfung der Zertifizierungsstelle überspringen möchten, können Sie den Parameter „--reject-unauthorized“ hinzufügen, wie im folgenden Befehl zu sehen: 
 
 ```
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized false 
 ```
  
-Nach dem Herstellen der Verbindung können Sie durch Ausführen anderer Befehle über die Befehlszeilenschnittstelle mit dem Cluster interagieren.
+Nach dem Herstellen der Verbindung können Sie durch Ausführen anderer Befehle über die Befehlszeilenschnittstelle mit dem Cluster interagieren. 
 
-## Bereitstellen einer Service Fabric-Anwendung
+## <a name="deploying-your-service-fabric-application"></a>Bereitstellen einer Service Fabric-Anwendung
 
 Führen Sie die folgenden Befehle aus, um die Service Fabric-Anwendung zu kopieren, zu registrieren und zu starten:
 
@@ -123,7 +124,7 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 ```
 
 
-## Upgraden Ihrer Anwendung
+## <a name="upgrading-your-application"></a>Upgraden Ihrer Anwendung
 
 Der Prozess ähnelt dem [Prozess unter Windows](service-fabric-application-upgrade-tutorial-powershell.md).
 
@@ -136,7 +137,7 @@ Erstellen, kopieren und registrieren Sie Ihre Anwendung über das Projektstammve
  azure servicefabric application create fabric:/MySFApp MySFApp 1.0
 ```
 
-Ändern Sie Ihre Anwendung, und erstellen Sie den geänderten Dienst neu. Aktualisieren Sie die Manifestdatei des geänderten Diensts („ServiceManifest.xml“) mit den aktualisierten Versionen für den Dienst (und ggf. mit aktualisiertem Code, aktualisierter Konfiguration oder aktualisierten Daten). Passen Sie auch das Manifest der Anwendung („ApplicationManifest.xml“) mit der aktualisierten Versionsnummer für die Anwendung und dem geänderten Dienst an. Führen Sie anschließend die folgenden Befehle aus, um Ihre aktualisierte Anwendung zu kopieren und registrieren:
+Ändern Sie Ihre Anwendung, und erstellen Sie den geänderten Dienst neu.  Aktualisieren Sie die Manifestdatei des geänderten Diensts („ServiceManifest.xml“) mit den aktualisierten Versionen für den Dienst (und ggf. mit aktualisiertem Code, aktualisierter Konfiguration oder aktualisierten Daten). Passen Sie auch das Manifest der Anwendung („ApplicationManifest.xml“) mit der aktualisierten Versionsnummer für die Anwendung und dem geänderten Dienst an.  Führen Sie anschließend die folgenden Befehle aus, um Ihre aktualisierte Anwendung zu kopieren und registrieren:
 
 ```
  azure servicefabric cluster connect http://localhost:19080>
@@ -147,14 +148,14 @@ Erstellen, kopieren und registrieren Sie Ihre Anwendung über das Projektstammve
 Nun können Sie das Anwendungsupgrade mithilfe des folgenden Befehls starten:
 
 ```
- azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–application-type-version 2.0  --upgrade-mode UnmonitoredAuto
+ azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–target-application-type-version 2.0  --rolling-upgrade-mode UnmonitoredAuto
 ```
 
-Das Anwendungsupgrade kann daraufhin mit SFX überwacht werden. Die Aktualisierung der Anwendung dauert nur wenige Minuten. Sie können auch eine aktualisierte Anwendung mit einem Fehler ausprobieren und die automatische Rollbackfunktion in Service Fabric testen.
+Das Anwendungsupgrade kann daraufhin mit SFX überwacht werden. Die Aktualisierung der Anwendung dauert nur wenige Minuten.  Sie können auch eine aktualisierte Anwendung mit einem Fehler ausprobieren und die automatische Rollbackfunktion in Service Fabric testen.
 
-## Problembehandlung
+## <a name="troubleshooting"></a>Problembehandlung
 
-### Das Anwendungspaket kann nicht kopiert werden.
+### <a name="copying-of-the-application-package-does-not-succeed"></a>Das Anwendungspaket kann nicht kopiert werden.
 
 Überprüfen Sie, ob `openssh` installiert ist. Diese Komponente ist unter Ubuntu Desktop standardmäßig nicht installiert. Installieren Sie sie mithilfe des folgenden Befehls:
 
@@ -162,7 +163,7 @@ Das Anwendungsupgrade kann daraufhin mit SFX überwacht werden. Die Aktualisieru
  sudo apt-get install openssh-server openssh-client**
 ```
 
-Sollte sich das Problem dadurch nicht beheben lassen, deaktivieren Sie PAM für ssh, indem Sie mithilfe der folgenden Befehle die Datei **sshd\_config** ändern:
+Sollte sich das Problem dadurch nicht beheben lassen, deaktivieren Sie PAM für ssh, indem Sie mithilfe der folgenden Befehle die Datei **sshd_config** ändern:
 
 ```sh
  sudo vi /etc/ssh/sshd_config
@@ -182,8 +183,12 @@ Tritt das Problem immer noch auf, führen Sie die folgenden Befehle aus, um die 
 Da bei der ssh-Authentifizierung noch keine Schlüssel unterstützt werden (weil die Plattform ssh verwendet, um Pakete zu kopieren), muss stattdessen die Kennwortauthentifizierung verwendet werden.
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Richten Sie die Entwicklungsumgebung ein, und stellen Sie eine Service Fabric-Anwendung in einem Linux-Cluster bereit.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

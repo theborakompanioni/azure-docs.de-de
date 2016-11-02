@@ -16,8 +16,9 @@
    ms.date="09/28/2016"
    ms.author="oanapl"/>
 
-# Anzeigen von Service Fabric-Integritätsberichten
-Mit Azure Service Fabric wird ein [Integritätsmodell](service-fabric-health-introduction.md) eingeführt. Es besteht aus Integritätsentitäten, auf denen Systemkomponenten und Watchdogs die von ihnen überwachten lokalen Bedingungen melden können. Im so genannten [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden alle Integritätsdaten zusammengefasst, um zu ermitteln, ob die Entitäten intakt sind.
+
+# <a name="view-service-fabric-health-reports"></a>Anzeigen von Service Fabric-Integritätsberichten
+Mit Azure Service Fabric wird ein [Integritätsmodell](service-fabric-health-introduction.md) eingeführt. Es besteht aus Integritätsentitäten, auf denen Systemkomponenten und Watchdogs die von ihnen überwachten lokalen Bedingungen melden können. Im so genannten [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden alle Integritätsdaten zusammengefasst, um zu ermitteln, ob die Entitäten fehlerfrei sind.
 
 Standardmäßig enthält das Cluster von den Systemkomponenten gesendete Integritätsberichte. Weitere Informationen erhalten Sie unter [Verwenden von Systemintegritätsberichten für die Problembehandlung](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
@@ -39,7 +40,7 @@ Um diese Optionen zu demonstrieren, verwenden wir einen lokalen Cluster mit fün
 </Service>
 ```
 
-## Integrität im Service Fabric Explorer
+## <a name="health-in-service-fabric-explorer"></a>Integrität im Service Fabric Explorer
 Der Service Fabric Explorer bietet eine grafische Ansicht des Clusters. In der unten gezeigten Abbildung ist Folgendes dargestellt:
 
 - Die Anwendung **fabric:/WordCount** ist rot dargestellt (Fehler), weil **MyWatchdog** für die Eigenschaft **Availability** ein Fehlerereignis gemeldet hat.
@@ -59,8 +60,8 @@ Ansicht des Clusters mit dem Service Fabric Explorer:
 
 > [AZURE.NOTE] Erfahren Sie mehr über den [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
-## Integritätsabfragen
-Service Fabric macht für jeden unterstützten [Entitätstyp](service-fabric-health-introduction.md#health-entities-and-hierarchy) Integritätsabfragen verfügbar. Darauf kann über die API (Methoden finden Sie unter **FabricClient.HealthManager**), mit PowerShell-Cmdlets und mit REST zugegriffen werden. Mit diesen Abfragen werden vollständige Integritätsinformationen zur Entität zurückgegeben: der zusammengefasste Integritätsstatus, Integritätsereignisse der Entität, untergeordnete Integritätsstatus (falls verfügbar) und Fehlerauswertungen, sofern Fehler für die Entität auftreten.
+## <a name="health-queries"></a>Integritätsabfragen
+Service Fabric macht für jeden unterstützten [Entitätstyp](service-fabric-health-introduction.md#health-entities-and-hierarchy)Integritätsabfragen verfügbar. Darauf kann über die API (Methoden finden Sie unter **FabricClient.HealthManager**), mit PowerShell-Cmdlets und mit REST zugegriffen werden. Mit diesen Abfragen werden vollständige Integritätsinformationen zur Entität zurückgegeben: der zusammengefasste Integritätsstatus, Integritätsereignisse der Entität, untergeordnete Integritätsstatus (falls verfügbar) und Fehlerauswertungen, sofern Fehler für die Entität auftreten.
 
 > [AZURE.NOTE] Eine Integritätsentität wird zurückgegeben, wenn sie im Integritätsspeicher vollständig aufgefüllt wurde. Die Entität muss aktiv sein (nicht gelöscht) und einen Systembericht aufweisen. Außerdem müssen für ihre übergeordneten Entitäten in der Hierarchiekette ebenfalls Systemberichte vorliegen. Falls eine dieser Bedingungen nicht erfüllt ist, geben die Integritätsabfragen eine Ausnahme mit Informationen dazu zurück, warum die Entität nicht zurückgegeben wurde.
 
@@ -70,7 +71,7 @@ Die Integritätsabfragen müssen den Entitätsbezeichner übergeben, der sich na
 
 Die Integrität einer Entität enthält Folgendes:
 
-- Den zusammengefassten Integritätsstatus der Entität. Dieser wird vom Integritätsspeicher anhand der Berichte zur Entitätsintegrität, anhand des Integritätsstatus der untergeordneten Elemente (falls zutreffend) und anhand der Integritätsrichtlinien berechnet. Erfahren Sie mehr über die [Auswertung der Entitätsintegrität](service-fabric-health-introduction.md#entity-health-evaluation).
+- Den zusammengefassten Integritätsstatus der Entität. Dieser wird vom Integritätsspeicher anhand der Berichte zur Entitätsintegrität, anhand des Integritätsstatus der untergeordneten Elemente (falls zutreffend) und anhand der Integritätsrichtlinien berechnet. Erfahren Sie mehr über die [Auswertung der Entitätsintegrität](service-fabric-health-introduction.md#entity-health-evaluation).  
 
 - Die Integritätsereignisse der Entität
 
@@ -78,7 +79,7 @@ Die Integrität einer Entität enthält Folgendes:
 
 - Wenn die Entität nicht fehlerfrei ist, die Fehlerauswertungen in Verbindung mit dem Bericht, über den der Status der Entität ausgelöst wurde.
 
-## Abrufen der Clusterintegrität
+## <a name="get-cluster-health"></a>Abrufen der Clusterintegrität
 Gibt die Integrität der Clusterentität zurück und enthält die Integritätsstatusangaben von Anwendungen und Knoten (untergeordnete Elemente des Clusters). Eingabe:
 
 - [Optional] Die Clusterintegritätsrichtlinie zum Auswerten der Knoten und der Clusterereignisse.
@@ -87,8 +88,8 @@ Gibt die Integrität der Clusterentität zurück und enthält die Integritätsst
 
 - [Optional] Filter für Ereignisse, Knoten und Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse, Knoten und Anwendungen – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Erstellen Sie zum Abrufen der Clusterintegrität ein Element vom Typ `FabricClient`, und rufen Sie die Methode [GetClusterHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getclusterhealthasync.aspx) für das dazugehörige Element vom Typ **HealthManager** auf.
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen der Clusterintegrität ein Element vom Typ `FabricClient` , und rufen Sie die Methode [GetClusterHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getclusterhealthasync.aspx) für das dazugehörige Element vom Typ **HealthManager**auf.
 
 Mit dem folgenden Aufruf wird die Clusterintegrität abgerufen:
 
@@ -121,8 +122,8 @@ var queryDescription = new ClusterHealthQueryDescription()
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync(queryDescription);
 ```
 
-### PowerShell
-Zum Abrufen der Clusterintegrität wird das Cmdlet [Get-ServiceFabricClusterHealth](https://msdn.microsoft.com/library/mt125850.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Clusterintegrität wird das Cmdlet [Get-ServiceFabricClusterHealth](https://msdn.microsoft.com/library/mt125850.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
 
 Der Status des Clusters umfasst fünf Knoten, die Systemanwendung und „fabric:/WordCount“ in der beschriebenen Konfiguration.
 
@@ -175,7 +176,7 @@ HealthEvents            : None
 Mit dem folgenden PowerShell-Cmdlet wird die Integrität des Clusters anhand einer benutzerdefinierten Anwendungsrichtlinie abgerufen. Die Ergebnisse werden gefiltert, um nur Anwendungen und Knoten mit dem Status „Fehler“ oder „Warnung“ abzurufen. Aus diesem Grund werden keine Knoten zurückgegeben, da sie alle fehlerfrei sind. Nur die Anwendung „fabric:/WordCount“ berücksichtigt den Anwendungsfilter. Da mit der benutzerdefinierten Richtlinie festgelegt wird, dass Warnungen für die Anwendung „fabric:/WordCount“ als Fehler anzusehen sind, wird die Anwendung auf den Status „Fehler“ heraufgestuft. Dasselbe gilt auch für den Cluster.
 
 ```powershell
-PS c:> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
+PS c:\> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
 $appHealthPolicy.ConsiderWarningAsError = $true
 $appHealthPolicyMap = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicyMap
 $appUri1 = New-Object -TypeName System.Uri -ArgumentList "fabric:/WordCount"
@@ -207,10 +208,10 @@ HealthEvents            : None
 
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Clusterintegrität mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707669.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707696.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Abrufen der Integrität von Knoten
+## <a name="get-node-health"></a>Abrufen der Integrität von Knoten
 Gibt die Integrität einer Knotenentität zurück und enthält die auf dem Knoten gemeldeten Integritätsereignisse. Eingabe:
 
 - [Erforderlich] Der Knotenname, mit dem der Knoten identifiziert wird.
@@ -219,8 +220,8 @@ Gibt die Integrität einer Knotenentität zurück und enthält die auf dem Knote
 
 - [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Erstellen Sie zum Abrufen der Knotenintegrität über die API ein Element vom Typ `FabricClient`, und rufen Sie die [GetNodeHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getnodehealthasync.aspx)-Methode für das dazugehörige HealthManager-Element auf.
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen der Knotenintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetNodeHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getnodehealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf.
 
 Mit dem folgenden Code wird die Knotenintegrität für den angegebenen Knotennamen abgerufen:
 
@@ -228,7 +229,7 @@ Mit dem folgenden Code wird die Knotenintegrität für den angegebenen Knotennam
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(nodeName);
 ```
 
-Mit dem folgenden Code wird die Knotenintegrität für den angegebenen Knotennamen abgerufen, und der Ereignisfilter und die benutzerdefinierte Richtlinie werden mit [NodeHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.nodehealthquerydescription.aspx) übergeben:
+Mit dem folgenden Code wird die Knotenintegrität für den angegebenen Knotennamen abgerufen, und der Ereignisfilter und die benutzerdefinierte Richtlinie werden mit [NodeHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.nodehealthquerydescription.aspx)übergeben:
 
 ```csharp
 var queryDescription = new NodeHealthQueryDescription(nodeName)
@@ -240,8 +241,9 @@ var queryDescription = new NodeHealthQueryDescription(nodeName)
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(queryDescription);
 ```
 
-### PowerShell
-Zum Abrufen der Knotenintegrität wird das Cmdlet [Get-ServiceFabricNodeHealth](https://msdn.microsoft.com/library/mt125937.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her. Mit dem folgenden Cmdlet wird die Knotenintegrität mit standardmäßigen Integritätsrichtlinien abgerufen:
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Knotenintegrität wird das Cmdlet [Get-ServiceFabricNodeHealth](https://msdn.microsoft.com/library/mt125937.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
+Mit dem folgenden Cmdlet wird die Knotenintegrität mit standardmäßigen Integritätsrichtlinien abgerufen:
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth _Node_1
@@ -277,10 +279,10 @@ _Node_3                     Ok
 _Node_4                     Ok
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Knotenintegrität mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707650.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707665.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Abrufen der Anwendungsintegrität
+## <a name="get-application-health"></a>Abrufen der Anwendungsintegrität
 Gibt die Integrität einer Anwendungsentität zurück. Enthält die Integritätsstatusangaben der bereitgestellten Anwendung und der untergeordneten Elemente des Diensts. Eingabe:
 
 - [Erforderlich] Der Anwendungsname (URI) zum Identifizieren der Anwendung.
@@ -289,8 +291,8 @@ Gibt die Integrität einer Anwendungsentität zurück. Enthält die Integritäts
 
 - [Optional] Filter für Ereignisse, Dienste und bereitgestellte Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse, Dienste und bereitgestellten Anwendungen werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Erstellen Sie zum Abrufen der Anwendungsintegrität ein Element vom Typ `FabricClient`, und rufen Sie die [GetApplicationHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getapplicationhealthasync.aspx)-Methode für das dazugehörige HealthManager-Element auf.
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen der Anwendungsintegrität ein Element vom Typ `FabricClient` , und rufen Sie die [GetApplicationHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getapplicationhealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf.
 
 Mit dem folgenden Code wird die Anwendungsintegrität für den angegebenen Anwendungsnamen (URI) abgerufen:
 
@@ -298,7 +300,7 @@ Mit dem folgenden Code wird die Anwendungsintegrität für den angegebenen Anwen
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(applicationName);
 ```
 
-Mit dem folgenden Code wird die Anwendungsintegrität für den angegebenen Anwendungsnamen (URI) abgerufen. Filter und die benutzerdefinierte Richtlinie werden mit [ApplicationHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.applicationhealthquerydescription.aspx) angegeben.
+Mit dem folgenden Code wird die Anwendungsintegrität für den angegebenen Anwendungsnamen (URI) abgerufen. Filter und die benutzerdefinierte Richtlinien werden mit [ApplicationHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.applicationhealthquerydescription.aspx) angegeben.
 
 ```csharp
 HealthStateFilter warningAndErrors = HealthStateFilter.Error | HealthStateFilter.Warning;
@@ -326,13 +328,13 @@ var queryDescription = new ApplicationHealthQueryDescription(applicationName)
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(queryDescription);
 ```
 
-### PowerShell
-Zum Abrufen der Anwendungsintegrität wird das Cmdlet [Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Anwendungsintegrität wird das Cmdlet [Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
 
 Mit dem folgenden Cmdlet wird die Integrität der Anwendung **fabric:/WordCount** zurückgegeben:
 
 ```powershell
-PS c:>
+PS c:\>
 PS C:\WINDOWS\system32>  Get-ServiceFabricApplicationHealth fabric:/WordCount
 
 
@@ -425,10 +427,10 @@ DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Anwendungsintegrität mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707681.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707643.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Abrufen der Dienstintegrität
+## <a name="get-service-health"></a>Abrufen der Dienstintegrität
 Gibt die Integrität einer Dienstentität zurück. Enthält die Integritätsstatusangaben der Partition. Eingabe:
 
 - [Erforderlich] Der Dienstname (URI) zum Identifizieren des Diensts.
@@ -437,8 +439,8 @@ Gibt die Integrität einer Dienstentität zurück. Enthält die Integritätsstat
 
 - [Optional] Filter für Ereignisse und Partitionen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und Partitionen werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Erstellen Sie zum Abrufen der Dienstintegrität über die API ein Element vom Typ `FabricClient`, und rufen Sie die [GetServiceHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getservicehealthasync.aspx)-Methode für das dazugehörige HealthManager-Element auf.
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen der Dienstintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetServiceHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getservicehealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf.
 
 Im folgenden Beispiel wird die Integrität eines Diensts mit dem angegebenen Dienstnamen (URI) abgerufen:
 
@@ -446,7 +448,7 @@ Im folgenden Beispiel wird die Integrität eines Diensts mit dem angegebenen Die
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
-Mit dem folgenden Code wird die Dienstintegrität für den angegebenen Dienstnamen (URI) abgerufen. Filter und die benutzerdefinierte Richtlinie werden mit [ServiceHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.servicehealthquerydescription.aspx) angegeben:
+Mit dem folgenden Code wird die Dienstintegrität für den angegebenen Dienstnamen (URI) abgerufen. Filter und benutzerdefinierte Richtlinie werden mit [ServiceHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.servicehealthquerydescription.aspx) angegeben:
 
 ```csharp
 var queryDescription = new ServiceHealthQueryDescription(serviceName)
@@ -458,8 +460,8 @@ var queryDescription = new ServiceHealthQueryDescription(serviceName)
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(queryDescription);
 ```
 
-### PowerShell
-Zum Abrufen der Dienstintegrität wird das Cmdlet [Get-ServiceFabricServiceHealth](https://msdn.microsoft.com/library/mt125984.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Dienstintegrität wird das Cmdlet [Get-ServiceFabricServiceHealth](https://msdn.microsoft.com/library/mt125984.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
 
 Mit dem folgenden Cmdlet wird die Dienstintegrität anhand von standardmäßigen Integritätsrichtlinien abgerufen.
 
@@ -529,10 +531,10 @@ HealthEvents          :
                         IsExpired             : False
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Dienstintegrität mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707609.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707646.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Abrufen der Partitionsintegrität
+## <a name="get-partition-health"></a>Abrufen der Partitionsintegrität
 Gibt die Integrität einer Partitionsentität zurück. Enthält die Angaben zum Replikatintegritätsstatus. Eingabe:
 
 - [Erforderlich] Die Partitions-ID (GUID) zur Identifizierung der Partition.
@@ -541,15 +543,15 @@ Gibt die Integrität einer Partitionsentität zurück. Enthält die Angaben zum 
 
 - [Optional] Filter für Ereignisse und Replikate, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und Replikate werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Erstellen Sie zum Abrufen der Partitionsintegrität über die API ein Element vom Typ `FabricClient`, und rufen Sie die [GetPartitionHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getpartitionhealthasync.aspx)-Methode für das dazugehörige HealthManager-Element auf. Erstellen Sie zum Angeben optionaler Parameter das Element [PartitionHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.partitionhealthquerydescription.aspx).
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen der Partitionsintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetPartitionHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getpartitionhealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Erstellen Sie zum Angeben optionaler Parameter das Element [PartitionHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.partitionhealthquerydescription.aspx).
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
 ```
 
-### PowerShell
-Zum Abrufen der Partitionsintegrität wird das Cmdlet [Get-ServiceFabricPartitionHealth](https://msdn.microsoft.com/library/mt125869.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Partitionsintegrität wird das Cmdlet [Get-ServiceFabricPartitionHealth](https://msdn.microsoft.com/library/mt125869.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
 
 Mit dem folgenden Cmdlet wird die Integrität für alle Partitionen des Diensts **fabric:/WordCount/WordCountService** abgerufen:
 
@@ -592,10 +594,10 @@ HealthEvents          :
                         Transitions           : Error->Warning = 3/22/2016 7:57:48 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Partitionsintegrität mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707683.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707680.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Abrufen der Replikatintegrität
+## <a name="get-replica-health"></a>Abrufen der Replikatintegrität
 Gibt die Integrität eines zustandsbehafteten Dienstreplikats oder einer zustandslosen Dienstinstanz zurück. Eingabe:
 
 - [Erforderlich] Die Partitions-ID (GUID) und die Replikat-ID zum Identifizieren des Replikats.
@@ -604,15 +606,15 @@ Gibt die Integrität eines zustandsbehafteten Dienstreplikats oder einer zustand
 
 - [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Erstellen Sie zum Abrufen der Replikatintegrität über die API ein Element vom Typ `FabricClient`, und rufen Sie die [GetReplicaHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getreplicahealthasync.aspx)-Methode für das dazugehörige HealthManager-Element auf. Erweiterte Parameter können mit [ReplicaHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.replicahealthquerydescription.aspx) angegeben werden.
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen der Replikatintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetReplicaHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getreplicahealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Erweiterte Parameter können mit [ReplicaHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.replicahealthquerydescription.aspx)angegeben werden.
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
 ```
 
-### PowerShell
-Zum Abrufen der Replikatintegrität wird das Cmdlet [Get-ServiceFabricReplicaHealth](https://msdn.microsoft.com/library/mt125808.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Replikatintegrität wird das Cmdlet [Get-ServiceFabricReplicaHealth](https://msdn.microsoft.com/library/mt125808.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
 
 Mit dem folgenden Cmdlet wird die Integrität des primären Replikats für alle Partitionen des Diensts abgerufen:
 
@@ -637,10 +639,10 @@ HealthEvents          :
                         Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Replikatintegrität mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707673.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707641.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Abrufen der Integrität der bereitgestellten Anwendung
+## <a name="get-deployed-application-health"></a>Abrufen der Integrität der bereitgestellten Anwendung
 Gibt die Integrität einer Anwendung zurück, die auf einer Knotenentität bereitgestellt wird. Enthält die Integritätsstatusangaben der bereitgestellten Dienstpakete. Eingabe:
 
 - [Erforderlich] Der Anwendungsname (URI) und der Knotenname (Zeichenfolge) zum Identifizieren der bereitgestellten Anwendung.
@@ -649,18 +651,18 @@ Gibt die Integrität einer Anwendung zurück, die auf einer Knotenentität berei
 
 - [Optional] Filter für Ereignisse und bereitgestellte Dienstpakete, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und bereitgestellten Dienste werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Um die Integrität für eine auf einem Knoten bereitgestellte Anwendung über die API abzurufen, erstellen Sie ein Element vom Typ `FabricClient`, und rufen Sie die [GetDeployedApplicationHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync.aspx)-Methode für das dazugehörige HealthManager-Element auf. Optionale Parameter können mit [DeployedApplicationHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.deployedapplicationhealthquerydescription.aspx) angegeben werden.
+### <a name="api"></a>API
+Um die Integrität für eine auf einem Knoten bereitgestellte Anwendung über die API abzurufen, erstellen Sie ein Element vom Typ `FabricClient` , und rufen Sie die [GetDeployedApplicationHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Optionale Parameter können mit [DeployedApplicationHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.deployedapplicationhealthquerydescription.aspx)angegeben werden.
 
 ```csharp
 DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedApplicationHealthAsync(
     new DeployedApplicationHealthQueryDescription(applicationName, nodeName));
 ```
 
-### PowerShell
-Zum Abrufen der Integrität von bereitgestellten Anwendungen wird das Cmdlet [Get-ServiceFabricDeployedApplicationHealth](https://msdn.microsoft.com/library/mt163523.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her. Führen Sie [Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) aus, und ermitteln Sie anhand der untergeordneten Elemente der bereitgestellten Anwendung, wo eine Anwendung bereitgestellt wird.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Integrität von bereitgestellten Anwendungen wird das Cmdlet [Get-ServiceFabricDeployedApplicationHealth](https://msdn.microsoft.com/library/mt163523.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her. Führen Sie [Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) aus, und ermitteln Sie anhand der untergeordneten Elemente der bereitgestellten Anwendung, wo eine Anwendung bereitgestellt wird.
 
-Mit dem folgenden Cmdlet wird die Integrität der Anwendung **fabric:/WordCount** abgerufen, die auf **_Node_2** bereitgestellt wurde.
+Mit dem folgenden Cmdlet wird die Integrität der Anwendung **fabric:/WordCount** abgerufen, die auf **_Node_2** bereitgestellt ist.
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_2
@@ -692,10 +694,10 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Integrität der bereitgestellten Anwendung mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707644.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707688.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Abrufen der Integrität von bereitgestellten Dienstpaketen
+## <a name="get-deployed-service-package-health"></a>Abrufen der Integrität von bereitgestellten Dienstpaketen
 Gibt die Integrität einer bereitgestellten Dienstpaketentität zurück. Eingabe:
 
 - [Erforderlich] Der Anwendungsname (URI), der Knotenname (Zeichenfolge) und der Dienstmanifestname (Zeichenfolge) zum Identifizieren des bereitgestellten Dienstpakets.
@@ -704,18 +706,18 @@ Gibt die Integrität einer bereitgestellten Dienstpaketentität zurück. Eingabe
 
 - [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
-### API
-Erstellen Sie zum Abrufen der Integrität eines bereitgestellten Dienstpakets über die API ein Element vom Typ `FabricClient`, und rufen Sie die [GetDeployedServicePackageHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync.aspx)-Methode für das dazugehörige HealthManager-Element auf. Optionale Parameter können mit [DeployedServicePackageHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.deployedservicepackagehealthquerydescription.aspx) angegeben werden.
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen der Integrität eines bereitgestellten Dienstpakets über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetDeployedServicePackageHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Optionale Parameter können mit [DeployedServicePackageHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.deployedservicepackagehealthquerydescription.aspx)angegeben werden.
 
 ```csharp
 DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeployedServicePackageHealthAsync(
     new DeployedServicePackageHealthQueryDescription(applicationName, nodeName, serviceManifestName));
 ```
 
-### PowerShell
-Zum Abrufen der Integrität bereitgestellter Dienstpakete wird das Cmdlet [Get-ServiceFabricDeployedServicePackageHealth](https://msdn.microsoft.com/library/mt163525.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her. Führen Sie [Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) aus, und ermitteln Sie anhand der bereitgestellten Anwendungen, wo eine Anwendung bereitgestellt wird. Sehen Sie sich die untergeordneten Elemente der bereitgestellten Dienstpakete in der Ausgabe von [Get-ServiceFabricDeployedApplicationHealth](https://msdn.microsoft.com/library/mt163523.aspx) an, um zu ermitteln, welche Dienstpakete in einer Anwendung enthalten sind.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Integrität bereitgestellter Dienstpakete wird das Cmdlet [Get-ServiceFabricDeployedServicePackageHealth](https://msdn.microsoft.com/library/mt163525.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her. Führen Sie [Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) aus, und ermitteln Sie anhand der bereitgestellten Anwendungen, wo eine Anwendung bereitgestellt wird. Sehen Sie sich die untergeordneten Elemente der bereitgestellten Dienstpakete in der Ausgabe von [Get-ServiceFabricDeployedApplicationHealth](https://msdn.microsoft.com/library/mt163523.aspx) an, um zu ermitteln, welche Dienstpakete in einer Anwendung enthalten sind.
 
-Mit dem folgenden Cmdlet wird die Integrität des Dienstpakets **WordCountServicePkg** der Anwendung **fabric:/WordCount** abgerufen, die auf **_Node_2** bereitgestellt wird. Die Entität verfügt über **System.Hosting**-Berichte für die erfolgreiche Aktivierung von Dienstpaketen und Einstiegspunkten und die erfolgreiche Registrierung von Diensttypen.
+Mit dem folgenden Cmdlet wird die Integrität des Dienstpakets **WordCountServicePkg** der Anwendung **fabric:/WordCount** abgerufen, die auf **_Node_2** bereitgestellt ist. Die Entität verfügt über **System.Hosting** -Berichte für die erfolgreiche Aktivierung von Dienstpaketen und Einstiegspunkten und die erfolgreiche Registrierung von Diensttypen.
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -763,10 +765,10 @@ HealthEvents          :
                         Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können die Integrität des bereitgestellten Dienstpakets mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/dn707677.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/dn707689.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien enthält.
 
-## Integritätsblockabfragen
+## <a name="health-chunk-queries"></a>Integritätsblockabfragen
 Integritätsblockabfragen können pro Eingabefilter rekursiv mehrstufige untergeordnete Clusterelemente zurückgeben. Sie unterstützen erweiterte Filter, mit denen auf äußerst flexible Weise angegeben werden kann, welche untergeordneten Elemente zurückgegeben werden sollen. Die Elemente werden entweder über ihren eindeutigen Bezeichner oder über einen anderen Gruppenbezeichner und/oder den Integritätsstatus identifiziert. Im Gegensatz zu Integritätsbefehlen, bei denen immer untergeordnete Elemente der ersten Ebene einbezogen werden, werden hier standardmäßig keine untergeordneten Elemente einbezogen.
 
 Die [Integritätsabfragen](service-fabric-view-entities-aggregated-health.md#health-queries) geben pro erforderlichem Filter nur untergeordnete Elemente der ersten Ebene der angegebenen Entität zurück. Zum Abrufen der untergeordneten Elemente weiterer Ebenen müssen Sie für die betreffenden Entitäten zusätzliche Integritäts-APIs aufrufen. Analog dazu müssen Sie jeweils eine API pro gewünschter Entität aufrufen, um die Integrität bestimmter Entitäten abzurufen. Mit der erweiterten Filterung der Blockabfrage können Sie mehrere Elemente in einer einzelnen Abfrage anfordern und so die Größe und Anzahl von Nachrichten verringern.
@@ -793,21 +795,22 @@ Momentan wird die Integritätsblockabfrage nur für die Clusterentität verfügb
 
 - Integritätszustandsblock-Liste der Anwendungen, die Eingabefilter berücksichtigen. Jeder Anwendungs-Integritätszustandsblock enthält eine Blockliste mit allen Diensten, die Eingabefilter berücksichtigen, und eine Blockliste mit allen bereitgestellten Anwendungen, die die Filter berücksichtigen. Gleiches gilt für die untergeordneten Elemente von Diensten und bereitgestellten Anwendung. Dadurch können potenziell alle Entitäten im Cluster auf Anforderung hierarchisch zurückgegeben werden.
 
-### Cluster-Integritätsblockabfrage
+### <a name="cluster-health-chunk-query"></a>Cluster-Integritätsblockabfrage
 Gibt die Integrität der Clusterentität zurück (einschließlich der hierarchischen Integritätszustandsblöcke der erforderlichen untergeordneten Elemente). Eingabe:
 
 - [Optional] Die Clusterintegritätsrichtlinie zum Auswerten der Knoten und der Clusterereignisse.
 
 - [Optional] Die Zuordnung der Anwendungsintegritätsrichtlinien mit den Integritätsrichtlinien zum Außerkraftsetzen der Richtlinien für das Anwendungsmanifest.
 
-- [Optional] Filter für Knoten und Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen. Die Filter gelten speziell für eine Entität/Entitätsgruppe oder für alle Entitäten auf dieser Ebene. Die Liste mit den Filtern kann einen allgemeinen Filter und/oder Filter für bestimmte Bezeichner enthalten, um die von der Abfrage zurückgegebenen Entitäten zu differenzieren. Ohne Angabe werden die untergeordneten Elemente standardmäßig nicht zurückgegeben. Weitere Informationen zu den Filtern finden Sie unter [NodeHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.nodehealthstatefilter.aspx) sowie unter [ApplicationHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthstatefilter.aspx). Mit den Anwendungsfiltern können rekursiv erweiterte Filter für untergeordnete Elemente angegeben werden.
+- [Optional] Filter für Knoten und Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen. Die Filter gelten speziell für eine Entität/Entitätsgruppe oder für alle Entitäten auf dieser Ebene. Die Liste mit den Filtern kann einen allgemeinen Filter und/oder Filter für bestimmte Bezeichner enthalten, um die von der Abfrage zurückgegebenen Entitäten zu differenzieren. Ohne Angabe werden die untergeordneten Elemente standardmäßig nicht zurückgegeben.
+Weitere Informationen zu den Filtern finden Sie unter [NodeHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.nodehealthstatefilter.aspx) sowie unter [ApplicationHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthstatefilter.aspx). Mit den Anwendungsfiltern können rekursiv erweiterte Filter für untergeordnete Elemente angegeben werden.
 
 Das Blockergebnis enthält die untergeordneten Elemente, die die Filter berücksichtigen.
 
 Derzeit werden von der Blockabfrage keine fehlerhaften Auswertungen oder Entitätsereignisse zurückgegeben. Diese zusätzlichen Informationen können mit der vorhandenen Clusterintegritätsabfrage abgerufen werden.
 
-### API
-Erstellen Sie zum Abrufen des Clusterintegritätsblocks ein Element vom Typ `FabricClient`, und rufen Sie die [GetClusterHealthChunkAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync.aspx)-Methode für das dazugehörige Element vom Typ **HealthManager** auf. Integritätsrichtlinien und erweiterte Filter können durch Übergeben von [ClusterHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.clusterhealthchunkquerydescription.aspx) definiert werden.
+### <a name="api"></a>API
+Erstellen Sie zum Abrufen des Clusterintegritätsblocks ein Element vom Typ `FabricClient` , und rufen Sie die [GetClusterHealthChunkAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync.aspx) -Methode für das dazugehörige Element vom Typ **HealthManager**auf. Integritätsrichtlinien und erweiterte Filter können durch Übergeben von [ClusterHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.clusterhealthchunkquerydescription.aspx) definiert werden.
 
 Im folgenden Code wird ein Clusterintegritätsblock mit erweiterten Filtern abgerufen:
 
@@ -852,8 +855,8 @@ queryDescription.ApplicationFilters.Add(wordCountApplicationFilter);
 var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDescription);
 ```
 
-### PowerShell
-Zum Abrufen der Clusterintegrität wird das Cmdlet [Get-ServiceFabricClusterChunkHealth](https://msdn.microsoft.com/library/mt644772.aspx) verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
+### <a name="powershell"></a>PowerShell
+Zum Abrufen der Clusterintegrität wird das Cmdlet [Get-ServiceFabricClusterChunkHealth](https://msdn.microsoft.com/library/mt644772.aspx)verwendet. Stellen Sie über das Cmdlet [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) zunächst eine Verbindung mit dem Cluster her.
 
 Mit dem folgenden Code werden Knoten nur dann abgerufen, wenn sie einen Fehlerstatus besitzen – mit Ausnahme eines bestimmten Knotens, der immer zurückgegeben werden soll:
 
@@ -1001,11 +1004,11 @@ ApplicationHealthStateChunks :
                                        HealthState           : Ok
 ```
 
-### REST
+### <a name="rest"></a>REST
 Sie können den Clusterintegritätsblock mit einer [GET-Anforderung](https://msdn.microsoft.com/library/azure/mt656722.aspx) oder einer [POST-Anforderung](https://msdn.microsoft.com/library/azure/mt656721.aspx) abrufen, die im Text beschriebene Integritätsrichtlinien und erweiterte Filter enthält.
 
-## Allgemeine Abfragen
-Mit den allgemeinen Abfragen wird die Liste der Service Fabric-Entitäten des angegebenen Typs zurückgegeben. Sie werden über die API (über die Methoden unter **FabricClient.QueryManager**), über PowerShell-Cmdlets und über REST verfügbar gemacht. Mit diesen Abfragen werden Unterabfragen aus mehreren Komponenten zusammengefasst. Eine davon ist der [Integritätsspeicher](service-fabric-health-introduction.md#health-store), in dem der aggregierte Integritätszustand für jedes Abfrageergebnis aufgefüllt wird.
+## <a name="general-queries"></a>Allgemeine Abfragen
+Mit den allgemeinen Abfragen wird die Liste der Service Fabric-Entitäten des angegebenen Typs zurückgegeben. Sie werden über die API (über die Methoden unter **FabricClient.QueryManager**), über PowerShell-Cmdlets und über REST verfügbar gemacht. Mit diesen Abfragen werden Unterabfragen aus mehreren Komponenten zusammengefasst. Eine davon ist der [Integritätsspeicher](service-fabric-health-introduction.md#health-store), in dem der aggregierte Integritätszustand für jedes Abfrageergebnis aufgefüllt wird.  
 
 > [AZURE.NOTE] Mit den allgemeinen Abfragen wird der aggregierte Integritätsstatus der Entität zurückgegeben. Sie enthalten keine umfassenden Integritätsdaten. Wenn eine Entität fehlerhaft ist, können Sie mit Integritätsabfragen alle Informationen zur Integrität abrufen, z. B. Ereignisse, Integritätsstatusangaben untergeordneter Elemente und Fehlerauswertungen.
 
@@ -1037,7 +1040,7 @@ Die Abfragen, die **HealthState** für Entitäten enthalten, lauten:
 
 > [AZURE.NOTE] Einige Abfragen geben unter Umständen auf Seiten aufgeteilte Ergebnisse zurück. Die Rückgabe dieser Abfragen ist eine von [PagedList<T>](https://msdn.microsoft.com/library/azure/mt280056.aspx) abgeleitete Liste. Falls die Ergebnisse nicht in eine Nachricht passen, wird nur eine Seite zurückgegeben, und mit einem ContinuationToken (Fortsetzungstoken) wird nachverfolgt, wo die Enumeration beendet wurde. Sie sollten die gleiche Abfrage wiederholen und dabei das Fortsetzungstoken aus der vorherigen Abfrage übergeben, um weitere Ergebnisse zu erhalten.
 
-### Beispiele
+### <a name="examples"></a>Beispiele
 
 Mit dem folgenden Code werden die fehlerhaften Anwendungen im Cluster abgerufen:
 
@@ -1082,7 +1085,7 @@ ServiceStatus          : Active
 HealthState            : Warning
 ```
 
-## Cluster- und Anwendungsupgrades
+## <a name="cluster-and-application-upgrades"></a>Cluster- und Anwendungsupgrades
 Während eines überwachten Upgrades von Cluster und Anwendung wird von Service Fabric die Integrität überprüft, um sicherzustellen, dass alles fehlerfrei bleibt. Wenn eine Entität von den konfigurierten Integritätsrichtlinien als fehlerhaft ausgewertet wird, wendet das Upgrade spezifische Richtlinien an, um die nächste Aktion festzulegen. Das Upgrade kann angehalten werden, um eine Benutzerinteraktion (z. B. das Beheben von Fehlerbedingungen oder das Ändern von Richtlinien) zu ermöglichen, oder es kann automatisch einen Rollback auf die vorherige, einwandfreie Version durchführen.
 
 Während des Upgrades eines *Clusters* können Sie den Clusterupgradestatus abrufen. Zum Upgradestatus gehören auch Fehlerauswertungen, die anzeigen, was im Cluster fehlerhaft ist. Falls für das Upgrade aufgrund von Integritätsproblemen ein Rollback durchgeführt wird, werden im Upgradestatus die letzten Gründe für Fehler beibehalten und können abgerufen werden. Mit diesen Informationen können Administratoren untersuchen, was falsch gelaufen ist, nachdem das Upgrade zurückgesetzt oder angehalten wurde.
@@ -1145,12 +1148,12 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 Erfahren Sie mehr über das [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md).
 
-## Verwenden von Integritätsauswertungen zur Problembehandlung
+## <a name="use-health-evaluations-to-troubleshoot"></a>Verwenden von Integritätsauswertungen zur Problembehandlung
 Wenn im Cluster oder in einer Anwendung ein Problem vorliegt, können Sie sich die Integrität des Clusters oder der Anwendung ansehen, um die Ursache zu ermitteln. In den Fehlerauswertungen werden Details zur Ursache bereitgestellt, durch die der aktuelle Fehlerstatus ausgelöst wurde. Nach Bedarf können Sie ein Detailinformationen zu den fehlerhaften untergeordneten Entitäten anzeigen, um die Ursache zu ermitteln.
 
 > [AZURE.NOTE] Die Fehlerauswertungen geben Aufschluss über den ersten Grund für den aktuellen Integritätszustand der Entität. Der Zustand ist unter Umständen auf mehrere andere Ereignisse zurückzuführen, aber diese werden bei der Auswertung nicht berücksichtigt. Sehen Sie sich die Detailinformationen der Integritätsentitäten an, um mehr Informationen zu erhalten und alle Fehlerberichte im Cluster zu ermitteln.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Verwenden von Systemintegritätsberichten für die Problembehandlung](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
 [Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten](service-fabric-report-health.md)
@@ -1161,4 +1164,8 @@ Wenn im Cluster oder in einer Anwendung ein Problem vorliegt, können Sie sich d
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

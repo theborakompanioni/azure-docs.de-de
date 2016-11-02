@@ -1,67 +1,68 @@
 <properties
-	pageTitle="Aktivieren von Heapdumps für Hadoop-Dienste auf HDInsight | Microsoft Azure"
-	description="Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen."
-	services="hdinsight"
-	documentationCenter=""
-	authors="Blackmist"
-	manager="jhubbard"
-	editor="cgronlun"
-	tags="azure-portal"/>
+    pageTitle="Aktivieren von Heapdumps für Hadoop-Dienste auf HDInsight | Microsoft Azure"
+    description="Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen."
+    services="hdinsight"
+    documentationCenter=""
+    authors="Blackmist"
+    manager="jhubbard"
+    editor="cgronlun"
+    tags="azure-portal"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="larryfr"/>
+    ms.service="hdinsight"
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/27/2016"
+    ms.author="larryfr"/>
 
 
-#Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern (Vorschau)
 
-[AZURE.INCLUDE [Heapdump-Auswahl](../../includes/hdinsight-selector-heap-dump.md)]
+#<a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight-(preview)"></a>Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern (Vorschau)
+
+[AZURE.INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
 Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie sehr nützlich zum Diagnostizieren von Problemen, die bei der Ausführung auftreten.
 
 > [AZURE.NOTE] Die Informationen in diesem Artikel gelten nur für Linux-basierte HDInsight-Cluster. Informationen zu Windows-basierten HDInsight-Clustern finden Sie unter [Aktivieren von Heapdumps für Hadoop-Dienste auf Windows-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dumps.md)
 
-## <a name="whichServices"></a>Dienste
+## <a name="<a-name="whichservices"></a>services"></a><a name="whichServices"></a>Dienste
 
 Sie können Heapdumps für die folgenden Dienste aktivieren:
 
-*  **hcatalog**: tempelton
-*  **hive**: hiveserver2, metastore, derbyserver
-*  **mapreduce**: jobhistoryserver
-*  **yarn**: resourcemanager, nodemanager, timelineserver
-*  **hdfs**: datanode, secondarynamenode, namenode
+*  **hcatalog** : tempelton
+*  **hive** : hiveserver2, metastore, derbyserver
+*  **mapreduce** : jobhistoryserver
+*  **yarn** : resourcemanager, nodemanager, timelineserver
+*  **hdfs** : datanode, secondarynamenode, namenode
 
 Sie können Heapdumps auch für die Mapper- und Reducer-Prozesse aktivieren, die von HDInsight ausgeführt wurden.
 
-## <a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
+## <a name="<a-name="configuration"></a>understanding-heap-dump-configuration"></a><a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
 
 Heapdumps werden aktiviert, indem Optionen (oder Parameter) an die JVM übergeben werden, wenn ein Dienst gestartet wird. Für die meisten Hadoop-Dienste kann dies erreicht werden, indem das Shellskript geändert wird, das zum Starten des Diensts verwendet wird.
 
-In jedem Skript ist ein Export für ***\_OPTS** vorhanden, der die an die JVM übergebenen Optionen enthält. Beispiel: Im Skript **hadoop-env.sh** enthält die Zeile, die mit `export HADOOP_NAMENODE_OPTS=` beginnt, die Optionen für den NameNode-Dienst.
+In jedem Skript ist ein Export für **\*\_OPTS** vorhanden, der die an die JVM übergebenen Optionen enthält. Beispiel: Im Skript **hadoop-env.sh** enthält die Zeile, die mit `export HADOOP_NAMENODE_OPTS=` beginnt, die Optionen für den NameNode-Dienst.
 
-Mapper- und Reducer-Prozesse unterscheiden sich geringfügig, da dies untergeordnete Prozesse des MapReduce-Diensts sind. Jeder Mapper- oder Reducer-Prozess wird in einem untergeordneten Container ausgeführt, und es gibt zwei Einträge, die die JVM-Optionen für diese Prozesse enthalten. Beide sind in **mapred-site.xml** enthalten:
+Mapper- und Reducer-Prozesse unterscheiden sich geringfügig, da dies untergeordnete Prozesse des MapReduce-Diensts sind. Jeder Mapper- oder Reducer-Prozess wird in einem untergeordneten Container ausgeführt, und es gibt zwei Einträge, die die JVM-Optionen für diese Prozesse enthalten. Beide sind in **mapred-site.xml**enthalten:
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [AZURE.NOTE] Wir empfehlen die Verwendung von Ambari zum Ändern der Skripts und der Einstellungen in "mapred-site.xml", da mit Ambari das Replizieren von Änderungen auf Knoten im Cluster verarbeitet wird. Unter [Verwenden von Ambari](#using-ambari) finden Sie die detaillierten Schritte.
 
-###Aktivieren von Heapdumps
+###<a name="enable-heap-dumps"></a>Aktivieren von Heapdumps
 
 Die folgende Option aktiviert Heapdumps bei einem "OutOfMemoryError":
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-Das **+**-Zeichen gibt an, dass diese Option aktiviert ist. Der Standardwert ist deaktiviert.
+Das **+** -Zeichen gibt an, dass diese Option aktiviert ist. Der Standardwert ist deaktiviert.
 
 > [AZURE.WARNING] Heapdumps sind für Hadoop-Dienste auf HDInsight-Clustern nicht standardmäßig aktiviert, da die Dumpdateien groß sein können. Wenn Sie sie zur Problembehandlung aktivieren, denken Sie daran, sie zu deaktivieren, sobald Sie das Problem reproduziert und die Dumpdateien gesammelt haben.
 
-###Dumpspeicherort
+###<a name="dump-location"></a>Dumpspeicherort
 
 Der Standardspeicherort für die Dumpdatei ist das aktuelle Arbeitsverzeichnis. Sie können steuern, wo die Datei gespeichert wird, indem Sie die folgende Option verwenden:
 
@@ -69,7 +70,7 @@ Der Standardspeicherort für die Dumpdatei ist das aktuelle Arbeitsverzeichnis. 
 
 Beispiel: `-XX:HeapDumpPath=/tmp` bewirkt, dass die Dumps im Verzeichnis "/temp" gespeichert werden.
 
-###Skripts
+###<a name="scripts"></a>Skripts
 
 Sie können auch ein Skript auslösen, wenn ein **OutOfMemoryError** auftritt. So können Sie beispielsweise eine Benachrichtigung auslösen, damit Sie wissen, dass der Fehler aufgetreten ist. Dies wird mit der folgenden Option gesteuert:
 
@@ -79,11 +80,11 @@ Sie können auch ein Skript auslösen, wenn ein **OutOfMemoryError** auftritt. S
 >
 > Das Skript muss sich zudem an einem Speicherort befinden, auf den das Konto zugreifen kann, mit dem der Dienst ausgeführt wird, und Ausführungsberechtigungen müssen gewährt werden. Sie könnten z. B. Skripts in `/usr/local/bin` speichern und `chmod go+rx /usr/local/bin/filename.sh` zum Gewähren von Lese- und Ausführungsberechtigungen verwenden.
 
-##Verwenden von Ambari
+##<a name="using-ambari"></a>Verwenden von Ambari
 
 Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern:
 
-1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die URL ist https://YOURCLUSTERNAME.azurehdinsight.net.
+1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die URL lautet „https://IHRCLUSTERNAME.azurehdinsight.net“.
 
     Authentifizieren Sie bei der entsprechenden Aufforderung auf der Website mithilfe des HTTP-Kontonamens (Standard: admin) und dem Kennwort für den Cluster.
 
@@ -97,13 +98,13 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
 
     ![Gefilterte Liste](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
 
-4. Suchen Sie nach dem Eintrag ***\_OPTS** für den Dienst, für den Sie Heapdumps aktivieren möchten, und fügen die Optionen hinzu, die Sie aktivieren möchten. In der folgenden Abbildung wurde `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` dem Eintrag **HADOOP\_NAMENODE\_OPTS** hinzugefügt:
+4. Suchen Sie nach dem Eintrag **\*\_OPTS** für den Dienst, für den Sie Heapdumps aktivieren möchten, und fügen die Optionen hinzu, die Sie aktivieren möchten. In der folgenden Abbildung wurde `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` dem Eintrag **HADOOP\_NAMENODE\_OPTS** hinzugefügt:
 
-    ![HADOOP\_NAMENODE\_OPTS mit -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![HADOOP_NAMENODE_OPTS mit -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
-	> [AZURE.NOTE] Beim Aktivieren von Heapdumps für den untergeordneten Mapper- oder Reducer-Prozess suchen Sie stattdessen nach den Feldern mit der Bezeichnung **mapreduce.admin.map.child.java.opts** und **mapreduce.admin.reduce.child.java.opts**.
+    > [AZURE.NOTE] Beim Aktivieren von Heapdumps für den untergeordneten Mapper- oder Reducer-Prozess suchen Sie stattdessen nach den Feldern mit der Bezeichnung **mapreduce.admin.map.child.java.opts** und **mapreduce.admin.reduce.child.java.opts**.
 
-    Verwenden Sie die Schaltfläche **Save**, um die Änderungen zu speichern. Sie können einen kurzen Hinweise zur Beschreibung der Änderungen eingeben.
+    Verwenden Sie die Schaltfläche **Save** , um die Änderungen zu speichern. Sie können einen kurzen Hinweise zur Beschreibung der Änderungen eingeben.
 
 5. Nachdem die Änderungen angewendet wurden, wird das Symbol **Restart required** neben einem oder mehreren Diensten angezeigt.
 
@@ -121,4 +122,8 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
 
 8. Verwenden Sie nach dem Neustart der Dienste die Schaltfläche **Service Actions**, um **Turn Off Maintenance Mode** auszuwählen. Dadurch setzt Ambari das Überwachen auf Warnungen für den Dienst fort.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

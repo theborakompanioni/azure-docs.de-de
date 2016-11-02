@@ -1,23 +1,24 @@
 
 <properties
-	pageTitle="Überlegungen zum Entwurf der Azure Active Directory-Hybrididentität – Ermitteln der Anforderungen in Bezug auf die Zugriffssteuerung | Microsoft Azure"
-	description="Es werden die Säulen der Identität erläutert, und es wird die Ermittlung der Zugriffsanforderungen für Ressourcen für Benutzer in einer Hybrid-Umgebung beschrieben."
-	documentationCenter=""
-	services="active-directory"
-	authors="billmath"
-	manager="femila"
-	editor=""/>
+    pageTitle="Überlegungen zum Entwurf der Azure Active Directory-Hybrididentität – Ermitteln der Anforderungen in Bezug auf die Zugriffssteuerung | Microsoft Azure"
+    description="Es werden die Säulen der Identität erläutert, und es wird die Ermittlung der Zugriffsanforderungen für Ressourcen für Benutzer in einer Hybrid-Umgebung beschrieben."
+    documentationCenter=""
+    services="active-directory"
+    authors="billmath"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="08/08/2016"
-	ms.author="billmath"/>
+    ms.date="08/08/2016"
+    ms.author="billmath"/>
 
-# Ermitteln der Zugriffssteuerungsanforderungen für Ihre Hybrid-Identitätslösung
+
+# <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Zugriffssteuerungsanforderungen für Ihre Hybrid-Identitätslösung
 Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie diese Gelegenheit auch zum Überprüfen von Zugriffsanforderungen für die Ressourcen nutzen, für die eine Bereitstellung für die Benutzer geplant ist. Der Datenzugriff deckt alle vier Säulen der Identität ab, also:
 
 - Verwaltung
@@ -25,12 +26,12 @@ Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie diese G
 - Autorisierung
 - Überwachung
 
-Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Die Verwaltung und die Überwachung sind Teil des Hybrid-Identitätslebenszyklus. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrid-Identitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
+Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Die Verwaltung und die Überwachung sind Teil des Hybrid-Identitätslebenszyklus. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrididentitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
 
 >[AZURE.NOTE]
 Weitere Informationen zu den einzelnen Säulen finden Sie unter [Die vier Säulen der Identität – Identitätsverwaltung im Zeitalter von Hybrid-IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) (in englischer Sprache).
 
-## Authentifizierung und Autorisierung
+## <a name="authentication-and-authorization"></a>Authentifizierung und Autorisierung
 Es gibt verschiedene Szenarien für die Authentifizierung und Autorisierung. Diese Szenarien haben spezielle Anforderungen, die mit der Hybrid-Identitätslösung erfüllt werden müssen, für deren Einsatz sich das Unternehmen entscheidet. Szenarien mit Business to Business (B2B)-Kommunikation können für IT-Administratoren eine zusätzliche Herausforderung darstellen. Es muss sichergestellt werden, dass für die vom Unternehmen verwendete Authentifizierungs- und Autorisierungsmethode die Kommunikation mit den Geschäftspartnern möglich ist. Stellen Sie während des Entwurfsprozesses für die Authentifizierungs- und Autorisierungsanforderungen sicher, dass die folgenden Fragen beantwortet werden:
 
 - Sollen vom Unternehmen nur Benutzer authentifiziert und autorisiert werden, die im eigenen System für die Identitätsverwaltung enthalten sind?
@@ -50,7 +51,7 @@ Das Modell, das von Ihrem Unternehmen gewählt wird, richtet sich jeweils nach d
 - Wird in Ihrem Unternehmen das einmalige Anmelden für lokale Apps oder Apps in der Cloud verwendet?
  - Wenn ja: Wirkt sich die Einführung eines Hybrid-Identitätsmodells auf diesen Prozess aus?
 
-## Zugriffssteuerung
+## <a name="access-control"></a>Zugriffssteuerung
 Die Authentifizierung und Autorisierung sind wichtige Elemente, um über die Überprüfung von Benutzern den Zugriff auf Unternehmensdaten zu ermöglichen. Ebenso wichtig ist aber auch die Steuerung der Zugriffsebene, die diese Benutzer haben, sowie der Zugriffsebene von Administratoren für die von ihnen verwalteten Ressourcen. Ihre Hybrid-Identitätslösung muss den präzisen Zugriff auf Ressourcen, Delegierung und die rollenbasierte Zugriffssteuerung bereitstellen können. Stellen Sie sicher, dass in Bezug auf die Zugriffssteuerung die folgenden Fragen beantwortet werden:
 
 - Verfügt Ihr Unternehmen über mehr als einen Benutzer mit erhöhten Rechten für die Verwaltung Ihres Identitätssystems?
@@ -64,13 +65,17 @@ Die Authentifizierung und Autorisierung sind wichtige Elemente, um über die Üb
  - Wenn ja: Wo befinden sich diese Zielressourcen (lokal oder in der Cloud)?
 
 >[AZURE.NOTE]
-Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. Unter [Definieren der Strategie zum Schutz von Daten](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) sind die verfügbaren Optionen und die jeweiligen Vor- und Nachteile beschrieben. Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
+Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. [Definieren der Strategie zum Schutz von Daten](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) sind die verfügbaren Optionen und die jeweiligen Vor- und Nachteile beschrieben.  Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 [Bestimmen der Anforderungen an Reaktionen auf Vorfälle](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

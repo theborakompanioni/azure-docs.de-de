@@ -1,20 +1,27 @@
-Sie können mehrere Dienste innerhalb eines Abonnements erstellen, die jeweils in einem bestimmten Tarif bereitgestellt werden. Die einzige Beschränkung ist die zulässige Anzahl von Diensten für jeden Tarif innerhalb eines einzelnen Azure-Abonnements. Angaben zur maximalen Anzahl von Diensten pro Tarif sind unten aufgeführt. Wie erwähnt, könnten Sie bis zu 12 Dienste im Basic-Tarif und weitere 12 Dienste im S1-Tarif innerhalb desselben Abonnements erstellen.
+Sie können mehrere Dienste in einem Abonnement erstellen, die jeweils für einen bestimmten Tarif bereitgestellt werden. Als einzige Einschränkung gilt hierbei die Anzahl von zulässigen Diensten des jeweiligen Tarifs. Beispielsweise können Sie in einem Abonnement bis zu 12 Dienste für den Basic-Tarif und weitere 12 Dienste für den S1-Tarif erstellen. 
 
-Weitere Tarife sind einmal pro Abonnement verfügbar. Sie können sich an den Azure-Support wenden, wenn Sie S2, S3 oder S3 HD mehrfach pro Abonnement benötigen.
+Die Obergrenze für die maximale Anzahl von Diensten kann auf Anfrage angehoben werden. Wenden Sie sich an den Support von Azure, wenn Sie in einem Abonnement weitere Dienste benötigen.
 
-Ressource|Kostenlos|Basic|S1|S2|S3 <sup>1</sup> <br/>(Vorschau) |S3 HD <sup>1</sup> <br/>(Vorschau) 
+Ressource|Kostenlos|Basic|S1|S2|S3 <br/>(Vorschau) <sup>1</sup>  |S3 HD <br/>(Vorschau) <sup>1</sup> 
 ---|---|---|---|----|---|----
-Maximale Anzahl von Diensten |1 |12 |12 |1 |1 |1 
+Maximale Anzahl von Diensten |1 |12 |12  |6 |6 |6 
 Maximale Skalierung in SU <sup>2</sup>|N/V <sup>3</sup>|3 SU <sup>4</sup> |36 SU|36 SU|36 SU|12 SU <sup>5</sup>
 
-<sup>1</sup> Tarife in der **Vorschauphase** werden zu einem Einführungspreis von 50 Prozent Nachlass auf den vollen Preis abgerechnet. Vor der allgemeinen Verfügbarkeit (GA) werden Tarife als Vorschaufunktion vorgestellt. Es gibt keine Vereinbarung zum Servicelevel (SLA) während der Vorschau. Weitere Informationen zu Tarifen finden Sie unter [Choose a SKU or tier for Azure Search](../articles/search/search-sku-tier.md) (Auswählen einer SKU oder eines Tarifs für Azure Search).
+<sup>1</sup> Vorschautarife werden zur Einführung zum halben Preis berechnet. Der volle Preis gilt dann, wenn für den Tarif die allgemeine Verfügbarkeit (GA) erreicht wird. Es gibt keine Vereinbarung zum Servicelevel (SLA) während der Vorschau. Weitere Informationen zu Tarifen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](../articles/search/search-sku-tier.md).
 
-<sup>2</sup> **Sucheinheiten (SU)** sind gebührenpflichtige Einheiten pro Dienst, die entweder als **Replikat** oder **Partition** zugeordnet werden. Sie benötigen beide Ressourcentypen für Speicher-, Indizierungs- und Abfragevorgänge. Gültige Kombinationen, die innerhalb der maximalen Grenzwerte bleiben, finden Sie unter [Kapazitätsplanung in Azure Search](../articles/search/search-capacity-planning.md).
+<sup>2</sup> Sucheinheiten (SU) sind gebührenpflichtige Einheiten pro Dienst, die entweder als *Replikat* oder *Partition* zugeordnet werden. Sie benötigen beide Ressourcen für Speicher-, Indizierungs- und Abfragevorgänge. Informationen zu gültigen Kombinationen, die innerhalb der maximalen Grenzwerte bleiben, finden Sie unter [Kapazitätsplanung in Azure Search](../articles/search/search-capacity-planning.md). 
 
-<sup>3</sup> **Free** basiert auf freigegebenen Ressourcen, die von mehreren Abonnenten verwendet werden. In diesem Tarif gibt es keine dedizierten Ressourcen für einen einzelnen Abonnenten. Aus diesem Grund wird Skalierbarkeit nicht unterstützt.
+<sup>3</sup> Free basiert auf gemeinsamen Ressourcen, die von mehreren Abonnenten verwendet werden. In diesem Tarif gibt es keine dedizierten Ressourcen für einen einzelnen Abonnenten. Aus diesem Grund ist die maximale Skalierung als nicht zutreffend markiert.
 
-<sup>4</sup> **Basic** verfügt über eine feste Partition. SUs werden verwendet, um Replikate für die Skalierung der Abfrageworkloads zuzuordnen.
+<sup>4</sup> Basic verfügt über eine feste Partition. Bei diesem Tarif werden zusätzliche SUs verwendet, um weitere Replikate für umfangreichere Abfrageworkloads zuzuordnen.
 
-<sup>5</sup> **S3 HD** basiert auf der gleichen Hardware wie S3, jedoch in einer Konfiguration, die für eine große Anzahl von kleineren Indizes optimiert ist. Der Tarif weist eine sehr große Partition statt 12 kleinere Partitionen auf, und er verfügt über maximal 12 Replikate, ähnlich wie S3.
+<sup>5</sup> S3 HD basiert auf der gleichen Hardware wie S3, aber in einer Konfiguration, die für eine große Anzahl von kleineren Indizes optimiert ist. Ähnlich wie bei Basic wird eine sehr große Partition mit zusätzlichen Sucheinheiten genutzt, die für Replikate verwendet werden können.
 
-<!---HONumber=AcomDC_0608_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+
