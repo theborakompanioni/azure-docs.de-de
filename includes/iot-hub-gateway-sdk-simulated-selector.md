@@ -45,7 +45,7 @@ Dieses Modul ist der Ausgangspunkt für das Übermitteln von Daten von Geräten 
 
 > [AZURE.NOTE] Das im Diagramm oben als **Protocol X ingestion** bezeichnete Modul ist ein **simuliertes Gerät** im Quellcode.
 
-### <a name="mac-&lt;-&gt;-iot-hub-id-module"></a>Modul zur Zuordnung zwischen MAC-Adressen und IoT Hub-IDs&lt;-&gt;
+### <a name="mac-ltgt-iot-hub-id-module"></a>Modul zur Zuordnung zwischen MAC-Adressen und IoT Hub-IDs&lt;-&gt;
 
 Dieses Modul sucht nach Nachrichten mit einer Eigenschaft, die die vom Protokollerfassungsmodul hinzugefügte MAC-Adresse des simulierten Geräts enthält. Wenn das Modul eine solche Eigenschaft findet, fügt es der Nachricht eine weitere Eigenschaft mit einem IoT Hub-Geräteschlüssel hinzu und stellt die Nachricht dann dem nächsten Modul in der Kette zur Verfügung. So verknüpft das Beispiel IoT Hub-Geräteeigenschaften mit simulierten Geräten. Der Entwickler richtet die Zuordnung zwischen MAC-Adressen und IoT Hub-Identitäten manuell im Rahmen der Modulkonfiguration ein. 
 

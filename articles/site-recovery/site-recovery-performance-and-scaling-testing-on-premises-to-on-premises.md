@@ -1,211 +1,216 @@
 <properties
-	pageTitle="Ergebnisse von Leistungs- und Skalierungstests für die Hyper-V-Replikation vom Typ „Lokal zu lokal“ mit Site Recovery | Microsoft Azure"
-	description="Dieser Artikel bietet Informationen zu Leistungstests für die Replikation zwischen lokalen Standorten mithilfe von Azure Site Recovery."
-	services="site-recovery"
-	documentationCenter=""
-	authors="rayne-wiselman"
-	manager="jwhit"
-	editor="tysonn"/>
+    pageTitle="Performance test and scale results for on-premises to on-premises Hyper-V replication with Site Recovery | Microsoft Azure"
+    description="This article provides information about performance testing for on-premises to on-premises replication using Azure Site Recovery."
+    services="site-recovery"
+    documentationCenter=""
+    authors="rayne-wiselman"
+    manager="jwhit"
+    editor="tysonn"/>
 
 <tags
-	ms.service="site-recovery"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="storage-backup-recovery"
-	ms.date="07/06/2016"
-	ms.author="raynew"/>
-
-# Ergebnisse von Leistungs- und Skalierungstests für die Hyper-V-Replikation vom Typ „Lokal zu lokal“ mit Site Recovery
-
-Mit Microsoft Azure Site Recovery können Sie die Replikation virtueller Computer und physischer Server in Azure oder zu einem sekundären lokalen Standort orchestrieren. Dieser Artikel bietet die Ergebnisse unserer Leistungstests beim Replizieren virtueller Hyper-V-Computer zwischen zwei lokalen Datencentern.
+    ms.service="site-recovery"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="storage-backup-recovery"
+    ms.date="11/01/2016"
+    ms.author="raynew"/>
 
 
+# <a name="performance-test-and-scale-results-for-onpremises-to-onpremises-hyperv-replication-with-site-recovery"></a>Performance test and scale results for on-premises to on-premises Hyper-V replication with Site Recovery
 
-## Übersicht
-
-Mit diesem Test sollte die Leistung von Azure Site Recovery bei der Replikation im stabilen Zustand ermittelt werden. Die Replikation im stabilen Zustands tritt auf, wenn virtuelle Computer die erste Replikation abgeschlossen haben und Datenänderungen synchronisieren. Die Ermittlung der Leistung im stabilen Zustand ist wichtig, da sich die meisten virtuellen Computer in diesem Zustand befinden, solange es zu keinem unerwarteten Ausfall kommt.
+You can use Microsoft Azure Site Recovery to orchestrate and manage replication of virtual machines and physical servers to Azure, or to a secondary datacenter. This article provides the results of performance testing we did when replicating Hyper-V virtual machines between two on-premises datacenters.
 
 
-Die Testbereitstellung bestand aus zwei lokalen Standorten mit je einem VMM-Server. Diese Testbereitstellung ist typisch für eine Bereitstellung mit Hauptsitz und Zweigstelle, bei der der Hauptsitz als primärer Standort und die Zweigstelle als sekundärer Standort (oder Wiederherstellungsstandort) fungiert.
 
-### Unsere Schritte
+## <a name="overview"></a>Overview
 
-Von uns in der Testphase erledigte Schritte:
+The goal of testing was to examine how Azure Site Recovery performs during steady state replication. Steady state replication occurs when virtual machines have completed initial replication and are synchronizing delta changes. It’s important to measure performance using steady state because it’s the state in which most virtual machines remain unless unexpected outages occur.
 
-1. Erstellung virtueller Computer mithilfe von VMM-Vorlagen
 
-1. Start der virtuellen Computer und Erfassung von Baseline-Leistungsmetriken für einen Zeitraum von 12 Stunden
+The test deployment consisted of two on-premises sites with a VMM server in each site. This test deployment is typical of a head office/branch office deployment, with head office acting as the primary site and the branch office as the secondary or recovery site.
 
-1. Erstellung von Clouds auf dem primären VMM-Server und auf dem VMM-Server für die Wiederherstellung
+### <a name="what-we-did"></a>What we did
 
-1. Konfiguration des Cloudschutzes in Azure Site Recovery (einschließlich Zuordnung der Quell- und Wiederherstellungsclouds)
+Here's what we did in the test pass:
 
-1. Aktivierung des Schutzes für virtuelle Computer und Durchführung der ersten Replikation
+1. Created virtual machines using VMM templates.
 
-1. Wartezeit von einigen Stunden bis zur Stabilisierung des Systems
+1. Started virtual machines and capture baseline performance metrics over 12 hours.
 
-1. Erfassung von Leistungsmetriken für einen Zeitraum von 12 Stunden und Sicherstellung, dass alle virtuellen Computer innerhalb dieses Zeitraums den erwarteten Replikationszustand besitzen
+1. Created clouds on primary and recovery VMM servers.
 
-1. Ermittlung des Unterschieds zwischen den Baseline-Leistungsmetriken und den Leistungsmetriken der Replikation
+1. Configured cloud protection in Azure Site Recovery, including mapping of source and recovery clouds.
 
-## Ergebnisse der Testbereitstellung
+1. Enabled protection for virtual machines and allow them to complete initial replication.
 
-### Leistung des primären Servers
+1. Waited a couple of hours for system stabilization.
 
-- Hyper-V-Replikat erfasst Änderungen asynchron in einer Protokolldatei, wodurch auf dem primären Server nur sehr wenig zusätzlicher Speicherplatz beansprucht wird.
+1. Captured performance metrics over 12 hours, ensuring that all virtual machines remained in an expected replication state for those 12 hours.
 
-- Hyper-V-Replikat nutzt selbstverwalteten Speichercache, um den IOPS-Zusatzaufwand für die Erfassung zu minimieren. Es speichert VHDX-Schreibvorgänge im Arbeitsspeicher und fügt sie der Protokolldatei hinzu, bevor das Protokoll an den Wiederherstellungsstandort gesendet wird. Das Leeren auf Festplatte findet auch statt, wenn die Schreibvorgänge einen zuvor festgelegten Schwellenwert erreichen.
+1. Measure the delta between the baseline performance metrics and the replication performance metrics.
 
-- Das folgende Diagramm zeigt den IOPS-Zusatzaufwand für die Replikation im stabilen Zustand. Wie Sie sehen, beträgt der replikationsbedingte IOPS-Zusatzaufwand gerade einmal etwa fünf Prozent.
+## <a name="test-deployment-results"></a>Test deployment results
 
-![Ergebnisse (primär)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744913.png)
+### <a name="primary-server-performance"></a>Primary server performance
 
-Hyper-V-Replikat nutzt Arbeitsspeicher auf dem primären Server, um die Datenträgerleistung zu optimieren. Wie im folgenden Diagramm zu sehen, ist die zusätzliche Arbeitsspeicherauslastung auf allen Servern im primären Cluster marginal. Bei der hier gezeigten Arbeitsspeicherauslastung handelt es sich um den von der Replikation beanspruchten Prozentsatz des installierten Gesamtspeichers auf dem Hyper-V-Server.
+- Hyper-V Replica asynchronously tracks changes to a log file with minimum storage overhead on the primary server.
 
-![Ergebnisse (primär)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744914.png)
+- Hyper-V Replica utilizes self-maintained memory cache to minimize IOPS overhead for tracking. It stores writes to the VHDX in memory and flushes them into the log file before the time that the log is sent to the recovery site. A disk flush also happens if the writes hit a predetermined limit.
 
-Die zusätzliche CPU-Auslastung durch Hyper-V-Replikat ist minimal. Wie im Diagramm zu sehen, liegt der replikationsbedingte Zusatzaufwand zwischen zwei und drei Prozent.
+- The graph below shows the steady state IOPS overhead for replication. We can see that the IOPS overhead due to replication is around 5% which is quite low.
 
-![Ergebnisse (primär)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744915.png)
+![Primary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744913.png)
 
-### Leistung des sekundären Servers (Wiederherstellungsserver)
+Hyper-V Replica utilizes memory on the primary server to optimize disk performance. As shown in the following graph, memory overhead on all servers in the primary cluster is marginal. The memory overhead shown is the percentage of memory used by replication compared to the total installed memory on the Hyper-V server.
 
-Hyper-V-Replikat verwendet einen kleinen Teil des Arbeitsspeichers auf dem Wiederherstellungsserver, um die Anzahl der Speichervorgänge zu optimieren. Das Diagramm fasst die Arbeitsspeicherauslastung auf dem Wiederherstellungsserver zusammen. Bei der hier gezeigten Arbeitsspeicherauslastung handelt es sich um den von der Replikation beanspruchten Prozentsatz des installierten Gesamtspeichers auf dem Hyper-V-Server.
+![Primary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744914.png)
 
-![Ergebnisse (sekundär)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744916.png)
+Hyper-V Replica has minimum CPU overhead. As shown in the graph, replication overhead is in the range of 2-3%.
 
-Die Menge der E/A-Vorgänge am Wiederherstellungsstandort ist eine Funktion der Anzahl von Schreibvorgängen am primären Standort. Vergleichen wir die Gesamtmenge der E/A-Vorgänge am Wiederherstellungsstandort mit der Gesamtmenge der E/A- und Schreibvorgänge am primären Standort. Die Diagramme zeigen, dass die Gesamtmenge der IOPS am Wiederherstellungsstandort:
+![Primary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744915.png)
 
-- etwa dem 1,5-fachen der Schreib-IOPS am primären Standort entspricht.
+### <a name="secondary-recovery-server-performance"></a>Secondary (recovery) server performance
 
-- etwa 37 Prozent der Gesamt-IOPS am primären Standort ausmacht.
+Hyper-V Replica uses a small amount of memory on the recovery server to optimize the number of storage operations. The graph summarizes the memory usage on the recovery server. The memory overhead shown is the percentage of memory used by replication compared to the total installed memory on the Hyper-V server.
 
-![Ergebnisse (sekundär)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744917.png)
+![Secondary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744916.png)
 
-![Ergebnisse (sekundär)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
+The amount of I/O operations on the recovery site is a function of the number of write operations on the primary site. Let’s look at the total I/O operations on the recovery site in comparison with the total I/O operations and write operations on the primary site. The graphs show that the total IOPS on the recovery site is
 
-### Auswirkung der Replikation auf die Netzwerkauslastung
+- Around 1.5 times the write IOPS on the primary.
 
-Im Schnitt wurden bei aktivierter Komprimierung zwischen primärem Knoten und Wiederherstellungsknoten pro Sekunde etwa 275 MB der verfügbaren Netzwerkbandbreite von 5 GB/s beansprucht.
+- Around 37% of the total IOPS on the primary site.
 
-![Ergebnisse (Netzwerkauslastung)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
+![Secondary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744917.png)
 
-### Auswirkung der Replikation auf die Leistung virtueller Computer
+![Secondary results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
 
-Ein wichtiger Aspekt ist die Auswirkung der Replikation auf die Produktionsworkloads, die von den virtuellen Computern bewältigt werden. Bei ordnungsgemäßer Bereitstellung des primären Standorts werden die Workloads durch die Replikation in keiner Weise beeinträchtigt. Durch den einfachen Nachverfolgungsmechanismus von Hyper-V-Replikat wird sichergestellt, dass die Replikation im stabilen Zustand keine Auswirkungen auf die Workloads virtueller Computer hat. Dies wird durch die Diagramme weiter unten verdeutlicht.
+### <a name="effect-of-replication-on-network-utilization"></a>Effect of replication on network utilization
 
-Das folgende Diagramm zeigt die IOPS von virtuellen Computern mit verschiedenen Workloads vor und nach der Aktivierung der Replikation. Wie Sie sehen, gibt es hier keinerlei Unterschiede.
+An average of 275 MB per second of network bandwidth was used between the primary and recovery nodes (with compression enabled) against an existing bandwidth of 5 GB per second.
 
-![Ergebnisse (Replikatauswirkung)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744920.png)
+![Results network utilization](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
 
-Das folgende Diagramm zeigt den Durchsatz virtueller Computer mit verschiedenen Workloads vor und nach der Aktivierung der Replikation. Auch hier ist zu sehen, dass die Replikation keine nennenswerten Auswirkungen hat.
+### <a name="effect-of-replication-on-virtual-machine-performance"></a>Effect of replication on virtual machine performance
 
-![Ergebnisse (Replikatauswirkungen)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
+An important consideration is the impact of replication on production workloads running on the virtual machines. If the primary site is adequately provisioned for replication, there shouldn’t be any impact on the workloads. Hyper-V Replica’s lightweight tracking mechanism ensures that workloads running in the virtual machines are not impacted during steady-state replication. This is illustrated in the following graphs.
 
-### Zusammenfassung
+This graph shows IOPS performed by virtual machines running different workloads before and after replication was enabled. You can observe that there is no difference between the two.
 
-Die Ergebnisse zeigen deutlich, dass Azure Site Recovery in Kombination mit Hyper-V-Replikat bestens und mit minimalem Zusatzaufwand für einen umfangreichen Cluster skaliert werden kann. Azure Site Recovery ermöglicht eine einfache Bereitstellung, Replikation, Verwaltung und Überwachung. Hyper-V-Replikat stellt die notwendige Infrastruktur für eine erfolgreiche Replikationsskalierung bereit. Laden Sie sich am besten den [Kapazitätsplaner für Hyper-V-Replikat](https://www.microsoft.com/download/details.aspx?id=39057) herunter, um Ihre Bereitstellung optimal zu planen.
+![Replica effect results](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744920.png)
 
-## Testumgebungsdetails
+The following graph shows the throughput of virtual machines running different workloads before and after replication was enabled. You can observe that replication has no significant impact.
 
-### Primärer Standort
+![Results replica effects](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
 
-- Am primären Standort befindet sich ein Cluster mit fünf Hyper-V-Servern und 470 virtuellen Computern.
+### <a name="conclusion"></a>Conclusion
 
-- Die virtuellen Computer führen verschiedene Workloads aus und sind alle durch Azure Site Recovery geschützt.
+The results clearly show that Azure Site Recovery, coupled with Hyper-V Replica, scales well with minimum overhead for a large cluster.  Azure Site Recovery provides simple deployment, replication, management and monitoring. Hyper-V Replica provides the necessary infrastructure for successful replication scaling. For planning an optimum deployment we suggest you download the [Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057).
 
-- Der Speicher für den Clusterknoten wird in Form eines iSCSI-SAN bereitgestellt. Modell: Hitachi HUS130.
+## <a name="test-environment-details"></a>Test environment details
 
-- Jeder Clusterserver verfügt über vier Netzwerkkarten (NICs) mit jeweils einem GBit/s.
+### <a name="primary-site"></a>Primary site
 
-- Zwei der Netzwerkkarten sind mit einem privaten iSCSI-Netzwerk verbunden, zwei mit einem externen Unternehmensnetzwerk. Eines der externen Netzwerke ist für die Clusterkommunikation reserviert.
+- The primary site has a cluster containing five Hyper-V servers running 470 virtual machines.
 
-![Primäre Hardwareanforderungen](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
+- The virtual machines run different workloads, and all have Azure Site Recovery protection enabled.
 
-|Server|RAM|Modell|Prozessor|Anzahl der Prozessoren|NIC|Software|
+- Storage for the cluster node is provided by an iSCSI SAN. Model – Hitachi HUS130.
+
+- Each cluster server has four network cards (NICs) of one Gbps each.
+
+- Two of the network cards are connected to an iSCSI private network and two are connected to an external enterprise network. One of the external networks is reserved for cluster communications only.
+
+![Primary hardware requirements](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
+
+|Server|RAM|Model|Processor|Number of processors|NIC|Software|
 |---|---|---|---|---|---|---|
-|Hyper-V-Server im Cluster: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25|128 MB (ESTLAB-HOST25: 256 MB)|Dell™ PowerEdge™ R820|Intel(R) Xeon(R)-CPU E5-4620 0 (2,20 GHz)|4|1 GBit/s (4x)|Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle|
-|VMM-Server|2|||2|1 GBit/s|Windows Server Datacenter 2012 R2 (x64) + VMM 2012 R2|
+|Hyper-V servers in cluster: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25|128ESTLAB-HOST25 has 256|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|4|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V role|
+|VMM Server|2|||2|1 Gbps|Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
 
-### Sekundärer Standort (Wiederherstellung)
+### <a name="secondary-recovery-site"></a>Secondary (recovery) site
 
-- Der sekundäre Standort verfügt über einen Failovercluster mit sechs Knoten.
+- The secondary site has a six-node failover cluster.
 
-- Der Speicher für den Clusterknoten wird in Form eines iSCSI-SAN bereitgestellt. Modell: Hitachi HUS130.
+- Storage for the cluster node is provided by an iSCSI SAN. Model – Hitachi HUS130.
 
-![Primäre Hardwarespezifikation](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
+![Primary hardware specification](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744923.png)
 
-|Server|RAM|Modell|Prozessor|Anzahl der Prozessoren|NIC|Software|
+|Server|RAM|Model|Processor|Number of processors|NIC|Software|
 |---|---|---|---|---|---|---|
-|Hyper-V-Server im Cluster: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10|96|Dell™ PowerEdge™ R720|Intel(R) Xeon(R)-CPU E5-2630 0 (2,30 GHz)|2|1 GBit/s (4x)|Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle|
-|ESTLAB-HOST17|128|Dell™ PowerEdge™ R820|Intel(R) Xeon(R)-CPU E5-4620 0 (2,20 GHz)|4||Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle|
-|ESTLAB-HOST24|256|Dell™ PowerEdge™ R820|Intel(R) Xeon(R)-CPU E5-4620 0 (2,20 GHz)|2||Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle|
-|VMM-Server|2|||2|1 GBit/s|Windows Server Datacenter 2012 R2 (x64) + VMM 2012 R2|
+|Hyper-V servers in cluster: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10|96|Dell ™ PowerEdge ™ R720|Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz|2|I Gbps x 4|Windows Server Datacenter 2012 R2 (x64) + Hyper-V role|
+|ESTLAB-HOST17|128|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|4||Windows Server Datacenter 2012 R2 (x64) + Hyper-V role|
+|ESTLAB-HOST24|256|Dell ™ PowerEdge ™ R820|Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz|2||Windows Server Datacenter 2012 R2 (x64) + Hyper-V role|
+|VMM Server|2|||2|1 Gbps|Windows Server Database 2012 R2 (x64) + VMM 2012 R2|
 
-### Serverworkloads
+### <a name="server-workloads"></a>Server workloads
 
-- Zu Testzwecken haben wir Workloads aus typischen Szenarien von Unternehmenskunden herausgesucht.
+- For test purposes we picked workloads commonly used in enterprise customer scenarios.
 
-- Für die Simulation verwenden wir [IOMeter](http://www.iometer.org) mit den Workloads aus der folgenden Tabelle.
+- We use [IOMeter](http://www.iometer.org) with the workload characteristic summarized in the table for simulation.
 
-- Alle IOMeter-Profile schreiben zufällige Bytes und simulieren so Worst-Case-Schreibmuster für Workloads.
+- All IOMeter profiles are set to write random bytes to simulate worst-case write patterns for workloads.
 
-|Workload|E/A-Größe (KB)|Prozent (Zugriff)|Prozent (Lesen)|Ausstehende E/A-Vorgänge|E/A-Muster|
+|Workload|I/O size (KB)|% Access|%Read|Outstanding I/Os|I/O pattern|
 |---|---|---|---|---|---|
-|Dateiserver|48163264|60 % 20 % 5 % 5 % 10 %|80 % 80 % 80 % 80 % 80 %|88888|Alle 100 % zufällig|
-|SQL Server (Volume 1) SQL Server (Volume 2)|864|100 % 100 %|70 % 0 %|88|100 % zufällig 100 % sequenziell|
-|Exchange|32|100 %|67 %|8|100 % zufällig|
-|Arbeitsstation/VDI|464|66 % 34 %|70 % 95 %|11|Beides 100 % zufällig|
-|Webdateiserver|4864|33 % 34 % 33 %|95 % 95 % 95 %|888|Alle 75 % zufällig|
+|File Server|48163264|60%20%5%5%10%|80%80%80%80%80%|88888|All 100% random|
+|SQL Server (volume 1)SQL Server (volume 2)|864|100%100%|70%0%|88|100% random100% sequential|
+|Exchange|32|100%|67%|8|100% random|
+|Workstation/VDI|464|66%34%|70%95%|11|Both 100% random|
+|Web File Server|4864|33%34%33%|95%95%95%|888|All 75% random|
 
-### Konfiguration des virtuellen Computers
+### <a name="virtual-machine-configuration"></a>Virtual machine configuration
 
-- 470 virtuelle Computer im primären Cluster.
+- 470 virtual machines on the primary cluster.
 
-- Alle virtuellen Computer mit VHDX-Datenträger.
+- All virtual machines with VHDX disk.
 
-- Virtuelle Computer mit Workloads aus der Tabelle. Alle auf der Grundlage von VMM-Vorlagen erstellt.
+- Virtual machines running workloads summarized in the table. All were created with VMM templates.
 
-|Workload|Anzahl VMs|RAM – Mindestgröße (GB)|RAM – maximale Größe (GB)|Größe des logischen Datenträgers (GB) pro VM|Maximale IOPS-Anzahl|
+|Workload|# VMs|Minimum RAM (GB)|Maximum RAM (GB)|Logical disk size (GB) per VM|Maximum IOPS|
 |---|---|---|---|---|---|
 |SQL Server|51|1|4|167|10|
 |Exchange Server|71|1|4|552|10|
-|Dateiserver|50|1|2|552|22|
-|VDI|149|0,5|1|80|6|
-|Webserver|149|0,5|1|80|6|
-|GESAMT|470|||96,83 TB|4108|
+|File Server|50|1|2|552|22|
+|VDI|149|.5|1|80|6|
+|Web server|149|.5|1|80|6|
+|TOTAL|470|||96.83 TB|4108|
 
-### Einstellungen für Azure Site Recovery
+### <a name="azure-site-recovery-settings"></a>Azure Site Recovery settings
 
-- Azure Site Recovery wurde für den Schutz zwischen lokalen Standorten konfiguriert.
+- Azure Site Recovery was configured for on-premises to on-premises protection
 
-- Für den VMM-Server sind vier Clouds konfiguriert. Diese enthalten die Hyper-V-Clusterserver und deren virtuelle Computer.
+- The VMM server has four clouds configured, containing the Hyper-V cluster servers and their virtual machines.
 
-|Primäre VMM-Cloud|Geschützte virtuelle Computer in der Cloud|Replikationshäufigkeit|Zusätzliche Wiederherstellungspunkte|
+|Primary VMM cloud|Protected virtual machines in the cloud|Replication frequency|Additional recovery points|
 |---|---|---|---|
-|PrimaryCloudRpo15m|142|15 Min.|Keine|
-|PrimaryCloudRpo30s|47|30 Sek.|Keine|
-|PrimaryCloudRpo30sArp1|47|30 Sek.|1|
-|PrimaryCloudRpo5m|235|5 Min.|Keine|
+|PrimaryCloudRpo15m|142|15 mins|None|
+|PrimaryCloudRpo30s|47|30 secs|None|
+|PrimaryCloudRpo30sArp1|47|30 secs|1|
+|PrimaryCloudRpo5m|235|5 mins|None|
 
-### Leistungsmetriken
+### <a name="performance-metrics"></a>Performance metrics
 
-Der Tabelle fasst die Leistungsmetriken und -indikatoren zusammen, die für die Bereitstellung ermittelt wurden.
+The table summarizes the performance metrics and counters that were measured in the deployment.
 
-|Metrik|Indikator|
+|Metric|Counter|
 |---|---|
-|CPU|\\Prozessor(\_Total)\\Prozessorzeit (%)|
-|Verfügbarer Arbeitsspeicher|\\Arbeitsspeicher\\Verfügbare MB|
-|IOPS|\\Physikalischer Datenträger(\_Total)\\Übertragungen/s|
-|VM-Lesevorgänge (IOPS)/s|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Lesevorgänge/s|
-|VM-Schreibvorgänge (IOPS)/s|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Schreibvorgänge/s|
-|VM-Lesedurchsatz|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Gelesene Bytes/s|
-|VM-Schreibdurchsatz|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Geschriebene Bytes/s|
+|CPU|\Processor(_Total)\% Processor Time|
+|Available memory|\Memory\Available MBytes|
+|IOPS|\PhysicalDisk(_Total)\Disk Transfers/sec|
+|VM read (IOPS) operations/sec|\Hyper-V Virtual Storage Device(<VHD>)\Read Operations/Sec|
+|VM write (IOPS) operations/sec|\Hyper-V Virtual Storage Device(<VHD>)\Write Operations/S|
+|VM read throughput|\Hyper-V Virtual Storage Device(<VHD>)\Read Bytes/sec|
+|VM write throughput|\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec|
 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- [Einrichten von Schutz zwischen zwei lokalen VMM-Standorten](site-recovery-vmm-to-vmm.md)
+- [Set up protection between two on-premises VMM sites](site-recovery-vmm-to-vmm.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

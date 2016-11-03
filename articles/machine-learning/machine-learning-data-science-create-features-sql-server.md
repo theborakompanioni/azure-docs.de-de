@@ -35,7 +35,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 * Ihre Daten sind in SQL Server gespeichert. Falls nicht, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](machine-learning-data-science-move-sql-azure.md) Anweisungen zum Verschieben von Daten.
 
 
-## <a name="<a-name="sql-featuregen"></a>feature-generation-with-sql"></a><a name="sql-featuregen"></a>Generieren von Features mit SQL
+## <a name="a-namesqlfeaturegenafeature-generation-with-sql"></a><a name="sql-featuregen"></a>Generieren von Features mit SQL
 
 In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von SQL beschrieben.  
 
@@ -46,7 +46,7 @@ In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von S
 
 > [AZURE.NOTE] Wenn Sie zusätzliche Funktionen generieren, können Sie diese als Spalten in der vorhandenen Tabelle hinzufügen oder eine neue Tabelle mit den zusätzlichen Funktionen und einem Primärschlüssel erstellen, die dann mit der ursprünglichen Tabelle zusammengeführt werden kann.
 
-### <a name="<a-name="sql-countfeature"></a>count-based-feature-generation"></a><a name="sql-countfeature"></a>Anzahlbasierte Funktionsgenerierung
+### <a name="a-namesqlcountfeatureacount-based-feature-generation"></a><a name="sql-countfeature"></a>Anzahlbasierte Funktionsgenerierung
 
 In diesem Abschnitt werden zwei Methoden zur Generierung von Anzahlfunktionen demonstriert. Die erste Methode verwendet eine bedingte Summe und die zweite die "where"-Klausel. Diese können dann mit der ursprünglichen Tabelle (über Primärschlüsselspalten) zusammengeführt werden, um die Anzahlfunktionen zusammen mit den ursprünglichen Daten verwenden zu können.
 
@@ -55,14 +55,14 @@ In diesem Abschnitt werden zwei Methoden zur Generierung von Anzahlfunktionen de
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
-### <a name="<a-name="sql-binningfeature"></a>binning-feature-generation"></a><a name="sql-binningfeature"></a>Gruppenbasierte Funktionsgenerierung
+### <a name="a-namesqlbinningfeatureabinning-feature-generation"></a><a name="sql-binningfeature"></a>Gruppenbasierte Funktionsgenerierung
 
 Das folgende Beispiel zeigt, wie Sie klassifizierte Funktionen erstellen, indem Sie eine numerische Spalte, die stattdessen als Funktion verwendet wird, klassifizieren (mit 5 Klassifizierungen):
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="<a-name="sql-featurerollout"></a>rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>Einführen von Funktionen aus einer einzelnen Spalte
+### <a name="a-namesqlfeaturerolloutarolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>Einführen von Funktionen aus einer einzelnen Spalte
 
 In diesem Abschnitt wird gezeigt, wie Sie eine einzelne Spalte in eine Tabelle einführen, um zusätzliche Funktionen zu generieren. Im Beispiel wird davon ausgegangen, dass die Tabelle, aus der Sie Funktionen generieren, die Spalten "latitude" und "longitude" enthält.
 
@@ -98,13 +98,13 @@ Die oben beschriebenen positionsbasierten Funktionen können dann wie oben besch
 > [AZURE.TIP] Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. [Ein pyodbc-Beispiel dazu finden Sie hier](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
 Eine weitere Möglichkeit zum Einfügen von Daten in die Datenbank bietet das [Hilfsprogramm BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 
-### <a name="<a-name="sql-aml"></a>connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
+### <a name="a-namesqlamlaconnecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
 Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) -Modul in Azure ML Features generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
 
 ![azureml-Reader](./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png)
 
-## <a name="<a-name="python"></a>using-a-programming-language-like-python"></a><a name="python"></a>Mit einer Programmiersprache wie Python
+## <a name="a-namepythonausing-a-programming-language-like-python"></a><a name="python"></a>Mit einer Programmiersprache wie Python
 
 Die Verwendung von Python zum Generieren von Features mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blob-Daten in Ihrer Data Science-Umgebung](machine-learning-data-science-process-data-blob.md)beschrieben ist. Die Daten müssen aus der Datenbank in ein Pandas-DataFrame geladen werden, um dann weiter verarbeitet werden zu können. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
 

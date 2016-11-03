@@ -17,13 +17,13 @@
     ms.author="marsma" />
 
 
-# <a name="use-multi-instance-tasks-to-run-message-passing-interface-(mpi)-applications-in-azure-batch"></a>Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch
+# <a name="use-multiinstance-tasks-to-run-message-passing-interface-mpi-applications-in-azure-batch"></a>Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch
 
 Tasks mit mehreren Instanzen ermöglichen die Ausführung eines Azure Batch-Tasks auf mehreren Computeknoten gleichzeitig. Diese Tasks machen High Performance Computing-Szenarien wie Message Passing Interface-Anwendungen (MPI) in Batch möglich. In diesem Artikel erfahren Sie, wie mithilfe der [Batch .NET][api_net]-Bibliothek Tasks mit mehreren Instanzen ausgeführt werden.
 
 >[AZURE.NOTE] Die Beispiele in diesem Artikel konzentrieren sich auf Batch .NET, MS-MPI und Windows-Computeknoten, doch die vorgestellten Konzepte für mehrere Instanzen sind jedoch auch auf andere Plattformen und Technologien (z. B. Python und Intel MPI auf Linux-Knoten) anwendbar.
 
-## <a name="multi-instance-task-overview"></a>Task mit mehreren Instanzen – Übersicht
+## <a name="multiinstance-task-overview"></a>Task mit mehreren Instanzen – Übersicht
 
 In Batch wird normalerweise jeder Task auf einem einzelnen Computeknoten ausgeführt – Sie übermitteln mehrere Tasks an einen Auftrag, und Batch-Dienst plant die Ausführung der einzelnen Tasks auf einem Knoten. Durch Konfigurieren der **Einstellungen für mehrere Instanzen**eines Tasks können Sie Batch jedoch anweisen, diesen Task in Subtasks zur Ausführung auf mehreren Knoten aufzuteilen.
 
@@ -39,7 +39,7 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 
 > [AZURE.NOTE] Obwohl er sich funktional unterscheidet, ist der „Task mit mehreren Instanzen“ kein eindeutiger Tasktyp wie [StartTask][net_starttask] oder [JobPreparationTask][net_jobprep]. Der Task mit mehreren Instanzen ist einfach eine standardmäßiger Batch-Task ([CloudTask][net_task] in Batch .NET), dessen Einstellungen für mehrere Instanzen konfiguriert wurden. In diesem Artikel bezeichnen wir sie als **Task mit mehreren Instanzen**.
 
-## <a name="requirements-for-multi-instance-tasks"></a>Anforderungen für Tasks mit mehreren Instanzen
+## <a name="requirements-for-multiinstance-tasks"></a>Anforderungen für Tasks mit mehreren Instanzen
 
 Tasks mit mehreren Instanzen erfordern einen Pool, in dem die **Kommunikation zwischen Knoten** aktiviert und die** gleichzeitige Ausführung von Tasks deaktiviert** ist. Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die knotenübergreifende Kommunikation deaktiviert ist oder der einen höheren *maxTasksPerNode* -Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand. Dieser Codeausschnitt zeigt die Erstellung eines solchen Pools mithilfe der Batch-Bibliothek für .NET.
 
@@ -84,7 +84,7 @@ await myCloudPool.CommitAsync();
 
 > [AZURE.NOTE] Bei der Implementierung einer MPI-Lösung mit Tasks mit mehreren Instanzen in Batch sind Sie nicht auf die Verwendung von MS-MPI beschränkt. Sie können jede Implementierung des MPI-Standards verwenden, die mit dem Betriebssystem kompatibel ist, das Sie für die Computeknoten in Ihrem Pool angeben.
 
-## <a name="create-a-multi-instance-task-with-batch-.net"></a>Erstellen eines Tasks mit mehreren Instanzen mithilfe von Batch .NET
+## <a name="create-a-multiinstance-task-with-batch-net"></a>Erstellen eines Tasks mit mehreren Instanzen mithilfe von Batch .NET
 
 Nachdem wie die Poolanforderungen und die MPI-Paketinstallation jetzt behandelt haben, erstellen wir den Task mit mehreren Instanzen. In diesem Ausschnitt erstellen wir einen Standard-[CloudTask][net_resourcefile] und konfigurieren dann seine [MultiInstanceSettings][net_multiinstance_prop]-Eigenschaft. Wie bereits erwähnt, ist der Task mit mehreren Instanzen kein eigener Tasktyp, sondern ein standardmäßiger Batch-Task, der mit Einstellungen für mehrere Instanzen konfiguriert ist.
 

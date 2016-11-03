@@ -38,7 +38,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 * Sie haben den Remotezugriff auf den Cluster aktiviert. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
 
 
-##<a name="<a-name="hive-featureengineering"></a>feature-generation"></a><a name="hive-featureengineering"></a>Generieren von Funktionen
+##<a name="a-namehivefeatureengineeringafeature-generation"></a><a name="hive-featureengineering"></a>Generieren von Funktionen
 
 In diesem Abschnitt sind verschiedene Beispiele dafür enthalten, wie Funktionen mithilfe von Hive-Abfragen generiert werden können. Wenn Sie zusätzliche Funktionen generiert haben, können Sie diese als Spalten in der vorhandenen Tabelle hinzufügen oder eine neue Tabelle mit den zusätzlichen Funktionen und einem Primärschlüssel erstellen, die dann mit der ursprünglichen Tabelle zusammengeführt werden kann. Beispiele:
 
@@ -48,7 +48,7 @@ In diesem Abschnitt sind verschiedene Beispiele dafür enthalten, wie Funktionen
 4. [Extrahieren von Funktionen aus "Text"-Feldern](#hive-textfeatures)
 5. [Berechnen der Entfernung zwischen GPS-Koordinaten](#hive-gpsdistance)
 
-###<a name="<a-name="hive-frequencyfeature"></a>frequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>Häufigkeitsbasierte Funktionsgenerierung
+###<a name="a-namehivefrequencyfeatureafrequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>Häufigkeitsbasierte Funktionsgenerierung
 
 Oft ist es sinnvoll, die Häufigkeit der Ebenen einer kategorischen Variable oder die Häufigkeiten von bestimmten Ebenenkombinationen aus mehreren kategorischen Variablen zu berechnen. Mit dem folgenden Skript können Sie die Häufigkeiten berechnen:
 
@@ -63,7 +63,7 @@ Oft ist es sinnvoll, die Häufigkeit der Ebenen einer kategorischen Variable ode
         order by frequency desc;
 
 
-###<a name="<a-name="hive-riskfeature"></a>risks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>Risiken kategorischer Variablen in binären Klassifizierungen
+###<a name="a-namehiveriskfeaturearisks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>Risiken kategorischer Variablen in binären Klassifizierungen
 
 Bei binären Klassifizierungen müssen manchmal nicht numerische kategorische Variablen in numerische Funktionen umgewandelt werden, wenn die Modelle nur numerische Funktionen akzeptieren. Dazu werden die nicht numerischen Ebenen durch numerische Risiken ersetzt. In diesem Abschnitt werden einige generische Hive-Abfragen zur Berechnung der Risikowerte (logarithmische Wahrscheinlichkeiten) einer kategorischen Variable gezeigt.
 
@@ -90,7 +90,7 @@ In diesem Beispiel werden die Variablen `smooth_param1` und `smooth_param2` zum 
 
 Nach dem Berechnen der Risikotabelle können Sie einer Tabelle Risikowerte zuweisen, indem Sie sie mit der Risikotabelle zusammenführen. Die Hive-Abfrage für das Zusammenführen wurde im vorherigen Abschnitt beschrieben.
 
-###<a name="<a-name="hive-datefeatures"></a>extract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>Extrahieren von Funktionen aus "datetime"-Feldern
+###<a name="a-namehivedatefeaturesaextract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>Extrahieren von Funktionen aus "datetime"-Feldern
 
 Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In Hive lautet das Standardformat für "datetime" "JJJJ-MM-TT 00:00:00" (wie z. B. in "1970-01-01 12:21:32"). In diesem Abschnitt werden Beispiele für das Extrahieren des Tags eines Monats und des Monats aus einem "datetime"-Feld gezeigt. Außerdem gibt es Beispiele zum Konvertieren einer "datetime"-Zeichenfolge in ein anderes Format als das Standardformat.
 
@@ -112,14 +112,14 @@ Wenn das *&#60;Datum/Uhrzeit-Feld>* bei dieser Abfrage das Muster *03/26/2015 12
 Die Tabelle *hivesampletable* in dieser Abfrage enthält in der Voreinstellung alle Azure HDInsight Hadoop-Cluster, wenn die Cluster bereitgestellt wurden.
 
 
-###<a name="<a-name="hive-textfeatures"></a>extract-features-from-text-fields"></a><a name="hive-textfeatures"></a>Extrahieren von Funktionen aus "Text"-Feldern
+###<a name="a-namehivetextfeaturesaextract-features-from-text-fields"></a><a name="hive-textfeatures"></a>Extrahieren von Funktionen aus "Text"-Feldern
 
 Wenn die Hive-Tabelle ein Textfeld enthält, das eine Zeichenfolge von durch Leerzeichen voneinander getrennten Wörtern ist, können Sie mit der folgenden Abfrage die Länge der Zeichenfolge und die Anzahl der Wörter in der Zeichenfolge extrahieren.
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-###<a name="<a-name="hive-gpsdistance"></a>calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
+###<a name="a-namehivegpsdistanceacalculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
 
 Die in diesem Abschnitt angegebene Abfrage kann direkt auf die "NYC Taxi Trip"-Daten angewendet werden. Diese Abfrage soll veranschaulichen, wie Sie die eingebetteten mathematischen Funktionen in Hive zum Generieren von Funktionen verwenden.
 
@@ -147,7 +147,7 @@ Die mathematischen Gleichungen zur Berechnung der Entfernung zwischen zwei GPS-K
 
 Eine vollständige Liste der eingebetteten Hive-UDFs finden Sie im Abschnitt **Built-in Functions** im <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive-Wiki</a>.  
 
-## <a name="<a-name="tuning"></a>-advanced-topics:-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Weiterführende Themen: Optimieren von Hive-Parametern zur Verbesserung der Abfrage-Geschwindigkeit
+## <a name="a-nametuninga-advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Weiterführende Themen: Optimieren von Hive-Parametern zur Verbesserung der Abfrage-Geschwindigkeit
 
 Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich möglicherweise nicht für die Hive-Abfragen und die von den Abfragen verarbeiteten Daten. In diesem Abschnitt werden einige Parameter beschrieben, mit denen Sie die Leistung der Hive-Abfragen optimieren können. Sie müssen die Abfragen zur Parameteroptimierung vor den Abfragen der Verarbeitungsdaten einfügen.
 

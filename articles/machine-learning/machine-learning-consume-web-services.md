@@ -42,7 +42,7 @@ For more information on how to manage Azure Machine Learning Web service endpoin
 
 Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Webdiensts finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][Veröffentlichen]. Eine detaillierte Anleitung zum Erstellen und Bereitstellen eines Machine Learning-Experiments finden Sie unter [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning][Exemplarische Vorgehensweise].
 
-## <a name="request-response-service-(rrs)"></a>Anforderung-/Antwort-Dienst (Request-Response Service RRS)
+## <a name="requestresponse-service-rrs"></a>Anforderung-/Antwort-Dienst (Request-Response Service RRS)
 
 Ein Anforderung-/Antwort-Dienst (Request-Response Service, RRS) ist ein überaus skalierbarer Webdienst mit niedriger Latenz, mit dem eine Schnittstelle für die aus einem Azure Machine Learning Studio-Experiment erstellten und bereitgestellten zustandslosen Modelle bereitgestellt werden kann. Dadurch werden Szenarien ermöglicht, bei denen die verarbeitende Anwendung eine Antwort in Echtzeit erwartet.
 
@@ -51,7 +51,7 @@ RRS akzeptiert eine einzelne oder mehrere Zeilen von Eingabeparametern und kann 
 Ein Beispiel für RRS ist das Überprüfen der Authentizität einer Anwendung. Hunderte bis Millionen von Installationen einer Anwendung können in diesem Fall erwartet werden. Wenn die Anwendung gestartet wird, ruft sie den RRS-Dienst mit der entsprechenden Eingabe auf. Die Anwendung empfängt dann eine Überprüfungsantwort vom Dienst, die das Ausführen der Anwendung zulässt oder blockiert.
 
 
-## <a name="batch-execution-service-(bes)"></a>Stapelausführungsdienst (Batch Execution Service BES)
+## <a name="batch-execution-service-bes"></a>Stapelausführungsdienst (Batch Execution Service BES)
 
 Ein Stapelausführungsdienst (Batch Execution Service, BES) ist ein Dienst zur asynchronen Bewertung eines umfangreichen Stapels von Datensätzen. Die Eingabe für den BES enthält einen Stapel von Datensätzen aus verschiedenen Quellen, z.B. Blobs, Tabellen in Azure, SQL Azure, HDInsight (beispielsweise Ergebnisse einer Hive-Abfrage) oder HTTP-Quellen. Die Ausgabe des BES enthält die Ergebnisse der Wertung. Die Ergebnisse werden in eine Datei im Azure-Blob-Speicher geschrieben, und Daten aus dem Speicherendpunkt werden in der Antwort zurückgegeben.
 
@@ -85,7 +85,7 @@ Die Informationen befinden sich auf diesen Seiten:
 * Den **Request URI ** (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
 * **Anforderungsheader**, **Antwortheader** und **Text** der erwarteten API stehen auf der Seite **Swagger API** zur Verfügung.
 
-### <a name="information-locations-in-machine-learning-studio-(classic-web-service-only)"></a>Auffinden von Information in Machine Learning Studio (nur klassischer Webdienst)
+### <a name="information-locations-in-machine-learning-studio-classic-web-service-only"></a>Auffinden von Information in Machine Learning Studio (nur klassischer Webdienst)
 
 Sie finden die benötigten Informationen an zwei Stellen: in Machine Learning Studio oder im Azure Machine Learning Web Services-Portal.
 
@@ -408,7 +408,7 @@ Azure Machine Learning-Experimente, die als Webdienste bereitgestellt werden, k�
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Batchauftrag für einen Azure Machine Learning-Dienst mithilfe des BES SDK senden und überwachen können. Die Kommentare enthalten Details zu den Einstellungen und Aufrufen.
 
-#### <a name="**sample-code**"></a>**Beispielcode**
+#### <a name="sample-code"></a>**Beispielcode**
 
     // This code requires the Nuget package Microsoft.Azure.MachineLearning to be installed.
     // Instructions for doing this in Visual Studio:

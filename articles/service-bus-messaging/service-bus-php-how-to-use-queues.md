@@ -84,7 +84,7 @@ $connectionString = "Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer]
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 ```
 
-## <a name="how-to:-create-a-queue"></a>Erstellen einer Warteschlange
+## <a name="how-to-create-a-queue"></a>Erstellen einer Warteschlange
 
 Sie können Verwaltungsvorgänge für Service Bus-Warteschlangen über die **ServiceBusRestProxy**-Klasse durchführen. Ein **ServiceBusRestProxy**-Objekt wird über die **ServicesBuilder::createServiceBusService**-Factorymethode mit einer entsprechenden Verbindungszeichenfolge erstellt, welche die Token-Berechtigungen für deren Verwaltung kapselt.
 
@@ -118,7 +118,7 @@ catch(ServiceException $e){
 
 > [AZURE.NOTE] Sie können die `listQueues`-Methode bei `ServiceBusRestProxy`-Objekten verwenden, um zu überprüfen, ob eine Warteschlange mit einem angegebenen Namen bereits innerhalb eines Namespace vorhanden ist.
 
-## <a name="how-to:-send-messages-to-a-queue"></a>Senden von Nachrichten an eine Warteschlange
+## <a name="how-to-send-messages-to-a-queue"></a>Senden von Nachrichten an eine Warteschlange
 
 Um eine Nachricht an eine Service Bus-Warteschlange zu senden, ruft Ihre Anwendung die Methode **ServiceBusRestProxy->sendQueueMessage** auf. Der folgende Code zeigt, wie Sie eine Nachricht an die zuvor erstellte `myqueue`-Warteschlange im `MySBNamespace`-Dienstnamespace senden können.
 
@@ -202,7 +202,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to:-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
 
 Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine empfangene Anwendung eine Nachricht aus einem beliebigen Grund nicht verarbeiten kann, kann sie die Methode **unlockMessage** für die empfangene Nachricht aufrufen (anstelle der Methode **deleteMessage**). Dies führt dazu, dass Service Bus die Nachricht innerhalb der Warteschlange entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 

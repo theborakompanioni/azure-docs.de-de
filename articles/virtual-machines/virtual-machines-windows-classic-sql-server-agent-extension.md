@@ -18,7 +18,7 @@
     ms.author="jroth"/>
 
 
-# <a name="sql-server-agent-extension-for-sql-server-vms-(classic)"></a>SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Klassisch)
+# <a name="sql-server-agent-extension-for-sql-server-vms-classic"></a>SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Klassisch)
 
 > [AZURE.SELECTOR]
 - [Ressourcen-Manager](virtual-machines-windows-sql-server-agent-extension.md)
@@ -42,18 +42,18 @@ Die Erweiterung für SQL Server-IaaS-Agent unterstützt die folgenden Verwaltung
 
 Anforderungen für die Verwendung der Erweiterung für SQL Server-IaaS-Agent auf Ihrem virtuellen Computer:
 
-### <a name="operating-system:"></a>Betriebssystem:
+### <a name="operating-system"></a>Betriebssystem:
 
 - Windows Server 2012
 - Windows Server 2012 R2
 
-### <a name="sql-server-versions:"></a>SQL Server-Versionen:
+### <a name="sql-server-versions"></a>SQL Server-Versionen:
 
 - SQL Server 2012
 - SQL Server 2014
 - SQL Server 2016
 
-### <a name="azure-powershell:"></a>Azure PowerShell:
+### <a name="azure-powershell"></a>Azure PowerShell:
 
 [Herunterladen und Konfigurieren der aktuellen Azure PowerShell-Befehle](../powershell-install-configure.md)
 

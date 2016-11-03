@@ -4,7 +4,7 @@
     services="app-service"
     documentationCenter="php"
     authors="rmcmurray"
-    manager="wpickett"
+    manager="erikre"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="PHP"
     ms.topic="article"
-    ms.date="08/11/2016"
+    ms.date="11/01/2016"
     ms.author="robmcm"/>
 
 
@@ -25,7 +25,7 @@ In diesem Leitfaden erfahren Sie, wie Sie die integrierte PHP-Laufzeit für Web-
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to:-change-the-built-in-php-version"></a>Vorgehensweise: Ändern der integrierten PHP-Version
+## <a name="how-to-change-the-builtin-php-version"></a>Vorgehensweise: Ändern der integrierten PHP-Version
 PHP 5.4 ist standardmäßig installiert und kann sofort verwendet werden, wenn Sie eine App Service-Web-App erstellen. Die beste Möglichkeit, um die verfügbare Versionsrevision, die Standardkonfiguration und die aktivierten Erweiterungen anzuzeigen, ist die Bereitstellung eines Skripts, das die Funktion [phpinfo()] abruft.
 
 PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktiviert. Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
@@ -44,7 +44,7 @@ PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktivi
 
     ![Speichern Sie die Konfigurationseinstellungen][save-button]
 
-### <a name="azure-powershell-(windows)"></a>Azure PowerShell (Windows)
+### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
 
 1. Öffnen Sie Azure PowerShell, und melden Sie sich bei Ihrem Konto an:
 
@@ -58,7 +58,7 @@ PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktivi
 
         PS C:\> Get-AzureWebsite -Name {site-name} | findstr PhpVersion
 
-### <a name="azure-command-line-interface-(linux,-mac,-windows)"></a>Azure-Befehlszeilen-Schnittstelle (Linux, Mac, Windows)
+### <a name="azure-commandline-interface-linux-mac-windows"></a>Azure-Befehlszeilen-Schnittstelle (Linux, Mac, Windows)
 
 Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** auf Ihrem Computer installiert sein.
 
@@ -75,11 +75,11 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** a
         azure site show {site-name}
 
 
-## <a name="how-to:-change-the-built-in-php-configurations"></a>Vorgehensweise: Ändern der integrierten PHP-Konfigurationen
+## <a name="how-to-change-the-builtin-php-configurations"></a>Vorgehensweise: Ändern der integrierten PHP-Konfigurationen
 
 Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ändern, indem Sie folgende Schritte ausführen. (Informationen zu php.ini-Direktiven finden Sie unter [Liste der php.ini-Direktiven]).
 
-### <a name="changing-php\_ini\_user,-php\_ini\_perdir,-php\_ini\_all-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_USER, PHP\_INI\_PERDIR, PHP\_INI\_ALL
+### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_USER, PHP\_INI\_PERDIR, PHP\_INI\_ALL
 
 1. Fügen Sie eine [.user.ini] -Datei zum Stammverzeichnis hinzu.
 2. Fügen Sie der Datei `.user.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie zum Beispiel die Einstellung `display_errors` aktivieren und die Einstellung `upload_max_filesize` auf 10 M festlegen möchten, enthält die Datei `.user.ini` diesen Text:
@@ -96,7 +96,7 @@ Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ände
 
 Alternativ zur Verwendung einer`.user.ini`-Datei können Sie auch die Funktion [ini_set()] in Skripts verwenden, um Konfigurationsoptionen festzulegen, die keine Direktiven auf Systemebene sind.
 
-### <a name="changing-php\_ini\_system-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_SYSTEM
+### <a name="changing-phpinisystem-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_SYSTEM
 
 1. Hinzufügen einer App-Einstellung zu Ihrer Web-App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
 2. Erstellen einer `settings.ini`-Datei über die Kudu-Konsole (http://&lt;site-name&gt;.scm.azurewebsite.net) im Verzeichnis `d:\home\site\ini`.
@@ -107,7 +107,7 @@ Alternativ zur Verwendung einer`.user.ini`-Datei können Sie auch die Funktion [
         wincache.maxfilesize=512
 4. Starten Sie Ihre Web-App neu, um die Änderungen zu laden.
 
-## <a name="how-to:-enable-extensions-in-the-default-php-runtime"></a>Vorgehensweise: Aktivieren von Erweiterungen in der PHP-Standardlaufzeit
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Vorgehensweise: Aktivieren von Erweiterungen in der PHP-Standardlaufzeit
 Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste Möglichkeit, um die Standard-PHP-Version anzuzeigen, und die aktivierten Erweiterungen dienen zur Bereitstellung eines Skripts, das [phpinfo()]abruft. Führen Sie die folgenden Schritte aus, um zusätzliche Erweiterungen zu aktivieren:
 
 ### <a name="configure-via-ini-settings"></a>Konfigurieren über ini-Einstellungen
@@ -144,7 +144,7 @@ Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste M�
 Zend-Erweiterungen werden bei Verwendung des Schlüssels **PHP_ZENDEXTENSIONS** ebenfalls unterstützt. Um mehrere Erweiterungen zu aktivieren, fügen Sie eine durch Trennzeichen getrennte Liste von `.dll` -Dateien für den Wert der App-Einstellung hinzu.
 
 
-## <a name="how-to:-use-a-custom-php-runtime"></a>Vorgehensweise: Verwenden einer benutzerdefinierten PHP-Laufzeit
+## <a name="how-to-use-a-custom-php-runtime"></a>Vorgehensweise: Verwenden einer benutzerdefinierten PHP-Laufzeit
 Anstelle der PHP-Standardlaufzeit können App Service-Web-Apps auch eine PHP-Laufzeit verwenden, die Sie für die Ausführung von PHP-Skripten angeben. Die Laufzeit, die Sie angeben, kann durch eine `php.ini` -Datei konfiguriert werden, die Sie ebenfalls angeben. Folgen Sie den Schritten unten, um eine benutzerdefinierte PHP-Laufzeit mit Web-Apps zu verwenden.
 
 1. Besorgen Sie sich eine nicht threadsichere, VC9- oder VC11-kompatible Version von PHP für Windows. Neuere Versionen von PHP für Windows finden Sie hier: [http://windows.php.net/download/]. Ältere Versionen finden Sie im Archiv unter: [http://windows.php.net/downloads/releases/archives/].
@@ -165,7 +165,7 @@ Anstelle der PHP-Standardlaufzeit können App Service-Web-Apps auch eine PHP-Lau
     ![Speichern Sie die Konfigurationseinstellungen][save-button]
 
 <a name="composer" />
-## <a name="how-to:-enable-composer-automation-in-azure"></a>Gewusst wie: Aktivieren der Composer-Automatisierung in Azure
+## <a name="how-to-enable-composer-automation-in-azure"></a>Gewusst wie: Aktivieren der Composer-Automatisierung in Azure
 
 Standardmäßig wird „composer.json“ (sofern in Ihrem PHP-Projekt vorhanden) von App Service nicht verarbeitet. Wenn Sie die [Git-Bereitstellung](app-service-web-php-get-started.md) nutzen, können Sie während `git push` die Verarbeitung von „composer.json“ aktivieren, indem Sie die Composer-Erweiterung aktivieren.
 

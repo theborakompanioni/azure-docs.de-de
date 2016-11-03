@@ -733,7 +733,7 @@ T
     ['where'] = client_City // rename, using a keyword as a column name
 ```
 
-### <a name="project-away-operator"></a>project-away-Operator
+### <a name="projectaway-operator"></a>project-away-Operator
 
     T | project-away column1, column2, ...
 
@@ -951,7 +951,7 @@ Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 
 `top 5 by name` entspricht oberflächlich betrachtet `sort by name | take 5`. Allerdings ist die Ausführung schneller, und es werden immer sortierte Ergebnisse zurückgegeben; dies ist mit `take` nicht garantiert.
 
-### <a name="top-nested-operator"></a>top-nested operator
+### <a name="topnested-operator"></a>top-nested operator
 
     requests 
   	| top-nested 5 of name by count()  
@@ -1076,7 +1076,7 @@ Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kusku
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
 
-### <a name="where-in-operator"></a>where-in-Operator
+### <a name="wherein-operator"></a>where-in-Operator
 
     requests | where resultCode !in (200, 201)
 
@@ -1123,7 +1123,7 @@ traces
 
 <a name="argmin"></a>
 <a name="argmax"></a>
-### <a name="argmin,-argmax"></a>argmin, argmax
+### <a name="argmin-argmax"></a>argmin, argmax
 
     argmin(ExprToMinimize, * | ExprToReturn  [ , ... ] )
     argmax(ExprToMaximize, * | ExprToReturn  [ , ... ] ) 
@@ -1335,7 +1335,7 @@ Gibt ein `dynamic` -Array (JSON) des Satzes eindeutiger Werte zurück, die *Expr
 Siehe auch den [`mvexpand` -Operator](#mvexpand-operator) für die umgekehrte Funktion.
 
 
-### <a name="max,-min"></a>max, min
+### <a name="max-min"></a>max, min
 
     max(Expr)
 
@@ -1352,7 +1352,7 @@ Berechnet das Minimum von *Expr*.
 <a name="percentiles"></a>
 <a name="percentilew"></a>
 <a name="percentilesw"></a>
-### <a name="percentile,-percentiles,-percentilew,-percentilesw"></a>percentile, percentiles, percentilew, percentilesw
+### <a name="percentile-percentiles-percentilew-percentilesw"></a>percentile, percentiles, percentilew, percentilesw
 
     percentile(Expression, Percentile)
 
@@ -1595,7 +1595,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 <a name="isnull"/></a>
 <a name="isnotnull"/></a>
 <a name="notnull"/></a>
-### <a name="isnull,-isnotnull,-notnull"></a>isnull, isnotnull, notnull
+### <a name="isnull-isnotnull-notnull"></a>isnull, isnotnull, notnull
 
     isnull(parsejson("")) == true
 
@@ -1720,7 +1720,7 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
     iff(x>0, x, -x)
 
 <a name="bin"></a><a name="floor"></a>
-### <a name="bin,-floor"></a>bin, floor
+### <a name="bin-floor"></a>bin, floor
 
 Rundet Werte auf eine ganze Zahl ab, die ein Vielfaches der angegebenen bin-Größe ist. Wird häufig in der [`summarize by`](#summarize-operator) -Abfrage verwendet. Wenn Sie über einen verstreuten Satz von Werten verfügen, werden sie zu einem kleineren Satz bestimmter Werte gruppiert.
 
@@ -2016,7 +2016,7 @@ Die Ordinalzahl des Tags im Jahr.
 * `a_date`: Ein `datetime`-Wert.
 
 <a name="endofday"></a><a name="endofweek"></a><a name="endofmonth"></a><a name="endofyear"></a>
-### <a name="endofday,-endofweek,-endofmonth,-endofyear"></a>endofday, endofweek, endofmonth, endofyear
+### <a name="endofday-endofweek-endofmonth-endofyear"></a>endofday, endofweek, endofmonth, endofyear
 
     dt = datetime("2016-05-23 12:34")
 
@@ -2076,7 +2076,7 @@ T | where ... | extend Elapsed=now() - timestamp
 ```
 
 <a name="startofday"></a><a name="startofweek"></a><a name="startofmonth"></a><a name="startofyear"></a>
-### <a name="startofday,-startofweek,-startofmonth,-startofyear"></a>startofday, startofweek, startofmonth, startofyear
+### <a name="startofday-startofweek-startofmonth-startofyear"></a>startofday, startofweek, startofmonth, startofyear
 
     date=datetime("2016-05-23 12:34:56")
 
@@ -2263,7 +2263,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 <a name="notempty"></a>
 <a name="isnotempty"></a>
 <a name="isempty"></a>
-### <a name="isempty,-isnotempty,-notempty"></a>isempty, isnotempty, notempty
+### <a name="isempty-isnotempty-notempty"></a>isempty, isnotempty, notempty
 
     isempty("") == true
 
@@ -2435,7 +2435,7 @@ Konvertiert eine Zeichenfolge in Großbuchstaben.
     guid(00000000-1111-2222-3333-055567f333de)
 
 
-## <a name="arrays,-objects-and-dynamic"></a>Arrays, Objekte und Dynamik
+## <a name="arrays-objects-and-dynamic"></a>Arrays, Objekte und Dynamik
 
 [Literale](#dynamic-literals) | [Umwandlung](#casting-dynamic-objects) | [Operatoren](#operators) | [let-Klauseln](#dynamic-objects-in-let-clauses)
 <br/>

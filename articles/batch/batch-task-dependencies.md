@@ -29,7 +29,7 @@ Mit Taskabhängigkeiten in Batch können Sie Tasks erstellen, deren Ausführung 
 
 Sie können Tasks erstellen, die in einer 1:1- oder 1:n-Beziehung von anderen Tasks abhängen. Sie können sogar eine Bereichsabhängigkeit erstellen, bei der ein Task vom erfolgreichen Abschluss einer Gruppe von Tasks innerhalb eines bestimmten Task-ID-Bereichs abhängig ist. Sie können diese drei grundlegenden Szenarien auch kombinieren, um m:n-Beziehungen zu erstellen.
 
-## <a name="task-dependencies-with-batch-.net"></a>Taskabhängigkeiten bei Batch .NET
+## <a name="task-dependencies-with-batch-net"></a>Taskabhängigkeiten bei Batch .NET
 
 In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [Batch .NET]-Bibliothek [net_msdn] konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Taskabhängigkeit in Ihren Aufträgen aktivieren](#enable-task-dependencies), danach erläutern wir, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios) .
 
@@ -76,7 +76,7 @@ Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in A
 
 >[AZURE.TIP] Sie können **m:n**-Beziehungen erstellen, bei denen beispielsweise die Tasks C, D, E und F jeweils von den Tasks A und B abhängen. Dies ist beispielsweise für Fälle mit parallelisierter Vorverarbeitung nützlich, in denen Ihre nachgelagerten Tasks von der Ausgabe mehrerer vorgelagerter Tasks abhängig sind.
 
-### <a name="one-to-one"></a>1:1
+### <a name="onetoone"></a>1:1
 
 Um einen Task mit einer Abhängigkeit von der erfolgreichen Ausführung eines anderen Tasks zu erstellen, stellen Sie eine einzelne Task-ID für die statische [TaskDependencies][net_taskdependencies].[OnId][net_onid]-Methode bereit, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] auffüllen.
 
@@ -91,7 +91,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 },
 ```
 
-### <a name="one-to-many"></a>1:n
+### <a name="onetomany"></a>1:n
 
 Um einen Task mit einer Abhängigkeit von der erfolgreichen Ausführung mehrerer anderer Tasks zu erstellen, stellen Sie eine Sammlung von Task-IDs für die statische [TaskDependencies][net_taskdependencies].[OnIds][net_onids]-Methode bereit, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] auffüllen.
 

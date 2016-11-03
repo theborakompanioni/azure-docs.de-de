@@ -44,7 +44,7 @@ Im folgenden Diagramm wird SQL-Datenbank in der Region „USA, Osten“ ausgefü
 
 <!--## What is <feature>?" -->
 
-## <a name="what-is-a-sql-database-backup?"></a>Was ist die Sicherung einer SQL-Datenbank-Instanz?  
+## <a name="what-is-a-sql-database-backup"></a>Was ist die Sicherung einer SQL-Datenbank-Instanz?  
 
 <!-- 
 First sentence begins with "The <feature> is ..." followed by a definition of the feature. Provide a 1-2 paragraph intro to explain what the feature is, how it works, and the importance of the feature for solving business problems.
@@ -68,15 +68,15 @@ SQL-Datenbank verwendet die [Azure Storage-Replikation](../storage/storage-redun
 >[AZURE.NOTE] In Azure Storage bezieht sich der Begriff *Replikation* auf das Kopieren von Dateien von einem Speicherort zum anderen. Die *Datenbankreplikation* der SQL bezieht sich auf das Beibehalten von mehreren sekundären Datenbanken, die mit einer primären Datenbank synchronisiert werden. 
 
 
-## <a name="how-much-backup-storage-is-included-at-no-cost?"></a>Wie viel Sicherungsspeicher ist kostenlos enthalten?
+## <a name="how-much-backup-storage-is-included-at-no-cost"></a>Wie viel Sicherungsspeicher ist kostenlos enthalten?
 
 SQL-Datenbank stellt bis zu 200 Prozent Ihres maximal bereitgestellten Datenbankspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung. Wenn Sie beispielsweise über eine Standard-Datenbankinstanz mit einer bereitgestellten Größe von 250 GB verfügen, können Sie ohne zusätzliche Kosten 500 GB Sicherungsspeicher nutzen. Falls Ihre Datenbank den bereitgestellten Sicherungsspeicher überschreitet, können Sie die Aufbewahrungsdauer reduzieren lassen, indem Sie sich an den Azure-Support wenden. Eine weitere Option ist die Bezahlung für zusätzlichen Sicherungsspeicher, für den die RA-GRS-Standardrate (Read-Access Geographically Redundant Storage, Geografisch redundanter Speicher mit Lesezugriff) berechnet wird. 
 
-## <a name="how-often-do-backups-happen?"></a>Wie oft erfolgen Sicherungen?
+## <a name="how-often-do-backups-happen"></a>Wie oft erfolgen Sicherungen?
 
 Vollständige Datenbanksicherungen werden wöchentlich, differenzielle Datenbanksicherungen stündlich und Transaktionsprotokollsicherungen alle fünf Minuten ausgeführt. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird normalerweise innerhalb von 30 Minuten abgeschlossen, aber der Vorgang kann auch länger dauern, wenn es sich um eine sehr große Datenbank handelt. Die erste Sicherung kann bei einer wiederhergestellten Datenbank oder einer Datenbankkopie beispielsweise länger dauern. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Die genaue Zeitplanung für vollständige und [differenzielle](https://msdn.microsoft.com/library/ms175526.aspx) Datenbanksicherungen wird je nach der gesamten Systemworkload bestimmt. 
 
-## <a name="how-long-do-you-keep-my-backups?"></a>Wie lang werden meine Sicherungen aufbewahrt?
+## <a name="how-long-do-you-keep-my-backups"></a>Wie lang werden meine Sicherungen aufbewahrt?
 
 Jede SQL-Datenbank-Sicherung verfügt über einen Aufbewahrungszeitraum, der auf der [Dienstebene](sql-database-service-tiers.md) der Datenbank basiert. Folgende Aufbewahrungszeiträume gelten:
 
