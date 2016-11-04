@@ -39,7 +39,7 @@ Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex 
 
 In diesem Schnellstarthandbuch arbeiten wir mit kalifornischen Milchproduktions- und -preisdaten. Diese Daten umfassen monatliche Informationen zur Produktion mehrerer Milcherzeugnisse sowie zum Preis von Milchfett, einem Vergleichsrohstoff.
 
-Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier heruntergeladen][herunterladen] werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
+Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier heruntergeladen][Herunterladen] werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
 
 ### <a name="organization"></a>Organisation
 
@@ -145,7 +145,7 @@ Wenn Sie noch keine Erfahrungen mit RStudio haben, sollten Sie die Desktopversio
 
 Ein Einführungslernprogramm zu RStudio finden Sie unter „https://support.rstudio.com/hc/sections/200107586-Using-RStudio“.
 
-Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][Anhang A].  
+Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][Anhang A]].  
 
 ##<a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>Durchführen von Dateneingaben und -ausgaben im "Execute R Script"-Modul
 
@@ -661,7 +661,7 @@ Die Zeitreihenklasse "POSIXct" wird häufig verwendet und ist relativ einfach. D
 
 ### <a name="time-series-object-example"></a>Beispiel für Zeitreihenobjekte
 
-Beginnen wir mit unserem Beispiel. Ziehen Sie ein **neues** [Execute R Script][execute-r-script]-Modul per Drag & Drop in Ihr Experiment. Verbinden Sie den „Result Dataset1“-Ausgabeport des vorhandenen [Execute R Script][execute-r-scriptt]-Moduls mit dem „Dataset1“-Eingabeport des neuen [Execute R Script][execute-r-script]-Moduls.
+Beginnen wir mit unserem Beispiel. Ziehen Sie ein **neues** [Execute R Script][execute-r-script]-Modul per Drag & Drop in Ihr Experiment. Verbinden Sie den „Result Dataset1“-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem „Dataset1“-Eingabeport des neuen [Execute R Script][execute-r-script]-Moduls.
 
 Wie bei den ersten Beispielen werden auch hier beim Durchlaufen des Beispiels an einigen Stellen nur die inkrementellen, zusätzlichen R-Codezeilen im jeweiligen Schritt gezeigt.  
 
@@ -1361,6 +1361,6 @@ Einige weitere nützliche Internetressourcen:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

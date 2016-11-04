@@ -17,22 +17,7 @@
    ms.author="carlrab"/>
 
 
-
-
-<!-- # H1 Title
-
- H1 title should answer the question "What is in this topic?" Write the title in conversational language and use search key words as much as possible. Since this is a learning topic, make sure the title indicates that and doesn't mislead people to think this will tell them how to do tasks.  
--->
-
 # <a name="learn-about-sql-database-backups"></a>Weitere Informationen zu Sicherungen für SQL-Datenbank
-
-<!-- Introduction
-
-1. Sentence #1 begins with "Learn about ..." and gives the scope of what the article will cover.
-2. Sentence #2 explains the key capability or selling point of the feature.
-3. Sentence #3 begins with "Use this feature to ..." and gives a common use case.
-
--->
 
 SQL-Datenbank erstellt alle fünf Minuten eine lokale Datenbanksicherung und verwendet georedundanten Azure-Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS), um einen Teil der Datenbanksicherungen in eine andere geografische Region zu kopieren. Diese Sicherungen erfolgen **automatisch und ohne zusätzliche Kosten**. Verwenden Sie lokale Datenbanksicherungen, um eine [Datenbank auf dem gleichen Server auf einen früheren Zeitpunkt wiederherzustellen](sql-database-point-in-time-restore-portal.md). Mithilfe von georedundanten Sicherungen können Sie die [Datenbank in einer anderen geografischen Region wiederherstellen](sql-database-geo-restore-portal.md).  
 
@@ -101,6 +86,6 @@ Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Gesc
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

@@ -1,3 +1,4 @@
+
 <properties 
     pageTitle="Verwenden von Service Bus-Warteschlangen mit PHP | Microsoft Azure" 
     description="Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure. Die Codebeispiele wurden in PHP geschrieben." 
@@ -41,7 +42,7 @@ In diesem Leitfaden verwenden Sie Dienstfunktionen, die lokal aus einer PHP-Anwe
 
 Um die APIs für Service Bus-Warteschlangen zu verwenden, gehen Sie folgendermaßen vor:
 
-1. Verweisen Sie mithilfe der [require_once][require-once]-Anweisung auf die Autoloaderdatei.
+1. Verweisen Sie mithilfe der [require_once][require_once]-Anweisung auf die Autoloaderdatei.
 2. Verweisen Sie auf alle Klassen, die Sie möglicherweise verwenden.
 
 Das folgende Beispiel zeigt, wie die Autoloaderdatei eingeschlossen und die **ServicesBuilder** -Klasse referenziert wird.
@@ -223,6 +224,6 @@ Weitere Informationen finden Sie auch im [PHP Developer Center](/develop/php/).
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

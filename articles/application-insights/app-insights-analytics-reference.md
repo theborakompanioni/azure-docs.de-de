@@ -889,7 +889,7 @@ Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städ
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0],[10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 
 **Syntax**
@@ -2788,6 +2788,6 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

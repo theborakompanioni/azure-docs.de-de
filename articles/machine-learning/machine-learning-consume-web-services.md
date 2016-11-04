@@ -74,7 +74,7 @@ Die Art und Weise, in der Sie diese Informationen finden, hängt davon ab, welch
 
 So finden Sie die benötigten Informationen
 
-1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][webservicesportal] an.
+1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][Web Services-Portal] an.
 2. Klicken Sie auf **Web Services** oder **Classic Web Services**.
 3. Klicken Sie auf den Webdienst, mit dem Sie arbeiten. 
 4. Klicken Sie bei Verwendung eines klassischen Webdiensts auf den Endpunkt, mit dem Sie arbeiten.
@@ -91,7 +91,7 @@ Sie finden die benötigten Informationen an zwei Stellen: in Machine Learning St
 
 So finden Sie die benötigten Informationen in Machine Learning Studio
 
-1. Melden Sie sich bei [Azure Machine Learning Studio][mlstudio] an.
+1. Melden Sie sich bei [Azure Machine Learning Studio][ML Studio] an.
 2. Klicken Sie auf der linken Seite des Bildschirms auf **WEB SERVICES**.
 3. Klicken Sie auf den Webdienst, mit dem Sie arbeiten. 
 
@@ -106,7 +106,7 @@ Um die API-Hilfeseite zuzugreifen, klicken Sie entsprechend Ihrer Aufgabe entwed
 
 So finden Sie die benötigten Informationen im Azure Machine Learning Web Services-Portal
 
-1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][webservicesportal] an.
+1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][Web Services-Portal] an.
 2. Klicken Sie auf **Classic Web Services**.
 3. Klicken Sie auf den Webdienst, mit dem Sie arbeiten. 
 4. Klicken Sie auf den Endpunkt, mit dem Sie arbeiten.
@@ -753,6 +753,6 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 [ML Studio]: https://studio.azureml.net
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

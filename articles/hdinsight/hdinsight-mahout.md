@@ -65,7 +65,7 @@ Im Folgenden sehen Sie ein extrem einfaches Beispiel mit Spielfilmen:
 
 ###<a name="understanding-the-data"></a>Grundlegendes zu den Daten
 
-Praktischerweise stellt [GroupLens Research][MovieLens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples/MahoutMovieData`verfügbar.
+Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples/MahoutMovieData`verfügbar.
 
 Es existieren zwei Dateien, `moviedb.txt` (Informationen zu den Filmen) und `user-ratings.txt`. Die Datei „user-ratings.txt“ der Benutzerbewertung wird während der Analyse verwendet, während „moviedb.txt“ beim Anzeigen der Ergebnisse der Analyse benutzerfreundliche Textinformationen angibt.
 
@@ -527,6 +527,6 @@ Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Met
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

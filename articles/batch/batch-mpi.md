@@ -235,7 +235,8 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Im-Blogartikel des Microsoft HPC- und Azure Batch-Teams (in englischer Sprache) erfahren Sie mehr über die [MPI-Unterstützung für Linux auf Azure Batch][blog_mpi_linux] und zur Verwendung von [OpenFOAM][openfoam] mit Batch. Sie finden Python-Codebeispiele für das [OpenFOAM-Beispiel auf GitHub][Github_mpi].
+- Im-Blogartikel des Microsoft HPC- und Azure Batch-Teams (in englischer Sprache) erfahren Sie mehr über die [MPI-Unterstützung für Linux auf Azure Batch][blog_mpi_linux] und zur Verwendung von [OpenFOAM][openfoam] mit Batch. Sie finden Python-Codebeispiele für das 
+- [OpenFOAM-Beispiel auf GitHub][github_mpi].
 
 - Es empfiehlt sich, eine einfache MS-MPI-Anwendung zu erstellen, die zum Testen von Tasks mit mehreren Instanzen in Batch verwendet wird. Der Blogartikel [How to compile and run a simple MS-MPI program][msmpi_howto] (Kompilieren und Ausführen eines einfachen MS-MPI-Programms) enthält eine exemplarische Vorgehensweise zum Erstellen einer einfachen MPI-Anwendung mithilfe von MS-MPI.
 
@@ -282,6 +283,6 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
