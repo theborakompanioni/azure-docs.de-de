@@ -4,7 +4,7 @@
     services=""
     documentationCenter="java"
     authors="rmcmurray"
-    manager="wpickett"
+    manager="erikre"
     editor=""/>
 
 <tags
@@ -13,11 +13,11 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="08/26/2016" 
+    ms.date="11/01/2016" 
     ms.author="robmcm;asirveda;martinsawicki"/>
 
 
-# <a name="what's-new-in-the-azure-toolkit-for-intellij"></a>Neuerungen im Azure-Toolkit für IntelliJ
+# <a name="whats-new-in-the-azure-toolkit-for-intellij"></a>Neuerungen im Azure-Toolkit für IntelliJ
 
 ## <a name="azure-toolkit-for-intellij-releases"></a>Versionen des Azure-Toolkits für IntelliJ
 
@@ -25,7 +25,7 @@ Dieser Artikel enthält Informationen zu den verschiedenen Versionen und den neu
 
 > [AZURE.NOTE] Es gibt auch ein Azure-Toolkit für die Eclipse-IDE. Weitere Informationen finden Sie unter [Azure-Toolkit für Eclipse].
 
-### <a name="august-26,-2016"></a>26. August 2016
+### <a name="august-26-2016"></a>26. August 2016
 
 Das Release des Azure-Toolkits für IntelliJ vom April 2016 umfasst folgende Erweiterungen:
 
@@ -37,7 +37,7 @@ Das Release des Azure-Toolkits für IntelliJ vom April 2016 umfasst folgende Erw
   - Unterstützung für die Blobverwaltung im Speicherkonto über Azure Resource Manager, zur Ergänzung der vorhandenen Funktionalität für die Verwaltung „klassischer“ Speicherkonten.
 * **Microsoft JDBC Driver 6.0 für SQL Server**. Dieses Update enthält den neuesten JDBC-Treiber für Microsoft SQL Server (Version 6.0) – dieser wird jetzt als Bibliothek bereitgestellt, die Sie ganz einfach zu Ihren Java-Projekten hinzufügen können. Die ältere Version wird hierdurch ersetzt.
 
-### <a name="june-29,-2016"></a>29. Juni 2016
+### <a name="june-29-2016"></a>29. Juni 2016
 
 Die Version des Azure-Toolkits für IntelliJ vom Juni 2016 umfasst folgende Erweiterungen:
 
@@ -48,7 +48,7 @@ Die Version des Azure-Toolkits für IntelliJ vom Juni 2016 umfasst folgende Erwe
 * **Integration von HDInsight-Tools**. Die Azure HDInsight-Tools stehen nun im Paket mit dem Azure-Toolkit für IntelliJ zur Verfügung. Weitere Informationen finden Sie unter [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux].
 * **Remotedebuggen von Java-Web-Apps**. Das Azure-Toolkit für IntelliJ unterstützt jetzt das Remotedebuggen von Java-Web-Apps in Azure App Service.
 
-### <a name="april-12,-2016"></a>12. April 2016
+### <a name="april-12-2016"></a>12. April 2016
 
 Die Version des Azure-Toolkits für IntelliJ vom April 2016 umfasst folgende Erweiterungen:
 

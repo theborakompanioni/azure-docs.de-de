@@ -2,7 +2,7 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-simulated-device.md)
 
-Diese exemplarische Vorgehensweise für [Simulated Device Cloud Upload Sample] (Beispiel für Clouduploads von simulierten Geräten) zeigt, wie Sie das [Microsoft Azure IoT Gateway SDK][Ink-sdk] verwenden, um D2C-Telemetriedaten (Device to Cloud) von simulierten Geräten an IoT Hub zu senden.
+Diese exemplarische Vorgehensweise für [Simulated Device Cloud Upload Sample] (Beispiel für Clouduploads von simulierten Geräten) zeigt, wie Sie das [Microsoft Azure IoT Gateway SDK][lnk-sdk] verwenden, um D2C-Telemetriedaten (Device to Cloud) von simulierten Geräten an IoT Hub zu senden.
 
 Diese Anleitung umfasst:
 
@@ -45,7 +45,7 @@ Dieses Modul ist der Ausgangspunkt für das Übermitteln von Daten von Geräten 
 
 > [AZURE.NOTE] Das im Diagramm oben als **Protocol X ingestion** bezeichnete Modul ist ein **simuliertes Gerät** im Quellcode.
 
-### <a name="mac-&lt;-&gt;-iot-hub-id-module"></a>Modul zur Zuordnung zwischen MAC-Adressen und IoT Hub-IDs&lt;-&gt;
+### <a name="mac-ltgt-iot-hub-id-module"></a>Modul zur Zuordnung zwischen MAC-Adressen und IoT Hub-IDs&lt;-&gt;
 
 Dieses Modul sucht nach Nachrichten mit einer Eigenschaft, die die vom Protokollerfassungsmodul hinzugefügte MAC-Adresse des simulierten Geräts enthält. Wenn das Modul eine solche Eigenschaft findet, fügt es der Nachricht eine weitere Eigenschaft mit einem IoT Hub-Geräteschlüssel hinzu und stellt die Nachricht dann dem nächsten Modul in der Kette zur Verfügung. So verknüpft das Beispiel IoT Hub-Geräteeigenschaften mit simulierten Geräten. Der Entwickler richtet die Zuordnung zwischen MAC-Adressen und IoT Hub-Identitäten manuell im Rahmen der Modulkonfiguration ein. 
 
@@ -69,6 +69,6 @@ Anstatt für jedes simulierte Gerät eine Verbindung mit IoT Hub zu öffnen, öf
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
