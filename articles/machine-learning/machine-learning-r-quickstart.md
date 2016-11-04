@@ -39,7 +39,7 @@ Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex 
 
 In diesem Schnellstarthandbuch arbeiten wir mit kalifornischen Milchproduktions- und -preisdaten. Diese Daten umfassen monatliche Informationen zur Produktion mehrerer Milcherzeugnisse sowie zum Preis von Milchfett, einem Vergleichsrohstoff.
 
-Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier heruntergeladen][herunterladen] werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
+Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier heruntergeladen][Herunterladen] werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
 
 ### <a name="organization"></a>Organisation
 
@@ -55,7 +55,7 @@ Wir werden mehrere Schritte durchlaufen, in denen Sie erfahren, wie Sie in der A
 
 * Schließlich erstellen wir ein saisonales Zeitreihen-Vorhersagemodell für die Produktion von Milcherzeugnissen.
 
-##<a name="<a-id="mlstudio"></a>interact-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>Interagieren mit der Sprache R in Machine Learning Studio
+##<a name="a-idmlstudioainteract-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>Interagieren mit der Sprache R in Machine Learning Studio
 
 Dieser Abschnitt führt Sie durch einige Grundlagen der Interaktion mit der Programmiersprache R in der Machine Learning Studio-Umgebung. Die Sprache R stellt ein leistungsfähiges Tool zum Erstellen benutzerdefinierter Analyse- und Datenbearbeitungsmodule innerhalb der Azure Machine Learning-Umgebung bereit.
 
@@ -145,9 +145,9 @@ Wenn Sie noch keine Erfahrungen mit RStudio haben, sollten Sie die Desktopversio
 
 Ein Einführungslernprogramm zu RStudio finden Sie unter „https://support.rstudio.com/hc/sections/200107586-Using-RStudio“.
 
-Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][Anhang A].  
+Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][Anhang A]].  
 
-##<a name="<a-id="scriptmodule"></a>get-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>Durchführen von Dateneingaben und -ausgaben im "Execute R Script"-Modul
+##<a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>Durchführen von Dateneingaben und -ausgaben im "Execute R Script"-Modul
 
 In diesem Abschnitt wird erörtert, wie Sie Daten in das [Execute R Script][execute-r-script]-Modul ein- und daraus ausgeben können. Sie erfahren, wie verschiedene Datentypen, die vom [Execute R Script][execute-r-script]-Modul ein- und ausgelesen werden, zu handhaben sind.
 
@@ -155,7 +155,7 @@ Der vollständige Code für diesen Abschnitt befindet sich in der ZIP-Datei, die
 
 ###<a name="load-and-check-data-in-machine-learning-studio"></a>Laden und Überprüfen von Daten in Machine Learning Studio
 
-####<a name="<a-id="loading"></a>load-the-dataset"></a><a id="loading"></a>Laden des DataSets
+####<a name="a-idloadingaload-the-dataset"></a><a id="loading"></a>Laden des DataSets
 
 Wir beginnen damit, dass wir die Datei **csdairydata.csv** in Azure Machine Learning Studio laden.
 
@@ -355,7 +355,7 @@ Wenn wir nach unten scrollen, sehen wir die Grafikausgabe unseres R-Skripts wie 
 
 *Abbildung 8: Grafikausgabe des "R Device"-Ports.*  
 
-##<a name="<a-id="filtering"></a>data-filtering-and-transformation"></a><a id="filtering"></a>Filtern und Transformieren von Daten
+##<a name="a-idfilteringadata-filtering-and-transformation"></a><a id="filtering"></a>Filtern und Transformieren von Daten
 
 In diesem Abschnitt werden wir einige grundlegende Vorgänge zum Filtern und Transformieren von Daten mit den kalifornischen Milchproduktdaten ausführen. Am Ende dieses Abschnitts erhalten wir dann Daten in einem Format, das für die Erstellung eines Analysemodells geeignet ist.  
 
@@ -646,7 +646,7 @@ Wir sehen, dass die Werte transformiert wurden. Die Milchproduktion überschreit
 
 An diesem Punkt sind unsere Daten bereinigt, und wir sind zur Modellierung bereit. Wenn Sie die Visualisierungszusammenfassung für die Ausgabe „Result Dataset“ unseres [Execute R Script][execute-r-script]-Moduls betrachten, stellen Sie fest, dass die Spalte „Month“ genau wie beabsichtigt „Categorical“ mit 12 eindeutigen Werten ist.
 
-##<a name="<a-id="timeseries"></a>time-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>Zeitreihenobjekte und Korrelationsanalyse
+##<a name="a-idtimeseriesatime-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>Zeitreihenobjekte und Korrelationsanalyse
 
 In diesem Abschnitt behandeln wir ein paar grundlegende R-Zeitreihenobjekte und analysieren die Korrelationen zwischen einigen der Variablen. Unser Ziel ist es, ein Dataframe auszugeben, das die paarweisen Korrelationsinformationen an mehreren Verzögerungen enthält.
 
@@ -661,7 +661,7 @@ Die Zeitreihenklasse "POSIXct" wird häufig verwendet und ist relativ einfach. D
 
 ### <a name="time-series-object-example"></a>Beispiel für Zeitreihenobjekte
 
-Beginnen wir mit unserem Beispiel. Ziehen Sie ein **neues** [Execute R Script][execute-r-script]-Modul per Drag & Drop in Ihr Experiment. Verbinden Sie den „Result Dataset1“-Ausgabeport des vorhandenen [Execute R Script][execute-r-scriptt]-Moduls mit dem „Dataset1“-Eingabeport des neuen [Execute R Script][execute-r-script]-Moduls.
+Beginnen wir mit unserem Beispiel. Ziehen Sie ein **neues** [Execute R Script][execute-r-script]-Modul per Drag & Drop in Ihr Experiment. Verbinden Sie den „Result Dataset1“-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem „Dataset1“-Eingabeport des neuen [Execute R Script][execute-r-script]-Moduls.
 
 Wie bei den ersten Beispielen werden auch hier beim Durchlaufen des Beispiels an einigen Stellen nur die inkrementellen, zusätzlichen R-Codezeilen im jeweiligen Schritt gezeigt.  
 
@@ -937,7 +937,7 @@ Das Ausführen des Codes erzeugt die in Abbildung 19 dargestellte Ausgabe, wenn
 
 *Abbildung 19: Ergebnisausgabe der Korrelationsanalyse.*
 
-##<a name="<a-id="seasonalforecasting"></a>time-series-example:-seasonal-forecasting"></a><a id="seasonalforecasting"></a>Zeitreihenbeispiel: saisonale Vorhersagen
+##<a name="a-idseasonalforecastingatime-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>Zeitreihenbeispiel: saisonale Vorhersagen
 
 Unsere Daten liegen nun in einer Form vor, die für die Analyse geeignet ist, und wir haben festgestellt, dass keine nennenswerten Korrelationen zwischen den Variablen bestehen. Lassen Sie uns nun fortfahren und ein Zeitreihen-Vorhersagemodell erstellen. Mit diesem Modell werden wir die kalifornische Milchproduktion für die 12 Monate von 2013 vorhersagen.
 
@@ -1273,7 +1273,7 @@ Das Ausführen des Codes erzeugt die in Abbildung 27 dargestellte Ausgabe am "Re
 
 Anhand dieser Ergebnisse können wir erkennen, dass der RMS-Fehler durch das Hinzufügen der saisonalen Faktoren zu dem Modell signifikant abnimmt. Es überrascht uns nicht allzu sehr, dass der RMS-Fehler für die Trainingsdaten ein wenig niedriger ist für die Vorhersage.
 
-##<a name="<a-id="appendixa"></a>appendix-a:-guide-to-rstudio"></a><a id="appendixa"></a>ANHANG A – Anleitung für RStudio
+##<a name="a-idappendixaaappendix-a-guide-to-rstudio"></a><a id="appendixa"></a>ANHANG A – Anleitung für RStudio
 
 RStudio ist sehr gut dokumentiert, weshalb ich in diesem Anhang einige Links zu den wichtigsten Abschnitten der RStudio-Dokumentation bereitstelle, um Ihnen einen schnellen Einstieg zu ermöglichen.
 
@@ -1293,7 +1293,7 @@ RStudio ist sehr gut dokumentiert, weshalb ich in diesem Anhang einige Links zu 
 
     Die Problembehandlungsfunktionen für Haltepunkte (breakpoints) finden Sie unter „https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting“.
 
-##<a name="<a-id="appendixb"></a>appendix-b:-further-reading"></a><a id="appendixb"></a>ANHANG B – Weitere Informationen
+##<a name="a-idappendixbaappendix-b-further-reading"></a><a id="appendixb"></a>ANHANG B – Weitere Informationen
 
 Dieses Lernprogramm für die Programmierung in R behandelt die Grundlagen der Sprache R mit Azure Machine Learning Studio. Wenn Sie nicht mit R vertraut sind, finden Sie zwei Einführungen im CRAN.
 
@@ -1361,6 +1361,6 @@ Einige weitere nützliche Internetressourcen:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

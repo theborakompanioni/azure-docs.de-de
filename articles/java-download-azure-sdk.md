@@ -1,52 +1,53 @@
 <properties 
-	pageTitle="Herunterladen des Azure SDK für Java" 
-	description="Erfahren Sie, wie Sie das Azure SDK für Java herunterladen, mit Beispielcode für Maven-Projekte und grundlegenden Installationsschritten für das Azure-Toolkit für Eclipse." 
-	services="" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
-	editor=""/>
+    pageTitle="Download the Azure SDK for Java" 
+    description="Learn how to download the Azure SDK for Java, with sample code provided for Maven projects and basic installation steps for the Azure Tookit for Eclipse." 
+    services="" 
+    documentationCenter="java" 
+    authors="rmcmurray" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="multiple" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/11/2016" 
-	ms.author="robmcm"/>
+    ms.service="multiple" 
+    ms.workload="na" 
+    ms.tgt_pltfrm="multiple" 
+    ms.devlang="Java" 
+    ms.topic="article" 
+    ms.date="11/01/2016" 
+    ms.author="robmcm"/>
 
-# Herunterladen des Azure SDK für Java
 
-Dieser Artikel enthält eine Anleitung zum Herunterladen und Installieren der Azure-Bibliotheken für Java.
+# <a name="download-the-azure-sdk-for-java"></a>Download the Azure SDK for Java
 
-[Hinweis:][license] Die Azure-Bibliotheken für Java werden unter der **Apache-Lizenz, Version 2.0,** verteilt.
+This article contains instructions for downloading and installing the Azure Libraries for Java.
 
-## Azure-Bibliotheken für Java – manueller Download
+**Note:** The Azure Libraries for Java are distributed under the [Apache License, Version 2.0][license].
 
-Klicken Sie zum manuellen Installieren der Azure-Bibliotheken für Java auf <http://go.microsoft.com/fwlink/?LinkId=690320>. Es wird eine ZIP-Datei heruntergeladen, die alle Bibliotheken und alle Abhängigkeiten enthält.
+## <a name="azure-libraries-for-java-manual-download"></a>Azure Libraries for Java - Manual Download
 
-Nachdem Sie die ZIP-Datei auf Ihren Computer heruntergeladen haben, extrahieren Sie den Inhalt, und fügen Sie die JAR-Dateien über eine der folgenden Optionen Ihrem Projekt hinzu:
+To manually install the Azure Libraries for Java, click <http://go.microsoft.com/fwlink/?LinkId=690320> to download a ZIP file which contains all of the libraries and all dependencies.
 
-* Importieren Sie die JAR-Dateien in Ihr Java-Projekt in Eclipse.
+Once you have downloaded the zip file to your computer, extract the contents and use one of the following options to add the JAR files to your project:
 
-* Konfigurieren Sie den **Build Path** für das Java-Projekt in Eclipse, sodass er den Pfad der JAR-Dateien enthält.
+* Import the JAR files into your Java project in Eclipse.
 
-Ausführliche Informationen zum Einrichten des Buildpfads in Eclipse finden Sie im Artikel [Java Build Path] \(in englischer Sprache) auf der Eclipse-Website.
+* Configure the **Build Path** for your Java project in Eclipse to include the path to the JAR files.
 
-**Hinweis:** Informationen zur Lizenz und weitere Informationen finden Sie in den Dateien „license.txt“ und „ThirdPartyNotices.txt“ in der ZIP-Datei.
+For detailed information on setting up build paths in Eclipse, see the [Java Build Path] article at the Eclipse website.
 
-## Azure-Bibliotheken für Java – Erstellung mit Maven
+**Note:** See the license.txt and ThirdPartyNotices.txt file file inside the ZIP for license and other information.
 
-### Schritt 1: Einrichten des Projekts für die Verwendung von Maven zum Erstellen
+## <a name="azure-libraries-for-java-building-with-maven"></a>Azure Libraries for Java - Building with Maven
 
-Informationen zum Erstellen von Maven-Projekten in Eclipse, die die Azure-Bibliotheken für Java verwenden, finden Sie im Artikel [Getting Started with Azure Management Libraries for Java][maven-getting-started] \(in englischer Sprache).
+### <a name="step-1-set-up-your-project-to-use-maven-for-build"></a>Step 1 - Set up your project to use Maven for build
 
-### Schritt 2: Konfigurieren Ihrer Maven-Einstellungen mit den erforderlichen Abhängigkeiten
+To create Maven projects in Eclipse which use the Azure libraries for Java, following the instructions in the [Getting Started with Azure Management Libraries for Java][maven-getting-started] article. 
 
-Nachdem das Projekt für die Verwendung von Maven für die Erstellung konfiguriert wurde, können Sie Ihrer Datei „pom.xml“ die erforderlichen Abhängigkeiten mit einer Syntax wie im folgenden Beispiel hinzufügen. Beachten Sie, dass Sie nicht jede im folgenden Beispiel aufgeführte Abhängigkeit hinzufügen müssen. Sie müssen nur die spezifischen Abhängigkeiten hinzufügen, die für Ihr Projekt erforderlich sind.
+### <a name="step-2-configure-your-maven-settings-with-the-requisite-dependencies"></a>Step 2 - Configure your Maven settings with the requisite dependencies
 
-> [AZURE.NOTE] Ersetzen Sie in jedem `<version>`-Element im folgenden Beispiel den Platzhalter „n.n.n“ durch gültige Versionsnummern, die Sie im [Azure-Bibliothekenrepository auf Maven] erhalten.
+Once your project has been configured to use Maven for build, you can add the the requisite dependencies to your pom.xml file using syntax like the following example. Note that you do not need to add every dependency that is listed in the following example; you only need to add the specific dependencies which your project requires.
+
+> [AZURE.NOTE] Within each `<version>` element in the following sample, replace the "n.n.n" placeholders in this example with valid version numbers, which can be obtained from the [Azure Libraries Repository on Maven].
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -94,46 +95,49 @@ Nachdem das Projekt für die Verwendung von Maven für die Erstellung konfigurie
         <version>n.n.n</version>
     </dependency>
 
-## Installieren des Azure-Toolkits für Eclipse
+## <a name="installing-the-azure-toolkit-for-eclipse"></a>Installing the Azure Toolkit for Eclipse
 
-Dieser Abschnitt enthält grundlegende Informationen zum Installieren des Azure-Toolkits für Eclipse. Weitere Informationen finden Sie unter [Installing the Azure Toolkit for Eclipse] \(in englischer Sprache).
+This section contains basic instructions for installing the Azure Toolkit for Eclipse; for detailed instructions, see [Installing the Azure Toolkit for Eclipse].
 
-### Voraussetzungen
+### <a name="prerequisites"></a>Prerequisites
 
-1. Windows-Betriebssystem, wie im Artikel [Neuigkeiten im Azure-Toolkit für Eclipse] aufgeführt.
-1. Macintosh- oder Linux-Betriebssystem, wie im Artikel [Neuigkeiten im Azure-Toolkit für Eclipse] aufgeführt.
-1. Eclipse IDE für Java EE-Entwickler, Indigo oder höher. Dies kann von <http://www.eclipse.org/downloads/> heruntergeladen werden.
+1. Windows operting systems listed in the [What's New in the Azure Toolkit for Eclipse] article.
+1. Macintosh or Linux operting systems listed in the [What's New in the Azure Toolkit for Eclipse] article.
+1. Eclipse IDE for Java EE Developers, Indigo or later. This can be downloaded from <http://www.eclipse.org/downloads/>.
 
-### Grundlegende Installationsschritte
+### <a name="basic-installation-steps"></a>Basic Installation steps
 
-1. Wählen Sie im Menü von Eclipse **Help**, und wählen Sie **Install New Software** aus.
-1. Geben Sie den Websitespeicherort <http://dl.microsoft.com/eclipse> ein, und drücken Sie die **Eingabetaste**.
-1. Wählen Sie die zu installierenden Elemente aus, und klicken Sie auf **Finish**.
+1. In Eclipse, from the **Help** menu, select **Install New Software**.
+1. Enter the site location <http://dl.microsoft.com/eclipse> and press **Enter**.
+1. Select the items to be installed and click **Finish**.
 
-Im Azure-Toolkit für Eclipse wird die aktuelle Version des Azure SDK verwendet. Diese können Sie mithilfe des Webplattform-Installer (WebPI) unter <http://go.microsoft.com/fwlink/?LinkID=252838> herunterladen. Falls Sie diesen jedoch noch nicht installiert haben, wenn Sie Ihr erstes Azure-Bereitstellungsprojekt erstellen, installiert das Azure-Toolkit für Eclipse automatisch die entsprechende Version von Azure SDK.
+The Azure Toolkit for Eclipse uses the latest version of the Azure SDK. This can be downloaded using the Web Platform Installer (WebPI) at <http://go.microsoft.com/fwlink/?LinkID=252838>. However, if you don't have it installed, when you create your first Azure deployment project, the Azure Toolkit for Eclipse will automatically install the appropriate version of the Azure SDK.
 
-## Weitere Informationen
+## <a name="see-also"></a>See Also
 
-[Azure-Toolkit für Eclipse]
+[Azure Toolkit for Eclipse]
 
-[Installieren des Azure-Toolkits für Eclipse]
+[Installing the Azure Toolkit for Eclipse] 
 
-[Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)]
+[Creating a Hello World Application for Azure in Eclipse]
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] \(in englischer Sprache).
+For more information about using Azure with Java, see the [Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure-Bibliothekenrepository auf Maven]: http://go.microsoft.com/fwlink/?LinkID=286274
-[Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Azure Libraries Repository on Maven]: http://go.microsoft.com/fwlink/?LinkID=286274
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
 [Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[Installieren des Azure-Toolkits für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 [Java Build Path]: http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-properties-build-path.htm
 [license]: http://www.apache.org/licenses/LICENSE-2.0.html
 [maven-getting-started]: http://go.microsoft.com/fwlink/?LinkID=622998
 [zip-download]: http://go.microsoft.com/fwlink/?LinkId=690320
-[Neuigkeiten im Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=690333
+[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=690333
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,28 +1,33 @@
 <properties
-	pageTitle="Azure AD v2.0: universelle Windows-App | Microsoft Azure"
-	description="Vorgehensweise beim Erstellen einer universellen Windows-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="Azure AD v2.0 Windows Universal App | Microsoft Azure"
+    description="How to build an Windows Universal app that signs users in with both personal Microsoft Account and work or school accounts."
+    services="active-directory"
+    documentationCenter=""
+    authors="dstrockis"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.topic="article"
-  	ms.tgt_pltfrm="mobile-windows-store"
-	ms.devlang="dotnet"
-	ms.date="02/20/2016"
-	ms.author="dastrock"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.topic="article"
+    ms.tgt_pltfrm="mobile-windows-store"
+    ms.devlang="dotnet"
+    ms.date="02/20/2016"
+    ms.author="dastrock"/>
 
-  # Hinzufügen der Anmeldung zu einer universellen Windows-App mit dem v2.0-Endpunkt. Das Schnellstarttutorial für universelle Windows-Apps ist noch nicht ausgereift ... Kommen Sie bald zurück und halten Sie außerdem nach Updates von @AzureAD auf Twitter Ausschau.
+  
+# <a name="add-signin-to-a-windows-universal-app-using-the-v20-endpoint"></a>Add sign-in to a Windows Universal app using the v2.0 endpoint
+  The quick-start tutorial for Windows Universal apps isn't quite ready... Check back soon & look for updates from @AzureAD on Twitter.
 
 > [AZURE.NOTE]
-	Nicht alle Szenarios und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
-	
-	## Get security updates for our products
+    Not all Azure Active Directory scenarios & features are supported by the v2.0 endpoint.  To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).
+    
+    ## Get security updates for our products
 
-Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
+We encourage you to get notifications of when security incidents occur by visiting [this page](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.
 
-<!---HONumber=AcomDC_0601_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

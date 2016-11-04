@@ -27,7 +27,7 @@ Erfahren Sie, wie Sie Filmempfehlungen mit der [Apache Mahout](http://mahout.apa
 > [AZURE.NOTE] Die Schritte in diesem Dokument erfordern einen Windows-Client und einen Windows-basierten HDInsight-Cluster. Informationen zur Verwendung von Mahout mit einem Linux-, OS X- oder Unix-Client und einem Linux-basierten Cluster finden Sie unter [Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Linux-basiertem Hadoop in HDInsight](hdinsight-hadoop-mahout-linux-mac.md)
 
 
-##<a name="<a-name="learn"></a>what-you-will-learn"></a><a name="learn"></a>Sie lernen Folgendes
+##<a name="a-namelearnawhat-you-will-learn"></a><a name="learn"></a>Sie lernen Folgendes
 
 Mahout ist eine Bibliothek für [maschinelles Lernen][ml] für Apache Hadoop. Mahout enthält Algorithmen zur Verarbeitung von Daten wie etwa Filtern, Klassifizierung und Clustering. In diesem Artikel verwenden Sie ein Empfehlungsmodul zum Generieren von Filmempfehlungen auf der Grundlage von Filmen, die Ihre Freunde gesehen haben. Sie erfahren außerdem, wie Sie mithilfe eines Entscheidungswalds Klassifizierungen vornehmen. Dabei lernen Sie Folgendes:
 
@@ -47,7 +47,7 @@ Mahout ist eine Bibliothek für [maschinelles Lernen][ml] für Apache Hadoop. Ma
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
-##<a name="<a-name="recommendations"></a>generate-recommendations-by-using-windows-powershell"></a><a name="recommendations"></a>Generieren von Empfehlungen mithilfe von PowerShell
+##<a name="a-namerecommendationsagenerate-recommendations-by-using-windows-powershell"></a><a name="recommendations"></a>Generieren von Empfehlungen mithilfe von PowerShell
 
 > [AZURE.NOTE] Zwar kann der in diesem Abschnitt verwendete Auftrag mit Windows PowerShell ausgeführt werden, jedoch funktionieren viele der mit Mahout bereitgestellten Klassen derzeit nicht mit Windows PowerShell und müssen über die Hadoop-Befehlszeile ausgeführt werden. Eine Liste der Klassen, die nicht mit Windows PowerShell funktionieren, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) .
 >
@@ -65,7 +65,7 @@ Im Folgenden sehen Sie ein extrem einfaches Beispiel mit Spielfilmen:
 
 ###<a name="understanding-the-data"></a>Grundlegendes zu den Daten
 
-Praktischerweise stellt [GroupLens Research][MovieLens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples/MahoutMovieData`verfügbar.
+Praktischerweise stellt [GroupLens Research][movielens] Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples/MahoutMovieData`verfügbar.
 
 Es existieren zwei Dateien, `moviedb.txt` (Informationen zu den Filmen) und `user-ratings.txt`. Die Datei „user-ratings.txt“ der Benutzerbewertung wird während der Analyse verwendet, während „moviedb.txt“ beim Anzeigen der Ergebnisse der Analyse benutzerfreundliche Textinformationen angibt.
 
@@ -318,7 +318,7 @@ Die Ausgabe sollte in etwa folgendermaßen aussehen:
     Donnie Brasco (1997)                     4.6792455
     Lone Star (1996)                         4.7099237  
 
-##<a name="<a-name="classify"></a>classify-data-by-using-the-hadoop-command-line"></a><a name="classify"></a>Klassifizieren von Daten mit der Hadoop-Befehlszeile
+##<a name="a-nameclassifyaclassify-data-by-using-the-hadoop-command-line"></a><a name="classify"></a>Klassifizieren von Daten mit der Hadoop-Befehlszeile
 
 Eine der in Mahout verfügbaren Klassifizierungsmethoden besteht darin, einen [Random Forest][forest] zu erstellen. Das ist ein mehrstufiger Prozess, bei dem mithilfe von Trainingsdaten Entscheidungsstrukturen generiert werden, die dann zum Klassifizieren von Daten verwendet werden. Dabei wird die von Mahout bereitgestellte Klasse __org.apache.mahout.classifier.df.tools.Describe__ verwendet, die derzeit mit der Hadoop-Befehlszeile ausgeführt werden muss.
 
@@ -411,9 +411,9 @@ Eine der in Mahout verfügbaren Klassifizierungsmethoden besteht darin, einen [R
 
 > [AZURE.NOTE] Mahout-Aufträge überschreiben keine Dateien. Wenn Sie diese Aufträge noch einmal ausführen möchten, müssen Sie die von vorherigen Aufträgen erstellten Dateien löschen.
 
-##<a name="<a-name="troubleshooting"></a>troubleshooting"></a><a name="troubleshooting"></a>Problembehandlung
+##<a name="a-nametroubleshootingatroubleshooting"></a><a name="troubleshooting"></a>Problembehandlung
 
-###<a name="<a-name="install"></a>install-mahout"></a><a name="install"></a>Installieren von Mahout
+###<a name="a-nameinstallainstall-mahout"></a><a name="install"></a>Installieren von Mahout
 
 Mahout ist in HDInsight 3.1-Clustern bereits installiert. Die Installation kann mit folgenden Schritten manuell in HDInsight 3.0- oder HDInsight 2.1-Clustern durchgeführt werden:
 
@@ -479,7 +479,7 @@ Mahout ist in HDInsight 3.1-Clustern enthalten. Der Pfad- und der Dateiname enth
             -DefaultStorageAccountKey $storageAccountKey `
             -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target\*-job.jar'
 
-###<a name="<a-name="nopowershell"></a>classes-that-do-not-work-with-windows-powershell"></a><a name="nopowershell"></a>Klassen, die nicht mit Windows PowerShell funktionieren
+###<a name="a-namenopowershellaclasses-that-do-not-work-with-windows-powershell"></a><a name="nopowershell"></a>Klassen, die nicht mit Windows PowerShell funktionieren
 
 Mahout-Aufträge, die die folgenden Klassen verwenden, geben zahlreiche Fehlermeldungen zurück, wenn sie von Windows PowerShell aus verwendet werden.
 
@@ -527,6 +527,6 @@ Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Met
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
